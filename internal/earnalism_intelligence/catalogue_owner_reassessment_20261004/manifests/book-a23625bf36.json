@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9f63f6b7e698f60b56253d7841a4ca42c756c1974984973b1e35828317af9cb7",
+    "chapters/chapter-001.json": "0cd3de69bd18e062eddaf7fec99dc45132eaf379520d86bc6961e5450d588f4c",
+    "checksum_manifest.json": "b3ed9eabdbc0ba9c872efcf02f96bd4456a9731aea72109a15337fe2fda136a3",
+    "highlight_sync.json": "725056264187d0f5fb5a99cb5d18cde8f78520110a6395e9de6902806f1fa956",
+    "public_book.json": "295bf693031dc1945c3c368ec98a930135716e7d69f223f235f79c41b1db368c",
+    "reader_manifest.json": "d0e19c364d5c01418b6e1756aca177578f0a08d4ab7b0c6afcd85be2c51e3fc5",
+    "source_evidence.json": "b869cf4c3e74f09fc063b3aa96b9b46b5d2d1ef5ccad0752730d89bbdad1391b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+      "file_sha256": "5473e0d9a3d647a6fd2848eca5714eb256d5b0e47db8e503d6f424e47ea86533",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "9f63f6b7e698f60b56253d7841a4ca42c756c1974984973b1e35828317af9cb7",
+    "approval_evidence.json": "b23c2d2d7bae41ed8e21234bb1e148a777af4a4803f72ca1ef23863d8171a49b",
+    "chapters/chapter-001.json": "5473e0d9a3d647a6fd2848eca5714eb256d5b0e47db8e503d6f424e47ea86533",
+    "checksum_manifest.json": "81074f9ca09e786e2d1468a7e2f1bd7302398cf9c22d142b33ebc43ced49a58e",
+    "highlight_sync.json": "725056264187d0f5fb5a99cb5d18cde8f78520110a6395e9de6902806f1fa956",
+    "license_notice.json": "80a43ff341a40f6be6d29f47ed616c034cba32b2f11aa7c32d6f55a98009037c",
+    "public_book.json": "117a3c88b4cccd1ab653bb13ee7001a9c5e5ce4d25acd943c6314149c4155cf5",
+    "publication_authorization.json": "6d17565256bd6857d3e6fa914ec73d3d916fa30b8da3899df1fd04c09b21392b",
+    "publication_manifest.json": "d4ff57496fc8569be9a8d22e159ea5249d7bddf73da72918228db8acb62a8402",
+    "reader_manifest.json": "c8721fbbf1a41a8829dd966495a19f55da04d791764c76764bf23f3d4c12922f",
+    "rights_decision.json": "e2189c1ba5c122c0b6121517aa2782d6c67d982e35f189a407c1b8492ce0f5a4",
+    "source_evidence.json": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "b23c2d2d7bae41ed8e21234bb1e148a777af4a4803f72ca1ef23863d8171a49b",
+      "public_book": "117a3c88b4cccd1ab653bb13ee7001a9c5e5ce4d25acd943c6314149c4155cf5",
+      "reader_manifest": "c8721fbbf1a41a8829dd966495a19f55da04d791764c76764bf23f3d4c12922f",
+      "source_evidence": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "10d2cc9153bd611ddc9921b6ca292d70902cd1aa5531532a799d51e1890cd112",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "5473e0d9a3d647a6fd2848eca5714eb256d5b0e47db8e503d6f424e47ea86533",
+          "title": "সমাপ্তি",
+          "word_count": 5618
+        }
+      ],
+      "content_hash": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+      "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
+      "sanitized": true,
+      "source_hash": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "47e94d503a0ccea4b2ed2f27d41e5dc757a0d95e5910fcca64999f0c5780ecba",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-a23625bf36",
+    "title": "সমাপ্তি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

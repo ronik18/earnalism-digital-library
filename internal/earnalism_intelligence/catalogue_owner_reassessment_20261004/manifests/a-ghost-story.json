@@ -1,0 +1,108 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "chapters/chapter-001.json": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+    "checksum_manifest.json": "aae0dfb3f5192945b1459e0dfa2a41e4c9e9908d0b175332ef8830879fe9b232",
+    "cover_approval_evidence.json": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd",
+    "highlight_sync.json": "91c5ca73d4e87febe4939d53714fa0b1b6be4b8cc52154ae85e5d6f77b8ea054",
+    "public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "publication_manifest.json": "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0",
+    "reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+    "rights_decision.json": "8ee0b3978821236944094336b0628c50f1e46bf3be0d66981cd3361a3138bcfd",
+    "source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+      "file_sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "chapters/chapter-001.json": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+    "checksum_manifest.json": "ec621b22d7c947a58369b4abd1ad0d28a8755c660e2c7e9c74aa541bfdc1a190",
+    "cover_approval_evidence.json": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd",
+    "highlight_sync.json": "91c5ca73d4e87febe4939d53714fa0b1b6be4b8cc52154ae85e5d6f77b8ea054",
+    "public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "publication_manifest.json": "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0",
+    "reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+    "rights_decision.json": "639a1f71368c6a7b2d302817d837f4af3c10aa76ef87dd2df1a69e92d59dd36d",
+    "source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+      "public_book": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+      "reader_manifest": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+      "source_evidence": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "f16b9c425a3443c9b89c2ab4054a47c14d165889f91f5a8455b47be74d4f949a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+          "title": "A Ghost Story",
+          "word_count": 2450
+        }
+      ],
+      "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+      "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6",
+      "sanitized": true,
+      "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f"
+    },
+    "generated_at": "2026-09-25T00:00:00Z",
+    "manifest_sha256": "8b37be4f0fb120073628f1ab22d4459e6fe74fca50e3af2311df29c32ea78188",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-ghost-story",
+    "title": "A Ghost Story"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

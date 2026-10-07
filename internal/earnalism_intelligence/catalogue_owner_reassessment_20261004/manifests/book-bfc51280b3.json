@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "0a0d2f7adc996cc1d8330ce89e0d0b579c1f6014937780f79587b9e4f0d487ef",
+    "chapters/chapter-001.json": "47186fd5afecfeb8d46a53c90f9b35ba995e85847edf4fd4c9ed76c55a28f297",
+    "checksum_manifest.json": "be93575559eb94f977217e74b1f7812b2a226c8781c554f2221c02212f702702",
+    "highlight_sync.json": "0af9ad833d403c0fb196cda52b412ec580a20921dd0f460dbb8facd18bc76438",
+    "public_book.json": "e69dc73cfccc48e049bed1ffdf058b05b2ead629081cdb006b35a811286bc9ce",
+    "reader_manifest.json": "32d510eb12b30eadb37d3031524a1877ee53e8b0c78df60acbfc964383d70929",
+    "source_evidence.json": "de2a352b3df3baa588a282a28e19ca64bee7489b28351cb0ad61f681cb15df39"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+      "file_sha256": "8244194ed83e17c9aede6267928e7cd619b253590691c8381d78f4ce9db9a3ab",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "0a0d2f7adc996cc1d8330ce89e0d0b579c1f6014937780f79587b9e4f0d487ef",
+    "approval_evidence.json": "ca5b27e461b3d495ab11ea0ec258e73c510ace0367535127ed18fbd38dd748f0",
+    "chapters/chapter-001.json": "8244194ed83e17c9aede6267928e7cd619b253590691c8381d78f4ce9db9a3ab",
+    "checksum_manifest.json": "327291932c030866a47d060abaddf730eaeaa6dcda4c806e4b17443e37e7c523",
+    "highlight_sync.json": "0af9ad833d403c0fb196cda52b412ec580a20921dd0f460dbb8facd18bc76438",
+    "license_notice.json": "fa7c4240ef27d5841accdc545b5820e4e2aafe4c2cf73935eecaaee187355699",
+    "public_book.json": "0d94d3fe9727da1c05c6a099410bf553bdebb0b51d4e6f0d408362a633204703",
+    "publication_authorization.json": "a9c8cb8d33b948cb64e7ddd6b0cf92497c37aedd786271e32a6045a8030bc06e",
+    "publication_manifest.json": "be97d0dae1571c78ef7d356b664fd305e931fabd00edd8b9f6ba454d75eba63d",
+    "reader_manifest.json": "94cae90d1355e250e300249ad82a5ab12ecb327ae833c9b49304926922a64206",
+    "rights_decision.json": "ecdf71e0df5f6371b9107448eca5acb83dfb809111281a6f346b0401d530d809",
+    "source_evidence.json": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ca5b27e461b3d495ab11ea0ec258e73c510ace0367535127ed18fbd38dd748f0",
+      "public_book": "0d94d3fe9727da1c05c6a099410bf553bdebb0b51d4e6f0d408362a633204703",
+      "reader_manifest": "94cae90d1355e250e300249ad82a5ab12ecb327ae833c9b49304926922a64206",
+      "source_evidence": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d1e9ff78119e21eb9785d07754efd133b7e0f4baae869a857a095f55abcd010b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "8244194ed83e17c9aede6267928e7cd619b253590691c8381d78f4ce9db9a3ab",
+          "title": "অতিথি",
+          "word_count": 4998
+        }
+      ],
+      "content_hash": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+      "provenance_hash": "fef6633281952ea288a19a83e33369b351f48a58f0e2f0df57c32ba302a70cdc",
+      "sanitized": true,
+      "source_hash": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "9166a54c114235be5df0512b63092e95528cd1fae72c7aaefc822adcdff29ab9",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-bfc51280b3",
+    "title": "অতিথি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9b6d902a161cb279285029b042e28fc7424d5032f5a70d76c09fa0cea91e8b2b",
+    "chapters/chapter-001.json": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b",
+    "checksum_manifest.json": "edeff530786f5131b902a0d073338b45c0b8ca2660fe4221f89d9af5910e7ca6",
+    "highlight_sync.json": "501d862fad7c6ebe4bf6c63407b62422dc25fc90f6494fd0223d92d6e4fead08",
+    "public_book.json": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
+    "publication_authorization.json": "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af",
+    "publication_manifest.json": "a5d192b95750bab6cf53a7d7b67406b2ac04ba9b6c95db89694af06b63830a58",
+    "reader_manifest.json": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "rights_decision.json": "d4a156233adc3fbf0951109c1b42657ce6e57aa546760b9a6ce20be4b0257694",
+    "source_evidence.json": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29",
+      "file_sha256": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "9b6d902a161cb279285029b042e28fc7424d5032f5a70d76c09fa0cea91e8b2b",
+    "chapters/chapter-001.json": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b",
+    "checksum_manifest.json": "edeff530786f5131b902a0d073338b45c0b8ca2660fe4221f89d9af5910e7ca6",
+    "highlight_sync.json": "501d862fad7c6ebe4bf6c63407b62422dc25fc90f6494fd0223d92d6e4fead08",
+    "public_book.json": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
+    "publication_authorization.json": "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af",
+    "publication_manifest.json": "a5d192b95750bab6cf53a7d7b67406b2ac04ba9b6c95db89694af06b63830a58",
+    "reader_manifest.json": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "rights_decision.json": "d4a156233adc3fbf0951109c1b42657ce6e57aa546760b9a6ce20be4b0257694",
+    "source_evidence.json": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "9b6d902a161cb279285029b042e28fc7424d5032f5a70d76c09fa0cea91e8b2b",
+      "public_book": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
+      "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+      "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "32aeba9767a5c71790157348fbf07d3b9099aab221ec095936d2a15f030ba5bf",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b",
+          "title": "The Adventure of the Beryl Coronet",
+          "word_count": 9714
+        }
+      ],
+      "content_hash": "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29",
+      "provenance_hash": "398d3c9dcb026d63f87045dd362441e7d0c39b0264859271b381a1d1b4a052f4",
+      "sanitized": true,
+      "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "815750d457255abfe79b3226c4bdb956535ef45e4f4a22206998b9bc90608f6d",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-beryl-coronet",
+    "title": "The Adventure of the Beryl Coronet"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-the-beryl-coronet-pg1661-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

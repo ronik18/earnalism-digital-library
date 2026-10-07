@@ -1,0 +1,116 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+    "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "checksum_manifest.json": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
+    "cover_delivery_derivation.json": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb",
+    "cover_provenance.json": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+    "evidence/review_a.json": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+    "evidence/review_b.json": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+    "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+    "public_book.json": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "publication_authorization.json": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+    "publication_manifest.json": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
+    "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "rights_decision.json": "068975e061bd083b5e3714f90b8952c6c54402c231984520f3c41c188ea06259",
+    "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+      "file_sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+    "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "checksum_manifest.json": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
+    "cover_delivery_derivation.json": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb",
+    "cover_provenance.json": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+    "evidence/review_a.json": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+    "evidence/review_b.json": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+    "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+    "public_book.json": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "publication_authorization.json": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+    "publication_manifest.json": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
+    "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "rights_decision.json": "068975e061bd083b5e3714f90b8952c6c54402c231984520f3c41c188ea06259",
+    "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+      "public_book": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+      "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+      "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "51c62b78889787d8f6e93517b6fa6db9330b0a786b2b0a61e533b4b323e45999",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+          "title": "Sredni Vashtar",
+          "word_count": 1787
+        }
+      ],
+      "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+      "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+      "sanitized": true,
+      "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+    },
+    "generated_at": "2026-10-03T04:59:53.954767+00:00",
+    "manifest_sha256": "ccfec13dbf80bb3dec95215f7f7759be8f622aa6de404d07a11c820ff281e29b",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "sredni-vashtar",
+    "title": "Sredni Vashtar"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

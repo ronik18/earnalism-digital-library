@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c",
+    "chapters/chapter-001.json": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd",
+    "checksum_manifest.json": "9dcde617f0d3e6d45074292e118d21ce4e8b0e998c0a924b61c1805fccc1be8a",
+    "highlight_sync.json": "2ef806a05205908938aed3dd1078dc407692742988b2e7ba2db4c1665951db05",
+    "public_book.json": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
+    "publication_authorization.json": "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a",
+    "publication_manifest.json": "7f71e45fc3e8efc3f8c5ccd25af86f1b27210af7ee02f7f853ae03154ed71abc",
+    "reader_manifest.json": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "rights_decision.json": "b9a15e0fe7a745b5d22ee7fe5866584ff33852cc0f778a0b0d894f4250571ebd",
+    "source_evidence.json": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804",
+      "file_sha256": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c",
+    "chapters/chapter-001.json": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd",
+    "checksum_manifest.json": "9dcde617f0d3e6d45074292e118d21ce4e8b0e998c0a924b61c1805fccc1be8a",
+    "highlight_sync.json": "2ef806a05205908938aed3dd1078dc407692742988b2e7ba2db4c1665951db05",
+    "public_book.json": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
+    "publication_authorization.json": "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a",
+    "publication_manifest.json": "7f71e45fc3e8efc3f8c5ccd25af86f1b27210af7ee02f7f853ae03154ed71abc",
+    "reader_manifest.json": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "rights_decision.json": "b9a15e0fe7a745b5d22ee7fe5866584ff33852cc0f778a0b0d894f4250571ebd",
+    "source_evidence.json": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c",
+      "public_book": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
+      "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+      "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "9e7454137fff5ccad8e9b359401d72c08562e3e2ffa18376669e90b93eafe085",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd",
+          "title": "The Adventure of the Noble Bachelor",
+          "word_count": 8175
+        }
+      ],
+      "content_hash": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804",
+      "provenance_hash": "acf0616f9d5cf287eb4017e67f7c03f9f9acb1e5966d5032d1975dcd816589fc",
+      "sanitized": true,
+      "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "71a1751784891aa9f174f703fdff4c6eab74e46c7b9412ad92c5cc90f5f63712",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-noble-bachelor",
+    "title": "The Adventure of the Noble Bachelor"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-the-noble-bachelor-pg1661-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

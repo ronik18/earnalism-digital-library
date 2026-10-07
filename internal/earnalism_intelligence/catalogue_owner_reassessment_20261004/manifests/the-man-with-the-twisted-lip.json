@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d",
+    "chapters/chapter-001.json": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a",
+    "checksum_manifest.json": "72a7eada2598b93400aaed058b2312b81dbbf2330f16b089cbc7090ee7a75119",
+    "highlight_sync.json": "0e2f3ed85bd3dae7914137683dabc8178a600c5c2880f161154eef25db60b910",
+    "public_book.json": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
+    "publication_authorization.json": "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc",
+    "publication_manifest.json": "b3c940e1c6349526676c3ca3c7b0e89d06b9d678b5d9d2f14ecefb34a7f1a6c0",
+    "reader_manifest.json": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+    "rights_decision.json": "780ba7cd8617591a24711bbd0ca0626d39665316ebfbdbd2bee6c08943292868",
+    "source_evidence.json": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4",
+      "file_sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d",
+    "chapters/chapter-001.json": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a",
+    "checksum_manifest.json": "72a7eada2598b93400aaed058b2312b81dbbf2330f16b089cbc7090ee7a75119",
+    "highlight_sync.json": "0e2f3ed85bd3dae7914137683dabc8178a600c5c2880f161154eef25db60b910",
+    "public_book.json": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
+    "publication_authorization.json": "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc",
+    "publication_manifest.json": "b3c940e1c6349526676c3ca3c7b0e89d06b9d678b5d9d2f14ecefb34a7f1a6c0",
+    "reader_manifest.json": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+    "rights_decision.json": "780ba7cd8617591a24711bbd0ca0626d39665316ebfbdbd2bee6c08943292868",
+    "source_evidence.json": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d",
+      "public_book": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
+      "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+      "source_evidence": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "52a865981e3abe237a66bbfc7d6c3292bddba6d45a707a01d35d7dd5c63a5a8d",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a",
+          "title": "The Man with the Twisted Lip",
+          "word_count": 9268
+        }
+      ],
+      "content_hash": "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4",
+      "provenance_hash": "04e951a9f6a7742788b169e40a99bff49eca488bb4fbf3d6af1ad9e96a2f5a13",
+      "sanitized": true,
+      "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6b18d66e331e447eb5d5d906261b5fa128cae985564d6c3630e5bf3a231df7b0",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-man-with-the-twisted-lip",
+    "title": "The Man with the Twisted Lip"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-man-with-the-twisted-lip-pg1661-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

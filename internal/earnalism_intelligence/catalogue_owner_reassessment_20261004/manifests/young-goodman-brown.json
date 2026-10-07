@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8",
+    "chapters/chapter-001.json": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a",
+    "checksum_manifest.json": "2de2b44d4370aa576952dea381bb3ed0143b8d6ad0f9c9a91d755f5f43e9f4c3",
+    "highlight_sync.json": "9780aeaa4a9b2f6511cca572f3f4597e65641f43e70c6c95813b8125978770a9",
+    "public_book.json": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+    "publication_authorization.json": "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528",
+    "publication_manifest.json": "3adae489b09a8e58a33989eaea4e68e49a3e7a896b3a26ccbf97abbb6d1c09d0",
+    "reader_manifest.json": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "rights_decision.json": "345ff806c8e018cbdf61b3c75eae11e2558de86032e2cd87ddfa70baed6c11bc",
+    "source_evidence.json": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
+      "file_sha256": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8",
+    "chapters/chapter-001.json": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a",
+    "checksum_manifest.json": "2de2b44d4370aa576952dea381bb3ed0143b8d6ad0f9c9a91d755f5f43e9f4c3",
+    "highlight_sync.json": "9780aeaa4a9b2f6511cca572f3f4597e65641f43e70c6c95813b8125978770a9",
+    "public_book.json": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+    "publication_authorization.json": "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528",
+    "publication_manifest.json": "3adae489b09a8e58a33989eaea4e68e49a3e7a896b3a26ccbf97abbb6d1c09d0",
+    "reader_manifest.json": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "rights_decision.json": "345ff806c8e018cbdf61b3c75eae11e2558de86032e2cd87ddfa70baed6c11bc",
+    "source_evidence.json": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8",
+      "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+      "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+      "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "bfd744da3a48329b47fb154245e0ade3cdb9fc86b3972dc4094ddda5ce06c69a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a",
+          "title": "Young Goodman Brown",
+          "word_count": 5264
+        }
+      ],
+      "content_hash": "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
+      "provenance_hash": "ab08f08eef1be82b0a051afc07322608480caa5ed9126ad769fe502f2bc8aec4",
+      "sanitized": true,
+      "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "b125d6ce4ce92fada2ea4ad023c3be734d277397127d26e5ba846197f075d546",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "young-goodman-brown",
+    "title": "Young Goodman Brown"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-young-goodman-brown-pg512-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

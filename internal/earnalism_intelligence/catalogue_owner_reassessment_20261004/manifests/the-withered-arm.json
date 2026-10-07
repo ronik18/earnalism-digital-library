@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829",
+    "chapters/chapter-001.json": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53",
+    "checksum_manifest.json": "92f2049f4234e618a881dc43d0f34d3a856e3e9fba0106e4dc34d571dd3b3117",
+    "highlight_sync.json": "af75fb0d6d23a45917f55dc3b842c1dbc2fbfc4fb2106e39dc46fe9dd05ed11a",
+    "public_book.json": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+    "publication_authorization.json": "3b67da4e74b3f5a939d20759c399e252eb0ebda958d8899b17f59b4389e22a59",
+    "publication_manifest.json": "e28c439a168c37f084322fe2765b10e1663f56c66d2964cf3187f45c0bd49b4b",
+    "reader_manifest.json": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+    "rights_decision.json": "08b52c55afc58abc5cbdc19e55aa0dfb7fdec840471e3b3f9607d1649c7e8ab3",
+    "source_evidence.json": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+      "file_sha256": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829",
+    "chapters/chapter-001.json": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53",
+    "checksum_manifest.json": "92f2049f4234e618a881dc43d0f34d3a856e3e9fba0106e4dc34d571dd3b3117",
+    "highlight_sync.json": "af75fb0d6d23a45917f55dc3b842c1dbc2fbfc4fb2106e39dc46fe9dd05ed11a",
+    "public_book.json": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+    "publication_authorization.json": "3b67da4e74b3f5a939d20759c399e252eb0ebda958d8899b17f59b4389e22a59",
+    "publication_manifest.json": "e28c439a168c37f084322fe2765b10e1663f56c66d2964cf3187f45c0bd49b4b",
+    "reader_manifest.json": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+    "rights_decision.json": "08b52c55afc58abc5cbdc19e55aa0dfb7fdec840471e3b3f9607d1649c7e8ab3",
+    "source_evidence.json": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829",
+      "public_book": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+      "reader_manifest": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+      "source_evidence": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c30a37e0ed980e00e5f43a388743ce797d87f04db6b9bccf2277b5c00cd48a78",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53",
+          "title": "The Withered Arm",
+          "word_count": 10529
+        }
+      ],
+      "content_hash": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+      "provenance_hash": "44ee41c0e15bf9a262bef891dc289a4fcc2bb89e47ed91f807f059dc5b88968b",
+      "sanitized": true,
+      "source_hash": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "7dd5d7f78eb281cf4a921a28f456a29528f1574565e32e8c95f87f6c7a58df8c",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-withered-arm",
+    "title": "The Withered Arm"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-withered-arm-pg3056-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

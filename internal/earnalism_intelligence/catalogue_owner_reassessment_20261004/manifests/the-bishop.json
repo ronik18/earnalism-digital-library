@@ -1,0 +1,110 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e",
+    "chapters/chapter-001.json": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56",
+    "checksum_manifest.json": "8552556aac8412d54517895eb182bc1fff680ea2cefa4b493d1356b45c941bf9",
+    "cover_provenance.json": "a31eb76d40948f6efc73ccb975d8693481e8ee9f3fa392df2db533e9b7b8e7b2",
+    "highlight_sync.json": "0c6dff8d6738bdcf2b8c1e79ad86ec5518ebf235e3887705050aeeb159e3fa5f",
+    "public_book.json": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
+    "publication_manifest.json": "4d5b124fce6ff16746b8e14e01d7b4f52d2213995068415b598280193dfa640c",
+    "reader_manifest.json": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
+    "reader_release_approval.json": "787438d37d6266e0e2b5b385abf3098c65014a90f3de843eed6c8733dc943b04",
+    "rights_decision.json": "a7c73f71ad33e4ad86a73891ea170422eab20e25983d0816a69c1492b567797d",
+    "source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "8d532c5d041f5327f9c8b6232c63a63eab58fe5170028deb4071b7937737b19c",
+      "file_sha256": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e",
+    "chapters/chapter-001.json": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56",
+    "checksum_manifest.json": "8552556aac8412d54517895eb182bc1fff680ea2cefa4b493d1356b45c941bf9",
+    "cover_provenance.json": "a31eb76d40948f6efc73ccb975d8693481e8ee9f3fa392df2db533e9b7b8e7b2",
+    "highlight_sync.json": "0c6dff8d6738bdcf2b8c1e79ad86ec5518ebf235e3887705050aeeb159e3fa5f",
+    "public_book.json": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
+    "publication_manifest.json": "4d5b124fce6ff16746b8e14e01d7b4f52d2213995068415b598280193dfa640c",
+    "reader_manifest.json": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
+    "reader_release_approval.json": "787438d37d6266e0e2b5b385abf3098c65014a90f3de843eed6c8733dc943b04",
+    "rights_decision.json": "a7c73f71ad33e4ad86a73891ea170422eab20e25983d0816a69c1492b567797d",
+    "source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e",
+      "public_book": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
+      "reader_manifest": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
+      "source_evidence": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "2b9726dfe8f5797af1ea5c5ed4cf7c2ad0ee33d12faf1f290cebcc07480cdcbc",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56",
+          "title": "The Bishop",
+          "word_count": 6321
+        }
+      ],
+      "content_hash": "1dc838b382d4c4c70b4109b50dafbd63da98d4660bb73af278af06d6ac0d96c1",
+      "provenance_hash": "f45783e085d460e7f411295566a38ea11985d5ae2d6ef4fd28b309da2347a778",
+      "sanitized": true,
+      "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "2f689f072f8ba0e0d9cd9e3051adfe006ac1a85dfd69233fed32b0be7e26f3b8",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-bishop/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-bishop",
+    "title": "The Bishop"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-the-bishop-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

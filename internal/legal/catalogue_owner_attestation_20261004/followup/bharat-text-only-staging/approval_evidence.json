@@ -1,0 +1,29 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "TEXT_ONLY_LOCAL_PREPARATION_NOT_RUNTIME_AUTHORITY",
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "metadata_approval_status": "PASS",
+  "browser_gate_status": "PENDING_REVERIFY",
+  "release_blockers": [
+    "EXACT_CHANGED_PACKAGE_RIGHTS_REBIND_REQUIRED",
+    "LOCAL_READER_ENTITLEMENT_CANARY_REQUIRED"
+  ],
+  "allowCheckout": false,
+  "allowPayment": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "explicit_owner_approved_audio_only_release"
+  },
+  "publication_authorization_sha256": "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "verified_at": "2026-10-02T03:00:15.653216+00:00",
+  "audio_enabled": false,
+  "audiobook_enabled": false
+}

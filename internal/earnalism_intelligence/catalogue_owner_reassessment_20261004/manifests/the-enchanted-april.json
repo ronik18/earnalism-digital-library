@@ -1,0 +1,406 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
+    "chapters/chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+    "chapters/chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+    "chapters/chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+    "chapters/chapter-004.json": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+    "chapters/chapter-005.json": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+    "chapters/chapter-006.json": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+    "chapters/chapter-007.json": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+    "chapters/chapter-008.json": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+    "chapters/chapter-009.json": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+    "chapters/chapter-010.json": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+    "chapters/chapter-011.json": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+    "chapters/chapter-012.json": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+    "chapters/chapter-013.json": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+    "chapters/chapter-014.json": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+    "chapters/chapter-015.json": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+    "chapters/chapter-016.json": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+    "chapters/chapter-017.json": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+    "chapters/chapter-018.json": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+    "chapters/chapter-019.json": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+    "chapters/chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+    "chapters/chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+    "chapters/chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
+    "checksum_manifest.json": "db1000b20f32ed87927ba5df71ef6a6c05083ac18171835fecb4c2c73a34e4c4",
+    "cover_provenance.json": "ae3f16a1f0f5c928e6d705c1474b6c6fbed4ec0f6036833f1f0ef9af48ba50fa",
+    "highlight_sync.json": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862",
+    "public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
+    "publication_manifest.json": "0cc8bc909be6fb64762a2c3f411c41e6ba2b34505af83b6a721d5eebf655742a",
+    "reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+    "reader_release_approval.json": "a5a18dbfad60eaf0c54399be20bc3c3ad7f61063a01ca28e18a292ade0889925",
+    "reader_repair_evidence.json": "ebc6c62633d6d809c4857d9f6a18c64aadca0c1b12ee1be5bbb9833a303ab7bf",
+    "rights_decision.json": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef",
+    "source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "74b0e726c53d4fb34e2529b63fb1ebe45ce3edfbb68498043da9f6206e8dbccd",
+      "file_sha256": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "1fe2c18b2dc195d10f15ba5d8527c1046808a0c2eb173b93cd175563c42ba549",
+      "file_sha256": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "4d92ed22320fc948d290ccac87e206eb11acdbfb3dd4944ca032d9ad7e382b6b",
+      "file_sha256": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "3e7fd39f104a9084c3e6d295002648c520664d59eb8a2534e75521ff093635c6",
+      "file_sha256": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "d5586e3b2f0ef4518d29adb8193db7d46a079a167801543c57fc9d56571b1be7",
+      "file_sha256": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "4e38436750d443417972c2bdbdaa82c97ac5bb2e67fca6bd61aa68adc5111f23",
+      "file_sha256": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "e2063ca957eb6678b214d15bd56dbfe4c2b71dc469e3931fdb7d08ea9a4d2714",
+      "file_sha256": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "fcc9a083fb9e6ae9e98d6c21a53ffd8d651ae50ede74b847048ae4a9846d5b39",
+      "file_sha256": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "9a1d716851f28e1f29bb5980ff2cb8adb386662d0709eeb98e7119cc296f001c",
+      "file_sha256": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "7b524f609270fac6884363892bb439b555b00759b06fb90d7475bd568768b202",
+      "file_sha256": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "66220f99b043bdd07dbd1ca62329e3d79b96ff04bbdee97f81ce80f56372c6fd",
+      "file_sha256": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "a73caff20661b5f22db420a6a2f61bce50374ae271e4c320b93305401f22ed08",
+      "file_sha256": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "0a455ad41891caef7325ab54357bd0b0a937f1269b0cd2f422cd8c4673be4b20",
+      "file_sha256": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "afc1f2ed0fe48ac677dfa70840666df2db613bc274648261262b9b8c5a836061",
+      "file_sha256": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "f45278e31bdf6484fff1f03ae0c0a63708a524592afe4333a5792b0a56bef5ea",
+      "file_sha256": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "d1c13702f2f8a8287d4794ff008a3aabb2a508f8949d256ae5d1711fd095f735",
+      "file_sha256": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "676af5d9c2d14b41e8e44a91a1e673999026b07a419f01c96a5d00ee077e97b4",
+      "file_sha256": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "c4b8167a803db4aac3c4ce5d1209f0e01fe16c06bd736438650a4ae7cba6ae51",
+      "file_sha256": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "1e706846332725872452524db5b1980f86c8b2af498f9b3d7b921cb16db74356",
+      "file_sha256": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "312248dddf37541bacbb34748eb8540b047a3b4f9913ac24a7f7448ff13659e7",
+      "file_sha256": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "a178cfa433c7102de60ded4508081cd50e2618fc1a70529f57a9b9f237b7aef7",
+      "file_sha256": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "0b3e94550772471d6fbeb0caea5e341d07eef5b52278d96a62172ffa73ae4c75",
+      "file_sha256": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
+      "id": "chapter-022"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
+    "chapters/chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+    "chapters/chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+    "chapters/chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+    "chapters/chapter-004.json": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+    "chapters/chapter-005.json": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+    "chapters/chapter-006.json": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+    "chapters/chapter-007.json": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+    "chapters/chapter-008.json": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+    "chapters/chapter-009.json": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+    "chapters/chapter-010.json": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+    "chapters/chapter-011.json": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+    "chapters/chapter-012.json": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+    "chapters/chapter-013.json": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+    "chapters/chapter-014.json": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+    "chapters/chapter-015.json": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+    "chapters/chapter-016.json": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+    "chapters/chapter-017.json": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+    "chapters/chapter-018.json": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+    "chapters/chapter-019.json": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+    "chapters/chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+    "chapters/chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+    "chapters/chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
+    "checksum_manifest.json": "db1000b20f32ed87927ba5df71ef6a6c05083ac18171835fecb4c2c73a34e4c4",
+    "cover_provenance.json": "ae3f16a1f0f5c928e6d705c1474b6c6fbed4ec0f6036833f1f0ef9af48ba50fa",
+    "highlight_sync.json": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862",
+    "public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
+    "publication_manifest.json": "0cc8bc909be6fb64762a2c3f411c41e6ba2b34505af83b6a721d5eebf655742a",
+    "reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+    "reader_release_approval.json": "a5a18dbfad60eaf0c54399be20bc3c3ad7f61063a01ca28e18a292ade0889925",
+    "reader_repair_evidence.json": "ebc6c62633d6d809c4857d9f6a18c64aadca0c1b12ee1be5bbb9833a303ab7bf",
+    "rights_decision.json": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef",
+    "source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
+      "public_book": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
+      "reader_manifest": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+      "source_evidence": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 22,
+      "chapter_index_sha256": "685081625a3c046d4e2540633b9d9325d60ffaa1823a86305cbb81fa1cbbae08",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+          "title": "Chapter 1",
+          "word_count": 4969
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+          "title": "Chapter 2",
+          "word_count": 2594
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+          "title": "Chapter 3",
+          "word_count": 3506
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+          "title": "Chapter 4",
+          "word_count": 2024
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+          "title": "Chapter 5",
+          "word_count": 3251
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+          "title": "Chapter 6",
+          "word_count": 4443
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+          "title": "Chapter 7",
+          "word_count": 2663
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+          "title": "Chapter 8",
+          "word_count": 4964
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+          "title": "Chapter 9",
+          "word_count": 3524
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+          "title": "Chapter 10",
+          "word_count": 3159
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+          "title": "Chapter 11",
+          "word_count": 2886
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+          "title": "Chapter 12",
+          "word_count": 4301
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+          "title": "Chapter 13",
+          "word_count": 5326
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+          "title": "Chapter 14",
+          "word_count": 3751
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+          "title": "Chapter 15",
+          "word_count": 3994
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+          "title": "Chapter 16",
+          "word_count": 3969
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+          "title": "Chapter 17",
+          "word_count": 3029
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+          "title": "Chapter 18",
+          "word_count": 3312
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+          "title": "Chapter 19",
+          "word_count": 3850
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+          "title": "Chapter 20",
+          "word_count": 2052
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "sha256": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+          "title": "Chapter 21",
+          "word_count": 3344
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "sha256": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
+          "title": "Chapter 22",
+          "word_count": 3794
+        }
+      ],
+      "content_hash": "3539ad44486bb347c096d9905edc019fada09b3d58f3b1dbfbf375da7a892627",
+      "provenance_hash": "0a9bd2717cf725c9eb0bcec05bdd817fe609ba94e100b3079d3564cdcaad4b41",
+      "sanitized": true,
+      "source_hash": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "5f02d871883c391a682ed5384c8325d3df93e20297eda786af08fd3d91b05d01",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-enchanted-april",
+    "title": "The Enchanted April"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

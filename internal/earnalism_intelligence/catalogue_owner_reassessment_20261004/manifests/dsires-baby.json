@@ -1,0 +1,122 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+    "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+    "checksum_manifest.json": "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283",
+    "cover_delivery_derivation.json": "098671e517091d2d1394c01a29db9acb356af3cc5d74322a5112b45f5d930b1b",
+    "cover_provenance.json": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+    "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "evidence/review_a.json": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+    "evidence/review_b.json": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+    "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+    "public_book.json": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+    "publication_authorization.json": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+    "publication_manifest.json": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "rights_decision.json": "bf7d09e8c5e9752034ab8f3309417af983b951e41eebe07e94625e497db6fe2f",
+    "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+      "file_sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+    "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+    "checksum_manifest.json": "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283",
+    "cover_delivery_derivation.json": "098671e517091d2d1394c01a29db9acb356af3cc5d74322a5112b45f5d930b1b",
+    "cover_provenance.json": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+    "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "evidence/review_a.json": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+    "evidence/review_b.json": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+    "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+    "public_book.json": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+    "publication_authorization.json": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+    "publication_manifest.json": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "rights_decision.json": "bf7d09e8c5e9752034ab8f3309417af983b951e41eebe07e94625e497db6fe2f",
+    "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+      "public_book": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+      "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+      "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c8c40eb0d139386340ac9d0e41c2297490af398d7fe4d06e6db3ee1ce0c57bbb",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+          "title": "Désirée's Baby",
+          "word_count": 2178
+        }
+      ],
+      "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+      "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
+      "sanitized": true,
+      "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a"
+    },
+    "generated_at": "2026-10-03T04:59:53.954767+00:00",
+    "manifest_sha256": "6d60915e99db336c7c9bcfdc8f2d3b8a278b51690fc517b31fd5d01e4b890202",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "dsires-baby",
+    "title": "Désirée's Baby"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

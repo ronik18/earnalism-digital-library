@@ -1,0 +1,246 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "e84f49ebd12a31b604ada6c9cf3d7bbd2811604b3eea802df29b94ebcc76023c",
+    "chapters/chapter-001.json": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+    "chapters/chapter-002.json": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+    "chapters/chapter-003.json": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+    "chapters/chapter-004.json": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+    "chapters/chapter-005.json": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+    "chapters/chapter-006.json": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+    "chapters/chapter-007.json": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+    "chapters/chapter-008.json": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+    "chapters/chapter-009.json": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+    "chapters/chapter-010.json": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+    "checksum_manifest.json": "ac87dadfa99df7db6cd49ab04c6ae35ddf724e7b9c2087a4026db663db8ad2a4",
+    "cover_provenance.json": "021cd893e3f7686a8a22aacabc272c498946c604f945bd28f298ab9e1f4ad2c0",
+    "covers/back-original.png": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+    "covers/bn-035-back-0cbeb592.png": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+    "covers/bn-035-front-fc455a18.png": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+    "covers/front-original.png": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+    "highlight_sync.json": "3b4e3c6225aed4e7bfb433a896fd324c210f7e71593f6128b2152624f31964fb",
+    "license_notice.json": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+    "public_book.json": "469025b6f5e75970af21e17a1e56cec7c6289cd81f618a442b61c9461ba7151b",
+    "publication_authorization.json": "ac29ba8348526ed7fbeb336e39ac2c03acd77c3a90208451e13b935a7f04120d",
+    "publication_manifest.json": "3f13f4ec9d821c830a1fbf577b12efd32b626f386f178d6f144b4dc51a4c5271",
+    "reader_manifest.json": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "rights_decision.json": "a4848d50339a0194b0f0a8f489354e7d52666154f998f459f51b8a1e301a7555",
+    "source_evidence.json": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "79887160142020e79cb05a31a7c3511f3d3be13dd22f626b68f62170e1bb49de",
+      "file_sha256": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "553a68600ed96db9da1125561c4801069d639ea63b6645b71ba55f6d5c1ec72a",
+      "file_sha256": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "e9acfa9e770a5580ccfee2ec5278711457f11ef2afc120882852deccd5cc63a1",
+      "file_sha256": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "588f1f24037ad98b2f2f1e2752fcfe4289582124e41e206fe8240adff70ff4bd",
+      "file_sha256": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "7314b92e8847add0b355cd1d685b7452ba22f67f7e5b2f7a7ee35b5923a17aa9",
+      "file_sha256": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "187671beb1ee4174b23e4d3ac6802c4939e0d61a339fbfc293f2ce3cb8b30446",
+      "file_sha256": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "3988140b3ac6a1c343f54b8723e84e59af9a1232295f0e4d6207c4b835f9ec59",
+      "file_sha256": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "d06eef2a2615904081baf9d1adf34a57f94045f2c40044a0f5f97b66e81d0123",
+      "file_sha256": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "67a12a9a26b869b051258cc2b64b40589405e45f88a5686e0f815450cd85d451",
+      "file_sha256": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "7d357d54f1f160bbf15bb4ce42def6e251272751747b19a4b3eeedec23f505eb",
+      "file_sha256": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+      "id": "chapter-010"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "e84f49ebd12a31b604ada6c9cf3d7bbd2811604b3eea802df29b94ebcc76023c",
+    "chapters/chapter-001.json": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+    "chapters/chapter-002.json": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+    "chapters/chapter-003.json": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+    "chapters/chapter-004.json": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+    "chapters/chapter-005.json": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+    "chapters/chapter-006.json": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+    "chapters/chapter-007.json": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+    "chapters/chapter-008.json": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+    "chapters/chapter-009.json": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+    "chapters/chapter-010.json": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+    "checksum_manifest.json": "ac87dadfa99df7db6cd49ab04c6ae35ddf724e7b9c2087a4026db663db8ad2a4",
+    "cover_provenance.json": "021cd893e3f7686a8a22aacabc272c498946c604f945bd28f298ab9e1f4ad2c0",
+    "covers/back-original.png": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+    "covers/bn-035-back-0cbeb592.png": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+    "covers/bn-035-front-fc455a18.png": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+    "covers/front-original.png": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+    "highlight_sync.json": "3b4e3c6225aed4e7bfb433a896fd324c210f7e71593f6128b2152624f31964fb",
+    "license_notice.json": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+    "public_book.json": "469025b6f5e75970af21e17a1e56cec7c6289cd81f618a442b61c9461ba7151b",
+    "publication_authorization.json": "ac29ba8348526ed7fbeb336e39ac2c03acd77c3a90208451e13b935a7f04120d",
+    "publication_manifest.json": "3f13f4ec9d821c830a1fbf577b12efd32b626f386f178d6f144b4dc51a4c5271",
+    "reader_manifest.json": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "rights_decision.json": "a4848d50339a0194b0f0a8f489354e7d52666154f998f459f51b8a1e301a7555",
+    "source_evidence.json": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "e84f49ebd12a31b604ada6c9cf3d7bbd2811604b3eea802df29b94ebcc76023c",
+      "public_book": "469025b6f5e75970af21e17a1e56cec7c6289cd81f618a442b61c9461ba7151b",
+      "reader_manifest": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+      "source_evidence": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 10,
+      "chapter_index_sha256": "c58e385d0bf35f388b14ba98669a85d4230d1e58b89dcb99e0bde177e6ea101a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+          "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+          "word_count": 849
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+          "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 1173
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+          "title": "Chapter 3. তৃতীয় পরিচ্ছেদ",
+          "word_count": 1344
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+          "title": "Chapter 4. চতুর্থ পরিচ্ছেদ",
+          "word_count": 1348
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+          "title": "Chapter 5. পঞ্চম পরিচ্ছেদ",
+          "word_count": 1600
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+          "title": "Chapter 6. ষষ্ঠ পরিচ্ছেদ",
+          "word_count": 1188
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+          "title": "Chapter 7. সপ্তম পরিচ্ছেদ",
+          "word_count": 888
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+          "title": "Chapter 8. অষ্টম পরিচ্ছেদ",
+          "word_count": 1898
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+          "title": "Chapter 9. নবম পরিচ্ছেদ",
+          "word_count": 1471
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+          "title": "Chapter 10. দশম পরিচ্ছেদ",
+          "word_count": 148
+        }
+      ],
+      "content_hash": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+      "provenance_hash": "d42ff926f33d5e525d6fcdd683f2165ab2e43bceeb9d3868e863960c55d94c1f",
+      "sanitized": true,
+      "source_hash": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9"
+    },
+    "generated_at": "2026-10-03T04:12:32.330374+00:00",
+    "manifest_sha256": "9e1ef84550ff1bb79d0300544c736e088d288291bde4219b14ffeac479fdec30",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/bn-035/bn-035-front-fc455a18.png",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bn-035",
+    "title": "বড়দিদি"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

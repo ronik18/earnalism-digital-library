@@ -1,0 +1,114 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "27e47748c71fe5ea26a7b6380d04edd4c661240d1335f488f17024f125055d7d",
+    "chapters/chapter-001.json": "f39e6652872a70889ebf16c4a04181bc4120f24a3932e7207679f576c088fd08",
+    "checksum_manifest.json": "ee4adf3bcf6818974ffcb435495e326020f3e2a886c1653373d4bc61d601ffed",
+    "highlight_sync.json": "6bdce3c66110529937d10d12750c1345f40ede4803af28a2f4b51e7c3f1bf976",
+    "public_book.json": "115bcd6ab0ca56f3b92090a137cf2625b3af7d9713af19f7b3e066c0d5ad7289",
+    "reader_manifest.json": "b50181f4a81fb12b7ef1b6be8d8e73dd33164fc5dfb152c9e6c0889354cb42bf",
+    "source_evidence.json": "9fca7c36b39190957594d8aad79832725d69c3eca17c3532b4b6b4ef04924a25"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "10e66b87301d70704d9841d23d9c874baab36958ee7e4003b2c3dee3b71c9fa7",
+      "file_sha256": "358273534c168b22428135f15af43568c5254ba76141955ef6c39ac9088cbdf6",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a75f4df3db0661a7f0f46bbd8c3b1b8065bba66eb7d3e5c27e41d4879082b23e",
+    "chapters/chapter-001.json": "358273534c168b22428135f15af43568c5254ba76141955ef6c39ac9088cbdf6",
+    "checksum_manifest.json": "cb567b5ec4b6c854baff07598ace54b47836166c85218ee8741f16f4670c26a8",
+    "highlight_sync.json": "6bdce3c66110529937d10d12750c1345f40ede4803af28a2f4b51e7c3f1bf976",
+    "license_notice.json": "5d17b74d579b826c369928b3910c039842144c3b2f34ef32614ca8f0b4f99990",
+    "public_book.json": "5be9643e2243b40f7326e0bbcec1b55a73b4d7f7bdc0b7fe2bfcc73bc38c2848",
+    "publication_manifest.json": "388b53d6060303ede8852dd07259f30810f446516159714aa4378d9819e9372f",
+    "reader_manifest.json": "3040446d85deb0a0f0322b11f5c08c9d81bb9023739c3e43a6231247f852bfec",
+    "source_evidence.json": "5f876f4676901ed482810a8b40ea7871a2990691c8bd964c491d97ca29371139"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a75f4df3db0661a7f0f46bbd8c3b1b8065bba66eb7d3e5c27e41d4879082b23e",
+      "public_book": "5be9643e2243b40f7326e0bbcec1b55a73b4d7f7bdc0b7fe2bfcc73bc38c2848",
+      "reader_manifest": "3040446d85deb0a0f0322b11f5c08c9d81bb9023739c3e43a6231247f852bfec",
+      "source_evidence": "5f876f4676901ed482810a8b40ea7871a2990691c8bd964c491d97ca29371139"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d5cbf6fb8f31e1fbd1c4c388b577aea61f2d2e0e18e7e39e2e1002d6e8655402",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "358273534c168b22428135f15af43568c5254ba76141955ef6c39ac9088cbdf6",
+          "title": "অপরিচিতা",
+          "word_count": 4074
+        }
+      ],
+      "content_hash": "8c5f7931df3930b2030f8ea5dcc8c3f697eacf52f220a181c953430d59843349",
+      "provenance_hash": "c1722bfea14cf52b8ca39358d9e408aced46d178092dac0dd2ca1857a1a07a7d",
+      "sanitized": true,
+      "source_hash": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "0ff8a0a27b83c2d39dce29135cf16e892cf67c4c35772ade2ad0ccecfdd1143f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267436/earnalism/covers/front/bn-027_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5f876f4676901ed482810a8b40ea7871a2990691c8bd964c491d97ca29371139",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bn-027",
+    "title": "অপরিচিতা"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,117 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d1b06d96a2167cb7788c168156dd8999b7ca5449dec9c4bbf06b8a22a6262ae2",
+    "chapters/chapter-001.json": "c1712a6e7b080d709cdcb88fe479a795e854b7ede261a072220a1ca12aea55ab",
+    "checksum_manifest.json": "a905358aa1c440a547d796d8377327d2f88bc68ed00b6ea0714d0a128afbabf7",
+    "highlight_sync.json": "cc52a723b18d32973e999ae6ebc26706a26aeec9e46f00aab664487945740b23",
+    "public_book.json": "a9f3095ac0a174aa02d66266c01ac3c0c650580b3acc399b85a9ef6fbc7c3774",
+    "reader_manifest.json": "2fbdcdb5704427410098f8cabc07299974b63f034119f3ae968e3f06f1365fbd",
+    "source_evidence.json": "6506f788c2cb90d46cc32076ac219fc6456b38057cf89fff22a250c686d4d89b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f63505f2097d9319cdac47b5ca6dffdda0e5cff36940cf867bcc65157420eeab",
+      "file_sha256": "2b043f365cb49096bd86a1d2c93841d1f24b68d38f5f8985d4e4c8f90c1a247f",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "d1b06d96a2167cb7788c168156dd8999b7ca5449dec9c4bbf06b8a22a6262ae2",
+    "chapters/chapter-001.json": "2b043f365cb49096bd86a1d2c93841d1f24b68d38f5f8985d4e4c8f90c1a247f",
+    "checksum_manifest.json": "3337ed70653653ea9e84bdaa522566831887ae0ded5292c5db02cfbb0918bc4c",
+    "highlight_sync.json": "cc52a723b18d32973e999ae6ebc26706a26aeec9e46f00aab664487945740b23",
+    "license_notice.json": "43ab518e7f33bc9ce5ff5da622928cd076b53d1460b7d8443af8bfe4e6a32fa7",
+    "public_book.json": "a737c56bb14be259598b209fbc56bfdf7cd84d36b9a6a651a52e4e0968d7a188",
+    "publication_manifest.json": "3d91e255f26c010272a0c7cc9d3d686c0e0742307c6e7a98906e222b689d463e",
+    "reader_manifest.json": "af076626ab68baf3324206153f3e264871090dc7f2c57b0a32bbfaeb872d14e0",
+    "source_evidence.json": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "d1b06d96a2167cb7788c168156dd8999b7ca5449dec9c4bbf06b8a22a6262ae2",
+      "public_book": "a737c56bb14be259598b209fbc56bfdf7cd84d36b9a6a651a52e4e0968d7a188",
+      "reader_manifest": "af076626ab68baf3324206153f3e264871090dc7f2c57b0a32bbfaeb872d14e0",
+      "source_evidence": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1c4b312e82ba9849124ec525effd818f8a65c68379839b19e2949757f1845794",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2b043f365cb49096bd86a1d2c93841d1f24b68d38f5f8985d4e4c8f90c1a247f",
+          "title": "Full Text",
+          "word_count": 2118
+        }
+      ],
+      "content_hash": "30747ea77e55c1a8b6227802d6e89078e79b2c348970d55960080001e376a954",
+      "provenance_hash": "3c9cd2a93fd45bf28d8a5aac81a3d21ed4edfb221f354fa21f0716a9487d76d8",
+      "sanitized": true,
+      "source_hash": "e6482b11503e888e9e9a2e5233cce17d2476164d8894433b520ecad24db04a05"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "668ec5db6630ed50df2d4cb6c6367024b540a540aca2184c190c54ab6afca70f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779561896/earnalism/covers/front/cover_cb4f1262-45e4-4741-ae4d-5cb2dc9de847.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-c7f3ce526c",
+    "title": "খোকাবাবুর প্রত্যাবর্তন"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

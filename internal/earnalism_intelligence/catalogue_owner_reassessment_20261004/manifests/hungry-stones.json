@@ -1,0 +1,113 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "670a6b6676d67d887ef93e45a873b8cf1c3f7e14a59623a8388b652ecee277a1",
+    "chapters/chapter-001.json": "f14c05f70ab9af0060b61682195341e17ee7f5638cb6196e15adb8e9c58292ca",
+    "checksum_manifest.json": "2111c76415c5ba714745dff43e6e19b58bca5ea5bac6a65b1626cba75d9e06ca",
+    "public_book.json": "99cff479fbff5b997cca23cf5354159770bcad3a9a743e10a88c70a8c88bf14e",
+    "reader_manifest.json": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
+    "source_evidence.json": "97f59f1cd3e360d8e6845bbb1f5a279103693ae6c745cb01d91b869c59dcb9df"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+      "file_sha256": "657471e8be7a442278c25034bcf2e780432caaa8d3ef4b49e4654f7c598d3377",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ef5bed805e2c6b1b476a1bb9c6d79028d4986540ca2ba17d0f09eb82fc33b344",
+    "chapters/chapter-001.json": "657471e8be7a442278c25034bcf2e780432caaa8d3ef4b49e4654f7c598d3377",
+    "checksum_manifest.json": "d58b2c60e7f094a31154148ff24da14a3bd8bb5b93fed91c9bf988c8f73d99c5",
+    "public_book.json": "0004e4c8caecb2f45b911e0f2352a777ffe93d8f62fbc0bf1d234e4efc2466d2",
+    "publication_authorization.json": "4366e983e278311b4f19d74df1447ddfefca4483c5a7c33dcc5c98b83339cf59",
+    "publication_manifest.json": "bf774a54ba82f6658d83b6b40f972590e6e1def655a3c00af5ffd71edbbfbba7",
+    "reader_manifest.json": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
+    "rights_decision.json": "00ed8e9749109866cfbddeb042b4cda82c3726f9966ed9fdefe7f93d5dd08254",
+    "source_evidence.json": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ef5bed805e2c6b1b476a1bb9c6d79028d4986540ca2ba17d0f09eb82fc33b344",
+      "public_book": "0004e4c8caecb2f45b911e0f2352a777ffe93d8f62fbc0bf1d234e4efc2466d2",
+      "reader_manifest": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
+      "source_evidence": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "4838bcb36b370f9556e47195a34f2c41c4cb1fa693c0fb4946c29ded919400a5",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "657471e8be7a442278c25034bcf2e780432caaa8d3ef4b49e4654f7c598d3377",
+          "title": "The Hungry Stones",
+          "word_count": 4793
+        }
+      ],
+      "content_hash": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+      "provenance_hash": "c4990ca3a73e5ce181339651abdcf139c87011a5a9ead190b18e4a8d2b8c7ad7",
+      "sanitized": true,
+      "source_hash": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "3223fa3608a18a968284944888dee9b3b183e1c0f9cc1e2651df462294338089",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "hungry-stones",
+    "title": "Kshudhita Pashan / The Hungry Stones"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

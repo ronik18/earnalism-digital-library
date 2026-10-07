@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221",
+    "chapters/chapter-001.json": "022154a4a1cdea63a560ddddd6acd598a4a4f2e359484aa16bf961cb42121134",
+    "checksum_manifest.json": "48f8651360da1ea6a775bb2eed6dbcb53086905845fd1e904a3a38e3e684662f",
+    "highlight_sync.json": "edeb7396655ff6496ebab516be9792e13f2e7c326f5caa9304ebb8f10e4b593b",
+    "public_book.json": "64cc0b3345e7a03c595faa4456bc82b048825607f113f2c0d76d1d87cec35235",
+    "reader_manifest.json": "b0e501c1b91b26406653c0cf3aab9a27772218f01287e4bfa090f4dfff01a650",
+    "source_evidence.json": "1889b20dbf0fd67454b983ebb50d91cbaa577304339794df95ec1991ad2315a0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "72993ab7512f9c11850415005744dc512616849870b11c8d9753aa4599411bfe",
+      "file_sha256": "e15b974061f1510fbec3d4e7cd1fba63ad99430e25c7fc8cebe0951576423218",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221",
+    "approval_evidence.json": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221",
+    "chapters/chapter-001.json": "e15b974061f1510fbec3d4e7cd1fba63ad99430e25c7fc8cebe0951576423218",
+    "checksum_manifest.json": "d7c62ae5d905adc2bbfe098dbf0b2f1acde9fd7d935d39b0e1d51edd68a1833c",
+    "highlight_sync.json": "edeb7396655ff6496ebab516be9792e13f2e7c326f5caa9304ebb8f10e4b593b",
+    "license_notice.json": "b314dc39985333193e73f9ebc269441133754f2b23bdab964a41f6ff9ef83f86",
+    "public_book.json": "6695715941e923e908f725e13c1fae40f0330abf2d2b58030b08fa6521387e93",
+    "publication_manifest.json": "2076bf5c30fd91f310169ff2bf65a981229ee091d7a682083007ec71a9670752",
+    "reader_manifest.json": "6802cf1af31662262e51a75c778e4ed497795417e47eb5c0519ad6701843af95",
+    "source_evidence.json": "6247e1c394964b09d59ce960e729f072f71b07fae63ed3c358063f4d5f9832ad"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221",
+      "public_book": "6695715941e923e908f725e13c1fae40f0330abf2d2b58030b08fa6521387e93",
+      "reader_manifest": "6802cf1af31662262e51a75c778e4ed497795417e47eb5c0519ad6701843af95",
+      "source_evidence": "6247e1c394964b09d59ce960e729f072f71b07fae63ed3c358063f4d5f9832ad"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "eff6c1dbec4dde36a85e1b0cea4f532a33830f64471465c1c2cf88ce33fc19a2",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e15b974061f1510fbec3d4e7cd1fba63ad99430e25c7fc8cebe0951576423218",
+          "title": "Full Text",
+          "word_count": 2972
+        }
+      ],
+      "content_hash": "ab597e18a4093bce3b8fd7321bc17c02198c74363e75bd05744f0186aeba9313",
+      "provenance_hash": "5feb3f6d36b68308c67078fcc4bd22010b2a1eb180dfab64c9b1259d6d9c83ee",
+      "sanitized": true,
+      "source_hash": "a23c3d63f7dcaff1ac404b313a056def8dc39813360642fe883a618a10aa7d64"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "1f6b36e564f63378727c8faead48a4b0f3ed3ce9366cd2fdd5b4ca18c41756d3",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944544/earnalism/covers/front/cover_e664a300-63cc-4103-a9a8-bc1fa8f83d2a.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6247e1c394964b09d59ce960e729f072f71b07fae63ed3c358063f4d5f9832ad",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-d2fe532e1c",
+    "title": "স্বর্ণমৃগ"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

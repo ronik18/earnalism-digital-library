@@ -1,0 +1,260 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b",
+    "chapters/chapter-000.json": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861",
+    "chapters/chapter-001.json": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63",
+    "chapters/chapter-002.json": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412",
+    "chapters/chapter-003.json": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b",
+    "chapters/chapter-004.json": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69",
+    "chapters/chapter-005.json": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68",
+    "chapters/chapter-006.json": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3",
+    "chapters/chapter-007.json": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0",
+    "chapters/chapter-008.json": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef",
+    "chapters/chapter-009.json": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9",
+    "checksum_manifest.json": "9f17134a074acaa65a810c83eeb48f9355abbd224e34e78b1b307e8473775be5",
+    "cover_preparation.json": "dd8d44529394792c643779044e055bfc158b090c5cc2012a7ea4d3021174b20a",
+    "cover_provenance.json": "dc7172572198010c5008352aa772a8d5a51b2397d60c015feefde93abe2a38d4",
+    "covers/original-back.png": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+    "covers/original-front.png": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+    "covers/the-great-gatsby-back-b2696f4c.webp": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+    "covers/the-great-gatsby-back-deterministic.png": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b",
+    "covers/the-great-gatsby-front-8d98a278.webp": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+    "covers/the-great-gatsby-front-deterministic.png": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624",
+    "evidence/review_a.json": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9",
+    "evidence/review_b.json": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d",
+    "evidence/source_review_b.json": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26",
+    "highlight_sync.json": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "52eef0e917e56bcb821784c64d5fa364f86d270965a4bdd64ae8f7eb2551748a",
+    "publication_authorization.json": "17ab4194b90ea56edc3afa54731976b6f73b0f3319384d5ae2b1256e0b56576c",
+    "publication_manifest.json": "010506ba4edaf1e1b26d656710a898f98a4ad9869243c074a726084bd8e3e54b",
+    "reader_manifest.json": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "reader_repair_evidence.json": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499",
+    "rights_decision.json": "58fa702d3638de7b38ef32f30c0ccf2f3592ad55ee927fd4e298c24ec6614960",
+    "source_evidence.json": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0",
+      "file_sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861",
+      "id": "chapter-000"
+    },
+    {
+      "content_sha256": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991",
+      "file_sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f",
+      "file_sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424",
+      "file_sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3",
+      "file_sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a",
+      "file_sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c",
+      "file_sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3",
+      "file_sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87",
+      "file_sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6",
+      "file_sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9",
+      "id": "chapter-009"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b",
+    "chapters/chapter-000.json": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861",
+    "chapters/chapter-001.json": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63",
+    "chapters/chapter-002.json": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412",
+    "chapters/chapter-003.json": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b",
+    "chapters/chapter-004.json": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69",
+    "chapters/chapter-005.json": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68",
+    "chapters/chapter-006.json": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3",
+    "chapters/chapter-007.json": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0",
+    "chapters/chapter-008.json": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef",
+    "chapters/chapter-009.json": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9",
+    "checksum_manifest.json": "9f17134a074acaa65a810c83eeb48f9355abbd224e34e78b1b307e8473775be5",
+    "cover_preparation.json": "dd8d44529394792c643779044e055bfc158b090c5cc2012a7ea4d3021174b20a",
+    "cover_provenance.json": "dc7172572198010c5008352aa772a8d5a51b2397d60c015feefde93abe2a38d4",
+    "covers/original-back.png": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+    "covers/original-front.png": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+    "covers/the-great-gatsby-back-b2696f4c.webp": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+    "covers/the-great-gatsby-back-deterministic.png": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b",
+    "covers/the-great-gatsby-front-8d98a278.webp": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+    "covers/the-great-gatsby-front-deterministic.png": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624",
+    "evidence/review_a.json": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9",
+    "evidence/review_b.json": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d",
+    "evidence/source_review_b.json": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26",
+    "highlight_sync.json": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "52eef0e917e56bcb821784c64d5fa364f86d270965a4bdd64ae8f7eb2551748a",
+    "publication_authorization.json": "17ab4194b90ea56edc3afa54731976b6f73b0f3319384d5ae2b1256e0b56576c",
+    "publication_manifest.json": "010506ba4edaf1e1b26d656710a898f98a4ad9869243c074a726084bd8e3e54b",
+    "reader_manifest.json": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "reader_repair_evidence.json": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499",
+    "rights_decision.json": "58fa702d3638de7b38ef32f30c0ccf2f3592ad55ee927fd4e298c24ec6614960",
+    "source_evidence.json": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b",
+      "public_book": "52eef0e917e56bcb821784c64d5fa364f86d270965a4bdd64ae8f7eb2551748a",
+      "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+      "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 10,
+      "chapter_index_sha256": "0bfa6055377200ad83d05e9a6025e8b4a339fc2c7ccfce54df260858aa719d67",
+      "chapters": [
+        {
+          "id": "chapter-000",
+          "order": 1,
+          "sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861",
+          "title": "Dedication and Epigraph",
+          "word_count": 37
+        },
+        {
+          "id": "chapter-001",
+          "order": 2,
+          "sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63",
+          "title": "I",
+          "word_count": 5943
+        },
+        {
+          "id": "chapter-002",
+          "order": 3,
+          "sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412",
+          "title": "II",
+          "word_count": 4293
+        },
+        {
+          "id": "chapter-003",
+          "order": 4,
+          "sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b",
+          "title": "III",
+          "word_count": 5769
+        },
+        {
+          "id": "chapter-004",
+          "order": 5,
+          "sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69",
+          "title": "IV",
+          "word_count": 5477
+        },
+        {
+          "id": "chapter-005",
+          "order": 6,
+          "sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68",
+          "title": "V",
+          "word_count": 4256
+        },
+        {
+          "id": "chapter-006",
+          "order": 7,
+          "sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3",
+          "title": "VI",
+          "word_count": 4057
+        },
+        {
+          "id": "chapter-007",
+          "order": 8,
+          "sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0",
+          "title": "VII",
+          "word_count": 8811
+        },
+        {
+          "id": "chapter-008",
+          "order": 9,
+          "sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef",
+          "title": "VIII",
+          "word_count": 4564
+        },
+        {
+          "id": "chapter-009",
+          "order": 10,
+          "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9",
+          "title": "IX",
+          "word_count": 5255
+        }
+      ],
+      "content_hash": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+      "provenance_hash": "90df34dc504b7e22287b7044b27d48b80f7773e13aa70b403c7829ce7cf33426",
+      "sanitized": true,
+      "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+    },
+    "generated_at": "2026-10-03T05:34:11.386246+00:00",
+    "manifest_sha256": "3f506cde66f33037b2e22ebce6625991ee3f440ef94aa27e834642daf4057155",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-great-gatsby",
+    "title": "The Great Gatsby"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}
