@@ -49,7 +49,7 @@ try {
     const interval = source.slice(source.indexOf("const before = await visualFingerprint(page);", source.indexOf("const write = async")), source.indexOf("const unchanged =", source.indexOf("const write = async")));
     assert.equal(interval.match(/visualFingerprint\(page\)/g).length, 2);
     assert.equal(/page\.evaluate|waitFor|assertCaptureFingerprintUnchanged/.test(interval), false);
-    assert.match(source, /trace.push\(\{ label, name, before, after, unchanged \}\);\s*if \(!unchanged\) assertCaptureFingerprintUnchanged/);
+    assert.match(source, /trace.push\(\{ label, name, before, after, unchanged, reader_before:[^\n]+\}\);\s*if \(!unchanged\) assertCaptureFingerprintUnchanged/);
   });
 } finally { fs.rmSync(temp, { recursive: true, force: true }); }
 console.log(`${tests} tests passed`);

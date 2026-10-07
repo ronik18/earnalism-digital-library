@@ -127,6 +127,7 @@ jobs:
       - name: Run deterministic tooling gates
         run: |
           set -euo pipefail
+          node scripts/test_brand_reader_readiness.mjs
           node scripts/test_brand_capture_mismatch.mjs
           node scripts/test_seamless_brand_manifest_cli.mjs
           node scripts/test_seamless_brand_full_chromium_matrix.mjs
