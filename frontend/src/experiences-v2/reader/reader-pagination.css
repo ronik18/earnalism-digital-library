@@ -105,3 +105,11 @@
 
 /* Keep source-coordinate markers in measured and visible DOM without ink. */
 .reader-v2__body .reader-v2__format-marker { display: none; }
+
+/* At extreme effective widths, wrapped chrome cannot fit in one screen.
+   Let the shell scroll rather than collapse the measured prose to zero. The
+   reading sheet itself stays fixed and paginated, with reachable 44px controls. */
+@media (max-width: 360px) {
+  .experience-v2.reader-v2 { overflow-y: auto; }
+  .reader-v2__layout { flex-shrink: 0; min-height: 32rem; overflow: visible; }
+}
