@@ -19,6 +19,10 @@ function textPoint(root, offset) {
     if (current.nodeType === Node.TEXT_NODE) position += current.length;
     else if (current.tagName === 'BR' && position === offset && offset > 0) {
       breakPoint = [current.parentNode, [...current.parentNode.childNodes].indexOf(current) + 1];
+    } else if (current.tagName === 'LI' && position === offset && offset > 0) {
+      // Adjacent list items need no literal whitespace. Cut at the structural
+      // seam rather than cloning an empty preceding item onto the next page.
+      breakPoint = [current.parentNode, [...current.parentNode.childNodes].indexOf(current)];
     }
     if (position > offset) break;
   }
@@ -40,6 +44,7 @@ function blockTextBoundaries(block) {
   while ((node = walker.nextNode())) {
     if (node.nodeType === Node.TEXT_NODE) offset += node.length;
     else if (node.tagName === 'BR') boundaries.push(offset);
+    else if (node.tagName === 'LI') boundaries.push(offset);
   }
   return [...new Set(boundaries)].sort((a, b) => a - b);
 }

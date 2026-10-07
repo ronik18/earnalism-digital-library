@@ -14,7 +14,7 @@ const slug = 'agentic-ai-with-python';
 const chunks = [
   '<p>' + 'An original fixture introduction. '.repeat(20) + '</p>',
   '<p>A source anchor precedes the file listing.</p><p>chapter_01_code_explainer/<br>.env.example<br>.gitignore<br>requirements.txt<br>code_explainer.py<br>test_code_explainer.py<br>README.md</p>',
-  '<p><em>' + 'Original emphasized continuation. '.repeat(20) + '</em></p>',
+  '<ul>' + ['Quiet', 'reading room', 'another', 'world', 'opens', 'a doorway', 'for readers', 'beyond', 'the page'].map(value => `<li><em>${value}</em></li>`).join('') + '</ul><p><em>' + 'Original emphasized continuation. '.repeat(20) + '</em></p>',
 ];
 const hashes = chunks.map(content => createHash('sha256').update(content).digest('hex'));
 const book = JSON.parse(fs.readFileSync(`data/controlled_publications/${slug}/public_book.json`));
@@ -32,7 +32,9 @@ fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch();
 const report = { cases: [], unauthorized_chunk_requests: 0 };
 try {
-  for (const viewport of [{ width: 844, height: 390 }, { width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+  // The 768x563 case is production's effective native-125% geometry. It is a
+  // layout regression, not a substitute for separate actual Chrome zoom QA.
+  for (const viewport of [{ width: 844, height: 390 }, { width: 1440, height: 900 }, { width: 390, height: 844 }, { width: 768, height: 563 }, { width: 640, height: 469 }]) {
     const page = await browser.newPage({ viewport, reducedMotion: 'reduce' });
     const errors = []; page.on('pageerror', error => errors.push(error.message));
     await page.route('**/api/**', route => {
@@ -43,7 +45,7 @@ try {
       return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) });
     });
     await page.goto(`${base}/reader/${slug}?p=2&a=39&r=${payloads[1].content_sha256}`);
-    await page.waitForFunction(() => document.querySelector('[data-pagination-ready="true"]') || document.body.innerText.includes('This content cannot be safely paginated'));
+    await page.waitForFunction(() => document.querySelector('[data-pagination-ready="true"][data-book-map-complete="true"]') || document.body.innerText.includes('This content cannot be safely paginated'));
     assert.equal(await page.locator('[data-pagination-ready="true"]').count(), 1, 'Pagination must be ready without safety fallback');
     const geometry = async () => page.evaluate(() => {
       const v = document.querySelector('.reader-v2__visual-viewport'); const body = v.querySelector('[data-testid="reader-reading-text"]'); const measure = v.querySelector('.reader-v2__pagination-measure');
@@ -62,7 +64,7 @@ try {
     for (let i = 0; i < initial.pages; i++) {
       await selector.selectOption({ index: i });
       await page.waitForFunction(index => Number(document.querySelector('.reader-v2__visual-viewport').dataset.visualPageIndex) === index && document.querySelector('[data-pagination-ready="true"]'), i);
-      const current = await geometry(); assert.ok(current.scrollHeight <= current.height + 1); assert.ok(current.scrollWidth <= current.width + 1);
+      const current = await geometry(); assert.equal(current.height, initial.height, 'Page-label changes must not resize prose or trigger repagination'); assert.equal(current.pages, initial.pages, 'Page turns must preserve the settled page map'); assert.ok(current.scrollHeight <= current.height + 1); assert.ok(current.scrollWidth <= current.width + 1);
       texts.push(await page.getByTestId('reader-reading-text').textContent()); breaks += await page.getByTestId('reader-reading-text').locator('br').count();
     }
     const source = await page.locator('.reader-v2__visual-viewport > .reader-v2__pagination-source').first().textContent();
@@ -82,4 +84,4 @@ try {
 } finally {
   await browser.close(); fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
 }
-console.log(`Reader explicit-line-break regression: ${report.cases.length}/3 PASS; ${output}`);
+console.log(`Reader structural-boundary regression: ${report.cases.length}/5 PASS; ${output}`);
