@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a4fd37acae8c73acf13130701a1dac711a7b55dbbb0164afeaa506e9b1a2261b",
+    "chapters/chapter-001.json": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
+    "checksum_manifest.json": "cedd6abe99101bb6fb2f60ceb7896e1baa58e8434f88b3b81fde3086a85f895d",
+    "highlight_sync.json": "b953b6ed5589a7463bdd31df4d9bae30b9647009c47d4a1308a1129a6500fd3a",
+    "public_book.json": "b828867d1b2f0a4cf85de0c4f5cee4b3db3fe2c518c7c3da38f02ca77161e7fe",
+    "reader_manifest.json": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
+    "source_evidence.json": "f40ee576c4f96f2803ff65e48058bb3c0188a2515fb5238a75dd9506e000fd71"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+      "file_sha256": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "5a9888696e9da72bd8e559adf682ae58caa6a4710a88843161cc93c99d042774",
+    "approval_evidence.json": "a4fd37acae8c73acf13130701a1dac711a7b55dbbb0164afeaa506e9b1a2261b",
+    "chapters/chapter-001.json": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
+    "checksum_manifest.json": "cedd6abe99101bb6fb2f60ceb7896e1baa58e8434f88b3b81fde3086a85f895d",
+    "highlight_sync.json": "b953b6ed5589a7463bdd31df4d9bae30b9647009c47d4a1308a1129a6500fd3a",
+    "public_book.json": "b828867d1b2f0a4cf85de0c4f5cee4b3db3fe2c518c7c3da38f02ca77161e7fe",
+    "reader_manifest.json": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
+    "source_evidence.json": "f40ee576c4f96f2803ff65e48058bb3c0188a2515fb5238a75dd9506e000fd71"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a4fd37acae8c73acf13130701a1dac711a7b55dbbb0164afeaa506e9b1a2261b",
+      "public_book": "b828867d1b2f0a4cf85de0c4f5cee4b3db3fe2c518c7c3da38f02ca77161e7fe",
+      "reader_manifest": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
+      "source_evidence": "f40ee576c4f96f2803ff65e48058bb3c0188a2515fb5238a75dd9506e000fd71"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "6d92bde541fc602578c58a4664d4609c87d0629bfd0a829c7f89bf5ba37cf584",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
+          "title": "দুই বিঘা জমি",
+          "word_count": 557
+        }
+      ],
+      "content_hash": "33869bded1d580f3928914f9952717e8698b309e836bc72dfca14cb67c544954",
+      "provenance_hash": "e96ae3d667a3e3c576de370e833381c3d7460d81015780f175dc0ac7f483bc84",
+      "sanitized": true,
+      "source_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "3d7416f980ac5177f5c6899cee71ed67c39c356d27c71df50848b72a6d94611c",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f40ee576c4f96f2803ff65e48058bb3c0188a2515fb5238a75dd9506e000fd71",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-2b9853ec52",
+    "title": "দুই বিঘা জমি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

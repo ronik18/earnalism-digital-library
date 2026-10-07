@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0",
+    "chapters/chapter-001.json": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20",
+    "checksum_manifest.json": "1f6244dd099a63544c3b5aca8fa13bc966e6f2d2bbd78f6af83f544802662cba",
+    "highlight_sync.json": "0f8706e91dce5be420da44bad2114aa072e4ef28ad377900fcc8d257f0bfac6f",
+    "public_book.json": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
+    "publication_authorization.json": "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce",
+    "publication_manifest.json": "366fa65c10dba03371667aae51e1a20bd6d05fa420cd12843d251e715db802c5",
+    "reader_manifest.json": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+    "rights_decision.json": "a85a38eb35d832a17cbe2a44a6c4bc5f95208f0266b9e337c4477a3ea16ce23d",
+    "source_evidence.json": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+      "file_sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0",
+    "chapters/chapter-001.json": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20",
+    "checksum_manifest.json": "1f6244dd099a63544c3b5aca8fa13bc966e6f2d2bbd78f6af83f544802662cba",
+    "highlight_sync.json": "0f8706e91dce5be420da44bad2114aa072e4ef28ad377900fcc8d257f0bfac6f",
+    "public_book.json": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
+    "publication_authorization.json": "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce",
+    "publication_manifest.json": "366fa65c10dba03371667aae51e1a20bd6d05fa420cd12843d251e715db802c5",
+    "reader_manifest.json": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+    "rights_decision.json": "a85a38eb35d832a17cbe2a44a6c4bc5f95208f0266b9e337c4477a3ea16ce23d",
+    "source_evidence.json": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0",
+      "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
+      "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+      "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "de66b218f5cef14268d0c59b77546ffc9d7163e872fa4fba14acafb8622b2097",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20",
+          "title": "The Imp of the Perverse",
+          "word_count": 2430
+        }
+      ],
+      "content_hash": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+      "provenance_hash": "6ac6e344f4500a937e9681276de2328fd187c0a053875a0cbdbdd290336a943b",
+      "sanitized": true,
+      "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "806b327b1af6b89a46b2ee5eba7b7571b2f7b07dec18a97b1c94fc83e740a5b2",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-imp-of-the-perverse",
+    "title": "The Imp of the Perverse"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-imp-of-the-perverse-pg2148-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

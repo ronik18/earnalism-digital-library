@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "0624942ae48f22620e2fcf4447c5b5ddc2171af8c379a212c58748ebf6009bb5",
+    "chapters/chapter-001.json": "f5b4f1740600115909c851b42d04400bd12a15047aaf28d62ec4046bdbe2af67",
+    "checksum_manifest.json": "de9f3cf24f101e6856cbe9e87999662840c89d9cfff7aa3d8ed667fa669aff07",
+    "highlight_sync.json": "e66fa4ef9493a79d0786bcbc29674777bf30dd379463f90aed54db1a8ea8f626",
+    "license_notice.json": "256ad1db5950fea4d0e00c0206e96bc56ba7287fcb08f3141a05f570d92599c9",
+    "public_book.json": "d9f7e7fdb732666be84d709dd981c0d6a697b886a7c168d2753b025939bea020",
+    "publication_manifest.json": "8682ea40d05319d587970db29c59434daa37f8fb24131e56901cd121d34f63c0",
+    "reader_manifest.json": "fdbbb989abebba85a0c4028f9ca96d0cef144a9c59b1f4d342caac4bc20d5890",
+    "source_evidence.json": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "856b881667e831e86cf69f776486b290b832894f47cf0718f6989404d0db6639",
+      "file_sha256": "f5b4f1740600115909c851b42d04400bd12a15047aaf28d62ec4046bdbe2af67",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "0624942ae48f22620e2fcf4447c5b5ddc2171af8c379a212c58748ebf6009bb5",
+    "chapters/chapter-001.json": "f5b4f1740600115909c851b42d04400bd12a15047aaf28d62ec4046bdbe2af67",
+    "checksum_manifest.json": "de9f3cf24f101e6856cbe9e87999662840c89d9cfff7aa3d8ed667fa669aff07",
+    "highlight_sync.json": "e66fa4ef9493a79d0786bcbc29674777bf30dd379463f90aed54db1a8ea8f626",
+    "license_notice.json": "256ad1db5950fea4d0e00c0206e96bc56ba7287fcb08f3141a05f570d92599c9",
+    "public_book.json": "d9f7e7fdb732666be84d709dd981c0d6a697b886a7c168d2753b025939bea020",
+    "publication_manifest.json": "8682ea40d05319d587970db29c59434daa37f8fb24131e56901cd121d34f63c0",
+    "reader_manifest.json": "fdbbb989abebba85a0c4028f9ca96d0cef144a9c59b1f4d342caac4bc20d5890",
+    "source_evidence.json": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "0624942ae48f22620e2fcf4447c5b5ddc2171af8c379a212c58748ebf6009bb5",
+      "public_book": "d9f7e7fdb732666be84d709dd981c0d6a697b886a7c168d2753b025939bea020",
+      "reader_manifest": "fdbbb989abebba85a0c4028f9ca96d0cef144a9c59b1f4d342caac4bc20d5890",
+      "source_evidence": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a0d93ccd7ba1b8f1de7650dcc202cc85755bf7dde6484ee2125b1345e8975aa6",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "f5b4f1740600115909c851b42d04400bd12a15047aaf28d62ec4046bdbe2af67",
+          "title": "Full Text",
+          "word_count": 1538
+        }
+      ],
+      "content_hash": "f377ea836992c1f446d96cdac06abf5a2e2ad2ec300d68fad33950b4c6075ee8",
+      "provenance_hash": "5603869f188f26317b44ad1054d1f4429c08f9546ca094393484872302cfcaa3",
+      "sanitized": true,
+      "source_hash": "81d68d7027dc2f7da5bf8a8faa40e25eb44978565615ff747af4215b396acb13"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "d1c3ee5bb704a29bf607b2e41823d857365a3854f0d8743780e039c99e4a6b7e",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227002/earnalism/covers/front/book-0deb35c750_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-0deb35c750",
+    "title": "খাতা"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

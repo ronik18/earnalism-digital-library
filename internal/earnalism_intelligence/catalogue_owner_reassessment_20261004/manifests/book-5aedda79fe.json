@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "cc1cb72ea294c1ad8c84c6e7b34eb43bc10647d9b63960376096458d464aab57",
+    "chapters/chapter-001.json": "1730815fabf2c5d09319462baf06ee489ebec2ef48a30a453bbccb7fd284ae73",
+    "checksum_manifest.json": "314a04d1f55a7d959a5c0606af0d1feb63d83d1c41c9386e997c27662c21acea",
+    "highlight_sync.json": "5fe456922ebeaf2d9a6c6e75d1f8a7ac22b2a78b7c93d03a61f43e2225b25645",
+    "public_book.json": "46df75aa2fb2378e1cf09a9f36bbaf343b00fb69e5587198a1ef3f7fe13dd9ff",
+    "reader_manifest.json": "1eae4e05092cd2f7e190f85894b7792a3fc4a5e30b0f916dba187f4bd46e2c39",
+    "source_evidence.json": "7425ef076e4fb4daf49760980d70b2e4530253ab00ad7cda62ce204e9156618d"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+      "file_sha256": "7c7245bf98948f0a5dc8cc96a1472c384e05b5715df0d6c64e86ab46721ce845",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "cc1cb72ea294c1ad8c84c6e7b34eb43bc10647d9b63960376096458d464aab57",
+    "approval_evidence.json": "b6bd44fd7d70b23cb534f72429e93124dce7386ae38ccf8c043507d7dadcf7fb",
+    "chapters/chapter-001.json": "7c7245bf98948f0a5dc8cc96a1472c384e05b5715df0d6c64e86ab46721ce845",
+    "checksum_manifest.json": "2e14827dc1e9a47da81376545dd01e9a4a13cf0a3c0044a0a06618287b7d5e57",
+    "highlight_sync.json": "5fe456922ebeaf2d9a6c6e75d1f8a7ac22b2a78b7c93d03a61f43e2225b25645",
+    "license_notice.json": "11580606132df04efe314dc7837f1a56bf30d3ecff200157ccf73d07e56f639a",
+    "public_book.json": "c5a3368e0c165ed5667514eadef62b4315129f4c80804225d2826bef389c8164",
+    "publication_authorization.json": "bd3b355e43de4f0f3ff6e9dfc73c30385fc6da6b92756cba67418b9d1640a2d5",
+    "publication_manifest.json": "c6b2fa69dc132dce2132509ca379dd99a39de85367cd2fed660332bb8f8c1fbf",
+    "reader_manifest.json": "2bf22e76ebcc765ae312f2e42e024903ed527246c3953158b1a4323db9720102",
+    "rights_decision.json": "3be107d7b9696117aa97b4f9a1535a29937e0e63d6176666fb04a35b8d712e5d",
+    "source_evidence.json": "5e55b8f2d036d893b4eebfbf41f2919b5bc172c0179ebc3d0193aa9a5ba50dee"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "b6bd44fd7d70b23cb534f72429e93124dce7386ae38ccf8c043507d7dadcf7fb",
+      "public_book": "c5a3368e0c165ed5667514eadef62b4315129f4c80804225d2826bef389c8164",
+      "reader_manifest": "2bf22e76ebcc765ae312f2e42e024903ed527246c3953158b1a4323db9720102",
+      "source_evidence": "5e55b8f2d036d893b4eebfbf41f2919b5bc172c0179ebc3d0193aa9a5ba50dee"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "cbd4ab4cc9d12eee92886cc3a1915203e1ca5111fc04585b93b3598c0999d3e1",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "7c7245bf98948f0a5dc8cc96a1472c384e05b5715df0d6c64e86ab46721ce845",
+          "title": "শাস্তি",
+          "word_count": 2923
+        }
+      ],
+      "content_hash": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+      "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
+      "sanitized": true,
+      "source_hash": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "351169d17421a174c7ec62a4bac82851711da3281628921dca4357b6638862b3",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5e55b8f2d036d893b4eebfbf41f2919b5bc172c0179ebc3d0193aa9a5ba50dee",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-5aedda79fe",
+    "title": "শাস্তি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

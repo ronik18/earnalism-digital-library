@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a",
+    "chapters/chapter-001.json": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847",
+    "checksum_manifest.json": "6cc4792f7c6ce375b21529be0f76ef6369da5e685ab18ff5bef3065bdc1be964",
+    "highlight_sync.json": "c926b46e454ffe999c18f4307a05ed6a4ab76f9102046135f673b75edf4738ce",
+    "public_book.json": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
+    "publication_authorization.json": "a63d6b7a8a671eefd91d445f969e416988a58206511dae5b058bb3aa00194932",
+    "publication_manifest.json": "0fcc745949a5b23907e9bc126a7b1db8afb9c459b047540f1b8ef4ecbe2add40",
+    "reader_manifest.json": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+    "rights_decision.json": "6488a1fcaf9872cff66bbefbb80091bd19a498a97c02d6abb0630d0147639e92",
+    "source_evidence.json": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
+      "file_sha256": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a",
+    "chapters/chapter-001.json": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847",
+    "checksum_manifest.json": "6cc4792f7c6ce375b21529be0f76ef6369da5e685ab18ff5bef3065bdc1be964",
+    "highlight_sync.json": "c926b46e454ffe999c18f4307a05ed6a4ab76f9102046135f673b75edf4738ce",
+    "public_book.json": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
+    "publication_authorization.json": "a63d6b7a8a671eefd91d445f969e416988a58206511dae5b058bb3aa00194932",
+    "publication_manifest.json": "0fcc745949a5b23907e9bc126a7b1db8afb9c459b047540f1b8ef4ecbe2add40",
+    "reader_manifest.json": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+    "rights_decision.json": "6488a1fcaf9872cff66bbefbb80091bd19a498a97c02d6abb0630d0147639e92",
+    "source_evidence.json": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a",
+      "public_book": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
+      "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+      "source_evidence": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "6a3213c7821c3ab03960091ab1f32bd5cefdf4b0e45a89cc606bb87c20fc1abb",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847",
+          "title": "To Build a Fire",
+          "word_count": 7116
+        }
+      ],
+      "content_hash": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
+      "provenance_hash": "1ea10d29c064cf98426b7149d56ed81c35b058bd32c8170c99a825f8db9ae085",
+      "sanitized": true,
+      "source_hash": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6c9ce7dea986606223f1500c65c665e438717547941edc3aa1bc087a832c17c1",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "to-build-a-fire",
+    "title": "To Build a Fire"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-to-build-a-fire-pg2429-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

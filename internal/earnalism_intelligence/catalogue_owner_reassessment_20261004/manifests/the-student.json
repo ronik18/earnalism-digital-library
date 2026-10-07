@@ -1,0 +1,112 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
+    "chapters/chapter-001.json": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+    "checksum_manifest.json": "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa",
+    "cover_delivery_derivation.json": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+    "cover_provenance.json": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071",
+    "highlight_sync.json": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+    "public_book.json": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "publication_authorization.json": "9f01db83e80e49e656b0d7f069c018b269ddbb17006d4e7a38bbcddeac97975b",
+    "publication_manifest.json": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
+    "reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "rights_decision.json": "b2c11fd36d71b24ddf7c6cd59e4561f94e2442299dc78d647e68a30d9e9498eb",
+    "source_evidence.json": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+      "file_sha256": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
+    "chapters/chapter-001.json": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+    "checksum_manifest.json": "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa",
+    "cover_delivery_derivation.json": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+    "cover_provenance.json": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071",
+    "highlight_sync.json": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+    "public_book.json": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "publication_authorization.json": "9f01db83e80e49e656b0d7f069c018b269ddbb17006d4e7a38bbcddeac97975b",
+    "publication_manifest.json": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
+    "reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "rights_decision.json": "b2c11fd36d71b24ddf7c6cd59e4561f94e2442299dc78d647e68a30d9e9498eb",
+    "source_evidence.json": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
+      "public_book": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+      "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+      "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "b09b5ce2401c5a4df9b202af8606a52c8921a4ca4d392f1549cbdddb73e3c175",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+          "title": "The Student",
+          "word_count": 1498
+        }
+      ],
+      "content_hash": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+      "provenance_hash": "79c7266b8fe7cc1d7a378b394054a464856b4a84ef8c1af45b9edf6c3b43d6bb",
+      "sanitized": true,
+      "source_hash": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f"
+    },
+    "generated_at": "2026-10-03T04:12:32.330374+00:00",
+    "manifest_sha256": "d96c5a0e44a0d7d189dcc481c11d504163c8aee740f7e9390c7ab4c12dea0759",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-student",
+    "title": "The Student"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

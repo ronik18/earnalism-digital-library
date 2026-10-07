@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84",
+    "chapters/chapter-001.json": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d",
+    "checksum_manifest.json": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
+    "highlight_sync.json": "d1f67f2e756f25748180bf40ed9092b63b6be92465c99d1d1c8a42f4a680343a",
+    "public_book.json": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+    "publication_authorization.json": "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d",
+    "publication_manifest.json": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d",
+    "reader_manifest.json": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+    "rights_decision.json": "d172ca7d041222da624971294a0f9bb5b1c335e99691bdbe5c9a7616b0a923f2",
+    "source_evidence.json": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+      "file_sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84",
+    "chapters/chapter-001.json": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d",
+    "checksum_manifest.json": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
+    "highlight_sync.json": "d1f67f2e756f25748180bf40ed9092b63b6be92465c99d1d1c8a42f4a680343a",
+    "public_book.json": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+    "publication_authorization.json": "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d",
+    "publication_manifest.json": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d",
+    "reader_manifest.json": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+    "rights_decision.json": "d172ca7d041222da624971294a0f9bb5b1c335e99691bdbe5c9a7616b0a923f2",
+    "source_evidence.json": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84",
+      "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+      "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+      "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "59bcf501e14e84658f3fb17989f269c51af6221dfe3f21e5b10b1ece396d8a05",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d",
+          "title": "The Bet",
+          "word_count": 2720
+        }
+      ],
+      "content_hash": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+      "provenance_hash": "dda8e1c68983c69e610c27011c0fcf578b60fa6cb89a2e2b3cf31542e5f03075",
+      "sanitized": true,
+      "source_hash": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "f0da9bc4241b8d49020b1971fdcb3bc388cc91d8cb00d5bd2745d4cd35f1ee97",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-bet",
+    "title": "The Bet"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-bet-pg55283-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

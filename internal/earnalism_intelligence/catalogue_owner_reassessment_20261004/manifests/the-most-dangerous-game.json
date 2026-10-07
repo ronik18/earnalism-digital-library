@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "29bbd460abb519131fdaaa3106d18619b54b510dd666fe206f48ca5ba964793a",
+    "chapters/chapter-001.json": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc",
+    "checksum_manifest.json": "7c829623030d10c7ee68c92d18b56b64d0e4155ce2a733a084f455fa62275fe8",
+    "highlight_sync.json": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c",
+    "public_book.json": "8a355e19863ed866ef613b8be5d832ff5866f43e6c241e9efafebe4c3eaf5438",
+    "reader_manifest.json": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence.json": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+      "file_sha256": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "56a19886fa34e2e28e0f821c602b3032ee4d45e7367f1b4e5197d3e841875c28",
+    "chapters/chapter-001.json": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0",
+    "checksum_manifest.json": "41d22aff0385a02b95e2fdc31218808bf4a6767708a66a059f2401632d3413ea",
+    "highlight_sync.json": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c",
+    "license_notice.json": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa",
+    "public_book.json": "b0ed393c79ccb57c12133cdf6bdced2bd2b835d8cc4e8c79af7004f0937ed38c",
+    "publication_authorization.json": "e59b3e387a2fc5cada1741339208f95c093af694db839e5cabaebb2543e53753",
+    "publication_manifest.json": "23a5a61e367dbf3d59adc761ebbd3f6e59c691aa5e0f5da8b764662b61dcf268",
+    "reader_manifest.json": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "rights_decision.json": "b16c954a4cf48da51d0f284dac23fa1ccb3bdff21e8d7ebaca4478e1d5950c51",
+    "source_evidence.json": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "56a19886fa34e2e28e0f821c602b3032ee4d45e7367f1b4e5197d3e841875c28",
+      "public_book": "b0ed393c79ccb57c12133cdf6bdced2bd2b835d8cc4e8c79af7004f0937ed38c",
+      "reader_manifest": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+      "source_evidence": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "8b28d14f4dc3840e15a4db4f30fa5cb8d147f54f7e147ac096f6731ee24ef088",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0",
+          "title": "The Most Dangerous Game",
+          "word_count": 7990
+        }
+      ],
+      "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+      "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
+      "sanitized": true,
+      "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "4d3de8398ee8110e22c2d14d486bb3b7f39a21a31f492bca91393007487a6a2f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-most-dangerous-game",
+    "title": "The Most Dangerous Game"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "earnalism.owner-factual-attestation.v1",
+  "recorded_at": "2026-10-04T10:41:28.967535+00:00",
+  "owner": "Ronik Basak",
+  "source_head": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+  "recorded_by": "Codex automated evidence recorder under direct owner instruction",
+  "evidence_provenance": "Direct owner task attachment c2a8c080-cd01-4547-96cb-d18bbdb7fade; recorded statement, not independently inferred authorship",
+  "direct_owner_statements": [
+    {
+      "kind": "manuscript_authorship",
+      "slug": "bharat-at-the-crossroads",
+      "statement": "Bharat at the Crossroads authored by Ronik Basak; manuscript owned/controlled by owner.",
+      "source": "Direct owner directive",
+      "scope": "Exact supplied edition; India commercial text Reader authorization subject to package, integrity and release gates."
+    },
+    {
+      "kind": "cover_creation",
+      "slug": "bharat-at-the-crossroads",
+      "statement": "Front and back covers created by the owner.",
+      "source": "Direct owner directive",
+      "scope": "Artwork provenance; does not verify attributed endorsements or ISBN."
+    },
+    {
+      "kind": "cover_creation",
+      "statement": "Rest of catalogue front and back covers graphically created by REO ENTERPRISE.",
+      "source": "Direct owner directive",
+      "scope": "No separate third-party artwork permission requirement; exact files, edition association, checksums and display validation remain mandatory."
+    }
+  ],
+  "territories": [
+    "IN"
+  ],
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "publication_activation_authorized": false
+}

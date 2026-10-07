@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea",
+    "chapters/chapter-001.json": "b2d8a25bbfb8f8469df81b1280c08cbe3ce59ffb4f1288e2bb989cc78bf5696e",
+    "checksum_manifest.json": "92a25c3d76d66767c3cef21806e83a04da778a025fb4dd1c72b90db11b46f7e4",
+    "highlight_sync.json": "e2550b1f81b2266d3639301374a6c325fb15f94eb2903cd460ec9850e1b45f5b",
+    "public_book.json": "588276f1a693e4a89ab3ea9d089bf927a5610e474d7e2e6ab86380f6c478d403",
+    "reader_manifest.json": "4d6c3478ef634b01ac439ccecc060d9b38f0e86f96db60ecc0fbfb08da442373",
+    "source_evidence.json": "5474fc1478ee17bb533094174e41c43560f19627184b7f5c1ddca017015b7fca"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "de52e6a2f5e5cde88a59f403ac56c7ff28f9bff7fd9013f4a108fd22506546ad",
+      "file_sha256": "99ece7e4505b76409a40fb01941553f5a28c62b83beb9ec67e3e98bdc65ea4c0",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea",
+    "approval_evidence.json": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea",
+    "chapters/chapter-001.json": "99ece7e4505b76409a40fb01941553f5a28c62b83beb9ec67e3e98bdc65ea4c0",
+    "checksum_manifest.json": "967a9f15f879521be7261b7859c2ad143de480fd946704880844940506fefe54",
+    "highlight_sync.json": "e2550b1f81b2266d3639301374a6c325fb15f94eb2903cd460ec9850e1b45f5b",
+    "license_notice.json": "a25f88f0d220c3f8a70e10398aafe7a57c98911cbef093a45b1a27c1cc89bcba",
+    "public_book.json": "e4be7b917bd41379bff6c4fbc06d68cf70d15b6d2857e383b735d25998978159",
+    "publication_manifest.json": "bc223f88761eed8bdbccfb41ec49d4997b0a1325db60f92a3f0bb3b4faac93cf",
+    "reader_manifest.json": "84771004912e1a2cd7092828e95e5f16f4366a2850039fa9d0d8c32d4f7dd71d",
+    "source_evidence.json": "6ebe8328bafb779b09f64ac4a475c074de1b223271f5a728e319f6c50be7e8d7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea",
+      "public_book": "e4be7b917bd41379bff6c4fbc06d68cf70d15b6d2857e383b735d25998978159",
+      "reader_manifest": "84771004912e1a2cd7092828e95e5f16f4366a2850039fa9d0d8c32d4f7dd71d",
+      "source_evidence": "6ebe8328bafb779b09f64ac4a475c074de1b223271f5a728e319f6c50be7e8d7"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "97a0aaf2f00c5a250875194f61482d4c4eb2e43d8095378f17b73cbb7d58fd7d",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "99ece7e4505b76409a40fb01941553f5a28c62b83beb9ec67e3e98bdc65ea4c0",
+          "title": "স্ত্রীর পত্র",
+          "word_count": 4558
+        }
+      ],
+      "content_hash": "7a71b70f908ec6ac628c298ea7c46492efb8cfc3febc16c145a6f6ad27b38286",
+      "provenance_hash": "945c734aa43c04495c6738632d84a67e68033516071c501a874ea2dba375705d",
+      "sanitized": true,
+      "source_hash": "0fefda3a0973af62047a64c30c531984d9cdc7efbeabd46a2d97fe7a47f5f7af"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "a4be9fbbad0b4ace54b2da7ef5ab9a8ea9327b9840c6ff4dc5f22677ef7a137b",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6ebe8328bafb779b09f64ac4a475c074de1b223271f5a728e319f6c50be7e8d7",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-c307a57868",
+    "title": "স্ত্রীর পত্র"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,113 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50",
+    "chapters/chapter-001.json": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea",
+    "checksum_manifest.json": "6e937b2b7e8dd071b8685e11cd23f4011cb4a277e3ade258287b281b2836cfa1",
+    "public_book.json": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486",
+    "reader_manifest.json": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
+    "source_evidence.json": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+      "file_sha256": "171025cebd31026dbb2c9035f32f9f887ad4d72492c8dc1f51dde1675c71a9dd",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "8040cbfecaa295b39316792028b310be6d05708731b30d645dc397a2cd3ca270",
+    "chapters/chapter-001.json": "171025cebd31026dbb2c9035f32f9f887ad4d72492c8dc1f51dde1675c71a9dd",
+    "checksum_manifest.json": "cabc72f589352bf4533c4fbea6428c10af072042001f3c7a9245ba8fe40cda53",
+    "public_book.json": "2d364ec1ab6fc2d19310b5c97847eccabf9398db0a96f4d16fc9ce028ccc3f6d",
+    "publication_authorization.json": "d61695c0550971585e75e5e8435d0b088bb20a9ca70ecfc80c0e60a0732848cf",
+    "publication_manifest.json": "cd0be20cf4629e2dd40b4a584e38a706f0013ebd79bba0312a187c8bc22c22fa",
+    "reader_manifest.json": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
+    "rights_decision.json": "d31e9fb88857024e44caf2d0148279fa13008f330755961cd13e6572432d6d5d",
+    "source_evidence.json": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "8040cbfecaa295b39316792028b310be6d05708731b30d645dc397a2cd3ca270",
+      "public_book": "2d364ec1ab6fc2d19310b5c97847eccabf9398db0a96f4d16fc9ce028ccc3f6d",
+      "reader_manifest": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
+      "source_evidence": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "11fb68c936504e51e22c509f04e0dc077c52fd4240cb0ca842a1425e5ff4a520",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "171025cebd31026dbb2c9035f32f9f887ad4d72492c8dc1f51dde1675c71a9dd",
+          "title": "CHAPTER XVI. Conclusion",
+          "word_count": 28115
+        }
+      ],
+      "content_hash": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+      "provenance_hash": "715bfbeefcae394130b8d4815a851e5a60ef3fe8b44efcba059e53882fe5531c",
+      "sanitized": true,
+      "source_hash": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "3b7c5beaf05c32624107e53430f2e5037c36ae4ada47f9c7c9939f29fd1c0604",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "carmilla",
+    "title": "Carmilla"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

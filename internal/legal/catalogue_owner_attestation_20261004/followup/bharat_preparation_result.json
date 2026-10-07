@@ -1,0 +1,40 @@
+{
+  "assessed_at": "2026-10-04T20:53:35.644583+00:00",
+  "source_package": "data/controlled_publications/bharat-at-the-crossroads",
+  "staged_package": "internal/legal/catalogue_owner_attestation_20261004/followup/bharat-text-only-staging",
+  "source_manuscript_matches": true,
+  "package_issues": [],
+  "manifest_schema_issues": [],
+  "reader_gate": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "covers/front.png",
+    "blockers": [
+      "CANONICAL_FRONT_DISPLAY_GRANT_AND_ASSET_DELIVERY_BINDING",
+      "CHANGED_PACKAGE_RIGHTS_REVIEW_AND_REGISTRATION",
+      "CATEGORY_TAXONOMY_REVIEW",
+      "LOCAL_RENDERING_AND_ENTITLEMENT_CANARY"
+    ]
+  },
+  "audio_gate": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "locally_release_ready": false,
+  "remaining_gates": [
+    "CANONICAL_FRONT_DISPLAY_GRANT_AND_ASSET_DELIVERY_BINDING",
+    "CHANGED_PACKAGE_RIGHTS_REVIEW_AND_REGISTRATION",
+    "CATEGORY_TAXONOMY_REVIEW",
+    "LOCAL_RENDERING_AND_ENTITLEMENT_CANARY"
+  ],
+  "back_cover": "Original bytes preserved privately; not distributed by staged package. ISBN/endorsement are not mandatory schema fields; displayed claims remain unverified.",
+  "front_asset_binding": {
+    "file": "covers/front.png",
+    "sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+    "delivery": "LOCAL_PACKAGE_ONLY_NOT_REGISTERED_HTTP_ASSET",
+    "display_owner_authority": "Direct current owner task; prospective technical binding, runtime grant remains separate"
+  },
+  "category": "Retained business pending canonical taxonomy review; no new factual value guessed"
+}

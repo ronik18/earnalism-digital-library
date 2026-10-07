@@ -1,0 +1,110 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
+    "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+    "checksum_manifest.json": "b2a9bb002999e39b543a05f32110ee30b85fd7afba3f82d2c84f3b6d64e02774",
+    "cover_provenance.json": "93e284dd1b12ddee26bfa9a27b330be8535867888da33fa5daeca0f501c8589c",
+    "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
+    "public_book.json": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
+    "publication_manifest.json": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
+    "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "reader_release_approval.json": "a4d627767ab8cbf53f2d272a2491a99ac1f3b5e3368ca5472e5336673a0545c6",
+    "rights_decision.json": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769",
+    "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "28f94b2e98de909c8d1212f7a4351c17db67153461f367098022a528e65d4caa",
+      "file_sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
+    "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+    "checksum_manifest.json": "b2a9bb002999e39b543a05f32110ee30b85fd7afba3f82d2c84f3b6d64e02774",
+    "cover_provenance.json": "93e284dd1b12ddee26bfa9a27b330be8535867888da33fa5daeca0f501c8589c",
+    "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
+    "public_book.json": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
+    "publication_manifest.json": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
+    "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "reader_release_approval.json": "a4d627767ab8cbf53f2d272a2491a99ac1f3b5e3368ca5472e5336673a0545c6",
+    "rights_decision.json": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769",
+    "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
+      "public_book": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
+      "reader_manifest": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+      "source_evidence": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "24f9b23b2ea1f1d7ce6e7abed52c4fdde358e1dd2656919b9cf3fdae723bca5c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+          "title": "The Happy Prince",
+          "word_count": 3473
+        }
+      ],
+      "content_hash": "d2ced3c3b48dbc0a9af63c8cec2e0010693083c6ed590a3717a5f351e90ee8ff",
+      "provenance_hash": "5e120d6dafa93babec1d71b47449195d32028d52d3c3e98ea3d5c870f9d6ff7f",
+      "sanitized": true,
+      "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "07a6f556c8b21df5d182c8171e7ba86bb5e32039d76ad2d5d75b47ed54c867c9",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-happy-prince",
+    "title": "The Happy Prince"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

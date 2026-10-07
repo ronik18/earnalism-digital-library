@@ -1,0 +1,310 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
+    "chapters/chapter-001.json": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
+    "chapters/chapter-002.json": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
+    "chapters/chapter-003.json": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
+    "chapters/chapter-004.json": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
+    "chapters/chapter-005.json": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
+    "chapters/chapter-006.json": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
+    "chapters/chapter-007.json": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
+    "chapters/chapter-008.json": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
+    "chapters/chapter-009.json": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
+    "chapters/chapter-010.json": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
+    "chapters/chapter-011.json": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
+    "chapters/chapter-012.json": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
+    "chapters/chapter-013.json": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
+    "checksum_manifest.json": "7d69fe27d3d041cb84918a204344363fe94958f3305ba47193ed34609a601f16",
+    "cover_delivery_derivation.json": "83cfd778e23096d0f65d4bd3e64dd314ef733918c53738cc88de923c98c2796c",
+    "cover_provenance.json": "ad88f29c1aa0b28781fa0c8b98912461b3874ccdd27789bbe74805149d2dff5f",
+    "covers/back.png": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+    "covers/bn-059-back-19f0e455.webp": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+    "covers/bn-059-front-a7b9f12c.webp": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+    "covers/front.png": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+    "highlight_sync.json": "33a3d73da12182d74b50e3fb68a8b6cca5ce60a1499fe0ad89ccb4b8684a40b3",
+    "license_notice.json": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+    "public_book.json": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
+    "publication_authorization.json": "ad6c62d5c77548fe20596f33175287324ee7418326213603b7d613d769a2cf54",
+    "publication_manifest.json": "a600e96aef36f5c38402e38cf87d47059a87b508f45eb4e4719a74d82c977954",
+    "reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "rights_decision.json": "f198582d878b50fe32f3038551f237647e269a4ccbce32836ae3f23792e4fecc",
+    "source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6e100abcbfaf07f34d6d827d4d86e5df67672e9e0e8d584853c9f39fad015f54",
+      "file_sha256": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "2447daf1bd2f297b64e66df74ebeea2e24c9644adcaf3a7df91a32949a5962c0",
+      "file_sha256": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "f7946b6819268c9179a678630c6e826e2bb6efae51eb4657e6a7ddfa852f7353",
+      "file_sha256": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "6bc3bb351427876e50474b9a1eec1cca173983f2ae77ccf29c784a4f6cb6a221",
+      "file_sha256": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "3e036cdd5fabbcf8b388a4e956fd56b97779c4ca18c0a6b16075dfe92c6bbf29",
+      "file_sha256": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "3fc4df5185d2a209784bfb18396adf49fc0aed238564d5d19cb107e3d91b6c42",
+      "file_sha256": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "8791439978bef7c49f067984b43a8a58b7371930cc37dd670b32f2a7bf143e47",
+      "file_sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "753f0ed8bca92c98b863f81bed1b6c744009dce77e9959137c7b3ad592cea047",
+      "file_sha256": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "eb70cd62e377022b51f76d746949a6259aa20a6135eaa3dab25246632027f428",
+      "file_sha256": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "4da21913ac97f92d5e5fb1f4e6148468a041e2dc05831e5f5e7e6b63227ad710",
+      "file_sha256": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "d3019ba58943c24c011bb75736dbe1d2fd632380cc97a9b4812a5a2debdfd729",
+      "file_sha256": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "ff761605da4bb4995efde6673ab55821013ecd63f3b524b0a8ef106e5002ba45",
+      "file_sha256": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "dcc77d7c8d86fdf35c4ae92a0e0ea691d4e9b00322f34b9155bf19032a59384c",
+      "file_sha256": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
+      "id": "chapter-005"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
+    "chapters/chapter-001.json": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
+    "chapters/chapter-002.json": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
+    "chapters/chapter-003.json": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
+    "chapters/chapter-004.json": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
+    "chapters/chapter-005.json": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
+    "chapters/chapter-006.json": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
+    "chapters/chapter-007.json": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
+    "chapters/chapter-008.json": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
+    "chapters/chapter-009.json": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
+    "chapters/chapter-010.json": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
+    "chapters/chapter-011.json": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
+    "chapters/chapter-012.json": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
+    "chapters/chapter-013.json": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
+    "checksum_manifest.json": "7d69fe27d3d041cb84918a204344363fe94958f3305ba47193ed34609a601f16",
+    "cover_delivery_derivation.json": "83cfd778e23096d0f65d4bd3e64dd314ef733918c53738cc88de923c98c2796c",
+    "cover_provenance.json": "ad88f29c1aa0b28781fa0c8b98912461b3874ccdd27789bbe74805149d2dff5f",
+    "covers/back.png": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+    "covers/bn-059-back-19f0e455.webp": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+    "covers/bn-059-front-a7b9f12c.webp": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+    "covers/front.png": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+    "highlight_sync.json": "33a3d73da12182d74b50e3fb68a8b6cca5ce60a1499fe0ad89ccb4b8684a40b3",
+    "license_notice.json": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+    "public_book.json": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
+    "publication_authorization.json": "ad6c62d5c77548fe20596f33175287324ee7418326213603b7d613d769a2cf54",
+    "publication_manifest.json": "a600e96aef36f5c38402e38cf87d47059a87b508f45eb4e4719a74d82c977954",
+    "reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "rights_decision.json": "f198582d878b50fe32f3038551f237647e269a4ccbce32836ae3f23792e4fecc",
+    "source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
+      "cover_back_delivery": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+      "cover_back_original": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "cover_delivery_derivation": "83cfd778e23096d0f65d4bd3e64dd314ef733918c53738cc88de923c98c2796c",
+      "cover_front_delivery": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+      "cover_front_original": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "cover_provenance": "ad88f29c1aa0b28781fa0c8b98912461b3874ccdd27789bbe74805149d2dff5f",
+      "public_book": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
+      "publication_authorization": "ad6c62d5c77548fe20596f33175287324ee7418326213603b7d613d769a2cf54",
+      "reader_manifest": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+      "source_evidence": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 13,
+      "chapter_index_sha256": "c10ece982f238a13df642c9e9578d2591fbf3bfa148cb4d6a6ad6fc29960ef76",
+      "chapters": [
+        {
+          "id": "chapter-011",
+          "order": 1,
+          "sha256": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
+          "title": "প্রথম সংখ্যা",
+          "word_count": 772
+        },
+        {
+          "id": "chapter-008",
+          "order": 2,
+          "sha256": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
+          "title": "দ্বিতীয় সংখ্যা",
+          "word_count": 1664
+        },
+        {
+          "id": "chapter-004",
+          "order": 3,
+          "sha256": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
+          "title": "তৃতীয় সংখ্যা",
+          "word_count": 960
+        },
+        {
+          "id": "chapter-003",
+          "order": 4,
+          "sha256": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
+          "title": "চতুর্থ সংখ্যা",
+          "word_count": 801
+        },
+        {
+          "id": "chapter-010",
+          "order": 5,
+          "sha256": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
+          "title": "পঞ্চম সংখ্যা",
+          "word_count": 2137
+        },
+        {
+          "id": "chapter-012",
+          "order": 6,
+          "sha256": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
+          "title": "ষষ্ঠ সংখ্যা",
+          "word_count": 2511
+        },
+        {
+          "id": "chapter-013",
+          "order": 7,
+          "sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
+          "title": "সপ্তম সংখ্যা",
+          "word_count": 1132
+        },
+        {
+          "id": "chapter-001",
+          "order": 8,
+          "sha256": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
+          "title": "অষ্টম সংখ্যা",
+          "word_count": 1897
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
+          "title": "নবম সংখ্যা",
+          "word_count": 939
+        },
+        {
+          "id": "chapter-006",
+          "order": 10,
+          "sha256": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
+          "title": "দশম সংখ্যা",
+          "word_count": 1726
+        },
+        {
+          "id": "chapter-002",
+          "order": 11,
+          "sha256": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
+          "title": "একাদশ সংখ্যা",
+          "word_count": 673
+        },
+        {
+          "id": "chapter-007",
+          "order": 12,
+          "sha256": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
+          "title": "দ্বাদশ সংখ্যা",
+          "word_count": 1904
+        },
+        {
+          "id": "chapter-005",
+          "order": 13,
+          "sha256": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
+          "title": "ত্রয়োদশ সংখ্যা",
+          "word_count": 1312
+        }
+      ],
+      "content_hash": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
+      "provenance_hash": "41369de7a0fc46a56d1ac62c5451e323cd8a59fcd52830d652f3fdb2f419fbd0",
+      "sanitized": true,
+      "source_hash": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147"
+    },
+    "cover_release": {
+      "back_delivery_sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+      "back_original_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "front_delivery_sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+      "front_original_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "production_activation": false,
+      "status": "EXACT_ORIGINALS_AND_REVIEWED_DELIVERY_DERIVATIVES_ACCEPTED_LOCAL",
+      "territories": [
+        "IN"
+      ]
+    },
+    "generated_at": "2026-10-02T15:52:11.964982+00:00",
+    "manifest_sha256": "58dc285e585d9412fb69f94836f007a0f9a23cfc1c2d386a1b157f21028c8181",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+      "exact_decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "production_registration": "PENDING_SERIALIZED_INTEGRATION",
+      "publication_region": "IN",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bn-059",
+    "title": "কমলাকান্তের দপ্তর"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

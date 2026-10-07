@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5e036c5196dcbf904e5cd782434ee787e9eb8711a3f10f584bb19298843b1dd0",
+    "chapters/chapter-001.json": "7bbdb0efe241df473e4cff259fc97c75d97dcb1a4f810d99f5227aca86f49e22",
+    "checksum_manifest.json": "0c10b8b3b8997176be04aad6f35bb6b3b33e82e13fafa773b3ab5e18759f4d32",
+    "highlight_sync.json": "4f50b7168451a2e0307549350bb37e6a0117a72b1e299e910fa6f51c458fdadc",
+    "public_book.json": "43e6c78e8fb026d0a0844b6e2bdef89d0fb6fe2d7b57c8945065b0e1892bdbd5",
+    "reader_manifest.json": "58af12bb67600b30474a5566adf9328200da93fdc4020617a166499dbd7531c7",
+    "source_evidence.json": "022e42bf8f0c4997fa6e24f5a5fc0784cf319f4db33e94e0ad8864a0e0122041"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+      "file_sha256": "6b9c1ebc176883edf68c4d1fbc2e37f245d877a78926116abef880d434152391",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "70a164f3b3228fc2a85ace3ea882237e58775da8f69a098591852b41212a541c",
+    "chapters/chapter-001.json": "6b9c1ebc176883edf68c4d1fbc2e37f245d877a78926116abef880d434152391",
+    "checksum_manifest.json": "34e8d718fd6f567b7056098dd738dc895718cd356113b96bc9be8463ace5b1fd",
+    "highlight_sync.json": "4f50b7168451a2e0307549350bb37e6a0117a72b1e299e910fa6f51c458fdadc",
+    "license_notice.json": "f1ac3625973babd286341ca2741993fac8bcf3b4b012df4407640e02a37807d8",
+    "public_book.json": "ff11bec426f2418139c8f4ad1bcb90b5c8933eb06800c94ac8749ca5cb53f2f8",
+    "publication_authorization.json": "1e8597acb1dbbcec82a7f32fb00c669df2c4f72e41e381c526936984df8f6ccd",
+    "publication_manifest.json": "950eac60f78ccd68011f764636a0f3b9d3a891c195bce8f597be9118afc5be45",
+    "reader_manifest.json": "01270e6cb31299c5afd25b64006454810db189187092dac58a6caa2b4de9b5ca",
+    "rights_decision.json": "31b6ff9e6d963ad0d391e5f0105427ba3ae0cb288f7cd9267efc0efad390a198",
+    "source_evidence.json": "fa5942f157a0e016898db6159e34601d77ef3253b14a2102fe299ed9a2646f5f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "70a164f3b3228fc2a85ace3ea882237e58775da8f69a098591852b41212a541c",
+      "public_book": "ff11bec426f2418139c8f4ad1bcb90b5c8933eb06800c94ac8749ca5cb53f2f8",
+      "reader_manifest": "01270e6cb31299c5afd25b64006454810db189187092dac58a6caa2b4de9b5ca",
+      "source_evidence": "fa5942f157a0e016898db6159e34601d77ef3253b14a2102fe299ed9a2646f5f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "faed711c953164fb9d6be9a1d8cb0c9f61f4da30b55c973c34f2e397255164ab",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6b9c1ebc176883edf68c4d1fbc2e37f245d877a78926116abef880d434152391",
+          "title": "নিশীথে",
+          "word_count": 3463
+        }
+      ],
+      "content_hash": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+      "provenance_hash": "5df1f60d195d79ab370b01099d7428775261f3be0631eaadc52490965ca532ba",
+      "sanitized": true,
+      "source_hash": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "82f4768433728519880dd658372efa414eb8b13258b946c60d77b9f75efaf5f7",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "fa5942f157a0e016898db6159e34601d77ef3253b14a2102fe299ed9a2646f5f",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-b9d47814a8",
+    "title": "নিশীথে"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

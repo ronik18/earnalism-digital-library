@@ -1,0 +1,122 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627",
+    "chapters/chapter-001.json": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f",
+    "checksum_manifest.json": "e4ee2dc51ed9dc2d492dc377dbf9d69f34094140b71df5c29195c7187844d75b",
+    "cover_delivery_derivation.json": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+    "cover_provenance.json": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf",
+    "covers/back.png": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+    "covers/front.png": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+    "highlight_sync.json": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a",
+    "public_book.json": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+    "publication_authorization.json": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e",
+    "publication_manifest.json": "459cec0b1f2931f8ff034c1c6a867de9581d4eb11f63d00af4ea570c39952522",
+    "reader_manifest.json": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "review_evidence/artmoney-delivery-review-a.json": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+    "review_evidence/artmoney-delivery-review-b.json": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+    "rights_decision.json": "2af3109706aa08cf25979dbafb39895f4694cd4e1b1c1af9586eadb2fff56014",
+    "source_evidence.json": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "source_integrity_validation.json": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+      "file_sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627",
+    "chapters/chapter-001.json": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f",
+    "checksum_manifest.json": "e4ee2dc51ed9dc2d492dc377dbf9d69f34094140b71df5c29195c7187844d75b",
+    "cover_delivery_derivation.json": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+    "cover_provenance.json": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf",
+    "covers/back.png": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+    "covers/front.png": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+    "highlight_sync.json": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a",
+    "public_book.json": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+    "publication_authorization.json": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e",
+    "publication_manifest.json": "459cec0b1f2931f8ff034c1c6a867de9581d4eb11f63d00af4ea570c39952522",
+    "reader_manifest.json": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "review_evidence/artmoney-delivery-review-a.json": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+    "review_evidence/artmoney-delivery-review-b.json": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+    "rights_decision.json": "2af3109706aa08cf25979dbafb39895f4694cd4e1b1c1af9586eadb2fff56014",
+    "source_evidence.json": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "source_integrity_validation.json": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627",
+      "public_book": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+      "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+      "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "93d7357e05352d8ba963bdf4391f41fa7e1d7f6fabd2f5f5790bede2200da4b3",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f",
+          "title": "The Art of Money Getting",
+          "word_count": 13564
+        }
+      ],
+      "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+      "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
+      "sanitized": true,
+      "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061"
+    },
+    "generated_at": "2026-10-03T04:12:32.330374+00:00",
+    "manifest_sha256": "ace585b0a821dde1b06181a218dcb76a757da8f78e45f793a9dd7d0efdcfa1d8",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-art-of-money-getting",
+    "title": "The Art of Money Getting"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

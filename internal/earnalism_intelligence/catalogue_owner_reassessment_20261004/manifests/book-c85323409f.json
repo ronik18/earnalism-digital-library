@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68",
+    "chapters/chapter-001.json": "8db66d67c0603a6e1aa3f3bb2cf75db121469022307790dd2d933e42d2d70947",
+    "checksum_manifest.json": "dcfc8fa30ef523e88cd48842ae2d5ddc0e13ee47a9278e8b889c577fbfe7b67a",
+    "highlight_sync.json": "f595444eb1de4da88124c13770587d116c9a76d0abb417ac9f374951560cc415",
+    "public_book.json": "6fdf3a42dd17d3f3602072973d4383498820ee56f4a22d4291992e5f630a41cb",
+    "reader_manifest.json": "bb8418451cc5c4a454d937b7b64e65ddaf52009510f6bda9e4a4548c81be8975",
+    "source_evidence.json": "6dd60f447a73124649009b63ebebe39f060e4f160118fa7706cc559435db87ef"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "4c3ab2fe542f3299353649d4cb57ac08cf9958e9416c957587baa2225dcf8357",
+      "file_sha256": "22ba05cc450de5473cb9015e7b219d129b0bfd5df911c1b259707b725c19371c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68",
+    "approval_evidence.json": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68",
+    "chapters/chapter-001.json": "22ba05cc450de5473cb9015e7b219d129b0bfd5df911c1b259707b725c19371c",
+    "checksum_manifest.json": "46ea6dfd2ac7e8e52760beeb6c81fec8d746d666e41766750f4024a512b16d65",
+    "highlight_sync.json": "f595444eb1de4da88124c13770587d116c9a76d0abb417ac9f374951560cc415",
+    "license_notice.json": "f9410246c91563aaf6712885f345eed35d3ca83e02ee536728eb98e699cab055",
+    "public_book.json": "950f0a0206a178736121acee523681688cd112de1b9c93ee3355471f35f5f3c6",
+    "publication_manifest.json": "5ca242ba7b6c6a314442ab13da2f10bbfc4d779f10eee1e22eca98203c3eafe9",
+    "reader_manifest.json": "bfb48415b9d17f042550e12c0f7978e3bd678fac4950ea4e46260c47031c9157",
+    "source_evidence.json": "498d65e3db0cf7ce3f754d449d223ccabe4b28a0c6f8f7396ba44368b76f9f80"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68",
+      "public_book": "950f0a0206a178736121acee523681688cd112de1b9c93ee3355471f35f5f3c6",
+      "reader_manifest": "bfb48415b9d17f042550e12c0f7978e3bd678fac4950ea4e46260c47031c9157",
+      "source_evidence": "498d65e3db0cf7ce3f754d449d223ccabe4b28a0c6f8f7396ba44368b76f9f80"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c4b1f25bf006377f0ca6b9b83414d5de52528af65733a805c0d965888b60159e",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "22ba05cc450de5473cb9015e7b219d129b0bfd5df911c1b259707b725c19371c",
+          "title": "জীবিত ও মৃত",
+          "word_count": 3445
+        }
+      ],
+      "content_hash": "86f190d8981591db6470e84d7a543d9fb4b6c7079c033e71a026e2d949c6a2d2",
+      "provenance_hash": "c96d33fa58b0c2a7b57484c55e3484775b58ceea721f7500f23596e5d551e702",
+      "sanitized": true,
+      "source_hash": "a3a670cd1107f63ab6b8df62ff5077d6245e4cfdcb772db39b78ca9e40c5a392"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "c3d9894712b880321fdca8685c07afc2e9e970bf42b94f7fb640f98ac94f9a70",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "498d65e3db0cf7ce3f754d449d223ccabe4b28a0c6f8f7396ba44368b76f9f80",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-c85323409f",
+    "title": "জীবিত ও মৃত"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,208 @@
+{
+  "active_files_sha256": {
+    "approval_evidence 2.json": "309552c46b979bc9de8cc7f4e9eb18718530f76a9a8b2d12721e357cbcc24328",
+    "approval_evidence.json": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+    "chapters/chapter-001.json": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f",
+    "chapters/chapter-002.json": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82",
+    "chapters/chapter-003.json": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53",
+    "chapters/chapter-004.json": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab",
+    "chapters/chapter-005.json": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602",
+    "chapters/chapter-006.json": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828",
+    "chapters/chapter-007.json": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c",
+    "checksum_manifest.json": "8228e98db170856caefb761e253f1e00ddb9f314130b4c1f64e1b6b02afad241",
+    "cover_delivery_derivation.json": "f9e5a38ad9f0a7a8f15db8cedfbf6b1f4786102923d6b778c5117009d5d70efd",
+    "cover_provenance.json": "2a9ab835df747329d8e541489afd26ec0cb45c8dfd9ca5aac5f077ec12c02866",
+    "covers/back.png": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+    "covers/front.png": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+    "covers/the-call-of-the-wild-back-8d86df17.webp": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3",
+    "covers/the-call-of-the-wild-front-94d7d690.webp": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+    "highlight_sync.json": "7df67693212667112f689afef2b4d7a86aca94fb28db8337d50430c363224640",
+    "public_book.json": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+    "publication_authorization.json": "95e6feb9e773f09292a20254532e25af3a1176f4cb791dd0fc051e56e65f5982",
+    "publication_manifest.json": "3e1a7fcc426ed636358fdd5fd6cb5dee54b46cba2b8203b1d1b9e0dc6224e8b1",
+    "reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "rights_decision.json": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+    "rights_decision_prior_noncover_text.json": "39ed99121fc56b81248ad4125662b2f44c9851ec7e08ba0d9a7f992d2f59f79b",
+    "source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6ea8f908301e78416b40583c2c62e822463a20e841e52a6496b5e0388eb31124",
+      "file_sha256": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "98127e9f574ecae3026499e0769a680854598689d26dbc93a19f5008251c05a7",
+      "file_sha256": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "b4264259c059d87d53535b1aabd00f00c70779cd5001fafd1edf0646a8ffaf8e",
+      "file_sha256": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "a965824fe166c058d5bf74b6bb62caa5e3ea2c0d913fb7a83d46a697ddd7a101",
+      "file_sha256": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "3a23f434c7742466496005457bd83b847ee8655c2e4fa926109140ba670bcfad",
+      "file_sha256": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "309bebb9c1ff96b56842f848e0f56032d1198552af856d1d4941f7365e9b87fc",
+      "file_sha256": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "a0f7e7ed798258e92dbbeca9091e0009a9f39b2458b60585bb1b1d3ed0b74191",
+      "file_sha256": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c",
+      "id": "chapter-007"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "309552c46b979bc9de8cc7f4e9eb18718530f76a9a8b2d12721e357cbcc24328",
+    "approval_evidence.json": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+    "chapters/chapter-001.json": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f",
+    "chapters/chapter-002.json": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82",
+    "chapters/chapter-003.json": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53",
+    "chapters/chapter-004.json": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab",
+    "chapters/chapter-005.json": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602",
+    "chapters/chapter-006.json": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828",
+    "chapters/chapter-007.json": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c",
+    "checksum_manifest.json": "8228e98db170856caefb761e253f1e00ddb9f314130b4c1f64e1b6b02afad241",
+    "cover_delivery_derivation.json": "f9e5a38ad9f0a7a8f15db8cedfbf6b1f4786102923d6b778c5117009d5d70efd",
+    "cover_provenance.json": "2a9ab835df747329d8e541489afd26ec0cb45c8dfd9ca5aac5f077ec12c02866",
+    "covers/back.png": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+    "covers/front.png": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+    "covers/the-call-of-the-wild-back-8d86df17.webp": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3",
+    "covers/the-call-of-the-wild-front-94d7d690.webp": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+    "highlight_sync.json": "7df67693212667112f689afef2b4d7a86aca94fb28db8337d50430c363224640",
+    "public_book.json": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+    "publication_authorization.json": "95e6feb9e773f09292a20254532e25af3a1176f4cb791dd0fc051e56e65f5982",
+    "publication_manifest.json": "3e1a7fcc426ed636358fdd5fd6cb5dee54b46cba2b8203b1d1b9e0dc6224e8b1",
+    "reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "rights_decision.json": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+    "rights_decision_prior_noncover_text.json": "39ed99121fc56b81248ad4125662b2f44c9851ec7e08ba0d9a7f992d2f59f79b",
+    "source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+      "public_book": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+      "reader_manifest": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+      "source_evidence": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 7,
+      "chapter_index_sha256": "976ea5421fa1d682cb167cef69e337208c0e97e08357ff290107053670e59a9f",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f",
+          "title": "Chapter I. Into the Primitive",
+          "word_count": 3780
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82",
+          "title": "Chapter II. The Law of Club and Fang",
+          "word_count": 3335
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53",
+          "title": "Chapter III. The Dominant Primordial Beast",
+          "word_count": 5183
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab",
+          "title": "Chapter IV. Who Has Won to Mastership",
+          "word_count": 3233
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602",
+          "title": "Chapter V. The Toil of Trace and Trail",
+          "word_count": 5409
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828",
+          "title": "Chapter VI. For the Love of a Man",
+          "word_count": 4805
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c",
+          "title": "Chapter VII. The Sounding of the Call",
+          "word_count": 6256
+        }
+      ],
+      "content_hash": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+      "provenance_hash": "1b5fc691bbf0965c93b281e1d6e97565fe6e624006b39cad8b0821fa07e9e188",
+      "sanitized": true,
+      "source_hash": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2"
+    },
+    "generated_at": "2026-10-02T15:47:04Z",
+    "manifest_sha256": "d4557775f69f445296faf8b5b3cf21bfae5f68df76347ec1b83fcb586f0af0ff",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-call-of-the-wild",
+    "title": "The Call of the Wild"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

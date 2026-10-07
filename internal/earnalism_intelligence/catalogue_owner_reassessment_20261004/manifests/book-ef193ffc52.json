@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+    "chapters/chapter-001.json": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500",
+    "checksum_manifest.json": "10981687113cb6e0211cdc1597f86e49ddf8492fa3456911ecef65fb0c02fc8e",
+    "highlight_sync.json": "58a159021c574decbc2d9384af890319c00f2993e984945c1bbb758df6576305",
+    "public_book.json": "36e0a9924e3fa268fffeb89498d162e951415f395f6e30ebc0611387d10d99f1",
+    "reader_manifest.json": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
+    "source_evidence.json": "978fd3fcf8fbd6bb96da62ba9af8205146dca7b4e1725bd51e780a9a30f0fd55"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+      "file_sha256": "45de1e01f29af4a0553878359330b6552f7fb2f7fe3d84cff4652d8c64d4b43e",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+    "approval_evidence.json": "7ee5ba33b081c697fac4b5139d14df05b20c9aa5f0a023abf4ea4c3d3fc3953d",
+    "chapters/chapter-001.json": "45de1e01f29af4a0553878359330b6552f7fb2f7fe3d84cff4652d8c64d4b43e",
+    "checksum_manifest.json": "ce426e0205dbcade96325a73565c41e20118b9227b306c1b7389243e64a9d435",
+    "highlight_sync.json": "58a159021c574decbc2d9384af890319c00f2993e984945c1bbb758df6576305",
+    "license_notice.json": "b0e2fb951e430611642fc000bc2d7b3e929ff1679621f8624b1a75618f945bf2",
+    "public_book.json": "52f1734a953bb36872eef6af61f3ac2f784152214b78e79d930a947dac96453b",
+    "publication_authorization.json": "f0e760031faecdecf482b728503346957c5b8d4a17b13fe09b643cf5130b86c7",
+    "publication_manifest.json": "e198341e3ad3f4aedd85b86bf164e580983a3fd61544f4c6cfe0c509472b8c89",
+    "reader_manifest.json": "92b8f8aaf9ad95070c275a312b47e6d5746031f20068fe7cbca1d16e6324428e",
+    "rights_decision.json": "40346dabf993748d15ca398edc1987b027d19579bd6589ebf39341b8865feb90",
+    "source_evidence.json": "22ef8f1aa93db20a2e6e3c97b3eea3a653c9a8def10fb9b1b5fb0b79ddaae6e1"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "7ee5ba33b081c697fac4b5139d14df05b20c9aa5f0a023abf4ea4c3d3fc3953d",
+      "public_book": "52f1734a953bb36872eef6af61f3ac2f784152214b78e79d930a947dac96453b",
+      "reader_manifest": "92b8f8aaf9ad95070c275a312b47e6d5746031f20068fe7cbca1d16e6324428e",
+      "source_evidence": "22ef8f1aa93db20a2e6e3c97b3eea3a653c9a8def10fb9b1b5fb0b79ddaae6e1"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "6511e4027ba9ad6cc789d9e79eb9493cd3eca896bf8f1fef41093ca451a31936",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "45de1e01f29af4a0553878359330b6552f7fb2f7fe3d84cff4652d8c64d4b43e",
+          "title": "দিদি",
+          "word_count": 2926
+        }
+      ],
+      "content_hash": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+      "provenance_hash": "ac0e121b2b55180f7861584e8c191aba4756b1c5db63e9b266def593f6851680",
+      "sanitized": true,
+      "source_hash": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "977d5d868bad23e514ec44bc18f1e819620c4e0a57e0c4788ddbea603a06fd10",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "22ef8f1aa93db20a2e6e3c97b3eea3a653c9a8def10fb9b1b5fb0b79ddaae6e1",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-ef193ffc52",
+    "title": "দিদি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

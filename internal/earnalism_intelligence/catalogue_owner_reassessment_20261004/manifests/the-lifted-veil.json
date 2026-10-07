@@ -1,0 +1,151 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "3978f97e8445674292bd6ad743ae6340f8dbe17790a5ab6f2e0b9f396657b7ca",
+    "chapters/chapter-000.json": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa",
+    "chapters/chapter-001.json": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523",
+    "chapters/chapter-002.json": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2",
+    "checksum_manifest.json": "e17b5c09168d87bcb305efa056d5ef22ec8ce7e9cdc40f9b34d1c1973e6d4c39",
+    "highlight_sync.json": "7dce4241b0b84565498a23c8b24dd7847650f39f06c3abee0a820414ba7d46cf",
+    "public_book.json": "97929fa7fa0a1650a83c5022e7100765ab43253e6e0545bef6eedba9b8b40b41",
+    "publication_authorization.json": "0d52710c092563bb704a9dc97cfbad7eb230881722e219335a84954f93eb699c",
+    "publication_manifest.json": "7ccfd1bdd09fba0c17b26899e98051b2fc6fdeeff10e988153056ea68cd10170",
+    "reader_manifest.json": "5a602b94ee01b76ac62326d017e2945a3dbde7d2db0aa1726664ce42595a311f",
+    "rights_decision.json": "be302fdcc1b2c36ace808f4aece8bbe8b5b39b9dce63ae464dfbad2648e511bb",
+    "source_evidence.json": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f70b8c1e424e8b219c21c85dede7a054d34b658089c331ca62f17dcf7267459c",
+      "file_sha256": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa",
+      "id": "chapter-000"
+    },
+    {
+      "content_sha256": "2a4daea30e9fdd8dcea28cd90b4546aebee6225d6ed02a574da79b2eb40bc2cf",
+      "file_sha256": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "f44f0ee02c1be2380576d972d094e803bddcaf3d062e72ab0bf1dbaf279b5b36",
+      "file_sha256": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2",
+      "id": "chapter-002"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "3978f97e8445674292bd6ad743ae6340f8dbe17790a5ab6f2e0b9f396657b7ca",
+    "chapters/chapter-000.json": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa",
+    "chapters/chapter-001.json": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523",
+    "chapters/chapter-002.json": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2",
+    "checksum_manifest.json": "e17b5c09168d87bcb305efa056d5ef22ec8ce7e9cdc40f9b34d1c1973e6d4c39",
+    "highlight_sync.json": "7dce4241b0b84565498a23c8b24dd7847650f39f06c3abee0a820414ba7d46cf",
+    "public_book.json": "97929fa7fa0a1650a83c5022e7100765ab43253e6e0545bef6eedba9b8b40b41",
+    "publication_authorization.json": "0d52710c092563bb704a9dc97cfbad7eb230881722e219335a84954f93eb699c",
+    "publication_manifest.json": "7ccfd1bdd09fba0c17b26899e98051b2fc6fdeeff10e988153056ea68cd10170",
+    "reader_manifest.json": "5a602b94ee01b76ac62326d017e2945a3dbde7d2db0aa1726664ce42595a311f",
+    "rights_decision.json": "be302fdcc1b2c36ace808f4aece8bbe8b5b39b9dce63ae464dfbad2648e511bb",
+    "source_evidence.json": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "3978f97e8445674292bd6ad743ae6340f8dbe17790a5ab6f2e0b9f396657b7ca",
+      "public_book": "97929fa7fa0a1650a83c5022e7100765ab43253e6e0545bef6eedba9b8b40b41",
+      "reader_manifest": "5a602b94ee01b76ac62326d017e2945a3dbde7d2db0aa1726664ce42595a311f",
+      "source_evidence": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 3,
+      "chapter_index_sha256": "9d231a39da4644a6f92356ddcc8aed2d60e6f585a4e924145cdfce24173cd0b5",
+      "chapters": [
+        {
+          "id": "chapter-000",
+          "order": 1,
+          "sha256": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa",
+          "title": "Author Epigraph",
+          "word_count": 25
+        },
+        {
+          "id": "chapter-001",
+          "order": 2,
+          "sha256": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523",
+          "title": "CHAPTER I",
+          "word_count": 9204
+        },
+        {
+          "id": "chapter-002",
+          "order": 3,
+          "sha256": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2",
+          "title": "CHAPTER II",
+          "word_count": 8489
+        }
+      ],
+      "content_hash": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+      "provenance_hash": "6a6d5cbde710b8ae9a8451cd9f9aaf67f51f27c06aaf21d0895ea9bc42ec16bd",
+      "sanitized": true,
+      "source_hash": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "769af8ba7ae79805f1aeb38becc97cd98557a2043dd4d0f23ac1ea228ee6469d",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-lifted-veil",
+    "title": "The Lifted Veil"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-lifted-veil-pg2165-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,290 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
+    "chapters/chapter-001.json": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+    "chapters/chapter-002.json": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+    "chapters/chapter-003.json": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+    "chapters/chapter-004.json": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+    "chapters/chapter-005.json": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+    "chapters/chapter-006.json": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+    "chapters/chapter-007.json": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+    "chapters/chapter-008.json": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+    "chapters/chapter-009.json": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+    "chapters/chapter-010.json": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+    "chapters/chapter-011.json": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+    "chapters/chapter-012.json": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+    "chapters/chapter-013.json": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+    "chapters/chapter-014.json": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+    "checksum_manifest.json": "f0d15578a06db07b44c07ee9b4ed023ee6096bd2c6e5061dd8c453df21f6eaf6",
+    "cover_provenance.json": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9",
+    "public_book.json": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
+    "publication_manifest.json": "3b50f1958f2cd12453165b08086901c9d56c8eb66d6869953637dc4b3bbb8879",
+    "reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "reader_release_approval.json": "97f6185464999f5cea714cb8c16b2f0ea59c89b37bc1e272fb955389eae7b171",
+    "rights_decision.json": "9a3b8f3ac26f1326e5b94067829cdd70b65f72888fe209a9c93c0b3b4fa71ab7",
+    "source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "21a43d95157e8222c9299d7b9b787fda366c67fc31f838f2759d3ee4a2cfe296",
+      "file_sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "9c374eb3789023d7094be65d866440113aa3563083f8bab3106cbecb1e290627",
+      "file_sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "249389f5c1a9d0cbc8f812ae2c42804506d57d612edee34cdf9b2e0371710acf",
+      "file_sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "8493f65276d763dd1c02e06be02a744fe0f987e928e2e4a7b6c3a403ae2fafa9",
+      "file_sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "f978201299db1071d1594385b193f741776e3a653ee8032b7bab837b3f5685b0",
+      "file_sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "5523929482657fd5d056e9d216f58b37301f9474033969a3d4a2f6867f5c85fe",
+      "file_sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "bf81dc96ff29454e366bd7b565c4bcf44494f73f1aa1a3c7c833d5c82e581e42",
+      "file_sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "6d94b6cf39755a9d7eb01adfe1128d8c481826a0c3053ded006dba8a55950dd6",
+      "file_sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "88a6a6c90e345489afd690e6689345644bcbf985ef371ec5a7e57c504417a7de",
+      "file_sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "4f64a442dc1a1a1b77a9b3ab72a59230b3e0d7c566db5382833dcfc5dab5766d",
+      "file_sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "194f9996934e09354b294482a294dd22568544e427fd0b29a52a821003d80def",
+      "file_sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "0b2f933b235a0f08d8c9d065b131943f19793495f84e6f12fb90bf51b0ed68dc",
+      "file_sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "6f5dafb4d00f18aeb1ec5e5ae4a92e5a97425f20a6306735f03673bb5b1bd047",
+      "file_sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "1a3b4df9a9feff3b08aff646d79cfa71b279c920d43a5ae67d0959767f16d542",
+      "file_sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+      "id": "chapter-014"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
+    "chapters/chapter-001.json": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+    "chapters/chapter-002.json": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+    "chapters/chapter-003.json": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+    "chapters/chapter-004.json": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+    "chapters/chapter-005.json": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+    "chapters/chapter-006.json": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+    "chapters/chapter-007.json": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+    "chapters/chapter-008.json": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+    "chapters/chapter-009.json": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+    "chapters/chapter-010.json": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+    "chapters/chapter-011.json": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+    "chapters/chapter-012.json": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+    "chapters/chapter-013.json": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+    "chapters/chapter-014.json": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+    "checksum_manifest.json": "f0d15578a06db07b44c07ee9b4ed023ee6096bd2c6e5061dd8c453df21f6eaf6",
+    "cover_provenance.json": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9",
+    "public_book.json": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
+    "publication_manifest.json": "3b50f1958f2cd12453165b08086901c9d56c8eb66d6869953637dc4b3bbb8879",
+    "reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "reader_release_approval.json": "97f6185464999f5cea714cb8c16b2f0ea59c89b37bc1e272fb955389eae7b171",
+    "rights_decision.json": "9a3b8f3ac26f1326e5b94067829cdd70b65f72888fe209a9c93c0b3b4fa71ab7",
+    "source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
+      "public_book": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
+      "reader_manifest": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+      "source_evidence": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 14,
+      "chapter_index_sha256": "6de61ff740a4144d5b6db3d283cd38f2ac32ad3e41d1adfc5d5c83f930d4710a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+          "title": "Chapter 1: Building Your First Python AI Assistant",
+          "word_count": 6137
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+          "title": "Chapter 2: LLMs, Prompts, Tokens and a Reusable API Client",
+          "word_count": 6465
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+          "title": "Chapter 3: Your First Python AI App",
+          "word_count": 5544
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+          "title": "Chapter 4: RAG — Chat with Your Own Documents",
+          "word_count": 7223
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+          "title": "Chapter 5: Embeddings, Vector Databases, and Semantic Search",
+          "word_count": 6359
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+          "title": "Chapter 6: Tool-Using Agents in Python",
+          "word_count": 7001
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+          "title": "Chapter 7: Memory — Giving an Assistant Useful Context",
+          "word_count": 6976
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+          "title": "Chapter 8: Workflow Automation with AI Agents",
+          "word_count": 7854
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+          "title": "Chapter 9: Multi-Step and Multi-Agent Workflows",
+          "word_count": 6677
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+          "title": "Chapter 10: Guardrails, Safety, and Hallucination Control",
+          "word_count": 7959
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+          "title": "Chapter 11: Testing, Evaluation, Monitoring, and Cost Control",
+          "word_count": 7545
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+          "title": "Chapter 12: Deploying Your Python AI Agent",
+          "word_count": 7628
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+          "title": "Chapter 13: Bringing the Projects Together",
+          "word_count": 2535
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+          "title": "Chapter 14: Glossary and Your Next Project",
+          "word_count": 1144
+        }
+      ],
+      "content_hash": "750b1c7cf78457bed5083d11db08e6cc1999cd73bcb7546ff460ad62d2034282",
+      "provenance_hash": "7128a3c1a4c269ff0abe92e43cfc398087b7e158ce6803b5d5e947d25e067492",
+      "sanitized": true,
+      "source_hash": "c0d3577b9b4f7f91c2ecc19ff64e7bc2e64d1091275def3c3849f97e6b1a8a8f"
+    },
+    "generated_at": "2026-10-01T03:17:21.336723+00:00",
+    "manifest_sha256": "c715c843ccee7bf2e4dbf5407d2a7f5be3ba845b771053b6abce5403a2377bbd",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "agentic-ai-with-python",
+    "title": "Agentic AI With Python"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,110 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+    "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+    "checksum_manifest.json": "1754723183eedd3adf242e41cb61ef5f2eaf6d3bc3206e6a5f8633c49e2b174e",
+    "cover_provenance.json": "6dd79f1df7a4e2cde1fc6999903864d36cc00ceef043ad320152bbf97aea40d4",
+    "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+    "public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "publication_manifest.json": "4a8efaeccf7858192911a8310ae831466d7e7c539d8dac2f31caf80253689af2",
+    "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+    "reader_release_approval.json": "082659f804470885842ca8d704e4f8c71d2902ca57118e5b3b91436267e4b6b4",
+    "rights_decision.json": "7b9e344b3ebdffb619cbeb70c6e9fcc25d44491128b9094d40b33781e9b177d5",
+    "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1f73408bab8612720c3463f1a48f16b58a3403a29749e3544789e743323558f9",
+      "file_sha256": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+    "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+    "checksum_manifest.json": "1754723183eedd3adf242e41cb61ef5f2eaf6d3bc3206e6a5f8633c49e2b174e",
+    "cover_provenance.json": "6dd79f1df7a4e2cde1fc6999903864d36cc00ceef043ad320152bbf97aea40d4",
+    "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+    "public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "publication_manifest.json": "4a8efaeccf7858192911a8310ae831466d7e7c539d8dac2f31caf80253689af2",
+    "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+    "reader_release_approval.json": "082659f804470885842ca8d704e4f8c71d2902ca57118e5b3b91436267e4b6b4",
+    "rights_decision.json": "7b9e344b3ebdffb619cbeb70c6e9fcc25d44491128b9094d40b33781e9b177d5",
+    "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+      "public_book": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+      "reader_manifest": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+      "source_evidence": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a12d9e474db6b02c46dbfd14968d60ae5f5e8a087d6bb71bf5744ac129f5ceed",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+          "title": "The Stolen White Elephant",
+          "word_count": 6821
+        }
+      ],
+      "content_hash": "1966dc3ff417b39ec3faeab8031f6c99f0138f8d1595f351147a023fed8f0235",
+      "provenance_hash": "6637344b47e4a4cb2f0afdce7adfaf8eca02d84429c408c533fb13cece300756",
+      "sanitized": true,
+      "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "86f82adb7e832fae7c51ab2bc5595e3364c1db79697ae602fb431bf9e7c5736c",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-stolen-white-elephant",
+    "title": "The Stolen White Elephant"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

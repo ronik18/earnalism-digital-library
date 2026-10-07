@@ -1,0 +1,449 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d3638ec168a32093cd93a9740d2d6023044a7c4d6c1866b98621308efd63d895",
+    "chapters/chapter-001.json": "e82e2f74e8321f13d3666d40b6cd1a01b68988155eeaf3c2c9d1308ff4f3626a",
+    "chapters/chapter-002.json": "97770812b3fe30399ec1b65ba82e945987c7132884ae2d73401f5798ce296b25",
+    "chapters/chapter-003.json": "d2b38e2a82c85d6a17350f969f0c3e0ab367c2bf3d3a26a6cf2cb9a591b75bc3",
+    "chapters/chapter-004.json": "79f214df16768d0b7e0145b00d1a088b5519de9efeac37acaab84dc55ac17110",
+    "chapters/chapter-005.json": "2aaa05c09654472fca83cfebb44cb5e2601f39bb3ece4245d88d18efe2194c4e",
+    "chapters/chapter-006.json": "bf466d3c1d53368b353940231d59ad1665b473654323ed54a983f88e34cc34d2",
+    "chapters/chapter-007.json": "ee95c8858a836aed21f56fea199189b8f33d68f6a6deabe0dff07410b135f489",
+    "chapters/chapter-008.json": "9735ec2d028788e76916aef05c438133b424ee44ec870e5560432d1fc8de7327",
+    "chapters/chapter-009.json": "52501a7cf9316562265a343d22f4561db73a0505900eee4089eaa445caf7d186",
+    "chapters/chapter-010.json": "8fe4a8ebb3eae2711860455f69e8291bcbe439303192116f1c5963c0a10d8a83",
+    "chapters/chapter-011.json": "c5cab5530314781fd8a158a6a5f50bf130ad57df70355e50477e355708567d70",
+    "chapters/chapter-012.json": "08b7bd1c94298b866ef3776aa0244f5d760c8d6bda9560188c2047dfde98afe4",
+    "chapters/chapter-013.json": "e82ed62617f4e0d420759453f35bf8c42710ae42d30290476b3e0516ede9e759",
+    "chapters/chapter-014.json": "dce95f757f8b91b30b4d6f25881433cc8e68ec5f7a4d54ed0ec722bcf08d1330",
+    "chapters/chapter-015.json": "16d9a8b0bf413271cc67df019718cbeb44044cca748de18de500d1c3f720ca47",
+    "chapters/chapter-016.json": "9abd0dda7b6df4a47fef44109905b7046e8073272b20b2b6bff452f43e0d242d",
+    "chapters/chapter-017.json": "fe75ee9727aae0ee51bffb423c437256fdc1a8c00c0b4e96c74d53b58a551736",
+    "chapters/chapter-018.json": "cbd065fd8f317b4704f4efe1a45de6670439f800575eaf6d15de17500d57107e",
+    "chapters/chapter-019.json": "a11eb3644200da1177e1928d1169d6ca62b43472f6a1ffdcf03fd22241223758",
+    "chapters/chapter-020.json": "7cc9345ed0f49bbf0149f1a54fd0ae59d6286ab5be05db81a2724d8c1c00a1a3",
+    "chapters/chapter-021.json": "9a44262c1e861e9560f7400b9304a9f73fdacc9e43f51a2eccb2d9ba789cc975",
+    "chapters/chapter-022.json": "1aad119774a433164dd7a919c26440d5f94394cbf16e8472edddeed3dee8bcac",
+    "chapters/chapter-023.json": "07481c63c5ffc01ac4353ef154b5ec753816eae1705858245ce55409f6f6cf78",
+    "chapters/chapter-024.json": "47ce7009c2fce1aed3b7dd3788648f65ea83450af754b9fe2b9159e22b9039b0",
+    "chapters/chapter-025.json": "41535a504390ba11d27e1f777902e915a9ee730d238ac4cbfa57ce1a07388d6f",
+    "checksum_manifest.json": "95b1a41c070589a0a0e0fc651871817620d04b5a929e306edba4bea12941564e",
+    "public_book.json": "739d9969e717e600cc2dc903767b5634614ebc62248944091ba2d343327320d4",
+    "reader_manifest.json": "9730b296abbe379d51ffe8661eccf348e27a71bcb63e080018bae64f1b673a91",
+    "source_evidence.json": "7e44eaefc904afdb4d62c8f2b30e42f123a175cfa8cf372ffb2f6ff31d99a3d0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "a18d55438fd850a26a53534232498d58d6a04a59d0b9e93f87f10dc553fba44a",
+      "file_sha256": "85ce75644a6ec4ffc55e89bf4acd2df4c3fbec7736b5ea9777ff061eab404475",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "927292e6ec46a4b4ee77e398fe6aa5d118ddb34d0b1f1b2b18be0f0bb65ccac1",
+      "file_sha256": "988e7b0abe33e4fcb1795ae3d51bab74e45a63dfe36ca9c43e794f727e9f3b1b",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "e8e5cd016f06aadd2427379b43c06b669257393c549ca068c8e856ed5dd8e42f",
+      "file_sha256": "c82da12c08f500e94ca82b22476ee681ccd7e241d1e1bf92cdf2a1c6806cd5ce",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "563b41d9c56b0f55d47b30499bbd3a3aaf4a25ca9a88bd2fd31145461bfdb778",
+      "file_sha256": "a8cea0965922c69dbf143ca2f6a00cdfbc965dd035d184829051cd437177ea55",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "4f2dca4cfddd1cf5c3e94f7daaabcdc0370517d523ddc01f17b54fd1d67621fe",
+      "file_sha256": "979e0f1e89d94cd50c671903bab76f521d8c36c7cae76b7899d4d91dc15766de",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "1e515351406da22a4db99c66c59e83d4d1712cf0eff71f32be870e05b339c4d2",
+      "file_sha256": "1ec0ce1d6f8245504e5f28560529b3812ab97ae263e129a4ac96b47ff07bf429",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "fea7fc335d082bf63fc77645bda854dd893b53a2ac021f96cfea82162b48d70a",
+      "file_sha256": "cf66872b1a78bcac7342e47407ac2aae4101d5b7cbe1377557b56c7e60b3f9b0",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "3c5e3997e9d07e0fccbdba8320205707ef2332baf7a1094570cb6feb4d2f27ab",
+      "file_sha256": "302f457fdfd7ea987fb9c82642d0a8c10fc6873a68292ae7a0d6f1bd4565ae86",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "b667b890332079a1d84b7fc0c69f49dab7330c0a4ea03ba97f9e25d7eba43bb4",
+      "file_sha256": "f7c1e0f18da6f9962e331edfd0d7bebec1b355277b25e5e91b2ffcd211e8fcc5",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "64b6394cddca33c912660161991a71bd108922c95ab25374666d11563afff7e4",
+      "file_sha256": "ce8c5fd408fa1c1e6c45d1b900a9d37b2638abc9976ec603df699c6adde541d2",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "6e2af377933dce1c23c74d0d1c394d19b4b9491318e4e939ef75f68ea9e843cb",
+      "file_sha256": "22e5a2b9749684f2195efac67c34722bc7b615d6e164e91daa8a18b7f850fc59",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "4f3035b634555ba3a55116c3deba9a178a570cc758385759310e64eb6c1295d9",
+      "file_sha256": "a3bb496c129483b4eecbc0c97593149d00488d437f43222cf488ab2d88cc16b3",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "b02644f40efd51535a24097be490cba6e93ec006af280f76433cc965b47ae203",
+      "file_sha256": "fd5c4f3454b4cb993039ac6b574ac2751bb84aa51a9a238370ef636ff9ac6653",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "09cd2fa1f0ac4ac0145a60e870a0b40db6ead4f57e7f7789b7935d1acf93823c",
+      "file_sha256": "57c2467a63e7bc31568cfc579aa89f28587bd034c50f636334e2d1be4154dd65",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "6226930e0a37dc3018948bf750dd80034143b5d5c9f183f6950887bc1a41fc49",
+      "file_sha256": "707bec9a5a48e272da5c4c652e7a30ad259e3659d88e9f9765e59242628af451",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "85aad17fe47a5548f173a1a1adb13e38eb7537ac529209b0ca20a625d5ead06f",
+      "file_sha256": "3dfd2ca826b55eae350b5508f97ddc4212ca4aa4fc3145a1a497eae74d8b7d1d",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "15107f5138d6106c72a4ebcc8889b66b6f3ea67880049523c082fb7805a98d99",
+      "file_sha256": "955f76f79bd3b39ce8f8bf76f7f7083bfbdf021847c21fe0994914ffc6c82136",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "3194ce4ebec2bf2f55affd3be969b39a126b085d780bdd6b9450e03fcb2432a8",
+      "file_sha256": "f6a9c6afacbf71f4e3639edee918f75ac4d8945a4889ceabb162fd987156e6f6",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "5c2bd1e38a20fa263a40b9bc646dc30c29a5dfdbfb671487e67e285d9ba0ba1e",
+      "file_sha256": "60d9187f044b8af4942384e76df78080d237d6d81e9d88b5d6c9a59160e16a1a",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "2b0d4a9175246b3d6bbc92dfa928e247398940f9191816561f51eb767bf7796e",
+      "file_sha256": "316fc033814e29a34b87085a44bf32c95d8c520e26f4a1f3cd45c8dc477679c5",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "a96aa36927ac25fe21aa19e2267d52a28d2b446d484488e3960584269ced448b",
+      "file_sha256": "05d7847df994f2c38bad3dae843d883c2f9eb1f62bb5e7c8e58a1fec2fc91690",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "3cd272668419f278d27080010a2462fe9f379ccf5ff71eac0c8e4a26b6b05f8c",
+      "file_sha256": "4df91c4e27a6da2f4cac63de8a390b60a002a827d95ee8824b7b4447f2e7ba67",
+      "id": "chapter-022"
+    },
+    {
+      "content_sha256": "c65ddc925607b824ad68406fc42fee1bcbe00abc03e2e1deb0af11908965c3ed",
+      "file_sha256": "46b64c0f5399d3762baa1863ebe340486afa8b4c25fb35fa5a7e0461474dd372",
+      "id": "chapter-023"
+    },
+    {
+      "content_sha256": "7ba8ff94961deaa2136e67678c35fe36a7f672d3237c2f03f3ec49d26b5bc497",
+      "file_sha256": "7849e4d01988fdcbb32274267deab91f400a592461ce9e6643802f76496027d0",
+      "id": "chapter-024"
+    },
+    {
+      "content_sha256": "7f1233bfe7826a523eabbd86e99a1bcd382934f3cd16297b8cac18ef9c1eb7a0",
+      "file_sha256": "1b54518fee858c75e3abc89b667ce75ea3778c49e7ba9924f07f951e1c56e94f",
+      "id": "chapter-025"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "94fd0f892db8fcd561ce5af31de96afebc563234306e84ce3afdbfc09292aaec",
+    "chapters/chapter-001.json": "85ce75644a6ec4ffc55e89bf4acd2df4c3fbec7736b5ea9777ff061eab404475",
+    "chapters/chapter-002.json": "988e7b0abe33e4fcb1795ae3d51bab74e45a63dfe36ca9c43e794f727e9f3b1b",
+    "chapters/chapter-003.json": "c82da12c08f500e94ca82b22476ee681ccd7e241d1e1bf92cdf2a1c6806cd5ce",
+    "chapters/chapter-004.json": "a8cea0965922c69dbf143ca2f6a00cdfbc965dd035d184829051cd437177ea55",
+    "chapters/chapter-005.json": "979e0f1e89d94cd50c671903bab76f521d8c36c7cae76b7899d4d91dc15766de",
+    "chapters/chapter-006.json": "1ec0ce1d6f8245504e5f28560529b3812ab97ae263e129a4ac96b47ff07bf429",
+    "chapters/chapter-007.json": "cf66872b1a78bcac7342e47407ac2aae4101d5b7cbe1377557b56c7e60b3f9b0",
+    "chapters/chapter-008.json": "302f457fdfd7ea987fb9c82642d0a8c10fc6873a68292ae7a0d6f1bd4565ae86",
+    "chapters/chapter-009.json": "f7c1e0f18da6f9962e331edfd0d7bebec1b355277b25e5e91b2ffcd211e8fcc5",
+    "chapters/chapter-010.json": "ce8c5fd408fa1c1e6c45d1b900a9d37b2638abc9976ec603df699c6adde541d2",
+    "chapters/chapter-011.json": "22e5a2b9749684f2195efac67c34722bc7b615d6e164e91daa8a18b7f850fc59",
+    "chapters/chapter-012.json": "a3bb496c129483b4eecbc0c97593149d00488d437f43222cf488ab2d88cc16b3",
+    "chapters/chapter-013.json": "fd5c4f3454b4cb993039ac6b574ac2751bb84aa51a9a238370ef636ff9ac6653",
+    "chapters/chapter-014.json": "57c2467a63e7bc31568cfc579aa89f28587bd034c50f636334e2d1be4154dd65",
+    "chapters/chapter-015.json": "707bec9a5a48e272da5c4c652e7a30ad259e3659d88e9f9765e59242628af451",
+    "chapters/chapter-016.json": "3dfd2ca826b55eae350b5508f97ddc4212ca4aa4fc3145a1a497eae74d8b7d1d",
+    "chapters/chapter-017.json": "955f76f79bd3b39ce8f8bf76f7f7083bfbdf021847c21fe0994914ffc6c82136",
+    "chapters/chapter-018.json": "f6a9c6afacbf71f4e3639edee918f75ac4d8945a4889ceabb162fd987156e6f6",
+    "chapters/chapter-019.json": "60d9187f044b8af4942384e76df78080d237d6d81e9d88b5d6c9a59160e16a1a",
+    "chapters/chapter-020.json": "316fc033814e29a34b87085a44bf32c95d8c520e26f4a1f3cd45c8dc477679c5",
+    "chapters/chapter-021.json": "05d7847df994f2c38bad3dae843d883c2f9eb1f62bb5e7c8e58a1fec2fc91690",
+    "chapters/chapter-022.json": "4df91c4e27a6da2f4cac63de8a390b60a002a827d95ee8824b7b4447f2e7ba67",
+    "chapters/chapter-023.json": "46b64c0f5399d3762baa1863ebe340486afa8b4c25fb35fa5a7e0461474dd372",
+    "chapters/chapter-024.json": "7849e4d01988fdcbb32274267deab91f400a592461ce9e6643802f76496027d0",
+    "chapters/chapter-025.json": "1b54518fee858c75e3abc89b667ce75ea3778c49e7ba9924f07f951e1c56e94f",
+    "checksum_manifest.json": "39549a781ecefbfea074c76429f2df5c8d6b5902fe575914bda39550cd61a6a9",
+    "public_book.json": "0286507f66d390a5e059e44da7e906725b87da28a69f1ed565f5f4cad8ea9ba9",
+    "publication_authorization.json": "e6771da5c21c9cf14d8c13291879e888e91073580aca54b977c1ef20b5549088",
+    "publication_manifest.json": "863edeee60e2fdfe93f5594b6b84b2ebdf709f76d82458e9e764320f4538bed5",
+    "reader_manifest.json": "09c43a09e62c55add70652fdc379abafc7b5dbf21bf0c099f37357f0e4f0d30d",
+    "rights_decision.json": "7686ba8252f8690224c619c7899138539abc3453586ee6aecb85f7d8a010e210",
+    "source_evidence.json": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "94fd0f892db8fcd561ce5af31de96afebc563234306e84ce3afdbfc09292aaec",
+      "public_book": "0286507f66d390a5e059e44da7e906725b87da28a69f1ed565f5f4cad8ea9ba9",
+      "reader_manifest": "09c43a09e62c55add70652fdc379abafc7b5dbf21bf0c099f37357f0e4f0d30d",
+      "source_evidence": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 25,
+      "chapter_index_sha256": "8afde04ff6bdb858b9b54156f65566353555d4ca5b386711bd1f072f59b0a3cc",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "85ce75644a6ec4ffc55e89bf4acd2df4c3fbec7736b5ea9777ff061eab404475",
+          "title": "THE STORY BEGUN BY WALTER HARTRIGHT",
+          "word_count": 15570
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "988e7b0abe33e4fcb1795ae3d51bab74e45a63dfe36ca9c43e794f727e9f3b1b",
+          "title": "VIII",
+          "word_count": 18093
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "c82da12c08f500e94ca82b22476ee681ccd7e241d1e1bf92cdf2a1c6806cd5ce",
+          "title": "XIII",
+          "word_count": 13338
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "a8cea0965922c69dbf143ca2f6a00cdfbc965dd035d184829051cd437177ea55",
+          "title": "THE STORY CONTINUED BY VINCENT GILMORE",
+          "word_count": 4156
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "979e0f1e89d94cd50c671903bab76f521d8c36c7cae76b7899d4d91dc15766de",
+          "title": "“JANE ANNE CATHERICK.”",
+          "word_count": 9500
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "1ec0ce1d6f8245504e5f28560529b3812ab97ae263e129a4ac96b47ff07bf429",
+          "title": "THE STORY CONTINUED BY MARIAN HALCOMBE",
+          "word_count": 13439
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "cf66872b1a78bcac7342e47407ac2aae4101d5b7cbe1377557b56c7e60b3f9b0",
+          "title": "THE SECOND EPOCH",
+          "word_count": 29504
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "302f457fdfd7ea987fb9c82642d0a8c10fc6873a68292ae7a0d6f1bd4565ae86",
+          "title": "“WILLIAM KYRLE.”",
+          "word_count": 13512
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "f7c1e0f18da6f9962e331edfd0d7bebec1b355277b25e5e91b2ffcd211e8fcc5",
+          "title": "VIII (section 2)",
+          "word_count": 13047
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "ce8c5fd408fa1c1e6c45d1b900a9d37b2638abc9976ec603df699c6adde541d2",
+          "title": "POSTSCRIPT BY A SINCERE FRIEND",
+          "word_count": 556
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "22e5a2b9749684f2195efac67c34722bc7b615d6e164e91daa8a18b7f850fc59",
+          "title": "THE STORY CONTINUED BY FREDERICK FAIRLIE, ESQ., OF LIMMERIDGE HOUSE[2]",
+          "word_count": 7499
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "a3bb496c129483b4eecbc0c97593149d00488d437f43222cf488ab2d88cc16b3",
+          "title": "THE STORY CONTINUED BY ELIZA MICHELSON",
+          "word_count": 16541
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "fd5c4f3454b4cb993039ac6b574ac2751bb84aa51a9a238370ef636ff9ac6653",
+          "title": "1. THE NARRATIVE OF HESTER PINHORN, COOK IN THE SERVICE OF COUNT FOSCO",
+          "word_count": 2449
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "57c2467a63e7bc31568cfc579aa89f28587bd034c50f636334e2d1be4154dd65",
+          "title": "2. THE NARRATIVE OF THE DOCTOR",
+          "word_count": 85
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "707bec9a5a48e272da5c4c652e7a30ad259e3659d88e9f9765e59242628af451",
+          "title": "3. THE NARRATIVE OF JANE GOULD",
+          "word_count": 129
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "3dfd2ca826b55eae350b5508f97ddc4212ca4aa4fc3145a1a497eae74d8b7d1d",
+          "title": "4. THE NARRATIVE OF THE TOMBSTONE",
+          "word_count": 44
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "955f76f79bd3b39ce8f8bf76f7f7083bfbdf021847c21fe0994914ffc6c82136",
+          "title": "5. THE NARRATIVE OF WALTER HARTRIGHT",
+          "word_count": 1966
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "f6a9c6afacbf71f4e3639edee918f75ac4d8945a4889ceabb162fd987156e6f6",
+          "title": "THE THIRD EPOCH",
+          "word_count": 26459
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "60d9187f044b8af4942384e76df78080d237d6d81e9d88b5d6c9a59160e16a1a",
+          "title": "VIII (section 3)",
+          "word_count": 20552
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "316fc033814e29a34b87085a44bf32c95d8c520e26f4a1f3cd45c8dc477679c5",
+          "title": "THE STORY CONTINUED BY MRS. CATHERICK",
+          "word_count": 5380
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "sha256": "05d7847df994f2c38bad3dae843d883c2f9eb1f62bb5e7c8e58a1fec2fc91690",
+          "title": "THE STORY CONTINUED BY WALTER HARTRIGHT",
+          "word_count": 23637
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "sha256": "4df91c4e27a6da2f4cac63de8a390b60a002a827d95ee8824b7b4447f2e7ba67",
+          "title": "THE STORY CONTINUED BY ISIDOR, OTTAVIO, BALDASSARE FOSCO",
+          "word_count": 44
+        },
+        {
+          "id": "chapter-023",
+          "order": 23,
+          "sha256": "46b64c0f5399d3762baa1863ebe340486afa8b4c25fb35fa5a7e0461474dd372",
+          "title": "THE COUNT’S NARRATIVE",
+          "word_count": 5634
+        },
+        {
+          "id": "chapter-024",
+          "order": 24,
+          "sha256": "7849e4d01988fdcbb32274267deab91f400a592461ce9e6643802f76496027d0",
+          "title": "THE STORY CONCLUDED BY WALTER HARTRIGHT",
+          "word_count": 5495
+        },
+        {
+          "id": "chapter-025",
+          "order": 25,
+          "sha256": "1b54518fee858c75e3abc89b667ce75ea3778c49e7ba9924f07f951e1c56e94f",
+          "title": "LIMMERIDGE.”",
+          "word_count": 40
+        }
+      ],
+      "content_hash": "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962",
+      "provenance_hash": "c28dca8892148e76c0f28ff691626473495ca7e0bc54eb3ca3132eabe78d626f",
+      "sanitized": true,
+      "source_hash": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "b6ab3aecf70dce3b9b6c6fa250da496d4f5b59060c48dd1a39f47ced5ea4a58c",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "woman-in-white",
+    "title": "The Woman in White"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

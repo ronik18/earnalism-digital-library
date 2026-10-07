@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "c7166be089d345bec5aeaf77fb7705f18317df9a542c84e8851c90d234272c0e",
+    "chapters/chapter-001.json": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4",
+    "checksum_manifest.json": "98bac0c607d9e455154f7ac6fd836a5f357fe9bbbd642da268a66b01eddc4bda",
+    "highlight_sync.json": "62a1055c31f4c62c42dce840de67a4c8b307031c645689e6958827c42aad6e10",
+    "public_book.json": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
+    "publication_authorization.json": "d3f1244de6ad42511865dee21a8c6176dd37fdcb0586f7dfaaad545a93a6680a",
+    "publication_manifest.json": "cd70eeea3dff622a884ae45651e2e41ab529a80fbfb6759e04fdba65165d5fe5",
+    "reader_manifest.json": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "rights_decision.json": "4e05d75dc999513ffa40b64be9b45533fe2cc71e9c25955c1befb26c10c30489",
+    "source_evidence.json": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
+      "file_sha256": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "c7166be089d345bec5aeaf77fb7705f18317df9a542c84e8851c90d234272c0e",
+    "chapters/chapter-001.json": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4",
+    "checksum_manifest.json": "98bac0c607d9e455154f7ac6fd836a5f357fe9bbbd642da268a66b01eddc4bda",
+    "highlight_sync.json": "62a1055c31f4c62c42dce840de67a4c8b307031c645689e6958827c42aad6e10",
+    "public_book.json": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
+    "publication_authorization.json": "d3f1244de6ad42511865dee21a8c6176dd37fdcb0586f7dfaaad545a93a6680a",
+    "publication_manifest.json": "cd70eeea3dff622a884ae45651e2e41ab529a80fbfb6759e04fdba65165d5fe5",
+    "reader_manifest.json": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "rights_decision.json": "4e05d75dc999513ffa40b64be9b45533fe2cc71e9c25955c1befb26c10c30489",
+    "source_evidence.json": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "c7166be089d345bec5aeaf77fb7705f18317df9a542c84e8851c90d234272c0e",
+      "public_book": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
+      "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+      "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "0f3aea58e55a738b0bee4ffbedd3347f8ff640859fc35f97bc3d651c8b8c17c0",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4",
+          "title": "The Adventure of the Greek Interpreter",
+          "word_count": 7059
+        }
+      ],
+      "content_hash": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
+      "provenance_hash": "3ee0c04a2a2833abf787603b9b3115fbca081a58298449cd344aaef42143bb2a",
+      "sanitized": true,
+      "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6645f25db762994ab5484750790d24afc580b9fac2e162054a2210bb1ba861b0",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-greek-interpreter",
+    "title": "The Adventure of the Greek Interpreter"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-the-greek-interpreter-pg834-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

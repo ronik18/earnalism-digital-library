@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "382a0796a091a69570df4e7078c08ce2bfffb84739e4663184fef36d9e02b984",
+    "chapters/chapter-001.json": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d",
+    "checksum_manifest.json": "7c0270fa4de86d5d545c606fdf43e125301426e2b23da7b542833030bdd00ba1",
+    "highlight_sync.json": "358902de8c736695a9487c209a2afd320a06db0bf5b708bb448f7dda8fa0d962",
+    "public_book.json": "c205138c303b3519e77c05a7b98d793b68272c52e225fdbc4fb351bafaa304b5",
+    "publication_authorization.json": "9d8b2249fe7d9ddff1d4a642011e5419a5453aa817ef529317e08bca7bce6d4c",
+    "publication_manifest.json": "f4c14cabea9c5e8dd1aef50dd4e115a8648e43c06ff5cb71424897eab29d8176",
+    "reader_manifest.json": "37da3217ee880206f6ff31d749dd3e417c4ef07e70b877bd1e7d6a273ea6773c",
+    "rights_decision.json": "013a6f9f592190612eadd251d5b925057bca8c49daab240e393dc16ae45d98bc",
+    "source_evidence.json": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+      "file_sha256": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "382a0796a091a69570df4e7078c08ce2bfffb84739e4663184fef36d9e02b984",
+    "chapters/chapter-001.json": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d",
+    "checksum_manifest.json": "7c0270fa4de86d5d545c606fdf43e125301426e2b23da7b542833030bdd00ba1",
+    "highlight_sync.json": "358902de8c736695a9487c209a2afd320a06db0bf5b708bb448f7dda8fa0d962",
+    "public_book.json": "c205138c303b3519e77c05a7b98d793b68272c52e225fdbc4fb351bafaa304b5",
+    "publication_authorization.json": "9d8b2249fe7d9ddff1d4a642011e5419a5453aa817ef529317e08bca7bce6d4c",
+    "publication_manifest.json": "f4c14cabea9c5e8dd1aef50dd4e115a8648e43c06ff5cb71424897eab29d8176",
+    "reader_manifest.json": "37da3217ee880206f6ff31d749dd3e417c4ef07e70b877bd1e7d6a273ea6773c",
+    "rights_decision.json": "013a6f9f592190612eadd251d5b925057bca8c49daab240e393dc16ae45d98bc",
+    "source_evidence.json": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "382a0796a091a69570df4e7078c08ce2bfffb84739e4663184fef36d9e02b984",
+      "public_book": "c205138c303b3519e77c05a7b98d793b68272c52e225fdbc4fb351bafaa304b5",
+      "reader_manifest": "37da3217ee880206f6ff31d749dd3e417c4ef07e70b877bd1e7d6a273ea6773c",
+      "source_evidence": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "2b63dcdf50cf54c1a4126acde13172d2cc5674fb9030059ca47831d46b6ecf66",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d",
+          "title": "Berenice",
+          "word_count": 3132
+        }
+      ],
+      "content_hash": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+      "provenance_hash": "b61876575bc649e0399ccd6971850b7cb41b9d5aa65bd2637411231f3c542744",
+      "sanitized": true,
+      "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "1edcfd40b3d248e43a98c05d95642ffec7237544132840c7ecdd0423b14225a6",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "berenice",
+    "title": "Berenice"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-berenice-pg2148-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

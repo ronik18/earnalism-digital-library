@@ -1,0 +1,116 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6",
+    "chapters/chapter-001.json": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+    "checksum_manifest.json": "3da5c824bbc5c47d398621e4f68bbac24ff372931cc1cf3ea40a5354b1f72654",
+    "cover_provenance.json": "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09",
+    "covers/back.webp": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+    "covers/front.webp": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+    "highlight_sync.json": "507cbe9cce27d5ea95499e0d0df7938001c8289062d9f24090055d07a67656ee",
+    "license_notice.json": "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+    "public_book.json": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+    "publication_authorization.json": "f027dab9926b4970e7f55d1eaaa049f188a6fd92d85bc94fd0d388b6bd3e511d",
+    "publication_manifest.json": "244f4a89daef5fe73efb9f1b46d6fd2ea3ed2315946f53cb59ed5b3b7d551682",
+    "reader_manifest.json": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "rights_decision.json": "945a033c58c60143b7e7c3f198ed415df8d5244868aa24a87edfc3258a1972ec",
+    "source_evidence.json": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+      "file_sha256": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6",
+    "chapters/chapter-001.json": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+    "checksum_manifest.json": "3da5c824bbc5c47d398621e4f68bbac24ff372931cc1cf3ea40a5354b1f72654",
+    "cover_provenance.json": "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09",
+    "covers/back.webp": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+    "covers/front.webp": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+    "highlight_sync.json": "507cbe9cce27d5ea95499e0d0df7938001c8289062d9f24090055d07a67656ee",
+    "license_notice.json": "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+    "public_book.json": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+    "publication_authorization.json": "f027dab9926b4970e7f55d1eaaa049f188a6fd92d85bc94fd0d388b6bd3e511d",
+    "publication_manifest.json": "244f4a89daef5fe73efb9f1b46d6fd2ea3ed2315946f53cb59ed5b3b7d551682",
+    "reader_manifest.json": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "rights_decision.json": "945a033c58c60143b7e7c3f198ed415df8d5244868aa24a87edfc3258a1972ec",
+    "source_evidence.json": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6",
+      "public_book": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+      "reader_manifest": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+      "source_evidence": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "ea2a502281b16c8afd29ed74fd2194eee47b026d12d1c4b8bf85a43352443cb3",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+          "title": "ক্ষুধিত পাষাণ",
+          "word_count": 3697
+        }
+      ],
+      "content_hash": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+      "provenance_hash": "c204c2faa373044ae1e5476b61cc0102027b5d2615e3bfca930781591c9270db",
+      "sanitized": true,
+      "source_hash": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78"
+    },
+    "generated_at": "2026-10-02T13:00:00Z",
+    "manifest_sha256": "d185dbe29a9d13f200af523154a5b33d019dcb1bbff6edfb50b02f2642c5fcd4",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-edfcf810c5",
+    "title": "ক্ষুধিত পাষাণ"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

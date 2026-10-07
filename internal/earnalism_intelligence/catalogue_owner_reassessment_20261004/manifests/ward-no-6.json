@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c",
+    "chapters/chapter-001.json": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0",
+    "checksum_manifest.json": "4eb9a4ec09b5d3a190c6b01742cb8c2dbc4eaf4090de4d6308d10b5b98fb34bc",
+    "highlight_sync.json": "97a33ea49129d57bd0e6e05383d0861a605c7493a1975a625fa497164fca2a09",
+    "public_book.json": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
+    "publication_authorization.json": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354",
+    "publication_manifest.json": "e425fc42e7f7491df62f52d8729011ba4ad3c19febfc029362e0a71a4d2339c4",
+    "reader_manifest.json": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+    "rights_decision.json": "7477040feb1aee1f81effa267fd78c1a133a53373892e41cdc6f5f76cbf4b522",
+    "source_evidence.json": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+      "file_sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c",
+    "chapters/chapter-001.json": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0",
+    "checksum_manifest.json": "4eb9a4ec09b5d3a190c6b01742cb8c2dbc4eaf4090de4d6308d10b5b98fb34bc",
+    "highlight_sync.json": "97a33ea49129d57bd0e6e05383d0861a605c7493a1975a625fa497164fca2a09",
+    "public_book.json": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
+    "publication_authorization.json": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354",
+    "publication_manifest.json": "e425fc42e7f7491df62f52d8729011ba4ad3c19febfc029362e0a71a4d2339c4",
+    "reader_manifest.json": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+    "rights_decision.json": "7477040feb1aee1f81effa267fd78c1a133a53373892e41cdc6f5f76cbf4b522",
+    "source_evidence.json": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c",
+      "public_book": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
+      "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+      "source_evidence": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1bd83b025ca8caf1630d6e1caa5395cbc533ac61f03497a44b05e2583d4ed276",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0",
+          "title": "Ward No. 6",
+          "word_count": 21581
+        }
+      ],
+      "content_hash": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+      "provenance_hash": "8cc37ace78f391060e0cb5cca3be211fb9aca2889b87e8fa87d46f5e224a82c7",
+      "sanitized": true,
+      "source_hash": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "33f535fb56f102ba16f2e480fb3181ac63b5de86be5f6fe31bdccc872097f978",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "ward-no-6",
+    "title": "Ward No. 6"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-ward-no-6-pg13409-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

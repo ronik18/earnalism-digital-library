@@ -1,0 +1,142 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "775dd82ac69b238dba6a49ea4660c7417ecbcb3d24cdcf6734d435ffe0e0cbc5",
+    "chapters/chapter-001.json": "9edd6a9c2fa925f9f6b7838d4a4f24e93d0dbeb8ba1d665be7d398614f2219e5",
+    "chapters/chapter-002.json": "8460693188a589a723c6a7ed7bb193baff0f51f6f8820477a79c674e59600555",
+    "chapters/chapter-003.json": "de67443eaa9bc98d86e44bc6b84bd82beda70ddd52c4bb10cf277d5c32d91fa5",
+    "checksum_manifest.json": "0097f77b592c71e054b2a9a219a28617a25513d4f6e88522b9824a62c2efa953",
+    "public_book.json": "18ff6d42955a67b58dcfbdc90c43393d875f11ce0ff7347fe37a67588b1b46a6",
+    "reader_manifest.json": "d37238e5dc93123ed7c85c3886968cc4ee939087fe434d1e4ab833af6bb87f36",
+    "source_evidence.json": "32e4d6c97a2f17c7933b44a23cefa3ee58fcd63370d098e7096b9abea2ec9b00"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1184a3e5b2d86508fc2c6bceac7519235581387e02e31a2c2dbfab03628ac942",
+      "file_sha256": "b085c901f84f95df539f37049a7845221d20a94c3aa69500eccb95a3707f8181",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "d0eafaa9c6af9c96bd56ce956a8f59ba94da1ec9e19b3e6cf38b4f8b206cc9ee",
+      "file_sha256": "efc77c2d14c0083ab697287a4997a6aa2e65a76c2a81f4191999e95ada167024",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "db74529db5f371fc0a75923645482180431e6b1048605c14f48efba1e12e143c",
+      "file_sha256": "00849753d1a23d1e870dbb842f57c192d8b0fd6e0e5a3dce6d901fa83250dfd0",
+      "id": "chapter-003"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "457c9c72d4a871b8f1b51a08487f4eed724466cef2150b998ce7a096155039f1",
+    "chapters/chapter-001.json": "b085c901f84f95df539f37049a7845221d20a94c3aa69500eccb95a3707f8181",
+    "chapters/chapter-002.json": "efc77c2d14c0083ab697287a4997a6aa2e65a76c2a81f4191999e95ada167024",
+    "chapters/chapter-003.json": "00849753d1a23d1e870dbb842f57c192d8b0fd6e0e5a3dce6d901fa83250dfd0",
+    "checksum_manifest.json": "0742714b1d0f0b9d4aeb418526d1fdeebfeccfa0ecef9986106c4acf68b9bd29",
+    "highlight_sync.json": "afe7dccb3f0b380935dbbe161a95d6443c7f9dbf432f8685faf483d65704d9f6",
+    "public_book.json": "b071d802fbdce64e46a62b8603544d44c6e10defaa231aa65312f6d3693eb231",
+    "publication_authorization.json": "aa96817040374a4b176aed02a61a2429ab3e1ab894fd96a65bd6c685482355de",
+    "publication_manifest.json": "912c621265b21ae3184f8adb165f163605e9158daff00881380a88b674beb3e6",
+    "reader_manifest.json": "46d0c427c820fe37b06797be3fbeef43db9b028190fe4c809656292831b6d0a2",
+    "rights_decision.json": "420d53b52a0c0a7702c0357429fab9db836c55bddfc8f686b823e81fa457dd73",
+    "source_evidence.json": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "457c9c72d4a871b8f1b51a08487f4eed724466cef2150b998ce7a096155039f1",
+      "public_book": "b071d802fbdce64e46a62b8603544d44c6e10defaa231aa65312f6d3693eb231",
+      "reader_manifest": "46d0c427c820fe37b06797be3fbeef43db9b028190fe4c809656292831b6d0a2",
+      "source_evidence": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 3,
+      "chapter_index_sha256": "5412984706d188009793b0b522cfe014ab7cf1896ba8d29217e880604661fb33",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "b085c901f84f95df539f37049a7845221d20a94c3aa69500eccb95a3707f8181",
+          "title": "I",
+          "word_count": 1770
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "efc77c2d14c0083ab697287a4997a6aa2e65a76c2a81f4191999e95ada167024",
+          "title": "II",
+          "word_count": 957
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "00849753d1a23d1e870dbb842f57c192d8b0fd6e0e5a3dce6d901fa83250dfd0",
+          "title": "III",
+          "word_count": 1275
+        }
+      ],
+      "content_hash": "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389",
+      "provenance_hash": "87d5e1db8a3e325c890052f97fd7458589e84e2e643002d47a48c7cde97e4df6",
+      "sanitized": true,
+      "source_hash": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "ecbca88507a8589b3604fb38a13560085e5781c4c0ddf387ba0c970011639772",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-monkeys-paw",
+    "title": "The Monkey's Paw"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

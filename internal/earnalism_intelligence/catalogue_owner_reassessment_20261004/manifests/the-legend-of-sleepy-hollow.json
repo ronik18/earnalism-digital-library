@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603",
+    "chapters/chapter-001.json": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b",
+    "checksum_manifest.json": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
+    "highlight_sync.json": "4c4314e581df037a9f213a04df22ae83208592c1fe7cc744132dae5ec6ce1119",
+    "public_book.json": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "publication_authorization.json": "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d",
+    "publication_manifest.json": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf",
+    "reader_manifest.json": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "rights_decision.json": "745324ddb8457d3b45f911342a0f47e0cb23ccfab687e4f6088a188162f46dc7",
+    "source_evidence.json": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+      "file_sha256": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603",
+    "chapters/chapter-001.json": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b",
+    "checksum_manifest.json": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
+    "highlight_sync.json": "4c4314e581df037a9f213a04df22ae83208592c1fe7cc744132dae5ec6ce1119",
+    "public_book.json": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "publication_authorization.json": "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d",
+    "publication_manifest.json": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf",
+    "reader_manifest.json": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "rights_decision.json": "745324ddb8457d3b45f911342a0f47e0cb23ccfab687e4f6088a188162f46dc7",
+    "source_evidence.json": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603",
+      "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+      "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+      "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "8286ebf1a73183face9fc5bb18aa4c0e75de30281e7ebb467d3b6ebfb6193517",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b",
+          "title": "The Legend of Sleepy Hollow",
+          "word_count": 12267
+        }
+      ],
+      "content_hash": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+      "provenance_hash": "b7475b107e7e4aab2574668b585f93f84e1e4bb1b919cb6a0995e4f656188db8",
+      "sanitized": true,
+      "source_hash": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "d3b8e3e01211a7c1a44576cb7656b6888b513d70eab8135206c0b26293d5b060",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-legend-of-sleepy-hollow",
+    "title": "The Legend of Sleepy Hollow"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

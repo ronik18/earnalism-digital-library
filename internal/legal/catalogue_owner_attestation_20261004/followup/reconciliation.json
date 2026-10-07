@@ -1,0 +1,53 @@
+{
+  "schema": "earnalism.catalogue-local-followup.v1",
+  "assessed_at": "2026-10-04T20:55:06.984456+00:00",
+  "audited_evidence_commit": "c41661547d57a1d08ac7d53ceaf63399dfe21e61",
+  "main": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+  "focused_slot": "PR #517 open; no push/open/merge authorized through competing slot",
+  "configured_live": {
+    "total": 52,
+    "English": 43,
+    "Bengali": 9
+  },
+  "inactive_total": 179,
+  "india_production_verified_live": "NOT VERIFIED",
+  "newly_locally_release_ready": [],
+  "NEXT_COMPLIANT_GO_LIVE_COHORT": [],
+  "cover_search_counts": {
+    "OWNER_ASSET_FOUND": 1,
+    "OWNER_ASSET_AMBIGUOUS": 15,
+    "OWNER_ASSET_NOT_FOUND": 66
+  },
+  "exact_runtime_cover_bindings_completed": 0,
+  "display_defects": {
+    "titles": [
+      "ছুটি",
+      "বলাই",
+      "একরাত্রি",
+      "পোস্টমাস্টার",
+      "সুভা"
+    ],
+    "resolved": 0,
+    "artwork_correction_required": 5,
+    "owner_action": "Export correctly shaped Bengali glyphs, complete readable lines, sufficient contrast, safe margins and no premature LIVE release wording. Preserve existing files."
+  },
+  "bharat_classification": "BLOCKED — RUNTIME REGISTRATION",
+  "bharat_remaining_gates": [
+    "CANONICAL_FRONT_DISPLAY_GRANT_AND_ASSET_DELIVERY_BINDING",
+    "CHANGED_PACKAGE_RIGHTS_REVIEW_AND_REGISTRATION",
+    "CATEGORY_TAXONOMY_REVIEW",
+    "LOCAL_RENDERING_AND_ENTITLEMENT_CANARY"
+  ],
+  "runtime_crop_analysis": "Authoritative artwork subtitle intact. Reference catalogue tile uses 2:3 object-fit:cover; Reader uses contain. Runtime subtitle clipping not reproduced in actual app browser; no CSS mutation or claim of acceptance. Staged front bytes avoid historical alias collision.",
+  "validation": {
+    "processor_reproduction": "PASS 231 titles / 162 packages / 1034 chapters",
+    "derived_checksums": "PASS 164",
+    "partition": "PASS 231 unique slugs",
+    "unit_tests": "12 passed",
+    "backend_tests": "128 passed / 6 same baseline failures",
+    "bharat_candidate_package": "PASS no issues",
+    "bharat_candidate_manifest": "PASS schema; BLOCKED with explicit runtime/rights/display/canary gates, unexposed; audio NOT_REQUESTED"
+  },
+  "deployment_trigger": "Evidence-only paths skip Vercel deploy under committed scope guard; committed Railway watches backend; dashboard override unknown",
+  "next_action": "Recheck #517; after focused slot frees, push evidence-only canonical branch and open scoped provenance PR. Validate Bharat exact changed package rights and HTTP registration/entitlement before any cohort."
+}

@@ -1,0 +1,122 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1",
+    "chapters/chapter-001.json": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+    "checksum_manifest.json": "e4e52b57267d3dc2034809fa4b11239e46c4d6c9453f1ce50ed2cc8726719967",
+    "highlight_sync.json": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab",
+    "public_book.json": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+    "publication_authorization.json": "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+    "publication_manifest.json": "b46670c54290cf58722bf7451ad1f1f1cc7387106ef53d8ce0aceef0a90a9108",
+    "reader_manifest.json": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+    "rights_decision.json": "376cd19977f3c577b912d469f8381e4a3e588381a9f040a38dfd21d5c7fb4867",
+    "source_evidence.json": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+      "file_sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1",
+    "chapters/chapter-001.json": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+    "checksum_manifest.json": "e4e52b57267d3dc2034809fa4b11239e46c4d6c9453f1ce50ed2cc8726719967",
+    "highlight_sync.json": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab",
+    "public_book.json": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+    "publication_authorization.json": "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+    "publication_manifest.json": "b46670c54290cf58722bf7451ad1f1f1cc7387106ef53d8ce0aceef0a90a9108",
+    "reader_manifest.json": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+    "rights_decision.json": "376cd19977f3c577b912d469f8381e4a3e588381a9f040a38dfd21d5c7fb4867",
+    "source_evidence.json": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1",
+      "public_book": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+      "reader_manifest": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+      "source_evidence": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+    },
+    "audio_release": {
+      "audio_sha256": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d678941412755f397e04c70e5d1bbdc52e115f93ae54b903ef942e56a7a48189",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+          "title": "Bharat at the Crossroads",
+          "word_count": 34761
+        }
+      ],
+      "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+      "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+      "sanitized": true,
+      "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "99683dcefa55da922227d49356c7889755bde6c38426994864b055329af51a62",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bharat-at-the-crossroads",
+    "title": "Bharat at the Crossroads"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-bharat-at-the-crossroads-first-party-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}
