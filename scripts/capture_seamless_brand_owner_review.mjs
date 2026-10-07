@@ -246,8 +246,10 @@ function hashValue(value) {
   return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
 }
 
+const fingerprintDiagnostics = new WeakMap();
+
 async function visualFingerprint(page) {
-  return page.evaluate((styleId) => {
+  const collected = await page.evaluate((styleId) => {
     const box = (node) => {
       const rect = node?.getBoundingClientRect();
       return rect ? [rect.left, rect.top, rect.right, rect.bottom, rect.width, rect.height].map((value) => Math.round(value * 100) / 100) : null;
@@ -263,7 +265,45 @@ async function visualFingerprint(page) {
       const style = getComputedStyle(node);
       return [node.tagName, style.fontStyle, style.fontWeight, style.fontSize, style.lineHeight, style.fontFamily, style.letterSpacing, node.textContent?.length || 0];
     });
+    const reader = document.querySelector(".reader-v2");
+    const viewport = reader?.querySelector(".reader-v2__visual-viewport");
+    const prose = reader?.querySelector('[data-testid="reader-reading-text"]');
+    const source = reader?.querySelector(".reader-v2__pagination-source");
+    const summarizeRegion = (selector) => {
+      const nodes = [...document.querySelectorAll(selector)];
+      const text = nodes.map(node => node.textContent || "").join("");
+      return { hash: textHash(text), length: text.length, count: nodes.length };
+    };
+    const readerDiagnostics = reader ? (() => {
+      const active = prose || source;
+      const style = active && getComputedStyle(active);
+      const activeFont = style ? { family: style.fontFamily, size: style.fontSize, lineHeight: style.lineHeight, style: style.fontStyle, weight: style.fontWeight, origin: prose ? "visible-prose" : "source" } : null;
+      const specification = style && `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      const relevantFaces = [...document.fonts].filter(face => style?.fontFamily.includes(face.family.replace(/["']/g, ""))).map(face => ({ family: face.family, style: face.style, weight: face.weight, status: face.status }));
+      const attributes = ["data-pagination-ready", "data-visual-page-index", "data-page-count", "data-book-page-count", "data-book-map-complete", "data-chapter-id", "data-source-page", "data-source-offset", "data-page-start", "data-page-end", "data-transport-chunks"];
+      return {
+        sampledAt: performance.now(),
+        regions: {
+          shell: summarizeRegion(".reader-v2"),
+          chapterTitle: summarizeRegion("#reader-v2-title"),
+          controls: summarizeRegion(".reader-v2__toolbar,.reader-v2__page-selector,.reader-v2__mobile-topbar"),
+          pageIndicator: summarizeRegion(".reader-v2__chapter > span,.reader-v2__mobile-topbar > span"),
+          visibleProse: summarizeRegion('[data-testid="reader-reading-text"]'),
+          source: summarizeRegion(".reader-v2__pagination-source"),
+          measurement: summarizeRegion(".reader-v2__pagination-measure"),
+          loading: summarizeRegion(".reader-v2__pagination-opening,.reader-v2__pagination-status,.reader-v2__page-loading"),
+        },
+        state: {
+          ...Object.fromEntries(attributes.map(name => [name, viewport?.getAttribute(name) ?? null])),
+          loading: Boolean(reader.querySelector(".reader-v2__pagination-opening,.reader-v2__pagination-status,.reader-v2__page-loading")),
+          protectedVisible: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')),
+        },
+        fontState: { status: document.fonts.status, active: activeFont, check: specification ? document.fonts.check(specification, "Aa") : null, relevantFaces },
+        fontResources: performance.getEntriesByType("resource").filter(entry => /\.(?:woff2?|ttf|otf)(?:[?#]|$)/i.test(entry.name)).map(entry => ({ path: new URL(entry.name).pathname, status: entry.responseStatus || null, start: entry.startTime, completed: entry.responseEnd, duration: entry.duration, transferSize: entry.transferSize, encodedBodySize: entry.encodedBodySize })),
+      };
+    })() : null;
     return {
+      diagnostics: readerDiagnostics,
       dom: textHash(root.textContent || ""),
       geometry: [box(document.documentElement), box(header), box(article), document.documentElement.scrollWidth, document.documentElement.scrollHeight],
       fonts,
@@ -271,6 +311,9 @@ async function visualFingerprint(page) {
       style_count: document.querySelectorAll(`style#${styleId}`).length,
     };
   }, STABILITY_STYLE_ID);
+  const { diagnostics, ...fingerprint } = collected;
+  fingerprintDiagnostics.set(fingerprint, diagnostics);
+  return fingerprint;
 }
 
 async function installVisualCaptureStabilization(page, browserName) {
@@ -369,7 +412,7 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     const after = await visualFingerprint(page);
     const unchanged = hashValue(before) === hashValue(after);
     trace.push({ label, name, before, after, unchanged });
-    if (!unchanged) assertCaptureFingerprintUnchanged({ before, after, metadata, screenshot: name, attempt: label, artifactPath: path.join(stateDirectory, "brand-capture-state-mismatch.json") });
+    if (!unchanged) assertCaptureFingerprintUnchanged({ before, after, beforeDetails: fingerprintDiagnostics.get(before), afterDetails: fingerprintDiagnostics.get(after), metadata, screenshot: name, attempt: label, artifactPath: path.join(stateDirectory, "brand-capture-state-mismatch.json") });
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
