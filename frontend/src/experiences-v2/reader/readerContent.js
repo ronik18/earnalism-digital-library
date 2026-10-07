@@ -27,8 +27,27 @@ export function readerSourceText(html) {
   return fragment.textContent;
 }
 
+// Display-only balanced emphasis. Hidden marker nodes retain canonical text offsets
+// and reconstruction in the measured DOM, while being absent visually and to AT.
+export function inlineEmphasis(value, key = "inline") {
+  const text = String(value);
+  const pattern = /(^|[\s(])([*_])([^*_\n]+?)\2(?=$|[\s).,;:!?])/g;
+  const output = []; let cursor = 0; let match;
+  while ((match = pattern.exec(text))) {
+    const phrase = match[3];
+    if (!phrase.trim() || phrase !== phrase.trim()) continue;
+    const start = match.index + match[1].length;
+    output.push(text.slice(cursor, start));
+    const marker = () => createElement("span", { className: "reader-v2__format-marker", "aria-hidden": true }, match[2]);
+    output.push(createElement("em", { key: `${key}-${start}` }, marker(), phrase, marker()));
+    cursor = start + phrase.length + 2;
+  }
+  output.push(text.slice(cursor));
+  return output;
+}
+
 function renderNode(node, key) {
-  if (node.nodeType === 3) return node.textContent;
+  if (node.nodeType === 3) return node.parentElement?.closest("em,i,strong,b,pre,code") ? node.textContent : inlineEmphasis(node.textContent, key);
   if (node.nodeType !== 1) return null;
   const tag = node.tagName.toLowerCase();
   if (OMIT.has(tag)) return null;

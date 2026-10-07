@@ -9,7 +9,7 @@ import "./reader-v2.css";
 import "./reader-pagination.css";
 import ReaderOpening from "./ReaderOpening";
 import useAuthorizedBookMap from "./useAuthorizedBookMap";
-import { ReaderContent } from "./readerContent";
+import { ReaderContent, inlineEmphasis } from "./readerContent";
 import useVisualPagination from "./useVisualPagination";
 import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
@@ -61,10 +61,10 @@ export function readerPageAccess({ canonicalPage = 1, authorized = false } = {})
 }
 
 const LINE_SPACING = {
-  // Preserve each language's existing leading, reduced by exactly 0.5pt.
-  comfortable: { en: "calc(1.75em - 0.5pt)", bn: "calc(1.8em - 0.5pt)" },
-  relaxed: { en: 1.88, bn: 1.93 },
-  airy: { en: 2.02, bn: 2.08 },
+  // Halve extra leading while retaining language-appropriate readable spacing.
+  comfortable: { en: 1.375, bn: 1.4 },
+  relaxed: { en: 1.44, bn: 1.465 },
+  airy: { en: 1.51, bn: 1.54 },
 };
 const LANGUAGE_TYPOGRAPHY = {
   en: { size: 1.125, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
@@ -338,7 +338,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
           <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
             <div ref={sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
-              {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
+              {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{inlineEmphasis(paragraph, String(index))}</p>)}
             </div>
             <div ref={bookMap.sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
               {bookMap.candidate && <ReaderContent html={bookMap.candidate.html} />}

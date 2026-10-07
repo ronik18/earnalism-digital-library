@@ -102,3 +102,6 @@
   .reader-v2__chapter > span { min-width: 0; overflow-wrap: anywhere; }
   .reader-v2__toolbar { min-width: max-content; }
 }
+
+/* Keep source-coordinate markers in measured and visible DOM without ink. */
+.reader-v2__body .reader-v2__format-marker { display: none; }

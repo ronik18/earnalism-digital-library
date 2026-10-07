@@ -245,7 +245,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     const text = container.querySelector('[data-testid="reader-reading-text"]');
     expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("beige");
     expect(text.style.fontSize).toBe("1.125rem");
-    expect(text.style.lineHeight).toBe("calc(1.75em - 0.5pt)");
+    expect(text.style.lineHeight).toBe("1.375");
     expect(text.style.fontFamily).toContain("EB Garamond");
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
     expect(text.style.fontSize).toBe("1.25rem");
@@ -264,7 +264,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     change(selects[0], "sepia");
     change(selects[2], "airy");
     expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("sepia");
-    expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("2.02");
+    expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("1.51");
     click(button("Close preferences"));
     expect(container.querySelector("#reader-v2-settings")).toBeNull();
     expect(document.activeElement).toBe(settingsToggle);
@@ -273,7 +273,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     root = createRoot(container);
     render();
     expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("sepia");
-    expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("2.02");
+    expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("1.51");
   });
 
   test("uses language-specific literary defaults and an accessible typography reset", () => {
@@ -281,7 +281,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     const text = container.querySelector('[data-testid="reader-reading-text"]');
     expect(container.querySelector("article").lang).toBe("bn");
     expect(text.style.fontSize).toBe("1.125rem");
-    expect(text.style.lineHeight).toBe("calc(1.8em - 0.5pt)");
+    expect(text.style.lineHeight).toBe("1.4");
     expect(text.style.fontWeight).toBe("500");
     expect(text.style.fontFamily).toContain("Noto Sans Bengali");
 
@@ -306,7 +306,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     const text = container.querySelector('[data-testid="reader-reading-text"]');
     expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("beige");
     expect(text.style.fontSize).toBe("1.5rem");
-    expect(text.style.lineHeight).toBe("1.88");
+    expect(text.style.lineHeight).toBe("1.44");
     expect(text.style.fontFamily).toContain("EB Garamond");
   });
 
