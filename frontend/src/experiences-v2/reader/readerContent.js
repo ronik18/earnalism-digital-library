@@ -15,6 +15,18 @@ function readableFragment(html) {
   return template.content;
 }
 
+export function readerSourceMediaCount(html) {
+  return [...readableFragment(html).querySelectorAll('img')].filter(node => safeUrl(node.getAttribute('src') || '')).length;
+}
+
+export function readerSourceText(html) {
+  const fragment = readableFragment(html);
+  fragment.querySelectorAll('img').forEach(node => {
+    if (!safeUrl(node.getAttribute('src') || '')) node.replaceWith(node.getAttribute('alt') || '');
+  });
+  return fragment.textContent;
+}
+
 function renderNode(node, key) {
   if (node.nodeType === 3) return node.textContent;
   if (node.nodeType !== 1) return null;

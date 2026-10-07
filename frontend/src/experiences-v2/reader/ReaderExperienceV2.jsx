@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Bookmark, ChevronLeft, ChevronRight, Clock3, Minus, Plus, Settings2, StickyNote, X } from "lucide-react";
 import ExperienceBottomNavigation from "../shared/ExperienceBottomNavigation";
 import ExperienceHeader from "../shared/ExperienceHeader";
@@ -6,6 +6,12 @@ import ExperienceIconButton from "../shared/ExperienceIconButton";
 import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
+import "./reader-pagination.css";
+import ReaderOpening from "./ReaderOpening";
+import useAuthorizedBookMap from "./useAuthorizedBookMap";
+import { ReaderContent } from "./readerContent";
+import useVisualPagination from "./useVisualPagination";
+import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
 import BookCoverImage from "../../components/BookCoverImage";
 import LicensedTextNotice from "../../components/LicensedTextNotice";
@@ -128,24 +134,84 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     ? (language === "bn" ? '"Noto Sans Bengali", sans-serif' : 'Outfit, sans-serif')
     : languageTypography.fontFamily;
   const fontWeight = fontMode === "sans" ? (language === "bn" ? 500 : 400) : languageTypography.fontWeight;
+  const sourceRef = useRef(null);
+  const viewportRef = useRef(null);
+  const measureRef = useRef(null);
+  const [localAnchor, setLocalAnchor] = useState(0);
+  const anchor = model.visualAnchor ?? localAnchor;
+  const pagination = useVisualPagination({ sourceRef, viewportRef, measureRef,
+    authorizationScope: model.bookMapScope,
+    revision: model.sourceRevision || `${page}:${model.chapterTitle}`,
+    typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
+  const visualIndex = anchor === 'end' ? Math.max(0, pagination.pages.length - 1) : pageForAnchor(pagination.pages, anchor);
+  const fragment = pagination.pages[visualIndex];
+  const visualTotal = pagination.pages.length;
+  const bookMap = useAuthorizedBookMap({ model, pagination, visualIndex, viewportRef,
+    typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
+  const pageIndicator = bookMap.complete && model.visualPageScope !== "chapter" ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
+    : `${visualIndex + 1} of ${visualTotal || '…'} in this chapter`;
+  const sourceAnchor = model.sourceAnchorForOffset?.(fragment?.anchor ?? fragment?.start ?? 0);
+  const mapSelection = bookMap.options.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.anchor.page === sourceAnchor?.page && option.anchor.offset === sourceAnchor?.offset && option.anchor.revision === sourceAnchor?.revision)?.key || '';
+  const onVisualAnchor = model.onVisualAnchor;
+  const changeAnchor = useCallback((offset) => {
+    setLocalAnchor(offset);
+    onVisualAnchor?.(offset);
+  }, [onVisualAnchor]);
+  const readingAnchor = sourceAnchor ? { offset: sourceAnchor.offset, revision: sourceAnchor.revision } : { offset: fragment?.anchor ?? fragment?.start ?? 0, revision: model.sourceRevision || '' };
+  const anchorPage = sourceAnchor?.page || page;
+  const windowFirst = model.windowFirst ?? navigationPage;
+  const windowLast = model.windowLast ?? navigationPage;
+  const hasPaginated = useRef(false);
+  const openingHasFocus = useRef(false);
+  const [failedLayout, setFailedLayout] = useState('');
+  const layoutKey = `${pagination.signature}:${fragment?.anchor ?? fragment?.start}`;
+  const layoutError = model.sourceAnchorError || (failedLayout === layoutKey ? 'This page could not be fitted safely. Change the text setting or viewport to retry.' : pagination.error);
+  useLayoutEffect(() => {
+    if (pagination.pending || !fragment || !viewportRef.current) return;
+    hasPaginated.current = true;
+    if (openingHasFocus.current) { headingRef.current?.focus(); openingHasFocus.current = false; }
+    if (viewportRef.current.scrollHeight > viewportRef.current.clientHeight + 1) {
+      // Reject a mismatched rendered result before paint; never reveal clipped prose.
+      viewportRef.current.setAttribute('data-pagination-overflow', 'true');
+      setFailedLayout(layoutKey);
+    } else viewportRef.current.removeAttribute('data-pagination-overflow');
+  }, [fragment, pagination.pending, layoutKey]);
+  const onVisualPageVisibility = model.onVisualPageVisibility;
+  useLayoutEffect(() => {
+    onVisualPageVisibility?.(!pagination.pending && fragment && !layoutError ? { start: fragment.start, end: fragment.end, media: fragment.media || [] } : null);
+    return () => onVisualPageVisibility?.(null);
+  }, [fragment, pagination.pending, layoutError, onVisualPageVisibility]);
   const busy = Boolean(access.busy);
-  const bookmarked = notebook.bookmarks.includes(page);
+  const matchesCurrentAnchor = (item) => {
+    if (typeof item.anchor.offset === 'string') return item.anchor.revision === readingAnchor.revision && (fragment?.structures?.includes(item.anchor.offset) || (item.anchor.offset.startsWith('media:') && fragment?.media?.includes(Number(item.anchor.offset.split(':')[1]))));
+    const mapped = model.offsetForSourceAnchor?.(item.page, item.anchor.offset, item.anchor.revision);
+    return mapped != null ? mapped >= (fragment?.start || 0) && mapped < Math.max(fragment?.end || 1, 1)
+      : item.page === page && item.anchor.revision === readingAnchor.revision
+        && item.anchor.offset >= (fragment?.start || 0) && item.anchor.offset < Math.max(fragment?.end || 1, 1);
+  };
+  const bookmarkAnchors = notebook.bookmarkAnchors || [];
+  const bookmarked = bookmarkAnchors.some(matchesCurrentAnchor)
+    || (notebook.bookmarks.includes(anchorPage) && !bookmarkAnchors.some(item => item.page === anchorPage));
   const updateNotebook = (value) => {
     const saved = saveReaderNotebook(notebookKey, value);
     setSavedNotebook({ key: notebookKey, value });
     setNotebookNotice(saved ? "Saved on this device." : "Storage is unavailable. Your changes last for this reading session only.");
   };
-  const toggleBookmark = () => updateNotebook({ ...notebook, bookmarks: bookmarked
-    ? notebook.bookmarks.filter((item) => item !== page) : [...notebook.bookmarks, page] });
+  const toggleBookmark = () => {
+    const anchors = bookmarked ? bookmarkAnchors.filter(item => !matchesCurrentAnchor(item))
+      : [...bookmarkAnchors, { page: anchorPage, anchor: readingAnchor }];
+    updateNotebook({ ...notebook, bookmarkAnchors: anchors, bookmarks: bookmarked && !anchors.some(item => item.page === anchorPage)
+      ? notebook.bookmarks.filter(item => item !== anchorPage) : [...new Set([...notebook.bookmarks, anchorPage])] });
+  };
   const addNote = (event) => {
     event.preventDefault();
     if (!noteText.trim() || notebook.notes.length >= 100) return;
-    updateNotebook({ ...notebook, notes: [...notebook.notes, { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, page, text: noteText.trim(), createdAt: new Date().toISOString() }] });
+    updateNotebook({ ...notebook, notes: [...notebook.notes, { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, page: anchorPage, anchor: readingAnchor, text: noteText.trim(), createdAt: new Date().toISOString() }] });
     setNoteText(""); setNoteEditorOpen(false);
   };
   const closeNotebook = () => { setNotebookOpen(false); notebookTriggerRef.current?.focus(); };
-  const atEnd = navigationPage >= totalPages;
-  const nextLabel = navigationPage === 3 && !access.authorized
+  const atEnd = !pagination.pending && Boolean(fragment) && windowLast >= totalPages && visualIndex >= visualTotal - 1;
+  const nextLabel = windowLast === (model.previewLimit || 3) && !access.authorized && visualIndex === visualTotal - 1
     ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
     : "Next page";
   const updateSetting = (name, value) => setSettings((previous) => ({ ...previous, [name]: value }));
@@ -181,16 +247,27 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     const next = Math.max(0, Math.min(READER_TEXT_SIZE_REM_STEPS.length - 1, textSizeStep + step));
     updateTextSize(READER_TEXT_SIZE_REM_STEPS[next]);
   };
-  const requestPage = useCallback((requestedPage) => {
+  const offsetForSourceAnchor = model.offsetForSourceAnchor;
+  const previousWindow = model.previousWindow;
+  const nextWindow = model.nextWindow;
+  const requestPage = useCallback((requestedPage, offset = 0, revision) => {
     const target = Number(requestedPage);
-    if (busy || !Number.isInteger(target) || target < 1 || target > totalPages || target === page) return;
+    const mapped = offsetForSourceAnchor?.(target, offset, revision);
+    if (!busy && mapped != null) { changeAnchor(mapped); return; }
+    if (busy || !Number.isInteger(target) || target < 1 || target > totalPages || target === page) { if (target === page && (!revision || revision === readingAnchor.revision)) changeAnchor(offset); return; }
     // Navigation requests never grant access. The route authorizes protected
     // pages before it fetches or displays their contents.
-    onRequestPage?.(target);
-  }, [busy, totalPages, page, onRequestPage]);
+    if (revision) onRequestPage?.(target, offset, revision); else if (offset) onRequestPage?.(target, offset); else onRequestPage?.(target);
+  }, [busy, totalPages, page, onRequestPage, changeAnchor, readingAnchor.revision, offsetForSourceAnchor]);
 
-  const [pageTurn, setPageTurn] = useState({ page, direction: "next" });
-  if (pageTurn.page !== page) setPageTurn({ page, direction: page < pageTurn.page ? "previous" : "next" });
+  const turnVisualPage = useCallback((direction) => {
+    if (busy || pagination.pending || layoutError) return;
+    const next = visualIndex + direction;
+    if (next >= 0 && next < visualTotal) changeAnchor(pagination.pages[next].anchor ?? pagination.pages[next].start);
+    else requestPage(direction < 0 ? (previousWindow ?? windowFirst - 1) : (nextWindow ?? windowLast + 1), direction < 0 ? 'end' : 0);
+  }, [busy, pagination, visualIndex, visualTotal, changeAnchor, requestPage, layoutError, previousWindow, nextWindow, windowFirst, windowLast]);
+  const [pageTurn, setPageTurn] = useState({ page, index: visualIndex, direction: "next" });
+  if (pageTurn.page !== page || pageTurn.index !== visualIndex) setPageTurn({ page, index: visualIndex, direction: page < pageTurn.page || (page === pageTurn.page && visualIndex < pageTurn.index) ? "previous" : "next" });
   const canvasRef = useRef(null);
   useEffect(() => { canvasRef.current?.scrollTo?.({ top: 0, behavior: "instant" }); }, [page]);
   useEffect(() => {
@@ -198,19 +275,19 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || settingsOpen || notebookOpen) return;
       const target = event.target;
       if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, a, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], [role="tablist"], audio, video, [contenteditable="true"]'))) return;
-      if (event.key === "ArrowLeft" && navigationPage > 1) { event.preventDefault(); requestPage(navigationPage - 1); }
-      if (event.key === "ArrowRight" && !atEnd) { event.preventDefault(); requestPage(navigationPage + 1); }
+      if (event.key === "ArrowLeft" && (windowFirst > 1 || visualIndex > 0)) { event.preventDefault(); turnVisualPage(-1); }
+      if (event.key === "ArrowRight" && !atEnd) { event.preventDefault(); turnVisualPage(1); }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [requestPage, navigationPage, atEnd, settingsOpen, notebookOpen]);
+  }, [turnVisualPage, navigationPage, visualIndex, atEnd, settingsOpen, notebookOpen, windowFirst]);
 
   return (
     <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
       <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigate={onNavigate} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key === "about" ? "about" : item.key, item.to)} trailingLabel="Library" showDesktopNavigation />
       <header className="reader-v2__mobile-topbar" aria-label="Reader actions">
         <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
-        <span><small>Page</small>{page} of {totalPages}</span>
+        <span><small>Page</small>{pageIndicator}<small>Section {page} of {totalPages}</small></span>
         <div>
           <button type="button" onClick={() => resizeText(-1)} disabled={textSizeStep === 0} aria-label="Decrease text size">A−</button>
           <button type="button" onClick={() => resizeText(1)} disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} aria-label="Increase text size">A+</button>
@@ -218,6 +295,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         </div>
       </header>
       <div className="reader-v2__layout">
+        {pagination.pending && !hasPaginated.current && <div className="reader-v2__pagination-opening"><ReaderOpening embedded book={{ title: model.title, author: model.author }} onLibrary={() => onNavigate?.("library")} onEscapeFocus={focused => { openingHasFocus.current = focused; }} busy={busy} /></div>}
         <aside className="reader-v2__rail" aria-label="Reader controls">
           <div className="reader-v2__book"><h2>{model.title}</h2><span>{model.author}</span></div>
           {progress !== null && <div className="reader-v2__metric"><span>Reading Progress</span><strong>{progress}%</strong><i><b style={{ width: `${progress}%` }} /></i></div>}
@@ -229,11 +307,11 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         </aside>
 
         <div className="reader-v2__page-frame">
-          <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || navigationPage <= 1} onClick={() => requestPage(navigationPage - 1)}><ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" /></button>
-          <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" disabled={busy || atEnd} onClick={() => requestPage(navigationPage + 1)}><ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" /></button>
+          <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" /></button>
+          <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}><ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" /></button>
         <article ref={canvasRef} className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
           <header className="reader-v2__chapter">
-            <span aria-live="polite" aria-atomic="true">{model.chapterEyebrow}</span>
+            <span aria-live="polite" aria-atomic="true">Page {pageIndicator} · section {page} of {totalPages}</span>
             <div className="reader-v2__toolbar">
               <ExperienceIconButton label="Decrease text size" disabled={textSizeStep === 0} onClick={() => resizeText(-1)}><Minus size={16} /></ExperienceIconButton>
               <output aria-label="Text size">Aa · {formatRem(textSizeRem)}</output>
@@ -253,12 +331,24 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             <button type="button" onClick={resetTypography}>Reset typography</button>
             <button type="button" onClick={closeSettings}>Close preferences</button>
           </section>}
-          <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={page} disabled={busy} onChange={(event) => requestPage(event.target.value)}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>Page {index + 1}</option>)}</select></label>
+          <label className="reader-v2__page-selector">Go to page{bookMap.options.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
+            const option = bookMap.options.find(item => item.key === event.target.value);
+            if (option) requestPage(option.anchor.page, option.anchor.offset, option.anchor.revision);
+          }}>{bookMap.options.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={visualIndex} disabled={busy || pagination.pending} onChange={event => pagination.pages[Number(event.target.value)] && changeAnchor(pagination.pages[Number(event.target.value)].anchor ?? pagination.pages[Number(event.target.value)].start)}>{pagination.pages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
-          <div key={page} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
-            <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
+          <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
+            <div ref={sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
               {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
             </div>
+            <div ref={bookMap.sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
+              {bookMap.candidate && <ReaderContent html={bookMap.candidate.html} />}
+            </div>
+            <div ref={bookMap.measureRef} className="reader-v2__body reader-v2__pagination-measure" aria-hidden="true" inert={true} />
+            <div ref={measureRef} className="reader-v2__body reader-v2__pagination-measure" aria-hidden="true" inert={true} />
+            {pagination.pending ? <p className="reader-v2__pagination-status" role={hasPaginated.current ? "status" : undefined} aria-hidden={!hasPaginated.current}>Preparing this page…</p> : layoutError ? <p role="alert">{layoutError}</p> :
+              <div key={`${page}:${visualIndex}`} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
+                <div className="reader-v2__body" data-testid="reader-reading-text" data-continuation={fragment?.start > 0} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }} dangerouslySetInnerHTML={{ __html: fragment?.html || '' }} />
+              </div>}
           </div>
           {model.pageError && <p className="reader-v2__status" role={model.pageErrorDenied ? "alert" : "status"}>
             {model.pageError}
@@ -267,10 +357,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
           <LicensedTextNotice book={model.book} />
           <footer className="reader-v2__continuation">
-            <span>{atEnd ? "You have reached the end of this book." : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
+            <span>{atEnd ? "You have reached the end of this book." : model.windowFirst != null ? (access.authorized ? "Authorized chapter" : "Free preview") : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
             <nav aria-label="Page navigation">
-              <button type="button" disabled={busy || navigationPage <= 1} onClick={() => requestPage(navigationPage - 1)}><ChevronLeft size={16} /> Previous page</button>
-              <button type="button" disabled={busy || atEnd} onClick={() => requestPage(navigationPage + 1)}>{atEnd ? "End of book" : nextLabel} <ChevronRight size={16} /></button>
+              <button type="button" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={16} /> Previous page</button>
+              <button type="button" disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}>{atEnd ? "End of book" : nextLabel} <ChevronRight size={16} /></button>
             </nav>
           </footer>
         </article>
@@ -288,9 +378,9 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             </div>
             <div id="reader-notebook-panel" role="tabpanel" aria-labelledby={`reader-${notebookTab}-tab`}>
               {notebookTab === "notes" ? <>
-                {notebook.notes.length ? <ul className="reader-v2__note-list">{notebook.notes.map((note) => <li key={note.id}><button type="button" onClick={() => requestPage(note.page)}>Page {note.page}</button><p>{note.text}</p><button type="button" aria-label={`Delete note on page ${note.page}`} onClick={() => updateNotebook({ ...notebook, notes: notebook.notes.filter((item) => item.id !== note.id) })}>Delete note</button></li>)}</ul> : <p className="reader-v2__notebook-empty">Keep a thought from this page.</p>}
+                {notebook.notes.length ? <ul className="reader-v2__note-list">{notebook.notes.map((note) => <li key={note.id}><button type="button" onClick={() => requestPage(note.page, note.anchor?.offset || 0, note.anchor?.revision)}>Section {note.page}</button><p>{note.text}</p><button type="button" aria-label={`Delete note on page ${note.page}`} onClick={() => updateNotebook({ ...notebook, notes: notebook.notes.filter((item) => item.id !== note.id) })}>Delete note</button></li>)}</ul> : <p className="reader-v2__notebook-empty">Keep a thought from this page.</p>}
                 {noteEditorOpen ? <form onSubmit={addNote}><label>Note for page {page}<textarea autoFocus value={noteText} maxLength={2000} onChange={(event) => setNoteText(event.target.value)} /></label><button type="submit" disabled={!noteText.trim()}>Save note</button><button type="button" onClick={() => setNoteEditorOpen(false)}>Cancel</button></form> : <button type="button" className="reader-v2__add-note" disabled={notebook.notes.length >= 100} onClick={() => setNoteEditorOpen(true)}><Plus size={15} /> New note</button>}
-              </> : <>{notebook.bookmarks.length ? <ul className="reader-v2__bookmark-list">{notebook.bookmarks.map((item) => <li key={item}><button type="button" disabled={busy} onClick={() => requestPage(item)}>Page {item}</button></li>)}</ul> : <p className="reader-v2__notebook-empty">Your saved pages appear here.</p>}<button type="button" onClick={toggleBookmark}>{bookmarked ? "Remove page bookmark" : "Bookmark this page"}</button></>}
+              </> : <>{notebook.bookmarks.length ? <ul className="reader-v2__bookmark-list">{notebook.bookmarks.map((item) => <li key={item}><button type="button" disabled={busy} onClick={() => requestPage(item)}>Page {item}</button>{bookmarkAnchors.filter(entry => entry.page === item).map(entry => <button key={`${entry.anchor.revision}:${entry.anchor.offset}`} type="button" disabled={busy} onClick={() => requestPage(item, entry.anchor.offset, entry.anchor.revision)}>Saved passage {typeof entry.anchor.offset === 'string' ? 'illustration' : entry.anchor.offset + 1}</button>)}</li>)}</ul> : <p className="reader-v2__notebook-empty">Your saved pages appear here.</p>}<button type="button" onClick={toggleBookmark}>{bookmarked ? "Remove page bookmark" : "Bookmark this page"}</button></>}
             </div>
             <p className="reader-v2__notebook-storage">Notes and bookmarks stay on this device.</p>
             {notebookNotice && <p role="status">{notebookNotice}</p>}

@@ -1,0 +1,104 @@
+/* The sheet is fixed; only the side panels may scroll. */
+.reader-v2__page-frame .reader-v2__canvas { overflow-y: hidden; scrollbar-gutter: auto; display: flex; flex-direction: column; position: relative; padding-block: 16px; }
+.reader-v2__canvas > :not(.reader-v2__visual-viewport) { flex-shrink: 0; }
+.reader-v2__visual-viewport { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; margin-block: 12px; display: flow-root; }
+.reader-v2__visual-viewport .reader-v2__body { margin: 0; max-width: none; display: flow-root; }
+.reader-v2__pagination-source, .reader-v2__pagination-measure { position: fixed; left: -100000px; top: 0; visibility: hidden; pointer-events: none; width: 100%; height: auto; contain: layout style; }
+/* Fitting reads width and typography synchronously. The shared reduced-motion
+   duration must not transition these invisible source/measurement surfaces. */
+.reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure) { transition: none !important; }
+/* Descendant media is resized synchronously too. Reduced-motion's global
+   nonzero duration must not make a fitted image measure at its old zero size. */
+.reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure) * { transition: none !important; }
+.reader-v2__visual-viewport .reader-v2__page-content { height: 100%; }
+.reader-v2__body img { max-height: var(--reader-visual-height, 100%); object-fit: contain; }
+.reader-v2__body[data-continuation="true"] > p:first-of-type::first-letter,
+.reader-v2__body p[data-reader-continuation="true"]::first-letter { float: none !important; padding: 0 !important; font-size: 1em !important; line-height: inherit !important; }
+.reader-v2__chapter { padding-bottom: 8px; }
+.reader-v2__chapter h1 { font-size: clamp(22px, 2.5vw, 34px); margin-top: 6px; }
+.reader-v2__page-selector { margin-block: 8px 0; }
+.reader-v2__continuation { padding: 6px 10px; }
+.reader-v2__continuation nav { display: none; }
+.reader-v2__settings { position: absolute; z-index: 4; inset: 8px 8px auto; max-height: calc(100% - 16px); overflow-y: auto; background: var(--reader-canvas); border: 1px solid var(--reader-border); }
+.reader-v2__context { min-height: 0; overflow-y: auto; }
+@media (max-height: 500px) { .reader-v2__page-frame .reader-v2__canvas { padding: 8px 18px; } .reader-v2__chapter h1 { font-size: 20px; line-height: 1.1; } .reader-v2__visual-viewport { margin-block: 6px; } .reader-v2__page-selector select { min-height: 32px; padding-block: 3px; } .reader-v2__chapter .reader-v2__toolbar .experience-icon-button { height: 32px; min-height: 32px; } .reader-v2__dateline { display: none; } }
+@media (max-width: 767px) { .reader-v2__page-frame .reader-v2__canvas { padding-inline: var(--reader-mobile-gutter); } .reader-v2__chapter h1 { max-width: none; font-size: 24px; } .reader-v2__continuation { position: static; margin: 0; padding: 6px; } }
+/* A decorative drop cap cannot consume an entire landscape reading surface. */
+@media (max-height: 500px) {
+  .reader-v2__body > p:first-of-type::first-letter { float: none !important; padding: 0 !important; font-size: 1em !important; line-height: inherit !important; }
+}
+/* Heading margins must not consume a short page before its first readable line. */
+.reader-v2__body :is(h1, h2, h3, h4, h5, h6) { margin-block: 0 .25em; }
+@media (max-height: 500px) {
+  .reader-v2__table-scroll th, .reader-v2__table-scroll td { padding-block: .2em; }
+  .reader-v2__body pre { margin-block: 0; padding-block: .25em; }
+  .reader-v2__body blockquote { margin-block: 0; padding-block: 0; }
+  .reader-v2__body blockquote p { margin-block: 0; }
+  .reader-v2__body :is(ul, ol, dl) { margin-block: 0; }
+}
+
+.reader-v2__layout { position: relative; }
+.reader-v2__pagination-opening { position: absolute; inset: 0; z-index: 5; }
+.reader-v2__pagination-opening .reader-opening { min-height: 0; height: 100%; }
+/* Short screens reclaim spacing, not prose size or interactive hit targets. */
+@media (max-height: 500px) {
+  .reader-v2__page-frame .reader-v2__canvas { padding-block: 4px; }
+  .reader-v2__chapter { padding-bottom: 4px; }
+  .reader-v2__chapter h1 { margin-top: 0; }
+  .reader-v2__toolbar output { display: none; }
+  .reader-v2__chapter .reader-v2__toolbar .experience-icon-button { width: 44px; height: 44px; min-height: 44px; }
+  .reader-v2__page-selector { margin-block: 0; }
+  .reader-v2__page-selector select { min-height: 44px; }
+  .reader-v2__visual-viewport { margin-block: 4px; }
+  .reader-v2__continuation { padding-block: 2px; }
+}
+/* Preserve code whitespace while measuring every visible wrapped line. */
+.reader-v2__body pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow: visible; max-width: 100%; }
+
+/* Transport index changes must not resize the chapter reading surface. */
+.reader-v2__continuation > span { display: block; line-height: 20px; min-height: 20px; }
+
+/* Tall table rows retain cell order in a labelled linear presentation. */
+.reader-v2__linear-table { border-block: 1px solid var(--reader-border); overflow-wrap: anywhere; }
+.reader-v2__linear-table [role="row"] { border-bottom: 1px solid var(--reader-border); }
+.reader-v2__linear-table :is([role="cell"], [role="columnheader"]) { padding: .2em 0; }
+.reader-v2__linear-table [role="columnheader"] { font-weight: 700; }
+/* Keep one line of chapter context without taking prose space in landscape. */
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 18px; }
+}
+
+/* Chapter context reserves the same two-line slot for every chapter. The full
+   heading remains accessible and is present in the paginated chapter itself. */
+.reader-v2__chapter h1 { line-height: 1.2; height: 2.4em; min-height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { display: block; height: 1.2em; min-height: 1.2em; -webkit-line-clamp: unset; }
+}
+
+/* In landscape, the chapter title remains in the reading content; reclaim
+   redundant chrome while retaining the selector and 44px controls. */
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* The adjacent arrows are the single page-turn controls at every breakpoint. */
+.reader-v2__page-frame .reader-v2__continuation nav { display: none; }
+@media (max-height: 500px) {
+  .reader-v2__page-frame .reader-v2__canvas { padding-block: 0; }
+  .reader-v2__chapter { padding-bottom: 0; }
+  .reader-v2__visual-viewport { margin-block: 2px; }
+  .reader-v2__page-frame .reader-v2__continuation { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); }
+}
+@media (max-height: 500px) and (max-width: 767px) {
+  .reader-v2__page-frame { padding: 0 48px; }
+  .reader-v2__page-frame .reader-v2__page-arrow { top: 50%; bottom: auto; transform: translateY(-50%); }
+  .reader-v2__page-frame .reader-v2__page-arrow--previous { left: max(0px, env(safe-area-inset-left)); }
+  .reader-v2__page-frame .reader-v2__page-arrow--next { right: max(0px, env(safe-area-inset-right)); }
+  .reader-v2__page-frame .reader-v2__page-arrow:active:not(:disabled) { transform: translateY(-50%) scale(.94); }
+}
+/* Chapter-local labels must yield space to the fixed, accessible toolbar. */
+@media (min-width: 768px) {
+  .reader-v2__chapter { grid-template-columns: minmax(0, 1fr) auto; }
+  .reader-v2__chapter > span { min-width: 0; overflow-wrap: anywhere; }
+  .reader-v2__toolbar { min-width: max-content; }
+}

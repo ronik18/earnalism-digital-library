@@ -13,11 +13,38 @@ function desktopDeclaration(selector, property) {
 }
 
 describe('Reader reading measure and cover layout', () => {
+  test('hidden source and fitting surfaces cannot transition synchronous geometry or typography', () => {
+    const pagination = postcss.parse(fs.readFileSync(path.join(__dirname, 'reader-pagination.css'), 'utf8'));
+    const declarations = [];
+    pagination.walkRules('.reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure)', rule => {
+      rule.walkDecls('transition', declaration => declarations.push(declaration));
+    });
+    expect(declarations).toHaveLength(1);
+    expect(declarations[0].value).toBe('none');
+    expect(declarations[0].important).toBe(true);
+  });
   test('the desktop center track owns the reading measure, without a second prose inset', () => {
     expect(desktopDeclaration('.reader-v2__layout', 'grid-template-columns')).toBe('minmax(14rem, 17rem) minmax(0, 48rem) minmax(11rem, 13rem)');
     expect(desktopDeclaration('.reader-v2__body', 'inline-size')).toBe('100%');
     expect(desktopDeclaration('.reader-v2__body', 'margin')).toBe('24px 0');
     expect(desktopDeclaration('.reader-v2__body p', 'text-indent')).toBe('0');
+  });
+  test('fitted media and nested prose cannot inherit reduced-motion geometry transitions', () => {
+    const pagination = postcss.parse(fs.readFileSync(path.join(__dirname, 'reader-pagination.css'), 'utf8'));
+    const declarations = [];
+    pagination.walkRules('.reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure) *', rule => {
+      rule.walkDecls('transition', declaration => declarations.push(declaration));
+    });
+    expect(declarations).toHaveLength(1);
+    expect(declarations[0].value).toBe('none');
+    expect(declarations[0].important).toBe(true);
+    // The visible page is not targeted: its safety guard and motion policy
+    // remain independent of hidden synchronous measurement.
+    expect(pagination.toString()).not.toContain('.reader-v2__page-content * { transition: none');
+  });
+  test('page arrival releases its transform after completion without changing prose geometry', () => {
+    expect(desktopDeclaration('.reader-v2__page-content', 'animation')).toBe('readerPageForward 280ms ease backwards');
+    expect(desktopDeclaration('.reader-v2__page-content--previous', 'animation-name')).toBe('readerPageReverse');
   });
   test('the cover uses its own portrait aspect ratio rather than stretching to the full chapter height', () => {
     expect(desktopDeclaration('.reader-v2__book-cover', 'height')).toBe('auto');

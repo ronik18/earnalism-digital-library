@@ -6,6 +6,12 @@ import { userApi } from "../../lib/api";
 import * as pass from "../../lib/readingPassApi";
 import { resetReaderPageCacheForTests } from "./readerPageCache";
 
+const { createHash } = require('crypto');
+const chunkHash = n => createHash('sha256').update(`<p>Page ${n} manuscript.</p>`).digest('hex');
+const previousCrypto = globalThis.crypto;
+beforeAll(() => Object.defineProperty(globalThis, 'crypto', { configurable: true, value: { subtle: { digest: async (_, bytes) => Uint8Array.from(createHash('sha256').update(Buffer.from(bytes)).digest()).buffer } } }));
+afterAll(() => Object.defineProperty(globalThis, 'crypto', { configurable: true, value: previousCrypto }));
+
 let mockUser = { id: "test-reader" };
 const mockSetUserBalance = jest.fn();
 // CRA's Jest 27 does not resolve react-router-dom 7's conditional exports.
@@ -26,10 +32,10 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 const manifest = (slug = "test-book") => ({
   book: { slug, title: "The test edition", author: "Test author", language: "English" },
   access: { reading_pass: { enabled: true, total_pages: 7 }, wallet_seconds: 600 },
-  canonical_pages: { page_count: 7, pages: Array.from({ length: 7 }, (_, i) => ({ page_number: i + 1, chapter_id: "c1" })) },
+  canonical_pages: { page_count: 7, pages: Array.from({ length: 7 }, (_, i) => ({ page_number: i + 1, page_id: `fixture:${i + 1}`, chapter_id: "c1", content_hash: chunkHash(i + 1) })) },
   chapters: [{ id: "c1", title: "Chapter one" }],
 });
-const page = (n, slug = "test-book") => ({ book_slug: slug, page_index: n, chapter_id: "c1", chapter_title: "Chapter one", total_pages: 7, segmentation_version: "isolated-test-segments-v1", manifest_version: "isolated-test-manifest-v1", is_preview: n <= 3, content: `<p>Page ${n} manuscript.</p>` });
+const page = (n, slug = "test-book") => ({ book_slug: slug, page_index: n, chapter_id: "c1", chapter_title: "Chapter one", total_pages: 7, segmentation_version: "isolated-test-segments-v1", manifest_version: "isolated-test-manifest-v1", is_preview: n <= 3, content_sha256: chunkHash(n), content: `<p>Page ${n} manuscript.</p>` });
 const response = (extra = {}) => ({ session_id: "session-1", lease_token: "opaque-test-token", lease_version: 1, lease_expires_at: new Date(Date.now() + 20000).toISOString(), balance_seconds: 600, heartbeat_seconds: 10, status: "Running", content_type: "text", content_id: "test-book", ...extra });
 let container, root, navigate;
 function LocationProbe() {
@@ -60,6 +66,12 @@ beforeEach(() => {
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
   jest.spyOn(document, "hasFocus").mockReturnValue(true);
   jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+  // JSDOM has no layout engine. Browser acceptance separately measures real dimensions.
+  jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(600);
+  jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(600);
+  jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () {
+    return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('p').length * 400 : 0;
+  });
   userApi.get.mockImplementation(async (url) => ({ data: manifest(url.includes("other-book") ? "other-book" : "test-book") }));
   pass.getReadingPassPage.mockImplementation(async (slug, n) => page(n, slug));
   pass.startReadingPassSession.mockImplementation(async () => response());
@@ -136,10 +148,13 @@ test("lease and settlement balances supersede a stale profile without refetching
   mockUser = { ...mockUser, reading_seconds_balance: 1234 };
   await mount("/reader/test-book?p=4");
   expect(text()).toContain("9 minutes left");
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
   pass.endReadingPassSession.mockResolvedValueOnce({ ended: true, session_id: "session-1", balance_seconds: 321 });
   await click("Previous page");
   expect(text()).toContain("Page 3 manuscript.");
+  // Explicit browser navigation back to preview settles the lease. Internal
+  // visual turns retain the valid map until the server pauses or expires it.
+  await act(async () => navigate("/reader/test-book?p=3"));
   expect(text()).toContain("5 minutes left");
   expect(mockSetUserBalance).toHaveBeenLastCalledWith(321, "test-reader");
 });
@@ -182,54 +197,36 @@ test("three heartbeat renewals preserve the page and never refetch its content",
     expect(text()).not.toMatch(/unavailable|Opening page|Reading paused/i);
   }
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(3);
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
 });
 
 test("a delayed page is loading rather than unavailable", async () => {
   const pending = deferred(); pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
   await mount("/reader/test-book?p=1");
-  expect(text()).toContain("Opening page"); expect(text()).not.toMatch(/unavailable/i);
+  expect(text()).toContain("Opening your page"); expect(text()).not.toMatch(/unavailable/i);
   await act(async () => pending.resolve(page(1)));
   expect(text()).toContain("Page 1 manuscript.");
 });
 
-test("a slow authorized page turn retains readable content, then swaps to the canonical page", async () => {
+test("a slow authorization-window expansion stays in ReaderOpening until the complete verified chapter is ready", async () => {
   const freeManifest = manifest("a-ghost-story");
   freeManifest.access.reading_pass.free_entitlement = true;
   userApi.get.mockResolvedValue({ data: freeManifest });
-  pass.startReadingPassSession.mockResolvedValue(response({ content_id: "a-ghost-story", balance_seconds: 0, deducted_seconds: 0, entitlement_kind: "india_pilot_free_text" }));
+  pass.startReadingPassSession.mockResolvedValue(response({ content_id: "a-ghost-story", balance_seconds: 0 }));
   await mount("/reader/a-ghost-story?p=3");
-  expect(text()).toContain("Page 3 manuscript.");
-  const article = container.querySelector("article.reader-v2__canvas");
   const pending = deferred();
-  let pageRequestStartedAt = 0;
-  pass.getReadingPassPage.mockImplementation(async (slug, pageIndex) => {
-    if (pageIndex === 4) {
-      pageRequestStartedAt = Date.now();
-      await new Promise((resolve) => setTimeout(resolve, 400));
-      return pending.promise;
-    }
-    return page(pageIndex, slug);
-  });
-  const activatedAt = Date.now();
+  pass.getReadingPassPage.mockImplementation(async (slug, n) => n === 4 ? pending.promise : page(n, slug));
   await click("Continue reading free");
-  await act(async () => { await Promise.resolve(); await Promise.resolve(); await Promise.resolve(); });
-  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: "a-ghost-story", pageIndex: 4 });
   expect(container.querySelector('[data-testid="location"]').textContent).toContain("p=4");
-  expect(container.querySelector("article.reader-v2__canvas")).toBe(article);
-  expect(text()).toContain("Page 3 manuscript.");
-  expect(text()).not.toContain("Opening page");
-  await tick(399);
-  expect(text()).toContain("Page 3 manuscript.");
-  expect(text()).not.toContain("Opening page 4");
-  await tick(1);
-  expect(text()).toContain("Opening page 4");
-  expect(Date.now() - pageRequestStartedAt).toBe(400);
+  expect(text()).toContain("Opening your page");
+  expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+  await tick(3000);
+  expect(text()).not.toContain("Page 4 manuscript.");
+  expect(text()).not.toContain("couldn’t open");
   await act(async () => pending.resolve(page(4, "a-ghost-story")));
   expect(text()).toContain("Page 4 manuscript.");
-  expect(container.querySelector("article.reader-v2__canvas")).toBe(article);
-  expect(pageRequestStartedAt).toBeGreaterThanOrEqual(activatedAt);
-  expect(Date.now() - pageRequestStartedAt).toBe(400);
+  expect(container.querySelector('[data-page-count]').dataset.pageCount).toBe('7');
+  expect(pass.getReadingPassPage.mock.calls.filter(([, n]) => n > 3)).toHaveLength(4);
 });
 
 test("prefetched authorized pages turn without another request or Reader-shell remount", async () => {
@@ -277,7 +274,7 @@ test("a hanging manifest remains escapable and its request is cancelled on exit"
   await mount("/reader/test-book?p=1");
   expect(text()).toContain("Opening reader");
   const config = userApi.get.mock.calls[0][1];
-  await click("Library");
+  await click("Back to Library");
   expect(container.querySelector('[data-testid="location"]').textContent).toBe("/library");
   expect(config.signal.aborted).toBe(true);
   await act(async () => pending.resolve({ data: manifest() }));
@@ -301,7 +298,7 @@ test.each(["Exhausted", "Stale"])("HTTP200 %s cannot authorize content or create
   await tick(10000); await tick(30000);
   expect(container.querySelector("article")).toBeNull();
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(1);
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
   expect(pass.endReadingPassSession).toHaveBeenCalled();
 });
 
@@ -315,7 +312,7 @@ test("a protected-text revocation error expires the local lease without remounti
   expect(text()).toContain("no longer available");
   await tick(30000);
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(1);
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
 });
 
 test("hidden tabs pause without protected refetch, then resume using updated lease", async () => {
@@ -324,7 +321,7 @@ test("hidden tabs pause without protected refetch, then resume using updated lea
   await act(async () => document.dispatchEvent(new Event("visibilitychange")));
   expect(text()).toContain("Reading paused");
   expect(pass.renewReadingPassLease.mock.calls[0][0].active).toBe(false);
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
   await act(async () => document.dispatchEvent(new Event("visibilitychange")));
   expect(text()).toContain("Page 4 manuscript.");
@@ -377,7 +374,7 @@ test("changing books rejects a late page response and settles the old book lease
   expect(text()).not.toContain("OLD SECRET TEXT");
   expect(text()).toContain("Page 1 manuscript.");
   expect(pass.endReadingPassSession).toHaveBeenCalledTimes(1);
-  expect(pass.getReadingPassPage).toHaveBeenLastCalledWith("other-book", 3, null);
+  expect(pass.getReadingPassPage).toHaveBeenLastCalledWith("other-book", 3, null, expect.objectContaining({ signal: expect.any(AbortSignal) }));
 });
 
 test("invalid and final page navigation stays bounded", async () => {
@@ -420,6 +417,46 @@ test("visible inactivity pauses reading time at the configured threshold", async
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(count);
 });
 
+test("authorized within-chapter navigation stays active across consecutive lease renders", async () => {
+  await openProtected();
+  await act(async () => {
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+    navigate("/reader/test-book?p=5");
+  });
+  expect(text()).toContain("Page 5 manuscript.");
+  const fetched = pass.getReadingPassPage.mock.calls.length;
+  await tick(10000);
+  await act(async () => document.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true })));
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.map(([request]) => request.active)).toEqual([true, true]);
+  expect(text()).not.toContain("Reading paused");
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(fetched);
+});
+
+test.each(["pointerdown", "keydown", "scroll"])("%s resets real inactivity without extending its threshold", async (event) => {
+  const value = manifest();
+  value.access.reading_pass.text_inactivity_seconds = 120;
+  userApi.get.mockResolvedValue({ data: value });
+  await openProtected();
+  await act(async () => navigate("/reader/test-book?p=5"));
+  for (let i = 0; i < 10; i++) await tick(10000);
+  await act(async () => document.dispatchEvent(new Event(event, { bubbles: true })));
+  for (let i = 0; i < 11; i++) await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.every(([request]) => request.active)).toBe(true);
+  await tick(10000);
+  expect(pass.renewReadingPassLease).toHaveBeenLastCalledWith(expect.objectContaining({ active: false }));
+  expect(text()).toContain("Reading paused");
+});
+
+test("loss of browser focus still pauses an authorized reused chapter", async () => {
+  await openProtected();
+  await act(async () => navigate("/reader/test-book?p=5"));
+  document.hasFocus.mockReturnValue(false);
+  await act(async () => window.dispatchEvent(new Event("blur")));
+  expect(pass.renewReadingPassLease).toHaveBeenLastCalledWith(expect.objectContaining({ active: false }));
+  expect(text()).toContain("Reading paused");
+});
+
 test("a lost heartbeat response retries the exact same idempotent request once", async () => {
   await openProtected();
   pass.renewReadingPassLease.mockRejectedValueOnce(new Error("Response lost"));
@@ -427,7 +464,7 @@ test("a lost heartbeat response retries the exact same idempotent request once",
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(2);
   expect(pass.renewReadingPassLease.mock.calls[0][0]).toEqual(pass.renewReadingPassLease.mock.calls[1][0]);
   expect(text()).toContain("Page 4 manuscript.");
-  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(5);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
 });
 
 test("a late session start cannot override a newer same-book browser navigation", async () => {
@@ -462,4 +499,65 @@ test("a prolonged protected-page load is never renewed as active reading", async
   await openProtected(); await tick(10000);
   expect(pass.renewReadingPassLease).toHaveBeenCalledWith(expect.objectContaining({ active: false }));
   await act(async () => pending.resolve(page(4)));
+});
+test("opening is personalized, yields immediately to readiness and never returns on page turns", async () => {
+  const pending = deferred(); pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
+  await mount("/reader/test-book?p=1");
+  expect(container.querySelector('[data-testid="reader-opening"]')).not.toBeNull();
+  expect(text()).toContain("The test edition"); expect(text()).toContain("by Test author");
+  await act(async () => pending.resolve(page(1)));
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
+  await click("Next page");
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
+  expect(text()).toContain("Page 2 manuscript.");
+});
+
+test("actual first-page transport failure offers retry without revealing diagnostics", async () => {
+  pass.getReadingPassPage.mockRejectedValueOnce({ response: { status: 503, data: { detail: "internal diagnostic" } } });
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("We couldn’t open this page.");
+  expect(text()).not.toContain("internal diagnostic");
+  await click("Try again");
+  expect(text()).toContain("Page 1 manuscript.");
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
+});
+
+test('visual pages flow across transport seams and selector/next/previous do not download another chunk', async () => {
+  jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () {
+    return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('p').length * 200 : 0;
+  });
+  await openProtected();
+  expect(container.querySelector('[data-page-count]').dataset.pageCount).toBe('3');
+  const prose = () => container.querySelector('[data-testid="reader-reading-text"]').textContent;
+  expect(prose()).toBe('Page 4 manuscript.Page 5 manuscript.Page 6 manuscript.');
+  await click('Next page');
+  expect(prose()).toBe('Page 7 manuscript.');
+  await click('Previous page');
+  expect(prose()).toBe('Page 4 manuscript.Page 5 manuscript.Page 6 manuscript.');
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('p=4');
+});
+
+test('a two-unit preview never fetches later units and its last visual page reaches sign-in', async () => {
+  mockUser = null;
+  const value = manifest(); value.canonical_pages.preview_policy = { public_limit: 2 };
+  userApi.get.mockResolvedValue({ data: value });
+  await mount('/reader/test-book?p=1');
+  await click('Next page');
+  expect(container.querySelector('[data-page-count]').dataset.pageCount).toBe('2');
+  expect(pass.getReadingPassPage.mock.calls.map(([, n]) => n)).toEqual([1, 2]);
+  await click('Next page');
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('/login?next=');
+  expect(pass.getReadingPassPage.mock.calls.every(([, n]) => n <= 2)).toBe(true);
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test('public-only visual pages stop billable activity and a paused grant removes protected source buffers', async () => {
+  await openProtected();
+  await click('Previous page');
+  expect(container.querySelector('[data-transport-chunks]').dataset.transportChunks).toBe('7');
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls[0][0].active).toBe(false);
+  expect(text()).not.toContain('Page 4 manuscript.');
+  expect(container.querySelector('[data-transport-chunks]').dataset.transportChunks).toBe('3');
 });

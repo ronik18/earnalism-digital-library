@@ -18,6 +18,9 @@ describe("ReaderExperienceV2 customer controls", () => {
   let root;
   beforeEach(() => {
     jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+    // JSDOM has no layout engine. Browser acceptance separately measures real dimensions.
+    jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(600);
+    jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(600);
     localStorage.removeItem(READER_SETTINGS_STORAGE_KEY);
     localStorage.removeItem(readerNotebookKey(model.title));
     container = document.createElement("div");
@@ -36,6 +39,39 @@ describe("ReaderExperienceV2 customer controls", () => {
   const change = (select, value) => act(() => {
     select.value = value;
     select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
+  test("image-only navigation, selector and bookmarks use structural anchors", async () => {
+    jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('img').length * 400 : 0; });
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, slug: 'image-test', sourceRevision: 'images-v1', content: <><img src="/fixture-one.png" alt="First image" /><img src="/fixture-two.png" alt="Second image" /></> }} />));
+    const selector = container.querySelector('select[aria-label="Go to page"]');
+    expect(selector.options).toHaveLength(2);
+    click(container.querySelector('.reader-v2__page-arrow--next'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
+    expect(container.querySelector('[data-testid="reader-page-content"]').className).toContain('--next');
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Bookmark this page"]'));
+    expect(JSON.parse(localStorage.getItem(readerNotebookKey('image-test'))).bookmarkAnchors[0].anchor.offset).toBe('media:1');
+    click(container.querySelector('.reader-v2__page-arrow--previous'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('First image');
+    change(selector, '1');
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
+  });
+
+  test("captioned media selector distinguishes identical offsets in different source chunks", async () => {
+    jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('figure').length * 400 : 0; });
+    const plan = { key: 'captioned-chapter', chapterId: 'captioned', chapterTitle: 'Captioned chapter' };
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model,
+      sourceRevision: 'captions-v1', authorizedChapter: { plan, textLength: 2, sources: [{ page: 1, start: 0, end: 1, revision: 'captions-v1' }, { page: 2, start: 1, end: 2, revision: 'captions-v1' }] }, authorizedBookPlans: [plan],
+      sourceAnchorForOffset: offset => ({ page: offset + 1, offset: 0, revision: 'captions-v1' }),
+      content: <><figure><img src="/one.png" alt="First figure" /><figcaption>A</figcaption></figure><figure><img src="/two.png" alt="Second figure" /><figcaption>B</figcaption></figure></>,
+    }} />));
+    const selector = container.querySelector('select[aria-label="Go to page"]');
+    expect(selector.value).toBe('captioned-chapter:0');
+    click(container.querySelector('.reader-v2__page-arrow--next'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second figure');
+    expect(selector.value).toBe('captioned-chapter:1');
+    click(container.querySelector('.reader-v2__page-arrow--previous'));
+    expect(selector.value).toBe('captioned-chapter:0');
   });
 
   test("side arrows use canonical requests and preserve focus on page turns", () => {
@@ -171,14 +207,15 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(button("Previous page").disabled).toBe(true);
     click(button("Next page"));
     expect(onRequestPage).toHaveBeenLastCalledWith(2);
-    change(container.querySelector('select[aria-label="Go to page"]'), "3");
+    expect(container.querySelector('select[aria-label="Go to page"]').options.length).toBe(1);
+    click(button("Page 3"));
     expect(onRequestPage).toHaveBeenLastCalledWith(3);
     render({ model: { ...model, canonicalPage: 4 }, access: { authorized: true }, onRequestPage });
     expect(button("End of book").disabled).toBe(true);
     click(button("End of book"));
     expect(onRequestPage).toHaveBeenCalledTimes(2);
     click(button("Previous page"));
-    expect(onRequestPage).toHaveBeenLastCalledWith(3);
+    expect(onRequestPage).toHaveBeenLastCalledWith(3, "end");
     expect(container.textContent).toContain("You have reached the end of this book.");
   });
 
