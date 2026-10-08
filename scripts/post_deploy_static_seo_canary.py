@@ -235,39 +235,51 @@ def fetch_raw_html(base_url: str, route: str, timeout: int) -> tuple[int, dict[s
         return 0, {}, "", f"{url} ({error})"
 
 
-def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, object, str]:
+def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, object, str, dict[str, str]]:
     url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
     request = Request(url, headers={"Accept": "application/json", "User-Agent": "EarnalismStaticSeoCanary/2.0"})
     try:
         with urlopen(request, timeout=timeout) as response:
             status, body, response_url = response.status, response.read().decode("utf-8", errors="replace"), response.url
+            headers = dict(response.headers.items())
     except HTTPError as error:
         status, body, response_url = error.code, error.read().decode("utf-8", errors="replace"), error.url
+        headers = dict(error.headers.items())
     except URLError as error:
-        return 0, None, url
+        return 0, None, url, {}
     try:
         payload = json.loads(body)
     except (TypeError, json.JSONDecodeError):
         payload = None
-    return status, payload, response_url
+    return status, payload, response_url, headers
 
 
-def inspect_protected_api(route: str, policy: dict[str, object], status: int, payload: object, url: str) -> dict[str, object]:
+def inspect_protected_api(route: str, policy: dict[str, object], status: int, payload: object, url: str, headers: dict[str, str] | None = None) -> dict[str, object]:
     failures: list[str] = []
     detail = payload.get("detail") if isinstance(payload, dict) else None
     code = detail.get("code") if isinstance(detail, dict) else None
     # The production edge denies an overseas request before contacting the
     # backend. Validate that exact denial without claiming an India readback.
     country = detail.get("country") if isinstance(detail, dict) else None
-    overseas_denial = (
-        route in PROTECTED_API_CHECKS
-        and policy == PROTECTED_API_CHECKS[route]
-        and status == 451
-        and code == "RELEASE_TERRITORY_DENIED"
-        and isinstance(country, str)
-        and country in {"US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"}
-        and detail.get("allowed_countries") == ["IN"]
-    )
+    configured_target = route in PROTECTED_API_CHECKS and policy == PROTECTED_API_CHECKS[route]
+    valid_country = isinstance(country, str) and bool(re.fullmatch(r"[A-Z]{2}", country)) and country not in {"XX", "ZZ"}
+    # Successful upstream responses on these exact proxy routes prove admission
+    # through its IN-only gate. No new location source or spoofed header is used.
+    india_readback = configured_target and (country == "IN" or (country is None and status in {200, 503} and code != "RELEASE_TERRITORY_DENIED"))
+    overseas = valid_country and country != "IN"
+    cache_control = next((value for key, value in (headers or {}).items() if key.lower() == "cache-control"), "")
+    overseas_denial = overseas and configured_target
+    if overseas_denial:
+        if status != 451:
+            failures.append(f"non-IN territory requires HTTP 451, got {status}")
+        if code != "RELEASE_TERRITORY_DENIED":
+            failures.append("non-IN territory requires RELEASE_TERRITORY_DENIED")
+        if detail.get("allowed_countries") != ["IN"]:
+            failures.append("territory denial must allow exactly IN")
+        if "no-store" not in {token.strip().lower() for token in cache_control.split(",")}:
+            failures.append("territory denial requires Cache-Control: no-store")
+    elif not india_readback:
+        failures.append("CANARY_TERRITORY=UNKNOWN: trusted territory unresolved or invalid; India readback not performed")
     expected_status = int(policy["expected_status"])
     expected_code = str(policy["expected_code"])
     if not overseas_denial and status != expected_status:
@@ -303,8 +315,10 @@ def inspect_protected_api(route: str, policy: dict[str, object], status: int, pa
         "status_code": status,
         "error_code": code,
         "observed_country": country,
-        "india_backend_contract": "NOT_RUN_FROM_NON_IN" if overseas_denial else "CHECKED",
-        "observed_canonical_version": payload.get("version") if not failures and not overseas_denial and policy.get("kind") == "canonical_manifest" and isinstance(payload, dict) else None,
+        "cache_control": cache_control,
+        "india_backend_contract": "CHECKED" if india_readback else "NOT_PERFORMED",
+        "territory_denial_contract": ("CHECKED" if not failures else "FAILED") if overseas_denial else "NOT_PERFORMED",
+        "observed_canonical_version": payload.get("version") if not failures and india_readback and policy.get("kind") == "canonical_manifest" and isinstance(payload, dict) else None,
         "failures": failures,
         "result": "PASS" if not failures else "FAIL",
     }

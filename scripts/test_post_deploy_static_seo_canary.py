@@ -205,16 +205,48 @@ class StaticSeoCanaryTests(unittest.TestCase):
             result = MODULE.inspect_protected_api(route, policy, 503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com" + route)
             self.assertEqual(result["result"], "FAIL")
             result = MODULE.inspect_protected_api(route, policy, 451, {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": "US", "allowed_countries": ["IN"]}}, "https://theearnalism.com" + route)
-            self.assertEqual(result["india_backend_contract"], "NOT_RUN_FROM_NON_IN")
+            self.assertEqual(result["india_backend_contract"], "NOT_PERFORMED")
             self.assertIsNone(result["observed_canonical_version"])
 
     def test_explicit_overseas_edge_denial_does_not_claim_india_readback(self):
         for route, policy in MODULE.PROTECTED_API_CHECKS.items():
             result = MODULE.inspect_protected_api(route, policy, 451,
                 {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": "US", "allowed_countries": ["IN"]}},
-                "https://theearnalism.com" + route)
+                "https://theearnalism.com" + route, {"Cache-Control": "no-store"})
             self.assertEqual(result["result"], "PASS")
-            self.assertEqual(result["india_backend_contract"], "NOT_RUN_FROM_NON_IN")
+            self.assertEqual(result["india_backend_contract"], "NOT_PERFORMED")
+
+    def test_territory_policy_matrix_and_historical_mx_regression(self):
+        route = "/api/reader/book/dracula/manifest"
+        policy = MODULE.PROTECTED_API_CHECKS[route]
+        def inspect(country, status=451, code="RELEASE_TERRITORY_DENIED", allowed=None, headers=None):
+            return MODULE.inspect_protected_api(route, policy, status,
+                {"detail": {"country": country, "code": code, "allowed_countries": ["IN"] if allowed is None else allowed}},
+                "https://theearnalism.com" + route,
+                {"Cache-Control": "no-store"} if headers is None else headers)
+        # Exact old predicate rejected MX, despite the correct denial contract.
+        self.assertNotIn("MX", {"US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"})
+        for country in ("MX", "US", "GB", "JP"):
+            with self.subTest(country=country):
+                result = inspect(country)
+                self.assertEqual(result["result"], "PASS")
+                self.assertEqual(result["india_backend_contract"], "NOT_PERFORMED")
+                self.assertEqual(result["territory_denial_contract"], "CHECKED")
+        for country in (None, "", "us", "USA", "1N", "ZZ", "XX", " IN "):
+            with self.subTest(country=country):
+                result = inspect(country)
+                self.assertEqual(result["result"], "FAIL")
+                self.assertEqual(result["india_backend_contract"], "NOT_PERFORMED")
+                self.assertTrue(any("UNKNOWN" in failure for failure in result["failures"]))
+        for kwargs in ({"status": 200}, {"code": "OTHER"}, {"allowed": ["IN", "US"]}, {"headers": {}}, {"headers": {"Cache-Control": "public"}}):
+            with self.subTest(kwargs=kwargs):
+                self.assertEqual(inspect("MX", **kwargs)["result"], "FAIL")
+        payload = {"slug": "dracula", "audio_enabled": False, "audiobook_enabled": False,
+                   "access": {"authenticated": False, "can_read_paid": False}}
+        result = MODULE.inspect_protected_api(route, policy, 200, payload, "https://theearnalism.com" + route)
+        self.assertEqual(result["result"], "PASS")
+        self.assertEqual(result["india_backend_contract"], "CHECKED")
+        self.assertEqual(inspect("IN")["result"], "FAIL")
 
     def test_territorial_denial_is_not_a_generic_451_exception(self):
         route = "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"
