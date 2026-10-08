@@ -11710,5 +11710,18 @@
     "bharat_status": "BLOCKED — RUNTIME REGISTRATION",
     "newly_release_ready": [],
     "next_action": "Recheck #517; after focused slot frees, push evidence-only canonical branch and open scoped provenance PR. Validate Bharat exact changed package rights and HTTP registration/entitlement before any cohort."
+  },
+  "execution_checkpoint_20261008": {
+    "recorded_at": "2026-10-08T14:40:00Z",
+    "scope": "No title decision, rights, source, cover, canonical text, territory, audio, catalogue or release-allowlist mutation.",
+    "current_launch_source": {
+      "territory": "IN",
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "approved_title_count": 52,
+      "public_audio": false
+    },
+    "commercial_copy_repair": "Account enabled-mode wording now matches source and read-only production payment availability; disabled-mode fallback remains conditional.",
+    "production_status": "NOT_REASSESSED_FOR_RELEASE; no merge, deploy, payment attempt, login or customer data mutation occurred.",
+    "next_action": "Review/commit the scoped Account copy and execution-handoff candidate, then open a protected PR without merging."
   }
 }

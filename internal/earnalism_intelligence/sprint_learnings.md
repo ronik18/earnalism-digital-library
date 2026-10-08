@@ -1,5 +1,12 @@
 # Sprint Learnings
 
+- 2026-10-08 execution checkpoint: production launch data and read-only public
+  payment endpoints are stronger evidence than stale Account fallback copy.
+  When commercial mode is explicitly enabled, preserve disabled-mode fallback
+  behavior but keep the enabled customer surface truthful. A copy-only repair
+  must not alter entitlement, prices, territory, audio, rights, or payment
+  provider configuration.
+
 - Bengali reused local audio repeatedly failed manuscript match; do not rerun stale audio blindly.
 - Bengali reader-only publication is a valid customer-facing outcome when content, rights, covers, and reader pass.
 - OpenAI Bengali TTS has not met premium literary listening expectations; Sarvam remains promising but unproven for full release.
