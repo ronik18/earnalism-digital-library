@@ -152,8 +152,8 @@ function AccountVisualFixture() {
             <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Reading Pass</div>
             <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-3xl sm:text-4xl text-burgundy mt-4 leading-tight">Remaining balance: 0 minutes</h2>
             <div className="gold-rule-thin mt-4" />
-            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet.</p>
-            <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span><span className="block mt-1 text-sm text-charcoal-soft">Purchases are not available yet. Your balance remains available for eligible reading.</span></div>
+            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Add reading time whenever you want to continue.</p>
+            <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span><span className="block mt-1 text-sm text-charcoal-soft">Reading Passes are available for eligible reading. Audiobooks are unavailable for this launch.</span></div>
           </section>
           <section className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col" aria-labelledby="account-visual-fixture-library">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80"><BookOpen size={13} strokeWidth={1.5} /> My Library</div>
@@ -321,7 +321,9 @@ export default function Account() {
                 : "The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet."}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
-              Pass purchases are not available yet. Audiobooks are unavailable for this launch.
+              {PUBLIC_PAID_COMMERCE_ENABLED
+                ? "Add reading time whenever you want to continue. Audiobooks are unavailable for this launch."
+                : "Pass purchases are not available yet. Audiobooks are unavailable for this launch."}
             </p>
             {!PUBLIC_PAID_COMMERCE_ENABLED && (
               <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4" data-testid="account-reading-pass-status">

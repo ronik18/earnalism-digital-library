@@ -205,8 +205,11 @@ describe("AuthProvider and Account lifecycle", () => {
 
     expect(mounted.container.querySelector('[data-testid="account-balance"]')?.textContent).toContain("120s");
     const purchaseStatus = mounted.container.querySelector('[data-testid="account-reading-pass-status"]');
+    const walletExplainer = mounted.container.querySelector('[data-testid="account-wallet-explainer"]');
     if (PUBLIC_PAID_COMMERCE_ENABLED) {
       expect(purchaseStatus).toBeNull();
+      expect(walletExplainer?.textContent).toContain("Add reading time whenever you want to continue.");
+      expect(walletExplainer?.textContent).not.toContain("Purchases are not available yet");
     } else {
       expect(purchaseStatus?.textContent).toContain("Purchases are not available yet");
     }
