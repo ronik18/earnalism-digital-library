@@ -45,7 +45,9 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                'GITHUB_OUTPUT': str(self.output), 'RELEASE_EVENT': 'workflow_dispatch',
                'VERCEL_TOKEN': 'test-only', 'VERCEL_ORG_ID': 'test-only', 'VERCEL_PROJECT_ID': 'test-only',
                **overrides}
-        return subprocess.run(['bash', '-c', step_script(name)], cwd=self.repo,
+        # Actions resolves this trusted event SHA before launching the shell.
+        script = step_script(name).replace('${{ github.event.before }}', self.sha)
+        return subprocess.run(['bash', '-e', '-c', script], cwd=self.repo,
                               env=env, text=True, capture_output=True)
 
     def test_exact_main_and_confirmation_admit_clean_checkout(self):
@@ -90,6 +92,16 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         result = self.execute('Check Vercel deploy scope and secrets', RELEASE_EVENT='push')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(self.output.read_text(), 'enabled=false\n')
+
+    def test_push_frontend_paths_still_deploy(self):
+        (self.repo / 'frontend').mkdir()
+        (self.repo / 'frontend' / 'fixture.txt').write_text('frontend fixture\n')
+        self.git('add', 'frontend')
+        self.git('commit', '-m', 'frontend change')
+        result = self.execute('Check Vercel deploy scope and secrets', RELEASE_EVENT='push',
+                              GITHUB_SHA=self.git('rev-parse', 'HEAD').strip())
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.output.read_text(), 'enabled=true\n')
 
     def test_existing_build_and_canary_dependencies_preserved(self):
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
