@@ -1,15 +1,30 @@
-import asyncio, json, os, uuid
+import asyncio, json, os, sys, uuid
+from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 import httpx
 from motor.motor_asyncio import AsyncIOMotorClient
 from redis.asyncio import Redis
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 assert os.environ['ENVIRONMENT']=='uat'
-assert os.environ['MONGODB_URL']=='mongodb://127.0.0.1:27018/?replicaSet=earnalism-uat-rs0'
+mongo_url = os.environ['MONGODB_URL']
+redis_url = os.environ['REDIS_URL']
+mongo_target = urlparse(mongo_url)
+redis_target = urlparse(redis_url)
+assert mongo_target.scheme == 'mongodb'
+assert mongo_target.hostname == '127.0.0.1'
+assert mongo_target.path == '/earnalism_uat'
+assert parse_qs(mongo_target.query).get('replicaSet') == ['earnalism-uat-rs0']
+assert redis_target.scheme == 'redis'
+assert redis_target.hostname == '127.0.0.1'
 from backend import server
 
 async def main():
     mongo=AsyncIOMotorClient(os.environ['MONGODB_URL'])
     db=mongo['perf_security_'+uuid.uuid4().hex]
-    redis=Redis(host='127.0.0.1',port=27019,db=14)
+    redis=Redis.from_url(redis_url, db=14)
     prefix='performance-security:'+uuid.uuid4().hex
     server.db=db
     server._redis_client=redis

@@ -2625,3 +2625,7 @@ Owner artwork provenance removes a third-party artwork permission question, not 
 
 ## Catalogue local follow-up — 2026-10-04T20:55:06.984456+00:00
 Artwork ownership does not verify printed endorsements/ISBN allocation. Neither is mandatory in publication schema. Preserve the back privately; front-only text preparation is viable. Legacy Bharat audio flags require fresh text-only bindings. Missing-reference search found one canonical pair and 15 ambiguous pairs; five Bengali display defects are baked into source artwork. No activation or production verification inferred.
+
+## Performance integration UAT — 2026-10-08
+
+Use the launcher-provided loopback frontend origin for browser qualification. A separate random-port static server violates the disposable backend's intentionally exact CORS allowance and can turn valid browser API calls into false failures. The qualification must exercise normal UAT CORS/browser traffic, reject non-analytics mutations, and navigate to the title route through a real browser navigation so the title-view effect is observed. Security probes must assert loopback Mongo/Redis and the `earnalism_uat` replica-set fixture without hard-coding a stale URI shape or relying on the script directory as Python's import root. These are local-gate repairs only; no production performance, Reader, payment, entitlement, rights, catalogue, territory, or audio conclusion follows from them.

@@ -86,10 +86,13 @@ Reproduce native security intake/session checks using
 `scripts/qualify_performance_security.py` with the disposable UAT variables in the
 budget document. It creates and removes a uniquely named database and scoped
 cache keys; never use a production database. To reproduce browser delivery, run
-`PERF_UAT_API_ORIGIN=http://127.0.0.1:<disposable-api-port> node
-scripts/qualify_performance_analytics.mjs` against the fresh build and native UAT
-API. External requests are intercepted; only safe GET and analytics intake are
-forwarded. The operator owns disposal of the supplied backend database/process.
+`PERF_UAT_API_ORIGIN=http://127.0.0.1:<disposable-api-port>
+PERF_UAT_FRONTEND_ORIGIN=http://127.0.0.1:<disposable-frontend-port> node
+scripts/qualify_performance_analytics.mjs` against the launcher-provided native
+UAT frontend and API. This preserves the real disposable CORS path; external
+requests are intercepted, non-analytics mutations are blocked, and safe GET plus
+analytics traffic follows the normal loopback browser route. The operator owns
+disposal of the supplied backend database/process.
 
 Fresh validation: frontend99 suites/624 tests; catalogue/cache24 tests including
 live disposable Redis; broad backend28 tests; profiler tooling9 tests. Production
