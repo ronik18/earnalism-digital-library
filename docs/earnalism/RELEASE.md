@@ -1,8 +1,9 @@
 # Earnalism release handoff
 
 This document is a review/release checklist for the execution checkpoint
-recorded in [EXECUTION.md](EXECUTION.md). It is not an authorization to merge,
-deploy, publish another title, charge a customer, or alter live policy.
+recorded in [EXECUTION.md](EXECUTION.md). Candidate PR [#524](https://github.com/ronik18/earnalism-digital-library/pull/524)
+is open and unmerged. This is not an authorization to merge, deploy, publish
+another title, charge a customer, or alter live policy.
 
 ## Release candidate scope
 

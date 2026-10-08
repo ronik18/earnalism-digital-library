@@ -79,8 +79,9 @@ mandate and repository/runtime evidence for decisions.
   PASS. The backend contract suite cannot run in this shell because
   `MONGODB_URL` is absent; this is an environment limitation, not a passing
   result. Exact-head hosted CI is green (E-01).
-- **Candidate state:** this checkpoint's single scoped commit is one commit
-  ahead of `origin/main`; its worktree is clean after commit.
-- **Next exact safe action:** push this candidate to the canonical integration
-  branch and open the normal protected PR. Do not merge or deploy without
-  separate authorization.
+- **Candidate state:** PR [#524](https://github.com/ronik18/earnalism-digital-library/pull/524)
+  is open from the canonical integration branch; its required checks are
+  pending at this checkpoint. No merge or deployment was requested or made.
+- **Next exact safe action:** wait for terminal checks on the exact PR head.
+  If they pass, retain the PR for explicit merge/deployment authorization;
+  otherwise classify and repair only an evidenced candidate defect.
