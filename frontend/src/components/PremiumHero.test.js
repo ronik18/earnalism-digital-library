@@ -52,9 +52,13 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("premium-library-reference-exact-1440.webp");
     expect(source).toContain("REFERENCE_HERO_AVIF_SRCSET");
     expect(source).toContain('type="image/avif"');
-    expect(publicIndex).toContain("premium-library-reference-exact-1440.avif");
-    expect(publicIndex).toContain("premium-library-mobile-cinematic-v2.webp");
-    expect(publicIndex).toContain('imagesizes="100vw"');
+    // Legacy artwork stays available to its component, but is not downloaded
+    // globally by the current editorial homepage or unrelated routes.
+    expect(publicIndex).not.toContain("premium-library-reference-exact-1440.avif");
+    expect(publicIndex).not.toContain("premium-library-mobile-cinematic-v2.webp");
+    const editorial = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
+    expect(editorial).toContain('src="/assets/home-option-b/hero-reading-room.webp"');
+    expect(editorial).toContain('fetchPriority="high"');
     expect(source).toContain('width="2180"');
     expect(source).toContain('height="1032"');
     expect(source).toContain('fetchPriority="high"');
