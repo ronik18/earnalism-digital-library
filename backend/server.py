@@ -7346,15 +7346,33 @@ def _schedule_home_surface_warmup() -> None:
 
 
 # ---------- Public: Books ----------
-@api.get("/books")
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     category_filter = None
     if category and category != "all":
         category_filter = normalize_category_slug(category) or category
     cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
+    if PUBLIC_CACHE_ENABLED and _redis_state_enabled():
+        try:
+            from backend.catalogue_singleflight import cached_catalogue
+        except ImportError:  # backend-only Railway image
+            from catalogue_singleflight import cached_catalogue
+        return await cached_catalogue(
+            _redis_client, _redis_key("public-cache", "generation"),
+            lambda generation: _public_cache_storage_key(generation, cache_key),
+            lambda: _build_public_books(category_filter, q),
+            lambda value: _cache_payload_encode_for_redis("public-cache", value),
+            _cache_payload_decode, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS),
+        )
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
+    result = await _build_public_books(category_filter, q)
+    await _public_cache_set(cache_key, result)
+    return result
+
+
+async def _build_public_books(category_filter, q):
+    # All fill paths share the unchanged authoritative projection/gates.
     extra_query: dict = {}
     if category_filter:
         extra_query["category_slug"] = category_filter
@@ -7379,8 +7397,29 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
         if projected:
             result.append(projected)
     result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
-    await _public_cache_set(cache_key, result)
     return result
+
+
+@api.get("/books", operation_id="list_books_api_books_get")
+async def list_books_response(category: Optional[str] = None, q: Optional[str] = None, view: Optional[str] = None):
+    # The existing builder remains the sole rights/publication boundary. Its
+    # public projection is JSON-shaped; avoid FastAPI recursively walking every
+    # primitive a second time on each cache hit. Non-JSON leaves retain the
+    # standard FastAPI conversion (e.g. datetime), not an optimistic str fallback.
+    from fastapi.encoders import jsonable_encoder
+
+    if view not in {None, "full", "library-v1"}:
+        raise HTTPException(status_code=422, detail="Unsupported catalogue view")
+    result = await list_books(category=category, q=q)
+    if view == "library-v1":
+        try:
+            from backend.catalogue_summary import library_summary
+        except ImportError:  # backend-only Railway image
+            from catalogue_summary import library_summary
+        result = library_summary(result)
+    body = _json.dumps(result, ensure_ascii=False, allow_nan=False,
+                       separators=(",", ":"), default=jsonable_encoder).encode("utf-8")
+    return Response(content=body, media_type="application/json; charset=utf-8")
 
 @api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):

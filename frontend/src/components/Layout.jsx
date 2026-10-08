@@ -33,7 +33,7 @@ export default function Layout() {
     <div className={`min-h-screen flex flex-col layout--sitewide-option-b${location.pathname === "/" ? " layout--homepage-option-b" : ""}`}>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
+      <main id="main-content" className={`flex-1${location.pathname === "/account" ? " min-h-[80vh]" : ""}`} tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />

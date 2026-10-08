@@ -1,0 +1,9 @@
+module.exports=function(source){
+ const mark=(name)=>`globalThis.__readerStage?.mark('${name}');`;
+ const replace=(old,next)=>{if(!source.includes(old))throw Error('Stage instrumentation source drift: '+this.resourcePath);source=source.replace(old,next)};
+ if(this.resourcePath.endsWith('/AuthContext.jsx'))replace('export const useAuth = () => useContext(AuthContext);',"export const useAuth = () => {const value=useContext(AuthContext);if(value.user)globalThis.__readerStage?.mark('T1');return value;};");
+ if(this.resourcePath.endsWith('/ReaderExperienceV2Route.jsx')){replace('leaseRef.current = value;',"leaseRef.current = value; if(runningLease(value))"+mark('T2'));replace('setManifest(data);',mark('T3')+'setManifest(data);');}
+ if(this.resourcePath.endsWith('/authorizedChapter.js')){replace('const chunks = new Array(plan.rows.length);','let receivedChunks = 0; const chunks = new Array(plan.rows.length);');replace('const value = await fetchChunk(index, signal);',mark('T4')+"const value = await fetchChunk(index, signal); if(++receivedChunks===plan.rows.length)"+mark('T5'));replace('const fetchedAt = performance.now();',mark('T6')+'const fetchedAt = performance.now();');replace("return { structuralRevision, html:",mark('T7')+"return { structuralRevision, html:");}
+ if(this.resourcePath.endsWith('/useVisualPagination.js')){replace('const cache = useRef(new Map());',"const cache = useRef(new Map());const cacheProbe=useRef(null);if(cacheProbe.current===null && globalThis.__readerStage)cacheProbe.current=globalThis.__readerStage.registerCache(cache.current);");replace('await document.fonts.ready;', 'await document.fonts.ready;'+mark('T8'));replace('const started = performance.now();',mark('T9')+'const started = performance.now();');replace('setResult({ pages, pending: false, error:',mark('T10')+'setResult({ pages, pending: false, error:');}
+ return source;
+};

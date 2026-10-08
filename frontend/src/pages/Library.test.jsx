@@ -30,6 +30,7 @@ describe("Library experience", () => {
     expect(source).toContain("Listening appears only where the release evidence allows it.");
     expect(source).toContain("library-filter-drawer");
     expect(source).toContain('aria-modal="true"');
+    expect(source).toContain('params: { view: "library-v1" }');
   });
 
   test("keeps API failure distinct from an empty catalogue without presenting bundled books as live", () => {

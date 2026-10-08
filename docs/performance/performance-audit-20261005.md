@@ -54,7 +54,9 @@ Follow-up: five interleaved cold-context pairs measured median Library LCP
 (+6.35%, below the 10% regression investigation threshold). The earlier three-run
 batch comparison showed larger regressions while machine load varied; it is not
 used to establish a win. No Library latency improvement is claimed. Paired
-raw results are in performance-library-paired.json.
+raw results were archived outside the review scope. Reproduce route measurements
+with `scripts/platform_performance_benchmark.mjs`; see the current qualification
+summary for the main/candidate comparison and its limitations.
 Image/lazy-load resource totals vary between runs and are not treated as a stable
 latency or total-image-byte improvement. The removed retired image is a
 deterministic 102973 desktop bytes / 104296 mobile bytes.

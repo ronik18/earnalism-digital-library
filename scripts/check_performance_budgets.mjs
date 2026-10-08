@@ -14,4 +14,8 @@ for (const file of fs.readdirSync(path.join(root, 'static/js')).filter(f => f.en
 }
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 assert.ok(!/<link[^>]+(?:premium-library-reference-exact|premium-library-mobile-cinematic)/.test(html), 'Retired hero art must not be globally preloaded');
+const media = path.join(root, 'static/media');
+const fontBytes = fs.readdirSync(media).filter(file => /^(?:cormorant-garamond|eb-garamond|outfit).*\.woff2$/.test(file))
+  .reduce((total, file) => total + fs.statSync(path.join(media, file)).size, 0);
+assert.ok(fontBytes > 0 && fontBytes <= 1_000_000, `Lossless Latin font derivatives ${fontBytes} bytes exceed 1000000 budget or are absent`);
 console.log(JSON.stringify({ status: 'PASS', main_gzip_bytes: gzipBytes, maximum_main_gzip_bytes: 165000, maximum_chunk_gzip_bytes: 170000 }));

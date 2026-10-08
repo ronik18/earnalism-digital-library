@@ -29,4 +29,13 @@ describe("EarnalismBrandLockup", () => {
     expect(headerSource).toContain('data-testid="mobile-header-search"');
     expect(headerSource).toContain('data-testid="nav-search"');
   });
+
+  test("uses existing responsive derivatives without shrinking or replacing the master", () => {
+    expect(componentSource).toContain('earnalism-brand-lockup`');
+    expect(componentSource).toContain('320w');
+    expect(componentSource).toContain('640w');
+    expect(componentSource).toContain('source === CANONICAL_LOGO');
+    expect(componentSource).toContain('width="2400"');
+    expect(componentSource).toContain('height="720"');
+  });
 });
