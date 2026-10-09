@@ -2641,3 +2641,7 @@ The approved prior visual-review source predates `controlled_launch.public_paid_
 The same historical schema has no `public_reader_exposure_enabled`, while its reviewed Book Detail route visibly renders the active detail surface. Treat only explicit `false` as the held-title capture contract. A missing field is a schema-compatibility fact for historical capture, never a change to Reader admission, territory, entitlement, or publication policy.
 
 Seamless-brand review metadata must preserve the difference between the canonical declared PNG fallback and a rendered responsive derivative. A responsive derivative may pass only when it is an enumerated 320/640 local AVIF/WebP asset, its natural dimensions match the filename, and the canonical Earnalism alt text remains exact. Width-only assertions are insufficient: they can reject approved derivatives or fail to detect arbitrary optimized assets.
+
+## PR #525 Reader owner-evidence capture — 2026-10-09
+
+Reader fixture title readiness is not equivalent to a completed canonical visual page: visual pagination can finish after the heading, fonts, and visible media settle. Capture-only owner evidence must require the Reader's explicit `data-pagination-ready="true"` state and rendered page content before bounded screenshot comparison. Retain the three-capture bounded comparison and record every attempted screenshot hash for diagnosis; this does not alter Reader runtime behavior, access, entitlement, territory, publication, commerce, or production state.

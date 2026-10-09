@@ -173,16 +173,25 @@ async function captureStableViewport(page) {
     const digest = sha(screenshot);
     attempts.push(digest);
     if (previous && previous.digest === digest) {
-      return { first: previous.screenshot, second: screenshot, stable: true, attempts: attempt };
+      return { first: previous.screenshot, second: screenshot, stable: true, attempts: attempt, hashes: attempts };
     }
     previous = { digest, screenshot };
   }
-  return { first: previous?.screenshot || Buffer.alloc(0), second: previous?.screenshot || Buffer.alloc(0), stable: false, attempts: CAPTURE_READY_FRAME_COUNT };
+  return {
+    first: previous?.screenshot || Buffer.alloc(0), second: previous?.screenshot || Buffer.alloc(0), stable: false,
+    attempts: CAPTURE_READY_FRAME_COUNT, hashes: attempts,
+  };
 }
-const requiredFor = (family) => ({
+export const requiredFor = (family, { readerVisualPagination = true } = {}) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]", "header"],
-  navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
+  navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]", "header"],
+  // The current Reader title mounts before visual pagination has finished.
+  // The approved historical comparison used the prior non-paginated Reader,
+  // whose real rendered reading text is its equivalent terminal surface.
+  reader: readerVisualPagination
+    ? ["#reader-v2-title", '.reader-v2__visual-viewport[data-pagination-ready="true"]', '[data-testid="reader-page-content"]']
+    : ["#reader-v2-title", '[data-testid="reader-reading-text"]'], listener: ["#listener-v2-title"],
   about: [strict ? "#about-page-title" : "#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-visual-fixture]"],
 }[family] || ["main"]);
 
@@ -367,7 +376,13 @@ async function capture(state, context) {
       }
     }
   }
-  const selectors = requiredFor(state.family);
+  // Wait for the shared Reader heading before selecting its generation-specific
+  // terminal-surface contract. At DOMContentLoaded, the lazy route can still
+  // be mounting and would otherwise be mistaken for the historical Reader.
+  if (state.family === "reader") await page.locator("#reader-v2-title").waitFor({ state: "visible", timeout: 10_000 });
+  const readerVisualPagination = state.family === "reader"
+    && (await page.locator(".reader-v2__visual-viewport").count()) > 0;
+  const selectors = requiredFor(state.family, { readerVisualPagination });
   const readiness = await waitForCaptureReadiness(page, selectors);
   const viewportCapture = await captureStableViewport(page);
   const { first, second } = viewportCapture;
@@ -398,7 +413,7 @@ async function capture(state, context) {
     : state.family === "commerce" && !publicPaidCommerceEnabled
       ? "Reading Passes are not available in this launch."
       : "Read the first 3 pages free. Listening requires an active Reading Pass.";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "per-page", capture_readiness: readiness, capture_ready_frame_count: CAPTURE_READY_FRAME_COUNT, capture_visual_attempts: viewportCapture.attempts, ...metrics, navigation, navigationClose, stable: viewportCapture.stable, screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "per-page", capture_contract: state.family === "reader" ? (readerVisualPagination ? "visual-pagination" : "legacy-reader") : "standard", capture_readiness: readiness, capture_ready_frame_count: CAPTURE_READY_FRAME_COUNT, capture_visual_attempts: viewportCapture.attempts, capture_visual_hashes: viewportCapture.hashes, ...metrics, navigation, navigationClose, stable: viewportCapture.stable, screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
 }
 
 export async function runCapture() {
@@ -428,8 +443,10 @@ export async function runCapture() {
     errors: item.errors,
     stable: item.stable,
     capture_readiness: item.capture_readiness,
+    capture_contract: item.capture_contract,
     capture_ready_frame_count: item.capture_ready_frame_count,
     capture_visual_attempts: item.capture_visual_attempts,
+    capture_visual_hashes: item.capture_visual_hashes,
     fontLoad: item.fontLoad,
   }));
   console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), failureReasons, strict, output }));

@@ -6,7 +6,17 @@ import { chromium } from "playwright";
 
 const baseUrl = String(process.env.UAT_BASE_URL || "http://127.0.0.1:13007").replace(/\/$/, "");
 process.env.UAT_BASE_URL ||= baseUrl;
-const { openActualMobileMenu, assertMobileMenuGeometry, closeActualMobileMenu } = await import("./capture_exact_primary_owner_review.mjs");
+const { openActualMobileMenu, assertMobileMenuGeometry, closeActualMobileMenu, requiredFor } = await import("./capture_exact_primary_owner_review.mjs");
+
+assert.deepEqual(requiredFor("reader"), [
+  "#reader-v2-title",
+  '.reader-v2__visual-viewport[data-pagination-ready="true"]',
+  '[data-testid="reader-page-content"]',
+]);
+assert.deepEqual(requiredFor("reader", { readerVisualPagination: false }), [
+  "#reader-v2-title",
+  '[data-testid="reader-reading-text"]',
+]);
 
 const baseFixture = ({ duplicate = false, corrected = false } = {}) => `<!doctype html><style>
   body { margin:0 }
