@@ -50,9 +50,126 @@ const states = [
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family })).filter((state) => !selectedStates.size || selectedStates.has(state.id));
 const fullPageStates = new Set(["home-desktop", "home-mobile", "library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-desktop", "book-detail-mobile"]);
 const publicReleaseHoldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
+const CAPTURE_READY_FRAME_COUNT = 3;
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 const jsonResponse = (route, value) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
+
+/**
+ * Wait for the actual rendered state used in a review capture.  A screenshot
+ * comparison is useful only after the route, fonts, visible images, and the
+ * required layout have settled; arbitrary sleeps were not reliable for the
+ * Book Detail cover path in CI.
+ */
+async function waitForCaptureReadiness(page, required) {
+  for (const selector of required) {
+    await page.locator(selector).first().waitFor({ state: "visible", timeout: 10_000 });
+  }
+  try {
+    await page.waitForFunction((selectors) => {
+      const visible = (node) => {
+        const style = getComputedStyle(node);
+        const rect = node.getBoundingClientRect();
+        return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+      };
+      const visibleImages = [...document.images].filter((image) => {
+        const rect = image.getBoundingClientRect();
+        return visible(image) && rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth;
+      });
+      const requiredPresent = selectors.every((selector) => {
+        const node = document.querySelector(selector);
+        return Boolean(node && visible(node));
+      });
+      const imagesReady = visibleImages.every((image) => image.complete && image.naturalWidth > 0);
+      const geometry = selectors.map((selector) => {
+        const rect = document.querySelector(selector)?.getBoundingClientRect();
+        return rect ? [selector, rect.x, rect.y, rect.width, rect.height] : [selector, null];
+      });
+      const signature = JSON.stringify({ geometry, images: visibleImages.map((image) => [image.currentSrc, image.naturalWidth, image.naturalHeight]) });
+      if (window.__earnalismOwnerReviewCaptureSignature === signature) {
+        window.__earnalismOwnerReviewCaptureStableFrames = (window.__earnalismOwnerReviewCaptureStableFrames || 0) + 1;
+      } else {
+        window.__earnalismOwnerReviewCaptureSignature = signature;
+        window.__earnalismOwnerReviewCaptureStableFrames = 1;
+      }
+      return requiredPresent && imagesReady && document.fonts.status === "loaded" && window.__earnalismOwnerReviewCaptureStableFrames >= 3;
+    }, required, { polling: "raf", timeout: 10_000 });
+  } catch (error) {
+    const diagnostic = await page.evaluate((selectors) => ({
+      fonts_status: document.fonts.status,
+      stable_frames: window.__earnalismOwnerReviewCaptureStableFrames || 0,
+      required: selectors.map((selector) => {
+        const node = document.querySelector(selector);
+        const rect = node?.getBoundingClientRect();
+        return { selector, present: Boolean(node), width: rect?.width || 0, height: rect?.height || 0 };
+      }),
+      visible_images: [...document.images].map((image) => {
+        const style = getComputedStyle(image);
+        const rect = image.getBoundingClientRect();
+        return { current_src: image.currentSrc, complete: image.complete, natural_width: image.naturalWidth, visible: style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0 };
+      }),
+    }), required);
+    throw new Error(`Owner-review capture readiness failed: ${JSON.stringify(diagnostic)}. ${error.message}`);
+  }
+  return page.evaluate(() => ({
+    stable_frames: window.__earnalismOwnerReviewCaptureStableFrames || 0,
+    visible_image_count: [...document.images].filter((image) => {
+      const style = getComputedStyle(image);
+      const rect = image.getBoundingClientRect();
+      return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+    }).length,
+  }));
+}
+
+/**
+ * Full-page owner-review captures deliberately include lazy media below the
+ * viewport.  Load each image through the browser's ordinary image path before
+ * taking that capture, without treating offscreen lazy media as a blocker for
+ * the interactive viewport-stability check above.
+ */
+async function prepareFullPageCapture(page) {
+  const images = await page.locator("img").all();
+  for (const image of images) {
+    const rendered = await image.evaluate((node) => {
+      const style = getComputedStyle(node);
+      const rect = node.getBoundingClientRect();
+      return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+    });
+    if (!rendered) continue;
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate(async (node) => {
+      if (!node.complete || node.naturalWidth === 0) {
+        await new Promise((resolve, reject) => {
+          node.addEventListener("load", resolve, { once: true });
+          node.addEventListener("error", () => reject(new Error(`Image failed: ${node.currentSrc || node.getAttribute("src") || "unknown"}`)), { once: true });
+          node.loading = "eager";
+        });
+      }
+      if (node.decode) await node.decode();
+    });
+  }
+  await page.evaluate(() => scrollTo(0, 0));
+}
+
+/**
+ * A settled layout can still have a final browser paint queued (notably in the
+ * Reader after its fixture state is applied).  Establish visual stability from
+ * bounded, consecutive captures instead of relying on a timing delay.
+ */
+async function captureStableViewport(page) {
+  const attempts = [];
+  let previous = null;
+  for (let attempt = 1; attempt <= CAPTURE_READY_FRAME_COUNT; attempt += 1) {
+    const screenshot = await page.screenshot({ fullPage: false, animations: "disabled" });
+    const digest = sha(screenshot);
+    attempts.push(digest);
+    if (previous && previous.digest === digest) {
+      return { first: previous.screenshot, second: screenshot, stable: true, attempts: attempt };
+    }
+    previous = { digest, screenshot };
+  }
+  return { first: previous?.screenshot || Buffer.alloc(0), second: previous?.screenshot || Buffer.alloc(0), stable: false, attempts: CAPTURE_READY_FRAME_COUNT };
+}
 const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]", "header"],
@@ -182,7 +299,7 @@ export async function closeActualMobileMenu(page) {
   return page.evaluate(() => { const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; }; return { escapeClose: window.__earnalismOwnerReviewToggle?.getAttribute("aria-expanded") === "false", focusRestored: document.activeElement === window.__earnalismOwnerReviewToggle, activeVisibleDialogCount: window.__earnalismOwnerReviewDialog && document.contains(window.__earnalismOwnerReviewDialog) && visible(window.__earnalismOwnerReviewDialog) ? 1 : 0, bodyScrollRestored: document.body.style.overflow !== "hidden", backgroundRestored: [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => !node.hasAttribute("inert") && node.getAttribute("aria-hidden") !== "true") }; });
 }
 
-async function capture(state, context, sessionFontLoad) {
+async function capture(state, context) {
   const page = await context.newPage();
   await page.setViewportSize(state.viewport);
   await page.emulateMedia({ colorScheme: state.family === "library" || state.family === "filter" ? "light" : "dark", reducedMotion: "reduce" });
@@ -197,11 +314,8 @@ async function capture(state, context, sessionFontLoad) {
   }, { usesSanitizedIdentity });
   await installFixtureRoutes(page);
   const response = await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
-  await page.evaluate(async () => {
-    const settle = Promise.all([document.fonts.ready, ...[...document.images].map((image) => image.decode().catch(() => undefined))]);
-    await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
-  });
-  const fontLoad = sessionFontLoad.value || await page.evaluate(async () => {
+  const fontLoad = await page.evaluate(async () => {
+    await document.fonts.ready;
     await Promise.all([
       document.fonts.load('500 48px "Cormorant Garamond"'),
       document.fonts.load('400 16px "Outfit"'),
@@ -215,7 +329,6 @@ async function capture(state, context, sessionFontLoad) {
       notoSansBengali: document.fonts.check('400 16px "Noto Sans Bengali"', 'বাংলা'),
     };
   });
-  sessionFontLoad.value = fontLoad;
   if (state.family === "filter") {
     await page.locator(".reference-filter-trigger").click();
     await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
@@ -245,25 +358,17 @@ async function capture(state, context, sessionFontLoad) {
       }
     }
   }
-  // React can insert a fixture cover after the initial document-image pass.
-  // Decode that post-render image set before comparing review screenshots so
-  // an immutable remote cover cannot create a false visual-stability failure.
-  await page.evaluate(async () => {
-    const settle = Promise.all([...document.images].map((image) => image.decode().catch(() => undefined)));
-    await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
-  });
-  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-  await page.waitForTimeout(500);
-  const first = await page.screenshot({ fullPage: false, animations: "disabled" });
-  await page.waitForTimeout(500);
-  const second = await page.screenshot({ fullPage: false, animations: "disabled" });
+  const selectors = requiredFor(state.family);
+  const readiness = await waitForCaptureReadiness(page, selectors);
+  const viewportCapture = await captureStableViewport(page);
+  const { first, second } = viewportCapture;
   const screenshot = path.join(output, `${state.id}.png`); fs.writeFileSync(screenshot, second);
   let fullPageScreenshot = null;
   if (fullPageStates.has(state.id)) {
     fullPageScreenshot = path.join(output, `${state.id}-full.png`);
+    await prepareFullPageCapture(page);
     await page.screenshot({ path: fullPageScreenshot, fullPage: true, animations: "disabled" });
   }
-  const selectors = requiredFor(state.family);
   const metrics = await page.evaluate((required) => ({
     scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth,
     required: required.map((selector) => Boolean(document.querySelector(selector))),
@@ -284,7 +389,7 @@ async function capture(state, context, sessionFontLoad) {
     : state.family === "commerce" && !publicPaidCommerceEnabled
       ? "Reading Passes are not available in this launch."
       : "Read the first 3 pages free. Listening requires an active Reading Pass.";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "per-page", capture_readiness: readiness, capture_ready_frame_count: CAPTURE_READY_FRAME_COUNT, capture_visual_attempts: viewportCapture.attempts, ...metrics, navigation, navigationClose, stable: viewportCapture.stable, screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
 }
 
 export async function runCapture() {
@@ -294,11 +399,10 @@ export async function runCapture() {
   const checkoutTreeSha = process.env.CHECKOUT_TREE_SHA || execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
   const captureScriptSha = sha(fs.readFileSync(new URL(import.meta.url)));
   const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
-  const sessionFontLoad = { value: null };
   try {
   const captures = [];
   for (const state of states) {
-    const result = await capture(state, context, sessionFontLoad);
+    const result = await capture(state, context);
     captures.push(result);
     console.log(JSON.stringify({ state: state.id, status: result.status, stable: result.stable, errors: result.errors.length }));
   }
@@ -314,6 +418,9 @@ export async function runCapture() {
     missing_required: item.geometry.filter((entry) => !entry.present).map((entry) => entry.selector),
     errors: item.errors,
     stable: item.stable,
+    capture_readiness: item.capture_readiness,
+    capture_ready_frame_count: item.capture_ready_frame_count,
+    capture_visual_attempts: item.capture_visual_attempts,
     fontLoad: item.fontLoad,
   }));
   console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), failureReasons, strict, output }));

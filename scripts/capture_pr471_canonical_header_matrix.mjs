@@ -14,6 +14,14 @@ const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("HEADER_REVIEW_BASE_URL must be an isolated loopback build.");
 fs.mkdirSync(output, { recursive: true });
 
+const CANONICAL_LOGO_PATH = "/assets/brand/earnalism-brand-lockup.png";
+const APPROVED_RESPONSIVE_LOGO_PATH = /^\/assets\/performance\/earnalism-brand-lockup-(?:320|640)\.(?:avif|webp)$/;
+const BRAND_ALT = "The Earnalism — Read. Reflect. Remember.";
+const isApprovedLogoSource = (value) => {
+  const pathname = new URL(value, baseUrl).pathname;
+  return pathname === CANONICAL_LOGO_PATH || APPROVED_RESPONSIVE_LOGO_PATH.test(pathname);
+};
+
 const navLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About"];
 const activeLabelByState = {
   home: "Home", library: "Library", "bengali-classics": "Bengali Classics", "english-classics": "English Classics",
@@ -119,7 +127,9 @@ try {
           logo_asset: node.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')?.getAttribute("data-brand-asset") || "",
           logo_width: logo ? Math.round(logo.getBoundingClientRect().width) : 0,
           logo_natural_width: logo?.naturalWidth || 0,
+          logo_declared_src: logo?.getAttribute("src") || "",
           logo_src: logo?.currentSrc || logo?.src || "",
+          logo_alt: logo?.getAttribute("alt") || "",
           header_scroll_width: node.scrollWidth,
           header_client_width: node.clientWidth,
           public_nav_labels: [...node.querySelectorAll('.premium-header-nav--desktop > a[data-nav-key]')].map((link) => link.textContent.trim()),
@@ -138,7 +148,9 @@ try {
       assert.ok(headerInfo.nav_font_family.includes("Outfit"), `${routeInfo.id}: shared navigation font`);
       assert.equal(headerInfo.background, "rgb(255, 249, 238)", `${routeInfo.id}: shared parchment background`);
       assert.equal(headerInfo.logo_asset, "earnalism-brand-lockup.png", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
-      assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-lockup.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
+      assert.equal(new URL(headerInfo.logo_declared_src, baseUrl).pathname, CANONICAL_LOGO_PATH, `${routeInfo.id} ${viewport.width}: canonical master remains the image fallback`);
+      assert.ok(isApprovedLogoSource(headerInfo.logo_src), `${routeInfo.id} ${viewport.width}: only the canonical master or an approved responsive derivative may render`);
+      assert.equal(headerInfo.logo_alt, BRAND_ALT, `${routeInfo.id} ${viewport.width}: brand asset keeps its accessible name`);
       assert.ok(headerInfo.logo_natural_width > 0, `${routeInfo.id} ${viewport.width}: logo loaded`);
       assert.ok(headerInfo.header_scroll_width <= headerInfo.header_client_width, `${routeInfo.id} ${viewport.width}: header overflow`);
       const expectedHeaderHeight = viewport.width >= 1280 ? 104 : viewport.width >= 768 ? 96 : 80;
