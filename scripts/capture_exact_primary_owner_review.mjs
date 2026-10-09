@@ -17,7 +17,10 @@ const strict = process.env.OWNER_REVIEW_CAPTURE_STRICT !== "false";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 
 const controlledLaunch = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8"));
-const publicReaderExposureEnabled = controlledLaunch.public_reader_exposure_enabled === true;
+// The approved prior-review schema also predates the explicit reader field
+// and renders its reviewed Book Detail surface.  Only an explicit false may
+// select the held-title marker in this capture-only compatibility layer.
+const publicReaderExposureEnabled = controlledLaunch.public_reader_exposure_enabled !== false;
 // The approved prior-review revision predates the explicit
 // `public_paid_commerce_enabled` launch field and renders the active pricing
 // reference surface.  In this capture-only compatibility layer, absence

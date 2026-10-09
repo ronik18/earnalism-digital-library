@@ -2637,3 +2637,5 @@ Owner-review captures need two distinct readiness contracts: the viewport requir
 ## PR #525 prior-review capture schema compatibility — 2026-10-09
 
 The approved prior visual-review source predates `controlled_launch.public_paid_commerce_enabled`, but its actual Pricing component renders `pricing-reference-surface`. The owner-review capture contract must interpret only an explicit `false` as the disabled-commerce surface; a missing legacy field keeps the historically rendered active pricing reference expectation. This is a capture-harness compatibility rule, never an application payment or launch-policy change. Fresh comparison artifacts still require owner review.
+
+The same historical schema has no `public_reader_exposure_enabled`, while its reviewed Book Detail route visibly renders the active detail surface. Treat only explicit `false` as the held-title capture contract. A missing field is a schema-compatibility fact for historical capture, never a change to Reader admission, territory, entitlement, or publication policy.
