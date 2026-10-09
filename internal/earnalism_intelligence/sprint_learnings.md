@@ -2625,3 +2625,11 @@ Owner artwork provenance removes a third-party artwork permission question, not 
 
 ## Catalogue local follow-up — 2026-10-04T20:55:06.984456+00:00
 Artwork ownership does not verify printed endorsements/ISBN allocation. Neither is mandatory in publication schema. Preserve the back privately; front-only text preparation is viable. Legacy Bharat audio flags require fresh text-only bindings. Missing-reference search found one canonical pair and 15 ambiguous pairs; five Bengali display defects are baked into source artwork. No activation or production verification inferred.
+## Reader sanitizer integrity — 2026-10-09
+
+Keep prose whitespace normalization outside sanitized pre subtrees; preserve safe
+sup without expanding attribute/URL permissions. Strict 14-chapter audit passes
+with437 pre blocks; historical affected-block ledger sums156, not prior claim166.
+Derived211-page native candidate is independent of historical invalid211 method.
+Local23tests and390/768/1440excerpt rendering pass; production remains unverified.
+See reader_sanitizer_repair_20261009.md. #525 remains paused; no release authorized.

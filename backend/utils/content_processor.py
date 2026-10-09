@@ -20,7 +20,7 @@ BENGALI_RE = re.compile(r"[\u0980-\u09FF]")
 ALLOWED_TAGS = [
     "p", "h1", "h2", "h3", "h4", "h5",
     "blockquote", "strong", "em", "b", "i", "u",
-    "pre", "code",
+    "pre", "code", "sup",
     "ul", "ol", "li", "br", "hr",
     "img", "figure", "figcaption",
     "table", "thead", "tbody", "tr", "th", "td",
@@ -140,6 +140,15 @@ def remove_unsafe_blocks(raw_html: str) -> tuple[str, bool]:
 
 
 def normalize_render_html(clean_html: str) -> str:
+    """Normalize prose only; sanitized pre subtrees retain significant spacing."""
+    parts = re.split(r"(<pre\b[^>]*>[\s\S]*?</pre\s*>)", clean_html or "", flags=re.IGNORECASE)
+    return "".join(
+        part if index % 2 else _normalize_prose_html(part)
+        for index, part in enumerate(parts)
+    ).strip()
+
+
+def _normalize_prose_html(clean_html: str) -> str:
     clean_html = re.sub(
         r"<p>\s*(?:&nbsp;|\s|<br\s*/?>)*\s*</p>",
         "",
@@ -149,7 +158,7 @@ def normalize_render_html(clean_html: str) -> str:
     clean_html = re.sub(r"(?:<br\s*/?>\s*){3,}", "<br><br>", clean_html, flags=re.IGNORECASE)
     clean_html = re.sub(r">\s+<", "><", clean_html)
     clean_html = re.sub(r"[ \t]{2,}", " ", clean_html)
-    return clean_html.strip()
+    return clean_html
 
 
 _HTML_TOKEN_RE = re.compile(r"(<[^>]+>)")
