@@ -18,7 +18,13 @@ if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL 
 
 const controlledLaunch = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8"));
 const publicReaderExposureEnabled = controlledLaunch.public_reader_exposure_enabled === true;
-const publicPaidCommerceEnabled = controlledLaunch.public_paid_commerce_enabled === true;
+// The approved prior-review revision predates the explicit
+// `public_paid_commerce_enabled` launch field and renders the active pricing
+// reference surface.  In this capture-only compatibility layer, absence
+// therefore retains that historical surface contract; only an explicit false
+// means the disabled-commerce route must be present.  This does not alter the
+// application's launch configuration or any commerce behaviour.
+const publicPaidCommerceEnabled = controlledLaunch.public_paid_commerce_enabled !== false;
 const primaryReaderSlug = controlledLaunch.live_approved_slugs?.[0] || "a-ghost-story";
 const fixtureBooks = [
   { slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/dracula", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "chapter-001", is_preview: true }] },

@@ -2633,3 +2633,7 @@ Use the launcher-provided loopback frontend origin for browser qualification. A 
 ## PR #525 owner-evidence repair — 2026-10-09
 
 Owner-review captures need two distinct readiness contracts: the viewport requires only rendered in-viewport media plus stable layout/fonts, while full-page artifacts must explicitly decode every rendered lazy image before capture. Consecutive bounded screenshots are a valid visual-stability signal; fixed sleeps are not. Header verification must allow only the canonical fallback or explicitly enumerated local responsive derivatives and retain the canonical accessible name. A protected Library interaction fingerprint is an approval-bound source identity: remove an unapproved semantic request change rather than rewriting an approval record. Disposable Redis qualification uses the test-bound port 27019; launcher defaults alone are not equivalent evidence. All results remain local evidence pending exact-head CI and actual owner review.
+
+## PR #525 prior-review capture schema compatibility — 2026-10-09
+
+The approved prior visual-review source predates `controlled_launch.public_paid_commerce_enabled`, but its actual Pricing component renders `pricing-reference-surface`. The owner-review capture contract must interpret only an explicit `false` as the disabled-commerce surface; a missing legacy field keeps the historically rendered active pricing reference expectation. This is a capture-harness compatibility rule, never an application payment or launch-policy change. Fresh comparison artifacts still require owner review.
