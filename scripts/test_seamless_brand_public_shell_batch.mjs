@@ -7,6 +7,7 @@ import os from "node:os";
 import path from "node:path";
 import { loadStateManifest, selectStateRecords } from "./lib/seamless_brand_state_manifest.mjs";
 import { requestedScreenshotNames, stateOutputDirectory, validateCaptureSummary, validateUniqueOutputDirectories } from "./lib/seamless_brand_one_state_capture.mjs";
+import { assertApprovedResponsiveLockup } from "./lib/seamless_brand_logo_contract.mjs";
 
 const root = process.cwd();
 const captureScript = path.join(root, "scripts/capture_seamless_brand_owner_review.mjs");
@@ -33,7 +34,7 @@ function writeSynthetic(output, stable = true) {
 }
 function assertBrandContract(record, state) {
   assert.equal(record.route, state.route); assert.deepEqual(record.viewport, state.viewport); assert.equal(record.zoom, 100);
-  assert.equal(record.visible_header_count, 1); assert.equal(record.visible_canonical_lockup_count, 1); assert.equal(record.logo.natural_width, 2400); assert.equal(record.logo.natural_height, 720);
+  assert.equal(record.visible_header_count, 1); assert.equal(record.visible_canonical_lockup_count, 1); assertApprovedResponsiveLockup(record.logo, state.id);
   assert.ok(Math.abs(record.logo.aspect_ratio - (10 / 3)) < 0.01); assert.equal(record.logo.transform, "none"); assert.equal(record.logo.wrapper_background, "rgba(0, 0, 0, 0)"); assert.equal(record.logo.wrapper_border_width, "0px"); assert.equal(record.logo.wrapper_border_radius, "0px"); assert.equal(record.logo.wrapper_box_shadow, "none"); assert.equal(record.logo.wrapper_padding, "0px");
   const expectedHeaderParentBackground = "rgb(255, 249, 238)";
   assert.equal(record.logo.parent_background, expectedHeaderParentBackground); assert.equal(record.logo.clipped, false); assert.equal(record.overlap, false); assert.equal(record.horizontal_overflow, false); assert.equal(record.console_error_count, 0); assert.equal(record.page_error_count, 0); assert.equal(record.failed_required_request_count, 0); assert.equal(record.rendered_ui_result, "PASS");
@@ -46,6 +47,8 @@ test("reverse input executes in manifest order", () => assert.deepEqual(selectSt
 test("public-shell states have unique output directories", () => assert.equal(new Set(validateUniqueOutputDirectories(temp, selected)).size, 8));
 test("missing state output fails", () => { const output = path.join(temp, "missing"); const summary = writeSynthetic(output); fs.rmSync(path.join(stateOutputDirectory(output, ids[7]), "metadata.json")); assert.throws(() => validateCaptureSummary(summary, output, 8), /metadata is missing/); });
 test("unstable state fails", () => assert.throws(() => validateCaptureSummary(writeSynthetic(path.join(temp, "unstable"), false), path.join(temp, "unstable"), 8), /unstable/));
+test("unapproved responsive logo source fails", () => assert.throws(() => assertApprovedResponsiveLockup({ declared_src: "/assets/brand/earnalism-brand-lockup.png", current_src: "/assets/performance/other-lockup-320.webp", alt: "The Earnalism — Read. Reflect. Remember.", natural_width: 320, natural_height: 96 }, "negative-logo"), /approved local responsive derivative/));
+test("incorrect responsive logo accessible name fails", () => assert.throws(() => assertApprovedResponsiveLockup({ declared_src: "/assets/brand/earnalism-brand-lockup.png", current_src: "/assets/performance/earnalism-brand-lockup-320.webp", alt: "Earnalism", natural_width: 320, natural_height: 96 }, "negative-logo"), /accessible name/));
 let actualRecords;
 test("Library desktop metadata contract", () => { if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the actual local production-build capture."); const output = path.join(temp, "actual"); run(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--state-filter", [...ids].reverse().join(","), "--capture", "--browser", "chromium", "--base-url", baseUrl, "--output", output]); const summary = JSON.parse(fs.readFileSync(path.join(output, "capture-summary.json"), "utf8")); actualRecords = validateCaptureSummary(summary, output, 8); assertBrandContract(actualRecords.find((record) => record.state_id === "library-desktop"), selected[0]); });
 test("Library mobile metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "library-mobile"), selected[1]));
