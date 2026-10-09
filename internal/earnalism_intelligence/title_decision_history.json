@@ -1,4 +1,15 @@
 {
+  "agentic_ai_with_python_sanitizer_local_20261009": {
+    "state": "LOCAL_INTEGRITY_PASS_PENDING_RELEASE_DECISION",
+    "evidence": "reader_sanitizer_repair_20261009.md",
+    "approved_chapters": 14,
+    "preserved_pre_blocks": 437,
+    "historical_changed_pre_blocks": 156,
+    "derived_pages": 211,
+    "derived_manifest": "2d6e081a92bbeac0e5364cf2",
+    "production_verified": false,
+    "publication_changed": false
+  },
   "version": "2026-07-14",
   "india_commercial_entitlement_candidate_20260925": {
     "status": "MERGED_PREVIEW_ONLY_PRODUCTION_SMOKE_PASS_PAYMENT_EXTERNAL_BLOCK",
