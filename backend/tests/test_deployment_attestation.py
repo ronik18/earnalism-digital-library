@@ -6,6 +6,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import httpx
+import pytest
 from fastapi import APIRouter, FastAPI, Response
 
 from backend.utils.deployment_attestation import deployment_attestation
@@ -31,12 +32,17 @@ def test_valid_provider_identity_and_malformed_values():
         assert "secret-or-malformed" not in str(result)
 
 
-def test_actual_health_routes_preserve_liveness_and_disable_caching(monkeypatch):
+@pytest.mark.parametrize("layout", ["package", "container"])
+def test_actual_health_routes_preserve_liveness_and_disable_caching(monkeypatch, layout):
     # Extract unchanged-route wiring and the actual changed handlers, without
     # importing server (which opens production-capable service clients).
     import sys
-    monkeypatch.setitem(sys.modules, "utils.deployment_attestation", importlib.import_module("backend.utils.deployment_attestation"))
-    monkeypatch.setitem(sys.modules, "utils", SimpleNamespace())
+    if layout == "container":
+        monkeypatch.setitem(sys.modules, "utils.deployment_attestation", importlib.import_module("backend.utils.deployment_attestation"))
+        monkeypatch.setitem(sys.modules, "utils", SimpleNamespace())
+    else:
+        monkeypatch.delitem(sys.modules, "utils.deployment_attestation", raising=False)
+        monkeypatch.delitem(sys.modules, "utils", raising=False)
     app, api = FastAPI(), APIRouter(prefix="/api")
     namespace = {"app": app, "api": api, "Response": Response, "MULTI_REPLICA_ENABLED": False}
     tree = ast.parse((Path(__file__).resolve().parents[1] / "server.py").read_text())

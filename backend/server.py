@@ -6953,7 +6953,10 @@ async def root_health_check():
 
 @app.get("/healthz")
 async def root_healthz_check(response: Response = None):
-    from utils.deployment_attestation import deployment_attestation
+    try:
+        from utils.deployment_attestation import deployment_attestation
+    except ModuleNotFoundError:
+        from backend.utils.deployment_attestation import deployment_attestation
     if response is not None:
         response.headers["Cache-Control"] = "no-store"
     return {

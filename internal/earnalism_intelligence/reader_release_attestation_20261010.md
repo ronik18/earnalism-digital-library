@@ -80,7 +80,7 @@ Live manual hold execution remains UNVERIFIED until a later authorized release.
 Vercel CLI is pinned63.1.2 in the moved workflow, not unbounded latest.
 
 Newly executed local: workflow/identity/startup negative tests24 PASS; health,
-preparation accounting and admin summary tests24 PASS; static SEO canary unit
+preparation accounting and admin summary tests25 PASS; static SEO canary unit
 tests28 PASS; YAML parse and shell-gate execution PASS; diff check PASS.
 Inherited unchanged implementation: frontend101, backend115 (including26 real
 Mongo concurrency), mixed-version and browser390/768/1440 qualification.
@@ -96,3 +96,13 @@ a separate later decision after actual backend verification.
 
 Next action: publish only this successor to existing PR528, collect terminal
 exact-head CI and prepare fresh owner acceptance; do not merge/deploy/accept.
+
+## Exact-head CI import repair
+
+Candidate c31fdf98 regression38071685406 failed isolated UAT health with500.
+Reproduction without server startup or DB calls proved ModuleNotFoundError for
+the container-only `utils` import under native `backend.server:app` packaging.
+Added actual-handler ASGI package/container regression: 1 FAIL /3 PASS before
+fix. Minimal import fallback supports both deployment layouts; 4 PASS after.
+No liveness assertion weakened. Fresh head CI replaces the failed candidate;
+original commit and its evidence remain preserved. No production change.
