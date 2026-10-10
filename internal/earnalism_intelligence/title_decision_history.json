@@ -1,4 +1,23 @@
 {
+  "agentic_ai_with_python_preparation_successor_20261010": {
+    "state": "LOCAL_SUCCESSOR_QUALIFIED_NEW_RELEASE_AUTHORIZATION_REQUIRED",
+    "evidence": "reader_preparation_successor_20261010.md",
+    "base": "a8ecbacf2310e917071ef2b2c0b6063204814039",
+    "original_repair": "9f8e9fc97cdbf9923eaa0c1bc992147593a1fff5",
+    "production_reader_verified": false,
+    "publication_changed": false,
+    "balance_adjusted": false,
+    "performance_lane": "PAUSED"
+  },
+  "agentic_ai_with_python_preparation_local_20261010": {
+    "state": "LOCAL_CONTRACT_QUALIFIED_PENDING_FOCUSED_RELEASE_REVIEW",
+    "evidence": "reader_preparation_contract_20261010.md",
+    "starting_head": "6b6de845518ba88c2c242afd1b25cd709806265d",
+    "production_reader_verified": false,
+    "publication_changed": false,
+    "balance_adjusted": false,
+    "performance_lane": "PAUSED"
+  },
   "agentic_ai_with_python_sanitizer_local_20261009": {
     "state": "LOCAL_INTEGRITY_PASS_PENDING_RELEASE_DECISION",
     "evidence": "reader_sanitizer_repair_20261009.md",

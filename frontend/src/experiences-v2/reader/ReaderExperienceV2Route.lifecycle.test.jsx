@@ -55,6 +55,157 @@ async function openProtected() { await mount(); await click("Continue to this pa
 async function tick(ms) { await act(async () => { jest.advanceTimersByTime(ms); }); }
 function deferred() { let resolve, reject; const promise = new Promise((yes, no) => { resolve = yes; reject = no; }); return { promise, resolve, reject }; }
 
+function preparationContract() {
+  const deadline = new Date(Date.now() + 20000).toISOString();
+  pass.startReadingPassSession.mockImplementation(async () => response({ text_phase: "preparing", preparation_expires_at: deadline, deducted_seconds: 0 }));
+  pass.renewReadingPassLease.mockImplementation(async ({ lease, active, textPhase }) => response({
+    lease_version: lease.version + 1, text_phase: textPhase, preparation_expires_at: deadline,
+    lease_expires_at: textPhase === "preparing" ? deadline : new Date(Date.now() + (active ? 20000 : 0)).toISOString(),
+    deducted_seconds: 0, status: active || textPhase === "preparing" ? "Running" : "Paused",
+  }));
+}
+
+test("a lost preparation renewal retries the same nonbillable lifecycle intent", async () => {
+  preparationContract();
+  const pending = deferred(); pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
+  pass.renewReadingPassLease.mockRejectedValueOnce(new Error("Synthetic response loss"));
+  await openProtected(); await tick(10000);
+  expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(2);
+  expect(pass.renewReadingPassLease.mock.calls[0][0]).toEqual(pass.renewReadingPassLease.mock.calls[1][0]);
+  expect(pass.renewReadingPassLease.mock.calls[1][0]).toMatchObject({ active: false, textPhase: "preparing" });
+  expect(text()).not.toContain("Reading paused");
+});
+
+test("slow image decoding remains nonbillable and cannot outlive preparation", async () => {
+  preparationContract();
+  const imageGate = deferred();
+  const originalDecode = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "decode");
+  Object.defineProperty(HTMLImageElement.prototype, "decode", { configurable: true, value: () => imageGate.promise });
+  const imageContent = '<p>Original synthetic image introduction.</p><img src="/synthetic-image.png" alt="Synthetic image" />';
+  const hash = createHash("sha256").update(imageContent).digest("hex");
+  const imageManifest = manifest(); imageManifest.canonical_pages.pages[3].content_hash = hash;
+  userApi.get.mockResolvedValue({ data: imageManifest });
+  pass.getReadingPassPage.mockImplementation(async (_, n) => n === 4 ? { ...page(n), content: imageContent, content_sha256: hash } : page(n));
+  try {
+    await openProtected(); await tick(10000);
+    expect(container.querySelector('[data-pagination-ready="true"]')).toBeNull();
+    expect(pass.renewReadingPassLease).toHaveBeenCalledWith(expect.objectContaining({ active: false, textPhase: "preparing" }));
+    await tick(10000); await tick(1);
+    expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+    expect(pass.renewReadingPassLease.mock.calls.every(([request]) => !request.active)).toBe(true);
+    await act(async () => imageGate.resolve());
+  } finally {
+    if (originalDecode) Object.defineProperty(HTMLImageElement.prototype, "decode", originalDecode); else delete HTMLImageElement.prototype.decode;
+  }
+});
+
+test.each(["hidden", "blurred", "abandoned", "timeout", "chunk failure", "integrity failure"])("preparation %s never becomes active reading or retains usable protected buffers", async (failure) => {
+  preparationContract();
+  const pending = deferred();
+  pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
+  await openProtected();
+  if (failure === "hidden") {
+    Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
+    await act(async () => document.dispatchEvent(new Event("visibilitychange")));
+  } else if (failure === "blurred") {
+    document.hasFocus.mockReturnValue(false);
+    await act(async () => window.dispatchEvent(new Event("blur")));
+  } else if (failure === "abandoned") {
+    await click("Back to Library");
+    expect(pass.endReadingPassSession).toHaveBeenCalledTimes(1);
+  } else if (failure === "timeout") {
+    await tick(10000); await tick(10000); await tick(1);
+    expect(text()).toMatch(/expired|renewed/i);
+  } else if (failure === "chunk failure") {
+    await act(async () => pending.reject(new Error("Synthetic chunk unavailable")));
+    expect(pass.endReadingPassSession).toHaveBeenCalled();
+  } else {
+    await act(async () => pending.resolve({ ...page(1), content_sha256: "0".repeat(64) }));
+    expect(pass.endReadingPassSession).toHaveBeenCalled();
+  }
+  expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+  expect(pass.renewReadingPassLease.mock.calls.every(([request]) => !request.active)).toBe(true);
+});
+
+test.each(["slow fonts", "failed fonts", "zero layout"])("preparation tracks real pagination boundary: %s", async (condition) => {
+  preparationContract();
+  const fontGate = deferred();
+  const oldFonts = Object.getOwnPropertyDescriptor(document, "fonts");
+  Object.defineProperty(document, "fonts", { configurable: true, value: { load: () => fontGate.promise, ready: Promise.resolve(), addEventListener() {}, removeEventListener() {} } });
+  if (condition === "zero layout") jest.spyOn(HTMLElement.prototype, "clientHeight", "get").mockReturnValue(0);
+  try {
+    await openProtected();
+    await tick(10000);
+    expect(pass.getReadingPassPage).toHaveBeenCalledTimes(7);
+    expect(container.querySelector('[data-pagination-ready="true"]')).toBeNull();
+    expect(pass.renewReadingPassLease).toHaveBeenCalledWith(expect.objectContaining({ active: false, textPhase: "preparing" }));
+    await act(async () => condition === "failed fonts" ? fontGate.reject(new Error("Synthetic font failure")) : fontGate.resolve());
+    if (condition === "slow fonts") {
+      expect(container.querySelector('[data-pagination-ready="true"]')).not.toBeNull();
+      expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: "readable" });
+    } else if (condition === "failed fonts") {
+      expect(pass.endReadingPassSession).toHaveBeenCalled();
+      expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+    } else {
+      await tick(10000); await tick(1);
+      expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+      expect(pass.renewReadingPassLease.mock.calls.every(([request]) => !request.active)).toBe(true);
+    }
+  } finally {
+    if (oldFonts) Object.defineProperty(document, "fonts", oldFonts); else delete document.fonts;
+  }
+});
+
+test.each([0, 16112])("a visible 19-chunk opening delayed %i ms remains authorized until its first readable fragment", async (delayMs) => {
+  const openingManifest = manifest();
+  openingManifest.access.reading_pass.total_pages = 93;
+  openingManifest.canonical_pages = { page_count: 93, pages: Array.from({ length: 93 }, (_, i) => ({
+    page_number: i + 1, page_id: `opening:${i + 1}`, chapter_id: i < 74 ? "earlier" : "chapter-006", content_hash: chunkHash(i + 1),
+  })) };
+  openingManifest.chapters = [{ id: "earlier", title: "Earlier chapter" }, { id: "chapter-006", title: "Chapter six" }];
+  userApi.get.mockResolvedValue({ data: openingManifest });
+  const preparationDeadline = new Date(Date.now() + 20000).toISOString();
+  pass.startReadingPassSession.mockResolvedValue(response({ text_phase: "preparing", preparation_expires_at: preparationDeadline, deducted_seconds: 0 }));
+  pass.renewReadingPassLease.mockImplementation(async ({ lease, active, textPhase }) => response({
+    lease_version: lease.version + 1, text_phase: textPhase, deducted_seconds: 0,
+    preparation_expires_at: preparationDeadline,
+    status: active || textPhase === "preparing" ? "Running" : "Paused",
+  }));
+  const pending = new Map();
+  const delivered = [];
+  const chunk = n => ({ ...page(n), total_pages: 93, chapter_id: "chapter-006", chapter_title: "Chapter six" });
+  pass.getReadingPassPage.mockImplementation(async (_, n) => {
+    if (n >= 84) {
+      const gate = deferred(); pending.set(n, gate); await gate.promise;
+    }
+    delivered.push(n);
+    return chunk(n);
+  });
+  await mount("/reader/test-book?p=75");
+  await click("Continue to this page");
+  expect(delivered).toEqual(Array.from({ length: 9 }, (_, i) => 75 + i));
+  expect([...pending.keys()]).toEqual([84, 85, 86]);
+  expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+  expect(text()).toContain("Opening your page");
+  if (delayMs) { await tick(10000); await tick(delayMs - 10000); }
+  else await tick(0);
+  if (delayMs) {
+    console.info("Synthetic opening boundary", { elapsedMs: delayMs, delivered, requested: pass.getReadingPassPage.mock.calls.map(([, n]) => n),
+      canvasPresent: Boolean(container.querySelector("article.reader-v2__canvas")),
+      paused: text().includes("Reading paused"), renewalActive: pass.renewReadingPassLease.mock.calls.map(([request]) => request.active) });
+    expect(pass.renewReadingPassLease).toHaveBeenCalledWith(expect.objectContaining({ active: false, textPhase: "preparing" }));
+  }
+  expect(text()).not.toContain("Reading paused");
+  for (let n = 84; n <= 93; n += 1) {
+    await act(async () => pending.get(n).resolve());
+  }
+  expect(delivered).toEqual(Array.from({ length: 19 }, (_, i) => 75 + i));
+  expect(text()).toContain("Page 75 manuscript.");
+  expect(container.querySelector('[data-transport-chunks="19"]')).not.toBeNull();
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0].active).toBe(true);
+});
+
 beforeEach(() => {
   resetReaderPageCacheForTests();
   jest.useFakeTimers();
@@ -417,8 +568,10 @@ test("visible inactivity pauses reading time at the configured threshold", async
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(count);
 });
 
-test("authorized within-chapter navigation stays active across consecutive lease renders", async () => {
+test.each([false, true])("authorized within-chapter navigation stays active across consecutive lease renders (explicit preparation=%s)", async (explicit) => {
+  if (explicit) preparationContract();
   await openProtected();
+  pass.renewReadingPassLease.mockClear();
   await act(async () => {
     document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
     navigate("/reader/test-book?p=5");
@@ -431,6 +584,23 @@ test("authorized within-chapter navigation stays active across consecutive lease
   expect(pass.renewReadingPassLease.mock.calls.map(([request]) => request.active)).toEqual([true, true]);
   expect(text()).not.toContain("Reading paused");
   expect(pass.getReadingPassPage).toHaveBeenCalledTimes(fetched);
+});
+
+test("explicit preparation resumes after focus returns without pretending unreadable content is active", async () => {
+  preparationContract();
+  await openProtected();
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: "readable" });
+  document.hasFocus.mockReturnValue(false);
+  await act(async () => window.dispatchEvent(new Event("blur")));
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: false, textPhase: "inactive" });
+  expect(text()).toContain("Reading paused");
+  pass.renewReadingPassLease.mockClear();
+  document.hasFocus.mockReturnValue(true);
+  await act(async () => window.dispatchEvent(new Event("focus")));
+  expect(pass.renewReadingPassLease.mock.calls[0][0]).toMatchObject({ active: false, textPhase: "preparing" });
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: "readable" });
+  expect(container.querySelector('[data-pagination-ready="true"]')).not.toBeNull();
+  expect(text()).not.toContain("Reading paused");
 });
 
 test.each(["pointerdown", "keydown", "scroll"])("%s resets real inactivity without extending its threshold", async (event) => {

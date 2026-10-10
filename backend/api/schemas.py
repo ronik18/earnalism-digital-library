@@ -486,6 +486,7 @@ class ReadingPassLeaseRenewIn(BaseModel):
     idempotency_key: str = Field(min_length=8, max_length=160)
     active: bool = True
     playback_state: Literal["", "playing", "paused", "buffering", "ended"] = ""
+    text_phase: Literal["", "preparing", "readable", "inactive"] = ""
 
 
 class ReadingPassSessionEndIn(BaseModel):

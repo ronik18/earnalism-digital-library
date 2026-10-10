@@ -177,6 +177,8 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     } else viewportRef.current.removeAttribute('data-pagination-overflow');
   }, [fragment, pagination.pending, layoutKey]);
   const onVisualPageVisibility = model.onVisualPageVisibility;
+  const onPreparationFailure = model.onPreparationFailure;
+  useEffect(() => { if (layoutError) onPreparationFailure?.(); }, [layoutError, onPreparationFailure]);
   useLayoutEffect(() => {
     onVisualPageVisibility?.(!pagination.pending && fragment && !layoutError ? { start: fragment.start, end: fragment.end, media: fragment.media || [] } : null);
     return () => onVisualPageVisibility?.(null);

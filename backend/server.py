@@ -6952,16 +6952,23 @@ async def root_health_check():
 
 
 @app.get("/healthz")
-async def root_healthz_check():
+async def root_healthz_check(response: Response = None):
+    try:
+        from utils.deployment_attestation import deployment_attestation
+    except ModuleNotFoundError:
+        from backend.utils.deployment_attestation import deployment_attestation
+    if response is not None:
+        response.headers["Cache-Control"] = "no-store"
     return {
         "status": "ok",
         "replica": "single" if not MULTI_REPLICA_ENABLED else os.environ.get("RAILWAY_REPLICA_ID", "multi"),
+        "deployment": deployment_attestation(),
     }
 
 
 @api.get("/healthz")
-async def api_healthz_check():
-    return await root_healthz_check()
+async def api_healthz_check(response: Response = None):
+    return await root_healthz_check(response)
 
 
 @api.get("/controlled-launch/status")
@@ -11883,6 +11890,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             scope=scope,
             transfer=transfer,
             free_entitlement=free_entitlement if content_type == "text" else False,
+            prepare_text=content_type == "text",
         )
         await _invalidate_user_cache(user["id"])
         _set_reading_pass_media_cookies(response, result)
@@ -11957,6 +11965,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             active=payload.active,
             playback_state=payload.playback_state,
             text_authority=text_authority,
+            text_phase=payload.text_phase,
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))

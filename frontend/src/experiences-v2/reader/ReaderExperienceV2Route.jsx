@@ -37,12 +37,19 @@ function leaseResponse(response, slug, previous = null, sequence = 0) {
     version: Number(response.lease_version),
     sequence,
     status: response.status,
+    textPhase: response.text_phase || null,
     expiresAt: Date.parse(response.lease_expires_at),
     balance: validBalance(response.balance_seconds),
     heartbeatMs: previous?.heartbeatMs || Math.max(1000, Math.min(10000, Number(response.heartbeat_seconds || 10) * 1000)),
   };
   if (!value.token || !Number.isInteger(value.version) || value.version < 1 || !Number.isFinite(value.expiresAt)
     || !Number.isFinite(value.balance) || value.balance < 0) return null;
+  if (response.text_phase !== undefined && !["preparing", "readable", "inactive"].includes(response.text_phase)) return null;
+  if (value.textPhase === "preparing") {
+    const deadline = Date.parse(response.preparation_expires_at);
+    if (!Number.isFinite(deadline) || deadline <= Date.now()) return null;
+    value.expiresAt = Math.min(value.expiresAt, deadline);
+  }
   return value;
 }
 
@@ -108,6 +115,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const lastActivityRef = useRef(Date.now());
   const displayedPageRef = useRef(false);
   const protectedPageVisibleRef = useRef(false);
+  const readableInGrantRef = useRef(false);
+  const preparationFailedRef = useRef(false);
   const positionVersionRef = useRef(null);
   const positionQueueRef = useRef(Promise.resolve());
   const previewEventSentRef = useRef("");
@@ -119,6 +128,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   }, [syncBalance]);
 
   const publishLease = useCallback((value) => {
+    if (value?.sessionId && value.sessionId !== leaseRef.current?.sessionId) {
+      readableInGrantRef.current = false;
+      preparationFailedRef.current = false;
+    }
     leaseRef.current = value;
     if (aliveRef.current) {
       setLease(value);
@@ -217,12 +230,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     });
   }, [publishLease, settleLease]);
 
-  const renewLease = useCallback((active) => {
+  const renewLease = useCallback((active, textPhase) => {
     if (renewPromiseRef.current || closingRef.current || !aliveRef.current) return renewPromiseRef.current;
     const current = leaseRef.current;
     if (!current || !["Running", "Paused"].includes(current.status)) return null;
     const sequence = current.sequence + 1;
-    const request = { lease: current, sequence, active, idempotencyKey: `${current.sessionId}:${sequence}:reader-v2` };
+    const request = { lease: current, sequence, active, ...(current.textPhase && textPhase ? { textPhase } : {}), idempotencyKey: `${current.sessionId}:${sequence}:reader-v2` };
     const pending = (async () => {
       try {
         let response;
@@ -278,7 +291,14 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const inactivityMs = Math.max(1000, Number(manifest?.access?.reading_pass?.text_inactivity_seconds || 120) * 1000);
   const activelyReading = useCallback(() => document.visibilityState === "visible" && document.hasFocus()
     && Date.now() - lastActivityRef.current < inactivityMs && ((protectedPageVisibleRef.current && displayedPageRef.current)
-      || (leaseRef.current?.status === "Paused" && pageRef.current > previewLimit)), [inactivityMs, previewLimit]);
+      || (!leaseRef.current?.textPhase && leaseRef.current?.status === "Paused" && pageRef.current > previewLimit)), [inactivityMs, previewLimit]);
+  const renewForLifecycle = useCallback(() => {
+    const active = activelyReading();
+    const preparing = !active && !readableInGrantRef.current && !preparationFailedRef.current
+      && document.visibilityState === "visible" && document.hasFocus()
+      && Date.now() - lastActivityRef.current < inactivityMs && pageRef.current > previewLimit;
+    return renewLease(active, active ? "readable" : preparing ? "preparing" : "inactive");
+  }, [activelyReading, inactivityMs, previewLimit, renewLease]);
   useEffect(() => {
     // Browser back/forward can change the URL without using our page buttons.
     // A preview or terminal state must never keep a paid session running.
@@ -291,10 +311,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   useEffect(() => {
     if (!sessionId || leaseStatus !== "Running") return undefined;
     const interval = window.setInterval(() => {
-      void renewLease(activelyReading());
+      void renewForLifecycle();
     }, heartbeatMs);
     return () => window.clearInterval(interval);
-  }, [sessionId, leaseStatus, heartbeatMs, renewLease, activelyReading]);
+  }, [sessionId, leaseStatus, heartbeatMs, renewForLifecycle]);
 
   useEffect(() => {
     if (!sessionId) return undefined;
@@ -304,11 +324,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       await renewPromiseRef.current?.catch(() => undefined);
       if (!aliveRef.current || closingRef.current) return;
       if (document.visibilityState === "visible" && document.hasFocus()) lastActivityRef.current = Date.now();
-      void renewLease(activelyReading());
+      if (leaseRef.current?.status === "Paused") readableInGrantRef.current = false;
+      void renewForLifecycle();
     };
     const onActivity = () => {
       lastActivityRef.current = Date.now();
-      if (leaseRef.current?.status === "Paused" && activelyReading()) void onVisibility();
+      if (leaseRef.current?.status === "Paused" && document.visibilityState === "visible" && document.hasFocus()) void onVisibility();
     };
     document.addEventListener("visibilitychange", onVisibility);
     window.addEventListener("focus", onVisibility);
@@ -320,7 +341,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       window.removeEventListener("blur", onVisibility);
       ["pointerdown", "keydown", "scroll"].forEach((event) => document.removeEventListener(event, onActivity));
     };
-  }, [sessionId, renewLease, activelyReading]);
+  }, [sessionId, renewForLifecycle]);
 
   useEffect(() => {
     if (leaseStatus !== "Running" || !lease?.expiresAt) return undefined;
@@ -350,7 +371,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     setPageResult({ number: canonicalPage, status: "loading" });
     setSlowPageLoading(false);
     setError("");
-    if (windowPlan?.error) { setError(windowPlan.error); return () => controller.abort(); }
+    preparationFailedRef.current = false;
+    if (windowPlan?.error) { preparationFailedRef.current = true; setError(windowPlan.error); return () => controller.abort(); }
     const requestLease = pageSessionKey ? leaseRef.current : null;
     const accessContext = requestLease ? `protected:${identity}:${requestLease.sessionId}` : "preview";
     const authorized = () => !cancelled && aliveRef.current && (!requestLease
@@ -375,6 +397,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       .catch((failure) => {
         if (cancelled || !aliveRef.current) return;
         controller.abort();
+        preparationFailedRef.current = true;
         setChapterWindow(null); windowRef.current = null;
         const status = failure?.response?.status || 0;
         setPageResult({ number: pageRef.current, status: "error", statusCode: status });
@@ -530,6 +553,19 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       onVisualPageVisibility: (range) => {
         protectedPageVisibleRef.current = Boolean(range && windowAuthorized && chapterWindow.accessContext !== 'preview'
           && chapterWindow.sources.some(item => item.page > previewLimit && ((range.end > item.start && range.start < item.end) || range.media?.some(ordinal => ordinal >= item.mediaStart && ordinal < item.mediaEnd))));
+        if (protectedPageVisibleRef.current) {
+          readableInGrantRef.current = true;
+          if (leaseRef.current?.textPhase === "preparing") void (async () => {
+            await renewPromiseRef.current?.catch(() => undefined);
+            if (aliveRef.current && protectedPageVisibleRef.current && leaseRef.current?.textPhase === "preparing"
+              && document.visibilityState === "visible" && document.hasFocus()) await renewLease(true, "readable");
+          })();
+        }
+      },
+      onPreparationFailure: () => {
+        preparationFailedRef.current = true;
+        void settleLease("reader_v2_pagination_failed");
+        invalidateLease("This page could not be prepared safely. Return to book details to retry.");
       },
       authorizedBookPlans: bookPlans,
       bookMapScope: mapScope,
@@ -583,7 +619,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, manifestMs, previewLimit, bookPlans, mapScope]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, manifestMs, previewLimit, bookPlans, mapScope, renewLease, settleLease, invalidateLease]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>

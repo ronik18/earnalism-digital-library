@@ -8,8 +8,10 @@ import textwrap
 import unittest
 
 
-WORKFLOW = Path(__file__).resolve().parents[1] / '.github/workflows/regression.yml'
+ROOT = Path(__file__).resolve().parents[1]
+WORKFLOW = ROOT / '.github/workflows/reader-frontend-production.yml'
 SOURCE = WORKFLOW.read_text()
+REGRESSION = (ROOT / '.github/workflows/regression.yml').read_text()
 
 
 def step_script(name):
@@ -63,7 +65,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                           {'CONFIRM_PRODUCTION': 'yes'}, {'GITHUB_REF': 'refs/heads/other'}):
             with self.subTest(overrides=overrides):
                 self.assertNotEqual(self.execute('Verify manual release authorization and clean source', **overrides).returncode, 0)
-        self.assertLess(SOURCE.index('Verify manual release authorization'), SOURCE.index('Install root dependencies'))
+        self.assertLess(SOURCE.index('Verify manual release authorization'), SOURCE.index('Install existing verification clients'))
 
     def test_stale_main_rejected_by_both_gates(self):
         self.git('commit', '--allow-empty', '-m', 'main advanced')
@@ -88,35 +90,81 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertEqual(self.output.read_text(), 'enabled=true\n')
         self.assertNotEqual(self.execute('Check Vercel deploy scope and secrets', VERCEL_TOKEN='').returncode, 0)
 
-    def test_push_non_deploy_paths_still_skip(self):
+    def test_push_cannot_enable_manual_deployment(self):
         result = self.execute('Check Vercel deploy scope and secrets', RELEASE_EVENT='push')
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.output.read_text(), 'enabled=false\n')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(self.output.exists())
 
-    def test_push_frontend_paths_still_deploy(self):
+    def test_push_frontend_changes_cannot_enable_manual_deployment(self):
         (self.repo / 'frontend').mkdir()
         (self.repo / 'frontend' / 'fixture.txt').write_text('frontend fixture\n')
         self.git('add', 'frontend')
         self.git('commit', '-m', 'frontend change')
         result = self.execute('Check Vercel deploy scope and secrets', RELEASE_EVENT='push',
                               GITHUB_SHA=self.git('rev-parse', 'HEAD').strip())
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.output.read_text(), 'enabled=true\n')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(self.output.exists())
+
+    def test_frontend_only_environment_hold_follows_real_backend_verification(self):
+        regression = SOURCE.split('  deploy_frontend:', 1)[0]
+        deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
+        canary = SOURCE.split('  frontend_production_canary:', 1)[1]
+        self.assertIn('    environment: reader-frontend-production\n', deploy)
+        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 1)
+        self.assertNotIn('    environment:', regression)
+        self.assertNotIn('    environment:', canary)
+        self.assertIn("github.event_name == 'workflow_dispatch'", deploy)
+        self.assertIn("github.ref == 'refs/heads/main'", deploy)
+        self.assertIn("needs.backend_verify.result == 'success'", deploy)
+        self.assertIn('needs: backend_verify', deploy)
+        self.assertIn('python scripts/verify_backend_release.py', regression)
+        self.assertIn('python scripts/verify_reader_startup_readonly.py', regression)
+        self.assertLess(deploy.index('environment: reader-frontend-production'), deploy.index('    steps:'))
+        # Static binding is not a claim that the live hold has executed.
 
     def test_existing_build_and_canary_dependencies_preserved(self):
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
-        self.assertIn('needs: regression', deploy)
-        self.assertIn("needs.regression.result == 'success'", deploy)
+        self.assertIn('needs: backend_verify', deploy)
+        self.assertIn("needs.backend_verify.result == 'success'", deploy)
         self.assertIn("needs.deploy_frontend.outputs.deployed == 'true'", canary)
-        self.assertIn('      - regression\n      - deploy_frontend', canary)
+        self.assertIn('      - backend_verify\n      - deploy_frontend', canary)
         self.assertIn('args=(build --prod --yes', deploy)
         self.assertIn('args=(deploy --prebuilt --prod', deploy)
         self.assertIn('python3 scripts/post_deploy_static_seo_canary.py', canary)
-        self.assertIn('bash scripts/run_pr_regression.sh', SOURCE)
-        self.assertIn('frontend .vercelignore scripts/verify_vercel_packaging.py', deploy)
-        self.assertEqual(SOURCE.count("(github.event_name == 'push' || github.event_name == 'workflow_dispatch')"), 2)
+        self.assertIn('bash scripts/run_pr_regression.sh', REGRESSION)
+        self.assertIn('scripts/verify_vercel_packaging.py --manifest', deploy)
+        self.assertNotIn("github.event_name == 'push'", SOURCE)
         self.assertEqual(len(re.findall(r'      target_sha:|      confirm_production:', SOURCE)), 2)
+
+    def test_main_push_has_no_deployment_or_approval_job(self):
+        self.assertNotIn('environment:', REGRESSION)
+        self.assertNotIn('deploy_frontend:', REGRESSION)
+        self.assertNotIn('frontend_production_canary:', REGRESSION)
+        self.assertNotIn('vercel deploy', REGRESSION)
+        self.assertIn('  push:', REGRESSION)
+        self.assertIn('  pull_request:', REGRESSION)
+        trigger = SOURCE.split('permissions:', 1)[0]
+        self.assertIn('  workflow_dispatch:', trigger)
+        for event in ('push:', 'pull_request:', 'workflow_run:', 'workflow_call:', 'schedule:'):
+            self.assertNotIn(event, trigger)
+        self.assertIn('group: reader-manual-frontend-production', SOURCE)
+        self.assertIn('cancel-in-progress: false', SOURCE)
+        self.assertNotIn('go-live-regression-', SOURCE)
+
+    def test_failed_backend_dependency_cannot_be_approved_away(self):
+        deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
+        self.assertIn("needs.backend_verify.result == 'success'", deploy)
+        self.assertNotIn('always()', deploy)
+        self.assertNotIn('continue-on-error', SOURCE)
+        self.assertIn('defaults:\n  run:\n    shell: bash', SOURCE)
+        for name in ('Verify actual HTTP and provider serving identity', 'Verify existing read-only startup prerequisites'):
+            self.assertIn('set -euo pipefail', step_script(name))
+
+    def test_frontend_source_and_backend_recheck_preserved(self):
+        self.assertIn('Reverify serving backend after owner approval', SOURCE)
+        self.assertIn("deployment['meta']['githubCommitSha'] == os.environ['GITHUB_SHA']", SOURCE)
+        self.assertIn("deployment['projectId'] == os.environ['VERCEL_PROJECT_ID']", SOURCE)
 
     def test_workflow_shell_blocks_have_valid_bash_syntax(self):
         for name in ('Verify manual release authorization and clean source', 'Recheck exact main and clean deployment source',

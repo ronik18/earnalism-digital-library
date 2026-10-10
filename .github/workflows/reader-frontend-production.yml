@@ -1,0 +1,327 @@
+name: Exact-main owner-held frontend production release
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_sha:
+        description: Exact merged current main SHA
+        required: true
+        type: string
+      confirm_production:
+        description: Type DEPLOY_PRODUCTION
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: reader-manual-frontend-production
+  cancel-in-progress: false
+
+jobs:
+  backend_verify:
+    name: Read-only serving backend verification
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact target
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.target_sha }}
+          fetch-depth: 0
+
+      - name: Verify manual release authorization and clean source
+        shell: bash
+        env:
+          TARGET_SHA: ${{ inputs.target_sha }}
+          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+        run: |
+          set -euo pipefail
+          [[ "${GITHUB_REF}" == 'refs/heads/main' ]] || exit 1
+          [[ "${CONFIRM_PRODUCTION}" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          [[ "${TARGET_SHA}" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          [[ "${TARGET_SHA}" == "${GITHUB_SHA}" ]] || exit 1
+          git fetch origin main
+          [[ "${TARGET_SHA}" == "$(git rev-parse origin/main)" ]] || exit 1
+          git cat-file -e "${TARGET_SHA}^{commit}"
+          [[ "$(git rev-parse HEAD)" == "${TARGET_SHA}" ]] || exit 1
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
+          echo "RELEASE_SOURCE_SHA=${TARGET_SHA}"
+          echo 'RELEASE_SOURCE_CLEAN=YES'
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install existing verification clients
+        run: |
+          npm install -g @railway/cli@5.64.2
+          python -m pip install pymongo==4.15.3
+
+      - name: Verify actual HTTP and provider serving identity
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+        run: |
+          set -euo pipefail
+          python scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+            --project a8533934-35c4-463e-9f43-577a9ac391ee \
+            --service 5af42e7e-f518-4f6a-b602-d9950866501f \
+            --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
+            --backend-url https://api.theearnalism.com | tee "$RUNNER_TEMP/backend-identity.json"
+
+      - name: Verify existing read-only startup prerequisites
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          set -euo pipefail
+          railway run --project a8533934-35c4-463e-9f43-577a9ac391ee \
+            --service 5af42e7e-f518-4f6a-b602-d9950866501f \
+            --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 --no-local \
+            python scripts/verify_reader_startup_readonly.py | tee "$RUNNER_TEMP/backend-startup.json"
+
+      - name: Publish non-secret backend verification summary
+        run: |
+          cat "$RUNNER_TEMP/backend-identity.json" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/backend-startup.json" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy_frontend:
+    name: Vercel frontend deploy after pre-deploy pass
+    needs: backend_verify
+    environment: reader-frontend-production
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/main' &&
+      needs.backend_verify.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      deployed: ${{ steps.vercel-check.outputs.enabled }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE || vars.VERCEL_SCOPE || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.target_sha || github.sha }}
+
+      - name: Recheck exact main and clean deployment source
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          TARGET_SHA: ${{ inputs.target_sha }}
+          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+        run: |
+          set -euo pipefail
+          [[ "${CONFIRM_PRODUCTION}" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          [[ "${TARGET_SHA}" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          [[ "${TARGET_SHA}" == "${GITHUB_SHA}" ]] || exit 1
+          git fetch origin main
+          [[ "${TARGET_SHA}" == "$(git rev-parse origin/main)" ]] || exit 1
+          git cat-file -e "${TARGET_SHA}^{commit}"
+          [[ "$(git rev-parse HEAD)" == "${TARGET_SHA}" ]] || exit 1
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
+          echo "BUILD_SHA=${TARGET_SHA}"
+          echo 'BUILD_SOURCE_CLEAN=YES'
+
+      - name: Check Vercel deploy scope and secrets
+        id: vercel-check
+        shell: bash
+        env:
+          RELEASE_EVENT: ${{ github.event_name }}
+        run: |
+          [[ "${RELEASE_EVENT}" == 'workflow_dispatch' ]] || exit 1
+          [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]] || { echo 'Required production deployment credentials unavailable' >&2; exit 1; }
+          echo "enabled=true" >> "${GITHUB_OUTPUT}"
+
+      - name: Reverify serving backend after owner approval
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+        run: |
+          npm install -g @railway/cli@5.64.2
+          python3 scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+            --project a8533934-35c4-463e-9f43-577a9ac391ee \
+            --service 5af42e7e-f518-4f6a-b602-d9950866501f \
+            --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
+            --backend-url https://api.theearnalism.com
+
+      - name: Set up Node
+        if: steps.vercel-check.outputs.enabled == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Install Vercel CLI
+        if: steps.vercel-check.outputs.enabled == 'true'
+        run: npm install -g vercel@63.1.2
+
+      - name: Link Vercel project
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          mkdir -p .vercel
+          node - <<'NODE'
+          const fs = require('fs');
+
+          fs.writeFileSync(
+            '.vercel/project.json',
+            `${JSON.stringify({
+              orgId: process.env.VERCEL_ORG_ID,
+              projectId: process.env.VERCEL_PROJECT_ID,
+            }, null, 2)}\n`,
+          );
+          NODE
+
+      - name: Pull Vercel production environment
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          args=(pull --yes --environment=production)
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          vercel "${args[@]}"
+
+      - name: Build frontend for Vercel
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == 'workflow_dispatch' ]]; then
+            [[ "$(git rev-parse HEAD)" == "${GITHUB_SHA}" ]] || exit 1
+            [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
+            echo "BUILD_SHA=${GITHUB_SHA}"
+            echo 'BUILD_SOURCE_CLEAN=YES'
+          fi
+          rm -rf .vercel/output
+          args=(build --prod --yes)
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          vercel "${args[@]}"
+
+      - name: Verify source and prebuilt function packaging
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          python3 -m unittest scripts.test_verify_vercel_packaging -v
+          vercel deploy --dry --format=json > /tmp/vercel-source-manifest.json
+          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+          vercel deploy --prebuilt --prod --dry --format=json > /tmp/vercel-prebuilt-manifest.json
+          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
+
+      - name: Publish function packaging evidence
+        if: steps.vercel-check.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vercel-function-packaging-${{ github.sha }}
+          path: |
+            /tmp/vercel-source-packaging.json
+            /tmp/vercel-prebuilt-packaging.json
+
+      - name: Deploy frontend to Vercel production
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+        run: |
+          git fetch origin main
+          [[ "$TARGET_SHA" == "$(git rev-parse origin/main)" && "$TARGET_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
+          python3 scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+            --project a8533934-35c4-463e-9f43-577a9ac391ee \
+            --service 5af42e7e-f518-4f6a-b602-d9950866501f \
+            --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
+            --backend-url https://api.theearnalism.com
+          args=(deploy --prebuilt --prod)
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          deployment_url="$(vercel "${args[@]}")"
+          DEPLOYMENT_URL="$deployment_url" python3 - <<'PY'
+          import os
+          from urllib.parse import urlparse
+          value = os.environ['DEPLOYMENT_URL']
+          parsed = urlparse(value)
+          assert parsed.scheme == 'https' and parsed.hostname.endswith('.vercel.app')
+          assert not parsed.username and not parsed.password and parsed.path in ('', '/')
+          assert not parsed.query and not parsed.fragment
+          PY
+          deployment_host="${deployment_url#https://}"
+          vercel api "/v13/deployments/${deployment_host}" --method GET --raw > "$RUNNER_TEMP/frontend-deployment.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          deployment = json.loads((Path(os.environ['RUNNER_TEMP']) / 'frontend-deployment.json').read_text())
+          assert deployment['projectId'] == os.environ['VERCEL_PROJECT_ID']
+          assert deployment['target'] == 'production' and deployment['readyState'] == 'READY'
+          assert deployment['meta']['githubCommitSha'] == os.environ['GITHUB_SHA']
+          print(json.dumps({'frontend_deployment': deployment['id'], 'source_sha': deployment['meta']['githubCommitSha'], 'status': 'PASS'}))
+          PY
+
+  frontend_production_canary:
+    name: Vercel frontend production canary
+    needs:
+      - backend_verify
+      - deploy_frontend
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/main' &&
+      needs.backend_verify.result == 'success' &&
+      needs.deploy_frontend.result == 'success' &&
+      needs.deploy_frontend.outputs.deployed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout deployed frontend commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install canary dependencies
+        run: npm ci
+
+      - name: Run removed-route production canary
+        run: python3 scripts/post_deploy_route_canary.py --base-url https://theearnalism.com
+
+      - name: Run static SEO raw-HTML canary
+        run: python3 scripts/post_deploy_static_seo_canary.py --base-url https://theearnalism.com
+
+      - name: Run frontend production regression canary
+        env:
+          REGRESSION_MODE: canary
+          REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
+          REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
+        run: node regression/scripts/post-deploy-canary.js
+
+      - name: Upload frontend canary evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: frontend-production-canary-${{ github.sha }}
+          path: |
+            output/launch/post_deploy_route_canary.*
+            output/launch/post_deploy_static_seo_canary.*
+            regression/results.json

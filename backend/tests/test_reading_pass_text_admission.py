@@ -126,6 +126,7 @@ def test_authorized_text_binds_alias_request_to_authority_canonical_slug(monkeyp
     assert observed["stored_manifest"] == ("fixture-canonical", "fixture-version")
     assert observed["segment_query"]["book_slug"] == "fixture-canonical"
     assert observed["session"]["content_id"] == "fixture-canonical"
+    assert observed["session"]["prepare_text"] is True
     assert observed["session"]["scope"] == {
         "canonical_page_index": 4,
         "segmentation_version": "fixture-version",
