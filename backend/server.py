@@ -4133,7 +4133,18 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     return result
 
 
-HTML_TAG_RE = re.compile(r"</?[a-z][\s\S]*>", re.IGNORECASE)
+# Recognize Reader HTML and unsafe HTML (which must still be sanitized),
+# not arbitrary source notation such as Gutenberg's literal <oe> / <ae>.
+# Unrecognized plain-text angle brackets take the existing escaping path.
+HTML_TAG_RE = re.compile(
+    r"</?(?:p|h[1-6]|blockquote|strong|em|b|i|u|pre|code|sup|sub|"
+    r"ul|ol|li|br|hr|img|figure|figcaption|table|thead|tbody|tfoot|tr|th|td|"
+    r"span|div|a|script|style|iframe|object|embed|form|input|button|meta|link|"
+    r"html|head|body|section|article|header|footer|main|nav|aside|dl|dt|dd|"
+    r"small|s|del|ins|mark|q|cite|kbd|samp|var|svg|math|video|audio|source|picture|canvas)"
+    r"\b[^>]*>",
+    re.IGNORECASE,
+)
 
 
 def _manual_content_to_render_html(content: str) -> tuple[str, List[str]]:
