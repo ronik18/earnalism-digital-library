@@ -52,7 +52,7 @@ export function derivePublishingWorkflow(book = {}) {
   if (qaStatus !== "QA_PASSED" && canonicalPublication.state !== "PUBLISHED") blockers.push("QA pass is required.");
   if (costBudget > 0 && costUsed > costBudget) blockers.push("BLOCKED_COST: Cost budget is exceeded.");
   const isPublished = canonicalPublication.state === "PUBLISHED";
-  if (isPublished) blockers.splice(0, blockers.length);
+  // An editorial/workflow Published label never clears independent evidence gates.
 
   let state = "DISCOVERED";
   if (canonicalPublication.archived) state = "ARCHIVED";
@@ -122,7 +122,7 @@ export default function PublishingWorkflowPanel({ book }) {
     <div className="mt-4 rounded-lg border border-brand-soft bg-white/50 p-3" data-testid={`publishing-workflow-${book.slug}`}>
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-[0.62rem] uppercase tracking-[0.18em] text-charcoal-soft">Publishing workflow · read-only dry-run estimate</div>
+          <div className="text-[0.62rem] uppercase tracking-[0.18em] text-charcoal-soft">Recorded workflow · not customer acceptance</div>
           <div className="font-serif-display text-lg text-burgundy">{workflow.state.replace(/_/g, " ")}</div>
         </div>
         <span className={`rounded-full px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] ${workflow.publishReadiness === "READY" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}>
@@ -130,10 +130,26 @@ export default function PublishingWorkflowPanel({ book }) {
         </span>
       </div>
       {workflow.blockers.length > 0 && (
-        <p className="mt-3 text-xs text-amber-800">
-          {workflow.blockers[0]}
-        </p>
+        <ul className="mt-3 space-y-1 text-xs text-amber-800" aria-label="Recorded workflow blockers">
+          {workflow.blockers.map((blocker) => <li key={blocker}>{blocker}</li>)}
+        </ul>
       )}
+      <dl className="mt-3 space-y-2 text-xs">
+        {[
+          ["Editorial label", "editorial"],
+          ["Recorded rights/workflow evidence", "workflow"],
+          ["Public preview capability", "preview"],
+          ["Protected-text authority", "protected_text"],
+          ["Audio capability", "audio"],
+          ["End-to-end acceptance", "acceptance"],
+        ].map(([label, key]) => {
+          const report = book.admin_reporting?.[key];
+          return <div key={key}>
+            <dt className="font-medium">{label}</dt>
+            <dd>{report?.status || "UNVERIFIED"} · {report?.source || "No authoritative reporting value supplied"}</dd>
+          </div>;
+        })}
+      </dl>
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" disabled className="rounded-full border border-brand-soft px-3 py-1 text-[0.62rem] uppercase tracking-[0.16em] text-charcoal-soft opacity-70">
           Rollback dry-run

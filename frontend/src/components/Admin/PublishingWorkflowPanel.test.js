@@ -1,4 +1,5 @@
-import { derivePublishingWorkflow } from "./PublishingWorkflowPanel";
+import { renderToStaticMarkup } from "react-dom/server";
+import PublishingWorkflowPanel, { derivePublishingWorkflow } from "./PublishingWorkflowPanel";
 
 test("admin workflow reads canonical fields before legacy aliases", () => {
   const workflow = derivePublishingWorkflow({
@@ -22,7 +23,16 @@ test("admin workflow reads canonical fields before legacy aliases", () => {
   expect(workflow.publishReadiness).toBe("READY");
 });
 
-test("published records do not display missing pre-publication blockers", () => {
+test("admin panel displays all blockers and separate unverified capabilities", () => {
+  const html = renderToStaticMarkup(<PublishingWorkflowPanel book={{ slug: "unknown-book", is_published: true }} />);
+  expect(html).toContain("Rights approval is required.");
+  expect(html).toContain("BLOCKED_INGESTION");
+  expect(html).toContain("Protected-text authority");
+  expect(html).toContain("End-to-end acceptance");
+  expect(html.match(/UNVERIFIED · No authoritative reporting value supplied/g)).toHaveLength(6);
+});
+
+test("published records retain independent missing-evidence blockers", () => {
   const workflow = derivePublishingWorkflow({
     slug: "published-book",
     is_published: true,
@@ -33,6 +43,6 @@ test("published records do not display missing pre-publication blockers", () => 
 
   expect(workflow.state).toBe("PUBLISHED");
   expect(workflow.publishReadiness).toBe("PUBLISHED");
-  expect(workflow.blockers).not.toContain("Rights approval is required.");
-  expect(workflow.blockers).not.toContain("BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.");
+  expect(workflow.blockers).toContain("Rights approval is required.");
+  expect(workflow.blockers).toContain("BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.");
 });

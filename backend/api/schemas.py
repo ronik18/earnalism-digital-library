@@ -151,6 +151,12 @@ class Book(BaseModel):
     created_at: str = Field(default_factory=now_iso)
 
 
+class AdminBookSummaryOut(Book):
+    """Private reporting fields; deliberately absent from public Book contracts."""
+    publication_workflow: Optional[Dict[str, Any]] = None
+    admin_reporting: Dict[str, Any] = Field(default_factory=dict)
+
+
 class PublicChapterOut(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
