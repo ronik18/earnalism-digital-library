@@ -117,19 +117,25 @@ function workflowFromReport(report) {
 }
 
 export default function PublishingWorkflowPanel({ book }) {
-  const workflow = derivePublishingWorkflow(book);
+  const workflowAvailable = book.admin_reporting?.workflow?.status === "RECORDED";
+  const workflow = workflowAvailable ? derivePublishingWorkflow(book) : null;
   return (
     <div className="mt-4 rounded-lg border border-brand-soft bg-white/50 p-3" data-testid={`publishing-workflow-${book.slug}`}>
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="text-[0.62rem] uppercase tracking-[0.18em] text-charcoal-soft">Recorded workflow · not customer acceptance</div>
-          <div className="font-serif-display text-lg text-burgundy">{workflow.state.replace(/_/g, " ")}</div>
+          <div className="font-serif-display text-lg text-burgundy">{workflow ? workflow.state.replace(/_/g, " ") : "Workflow evidence unavailable"}</div>
         </div>
-        <span className={`rounded-full px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] ${workflow.publishReadiness === "READY" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}>
-          {workflow.publishReadiness}
+        <span className={`rounded-full px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.16em] ${workflow?.publishReadiness === "READY" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}>
+          {workflow ? workflow.publishReadiness : "UNAVAILABLE"}
         </span>
       </div>
-      {workflow.blockers.length > 0 && (
+      {!workflow && (
+        <p className="mt-3 text-xs text-amber-800">
+          Publication readiness cannot be assessed because workflow evidence is missing or invalid.
+        </p>
+      )}
+      {workflow?.blockers.length > 0 && (
         <ul className="mt-3 space-y-1 text-xs text-amber-800" aria-label="Recorded workflow blockers">
           {workflow.blockers.map((blocker) => <li key={blocker}>{blocker}</li>)}
         </ul>
