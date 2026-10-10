@@ -1,5 +1,23 @@
 # Sprint Learnings
 
+## Reader contract successor — 2026-10-10
+
+Preserve exact approved candidates before integrating a changed main; approval
+does not transfer to a successor. #527 admin integration required no Reader
+semantic fix. Reproduce failing-before on the new base and qualify actual Mongo
+transactions, then replay observed public frontend assets only against isolated
+synthetic APIs for mixed-version evidence. Close browser routes before contexts;
+keep actual asset identity separate from inferred source/deployment identity.
+
+## Reader nonbillable preparation — 2026-10-10
+
+Chunk acquisition/assembly/pagination is not reading activity. Use explicit
+bounded preparation with server accounting off; transition only at validated
+foreground protected-page visibility. Session restarts must retain the bound;
+idempotency must bind lifecycle intent. Local browser/service qualification
+does not establish production Reader acceptance or authorize retrospective
+refunds. See `reader_preparation_contract_20261010.md`; #525 remains paused.
+
 - 2026-10-08 execution checkpoint: production launch data and read-only public
   payment endpoints are stronger evidence than stale Account fallback copy.
   When commercial mode is explicitly enabled, preserve disabled-mode fallback

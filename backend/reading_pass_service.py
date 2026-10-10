@@ -8,6 +8,7 @@ token and treats MongoDB uniqueness constraints as the cross-instance lock.
 from __future__ import annotations
 
 import asyncio
+import hashlib
 from datetime import datetime, timedelta, timezone
 import secrets
 import uuid
@@ -448,6 +449,7 @@ class ReadingPassService:
                 content_id=str(session_doc.get("content_id") or ""),
                 billing_cutoff_at=billing_cutoff,
             )
+        await self._release_preparation_window(session_doc, debit, mongo_session)
         updated_session = await self.db.reading_pass_sessions.update_one(
             {
                 "id": session_id,
@@ -475,6 +477,12 @@ class ReadingPassService:
             raise ReadingPassError("LEASE_EXPIRED", 409, "The Reading Pass lease changed concurrently.")
         return debit, balance_after
 
+    async def _release_preparation_window(self, session_doc, debit, mongo_session):
+        if debit and session_doc.get("preparation_key"):
+            await self.db.users.update_one({"id": session_doc["user_id"]}, {"$set": {
+                f"reader_preparation_windows.{session_doc['preparation_key']}": None,
+            }}, session=mongo_session)
+
     async def start_session(
         self,
         *,
@@ -487,6 +495,7 @@ class ReadingPassService:
         scope: Mapping[str, Any],
         transfer: bool = False,
         free_entitlement: bool = False,
+        prepare_text: bool = False,
     ) -> dict[str, Any]:
         content_kind = str(content_type or "").lower()
         if content_kind not in {"text", "audio"}:
@@ -511,7 +520,7 @@ class ReadingPassService:
                 )
             user = await self.db.users.find_one(
                 {"id": user_id, "role": "user"},
-                {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "status": 1},
+                {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "status": 1, "reader_preparation_windows": 1},
                 session=mongo_session,
             )
             if not user or user.get("status") == "blocked":
@@ -569,10 +578,38 @@ class ReadingPassService:
                 return {"terminal_only": True, "balance_seconds": 0}
 
             session_id = str(uuid.uuid4())
+            preparing = prepare_text and content_kind == "text" and not free_entitlement
+            preparation_key = hashlib.sha256(f"{content_id}:{scope.get('manifest_version', '')}".encode()).hexdigest() if preparing else ""
+            preparation_deadline = None
+            if preparing:
+                # Restart/device changes cannot renew a free preparation window.
+                # Only a positive settled reading debit earns another window.
+                # A transfer may have just settled paid reading and released
+                # the prior window; read the transaction's current user row.
+                preparation_user = await self.db.users.find_one({"id": user_id}, {"reader_preparation_windows": 1}, session=mongo_session)
+                windows = preparation_user.get("reader_preparation_windows") or {}
+                if not isinstance(windows, dict):
+                    raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Reader preparation could not be verified.")
+                retained = windows.get(preparation_key)
+                if retained is not None and not isinstance(retained, datetime):
+                    raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Reader preparation could not be verified.")
+                preparation_deadline = ensure_utc(retained) if retained else now + timedelta(seconds=self.config.maximum_lease_seconds)
+                # Failed opening must not lock out the publication permanently.
+                # A server-timed cooldown (the existing inactivity interval)
+                # permits a later bounded retry, never a continuous free grant.
+                if retained and now >= preparation_deadline + timedelta(seconds=self.config.text_inactivity_seconds):
+                    preparation_deadline = now + timedelta(seconds=self.config.maximum_lease_seconds)
+                if now >= preparation_deadline:
+                    raise ReadingPassError("PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.")
+                await self.db.users.update_one({"id": user_id}, {"$set": {
+                    f"reader_preparation_windows.{preparation_key}": preparation_deadline,
+                }}, session=mongo_session)
             expires_at = (
                 now + timedelta(seconds=self.config.maximum_lease_seconds)
                 if free_entitlement else lease_expiry(now, balance, self.config)
             )
+            if preparation_deadline:
+                expires_at = min(expires_at, preparation_deadline)
             document = {
                 "id": session_id,
                 "user_id": user_id,
@@ -585,7 +622,10 @@ class ReadingPassService:
                 "entitlement_kind": FREE_INDIA_READER_ENTITLEMENT if free_entitlement else "metered",
                 "status": "active",
                 "active_lock": user_id,
-                "billing_active": content_kind == "text" and not free_entitlement,
+                "billing_active": content_kind == "text" and not free_entitlement and not preparing,
+                "text_phase": "preparing" if preparing else "",
+                "preparation_key": preparation_key,
+                "preparation_deadline": preparation_deadline,
                 "lease_token_hash": token_hash,
                 "lease_version": 1,
                 "lease_issued_at": now,
@@ -636,6 +676,7 @@ class ReadingPassService:
                 "entitlement_kind": document["entitlement_kind"],
                 "deducted_seconds": 0,
                 "status": "Running",
+                **({"text_phase": "preparing", "preparation_expires_at": _iso(preparation_deadline)} if preparing else {}),
             }
 
         result = await self._transaction(operation)
@@ -897,11 +938,14 @@ class ReadingPassService:
         active: bool,
         playback_state: str = "",
         text_authority: str = "allowed",
+        text_phase: str = "",
     ) -> dict[str, Any]:
         if not idempotency_key or len(idempotency_key) > 160:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A bounded idempotency key is required.")
         if sequence < 1:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "Heartbeat sequence must be positive.")
+        if text_phase not in {"", "preparing", "readable", "inactive"} or (text_phase in {"preparing", "inactive"} and active) or (text_phase == "readable" and not active):
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "Invalid text lifecycle intent.")
         if text_authority not in {"allowed", "denied", "unavailable"}:
             raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Reader availability could not be verified.")
         token_hash = token_fingerprint(lease_token, self.token_secret)
@@ -924,6 +968,8 @@ class ReadingPassService:
                 raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 403, "The Reading Pass lease is invalid.")
             current_version = int(session_doc.get("lease_version", 0) or 0)
             last_sequence = int(session_doc.get("last_sequence", 0) or 0)
+            if text_phase and session_doc.get("content_type") != "text":
+                raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "Text lifecycle is not an audio control.")
             if session_doc.get("content_type") == "text":
                 revocation = await self._current_text_revocation(str(session_doc.get("content_id") or ""), mongo_session)
                 if revocation:
@@ -975,7 +1021,7 @@ class ReadingPassService:
                     )
             existing = await self.db.reading_pass_heartbeats.find_one(
                 {"session_id": session_id, "user_id": user_id, "idempotency_key": idempotency_key},
-                {"_id": 0, "response": 1, "sequence": 1, "lease_version": 1, "active": 1, "playback_state": 1},
+                {"_id": 0, "response": 1, "sequence": 1, "lease_version": 1, "active": 1, "playback_state": 1, "text_phase": 1},
                 session=mongo_session,
             )
             if existing:
@@ -988,6 +1034,7 @@ class ReadingPassService:
                         and (
                             bool(existing.get("active")) is not bool(active)
                             or str(existing.get("playback_state") or "") != str(playback_state or "")
+                            or str(existing.get("text_phase") or "") != text_phase
                         )
                     )
                 ):
@@ -1039,6 +1086,16 @@ class ReadingPassService:
                     "status": "Stale",
                     "stale": True,
                 }
+            if session_doc.get("text_phase") == "preparing" and (
+                not isinstance(session_doc.get("preparation_deadline"), datetime)
+                or now >= ensure_utc(session_doc["preparation_deadline"])
+            ):
+                debit, balance_after = await self._settle_terminal_session(
+                    mongo_session=mongo_session, session_doc=session_doc, now=now,
+                    terminal_status="expired", reason="preparation_timeout",
+                )
+                await self._audit("preparation_expired", session=mongo_session, document={"session_id": session_id, "deducted_seconds": debit})
+                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after}
             grace_deadline = ensure_utc(session_doc["lease_expires_at"]) + timedelta(seconds=self.config.reconnect_grace_seconds)
             if now > grace_deadline:
                 await self.db.reading_pass_sessions.update_one(
@@ -1056,6 +1113,25 @@ class ReadingPassService:
                 )
                 raise ReadingPassError("LEASE_EXPIRED", 403, "The Reading Pass lease expired.")
 
+            preparation_deadline = session_doc.get("preparation_deadline")
+            preparing = text_phase == "preparing" and session_doc.get("content_type") == "text"
+            if preparing and session_doc.get("text_phase") == "inactive" and session_doc.get("preparation_key"):
+                preparation_user = await self.db.users.find_one({"id": user_id}, {"reader_preparation_windows": 1}, session=mongo_session)
+                windows = preparation_user.get("reader_preparation_windows") or {}
+                if isinstance(windows, dict) and windows.get(session_doc["preparation_key"]) is None and int(session_doc.get("seconds_consumed") or 0) > 0:
+                    preparation_deadline = now + timedelta(seconds=self.config.maximum_lease_seconds)
+                    await self.db.users.update_one({"id": user_id}, {"$set": {
+                        f"reader_preparation_windows.{session_doc['preparation_key']}": preparation_deadline,
+                    }}, session=mongo_session)
+            if (session_doc.get("text_phase") == "preparing" or preparing) and (not isinstance(preparation_deadline, datetime) or now >= ensure_utc(preparation_deadline)):
+                debit, balance_after = await self._settle_terminal_session(
+                    mongo_session=mongo_session, session_doc=session_doc, now=now,
+                    terminal_status="expired", reason="preparation_timeout",
+                )
+                await self._audit("preparation_expired", session=mongo_session, document={"session_id": session_id, "deducted_seconds": debit})
+                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after}
+            if preparing and session_doc.get("text_phase") not in {"preparing", "inactive"}:
+                raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 409, "Readable time cannot be relabeled as preparation.")
             genuinely_active = bool(active)
             free_entitlement = session_doc.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT
             free_scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), Mapping) else {}
@@ -1089,7 +1165,7 @@ class ReadingPassService:
                 "exhausted"
                 if balance_after <= 0 and not free_entitlement
                 else "active"
-                if genuinely_active or buffering
+                if genuinely_active or buffering or preparing
                 else "paused"
             )
             next_expiry = (
@@ -1097,6 +1173,8 @@ class ReadingPassService:
                 if free_entitlement and next_status == "active"
                 else lease_expiry(now, balance_after, self.config) if next_status == "active" else now
             )
+            if preparing:
+                next_expiry = min(lease_expiry(now, balance_after, self.config), ensure_utc(preparation_deadline))
 
             if debit:
                 updated = await self.db.users.update_one(
@@ -1117,6 +1195,7 @@ class ReadingPassService:
                     content_id=str(session_doc.get("content_id") or ""),
                 )
 
+            await self._release_preparation_window(session_doc, debit, mongo_session)
             session_update: dict[str, Any] = {
                 "$set": {
                     "status": next_status,
@@ -1128,6 +1207,8 @@ class ReadingPassService:
                     "last_sequence": sequence,
                     "updated_at": now,
                     "billing_active": genuinely_active and balance_after > 0 and not free_entitlement,
+                    "text_phase": "preparing" if preparing else "readable" if genuinely_active and session_doc.get("content_type") == "text" else "inactive",
+                    "preparation_deadline": preparation_deadline,
                 },
                 "$inc": {"seconds_consumed": debit},
             }
@@ -1167,6 +1248,7 @@ class ReadingPassService:
                 "entitlement_kind": session_doc.get("entitlement_kind", "metered"),
                 "deducted_seconds": debit,
                 "status": public_status,
+                **({"text_phase": "preparing" if preparing else "readable" if genuinely_active else "inactive", "preparation_expires_at": _iso(preparation_deadline)} if isinstance(preparation_deadline, datetime) else {}),
             }
             await self.db.reading_pass_heartbeats.insert_one(
                 {
@@ -1178,6 +1260,7 @@ class ReadingPassService:
                     "lease_version": lease_version,
                     "active": bool(active),
                     "playback_state": str(playback_state or ""),
+                    "text_phase": text_phase,
                     "response": response,
                     "created_at": now,
                 },
@@ -1197,6 +1280,8 @@ class ReadingPassService:
 
         result = await self._transaction(operation)
         terminal_error = result.get("terminal_error")
+        if terminal_error == "PREPARATION_EXPIRED":
+            raise ReadingPassError("PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.", balance_seconds=result["balance_seconds"])
         if terminal_error == "CONTENT_REVOKED":
             raise ReadingPassError(
                 "CONTENT_REVOKED", 403,

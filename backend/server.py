@@ -11883,6 +11883,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             scope=scope,
             transfer=transfer,
             free_entitlement=free_entitlement if content_type == "text" else False,
+            prepare_text=content_type == "text",
         )
         await _invalidate_user_cache(user["id"])
         _set_reading_pass_media_cookies(response, result)
@@ -11957,6 +11958,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             active=payload.active,
             playback_state=payload.playback_state,
             text_authority=text_authority,
+            text_phase=payload.text_phase,
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))

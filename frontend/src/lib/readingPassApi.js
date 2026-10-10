@@ -114,7 +114,7 @@ export async function startReadingPassAudioSession({ bookSlug, positionSeconds =
   return response.data;
 }
 
-export async function renewReadingPassLease({ lease, sequence, active, playbackState = '', idempotencyKey }) {
+export async function renewReadingPassLease({ lease, sequence, active, playbackState = '', textPhase, idempotencyKey }) {
   const response = await axios.post(
     `${API}/reading-pass/leases/renew`,
     {
@@ -124,6 +124,7 @@ export async function renewReadingPassLease({ lease, sequence, active, playbackS
       idempotency_key: idempotencyKey || `${lease.sessionId}:${sequence}:${globalThis.crypto?.randomUUID?.() || Date.now()}`,
       active,
       playback_state: playbackState,
+      ...(textPhase ? { text_phase: textPhase } : {}),
     },
     {
       headers: {
