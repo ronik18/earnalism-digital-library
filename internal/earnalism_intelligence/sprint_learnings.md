@@ -1,5 +1,13 @@
 # Sprint Learnings
 
+## Reuse-only publication qualification — 2026-10-11
+
+Execute actual source/chapter/rights/cover checks for retained editions; never
+map generator READY into invented ingestion history. Local CLEANED and
+READY_FOR_REVIEW/PARTIAL_DRY_RUN findings do not replace final publication QA
+or paid Reader acceptance. Missing legacy digest bytes remain a source blocker.
+See retained_edition_validation_20261011.md; no production writes or new commit.
+
 ## PR528 release attestation — 2026-10-10
 
 - A successful CLI deployment label without provider commitHash is not serving

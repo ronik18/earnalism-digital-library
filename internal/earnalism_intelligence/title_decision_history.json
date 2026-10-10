@@ -1,4 +1,14 @@
 {
+  "retained_edition_validation_local_20261011": {
+    "base": "cdd006ce91f98327a1b3de31b856f25e532eff88",
+    "evidence": "retained_edition_validation_20261011.md",
+    "the-principles-of-scientific-management": "LOCAL_CLEANED_READY_FOR_REVIEW_PARTIAL_VISUAL_QA_UNVERIFIED",
+    "my-life-and-work": "LOCAL_CLEANED_READY_FOR_REVIEW_PARTIAL_VISUAL_QA_UNVERIFIED",
+    "the-gift-of-the-magi": "LEGACY_SOURCE_DIGEST_UNREPRODUCED",
+    "production_statuses_changed": false,
+    "publication_authority": false,
+    "ready_for_release": []
+  },
   "acres_plain_text_preservation_local_20261010": {
     "state": "LOCAL_REPAIR_QUALIFIED_NOT_RELEASED",
     "evidence": "acres_plain_text_repair_20261010.md",
