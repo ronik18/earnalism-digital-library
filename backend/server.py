@@ -11,6 +11,7 @@ try:
         ChapterIn,
         ChapterReorderIn,
         Book,
+        AdminBookSummaryOut,
         PublicChapterOut,
         PublicBookOut,
         BookIn,
@@ -75,6 +76,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         ChapterIn,
         ChapterReorderIn,
         Book,
+        AdminBookSummaryOut,
         PublicChapterOut,
         PublicBookOut,
         BookIn,
@@ -8053,9 +8055,41 @@ async def admin_list_books(_=Depends(require_admin)):
     return await db.books.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
 
 
-@api.get("/admin/books/summary", response_model=List[Book])
+def _admin_book_reporting_summary(book: dict) -> dict:
+    # This is a read adapter, not canonical_update: missing evidence must not
+    # acquire a synthesized approval, and GET must never persist workflow state.
+    try:
+        from publication_workflow_adapter import canonical_workflow
+        from publication_workflow_schema import validate_publication_workflow
+    except ImportError:
+        from backend.publication_workflow_adapter import canonical_workflow
+        from backend.publication_workflow_schema import validate_publication_workflow
+    stored = book.get("publication_workflow")
+    valid = isinstance(stored, dict) and not validate_publication_workflow(stored)
+    workflow = canonical_workflow(book) if valid else None
+    slug = str(book.get("slug") or "")
+    truth = _reader_audio_truth_doc(book, slug)
+    projection = _safe_live_public_projection(truth)
+    def state(status, source):
+        return {"status": status, "source": source, "customer_acceptance": "UNVERIFIED"}
+    return {
+        **book,
+        "publication_workflow": workflow,
+        "admin_reporting": {
+            "editorial": state("PUBLISHED" if book.get("is_published") is True else "DRAFT", "stored is_published"),
+            "workflow": state("RECORDED" if valid else "UNAVAILABLE", "validated stored publication_workflow"),
+            "preview": state("CONFIGURED_AVAILABLE" if projection and projection.get("preview_enabled") is True else "NOT_ADVERTISED", "existing runtime public projection; not a browser/API observation"),
+            "protected_text": state("UNVERIFIED", "active authority/admission not inspected by this list"),
+            "audio": state("CONFIGURED_AVAILABLE" if projection and projection.get("audio_enabled") is True else "NOT_ADVERTISED", "existing runtime audio release projection; not playback acceptance"),
+            "acceptance": state("UNVERIFIED", "no end-to-end acceptance receipt joined by this list"),
+        },
+    }
+
+
+@api.get("/admin/books/summary", response_model=List[AdminBookSummaryOut])
 async def admin_list_books_summary(_=Depends(require_admin)):
-    return await db.books.find({}, {"_id": 0, "chapters.content": 0}).sort("created_at", -1).to_list(1000)
+    books = await db.books.find({}, {"_id": 0, "chapters.content": 0}).sort("created_at", -1).to_list(1000)
+    return [_admin_book_reporting_summary(book) for book in books]
 
 
 def _cover_side_admin_status(
