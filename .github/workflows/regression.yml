@@ -165,6 +165,9 @@ jobs:
   deploy_frontend:
     name: Vercel frontend deploy after pre-deploy pass
     needs: regression
+    # Configure required reviewers before merge. Release this hold only after
+    # the same main revision is serving on Railway and backend verification passes.
+    environment: reader-frontend-production
     if: >-
       (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
       github.ref == 'refs/heads/main' &&

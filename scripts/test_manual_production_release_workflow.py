@@ -93,7 +93,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(self.output.read_text(), 'enabled=false\n')
 
-    def test_push_frontend_paths_still_deploy(self):
+    def test_push_frontend_paths_remain_eligible_subject_to_environment_hold(self):
         (self.repo / 'frontend').mkdir()
         (self.repo / 'frontend' / 'fixture.txt').write_text('frontend fixture\n')
         self.git('add', 'frontend')
@@ -102,6 +102,21 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                               GITHUB_SHA=self.git('rev-parse', 'HEAD').strip())
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(self.output.read_text(), 'enabled=true\n')
+
+    def test_frontend_only_environment_hold_covers_push_and_dispatch(self):
+        regression = SOURCE.split('  deploy_frontend:', 1)[0]
+        deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
+        canary = SOURCE.split('  frontend_production_canary:', 1)[1]
+        self.assertIn('    environment: reader-frontend-production\n', deploy)
+        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 1)
+        self.assertNotIn('    environment:', regression)
+        self.assertNotIn('    environment:', canary)
+        self.assertIn("(github.event_name == 'push' || github.event_name == 'workflow_dispatch')", deploy)
+        self.assertIn("github.ref == 'refs/heads/main'", deploy)
+        self.assertIn("needs.regression.result == 'success'", deploy)
+        self.assertLess(deploy.index('environment: reader-frontend-production'), deploy.index('    steps:'))
+        # This validates the binding, NOT GitHub's external approval settings or
+        # a backend dependency. Those require live rules and a human release decision.
 
     def test_existing_build_and_canary_dependencies_preserved(self):
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
