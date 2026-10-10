@@ -72,6 +72,7 @@ describe("UX conversion static signals", () => {
   const referencePublicPages = read("frontend/src/components/ReferencePublicPages.jsx");
   const heroCarousel = read("frontend/src/lib/heroCarousel.js");
   const regressionWorkflow = read(".github/workflows/regression.yml");
+  const frontendReleaseWorkflow = read(".github/workflows/reader-frontend-production.yml");
   const prRegressionRunner = read("scripts/run_pr_regression.sh");
   const prRegressionGates = read("scripts/run_pr_regression_gates.sh");
   const headerStyles = read("frontend/src/components/Header.css");
@@ -419,7 +420,11 @@ describe("UX conversion static signals", () => {
     expect(regressionWorkflow).not.toContain("STAGING_FRONTEND_URL");
     expect(regressionWorkflow).not.toContain("STAGING_API_URL");
     expect(regressionWorkflow).not.toContain("Run main pre-deploy regression");
-    expect(regressionWorkflow).toContain("REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}");
+    expect(frontendReleaseWorkflow).toContain("REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}");
+    expect(frontendReleaseWorkflow).toContain("REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}");
+    expect(frontendReleaseWorkflow).toContain("needs: backend_verify");
+    expect(frontendReleaseWorkflow).toContain("environment: reader-frontend-production");
+    expect(regressionWorkflow).not.toContain("environment: reader-frontend-production");
     expect(regressionWorkflow).not.toContain("Report production parity without blocking PR deploy fix");
   });
 

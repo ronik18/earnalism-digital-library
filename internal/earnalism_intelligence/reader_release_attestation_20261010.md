@@ -106,3 +106,12 @@ Added actual-handler ASGI package/container regression: 1 FAIL /3 PASS before
 fix. Minimal import fallback supports both deployment layouts; 4 PASS after.
 No liveness assertion weakened. Fresh head CI replaces the failed candidate;
 original commit and its evidence remain preserved. No production change.
+
+Candidate d5201ac5 regression38072219562 passed isolated UAT opening but failed
+one stale static assertion expecting production-canary settings in regression.yml.
+The authorized split moved those settings to reader-frontend-production.yml.
+Updated the assertion to require the same production frontend/API targets there,
+backend verification dependency and owner environment hold, and no hold in the
+main-push regression workflow. All 64 static module tests newly pass locally;
+the focused test also passes. Fresh successor CI is still required. No runtime,
+production, Reader, rights or accounting changes were made for this correction.
