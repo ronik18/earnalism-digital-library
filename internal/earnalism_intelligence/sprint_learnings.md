@@ -1,5 +1,17 @@
 # Sprint Learnings
 
+## PR528 release attestation — 2026-10-10
+
+- A successful CLI deployment label without provider commitHash is not serving
+  source evidence. Additive no-store health provenance must use provider fields
+  only and fail closed when Git provenance is absent.
+- Railway Wait for CI cannot precede backend verification when the same main
+  suite includes a held frontend job. Keep CI terminating; use a separate
+  exact-main manual backend-verification → owner-held frontend workflow.
+- File-based Vercel suppression, effective provider root and CLI-only history
+  are distinct evidence from a controlled live suppression experiment.
+  See reader_release_attestation_20261010.md; no deployment/session authorized.
+
 ## Reader contract successor — 2026-10-10
 
 Preserve exact approved candidates before integrating a changed main; approval

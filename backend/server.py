@@ -6952,16 +6952,20 @@ async def root_health_check():
 
 
 @app.get("/healthz")
-async def root_healthz_check():
+async def root_healthz_check(response: Response = None):
+    from utils.deployment_attestation import deployment_attestation
+    if response is not None:
+        response.headers["Cache-Control"] = "no-store"
     return {
         "status": "ok",
         "replica": "single" if not MULTI_REPLICA_ENABLED else os.environ.get("RAILWAY_REPLICA_ID", "multi"),
+        "deployment": deployment_attestation(),
     }
 
 
 @api.get("/healthz")
-async def api_healthz_check():
-    return await root_healthz_check()
+async def api_healthz_check(response: Response = None):
+    return await root_healthz_check(response)
 
 
 @api.get("/controlled-launch/status")
