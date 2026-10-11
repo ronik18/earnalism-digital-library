@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+from dataclasses import dataclass
 from datetime import datetime, timezone
 import os
 
@@ -12,7 +13,6 @@ os.environ.setdefault("JWT_SECRET", "release-proxy-country-middleware-test-secre
 
 from backend import server
 from backend.release_proxy_auth import COUNTRY_HEADER, PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
-from backend.rights_decision_gate import DecisionGateVerdict
 
 
 SECRET = "release-proxy-test-secret-that-is-long-enough"
@@ -206,12 +206,17 @@ def test_runtime_rights_boundary_allows_only_exactly_accepted_launch_titles(monk
 
 
 def test_signed_request_denies_foreign_verdict_class_even_when_passed(monkeypatch):
-    # The server imports its runtime verdict under the top-level module name.
-    # A similarly shaped foreign object must not bypass the fail-closed boundary.
+    # Import topology can alias the package verdict to the server's native class.
+    # Define an independent, equally shaped class to test the foreign boundary.
+    @dataclass(frozen=True)
+    class ForeignDecisionGateVerdict:
+        passed: bool
+        reasons: tuple[str, ...]
+
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
-    foreign_verdict = DecisionGateVerdict(True, ())
+    foreign_verdict = ForeignDecisionGateVerdict(True, ())
     assert not isinstance(foreign_verdict, server.DecisionGateVerdict)
     monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: foreign_verdict)
     timestamp = int(datetime.now(timezone.utc).timestamp())
