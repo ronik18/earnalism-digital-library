@@ -731,3 +731,24 @@ test('public-only visual pages stop billable activity and a paused grant removes
   expect(text()).not.toContain('Page 4 manuscript.');
   expect(container.querySelector('[data-transport-chunks]').dataset.transportChunks).toBe('3');
 });
+
+
+test('a session conflict requires explicit native transfer and preserves the source URL', async () => {
+  pass.startReadingPassSession.mockRejectedValueOnce({ response: { status: 409, data: { detail: { code: 'SESSION_ACTIVE_ELSEWHERE', message: 'Reading Pass time is active on another device or tab.' } } } });
+  await mount('/reader/test-book?p=4&a=2&r=previous-source');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+  await click('Continue to this page');
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: 'test-book', pageIndex: 4 });
+  expect(text()).toContain('Continuing here ends your other active reading session.');
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  await click('Continue on this device');
+  expect(pass.startReadingPassSession).toHaveBeenLastCalledWith({ bookSlug: 'test-book', pageIndex: 4, transfer: true });
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe('/reader/test-book?p=4&a=2&r=previous-source');
+});
+
+test('an entitlement denial never offers session transfer or protected buffers', async () => {
+  pass.startReadingPassSession.mockRejectedValue({ response: { status: 403, data: { detail: { code: 'PASS_REQUIRED', message: 'A current Reading Pass is required.' } } } });
+  await openProtected();
+  expect(text()).not.toContain('Continue on this device');
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+});

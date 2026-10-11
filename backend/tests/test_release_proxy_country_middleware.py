@@ -96,12 +96,12 @@ def test_commercial_mode_requires_commerce_and_separate_pass_rights(monkeypatch)
     assert server._commercial_india_reader_verdict(request, "a-white-heron") is False
     monkeypatch.setattr(server, "PUBLIC_PAID_COMMERCE_ENABLED", True)
     monkeypatch.setattr(server, "load_production_registry", lambda: ([], []))
-    monkeypatch.setattr(server, "evaluate_runtime_path", lambda *args, **kwargs: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
+    monkeypatch.setattr(server, "evaluate_runtime_path", lambda *args, **kwargs: server.DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
     assert server._commercial_india_reader_verdict(request, "a-white-heron") is False
     approved_actions = []
     def approved_runtime_path(action, **_kwargs):
         approved_actions.append(action)
-        return DecisionGateVerdict(True, ())
+        return server.DecisionGateVerdict(True, ())
     monkeypatch.setattr(server, "evaluate_runtime_path", approved_runtime_path)
     assert server._commercial_india_reader_verdict(request, "a-white-heron") is True
     assert approved_actions == ["reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"]
@@ -127,7 +127,7 @@ def test_public_reader_release_accepts_fresh_signed_india_request(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
-    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: DecisionGateVerdict(country == "IN", ()))
+    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: server.DecisionGateVerdict(country == "IN", ()))
     timestamp = int(datetime.now(timezone.utc).timestamp())
     headers = {
         SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
@@ -144,7 +144,7 @@ def test_dracula_reader_manifest_denies_signed_request_without_accepted_rights(m
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
-    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
+    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: server.DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
     timestamp = int(datetime.now(timezone.utc).timestamp())
     path = "/api/reader/book/dracula/manifest"
     headers = {
@@ -203,3 +203,24 @@ def test_runtime_rights_boundary_allows_only_exactly_accepted_launch_titles(monk
             request_with_headers({}, path=f"/api/books/{slug}"), country="US"
         )
         assert unaccepted_country.passed is False
+
+
+def test_signed_request_denies_foreign_verdict_class_even_when_passed(monkeypatch):
+    # The server imports its runtime verdict under the top-level module name.
+    # A similarly shaped foreign object must not bypass the fail-closed boundary.
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    foreign_verdict = DecisionGateVerdict(True, ())
+    assert not isinstance(foreign_verdict, server.DecisionGateVerdict)
+    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: foreign_verdict)
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+    headers = {
+        SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
+    }
+    response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers), next_response))
+    assert response.status_code == 451
+    assert response.body == b'{"detail":{"code":"RELEASE_RIGHTS_DENIED"}}'

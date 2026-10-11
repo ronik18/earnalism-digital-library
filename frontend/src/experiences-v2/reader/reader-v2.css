@@ -316,3 +316,12 @@
  .reader-v2__page-arrow:active:not(:disabled) { transform: scale(.94); }
 }
 @media (prefers-reduced-motion: reduce) { .reader-v2__page-content { animation: none; } .reader-v2__page-arrow { transition: none; } }
+
+/* Preserved edition artwork follows the authorized final body at every width. */
+.reader-v2__front-cover, .reader-v2__back-cover { margin: 2rem auto; max-width: min(100%, 24rem); text-align: center; }
+.reader-v2__front-cover .book-cover-image, .reader-v2__back-cover .book-cover-image { width: 100%; height: auto; aspect-ratio: 2 / 3; }
+.reader-v2__front-cover img, .reader-v2__back-cover img { display: block; width: 100%; height: auto; object-fit: contain; }
+.reader-v2__front-cover figcaption, .reader-v2__back-cover figcaption { margin-top: .75rem; font: 500 .8rem/1.4 var(--ev2-ui); }
+
+/* Boundary artwork scrolls beside the fixed prose canvas without changing its measured height. */
+.reader-v2__page-frame { overflow-y: auto; scrollbar-gutter: stable; }

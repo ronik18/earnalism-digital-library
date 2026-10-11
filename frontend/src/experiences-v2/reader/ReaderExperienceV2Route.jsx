@@ -89,6 +89,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const [lease, setLease] = useState(null);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [sessionConflict, setSessionConflict] = useState(false);
   const [balance, setBalance] = useState(null);
   const signedIn = Boolean(user);
   // Public/guest manifests can be cached independently of the customer. Only
@@ -422,7 +423,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     setSearch(params, { replace: false });
   }, [search, setSearch]);
 
-  const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision) => {
+  const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision, transfer = false) => {
     if (!Number.isInteger(nextPage) || nextPage < 1 || nextPage > totalPages || actionRef.current) return;
     if (nextPage > previewLimit && !user) {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
@@ -442,7 +443,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         if (!await settleLease("reader_v2_preview")) throw new Error("Your reading session could not be closed. Please retry.");
       } else if (!runningLease(leaseRef.current)) {
         if (!await settleLease("reader_v2_reauthorize")) throw new Error("Your reading session could not be closed. Please retry.");
-        const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage });
+        const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage, ...(transfer ? { transfer: true } : {}) });
         if (!aliveRef.current || locationVersionRef.current.version !== intentVersion) {
           if (started?.session_id) void endReadingPassSession({ sessionId: started.session_id }, "reader_v2_start_after_exit").catch(() => undefined);
           return;
@@ -456,6 +457,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         // URL commits. Do not settle the lease just issued for that transition.
         pendingPageRef.current = nextPage;
         publishLease(nextLease);
+        setSessionConflict(false);
         lastActivityRef.current = Date.now();
       }
       if (!aliveRef.current || locationVersionRef.current.version !== intentVersion) return;
@@ -463,6 +465,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       if (nextPage === canonicalPage) setRetry((value) => value + 1);
       else changePage(nextPage, visualAnchor, anchorRevision);
     } catch (requestError) {
+      if (aliveRef.current) setSessionConflict(requestError?.response?.data?.detail?.code === "SESSION_ACTIVE_ELSEWHERE");
       if (aliveRef.current) setError(requestMessage(requestError, requestError.message || (freeReading ? "Free Reader access could not be verified." : "A current Reading Pass is required to continue.")));
     } finally {
       actionRef.current = false;
@@ -627,6 +630,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     {!manifest && !loading && <button type="button" onClick={() => setManifestRetry((value) => value + 1)}>Retry reader</button>}
     {!user && canonicalPage > previewLimit && <Link data-testid="reader-recovery-sign-in" to={`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`}>Sign in to continue</Link>}
     {validPage && enabled && (canonicalPage <= previewLimit || user) && <button type="button" data-testid="reader-authorize-chapter" onClick={() => authorizeAndContinue(canonicalPage)} disabled={busy}>{busy ? "Opening page…" : canonicalPage <= previewLimit ? "Retry page" : "Continue to this page"}</button>}
+    {sessionConflict && user && validPage && canonicalPage > previewLimit && <div role="status">
+      <p>Continuing here ends your other active reading session.</p>
+      <button type="button" onClick={() => authorizeAndContinue(canonicalPage, 0, undefined, true)} disabled={busy}>Continue on this device</button>
+    </div>}
     {user && !freeReading && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
     {notice && <p role="status">{notice}</p>}
   </>;
