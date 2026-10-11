@@ -324,4 +324,4 @@
 .reader-v2__front-cover figcaption, .reader-v2__back-cover figcaption { margin-top: .75rem; font: 500 .8rem/1.4 var(--ev2-ui); }
 
 /* Boundary artwork scrolls beside the fixed prose canvas without changing its measured height. */
-.reader-v2__page-frame { overflow-y: auto; scrollbar-gutter: stable; }
+.reader-v2__page-frame { overflow-y: auto; }
