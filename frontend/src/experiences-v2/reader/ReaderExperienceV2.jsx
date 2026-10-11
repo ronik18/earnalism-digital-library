@@ -319,6 +319,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         <div className="reader-v2__page-frame">
           <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" /></button>
           <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}><ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" /></button>
+          <div className="reader-v2__boundary-scroll">
           {!pagination.pending && fragment && !layoutError && windowFirst === 1 && visualIndex === 0 && model.book && <figure className="reader-v2__front-cover" aria-label="Front cover">
             <BookCoverImage book={model.book} alt={`${model.title} front cover`} loading="eager" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" />
             <figcaption>Front cover · {model.title}</figcaption>
@@ -384,6 +385,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             <BookCoverImage book={model.book} kind="back" alt={`${model.title} back cover`} loading="eager" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" />
             <figcaption>Back cover · {model.title}</figcaption>
           </figure>}
+          </div>
         </div>
 
         <aside id="reader-notebook" className="reader-v2__context" data-notebook-open={notebookOpen} aria-label="Notes and bookmarks" onKeyDown={(event) => { if (event.key === "Escape" && notebookOpen) closeNotebook(); }}>
