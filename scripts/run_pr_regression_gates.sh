@@ -50,7 +50,26 @@ env \
   REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
-  "$PYTHON_BIN" -m pytest -q \
+  "$PYTHON_BIN" -c '
+import faulthandler
+import sys
+import threading
+import pytest
+
+stop_trace = threading.Event()
+def bounded_stack_traces():
+    for _ in range(8):
+        if stop_trace.wait(60):
+            return
+        faulthandler.dump_traceback(file=sys.stderr, all_threads=True)
+trace_thread = threading.Thread(target=bounded_stack_traces, daemon=True)
+trace_thread.start()
+try:
+    raise SystemExit(pytest.console_main())
+finally:
+    stop_trace.set()
+    trace_thread.join(timeout=1)
+' -vv --setup-show \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_text_admission.py \

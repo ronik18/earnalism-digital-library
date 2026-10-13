@@ -338,6 +338,11 @@
   .reader-v2__navigation-selectors select { flex: 1; width: 0; min-width: 0; min-height: 44px; padding: 8px; border: 1px solid var(--reader-border); border-radius: 4px; background: var(--reader-canvas); color: var(--reader-ink); font: inherit; }
 }
 
+/* Preserve the existing prose height on short screens. */
+@media (max-height: 500px) {
+  .reader-v2__navigation-selectors { margin-block-start: 0; }
+}
+
 /* Keep the two native selectors independently usable in the narrow, short
    reading sheet; retain their full labels and existing navigation handlers. */
 @media (max-width: 360px) and (max-height: 500px) {
