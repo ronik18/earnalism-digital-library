@@ -109,7 +109,7 @@
 /* At extreme effective widths, wrapped chrome cannot fit in one screen.
    Let the shell scroll rather than collapse the measured prose to zero. The
    reading sheet itself stays fixed and paginated, with reachable 44px controls. */
-@media (max-width: 360px) {
+@media (max-width: 767px) {
   .experience-v2.reader-v2 { overflow-y: auto; }
   .reader-v2__layout { flex-shrink: 0; min-height: 32rem; overflow: visible; }
 }
@@ -119,4 +119,17 @@
 @media (min-width: 768px) and (min-height: 501px) {
   .reader-v2__chapter > span { grid-column: 1 / -1; grid-row: 2; min-block-size: 2lh; }
   .reader-v2__toolbar { grid-column: 1 / -1; grid-row: 1; }
+}
+
+/* Keep changing chapter counts out of prose-height calculation at narrow or
+   short layouts. Retain the complete label in a bounded scrollable slot. */
+@media (max-width: 767px), (max-height: 500px) {
+  .reader-v2__chapter > span {
+    display: block;
+    min-inline-size: 0;
+    block-size: 2lh;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    scrollbar-gutter: stable;
+  }
 }

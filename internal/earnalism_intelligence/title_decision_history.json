@@ -1,4 +1,24 @@
 {
+  "retained_edition_validation_local_20261011": {
+    "base": "cdd006ce91f98327a1b3de31b856f25e532eff88",
+    "evidence": "retained_edition_validation_20261011.md",
+    "the-principles-of-scientific-management": "LOCAL_CLEANED_READY_FOR_REVIEW_PARTIAL_VISUAL_QA_UNVERIFIED",
+    "my-life-and-work": "LOCAL_CLEANED_READY_FOR_REVIEW_PARTIAL_VISUAL_QA_UNVERIFIED",
+    "the-gift-of-the-magi": "LEGACY_SOURCE_DIGEST_UNREPRODUCED",
+    "production_statuses_changed": false,
+    "publication_authority": false,
+    "ready_for_release": []
+  },
+  "acres_plain_text_preservation_local_20261010": {
+    "state": "LOCAL_REPAIR_QUALIFIED_NOT_RELEASED",
+    "evidence": "acres_plain_text_repair_20261010.md",
+    "base": "d79acb1952161cd56395e9bb4d7c1001ceaa69bb",
+    "focused_tests_passed": 14,
+    "generation_1_changed": false,
+    "publication_changed": false,
+    "rights_changed": false,
+    "production_reader_verified": false
+  },
   "agentic_ai_with_python_preparation_successor_20261010": {
     "state": "LOCAL_SUCCESSOR_QUALIFIED_NEW_RELEASE_AUTHORIZATION_REQUIRED",
     "evidence": "reader_preparation_successor_20261010.md",

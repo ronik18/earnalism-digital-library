@@ -1,5 +1,13 @@
 # Sprint Learnings
 
+## Reuse-only publication qualification — 2026-10-11
+
+Execute actual source/chapter/rights/cover checks for retained editions; never
+map generator READY into invented ingestion history. Local CLEANED and
+READY_FOR_REVIEW/PARTIAL_DRY_RUN findings do not replace final publication QA
+or paid Reader acceptance. Missing legacy digest bytes remain a source blocker.
+See retained_edition_validation_20261011.md; no production writes or new commit.
+
 ## PR528 release attestation — 2026-10-10
 
 - A successful CLI deployment label without provider commitHash is not serving
@@ -2655,6 +2663,15 @@ Owner artwork provenance removes a third-party artwork permission question, not 
 
 ## Catalogue local follow-up — 2026-10-04T20:55:06.984456+00:00
 Artwork ownership does not verify printed endorsements/ISBN allocation. Neither is mandatory in publication schema. Preserve the back privately; front-only text preparation is viable. Legacy Bharat audio flags require fresh text-only bindings. Missing-reference search found one canonical pair and 15 ambiguous pairs; five Bengali display defects are baked into source artwork. No activation or production verification inferred.
+## Acres source-type integrity — 2026-10-10
+
+Literal angle-bracket source notation is not HTML merely because it matches
+an alphabetic tag-shaped string. Use safe plain-text escaping; preserve actual
+HTML sanitization. Local failing-before 5 PASS/2 FAIL; after focused rendering
+and security 14 PASS, including full retained Chapter 008. Generation 1 untouched. Native ingestion readiness and
+generated-section QA cannot be relabeled as canonical-text reuse acceptance.
+See acres_plain_text_repair_20261010.md. No release or production write authorized.
+
 ## Reader sanitizer integrity — 2026-10-09
 
 Keep prose whitespace normalization outside sanitized pre subtrees; preserve safe

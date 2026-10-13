@@ -20,11 +20,43 @@ from backend.domain.reading_pass import canonical_page_records
 ROOT = Path(__file__).resolve().parents[2]
 GINNI = "book-d19e96859f"
 DRACULA = "dracula"
-OMITTED_FROM_LEGACY_CONFIG = ("a-white-heron", "the-selfish-giant")
+OMITTED_FROM_LEGACY_CONFIG = ("isolated-unapproved-reader-title", "yugalanguriya")
 CANONICAL_PAGE_ALIASES = (
     "/api/reading-pass/books/{slug}/pages/{page_index}",
     "/api/reader/book/{slug}/pages/{page_index}",
 )
+
+
+@pytest.fixture(autouse=True)
+def isolated_uat_ingress(monkeypatch):
+    # Native middleware permits direct requests only in isolated UAT. Production
+    # signed-ingress behavior is independently covered by its own test module.
+    monkeypatch.setattr(server, "ENVIRONMENT", "uat")
+
+
+@pytest.fixture
+def corrupt_ginni(monkeypatch, tmp_path):
+    artifact_dir = tmp_path / GINNI
+    artifact_dir.mkdir()
+    approval = artifact_dir / "approval_evidence.json"
+    approval.write_text('{"approved_to_publish":true}\n', encoding="utf-8")
+    digest = hashlib.sha256(approval.read_bytes()).hexdigest()
+    (artifact_dir / "checksum_manifest.json").write_text(
+        json.dumps({"files": [{"file": "approval_evidence.json", "sha256": digest}]}),
+        encoding="utf-8",
+    )
+    assert not catalog_truth.controlled_artifact_integrity_quarantined(GINNI, str(artifact_dir))
+    approval.write_text('{"approved_to_publish":false}\n', encoding="utf-8")
+    native_dir = catalog_truth.first_controlled_artifact_dir
+    monkeypatch.setattr(catalog_truth, "first_controlled_artifact_dir",
+                        lambda slug: artifact_dir if slug == GINNI else native_dir(slug))
+    # server supports a top-level import as well as backend.catalog_truth.
+    # Redirect its native resolver too, without replacing quarantine logic.
+    server_globals = server.controlled_artifact_integrity_quarantined.__globals__
+    server_native_dir = server_globals["first_controlled_artifact_dir"]
+    monkeypatch.setitem(server_globals, "first_controlled_artifact_dir",
+                        lambda slug: artifact_dir if slug == GINNI else server_native_dir(slug))
+    return artifact_dir
 
 
 def request(headers: list[tuple[bytes, bytes]] | None = None) -> server.Request:
@@ -205,19 +237,13 @@ def test_dracula_v2_uses_canonical_pages_and_keeps_page_four_protected(monkeypat
     assert legacy_session.value.detail["code"] == "LEGACY_SESSION_PUBLICATION_VERSION_UNVERIFIED"
 
 
-def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallback(monkeypatch, tmp_path):
-    roots = (
-        ROOT / "data" / "controlled_publications",
-        ROOT / "backend" / "data" / "controlled_publications",
+def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallback(monkeypatch, tmp_path, corrupt_ginni):
+    assert catalog_truth.controlled_artifact_integrity_quarantined(GINNI, str(corrupt_ginni)) is True
+    assert "approval_evidence.json does not match its retained checksum-bound approval." in (
+        catalog_truth.controlled_artifact_validation_issues(GINNI, str(corrupt_ginni))
     )
-    for root in roots:
-        artifact_dir = root / GINNI
-        assert catalog_truth.controlled_artifact_integrity_quarantined(GINNI, str(artifact_dir)) is True
-        assert "approval_evidence.json does not match its retained checksum-bound approval." in (
-            catalog_truth.controlled_artifact_validation_issues(GINNI, str(artifact_dir))
-        )
 
-    valid_dir = tmp_path / GINNI
+    valid_dir = tmp_path / "valid-control"
     valid_dir.mkdir()
     approval = valid_dir / "approval_evidence.json"
     approval.write_text('{"approved_to_publish":true}\n', encoding="utf-8")
@@ -235,11 +261,17 @@ def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallba
             pytest.fail("an integrity-quarantined artifact must not fall back to stale database metadata")
 
     monkeypatch.setattr(server, "db", SimpleNamespace(books=Database()))
+    # Current Ginni is not public; first prove deny-by-default, then exercise
+    # quarantine with a test-only configured candidate, never production state.
+    result = asyncio.run(server._find_public_book_candidate(GINNI, {}, include_artifact_content=False))
+    assert result == (None, "missing")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(server, "CONTROLLED_LIVE_BOOK_SLUGS", (*server.CONTROLLED_LIVE_BOOK_SLUGS, GINNI))
     result = asyncio.run(server._find_public_book_candidate(GINNI, {}, include_artifact_content=False))
     assert result == (None, "integrity_quarantined")
 
 
-def test_quarantined_ginni_cannot_use_stale_canonical_segments_through_either_page_alias(monkeypatch):
+def test_quarantined_ginni_cannot_use_stale_canonical_segments_through_either_page_alias(monkeypatch, corrupt_ginni):
     class StaleManifests:
         def __init__(self):
             self.calls = []
@@ -358,6 +390,7 @@ def test_canonical_page_routes_remain_disabled_when_v2_is_disabled(monkeypatch):
 
 
 def test_titles_outside_the_controlled_release_remain_excluded():
+    assert "a-white-heron" in catalog_truth.LEGACY_CONTROLLED_LIVE_BOOK_SLUGS
     assert set(OMITTED_FROM_LEGACY_CONFIG).isdisjoint(catalog_truth.LEGACY_CONTROLLED_LIVE_BOOK_SLUGS)
     for slug in OMITTED_FROM_LEGACY_CONFIG:
         assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
