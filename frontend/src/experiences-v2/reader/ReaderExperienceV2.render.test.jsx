@@ -241,6 +241,22 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(onRequestPage).toHaveBeenCalledTimes(1);
   });
 
+  test("compact Contents uses real chapter destinations and respects pending authorization", async () => {
+    const onRequestPage = jest.fn();
+    const chapterModel = { ...model, contents: [{ page: 1, label: 'Opening' }, { page: 3, label: 'Final chapter' }, { page: 99, label: 'Outside edition' }], content: <p>Retained chapter body.</p> };
+    await act(async () => root.render(<ReaderExperienceV2 model={chapterModel} onRequestPage={onRequestPage} access={{ authorized: true }} />));
+    const select = container.querySelector('select[aria-label="Contents"]');
+    expect(select).not.toBeNull();
+    expect(select.closest(".reader-v2__navigation-selectors").querySelector('select[aria-label="Go to page"]')).not.toBeNull();
+    expect(select.closest(".reader-v2__chapter")).toBeNull();
+    expect([...select.options].map(option => option.value)).toEqual(['', 'chapter:1', 'chapter:3']);
+    expect(select.disabled).toBe(false);
+    act(() => { select.value = 'chapter:3'; select.dispatchEvent(new Event('change', { bubbles: true })); });
+    expect(onRequestPage).toHaveBeenCalledWith(3);
+    await act(async () => root.render(<ReaderExperienceV2 model={chapterModel} onRequestPage={onRequestPage} access={{ authorized: true, busy: true }} />));
+    expect(container.querySelector('select[aria-label="Contents"]').disabled).toBe(true);
+  });
+
   test("the page selector and previous/next controls respect both book boundaries", () => {
     const onRequestPage = jest.fn();
     render({ onRequestPage });

@@ -141,6 +141,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const anchor = model.visualAnchor ?? localAnchor;
   const pagination = useVisualPagination({ sourceRef, viewportRef, measureRef,
     authorizationScope: model.bookMapScope,
+    pageBreaks: model.pageBreaks,
     revision: model.sourceRevision || `${page}:${model.chapterTitle}`,
     typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
   const visualIndex = anchor === 'end' ? Math.max(0, pagination.pages.length - 1) : pageForAnchor(pagination.pages, anchor);
@@ -347,10 +348,24 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             <button type="button" onClick={resetTypography}>Reset typography</button>
             <button type="button" onClick={closeSettings}>Close preferences</button>
           </section>}
+          <div className="reader-v2__navigation-selectors">
+            <label className="reader-v2__compact-contents">Contents
+              <select aria-label="Contents" value="" disabled={busy || pagination.pending || !!layoutError} onChange={event => {
+                if (busy || pagination.pending || layoutError) return;
+                if (event.target.value === "index") { if (indexAnchor) requestPage(indexAnchor.page, indexAnchor.offset, indexAnchor.revision); return; }
+                const item = contents.find(item => item.page <= totalPages && `chapter:${item.page}` === event.target.value);
+                if (item) requestPage(item.page);
+              }}>
+                <option value="" disabled>{referenceSection && indexAnchor ? "Current: Index" : selectedChapter ? `Current: ${selectedChapter.label}` : "Choose a chapter"}</option>
+                {contents.filter(item => item.page <= totalPages).map(item => <option key={item.page} value={`chapter:${item.page}`}>{item.label}</option>)}
+                {indexAnchor && <option value="index">Index</option>}
+              </select>
+            </label>
           <label className="reader-v2__page-selector">Go to page{bookMap.options.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
             const option = bookMap.options.find(item => item.key === event.target.value);
             if (option) requestPage(option.anchor.page, option.anchor.offset, option.anchor.revision);
           }}>{bookMap.options.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={visualIndex} disabled={busy || pagination.pending} onChange={event => pagination.pages[Number(event.target.value)] && changeAnchor(pagination.pages[Number(event.target.value)].anchor ?? pagination.pages[Number(event.target.value)].start)}>{pagination.pages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
+          </div>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
           <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
             <div ref={sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
@@ -372,7 +387,6 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </p>}
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
 
-          <LicensedTextNotice book={model.book} />
           <footer className="reader-v2__continuation">
             <span>{atEnd ? "You have reached the end of this book." : model.windowFirst != null ? (access.authorized ? "Authorized chapter" : "Free preview") : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
             <nav aria-label="Page navigation">
@@ -381,6 +395,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             </nav>
           </footer>
         </article>
+          <LicensedTextNotice book={model.book} />
           {atEnd && access.authorized && !layoutError && (model.book?.back_cover_url || model.book?.back_cover_image_url || model.book?.back_cover_thumbnail_url) && <figure className="reader-v2__back-cover" aria-label="Back cover">
             <BookCoverImage book={model.book} kind="back" alt={`${model.title} back cover`} loading="eager" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" />
             <figcaption>Back cover · {model.title}</figcaption>

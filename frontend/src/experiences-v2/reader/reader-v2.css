@@ -236,7 +236,7 @@
 /* Reference details: a literary opening and a useful, quiet notebook rail. */
 .reader-v2__dateline { margin: 12px 0 0; color: var(--reader-maroon); font: 500 10px/1.6 var(--ev2-ui); letter-spacing: .12em; text-transform: uppercase; }
 .reader-v2__canvas[data-reader-language="en"] .reader-v2__body > p:first-of-type::first-letter,
-.reader-v2__canvas[data-reader-language="en"] .reader-v2__body > div > p:first-of-type::first-letter { float: left; padding: .04em .13em 0 0; color: var(--reader-accent); font-size: 3.6em; line-height: .9; }
+.reader-v2__canvas[data-reader-language="en"] .reader-v2__body > div > p:first-of-type::first-letter { float: left; padding: calc(.04em + 8px) .13em 0 0; color: var(--reader-accent); font-size: 3.6em; line-height: .9; }
 .reader-v2__page-selector { display: flex; align-items: center; gap: 12px; max-width: none; margin-top: 12px; font-size: 11px; }
 .reader-v2__page-selector select { width: 9rem; }
 .reader-v2__rail .reader-v2__contents li button { border: 0; border-inline-start: 2px solid transparent; border-radius: 4px; background: transparent; padding: 8px 10px; }
@@ -328,3 +328,29 @@
 .reader-v2__boundary-scroll { height: 100%; overflow-y: auto; }
 /* A fixed prose sheet must let ordinary gestures reach the boundary scroller. */
 .reader-v2__boundary-scroll .reader-v2__canvas { overscroll-behavior-y: auto; }
+
+/* Share the existing selector row so Contents never removes prose height. */
+.reader-v2__compact-contents { display: none; }
+@media (max-width: 1279px) {
+  .reader-v2__navigation-selectors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-block: 8px 0; }
+  .reader-v2__navigation-selectors .reader-v2__compact-contents,
+  .reader-v2__navigation-selectors .reader-v2__page-selector { display: flex; align-items: center; gap: 6px; min-width: 0; margin: 0; font-size: 11px; }
+  .reader-v2__navigation-selectors select { flex: 1; width: 0; min-width: 0; min-height: 44px; padding: 8px; border: 1px solid var(--reader-border); border-radius: 4px; background: var(--reader-canvas); color: var(--reader-ink); font: inherit; }
+}
+
+/* Keep the two native selectors independently usable in the narrow, short
+   reading sheet; retain their full labels and existing navigation handlers. */
+@media (max-width: 360px) and (max-height: 500px) {
+  .reader-v2__navigation-selectors { grid-template-columns: minmax(0, 1fr); }
+  .reader-v2__navigation-selectors .reader-v2__compact-contents,
+  .reader-v2__navigation-selectors .reader-v2__page-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .reader-v2__navigation-selectors select {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

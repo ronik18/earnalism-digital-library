@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { paginateRenderedResponsive } from './visualPagination';
 
-export default function useVisualPagination({ sourceRef, viewportRef, measureRef, revision, typography, authorizationScope }) {
+export default function useVisualPagination({ sourceRef, viewportRef, measureRef, revision, typography, authorizationScope, pageBreaks = [] }) {
+  const pageBreaksKey = JSON.stringify(pageBreaks);
   const [result, setResult] = useState({ pages: [], pending: true, error: '', signature: '' });
   const cache = useRef(new Map());
   const geometry = useRef('');
@@ -45,7 +46,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
         if (!width || !height) return;
         geometry.current = `${width}:${height}`;
         const style = getComputedStyle(source);
-        const signature = [revision, width, height, style.fontFamily, style.fontSize, style.lineHeight, style.fontWeight, source.innerHTML].join('|');
+        const signature = [revision, authorizationScope, pageBreaksKey, width, height, style.fontFamily, style.fontSize, style.lineHeight, style.fontWeight, source.innerHTML].join('|');
         try {
           measure.style.width = `${width}px`;
           viewport.style.setProperty('--reader-visual-height', `${height}px`);
@@ -56,7 +57,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
           measure.style.fontWeight = style.fontWeight;
           const started = performance.now();
           const cached = cache.current.get(signature);
-          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, height, { cancelled: superseded });
+          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, height, { cancelled: superseded, pageBreaks });
           const pages = typeof calculation?.then === 'function' ? await calculation : calculation;
           if (superseded()) return;
           if (!cached) {
@@ -91,6 +92,6 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
       window.visualViewport?.removeEventListener('resize', schedule);
       document.fonts?.removeEventListener('loadingdone', fontsChanged);
     };
-  }, [sourceRef, viewportRef, measureRef, revision, typography]);
+  }, [sourceRef, viewportRef, measureRef, revision, typography, authorizationScope, pageBreaksKey]);
   return result;
 }

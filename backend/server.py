@@ -9488,7 +9488,19 @@ async def user_signup(payload: UserSignupIn, request: Request, response: Respons
         "status": "active",
         "created_at": now_iso(),
     }
-    await db.users.insert_one(doc)
+    try:
+        await db.users.insert_one(doc)
+    except DuplicateKeyError as exc:
+        details = exc.details if isinstance(exc.details, dict) else {}
+        pattern = details.get("keyPattern")
+        if (
+            isinstance(pattern, dict) and set(pattern) == {"email"}
+            and isinstance(pattern["email"], int)
+            and not isinstance(pattern["email"], bool)
+            and pattern["email"] == 1
+        ):
+            raise HTTPException(status_code=400, detail="An account with this email already exists") from exc
+        raise
     token = await _create_user_session(doc, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(doc)))
 

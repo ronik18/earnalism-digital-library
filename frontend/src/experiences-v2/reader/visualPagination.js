@@ -307,8 +307,127 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
   return pages;
 }
 
-export function paginateRendered(source, measure, height, fits) {
-  const steps = paginationSteps(source, measure, height, fits);
+// A boundary describes already verified source text/media, never reading access.
+const PREPROCESSING_LIMITS = { nodes: 20000, textCharacters: 2000000, seams: 128, workUnits: 200000, yieldEvery: 128, depth: 128 };
+
+function* inspectSeamSource(source, boundaries, overrides = {}, onStats) {
+  const limits = { ...PREPROCESSING_LIMITS, ...overrides };
+  if (Object.values(limits).some(n => !Number.isInteger(n) || n < 1)) throw new PaginationIntegrityError('Invalid pagination preprocessing limits.');
+  if (!Array.isArray(boundaries) || boundaries.length > limits.seams) throw new PaginationIntegrityError('Pagination seam budget exceeded.');
+  const coordinates = new WeakMap(); const originals = [];
+  let nodes = 0; let characters = 0; let media = 0;
+  const stack = [{ node: source, depth: 0, exit: false }];
+  while (stack.length) {
+    const entry = stack.pop(); const node = entry.node;
+    if (entry.exit) { coordinates.get(node).end = { offset: characters, media }; continue; }
+    nodes++;
+    if (nodes > limits.nodes || entry.depth > limits.depth) throw new PaginationIntegrityError('Pagination preprocessing node/depth budget exceeded.');
+    const position = { start: { offset: characters, media }, end: null }; coordinates.set(node, position);
+    if (node.nodeType === Node.TEXT_NODE) {
+      characters += node.length;
+      if (characters > limits.textCharacters) throw new PaginationIntegrityError('Pagination preprocessing text budget exceeded.');
+    }
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'IMG') media++;
+    stack.push({ node, depth: entry.depth, exit: true });
+    for (let child = node.lastChild; child; child = child.previousSibling) stack.push({ node: child, depth: entry.depth + 1, exit: false });
+    if (nodes % limits.yieldEvery === 0) { onStats?.({ nodes, characters, media, enteredClone: false }); yield; }
+  }
+  let previous = { offset: 0, media: 0 };
+  const less = (a, b) => a.offset < b.offset || (a.offset === b.offset && a.media < b.media);
+  for (const boundary of boundaries) {
+    if (!boundary || !Number.isInteger(boundary.offset) || !Number.isInteger(boundary.media)
+      || boundary.offset < 0 || boundary.offset > characters || boundary.media < 0 || boundary.media > media || !less(previous, boundary)) throw new PaginationIntegrityError('Invalid or unordered pagination seam.');
+    previous = boundary;
+    for (const node of source.querySelectorAll('tr,figure,table')) {
+      const span = coordinates.get(node);
+      const spanning = node.tagName === 'TABLE' && [...node.querySelectorAll('[rowspan]')].some(cell => Number(cell.getAttribute('rowspan')) !== 1);
+      if (less(span.start, boundary) && less(boundary, span.end) && (node.tagName !== 'TABLE' || spanning)) throw new PaginationIntegrityError('A pagination seam crosses a table row, spanning table or figure.');
+    }
+    yield;
+  }
+  const workUnits = nodes * (boundaries.length + 1) * 8;
+  if (workUnits > limits.workUnits) throw new PaginationIntegrityError('Pagination preprocessing work budget exceeded.');
+  for (const node of source.childNodes) originals.push(coordinates.get(node));
+  onStats?.({ nodes, characters, media, workUnits, enteredClone: false });
+  yield; // cancellation can stop before any deep clone.
+  return { coordinates, originals, characters, media, nodes, workUnits };
+}
+
+function partitionSeamSource(source, boundary) {
+  const left = source.cloneNode(false); const right = source.cloneNode(false);
+  let text = 0; let media = 0;
+  const split = node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const cut = Math.max(0, Math.min(node.length, boundary.offset - text)); text += node.length;
+      return [cut ? document.createTextNode(node.textContent.slice(0, cut)) : null, cut < node.length ? document.createTextNode(node.textContent.slice(cut)) : null];
+    }
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'IMG') return media++ < boundary.media ? [node.cloneNode(true), null] : [null, node.cloneNode(true)];
+    if (!node.childNodes.length) return text < boundary.offset || (text === boundary.offset && media <= boundary.media) ? [node.cloneNode(true), null] : [null, node.cloneNode(true)];
+    const a = node.cloneNode(false); const b = node.cloneNode(false);
+    for (const child of node.childNodes) { const [before, after] = split(child); if (before) a.append(before); if (after) b.append(after); }
+    return [a.childNodes.length ? a : null, b.childNodes.length ? b : null];
+  };
+  for (const node of source.childNodes) { const [a, b] = split(node); if (a) left.append(a); if (b) right.append(b); }
+  if (left.textContent.length !== boundary.offset || left.querySelectorAll('img').length !== boundary.media || left.textContent + right.textContent !== source.textContent) throw new PaginationIntegrityError('Pagination seam text/media order cannot be represented.');
+  return [left, right];
+}
+
+function remapSeamPage(page, part, nodeMap, mediaMap) {
+  const template = document.createElement('template'); template.innerHTML = page.html;
+  template.content.querySelectorAll('[data-reader-source-node]').forEach(node => node.setAttribute('data-reader-source-node', String(nodeMap[Number(node.dataset.readerSourceNode)])));
+  template.content.querySelectorAll('[data-reader-source-media]').forEach(node => node.setAttribute('data-reader-source-media', String(mediaMap[Number(node.dataset.readerSourceMedia)])));
+  template.content.querySelectorAll('[data-reader-seam-node],[data-reader-seam-media]').forEach(node => { node.removeAttribute('data-reader-seam-node'); node.removeAttribute('data-reader-seam-media'); });
+  const remap = anchor => typeof anchor === 'number' ? anchor + part.offset : typeof anchor === 'string' && anchor.startsWith('media:') ? `media:${mediaMap[Number(anchor.split(':')[1])]}` : typeof anchor === 'string' && anchor.startsWith('node:') ? `node:${nodeMap[Number(anchor.split(':')[1])]}` : anchor;
+  return { ...page, html: template.innerHTML, start: page.start + part.offset, end: page.end + part.offset,
+    media: (page.media || []).map(index => mediaMap[index]), structures: (page.structures || []).map(remap), anchor: remap(page.anchor) };
+}
+
+function* seamPaginationSteps(source, measure, height, options) {
+  const boundaries = options.pageBreaks || [];
+  const inspected = yield* inspectSeamSource(source, boundaries, options.preprocessingLimits, options.onPreprocessingStats);
+  options.onPreprocessingStats?.({ nodes: inspected.nodes, characters: inspected.characters, media: inspected.media, workUnits: inspected.workUnits, enteredClone: true });
+  if (!boundaries.length) return yield* paginationSteps(source, measure, height, options.fits);
+  const originalImages = [...source.querySelectorAll('img')];
+  let rest = source.cloneNode(true);
+  [...rest.childNodes].forEach((node, index) => { if (node.nodeType === Node.ELEMENT_NODE) node.setAttribute('data-reader-seam-node', String(index)); });
+  [...rest.querySelectorAll('img')].forEach((image, index) => {
+    image.setAttribute('data-reader-seam-media', String(index));
+    const original = originalImages[index];
+    if (original.naturalWidth > 0 && original.naturalHeight > 0) {
+      image.dataset.readerIntrinsicWidth = String(original.naturalWidth); image.dataset.readerIntrinsicHeight = String(original.naturalHeight);
+      if (!image.hasAttribute('width')) image.setAttribute('width', String(original.naturalWidth));
+      if (!image.hasAttribute('height')) image.setAttribute('height', String(original.naturalHeight));
+    }
+  });
+  const parts = []; let offset = 0; let media = 0;
+  for (const boundary of boundaries) {
+    const [left, right] = partitionSeamSource(rest, { offset: boundary.offset - offset, media: boundary.media - media });
+    parts.push({ source: left, offset }); rest = right; offset = boundary.offset; media = boundary.media;
+    yield;
+  }
+  parts.push({ source: rest, offset }); const pages = [];
+  for (const part of parts) {
+    if (!part.source.childNodes.length) continue;
+    let position = part.offset;
+    const nodeMap = [...part.source.childNodes].map(node => {
+      const index = node.nodeType === Node.ELEMENT_NODE ? Number(node.getAttribute('data-reader-seam-node')) : inspected.originals.findIndex(span => position >= span.start.offset && position < span.end.offset);
+      position += node.textContent.length;
+      if (!Number.isInteger(index) || index < 0 || index >= inspected.originals.length) throw new PaginationIntegrityError('Pagination source ordinal cannot be mapped.');
+      return index;
+    });
+    const mediaMap = [...part.source.querySelectorAll('img')].map(image => Number(image.getAttribute('data-reader-seam-media')));
+    const local = yield* paginationSteps(part.source, measure, height, options.fits);
+    for (const page of local) { pages.push(remapSeamPage(page, part, nodeMap, mediaMap)); yield; }
+  }
+  if (pages.map(page => page.text).join('') !== source.textContent) throw new PaginationIntegrityError('Seam pagination did not reconstruct source text exactly.');
+  const reconstructedMedia = pages.flatMap(page => page.media);
+  if (reconstructedMedia.length !== inspected.media || reconstructedMedia.some((ordinal, index) => ordinal !== index)) throw new PaginationIntegrityError('Seam pagination did not reconstruct source media exactly.');
+  if (pages.some((page, index) => index > 0 && page.start !== pages[index - 1].end)) throw new PaginationIntegrityError('Seam pagination source ranges are not consecutive.');
+  return pages;
+}
+
+export function paginateRendered(source, measure, height, fits, options = {}) {
+  const steps = seamPaginationSteps(source, measure, height, { ...options, fits });
   let step = steps.next();
   while (!step.done) step = steps.next();
   return step.value;
@@ -317,7 +436,7 @@ export function paginateRendered(source, measure, height, fits) {
 // Fast layouts finish synchronously. Long layouts yield the main thread in
 // bounded slices; yielding is calculation work, never an animation delay.
 export function paginateRenderedResponsive(source, measure, height, options = {}) {
-  const steps = paginationSteps(source, measure, height, options.fits);
+  const steps = seamPaginationSteps(source, measure, height, options);
   const clock = options.clock || (() => performance.now());
   const schedule = options.schedule || (resume => setTimeout(resume, 0));
   const advance = () => {

@@ -19,14 +19,25 @@ export function clampPlaybackTime(seconds, durationSeconds) {
   return durationSeconds > 0 ? Math.min(value, durationSeconds) : value;
 }
 
-export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary, onReadAlong, readAlongSupported = false }) {
+export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onPreparePlayback, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary, onReadAlong, readAlongSupported = false }) {
   const presentation = listenerReleasePresentation(book, { fixture });
   const audioRef = useRef(null);
+  const mountedRef = useRef(false);
   const pendingOffsetRef = useRef(null);
   const pendingOffsetSegmentRef = useRef("");
   const resumeAfterTransitionRef = useRef(false);
   const prefetchedSegmentsRef = useRef(new Set());
   const progressSavedAtRef = useRef(0);
+  const activityRef = useRef("buffering");
+  const lastMediaTimeRef = useRef(null);
+  const progressObservedAtRef = useRef(0);
+  const playIntentRef = useRef(0);
+  const preparingRef = useRef(false);
+  const reportActivity = useCallback((next) => {
+    if (activityRef.current === next) return;
+    activityRef.current = next;
+    onPlaybackStateChange?.(next);
+  }, [onPlaybackStateChange]);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [speed, setSpeed] = useState(1);
@@ -58,7 +69,10 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     ? `${Math.floor(passBalance / 60)} minutes left`
     : "Reading Pass required";
 
-  useEffect(() => () => { audioRef.current?.pause(); }, []);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; ++playIntentRef.current; audioRef.current?.pause(); };
+  }, []);
 
   useEffect(() => {
     if (!audioManifest?.valid) return;
@@ -80,7 +94,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   const persistProgress = useCallback(({ force = false } = {}) => {
     const audio = audioRef.current;
-    if (!audioManifest?.valid || !audio || !activeSegment?.segmentId) return;
+    if (!audioManifest?.valid || !audio || !activeSegment?.segmentId || audio.readyState < 1 || pendingOffsetRef.current !== null) return;
     if (!force && Date.now() - progressSavedAtRef.current < 5000) return;
     progressSavedAtRef.current = Date.now();
     saveAudiobookProgress(book.slug, {
@@ -112,35 +126,60 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     return true;
   }, [activeSegment?.segmentId]);
 
-  const seek = useCallback((next) => {
+  const seek = useCallback(async (next) => {
     if (!audioManifest?.valid) return;
     const target = audioSegmentAtMediaPosition(audioManifest, clampPlaybackTime(next, totalDuration));
     if (!target?.segmentId) return;
+    const wasPlaying = !audioRef.current?.paused;
+    preparingRef.current = true;
+    resumeAfterTransitionRef.current = wasPlaying;
+    audioRef.current?.pause();
+    reportActivity("buffering");
+    const intent = ++playIntentRef.current;
+    try { await onPreparePlayback?.(); } catch { return; }
+    if (!mountedRef.current || intent !== playIntentRef.current) return;
     if (target.segmentId !== activeSegment?.segmentId) {
       pendingOffsetRef.current = target.offsetSeconds;
       pendingOffsetSegmentRef.current = target.segmentId;
-      resumeAfterTransitionRef.current = playing;
+      resumeAfterTransitionRef.current = wasPlaying;
       setSegmentId(target.segmentId);
       return;
     }
     const audio = audioRef.current;
     if (!audio) return;
+    lastMediaTimeRef.current = null;
     audio.currentTime = target.offsetSeconds;
+    if (wasPlaying) requestAudiobookPlayback(audio).catch(() => onMediaError?.());
     setTime((Number(activeSegment?.cumulativeStartMs || 0) / 1000) + target.offsetSeconds);
-  }, [activeSegment, audioManifest, playing, totalDuration]);
+  }, [activeSegment, audioManifest, onMediaError, onPreparePlayback, reportActivity, totalDuration]);
 
-  const togglePlayback = useCallback(() => {
+  const togglePlayback = useCallback(async () => {
     const audio = audioRef.current;
     if (!audio || !canPlay) return;
-    if (audio.paused) requestAudiobookPlayback(audio).catch(() => onMediaError?.());
-    else audio.pause();
-  }, [canPlay, onMediaError]);
+    const intent = ++playIntentRef.current;
+    if (!audio.paused) {
+      preparingRef.current = false;
+      resumeAfterTransitionRef.current = false;
+      audio.pause();
+      reportActivity("paused");
+      return;
+    }
+    preparingRef.current = true;
+    reportActivity("buffering");
+    try {
+      await onPreparePlayback?.();
+      if (!mountedRef.current || intent !== playIntentRef.current || audioRef.current !== audio) return;
+      lastMediaTimeRef.current = Number(audio.currentTime) || 0;
+      await requestAudiobookPlayback(audio);
+    } catch { if (intent === playIntentRef.current) onMediaError?.(); }
+  }, [canPlay, onMediaError, onPreparePlayback, reportActivity]);
 
   const handleLoadedMetadata = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
     audio.playbackRate = speed;
     applyPendingOffset();
+    lastMediaTimeRef.current = Number(audio.currentTime) || 0;
     if (!resumeAfterTransitionRef.current) return;
     resumeAfterTransitionRef.current = false;
     requestAudiobookPlayback(audio).catch(() => onMediaError?.());
@@ -149,14 +188,29 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
   const handleTimeUpdate = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || !activeSegment) return;
+    const current = Number(audio.currentTime) || 0;
+    if (!audio.paused && !audio.seeking && audio.readyState >= 3 && document.visibilityState === "visible"
+      && lastMediaTimeRef.current !== null && current > lastMediaTimeRef.current + 0.01) {
+      preparingRef.current = false;
+      progressObservedAtRef.current = performance.now();
+      reportActivity("playing");
+    }
+    lastMediaTimeRef.current = current;
     setTime((Number(activeSegment.cumulativeStartMs || 0) / 1000) + (Number(audio.currentTime) || 0));
     persistProgress();
     prefetchNextSegmentMetadata(audio);
-  }, [activeSegment, persistProgress, prefetchNextSegmentMetadata]);
+  }, [activeSegment, persistProgress, prefetchNextSegmentMetadata, reportActivity]);
 
-  const handleEnded = useCallback(() => {
+  const handleEnded = useCallback(async () => {
     persistProgress({ force: true });
     if (activeSegment?.nextSegmentId) {
+      preparingRef.current = true;
+      reportActivity("buffering");
+      lastMediaTimeRef.current = null;
+      resumeAfterTransitionRef.current = true;
+      const intent = ++playIntentRef.current;
+      try { await onPreparePlayback?.(); } catch { return; }
+      if (!mountedRef.current || intent !== playIntentRef.current) return;
       pendingOffsetRef.current = 0;
       pendingOffsetSegmentRef.current = activeSegment.nextSegmentId;
       resumeAfterTransitionRef.current = true;
@@ -164,11 +218,38 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
       return;
     }
     setPlaying(false);
-    onPlaybackStateChange?.("paused");
+    reportActivity("paused");
     void onPlaybackComplete?.();
-  }, [activeSegment?.nextSegmentId, onPlaybackComplete, onPlaybackStateChange, persistProgress]);
+  }, [activeSegment?.nextSegmentId, onPlaybackComplete, onPreparePlayback, persistProgress, reportActivity]);
+
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.visibilityState !== "visible") {
+        ++playIntentRef.current;
+        preparingRef.current = false;
+        resumeAfterTransitionRef.current = false;
+        audioRef.current?.pause();
+        reportActivity("paused");
+        persistProgress({ force: true });
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, [persistProgress, reportActivity]);
+
+  useEffect(() => {
+    const monitor = window.setInterval(() => {
+      const audio = audioRef.current;
+      if (activityRef.current === "playing" && (!audio || audio.paused || audio.readyState < 3
+        || document.visibilityState !== "visible" || performance.now() - progressObservedAtRef.current > 1500)) reportActivity("buffering");
+    }, 500);
+    return () => window.clearInterval(monitor);
+  }, [reportActivity]);
 
   const stop = useCallback(() => {
+    ++playIntentRef.current;
+    preparingRef.current = false;
+    resumeAfterTransitionRef.current = false;
     audioRef.current?.pause();
     persistProgress({ force: true });
     void onStop?.();
@@ -185,7 +266,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
           <div className="listener-v2__mobile-top"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button></div>
           <div className="listener-v2__art"><BookCoverImage book={book} alt={`${presentation.title} cover`} loading="eager" fetchPriority="high" width={480} widths={[240, 360, 480]} sizes="(min-width: 768px) 230px, 48vw" allowGraphicalFallback={false} fallback="" /></div>
           <div className="listener-v2__copy"><span className="listener-v2__eyebrow">{presentation.fixture ? "Visual review preview" : "Listening experience"}</span><h1 id="listener-v2-title">{presentation.title}</h1><p>{presentation.author}</p><small>{presentation.chapterLabel}</small>{presentation.fixture && <p className="listener-v2__fixture-notice" role="status">Playback is disabled until an approved recording is available.</p>}</div>
-          {!presentation.fixture && canPlay && <audio ref={audioRef} src={activeSegment.audioUrl} preload="metadata" data-testid="listener-package-audio" data-package-version={audioManifest.packageVersion} data-segment-id={activeSegment.segmentId} onLoadedMetadata={handleLoadedMetadata} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} onPlay={() => { setPlaying(true); onPlaybackStateChange?.("playing"); }} onPause={() => { setPlaying(false); onPlaybackStateChange?.("paused"); persistProgress({ force: true }); }} onError={() => onMediaError?.()} />}
+          {!presentation.fixture && canPlay && <audio ref={audioRef} src={activeSegment.audioUrl} preload="metadata" data-testid="listener-package-audio" data-package-version={audioManifest.packageVersion} data-segment-id={activeSegment.segmentId} onLoadedMetadata={handleLoadedMetadata} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} onPlay={() => { setPlaying(true); reportActivity("buffering"); }} onWaiting={() => { lastMediaTimeRef.current = null; reportActivity("buffering"); }} onSeeking={() => { lastMediaTimeRef.current = null; reportActivity("buffering"); }} onPause={() => { setPlaying(false); reportActivity(audioRef.current?.ended || preparingRef.current || resumeAfterTransitionRef.current ? "buffering" : "paused"); persistProgress({ force: true }); }} onError={() => onMediaError?.()} />}
           {!presentation.fixture && <><div className="listener-v2__timeline"><div><span>{clock(time)}</span><input aria-label="Seek within approved audiobook" type="range" min="0" max={totalDuration || 0} step="0.1" value={Math.min(time, totalDuration || time)} onChange={(event) => seek(event.target.value)} disabled={!canPlay || !totalDuration} /><b style={{ width: `${progress}%` }} aria-hidden="true" /><span>{clock(totalDuration)}</span></div><p>{presentation.chapterLabel}</p></div>
           <div className="listener-v2__controls">{canPlay ? <><ExperienceIconButton label="Back 15 seconds" onClick={() => seek(time - 15)}><RotateCcw size={22} /><em>15</em></ExperienceIconButton><button type="button" className="listener-v2__play" onClick={togglePlayback} aria-label={playing ? "Pause approved audiobook" : "Play approved audiobook"}>{playing ? <Pause size={30} /> : <Play size={30} fill="currentColor" />}</button><ExperienceIconButton label="Forward 15 seconds" onClick={() => seek(time + 15)}><RotateCw size={22} /><em>15</em></ExperienceIconButton></> : <button type="button" className="listener-v2__authorize" onClick={onAuthorize} disabled={authorizing}>{authorizing ? "Authorizing listening…" : "Authorize Listening"}</button>}</div>
           {canPlay && <button type="button" className="listener-v2__stop" onClick={stop}>Stop listening</button>}
