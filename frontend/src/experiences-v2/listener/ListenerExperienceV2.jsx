@@ -71,8 +71,14 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   useEffect(() => {
     mountedRef.current = true;
-    return () => { mountedRef.current = false; ++playIntentRef.current; audioRef.current?.pause(); };
+    return () => { mountedRef.current = false; playIntentRef.current += 1; };
   }, []);
+
+  useEffect(() => {
+    if (!canPlay || !presentation.canRender) return undefined;
+    const audio = audioRef.current;
+    return () => { audio?.pause(); };
+  }, [canPlay, presentation.canRender]);
 
   useEffect(() => {
     if (!audioManifest?.valid) return;

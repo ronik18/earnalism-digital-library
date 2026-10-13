@@ -9,6 +9,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
   const cacheScope = useRef(authorizationScope);
   if (cacheScope.current !== authorizationScope) { cache.current.clear(); cacheScope.current = authorizationScope; }
   useLayoutEffect(() => {
+    const paginationPageBreaks = JSON.parse(pageBreaksKey);
     let cancelled = false; let timer; let generation = 0;
     const viewport = viewportRef.current; const source = sourceRef.current; const measure = measureRef.current;
     if (!viewport || !source || !measure) return undefined;
@@ -57,7 +58,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
           measure.style.fontWeight = style.fontWeight;
           const started = performance.now();
           const cached = cache.current.get(signature);
-          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, height, { cancelled: superseded, pageBreaks });
+          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, height, { cancelled: superseded, pageBreaks: paginationPageBreaks });
           const pages = typeof calculation?.then === 'function' ? await calculation : calculation;
           if (superseded()) return;
           if (!cached) {

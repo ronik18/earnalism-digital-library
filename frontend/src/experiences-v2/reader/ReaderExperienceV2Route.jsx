@@ -71,6 +71,8 @@ export default function ReaderExperienceV2Route() {
 
 function ReaderSession({ slug, user, identity, syncBalance }) {
   const [search, setSearch] = useSearchParams();
+  const setSearchRef = useRef(setSearch);
+  setSearchRef.current = setSearch;
   const navigate = useNavigate();
   const canonicalPage = pageFromSearch(search);
   const visualFixtureVariant = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" ? search.get("visual-fixture") : null;
@@ -215,7 +217,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
               setEntryRestoreTarget(index);
               const destination = new URLSearchParams(locationVersionRef.current.search);
               destination.set("p", String(index));
-              setSearch(destination, { replace: true });
+              setSearchRef.current(destination, { replace: true });
             }
           }
         }
@@ -225,7 +227,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       .catch((failure) => { if (!cancelled) { setError("This reader edition is not available."); setManifestFailureCode(failure?.readerIntegrityFailure ? 422 : failure?.response?.status || 0); } })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; controller.abort(); };
-  }, [slug, visualFixture, manifestRetry]);
+  }, [slug, visualFixture, manifestRetry, user?.id]);
 
   const persistPosition = useCallback((value) => {
     positionQueueRef.current = positionQueueRef.current.catch(() => undefined).then(async () => {
