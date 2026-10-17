@@ -1,5 +1,9 @@
 """Execute the workflow's real shell gates against disposable Git repositories."""
 import os
+import copy
+import datetime
+import json
+from unittest import mock
 from pathlib import Path
 import re
 import subprocess
@@ -16,7 +20,22 @@ REGRESSION = (ROOT / '.github/workflows/regression.yml').read_text()
 
 def step_script(name):
     block = SOURCE.split(f'      - name: {name}\n', 1)[1].split('\n      - name:', 1)[0]
-    return textwrap.dedent(block.split('        run: |\n', 1)[1]).rstrip() + '\n'
+    run = next(line.strip()[5:] for line in block.splitlines() if line.startswith('        run: '))
+    if run.startswith('*'):
+        start = SOURCE.index('        run: &' + run[1:] + ' |\n') + len('        run: &' + run[1:] + ' |\n')
+    else:
+        start = SOURCE.index('        run: ' + run + '\n', SOURCE.index(f'      - name: {name}\n')) + len('        run: ' + run + '\n')
+    lines = []
+    for line in SOURCE[start:].splitlines():
+        if line and not line.startswith('          '):
+            break
+        lines.append(line)
+    return textwrap.dedent('\n'.join(lines)).rstrip() + '\n'
+
+
+def python_gate(name):
+    script = step_script(name)
+    return script.split("python3 - <<'PYCODE'\n", 1)[1].split('\nPYCODE', 1)[0]
 
 
 class ManualReleaseWorkflowTests(unittest.TestCase):
@@ -31,21 +50,51 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.git('config', 'user.name', 'Release fixture')
         self.git('config', 'user.email', 'release@example.invalid')
         (self.repo / 'fixture.txt').write_text('repository-owned release fixture\n')
-        self.git('add', 'fixture.txt')
-        self.git('commit', '-m', 'fixture')
+        (self.repo / 'backend').mkdir()
+        (self.repo / 'backend/server.py').write_text('unchanged backend fixture\n')
+        (self.repo / 'frontend').mkdir()
+        (self.repo / 'frontend/index.html').write_text('base frontend fixture\n')
+        self.git('add', '.')
+        self.git('commit', '-m', 'backend fixture')
+        self.backend = self.git('rev-parse', 'HEAD').strip()
+        self.backend_tree = self.git('rev-parse', 'HEAD:backend').strip()
+        (self.repo / 'frontend/index.html').write_text('approved frontend fixture\n')
+        self.git('add', 'frontend')
+        self.git('commit', '-m', 'frontend artifact fixture')
+        self.frontend = self.git('rev-parse', 'HEAD').strip()
+        self.frontend_tree = self.git('rev-parse', 'HEAD^{tree}').strip()
+        (self.repo / 'controller.txt').write_text('reviewed controller fixture\n')
+        self.git('add', 'controller.txt')
+        self.git('commit', '-m', 'controller fixture')
         self.sha = self.git('rev-parse', 'HEAD').strip()
         self.git('remote', 'add', 'origin', str(self.remote))
         self.git('push', 'origin', 'main')
         self.output = self.root / 'github-output'
+        self.forbidden = self.root / 'forbidden-action.log'
+        self.bin = self.root / 'bin'
+        self.bin.mkdir()
+        for command in ('vercel', 'railway', 'npm'):
+            stub = self.bin / command
+            stub.write_text('#!/bin/bash\necho forbidden-action >> "$FORBIDDEN_ACTION_LOG"\nexit 97\n')
+            stub.chmod(0o700)
 
     def git(self, *args):
         return subprocess.run(['git', *args], cwd=self.repo, text=True, check=True, capture_output=True).stdout
 
     def execute(self, name, **overrides):
-        env = {**os.environ, 'GITHUB_REF': 'refs/heads/main', 'GITHUB_SHA': self.sha,
-               'TARGET_SHA': self.sha, 'CONFIRM_PRODUCTION': 'DEPLOY_PRODUCTION',
+        env = {'PATH': str(self.bin) + os.pathsep + os.environ['PATH'], 'HOME': str(self.root),
+               'FORBIDDEN_ACTION_LOG': str(self.forbidden),
+               'GIT_CONFIG_NOSYSTEM': '1', 'GIT_TERMINAL_PROMPT': '0',
+               'GITHUB_REPOSITORY': 'ronik18/earnalism-digital-library',
+               'GITHUB_REF': 'refs/heads/main', 'GITHUB_SHA': self.sha,
+               'CONTROLLER_SHA': self.sha, 'FRONTEND_SHA': self.frontend,
+               'FRONTEND_TREE': self.frontend_tree, 'BACKEND_SHA': self.backend,
+               'BACKEND_TREE': self.backend_tree, 'TARGET_SHA': self.frontend,
+               'CONFIRM_PRODUCTION': 'DEPLOY_PRODUCTION', 'RUNNER_TEMP': str(self.root),
+               'FRONTEND_DIR': str(self.root / 'frontend-source'),
                'GITHUB_OUTPUT': str(self.output), 'RELEASE_EVENT': 'workflow_dispatch',
-               'VERCEL_TOKEN': 'test-only', 'VERCEL_ORG_ID': 'test-only', 'VERCEL_PROJECT_ID': 'test-only',
+               'VERCEL_TOKEN': 'test-only', 'VERCEL_ORG_ID': 'test-only',
+               'VERCEL_PROJECT_ID': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
                **overrides}
         # Actions resolves this trusted event SHA before launching the shell.
         script = step_script(name).replace('${{ github.event.before }}', self.sha)
@@ -96,7 +145,6 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_push_frontend_changes_cannot_enable_manual_deployment(self):
-        (self.repo / 'frontend').mkdir()
         (self.repo / 'frontend' / 'fixture.txt').write_text('frontend fixture\n')
         self.git('add', 'frontend')
         self.git('commit', '-m', 'frontend change')
@@ -133,7 +181,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn('args=(deploy --prebuilt --prod', deploy)
         self.assertIn('python3 scripts/post_deploy_static_seo_canary.py', canary)
         self.assertIn('bash scripts/run_pr_regression.sh', REGRESSION)
-        self.assertIn('scripts/verify_vercel_packaging.py --manifest', deploy)
+        self.assertIn('scripts/verify_vercel_packaging.py\" --manifest', deploy)
         self.assertNotIn("github.event_name == 'push'", SOURCE)
         self.assertEqual(len(re.findall(r'      target_sha:|      confirm_production:', SOURCE)), 2)
 
@@ -163,13 +211,187 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
 
     def test_frontend_source_and_backend_recheck_preserved(self):
         self.assertIn('Reverify serving backend after owner approval', SOURCE)
-        self.assertIn("deployment['meta']['githubCommitSha'] == os.environ['GITHUB_SHA']", SOURCE)
+        self.assertIn("deployment['meta']['githubCommitSha'] == os.environ['FRONTEND_SHA']", SOURCE)
         self.assertIn("deployment['projectId'] == os.environ['VERCEL_PROJECT_ID']", SOURCE)
 
     def test_workflow_shell_blocks_have_valid_bash_syntax(self):
         for name in ('Verify manual release authorization and clean source', 'Recheck exact main and clean deployment source',
                      'Check Vercel deploy scope and secrets', 'Build frontend for Vercel'):
             self.assertEqual(subprocess.run(['bash', '-n'], input=step_script(name), text=True, capture_output=True).returncode, 0)
+
+    def test_actual_workflow_pins_are_not_dispatch_selectable(self):
+        self.assertIn('  FRONTEND_SHA: 7fdcf6c4649c55cf86ee51b24132f38c18885d9d', SOURCE)
+        self.assertIn('  FRONTEND_TREE: 33bf0aa1bb8604b4a40144e2f1ca60f495ff9ddb', SOURCE)
+        self.assertIn('  BACKEND_SHA: d79acb1952161cd56395e9bb4d7c1001ceaa69bb', SOURCE)
+        self.assertIn('  BACKEND_TREE: 7e9c213061d6a60a5f716756288ce10571f3f269', SOURCE)
+        self.assertEqual(SOURCE.count('--expected-sha "$BACKEND_SHA"'), 3)
+        self.assertNotIn('--expected-sha "$TARGET_SHA"', SOURCE)
+        self.assertIn('ref: ${{ env.FRONTEND_SHA }}', SOURCE)
+        self.assertIn('contents: read\n  actions: read', SOURCE)
+        self.assertNotIn('contents: write', SOURCE)
+
+    def test_distinct_controller_frontend_and_backend_admit_only_exact_pair(self):
+        self.assertEqual(len({self.sha, self.frontend, self.backend}), 3)
+        self.assertEqual(self.execute('Verify manual release authorization and clean source').returncode, 0)
+        for override in ({'TARGET_SHA': self.sha}, {'TARGET_SHA': self.backend},
+                         {'BACKEND_SHA': self.frontend}, {'BACKEND_TREE': '0' * 40},
+                         {'FRONTEND_TREE': '0' * 40}, {'CONTROLLER_SHA': self.frontend},
+                         {'BACKEND_SHA': 'main'}, {'RELEASE_EVENT': 'push'},
+                         {'GITHUB_REPOSITORY': 'other/fork'}):
+            with self.subTest(override=override):
+                self.assertNotEqual(self.execute('Verify manual release authorization and clean source', **override).returncode, 0)
+
+    def test_controller_cannot_introduce_backend_or_frontend_changes(self):
+        for path in ('backend/server.py', 'frontend/index.html'):
+            with self.subTest(path=path):
+                (self.repo / path).write_text('unapproved controller mutation\n')
+                self.git('add', path)
+                self.git('commit', '-m', 'unapproved change fixture')
+                changed = self.git('rev-parse', 'HEAD').strip()
+                self.git('push', 'origin', 'main')
+                self.assertNotEqual(self.execute('Verify manual release authorization and clean source',
+                                                GITHUB_SHA=changed, CONTROLLER_SHA=changed).returncode, 0)
+
+    def test_artifact_preparation_is_exact_and_will_not_reuse_existing_directory(self):
+        result = self.execute('Prepare exact frontend artifact source')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        artifact = self.root / 'frontend-source'
+        actual = subprocess.check_output(['git', '-C', str(artifact), 'rev-parse', 'HEAD'], text=True).strip()
+        self.assertEqual(actual, self.frontend)
+        self.assertNotEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        self.assertNotEqual(self.execute('Prepare exact frontend artifact source',
+                                        FRONTEND_DIR=str(self.root / 'bad-artifact'), FRONTEND_SHA='0' * 40).returncode, 0)
+
+    def test_build_refuses_dirty_or_wrong_artifact_before_vercel(self):
+        self.assertEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        artifact = self.root / 'frontend-source'
+        (artifact / 'frontend/index.html').write_text('tampered artifact fixture\n')
+        self.assertNotEqual(self.execute('Build frontend for Vercel').returncode, 0)
+        self.assertNotEqual(self.execute('Build frontend for Vercel', FRONTEND_SHA=self.sha).returncode, 0)
+        self.assertFalse(self.forbidden.exists(), 'Invalid artifacts must stop before any provider command')
+        self.assertIn('cd "$FRONTEND_DIR"', step_script('Build frontend for Vercel'))
+        self.assertIn('cd "$FRONTEND_DIR"', step_script('Deploy frontend to Vercel production'))
+
+    def approval(self):
+        now = datetime.datetime.now(datetime.timezone.utc)
+        # Test-only attestations: never written into real environment configuration.
+        return {'schema': 'reader-frontend-release-approval.v1', 'controller_sha': self.sha,
+                'frontend_sha': self.frontend, 'frontend_tree': self.frontend_tree, 'backend_sha': self.backend,
+                'project_id': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607', 'root_directory': 'frontend',
+                'config_path': 'frontend/vercel.json',
+                'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
+                'git_deployment_enabled': False, 'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+                'rollback_method': 'vercel-instant-rollback', 'rollback_eligible': True,
+                'frontend_backend_config_compatible': True, 'no_backend_restart': True, 'approved': True,
+                'rollback_artifact_sha256': 'a' * 64, 'rollback_config_sha256': 'b' * 64,
+                'operator_evidence_sha256': 'c' * 64, 'rollback_operator': 'synthetic-test-only-operator',
+                'approved_at': (now - datetime.timedelta(minutes=1)).isoformat(),
+                'expires_at': (now + datetime.timedelta(minutes=10)).isoformat()}
+
+    def test_missing_or_invalid_operator_approval_stops_before_artifact_and_deployment(self):
+        gate = 'Verify operator config and rollback approval'
+        self.assertNotEqual(self.execute(gate).returncode, 0)
+        valid = self.approval()
+        self.assertEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        for key, value in [('approved', False), ('controller_sha', '0' * 40), ('frontend_sha', self.sha),
+                           ('backend_sha', self.frontend), ('frontend_tree', '0' * 40),
+                           ('root_directory', ''), ('git_deployment_enabled', True),
+                           ('rollback_eligible', False), ('rollback_eligible', 'true'),
+                           ('rollback_operator', ''), ('rollback_artifact_sha256', '0' * 64),
+                           ('rollback_config_sha256', ''), ('operator_evidence_sha256', 'bad'),
+                           ('no_backend_restart', False), ('frontend_backend_config_compatible', False),
+                           ('expires_at', '2000-01-01T00:00:00+00:00')]:
+            with self.subTest(key=key):
+                altered = {**valid, key: value}
+                self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(altered)).returncode, 0)
+        self.assertLess(SOURCE.index('Verify operator config and rollback approval'), SOURCE.index('Prepare exact frontend artifact source'))
+        self.assertIn("vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || ''", SOURCE)
+        self.assertEqual(step_script(gate), step_script('Recheck operator config and rollback approval before deployment'))
+
+    def run_ci(self, mutate=None, empty=False, fail_network=False, controller_fail=False):
+        code = python_gate('Verify exact frontend review CI')
+        records = []
+        def response(request, timeout):
+            if fail_network:
+                raise OSError('synthetic unavailable CI fixture')
+            workflow = request.full_url.split('/workflows/')[1].split('/runs')[0]
+            required_sha = request.full_url.split('head_sha=')[1].split('&')[0]
+            record = {'head_sha': required_sha, 'path': '.github/workflows/' + workflow,
+                      'event': 'pull_request', 'head_repository': {'full_name': 'ronik18/earnalism-digital-library'},
+                      'run_number': 12, 'run_attempt': 1, 'status': 'completed', 'conclusion': 'success', 'id': 123}
+            if controller_fail and required_sha == self.sha:
+                record['conclusion'] = 'failure'
+            if mutate:
+                record.update(mutate)
+            records.append(request.full_url)
+            import io
+            return io.StringIO(json.dumps({'workflow_runs': [] if empty else [record]}))
+        with mock.patch.dict(os.environ, {'GITHUB_REPOSITORY': 'ronik18/earnalism-digital-library',
+                                         'FRONTEND_SHA': self.frontend, 'CONTROLLER_SHA': self.sha, 'ACTIONS_TOKEN': 'synthetic-ci-only-token'}), \
+             mock.patch('urllib.request.urlopen', side_effect=response):
+            exec(compile(code, '<actual-workflow-ci-gate>', 'exec'), {})
+        return records
+
+    def test_exact_head_ci_success_and_missing_stale_failed_or_untrusted_runs(self):
+        self.assertEqual(len(self.run_ci()), 7)
+        for altered in ({'head_sha': self.sha}, {'conclusion': 'failure'}, {'status': 'in_progress'},
+                        {'event': 'workflow_dispatch'}, {'path': '.github/workflows/unrelated.yml'},
+                        {'head_repository': {'full_name': 'other/fork'}}):
+            with self.subTest(altered=altered):
+                with self.assertRaises(SystemExit):
+                    self.run_ci(mutate=altered)
+        with self.assertRaises(SystemExit):
+            self.run_ci(empty=True)
+        with self.assertRaises(OSError):
+            self.run_ci(fail_network=True)
+        with self.assertRaises(SystemExit):
+            self.run_ci(controller_fail=True)
+        self.assertEqual(step_script('Verify exact frontend review CI'),
+                         step_script('Recheck exact frontend review CI before deployment'))
+
+    def test_wrong_destination_and_incomplete_credentials_fail_closed(self):
+        self.assertNotEqual(self.execute('Check Vercel deploy scope and secrets', VERCEL_PROJECT_ID='other').returncode, 0)
+        for key in ('VERCEL_TOKEN', 'VERCEL_ORG_ID', 'VERCEL_PROJECT_ID'):
+            with self.subTest(key=key):
+                self.assertNotEqual(self.execute('Check Vercel deploy scope and secrets', **{key: ''}).returncode, 0)
+
+    def test_all_run_steps_have_valid_shell_and_inline_python(self):
+        for name in re.findall(r'^      - name: (.+)$', SOURCE, re.M):
+            block = SOURCE.split(f'      - name: {name}\n', 1)[1].split('\n      - name:', 1)[0]
+            if '        run: ' not in block:
+                continue
+            script = step_script(name)
+            with self.subTest(name=name):
+                syntax = subprocess.run(['bash', '-n'], input=script, text=True, capture_output=True)
+                self.assertEqual(syntax.returncode, 0, syntax.stderr)
+                for code in re.findall(r"python3 - <<'PYCODE'\n(.*?)\nPYCODE", script, re.S):
+                    compile(code, '<actual-inline-python>', 'exec')
+
+
+    def test_deployed_artifact_identity_must_match_all_three_bindings(self):
+        script = step_script('Deploy frontend to Vercel production')
+        code = script.rsplit("python3 - <<'PY'\n", 1)[1].split('\nPY', 1)[0]
+        env = {'RUNNER_TEMP': str(self.root), 'VERCEL_PROJECT_ID': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
+               'FRONTEND_SHA': self.frontend, 'CONTROLLER_SHA': self.sha, 'BACKEND_SHA': self.backend}
+        deployment = {'id': 'synthetic-deployment-only', 'projectId': env['VERCEL_PROJECT_ID'],
+                      'target': 'production', 'readyState': 'READY',
+                      'meta': {'githubCommitSha': self.frontend, 'readerControllerSha': self.sha,
+                               'readerBackendSha': self.backend}}
+        def execute(value):
+            (self.root / 'frontend-deployment.json').write_text(json.dumps(value))
+            with mock.patch.dict(os.environ, env):
+                exec(compile(code, '<actual-deployed-artifact-gate>', 'exec'), {})
+        execute(deployment)
+        for key, value in [('projectId', 'wrong-project'), ('target', 'preview'), ('readyState', 'ERROR')]:
+            with self.subTest(key=key), self.assertRaises(AssertionError):
+                execute({**deployment, key: value})
+        for key in ('githubCommitSha', 'readerControllerSha', 'readerBackendSha'):
+            altered = copy.deepcopy(deployment)
+            altered['meta'][key] = '0' * 40
+            with self.subTest(key=key), self.assertRaises(AssertionError):
+                execute(altered)
+        for flag in ('githubCommitSha=$FRONTEND_SHA', 'readerControllerSha=$CONTROLLER_SHA', 'readerBackendSha=$BACKEND_SHA'):
+            self.assertIn(flag, script)
 
 
 if __name__ == '__main__':
