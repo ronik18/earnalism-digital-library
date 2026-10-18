@@ -1,10 +1,10 @@
-name: Exact-main owner-held frontend production release
+name: Exact-artifact owner-held frontend production release
 
 on:
   workflow_dispatch:
     inputs:
       target_sha:
-        description: Exact merged current main SHA
+        description: Approved immutable frontend artifact SHA (b2abea1)
         required: true
         type: string
       confirm_production:
@@ -14,6 +14,19 @@ on:
 
 permissions:
   contents: read
+  actions: read
+
+# Artifact identity is independent of the reviewed current-main release controller.
+# Changing these pins requires a new reviewed release contract, not dispatch input.
+env:
+  FRONTEND_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252
+  FRONTEND_TREE: 1ad8fc5f5cf643b9407b43cd413e5f6ce8a2ec32
+  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83
+  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c
+  CONTROLLER_SHA: ${{ github.sha }}
+  TARGET_SHA: ${{ inputs.target_sha }}
+  CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+  RELEASE_EVENT: ${{ github.event_name }}
 
 defaults:
   run:
@@ -33,26 +46,32 @@ jobs:
       - name: Checkout exact target
         uses: actions/checkout@v6
         with:
-          ref: ${{ inputs.target_sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Verify manual release authorization and clean source
-        shell: bash
-        env:
-          TARGET_SHA: ${{ inputs.target_sha }}
-          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
-        run: |
+        run: &controller_source_gate |
           set -euo pipefail
-          [[ "${GITHUB_REF}" == 'refs/heads/main' ]] || exit 1
-          [[ "${CONFIRM_PRODUCTION}" == 'DEPLOY_PRODUCTION' ]] || exit 1
-          [[ "${TARGET_SHA}" =~ ^[0-9a-f]{40}$ ]] || exit 1
-          [[ "${TARGET_SHA}" == "${GITHUB_SHA}" ]] || exit 1
-          git fetch origin main
-          [[ "${TARGET_SHA}" == "$(git rev-parse origin/main)" ]] || exit 1
-          git cat-file -e "${TARGET_SHA}^{commit}"
-          [[ "$(git rev-parse HEAD)" == "${TARGET_SHA}" ]] || exit 1
+          [[ "$RELEASE_EVENT" == 'workflow_dispatch' && "$GITHUB_REF" == 'refs/heads/main' ]] || exit 1
+          [[ "$GITHUB_REPOSITORY" == 'ronik18/earnalism-digital-library' ]] || exit 1
+          [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          for value in "$TARGET_SHA" "$FRONTEND_SHA" "$FRONTEND_TREE" "$BACKEND_SHA" "$BACKEND_TREE" "$CONTROLLER_SHA"; do
+            [[ "$value" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          done
+          [[ "$TARGET_SHA" == "$FRONTEND_SHA" && "$GITHUB_SHA" == "$CONTROLLER_SHA" ]] || exit 1
+          [[ "$BACKEND_SHA" != "$FRONTEND_SHA" && "$FRONTEND_SHA" != "$CONTROLLER_SHA" && "$BACKEND_SHA" != "$CONTROLLER_SHA" ]] || exit 1
+          git fetch --no-tags origin main
+          git fetch --no-tags origin "$FRONTEND_SHA"
+          [[ "$CONTROLLER_SHA" == "$(git rev-parse origin/main)" && "$CONTROLLER_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
           [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
-          echo "RELEASE_SOURCE_SHA=${TARGET_SHA}"
+          git merge-base --is-ancestor "$BACKEND_SHA" "$FRONTEND_SHA"
+          git merge-base --is-ancestor "$FRONTEND_SHA" "$CONTROLLER_SHA"
+          [[ "$(git rev-parse "$FRONTEND_SHA^{tree}")" == "$FRONTEND_TREE" ]] || exit 1
+          [[ "$(git rev-parse "$BACKEND_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
+          [[ "$(git rev-parse "$FRONTEND_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
+          [[ "$(git rev-parse "$CONTROLLER_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
+          [[ "$(git rev-parse "$CONTROLLER_SHA:frontend")" == "$(git rev-parse "$FRONTEND_SHA:frontend")" ]] || exit 1
+          echo "CONTROLLER_SHA=$CONTROLLER_SHA FRONTEND_SHA=$FRONTEND_SHA BACKEND_SHA=$BACKEND_SHA"
           echo 'RELEASE_SOURCE_CLEAN=YES'
 
       - name: Set up Node
@@ -73,10 +92,9 @@ jobs:
       - name: Verify actual HTTP and provider serving identity
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          TARGET_SHA: ${{ inputs.target_sha }}
         run: |
           set -euo pipefail
-          python scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+          python scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -118,26 +136,99 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.target_sha || github.sha }}
+          ref: ${{ github.sha }}
 
       - name: Recheck exact main and clean deployment source
-        if: github.event_name == 'workflow_dispatch'
-        shell: bash
+        run: *controller_source_gate
+
+      # Empty until existing authorized operators supply real config/rollback receipts.
+      # This variable is an operator attestation, not automatic live provider verification.
+      - name: Verify operator config and rollback approval
         env:
-          TARGET_SHA: ${{ inputs.target_sha }}
-          CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
+        run: &operator_approval_gate |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import datetime, hashlib, json, os, re
+          r = json.loads(os.environ.get('RELEASE_APPROVAL_JSON', ''))
+          expected = {
+              'schema': 'reader-frontend-release-approval.v1',
+              'controller_sha': os.environ['CONTROLLER_SHA'],
+              'frontend_sha': os.environ['FRONTEND_SHA'],
+              'frontend_tree': os.environ['FRONTEND_TREE'],
+              'backend_sha': os.environ['BACKEND_SHA'],
+              'project_id': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
+              'root_directory': 'frontend',
+              'config_path': 'frontend/vercel.json',
+              'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
+              'git_deployment_enabled': False,
+              'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+              'rollback_method': 'vercel-instant-rollback',
+              'rollback_eligible': True,
+              'frontend_backend_config_compatible': True,
+              'no_backend_restart': True,
+              'approved': True,
+          }
+          for key, value in expected.items():
+              if type(r.get(key)) is not type(value) or r[key] != value:
+                  raise SystemExit('Release operator receipt binding mismatch: ' + key)
+          for key in ('rollback_artifact_sha256', 'rollback_config_sha256', 'operator_evidence_sha256'):
+              if not re.fullmatch(r'[0-9a-f]{64}', r.get(key, '')) or r[key] == '0' * 64:
+                  raise SystemExit('Missing retained artifact/config/operator evidence digest')
+          if not isinstance(r.get('rollback_operator'), str) or not r['rollback_operator'].strip():
+              raise SystemExit('Missing authorized rollback operator')
+          now = datetime.datetime.now(datetime.timezone.utc)
+          issued = datetime.datetime.fromisoformat(r['approved_at'])
+          expires = datetime.datetime.fromisoformat(r['expires_at'])
+          if issued.tzinfo is None or expires.tzinfo is None or not issued <= now < expires or expires - issued > datetime.timedelta(hours=24):
+              raise SystemExit('Release approval missing, expired or overlong')
+          print('RELEASE_OPERATOR_RECEIPT_SHA256=' + hashlib.sha256(os.environ['RELEASE_APPROVAL_JSON'].encode()).hexdigest())
+          PYCODE
+
+      - name: Verify exact frontend review CI
+        env:
+          ACTIONS_TOKEN: ${{ github.token }}
+        run: &frontend_ci_gate |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json, os, urllib.request
+          repo = os.environ['GITHUB_REPOSITORY']
+          if repo != 'ronik18/earnalism-digital-library':
+              raise SystemExit('Wrong release repository')
+          # Native GitHub Actions API, bounded to the six existing required review workflows.
+          workflows = ['blog-reader-owner-evidence.yml', 'earnalism-coordination-bridge.yml',
+                       'pr469-postmerge-recovery-owner-evidence.yml', 'public-pages-owner-review.yml',
+                       'regression.yml', 'seamless-brand-owner-review.yml']
+          for required_sha, required_workflows in [(os.environ['FRONTEND_SHA'], workflows),
+                                                   (os.environ['CONTROLLER_SHA'], ['regression.yml'])]:
+              for workflow in required_workflows:
+                  url = ('https://api.github.com/repos/' + repo + '/actions/workflows/' + workflow +
+                         '/runs?head_sha=' + required_sha + '&per_page=100')
+                  request = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['ACTIONS_TOKEN'],
+                                                                'Accept': 'application/vnd.github+json'})
+                  with urllib.request.urlopen(request, timeout=20) as response:
+                      runs = json.load(response)['workflow_runs']
+                  relevant = [run for run in runs if run.get('head_sha') == required_sha
+                              and run.get('path', '').split('@')[0] == '.github/workflows/' + workflow
+                              and run.get('event') == 'pull_request'
+                              and run.get('head_repository', {}).get('full_name') == repo]
+                  if not relevant:
+                      raise SystemExit('Exact frontend review CI unavailable: ' + workflow)
+                  latest = max(relevant, key=lambda run: (run['run_number'], run.get('run_attempt', 1)))
+                  if latest.get('status') != 'completed' or latest.get('conclusion') != 'success':
+                      raise SystemExit('Latest exact frontend review CI not successful: ' + workflow)
+                  print('RELEASE_CI_SHA=' + required_sha + ' WORKFLOW=' + workflow + ' RUN=' + str(latest['id']))
+          PYCODE
+
+      - name: Prepare exact frontend artifact source
         run: |
           set -euo pipefail
-          [[ "${CONFIRM_PRODUCTION}" == 'DEPLOY_PRODUCTION' ]] || exit 1
-          [[ "${TARGET_SHA}" =~ ^[0-9a-f]{40}$ ]] || exit 1
-          [[ "${TARGET_SHA}" == "${GITHUB_SHA}" ]] || exit 1
-          git fetch origin main
-          [[ "${TARGET_SHA}" == "$(git rev-parse origin/main)" ]] || exit 1
-          git cat-file -e "${TARGET_SHA}^{commit}"
-          [[ "$(git rev-parse HEAD)" == "${TARGET_SHA}" ]] || exit 1
-          [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
-          echo "BUILD_SHA=${TARGET_SHA}"
-          echo 'BUILD_SOURCE_CLEAN=YES'
+          FRONTEND_DIR="$RUNNER_TEMP/reader-frontend-source"
+          printf 'FRONTEND_DIR=%s\n' "$FRONTEND_DIR" >> "$GITHUB_ENV"
+          [[ ! -e "$FRONTEND_DIR" ]] || exit 1
+          git worktree add --detach "$FRONTEND_DIR" "$FRONTEND_SHA"
+          [[ "$(git -C "$FRONTEND_DIR" rev-parse HEAD)" == "$FRONTEND_SHA" ]] || exit 1
+          [[ -z "$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)" ]] || exit 1
 
       - name: Check Vercel deploy scope and secrets
         id: vercel-check
@@ -146,16 +237,16 @@ jobs:
           RELEASE_EVENT: ${{ github.event_name }}
         run: |
           [[ "${RELEASE_EVENT}" == 'workflow_dispatch' ]] || exit 1
+          [[ "${VERCEL_PROJECT_ID}" == 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607' ]] || exit 1
           [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]] || { echo 'Required production deployment credentials unavailable' >&2; exit 1; }
           echo "enabled=true" >> "${GITHUB_OUTPUT}"
 
       - name: Reverify serving backend after owner approval
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          TARGET_SHA: ${{ inputs.target_sha }}
         run: |
           npm install -g @railway/cli@5.64.2
-          python3 scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -175,6 +266,8 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         run: |
+          set -euo pipefail
+          cd "$FRONTEND_DIR"
           mkdir -p .vercel
           node - <<'NODE'
           const fs = require('fs');
@@ -192,6 +285,8 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         run: |
+          set -euo pipefail
+          cd "$FRONTEND_DIR"
           args=(pull --yes --environment=production)
           if [[ -n "${VERCEL_SCOPE}" ]]; then
             args+=(--scope "${VERCEL_SCOPE}")
@@ -202,12 +297,12 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         run: |
-          if [[ "${GITHUB_EVENT_NAME}" == 'workflow_dispatch' ]]; then
-            [[ "$(git rev-parse HEAD)" == "${GITHUB_SHA}" ]] || exit 1
-            [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
-            echo "BUILD_SHA=${GITHUB_SHA}"
-            echo 'BUILD_SOURCE_CLEAN=YES'
-          fi
+          set -euo pipefail
+          [[ "$(git -C "$FRONTEND_DIR" rev-parse HEAD)" == "$FRONTEND_SHA" ]] || exit 1
+          [[ -z "$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)" ]] || exit 1
+          echo "BUILD_SHA=$FRONTEND_SHA"
+          echo 'BUILD_SOURCE_CLEAN=YES'
+          cd "$FRONTEND_DIR"
           rm -rf .vercel/output
           args=(build --prod --yes)
           if [[ -n "${VERCEL_SCOPE}" ]]; then
@@ -220,10 +315,11 @@ jobs:
         shell: bash
         run: |
           python3 -m unittest scripts.test_verify_vercel_packaging -v
+          cd "$FRONTEND_DIR"
           vercel deploy --dry --format=json > /tmp/vercel-source-manifest.json
-          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
           vercel deploy --prebuilt --prod --dry --format=json > /tmp/vercel-prebuilt-manifest.json
-          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
+          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
 
       - name: Publish function packaging evidence
         if: steps.vercel-check.outputs.enabled == 'true'
@@ -234,21 +330,37 @@ jobs:
             /tmp/vercel-source-packaging.json
             /tmp/vercel-prebuilt-packaging.json
 
+      - name: Recheck controller and artifact authorization before deployment
+        run: *controller_source_gate
+
+      - name: Recheck operator config and rollback approval before deployment
+        env:
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
+        run: *operator_approval_gate
+
+      - name: Recheck exact frontend review CI before deployment
+        env:
+          ACTIONS_TOKEN: ${{ github.token }}
+        run: *frontend_ci_gate
+
       - name: Deploy frontend to Vercel production
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          TARGET_SHA: ${{ inputs.target_sha }}
         run: |
-          git fetch origin main
-          [[ "$TARGET_SHA" == "$(git rev-parse origin/main)" && "$TARGET_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
-          python3 scripts/verify_backend_release.py --expected-sha "$TARGET_SHA" \
+          set -euo pipefail
+          [[ "$(git -C "$FRONTEND_DIR" rev-parse HEAD)" == "$FRONTEND_SHA" ]] || exit 1
+          [[ -z "$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)" ]] || exit 1
+          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
             --backend-url https://api.theearnalism.com
-          args=(deploy --prebuilt --prod)
+          git fetch --no-tags origin main
+          [[ "$CONTROLLER_SHA" == "$(git rev-parse origin/main)" && "$CONTROLLER_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
+          cd "$FRONTEND_DIR"
+          args=(deploy --prebuilt --prod --meta "githubCommitSha=$FRONTEND_SHA" --meta "readerControllerSha=$CONTROLLER_SHA" --meta "readerBackendSha=$BACKEND_SHA")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
             args+=(--scope "${VERCEL_SCOPE}")
           fi
@@ -270,7 +382,9 @@ jobs:
           deployment = json.loads((Path(os.environ['RUNNER_TEMP']) / 'frontend-deployment.json').read_text())
           assert deployment['projectId'] == os.environ['VERCEL_PROJECT_ID']
           assert deployment['target'] == 'production' and deployment['readyState'] == 'READY'
-          assert deployment['meta']['githubCommitSha'] == os.environ['GITHUB_SHA']
+          assert deployment['meta']['githubCommitSha'] == os.environ['FRONTEND_SHA']
+          assert deployment['meta']['readerControllerSha'] == os.environ['CONTROLLER_SHA']
+          assert deployment['meta']['readerBackendSha'] == os.environ['BACKEND_SHA']
           print(json.dumps({'frontend_deployment': deployment['id'], 'source_sha': deployment['meta']['githubCommitSha'], 'status': 'PASS'}))
           PY
 
@@ -291,7 +405,7 @@ jobs:
       - name: Checkout deployed frontend commit
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ env.FRONTEND_SHA }}
 
       - name: Set up Node
         uses: actions/setup-node@v6
@@ -320,7 +434,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: frontend-production-canary-${{ github.sha }}
+          name: frontend-production-canary-${{ env.FRONTEND_SHA }}-controller-${{ github.sha }}
           path: |
             output/launch/post_deploy_route_canary.*
             output/launch/post_deploy_static_seo_canary.*
