@@ -27,6 +27,20 @@ export function readerSourceText(html) {
   return fragment.textContent;
 }
 
+// Derived only from the already authorized source; canonical HTML and admission
+// remain unchanged.
+export function readerIndexBoundary(html = '') {
+  if (typeof document === 'undefined') return null;
+  const source = readableFragment(html);
+  const heading = [...source.querySelectorAll('p,h1,h2,h3,h4,h5,h6')]
+    .find(node => node.textContent.trim() === 'INDEX');
+  if (!heading) return null;
+  const range = document.createRange();
+  range.selectNodeContents(source);
+  range.setEndBefore(heading);
+  return { title: 'Index', offset: range.cloneContents().textContent.length };
+}
+
 // Display-only balanced emphasis. Hidden marker nodes retain canonical text offsets
 // and reconstruction in the measured DOM, while being absent visually and to AT.
 export function inlineEmphasis(value, key = "inline") {

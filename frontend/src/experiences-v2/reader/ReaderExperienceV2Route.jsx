@@ -71,10 +71,18 @@ export default function ReaderExperienceV2Route() {
 
 function ReaderSession({ slug, user, identity, syncBalance }) {
   const [search, setSearch] = useSearchParams();
+  const setSearchRef = useRef(setSearch);
+  setSearchRef.current = setSearch;
   const navigate = useNavigate();
   const canonicalPage = pageFromSearch(search);
   const visualFixtureVariant = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" ? search.get("visual-fixture") : null;
   const visualFixture = visualFixtureVariant === "1" || visualFixtureVariant === "bn";
+  const entryRestorePendingRef = useRef(Boolean(user) && !visualFixture && !["p", "a", "r"].some(key => search.has(key)));
+  const [entryRestoreTarget, setEntryRestoreTarget] = useState(null);
+  const entryReady = entryRestoreTarget === null || canonicalPage === entryRestoreTarget;
+  useEffect(() => {
+    if (entryRestoreTarget !== null && ["p", "a", "r"].some(key => search.has(key))) setEntryRestoreTarget(null);
+  }, [search, entryRestoreTarget]);
   const [manifest, setManifest] = useState(null);
   const previewLimit = Number(manifest?.canonical_pages?.preview_policy?.public_limit || PREVIEW_PAGES);
   const entryRef = useRef(null);
@@ -89,6 +97,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const [lease, setLease] = useState(null);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [sessionConflict, setSessionConflict] = useState(false);
   const [balance, setBalance] = useState(null);
   const signedIn = Boolean(user);
   // Public/guest manifests can be cached independently of the customer. Only
@@ -185,16 +194,40 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     setError("");
     const manifestStarted = performance.now();
     userApi.get(readerManifestPath(slug), { signal: controller.signal, timeout: 15000 })
-      .then(({ data }) => {
+      .then(async ({ data }) => {
         if (cancelled) return;
         if (data?.book?.slug !== slug) throw Object.assign(new Error("This reader edition does not match the requested book."), { readerIntegrityFailure: true });
+        if (entryRestorePendingRef.current && !["p", "a", "r"].some(key => new URLSearchParams(locationVersionRef.current.search).has(key))) {
+          const locationVersion = locationVersionRef.current.version;
+          let saved;
+          try { saved = await getReadingPassPosition({ contentType: "text", contentId: slug }); } catch (_) { /* Public entry remains available without saved metadata. */ }
+          if (cancelled) return;
+          entryRestorePendingRef.current = false;
+          if (locationVersion === locationVersionRef.current.version) {
+            const position = saved?.position;
+            const index = position?.canonical_page_index;
+            const pages = data.canonical_pages;
+            const row = pages?.pages?.find(value => value.page_number === index);
+            const sameReader = saved?.user_id === user?.id && saved?.content_type === "text" && saved?.content_id === slug;
+            if (sameReader) positionVersionRef.current = positionVersion(saved.version);
+            if (sameReader && saved.publication_version_compatibility === "active" && position?.publication_version_state === "bound"
+                && Number.isSafeInteger(index) && index > 0 && index <= pages?.page_count && row
+                && position.chapter_id === row.chapter_id && pages.schema_version && pages.content_revision
+                && position.segmentation_version === pages.schema_version && position.manifest_version === pages.content_revision) {
+              setEntryRestoreTarget(index);
+              const destination = new URLSearchParams(locationVersionRef.current.search);
+              destination.set("p", String(index));
+              setSearchRef.current(destination, { replace: true });
+            }
+          }
+        }
         setManifestMs(performance.now() - manifestStarted);
         setManifest(data);
       })
       .catch((failure) => { if (!cancelled) { setError("This reader edition is not available."); setManifestFailureCode(failure?.readerIntegrityFailure ? 422 : failure?.response?.status || 0); } })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; controller.abort(); };
-  }, [slug, visualFixture, manifestRetry]);
+  }, [slug, visualFixture, manifestRetry, user?.id]);
 
   const persistPosition = useCallback((value) => {
     positionQueueRef.current = positionQueueRef.current.catch(() => undefined).then(async () => {
@@ -363,7 +396,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   // versions, expiry, sequence and balance never refetch the same page.
   const pageSessionKey = usable ? sessionId : "";
   useEffect(() => {
-    if (visualFixture || !manifest || !enabled || !validPage || (canonicalPage > previewLimit && !pageSessionKey)) return undefined;
+    if (visualFixture || !entryReady || !manifest || !enabled || !validPage || (canonicalPage > previewLimit && !pageSessionKey)) return undefined;
     const controller = new AbortController();
     let cancelled = false;
     windowRef.current = null;
@@ -411,7 +444,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     // URL offsets and transport indexes inside this window do not start a new
     // download. Lease rotations are handled by the existing heartbeat/expiry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture]);
+  }, [entryReady, windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture]);
 
   const changePage = useCallback((nextPage, visualAnchor = 0, anchorRevision) => {
     visualNavigationRef.current = "";
@@ -422,7 +455,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     setSearch(params, { replace: false });
   }, [search, setSearch]);
 
-  const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision) => {
+  const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision, transfer = false) => {
     if (!Number.isInteger(nextPage) || nextPage < 1 || nextPage > totalPages || actionRef.current) return;
     if (nextPage > previewLimit && !user) {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
@@ -442,7 +475,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         if (!await settleLease("reader_v2_preview")) throw new Error("Your reading session could not be closed. Please retry.");
       } else if (!runningLease(leaseRef.current)) {
         if (!await settleLease("reader_v2_reauthorize")) throw new Error("Your reading session could not be closed. Please retry.");
-        const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage });
+        const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage, ...(transfer ? { transfer: true } : {}) });
         if (!aliveRef.current || locationVersionRef.current.version !== intentVersion) {
           if (started?.session_id) void endReadingPassSession({ sessionId: started.session_id }, "reader_v2_start_after_exit").catch(() => undefined);
           return;
@@ -456,6 +489,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         // URL commits. Do not settle the lease just issued for that transition.
         pendingPageRef.current = nextPage;
         publishLease(nextLease);
+        setSessionConflict(false);
         lastActivityRef.current = Date.now();
       }
       if (!aliveRef.current || locationVersionRef.current.version !== intentVersion) return;
@@ -463,6 +497,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       if (nextPage === canonicalPage) setRetry((value) => value + 1);
       else changePage(nextPage, visualAnchor, anchorRevision);
     } catch (requestError) {
+      if (aliveRef.current) setSessionConflict(requestError?.response?.data?.detail?.code === "SESSION_ACTIVE_ELSEWHERE");
       if (aliveRef.current) setError(requestMessage(requestError, requestError.message || (freeReading ? "Free Reader access could not be verified." : "A current Reading Pass is required to continue.")));
     } finally {
       actionRef.current = false;
@@ -574,6 +609,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       transportChunkCount: windowAuthorized ? chapterWindow.sources.length : 0,
       assemblyMetrics: windowAuthorized ? { manifestMs, fetchMs: chapterWindow.fetchMs, networkMs: chapterWindow.networkMs, verificationMs: chapterWindow.verificationMs, assemblyMs: chapterWindow.assemblyMs } : null,
       sourceRevision: windowAuthorized ? chapterWindow.revision : '',
+      // Keep the public/protected boundary identical before and after authorization.
+      // These offsets come from verified sanitized chapter sources, never raw HTML.
+      pageBreaks: windowAuthorized && chapterWindow.sources.some(item => item.page > previewLimit)
+        ? chapterWindow.sources.filter(item => item.page === previewLimit && item.end > 0)
+          .map(item => ({ offset: item.end, media: item.mediaEnd }))
+        : [],
       windowFirst: windowAuthorized ? chapterWindow.plan.first : canonicalPage,
       windowLast: windowAuthorized ? chapterWindow.plan.last : canonicalPage,
       previousWindow: windowAuthorized ? chapterWindow.plan.previous : null,
@@ -627,6 +668,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     {!manifest && !loading && <button type="button" onClick={() => setManifestRetry((value) => value + 1)}>Retry reader</button>}
     {!user && canonicalPage > previewLimit && <Link data-testid="reader-recovery-sign-in" to={`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`}>Sign in to continue</Link>}
     {validPage && enabled && (canonicalPage <= previewLimit || user) && <button type="button" data-testid="reader-authorize-chapter" onClick={() => authorizeAndContinue(canonicalPage)} disabled={busy}>{busy ? "Opening page…" : canonicalPage <= previewLimit ? "Retry page" : "Continue to this page"}</button>}
+    {sessionConflict && user && validPage && canonicalPage > previewLimit && <div role="status">
+      <p>Continuing here ends your other active reading session.</p>
+      <button type="button" onClick={() => authorizeAndContinue(canonicalPage, 0, undefined, true)} disabled={busy}>Continue on this device</button>
+    </div>}
     {user && !freeReading && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
     {notice && <p role="status">{notice}</p>}
   </>;
@@ -647,7 +692,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     }} />;
   }
   const opening = <ReaderOpening onEscapeFocus={(focused) => { openingFocusRef.current = focused; }} book={manifest?.book} onLibrary={() => navigateAfterSettlement("library")} busy={busy} />;
-  if (loading) return opening;
+  if (loading || !entryReady) return opening;
   if (error && !page && (manifestFailureCode === 0 || manifestFailureCode >= 500 || pageResult?.statusCode >= 500)) return <ReaderOpening book={manifest?.book} failed onLibrary={() => navigateAfterSettlement("library")} onRetry={() => manifest ? setRetry((value) => value + 1) : setManifestRetry((value) => value + 1)} busy={busy} />;
   if (error && !page) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
