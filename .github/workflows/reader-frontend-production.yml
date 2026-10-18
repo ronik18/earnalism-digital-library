@@ -317,9 +317,9 @@ jobs:
           python3 -m unittest scripts.test_verify_vercel_packaging -v
           cd "$FRONTEND_DIR"
           vercel deploy --dry --format=json > /tmp/vercel-source-manifest.json
-          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --root "$FRONTEND_DIR" --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
           vercel deploy --prebuilt --prod --dry --format=json > /tmp/vercel-prebuilt-manifest.json
-          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
+          python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --root "$FRONTEND_DIR" --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
 
       - name: Publish function packaging evidence
         if: steps.vercel-check.outputs.enabled == 'true'

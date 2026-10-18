@@ -3,6 +3,9 @@ import os
 import copy
 import datetime
 import json
+import hashlib
+import shlex
+import shutil
 from unittest import mock
 from pathlib import Path
 import re
@@ -211,7 +214,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn('args=(deploy --prebuilt --prod', deploy)
         self.assertIn('python3 scripts/post_deploy_static_seo_canary.py', canary)
         self.assertIn('bash scripts/run_pr_regression.sh', REGRESSION)
-        self.assertIn('scripts/verify_vercel_packaging.py\" --manifest', deploy)
+        self.assertIn('scripts/verify_vercel_packaging.py\" --root "$FRONTEND_DIR" --manifest', deploy)
         self.assertNotIn("github.event_name == 'push'", SOURCE)
         self.assertEqual(len(re.findall(r'      target_sha:|      confirm_production:', SOURCE)), 2)
 
@@ -425,6 +428,134 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                 execute(altered)
         for flag in ('githubCommitSha=$FRONTEND_SHA', 'readerControllerSha=$CONTROLLER_SHA', 'readerBackendSha=$BACKEND_SHA'):
             self.assertIn(flag, script)
+
+
+class ArtifactPackagingRootTests(unittest.TestCase):
+    """Run both real workflow calls with separately located controller and build."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix='earnalism packaging roots ')
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.controller = self.root / 'controller checkout'
+        self.artifact = self.root / 'frontend artifact checkout'
+        config = {'functions': {'api/journal-page.js': {
+            'includeFiles': 'build/journal-app-shell.html'}}}
+        for root in (self.controller, self.artifact):
+            (root / 'frontend').mkdir(parents=True)
+            (root / 'frontend/vercel.json').write_text(json.dumps(config))
+        (self.controller / 'scripts').mkdir()
+        shutil.copyfile(ROOT / 'scripts/verify_vercel_packaging.py',
+                        self.controller / 'scripts/verify_vercel_packaging.py')
+        self.asset = self.artifact / 'frontend/build/journal-app-shell.html'
+        self.asset.parent.mkdir()
+        self.asset.write_text('<html>actual built artifact fixture</html>')
+        self.output = self.artifact / '.vercel/output'
+        self.function = self.output / 'functions/journal.func'
+        self.function.mkdir(parents=True)
+        (self.output / 'config.json').write_text('{}')
+        self.trace = self.function / '.vc-config.json'
+        self.trace.write_text('{}')
+        self.link = self.function / 'shell'
+        self.link.symlink_to(self.asset)
+        self.source_manifest = self.root / 'source manifest.json'
+        self.prebuilt_manifest = self.root / 'prebuilt manifest.json'
+        self.source_report = self.root / 'source report.json'
+        self.prebuilt_report = self.root / 'prebuilt report.json'
+        manifest = {'files': [{'path': 'frontend/build/journal-app-shell.html'}]}
+        for path in (self.source_manifest, self.prebuilt_manifest):
+            path.write_text(json.dumps(manifest))
+        script = step_script('Verify source and prebuilt function packaging')
+        self.calls = [line for line in script.splitlines()
+                      if line.startswith('python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py"')]
+
+    def execute(self, index, *, explicit_root=True, root=None):
+        command = self.calls[index]
+        if not explicit_root:
+            command = command.replace(' --root "$FRONTEND_DIR"', '')
+        paths = {'/tmp/vercel-source-manifest.json': self.source_manifest,
+                 '/tmp/vercel-prebuilt-manifest.json': self.prebuilt_manifest,
+                 '/tmp/vercel-source-packaging.json': self.source_report,
+                 '/tmp/vercel-prebuilt-packaging.json': self.prebuilt_report}
+        for original, path in paths.items():
+            command = command.replace(original, shlex.quote(str(path)))
+        return subprocess.run(['bash', '-eu', '-c', command], cwd=self.artifact,
+                              env={**os.environ, 'GITHUB_WORKSPACE': str(self.controller),
+                                   'FRONTEND_DIR': str(root or self.artifact)},
+                              text=True, capture_output=True)
+
+    def test_both_workflow_calls_bind_exact_root_and_keep_comparison(self):
+        self.assertEqual(len(self.calls), 2)
+        for line in self.calls:
+            args = shlex.split(line)
+            self.assertEqual(args[:4], ['python3', '$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py',
+                                       '--root', '$FRONTEND_DIR'])
+            self.assertEqual(args.count('--root'), 1)
+        self.assertIn('--prebuilt --compare /tmp/vercel-source-packaging.json', self.calls[1])
+        self.assertNotIn('--prebuilt', self.calls[0])
+
+    def test_controller_default_fails_but_real_workflow_calls_accept_space_paths(self):
+        result = self.execute(0, explicit_root=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('missing includeFiles asset build/journal-app-shell.html', result.stderr)
+        for index in (0, 1):
+            result = self.execute(index)
+            self.assertEqual(result.returncode, 0, result.stderr)
+        source = json.loads(self.source_report.read_text())['required_assets']
+        prebuilt = json.loads(self.prebuilt_report.read_text())['required_assets']
+        self.assertEqual(source, prebuilt)
+        self.assertEqual(source['frontend/build/journal-app-shell.html'],
+                         hashlib.sha256(self.asset.read_bytes()).hexdigest())
+
+    def test_stale_controller_asset_cannot_mask_wrong_prebuilt_root_or_tampering(self):
+        stale = self.controller / 'frontend/build/journal-app-shell.html'
+        stale.parent.mkdir()
+        stale.write_text('<html>plausible stale controller asset</html>')
+        stale_output = self.controller / '.vercel/output'
+        (stale_output / 'functions/stale.func').mkdir(parents=True)
+        (stale_output / 'config.json').write_text('{}')
+        self.assertEqual(self.execute(0).returncode, 0)
+        wrong = self.execute(1, root=self.controller)
+        self.assertNotEqual(wrong.returncode, 0)
+        self.assertIn('source/prebuilt critical asset differs', wrong.stderr)
+        self.asset.write_text('<html>tampered actual artifact</html>')
+        changed = self.execute(1)
+        self.assertNotEqual(changed.returncode, 0)
+        self.assertIn('source/prebuilt critical asset differs', changed.stderr)
+
+    def test_missing_asset_or_unselected_build_file_still_fails(self):
+        self.asset.unlink()
+        self.assertNotEqual(self.execute(0).returncode, 0)
+        self.asset.write_text('restored fixture')
+        self.source_manifest.write_text(json.dumps({'files': [
+            {'path': 'frontend/build/journal-app-shell.html'},
+            {'path': 'frontend/build/index.html'}]}))
+        result = self.execute(0)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('unneeded generated build files included', result.stderr)
+
+    def test_missing_external_or_parent_escape_mapping_still_fails(self):
+        self.assertEqual(self.execute(0).returncode, 0)
+        for name in ('frontend/missing.txt', '../outside.txt', str(self.root / 'outside.txt')):
+            with self.subTest(name=name):
+                (self.root / 'outside.txt').write_text('external fixture')
+                self.trace.write_text(json.dumps({'filePathMap': {name: 'mapped.txt'}}))
+                result = self.execute(1)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('missing or external mapped function asset', result.stderr)
+
+    def test_external_symlink_and_missing_prebuilt_output_still_fail(self):
+        self.assertEqual(self.execute(0).returncode, 0)
+        external = self.root / 'outside.txt'
+        external.write_text('outside fixture')
+        self.link.unlink()
+        self.link.symlink_to(external)
+        result = self.execute(1)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('function trace outside deployment root', result.stderr)
+        (self.output / 'config.json').unlink()
+        result = self.execute(1)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('prebuilt output/config.json missing', result.stderr)
 
 
 # Context availability is a GitHub expression rule, separate from shell syntax.
