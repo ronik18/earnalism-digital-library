@@ -1,0 +1,118 @@
+"""Keep generated SEO separate while attesting exact-F published public bytes."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+import xml.etree.ElementTree as ET
+from urllib.parse import urlsplit
+
+
+FILES = ('sitemap.xml', 'robots.txt')
+
+
+def git(root, *args):
+    return subprocess.check_output(['git', '-C', str(root), *args])
+
+
+def exact_clean_source(root, expected):
+    if not re.fullmatch(r'[0-9a-f]{40}', expected):
+        raise ValueError('Expected source must be an immutable full SHA')
+    actual = git(root, 'rev-parse', 'HEAD').decode().strip()
+    if actual != expected:
+        raise ValueError('Source HEAD mismatch: ' + actual)
+    status = git(root, 'status', '--porcelain', '-z', '--untracked-files=all')
+    if status:
+        # Git path records only. Never print file contents or environment values.
+        raise ValueError('Source checkout dirty: ' + json.dumps(status.decode().split('\0')[:-1]))
+
+
+def isolated_path(root, generated):
+    if Path(generated).is_symlink():
+        raise ValueError('Generated SEO destination must not be a symlink')
+    root, generated = Path(root).resolve(), Path(generated).resolve()
+    if generated.is_relative_to(root) or root.is_relative_to(generated):
+        raise ValueError('Generated SEO destination overlaps source checkout')
+    return root, generated
+
+
+def prepare(root, generated, expected):
+    root, generated = isolated_path(root, generated)
+    exact_clean_source(root, expected)
+    if generated.exists():
+        raise ValueError('Generated SEO destination already exists; preserve it')
+    generated.mkdir(mode=0o700)
+    return {'status': 'PREPARED', 'source_sha': expected, 'generated_directory': str(generated)}
+
+
+def regular_bytes(path, boundary):
+    if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(boundary):
+        raise ValueError('Missing, symlinked or external SEO file: ' + path.name)
+    return path.read_bytes()
+
+
+def verify(root, generated, expected):
+    root, generated = isolated_path(root, generated)
+    exact_clean_source(root, expected)
+    if not generated.is_dir() or {p.name for p in generated.iterdir()} != set(FILES):
+        raise ValueError('Generated SEO must contain exactly sitemap.xml and robots.txt')
+    records = {}
+    for name in FILES:
+        relative = 'frontend/public/' + name
+        approved = git(root, 'show', expected + ':' + relative)
+        source = regular_bytes(root / relative, root)
+        build = regular_bytes(root / 'frontend/build' / name, root)
+        # Vercel static output may link into its own exact-F build directory.
+        static_path = root / '.vercel/output/static' / name
+        if not static_path.is_file() or not static_path.resolve().is_relative_to(root):
+            raise ValueError('Missing or external prebuilt SEO file: ' + name)
+        static = static_path.read_bytes()
+        if any(value != approved for value in (source, build, static)):
+            raise ValueError('Published SEO differs from exact-F preimage: ' + name)
+        side_output = regular_bytes(generated / name, generated)
+        if name == 'sitemap.xml':
+            tree = ET.fromstring(side_output)
+            if tree.tag != '{http://www.sitemaps.org/schemas/sitemap/0.9}urlset':
+                raise ValueError('Generated sitemap schema mismatch')
+            locations = tree.findall('{*}url/{*}loc')
+            if not locations or any(urlsplit(p.text or '').scheme != 'https'
+                                    or urlsplit(p.text or '').netloc != 'theearnalism.com'
+                                    for p in locations):
+                raise ValueError('Generated sitemap contains missing or unexpected origins')
+        elif not side_output.startswith(b'User-agent: *\n') or b'Sitemap: https://theearnalism.com/sitemap.xml\n' not in side_output:
+            raise ValueError('Generated robots format/origin mismatch')
+        digest = lambda value: hashlib.sha256(value).hexdigest()
+        records[name] = {'exact_F_preimage_sha256': digest(approved),
+                         'source_sha256': digest(source), 'build_sha256': digest(build),
+                         'prebuilt_static_sha256': digest(static),
+                         'isolated_generated_sha256': digest(side_output),
+                         'generated_bytes_published': False}
+    manifests = {}
+    for relative in ('frontend/package.json', 'frontend/package-lock.json'):
+        approved = git(root, 'show', expected + ':' + relative)
+        actual = regular_bytes(root / relative, root)
+        if actual != approved:
+            raise ValueError('Dependency manifest differs from exact-F: ' + relative)
+        manifests[relative] = hashlib.sha256(actual).hexdigest()
+    return {'status': 'PASS', 'source_sha': expected, 'source_full_status': 'CLEAN',
+            'publication_contract': 'Exact F checked-in public SEO bytes; isolated generated bytes are recorded and not published',
+            'dependency_manifests_sha256': manifests, 'assets': records}
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source-root', type=Path, required=True)
+    parser.add_argument('--generated-root', type=Path, required=True)
+    parser.add_argument('--expected-sha', required=True)
+    parser.add_argument('--prepare', action='store_true')
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    try:
+        result = (prepare if args.prepare else verify)(args.source_root, args.generated_root, args.expected_sha)
+        encoded = json.dumps(result, indent=2) + '\n'
+        if args.output:
+            args.output.write_text(encoded)
+        print(encoded, end='')
+    except (ValueError, OSError, subprocess.CalledProcessError, ET.ParseError) as error:
+        raise SystemExit('SEO_ISOLATION=FAIL: ' + str(error)) from None

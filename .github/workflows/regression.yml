@@ -9,12 +9,17 @@ on:
       - main
   workflow_dispatch:
     inputs:
+      build_only:
+        description: Run only the separately approved no-deploy Linux frontend qualification
+        required: false
+        default: false
+        type: boolean
       target_sha:
-        description: Exact current main commit to release
+        description: Exact controller SHA; feature head for build_only, current main otherwise
         required: true
         type: string
       confirm_production:
-        description: Type DEPLOY_PRODUCTION to authorize production
+        description: BUILD_AND_PACKAGE_ONLY for build_only; DEPLOY_PRODUCTION otherwise
         required: true
         type: string
 
@@ -23,11 +28,12 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: go-live-regression-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'workflow_dispatch' && inputs.build_only && format('frontend-build-only-{0}', github.run_id) || format('go-live-regression-{0}', github.ref) }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' || !inputs.build_only }}
 
 jobs:
   regression:
+    if: github.event_name != 'workflow_dispatch' || !inputs.build_only
     name: regression gate
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -89,7 +95,7 @@ jobs:
         run: python3 -m unittest scripts.test_reader_benchmark_runner scripts.test_catalogue_compliance_workflow_cost scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
       - name: Validate historical unavailable snapshots and raw HTML canary
-        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_backend_release scripts.test_reader_startup_readonly -v
+        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_isolated_seo_build scripts.test_frontend_build_qualification scripts.test_verify_backend_release scripts.test_reader_startup_readonly -v
 
       - name: Validate additive health attestation in isolated ASGI
         run: |
@@ -166,3 +172,53 @@ jobs:
               issue_number: context.issue.number,
               body,
             });
+
+  frontend_build_only:
+    name: Linux frontend build and packaging only
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      inputs.build_only == true &&
+      github.repository == 'ronik18/earnalism-digital-library' &&
+      github.ref == 'refs/heads/codex/reader-only-strict-fit-20261017' &&
+      inputs.target_sha == github.sha &&
+      inputs.confirm_production == 'BUILD_AND_PACKAGE_ONLY'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CONTROLLER_SHA: ${{ inputs.target_sha }}
+    steps:
+      - name: Checkout exact approved controller
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, retained resolved revision
+        with:
+          ref: ${{ inputs.target_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use reviewed Node and npm runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '20.20.2'
+
+      - name: Use Python for local verifiers
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+
+      - name: Run credential-free local build qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REF" == 'refs/heads/codex/reader-only-strict-fit-20261017' ]] || exit 1
+          [[ "$CONTROLLER_SHA" == "$GITHUB_SHA" ]] || exit 1
+          python3 -m scripts.qualify_frontend_build_only --controller-sha "$CONTROLLER_SHA" --output-root "$RUNNER_TEMP/frontend-build-only-$GITHUB_RUN_ID"
+
+      - name: Retain non-secret qualification receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: frontend-build-only-${{ github.sha }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/frontend-build-only-${{ github.run_id }}/reports/
+          retention-days: 3
+          if-no-files-found: warn

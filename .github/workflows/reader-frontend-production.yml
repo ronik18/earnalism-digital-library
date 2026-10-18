@@ -302,13 +302,16 @@ jobs:
           [[ -z "$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)" ]] || exit 1
           echo "BUILD_SHA=$FRONTEND_SHA"
           echo 'BUILD_SOURCE_CLEAN=YES'
+          generated_seo_dir="$RUNNER_TEMP/reader-generated-seo"
+          python3 scripts/verify_isolated_seo_build.py --prepare --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA"
           cd "$FRONTEND_DIR"
           rm -rf .vercel/output
           args=(build --prod --yes)
           if [[ -n "${VERCEL_SCOPE}" ]]; then
             args+=(--scope "${VERCEL_SCOPE}")
           fi
-          vercel "${args[@]}"
+          NPM_CONFIG_SAVE=false SEO_ASSETS_OUTPUT_DIR="$generated_seo_dir" vercel "${args[@]}"
+          python3 "$GITHUB_WORKSPACE/scripts/verify_isolated_seo_build.py" --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA" --output /tmp/vercel-isolated-seo.json
 
       - name: Verify source and prebuilt function packaging
         if: steps.vercel-check.outputs.enabled == 'true'
@@ -329,6 +332,7 @@ jobs:
           path: |
             /tmp/vercel-source-packaging.json
             /tmp/vercel-prebuilt-packaging.json
+            /tmp/vercel-isolated-seo.json
 
       - name: Recheck controller and artifact authorization before deployment
         run: *controller_source_gate
@@ -350,8 +354,17 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
-          [[ "$(git -C "$FRONTEND_DIR" rev-parse HEAD)" == "$FRONTEND_SHA" ]] || exit 1
-          [[ -z "$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)" ]] || exit 1
+          artifact_head="$(git -C "$FRONTEND_DIR" rev-parse HEAD)"
+          if [[ "$artifact_head" != "$FRONTEND_SHA" ]]; then
+            printf 'RELEASE_ARTIFACT_HEAD_MISMATCH expected=%s actual=%s\n' "$FRONTEND_SHA" "$artifact_head" >&2
+            exit 1
+          fi
+          artifact_status="$(git -C "$FRONTEND_DIR" status --porcelain --untracked-files=all)"
+          if [[ -n "$artifact_status" ]]; then
+            printf 'RELEASE_ARTIFACT_DIRTY head=%s; refusing deployment\n' "$artifact_head" >&2
+            printf '%s\n' "$artifact_status" >&2
+            exit 1
+          fi
           python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \

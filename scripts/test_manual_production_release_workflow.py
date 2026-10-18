@@ -308,6 +308,48 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn('cd "$FRONTEND_DIR"', step_script('Build frontend for Vercel'))
         self.assertIn('cd "$FRONTEND_DIR"', step_script('Deploy frontend to Vercel production'))
 
+    def artifact_guard(self, **overrides):
+        # Execute the production step's complete early guard, stopping before
+        # its first backend/provider command. No provider or environment reads.
+        code = step_script('Deploy frontend to Vercel production').split(
+            'python3 scripts/verify_backend_release.py', 1)[0]
+        return subprocess.run(['bash', '-eu', '-c', code], cwd=self.repo,
+                              env={**os.environ, 'FRONTEND_DIR': str(self.root / 'reader-frontend-source'),
+                                   'FRONTEND_SHA': self.frontend, **overrides},
+                              text=True, capture_output=True)
+
+    def test_artifact_guard_accepts_only_the_clean_exact_artifact(self):
+        self.assertEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        result = self.artifact_guard()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout + result.stderr, '')
+        self.assertFalse(self.forbidden.exists())
+
+    def test_artifact_guard_reports_wrong_head_without_provider_execution(self):
+        self.assertEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        result = self.artifact_guard(FRONTEND_SHA=self.sha)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('RELEASE_ARTIFACT_HEAD_MISMATCH', result.stderr)
+        self.assertIn('expected=' + self.sha, result.stderr)
+        self.assertIn('actual=' + self.frontend, result.stderr)
+        self.assertFalse(self.forbidden.exists())
+
+    def test_artifact_guard_reports_tracked_and_untracked_paths_without_contents(self):
+        self.assertEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        artifact = self.root / 'reader-frontend-source'
+        marker = 'PRIVATE_FILE_CONTENT_MUST_NOT_APPEAR_IN_DIAGNOSTICS'
+        (artifact / 'frontend/index.html').write_text(marker)
+        (artifact / 'unexpected file.txt').write_text(marker)
+        result = self.artifact_guard()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('RELEASE_ARTIFACT_DIRTY head=' + self.frontend, result.stderr)
+        self.assertIn('frontend/index.html', result.stderr)
+        self.assertIn('unexpected file.txt', result.stderr)
+        self.assertNotIn(marker, result.stdout + result.stderr)
+        actual = subprocess.check_output(['git', '-C', str(artifact), 'rev-parse', 'HEAD'], text=True).strip()
+        self.assertEqual(actual, self.frontend)
+        self.assertFalse(self.forbidden.exists())
+
     def approval(self):
         now = datetime.datetime.now(datetime.timezone.utc)
         # Test-only attestations: never written into real environment configuration.
