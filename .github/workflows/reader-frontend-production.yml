@@ -127,7 +127,6 @@ jobs:
     outputs:
       deployed: ${{ steps.vercel-check.outputs.enabled }}
     env:
-      FRONTEND_DIR: ${{ runner.temp }}/reader-frontend-source
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -224,6 +223,8 @@ jobs:
       - name: Prepare exact frontend artifact source
         run: |
           set -euo pipefail
+          FRONTEND_DIR="$RUNNER_TEMP/reader-frontend-source"
+          printf 'FRONTEND_DIR=%s\n' "$FRONTEND_DIR" >> "$GITHUB_ENV"
           [[ ! -e "$FRONTEND_DIR" ]] || exit 1
           git worktree add --detach "$FRONTEND_DIR" "$FRONTEND_SHA"
           [[ "$(git -C "$FRONTEND_DIR" rev-parse HEAD)" == "$FRONTEND_SHA" ]] || exit 1

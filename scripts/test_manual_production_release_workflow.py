@@ -91,7 +91,8 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                'FRONTEND_TREE': self.frontend_tree, 'BACKEND_SHA': self.backend,
                'BACKEND_TREE': self.backend_tree, 'TARGET_SHA': self.frontend,
                'CONFIRM_PRODUCTION': 'DEPLOY_PRODUCTION', 'RUNNER_TEMP': str(self.root),
-               'FRONTEND_DIR': str(self.root / 'frontend-source'),
+               'FRONTEND_DIR': str(self.root / 'reader-frontend-source'),
+               'GITHUB_ENV': str(self.root / 'github-env'),
                'GITHUB_OUTPUT': str(self.output), 'RELEASE_EVENT': 'workflow_dispatch',
                'VERCEL_TOKEN': 'test-only', 'VERCEL_ORG_ID': 'test-only',
                'VERCEL_PROJECT_ID': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
@@ -100,6 +101,35 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         script = step_script(name).replace('${{ github.event.before }}', self.sha)
         return subprocess.run(['bash', '-e', '-c', script], cwd=self.repo,
                               env=env, text=True, capture_output=True)
+
+    def test_prepare_source_exports_runner_temp_for_later_steps(self):
+        runner_temp = self.root / 'runner temp with spaces'
+        runner_temp.mkdir()
+        github_env = self.root / 'github-env'
+        result = self.execute('Prepare exact frontend artifact source',
+                              FRONTEND_DIR='', RUNNER_TEMP=str(runner_temp),
+                              GITHUB_ENV=str(github_env))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        exported = dict(line.split('=', 1) for line in github_env.read_text().splitlines())
+        expected = runner_temp / 'reader-frontend-source'
+        self.assertEqual(exported, {'FRONTEND_DIR': str(expected)})
+        # Model the next step receiving GITHUB_ENV; execute Git against the real worktree.
+        later = subprocess.run(['bash', '-eu', '-c', 'git -C "$FRONTEND_DIR" rev-parse HEAD'],
+                               env={**os.environ, **exported}, text=True, capture_output=True)
+        self.assertEqual(later.returncode, 0, later.stderr)
+        self.assertEqual(later.stdout.strip(), self.frontend)
+        self.assertFalse(self.forbidden.exists())
+
+    def test_prepare_source_rejects_existing_temp_destination(self):
+        destination = self.root / 'reader-frontend-source'
+        destination.mkdir()
+        marker = destination / 'preserve.txt'
+        marker.write_text('existing evidence')
+        result = self.execute('Prepare exact frontend artifact source',
+                              GITHUB_ENV=str(self.root / 'github-env'))
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(marker.read_text(), 'existing evidence')
+        self.assertFalse(self.forbidden.exists())
 
     def test_exact_main_and_confirmation_admit_clean_checkout(self):
         for name in ('Verify manual release authorization and clean source', 'Recheck exact main and clean deployment source'):
@@ -255,16 +285,19 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
     def test_artifact_preparation_is_exact_and_will_not_reuse_existing_directory(self):
         result = self.execute('Prepare exact frontend artifact source')
         self.assertEqual(result.returncode, 0, result.stderr)
-        artifact = self.root / 'frontend-source'
+        artifact = self.root / 'reader-frontend-source'
         actual = subprocess.check_output(['git', '-C', str(artifact), 'rev-parse', 'HEAD'], text=True).strip()
         self.assertEqual(actual, self.frontend)
         self.assertNotEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
+        fresh_temp = self.root / 'bad-artifact-runner-temp'
+        fresh_temp.mkdir()
         self.assertNotEqual(self.execute('Prepare exact frontend artifact source',
-                                        FRONTEND_DIR=str(self.root / 'bad-artifact'), FRONTEND_SHA='0' * 40).returncode, 0)
+                                        RUNNER_TEMP=str(fresh_temp), FRONTEND_SHA='0' * 40).returncode, 0)
+        self.assertFalse((fresh_temp / 'reader-frontend-source').exists())
 
     def test_build_refuses_dirty_or_wrong_artifact_before_vercel(self):
         self.assertEqual(self.execute('Prepare exact frontend artifact source').returncode, 0)
-        artifact = self.root / 'frontend-source'
+        artifact = self.root / 'reader-frontend-source'
         (artifact / 'frontend/index.html').write_text('tampered artifact fixture\n')
         self.assertNotEqual(self.execute('Build frontend for Vercel').returncode, 0)
         self.assertNotEqual(self.execute('Build frontend for Vercel', FRONTEND_SHA=self.sha).returncode, 0)
@@ -392,6 +425,100 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                 execute(altered)
         for flag in ('githubCommitSha=$FRONTEND_SHA', 'readerControllerSha=$CONTROLLER_SHA', 'readerBackendSha=$BACKEND_SHA'):
             self.assertIn(flag, script)
+
+
+# Context availability is a GitHub expression rule, separate from shell syntax.
+# https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability
+# js-yaml is already pinned in the root package-lock.json and installed by root npm ci.
+def parse_workflow(source):
+    result = subprocess.run(
+        ['node', '-e', "const fs=require('fs');const yaml=require('js-yaml');"
+         "process.stdout.write(JSON.stringify(yaml.safeLoad(fs.readFileSync(0,'utf8'))));"],
+        input=source, cwd=ROOT, text=True, capture_output=True)
+    if result.returncode:
+        raise AssertionError('Existing locked YAML parser failed: ' + result.stderr)
+    return json.loads(result.stdout)
+
+
+ENV_CONTEXTS = {
+    'env': {'github', 'secrets', 'inputs', 'vars'},
+    'jobs.<job_id>.env': {'github', 'needs', 'strategy', 'matrix', 'vars', 'secrets', 'inputs'},
+    'jobs.<job_id>.steps.env': {'github', 'needs', 'strategy', 'matrix', 'job', 'runner',
+                                 'env', 'vars', 'secrets', 'steps', 'inputs'},
+}
+
+
+def expression_context_roots(value):
+    if not isinstance(value, str):
+        return set()
+    roots = set()
+    for expression in re.findall(r'\$\{\{(.*?)\}\}', value, re.S):
+        # Tokenize single-quoted expression literals (including escaped quotes),
+        # identifiers and punctuation. Properties/functions are not root contexts.
+        tokens = re.findall(r"'(?:[^']|'')*'|[A-Za-z_][A-Za-z0-9_-]*|[^\s]", expression)
+        for index, token in enumerate(tokens):
+            previous = tokens[index - 1] if index else None
+            following = tokens[index + 1] if index + 1 < len(tokens) else None
+            if (re.fullmatch(r'[A-Za-z_][A-Za-z0-9_-]*', token)
+                    and previous != '.' and following != '('
+                    and token.lower() not in {'true', 'false', 'null'}):
+                roots.add(token.lower())
+    return roots
+
+
+def environment_context_errors(workflow):
+    errors = []
+    def inspect(values, location, availability):
+        for key, value in (values or {}).items():
+            invalid = expression_context_roots(value) - ENV_CONTEXTS[availability]
+            if invalid:
+                errors.append((location + '.' + key, tuple(sorted(invalid))))
+    inspect(workflow.get('env'), 'env', 'env')
+    for job_id, job in workflow.get('jobs', {}).items():
+        inspect(job.get('env'), 'jobs.' + job_id + '.env', 'jobs.<job_id>.env')
+        for index, step in enumerate(job.get('steps', [])):
+            inspect(step.get('env'), f'jobs.{job_id}.steps.{index}.env',
+                    'jobs.<job_id>.steps.env')
+    return errors
+
+
+class WorkflowContextAvailabilityTests(unittest.TestCase):
+    def test_actual_parsed_workflow_environment_contexts_are_available(self):
+        self.assertEqual(environment_context_errors(parse_workflow(SOURCE)), [])
+
+    def test_rejects_original_job_runner_context_and_other_forbidden_roots(self):
+        workflow = parse_workflow(SOURCE)
+        for expression, root in [
+                ('${{ runner.temp }}/reader-frontend-source', 'runner'),
+                ("${{ runner['temp'] }}", 'runner'),
+                ("${{ format('{0}', runner.temp) }}", 'runner'),
+                ('${{ toJSON(runner) }}', 'runner'),
+                ('${{ env.RUNNER_TEMP }}', 'env'),
+                ('${{ steps.prepare.outputs.directory }}', 'steps')]:
+            with self.subTest(expression=expression):
+                altered = copy.deepcopy(workflow)
+                altered['jobs']['deploy_frontend']['env']['DIRECTORY'] = expression
+                self.assertEqual(environment_context_errors(altered),
+                                 [('jobs.deploy_frontend.env.DIRECTORY', (root,))])
+
+    def test_same_runner_context_is_valid_at_step_scope(self):
+        workflow = parse_workflow(SOURCE)
+        workflow['jobs']['deploy_frontend']['steps'][0]['env'] = {
+            'DIRECTORY': '${{ runner.temp }}', 'DATA': '${{ toJSON(job) }}',
+            'PREVIOUS': '${{ steps.prepare.outputs.directory }}'}
+        self.assertEqual(environment_context_errors(workflow), [])
+
+    def test_all_documented_job_environment_contexts_are_accepted(self):
+        workflow = parse_workflow(SOURCE)
+        workflow['jobs']['deploy_frontend']['env'] = {
+            root: '${{ toJSON(' + root + ') }}' for root in ENV_CONTEXTS['jobs.<job_id>.env']}
+        self.assertEqual(environment_context_errors(workflow), [])
+
+    def test_expression_string_literals_do_not_become_contexts(self):
+        workflow = parse_workflow(SOURCE)
+        workflow['jobs']['deploy_frontend']['env']['LABEL'] = (
+            "${{ format('runner.temp is not a context here; it''s literal', github.ref) }}")
+        self.assertEqual(environment_context_errors(workflow), [])
 
 
 if __name__ == '__main__':
