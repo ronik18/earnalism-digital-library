@@ -15,6 +15,8 @@ const output = process.env.READER_PREPARATION_OUTPUT;
 assert.ok(output, 'Supply an explicit private output directory');
 const legacyMode = process.env.READER_PREPARATION_LEGACY_MODE || '';
 assert.ok(['', 'fast', 'slow'].includes(legacyMode));
+const openingSeconds = Number(process.env.READER_PREPARATION_OPENING_SECONDS || 45);
+assert.ok([45, 61].includes(openingSeconds), 'Use the bounded delayed/expired preparation fixtures');
 const publicAssets = new Map();
 fs.mkdirSync(output, { recursive: true });
 const slug = 'reader-preparation-fixture';
@@ -131,12 +133,32 @@ try {
       await until(() => events.some(e => e.kind === 'renew' && e.phase === 'preparing'));
       assert.ok(events.filter(e => e.kind === 'renew').every(e => !e.active && e.debit === 0 && e.status === 'Running'));
       assert.equal(await page.getByRole('heading', { name: 'Reading paused', exact: true }).count(), 0);
-      elapsed = 16.112; await rpc('clock', { seconds: elapsed }); await page.clock.runFor(6112); release();
+      for (const seconds of [20, 30, 40, ...(openingSeconds === 61 ? [50] : [])]) {
+        elapsed = seconds; await rpc('clock', { seconds: elapsed }); await page.clock.runFor(10000);
+        await until(() => events.some(e => e.kind === 'renew' && e.at === seconds));
+        assert.ok(events.filter(e => e.kind === 'renew').every(e => e.phase === 'preparing' && e.debit === 0 && e.status === 'Running'));
+        assert.equal(await page.getByRole('heading', { name: 'Reading paused', exact: true }).count(), 0);
+      }
+      const previousElapsed = elapsed;
+      elapsed = openingSeconds; await rpc('clock', { seconds: elapsed }); await page.clock.runFor((elapsed - previousElapsed) * 1000);
+      if (openingSeconds === 61) {
+        await page.getByRole('heading', { name: 'Reading paused', exact: true }).waitFor();
+        assert.equal(await page.getByTestId('reader-reading-text').count(), 0);
+        assert.equal(events.filter(e => e.kind === 'delivered').length, 9);
+        const state = (await rpc('state')).result;
+        assert.equal(state.debit, 0);
+        assert.equal(state.balance, 600);
+        assert.deepEqual(errors, []);
+        results.push({ width, result: 'PASS', bounded_expiry: true, events, accounting: state, production_requests: 0 });
+        console.log(JSON.stringify({ width, result: 'PASS', bounded_expiry: true, debit: 0 }));
+        continue;
+      }
+      release();
       // Allow pagination's existing 80ms resize debounce on the controlled clock.
       await until(() => events.filter(e => e.kind === 'delivered').length === 19);
       await until(async () => {
         if (await page.locator('[data-pagination-ready="true"]').count()) return true;
-        assert.ok(elapsed < 19.5, 'Real pagination must complete within the unchanged preparation grant');
+        assert.ok(elapsed < 60, 'Real pagination must complete within the fixed preparation budget');
         elapsed += 0.05; await rpc('clock', { seconds: elapsed }); await page.clock.runFor(50);
         return false;
       });

@@ -593,12 +593,12 @@ class ReadingPassService:
                 retained = windows.get(preparation_key)
                 if retained is not None and not isinstance(retained, datetime):
                     raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Reader preparation could not be verified.")
-                preparation_deadline = ensure_utc(retained) if retained else now + timedelta(seconds=self.config.maximum_lease_seconds)
+                preparation_deadline = ensure_utc(retained) if retained else now + timedelta(seconds=self.config.text_preparation_seconds)
                 # Failed opening must not lock out the publication permanently.
                 # A server-timed cooldown (the existing inactivity interval)
                 # permits a later bounded retry, never a continuous free grant.
                 if retained and now >= preparation_deadline + timedelta(seconds=self.config.text_inactivity_seconds):
-                    preparation_deadline = now + timedelta(seconds=self.config.maximum_lease_seconds)
+                    preparation_deadline = now + timedelta(seconds=self.config.text_preparation_seconds)
                 if now >= preparation_deadline:
                     raise ReadingPassError("PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.")
                 await self.db.users.update_one({"id": user_id}, {"$set": {
@@ -1119,7 +1119,7 @@ class ReadingPassService:
                 preparation_user = await self.db.users.find_one({"id": user_id}, {"reader_preparation_windows": 1}, session=mongo_session)
                 windows = preparation_user.get("reader_preparation_windows") or {}
                 if isinstance(windows, dict) and windows.get(session_doc["preparation_key"]) is None and int(session_doc.get("seconds_consumed") or 0) > 0:
-                    preparation_deadline = now + timedelta(seconds=self.config.maximum_lease_seconds)
+                    preparation_deadline = now + timedelta(seconds=self.config.text_preparation_seconds)
                     await self.db.users.update_one({"id": user_id}, {"$set": {
                         f"reader_preparation_windows.{session_doc['preparation_key']}": preparation_deadline,
                     }}, session=mongo_session)

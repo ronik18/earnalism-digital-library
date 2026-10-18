@@ -1,4 +1,13 @@
 {
+  "agentic_ai_with_python_preparation_expiry_20261018": {
+    "state": "LOCAL_UNIT_MONGO_AND_BROWSER_QUALIFIED_RELEASE_PENDING",
+    "evidence": "reader_preparation_expiry_20261018.md",
+    "base": "d79acb1952161cd56395e9bb4d7c1001ceaa69bb",
+    "production_reader_verified": false,
+    "publication_changed": false,
+    "balance_adjusted": false,
+    "performance_lane": "PAUSED"
+  },
   "agentic_ai_with_python_preparation_successor_20261010": {
     "state": "LOCAL_SUCCESSOR_QUALIFIED_NEW_RELEASE_AUTHORIZATION_REQUIRED",
     "evidence": "reader_preparation_successor_20261010.md",

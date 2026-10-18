@@ -53,6 +53,39 @@ class Fixture:
             operation_id='fixture-revoke-0001', reason='Disposable qualification', actor_id='fixture-admin')
 
 
+@pytest.mark.parametrize('outcome', ['readable', 'expire', 'revoke'])
+def test_extended_preparation_real_transactions_keep_zero_debit_and_authority(monkeypatch, outcome):
+    async def run():
+        async with _isolated_database() as db:
+            f = await Fixture().seed(db, monkeypatch)
+            deadline = f.lease['preparation_expires_at']
+            for sequence, seconds in enumerate((10, 20, 30, 40, 50) if outcome == 'expire' else (10, 20, 30, 40), 1):
+                f.at(seconds)
+                lease = await f.service.renew_lease(**f.request('preparing', version=sequence, sequence=sequence, key=f'extended-{sequence}'))
+                assert lease['status'] == 'Running' and lease['deducted_seconds'] == 0
+                assert lease['preparation_expires_at'] == deadline
+                assert datetime.fromisoformat(lease['lease_expires_at']) <= f.now + timedelta(seconds=20)
+                await f.assert_balance(0)
+            version = lease['lease_version']
+            f.at(61 if outcome == 'expire' else 45)
+            if outcome == 'readable':
+                visible = await f.service.renew_lease(**f.request('readable', version=version, sequence=version, key='extended-readable'))
+                assert visible['deducted_seconds'] == 0
+                f.at(55)
+                billed = await f.service.renew_lease(**f.request('readable', version=visible['lease_version'], sequence=visible['lease_version'], key='extended-reading'))
+                assert billed['deducted_seconds'] == 10
+                await f.assert_balance(10)
+            else:
+                if outcome == 'revoke':
+                    await f.revoke()
+                with pytest.raises(ReadingPassError):
+                    await f.service.renew_lease(**f.request('preparing', version=version, sequence=version, key='extended-terminal'))
+                with pytest.raises(ReadingPassError):
+                    await f.service.authorize(user_id='fixture-user', auth_session_id='fixture-auth', session_id=f.lease['session_id'], lease_token=f.lease['lease_token'], content_type='text', content_id='preparation-fixture')
+                await f.assert_balance(0)
+    asyncio.run(run())
+
+
 def test_duplicate_overlapping_preparation_and_stale_versions(monkeypatch):
     async def run():
         async with _isolated_database() as db:
@@ -66,7 +99,7 @@ def test_duplicate_overlapping_preparation_and_stale_versions(monkeypatch):
             assert await db.reading_pass_heartbeats.count_documents({}) == 1
             doc = await f.document()
             assert doc['lease_version'] == 2 and doc['text_phase'] == 'preparing'
-            assert doc['preparation_deadline'] == f.origin.replace(tzinfo=None) + timedelta(seconds=20)
+            assert doc['preparation_deadline'] == f.origin.replace(tzinfo=None) + timedelta(seconds=60)
             stale = await f.service.renew_lease(**f.request('readable', key='stale-distinct-key'))
             assert stale['status'] == 'Stale'
             with pytest.raises(ReadingPassError, match='different renewal intent'):
@@ -107,7 +140,7 @@ def test_terminal_racing_readable_cannot_resurrect_or_backbill(monkeypatch, term
     async def run():
         async with _isolated_database() as db:
             f = await Fixture().seed(db, monkeypatch)
-            f.at(21 if terminal == 'expire' else 16.112)
+            f.at(61 if terminal == 'expire' else 16.112)
             request = f.request('readable')
             terminal_call = f.end() if terminal == 'end' else f.revoke() if terminal == 'revoke' else f.service.renew_lease(**f.request('preparing', key='timeout-other-key'))
             await asyncio.gather(f.service.renew_lease(**request), terminal_call, return_exceptions=True)

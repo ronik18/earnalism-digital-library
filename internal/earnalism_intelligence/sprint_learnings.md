@@ -2663,3 +2663,12 @@ with437 pre blocks; historical affected-block ledger sums156, not prior claim166
 Derived211-page native candidate is independent of historical invalid211 method.
 Local23tests and390/768/1440excerpt rendering pass; production remains unverified.
 See reader_sanitizer_repair_20261009.md. #525 remains paused; no release authorized.
+
+## 2026-10-18 — preparation budget versus lease lifetime
+The observed19-chunk opening outlived the20s preparation anchor even though
+zero-debit preparation worked. Separate a fixed60s server preparation budget
+from renewable20s leases; never extend retained anchors on upgrade/restart.
+Two failing-before regressions,69focused tests passing after. Browser/real-Mongo
+requalification subsequently29Mongo and6browser cases PASS; production untouched.
+See reader_preparation_expiry_20261018.md. Controlled45s opening is not a latency
+benchmark; fixed60s expiry remains fail-closed with zero preparation debit.
