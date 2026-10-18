@@ -39,6 +39,91 @@ class Fixture:
         return await self.service.end_session(user_id="user-1", auth_session_id="auth-1", session_id=self.lease["session_id"])
 
 
+def test_delayed_chapter_opening_outlives_one_lease_without_preparation_debit(monkeypatch):
+    """Production failed at 20s before its 19-chunk window was complete."""
+    async def run():
+        f = Fixture(monkeypatch)
+        first = await f.start()
+        deadline = first["preparation_expires_at"]
+        assert datetime.fromisoformat(deadline) == f.origin + timedelta(seconds=60)
+        # Heartbeats still rotate short leases; they never extend the fixed budget.
+        for seconds in (10, 20, 30, 40):
+            f.at(seconds)
+            lease = await f.renew("preparing")
+            assert lease["status"] == "Running"
+            assert lease["preparation_expires_at"] == deadline
+            assert datetime.fromisoformat(lease["lease_expires_at"]) <= f.now + timedelta(seconds=20)
+            assert lease["deducted_seconds"] == 0 and lease["balance_seconds"] == 120
+        f.at(45)
+        assert (await f.renew("readable"))["deducted_seconds"] == 0
+        f.at(55)
+        assert (await f.renew("readable"))["deducted_seconds"] == 10
+        assert sum(row["debit"] for row in f.db.wallet_ledger.rows) == 10
+    asyncio.run(run())
+
+
+def test_long_preparation_still_expires_without_debit_or_restart_extension(monkeypatch):
+    async def run():
+        f = Fixture(monkeypatch)
+        first = await f.start()
+        for seconds in (10, 20, 30, 40, 50, 59):
+            f.at(seconds)
+            assert (await f.renew("preparing"))["preparation_expires_at"] == first["preparation_expires_at"]
+        f.at(60)
+        with pytest.raises(ReadingPassError) as error:
+            await f.renew("preparing")
+        assert error.value.code == "PREPARATION_EXPIRED"
+        with pytest.raises(ReadingPassError) as error:
+            await f.start()
+        assert error.value.code == "PREPARATION_EXPIRED"
+        assert f.db.wallet_ledger.rows == []
+        assert f.db.users.rows[0]["reading_seconds_balance"] == 120
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize("boundary", ["wrong_identity", "wrong_publication", "revoked", "denied"])
+def test_extended_preparation_never_bypasses_access_control(monkeypatch, boundary):
+    async def run():
+        f = Fixture(monkeypatch)
+        await f.start()
+        for seconds in (10, 20, 30):
+            f.at(seconds)
+            await f.renew("preparing")
+        request = dict(user_id="user-1", auth_session_id="auth-1", session_id=f.lease["session_id"],
+                       lease_token=f.lease["lease_token"], content_type="text", content_id="book-1")
+        assert await f.service.authorize(**request)
+        if boundary == "wrong_identity":
+            request["auth_session_id"] = "another-auth"
+        elif boundary == "wrong_publication":
+            request["content_id"] = "another-book"
+        elif boundary == "revoked":
+            await _revoke_fixture(f.service)
+        with pytest.raises(ReadingPassError):
+            if boundary == "denied":
+                await f.renew("preparing", text_authority="denied")
+            else:
+                await f.service.authorize(**request)
+        assert f.db.wallet_ledger.rows == []
+    asyncio.run(run())
+
+
+def test_existing_short_preparation_anchor_is_not_extended_by_upgrade(monkeypatch):
+    async def run():
+        f = Fixture(monkeypatch)
+        original_config = f.service.config
+        f.service.config = ReadingPassConfig(text_preparation_seconds=20)
+        first = await f.start()
+        f.service.config = original_config
+        f.at(10)
+        assert (await f.renew("preparing"))["preparation_expires_at"] == first["preparation_expires_at"]
+        f.at(20)
+        with pytest.raises(ReadingPassError) as error:
+            await f.renew("preparing")
+        assert error.value.code == "PREPARATION_EXPIRED"
+        assert f.db.wallet_ledger.rows == []
+    asyncio.run(run())
+
+
 def test_preparation_then_readability_and_inactivity_are_server_timed(monkeypatch):
     async def run():
         f = Fixture(monkeypatch)
@@ -77,7 +162,7 @@ def test_preparation_terminal_paths_never_bill(monkeypatch, terminal):
         elif terminal == "inactive":
             assert (await f.renew("inactive"))["status"] == "Paused"
         elif terminal == "timeout":
-            f.at(20)
+            f.at(60)
             with pytest.raises(ReadingPassError, match="preparation window expired"):
                 await f.renew("preparing")
             assert f.db.reading_pass_sessions.rows[0]["ended_reason"] == "preparation_timeout"
@@ -105,18 +190,24 @@ def test_restart_cannot_reset_unearned_preparation_deadline(monkeypatch):
         await f.end()
         restarted = await f.start()
         assert restarted["preparation_expires_at"] == original["preparation_expires_at"]
-        assert restarted["lease_expires_at"] == original["preparation_expires_at"]
-        f.at(20)
+        assert datetime.fromisoformat(restarted["lease_expires_at"]) == f.now + timedelta(seconds=20)
+        f.at(60)
         await f.end()
         with pytest.raises(ReadingPassError) as error:
             await f.start()
         assert error.value.code == "PREPARATION_EXPIRED"
         assert f.db.wallet_ledger.rows == []
-        f.at(141)
+        f.at(181)
         retry = await f.start()
         assert retry["text_phase"] == "preparing" and retry["deducted_seconds"] == 0
         assert retry["preparation_expires_at"] != original["preparation_expires_at"]
     asyncio.run(run())
+
+
+@pytest.mark.parametrize("seconds", [0, -1, 121, True, 60.5])
+def test_preparation_budget_cannot_be_unbounded_or_malformed(seconds):
+    with pytest.raises(ValueError, match="text_preparation_seconds"):
+        ReadingPassConfig(text_preparation_seconds=seconds)
 
 
 def test_preparation_idempotency_binds_phase_and_does_not_renew_deadline(monkeypatch):
@@ -163,18 +254,19 @@ def test_malformed_lifecycle_cannot_change_authority_or_billing(monkeypatch, act
     asyncio.run(run())
 
 
-def test_expiry_cannot_authorize_chunks_or_bill_even_after_reconnect_grace(monkeypatch):
+@pytest.mark.parametrize("seconds,code,reason", [(40, "LEASE_EXPIRED", "lease_timeout"), (61, "PREPARATION_EXPIRED", "preparation_timeout")])
+def test_expiry_cannot_authorize_chunks_or_bill_even_after_reconnect_grace(monkeypatch, seconds, code, reason):
     async def run():
         f = Fixture(monkeypatch)
         lease = await f.start()
-        f.at(40)
+        f.at(seconds)
         with pytest.raises(ReadingPassError) as denied:
             await f.service.authorize(user_id="user-1", auth_session_id="auth-1", session_id=lease["session_id"], lease_token=lease["lease_token"], content_type="text", content_id="book-1")
         assert denied.value.code == "LEASE_EXPIRED"
         with pytest.raises(ReadingPassError) as expired:
             await f.renew("preparing")
-        assert expired.value.code == "PREPARATION_EXPIRED"
-        assert f.db.reading_pass_sessions.rows[0]["ended_reason"] == "preparation_timeout"
+        assert expired.value.code == code
+        assert f.db.reading_pass_sessions.rows[0]["ended_reason"] == reason
         assert f.db.wallet_ledger.rows == []
     asyncio.run(run())
 

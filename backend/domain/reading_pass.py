@@ -29,6 +29,9 @@ class ReadingPassConfig:
     text_inactivity_seconds: int = 120
     public_text_pages: int = PUBLIC_TEXT_PAGE_COUNT
     public_audio_seconds: int = PUBLIC_AUDIO_PREVIEW_SECONDS
+    # Opening a complete chapter may span several short, reauthorized leases.
+    # This is a fixed server budget, never a client-renewable free-reading grant.
+    text_preparation_seconds: int = 60
 
     def __post_init__(self) -> None:
         if self.heartbeat_seconds < 1:
@@ -43,6 +46,8 @@ class ReadingPassConfig:
             raise ValueError("the public text boundary is fixed at three canonical pages")
         if self.public_audio_seconds != PUBLIC_AUDIO_PREVIEW_SECONDS:
             raise ValueError("audiobooks have no public preview boundary")
+        if type(self.text_preparation_seconds) is not int or not 1 <= self.text_preparation_seconds <= 120:
+            raise ValueError("text_preparation_seconds must be an integer from 1 to 120")
 
 
 class ReadingPassError(RuntimeError):
