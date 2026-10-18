@@ -8,6 +8,8 @@ on:
       - 'frontend/api/**'
       - 'scripts/verify_vercel_packaging.py'
       - 'scripts/test_verify_vercel_packaging.py'
+      - 'scripts/select_vercel_source_files.mjs'
+      - 'scripts/test_select_vercel_source_files.mjs'
       - '.github/workflows/vercel-packaging.yml'
       - '.github/workflows/regression.yml'
 permissions:
@@ -17,12 +19,10 @@ jobs:
     name: function packaging guard
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
@@ -30,25 +30,32 @@ jobs:
         with:
           python-version: '3.11'
       - run: python3 -m unittest scripts.test_verify_vercel_packaging -v
-      - run: npm ci --prefix frontend --legacy-peer-deps
-      - run: npm run build --prefix frontend
-      - run: npm install -g vercel@62.1.0
-      - name: Use existing Vercel project linkage
+      - run: node --test scripts/test_select_vercel_source_files.mjs
+      - name: Build and inspect source files without provider credentials
+        shell: bash
         run: |
-          test -n "${VERCEL_ORG_ID}" && test -n "${VERCEL_PROJECT_ID}"
-          mkdir -p .vercel
-          node - <<'NODE'
-          const fs = require('fs');
-          fs.writeFileSync('.vercel/project.json', JSON.stringify({
-            orgId: process.env.VERCEL_ORG_ID,
-            projectId: process.env.VERCEL_PROJECT_ID,
-          }));
-          NODE
-      - name: Verify actual source deployment manifest
-        run: |
-          test -n "${VERCEL_TOKEN}"
-          vercel deploy --dry --format=json --token "${VERCEL_TOKEN}" > /tmp/vercel-source-manifest.json
+          set -euo pipefail
+          sandbox="$(mktemp -d "$RUNNER_TEMP/source-packaging.XXXXXXXX")"
+          mkdir "$sandbox/home" "$sandbox/tmp" "$sandbox/cache"
+          touch "$sandbox/user.npmrc" "$sandbox/global.npmrc"
+          env -i PATH="$PATH" HOME="$sandbox/home" TMPDIR="$sandbox/tmp" \
+            CI=true VERCEL_TELEMETRY_DISABLED=1 DO_NOT_TRACK=1 \
+            NPM_CONFIG_USERCONFIG="$sandbox/user.npmrc" \
+            NPM_CONFIG_GLOBALCONFIG="$sandbox/global.npmrc" \
+            NPM_CONFIG_CACHE="$sandbox/cache" NPM_CONFIG_REGISTRY=https://registry.npmjs.org \
+            REACT_APP_BACKEND_URL= REACT_APP_API_URL= SEO_API_BASE_URL= \
+            SOURCE_ROOT="$GITHUB_WORKSPACE" TOOL_ROOT="$sandbox/tooling" \
+            bash --noprofile --norc <<'LOCAL'
+          set -euo pipefail
+          cd "$SOURCE_ROOT"
+          npm ci --prefix frontend --legacy-peer-deps
+          npm run build --prefix frontend
+          npm install --prefix "$TOOL_ROOT" --ignore-scripts --no-audit --no-fund \
+            --package-lock=false vercel@62.1.0
+          node scripts/select_vercel_source_files.mjs --root "$SOURCE_ROOT" \
+            --vercel-package "$TOOL_ROOT/node_modules/vercel" > /tmp/vercel-source-manifest.json
           python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+          LOCAL
       - uses: actions/upload-artifact@v4
         with:
           name: vercel-source-packaging-${{ github.event.pull_request.head.sha }}
