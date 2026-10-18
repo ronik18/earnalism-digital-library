@@ -10,6 +10,7 @@ import subprocess
 import sys
 
 from scripts.verify_isolated_seo_build import exact_clean_source, prepare, verify
+from scripts.capture_prebuilt_bundle import seal, preserve_failure
 
 FRONTEND_SHA = 'b2abea1c85cf5b38f248e4af4f3523e0ce1e7252'
 SELECTOR_SHA256 = 'ee658256471efee8112a31cb9ec884ad9933dc33cca8941cbda3b7df7710e7c6'
@@ -100,6 +101,9 @@ def main(controller, directory):
         return result.stdout
 
     try:
+        if os.environ.get('GITHUB_RUN_ATTEMPT') != '1':
+            raise ValueError('Only first capture attempt is authorized')
+        run(['git', 'merge-base', '--is-ancestor', '146605fd0dee1b83f73137c2448c83de9622f073', controller], 'T-ancestor')
         node = run(['node', '--version'], 'node-version').strip()
         npm = run(['npm', '--version'], 'npm-version').strip()
         if (node, npm) != ('v20.20.2', '10.8.2'):
@@ -117,6 +121,7 @@ def main(controller, directory):
             path.mkdir()
             (path / '.env.production.local').write_text('')
         write(artifact / '.vercel/project.json', settings)
+        write(reports / 'static-project-settings.json', settings)
         tooling = directory / 'tooling'
         # Private tool installation only: the application lock is never disabled.
         run(['npm', 'install', '--prefix', str(tooling), '--ignore-scripts', '--no-audit',
@@ -158,9 +163,26 @@ def main(controller, directory):
               'controller': controller, 'frontend': FRONTEND_SHA, 'node': node, 'npm': npm,
               'production_credentials': False, 'provider_mutations': 0,
               'dependency_review': 'Actual Linux inventory still requires independent review; no blanket platform exemption.'})
+        context = {'approved_base_T': '146605fd0dee1b83f73137c2448c83de9622f073',
+                   'controller_U': controller, 'frontend_F': FRONTEND_SHA,
+                   'frontend_tree': run(['git', 'rev-parse', FRONTEND_SHA + '^{tree}'], 'F-tree').strip(),
+                   'run_id': os.environ.get('GITHUB_RUN_ID'), 'attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+                   'node': node, 'npm': npm, 'vercel': '63.1.2', 'selector_sha256': SELECTOR_SHA256,
+                   'build_command': ['node', 'vercel/dist/vc.js', 'build', '--prod', '--yes'],
+                   'project_settings': settings, 'build_semantics': 'UNCHANGED_T_EMPTY_APP_ENV_STATIC_SETTINGS',
+                   'production_applicability': 'NOT_ESTABLISHED', 'independent_content_review': 'PENDING'}
+        write(reports / 'capture-context.json', context)
+        seal(artifact, reports, prebuilt, context, directory / 'upload')
     except Exception as error:
-        write(reports / 'RESULT.json', {'status': 'FAIL_CLOSED', 'error': str(error),
+        write(reports / 'RESULT.json', {'status': 'FAIL_CLOSED', 'error_class': type(error).__name__,
               'production_credentials': False, 'provider_mutations': 0})
+        upload = directory / 'upload'
+        upload.mkdir(exist_ok=True)
+        try:
+            preserve_failure(reports, upload, type(error).__name__)
+        except Exception:
+            write(upload / 'CAPTURE-FAILURE.json', {'status': 'HOLD_CAPTURE_INCOMPLETE',
+                  'reports_unavailable_or_private_or_oversized': True, 'no_automatic_retry': True})
         raise
 
 

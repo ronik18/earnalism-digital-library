@@ -95,7 +95,7 @@ jobs:
         run: python3 -m unittest scripts.test_reader_benchmark_runner scripts.test_catalogue_compliance_workflow_cost scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
       - name: Validate historical unavailable snapshots and raw HTML canary
-        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_isolated_seo_build scripts.test_frontend_build_qualification scripts.test_verify_backend_release scripts.test_reader_startup_readonly -v
+        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_isolated_seo_build scripts.test_frontend_build_qualification scripts.test_complete_release_capture scripts.test_verify_backend_release scripts.test_reader_startup_readonly -v
 
       - name: Validate additive health attestation in isolated ASGI
         run: |
@@ -214,11 +214,41 @@ jobs:
           [[ "$CONTROLLER_SHA" == "$GITHUB_SHA" ]] || exit 1
           python3 -m scripts.qualify_frontend_build_only --controller-sha "$CONTROLLER_SHA" --output-root "$RUNNER_TEMP/frontend-build-only-$GITHUB_RUN_ID"
 
-      - name: Retain non-secret qualification receipts
+      - name: Record explicit incomplete-capture marker if needed
         if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / ('frontend-build-only-' + os.environ['GITHUB_RUN_ID']) / 'upload'
+          out.mkdir(parents=True, exist_ok=True)
+          if not (out / 'release-candidate.zip').exists() and not (out / 'CAPTURE-FAILURE.json').exists():
+              (out / 'CAPTURE-FAILURE.json').write_text(json.dumps({'status':'HOLD_CAPTURE_NOT_COMPLETED','no_automatic_retry':True}))
+          PY
+
+      - name: Retain complete bounded public capture or explicit failure marker
+        if: always()
+        id: capture_upload
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: frontend-build-only-${{ github.sha }}-${{ github.run_id }}
-          path: ${{ runner.temp }}/frontend-build-only-${{ github.run_id }}/reports/
+          name: release-candidate-${{ github.sha }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/frontend-build-only-${{ github.run_id }}/upload/
           retention-days: 3
+          compression-level: 0
           if-no-files-found: warn
+
+      - name: Verify actual hosted artifact size
+        if: steps.capture_upload.outputs.artifact-id != ''
+        env:
+          CAPTURE_ARTIFACT_ID: ${{ steps.capture_upload.outputs.artifact-id }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          artifact_id = os.environ['CAPTURE_ARTIFACT_ID']
+          assert artifact_id.isdecimal()
+          url = 'https://api.github.com/repos/ronik18/earnalism-digital-library/actions/artifacts/' + artifact_id
+          with urllib.request.urlopen(urllib.request.Request(url, headers={'Accept':'application/vnd.github+json'}), timeout=20) as response:
+              metadata = json.load(response)
+          assert metadata['size_in_bytes'] <= 64 * 1024 * 1024
+          print(json.dumps({'artifact_id':artifact_id,'actual_compressed_bytes':metadata['size_in_bytes'],'status':'PASS_SIZE_ONLY_PENDING_IMMEDIATE_INDEPENDENT_DOWNLOAD'}))
+          PY
