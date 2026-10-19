@@ -14,8 +14,17 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit, urlunsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+
+class NoRedirectHandler(HTTPRedirectHandler):
+    """Keep each existing check to one GET; a redirect must fail its policy."""
+
+    def redirect_request(self, request, fp, code, message, headers, new_url):
+        return None
+
+
+CANARY_OPENER = build_opener(NoRedirectHandler())
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "launch"
@@ -227,7 +236,7 @@ def fetch_raw_html(base_url: str, route: str, timeout: int) -> tuple[int, dict[s
     url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
     request = Request(url, headers={"User-Agent": "EarnalismStaticSeoCanary/2.0"})
     try:
-        with urlopen(request, timeout=timeout) as response:
+        with CANARY_OPENER.open(request, timeout=timeout) as response:
             return response.status, dict(response.headers.items()), response.read().decode("utf-8", errors="replace"), response.url
     except HTTPError as error:
         return error.code, dict(error.headers.items()), error.read().decode("utf-8", errors="replace"), error.url
@@ -239,7 +248,7 @@ def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, o
     url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
     request = Request(url, headers={"Accept": "application/json", "User-Agent": "EarnalismStaticSeoCanary/2.0"})
     try:
-        with urlopen(request, timeout=timeout) as response:
+        with CANARY_OPENER.open(request, timeout=timeout) as response:
             status, body, response_url = response.status, response.read().decode("utf-8", errors="replace"), response.url
             headers = dict(response.headers.items())
     except HTTPError as error:

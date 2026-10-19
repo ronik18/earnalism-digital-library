@@ -9,6 +9,8 @@ import subprocess
 import tempfile
 import json
 import unittest
+import threading
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from unittest.mock import patch
 from pathlib import Path
 
@@ -350,6 +352,73 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
             target.write_text(html)
             self.assertNotEqual(self.verify().returncode, 0)
             self.assertEqual(MODULE.inspect_route("/book/bn-060", {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}, 200, {}, html, "https://theearnalism.com/book/bn-060")["result"], "FAIL")
+
+
+class CanaryRedirectBudgetTests(unittest.TestCase):
+    def test_static_transports_do_not_follow_redirects(self):
+        paths = []
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                paths.append(self.path)
+                self.send_response(302)
+                self.send_header("Location", "/must-not-be-requested")
+                self.end_headers()
+
+            def log_message(self, *args):
+                pass
+
+        server = HTTPServer(("127.0.0.1", 0), Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            base = "http://127.0.0.1:" + str(server.server_port)
+            html = MODULE.fetch_raw_html(base, "/html", 2)
+            api = MODULE.fetch_protected_api(base, "/api", 2)
+            self.assertEqual(html[0], 302)
+            self.assertEqual(api[0], 302)
+            self.assertEqual(paths, ["/html", "/api"])
+            policy = MODULE.ROUTES["/library"]
+            self.assertEqual(MODULE.inspect_route("/library", policy, *html)["result"], "FAIL")
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join()
+
+    def test_js_canary_disallows_redirects_and_preserves_all_four_checks(self):
+        script = SCRIPT.parent.parent / "regression/scripts/post-deploy-canary.js"
+        # Real HTTP helper/entrypoint, mocked fetch transport: no external requests.
+        for redirected in (False, True):
+            code = r'''
+const fs = require("fs");
+let calls = 0;
+global.fetch = async (url, options) => {
+  calls++;
+  if (options.method !== "GET" || options.redirect !== "manual") {
+    throw new Error("canary transport did not enforce one GET");
+  }
+  let status = 200, text = "ok";
+  if (url.endsWith("/api/books")) {
+    status = 451; text = JSON.stringify({detail:{code:"RELEASE_PROXY_SCOPE_INVALID"}});
+  } else if (url.endsWith("/api/admin/books")) { status = 401; text = ""; }
+  if (process.env.FAKE_REDIRECT === "true") { status = 302; text = ""; }
+  return {status, ok:status >= 200 && status < 300, redirected:false,
+    headers:new Headers({Location:"https://unapproved.invalid/"}),
+    text:async()=>text, body:{cancel:async()=>{}}};
+};
+process.on("exit", () => {
+  if (calls !== 4) { process.exitCode = 90; }
+});
+require(process.argv[1]);
+'''
+            import os
+            env = {**os.environ, "FAKE_REDIRECT": str(redirected).lower(),
+                   "REGRESSION_FRONTEND_URL": "https://theearnalism.com",
+                   "REGRESSION_API_URL": "https://api.theearnalism.com"}
+            with tempfile.TemporaryDirectory() as work:
+                result = subprocess.run(["node", "-e", code, str(script)], cwd=work,
+                                        env=env, capture_output=True, text=True, timeout=10)
+            self.assertEqual(result.returncode, 1 if redirected else 0, result.stderr)
 
 
 if __name__ == "__main__":

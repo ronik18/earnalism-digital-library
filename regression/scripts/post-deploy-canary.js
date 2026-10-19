@@ -35,21 +35,21 @@ async function main() {
   process.env.REGRESSION_MODE = "canary";
   const checks = [];
   checks.push(await check("frontend homepage is reachable", async () => {
-    const response = await request(frontendUrl(), { skipBody: true });
+    const response = await request(frontendUrl(), { skipBody: true, redirect: "manual" });
     if (!response.ok) throw new Error(`frontend status=${response.status}`);
   }));
   checks.push(await check("backend healthz is ok", async () => {
-    const response = await request(`${apiOrigin()}/healthz`);
+    const response = await request(`${apiOrigin()}/healthz`, { redirect: "manual" });
     if (!response.ok || !/ok/i.test(response.text)) throw new Error(`healthz status=${response.status}`);
   }));
   checks.push(await check("direct backend books API rejects unsigned release scope", async () => {
-    const response = await getJson(`${apiUrl()}/books`);
+    const response = await getJson(`${apiUrl()}/books`, { redirect: "manual" });
     if (response.status !== 451 || response.data?.detail?.code !== "RELEASE_PROXY_SCOPE_INVALID") {
       throw new Error(`unsigned books API did not fail closed: status=${response.status}`);
     }
   }));
   checks.push(await check("admin API still requires auth", async () => {
-    const response = await request(`${apiUrl()}/admin/books`, { skipBody: true });
+    const response = await request(`${apiUrl()}/admin/books`, { skipBody: true, redirect: "manual" });
     if (![401, 403].includes(response.status)) throw new Error(`admin API status=${response.status}`);
   }));
 
