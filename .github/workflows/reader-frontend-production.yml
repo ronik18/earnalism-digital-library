@@ -409,10 +409,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout deployed frontend commit
+      - name: Checkout reviewed canary controller
         uses: actions/checkout@v6
         with:
-          ref: ${{ env.FRONTEND_SHA }}
+          ref: ${{ env.CONTROLLER_SHA }}
+
+      - name: Verify canary controller identity
+        run: test "$(git rev-parse HEAD)" = "$CONTROLLER_SHA"
 
       - name: Set up Node
         uses: actions/setup-node@v6

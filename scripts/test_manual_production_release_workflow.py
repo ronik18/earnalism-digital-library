@@ -262,9 +262,26 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn('  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c', SOURCE)
         self.assertEqual(SOURCE.count('--expected-sha "$BACKEND_SHA"'), 3)
         self.assertNotIn('--expected-sha "$TARGET_SHA"', SOURCE)
-        self.assertIn('ref: ${{ env.FRONTEND_SHA }}', SOURCE)
+        canary = SOURCE.split('  frontend_production_canary:', 1)[1]
+        self.assertIn('ref: ${{ env.CONTROLLER_SHA }}', canary)
+        self.assertNotIn('ref: ${{ env.FRONTEND_SHA }}', canary)
         self.assertIn('contents: read\n  actions: read', SOURCE)
         self.assertNotIn('contents: write', SOURCE)
+
+    def test_canary_checkout_executes_controller_instead_of_frontend_revision(self):
+        job = parse_workflow(SOURCE)['jobs']['frontend_production_canary']
+        checkout = next(step for step in job['steps'] if step.get('uses', '').startswith('actions/checkout@'))
+        revisions = {'${{ env.CONTROLLER_SHA }}': self.sha,
+                     '${{ env.FRONTEND_SHA }}': self.frontend}
+        self.git('checkout', '--detach', revisions[checkout['with']['ref']])
+        self.assertEqual(self.git('rev-parse', 'HEAD').strip(), self.sha)
+        self.assertTrue((self.repo / 'controller.txt').is_file())
+        self.assertEqual(self.git('rev-parse', 'HEAD:frontend'), self.git('rev-parse', self.frontend + ':frontend'))
+        identity = next(step['run'] for step in job['steps'] if step.get('name') == 'Verify canary controller identity')
+        for expected, status in [(self.sha, 0), (self.frontend, 1)]:
+            result = subprocess.run(['bash', '-c', identity], cwd=self.repo,
+                                    env={**os.environ, 'CONTROLLER_SHA': expected}, capture_output=True)
+            self.assertEqual(result.returncode, status)
 
     def test_distinct_controller_frontend_and_backend_admit_only_exact_pair(self):
         self.assertEqual(len({self.sha, self.frontend, self.backend}), 3)
