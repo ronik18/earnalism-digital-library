@@ -76,7 +76,7 @@ def dependency_inventory(root):
             'limit': 'No platform difference or auto-added package is silently exempted or approved by this build-only job.'}
 
 
-def main(controller, directory):
+def main(controller, directory, public_profile=False):
     if not re.fullmatch(r'[0-9a-f]{40}', controller):
         raise ValueError('Controller must be a full immutable SHA')
     exact_clean_source(ROOT, controller)
@@ -91,6 +91,16 @@ def main(controller, directory):
     for name in ('empty-user.npmrc', 'empty-global.npmrc'):
         (directory / name).write_text('')
     env = private_environment(directory)
+    if public_profile:
+        from scripts.frontend_public_build import PUBLIC_REFERENCE, public_inputs
+        projection = json.loads(PUBLIC_REFERENCE.read_text())
+        context_inputs = {'controller_sha': controller, 'frontend_sha': FRONTEND_SHA, 'public_build_inputs': {
+            'all_values_public': True, 'operator': 'Automated PR technical qualification; no release authority',
+            'env': projection, 'excluded_client_inputs': ['REACT_APP_API_URL']}}
+        public_inputs(context_inputs, controller)
+        env.pop('REACT_APP_API_URL', None)
+        env.pop('SEO_API_BASE_URL', None)
+        env.update(projection)
 
     def run(command, name, cwd=ROOT, child_env=None, timeout=900):
         result = subprocess.run(command, cwd=cwd, env=child_env or env,
@@ -157,6 +167,11 @@ def main(controller, directory):
         prebuilt = json.loads((reports / 'prebuilt-manifest.json').read_text())
         write(reports / 'complete-output-inventory.json', selected_inventory(artifact, prebuilt))
         write(reports / 'installed-dependency-inventory.json', dependency_inventory(artifact))
+        if public_profile:
+            from scripts.verify_build_dependency_identity import verify as check_dependencies, runtime_identity, REFERENCE
+            from scripts.frontend_public_build import digest, output_identity
+            write(reports / 'public-input-binding.json', {'profile': projection, 'sha256': digest(projection), 'controller': controller, 'frontend': FRONTEND_SHA, 'output': output_identity(artifact)})
+            write(reports / 'dependency-identity-gate.json', check_dependencies(artifact, json.loads(REFERENCE.read_text()), runtime_identity(cli_path=str(cli / 'dist/vc.js'))))
         exact_clean_source(artifact, FRONTEND_SHA)
         exact_clean_source(ROOT, controller)
         write(reports / 'RESULT.json', {'status': 'PASS_BUILD_PACKAGING_ONLY_NOT_RELEASE_AUTHORIZATION',
@@ -169,7 +184,7 @@ def main(controller, directory):
                    'run_id': os.environ.get('GITHUB_RUN_ID'), 'attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
                    'node': node, 'npm': npm, 'vercel': '63.1.2', 'selector_sha256': SELECTOR_SHA256,
                    'build_command': ['node', 'vercel/dist/vc.js', 'build', '--prod', '--yes'],
-                   'project_settings': settings, 'build_semantics': 'UNCHANGED_T_EMPTY_APP_ENV_STATIC_SETTINGS',
+                   'project_settings': settings, 'build_semantics': 'REVIEWED_PUBLIC_PROJECTION' if public_profile else 'UNCHANGED_T_EMPTY_APP_ENV_STATIC_SETTINGS',
                    'production_applicability': 'NOT_ESTABLISHED', 'independent_content_review': 'PENDING'}
         write(reports / 'capture-context.json', context)
         seal(artifact, reports, prebuilt, context, directory / 'upload')
@@ -190,5 +205,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--controller-sha', required=True)
     parser.add_argument('--output-root', type=Path, required=True)
+    parser.add_argument('--public-profile', action='store_true', help='New PR technical qualification only; never replay the consumed retention capture')
     args = parser.parse_args()
-    main(args.controller_sha, args.output_root)
+    main(args.controller_sha, args.output_root, args.public_profile)

@@ -1,0 +1,52 @@
+{
+  "schema": "reader-build-dependency-reference.v1",
+  "scope": "Proposed exact observed Linux qualification reference; not release authorization",
+  "frontend_sha": "b2abea1c85cf5b38f248e4af4f3523e0ce1e7252",
+  "package_json_sha256": "2b50494a6b1a60be49bfda6f3b61f913354623da8faae40a9218f17fa3a4020e",
+  "package_lock_sha256": "69f65c689221b95a18d03531177bdd2b75ba6a3dd65b4c553e7f9de824911813",
+  "runtime": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "node": "v20.20.2",
+    "npm": "10.8.2",
+    "vercel": "63.1.2",
+    "selector_sha256": "ee658256471efee8112a31cb9ec884ad9933dc33cca8941cbda3b7df7710e7c6"
+  },
+  "installed_count": 1487,
+  "darwin_optional_omissions": [
+    "node_modules/fsevents",
+    "node_modules/playwright/node_modules/fsevents"
+  ],
+  "observed_unlocked_tools": {
+    "node_modules/@types/react": {
+      "version": "19.3.0",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz",
+      "integrity": "sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg=="
+    },
+    "node_modules/@types/react-dom": {
+      "version": "19.3.0",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz",
+      "integrity": "sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q=="
+    },
+    "node_modules/csstype": {
+      "version": "3.2.3",
+      "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz",
+      "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="
+    },
+    "node_modules/typescript": {
+      "version": "4.9.5",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz",
+      "integrity": "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
+    }
+  },
+  "provenance": {
+    "run": 39157190742,
+    "attempt": 1,
+    "controller": "146605fd0dee1b83f73137c2448c83de9622f073",
+    "inventory_sha256": "d7f32156fda575c392b1a6743f3ed4fdf69263c0dddbb0ccc9731f04a8cc87d5",
+    "artifact_zip_sha256": "92d3c600520fcb692f2f75a624f1a8dd9869a36508bbcf6c41d6e8f6ab1783e6",
+    "retained_complete_run": 39183748275,
+    "retained_complete_controller": "115800f3bbedfdbc23ac912eed5bdaa67c436823",
+    "retained_complete_archive_sha256": "e09bb4aa48aae818d055a6374089cb2a16852c2785b92348e5d4386a18100c83"
+  }
+}

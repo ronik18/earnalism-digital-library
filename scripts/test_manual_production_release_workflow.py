@@ -210,7 +210,10 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn("needs.backend_verify.result == 'success'", deploy)
         self.assertIn("needs.deploy_frontend.outputs.deployed == 'true'", canary)
         self.assertIn('      - backend_verify\n      - deploy_frontend', canary)
-        self.assertIn('args=(build --prod --yes', deploy)
+        self.assertIn('python3 -m scripts.frontend_public_build', deploy)
+        public_builder = (ROOT / 'scripts/frontend_public_build.py').read_text()
+        self.assertIn("'build','--prod','--yes'", public_builder)
+        self.assertIn('cwd=root,env=env', public_builder)
         self.assertIn('args=(deploy --prebuilt --prod', deploy)
         self.assertIn('python3 scripts/post_deploy_static_seo_canary.py', canary)
         self.assertIn('bash scripts/run_pr_regression.sh', REGRESSION)
@@ -305,7 +308,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertNotEqual(self.execute('Build frontend for Vercel').returncode, 0)
         self.assertNotEqual(self.execute('Build frontend for Vercel', FRONTEND_SHA=self.sha).returncode, 0)
         self.assertFalse(self.forbidden.exists(), 'Invalid artifacts must stop before any provider command')
-        self.assertIn('cd "$FRONTEND_DIR"', step_script('Build frontend for Vercel'))
+        self.assertIn('--source-root "$FRONTEND_DIR"', step_script('Build frontend for Vercel'))
         self.assertIn('cd "$FRONTEND_DIR"', step_script('Deploy frontend to Vercel production'))
 
     def artifact_guard(self, **overrides):

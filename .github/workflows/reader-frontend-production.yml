@@ -256,7 +256,7 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "20.20.2"
 
       - name: Install Vercel CLI
         if: steps.vercel-check.outputs.enabled == 'true'
@@ -281,19 +281,9 @@ jobs:
           );
           NODE
 
-      - name: Pull Vercel production environment
-        if: steps.vercel-check.outputs.enabled == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd "$FRONTEND_DIR"
-          args=(pull --yes --environment=production)
-          if [[ -n "${VERCEL_SCOPE}" ]]; then
-            args+=(--scope "${VERCEL_SCOPE}")
-          fi
-          vercel "${args[@]}"
-
       - name: Build frontend for Vercel
+        env:
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         run: |
@@ -304,14 +294,13 @@ jobs:
           echo 'BUILD_SOURCE_CLEAN=YES'
           generated_seo_dir="$RUNNER_TEMP/reader-generated-seo"
           python3 scripts/verify_isolated_seo_build.py --prepare --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA"
-          cd "$FRONTEND_DIR"
-          rm -rf .vercel/output
-          args=(build --prod --yes)
-          if [[ -n "${VERCEL_SCOPE}" ]]; then
-            args+=(--scope "${VERCEL_SCOPE}")
-          fi
-          NPM_CONFIG_SAVE=false SEO_ASSETS_OUTPUT_DIR="$generated_seo_dir" vercel "${args[@]}"
+          python3 -m scripts.frontend_public_build --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --receipt /tmp/vercel-public-build.json
           python3 "$GITHUB_WORKSPACE/scripts/verify_isolated_seo_build.py" --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA" --output /tmp/vercel-isolated-seo.json
+
+      - name: Verify exact built dependency identities
+        if: steps.vercel-check.outputs.enabled == 'true'
+        run: |
+          python3 "$GITHUB_WORKSPACE/scripts/verify_build_dependency_identity.py" --source-root "$FRONTEND_DIR" --output /tmp/vercel-dependency-identity.json
 
       - name: Verify source and prebuilt function packaging
         if: steps.vercel-check.outputs.enabled == 'true'
@@ -333,6 +322,8 @@ jobs:
             /tmp/vercel-source-packaging.json
             /tmp/vercel-prebuilt-packaging.json
             /tmp/vercel-isolated-seo.json
+            /tmp/vercel-dependency-identity.json
+            /tmp/vercel-public-build.json
 
       - name: Recheck controller and artifact authorization before deployment
         run: *controller_source_gate
@@ -351,6 +342,7 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
         env:
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
@@ -372,6 +364,8 @@ jobs:
             --backend-url https://api.theearnalism.com
           git fetch --no-tags origin main
           [[ "$CONTROLLER_SHA" == "$(git rev-parse origin/main)" && "$CONTROLLER_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
+          python3 "$GITHUB_WORKSPACE/scripts/verify_build_dependency_identity.py" --source-root "$FRONTEND_DIR" --output /tmp/vercel-dependency-identity-predeploy.json
+          python3 -m scripts.frontend_public_build --verify-only --source-root "$FRONTEND_DIR" --receipt /tmp/vercel-public-build.json
           cd "$FRONTEND_DIR"
           args=(deploy --prebuilt --prod --meta "githubCommitSha=$FRONTEND_SHA" --meta "readerControllerSha=$CONTROLLER_SHA" --meta "readerBackendSha=$BACKEND_SHA")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
@@ -423,7 +417,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "20.20.2"
           cache: npm
           cache-dependency-path: package-lock.json
 
