@@ -55,6 +55,7 @@ class PublicBuildTests(unittest.TestCase):
             def build(command,**kwargs):
                 self.assertEqual(command,['node',str(cli),'build','--prod','--yes'])
                 self.assertEqual(kwargs['cwd'],root);self.assertEqual(kwargs['timeout'],900)
+                self.assertEqual(kwargs['env']['SEO_ASSETS_OUTPUT_DIR'],str(base/'seo'))
                 self.assertNotIn('VERCEL_TOKEN',kwargs['env']);self.assertNotIn('REACT_APP_API_URL',kwargs['env'])
                 self.assertEqual(kwargs['env']['REACT_APP_ENABLE_LAUNCH_ANALYTICS'],'true')
                 out=root/'.vercel/output';out.mkdir();(out/'config.json').write_text('synthetic output')

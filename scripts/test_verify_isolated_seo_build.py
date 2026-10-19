@@ -2,6 +2,8 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import shlex
+import sys
 import tempfile
 import unittest
 
@@ -100,8 +102,8 @@ class IsolatedSeoBuildTests(unittest.TestCase):
         from scripts.test_manual_production_release_workflow import ROOT, step_script
         binary = self.base / 'bin'
         binary.mkdir()
-        stub = binary / 'vercel'
-        stub.write_text('#!/bin/bash\n[[ "$1" == build ]] || exit 98\nprintf "local simulated generator/build failure\\n" >&2\nexit 73\n')
+        stub = binary / 'python3'
+        stub.write_text('#!/bin/bash\nif [[ "$1" == -m && "$2" == scripts.frontend_public_build ]]; then\n  printf "local simulated generator/build failure\\n" >&2\n  exit 73\nfi\nexec ' + shlex.quote(sys.executable) + ' "$@"\n')
         stub.chmod(0o700)
         result = subprocess.run(['bash', '-eu', '-c', step_script('Build frontend for Vercel')],
                                 cwd=ROOT, text=True, capture_output=True,
@@ -148,7 +150,7 @@ class IsolatedSeoBuildTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         workflow = (root / '.github/workflows/reader-frontend-production.yml').read_text()
         block = workflow.split('      - name: Build frontend for Vercel\n', 1)[1].split('      - name: Verify source and prebuilt function packaging', 1)[0]
-        invocation = 'NPM_CONFIG_SAVE=false SEO_ASSETS_OUTPUT_DIR="$generated_seo_dir" vercel "${args[@]}"'
+        invocation = 'python3 -m scripts.frontend_public_build --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --receipt /tmp/vercel-public-build.json'
         self.assertEqual(workflow.count(invocation), 1)
         self.assertIn(invocation, block)
         self.assertLess(block.index('--prepare --source-root "$FRONTEND_DIR"'), block.index(invocation))
