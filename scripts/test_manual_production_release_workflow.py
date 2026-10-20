@@ -153,6 +153,33 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertNotEqual(self.execute(gate, FRONTEND_BASELINE_SHA=self.sha).returncode, 0)
         self.assertNotEqual(self.execute(gate, FRONTEND_REVIEW_SHA='bad').returncode, 0)
 
+    def test_controller_merge_review_requires_identical_full_tree(self):
+        gate = 'Verify manual release authorization and clean source'
+        reviewed = self.sha
+        self.git('checkout', '-b', 'review-base', self.frontend)
+        self.git('merge', '--no-ff', reviewed, '-m', 'synthetic reviewed merge')
+        self.sha = self.git('rev-parse', 'HEAD').strip()
+
+        def publish_local_fixture():
+            # Both repositories are created by setUp inside this disposable directory.
+            self.assertTrue(self.remote.resolve().is_relative_to(self.root.resolve()))
+            self.assertTrue(self.repo.resolve().is_relative_to(self.root.resolve()))
+            self.assertEqual(self.git('remote', 'get-url', 'origin').strip(), str(self.remote))
+            subprocess.run(['git', '--git-dir', str(self.remote), 'fetch', str(self.repo), 'HEAD'],
+                           check=True, capture_output=True)
+            subprocess.run(['git', '--git-dir', str(self.remote), 'update-ref',
+                            'refs/heads/main', self.sha], check=True, capture_output=True)
+
+        publish_local_fixture()
+        self.assertEqual(self.execute(gate).returncode, 0)
+        self.assertIn('CONTROLLER_REVIEW_SHA=' + reviewed, (self.root / 'github-env').read_text())
+        (self.repo / 'unreviewed-controller.txt').write_text('synthetic unreviewed difference')
+        self.git('add', '.')
+        self.git('commit', '--amend', '--no-edit')
+        self.sha = self.git('rev-parse', 'HEAD').strip()
+        publish_local_fixture()
+        self.assertNotEqual(self.execute(gate).returncode, 0)
+
     def test_wrong_sha_and_confirmation_fail_before_dependencies(self):
         for overrides in ({'TARGET_SHA': '0' * 40}, {'TARGET_SHA': 'main'},
                           {'TARGET_SHA': ''}, {'CONFIRM_PRODUCTION': ''},
@@ -442,7 +469,8 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             return io.StringIO(json.dumps({'workflow_runs': [] if empty else [record]}))
         with mock.patch.dict(os.environ, {'GITHUB_REPOSITORY': 'ronik18/earnalism-digital-library',
                                          'FRONTEND_SHA': self.frontend, 'CONTROLLER_SHA': self.sha,
-                                         'FRONTEND_REVIEW_SHA': self.frontend, 'FRONTEND_BASELINE_SHA': self.backend, 'ACTIONS_TOKEN': 'synthetic-ci-only-token'}), \
+                                         'FRONTEND_REVIEW_SHA': self.frontend, 'FRONTEND_BASELINE_SHA': self.backend,
+                                         'CONTROLLER_REVIEW_SHA': self.sha, 'ACTIONS_TOKEN': 'synthetic-ci-only-token'}), \
              mock.patch('urllib.request.urlopen', side_effect=response):
             exec(compile(code, '<actual-workflow-ci-gate>', 'exec'), {})
         return records
