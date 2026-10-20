@@ -759,6 +759,232 @@ class WorkflowContextAvailabilityTests(unittest.TestCase):
         self.assertEqual(environment_context_errors(workflow), [])
 
 
+class ConditionalPromotionTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.now = dt.datetime(2026, 10, 20, tzinfo=dt.timezone.utc)
+        self.env = {"VERCEL_PROJECT_ID": gate.PROJECT, "VERCEL_ORG_ID": gate.TEAM,
+                    "FRONTEND_SHA": "a" * 40, "CONTROLLER_SHA": "b" * 40,
+                    "BACKEND_SHA": "c" * 40, "CONDITIONAL_PROMOTION": "true",
+                    "RUNNER_TEMP": self.tmp.name}
+        self.metadata = {"id": "dpl_new", "projectId": gate.PROJECT, "ownerId": gate.TEAM,
+                         "target": "production", "readyState": "READY", "aliasAssigned": False,
+                         "aliasError": None, "ready": int(self.now.timestamp() * 1000),
+                         "meta": {"githubCommitSha": "a" * 40, "readerControllerSha": "b" * 40,
+                                  "readerBackendSha": "c" * 40}}
+        self.project = {"id": gate.PROJECT, "accountId": gate.TEAM,
+                        "autoAssignCustomDomains": False, "lastAliasRequest": None,
+                        "rollingRelease": None, "targets": {"production": {
+                            "id": gate.ROLLBACK, "alias": list(gate.HOSTS),
+                            "readyState": "READY", "target": "production", "aliasError": None}}}
+        self.domains = {"domains": [{"name": h, "projectId": gate.PROJECT, "verified": True}
+                                   for h in gate.HOSTS[:-1]], "pagination": {"next": None}}
+        self.calls = []
+        self.attempted = False
+        self.outcome = "succeeded"
+        self.command_mode = "success"
+        self.mixed = False
+        self.concurrent = []
+        self.ticks = 0
+        self.fresh_alias_error = None
+
+    def runner(self, argv, **kwargs):
+        self.calls.append((argv, kwargs))
+        if argv[1] == "promote":
+            self.attempted = True
+            if self.command_mode == "timeout":
+                raise subprocess.TimeoutExpired(argv, 65)
+            return subprocess.CompletedProcess(argv, 0,
+                "Promotion has been queued" if self.command_mode == "queued" else "Requested", "")
+        self.assertEqual(argv[1], "api")
+        self.assertEqual(argv[-3:], ["--method", "GET", "--raw"])
+        self.assertGreater(kwargs["timeout"], 0)
+        self.assertLessEqual(kwargs["timeout"], 5)
+        path = argv[2]
+        if "/aliases/" in path:
+            host = path.split("/aliases/", 1)[1].split("?", 1)[0]
+            assigned = "dpl_new" if self.attempted and self.outcome == "succeeded" else gate.ROLLBACK
+            if self.mixed and host == gate.HOSTS[0]:
+                assigned = "dpl_foreign"
+            data = {"alias": host, "projectId": gate.PROJECT, "deploymentId": assigned}
+        elif path.startswith("/v13/"):
+            data = copy.deepcopy(self.metadata)
+            data["aliasAssigned"] = self.attempted and self.outcome == "succeeded"
+            data["aliasError"] = self.fresh_alias_error
+        elif path.startswith("/v6/"):
+            data = {"deployments": self.concurrent}
+        elif "/domains?" in path:
+            data = self.domains
+        else:
+            data = copy.deepcopy(self.project)
+            if self.attempted:
+                data["lastAliasRequest"] = {"jobStatus": self.outcome,
+                    "toDeploymentId": "dpl_new", "type": "promote"}
+                if self.outcome == "succeeded":
+                    data["targets"]["production"]["id"] = "dpl_new"
+        return subprocess.CompletedProcess(argv, 0, json.dumps(data), "")
+
+    def execute(self):
+        return gate.conditional_promotion(self.metadata, runner=self.runner, environ=self.env,
+                                          now=self.now, clock=lambda: 0)
+
+    def mutations(self):
+        return [args for args, _ in self.calls if args[1] == "promote"]
+
+    def test_once_only_success_and_final_guard_share_snapshot(self):
+        result = self.execute()
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(self.mutations(), [["vercel", "promote", "dpl_new", "--scope", gate.TEAM, "--timeout", "0"]])
+        self.assertLessEqual(result["resolution_gets"], 30)
+        self.assertTrue((Path(self.tmp.name) / "reader-promotion-intent.json").exists())
+        # Final existing alias guard must perform no additional network reads.
+        final = gate.collect(self.metadata, environ=self.env, now=self.now,
+                             alias_snapshot=result["aliases"],
+                             runner=lambda *a, **k: self.fail("Unexpected extra GET"))
+        self.assertEqual(final["status"], "PASS")
+        self.attempted = False
+        self.metadata["aliasAssigned"] = False
+        with self.assertRaises(FileExistsError):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_new_alias_error_during_final_reread_stops_before_mutation(self):
+        self.fresh_alias_error = {"code": "SYNTHETIC_NEW_ERROR"}
+        with self.assertRaisesRegex(ValueError, "alias error"):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_ten_minute_window_is_rechecked_after_reads(self):
+        ticks = [0]
+        original_runner = self.runner
+        def advancing_runner(argv, **kwargs):
+            result = original_runner(argv, **kwargs)
+            if argv[1] == "api":
+                ticks[0] += 2
+            return result
+        # Ten minutes fifteen seconds remaining initially; final reads cross the admission floor.
+        self.metadata["ready"] -= 285000
+        with self.assertRaisesRegex(ValueError, "immediately before"):
+            gate.conditional_promotion(self.metadata, runner=advancing_runner,
+                environ=self.env, now=self.now, clock=lambda: ticks[0])
+        self.assertEqual(self.mutations(), [])
+
+    def test_timeout_resolves_without_second_mutation(self):
+        self.command_mode = "timeout"
+        self.assertEqual(self.execute()["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_queued_never_admits_canaries(self):
+        self.command_mode = "queued"
+        with self.assertRaisesRegex(ValueError, "NEEDS_OPERATOR_RESOLUTION"):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_pending_resolves_with_bounded_gets_and_no_retry(self):
+        self.outcome = "pending"
+        with self.assertRaisesRegex(ValueError, "NEEDS_OPERATOR_RESOLUTION"):
+            self.execute()
+        mutation = next(i for i, (args, _) in enumerate(self.calls) if args[1] == "promote")
+        self.assertLessEqual(len(self.calls[mutation+1:]), 30)
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_failed_old_serving_does_not_rollback_or_retry(self):
+        self.outcome = "failed"
+        with self.assertRaisesRegex(ValueError, "OLD_SERVING"):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_reject_preview_wrong_identity_source_and_expired_ready(self):
+        original = copy.deepcopy(self.metadata)
+        cases = [("target", "preview"), ("readyState", "BUILDING"),
+                 ("projectId", "foreign"), ("ownerId", "foreign"),
+                 ("id", gate.ROLLBACK), ("ready", 0), ("aliasError", {})]
+        for key, value in cases:
+            self.metadata = {**copy.deepcopy(original), key: value}
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.execute()
+        self.metadata = copy.deepcopy(original)
+        self.metadata["meta"]["readerControllerSha"] = "d" * 40
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_no_consent_or_mixed_domains_or_concurrent_deploy_stops(self):
+        self.env["CONDITIONAL_PROMOTION"] = "false"
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.env["CONDITIONAL_PROMOTION"] = "true"
+        self.mixed = True
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.mixed = False
+        self.concurrent = [{"uid": "dpl_other"}]
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_rolling_pending_or_unexpected_inventory_stops(self):
+        self.project["rollingRelease"] = {"active": True}
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.project["rollingRelease"] = None
+        self.project["lastAliasRequest"] = {"jobStatus": "in-progress"}
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.project["lastAliasRequest"] = None
+        self.domains["domains"].append({"name": "foreign.example"})
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+
+class FocusedSmokeTests(unittest.TestCase):
+    def test_eight_distinct_initials_and_no_old_overlapping_workflow_calls(self):
+        from scripts import reader_alias_canaries as smoke
+        self.assertEqual(len(smoke.SMOKE_URLS), 8)
+        self.assertEqual(len(set(smoke.SMOKE_URLS)), 8)
+        self.assertEqual(set(smoke.SMOKE_URLS[:4]), {
+            "https://theearnalism.com/", "https://www.theearnalism.com/",
+            "https://earnalism.vercel.app/", smoke.PROTECTED_URL})
+        self.assertIn('--focused-smoke', SOURCE)
+        canary = SOURCE.split('  frontend_production_canary:', 1)[1]
+        for old in ('post_deploy_route_canary.py', 'post_deploy_static_seo_canary.py',
+                    'post-deploy-canary.js'):
+            self.assertNotIn(old, canary)
+
+    def test_protected_exact_destination_validation_retained(self):
+        from scripts import reader_alias_canaries as smoke
+        good = "https://vercel.com/sso-api?url=" + smoke.PROTECTED_URL + "&nonce=" + "a" * 64
+        self.assertFalse(smoke.validate_protected_redirect(good)["followed"])
+        for bad in (good.replace('vercel.com/', 'vercel.com.evil/'),
+                    good.replace(smoke.PROTECTED_URL, 'https://theearnalism.com/'),
+                    good + '&extra=1', good.replace('nonce=', 'nonce=x'),
+                    good.replace('https://vercel.com', 'http://vercel.com')):
+            with self.subTest(bad=bad), self.assertRaises(RuntimeError):
+                smoke.validate_protected_redirect(bad)
+
+    def test_fixed_page_redirect_never_follows_and_budget_is_hard(self):
+        from scripts import reader_alias_canaries as smoke
+        class Response:
+            code = 302
+            headers = {"Location": "https://theearnalism.com/"}
+            def __enter__(self): return self
+            def __exit__(self, *_): pass
+        opener = mock.Mock()
+        opener.open.return_value = Response()
+        evidence = {"requests": 0, "probes": []}
+        with self.assertRaisesRegex(RuntimeError, 'no follow'):
+            smoke.probe(smoke.SMOKE_URLS[4], 10, opener, evidence, clock=lambda: 0,
+                        contract=smoke.PROPOSED_CONTRACT, focused=True)
+        self.assertEqual(opener.open.call_count, 1)
+        evidence = {"requests": 14, "probes": []}
+        with self.assertRaises(RuntimeError):
+            smoke.probe(smoke.SMOKE_URLS[0], 10, opener, evidence, clock=lambda: 0,
+                        contract=smoke.PROPOSED_CONTRACT, focused=True)
+        self.assertEqual(opener.open.call_count, 1)
+
+
 class AliasReleaseIntegrationTests(unittest.TestCase):
     def setUp(self):
         self.env = {"VERCEL_PROJECT_ID": gate.PROJECT, "VERCEL_ORG_ID": gate.TEAM,
