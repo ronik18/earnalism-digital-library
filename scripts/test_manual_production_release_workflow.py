@@ -5,6 +5,7 @@ import datetime as dt
 from contextlib import redirect_stdout
 from unittest.mock import patch
 from scripts import verify_reader_alias_bindings as gate
+from scripts import reader_existing_promotion as retained_runner
 import copy
 import datetime
 import json
@@ -759,6 +760,80 @@ class WorkflowContextAvailabilityTests(unittest.TestCase):
         workflow['jobs']['deploy_frontend']['env']['LABEL'] = (
             "${{ format('runner.temp is not a context here; it''s literal', github.ref) }}")
         self.assertEqual(environment_context_errors(workflow), [])
+
+
+class RetainedPromotionRunnerTests(unittest.TestCase):
+    def test_recovery_already_satisfied_never_posts_and_reports_protected_alias(self):
+        calls = []
+        def request(path, method, timeout, env):
+            calls.append(method)
+            if '/aliases/' in path:
+                host = path.rsplit('/', 1)[1]
+                return {'alias': host, 'projectId': gate.PROJECT,
+                        'deploymentId': gate.RETAINED_READY if host == gate.PROTECTED_HOST else gate.ROLLBACK}
+            if '/v13/' in path:
+                return {'id': gate.ROLLBACK, 'projectId': gate.PROJECT, 'ownerId': gate.TEAM,
+                        'target': 'production', 'readyState': 'READY',
+                        'meta': {'githubCommitSha': 'd79acb1952161cd56395e9bb4d7c1001ceaa69bb'}}
+            return {'id': gate.PROJECT, 'accountId': gate.TEAM,
+                    'targets': {'production': {'id': gate.ROLLBACK}}}
+        report = retained_runner.recovery({}, request=request)
+        self.assertFalse(report['rollback_post_allowed'])
+        self.assertFalse(report['all_four_restored'])
+        self.assertEqual(calls, ['GET'] * 6)
+
+    def test_recovery_uncertain_post_resolves_without_retry(self):
+        for terminal in ('succeeded', 'pending', 'failed', 'foreign'):
+            calls = []
+            with tempfile.TemporaryDirectory() as root:
+                def request(path, method, timeout, env):
+                    posts = calls.count('POST')
+                    calls.append(method)
+                    if method == 'POST': raise TimeoutError('synthetic lost acknowledgement')
+                    if '/aliases/' in path:
+                        host = path.rsplit('/', 1)[1]
+                        return {'alias': host, 'projectId': gate.PROJECT,
+                                'deploymentId': gate.ROLLBACK if posts else gate.RETAINED_READY}
+                    if '/v13/' in path:
+                        return {'id': gate.ROLLBACK, 'projectId': gate.PROJECT, 'ownerId': gate.TEAM,
+                                'target': 'production', 'readyState': 'READY',
+                                'meta': {'githubCommitSha': 'd79acb1952161cd56395e9bb4d7c1001ceaa69bb'}}
+                    return {'id': gate.PROJECT, 'accountId': gate.TEAM,
+                            'targets': {'production': {'id': gate.ROLLBACK if posts else gate.RETAINED_READY}},
+                            'lastAliasRequest': {'type': 'rollback', 'toDeploymentId':
+                                'dpl_foreign' if terminal == 'foreign' else gate.ROLLBACK,
+                                'jobStatus': terminal} if posts else None}
+                if terminal == 'succeeded':
+                    report = retained_runner.recovery({'RUNNER_TEMP': root}, request=request,
+                                                       clock=lambda: 0, pause=lambda _: None)
+                    self.assertFalse(report['rollback_post_allowed'])
+                else:
+                    with self.assertRaises(ValueError):
+                        retained_runner.recovery({'RUNNER_TEMP': root}, request=request,
+                                                  clock=lambda: 0, pause=lambda _: None)
+                self.assertEqual(calls.count('POST'), 1)
+                self.assertLessEqual(calls.count('GET'), 36)  # six prerequisite reads +30 resolution maximum
+
+    def test_expired_promotion_smoke_window_makes_no_request(self):
+        with tempfile.TemporaryDirectory() as root:
+            with self.assertRaises(ValueError):
+                retained_runner.focused_smoke(dt.datetime(2020, 1, 1, tzinfo=dt.timezone.utc),
+                                              Path(root) / 'smoke.json', opener=object())
+            self.assertFalse((Path(root) / 'smoke.json').exists())
+
+    def test_promotion_source_confirmation_and_opt_in_are_required(self):
+        # Real shell source gate, bounded synthetic repository; no provider.
+        fixture = ManualReleaseWorkflowTests('test_exact_main_and_confirmation_admit_clean_checkout')
+        fixture.setUp()
+        try:
+            for confirm, opt, success in [('PROMOTE_EXISTING_READY', 'true', True),
+                                           ('DEPLOY_PRODUCTION', 'true', False),
+                                           ('PROMOTE_EXISTING_READY', 'false', False)]:
+                result = fixture.execute('Verify manual release authorization and clean source',
+                    PROMOTION_ONLY='true', CONFIRM_PRODUCTION=confirm, CONDITIONAL_PROMOTION=opt)
+                self.assertEqual(result.returncode == 0, success, result.stderr)
+        finally:
+            fixture.doCleanups()
 
 
 class RollbackDispositionTests(unittest.TestCase):
