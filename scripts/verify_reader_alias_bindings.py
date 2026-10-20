@@ -34,7 +34,8 @@ def provider_request(path, method, timeout, env):
     """One native request, no redirects/retries, no credential or response logging."""
     token = env.get("VERCEL_TOKEN")
     if method not in ("GET", "POST") or (method == "POST" and not re.fullmatch(
-            r"/v10/projects/" + PROJECT + r"/promote/dpl_[A-Za-z0-9]+", path)):
+            (r"/v10/projects/" + PROJECT + r"/promote/dpl_[A-Za-z0-9]+|/v9/projects/"
+             + PROJECT + r"/rollback/" + ROLLBACK), path)):
         raise ValueError("Provider mutation route rejected")
     if not token or not path.startswith(("/v4/aliases/", "/v9/projects/", "/v13/deployments/", "/v6/deployments?", "/v10/projects/")):
         raise ValueError("Scoped provider request unavailable")

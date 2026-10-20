@@ -3,12 +3,17 @@ name: Exact-artifact owner-held frontend production release
 on:
   workflow_dispatch:
     inputs:
+      promotion_only:
+        description: Promote only the exact retained READY production deployment; no build/deploy
+        required: true
+        default: false
+        type: boolean
       target_sha:
         description: Approved immutable frontend artifact SHA (229df7f)
         required: true
         type: string
       confirm_production:
-        description: Type DEPLOY_PRODUCTION
+        description: DEPLOY_PRODUCTION, or PROMOTE_EXISTING_READY when promotion_only is true
         required: true
         type: string
 
@@ -36,6 +41,7 @@ env:
   TARGET_SHA: ${{ inputs.target_sha }}
   CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
   CONDITIONAL_PROMOTION: ${{ inputs.conditional_promotion }}
+  PROMOTION_ONLY: ${{ inputs.promotion_only }}
   RELEASE_EVENT: ${{ github.event_name }}
 
 defaults:
@@ -64,7 +70,11 @@ jobs:
           set -euo pipefail
           [[ "$RELEASE_EVENT" == 'workflow_dispatch' && "$GITHUB_REF" == 'refs/heads/main' ]] || exit 1
           [[ "$GITHUB_REPOSITORY" == 'ronik18/earnalism-digital-library' ]] || exit 1
-          [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          if [[ "${PROMOTION_ONLY:-false}" == 'true' ]]; then
+            [[ "$CONFIRM_PRODUCTION" == 'PROMOTE_EXISTING_READY' && "$CONDITIONAL_PROMOTION" == 'true' ]] || exit 1
+          else
+            [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          fi
           for value in "$TARGET_SHA" "$FRONTEND_SHA" "$FRONTEND_TREE" "$BACKEND_SHA" "$BACKEND_TREE" "$CONTROLLER_SHA" "$FRONTEND_REVIEW_SHA" "$FRONTEND_BASELINE_SHA"; do
             [[ "$value" =~ ^[0-9a-f]{40}$ ]] || exit 1
           done
@@ -135,7 +145,8 @@ jobs:
           cat "$RUNNER_TEMP/backend-startup.json" >> "$GITHUB_STEP_SUMMARY"
 
   deploy_frontend:
-    name: Vercel frontend deploy after pre-deploy pass
+    name: Protected frontend deploy or retained production promotion
+    timeout-minutes: ${{ inputs.promotion_only && 15 || 360 }}
     needs: backend_verify
     environment: reader-frontend-production
     if: >-
@@ -190,6 +201,11 @@ jobs:
               'no_backend_restart': True,
               'approved': True,
           }
+          if os.environ.get('PROMOTION_ONLY') == 'true':
+              expected.update(release_mode='promotion-only',
+                  retained_deployment='dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
+                  creation_controller_sha='2dad58e388918c9ea74d75935ef5d3753d93f4f3',
+                  conditional_rollback=True)
           for key, value in expected.items():
               if type(r.get(key)) is not type(value) or r[key] != value:
                   raise SystemExit('Release operator receipt binding mismatch: ' + key)
@@ -245,6 +261,7 @@ jobs:
           PYCODE
 
       - name: Prepare exact frontend artifact source
+        if: inputs.promotion_only != true
         run: |
           set -euo pipefail
           FRONTEND_DIR="$RUNNER_TEMP/reader-frontend-source"
@@ -277,17 +294,17 @@ jobs:
             --backend-url https://api.theearnalism.com
 
       - name: Set up Node
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         uses: actions/setup-node@v6
         with:
           node-version: "20.20.2"
 
       - name: Install Vercel CLI
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         run: npm install -g vercel@63.1.2
 
       - name: Link Vercel project
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           set -euo pipefail
@@ -308,7 +325,7 @@ jobs:
       - name: Build frontend for Vercel
         env:
           RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           set -euo pipefail
@@ -322,12 +339,12 @@ jobs:
           python3 "$GITHUB_WORKSPACE/scripts/verify_isolated_seo_build.py" --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA" --output /tmp/vercel-isolated-seo.json
 
       - name: Verify exact built dependency identities
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         run: |
           python3 "$GITHUB_WORKSPACE/scripts/verify_build_dependency_identity.py" --source-root "$FRONTEND_DIR" --output /tmp/vercel-dependency-identity.json
 
       - name: Verify source and prebuilt function packaging
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           python3 -m unittest scripts.test_verify_vercel_packaging -v
@@ -338,7 +355,7 @@ jobs:
           python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --root "$FRONTEND_DIR" --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
 
       - name: Publish function packaging evidence
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: vercel-function-packaging-${{ github.sha }}
@@ -363,7 +380,7 @@ jobs:
         run: *frontend_ci_gate
 
       - name: Deploy frontend to Vercel production
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         env:
           RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
@@ -419,7 +436,12 @@ jobs:
           print(json.dumps({'frontend_deployment': deployment['id'], 'source_sha': deployment['meta']['githubCommitSha'], 'status': 'PASS'}))
           PY
 
+      - name: Promote retained production asset and run one focused smoke
+        if: inputs.promotion_only == true
+        run: python3 -m scripts.reader_existing_promotion --output "$RUNNER_TEMP/reader-existing-promotion.json"
+
       - name: Verify all four exact production alias bindings
+        if: inputs.promotion_only != true
         id: alias-binding
         run: |
           set -euo pipefail
@@ -436,6 +458,9 @@ jobs:
           path: |
             ${{ runner.temp }}/reader-alias-binding.json
             ${{ runner.temp }}/reader-promotion-intent.json
+            ${{ runner.temp }}/reader-existing-promotion.json
+            ${{ runner.temp }}/reader-existing-smoke.json
+            ${{ runner.temp }}/reader-rollback-intent.json
           retention-days: 3
 
   frontend_production_canary:
@@ -444,6 +469,7 @@ jobs:
       - backend_verify
       - deploy_frontend
     if: >-
+      inputs.promotion_only != true &&
       github.event_name == 'workflow_dispatch' &&
       github.ref == 'refs/heads/main' &&
       needs.backend_verify.result == 'success' &&
