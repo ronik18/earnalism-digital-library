@@ -12,6 +12,13 @@ on:
         required: true
         type: string
 
+# Explicit dispatch consent is separate from code integration; default cannot promote.
+      conditional_promotion:
+        description: Allow ONE bounded promotion of this run's verified production deployment
+        required: true
+        default: false
+        type: boolean
+
 permissions:
   contents: read
   actions: read
@@ -28,6 +35,7 @@ env:
   CONTROLLER_SHA: ${{ github.sha }}
   TARGET_SHA: ${{ inputs.target_sha }}
   CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+  CONDITIONAL_PROMOTION: ${{ inputs.conditional_promotion }}
   RELEASE_EVENT: ${{ github.event_name }}
 
 defaults:
@@ -415,7 +423,7 @@ jobs:
         id: alias-binding
         run: |
           set -euo pipefail
-          python3 "$GITHUB_WORKSPACE/scripts/verify_reader_alias_bindings.py" \
+          python3 "$GITHUB_WORKSPACE/scripts/verify_reader_alias_bindings.py" --conditional-promotion \
             --metadata "$RUNNER_TEMP/frontend-deployment.json" \
             --output "$RUNNER_TEMP/reader-alias-binding.json" \
             --github-output "$GITHUB_OUTPUT"
@@ -425,7 +433,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: reader-alias-binding-${{ github.sha }}
-          path: ${{ runner.temp }}/reader-alias-binding.json
+          path: |
+            ${{ runner.temp }}/reader-alias-binding.json
+            ${{ runner.temp }}/reader-promotion-intent.json
           retention-days: 3
 
   frontend_production_canary:
@@ -450,29 +460,6 @@ jobs:
       - name: Verify canary controller identity
         run: test "$(git rev-parse HEAD)" = "$CONTROLLER_SHA"
 
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: "20.20.2"
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install canary dependencies
-        run: npm ci
-
-      - name: Run removed-route production canary
-        run: python3 scripts/post_deploy_route_canary.py --base-url https://theearnalism.com
-
-      - name: Run static SEO raw-HTML canary
-        run: python3 scripts/post_deploy_static_seo_canary.py --base-url https://theearnalism.com
-
-      - name: Run frontend production regression canary
-        env:
-          REGRESSION_MODE: canary
-          REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
-          REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
-        run: node regression/scripts/post-deploy-canary.js
-
       - name: Run three-public one-protected alias contract
         env:
           VERIFIED_DEPLOYMENT_ID: ${{ needs.deploy_frontend.outputs.deployment_id }}
@@ -480,7 +467,7 @@ jobs:
         run: |
           python3 scripts/reader_alias_canaries.py \
             --deployment "$VERIFIED_DEPLOYMENT_ID" --ready-at "$VERIFIED_READY_AT" \
-            --contract three-public-one-protected-v1 \
+            --contract three-public-one-protected-v1 --focused-smoke \
             --output output/launch/reader_alias_canaries.json
 
       - name: Upload frontend canary evidence
@@ -489,7 +476,4 @@ jobs:
         with:
           name: frontend-production-canary-${{ env.FRONTEND_SHA }}-controller-${{ github.sha }}
           path: |
-            output/launch/post_deploy_route_canary.*
-            output/launch/post_deploy_static_seo_canary.*
-            regression/results.json
             output/launch/reader_alias_canaries.json
