@@ -5485,6 +5485,8 @@ async def _release_startup_maintenance_lock(lock_key: str, token: str) -> None:
 
 
 async def _run_startup_database_maintenance() -> None:
+    if _acceptance_release_containment():
+        return
     if not _redis_state_enabled():
         await _run_startup_database_maintenance_with_retry()
         return
@@ -5525,28 +5527,38 @@ async def _run_startup_database_maintenance() -> None:
         await asyncio.sleep(1)
 
 
+def _acceptance_release_containment() -> bool:
+    try:
+        from reader_acceptance_operator import containment_enabled
+    except ImportError:
+        from backend.reader_acceptance_operator import containment_enabled
+    return containment_enabled()
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # ----- startup -----
+    acceptance_contained = _acceptance_release_containment()
     _install_sigterm_drain_marker()
     _log_cost_control_startup()
     await initialize_replica_state_backends()
-    if ENABLE_STARTUP_DB_MAINTENANCE:
+    if ENABLE_STARTUP_DB_MAINTENANCE and not acceptance_contained:
         await _run_startup_database_maintenance()
     else:
-        logger.info("Startup database maintenance is disabled by cost-control mode.")
+        logger.info("Startup database maintenance suppressed (acceptance_containment=%s).", acceptance_contained)
     _schedule_home_surface_warmup()
-    approved_reader_task = asyncio.create_task(_initialize_authorized_reader_release())
+    approved_reader_task = None if acceptance_contained else asyncio.create_task(_initialize_authorized_reader_release())
 
     yield
 
     # ----- shutdown -----
     _mark_shutdown_draining()
-    approved_reader_task.cancel()
-    try:
-        await approved_reader_task
-    except asyncio.CancelledError:
-        pass
+    if approved_reader_task is not None:
+        approved_reader_task.cancel()
+        try:
+            await approved_reader_task
+        except asyncio.CancelledError:
+            pass
     drain_deadline = time.monotonic() + 15
     while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
         await asyncio.sleep(0.1)
@@ -11358,6 +11370,8 @@ async def _initialize_authorized_reader_release() -> list[dict]:
     not a public endpoint, an admin impersonation, or a country observation.
     Actual delivery keeps the signed India, entitlement and revocation gates.
     """
+    if _acceptance_release_containment():
+        return [{"status": "HELD_ACCEPTANCE_RELEASE_CONTAINMENT"}]
     if ENVIRONMENT != "production":
         return []
     if not READING_PASS_V2_ENABLED:

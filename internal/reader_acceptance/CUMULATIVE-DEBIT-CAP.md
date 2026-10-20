@@ -68,3 +68,44 @@ protected actions are the explicitly authorized backend deployment, narrowly
 scoped budget provisioning, and ONE account-bound capped-debit approval before
 starting the paid journey. Do not represent this proposal as an enabled cap or
 completed real-book acceptance.
+
+## Protected operator and startup containment
+
+`backend/reader_acceptance_operator.py` is the protected-runtime caller; it adds
+no HTTP endpoint. The current acceptance selector is pinned by SHA256 (raw ID
+remains in the task-owned verified selector receipt). Other selectors stop
+before a database read. The caller fixes the title/test/canonical revision,
+180-second total and900-second expiry. It projects no wallet fields, never
+credits/grants access, and never resets/replaces an existing budget.
+
+Use only an explicitly authorized existing Railway SSH identity via
+`--via-railway --identity-file <approved-existing-path>` or an already approved
+in-runtime administrative session. No key scan/registration or credential
+acquisition is implemented. Exact project/environment/service/source identity
+is required. Each mutation commits once; uncertain commit/remote timeout stops
+and requires the status action, never a mutation retry. A retained disabled
+budget still denies metered acceptance; no automatic account unlock/reset.
+
+For this bounded deployment only, prepare the exact nonsecret variable
+`READER_ACCEPTANCE_RELEASE_MODE=cap-only-v1` with `skipDeploys=true` before the
+separately approved source deployment. Do not execute that setting now. The
+mode suppresses both existing canonical bootstrap and general startup database
+maintenance; normal absent-mode behavior is unchanged, unknown values stop
+startup. This is not a claim that all normal operational startup effects stop.
+
+The preflight action also qualifies rollback to the unchanged old backend:
+original general maintenance must already be disabled, required canonical
+indexes must exist, and every entry in the exact existing bootstrap plan must
+already reach its preserve-pointer/active-version branch. It only reads these
+metadata; no index creation, page generation, pointer activation or repair.
+A missing prerequisite stops before production. Recheck immediately before
+conditional rollback and exclude concurrent publication changes. No catalogue,
+source or rights audit is introduced.
+
+Enable requires absence of active V2/legacy sessions and the exact current
+edition. Disable requires no unsettled session and an observed consumption CAS.
+The separate `rollback-guard` action additionally blocks only the pinned
+acceptance account before restoring a pre-cap backend; that availability change
+must be in the eventual exact approval. It does not change wallet/entitlement
+fields or automatically unblock. Unknown outcome requires scoped status-only
+reconciliation. Retain all budget/session/ledger evidence.

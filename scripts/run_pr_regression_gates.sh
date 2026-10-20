@@ -54,6 +54,7 @@ env \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
+    backend/tests/test_reader_acceptance_operator.py \
     backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
     backend/tests/test_reading_pass_revocation_release_preflight.py \
