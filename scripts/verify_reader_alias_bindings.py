@@ -18,7 +18,11 @@ PROJECT = "prj_kxPN55TOJ23lDgoXIXrvqHtzy607"
 TEAM = "team_HAGNRSEiW5MZXY2AhV0cQvE0"
 HOSTS = ("theearnalism.com", "www.theearnalism.com", "earnalism.vercel.app",
          "earnalism-sales-8498s-projects.vercel.app")
+PUBLIC_HOSTS = HOSTS[:-1]
+PROTECTED_HOST = HOSTS[-1]
 ROLLBACK = "dpl_6hzaPakeBuma2y4JB6CGyngzCKJf"
+RETAINED_READY = "dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB"
+CREATION_CONTROLLER = "2dad58e388918c9ea74d75935ef5d3753d93f4f3"
 
 
 class NoProviderRedirect(HTTPRedirectHandler):
@@ -55,7 +59,7 @@ def provider_request(path, method, timeout, env):
 
 
 def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None,
-                          request=provider_request, pause=time.sleep):
+                          request=provider_request, pause=time.sleep, existing_ready=False):
     """One production-only command; uncertain outcomes allow bounded GETs only.
 
     No runtime receipt is created here. The manual dispatch and protected environment
@@ -75,14 +79,23 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
     for key, name in (("githubCommitSha", "FRONTEND_SHA"),
                       ("readerControllerSha", "CONTROLLER_SHA"),
                       ("readerBackendSha", "BACKEND_SHA")):
-        expected = env.get(name, "")
+        expected = CREATION_CONTROLLER if existing_ready and name == "CONTROLLER_SHA" else env.get(name, "")
         if not re.fullmatch(r"[0-9a-f]{40}", expected) or metadata.get("meta", {}).get(key) != expected:
             raise ValueError("Exact production source binding rejected")
     age = instant.timestamp() - ready_ms / 1000
-    if not 0 <= age < 900:
+    if existing_ready:
+        # Separate, freshly authorized promotion-only operation. Never falsify READY
+        # or the immutable controller that created this retained production asset.
+        if (expected_id != RETAINED_READY or age < 0
+                or ready_ms != 1792521693385
+                or env.get("FRONTEND_SHA") != "229df7f8b2cfb49a7f46215be3979608c39f7c33"
+                or env.get("BACKEND_SHA") != "fda9d5b4a4618447ef75026edf17bba7f28f0c83"
+                or not re.fullmatch(r"[0-9a-f]{40}", env.get("CONTROLLER_SHA", ""))):
+            raise ValueError("Retained production asset identity rejected")
+    elif not 0 <= age < 900:
         raise ValueError("Original READY deadline expired")
     started = clock()
-    ready_deadline = started + 900 - age
+    ready_deadline = started + (900 if existing_ready else 900 - age)
     gets = 0
     resolution_deadline = None
 
@@ -119,7 +132,7 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
         raise ValueError("Competing alias operation; no promotion")
     inventory = get("/v9/projects/" + PROJECT + "/domains?production=true&limit=10")
     domains = inventory.get("domains")
-    public_hosts = set(HOSTS) - {HOSTS[-1]}
+    public_hosts = set(PUBLIC_HOSTS)
     if (not isinstance(domains, list) or len(domains) != 3
             or {d.get("name") for d in domains} != public_hosts
             or inventory.get("pagination", {}).get("next") is not None
@@ -131,9 +144,21 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
     if ids == {expected_id}:
         require_assigned_aliases(metadata, rows, expected_id, PROJECT)
         return {"status": "SKIPPED_ALREADY_ASSIGNED", "gets": gets, "aliases": rows}
-    if ids != {ROLLBACK}:
-        raise ValueError("Mixed, foreign or unknown aliases; no promotion")
     current = p.get("targets", {}).get("production", {})
+    # Run39476136501: disabling custom-domain assignment retained all three
+    # public aliases on PR528 but still moved the registered protected automatic
+    # alias to the new STAGED deployment. Admit only that exact transition.
+    staged_automatic_transition = (
+        all(rows[host].get("deploymentId") == ROLLBACK for host in PUBLIC_HOSTS)
+        and rows[PROTECTED_HOST].get("deploymentId") == expected_id
+        and metadata.get("readySubstate") == "STAGED"
+        and metadata.get("aliasAssigned") is True
+        and current.get("automaticAliases") == [PROTECTED_HOST]
+        and metadata.get("automaticAliases") == [PROTECTED_HOST]
+        and metadata.get("alias") == [PROTECTED_HOST]
+    )
+    if ids != {ROLLBACK} and not staged_automatic_transition:
+        raise ValueError("Mixed, foreign or unknown aliases; no promotion")
     if (current.get("id") != ROLLBACK or set(current.get("alias", [])) != set(HOSTS)
             or current.get("readyState") != "READY" or current.get("target") != "production"
             or current.get("aliasError") is not None
@@ -152,8 +177,11 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
     for key in ("id", "projectId", "ownerId", "target", "readyState", "ready", "meta"):
         if fresh.get(key) != metadata.get(key):
             raise ValueError("Deployment changed before promotion")
+    if staged_automatic_transition and any(fresh.get(key) != metadata.get(key) for key in
+            ("readySubstate", "aliasAssigned", "automaticAliases", "alias")):
+        raise ValueError("Staged automatic alias transition changed before promotion")
     if ready_deadline - clock() < 600:
-        raise ValueError("Insufficient original READY window immediately before promotion")
+        raise ValueError("Insufficient acceptance window immediately before promotion")
     intent = Path(env["RUNNER_TEMP"]) / "reader-promotion-intent.json"
     with intent.open("x") as handle:
         json.dump({"state": "SINGLE_ATTEMPT_STARTED_NO_RETRY", "deployment_id": expected_id,
@@ -195,6 +223,41 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
         if status in ("failed", "skipped") and ids == {ROLLBACK}:
             raise ValueError("PROMOTION_FAILED_OLD_SERVING; leave retained PR528 unchanged")
         raise ValueError("NEEDS_OPERATOR_RESOLUTION: terminal partial/queued/unknown; conditional PR528 recovery")
+
+def rollback_disposition(project, aliases, rollback, expected_id):
+    """Read-only prerequisite to recovery: never POST an already restored target.
+
+    The protected automatic alias is reported separately from public restoration.
+    Unknown or mixed states require operator resolution, never an automatic retry.
+    """
+    if (project.get("id") != PROJECT or project.get("accountId") != TEAM
+            or project.get("rollingRelease") or set(aliases) != set(HOSTS)
+            or rollback.get("id") != ROLLBACK or rollback.get("projectId") != PROJECT
+            or rollback.get("ownerId") != TEAM or rollback.get("target") != "production"
+            or rollback.get("readyState") != "READY" or rollback.get("aliasError") is not None
+            or not re.fullmatch(r"dpl_[A-Za-z0-9]+", expected_id or "")
+            or expected_id == ROLLBACK):
+        raise ValueError("Recovery identity unavailable; no mutation")
+    active = project.get("lastAliasRequest") or {}
+    if active.get("jobStatus") in ("pending", "in-progress"):
+        raise ValueError("Recovery operation unresolved; no mutation")
+    for host, row in aliases.items():
+        if (row.get("alias") != host or row.get("projectId") != PROJECT
+                or row.get("deploymentId") not in (ROLLBACK, expected_id)):
+            raise ValueError("Recovery alias unknown or foreign; no mutation")
+    public = {aliases[h]["deploymentId"] for h in PUBLIC_HOSTS}
+    current = project.get("targets", {}).get("production", {}).get("id")
+    if public == {ROLLBACK} and current == ROLLBACK:
+        status = "PUBLIC_RESTORATION_ALREADY_SATISFIED"
+    elif public == {expected_id} and current == expected_id:
+        status = "CONDITIONAL_ROLLBACK_REQUIRED"
+    else:
+        raise ValueError("Mixed public recovery state; operator resolution required")
+    return {"status": status, "rollback_post_allowed": status == "CONDITIONAL_ROLLBACK_REQUIRED",
+            "public_deployment_id": next(iter(public)),
+            "protected_deployment_id": aliases[PROTECTED_HOST]["deploymentId"],
+            "all_four_restored": all(r["deploymentId"] == ROLLBACK for r in aliases.values())}
+
 
 def require_assigned_aliases(deployment, aliases, expected_id, expected_project):
     hosts = {"theearnalism.com", "www.theearnalism.com", "earnalism.vercel.app",
@@ -259,20 +322,50 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--metadata", required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--github-output", required=True)
+    parser.add_argument("--github-output")
+    parser.add_argument("--rollback-snapshot", action="store_true",
+                        help="Read-only recovery prerequisite; metadata contains project/aliases/rollback/deployment_id")
     parser.add_argument("--conditional-promotion", action="store_true")
+    parser.add_argument("--existing-ready-promotion", action="store_true",
+                        help="Freshly authorized promotion-only operation for the exact retained asset; no build/deploy")
     args = parser.parse_args()
     try:
         metadata = json.loads(Path(args.metadata).read_text())
-        promotion = conditional_promotion(metadata) if args.conditional_promotion else None
-        report = collect(metadata, alias_snapshot=promotion.get("aliases") if promotion else None)
+        if args.rollback_snapshot:
+            if args.conditional_promotion or args.existing_ready_promotion:
+                raise ValueError("Recovery classification cannot promote")
+            report = rollback_disposition(metadata["project"], metadata["aliases"],
+                                          metadata["rollback"], metadata["deployment_id"])
+            with Path(args.output).open("x") as handle:
+                json.dump(report, handle, indent=2)
+            print(json.dumps(report, sort_keys=True))
+            return 0
+        if not args.github_output:
+            raise ValueError("Release output destination required")
+        if args.existing_ready_promotion and args.conditional_promotion:
+            raise ValueError("Choose one promotion mode")
+        operation_started = dt.datetime.now(dt.timezone.utc)
+        promotion = conditional_promotion(metadata, existing_ready=args.existing_ready_promotion) if (
+            args.conditional_promotion or args.existing_ready_promotion) else None
+        if args.existing_ready_promotion:
+            require_assigned_aliases(metadata, promotion["aliases"], RETAINED_READY, PROJECT)
+            report = {"status": "PASS", "deployment_id": RETAINED_READY,
+                      "original_ready": metadata["ready"], "project_id": PROJECT,
+                      "promotion_window_started_at": operation_started.isoformat(),
+                      "creation_controller_sha": CREATION_CONTROLLER,
+                      "operator_controller_sha": os.environ["CONTROLLER_SHA"]}
+        else:
+            report = collect(metadata, alias_snapshot=promotion.get("aliases") if promotion else None)
         if promotion:
             report["promotion"] = {k: v for k, v in promotion.items() if k != "aliases"}
             Path(args.metadata).write_text(json.dumps(metadata) + "\n")
         Path(args.output).write_text(json.dumps(report, indent=2) + "\n")
         with Path(args.github_output).open("a") as handle:
             handle.write("deployment_id=" + report["deployment_id"] + "\n")
-            handle.write("ready_at=" + report["ready_at"] + "\n")
+            if "ready_at" in report:
+                handle.write("ready_at=" + report["ready_at"] + "\n")
+            else:
+                handle.write("promotion_window_started_at=" + report["promotion_window_started_at"] + "\n")
         print(json.dumps(report, sort_keys=True))
         return 0
     except Exception as error:
