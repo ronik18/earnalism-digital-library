@@ -761,6 +761,46 @@ class WorkflowContextAvailabilityTests(unittest.TestCase):
         self.assertEqual(environment_context_errors(workflow), [])
 
 
+class RollbackDispositionTests(unittest.TestCase):
+    def test_public_restoration_skips_mutation_and_reports_protected_separately(self):
+        for protected in (gate.ROLLBACK, "dpl_new"):
+            p, rows, target = self.fixture()
+            rows[gate.PROTECTED_HOST]["deploymentId"] = protected
+            result = gate.rollback_disposition(p, rows, target, "dpl_new")
+            self.assertEqual(result["status"], "PUBLIC_RESTORATION_ALREADY_SATISFIED")
+            self.assertFalse(result["rollback_post_allowed"])
+            self.assertEqual(result["all_four_restored"], protected == gate.ROLLBACK)
+
+    def fixture(self):
+        return ({"id": gate.PROJECT, "accountId": gate.TEAM,
+                 "targets": {"production": {"id": gate.ROLLBACK}}},
+                {h: {"alias": h, "projectId": gate.PROJECT, "deploymentId": gate.ROLLBACK}
+                 for h in gate.HOSTS},
+                {"id": gate.ROLLBACK, "projectId": gate.PROJECT, "ownerId": gate.TEAM,
+                 "target": "production", "readyState": "READY", "aliasError": None})
+
+    def test_exact_new_public_assignment_requires_conditional_recovery(self):
+        p, rows, target = self.fixture()
+        p["targets"]["production"]["id"] = "dpl_new"
+        for row in rows.values():
+            row["deploymentId"] = "dpl_new"
+        self.assertTrue(gate.rollback_disposition(p, rows, target, "dpl_new")["rollback_post_allowed"])
+
+    def test_unknown_mixed_or_unresolved_recovery_stops(self):
+        for kind in ("public_mixed", "protected_foreign", "missing", "foreign_project",
+                     "pending", "wrong_target", "target_mismatch"):
+            p, rows, target = self.fixture()
+            if kind == "public_mixed": rows[gate.PUBLIC_HOSTS[0]]["deploymentId"] = "dpl_new"
+            if kind == "protected_foreign": rows[gate.PROTECTED_HOST]["deploymentId"] = "dpl_foreign"
+            if kind == "missing": rows.pop(gate.PROTECTED_HOST)
+            if kind == "foreign_project": rows[gate.PROTECTED_HOST]["projectId"] = "foreign"
+            if kind == "pending": p["lastAliasRequest"] = {"jobStatus": "pending"}
+            if kind == "wrong_target": target["target"] = "preview"
+            if kind == "target_mismatch": p["targets"]["production"]["id"] = "dpl_new"
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                gate.rollback_disposition(p, rows, target, "dpl_new")
+
+
 class ConditionalPromotionTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -790,6 +830,41 @@ class ConditionalPromotionTests(unittest.TestCase):
         self.concurrent = []
         self.ticks = 0
         self.fresh_alias_error = None
+        self.before_alias_overrides = {}
+
+    def test_staged_transition_drift_at_final_read_stops_before_post(self):
+        self.stage_protected_automatic_alias()
+        original = self.request
+        def changed(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            if path.startswith("/v13/"):
+                result["automaticAliases"] = []
+            return result
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=changed, environ=self.env,
+                                       now=self.now, clock=lambda: 0)
+        self.assertEqual(self.mutations(), [])
+
+    def test_existing_ready_keeps_creation_identity_with_fresh_operation_window(self):
+        self.stage_protected_automatic_alias()
+        self.metadata.update(id=gate.RETAINED_READY, ready=1792521693385)
+        self.metadata["meta"] = {"githubCommitSha": "229df7f8b2cfb49a7f46215be3979608c39f7c33",
+            "readerControllerSha": gate.CREATION_CONTROLLER,
+            "readerBackendSha": "fda9d5b4a4618447ef75026edf17bba7f28f0c83"}
+        self.env.update(FRONTEND_SHA=self.metadata["meta"]["githubCommitSha"],
+                        BACKEND_SHA=self.metadata["meta"]["readerBackendSha"])
+        original = self.request
+        def retained(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            if not self.attempted and path.startswith("/v13/"):
+                result["aliasAssigned"] = True
+            return json.loads(json.dumps(result).replace("dpl_new", gate.RETAINED_READY))
+        result = gate.conditional_promotion(self.metadata, request=retained, environ=self.env,
+            now=dt.datetime(2026, 10, 21, tzinfo=dt.timezone.utc), clock=lambda: 0, existing_ready=True)
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+        self.assertEqual(self.metadata["ready"], 1792521693385)
+        self.assertEqual(self.metadata["meta"]["readerControllerSha"], gate.CREATION_CONTROLLER)
 
     def request(self, path, method, timeout, env):
         self.calls.append(([method, path], {"timeout": timeout}))
@@ -804,12 +879,15 @@ class ConditionalPromotionTests(unittest.TestCase):
         if "/aliases/" in path:
             host = path.split("/aliases/", 1)[1].split("?", 1)[0]
             assigned = "dpl_new" if self.attempted and self.outcome == "succeeded" else gate.ROLLBACK
+            if not self.attempted:
+                assigned = self.before_alias_overrides.get(host, assigned)
             if self.mixed and host == gate.HOSTS[0]:
                 assigned = "dpl_foreign"
             data = {"alias": host, "projectId": gate.PROJECT, "deploymentId": assigned}
         elif path.startswith("/v13/"):
             data = copy.deepcopy(self.metadata)
-            data["aliasAssigned"] = self.attempted and self.outcome == "succeeded"
+            data["aliasAssigned"] = (self.outcome == "succeeded" if self.attempted
+                                     else self.metadata.get("aliasAssigned", False))
             data["aliasError"] = self.fresh_alias_error
         elif path.startswith("/v6/"):
             data = {"deployments": self.concurrent}
@@ -847,6 +925,59 @@ class ConditionalPromotionTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.execute()
         self.assertEqual(len(self.mutations()), 1)
+
+    def stage_protected_automatic_alias(self):
+        self.before_alias_overrides[gate.HOSTS[-1]] = "dpl_new"
+        self.metadata["readySubstate"] = "STAGED"
+        self.metadata["aliasAssigned"] = True
+        self.metadata["automaticAliases"] = [gate.HOSTS[-1]]
+        self.metadata["alias"] = [gate.HOSTS[-1]]
+        self.project["targets"]["production"]["automaticAliases"] = [gate.HOSTS[-1]]
+
+    def test_observed_public_old_protected_automatic_new_admits_one_promotion(self):
+        # Run39476136501 retained three PR528 public aliases and moved only the
+        # protected automatic alias to its exact new READY/STAGED deployment.
+        self.stage_protected_automatic_alias()
+        result = self.execute()
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+        self.assertEqual({r["deploymentId"] for r in result["aliases"].values()}, {"dpl_new"})
+        final = gate.collect(self.metadata, environ=self.env, now=self.now,
+                             alias_snapshot=result["aliases"],
+                             runner=lambda *a, **k: self.fail("Unexpected extra GET"))
+        self.assertEqual(final["status"], "PASS")
+
+    def test_other_public_mixed_unknown_or_foreign_alias_states_stop(self):
+        cases = [
+            {gate.HOSTS[0]: "dpl_new"},
+            {gate.HOSTS[0]: "dpl_new", gate.HOSTS[-1]: "dpl_new"},
+            {gate.HOSTS[-1]: "dpl_foreign"},
+            {gate.HOSTS[-1]: None},
+            {gate.HOSTS[0]: "dpl_foreign", gate.HOSTS[-1]: "dpl_new"},
+        ]
+        self.stage_protected_automatic_alias()
+        for mapping in cases:
+            self.before_alias_overrides = mapping
+            with self.subTest(mapping=mapping), self.assertRaises(ValueError):
+                self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_observed_split_requires_staged_assignment_and_registered_automatic_role(self):
+        self.stage_protected_automatic_alias()
+        for key, value in [("readySubstate", "PROMOTED"), ("readySubstate", None),
+                           ("aliasAssigned", False), ("automaticAliases", []),
+                           ("automaticAliases", ["foreign.example"]),
+                           ("alias", [gate.HOSTS[-1], "foreign.example"])]:
+            original = self.metadata[key]
+            self.metadata[key] = value
+            with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                self.execute()
+            self.metadata[key] = original
+        for aliases in ([], [gate.HOSTS[0]], [gate.HOSTS[-1], "foreign.example"]):
+            self.project["targets"]["production"]["automaticAliases"] = aliases
+            with self.subTest(aliases=aliases), self.assertRaises(ValueError):
+                self.execute()
+        self.assertEqual(self.mutations(), [])
 
     def test_new_alias_error_during_final_reread_stops_before_mutation(self):
         self.fresh_alias_error = {"code": "SYNTHETIC_NEW_ERROR"}
