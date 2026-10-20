@@ -1,7 +1,7 @@
 {
   "schema": "reader-build-dependency-reference.v1",
   "scope": "Proposed exact observed Linux qualification reference; not release authorization",
-  "frontend_sha": "b2abea1c85cf5b38f248e4af4f3523e0ce1e7252",
+  "frontend_sha": "229df7f8b2cfb49a7f46215be3979608c39f7c33",
   "package_json_sha256": "2b50494a6b1a60be49bfda6f3b61f913354623da8faae40a9218f17fa3a4020e",
   "package_lock_sha256": "69f65c689221b95a18d03531177bdd2b75ba6a3dd65b4c553e7f9de824911813",
   "runtime": {

@@ -96,6 +96,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                'GITHUB_REPOSITORY': 'ronik18/earnalism-digital-library',
                'GITHUB_REF': 'refs/heads/main', 'GITHUB_SHA': self.sha,
                'CONTROLLER_SHA': self.sha, 'FRONTEND_SHA': self.frontend,
+               'FRONTEND_REVIEW_SHA': self.frontend, 'FRONTEND_BASELINE_SHA': self.backend,
                'FRONTEND_TREE': self.frontend_tree, 'BACKEND_SHA': self.backend,
                'BACKEND_TREE': self.backend_tree, 'TARGET_SHA': self.frontend,
                'CONFIRM_PRODUCTION': 'DEPLOY_PRODUCTION', 'RUNNER_TEMP': str(self.root),
@@ -145,6 +146,12 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn('SOURCE_CLEAN=YES', result.stdout)
             self.assertIn(self.sha, result.stdout)
+
+    def test_review_tree_and_baseline_ancestry_are_required(self):
+        gate = 'Verify manual release authorization and clean source'
+        self.assertNotEqual(self.execute(gate, FRONTEND_REVIEW_SHA=self.backend).returncode, 0)
+        self.assertNotEqual(self.execute(gate, FRONTEND_BASELINE_SHA=self.sha).returncode, 0)
+        self.assertNotEqual(self.execute(gate, FRONTEND_REVIEW_SHA='bad').returncode, 0)
 
     def test_wrong_sha_and_confirmation_fail_before_dependencies(self):
         for overrides in ({'TARGET_SHA': '0' * 40}, {'TARGET_SHA': 'main'},
@@ -263,8 +270,10 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             self.assertEqual(subprocess.run(['bash', '-n'], input=step_script(name), text=True, capture_output=True).returncode, 0)
 
     def test_actual_workflow_pins_are_not_dispatch_selectable(self):
-        self.assertIn('  FRONTEND_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252', SOURCE)
-        self.assertIn('  FRONTEND_TREE: 1ad8fc5f5cf643b9407b43cd413e5f6ce8a2ec32', SOURCE)
+        self.assertIn('  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33', SOURCE)
+        self.assertIn('  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6', SOURCE)
+        self.assertIn('  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017', SOURCE)
+        self.assertIn('  FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252', SOURCE)
         self.assertIn('  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83', SOURCE)
         self.assertIn('  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c', SOURCE)
         self.assertEqual(SOURCE.count('--expected-sha "$BACKEND_SHA"'), 3)
@@ -432,13 +441,14 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             import io
             return io.StringIO(json.dumps({'workflow_runs': [] if empty else [record]}))
         with mock.patch.dict(os.environ, {'GITHUB_REPOSITORY': 'ronik18/earnalism-digital-library',
-                                         'FRONTEND_SHA': self.frontend, 'CONTROLLER_SHA': self.sha, 'ACTIONS_TOKEN': 'synthetic-ci-only-token'}), \
+                                         'FRONTEND_SHA': self.frontend, 'CONTROLLER_SHA': self.sha,
+                                         'FRONTEND_REVIEW_SHA': self.frontend, 'FRONTEND_BASELINE_SHA': self.backend, 'ACTIONS_TOKEN': 'synthetic-ci-only-token'}), \
              mock.patch('urllib.request.urlopen', side_effect=response):
             exec(compile(code, '<actual-workflow-ci-gate>', 'exec'), {})
         return records
 
     def test_exact_head_ci_success_and_missing_stale_failed_or_untrusted_runs(self):
-        self.assertEqual(len(self.run_ci()), 7)
+        self.assertEqual(len(self.run_ci()), 11)
         for altered in ({'head_sha': self.sha}, {'conclusion': 'failure'}, {'status': 'in_progress'},
                         {'event': 'workflow_dispatch'}, {'path': '.github/workflows/unrelated.yml'},
                         {'head_repository': {'full_name': 'other/fork'}}):
@@ -756,7 +766,7 @@ class AliasReleaseIntegrationTests(unittest.TestCase):
         self.assertEqual(adapter['env']['VERIFIED_DEPLOYMENT_ID'], '${{ needs.deploy_frontend.outputs.deployment_id }}')
         self.assertEqual(adapter['env']['VERIFIED_READY_AT'], '${{ needs.deploy_frontend.outputs.ready_at }}')
         self.assertEqual(sum('scripts/reader_alias_canaries.py' in s.get('run', '') for s in canary['steps']), 1)
-        self.assertEqual(workflow['env']['FRONTEND_SHA'], 'b2abea1c85cf5b38f248e4af4f3523e0ce1e7252')
+        self.assertEqual(workflow['env']['FRONTEND_SHA'], '229df7f8b2cfb49a7f46215be3979608c39f7c33')
         self.assertEqual(workflow['env']['BACKEND_SHA'], 'fda9d5b4a4618447ef75026edf17bba7f28f0c83')
 
     def test_collector_only_reads_four_pinned_aliases_and_emits_binding(self):
