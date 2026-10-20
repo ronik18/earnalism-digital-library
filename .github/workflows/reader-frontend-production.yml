@@ -78,6 +78,10 @@ jobs:
           [[ "$(git rev-parse "$FRONTEND_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
           [[ "$(git rev-parse "$CONTROLLER_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
           [[ "$(git rev-parse "$CONTROLLER_SHA:frontend")" == "$(git rev-parse "$FRONTEND_SHA:frontend")" ]] || exit 1
+          # Normal merge CI is recorded on its reviewed second parent, not the merge SHA.
+          controller_review_sha="$(git rev-parse --verify HEAD^2 2>/dev/null || git rev-parse HEAD)"
+          [[ "$(git rev-parse "$controller_review_sha^{tree}")" == "$(git rev-parse HEAD^{tree})" ]] || exit 1
+          echo "CONTROLLER_REVIEW_SHA=$controller_review_sha" >> "$GITHUB_ENV"
           echo "CONTROLLER_SHA=$CONTROLLER_SHA FRONTEND_SHA=$FRONTEND_SHA BACKEND_SHA=$BACKEND_SHA"
           echo 'RELEASE_SOURCE_CLEAN=YES'
 
@@ -212,7 +216,7 @@ jobs:
                               'regression.yml', 'seamless-brand-owner-review.yml']
           for required_sha, required_workflows in [(os.environ['FRONTEND_BASELINE_SHA'], workflows),
                                                    (os.environ['FRONTEND_REVIEW_SHA'], caller_workflows),
-                                                   (os.environ['CONTROLLER_SHA'], ['regression.yml'])]:
+                                                   (os.environ['CONTROLLER_REVIEW_SHA'], ['regression.yml'])]:
               for workflow in required_workflows:
                   url = ('https://api.github.com/repos/' + repo + '/actions/workflows/' + workflow +
                          '/runs?head_sha=' + required_sha + '&per_page=100')
