@@ -16,6 +16,10 @@ import open_window_successor_acceptance as successor
 
 class SuccessorAcceptanceTests(unittest.TestCase):
     def setUp(self):
+        self.tracks=[{'id':'test-track','chunks':[{'segment_id':f'test-{i}', 'assets':{'audio':{'sha256':'c'*64,'size_bytes':1,'mime_type':'audio/mpeg'}}} for i in range(29)]}]
+        self.mapping_sha=successor.chunk_mapping_digest({'tracks':self.tracks})
+        self.mapping_patch=patch.object(successor,'CHUNK_MAPPING_SHA',self.mapping_sha)
+        self.mapping_patch.start();self.addCleanup(self.mapping_patch.stop)
         self.rights = {'decision_id': 'test-dependency-only'}
         self.adoption = dict(successor.IDENTITY, policy=successor.POLICY, status='ADOPTED',
             acceptance_representation_sha256=successor.ACCEPTANCE_SHA,
@@ -46,7 +50,7 @@ class SuccessorAcceptanceTests(unittest.TestCase):
 
     def validate(self):
         d=self.descriptor
-        package={'slug':d['slug'],'source_sha256':d['controlled_source_sha256'],
+        package={'tracks':self.tracks,'slug':d['slug'],'source_sha256':d['controlled_source_sha256'],
                  'manuscript_sha256':d['manuscript_sha256'],
                  'release_descriptor_sha256':manager.sha256_bytes(manager.canonical_json_bytes(d))}
         return manager.validate_qa_candidate_release_descriptor(d,package,controlled_language='en')
@@ -127,6 +131,18 @@ class SuccessorAcceptanceTests(unittest.TestCase):
         for name in [*successor.IDENTITY,'defect','missing_source','missing_audio','missing_evidence','acoustic','numeric','lexical','release','trim']:
             self.descriptor=copy.deepcopy(baseline);change(name);a,b,c=self.dependencies()
             with self.subTest(name=name),a,b,c,self.assertRaises(manager.ReleasePointerError):self.validate()
+
+    def test_changed_missing_reordered_audio_or_sidecar_mapping_stops(self):
+        original=copy.deepcopy(self.tracks)
+        for case in ('missing', 'changed_audio', 'reordered', 'missing_asset'):
+            self.tracks=copy.deepcopy(original)
+            chunks=self.tracks[0]['chunks']
+            if case=='missing':chunks.pop()
+            elif case=='changed_audio':chunks[0]['assets']['audio']['sha256']='d'*64
+            elif case=='reordered':chunks.reverse()
+            else:chunks[0]['assets']['audio'].pop('sha256')
+            a,b,c=self.dependencies()
+            with self.subTest(case=case),a,b,c,self.assertRaises(manager.ReleasePointerError):self.validate()
 
     def test_descriptor_hash_guard_still_precedes_successor_branch(self):
         with patch.object(successor,'load_trusted_adoption') as load,self.assertRaises(manager.ReleasePointerError):

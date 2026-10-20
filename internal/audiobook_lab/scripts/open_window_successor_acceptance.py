@@ -28,6 +28,7 @@ AUDIO_DECISION_SHA = '7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1
 AUDIO_PROPOSITION_SHA = '90cbae317923f226bbff8d3b25c4f0bd81173697eb6af1ddbf94ee79f92eb971'
 TRIAGE_SHA = 'd662ae5bcd0b62916d4d588574b87ce0e5c760944e236436dfd0608781843bf0'
 QA_SHA = '787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7'
+CHUNK_MAPPING_SHA = '3f8361e7b146c3304b0608eec2476dabfa33b59b4ca5df028f73807599b47c8d'
 LEXICAL_UNITS = ['u000002', 'u000010', 'u000017', 'u000031', 'u000034', 'u000035']
 
 
@@ -41,6 +42,26 @@ def canonical(value):
 
 def digest(value):
     return isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value) and value != '0' * 64
+
+
+def chunk_mapping_digest(package):
+    """Pin unchanged audio/sidecar bytes and order, excluding future store locators."""
+    try:
+        tracks = []
+        count = 0
+        for track in package['tracks']:
+            chunks = []
+            for chunk in track['chunks']:
+                count += 1
+                assets = {role: {k: asset[k] for k in ('sha256', 'size_bytes', 'mime_type')}
+                          for role, asset in chunk['assets'].items()}
+                chunks.append({**{k: v for k, v in chunk.items() if k != 'assets'}, 'assets': assets})
+            tracks.append({**{k: v for k, v in track.items() if k != 'chunks'}, 'chunks': chunks})
+        if count != 29:
+            raise ValueError()
+        return hashlib.sha256(canonical(tracks)).hexdigest()
+    except (KeyError, TypeError, ValueError, AttributeError):
+        raise SuccessorAcceptanceError('Exact 29-chunk successor audio/sidecar mapping is incomplete') from None
 
 
 def load_trusted_adoption():
@@ -92,6 +113,8 @@ def validate(descriptor, package, controlled_language, downstream_gates):
         accepted_records=accepted, revoked_decision_ids=revoked, now=datetime.now(timezone.utc))
     if not verdict.passed:
         raise SuccessorAcceptanceError('Native exact India audio-use rights gate denied the successor')
+    if chunk_mapping_digest(package) != CHUNK_MAPPING_SHA:
+        raise SuccessorAcceptanceError('Successor chunk order, audio, sidecar or timing mapping changed')
     candidate = descriptor.get('release_candidate_evidence')
     gates = candidate.get('gates') if isinstance(candidate, Mapping) else None
     evidence = descriptor.get('evidence_sha256')
