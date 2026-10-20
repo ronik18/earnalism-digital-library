@@ -12247,7 +12247,9 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     if seconds <= 0:
         return 0, await _cached_user_wallet_seconds(user_id)
 
-    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "reader_acceptance_budget": 1}) or {}
+    if "reader_acceptance_budget" in fresh:
+        raise HTTPException(status_code=403, detail={"code": "ACCEPTANCE_REQUIRES_READING_PASS", "message": "Acceptance accounts require the capped lease service."})
     wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     debit = min(seconds, max(0, wallet))
     remaining = max(0, wallet - debit)
@@ -12255,7 +12257,7 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
         return 0, remaining
 
     res = await db.users.update_one(
-        {"id": user_id, "reading_seconds_balance": wallet},
+        {"id": user_id, "reading_seconds_balance": wallet, "reader_acceptance_budget": {"$exists": False}},
         {"$set": {"reading_seconds_balance": remaining, "wallet_seconds": remaining}},
     )
     if res.modified_count != 1:
