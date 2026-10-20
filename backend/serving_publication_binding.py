@@ -90,6 +90,22 @@ def serving_binding_metadata(*, requested_uuid, uuid_rows, serving_doc, root):
         ids.add(chapter_id); orders.add(order)
         result.append({'id': chapter_id, 'order': order, 'file': filename,
                        'declared_file_sha256': digest})
+    served_chapters = serving_doc.get('chapters')
+    if not isinstance(served_chapters, list) or not all(isinstance(chapter, dict) for chapter in served_chapters) or sorted(
+            [(chapter.get('id'), chapter.get('order')) for chapter in served_chapters], key=lambda item: item[1]) != [
+            (chapter['id'], chapter['order']) for chapter in result]:
+        raise BindingUnavailable('Serving chapter metadata and packet disagree')
+    canonical = records['source_evidence.json'].get('canonical_reader_identity')
+    if not isinstance(canonical, dict) or canonical.get('chapter_count') != len(result):
+        raise BindingUnavailable('Declared canonical source identity missing')
+    canonical_chapters = canonical.get('ordered_chapter_sha256')
+    if not isinstance(canonical_chapters, list) or len(canonical_chapters) != len(result) or not isinstance(canonical.get('content_sha256'), str) or not re.fullmatch('[a-fA-F0-9]{64}', canonical['content_sha256']):
+        raise BindingUnavailable('Declared canonical source hash missing')
+    canonical_projection = []
+    for observed, expected in zip(canonical_chapters, result):
+        if not isinstance(observed, dict) or observed.get('id') != expected['id'] or not isinstance(observed.get('sha256'), str) or not re.fullmatch('[a-fA-F0-9]{64}', observed['sha256']):
+            raise BindingUnavailable('Declared canonical chapter association mismatch')
+        canonical_projection.append({'id': observed['id'], 'sha256': observed['sha256']})
     for name in METADATA_FILES:
         _, after = _read_metadata(root, name)
         if after != files[name]:
@@ -103,6 +119,9 @@ def serving_binding_metadata(*, requested_uuid, uuid_rows, serving_doc, root):
         'metadata_file_sha256': files,
         'hash_assertions_by_record': {name: _hashes(record) for name, record in records.items()},
         'serving_hashes': _hashes(serving_doc),
+        'declared_canonical_reader_identity': {'chapter_count': len(result),
+            'content_sha256': canonical['content_sha256'], 'ordered_chapter_sha256': canonical_projection},
+        'canonical_hash_domain': 'Declared canonical Reader text digests from selected source_evidence; no manuscript recomputation',
         'ordered_chapter_file_hashes': result,
         'chapter_hash_domain': 'declared JSON-file SHA256 in selected checksum manifest; no chapter body returned',
         'rights_metadata': {key: serving_doc.get(key) for key in

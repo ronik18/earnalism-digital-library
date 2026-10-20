@@ -13,6 +13,7 @@ def fixture(tmp_path):
     root.mkdir()
     source = {'slug': OPEN_WINDOW_SLUG, 'source_hash': 'a'*64,
               'content_hash': 'b'*64, 'provenance_hash': 'c'*64}
+    source['canonical_reader_identity'] = dict(chapter_count=1, content_sha256='e'*64, ordered_chapter_sha256=[{'id':'chapter-001', 'sha256':'e'*64}])
     public = dict(source, id=OPEN_WINDOW_SERVING_ID,
                   chapters=[{'id': 'chapter-001', 'order': 1}])
     records = {'public_book.json': public, 'reader_manifest.json': {'slug': OPEN_WINDOW_SLUG},
@@ -73,7 +74,7 @@ def test_route_requires_real_admin_and_does_not_read_database_for_guest(monkeypa
     asyncio.run(run())
 
 
-@pytest.mark.parametrize('case', ['valid', 'cached-match', 'cached-mismatch', 'missing-pointer', 'mismatched-pointer', 'missing-provider'])
+@pytest.mark.parametrize('case', ['valid', 'cached-match', 'cached-mismatch', 'cached-chapter-mismatch', 'missing-pointer', 'mismatched-pointer', 'missing-provider'])
 def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypatch, case):
     async def run():
         import os
@@ -97,6 +98,7 @@ def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypat
             if not case.startswith('cached-'): return None
             cached = copy.deepcopy(args['serving_doc'])
             if case == 'cached-mismatch': cached['source_hash'] = 'f'*64
+            if case == 'cached-chapter-mismatch': cached['chapters'][0]['id'] = 'other'
             return cached
         async def cache_write(*_args): raise AssertionError('Diagnostic must not populate cache')
         monkeypatch.setattr(server, '_redis_cache_get', cache_get)
