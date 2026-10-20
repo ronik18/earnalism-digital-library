@@ -1,3 +1,4 @@
+import SixTitleActivationInspection from "../components/Admin/SixTitleActivationInspection";
 import JournalEditor from "../components/Admin/JournalEditor";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -785,6 +786,7 @@ function BooksAdmin() {
 
   return (
     <div data-testid="books-admin">
+      <SixTitleActivationInspection />
       <div className="flex items-center justify-between mb-5">
         <h2 className="font-serif-display text-2xl text-burgundy">Books ({books.length})</h2>
         <div className="flex flex-wrap gap-2">
