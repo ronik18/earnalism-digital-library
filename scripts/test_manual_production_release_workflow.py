@@ -791,19 +791,16 @@ class ConditionalPromotionTests(unittest.TestCase):
         self.ticks = 0
         self.fresh_alias_error = None
 
-    def runner(self, argv, **kwargs):
-        self.calls.append((argv, kwargs))
-        if argv[1] == "promote":
+    def request(self, path, method, timeout, env):
+        self.calls.append(([method, path], {"timeout": timeout}))
+        if method == "POST":
             self.attempted = True
             if self.command_mode == "timeout":
-                raise subprocess.TimeoutExpired(argv, 65)
-            return subprocess.CompletedProcess(argv, 0,
-                "Promotion has been queued" if self.command_mode == "queued" else "Requested", "")
-        self.assertEqual(argv[1], "api")
-        self.assertEqual(argv[-3:], ["--method", "GET", "--raw"])
-        self.assertGreater(kwargs["timeout"], 0)
-        self.assertLessEqual(kwargs["timeout"], 5)
-        path = argv[2]
+                raise TimeoutError("synthetic acknowledgement loss")
+            return "QUEUED" if self.command_mode == "queued" else "RETURNED"
+        self.assertEqual(method, "GET")
+        self.assertGreater(timeout, 0)
+        self.assertLessEqual(timeout, 5)
         if "/aliases/" in path:
             host = path.split("/aliases/", 1)[1].split("?", 1)[0]
             assigned = "dpl_new" if self.attempted and self.outcome == "succeeded" else gate.ROLLBACK
@@ -825,19 +822,19 @@ class ConditionalPromotionTests(unittest.TestCase):
                     "toDeploymentId": "dpl_new", "type": "promote"}
                 if self.outcome == "succeeded":
                     data["targets"]["production"]["id"] = "dpl_new"
-        return subprocess.CompletedProcess(argv, 0, json.dumps(data), "")
+        return data
 
     def execute(self):
-        return gate.conditional_promotion(self.metadata, runner=self.runner, environ=self.env,
+        return gate.conditional_promotion(self.metadata, request=self.request, environ=self.env,
                                           now=self.now, clock=lambda: 0)
 
     def mutations(self):
-        return [args for args, _ in self.calls if args[1] == "promote"]
+        return [args for args, _ in self.calls if args[0] == "POST"]
 
     def test_once_only_success_and_final_guard_share_snapshot(self):
         result = self.execute()
         self.assertEqual(result["status"], "PROMOTED")
-        self.assertEqual(self.mutations(), [["vercel", "promote", "dpl_new", "--scope", gate.TEAM, "--timeout", "0"]])
+        self.assertEqual(self.mutations(), [["POST", "/v10/projects/" + gate.PROJECT + "/promote/dpl_new"]])
         self.assertLessEqual(result["resolution_gets"], 30)
         self.assertTrue((Path(self.tmp.name) / "reader-promotion-intent.json").exists())
         # Final existing alias guard must perform no additional network reads.
@@ -859,16 +856,16 @@ class ConditionalPromotionTests(unittest.TestCase):
 
     def test_ten_minute_window_is_rechecked_after_reads(self):
         ticks = [0]
-        original_runner = self.runner
-        def advancing_runner(argv, **kwargs):
-            result = original_runner(argv, **kwargs)
-            if argv[1] == "api":
+        original_request = self.request
+        def advancing_request(path, method, timeout, env):
+            result = original_request(path, method, timeout, env)
+            if method == "GET":
                 ticks[0] += 2
             return result
         # Ten minutes fifteen seconds remaining initially; final reads cross the admission floor.
         self.metadata["ready"] -= 285000
         with self.assertRaisesRegex(ValueError, "immediately before"):
-            gate.conditional_promotion(self.metadata, runner=advancing_runner,
+            gate.conditional_promotion(self.metadata, request=advancing_request,
                 environ=self.env, now=self.now, clock=lambda: ticks[0])
         self.assertEqual(self.mutations(), [])
 
@@ -887,7 +884,7 @@ class ConditionalPromotionTests(unittest.TestCase):
         self.outcome = "pending"
         with self.assertRaisesRegex(ValueError, "NEEDS_OPERATOR_RESOLUTION"):
             self.execute()
-        mutation = next(i for i, (args, _) in enumerate(self.calls) if args[1] == "promote")
+        mutation = next(i for i, (args, _) in enumerate(self.calls) if args[0] == "POST")
         self.assertLessEqual(len(self.calls[mutation+1:]), 30)
         self.assertEqual(len(self.mutations()), 1)
 
@@ -939,6 +936,41 @@ class ConditionalPromotionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.execute()
         self.assertEqual(self.mutations(), [])
+
+
+class SingleProviderRequestTests(unittest.TestCase):
+    def test_exact_post_once_without_body_read_redirect_or_retry(self):
+        response = mock.MagicMock()
+        response.code = 202
+        response.__enter__.return_value = response
+        opener = mock.Mock()
+        opener.open.return_value = response
+        with mock.patch.object(gate, 'build_opener', return_value=opener):
+            result = gate.provider_request('/v10/projects/' + gate.PROJECT + '/promote/dpl_new',
+                                          'POST', 60, {'VERCEL_TOKEN': 'synthetic-only'})
+        self.assertEqual(result, 'QUEUED')
+        opener.open.assert_called_once()
+        req = opener.open.call_args.args[0]
+        self.assertEqual(req.method, 'POST')
+        self.assertEqual(req.full_url, 'https://api.vercel.com/v10/projects/' + gate.PROJECT +
+                         '/promote/dpl_new?teamId=' + gate.TEAM)
+        self.assertEqual(req.data, b'{}')
+        response.read.assert_not_called()
+        self.assertIsNone(gate.NoProviderRedirect().redirect_request(None, None, None, None, None, None))
+
+    def test_native_timeout_is_not_retried_and_other_mutations_rejected(self):
+        opener = mock.Mock()
+        opener.open.side_effect = TimeoutError('synthetic acknowledgement uncertainty')
+        with mock.patch.object(gate, 'build_opener', return_value=opener):
+            with self.assertRaises(TimeoutError):
+                gate.provider_request('/v10/projects/' + gate.PROJECT + '/promote/dpl_new',
+                                      'POST', 60, {'VERCEL_TOKEN': 'synthetic-only'})
+            for path, method in [('/v4/aliases/example', 'POST'),
+                                 ('/v10/projects/foreign/promote/dpl_new', 'POST'),
+                                 ('/v13/deployments/dpl_new', 'PATCH')]:
+                with self.assertRaises(ValueError):
+                    gate.provider_request(path, method, 1, {'VERCEL_TOKEN': 'synthetic-only'})
+        opener.open.assert_called_once()
 
 
 class FocusedSmokeTests(unittest.TestCase):

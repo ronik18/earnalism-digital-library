@@ -7,6 +7,12 @@ from pathlib import Path
 import re
 import subprocess
 import time
+from urllib.request import Request, build_opener, HTTPRedirectHandler
+from urllib.error import HTTPError
+try:
+    from scripts.reader_alias_canaries import wall_deadline
+except ModuleNotFoundError:
+    from reader_alias_canaries import wall_deadline
 
 PROJECT = "prj_kxPN55TOJ23lDgoXIXrvqHtzy607"
 TEAM = "team_HAGNRSEiW5MZXY2AhV0cQvE0"
@@ -15,8 +21,41 @@ HOSTS = ("theearnalism.com", "www.theearnalism.com", "earnalism.vercel.app",
 ROLLBACK = "dpl_6hzaPakeBuma2y4JB6CGyngzCKJf"
 
 
-def conditional_promotion(metadata, runner=subprocess.run, environ=None,
-                          clock=time.monotonic, now=None):
+class NoProviderRedirect(HTTPRedirectHandler):
+    def redirect_request(self, *args):
+        return None
+
+
+def provider_request(path, method, timeout, env):
+    """One native request, no redirects/retries, no credential or response logging."""
+    token = env.get("VERCEL_TOKEN")
+    if method not in ("GET", "POST") or (method == "POST" and not re.fullmatch(
+            r"/v10/projects/" + PROJECT + r"/promote/dpl_[A-Za-z0-9]+", path)):
+        raise ValueError("Provider mutation route rejected")
+    if not token or not path.startswith(("/v4/aliases/", "/v9/projects/", "/v13/deployments/", "/v6/deployments?", "/v10/projects/")):
+        raise ValueError("Scoped provider request unavailable")
+    url = "https://api.vercel.com" + path + ("&" if "?" in path else "?") + "teamId=" + TEAM
+    req = Request(url, data=b"{}" if method == "POST" else None, method=method,
+                  headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
+    with wall_deadline(timeout):
+        try:
+            response = build_opener(NoProviderRedirect()).open(req, timeout=timeout)
+        except HTTPError as error:
+            response = error
+        with response:
+            if method == "POST":
+                # Never read an error body or follow provider redirects.
+                return "QUEUED" if response.code == 202 else "RETURNED"
+            if response.code != 200:
+                raise ValueError("Scoped provider read rejected")
+            raw = response.read(2 * 1024 * 1024 + 1)
+            if len(raw) > 2 * 1024 * 1024:
+                raise ValueError("Oversized provider metadata rejected")
+            return json.loads(raw)
+
+
+def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None,
+                          request=provider_request):
     """One production-only command; uncertain outcomes allow bounded GETs only.
 
     No runtime receipt is created here. The manual dispatch and protected environment
@@ -54,12 +93,10 @@ def conditional_promotion(metadata, runner=subprocess.run, environ=None,
         if gets >= 30 or remaining <= 0:
             raise ValueError("Read-only resolution cap exhausted; operator resolution required")
         gets += 1
-        result = runner(["vercel", "api", path + ("&" if "?" in path else "?") + "teamId=" + TEAM,
-                         "--method", "GET", "--raw"], check=True, capture_output=True,
-                        text=True, timeout=min(5, remaining))
+        result = request(path, "GET", min(5, remaining), env)
         if clock() >= deadline:
             raise ValueError("Read-only resolution deadline exceeded")
-        return json.loads(result.stdout)
+        return result
 
     def aliases():
         rows = {host: get("/v4/aliases/" + host) for host in HOSTS}
@@ -93,7 +130,7 @@ def conditional_promotion(metadata, runner=subprocess.run, environ=None,
     rows, ids = aliases()
     if ids == {expected_id}:
         require_assigned_aliases(metadata, rows, expected_id, PROJECT)
-        return {"status": "SKIPPED_ALREADY_ASSIGNED", "gets": gets}
+        return {"status": "SKIPPED_ALREADY_ASSIGNED", "gets": gets, "aliases": rows}
     if ids != {ROLLBACK}:
         raise ValueError("Mixed, foreign or unknown aliases; no promotion")
     current = p.get("targets", {}).get("production", {})
@@ -121,24 +158,20 @@ def conditional_promotion(metadata, runner=subprocess.run, environ=None,
     with intent.open("x") as handle:
         json.dump({"state": "SINGLE_ATTEMPT_STARTED_NO_RETRY", "deployment_id": expected_id,
                    "controller_sha": env["CONTROLLER_SHA"], "original_ready": ready_ms}, handle)
-    # CLI timeout is not server cancellation. No second command, even on timeout/error.
+    # A timeout is not server cancellation. No second POST, even on timeout/error.
     command_state = "UNKNOWN"
     try:
-        # Zero CLI polling: our own bounded resolver owns every subsequent status GET.
-        # The pinned CLI supports timeout=0 as request-only, not cancellation/retry.
-        result = runner(["vercel", "promote", expected_id, "--scope", TEAM, "--timeout", "0"],
-                        check=False, capture_output=True, text=True, timeout=65,
-                        input="n\n")
-        command_state = "QUEUED" if "queued" in (result.stdout + result.stderr).lower() else "RETURNED"
-    except (subprocess.SubprocessError, OSError):
+        command_state = request("/v10/projects/" + PROJECT + "/promote/" + expected_id,
+                                "POST", 60, env)
+    except Exception:
         pass
     resolution_deadline = clock() + 60
     gets = 0  # All subsequent GETs, including final alias guard, share this cap.
     while True:
         p = project()
-        request = p.get("lastAliasRequest") or {}
-        status = request.get("jobStatus")
-        if request.get("toDeploymentId") != expected_id or request.get("type") != "promote":
+        alias_request = p.get("lastAliasRequest") or {}
+        status = alias_request.get("jobStatus")
+        if alias_request.get("toDeploymentId") != expected_id or alias_request.get("type") != "promote":
             raise ValueError("NEEDS_OPERATOR_RESOLUTION: promotion identity unavailable")
         if status in ("pending", "in-progress"):
             if clock() >= resolution_deadline or gets >= 24:
