@@ -702,6 +702,16 @@ def validate_qa_candidate_release_descriptor(
             raise ReleasePointerError(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
+    candidate = descriptor.get("release_candidate_evidence")
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "open_window_retained_successor.v1":
+        try:
+            try:
+                from .open_window_successor_acceptance import validate as validate_successor, SuccessorAcceptanceError
+            except ImportError:
+                from open_window_successor_acceptance import validate as validate_successor, SuccessorAcceptanceError
+            return validate_successor(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except SuccessorAcceptanceError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if (
         descriptor.get("release_candidate_status")
         != "QA_PASSED_STORAGE_PENDING"
@@ -1977,6 +1987,18 @@ def activate_new_title_package_canary(
         ],
         "generated_at": operation_time,
     }
+    editorial = (release_descriptor.get("release_candidate_evidence") or {})
+    successor_editorial = editorial.get("acceptance_policy") == "open_window_retained_successor.v1"
+    if successor_editorial:
+        # This descriptor already passed the independent adoption and rights gates.
+        # Do not turn editorial acceptance into a stored acoustic QA PASS.
+        canary["editorial_acceptance"] = {
+            "status": "OWNER_ACCEPTED_UNCERTAINTY",
+            "acoustic_pass_claimed": False,
+            "acceptance_representation_sha256": editorial["acceptance_representation_sha256"],
+            "remaining_lexical_uncertainty_units": copy.deepcopy(editorial["remaining_lexical_uncertainty_units"]),
+            "unit24_disposition": editorial["unit24_disposition"],
+        }
     managed = _managed_values(
         packages=packages,
         evidence=evidence,
@@ -1990,10 +2012,12 @@ def activate_new_title_package_canary(
         "audiobook_package_canary": copy.deepcopy(canary),
         "audiobook_enabled": False,
         "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
-        "audio_qa_status": "QA_PASSED",
+        "audio_qa_status": None if successor_editorial else "QA_PASSED",
         "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
         "release_blockers": ["PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"],
     }
+    if successor_editorial:
+        approval_updates["audio_editorial_acceptance"] = copy.deepcopy(canary["editorial_acceptance"])
     result = mutate_mirrors(
         repo_root,
         slug,
