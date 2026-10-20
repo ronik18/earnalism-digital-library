@@ -3276,7 +3276,7 @@ async def _invalidate_user_cache_strict(user_id: str, *, session_ids: Optional[L
     await _redis_client.delete(*keys)
 
 
-async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False, populate_cache: bool = True) -> Optional[dict]:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     if not admin_preview and _controlled_artifact_is_integrity_quarantined(slug):
@@ -3300,7 +3300,7 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
             )
             if doc and not can_expose_reader(doc):
                 doc = None
-    if doc:
+    if doc and populate_cache:
         await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
     return doc
 
@@ -11117,7 +11117,7 @@ async def admin_open_window_serving_binding(book_id: str, response: Response, _=
     rows = await db.books.find({"id": book_id}, {"_id": 0, "id": 1, "slug": 1}).to_list(2)
     try:
         root = controlled_artifact_dir(OPEN_WINDOW_SLUG)
-        doc = _controlled_artifact_doc(OPEN_WINDOW_SLUG, include_content=False)
+        doc = await _reader_book_access_doc(OPEN_WINDOW_SLUG, populate_cache=False)
         result = serving_binding_metadata(requested_uuid=book_id, uuid_rows=rows, serving_doc=doc, root=root)
         if controlled_artifact_dir(OPEN_WINDOW_SLUG) != root:
             raise BindingUnavailable("Selected root changed during observation")

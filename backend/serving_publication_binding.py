@@ -98,7 +98,7 @@ def serving_binding_metadata(*, requested_uuid, uuid_rows, serving_doc, root):
         'schema': 'earnalism.serving-publication-binding.v1',
         'requested_uuid': requested_uuid, 'uuid_association': 'exact-database-id-to-slug',
         'slug': OPEN_WINDOW_SLUG, 'serving_id': serving_doc['id'],
-        'resolver': 'controlled_artifact_doc/include_content=false',
+        'resolver': 'reader_book_access_doc/populate_cache=false; controlled packet required',
         'selected_root': str(root.resolve()), 'selection': 'first-complete-controlled-artifact-packet',
         'metadata_file_sha256': files,
         'hash_assertions_by_record': {name: _hashes(record) for name, record in records.items()},

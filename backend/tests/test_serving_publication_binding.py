@@ -73,7 +73,7 @@ def test_route_requires_real_admin_and_does_not_read_database_for_guest(monkeypa
     asyncio.run(run())
 
 
-@pytest.mark.parametrize('case', ['valid', 'missing-pointer', 'mismatched-pointer', 'missing-provider'])
+@pytest.mark.parametrize('case', ['valid', 'cached-match', 'cached-mismatch', 'missing-pointer', 'mismatched-pointer', 'missing-provider'])
 def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypatch, case):
     async def run():
         import os
@@ -92,6 +92,15 @@ def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypat
                 'active_segmentation_version': 'other' if case == 'mismatched-pointer' else 'edition-fixture', 'generation': 1}]))
         monkeypatch.setattr(server, 'db', database)
         monkeypatch.setattr(server, '_controlled_artifact_doc', lambda slug, include_content: args['serving_doc'])
+        monkeypatch.setattr(server, '_controlled_artifact_is_integrity_quarantined', lambda slug: False)
+        async def cache_get(*_args):
+            if not case.startswith('cached-'): return None
+            cached = copy.deepcopy(args['serving_doc'])
+            if case == 'cached-mismatch': cached['source_hash'] = 'f'*64
+            return cached
+        async def cache_write(*_args): raise AssertionError('Diagnostic must not populate cache')
+        monkeypatch.setattr(server, '_redis_cache_get', cache_get)
+        monkeypatch.setattr(server, '_redis_cache_set', cache_write)
         monkeypatch.setattr(catalog_truth, 'controlled_artifact_dir', lambda slug: args['root'])
         monkeypatch.setattr(deployment_attestation, 'deployment_attestation',
             lambda: {'status': 'UNAVAILABLE' if case == 'missing-provider' else 'AVAILABLE', 'git_sha': 'f'*40})
@@ -100,8 +109,8 @@ def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypat
         try:
             async with AsyncClient(transport=ASGITransport(app=server.app), base_url='http://test') as client:
                 response = await client.get(f'/api/admin/books/{OPEN_WINDOW_UUID}/serving-binding')
-            assert response.status_code == (200 if case == 'valid' else 409)
-            if case == 'valid':
+            assert response.status_code == (200 if case in ('valid', 'cached-match') else 409)
+            if case in ('valid', 'cached-match'):
                 data = response.json()
                 assert data['requested_uuid'] == OPEN_WINDOW_UUID
                 assert data['canonical_pointer']['activation_generation'] == 1
