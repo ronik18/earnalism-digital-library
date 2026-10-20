@@ -244,7 +244,9 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
     def test_failed_backend_dependency_cannot_be_approved_away(self):
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
         self.assertIn("needs.backend_verify.result == 'success'", deploy)
-        self.assertNotIn('always()', deploy)
+        # Step-level evidence retention must not weaken job admission.
+        admission = deploy.split('    steps:', 1)[0]
+        self.assertNotIn('always()', admission)
         self.assertNotIn('continue-on-error', SOURCE)
         self.assertIn('defaults:\n  run:\n    shell: bash', SOURCE)
         for name in ('Verify actual HTTP and provider serving identity', 'Verify existing read-only startup prerequisites'):
