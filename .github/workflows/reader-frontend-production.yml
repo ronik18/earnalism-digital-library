@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       target_sha:
-        description: Approved immutable frontend artifact SHA (b2abea1)
+        description: Approved immutable frontend artifact SHA (229df7f)
         required: true
         type: string
       confirm_production:
@@ -19,8 +19,10 @@ permissions:
 # Artifact identity is independent of the reviewed current-main release controller.
 # Changing these pins requires a new reviewed release contract, not dispatch input.
 env:
-  FRONTEND_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252
-  FRONTEND_TREE: 1ad8fc5f5cf643b9407b43cd413e5f6ce8a2ec32
+  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33
+  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6
+  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017
+  FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252
   BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83
   BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c
   CONTROLLER_SHA: ${{ github.sha }}
@@ -55,17 +57,22 @@ jobs:
           [[ "$RELEASE_EVENT" == 'workflow_dispatch' && "$GITHUB_REF" == 'refs/heads/main' ]] || exit 1
           [[ "$GITHUB_REPOSITORY" == 'ronik18/earnalism-digital-library' ]] || exit 1
           [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
-          for value in "$TARGET_SHA" "$FRONTEND_SHA" "$FRONTEND_TREE" "$BACKEND_SHA" "$BACKEND_TREE" "$CONTROLLER_SHA"; do
+          for value in "$TARGET_SHA" "$FRONTEND_SHA" "$FRONTEND_TREE" "$BACKEND_SHA" "$BACKEND_TREE" "$CONTROLLER_SHA" "$FRONTEND_REVIEW_SHA" "$FRONTEND_BASELINE_SHA"; do
             [[ "$value" =~ ^[0-9a-f]{40}$ ]] || exit 1
           done
           [[ "$TARGET_SHA" == "$FRONTEND_SHA" && "$GITHUB_SHA" == "$CONTROLLER_SHA" ]] || exit 1
           [[ "$BACKEND_SHA" != "$FRONTEND_SHA" && "$FRONTEND_SHA" != "$CONTROLLER_SHA" && "$BACKEND_SHA" != "$CONTROLLER_SHA" ]] || exit 1
           git fetch --no-tags origin main
           git fetch --no-tags origin "$FRONTEND_SHA"
+          git fetch --no-tags origin "$FRONTEND_REVIEW_SHA"
+          git fetch --no-tags origin "$FRONTEND_BASELINE_SHA"
           [[ "$CONTROLLER_SHA" == "$(git rev-parse origin/main)" && "$CONTROLLER_SHA" == "$(git rev-parse HEAD)" ]] || exit 1
           [[ -z "$(git status --porcelain --untracked-files=all)" ]] || exit 1
           git merge-base --is-ancestor "$BACKEND_SHA" "$FRONTEND_SHA"
           git merge-base --is-ancestor "$FRONTEND_SHA" "$CONTROLLER_SHA"
+          git merge-base --is-ancestor "$FRONTEND_BASELINE_SHA" "$FRONTEND_REVIEW_SHA"
+          git merge-base --is-ancestor "$FRONTEND_REVIEW_SHA" "$FRONTEND_SHA"
+          [[ "$(git rev-parse "$FRONTEND_REVIEW_SHA:frontend")" == "$(git rev-parse "$FRONTEND_SHA:frontend")" ]] || exit 1
           [[ "$(git rev-parse "$FRONTEND_SHA^{tree}")" == "$FRONTEND_TREE" ]] || exit 1
           [[ "$(git rev-parse "$BACKEND_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
           [[ "$(git rev-parse "$FRONTEND_SHA:backend")" == "$BACKEND_TREE" ]] || exit 1
@@ -197,11 +204,14 @@ jobs:
           repo = os.environ['GITHUB_REPOSITORY']
           if repo != 'ronik18/earnalism-digital-library':
               raise SystemExit('Wrong release repository')
-          # Native GitHub Actions API, bounded to the six existing required review workflows.
+          # Retain six baseline reviews; bind the caller PR reviews by exact frontend-tree equality.
           workflows = ['blog-reader-owner-evidence.yml', 'earnalism-coordination-bridge.yml',
                        'pr469-postmerge-recovery-owner-evidence.yml', 'public-pages-owner-review.yml',
                        'regression.yml', 'seamless-brand-owner-review.yml']
-          for required_sha, required_workflows in [(os.environ['FRONTEND_SHA'], workflows),
+          caller_workflows = ['blog-reader-owner-evidence.yml', 'earnalism-coordination-bridge.yml',
+                              'regression.yml', 'seamless-brand-owner-review.yml']
+          for required_sha, required_workflows in [(os.environ['FRONTEND_BASELINE_SHA'], workflows),
+                                                   (os.environ['FRONTEND_REVIEW_SHA'], caller_workflows),
                                                    (os.environ['CONTROLLER_SHA'], ['regression.yml'])]:
               for workflow in required_workflows:
                   url = ('https://api.github.com/repos/' + repo + '/actions/workflows/' + workflow +

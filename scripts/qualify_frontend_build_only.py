@@ -12,7 +12,7 @@ import sys
 from scripts.verify_isolated_seo_build import exact_clean_source, prepare, verify
 from scripts.capture_prebuilt_bundle import seal, preserve_failure
 
-FRONTEND_SHA = 'b2abea1c85cf5b38f248e4af4f3523e0ce1e7252'
+FRONTEND_SHA = '229df7f8b2cfb49a7f46215be3979608c39f7c33'
 SELECTOR_SHA256 = 'ee658256471efee8112a31cb9ec884ad9933dc33cca8941cbda3b7df7710e7c6'
 ROOT = Path(__file__).resolve().parents[1]
 
