@@ -55,7 +55,7 @@ def provider_request(path, method, timeout, env):
 
 
 def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None,
-                          request=provider_request):
+                          request=provider_request, pause=time.sleep):
     """One production-only command; uncertain outcomes allow bounded GETs only.
 
     No runtime receipt is created here. The manual dispatch and protected environment
@@ -174,8 +174,10 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
         if alias_request.get("toDeploymentId") != expected_id or alias_request.get("type") != "promote":
             raise ValueError("NEEDS_OPERATOR_RESOLUTION: promotion identity unavailable")
         if status in ("pending", "in-progress"):
-            if clock() >= resolution_deadline or gets >= 24:
+            remaining = min(resolution_deadline, ready_deadline) - clock()
+            if remaining <= 0 or gets >= 24:
                 raise ValueError("NEEDS_OPERATOR_RESOLUTION: pending; no competing mutation")
+            pause(min(2, remaining))
             continue
         fresh = get("/v13/deployments/" + expected_id)
         for key in ("id", "projectId", "ownerId", "target", "readyState", "ready", "meta"):

@@ -826,7 +826,7 @@ class ConditionalPromotionTests(unittest.TestCase):
 
     def execute(self):
         return gate.conditional_promotion(self.metadata, request=self.request, environ=self.env,
-                                          now=self.now, clock=lambda: 0)
+                                          now=self.now, clock=lambda: 0, pause=lambda _: None)
 
     def mutations(self):
         return [args for args, _ in self.calls if args[0] == "POST"]
