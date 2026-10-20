@@ -420,8 +420,11 @@ describe("UX conversion static signals", () => {
     expect(regressionWorkflow).not.toContain("STAGING_FRONTEND_URL");
     expect(regressionWorkflow).not.toContain("STAGING_API_URL");
     expect(regressionWorkflow).not.toContain("Run main pre-deploy regression");
-    expect(frontendReleaseWorkflow).toContain("REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}");
-    expect(frontendReleaseWorkflow).toContain("REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}");
+    expect(frontendReleaseWorkflow).toContain("python3 scripts/reader_alias_canaries.py");
+    expect(frontendReleaseWorkflow).toContain("--contract three-public-one-protected-v1 --focused-smoke");
+    expect(frontendReleaseWorkflow).toContain("VERIFIED_DEPLOYMENT_ID: ${{ needs.deploy_frontend.outputs.deployment_id }}");
+    expect(frontendReleaseWorkflow).toContain("VERIFIED_READY_AT: ${{ needs.deploy_frontend.outputs.ready_at }}");
+    expect(frontendReleaseWorkflow).not.toContain("node regression/scripts/post-deploy-canary.js");
     expect(frontendReleaseWorkflow).toContain("needs: backend_verify");
     expect(frontendReleaseWorkflow).toContain("environment: reader-frontend-production");
     expect(regressionWorkflow).not.toContain("environment: reader-frontend-production");
