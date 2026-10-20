@@ -126,6 +126,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       deployed: ${{ steps.vercel-check.outputs.enabled }}
+      deployment_id: ${{ steps.alias-binding.outputs.deployment_id }}
+      ready_at: ${{ steps.alias-binding.outputs.ready_at }}
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -395,6 +397,23 @@ jobs:
           print(json.dumps({'frontend_deployment': deployment['id'], 'source_sha': deployment['meta']['githubCommitSha'], 'status': 'PASS'}))
           PY
 
+      - name: Verify all four exact production alias bindings
+        id: alias-binding
+        run: |
+          set -euo pipefail
+          python3 "$GITHUB_WORKSPACE/scripts/verify_reader_alias_bindings.py" \
+            --metadata "$RUNNER_TEMP/frontend-deployment.json" \
+            --output "$RUNNER_TEMP/reader-alias-binding.json" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Preserve exact production alias binding evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: reader-alias-binding-${{ github.sha }}
+          path: ${{ runner.temp }}/reader-alias-binding.json
+          retention-days: 3
+
   frontend_production_canary:
     name: Vercel frontend production canary
     needs:
@@ -440,6 +459,16 @@ jobs:
           REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
         run: node regression/scripts/post-deploy-canary.js
 
+      - name: Run three-public one-protected alias contract
+        env:
+          VERIFIED_DEPLOYMENT_ID: ${{ needs.deploy_frontend.outputs.deployment_id }}
+          VERIFIED_READY_AT: ${{ needs.deploy_frontend.outputs.ready_at }}
+        run: |
+          python3 scripts/reader_alias_canaries.py \
+            --deployment "$VERIFIED_DEPLOYMENT_ID" --ready-at "$VERIFIED_READY_AT" \
+            --contract three-public-one-protected-v1 \
+            --output output/launch/reader_alias_canaries.json
+
       - name: Upload frontend canary evidence
         if: always()
         uses: actions/upload-artifact@v7
@@ -449,3 +478,4 @@ jobs:
             output/launch/post_deploy_route_canary.*
             output/launch/post_deploy_static_seo_canary.*
             regression/results.json
+            output/launch/reader_alias_canaries.json

@@ -1,5 +1,10 @@
 """Execute the workflow's real shell gates against disposable Git repositories."""
 import os
+import io
+import datetime as dt
+from contextlib import redirect_stdout
+from unittest.mock import patch
+from scripts import verify_reader_alias_bindings as gate
 import copy
 import datetime
 import json
@@ -712,6 +717,84 @@ class WorkflowContextAvailabilityTests(unittest.TestCase):
         workflow['jobs']['deploy_frontend']['env']['LABEL'] = (
             "${{ format('runner.temp is not a context here; it''s literal', github.ref) }}")
         self.assertEqual(environment_context_errors(workflow), [])
+
+
+class AliasReleaseIntegrationTests(unittest.TestCase):
+    def setUp(self):
+        self.env = {"VERCEL_PROJECT_ID": gate.PROJECT, "VERCEL_ORG_ID": gate.TEAM,
+                    "FRONTEND_SHA": "a" * 40, "CONTROLLER_SHA": "b" * 40,
+                    "BACKEND_SHA": "c" * 40}
+        self.now = dt.datetime(2026, 10, 20, tzinfo=dt.timezone.utc)
+        self.metadata = {"id": "dpl_test", "projectId": gate.PROJECT,
+                         "target": "production", "readyState": "READY",
+                         "aliasAssigned": True, "aliasError": None,
+                         "ready": int(self.now.timestamp() * 1000),
+                         "meta": {"githubCommitSha": "a" * 40,
+                                  "readerControllerSha": "b" * 40,
+                                  "readerBackendSha": "c" * 40}}
+
+    def test_parsed_workflow_guards_canary_admission_and_binds_adapter(self):
+        result = subprocess.run(["node", "-e", "const fs=require('fs');const y=require('js-yaml');"
+                                 "process.stdout.write(JSON.stringify(y.load(fs.readFileSync(0,'utf8'))));"],
+                                input=(ROOT / '.github/workflows/reader-frontend-production.yml').read_text(),
+                                text=True, capture_output=True, check=True)
+        workflow = json.loads(result.stdout)
+        deploy = workflow['jobs']['deploy_frontend']
+        names = [s.get('name') for s in deploy['steps']]
+        self.assertLess(names.index('Deploy frontend to Vercel production'),
+                        names.index('Verify all four exact production alias bindings'))
+        binding = next(s for s in deploy['steps'] if s.get('id') == 'alias-binding')
+        self.assertIn('verify_reader_alias_bindings.py', binding['run'])
+        self.assertNotIn('continue-on-error', binding)
+        self.assertEqual(deploy['outputs']['deployment_id'], '${{ steps.alias-binding.outputs.deployment_id }}')
+        canary = workflow['jobs']['frontend_production_canary']
+        self.assertIn("needs.deploy_frontend.result == 'success'", canary['if'])
+        adapter = next(s for s in canary['steps'] if s.get('name') == 'Run three-public one-protected alias contract')
+        self.assertIn('--contract three-public-one-protected-v1', adapter['run'])
+        self.assertEqual(adapter['env']['VERIFIED_DEPLOYMENT_ID'], '${{ needs.deploy_frontend.outputs.deployment_id }}')
+        self.assertEqual(adapter['env']['VERIFIED_READY_AT'], '${{ needs.deploy_frontend.outputs.ready_at }}')
+        self.assertEqual(sum('scripts/reader_alias_canaries.py' in s.get('run', '') for s in canary['steps']), 1)
+        self.assertEqual(workflow['env']['FRONTEND_SHA'], 'b2abea1c85cf5b38f248e4af4f3523e0ce1e7252')
+        self.assertEqual(workflow['env']['BACKEND_SHA'], 'fda9d5b4a4618447ef75026edf17bba7f28f0c83')
+
+    def test_collector_only_reads_four_pinned_aliases_and_emits_binding(self):
+        calls = []
+        def runner(args, **kwargs):
+            calls.append((args, kwargs))
+            host = args[2].split('/aliases/', 1)[1].split('?', 1)[0]
+            return subprocess.CompletedProcess(args, 0, json.dumps({"alias": host,
+                "projectId": gate.PROJECT, "deploymentId": "dpl_test"}), '')
+        report = gate.collect(self.metadata, runner=runner, environ=self.env, now=self.now)
+        self.assertEqual(report['deployment_id'], 'dpl_test')
+        self.assertEqual(report['ready_at'], self.now.isoformat())
+        self.assertEqual(len(calls), 4)
+        for args, kwargs in calls:
+            self.assertEqual(args[0:2], ['vercel', 'api'])
+            self.assertEqual(args[3:], ['--method', 'GET', '--raw'])
+            self.assertTrue(args[2].endswith('?teamId=' + gate.TEAM))
+            self.assertEqual(kwargs['timeout'], 15)
+            self.assertTrue(kwargs['check'])
+
+    def test_source_mismatch_rejects_before_provider_reads(self):
+        self.metadata['meta']['readerControllerSha'] = 'd' * 40
+        with patch.object(gate.subprocess, 'run') as runner:
+            with self.assertRaises(ValueError):
+                gate.collect(self.metadata, environ=self.env, now=self.now)
+            runner.assert_not_called()
+
+    def test_cli_error_fails_without_github_outputs_or_private_error(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); metadata = root / 'metadata.json'; output = root / 'binding.json'
+            github = root / 'github-output'; github.write_text('')
+            metadata.write_text(json.dumps(self.metadata))
+            args = ['gate', '--metadata', str(metadata), '--output', str(output), '--github-output', str(github)]
+            text = io.StringIO()
+            with patch('sys.argv', args), patch.object(gate, 'collect', side_effect=ValueError('PRIVATE')):
+                with redirect_stdout(text):
+                    self.assertEqual(gate.main(), 1)
+            self.assertEqual(github.read_text(), '')
+            self.assertEqual(json.loads(output.read_text())['status'], 'FAIL')
+            self.assertNotIn('PRIVATE', text.getvalue() + output.read_text())
 
 
 if __name__ == '__main__':
