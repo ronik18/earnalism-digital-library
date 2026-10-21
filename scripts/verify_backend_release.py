@@ -84,19 +84,31 @@ def main():
     parser.add_argument("--environment", required=True)
     parser.add_argument("--backend-url", required=True)
     args = parser.parse_args()
+    stage = 'argument_validation'
     try:
         if args.backend_url != ORIGIN:
             raise VerificationError("Unapproved backend URL")
         # Capture provider output privately; never log credentials or raw provider data.
+        stage = 'provider_cli_read'
         result = subprocess.run(["railway", "status", "--project", args.project, "--environment", args.environment, "--json"],
                                 check=True, capture_output=True, text=True, timeout=40)
+        stage = 'provider_json_decode'
         provider = json.loads(result.stdout)
+        stage = 'health_http_read'
         health, headers = read_json(ORIGIN + "/healthz")
+        stage = 'schema_http_read'
         schema, _ = read_json(ORIGIN + "/openapi.json")
+        stage = 'identity_health_schema_validation'
         report = verify(args.expected_sha, args.project, args.service, args.environment, health, provider, schema, headers)
         print(json.dumps(report, sort_keys=True))
-    except Exception:
-        print("BACKEND_VERIFICATION=FAIL (source/identity/health/schema/provider evidence unavailable or mismatched)", file=sys.stderr)
+    except Exception as exc:
+        # Never log raw subprocess output, response bodies, URL exceptions or credentials.
+        reason = str(exc) if isinstance(exc, VerificationError) else 'REMOTE_OR_RUNTIME_DETAIL_REDACTED'
+        diagnostic = {'status': 'BACKEND_VERIFICATION_FAIL', 'stage': stage,
+                      'reason': reason, 'exception_type': type(exc).__name__}
+        if isinstance(exc, subprocess.CalledProcessError):
+            diagnostic['provider_exit_code'] = exc.returncode
+        print(json.dumps(diagnostic, sort_keys=True), file=sys.stderr)
         return 1
     return 0
 
