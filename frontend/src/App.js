@@ -177,6 +177,7 @@ export function AppRouterContent() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/launch-monitor" element={<Admin initialTab="launch-monitor" />} />
+          <Route path="/admin/open-window-binding" element={<Admin initialTab="open-window-binding" />} />
         </Routes>
       </Suspense>
       <AppToaster position="bottom-right" />
