@@ -227,11 +227,17 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_frontend_only_environment_hold_follows_real_backend_verification(self):
-        regression = SOURCE.split('  deploy_frontend:', 1)[0]
+        regression = SOURCE.split('  backend_verify:', 1)[1].split('  deploy_frontend:', 1)[0]
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
         self.assertIn('    environment: reader-frontend-production\n', deploy)
-        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 1)
+        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 2)
+        readonly = SOURCE.split('  vercel_access_readonly:', 1)[1].split('  backend_verify:', 1)[0]
+        self.assertIn('inputs.access_check_only == true', readonly)
+        self.assertIn("inputs.confirm_production == 'READ_ONLY_VERCEL_ACCESS'", readonly)
+        self.assertIn('readonly_access_check()', readonly)
+        self.assertNotIn('vercel deploy', readonly)
+        self.assertNotIn('conditional_promotion(', readonly)
         self.assertNotIn('    environment:', regression)
         self.assertNotIn('    environment:', canary)
         self.assertIn("github.event_name == 'workflow_dispatch'", deploy)
