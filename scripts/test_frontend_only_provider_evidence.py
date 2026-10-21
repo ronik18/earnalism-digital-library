@@ -121,5 +121,35 @@ class FrontendOnlyEvidenceTests(unittest.TestCase):
             self.assertEqual(v.main(), 0)
             self.assertEqual(http.call_count, 2); cli.assert_not_called()
 
+    def connector_fixture(self):
+        return {'schema': 'reader-backend-provider-evidence.v1', 'railway_connector_observation': {
+            'observed_at_utc': self.now.isoformat(), 'source': 'authenticated_Railway_connector', 'project_id': v.PROJECT,
+            'environment_status': {'environment': {'id': v.ENVIRONMENT, 'name': 'production'}, 'pendingWork': [],
+                'services': [{'serviceId': v.SERVICE, 'state': 'online',
+                    'activeDeployments': [{'id': v.EXACT_DEPLOYMENT, 'status': 'SUCCESS'}],
+                    'replicaStatus': {'running': 1, 'crashed': 0, 'total': 1}}]},
+            'successful_deployment_metadata': [{'id': v.EXACT_DEPLOYMENT, 'serviceId': v.SERVICE,
+                'environmentId': v.ENVIRONMENT, 'status': 'SUCCESS', 'meta': {'commitHash': v.EXACT_BACKEND}}]}}
+
+    def test_connector_evidence_requires_real_identity_and_own_protected_mode(self):
+        self.e = self.connector_fixture(); raw = json.dumps(self.e)
+        self.assertEqual(self.check(), v.evidence_digest(raw))
+        approval = {'backend_provider_evidence_sha256': v.evidence_digest(raw),
+                    'backend_provider_evidence_mode': 'authenticated-railway-connector.v1'}
+        v.verify_protected_evidence_binding(raw, json.dumps(approval))
+        approval['backend_provider_evidence_mode'] = 'authenticated-ui-and-railway-origin-status.v1'
+        with self.assertRaises(v.VerificationError): v.verify_protected_evidence_binding(raw, json.dumps(approval))
+
+    def test_connector_missing_stale_drifted_or_ambiguous_fails_closed(self):
+        original = self.connector_fixture()
+        for key, value in [('project_id', 'wrong'), ('source', 'public_health'),
+                           ('observed_at_utc', '2000-01-01T00:00:00+00:00'),
+                           ('successful_deployment_metadata', []), ('successful_deployment_metadata', [{}, {}])]:
+            self.e = copy.deepcopy(original); self.e['railway_connector_observation'][key] = value
+            with self.subTest(key=key), self.assertRaises(v.VerificationError): self.check()
+        self.e = copy.deepcopy(original)
+        self.e['railway_connector_observation']['successful_deployment_metadata'][0]['meta']['commitHash'] = 'a'*40
+        with self.assertRaises(v.VerificationError): self.check()
+
 
 if __name__ == '__main__': unittest.main()
