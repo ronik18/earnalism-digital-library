@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 from scripts.verify_isolated_seo_build import exact_clean_source
 
-F = '229df7f8b2cfb49a7f46215be3979608c39f7c33'
+F = 'b3998d72f2e93bd99ffb1563c906c77e78aa5b49'
 PUBLIC_REFERENCE = Path(__file__).with_name('frontend_public_build_inputs.json')
 PUBLIC_KEYS = {'REACT_APP_BACKEND_URL', 'REACT_APP_ENABLE_LAUNCH_ANALYTICS', 'REACT_APP_GOOGLE_CLIENT_ID'}
 SETTINGS = {'orgId':'team_HAGNRSEiW5MZXY2AhV0cQvE0','projectId':'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',

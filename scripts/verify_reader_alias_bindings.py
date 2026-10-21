@@ -23,6 +23,14 @@ PROTECTED_HOST = HOSTS[-1]
 ROLLBACK = "dpl_6hzaPakeBuma2y4JB6CGyngzCKJf"
 RETAINED_READY = "dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB"
 CREATION_CONTROLLER = "2dad58e388918c9ea74d75935ef5d3753d93f4f3"
+CALLER_FRONTEND = "b3998d72f2e93bd99ffb1563c906c77e78aa5b49"
+CALLER_BACKEND = "0f2bb1e728890f1f0e41ded9b12f07c76246bce0"
+
+
+def release_rollback(environ=None):
+    env = os.environ if environ is None else environ
+    return RETAINED_READY if (env.get("FRONTEND_SHA") == CALLER_FRONTEND
+        and env.get("BACKEND_SHA") == CALLER_BACKEND) else ROLLBACK
 
 
 class NoProviderRedirect(HTTPRedirectHandler):
@@ -33,9 +41,10 @@ class NoProviderRedirect(HTTPRedirectHandler):
 def provider_request(path, method, timeout, env):
     """One native request, no redirects/retries, no credential or response logging."""
     token = env.get("VERCEL_TOKEN")
+    rollback = release_rollback(env)
     if method not in ("GET", "POST") or (method == "POST" and not re.fullmatch(
             (r"/v10/projects/" + PROJECT + r"/promote/dpl_[A-Za-z0-9]+|/v9/projects/"
-             + PROJECT + r"/rollback/" + ROLLBACK), path)):
+             + PROJECT + r"/rollback/" + rollback), path)):
         raise ValueError("Provider mutation route rejected")
     if not token or not path.startswith(("/v4/aliases/", "/v9/projects/", "/v13/deployments/", "/v6/deployments?", "/v10/projects/")):
         raise ValueError("Scoped provider request unavailable")
@@ -70,8 +79,9 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
     expected_id = metadata.get("id")
     instant = dt.datetime.now(dt.timezone.utc) if now is None else now
     ready_ms = metadata.get("ready")
+    rollback = release_rollback(env)
     if (not isinstance(expected_id, str) or not re.fullmatch(r"dpl_[A-Za-z0-9]+", expected_id)
-            or expected_id == ROLLBACK or metadata.get("projectId") != PROJECT
+            or expected_id == rollback or metadata.get("projectId") != PROJECT
             or metadata.get("ownerId") != TEAM or metadata.get("target") != "production"
             or metadata.get("readyState") != "READY" or type(ready_ms) is not int
             or metadata.get("aliasError") is not None
@@ -84,6 +94,11 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
         if not re.fullmatch(r"[0-9a-f]{40}", expected) or metadata.get("meta", {}).get(key) != expected:
             raise ValueError("Exact production source binding rejected")
     age = instant.timestamp() - ready_ms / 1000
+    # The caller release follows the already promoted Reader asset. Preserve
+    # the historical promotion-only transaction and its PR528 predecessor.
+    previous_id = RETAINED_READY if (not existing_ready
+        and env.get("FRONTEND_SHA") == CALLER_FRONTEND
+        and env.get("BACKEND_SHA") == CALLER_BACKEND) else ROLLBACK
     if existing_ready:
         # Separate, freshly authorized promotion-only operation. Never falsify READY
         # or the immutable controller that created this retained production asset.
@@ -150,7 +165,7 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
     # public aliases on PR528 but still moved the registered protected automatic
     # alias to the new STAGED deployment. Admit only that exact transition.
     staged_automatic_transition = (
-        all(rows[host].get("deploymentId") == ROLLBACK for host in PUBLIC_HOSTS)
+        all(rows[host].get("deploymentId") == previous_id for host in PUBLIC_HOSTS)
         and rows[PROTECTED_HOST].get("deploymentId") == expected_id
         and metadata.get("readySubstate") == "STAGED"
         and metadata.get("aliasAssigned") is True
@@ -158,9 +173,9 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
         and metadata.get("automaticAliases") == [PROTECTED_HOST]
         and metadata.get("alias") == [PROTECTED_HOST]
     )
-    if ids != {ROLLBACK} and not staged_automatic_transition:
+    if ids != {previous_id} and not staged_automatic_transition:
         raise ValueError("Mixed, foreign or unknown aliases; no promotion")
-    if (current.get("id") != ROLLBACK or set(current.get("alias", [])) != set(HOSTS)
+    if (current.get("id") != previous_id or set(current.get("alias", [])) != set(HOSTS)
             or current.get("readyState") != "READY" or current.get("target") != "production"
             or current.get("aliasError") is not None
             or p.get("autoAssignCustomDomains") is not False
@@ -221,34 +236,35 @@ def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None
             # Feed the existing final read-only guard from this bounded snapshot.
             return {"status": "PROMOTED", "resolution_gets": gets, "aliases": rows,
                     "command_state": command_state}
-        if status in ("failed", "skipped") and ids == {ROLLBACK}:
-            raise ValueError("PROMOTION_FAILED_OLD_SERVING; leave retained PR528 unchanged")
-        raise ValueError("NEEDS_OPERATOR_RESOLUTION: terminal partial/queued/unknown; conditional PR528 recovery")
+        if status in ("failed", "skipped") and ids == {previous_id}:
+            raise ValueError("PROMOTION_FAILED_OLD_SERVING; leave the verified predecessor unchanged")
+        raise ValueError("NEEDS_OPERATOR_RESOLUTION: terminal partial/queued/unknown; exact pinned recovery")
 
-def rollback_disposition(project, aliases, rollback, expected_id):
+def rollback_disposition(project, aliases, rollback, expected_id, environ=None):
     """Read-only prerequisite to recovery: never POST an already restored target.
 
     The protected automatic alias is reported separately from public restoration.
     Unknown or mixed states require operator resolution, never an automatic retry.
     """
+    rollback_id = release_rollback(environ)
     if (project.get("id") != PROJECT or project.get("accountId") != TEAM
             or project.get("rollingRelease") or set(aliases) != set(HOSTS)
-            or rollback.get("id") != ROLLBACK or rollback.get("projectId") != PROJECT
+            or rollback.get("id") != rollback_id or rollback.get("projectId") != PROJECT
             or rollback.get("ownerId") != TEAM or rollback.get("target") != "production"
             or rollback.get("readyState") != "READY" or rollback.get("aliasError") is not None
             or not re.fullmatch(r"dpl_[A-Za-z0-9]+", expected_id or "")
-            or expected_id == ROLLBACK):
+            or expected_id == rollback_id):
         raise ValueError("Recovery identity unavailable; no mutation")
     active = project.get("lastAliasRequest") or {}
     if active.get("jobStatus") in ("pending", "in-progress"):
         raise ValueError("Recovery operation unresolved; no mutation")
     for host, row in aliases.items():
         if (row.get("alias") != host or row.get("projectId") != PROJECT
-                or row.get("deploymentId") not in (ROLLBACK, expected_id)):
+                or row.get("deploymentId") not in (rollback_id, expected_id)):
             raise ValueError("Recovery alias unknown or foreign; no mutation")
     public = {aliases[h]["deploymentId"] for h in PUBLIC_HOSTS}
     current = project.get("targets", {}).get("production", {}).get("id")
-    if public == {ROLLBACK} and current == ROLLBACK:
+    if public == {rollback_id} and current == rollback_id:
         status = "PUBLIC_RESTORATION_ALREADY_SATISFIED"
     elif public == {expected_id} and current == expected_id:
         status = "CONDITIONAL_ROLLBACK_REQUIRED"
@@ -257,7 +273,7 @@ def rollback_disposition(project, aliases, rollback, expected_id):
     return {"status": status, "rollback_post_allowed": status == "CONDITIONAL_ROLLBACK_REQUIRED",
             "public_deployment_id": next(iter(public)),
             "protected_deployment_id": aliases[PROTECTED_HOST]["deploymentId"],
-            "all_four_restored": all(r["deploymentId"] == ROLLBACK for r in aliases.values())}
+            "all_four_restored": all(r["deploymentId"] == rollback_id for r in aliases.values())}
 
 
 def require_assigned_aliases(deployment, aliases, expected_id, expected_project):
