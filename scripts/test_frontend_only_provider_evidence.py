@@ -114,7 +114,8 @@ class FrontendOnlyEvidenceTests(unittest.TestCase):
         argv = ['verify', '--operator-provider-evidence', '--expected-sha', v.EXACT_BACKEND,
                 '--project', v.PROJECT, '--service', v.SERVICE, '--environment', v.ENVIRONMENT,
                 '--backend-url', v.ORIGIN]
-        with patch('sys.argv', argv), patch.object(v, 'verify_operator_provider_evidence', return_value='a'*64), \
+        with patch('sys.argv', argv), patch.dict(os.environ, {'BACKEND_PROVIDER_EVIDENCE_JSON': json.dumps(self.e)}), \
+                patch.object(v, 'verify_operator_provider_evidence', return_value='a'*64), \
                 patch.object(v, 'read_json', return_value=({}, {})) as http, \
                 patch.object(v, 'verify_http_without_provider', return_value={}), \
                 patch.object(v.subprocess, 'run') as cli, patch('sys.stdout'):
