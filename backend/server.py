@@ -3276,7 +3276,7 @@ async def _invalidate_user_cache_strict(user_id: str, *, session_ids: Optional[L
     await _redis_client.delete(*keys)
 
 
-async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False, populate_cache: bool = True) -> Optional[dict]:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     if not admin_preview and _controlled_artifact_is_integrity_quarantined(slug):
@@ -3300,7 +3300,7 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
             )
             if doc and not can_expose_reader(doc):
                 doc = None
-    if doc:
+    if doc and populate_cache:
         await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
     return doc
 
@@ -11108,6 +11108,46 @@ async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_ad
         "version": active["version"],
         "activation_generation": int((state or {}).get("generation", 0) or 0),
     }
+
+
+@api.get("/admin/books/{book_id}/serving-binding")
+async def admin_open_window_serving_binding(book_id: str, response: Response, _=Depends(require_admin)):
+    """One exact UUID, metadata only; no activation, cache write or source body."""
+    try:
+        from serving_publication_binding import (OPEN_WINDOW_UUID, OPEN_WINDOW_SLUG,
+            BindingUnavailable, serving_binding_metadata)
+        from catalog_truth import controlled_artifact_dir
+        from utils.deployment_attestation import deployment_attestation
+    except ImportError:
+        from backend.serving_publication_binding import (OPEN_WINDOW_UUID, OPEN_WINDOW_SLUG,
+            BindingUnavailable, serving_binding_metadata)
+        from backend.catalog_truth import controlled_artifact_dir
+        from backend.utils.deployment_attestation import deployment_attestation
+    response.headers["Cache-Control"] = "private, no-store"
+    if book_id != OPEN_WINDOW_UUID:
+        raise HTTPException(status_code=404, detail={"code": "SERVING_BINDING_NOT_SUPPORTED"})
+    rows = await db.books.find({"id": book_id}, {"_id": 0, "id": 1, "slug": 1}).to_list(2)
+    try:
+        root = controlled_artifact_dir(OPEN_WINDOW_SLUG)
+        doc = await _reader_book_access_doc(OPEN_WINDOW_SLUG, populate_cache=False)
+        result = serving_binding_metadata(requested_uuid=book_id, uuid_rows=rows, serving_doc=doc, root=root)
+        if controlled_artifact_dir(OPEN_WINDOW_SLUG) != root:
+            raise BindingUnavailable("Selected root changed during observation")
+    except (BindingUnavailable, OSError, ValueError, TypeError, KeyError):
+        raise HTTPException(status_code=409, detail={"code": "SERVING_BINDING_UNAVAILABLE", "message": "Exact current publication association is unavailable or ambiguous."})
+    # Read only existing pointer metadata; do not build/activate canonical pages.
+    active = await db.reader_segment_manifests.find({"book_slug": OPEN_WINDOW_SLUG, "status": "active"},
+        {"_id": 0, "version": 1, "segmentation_version": 1}).to_list(2)
+    state = await db.reader_segment_activation_state.find_one({"book_slug": OPEN_WINDOW_SLUG},
+        {"_id": 0, "active_segmentation_version": 1, "generation": 1})
+    if len(active) != 1 or not active[0].get("version") or not active[0].get("segmentation_version") or (state and (state.get("active_segmentation_version") != active[0].get("segmentation_version") or type(state.get("generation")) is not int or state["generation"] < 0)):
+        raise HTTPException(status_code=409, detail={"code": "SERVING_BINDING_UNAVAILABLE"})
+    result["canonical_pointer"] = {"manifest": active[0], "activation_generation": state["generation"] if state else 0, "generation_basis": "activation-state" if state else "existing-reader-default-without-state"}
+    result["deployment"] = deployment_attestation()
+    if result["deployment"]["status"] != "AVAILABLE":
+        raise HTTPException(status_code=409, detail={"code": "SERVING_BINDING_UNAVAILABLE"})
+    result["canonical_pointer_source_join"] = "Pointer metadata does not independently attest derivation from packet hashes"
+    return result
 
 
 @api.get("/admin/reading-pass/yugalanguriya/publication-inspection")
