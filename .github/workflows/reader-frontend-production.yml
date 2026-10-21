@@ -9,7 +9,7 @@ on:
         default: false
         type: boolean
       target_sha:
-        description: Approved immutable frontend artifact SHA (229df7f)
+        description: Approved immutable admin-caller frontend artifact SHA (b3998d7)
         required: true
         type: string
       confirm_production:
@@ -31,12 +31,12 @@ permissions:
 # Artifact identity is independent of the reviewed current-main release controller.
 # Changing these pins requires a new reviewed release contract, not dispatch input.
 env:
-  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33
-  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6
-  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017
+  FRONTEND_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49
+  FRONTEND_TREE: 8708ec1a1d506fdf3c5e6af1dde6face3a98c1a1
+  FRONTEND_REVIEW_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49
   FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252
-  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83
-  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c
+  BACKEND_SHA: 0f2bb1e728890f1f0e41ded9b12f07c76246bce0
+  BACKEND_TREE: 2c7b9ce0f219ebdf12129bdcf4dd3faf07e22af5
   CONTROLLER_SHA: ${{ github.sha }}
   TARGET_SHA: ${{ inputs.target_sha }}
   CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
@@ -194,7 +194,7 @@ jobs:
               'config_path': 'frontend/vercel.json',
               'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
               'git_deployment_enabled': False,
-              'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+              'rollback_deployment': 'dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
               'rollback_method': 'vercel-instant-rollback',
               'rollback_eligible': True,
               'frontend_backend_config_compatible': True,
@@ -203,6 +203,7 @@ jobs:
           }
           if os.environ.get('PROMOTION_ONLY') == 'true':
               expected.update(release_mode='promotion-only',
+                  rollback_deployment='dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
                   retained_deployment='dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
                   creation_controller_sha='2dad58e388918c9ea74d75935ef5d3753d93f4f3',
                   conditional_rollback=True)

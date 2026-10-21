@@ -300,12 +300,12 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             self.assertEqual(subprocess.run(['bash', '-n'], input=step_script(name), text=True, capture_output=True).returncode, 0)
 
     def test_actual_workflow_pins_are_not_dispatch_selectable(self):
-        self.assertIn('  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33', SOURCE)
-        self.assertIn('  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6', SOURCE)
-        self.assertIn('  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017', SOURCE)
+        self.assertIn('  FRONTEND_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49', SOURCE)
+        self.assertIn('  FRONTEND_TREE: 8708ec1a1d506fdf3c5e6af1dde6face3a98c1a1', SOURCE)
+        self.assertIn('  FRONTEND_REVIEW_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49', SOURCE)
         self.assertIn('  FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252', SOURCE)
-        self.assertIn('  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83', SOURCE)
-        self.assertIn('  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c', SOURCE)
+        self.assertIn('  BACKEND_SHA: 0f2bb1e728890f1f0e41ded9b12f07c76246bce0', SOURCE)
+        self.assertIn('  BACKEND_TREE: 2c7b9ce0f219ebdf12129bdcf4dd3faf07e22af5', SOURCE)
         self.assertEqual(SOURCE.count('--expected-sha "$BACKEND_SHA"'), 3)
         self.assertNotIn('--expected-sha "$TARGET_SHA"', SOURCE)
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
@@ -313,6 +313,25 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertNotIn('ref: ${{ env.FRONTEND_SHA }}', canary)
         self.assertIn('contents: read\n  actions: read', SOURCE)
         self.assertNotIn('contents: write', SOURCE)
+
+    def test_caller_contract_binds_existing_builders_and_reuses_exact_dependencies(self):
+        from scripts.frontend_public_build import F
+        from scripts.qualify_frontend_build_only import FRONTEND_SHA
+        workflow = parse_workflow(SOURCE)
+        self.assertEqual(F, workflow['env']['FRONTEND_SHA'])
+        self.assertEqual(FRONTEND_SHA, F)
+        self.assertEqual(gate.CALLER_FRONTEND, F)
+        self.assertEqual(gate.CALLER_BACKEND, workflow['env']['BACKEND_SHA'])
+        reference = json.loads((ROOT/'scripts/frontend_build_dependency_reference.json').read_text())
+        self.assertEqual(reference['frontend_sha'], F)
+        self.assertEqual(reference['dependency_resolution_reused_from_frontend_sha'],
+                         '229df7f8b2cfb49a7f46215be3979608c39f7c33')
+        for name,key in [('package.json','package_json_sha256'),('package-lock.json','package_lock_sha256')]:
+            # Shallow PR CI need not fetch historical objects. The retained
+            # reviewed digests bind these exact manifests; real qualification
+            # separately checks out immutable F with full history.
+            new = (ROOT/'frontend'/name).read_bytes()
+            self.assertEqual(hashlib.sha256(new).hexdigest(), reference[key])
 
     def test_canary_checkout_executes_controller_instead_of_frontend_revision(self):
         job = parse_workflow(SOURCE)['jobs']['frontend_production_canary']
@@ -424,7 +443,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                 'project_id': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607', 'root_directory': 'frontend',
                 'config_path': 'frontend/vercel.json',
                 'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
-                'git_deployment_enabled': False, 'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+                'git_deployment_enabled': False, 'rollback_deployment': 'dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
                 'rollback_method': 'vercel-instant-rollback', 'rollback_eligible': True,
                 'frontend_backend_config_compatible': True, 'no_backend_restart': True, 'approved': True,
                 'rollback_artifact_sha256': 'a' * 64, 'rollback_config_sha256': 'b' * 64,
@@ -441,6 +460,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                            ('backend_sha', self.frontend), ('frontend_tree', '0' * 40),
                            ('root_directory', ''), ('git_deployment_enabled', True),
                            ('rollback_eligible', False), ('rollback_eligible', 'true'),
+                           ('rollback_deployment', 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf'),
                            ('rollback_operator', ''), ('rollback_artifact_sha256', '0' * 64),
                            ('rollback_config_sha256', ''), ('operator_evidence_sha256', 'bad'),
                            ('no_backend_restart', False), ('frontend_backend_config_compatible', False),
@@ -877,6 +897,88 @@ class RollbackDispositionTests(unittest.TestCase):
 
 
 class ConditionalPromotionTests(unittest.TestCase):
+    def test_caller_unknown_acknowledgement_still_has_only_one_attempt(self):
+        request = self.caller_release_fixture()
+        self.command_mode = 'timeout'
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(result['command_state'], 'UNKNOWN')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_recovery_is_bound_to_current_predecessor_not_old_grant(self):
+        env = {'FRONTEND_SHA':gate.CALLER_FRONTEND, 'BACKEND_SHA':gate.CALLER_BACKEND}
+        self.assertEqual(gate.release_rollback(env), gate.RETAINED_READY)
+        target = {'id':gate.RETAINED_READY,'projectId':gate.PROJECT,'ownerId':gate.TEAM,
+                  'target':'production','readyState':'READY','aliasError':None}
+        project = {'id':gate.PROJECT,'accountId':gate.TEAM,'targets':{'production':{'id':gate.RETAINED_READY}}}
+        aliases = {h:{'alias':h,'projectId':gate.PROJECT,'deploymentId':gate.RETAINED_READY} for h in gate.HOSTS}
+        aliases[gate.PROTECTED_HOST]['deploymentId'] = 'dpl_new'
+        result = gate.rollback_disposition(project, aliases, target, 'dpl_new', environ=env)
+        self.assertEqual(result['status'], 'PUBLIC_RESTORATION_ALREADY_SATISFIED')
+        self.assertFalse(result['rollback_post_allowed'])
+        self.assertFalse(result['all_four_restored'])
+        with self.assertRaises(ValueError):
+            gate.rollback_disposition(project, aliases, {**target,'id':gate.ROLLBACK}, 'dpl_new', environ=env)
+        env['BACKEND_SHA'] = 'd'*40
+        self.assertEqual(gate.release_rollback(env), gate.ROLLBACK)
+
+    def test_caller_provider_does_not_accept_the_old_rollback_route(self):
+        env = {'FRONTEND_SHA':gate.CALLER_FRONTEND, 'BACKEND_SHA':gate.CALLER_BACKEND,
+               'VERCEL_TOKEN':'SYNTHETIC_NOT_PRODUCTION'}
+        with mock.patch.object(gate, 'build_opener') as opener:
+            with self.assertRaises(ValueError):
+                gate.provider_request('/v9/projects/'+gate.PROJECT+'/rollback/'+gate.ROLLBACK, 'POST', 1, env)
+            opener.assert_not_called()
+
+    def caller_release_fixture(self):
+        self.env.update(FRONTEND_SHA=gate.CALLER_FRONTEND, BACKEND_SHA=gate.CALLER_BACKEND)
+        self.metadata['meta'].update(githubCommitSha=gate.CALLER_FRONTEND, readerBackendSha=gate.CALLER_BACKEND)
+        self.project['targets']['production']['id'] = gate.RETAINED_READY
+        original = self.request
+        def caller(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            # Existing fixture models old-serving aliases as PR528. The current
+            # caller contract's predecessor is the retained promoted Reader asset.
+            if not self.attempted and path.startswith('/v4/aliases/'):
+                result = copy.deepcopy(result)
+                if result.get('deploymentId') == gate.ROLLBACK:
+                    result['deploymentId'] = gate.RETAINED_READY
+            return result
+        return caller
+
+    def test_caller_release_current_promoted_predecessor_admits_once(self):
+        request = self.caller_release_fixture()
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_release_staged_automatic_transition_admits_once(self):
+        self.stage_protected_automatic_alias()
+        request = self.caller_release_fixture()
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_predecessor_requires_the_exact_source_pair(self):
+        request = self.caller_release_fixture()
+        self.env['BACKEND_SHA'] = 'd' * 40
+        self.metadata['meta']['readerBackendSha'] = 'd' * 40
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+                now=self.now, clock=lambda:0)
+        self.assertEqual(self.mutations(), [])
+
+    def test_caller_release_other_public_assignment_stops(self):
+        request = self.caller_release_fixture()
+        self.before_alias_overrides[gate.PUBLIC_HOSTS[0]] = 'dpl_unknown'
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+                now=self.now, clock=lambda:0)
+        self.assertEqual(self.mutations(), [])
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -1260,8 +1362,8 @@ class AliasReleaseIntegrationTests(unittest.TestCase):
         self.assertEqual(adapter['env']['VERIFIED_DEPLOYMENT_ID'], '${{ needs.deploy_frontend.outputs.deployment_id }}')
         self.assertEqual(adapter['env']['VERIFIED_READY_AT'], '${{ needs.deploy_frontend.outputs.ready_at }}')
         self.assertEqual(sum('scripts/reader_alias_canaries.py' in s.get('run', '') for s in canary['steps']), 1)
-        self.assertEqual(workflow['env']['FRONTEND_SHA'], '229df7f8b2cfb49a7f46215be3979608c39f7c33')
-        self.assertEqual(workflow['env']['BACKEND_SHA'], 'fda9d5b4a4618447ef75026edf17bba7f28f0c83')
+        self.assertEqual(workflow['env']['FRONTEND_SHA'], 'b3998d72f2e93bd99ffb1563c906c77e78aa5b49')
+        self.assertEqual(workflow['env']['BACKEND_SHA'], '0f2bb1e728890f1f0e41ded9b12f07c76246bce0')
 
     def test_collector_only_reads_four_pinned_aliases_and_emits_binding(self):
         calls = []
