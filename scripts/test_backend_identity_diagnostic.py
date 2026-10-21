@@ -34,4 +34,44 @@ class DiagnosticOnly(unittest.TestCase):
         self.assertIn('timeout-minutes: 5',text)
         self.assertIn("github.ref == 'refs/heads/main'",text)
 
+class ProviderClassification(unittest.TestCase):
+    def error(self, text):
+        return subprocess.CalledProcessError(1, ['railway'], output='private-stdout', stderr=text)
+    def test_explicit_categories_only(self):
+        cases = {
+            'Error: token has expired': 'CREDENTIAL_EXPIRED_REPORTED',
+            'Error: invalid token': 'CREDENTIAL_INVALID_REPORTED',
+            'Error: insufficient token scope': 'TOKEN_TYPE_OR_SCOPE_REPORTED',
+            'Error: not authorized to access this project': 'PROJECT_ACCESS_DENIED_REPORTED',
+            'Error: project not found': 'PROJECT_UNAVAILABLE_REPORTED',
+            'Error: not logged in': 'AUTHENTICATION_REQUIRED_REPORTED',
+            'Error: could not resolve host': 'TRANSPORT_DNS_REPORTED',
+            'Error: certificate verify failed': 'TRANSPORT_TLS_REPORTED',
+            'Error: connection refused': 'TRANSPORT_CONNECTION_REPORTED',
+            'Error: unexpected argument': 'COMMAND_ARGUMENT_ERROR_REPORTED',
+            'Error: cannot find module': 'RUNTIME_DEPENDENCY_ERROR_REPORTED',
+            'Error: invalid configuration': 'CONFIGURATION_ERROR_REPORTED',
+        }
+        for text, category in cases.items():
+            with self.subTest(category=category):
+                self.assertEqual(gate.classify_provider_error(self.error(text)), (category, 'REPORTED_STDERR_PATTERN'))
+    def test_unknown_empty_ambiguous_and_oversized_fail_closed(self):
+        for text in (None, '', 'unexpected private failure', 'invalid token; connection refused', 'x'*65537):
+            with self.subTest(kind=type(text).__name__):
+                self.assertEqual(gate.classify_provider_error(self.error(text))[0], 'UNKNOWN')
+    def test_bytes_ansi_and_local_errors(self):
+        self.assertEqual(gate.classify_provider_error(self.error(b'\x1b[31mError: connection refused\x1b[0m'))[0], 'TRANSPORT_CONNECTION_REPORTED')
+        self.assertEqual(gate.classify_provider_error(FileNotFoundError('private-path'))[0], 'COMMAND_UNAVAILABLE')
+        self.assertEqual(gate.classify_provider_error(subprocess.TimeoutExpired('private-command',40))[0], 'TRANSPORT_OR_COMMAND_TIMEOUT')
+        self.assertEqual(gate.classify_provider_error(RuntimeError('invalid token'))[0], 'UNKNOWN')
+    def test_boundary_never_emits_raw_stderr_or_stdout(self):
+        args=['gate','--expected-sha','0f2bb1e728890f1f0e41ded9b12f07c76246bce0','--project',gate.PROJECT,'--service',gate.SERVICE,'--environment',gate.ENVIRONMENT,'--backend-url',gate.ORIGIN]
+        out=io.StringIO();error=self.error('Error: invalid token; private-token=fixture-secret https://user:fixture-secret@private.invalid')
+        with patch('sys.argv',args),patch.object(gate.subprocess,'run',side_effect=error),contextlib.redirect_stderr(out):
+            self.assertEqual(gate.main(),1)
+        d=json.loads(out.getvalue());self.assertEqual(d['stage'],'provider_cli_read');self.assertEqual(d['provider_exit_code'],1)
+        self.assertEqual(d['provider_error_category'],'CREDENTIAL_INVALID_REPORTED')
+        for fragment in ('fixture-secret','private-stdout','private.invalid','private-token'):
+            self.assertNotIn(fragment,out.getvalue())
+
 if __name__=='__main__':unittest.main()
