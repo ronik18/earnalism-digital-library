@@ -45,4 +45,9 @@ class ReadOnlyAccessTests(unittest.TestCase):
         def denied(*args):calls.append(args);raise ValueError('denied')
         with self.assertRaises(ValueError):g.readonly_access_check(self.env,denied)
         self.assertEqual(len(calls),1)
+    def test_deployment_preflight_reuses_fixed_reads_and_stable_digest(self):
+        one=g.readonly_access_check(self.env,self.request)
+        two=g.readonly_access_check({**self.env,'CONFIRM_PRODUCTION':'DEPLOY_PRODUCTION'},self.request)
+        self.assertEqual(one['snapshot_sha256'],two['snapshot_sha256'])
+        self.assertIn('observed_at_utc',two)
 if __name__=='__main__':unittest.main()

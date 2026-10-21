@@ -239,6 +239,22 @@ jobs:
       - name: Recheck exact main and clean deployment source
         run: *controller_source_gate
 
+      - name: Verify live Vercel project and rollback before authorization
+        if: inputs.promotion_only != true
+        run: &vercel_preflight |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          from scripts.verify_reader_alias_bindings import readonly_access_check
+          try:
+              report = readonly_access_check()
+          except Exception:
+              raise SystemExit('Live scoped Vercel preflight failed; no mutation or retry')
+          (Path(os.environ['RUNNER_TEMP']) / 'vercel-preflight.json').write_text(json.dumps(report, sort_keys=True))
+          print(json.dumps(report, sort_keys=True))
+          PYCODE
+
       # Empty until existing authorized operators supply real config/rollback receipts.
       # This variable is an operator attestation, not automatic live provider verification.
       - name: Verify operator config and rollback approval
@@ -281,6 +297,15 @@ jobs:
                   raise SystemExit('Missing retained artifact/config/operator evidence digest')
           if not isinstance(r.get('rollback_operator'), str) or not r['rollback_operator'].strip():
               raise SystemExit('Missing authorized rollback operator')
+          if os.environ.get('PROMOTION_ONLY') != 'true':
+              from pathlib import Path
+              preflight = json.loads((Path(os.environ['RUNNER_TEMP']) / 'vercel-preflight.json').read_text())
+              observed = datetime.datetime.fromisoformat(preflight['observed_at_utc'])
+              age = datetime.datetime.now(datetime.timezone.utc) - observed
+              if observed.tzinfo is None or not datetime.timedelta(0) <= age <= datetime.timedelta(minutes=15):
+                  raise SystemExit('Vercel preflight stale or future-dated')
+              if preflight.get('status') != 'READ_ONLY_ACCESS_PASS' or r.get('vercel_preflight_sha256') != preflight.get('snapshot_sha256'):
+                  raise SystemExit('Protected live Vercel preflight digest mismatch')
           if os.environ.get('BACKEND_PROVIDER_EVIDENCE_JSON'):
               from scripts.verify_backend_release import verify_operator_provider_evidence, verify_protected_evidence_binding
               raw = os.environ['BACKEND_PROVIDER_EVIDENCE_JSON']
@@ -443,6 +468,10 @@ jobs:
 
       - name: Recheck controller and artifact authorization before deployment
         run: *controller_source_gate
+
+      - name: Refresh live Vercel project and rollback immediately before deployment
+        if: inputs.promotion_only != true
+        run: *vercel_preflight
 
       - name: Recheck operator config and rollback approval before deployment
         env:

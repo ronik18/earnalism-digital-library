@@ -455,7 +455,19 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         gate = 'Verify operator config and rollback approval'
         self.assertNotEqual(self.execute(gate).returncode, 0)
         valid = self.approval()
+        valid['vercel_preflight_sha256'] = 'd' * 64
+        self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path = self.root / 'vercel-preflight.json'
+        synthetic = {'status': 'READ_ONLY_ACCESS_PASS', 'snapshot_sha256': 'd' * 64,
+                     'observed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+        preflight_path.write_text(json.dumps(synthetic))
         self.assertEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        for altered in ({**synthetic, 'snapshot_sha256': 'e'*64},
+                        {**synthetic, 'observed_at_utc': '2000-01-01T00:00:00+00:00'},
+                        {**synthetic, 'status': 'FAIL'}):
+            preflight_path.write_text(json.dumps(altered))
+            self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path.write_text(json.dumps(synthetic))
         for key, value in [('approved', False), ('controller_sha', '0' * 40), ('frontend_sha', self.sha),
                            ('backend_sha', self.frontend), ('frontend_tree', '0' * 40),
                            ('root_directory', ''), ('git_deployment_enabled', True),
