@@ -1,0 +1,57 @@
+name: Read-only backend identity diagnostic
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_readonly:
+        description: READ_ONLY_BACKEND_IDENTITY
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: reader-manual-frontend-production
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    if: github.ref == 'refs/heads/main' && inputs.confirm_readonly == 'READ_ONLY_BACKEND_IDENTITY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify fixed source and read-only scope
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REPOSITORY" == 'ronik18/earnalism-digital-library' ]]
+          [[ "$GITHUB_EVENT_NAME" == 'workflow_dispatch' && "$GITHUB_REF" == 'refs/heads/main' ]]
+          [[ "$(git rev-parse HEAD)" == "$GITHUB_SHA" ]]
+          [[ "$(git rev-parse HEAD:backend)" == '2c7b9ce0f219ebdf12129bdcf4dd3faf07e22af5' ]]
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install same provider CLI
+        run: npm install -g @railway/cli@5.64.2
+      - name: Single read-only diagnostic
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_backend_release.py \
+            --expected-sha 0f2bb1e728890f1f0e41ded9b12f07c76246bce0 \
+            --project a8533934-35c4-463e-9f43-577a9ac391ee \
+            --service 5af42e7e-f518-4f6a-b602-d9950866501f \
+            --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
+            --backend-url https://api.theearnalism.com 2>&1 | tee "$RUNNER_TEMP/backend-identity-diagnostic.json"
+      - name: Retain sanitized diagnostic only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-identity-diagnostic
+          path: ${{ runner.temp }}/backend-identity-diagnostic.json
+          if-no-files-found: ignore
+          retention-days: 3
