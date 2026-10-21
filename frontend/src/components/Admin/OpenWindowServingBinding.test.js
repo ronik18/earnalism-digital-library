@@ -42,6 +42,8 @@ test.each([401,403,404,409,500])("HTTP %i stops without retry or raw error expor
   expect(receipt()).toMatchObject({outcome:"STOPPED",http_status:status});expect(host.textContent).not.toContain("DO_NOT_DISPLAY");
 });
 test.each([
+  data => {data.ordered_chapter_file_hashes[0].id=123;data.ordered_chapter_file_hashes[0].file="chapters/123.json";data.declared_canonical_reader_identity.ordered_chapter_sha256[0].id=123;},
+  data => {data.declared_canonical_reader_identity.content_sha256=[digest];},
   data => {data.requested_uuid="other";}, data => {data.slug="other";},
   data => {data.deployment.project_id="00000000-0000-0000-0000-000000000000";},
   data => {data.deployment.git_sha="b".repeat(40);},
