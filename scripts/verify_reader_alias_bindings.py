@@ -78,21 +78,30 @@ def readonly_access_check(environ=None, request=provider_request):
             or env.get('CONFIRM_PRODUCTION') not in ('READ_ONLY_VERCEL_ACCESS', 'DEPLOY_PRODUCTION')
             or env.get('VERCEL_PROJECT_ID') != PROJECT or env.get('VERCEL_ORG_ID') != TEAM):
         raise ValueError('Read-only execution context mismatch')
+    deadline = time.monotonic() + 30
+    def get(path):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise ValueError('Read-only preflight deadline exhausted')
+        result = request(path, 'GET', min(5, remaining), env)
+        if time.monotonic() >= deadline:
+            raise ValueError('Read-only preflight deadline exceeded')
+        return result
     with wall_deadline(30):
-        project = request('/v9/projects/' + PROJECT, 'GET', 5, env)
+        project = get('/v9/projects/' + PROJECT)
         if (project.get('id') != PROJECT or project.get('accountId') != TEAM
                 or project.get('rollingRelease')
                 or (project.get('lastAliasRequest') or {}).get('jobStatus') in ('pending','in-progress')
                 or project.get('targets', {}).get('production', {}).get('id') != RETAINED_READY):
             raise ValueError('Current exact project/production target unverified')
-        target = request('/v13/deployments/' + RETAINED_READY, 'GET', 5, env)
+        target = get('/v13/deployments/' + RETAINED_READY)
         if (target.get('id') != RETAINED_READY or target.get('projectId') != PROJECT
                 or target.get('ownerId') != TEAM or target.get('target') != 'production'
                 or target.get('readyState') != 'READY' or target.get('aliasError') is not None
                 or target.get('meta', {}).get('githubCommitSha') != '229df7f8b2cfb49a7f46215be3979608c39f7c33'):
             raise ValueError('Rollback identity/source/readiness unverified')
         for host in HOSTS:
-            row = request('/v4/aliases/' + host, 'GET', 5, env)
+            row = get('/v4/aliases/' + host)
             if (row.get('alias') != host or row.get('projectId') != PROJECT
                     or row.get('deploymentId') != RETAINED_READY):
                 raise ValueError('Current exact alias assignment unverified')

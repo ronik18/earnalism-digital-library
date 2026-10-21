@@ -1,5 +1,6 @@
 import copy
 import unittest
+from unittest.mock import patch
 from scripts import verify_reader_alias_bindings as g
 
 class ReadOnlyAccessTests(unittest.TestCase):
@@ -50,4 +51,13 @@ class ReadOnlyAccessTests(unittest.TestCase):
         two=g.readonly_access_check({**self.env,'CONFIRM_PRODUCTION':'DEPLOY_PRODUCTION'},self.request)
         self.assertEqual(one['snapshot_sha256'],two['snapshot_sha256'])
         self.assertIn('observed_at_utc',two)
+    def test_total_deadline_stops_without_retry(self):
+        clock = [0]
+        def slow(*args):
+            result = self.request(*args)
+            clock[0] += 5
+            return result
+        with patch.object(g.time, 'monotonic', side_effect=lambda: clock[0]):
+            with self.assertRaises(ValueError):g.readonly_access_check(self.env,slow)
+        self.assertEqual(len(self.calls),6)
 if __name__=='__main__':unittest.main()
