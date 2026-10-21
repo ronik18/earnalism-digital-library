@@ -68,6 +68,41 @@ def provider_request(path, method, timeout, env):
             return json.loads(raw)
 
 
+def readonly_access_check(environ=None, request=provider_request):
+    """Six fixed GETs only; no promotion, rollback, build or authentication bypass."""
+    env = os.environ if environ is None else environ
+    if (env.get('GITHUB_REPOSITORY') != 'ronik18/earnalism-digital-library'
+            or env.get('GITHUB_REF') != 'refs/heads/main'
+            or env.get('GITHUB_EVENT_NAME') != 'workflow_dispatch'
+            or env.get('CONFIRM_PRODUCTION') != 'READ_ONLY_VERCEL_ACCESS'
+            or env.get('VERCEL_PROJECT_ID') != PROJECT or env.get('VERCEL_ORG_ID') != TEAM):
+        raise ValueError('Read-only execution context mismatch')
+    with wall_deadline(30):
+        project = request('/v9/projects/' + PROJECT, 'GET', 5, env)
+        if (project.get('id') != PROJECT or project.get('accountId') != TEAM
+                or project.get('rollingRelease')
+                or (project.get('lastAliasRequest') or {}).get('jobStatus') in ('pending','in-progress')
+                or project.get('targets', {}).get('production', {}).get('id') != RETAINED_READY):
+            raise ValueError('Current exact project/production target unverified')
+        target = request('/v13/deployments/' + RETAINED_READY, 'GET', 5, env)
+        if (target.get('id') != RETAINED_READY or target.get('projectId') != PROJECT
+                or target.get('ownerId') != TEAM or target.get('target') != 'production'
+                or target.get('readyState') != 'READY' or target.get('aliasError') is not None
+                or target.get('meta', {}).get('githubCommitSha') != '229df7f8b2cfb49a7f46215be3979608c39f7c33'):
+            raise ValueError('Rollback identity/source/readiness unverified')
+        for host in HOSTS:
+            row = request('/v4/aliases/' + host, 'GET', 5, env)
+            if (row.get('alias') != host or row.get('projectId') != PROJECT
+                    or row.get('deploymentId') != RETAINED_READY):
+                raise ValueError('Current exact alias assignment unverified')
+    return {'status': 'READ_ONLY_ACCESS_PASS', 'project_id': PROJECT, 'team_id': TEAM,
+            'current_production_deployment': RETAINED_READY,
+            'rollback_source': '229df7f8b2cfb49a7f46215be3979608c39f7c33',
+            'provider_gets': 6, 'mutations': 0,
+            'rollback_execution_eligibility': 'NOT_PROVEN_BY_METADATA_ONLY',
+            'backend_compatibility': 'SEPARATE_GATE_NOT_RUN'}
+
+
 def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None,
                           request=provider_request, pause=time.sleep, existing_ready=False):
     """One production-only command; uncertain outcomes allow bounded GETs only.

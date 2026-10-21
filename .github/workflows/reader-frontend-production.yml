@@ -3,6 +3,11 @@ name: Exact-artifact owner-held frontend production release
 on:
   workflow_dispatch:
     inputs:
+      access_check_only:
+        description: Six read-only Vercel project/rollback/alias GETs; no release execution
+        required: true
+        default: false
+        type: boolean
       promotion_only:
         description: Promote only the exact retained READY production deployment; no build/deploy
         required: true
@@ -59,9 +64,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  vercel_access_readonly:
+    if: github.ref == 'refs/heads/main' && inputs.access_check_only == true && inputs.confirm_production == 'READ_ONLY_VERCEL_ACCESS' && inputs.promotion_only != true && inputs.conditional_promotion != true
+    environment: reader-frontend-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Inspect exact existing Vercel access without mutation
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          from scripts.verify_reader_alias_bindings import readonly_access_check
+          try:
+              report = readonly_access_check()
+          except Exception:
+              report = {'status': 'READ_ONLY_ACCESS_FAIL', 'reason': 'Exact scoped provider access/state unverified; no retry', 'mutations': 0}
+          path = Path(os.environ['RUNNER_TEMP']) / 'vercel-readonly-access.json'
+          path.write_text(json.dumps(report, sort_keys=True))
+          print(json.dumps(report, sort_keys=True))
+          raise SystemExit(0 if report['status'] == 'READ_ONLY_ACCESS_PASS' else 1)
+          PYCODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vercel-readonly-access
+          path: ${{ runner.temp }}/vercel-readonly-access.json
+          if-no-files-found: ignore
+          retention-days: 3
   backend_verify:
     name: Read-only serving backend verification
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && inputs.access_check_only != true
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
