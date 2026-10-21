@@ -1,5 +1,6 @@
 """Exact alias gate with explicitly admitted one-shot production promotion; no retries."""
 import argparse
+import hashlib
 import datetime as dt
 import json
 import os
@@ -66,6 +67,53 @@ def provider_request(path, method, timeout, env):
             if len(raw) > 2 * 1024 * 1024:
                 raise ValueError("Oversized provider metadata rejected")
             return json.loads(raw)
+
+
+def readonly_access_check(environ=None, request=provider_request):
+    """Six fixed GETs only; no promotion, rollback, build or authentication bypass."""
+    env = os.environ if environ is None else environ
+    if (env.get('GITHUB_REPOSITORY') != 'ronik18/earnalism-digital-library'
+            or env.get('GITHUB_REF') != 'refs/heads/main'
+            or env.get('GITHUB_EVENT_NAME') != 'workflow_dispatch'
+            or env.get('CONFIRM_PRODUCTION') not in ('READ_ONLY_VERCEL_ACCESS', 'DEPLOY_PRODUCTION')
+            or env.get('VERCEL_PROJECT_ID') != PROJECT or env.get('VERCEL_ORG_ID') != TEAM):
+        raise ValueError('Read-only execution context mismatch')
+    deadline = time.monotonic() + 30
+    def get(path):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise ValueError('Read-only preflight deadline exhausted')
+        result = request(path, 'GET', min(5, remaining), env)
+        if time.monotonic() >= deadline:
+            raise ValueError('Read-only preflight deadline exceeded')
+        return result
+    with wall_deadline(30):
+        project = get('/v9/projects/' + PROJECT)
+        if (project.get('id') != PROJECT or project.get('accountId') != TEAM
+                or project.get('rollingRelease')
+                or (project.get('lastAliasRequest') or {}).get('jobStatus') in ('pending','in-progress')
+                or project.get('targets', {}).get('production', {}).get('id') != RETAINED_READY):
+            raise ValueError('Current exact project/production target unverified')
+        target = get('/v13/deployments/' + RETAINED_READY)
+        if (target.get('id') != RETAINED_READY or target.get('projectId') != PROJECT
+                or target.get('ownerId') != TEAM or target.get('target') != 'production'
+                or target.get('readyState') != 'READY' or target.get('aliasError') is not None
+                or target.get('meta', {}).get('githubCommitSha') != '229df7f8b2cfb49a7f46215be3979608c39f7c33'):
+            raise ValueError('Rollback identity/source/readiness unverified')
+        for host in HOSTS:
+            row = get('/v4/aliases/' + host)
+            if (row.get('alias') != host or row.get('projectId') != PROJECT
+                    or row.get('deploymentId') != RETAINED_READY):
+                raise ValueError('Current exact alias assignment unverified')
+    report = {'status': 'READ_ONLY_ACCESS_PASS', 'project_id': PROJECT, 'team_id': TEAM,
+            'current_production_deployment': RETAINED_READY,
+            'rollback_source': '229df7f8b2cfb49a7f46215be3979608c39f7c33',
+            'provider_gets': 6, 'mutations': 0,
+            'rollback_execution_eligibility': 'NOT_PROVEN_BY_METADATA_ONLY',
+            'backend_compatibility': 'SEPARATE_GATE_NOT_RUN'}
+    report['snapshot_sha256'] = hashlib.sha256(json.dumps(report, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    report['observed_at_utc'] = dt.datetime.now(dt.timezone.utc).isoformat()
+    return report
 
 
 def conditional_promotion(metadata, environ=None, clock=time.monotonic, now=None,

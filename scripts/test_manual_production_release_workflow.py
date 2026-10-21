@@ -227,11 +227,17 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_frontend_only_environment_hold_follows_real_backend_verification(self):
-        regression = SOURCE.split('  deploy_frontend:', 1)[0]
+        regression = SOURCE.split('  backend_verify:', 1)[1].split('  deploy_frontend:', 1)[0]
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
         self.assertIn('    environment: reader-frontend-production\n', deploy)
-        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 1)
+        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 2)
+        readonly = SOURCE.split('  vercel_access_readonly:', 1)[1].split('  backend_verify:', 1)[0]
+        self.assertIn('inputs.access_check_only == true', readonly)
+        self.assertIn("inputs.confirm_production == 'READ_ONLY_VERCEL_ACCESS'", readonly)
+        self.assertIn('readonly_access_check()', readonly)
+        self.assertNotIn('vercel deploy', readonly)
+        self.assertNotIn('conditional_promotion(', readonly)
         self.assertNotIn('    environment:', regression)
         self.assertNotIn('    environment:', canary)
         self.assertIn("github.event_name == 'workflow_dispatch'", deploy)
@@ -455,7 +461,19 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         gate = 'Verify operator config and rollback approval'
         self.assertNotEqual(self.execute(gate).returncode, 0)
         valid = self.approval()
+        valid['vercel_preflight_sha256'] = 'd' * 64
+        self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path = self.root / 'vercel-preflight.json'
+        synthetic = {'status': 'READ_ONLY_ACCESS_PASS', 'snapshot_sha256': 'd' * 64,
+                     'observed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+        preflight_path.write_text(json.dumps(synthetic))
         self.assertEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        for altered in ({**synthetic, 'snapshot_sha256': 'e'*64},
+                        {**synthetic, 'observed_at_utc': '2000-01-01T00:00:00+00:00'},
+                        {**synthetic, 'status': 'FAIL'}):
+            preflight_path.write_text(json.dumps(altered))
+            self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path.write_text(json.dumps(synthetic))
         for key, value in [('approved', False), ('controller_sha', '0' * 40), ('frontend_sha', self.sha),
                            ('backend_sha', self.frontend), ('frontend_tree', '0' * 40),
                            ('root_directory', ''), ('git_deployment_enabled', True),

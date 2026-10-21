@@ -143,6 +143,30 @@ def verify_operator_provider_evidence(raw, expected, now=None):
     evidence = json.loads(raw)
     if evidence.get('schema') != 'reader-backend-provider-evidence.v1':
         raise VerificationError('Provider evidence schema mismatch')
+    if 'railway_connector_observation' in evidence:
+        observation = evidence['railway_connector_observation']
+        observed = datetime.datetime.fromisoformat(observation['observed_at_utc'])
+        instant = now or datetime.datetime.now(datetime.timezone.utc)
+        if observed.tzinfo is None or not datetime.timedelta(0) <= instant-observed <= datetime.timedelta(minutes=15):
+            raise VerificationError('Provider evidence stale or future-dated')
+        if observation.get('source') != 'authenticated_Railway_connector' or observation.get('project_id') != PROJECT:
+            raise VerificationError('Authenticated Railway connector provenance mismatch')
+        state = observation['environment_status']
+        if state.get('environment', {}).get('id') != ENVIRONMENT or state['environment'].get('name') != 'production' or state.get('pendingWork') != []:
+            raise VerificationError('Provider environment or pending work mismatch')
+        services = state.get('services', [])
+        if len(services) != 1 or services[0].get('serviceId') != SERVICE or services[0].get('state') != 'online':
+            raise VerificationError('Current provider service mismatch')
+        active = services[0].get('activeDeployments', [])
+        replicas = services[0].get('replicaStatus', {})
+        if (len(active) != 1 or active[0].get('id') != EXACT_DEPLOYMENT or active[0].get('status') != 'SUCCESS'
+                or replicas != {'running': 1, 'crashed': 0, 'total': 1}):
+            raise VerificationError('Current provider deployment/replica mismatch')
+        rows = observation.get('successful_deployment_metadata', [])
+        if len(rows) != 1 or any(rows[0].get(k) != v for k, v in {
+            'id': EXACT_DEPLOYMENT, 'serviceId': SERVICE, 'environmentId': ENVIRONMENT, 'status': 'SUCCESS'}.items()) or rows[0].get('meta', {}).get('commitHash') != EXACT_BACKEND:
+            raise VerificationError('Provider-origin full source association mismatch')
+        return evidence_digest(raw)
     ui = evidence['authenticated_provider_ui_receipt']
     if ui.get('authenticated_provider_ui') is not True or any(ui.get(k) != v for k, v in {
         'project_id': PROJECT, 'service_id': SERVICE, 'environment_id': ENVIRONMENT,
@@ -180,7 +204,9 @@ def verify_protected_evidence_binding(raw, approval_raw):
     approval = json.loads(approval_raw)
     if approval.get('backend_provider_evidence_sha256') != evidence_digest(raw):
         raise VerificationError('Protected operator evidence digest mismatch')
-    if approval.get('backend_provider_evidence_mode') != 'authenticated-ui-and-railway-origin-status.v1':
+    mode = ('authenticated-railway-connector.v1' if 'railway_connector_observation' in json.loads(raw)
+            else 'authenticated-ui-and-railway-origin-status.v1')
+    if approval.get('backend_provider_evidence_mode') != mode:
         raise VerificationError('Protected provider evidence mode mismatch')
 
 
@@ -235,6 +261,8 @@ def main():
             schema, _ = read_json(ORIGIN + '/openapi.json')
             report = verify_http_without_provider(args.expected_sha, args.project, args.service,
                                                   args.environment, health, schema, headers)
+            if 'railway_connector_observation' in json.loads(raw):
+                report['provider_basis'] = 'PROTECTED_OPERATOR_BOUND_AUTHENTICATED_RAILWAY_CONNECTOR_RESPONSE'
             report.update(provider_evidence_sha256=digest, protected_binding_verified=args.require_protected_binding)
             print(json.dumps(report, sort_keys=True))
             return 0
