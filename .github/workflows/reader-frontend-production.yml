@@ -8,6 +8,11 @@ on:
         required: true
         default: false
         type: boolean
+      backend_provider_evidence:
+        description: Exact authenticated UI receipt plus Railway-origin commit status; protected approval must bind its SHA256
+        required: false
+        default: ''
+        type: string
       target_sha:
         description: Approved immutable admin-caller frontend artifact SHA (b3998d7)
         required: true
@@ -43,6 +48,7 @@ env:
   CONDITIONAL_PROMOTION: ${{ inputs.conditional_promotion }}
   PROMOTION_ONLY: ${{ inputs.promotion_only }}
   RELEASE_EVENT: ${{ github.event_name }}
+  BACKEND_PROVIDER_EVIDENCE_JSON: ${{ inputs.backend_provider_evidence }}
 
 defaults:
   run:
@@ -115,15 +121,19 @@ jobs:
 
       - name: Install existing verification clients
         run: |
-          npm install -g @railway/cli@5.64.2
-          python -m pip install pymongo==4.15.3
+          if [[ -z "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then
+            npm install -g @railway/cli@5.64.2
+            python -m pip install pymongo==4.15.3
+          fi
 
       - name: Verify actual HTTP and provider serving identity
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
-          python scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence); fi
+          python scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -134,10 +144,21 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then
+            python - <<'PYCODE'
+          import json, os
+          from scripts.verify_backend_release import frontend_only_scope
+          if not frontend_only_scope(os.environ):
+              raise SystemExit('Frontend-only applicability mismatch')
+          print(json.dumps({'startup_database_snapshot': 'NOT_APPLICABLE_FRONTEND_ONLY',
+                            'database_state_verified': False}))
+          PYCODE
+          else
           railway run --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 --no-local \
-            python scripts/verify_reader_startup_readonly.py | tee "$RUNNER_TEMP/backend-startup.json"
+            python scripts/verify_reader_startup_readonly.py
+          fi | tee "$RUNNER_TEMP/backend-startup.json"
 
       - name: Publish non-secret backend verification summary
         run: |
@@ -215,6 +236,11 @@ jobs:
                   raise SystemExit('Missing retained artifact/config/operator evidence digest')
           if not isinstance(r.get('rollback_operator'), str) or not r['rollback_operator'].strip():
               raise SystemExit('Missing authorized rollback operator')
+          if os.environ.get('BACKEND_PROVIDER_EVIDENCE_JSON'):
+              from scripts.verify_backend_release import verify_operator_provider_evidence, verify_protected_evidence_binding
+              raw = os.environ['BACKEND_PROVIDER_EVIDENCE_JSON']
+              verify_operator_provider_evidence(raw, os.environ['BACKEND_SHA'])
+              verify_protected_evidence_binding(raw, os.environ['RELEASE_APPROVAL_JSON'])
           now = datetime.datetime.now(datetime.timezone.utc)
           issued = datetime.datetime.fromisoformat(r['approved_at'])
           expires = datetime.datetime.fromisoformat(r['expires_at'])
@@ -285,10 +311,13 @@ jobs:
 
       - name: Reverify serving backend after owner approval
         env:
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          npm install -g @railway/cli@5.64.2
-          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          if [[ -z "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then npm install -g @railway/cli@5.64.2; fi
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence --require-protected-binding); fi
+          python3 scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -399,7 +428,9 @@ jobs:
             printf '%s\n' "$artifact_status" >&2
             exit 1
           fi
-          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence --require-protected-binding); fi
+          python3 scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
