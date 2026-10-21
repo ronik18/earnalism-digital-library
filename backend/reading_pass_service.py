@@ -58,6 +58,65 @@ class ReadingPassService:
         self.config = config
         self.token_secret = token_secret
 
+    async def _acceptance_budget(self, document, mongo_session=None, *, starting=False):
+        """Trusted, durable account scope; never populated from a lease request.
+
+        Provisioning/removal is a separately authorized operation. Missing or
+        changed records cannot release a session that was acceptance-bound.
+        """
+        user = await self.db.users.find_one(
+            {"id": document["user_id"], "role": "user"},
+            {"reader_acceptance_budget": 1}, session=mongo_session,
+        )
+        budget = (user or {}).get("reader_acceptance_budget")
+        binding = document.get("acceptance_test_id")
+        if budget is None and not binding:
+            return None
+        scope = document.get("scope") or {}
+        valid = (
+            isinstance(budget, dict)
+            and budget.get("schema") == "reader-acceptance-budget.v1"
+            and budget.get("user_id") == document["user_id"]
+            and budget.get("content_type") == document.get("content_type")
+            and budget.get("content_id") == document.get("content_id")
+            and isinstance(budget.get("test_id"), str) and bool(budget["test_id"])
+            and (starting or binding == budget["test_id"])
+            and budget.get("status") == "enabled"
+            and type(budget.get("maximum_seconds")) is int
+            and type(budget.get("consumed_seconds")) is int
+            and 0 <= budget["consumed_seconds"] <= budget["maximum_seconds"]
+            and isinstance(budget.get("expires_at"), datetime)
+            and bool(budget.get("manifest_version"))
+            and budget["manifest_version"] == scope.get("manifest_version")
+            and bool(budget.get("segmentation_version"))
+            and budget["segmentation_version"] == scope.get("segmentation_version")
+        )
+        if not valid:
+            raise ReadingPassError("ACCEPTANCE_SCOPE_UNAVAILABLE", 403, "Acceptance scope could not be verified.")
+        return budget
+
+    @staticmethod
+    def _acceptance_remaining(budget, now):
+        if budget is None:
+            return None
+        if ensure_utc(budget["expires_at"]) <= now:
+            return 0
+        return budget["maximum_seconds"] - budget["consumed_seconds"]
+
+    async def _debit_account(self, user_id, debit, budget, mongo_session):
+        query = {"id": user_id, "role": "user", "reading_seconds_balance": {"$gte": debit}}
+        increments = {"reading_seconds_balance": -debit, "wallet_seconds": -debit}
+        if budget is not None:
+            # Exact snapshot CAS plus the transaction couples budget, wallet,
+            # ledger and session. Competing renew/terminal writes cannot overspend.
+            query.update({f"reader_acceptance_budget.{key}": value for key, value in budget.items()})
+            increments["reader_acceptance_budget.consumed_seconds"] = debit
+        else:
+            query["reader_acceptance_budget"] = {"$exists": False}
+        updated = await self.db.users.update_one(query, {"$inc": increments}, session=mongo_session)
+        if updated.modified_count != 1:
+            raise ReadingPassError("ACCEPTANCE_OR_BALANCE_CHANGED", 409, "Reading debit authority changed concurrently.")
+
     async def _transaction(self, operation):
         """Run an operation with bounded retry for transient transaction errors."""
 
@@ -418,7 +477,10 @@ class ReadingPassService:
         user_id = str(session_doc.get("user_id") or "")
         session_id = str(session_doc.get("id") or "")
         current_version = int(session_doc.get("lease_version", 0) or 0)
+        budget = await self._acceptance_budget(session_doc, mongo_session)
         billing_cutoff = ensure_utc(billing_cutoff_at or now)
+        if budget is not None:
+            billing_cutoff = min(billing_cutoff, ensure_utc(budget["expires_at"]))
         billable = server_billable_seconds(
             last_billed_at=session_doc.get("last_billed_at") or session_doc.get("lease_issued_at") or now,
             lease_expires_at=session_doc.get("lease_expires_at") or now,
@@ -429,15 +491,11 @@ class ReadingPassService:
         )
         balance = await self._balance(user_id, mongo_session)
         debit = min(balance, billable)
+        if budget is not None:
+            debit = min(debit, budget["maximum_seconds"] - budget["consumed_seconds"])
         balance_after = balance - debit
         if debit:
-            updated_user = await self.db.users.update_one(
-                {"id": user_id, "role": "user", "reading_seconds_balance": {"$gte": debit}},
-                {"$inc": {"reading_seconds_balance": -debit, "wallet_seconds": -debit}},
-                session=mongo_session,
-            )
-            if updated_user.modified_count != 1:
-                raise ReadingPassError("BALANCE_EXHAUSTED", 403, "Reading Pass time is exhausted.", balance_seconds=0)
+            await self._debit_account(user_id, debit, budget, mongo_session)
             await self._append_time_debit(
                 mongo_session=mongo_session,
                 user_id=user_id,
@@ -577,6 +635,13 @@ class ReadingPassService:
                 # surface the denial outside the transaction.
                 return {"terminal_only": True, "balance_seconds": 0}
 
+            budget = await self._acceptance_budget({
+                "user_id": user_id, "content_type": content_kind, "content_id": content_id,
+                "scope": scope,
+            }, mongo_session, starting=True)
+            remaining = self._acceptance_remaining(budget, now)
+            if remaining is not None and remaining <= 0:
+                return {"terminal_only": True, "acceptance_exhausted": True}
             session_id = str(uuid.uuid4())
             preparing = prepare_text and content_kind == "text" and not free_entitlement
             preparation_key = hashlib.sha256(f"{content_id}:{scope.get('manifest_version', '')}".encode()).hexdigest() if preparing else ""
@@ -608,6 +673,8 @@ class ReadingPassService:
                 now + timedelta(seconds=self.config.maximum_lease_seconds)
                 if free_entitlement else lease_expiry(now, balance, self.config)
             )
+            if budget is not None:
+                expires_at = min(expires_at, now + timedelta(seconds=remaining), ensure_utc(budget["expires_at"]))
             if preparation_deadline:
                 expires_at = min(expires_at, preparation_deadline)
             document = {
@@ -634,6 +701,7 @@ class ReadingPassService:
                 "last_heartbeat_at": now,
                 "last_sequence": 0,
                 "seconds_consumed": 0,
+                **({"acceptance_test_id": budget["test_id"]} if budget is not None else {}),
                 "created_at": now,
                 "updated_at": now,
             }
@@ -680,6 +748,8 @@ class ReadingPassService:
             }
 
         result = await self._transaction(operation)
+        if result.get("acceptance_exhausted"):
+            raise ReadingPassError("ACCEPTANCE_EXHAUSTED", 403, "The cumulative acceptance allowance is exhausted or expired.")
         if result.get("terminal_only"):
             raise ReadingPassError(
                 "PASS_REQUIRED",
@@ -1146,15 +1216,22 @@ class ReadingPassService:
             previously_active = bool(
                 session_doc.get("billing_active", session_doc.get("status") == "active")
             )
+            budget = await self._acceptance_budget(session_doc, mongo_session)
             billable = server_billable_seconds(
                 last_billed_at=session_doc.get("last_billed_at") or session_doc["lease_issued_at"],
                 lease_expires_at=session_doc["lease_expires_at"],
                 now=now,
                 active=previously_active,
                 config=self.config,
+                billing_cutoff_at=ensure_utc(budget["expires_at"]) if budget is not None else None,
             )
             balance = await self._balance(user_id, mongo_session)
             debit = 0 if free_entitlement else min(balance, billable)
+            if budget is not None:
+                debit = min(debit, budget["maximum_seconds"] - budget["consumed_seconds"])
+            remaining = self._acceptance_remaining(budget, now)
+            if remaining is not None:
+                remaining = max(0, remaining - debit)
             balance_after = balance - debit
             next_version = current_version + 1
             buffering = (
@@ -1163,7 +1240,7 @@ class ReadingPassService:
             )
             next_status = (
                 "exhausted"
-                if balance_after <= 0 and not free_entitlement
+                if (balance_after <= 0 and not free_entitlement) or remaining == 0
                 else "active"
                 if genuinely_active or buffering or preparing
                 else "paused"
@@ -1173,17 +1250,13 @@ class ReadingPassService:
                 if free_entitlement and next_status == "active"
                 else lease_expiry(now, balance_after, self.config) if next_status == "active" else now
             )
-            if preparing:
+            if preparing and next_status != "exhausted":
                 next_expiry = min(lease_expiry(now, balance_after, self.config), ensure_utc(preparation_deadline))
+            if budget is not None:
+                next_expiry = min(next_expiry, now + timedelta(seconds=remaining), ensure_utc(budget["expires_at"]))
 
             if debit:
-                updated = await self.db.users.update_one(
-                    {"id": user_id, "role": "user", "reading_seconds_balance": {"$gte": debit}},
-                    {"$inc": {"reading_seconds_balance": -debit, "wallet_seconds": -debit}},
-                    session=mongo_session,
-                )
-                if updated.modified_count != 1:
-                    raise ReadingPassError("BALANCE_EXHAUSTED", 403, "Reading Pass time is exhausted.", balance_seconds=0)
+                await self._debit_account(user_id, debit, budget, mongo_session)
                 await self._append_time_debit(
                     mongo_session=mongo_session,
                     user_id=user_id,
@@ -1206,7 +1279,7 @@ class ReadingPassService:
                     "last_heartbeat_at": now,
                     "last_sequence": sequence,
                     "updated_at": now,
-                    "billing_active": genuinely_active and balance_after > 0 and not free_entitlement,
+                    "billing_active": genuinely_active and next_status == "active" and balance_after > 0 and not free_entitlement,
                     "text_phase": "preparing" if preparing else "readable" if genuinely_active and session_doc.get("content_type") == "text" else "inactive",
                     "preparation_deadline": preparation_deadline,
                 },
@@ -1361,6 +1434,11 @@ class ReadingPassService:
             session=mongo_session,
         )
 
+    async def _assert_acceptance_access(self, session_doc, now):
+        budget = await self._acceptance_budget(session_doc)
+        if self._acceptance_remaining(budget, now) == 0:
+            raise ReadingPassError("ACCEPTANCE_EXHAUSTED", 403, "The cumulative acceptance allowance is exhausted or expired.")
+
     async def authorize(
         self,
         *,
@@ -1396,6 +1474,7 @@ class ReadingPassService:
                         "CONTENT_AUTHORITY_UNAVAILABLE", 503,
                         "Reader availability could not be verified.",
                     )
+        await self._assert_acceptance_access(session_doc, now)
         return session_doc
 
     async def authorize_media_credential(
@@ -1450,6 +1529,7 @@ class ReadingPassService:
             or ensure_utc(auth_session.get("absolute_expires_at", now)) <= now
         ):
             raise ReadingPassError("AUTH_REQUIRED", 401, "The member session is no longer active.")
+        await self._assert_acceptance_access(session_doc, now)
         return session_doc
 
     async def end_session(self, *, user_id: str, auth_session_id: str, session_id: str, reason: str = "user_end") -> dict[str, Any]:

@@ -5485,6 +5485,8 @@ async def _release_startup_maintenance_lock(lock_key: str, token: str) -> None:
 
 
 async def _run_startup_database_maintenance() -> None:
+    if _acceptance_release_containment():
+        return
     if not _redis_state_enabled():
         await _run_startup_database_maintenance_with_retry()
         return
@@ -5525,28 +5527,38 @@ async def _run_startup_database_maintenance() -> None:
         await asyncio.sleep(1)
 
 
+def _acceptance_release_containment() -> bool:
+    try:
+        from reader_acceptance_operator import containment_enabled
+    except ImportError:
+        from backend.reader_acceptance_operator import containment_enabled
+    return containment_enabled()
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # ----- startup -----
+    acceptance_contained = _acceptance_release_containment()
     _install_sigterm_drain_marker()
     _log_cost_control_startup()
     await initialize_replica_state_backends()
-    if ENABLE_STARTUP_DB_MAINTENANCE:
+    if ENABLE_STARTUP_DB_MAINTENANCE and not acceptance_contained:
         await _run_startup_database_maintenance()
     else:
-        logger.info("Startup database maintenance is disabled by cost-control mode.")
+        logger.info("Startup database maintenance suppressed (acceptance_containment=%s).", acceptance_contained)
     _schedule_home_surface_warmup()
-    approved_reader_task = asyncio.create_task(_initialize_authorized_reader_release())
+    approved_reader_task = None if acceptance_contained else asyncio.create_task(_initialize_authorized_reader_release())
 
     yield
 
     # ----- shutdown -----
     _mark_shutdown_draining()
-    approved_reader_task.cancel()
-    try:
-        await approved_reader_task
-    except asyncio.CancelledError:
-        pass
+    if approved_reader_task is not None:
+        approved_reader_task.cancel()
+        try:
+            await approved_reader_task
+        except asyncio.CancelledError:
+            pass
     drain_deadline = time.monotonic() + 15
     while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
         await asyncio.sleep(0.1)
@@ -11398,6 +11410,8 @@ async def _initialize_authorized_reader_release() -> list[dict]:
     not a public endpoint, an admin impersonation, or a country observation.
     Actual delivery keeps the signed India, entitlement and revocation gates.
     """
+    if _acceptance_release_containment():
+        return [{"status": "HELD_ACCEPTANCE_RELEASE_CONTAINMENT"}]
     if ENVIRONMENT != "production":
         return []
     if not READING_PASS_V2_ENABLED:
@@ -12287,7 +12301,9 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     if seconds <= 0:
         return 0, await _cached_user_wallet_seconds(user_id)
 
-    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "reader_acceptance_budget": 1}) or {}
+    if "reader_acceptance_budget" in fresh:
+        raise HTTPException(status_code=403, detail={"code": "ACCEPTANCE_REQUIRES_READING_PASS", "message": "Acceptance accounts require the capped lease service."})
     wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     debit = min(seconds, max(0, wallet))
     remaining = max(0, wallet - debit)
@@ -12295,7 +12311,7 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
         return 0, remaining
 
     res = await db.users.update_one(
-        {"id": user_id, "reading_seconds_balance": wallet},
+        {"id": user_id, "reading_seconds_balance": wallet, "reader_acceptance_budget": {"$exists": False}},
         {"$set": {"reading_seconds_balance": remaining, "wallet_seconds": remaining}},
     )
     if res.modified_count != 1:
