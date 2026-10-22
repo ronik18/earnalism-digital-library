@@ -165,11 +165,8 @@ def test_actual_mongo_concurrent_enable_cas_has_no_reset_or_wallet_mutation(tmp_
     from urllib.parse import urlparse
     import os,uuid
     async def run():
-        uri=os.environ['MONGODB_URL']
-        assert urlparse(uri).hostname in ('127.0.0.1','localhost') and 'replicaSet=' in uri
-        client=AsyncIOMotorClient(uri,serverSelectionTimeoutMS=5000)
-        db=client[f'acceptance_operator_synthetic_{uuid.uuid4().hex}']
-        try:
+        from scripts.uat_mongo_fixture import isolated_database
+        async with isolated_database('acceptance_operator_synthetic_') as (client, db):
             await db.users.create_index('id',unique=True)
             for name,keys,partial in [
                 ('reader_content_segments',[('book_slug',1),('page_index',1),('segmentation_version',1)],None),
@@ -197,8 +194,6 @@ def test_actual_mongo_concurrent_enable_cas_has_no_reset_or_wallet_mutation(tmp_
             assert await db.wallet_ledger.count_documents({})==0
             with pytest.raises(op.OperatorStop):await op.execute(server,args)
             assert (await db.users.find_one({'id':'user-1'}))['reader_acceptance_budget']['expires_at']==retained['expires_at']
-        finally:
-            await client.drop_database(db.name);client.close()
     asyncio.run(run())
 
 

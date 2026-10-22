@@ -5535,9 +5535,24 @@ def _acceptance_release_containment() -> bool:
     return containment_enabled()
 
 
+async def _verify_startup_data_before_writes() -> None:
+    # Mandatory for this guarded backend: no missing-policy bypass. Configure only
+    # after independently verifying the intended dataset and replacement principal.
+    try:
+        from startup_data_guard import POLICY_ENV, verify_startup_data
+    except ImportError:
+        from backend.startup_data_guard import POLICY_ENV, verify_startup_data
+    try:
+        await verify_startup_data(client, db, os.environ.get(POLICY_ENV))
+    except BaseException:
+        client.close()
+        raise
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # ----- startup -----
+    await _verify_startup_data_before_writes()
     acceptance_contained = _acceptance_release_containment()
     _install_sigterm_drain_marker()
     _log_cost_control_startup()
