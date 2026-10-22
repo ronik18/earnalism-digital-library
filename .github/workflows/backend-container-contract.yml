@@ -33,15 +33,25 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install isolated fixture driver
+        run: python3 -m pip install pymongo==4.5.0
+
       - name: Start isolated MongoDB replica set
         run: |
-          docker network create earnalism-container-ci
-          docker run --detach --name earnalism-container-mongodb --network earnalism-container-ci mongo:7.0.14 mongod --bind_ip_all --replSet earnalism-container-rs0
+          docker run --detach --name earnalism-container-mongodb --network host mongo:7.0.14 bash -c 'set -euo pipefail; umask 077; head -c 512 /dev/urandom | base64 > /tmp/uat-keyfile; exec mongod --auth --keyFile /tmp/uat-keyfile --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0'
           for _ in $(seq 1 30); do
-            docker exec earnalism-container-mongodb mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' && break
+            docker exec earnalism-container-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
             sleep 1
           done
-          docker exec earnalism-container-mongodb mongosh --quiet --eval 'rs.initiate({_id: "earnalism-container-rs0", members: [{_id: 0, host: "earnalism-container-mongodb:27017"}]})'
+          export ENVIRONMENT=uat DB_NAME=earnalism_uat UAT_MONGODB_PORT=27018
+          export UAT_MONGO_FIXTURE_DIR="$RUNNER_TEMP/earnalism-container-fixture"
+          mkdir -m 700 "$UAT_MONGO_FIXTURE_DIR"
+          python3 scripts/init_uat_mongodb.py
+          python3 scripts/prepare_uat_startup_guard.py
 
       - name: Build the Railway root-directory context
         run: docker build --file backend/Dockerfile --tag earnalism-backend-ci backend
@@ -53,21 +63,22 @@ jobs:
           mkdir -p backend-container-contract
           docker image inspect earnalism-backend-ci > backend-container-contract/image-inspect.json
           test "$(docker image inspect --format '{{.Config.User}}' earnalism-backend-ci)" = "app"
-          docker run --detach --name earnalism-backend-ci --network earnalism-container-ci --publish 18080:8080 \
+          source "$RUNNER_TEMP/earnalism-container-fixture/startup-guard.env"
+          docker run --detach --name earnalism-backend-ci --network host \
             --env PORT=8080 \
             --env ENVIRONMENT=uat \
-            --env MONGODB_URL='mongodb://earnalism-container-mongodb:27017/earnalism_container_ci?replicaSet=earnalism-container-rs0' \
+            --env MONGODB_URL --env DB_NAME --env EARNALISM_STARTUP_DATA_GUARD_JSON \
             --env JWT_SECRET='synthetic-container-contract-only' \
             --env ADMIN_EMAIL='container-contract@example.invalid' \
             --env ENABLE_STARTUP_DB_MAINTENANCE=false \
             earnalism-backend-ci
           for _ in $(seq 1 45); do
-            if curl --fail --silent --show-error http://127.0.0.1:18080/healthz > backend-container-contract/healthz.json; then
+            if curl --fail --silent --show-error http://127.0.0.1:8080/healthz > backend-container-contract/healthz.json; then
               break
             fi
             sleep 2
           done
-          curl --fail --silent --show-error http://127.0.0.1:18080/healthz > backend-container-contract/healthz.json
+          curl --fail --silent --show-error http://127.0.0.1:8080/healthz > backend-container-contract/healthz.json
           docker exec earnalism-backend-ci sh -c 'test "$(id -u)" -ne 0 && test "${PORT}" = 8080 && python -c "import server"'
           ! docker image inspect earnalism-backend-ci | grep -q '127.0.0.1:8000\|:8000/healthz'
           docker logs earnalism-backend-ci > backend-container-contract/container.log 2>&1
@@ -78,7 +89,7 @@ jobs:
           docker ps -a > backend-container-contract/docker-ps.txt || true
           docker logs earnalism-backend-ci > backend-container-contract/container.log 2>&1 || true
           docker rm --force earnalism-backend-ci earnalism-container-mongodb || true
-          docker network rm earnalism-container-ci || true
+          rm -f "$RUNNER_TEMP/earnalism-container-fixture/startup-guard.env" "$RUNNER_TEMP/earnalism-container-fixture/startup-guard-setup.json"
 
       - name: Upload compact container evidence
         if: always()
