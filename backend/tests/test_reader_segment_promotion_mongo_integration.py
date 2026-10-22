@@ -104,32 +104,22 @@ async def _create_indexes(database) -> None:
 
 @asynccontextmanager
 async def _isolated_database():
-    uri = _mongo_uri()
-    client = AsyncIOMotorClient(uri, serverSelectionTimeoutMS=5_000)
-    hello = await client.admin.command("hello")
-    if not hello.get("isWritablePrimary") or not hello.get("setName"):
-        client.close()
-        raise RuntimeError("reader segment Mongo integration requires a writable replica-set primary")
-    # MongoDB database names are capped at 63 bytes; retain a clear test-only
-    # prefix while leaving ample unique entropy for concurrent CI jobs.
-    namespace = f"rpseg_it_{uuid.uuid4().hex}"
-    database = client[namespace]
-    previous_db, previous_client, previous_service = server.db, server.client, server.reading_pass_service
-    server.db = database
-    server.client = client
-    server.reading_pass_service = ReadingPassService(
-        db=database,
-        client=client,
-        config=server.READING_PASS_CONFIG,
-        token_secret=server.READING_PASS_TOKEN_SECRET,
-    )
-    try:
-        await _create_indexes(database)
-        yield database
-    finally:
-        await client.drop_database(namespace)
-        server.db, server.client, server.reading_pass_service = previous_db, previous_client, previous_service
-        client.close()
+    from scripts.uat_mongo_fixture import isolated_database
+    async with isolated_database('rpseg_it_') as (client, database):
+        previous_db, previous_client, previous_service = server.db, server.client, server.reading_pass_service
+        server.db = database
+        server.client = client
+        server.reading_pass_service = ReadingPassService(
+            db=database,
+            client=client,
+            config=server.READING_PASS_CONFIG,
+            token_secret=server.READING_PASS_TOKEN_SECRET,
+        )
+        try:
+            await _create_indexes(database)
+            yield database
+        finally:
+            server.db, server.client, server.reading_pass_service = previous_db, previous_client, previous_service
 
 
 def _exact_approved_bootstrap_plan(monkeypatch):

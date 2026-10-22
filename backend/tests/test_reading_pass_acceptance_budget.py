@@ -130,21 +130,13 @@ def test_actual_mongo_budget_wallet_ledger_atomicity(monkeypatch, transition):
 
     @asynccontextmanager
     async def isolated():
-        uri = os.environ['MONGODB_URL']
-        assert urlparse(uri).hostname in {'localhost', '127.0.0.1'} and 'replicaSet=' in uri
-        client = AsyncIOMotorClient(uri, serverSelectionTimeoutMS=5000)
-        hello = await client.admin.command('hello')
-        assert hello.get('isWritablePrimary') and hello.get('setName')
-        db = client[f'acceptance_cap_synthetic_{uuid.uuid4().hex}']
-        try:
+        from scripts.uat_mongo_fixture import isolated_database
+        async with isolated_database('acceptance_cap_synthetic_') as (client, db):
             await db.users.create_index('id', unique=True)
             await db.reading_pass_sessions.create_index('active_lock', unique=True, sparse=True)
             await db.wallet_ledger.create_index('idempotency_key', unique=True)
             await db.reading_pass_heartbeats.create_index([('session_id', 1), ('sequence', 1)], unique=True)
             yield db, client
-        finally:
-            await client.drop_database(db.name)
-            client.close()
 
     async def run():
         async with isolated() as (db, client):

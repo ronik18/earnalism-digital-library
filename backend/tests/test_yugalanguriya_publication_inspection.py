@@ -342,15 +342,9 @@ def test_real_motor_preserves_max_time_ms_after_prequery_delay():
     """The client deadline is distinct from the maxTimeMS sent on the wire."""
 
     async def scenario():
-        uri = os.environ["MONGODB_URL"]
-        parsed = urlparse(uri)
-        if parsed.hostname not in {"127.0.0.1", "localhost"} or "replicaSet=" not in uri:
-            raise RuntimeError("inspection Mongo integration requires an explicit loopback replica-set MONGODB_URL")
+        from scripts.uat_mongo_fixture import isolated_database
         observer = _FindCommandObserver()
-        client = AsyncIOMotorClient(uri, serverSelectionTimeoutMS=5_000, event_listeners=[observer])
-        namespace = f"inspection_timeout_it_{uuid.uuid4().hex}"
-        database = client[namespace]
-        try:
+        async with isolated_database('inspection_timeout_it_', event_listeners=[observer]) as (client, database):
             await database.timeout_probe.insert_one({"probe": "read-only-fixture"})
 
             async def delayed_find(max_time_ms):
@@ -368,8 +362,4 @@ def test_real_motor_preserves_max_time_ms_after_prequery_delay():
             assert [command.get("maxTimeMS") for command in observer.find_commands] == [
                 server.YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS
             ]
-        finally:
-            await client.drop_database(namespace)
-            client.close()
-
     asyncio.run(scenario())

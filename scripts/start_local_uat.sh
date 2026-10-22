@@ -68,6 +68,7 @@ export REACT_APP_BACKEND_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT" REACT_
 # preferred port and may already be occupied on the host running this gate.
 export CORS_ORIGINS="$UAT_BASE_URL"
 export ENVIRONMENT=uat PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 RAZORPAY_MODE=test
+export DB_NAME=earnalism_uat
 export JWT_SECRET=uat-local-only-jwt-secret-do-not-use-outside-this-worktree-20260820
 export READING_PASS_V2_ENABLED=true READING_PASS_TOKEN_SECRET=uat-local-reading-pass-token-secret-20260820
 export ADMIN_EMAIL=admin@theearnalism.com ADMIN_PASSWORD=Earnalism@2026
@@ -98,6 +99,7 @@ MONGODB_PID=""; REDIS_PID=""; BACKEND_PID=""; FRONTEND_PID=""
 write_pid() { printf 'pid=%s\ncategory=%s\nworktree=%s\nport=%s\nlaunched_at=%s\n' "$1" "$2" "$ROOT_DIR" "$3" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$RUNTIME_ROOT/$2.pid"; }
 cleanup() {
   local result=$?
+  rm -f "${UAT_MONGO_FIXTURE_DIR:-$RUNTIME_DIR}/startup-guard.env" "${UAT_MONGO_FIXTURE_DIR:-$RUNTIME_DIR}/startup-guard-setup.json" "${MONGODB_KEYFILE:-}" "$RUNTIME_ROOT/environment.sh"
   for category in frontend backend redis mongodb; do
     local pid=""
     case "$category" in
@@ -119,6 +121,8 @@ MONGODB_RUN_DIR="$MONGODB_ROOT/run-$(date -u +%Y%m%dT%H%M%SZ)-$$"
 MONGODB_DATA_DIR="$MONGODB_RUN_DIR/data"
 MONGODB_LOG="$MONGODB_RUN_DIR/mongod.log"
 MONGODB_ENGINE_PIDFILE="$MONGODB_RUN_DIR/mongod.engine.pid"
+MONGODB_KEYFILE="$MONGODB_RUN_DIR/keyfile"
+export UAT_MONGO_FIXTURE_DIR="$MONGODB_RUN_DIR"
 mkdir -p "$MONGODB_DATA_DIR"
 if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
   # Container-hosted MongoDB sockets are not necessarily visible to lsof on
@@ -127,12 +131,16 @@ if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
 else
   MONGOD_BIN="${MONGOD_BIN:-$(command -v mongod || true)}"
   [[ -x "$MONGOD_BIN" ]] || { echo "mongod is required for local transaction UAT" >&2; exit 1; }
-  "$MONGOD_BIN" --replSet earnalism-uat-rs0 --bind_ip 127.0.0.1 --port "$UAT_MONGODB_PORT" --dbpath "$MONGODB_DATA_DIR" --logpath "$MONGODB_LOG" --pidfilepath "$MONGODB_ENGINE_PIDFILE" --nounixsocket > "$RUNTIME_DIR/mongodb.log" 2>&1 & MONGODB_PID=$!
+  (umask 077; "$VENV_PYTHON" -c 'import base64,secrets; print(base64.b64encode(secrets.token_bytes(512)).decode())' > "$MONGODB_KEYFILE")
+  "$MONGOD_BIN" --auth --keyFile "$MONGODB_KEYFILE" --replSet earnalism-uat-rs0 --bind_ip 127.0.0.1 --port "$UAT_MONGODB_PORT" --dbpath "$MONGODB_DATA_DIR" --logpath "$MONGODB_LOG" --pidfilepath "$MONGODB_ENGINE_PIDFILE" --nounixsocket > "$RUNTIME_DIR/mongodb.log" 2>&1 & MONGODB_PID=$!
   write_pid "$MONGODB_PID" mongodb "$UAT_MONGODB_PORT"
   for _ in $(seq 1 45); do kill -0 "$MONGODB_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] && break; sleep 1; done
   [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }
 fi
 "$VENV_PYTHON" scripts/init_uat_mongodb.py > "$RUNTIME_DIR/mongodb-primary.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-primary.log" >&2; exit 1; }
+"$VENV_PYTHON" scripts/prepare_uat_startup_guard.py > "$RUNTIME_DIR/startup-guard.log" 2>&1 || { cat "$RUNTIME_DIR/startup-guard.log" >&2; exit 1; }
+source "$UAT_MONGO_FIXTURE_DIR/startup-guard.env"
+rm -f "$UAT_MONGO_FIXTURE_DIR/startup-guard.env"
 
 if [[ "$UAT_EXTERNAL_REDIS" == false ]]; then
   REDIS_BIN="${REDIS_BIN:-$(command -v redis-server || true)}"
@@ -145,7 +153,7 @@ for _ in $(seq 1 45); do "$VENV_PYTHON" -c 'from redis import Redis; Redis.from_
 
 "$VENV_PYTHON" scripts/verify_p1_isolated_preflight.py > "$RUNTIME_DIR/p1-preflight.log" 2>&1 || { cat "$RUNTIME_DIR/p1-preflight.log" >&2; exit 1; }
 
-"$VENV_PYTHON" -m uvicorn backend.server:app --host "$UAT_BACKEND_HOST" --port "$UAT_BACKEND_PORT" > "$RUNTIME_DIR/backend.log" 2>&1 & BACKEND_PID=$!
+env -u UAT_MONGO_SETUP_FILE "$VENV_PYTHON" -m uvicorn backend.server:app --host "$UAT_BACKEND_HOST" --port "$UAT_BACKEND_PORT" > "$RUNTIME_DIR/backend.log" 2>&1 & BACKEND_PID=$!
 write_pid "$BACKEND_PID" backend "$UAT_BACKEND_PORT"
 for _ in $(seq 1 90); do kill -0 "$BACKEND_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/backend.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_BACKEND_PORT")" == "$BACKEND_PID" ]] && curl -fsS "http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/healthz" >/dev/null 2>&1 && break; sleep 1; done
 [[ "$(port_pid "$UAT_BACKEND_PORT")" == "$BACKEND_PID" ]] || { tail -80 "$RUNTIME_DIR/backend.log" >&2; exit 1; }
@@ -161,7 +169,7 @@ write_pid "$FRONTEND_PID" frontend "$UAT_FRONTEND_PORT"
 for _ in $(seq 1 90); do kill -0 "$FRONTEND_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/frontend.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_FRONTEND_PORT")" == "$FRONTEND_PID" ]] && curl -fsS "$UAT_BASE_URL/" >/dev/null 2>&1 && break; sleep 1; done
 [[ "$(port_pid "$UAT_FRONTEND_PORT")" == "$FRONTEND_PID" ]] || { tail -80 "$RUNTIME_DIR/frontend.log" >&2; exit 1; }
 curl -fsS "$UAT_BASE_URL/" >/dev/null
-printf 'export UAT_FRONTEND_HOST=%q\nexport UAT_BACKEND_HOST=%q\nexport UAT_BASE_URL=%q\nexport UAT_API_BASE_URL=%q\nexport UAT_FRONTEND_PORT=%q\nexport UAT_BACKEND_PORT=%q\nexport UAT_MONGODB_PORT=%q\nexport UAT_MONGODB_URI=%q\nexport UAT_RUNTIME_DIR=%q\n' "$UAT_FRONTEND_HOST" "$UAT_BACKEND_HOST" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_FRONTEND_PORT" "$UAT_BACKEND_PORT" "$UAT_MONGODB_PORT" "$UAT_MONGODB_URI" "$RUNTIME_DIR" > "$RUNTIME_ROOT/environment.sh"
+(umask 077; printf 'export UAT_FRONTEND_HOST=%q\nexport UAT_BACKEND_HOST=%q\nexport UAT_BASE_URL=%q\nexport UAT_API_BASE_URL=%q\nexport UAT_FRONTEND_PORT=%q\nexport UAT_BACKEND_PORT=%q\nexport UAT_MONGODB_PORT=%q\nexport UAT_MONGODB_URI=%q\nexport UAT_RUNTIME_DIR=%q\n' "$UAT_FRONTEND_HOST" "$UAT_BACKEND_HOST" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_FRONTEND_PORT" "$UAT_BACKEND_PORT" "$UAT_MONGODB_PORT" "$UAT_MONGODB_URI" "$RUNTIME_DIR" > "$RUNTIME_ROOT/environment.sh")
 printf 'UAT_RUNTIME_DIR=%s\nUAT_BASE_URL=%s\nUAT_API_BASE_URL=%s\nUAT_MONGODB_PORT=%s\n' "$RUNTIME_DIR" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_MONGODB_PORT"
 if [[ -n "${UAT_COMMAND_FILE:-}" ]]; then
   [[ "$UAT_COMMAND_FILE" == "$ROOT_DIR"/* && -f "$UAT_COMMAND_FILE" ]] || { echo "UAT_COMMAND_FILE must be an existing file in this worktree" >&2; exit 64; }
