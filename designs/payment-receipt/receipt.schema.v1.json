@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:earnalism:payment-receipt:1.0.0",
+  "title": "Earnalism synthetic payment receipt contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "templateVersion",
+    "sample",
+    "receiptNumber",
+    "orderNumber",
+    "capturedPaymentReference",
+    "issuedAtUtc",
+    "capturedAtUtc",
+    "sellerSnapshot",
+    "buyerSnapshot",
+    "productSnapshot",
+    "amounts",
+    "gstStatus",
+    "paymentStatus",
+    "entitlementStatus"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "templateVersion": {
+      "const": "receipt-not-registered-v1"
+    },
+    "sample": {
+      "const": true
+    },
+    "receiptNumber": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "pattern": "^REO-RCP-[0-9]{4}-[0-9]{6}$"
+    },
+    "orderNumber": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "pattern": "^REO-ORD-[0-9]{4}-[0-9]{6}$"
+    },
+    "capturedPaymentReference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "issuedAtUtc": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+      "format": "date-time"
+    },
+    "capturedAtUtc": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+      "format": "date-time"
+    },
+    "sellerSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legalName",
+        "address",
+        "supportEmail",
+        "website"
+      ],
+      "properties": {
+        "legalName": {
+          "const": "Reo Enterprise"
+        },
+        "address": {
+          "const": "Nihar Bhawan, 73, Nandan Nagar, Belghoria, District - North 24 Parganas, Kolkata - 700083, West Bengal, India"
+        },
+        "supportEmail": {
+          "const": "sales@reoenterprise.org"
+        },
+        "website": {
+          "const": "https://theearnalism.com"
+        }
+      }
+    },
+    "buyerSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "email"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 70,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "email": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$",
+          "format": "email"
+        }
+      }
+    },
+    "productSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "durationSeconds",
+        "quantity",
+        "unitAmountPaise"
+      ],
+      "properties": {
+        "name": {
+          "const": "Earnalism Reading Pass"
+        },
+        "durationSeconds": {
+          "const": 1800
+        },
+        "quantity": {
+          "const": 1
+        },
+        "unitAmountPaise": {
+          "const": 4900
+        }
+      }
+    },
+    "amounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paidAmountPaise",
+        "currency"
+      ],
+      "properties": {
+        "paidAmountPaise": {
+          "type": "integer",
+          "const": 4900
+        },
+        "currency": {
+          "const": "INR"
+        }
+      }
+    },
+    "gstStatus": {
+      "const": "NOT_REGISTERED"
+    },
+    "paymentStatus": {
+      "const": "CAPTURED"
+    },
+    "entitlementStatus": {
+      "enum": [
+        "PENDING",
+        "ACTIVE",
+        "EXPIRED",
+        "REVOKED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "templateVersion": "receipt-not-registered-v1",
+  "sample": true,
+  "receiptNumber": "REO-RCP-2627-000001",
+  "orderNumber": "REO-ORD-2627-000001",
+  "capturedPaymentReference": "SAMPLE-CAPTURE-000001",
+  "issuedAtUtc": "2026-10-24T12:31:00Z",
+  "capturedAtUtc": "2026-10-24T12:30:00Z",
+  "sellerSnapshot": {
+    "legalName": "Reo Enterprise",
+    "address": "Nihar Bhawan, 73, Nandan Nagar, Belghoria, District - North 24 Parganas, Kolkata - 700083, West Bengal, India",
+    "supportEmail": "sales@reoenterprise.org",
+    "website": "https://theearnalism.com"
+  },
+  "buyerSnapshot": {
+    "name": "Sample Reader",
+    "email": "reader@example.invalid"
+  },
+  "productSnapshot": {
+    "name": "Earnalism Reading Pass",
+    "durationSeconds": 1800,
+    "quantity": 1,
+    "unitAmountPaise": 4900
+  },
+  "amounts": {
+    "paidAmountPaise": 4900,
+    "currency": "INR"
+  },
+  "gstStatus": "NOT_REGISTERED",
+  "paymentStatus": "CAPTURED",
+  "entitlementStatus": "PENDING"
+}

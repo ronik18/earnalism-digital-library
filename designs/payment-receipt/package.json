@@ -1,0 +1,1 @@
+{"name":"earnalism-payment-receipt","private":true,"type":"module","scripts":{"build":"node build.mjs","test":"node --test test/*.test.mjs","verify":"node verify.mjs"},"engines":{"node":">=22"}}
