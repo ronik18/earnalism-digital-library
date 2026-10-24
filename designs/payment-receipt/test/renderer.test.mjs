@@ -68,5 +68,6 @@ test('rendered PDF fixture attaches exact bytes and CID logo',()=>{
  const path=new URL('../output/receipt.pdf',import.meta.url);assert.ok(existsSync(path),'Render the HTML PDF before running focused tests');
  const pdf=readFileSync(path),fixture=makeEmailFixture(sample,pdf);
  const match=fixture.raw.match(/Content-Type: application\/pdf\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment;[^\r]+\r\n\r\n([A-Za-z0-9+/=\r\n]+?)--earnalism-mixed-v1--/);
+ assert.match(fixture.raw,/^From: Earnalism Sample <sales@reoenterprise\.org>\r\nReply-To: sales@reoenterprise\.org\r\nTo: reader@example\.invalid\r\n/);
  assert.ok(match);assert.deepEqual(Buffer.from(match[1],'base64'),pdf);assert.equal(fixture.pdfSha256,createHash('sha256').update(pdf).digest('hex'));assert.ok(fixture.raw.includes('Content-ID: <earnalism-logo>'));assert.ok(fixture.raw.includes('reader@example.invalid'));assert.throws(()=>makeEmailFixture(sample,Buffer.from('not pdf')));
 });
