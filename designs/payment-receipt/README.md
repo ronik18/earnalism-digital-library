@@ -6,15 +6,15 @@ Isolated design implementation. All fixtures are synthetic and visibly marked SA
 
 `output/receipt.pdf` is generated directly from `output/receipt.html` by installed Chromium 149 using DevTools `Page.printToPDF`, with A4 CSS and tagged PDF enabled. It is not independently typeset. `output/receipt-preview.png` is rasterized from that actual PDF using macOS PDFKit. Desktop and 390/320 pixel receipt and email PNGs, schema, JSON sample, HTML, plain text email, and an unsent MIME fixture with exact PDF attachment are included in the source ZIP.
 
-## Contract v1.0.0
+## Contract v1.1.0
 
-`receipt.schema.v1.json` is Draft 2020-12 JSON Schema. Required fields:
+`receipt.schema.v1.json` is Draft 2020-12 JSON Schema. Required fields (except the explicitly optional buyer snapshot):
 
-- `schemaVersion: "1.0.0"`, `templateVersion: "receipt-not-registered-v1"`, `sample: true`
+- `schemaVersion: "1.1.0"`, `templateVersion: "receipt-not-registered-v1"`, `sample`: required boolean
 - `receiptNumber`, `orderNumber`, `capturedPaymentReference`
 - `issuedAtUtc`, `capturedAtUtc`: strict calendar-valid UTC timestamps ending in Z
 - `sellerSnapshot: {legalName,address,supportEmail,website}`
-- `buyerSnapshot: {name,email}`
+- `buyerSnapshot: {name?,email?}`: optional object; both fields independently optional. Omit unavailable identity; null and empty strings remain invalid.
 - `productSnapshot: {name,durationSeconds,quantity,unitAmountPaise}`
 - `amounts: {paidAmountPaise,currency}`
 - `gstStatus: "NOT_REGISTERED"`, `paymentStatus: "CAPTURED"`
@@ -22,7 +22,7 @@ Isolated design implementation. All fixtures are synthetic and visibly marked SA
 
 This intentionally narrow contract supports only one Earnalism Reading Pass, 1800 seconds / 30 minutes, paid amount 4900 integer paise INR. The display is exactly ₹49.00. An upstream system must supply references, capture truth, amounts, immutable snapshots, and entitlement truth. No identifier generation, capture decision, access activation, or tax calculation occurs in the template. UTC is retained in data and semantic time attributes; display uses Asia/Kolkata (IST). Issuance before capture is rejected. Unknown fields, invalid dates, unsupported versions, non-integer money, other currencies/statuses and GST registration modes fail closed.
 
-`sample: true` is deliberately required for this deliverable. Production issuance requires a separately reviewed contract/version; removing a SAMPLE label alone does not authorize issuance. A future registered template could be added under a separate version and schema, but is disabled here; `REGISTERED` is rejected. There is no GST line, GSTIN, SAC, exemption claim, or tax math.
+`sample` is a required boolean. True includes SAMPLE markings in receipt, email and text; false omits them. Both rendering modes are reusable with validated supplied data. Rendering does not issue a payment, send an email, activate access or establish capture truth. All fixtures exercised here remain synthetic, including false-mode tests. Absent buyer identity displays “Buyer details not supplied.” on the receipt and “Hello,” in email, without inventing identity. A future registered template could be added under a separate version and schema, but is disabled here; `REGISTERED` is rejected. There is no GST line, GSTIN, SAC, exemption claim, or tax math.
 
 ## Safety and email
 
@@ -55,3 +55,7 @@ Prior Library source `libfile_2f919a84e5e88191ac217c0fccccde31` was materialized
 Exact palette: darkburgundy #521D32, deepburgundy #3E1727, parchment #FFFAF3, beige #F0E4D5, softgold #D6BC95, body #35292B. All required seller, product, support and GST wording follows the supplied brief.
 
 Branch `task-a/receipt-design-20261025`, base `20aa0a020`. Repository AGENTS.md was read. Its canonical integration branch rule was superseded by the explicit task instruction to implement independently in an isolated worktree. No .agents directory exists in this checkout. No Reader/Listener, Railway configuration, PR540/552, production, payment integration, merge, deployment or customer email was touched.
+
+## Contract revision 1.1.0
+
+Narrow integration revision: required boolean `sample`; optional `buyerSnapshot` and independently optional name/email; conditional SAMPLE markings across receipt, email, text, and MIME fixture metadata. Exact seller/product/GST/payment constraints are unchanged. Ten focused tests pass. Sample HTML and email remain byte-identical, so the previously rendered PDF and PNG were retained without rerendering. No issuance, sending or deployment occurred.
