@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:earnalism:payment-receipt:1.1.0",
-  "title": "Earnalism payment receipt contract v1.1",
+  "$id": "urn:earnalism:payment-receipt:1.1.1",
+  "title": "Earnalism payment receipt contract v1.1.1",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -22,7 +22,7 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": "1.1.0"
+      "const": "1.1.1"
     },
     "templateVersion": {
       "const": "receipt-not-registered-v1"
@@ -33,14 +33,14 @@
     "receiptNumber": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 24,
-      "pattern": "^REO-RCP-[0-9]{4}-[0-9]{6}$"
+      "maxLength": 32,
+      "pattern": "^REO-RCP-[0-9]{4}-[0-9]{6,19}$"
     },
     "orderNumber": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 24,
-      "pattern": "^REO-ORD-[0-9]{4}-[0-9]{6}$"
+      "maxLength": 32,
+      "pattern": "^REO-ORD-[0-9]{4}-[0-9]{6,19}$"
     },
     "capturedPaymentReference": {
       "type": "string",

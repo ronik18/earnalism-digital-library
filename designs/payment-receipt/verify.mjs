@@ -24,7 +24,7 @@ try {
  await call('Page.enable');await call('Network.enable');await call('Network.setBlockedURLs',{urls:['http://*','https://*']});
  const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
  const evidence={renderer:await send('Browser.getVersion'),networkAssets:'HTTP(S) blocked by CDP; embedded local image only',checks:[]};
- for(const name of ['receipt','email']){
+ if(!process.argv.includes('--references-only')) for(const name of ['receipt','email']){
   await call('Page.navigate',{url:pathToFileURL(new URL(`./output/${name}.html`,import.meta.url).pathname).href});
   for(let i=0;i<100;i++){if(await evaluate('document.readyState === "complete"'))break;await new Promise(r=>setTimeout(r,50));}
   await evaluate('document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode())))');
@@ -53,18 +53,31 @@ try {
  }
  // Exercise maximum allowed identity/reference lengths independently of samples.
  const stress=JSON.parse(readFileSync(new URL('./sample.v1.json',import.meta.url)));
+ stress.receiptNumber='REO-RCP-2627-9999999999999999999';stress.orderNumber='REO-ORD-2627-9999999999999999999';
  stress.buyerSnapshot.name='W'.repeat(70);stress.buyerSnapshot.email='w'.repeat(104)+'@example.invalid';stress.capturedPaymentReference='W'.repeat(80);
  await call('Page.navigate',{url:'about:blank'});
  await call('Page.setDocumentContent',{frameId:(await call('Page.getFrameTree')).frameTree.frame.id,html:renderReceipt(stress)});
  await evaluate('document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode())))');
+ for(const width of [390,320]){
+  await call('Emulation.setEmulatedMedia',{media:'screen'});
+  await call('Emulation.setDeviceMetricsOverride',{width,height:1123,deviceScaleFactor:1,mobile:false});
+  const dimensions=await evaluate('({width:innerWidth,scroll:document.documentElement.scrollWidth,referenceRight:document.querySelector(".reference").getBoundingClientRect().right})');
+  assert.ok(dimensions.scroll<=width && dimensions.referenceRight<=width,`Long reference overflows ${width}px`);
+  evidence.checks.push({name:'maximum-length-references',...dimensions});
+ }
  await call('Emulation.setDeviceMetricsOverride',{width:794,height:1123,deviceScaleFactor:1,mobile:false});
  await call('Emulation.setEmulatedMedia',{media:'print'});
  const stressBottom=await evaluate('document.querySelector("footer").getBoundingClientRect().bottom');
  assert.ok(stressBottom<1123,`Maximum length content exceeds A4: ${stressBottom}`);evidence.maximumLengthA4Footer=stressBottom;
+ const referencePdf=await call('Page.printToPDF',{printBackground:true,preferCSSPageSize:true,displayHeaderFooter:false,generateTaggedPDF:true,marginTop:0,marginBottom:0,marginLeft:0,marginRight:0});
+ writeFileSync(new URL('./output/reference-length-check.pdf',import.meta.url),Buffer.from(referencePdf.data,'base64'));
+ const referenceShot=await call('Page.captureScreenshot',{format:'png',clip:{x:0,y:0,width:794,height:1123,scale:1}});
+ writeFileSync(new URL('./output/reference-length-check.png',import.meta.url),Buffer.from(referenceShot.data,'base64'));
+ evidence.suppliedReferences={receiptNumber:stress.receiptNumber,orderNumber:stress.orderNumber};
  // WCAG 2 AA text pairs. Gold is decoration only; never used as body text.
  const rgb=h=>h.match(/\w\w/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);
  const lum=h=>rgb(h).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
  evidence.contrast=[];for(const fg of ['35292B','521D32','3E1727'])for(const bg of ['FFFAF3','F0E4D5']){const ratio=(Math.max(lum(fg),lum(bg))+.05)/(Math.min(lum(fg),lum(bg))+.05);assert.ok(ratio>=4.5);evidence.contrast.push({foreground:'#'+fg,background:'#'+bg,ratio:Number(ratio.toFixed(2))});}
- writeFileSync(new URL('./output/browser-verification.json',import.meta.url),JSON.stringify(evidence,null,2)+'\n');
+ writeFileSync(new URL(process.argv.includes('--references-only') ? './output/reference-length-verification.json' : './output/browser-verification.json',import.meta.url),JSON.stringify(evidence,null,2)+'\n');
  console.log(JSON.stringify(evidence,null,2));
 } finally {if(socket)socket.close();proc.kill();proc.stdout.destroy();proc.stderr.destroy();proc.unref();setTimeout(()=>rmSync(profile,{recursive:true,force:true}),500).unref();}

@@ -11,6 +11,16 @@ test('sample renders exact amounts, identifiers, UTC and IST',()=>{
  for(const text of ['₹49.00',sample.receiptNumber,sample.orderNumber,sample.capturedPaymentReference,'24 Oct 2026, 18:00 IST',sample.capturedAtUtc,'30 minutes / 1800 seconds',GST_STATEMENT,'SAMPLE','PENDING'])assert.ok(html.includes(text),text);
  assert.equal(formatINR(4900),'₹49.00'); assert.equal(formatIST('2026-10-24T20:00:00Z'),'25 Oct 2026, 01:30 IST');
 });
+test('supplied reference sequences support minimum padding through 19 digits',()=>{
+ for(const sequence of ['000001','1000000','9999999999999999999']){
+  const d=change(d=>{d.receiptNumber=`REO-RCP-2627-${sequence}`;d.orderNumber=`REO-ORD-2627-${sequence}`;});
+  for(const output of [renderReceipt(d),renderEmail(d),emailText(d)]){
+   assert.ok(output.includes(d.receiptNumber));assert.ok(output.includes(d.orderNumber));
+  }
+ }
+ for(const sequence of ['00001','99999999999999999999','-1000000','1.000000','100000a'])
+  for(const field of ['receiptNumber','orderNumber'])assert.throws(()=>validate(change(d=>d[field]=`REO-${field==='receiptNumber'?'RCP':'ORD'}-2627-${sequence}`)));
+});
 test('missing, unknown, unsafe and disabled financial states fail closed',()=>{
  for(const fn of [d=>delete d.receiptNumber,d=>d.gstStatus='REGISTERED',d=>d.paymentStatus='AUTHORIZED',d=>d.entitlementStatus='GUESS',d=>d.templateVersion='tax-v2',d=>d.sample="false",d=>delete d.sample,d=>d.amounts.paidAmountPaise=49,d=>d.amounts.paidAmountPaise=4900.1,d=>d.amounts.currency='USD',d=>d.tax=0,d=>d.buyerSnapshot.rawHtml='<b>x</b>',d=>d.capturedAtUtc='2026-02-30T12:00:00Z',d=>d.issuedAtUtc='2026-10-23T12:00:00Z',d=>d.capturedAtUtc='2026-10-24T12:30:00+00:00',d=>d.buyerSnapshot.name='x\u202ey',d=>d.buyerSnapshot.name='a'.repeat(71)])assert.throws(()=>renderReceipt(change(fn)));
 });

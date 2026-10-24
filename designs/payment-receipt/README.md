@@ -6,11 +6,11 @@ Isolated design implementation. All fixtures are synthetic and visibly marked SA
 
 `output/receipt.pdf` is generated directly from `output/receipt.html` by installed Chromium 149 using DevTools `Page.printToPDF`, with A4 CSS and tagged PDF enabled. It is not independently typeset. `output/receipt-preview.png` is rasterized from that actual PDF using macOS PDFKit. Desktop and 390/320 pixel receipt and email PNGs, schema, JSON sample, HTML, plain text email, and an unsent MIME fixture with exact PDF attachment are included in the source ZIP.
 
-## Contract v1.1.0
+## Contract v1.1.1
 
 `receipt.schema.v1.json` is Draft 2020-12 JSON Schema. Required fields (except the explicitly optional buyer snapshot):
 
-- `schemaVersion: "1.1.0"`, `templateVersion: "receipt-not-registered-v1"`, `sample`: required boolean
+- `schemaVersion: "1.1.1"`, `templateVersion: "receipt-not-registered-v1"`, `sample`: required boolean
 - `receiptNumber`, `orderNumber`, `capturedPaymentReference`
 - `issuedAtUtc`, `capturedAtUtc`: strict calendar-valid UTC timestamps ending in Z
 - `sellerSnapshot: {legalName,address,supportEmail,website}`
@@ -59,3 +59,7 @@ Branch `task-a/receipt-design-20261025`, base `20aa0a020`. Repository AGENTS.md 
 ## Contract revision 1.1.0
 
 Narrow integration revision: required boolean `sample`; optional `buyerSnapshot` and independently optional name/email; conditional SAMPLE markings across receipt, email, text, and MIME fixture metadata. Exact seller/product/GST/payment constraints are unchanged. Ten focused tests pass. Sample HTML and email remain byte-identical, so the previously rendered PDF and PNG were retained without rerendering. No issuance, sending or deployment occurred.
+
+## Contract revision 1.1.1
+
+Supplied receipt/order sequences now accept 6–19 decimal digits, retaining minimum six-digit padding and maximum 32 characters per full reference. Patterns are `^REO-RCP-[0-9]{4}-[0-9]{6,19}$` and `^REO-ORD-[0-9]{4}-[0-9]{6,19}$`. Mongo int64 range and sequence allocation remain upstream responsibilities; this renderer does not generate references. Focused supplied-reference tests cover 000001, 1000000 and 19 digits. `node verify.mjs --references-only` checks maximum references at mobile widths and exports a separate genuine HTML A4 PDF without modifying the ordinary sample PDF.
