@@ -11762,5 +11762,15 @@
     "commercial_copy_repair": "Account enabled-mode wording now matches source and read-only production payment availability; disabled-mode fallback remains conditional.",
     "production_status": "NOT_REASSESSED_FOR_RELEASE; no merge, deploy, payment attempt, login or customer data mutation occurred.",
     "next_action": "Review/commit the scoped Account copy and execution-handoff candidate, then open a protected PR without merging."
+  },
+  "open_window_listened_successor_compatibility_20261023": {
+    "at_utc": "2026-10-23T12:21:20.941496+00:00",
+    "title": "the-open-window",
+    "decision": "PREPARED_LISTENED_SUCCESSOR_V2_COMPATIBILITY_ONLY",
+    "source_base": "2690e385b7d51ba139816df9049745c97c45c5e2",
+    "evidence": "Owner source-following full-title and six targeted clear-match reports; exact digest pins in validator",
+    "local_qa": "85/85 proposed; production15 and overall100 unscored",
+    "production_status": "HELD_NO_REGISTRY_ADOPTION_INSTALL_UPLOAD_ACTIVATION",
+    "next_action": "Review scoped validator diff and exact evidence pins before a separately authorized policy/registry adoption"
   }
 }

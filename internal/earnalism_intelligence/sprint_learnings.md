@@ -2672,3 +2672,7 @@ Two failing-before regressions,69focused tests passing after. Browser/real-Mongo
 requalification subsequently29Mongo and6browser cases PASS; production untouched.
 See reader_preparation_expiry_20261018.md. Controlled45s opening is not a latency
 benchmark; fixed60s expiry remains fail-closed with zero preparation debit.
+
+## Open Window listened-successor compatibility — 23 October 2026
+
+The legacy exact-successor validator pins six unresolved lexical findings. New owner source-following/listening evidence requires a separately selected version with exact hash pins, preserving the legacy version and native rights/storage/auth/accounting gates. A proposed local85/85 is not an overall95/100PASS. Preparation adds no trusted registry entry or activation. Canonical checkout registration/files were restored after preserving the incomplete historical checkout; dirty parked payment work was not imported.

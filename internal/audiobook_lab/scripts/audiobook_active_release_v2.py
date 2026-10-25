@@ -703,7 +703,7 @@ def validate_qa_candidate_release_descriptor(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
     candidate = descriptor.get("release_candidate_evidence")
-    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "open_window_retained_successor.v1":
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2"):
         try:
             try:
                 from .open_window_successor_acceptance import validate as validate_successor, SuccessorAcceptanceError
@@ -1988,17 +1988,21 @@ def activate_new_title_package_canary(
         "generated_at": operation_time,
     }
     editorial = (release_descriptor.get("release_candidate_evidence") or {})
-    successor_editorial = editorial.get("acceptance_policy") == "open_window_retained_successor.v1"
+    successor_editorial = editorial.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2")
     if successor_editorial:
         # This descriptor already passed the independent adoption and rights gates.
         # Do not turn editorial acceptance into a stored acoustic QA PASS.
         canary["editorial_acceptance"] = {
-            "status": "OWNER_ACCEPTED_UNCERTAINTY",
+            "status": (editorial["status"] if editorial.get("acceptance_policy") == "open_window_listened_successor.v2"
+                       else "OWNER_ACCEPTED_UNCERTAINTY"),
             "acoustic_pass_claimed": False,
             "acceptance_representation_sha256": editorial["acceptance_representation_sha256"],
             "remaining_lexical_uncertainty_units": copy.deepcopy(editorial["remaining_lexical_uncertainty_units"]),
             "unit24_disposition": editorial["unit24_disposition"],
         }
+    if successor_editorial and editorial.get("acceptance_policy") == "open_window_listened_successor.v2":
+        canary["editorial_acceptance"]["acceptance_policy"] = editorial["acceptance_policy"]
+        canary["editorial_acceptance"]["owner_local_qa"] = copy.deepcopy(editorial["owner_local_qa"])
     managed = _managed_values(
         packages=packages,
         evidence=evidence,
