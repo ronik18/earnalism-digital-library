@@ -9852,6 +9852,29 @@ async def user_claim_reader_reward(user=Depends(require_user)):
     }
 
 
+def _listener_transport_canary_audio(audio, slug, request, principal):
+    # This is presentation metadata, not media authority. Only the direct
+    # authenticated Listener opts in; Reader/catalogue projections stay hidden.
+    if (request.query_params.get('transport_canary') != '1'
+            or not principal or principal.get('role') != 'user'):
+        return audio, ''
+    artifact = _controlled_artifact_doc(slug, include_content=False)
+    if not artifact or not _can_expose_audiobook_package_canary(artifact, slug):
+        return audio, ''
+    package, descriptor, new_identity = _selected_audiobook_package(artifact, slug, request, create_rollout_identity=True)
+    if not package:
+        return audio, new_identity
+    canary = artifact.get('audiobook_package_canary') or {}
+    return {**audio, 'transport_canary': {
+        'enabled': True, 'slug': slug,
+        'scope': 'transport_canary_only_no_customer_discovery',
+        'package_version': package['package_version'],
+        'release_descriptor_sha256': descriptor,
+        'duration_ms': package['duration_ms'],
+        'rollout_percentage': canary.get('rollout_percentage'),
+    }}, new_identity
+
+
 @api.get("/reader/book/{slug}/manifest")
 async def reader_book_manifest(
     slug: str,
@@ -9941,6 +9964,13 @@ async def reader_book_manifest(
             ],
         }
     payload = {**manifest, "access": access}
+    canary_audio, new_audio_identity = _listener_transport_canary_audio(manifest.get('audio') or {}, slug, request, principal)
+    if canary_audio is not manifest.get('audio'):
+        payload['audio'] = canary_audio
+    if new_audio_identity:
+        response.set_cookie(AUDIOBOOK_ROLLOUT_COOKIE, new_audio_identity,
+            max_age=365*24*60*60, secure=ENVIRONMENT == 'production', httponly=True,
+            samesite='lax', path=f'/api/reader/book/{slug}')
     if canonical_pages:
         payload["canonical_pages"] = canonical_pages
     response.headers["X-Reader-Manifest-Version"] = manifest["version"]

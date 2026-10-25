@@ -11772,5 +11772,14 @@
     "local_qa": "85/85 proposed; production15 and overall100 unscored",
     "production_status": "HELD_NO_REGISTRY_ADOPTION_INSTALL_UPLOAD_ACTIVATION",
     "next_action": "Review scoped validator diff and exact evidence pins before a separately authorized policy/registry adoption"
+  },
+  "open_window_transport_canary_20261025": {
+    "status": "PREPARED_PENDING_CI_DEPLOY_ACCEPTANCE",
+    "descriptorSHA256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "rolloutPercentage": 5,
+    "catalogueAudioEnabled": false,
+    "backendDeployment": false,
+    "productionQA15": "UNPERFORMED",
+    "overall95Threshold": "UNCHANGED"
   }
 }

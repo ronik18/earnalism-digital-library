@@ -291,7 +291,9 @@ describe("Reader content quality batch 1", () => {
       const decision = readJson(`${folder}/rights_decision.json`);
       const publication = readJson(`${folder}/publication_manifest.json`);
       const publicBook = readJson(`${folder}/public_book.json`);
-      expect(decision.decision_id).toBe(`india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
+      expect(decision.decision_id).toBe(slug === "the-open-window"
+        ? "india-20261025-the-open-window-reader-cover-canary-metadata"
+        : `india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
       expect(decision.territories).toEqual(["IN"]);
       expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
         .update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));

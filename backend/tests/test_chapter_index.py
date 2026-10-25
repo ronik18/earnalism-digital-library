@@ -237,7 +237,7 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         'dsires-baby': '83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee',
         'sredni-vashtar': '2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad',
         'the-cop-and-the-anthem': 'a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22',
-        'the-open-window': '8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151',
+        'the-open-window': 'febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b',
         'the-selfish-giant': 'd5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c',
         'the-science-of-getting-rich': 'a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7',
         'bn-066': 'cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7',

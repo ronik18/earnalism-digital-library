@@ -1,16 +1,16 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+  "decision_id": "india-20261025-the-open-window-reader-cover-canary-metadata",
   "edition_id": "the-open-window",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
     "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
-    "publication_manifest": "605ed01af369f954d266661677ae89ded55bb74cd16e288b882169781b15b521",
-    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
-    "approval_evidence": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085",
-    "public_book": "15e0b753e73e7fc56c3948ffd6e660ab4991ffed0e337c648b3ae3b973b19cf2",
-    "checksum_manifest": "66fe7d2b6d1cabc1a638d51c7ecc98814090ca088ed6e4668219d239467cc88e",
+    "publication_manifest": "7eb73cb5bf8c2914ad13f11fee118e0ff486c326f9ac09c0c2980afb60b454ae",
+    "reader_manifest": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b",
+    "approval_evidence": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775",
+    "public_book": "bacd27a962ee2061ad1e0b9bb9e1a46b54c7dfdfdbb84ca094ca71bbea34320a",
+    "checksum_manifest": "4a62253393df7df8e6a8e0b5d2c1272124f51f4e48cf6ba34dc91e52f209ab70",
     "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
     "publication_authorization": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
     "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
@@ -29,7 +29,7 @@
   ],
   "valid_from": "2026-10-03T04:59:53.954767+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates. Metadata-only successor for the owner-approved Open Window5%transport canary: refresh only public_book,reader_manifest,approval_evidence and checksum_manifest component hashes. Underlying source,Reader/cover permissions,territory,uses and validity remain unchanged; separate exact audio-use decision still governs audio_stream.",
   "evidence_sha256": [
     "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
@@ -41,6 +41,6 @@
     "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
     "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
   ],
-  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_by": "Ronik Basak / Reo Enterprise direct Open Window GO LIVE and scoped automation approval in current chat; metadata-only binding successor, no external signature inferred.",
   "conditions_satisfied": true
 }
