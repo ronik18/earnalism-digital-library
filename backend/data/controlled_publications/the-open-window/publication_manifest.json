@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "15e0b753e73e7fc56c3948ffd6e660ab4991ffed0e337c648b3ae3b973b19cf2",
-    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "public_book": "bacd27a962ee2061ad1e0b9bb9e1a46b54c7dfdfdbb84ca094ca71bbea34320a",
+    "reader_manifest": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b",
     "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
-    "approval_evidence": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085"
+    "approval_evidence": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775"
   },
   "manifest_sha256": "c9b826b9234fd2ee73ae2c5c2649403ae980d3a9163628d2f9ee84a420aca56d"
 }

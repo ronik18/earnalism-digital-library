@@ -2680,3 +2680,7 @@ The legacy exact-successor validator pins six unresolved lexical findings. New o
 ## Open Window protected transport canary — 2026-10-25
 
 The current manifest route enforces Reading Pass authentication before existence, so anonymous401AUTH_REQUIRED is not content absence. Versioned hidden proof combines real proxy denial, catalogue flags/status and no-listen UI; no network-silence claim. Preserve the frozen descriptor hash when historical display fields are omitted: exact UUID/source/master/adoption and controlled title/author must still pass. Staged5percent canary retains hidden fallback and never claims production QA points.
+
+## Open Window canary metadata integrity — 2026-10-25
+
+Native canary staging updates metadata beyond the historical publication artifact pins. Refresh the exact publication/rights/bootstrap/static-SEO reference chain together; preserve original source text and Reader-only territory/use restrictions. Hash-bound historical regression fixtures need exact successor pins, not relaxed approval checks. Hosted CI and actual production playback remain mandatory.
