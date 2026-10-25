@@ -1,0 +1,91 @@
+{
+  "status": "FROZEN_FOR_OWNER_REVIEW_NOT_AUTHORIZED",
+  "supersedesSourceSet": "ad5c18ce89973bc5346608bdcd7d8a0e01ade0f78616c6d665d695c4ab0dc07f",
+  "baseRevision": "0596e6ab11d26acffe93a79b6165801c0e9d2037",
+  "sourceSetSHA256": "635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f",
+  "files": [
+    {
+      "path": "backend/audio_acceptance_budget.py",
+      "bytes": 3606,
+      "sha256": "61c9bacc041dc1342db3398abd4db3790f481e769f40fe522181e7fd8d4653c9"
+    },
+    {
+      "path": "backend/open_window_audio_cap_installer.py",
+      "bytes": 14270,
+      "sha256": "eb4ba08785efadb0ebc52d382c75ad3b4c6238f4f7f87163207ca072235b775c"
+    },
+    {
+      "path": "backend/open_window_audio_cap_interlock.py",
+      "bytes": 7714,
+      "sha256": "84507d7e3cfa234e70e96bd86f9ab619fca431478e5c774d6e91bca1e618e9ca"
+    },
+    {
+      "path": "backend/open_window_audio_cap_live.py",
+      "bytes": 10026,
+      "sha256": "5c927cb8c0943e4017a2edf300a9714849443856109a80accba0fcf0c68433b2"
+    },
+    {
+      "path": "backend/open_window_audio_cap_recovery.py",
+      "bytes": 10437,
+      "sha256": "2372c53660bc5e6de12e3db84aec784dbae6a9a99ff2fcddfe3c5d7a49b06627"
+    },
+    {
+      "path": "backend/reading_pass_service.py",
+      "bytes": 89110,
+      "sha256": "884046e60d163e81008b363eca13385582041e29280e62c39042bc26a53c2cfd"
+    },
+    {
+      "path": "backend/server.py",
+      "bytes": 600284,
+      "sha256": "60f1d8dbc8eda9e100ba81def725c9857c6988e5fe968d09d5bd888d634120ee"
+    },
+    {
+      "path": "backend/tests/test_open_window_audio_acceptance_budget.py",
+      "bytes": 18771,
+      "sha256": "23c49d0682f75948540d51766230fc14e42a20b22b1cc9a7e2e13c81f76f31c3"
+    },
+    {
+      "path": "backend/tests/test_open_window_audio_cap_installer.py",
+      "bytes": 12593,
+      "sha256": "19d175b28fd8ef7c08faf439451f5fba8954221f4072c5cf561b8e1c13cf50c1"
+    },
+    {
+      "path": "backend/tests/test_open_window_audio_cap_interlock.py",
+      "bytes": 14063,
+      "sha256": "9bb86bb6df08a92e47a7f08481374b08cd2bd05b118731af4280a3eb11705f36"
+    },
+    {
+      "path": "backend/tests/test_open_window_audio_cap_live.py",
+      "bytes": 13683,
+      "sha256": "d07b253aae41e572f7e7739941f0aab129d6c5f3d4af8a3da56fa3d27159e00d"
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/open_window_audio_acceptance_cap.md",
+      "bytes": 3982,
+      "sha256": "60f24cfb1971479d645a5bf9b069137bc384d9144d93a40bca0bbb18cae21542"
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/open_window_audio_cap_installer_local.md",
+      "bytes": 4365,
+      "sha256": "222fee479c2778b86adfdc2587eb115cf241d8cd25d3d6a72f087b27decd5264"
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/open_window_audio_cap_interlock_local.md",
+      "bytes": 5198,
+      "sha256": "4514712d80b8881697ad4634e5c1731e612e06499d14f8bef586cb305ca67247"
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/open_window_audio_cap_live_local.md",
+      "bytes": 6341,
+      "sha256": "6a32e21eb49151e5fe5bc3c5e2b7093343c95c19b60f8642324e7b2f06fcb2d1"
+    },
+    {
+      "path": "scripts/run_pr_regression_gates.sh",
+      "bytes": 4651,
+      "sha256": "c35b051e4c33cfca0640422e6fdf171c35cc291777151619d88f7dddd70c9de1"
+    }
+  ],
+  "actualMergedEnforcementRevision": null,
+  "resultingDeploymentID": null,
+  "privateAccountIdentifierIncluded": false
+}

@@ -170,6 +170,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
+    from backend import audio_acceptance_budget
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -183,6 +184,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         segment_manifest,
     )
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
+    import audio_acceptance_budget
 
 try:
     from backend.domain.catalog import (
@@ -10873,7 +10875,7 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
         raise HTTPException(status_code=status, detail={"code": code, "message": "A current authenticated Reading Pass lease is required."})
     try:
         if principal and principal.get("role") == "user":
-            return await reading_pass_service.authorize(
+            result = await reading_pass_service.authorize(
                 user_id=principal["id"],
                 auth_session_id=principal.get("session_id", ""),
                 session_id=session_id,
@@ -10881,12 +10883,20 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
                 content_type="audio",
                 content_id=slug,
             )
-        return await reading_pass_service.authorize_media_credential(
-            session_id=session_id,
-            lease_token=lease_token,
-            content_type="audio",
-            content_id=slug,
-        )
+        else:
+            result = await reading_pass_service.authorize_media_credential(
+                session_id=session_id,
+                lease_token=lease_token,
+                content_type="audio",
+                content_id=slug,
+            )
+        if result.get("acceptance_test_id") == audio_acceptance_budget.TEST_ID:
+            book = await _reader_audio_package_book_for_slug(slug)
+            package, _, _ = _selected_audiobook_package(book, slug, request)
+            selected_scope = audio_acceptance_budget.package_scope(slug, package)
+            if not selected_scope or any((result.get("scope") or {}).get(k) != v for k, v in selected_scope.items()):
+                raise ReadingPassError("ACCEPTANCE_SCOPE_UNAVAILABLE", 403, "The acceptance package changed.")
+        return result
     except ReadingPassError as exc:
         raise _reading_pass_http_error(exc) from exc
 
@@ -11976,6 +11986,16 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         if not book:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
         scope = {"media_position_seconds": position}
+        # The rollout cookie is scoped to /reader/book/<slug>, not this
+        # session-start endpoint. Bind the trusted exact candidate here;
+        # protected media still independently enforces cohort selection.
+        if payload.content_id == audio_acceptance_budget.SLUG:
+            descriptor = audio_acceptance_budget.DESCRIPTOR
+            package = _validated_audiobook_package(book, payload.content_id,
+                raw_package=_book_audiobook_release_packages(book).get(descriptor),
+                expected_release_descriptor_sha256=descriptor)
+            if package and _has_release_eligible_audiobook_package_evidence(book, payload.content_id, descriptor, package):
+                scope.update(audio_acceptance_budget.package_scope(payload.content_id, package))
     else:
         raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Unsupported content type."})
     try:
