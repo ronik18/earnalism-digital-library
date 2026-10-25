@@ -54,6 +54,10 @@ env \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
+    backend/tests/test_open_window_audio_acceptance_budget.py \
+    backend/tests/test_open_window_audio_cap_installer.py \
+    backend/tests/test_open_window_audio_cap_live.py \
+    backend/tests/test_open_window_audio_cap_interlock.py \
     backend/tests/test_reader_acceptance_operator.py \
     backend/tests/test_serving_publication_binding.py \
     backend/tests/test_reading_pass_text_admission.py \

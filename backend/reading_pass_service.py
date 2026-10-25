@@ -16,6 +16,11 @@ from typing import Any, Mapping, Optional
 
 from pymongo.errors import DuplicateKeyError
 
+try:
+    from . import audio_acceptance_budget as audio_acceptance
+except ImportError:
+    import audio_acceptance_budget as audio_acceptance
+
 try:  # package import
     from .domain.reading_pass import (
         ReadingPassConfig,
@@ -73,6 +78,8 @@ class ReadingPassService:
         if budget is None and not binding:
             return None
         scope = document.get("scope") or {}
+        if isinstance(budget, dict) and budget.get("schema") == audio_acceptance.SCHEMA:
+            return audio_acceptance.validate_budget(budget, document, starting=starting, now=_now())
         valid = (
             isinstance(budget, dict)
             and budget.get("schema") == "reader-acceptance-budget.v1"
@@ -94,6 +101,19 @@ class ReadingPassService:
         if not valid:
             raise ReadingPassError("ACCEPTANCE_SCOPE_UNAVAILABLE", 403, "Acceptance scope could not be verified.")
         return budget
+
+    async def _reserve_audio_acceptance_start(self, user_id, budget, mongo_session):
+        if budget is None or budget.get("schema") != audio_acceptance.SCHEMA:
+            return budget
+        if budget["sessions_started"] >= audio_acceptance.MAXIMUM_SESSIONS:
+            raise ReadingPassError("ACCEPTANCE_SESSION_LIMIT", 403, "The two-session allowance is exhausted.")
+        query = {"id": user_id, "role": "user"}
+        query.update({f"reader_acceptance_budget.{k}": v for k, v in budget.items()})
+        updated = await self.db.users.update_one(query, {"$inc": {
+            "reader_acceptance_budget.sessions_started": 1}}, session=mongo_session)
+        if updated.modified_count != 1:
+            raise ReadingPassError("ACCEPTANCE_OR_BALANCE_CHANGED", 409, "Acceptance start authority changed.")
+        return {**budget, "sessions_started": budget["sessions_started"] + 1}
 
     @staticmethod
     def _acceptance_remaining(budget, now):
@@ -578,7 +598,7 @@ class ReadingPassService:
                 )
             user = await self.db.users.find_one(
                 {"id": user_id, "role": "user"},
-                {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "status": 1, "reader_preparation_windows": 1},
+                {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "status": 1, "reader_preparation_windows": 1, "reader_acceptance_budget": 1},
                 session=mongo_session,
             )
             if not user or user.get("status") == "blocked":
@@ -587,11 +607,22 @@ class ReadingPassService:
             if balance <= 0 and not free_entitlement:
                 raise ReadingPassError("PASS_REQUIRED", 403, "A positive Reading Pass balance is required.", balance_seconds=0)
 
+            retained_budget = user.get("reader_acceptance_budget") or {}
+            audio_capped = isinstance(retained_budget, dict) and retained_budget.get("schema") == audio_acceptance.SCHEMA
+            if user.get("reader_acceptance_budget") is not None:
+                await self._acceptance_budget({"user_id": user_id, "content_type": content_kind,
+                    "content_id": content_id, "scope": scope}, mongo_session, starting=True)
+            if audio_capped and transfer:
+                raise ReadingPassError("ACCEPTANCE_TRANSFER_DENIED", 403, "Acceptance sessions cannot transfer.")
+
             active = await self.db.reading_pass_sessions.find_one(
                 {"user_id": user_id, "status": {"$in": list(ACTIVE_SESSION_STATUSES)}},
                 {"_id": 0},
                 session=mongo_session,
             )
+            if audio_capped and active:
+                raise ReadingPassError("SESSION_ACTIVE_ELSEWHERE", 409,
+                                       "The previous acceptance session must be settled before another start.")
             if active and now > ensure_utc(active.get("lease_expires_at", now)) + timedelta(
                 seconds=self.config.reconnect_grace_seconds
             ):
@@ -642,6 +673,7 @@ class ReadingPassService:
             remaining = self._acceptance_remaining(budget, now)
             if remaining is not None and remaining <= 0:
                 return {"terminal_only": True, "acceptance_exhausted": True}
+            budget = await self._reserve_audio_acceptance_start(user_id, budget, mongo_session)
             session_id = str(uuid.uuid4())
             preparing = prepare_text and content_kind == "text" and not free_entitlement
             preparation_key = hashlib.sha256(f"{content_id}:{scope.get('manifest_version', '')}".encode()).hexdigest() if preparing else ""
@@ -702,6 +734,8 @@ class ReadingPassService:
                 "last_sequence": 0,
                 "seconds_consumed": 0,
                 **({"acceptance_test_id": budget["test_id"]} if budget is not None else {}),
+                **({"acceptance_session_ordinal": budget["sessions_started"]}
+                   if budget is not None and budget.get("schema") == audio_acceptance.SCHEMA else {}),
                 "created_at": now,
                 "updated_at": now,
             }

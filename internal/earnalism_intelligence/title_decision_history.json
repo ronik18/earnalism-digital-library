@@ -3745,7 +3745,33 @@
       },
       "current_source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
       "current_content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates.",
+      "audio_acceptance_cap_preparation_20261026": {
+        "scope": "the-open-window",
+        "decision": "LOCAL_AUDIO_600_SECOND_TWO_SESSION_CAP_IMPLEMENTED_NOT_INSTALLED",
+        "at": "2026-10-26T00:19:38.288932+05:30",
+        "maximumAggregateSeconds": 600,
+        "maximumSequentialStarts": 2,
+        "authoritySeconds": 900,
+        "localValidation": "129 focused tests PASS, including authenticated disposable real-Mongo transactions; 10 historical package-route failures reproduced on untouched HEAD",
+        "productionBudgetInstalled": false,
+        "deployment": false,
+        "paidSessionStarted": false,
+        "next": "Review exact source and separately prepare protected installation authority."
+      },
+      "audio_cap_installer_preparation_20261026": {
+        "scope": "the-open-window",
+        "at": "2026-10-26T00:41:15.082312+05:30",
+        "decision": "LOCAL_PROTECTED_INSTALLER_CANDIDATE_TESTED_LIVE_ENTRY_DISABLED",
+        "installerSHA256": "7b115d3c0ba862abe8a2f4eb6bbb06f5b3406d7c8cdd2fc58c111752b21be637",
+        "deltaTests": 29,
+        "acceptedCapTestsReused": 129,
+        "sixPinsUnchanged": true,
+        "productionBudgetInstalled": false,
+        "sourcePublished": false,
+        "paidSessionStarted": false,
+        "remainingGate": "Exact reviewed enforcement revision, qualified live launcher and provider traffic fence, private account approval and separate production authorization; cleanup remains separate."
+      }
     },
     "sredni-vashtar": {
       "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
@@ -11781,5 +11807,44 @@
     "backendDeployment": false,
     "productionQA15": "UNPERFORMED",
     "overall95Threshold": "UNCHANGED"
+  },
+  "open_window_cap_live_entry_preparation_20261026": {
+    "scope": "the-open-window",
+    "at": "2026-10-26T01:36:33.901011+05:30",
+    "decision": "LOCAL_ENTRY_AUDIT_FENCE_RECOVERY_TESTED_LIVE_REHEARSAL_HELD",
+    "testsPassed": 66,
+    "realMongoInstallerCases": 13,
+    "productionBudgetInstalled": false,
+    "providerMutations": false,
+    "paidSessionStarted": false,
+    "liveFenceAndRecovery": "NOT_DIRECTLY_TESTED_FOR_NEW_REVISION",
+    "evidence": "internal/audiobook_lab/release_gate/open_window_audio_cap_live_local.md"
+  },
+  "open_window_installation_freeze_20261026": {
+    "scope": "the-open-window",
+    "at": "2026-10-26T01:41:14.255004+05:30",
+    "decision": "SOURCE_AND_WIRING_SPECIFICATION_FROZEN_EXECUTION_HELD",
+    "sourceSetSHA256": "ad5c18ce89973bc5346608bdcd7d8a0e01ade0f78616c6d665d695c4ab0dc07f",
+    "freezePath": "/tmp/earnalism-open-window-approval-annex-20261024/production-acceptance-20261025/CAP-DEPLOY-INSTALL-FREEZE-20261026-V1",
+    "sourceFiles": 13,
+    "testsReused": 66,
+    "productionActions": false,
+    "paidSessionStarted": false,
+    "remainingCriticalGate": "Independent readiness and installer quiescence before scheduled restoration are not qualified; do not execute conditional approval."
+  },
+  "open_window_installation_v2_interlock_20261026": {
+    "scope": "the-open-window",
+    "at": "2026-10-26T01:57:33.219933+05:30",
+    "decision": "V2_READINESS_AND_TRANSACTION_QUIESCENCE_TESTED_FROZEN_FOR_REVIEW",
+    "sourceSetSHA256": "635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f",
+    "freezePath": "/tmp/earnalism-open-window-approval-annex-20261024/production-acceptance-20261025/CAP-DEPLOY-INSTALL-FREEZE-20261026-V2",
+    "testsPassed": 89,
+    "realMongoCases": 20,
+    "sourceFiles": 16,
+    "priorCapEvidenceReused": 129,
+    "productionActions": false,
+    "paidSessionStarted": false,
+    "privateCredentialsAccessed": false,
+    "remainingExecutionGates": "Exact-source CI/review, one healthy merged-main backend deployment, private preflight/readiness and explicit scoped execution authorization."
   }
 }

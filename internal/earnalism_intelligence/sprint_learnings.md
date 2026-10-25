@@ -2688,3 +2688,23 @@ Native canary staging updates metadata beyond the historical publication artifac
 ## Listener canary query composition — 2026-10-25
 
 The Reader manifest helper already includes a release-truth query. Appending another question mark silently loses the canary option. Compose parameters inside the existing URLSearchParams helper and test the mounted route request, not only metadata adapters. Fresh authenticated production metadata exposed this gap before any billable session was started.
+
+## Open Window audio cap preparation — 26 October 2026
+
+A per-lease limit is not a total debit cap. Reserve successful start slots in the same transaction as session creation; reuse native debit CAS for a shared600-second allowance. The rollout cookie is path-scoped to Reader endpoints, so the audio start endpoint must derive exact package scope from trusted validated metadata while media independently retains cohort enforcement. Local real-Mongo tests prove two-start contention, cap conservation and abort rollback. The pure authority builder is not production installation approval.
+
+## Open Window installer local delta — 26 October 2026
+
+Installer preparation must not consume installation authority. The production entry remains disabled. A no-overwrite transaction and exact source/runtime/account pins are necessary but do not prove writer quiescence: ordinary starts need an independently qualified traffic fence before installation. Sanitize readback; commit ambiguity stops without mutation retries or authority reset. Installer delta29PASS; accepted129cap tests and six source pins reused unchanged.
+
+## Open Window protected entry and recovery — 26 October 2026
+
+A stopped-service installer must run independently of that service. Exact provider/source/private-account binding and audit readback are required; a recovery receipt alone does not prove a supervisor is alive. Reserve one restart durably before its attempt, retain uncertainty and verify health independently. Detached dummy recovery survives coordinator exit; current-revision production fencing/restoration remains untested under the no-outage boundary. 66 local tests PASS including13 real-Mongo cases; no production mutation.
+
+## Open Window installation freeze — 26 October 2026
+
+Freeze source and private wiring specifications separately from runtime readiness. An independent recovery deadline must not release a traffic fence while an installer could still commit. The current detached supervisor test proves independence, not an installer-quiescence interlock or live readiness. Candidate source-set ad5c18ce89973bc5346608bdcd7d8a0e01ade0f78616c6d665d695c4ab0dc07f is retained; conditional approval remains non-executable. No new tests were needed for this documentary freeze; 66-test evidence reused.
+
+## Open Window V2 interlock — 26 October 2026
+
+Use one control document shared by installation and recovery, rather than kill/delay heuristics. Claim it inside the installation transaction; recovery must majority-close it before one restart. This serializes stale, suspended and uncertain installers against reopening traffic. Bind both processes to the same private DB/plan and use a fresh owner-local socket challenge for readiness. 89 tests PASS including20 real-Mongo cases and separate-process tests. Frozen successor635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f; no production action. Keep future steps minimal and reuse completed title/audio evidence.
