@@ -62,7 +62,10 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
                 directory = MODULE.controlled_package_dir(slug)
                 decision = MODULE.read_json(directory / "rights_decision.json")
                 publication = MODULE.read_json(directory / "publication_manifest.json")
-                self.assertEqual(decision["decision_id"], f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
+                expected_decision = ("india-20261025-the-open-window-reader-cover-canary-metadata"
+                                     if slug == "the-open-window"
+                                     else f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
+                self.assertEqual(decision["decision_id"], expected_decision)
                 self.assertEqual(decision["territories"], ["IN"])
                 self.assertTrue(MODULE.accepted_controlled_release(slug, directory, ["IN"], registry))
                 self.assertFalse(MODULE.accepted_controlled_release(slug, directory, ["US"], registry))
