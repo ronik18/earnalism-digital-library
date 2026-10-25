@@ -106,7 +106,7 @@ export default function ListenerExperienceV2Route() {
     let cancelled = false;
     setBook(null);
     setLoadError("");
-    userApi.get(`${readerManifestPath(slug)}?transport_canary=1`).then((response) => {
+    userApi.get(readerManifestPath(slug, { transportCanary: true })).then((response) => {
       if (cancelled || !ownsLifecycle(generation)) return;
       const value = response.data || {};
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });

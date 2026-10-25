@@ -8,11 +8,12 @@ function upper(value = "") {
 
 export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v9";
 
-export function readerManifestPath(slug, { adminPreview = false } = {}) {
+export function readerManifestPath(slug, { adminPreview = false, transportCanary = false } = {}) {
   const params = new URLSearchParams({
     release_truth: READER_MANIFEST_RELEASE_TRUTH_VERSION,
   });
   if (adminPreview) params.set("preview", "admin");
+  if (transportCanary) params.set("transport_canary", "1");
   return `/reader/book/${encodeURIComponent(clean(slug))}/manifest?${params.toString()}`;
 }
 
