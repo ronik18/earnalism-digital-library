@@ -142,7 +142,7 @@ class FakeS3:
         version_id = VersionId or self.latest.get(Key)
         if not version_id or (Key, version_id) not in self.objects:
             raise FakeCloudError("NoSuchKey")
-        return {"Body": io.BytesIO(self.objects[(Key, version_id)]["body"])}
+        return {"Body": io.BytesIO(self.objects[(Key, version_id)]["body"]), "ContentLength": len(self.objects[(Key, version_id)]["body"])}
 
     def list_object_versions(self, **kwargs):
         self.method_calls.append("list_object_versions")
@@ -202,6 +202,9 @@ class StorageToolTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary.name)
+        self.budget = storage.operation_budget.Budget(self.root / "test-budget.json", "a" * 64)
+        self.budget.__enter__()
+        self.addCleanup(self.budget.__exit__, None, None, None)
         self.audio = self.root / "master.mp3"
         self.audio.write_bytes(b"exact master bytes")
         self.manifest = self.root / "release-manifest.json"
@@ -1169,7 +1172,7 @@ class StorageToolTests(unittest.TestCase):
                 side_effect=lambda _: FakeNativeLifecycleReader(),
             ):
                 with mock.patch("sys.stdout", new=io.StringIO()):
-                    code = storage.main(["upload", "--plan", str(self.plan_path), "--retention-days", "30"])
+                    code = storage.main(["upload", "--budget-ledger", str(self.root / "cli-budget.json"), "--plan", str(self.plan_path), "--retention-days", "30"])
             self.assertEqual(code, 0)
             primary_path = self.root / "primary_receipt.json"
             self.assertTrue(primary_path.is_file())
@@ -1186,8 +1189,12 @@ class StorageToolTests(unittest.TestCase):
                 side_effect=lambda _: FakeNativeLifecycleReader(),
             ):
                 with mock.patch("sys.stdout", new=io.StringIO()):
-                    code = storage.main(["replicate", "--plan", str(self.plan_path), "--retention-days", "30"])
+                    code = storage.main(["replicate", "--budget-ledger", str(self.root / "cli-budget.json"), "--plan", str(self.plan_path), "--retention-days", "30"])
             self.assertEqual(code, 0)
+            ledger = json.loads((self.root / "cli-budget.json").read_text())
+            self.assertEqual(ledger["used"]["versions"], 4)
+            self.assertEqual(ledger["used"]["upload_bytes"], 2 * (self.audio.stat().st_size + self.manifest.stat().st_size))
+            self.assertEqual(len(ledger["attempted_objects"]), 4)
             replica_path = self.root / "replica_receipt.json"
             self.assertTrue(replica_path.is_file())
             replica_raw = json.loads(replica_path.read_text(encoding="utf-8"))
