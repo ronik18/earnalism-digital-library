@@ -2676,3 +2676,7 @@ benchmark; fixed60s expiry remains fail-closed with zero preparation debit.
 ## Open Window listened-successor compatibility — 23 October 2026
 
 The legacy exact-successor validator pins six unresolved lexical findings. New owner source-following/listening evidence requires a separately selected version with exact hash pins, preserving the legacy version and native rights/storage/auth/accounting gates. A proposed local85/85 is not an overall95/100PASS. Preparation adds no trusted registry entry or activation. Canonical checkout registration/files were restored after preserving the incomplete historical checkout; dirty parked payment work was not imported.
+
+## Open Window protected transport canary — 2026-10-25
+
+The current manifest route enforces Reading Pass authentication before existence, so anonymous401AUTH_REQUIRED is not content absence. Versioned hidden proof combines real proxy denial, catalogue flags/status and no-listen UI; no network-silence claim. Preserve the frozen descriptor hash when historical display fields are omitted: exact UUID/source/master/adoption and controlled title/author must still pass. Staged5percent canary retains hidden fallback and never claims production QA points.

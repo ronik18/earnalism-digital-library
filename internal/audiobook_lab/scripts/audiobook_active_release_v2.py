@@ -838,6 +838,8 @@ def validate_hidden_before_proof(
     slug: str,
     reference_time: str,
 ) -> dict[str, Any]:
+    if proof.get('schema_version') == 'audiobook_hidden_before_proof.v2':
+        return validate_hidden_before_proof_v2(proof, slug=slug, reference_time=reference_time)
     value = copy.deepcopy(dict(proof))
     expected_urls = {
         "reader_url": f"https://www.theearnalism.com/reader/{slug}",
@@ -875,6 +877,44 @@ def validate_hidden_before_proof(
         raise ReleasePointerError(
             "Hidden-before proof is incomplete, stale-shaped, or non-canonical"
         )
+    return value
+
+
+def validate_hidden_before_proof_v2(proof, *, slug, reference_time):
+    """Reading Pass authenticates manifest requests before checking package state.
+
+    A401alone is not hidden-audio proof. Bind public catalogue flags and observed
+    no-listen UI to the canonical proxy routes; native initial-slot validation
+    remains mandatory. Network silence is explicitly not claimed by this format.
+    """
+    value = copy.deepcopy(dict(proof))
+    expected = {
+        'schema_version': 'audiobook_hidden_before_proof.v2', 'slug': slug,
+        'status': 'PUBLIC_AUDIO_HIDDEN_AUTH_BOUNDARY_VERIFIED',
+        'reader_url': f'https://www.theearnalism.com/reader/{slug}',
+        'reader_http_status': 200,
+        'public_book_url': f'https://theearnalism.com/api/books/{slug}',
+        'public_book_http_status': 200,
+        'legacy_audio_url': f'https://theearnalism.com/api/reader/book/{slug}/audiobook',
+        'legacy_audio_http_status': 404,
+        'package_manifest_url': f'https://theearnalism.com/api/reader/book/{slug}/audiobook/manifest',
+        'package_manifest_http_status': 401, 'package_manifest_denial_code': 'AUTH_REQUIRED',
+        'public_audio_enabled': False, 'public_audiobook_enabled': False,
+        'public_audio_status': 'NOT_AVAILABLE', 'public_audio_url_present': False,
+        'browser_listen_control_count': 0,
+        'browser_audio_request_count': None,
+        'network_silence_claimed': False,
+    }
+    if any(value.get(k) != v for k, v in expected.items()):
+        raise ReleasePointerError('Authenticated-boundary hidden proof is incomplete or mismatched')
+    try:
+        checked = datetime.fromisoformat(value['checked_at'].replace('Z', '+00:00'))
+        reference = datetime.fromisoformat(reference_time.replace('Z', '+00:00'))
+        age = (reference-checked).total_seconds()
+        if age < 0 or age > 24*60*60 or not isinstance(value.get('browser_observation'), str) or not value['browser_observation'].strip():
+            raise ValueError()
+    except (KeyError, TypeError, ValueError):
+        raise ReleasePointerError('Authenticated-boundary hidden proof is stale or unobserved') from None
     return value
 
 
@@ -1792,6 +1832,23 @@ def activate_initial_release(
     return result
 
 
+def _validate_canary_title_author(context, descriptor, package):
+    public = context['public_book']
+    if descriptor.get('title') == public.get('title') and descriptor.get('author') == public.get('author'):
+        return
+    # The immutable, owner-adopted successor predates these optional descriptor
+    # display fields. Never rewrite its hash or generalize this exception.
+    if (descriptor.get('title') is None and descriptor.get('author') is None
+            and descriptor.get('book_uuid') == '74251b53-9e18-49fb-9fff-bb7c505633d4'
+            and (descriptor.get('release_candidate_evidence') or {}).get('acceptance_policy') == 'open_window_listened_successor.v2'
+            and sha256_bytes(canonical_json_bytes(descriptor)) == '028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2'
+            and public.get('slug') == 'the-open-window'
+            and public.get('title') == 'The Open Window' and public.get('author') == 'Saki'):
+        validate_qa_candidate_release_descriptor(descriptor, package, controlled_language=context['reader_manifest'].get('language'))
+        return
+    raise ReleasePointerError('QA-candidate title/author do not match controlled publication truth')
+
+
 def activate_new_title_package_canary(
     repo_root: Path,
     slug: str,
@@ -1867,15 +1924,7 @@ def activate_new_title_package_canary(
     _verify_controlled_checksums(context)
     _validate_reader_publication_truth(context, slug)
     _validate_initial_release_slot(context)
-    if (
-        release_descriptor.get("title")
-        != context["public_book"].get("title")
-        or release_descriptor.get("author")
-        != context["public_book"].get("author")
-    ):
-        raise ReleasePointerError(
-            "QA-candidate title/author do not match controlled publication truth"
-        )
+    _validate_canary_title_author(context, release_descriptor, package)
     operation_time = generated_at or utc_now()
     proof = validate_hidden_before_proof(
         hidden_before_proof,
