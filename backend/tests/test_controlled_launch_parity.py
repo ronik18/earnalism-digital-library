@@ -446,3 +446,22 @@ def test_yugalanguriya_publication_package_is_archived_and_remains_held():
     assert "yugalanguriya" not in launch["audio_enabled_slugs"]
     assert "yugalanguriya" not in backend_launch["audio_enabled_slugs"]
     assert registry["pilot_dispositions"]["controlled-yugalanguriya"]["status"] == "HOLD"
+
+
+def test_open_window_transport_canary_preserves_real_controlled_reader_loading():
+    from backend.catalog_truth import (
+        controlled_artifact_dir, controlled_reader_validation_issues,
+        load_controlled_artifact_book,
+    )
+    from backend.publication_manifest import canonical_sha256
+    slug = "the-open-window"
+    directory = controlled_artifact_dir(slug)
+    manifest = load_json(directory / "publication_manifest.json")
+    assert manifest["manifest_sha256"] == canonical_sha256(manifest)
+    for name, expected in manifest["artifacts"].items():
+        assert hashlib.sha256((directory / f"{name}.json").read_bytes()).hexdigest() == expected
+    assert controlled_reader_validation_issues(slug, str(directory)) == ()
+    book = load_controlled_artifact_book(slug, include_content=True)
+    assert book and book["chapters"]
+    assert book["audio_enabled"] is False
+    assert book["audiobook_enabled"] is False
