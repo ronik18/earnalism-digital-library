@@ -37,6 +37,23 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     title: book.public_title || book.display_title || book.title || APPROVED_AUDIO_FIXTURE.title,
     author: book.author || book.author_name || APPROVED_AUDIO_FIXTURE.author,
   };
+  const canary = book?._readerManifest?.audio?.transport_canary;
+  const access = book?._readerManifest?.access;
+  const canaryAllowed = access?.authenticated === true && access?.role === "user"
+    && canary?.enabled === true && canary.slug === book.slug
+    && canary.scope === "transport_canary_only_no_customer_discovery"
+    && [5, 25].includes(canary.rollout_percentage)
+    && /^sha256-[a-f0-9]{64}$/.test(canary.package_version || "")
+    && /^[a-f0-9]{64}$/.test(canary.release_descriptor_sha256 || "");
+  if (canaryAllowed) return {
+    canRender: true, fixture: false, mediaUrl: "", packageManifestUrl: "",
+    release: { status: "transport_canary", canShowControls: true },
+    packageVersion: canary.package_version,
+    title: book.title, author: book.author,
+    chapterLabel: "Controlled listening check",
+    durationSeconds: Number(canary.duration_ms) / 1000,
+    publicPreviewSeconds: 0,
+  };
   const release = audiobookReleaseState(book);
   const canonicalApproval = hasCanonicalProtectedAudioApproval(book);
   if (!release.canShowControls && !canonicalApproval) return { canRender: false, fixture: false, release, mediaUrl: "" };

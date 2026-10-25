@@ -1621,11 +1621,16 @@ def test_eligible_audio_metadata_retains_disclosure_without_playable_urls(monkey
     assert "storage.invalid" not in json.dumps(audio)
 
 
-def test_open_window_current_release_keeps_unapproved_audio_hidden(monkeypatch):
+def test_open_window_unapproved_metadata_keeps_audio_hidden(monkeypatch):
     server = _server(monkeypatch)
     slug = "the-open-window"
     # Historical package metadata must never grant current release authority.
     artifact = json.loads((BACKEND_DIR / "data" / "controlled_publications" / slug / "public_book.json").read_text())
+    # The owner-approved transport canary is now real; this negative case must
+    # explicitly remove its authority in both artifact and historical DB paths.
+    artifact = copy.deepcopy(artifact)
+    artifact["audiobook_package_canary"]["status"] = "HELD"
+    monkeypatch.setattr(server, "_controlled_artifact_doc", lambda *_a, **_kw: copy.deepcopy(artifact))
     assert server.can_expose_audio({**artifact, "slug": slug}) is False
     audio = server._reader_manifest_audio(artifact, slug)
 
@@ -1672,3 +1677,12 @@ def test_admin_audiobook_asset_sanitizer_rejects_static_audio_fallbacks(monkeypa
     assert assets == {
         "meta": "https://private.example.invalid/the-open-window.json",
     }
+
+
+def test_open_window_real_transport_canary_does_not_advertise_catalogue_audio(monkeypatch):
+    server=_server(monkeypatch)
+    artifact=json.loads((BACKEND_DIR/'data/controlled_publications/the-open-window/public_book.json').read_text())
+    assert server._can_expose_audiobook_package_canary(artifact,'the-open-window') is True
+    assert server.can_expose_audio(artifact) is False
+    assert server._reader_manifest_audio(artifact,'the-open-window')['enabled'] is False
+    assert artifact['audio_enabled'] is False and artifact['audiobook_enabled'] is False
