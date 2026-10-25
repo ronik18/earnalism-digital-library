@@ -2684,3 +2684,7 @@ The current manifest route enforces Reading Pass authentication before existence
 ## Open Window canary metadata integrity — 2026-10-25
 
 Native canary staging updates metadata beyond the historical publication artifact pins. Refresh the exact publication/rights/bootstrap/static-SEO reference chain together; preserve original source text and Reader-only territory/use restrictions. Hash-bound historical regression fixtures need exact successor pins, not relaxed approval checks. Hosted CI and actual production playback remain mandatory.
+
+## Listener canary query composition — 2026-10-25
+
+The Reader manifest helper already includes a release-truth query. Appending another question mark silently loses the canary option. Compose parameters inside the existing URLSearchParams helper and test the mounted route request, not only metadata adapters. Fresh authenticated production metadata exposed this gap before any billable session was started.

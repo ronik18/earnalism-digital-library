@@ -101,6 +101,21 @@ describe("Listener protected package route", () => {
     mockEndReadingPassSession.mockResolvedValue({ ended: true });
   });
 
+  test("canary admission preserves release truth as a separate query parameter without opening a session", async () => {
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+    await act(async () => { root.render(<ListenerExperienceV2Route />); });
+    await flush();
+    const url = new URL(mockUserApiGet.mock.calls[0][0], "https://theearnalism.com/api/");
+    expect(url.searchParams.get("release_truth")).toBe("audio-release-evidence-v9");
+    expect(url.searchParams.get("transport_canary")).toBe("1");
+    expect([...url.searchParams.keys()]).toEqual(["release_truth", "transport_canary"]);
+    expect(mockStartReadingPassAudioSession).not.toHaveBeenCalled();
+    await act(async () => { root.unmount(); });
+    container.remove();
+  });
+
   test("canonical header destination preserves its query and settles the active audio lease before leaving", async () => {
     const container = document.createElement("div");
     document.body.appendChild(container);
