@@ -59,10 +59,13 @@ jest.mock("../../lib/audioPackageManifest", () => ({
 
 jest.mock("../listener/ListenerExperienceV2", () => ({
   __esModule: true,
-  default: ({ onAuthorize, onBeforePlayback, access, audioManifest, onNavigate }) => (
+  default: ({ onAuthorize, onBeforePlayback, onPlaybackStateChange, access, audioManifest, onNavigate }) => (
     <section>
       <button type="button" onClick={onAuthorize}>Authorize Listening</button>
       <button type="button" onClick={() => { void onBeforePlayback().then(mockPlaybackReady); }}>Resume</button>
+      <button type="button" onClick={() => onPlaybackStateChange("playing")}>Native Playing</button>
+      <button type="button" onClick={() => onPlaybackStateChange("buffering")}>Native Waiting</button>
+      <button type="button" onClick={() => onPlaybackStateChange("paused")}>Native Pause</button>
       <button type="button" onClick={() => onNavigate("search", "/library?q=Mark%20Twain")}>Header Search</button>
       {access.authorized && audioManifest?.valid ? <p data-testid="listener-ready">Ready</p> : null}
     </section>
@@ -175,12 +178,27 @@ describe("Listener protected package route", () => {
     await click("Authorize Listening"); await click("Resume"); await click("Resume");
     expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(1);
     expect(mockPlaybackReady).not.toHaveBeenCalled();
-    expect(mockRenewReadingPassLease.mock.calls[0][0]).toMatchObject({ active: true, playbackState: "playing", sequence: 1 });
+    expect(mockRenewReadingPassLease.mock.calls[0][0]).toMatchObject({ active: false, playbackState: "buffering", sequence: 1 });
     await act(async () => { finishFirst({ session_id: "isolated-audio-session", lease_token: "second-lease", lease_version: 2 }); }); await flush();
     expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(2);
     expect(mockRenewReadingPassLease.mock.calls[1][0]).toMatchObject({ sequence: 2, lease: { token: "second-lease", version: 2 } });
     expect(mockPlaybackReady).toHaveBeenCalledTimes(2);
     await act(async () => { root.unmount(); }); container.remove();
+  });
+
+  test("queued native states preserve each transition and settle loading immediately", async () => {
+    let finishFirst;
+    mockRenewReadingPassLease.mockImplementationOnce(() => new Promise(resolve => { finishFirst=resolve; }))
+      .mockResolvedValue({session_id:"isolated-audio-session",lease_token:"next",lease_version:3});
+    const container=document.createElement("div");document.body.appendChild(container);const root=createRoot(container);
+    await act(async()=>root.render(<ListenerExperienceV2Route/>));await flush();
+    const click=async label=>{await act(async()=>[...container.querySelectorAll("button")].find(b=>b.textContent===label).click());await flush();};
+    await click("Authorize Listening");await click("Resume");await click("Native Playing");await click("Native Waiting");await click("Native Pause");
+    expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(1);
+    await act(async()=>finishFirst({session_id:"isolated-audio-session",lease_token:"second",lease_version:2}));await flush();await flush();
+    expect(mockRenewReadingPassLease.mock.calls.map(([x])=>[x.playbackState,x.active])).toEqual([["buffering",false],["playing",true],["buffering",false],["paused",false]]);
+    expect(mockRenewReadingPassLease.mock.calls.map(([x])=>x.sequence)).toEqual([1,2,3,4]);
+    await act(async()=>root.unmount());container.remove();
   });
 
 });

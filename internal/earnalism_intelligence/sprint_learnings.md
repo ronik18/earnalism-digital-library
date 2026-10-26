@@ -2722,3 +2722,7 @@ Pausing retains credentials but deliberately denies protected media bytes until 
 ## Open Window ordered transitions — 26 October 2026
 
 A native audio source swap emits pause/ended events. Keep that transient pause distinct from user pause, and renew active authority before issuing next-segment Range requests. The first-segment production test settled with15 reading seconds debit and remains failed; no activation. Twenty-three frontend cases now cover all29 synthetic transitions, denial, ending and unmount, plus46 workflow checks. Local lifecycle tests are not production listening acceptance.
+
+## Open Window buffering billing — 26 October 2026
+
+A reconciled wallet proves arithmetic, not fair billable intervals. Native play intervals388.946s vs581s debited prompted review; no refund amount is established. Renew existing buffering authority before fetch/source changes and start billing only at native playing. Immediately serialize each observed state rather than sampling a later state in queued work. Speed controls change media progress, not server-clock billing. Local27frontend+36service tests pass including three speeds, device conflict/transfer and renewal races; production fairness/multi-device acceptance stays held. No wallet repair or new paid session.

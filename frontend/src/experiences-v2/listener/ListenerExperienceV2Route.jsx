@@ -156,18 +156,15 @@ export default function ListenerExperienceV2Route() {
     return () => { cancelled = true; };
   }, [audioManifest?.packageVersion, book, lease, ownsLifecycle, settleLease, slug, visualFixture]);
 
-  const updatePlaybackState = useCallback((value) => {
-    playbackStateRef.current = value;
-    setPlaybackState(value);
-  }, []);
-
   const renewCurrentLease = useCallback(() => {
+    // Queue the observed state, not whatever a later media event changes it to.
+    const requestedState = playbackStateRef.current;
     const generation = lifecycleGenerationRef.current;
     const operation = async () => {
       const current = leaseRef.current;
       if (!current || !ownsLifecycle(generation, current.sessionId)) throw new Error("Listening session ended.");
       const next = await renewReadingPassLease({ lease: current, sequence: Number(current.sequence || 0) + 1,
-        active: playbackStateRef.current === "playing", playbackState: playbackStateRef.current });
+        active: requestedState === "playing", playbackState: requestedState });
       if (!ownsLifecycle(generation, current.sessionId)) throw new Error("Listening session ended.");
       setLeaseState({ ...current, sessionId: next.session_id || current.sessionId,
         token: next.lease_token || current.token, version: Number(next.lease_version || current.version),
@@ -178,8 +175,25 @@ export default function ListenerExperienceV2Route() {
     return pending;
   }, [ownsLifecycle, setLeaseState]);
 
+  const updatePlaybackState = useCallback((value) => {
+    if (playbackStateRef.current === value) return;
+    playbackStateRef.current = value;
+    setPlaybackState(value);
+    if (!leaseRef.current) return;
+    const generation = lifecycleGenerationRef.current;
+    const sessionId = leaseRef.current.sessionId;
+    // Settle the preceding interval immediately; buffering keeps media authority
+    // but does not charge while the browser waits for the next segment.
+    void renewCurrentLease().catch(() => {
+      if (!ownsLifecycle(generation, sessionId)) return;
+      setError("Listening authorization expired.");
+      void settleLease("listener_v2_state_renewal_rejected");
+    });
+  }, [ownsLifecycle, renewCurrentLease, settleLease]);
+
   const preparePlayback = useCallback(async () => {
-    playbackStateRef.current = "playing";
+    playbackStateRef.current = "buffering";
+    setPlaybackState("buffering");
     await renewCurrentLease();
   }, [renewCurrentLease]);
 

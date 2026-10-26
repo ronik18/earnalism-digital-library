@@ -354,11 +354,17 @@ def test_unknown_commit_retries_commit_without_replaying_balance_operation():
     asyncio.run(scenario())
 
 
-def test_one_hundred_simultaneous_renewals_debit_once(monkeypatch):
+@pytest.mark.parametrize("content_type", ["text", "audio"])
+def test_one_hundred_simultaneous_renewals_debit_once(monkeypatch, content_type):
     async def scenario():
         database = Database(balance=120)
         service = ReadingPassService(db=database, client=Client(), config=ReadingPassConfig(), token_secret='secret')
-        started = await _start(service)
+        started = await service.start_session(user_id='user-1', auth_session_id='auth-1', device_id='device-0001',
+            device_label='Synthetic', content_type=content_type, content_id='book-1', scope={})
+        if content_type == 'audio':
+            started = await service.renew_lease(user_id='user-1', auth_session_id='auth-1',
+                session_id=started['session_id'], lease_token=started['lease_token'], lease_version=1,
+                sequence=1, idempotency_key='audio-start-playing', active=True, playback_state='playing')
         session = database.reading_pass_sessions.rows[0]
         session['last_billed_at'] = datetime(2026, 1, 1, tzinfo=timezone.utc)
         session['lease_expires_at'] = datetime(2026, 1, 1, 0, 0, 10, tzinfo=timezone.utc)
@@ -372,8 +378,8 @@ def test_one_hundred_simultaneous_renewals_debit_once(monkeypatch):
         results = await asyncio.gather(*[
             service.renew_lease(
                 user_id='user-1', auth_session_id='auth-1', session_id=started['session_id'],
-                lease_token=started['lease_token'], lease_version=1, sequence=1,
-                idempotency_key=f'renew-{index:03d}', active=True,
+                lease_token=started['lease_token'], lease_version=started['lease_version'], sequence=2,
+                idempotency_key=f'renew-{index:03d}', active=True, playback_state='playing' if content_type == 'audio' else '',
             )
             for index in range(100)
         ])
@@ -1019,4 +1025,53 @@ def test_position_sync_whitelists_shape_and_rejects_invalid_values():
         )
         assert audio['position'] == {'media_position_seconds': 181.235}
 
+    asyncio.run(scenario())
+
+@pytest.mark.parametrize('speed', [1.0, 1.25, 1.5])
+def test_audio_buffering_speed_and_device_transfer_use_one_server_clock(monkeypatch, speed):
+    """Media position/speed never multiplies the active server interval."""
+    async def scenario():
+        from datetime import timedelta
+        clock = [datetime(2026, 1, 1, tzinfo=timezone.utc)]
+        class Clock(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return clock[0]
+        monkeypatch.setattr('backend.reading_pass_service.datetime', Clock)
+        database = Database(balance=120)
+        service = ReadingPassService(db=database, client=Client(), config=ReadingPassConfig(), token_secret='fixture')
+        lease = await service.start_session(user_id='user-1', auth_session_id='auth-1', device_id='device-0001',
+            device_label='Synthetic', content_type='audio', content_id='audio-1', scope={})
+        sequence = 0
+        async def renew(state, seconds):
+            nonlocal lease, sequence
+            clock[0] += timedelta(seconds=seconds)
+            sequence += 1
+            lease = await service.renew_lease(user_id='user-1', auth_session_id='auth-1', session_id=lease['session_id'],
+                lease_token=lease['lease_token'], lease_version=lease['lease_version'], sequence=sequence,
+                idempotency_key=f'audio-clock-{sequence}', active=state == 'playing', playback_state=state)
+            return lease['deducted_seconds']
+        assert await renew('buffering', 10) == 0
+        assert await renew('playing', 10) == 0
+        # A 6-second wall interval advances 6*speed media seconds but costs 6.
+        await service.save_position(user_id='user-1', content_type='audio', content_id='audio-1',
+            position={'media_position_seconds': 6*speed}, version=1)
+        assert await renew('buffering', 6) == 6
+        assert await renew('paused', 8) == 0
+        assert await renew('playing', 1) == 0
+        with pytest.raises(ReadingPassError):
+            await service.start_session(user_id='user-1', auth_session_id='auth-2', device_id='device-0002',
+                device_label='Second synthetic device', content_type='audio', content_id='audio-1', scope={})
+        clock[0] += timedelta(seconds=4)
+        replacement = await service.start_session(user_id='user-1', auth_session_id='auth-2', device_id='device-0002',
+            device_label='Second synthetic device', content_type='audio', content_id='audio-1', scope={}, transfer=True)
+        assert database.users.rows[0]['reading_seconds_balance'] == 110
+        assert replacement['balance_seconds'] == 110
+        assert sum(x['seconds_consumed'] for x in database.reading_pass_sessions.rows) == 10
+        assert sum(x.get('active_lock') == 'user-1' for x in database.reading_pass_sessions.rows) == 1
+        ended = await service.end_session(user_id='user-1', auth_session_id='auth-2', session_id=replacement['session_id'])
+        assert ended['deducted_seconds'] == 0
+        again = await service.end_session(user_id='user-1', auth_session_id='auth-2', session_id=replacement['session_id'])
+        assert again.get('deducted_seconds', 0) == 0
+        assert database.users.rows[0]['reading_seconds_balance'] == 110
     asyncio.run(scenario())
