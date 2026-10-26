@@ -224,6 +224,16 @@ AUDIO_ENABLED_SLUGS = (
     - PUBLIC_CATALOG_EXCLUDED_SLUGS
 ) if PUBLIC_AUDIO_EXPOSURE_ENABLED else set()
 
+# Package-v2 publication has an exact title allowlist plus immutable acceptance.
+# Keep the legacy global audio switch unchanged: publishing one package must not
+# expose unrelated historical MP3/conveyor records.
+PROTECTED_PACKAGE_PUBLIC_SLUGS = (
+    set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("protected_package_public_slugs"), ()))
+    & set(CONTROLLED_LIVE_BOOK_SLUGS)
+    - PUBLIC_CATALOG_EXCLUDED_SLUGS
+) if PUBLIC_READER_EXPOSURE_ENABLED else set()
+AUDIO_ENABLED_SLUGS = AUDIO_ENABLED_SLUGS | PROTECTED_PACKAGE_PUBLIC_SLUGS
+
 PUBLIC_STATUS_LIVE_APPROVED = "LIVE_APPROVED"
 PUBLIC_STATUS_PIPELINE_CANDIDATE = "PIPELINE_CANDIDATE"
 PUBLIC_STATUS_COMING_SOON = "COMING_SOON"
@@ -1141,9 +1151,10 @@ def can_expose_preview(book: dict[str, Any]) -> bool:
 
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
-    if not PUBLIC_AUDIO_EXPOSURE_ENABLED:
-        return False
     slug = normalize_slug(book.get("slug"))
+    protected_public = slug in PROTECTED_PACKAGE_PUBLIC_SLUGS and protected_package_publication_valid(book)
+    if not PUBLIC_AUDIO_EXPOSURE_ENABLED and not protected_public:
+        return False
     if book.get("audiobook_release_mode") == "PROTECTED_PACKAGE_V2" and not protected_package_publication_valid(book):
         return False
     conveyor = nested_dict(book, "audiobook_release_conveyor")

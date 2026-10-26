@@ -43,4 +43,41 @@ class AcceptanceTests(unittest.TestCase):
         self.playback['coverage']=['not-a-record']
         with self.assertRaises(manager.ReleasePointerError):manager.validate_new_title_publication_acceptance(**self.args())
 
+
+class MirroredPromotionTests(AcceptanceTests):
+    def test_isolated_dry_run_then_atomic_source_apply(self):
+        import tempfile, shutil
+        root_source=Path(__file__).resolve().parents[3]
+        with tempfile.TemporaryDirectory(prefix='publication-test-') as tmp:
+            root=Path(tmp).resolve()
+            for side in ['data','backend/data']:
+                shutil.copytree(root_source/side/'controlled_publications/the-open-window',root/side/'controlled_publications/the-open-window')
+                shutil.copy2(root_source/side/'controlled_launch.json',root/side/'controlled_launch.json')
+            for name in ['rights_decision_registry.json','approved_reader_bootstrap.json']:
+                shutil.copy2(root_source/'backend/data'/name,root/'backend/data'/name)
+            before={str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.rglob('*') if f.is_file()}
+            b=json.loads((root/'data/controlled_publications/the-open-window/public_book.json').read_text())
+            descriptor=b['audiobook_active_release']['candidate_release_descriptor_sha256'];package=b['audiobook_packages'][descriptor]
+            ids=[c['segment_id'] for t in package['tracks'] for c in t['chunks']]
+            self.playback.update(descriptor=descriptor,packageVersion=package['package_version'],durationMs=package['duration_ms'],segmentCount=len(ids),
+                coverage=[dict(segment=k,durationMatches=True,ended=True,startedFromBeginning=True) for k in ids],
+                timestamps=[dict(segment=k,http=200,sha256Matches=True) for k in ids])
+            blobs={k:json.dumps(getattr(self,k)).encode() for k in ['playback','business','accounting']}
+            args=dict(**{k+'_bytes':v for k,v in blobs.items()},expected_proof_hashes={k:hashlib.sha256(v).hexdigest() for k,v in blobs.items()},
+                audio_rights={'decision_id':'india-20261020-the-open-window-corrected-v1-audio-owner-adopted','canonical_sha256':'7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef','territories':['IN'],'use':'audio_stream'},
+                decision_id='india-fixture-the-open-window-public',approved_by='SYNTHETIC_FIXTURE_ONLY',generated_at='2026-10-26T13:20:00Z')
+            result=manager.promote_new_title_package(root,'the-open-window',**args)
+            self.assertFalse(result['applied'])
+            self.assertEqual(before,{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.rglob('*') if f.is_file()})
+            result=manager.promote_new_title_package(root,'the-open-window',apply=True,**args)
+            self.assertTrue(result['applied'])
+            for name,digest in result['files'].items():self.assertEqual(hashlib.sha256((root/name).read_bytes()).hexdigest(),digest)
+            public=json.loads((root/'data/controlled_publications/the-open-window/public_book.json').read_text())
+            self.assertEqual(public['audiobook_active_release']['active_release_descriptor_sha256'],descriptor)
+            self.assertTrue(public['audiobook_hidden_release_descriptor_sha256'])
+            config=json.loads((root/'data/controlled_launch.json').read_text())
+            self.assertIs(config['public_audio_exposure_enabled'],False)
+            self.assertEqual(config['protected_package_public_slugs'],['the-open-window'])
+            with self.assertRaises(manager.ReleasePointerError):manager.promote_new_title_package(root,'the-open-window',apply=True,**args)
+
 if __name__=='__main__':unittest.main()
