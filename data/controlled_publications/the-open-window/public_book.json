@@ -2681,9 +2681,9 @@
   },
   "audiobook_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
   "author": "Saki",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
   "benefits": [
     "Read a legally cleared digital text.",
     "Enjoy a clean, structured reading format.",
@@ -2708,26 +2708,26 @@
     }
   ],
   "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-  "coverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "cover_dimensions": {
     "back": [
-      800,
-      1200
+      1600,
+      2400
     ],
     "front": [
-      800,
-      1200
+      1600,
+      2400
     ]
   },
-  "cover_image": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
   "cover_semantic_match_score": 9.8,
-  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
-  "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "created_at": "2026-07-03T20:07:49Z",
   "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
-  "dominant_color": "#4A1C27",
+  "dominant_color": "#102A2C",
   "estimated_reading_time": "5 min",
   "formats": [
     "Ebook"
@@ -2761,11 +2761,16 @@
   "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
   "subtitle": "",
   "title": "The Open Window",
-  "updated_at": "2026-07-19T10:15:00Z",
+  "updated_at": "2026-10-26T10:23:01.242177+00:00",
   "verification_status": "approved",
   "who_for": [
     "General readers",
     "Students and lifelong learners",
     "Users who prefer structured digital reading"
-  ]
+  ],
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_dominant_color": "#122D2F"
 }

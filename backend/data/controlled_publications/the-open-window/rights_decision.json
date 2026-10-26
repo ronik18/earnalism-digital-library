@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261025-the-open-window-reader-cover-canary-metadata",
+  "decision_id": "india-20261026-the-open-window-approved-revised-cover-pair",
   "edition_id": "the-open-window",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
@@ -9,12 +9,13 @@
     "publication_manifest": "7eb73cb5bf8c2914ad13f11fee118e0ff486c326f9ac09c0c2980afb60b454ae",
     "reader_manifest": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b",
     "approval_evidence": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775",
-    "public_book": "bacd27a962ee2061ad1e0b9bb9e1a46b54c7dfdfdbb84ca094ca71bbea34320a",
-    "checksum_manifest": "4a62253393df7df8e6a8e0b5d2c1272124f51f4e48cf6ba34dc91e52f209ab70",
+    "public_book": "0b905afdef81f1f7469b8f2351dbe92b3ea5882f2d244959eb1eac3ccfbaaafc",
+    "checksum_manifest": "323b19c22caa68aa2e9e671609a8395620ceb99a9720342d998cf4f9947c2ed8",
     "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
     "publication_authorization": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
     "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
-    "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+    "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+    "cover_approval_evidence": "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa"
   },
   "territories": [
     "IN"
@@ -27,9 +28,9 @@
     "reading_pass_session",
     "reading_pass_renewal"
   ],
-  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_from": "2026-10-26T10:31:39.675201+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates. Metadata-only successor for the owner-approved Open Window5%transport canary: refresh only public_book,reader_manifest,approval_evidence and checksum_manifest component hashes. Underlying source,Reader/cover permissions,territory,uses and validity remain unchanged; separate exact audio-use decision still governs audio_stream.",
+  "basis": "Prospective exact-binding successor for the owner-approved revised Canva front/back cover pair, hashes ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc and 05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a. Direct owner instruction in the integration chat authorizes publishing this approved pair after QA. Genuine admin-intake identities, remote full-byte equality and the existing canonical promoter bind these exact assets; cover_approval_evidence records their immutable versions and rollback pointers. Existing India reader/source permissions, operator and expiry are preserved. Historical cover_provenance and prior decisions remain history, not evidence of a new review. No new audio permission, external signature, other edition, or production cover observation is inferred.",
   "evidence_sha256": [
     "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
@@ -39,8 +40,12 @@
     "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
     "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
     "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
-    "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
+    "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+    "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa",
+    "a01c6ad38b5177d7ddef594dc7749b35939e983a19a5c94e04ccda6bc6f224e4"
   ],
-  "accepted_by": "Ronik Basak / Reo Enterprise direct Open Window GO LIVE and scoped automation approval in current chat; metadata-only binding successor, no external signature inferred.",
+  "accepted_by": "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.",
   "conditions_satisfied": true
 }
