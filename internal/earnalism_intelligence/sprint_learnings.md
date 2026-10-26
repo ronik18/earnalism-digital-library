@@ -2756,3 +2756,5 @@ Visual fixtures can admit a verified public package while staying deliberately n
 Primary review timeout: retain progressing Ubuntu/Playwright dependency diagnostics; a20min total job expired before review began. Give this job a bounded45min window while retaining all browser/review steps; no provider rerun or skipped gate.
 
 Exact Reader index fixture: publication metadata changes the whole-manifest hash without changing ordered chapters. Verify unchanged chapter identities/count against merged main, then pin the reviewed successor; retain all index assertions.76cases72subtests and51frontend contracts pass.
+
+Runtime regression consumers must distinguish broad legacy audio OFF from explicit protected package availability. Require exact public flags/mode/version and no direct media URL for the sole approved title; verify every other catalogue title remains hidden.52source projections and64UXstatic cases pass; hostedHTTP gates remain required.

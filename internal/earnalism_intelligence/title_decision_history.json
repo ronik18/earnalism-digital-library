@@ -11980,5 +11980,14 @@
     "finding": "Full regression reached historical exact Reader manifest pin after package publication metadata changed. Ordered chapter identities/bodies/count remain unchanged against origin/main.",
     "change": "Pin reviewed successor manifest9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384 without weakening catalog-wide chapter identity assertions.",
     "validation": "76backend/catalogue/canary PASS1skip72subtests;51frontend legal/account/static contractsPASS. No production change."
+  },
+  "open_window_served_catalogue_contract_20261026": {
+    "at": "2026-10-26T16:28:42.984037+00:00",
+    "title": "the-open-window",
+    "decision": "SERVED_CATALOGUE_REGRESSION_PACKAGE_CONTRACT_ALIGNED",
+    "finding": "Full regression reached three remaining runtime suites assuming broad legacy audio OFF meant every package flag OFF, plus predecessor static access copy.",
+    "change": "Keep legacy global/title list OFF; require exact protected-title public flags, package mode/version and absent audio URL; all other titles denied. Update exact built-copy expectation.",
+    "validation": "All52 actual source catalogue projections satisfy the exact singleton/no-media-URL predicate;64UXstatic checks PASS. Hosted actualHTTP regression remains mandatory.",
+    "production": "UNCHANGED_NO_PAID_SESSION"
   }
 }

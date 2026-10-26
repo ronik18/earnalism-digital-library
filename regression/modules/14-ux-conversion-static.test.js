@@ -1840,12 +1840,12 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/a-ghost-story/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
+      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
       return;
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
+    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
