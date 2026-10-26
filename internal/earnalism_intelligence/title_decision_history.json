@@ -3816,6 +3816,13 @@
         "validation": "23 focused frontend tests PASS including synthetic29segment lifecycle, denied/unmounted transitions;46 workflow tests PASS. Actual full production playback still unverified.",
         "release": "FRONTEND_ONLY_ACTIVATION_HELD",
         "next_action": "Exact-head CI/reviews then frontend-only staged release; no backend redeploy, cap work or blind paid retry."
+      },
+      "fractional_usage_correction_20261026": {
+        "status": "LOCAL_TESTED_NOT_DEPLOYED",
+        "accountCarry": "Integer microseconds, transaction-coupled across session boundaries",
+        "history": "Owner-scoped keyset pages, exactseconds and content labels for new debits",
+        "validation": "131backend+19frontend+46workflowPASS;3realMongo isolatedcasesPASS; production untouched",
+        "next": "Exact-head CI/published review then merge/manual deployment; activation held"
       }
     },
     "sredni-vashtar": {

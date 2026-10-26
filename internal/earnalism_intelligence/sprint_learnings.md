@@ -2734,3 +2734,9 @@ Admin cover intake is a private review candidate, not canonical publication. The
 Cover CI follow-up: the generic promoter did not refresh this title’s separately hash-bound publication manifest. Keep the existing artifact-equality test; refresh the real cover URL/artifact hashes and manifest digest, then rebind registry/bootstrap. An exact predecessor-actor fixture also required a narrow approved-successor case.452tests+19subtests pass; no deployment or failed-run retry occurred.
 
 Cover derived-artifact follow-up: after canonical cover/public-book/rights changes, regenerate the supported static SEO contract and retain precise registered decision fixtures. Both affected regression modules pass16tests; no checks waived or production change.
+
+## Account-wide fractional usage — 26 October 2026
+
+Flooring each short renewal loses legitimate active time. Carry integer microseconds on the account in the same transaction as session and wallet transitions, including across endings and transfers; do not round every heartbeat upward. Keep paused/buffering/free time free. Customer history must page all rows deterministically, show exact seconds, and discard late results after account changes.131backend,19frontend,46workflow checks pass plus isolated real-Mongo three-speed/transfer/rapid-renewal cases; production not yet changed.
+
+Account pagination capture follow-up: update the actual authenticated screenshot fixture when moving UI to a new endpoint. Keep HTTP failures in capture gates; add the exact page shape rather than suppressing failed requests.
