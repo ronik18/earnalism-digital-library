@@ -8,8 +8,10 @@ import json
 import re
 try:
     from .audiobook_packages import validate_audiobook_package, validate_active_release_state
+    from .rights_decision_gate import load_production_registry, load_audio_package_binding
 except ImportError:
     from audiobook_packages import validate_audiobook_package, validate_active_release_state
+    from rights_decision_gate import load_production_registry, load_audio_package_binding
 
 MODE = 'PROTECTED_PACKAGE_V2'
 SCHEMA = 'audiobook_protected_package_publication.v1'
@@ -21,8 +23,18 @@ def protected_package_publication_valid(book):
         if book.get('audiobook_release_mode') != MODE:
             return False
         approval = book['audiobook_public_package_approval']
+        accepted, revoked = load_production_registry()
+        audio_decision = approval.get('audio_rights_decision_id')
+        audio_digest = approval.get('audio_rights_record_sha256')
+        if (not isinstance(audio_decision, str) or not audio_decision
+                or not isinstance(audio_digest, str) or not SHA.fullmatch(audio_digest)
+                or audio_decision in revoked or accepted.get(audio_decision) != audio_digest):
+            return False
         state = validate_active_release_state(book['audiobook_active_release'])
         slug = book['slug']; descriptor = state['active_release_descriptor_sha256']
+        rights_binding = load_audio_package_binding(slug, descriptor)
+        if not rights_binding or rights_binding['decision_id'] != audio_decision or rights_binding['record_sha256'] != audio_digest:
+            return False
         if (state['slug'] != slug or state['status'] != 'ACTIVE'
                 or state['candidate_release_descriptor_sha256'] or state['rollout']['percentage'] != 0
                 or approval['schema_version'] != SCHEMA or approval['status'] != 'PUBLIC_APPROVED'
@@ -67,5 +79,5 @@ def protected_package_publication_valid(book):
                     if asset['storage']['store'] != 'prod' or not asset['replicas'] or any(r['store'] != 'dr' for r in asset['replicas']):
                         return False
         return True
-    except (KeyError,TypeError,ValueError,AttributeError):
+    except (KeyError,TypeError,ValueError,AttributeError,OSError):
         return False

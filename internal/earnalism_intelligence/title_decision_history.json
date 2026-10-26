@@ -11928,5 +11928,16 @@
     "finding": "PR562 initial regression exposed one real stale publication-manifest public-book binding and one hardcoded predecessor-actor expectation. No production deployment occurred.",
     "change": "Refresh existing manifest front cover/artifact hashes/canonical digest, rebind rights record registry/bootstrap, retain exact checks and add durable coverage.",
     "validation": "452 tests and19subtests PASS including controlled launch parity; failed-provider run not rerun, fresh source commit required."
+  },
+  "open_window_public_package_publication_20261026": {
+    "at": "2026-10-26T15:24:59.194743+00:00",
+    "title": "the-open-window",
+    "decision": "ACTUAL_USAGE_ACCEPTED_EXACT_TITLE_PUBLICATION_SOURCE_READY",
+    "scope": "Existing accepted29chunk package only; broad legacy audio disabled",
+    "evidence": "Actual signed-in deployed563 usage UI paged three times beyond100rows with exactseconds/noerrors; no paid session or purchase. Retained560 fullcoverage and561 speed/accounting proof reused by exact immutable hash.",
+    "sourceCorrection": "Source-only rights evidence list formatting corrected before deployment; separate exact-package IN audio_stream registry reference prevents Reader-rights relabeling. Prior records retained.",
+    "validation": "473backend/release+24subtests,43routing/cover+19subtests,55frontend,46workflow PASS; staticcontract fresh. Required hosted CI/reviews pending.",
+    "production": "UNCHANGED_PUBLIC_ACTIVATION_HELD",
+    "next_action": "Submit one focused publication PR then exact-head gates/manual exactmergedsource release."
   }
 }

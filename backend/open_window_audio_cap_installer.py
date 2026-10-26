@@ -33,7 +33,7 @@ SERVICE = "5af42e7e-f518-4f6a-b602-d9950866501f"
 ENFORCEMENT_PINS = {
     "backend/audio_acceptance_budget.py": "61c9bacc041dc1342db3398abd4db3790f481e769f40fe522181e7fd8d4653c9",
     "backend/reading_pass_service.py": "f28f6af29ee961dd7ed5a1590d31052245cae59868f4b77a54306a1fe5d4c4a8",
-    "backend/server.py": "672c0107804b69823bd60078c429c3f763558696d3f8723f8d33a849800e79aa",
+    "backend/server.py": "a1c36360f518f292638bd875a17281388b42dcf8d3dd15109073205bcf6544b3",
 }
 
 

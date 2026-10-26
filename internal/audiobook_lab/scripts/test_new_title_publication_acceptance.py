@@ -55,6 +55,31 @@ class MirroredPromotionTests(AcceptanceTests):
                 shutil.copy2(root_source/side/'controlled_launch.json',root/side/'controlled_launch.json')
             for name in ['rights_decision_registry.json','approved_reader_bootstrap.json']:
                 shutil.copy2(root_source/'backend/data'/name,root/'backend/data'/name)
+            # Reconstruct an isolated pre-publication canary from the retained
+            # immutable package. Synthetic rights rebinding is fixture-only.
+            from rights_decision_gate import record_sha256
+            primary=root/'data/controlled_publications/the-open-window'
+            base=json.loads((primary/'public_book.json').read_text())
+            descriptor=base['audiobook_active_release']['active_release_descriptor_sha256']
+            if not base['audiobook_active_release']['candidate_release_descriptor_sha256']:
+                hidden=base['audiobook_hidden_release_descriptor_sha256']
+                fields={'audio_enabled':False,'audiobook_enabled':False,
+                    'audiobook_active_release':manager.build_active_release_state(slug='the-open-window',active_release_descriptor_sha256=hidden,
+                        retained_release_descriptor_sha256s=[hidden,descriptor],candidate_release_descriptor_sha256=descriptor,rollout_percentage=5,rollout_salt='synthetic-test'),
+                    'audiobook_package_canary':{**base['audiobook_package_canary'],'status':'PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED'}}
+                for side in ['data','backend/data']:
+                    folder=root/side/'controlled_publications/the-open-window'
+                    payloads={}
+                    for filename in ['public_book.json','reader_manifest.json']:
+                        doc=json.loads((folder/filename).read_text());doc.update(fields)
+                        payloads[filename]=manager.json_bytes(doc);(folder/filename).write_bytes(payloads[filename])
+                    checksum=manager._checksum_document(json.loads((folder/'checksum_manifest.json').read_text()),payloads,'2026-10-26T00:00:00Z')
+                    (folder/'checksum_manifest.json').write_bytes(manager.json_bytes(checksum))
+                record=json.loads((primary/'rights_decision.json').read_text())
+                for name in ['public_book','reader_manifest','checksum_manifest']:record['components'][name]=hashlib.sha256((primary/(name+'.json')).read_bytes()).hexdigest()
+                for side in ['data','backend/data']:(root/side/'controlled_publications/the-open-window/rights_decision.json').write_bytes(manager.json_bytes(record))
+                registry=json.loads((root/'backend/data/rights_decision_registry.json').read_text());registry['accepted_records'][record['decision_id']]=record_sha256(record)
+                (root/'backend/data/rights_decision_registry.json').write_bytes(manager.json_bytes(registry))
             before={str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.rglob('*') if f.is_file()}
             b=json.loads((root/'data/controlled_publications/the-open-window/public_book.json').read_text())
             descriptor=b['audiobook_active_release']['candidate_release_descriptor_sha256'];package=b['audiobook_packages'][descriptor]

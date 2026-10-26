@@ -1,7 +1,7 @@
 """Exact approved cover pair; no image upload or production mutation."""
 import hashlib,json
 from pathlib import Path
-from backend.catalog_truth import load_controlled_artifact_book
+from backend.catalog_truth import load_controlled_artifact_book,public_book_projection
 from backend.rights_decision_gate import load_production_registry,record_sha256
 ROOT=Path(__file__).resolve().parents[2]
 EXPECTED={'front':'ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc','back':'05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a'}
@@ -22,7 +22,10 @@ def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
     projected=load_controlled_artifact_book('the-open-window',artifact_dir=b)
     assert EXPECTED['front'] in projected['cover_url']
     assert EXPECTED['back'] in projected['back_cover_url']
-    assert projected['audio_enabled'] is False
+    assert projected['audio_enabled'] is True
+    public=public_book_projection(projected)
+    assert public['audio_url'] == ''
+    assert 'audiobook_public_package_approval' not in public
     from backend.publication_manifest import canonical_sha256
     manifest=read(b/'publication_manifest.json')
     assert manifest['manifest_sha256']==canonical_sha256(manifest)
@@ -31,7 +34,7 @@ def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
         assert hashlib.sha256((b/(name+'.json')).read_bytes()).hexdigest()==digest
 
     assert book['audiobook_package_canary']['candidate_release_descriptor_sha256']=='028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2'
-def test_cover_successor_preserves_reader_permissions_and_audio_hold():
+def test_cover_successor_preserves_reader_permissions_and_separate_audio_rights():
     directory=ROOT/'backend/data/controlled_publications/the-open-window';decision=read(directory/'rights_decision.json');registry,_=load_production_registry()
     assert registry[decision['decision_id']]==record_sha256(decision)
     assert 'india-20261025-the-open-window-reader-cover-canary-metadata' in registry

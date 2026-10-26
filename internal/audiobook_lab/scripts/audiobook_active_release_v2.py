@@ -2174,7 +2174,7 @@ def promote_new_title_package(
     """
     from protected_package_publication import protected_package_publication_valid
     from publication_manifest import build_manifest, validate_manifest
-    from rights_decision_gate import record_sha256
+    from rights_decision_gate import record_sha256, load_audio_package_binding
     import shutil
     repo_root = Path(repo_root).resolve()
     when = generated_at or utc_now()
@@ -2213,6 +2213,9 @@ def promote_new_title_package(
                 or registry.get("accepted_records", {}).get(audio_rights.get("decision_id")) != audio_rights.get("canonical_sha256")
                 or audio_rights.get("decision_id") in registry.get("revoked_decision_ids", [])):
             raise ReleasePointerError("Existing separately accepted India audio rights binding is required")
+        binding = load_audio_package_binding(slug, descriptor, registry_path)
+        if not binding or binding["decision_id"] != audio_rights["decision_id"] or binding["record_sha256"] != audio_rights["canonical_sha256"]:
+            raise ReleasePointerError("Exact package audio-use reference is required; Reader authority cannot substitute")
         active = build_active_release_state(slug=slug, active_release_descriptor_sha256=descriptor,
             retained_release_descriptor_sha256s=state["retained_release_descriptor_sha256s"])
         marker = {"schema_version": "audiobook_protected_package_publication.v1", "status": "PUBLIC_APPROVED",
@@ -2247,6 +2250,11 @@ def promote_new_title_package(
         payloads["checksum_manifest.json"] = json_bytes(_checksum_document(context["checksum_manifest"], payloads, when))
         payloads["publication_manifest.json"] = json_bytes(manifest)
         prior_rights = read_json(context["dirs"][0] / "rights_decision.json")
+        if registry.get("accepted_records", {}).get(prior_rights.get("decision_id")) != record_sha256(prior_rights):
+            raise ReleasePointerError("Prior Reader decision must remain independently registered")
+        for name in ("public_book", "reader_manifest", "source_evidence", "approval_evidence", "checksum_manifest", "publication_manifest"):
+            if prior_rights.get("components", {}).get(name) != sha256_bytes((context["dirs"][0] / (name + ".json")).read_bytes()):
+                raise ReleasePointerError("Prior Reader artifact binding changed before promotion")
         rights = copy.deepcopy(prior_rights)
         if rights["decision_id"] == decision_id:
             raise ReleasePointerError("Successor decision must preserve the old registered record")
@@ -2255,7 +2263,7 @@ def promote_new_title_package(
         for name, payload in payloads.items():
             component = name.removesuffix(".json")
             if component in rights["components"]: rights["components"][component] = sha256_bytes(payload)
-        rights["evidence_sha256"] = sha256_bytes(json_bytes({"prior": record_sha256(prior_rights), "acceptance": marker["acceptance_sha256"]}))
+        rights["evidence_sha256"] = list(prior_rights["evidence_sha256"]) + [sha256_bytes(json_bytes({"prior": record_sha256(prior_rights), "acceptance": marker["acceptance_sha256"]}))]
         digest = record_sha256(rights)
         accepted = registry.setdefault("accepted_records", {})
         if decision_id in accepted:

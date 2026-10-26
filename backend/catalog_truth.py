@@ -1231,6 +1231,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             # never disclose a playable route or provider/storage location.
             "audio_url": "",
             "audio_status": audio_status,
+            "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2" if audio and protected_package_publication_valid(book) else "",
+            "audiobook_package_version": (book.get("audiobook_public_package_approval", {}).get("acceptance", {}).get("package_version", "") if audio and protected_package_publication_valid(book) else ""),
+            "audiobook_duration_ms": (book.get("audiobook_public_package_approval", {}).get("acceptance", {}).get("duration_ms", 0) if audio and protected_package_publication_valid(book) else 0),
             "audiobook_release_gate": "APPROVED" if audio else "",
             "audio_qa_status": audio_release_qa_status(book) if audio else "",
             "cta_label": "Read" if live else "Notify Me",

@@ -116,7 +116,7 @@ describe("Listener protected package route", () => {
     await act(async () => { root.render(<ListenerExperienceV2Route />); });
     await flush();
     const url = new URL(mockUserApiGet.mock.calls[0][0], "https://theearnalism.com/api/");
-    expect(url.searchParams.get("release_truth")).toBe("audio-release-evidence-v9");
+    expect(url.searchParams.get("release_truth")).toBe("audio-release-evidence-v10");
     expect(url.searchParams.get("transport_canary")).toBe("1");
     expect([...url.searchParams.keys()]).toEqual(["release_truth", "transport_canary"]);
     expect(mockStartReadingPassAudioSession).not.toHaveBeenCalled();

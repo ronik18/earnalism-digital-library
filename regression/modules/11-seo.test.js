@@ -291,7 +291,7 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
       expect(publication).toMatchObject({
         text_preview_limit_canonical_pages: 3,
         audio_public_preview_seconds: 0,
-        audio_availability_state: "disabled",
+        audio_availability_state: publication.slug === "the-open-window" ? "approved" : "disabled",
       });
     }
     expect(staticSnapshotGenerator).toContain('const bookRoute = "/book/" + book.slug');

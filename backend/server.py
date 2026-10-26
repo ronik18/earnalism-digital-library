@@ -828,7 +828,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v16"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v17"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
 PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "release-containment-v1"

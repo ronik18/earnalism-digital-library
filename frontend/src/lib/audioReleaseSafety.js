@@ -1,3 +1,5 @@
+import { PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
+
 function clean(value = "") {
   return String(value || "").trim();
 }
@@ -6,7 +8,7 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
-export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v9";
+export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v10";
 
 export function readerManifestPath(slug, { adminPreview = false, transportCanary = false } = {}) {
   const params = new URLSearchParams({
@@ -95,7 +97,11 @@ export function audiobookReleaseState(book = {}) {
   const hasStaticAudioAsset = isStaticAudiobookAssetPath(audioUrl);
   const hasAudioAsset = Boolean(audioUrl) && !hasStaticAudioAsset;
   const packageManifestUrl = clean(assets.manifest || manifestAudio?.assets?.manifest);
-  const packageVersion = clean(manifestAudio?.package_version);
+  const packageVersion = clean(manifestAudio?.package_version || book.audiobook_package_version);
+  const hasCataloguePackageBinding = PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(slug)
+    && book.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
+    && /^sha256-[a-f0-9]{64}$/.test(book.audiobook_package_version || "")
+    && hasReleaseApproval && hasQaApproval;
   const hasPackageManifestAsset = isReaderAudiobookManifestPath(packageManifestUrl, slug)
     && /^sha256-[a-f0-9]{64}$/.test(packageVersion);
   // Package-v2 keeps the protected manifest URL out of the public release
@@ -116,7 +122,7 @@ export function audiobookReleaseState(book = {}) {
     || book?.audio_disabled === true
     || upper(book?.audiobook?.status) === "BLOCKED";
 
-  const hasApprovedAudioAsset = hasAudioAsset
+  const hasApprovedAudioAsset = hasAudioAsset || hasCataloguePackageBinding
     || ((hasPackageManifestAsset || hasPublicPackageBinding) && hasReaderManifestApproval);
   // The public catalogue is intentionally not a media manifest.  A verified
   // release decision can therefore arrive without a playable URL, provider
@@ -138,7 +144,7 @@ export function audiobookReleaseState(book = {}) {
       audioUrl,
       hasAudioAsset: hasApprovedAudioAsset,
       packageManifestUrl: hasPackageManifestAsset ? packageManifestUrl : "",
-      packageVersion: (hasPackageManifestAsset || hasPublicPackageBinding) ? packageVersion : "",
+      packageVersion: (hasPackageManifestAsset || hasPublicPackageBinding || hasCataloguePackageBinding) ? packageVersion : "",
       syncMode: book?.sync_mode || book?.audiobook?.sync_mode || book?._readerManifest?.audio?.sync_mode || "",
       highlightSyncEnabled: book?.highlight_sync_enabled === true
         || book?.audiobook?.highlight_sync_enabled === true

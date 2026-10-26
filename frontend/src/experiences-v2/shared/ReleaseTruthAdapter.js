@@ -73,7 +73,7 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     title: book.public_title || book.display_title || book.title || "Approved audiobook",
     author: book.author || book.author_name || "",
     chapterLabel: book.chapter_label || "Full audiobook",
-    durationSeconds: Number(book?._readerManifest?.audio?.duration_ms) / 1000 || Number(book.preview_duration_seconds) || 0,
+    durationSeconds: Number(book?._readerManifest?.audio?.duration_ms || book.audiobook_duration_ms) / 1000 || Number(book.preview_duration_seconds) || 0,
     publicPreviewSeconds: 0,
   };
 }

@@ -1625,11 +1625,11 @@ def test_open_window_unapproved_metadata_keeps_audio_hidden(monkeypatch):
     server = _server(monkeypatch)
     slug = "the-open-window"
     # Historical package metadata must never grant current release authority.
-    artifact = json.loads((BACKEND_DIR / "data" / "controlled_publications" / slug / "public_book.json").read_text())
-    # The owner-approved transport canary is now real; this negative case must
-    # explicitly remove its authority in both artifact and historical DB paths.
-    artifact = copy.deepcopy(artifact)
+    artifact = copy.deepcopy(server._controlled_artifact_doc(slug,include_content=False))
+    # Remove both publication and old canary authority; a historical package
+    # or DB row alone must not expose the current title.
     artifact["audiobook_package_canary"]["status"] = "HELD"
+    artifact["audiobook_public_package_approval"]["status"] = "HELD"
     monkeypatch.setattr(server, "_controlled_artifact_doc", lambda *_a, **_kw: copy.deepcopy(artifact))
     assert server.can_expose_audio({**artifact, "slug": slug}) is False
     audio = server._reader_manifest_audio(artifact, slug)
@@ -1679,10 +1679,13 @@ def test_admin_audiobook_asset_sanitizer_rejects_static_audio_fallbacks(monkeypa
     }
 
 
-def test_open_window_real_transport_canary_does_not_advertise_catalogue_audio(monkeypatch):
+def test_open_window_public_package_has_no_public_media_urls(monkeypatch):
     server=_server(monkeypatch)
-    artifact=json.loads((BACKEND_DIR/'data/controlled_publications/the-open-window/public_book.json').read_text())
-    assert server._can_expose_audiobook_package_canary(artifact,'the-open-window') is True
-    assert server.can_expose_audio(artifact) is False
-    assert server._reader_manifest_audio(artifact,'the-open-window')['enabled'] is False
-    assert artifact['audio_enabled'] is False and artifact['audiobook_enabled'] is False
+    artifact=server._controlled_artifact_doc('the-open-window',include_content=False)
+    assert server._can_expose_audiobook_package_canary(artifact,'the-open-window') is False
+    assert server.can_expose_audio(artifact) is True
+    audio=server._reader_manifest_audio(artifact,'the-open-window')
+    assert audio['enabled'] is True and audio['delivery_mode']=='PROTECTED_PACKAGE_V2'
+    assert audio['duration_ms']==491436 and audio['provider']==''
+    assert audio['assets']=={} and audio['url']==''
+    assert artifact['audio_enabled'] is True and artifact['audiobook_enabled'] is True
