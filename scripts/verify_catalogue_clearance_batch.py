@@ -8,6 +8,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from backend.publication_manifest import validate_manifest
+from backend.protected_package_publication import protected_package_publication_valid
 from backend.rights_decision_gate import evaluate_accepted_record, record_sha256
 from datetime import datetime, timezone
 from scripts.bengali_rights_package_validator import checksum_manifest_matches
@@ -41,7 +42,7 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
             actual=hashlib.sha256((p/(name+'.json')).read_bytes()).hexdigest()
             if manifest.get('artifacts',{}).get(name)!=actual:issues.append(f'{slug}: stale publication artifact {name}')
         if not checksum_manifest_matches(p):issues.append(f'{slug}: invalid checksum bundle')
-        if manifest['audio_release']['exposed']:issues.append(f'{slug}: audio exposure forbidden')
+        if manifest['audio_release']['exposed'] and not (slug in live and slug in launch.get('protected_package_public_slugs', []) and protected_package_publication_valid(json.loads((p/'public_book.json').read_text()))):issues.append(f'{slug}: unapproved audio exposure forbidden')
         if manifest['reader_release']['exposed'] and slug not in live:issues.append(f'{slug}: held preparation exposed a release')
         if slug in live:
             if not baseline or slug not in baseline['titles']:issues.append(f'{slug}: unreviewed exposed title')
@@ -75,6 +76,6 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
                     verdict=evaluate_accepted_record(record,edition_id=slug,operator_id='reo-enterprise',country='IN',country_trusted=True,use=use,required_components=components,accepted_records={record['decision_id']:record_sha256(record)},revoked_decision_ids=frozenset(),now=datetime.now(timezone.utc))
                     if verdict.passed!=should_pass:issues.append(f'{slug}: decision scope invalid for {use}: {verdict.reasons}')
         statuses[slug]=manifest['reader_release']['status']
-    return {'result':'FAIL' if issues else 'PASS','changed_packages':len(slugs),'statuses':statuses,'issues':issues,'reader_exposed':bool(live),'audio_exposed':bool(launch.get('audio_enabled_slugs')),'release_authority_matches_reviewed_bindings':baseline is not None and not any('authority' in v for v in issues)}
+    return {'result':'FAIL' if issues else 'PASS','changed_packages':len(slugs),'statuses':statuses,'issues':issues,'reader_exposed':bool(live),'audio_exposed':bool(launch.get('audio_enabled_slugs') or launch.get('protected_package_public_slugs')),'release_authority_matches_reviewed_bindings':baseline is not None and not any('authority' in v for v in issues)}
 if __name__=='__main__':
     report=verify();print(json.dumps(report,ensure_ascii=False,indent=2));raise SystemExit(bool(report['issues']))

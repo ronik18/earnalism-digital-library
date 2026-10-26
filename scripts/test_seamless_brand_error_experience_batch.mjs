@@ -93,15 +93,17 @@ test("Reader and disabled Listener manifest fixtures retain their exact routes",
     assert.equal(state.fixture, fixture);
   }
 });
-test("current release projection keeps audio disabled for every released title", () => {
+test("current release projection limits audio to the exact protected-package title", () => {
   const launch = JSON.parse(fs.readFileSync(path.join(root, "data/controlled_launch.json"), "utf8"));
   assert.equal(launch.public_audio_exposure_enabled, false);
   assert.deepEqual(launch.audio_enabled_slugs, []);
+  assert.deepEqual(launch.protected_package_public_slugs, ["the-open-window"]);
   assert.deepEqual(launch.live_approved_slugs, expectedReleasedSlugs);
   for (const slug of expectedReleasedSlugs) {
     const publication = JSON.parse(fs.readFileSync(path.join(root, "data/controlled_publications", slug, "publication_manifest.json"), "utf8"));
     assert.equal(publication.reader_release.exposed, true, slug);
-    assert.equal(publication.audio_release.exposed, false, slug);
+    assert.equal(publication.audio_release.exposed, slug === "the-open-window", slug);
+    if (slug === "the-open-window") assert.equal(publication.audio_release.delivery_mode, "PROTECTED_PACKAGE_V2");
   }
 });
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "error-experience-summary-unit-"));

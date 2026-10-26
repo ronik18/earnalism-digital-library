@@ -11955,5 +11955,14 @@
     "decision": "EXACT_SINGLE_TITLE_AUDIO_AUTHORITY_FIXTURE_UPDATED",
     "finding": "Catalogue workflow reached a remaining backend fixture asserting zero AUDIO_ENABLED_SLUGS. Production intentionally permits only the independently approved OpenWindow package.",
     "validation": "Exact singleton assertions plus explicit unrelated-title denial retained;39backend catalogue cases PASS. No runtime change or deployment."
+  },
+  "open_window_catalogue_visual_admission_20261026": {
+    "at": "2026-10-26T15:43:49.381359+00:00",
+    "title": "the-open-window",
+    "decision": "CATALOGUE_AND_VISUAL_HARNESS_RECOGNIZE_APPROVED_PACKAGE",
+    "finding": "Next CI stages retained all-titles-audio-forbidden assumptions in catalogue verifier and visual fixture admission. Canonical exact package is separately authorized; visual rendering still must not play media.",
+    "change": "Require independent protected-package validation for exposed catalogue audio; admit canonical title approval to visual fixture loader while deliberately returning nonplayable fixture data; exact release projection assertions keep every other title hidden.",
+    "validation": "Catalogue verifier issues empty;18manifest CLI+12error experience cases PASS; deterministic matrix/inputs checks PASS. Local PDF unit gate lacks reportlab, hosted pinned dependency remains mandatory.",
+    "production": "UNCHANGED_NO_DEPLOYMENT_NO_PAID_SESSION"
   }
 }

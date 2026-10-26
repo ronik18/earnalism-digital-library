@@ -2750,3 +2750,5 @@ Publication acceptance completed: actual authenticated deployed563 usage UI page
 Public package snapshot follow-up: update both generated-contract producers and actual postbuild consumers. Exact catalogue baseline hashes/Reader bindings must follow a reviewed title successor; keep independent audio-use validation and reject unlisted approved audio.64 canary/source checks and172 snapshots/3647 assertions pass; no production change.
 
 Catalogue fixture follow-up: assert the exact protected-package singleton and unrelated-title denial while preserving the broad legacy audio OFF assertion.39 backend catalogue tests pass; no runtime mutation.
+
+Visual fixtures can admit a verified public package while staying deliberately nonplayable; do not confuse harness media isolation with an all-catalogue audio prohibition. Catalogue verifier uses independent exact package proof/rights validation and reports actual exposed state. No production change.
