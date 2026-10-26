@@ -2754,3 +2754,5 @@ Catalogue fixture follow-up: assert the exact protected-package singleton and un
 Visual fixtures can admit a verified public package while staying deliberately nonplayable; do not confuse harness media isolation with an all-catalogue audio prohibition. Catalogue verifier uses independent exact package proof/rights validation and reports actual exposed state. No production change.
 
 Primary review timeout: retain progressing Ubuntu/Playwright dependency diagnostics; a20min total job expired before review began. Give this job a bounded45min window while retaining all browser/review steps; no provider rerun or skipped gate.
+
+Exact Reader index fixture: publication metadata changes the whole-manifest hash without changing ordered chapters. Verify unchanged chapter identities/count against merged main, then pin the reviewed successor; retain all index assertions.76cases72subtests and51frontend contracts pass.

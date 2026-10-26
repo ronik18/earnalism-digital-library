@@ -11972,5 +11972,13 @@
     "finding": "Exact primary review job40352198041 cancelled at20min during pinned Playwright Ubuntu dependency download; retained logs still progressing through librist4, no app/review test had run.",
     "change": "Increase only that job bounded timeout20to45min. Preserve all pinned installs, three browsers, captures and artifact validation. No blind rerun of old provider job.",
     "validation": "Workflow YAML parsed and diff whitespace checked; fresh exact-head full CI remains mandatory. Production unchanged."
+  },
+  "open_window_reader_manifest_successor_pin_20261026": {
+    "at": "2026-10-26T16:17:30.681716+00:00",
+    "title": "the-open-window",
+    "decision": "EXACT_READER_MANIFEST_INDEX_PIN_REFRESHED",
+    "finding": "Full regression reached historical exact Reader manifest pin after package publication metadata changed. Ordered chapter identities/bodies/count remain unchanged against origin/main.",
+    "change": "Pin reviewed successor manifest9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384 without weakening catalog-wide chapter identity assertions.",
+    "validation": "76backend/catalogue/canary PASS1skip72subtests;51frontend legal/account/static contractsPASS. No production change."
   }
 }
