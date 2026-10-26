@@ -11,7 +11,7 @@ const publicationContractPath = path.join(frontendDir, "static-seo", "controlled
 const editorialContractPath = path.join(frontendDir, "static-seo", "editorial-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const brandImage = siteUrl + "/assets/brand/earnalism-brand-lockup.png";
-const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
+const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
 const forbiddenCopy = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const headStart = "<!-- earnalism-static-seo:start -->";
 const headEnd = "<!-- earnalism-static-seo:end -->";
@@ -57,7 +57,7 @@ async function contracts() {
     && (releaseHeld ? books.length === 0 : books.length > 0)
     && publicationMatchesLaunch
     && Object.values(publication.generated_from || {}).every(isSha)
-    && books.every((book) => indiaReleasedSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.audio_availability_state === "disabled" && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
+    && books.every((book) => indiaReleasedSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && (book.audio_availability_state === "disabled" || (book.audio_availability_state === "approved" && (controlledLaunch.protected_package_public_slugs || []).includes(book.slug))) && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
   const validEditorial = editorial.schema_version === "earnalism.static-seo-editorial.v1"
     && isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])
     && editorial.journal && editorial.journal.canonical_route === "/journal"

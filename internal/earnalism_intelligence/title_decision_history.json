@@ -11939,5 +11939,14 @@
     "validation": "473backend/release+24subtests,43routing/cover+19subtests,55frontend,46workflow PASS; staticcontract fresh. Required hosted CI/reviews pending.",
     "production": "UNCHANGED_PUBLIC_ACTIVATION_HELD",
     "next_action": "Submit one focused publication PR then exact-head gates/manual exactmergedsource release."
+  },
+  "open_window_publication_static_contract_followup_20261026": {
+    "at": "2026-10-26T15:34:11.548299+00:00",
+    "title": "the-open-window",
+    "decision": "PR564_STATIC_SNAPSHOT_AND_REVIEWED_AUTHORITY_CORRECTION",
+    "finding": "Hosted checks exposed snapshot consumers still requiring all audio disabled and an exact catalogue authority baseline not rebound after approved title publication. Builds compiled; postbuild failed. No deployment occurred.",
+    "change": "Recognize only canonical protected-package title approvals in snapshot consumers, align released access copy/canary, rebind exact existing Reader authority and validate separate audio proof instead of treating Reader rights as audio authority. Unlisted approved-audio negative test retained.",
+    "validation": "64 focused canary/source-clearance tests PASS;172 generated snapshots3647 assertionsPASS. No failed-provider rerun or waiver.",
+    "next_action": "Fresh exact-head CI/reviews on corrected source"
   }
 }
