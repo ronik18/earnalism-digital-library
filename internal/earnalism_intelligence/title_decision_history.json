@@ -3794,6 +3794,17 @@
           "production_build": "LOCAL_ENV_MISSING_DECLARED_VERCEL_ANALYTICS_DEPENDENCY_CI_PENDING"
         },
         "next_action": "Run required exact-head CI and review; no second paid session or activation in this preparation scope."
+      },
+      "paused_seek_20261026": {
+        "timestamp": "2026-10-26T13:50:00.220897+05:30",
+        "workstream": "english_audio_go_live",
+        "slug_or_area": "the-open-window",
+        "decision": "defer_paused_seek_until_active_renewal",
+        "evidence": "Post-PR558 normal session: exact manifest200/29segments/491436ms, initial206, paused renewals200, paused native seek403 LEASE_EXPIRED, automaticend200 endedtrue; debit0 andbalanceunchanged.",
+        "fix": "Keep paused seek in component ref and UI time only; apply currentTime or segment src after awaited active renewal. Preserve backend paused/expired denial and native accounting.",
+        "validation": "20 focused frontend tests PASS; 46 workflow tooling tests PASS; exact frontend surface pins refreshed.",
+        "release": "ACTIVATION_HELD_FRONTEND_ONLY_PR_PREPARATION",
+        "next_action": "Exact-head CI and published review then authorized manual frontend candidate release; preserve healthy backend, do not repeat cap work."
       }
     },
     "sredni-vashtar": {
