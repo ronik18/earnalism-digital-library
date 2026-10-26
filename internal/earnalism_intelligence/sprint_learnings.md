@@ -2758,3 +2758,5 @@ Primary review timeout: retain progressing Ubuntu/Playwright dependency diagnost
 Exact Reader index fixture: publication metadata changes the whole-manifest hash without changing ordered chapters. Verify unchanged chapter identities/count against merged main, then pin the reviewed successor; retain all index assertions.76cases72subtests and51frontend contracts pass.
 
 Runtime regression consumers must distinguish broad legacy audio OFF from explicit protected package availability. Require exact public flags/mode/version and no direct media URL for the sole approved title; verify every other catalogue title remains hidden.52source projections and64UXstatic cases pass; hostedHTTP gates remain required.
+
+Primary review dependency diagnosis:45min still expired on progressing slow Azure Ubuntu downloads. Use the official Ubuntu archive on this disposable runner while retaining exact signed package selection and allthreebrowser checks; do not keep extending timeouts or blindly rerun. Local shell startup stalls can be isolated with /bin/sh login=false without changing credentials/settings.
