@@ -31,7 +31,9 @@ jobs:
   owner-review:
     name: Owner-review artifact
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Ubuntu browser dependencies can still be downloading at 20 minutes.
+    # Preserve every review step; allow a bounded completion window.
+    timeout-minutes: 45
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
@@ -62,6 +64,12 @@ jobs:
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check -r requirements.txt
+          # The regional Azure Ubuntu mirror exhausted the bounded job window
+          # twice while transfers progressed. Keep identical signed Ubuntu
+          # packages, using the official archive for this disposable CI runner.
+          if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+          fi
           npx playwright install --with-deps chromium firefox webkit
 
       - name: Install source enumeration tool

@@ -2740,3 +2740,27 @@ Cover derived-artifact follow-up: after canonical cover/public-book/rights chang
 Flooring each short renewal loses legitimate active time. Carry integer microseconds on the account in the same transaction as session and wallet transitions, including across endings and transfers; do not round every heartbeat upward. Keep paused/buffering/free time free. Customer history must page all rows deterministically, show exact seconds, and discard late results after account changes.131backend,19frontend,46workflow checks pass plus isolated real-Mongo three-speed/transfer/rapid-renewal cases; production not yet changed.
 
 Account pagination capture follow-up: update the actual authenticated screenshot fixture when moving UI to a new endpoint. Keep HTTP failures in capture gates; add the exact page shape rather than suppressing failed requests.
+
+Protected package publication preparation: a chunked package needs first-class delivery recognition, not a fabricated legacy MP3. Require exact active descriptor, canonical package, independent real receipts and hash-bound production acceptance while retaining global/title/rights gates. Dedicated promotion remains separate from generic canary rollout; current metadata stays hidden.
+
+Package public-delivery integration: preserve actual provider provenance rather than inventing a provider label. Protected canonical package metadata supplies exact package/duration while media URLs remain lease-protected. Extend the manifest model with package/descriptor/acceptance/rights hashes; do not fabricate a whole-MP3 hash. The dedicated single-title allowlist leaves the broad legacy audio switch false.118backend/release tests plus24subtests,44frontend cases and46workflow cases pass locally; authenticated deployed usage acceptance remains the only requested owner sign-in action before exact source promotion.
+
+Publication acceptance completed: actual authenticated deployed563 usage UI pages beyond100rows passed, with no paid session. Source publication now binds retained full playback, business checks and new nonpaid usage evidence. Preserve Reader evidence as a list, and separately bind existing audio-use authority to the exact descriptor so an accepted Reader decision cannot be relabelled as audio authority. Public activation remains held until gated exact-source release and real public verification.
+
+Public package snapshot follow-up: update both generated-contract producers and actual postbuild consumers. Exact catalogue baseline hashes/Reader bindings must follow a reviewed title successor; keep independent audio-use validation and reject unlisted approved audio.64 canary/source checks and172 snapshots/3647 assertions pass; no production change.
+
+Catalogue fixture follow-up: assert the exact protected-package singleton and unrelated-title denial while preserving the broad legacy audio OFF assertion.39 backend catalogue tests pass; no runtime mutation.
+
+Visual fixtures can admit a verified public package while staying deliberately nonplayable; do not confuse harness media isolation with an all-catalogue audio prohibition. Catalogue verifier uses independent exact package proof/rights validation and reports actual exposed state. No production change.
+
+Primary review timeout: retain progressing Ubuntu/Playwright dependency diagnostics; a20min total job expired before review began. Give this job a bounded45min window while retaining all browser/review steps; no provider rerun or skipped gate.
+
+Exact Reader index fixture: publication metadata changes the whole-manifest hash without changing ordered chapters. Verify unchanged chapter identities/count against merged main, then pin the reviewed successor; retain all index assertions.76cases72subtests and51frontend contracts pass.
+
+Runtime regression consumers must distinguish broad legacy audio OFF from explicit protected package availability. Require exact public flags/mode/version and no direct media URL for the sole approved title; verify every other catalogue title remains hidden.52source projections and64UXstatic cases pass; hostedHTTP gates remain required.
+
+Primary review dependency diagnosis:45min still expired on progressing slow Azure Ubuntu downloads. Use the official Ubuntu archive on this disposable runner while retaining exact signed package selection and allthreebrowser checks; do not keep extending timeouts or blindly rerun. Local shell startup stalls can be isolated with /bin/sh login=false without changing credentials/settings.
+
+The same slow regional Ubuntu mirror also exhausted dark-premium and focused review dependency deadlines. Apply the qualified official archive selection to those two steps, retaining signed packages/three browsers and deadlines; do not rerun the old jobs or relax capture gates.
+
+Editorial capture readiness: pagewide networkidle can time out despite a rendered app. Require visible hydration/requestedroute and loaded fonts/logo with bounded waits; preserve error/focus/overflow checks and fail withoutretry when a required stage is missing.5modeled cases PASS; real hosted capture stillrequired.

@@ -37,9 +37,9 @@
     "unit24_disposition": "OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY"
   },
   "audio_enabled": false,
-  "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
-  "audio_qa_status": null,
-  "audiobook_enabled": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook_enabled": true,
   "audiobook_package_canary": {
     "approval_scope": "transport_canary_only_no_customer_discovery",
     "blockers": [],
@@ -93,6 +93,7 @@
   "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
   "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
   "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+  "endpoint_url": "/api/reader/book/the-open-window/audiobook/manifest",
   "independent_reviews": {
     "review_a": {
       "file": "evidence/review_a.json",
@@ -112,6 +113,7 @@
   "rights_tier": "A",
   "slug": "the-open-window",
   "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
   "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
   "verification_status": "approved",
   "verified_at": "2026-10-03T04:11:36.072734+00:00"

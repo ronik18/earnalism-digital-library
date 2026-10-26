@@ -246,7 +246,7 @@ def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_publishe
                 and record["decision_id"] == "india-20261025-the-open-window-reader-cover-canary-metadata"
                 and record["accepted_by"] == 'Ronik Basak / Reo Enterprise direct Open Window GO LIVE and scoped automation approval in current chat; metadata-only binding successor, no external signature inferred.')
             or (slug == "the-open-window"
-                and record["decision_id"] == "india-20261026-the-open-window-approved-revised-cover-pair"
+                and record["decision_id"] in {"india-20261026-the-open-window-approved-revised-cover-pair", "india-20261026-the-open-window-protected-package-publication"}
                 and record["accepted_by"] == "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.")
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
@@ -451,7 +451,7 @@ def test_yugalanguriya_publication_package_is_archived_and_remains_held():
     assert registry["pilot_dispositions"]["controlled-yugalanguriya"]["status"] == "HOLD"
 
 
-def test_open_window_transport_canary_preserves_real_controlled_reader_loading():
+def test_open_window_protected_publication_preserves_real_controlled_reader_loading():
     from backend.catalog_truth import (
         controlled_artifact_dir, controlled_reader_validation_issues,
         load_controlled_artifact_book,
@@ -466,5 +466,7 @@ def test_open_window_transport_canary_preserves_real_controlled_reader_loading()
     assert controlled_reader_validation_issues(slug, str(directory)) == ()
     book = load_controlled_artifact_book(slug, include_content=True)
     assert book and book["chapters"]
-    assert book["audio_enabled"] is False
-    assert book["audiobook_enabled"] is False
+    assert book["audio_enabled"] is True
+    assert book["audiobook_enabled"] is True
+    from backend.protected_package_publication import protected_package_publication_valid
+    assert protected_package_publication_valid(book)

@@ -112,11 +112,16 @@ def assert_current_reviewed_release(root, slug, baseline=None):
     # their exact source metadata and every body remain independently bound.
 
     assert publication["reader_release"]["status"] == "APPROVED" and publication["reader_release"]["exposed"] is True
-    assert publication["audio_release"]["status"] == "NOT_REQUESTED" and publication["audio_release"]["exposed"] is False
+    # Reader-only rights stay Reader-only; separately approved package delivery
+    # must pass its independent exact-title audio-use/receipt/proof binding.
+    from backend.protected_package_publication import protected_package_publication_valid
+    protected = slug in load(root / "data/controlled_launch.json").get("protected_package_public_slugs", []) and protected_package_publication_valid(public)
+    assert publication["audio_release"]["status"] == ("APPROVED" if protected else "NOT_REQUESTED")
+    assert publication["audio_release"]["exposed"] is bool(protected)
     current_audio_documents = ("public_book", "reader_manifest", "approval_evidence") if record["decision_id"].endswith("exact-reader-cover-prospective-accepted") else ("public_book", "reader_manifest")
     for name in current_audio_documents:
         doc = load(package / (name + ".json"))
-        assert doc.get("audio_enabled") is not True and doc.get("audiobook_enabled") is not True and doc.get("generate_audiobook") is not True
+        assert (protected or (doc.get("audio_enabled") is not True and doc.get("audiobook_enabled") is not True)) and doc.get("generate_audiobook") is not True
     authority = load(package / "publication_authorization.json") if (package / "publication_authorization.json").exists() else None
     if authority:
         assert authority.get("audio_authorized") is False

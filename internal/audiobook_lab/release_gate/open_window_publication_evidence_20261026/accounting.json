@@ -1,0 +1,27 @@
+{
+  "status": "DEPLOYED_ACCOUNTING_AND_AUTHENTICATED_USAGE_VERIFIED",
+  "sourceCommit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+  "deployedCommit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+  "backendDeployment": "9706d99a-83a7-4636-a4b0-01f3cd7523ac",
+  "fractionalRenewalRegressionPass": true,
+  "fractionalQualification": "Isolated real-Mongo transactions, not a new paid production session",
+  "nativeRegressionEvidenceSHA256": "6107f67726c868e0ec8d13c3ffd95bbf9f5a8b7179ec82429aaef11347dabc26",
+  "authenticatedUsagePaginationPass": true,
+  "usageUI": {
+    "signedInAccountPanel": true,
+    "exactSecondsVisible": true,
+    "olderPage2ChangedHistory": true,
+    "olderPage3ChangedHistory": true,
+    "beyondFormer100Rows": true,
+    "noHistoryErrors": true,
+    "thirdPageRows": 18,
+    "additionalPagesAvailable": true
+  },
+  "historicalLedgerFullyAudited": false,
+  "historicalRefundOrRepairPerformed": false,
+  "productionWalletMutations": false,
+  "paidSessionsStarted": 0,
+  "credentialsReadOrPrinted": false,
+  "privateIdentityPrinted": false,
+  "accountAmountsPrinted": false
+}

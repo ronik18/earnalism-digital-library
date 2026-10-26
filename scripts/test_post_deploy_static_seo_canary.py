@@ -310,6 +310,16 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
     def verify(self):
         return subprocess.run(["node", str(self.root / "frontend/scripts/verify-static-seo-snapshots.mjs")], capture_output=True, text=True, timeout=30)
 
+    def test_unlisted_title_cannot_claim_approved_audio(self):
+        contract = self.root / "frontend/static-seo/controlled-publication-public.json"
+        payload = json.loads(contract.read_text())
+        row = next(b for b in payload["publications"] if b["slug"] != "the-open-window")
+        row["audio_availability_state"] = "approved"
+        contract.write_text(json.dumps(payload))
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.generate()
+        self.assertNotEqual(self.verify().returncode, 0)
+
     def test_fresh_build_directory_contains_runtime_journal_app_shell(self):
         shell = self.root / "frontend/build/journal-app-shell.html"
         self.assertTrue(shell.is_file())

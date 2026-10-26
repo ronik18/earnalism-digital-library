@@ -1,53 +1,64 @@
 {
-  "schema_name": "earnalism-publication-manifest",
-  "schema_version": 1,
-  "slug": "the-open-window",
-  "title": "The Open Window",
-  "generated_at": "2026-10-26T10:43:42.390344+00:00",
+  "artifacts": {
+    "approval_evidence": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0",
+    "public_book": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955",
+    "reader_manifest": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+  },
+  "audio_release": {
+    "audio_rights_record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+    "audio_sha256": "",
+    "blockers": [],
+    "candidate_fingerprint": "",
+    "delivery_mode": "PROTECTED_PACKAGE_V2",
+    "discovery_exposed": true,
+    "exposed": true,
+    "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "public_endpoint": "/api/reader/book/the-open-window/audiobook/manifest",
+    "publication_acceptance_sha256": "ba06a56438d38e6ee8eef6de339772821fecaf9713dc563bf57a379862b0f0ab",
+    "qa_status": "QA_PASSED",
+    "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "required_for_reader_release": false,
+    "status": "APPROVED"
+  },
+  "commerce_release": {
+    "required_for_reader_release": false,
+    "status": "NOT_REQUESTED"
+  },
   "content": {
-    "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
-    "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-    "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
-    "sanitized": true,
     "chapter_count": 1,
     "chapter_index_sha256": "0c19e73f4f34bacf0e3771b34b09737866f741bdf0bdbb458a04e43ff6d27d05",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
+        "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
         "title": "The Open Window",
-        "word_count": 1219,
-        "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+        "word_count": 1219
       }
-    ]
+    ],
+    "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
+    "sanitized": true,
+    "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
   },
-  "rights": {
-    "status": "APPROVED",
-    "tier": "A",
-    "publication_region": "india",
-    "evidence_sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
-  },
+  "generated_at": "2026-10-26T15:00:00Z",
+  "manifest_sha256": "e712ac8b44b67e4761c8a0cd91fe092dd8afd279d4030151fa65d259491abd2a",
   "reader_release": {
-    "status": "APPROVED",
+    "blockers": [],
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
-    "blockers": []
+    "status": "APPROVED"
   },
-  "audio_release": {
-    "status": "NOT_REQUESTED",
-    "exposed": false,
-    "required_for_reader_release": false
+  "rights": {
+    "evidence_sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_region": "india",
+    "status": "APPROVED",
+    "tier": "A"
   },
-  "commerce_release": {
-    "status": "NOT_REQUESTED",
-    "required_for_reader_release": false
-  },
-  "artifacts": {
-    "public_book": "0b905afdef81f1f7469b8f2351dbe92b3ea5882f2d244959eb1eac3ccfbaaafc",
-    "reader_manifest": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b",
-    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
-    "approval_evidence": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775"
-  },
-  "manifest_sha256": "5deace1eee898b7ff0dc1552331ded685d9198f9c4c753008acd3397c875b88e"
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-open-window",
+  "title": "The Open Window"
 }

@@ -2,7 +2,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775"
+      "sha256": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -54,7 +54,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "0b905afdef81f1f7469b8f2351dbe92b3ea5882f2d244959eb1eac3ccfbaaafc"
+      "sha256": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955"
     },
     {
       "file": "publication_authorization.json",
@@ -62,13 +62,13 @@
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b"
+      "sha256": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384"
     },
     {
       "file": "source_evidence.json",
       "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
     }
   ],
-  "generated_at": "2026-10-26T10:23:01.242177+00:00",
+  "generated_at": "2026-10-26T15:00:00Z",
   "slug": "the-open-window"
 }

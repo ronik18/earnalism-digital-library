@@ -17,7 +17,8 @@ function hasCanonicalProtectedAudioApproval(book = {}) {
   // same-origin endpoint is derived only after these canonical gates pass.
   return audio.enabled === true
     && Boolean(String(audio.asset_slug || book.slug || "").trim())
-    && Boolean(String(audio.provider || "").trim())
+    && (Boolean(String(audio.provider || "").trim()) || (audio.delivery_mode === "PROTECTED_PACKAGE_V2" && audio.asset_slug === book.slug
+      && /^sha256-[a-f0-9]{64}$/.test(audio.package_version || "")))
     && Boolean(String(audio.version || "").trim())
     && gate === "APPROVED"
     && ["QA_PASSED", "APPROVED", "PASS"].includes(qa);
@@ -66,12 +67,13 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     // The public Reader manifest may identify an immutable package, but it
     // never contains a playable provider URL.  The Listener fetches this
     // protected manifest only after the Reading Pass audio lease succeeds.
+    mediaUrl: "",
     packageManifestUrl: release.packageManifestUrl || "",
     packageVersion: release.packageVersion || "",
     title: book.public_title || book.display_title || book.title || "Approved audiobook",
     author: book.author || book.author_name || "",
-    chapterLabel: book.chapter_label || "Approved narration",
-    durationSeconds: Number(book.preview_duration_seconds) || 0,
+    chapterLabel: book.chapter_label || "Full audiobook",
+    durationSeconds: Number(book?._readerManifest?.audio?.duration_ms || book.audiobook_duration_ms) / 1000 || Number(book.preview_duration_seconds) || 0,
     publicPreviewSeconds: 0,
   };
 }

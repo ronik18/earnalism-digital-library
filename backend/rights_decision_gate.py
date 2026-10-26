@@ -139,6 +139,27 @@ def load_production_registry(path: Path = PRODUCTION_REGISTRY_PATH) -> tuple[dic
     return _registry_records(payload)
 
 
+def load_audio_package_binding(slug: str, descriptor: str, path: Path = PRODUCTION_REGISTRY_PATH) -> dict[str, Any] | None:
+    """Resolve a separately reviewed audio-use reference for one exact package.
+
+    A generic accepted Reader decision cannot be relabeled as audio authority.
+    The reference supplements the accepted-record registry and never bypasses
+    its revocation or digest checks.
+    """
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    accepted, revoked = _registry_records(payload)
+    binding = payload.get("audio_package_bindings", {}).get(slug, {}).get(descriptor)
+    if not isinstance(binding, dict):
+        return None
+    decision = binding.get("decision_id")
+    digest = binding.get("record_sha256")
+    if (not _valid_hash(descriptor) or not _valid_hash(digest) or not isinstance(decision, str)
+            or decision in revoked or accepted.get(decision) != digest
+            or binding.get("territories") != ["IN"] or binding.get("uses") != ["audio_stream"]):
+        return None
+    return dict(binding)
+
+
 def evaluate_accepted_record(
     record: Any,
     *,

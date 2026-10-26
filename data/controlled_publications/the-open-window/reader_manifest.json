@@ -1,21 +1,23 @@
 {
-  "audio_enabled": false,
+  "audio_enabled": true,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
   "audiobook_active_release": {
-    "active_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
-    "candidate_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "active_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "candidate_release_descriptor_sha256": "",
     "retained_release_descriptor_sha256s": [
       "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
       "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2"
     ],
     "rollout": {
-      "percentage": 5,
-      "salt": "open-window-corrected-v1-india-20261025"
+      "percentage": 0,
+      "salt": ""
     },
     "schema_version": "audiobook_active_release.v1",
     "slug": "the-open-window",
     "status": "ACTIVE"
   },
-  "audiobook_enabled": false,
+  "audiobook_enabled": true,
   "audiobook_hidden_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
   "audiobook_legacy_release_descriptor_sha256": "",
   "audiobook_manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
@@ -54,15 +56,16 @@
     ],
     "primary_receipt_sha256": "daf6532d64261c89cc4092089faf8bc4a1153b4ea9df82e37b1b4bc1f83d57db",
     "primary_release_manifest_receipt_sha256": "d15daf8d37202a499bc13ae6ac4f18b71cd7d4896aa4197ebb16dfe534e1afcc",
+    "public_discovery_exposed": true,
     "qa_candidate_release_descriptor_file_sha256": "580d207263af20257c8ee62d1a46e77953c6cd55a38af4dd69e229c00522d4a6",
     "replica_receipt_sha256": "a62d059ba7b718edfb950b58204ce10ac68a0ffa6c4aa1a0df9e3cf82f545326",
     "replica_release_manifest_receipt_sha256": "bb9db3993c4f94ef09340d536c5292548850722a3831da925f4dc8387073be66",
     "rollback_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
-    "rollout_percentage": 5,
+    "rollout_percentage": 100,
     "rollout_salt": "open-window-corrected-v1-india-20261025",
     "schema_version": "audiobook_new_title_package_canary.v1",
     "slug": "the-open-window",
-    "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"
+    "status": "PUBLIC_PACKAGE_APPROVED"
   },
   "audiobook_package_release_evidence": {
     "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2": {
@@ -2672,7 +2675,34 @@
       "word_count": 1208
     }
   },
-  "audiobook_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+  "audiobook_public_package_approval": {
+    "acceptance": {
+      "accounting_commit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+      "duration_ms": 491436,
+      "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "production_proof_sha256": {
+        "accounting": "9f4d9a53868cfdd5b7f532558297d93878c12efda0fc1ff17534fb4febb4722b",
+        "business": "8a76633e77649a90dac618438ec6eb67faaebdeb1a5fd3c26b2fab4cf9068d7f",
+        "playback": "9e22caeee79f48e3205b570aabd375e529f5d7c8b187efb9f1e305131df497f7"
+      },
+      "public_activation_performed": false,
+      "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+      "schema_version": "audiobook_public_package_acceptance.v1",
+      "segment_count": 29
+    },
+    "acceptance_sha256": "ba06a56438d38e6ee8eef6de339772821fecaf9713dc563bf57a379862b0f0ab",
+    "approved_at": "2026-10-26T15:00:00Z",
+    "approved_by": "Owner conditional exact-title GO LIVE authority in Integration Lane",
+    "audio_rights_decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
+    "audio_rights_record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+    "endpoint": "/api/reader/book/the-open-window/audiobook/manifest",
+    "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "schema_version": "audiobook_protected_package_publication.v1",
+    "slug": "the-open-window",
+    "status": "PUBLIC_APPROVED"
+  },
+  "audiobook_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+  "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
   "author": "Saki",
   "chapter_count": 1,
   "chapters": [

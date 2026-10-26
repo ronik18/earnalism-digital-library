@@ -177,7 +177,7 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
   test("homepage, library, and pricing snapshots preserve the release-truth contract", () => {
     const releaseCopy = PUBLIC_RELEASE_HELD
       ? "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed."
-      : "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
+      : "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
     for (const html of [homeHtml, libraryHtml]) {
       expect(html).toContain(releaseCopy);
@@ -291,7 +291,7 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
       expect(publication).toMatchObject({
         text_preview_limit_canonical_pages: 3,
         audio_public_preview_seconds: 0,
-        audio_availability_state: "disabled",
+        audio_availability_state: publication.slug === "the-open-window" ? "approved" : "disabled",
       });
     }
     expect(staticSnapshotGenerator).toContain('const bookRoute = "/book/" + book.slug');

@@ -7,7 +7,7 @@ const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const rootDir = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const contractDir = path.join(frontendDir, "static-seo");
-const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
+const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
 const heldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 const forbidden = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const paidContinuation = ["Listening requires an active Reading Pass", "View Reading Passes", "Reading time is used only while you read"];
@@ -42,7 +42,7 @@ async function main() {
 
   const releaseHeld = publication.public_release_held === true;
   if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha) || (releaseHeld ? publication.publications.length !== 0 : publication.publications.length === 0)) fail("Publication contract provenance is invalid", state);
-  if (!releaseHeld && (indiaReleasedSlugs.length === 0 || liveSlugSet.size !== indiaReleasedSlugs.length || publication.publications.length !== indiaReleasedSlugs.length || publication.publications.some((book) => !liveSlugSet.has(book.slug) || book.audio_availability_state !== "disabled"))) fail("Publication contract must exactly match the canonical controlled India release", state);
+  if (!releaseHeld && (indiaReleasedSlugs.length === 0 || liveSlugSet.size !== indiaReleasedSlugs.length || publication.publications.length !== indiaReleasedSlugs.length || publication.publications.some((book) => !liveSlugSet.has(book.slug) || !(book.audio_availability_state === "disabled" || (book.audio_availability_state === "approved" && (controlledLaunch.protected_package_public_slugs || []).includes(book.slug)))))) fail("Publication contract must exactly match the canonical controlled India release", state);
   if (editorial.schema_version !== "earnalism.static-seo-editorial.v1" || !isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])) fail("Editorial contract provenance is invalid", state);
   if (manifest.schema_version !== "earnalism.static-seo-snapshots.v2") fail("Snapshot manifest version is invalid", state);
   if (new Set(manifest.routes.map((item) => item.route)).size !== manifest.routes.length) fail("Snapshot manifest has duplicate routes", state);

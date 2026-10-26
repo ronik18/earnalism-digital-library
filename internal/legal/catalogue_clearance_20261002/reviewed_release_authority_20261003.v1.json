@@ -3,11 +3,11 @@
   "reviewed_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
   "scope": "PR511_EXACT_OWNER_ACCEPTED_PACKAGE_BINDINGS_NOT_PRODUCTION_OBSERVATION",
   "authority_sha256": {
-    "data/controlled_launch.json": "46f60d8aac9f385cece56de6676d25ce4dbb4f7f380d298cfca7520022d4dae8",
-    "backend/data/controlled_launch.json": "46f60d8aac9f385cece56de6676d25ce4dbb4f7f380d298cfca7520022d4dae8",
+    "data/controlled_launch.json": "e20a1c1dbd4723efcd83a9afd4fdfec4e3cec99fc6df0af22ea03e982c47194d",
+    "backend/data/controlled_launch.json": "e20a1c1dbd4723efcd83a9afd4fdfec4e3cec99fc6df0af22ea03e982c47194d",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "9d7de14e941b8977314346750e23a183f989f60aefc1d3dc8eb0ba846f454134"
+    "backend/data/rights_decision_registry.json": "632a0ae98112188e6e162fd3402cd6e97da576032a87672a9e089f14e20ac0c2"
   },
   "titles": {
     "a-ghost-story": {
@@ -667,8 +667,8 @@
       }
     },
     "the-open-window": {
-      "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
-      "record_sha256": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5",
+      "decision_id": "india-20261026-the-open-window-protected-package-publication",
+      "record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
@@ -679,7 +679,8 @@
         "cover_provenance": "backend/data/controlled_publications/the-open-window/cover_provenance.json",
         "publication_authorization": "backend/data/controlled_publications/the-open-window/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/the-open-window/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json",
+        "cover_approval_evidence": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json"
       }
     },
     "the-selfish-giant": {

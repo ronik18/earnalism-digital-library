@@ -1,0 +1,766 @@
+{
+  "status": "PRODUCTION_SPEED_CONCURRENCY_AND_SERVER_BILLING_PASS",
+  "evaluatedAt": "2026-10-26T10:53:14.558Z",
+  "sourceCommit": "100570c0c10b9feec8dd9c5d95ec2608044b5de4",
+  "frontend": "dpl_Bpeo8PNs3NLA8Rx8NpMAqaTgkAoH",
+  "clients": [
+    "Codex in-app browser",
+    "Google Chrome on same Mac"
+  ],
+  "successfulSessionsStarted": 1,
+  "secondClientStart": {
+    "http": 409,
+    "code": "SESSION_ACTIVE_ELSEWHERE"
+  },
+  "simultaneousPaidPlayback": false,
+  "speedsObserved": [
+    1,
+    1.25,
+    1.5
+  ],
+  "nativePlayingSecondsByRate": {
+    "1": 9.911,
+    "1.25": 17.842,
+    "1.5": 16.387
+  },
+  "nativePlayingSeconds": 44.14,
+  "allServerClockIntervalsMatch": true,
+  "serverClockIntervals": [
+    {
+      "priorState": "Running",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Connecting",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Connecting",
+      "currentState": "Running",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Running",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Paused",
+      "actual": 6,
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Connecting",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Connecting",
+      "currentState": "Connecting",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Connecting",
+      "currentState": "Running",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Running",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Running",
+      "actual": 6,
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Paused",
+      "actual": 6,
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Connecting",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Connecting",
+      "currentState": "Connecting",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Connecting",
+      "currentState": "Running",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Running",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Running",
+      "actual": 9,
+      "expected": 9,
+      "pass": true
+    },
+    {
+      "priorState": "Running",
+      "currentState": "Paused",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "priorState": "Paused",
+      "currentState": "Paused",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    }
+  ],
+  "initialAudioPreparationBillable": false,
+  "pausedIntervalsDebitZero": true,
+  "nonPlayingPriorIntervalsDebitZero": true,
+  "totalDebitSeconds": 40,
+  "ended": true,
+  "endHTTP": 200,
+  "terminalDebitSeconds": 0,
+  "balanceDifferenceMatchesDebit": true,
+  "postEndMediaDenial": {
+    "code": "AUTH_REQUIRED",
+    "http": 401
+  },
+  "mediaEvents": [
+    {
+      "at": 1793011585969,
+      "duration": 4.373417,
+      "event": "loadedmetadata",
+      "rate": 1.5,
+      "segment": "paragraph-029",
+      "time": 4.323417
+    },
+    {
+      "at": 1793011585969,
+      "duration": 4.373417,
+      "event": "ratechange",
+      "rate": 1.5,
+      "segment": "paragraph-029",
+      "time": 4.323417
+    },
+    {
+      "at": 1793011596330,
+      "duration": 4.3788,
+      "event": "ratechange",
+      "rate": 1,
+      "segment": "paragraph-029",
+      "time": 4.323417
+    },
+    {
+      "at": 1793011641421,
+      "duration": 9.84,
+      "event": "loadedmetadata",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 0
+    },
+    {
+      "at": 1793011641423,
+      "duration": 9.84,
+      "event": "play",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 0
+    },
+    {
+      "at": 1793011641423,
+      "duration": 9.84,
+      "event": "waiting",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 0
+    },
+    {
+      "at": 1793011641424,
+      "duration": 9.84,
+      "event": "playing",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 0.021455
+    },
+    {
+      "at": 1793011651335,
+      "duration": 9.84,
+      "event": "pause",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 9.84
+    },
+    {
+      "at": 1793011651336,
+      "duration": 9.84,
+      "event": "ended",
+      "rate": 1,
+      "segment": "paragraph-001",
+      "time": 9.84
+    },
+    {
+      "at": 1793011657864,
+      "duration": 9.84,
+      "event": "ratechange",
+      "rate": 1.25,
+      "segment": "paragraph-001",
+      "time": 9.84
+    },
+    {
+      "at": 1793011658913,
+      "duration": null,
+      "event": "ratechange",
+      "rate": 1,
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793011661104,
+      "duration": 22.236208,
+      "event": "loadedmetadata",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793011661105,
+      "duration": 22.236208,
+      "event": "ratechange",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793011661107,
+      "duration": 22.236208,
+      "event": "play",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793011661107,
+      "duration": 22.236208,
+      "event": "waiting",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793011661110,
+      "duration": 22.236208,
+      "event": "playing",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 0.015954
+    },
+    {
+      "at": 1793011678952,
+      "duration": 22.236208,
+      "event": "pause",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 22.236208
+    },
+    {
+      "at": 1793011678953,
+      "duration": 22.236208,
+      "event": "ended",
+      "rate": 1.25,
+      "segment": "paragraph-002",
+      "time": 22.236208
+    },
+    {
+      "at": 1793011682575,
+      "duration": 22.236208,
+      "event": "ratechange",
+      "rate": 1.5,
+      "segment": "paragraph-002",
+      "time": 22.236208
+    },
+    {
+      "at": 1793011686742,
+      "duration": null,
+      "event": "ratechange",
+      "rate": 1,
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793011688751,
+      "duration": 25.040833,
+      "event": "loadedmetadata",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793011688751,
+      "duration": 25.040833,
+      "event": "ratechange",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793011688754,
+      "duration": 25.040833,
+      "event": "play",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793011688754,
+      "duration": 25.040833,
+      "event": "waiting",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793011688757,
+      "duration": 25.040833,
+      "event": "playing",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 0.024203
+    },
+    {
+      "at": 1793011705144,
+      "duration": 25.040833,
+      "event": "pause",
+      "rate": 1.5,
+      "segment": "paragraph-003",
+      "time": 24.442667
+    }
+  ],
+  "responses": [
+    {
+      "client": "first",
+      "path": "/api/reading-pass/sessions/start",
+      "http": 200,
+      "observedAt": 1793011624058,
+      "deductedSeconds": 0,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:46:40.081101+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/manifest",
+      "http": 200,
+      "observedAt": 1793011624063
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029",
+      "http": 206,
+      "observedAt": 1793011624063
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029",
+      "http": 206,
+      "observedAt": 1793011624063
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011624063,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:46:33.679517+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011624067,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:46:43.481000+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011624072,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:46:53.500340+00:00"
+    },
+    {
+      "client": "second",
+      "path": "/api/reading-pass/sessions/start",
+      "http": 409,
+      "observedAt": 1793011624127,
+      "code": "SESSION_ACTIVE_ELSEWHERE"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011648992,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:47:03.475024+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011648999,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:47:13.519001+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011649008,
+      "deductedSeconds": 0,
+      "status": "Connecting",
+      "leaseExpiresAt": "2026-10-26T10:47:36.966852+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-001",
+      "http": 206,
+      "observedAt": 1793011649012
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-001",
+      "http": 206,
+      "observedAt": 1793011649012
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011649012,
+      "deductedSeconds": 0,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:47:42.830897+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675093,
+      "deductedSeconds": 3,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:47:46.243979+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 200,
+      "observedAt": 1793011675100
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675100,
+      "deductedSeconds": 6,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:47:32.473859+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675105,
+      "deductedSeconds": 0,
+      "status": "Connecting",
+      "leaseExpiresAt": "2026-10-26T10:47:56.685971+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206,
+      "observedAt": 1793011675110
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675110,
+      "deductedSeconds": 0,
+      "status": "Connecting",
+      "leaseExpiresAt": "2026-10-26T10:48:00.050268+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206,
+      "observedAt": 1793011675115
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675115,
+      "deductedSeconds": 0,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:03.445771+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011675119,
+      "deductedSeconds": 3,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:06.765977+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 200,
+      "observedAt": 1793011696543
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011696543,
+      "deductedSeconds": 6,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:13.487911+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011696548,
+      "deductedSeconds": 6,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:48:00.103667+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011696553,
+      "deductedSeconds": 0,
+      "status": "Connecting",
+      "leaseExpiresAt": "2026-10-26T10:48:24.508060+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011696558
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011696558,
+      "deductedSeconds": 0,
+      "status": "Connecting",
+      "leaseExpiresAt": "2026-10-26T10:48:27.866760+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011696562
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011696562,
+      "deductedSeconds": 0,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:31.373439+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011696567
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011738259
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738259,
+      "deductedSeconds": 3,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:34.696392+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011738264
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-004",
+      "http": 200,
+      "observedAt": 1793011738264
+    },
+    {
+      "client": "first",
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206,
+      "observedAt": 1793011738264
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738264,
+      "deductedSeconds": 9,
+      "status": "Running",
+      "leaseExpiresAt": "2026-10-26T10:48:43.938892+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738268,
+      "deductedSeconds": 4,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:48:28.142778+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738272,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:48:33.466689+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738276,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:48:43.498932+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "observedAt": 1793011738281,
+      "deductedSeconds": 0,
+      "status": "Paused",
+      "leaseExpiresAt": "2026-10-26T10:48:53.482606+00:00"
+    },
+    {
+      "client": "first",
+      "path": "/api/reading-pass/sessions/end",
+      "http": 200,
+      "observedAt": 1793011822060,
+      "deductedSeconds": 0,
+      "ended": true
+    }
+  ],
+  "physicalSecondDeviceTested": false,
+  "independentBrowserClientTested": true,
+  "transferQualification": "Native isolated MongoDB transactions PASS; production transfer not exercised",
+  "priorFullTitleCoverageReused": "/tmp/earnalism-open-window-release-pr560/PRODUCTION-PLAYBACK-ACCOUNTING-PROOF.json",
+  "fullTitleRepeatedOnThisRevision": false,
+  "credentialsReadOrPrinted": false,
+  "activation": false,
+  "nonsecretCohortCookieSelectedOnBothClients": true
+}

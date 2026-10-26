@@ -292,16 +292,21 @@ describe("Reader content quality batch 1", () => {
       const publication = readJson(`${folder}/publication_manifest.json`);
       const publicBook = readJson(`${folder}/public_book.json`);
       expect(decision.decision_id).toBe(slug === "the-open-window"
-        ? "india-20261026-the-open-window-approved-revised-cover-pair"
+        ? "india-20261026-the-open-window-protected-package-publication"
         : `india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
       expect(decision.territories).toEqual(["IN"]);
       expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
         .update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));
       expect(launch.live_approved_slugs).toContain(slug);
       expect(publication.reader_release.exposed).toBe(true);
-      expect(publication.audio_release.exposed).toBe(false);
+      const protectedAudio = slug === "the-open-window";
+      expect(publication.audio_release.exposed).toBe(protectedAudio);
       expect(publicBook.publication_status).toBe("LIVE_APPROVED");
-      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(protectedAudio && field !== "generate_audiobook");
+      if (protectedAudio) {
+        expect(publication.audio_release.delivery_mode).toBe("PROTECTED_PACKAGE_V2");
+        expect(launch.protected_package_public_slugs).toEqual(["the-open-window"]);
+      }
       expect(launch.audio_enabled_slugs).not.toContain(slug);
     }
   });

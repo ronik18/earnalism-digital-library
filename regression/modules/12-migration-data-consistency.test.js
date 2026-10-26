@@ -8,6 +8,7 @@ const controlledLaunch = require("../../data/controlled_launch.json");
 
 const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const CONTROLLED_AUDIO_SLUGS = new Set(controlledLaunch.audio_enabled_slugs || []);
+const PROTECTED_PACKAGE_SLUGS = new Set(controlledLaunch.protected_package_public_slugs || []);
 const PUBLIC_READER_RELEASE_HELD = controlledLaunch.public_reader_exposure_enabled !== true;
 const PUBLIC_AUDIO_RELEASE_HELD = PUBLIC_READER_RELEASE_HELD
   || controlledLaunch.public_audio_exposure_enabled !== true;
@@ -46,8 +47,12 @@ describe("Migration, Backup & Data Consistency", () => {
     if (PUBLIC_AUDIO_RELEASE_HELD) {
       expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
       expect(books.every((book) => (
-        book.audio_enabled !== true
-        && book.audiobook_enabled !== true
+        (book.audio_enabled === true) === PROTECTED_PACKAGE_SLUGS.has(book.slug)
+        && (book.audiobook_enabled === true) === PROTECTED_PACKAGE_SLUGS.has(book.slug)
+        && (!PROTECTED_PACKAGE_SLUGS.has(book.slug) || (
+          book.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
+          && /^sha256-[a-f0-9]{64}$/.test(book.audiobook_package_version || "")
+        ))
         && !book.audio_url
       ))).toBe(true);
     }
