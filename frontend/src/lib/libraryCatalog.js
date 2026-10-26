@@ -1,5 +1,5 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
-import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED } from "./controlledLaunch";
+import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
@@ -18,10 +18,18 @@ export function languageOfBook(book = {}) {
   return BENGALI_RE.test(`${book.title || ""} ${book.title_en || ""} ${book.author || ""}`) ? "bn" : "en";
 }
 
+function publicListeningEnabled(book, audioState) {
+  return PUBLIC_AUDIO_EXPOSURE_ENABLED || (
+    PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(book?.slug)
+    && book?.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
+    && audioState.canShowControls === true
+  );
+}
+
 export function availabilityOfBook(book = {}) {
   if (!canShowStartReading(book)) return "in-preparation";
   const audioState = audiobookReleaseState(book);
-  if (PUBLIC_AUDIO_EXPOSURE_ENABLED && audioState.releaseApproved) return "approved-audiobook";
+  if (publicListeningEnabled(book, audioState) && audioState.releaseApproved) return "approved-audiobook";
   return "reader-ready";
 }
 
@@ -31,7 +39,7 @@ export function libraryPresentationForBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   const readerReady = availability === "reader-ready";
   const audiobookApproved = availability === "approved-audiobook";
-  const listeningAvailable = PUBLIC_AUDIO_EXPOSURE_ENABLED && audioState.canShowControls;
+  const listeningAvailable = publicListeningEnabled(book, audioState) && audioState.canShowControls;
 
   return {
     language,
