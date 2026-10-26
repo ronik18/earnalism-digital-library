@@ -106,7 +106,7 @@ export function audiobookReleaseState(book = {}) {
     && clean(manifestAudio?.asset_slug) === slug
     && /^sha256-[a-f0-9]{64}$/.test(packageVersion);
   const hasReaderManifestApproval = manifestAudio?.enabled === true
-    && Boolean(manifestAudio?.provider)
+    && (Boolean(manifestAudio?.provider) || (manifestAudio?.delivery_mode === "PROTECTED_PACKAGE_V2" && hasPublicPackageBinding))
     && Boolean(manifestAudio?.version)
     && (Boolean(assets.mp3 || manifestAudio?.url) || hasPackageManifestAsset || hasPublicPackageBinding)
     && hasReleaseApproval

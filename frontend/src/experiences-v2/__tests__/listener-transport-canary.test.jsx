@@ -14,3 +14,10 @@ test.each(["guest","wrong_slug","wrong_scope","bad_version","wrong_percentage","
  if(kind==="not_selected")canary.enabled=false;
  expect(listenerReleasePresentation(value).canRender).toBe(false);
 });
+
+test('public protected package renders full duration without inventing provider or media URL',()=>{
+ const value={slug:'the-open-window',title:'The Open Window',_readerManifest:{audio:{enabled:true,asset_slug:'the-open-window',provider:'',version:'canonical-metadata-version',delivery_mode:'PROTECTED_PACKAGE_V2',package_version:`sha256-${'a'.repeat(64)}`,duration_ms:491436,release_gate:'APPROVED',qa_status:'QA_PASSED'}}};
+ const result=listenerReleasePresentation(value);
+ expect(result.canRender).toBe(true);expect(result.chapterLabel).toBe('Full audiobook');expect(result.durationSeconds).toBe(491.436);expect(result.mediaUrl).toBe('');
+ value._readerManifest.audio.asset_slug='other-title';expect(listenerReleasePresentation(value).canRender).toBe(false);
+});

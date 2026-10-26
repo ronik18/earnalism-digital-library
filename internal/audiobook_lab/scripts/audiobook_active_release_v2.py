@@ -2899,6 +2899,16 @@ def build_parser() -> argparse.ArgumentParser:
         )
     new_title_canary.add_argument("--apply", action="store_true")
 
+    public_package = subparsers.add_parser("promote-new-title-public", help="Promote a new-title package only with exact production acceptance proofs.")
+    public_package.add_argument("--slug", required=True)
+    for role in ("playback", "business", "accounting"):
+        public_package.add_argument("--" + role + "-proof", type=Path, required=True)
+        public_package.add_argument("--expected-" + role + "-proof-sha256", required=True)
+    public_package.add_argument("--audio-rights", type=Path, required=True)
+    public_package.add_argument("--decision-id", required=True)
+    public_package.add_argument("--approved-by", required=True)
+    public_package.add_argument("--apply", action="store_true")
+
     rollout = subparsers.add_parser("rollout", help="Set 0/5/25 or promote at 100.")
     rollout.add_argument("--slug", required=True)
     rollout.add_argument("--percentage", type=int, choices=sorted(ROLLOUT_PERCENTAGES), required=True)
@@ -3050,6 +3060,16 @@ def main(argv: Sequence[str] | None = None) -> int:
                     ),
                     apply=args.apply,
                 )
+        elif args.command == "promote-new-title-public":
+            try:
+                proofs = {role: getattr(args, role + "_proof").read_bytes() for role in ("playback", "business", "accounting")}
+            except OSError:
+                raise ReleasePointerError("Required nonsecret production proof file is unavailable") from None
+            result = promote_new_title_package(args.repo_root.resolve(), args.slug,
+                **{role + "_bytes": payload for role, payload in proofs.items()},
+                expected_proof_hashes={role: getattr(args, "expected_" + role + "_proof_sha256") for role in proofs},
+                audio_rights=read_json(args.audio_rights), decision_id=args.decision_id,
+                approved_by=args.approved_by, apply=args.apply)
         elif args.command == "rollout":
             result = set_rollout(
                 args.repo_root.resolve(),
