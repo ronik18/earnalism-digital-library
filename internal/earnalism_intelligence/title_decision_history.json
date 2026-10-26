@@ -11999,5 +11999,14 @@
     "validation": "Workflow YAML/Bash blocks parse; exactthreebrowser dependencycommand retained. Hostedfreshgate stillmandatory.",
     "environment": "Local zsh command startup hung; /bin/sh login=false restores canonical commands, not a repository/provider change.",
     "production": "UNCHANGED_NO_PAID_SESSION"
+  },
+  "open_window_remaining_review_archive_mirrors_20261026": {
+    "at": "2026-10-26T17:49:51.914096+00:00",
+    "title": "the-open-window",
+    "decision": "TWO_REMAINING_REVIEW_MIRROR_TIMEOUTS_CORRECTED",
+    "finding": "Exacthead c940 primaryreview+regression+brand/finalpublication PASS. Darkpremium40367947418 and focused40367947388 cancelled in25min slowAzureUbuntu browser package downloads, before app review.",
+    "change": "Apply the already-qualified primary-review official Ubuntu archive selection to these two remaining review dependency steps. Same signedpackages/pinned3browsers and25min deadline retained; no oldjobrerun.",
+    "validation": "Both workflow YAML and all Bash blocks parse; all review/capture steps retained. Fresh exact-head CI/reviews mandatory.",
+    "production": "UNCHANGED_NO_PAID_SESSION"
   }
 }

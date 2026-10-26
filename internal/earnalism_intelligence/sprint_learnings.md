@@ -2760,3 +2760,5 @@ Exact Reader index fixture: publication metadata changes the whole-manifest hash
 Runtime regression consumers must distinguish broad legacy audio OFF from explicit protected package availability. Require exact public flags/mode/version and no direct media URL for the sole approved title; verify every other catalogue title remains hidden.52source projections and64UXstatic cases pass; hostedHTTP gates remain required.
 
 Primary review dependency diagnosis:45min still expired on progressing slow Azure Ubuntu downloads. Use the official Ubuntu archive on this disposable runner while retaining exact signed package selection and allthreebrowser checks; do not keep extending timeouts or blindly rerun. Local shell startup stalls can be isolated with /bin/sh login=false without changing credentials/settings.
+
+The same slow regional Ubuntu mirror also exhausted dark-premium and focused review dependency deadlines. Apply the qualified official archive selection to those two steps, retaining signed packages/three browsers and deadlines; do not rerun the old jobs or relax capture gates.

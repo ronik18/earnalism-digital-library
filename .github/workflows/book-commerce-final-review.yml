@@ -47,6 +47,11 @@ jobs:
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check pillow
+          # Keep the same signed Ubuntu browser packages without the slow
+          # regional mirror that exhausted this review's dependency window.
+          if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|http://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+          fi
           npx playwright install --with-deps chromium firefox webkit
       - name: Verify harness contract
         run: |
