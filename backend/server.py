@@ -5145,6 +5145,7 @@ async def initialize_database_indexes() -> None:
     await db.settings.create_index("key", unique=True)
 
     await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1), ("id", -1)])
 
     await db.wallet_ledger.create_index([("user_id", 1), ("timestamp", -1)])
     await db.wallet_ledger.create_index([("session_id", 1), ("timestamp", -1)])
@@ -9743,6 +9744,22 @@ async def user_me(user=Depends(require_user)):
 @api.get("/users/me/wallet")
 async def user_wallet(user=Depends(require_user)):
     return {"wallet_seconds": await _cached_user_wallet_seconds(user["id"])}
+
+
+@api.get("/users/me/transactions/page")
+async def user_transaction_page(cursor: str = "", limit: int = 50, user=Depends(require_user)):
+    try:
+        from .usage_history import history_query, history_page, FIELDS
+    except ImportError:
+        from usage_history import history_query, history_page, FIELDS
+    if not 1 <= limit <= 100:
+        raise HTTPException(status_code=400, detail="Usage page size must be between 1 and 100")
+    try:
+        query = history_query(user["id"], cursor)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid usage cursor")
+    rows = await db.wallet_transactions.find(query, FIELDS).sort([("created_at", -1), ("id", -1)]).to_list(limit + 1)
+    return history_page(rows, limit)
 
 
 @api.get("/users/me/transactions", response_model=List[WalletTransactionOut])

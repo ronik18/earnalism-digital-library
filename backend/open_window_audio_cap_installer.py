@@ -32,8 +32,8 @@ ENVIRONMENT = "580b250c-80ee-48ad-bfbe-fa4e31a6b378"
 SERVICE = "5af42e7e-f518-4f6a-b602-d9950866501f"
 ENFORCEMENT_PINS = {
     "backend/audio_acceptance_budget.py": "61c9bacc041dc1342db3398abd4db3790f481e769f40fe522181e7fd8d4653c9",
-    "backend/reading_pass_service.py": "884046e60d163e81008b363eca13385582041e29280e62c39042bc26a53c2cfd",
-    "backend/server.py": "c380c1c54c6a2529d1cb07a451ea8cde49d33b529df49fdbec10c77309275035",
+    "backend/reading_pass_service.py": "f28f6af29ee961dd7ed5a1590d31052245cae59868f4b77a54306a1fe5d4c4a8",
+    "backend/server.py": "58a12af7c0043f222c524d749332a65df24e09b071731b415d59822be80e6c91",
 }
 
 

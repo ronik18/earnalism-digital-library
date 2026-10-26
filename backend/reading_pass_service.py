@@ -28,7 +28,6 @@ try:  # package import
         ensure_utc,
         lease_expiry,
         safe_seconds,
-        server_billable_seconds,
         token_fingerprint,
     )
 except ImportError:  # production-style import from backend cwd
@@ -38,7 +37,6 @@ except ImportError:  # production-style import from backend cwd
         ensure_utc,
         lease_expiry,
         safe_seconds,
-        server_billable_seconds,
         token_fingerprint,
     )
 
@@ -482,6 +480,36 @@ class ReadingPassService:
             "Reader availability could not be verified.",
         )
 
+    async def _billable_interval(self, document, now, mongo_session, *, cutoff=None):
+        """Conserve subsecond usage on the account across every session boundary.
+
+        The account remainder and session/ledger transition share one transaction.
+        Paused/free intervals never create usage. No client duration is trusted.
+        """
+        if document.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT:
+            return 0
+        if not document.get("billing_active", document.get("status") == "active"):
+            return 0
+        start = ensure_utc(document.get("last_billed_at") or document["lease_issued_at"])
+        stop = min(ensure_utc(now), ensure_utc(document["lease_expires_at"]))
+        if cutoff is not None:
+            stop = min(stop, ensure_utc(cutoff))
+        delta = max(timedelta(0), stop - start)
+        micros = min((delta.days * 86400 + delta.seconds) * 1000000 + delta.microseconds,
+                     self.config.maximum_lease_seconds * 1000000)
+        if not micros:
+            return 0
+        account = await self.db.users.find_one({"id": document["user_id"]},
+            {"reading_fractional_microseconds": 1}, session=mongo_session)
+        carry = (account or {}).get("reading_fractional_microseconds", 0)
+        if type(carry) is not int or not 0 <= carry < 1000000:
+            raise ReadingPassError("BILLING_STATE_UNVERIFIED", 409, "Usage accounting could not be verified.")
+        seconds, remainder = divmod(carry + micros, 1000000)
+        if remainder != carry:
+            await self.db.users.update_one({"id": document["user_id"]},
+                {"$set": {"reading_fractional_microseconds": remainder}}, session=mongo_session)
+        return seconds
+
     async def _settle_terminal_session(
         self,
         *,
@@ -501,14 +529,7 @@ class ReadingPassService:
         billing_cutoff = ensure_utc(billing_cutoff_at or now)
         if budget is not None:
             billing_cutoff = min(billing_cutoff, ensure_utc(budget["expires_at"]))
-        billable = server_billable_seconds(
-            last_billed_at=session_doc.get("last_billed_at") or session_doc.get("lease_issued_at") or now,
-            lease_expires_at=session_doc.get("lease_expires_at") or now,
-            now=now,
-            active=bool(session_doc.get("billing_active", session_doc.get("status") == "active")),
-            config=self.config,
-            billing_cutoff_at=billing_cutoff,
-        )
+        billable = await self._billable_interval(session_doc, now, mongo_session, cutoff=billing_cutoff)
         balance = await self._balance(user_id, mongo_session)
         debit = min(balance, billable)
         if budget is not None:
@@ -1247,18 +1268,9 @@ class ReadingPassService:
                 raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Free Reader entitlement could not be verified.")
             if session_doc.get("content_type") == "audio":
                 genuinely_active = genuinely_active and str(playback_state or "").lower() == "playing"
-            previously_active = bool(
-                session_doc.get("billing_active", session_doc.get("status") == "active")
-            )
             budget = await self._acceptance_budget(session_doc, mongo_session)
-            billable = server_billable_seconds(
-                last_billed_at=session_doc.get("last_billed_at") or session_doc["lease_issued_at"],
-                lease_expires_at=session_doc["lease_expires_at"],
-                now=now,
-                active=previously_active,
-                config=self.config,
-                billing_cutoff_at=ensure_utc(budget["expires_at"]) if budget is not None else None,
-            )
+            billable = await self._billable_interval(session_doc, now, mongo_session,
+                cutoff=ensure_utc(budget["expires_at"]) if budget is not None else None)
             balance = await self._balance(user_id, mongo_session)
             debit = 0 if free_entitlement else min(balance, billable)
             if budget is not None:
@@ -1434,7 +1446,9 @@ class ReadingPassService:
                 "user_id": user_id,
                 "type": "consume",
                 "seconds": -int(seconds),
-                "reason": f"Reading Pass {content_type} consumption",
+                "reason": f"Reading Pass {content_type}: {content_id[:200]}",
+                "content_type": content_type,
+                "content_id": content_id[:200],
                 "created_at": _iso(now),
                 "actor": "reading-pass-v2",
                 "session_id": session_id,

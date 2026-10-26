@@ -116,7 +116,7 @@ describe("AuthProvider and Account lifecycle", () => {
     localStorage.setItem(USER_TOKEN_KEY, "isolated-token");
     mockUserApiGet.mockImplementation((path) => {
       if (path === "/users/me") return Promise.resolve({ data: { ...user() } });
-      if (path === "/users/me/transactions") return Promise.resolve({ data: [] });
+      if (path === "/users/me/transactions/page") return Promise.resolve({ data: { items: [], has_more: false, next_cursor: "" } });
       return Promise.reject(new Error(`unexpected path ${path}`));
     });
 
@@ -125,7 +125,7 @@ describe("AuthProvider and Account lifecycle", () => {
 
     const settled = {
       me: count("/users/me"),
-      transactions: count("/users/me/transactions"),
+      transactions: count("/users/me/transactions/page"),
       config: mockGetReadingPassConfig.mock.calls.length,
       devices: mockGetReadingPassDevices.mock.calls.length,
     };
@@ -134,7 +134,7 @@ describe("AuthProvider and Account lifecycle", () => {
     expect(settled).toEqual({ me: 2, transactions: 1, config: 1, devices: 1 });
     expect({
       me: count("/users/me"),
-      transactions: count("/users/me/transactions"),
+      transactions: count("/users/me/transactions/page"),
       config: mockGetReadingPassConfig.mock.calls.length,
       devices: mockGetReadingPassDevices.mock.calls.length,
     }).toEqual(settled);
@@ -142,7 +142,7 @@ describe("AuthProvider and Account lifecycle", () => {
     await mounted.cleanup();
     await flush();
     expect(count("/users/me")).toBe(2);
-    expect(count("/users/me/transactions")).toBe(1);
+    expect(count("/users/me/transactions/page")).toBe(1);
   });
 
   test("an actual account change refreshes Account resources once without restoring the prior balance", async () => {
@@ -152,7 +152,7 @@ describe("AuthProvider and Account lifecycle", () => {
         const current = count("/users/me") <= 2 ? user("reader-first") : user("reader-second");
         return Promise.resolve({ data: { ...current } });
       }
-      if (path === "/users/me/transactions") return Promise.resolve({ data: [] });
+      if (path === "/users/me/transactions/page") return Promise.resolve({ data: { items: [], has_more: false, next_cursor: "" } });
       return Promise.reject(new Error(`unexpected path ${path}`));
     });
     mockUserApiPost.mockResolvedValue({
@@ -169,10 +169,33 @@ describe("AuthProvider and Account lifecycle", () => {
     expect(mounted.container.querySelector('[data-testid="user-id"]')?.textContent).toBe("reader-second");
     expect({
       me: count("/users/me"),
-      transactions: count("/users/me/transactions"),
+      transactions: count("/users/me/transactions/page"),
       config: mockGetReadingPassConfig.mock.calls.length,
       devices: mockGetReadingPassDevices.mock.calls.length,
     }).toEqual({ me: 3, transactions: 2, config: 2, devices: 2 });
+    await mounted.cleanup();
+  });
+
+  test("usage history loads older rows and displays exact seconds without duplicate requests", async () => {
+    localStorage.setItem(USER_TOKEN_KEY, "isolated-token");
+    mockUserApiGet.mockImplementation((path, options) => {
+      if (path === "/users/me") return Promise.resolve({ data: user() });
+      if (path === "/users/me/transactions/page") {
+        const older = options?.params?.cursor === "next-page";
+        return Promise.resolve({ data: { items: [{ id: older ? "old" : "new", type: "consume", seconds: older ? -7 : -3,
+          reason: "Reading Pass audio: synthetic-story", created_at: older ? "2026-01-01T00:00:00Z" : "2026-01-02T00:00:00Z", session_id: older ? "old-session" : "new-session" }],
+          has_more: !older, next_cursor: older ? "" : "next-page" } });
+      }
+      return Promise.reject(new Error("Unexpected fixture route"));
+    });
+    const mounted = render(<AuthProvider><Account /></AuthProvider>); await flush();
+    expect(mounted.container.textContent).toContain("3 seconds");
+    const button = Array.from(mounted.container.querySelectorAll("button")).find((x) => x.textContent === "Load older activity");
+    expect(button).toBeTruthy();
+    await act(async () => button.dispatchEvent(new MouseEvent("click", { bubbles: true }))); await flush();
+    expect(mounted.container.textContent).toContain("7 seconds");
+    expect(Array.from(mounted.container.querySelectorAll("button")).some((x) => x.textContent === "Load older activity")).toBe(false);
+    expect(count("/users/me/transactions/page")).toBe(2);
     await mounted.cleanup();
   });
 
@@ -180,7 +203,7 @@ describe("AuthProvider and Account lifecycle", () => {
     localStorage.setItem(USER_TOKEN_KEY, "isolated-token");
     mockUserApiGet.mockImplementation((path) => {
       if (path === "/users/me") return Promise.resolve({ data: { ...user() } });
-      if (path === "/users/me/transactions") return Promise.resolve({ data: [] });
+      if (path === "/users/me/transactions/page") return Promise.resolve({ data: { items: [], has_more: false, next_cursor: "" } });
       return Promise.reject(new Error(`unexpected path ${path}`));
     });
     mockGetReadingPassDevices.mockResolvedValue([

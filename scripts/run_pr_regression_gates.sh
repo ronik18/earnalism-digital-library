@@ -53,6 +53,8 @@ env \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
+    backend/tests/test_reading_pass_client_matrix.py \
+    backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
     backend/tests/test_open_window_audio_acceptance_budget.py \
     backend/tests/test_audio_renewal_media_cookies.py \
