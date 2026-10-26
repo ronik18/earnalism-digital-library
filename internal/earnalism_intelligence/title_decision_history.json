@@ -3805,6 +3805,17 @@
         "validation": "20 focused frontend tests PASS; 46 workflow tooling tests PASS; exact frontend surface pins refreshed.",
         "release": "ACTIVATION_HELD_FRONTEND_ONLY_PR_PREPARATION",
         "next_action": "Exact-head CI and published review then authorized manual frontend candidate release; preserve healthy backend, do not repeat cap work."
+      },
+      "segment_transition_20261026": {
+        "timestamp": "2026-10-26T14:23:16.802098+05:30",
+        "workstream": "english_audio_go_live",
+        "slug_or_area": "the-open-window",
+        "decision": "renew_before_ordered_segment_transition_and_ignore_source_swap_pause",
+        "evidence": "Existing authorized normal session played first9.84s segment; Running renewal200 debit5 then Paused200 debit10; segment2 denied403 LEASE_EXPIRED; end200 endedtrue debit0; total15 readingseconds. No new session started by agent.",
+        "fix": "Await active renewal before advancing segment src; suppress native source-swap pause until new segment plays. Preserve backend paused/expired denial and all accounting rules.",
+        "validation": "23 focused frontend tests PASS including synthetic29segment lifecycle, denied/unmounted transitions;46 workflow tests PASS. Actual full production playback still unverified.",
+        "release": "FRONTEND_ONLY_ACTIVATION_HELD",
+        "next_action": "Exact-head CI/reviews then frontend-only staged release; no backend redeploy, cap work or blind paid retry."
       }
     },
     "sredni-vashtar": {

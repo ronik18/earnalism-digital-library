@@ -2718,3 +2718,7 @@ Cookie-release CI follow-up: full-server source pins must be refreshed to the ex
 ## Open Window paused seeks — 26 October 2026
 
 Pausing retains credentials but deliberately denies protected media bytes until active renewal. Native currentTime or src changes can issue Range requests even while paused. Store seek intent without touching the media element, then apply it only after active renewal. Post-PR558 session settled at zero debit; activation stays held. Twenty focused frontend tests and46 workflow tooling cases pass. Backend remains unchanged.
+
+## Open Window ordered transitions — 26 October 2026
+
+A native audio source swap emits pause/ended events. Keep that transient pause distinct from user pause, and renew active authority before issuing next-segment Range requests. The first-segment production test settled with15 reading seconds debit and remains failed; no activation. Twenty-three frontend cases now cover all29 synthetic transitions, denial, ending and unmount, plus46 workflow checks. Local lifecycle tests are not production listening acceptance.
