@@ -15,6 +15,12 @@ import re
 from typing import Any
 
 try:
+    from .protected_package_publication import protected_package_publication_valid
+except ImportError:
+    from protected_package_publication import protected_package_publication_valid
+
+
+try:
     from rights_engine import evaluate_rights
 except ImportError:  # pragma: no cover
     from backend.rights_engine import evaluate_rights
@@ -197,6 +203,10 @@ def build_manifest(
         audio_delivery_mode == "SERVER_OWNED_CONVEYOR"
         and audio_public_endpoint == f"/api/reader/book/{slug}/audiobook"
     )
+    protected_package = bool(
+        protected_package_publication_valid(public_book)
+        and audio_public_endpoint == f"/api/reader/book/{slug}/audiobook/manifest"
+    )
     audio_release_status = str(
         approval.get("audio_public_release")
         or approval.get("public_audio_release")
@@ -229,6 +239,7 @@ def build_manifest(
         and (
             str(audio_assets.get("mp3") or "").strip()
             or server_owned_conveyor
+            or protected_package
         )
     )
     audio_status = (

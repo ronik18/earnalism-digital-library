@@ -2098,6 +2098,70 @@ def activate_new_title_package_canary(
     return result
 
 
+def validate_new_title_publication_acceptance(
+    *, descriptor, package_version, duration_ms, segment_ids,
+    playback_bytes, business_bytes, accounting_bytes, expected_proof_hashes,
+):
+    """Validate immutable production proof before a dedicated public promotion.
+
+    This does not mutate pointers, grant rights or enable discovery. Prior full
+    coverage is reusable for the same package; later billing acceptance remains
+    separate and cannot be inferred from wallet reconciliation alone.
+    """
+    require_sha256(descriptor, "public descriptor")
+    if not isinstance(expected_proof_hashes, dict) or set(expected_proof_hashes) != {"playback", "business", "accounting"}:
+        raise ReleasePointerError("Exact production proof identities are required")
+    payloads = {"playback": playback_bytes, "business": business_bytes, "accounting": accounting_bytes}
+    proofs = {}
+    for role, payload in payloads.items():
+        expected = require_sha256(expected_proof_hashes.get(role), role + " proof")
+        if sha256_bytes(payload) != expected:
+            raise ReleasePointerError(role + " production proof digest mismatch")
+        try:
+            document = json.loads(payload)
+        except (ValueError, TypeError):
+            raise ReleasePointerError(role + " production proof is invalid") from None
+        if not isinstance(document, dict):
+            raise ReleasePointerError(role + " production proof must be an object")
+        proofs[role] = document
+    playback, business, accounting = (proofs[k] for k in ("playback", "business", "accounting"))
+    ids = list(segment_ids)
+    if not ids or len(ids) != len(set(ids)) or type(duration_ms) is not int or duration_ms <= 0:
+        raise ReleasePointerError("Public package coverage identity is invalid")
+    coverage = playback.get("coverage") or []
+    timestamps = playback.get("timestamps") or []
+    for rows in (coverage, timestamps, playback.get("requests", [])):
+        if not isinstance(rows, list) or any(not isinstance(row, dict) for row in rows):
+            raise ReleasePointerError("Production proof rows are invalid")
+    if (playback.get("descriptor") != descriptor or playback.get("packageVersion") != package_version
+            or playback.get("durationMs") != duration_ms or playback.get("segmentCount") != len(ids)
+            or [row.get("segment") for row in coverage] != ids
+            or any(any(row.get(k) is not True for k in ("durationMatches", "ended", "startedFromBeginning")) for row in coverage)
+            or [row.get("segment") for row in timestamps] != ids
+            or any(row.get("http") != 200 or row.get("sha256Matches") is not True for row in timestamps)
+            or not any(row.get("http") == 206 for row in playback.get("requests", []))
+            or playback.get("ended") is not True or playback.get("sessionEndHTTP") != 200
+            or playback.get("pauseResumeSeekPass") is not True):
+        raise ReleasePointerError("Complete package playback proof is required")
+    if (business.get("status") != "PRODUCTION_SPEED_CONCURRENCY_AND_SERVER_BILLING_PASS"
+            or business.get("speedsObserved") != [1, 1.25, 1.5]
+            or business.get("secondClientStart") != {"http": 409, "code": "SESSION_ACTIVE_ELSEWHERE"}
+            or any(business.get(k) is not True for k in ("allServerClockIntervalsMatch", "pausedIntervalsDebitZero", "nonPlayingPriorIntervalsDebitZero", "balanceDifferenceMatchesDebit", "ended"))
+            or business.get("endHTTP") != 200 or business.get("simultaneousPaidPlayback") is not False):
+        raise ReleasePointerError("Production speed, conflict and billing proof is required")
+    if (accounting.get("status") != "DEPLOYED_ACCOUNTING_AND_AUTHENTICATED_USAGE_VERIFIED"
+            or accounting.get("fractionalRenewalRegressionPass") is not True
+            or accounting.get("authenticatedUsagePaginationPass") is not True
+            or accounting.get("sourceCommit") != accounting.get("deployedCommit")
+            or not re.fullmatch(r"[a-f0-9]{40}", str(accounting.get("sourceCommit") or ""))):
+        raise ReleasePointerError("Deployed accounting and authenticated usage acceptance is required")
+    return {"schema_version": "audiobook_public_package_acceptance.v1",
+        "release_descriptor_sha256": descriptor, "package_version": package_version,
+        "duration_ms": duration_ms, "segment_count": len(ids),
+        "production_proof_sha256": dict(expected_proof_hashes),
+        "accounting_commit": accounting["sourceCommit"], "public_activation_performed": False}
+
+
 def set_rollout(
     repo_root: Path,
     slug: str,

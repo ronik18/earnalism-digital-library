@@ -7,6 +7,12 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from .protected_package_publication import protected_package_publication_valid
+except ImportError:
+    from protected_package_publication import protected_package_publication_valid
+
+
+try:
     from licensed_text import public_license_notice
 except ImportError:
     from backend.licensed_text import public_license_notice
@@ -299,6 +305,7 @@ INTERNAL_AUDIO_FIELDS = {
     "audiobook_legacy_release_descriptor_sha256",
     "audiobook_hidden_release_descriptor_sha256",
     "audiobook_package_canary",
+    "audiobook_public_package_approval",
     "audiobook_release_conveyor",
     "audiobook_assets",
     "audiobook_assets_updated_at",
@@ -760,7 +767,7 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         or public_book.get("audiobook_enabled") is not audio_approved
     ):
         issues.append("public_book.json audio flags do not match controlled release approval.")
-    if audio_approved and audio_allowed:
+    if audio_approved and audio_allowed and not protected_package_publication_valid(public_book):
         assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
         if not assets.get("mp3"):
             issues.append("public_book.json audiobook assets are missing mp3 for an audio-enabled slug.")
@@ -1137,6 +1144,8 @@ def can_expose_audio(book: dict[str, Any]) -> bool:
     if not PUBLIC_AUDIO_EXPOSURE_ENABLED:
         return False
     slug = normalize_slug(book.get("slug"))
+    if book.get("audiobook_release_mode") == "PROTECTED_PACKAGE_V2" and not protected_package_publication_valid(book):
+        return False
     conveyor = nested_dict(book, "audiobook_release_conveyor")
     conveyor_audio_approved = (
         conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
