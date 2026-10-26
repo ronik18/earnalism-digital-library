@@ -2708,3 +2708,7 @@ Freeze source and private wiring specifications separately from runtime readines
 ## Open Window V2 interlock — 26 October 2026
 
 Use one control document shared by installation and recovery, rather than kill/delay heuristics. Claim it inside the installation transaction; recovery must majority-close it before one restart. This serializes stale, suspended and uncertain installers against reopening traffic. Bind both processes to the same private DB/plan and use a fresh owner-local socket challenge for readiness. 89 tests PASS including20 real-Mongo cases and separate-process tests. Frozen successor635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f; no production action. Keep future steps minimal and reuse completed title/audio evidence.
+
+## Open Window normal-session pause/resume — 26 October 2026
+
+Native media needs HttpOnly credentials across valid paused renewals. Preserve them for Paused, but retain backend denial of paused media until active renewal succeeds. The Listener must serialize heartbeat/resume renewals and await active renewal before invoking media.play; otherwise token rotation or pause authorization can break resume. Production acceptance stopped safely with zero debit; no public activation. Custom cap work is stopped by owner direction. Focused backend, frontend and three real-Mongo accounting cases passed; local production build awaits its already-declared missing Vercel analytics dependency in clean-install CI.

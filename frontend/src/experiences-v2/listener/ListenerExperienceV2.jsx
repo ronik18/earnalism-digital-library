@@ -19,7 +19,7 @@ export function clampPlaybackTime(seconds, durationSeconds) {
   return durationSeconds > 0 ? Math.min(value, durationSeconds) : value;
 }
 
-export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary, onReadAlong, readAlongSupported = false }) {
+export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onBeforePlayback, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary, onReadAlong, readAlongSupported = false }) {
   const presentation = listenerReleasePresentation(book, { fixture });
   const audioRef = useRef(null);
   const pendingOffsetRef = useRef(null);
@@ -132,9 +132,14 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
   const togglePlayback = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || !canPlay) return;
-    if (audio.paused) requestAudiobookPlayback(audio).catch(() => onMediaError?.());
+    if (audio.paused) {
+      Promise.resolve().then(() => onBeforePlayback?.()).then(() => {
+        if (audioRef.current !== audio || !audio.isConnected) return;
+        return requestAudiobookPlayback(audio);
+      }).catch(() => onMediaError?.());
+    }
     else audio.pause();
-  }, [canPlay, onMediaError]);
+  }, [canPlay, onBeforePlayback, onMediaError]);
 
   const handleLoadedMetadata = useCallback(() => {
     const audio = audioRef.current;

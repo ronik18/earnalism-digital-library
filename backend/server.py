@@ -12088,7 +12088,9 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))
-        if result.get("status") in {"Running", "Connecting"}:
+        # A paused audio lease remains valid and rotates its media credential.
+        # Clearing it here prevents the native audio element from resuming.
+        if result.get("status") in {"Running", "Connecting", "Paused"}:
             _set_reading_pass_media_cookies(response, result)
         elif result.get("content_type") == "audio":
             _clear_reading_pass_media_cookies(response)
