@@ -11964,5 +11964,13 @@
     "change": "Require independent protected-package validation for exposed catalogue audio; admit canonical title approval to visual fixture loader while deliberately returning nonplayable fixture data; exact release projection assertions keep every other title hidden.",
     "validation": "Catalogue verifier issues empty;18manifest CLI+12error experience cases PASS; deterministic matrix/inputs checks PASS. Local PDF unit gate lacks reportlab, hosted pinned dependency remains mandatory.",
     "production": "UNCHANGED_NO_DEPLOYMENT_NO_PAID_SESSION"
+  },
+  "open_window_review_dependency_window_20261026": {
+    "at": "2026-10-26T16:08:18.311228+00:00",
+    "title": "the-open-window",
+    "decision": "BOUND_REVIEW_DEPENDENCY_TIMEOUT_WITHOUT_SKIPPING_GATES",
+    "finding": "Exact primary review job40352198041 cancelled at20min during pinned Playwright Ubuntu dependency download; retained logs still progressing through librist4, no app/review test had run.",
+    "change": "Increase only that job bounded timeout20to45min. Preserve all pinned installs, three browsers, captures and artifact validation. No blind rerun of old provider job.",
+    "validation": "Workflow YAML parsed and diff whitespace checked; fresh exact-head full CI remains mandatory. Production unchanged."
   }
 }

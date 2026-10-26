@@ -31,7 +31,9 @@ jobs:
   owner-review:
     name: Owner-review artifact
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Ubuntu browser dependencies can still be downloading at 20 minutes.
+    # Preserve every review step; allow a bounded completion window.
+    timeout-minutes: 45
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
