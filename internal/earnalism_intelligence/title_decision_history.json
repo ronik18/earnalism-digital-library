@@ -12036,5 +12036,13 @@
     "validation": "44 frontend access/presentation/audio safety tests PASS including seven positive/negative package cases.",
     "production": "BOOK_DISCOVERY_HELD_NO_PAID_SESSION",
     "next_action": "Exact-head CI/reviews then changed frontend manual release and actual public Book CTA acceptance."
+  },
+  "open_window_library_discovery_20261026": {
+    "title": "the-open-window",
+    "decision": "LIBRARY_EXACT_PACKAGE_DISCOVERY_FIX",
+    "finding": "Public Book CTA and full8:11Listener pass after566; actual Audiobooks filter returns0 despite correct list API. libraryCatalog still requires legacy global audio flag.",
+    "change": "Reuse exact protected package allowlist plus actual delivery mode and safe release controls; global legacy audio remains false.",
+    "validation": "43frontend testsPASS including exact-title discovery and six negative cases; source pins refreshed.",
+    "production": "HELD_LIBRARY_DISCOVERY_NO_PAID_SESSION"
   }
 }

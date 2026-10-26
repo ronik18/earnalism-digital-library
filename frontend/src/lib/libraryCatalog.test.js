@@ -108,3 +108,24 @@ describe("libraryCatalog", () => {
     expect(matchesLibraryFacets(previewDisabledEdition, "bn", "audio-hidden")).toBe(false);
   });
 });
+
+
+describe("public protected package discovery", () => {
+  const book = { slug: "the-open-window", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/the-open-window", reader_url: "/reader/the-open-window", audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audiobook_delivery_mode: "PROTECTED_PACKAGE_V2", audiobook_package_version: `sha256-${"8".repeat(64)}` };
+  it("includes the approved exact package in audiobook filters and cards", () => {
+    expect(availabilityOfBook(book)).toBe("approved-audiobook");
+    expect(matchesLibraryFacets(book, "all", "approved-audiobook")).toBe(true);
+    expect(libraryPresentationForBook(book).canShowControls).toBe(true);
+  });
+  it.each([
+    { ...book, slug: "a-ghost-story" },
+    { ...book, audiobook_delivery_mode: "" },
+    { ...book, audiobook_package_version: "invalid" },
+    { ...book, audio_enabled: false, audiobook_enabled: false },
+    { ...book, audio_qa_status: "FAILED" },
+    { ...book, audiobook_release_gate: "HELD" },
+  ])("keeps unbound or unapproved catalogue audio hidden", (candidate) => {
+    expect(matchesLibraryFacets(candidate, "all", "approved-audiobook")).toBe(false);
+    expect(libraryPresentationForBook(candidate).canShowControls).toBe(false);
+  });
+});
