@@ -11901,5 +11901,25 @@
     "validation": "27frontend and36service tests PASS;1x/1.25x/1.5x clock/positions,device conflict+transfer,duplicate termination and100renewal races; production device/speed billing fairness not yet verified.",
     "production": "UNCHANGED_ACTIVATION_HELD",
     "next_action": "Exact-head CI/published review; frontend-only candidate then bounded justified acceptance, no refund or blind paid repeat."
+  },
+  "open_window_revised_cover_pair_20261026": {
+    "at": "2026-10-26T10:35:08.150792+00:00",
+    "title": "the-open-window",
+    "decision": "APPROVED_REVISED_COVER_PAIR_CANONICAL_SOURCE_READY",
+    "scope": "Front and back only; public audio remains hidden",
+    "frontSHA256": "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "backSHA256": "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "evidence": "Owner-approved Canva delivery, two genuine admin-intake identities, remote full-byte equality, owner-private exact two-record metadata lookup, existing canonical promoter, mirrored checksum and rights/bootstrap successor.",
+    "validation": "437 tests and19subtests PASS; prospective India reader/cover binding preserved, old registered records retained; all audio fields unchanged.",
+    "production": "NOT_DEPLOYED",
+    "next_action": "Exact-head CI/finalreview then backend deployment of merged source, verify book/Reader/Listener both new covers. No reupload or Railway-variable change."
+  },
+  "open_window_cover_manifest_binding_followup_20261026": {
+    "at": "2026-10-26T10:44:14.921277+00:00",
+    "title": "the-open-window",
+    "decision": "COVER_PUBLICATION_MANIFEST_BINDING_CORRECTED",
+    "finding": "PR562 initial regression exposed one real stale publication-manifest public-book binding and one hardcoded predecessor-actor expectation. No production deployment occurred.",
+    "change": "Refresh existing manifest front cover/artifact hashes/canonical digest, rebind rights record registry/bootstrap, retain exact checks and add durable coverage.",
+    "validation": "452 tests and19subtests PASS including controlled launch parity; failed-provider run not rerun, fresh source commit required."
   }
 }

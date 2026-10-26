@@ -2726,3 +2726,11 @@ A native audio source swap emits pause/ended events. Keep that transient pause d
 ## Open Window buffering billing — 26 October 2026
 
 A reconciled wallet proves arithmetic, not fair billable intervals. Native play intervals388.946s vs581s debited prompted review; no refund amount is established. Renew existing buffering authority before fetch/source changes and start billing only at native playing. Immediately serialize each observed state rather than sampling a later state in queued work. Speed controls change media progress, not server-clock billing. Local27frontend+36service tests pass including three speeds, device conflict/transfer and renewal races; production fairness/multi-device acceptance stays held. No wallet repair or new paid session.
+
+## Open Window revised covers — 26 October 2026
+
+Admin cover intake is a private review candidate, not canonical publication. The web-service canonical readiness predicate requires a writable Git root and both publication mirrors; do not add a checkout to the serving container. Use the existing promoter in the Integration Lane with genuine immutable candidate identities and full-byte SHA verification. Owner-private exact-record metadata lookup recovered a missing retained provider identity without duplicate upload. Both mirrored cover bindings, approval/checksum history, exact prospective rights record/registry and Reader bootstrap digest must remain consistent.437tests+19subtests pass; no public cover or audio activation claimed before merged-source deployment.
+
+Cover CI follow-up: the generic promoter did not refresh this title’s separately hash-bound publication manifest. Keep the existing artifact-equality test; refresh the real cover URL/artifact hashes and manifest digest, then rebind registry/bootstrap. An exact predecessor-actor fixture also required a narrow approved-successor case.452tests+19subtests pass; no deployment or failed-run retry occurred.
+
+Cover derived-artifact follow-up: after canonical cover/public-book/rights changes, regenerate the supported static SEO contract and retain precise registered decision fixtures. Both affected regression modules pass16tests; no checks waived or production change.

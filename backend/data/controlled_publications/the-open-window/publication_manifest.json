@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-open-window",
   "title": "The Open Window",
-  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "generated_at": "2026-10-26T10:43:42.390344+00:00",
   "content": {
     "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
     "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "bacd27a962ee2061ad1e0b9bb9e1a46b54c7dfdfdbb84ca094ca71bbea34320a",
+    "public_book": "0b905afdef81f1f7469b8f2351dbe92b3ea5882f2d244959eb1eac3ccfbaaafc",
     "reader_manifest": "febc6f5e9af834eb061dcf33a0e69ab53c2ed550fbb591016e7abd4ad0905a5b",
     "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
     "approval_evidence": "8fe88350e1c272d567ed80fe8b5a0a78475b86b2a20a6a110ce756a3ce509775"
   },
-  "manifest_sha256": "9c36e4d8e90ebcad07c5044a375221d6ceb6cc1b33ba9dc3f66bbc7c4c9d6464"
+  "manifest_sha256": "5deace1eee898b7ff0dc1552331ded685d9198f9c4c753008acd3397c875b88e"
 }

@@ -9,6 +9,10 @@
       "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
     },
     {
+      "file": "cover_approval_evidence.json",
+      "sha256": "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa"
+    },
+    {
       "file": "cover_provenance.json",
       "sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
     },
@@ -37,12 +41,20 @@
       "sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1"
     },
     {
+      "file": "evidence/review_a.json",
+      "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e"
     },
     {
       "file": "public_book.json",
-      "sha256": "bacd27a962ee2061ad1e0b9bb9e1a46b54c7dfdfdbb84ca094ca71bbea34320a"
+      "sha256": "0b905afdef81f1f7469b8f2351dbe92b3ea5882f2d244959eb1eac3ccfbaaafc"
     },
     {
       "file": "publication_authorization.json",
@@ -55,16 +67,8 @@
     {
       "file": "source_evidence.json",
       "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
-    },
-    {
-      "file": "evidence/review_a.json",
-      "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
-    },
-    {
-      "file": "evidence/review_b.json",
-      "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
     }
   ],
-  "generated_at": "2026-10-25T15:35:29Z",
+  "generated_at": "2026-10-26T10:23:01.242177+00:00",
   "slug": "the-open-window"
 }
