@@ -21,6 +21,8 @@ on:
       - frontend/static-seo/editorial-public.json
       - frontend/static-seo/controlled-publication-public.json
       - scripts/capture_editorial_support_owner_review.mjs
+      - scripts/lib/editorial_capture_readiness.mjs
+      - scripts/test_editorial_capture_readiness.mjs
       - scripts/test_about_contact_journey.mjs
       - scripts/generate_editorial_support_owner_review.py
       - .github/workflows/editorial-support-owner-review.yml
@@ -64,10 +66,13 @@ jobs:
           base_dir="$RUNNER_TEMP/editorial-support-base"
           mkdir -p "$base_dir"
           git archive "$BASE_SHA" | tar -x -C "$base_dir"
-          mkdir -p "$base_dir/scripts"
+          mkdir -p "$base_dir/scripts/lib"
           cp scripts/capture_editorial_support_owner_review.mjs "$base_dir/scripts/"
+          cp scripts/lib/editorial_capture_readiness.mjs "$base_dir/scripts/lib/"
           ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
           ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
+      - name: Test bounded editorial capture readiness
+        run: node --test scripts/test_editorial_capture_readiness.mjs
       - name: Capture base and proposed route states
         run: |
           base_dir="$RUNNER_TEMP/editorial-support-base"

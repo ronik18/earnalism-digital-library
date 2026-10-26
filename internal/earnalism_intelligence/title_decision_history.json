@@ -12008,5 +12008,14 @@
     "change": "Apply the already-qualified primary-review official Ubuntu archive selection to these two remaining review dependency steps. Same signedpackages/pinned3browsers and25min deadline retained; no oldjobrerun.",
     "validation": "Both workflow YAML and all Bash blocks parse; all review/capture steps retained. Fresh exact-head CI/reviews mandatory.",
     "production": "UNCHANGED_NO_PAID_SESSION"
+  },
+  "open_window_editorial_readiness_20261026": {
+    "at": "2026-10-26T17:56:38.015173+00:00",
+    "title": "the-open-window",
+    "decision": "EDITORIAL_RENDERED_READINESS_REPLACES_NETWORK_IDLE",
+    "finding": "Editorial40372297959 compiled/postbuild172snapshots passed then homepage goto waited networkidle60s and timedout. Idle global network is not requested route readiness.",
+    "change": "Bound document readiness, hydrated visible header, requested route, loadedfonts/logo beforecapture. Preserve pageerrors/focus/overflow/status checks. Copy helper into isolated base checkout and run unitgate beforeactualcaptures.",
+    "validation": "5modeled readiness/negative tests PASS; workflowYAML/Bash/basewiringPASS. Actualbrowsercapture remains hostedgate, not claimed locally because localPlaywright absent. No oldfailedrunretry.",
+    "production": "UNCHANGED_NO_PAID_SESSION"
   }
 }

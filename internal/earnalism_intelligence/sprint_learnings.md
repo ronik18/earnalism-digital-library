@@ -2762,3 +2762,5 @@ Runtime regression consumers must distinguish broad legacy audio OFF from explic
 Primary review dependency diagnosis:45min still expired on progressing slow Azure Ubuntu downloads. Use the official Ubuntu archive on this disposable runner while retaining exact signed package selection and allthreebrowser checks; do not keep extending timeouts or blindly rerun. Local shell startup stalls can be isolated with /bin/sh login=false without changing credentials/settings.
 
 The same slow regional Ubuntu mirror also exhausted dark-premium and focused review dependency deadlines. Apply the qualified official archive selection to those two steps, retaining signed packages/three browsers and deadlines; do not rerun the old jobs or relax capture gates.
+
+Editorial capture readiness: pagewide networkidle can time out despite a rendered app. Require visible hydration/requestedroute and loaded fonts/logo with bounded waits; preserve error/focus/overflow checks and fail withoutretry when a required stage is missing.5modeled cases PASS; real hosted capture stillrequired.
