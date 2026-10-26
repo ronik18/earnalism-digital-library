@@ -12,12 +12,16 @@ function qaPassed(value) {
 }
 
 function approvedPackageManifest(book, manifestAudio) {
+  const protectedPublicBinding = book?.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
+    && manifestAudio?.delivery_mode === "PROTECTED_PACKAGE_V2"
+    && qaPassed(book?.audio_qa_status)
+    && book?.audiobook_package_version === manifestAudio?.package_version;
   const slug = String(book?.slug || "").trim();
   return Boolean(slug)
     && String(manifestAudio?.asset_slug || "").trim() === slug
     && approved(manifestAudio?.release_gate)
     && qaPassed(manifestAudio?.qa_status)
-    && Boolean(String(manifestAudio?.provider || "").trim())
+    && (Boolean(String(manifestAudio?.provider || "").trim()) || protectedPublicBinding)
     && Boolean(String(manifestAudio?.version || "").trim())
     && /^sha256-[a-f0-9]{64}$/.test(String(manifestAudio?.package_version || "").trim());
 }

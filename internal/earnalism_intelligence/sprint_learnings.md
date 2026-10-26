@@ -2766,3 +2766,5 @@ The same slow regional Ubuntu mirror also exhausted dark-premium and focused rev
 Editorial capture readiness: pagewide networkidle can time out despite a rendered app. Require visible hydration/requestedroute and loaded fonts/logo with bounded waits; preserve error/focus/overflow checks and fail withoutretry when a required stage is missing.5modeled cases PASS; real hosted capture stillrequired.
 
 Publication metadata must survive the actual HTTP response model: pure catalogue projection tests did not catch PublicBookOut silently discarding the new safe delivery fields. Add response-model boundary regression before publicpromotion; keep internalpackage/receipt/rights fields and directmediaURL absent.55focused casesPASS; no paid session.
+
+BookDetail enrichment must recognize provider-private protected packages through exact canonical/manifest identity and approved QA, rather than treating omitted provider identity as an unreleased edition. Real public Book CTA acceptance is independent of direct Listener availability.44 targeted frontend tests PASS; no paid session.

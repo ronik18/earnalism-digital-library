@@ -12027,5 +12027,14 @@
     "validation": "55publicprojection/catalogue/protectedpackage testsPASS, actualFastAPIserialization included. No paid session or ledger change.",
     "production": "PR564_BACKEND_HEALTHY_FRONTEND_CANDIDATE_NOT_PROMOTED_PUBLIC_AVAILABILITY_UNVERIFIED",
     "next_action": "Focused backend-only successor PR required exactheadCI/finalreviews then exactmain backend deploy; reuse alreadytested unchangedfrontendcandidate only after realAPIqualification."
+  },
+  "open_window_provider_private_manifest_20261026": {
+    "title": "the-open-window",
+    "decision": "PROVIDER_PRIVATE_MANIFEST_ENRICHMENT_FIX",
+    "finding": "After565 exact backend correction and564 frontend promotion, direct public Listener shows full8:11 but BookDetail disables audio because manifest provider is intentionally private.",
+    "change": "Accept provider-free enrichment only with matching canonical and manifest protected delivery modes, immutable package identity, approved QA/release and exact slug. Legacy provider-backed behavior retained.",
+    "validation": "44 frontend access/presentation/audio safety tests PASS including seven positive/negative package cases.",
+    "production": "BOOK_DISCOVERY_HELD_NO_PAID_SESSION",
+    "next_action": "Exact-head CI/reviews then changed frontend manual release and actual public Book CTA acceptance."
   }
 }
