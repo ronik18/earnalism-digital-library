@@ -55,6 +55,7 @@ env \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
     backend/tests/test_open_window_audio_acceptance_budget.py \
+    backend/tests/test_audio_renewal_media_cookies.py \
     backend/tests/test_open_window_audio_cap_installer.py \
     backend/tests/test_open_window_audio_cap_live.py \
     backend/tests/test_open_window_audio_cap_interlock.py \

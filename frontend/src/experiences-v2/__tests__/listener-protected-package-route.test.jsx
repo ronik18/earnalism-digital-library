@@ -6,6 +6,8 @@ const mockUserApiGet = jest.fn();
 const mockStartReadingPassAudioSession = jest.fn();
 const mockEndReadingPassSession = jest.fn();
 const mockNavigate = jest.fn();
+const mockRenewReadingPassLease = jest.fn();
+const mockPlaybackReady = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>,
@@ -26,7 +28,7 @@ jest.mock("../../lib/api", () => ({
 jest.mock("../../lib/readingPassApi", () => ({
   startReadingPassAudioSession: (...args) => mockStartReadingPassAudioSession(...args),
   endReadingPassSession: (...args) => mockEndReadingPassSession(...args),
-  renewReadingPassLease: jest.fn(),
+  renewReadingPassLease: (...args) => mockRenewReadingPassLease(...args),
 }));
 
 jest.mock("../shared/ReleaseTruthAdapter", () => ({
@@ -57,9 +59,10 @@ jest.mock("../../lib/audioPackageManifest", () => ({
 
 jest.mock("../listener/ListenerExperienceV2", () => ({
   __esModule: true,
-  default: ({ onAuthorize, access, audioManifest, onNavigate }) => (
+  default: ({ onAuthorize, onBeforePlayback, access, audioManifest, onNavigate }) => (
     <section>
       <button type="button" onClick={onAuthorize}>Authorize Listening</button>
+      <button type="button" onClick={() => { void onBeforePlayback().then(mockPlaybackReady); }}>Resume</button>
       <button type="button" onClick={() => onNavigate("search", "/library?q=Mark%20Twain")}>Header Search</button>
       {access.authorized && audioManifest?.valid ? <p data-testid="listener-ready">Ready</p> : null}
     </section>
@@ -87,6 +90,8 @@ function flush() {
 describe("Listener protected package route", () => {
   beforeEach(() => {
     mockNavigate.mockReset();
+    mockRenewReadingPassLease.mockReset();
+    mockPlaybackReady.mockReset();
     mockUserApiGet.mockReset();
     mockStartReadingPassAudioSession.mockReset();
     mockEndReadingPassSession.mockReset();
@@ -159,4 +164,23 @@ describe("Listener protected package route", () => {
     await act(async () => { root.unmount(); });
     container.remove();
   });
+  test("resume renewals serialize and use the latest lease before media may play", async () => {
+    let finishFirst;
+    mockRenewReadingPassLease.mockImplementationOnce(() => new Promise(resolve => { finishFirst = resolve; }))
+      .mockResolvedValueOnce({ session_id: "isolated-audio-session", lease_token: "third-lease", lease_version: 3 });
+    const container = document.createElement("div"); document.body.appendChild(container);
+    const root = createRoot(container);
+    await act(async () => { root.render(<ListenerExperienceV2Route />); }); await flush();
+    const click = async label => { await act(async () => { [...container.querySelectorAll("button")].find(b => b.textContent === label).click(); }); await flush(); };
+    await click("Authorize Listening"); await click("Resume"); await click("Resume");
+    expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(1);
+    expect(mockPlaybackReady).not.toHaveBeenCalled();
+    expect(mockRenewReadingPassLease.mock.calls[0][0]).toMatchObject({ active: true, playbackState: "playing", sequence: 1 });
+    await act(async () => { finishFirst({ session_id: "isolated-audio-session", lease_token: "second-lease", lease_version: 2 }); }); await flush();
+    expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(2);
+    expect(mockRenewReadingPassLease.mock.calls[1][0]).toMatchObject({ sequence: 2, lease: { token: "second-lease", version: 2 } });
+    expect(mockPlaybackReady).toHaveBeenCalledTimes(2);
+    await act(async () => { root.unmount(); }); container.remove();
+  });
+
 });

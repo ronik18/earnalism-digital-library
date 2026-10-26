@@ -3771,6 +3771,29 @@
         "sourcePublished": false,
         "paidSessionStarted": false,
         "remainingGate": "Exact reviewed enforcement revision, qualified live launcher and provider traffic fence, private account approval and separate production authorization; cleanup remains separate."
+      },
+      "paused_audio_renewal_20261026": {
+        "timestamp": "2026-10-26T12:10:13.552385+05:30",
+        "workstream": "english_audio_go_live",
+        "slug_or_area": "the-open-window",
+        "decision": "prepare_paused_media_cookie_and_active_resume_fix",
+        "evidence": "One authorized normal production session: manifest200, initialRange206, pausedRenew200, subsequentMedia401, end200 andzeroDebit. Mounted regression reproduced cookie loss. Corrected paused renewal preserves cookies while native paused media denial remains; player serializes active renewal before play.",
+        "result": "LOCAL_REGRESSION_PASS_RELEASE_DRAFT_ACTIVATION_HELD",
+        "validation": {
+          "backend_focused": {
+            "passed": 74,
+            "skipped": 3
+          },
+          "backend_local_mongo_run": {
+            "passed": 45,
+            "real_mongo_cases": 3
+          },
+          "frontend": {
+            "passed": 19
+          },
+          "production_build": "LOCAL_ENV_MISSING_DECLARED_VERCEL_ANALYTICS_DEPENDENCY_CI_PENDING"
+        },
+        "next_action": "Run required exact-head CI and review; no second paid session or activation in this preparation scope."
       }
     },
     "sredni-vashtar": {
