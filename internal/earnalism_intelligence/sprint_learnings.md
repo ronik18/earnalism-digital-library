@@ -2764,3 +2764,5 @@ Primary review dependency diagnosis:45min still expired on progressing slow Azur
 The same slow regional Ubuntu mirror also exhausted dark-premium and focused review dependency deadlines. Apply the qualified official archive selection to those two steps, retaining signed packages/three browsers and deadlines; do not rerun the old jobs or relax capture gates.
 
 Editorial capture readiness: pagewide networkidle can time out despite a rendered app. Require visible hydration/requestedroute and loaded fonts/logo with bounded waits; preserve error/focus/overflow checks and fail withoutretry when a required stage is missing.5modeled cases PASS; real hosted capture stillrequired.
+
+Publication metadata must survive the actual HTTP response model: pure catalogue projection tests did not catch PublicBookOut silently discarding the new safe delivery fields. Add response-model boundary regression before publicpromotion; keep internalpackage/receipt/rights fields and directmediaURL absent.55focused casesPASS; no paid session.
