@@ -11948,5 +11948,12 @@
     "change": "Recognize only canonical protected-package title approvals in snapshot consumers, align released access copy/canary, rebind exact existing Reader authority and validate separate audio proof instead of treating Reader rights as audio authority. Unlisted approved-audio negative test retained.",
     "validation": "64 focused canary/source-clearance tests PASS;172 generated snapshots3647 assertionsPASS. No failed-provider rerun or waiver.",
     "next_action": "Fresh exact-head CI/reviews on corrected source"
+  },
+  "open_window_singleton_release_fixture_20261026": {
+    "at": "2026-10-26T15:37:28.207797+00:00",
+    "title": "the-open-window",
+    "decision": "EXACT_SINGLE_TITLE_AUDIO_AUTHORITY_FIXTURE_UPDATED",
+    "finding": "Catalogue workflow reached a remaining backend fixture asserting zero AUDIO_ENABLED_SLUGS. Production intentionally permits only the independently approved OpenWindow package.",
+    "validation": "Exact singleton assertions plus explicit unrelated-title denial retained;39backend catalogue cases PASS. No runtime change or deployment."
   }
 }

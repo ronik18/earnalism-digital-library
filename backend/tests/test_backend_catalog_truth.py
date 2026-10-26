@@ -121,7 +121,9 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
     assert "book-2b9853ec52" not in catalog_truth.AUDIO_ENABLED_SLUGS
-    assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
+    assert catalog_truth.AUDIO_ENABLED_SLUGS == {"the-open-window"}
+    assert catalog_truth.PROTECTED_PACKAGE_PUBLIC_SLUGS == {"the-open-window"}
+    assert "a-ghost-story" not in catalog_truth.AUDIO_ENABLED_SLUGS
     live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
     assert live_slugs == set(CURRENT_RELEASED_SLUGS)
     assert "book-2b9853ec52" not in live_slugs
