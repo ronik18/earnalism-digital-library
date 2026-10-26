@@ -23,6 +23,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
   const presentation = listenerReleasePresentation(book, { fixture });
   const audioRef = useRef(null);
   const pendingOffsetRef = useRef(null);
+  const pausedSeekRef = useRef(null);
   const pendingOffsetSegmentRef = useRef("");
   const resumeAfterTransitionRef = useRef(false);
   const prefetchedSegmentsRef = useRef(new Set());
@@ -70,6 +71,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     const initial = validSaved
       ? savedTrack
       : selectAudioTrack({ manifest: audioManifest });
+    pausedSeekRef.current = null;
     prefetchedSegmentsRef.current.clear();
     pendingOffsetRef.current = validSaved ? saved.offset : 0;
     pendingOffsetSegmentRef.current = initial.segmentId;
@@ -116,6 +118,13 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     if (!audioManifest?.valid) return;
     const target = audioSegmentAtMediaPosition(audioManifest, clampPlaybackTime(next, totalDuration));
     if (!target?.segmentId) return;
+    // A paused native seek may issue a new Range request. Defer both the
+    // offset and segment change until active renewal permits media access.
+    if (!playing) {
+      pausedSeekRef.current = target;
+      setTime(clampPlaybackTime(next, totalDuration));
+      return;
+    }
     if (target.segmentId !== activeSegment?.segmentId) {
       pendingOffsetRef.current = target.offsetSeconds;
       pendingOffsetSegmentRef.current = target.segmentId;
@@ -135,11 +144,21 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     if (audio.paused) {
       Promise.resolve().then(() => onBeforePlayback?.()).then(() => {
         if (audioRef.current !== audio || !audio.isConnected) return;
+        const target = pausedSeekRef.current;
+        pausedSeekRef.current = null;
+        if (target && target.segmentId !== activeSegment?.segmentId) {
+          pendingOffsetRef.current = target.offsetSeconds;
+          pendingOffsetSegmentRef.current = target.segmentId;
+          resumeAfterTransitionRef.current = true;
+          setSegmentId(target.segmentId);
+          return;
+        }
+        if (target) audio.currentTime = target.offsetSeconds;
         return requestAudiobookPlayback(audio);
       }).catch(() => onMediaError?.());
     }
     else audio.pause();
-  }, [canPlay, onBeforePlayback, onMediaError]);
+  }, [activeSegment?.segmentId, canPlay, onBeforePlayback, onMediaError]);
 
   const handleLoadedMetadata = useCallback(() => {
     const audio = audioRef.current;

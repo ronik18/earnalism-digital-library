@@ -1,15 +1,17 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 const mockPlay = jest.fn();
+let mockSeekSegment = "segment-1";
 const mockTrack = { segmentId: "segment-1", audioUrl: "/api/reader/book/test/audiobook/segment-1", cumulativeStartMs: 0 };
 jest.mock("react-router-dom", () => ({ Link: ({ to, children }) => <a href={to}>{children}</a>, NavLink: ({ to, children }) => <a href={to}>{children}</a>, useLocation: () => ({ pathname: "/listener/test" }), useNavigate: () => jest.fn() }), { virtual: true });
 jest.mock("../shared/ReleaseTruthAdapter", () => ({ listenerReleasePresentation: () => ({ title: "Test", author: "Test", canRender: true, fixture: false }) }));
-jest.mock("../../lib/audioPackageManifest", () => ({ selectAudioTrack: () => mockTrack, audioSegmentAtMediaPosition: () => mockTrack }));
+jest.mock("../../lib/audioPackageManifest", () => ({ selectAudioTrack: ({ preferredSegmentId }) => preferredSegmentId === "segment-2" ? { ...mockTrack, segmentId: "segment-2", audioUrl: "/api/reader/book/test/audiobook/segment-2" } : mockTrack, audioSegmentAtMediaPosition: () => ({ ...mockTrack, segmentId: mockSeekSegment, offsetSeconds: 0.5 }) }));
 jest.mock("../../lib/audiobookPlayback", () => ({ loadAudiobookProgress: () => null, saveAudiobookProgress: jest.fn(), shouldPrefetchNextSegment: () => false, requestAudiobookPlayback: (...args) => mockPlay(...args) }));
 import ListenerExperienceV2 from "../listener/ListenerExperienceV2";
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
-test.each(["success", "denied", "unmounted"])("media waits for active renewal: %s", async outcome => {
+test.each(["success", "denied", "unmounted", "cross-segment"])("media waits for active renewal: %s", async outcome => {
   mockPlay.mockReset(); mockPlay.mockResolvedValue();
+  mockSeekSegment = outcome === "cross-segment" ? "segment-2" : "segment-1";
   const pause = jest.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
   let resolve, reject;
   const before = jest.fn(() => new Promise((yes, no) => { resolve = yes; reject = no; }));
@@ -17,12 +19,26 @@ test.each(["success", "denied", "unmounted"])("media waits for active renewal: %
   const container = document.createElement("div"); document.body.appendChild(container);
   const root = createRoot(container);
   await act(async () => { root.render(<ListenerExperienceV2 book={{ slug: "test" }} audioManifest={{ valid: true, packageVersion: "test", durationMs: 1000, tracks: [] }} access={{ authorized: true }} onBeforePlayback={before} onMediaError={error} />); });
+  const seekSetter = jest.spyOn(HTMLMediaElement.prototype, "currentTime", "set");
+  await act(async () => { container.querySelector('[aria-label="Forward 15 seconds"]').click(); });
+  expect(seekSetter).not.toHaveBeenCalled();
+  expect(container.querySelector("audio").getAttribute("src")).toContain("segment-1");
   await act(async () => { container.querySelector('[aria-label="Play approved audiobook"]').click(); });
   expect(before).toHaveBeenCalledTimes(1); expect(mockPlay).not.toHaveBeenCalled();
   if (outcome === "unmounted") await act(async () => { root.unmount(); });
   await act(async () => { if (outcome === "denied") reject(new Error("denied")); else resolve(); });
-  expect(mockPlay).toHaveBeenCalledTimes(outcome === "success" ? 1 : 0);
+  if (outcome === "cross-segment") {
+    const audio = container.querySelector("audio");
+    expect(mockPlay).not.toHaveBeenCalled();
+    expect(audio.getAttribute("src")).toContain("segment-2");
+    Object.defineProperty(audio, "readyState", { configurable: true, value: 1 });
+    await act(async () => { audio.dispatchEvent(new Event("loadedmetadata")); });
+  }
+  const succeeded = outcome === "success" || outcome === "cross-segment";
+  expect(mockPlay).toHaveBeenCalledTimes(succeeded ? 1 : 0);
+  expect(seekSetter).toHaveBeenCalledTimes(succeeded ? 1 : 0);
+  if (succeeded) expect(seekSetter).toHaveBeenCalledWith(0.5);
   expect(error).toHaveBeenCalledTimes(outcome === "denied" ? 1 : 0);
   if (outcome !== "unmounted") await act(async () => { root.unmount(); });
-  container.remove(); pause.mockRestore();
+  container.remove(); pause.mockRestore(); seekSetter.mockRestore();
 });
