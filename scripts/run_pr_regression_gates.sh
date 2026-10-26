@@ -32,6 +32,9 @@ env \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
+echo "==> Protected package publication proof and scope qualification"
+"$PYTHON_BIN" -m pytest -q backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
+
 echo "==> Audio transport, current release containment, and revised reader-only manuscript"
 env \
   ENVIRONMENT=uat \
