@@ -11913,5 +11913,13 @@
     "validation": "437 tests and19subtests PASS; prospective India reader/cover binding preserved, old registered records retained; all audio fields unchanged.",
     "production": "NOT_DEPLOYED",
     "next_action": "Exact-head CI/finalreview then backend deployment of merged source, verify book/Reader/Listener both new covers. No reupload or Railway-variable change."
+  },
+  "open_window_cover_manifest_binding_followup_20261026": {
+    "at": "2026-10-26T10:44:14.921277+00:00",
+    "title": "the-open-window",
+    "decision": "COVER_PUBLICATION_MANIFEST_BINDING_CORRECTED",
+    "finding": "PR562 initial regression exposed one real stale publication-manifest public-book binding and one hardcoded predecessor-actor expectation. No production deployment occurred.",
+    "change": "Refresh existing manifest front cover/artifact hashes/canonical digest, rebind rights record registry/bootstrap, retain exact checks and add durable coverage.",
+    "validation": "452 tests and19subtests PASS including controlled launch parity; failed-provider run not rerun, fresh source commit required."
   }
 }

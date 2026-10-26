@@ -8,7 +8,7 @@ EXPECTED={'front':'ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838b
 def read(path):return json.loads(path.read_text())
 def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
     a=ROOT/'data/controlled_publications/the-open-window';b=ROOT/'backend/data/controlled_publications/the-open-window'
-    for name in ['public_book.json','reader_manifest.json','approval_evidence.json','checksum_manifest.json','rights_decision.json','cover_approval_evidence.json']:
+    for name in ['public_book.json','reader_manifest.json','approval_evidence.json','checksum_manifest.json','rights_decision.json','cover_approval_evidence.json','publication_manifest.json']:
         assert (a/name).read_bytes()==(b/name).read_bytes()
     for row in read(b/'checksum_manifest.json')['files']:
         assert hashlib.sha256((b/row['file']).read_bytes()).hexdigest()==row['sha256']
@@ -23,6 +23,13 @@ def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
     assert EXPECTED['front'] in projected['cover_url']
     assert EXPECTED['back'] in projected['back_cover_url']
     assert projected['audio_enabled'] is False
+    from backend.publication_manifest import canonical_sha256
+    manifest=read(b/'publication_manifest.json')
+    assert manifest['manifest_sha256']==canonical_sha256(manifest)
+    assert manifest['reader_release']['cover_url']==book['cover_url']
+    for name,digest in manifest['artifacts'].items():
+        assert hashlib.sha256((b/(name+'.json')).read_bytes()).hexdigest()==digest
+
     assert book['audiobook_package_canary']['candidate_release_descriptor_sha256']=='028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2'
 def test_cover_successor_preserves_reader_permissions_and_audio_hold():
     directory=ROOT/'backend/data/controlled_publications/the-open-window';decision=read(directory/'rights_decision.json');registry,_=load_production_registry()
