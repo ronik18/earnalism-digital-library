@@ -2738,3 +2738,5 @@ Cover derived-artifact follow-up: after canonical cover/public-book/rights chang
 ## Account-wide fractional usage — 26 October 2026
 
 Flooring each short renewal loses legitimate active time. Carry integer microseconds on the account in the same transaction as session and wallet transitions, including across endings and transfers; do not round every heartbeat upward. Keep paused/buffering/free time free. Customer history must page all rows deterministically, show exact seconds, and discard late results after account changes.131backend,19frontend,46workflow checks pass plus isolated real-Mongo three-speed/transfer/rapid-renewal cases; production not yet changed.
+
+Account pagination capture follow-up: update the actual authenticated screenshot fixture when moving UI to a new endpoint. Keep HTTP failures in capture gates; add the exact page shape rather than suppressing failed requests.
