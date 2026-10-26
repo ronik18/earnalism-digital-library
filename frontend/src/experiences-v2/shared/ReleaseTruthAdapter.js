@@ -50,7 +50,7 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     release: { status: "transport_canary", canShowControls: true },
     packageVersion: canary.package_version,
     title: book.title, author: book.author,
-    chapterLabel: "Controlled listening check",
+    chapterLabel: book.chapter_label || "Full audiobook",
     durationSeconds: Number(canary.duration_ms) / 1000,
     publicPreviewSeconds: 0,
   };

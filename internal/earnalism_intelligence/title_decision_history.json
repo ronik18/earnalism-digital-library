@@ -11891,5 +11891,15 @@
     "paidSessionStarted": false,
     "privateCredentialsAccessed": false,
     "remainingExecutionGates": "Exact-source CI/review, one healthy merged-main backend deployment, private preflight/readiness and explicit scoped execution authorization."
+  },
+  "open_window_buffering_billing_20261026": {
+    "at": "2026-10-26T10:00:17.346169+00:00",
+    "title": "the-open-window",
+    "decision": "BUFFERING_BILLING_FIX_TESTED_NOT_DEPLOYED",
+    "finding": "Native play intervals388.946s vs wallet581s is a diagnostic, not a proven192.054s refund. Before source loading the Listener signalled playing; transitions and waiting could remain billable.",
+    "change": "Use existing nonbillable buffering media authority before source requests; only native playing starts billing; immediately queue observed pause/wait/play states without coalescing them. Replace internal controlled-check label.",
+    "validation": "27frontend and36service tests PASS;1x/1.25x/1.5x clock/positions,device conflict+transfer,duplicate termination and100renewal races; production device/speed billing fairness not yet verified.",
+    "production": "UNCHANGED_ACTIVATION_HELD",
+    "next_action": "Exact-head CI/published review; frontend-only candidate then bounded justified acceptance, no refund or blind paid repeat."
   }
 }

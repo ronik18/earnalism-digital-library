@@ -47,3 +47,14 @@ test("denied transition leaves source unchanged and reports media failure",async
 test("pending transition cannot update media after unmount",async()=>{
  const x=await setup();await act(async()=>x.audio.dispatchEvent(new Event("ended")));await x.cleanup();await act(async()=>x.resolve());expect(mockPlay).not.toHaveBeenCalled();expect(x.complete).not.toHaveBeenCalled();
 });
+
+test.each([1,1.25,1.5])("native waiting and playing, not playback rate %s, control billable state",async(rate)=>{
+ const x=await setup();
+ await act(async()=>{const select=x.container.querySelector('select');select.value=String(rate);select.dispatchEvent(new Event('change',{bubbles:true}));x.audio.dispatchEvent(new Event('play'))});
+ expect(x.states).not.toHaveBeenCalledWith('playing');
+ await act(async()=>x.audio.dispatchEvent(new Event('playing')));expect(x.states).toHaveBeenLastCalledWith('playing');
+ await act(async()=>x.audio.dispatchEvent(new Event('waiting')));expect(x.states).toHaveBeenLastCalledWith('buffering');
+ await act(async()=>x.audio.dispatchEvent(new Event('playing')));expect(x.states).toHaveBeenLastCalledWith('playing');
+ await act(async()=>x.audio.dispatchEvent(new Event('pause')));expect(x.states).toHaveBeenLastCalledWith('paused');
+ await x.cleanup();
+});
