@@ -203,3 +203,33 @@ def test_runtime_rights_boundary_allows_only_exactly_accepted_launch_titles(monk
             request_with_headers({}, path=f"/api/books/{slug}"), country="US"
         )
         assert unaccepted_country.passed is False
+
+
+def test_http_order_admission_requires_signed_india_even_with_reader_off(monkeypatch):
+    import httpx
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", False)
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    path = "/api/payments/topup"
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+
+    async def exercise():
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=server.app), base_url="https://isolated.test") as client:
+            # No identity or payment credentials. Admission to the real route
+            # ends at its existing authentication gate; no provider/DB calls.
+            for headers in ({}, {"x-vercel-ip-country": "IN"}):
+                result = await client.post(path, headers=headers, json={"pack_id": "30m"})
+                assert result.status_code == 451
+            for country in ("US", "GB", "IN"):
+                headers = {
+                    SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+                    COUNTRY_HEADER: country,
+                    TIMESTAMP_HEADER: str(timestamp),
+                    SIGNATURE_HEADER: request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, country),
+                }
+                result = await client.post(path, headers=headers, json={"pack_id": "30m"})
+                assert result.status_code == (401 if country == "IN" else 451)
+            monkeypatch.delenv("EARNALISM_RELEASE_PROXY_SECRET")
+            result = await client.post(path, json={"pack_id": "30m"})
+            assert result.status_code == 503
+    asyncio.run(exercise())

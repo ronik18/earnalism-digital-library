@@ -27,6 +27,10 @@ function protectedReaderPath(pathname) {
     || ["/api/reading-pass/sessions/start", "/api/reading-pass/sessions/transfer", "/api/reading-pass/leases/renew"].includes(pathname);
 }
 
+function protectedPurchasePath(pathname) {
+  return pathname === "/api/payments/topup";
+}
+
 function releaseSignature(secret, method, pathname, scope, timestamp, country) {
   return crypto.createHmac("sha256", secret)
     .update(`${method.toUpperCase()}\\n${pathname}\\n${scope}\\n${timestamp}\\n${country}`)
@@ -114,7 +118,7 @@ module.exports = async function releaseProxy(req, res) {
     headers.set(name, Array.isArray(value) ? value.join(",") : value);
   }
 
-  const protectedPath = protectedReaderPath(incoming.pathname);
+  const protectedPath = protectedReaderPath(incoming.pathname) || protectedPurchasePath(incoming.pathname);
   if (protectedPath) {
     const secret = process.env.EARNALISM_RELEASE_PROXY_SECRET || "";
     if (secret.length < 32) {
@@ -130,7 +134,7 @@ module.exports = async function releaseProxy(req, res) {
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.end(JSON.stringify({ detail: {
         code: "RELEASE_TERRITORY_DENIED",
-        message: "This Reader release is available in India only.",
+        message: protectedPurchasePath(incoming.pathname) ? "Reading Pass purchases are currently available in India only." : "This Reader release is available in India only.",
         country: /^[A-Z]{2}$/.test(country) ? country : null,
         allowed_countries: ["IN"],
       } }));
@@ -182,3 +186,5 @@ module.exports = async function releaseProxy(req, res) {
 
 module.exports.protectedReaderPath = protectedReaderPath;
 module.exports.releaseSignature = releaseSignature;
+
+module.exports.protectedPurchasePath = protectedPurchasePath;

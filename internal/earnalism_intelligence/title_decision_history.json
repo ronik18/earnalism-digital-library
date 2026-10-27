@@ -12044,5 +12044,22 @@
     "change": "Reuse exact protected package allowlist plus actual delivery mode and safe release controls; global legacy audio remains false.",
     "validation": "43frontend testsPASS including exact-title discovery and six negative cases; source pins refreshed.",
     "production": "HELD_LIBRARY_DISCOVERY_NO_PAID_SESSION"
+  },
+  "international_launch_minimum_compliance_20261027": {
+    "state": "LOCAL_IMPLEMENTED_INTERNATIONAL_RELEASE_HOLD",
+    "titles": [
+      "a-ghost-story",
+      "the-tell-tale-heart"
+    ],
+    "proposed_first_overseas_territory": "US",
+    "evidence": "internal/legal/international_launch_20261027/README.md",
+    "existing_accepted_territories": [
+      "IN"
+    ],
+    "rights_registry_changed": false,
+    "publication_changed": false,
+    "production_changed": false,
+    "audio_scope_changed": false,
+    "next_action": "Resolve parked PR540 source and complete exact title, merchant, tax and privacy operating facts before international activation."
   }
 }

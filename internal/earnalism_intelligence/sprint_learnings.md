@@ -2770,3 +2770,13 @@ Publication metadata must survive the actual HTTP response model: pure catalogue
 BookDetail enrichment must recognize provider-private protected packages through exact canonical/manifest identity and approved QA, rather than treating omitted provider identity as an unreleased edition. Real public Book CTA acceptance is independent of direct Listener availability.44 targeted frontend tests PASS; no paid session.
 
 Actual audiobook Library filter acceptance is separate from Book CTA and Listener. Keep the legacy global audio switch false while respecting exact protected-package release allowlists; negative unrelated/malformed/held cases remain hidden.43focused testsPASS.
+
+## 2026-10-27 — Minimum international compliance preparation
+
+- A live payment API key is not evidence of international merchant acceptance, destination-tax treatment or completed provider acceptance. Record those separately and retain differing earlier observations.
+- Keep a short proposed first-country catalogue outside runtime rights registries until genuine exact-component decisions pass; original public-domain text does not automatically clear every edition layer.
+- With optional analytics disabled, suppress helper-created campaign/session storage as well as network delivery and Vercel measurement injection.
+- Enforce purchase geography at the backend before order creation, independently of the Reader exposure flag; preserve refund, verification and webhook paths.
+- Git worktree enumeration can stall on iCloud dataless HEAD metadata. Hydrate existing metadata rather than delete historical worktrees or bypass worktree protections.
+- Reuse the repository CI dependency install mode (`npm ci --legacy-peer-deps`) without changing the dependency lock. Local tests/build passed; full provider/HTTP financial acceptance and exact-head remote CI remain unproven.
+- Evidence and next integration action: `internal/legal/international_launch_20261027/README.md`.
