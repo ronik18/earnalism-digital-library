@@ -1,30 +1,10 @@
 {
   "slug": "radharani",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-27T19:35:17.361100+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "99d60905465170aee59619d35edfce5a48d5ef14bc164fb4467518b512e241a7"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "e0f66981a3df09f6d2fd5052b98779ce8de72ea7eec6bb5477f3df2ce882af66"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -57,6 +37,26 @@
     {
       "file": "chapters/chapter-008.json",
       "sha256": "60a3b81e22d84aefdfb6825673ecb5962b23f225de3f3d26c4adc3f25140426e"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "e0f66981a3df09f6d2fd5052b98779ce8de72ea7eec6bb5477f3df2ce882af66"
+    },
+    {
+      "file": "license_notice.json",
+      "sha256": "c094d72c1ea6593668dd7438a7ad50eb5cddbeac9160c262f535da6673b7d54a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ce78e6f87b9987ddb90ed524837c798b7fc26d395c3db7f31ca72f7e52efc925"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
     }
   ]
 }

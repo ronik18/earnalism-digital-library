@@ -2803,4 +2803,6 @@ Synthetic historical installer tests need their own exact fixture-source binding
 
 - Explicit territory-specific rights acceptance can be captured as isolated schema-valid successor records without replacing active IN decisions or widening runtime territory/commerce gates. Preserve exact packet/draft hashes, actual human attribution and acceptance timestamp independently of the approved validity window.
 
+- Required transcription attribution is a legal exception to internal-only source metadata. Add its hash-bound public notice with unchanged chapters and reconcile mirrors/manifests/retained IN metadata successors; never silently extend territory or call a later reprint date alone a new copyright.
+
 - A single actual hash-bound human rights decision can cover a catalogue batch while preserving prior decisions and all independent release gates. Bind accepted records only after the actual reply, retain exact proposals/receipt, disclose edition differences, and keep runtime activation separate from isolated rights intake.
