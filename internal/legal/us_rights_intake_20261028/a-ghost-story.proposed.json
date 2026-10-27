@@ -1,0 +1,49 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261027-a-ghost-story-text-reader",
+  "edition_id": "a-ghost-story",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "approval_evidence": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "checksum_manifest": "aae0dfb3f5192945b1459e0dfa2a41e4c9e9908d0b175332ef8830879fe9b232",
+    "public_book": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "publication_manifest": "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0",
+    "reader_manifest": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+    "source_evidence": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+    "cover_approval_evidence": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd",
+    "chapter-001": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+    "cover_front": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+    "cover_back": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-27T00:00:00+00:00",
+  "valid_until": "2027-10-27T00:00:00+00:00",
+  "basis": "US-only proposal for the exact original English text and identified covers. The underlying nineteenth-century published text is public domain in the United States, supported by retained edition evidence, the source publisher’s current US copyright status and US Copyright Office duration guidance. Reuse the owner-supplied pilot cover-authorship provenance and exact canonical front/back approvals. The optional blank signature form is not treated as missing new evidence or as a new signed declaration. Existing India authority stays unchanged. No audio, downloads, generation, payment activation, publication or deployment is approved by preparing this proposal.",
+  "evidence_sha256": [
+    "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+    "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd",
+    "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+    "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0",
+    "8ee0b3978821236944094336b0628c50f1e46bf3be0d66981cd3361a3138bcfd",
+    "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "aae0dfb3f5192945b1459e0dfa2a41e4c9e9908d0b175332ef8830879fe9b232",
+    "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+    "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+    "cd3380b7e0b462030e4c84a6cd43049387604365f6e3db937ef1e6c0c8f39756",
+    "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

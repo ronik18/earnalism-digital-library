@@ -12140,5 +12140,15 @@
     "qualification": "12selectornegative/positive testsPASS; actualpinnedvercel62.1.0 selection15377entriesPASS;9criticalassettests and nativecriticalassetcheckPASS",
     "production_changed": false,
     "next_action": "FreshheadallrequiredCI; no oldjobrerun, gatewaiver, deployment or paidactivity"
+  },
+  "us_reader_rights_intake_20261028": {
+    "titles": [
+      "a-ghost-story",
+      "the-tell-tale-heart"
+    ],
+    "state": "OWNER_ACCEPTED_ISOLATED_SOURCE_INTAKE",
+    "evidence": "internal/legal/us_rights_intake_20261028/intake.json",
+    "runtime_activation": false,
+    "production_changed": false
   }
 }

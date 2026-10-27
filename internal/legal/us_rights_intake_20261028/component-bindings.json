@@ -1,0 +1,109 @@
+{
+  "revision": "633caa1ac92d21d2aacc0e1d5f7a20151e9484f4",
+  "result": "PASS",
+  "component_checks": [
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/approval_evidence.json",
+      "sha256": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/chapters/chapter-001.json",
+      "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/checksum_manifest.json",
+      "sha256": "aae0dfb3f5192945b1459e0dfa2a41e4c9e9908d0b175332ef8830879fe9b232"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/cover_approval_evidence.json",
+      "sha256": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/public_book.json",
+      "sha256": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/publication_manifest.json",
+      "sha256": "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/reader_manifest.json",
+      "sha256": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/rights_decision.json",
+      "sha256": "8ee0b3978821236944094336b0628c50f1e46bf3be0d66981cd3361a3138bcfd"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "backend/data/controlled_publications/a-ghost-story/source_evidence.json",
+      "sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+    },
+    {
+      "slug": "a-ghost-story",
+      "path": "internal/legal/india_launch_compliance_packet_20260922/cover-artwork-declaration.md",
+      "sha256": "cd3380b7e0b462030e4c84a6cd43049387604365f6e3db937ef1e6c0c8f39756"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/approval_evidence.json",
+      "sha256": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/chapters/chapter-001.json",
+      "sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/checksum_manifest.json",
+      "sha256": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/cover_approval_evidence.json",
+      "sha256": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/public_book.json",
+      "sha256": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/publication_manifest.json",
+      "sha256": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/reader_manifest.json",
+      "sha256": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/rights_decision.json",
+      "sha256": "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "backend/data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+      "sha256": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/source_rights_evidence.json",
+      "sha256": "bf7554b240dda2f0901ca29d1eae5b6593100dd741047956918fc8dac29c1844"
+    }
+  ],
+  "count": 20,
+  "rights_accepted": false,
+  "runtime_registry_modified": false
+}
