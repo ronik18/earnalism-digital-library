@@ -10,8 +10,9 @@ import subprocess
 import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = '633caa1ac92d21d2aacc0e1d5f7a20151e9484f4'
-GUARD = '633caa1ac92d21d2aacc0e1d5f7a20151e9484f4'
+BASE = 'f98ce89f02f55e688e21a4ed5e02ca4b6c516d16'
+GUARD = 'f98ce89f02f55e688e21a4ed5e02ca4b6c516d16'
+BACKEND_TREE = '1dc5a64416b92980e31119bea76f9333e09f7bcd'
 CLOSED_BRANCH = '''
     if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
         return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED"}}, headers={"Cache-Control": "no-store"})
@@ -51,6 +52,8 @@ def build(output):
     output = output.resolve()
     if output.exists() or output.is_relative_to(ROOT):
         raise ValueError('Use a new output directory outside the repository')
+    if git('rev-parse', BASE + ':backend').decode().strip() != BACKEND_TREE:
+        raise ValueError('Frozen backend subtree mismatch')
     base = git('show', BASE + ':backend/server.py').decode()
     approved = git('show', GUARD + ':backend/server.py').decode()
     server = guard_only_server(base, approved).encode()
@@ -72,6 +75,7 @@ def build(output):
                                         'mode': oct(p.stat().st_mode & 0o777)}
              for p in sorted(output.rglob('*')) if p.is_file()}
     report = {'status': 'OFFLINE_SOURCE_BUILT_NOT_RELEASE_QUALIFIED', 'base': BASE,
+              'backend_subtree': BACKEND_TREE,
               'guard_source': GUARD, 'changed_paths': ['backend/server.py'],
               'files': files, 'source_manifest_sha256': hashlib.sha256(
                   json.dumps(files, sort_keys=True).encode()).hexdigest(),

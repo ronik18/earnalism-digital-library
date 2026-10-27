@@ -7,11 +7,20 @@ unchanged. Do not dispatch it with substituted source pins for this release.
 
 ## Immutable application and controller roles
 
-`india_release_source_contract.json` selects merged application12ad6209 and
-backend artifactaf7571ae, whose backend subtree is identical. Frontend source is
-the application commit. These commits genuinely have the required ancestry.
-Reviewed squash heads are linked by full-root equality and successful exact-head
-checks, rather than a false assertion that the squash source is its ancestor.
+`india_release_source_contract.json` now selects the actual merged577 application
+and coherent frontend/backend Git source `f98ce89f`. Each component has its own
+frozen subtree. These are source identities, not provider artifact identities.
+The full root matches reviewed577 head `eb0b2504`; successful applicable checks
+are required on that exact head. No production workflow pin or approval changes.
+
+The selected frontend source differs from the prior575 artifact in one generated
+metadata file. Prior575 UI/browser evidence is reused only after proving its
+merged/reviewed root equality, ancestor relation, the single permitted path and
+frozen old/new blob IDs, and exactly two Radharani attribution-derived digest
+updates. Every other frontend byte and metadata field must be unchanged. A new
+frontend build is required under later authority; the old binary is not reused.
+Reviewed squash heads are linked by exact root equality, rather than a false
+assertion that the squash source is its ancestor.
 The controller may change tooling only: its backend/frontend subtrees must still
 equal the selected application. Source qualification does not qualify that new
 controller's own CI or imply its approval.
@@ -46,7 +55,7 @@ the preparation PR remain necessary before selecting its merged controller SHA.
    equality across providers. Never invent or transmit country assertions from
    a client to obtain admission. Retain IN-only method/path/country signatures.
 5. Do not assume backend-first deployment is compatible. The currently retained
-   frontendaf4f9d0f does not sign `/api/payments/topup`; new backendaf7571ae
+   frontendaf4f9d0f does not sign `/api/payments/topup`; the selected guarded backend
    rejects it. A separately reviewed frontend-first compatibility transition is
    required before backend enforcement, or another reviewed fail-closed staged
    transition. Verify actual source, startup/database health and config; stage a
