@@ -2818,3 +2818,6 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - An attribution repair can change generated frontend metadata while leaving UI code unchanged. Do not reuse the old frontend artifact hash: select the real coherent source and reuse prior UI evidence only across frozen, semantically verified metadata deltas. Rebind offline containment to the repaired source; historical variants are not current provider qualification.
 
 - A single actual hash-bound human rights decision can cover a catalogue batch while preserving prior decisions and all independent release gates. Bind accepted records only after the actual reply, retain exact proposals/receipt, disclose edition differences, and keep runtime activation separate from isolated rights intake.
+
+### Preserved529 residual source, 28 October 2026
+Four payment functions are already integrated exactly; current refund recipient/modified-count guards supersede the old draft. Recover only missing source and signup-race behaviour, with49 offline/dummy tests passing. Keep old high-zoom qualification unresolved and preserve current Listener, India entitlements and accepted US scope.

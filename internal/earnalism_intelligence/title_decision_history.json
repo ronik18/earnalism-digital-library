@@ -12187,5 +12187,15 @@
     "guarded_provider_artifact_qualified": false,
     "execution_authorized": false,
     "next_action": "Sole Integration Lane review and exact-head qualification; no workflow dispatch"
+  },
+  "preserved529_residual_source_20261028": {
+    "date": "2026-10-28",
+    "decision": "RECOVER_ONLY_RESIDUAL_529_SOURCE_AND_SIGNUP_RACE_GUARD",
+    "base": "8c92e3af16c69643c96e88037a6c80c96c051849",
+    "preserved_head": "589ff3ced63e758665ad3d65f0a362fc80a9255a",
+    "scope": "Restore retained-edition offline validator and exact literal-angle Reader content handling; translate only known ascending email index signup race. Preserve latest refund recipient checks and already-integrated payment functions; no old Listener or workflow restore.",
+    "qualification": "49 focused dummy/offline tests PASS; source preparation only, no provider/customer writes",
+    "production_changed": false,
+    "next_action": "Finish residual receipt UI/test intent comparison, wire required tests and qualify coherent exact-head CI/review before merge"
   }
 }
