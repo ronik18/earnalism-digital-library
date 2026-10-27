@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { chmod, mkdtemp, mkdir, readFile, realpath, writeFile, symlink } from 'node:fs/promises';
+import { chmod, mkdtemp, mkdir, readFile, realpath, writeFile, symlink, unlink } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -25,6 +25,46 @@ test('real selected bytes pass; changed or missing bytes fail', async () => {
   await assert.rejects(validateSelectedFiles(root, manifest), /bytes changed/);
   manifest.files[0].path = 'missing';
   await assert.rejects(validateSelectedFiles(root, manifest), /ENOENT/);
+});
+
+test('internal file symlink retains SDK link bytes and independently selected target bytes', async () => {
+  const { root, file, manifest } = await fixture();
+  await symlink('asset.txt', path.join(root, 'logo-link'));
+  const text = Buffer.from('asset.txt');
+  const link = { path: 'logo-link', mode: 0o120777, size: text.length,
+    sha: createHash('sha1').update(text).digest('hex') };
+  const selected = { ...manifest, files: [...manifest.files, link] };
+  assert.equal(await validateSelectedFiles(root, selected), selected);
+  await assert.rejects(validateSelectedFiles(root, { ...manifest, files: [link] }), /target missing/);
+  await assert.rejects(validateSelectedFiles(root, { ...manifest, files: [...manifest.files, { ...link, mode: 0o100644 }] }), /Invalid/);
+  await writeFile(file, 'mutated target bytes');
+  await assert.rejects(validateSelectedFiles(root, selected), /Selected file bytes changed/);
+});
+
+test('retargeted internal symlink cannot reuse its original link digest', async () => {
+  const { root, manifest } = await fixture();
+  const other = { ...manifest.files[0], path: 'other.txt' };
+  await writeFile(path.join(root, 'other.txt'), 'selected bytes');
+  await symlink('asset.txt', path.join(root, 'link'));
+  const bytes = Buffer.from('asset.txt');
+  const link = { path: 'link', mode: 0o120777, size: bytes.length,
+    sha: createHash('sha1').update(bytes).digest('hex') };
+  await unlink(path.join(root, 'link')); await symlink('other.txt', path.join(root, 'link'));
+  await assert.rejects(validateSelectedFiles(root, { ...manifest, files: [...manifest.files, other, link] }), /Selected link bytes changed/);
+});
+
+test('links cannot hide environment or Git credential targets or select directory trees', async () => {
+  const { root } = await fixture();
+  await mkdir(path.join(root, '.git')); await writeFile(path.join(root, '.git/config'), 'synthetic only');
+  await writeFile(path.join(root, '.env'), 'synthetic only');
+  for (const target of ['.env', '.git/config', 'frontend']) {
+    const alias = 'alias-' + target.replaceAll('/', '-').replaceAll('.', '');
+    await symlink(target, path.join(root, alias));
+    const bytes = Buffer.from(target);
+    const manifest = { basePath: root, files: [{ path: alias, mode: 0o120777,
+      size: bytes.length, sha: createHash('sha1').update(bytes).digest('hex') }] };
+    await assert.rejects(validateSelectedFiles(root, manifest), /Private|Invalid/);
+  }
 });
 
 test('wrong/empty root, duplicate files and external paths fail', async () => {
