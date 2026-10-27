@@ -2800,3 +2800,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - Containment tests require the actual frozen Git source, so shallow CI must fetch that exact commit and verify its subtree; do not substitute mutable checkout bytes. Git archive can add group-write permissions; normalize to canonical source executable/non-executable modes. Local FileProvider hydration repairs metadata availability without changing evidence gates.
 
 - The pinned Vercel SDK represents symlinks by link-text bytes, not resolved file bytes. Verify that representation plus separately selected target content; never waive source hashes or allow external/private/directory targets. An unchanged accepted receipt-logo link exposed this latent verifier defect when packaging CI was triggered.
+
+- Required transcription attribution is a legal exception to internal-only source metadata. Add its hash-bound public notice with unchanged chapters and reconcile mirrors/manifests/retained IN metadata successors; never silently extend territory or call a later reprint date alone a new copyright.

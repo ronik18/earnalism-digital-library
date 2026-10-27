@@ -7,7 +7,7 @@
     "backend/data/controlled_launch.json": "e20a1c1dbd4723efcd83a9afd4fdfec4e3cec99fc6df0af22ea03e982c47194d",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "632a0ae98112188e6e162fd3402cd6e97da576032a87672a9e089f14e20ac0c2"
+    "backend/data/rights_decision_registry.json": "ba96a3563a27428db9b35a29a33a6675786a8c8032c61892cc8e0475b4219ec6"
   },
   "titles": {
     "a-ghost-story": {
@@ -35,15 +35,16 @@
       }
     },
     "radharani": {
-      "decision_id": "india-20260925-radharani-commercial-reader-release",
-      "record_sha256": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
+      "decision_id": "india-20261028-radharani-attribution-metadata-successor",
+      "record_sha256": "e2bf1284ede07ea5f2176bfc4d2e72726929a8d91af7e4abfb751517ee395e7a",
       "component_paths": {
         "approval_evidence": "backend/data/controlled_publications/radharani/approval_evidence.json",
         "checksum_manifest": "backend/data/controlled_publications/radharani/checksum_manifest.json",
         "public_book": "backend/data/controlled_publications/radharani/public_book.json",
         "publication_manifest": "backend/data/controlled_publications/radharani/publication_manifest.json",
         "reader_manifest": "backend/data/controlled_publications/radharani/reader_manifest.json",
-        "source_evidence": "backend/data/controlled_publications/radharani/source_evidence.json"
+        "source_evidence": "backend/data/controlled_publications/radharani/source_evidence.json",
+        "license_notice": "backend/data/controlled_publications/radharani/license_notice.json"
       }
     },
     "a-white-heron": {

@@ -12140,5 +12140,11 @@
     "qualification": "12selectornegative/positive testsPASS; actualpinnedvercel62.1.0 selection15377entriesPASS;9criticalassettests and nativecriticalassetcheckPASS",
     "production_changed": false,
     "next_action": "FreshheadallrequiredCI; no oldjobrerun, gatewaiver, deployment or paidactivity"
+  },
+  "radharani_attribution_20261028": {
+    "state": "ATTRIBUTION_SOURCE_FIX_QUALIFIED_CI_PENDING",
+    "evidence": "internal/legal/us_catalogue_attribution_20261028/QUALIFICATION.json",
+    "US_rights_granted": false,
+    "production_changed": false
   }
 }
