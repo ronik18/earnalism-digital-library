@@ -50,6 +50,23 @@ def setup_configuration(environment):
     return config
 
 
+CLIENT_DEADLINES_MS = {
+    "serverSelectionTimeoutMS": 3000,
+    "connectTimeoutMS": 3000,
+    "socketTimeoutMS": 30000,
+    "waitQueueTimeoutMS": 3000,
+}
+
+
+def bounded_client_options(options):
+    """Allow shorter test deadlines, never disabled or extended socket waits."""
+    for key, limit in CLIENT_DEADLINES_MS.items():
+        value = options.get(key, limit)
+        if type(value) is not int or not 0 < value <= limit:
+            raise ValueError("bounded disposable MongoDB client deadline required")
+    return {**CLIENT_DEADLINES_MS, **options}
+
+
 @asynccontextmanager
 async def isolated_database(prefix, **client_options):
     from motor.motor_asyncio import AsyncIOMotorClient
@@ -61,7 +78,7 @@ async def isolated_database(prefix, **client_options):
     principal, password = "uat_case_" + secrets.token_hex(8), secrets.token_hex(32)
     target = f"mongodb://127.0.0.1:{config['port']}/?replicaSet=earnalism-uat-rs0"
     setup = AsyncIOMotorClient(target, username=config["principal"], password=config["password"],
-                               authSource="admin", serverSelectionTimeoutMS=3000)
+                               authSource="admin", **bounded_client_options({}))
     client = None
     created = False
     try:
@@ -72,7 +89,7 @@ async def isolated_database(prefix, **client_options):
                                   roles=[{"role": "readWrite", "db": namespace}])
         created = True
         client = AsyncIOMotorClient(target, username=principal, password=password, authSource="admin",
-                                     serverSelectionTimeoutMS=3000, **client_options)
+                                     **bounded_client_options(client_options))
         yield client, client[namespace]
     finally:
         try:
