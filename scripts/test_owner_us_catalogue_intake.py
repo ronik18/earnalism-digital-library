@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 import pytest
 from backend.rights_decision_gate import evaluate_accepted_record, load_production_registry, record_sha256
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[1]
 BATCH=ROOT/'internal/legal/us_rights_intake_20261028/catalogue-51'
 INTAKE=json.loads((BATCH/'intake.json').read_text())
 INDEX=json.loads((BATCH/'DECISION-INDEX.json').read_text())
