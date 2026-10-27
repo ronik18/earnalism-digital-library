@@ -8,7 +8,7 @@ function LegalPage({ canonicalPath }) {
   useSEO({ title: `${policy.title} | The Earnalism`, description: policy.description, canonicalPath });
   return (
     <PublicPageFrame tone="quiet">
-      <main id="main-content" tabIndex={-1}><article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24" data-testid={`legal-${policy.title.toLowerCase().replace(/\s+/g, "-")}`}>
+      <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24" data-testid={`legal-${policy.title.toLowerCase().replace(/\s+/g, "-")}`}>
         <p className="editorial-kicker">Earnalism</p>
         <h1 className="mt-5 font-serif-light text-4xl leading-tight text-burgundy sm:text-6xl">{policy.title}</h1>
         <p className="mt-4">Updated {policy.updated}</p>
@@ -23,7 +23,7 @@ function LegalPage({ canonicalPath }) {
             <Link className="text-burgundy underline" to="/contact?intent=rights">Rights concerns</Link>
           </p>
         </div>
-      </article></main>
+      </article>
     </PublicPageFrame>
   );
 }
