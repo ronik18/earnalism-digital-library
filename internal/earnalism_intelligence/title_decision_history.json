@@ -12197,5 +12197,13 @@
     "qualification": "49 focused dummy/offline tests PASS; source preparation only, no provider/customer writes",
     "production_changed": false,
     "next_action": "Finish residual receipt UI/test intent comparison, wire required tests and qualify coherent exact-head CI/review before merge"
+  },
+  "preserved529_purchase_receipt_20261028": {
+    "date": "2026-10-28",
+    "decision": "RECOVER_EXACT_PURCHASE_RECEIPT_CONFIRMATION_FROM_529",
+    "scope": "Pricing credit confirmation requires current intent id plus credited status, including webhook fallback; preexisting positive wallet is insufficient. No payment/provider calls executed: rendered tests mock all APIs.",
+    "qualification": "12 frontend tests PASS across receipt, rendered checkout matrix and existing Pricing suite;49 backend source/signup tests retained; new tests wired into mandatory regression script",
+    "production_changed": false,
+    "next_action": "Finish preserved529 residual interaction tests and high-zoom source diagnosis; qualify exact source/workflow fingerprints and fresh CI before gated merge"
   }
 }

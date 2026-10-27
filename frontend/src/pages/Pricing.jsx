@@ -1,3 +1,4 @@
+import { hasCreditedPurchase } from "../lib/paymentReceipt";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
@@ -150,13 +151,13 @@ function PricingAvailable() {
             // safety net — and we still take the user to /account so they can
             // see their up-to-date balance.
             try {
-              await userApi.post("/payments/verify", {
+              const verification = await userApi.post("/payments/verify", {
                 razorpay_order_id: resp.razorpay_order_id,
                 razorpay_payment_id: resp.razorpay_payment_id,
                 razorpay_signature: resp.razorpay_signature,
               });
-              const fresh = await refreshUser();
-              const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
+              await refreshUser();
+              const credited = hasCreditedPurchase(verification.data?.intent, data.intent_id);
               if (credited) {
                 trackFunnelEvent("wallet_credited_visible", {
                   pack_id: pack.id,
@@ -173,8 +174,11 @@ function PricingAvailable() {
                 // eslint-disable-next-line no-console
                 console.warn("Razorpay verify failed; falling back to /account");
               }
-              const fresh = await refreshUser().catch(() => null);
-              const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
+              await refreshUser().catch(() => null);
+              const receipt = await userApi.get("/payments/me/intents").catch(() => null);
+              const credited = Array.isArray(receipt?.data) && receipt.data.some(
+                (intent) => hasCreditedPurchase(intent, data.intent_id)
+              );
               if (credited) {
                 toast.success(`+${pack.minutes} minutes added.`);
               } else {

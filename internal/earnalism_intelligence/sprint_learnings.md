@@ -2821,3 +2821,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 
 ### Preserved529 residual source, 28 October 2026
 Four payment functions are already integrated exactly; current refund recipient/modified-count guards supersede the old draft. Recover only missing source and signup-race behaviour, with49 offline/dummy tests passing. Keep old high-zoom qualification unresolved and preserve current Listener, India entitlements and accepted US scope.
+
+Current purchase credit must bind exact intent+credited status, never an existing wallet balance. Recovered529receipt handling passes12 mocked frontend tests; backend source/signup49PASS. No actual payment/provider acceptance claimed.
