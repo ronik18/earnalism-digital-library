@@ -36,6 +36,7 @@ and secret values are never included in reports or exception output.
 
 from __future__ import annotations
 
+import audiobook_upload_budget as operation_budget
 import argparse
 import base64
 import hashlib
@@ -398,7 +399,7 @@ def create_s3_client(config: StorageConfig, profile_name: str) -> Any:
         aws_secret_access_key=credentials.secret_access_key,
         config=Config(
             s3={"addressing_style": "path"},
-            retries={"max_attempts": 5, "mode": "standard"},
+            retries={"total_max_attempts": 1, "mode": "standard"},
         ),
     )
 
@@ -443,6 +444,9 @@ def _native_json_request(
     request: urllib.request.Request,
     operation: str,
 ) -> Mapping[str, Any]:
+    operation_budget.before_call("native_metadata_request", {})
+    if operation_budget.ACTIVE.get() is not None:
+        operation_budget.ACTIVE.get().reserve(metadata_bytes=NATIVE_API_MAX_RESPONSE_BYTES + 1)
     opener = urllib.request.build_opener(
         _RejectNativeRedirects(operation),
     )
@@ -629,7 +633,8 @@ def _error_code(exc: BaseException) -> str:
 
 def _safe_cloud_call(client: Any, method: str, **kwargs: Any) -> Any:
     try:
-        return getattr(client, method)(**kwargs)
+        operation_budget.before_call(method, kwargs)
+        return operation_budget.after_call(method, getattr(client, method)(**kwargs))
     except StorageSafetyError:
         raise
     except Exception as exc:
@@ -640,7 +645,10 @@ def _optional_evidence_call(client: Any, method: str, **kwargs: Any) -> tuple[st
     if not hasattr(client, method):
         return "UNAVAILABLE", None
     try:
-        return "AVAILABLE", getattr(client, method)(**kwargs)
+        operation_budget.before_call(method, kwargs)
+        return "AVAILABLE", operation_budget.after_call(method, getattr(client, method)(**kwargs))
+    except operation_budget.BudgetError:
+        raise
     except Exception as exc:
         code = _error_code(exc)
         if code in UNSUPPORTED_CODES:
@@ -1127,6 +1135,7 @@ def _hash_remote_body(body: Any) -> tuple[str, int]:
 
 def _head_or_none(client: Any, bucket: str, key: str) -> Optional[dict[str, Any]]:
     try:
+        operation_budget.before_call("head_object", {})
         return client.head_object(Bucket=bucket, Key=key)
     except Exception as exc:
         if _error_code(exc) in MISSING_CODES:
@@ -1206,6 +1215,8 @@ def _put_asset(
     asset: PlanObject,
     body: BinaryIO,
 ) -> str:
+    if operation_budget.ACTIVE.get() is None:
+        raise StorageSafetyError("UPLOAD_BUDGET_REQUIRED", "No active durable budget")
     kwargs = {
         "Bucket": config.bucket,
         "Key": asset.key,
@@ -1915,6 +1926,7 @@ def build_parser() -> argparse.ArgumentParser:
     preflight.set_defaults(handler=_preflight_command)
 
     upload = subparsers.add_parser("upload", help="Upload and full-download-verify a local storage plan.")
+    upload.add_argument("--budget-ledger", required=True, help="Shared durable ledger for upload and replication.")
     upload.add_argument("--plan", required=True)
     upload.add_argument("--retention-days", type=int, default=DEFAULT_RETENTION_DAYS)
     upload.add_argument("--allow-private-qa-staging", action="store_true")
@@ -1932,6 +1944,7 @@ def build_parser() -> argparse.ArgumentParser:
     verify.set_defaults(handler=_verify_command)
 
     replicate = subparsers.add_parser("replicate", help="Replicate verified production bytes to independent DR.")
+    replicate.add_argument("--budget-ledger", required=True, help="Use the SAME ledger as the primary upload.")
     replicate.add_argument("--plan", required=True)
     replicate.add_argument("--retention-days", type=int, default=DEFAULT_RETENTION_DAYS)
     replicate.add_argument("--primary-receipt", help="Defaults to primary_receipt.json beside the plan.")
@@ -1954,7 +1967,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
-        report = args.handler(args)
+        if args.command in {"upload", "replicate"}:
+            identity = load_storage_plan(Path(args.plan).expanduser(), verify_local_files=False).release_descriptor_sha256
+            with operation_budget.Budget(args.budget_ledger, identity) as budget:
+                report = args.handler(args)
+                report["operation_budget"] = budget.state["used"].copy()
+        else:
+            report = args.handler(args)
     except Exception as exc:
         report = safe_failure(exc)
     _write_report(report, getattr(args, "report", None))

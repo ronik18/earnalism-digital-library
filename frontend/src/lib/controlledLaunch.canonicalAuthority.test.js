@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_READER_RELEASED_SLUGS } from "./controlledLaunch";
+import { PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_READER_RELEASED_SLUGS, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
 import { bookDetailPresentationForBook } from "./bookDetailPresentation";
 
 const repositoryRoot = path.resolve(__dirname, "../../..");
@@ -16,6 +16,7 @@ describe("frontend release mirror", () => {
     const exclusions = readJson(path.join(repositoryRoot, "data", "catalog_exclusions.json")).titles || {};
     expect(PUBLIC_READER_RELEASED_SLUGS).toEqual(launch.live_approved_slugs);
     expect(PUBLIC_AUDIO_EXPOSURE_ENABLED).toBe(launch.public_audio_exposure_enabled);
+    expect(PUBLIC_PROTECTED_PACKAGE_SLUGS).toEqual(launch.protected_package_public_slugs);
 
     for (const slug of launch.live_approved_slugs) {
       expect(exclusions[slug]?.public_catalog_excluded).not.toBe(true);
@@ -28,7 +29,7 @@ describe("frontend release mirror", () => {
       expect(publication.slug).toBe(slug);
       expect(publication.rights.status).toBe("APPROVED");
       expect(publication.reader_release).toMatchObject({ status: "APPROVED", exposed: true });
-      expect(publication.audio_release).toMatchObject({ status: "NOT_REQUESTED", exposed: false, required_for_reader_release: false });
+      expect(publication.audio_release).toMatchObject({ status: slug === "the-open-window" ? "APPROVED" : "NOT_REQUESTED", exposed: slug === "the-open-window", required_for_reader_release: false });
       expect(publicBook.slug).toBe(slug);
       // Accepted packages may intentionally retain their reviewed pre-activation
       // source status. The backend projects LIVE_APPROVED only after this

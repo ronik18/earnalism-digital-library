@@ -242,6 +242,12 @@ def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_publishe
             record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate")
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
+            or (slug == "the-open-window"
+                and record["decision_id"] == "india-20261025-the-open-window-reader-cover-canary-metadata"
+                and record["accepted_by"] == 'Ronik Basak / Reo Enterprise direct Open Window GO LIVE and scoped automation approval in current chat; metadata-only binding successor, no external signature inferred.')
+            or (slug == "the-open-window"
+                and record["decision_id"] in {"india-20261026-the-open-window-approved-revised-cover-pair", "india-20261026-the-open-window-protected-package-publication"}
+                and record["accepted_by"] == "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.")
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
@@ -443,3 +449,24 @@ def test_yugalanguriya_publication_package_is_archived_and_remains_held():
     assert "yugalanguriya" not in launch["audio_enabled_slugs"]
     assert "yugalanguriya" not in backend_launch["audio_enabled_slugs"]
     assert registry["pilot_dispositions"]["controlled-yugalanguriya"]["status"] == "HOLD"
+
+
+def test_open_window_protected_publication_preserves_real_controlled_reader_loading():
+    from backend.catalog_truth import (
+        controlled_artifact_dir, controlled_reader_validation_issues,
+        load_controlled_artifact_book,
+    )
+    from backend.publication_manifest import canonical_sha256
+    slug = "the-open-window"
+    directory = controlled_artifact_dir(slug)
+    manifest = load_json(directory / "publication_manifest.json")
+    assert manifest["manifest_sha256"] == canonical_sha256(manifest)
+    for name, expected in manifest["artifacts"].items():
+        assert hashlib.sha256((directory / f"{name}.json").read_bytes()).hexdigest() == expected
+    assert controlled_reader_validation_issues(slug, str(directory)) == ()
+    book = load_controlled_artifact_book(slug, include_content=True)
+    assert book and book["chapters"]
+    assert book["audio_enabled"] is True
+    assert book["audiobook_enabled"] is True
+    from backend.protected_package_publication import protected_package_publication_valid
+    assert protected_package_publication_valid(book)

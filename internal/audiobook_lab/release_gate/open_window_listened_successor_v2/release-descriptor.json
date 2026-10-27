@@ -1,0 +1,74 @@
+{
+  "book_uuid": "74251b53-9e18-49fb-9fff-bb7c505633d4",
+  "controlled_source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "duration_ms": 491436,
+  "evidence_sha256": {
+    "audio_use_adoption": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+    "audio_use_proposition": "90cbae317923f226bbff8d3b25c4f0bd81173697eb6af1ddbf94ee79f92eb971",
+    "deployed_source_join": "17383a702b9eb3b8fc24f6c34beacdc702b1e422fedf14603a0a791bdc9282e0",
+    "local_qa_proposal": "22eae5d1baa406bc907b6cc6d65c98afed36537528b5315bb4366a063bef8940",
+    "master_provenance_and_qa": "787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7",
+    "owner_full_title_listening": "630916e110c62a4c320e799870ae2a7cb0bfb387df02258732cbbaf20a6f5105",
+    "owner_source_following": "a3d16bf2c27c7639ea635700792bcdddd139bee3a84650b6938b0641bb4e56d2",
+    "policy_adoption": "15904ecea7b6d391123bff2ba14d8687e16aac15a2bd9933db8490a76791e1d2",
+    "remaining_region_triage": "d662ae5bcd0b62916d4d588574b87ce0e5c760944e236436dfd0608781843bf0",
+    "six_lexical_findings": "9f2343a5f39332959ae8ec640b8f90ed31bc4fd758e11228a199b5d34cce28df",
+    "staging_manifest": "6fd5dc12fc1658eeb2fe34e2e4900030f3f0c8e991eebaf9a613b997b7b705f5",
+    "successor_acceptance": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117"
+  },
+  "known_release_blockers": [
+    "SUCCESSOR_ACCEPTANCE_POLICY_NOT_ADOPTED",
+    "AUDIO_USE_RECORD_NOT_IN_SHIPPED_TRUST_REGISTRY",
+    "DEPLOYED_EDITION_JOIN_PENDING",
+    "PROTECTED_STORAGE_UNBOUND",
+    "NATIVE_PLAYBACK_ACCOUNTING_NOT_EXECUTED"
+  ],
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "master_mp3_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+  "master_samples": 11794472,
+  "master_wav_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+  "padding_disposition": {
+    "action": "Bound this measured codec padding in the proposed successor acceptance; do not claim native sample trimming.",
+    "exact_sample_trim_enforced": false,
+    "native_decoded_playback_extra_seconds": 0.0004583333333333333,
+    "paragraph_019_terminal_silent_samples": 11,
+    "preserve_audio_bytes": true
+  },
+  "release_candidate_evidence": {
+    "acceptance_policy": "open_window_listened_successor.v2",
+    "acceptance_representation_sha256": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117",
+    "acoustic_pass_claimed": false,
+    "all_pre_storage_release_gates_passed": false,
+    "all_release_gates_passed": false,
+    "gates": {
+      "back_cover": true,
+      "confirmed_material_defects": [],
+      "first_words_match": true,
+      "front_cover": true,
+      "highlight_sync_enabled": false,
+      "last_words_match": true,
+      "ordered_content_integrity": true,
+      "reader_truth": true,
+      "source_content_toc": true,
+      "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY"
+    },
+    "highlight_sync_enabled": false,
+    "human_scores": null,
+    "owner_local_qa": {
+      "assessed_maximum": 85,
+      "overall_points": null,
+      "production_points": null,
+      "proposed_points": 85,
+      "release_threshold": 95,
+      "review_type": "OWNER_REPORTED_SOURCE_FOLLOWING_FULL_TITLE"
+    },
+    "remaining_lexical_uncertainty_units": [],
+    "status": "OWNER_REVIEWED_LOCAL_QA",
+    "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+    "unit24_disposition": "OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY"
+  },
+  "release_candidate_status": "OWNER_REVIEWED_LOCAL_QA_STORAGE_PENDING",
+  "sample_rate": 24000,
+  "schema_version": "audiobook_release_descriptor.v1",
+  "slug": "the-open-window"
+}

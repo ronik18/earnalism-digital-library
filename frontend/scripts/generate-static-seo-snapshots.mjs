@@ -11,10 +11,12 @@ const publicationContractPath = path.join(frontendDir, "static-seo", "controlled
 const editorialContractPath = path.join(frontendDir, "static-seo", "editorial-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const brandImage = siteUrl + "/assets/brand/earnalism-brand-lockup.png";
-const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
+const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
 const forbiddenCopy = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const headStart = "<!-- earnalism-static-seo:start -->";
 const headEnd = "<!-- earnalism-static-seo:end -->";
+
+const legalPolicies = JSON.parse(await readFile(path.join(frontendDir, "src/content/legalPolicies.json"), "utf8"));
 
 const html = (value = "") => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 const absolute = (route = "/") => new URL(route, siteUrl + "/").href;
@@ -57,7 +59,7 @@ async function contracts() {
     && (releaseHeld ? books.length === 0 : books.length > 0)
     && publicationMatchesLaunch
     && Object.values(publication.generated_from || {}).every(isSha)
-    && books.every((book) => indiaReleasedSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.audio_availability_state === "disabled" && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
+    && books.every((book) => indiaReleasedSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && (book.audio_availability_state === "disabled" || (book.audio_availability_state === "approved" && (controlledLaunch.protected_package_public_slugs || []).includes(book.slug))) && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
   const validEditorial = editorial.schema_version === "earnalism.static-seo-editorial.v1"
     && isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])
     && editorial.journal && editorial.journal.canonical_route === "/journal"
@@ -110,6 +112,10 @@ function pageHead(page) {
   ].join("\n");
 }
 
+function legalBody(policy) {
+  return `<main class="static-seo-snapshot" data-static-seo-snapshot="true" style="font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810"><img src="${html(brandImage)}" width="640" height="192" alt="The Earnalism" style="display:block;width:220px;height:auto;margin:0 0 2rem"><article><h1>${html(policy.title)}</h1><p>Updated ${html(policy.updated)}</p><p>${html(policy.intro)}</p>${policy.sections.map(({heading, paragraphs}) => `<section><h2>${html(heading)}</h2>${paragraphs.map(text => `<p>${html(text)}</p>`).join("")}</section>`).join("")}<p><a href="mailto:sales@reoenterprise.org">sales@reoenterprise.org</a> · <a href="/contact?intent=reader">Support and privacy requests</a> · <a href="/contact?intent=rights">Rights concerns</a></p></article></main>`;
+}
+
 function shell(eyebrow, title, body, links = [], facts = []) {
   const nav = links.length ? '<nav aria-label="Page links">' + links.map((link) => '<a href="' + html(link.href) + '">' + html(link.label) + "</a>").join(" · ") + "</nav>" : "";
   const list = facts.length ? "<ul>" + facts.map((fact) => "<li>" + html(fact) + "</li>").join("") + "</ul>" : "";
@@ -139,8 +145,8 @@ function standardPages(editorial, { releaseHeld = false, releasedBookCount = 0 }
     ["/copyright", "Copyright and Content | The Earnalism", "Information about Earnalism content, intellectual property, and rights concerns.", "Earnalism", "Copyright and Content", "/contact?intent=rights", "Raise a rights concern"],
     ["/micro-story", "A Quiet Reading Invitation | The Earnalism", releaseHeld ? releaseCopy : "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
   ].map((row) => ({
-    path: row[0], title: row[1], description: row[2], robots: row[0] === "/pricing" ? "noindex,follow" : undefined, jsonLd: [webPage(row[1], row[2], row[0])],
-    staticBody: shell(row[3], row[4], row[2], [{ href: row[5], label: row[6] }]),
+    path: row[0], title: row[1], description: legalPolicies[row[0]]?.description || row[2], robots: row[0] === "/pricing" ? "noindex,follow" : undefined, jsonLd: [webPage(row[1], legalPolicies[row[0]]?.description || row[2], row[0])],
+    staticBody: legalPolicies[row[0]] ? legalBody(legalPolicies[row[0]]) : shell(row[3], row[4], row[2], [{ href: row[5], label: row[6] }]),
   }));
   const journal = {
     path: "/journal", title: editorial.journal.title, description: editorial.journal.description,
@@ -159,7 +165,7 @@ function standardPages(editorial, { releaseHeld = false, releasedBookCount = 0 }
     ["/login", "Sign in | The Earnalism", "Sign in to return to your library."],
     ["/signup", "Create an account | The Earnalism", "Create an account for your Earnalism library."],
     ["/account", "Your account | The Earnalism", "Your Earnalism account is private."],
-  ].map((row) => ({ path: row[0], title: row[1], description: row[2], robots: "noindex,nofollow", staticBody: shell("The Earnalism", row[1], row[2], [{ href: "/library", label: "Explore the Library" }]) }));
+  ].map((row) => ({ path: row[0], title: row[1], description: legalPolicies[row[0]]?.description || row[2], robots: "noindex,nofollow", staticBody: shell("The Earnalism", row[1], row[2], [{ href: "/library", label: "Explore the Library" }]) }));
   privatePages.push({
     path: "/my-library",
     title: "My Library | The Earnalism",

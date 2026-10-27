@@ -1,0 +1,2553 @@
+{
+  "schema": "OPEN_WINDOW_PRODUCTION_ACCEPTANCE_V1",
+  "evaluatedAt": "2026-10-26T09:49:58.963Z",
+  "commit": "292040feb1f4033f48ff37c3cdf84a61199d73fc",
+  "frontend": "dpl_3BeYcF6bpXo1MUag79tD7LAhEBwb",
+  "status": "PLAYBACK_ACCOUNTING_PASS_PUBLIC_ACTIVATION_PENDING",
+  "sessionsStarted": 1,
+  "packageVersion": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+  "descriptor": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+  "durationMs": 491436,
+  "segmentCount": 29,
+  "coverage": [
+    {
+      "segment": "paragraph-001",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-002",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-003",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-004",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-005",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-006",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-007",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-008",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-009",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-010",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-011",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-012",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-013",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-014",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-015",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-016",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-017",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-018",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-019",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-020",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-021",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-022",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-023",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-024",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-025",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-026",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-027",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-028",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    },
+    {
+      "segment": "paragraph-029",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true
+    }
+  ],
+  "mediaEvents": [
+    {
+      "at": 1793007494252,
+      "duration": 9.84,
+      "event": "loadedmetadata",
+      "segment": "paragraph-001",
+      "time": 0
+    },
+    {
+      "at": 1793007494255,
+      "duration": 9.84,
+      "event": "play",
+      "segment": "paragraph-001",
+      "time": 0.024501
+    },
+    {
+      "at": 1793007504159,
+      "duration": 9.84,
+      "event": "pause",
+      "segment": "paragraph-001",
+      "time": 9.84
+    },
+    {
+      "at": 1793007504160,
+      "duration": 9.84,
+      "event": "ended",
+      "segment": "paragraph-001",
+      "time": 9.84
+    },
+    {
+      "at": 1793007510372,
+      "duration": 22.236208,
+      "event": "loadedmetadata",
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793007510374,
+      "duration": 22.236208,
+      "event": "play",
+      "segment": "paragraph-002",
+      "time": 0
+    },
+    {
+      "at": 1793007532677,
+      "duration": 22.236208,
+      "event": "pause",
+      "segment": "paragraph-002",
+      "time": 22.236208
+    },
+    {
+      "at": 1793007532677,
+      "duration": 22.236208,
+      "event": "ended",
+      "segment": "paragraph-002",
+      "time": 22.236208
+    },
+    {
+      "at": 1793007539355,
+      "duration": 25.040833,
+      "event": "loadedmetadata",
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793007539356,
+      "duration": 25.040833,
+      "event": "play",
+      "segment": "paragraph-003",
+      "time": 0
+    },
+    {
+      "at": 1793007564474,
+      "duration": 25.040833,
+      "event": "pause",
+      "segment": "paragraph-003",
+      "time": 25.040833
+    },
+    {
+      "at": 1793007564475,
+      "duration": 25.040833,
+      "event": "ended",
+      "segment": "paragraph-003",
+      "time": 25.040833
+    },
+    {
+      "at": 1793007570737,
+      "duration": 8.316542,
+      "event": "loadedmetadata",
+      "segment": "paragraph-004",
+      "time": 0
+    },
+    {
+      "at": 1793007570740,
+      "duration": 8.316542,
+      "event": "play",
+      "segment": "paragraph-004",
+      "time": 0
+    },
+    {
+      "at": 1793007579134,
+      "duration": 8.316542,
+      "event": "pause",
+      "segment": "paragraph-004",
+      "time": 8.316542
+    },
+    {
+      "at": 1793007579134,
+      "duration": 8.316542,
+      "event": "ended",
+      "segment": "paragraph-004",
+      "time": 8.316542
+    },
+    {
+      "at": 1793007590065,
+      "duration": 7.718958,
+      "event": "loadedmetadata",
+      "segment": "paragraph-005",
+      "time": 0
+    },
+    {
+      "at": 1793007590068,
+      "duration": 7.718958,
+      "event": "play",
+      "segment": "paragraph-005",
+      "time": 0
+    },
+    {
+      "at": 1793007597862,
+      "duration": 7.718958,
+      "event": "pause",
+      "segment": "paragraph-005",
+      "time": 7.718958
+    },
+    {
+      "at": 1793007597863,
+      "duration": 7.718958,
+      "event": "ended",
+      "segment": "paragraph-005",
+      "time": 7.718958
+    },
+    {
+      "at": 1793007604110,
+      "duration": 11.792,
+      "event": "loadedmetadata",
+      "segment": "paragraph-006",
+      "time": 0
+    },
+    {
+      "at": 1793007604112,
+      "duration": 11.792,
+      "event": "play",
+      "segment": "paragraph-006",
+      "time": 0
+    },
+    {
+      "at": 1793007615982,
+      "duration": 11.792,
+      "event": "pause",
+      "segment": "paragraph-006",
+      "time": 11.792
+    },
+    {
+      "at": 1793007615982,
+      "duration": 11.792,
+      "event": "ended",
+      "segment": "paragraph-006",
+      "time": 11.792
+    },
+    {
+      "at": 1793007622239,
+      "duration": 3.536292,
+      "event": "loadedmetadata",
+      "segment": "paragraph-007",
+      "time": 0
+    },
+    {
+      "at": 1793007622242,
+      "duration": 3.536292,
+      "event": "play",
+      "segment": "paragraph-007",
+      "time": 0
+    },
+    {
+      "at": 1793007625856,
+      "duration": 3.536292,
+      "event": "pause",
+      "segment": "paragraph-007",
+      "time": 3.536292
+    },
+    {
+      "at": 1793007625857,
+      "duration": 3.536292,
+      "event": "ended",
+      "segment": "paragraph-007",
+      "time": 3.536292
+    },
+    {
+      "at": 1793007632308,
+      "duration": 7.183,
+      "event": "loadedmetadata",
+      "segment": "paragraph-008",
+      "time": 0
+    },
+    {
+      "at": 1793007632311,
+      "duration": 7.183,
+      "event": "play",
+      "segment": "paragraph-008",
+      "time": 0
+    },
+    {
+      "at": 1793007639575,
+      "duration": 7.183,
+      "event": "pause",
+      "segment": "paragraph-008",
+      "time": 7.183
+    },
+    {
+      "at": 1793007639575,
+      "duration": 7.183,
+      "event": "ended",
+      "segment": "paragraph-008",
+      "time": 7.183
+    },
+    {
+      "at": 1793007649515,
+      "duration": 12.568625,
+      "event": "loadedmetadata",
+      "segment": "paragraph-009",
+      "time": 0
+    },
+    {
+      "at": 1793007649518,
+      "duration": 12.568625,
+      "event": "play",
+      "segment": "paragraph-009",
+      "time": 0
+    },
+    {
+      "at": 1793007662155,
+      "duration": 12.568625,
+      "event": "pause",
+      "segment": "paragraph-009",
+      "time": 12.568625
+    },
+    {
+      "at": 1793007662156,
+      "duration": 12.568625,
+      "event": "ended",
+      "segment": "paragraph-009",
+      "time": 12.568625
+    },
+    {
+      "at": 1793007669657,
+      "duration": 7.556417,
+      "event": "loadedmetadata",
+      "segment": "paragraph-010",
+      "time": 0
+    },
+    {
+      "at": 1793007669660,
+      "duration": 7.556417,
+      "event": "play",
+      "segment": "paragraph-010",
+      "time": 0
+    },
+    {
+      "at": 1793007677284,
+      "duration": 7.556417,
+      "event": "pause",
+      "segment": "paragraph-010",
+      "time": 7.556417
+    },
+    {
+      "at": 1793007677285,
+      "duration": 7.556417,
+      "event": "ended",
+      "segment": "paragraph-010",
+      "time": 7.556417
+    },
+    {
+      "at": 1793007683718,
+      "duration": 8.28825,
+      "event": "loadedmetadata",
+      "segment": "paragraph-011",
+      "time": 0
+    },
+    {
+      "at": 1793007683719,
+      "duration": 8.28825,
+      "event": "play",
+      "segment": "paragraph-011",
+      "time": 0
+    },
+    {
+      "at": 1793007692093,
+      "duration": 8.28825,
+      "event": "pause",
+      "segment": "paragraph-011",
+      "time": 8.28825
+    },
+    {
+      "at": 1793007692096,
+      "duration": 8.28825,
+      "event": "ended",
+      "segment": "paragraph-011",
+      "time": 8.28825
+    },
+    {
+      "at": 1793007699784,
+      "duration": 14.888708,
+      "event": "loadedmetadata",
+      "segment": "paragraph-012",
+      "time": 0
+    },
+    {
+      "at": 1793007699789,
+      "duration": 14.888708,
+      "event": "play",
+      "segment": "paragraph-012",
+      "time": 0
+    },
+    {
+      "at": 1793007710019,
+      "duration": 14.888708,
+      "event": "pause",
+      "segment": "paragraph-012",
+      "time": 10.150623
+    },
+    {
+      "at": 1793007750055,
+      "duration": 8.28825,
+      "event": "loadedmetadata",
+      "segment": "paragraph-011",
+      "time": 3.438622
+    },
+    {
+      "at": 1793007750058,
+      "duration": 8.28825,
+      "event": "play",
+      "segment": "paragraph-011",
+      "time": 3.438622
+    },
+    {
+      "at": 1793007755070,
+      "duration": 8.328,
+      "event": "pause",
+      "segment": "paragraph-011",
+      "time": 8.328
+    },
+    {
+      "at": 1793007755071,
+      "duration": 8.328,
+      "event": "ended",
+      "segment": "paragraph-011",
+      "time": 8.328
+    },
+    {
+      "at": 1793007761418,
+      "duration": 14.888708,
+      "event": "loadedmetadata",
+      "segment": "paragraph-012",
+      "time": 0
+    },
+    {
+      "at": 1793007761421,
+      "duration": 14.888708,
+      "event": "play",
+      "segment": "paragraph-012",
+      "time": 0
+    },
+    {
+      "at": 1793007773784,
+      "duration": 14.888708,
+      "event": "pause",
+      "segment": "paragraph-012",
+      "time": 14.888708
+    },
+    {
+      "at": 1793007773785,
+      "duration": 14.888708,
+      "event": "ended",
+      "segment": "paragraph-012",
+      "time": 14.888708
+    },
+    {
+      "at": 1793007780238,
+      "duration": 10.836417,
+      "event": "loadedmetadata",
+      "segment": "paragraph-013",
+      "time": 0
+    },
+    {
+      "at": 1793007780242,
+      "duration": 10.836417,
+      "event": "play",
+      "segment": "paragraph-013",
+      "time": 0
+    },
+    {
+      "at": 1793007787521,
+      "duration": 10.836417,
+      "event": "pause",
+      "segment": "paragraph-013",
+      "time": 10.836417
+    },
+    {
+      "at": 1793007787523,
+      "duration": 10.836417,
+      "event": "ended",
+      "segment": "paragraph-013",
+      "time": 10.836417
+    },
+    {
+      "at": 1793007794353,
+      "duration": 86.162792,
+      "event": "loadedmetadata",
+      "segment": "paragraph-014",
+      "time": 0
+    },
+    {
+      "at": 1793007794355,
+      "duration": 86.162792,
+      "event": "play",
+      "segment": "paragraph-014",
+      "time": 0
+    },
+    {
+      "at": 1793007851853,
+      "duration": 86.162792,
+      "event": "pause",
+      "segment": "paragraph-014",
+      "time": 86.162792
+    },
+    {
+      "at": 1793007851854,
+      "duration": 86.162792,
+      "event": "ended",
+      "segment": "paragraph-014",
+      "time": 86.162792
+    },
+    {
+      "at": 1793007859997,
+      "duration": 10.63525,
+      "event": "loadedmetadata",
+      "segment": "paragraph-015",
+      "time": 0
+    },
+    {
+      "at": 1793007860001,
+      "duration": 10.63525,
+      "event": "play",
+      "segment": "paragraph-015",
+      "time": 0
+    },
+    {
+      "at": 1793007867156,
+      "duration": 10.63525,
+      "event": "pause",
+      "segment": "paragraph-015",
+      "time": 10.63525
+    },
+    {
+      "at": 1793007867158,
+      "duration": 10.63525,
+      "event": "ended",
+      "segment": "paragraph-015",
+      "time": 10.63525
+    },
+    {
+      "at": 1793007873295,
+      "duration": 4.242292,
+      "event": "loadedmetadata",
+      "segment": "paragraph-016",
+      "time": 0
+    },
+    {
+      "at": 1793007873299,
+      "duration": 4.242292,
+      "event": "play",
+      "segment": "paragraph-016",
+      "time": 0
+    },
+    {
+      "at": 1793007876186,
+      "duration": 4.242292,
+      "event": "pause",
+      "segment": "paragraph-016",
+      "time": 4.242292
+    },
+    {
+      "at": 1793007876187,
+      "duration": 4.242292,
+      "event": "ended",
+      "segment": "paragraph-016",
+      "time": 4.242292
+    },
+    {
+      "at": 1793007882228,
+      "duration": 4.379375,
+      "event": "loadedmetadata",
+      "segment": "paragraph-017",
+      "time": 0
+    },
+    {
+      "at": 1793007882231,
+      "duration": 4.379375,
+      "event": "play",
+      "segment": "paragraph-017",
+      "time": 0
+    },
+    {
+      "at": 1793007885206,
+      "duration": 4.379375,
+      "event": "pause",
+      "segment": "paragraph-017",
+      "time": 4.379375
+    },
+    {
+      "at": 1793007885207,
+      "duration": 4.379375,
+      "event": "ended",
+      "segment": "paragraph-017",
+      "time": 4.379375
+    },
+    {
+      "at": 1793007891621,
+      "duration": 19.443625,
+      "event": "loadedmetadata",
+      "segment": "paragraph-018",
+      "time": 0
+    },
+    {
+      "at": 1793007891624,
+      "duration": 19.443625,
+      "event": "play",
+      "segment": "paragraph-018",
+      "time": 0
+    },
+    {
+      "at": 1793007904644,
+      "duration": 19.443625,
+      "event": "pause",
+      "segment": "paragraph-018",
+      "time": 19.443625
+    },
+    {
+      "at": 1793007904645,
+      "duration": 19.443625,
+      "event": "ended",
+      "segment": "paragraph-018",
+      "time": 19.443625
+    },
+    {
+      "at": 1793007910945,
+      "duration": 38.977958,
+      "event": "loadedmetadata",
+      "segment": "paragraph-019",
+      "time": 0
+    },
+    {
+      "at": 1793007910947,
+      "duration": 38.977958,
+      "event": "play",
+      "segment": "paragraph-019",
+      "time": 0
+    },
+    {
+      "at": 1793007936985,
+      "duration": 38.977958,
+      "event": "pause",
+      "segment": "paragraph-019",
+      "time": 38.977958
+    },
+    {
+      "at": 1793007936985,
+      "duration": 38.977958,
+      "event": "ended",
+      "segment": "paragraph-019",
+      "time": 38.977958
+    },
+    {
+      "at": 1793007944014,
+      "duration": 30.154958,
+      "event": "loadedmetadata",
+      "segment": "paragraph-020",
+      "time": 0
+    },
+    {
+      "at": 1793007944016,
+      "duration": 30.154958,
+      "event": "play",
+      "segment": "paragraph-020",
+      "time": 0
+    },
+    {
+      "at": 1793007964184,
+      "duration": 30.154958,
+      "event": "pause",
+      "segment": "paragraph-020",
+      "time": 30.154958
+    },
+    {
+      "at": 1793007964186,
+      "duration": 30.154958,
+      "event": "ended",
+      "segment": "paragraph-020",
+      "time": 30.154958
+    },
+    {
+      "at": 1793007971091,
+      "duration": 12.555333,
+      "event": "loadedmetadata",
+      "segment": "paragraph-021",
+      "time": 0
+    },
+    {
+      "at": 1793007971094,
+      "duration": 12.555333,
+      "event": "play",
+      "segment": "paragraph-021",
+      "time": 0
+    },
+    {
+      "at": 1793007979531,
+      "duration": 12.555333,
+      "event": "pause",
+      "segment": "paragraph-021",
+      "time": 12.555333
+    },
+    {
+      "at": 1793007979531,
+      "duration": 12.555333,
+      "event": "ended",
+      "segment": "paragraph-021",
+      "time": 12.555333
+    },
+    {
+      "at": 1793007989539,
+      "duration": 7.140792,
+      "event": "loadedmetadata",
+      "segment": "paragraph-022",
+      "time": 0
+    },
+    {
+      "at": 1793007989542,
+      "duration": 7.140792,
+      "event": "play",
+      "segment": "paragraph-022",
+      "time": 0
+    },
+    {
+      "at": 1793007994372,
+      "duration": 7.140792,
+      "event": "pause",
+      "segment": "paragraph-022",
+      "time": 7.140792
+    },
+    {
+      "at": 1793007994373,
+      "duration": 7.140792,
+      "event": "ended",
+      "segment": "paragraph-022",
+      "time": 7.140792
+    },
+    {
+      "at": 1793008000747,
+      "duration": 19.187083,
+      "event": "loadedmetadata",
+      "segment": "paragraph-023",
+      "time": 0
+    },
+    {
+      "at": 1793008000752,
+      "duration": 19.187083,
+      "event": "play",
+      "segment": "paragraph-023",
+      "time": 0
+    },
+    {
+      "at": 1793008013602,
+      "duration": 19.187083,
+      "event": "pause",
+      "segment": "paragraph-023",
+      "time": 19.187083
+    },
+    {
+      "at": 1793008013603,
+      "duration": 19.187083,
+      "event": "ended",
+      "segment": "paragraph-023",
+      "time": 19.187083
+    },
+    {
+      "at": 1793008019807,
+      "duration": 27.201333,
+      "event": "loadedmetadata",
+      "segment": "paragraph-024",
+      "time": 0
+    },
+    {
+      "at": 1793008019810,
+      "duration": 27.201333,
+      "event": "play",
+      "segment": "paragraph-024",
+      "time": 0
+    },
+    {
+      "at": 1793008037995,
+      "duration": 27.201333,
+      "event": "pause",
+      "segment": "paragraph-024",
+      "time": 27.201333
+    },
+    {
+      "at": 1793008037997,
+      "duration": 27.201333,
+      "event": "ended",
+      "segment": "paragraph-024",
+      "time": 27.201333
+    },
+    {
+      "at": 1793008044250,
+      "duration": 15.37475,
+      "event": "loadedmetadata",
+      "segment": "paragraph-025",
+      "time": 0
+    },
+    {
+      "at": 1793008044252,
+      "duration": 15.37475,
+      "event": "play",
+      "segment": "paragraph-025",
+      "time": 0
+    },
+    {
+      "at": 1793008055014,
+      "duration": 15.37475,
+      "event": "pause",
+      "segment": "paragraph-025",
+      "time": 15.37475
+    },
+    {
+      "at": 1793008055015,
+      "duration": 15.37475,
+      "event": "ended",
+      "segment": "paragraph-025",
+      "time": 15.37475
+    },
+    {
+      "at": 1793008061281,
+      "duration": 12.359458,
+      "event": "loadedmetadata",
+      "segment": "paragraph-026",
+      "time": 0
+    },
+    {
+      "at": 1793008061286,
+      "duration": 12.359458,
+      "event": "play",
+      "segment": "paragraph-026",
+      "time": 0
+    },
+    {
+      "at": 1793008069591,
+      "duration": 12.359458,
+      "event": "pause",
+      "segment": "paragraph-026",
+      "time": 12.359458
+    },
+    {
+      "at": 1793008069592,
+      "duration": 12.359458,
+      "event": "ended",
+      "segment": "paragraph-026",
+      "time": 12.359458
+    },
+    {
+      "at": 1793008079676,
+      "duration": 17.14,
+      "event": "loadedmetadata",
+      "segment": "paragraph-027",
+      "time": 0
+    },
+    {
+      "at": 1793008079678,
+      "duration": 17.14,
+      "event": "play",
+      "segment": "paragraph-027",
+      "time": 0
+    },
+    {
+      "at": 1793008091165,
+      "duration": 17.14,
+      "event": "pause",
+      "segment": "paragraph-027",
+      "time": 17.14
+    },
+    {
+      "at": 1793008091165,
+      "duration": 17.14,
+      "event": "ended",
+      "segment": "paragraph-027",
+      "time": 17.14
+    },
+    {
+      "at": 1793008099151,
+      "duration": 32.306125,
+      "event": "loadedmetadata",
+      "segment": "paragraph-028",
+      "time": 0
+    },
+    {
+      "at": 1793008099155,
+      "duration": 32.306125,
+      "event": "play",
+      "segment": "paragraph-028",
+      "time": 0
+    },
+    {
+      "at": 1793008120752,
+      "duration": 32.306125,
+      "event": "pause",
+      "segment": "paragraph-028",
+      "time": 32.306125
+    },
+    {
+      "at": 1793008120752,
+      "duration": 32.306125,
+      "event": "ended",
+      "segment": "paragraph-028",
+      "time": 32.306125
+    },
+    {
+      "at": 1793008130072,
+      "duration": 4.373417,
+      "event": "loadedmetadata",
+      "segment": "paragraph-029",
+      "time": 0
+    },
+    {
+      "at": 1793008130074,
+      "duration": 4.373417,
+      "event": "play",
+      "segment": "paragraph-029",
+      "time": 0
+    },
+    {
+      "at": 1793008133046,
+      "duration": 4.373417,
+      "event": "pause",
+      "segment": "paragraph-029",
+      "time": 4.373417
+    },
+    {
+      "at": 1793008133046,
+      "duration": 4.373417,
+      "event": "ended",
+      "segment": "paragraph-029",
+      "time": 4.373417
+    }
+  ],
+  "timestamps": [
+    {
+      "segment": "paragraph-001",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-002",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-003",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-004",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-005",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-006",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-007",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-008",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-009",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-010",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-011",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-012",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-013",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-014",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-015",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-016",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-017",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-018",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-019",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-020",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-021",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-022",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-023",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-024",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-025",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-026",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-027",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-028",
+      "http": 200,
+      "sha256Matches": true
+    },
+    {
+      "segment": "paragraph-029",
+      "http": 200,
+      "sha256Matches": true
+    }
+  ],
+  "pauseResumeSeekPass": true,
+  "pausedSeekDidNotTouchNativeSource": true,
+  "playbackSpeeds": [
+    1,
+    1.5
+  ],
+  "sessionEndHTTP": 200,
+  "ended": true,
+  "terminalDebitSeconds": 4,
+  "totalDebitSeconds": 581,
+  "balanceDifferenceMatchesDebit": true,
+  "postEndMediaDenial": {
+    "code": "AUTH_REQUIRED",
+    "http": 401
+  },
+  "requests": [
+    {
+      "path": "/api/reading-pass/sessions/start",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/manifest",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 0,
+      "status": "Paused"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 0,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-001",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 3,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-001",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-004",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-004",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-004",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-005",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-005",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-006",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-006",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-006",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-006",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 7,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-007",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-007",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-008",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-008",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-010",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-010",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-011",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-011",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-011",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 7,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Paused"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 0,
+      "status": "Paused"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 0,
+      "status": "Paused"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 0,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-011",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-013",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-013",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-013",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 7,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-001/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-002/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-003/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-004/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-005/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-006/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-007/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-008/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-009/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-010/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-011/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-012/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-013/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-015/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-016/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-017/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-015",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-021/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-022/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-025/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-026/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-014",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029/timestamps",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 3,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-015",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-015",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-016",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-016",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-017",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-017",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-018",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-019",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-021",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-020",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-021",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-021",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-021",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-022",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-022",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-023",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-024",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-025",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 8,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-025",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 3,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-025",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-025",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 7,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-026",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-026",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-026",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-026",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-027",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 200
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 9,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 3,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 6,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029",
+      "http": 200
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-028",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 10,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 4,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029",
+      "http": 206
+    },
+    {
+      "path": "/api/reader/book/the-open-window/audiobook/packages/sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26/segments/paragraph-029",
+      "http": 206
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "deductedSeconds": 5,
+      "status": "Running"
+    },
+    {
+      "path": "/api/reading-pass/sessions/end",
+      "http": 200,
+      "deductedSeconds": 4
+    }
+  ],
+  "activation": false,
+  "credentialsRead": false,
+  "nonsecretCohortCookieRestored": true
+}

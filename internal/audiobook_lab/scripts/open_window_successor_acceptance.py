@@ -14,6 +14,21 @@ from datetime import datetime, timezone
 from rights_decision_gate import evaluate_accepted_record, load_production_registry
 
 POLICY = 'open_window_retained_successor.v1'
+LISTENED_POLICY = 'open_window_listened_successor.v2'
+SUPPORTED_POLICIES = (POLICY, LISTENED_POLICY)
+# Exact owner-reported evidence; never an automated listening certification.
+LISTENED_ACCEPTANCE_SHA = '6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117'
+LISTENED_EVIDENCE = {
+    'deployed_source_join': '17383a702b9eb3b8fc24f6c34beacdc702b1e422fedf14603a0a791bdc9282e0',
+    'owner_full_title_listening': '630916e110c62a4c320e799870ae2a7cb0bfb387df02258732cbbaf20a6f5105',
+    'owner_source_following': 'a3d16bf2c27c7639ea635700792bcdddd139bee3a84650b6938b0641bb4e56d2',
+    'six_lexical_findings': '9f2343a5f39332959ae8ec640b8f90ed31bc4fd758e11228a199b5d34cce28df',
+    'local_qa_proposal': '22eae5d1baa406bc907b6cc6d65c98afed36537528b5315bb4366a063bef8940',
+}
+
+LISTENED_DESCRIPTOR_BLOCKERS = ['SUCCESSOR_ACCEPTANCE_POLICY_NOT_ADOPTED', 'AUDIO_USE_RECORD_NOT_IN_SHIPPED_TRUST_REGISTRY', 'DEPLOYED_EDITION_JOIN_PENDING', 'PROTECTED_STORAGE_UNBOUND', 'NATIVE_PLAYBACK_ACCOUNTING_NOT_EXECUTED']
+RUNTIME_DOWNSTREAM_GATES = ['PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED', 'PRIVATE_B2_DR_REPLICA_REQUIRED', 'CONTROLLED_RELEASE_ACTIVATION_REQUIRED', 'PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED']
+
 REGISTRY = Path(__file__).resolve().parents[1] / 'release_gate/open_window_successor_adoptions.json'
 IDENTITY = {
     'slug': 'the-open-window',
@@ -64,16 +79,18 @@ def chunk_mapping_digest(package):
         raise SuccessorAcceptanceError('Exact 29-chunk successor audio/sidecar mapping is incomplete') from None
 
 
-def load_trusted_adoption():
+def load_trusted_adoption(policy=POLICY):
     """Only a separately reviewed registry change can adopt the real records."""
     try:
+        if policy not in SUPPORTED_POLICIES:
+            raise ValueError()
         registry = json.loads(REGISTRY.read_text(encoding='utf-8'))
         if registry.get('schema') != 'earnalism.successor-adoption-registry.v1':
             raise ValueError()
         entries = registry['adoptions']
         if not isinstance(entries, list):
             raise ValueError()
-        matches = [e for e in entries if isinstance(e, dict) and e.get('record', {}).get('policy') == POLICY]
+        matches = [e for e in entries if isinstance(e, dict) and isinstance(e.get('record'), dict) and e['record'].get('policy') == policy]
         if len(matches) != 1:
             raise ValueError()
         entry = matches[0]
@@ -86,10 +103,31 @@ def load_trusted_adoption():
 
 
 def validate(descriptor, package, controlled_language, downstream_gates):
-    adopted = load_trusted_adoption()
-    if (adopted.get('status') != 'ADOPTED' or adopted.get('policy') != POLICY
+    candidate = descriptor.get('release_candidate_evidence')
+    policy = candidate.get('acceptance_policy') if isinstance(candidate, Mapping) else None
+    if policy not in SUPPORTED_POLICIES:
+        raise SuccessorAcceptanceError('Unsupported successor policy')
+    listened = policy == LISTENED_POLICY
+    acceptance_sha = LISTENED_ACCEPTANCE_SHA if listened else ACCEPTANCE_SHA
+    expected_status = 'OWNER_REVIEWED_LOCAL_QA' if listened else 'OWNER_ACCEPTED_UNCERTAINTY'
+    expected_remaining = [] if listened else LEXICAL_UNITS
+    adopted = load_trusted_adoption(policy) if listened else load_trusted_adoption()
+    if listened:
+        review = candidate.get('owner_local_qa')
+        review_evidence = descriptor.get('evidence_sha256')
+        if (not isinstance(review_evidence, Mapping) or not isinstance(review, Mapping)
+                or review != {'review_type': 'OWNER_REPORTED_SOURCE_FOLLOWING_FULL_TITLE',
+                              'proposed_points': 85, 'assessed_maximum': 85,
+                              'production_points': None, 'overall_points': None,
+                              'release_threshold': 95}
+                or adopted.get('listening_evidence_sha256') != LISTENED_EVIDENCE
+                or any(review_evidence.get(k) != v
+                       for k, v in LISTENED_EVIDENCE.items())
+                or adopted.get('deployed_source_join_sha256') != LISTENED_EVIDENCE['deployed_source_join']):
+            raise SuccessorAcceptanceError('Exact owner listening evidence/local-only score is required')
+    if (adopted.get('status') != 'ADOPTED' or adopted.get('policy') != policy
             or any(adopted.get(k) != v for k, v in IDENTITY.items())
-            or adopted.get('acceptance_representation_sha256') != ACCEPTANCE_SHA
+            or adopted.get('acceptance_representation_sha256') != acceptance_sha
             or adopted.get('unaddressed_material_defects') != []
             or not digest(adopted.get('deployed_source_join_sha256'))):
         raise SuccessorAcceptanceError('Exact successor adoption/source/material-defect binding is incomplete')
@@ -120,16 +158,17 @@ def validate(descriptor, package, controlled_language, downstream_gates):
     evidence = descriptor.get('evidence_sha256')
     if (any(descriptor.get(k) != v for k, v in IDENTITY.items())
             or str(controlled_language or '').strip().lower() not in ('en', 'eng', 'english')
-            or descriptor.get('release_candidate_status') != 'OWNER_ACCEPTED_UNCERTAINTY_STORAGE_PENDING'
-            or descriptor.get('known_release_blockers') != downstream_gates
-            or not isinstance(candidate, Mapping) or candidate.get('acceptance_policy') != POLICY
-            or candidate.get('status') != 'OWNER_ACCEPTED_UNCERTAINTY'
-            or candidate.get('acceptance_representation_sha256') != ACCEPTANCE_SHA
+            or descriptor.get('release_candidate_status') != expected_status + '_STORAGE_PENDING'
+            or downstream_gates != RUNTIME_DOWNSTREAM_GATES
+            or descriptor.get('known_release_blockers') != (LISTENED_DESCRIPTOR_BLOCKERS if listened else downstream_gates)
+            or not isinstance(candidate, Mapping) or candidate.get('acceptance_policy') != policy
+            or candidate.get('status') != expected_status
+            or candidate.get('acceptance_representation_sha256') != acceptance_sha
             or candidate.get('human_scores') is not None or candidate.get('acoustic_pass_claimed') is not False
             or candidate.get('all_release_gates_passed') is not False
             or candidate.get('all_pre_storage_release_gates_passed') is not False
             or candidate.get('unit24_disposition') != 'OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY'
-            or candidate.get('remaining_lexical_uncertainty_units') != LEXICAL_UNITS
+            or candidate.get('remaining_lexical_uncertainty_units') != expected_remaining
             or not isinstance(gates, Mapping) or gates.get('confirmed_material_defects') != []
             or any(gates.get(k) is not True for k in ('reader_truth', 'source_content_toc',
                 'first_words_match', 'last_words_match', 'ordered_content_integrity', 'front_cover', 'back_cover'))
@@ -139,7 +178,7 @@ def validate(descriptor, package, controlled_language, downstream_gates):
             or not isinstance(evidence, Mapping)
             or any(not digest(v) for v in evidence.values())
             or any(evidence.get(k) != v for k, v in {
-                'successor_acceptance': ACCEPTANCE_SHA, 'remaining_region_triage': TRIAGE_SHA,
+                'successor_acceptance': acceptance_sha, 'remaining_region_triage': TRIAGE_SHA,
                 'master_provenance_and_qa': QA_SHA, 'audio_use_proposition': AUDIO_PROPOSITION_SHA,
                 'deployed_source_join': adopted['deployed_source_join_sha256'],
                 'policy_adoption': adopted['policy_adoption']['decision_sha256'],

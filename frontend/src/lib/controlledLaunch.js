@@ -65,6 +65,7 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
 // qualified.  This is a release control, not a client-only presentation hint.
 export const PUBLIC_PAID_COMMERCE_ENABLED = true;
 export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
+export const PUBLIC_PROTECTED_PACKAGE_SLUGS = Object.freeze(["the-open-window"]);
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
@@ -286,7 +287,10 @@ export function canShowReadingPass(book = {}) {
 }
 
 export function canShowAudioCTA(book = {}) {
-  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return false;
+  const protectedPackage = PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(normalizedSlug(book))
+    && book.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
+    && /^sha256-[a-f0-9]{64}$/.test(book.audiobook_package_version || "");
+  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED && !protectedPackage) return false;
   if (!isLiveApprovedBook(book)) return false;
   if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
   const releaseGate = String(book?.audiobook_release_gate || book?.audiobook?.release_gate || "").trim().toUpperCase();

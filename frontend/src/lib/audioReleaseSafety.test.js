@@ -9,10 +9,10 @@ import {
 describe("audiobook release safety", () => {
   test("versions reader manifest requests when release semantics change", () => {
     expect(readerManifestPath("bn-066")).toBe(
-      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v9",
+      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v10",
     );
     expect(readerManifestPath("book / 2b", { adminPreview: true })).toBe(
-      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v9&preview=admin",
+      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v10&preview=admin",
     );
   });
 

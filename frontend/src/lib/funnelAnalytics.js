@@ -1,4 +1,5 @@
 import { API } from "./api";
+import { OPTIONAL_ANALYTICS_ENABLED } from "./privacyControls";
 
 export const LAUNCH_ANALYTICS_EVENTS = [
   "page_view",
@@ -160,6 +161,7 @@ export function normalizeLaunchAnalyticsEvent(event) {
 }
 
 export function getAnonymousLaunchSessionId() {
+  if (!OPTIONAL_ANALYTICS_ENABLED) return "";
   if (typeof window === "undefined") return "";
   try {
     const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
@@ -175,6 +177,7 @@ export function getAnonymousLaunchSessionId() {
 }
 
 export function analyticsNetworkEnabled() {
+  if (!OPTIONAL_ANALYTICS_ENABLED) return false;
   // Read the CRA build-time variable directly so DefinePlugin can substitute
   // it in production bundles; browsers do not guarantee a global `process`.
   if (process.env.REACT_APP_ENABLE_LAUNCH_ANALYTICS === "true") {
@@ -191,6 +194,7 @@ function safeAttributionValue(value) {
 }
 
 export function getLaunchAnalyticsAttribution() {
+  if (!OPTIONAL_ANALYTICS_ENABLED) return {};
   if (typeof window === "undefined") return {};
   try {
     let attribution = JSON.parse(window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) || "{}");

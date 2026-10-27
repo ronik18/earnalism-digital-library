@@ -170,6 +170,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
+    from backend import audio_acceptance_budget
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -183,6 +184,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         segment_manifest,
     )
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
+    import audio_acceptance_budget
 
 try:
     from backend.domain.catalog import (
@@ -826,7 +828,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v16"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v17"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
 PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "release-containment-v1"
@@ -4024,7 +4026,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "assets": {},
         "url": "",
         "size": int(nested.get("size", 0) or 0),
-        "duration_ms": int(nested.get("duration_ms", nested.get("duration", 0)) or 0),
+        "duration_ms": int(package_manifest.get("duration_ms", 0) if package_manifest else nested.get("duration_ms", nested.get("duration", 0)) or 0),
+        "delivery_mode": book.get("audiobook_release_mode", "") if package_manifest else "",
         "release_gate": release_gate,
         "qa_status": qa_status,
         "sync_mode": sync_mode,
@@ -5143,6 +5146,7 @@ async def initialize_database_indexes() -> None:
     await db.settings.create_index("key", unique=True)
 
     await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1), ("id", -1)])
 
     await db.wallet_ledger.create_index([("user_id", 1), ("timestamp", -1)])
     await db.wallet_ledger.create_index([("session_id", 1), ("timestamp", -1)])
@@ -5590,6 +5594,12 @@ app = FastAPI(
 )
 
 
+try:
+    from commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
+except ImportError:
+    from backend.commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
+
+
 @app.middleware("http")
 async def enforce_public_release_country(request: Request, call_next):
     """Protect production Reader traffic after a public release opens.
@@ -5600,6 +5610,14 @@ async def enforce_public_release_country(request: Request, call_next):
     production surface. The assertion authenticates the proxy and binds its
     observed country to the title-specific rights decision.
     """
+    if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
+        commerce = commerce_territory_verdict(
+            request.headers, method=request.method, path=request.url.path,
+            secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
+        )
+        if not commerce.allowed:
+            status = 503 if commerce.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
+            return JSONResponse(status_code=status, content={"detail": {"code": commerce.code}}, headers={"Cache-Control": "no-store"})
     if (
         ENVIRONMENT == "production"
         and PUBLIC_READER_EXPOSURE_ENABLED
@@ -9743,6 +9761,22 @@ async def user_wallet(user=Depends(require_user)):
     return {"wallet_seconds": await _cached_user_wallet_seconds(user["id"])}
 
 
+@api.get("/users/me/transactions/page")
+async def user_transaction_page(cursor: str = "", limit: int = 50, user=Depends(require_user)):
+    try:
+        from .usage_history import history_query, history_page, FIELDS
+    except ImportError:
+        from usage_history import history_query, history_page, FIELDS
+    if not 1 <= limit <= 100:
+        raise HTTPException(status_code=400, detail="Usage page size must be between 1 and 100")
+    try:
+        query = history_query(user["id"], cursor)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid usage cursor")
+    rows = await db.wallet_transactions.find(query, FIELDS).sort([("created_at", -1), ("id", -1)]).to_list(limit + 1)
+    return history_page(rows, limit)
+
+
 @api.get("/users/me/transactions", response_model=List[WalletTransactionOut])
 async def user_my_transactions(user=Depends(require_user)):
     cache_key = _user_transactions_cache_id(user["id"])
@@ -9852,6 +9886,29 @@ async def user_claim_reader_reward(user=Depends(require_user)):
     }
 
 
+def _listener_transport_canary_audio(audio, slug, request, principal):
+    # This is presentation metadata, not media authority. Only the direct
+    # authenticated Listener opts in; Reader/catalogue projections stay hidden.
+    if (request.query_params.get('transport_canary') != '1'
+            or not principal or principal.get('role') != 'user'):
+        return audio, ''
+    artifact = _controlled_artifact_doc(slug, include_content=False)
+    if not artifact or not _can_expose_audiobook_package_canary(artifact, slug):
+        return audio, ''
+    package, descriptor, new_identity = _selected_audiobook_package(artifact, slug, request, create_rollout_identity=True)
+    if not package:
+        return audio, new_identity
+    canary = artifact.get('audiobook_package_canary') or {}
+    return {**audio, 'transport_canary': {
+        'enabled': True, 'slug': slug,
+        'scope': 'transport_canary_only_no_customer_discovery',
+        'package_version': package['package_version'],
+        'release_descriptor_sha256': descriptor,
+        'duration_ms': package['duration_ms'],
+        'rollout_percentage': canary.get('rollout_percentage'),
+    }}, new_identity
+
+
 @api.get("/reader/book/{slug}/manifest")
 async def reader_book_manifest(
     slug: str,
@@ -9941,6 +9998,13 @@ async def reader_book_manifest(
             ],
         }
     payload = {**manifest, "access": access}
+    canary_audio, new_audio_identity = _listener_transport_canary_audio(manifest.get('audio') or {}, slug, request, principal)
+    if canary_audio is not manifest.get('audio'):
+        payload['audio'] = canary_audio
+    if new_audio_identity:
+        response.set_cookie(AUDIOBOOK_ROLLOUT_COOKIE, new_audio_identity,
+            max_age=365*24*60*60, secure=ENVIRONMENT == 'production', httponly=True,
+            samesite='lax', path=f'/api/reader/book/{slug}')
     if canonical_pages:
         payload["canonical_pages"] = canonical_pages
     response.headers["X-Reader-Manifest-Version"] = manifest["version"]
@@ -10167,7 +10231,7 @@ def _content_range_total_size(content_range: str) -> int:
 def _streaming_body_iterator(body):
     try:
         while True:
-            chunk = body.read(1024 * 1024)
+            chunk = body.read(64 * 1024)
             if not chunk:
                 break
             yield chunk
@@ -10843,7 +10907,7 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
         raise HTTPException(status_code=status, detail={"code": code, "message": "A current authenticated Reading Pass lease is required."})
     try:
         if principal and principal.get("role") == "user":
-            return await reading_pass_service.authorize(
+            result = await reading_pass_service.authorize(
                 user_id=principal["id"],
                 auth_session_id=principal.get("session_id", ""),
                 session_id=session_id,
@@ -10851,12 +10915,20 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
                 content_type="audio",
                 content_id=slug,
             )
-        return await reading_pass_service.authorize_media_credential(
-            session_id=session_id,
-            lease_token=lease_token,
-            content_type="audio",
-            content_id=slug,
-        )
+        else:
+            result = await reading_pass_service.authorize_media_credential(
+                session_id=session_id,
+                lease_token=lease_token,
+                content_type="audio",
+                content_id=slug,
+            )
+        if result.get("acceptance_test_id") == audio_acceptance_budget.TEST_ID:
+            book = await _reader_audio_package_book_for_slug(slug)
+            package, _, _ = _selected_audiobook_package(book, slug, request)
+            selected_scope = audio_acceptance_budget.package_scope(slug, package)
+            if not selected_scope or any((result.get("scope") or {}).get(k) != v for k, v in selected_scope.items()):
+                raise ReadingPassError("ACCEPTANCE_SCOPE_UNAVAILABLE", 403, "The acceptance package changed.")
+        return result
     except ReadingPassError as exc:
         raise _reading_pass_http_error(exc) from exc
 
@@ -11946,6 +12018,16 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         if not book:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
         scope = {"media_position_seconds": position}
+        # The rollout cookie is scoped to /reader/book/<slug>, not this
+        # session-start endpoint. Bind the trusted exact candidate here;
+        # protected media still independently enforces cohort selection.
+        if payload.content_id == audio_acceptance_budget.SLUG:
+            descriptor = audio_acceptance_budget.DESCRIPTOR
+            package = _validated_audiobook_package(book, payload.content_id,
+                raw_package=_book_audiobook_release_packages(book).get(descriptor),
+                expected_release_descriptor_sha256=descriptor)
+            if package and _has_release_eligible_audiobook_package_evidence(book, payload.content_id, descriptor, package):
+                scope.update(audio_acceptance_budget.package_scope(payload.content_id, package))
     else:
         raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Unsupported content type."})
     try:
@@ -12038,7 +12120,9 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))
-        if result.get("status") in {"Running", "Connecting"}:
+        # A paused audio lease remains valid and rotates its media credential.
+        # Clearing it here prevents the native audio element from resuming.
+        if result.get("status") in {"Running", "Connecting", "Paused"}:
             _set_reading_pass_media_cookies(response, result)
         elif result.get("content_type") == "audio":
             _clear_reading_pass_media_cookies(response)

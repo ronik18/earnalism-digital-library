@@ -259,7 +259,7 @@ describe("UX conversion static signals", () => {
     expect(referencePublicPages).toContain("Stories in voice, released with care.");
     expect(referencePublicPages).toContain("{PUBLIC_ACCESS_COPY}");
     expect(publicAccessCopy).toContain('PUBLIC_PREVIEW_COPY = "Read the first 3 pages free."');
-    expect(publicAccessCopy).toContain('LISTENING_ACCESS_COPY = "Public audiobooks are unavailable in this launch."');
+    expect(publicAccessCopy).toContain('LISTENING_ACCESS_COPY = "Listening is available only for released audiobooks and requires an active Reading Pass."');
     expect(referencePublicPages).toContain("Stay with a story for as long as it holds you.");
     expect(referencePublicPages).toContain("No subscription or autorenewal");
     expect(referencePublicPages).toContain("View Reading Passes");
@@ -467,7 +467,7 @@ describe("UX conversion static signals", () => {
     expect(packageJson).toContain('"launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode"');
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
-    expect(alwaysVisibleLaunchCopy).toContain("Reading time is used only while you read.");
+    expect(alwaysVisibleLaunchCopy).toContain("Reading Pass time is used only for eligible reading or active playback of released audiobooks.");
     expect(alwaysVisibleLaunchCopy).toContain("Read the first 3 pages free");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
@@ -1840,12 +1840,12 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/a-ghost-story/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
+      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
       return;
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
+    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");

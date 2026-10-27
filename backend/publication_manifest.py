@@ -15,6 +15,12 @@ import re
 from typing import Any
 
 try:
+    from .protected_package_publication import protected_package_publication_valid
+except ImportError:
+    from protected_package_publication import protected_package_publication_valid
+
+
+try:
     from rights_engine import evaluate_rights
 except ImportError:  # pragma: no cover
     from backend.rights_engine import evaluate_rights
@@ -197,6 +203,10 @@ def build_manifest(
         audio_delivery_mode == "SERVER_OWNED_CONVEYOR"
         and audio_public_endpoint == f"/api/reader/book/{slug}/audiobook"
     )
+    protected_package = bool(
+        protected_package_publication_valid(public_book)
+        and audio_public_endpoint == f"/api/reader/book/{slug}/audiobook/manifest"
+    )
     audio_release_status = str(
         approval.get("audio_public_release")
         or approval.get("public_audio_release")
@@ -229,6 +239,7 @@ def build_manifest(
         and (
             str(audio_assets.get("mp3") or "").strip()
             or server_owned_conveyor
+            or protected_package
         )
     )
     audio_status = (
@@ -300,6 +311,13 @@ def build_manifest(
                             "blockers": [],
                         }
                         if server_owned_conveyor
+                        else {"delivery_mode": "PROTECTED_PACKAGE_V2", "public_endpoint": audio_public_endpoint,
+                              "discovery_exposed": True, "blockers": [],
+                              "package_version": public_book["audiobook_public_package_approval"]["acceptance"]["package_version"],
+                              "release_descriptor_sha256": public_book["audiobook_public_package_approval"]["release_descriptor_sha256"],
+                              "publication_acceptance_sha256": public_book["audiobook_public_package_approval"]["acceptance_sha256"],
+                              "audio_rights_record_sha256": public_book["audiobook_public_package_approval"]["audio_rights_record_sha256"]}
+                        if protected_package
                         else {}
                     ),
                 }
@@ -342,7 +360,17 @@ def validate_manifest(manifest: Any) -> list[str]:
     if audio.get("status") == AUDIO_APPROVED:
         if audio.get("exposed") is not True:
             issues.append("approved audio release must be exposed")
-        if not SHA256_RE.fullmatch(str(audio.get("audio_sha256") or "")):
+        if audio.get("delivery_mode") == "PROTECTED_PACKAGE_V2":
+            if not re.fullmatch(r"sha256-[a-f0-9]{64}", str(audio.get("package_version") or "")):
+                issues.append("protected package release requires canonical package_version")
+            for field in ("release_descriptor_sha256", "publication_acceptance_sha256", "audio_rights_record_sha256"):
+                if not SHA256_RE.fullmatch(str(audio.get(field) or "")):
+                    issues.append("protected package release requires " + field)
+            slug = str(manifest.get("slug") or "").strip().lower()
+            if (audio.get("public_endpoint") != f"/api/reader/book/{slug}/audiobook/manifest"
+                    or audio.get("discovery_exposed") is not True or audio.get("blockers") != []):
+                issues.append("protected package release requires exact endpoint and clear discovery approval")
+        elif not SHA256_RE.fullmatch(str(audio.get("audio_sha256") or "")):
             issues.append("approved audio release requires audio_sha256")
         if (
             audio.get("delivery_mode") == "SERVER_OWNED_CONVEYOR"

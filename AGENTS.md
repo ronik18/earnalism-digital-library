@@ -24,11 +24,27 @@ one-branch/one-open-PR restrictions and conflicting internally invented gates.
 
 - Make routine engineering decisions and continue each authorized next step without
   repeated permission requests. Prepare legitimate PRs and normal authorized integration.
-- Keep one shared-code writer and the canonical worktree at
-  `/tmp/earnalism-main-approved-integration`. Use clean serial branches from current
-  `origin/main` when an isolated PR is parked; preserve its commits, remote refs and PR.
-  Never include a parked payment/backend patch in an unrelated release. No force push,
-  reset, deletion or shared overwrite is implied. Check cleanliness and base before edits.
+- Use parallel preparation with serial integration (owner-directed amendment,
+  27 October 2026). Give each implementation lane its own isolated worktree and
+  branch, with one writer per worktree. Existing reviewed candidates retain their
+  exact source; new work starts from current `origin/main`. Keep the canonical
+  integration location at `/tmp/earnalism-main-approved-integration`; when occupied
+  by preserved work, a named isolated integration worktree is permitted without
+  changing that original checkout. Record each lane's path, owner, base, head,
+  scope, dependencies and overlapping files. Do not infer an integration slot is free.
+- One Integration Lane owner merges or releases at a time. Review overlapping
+  changes by intent and combine required behaviour; never replace whole files
+  with an older branch version or assume newest commit time proves correctness.
+  After each main merge, reconcile the next candidate against current main,
+  inspect the combined diff and run affected tests plus mandatory exact-head CI
+  and reviews. Reuse unchanged evidence only within its actual source binding.
+- Preserve parked commits, branches, remote refs, PRs and all uncommitted work.
+  Never include a parked payment/backend patch in an unrelated release. No force
+  push, reset, stash, deletion or shared overwrite is implied. Check cleanliness,
+  ownership and base before edits. Isolated preparation does not authorize merge,
+  deployment, financial/provider mutations or spending; current specific authority
+  still controls each consequential step. Keep auto-deploy off unless separately
+  authorized, and deploy only the exact approved merged-main source.
 - Keep policy commits separate from application changes. Use required exact-head CI,
   protected review and legitimate integration; deploy only separately authorized sources.
 - Reuse accepted unchanged evidence: one relevant review and appropriate focused tests.

@@ -66,6 +66,10 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
     assert set(registry) == {
+        "india-20261026-the-open-window-protected-package-publication",
+        "india-20261026-the-open-window-approved-revised-cover-pair",
+        "india-20261025-the-open-window-reader-cover-canary-metadata",
+        "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
         "india-20260922-a-ghost-story-reader-release",
         "india-20260922-the-tell-tale-heart-reader-release",
         "india-20260922-radharani-reader-release",
@@ -340,3 +344,18 @@ def test_free_reader_lease_is_bound_to_delivery_right_and_not_a_paid_pass_grant(
     assert runtime_verdict("free_reader_entitlement", record).passed is True
     assert runtime_verdict("reading_pass_session_start", record).passed is False
     assert runtime_verdict("free_reader_entitlement", record, country="US").passed is False
+
+
+def test_open_window_canary_metadata_preserves_reader_rights_and_exact_components():
+    root=PRODUCTION_REGISTRY_PATH.parent/'controlled_publications/the-open-window'
+    record=json.loads((root/'rights_decision.json').read_text())
+    import hashlib
+    components={name:hashlib.sha256((root/(name+'.json')).read_bytes()).hexdigest() for name in ['source_evidence','publication_manifest','reader_manifest','approval_evidence','public_book','checksum_manifest']}
+    accepted,revoked=load_production_registry()
+    verdict=evaluate_runtime_path('catalog_cta',record=record,edition_id='the-open-window',operator_id='reo-enterprise',country='IN',country_trusted=True,required_components=components,accepted_records=accepted,revoked_decision_ids=revoked,now=datetime.now(timezone.utc))
+    assert verdict.passed,verdict.reasons
+    assert 'audio_stream' not in record['uses']
+    assert record['territories']==['IN']
+    components['public_book']='f'*64
+    denied=evaluate_runtime_path('catalog_cta',record=record,edition_id='the-open-window',operator_id='reo-enterprise',country='IN',country_trusted=True,required_components=components,accepted_records=accepted,revoked_decision_ids=revoked,now=datetime.now(timezone.utc))
+    assert not denied.passed

@@ -58,6 +58,7 @@ def verify_release_proxy_request(
     if not isinstance(path, str) or not path.startswith("/api/"):
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_PATH_INVALID")
     signed_post_paths = {
+        "/api/payments/topup",
         "/api/reading-pass/sessions/start",
         "/api/reading-pass/sessions/transfer",
         "/api/reading-pass/leases/renew",

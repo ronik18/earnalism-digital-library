@@ -1,38 +1,8 @@
 {
-  "slug": "the-open-window",
-  "approved_to_publish": true,
-  "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
-  "allowCheckout": false,
-  "allowPayment": false,
-  "audiobook_enabled": false,
-  "audiobook_use_approved": false,
-  "audiobook_use_approval_source": "",
-  "audiobook_use_approved_at": "",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
-  "verified_at": "2026-10-03T04:11:36.072734+00:00",
-  "publication_authorization_sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
-  "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
-  "independent_reviews": {
-    "review_a": {
-      "file": "evidence/review_a.json",
-      "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
-    },
-    "review_b": {
-      "file": "evidence/review_b.json",
-      "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
-    }
-  },
-  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
-  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
-  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
-  "audio_enabled": false,
   "actual_prospective_acceptance": {
-    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
     "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "canonical_version_observed": false,
     "evidence": {
       "review_a": {
         "file": "evidence/review_a.json",
@@ -43,10 +13,108 @@
         "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
       }
     },
-    "production_observed": false,
-    "canonical_version_observed": false,
-    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+    "production_observed": false
   },
+  "allowCheckout": false,
+  "allowPayment": false,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
+  "approved_to_publish": true,
+  "audio_editorial_acceptance": {
+    "acceptance_policy": "open_window_listened_successor.v2",
+    "acceptance_representation_sha256": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117",
+    "acoustic_pass_claimed": false,
+    "owner_local_qa": {
+      "assessed_maximum": 85,
+      "overall_points": null,
+      "production_points": null,
+      "proposed_points": 85,
+      "release_threshold": 95,
+      "review_type": "OWNER_REPORTED_SOURCE_FOLLOWING_FULL_TITLE"
+    },
+    "remaining_lexical_uncertainty_units": [],
+    "status": "OWNER_REVIEWED_LOCAL_QA",
+    "unit24_disposition": "OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY"
+  },
+  "audio_enabled": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook_enabled": true,
+  "audiobook_package_canary": {
+    "approval_scope": "transport_canary_only_no_customer_discovery",
+    "blockers": [],
+    "candidate_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "candidate_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "catalog_audio_enabled": false,
+    "editorial_acceptance": {
+      "acceptance_policy": "open_window_listened_successor.v2",
+      "acceptance_representation_sha256": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117",
+      "acoustic_pass_claimed": false,
+      "owner_local_qa": {
+        "assessed_maximum": 85,
+        "overall_points": null,
+        "production_points": null,
+        "proposed_points": 85,
+        "release_threshold": 95,
+        "review_type": "OWNER_REPORTED_SOURCE_FOLLOWING_FULL_TITLE"
+      },
+      "remaining_lexical_uncertainty_units": [],
+      "status": "OWNER_REVIEWED_LOCAL_QA",
+      "unit24_disposition": "OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY"
+    },
+    "generated_at": "2026-10-25T15:35:29Z",
+    "hidden_before_proof_sha256": "6340bdaedab59d6adfe4fb585065d9d9c77c118184b04e0dee5edd3b5ca192e5",
+    "hidden_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+    "package_endpoint_enabled": true,
+    "package_release_evidence_sha256": "01ac0492c4c5fa9a63143b1b3f91a0609b888e8bfd08bc7fd43dd64236f5a3ac",
+    "post_deploy_proof_required": [
+      "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+      "SEGMENT_RANGE_206",
+      "TIMESTAMPS_200",
+      "BROWSER_PLAYBACK_PASS"
+    ],
+    "primary_receipt_sha256": "daf6532d64261c89cc4092089faf8bc4a1153b4ea9df82e37b1b4bc1f83d57db",
+    "primary_release_manifest_receipt_sha256": "d15daf8d37202a499bc13ae6ac4f18b71cd7d4896aa4197ebb16dfe534e1afcc",
+    "qa_candidate_release_descriptor_file_sha256": "580d207263af20257c8ee62d1a46e77953c6cd55a38af4dd69e229c00522d4a6",
+    "replica_receipt_sha256": "a62d059ba7b718edfb950b58204ce10ac68a0ffa6c4aa1a0df9e3cf82f545326",
+    "replica_release_manifest_receipt_sha256": "bb9db3993c4f94ef09340d536c5292548850722a3831da925f4dc8387073be66",
+    "rollback_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+    "rollout_percentage": 5,
+    "rollout_salt": "open-window-corrected-v1-india-20261025",
+    "schema_version": "audiobook_new_title_package_canary.v1",
+    "slug": "the-open-window",
+    "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"
+  },
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved": false,
+  "audiobook_use_approved_at": "",
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
   "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
-  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+  "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+  "endpoint_url": "/api/reader/book/the-open-window/audiobook/manifest",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+    }
+  },
+  "publication_authorization_sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "qa_status": "QA_PASSED",
+  "release_blockers": [
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "rights_tier": "A",
+  "slug": "the-open-window",
+  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
+  "verification_status": "approved",
+  "verified_at": "2026-10-03T04:11:36.072734+00:00"
 }

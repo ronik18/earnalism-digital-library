@@ -1,4 +1,6 @@
 const crypto = require("node:crypto");
+const { Readable } = require("node:stream");
+const { pipeline } = require("node:stream/promises");
 
 const SCOPE_HEADER = "x-earnalism-release-scope";
 const TIMESTAMP_HEADER = "x-earnalism-release-timestamp";
@@ -25,6 +27,10 @@ function protectedReaderPath(pathname) {
     || pathname.startsWith("/api/reader/")
     || pathname.startsWith("/api/reading-pass/books/")
     || ["/api/reading-pass/sessions/start", "/api/reading-pass/sessions/transfer", "/api/reading-pass/leases/renew"].includes(pathname);
+}
+
+function protectedPurchasePath(pathname) {
+  return pathname === "/api/payments/topup";
 }
 
 function releaseSignature(secret, method, pathname, scope, timestamp, country) {
@@ -114,7 +120,7 @@ module.exports = async function releaseProxy(req, res) {
     headers.set(name, Array.isArray(value) ? value.join(",") : value);
   }
 
-  const protectedPath = protectedReaderPath(incoming.pathname);
+  const protectedPath = protectedReaderPath(incoming.pathname) || protectedPurchasePath(incoming.pathname);
   if (protectedPath) {
     const secret = process.env.EARNALISM_RELEASE_PROXY_SECRET || "";
     if (secret.length < 32) {
@@ -130,7 +136,7 @@ module.exports = async function releaseProxy(req, res) {
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.end(JSON.stringify({ detail: {
         code: "RELEASE_TERRITORY_DENIED",
-        message: "This Reader release is available in India only.",
+        message: protectedPurchasePath(incoming.pathname) ? "Reading Pass purchases are currently available in India only." : "This Reader release is available in India only.",
         country: /^[A-Z]{2}$/.test(country) ? country : null,
         allowed_countries: ["IN"],
       } }));
@@ -143,12 +149,16 @@ module.exports = async function releaseProxy(req, res) {
     headers.set(SIGNATURE_HEADER, releaseSignature(secret, req.method || "GET", incoming.pathname, PUBLIC_RELEASE_SCOPE, timestamp, country));
   }
 
+  const upstreamAbort = new AbortController();
+  const onClientClose = () => { if (!res.writableFinished) upstreamAbort.abort(); };
+  res.on?.("close", onClientClose);
   try {
     const body = ["GET", "HEAD"].includes(req.method || "GET") ? undefined : await requestBody(req);
     const response = await fetch(`${origin}${incoming.pathname}${incoming.search}`, {
       method: req.method || "GET",
       headers,
       body,
+      signal: upstreamAbort.signal,
     });
     res.statusCode = response.status;
     for (const [name, value] of response.headers.entries()) {
@@ -171,14 +181,30 @@ module.exports = async function releaseProxy(req, res) {
       res.setHeader("CDN-Cache-Control", "no-store");
       res.setHeader("Vercel-CDN-Cache-Control", "no-store");
     }
-    res.end(Buffer.from(await response.arrayBuffer()));
+    const audioSegment = /^\/api\/reader\/book\/[^/]+\/audiobook\/packages\/[^/]+\/segments\/[^/]+$/.test(incoming.pathname);
+    if (req.method === "GET" && audioSegment && response.ok
+      && /^audio\//i.test(response.headers.get("content-type") || "") && response.body) {
+      // Forward this already-authorized segment incrementally. Keep all access,
+      // Range, cookie and private-cache controls; never prefetch another segment.
+      await pipeline(Readable.fromWeb(response.body), res);
+    } else {
+      res.end(Buffer.from(await response.arrayBuffer()));
+    }
   } catch (error) {
     console.error("release proxy upstream request failed", { path: incoming.pathname, method: req.method, message: error?.message || "request failed" });
-    res.statusCode = 502;
-    res.setHeader("Cache-Control", "no-store");
-    res.end();
+    if (res.headersSent) {
+      res.destroy();
+    } else {
+      res.statusCode = 502;
+      res.setHeader("Cache-Control", "no-store");
+      res.end();
+    }
+  } finally {
+    res.removeListener?.("close", onClientClose);
   }
 };
 
 module.exports.protectedReaderPath = protectedReaderPath;
 module.exports.releaseSignature = releaseSignature;
+
+module.exports.protectedPurchasePath = protectedPurchasePath;
