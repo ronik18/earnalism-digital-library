@@ -987,7 +987,9 @@ def _fetch_captured_razorpay_payment(intent: dict, payment_id: str) -> dict:
     except Exception as exc:
         logger.warning("Razorpay payment.fetch failed for verification", exc_info=True)
         raise HTTPException(status_code=502, detail="Could not verify payment with Razorpay") from exc
-    if not isinstance(payment, dict) or not _razorpay_payment_matches_intent(payment, intent):
+    if (not isinstance(payment, dict)
+            or str(payment.get("id") or "") != str(payment_id)
+            or not _razorpay_payment_matches_intent(payment, intent)):
         raise HTTPException(status_code=409, detail="Payment is not captured for this Reading Pass order")
     return payment
 
@@ -4876,7 +4878,9 @@ async def _record_wallet_ledger(
     balance_after: Optional[int] = None,
     source_transaction_id: Optional[str] = None,
     extra: Optional[dict] = None,
+    mongo_session=None,
 ) -> dict:
+    session_options = {"session": mongo_session} if mongo_session is not None else {}
     seconds = int(seconds_delta)
     tx_type = "credit" if seconds >= 0 else ("debit" if action == "admin_adjustment" else "consume")
     if action == "admin_adjustment":
@@ -4900,10 +4904,10 @@ async def _record_wallet_ledger(
     if extra:
         tx.update(extra)
     if not source_transaction_id:
-        await db.wallet_transactions.insert_one(tx)
+        await db.wallet_transactions.insert_one(tx, **session_options)
 
     if balance_after is None:
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1})
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}, **session_options)
         balance_after = int((fresh or {}).get("reading_seconds_balance", (fresh or {}).get("wallet_seconds", 0)) or 0)
 
     ledger = {
@@ -4929,10 +4933,12 @@ async def _record_wallet_ledger(
         {"source_transaction_id": tx["id"]},
         {"$setOnInsert": ledger},
         upsert=True,
+        **session_options,
     )
-    await _flag_wallet_divergence(user_id, int(balance_after or 0))
-    await _invalidate_user_cache(user_id)
-    await _set_user_wallet_cache(user_id, int(balance_after or 0))
+    if mongo_session is None:
+        await _flag_wallet_divergence(user_id, int(balance_after or 0))
+        await _invalidate_user_cache(user_id)
+        await _set_user_wallet_cache(user_id, int(balance_after or 0))
     return tx
 
 
@@ -12949,90 +12955,106 @@ async def admin_wallet_refund_approve(uid: str, payload: WalletRefundApproveIn, 
     if not requested:
         raise HTTPException(status_code=400, detail="Select at least one refund candidate before approval")
 
-    txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(2000)
-    refunded_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0, "candidate_id": 1}).to_list(1000)
-    refunded_ids = {row.get("candidate_id") for row in refunded_rows if row.get("candidate_id")}
-    open_candidates = _wallet_refund_candidates(txs, refunded_ids)
-    candidates_by_id = {c["candidate_id"]: c for c in open_candidates}
-    missing = sorted(requested - set(candidates_by_id))
-    if missing:
-        raise HTTPException(status_code=409, detail={
-            "message": "Some selected candidates were already refunded or are no longer eligible.",
-            "candidate_ids": missing,
-        })
+    async def operation(mongo_session):
+        recipient = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0, "id": 1}, session=mongo_session)
+        if not recipient:
+            raise HTTPException(status_code=404, detail="User not found")
+        txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}, session=mongo_session).sort("created_at", -1).to_list(2000)
+        refunded_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0, "candidate_id": 1}, session=mongo_session).to_list(1000)
+        refunded_ids = {row.get("candidate_id") for row in refunded_rows if row.get("candidate_id")}
+        open_candidates = _wallet_refund_candidates(txs, refunded_ids)
+        candidates_by_id = {c["candidate_id"]: c for c in open_candidates}
+        missing = sorted(requested - set(candidates_by_id))
+        if missing:
+            raise HTTPException(status_code=409, detail={
+                "message": "Some selected candidates were already refunded or are no longer eligible.",
+                "candidate_ids": missing,
+            })
 
-    batch_id = str(uuid.uuid4())
-    now = now_iso()
-    approved: List[dict] = []
-    for candidate_id in sorted(requested):
-        candidate = candidates_by_id[candidate_id]
-        refund_doc = {
-            "id": str(uuid.uuid4()),
-            "batch_id": batch_id,
-            "candidate_id": candidate_id,
-            "user_id": uid,
-            "status": "approved",
-            "source_transaction_id": candidate.get("source_transaction_id", ""),
-            "session_id": candidate.get("session_id", ""),
-            "issue": candidate.get("issue", ""),
-            "charged_seconds": int(candidate.get("charged_seconds", 0) or 0),
-            "refunded_seconds": int(candidate.get("refundable_seconds", 0) or 0),
-            "evidence": candidate.get("evidence", ""),
-            "admin_note": payload.note.strip()[:500],
-            "approved_by": f"admin:{admin.get('email','')}",
-            "created_at": now,
-            "credited": False,
-        }
-        result = await db.wallet_refunds.update_one(
-            {"candidate_id": candidate_id},
-            {"$setOnInsert": refund_doc},
-            upsert=True,
+        batch_id = str(uuid.uuid4())
+        now = now_iso()
+        approved: List[dict] = []
+        for candidate_id in sorted(requested):
+            candidate = candidates_by_id[candidate_id]
+            refund_doc = {
+                "id": str(uuid.uuid4()),
+                "batch_id": batch_id,
+                "candidate_id": candidate_id,
+                "user_id": uid,
+                "status": "approved",
+                "source_transaction_id": candidate.get("source_transaction_id", ""),
+                "session_id": candidate.get("session_id", ""),
+                "issue": candidate.get("issue", ""),
+                "charged_seconds": int(candidate.get("charged_seconds", 0) or 0),
+                "refunded_seconds": int(candidate.get("refundable_seconds", 0) or 0),
+                "evidence": candidate.get("evidence", ""),
+                "admin_note": payload.note.strip()[:500],
+                "approved_by": f"admin:{admin.get('email','')}",
+                "created_at": now,
+                "credited": False,
+            }
+            result = await db.wallet_refunds.update_one(
+                {"candidate_id": candidate_id},
+                {"$setOnInsert": refund_doc},
+                upsert=True,
+                session=mongo_session,
+            )
+            if result.upserted_id is not None:
+                approved.append(refund_doc)
+
+        applied_seconds = sum(int(row.get("refunded_seconds", 0) or 0) for row in approved)
+        if applied_seconds <= 0:
+            fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}, session=mongo_session) or {}
+            return {
+                "ok": True,
+                "applied_seconds": 0,
+                "applied_candidates": [],
+                "reading_seconds_balance": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+                "message": "Selected candidates were already approved.",
+            }
+
+        balance_update = await db.users.update_one(
+            {"id": uid, "role": "user"},
+            {"$inc": {"reading_seconds_balance": applied_seconds, "wallet_seconds": applied_seconds}},
+            session=mongo_session,
         )
-        if result.upserted_id is not None:
-            approved.append(refund_doc)
-
-    applied_seconds = sum(int(row.get("refunded_seconds", 0) or 0) for row in approved)
-    if applied_seconds <= 0:
-        fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        if balance_update.modified_count != 1:
+            raise HTTPException(status_code=409, detail="Refund recipient balance was not updated")
+        fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}, session=mongo_session) or {}
+        balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        tx = await _record_wallet_ledger(
+            user_id=uid,
+            action="refund_credit",
+            seconds_delta=applied_seconds,
+            reason=f"Admin-approved billing refund ({len(approved)} finding{'s' if len(approved) != 1 else ''})",
+            actor=f"admin:{admin.get('email','')}",
+            balance_after=balance_after,
+            mongo_session=mongo_session,
+            extra={
+                "refund_batch_id": batch_id,
+                "candidate_ids": ",".join(row["candidate_id"] for row in approved),
+                "admin_note": payload.note.strip()[:240],
+            },
+        )
+        await db.wallet_refunds.update_many(
+            {"batch_id": batch_id, "candidate_id": {"$in": [row["candidate_id"] for row in approved]}},
+            {"$set": {"credited": True, "credited_transaction_id": tx["id"], "balance_after": balance_after}},
+            session=mongo_session,
+        )
         return {
             "ok": True,
-            "applied_seconds": 0,
-            "applied_candidates": [],
-            "reading_seconds_balance": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
-            "message": "Selected candidates were already approved.",
+            "batch_id": batch_id,
+            "applied_seconds": applied_seconds,
+            "applied_candidates": approved,
+            "transaction_id": tx["id"],
+            "reading_seconds_balance": balance_after,
         }
 
-    await db.users.update_one(
-        {"id": uid},
-        {"$inc": {"reading_seconds_balance": applied_seconds, "wallet_seconds": applied_seconds}},
-    )
-    fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-    balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
-    tx = await _record_wallet_ledger(
-        user_id=uid,
-        action="refund_credit",
-        seconds_delta=applied_seconds,
-        reason=f"Admin-approved billing refund ({len(approved)} finding{'s' if len(approved) != 1 else ''})",
-        actor=f"admin:{admin.get('email','')}",
-        balance_after=balance_after,
-        extra={
-            "refund_batch_id": batch_id,
-            "candidate_ids": ",".join(row["candidate_id"] for row in approved),
-            "admin_note": payload.note.strip()[:240],
-        },
-    )
-    await db.wallet_refunds.update_many(
-        {"batch_id": batch_id, "candidate_id": {"$in": [row["candidate_id"] for row in approved]}},
-        {"$set": {"credited": True, "credited_transaction_id": tx["id"], "balance_after": balance_after}},
-    )
-    return {
-        "ok": True,
-        "batch_id": batch_id,
-        "applied_seconds": applied_seconds,
-        "applied_candidates": approved,
-        "transaction_id": tx["id"],
-        "reading_seconds_balance": balance_after,
-    }
+    if db is not reading_pass_service.db:
+        raise HTTPException(status_code=503, detail="Transactional wallet service unavailable")
+    result = await reading_pass_service._transaction(operation)
+    await _invalidate_user_cache(uid)
+    return result
 
 
 @api.patch("/admin/users/{uid}/status")
@@ -13482,7 +13504,7 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
         f"{payload.razorpay_order_id}|{payload.razorpay_payment_id}".encode("utf-8"),
     )
     if not hmac.compare_digest(expected, payload.razorpay_signature):
-        await db.topup_intents.update_one({"id": intent["id"]}, {"$set": {"status": "failed", "failed_reason": "bad_signature"}})
+        await db.topup_intents.update_one({"id": intent["id"], "status": {"$ne": "credited"}}, {"$set": {"status": "failed", "failed_reason": "bad_signature"}})
         await _invalidate_user_cache(user["id"])
         raise HTTPException(status_code=400, detail="Invalid payment signature")
 
@@ -13754,9 +13776,13 @@ async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, ad
         raise HTTPException(status_code=404, detail="Intent not found")
     if intent["status"] == "credited":
         return {"ok": True, "duplicate": True, "intent": intent}
+    payment_id = intent.get("razorpay_payment_id")
+    if not payment_id:
+        raise HTTPException(status_code=409, detail="Captured payment proof is required for reconciliation")
+    payment = _fetch_captured_razorpay_payment(intent, str(payment_id))
     refreshed = await _credit_wallet_for_intent(
         intent,
-        intent.get("razorpay_payment_id"),
+        str(payment["id"]),
         f"admin_reconcile:{admin.get('email','')}:{payload.note[:80]}",
     )
     return {"ok": True, "intent": refreshed}

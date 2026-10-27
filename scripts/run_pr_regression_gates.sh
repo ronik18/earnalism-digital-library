@@ -63,6 +63,7 @@ env \
     backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
     backend/tests/test_reading_pass_negative_balance.py \
+    backend/tests/test_payment_local_qualification.py \
     backend/tests/test_package_integrity_and_preview_access.py \
     backend/tests/test_open_window_audio_acceptance_budget.py \
     backend/tests/test_audio_renewal_media_cookies.py \
