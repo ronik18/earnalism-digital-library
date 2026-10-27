@@ -28,7 +28,10 @@ The existing journal namespace remains fixed at
 `/Users/ronikbasak/.codex/earnalism-release-journal/india-production`. The runner
 does not create, clear, migrate or declare that directory durable. It rejects
 symlinked, permissive, wrong-owner and workspace/temporary journal locations.
-Unknown intents continue to block execution. Host persistence and protected
+Location, symlink and owner/permission checks run before any journal enumeration
+or content read. Symlinked receipts are rejected and regular receipts are opened
+without following a final symlink. Unknown intents continue to block execution.
+Host persistence and protected
 executor provisioning are external facts, not consequences of passing tests.
 
 ## Actual observations and remaining gates

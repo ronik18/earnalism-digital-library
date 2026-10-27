@@ -6,11 +6,32 @@ metadata reads. Capability flags never establish source/config rollback safety.
 from datetime import datetime, timezone
 from pathlib import Path
 import json
+import os
 import re
+import stat
 import subprocess
 from scripts.india_release_provider_adapter import (
     PROJECT, TEAM, RAILWAY_PROJECT, SERVICE, ENVIRONMENT, CLI_VERSIONS, digest,
 )
+
+
+def journal_location_holds(journal, workspace=None, temporary=None):
+    """Validate storage metadata before any journal enumeration/content read."""
+    path = Path(journal)
+    if not path.exists():
+        return ['FIXED_JOURNAL_NOT_PROVISIONED']
+    resolved = path.resolve()
+    if resolved != path or not path.is_dir():
+        return ['FIXED_JOURNAL_NOT_A_REAL_DIRECTORY']
+    if any(parent.is_symlink() for parent in [path, *path.parents]):
+        return ['FIXED_JOURNAL_HAS_SYMBOLIC_PARENT']
+    roots = [Path(root).resolve() for root in (workspace, temporary) if root is not None]
+    if any(resolved == root or root in resolved.parents for root in roots):
+        return ['JOURNAL_MUST_BE_OUTSIDE_EPHEMERAL_RUNNER_DIRECTORIES']
+    info = path.stat()
+    if info.st_uid != os.geteuid() or stat.S_IMODE(info.st_mode) & 0o077:
+        return ['JOURNAL_OWNER_OR_PERMISSIONS_UNQUALIFIED']
+    return ['DURABLE_HOST_AND_PROTECTED_EXECUTOR_ATTESTATION_REQUIRED']
 
 
 def rollback_verdict(deployments, contract):
@@ -124,7 +145,7 @@ class ProtectedReleasePreflight:
     def __init__(self, observer):
         self.observer = observer
 
-    def check(self, contract):
+    def check(self, contract, *, workspace=None, temporary=None):
         source = contract.get('source_sha', '')
         if not re.fullmatch('[a-f0-9]{40}', source):
             raise ValueError('Exact reviewed source required')
@@ -140,11 +161,23 @@ class ProtectedReleasePreflight:
         rollback = rollback_verdict(snapshot['deployments'], contract)
         if not rollback['qualified']:
             holds.append(rollback['reason'])
-        if self.JOURNAL.exists():
+        location = journal_location_holds(self.JOURNAL, workspace, temporary)
+        holds.extend(location)
+        # A missing/unsafe path is a write-qualification HOLD, not a reason to
+        # skip otherwise permitted metadata observation. Never follow it.
+        if location == ['DURABLE_HOST_AND_PROTECTED_EXECUTOR_ATTESTATION_REQUIRED']:
             for path in self.JOURNAL.glob('*.json'):
                 if path.name.endswith('.request.json'):
                     continue
-                state = json.loads(path.read_text()).get('state')
+                if path.is_symlink() or not path.is_file():
+                    holds.append('UNSAFE_JOURNAL_RECEIPT')
+                    break
+                with os.fdopen(os.open(path, os.O_RDONLY | os.O_NOFOLLOW)) as stream:
+                    info = os.fstat(stream.fileno())
+                    if info.st_uid != os.geteuid() or stat.S_IMODE(info.st_mode) & 0o022:
+                        holds.append('UNSAFE_JOURNAL_RECEIPT')
+                        break
+                    state = json.load(stream).get('state')
                 if state not in {'APPLIED_VERIFIED', 'NOT_APPLIED_VERIFIED'}:
                     holds.append('UNKNOWN_WRITE_REQUIRES_READ_ONLY_RECONCILIATION')
                     break

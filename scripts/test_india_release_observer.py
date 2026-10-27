@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest import mock
 from scripts.india_release_observer import NativeMetadataObserver, ProtectedReleasePreflight, rollback_verdict
 from scripts.india_release_provider_adapter import PROJECT, TEAM, CLI_VERSIONS
 
@@ -96,8 +97,38 @@ class ObserverTests(unittest.TestCase):
 
     def test_unknown_journal_blocks(self):
         with tempfile.TemporaryDirectory() as temp:
-            runner=ProtectedReleasePreflight(self.observer());runner.JOURNAL=Path(temp)
+            runner=ProtectedReleasePreflight(self.observer());runner.JOURNAL=Path(temp).resolve()
             (runner.JOURNAL/'intent.json').write_text('{"state":"INTENT_RECONCILE_BEFORE_RETRY"}')
             self.assertIn('UNKNOWN_WRITE_REQUIRES_READ_ONLY_RECONCILIATION',runner.check({'source_sha':SHA})['holds'])
+
+    def test_symlinked_journal_is_never_enumerated_or_read(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp).resolve();private=root/'private';private.mkdir(mode=0o700)
+            (private/'intent.json').write_text('{"private":"DO_NOT_READ"}')
+            link=root/'journal';link.symlink_to(private)
+            runner=ProtectedReleasePreflight(self.observer());runner.JOURNAL=link
+            with mock.patch.object(Path,'glob',side_effect=AssertionError('unsafe enumeration')), \
+                 mock.patch('os.open',side_effect=AssertionError('unsafe content read')):
+                result=runner.check({'source_sha':SHA})
+            self.assertIn('FIXED_JOURNAL_NOT_A_REAL_DIRECTORY',result['holds'])
+
+    def test_permissive_journal_is_never_enumerated_or_read(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp).resolve();root.chmod(0o777)
+            runner=ProtectedReleasePreflight(self.observer());runner.JOURNAL=root
+            with mock.patch.object(Path,'glob',side_effect=AssertionError('unsafe enumeration')), \
+                 mock.patch('os.open',side_effect=AssertionError('unsafe content read')):
+                result=runner.check({'source_sha':SHA})
+            self.assertIn('JOURNAL_OWNER_OR_PERMISSIONS_UNQUALIFIED',result['holds'])
+
+    def test_symlinked_receipt_is_not_opened(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp).resolve();journal=root/'journal';journal.mkdir(mode=0o700)
+            private=root/'private';private.write_text('DO_NOT_READ')
+            (journal/'intent.json').symlink_to(private)
+            runner=ProtectedReleasePreflight(self.observer());runner.JOURNAL=journal
+            with mock.patch('os.open',side_effect=AssertionError('unsafe receipt read')):
+                result=runner.check({'source_sha':SHA})
+            self.assertIn('UNSAFE_JOURNAL_RECEIPT',result['holds'])
 
 if __name__ == '__main__':unittest.main()

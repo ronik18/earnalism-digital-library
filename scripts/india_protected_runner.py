@@ -5,10 +5,11 @@ import json
 import os
 from pathlib import Path
 import re
-import stat
 import subprocess
 
-from scripts.india_release_observer import NativeMetadataObserver, ProtectedReleasePreflight
+from scripts.india_release_observer import (
+    NativeMetadataObserver, ProtectedReleasePreflight, journal_location_holds as journal_holds,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = 'ronik18/earnalism-digital-library'
@@ -35,30 +36,6 @@ def verified_source(env, git):
     return sha
 
 
-def journal_holds(journal, workspace, temporary):
-    """Check existing host storage without creating, migrating or clearing it.
-
-    These checks establish location/permissions only. Durability and protected
-    host provisioning remain platform/operator facts, never inferred from a path.
-    """
-    path = Path(journal)
-    if not path.exists():
-        return ['FIXED_JOURNAL_NOT_PROVISIONED']
-    resolved = path.resolve()
-    if resolved != path or not path.is_dir():
-        return ['FIXED_JOURNAL_NOT_A_REAL_DIRECTORY']
-    for parent in [path, *path.parents]:
-        if parent.is_symlink():
-            return ['FIXED_JOURNAL_HAS_SYMBOLIC_PARENT']
-    if any(resolved == root.resolve() or root.resolve() in resolved.parents
-           for root in (Path(workspace), Path(temporary))):
-        return ['JOURNAL_MUST_BE_OUTSIDE_EPHEMERAL_RUNNER_DIRECTORIES']
-    info = path.stat()
-    if info.st_uid != os.geteuid() or stat.S_IMODE(info.st_mode) & 0o077:
-        return ['JOURNAL_OWNER_OR_PERMISSIONS_UNQUALIFIED']
-    return ['DURABLE_HOST_AND_PROTECTED_EXECUTOR_ATTESTATION_REQUIRED']
-
-
 def observe(env, git, observer, contract):
     controller = verified_source(env, git)
     if contract.get('scope') != {'territories': ['IN'], 'deployment_authorized': False,
@@ -74,13 +51,12 @@ def observe(env, git, observer, contract):
             raise ValueError('Application subtree differs from retained contract')
     # Read the repository-bound contract; never accept dispatch JSON as approval.
     preflight = ProtectedReleasePreflight(observer)
-    report = preflight.check({'source_sha': app})
+    report = preflight.check({'source_sha': app}, workspace=env['GITHUB_WORKSPACE'],
+                             temporary=env['RUNNER_TEMP'])
     report['controller_sha'] = controller
     report['observation_runner'] = env['RUNNER_ENVIRONMENT']
     report['source_contract_sha256'] = hashlib.sha256(
         json.dumps(contract, sort_keys=True).encode()).hexdigest()
-    report['holds'] = sorted(set(report['holds'] + journal_holds(
-        preflight.JOURNAL, env['GITHUB_WORKSPACE'], env['RUNNER_TEMP'])))
     report['execution_permitted'] = False
     report['provider_mutations'] = 0
     return report
