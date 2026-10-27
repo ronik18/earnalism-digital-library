@@ -12108,5 +12108,16 @@
     "qualification": "11 source/transition tests PASS; preparation cannot enable execution even with complete modeled evidence",
     "production_changed": false,
     "next_action": "Fresh PR573 CI; actual qualified rollback artifact and reviewed provider adapters remain unavailable, not owner waiver requests"
+  },
+  "india_guarded_execution_preparation_20261027": {
+    "date": "2026-10-27",
+    "decision": "IMPLEMENT_GUARDED_CONTAINMENT_AND_EXPLICIT_PROVIDER_ADAPTERS",
+    "evidence": "internal/legal/india_guarded_execution_controller.md",
+    "local_validation": "19 focused fault/containment/controller tests PASS; actualCLI help only, provider subprocess injected in tests",
+    "source": "Current633caa financial/Listener/entitlement source retained in containment candidate; old565bridge rejected",
+    "scope": "Latest native owner no-deploy/no-publish verified; automation/checkpoint authority corrected",
+    "production_changed": false,
+    "paid_session": false,
+    "next_action": "Fresh exacthead PR CI/review; live observer/protected runner and provider artifact/config qualification remain mandatory"
   }
 }

@@ -88,6 +88,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_run_bounded_pytest \
   scripts.test_india_release_source_preflight \
   scripts.test_india_release_transition \
+  scripts.test_build_india_guarded_rollback \
+  scripts.test_india_release_provider_adapter \
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
