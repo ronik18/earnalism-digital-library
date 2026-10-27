@@ -2792,3 +2792,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - 2026-10-27 named operator policy: reuse the verified accepted contact notice in both React and generated legal output. Role acceptance resolves the named-contact fact, not mailbox delivery, processor/retention operations, accountant treatment or release-controller authority. Evidence: internal/legal/international_launch_20261027/operator-policy-followup.md.
 
 - 2026-10-27 India release preparation: verify squash review by exact root equality and actual checks; preserve distinct controller/artifact roles. Current frontend lacks purchase signing, so backend-first fails legitimate India orders. Provider rollback capability does not prove the old artifact preserves new territory controls. See internal/legal/india_release_preflight.md. No dispatch or paid session.
+
+- India transition preparation must reject backend-first ordering and incompatible rollback, stop on unknown writes, and never turn modeled stage completion into provider or deployment approval. Actual guarded rollback artifact qualification remains separate.

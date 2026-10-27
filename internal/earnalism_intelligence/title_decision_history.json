@@ -12100,5 +12100,13 @@
     "production_changed": false,
     "paid_session": false,
     "next_action": "Review source preflight PR and prepare compatible transition/rollback under unchanged protected gates; no dispatch."
+  },
+  "india_release_transition_preparation_20261027": {
+    "date": "2026-10-27",
+    "decision": "ENFORCE_PREPARATION_TRANSITION_ORDER_AND_ROLLBACK_HOLDS",
+    "evidence": "internal/legal/india_release_transition.prepared.json",
+    "qualification": "11 source/transition tests PASS; preparation cannot enable execution even with complete modeled evidence",
+    "production_changed": false,
+    "next_action": "Fresh PR573 CI; actual qualified rollback artifact and reviewed provider adapters remain unavailable, not owner waiver requests"
   }
 }

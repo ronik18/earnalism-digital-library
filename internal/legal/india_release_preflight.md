@@ -68,6 +68,29 @@ preflight. Its future PR must enforce the above protected config/rollback gates,
 bounded polling, persisted write intent, read-only reconciliation after unknown
 outcomes and actual serving canaries. No approvals are minted by this document.
 
+## Enforced transition preparation
+
+`scripts/india_release_transition.py` validates the prepared transition JSON and
+calculates the next proposed stage with missing prerequisites. It rejects backend
+first ordering, out-of-order completion, automatic retries, unguarded backend
+rollback and unsigned frontend rollback against a guarded backend. Unknown write
+outcomes stop all proposed actions for read-only reconciliation. Even an entirely
+successful modeled sequence is explicitly not production acceptance and never
+enables execution. Run it without credentials:
+
+```sh
+python3 -m unittest scripts.test_india_release_transition
+python3 scripts/india_release_transition.py --plan internal/legal/india_release_transition.prepared.json
+```
+
+The concrete missing execution dependency is a qualified guard-preserving
+rollback artifact/config and provider execution adapters reviewed against it.
+The current provider artifact lacks the guard; the source-preflight plan cannot
+manufacture that qualification. Preparing code/tests is allowed; creating or
+qualifying a deployed candidate and changing protected approval/config state is
+outside the current no-deployment instruction. Do not ask the owner to waive
+this engineering dependency or treat dummy receipts as a provider observation.
+
 ## Owner facts versus engineering work
 
 Account/team access denied by a provider may require its account administrator.
