@@ -1,3 +1,5 @@
+jest.mock("./privacyControls", () => ({ OPTIONAL_ANALYTICS_ENABLED: true }));
+
 import {
   analyticsNetworkEnabled,
   classifyAnalyticsDeployment,

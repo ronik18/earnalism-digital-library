@@ -5594,6 +5594,12 @@ app = FastAPI(
 )
 
 
+try:
+    from commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
+except ImportError:
+    from backend.commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
+
+
 @app.middleware("http")
 async def enforce_public_release_country(request: Request, call_next):
     """Protect production Reader traffic after a public release opens.
@@ -5604,6 +5610,14 @@ async def enforce_public_release_country(request: Request, call_next):
     production surface. The assertion authenticates the proxy and binds its
     observed country to the title-specific rights decision.
     """
+    if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
+        commerce = commerce_territory_verdict(
+            request.headers, method=request.method, path=request.url.path,
+            secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
+        )
+        if not commerce.allowed:
+            status = 503 if commerce.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
+            return JSONResponse(status_code=status, content={"detail": {"code": commerce.code}}, headers={"Cache-Control": "no-store"})
     if (
         ENVIRONMENT == "production"
         and PUBLIC_READER_EXPOSURE_ENABLED

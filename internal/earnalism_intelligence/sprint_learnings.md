@@ -2771,6 +2771,16 @@ BookDetail enrichment must recognize provider-private protected packages through
 
 Actual audiobook Library filter acceptance is separate from Book CTA and Listener. Keep the legacy global audio switch false while respecting exact protected-package release allowlists; negative unrelated/malformed/held cases remain hidden.43focused testsPASS.
 
+## 2026-10-27 — Minimum international compliance preparation
+
+- A live payment API key is not evidence of international merchant acceptance, destination-tax treatment or completed provider acceptance. Record those separately and retain differing earlier observations.
+- Keep a short proposed first-country catalogue outside runtime rights registries until genuine exact-component decisions pass; original public-domain text does not automatically clear every edition layer.
+- With optional analytics disabled, suppress helper-created campaign/session storage as well as network delivery and Vercel measurement injection.
+- Enforce purchase geography at the backend before order creation, independently of the Reader exposure flag; preserve refund, verification and webhook paths.
+- Git worktree enumeration can stall on iCloud dataless HEAD metadata. Hydrate existing metadata rather than delete historical worktrees or bypass worktree protections.
+- Reuse the repository CI dependency install mode (`npm ci --legacy-peer-deps`) without changing the dependency lock. Local tests/build passed; full provider/HTTP financial acceptance and exact-head remote CI remain unproven.
+- Evidence and next integration action: `internal/legal/international_launch_20261027/README.md`.
+
 ## Open Window Listener transport — 27 October 2026
 
 Natural media ending is not user pause: avoid an extra paused renewal before segment advancement. Playing cross-segment seeks require renewal before source assignment, with cancellation by newer intent. Backend StreamingResponse cannot deliver early bytes if its iterator reads1MiB or the frontend proxy buffers arrayBuffer; bound reads and pipe successful authorized segments with cancellation. Preserve no-store, territory, Range, cookies and denial semantics. Modern route tests must use real Requests and active immutable packages; archival provider URLs cannot override current public release gates. Billing candidates remain separate and no new paid playback is authorized.
