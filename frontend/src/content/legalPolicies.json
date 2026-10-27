@@ -1,0 +1,139 @@
+{
+  "/terms": {
+    "title": "Terms of Use",
+    "description": "Terms for Earnalism editions, Reading Passes, availability and consumer remedies.",
+    "updated": "27 October 2026",
+    "intro": "Earnalism is operated by REO ENTERPRISE, Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India. These terms apply to the features actually available for your location.",
+    "sections": [
+      {
+        "heading": "Availability and territories",
+        "paragraphs": [
+          "Reading Pass purchases and released reading/listening delivery are currently offered in India only. Public website access does not grant permission to access a title in another country. Editions, previews and listening may have different territorial restrictions. Do not bypass location or access controls. We will identify additional supported countries before enabling their purchases or delivery."
+        ]
+      },
+      {
+        "heading": "The service and Reading Passes",
+        "paragraphs": [
+          "Released India titles provide a free preview of pages 1–3; page 4 onward requires a valid Reading Pass entitlement. Reading Passes are one-time purchases: ₹49 for 30 minutes, ₹89 for 60 minutes, ₹239 for 3 hours, or ₹499 for 10 hours. There is no subscription or automatic renewal. Purchased unused reading time does not expire. Prices are in Indian rupees; the checkout must show the total payable, including applicable taxes and charges, before payment. Your bank may impose its own currency-conversion or payment charges."
+        ]
+      },
+      {
+        "heading": "Delivery and time accounting",
+        "paragraphs": [
+          "A Reading Pass supplies access time across eligible editions, rather than ownership of a book or a guarantee that a particular title will remain available forever. You need internet access, a supported current browser and, for protected content, a signed-in account. Reading time is deducted only for eligible delivered reading, not previews, prefetching or failed content delivery. Released audiobooks require an active Reading Pass from second 0. Paused and buffering listening intervals are not billed. Check the individual edition for available formats."
+        ]
+      },
+      {
+        "heading": "Cancellation, refunds and remedies",
+        "paragraphs": [
+          "Before any paid entitlement is consumed, you may request cancellation or a refund through support, subject to transaction verification and payment-provider processing. For voluntary cancellation where no statutory right requires otherwise, validly consumed time is ordinarily non-refundable and remaining unused time stays available. This does not remove any mandatory cancellation, refund or digital-service remedy. Merely starting to read does not constitute a blanket waiver of statutory rights.",
+          "Verified duplicate or erroneous charges will be remedied. Failed delivery must not consume time; incorrectly deducted time will be restored where determinable or an appropriate remedy provided. If a title is withdrawn, remaining balance remains usable across other eligible titles; if the service cannot provide the access purchased, contact us for an appropriate remedy, including a refund where required. Failed or cancelled payments do not create entitlement.",
+          "To request help, email sales@reoenterprise.org with your account email, transaction reference and a description of the problem. Never send passwords, full card details or payment authentication codes. We will explain the outcome and applicable refund processing times. Rights that cannot lawfully be excluded take precedence over these terms, including mandatory rights in an applicable consumer jurisdiction."
+        ]
+      },
+      {
+        "heading": "Accounts and permitted use",
+        "paragraphs": [
+          "Keep your sign-in details confidential and use the service lawfully. Accounts and purchases are intended for adults with capacity to enter the contract. If you are a parent or guardian with a concern about a child’s information, contact us. Do not copy, redistribute, scrape or commercially reuse protected site material beyond the rights the law or an applicable licence permits. Public-domain literary text remains public domain where applicable. A Creative Commons licence governs the identified licensed transcription and its copying, sharing and adaptation permissions; these terms add no restrictions to those permissions. Separate artwork, branding and software retain their own rights."
+        ]
+      },
+      {
+        "heading": "Video productions",
+        "paragraphs": [
+          "Earnalism educational videos may use AI-generated narration and illustrative animation. Production disclosures, sources and required credits accompany each released video. Illustrations explain concepts and are not documentary footage unless identified as such. Report factual errors or rights concerns through the rights contact form.",
+          "Video playback is not currently available on this website. Reading Passes do not include video access."
+        ]
+      },
+      {
+        "heading": "Support and grievances",
+        "paragraphs": [
+          "Grievance Officer and privacy/support contact: Ronik Basak, Earnalism (operated by REO ENTERPRISE). Email: sales@reoenterprise.org. Postal contact: Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India.",
+          "For account support, cancellation, privacy requests, copyright concerns or a consumer grievance, contact Ronik Basak at sales@reoenterprise.org or through the contact form. Consumer grievances will be acknowledged within 48 hours and addressed within one month, as required by applicable Indian e-commerce rules. These terms do not restrict access to competent consumer authorities or courts."
+        ]
+      }
+    ]
+  },
+  "/privacy": {
+    "title": "Privacy",
+    "description": "How Earnalism uses account, reading, payment, support and newsletter information.",
+    "updated": "27 October 2026",
+    "intro": "REO ENTERPRISE, Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India is responsible for the personal information used to operate Earnalism. Contact sales@reoenterprise.org for privacy requests.",
+    "sections": [
+      {
+        "heading": "Information we use",
+        "paragraphs": [
+          "We process the name, email, account identifiers and sign-in information you provide; reading position, device/session identifiers and delivered reading/listening usage needed for access and accounting; payment order, status and transaction references; and the information you send through contact or newsletter forms. Hosting and security services may process connection information such as IP addresses and request logs. Payment credentials are handled by the payment provider; do not send them to our support team."
+        ]
+      },
+      {
+        "heading": "Purposes and legal bases",
+        "paragraphs": [
+          "We use account, access, reading/listening and payment records to provide the service you request and perform our contract with you. We use appropriate records to meet applicable tax, accounting and consumer-protection obligations. Necessary security, fraud prevention and handling of legal claims rely on our legitimate interests where that basis is available, balanced against your rights. Newsletter messages are based on your request to subscribe; you may withdraw that request at any time. We do not make newsletter consent a condition of reading."
+        ]
+      },
+      {
+        "heading": "Service providers and international processing",
+        "paragraphs": [
+          "Hosting, database, storage, authentication, payment and communication providers process information needed for their functions. These include Vercel for website hosting and Razorpay for payment processing. Information may be processed outside your country, including in India and the countries where our providers operate. Before offering services in a new territory, applicable provider contracts and any required international-transfer safeguards must be established. We do not use advertising pixels."
+        ]
+      },
+      {
+        "heading": "Browser storage and optional analytics",
+        "paragraphs": [
+          "Browser storage supports sign-in and requested reader preferences; account services retain reading position and usage needed for delivery and accounting. Optional first-party journey analytics and Vercel Web Analytics are disabled for this launch. We do not create optional analytics identifiers or record campaign attribution in browser storage. Existing optional analytics storage from an earlier version can be removed using your browser controls. Clearing necessary storage may sign you out or reset preferences. Necessary operational and security logs are separate from optional analytics."
+        ]
+      },
+      {
+        "heading": "Retention and deletion",
+        "paragraphs": [
+          "Account and reading records are retained while needed to provide your account and requested continuity. After an account-deletion request, information no longer needed for those purposes is deleted or de-identified, subject to records required for tax/accounting, payment disputes, fraud/security investigations and legal claims. Support messages are kept while needed to resolve the issue and any related dispute. Newsletter details are used until you unsubscribe; a minimal suppression record may be retained to avoid sending further messages. Retention is determined by these purposes, applicable legal record-keeping periods and the resolution of disputes; deletion requests are reviewed against those criteria. This is not a promise of immediate deletion from every backup."
+        ]
+      },
+      {
+        "heading": "Your choices and requests",
+        "paragraphs": [
+          "Grievance Officer and privacy/support contact: Ronik Basak, Earnalism (operated by REO ENTERPRISE). Email: sales@reoenterprise.org. Postal contact: Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India.",
+          "Email sales@reoenterprise.org or use the contact form to request access, correction, deletion, restriction, portability or objection where applicable. You may withdraw consent without affecting earlier lawful processing. We may request proportionate information to verify identity; never send a password. We respond within the applicable legal deadline and explain any lawful retention or refusal. You may complain to the competent data-protection authority. To unsubscribe from newsletters, email sales@reoenterprise.org with “Unsubscribe”; no purchase is required."
+        ]
+      },
+      {
+        "heading": "External video services",
+        "paragraphs": [
+          "This website does not currently embed YouTube players. Following an external video link opens a third-party service governed by its own terms and privacy policy."
+        ]
+      },
+      {
+        "heading": "Children and changes",
+        "paragraphs": [
+          "Accounts and purchases are intended for adults. If you believe we hold a child’s information without appropriate authority, contact us so we can assess and address it. Material changes to this notice will be reflected here with an updated date. A change of notice does not by itself grant permission for a new use requiring consent."
+        ]
+      }
+    ]
+  },
+  "/copyright": {
+    "title": "Copyright and Content",
+    "description": "Edition rights, licences, territorial availability and copyright concerns.",
+    "updated": "27 October 2026",
+    "intro": "Earnalism’s design, branding and cover artwork are owned or used by REO ENTERPRISE and its licensors. Literary rights depend on the exact work, edition and territory.",
+    "sections": [
+      {
+        "heading": "Works, editions and territories",
+        "paragraphs": [
+          "A work being public domain in one country does not establish public-domain status everywhere. Translations, transcriptions, annotations, illustrations, covers and recordings may have separate rights. Titles are made available only within their cleared release scope. Public access to the website does not expand that scope."
+        ]
+      },
+      {
+        "heading": "Attribution and permitted reuse",
+        "paragraphs": [
+          "Public-domain literary works retain their public-domain status where applicable. Required licence notices and credits accompany the relevant licensed edition or component. If a transcription is offered under a Creative Commons licence, its stated permissions and conditions govern that transcription. Earnalism branding and separately protected artwork are not included in that licence unless expressly stated."
+        ]
+      },
+      {
+        "heading": "Copyright concerns",
+        "paragraphs": [
+          "Email sales@reoenterprise.org or use the rights contact form. Identify the work, the Earnalism title or page, the basis of your rights concern and your contact details. We record and review concerns and, where warranted, temporarily hold the affected material while assessing it. Internal source evidence is retained for rights verification; required public credits and licence notices remain available with the relevant edition."
+        ]
+      }
+    ]
+  }
+}

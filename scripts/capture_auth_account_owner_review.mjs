@@ -43,6 +43,7 @@ function fixtureResponse(url) {
   const pathname = new URL(url).pathname;
   if (pathname.endsWith("/users/me")) return fixtureUser;
   if (pathname.endsWith("/users/me/transactions")) return fixtureTransactions;
+  if (pathname.endsWith("/users/me/transactions/page")) return { items: fixtureTransactions, has_more: false, next_cursor: "" };
   if (pathname.endsWith("/books")) return [];
   if (pathname.endsWith("/home/hero")) return { schema_version: "home-hero-v1", hero: {}, revision: "owner-review-fixture" };
   if (pathname.endsWith("/home/listening")) return { schema_version: "home-listening-v1", items: [], total: 0, revision: "owner-review-fixture" };

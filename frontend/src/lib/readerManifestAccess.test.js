@@ -54,3 +54,26 @@ describe("reader manifest access", () => {
     expect(readerManifestAudioIsAuthorized({ ...packageApprovedPublicBook, audio_enabled: false }, packageManifestAudio)).toBe(false);
   });
 });
+
+
+describe("provider-private public package enrichment", () => {
+  const version = `sha256-${"8".repeat(64)}`;
+  const book = { ...packageApprovedPublicBook, slug: "the-open-window", audio_qa_status: "QA_PASSED", audiobook_delivery_mode: "PROTECTED_PACKAGE_V2", audiobook_package_version: version };
+  const audio = { ...packageManifestAudio, asset_slug: "the-open-window", provider: "", delivery_mode: "PROTECTED_PACKAGE_V2", package_version: version };
+  test("accepts matching canonical and manifest bindings without exposing a provider", () => {
+    expect(readerManifestAudioIsAuthorized(book, audio)).toBe(true);
+  });
+  test.each([
+    ["package mismatch", { ...audio, package_version: `sha256-${"9".repeat(64)}` }],
+    ["missing mode", { ...audio, delivery_mode: "" }],
+    ["wrong title", { ...audio, asset_slug: "another-book" }],
+    ["unapproved QA", { ...audio, qa_status: "" }],
+    ["disabled manifest", { ...audio, enabled: false }],
+  ])("denies %s", (_label, candidate) => {
+    expect(readerManifestAudioIsAuthorized(book, candidate)).toBe(false);
+  });
+  test("canonical QA and package mode remain required", () => {
+    expect(readerManifestAudioIsAuthorized({ ...book, audio_qa_status: "" }, audio)).toBe(false);
+    expect(readerManifestAudioIsAuthorized({ ...book, audiobook_delivery_mode: "" }, audio)).toBe(false);
+  });
+});

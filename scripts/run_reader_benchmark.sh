@@ -10,17 +10,16 @@ BENCHMARK_PYTHON="${READER_BENCHMARK_PYTHON:-$BENCHMARK_ROOT/.venv-uat/bin/pytho
 
 "$BENCHMARK_PYTHON" - <<'PY'
 import os
-from urllib.parse import parse_qs, urlparse
+from scripts.uat_mongo_fixture import setup_configuration
 
-uri = urlparse(os.environ.get('MONGODB_URL', ''))
 if os.environ.get('ENVIRONMENT', 'uat') not in {'uat', 'test'}:
     raise SystemExit('Reader benchmark refuses a production environment')
 if os.environ.get('READER_SEGMENT_MONGO_INTEGRATION') != '1':
     raise SystemExit('Reader benchmark requires explicit isolated MongoDB integration opt-in')
-if (uri.scheme != 'mongodb' or uri.netloc not in {'127.0.0.1:27018', 'localhost:27018'}
-        or uri.username or uri.password
-        or parse_qs(uri.query).get('replicaSet') != ['earnalism-uat-rs0']):
-    raise SystemExit('Reader benchmark requires the unauthenticated loopback UAT replica set')
+try:
+    setup_configuration(os.environ)
+except Exception:
+    raise SystemExit('Reader benchmark requires the authenticated loopback UAT fixture') from None
 PY
 
 export READER_BENCHMARK_REPORT="${READER_BENCHMARK_REPORT:-$BENCHMARK_ROOT/regression/artifacts/reader-benchmark/report.json}"

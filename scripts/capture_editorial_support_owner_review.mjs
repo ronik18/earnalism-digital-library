@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { chromium } from "playwright";
+import { openEditorialRoute } from "./lib/editorial_capture_readiness.mjs";
 
 const require = createRequire(import.meta.url);
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
@@ -67,9 +68,7 @@ async function captureApp(browser, state) {
     const messageText = message.text();
     if (message.type() === "error" && !/Failed to load resource: the server responded with a status of 404/i.test(messageText)) errors.push(messageText);
   });
-  const response = await page.goto(baseUrl + "/", { waitUntil: "networkidle", timeout: 60000 });
-  await page.evaluate((nextRoute) => { window.history.pushState({}, "", nextRoute); window.dispatchEvent(new PopStateEvent("popstate")); }, route);
-  await page.waitForSelector(required, { timeout: 30000 });
+  const response = await openEditorialRoute(page, baseUrl, route, required);
   await page.keyboard.press("Tab");
   const metrics = await page.evaluate((selector) => ({ required: Boolean(document.querySelector(selector)), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, focus: Boolean(document.activeElement?.matches("a[href],button,input,textarea,select")), logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "") && image.naturalWidth > 0) }), required);
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });

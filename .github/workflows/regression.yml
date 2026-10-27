@@ -91,11 +91,14 @@ jobs:
       - name: Install launcher test prerequisite
         run: sudo apt-get update && sudo apt-get install --yes ripgrep
 
+      - name: Validate retained successor editorial admission
+        run: python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_open_window_successor_acceptance.py -v
+
       - name: Validate catalogue worker permission boundaries
         run: python3 -m unittest scripts.test_reader_benchmark_runner scripts.test_catalogue_compliance_workflow_cost scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
       - name: Validate historical unavailable snapshots and raw HTML canary
-        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_isolated_seo_build scripts.test_frontend_build_qualification scripts.test_complete_release_capture scripts.test_verify_build_dependency_identity scripts.test_frontend_public_build scripts.test_verify_backend_release scripts.test_reader_startup_readonly -v
+        run: python3 -m unittest scripts.test_post_deploy_static_seo_canary scripts.test_manual_production_release_workflow scripts.test_verify_isolated_seo_build scripts.test_frontend_build_qualification scripts.test_complete_release_capture scripts.test_verify_build_dependency_identity scripts.test_frontend_public_build scripts.test_verify_backend_release scripts.test_frontend_only_provider_evidence scripts.test_vercel_readonly_access scripts.test_backend_identity_diagnostic scripts.test_reader_startup_readonly -v
 
       - name: Validate additive health attestation in isolated ASGI
         run: |
@@ -123,7 +126,7 @@ jobs:
 
       - name: Start isolated MongoDB replica set
         run: |
-          docker run --detach --name earnalism-uat-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
+          docker run --detach --name earnalism-uat-mongodb --network host mongo:7.0.14 bash -c 'set -euo pipefail; umask 077; head -c 512 /dev/urandom | base64 > /tmp/uat-keyfile; exec mongod --auth --keyFile /tmp/uat-keyfile --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0'
           for _ in $(seq 1 30); do
             docker exec earnalism-uat-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
             sleep 1

@@ -3,14 +3,36 @@ name: Exact-artifact owner-held frontend production release
 on:
   workflow_dispatch:
     inputs:
+      access_check_only:
+        description: Six read-only Vercel project/rollback/alias GETs; no release execution
+        required: true
+        default: false
+        type: boolean
+      promotion_only:
+        description: Promote only the exact retained READY production deployment; no build/deploy
+        required: true
+        default: false
+        type: boolean
+      backend_provider_evidence:
+        description: Exact authenticated UI receipt plus Railway-origin commit status; protected approval must bind its SHA256
+        required: false
+        default: ''
+        type: string
       target_sha:
-        description: Approved immutable frontend artifact SHA (229df7f)
+        description: Approved immutable admin-caller frontend artifact SHA (b3998d7)
         required: true
         type: string
       confirm_production:
-        description: Type DEPLOY_PRODUCTION
+        description: DEPLOY_PRODUCTION, or PROMOTE_EXISTING_READY when promotion_only is true
         required: true
         type: string
+
+# Explicit dispatch consent is separate from code integration; default cannot promote.
+      conditional_promotion:
+        description: Allow ONE bounded promotion of this run's verified production deployment
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -19,16 +41,19 @@ permissions:
 # Artifact identity is independent of the reviewed current-main release controller.
 # Changing these pins requires a new reviewed release contract, not dispatch input.
 env:
-  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33
-  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6
-  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017
+  FRONTEND_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49
+  FRONTEND_TREE: 8708ec1a1d506fdf3c5e6af1dde6face3a98c1a1
+  FRONTEND_REVIEW_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49
   FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252
-  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83
-  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c
+  BACKEND_SHA: 0f2bb1e728890f1f0e41ded9b12f07c76246bce0
+  BACKEND_TREE: 2c7b9ce0f219ebdf12129bdcf4dd3faf07e22af5
   CONTROLLER_SHA: ${{ github.sha }}
   TARGET_SHA: ${{ inputs.target_sha }}
   CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
+  CONDITIONAL_PROMOTION: ${{ inputs.conditional_promotion }}
+  PROMOTION_ONLY: ${{ inputs.promotion_only }}
   RELEASE_EVENT: ${{ github.event_name }}
+  BACKEND_PROVIDER_EVIDENCE_JSON: ${{ inputs.backend_provider_evidence }}
 
 defaults:
   run:
@@ -39,9 +64,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  vercel_access_readonly:
+    if: github.ref == 'refs/heads/main' && inputs.access_check_only == true && inputs.confirm_production == 'READ_ONLY_VERCEL_ACCESS' && inputs.promotion_only != true && inputs.conditional_promotion != true
+    environment: reader-frontend-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Inspect exact existing Vercel access without mutation
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          from scripts.verify_reader_alias_bindings import readonly_access_check
+          try:
+              report = readonly_access_check()
+          except Exception:
+              report = {'status': 'READ_ONLY_ACCESS_FAIL', 'reason': 'Exact scoped provider access/state unverified; no retry', 'mutations': 0}
+          path = Path(os.environ['RUNNER_TEMP']) / 'vercel-readonly-access.json'
+          path.write_text(json.dumps(report, sort_keys=True))
+          print(json.dumps(report, sort_keys=True))
+          raise SystemExit(0 if report['status'] == 'READ_ONLY_ACCESS_PASS' else 1)
+          PYCODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vercel-readonly-access
+          path: ${{ runner.temp }}/vercel-readonly-access.json
+          if-no-files-found: ignore
+          retention-days: 3
   backend_verify:
     name: Read-only serving backend verification
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && inputs.access_check_only != true
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -56,7 +121,11 @@ jobs:
           set -euo pipefail
           [[ "$RELEASE_EVENT" == 'workflow_dispatch' && "$GITHUB_REF" == 'refs/heads/main' ]] || exit 1
           [[ "$GITHUB_REPOSITORY" == 'ronik18/earnalism-digital-library' ]] || exit 1
-          [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          if [[ "${PROMOTION_ONLY:-false}" == 'true' ]]; then
+            [[ "$CONFIRM_PRODUCTION" == 'PROMOTE_EXISTING_READY' && "$CONDITIONAL_PROMOTION" == 'true' ]] || exit 1
+          else
+            [[ "$CONFIRM_PRODUCTION" == 'DEPLOY_PRODUCTION' ]] || exit 1
+          fi
           for value in "$TARGET_SHA" "$FRONTEND_SHA" "$FRONTEND_TREE" "$BACKEND_SHA" "$BACKEND_TREE" "$CONTROLLER_SHA" "$FRONTEND_REVIEW_SHA" "$FRONTEND_BASELINE_SHA"; do
             [[ "$value" =~ ^[0-9a-f]{40}$ ]] || exit 1
           done
@@ -97,15 +166,19 @@ jobs:
 
       - name: Install existing verification clients
         run: |
-          npm install -g @railway/cli@5.64.2
-          python -m pip install pymongo==4.15.3
+          if [[ -z "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then
+            npm install -g @railway/cli@5.64.2
+            python -m pip install pymongo==4.15.3
+          fi
 
       - name: Verify actual HTTP and provider serving identity
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
-          python scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence); fi
+          python scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -116,10 +189,21 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
           set -euo pipefail
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then
+            python - <<'PYCODE'
+          import json, os
+          from scripts.verify_backend_release import frontend_only_scope
+          if not frontend_only_scope(os.environ):
+              raise SystemExit('Frontend-only applicability mismatch')
+          print(json.dumps({'startup_database_snapshot': 'NOT_APPLICABLE_FRONTEND_ONLY',
+                            'database_state_verified': False}))
+          PYCODE
+          else
           railway run --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 --no-local \
-            python scripts/verify_reader_startup_readonly.py | tee "$RUNNER_TEMP/backend-startup.json"
+            python scripts/verify_reader_startup_readonly.py
+          fi | tee "$RUNNER_TEMP/backend-startup.json"
 
       - name: Publish non-secret backend verification summary
         run: |
@@ -127,7 +211,8 @@ jobs:
           cat "$RUNNER_TEMP/backend-startup.json" >> "$GITHUB_STEP_SUMMARY"
 
   deploy_frontend:
-    name: Vercel frontend deploy after pre-deploy pass
+    name: Protected frontend deploy or retained production promotion
+    timeout-minutes: ${{ inputs.promotion_only && 15 || 360 }}
     needs: backend_verify
     environment: reader-frontend-production
     if: >-
@@ -154,6 +239,22 @@ jobs:
       - name: Recheck exact main and clean deployment source
         run: *controller_source_gate
 
+      - name: Verify live Vercel project and rollback before authorization
+        if: inputs.promotion_only != true
+        run: &vercel_preflight |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          from scripts.verify_reader_alias_bindings import readonly_access_check
+          try:
+              report = readonly_access_check()
+          except Exception:
+              raise SystemExit('Live scoped Vercel preflight failed; no mutation or retry')
+          (Path(os.environ['RUNNER_TEMP']) / 'vercel-preflight.json').write_text(json.dumps(report, sort_keys=True))
+          print(json.dumps(report, sort_keys=True))
+          PYCODE
+
       # Empty until existing authorized operators supply real config/rollback receipts.
       # This variable is an operator attestation, not automatic live provider verification.
       - name: Verify operator config and rollback approval
@@ -175,13 +276,19 @@ jobs:
               'config_path': 'frontend/vercel.json',
               'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
               'git_deployment_enabled': False,
-              'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+              'rollback_deployment': 'dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
               'rollback_method': 'vercel-instant-rollback',
               'rollback_eligible': True,
               'frontend_backend_config_compatible': True,
               'no_backend_restart': True,
               'approved': True,
           }
+          if os.environ.get('PROMOTION_ONLY') == 'true':
+              expected.update(release_mode='promotion-only',
+                  rollback_deployment='dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+                  retained_deployment='dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
+                  creation_controller_sha='2dad58e388918c9ea74d75935ef5d3753d93f4f3',
+                  conditional_rollback=True)
           for key, value in expected.items():
               if type(r.get(key)) is not type(value) or r[key] != value:
                   raise SystemExit('Release operator receipt binding mismatch: ' + key)
@@ -190,6 +297,20 @@ jobs:
                   raise SystemExit('Missing retained artifact/config/operator evidence digest')
           if not isinstance(r.get('rollback_operator'), str) or not r['rollback_operator'].strip():
               raise SystemExit('Missing authorized rollback operator')
+          if os.environ.get('PROMOTION_ONLY') != 'true':
+              from pathlib import Path
+              preflight = json.loads((Path(os.environ['RUNNER_TEMP']) / 'vercel-preflight.json').read_text())
+              observed = datetime.datetime.fromisoformat(preflight['observed_at_utc'])
+              age = datetime.datetime.now(datetime.timezone.utc) - observed
+              if observed.tzinfo is None or not datetime.timedelta(0) <= age <= datetime.timedelta(minutes=15):
+                  raise SystemExit('Vercel preflight stale or future-dated')
+              if preflight.get('status') != 'READ_ONLY_ACCESS_PASS' or r.get('vercel_preflight_sha256') != preflight.get('snapshot_sha256'):
+                  raise SystemExit('Protected live Vercel preflight digest mismatch')
+          if os.environ.get('BACKEND_PROVIDER_EVIDENCE_JSON'):
+              from scripts.verify_backend_release import verify_operator_provider_evidence, verify_protected_evidence_binding
+              raw = os.environ['BACKEND_PROVIDER_EVIDENCE_JSON']
+              verify_operator_provider_evidence(raw, os.environ['BACKEND_SHA'])
+              verify_protected_evidence_binding(raw, os.environ['RELEASE_APPROVAL_JSON'])
           now = datetime.datetime.now(datetime.timezone.utc)
           issued = datetime.datetime.fromisoformat(r['approved_at'])
           expires = datetime.datetime.fromisoformat(r['expires_at'])
@@ -237,6 +358,7 @@ jobs:
           PYCODE
 
       - name: Prepare exact frontend artifact source
+        if: inputs.promotion_only != true
         run: |
           set -euo pipefail
           FRONTEND_DIR="$RUNNER_TEMP/reader-frontend-source"
@@ -259,27 +381,30 @@ jobs:
 
       - name: Reverify serving backend after owner approval
         env:
+          RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          npm install -g @railway/cli@5.64.2
-          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          if [[ -z "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then npm install -g @railway/cli@5.64.2; fi
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence --require-protected-binding); fi
+          python3 scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
             --backend-url https://api.theearnalism.com
 
       - name: Set up Node
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         uses: actions/setup-node@v6
         with:
           node-version: "20.20.2"
 
       - name: Install Vercel CLI
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         run: npm install -g vercel@63.1.2
 
       - name: Link Vercel project
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           set -euo pipefail
@@ -300,7 +425,7 @@ jobs:
       - name: Build frontend for Vercel
         env:
           RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           set -euo pipefail
@@ -314,12 +439,12 @@ jobs:
           python3 "$GITHUB_WORKSPACE/scripts/verify_isolated_seo_build.py" --source-root "$FRONTEND_DIR" --generated-root "$generated_seo_dir" --expected-sha "$FRONTEND_SHA" --output /tmp/vercel-isolated-seo.json
 
       - name: Verify exact built dependency identities
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         run: |
           python3 "$GITHUB_WORKSPACE/scripts/verify_build_dependency_identity.py" --source-root "$FRONTEND_DIR" --output /tmp/vercel-dependency-identity.json
 
       - name: Verify source and prebuilt function packaging
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         run: |
           python3 -m unittest scripts.test_verify_vercel_packaging -v
@@ -330,7 +455,7 @@ jobs:
           python3 "$GITHUB_WORKSPACE/scripts/verify_vercel_packaging.py" --root "$FRONTEND_DIR" --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
 
       - name: Publish function packaging evidence
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: vercel-function-packaging-${{ github.sha }}
@@ -344,6 +469,10 @@ jobs:
       - name: Recheck controller and artifact authorization before deployment
         run: *controller_source_gate
 
+      - name: Refresh live Vercel project and rollback immediately before deployment
+        if: inputs.promotion_only != true
+        run: *vercel_preflight
+
       - name: Recheck operator config and rollback approval before deployment
         env:
           RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
@@ -355,7 +484,7 @@ jobs:
         run: *frontend_ci_gate
 
       - name: Deploy frontend to Vercel production
-        if: steps.vercel-check.outputs.enabled == 'true'
+        if: inputs.promotion_only != true && (steps.vercel-check.outputs.enabled == 'true')
         shell: bash
         env:
           RELEASE_APPROVAL_JSON: ${{ vars.READER_FRONTEND_RELEASE_APPROVAL_JSON || '' }}
@@ -373,7 +502,9 @@ jobs:
             printf '%s\n' "$artifact_status" >&2
             exit 1
           fi
-          python3 scripts/verify_backend_release.py --expected-sha "$BACKEND_SHA" \
+          evidence_args=()
+          if [[ -n "${BACKEND_PROVIDER_EVIDENCE_JSON:-}" ]]; then evidence_args+=(--operator-provider-evidence --require-protected-binding); fi
+          python3 scripts/verify_backend_release.py "${evidence_args[@]}" --expected-sha "$BACKEND_SHA" \
             --project a8533934-35c4-463e-9f43-577a9ac391ee \
             --service 5af42e7e-f518-4f6a-b602-d9950866501f \
             --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 \
@@ -411,11 +542,16 @@ jobs:
           print(json.dumps({'frontend_deployment': deployment['id'], 'source_sha': deployment['meta']['githubCommitSha'], 'status': 'PASS'}))
           PY
 
+      - name: Promote retained production asset and run one focused smoke
+        if: inputs.promotion_only == true
+        run: python3 -m scripts.reader_existing_promotion --output "$RUNNER_TEMP/reader-existing-promotion.json"
+
       - name: Verify all four exact production alias bindings
+        if: inputs.promotion_only != true
         id: alias-binding
         run: |
           set -euo pipefail
-          python3 "$GITHUB_WORKSPACE/scripts/verify_reader_alias_bindings.py" \
+          python3 "$GITHUB_WORKSPACE/scripts/verify_reader_alias_bindings.py" --conditional-promotion \
             --metadata "$RUNNER_TEMP/frontend-deployment.json" \
             --output "$RUNNER_TEMP/reader-alias-binding.json" \
             --github-output "$GITHUB_OUTPUT"
@@ -425,7 +561,12 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: reader-alias-binding-${{ github.sha }}
-          path: ${{ runner.temp }}/reader-alias-binding.json
+          path: |
+            ${{ runner.temp }}/reader-alias-binding.json
+            ${{ runner.temp }}/reader-promotion-intent.json
+            ${{ runner.temp }}/reader-existing-promotion.json
+            ${{ runner.temp }}/reader-existing-smoke.json
+            ${{ runner.temp }}/reader-rollback-intent.json
           retention-days: 3
 
   frontend_production_canary:
@@ -434,6 +575,7 @@ jobs:
       - backend_verify
       - deploy_frontend
     if: >-
+      inputs.promotion_only != true &&
       github.event_name == 'workflow_dispatch' &&
       github.ref == 'refs/heads/main' &&
       needs.backend_verify.result == 'success' &&
@@ -450,29 +592,6 @@ jobs:
       - name: Verify canary controller identity
         run: test "$(git rev-parse HEAD)" = "$CONTROLLER_SHA"
 
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: "20.20.2"
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install canary dependencies
-        run: npm ci
-
-      - name: Run removed-route production canary
-        run: python3 scripts/post_deploy_route_canary.py --base-url https://theearnalism.com
-
-      - name: Run static SEO raw-HTML canary
-        run: python3 scripts/post_deploy_static_seo_canary.py --base-url https://theearnalism.com
-
-      - name: Run frontend production regression canary
-        env:
-          REGRESSION_MODE: canary
-          REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
-          REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
-        run: node regression/scripts/post-deploy-canary.js
-
       - name: Run three-public one-protected alias contract
         env:
           VERIFIED_DEPLOYMENT_ID: ${{ needs.deploy_frontend.outputs.deployment_id }}
@@ -480,7 +599,7 @@ jobs:
         run: |
           python3 scripts/reader_alias_canaries.py \
             --deployment "$VERIFIED_DEPLOYMENT_ID" --ready-at "$VERIFIED_READY_AT" \
-            --contract three-public-one-protected-v1 \
+            --contract three-public-one-protected-v1 --focused-smoke \
             --output output/launch/reader_alias_canaries.json
 
       - name: Upload frontend canary evidence
@@ -489,7 +608,4 @@ jobs:
         with:
           name: frontend-production-canary-${{ env.FRONTEND_SHA }}-controller-${{ github.sha }}
           path: |
-            output/launch/post_deploy_route_canary.*
-            output/launch/post_deploy_static_seo_canary.*
-            regression/results.json
             output/launch/reader_alias_canaries.json

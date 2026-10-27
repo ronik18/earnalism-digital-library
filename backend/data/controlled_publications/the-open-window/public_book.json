@@ -4,15 +4,2725 @@
   "allowPayment": false,
   "allowPublicReading": true,
   "approved_to_publish": true,
+  "audio_enabled": true,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook": {},
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "candidate_release_descriptor_sha256": "",
+    "retained_release_descriptor_sha256s": [
+      "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+      "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": ""
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "the-open-window",
+    "status": "ACTIVE"
+  },
+  "audiobook_assets": {},
+  "audiobook_enabled": true,
+  "audiobook_hidden_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+  "audiobook_legacy_release_descriptor_sha256": "",
+  "audiobook_manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "audiobook_package_canary": {
+    "approval_scope": "transport_canary_only_no_customer_discovery",
+    "blockers": [],
+    "candidate_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "candidate_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "catalog_audio_enabled": false,
+    "editorial_acceptance": {
+      "acceptance_policy": "open_window_listened_successor.v2",
+      "acceptance_representation_sha256": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117",
+      "acoustic_pass_claimed": false,
+      "owner_local_qa": {
+        "assessed_maximum": 85,
+        "overall_points": null,
+        "production_points": null,
+        "proposed_points": 85,
+        "release_threshold": 95,
+        "review_type": "OWNER_REPORTED_SOURCE_FOLLOWING_FULL_TITLE"
+      },
+      "remaining_lexical_uncertainty_units": [],
+      "status": "OWNER_REVIEWED_LOCAL_QA",
+      "unit24_disposition": "OWNER_ACCEPTED_UNCERTAINTY_UNIT24_ONLY"
+    },
+    "generated_at": "2026-10-25T15:35:29Z",
+    "hidden_before_proof_sha256": "6340bdaedab59d6adfe4fb585065d9d9c77c118184b04e0dee5edd3b5ca192e5",
+    "hidden_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+    "package_endpoint_enabled": true,
+    "package_release_evidence_sha256": "01ac0492c4c5fa9a63143b1b3f91a0609b888e8bfd08bc7fd43dd64236f5a3ac",
+    "post_deploy_proof_required": [
+      "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+      "SEGMENT_RANGE_206",
+      "TIMESTAMPS_200",
+      "BROWSER_PLAYBACK_PASS"
+    ],
+    "primary_receipt_sha256": "daf6532d64261c89cc4092089faf8bc4a1153b4ea9df82e37b1b4bc1f83d57db",
+    "primary_release_manifest_receipt_sha256": "d15daf8d37202a499bc13ae6ac4f18b71cd7d4896aa4197ebb16dfe534e1afcc",
+    "public_discovery_exposed": true,
+    "qa_candidate_release_descriptor_file_sha256": "580d207263af20257c8ee62d1a46e77953c6cd55a38af4dd69e229c00522d4a6",
+    "replica_receipt_sha256": "a62d059ba7b718edfb950b58204ce10ac68a0ffa6c4aa1a0df9e3cf82f545326",
+    "replica_release_manifest_receipt_sha256": "bb9db3993c4f94ef09340d536c5292548850722a3831da925f4dc8387073be66",
+    "rollback_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
+    "rollout_percentage": 100,
+    "rollout_salt": "open-window-corrected-v1-india-20261025",
+    "schema_version": "audiobook_new_title_package_canary.v1",
+    "slug": "the-open-window",
+    "status": "PUBLIC_PACKAGE_APPROVED"
+  },
+  "audiobook_package_release_evidence": {
+    "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2": {
+      "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "primary_receipt_sha256": "daf6532d64261c89cc4092089faf8bc4a1153b4ea9df82e37b1b4bc1f83d57db",
+      "primary_release_manifest_receipt_sha256": "d15daf8d37202a499bc13ae6ac4f18b71cd7d4896aa4197ebb16dfe534e1afcc",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f102a7572fc0e710d_d20261025_m145058_c004_v0402006_t0021_u01792939858702",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/release-manifest.json",
+      "release_manifest_sha256": "bc50798fd187fd381840dcfd8f341c0c1773b8f1732b21d53e1cb319f9feef9f",
+      "release_manifest_size_bytes": 161383,
+      "replica_receipt_sha256": "a62d059ba7b718edfb950b58204ce10ac68a0ffa6c4aa1a0df9e3cf82f545326",
+      "replica_release_manifest_receipt_sha256": "bb9db3993c4f94ef09340d536c5292548850722a3831da925f4dc8387073be66",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f10638beea098f4b4_d20261025_m145103_c005_v0501037_t0009_u01792939863089",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "the-open-window",
+      "staged_at": "2026-10-25T15:35:29Z"
+    }
+  },
+  "audiobook_packages": {
+    "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2": {
+      "duration_ms": 491436,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+      "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "paragraph_count": 29,
+      "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+      "release_evidence_version": "open-window-retained-successor-v1",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 29,
+      "slug": "the-open-window",
+      "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+      "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-001-audio-sha256-25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f109c192eccc07f9c_d20261025_m130215_c005_v0501022_t0015_u01792933335584"
+                    }
+                  ],
+                  "sha256": "25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063",
+                  "size_bytes": 158637,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-001-audio-sha256-25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f119f075d910c3b16_d20261024_m173412_c004_v0402030_t0027_u01792863252963"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-001-metadata-sha256-ceb87735ffd14c50bb96bb58270cb8596777ce2044db9dea7114f87ddcf272a6.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f115d68120fa10912_d20261025_m130224_c005_v0501050_t0016_u01792933344641"
+                    }
+                  ],
+                  "sha256": "ceb87735ffd14c50bb96bb58270cb8596777ce2044db9dea7114f87ddcf272a6",
+                  "size_bytes": 478,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-001-metadata-sha256-ceb87735ffd14c50bb96bb58270cb8596777ce2044db9dea7114f87ddcf272a6.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10810455b000ca19_d20261024_m173421_c004_v0402021_t0045_u01792863261408"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-001-timestamps-sha256-0908e831c5e3b1d5c5c19eda9cda3cbc0f2139a0d6ec9edd5b5b2c3820a54b55.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1019659ba91d7fe7_d20261025_m130219_c005_v0501046_t0011_u01792933339765"
+                    }
+                  ],
+                  "sha256": "0908e831c5e3b1d5c5c19eda9cda3cbc0f2139a0d6ec9edd5b5b2c3820a54b55",
+                  "size_bytes": 337,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-001-timestamps-sha256-0908e831c5e3b1d5c5c19eda9cda3cbc0f2139a0d6ec9edd5b5b2c3820a54b55.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f104cace27ded54ae_d20261024_m173417_c004_v0402040_t0038_u01792863257047"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 9840,
+              "end_paragraph": 0,
+              "end_word": 26,
+              "order": 0,
+              "segment_id": "paragraph-001",
+              "start_paragraph": 0,
+              "start_word": 0
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-002-audio-sha256-ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1187ca60625dd6d1_d20261025_m130227_c005_v0501041_t0056_u01792933347018"
+                    }
+                  ],
+                  "sha256": "ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018",
+                  "size_bytes": 357165,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-002-audio-sha256-ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115ec01664166798_d20261024_m173424_c004_v0402029_t0000_u01792863264032"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-002-metadata-sha256-2f6819f8c4247513b5b8df67d8a9c97f7ad018fa19ae2b6a58795afccd970c60.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1144c3c0f18c5f56_d20261025_m130231_c005_v0521006_t0000_u01792933351770"
+                    }
+                  ],
+                  "sha256": "2f6819f8c4247513b5b8df67d8a9c97f7ad018fa19ae2b6a58795afccd970c60",
+                  "size_bytes": 486,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-002-metadata-sha256-2f6819f8c4247513b5b8df67d8a9c97f7ad018fa19ae2b6a58795afccd970c60.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1142713135dd5d25_d20261024_m173429_c004_v0402008_t0045_u01792863269414"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-002-timestamps-sha256-5f5d3470d8555a336c70340111022e112a23af05f808d0f04bf711d899b88ee3.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f117952afd8db15fa_d20261025_m130229_c005_v0501002_t0057_u01792933349714"
+                    }
+                  ],
+                  "sha256": "5f5d3470d8555a336c70340111022e112a23af05f808d0f04bf711d899b88ee3",
+                  "size_bytes": 339,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-002-timestamps-sha256-5f5d3470d8555a336c70340111022e112a23af05f808d0f04bf711d899b88ee3.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f105bd13352008c70_d20261024_m173427_c004_v0402010_t0025_u01792863267135"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 9840,
+              "duration_ms": 22236,
+              "end_paragraph": 1,
+              "end_word": 83,
+              "order": 1,
+              "segment_id": "paragraph-002",
+              "start_paragraph": 1,
+              "start_word": 27
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-003-audio-sha256-f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1172f484c36c2f1e_d20261025_m130236_c005_v0501045_t0034_u01792933356438"
+                    }
+                  ],
+                  "sha256": "f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079",
+                  "size_bytes": 402093,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-003-audio-sha256-f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1108347e26a827ed_d20261024_m173431_c004_v0402031_t0057_u01792863271470"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-003-metadata-sha256-ffd8995caa3e1ba6ce259ca09b098f36de91f4a28dab8dc51cbbc4f015411cfb.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1019659ba91d87fd_d20261025_m130241_c005_v0501046_t0056_u01792933361873"
+                    }
+                  ],
+                  "sha256": "ffd8995caa3e1ba6ce259ca09b098f36de91f4a28dab8dc51cbbc4f015411cfb",
+                  "size_bytes": 498,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-003-metadata-sha256-ffd8995caa3e1ba6ce259ca09b098f36de91f4a28dab8dc51cbbc4f015411cfb.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1092aa70a0522c60_d20261024_m173436_c004_v0402031_t0047_u01792863276162"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-003-timestamps-sha256-3baa6980bc52d5f82705d5620c1c689c4a764fa7b09e6698aed6a1acb2bbde70.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10092578dbdf486a_d20261025_m130238_c005_v0501045_t0044_u01792933358828"
+                    }
+                  ],
+                  "sha256": "3baa6980bc52d5f82705d5620c1c689c4a764fa7b09e6698aed6a1acb2bbde70",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-003-timestamps-sha256-3baa6980bc52d5f82705d5620c1c689c4a764fa7b09e6698aed6a1acb2bbde70.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1007b63199673d88_d20261024_m173434_c004_v0402040_t0018_u01792863274078"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 32076,
+              "duration_ms": 25041,
+              "end_paragraph": 2,
+              "end_word": 153,
+              "order": 2,
+              "segment_id": "paragraph-003",
+              "start_paragraph": 2,
+              "start_word": 84
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-004-audio-sha256-699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10065d7ba436fb6b_d20261025_m130244_c005_v0501046_t0044_u01792933364867"
+                    }
+                  ],
+                  "sha256": "699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5",
+                  "size_bytes": 134445,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-004-audio-sha256-699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f110c4d19db91ef6c_d20261024_m173438_c004_v0402035_t0012_u01792863278088"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-004-metadata-sha256-70e473265b33a59b598b2f1ddac42f854028349e94534925439df5abfa316169.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f103753f18d61a6a2_d20261025_m130253_c005_v0501050_t0058_u01792933373336"
+                    }
+                  ],
+                  "sha256": "70e473265b33a59b598b2f1ddac42f854028349e94534925439df5abfa316169",
+                  "size_bytes": 491,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-004-metadata-sha256-70e473265b33a59b598b2f1ddac42f854028349e94534925439df5abfa316169.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f111d2948096d4b0c_d20261024_m173445_c004_v0402000_t0027_u01792863285798"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-004-timestamps-sha256-8ee7947aab5afe2d9a3a243b4837554a9898c6397310e085992f63cac089af16.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110631ad77642605_d20261025_m130250_c005_v0501047_t0011_u01792933370603"
+                    }
+                  ],
+                  "sha256": "8ee7947aab5afe2d9a3a243b4837554a9898c6397310e085992f63cac089af16",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-004-timestamps-sha256-8ee7947aab5afe2d9a3a243b4837554a9898c6397310e085992f63cac089af16.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f112557f8db78620a_d20261024_m173443_c004_v0402014_t0015_u01792863283346"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 57117,
+              "duration_ms": 8317,
+              "end_paragraph": 3,
+              "end_word": 176,
+              "order": 3,
+              "segment_id": "paragraph-004",
+              "start_paragraph": 3,
+              "start_word": 154
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-005-audio-sha256-8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1120f08d804146eb_d20261025_m130255_c005_v0501003_t0044_u01792933375724"
+                    }
+                  ],
+                  "sha256": "8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784",
+                  "size_bytes": 124845,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-005-audio-sha256-8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f119eb34916f66f20_d20261024_m173447_c004_v0402038_t0057_u01792863287846"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-005-metadata-sha256-60e14e14abfcd508065685fdcfdffbbfc252c4c32c33dc5b358866ac19b6b898.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119e57f59f71cde3_d20261025_m130308_c005_v0501046_t0059_u01792933388279"
+                    }
+                  ],
+                  "sha256": "60e14e14abfcd508065685fdcfdffbbfc252c4c32c33dc5b358866ac19b6b898",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-005-metadata-sha256-60e14e14abfcd508065685fdcfdffbbfc252c4c32c33dc5b358866ac19b6b898.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116022ff74fca6de_d20261024_m173454_c004_v0402040_t0018_u01792863294386"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-005-timestamps-sha256-af4cc9a1862f325d3d1ff8f3d930d1eb849e9a37b0d317579d67b4859c1892e1.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ae679d466bf2a_d20261025_m130306_c005_v0501011_t0059_u01792933386193"
+                    }
+                  ],
+                  "sha256": "af4cc9a1862f325d3d1ff8f3d930d1eb849e9a37b0d317579d67b4859c1892e1",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-005-timestamps-sha256-af4cc9a1862f325d3d1ff8f3d930d1eb849e9a37b0d317579d67b4859c1892e1.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f112ae823607d4857_d20261024_m173452_c004_v0402017_t0026_u01792863292242"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 65434,
+              "duration_ms": 7719,
+              "end_paragraph": 4,
+              "end_word": 198,
+              "order": 4,
+              "segment_id": "paragraph-005",
+              "start_paragraph": 4,
+              "start_word": 177
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-006-audio-sha256-4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f107d88de6f39dfd2_d20261025_m130310_c005_v0501033_t0015_u01792933390155"
+                    }
+                  ],
+                  "sha256": "4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3",
+                  "size_bytes": 190125,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-006-audio-sha256-4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116c224d9792e6e8_d20261024_m173456_c004_v0402028_t0000_u01792863296439"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-006-metadata-sha256-b0c88edb00b998df21a0694b5d72ae0456abc916652b5c831a1c5f16be8d1149.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1018211460acd201_d20261025_m130316_c005_v0501051_t0026_u01792933396031"
+                    }
+                  ],
+                  "sha256": "b0c88edb00b998df21a0694b5d72ae0456abc916652b5c831a1c5f16be8d1149",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-006-metadata-sha256-b0c88edb00b998df21a0694b5d72ae0456abc916652b5c831a1c5f16be8d1149.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1106c66c7ce911ca_d20261024_m173502_c004_v0402021_t0019_u01792863302274"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-006-timestamps-sha256-c3d223d908cb52aba3d2fce1093b03fe46fbfb7627d38e572f007e0010983339.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f116087297aef798d_d20261025_m130313_c005_v0501004_t0033_u01792933393663"
+                    }
+                  ],
+                  "sha256": "c3d223d908cb52aba3d2fce1093b03fe46fbfb7627d38e572f007e0010983339",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-006-timestamps-sha256-c3d223d908cb52aba3d2fce1093b03fe46fbfb7627d38e572f007e0010983339.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f110fa1c257706ba7_d20261024_m173459_c004_v0402038_t0046_u01792863299972"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 73153,
+              "duration_ms": 11792,
+              "end_paragraph": 5,
+              "end_word": 230,
+              "order": 5,
+              "segment_id": "paragraph-006",
+              "start_paragraph": 5,
+              "start_word": 199
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-007-audio-sha256-d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f105318ea810bb5ac_d20261025_m130318_c005_v0501005_t0050_u01792933398482"
+                    }
+                  ],
+                  "sha256": "d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133",
+                  "size_bytes": 58029,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-007-audio-sha256-d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10638fa943538491_d20261024_m173504_c004_v0402038_t0021_u01792863304417"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-007-metadata-sha256-6deb191f733f7d087c9985fb896fadff5f7f4b0c72affdb523cbb49649b51501.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f108cdf611f17efd5_d20261025_m130322_c005_v0501034_t0003_u01792933402858"
+                    }
+                  ],
+                  "sha256": "6deb191f733f7d087c9985fb896fadff5f7f4b0c72affdb523cbb49649b51501",
+                  "size_bytes": 490,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-007-metadata-sha256-6deb191f733f7d087c9985fb896fadff5f7f4b0c72affdb523cbb49649b51501.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115edc4916e806d7_d20261024_m173509_c004_v0402026_t0023_u01792863309664"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-007-timestamps-sha256-01101e5a7de35c6d30f6ed50434a396b8ec8afe2546f66773ebd8a1eb14dfdd2.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f106b7cf4fcc2a946_d20261025_m130320_c005_v0501047_t0040_u01792933400651"
+                    }
+                  ],
+                  "sha256": "01101e5a7de35c6d30f6ed50434a396b8ec8afe2546f66773ebd8a1eb14dfdd2",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-007-timestamps-sha256-01101e5a7de35c6d30f6ed50434a396b8ec8afe2546f66773ebd8a1eb14dfdd2.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11937345096a4318_d20261024_m173507_c004_v0402040_t0047_u01792863307646"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 84945,
+              "duration_ms": 3536,
+              "end_paragraph": 6,
+              "end_word": 241,
+              "order": 6,
+              "segment_id": "paragraph-007",
+              "start_paragraph": 6,
+              "start_word": 231
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-008-audio-sha256-90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f105aed5ca84e7b3f_d20261025_m130325_c005_v0501022_t0037_u01792933405058"
+                    }
+                  ],
+                  "sha256": "90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c",
+                  "size_bytes": 116397,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-008-audio-sha256-90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f102774e605ec8fcb_d20261024_m173511_c004_v0402020_t0011_u01792863311915"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-008-metadata-sha256-e328250d7df49f170d1f179c49b875c40151e864be7a14a0186da274b1d9f510.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f113cb9f27cc9113f_d20261025_m130329_c005_v0501042_t0036_u01792933409297"
+                    }
+                  ],
+                  "sha256": "e328250d7df49f170d1f179c49b875c40151e864be7a14a0186da274b1d9f510",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-008-metadata-sha256-e328250d7df49f170d1f179c49b875c40151e864be7a14a0186da274b1d9f510.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11791f9ed55c1b2a_d20261024_m173517_c004_v0402038_t0028_u01792863317141"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-008-timestamps-sha256-2769f814a52673d4174e4d2f3e6d7558cdfd43e195c67548358ea8a646517d02.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1132750a949f09e1_d20261025_m130327_c005_v0501002_t0051_u01792933407232"
+                    }
+                  ],
+                  "sha256": "2769f814a52673d4174e4d2f3e6d7558cdfd43e195c67548358ea8a646517d02",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-008-timestamps-sha256-2769f814a52673d4174e4d2f3e6d7558cdfd43e195c67548358ea8a646517d02.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f104a108de273c231_d20261024_m173514_c004_v0402033_t0005_u01792863314958"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 88481,
+              "duration_ms": 7183,
+              "end_paragraph": 7,
+              "end_word": 254,
+              "order": 7,
+              "segment_id": "paragraph-008",
+              "start_paragraph": 7,
+              "start_word": 242
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-009-audio-sha256-460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f117df416e313c5f3_d20261025_m130331_c005_v0501051_t0053_u01792933411082"
+                    }
+                  ],
+                  "sha256": "460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2",
+                  "size_bytes": 202413,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-009-audio-sha256-460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1127b41f2fad767a_d20261024_m173518_c004_v0402034_t0048_u01792863318996"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-009-metadata-sha256-2bcdd43b045a74c7f224112e971ef66f3b6e9a00422caac5265e94ac9b31a3a8.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1037e514a3615c98_d20261025_m130335_c005_v0501042_t0039_u01792933415453"
+                    }
+                  ],
+                  "sha256": "2bcdd43b045a74c7f224112e971ef66f3b6e9a00422caac5265e94ac9b31a3a8",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-009-metadata-sha256-2bcdd43b045a74c7f224112e971ef66f3b6e9a00422caac5265e94ac9b31a3a8.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1140a6d3bc3f66b7_d20261024_m173523_c004_v0402019_t0048_u01792863323480"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-009-timestamps-sha256-dd79458742f910451dbc88431aeab89a0c4f5b30a51342d33622930618ddedb2.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110b6dcc4824002c_d20261025_m130333_c005_v0501041_t0010_u01792933413447"
+                    }
+                  ],
+                  "sha256": "dd79458742f910451dbc88431aeab89a0c4f5b30a51342d33622930618ddedb2",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-009-timestamps-sha256-dd79458742f910451dbc88431aeab89a0c4f5b30a51342d33622930618ddedb2.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1055791df46d6e98_d20261024_m173521_c004_v0402034_t0050_u01792863321405"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 95664,
+              "duration_ms": 12568,
+              "end_paragraph": 8,
+              "end_word": 286,
+              "order": 8,
+              "segment_id": "paragraph-009",
+              "start_paragraph": 8,
+              "start_word": 255
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-010-audio-sha256-20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1049581d867d5173_d20261025_m130337_c005_v0501046_t0055_u01792933417406"
+                    }
+                  ],
+                  "sha256": "20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23",
+                  "size_bytes": 122157,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-010-audio-sha256-20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11651a7ea8daac23_d20261024_m173525_c004_v0402014_t0025_u01792863325658"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-010-metadata-sha256-a5bbb340351a746652f98155cd4e05e1eaaa3da4cb66e760d6ccc78bb985583d.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1119049767f3dd89_d20261025_m130341_c005_v0501022_t0017_u01792933421556"
+                    }
+                  ],
+                  "sha256": "a5bbb340351a746652f98155cd4e05e1eaaa3da4cb66e760d6ccc78bb985583d",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-010-metadata-sha256-a5bbb340351a746652f98155cd4e05e1eaaa3da4cb66e760d6ccc78bb985583d.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9ecce7a1_d20261024_m173532_c004_v0402032_t0017_u01792863332676"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-010-timestamps-sha256-a069b2ecd03a48c5d58e4ce93bab8b1ddca937eaeb587442d71c359db3c3eb78.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1063850a65609cce_d20261025_m130339_c005_v0501000_t0017_u01792933419719"
+                    }
+                  ],
+                  "sha256": "a069b2ecd03a48c5d58e4ce93bab8b1ddca937eaeb587442d71c359db3c3eb78",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-010-timestamps-sha256-a069b2ecd03a48c5d58e4ce93bab8b1ddca937eaeb587442d71c359db3c3eb78.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9ecce743_d20261024_m173530_c004_v0402032_t0057_u01792863330673"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 108232,
+              "duration_ms": 7557,
+              "end_paragraph": 9,
+              "end_word": 304,
+              "order": 9,
+              "segment_id": "paragraph-010",
+              "start_paragraph": 9,
+              "start_word": 287
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-011-audio-sha256-f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f112d8de009530e8e_d20261025_m130344_c005_v0501047_t0010_u01792933424229"
+                    }
+                  ],
+                  "sha256": "f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad",
+                  "size_bytes": 134061,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-011-audio-sha256-f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10381e128149d366_d20261024_m173534_c004_v0402028_t0008_u01792863334922"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-011-metadata-sha256-23775f254e40cfcc1e158920b50ccc645c6ba7b33921009d9cbc60b7ee88117f.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1143c43c3eb6c55f_d20261025_m130348_c005_v0501027_t0003_u01792933428463"
+                    }
+                  ],
+                  "sha256": "23775f254e40cfcc1e158920b50ccc645c6ba7b33921009d9cbc60b7ee88117f",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-011-metadata-sha256-23775f254e40cfcc1e158920b50ccc645c6ba7b33921009d9cbc60b7ee88117f.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f109aa24fb1afdde1_d20261024_m173542_c004_v0402038_t0011_u01792863342283"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-011-timestamps-sha256-cb33cb2acb9d1b60d8c4ef226fd836f4ed1bfc82fd2819d57db029e54f35e4b1.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f113436d71ba46ca9_d20261025_m130346_c005_v0501019_t0010_u01792933426368"
+                    }
+                  ],
+                  "sha256": "cb33cb2acb9d1b60d8c4ef226fd836f4ed1bfc82fd2819d57db029e54f35e4b1",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-011-timestamps-sha256-cb33cb2acb9d1b60d8c4ef226fd836f4ed1bfc82fd2819d57db029e54f35e4b1.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f108523fbe1b3a0fc_d20261024_m173540_c004_v0402040_t0054_u01792863340197"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 115789,
+              "duration_ms": 8288,
+              "end_paragraph": 10,
+              "end_word": 319,
+              "order": 10,
+              "segment_id": "paragraph-011",
+              "start_paragraph": 10,
+              "start_word": 305
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-012-audio-sha256-eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11486f229c3c015b_d20261025_m130351_c005_v0501047_t0035_u01792933431011"
+                    }
+                  ],
+                  "sha256": "eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c",
+                  "size_bytes": 239661,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-012-audio-sha256-eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1102e59f7818389f_d20261024_m173544_c004_v0402002_t0013_u01792863344148"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-012-metadata-sha256-689077d49a07317fd2abb6d8eab5f51a6ded3d5a30cb80ec3161b91f749538ed.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1071fa5f1f7ae8c1_d20261025_m130357_c005_v0501037_t0046_u01792933437372"
+                    }
+                  ],
+                  "sha256": "689077d49a07317fd2abb6d8eab5f51a6ded3d5a30cb80ec3161b91f749538ed",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-012-metadata-sha256-689077d49a07317fd2abb6d8eab5f51a6ded3d5a30cb80ec3161b91f749538ed.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f100ed2d91e3443a7_d20261024_m173550_c004_v0402025_t0012_u01792863350108"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-012-timestamps-sha256-76c50380d6be2aa8de69ff971de9c91a656eb4fa4a6c5e7351f568f633123432.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1007a92aa721d4e7_d20261025_m130354_c005_v0501033_t0014_u01792933434978"
+                    }
+                  ],
+                  "sha256": "76c50380d6be2aa8de69ff971de9c91a656eb4fa4a6c5e7351f568f633123432",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-012-timestamps-sha256-76c50380d6be2aa8de69ff971de9c91a656eb4fa4a6c5e7351f568f633123432.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115edc4916e80e0b_d20261024_m173548_c004_v0402026_t0020_u01792863348189"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 124077,
+              "duration_ms": 14889,
+              "end_paragraph": 11,
+              "end_word": 347,
+              "order": 11,
+              "segment_id": "paragraph-012",
+              "start_paragraph": 11,
+              "start_word": 320
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-013-audio-sha256-3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f105e89e11bf6a66b_d20261025_m130359_c005_v0501050_t0011_u01792933439299"
+                    }
+                  ],
+                  "sha256": "3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1",
+                  "size_bytes": 174765,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-013-audio-sha256-3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1145d74d9c86ae73_d20261024_m173552_c004_v0402024_t0001_u01792863352615"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-013-metadata-sha256-2db98bbf86aaa9c3d70f050cf3c9fefa1d34a58e29dfe401027865ccad0ca2c7.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1040f2d5a4481bad_d20261025_m130403_c005_v0501040_t0009_u01792933443828"
+                    }
+                  ],
+                  "sha256": "2db98bbf86aaa9c3d70f050cf3c9fefa1d34a58e29dfe401027865ccad0ca2c7",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-013-metadata-sha256-2db98bbf86aaa9c3d70f050cf3c9fefa1d34a58e29dfe401027865ccad0ca2c7.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f118562a8732863c6_d20261024_m173557_c004_v0402031_t0008_u01792863357738"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-013-timestamps-sha256-bb676a82d8ad414cd41bd633a2906e8dea98c2d0490da5540a322b78d129b60a.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f118801089f8517d4_d20261025_m130401_c005_v0501051_t0052_u01792933441570"
+                    }
+                  ],
+                  "sha256": "bb676a82d8ad414cd41bd633a2906e8dea98c2d0490da5540a322b78d129b60a",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-013-timestamps-sha256-bb676a82d8ad414cd41bd633a2906e8dea98c2d0490da5540a322b78d129b60a.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10349c7eab841dc9_d20261024_m173555_c004_v0402034_t0053_u01792863355343"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 138966,
+              "duration_ms": 10836,
+              "end_paragraph": 12,
+              "end_word": 370,
+              "order": 12,
+              "segment_id": "paragraph-013",
+              "start_paragraph": 12,
+              "start_word": 348
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-014-audio-sha256-3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119e2998a5cc2d2d_d20261025_m130406_c005_v0501051_t0012_u01792933446349"
+                    }
+                  ],
+                  "sha256": "3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23",
+                  "size_bytes": 1380141,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-014-audio-sha256-3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f102368a763e4243d_d20261024_m173600_c004_v0402028_t0057_u01792863360539"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-014-metadata-sha256-8f329ebf5ceef64fd3af5e5d9b02297117ab4a247c7f32f7f35f8d44cbee3cd1.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1013764268030dc4_d20261025_m130412_c005_v0501015_t0016_u01792933452732"
+                    }
+                  ],
+                  "sha256": "8f329ebf5ceef64fd3af5e5d9b02297117ab4a247c7f32f7f35f8d44cbee3cd1",
+                  "size_bytes": 534,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-014-metadata-sha256-8f329ebf5ceef64fd3af5e5d9b02297117ab4a247c7f32f7f35f8d44cbee3cd1.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1179e6a99dd6b2e8_d20261024_m173608_c004_v0402040_t0058_u01792863368521"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-014-timestamps-sha256-cac27a7bbf102bbf617526ffcc63e861cb295b34097864f8286dcd9fdfe664d2.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10702b301ff523e5_d20261025_m130410_c005_v0501039_t0010_u01792933450687"
+                    }
+                  ],
+                  "sha256": "cac27a7bbf102bbf617526ffcc63e861cb295b34097864f8286dcd9fdfe664d2",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-014-timestamps-sha256-cac27a7bbf102bbf617526ffcc63e861cb295b34097864f8286dcd9fdfe664d2.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116022ff74fce5ae_d20261024_m173606_c004_v0402040_t0040_u01792863366580"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 149802,
+              "duration_ms": 86163,
+              "end_paragraph": 13,
+              "end_word": 585,
+              "order": 13,
+              "segment_id": "paragraph-014",
+              "start_paragraph": 13,
+              "start_word": 371
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-015-audio-sha256-b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1010cfa24278564d_d20261025_m130415_c005_v0501049_t0051_u01792933455385"
+                    }
+                  ],
+                  "sha256": "b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385",
+                  "size_bytes": 171693,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-015-audio-sha256-b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11231f2606ab3ba4_d20261024_m173610_c004_v0402025_t0015_u01792863370529"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-015-metadata-sha256-4622440fa37b6ae5526a9c9e83ff7da21827a8132186713f349be6a499b88390.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1171488052b1aafb_d20261025_m130419_c005_v0501046_t0001_u01792933459854"
+                    }
+                  ],
+                  "sha256": "4622440fa37b6ae5526a9c9e83ff7da21827a8132186713f349be6a499b88390",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-015-metadata-sha256-4622440fa37b6ae5526a9c9e83ff7da21827a8132186713f349be6a499b88390.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107f342144325d5c_d20261024_m173615_c004_v0402001_t0045_u01792863375400"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-015-timestamps-sha256-bb994cb54e161c6de06c732c4ac27461cf3e47fe47428a9720d642c8ee82fabb.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f109c08d21b15338a_d20261025_m130417_c005_v0501029_t0019_u01792933457446"
+                    }
+                  ],
+                  "sha256": "bb994cb54e161c6de06c732c4ac27461cf3e47fe47428a9720d642c8ee82fabb",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-015-timestamps-sha256-bb994cb54e161c6de06c732c4ac27461cf3e47fe47428a9720d642c8ee82fabb.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1013b31acfb15aa2_d20261024_m173613_c004_v0402033_t0027_u01792863373147"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 235965,
+              "duration_ms": 10635,
+              "end_paragraph": 14,
+              "end_word": 617,
+              "order": 14,
+              "segment_id": "paragraph-015",
+              "start_paragraph": 14,
+              "start_word": 586
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-016-audio-sha256-3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11108fcbdc3e1fc4_d20261025_m130422_c005_v0501050_t0014_u01792933462322"
+                    }
+                  ],
+                  "sha256": "3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310",
+                  "size_bytes": 69165,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-016-audio-sha256-3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1098cdd72a7652b1_d20261024_m173617_c004_v0402034_t0027_u01792863377636"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-016-metadata-sha256-950abe1f75f73d3a112e792cc960acb9fec7dc2b6f424ba03a3f85546116197f.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10112dfad9079eff_d20261025_m130427_c005_v0501045_t0035_u01792933467212"
+                    }
+                  ],
+                  "sha256": "950abe1f75f73d3a112e792cc960acb9fec7dc2b6f424ba03a3f85546116197f",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-016-metadata-sha256-950abe1f75f73d3a112e792cc960acb9fec7dc2b6f424ba03a3f85546116197f.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1033719175b55290_d20261024_m173621_c004_v0402012_t0027_u01792863381851"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-016-timestamps-sha256-774c4bfd4de8c4249d3d8c3e720c9d210888223cc5458c6e7253f7b69590b949.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1072b5646e9b1a8d_d20261025_m130424_c005_v0501050_t0014_u01792933464806"
+                    }
+                  ],
+                  "sha256": "774c4bfd4de8c4249d3d8c3e720c9d210888223cc5458c6e7253f7b69590b949",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-016-timestamps-sha256-774c4bfd4de8c4249d3d8c3e720c9d210888223cc5458c6e7253f7b69590b949.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107906f22107ad4b_d20261024_m173619_c004_v0402015_t0050_u01792863379608"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 246600,
+              "duration_ms": 4243,
+              "end_paragraph": 15,
+              "end_word": 626,
+              "order": 15,
+              "segment_id": "paragraph-016",
+              "start_paragraph": 15,
+              "start_word": 618
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-017-audio-sha256-cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110c0af4996e54c9_d20261025_m130429_c005_v0501017_t0012_u01792933469208"
+                    }
+                  ],
+                  "sha256": "cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec",
+                  "size_bytes": 71469,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-017-audio-sha256-cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f101f179c47226267_d20261024_m173624_c004_v0402038_t0049_u01792863384189"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-017-metadata-sha256-24a43e50996775a87224e5fe8525feb19af54f93ab7de28e8584c4f3c4d42acf.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f103c2d1032235075_d20261025_m130433_c005_v0501041_t0019_u01792933473826"
+                    }
+                  ],
+                  "sha256": "24a43e50996775a87224e5fe8525feb19af54f93ab7de28e8584c4f3c4d42acf",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-017-metadata-sha256-24a43e50996775a87224e5fe8525feb19af54f93ab7de28e8584c4f3c4d42acf.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107a8e62a533fe34_d20261024_m173628_c004_v0402020_t0008_u01792863388405"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-017-timestamps-sha256-a16dca40e69f5f43ef8da589461e1e5124c0aea03259b69ac2f3b6fe519d2dda.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11351980c1cfc447_d20261025_m130431_c005_v0501047_t0008_u01792933471471"
+                    }
+                  ],
+                  "sha256": "a16dca40e69f5f43ef8da589461e1e5124c0aea03259b69ac2f3b6fe519d2dda",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-017-timestamps-sha256-a16dca40e69f5f43ef8da589461e1e5124c0aea03259b69ac2f3b6fe519d2dda.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107906f22107adf3_d20261024_m173626_c004_v0402015_t0003_u01792863386242"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 250843,
+              "duration_ms": 4379,
+              "end_paragraph": 16,
+              "end_word": 633,
+              "order": 16,
+              "segment_id": "paragraph-017",
+              "start_paragraph": 16,
+              "start_word": 627
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-018-audio-sha256-94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110631ad776443ca_d20261025_m130435_c005_v0501047_t0036_u01792933475738"
+                    }
+                  ],
+                  "sha256": "94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4",
+                  "size_bytes": 312621,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-018-audio-sha256-94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11859041c5351d8e_d20261024_m173630_c004_v0402000_t0017_u01792863390351"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-018-metadata-sha256-632f0b1c20b98bd07343dec2f3a56a6cdc8a95b40dc0f2c4497bb6f519ceafaa.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1146f1e08fc65dda_d20261025_m130440_c005_v0501050_t0009_u01792933480370"
+                    }
+                  ],
+                  "sha256": "632f0b1c20b98bd07343dec2f3a56a6cdc8a95b40dc0f2c4497bb6f519ceafaa",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-018-metadata-sha256-632f0b1c20b98bd07343dec2f3a56a6cdc8a95b40dc0f2c4497bb6f519ceafaa.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f106582354f48b9b5_d20261024_m173634_c004_v0402040_t0026_u01792863394650"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-018-timestamps-sha256-fc2f4452946dc5c51eacf6ef9bda2f77be9adc58b63c9427e32e18e2014b54c7.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110a5e7ca0d72601_d20261025_m130437_c005_v0501040_t0017_u01792933477616"
+                    }
+                  ],
+                  "sha256": "fc2f4452946dc5c51eacf6ef9bda2f77be9adc58b63c9427e32e18e2014b54c7",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-018-timestamps-sha256-fc2f4452946dc5c51eacf6ef9bda2f77be9adc58b63c9427e32e18e2014b54c7.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115d7336c8e6da15_d20261024_m173632_c004_v0402040_t0055_u01792863392672"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 255222,
+              "duration_ms": 19444,
+              "end_paragraph": 17,
+              "end_word": 687,
+              "order": 17,
+              "segment_id": "paragraph-018",
+              "start_paragraph": 17,
+              "start_word": 634
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-019-audio-sha256-9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f118e448d926c049b_d20261025_m130442_c005_v0501050_t0007_u01792933482699"
+                    }
+                  ],
+                  "sha256": "9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9",
+                  "size_bytes": 625197,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-019-audio-sha256-9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11651a7ea8dab328_d20261024_m173636_c004_v0402014_t0050_u01792863396915"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-019-metadata-sha256-ad4994c99052a17156163061f2da742e62ef58ed53cb696d128519f549a7b013.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119ff9cd3e5424de_d20261025_m130448_c005_v0501039_t0057_u01792933488916"
+                    }
+                  ],
+                  "sha256": "ad4994c99052a17156163061f2da742e62ef58ed53cb696d128519f549a7b013",
+                  "size_bytes": 513,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-019-metadata-sha256-ad4994c99052a17156163061f2da742e62ef58ed53cb696d128519f549a7b013.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1066913fbec87f41_d20261024_m173641_c004_v0402007_t0015_u01792863401852"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-019-timestamps-sha256-2a43b74e42924321ee71653812284fbc29905a79e5cd8d1587de58958b048064.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1032bf9db14010d4_d20261025_m130446_c005_v0501033_t0059_u01792933486985"
+                    }
+                  ],
+                  "sha256": "2a43b74e42924321ee71653812284fbc29905a79e5cd8d1587de58958b048064",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-019-timestamps-sha256-2a43b74e42924321ee71653812284fbc29905a79e5cd8d1587de58958b048064.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f104b511ee5c4cc56_d20261024_m173639_c004_v0402011_t0000_u01792863399764"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 274666,
+              "duration_ms": 38977,
+              "end_paragraph": 18,
+              "end_word": 781,
+              "order": 18,
+              "segment_id": "paragraph-019",
+              "start_paragraph": 18,
+              "start_word": 688
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-020-audio-sha256-abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10168724e8669d3f_d20261025_m130451_c005_v0501036_t0009_u01792933491476"
+                    }
+                  ],
+                  "sha256": "abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72",
+                  "size_bytes": 483885,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-020-audio-sha256-abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115071a02394d208_d20261024_m173643_c004_v0402002_t0057_u01792863403985"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-020-metadata-sha256-f9e2f2f473834e6fe80dfe3751477523aa40747227cd7e566476c7cc1f68a9be.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f118801089f85458b_d20261025_m130455_c005_v0501051_t0053_u01792933495299"
+                    }
+                  ],
+                  "sha256": "f9e2f2f473834e6fe80dfe3751477523aa40747227cd7e566476c7cc1f68a9be",
+                  "size_bytes": 502,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-020-metadata-sha256-f9e2f2f473834e6fe80dfe3751477523aa40747227cd7e566476c7cc1f68a9be.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f100d31abc104c5c4_d20261024_m173649_c004_v0402038_t0023_u01792863409395"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-020-timestamps-sha256-9f8508b262ad7a68a680b77fe7402974b15ac33ffb4129442b0219caa41a25df.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f112f163333877e6f_d20261025_m130453_c005_v0501049_t0001_u01792933493620"
+                    }
+                  ],
+                  "sha256": "9f8508b262ad7a68a680b77fe7402974b15ac33ffb4129442b0219caa41a25df",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-020-timestamps-sha256-9f8508b262ad7a68a680b77fe7402974b15ac33ffb4129442b0219caa41a25df.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1011f6c1c15c6086_d20261024_m173646_c004_v0402001_t0017_u01792863406522"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 313643,
+              "duration_ms": 30155,
+              "end_paragraph": 19,
+              "end_word": 849,
+              "order": 19,
+              "segment_id": "paragraph-020",
+              "start_paragraph": 19,
+              "start_word": 782
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-021-audio-sha256-efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1195b1463cd9bee6_d20261025_m130457_c005_v0501016_t0011_u01792933497405"
+                    }
+                  ],
+                  "sha256": "efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2",
+                  "size_bytes": 202413,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-021-audio-sha256-efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10981b0dc9894a6a_d20261024_m173652_c004_v0402000_t0011_u01792863412259"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-021-metadata-sha256-2c704e8811cbe75772f6f31a989b231a6d0db982685367c4294a7af0a0849ee7.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f113fed3bb580af43_d20261025_m130501_c005_v0501051_t0034_u01792933501312"
+                    }
+                  ],
+                  "sha256": "2c704e8811cbe75772f6f31a989b231a6d0db982685367c4294a7af0a0849ee7",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-021-metadata-sha256-2c704e8811cbe75772f6f31a989b231a6d0db982685367c4294a7af0a0849ee7.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10355bee55169d24_d20261024_m173658_c004_v0402000_t0046_u01792863418689"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-021-timestamps-sha256-a20a9f488c8d21677a3e4d583f0d4455da27714df02649d86881aaf6d041c6b3.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f106dc784d4eb4ad1_d20261025_m130459_c005_v0501038_t0021_u01792933499178"
+                    }
+                  ],
+                  "sha256": "a20a9f488c8d21677a3e4d583f0d4455da27714df02649d86881aaf6d041c6b3",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-021-timestamps-sha256-a20a9f488c8d21677a3e4d583f0d4455da27714df02649d86881aaf6d041c6b3.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10379ed789a920bb_d20261024_m173656_c004_v0402033_t0015_u01792863416363"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 343798,
+              "duration_ms": 12555,
+              "end_paragraph": 20,
+              "end_word": 878,
+              "order": 20,
+              "segment_id": "paragraph-021",
+              "start_paragraph": 20,
+              "start_word": 850
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-022-audio-sha256-019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f115d4d5a3b7dda5d_d20261025_m130503_c005_v0501024_t0007_u01792933503372"
+                    }
+                  ],
+                  "sha256": "019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18",
+                  "size_bytes": 115629,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-022-audio-sha256-019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1020be9f7a5931e2_d20261024_m173700_c004_v0402014_t0048_u01792863420851"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-022-metadata-sha256-c2e883e13402cb0c3605da1b682d4376d3bcf7f8d792e41f514356943a944f73.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f107c9c341958de4f_d20261025_m130507_c005_v0501029_t0006_u01792933507669"
+                    }
+                  ],
+                  "sha256": "c2e883e13402cb0c3605da1b682d4376d3bcf7f8d792e41f514356943a944f73",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-022-metadata-sha256-c2e883e13402cb0c3605da1b682d4376d3bcf7f8d792e41f514356943a944f73.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1182f07332ba6639_d20261024_m173707_c004_v0402009_t0017_u01792863427096"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-022-timestamps-sha256-c8d468cac3bea16fff4846b45684102ff71348282822f4374be22c749d18a8dc.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f101edc9957dd5984_d20261025_m130505_c005_v0501044_t0009_u01792933505353"
+                    }
+                  ],
+                  "sha256": "c8d468cac3bea16fff4846b45684102ff71348282822f4374be22c749d18a8dc",
+                  "size_bytes": 340,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-022-timestamps-sha256-c8d468cac3bea16fff4846b45684102ff71348282822f4374be22c749d18a8dc.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11328c14195828a7_d20261024_m173704_c004_v0402011_t0021_u01792863424346"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 356353,
+              "duration_ms": 7141,
+              "end_paragraph": 21,
+              "end_word": 903,
+              "order": 21,
+              "segment_id": "paragraph-022",
+              "start_paragraph": 21,
+              "start_word": 879
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-023-audio-sha256-74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1171488052b1ba2e_d20261025_m130509_c005_v0501046_t0046_u01792933509494"
+                    }
+                  ],
+                  "sha256": "74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96",
+                  "size_bytes": 308397,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-023-audio-sha256-74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1009af068d7c092d_d20261024_m173709_c004_v0402005_t0003_u01792863429133"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-023-metadata-sha256-0cb22e591829b78caa1cc92ad1fedd44d19368550cb0ed81d48a37c765f8794d.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1009e7e97decc455_d20261025_m130513_c005_v0501026_t0017_u01792933513492"
+                    }
+                  ],
+                  "sha256": "0cb22e591829b78caa1cc92ad1fedd44d19368550cb0ed81d48a37c765f8794d",
+                  "size_bytes": 492,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-023-metadata-sha256-0cb22e591829b78caa1cc92ad1fedd44d19368550cb0ed81d48a37c765f8794d.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1120a2aefe41d178_d20261024_m173714_c004_v0402032_t0050_u01792863434336"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-023-timestamps-sha256-61ced41b6b7338b80b03c9280ca6aef35dfd5effa22678dfdb3ec1fbe4f3692b.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ae679d466c998_d20261025_m130511_c005_v0501011_t0021_u01792933511401"
+                    }
+                  ],
+                  "sha256": "61ced41b6b7338b80b03c9280ca6aef35dfd5effa22678dfdb3ec1fbe4f3692b",
+                  "size_bytes": 341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-023-timestamps-sha256-61ced41b6b7338b80b03c9280ca6aef35dfd5effa22678dfdb3ec1fbe4f3692b.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1046e4b30489cf5e_d20261024_m173712_c004_v0402030_t0039_u01792863432230"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 363494,
+              "duration_ms": 19187,
+              "end_paragraph": 22,
+              "end_word": 953,
+              "order": 22,
+              "segment_id": "paragraph-023",
+              "start_paragraph": 22,
+              "start_word": 904
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-024-audio-sha256-e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11708e587b04295f_d20261025_m130515_c005_v0501026_t0053_u01792933515641"
+                    }
+                  ],
+                  "sha256": "e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217",
+                  "size_bytes": 436653,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-024-audio-sha256-e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f114e454154c82ecd_d20261024_m173716_c004_v0402033_t0004_u01792863436396"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-024-metadata-sha256-7d4441d07507bc9c999f6f3818d23714e982ea2333749b558f83163bbaa0734d.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1169eae5df8b044b_d20261025_m130520_c005_v0501029_t0039_u01792933520004"
+                    }
+                  ],
+                  "sha256": "7d4441d07507bc9c999f6f3818d23714e982ea2333749b558f83163bbaa0734d",
+                  "size_bytes": 503,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-024-metadata-sha256-7d4441d07507bc9c999f6f3818d23714e982ea2333749b558f83163bbaa0734d.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f102368a763e4324d_d20261024_m173720_c004_v0402028_t0019_u01792863440609"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-024-timestamps-sha256-5016b50daa456c79fff4dc66cff6696d65dd3780bfccbc19b617384967546fae.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f109923e1f69be6ef_d20261025_m130518_c005_v0501019_t0019_u01792933518053"
+                    }
+                  ],
+                  "sha256": "5016b50daa456c79fff4dc66cff6696d65dd3780bfccbc19b617384967546fae",
+                  "size_bytes": 342,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-024-timestamps-sha256-5016b50daa456c79fff4dc66cff6696d65dd3780bfccbc19b617384967546fae.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f119e9af2a5660cb9_d20261024_m173718_c004_v0402006_t0031_u01792863438647"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 382681,
+              "duration_ms": 27202,
+              "end_paragraph": 23,
+              "end_word": 1021,
+              "order": 23,
+              "segment_id": "paragraph-024",
+              "start_paragraph": 23,
+              "start_word": 954
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-025-audio-sha256-dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11709f0ec09ad4f8_d20261025_m130521_c005_v0501012_t0058_u01792933521891"
+                    }
+                  ],
+                  "sha256": "dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5",
+                  "size_bytes": 247341,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-025-audio-sha256-dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f117434be8a68385f_d20261024_m173722_c004_v0402032_t0026_u01792863442953"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-025-metadata-sha256-fec1a78e72903597837cce0f9af04c8bb17909e40ca10fa9ba9fa5eaaee64736.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1060c53e5b9fa4ad_d20261025_m130526_c005_v0501049_t0015_u01792933526129"
+                    }
+                  ],
+                  "sha256": "fec1a78e72903597837cce0f9af04c8bb17909e40ca10fa9ba9fa5eaaee64736",
+                  "size_bytes": 495,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-025-metadata-sha256-fec1a78e72903597837cce0f9af04c8bb17909e40ca10fa9ba9fa5eaaee64736.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10355bee552ac3d1_d20261025_m130142_c004_v0402000_t0045_u01792933302952"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-025-timestamps-sha256-99f1c9ac05caaa94a16c9d4d45e737dfcea7dc6ee741be41f44818c9511cb1c7.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f116c8e398a7c3bc2_d20261025_m130524_c005_v0501051_t0012_u01792933524342"
+                    }
+                  ],
+                  "sha256": "99f1c9ac05caaa94a16c9d4d45e737dfcea7dc6ee741be41f44818c9511cb1c7",
+                  "size_bytes": 343,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-025-timestamps-sha256-99f1c9ac05caaa94a16c9d4d45e737dfcea7dc6ee741be41f44818c9511cb1c7.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f102b1d81f7795bf6_d20261024_m202648_c004_v0402016_t0032_u01792873608775"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 409883,
+              "duration_ms": 15374,
+              "end_paragraph": 24,
+              "end_word": 1061,
+              "order": 24,
+              "segment_id": "paragraph-025",
+              "start_paragraph": 24,
+              "start_word": 1022
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-026-audio-sha256-69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f118801089f855f74_d20261025_m130528_c005_v0501051_t0007_u01792933528089"
+                    }
+                  ],
+                  "sha256": "69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5",
+                  "size_bytes": 198957,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-026-audio-sha256-69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1000b46262f468d5_d20261025_m130145_c004_v0402039_t0048_u01792933305095"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-026-metadata-sha256-6d708ee8a83455d439ec2eabd62b0267dce7ebfb815ea9300521c0d6f67b4b3d.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f118e26d84d7b52e1_d20261025_m130534_c005_v0501043_t0048_u01792933534044"
+                    }
+                  ],
+                  "sha256": "6d708ee8a83455d439ec2eabd62b0267dce7ebfb815ea9300521c0d6f67b4b3d",
+                  "size_bytes": 496,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-026-metadata-sha256-6d708ee8a83455d439ec2eabd62b0267dce7ebfb815ea9300521c0d6f67b4b3d.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f105c00e581a62719_d20261025_m130150_c004_v0402001_t0006_u01792933310955"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-026-timestamps-sha256-d20a3a4fa3806e3fe423b8fc8078959e3f835d6e4ccc4f06296b7079b996dc73.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119a9110b2891977_d20261025_m130531_c005_v0501045_t0036_u01792933531224"
+                    }
+                  ],
+                  "sha256": "d20a3a4fa3806e3fe423b8fc8078959e3f835d6e4ccc4f06296b7079b996dc73",
+                  "size_bytes": 343,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-026-timestamps-sha256-d20a3a4fa3806e3fe423b8fc8078959e3f835d6e4ccc4f06296b7079b996dc73.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1104c850596b5a98_d20261025_m130148_c004_v0402010_t0040_u01792933308781"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 425257,
+              "duration_ms": 12360,
+              "end_paragraph": 25,
+              "end_word": 1095,
+              "order": 25,
+              "segment_id": "paragraph-026",
+              "start_paragraph": 25,
+              "start_word": 1062
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-027-audio-sha256-531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1058e201223392cb_d20261025_m130535_c005_v0501041_t0053_u01792933535767"
+                    }
+                  ],
+                  "sha256": "531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4",
+                  "size_bytes": 275757,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-027-audio-sha256-531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f104fa6052ef966aa_d20261025_m130153_c004_v0402034_t0051_u01792933313082"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-027-metadata-sha256-27e7cd4137877a46a60ee876922a30b5efccfef53776e789743eaf8c2976ad72.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1064bbce1b58f06d_d20261025_m130540_c005_v0501022_t0010_u01792933540078"
+                    }
+                  ],
+                  "sha256": "27e7cd4137877a46a60ee876922a30b5efccfef53776e789743eaf8c2976ad72",
+                  "size_bytes": 496,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-027-metadata-sha256-27e7cd4137877a46a60ee876922a30b5efccfef53776e789743eaf8c2976ad72.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1080e360fa4f3ac7_d20261025_m130157_c004_v0402038_t0039_u01792933317730"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-027-timestamps-sha256-433083801cf9db5edfe0081b91939855edee4dbda8469f209bcc2c1888000320.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f115d4c0b345305b8_d20261025_m130538_c005_v0501027_t0058_u01792933538232"
+                    }
+                  ],
+                  "sha256": "433083801cf9db5edfe0081b91939855edee4dbda8469f209bcc2c1888000320",
+                  "size_bytes": 343,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-027-timestamps-sha256-433083801cf9db5edfe0081b91939855edee4dbda8469f209bcc2c1888000320.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1098cdd72ab89cde_d20261025_m130155_c004_v0402034_t0035_u01792933315607"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 437617,
+              "duration_ms": 17140,
+              "end_paragraph": 26,
+              "end_word": 1132,
+              "order": 26,
+              "segment_id": "paragraph-027",
+              "start_paragraph": 26,
+              "start_word": 1096
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-028-audio-sha256-1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11351980c1cfd76d_d20261025_m130542_c005_v0501047_t0011_u01792933542161"
+                    }
+                  ],
+                  "sha256": "1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96",
+                  "size_bytes": 518445,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-028-audio-sha256-1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f110ce39a50b2a15a_d20261025_m130159_c004_v0402000_t0015_u01792933319601"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-028-metadata-sha256-a07d5679b2c9508aea2f4358b4d1c405beea01dfaa73d76a01954593ab60a0a4.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1168526662acd07b_d20261025_m130546_c005_v0501034_t0003_u01792933546416"
+                    }
+                  ],
+                  "sha256": "a07d5679b2c9508aea2f4358b4d1c405beea01dfaa73d76a01954593ab60a0a4",
+                  "size_bytes": 506,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-028-metadata-sha256-a07d5679b2c9508aea2f4358b4d1c405beea01dfaa73d76a01954593ab60a0a4.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11861c3fae1440b2_d20261025_m130204_c004_v0402035_t0057_u01792933324654"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-028-timestamps-sha256-cd8d59113d4b8d554c13d90e33c19f52201b420b7c4c24318d72dfbae3262317.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11215dd79f974ae6_d20261025_m130544_c005_v0501008_t0047_u01792933544518"
+                    }
+                  ],
+                  "sha256": "cd8d59113d4b8d554c13d90e33c19f52201b420b7c4c24318d72dfbae3262317",
+                  "size_bytes": 343,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-028-timestamps-sha256-cd8d59113d4b8d554c13d90e33c19f52201b420b7c4c24318d72dfbae3262317.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1035b72e1d05b833_d20261025_m130202_c004_v0402027_t0058_u01792933322080"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 454757,
+              "duration_ms": 32306,
+              "end_paragraph": 27,
+              "end_word": 1200,
+              "order": 27,
+              "segment_id": "paragraph-028",
+              "start_paragraph": 27,
+              "start_word": 1133
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-029-audio-sha256-4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f107bd98cb7ebf42f_d20261025_m130548_c005_v0501051_t0046_u01792933548539"
+                    }
+                  ],
+                  "sha256": "4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9",
+                  "size_bytes": 71469,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/delivery/chapter-001/paragraph-029-audio-sha256-4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10776770dd9eb956_d20261025_m130207_c004_v0402012_t0054_u01792933327284"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-029-metadata-sha256-6b56a2c5b5f3aae0620bc2795cd7954b4819b2f8194c10fb0a411a277ad0dda5.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119e2998a5cc82bf_d20261025_m130552_c005_v0501051_t0043_u01792933552546"
+                    }
+                  ],
+                  "sha256": "6b56a2c5b5f3aae0620bc2795cd7954b4819b2f8194c10fb0a411a277ad0dda5",
+                  "size_bytes": 496,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-029-metadata-sha256-6b56a2c5b5f3aae0620bc2795cd7954b4819b2f8194c10fb0a411a277ad0dda5.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1012ffd867695be1_d20261025_m130212_c004_v0402018_t0053_u01792933332814"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-029-timestamps-sha256-a06ebb9d1481a0c0dbf4ef29a2190195b313a822f37fcf06df8c708cc049551c.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119a2a9c87cc78e4_d20261025_m130550_c005_v0501003_t0034_u01792933550774"
+                    }
+                  ],
+                  "sha256": "a06ebb9d1481a0c0dbf4ef29a2190195b313a822f37fcf06df8c708cc049551c",
+                  "size_bytes": 342,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/chapter-001/paragraph-029-timestamps-sha256-a06ebb9d1481a0c0dbf4ef29a2190195b313a822f37fcf06df8c708cc049551c.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f110afa7c670786a3_d20261025_m130210_c004_v0402004_t0017_u01792933330452"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f114ce7e3af6f4e30_d20261025_m130222_c005_v0501019_t0059_u01792933342136"
+                    }
+                  ],
+                  "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+                  "size_bytes": 93,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2/sidecars/shared/no-highlight-sha256-dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f115b5cef9eccd8b8_d20261024_m173419_c004_v0402032_t0059_u01792863259250"
+                  }
+                }
+              },
+              "cumulative_start_ms": 487063,
+              "duration_ms": 4373,
+              "end_paragraph": 28,
+              "end_word": 1207,
+              "order": 28,
+              "segment_id": "paragraph-029",
+              "start_paragraph": 28,
+              "start_word": 1201
+            }
+          ],
+          "end_paragraph": 28,
+          "end_word": 1207,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "The Open Window"
+        }
+      ],
+      "word_count": 1208
+    }
+  },
+  "audiobook_public_package_approval": {
+    "acceptance": {
+      "accounting_commit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+      "duration_ms": 491436,
+      "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "production_proof_sha256": {
+        "accounting": "9f4d9a53868cfdd5b7f532558297d93878c12efda0fc1ff17534fb4febb4722b",
+        "business": "8a76633e77649a90dac618438ec6eb67faaebdeb1a5fd3c26b2fab4cf9068d7f",
+        "playback": "9e22caeee79f48e3205b570aabd375e529f5d7c8b187efb9f1e305131df497f7"
+      },
+      "public_activation_performed": false,
+      "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+      "schema_version": "audiobook_public_package_acceptance.v1",
+      "segment_count": 29
+    },
+    "acceptance_sha256": "ba06a56438d38e6ee8eef6de339772821fecaf9713dc563bf57a379862b0f0ab",
+    "approved_at": "2026-10-26T15:00:00Z",
+    "approved_by": "Owner conditional exact-title GO LIVE authority in Integration Lane",
+    "audio_rights_decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
+    "audio_rights_record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+    "endpoint": "/api/reader/book/the-open-window/audiobook/manifest",
+    "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "schema_version": "audiobook_protected_package_publication.v1",
+    "slug": "the-open-window",
+    "status": "PUBLIC_APPROVED"
+  },
+  "audiobook_release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+  "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
   "author": "Saki",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_dominant_color": "#122D2F",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
   "benefits": [
     "Read a legally cleared digital text.",
     "Enjoy a clean, structured reading format.",
     "Access a render-safe ebook prepared for web reading."
   ],
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "category_slug": "literary-fiction",
   "chapters": [
     {
@@ -32,29 +2742,31 @@
     }
   ],
   "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-  "coverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "cover_dimensions": {
-    "front": [
-      800,
-      1200
-    ],
     "back": [
-      800,
-      1200
+      1600,
+      2400
+    ],
+    "front": [
+      1600,
+      2400
     ]
   },
-  "cover_image": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+  "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
   "cover_semantic_match_score": 9.8,
-  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
-  "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "created_at": "2026-07-03T20:07:49Z",
   "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
-  "dominant_color": "#4A1C27",
+  "dominant_color": "#102A2C",
   "estimated_reading_time": "5 min",
   "formats": [
     "Ebook"
   ],
+  "generate_audiobook": false,
   "id": "controlled-the-open-window",
   "isLive": true,
   "isPublic": true,
@@ -64,11 +2776,16 @@
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
+  "preview_enabled": true,
+  "production_observed": false,
   "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
   "publicationStatus": "published",
+  "publication_authorization_sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
   "publication_status": "LIVE_APPROVED",
   "qa_status": "QA_PASSED",
   "readerStatus": "reader_ready",
+  "reader_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
   "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
   "rights_tier": "A",
   "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
@@ -77,23 +2794,13 @@
   "slug": "the-open-window",
   "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
   "subtitle": "",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
   "title": "The Open Window",
-  "updated_at": "2026-07-19T10:15:00Z",
+  "updated_at": "2026-10-26T10:23:01.242177+00:00",
   "verification_status": "approved",
   "who_for": [
     "General readers",
     "Students and lifelong learners",
     "Users who prefer structured digital reading"
-  ],
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_assets": {},
-  "audiobook": {},
-  "publication_authorization_sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
-  "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
-  "reader_enabled": true,
-  "preview_enabled": true,
-  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
-  "production_observed": false
+  ]
 }

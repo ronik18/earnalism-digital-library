@@ -2672,3 +2672,125 @@ Two failing-before regressions,69focused tests passing after. Browser/real-Mongo
 requalification subsequently29Mongo and6browser cases PASS; production untouched.
 See reader_preparation_expiry_20261018.md. Controlled45s opening is not a latency
 benchmark; fixed60s expiry remains fail-closed with zero preparation debit.
+
+## Open Window listened-successor compatibility — 23 October 2026
+
+The legacy exact-successor validator pins six unresolved lexical findings. New owner source-following/listening evidence requires a separately selected version with exact hash pins, preserving the legacy version and native rights/storage/auth/accounting gates. A proposed local85/85 is not an overall95/100PASS. Preparation adds no trusted registry entry or activation. Canonical checkout registration/files were restored after preserving the incomplete historical checkout; dirty parked payment work was not imported.
+
+## Open Window protected transport canary — 2026-10-25
+
+The current manifest route enforces Reading Pass authentication before existence, so anonymous401AUTH_REQUIRED is not content absence. Versioned hidden proof combines real proxy denial, catalogue flags/status and no-listen UI; no network-silence claim. Preserve the frozen descriptor hash when historical display fields are omitted: exact UUID/source/master/adoption and controlled title/author must still pass. Staged5percent canary retains hidden fallback and never claims production QA points.
+
+## Open Window canary metadata integrity — 2026-10-25
+
+Native canary staging updates metadata beyond the historical publication artifact pins. Refresh the exact publication/rights/bootstrap/static-SEO reference chain together; preserve original source text and Reader-only territory/use restrictions. Hash-bound historical regression fixtures need exact successor pins, not relaxed approval checks. Hosted CI and actual production playback remain mandatory.
+
+## Listener canary query composition — 2026-10-25
+
+The Reader manifest helper already includes a release-truth query. Appending another question mark silently loses the canary option. Compose parameters inside the existing URLSearchParams helper and test the mounted route request, not only metadata adapters. Fresh authenticated production metadata exposed this gap before any billable session was started.
+
+## Open Window audio cap preparation — 26 October 2026
+
+A per-lease limit is not a total debit cap. Reserve successful start slots in the same transaction as session creation; reuse native debit CAS for a shared600-second allowance. The rollout cookie is path-scoped to Reader endpoints, so the audio start endpoint must derive exact package scope from trusted validated metadata while media independently retains cohort enforcement. Local real-Mongo tests prove two-start contention, cap conservation and abort rollback. The pure authority builder is not production installation approval.
+
+## Open Window installer local delta — 26 October 2026
+
+Installer preparation must not consume installation authority. The production entry remains disabled. A no-overwrite transaction and exact source/runtime/account pins are necessary but do not prove writer quiescence: ordinary starts need an independently qualified traffic fence before installation. Sanitize readback; commit ambiguity stops without mutation retries or authority reset. Installer delta29PASS; accepted129cap tests and six source pins reused unchanged.
+
+## Open Window protected entry and recovery — 26 October 2026
+
+A stopped-service installer must run independently of that service. Exact provider/source/private-account binding and audit readback are required; a recovery receipt alone does not prove a supervisor is alive. Reserve one restart durably before its attempt, retain uncertainty and verify health independently. Detached dummy recovery survives coordinator exit; current-revision production fencing/restoration remains untested under the no-outage boundary. 66 local tests PASS including13 real-Mongo cases; no production mutation.
+
+## Open Window installation freeze — 26 October 2026
+
+Freeze source and private wiring specifications separately from runtime readiness. An independent recovery deadline must not release a traffic fence while an installer could still commit. The current detached supervisor test proves independence, not an installer-quiescence interlock or live readiness. Candidate source-set ad5c18ce89973bc5346608bdcd7d8a0e01ade0f78616c6d665d695c4ab0dc07f is retained; conditional approval remains non-executable. No new tests were needed for this documentary freeze; 66-test evidence reused.
+
+## Open Window V2 interlock — 26 October 2026
+
+Use one control document shared by installation and recovery, rather than kill/delay heuristics. Claim it inside the installation transaction; recovery must majority-close it before one restart. This serializes stale, suspended and uncertain installers against reopening traffic. Bind both processes to the same private DB/plan and use a fresh owner-local socket challenge for readiness. 89 tests PASS including20 real-Mongo cases and separate-process tests. Frozen successor635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f; no production action. Keep future steps minimal and reuse completed title/audio evidence.
+
+## Open Window normal-session pause/resume — 26 October 2026
+
+Native media needs HttpOnly credentials across valid paused renewals. Preserve them for Paused, but retain backend denial of paused media until active renewal succeeds. The Listener must serialize heartbeat/resume renewals and await active renewal before invoking media.play; otherwise token rotation or pause authorization can break resume. Production acceptance stopped safely with zero debit; no public activation. Custom cap work is stopped by owner direction. Focused backend, frontend and three real-Mongo accounting cases passed; local production build awaits its already-declared missing Vercel analytics dependency in clean-install CI.
+
+Cookie-release CI follow-up: full-server source pins must be refreshed to the exact reviewed bytes when legitimate route changes land. PR558 old pin caused nine retained installer/interlock failures; refreshed exact pin passes 94 local tests with authenticated disposable Mongo. Do not disable source checks or revive stopped cap execution.
+
+## Open Window paused seeks — 26 October 2026
+
+Pausing retains credentials but deliberately denies protected media bytes until active renewal. Native currentTime or src changes can issue Range requests even while paused. Store seek intent without touching the media element, then apply it only after active renewal. Post-PR558 session settled at zero debit; activation stays held. Twenty focused frontend tests and46 workflow tooling cases pass. Backend remains unchanged.
+
+## Open Window ordered transitions — 26 October 2026
+
+A native audio source swap emits pause/ended events. Keep that transient pause distinct from user pause, and renew active authority before issuing next-segment Range requests. The first-segment production test settled with15 reading seconds debit and remains failed; no activation. Twenty-three frontend cases now cover all29 synthetic transitions, denial, ending and unmount, plus46 workflow checks. Local lifecycle tests are not production listening acceptance.
+
+## Open Window buffering billing — 26 October 2026
+
+A reconciled wallet proves arithmetic, not fair billable intervals. Native play intervals388.946s vs581s debited prompted review; no refund amount is established. Renew existing buffering authority before fetch/source changes and start billing only at native playing. Immediately serialize each observed state rather than sampling a later state in queued work. Speed controls change media progress, not server-clock billing. Local27frontend+36service tests pass including three speeds, device conflict/transfer and renewal races; production fairness/multi-device acceptance stays held. No wallet repair or new paid session.
+
+## Open Window revised covers — 26 October 2026
+
+Admin cover intake is a private review candidate, not canonical publication. The web-service canonical readiness predicate requires a writable Git root and both publication mirrors; do not add a checkout to the serving container. Use the existing promoter in the Integration Lane with genuine immutable candidate identities and full-byte SHA verification. Owner-private exact-record metadata lookup recovered a missing retained provider identity without duplicate upload. Both mirrored cover bindings, approval/checksum history, exact prospective rights record/registry and Reader bootstrap digest must remain consistent.437tests+19subtests pass; no public cover or audio activation claimed before merged-source deployment.
+
+Cover CI follow-up: the generic promoter did not refresh this title’s separately hash-bound publication manifest. Keep the existing artifact-equality test; refresh the real cover URL/artifact hashes and manifest digest, then rebind registry/bootstrap. An exact predecessor-actor fixture also required a narrow approved-successor case.452tests+19subtests pass; no deployment or failed-run retry occurred.
+
+Cover derived-artifact follow-up: after canonical cover/public-book/rights changes, regenerate the supported static SEO contract and retain precise registered decision fixtures. Both affected regression modules pass16tests; no checks waived or production change.
+
+## Account-wide fractional usage — 26 October 2026
+
+Flooring each short renewal loses legitimate active time. Carry integer microseconds on the account in the same transaction as session and wallet transitions, including across endings and transfers; do not round every heartbeat upward. Keep paused/buffering/free time free. Customer history must page all rows deterministically, show exact seconds, and discard late results after account changes.131backend,19frontend,46workflow checks pass plus isolated real-Mongo three-speed/transfer/rapid-renewal cases; production not yet changed.
+
+Account pagination capture follow-up: update the actual authenticated screenshot fixture when moving UI to a new endpoint. Keep HTTP failures in capture gates; add the exact page shape rather than suppressing failed requests.
+
+Protected package publication preparation: a chunked package needs first-class delivery recognition, not a fabricated legacy MP3. Require exact active descriptor, canonical package, independent real receipts and hash-bound production acceptance while retaining global/title/rights gates. Dedicated promotion remains separate from generic canary rollout; current metadata stays hidden.
+
+Package public-delivery integration: preserve actual provider provenance rather than inventing a provider label. Protected canonical package metadata supplies exact package/duration while media URLs remain lease-protected. Extend the manifest model with package/descriptor/acceptance/rights hashes; do not fabricate a whole-MP3 hash. The dedicated single-title allowlist leaves the broad legacy audio switch false.118backend/release tests plus24subtests,44frontend cases and46workflow cases pass locally; authenticated deployed usage acceptance remains the only requested owner sign-in action before exact source promotion.
+
+Publication acceptance completed: actual authenticated deployed563 usage UI pages beyond100rows passed, with no paid session. Source publication now binds retained full playback, business checks and new nonpaid usage evidence. Preserve Reader evidence as a list, and separately bind existing audio-use authority to the exact descriptor so an accepted Reader decision cannot be relabelled as audio authority. Public activation remains held until gated exact-source release and real public verification.
+
+Public package snapshot follow-up: update both generated-contract producers and actual postbuild consumers. Exact catalogue baseline hashes/Reader bindings must follow a reviewed title successor; keep independent audio-use validation and reject unlisted approved audio.64 canary/source checks and172 snapshots/3647 assertions pass; no production change.
+
+Catalogue fixture follow-up: assert the exact protected-package singleton and unrelated-title denial while preserving the broad legacy audio OFF assertion.39 backend catalogue tests pass; no runtime mutation.
+
+Visual fixtures can admit a verified public package while staying deliberately nonplayable; do not confuse harness media isolation with an all-catalogue audio prohibition. Catalogue verifier uses independent exact package proof/rights validation and reports actual exposed state. No production change.
+
+Primary review timeout: retain progressing Ubuntu/Playwright dependency diagnostics; a20min total job expired before review began. Give this job a bounded45min window while retaining all browser/review steps; no provider rerun or skipped gate.
+
+Exact Reader index fixture: publication metadata changes the whole-manifest hash without changing ordered chapters. Verify unchanged chapter identities/count against merged main, then pin the reviewed successor; retain all index assertions.76cases72subtests and51frontend contracts pass.
+
+Runtime regression consumers must distinguish broad legacy audio OFF from explicit protected package availability. Require exact public flags/mode/version and no direct media URL for the sole approved title; verify every other catalogue title remains hidden.52source projections and64UXstatic cases pass; hostedHTTP gates remain required.
+
+Primary review dependency diagnosis:45min still expired on progressing slow Azure Ubuntu downloads. Use the official Ubuntu archive on this disposable runner while retaining exact signed package selection and allthreebrowser checks; do not keep extending timeouts or blindly rerun. Local shell startup stalls can be isolated with /bin/sh login=false without changing credentials/settings.
+
+The same slow regional Ubuntu mirror also exhausted dark-premium and focused review dependency deadlines. Apply the qualified official archive selection to those two steps, retaining signed packages/three browsers and deadlines; do not rerun the old jobs or relax capture gates.
+
+Editorial capture readiness: pagewide networkidle can time out despite a rendered app. Require visible hydration/requestedroute and loaded fonts/logo with bounded waits; preserve error/focus/overflow checks and fail withoutretry when a required stage is missing.5modeled cases PASS; real hosted capture stillrequired.
+
+Publication metadata must survive the actual HTTP response model: pure catalogue projection tests did not catch PublicBookOut silently discarding the new safe delivery fields. Add response-model boundary regression before publicpromotion; keep internalpackage/receipt/rights fields and directmediaURL absent.55focused casesPASS; no paid session.
+
+BookDetail enrichment must recognize provider-private protected packages through exact canonical/manifest identity and approved QA, rather than treating omitted provider identity as an unreleased edition. Real public Book CTA acceptance is independent of direct Listener availability.44 targeted frontend tests PASS; no paid session.
+
+Actual audiobook Library filter acceptance is separate from Book CTA and Listener. Keep the legacy global audio switch false while respecting exact protected-package release allowlists; negative unrelated/malformed/held cases remain hidden.43focused testsPASS.
+
+## 2026-10-27 — Minimum international compliance preparation
+
+- A live payment API key is not evidence of international merchant acceptance, destination-tax treatment or completed provider acceptance. Record those separately and retain differing earlier observations.
+- Keep a short proposed first-country catalogue outside runtime rights registries until genuine exact-component decisions pass; original public-domain text does not automatically clear every edition layer.
+- With optional analytics disabled, suppress helper-created campaign/session storage as well as network delivery and Vercel measurement injection.
+- Enforce purchase geography at the backend before order creation, independently of the Reader exposure flag; preserve refund, verification and webhook paths.
+- Git worktree enumeration can stall on iCloud dataless HEAD metadata. Hydrate existing metadata rather than delete historical worktrees or bypass worktree protections.
+- Reuse the repository CI dependency install mode (`npm ci --legacy-peer-deps`) without changing the dependency lock. Local tests/build passed; full provider/HTTP financial acceptance and exact-head remote CI remain unproven.
+- Evidence and next integration action: `internal/legal/international_launch_20261027/README.md`.
+
+## Open Window Listener transport — 27 October 2026
+
+Natural media ending is not user pause: avoid an extra paused renewal before segment advancement. Playing cross-segment seeks require renewal before source assignment, with cancellation by newer intent. Backend StreamingResponse cannot deliver early bytes if its iterator reads1MiB or the frontend proxy buffers arrayBuffer; bound reads and pipe successful authorized segments with cancellation. Preserve no-store, territory, Range, cookies and denial semantics. Modern route tests must use real Requests and active immutable packages; archival provider URLs cannot override current public release gates. Billing candidates remain separate and no new paid playback is authorized.
+
+Synthetic historical installer tests need their own exact fixture-source binding, independent of frozen production pins. Confirm post-binding mutation rejection and restore production constants after each fixture. Never refresh stopped production installer authority merely to pass a transport-only regression.
+
+- 2026-10-27 PR570: a45minute hosted Mongo-group stall is not a passing test. Retain exact mandatory cases, bound fixture I/O and test-process waits, emit thread/case diagnostics, and verify real assertion failure and hung-child termination stay nonzero. See no_pass_access_dummy_audit_20261027.md; no production or paid playback acceptance inferred.
+
+- 2026-10-27 named operator policy: reuse the verified accepted contact notice in both React and generated legal output. Role acceptance resolves the named-contact fact, not mailbox delivery, processor/retention operations, accountant treatment or release-controller authority. Evidence: internal/legal/international_launch_20261027/operator-policy-followup.md.
+
+- 2026-10-27 India release preparation: verify squash review by exact root equality and actual checks; preserve distinct controller/artifact roles. Current frontend lacks purchase signing, so backend-first fails legitimate India orders. Provider rollback capability does not prove the old artifact preserves new territory controls. See internal/legal/india_release_preflight.md. No dispatch or paid session.
+
+- India transition preparation must reject backend-first ordering and incompatible rollback, stop on unknown writes, and never turn modeled stage completion into provider or deployment approval. Actual guarded rollback artifact qualification remains separate.

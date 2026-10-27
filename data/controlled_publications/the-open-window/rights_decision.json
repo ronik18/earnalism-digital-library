@@ -1,21 +1,41 @@
 {
-  "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
-  "edition_id": "the-open-window",
-  "operator_id": "reo-enterprise",
-  "status": "ACCEPTED",
+  "accepted_by": "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.",
+  "basis": "Prospective exact-binding successor for the owner-approved revised Canva front/back cover pair, hashes ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc and 05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a. Direct owner instruction in the integration chat authorizes publishing this approved pair after QA. Genuine admin-intake identities, remote full-byte equality and the existing canonical promoter bind these exact assets; cover_approval_evidence records their immutable versions and rollback pointers. Existing India reader/source permissions, operator and expiry are preserved. Historical cover_provenance and prior decisions remain history, not evidence of a new review. No new audio permission, external signature, other edition, or production cover observation is inferred.; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted.",
   "components": {
-    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
-    "publication_manifest": "605ed01af369f954d266661677ae89ded55bb74cd16e288b882169781b15b521",
-    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
-    "approval_evidence": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085",
-    "public_book": "15e0b753e73e7fc56c3948ffd6e660ab4991ffed0e337c648b3ae3b973b19cf2",
-    "checksum_manifest": "66fe7d2b6d1cabc1a638d51c7ecc98814090ca088ed6e4668219d239467cc88e",
-    "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
-    "publication_authorization": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
     "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
-    "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+    "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+    "approval_evidence": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0",
+    "checksum_manifest": "37386b6707ce76d100f038c791af8161e2e5b14ccbabbe1d0d3c17daa7d22be5",
+    "cover_approval_evidence": "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa",
+    "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+    "public_book": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955",
+    "publication_authorization": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+    "publication_manifest": "9b486c66a07f4a37cee4ecb18c8d19f46c9227a3def3e18b7192545e11a35ba3",
+    "reader_manifest": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
   },
+  "conditions_satisfied": true,
+  "decision_id": "india-20261026-the-open-window-protected-package-publication",
+  "edition_id": "the-open-window",
+  "evidence_sha256": [
+    "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+    "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+    "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+    "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+    "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa",
+    "a01c6ad38b5177d7ddef594dc7749b35939e983a19a5c94e04ccda6bc6f224e4",
+    "172d0c9f90a26e670d54760228b4df8458b536e64d77dbcc298016f85c17e41c"
+  ],
+  "operator_id": "reo-enterprise",
+  "schema_version": "earnalism.rights-decision.v1",
+  "status": "ACCEPTED",
   "territories": [
     "IN"
   ],
@@ -27,20 +47,6 @@
     "reading_pass_session",
     "reading_pass_renewal"
   ],
-  "valid_from": "2026-10-03T04:59:53.954767+00:00",
-  "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
-  "evidence_sha256": [
-    "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
-    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
-    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
-    "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
-    "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
-    "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
-    "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
-    "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
-    "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
-  ],
-  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
-  "conditions_satisfied": true
+  "valid_from": "2026-10-26T10:31:39.675201+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00"
 }

@@ -39,6 +39,19 @@ const CONTROLLED_LAUNCH = JSON.parse(fs.readFileSync("data/controlled_launch.jso
 const PUBLIC_READER_EXPOSURE_ENABLED = CONTROLLED_LAUNCH.public_reader_exposure_enabled === true;
 const LIVE_APPROVED_SLUGS = new Set(Array.isArray(CONTROLLED_LAUNCH.live_approved_slugs) ? CONTROLLED_LAUNCH.live_approved_slugs : []);
 
+function reviewedProtectedPackage(book, publication) {
+  const marker = book.audiobook_public_package_approval || {};
+  const descriptor = book.audiobook_active_release?.active_release_descriptor_sha256;
+  return (CONTROLLED_LAUNCH.protected_package_public_slugs || []).includes(book.slug)
+    && book.audiobook_release_mode === "PROTECTED_PACKAGE_V2"
+    && marker.status === "PUBLIC_APPROVED" && marker.slug === book.slug
+    && marker.release_descriptor_sha256 === descriptor
+    && marker.endpoint === `/api/reader/book/${book.slug}/audiobook/manifest`
+    && publication.audio_release?.delivery_mode === "PROTECTED_PACKAGE_V2"
+    && publication.audio_release?.status === "APPROVED"
+    && publication.audio_release?.publication_acceptance_sha256 === marker.acceptance_sha256;
+}
+
 function loadReleaseSafeBookFixtures() {
   if (!PUBLIC_READER_EXPOSURE_ENABLED || !LIVE_APPROVED_SLUGS.size) return [];
   return [...LIVE_APPROVED_SLUGS].sort().map((slug) => {
@@ -48,10 +61,12 @@ function loadReleaseSafeBookFixtures() {
     const publicationManifest = JSON.parse(fs.readFileSync(`${directory}/publication_manifest.json`, "utf8"));
     if (book.slug !== slug || readerManifest.slug !== slug || publicationManifest.slug !== slug
       || publicationManifest.reader_release?.status !== "APPROVED" || publicationManifest.reader_release?.exposed !== true
-      || publicationManifest.audio_release?.exposed === true || readerManifest.audio_enabled === true
-      || readerManifest.audiobook_enabled === true || CONTROLLED_LAUNCH.audio_enabled_slugs?.includes(slug)) {
-      throw new Error(`Live review fixture ${slug} is not backed by the current text-only controlled publication authority.`);
+      || ((publicationManifest.audio_release?.exposed === true || readerManifest.audio_enabled === true
+        || readerManifest.audiobook_enabled === true) && !reviewedProtectedPackage(book, publicationManifest))
+      || CONTROLLED_LAUNCH.audio_enabled_slugs?.includes(slug)) {
+      throw new Error(`Live review fixture ${slug} is not backed by the current controlled publication authority.`);
     }
+    // Visual review stays nonplayable even when canonical package delivery is approved.
     return { ...book, publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, audio_enabled: false, audiobook_enabled: false, audiobook_assets: {}, audiobook: {} };
   });
 }

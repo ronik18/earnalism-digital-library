@@ -71,28 +71,22 @@ async def _create_indexes(database) -> None:
 
 @asynccontextmanager
 async def _isolated_database():
-    client = AsyncIOMotorClient(_mongo_uri(), serverSelectionTimeoutMS=5_000)
-    hello = await client.admin.command("hello")
-    if not hello.get("isWritablePrimary") or not hello.get("setName"):
-        client.close()
-        raise RuntimeError("reading-pass admission integration requires a writable replica-set primary")
-    database = client[f"rpadmit_it_{uuid.uuid4().hex}"]
-    previous_db, previous_client, previous_service = server.db, server.client, server.reading_pass_service
-    server.db = database
-    server.client = client
-    server.reading_pass_service = ReadingPassService(
-        db=database,
-        client=client,
-        config=server.READING_PASS_CONFIG,
-        token_secret=server.READING_PASS_TOKEN_SECRET,
-    )
-    try:
-        await _create_indexes(database)
-        yield database
-    finally:
-        await client.drop_database(database.name)
-        server.db, server.client, server.reading_pass_service = previous_db, previous_client, previous_service
-        client.close()
+    from scripts.uat_mongo_fixture import isolated_database
+    async with isolated_database('rpadmit_it_') as (client, database):
+        previous_db, previous_client, previous_service = server.db, server.client, server.reading_pass_service
+        server.db = database
+        server.client = client
+        server.reading_pass_service = ReadingPassService(
+            db=database,
+            client=client,
+            config=server.READING_PASS_CONFIG,
+            token_secret=server.READING_PASS_TOKEN_SECRET,
+        )
+        try:
+            await _create_indexes(database)
+            yield database
+        finally:
+            server.db, server.client, server.reading_pass_service = previous_db, previous_client, previous_service
 
 
 def _records(slug: str, version: str) -> list[dict]:

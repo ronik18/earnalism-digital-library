@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 CANONICAL_SITE_URL = "https://theearnalism.com"
-ACCESS_COPY = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch."
+ACCESS_COPY = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass."
 FORBIDDEN_COPY = (
     "Chapter 1 free", "First chapter free", "Chapter 1 is on us", "Preview chapter unlocked",
     "First 3 minutes free", "First 180 seconds free", "Free audiobook preview",

@@ -1,7 +1,7 @@
 {
   "schema": "reader-build-dependency-reference.v1",
   "scope": "Proposed exact observed Linux qualification reference; not release authorization",
-  "frontend_sha": "229df7f8b2cfb49a7f46215be3979608c39f7c33",
+  "frontend_sha": "b3998d72f2e93bd99ffb1563c906c77e78aa5b49",
   "package_json_sha256": "2b50494a6b1a60be49bfda6f3b61f913354623da8faae40a9218f17fa3a4020e",
   "package_lock_sha256": "69f65c689221b95a18d03531177bdd2b75ba6a3dd65b4c553e7f9de824911813",
   "runtime": {
@@ -48,5 +48,6 @@
     "retained_complete_run": 39183748275,
     "retained_complete_controller": "115800f3bbedfdbc23ac912eed5bdaa67c436823",
     "retained_complete_archive_sha256": "e09bb4aa48aae818d055a6374089cb2a16852c2785b92348e5d4386a18100c83"
-  }
+  },
+  "dependency_resolution_reused_from_frontend_sha": "229df7f8b2cfb49a7f46215be3979608c39f7c33"
 }

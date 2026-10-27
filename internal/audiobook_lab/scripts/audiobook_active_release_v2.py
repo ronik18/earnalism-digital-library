@@ -702,6 +702,16 @@ def validate_qa_candidate_release_descriptor(
             raise ReleasePointerError(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
+    candidate = descriptor.get("release_candidate_evidence")
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2"):
+        try:
+            try:
+                from .open_window_successor_acceptance import validate as validate_successor, SuccessorAcceptanceError
+            except ImportError:
+                from open_window_successor_acceptance import validate as validate_successor, SuccessorAcceptanceError
+            return validate_successor(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except SuccessorAcceptanceError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if (
         descriptor.get("release_candidate_status")
         != "QA_PASSED_STORAGE_PENDING"
@@ -828,6 +838,8 @@ def validate_hidden_before_proof(
     slug: str,
     reference_time: str,
 ) -> dict[str, Any]:
+    if proof.get('schema_version') == 'audiobook_hidden_before_proof.v2':
+        return validate_hidden_before_proof_v2(proof, slug=slug, reference_time=reference_time)
     value = copy.deepcopy(dict(proof))
     expected_urls = {
         "reader_url": f"https://www.theearnalism.com/reader/{slug}",
@@ -865,6 +877,44 @@ def validate_hidden_before_proof(
         raise ReleasePointerError(
             "Hidden-before proof is incomplete, stale-shaped, or non-canonical"
         )
+    return value
+
+
+def validate_hidden_before_proof_v2(proof, *, slug, reference_time):
+    """Reading Pass authenticates manifest requests before checking package state.
+
+    A401alone is not hidden-audio proof. Bind public catalogue flags and observed
+    no-listen UI to the canonical proxy routes; native initial-slot validation
+    remains mandatory. Network silence is explicitly not claimed by this format.
+    """
+    value = copy.deepcopy(dict(proof))
+    expected = {
+        'schema_version': 'audiobook_hidden_before_proof.v2', 'slug': slug,
+        'status': 'PUBLIC_AUDIO_HIDDEN_AUTH_BOUNDARY_VERIFIED',
+        'reader_url': f'https://www.theearnalism.com/reader/{slug}',
+        'reader_http_status': 200,
+        'public_book_url': f'https://theearnalism.com/api/books/{slug}',
+        'public_book_http_status': 200,
+        'legacy_audio_url': f'https://theearnalism.com/api/reader/book/{slug}/audiobook',
+        'legacy_audio_http_status': 404,
+        'package_manifest_url': f'https://theearnalism.com/api/reader/book/{slug}/audiobook/manifest',
+        'package_manifest_http_status': 401, 'package_manifest_denial_code': 'AUTH_REQUIRED',
+        'public_audio_enabled': False, 'public_audiobook_enabled': False,
+        'public_audio_status': 'NOT_AVAILABLE', 'public_audio_url_present': False,
+        'browser_listen_control_count': 0,
+        'browser_audio_request_count': None,
+        'network_silence_claimed': False,
+    }
+    if any(value.get(k) != v for k, v in expected.items()):
+        raise ReleasePointerError('Authenticated-boundary hidden proof is incomplete or mismatched')
+    try:
+        checked = datetime.fromisoformat(value['checked_at'].replace('Z', '+00:00'))
+        reference = datetime.fromisoformat(reference_time.replace('Z', '+00:00'))
+        age = (reference-checked).total_seconds()
+        if age < 0 or age > 24*60*60 or not isinstance(value.get('browser_observation'), str) or not value['browser_observation'].strip():
+            raise ValueError()
+    except (KeyError, TypeError, ValueError):
+        raise ReleasePointerError('Authenticated-boundary hidden proof is stale or unobserved') from None
     return value
 
 
@@ -1782,6 +1832,23 @@ def activate_initial_release(
     return result
 
 
+def _validate_canary_title_author(context, descriptor, package):
+    public = context['public_book']
+    if descriptor.get('title') == public.get('title') and descriptor.get('author') == public.get('author'):
+        return
+    # The immutable, owner-adopted successor predates these optional descriptor
+    # display fields. Never rewrite its hash or generalize this exception.
+    if (descriptor.get('title') is None and descriptor.get('author') is None
+            and descriptor.get('book_uuid') == '74251b53-9e18-49fb-9fff-bb7c505633d4'
+            and (descriptor.get('release_candidate_evidence') or {}).get('acceptance_policy') == 'open_window_listened_successor.v2'
+            and sha256_bytes(canonical_json_bytes(descriptor)) == '028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2'
+            and public.get('slug') == 'the-open-window'
+            and public.get('title') == 'The Open Window' and public.get('author') == 'Saki'):
+        validate_qa_candidate_release_descriptor(descriptor, package, controlled_language=context['reader_manifest'].get('language'))
+        return
+    raise ReleasePointerError('QA-candidate title/author do not match controlled publication truth')
+
+
 def activate_new_title_package_canary(
     repo_root: Path,
     slug: str,
@@ -1857,15 +1924,7 @@ def activate_new_title_package_canary(
     _verify_controlled_checksums(context)
     _validate_reader_publication_truth(context, slug)
     _validate_initial_release_slot(context)
-    if (
-        release_descriptor.get("title")
-        != context["public_book"].get("title")
-        or release_descriptor.get("author")
-        != context["public_book"].get("author")
-    ):
-        raise ReleasePointerError(
-            "QA-candidate title/author do not match controlled publication truth"
-        )
+    _validate_canary_title_author(context, release_descriptor, package)
     operation_time = generated_at or utc_now()
     proof = validate_hidden_before_proof(
         hidden_before_proof,
@@ -1977,6 +2036,22 @@ def activate_new_title_package_canary(
         ],
         "generated_at": operation_time,
     }
+    editorial = (release_descriptor.get("release_candidate_evidence") or {})
+    successor_editorial = editorial.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2")
+    if successor_editorial:
+        # This descriptor already passed the independent adoption and rights gates.
+        # Do not turn editorial acceptance into a stored acoustic QA PASS.
+        canary["editorial_acceptance"] = {
+            "status": (editorial["status"] if editorial.get("acceptance_policy") == "open_window_listened_successor.v2"
+                       else "OWNER_ACCEPTED_UNCERTAINTY"),
+            "acoustic_pass_claimed": False,
+            "acceptance_representation_sha256": editorial["acceptance_representation_sha256"],
+            "remaining_lexical_uncertainty_units": copy.deepcopy(editorial["remaining_lexical_uncertainty_units"]),
+            "unit24_disposition": editorial["unit24_disposition"],
+        }
+    if successor_editorial and editorial.get("acceptance_policy") == "open_window_listened_successor.v2":
+        canary["editorial_acceptance"]["acceptance_policy"] = editorial["acceptance_policy"]
+        canary["editorial_acceptance"]["owner_local_qa"] = copy.deepcopy(editorial["owner_local_qa"])
     managed = _managed_values(
         packages=packages,
         evidence=evidence,
@@ -1990,10 +2065,12 @@ def activate_new_title_package_canary(
         "audiobook_package_canary": copy.deepcopy(canary),
         "audiobook_enabled": False,
         "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
-        "audio_qa_status": "QA_PASSED",
+        "audio_qa_status": None if successor_editorial else "QA_PASSED",
         "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
         "release_blockers": ["PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"],
     }
+    if successor_editorial:
+        approval_updates["audio_editorial_acceptance"] = copy.deepcopy(canary["editorial_acceptance"])
     result = mutate_mirrors(
         repo_root,
         slug,
@@ -2019,6 +2096,203 @@ def activate_new_title_package_canary(
         }
     )
     return result
+
+
+def validate_new_title_publication_acceptance(
+    *, descriptor, package_version, duration_ms, segment_ids,
+    playback_bytes, business_bytes, accounting_bytes, expected_proof_hashes,
+):
+    """Validate immutable production proof before a dedicated public promotion.
+
+    This does not mutate pointers, grant rights or enable discovery. Prior full
+    coverage is reusable for the same package; later billing acceptance remains
+    separate and cannot be inferred from wallet reconciliation alone.
+    """
+    require_sha256(descriptor, "public descriptor")
+    if not isinstance(expected_proof_hashes, dict) or set(expected_proof_hashes) != {"playback", "business", "accounting"}:
+        raise ReleasePointerError("Exact production proof identities are required")
+    payloads = {"playback": playback_bytes, "business": business_bytes, "accounting": accounting_bytes}
+    proofs = {}
+    for role, payload in payloads.items():
+        expected = require_sha256(expected_proof_hashes.get(role), role + " proof")
+        if sha256_bytes(payload) != expected:
+            raise ReleasePointerError(role + " production proof digest mismatch")
+        try:
+            document = json.loads(payload)
+        except (ValueError, TypeError):
+            raise ReleasePointerError(role + " production proof is invalid") from None
+        if not isinstance(document, dict):
+            raise ReleasePointerError(role + " production proof must be an object")
+        proofs[role] = document
+    playback, business, accounting = (proofs[k] for k in ("playback", "business", "accounting"))
+    ids = list(segment_ids)
+    if not ids or len(ids) != len(set(ids)) or type(duration_ms) is not int or duration_ms <= 0:
+        raise ReleasePointerError("Public package coverage identity is invalid")
+    coverage = playback.get("coverage") or []
+    timestamps = playback.get("timestamps") or []
+    for rows in (coverage, timestamps, playback.get("requests", [])):
+        if not isinstance(rows, list) or any(not isinstance(row, dict) for row in rows):
+            raise ReleasePointerError("Production proof rows are invalid")
+    if (playback.get("descriptor") != descriptor or playback.get("packageVersion") != package_version
+            or playback.get("durationMs") != duration_ms or playback.get("segmentCount") != len(ids)
+            or [row.get("segment") for row in coverage] != ids
+            or any(any(row.get(k) is not True for k in ("durationMatches", "ended", "startedFromBeginning")) for row in coverage)
+            or [row.get("segment") for row in timestamps] != ids
+            or any(row.get("http") != 200 or row.get("sha256Matches") is not True for row in timestamps)
+            or not any(row.get("http") == 206 for row in playback.get("requests", []))
+            or playback.get("ended") is not True or playback.get("sessionEndHTTP") != 200
+            or playback.get("pauseResumeSeekPass") is not True):
+        raise ReleasePointerError("Complete package playback proof is required")
+    if (business.get("status") != "PRODUCTION_SPEED_CONCURRENCY_AND_SERVER_BILLING_PASS"
+            or business.get("speedsObserved") != [1, 1.25, 1.5]
+            or business.get("secondClientStart") != {"http": 409, "code": "SESSION_ACTIVE_ELSEWHERE"}
+            or any(business.get(k) is not True for k in ("allServerClockIntervalsMatch", "pausedIntervalsDebitZero", "nonPlayingPriorIntervalsDebitZero", "balanceDifferenceMatchesDebit", "ended"))
+            or business.get("endHTTP") != 200 or business.get("simultaneousPaidPlayback") is not False):
+        raise ReleasePointerError("Production speed, conflict and billing proof is required")
+    if (accounting.get("status") != "DEPLOYED_ACCOUNTING_AND_AUTHENTICATED_USAGE_VERIFIED"
+            or accounting.get("fractionalRenewalRegressionPass") is not True
+            or accounting.get("authenticatedUsagePaginationPass") is not True
+            or accounting.get("sourceCommit") != accounting.get("deployedCommit")
+            or not re.fullmatch(r"[a-f0-9]{40}", str(accounting.get("sourceCommit") or ""))):
+        raise ReleasePointerError("Deployed accounting and authenticated usage acceptance is required")
+    return {"schema_version": "audiobook_public_package_acceptance.v1",
+        "release_descriptor_sha256": descriptor, "package_version": package_version,
+        "duration_ms": duration_ms, "segment_count": len(ids),
+        "production_proof_sha256": dict(expected_proof_hashes),
+        "accounting_commit": accounting["sourceCommit"], "public_activation_performed": False}
+
+
+def promote_new_title_package(
+    repo_root, slug, *, playback_bytes, business_bytes, accounting_bytes,
+    expected_proof_hashes, audio_rights, decision_id, approved_by,
+    generated_at=None, apply=False,
+):
+    """Dedicated proof-bound promotion, preserving hidden rollback and old rights.
+
+    No provider calls, uploads, credentials, wallet operations or lease creation.
+    Generic set_rollout continues to reject new-title canary advancement.
+    """
+    from protected_package_publication import protected_package_publication_valid
+    from publication_manifest import build_manifest, validate_manifest
+    from rights_decision_gate import record_sha256, load_audio_package_binding
+    import shutil
+    repo_root = Path(repo_root).resolve()
+    when = generated_at or utc_now()
+    if not approved_by or not decision_id or slug not in decision_id:
+        raise ReleasePointerError("Exact title publication authority identity is required")
+    with _release_lock(repo_root, slug):
+        context = load_mirrored_publication(repo_root, slug)
+        _verify_controlled_checksums(context)
+        book = copy.deepcopy(context["public_book"])
+        reader = copy.deepcopy(context["reader_manifest"])
+        approval = copy.deepcopy(context["approval_evidence"])
+        state = _state_from_publication(context, slug)
+        canary = book.get("audiobook_package_canary") or {}
+        if (not state or state.get("status") != "ACTIVE"
+                or canary.get("schema_version") != NEW_TITLE_CANARY_SCHEMA
+                or canary.get("status") != "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"):
+            raise ReleasePointerError("An existing new-title canary is required")
+        descriptor = state.get("candidate_release_descriptor_sha256")
+        package = (book.get("audiobook_packages") or {}).get(descriptor)
+        if not package:
+            raise ReleasePointerError("Exact staged candidate package is required")
+        package = validate_package_against_publication(package, context, slug=slug)
+        _eligible_evidence(book.get("audiobook_package_release_evidence") or {}, descriptor)
+        ids = [chunk["segment_id"] for track in package["tracks"] for chunk in track["chunks"]]
+        acceptance = validate_new_title_publication_acceptance(
+            descriptor=descriptor, package_version=package["package_version"],
+            duration_ms=package["duration_ms"], segment_ids=ids,
+            playback_bytes=playback_bytes, business_bytes=business_bytes,
+            accounting_bytes=accounting_bytes, expected_proof_hashes=expected_proof_hashes)
+        registry_path = repo_root / "backend/data/rights_decision_registry.json"
+        registry = read_json(registry_path)
+        require_sha256(audio_rights.get("canonical_sha256"), "accepted audio rights record")
+        if not isinstance(audio_rights.get("decision_id"), str) or not audio_rights["decision_id"]:
+            raise ReleasePointerError("Existing accepted audio rights decision identity is required")
+        if (audio_rights.get("territories") != ["IN"] or audio_rights.get("use") != "audio_stream"
+                or registry.get("accepted_records", {}).get(audio_rights.get("decision_id")) != audio_rights.get("canonical_sha256")
+                or audio_rights.get("decision_id") in registry.get("revoked_decision_ids", [])):
+            raise ReleasePointerError("Existing separately accepted India audio rights binding is required")
+        binding = load_audio_package_binding(slug, descriptor, registry_path)
+        if not binding or binding["decision_id"] != audio_rights["decision_id"] or binding["record_sha256"] != audio_rights["canonical_sha256"]:
+            raise ReleasePointerError("Exact package audio-use reference is required; Reader authority cannot substitute")
+        active = build_active_release_state(slug=slug, active_release_descriptor_sha256=descriptor,
+            retained_release_descriptor_sha256s=state["retained_release_descriptor_sha256s"])
+        marker = {"schema_version": "audiobook_protected_package_publication.v1", "status": "PUBLIC_APPROVED",
+            "slug": slug, "release_descriptor_sha256": descriptor,
+            "endpoint": f"/api/reader/book/{slug}/audiobook/manifest", "acceptance": acceptance,
+            "acceptance_sha256": sha256_bytes(json.dumps(acceptance,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()),
+            "audio_rights_decision_id": audio_rights["decision_id"],
+            "audio_rights_record_sha256": audio_rights["canonical_sha256"],
+            "approved_by": approved_by, "approved_at": when}
+        for document in (book, reader):
+            document.update({"audio_enabled": True, "audiobook_enabled": True,
+                "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
+                "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED", "audio_qa_status": "QA_PASSED",
+                "audiobook_active_release": active, "audiobook_release_descriptor_sha256": descriptor,
+                "audiobook_public_package_approval": marker})
+            document["audiobook_package_canary"] = {**canary, "status": "PUBLIC_PACKAGE_APPROVED",
+                "public_discovery_exposed": True, "rollout_percentage": 100}
+        approval.update({"audiobook_enabled": True, "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+            "audio_qa_status": "QA_PASSED", "endpoint_url": marker["endpoint"], "sync_tier": package.get("sync_tier")})
+        if not protected_package_publication_valid(book):
+            raise ReleasePointerError("Prepared protected package binding failed validation")
+        payloads = {"public_book.json": json_bytes(book), "reader_manifest.json": json_bytes(reader),
+                    "approval_evidence.json": json_bytes(approval)}
+        # Existing manifest generator, against an isolated copy; no live writes.
+        with tempfile.TemporaryDirectory(prefix="earnalism-package-publication-") as tmp:
+            folder = Path(tmp) / slug
+            shutil.copytree(context["dirs"][0], folder)
+            for name, payload in payloads.items(): (folder / name).write_bytes(payload)
+            manifest = build_manifest(folder, publish_approved=True, generated_at=when)
+        if validate_manifest(manifest) or manifest["reader_release"].get("exposed") is not True or manifest["audio_release"].get("exposed") is not True:
+            raise ReleasePointerError("Prepared publication manifest failed independent validation")
+        payloads["checksum_manifest.json"] = json_bytes(_checksum_document(context["checksum_manifest"], payloads, when))
+        payloads["publication_manifest.json"] = json_bytes(manifest)
+        prior_rights = read_json(context["dirs"][0] / "rights_decision.json")
+        if registry.get("accepted_records", {}).get(prior_rights.get("decision_id")) != record_sha256(prior_rights):
+            raise ReleasePointerError("Prior Reader decision must remain independently registered")
+        for name in ("public_book", "reader_manifest", "source_evidence", "approval_evidence", "checksum_manifest", "publication_manifest"):
+            if prior_rights.get("components", {}).get(name) != sha256_bytes((context["dirs"][0] / (name + ".json")).read_bytes()):
+                raise ReleasePointerError("Prior Reader artifact binding changed before promotion")
+        rights = copy.deepcopy(prior_rights)
+        if rights["decision_id"] == decision_id:
+            raise ReleasePointerError("Successor decision must preserve the old registered record")
+        rights["decision_id"] = decision_id
+        rights["basis"] = str(rights.get("basis") or "") + "; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted."
+        for name, payload in payloads.items():
+            component = name.removesuffix(".json")
+            if component in rights["components"]: rights["components"][component] = sha256_bytes(payload)
+        rights["evidence_sha256"] = list(prior_rights["evidence_sha256"]) + [sha256_bytes(json_bytes({"prior": record_sha256(prior_rights), "acceptance": marker["acceptance_sha256"]}))]
+        digest = record_sha256(rights)
+        accepted = registry.setdefault("accepted_records", {})
+        if decision_id in accepted:
+            raise ReleasePointerError("Successor decision already registered; reconcile without retry")
+        accepted[decision_id] = digest
+        payloads["rights_decision.json"] = json_bytes(rights)
+        bootstrap_path = repo_root / "backend/data/approved_reader_bootstrap.json"
+        bootstrap = read_json(bootstrap_path)
+        rows = [row for row in bootstrap["titles"] if row.get("slug") == slug]
+        if len(rows) != 1: raise ReleasePointerError("Exact Reader bootstrap row is required")
+        rows[0].update(decision_id=decision_id, record_sha256=digest)
+        changes = {folder / name: payload for folder in context["dirs"] for name, payload in payloads.items()}
+        changes.update({registry_path: json_bytes(registry), bootstrap_path: json_bytes(bootstrap)})
+        config_paths = [repo_root / root / "controlled_launch.json" for root in ("data", "backend/data")]
+        configs = [read_json(path) for path in config_paths]
+        if configs[0] != configs[1] or slug not in configs[0].get("live_approved_slugs", []):
+            raise ReleasePointerError("Mirrored live Reader allowlist is required")
+        config = configs[0]
+        # Leave the broad legacy audio switch unchanged; only this verified title.
+        config["protected_package_public_slugs"] = sorted(set(config.get("protected_package_public_slugs", [])) | {slug})
+        changes.update({path: json_bytes(config) for path in config_paths})
+        result = {"status": "PUBLIC_PACKAGE_SOURCE_PREPARED", "slug": slug, "descriptor": descriptor,
+            "applied": False, "files": {str(path.relative_to(repo_root)): sha256_bytes(payload) for path,payload in changes.items()},
+            "legacy_audio_switch_unchanged": True, "hidden_rollback_preserved": True}
+        if apply:
+            _atomic_replace_many(changes)
+            result.update(status="PUBLIC_PACKAGE_SOURCE_APPLIED_NOT_DEPLOYED", applied=True)
+        return result
+
 
 
 def set_rollout(
@@ -2633,6 +2907,16 @@ def build_parser() -> argparse.ArgumentParser:
         )
     new_title_canary.add_argument("--apply", action="store_true")
 
+    public_package = subparsers.add_parser("promote-new-title-public", help="Promote a new-title package only with exact production acceptance proofs.")
+    public_package.add_argument("--slug", required=True)
+    for role in ("playback", "business", "accounting"):
+        public_package.add_argument("--" + role + "-proof", type=Path, required=True)
+        public_package.add_argument("--expected-" + role + "-proof-sha256", required=True)
+    public_package.add_argument("--audio-rights", type=Path, required=True)
+    public_package.add_argument("--decision-id", required=True)
+    public_package.add_argument("--approved-by", required=True)
+    public_package.add_argument("--apply", action="store_true")
+
     rollout = subparsers.add_parser("rollout", help="Set 0/5/25 or promote at 100.")
     rollout.add_argument("--slug", required=True)
     rollout.add_argument("--percentage", type=int, choices=sorted(ROLLOUT_PERCENTAGES), required=True)
@@ -2784,6 +3068,16 @@ def main(argv: Sequence[str] | None = None) -> int:
                     ),
                     apply=args.apply,
                 )
+        elif args.command == "promote-new-title-public":
+            try:
+                proofs = {role: getattr(args, role + "_proof").read_bytes() for role in ("playback", "business", "accounting")}
+            except OSError:
+                raise ReleasePointerError("Required nonsecret production proof file is unavailable") from None
+            result = promote_new_title_package(args.repo_root.resolve(), args.slug,
+                **{role + "_bytes": payload for role, payload in proofs.items()},
+                expected_proof_hashes={role: getattr(args, "expected_" + role + "_proof_sha256") for role in proofs},
+                audio_rights=read_json(args.audio_rights), decision_id=args.decision_id,
+                approved_by=args.approved_by, apply=args.apply)
         elif args.command == "rollout":
             result = set_rollout(
                 args.repo_root.resolve(),

@@ -1,0 +1,948 @@
+{
+  "slug": "the-open-window",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "release_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+  "tracks": [
+    {
+      "chapter_id": "chapter-001",
+      "chunks": [
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063",
+              "size_bytes": 158637
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "ceb87735ffd14c50bb96bb58270cb8596777ce2044db9dea7114f87ddcf272a6",
+              "size_bytes": 478
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "0908e831c5e3b1d5c5c19eda9cda3cbc0f2139a0d6ec9edd5b5b2c3820a54b55",
+              "size_bytes": 337
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 0,
+          "duration_ms": 9840,
+          "end_paragraph": 0,
+          "end_word": 26,
+          "order": 0,
+          "segment_id": "paragraph-001",
+          "start_paragraph": 0,
+          "start_word": 0
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018",
+              "size_bytes": 357165
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "2f6819f8c4247513b5b8df67d8a9c97f7ad018fa19ae2b6a58795afccd970c60",
+              "size_bytes": 486
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "5f5d3470d8555a336c70340111022e112a23af05f808d0f04bf711d899b88ee3",
+              "size_bytes": 339
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 9840,
+          "duration_ms": 22236,
+          "end_paragraph": 1,
+          "end_word": 83,
+          "order": 1,
+          "segment_id": "paragraph-002",
+          "start_paragraph": 1,
+          "start_word": 27
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079",
+              "size_bytes": 402093
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "ffd8995caa3e1ba6ce259ca09b098f36de91f4a28dab8dc51cbbc4f015411cfb",
+              "size_bytes": 498
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "3baa6980bc52d5f82705d5620c1c689c4a764fa7b09e6698aed6a1acb2bbde70",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 32076,
+          "duration_ms": 25041,
+          "end_paragraph": 2,
+          "end_word": 153,
+          "order": 2,
+          "segment_id": "paragraph-003",
+          "start_paragraph": 2,
+          "start_word": 84
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5",
+              "size_bytes": 134445
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "70e473265b33a59b598b2f1ddac42f854028349e94534925439df5abfa316169",
+              "size_bytes": 491
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "8ee7947aab5afe2d9a3a243b4837554a9898c6397310e085992f63cac089af16",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 57117,
+          "duration_ms": 8317,
+          "end_paragraph": 3,
+          "end_word": 176,
+          "order": 3,
+          "segment_id": "paragraph-004",
+          "start_paragraph": 3,
+          "start_word": 154
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784",
+              "size_bytes": 124845
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "60e14e14abfcd508065685fdcfdffbbfc252c4c32c33dc5b358866ac19b6b898",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "af4cc9a1862f325d3d1ff8f3d930d1eb849e9a37b0d317579d67b4859c1892e1",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 65434,
+          "duration_ms": 7719,
+          "end_paragraph": 4,
+          "end_word": 198,
+          "order": 4,
+          "segment_id": "paragraph-005",
+          "start_paragraph": 4,
+          "start_word": 177
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3",
+              "size_bytes": 190125
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "b0c88edb00b998df21a0694b5d72ae0456abc916652b5c831a1c5f16be8d1149",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "c3d223d908cb52aba3d2fce1093b03fe46fbfb7627d38e572f007e0010983339",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 73153,
+          "duration_ms": 11792,
+          "end_paragraph": 5,
+          "end_word": 230,
+          "order": 5,
+          "segment_id": "paragraph-006",
+          "start_paragraph": 5,
+          "start_word": 199
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133",
+              "size_bytes": 58029
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "6deb191f733f7d087c9985fb896fadff5f7f4b0c72affdb523cbb49649b51501",
+              "size_bytes": 490
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "01101e5a7de35c6d30f6ed50434a396b8ec8afe2546f66773ebd8a1eb14dfdd2",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 84945,
+          "duration_ms": 3536,
+          "end_paragraph": 6,
+          "end_word": 241,
+          "order": 6,
+          "segment_id": "paragraph-007",
+          "start_paragraph": 6,
+          "start_word": 231
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c",
+              "size_bytes": 116397
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "e328250d7df49f170d1f179c49b875c40151e864be7a14a0186da274b1d9f510",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "2769f814a52673d4174e4d2f3e6d7558cdfd43e195c67548358ea8a646517d02",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 88481,
+          "duration_ms": 7183,
+          "end_paragraph": 7,
+          "end_word": 254,
+          "order": 7,
+          "segment_id": "paragraph-008",
+          "start_paragraph": 7,
+          "start_word": 242
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2",
+              "size_bytes": 202413
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "2bcdd43b045a74c7f224112e971ef66f3b6e9a00422caac5265e94ac9b31a3a8",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "dd79458742f910451dbc88431aeab89a0c4f5b30a51342d33622930618ddedb2",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 95664,
+          "duration_ms": 12568,
+          "end_paragraph": 8,
+          "end_word": 286,
+          "order": 8,
+          "segment_id": "paragraph-009",
+          "start_paragraph": 8,
+          "start_word": 255
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23",
+              "size_bytes": 122157
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "a5bbb340351a746652f98155cd4e05e1eaaa3da4cb66e760d6ccc78bb985583d",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "a069b2ecd03a48c5d58e4ce93bab8b1ddca937eaeb587442d71c359db3c3eb78",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 108232,
+          "duration_ms": 7557,
+          "end_paragraph": 9,
+          "end_word": 304,
+          "order": 9,
+          "segment_id": "paragraph-010",
+          "start_paragraph": 9,
+          "start_word": 287
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad",
+              "size_bytes": 134061
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "23775f254e40cfcc1e158920b50ccc645c6ba7b33921009d9cbc60b7ee88117f",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "cb33cb2acb9d1b60d8c4ef226fd836f4ed1bfc82fd2819d57db029e54f35e4b1",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 115789,
+          "duration_ms": 8288,
+          "end_paragraph": 10,
+          "end_word": 319,
+          "order": 10,
+          "segment_id": "paragraph-011",
+          "start_paragraph": 10,
+          "start_word": 305
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c",
+              "size_bytes": 239661
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "689077d49a07317fd2abb6d8eab5f51a6ded3d5a30cb80ec3161b91f749538ed",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "76c50380d6be2aa8de69ff971de9c91a656eb4fa4a6c5e7351f568f633123432",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 124077,
+          "duration_ms": 14889,
+          "end_paragraph": 11,
+          "end_word": 347,
+          "order": 11,
+          "segment_id": "paragraph-012",
+          "start_paragraph": 11,
+          "start_word": 320
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1",
+              "size_bytes": 174765
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "2db98bbf86aaa9c3d70f050cf3c9fefa1d34a58e29dfe401027865ccad0ca2c7",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "bb676a82d8ad414cd41bd633a2906e8dea98c2d0490da5540a322b78d129b60a",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 138966,
+          "duration_ms": 10836,
+          "end_paragraph": 12,
+          "end_word": 370,
+          "order": 12,
+          "segment_id": "paragraph-013",
+          "start_paragraph": 12,
+          "start_word": 348
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23",
+              "size_bytes": 1380141
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "8f329ebf5ceef64fd3af5e5d9b02297117ab4a247c7f32f7f35f8d44cbee3cd1",
+              "size_bytes": 534
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "cac27a7bbf102bbf617526ffcc63e861cb295b34097864f8286dcd9fdfe664d2",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 149802,
+          "duration_ms": 86163,
+          "end_paragraph": 13,
+          "end_word": 585,
+          "order": 13,
+          "segment_id": "paragraph-014",
+          "start_paragraph": 13,
+          "start_word": 371
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385",
+              "size_bytes": 171693
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "4622440fa37b6ae5526a9c9e83ff7da21827a8132186713f349be6a499b88390",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "bb994cb54e161c6de06c732c4ac27461cf3e47fe47428a9720d642c8ee82fabb",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 235965,
+          "duration_ms": 10635,
+          "end_paragraph": 14,
+          "end_word": 617,
+          "order": 14,
+          "segment_id": "paragraph-015",
+          "start_paragraph": 14,
+          "start_word": 586
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310",
+              "size_bytes": 69165
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "950abe1f75f73d3a112e792cc960acb9fec7dc2b6f424ba03a3f85546116197f",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "774c4bfd4de8c4249d3d8c3e720c9d210888223cc5458c6e7253f7b69590b949",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 246600,
+          "duration_ms": 4243,
+          "end_paragraph": 15,
+          "end_word": 626,
+          "order": 15,
+          "segment_id": "paragraph-016",
+          "start_paragraph": 15,
+          "start_word": 618
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec",
+              "size_bytes": 71469
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "24a43e50996775a87224e5fe8525feb19af54f93ab7de28e8584c4f3c4d42acf",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "a16dca40e69f5f43ef8da589461e1e5124c0aea03259b69ac2f3b6fe519d2dda",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 250843,
+          "duration_ms": 4379,
+          "end_paragraph": 16,
+          "end_word": 633,
+          "order": 16,
+          "segment_id": "paragraph-017",
+          "start_paragraph": 16,
+          "start_word": 627
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4",
+              "size_bytes": 312621
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "632f0b1c20b98bd07343dec2f3a56a6cdc8a95b40dc0f2c4497bb6f519ceafaa",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "fc2f4452946dc5c51eacf6ef9bda2f77be9adc58b63c9427e32e18e2014b54c7",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 255222,
+          "duration_ms": 19444,
+          "end_paragraph": 17,
+          "end_word": 687,
+          "order": 17,
+          "segment_id": "paragraph-018",
+          "start_paragraph": 17,
+          "start_word": 634
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9",
+              "size_bytes": 625197
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "ad4994c99052a17156163061f2da742e62ef58ed53cb696d128519f549a7b013",
+              "size_bytes": 513
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "2a43b74e42924321ee71653812284fbc29905a79e5cd8d1587de58958b048064",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 274666,
+          "duration_ms": 38977,
+          "end_paragraph": 18,
+          "end_word": 781,
+          "order": 18,
+          "segment_id": "paragraph-019",
+          "start_paragraph": 18,
+          "start_word": 688
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72",
+              "size_bytes": 483885
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "f9e2f2f473834e6fe80dfe3751477523aa40747227cd7e566476c7cc1f68a9be",
+              "size_bytes": 502
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "9f8508b262ad7a68a680b77fe7402974b15ac33ffb4129442b0219caa41a25df",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 313643,
+          "duration_ms": 30155,
+          "end_paragraph": 19,
+          "end_word": 849,
+          "order": 19,
+          "segment_id": "paragraph-020",
+          "start_paragraph": 19,
+          "start_word": 782
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2",
+              "size_bytes": 202413
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "2c704e8811cbe75772f6f31a989b231a6d0db982685367c4294a7af0a0849ee7",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "a20a9f488c8d21677a3e4d583f0d4455da27714df02649d86881aaf6d041c6b3",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 343798,
+          "duration_ms": 12555,
+          "end_paragraph": 20,
+          "end_word": 878,
+          "order": 20,
+          "segment_id": "paragraph-021",
+          "start_paragraph": 20,
+          "start_word": 850
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18",
+              "size_bytes": 115629
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "c2e883e13402cb0c3605da1b682d4376d3bcf7f8d792e41f514356943a944f73",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "c8d468cac3bea16fff4846b45684102ff71348282822f4374be22c749d18a8dc",
+              "size_bytes": 340
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 356353,
+          "duration_ms": 7141,
+          "end_paragraph": 21,
+          "end_word": 903,
+          "order": 21,
+          "segment_id": "paragraph-022",
+          "start_paragraph": 21,
+          "start_word": 879
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96",
+              "size_bytes": 308397
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "0cb22e591829b78caa1cc92ad1fedd44d19368550cb0ed81d48a37c765f8794d",
+              "size_bytes": 492
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "61ced41b6b7338b80b03c9280ca6aef35dfd5effa22678dfdb3ec1fbe4f3692b",
+              "size_bytes": 341
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 363494,
+          "duration_ms": 19187,
+          "end_paragraph": 22,
+          "end_word": 953,
+          "order": 22,
+          "segment_id": "paragraph-023",
+          "start_paragraph": 22,
+          "start_word": 904
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217",
+              "size_bytes": 436653
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "7d4441d07507bc9c999f6f3818d23714e982ea2333749b558f83163bbaa0734d",
+              "size_bytes": 503
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "5016b50daa456c79fff4dc66cff6696d65dd3780bfccbc19b617384967546fae",
+              "size_bytes": 342
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 382681,
+          "duration_ms": 27202,
+          "end_paragraph": 23,
+          "end_word": 1021,
+          "order": 23,
+          "segment_id": "paragraph-024",
+          "start_paragraph": 23,
+          "start_word": 954
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5",
+              "size_bytes": 247341
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "fec1a78e72903597837cce0f9af04c8bb17909e40ca10fa9ba9fa5eaaee64736",
+              "size_bytes": 495
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "99f1c9ac05caaa94a16c9d4d45e737dfcea7dc6ee741be41f44818c9511cb1c7",
+              "size_bytes": 343
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 409883,
+          "duration_ms": 15374,
+          "end_paragraph": 24,
+          "end_word": 1061,
+          "order": 24,
+          "segment_id": "paragraph-025",
+          "start_paragraph": 24,
+          "start_word": 1022
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5",
+              "size_bytes": 198957
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "6d708ee8a83455d439ec2eabd62b0267dce7ebfb815ea9300521c0d6f67b4b3d",
+              "size_bytes": 496
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "d20a3a4fa3806e3fe423b8fc8078959e3f835d6e4ccc4f06296b7079b996dc73",
+              "size_bytes": 343
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 425257,
+          "duration_ms": 12360,
+          "end_paragraph": 25,
+          "end_word": 1095,
+          "order": 25,
+          "segment_id": "paragraph-026",
+          "start_paragraph": 25,
+          "start_word": 1062
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4",
+              "size_bytes": 275757
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "27e7cd4137877a46a60ee876922a30b5efccfef53776e789743eaf8c2976ad72",
+              "size_bytes": 496
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "433083801cf9db5edfe0081b91939855edee4dbda8469f209bcc2c1888000320",
+              "size_bytes": 343
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 437617,
+          "duration_ms": 17140,
+          "end_paragraph": 26,
+          "end_word": 1132,
+          "order": 26,
+          "segment_id": "paragraph-027",
+          "start_paragraph": 26,
+          "start_word": 1096
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96",
+              "size_bytes": 518445
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "a07d5679b2c9508aea2f4358b4d1c405beea01dfaa73d76a01954593ab60a0a4",
+              "size_bytes": 506
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "cd8d59113d4b8d554c13d90e33c19f52201b420b7c4c24318d72dfbae3262317",
+              "size_bytes": 343
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 454757,
+          "duration_ms": 32306,
+          "end_paragraph": 27,
+          "end_word": 1200,
+          "order": 27,
+          "segment_id": "paragraph-028",
+          "start_paragraph": 27,
+          "start_word": 1133
+        },
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9",
+              "size_bytes": 71469
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "6b56a2c5b5f3aae0620bc2795cd7954b4819b2f8194c10fb0a411a277ad0dda5",
+              "size_bytes": 496
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "a06ebb9d1481a0c0dbf4ef29a2190195b313a822f37fcf06df8c708cc049551c",
+              "size_bytes": 342
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "dc56d88ee85c2b985d391e4a8a4a9366b10f9d2eaf1452d54cc757a0b71e018a",
+              "size_bytes": 93
+            }
+          },
+          "cumulative_start_ms": 487063,
+          "duration_ms": 4373,
+          "end_paragraph": 28,
+          "end_word": 1207,
+          "order": 28,
+          "segment_id": "paragraph-029",
+          "start_paragraph": 28,
+          "start_word": 1201
+        }
+      ],
+      "end_paragraph": 28,
+      "end_word": 1207,
+      "id": "chapter-001",
+      "order": 0,
+      "start_paragraph": 0,
+      "start_word": 0,
+      "title": "The Open Window"
+    }
+  ]
+}

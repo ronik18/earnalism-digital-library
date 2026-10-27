@@ -1,0 +1,92 @@
+{
+  "schema": "earnalism.international-launch-proposal.v1",
+  "date": "2026-10-27",
+  "base_sha": "af4f9d0f6df1103e18032d9ccd71059d0216d9de",
+  "live_international_catalogue": [],
+  "proposal": [
+    {
+      "slug": "a-ghost-story",
+      "proposed_first_overseas_territories": [
+        "US"
+      ],
+      "proposed_formats": [
+        "reader_text"
+      ],
+      "audio_included": false,
+      "status": "PROPOSAL_NOT_RUNTIME_AUTHORITY",
+      "underlying_text_assessment": "US_PUBLIC_DOMAIN_ON_RETAINED_PUBLICATION_FACTS",
+      "assessment_basis": "Original English US work first published 1875; author death 1910. The retained original text predates the maximum 95-year US publication term. This assessment does not clear a separate modern editorial, translation or image layer.",
+      "primary_law": "https://www.copyright.gov/circs/circ15a.pdf",
+      "source_url_internal_only": "https://www.gutenberg.org/ebooks/3189",
+      "existing_accepted_territories": [
+        "IN"
+      ],
+      "existing_decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+      "retained_cover_evidence": "Existing owner-created cover and approval evidence retained; no new cover generation or substitute asset. Exact-edition territorial successor still required.",
+      "components_sha256": {
+        "source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+        "rights_decision.json": "639a1f71368c6a7b2d302817d837f4af3c10aa76ef87dd2df1a69e92d59dd36d",
+        "public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+        "reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
+        "publication_manifest.json": "844c91506e2daab00b2924d52a4e53674bbe5457beb7b9517ccfb92927b975a0",
+        "checksum_manifest.json": "ec621b22d7c947a58369b4abd1ad0d28a8755c660e2c7e9c74aa541bfdc1a190",
+        "cover_approval_evidence.json": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd"
+      },
+      "root_runtime_parity": {
+        "rights_decision.json": false,
+        "public_book.json": true,
+        "reader_manifest.json": true
+      },
+      "remaining_gates": [
+        "Accept a genuine exact-component US rights successor through the existing reviewer/admin workflow; preserve previous IN decision and hashes.",
+        "Qualify US-specific privacy/consumer requirements and state sales-tax nexus before purchases.",
+        "Obtain merchant international acceptance and scoped provider/payment proof.",
+        "Qualify region-aware catalogue, preview and protected delivery; existing IN allowlists remain closed.",
+        "Required exact-head CI, review, merged-main manual deployment and production customer acceptance."
+      ]
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "proposed_first_overseas_territories": [
+        "US"
+      ],
+      "proposed_formats": [
+        "reader_text"
+      ],
+      "audio_included": false,
+      "status": "PROPOSAL_NOT_RUNTIME_AUTHORITY",
+      "underlying_text_assessment": "US_PUBLIC_DOMAIN_ON_RETAINED_PUBLICATION_FACTS",
+      "assessment_basis": "Original English US work first published 1843; author death 1849. The retained original text predates the maximum 95-year US publication term. This assessment does not clear a separate modern editorial, translation or image layer.",
+      "primary_law": "https://www.copyright.gov/circs/circ15a.pdf",
+      "source_url_internal_only": "https://www.gutenberg.org/ebooks/2148",
+      "existing_accepted_territories": [
+        "IN"
+      ],
+      "existing_decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+      "retained_cover_evidence": "Existing owner-created cover and approval evidence retained; no new cover generation or substitute asset. Exact-edition territorial successor still required.",
+      "components_sha256": {
+        "source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+        "rights_decision.json": "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd",
+        "public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+        "reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+        "publication_manifest.json": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+        "checksum_manifest.json": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
+        "cover_approval_evidence.json": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e"
+      },
+      "root_runtime_parity": {
+        "rights_decision.json": true,
+        "public_book.json": true,
+        "reader_manifest.json": true
+      },
+      "remaining_gates": [
+        "Accept a genuine exact-component US rights successor through the existing reviewer/admin workflow; preserve previous IN decision and hashes.",
+        "Qualify US-specific privacy/consumer requirements and state sales-tax nexus before purchases.",
+        "Obtain merchant international acceptance and scoped provider/payment proof.",
+        "Qualify region-aware catalogue, preview and protected delivery; existing IN allowlists remain closed.",
+        "Required exact-head CI, review, merged-main manual deployment and production customer acceptance."
+      ]
+    }
+  ],
+  "other_titles": "Existing territorial scope unchanged; not evaluated for international activation.",
+  "runtime_authorization": false
+}

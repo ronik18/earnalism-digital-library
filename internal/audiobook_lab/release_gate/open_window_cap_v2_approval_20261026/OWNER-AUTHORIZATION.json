@@ -1,0 +1,15 @@
+{
+  "status": "OWNER_APPROVED_EXECUTION_SUBJECT_TO_GATES",
+  "recordedAtIST": "2026-10-26T01:59:43.114008+05:30",
+  "authority": "Direct owner message approving frozen V2 deployment, fence/recovery and installation only if all gates pass.",
+  "sourceSetSHA256": "635ebcbb2acc5c40c013521f00be7e2e8b0e13fc39c38c7109dde5b5ff522f7f",
+  "maximumBackendDeployments": 1,
+  "maximumStops": 1,
+  "maximumRestarts": 1,
+  "maximumInstallations": 1,
+  "paidSessionAuthorization": false,
+  "maximumAuthorizedActualDebitSeconds": 0,
+  "automaticDeployments": "MUST_REMAIN_OFF",
+  "privateCredentialsIncluded": false,
+  "productionPerformed": false
+}

@@ -5,6 +5,7 @@ import datetime as dt
 from contextlib import redirect_stdout
 from unittest.mock import patch
 from scripts import verify_reader_alias_bindings as gate
+from scripts import reader_existing_promotion as retained_runner
 import copy
 import datetime
 import json
@@ -226,11 +227,17 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_frontend_only_environment_hold_follows_real_backend_verification(self):
-        regression = SOURCE.split('  deploy_frontend:', 1)[0]
+        regression = SOURCE.split('  backend_verify:', 1)[1].split('  deploy_frontend:', 1)[0]
         deploy = SOURCE.split('  deploy_frontend:', 1)[1].split('  frontend_production_canary:', 1)[0]
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
         self.assertIn('    environment: reader-frontend-production\n', deploy)
-        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 1)
+        self.assertEqual(SOURCE.count('environment: reader-frontend-production'), 2)
+        readonly = SOURCE.split('  vercel_access_readonly:', 1)[1].split('  backend_verify:', 1)[0]
+        self.assertIn('inputs.access_check_only == true', readonly)
+        self.assertIn("inputs.confirm_production == 'READ_ONLY_VERCEL_ACCESS'", readonly)
+        self.assertIn('readonly_access_check()', readonly)
+        self.assertNotIn('vercel deploy', readonly)
+        self.assertNotIn('conditional_promotion(', readonly)
         self.assertNotIn('    environment:', regression)
         self.assertNotIn('    environment:', canary)
         self.assertIn("github.event_name == 'workflow_dispatch'", deploy)
@@ -254,7 +261,9 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertIn("'build','--prod','--yes'", public_builder)
         self.assertIn('cwd=root,env=env', public_builder)
         self.assertIn('args=(deploy --prebuilt --prod', deploy)
-        self.assertIn('python3 scripts/post_deploy_static_seo_canary.py', canary)
+        self.assertIn('python3 scripts/reader_alias_canaries.py', canary)
+        self.assertIn('--focused-smoke', canary)
+        self.assertNotIn('continue-on-error', canary)
         self.assertIn('bash scripts/run_pr_regression.sh', REGRESSION)
         self.assertIn('scripts/verify_vercel_packaging.py\" --root "$FRONTEND_DIR" --manifest', deploy)
         self.assertNotIn("github.event_name == 'push'", SOURCE)
@@ -297,12 +306,12 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
             self.assertEqual(subprocess.run(['bash', '-n'], input=step_script(name), text=True, capture_output=True).returncode, 0)
 
     def test_actual_workflow_pins_are_not_dispatch_selectable(self):
-        self.assertIn('  FRONTEND_SHA: 229df7f8b2cfb49a7f46215be3979608c39f7c33', SOURCE)
-        self.assertIn('  FRONTEND_TREE: bfb13b76ce59cf71df9a1e8a76032f7803d8e3b6', SOURCE)
-        self.assertIn('  FRONTEND_REVIEW_SHA: 1e8a662cb3152c223dc4f4a8a64aeb3fe59c3017', SOURCE)
+        self.assertIn('  FRONTEND_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49', SOURCE)
+        self.assertIn('  FRONTEND_TREE: 8708ec1a1d506fdf3c5e6af1dde6face3a98c1a1', SOURCE)
+        self.assertIn('  FRONTEND_REVIEW_SHA: b3998d72f2e93bd99ffb1563c906c77e78aa5b49', SOURCE)
         self.assertIn('  FRONTEND_BASELINE_SHA: b2abea1c85cf5b38f248e4af4f3523e0ce1e7252', SOURCE)
-        self.assertIn('  BACKEND_SHA: fda9d5b4a4618447ef75026edf17bba7f28f0c83', SOURCE)
-        self.assertIn('  BACKEND_TREE: 94257b759e47705fb16b10a2fbe1aabd28d3347c', SOURCE)
+        self.assertIn('  BACKEND_SHA: 0f2bb1e728890f1f0e41ded9b12f07c76246bce0', SOURCE)
+        self.assertIn('  BACKEND_TREE: 2c7b9ce0f219ebdf12129bdcf4dd3faf07e22af5', SOURCE)
         self.assertEqual(SOURCE.count('--expected-sha "$BACKEND_SHA"'), 3)
         self.assertNotIn('--expected-sha "$TARGET_SHA"', SOURCE)
         canary = SOURCE.split('  frontend_production_canary:', 1)[1]
@@ -310,6 +319,25 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         self.assertNotIn('ref: ${{ env.FRONTEND_SHA }}', canary)
         self.assertIn('contents: read\n  actions: read', SOURCE)
         self.assertNotIn('contents: write', SOURCE)
+
+    def test_caller_contract_binds_existing_builders_and_reuses_exact_dependencies(self):
+        from scripts.frontend_public_build import F
+        from scripts.qualify_frontend_build_only import FRONTEND_SHA
+        workflow = parse_workflow(SOURCE)
+        self.assertEqual(F, workflow['env']['FRONTEND_SHA'])
+        self.assertEqual(FRONTEND_SHA, F)
+        self.assertEqual(gate.CALLER_FRONTEND, F)
+        self.assertEqual(gate.CALLER_BACKEND, workflow['env']['BACKEND_SHA'])
+        reference = json.loads((ROOT/'scripts/frontend_build_dependency_reference.json').read_text())
+        self.assertEqual(reference['frontend_sha'], F)
+        self.assertEqual(reference['dependency_resolution_reused_from_frontend_sha'],
+                         '229df7f8b2cfb49a7f46215be3979608c39f7c33')
+        for name,key in [('package.json','package_json_sha256'),('package-lock.json','package_lock_sha256')]:
+            # Shallow PR CI need not fetch historical objects. The retained
+            # reviewed digests bind these exact manifests; real qualification
+            # separately checks out immutable F with full history.
+            new = (ROOT/'frontend'/name).read_bytes()
+            self.assertEqual(hashlib.sha256(new).hexdigest(), reference[key])
 
     def test_canary_checkout_executes_controller_instead_of_frontend_revision(self):
         job = parse_workflow(SOURCE)['jobs']['frontend_production_canary']
@@ -421,7 +449,7 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
                 'project_id': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607', 'root_directory': 'frontend',
                 'config_path': 'frontend/vercel.json',
                 'config_sha256': '3fe071e9df7825404e57800dfaaebba611c190f62548836f5242ae336fc76a3b',
-                'git_deployment_enabled': False, 'rollback_deployment': 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf',
+                'git_deployment_enabled': False, 'rollback_deployment': 'dpl_5nrp6vYYMZurfhVde1Jbu3aofsfB',
                 'rollback_method': 'vercel-instant-rollback', 'rollback_eligible': True,
                 'frontend_backend_config_compatible': True, 'no_backend_restart': True, 'approved': True,
                 'rollback_artifact_sha256': 'a' * 64, 'rollback_config_sha256': 'b' * 64,
@@ -433,11 +461,24 @@ class ManualReleaseWorkflowTests(unittest.TestCase):
         gate = 'Verify operator config and rollback approval'
         self.assertNotEqual(self.execute(gate).returncode, 0)
         valid = self.approval()
+        valid['vercel_preflight_sha256'] = 'd' * 64
+        self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path = self.root / 'vercel-preflight.json'
+        synthetic = {'status': 'READ_ONLY_ACCESS_PASS', 'snapshot_sha256': 'd' * 64,
+                     'observed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+        preflight_path.write_text(json.dumps(synthetic))
         self.assertEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        for altered in ({**synthetic, 'snapshot_sha256': 'e'*64},
+                        {**synthetic, 'observed_at_utc': '2000-01-01T00:00:00+00:00'},
+                        {**synthetic, 'status': 'FAIL'}):
+            preflight_path.write_text(json.dumps(altered))
+            self.assertNotEqual(self.execute(gate, RELEASE_APPROVAL_JSON=json.dumps(valid)).returncode, 0)
+        preflight_path.write_text(json.dumps(synthetic))
         for key, value in [('approved', False), ('controller_sha', '0' * 40), ('frontend_sha', self.sha),
                            ('backend_sha', self.frontend), ('frontend_tree', '0' * 40),
                            ('root_directory', ''), ('git_deployment_enabled', True),
                            ('rollback_eligible', False), ('rollback_eligible', 'true'),
+                           ('rollback_deployment', 'dpl_6hzaPakeBuma2y4JB6CGyngzCKJf'),
                            ('rollback_operator', ''), ('rollback_artifact_sha256', '0' * 64),
                            ('rollback_config_sha256', ''), ('operator_evidence_sha256', 'bad'),
                            ('no_backend_restart', False), ('frontend_backend_config_compatible', False),
@@ -759,6 +800,551 @@ class WorkflowContextAvailabilityTests(unittest.TestCase):
         self.assertEqual(environment_context_errors(workflow), [])
 
 
+class RetainedPromotionRunnerTests(unittest.TestCase):
+    def test_recovery_already_satisfied_never_posts_and_reports_protected_alias(self):
+        calls = []
+        def request(path, method, timeout, env):
+            calls.append(method)
+            if '/aliases/' in path:
+                host = path.rsplit('/', 1)[1]
+                return {'alias': host, 'projectId': gate.PROJECT,
+                        'deploymentId': gate.RETAINED_READY if host == gate.PROTECTED_HOST else gate.ROLLBACK}
+            if '/v13/' in path:
+                return {'id': gate.ROLLBACK, 'projectId': gate.PROJECT, 'ownerId': gate.TEAM,
+                        'target': 'production', 'readyState': 'READY',
+                        'meta': {'githubCommitSha': 'd79acb1952161cd56395e9bb4d7c1001ceaa69bb'}}
+            return {'id': gate.PROJECT, 'accountId': gate.TEAM,
+                    'targets': {'production': {'id': gate.ROLLBACK}}}
+        report = retained_runner.recovery({}, request=request)
+        self.assertFalse(report['rollback_post_allowed'])
+        self.assertFalse(report['all_four_restored'])
+        self.assertEqual(calls, ['GET'] * 6)
+
+    def test_recovery_uncertain_post_resolves_without_retry(self):
+        for terminal in ('succeeded', 'pending', 'failed', 'foreign'):
+            calls = []
+            with tempfile.TemporaryDirectory() as root:
+                def request(path, method, timeout, env):
+                    posts = calls.count('POST')
+                    calls.append(method)
+                    if method == 'POST': raise TimeoutError('synthetic lost acknowledgement')
+                    if '/aliases/' in path:
+                        host = path.rsplit('/', 1)[1]
+                        return {'alias': host, 'projectId': gate.PROJECT,
+                                'deploymentId': gate.ROLLBACK if posts else gate.RETAINED_READY}
+                    if '/v13/' in path:
+                        return {'id': gate.ROLLBACK, 'projectId': gate.PROJECT, 'ownerId': gate.TEAM,
+                                'target': 'production', 'readyState': 'READY',
+                                'meta': {'githubCommitSha': 'd79acb1952161cd56395e9bb4d7c1001ceaa69bb'}}
+                    return {'id': gate.PROJECT, 'accountId': gate.TEAM,
+                            'targets': {'production': {'id': gate.ROLLBACK if posts else gate.RETAINED_READY}},
+                            'lastAliasRequest': {'type': 'rollback', 'toDeploymentId':
+                                'dpl_foreign' if terminal == 'foreign' else gate.ROLLBACK,
+                                'jobStatus': terminal} if posts else None}
+                if terminal == 'succeeded':
+                    report = retained_runner.recovery({'RUNNER_TEMP': root}, request=request,
+                                                       clock=lambda: 0, pause=lambda _: None)
+                    self.assertFalse(report['rollback_post_allowed'])
+                else:
+                    with self.assertRaises(ValueError):
+                        retained_runner.recovery({'RUNNER_TEMP': root}, request=request,
+                                                  clock=lambda: 0, pause=lambda _: None)
+                self.assertEqual(calls.count('POST'), 1)
+                self.assertLessEqual(calls.count('GET'), 36)  # six prerequisite reads +30 resolution maximum
+
+    def test_expired_promotion_smoke_window_makes_no_request(self):
+        with tempfile.TemporaryDirectory() as root:
+            with self.assertRaises(ValueError):
+                retained_runner.focused_smoke(dt.datetime(2020, 1, 1, tzinfo=dt.timezone.utc),
+                                              Path(root) / 'smoke.json', opener=object())
+            self.assertFalse((Path(root) / 'smoke.json').exists())
+
+    def test_promotion_source_confirmation_and_opt_in_are_required(self):
+        # Real shell source gate, bounded synthetic repository; no provider.
+        fixture = ManualReleaseWorkflowTests('test_exact_main_and_confirmation_admit_clean_checkout')
+        fixture.setUp()
+        try:
+            for confirm, opt, success in [('PROMOTE_EXISTING_READY', 'true', True),
+                                           ('DEPLOY_PRODUCTION', 'true', False),
+                                           ('PROMOTE_EXISTING_READY', 'false', False)]:
+                result = fixture.execute('Verify manual release authorization and clean source',
+                    PROMOTION_ONLY='true', CONFIRM_PRODUCTION=confirm, CONDITIONAL_PROMOTION=opt)
+                self.assertEqual(result.returncode == 0, success, result.stderr)
+        finally:
+            fixture.doCleanups()
+
+
+class RollbackDispositionTests(unittest.TestCase):
+    def test_public_restoration_skips_mutation_and_reports_protected_separately(self):
+        for protected in (gate.ROLLBACK, "dpl_new"):
+            p, rows, target = self.fixture()
+            rows[gate.PROTECTED_HOST]["deploymentId"] = protected
+            result = gate.rollback_disposition(p, rows, target, "dpl_new")
+            self.assertEqual(result["status"], "PUBLIC_RESTORATION_ALREADY_SATISFIED")
+            self.assertFalse(result["rollback_post_allowed"])
+            self.assertEqual(result["all_four_restored"], protected == gate.ROLLBACK)
+
+    def fixture(self):
+        return ({"id": gate.PROJECT, "accountId": gate.TEAM,
+                 "targets": {"production": {"id": gate.ROLLBACK}}},
+                {h: {"alias": h, "projectId": gate.PROJECT, "deploymentId": gate.ROLLBACK}
+                 for h in gate.HOSTS},
+                {"id": gate.ROLLBACK, "projectId": gate.PROJECT, "ownerId": gate.TEAM,
+                 "target": "production", "readyState": "READY", "aliasError": None})
+
+    def test_exact_new_public_assignment_requires_conditional_recovery(self):
+        p, rows, target = self.fixture()
+        p["targets"]["production"]["id"] = "dpl_new"
+        for row in rows.values():
+            row["deploymentId"] = "dpl_new"
+        self.assertTrue(gate.rollback_disposition(p, rows, target, "dpl_new")["rollback_post_allowed"])
+
+    def test_unknown_mixed_or_unresolved_recovery_stops(self):
+        for kind in ("public_mixed", "protected_foreign", "missing", "foreign_project",
+                     "pending", "wrong_target", "target_mismatch"):
+            p, rows, target = self.fixture()
+            if kind == "public_mixed": rows[gate.PUBLIC_HOSTS[0]]["deploymentId"] = "dpl_new"
+            if kind == "protected_foreign": rows[gate.PROTECTED_HOST]["deploymentId"] = "dpl_foreign"
+            if kind == "missing": rows.pop(gate.PROTECTED_HOST)
+            if kind == "foreign_project": rows[gate.PROTECTED_HOST]["projectId"] = "foreign"
+            if kind == "pending": p["lastAliasRequest"] = {"jobStatus": "pending"}
+            if kind == "wrong_target": target["target"] = "preview"
+            if kind == "target_mismatch": p["targets"]["production"]["id"] = "dpl_new"
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                gate.rollback_disposition(p, rows, target, "dpl_new")
+
+
+class ConditionalPromotionTests(unittest.TestCase):
+    def test_caller_unknown_acknowledgement_still_has_only_one_attempt(self):
+        request = self.caller_release_fixture()
+        self.command_mode = 'timeout'
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(result['command_state'], 'UNKNOWN')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_recovery_is_bound_to_current_predecessor_not_old_grant(self):
+        env = {'FRONTEND_SHA':gate.CALLER_FRONTEND, 'BACKEND_SHA':gate.CALLER_BACKEND}
+        self.assertEqual(gate.release_rollback(env), gate.RETAINED_READY)
+        target = {'id':gate.RETAINED_READY,'projectId':gate.PROJECT,'ownerId':gate.TEAM,
+                  'target':'production','readyState':'READY','aliasError':None}
+        project = {'id':gate.PROJECT,'accountId':gate.TEAM,'targets':{'production':{'id':gate.RETAINED_READY}}}
+        aliases = {h:{'alias':h,'projectId':gate.PROJECT,'deploymentId':gate.RETAINED_READY} for h in gate.HOSTS}
+        aliases[gate.PROTECTED_HOST]['deploymentId'] = 'dpl_new'
+        result = gate.rollback_disposition(project, aliases, target, 'dpl_new', environ=env)
+        self.assertEqual(result['status'], 'PUBLIC_RESTORATION_ALREADY_SATISFIED')
+        self.assertFalse(result['rollback_post_allowed'])
+        self.assertFalse(result['all_four_restored'])
+        with self.assertRaises(ValueError):
+            gate.rollback_disposition(project, aliases, {**target,'id':gate.ROLLBACK}, 'dpl_new', environ=env)
+        env['BACKEND_SHA'] = 'd'*40
+        self.assertEqual(gate.release_rollback(env), gate.ROLLBACK)
+
+    def test_caller_provider_does_not_accept_the_old_rollback_route(self):
+        env = {'FRONTEND_SHA':gate.CALLER_FRONTEND, 'BACKEND_SHA':gate.CALLER_BACKEND,
+               'VERCEL_TOKEN':'SYNTHETIC_NOT_PRODUCTION'}
+        with mock.patch.object(gate, 'build_opener') as opener:
+            with self.assertRaises(ValueError):
+                gate.provider_request('/v9/projects/'+gate.PROJECT+'/rollback/'+gate.ROLLBACK, 'POST', 1, env)
+            opener.assert_not_called()
+
+    def caller_release_fixture(self):
+        self.env.update(FRONTEND_SHA=gate.CALLER_FRONTEND, BACKEND_SHA=gate.CALLER_BACKEND)
+        self.metadata['meta'].update(githubCommitSha=gate.CALLER_FRONTEND, readerBackendSha=gate.CALLER_BACKEND)
+        self.project['targets']['production']['id'] = gate.RETAINED_READY
+        original = self.request
+        def caller(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            # Existing fixture models old-serving aliases as PR528. The current
+            # caller contract's predecessor is the retained promoted Reader asset.
+            if not self.attempted and path.startswith('/v4/aliases/'):
+                result = copy.deepcopy(result)
+                if result.get('deploymentId') == gate.ROLLBACK:
+                    result['deploymentId'] = gate.RETAINED_READY
+            return result
+        return caller
+
+    def test_caller_release_current_promoted_predecessor_admits_once(self):
+        request = self.caller_release_fixture()
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_release_staged_automatic_transition_admits_once(self):
+        self.stage_protected_automatic_alias()
+        request = self.caller_release_fixture()
+        result = gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+            now=self.now, clock=lambda:0)
+        self.assertEqual(result['status'], 'PROMOTED')
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_caller_predecessor_requires_the_exact_source_pair(self):
+        request = self.caller_release_fixture()
+        self.env['BACKEND_SHA'] = 'd' * 40
+        self.metadata['meta']['readerBackendSha'] = 'd' * 40
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+                now=self.now, clock=lambda:0)
+        self.assertEqual(self.mutations(), [])
+
+    def test_caller_release_other_public_assignment_stops(self):
+        request = self.caller_release_fixture()
+        self.before_alias_overrides[gate.PUBLIC_HOSTS[0]] = 'dpl_unknown'
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=request, environ=self.env,
+                now=self.now, clock=lambda:0)
+        self.assertEqual(self.mutations(), [])
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.now = dt.datetime(2026, 10, 20, tzinfo=dt.timezone.utc)
+        self.env = {"VERCEL_PROJECT_ID": gate.PROJECT, "VERCEL_ORG_ID": gate.TEAM,
+                    "FRONTEND_SHA": "a" * 40, "CONTROLLER_SHA": "b" * 40,
+                    "BACKEND_SHA": "c" * 40, "CONDITIONAL_PROMOTION": "true",
+                    "RUNNER_TEMP": self.tmp.name}
+        self.metadata = {"id": "dpl_new", "projectId": gate.PROJECT, "ownerId": gate.TEAM,
+                         "target": "production", "readyState": "READY", "aliasAssigned": False,
+                         "aliasError": None, "ready": int(self.now.timestamp() * 1000),
+                         "meta": {"githubCommitSha": "a" * 40, "readerControllerSha": "b" * 40,
+                                  "readerBackendSha": "c" * 40}}
+        self.project = {"id": gate.PROJECT, "accountId": gate.TEAM,
+                        "autoAssignCustomDomains": False, "lastAliasRequest": None,
+                        "rollingRelease": None, "targets": {"production": {
+                            "id": gate.ROLLBACK, "alias": list(gate.HOSTS),
+                            "readyState": "READY", "target": "production", "aliasError": None}}}
+        self.domains = {"domains": [{"name": h, "projectId": gate.PROJECT, "verified": True}
+                                   for h in gate.HOSTS[:-1]], "pagination": {"next": None}}
+        self.calls = []
+        self.attempted = False
+        self.outcome = "succeeded"
+        self.command_mode = "success"
+        self.mixed = False
+        self.concurrent = []
+        self.ticks = 0
+        self.fresh_alias_error = None
+        self.before_alias_overrides = {}
+
+    def test_staged_transition_drift_at_final_read_stops_before_post(self):
+        self.stage_protected_automatic_alias()
+        original = self.request
+        def changed(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            if path.startswith("/v13/"):
+                result["automaticAliases"] = []
+            return result
+        with self.assertRaises(ValueError):
+            gate.conditional_promotion(self.metadata, request=changed, environ=self.env,
+                                       now=self.now, clock=lambda: 0)
+        self.assertEqual(self.mutations(), [])
+
+    def test_existing_ready_keeps_creation_identity_with_fresh_operation_window(self):
+        self.stage_protected_automatic_alias()
+        self.metadata.update(id=gate.RETAINED_READY, ready=1792521693385)
+        self.metadata["meta"] = {"githubCommitSha": "229df7f8b2cfb49a7f46215be3979608c39f7c33",
+            "readerControllerSha": gate.CREATION_CONTROLLER,
+            "readerBackendSha": "fda9d5b4a4618447ef75026edf17bba7f28f0c83"}
+        self.env.update(FRONTEND_SHA=self.metadata["meta"]["githubCommitSha"],
+                        BACKEND_SHA=self.metadata["meta"]["readerBackendSha"])
+        original = self.request
+        def retained(path, method, timeout, env):
+            result = original(path, method, timeout, env)
+            if not self.attempted and path.startswith("/v13/"):
+                result["aliasAssigned"] = True
+            return json.loads(json.dumps(result).replace("dpl_new", gate.RETAINED_READY))
+        result = gate.conditional_promotion(self.metadata, request=retained, environ=self.env,
+            now=dt.datetime(2026, 10, 21, tzinfo=dt.timezone.utc), clock=lambda: 0, existing_ready=True)
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+        self.assertEqual(self.metadata["ready"], 1792521693385)
+        self.assertEqual(self.metadata["meta"]["readerControllerSha"], gate.CREATION_CONTROLLER)
+
+    def request(self, path, method, timeout, env):
+        self.calls.append(([method, path], {"timeout": timeout}))
+        if method == "POST":
+            self.attempted = True
+            if self.command_mode == "timeout":
+                raise TimeoutError("synthetic acknowledgement loss")
+            return "QUEUED" if self.command_mode == "queued" else "RETURNED"
+        self.assertEqual(method, "GET")
+        self.assertGreater(timeout, 0)
+        self.assertLessEqual(timeout, 5)
+        if "/aliases/" in path:
+            host = path.split("/aliases/", 1)[1].split("?", 1)[0]
+            assigned = "dpl_new" if self.attempted and self.outcome == "succeeded" else gate.ROLLBACK
+            if not self.attempted:
+                assigned = self.before_alias_overrides.get(host, assigned)
+            if self.mixed and host == gate.HOSTS[0]:
+                assigned = "dpl_foreign"
+            data = {"alias": host, "projectId": gate.PROJECT, "deploymentId": assigned}
+        elif path.startswith("/v13/"):
+            data = copy.deepcopy(self.metadata)
+            data["aliasAssigned"] = (self.outcome == "succeeded" if self.attempted
+                                     else self.metadata.get("aliasAssigned", False))
+            data["aliasError"] = self.fresh_alias_error
+        elif path.startswith("/v6/"):
+            data = {"deployments": self.concurrent}
+        elif "/domains?" in path:
+            data = self.domains
+        else:
+            data = copy.deepcopy(self.project)
+            if self.attempted:
+                data["lastAliasRequest"] = {"jobStatus": self.outcome,
+                    "toDeploymentId": "dpl_new", "type": "promote"}
+                if self.outcome == "succeeded":
+                    data["targets"]["production"]["id"] = "dpl_new"
+        return data
+
+    def execute(self):
+        return gate.conditional_promotion(self.metadata, request=self.request, environ=self.env,
+                                          now=self.now, clock=lambda: 0, pause=lambda _: None)
+
+    def mutations(self):
+        return [args for args, _ in self.calls if args[0] == "POST"]
+
+    def test_once_only_success_and_final_guard_share_snapshot(self):
+        result = self.execute()
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(self.mutations(), [["POST", "/v10/projects/" + gate.PROJECT + "/promote/dpl_new"]])
+        self.assertLessEqual(result["resolution_gets"], 30)
+        self.assertTrue((Path(self.tmp.name) / "reader-promotion-intent.json").exists())
+        # Final existing alias guard must perform no additional network reads.
+        final = gate.collect(self.metadata, environ=self.env, now=self.now,
+                             alias_snapshot=result["aliases"],
+                             runner=lambda *a, **k: self.fail("Unexpected extra GET"))
+        self.assertEqual(final["status"], "PASS")
+        self.attempted = False
+        self.metadata["aliasAssigned"] = False
+        with self.assertRaises(FileExistsError):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def stage_protected_automatic_alias(self):
+        self.before_alias_overrides[gate.HOSTS[-1]] = "dpl_new"
+        self.metadata["readySubstate"] = "STAGED"
+        self.metadata["aliasAssigned"] = True
+        self.metadata["automaticAliases"] = [gate.HOSTS[-1]]
+        self.metadata["alias"] = [gate.HOSTS[-1]]
+        self.project["targets"]["production"]["automaticAliases"] = [gate.HOSTS[-1]]
+
+    def test_observed_public_old_protected_automatic_new_admits_one_promotion(self):
+        # Run39476136501 retained three PR528 public aliases and moved only the
+        # protected automatic alias to its exact new READY/STAGED deployment.
+        self.stage_protected_automatic_alias()
+        result = self.execute()
+        self.assertEqual(result["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+        self.assertEqual({r["deploymentId"] for r in result["aliases"].values()}, {"dpl_new"})
+        final = gate.collect(self.metadata, environ=self.env, now=self.now,
+                             alias_snapshot=result["aliases"],
+                             runner=lambda *a, **k: self.fail("Unexpected extra GET"))
+        self.assertEqual(final["status"], "PASS")
+
+    def test_other_public_mixed_unknown_or_foreign_alias_states_stop(self):
+        cases = [
+            {gate.HOSTS[0]: "dpl_new"},
+            {gate.HOSTS[0]: "dpl_new", gate.HOSTS[-1]: "dpl_new"},
+            {gate.HOSTS[-1]: "dpl_foreign"},
+            {gate.HOSTS[-1]: None},
+            {gate.HOSTS[0]: "dpl_foreign", gate.HOSTS[-1]: "dpl_new"},
+        ]
+        self.stage_protected_automatic_alias()
+        for mapping in cases:
+            self.before_alias_overrides = mapping
+            with self.subTest(mapping=mapping), self.assertRaises(ValueError):
+                self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_observed_split_requires_staged_assignment_and_registered_automatic_role(self):
+        self.stage_protected_automatic_alias()
+        for key, value in [("readySubstate", "PROMOTED"), ("readySubstate", None),
+                           ("aliasAssigned", False), ("automaticAliases", []),
+                           ("automaticAliases", ["foreign.example"]),
+                           ("alias", [gate.HOSTS[-1], "foreign.example"])]:
+            original = self.metadata[key]
+            self.metadata[key] = value
+            with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                self.execute()
+            self.metadata[key] = original
+        for aliases in ([], [gate.HOSTS[0]], [gate.HOSTS[-1], "foreign.example"]):
+            self.project["targets"]["production"]["automaticAliases"] = aliases
+            with self.subTest(aliases=aliases), self.assertRaises(ValueError):
+                self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_new_alias_error_during_final_reread_stops_before_mutation(self):
+        self.fresh_alias_error = {"code": "SYNTHETIC_NEW_ERROR"}
+        with self.assertRaisesRegex(ValueError, "alias error"):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_ten_minute_window_is_rechecked_after_reads(self):
+        ticks = [0]
+        original_request = self.request
+        def advancing_request(path, method, timeout, env):
+            result = original_request(path, method, timeout, env)
+            if method == "GET":
+                ticks[0] += 2
+            return result
+        # Ten minutes fifteen seconds remaining initially; final reads cross the admission floor.
+        self.metadata["ready"] -= 285000
+        with self.assertRaisesRegex(ValueError, "immediately before"):
+            gate.conditional_promotion(self.metadata, request=advancing_request,
+                environ=self.env, now=self.now, clock=lambda: ticks[0])
+        self.assertEqual(self.mutations(), [])
+
+    def test_timeout_resolves_without_second_mutation(self):
+        self.command_mode = "timeout"
+        self.assertEqual(self.execute()["status"], "PROMOTED")
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_queued_never_admits_canaries(self):
+        self.command_mode = "queued"
+        with self.assertRaisesRegex(ValueError, "NEEDS_OPERATOR_RESOLUTION"):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_pending_resolves_with_bounded_gets_and_no_retry(self):
+        self.outcome = "pending"
+        with self.assertRaisesRegex(ValueError, "NEEDS_OPERATOR_RESOLUTION"):
+            self.execute()
+        mutation = next(i for i, (args, _) in enumerate(self.calls) if args[0] == "POST")
+        self.assertLessEqual(len(self.calls[mutation+1:]), 30)
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_failed_old_serving_does_not_rollback_or_retry(self):
+        self.outcome = "failed"
+        with self.assertRaisesRegex(ValueError, "OLD_SERVING"):
+            self.execute()
+        self.assertEqual(len(self.mutations()), 1)
+
+    def test_reject_preview_wrong_identity_source_and_expired_ready(self):
+        original = copy.deepcopy(self.metadata)
+        cases = [("target", "preview"), ("readyState", "BUILDING"),
+                 ("projectId", "foreign"), ("ownerId", "foreign"),
+                 ("id", gate.ROLLBACK), ("ready", 0), ("aliasError", {})]
+        for key, value in cases:
+            self.metadata = {**copy.deepcopy(original), key: value}
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.execute()
+        self.metadata = copy.deepcopy(original)
+        self.metadata["meta"]["readerControllerSha"] = "d" * 40
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_no_consent_or_mixed_domains_or_concurrent_deploy_stops(self):
+        self.env["CONDITIONAL_PROMOTION"] = "false"
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.env["CONDITIONAL_PROMOTION"] = "true"
+        self.mixed = True
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.mixed = False
+        self.concurrent = [{"uid": "dpl_other"}]
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+    def test_rolling_pending_or_unexpected_inventory_stops(self):
+        self.project["rollingRelease"] = {"active": True}
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.project["rollingRelease"] = None
+        self.project["lastAliasRequest"] = {"jobStatus": "in-progress"}
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.project["lastAliasRequest"] = None
+        self.domains["domains"].append({"name": "foreign.example"})
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual(self.mutations(), [])
+
+
+class SingleProviderRequestTests(unittest.TestCase):
+    def test_exact_post_once_without_body_read_redirect_or_retry(self):
+        response = mock.MagicMock()
+        response.code = 202
+        response.__enter__.return_value = response
+        opener = mock.Mock()
+        opener.open.return_value = response
+        with mock.patch.object(gate, 'build_opener', return_value=opener):
+            result = gate.provider_request('/v10/projects/' + gate.PROJECT + '/promote/dpl_new',
+                                          'POST', 60, {'VERCEL_TOKEN': 'synthetic-only'})
+        self.assertEqual(result, 'QUEUED')
+        opener.open.assert_called_once()
+        req = opener.open.call_args.args[0]
+        self.assertEqual(req.method, 'POST')
+        self.assertEqual(req.full_url, 'https://api.vercel.com/v10/projects/' + gate.PROJECT +
+                         '/promote/dpl_new?teamId=' + gate.TEAM)
+        self.assertEqual(req.data, b'{}')
+        response.read.assert_not_called()
+        self.assertIsNone(gate.NoProviderRedirect().redirect_request(None, None, None, None, None, None))
+
+    def test_native_timeout_is_not_retried_and_other_mutations_rejected(self):
+        opener = mock.Mock()
+        opener.open.side_effect = TimeoutError('synthetic acknowledgement uncertainty')
+        with mock.patch.object(gate, 'build_opener', return_value=opener):
+            with self.assertRaises(TimeoutError):
+                gate.provider_request('/v10/projects/' + gate.PROJECT + '/promote/dpl_new',
+                                      'POST', 60, {'VERCEL_TOKEN': 'synthetic-only'})
+            for path, method in [('/v4/aliases/example', 'POST'),
+                                 ('/v10/projects/foreign/promote/dpl_new', 'POST'),
+                                 ('/v13/deployments/dpl_new', 'PATCH')]:
+                with self.assertRaises(ValueError):
+                    gate.provider_request(path, method, 1, {'VERCEL_TOKEN': 'synthetic-only'})
+        opener.open.assert_called_once()
+
+
+class FocusedSmokeTests(unittest.TestCase):
+    def test_eight_distinct_initials_and_no_old_overlapping_workflow_calls(self):
+        from scripts import reader_alias_canaries as smoke
+        self.assertEqual(len(smoke.SMOKE_URLS), 8)
+        self.assertEqual(len(set(smoke.SMOKE_URLS)), 8)
+        self.assertEqual(set(smoke.SMOKE_URLS[:4]), {
+            "https://theearnalism.com/", "https://www.theearnalism.com/",
+            "https://earnalism.vercel.app/", smoke.PROTECTED_URL})
+        self.assertIn('--focused-smoke', SOURCE)
+        canary = SOURCE.split('  frontend_production_canary:', 1)[1]
+        for old in ('post_deploy_route_canary.py', 'post_deploy_static_seo_canary.py',
+                    'post-deploy-canary.js'):
+            self.assertNotIn(old, canary)
+
+    def test_protected_exact_destination_validation_retained(self):
+        from scripts import reader_alias_canaries as smoke
+        good = "https://vercel.com/sso-api?url=" + smoke.PROTECTED_URL + "&nonce=" + "a" * 64
+        self.assertFalse(smoke.validate_protected_redirect(good)["followed"])
+        for bad in (good.replace('vercel.com/', 'vercel.com.evil/'),
+                    good.replace(smoke.PROTECTED_URL, 'https://theearnalism.com/'),
+                    good + '&extra=1', good.replace('nonce=', 'nonce=x'),
+                    good.replace('https://vercel.com', 'http://vercel.com')):
+            with self.subTest(bad=bad), self.assertRaises(RuntimeError):
+                smoke.validate_protected_redirect(bad)
+
+    def test_fixed_page_redirect_never_follows_and_budget_is_hard(self):
+        from scripts import reader_alias_canaries as smoke
+        class Response:
+            code = 302
+            headers = {"Location": "https://theearnalism.com/"}
+            def __enter__(self): return self
+            def __exit__(self, *_): pass
+        opener = mock.Mock()
+        opener.open.return_value = Response()
+        evidence = {"requests": 0, "probes": []}
+        with self.assertRaisesRegex(RuntimeError, 'no follow'):
+            smoke.probe(smoke.SMOKE_URLS[4], 10, opener, evidence, clock=lambda: 0,
+                        contract=smoke.PROPOSED_CONTRACT, focused=True)
+        self.assertEqual(opener.open.call_count, 1)
+        evidence = {"requests": 14, "probes": []}
+        with self.assertRaises(RuntimeError):
+            smoke.probe(smoke.SMOKE_URLS[0], 10, opener, evidence, clock=lambda: 0,
+                        contract=smoke.PROPOSED_CONTRACT, focused=True)
+        self.assertEqual(opener.open.call_count, 1)
+
+
 class AliasReleaseIntegrationTests(unittest.TestCase):
     def setUp(self):
         self.env = {"VERCEL_PROJECT_ID": gate.PROJECT, "VERCEL_ORG_ID": gate.TEAM,
@@ -794,8 +1380,8 @@ class AliasReleaseIntegrationTests(unittest.TestCase):
         self.assertEqual(adapter['env']['VERIFIED_DEPLOYMENT_ID'], '${{ needs.deploy_frontend.outputs.deployment_id }}')
         self.assertEqual(adapter['env']['VERIFIED_READY_AT'], '${{ needs.deploy_frontend.outputs.ready_at }}')
         self.assertEqual(sum('scripts/reader_alias_canaries.py' in s.get('run', '') for s in canary['steps']), 1)
-        self.assertEqual(workflow['env']['FRONTEND_SHA'], '229df7f8b2cfb49a7f46215be3979608c39f7c33')
-        self.assertEqual(workflow['env']['BACKEND_SHA'], 'fda9d5b4a4618447ef75026edf17bba7f28f0c83')
+        self.assertEqual(workflow['env']['FRONTEND_SHA'], 'b3998d72f2e93bd99ffb1563c906c77e78aa5b49')
+        self.assertEqual(workflow['env']['BACKEND_SHA'], '0f2bb1e728890f1f0e41ded9b12f07c76246bce0')
 
     def test_collector_only_reads_four_pinned_aliases_and_emits_binding(self):
         calls = []

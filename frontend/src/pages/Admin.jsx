@@ -1,4 +1,5 @@
 import SixTitleActivationInspection from "../components/Admin/SixTitleActivationInspection";
+import OpenWindowServingBinding from "../components/Admin/OpenWindowServingBinding";
 import JournalEditor from "../components/Admin/JournalEditor";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -15,7 +16,7 @@ import PublishingWorkflowPanel from "../components/Admin/PublishingWorkflowPanel
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
-const TABS = ["books", "covers", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "publication-inspection", "settings", "account"];
+const TABS = ["books", "covers", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "publication-inspection", "open-window-binding", "settings", "account"];
 
 export default function Admin({ initialTab = "books" }) {
   useSEO({
@@ -55,6 +56,7 @@ export default function Admin({ initialTab = "books" }) {
         </div>
 
         {tab === "books" && <BooksAdmin />}
+        {tab === "open-window-binding" && <OpenWindowServingBinding key={admin.id || admin.email} />}
         {tab === "covers" && <CoverManager />}
         {tab === "blog" && <BlogAdmin />}
         {tab === "categories" && <CategoriesAdmin />}

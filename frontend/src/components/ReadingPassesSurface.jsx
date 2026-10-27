@@ -14,7 +14,7 @@ const PERSONAS = [
 const FAQ = [
   ['Is a Reading Pass a subscription?', 'No. Reading Passes are one-time purchases and do not auto-renew. Choose another only when you want more reading time.'],
   ['How long is my pass valid?', 'Purchased unused Reading Pass minutes do not expire. A pass is a one-time purchase, not a subscription.'],
-  ['Can I try a book before choosing?', 'Where a preview is available, the first 3 canonical text pages are free. Public audiobooks are unavailable in this launch.'],
+  ['Can I try a book before choosing?', 'Where a preview is available, the first 3 canonical text pages are free. Listening is available only for released audiobooks and requires an active Reading Pass.'],
 ];
 function MiniFact({ icon: Icon, title, children }) { return <div className="rp-mini-fact"><Icon aria-hidden="true"/><div><strong>{title}</strong><span>{children}</span></div></div>; }
 
@@ -28,6 +28,7 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
     <section className="rp-hero" aria-labelledby="rp-title">
       <div className="rp-hero-inner">
         <div className="rp-hero-copy">
+        <p>Purchases and edition delivery are currently available in India only. <Link to="/terms">Availability, refunds and terms</Link>.</p>
           <p className="rp-eyebrow">READING PASSES</p>
           <h1 id="rp-title">Read more.<br/>Live the stories.</h1>
           <p className="rp-lede">For the pages that call you back.<br/>Make a little room for a world beyond your own.</p>

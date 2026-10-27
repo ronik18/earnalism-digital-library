@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const launchPath = path.join(root, "data", "controlled_launch.json");
 const contractPath = path.join(root, "frontend", "static-seo", "controlled-publication-public.json");
+const protectedPublicSlugs = new Set(JSON.parse(await readFile(launchPath, "utf8")).protected_package_public_slugs || []);
 
 async function jsonAndSha(filePath) {
   const bytes = await readFile(filePath);
@@ -16,8 +17,29 @@ function relative(filePath) {
   return path.relative(root, filePath).replace(/\\/g, "/");
 }
 
+function protectedPackageApproved(book, publication, approval, slug) {
+  const marker = book.audiobook_public_package_approval || {};
+  const acceptance = marker.acceptance || {};
+  const state = book.audiobook_active_release || {};
+  const descriptor = state.active_release_descriptor_sha256;
+  const evidence = book.audiobook_package_release_evidence?.[descriptor] || {};
+  return protectedPublicSlugs.has(slug) && book.audiobook_release_mode === "PROTECTED_PACKAGE_V2"
+    && book.audio_enabled === true && book.audiobook_enabled === true
+    && marker.schema_version === "audiobook_protected_package_publication.v1" && marker.status === "PUBLIC_APPROVED"
+    && marker.slug === slug && marker.release_descriptor_sha256 === descriptor
+    && marker.endpoint === `/api/reader/book/${slug}/audiobook/manifest`
+    && /^[a-f0-9]{64}$/.test(descriptor || "") && /^sha256-[a-f0-9]{64}$/.test(acceptance.package_version || "")
+    && acceptance.release_descriptor_sha256 === descriptor && acceptance.package_version === evidence.package_version
+    && evidence.release_eligible === true && evidence.primary_release_manifest_store === "prod" && evidence.replica_release_manifest_store === "dr"
+    && publication.audio_release?.delivery_mode === "PROTECTED_PACKAGE_V2" && publication.audio_release?.status === "APPROVED"
+    && publication.audio_release?.exposed === true && publication.audio_release?.package_version === acceptance.package_version
+    && publication.audio_release?.publication_acceptance_sha256 === marker.acceptance_sha256
+    && approval.audiobook_enabled === true && approval.endpoint_url === marker.endpoint;
+}
+
 function audioAvailability(book = {}) {
   if (book.audio_enabled !== true || book.audiobook_enabled !== true) return "disabled";
+  if (protectedPublicSlugs.has(book.slug) && book.audiobook_release_mode === "PROTECTED_PACKAGE_V2") return "approved";
   const gate = String(book.audiobook_release_gate || book.release_gate || "").toUpperCase();
   const qa = String(book.audio_qa_status || book.qa_status || "").toUpperCase();
   return gate === "APPROVED" && ["QA_PASSED", "APPROVED", "PASS"].includes(qa) ? "approved" : "disabled";
@@ -41,7 +63,8 @@ function assertSafePublication({ slug, records }) {
     && publication.content?.source_hash === source.source_hash && publication.content?.content_hash === source.content_hash
     && chapterCount > 0 && Number(publication.content?.chapter_count) === chapterCount
     && Array.isArray(reader.chapters) && reader.chapters.length === chapterCount
-    && book.audio_enabled !== true && book.audiobook_enabled !== true && publication.audio_release?.exposed === false
+    && ((book.audio_enabled !== true && book.audiobook_enabled !== true && publication.audio_release?.exposed === false)
+      || protectedPackageApproved(book, publication, approval, slug))
     && artifactsBound && book.title && book.author;
   if (!accepted) throw new Error(`Controlled publication ${slug} cannot produce a public static-SEO record.`);
 }

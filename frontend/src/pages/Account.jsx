@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { userApi, formatMinutes } from "../lib/api";
@@ -195,23 +195,30 @@ export default function Account() {
   const visualFixture = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" && new URLSearchParams(location.search).get("visual-fixture") === "1";
   const [txs, setTxs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [usageCursor, setUsageCursor] = useState("");
+  const [usageMore, setUsageMore] = useState(false);
+  const [usageLoading, setUsageLoading] = useState(false);
+  const [usageError, setUsageError] = useState("");
   const [readingPassEnabled, setReadingPassEnabled] = useState(false);
   const [devices, setDevices] = useState([]);
   const [devicesLoading, setDevicesLoading] = useState(false);
   const nav = useNavigate();
   const userId = user && typeof user === "object" ? user.id : null;
+  const usageOwner = useRef(userId);
+  usageOwner.current = userId;
 
   useEffect(() => {
     if (!userId) return undefined;
     let cancelled = false;
     setLoading(true);
+    setTxs([]); setUsageCursor(""); setUsageMore(false); setUsageError(""); setUsageLoading(false);
     refreshUser();
-    userApi.get("/users/me/transactions")
+    userApi.get("/users/me/transactions/page")
       .then((r) => {
-        if (!cancelled) setTxs(r.data || []);
+        if (!cancelled) { setTxs(r.data.items || []); setUsageCursor(r.data.next_cursor || ""); setUsageMore(r.data.has_more === true); setUsageError(""); }
       })
       .catch(() => {
-        if (!cancelled) setTxs([]);
+        if (!cancelled) { setTxs([]); setUsageError("Usage history could not be loaded. Please try again."); }
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -220,6 +227,19 @@ export default function Account() {
       cancelled = true;
     };
   }, [userId, refreshUser]);
+
+  async function loadOlderUsage() {
+    if (usageLoading || !usageMore) return;
+    const requestedOwner = userId;
+    setUsageLoading(true); setUsageError("");
+    try {
+      const response = await userApi.get("/users/me/transactions/page", { params: { cursor: usageCursor } });
+      if (usageOwner.current !== requestedOwner) return;
+      setTxs((previous) => Array.from(new Map([...previous, ...(response.data.items || [])].map((row) => [row.id, row])).values()));
+      setUsageCursor(response.data.next_cursor || ""); setUsageMore(response.data.has_more === true);
+    } catch { if (usageOwner.current === requestedOwner) setUsageError("Older usage could not be loaded. Please try again."); }
+    finally { if (usageOwner.current === requestedOwner) setUsageLoading(false); }
+  }
 
   useEffect(() => {
     if (!userId) return undefined;
@@ -390,7 +410,10 @@ export default function Account() {
         )}
 
         <div className="account-panel p-6 sm:p-8 overflow-x-auto" data-testid="account-transactions">
-          <h2 className="font-serif-display text-2xl text-burgundy">Recent activity</h2>
+          <h2 className="font-serif-display text-2xl text-burgundy">Usage history</h2>
+          <p className="text-sm mt-2">Usage is billed in reading seconds. Load older activity to see earlier sessions.</p>
+          {usageError && <p role="alert">{usageError}</p>}
+          {usageMore && <button type="button" onClick={loadOlderUsage} disabled={usageLoading}>{usageLoading ? "Loading older activity…" : "Load older activity"}</button>}
           <div className="gold-rule-thin mt-3 mb-5" />
           {loading ? (
             <p className="text-charcoal-soft text-sm" role="status" aria-live="polite">Loading recent reading activity…</p>
@@ -414,7 +437,7 @@ export default function Account() {
                       <span className={`text-[0.7rem] tracking-[0.18em] uppercase ${t.type === "credit" ? "text-emerald-700" : t.type === "debit" ? "text-rose-700" : "text-charcoal-soft"}`}>{t.type}</span>
                     </td>
                     <td className={`py-3 pr-4 align-top font-serif-display text-base ${t.seconds < 0 ? "text-rose-700" : "text-emerald-700"}`}>
-                      {t.seconds >= 0 ? "+" : "−"}{formatMinutes(Math.abs(t.seconds))}
+                      {t.seconds >= 0 ? "+" : "−"}{Math.abs(t.seconds)} seconds
                     </td>
                     <td className="py-3 pr-4 align-top text-charcoal-soft">
                       {t.reason || "—"}

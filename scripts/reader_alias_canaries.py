@@ -21,6 +21,9 @@ URLS = ["https://www.theearnalism.com/", "https://earnalism.vercel.app/",
 ORIGINAL_CONTRACT = "four-anonymous-v1"
 PROPOSED_CONTRACT = "three-public-one-protected-v1"
 PROTECTED_URL = "https://earnalism-sales-8498s-projects.vercel.app/"
+SMOKE_PATHS = ("/library", "/book/the-open-window", "/reader/the-open-window", "/shop")
+SMOKE_URLS = ["https://theearnalism.com/", *URLS] + [
+    "https://theearnalism.com" + path for path in SMOKE_PATHS]
 
 
 def validate_protected_redirect(location):
@@ -77,7 +80,7 @@ def wall_deadline(seconds):
 
 
 def probe(initial, deadline, opener, evidence, clock=time.monotonic,
-          contract=ORIGINAL_CONTRACT):
+          contract=ORIGINAL_CONTRACT, focused=False):
     if contract not in (ORIGINAL_CONTRACT, PROPOSED_CONTRACT):
         raise RuntimeError("unknown acceptance contract; no GET authorized")
     protected_role = contract == PROPOSED_CONTRACT and initial == PROTECTED_URL
@@ -85,7 +88,8 @@ def probe(initial, deadline, opener, evidence, clock=time.monotonic,
     row = {"initial_url": initial, "chain": [], "result": "FAIL"}
     evidence["probes"].append(row)
     for hop in range(3):
-        if clock() >= deadline or not allowed(url) or evidence["requests"] >= 9:
+        smoke_route = focused and initial in SMOKE_URLS[4:] and url == initial
+        if clock() >= deadline or not (allowed(url) or smoke_route) or evidence["requests"] >= (14 if focused else 9):
             raise RuntimeError("deadline, host or request budget rejected before GET")
         # Debit before sending, including requests which fail or time out.
         evidence["requests"] += 1
@@ -108,6 +112,8 @@ def probe(initial, deadline, opener, evidence, clock=time.monotonic,
                            role="provider-protected alias; not public application")
                 return
             if status in (301, 302, 303, 307, 308):
+                if smoke_route:
+                    raise RuntimeError("fixed smoke route redirected; no follow")
                 try:
                     target = urljoin(url, response.headers.get("Location", ""))
                     parsed_target = urlsplit(target)
@@ -126,17 +132,36 @@ def probe(initial, deadline, opener, evidence, clock=time.monotonic,
                     "userinfo_present": bool(parsed_target.username or parsed_target.password),
                     "sha256": hashlib.sha256(target.encode()).hexdigest(),
                 }
-                if hop == 2 or not response.headers.get("Location") or not target_allowed:
+                if (hop == 2 or not response.headers.get("Location") or not target_allowed
+                        or target == PROTECTED_URL):
                     raise RuntimeError("redirect limit or approved HTTPS host rejected")
                 step["location"] = target
                 url = target
                 continue
-            if status != 200 or "text/html" not in response.headers.get("Content-Type", "").lower():
+            removed = smoke_route and initial.endswith("/shop")
+            if status != (410 if removed else 200) or "text/html" not in response.headers.get("Content-Type", "").lower():
                 raise RuntimeError("root response not readable HTTP200 HTML")
             body = response.read(1024*1024+1)
             if clock() >= deadline or not body or len(body) > 1024*1024:
                 raise RuntimeError("body/deadline limit rejected")
             html = body.decode("utf-8", errors="replace")
+            if smoke_route:
+                try:
+                    from scripts import post_deploy_static_seo_canary as seo
+                except ModuleNotFoundError:
+                    import post_deploy_static_seo_canary as seo
+                path = urlsplit(initial).path
+                if removed:
+                    if ("noindex" not in response.headers.get("X-Robots-Tag", "").lower()
+                            or re.search(r'id\s*=\s*[\"\']root[\"\']', html, re.I)):
+                        raise RuntimeError("removed route denial contract rejected")
+                else:
+                    policy = seo.ROUTES.get(path)
+                    if not policy or seo.inspect_route(path, policy, status,
+                            {k.lower(): v for k, v in response.headers.items()}, html, url)["result"] != "PASS":
+                        raise RuntimeError("focused static page contract rejected")
+                row.update(result="PASS", body_bytes=len(body), body_sha256=hashlib.sha256(body).hexdigest())
+                return
             if (not re.search(r'id\s*=\s*[\"\']root[\"\']', html, re.I)
                     or not re.search(r'<script\b[^>]*\bsrc\s*=', html, re.I)
                     or "earnalism" not in html.lower()
@@ -151,6 +176,8 @@ def main():
     parser.add_argument("--deployment", required=True)
     parser.add_argument("--ready-at", required=True, help="Verified deployment READY timestamp, aware ISO8601")
     parser.add_argument("--output", required=True)
+    parser.add_argument("--focused-smoke", action="store_true",
+                        help="One eight-initial-request sequence; at most fourteen including root redirects")
     parser.add_argument("--contract", choices=(ORIGINAL_CONTRACT, PROPOSED_CONTRACT),
                         default=ORIGINAL_CONTRACT,
                         help="Proposed profile requires separate explicit owner approval")
@@ -163,6 +190,7 @@ def main():
         raise SystemExit("READY timestamp outside fifteen-minute observation window")
     deadline = time.monotonic() + 900-(now-ready).total_seconds()
     path = Path(args.output)
+    path.parent.mkdir(parents=True, exist_ok=True)
     # A persistent intent prevents a second invocation with the same output path.
     with path.open("x") as handle:
         handle.write(json.dumps({"state": "STARTED_NO_RETRY", "deployment": args.deployment}))
@@ -172,9 +200,9 @@ def main():
                 "scope": "Public availability and/or protected-alias behavior per explicit contract; exact provider binding verified separately"}
     try:
         opener = build_opener(NoRedirect())
-        for url in URLS:
+        for url in (SMOKE_URLS if args.focused_smoke else URLS):
             with wall_deadline(min(15, deadline-time.monotonic())):
-                probe(url, deadline, opener, evidence, contract=args.contract)
+                probe(url, deadline, opener, evidence, contract=args.contract, focused=args.focused_smoke)
         evidence["result"] = ("PASS" if args.contract == ORIGINAL_CONTRACT
                               else "PASS_PROPOSED_CONTRACT")
     except Exception as error:

@@ -1,0 +1,26 @@
+{
+  "schema": "earnalism-india-transition-preparation.v1",
+  "application_sha": "12ad62091eac4d60aa4bc479dcda3b28b290c1cf",
+  "territories": ["IN"],
+  "execution_enabled": false,
+  "paid_sessions": false,
+  "automatic_retry": false,
+  "unknown_write_outcome": "STOP_AND_READ_ONLY_RECONCILE",
+  "order": ["source", "provider_preflight", "stage_frontend", "qualify_frontend", "promote_frontend", "release_backend", "qualify_combined"],
+  "rollback": {
+    "restore_unguarded_backend": false,
+    "restore_unsigned_frontend_against_guarded_backend": false,
+    "preserve_verification_refund_webhook": true,
+    "qualified_backend_artifact": null,
+    "qualified_frontend_artifact": null,
+    "config_receipt": null,
+    "operator_approval": null,
+    "required_design": "Retain trusted IN purchase signing in any UI rollback; backend rollback must preserve India admission or fail closed purchase initiation while preserving verification/refund/webhook. A provider capability flag is insufficient."
+  },
+  "future_execution_requirements": [
+    "Implement and review provider execution adapters under separately authorized release scope; this preparation tool has no execution capability",
+    "Populate actual qualified rollback artifacts and existing protected approval/config receipts; never promote nulls or modeled evidence into acceptance",
+    "Reverify source/provider/config/startup and no-auto-deploy facts at actual execution, with secret custody retained",
+    "Persist each write intent/result and reconcile unknown outcomes read-only; no blind retry"
+  ]
+}
