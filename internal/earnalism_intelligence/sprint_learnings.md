@@ -2774,3 +2774,5 @@ Actual audiobook Library filter acceptance is separate from Book CTA and Listene
 ## Open Window Listener transport — 27 October 2026
 
 Natural media ending is not user pause: avoid an extra paused renewal before segment advancement. Playing cross-segment seeks require renewal before source assignment, with cancellation by newer intent. Backend StreamingResponse cannot deliver early bytes if its iterator reads1MiB or the frontend proxy buffers arrayBuffer; bound reads and pipe successful authorized segments with cancellation. Preserve no-store, territory, Range, cookies and denial semantics. Modern route tests must use real Requests and active immutable packages; archival provider URLs cannot override current public release gates. Billing candidates remain separate and no new paid playback is authorized.
+
+Synthetic historical installer tests need their own exact fixture-source binding, independent of frozen production pins. Confirm post-binding mutation rejection and restore production constants after each fixture. Never refresh stopped production installer authority merely to pass a transport-only regression.
