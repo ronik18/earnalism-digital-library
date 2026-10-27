@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "scope": "Anonymous read-only public API; no account, credentials, payment or provider events",
+  "observations": [
+    {
+      "path": "/api/payments/config",
+      "http_status": 200,
+      "configured": true,
+      "mode": "live",
+      "key_kind": "live"
+    },
+    {
+      "path": "/api/payments/offers",
+      "http_status": 200,
+      "configured": true,
+      "mode": "live",
+      "key_kind": "live",
+      "pack_count": 4
+    }
+  ],
+  "earlier_browser_observation": "The earlier review observed a Test Mode checkout; this later live config read does not reconcile that full checkout observation.",
+  "not_verified": [
+    "Active webhook delivery and captured-payment reconciliation",
+    "Actual checkout mode for a new scoped customer session",
+    "Charge/refund/settlement acceptance",
+    "GST/export and destination-tax registrations or no-registration basis",
+    "Accountant-confirmed registration obligation despite no GSTIN linked in gateway"
+  ],
+  "provider_writes": false,
+  "international_payment_ready": false,
+  "merchant_dashboard_read_only": {
+    "business_name": "Reo Enterprise",
+    "business_type": "Proprietorship",
+    "test_mode_switch": "OFF",
+    "international_cards": "Enabled; activation successful",
+    "payment_gateway_international_cards": "ACTIVE; INR; stated T+7-day settlement cycle",
+    "international_bank_transfers": "Not activated; Activate button shown",
+    "gst_page": "No GSTIN linked to your PAN; not a legal determination of registration obligation",
+    "business_identity_url": "https://dashboard.razorpay.com/app/business-settings/business",
+    "international_status_url": "https://dashboard.razorpay.com/app/payment-methods/international-payments",
+    "gst_status_url": "https://dashboard.razorpay.com/app/business-settings/gst",
+    "settings_changed": false,
+    "sensitive_ids_or_keys_retained": false
+  }
+}

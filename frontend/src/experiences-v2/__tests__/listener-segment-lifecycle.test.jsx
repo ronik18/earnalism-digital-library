@@ -58,3 +58,12 @@ test.each([1,1.25,1.5])("native waiting and playing, not playback rate %s, contr
  await act(async()=>x.audio.dispatchEvent(new Event('pause')));expect(x.states).toHaveBeenLastCalledWith('paused');
  await x.cleanup();
 });
+
+test('natural end pause does not send a billable-state pause before the next segment',async()=>{
+ const x=await setup();Object.defineProperty(x.audio,'ended',{configurable:true,value:true});
+ await act(async()=>x.audio.dispatchEvent(new Event('play')));x.states.mockClear();
+ await act(async()=>x.audio.dispatchEvent(new Event('pause')));
+ expect(x.states).not.toHaveBeenCalledWith('paused');
+ await act(async()=>x.audio.dispatchEvent(new Event('ended')));expect(x.before).toHaveBeenCalledTimes(1);
+ await act(async()=>x.resolve());await x.cleanup();
+});

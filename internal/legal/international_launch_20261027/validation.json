@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-27",
+  "base_sha": "af4f9d0f6df1103e18032d9ccd71059d0216d9de",
+  "frontend": {
+    "suites": 9,
+    "tests_passed": 47
+  },
+  "backend": {
+    "tests_passed": 21,
+    "scope": "Existing Reader country middleware, proxy auth, commerce verdict, actual ASGI order admission and byte-exact webhook signature; isolated dummy credentials, no DB/provider writes",
+    "warning": "Motor: no current event loop deprecation"
+  },
+  "proxy": {
+    "tests_passed": 13
+  },
+  "production_frontend_build": "PASS",
+  "static_snapshots": {
+    "inspected": 172,
+    "assertions": 3692,
+    "failed": 0,
+    "complete_legal_content_assertions": 45
+  },
+  "browser": {
+    "scope": "Local built privacy and terms pages opened in IAB; headings, complete policy paragraphs and contact links visible",
+    "production_acceptance": false
+  },
+  "other_attempts": [
+    {
+      "check": "Initial clean frontend dependency install",
+      "result": "npm ci without legacy-peer-deps rejected pre-existing peer/lock mismatch; repository CI legacy-peer-deps install succeeded without lockfile changes"
+    },
+    {
+      "check": "Full HTTP test_payments_razorpay.py",
+      "result": "8 failures and 13 fixture errors: its required loopback API at127.0.0.1:8000 was not running; not a provider or payment PASS. Only isolated signature test reused in passing focused suite."
+    },
+    {
+      "check": "Initial backend suite runtime",
+      "result": "Old Python3.9 fixture could not import existing3.10+ annotations; rerun used Python3.12."
+    }
+  ],
+  "required_exact_head_CI": "NOT_RUN_NO_REMOTE_PR",
+  "deployed": false,
+  "payment_created": false,
+  "international_release_authorized": false,
+  "merchant_dashboard": "Read-only business identity, live-mode switch, international-card activation and GST-link status inspected; see payment-observation.json"
+}

@@ -42,6 +42,9 @@ env \
   ENABLE_STARTUP_DB_MAINTENANCE=false \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_b2_audiobook_routing.py \
+    backend/tests/test_audiobook_package_v2_routes.py \
+    backend/tests/test_audio_stream_chunking.py \
+    backend/tests/test_unapproved_public_audio_asset_safety.py \
     backend/tests/test_agentic_ai_with_python_reader_only.py \
     scripts/test_repair_enchanted_april_reader_preflight.py
 
@@ -98,8 +101,13 @@ echo "==> Signed territorial release proxy and public legal/Reader presentation 
 "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_release_proxy_auth.py \
   backend/tests/test_release_proxy_country_middleware.py
-node --test frontend/scripts/release-proxy.test.js
+node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-proxy-streaming.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
+  src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
+  src/experiences-v2/__tests__/listener-resume-authorization.test.jsx \
+  src/experiences-v2/__tests__/listener-protected-package-route.test.jsx \
+  src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx \
+  src/experiences-v2/__tests__/listener-transport-canary.test.jsx \
   src/legalDirectRoutes.test.js \
   src/bookDetailDirectRoute.test.js \
   src/components/Footer.test.js \

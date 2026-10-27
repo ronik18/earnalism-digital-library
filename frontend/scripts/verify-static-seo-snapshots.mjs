@@ -33,6 +33,7 @@ async function main() {
   const editorial = await json(path.join(contractDir, "editorial-public.json"));
   const controlledLaunch = await json(path.join(rootDir, "data", "controlled_launch.json"));
   const manifest = await json(path.join(buildDir, "static-seo-snapshot-manifest.json"));
+  const legalPolicies = await json(path.join(frontendDir, "src/content/legalPolicies.json"));
   const indiaReleasedSlugs = Array.isArray(controlledLaunch.live_approved_slugs)
     ? controlledLaunch.live_approved_slugs
     : [];
@@ -63,6 +64,22 @@ async function main() {
     }
     state.inspected += 1;
     const normalized = html.toLowerCase();
+    // A legal route must remain a complete notice without JavaScript, not a
+    // short search description that loses retention, remedies or contacts.
+    if (legalPolicies[route]) {
+      const policy = legalPolicies[route];
+      state.assertions += 1;
+      if (!/<img\b[^>]*\bsrc="https:\/\/theearnalism\.com\/assets\/brand\/earnalism-brand-lockup\.png"/i.test(html)) {
+        fail(route + " is missing the rendered canonical logo image", state);
+      }
+      const escape = value => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      const required = [policy.intro, policy.updated, ...policy.sections.flatMap(section => [section.heading, ...section.paragraphs])];
+      for (const text of required) {
+        state.assertions += 1;
+        if (!html.includes(escape(text))) fail(route + " is missing complete legal notice content", state);
+      }
+    }
+
     const heldTitle = unavailable.get(route);
     const assertions = [
       ['data-static-seo-snapshot="true"', "missing route-specific static shell"],
