@@ -12090,5 +12090,15 @@
     "rights_changed": false,
     "entitlements_changed": false,
     "production_changed": false
+  },
+  "india_release_preflight_20261027": {
+    "date": "2026-10-27",
+    "decision": "INDIA_SOURCE_PREFLIGHT_SEPARATE_FROM_EXECUTION",
+    "application": "12ad62091eac4d60aa4bc479dcda3b28b290c1cf",
+    "evidence": "internal/legal/india_release_preflight.md",
+    "finding": "Backend-first purchase signing incompatible with retained frontend; previous backend rollback is not India-commerce qualified. Six source gate tests PASS; no provider approval inferred.",
+    "production_changed": false,
+    "paid_session": false,
+    "next_action": "Review source preflight PR and prepare compatible transition/rollback under unchanged protected gates; no dispatch."
   }
 }
