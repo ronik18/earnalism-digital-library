@@ -68,6 +68,10 @@ async function main() {
     // short search description that loses retention, remedies or contacts.
     if (legalPolicies[route]) {
       const policy = legalPolicies[route];
+      state.assertions += 1;
+      if (!/<img\b[^>]*\bsrc="https:\/\/theearnalism\.com\/assets\/brand\/earnalism-brand-lockup\.png"/i.test(html)) {
+        fail(route + " is missing the rendered canonical logo image", state);
+      }
       const escape = value => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
       const required = [policy.intro, policy.updated, ...policy.sections.flatMap(section => [section.heading, ...section.paragraphs])];
       for (const text of required) {

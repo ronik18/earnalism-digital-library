@@ -113,7 +113,7 @@ function pageHead(page) {
 }
 
 function legalBody(policy) {
-  return `<main class="static-seo-snapshot" data-static-seo-snapshot="true" style="font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810"><article><h1>${html(policy.title)}</h1><p>Updated ${html(policy.updated)}</p><p>${html(policy.intro)}</p>${policy.sections.map(({heading, paragraphs}) => `<section><h2>${html(heading)}</h2>${paragraphs.map(text => `<p>${html(text)}</p>`).join("")}</section>`).join("")}<p><a href="mailto:sales@reoenterprise.org">sales@reoenterprise.org</a> · <a href="/contact?intent=reader">Support and privacy requests</a> · <a href="/contact?intent=rights">Rights concerns</a></p></article></main>`;
+  return `<main class="static-seo-snapshot" data-static-seo-snapshot="true" style="font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810"><img src="${html(brandImage)}" width="640" height="192" alt="The Earnalism" style="display:block;width:220px;height:auto;margin:0 0 2rem"><article><h1>${html(policy.title)}</h1><p>Updated ${html(policy.updated)}</p><p>${html(policy.intro)}</p>${policy.sections.map(({heading, paragraphs}) => `<section><h2>${html(heading)}</h2>${paragraphs.map(text => `<p>${html(text)}</p>`).join("")}</section>`).join("")}<p><a href="mailto:sales@reoenterprise.org">sales@reoenterprise.org</a> · <a href="/contact?intent=reader">Support and privacy requests</a> · <a href="/contact?intent=rights">Rights concerns</a></p></article></main>`;
 }
 
 function shell(eyebrow, title, body, links = [], facts = []) {

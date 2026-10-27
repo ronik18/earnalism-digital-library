@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import json
+import re
 import unittest
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -309,6 +310,20 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
 
     def verify(self):
         return subprocess.run(["node", str(self.root / "frontend/scripts/verify-static-seo-snapshots.mjs")], capture_output=True, text=True, timeout=30)
+
+    def test_legal_notices_require_rendered_logo_not_only_metadata(self):
+        self.assertEqual(self.verify().returncode, 0)
+        for route in ("privacy", "terms", "copyright"):
+            target = self.root / "frontend/build" / route / "index.html"
+            original = target.read_text()
+            self.assertIn('<img src="https://theearnalism.com/assets/brand/earnalism-brand-lockup.png"', original)
+            # Metadata continues to mention the logo; that must not mask absent branding.
+            target.write_text(re.sub(r"<img\b[^>]*>", "", original))
+            failed = self.verify()
+            self.assertNotEqual(failed.returncode, 0)
+            self.assertIn("missing the rendered canonical logo image", failed.stderr)
+            target.write_text(original)
+        self.assertEqual(self.verify().returncode, 0)
 
     def test_unlisted_title_cannot_claim_approved_audio(self):
         contract = self.root / "frontend/static-seo/controlled-publication-public.json"
