@@ -42,3 +42,30 @@ test.each(["success", "denied", "unmounted", "cross-segment"])("media waits for 
   if (outcome !== "unmounted") await act(async () => { root.unmount(); });
   container.remove(); pause.mockRestore(); seekSetter.mockRestore();
 });
+
+test.each(['success','denied'])('playing cross-segment seek must renew before source change: %s',async outcome=>{
+ mockPlay.mockReset();mockPlay.mockResolvedValue();mockSeekSegment='segment-2';
+ const pause=jest.spyOn(HTMLMediaElement.prototype,'pause').mockImplementation(()=>{});
+ let resolve,reject;const before=jest.fn(()=>new Promise((yes,no)=>{resolve=yes;reject=no}));const error=jest.fn();
+ const container=document.createElement('div');document.body.appendChild(container);const root=createRoot(container);
+ await act(async()=>root.render(<ListenerExperienceV2 book={{slug:'test'}} audioManifest={{valid:true,packageVersion:'test',durationMs:2000,tracks:[]}} access={{authorized:true}} onBeforePlayback={before} onMediaError={error}/>));
+ const audio=container.querySelector('audio');await act(async()=>audio.dispatchEvent(new Event('play')));
+ await act(async()=>container.querySelector('[aria-label="Forward 15 seconds"]').click());
+ expect(before).toHaveBeenCalledTimes(1);expect(audio.getAttribute('src')).toContain('segment-1');
+ await act(async()=>outcome==='success'?resolve():reject(new Error('denied')));
+ expect(audio.getAttribute('src')).toContain(outcome==='success'?'segment-2':'segment-1');expect(error).toHaveBeenCalledTimes(outcome==='denied'?1:0);
+ await act(async()=>root.unmount());container.remove();pause.mockRestore();
+});
+
+test.each(['pause','stop','unmount','newer-seek'])('delayed playing-seek authorization cannot override %s',async outcome=>{
+ mockPlay.mockReset();mockPlay.mockResolvedValue();mockSeekSegment='segment-2';const pause=jest.spyOn(HTMLMediaElement.prototype,'pause').mockImplementation(()=>{});
+ let resolves=[];const before=jest.fn(()=>new Promise(resolve=>resolves.push(resolve)));const error=jest.fn();const container=document.createElement('div');document.body.appendChild(container);const root=createRoot(container);
+ await act(async()=>root.render(<ListenerExperienceV2 book={{slug:'test'}} audioManifest={{valid:true,packageVersion:'test',durationMs:2000,tracks:[]}} access={{authorized:true}} onBeforePlayback={before} onMediaError={error}/>));const audio=container.querySelector('audio');await act(async()=>audio.dispatchEvent(new Event('play')));await act(async()=>container.querySelector('[aria-label="Forward 15 seconds"]').click());
+ if(outcome==='pause')await act(async()=>audio.dispatchEvent(new Event('pause')));
+ if(outcome==='stop')await act(async()=>[...container.querySelectorAll('button')].find(b=>b.textContent==='Stop listening').click());
+ if(outcome==='unmount')await act(async()=>root.unmount());
+ if(outcome==='newer-seek')await act(async()=>container.querySelector('[aria-label="Forward 15 seconds"]').click());
+ await act(async()=>resolves[0]());expect(audio.getAttribute('src')).toContain('segment-1');expect(mockPlay).not.toHaveBeenCalled();expect(error).not.toHaveBeenCalled();
+ if(outcome==='newer-seek'){await act(async()=>resolves[1]());expect(audio.getAttribute('src')).toContain('segment-2');}
+ if(outcome!=='unmount')await act(async()=>root.unmount());container.remove();pause.mockRestore();
+});

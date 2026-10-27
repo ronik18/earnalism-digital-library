@@ -10217,7 +10217,7 @@ def _content_range_total_size(content_range: str) -> int:
 def _streaming_body_iterator(body):
     try:
         while True:
-            chunk = body.read(1024 * 1024)
+            chunk = body.read(64 * 1024)
             if not chunk:
                 break
             yield chunk
