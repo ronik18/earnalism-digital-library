@@ -1,0 +1,49 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261027-the-tell-tale-heart-text-reader",
+  "edition_id": "the-tell-tale-heart",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "approval_evidence": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+    "checksum_manifest": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
+    "public_book": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "publication_manifest": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+    "reader_manifest": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+    "source_evidence": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+    "cover_approval_evidence": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e",
+    "chapter-001": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+    "cover_front": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "cover_back": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-27T00:00:00+00:00",
+  "valid_until": "2027-10-27T00:00:00+00:00",
+  "basis": "US-only proposal for the exact original English text and identified covers. The underlying nineteenth-century published text is public domain in the United States, supported by retained edition evidence, the source publisher’s current US copyright status and US Copyright Office duration guidance. The retained cover artwork is Odilon Redon’s1883 The Tell-Tale Heart, not wholly first-party illustration. Reuse the accepted exact front/back compositions, the retained source-art hash, and the source record’s US public-domain/faithful-reproduction basis. No new image or separate modern artwork is substituted. Existing India authority stays unchanged. No audio, downloads, generation, payment activation, publication or deployment is approved by preparing this proposal.",
+  "evidence_sha256": [
+    "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+    "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd",
+    "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e",
+    "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+    "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
+    "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+    "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "bf7554b240dda2f0901ca29d1eae5b6593100dd741047956918fc8dac29c1844",
+    "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+    "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+    "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

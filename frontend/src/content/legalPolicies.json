@@ -56,13 +56,13 @@
   "/privacy": {
     "title": "Privacy",
     "description": "How Earnalism uses account, reading, payment, support and newsletter information.",
-    "updated": "27 October 2026",
+    "updated": "28 October 2026",
     "intro": "REO ENTERPRISE, Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India is responsible for the personal information used to operate Earnalism. Contact sales@reoenterprise.org for privacy requests.",
     "sections": [
       {
         "heading": "Information we use",
         "paragraphs": [
-          "We process the name, email, account identifiers and sign-in information you provide; reading position, device/session identifiers and delivered reading/listening usage needed for access and accounting; payment order, status and transaction references; and the information you send through contact or newsletter forms. Hosting and security services may process connection information such as IP addresses and request logs. Payment credentials are handled by the payment provider; do not send them to our support team."
+          "We process the name, email, phone number when you use phone verification, account identifiers and sign-in information you provide; reading position, device/session identifiers and delivered reading/listening usage needed for access and accounting; payment order, status and transaction references; and the information you send through contact or newsletter forms. Hosting and security services may process connection information such as IP addresses and request logs. Payment credentials are handled by the payment provider; do not send them to our support team."
         ]
       },
       {
@@ -74,13 +74,20 @@
       {
         "heading": "Service providers and international processing",
         "paragraphs": [
-          "Hosting, database, storage, authentication, payment and communication providers process information needed for their functions. These include Vercel for website hosting and Razorpay for payment processing. Information may be processed outside your country, including in India and the countries where our providers operate. Before offering services in a new territory, applicable provider contracts and any required international-transfer safeguards must be established. We do not use advertising pixels."
+          "Hosting, database, storage, authentication, payment and communication providers process information needed for their functions. These include Vercel for website hosting and Razorpay for payment processing. Information may be processed outside your country, including in India and the countries where our providers operate. Before offering services in a new territory, applicable provider contracts and any required international-transfer safeguards must be established. We do not use advertising pixels.",
+          "When Google sign-in is enabled, Google services load on the sign-in page. Razorpay services load when you start checkout. These authentication and payment providers may recognise your browser across websites using cookies or similar identifiers. Their privacy notices describe their own data practices. Optional Earnalism analytics remain disabled independently of these requested features."
         ]
       },
       {
         "heading": "Browser storage and optional analytics",
         "paragraphs": [
           "Browser storage supports sign-in and requested reader preferences; account services retain reading position and usage needed for delivery and accounting. Optional first-party journey analytics and Vercel Web Analytics are disabled for this launch. We do not create optional analytics identifiers or record campaign attribution in browser storage. Existing optional analytics storage from an earlier version can be removed using your browser controls. Clearing necessary storage may sign you out or reset preferences. Necessary operational and security logs are separate from optional analytics."
+        ]
+      },
+      {
+        "heading": "Browser privacy signals",
+        "paragraphs": [
+          "Optional Earnalism analytics and campaign-attribution storage are disabled for all visitors, whether or not a browser sends Do Not Track or Global Privacy Control signals. These signals do not change the essential account, requested-preference, delivery-accounting and security processing described in this notice. We do not claim that disabling our optional analytics prevents an authentication or payment provider from recognising a browser across websites."
         ]
       },
       {
@@ -93,7 +100,8 @@
         "heading": "Your choices and requests",
         "paragraphs": [
           "Grievance Officer and privacy/support contact: Ronik Basak, Earnalism (operated by REO ENTERPRISE). Email: sales@reoenterprise.org. Postal contact: Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India.",
-          "Email sales@reoenterprise.org or use the contact form to request access, correction, deletion, restriction, portability or objection where applicable. You may withdraw consent without affecting earlier lawful processing. We may request proportionate information to verify identity; never send a password. We respond within the applicable legal deadline and explain any lawful retention or refusal. You may complain to the competent data-protection authority. To unsubscribe from newsletters, email sales@reoenterprise.org with “Unsubscribe”; no purchase is required."
+          "Email sales@reoenterprise.org or use the contact form to request access, correction, deletion, restriction, portability or objection where applicable. You may withdraw consent without affecting earlier lawful processing. We may request proportionate information to verify identity; never send a password. We respond within the applicable legal deadline and explain any lawful retention or refusal. You may complain to the competent data-protection authority. To unsubscribe from newsletters, email sales@reoenterprise.org with “Unsubscribe”; no purchase is required.",
+          "Where an applicable privacy law provides an appeal, you may appeal a refusal by emailing sales@reoenterprise.org with “Privacy appeal” and the request reference. We will explain the applicable outcome and further complaint route. Exercising an applicable privacy right will not lead to unlawful discrimination."
         ]
       },
       {
@@ -105,7 +113,7 @@
       {
         "heading": "Children and changes",
         "paragraphs": [
-          "Accounts and purchases are intended for adults. If you believe we hold a child’s information without appropriate authority, contact us so we can assess and address it. Material changes to this notice will be reflected here with an updated date. A change of notice does not by itself grant permission for a new use requiring consent."
+          "Accounts and purchases are intended for adults. If you believe we hold a child’s information without appropriate authority, contact us so we can assess and address it. If we learn that we have collected personal information from a child under 13 without legally required authority, we will restrict further processing and arrange deletion as required by law. We post material changes to this notice on this page and update the date. Where additional notice or consent is legally required, we will provide it before the relevant new use. A change of notice does not by itself grant permission for a new use requiring consent."
         ]
       }
     ]

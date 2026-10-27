@@ -2801,6 +2801,8 @@ Synthetic historical installer tests need their own exact fixture-source binding
 
 - The pinned Vercel SDK represents symlinks by link-text bytes, not resolved file bytes. Verify that representation plus separately selected target content; never waive source hashes or allow external/private/directory targets. An unchanged accepted receipt-logo link exposed this latent verifier defect when packaging CI was triggered.
 
+- Explicit territory-specific rights acceptance can be captured as isolated schema-valid successor records without replacing active IN decisions or widening runtime territory/commerce gates. Preserve exact packet/draft hashes, actual human attribution and acceptance timestamp independently of the approved validity window.
+
 - Metadata observation and protected execution qualification are distinct. Fixed read-only commands and output projection can be tested without provider writes; rollback capability cannot prove guarded source/config eligibility, and a local journal path cannot prove protected durable storage.
 
 - Protected observer integration must bind reviewed main source, protected environment and fixed durable host journal. Passing offline transport tests does not prove native API compatibility or supply a release host; current repository has no self-hosted release runners. Keep read-only collection and execution authority separate.
@@ -2808,3 +2810,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - Use an existing protected GitHub-hosted runner for read-only observation; do not turn a chosen self-hosted write-executor design into an unnecessary owner provisioning requirement. Hosted diagnostics must keep execution hard-disabled and retain all durable-journal/artifact/approval holds for actual writes.
 
 - Validate a journal location and owner/permissions before enumerating or reading receipts. Reject receipt symlinks and open regular receipts without following a final symlink; later validation cannot undo a private-path read.
+
+- A conflicted PR can suppress fresh pull-request CI. Reconcile its candidate with verified current main by intent, preserving baseline history keys, both append-only learning streams and exact accepted application/intake subtrees before qualifying the combined head.
