@@ -1,6 +1,6 @@
 // Only the local file-selection function used by exact vercel@62.1.0 --dry.
 import { createHash } from 'node:crypto';
-import { readFile, realpath, stat } from 'node:fs/promises';
+import { lstat, readFile, readlink, realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -14,7 +14,8 @@ export async function validateSelectedFiles(root, manifest) {
   const seen = new Set();
   for (const entry of manifest.files) {
     const file = path.resolve(root, entry.path);
-    const relative = path.relative(root, await realpath(file));
+    const resolved = await realpath(file);
+    const relative = path.relative(root, resolved);
     if (path.isAbsolute(entry.path) || !relative || relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
       throw new Error('External selected file');
     }
@@ -23,16 +24,38 @@ export async function validateSelectedFiles(root, manifest) {
     if (path.basename(file).startsWith('.env') && path.basename(file) !== '.env.example') {
       throw new Error('Environment file selected');
     }
+    if ((path.basename(resolved).startsWith('.env') && path.basename(resolved) !== '.env.example') ||
+        relative.split(path.sep).some(part => ['.git', '.secrets', '.vercel'].includes(part))) {
+      throw new Error('Private selected target');
+    }
     const info = await stat(file);
+    const link = await lstat(file);
+    if (link.isSymbolicLink()) {
+      if ((entry.mode & 0o170000) !== 0o120000 || !info.isFile()) {
+        throw new Error('Invalid selected symbolic link');
+      }
+      // The pinned SDK hashes the UTF-8 link text, not the resolved bytes.
+      // Require the resolved regular file to be selected separately, where its
+      // real bytes are independently checked by this same verifier.
+      if (!manifest.files.some(target => path.resolve(root, target.path) === resolved &&
+          (target.mode & 0o170000) === 0o100000)) {
+        throw new Error('Selected symbolic link target missing');
+      }
+      const bytes = Buffer.from(await readlink(file), 'utf8');
+      if (entry.size !== bytes.length || entry.sha !== createHash('sha1').update(bytes).digest('hex')) {
+        throw new Error(`Selected link bytes changed: ${JSON.stringify(entry.path)}`);
+      }
+      continue;
+    }
     // The exact SDK also represents directory placeholders, with directory mode,
     // zero size and no digest. Preserve that manifest shape without treating
     // a directory as a hashed source file.
     if (info.isDirectory() && (entry.mode & 0o170000) === 0o040000 &&
         entry.size === 0 && entry.sha === undefined) continue;
-    if (!info.isFile()) throw new Error('Invalid selected directory or file');
+    if (!info.isFile() || (entry.mode & 0o170000) !== 0o100000) throw new Error('Invalid selected directory or file');
     const bytes = await readFile(file);
     if (entry.size !== bytes.length || entry.sha !== createHash('sha1').update(bytes).digest('hex')) {
-      throw new Error('Selected file bytes changed');
+      throw new Error(`Selected file bytes changed: ${JSON.stringify(entry.path)} (selected size ${entry.size}, actual size ${bytes.length})`);
     }
   }
   return manifest;

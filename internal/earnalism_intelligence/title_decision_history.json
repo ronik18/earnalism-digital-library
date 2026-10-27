@@ -12130,5 +12130,15 @@
     "independent_local_issue": "Hydrated existing datalessGitexclude; two prior readtimeout cases nowPASS without sourceweakening",
     "production_changed": false,
     "next_action": "FreshheadCI and relevantreview beforegatedmerge; no failedjobrerun/waiver or deployment"
+  },
+  "vercel_symlink_source_qualification_20261028": {
+    "date": "2026-10-28",
+    "decision": "QUALIFY_PINNED_SDK_INTERNAL_SYMLINK_BYTES_WITH_TARGET_CLOSURE",
+    "evidence": "scripts/select_vercel_source_files.mjs",
+    "root_cause": "Receipt design logo is a tracked internal symlink: SDK selects64link-text bytes, verifier incorrectly compared650122target-imagebytes",
+    "change": "Retain pinnedSDK and rejectexternal/private/directory/missingtargets; validate exactlinktextSHA/size and independentlyselectedregular targetbytes; preserve mutation checks",
+    "qualification": "12selectornegative/positive testsPASS; actualpinnedvercel62.1.0 selection15377entriesPASS;9criticalassettests and nativecriticalassetcheckPASS",
+    "production_changed": false,
+    "next_action": "FreshheadallrequiredCI; no oldjobrerun, gatewaiver, deployment or paidactivity"
   }
 }
