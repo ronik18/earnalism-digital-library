@@ -2802,3 +2802,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - The pinned Vercel SDK represents symlinks by link-text bytes, not resolved file bytes. Verify that representation plus separately selected target content; never waive source hashes or allow external/private/directory targets. An unchanged accepted receipt-logo link exposed this latent verifier defect when packaging CI was triggered.
 
 - Explicit territory-specific rights acceptance can be captured as isolated schema-valid successor records without replacing active IN decisions or widening runtime territory/commerce gates. Preserve exact packet/draft hashes, actual human attribution and acceptance timestamp independently of the approved validity window.
+
+- A single actual hash-bound human rights decision can cover a catalogue batch while preserving prior decisions and all independent release gates. Bind accepted records only after the actual reply, retain exact proposals/receipt, disclose edition differences, and keep runtime activation separate from isolated rights intake.

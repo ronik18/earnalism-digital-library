@@ -12150,5 +12150,15 @@
     "evidence": "internal/legal/us_rights_intake_20261028/intake.json",
     "runtime_activation": false,
     "production_changed": false
+  },
+  "US_catalogue_51_owner_acceptance_20261028": {
+    "state": "OWNER_ACCEPTED_US_RIGHTS_ISOLATED_INTAKE",
+    "reader_records": 50,
+    "audio_stream_records": 1,
+    "prior_acceptances_reused": 2,
+    "approved_index_sha256": "b5045211f55905e1911483b48689073a73093da2f042ccdb6e129c64c1941cf3",
+    "evidence": "internal/legal/us_rights_intake_20261028/catalogue-51/intake.json",
+    "runtime_activation": false,
+    "production_changed": false
   }
 }

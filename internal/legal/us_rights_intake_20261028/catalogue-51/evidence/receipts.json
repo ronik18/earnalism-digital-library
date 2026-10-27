@@ -1,0 +1,26 @@
+[
+  {
+    "name": "pinned-model-card",
+    "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/raw/0c0e3051f131929182e2c023b9537f8b1c68adfe/README.md",
+    "sha256": "64f65e809b51cc0c35f393fbbfcc2d735c0cb3fdbbc6f3fdc4a5e6ce55e9d088",
+    "path": "/tmp/earnalism-us-catalogue-rights-20261028/audio-evidence/pinned-model-card.txt",
+    "bytes": 57846
+  },
+  {
+    "name": "runtime-license",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen3-TTS/022e286b98fbec7e1e916cb940cdf532cd9f488e/LICENSE",
+    "sha256": "a44a6081c73ad75f0255bb2bb5cab74ef1829565a895a24e53a4f11290ab7655",
+    "path": "/tmp/earnalism-us-catalogue-rights-20261028/audio-evidence/runtime-license.txt",
+    "bytes": 11343
+  },
+  {
+    "name": "copyright-restoration",
+    "url": "https://www.copyright.gov/circs/circ38b.pdf",
+    "error_type": "HTTPError"
+  },
+  {
+    "name": "cc-by-sa-legalcode",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/legalcode.en",
+    "error_type": "HTTPError"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-the-gift-of-the-magi-reader-covers",
+  "edition_id": "the-gift-of-the-magi",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
+    "public_book": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "reader_manifest": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "approval_evidence": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
+    "checksum_manifest": "a64af01129b9abef6bdd3a99785c4143d9535b2a66c338ff4d1980a8d708b73f",
+    "publication_manifest": "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24",
+    "chapter:chapter-001": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+    "cover_front": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+    "cover_back": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+    "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24",
+    "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+    "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+    "7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "a64af01129b9abef6bdd3a99785c4143d9535b2a66c338ff4d1980a8d708b73f",
+    "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
+    "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
+    "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc"
+  ],
+  "accepted_by": "Ronik Basak; direct human acceptance call_fd63aceab7874889b48cc98744f6223e/0; receipt sha256:7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+  "conditions_satisfied": true
+}
