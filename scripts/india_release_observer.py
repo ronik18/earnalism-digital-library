@@ -128,7 +128,9 @@ class NativeMetadataObserver:
             # timestamps, active status or untrusted free-text messages.
             snapshot['deployments'].append({'id': row['id'], 'status': row.get('status'),
                 'git_sha': row.get('git_sha') or meta.get('commitHash'),
-                'canRollback': row.get('canRollback') is True})
+                # CLI5.71 does not emit this capability field. Missing data is
+                # unknown, not a negative capability observation.
+                'canRollback': row.get('canRollback') if type(row.get('canRollback')) is bool else None})
         snapshot['observation_sha256'] = digest(snapshot)
         return snapshot
 

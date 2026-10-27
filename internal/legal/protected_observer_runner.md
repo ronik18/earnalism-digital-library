@@ -53,7 +53,10 @@ not a substitute for that read.
 The bounded connector list still shows the historical565 backend as latest and
 no new guarded containment artifact. Its `canRollback` flag cannot establish
 source/config compatibility. Reuse #574's20 focused tests,12 selector tests and
-v4 containment inventory within their original scope.
+v4 containment inventory within their original historical scope. The current
+v5 offline variant is bound to merged577 `f98ce89f`, including its attribution
+notice. Source-role qualification selects a new coherent577 frontend source;
+it never declares the prior575 binary identical across that metadata change.
 
 Remaining production-execution HOLDs are: an authentic protected write executor
 and genuinely durable journal (the current file-journal design needs a qualified

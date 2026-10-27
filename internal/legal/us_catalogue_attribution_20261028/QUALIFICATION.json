@@ -1,0 +1,31 @@
+{
+  "title": "radharani",
+  "change": "Required transcription attribution metadata only",
+  "prior_decision_id": "india-20260925-radharani-commercial-reader-release",
+  "successor_decision_id": "india-20261028-radharani-attribution-metadata-successor",
+  "record_sha256": "e2bf1284ede07ea5f2176bfc4d2e72726929a8d91af7e4abfb751517ee395e7a",
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "chapter_sha256": {
+    "chapter-001.json": "7271c4ebc92d063108f6c607bc2e692d92050281e3dc6d9c4842bb1341732ca7",
+    "chapter-002.json": "fc8063b99c98e6e01810c5158581d1ce510f8a0d2ab522290594c441f8a0df17",
+    "chapter-003.json": "b62c932ad1d835194456f8da90b6de107ff0042c45846e5928856deeae2fb5e4",
+    "chapter-004.json": "b596ebeaf548c4341b3ab57e437ccd5599859b2d212fad877bf82949736dd4f8",
+    "chapter-005.json": "3573d1f217fe7594cd22baa84a3a1b8fc886e6409359b5252d4e65534ce6585d",
+    "chapter-006.json": "62c64f1a551644b204cb9b3a3d433c06f269c772d2316cd36ce6c021071b762b",
+    "chapter-007.json": "c7f149c71f489a1ed472f53b0063a1485f2a48f1ea148538d45bfd8619d8550b",
+    "chapter-008.json": "60a3b81e22d84aefdfb6825673ecb5962b23f225de3f3d26c4adc3f25140426e"
+  },
+  "US_rights_granted": false,
+  "production_changed": false,
+  "new_audio_rights": false
+}

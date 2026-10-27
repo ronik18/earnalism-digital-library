@@ -1,23 +1,39 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20260925-radharani-commercial-reader-release",
+  "decision_id": "india-20261028-radharani-attribution-metadata-successor",
   "edition_id": "radharani",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
     "approval_evidence": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
-    "checksum_manifest": "fb674a5f55ed313a6286d14664c0575b47ae5c52da2b653a707bb819f7251f5d",
-    "public_book": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
-    "publication_manifest": "056ed378cdedd02e003fec00ee22c92cd22a755659983e4eab26bd13b5d35ef8",
+    "checksum_manifest": "021c55aac28f39598b940676591247c6a0a32e4ed3439cfb0573bbee70c235e9",
+    "public_book": "ce78e6f87b9987ddb90ed524837c798b7fc26d395c3db7f31ca72f7e52efc925",
+    "publication_manifest": "caaa3e04f332903bc09f58e4e47770035738a6282183df0a488e5cc306abc9fe",
     "reader_manifest": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
-    "source_evidence": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+    "source_evidence": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
+    "license_notice": "c094d72c1ea6593668dd7438a7ad50eb5cddbeac9160c262f535da6673b7d54a"
   },
-  "territories": ["IN"],
-  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal"],
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
   "valid_from": "2026-09-22T00:00:00+00:00",
   "valid_until": "2036-09-22T00:00:00+00:00",
-  "basis": "India-only commercial text Reader use under the direct 2026-09-25 owner go-live mandate. Existing documented expired-term and CC BY-SA source-layer evidence, identified source edition/text integrity, and first-party cover provenance remain unchanged. Public audio and payment activation are not authorized by this record.",
-  "evidence_sha256": ["e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e", "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d", "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15"],
-  "accepted_by": "REO ENTERPRISE under the direct owner-provided India commercial go-live mandate dated 2026-09-25",
+  "basis": "India-only commercial text Reader use under the direct 2026-09-25 owner go-live mandate. Existing documented expired-term and CC BY-SA source-layer evidence, identified source edition/text integrity, and first-party cover provenance remain unchanged. Public audio and payment activation are not authorized by this record. Metadata-only successor adds the required CC BY-SA transcription notice, preserving exact chapter bytes, covers, source, IN-only territory, uses and original validity. Reuses existing owner acceptance and current instruction to integrate attribution fixes; no new US rights, audio permission or publication/deployment approval.",
+  "evidence_sha256": [
+    "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+    "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
+    "6d0d3a8401646b71f37fce6756b83b319358e601b545d05311005cd90dabb22f",
+    "c094d72c1ea6593668dd7438a7ad50eb5cddbeac9160c262f535da6673b7d54a",
+    "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e"
+  ],
+  "accepted_by": "REO ENTERPRISE under the direct owner-provided India commercial go-live mandate dated 2026-09-25; automated metadata rebind recorder under direct 28 October2026 attribution-fix instruction; no new legal declaration or signature inferred",
   "conditions_satisfied": true
 }

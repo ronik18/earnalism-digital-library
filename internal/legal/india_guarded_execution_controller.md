@@ -49,7 +49,8 @@ The historical565 backend lacks the India purchase guard and newer financial
 fixes. It is rejected as an approved fallback. The initial guard-only old-runtime
 offline proposal is retained only as rejected historical evidence and must not
 be used. The accepted **preparation direction** starts from the complete current
-backend633caa1a, retaining all Listener, payment-proof, atomic-refund, controlled
+backend `f98ce89f` (reviewed577), retaining the attribution repair plus all
+Listener, payment-proof, atomic-refund, controlled
 balance and entitlement code. Only a fail-closed purchase-initiation branch is
 inserted in its actual production middleware; existing middleware and every
 other backend file remain unchanged, including file modes.
@@ -81,4 +82,15 @@ eligibility. No engineering dependency is an invitation for an owner waiver.
 
 The preflight uses a fixed journal namespace outside the checkout and does not create it, execute, dispatch or accept approval booleans as authority. Its result always retains the current no-execution prohibition and authentic platform executor/source-role/config/startup holds. A local folder is not proof of durable/shared protected-runner storage. Actual protected platform runner authentication/storage/approval wiring remains incomplete, explicitly rather than modeled as PASS.
 
-Reused read-only Railway observation from 28 October local date: the bounded10-artifact inventory contains no reviewed guarded633/v4 artifact. Current22c88931/e68d70bc is healthy but capability `canRollback` does not prove guard/config qualification. No provider build/deploy is permitted to manufacture the missing evidence. Existing artifact/config eligibility and actual protected executor require further qualification before execution; no owner waiver is requested.
+The protected read-only observation workflow/runner is now integrated in source
+as described in `protected_observer_runner.md`. Actual provider-write execution
+and durability/approval qualification remain separate holds.
+
+Reused read-only Railway observation from28October: the bounded ten-artifact
+inventory contains no reviewed guarded provider artifact. Current22c88931/e68d70bc
+is healthy, but capability `canRollback` does not prove guard/config qualification.
+The pinned CLI does not emit that capability; its missing field remains unknown.
+No provider build/deploy is permitted to manufacture the missing evidence.
+The old633/v4 receipt remains historical. The v5 offline variant is based on
+actual577 source and preserves its license notice, with only the closed-initiation
+middleware delta. Neither local receipt establishes provider eligibility.

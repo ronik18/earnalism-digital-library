@@ -78,3 +78,26 @@ def test_cc0_notice_is_bound_and_does_not_claim_sharealike(tmp_path):
     book['license_notice_sha256'] = hashlib.sha256(raw).hexdigest()
     (tmp_path/'public_book.json').write_text(json.dumps(book))
     assert public_license_notice(tmp_path) is None
+
+
+def test_radharani_notice_successor_preserves_india_scope_and_exact_chapters():
+    from backend.rights_decision_gate import load_production_registry, record_sha256, evaluate_accepted_record
+    from datetime import datetime, timezone
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    base = root / 'backend/data/controlled_publications/radharani'
+    record = json.loads((base / 'rights_decision.json').read_text())
+    previous = json.loads((root / 'internal/legal/us_catalogue_attribution_20261028/radharani-prior-rights_decision.json').read_text())
+    assert record['territories'] == previous['territories'] == ['IN']
+    for key in ('uses', 'valid_from', 'valid_until'):
+        assert record[key] == previous[key]
+    assert public_license_notice(base)['license'] == 'CC-BY-SA-4.0'
+    assert record['components']['license_notice'] == hashlib.sha256((base / 'license_notice.json').read_bytes()).hexdigest()
+    for name in ('public_book.json','publication_manifest.json','checksum_manifest.json','rights_decision.json','license_notice.json'):
+        assert (base / name).read_bytes() == (root / 'data/controlled_publications/radharani' / name).read_bytes()
+    accepted, revoked = load_production_registry()
+    assert accepted[previous['decision_id']] == record_sha256(previous)
+    assert accepted[record['decision_id']] == record_sha256(record)
+    args = dict(edition_id='radharani', operator_id='reo-enterprise',country_trusted=True,use='reader_delivery', required_components=record['components'],accepted_records=accepted,revoked_decision_ids=revoked,now=datetime.now(timezone.utc))
+    assert evaluate_accepted_record(record,country='IN',**args).passed
+    assert not evaluate_accepted_record(record,country='US',**args).passed

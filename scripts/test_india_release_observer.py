@@ -83,6 +83,12 @@ class ObserverTests(unittest.TestCase):
         result=rollback_verdict([{'id':'old','git_sha':SHA,'status':'SUCCESS','canRollback':True}],contract)
         self.assertFalse(result['qualified']);self.assertTrue(result['capability_only'])
 
+    def test_native_cli_missing_capability_is_unknown_not_false(self):
+        rows=[{'id':'old','status':'SUCCESS','createdAt':'2026-10-26T00:00:00Z',
+               'meta':{'commitHash':'e68d70bcf35797c5707b58511cad86dffaec5fe3'}}]
+        observed=self.observer(deployments=rows).collect()
+        self.assertIsNone(observed['deployments'][0]['canRollback'])
+
     def test_absent_artifact_held(self):
         contract={'rollback':{'deployment_id':'new','source_sha':SHA,'source_manifest_sha256':'a'*64,'config_sha256':'b'*64}}
         self.assertEqual(rollback_verdict([],contract)['reason'],'GUARDED_ARTIFACT_NOT_OBSERVED')
