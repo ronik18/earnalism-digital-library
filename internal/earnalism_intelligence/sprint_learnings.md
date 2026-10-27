@@ -2801,4 +2801,6 @@ Synthetic historical installer tests need their own exact fixture-source binding
 
 - The pinned Vercel SDK represents symlinks by link-text bytes, not resolved file bytes. Verify that representation plus separately selected target content; never waive source hashes or allow external/private/directory targets. An unchanged accepted receipt-logo link exposed this latent verifier defect when packaging CI was triggered.
 
+- Explicit territory-specific rights acceptance can be captured as isolated schema-valid successor records without replacing active IN decisions or widening runtime territory/commerce gates. Preserve exact packet/draft hashes, actual human attribution and acceptance timestamp independently of the approved validity window.
+
 - Required transcription attribution is a legal exception to internal-only source metadata. Add its hash-bound public notice with unchanged chapters and reconcile mirrors/manifests/retained IN metadata successors; never silently extend territory or call a later reprint date alone a new copyright.

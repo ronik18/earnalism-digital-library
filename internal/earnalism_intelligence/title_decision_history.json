@@ -12141,6 +12141,16 @@
     "production_changed": false,
     "next_action": "FreshheadallrequiredCI; no oldjobrerun, gatewaiver, deployment or paidactivity"
   },
+  "us_reader_rights_intake_20261028": {
+    "titles": [
+      "a-ghost-story",
+      "the-tell-tale-heart"
+    ],
+    "state": "OWNER_ACCEPTED_ISOLATED_SOURCE_INTAKE",
+    "evidence": "internal/legal/us_rights_intake_20261028/intake.json",
+    "runtime_activation": false,
+    "production_changed": false
+  },
   "radharani_attribution_20261028": {
     "state": "ATTRIBUTION_SOURCE_FIX_QUALIFIED_CI_PENDING",
     "evidence": "internal/legal/us_catalogue_attribution_20261028/QUALIFICATION.json",
