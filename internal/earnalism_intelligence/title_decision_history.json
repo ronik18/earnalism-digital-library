@@ -12083,5 +12083,12 @@
     "evidence": "no_pass_access_dummy_audit_20261027.md",
     "free_reader_entitlements_changed": false,
     "production_changed": false
+  },
+  "named_operator_policy_20261027": {
+    "state": "LOCAL_PREPARED_EXACT_HEAD_REVIEW_PENDING",
+    "evidence": "../legal/international_launch_20261027/operator-policy-followup.md",
+    "rights_changed": false,
+    "entitlements_changed": false,
+    "production_changed": false
   }
 }

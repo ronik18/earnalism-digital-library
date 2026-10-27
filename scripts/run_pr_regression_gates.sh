@@ -110,6 +110,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx \
   src/experiences-v2/__tests__/listener-transport-canary.test.jsx \
   src/legalDirectRoutes.test.js \
+  src/pages/LegalPages.test.jsx \
   src/bookDetailDirectRoute.test.js \
   src/components/Footer.test.js \
   src/components/ReferencePublicPages.test.jsx \
