@@ -4,7 +4,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 import pytest
-from rights_decision_gate import evaluate_accepted_record, load_production_registry, record_sha256
+from backend.rights_decision_gate import evaluate_accepted_record, load_production_registry, record_sha256
 ROOT = Path(__file__).resolve().parents[2]
 PACKET = ROOT / 'internal/legal/us_rights_intake_20261028'
 INDEX = json.loads((PACKET / 'intake.json').read_text())
