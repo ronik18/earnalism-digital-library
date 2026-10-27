@@ -130,6 +130,11 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Library.test.jsx \
   src/pages/Pricing.test.jsx \
   src/pages/Pricing.purchase.test.jsx \
+  src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx \
+  src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx \
+  src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx \
+  src/experiences-v2/reader/readerIndexBoundary.test.js \
+  src/experiences-v2/reader/visualPagination.test.js \
   src/lib/paymentReceipt.test.js \
   src/authAccountLifecycle.test.jsx \
   src/staticSeoContract.test.js
