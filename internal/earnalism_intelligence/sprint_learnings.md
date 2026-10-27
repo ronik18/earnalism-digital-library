@@ -2796,3 +2796,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - India transition preparation must reject backend-first ordering and incompatible rollback, stop on unknown writes, and never turn modeled stage completion into provider or deployment approval. Actual guarded rollback artifact qualification remains separate.
 
 - Guarded rollback must retain latest financial/entitlement changes, not just add India admission to an old runtime. Current-source closed-initiation containment retains settlement code. Canonical operation IDs plus a global exclusive barrier and actual reconciliation prevent local-path or concurrent-write retry bypass. Native owner no-deploy instructions supersede stale automation authority.
+
+- Containment tests require the actual frozen Git source, so shallow CI must fetch that exact commit and verify its subtree; do not substitute mutable checkout bytes. Git archive can add group-write permissions; normalize to canonical source executable/non-executable modes. Local FileProvider hydration repairs metadata availability without changing evidence gates.

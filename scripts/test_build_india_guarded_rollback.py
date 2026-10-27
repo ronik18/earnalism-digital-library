@@ -1,8 +1,11 @@
 import ast
 import asyncio
+import io
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
+import tarfile
 from types import SimpleNamespace
 from scripts import build_india_guarded_rollback as b
 
@@ -49,3 +52,17 @@ class GuardedContainmentTests(unittest.TestCase):
             request = SimpleNamespace(method='POST', url=SimpleNamespace(path=path), headers={})
             with self.subTest(path=path):
                 self.assertEqual(asyncio.run(env['enforce_public_release_country'](request, inert)).status_code, status)
+
+    def test_archive_group_write_does_not_change_git_file_modes(self):
+        source = self.source().encode(); stream = io.BytesIO()
+        with tarfile.open(fileobj=stream, mode='w') as archive:
+            for name, data, mode in [('backend/server.py', source, 0o664),
+                                     ('backend/entry.sh', b'#!/bin/sh\nexit 0\n', 0o775)]:
+                item = tarfile.TarInfo(name); item.size = len(data); item.mode = mode
+                archive.addfile(item, io.BytesIO(data))
+        def frozen_git(*args): return stream.getvalue() if args[0] == 'archive' else source
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(b, 'git', side_effect=frozen_git):
+            output = Path(tmp) / 'new-source'; report = b.build(output)
+            self.assertEqual((output/'backend/server.py').stat().st_mode & 0o777, 0o644)
+            self.assertEqual((output/'backend/entry.sh').stat().st_mode & 0o777, 0o755)
+            self.assertEqual(report['files']['backend/entry.sh']['mode'], '0o755')

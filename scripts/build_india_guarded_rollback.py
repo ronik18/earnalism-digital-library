@@ -1,4 +1,4 @@
-"""Build an offline guarded bridge source tree; never deploy, publish or run server."""
+"""Build an offline guarded containment source; never deploy, publish or run server."""
 import argparse
 import ast
 import hashlib
@@ -64,7 +64,9 @@ def build(output):
             else:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(archive.extractfile(member).read())
-                os.chmod(target, member.mode & 0o777)
+                # Git tar archives can add group-write permission (0664/0775).
+                # Git source tracks only canonical0644 versus executable0755.
+                os.chmod(target, 0o755 if member.mode & 0o111 else 0o644)
     (output / 'backend/server.py').write_bytes(server)
     files = {str(p.relative_to(output)): {'sha256': hashlib.sha256(p.read_bytes()).hexdigest(),
                                         'mode': oct(p.stat().st_mode & 0o777)}

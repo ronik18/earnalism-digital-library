@@ -12119,5 +12119,16 @@
     "production_changed": false,
     "paid_session": false,
     "next_action": "Fresh exacthead PR CI/review; live observer/protected runner and provider artifact/config qualification remain mandatory"
+  },
+  "india_containment_ci_qualification_20261028": {
+    "date": "2026-10-28",
+    "decision": "RETAIN_EXACT_CONTAINMENT_SOURCE_IN_SHALLOW_CI_AND_CANONICAL_MODES",
+    "evidence": "internal/legal/india_guarded_execution_controller.md",
+    "hosted_failure": "40559680310 missing633backend/server Git history in shallow checkout;692native casesPASS before3new unittest dependency errors",
+    "repair": "Bounded exact633fetch with b88b63b4d744b6f33ff65d738e41247b3078d9e2 subtree assertion; production pin unchanged. Canonical Git0644/0755 modes restored from archive executable bit.",
+    "local_validation": "20 focused testsPASS;2079 backend files verified, only intended middlewarefunction changes and no modechanges",
+    "independent_local_issue": "Hydrated existing datalessGitexclude; two prior readtimeout cases nowPASS without sourceweakening",
+    "production_changed": false,
+    "next_action": "FreshheadCI and relevantreview beforegatedmerge; no failedjobrerun/waiver or deployment"
   }
 }
