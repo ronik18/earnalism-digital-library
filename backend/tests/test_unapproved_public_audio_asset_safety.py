@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from backend.catalog_truth import public_book_projection
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -41,20 +42,22 @@ def test_unapproved_controlled_publications_expose_no_direct_audio_urls():
         urls = [
             url
             for key in AUDIO_KEYS
-            for url in public_urls(public_book.get(key))
+            for url in public_urls(public_book_projection(public_book).get(key))
         ]
         if urls:
             violations[public_path.parent.name] = len(urls)
     assert violations == {}
 
 
-def test_known_approved_audiobooks_retain_provider_assets():
+def test_historical_approval_never_overrides_current_public_audio_gate():
+    # Internal retained provider origins and historical approvals are not a live
+    # public package binding. Inspect the actual public projection, not archives.
     for slug in ("book-2b9853ec52", "a-ghost-story", "sredni-vashtar"):
-        title_dir = CONTROLLED_ROOT / slug
-        approval = read_json(title_dir / "approval_evidence.json")
-        public_book = read_json(title_dir / "public_book.json")
-        assert audio_release_approved(approval, public_book)
-        assert str(public_book["audiobook_assets"]["mp3"]).startswith("https://")
+        public_book = read_json(CONTROLLED_ROOT / slug / "public_book.json")
+        projected = public_book_projection(public_book)
+        assert projected["audio_enabled"] is False
+        assert projected["audiobook_enabled"] is False
+        assert not [url for key in AUDIO_KEYS for url in public_urls(projected.get(key))]
 
 
 def test_d19_failed_qa_packet_is_explicitly_audio_hidden():

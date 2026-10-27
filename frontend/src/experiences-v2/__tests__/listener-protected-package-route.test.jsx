@@ -201,4 +201,16 @@ describe("Listener protected package route", () => {
     await act(async()=>root.unmount());container.remove();
   });
 
+ test.each(['state','timer'])('renewal transport failure ends once without automatic retry: %s',async mode=>{
+  jest.useFakeTimers();mockRenewReadingPassLease.mockRejectedValue(new Error('synthetic timeout'));
+  const container=document.createElement('div');document.body.appendChild(container);const root=createRoot(container);
+  await act(async()=>root.render(<ListenerExperienceV2Route/>));await flush();
+  await act(async()=>[...container.querySelectorAll('button')].find(b=>b.textContent==='Authorize Listening').click());await flush();
+  if(mode==='state'){await act(async()=>[...container.querySelectorAll('button')].find(b=>b.textContent==='Native Playing').click());}
+  else await act(async()=>jest.advanceTimersByTime(10000));await flush();await flush();
+  expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(1);expect(mockEndReadingPassSession).toHaveBeenCalledTimes(1);expect(container.textContent).toContain('Listening access needs attention');
+  await act(async()=>jest.advanceTimersByTime(60000));await flush();expect(mockRenewReadingPassLease).toHaveBeenCalledTimes(1);
+  await act(async()=>root.unmount());container.remove();jest.useRealTimers();
+ });
+
 });
