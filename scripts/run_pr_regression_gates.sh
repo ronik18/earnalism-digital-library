@@ -56,7 +56,7 @@ env \
   REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
-  "$PYTHON_BIN" -m pytest -q \
+  "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_client_matrix.py \
@@ -84,6 +84,7 @@ env READER_SEGMENT_MONGO_INTEGRATION=1 bash scripts/run_reader_benchmark.sh
 echo "==> Local UAT public-release hold seeding contract"
 "$PYTHON_BIN" -m unittest \
   scripts.test_seed_uat_canonical_pages \
+  scripts.test_run_bounded_pytest \
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \

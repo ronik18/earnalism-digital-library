@@ -12077,5 +12077,11 @@
     "productionChanged": false,
     "productionSurfaceSHA256": "a27a43650177074a1d1100bd43c353a122a3aa8f76a99e1c6c0e9a6c4de75181",
     "title": "the-open-window"
+  },
+  "no_pass_access_ci_wait_20261027": {
+    "state": "LOCAL_BOUNDED_NATIVE_683_PASS_HOSTED_PENDING",
+    "evidence": "no_pass_access_dummy_audit_20261027.md",
+    "free_reader_entitlements_changed": false,
+    "production_changed": false
   }
 }

@@ -9,3 +9,7 @@ Local qualification: 146 passed, no skips, with a disposable authenticated loopb
 The test-only cap installer source fixture is reused from reviewed Listener PR568; frozen production pins and the disabled installer remain untouched. The hosted regression command now requires the new error-handling and catalogue tests alongside real Mongo integrations.
 
 This focused PR excludes international compliance commit57e518c, Listener runtime changes, and unrelated local ledger/history edits. Owner explicitly authorized one separate PR/branch exception. CI/review results must be read at the exact pushed head; local evidence is not deployment acceptance. No merge/deployment is authorized by this packet.
+
+## Hosted Mongo wait correction
+
+Reconciled head1f0bf3fb stalled in the mandatory Mongo group until the45minute job limit, without an application assertion report. The same source passed683 local native cases. Test-only client socket/connect/pool waits are now finite, and the unchanged mandatory group runs with an eight-minute fail-closed process watchdog, two-minute thread traces and verbose case identity. Six fault tests verify pass, assertion failure, hung-child termination and non-disableable client deadlines;683 actual local Mongo cases passed through the bounded runner. All opt-ins/test paths remain required. This improves bounded failure/diagnosis; it does not claim the hosted stall root cause is proven or waive fresh exact-head CI.
