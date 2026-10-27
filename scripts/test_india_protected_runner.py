@@ -36,7 +36,7 @@ class RunnerTests(unittest.TestCase):
     def test_exact_main_only_no_ambient_authority(self):
         self.assertEqual(runner.verified_source(self.env(),self.git),SHA)
         for key,value in [('GITHUB_REF','refs/pull/12/merge'),('GITHUB_EVENT_NAME','push'),
-            ('GITHUB_REPOSITORY','attacker/repo'),('RUNNER_ENVIRONMENT','github-hosted'),
+            ('GITHUB_REPOSITORY','attacker/repo'),('RUNNER_ENVIRONMENT','unknown'),
             ('EARNALISM_EXECUTION_ENABLED','true'),('EXPECTED_CONTROLLER_SHA','f'*40),
             ('EARNALISM_RUN_MODE','DEPLOY_PRODUCTION')]:
             env=self.env();env[key]=value
@@ -70,6 +70,21 @@ class RunnerTests(unittest.TestCase):
         self.assertIn('FIXED_JOURNAL_NOT_PROVISIONED',report['holds'])
         self.assertEqual(report['controller_sha'],SHA)
 
+    def test_hosted_observation_needs_no_write_journal_and_never_executes(self):
+        observer=mock.Mock()
+        observer.collect.return_value={'frontend_auto_deploy_disabled':True,
+            'backend_auto_deploy_disabled':True,'deployments':[], 'observation_sha256':'a'*64}
+        env=self.env();env['RUNNER_ENVIRONMENT']='github-hosted'
+        with tempfile.TemporaryDirectory() as temp,mock.patch.object(ProtectedReleasePreflight,'JOURNAL',Path(temp)/'missing'):
+            report=runner.observe(env,self.git,observer,self.contract())
+            self.assertFalse(ProtectedReleasePreflight.JOURNAL.exists())
+        observer.collect.assert_called_once_with(None)
+        self.assertEqual(report['observation_runner'],'github-hosted')
+        self.assertFalse(report['execution_permitted'])
+        self.assertEqual(report['provider_mutations'],0)
+        self.assertIn('FIXED_JOURNAL_NOT_PROVISIONED',report['holds'])
+        self.assertIn('AUTHENTIC_PLATFORM_PROTECTED_EXECUTOR_REQUIRED',report['holds'])
+
     def test_journal_does_not_infer_durability_or_modify_history(self):
         with tempfile.TemporaryDirectory() as temp:
             journal=Path(temp).resolve()/'journal';journal.mkdir(mode=0o700)
@@ -96,13 +111,17 @@ class RunnerTests(unittest.TestCase):
         self.assertIn('environment: reader-frontend-production',source)
         self.assertIn('group: reader-manual-frontend-production',source)
         self.assertIn('cancel-in-progress: false',source)
-        self.assertIn('runs-on: [self-hosted, earnalism-release]',source)
+        self.assertIn('runs-on: ubuntu-latest',source)
         self.assertIn("github.ref == 'refs/heads/main'",source)
         self.assertIn('inputs.controller_sha == github.sha',source)
         self.assertIn("EARNALISM_EXECUTION_ENABLED: 'false'",source)
         self.assertNotIn('ProviderAdapter(',source)
         self.assertNotIn('workflow_run:',source)
         self.assertNotIn('push:',source)
+        preparation=source.split('name: Prepare pinned observation tools')[1].split('- name: Observe exact protected source')[0]
+        self.assertNotIn('secrets.',preparation)
+        self.assertIn('vercel@59.25.4',preparation)
+        self.assertIn('sha256sum --check --status',preparation)
 
     def test_failure_artifact_never_retains_provider_exception_text(self):
         with tempfile.TemporaryDirectory() as temp:

@@ -24,9 +24,9 @@ jobs:
   observe:
     if: github.repository == 'ronik18/earnalism-digital-library' && github.ref == 'refs/heads/main' && inputs.controller_sha == github.sha && inputs.confirm_read_only == 'READ_ONLY_OBSERVATION'
     environment: reader-frontend-production
-    # This change does not provision a host, alter environment protections or
-    # dispatch a job. The existing fixed journal must be on durable host storage.
-    runs-on: [self-hosted, earnalism-release]
+    # Metadata observation needs no persistent executor. Future writes still
+    # require the separately qualified durable journal/protected release host.
+    runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -34,6 +34,25 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24.21.0'
+      - name: Prepare pinned observation tools without provider credentials
+        env:
+          VERCEL_TELEMETRY_DISABLED: '1'
+          DO_NOT_TRACK: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          observer_tools="$RUNNER_TEMP/india-observer-tools"
+          mkdir -p "$observer_tools/bin"
+          npm install --prefix "$observer_tools" --registry=https://registry.npmjs.org --ignore-scripts --no-audit --no-fund --package-lock=false vercel@59.25.4
+          curl --fail --location --silent --show-error --max-time 60 --proto '=https' \
+            https://github.com/railwayapp/cli/releases/download/v5.71.0/railway-v5.71.0-x86_64-unknown-linux-gnu.tar.gz \
+            --output "$observer_tools/railway.tar.gz"
+          printf '%s  %s\n' '856dde75501fc1088065e5d980141ddc2340be81cfcef5ece8cd0e947ff9d709' "$observer_tools/railway.tar.gz" | sha256sum --check --status
+          tar -xzf "$observer_tools/railway.tar.gz" -C "$observer_tools/bin" railway
+          printf '%s\n' "$observer_tools/node_modules/.bin" "$observer_tools/bin" >> "$GITHUB_PATH"
       - name: Observe exact protected source and providers without execution
         env:
           EXPECTED_CONTROLLER_SHA: ${{ inputs.controller_sha }}

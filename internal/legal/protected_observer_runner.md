@@ -12,7 +12,11 @@ event, ref, controller SHA, clean checkout and the repository-bound application
 contract trees before provider reads. Inputs cannot supply an approval receipt,
 arbitrary source ref, command, journal directory or provider target. Actions are
 pinned; credentials are scoped only to the observation step and never passed in
-argv or retained in artifacts. Existing production deployment workflows and
+argv or retained in artifacts. The workflow uses a GitHub-hosted Ubuntu runner
+for observation; it does not require a new persistent host. Pinned observation
+tools are prepared before, and without, the provider-credential step. Railway's
+official Linux archive is SHA256-pinned; Vercel's exact CLI version is pinned.
+Existing production deployment workflows and
 their approval pins are unchanged.
 
 The observer now checks the reviewed Vercel59.25.4/Railway5.71.0 CLI versions
@@ -31,8 +35,9 @@ executor provisioning are external facts, not consequences of passing tests.
 
 Read-only GitHub inspection on28October2026 found the existing environment's
 required-reviewer rule (one reviewer) and deployment branch restriction `main`.
-It found zero repository self-hosted runners, including zero with the required
-`earnalism-release` label. No environment or runner configuration was changed.
+It found zero repository self-hosted runners. That fact is retained, but is not
+a blocker for nonmutating observation: the workflow now uses the existing
+GitHub-hosted runner platform. No environment or runner registration was changed.
 
 The actual local Vercel project JSON passed the new transport's scope checks.
 The subsequent Railway CLI deployment-list call timed out at60seconds. No
@@ -47,12 +52,17 @@ no new guarded containment artifact. Its `canRollback` flag cannot establish
 source/config compatibility. Reuse #574's20 focused tests,12 selector tests and
 v4 containment inventory within their original scope.
 
-Remaining HOLDs are: provisioned/protected persistent release host and fixed
-journal; successful actual native transport observation; current reviewed
+Remaining production-execution HOLDs are: an authentic protected write executor
+and genuinely durable journal (the current file-journal design needs a qualified
+persistent host); successful actual native transport observation; current reviewed
 source-role/config/startup contract; a provider-built guarded artifact with
 verified configuration/eligibility; and the existing protected rollback/release
 approvals. Building/deploying that missing artifact is outside current scope.
-This workflow is code-ready for review, not platform-executed or release-ready.
+The absence of a persistent write executor must not block read-only collection
+or be presented as an unavoidable requirement to provision a new host. Hosted
+observation leaves all write-executor and journal HOLDs intact and never creates
+or clears a write intent. This workflow is code-ready for review, not
+platform-executed or release-ready.
 No workflow was dispatched and no provider/customer/financial state was changed.
 
 The next Integration Lane action is to review this exact successor and reconcile

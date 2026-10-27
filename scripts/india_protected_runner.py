@@ -20,12 +20,13 @@ def verified_source(env, git):
         'GITHUB_REPOSITORY': REPOSITORY,
         'GITHUB_REF': 'refs/heads/main',
         'GITHUB_EVENT_NAME': 'workflow_dispatch',
-        'RUNNER_ENVIRONMENT': 'self-hosted',
         'EARNALISM_RUN_MODE': 'READ_ONLY_OBSERVATION',
         'EARNALISM_EXECUTION_ENABLED': 'false',
     }
     if any(env.get(k) != v for k, v in expected.items()):
         raise ValueError('Protected main read-only runner context required')
+    if env.get('RUNNER_ENVIRONMENT') not in {'self-hosted', 'github-hosted'}:
+        raise ValueError('Known platform runner required for read-only observation')
     sha = env.get('GITHUB_SHA', '')
     if not re.fullmatch('[0-9a-f]{40}', sha) or env.get('EXPECTED_CONTROLLER_SHA') != sha:
         raise ValueError('Exact controller identity required')
@@ -75,6 +76,7 @@ def observe(env, git, observer, contract):
     preflight = ProtectedReleasePreflight(observer)
     report = preflight.check({'source_sha': app})
     report['controller_sha'] = controller
+    report['observation_runner'] = env['RUNNER_ENVIRONMENT']
     report['source_contract_sha256'] = hashlib.sha256(
         json.dumps(contract, sort_keys=True).encode()).hexdigest()
     report['holds'] = sorted(set(report['holds'] + journal_holds(

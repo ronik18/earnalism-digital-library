@@ -2804,3 +2804,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - Metadata observation and protected execution qualification are distinct. Fixed read-only commands and output projection can be tested without provider writes; rollback capability cannot prove guarded source/config eligibility, and a local journal path cannot prove protected durable storage.
 
 - Protected observer integration must bind reviewed main source, protected environment and fixed durable host journal. Passing offline transport tests does not prove native API compatibility or supply a release host; current repository has no self-hosted release runners. Keep read-only collection and execution authority separate.
+
+- Use an existing protected GitHub-hosted runner for read-only observation; do not turn a chosen self-hosted write-executor design into an unnecessary owner provisioning requirement. Hosted diagnostics must keep execution hard-disabled and retain all durable-journal/artifact/approval holds for actual writes.
