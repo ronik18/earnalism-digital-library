@@ -91,6 +91,7 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_build_india_guarded_rollback \
   scripts.test_india_release_provider_adapter \
   scripts.test_india_release_observer \
+  scripts.test_india_protected_runner \
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \

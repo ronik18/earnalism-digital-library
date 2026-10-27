@@ -12146,5 +12146,17 @@
     "source": "scripts/india_release_observer.py",
     "actual_provider_qualification": false,
     "deployment": false
+  },
+  "protected_observer_runner_20261028": {
+    "state": "SOURCE_INTEGRATED_OPERATIONAL_HOLD",
+    "evidence": "internal/legal/protected_observer_runner.md",
+    "base": "b171b6e96d271c4714e1df76c14753e1e7549d02",
+    "focused_tests_passed": 23,
+    "platform_environment_rules_preserved": true,
+    "registered_self_hosted_release_runners": 0,
+    "native_railway_compatibility_verified": false,
+    "guarded_provider_artifact_qualified": false,
+    "execution_authorized": false,
+    "next_action": "Sole Integration Lane review and exact-head qualification; no workflow dispatch"
   }
 }

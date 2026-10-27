@@ -2802,3 +2802,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - The pinned Vercel SDK represents symlinks by link-text bytes, not resolved file bytes. Verify that representation plus separately selected target content; never waive source hashes or allow external/private/directory targets. An unchanged accepted receipt-logo link exposed this latent verifier defect when packaging CI was triggered.
 
 - Metadata observation and protected execution qualification are distinct. Fixed read-only commands and output projection can be tested without provider writes; rollback capability cannot prove guarded source/config eligibility, and a local journal path cannot prove protected durable storage.
+
+- Protected observer integration must bind reviewed main source, protected environment and fixed durable host journal. Passing offline transport tests does not prove native API compatibility or supply a release host; current repository has no self-hosted release runners. Keep read-only collection and execution authority separate.

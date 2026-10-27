@@ -5,7 +5,7 @@ import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 from scripts.india_release_observer import NativeMetadataObserver, ProtectedReleasePreflight, rollback_verdict
-from scripts.india_release_provider_adapter import PROJECT, TEAM
+from scripts.india_release_provider_adapter import PROJECT, TEAM, CLI_VERSIONS
 
 SHA = 'a4f76c51dfafe50ee35212cb707ea884ae12da62'
 class ObserverTests(unittest.TestCase):
@@ -15,6 +15,8 @@ class ObserverTests(unittest.TestCase):
         if candidate is not None: responses.append(candidate)
         responses.append(deployments if deployments is not None else [{'id':'old','status':'SUCCESS','meta':{'commitHash':'e68d70bcf35797c5707b58511cad86dffaec5fe3'},'canRollback':True,'secret':'DO_NOT_RETAIN'}])
         def run(argv, **kw):
+            if argv[1:] == ['--version']:
+                return subprocess.CompletedProcess(argv, 0, CLI_VERSIONS[argv[0]], '')
             self.calls.append(argv)
             return subprocess.CompletedProcess(argv,0,json.dumps(responses.pop(0)),'')
         return NativeMetadataObserver('.',run=run,clock=lambda:datetime(2026,10,28,tzinfo=timezone.utc))
@@ -48,8 +50,32 @@ class ObserverTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.observer(deployments={'unknown':[]}).collect()
 
     def test_read_error_does_not_expose_output(self):
-        ob=NativeMetadataObserver('.',run=lambda *a,**k:subprocess.CompletedProcess([],1,'private','secret'))
+        def run(argv, **kw):
+            if argv[1:] == ['--version']:
+                return subprocess.CompletedProcess(argv, 0, CLI_VERSIONS[argv[0]], '')
+            return subprocess.CompletedProcess([],1,'private','secret')
+        ob=NativeMetadataObserver('.',run=run)
         with self.assertRaisesRegex(ValueError,'Read-only provider observation failed'):ob.collect()
+
+    def test_unreviewed_cli_stops_before_provider_read(self):
+        calls=[]
+        def run(argv, **kw):
+            calls.append(argv)
+            return subprocess.CompletedProcess(argv,0,'99.0.0','')
+        with self.assertRaisesRegex(ValueError,'Reviewed provider CLI version'):
+            NativeMetadataObserver('.',run=run).collect()
+        self.assertEqual(calls,[['vercel','--version']])
+
+    def test_timeout_is_bounded_hold_without_retry_or_output(self):
+        calls=[]
+        def run(argv, **kw):
+            calls.append(argv)
+            if argv[1:] == ['--version']:
+                return subprocess.CompletedProcess(argv,0,CLI_VERSIONS[argv[0]],'')
+            raise subprocess.TimeoutExpired(argv,60,output='private',stderr='secret')
+        with self.assertRaisesRegex(ValueError,'timed out; no retry'):
+            NativeMetadataObserver('.',run=run).collect()
+        self.assertEqual(len(calls),3)
 
     def test_capability_never_qualifies(self):
         contract={'rollback':{'deployment_id':'old','source_sha':SHA,'source_manifest_sha256':'a'*64,'config_sha256':'b'*64}}

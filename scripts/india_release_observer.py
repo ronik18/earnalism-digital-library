@@ -46,8 +46,11 @@ class NativeMetadataObserver:
         self.run, self.clock = run, clock
 
     def _read(self, argv):
-        result = self.run(argv, cwd=self.source_root, capture_output=True,
-                          text=True, timeout=60, check=False)
+        try:
+            result = self.run(argv, cwd=self.source_root, capture_output=True,
+                              text=True, timeout=60, check=False)
+        except subprocess.TimeoutExpired:
+            raise ValueError('Read-only provider observation timed out; no retry') from None
         if result.returncode:
             raise ValueError('Read-only provider observation failed')
         try:
@@ -55,13 +58,23 @@ class NativeMetadataObserver:
         except (ValueError, TypeError):
             raise ValueError('Provider metadata was not valid JSON') from None
 
+    def verify_versions(self):
+        for tool, expected in CLI_VERSIONS.items():
+            result = self.run([tool, '--version'], cwd=self.source_root,
+                              capture_output=True, text=True, timeout=15, check=False)
+            reported = re.fullmatch(r'(?:Vercel CLI |railway )?([0-9]+\.[0-9]+\.[0-9]+)',
+                                    (result.stdout or '').strip())
+            if result.returncode or not reported or reported[1] != expected:
+                raise ValueError('Reviewed provider CLI version required: ' + tool)
+
     def collect(self, candidate_id=None):
         if candidate_id is not None and not re.fullmatch(r'dpl_[A-Za-z0-9]+', candidate_id):
             raise ValueError('Invalid exact candidate ID')
+        self.verify_versions()
         # Explicit GET, no input/header/token/debug flags or secret endpoints.
         project = self._read(['vercel', 'api', '/v9/projects/' + PROJECT,
                               '--method', 'GET', '--raw', '--scope', TEAM])
-        if project.get('id') != PROJECT or project.get('accountId') != TEAM:
+        if not isinstance(project, dict) or project.get('id') != PROJECT or project.get('accountId') != TEAM:
             raise ValueError('Vercel project/team mismatch')
         link = project.get('link') or {}
         suppression = link.get('deploymentEnabled')
@@ -69,13 +82,14 @@ class NativeMetadataObserver:
         snapshot = {'schema': 'earnalism.provider-metadata-observation.v1',
             'observed_at': self.clock().isoformat(), 'project': PROJECT, 'team': TEAM,
             'railway_project': RAILWAY_PROJECT, 'service': SERVICE, 'environment': ENVIRONMENT,
+            'verified_cli_versions': dict(CLI_VERSIONS),
             'frontend_auto_deploy_disabled': suppression is False,
             'backend_auto_deploy_disabled': None,
             'scope': 'ACTUAL_BOUNDED_METADATA_NOT_RELEASE_QUALIFICATION'}
         if candidate_id:
             candidate = self._read(['vercel', 'api', '/v13/deployments/' + candidate_id,
                                     '--method', 'GET', '--raw', '--scope', TEAM])
-            if candidate.get('id') != candidate_id or candidate.get('projectId') != PROJECT:
+            if not isinstance(candidate, dict) or candidate.get('id') != candidate_id or candidate.get('projectId') != PROJECT:
                 raise ValueError('Candidate project/identity mismatch')
             snapshot['candidate'] = {'id': candidate_id, 'source_sha': (candidate.get('meta') or {}).get('githubCommitSha'),
                 'ready_state': candidate.get('readyState'), 'target': candidate.get('target')}
