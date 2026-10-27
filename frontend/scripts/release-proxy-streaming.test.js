@@ -1,0 +1,17 @@
+const test=require('node:test');const assert=require('node:assert/strict');const {Writable}=require('node:stream');
+process.env.EARNALISM_RELEASE_PROXY_SECRET='synthetic-local-test-secret-0000000000000000';delete process.env.VERCEL_ENV;
+const after=require('../api/[...proxy]');
+const path='/api/reader/book/dummy/audiobook/packages/sha256-dummy/segments/s1';
+class Sink extends Writable{constructor(){super();this.headers={};this.chunks=[];this.headersSent=false;}setHeader(k,v){this.headers[k.toLowerCase()]=v;} _write(c,e,cb){this.headersSent=true;this.chunks.push(Buffer.from(c));cb();}}
+function req(method='GET'){return {method,url:path,headers:{'x-vercel-ip-country':'IN',range:'bytes=0-3'}};}
+const tick=()=>new Promise(resolve=>setTimeout(resolve,15));
+for(const [label,proxy,early] of [['candidate',after,true]])test(label+' slow upstream first-byte behavior',{concurrency:false},async()=>{
+ let finish;global.fetch=async()=>new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1,2]));finish=()=>{c.enqueue(new Uint8Array([3,4]));c.close();};}}),{status:206,headers:{'content-type':'audio/mpeg','content-range':'bytes 0-3/4','content-length':'4','set-cookie':'dummy=synthetic; HttpOnly'}});
+ let s=new Sink();let task=proxy(req(),s);await tick();try{assert.equal(s.chunks.length>0,early);assert.equal(s.writableFinished,false);}finally{finish();await task;}
+ assert.equal(s.statusCode,206);assert.deepEqual(Buffer.concat(s.chunks),Buffer.from([1,2,3,4]));assert.equal(s.headers['content-range'],'bytes 0-3/4');assert.equal(s.headers['cache-control'],'private, no-store');assert.ok(s.headers['set-cookie']);
+});
+for(const status of [401,403,416,502])test('candidate preserves denial/status '+status,{concurrency:false},async()=>{global.fetch=async()=>new Response('denied',{status,headers:{'content-type':'application/json'}});let s=new Sink();await after(req(),s);assert.equal(s.statusCode,status);assert.equal(Buffer.concat(s.chunks).toString(),'denied');});
+test('HEAD sends no media body',{concurrency:false},async()=>{global.fetch=async()=>new Response(null,{status:200,headers:{'content-type':'audio/mpeg'}});let s=new Sink();await after(req('HEAD'),s);assert.equal(s.statusCode,200);assert.equal(Buffer.concat(s.chunks).length,0);});
+test('candidate cancels upstream when client disconnects',{concurrency:false},async()=>{let aborted=false,canceled=false;global.fetch=async(u,options)=>{options.signal.addEventListener('abort',()=>{aborted=true;});return new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1]));},cancel(){canceled=true;}}),{headers:{'content-type':'audio/mpeg'}});};let s=new Sink();let task=after(req(),s);await tick();s.destroy();await task;assert.equal(aborted,true);assert.equal(canceled,true);});
+test('midstream error closes response without sending a second status',{concurrency:false},async()=>{let fail;global.fetch=async()=>new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1]));fail=()=>c.error(new Error('synthetic stream failure'));}}),{headers:{'content-type':'audio/mpeg'}});let s=new Sink();let task=after(req(),s);await tick();fail();await task;assert.equal(s.destroyed,true);assert.equal(s.statusCode,200);});
+test('territory denial remains before upstream request',{concurrency:false},async()=>{let calls=0;global.fetch=async()=>{calls++;};let s=new Sink(),r=req();r.headers['x-vercel-ip-country']='US';await after(r,s);assert.equal(s.statusCode,451);assert.equal(calls,0);});

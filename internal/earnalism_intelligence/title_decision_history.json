@@ -12044,5 +12044,21 @@
     "change": "Reuse exact protected package allowlist plus actual delivery mode and safe release controls; global legacy audio remains false.",
     "validation": "43frontend testsPASS including exact-title discovery and six negative cases; source pins refreshed.",
     "production": "HELD_LIBRARY_DISCOVERY_NO_PAID_SESSION"
+  },
+  "open_window_listener_transport_20261027": {
+    "backendQualification": "68 targeted cases PASS on isolated Python3.12 pinned environment; obsolete legacy route tests updated to current Request/Response/package contract",
+    "billingChanges": false,
+    "decision": "LISTENER_STREAMING_AND_NATIVE_TRANSITION_FIX_PREPARED",
+    "findings": [
+      "natural-end pause incorrectly queued pause renewal",
+      "playing seek changed source before renewal",
+      "proxy buffered entire audio response",
+      "backend first read up to1MiB"
+    ],
+    "frontendQualification": "37 player,21 proxy,9 iterator tests plus four local browser scenarios retained",
+    "paidSessionStarted": false,
+    "productionChanged": false,
+    "productionSurfaceSHA256": "a27a43650177074a1d1100bd43c353a122a3aa8f76a99e1c6c0e9a6c4de75181",
+    "title": "the-open-window"
   }
 }
