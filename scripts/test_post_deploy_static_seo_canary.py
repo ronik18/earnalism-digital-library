@@ -311,6 +311,17 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
     def verify(self):
         return subprocess.run(["node", str(self.root / "frontend/scripts/verify-static-seo-snapshots.mjs")], capture_output=True, text=True, timeout=30)
 
+    def test_named_operator_notice_survives_static_generation(self):
+        notice = "Grievance Officer and privacy/support contact: Ronik Basak, Earnalism (operated by REO ENTERPRISE). Email: sales@reoenterprise.org. Postal contact: Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India."
+        for route in ("privacy", "terms"):
+            with self.subTest(route=route):
+                output = (self.root / "frontend/build" / route / "index.html").read_text()
+                self.assertIn(notice, output)
+                self.assertIn('href="mailto:sales@reoenterprise.org"', output)
+                self.assertIn('href="/contact?intent=reader"', output)
+                self.assertIn('href="/contact?intent=rights"', output)
+        self.assertEqual(self.verify().returncode, 0)
+
     def test_legal_notices_require_rendered_logo_not_only_metadata(self):
         self.assertEqual(self.verify().returncode, 0)
         for route in ("privacy", "terms", "copyright"):

@@ -2788,3 +2788,5 @@ Natural media ending is not user pause: avoid an extra paused renewal before seg
 Synthetic historical installer tests need their own exact fixture-source binding, independent of frozen production pins. Confirm post-binding mutation rejection and restore production constants after each fixture. Never refresh stopped production installer authority merely to pass a transport-only regression.
 
 - 2026-10-27 PR570: a45minute hosted Mongo-group stall is not a passing test. Retain exact mandatory cases, bound fixture I/O and test-process waits, emit thread/case diagnostics, and verify real assertion failure and hung-child termination stay nonzero. See no_pass_access_dummy_audit_20261027.md; no production or paid playback acceptance inferred.
+
+- 2026-10-27 named operator policy: reuse the verified accepted contact notice in both React and generated legal output. Role acceptance resolves the named-contact fact, not mailbox delivery, processor/retention operations, accountant treatment or release-controller authority. Evidence: internal/legal/international_launch_20261027/operator-policy-followup.md.
