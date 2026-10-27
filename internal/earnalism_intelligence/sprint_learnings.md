@@ -2816,3 +2816,5 @@ Synthetic historical installer tests need their own exact fixture-source binding
 - A conflicted PR can suppress fresh pull-request CI. Reconcile its candidate with verified current main by intent, preserving baseline history keys, both append-only learning streams and exact accepted application/intake subtrees before qualifying the combined head.
 
 - An attribution repair can change generated frontend metadata while leaving UI code unchanged. Do not reuse the old frontend artifact hash: select the real coherent source and reuse prior UI evidence only across frozen, semantically verified metadata deltas. Rebind offline containment to the repaired source; historical variants are not current provider qualification.
+
+- A single actual hash-bound human rights decision can cover a catalogue batch while preserving prior decisions and all independent release gates. Bind accepted records only after the actual reply, retain exact proposals/receipt, disclose edition differences, and keep runtime activation separate from isolated rights intake.

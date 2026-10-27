@@ -1,0 +1,62 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-the-student-reader-covers",
+  "edition_id": "the-student",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+    "public_book": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "approval_evidence": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
+    "checksum_manifest": "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa",
+    "publication_manifest": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
+    "chapter:chapter-001": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+    "cover_front": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+    "cover_back": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+    "cover_provenance": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+    "1b9f416eae00b8590ca605e87823867f0a88498d5210d6a2020747050f97c6a3",
+    "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071",
+    "1cf8b07bbc675b40e63ac73d0de143fb6e87a6cce2d2d84071f0e0bd30bf9bb1",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "3a3c98e66cfaee8f29c3b58c846c3e1867922b898e5029c526a1bfc7d3f44178",
+    "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+    "4d663174434da7e2630c720974a9720f08d3871d3968b0c618d06e4cafcb9ae7",
+    "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+    "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+    "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa",
+    "ade1e3feab401bceb5aeb60e74db4578dcee7e5326bf9d4da4b4883b6602158b",
+    "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
+    "c1d33c7d7a5a83225a619e1b8eea6122d7dbaa927961665e614daf44c170c5b2",
+    "d1e46ee4ab3f9920418e21d36f3ec7104450dd6a572c772de80c47b25cadb3a0",
+    "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+    "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

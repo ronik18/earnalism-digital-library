@@ -1,0 +1,5 @@
+# Accepted US catalogue rights intake — no activation
+
+The direct human reply accepts the exact frozen50Reader/cover proposals and1existingOpenWindowstream proposal. The original decision index/proposals/receipt are immutable evidence. Accepted records change only status, acceptance attribution, conditions_satisfied and the added actual receipt evidence digest. The two prior accepted records are reused. No owner signature, new ownership declaration or exclusive AI-output copyright is inferred.
+
+These source records are isolated from the runtime rights registry and the active IN decisions. They do not activate US routes, deployment, publication, paid sessions, spending or generation. Lokrahasya permission covers only the disclosed15narrativechapters, omitting chapter16criticalappendix and8terminalnotes; the current16chapterINversion is preserved. The fully assembled US draft remains in the recorded local candidate location; exact scope hashes are retained here for future source/route qualification, not claimed operational.

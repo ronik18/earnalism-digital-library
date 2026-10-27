@@ -1,0 +1,58 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-the-canterville-ghost-reader-covers",
+  "edition_id": "the-canterville-ghost",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+    "public_book": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "reader_manifest": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "approval_evidence": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "checksum_manifest": "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d",
+    "publication_manifest": "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a",
+    "chapter:chapter-001": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+    "chapter:chapter-002": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+    "chapter:chapter-003": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+    "chapter:chapter-004": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+    "chapter:chapter-005": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+    "chapter:chapter-006": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996",
+    "chapter:chapter-007": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+    "cover_front": "e8b7ee7856cfc3e33b81a0eb170e5e4a19273dafdfd7a5163afedb757594e1da",
+    "cover_back": "af05718d586c61a2109a312555d5de1b2779407fc5b2839568f9068384fce37b"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+    "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+    "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+    "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+    "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+    "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "af05718d586c61a2109a312555d5de1b2779407fc5b2839568f9068384fce37b",
+    "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+    "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+    "e8b7ee7856cfc3e33b81a0eb170e5e4a19273dafdfd7a5163afedb757594e1da",
+    "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a",
+    "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

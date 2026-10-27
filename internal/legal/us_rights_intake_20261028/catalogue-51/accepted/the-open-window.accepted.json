@@ -1,0 +1,60 @@
+{
+  "accepted_by": "Ronik Basak; direct human acceptance call_fd63aceab7874889b48cc98744f6223e/0; receipt sha256:7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "components": {
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "public_book": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955",
+    "reader_manifest": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
+    "approval_evidence": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0",
+    "checksum_manifest": "37386b6707ce76d100f038c791af8161e2e5b14ccbabbe1d0d3c17daa7d22be5",
+    "publication_manifest": "9b486c66a07f4a37cee4ecb18c8d19f46c9227a3def3e18b7192545e11a35ba3",
+    "chapter:chapter-001": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+    "cover_front": "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "cover_back": "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
+  },
+  "conditions_satisfied": true,
+  "decision_id": "us-proposed-20261028-the-open-window-reader-covers",
+  "edition_id": "the-open-window",
+  "evidence_sha256": [
+    "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "172d0c9f90a26e670d54760228b4df8458b536e64d77dbcc298016f85c17e41c",
+    "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "37386b6707ce76d100f038c791af8161e2e5b14ccbabbe1d0d3c17daa7d22be5",
+    "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+    "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+    "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+    "7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa",
+    "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
+    "9b486c66a07f4a37cee4ecb18c8d19f46c9227a3def3e18b7192545e11a35ba3",
+    "a01c6ad38b5177d7ddef594dc7749b35939e983a19a5c94e04ccda6bc6f224e4",
+    "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+    "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+    "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955",
+    "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0",
+    "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+  ],
+  "operator_id": "reo-enterprise",
+  "schema_version": "earnalism.rights-decision.v1",
+  "status": "ACCEPTED",
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30"
+}

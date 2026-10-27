@@ -1,0 +1,184 @@
+{
+  "schema": "earnalism.us-narrative-edition-proposal.v1",
+  "title": "lokrahasya",
+  "scope": "All15 identified narrative chapters, excluding the6657-character later critical appendix chapter16 and8 source endnotes of unresolved contributor attribution. This is an explicitly different US edition proposal, not a claim of clearance for all1939editorial material or unchanged full apparatus. India package untouched.",
+  "status": "PROPOSED_NOT_RUNTIME_INTEGRATED",
+  "chapters": [
+    {
+      "chapter": "chapter-001.json",
+      "original_file_sha256": "c576e275dec51a4ae403f95fc1c94bdd0b23bf09879133472bf080ecec9cbda5",
+      "proposed_file_sha256": "c576e275dec51a4ae403f95fc1c94bdd0b23bf09879133472bf080ecec9cbda5",
+      "original_content_sha256": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "proposed_content_sha256": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-002.json",
+      "original_file_sha256": "fd0d6a64811d53a98df08aa9a82f897bd4e96addf540b85352016358ac9d748d",
+      "proposed_file_sha256": "fd0d6a64811d53a98df08aa9a82f897bd4e96addf540b85352016358ac9d748d",
+      "original_content_sha256": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "proposed_content_sha256": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-003.json",
+      "original_file_sha256": "d18695e195e2da874d57f88063eaab80904247e0dd463ebb4a20c52abc879708",
+      "proposed_file_sha256": "d18695e195e2da874d57f88063eaab80904247e0dd463ebb4a20c52abc879708",
+      "original_content_sha256": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "proposed_content_sha256": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-004.json",
+      "original_file_sha256": "088f5a32e6ce7df289ab98de0158d2c7951e11762eddf9055dbbf3ab508cafc2",
+      "proposed_file_sha256": "088f5a32e6ce7df289ab98de0158d2c7951e11762eddf9055dbbf3ab508cafc2",
+      "original_content_sha256": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "proposed_content_sha256": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-005.json",
+      "original_file_sha256": "ef595cd39e4128649b398a9ca7fbd3de81055cafae595c4d63180a4da247ff2d",
+      "proposed_file_sha256": "e82edc5a9a2540ab29640d5924fee12ef71b3bd1a420ab282335e194a452ed9c",
+      "original_content_sha256": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+      "proposed_content_sha256": "b770acf1d5bb978c934f472f7488939bd17e1a5d548debb2c36339d7d5c8ec9e",
+      "removed_exact_tail": "\n\n↑ অস্যার্থ। কৃপণদিগের ধন আর যাহারা পোষ্যপুত্ররূপ কুষ্মাণ্ডগুলি প্রতিপালন করেন, তাঁহাদিগের ধন ভূতের বাপের শ্রাদ্ধে নষ্ট হইবে সন্দেহ নাই।",
+      "removed_note_count": 1,
+      "narrative_prefix_byte_exact": true,
+      "changed": true
+    },
+    {
+      "chapter": "chapter-006.json",
+      "original_file_sha256": "8d4f042fcc81401826acce3031e4eef23f5fcc998131ce4198eb96ba9ea6c683",
+      "proposed_file_sha256": "6744a13e845d4bdad39735f096e1c065349f1be4818b74c77e6e769056940c2c",
+      "original_content_sha256": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+      "proposed_content_sha256": "b590f4ed7dd763216a55fd650bf5719794445ffbba3ccd347ccc615e5231e86b",
+      "removed_exact_tail": "\n\n↑ পাঠক মহাশয় বৃহল্লাঙ্গুলের ন্যায়শাস্ত্রে ব্যুৎপত্তি দেখিয়া বিস্মিত হইবেন না। এইরূপ তর্কে মাক্ষমূলর স্থির করিয়াছেন যে, প্রাচীন ভারতবর্ষীয়েরা লিখিতে জানিতেন না। এইরূপ তর্কে জেমস মিল স্থির করিয়াছেন যে, প্রাচীন ভারতবর্ষীষেরা অসভ্য জাতি, এবং সংস্কৃত ভাষা অসভ্য ভাষা। বস্তুতঃ এই ব্যাঘ্র পণ্ডিতে এবং মহ্য পণ্ডিতে অধিক বৈলক্ষণ্য দেখা যায় না।",
+      "removed_note_count": 1,
+      "narrative_prefix_byte_exact": true,
+      "changed": true
+    },
+    {
+      "chapter": "chapter-007.json",
+      "original_file_sha256": "fc212958600399b79fd0aca34dce0e767c70c96ab1de05b8ce967e435a7b8535",
+      "proposed_file_sha256": "fc212958600399b79fd0aca34dce0e767c70c96ab1de05b8ce967e435a7b8535",
+      "original_content_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "proposed_content_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-008.json",
+      "original_file_sha256": "cc971d2c43503447df343626c200bfd351a75322f844d11915e60931b457649b",
+      "proposed_file_sha256": "cc971d2c43503447df343626c200bfd351a75322f844d11915e60931b457649b",
+      "original_content_sha256": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "proposed_content_sha256": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-009.json",
+      "original_file_sha256": "a05c1f7d4f1acf9cc97a18f5bd00c49fd55826b98a1384f2493fb8e9b42a789a",
+      "proposed_file_sha256": "a05c1f7d4f1acf9cc97a18f5bd00c49fd55826b98a1384f2493fb8e9b42a789a",
+      "original_content_sha256": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "proposed_content_sha256": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-010.json",
+      "original_file_sha256": "ad4e91cbe5dd742dd75bfa1a3729f0497e89aa8a9ef68c90f6304d855c07dc9a",
+      "proposed_file_sha256": "4c6917bf52ef76dc93d0b2548eec6bb837efdc19ee276af9bd1ecb4543f2f0e7",
+      "original_content_sha256": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+      "proposed_content_sha256": "5c10bf1675a57bd968059bb0da9f9dfe0beff6a29239e24707040f6599490615",
+      "removed_exact_tail": "\n\n↑ এই প্রবন্ধ প্রথম বঙ্গদর্শনে প্রকাশিত হয়।",
+      "removed_note_count": 1,
+      "narrative_prefix_byte_exact": true,
+      "changed": true
+    },
+    {
+      "chapter": "chapter-011.json",
+      "original_file_sha256": "3aa5c1b19562312c6232890f375310f5f3b9bba2343ef4b20f686f361aa2d65f",
+      "proposed_file_sha256": "3aa5c1b19562312c6232890f375310f5f3b9bba2343ef4b20f686f361aa2d65f",
+      "original_content_sha256": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "proposed_content_sha256": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-012.json",
+      "original_file_sha256": "6529ab1fa851b53fb3b487bf4ea86558b20c09e96b1f3ae2888759bb41e503b4",
+      "proposed_file_sha256": "c18ca7f79084fb3cfe6e6502ba3c4c252118cf82d9051815e075a8388a52e5ee",
+      "original_content_sha256": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+      "proposed_content_sha256": "9da1146b82477a6e2a59bd0da933824ae4128aeaf454f1af552944b14754e2b3",
+      "removed_exact_tail": "\n\n↑ Dr. Lorinzer &c.\n\n↑ সাবধান, কেহ হাসিবেন না। মহামহোপাধ্যায় পণ্ডিত ডুগাল্‌ড ষ্টুয়ার্ট যথার্থই এই মতাবলম্বী ছিলেন।\n\n↑ Chips from a German Workshop.\n\n↑ বাঙ্গালি স্ত্রীলোকেরা কেহ কেহ অন্তঃপুর পরিত্যাগ করিয়া রাজপুত্রকে অভ্যর্থনা করিয়াছিল।",
+      "removed_note_count": 4,
+      "narrative_prefix_byte_exact": true,
+      "changed": true
+    },
+    {
+      "chapter": "chapter-013.json",
+      "original_file_sha256": "9bc01c8791a339e8be54d092b4377cee2d92ea4eea60ba97ae35a0d7ea6516eb",
+      "proposed_file_sha256": "9bc01c8791a339e8be54d092b4377cee2d92ea4eea60ba97ae35a0d7ea6516eb",
+      "original_content_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "proposed_content_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-014.json",
+      "original_file_sha256": "ee8e54f72b4d1438f2ed922ed284152e9dd5e82bee74a74fdabeca32ce3c1c58",
+      "proposed_file_sha256": "ee8e54f72b4d1438f2ed922ed284152e9dd5e82bee74a74fdabeca32ce3c1c58",
+      "original_content_sha256": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "proposed_content_sha256": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "removed_exact_tail": "",
+      "removed_note_count": 0,
+      "narrative_prefix_byte_exact": true,
+      "changed": false
+    },
+    {
+      "chapter": "chapter-015.json",
+      "original_file_sha256": "0fa5ffce2f7919bcbdb49df663bb70759ce5e522d6d3841f1eea0982aaa00b69",
+      "proposed_file_sha256": "8c3197190dcefa444acc7810a84a37bf48017672733ba0786e5b6fb9fafe40a1",
+      "original_content_sha256": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+      "proposed_content_sha256": "ef61a5b0eb107a2eee09a1d26052f0da099bf536de58af919d92bef4da6b4d4d",
+      "removed_exact_tail": "\n\n↑ Ilbert বিল সম্বন্ধীয় বিবাদকালে ইহা লিখিত হয়।",
+      "removed_note_count": 1,
+      "narrative_prefix_byte_exact": true,
+      "changed": true
+    }
+  ],
+  "total_notes_excluded": 8,
+  "complete_source_narrative_prefixes_preserved": true,
+  "runtime_country_selection_implemented": false,
+  "owner_acceptance": false,
+  "publication_authorized": false,
+  "deployment_authorized": false,
+  "excluded_appendix": {
+    "source": "backend/data/controlled_publications/lokrahasya/chapters/chapter-016.json",
+    "sha256": "bf7493bddb664419acabd0980c7f12deb419fec02d7955e11983af24e26bc493",
+    "characters": 6657
+  }
+}

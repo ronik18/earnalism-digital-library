@@ -1,0 +1,40 @@
+{
+  "accepted_by": "Ronik Basak; direct human acceptance call_fd63aceab7874889b48cc98744f6223e/0; receipt sha256:7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+  "basis": "US-only proposed commercial stream use of the exact retained Earnalism-produced corrected-v1 The Open Window recording and protected package sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26, descriptor028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2. Underlying selected PG269/JohnLane1914 English text has current publisher US-public-domain identification. Reuse existing owner producer provenance, exact masters, built-in Ryan model snapshot0c0e3051f131929182e2c023b9537f8b1c68adfe, retained package-source hash and qwen-tts0.1.1 Apache2 metadata; pinned model README hash matches actual retained runtime manifest. No voice cloning or impersonation, no new performer declaration, exclusive output copyright, third-party endorsement or worldwide warranty claimed. No specific US territorial restriction identified in the retained model/runtime terms; third-party rights remain independent. This PROPOSED rights record grants no downloads, generation, publication, US activation, paid sessions or deployment. Existing IN rights remain untouched.",
+  "components": {
+    "audio_component_bindings": "a0ca9abe6741ce0f5a7df8ee863fd4f7664cda65da2eac8f1900872de82611fe",
+    "master_mp3": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+    "master_wav": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+    "owner_adoption": "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+    "selected_manuscript": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "source_file": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "staging_manifest": "6fd5dc12fc1658eeb2fe34e2e4900030f3f0c8e991eebaf9a613b997b7b705f5",
+    "pinned_model_card": "64f65e809b51cc0c35f393fbbfcc2d735c0cb3fdbbc6f3fdc4a5e6ce55e9d088",
+    "runtime_distribution_metadata": "93515c7c07ab26c4b82c1d250eddda099cb244a04f4a4274cf9ce5992192f959",
+    "protected_release_descriptor": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2"
+  },
+  "conditions_satisfied": true,
+  "decision_id": "us-proposed-20261028-the-open-window-retained-audio-stream",
+  "edition_id": "the-open-window",
+  "evidence_sha256": [
+    "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+    "64f65e809b51cc0c35f393fbbfcc2d735c0cb3fdbbc6f3fdc4a5e6ce55e9d088",
+    "7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+    "7ffbc8546291a74f731420b7a269faab3c20d8fabc8f1094fc0627de2b9f1e58",
+    "93515c7c07ab26c4b82c1d250eddda099cb244a04f4a4274cf9ce5992192f959",
+    "a44a6081c73ad75f0255bb2bb5cab74ef1829565a895a24e53a4f11290ab7655",
+    "b6ce420f9810f21d7bd89e76b174c9c93f4c5bbf2e34757d6a943da460405727",
+    "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3"
+  ],
+  "operator_id": "reo-enterprise",
+  "schema_version": "earnalism.rights-decision.v1",
+  "status": "ACCEPTED",
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "audio_stream"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30"
+}

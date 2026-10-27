@@ -1,0 +1,57 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-dsires-baby-reader-covers",
+  "edition_id": "dsires-baby",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "public_book": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "approval_evidence": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+    "checksum_manifest": "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283",
+    "publication_manifest": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+    "chapter:chapter-001": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+    "cover_front": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "cover_back": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+    "cover_provenance": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+    "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+    "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283",
+    "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0",
+    "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+    "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+    "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+    "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+    "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+    "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b"
+  ],
+  "accepted_by": "Ronik Basak; direct human acceptance call_fd63aceab7874889b48cc98744f6223e/0; receipt sha256:7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+  "conditions_satisfied": true
+}

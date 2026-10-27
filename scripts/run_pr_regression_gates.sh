@@ -36,7 +36,7 @@ echo "==> Protected package publication proof and scope qualification"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
 
 echo "==> Isolated owner-accepted US rights intake (no activation)"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_us_rights_intake.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_us_rights_intake.py scripts/test_owner_us_catalogue_intake.py
 
 echo "==> Audio transport, current release containment, and revised reader-only manuscript"
 env \

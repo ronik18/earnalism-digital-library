@@ -1,0 +1,226 @@
+{
+  "date_local": "2026-10-28",
+  "scope": "Independent per-layer review of retained exact reader material; not a new accepted rights decision or full-release certification",
+  "primary_law": [
+    "https://www.copyright.gov/circs/circ14.pdf",
+    "https://www.copyright.gov/circs/circ33.pdf",
+    "https://www.copyright.gov/circs/circ15a.pdf",
+    "https://www.copyright.gov/circs/circ38b.pdf",
+    "https://www.ecfr.gov/current/title-37/chapter-II/subchapter-A/part-202/section-202.1"
+  ],
+  "findings": [
+    {
+      "title": "Radharani",
+      "disposition": "QUALIFIES_UNDERLYING_NARRATIVE_LAYER_WITH_NOTICE_AND_COVER_GATES",
+      "facts": "Retained source attributes literary work to Bankim, original1877;8narrativechapters, no retained upward-arrow note blocks or separate1940foreword. No identified later creative editorial layer in delivered story.1940reprint label alone does not renew copyright in1877original.",
+      "limits": "No first-edition line-by-line comparison performed or claimed; this is assessment of identified layers. CCtranscription attribution/ShareAlike delivery and exact cover/ownerUSdecision remain separate; metadata notice correction must preserve/rebind relevant existing authority via legitimate process."
+    },
+    {
+      "title": "Muchiram Gurer Jibanchorit",
+      "disposition": "QUALIFIES_UNDERLYING_NARRATIVE_AND_TWO_SHORT_GLOSSES",
+      "facts": "Primary imprint page5 says reproduction from1290firstedition; page7 identifies1884firstbook publication.14narrativechapters, separateforeword excluded. Sole retained note entries at endchapter14 are single words গ্রামে and দুর্ভিক্ষ. Individual words/common dictionary glosses do not add protectable authorship under Circular33; no modern essay/annotation remains there. Original1880serialization/1884book distinction does not change pre1931USterm conclusion.",
+      "limits": "Do not clear the excluded1944foreword or the whole criticaledition. No need for an invented earlier-edition comparison or new rights in a single-word gloss. Current transcription licence, cover and exact USdecision still required."
+    },
+    {
+      "title": "Lokrahasya",
+      "disposition": "REPAIR_OR_HOLD_CURRENT_WHOLE_EDITION; ORIGINAL_NARRATIVE_SEPARATE",
+      "facts": "Primary imprint identifies1874original; retained editorial notice page9(rev1968363) explains narrative based on last lifetime editions plus separately prepared introductions/variants. Currentchapter16 is a6657-character critical variant appendix, including later bibliographic/explanatory prose and curated first/last-edition comparisons. It is not merely a reprint date or two-word gloss. Earlier foreword exclusion does NOT exclude this retained appendix.",
+      "safe_resolution": "Keep current16chapter INedition and approvals intact. Prepare a separately labelled US narrative-only edition omitting later criticalappendix16; identify retained longer footnotes individually using actual source attribution or omit annotations with an accurate narrative-only scope/label. Compare/qualify against the declared newscope and request exact USdecision on newhashes. Alternatively obtain actual USpermission for the later protectedlayer or verify a cleared pre1931source. Never silently call the repaired scope the complete1939criticaledition.",
+      "limits": "Factual historical references are unprotected, but that does not make the entire6657-character editorial wording/selection publicdomain. India contributor-death1962/expiry2022 reasoning is not USclearance; URAA conditions/remainderterm apply to eligible original latercontributions. No owner waiver substitutes for this repair/permission.",
+      "note_scope_resolution": {
+        "source_tail_counts": {
+          "chapter-005": 1,
+          "chapter-006": 1,
+          "chapter-010": 1,
+          "chapter-012": 4,
+          "chapter-015": 1
+        },
+        "unresolved_expressive_layers": [
+          "chapter005135char explanatorygloss",
+          "chapter006341char satiricalcommentary",
+          "chapter012DugaldStewartwarning"
+        ],
+        "not_a_clearance_basis": "Historical subject/author-like style is not proof of original publication of this exact expressive wording",
+        "minimal_safe_proposal": "SeparateUSnarrative-only edition preserving chapter1–15 bodybytes, omitting all8identifiedterminalnote blocks and chapter16latercriticalappendix; accurate scope label and new exact hashes/QA/ownerdecision. Preserve currentINversion unchanged."
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-002.json",
+      "sha256": "fc8063b99c98e6e01810c5158581d1ce510f8a0d2ab522290594c441f8a0df17"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-003.json",
+      "sha256": "b62c932ad1d835194456f8da90b6de107ff0042c45846e5928856deeae2fb5e4"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-008.json",
+      "sha256": "60a3b81e22d84aefdfb6825673ecb5962b23f225de3f3d26c4adc3f25140426e"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-004.json",
+      "sha256": "b596ebeaf548c4341b3ab57e437ccd5599859b2d212fad877bf82949736dd4f8"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-005.json",
+      "sha256": "3573d1f217fe7594cd22baa84a3a1b8fc886e6409359b5252d4e65534ce6585d"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-006.json",
+      "sha256": "62c64f1a551644b204cb9b3a3d433c06f269c772d2316cd36ce6c021071b762b"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-007.json",
+      "sha256": "c7f149c71f489a1ed472f53b0063a1485f2a48f1ea148538d45bfd8619d8550b"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/chapters/chapter-001.json",
+      "sha256": "7271c4ebc92d063108f6c607bc2e692d92050281e3dc6d9c4842bb1341732ca7"
+    },
+    {
+      "path": "backend/data/controlled_publications/radharani/source_evidence.json",
+      "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-014.json",
+      "sha256": "ee8e54f72b4d1438f2ed922ed284152e9dd5e82bee74a74fdabeca32ce3c1c58"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-002.json",
+      "sha256": "fd0d6a64811d53a98df08aa9a82f897bd4e96addf540b85352016358ac9d748d"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-003.json",
+      "sha256": "d18695e195e2da874d57f88063eaab80904247e0dd463ebb4a20c52abc879708"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-015.json",
+      "sha256": "0fa5ffce2f7919bcbdb49df663bb70759ce5e522d6d3841f1eea0982aaa00b69"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-008.json",
+      "sha256": "cc971d2c43503447df343626c200bfd351a75322f844d11915e60931b457649b"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-012.json",
+      "sha256": "6529ab1fa851b53fb3b487bf4ea86558b20c09e96b1f3ae2888759bb41e503b4"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-004.json",
+      "sha256": "088f5a32e6ce7df289ab98de0158d2c7951e11762eddf9055dbbf3ab508cafc2"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-005.json",
+      "sha256": "ef595cd39e4128649b398a9ca7fbd3de81055cafae595c4d63180a4da247ff2d"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-013.json",
+      "sha256": "9bc01c8791a339e8be54d092b4377cee2d92ea4eea60ba97ae35a0d7ea6516eb"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-009.json",
+      "sha256": "a05c1f7d4f1acf9cc97a18f5bd00c49fd55826b98a1384f2493fb8e9b42a789a"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-006.json",
+      "sha256": "8d4f042fcc81401826acce3031e4eef23f5fcc998131ce4198eb96ba9ea6c683"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-010.json",
+      "sha256": "ad4e91cbe5dd742dd75bfa1a3729f0497e89aa8a9ef68c90f6304d855c07dc9a"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-011.json",
+      "sha256": "3aa5c1b19562312c6232890f375310f5f3b9bba2343ef4b20f686f361aa2d65f"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-007.json",
+      "sha256": "fc212958600399b79fd0aca34dce0e767c70c96ab1de05b8ce967e435a7b8535"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-016.json",
+      "sha256": "bf7493bddb664419acabd0980c7f12deb419fec02d7955e11983af24e26bc493"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/chapters/chapter-001.json",
+      "sha256": "c576e275dec51a4ae403f95fc1c94bdd0b23bf09879133472bf080ecec9cbda5"
+    },
+    {
+      "path": "backend/data/controlled_publications/lokrahasya/source_evidence.json",
+      "sha256": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-primary-imprint-pages.json",
+      "sha256": "625b30c0db9515408f88dc471eb8cdcac457c81c8dbe16fc23f332a553c89983"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-014.json",
+      "sha256": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-002.json",
+      "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-003.json",
+      "sha256": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-008.json",
+      "sha256": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-012.json",
+      "sha256": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-004.json",
+      "sha256": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-005.json",
+      "sha256": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-013.json",
+      "sha256": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-009.json",
+      "sha256": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-006.json",
+      "sha256": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-010.json",
+      "sha256": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-011.json",
+      "sha256": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-007.json",
+      "sha256": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-001.json",
+      "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4"
+    },
+    {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
+      "sha256": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/muchiram-gurer-jibanchorit-primary-imprint-pages.json",
+      "sha256": "9850cbb5f95139c0b5df713ef8e58b50d5823dc23f54a3d86828bef590688834"
+    }
+  ],
+  "source_modified": false,
+  "runtime_changed": false,
+  "deployment": false,
+  "paid_sessions": false
+}

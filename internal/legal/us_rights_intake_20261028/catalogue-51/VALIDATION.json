@@ -1,0 +1,17 @@
+{
+  "reader_proposals": 50,
+  "audio_proposals": 1,
+  "prior_acceptances_reused": 2,
+  "all_source_covers_read": 104,
+  "all_new_records_PROPOSED_only": true,
+  "Reader_USpositive_INnegative_audio_negative_schema_checks": 50,
+  "Lokrahasya_narrative_chapters": 15,
+  "Lokrahasya_notes_excluded": 8,
+  "critical_appendix_excluded_characters": 6657,
+  "candidate_manifest_valid_and_not_exposed": true,
+  "candidate_notice_binds_new_exact_content": true,
+  "model_card_actual_retained_hash_matches": true,
+  "runtime_or_production_modified": false,
+  "audio_USpositive_INnegative_downloadnegative_schema_checks": true,
+  "two_prior_acceptances_exact_source_and_canonical_hashes_bound": true
+}

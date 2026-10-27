@@ -1,0 +1,58 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-book-edfcf810c5-reader-covers",
+  "edition_id": "book-edfcf810c5",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
+    "public_book": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+    "reader_manifest": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "approval_evidence": "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6",
+    "checksum_manifest": "3da5c824bbc5c47d398621e4f68bbac24ff372931cc1cf3ea40a5354b1f72654",
+    "publication_manifest": "244f4a89daef5fe73efb9f1b46d6fd2ea3ed2315946f53cb59ed5b3b7d551682",
+    "chapter:chapter-001": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+    "cover_front": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+    "cover_back": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+    "license_notice": "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+    "cover_provenance": "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "0f80a6bc269d8d080fe759b1fa1c7303483e183badb4b9801935ec1ab49419cc",
+    "1ed356121a69558cef657c0092a121c9484292abc06f9bceea7611c2c5eea577",
+    "1f23bcbc00474f550bda54e027b8d5f8780a7c3e1d63295ad25bfd9c358e6304",
+    "244f4a89daef5fe73efb9f1b46d6fd2ea3ed2315946f53cb59ed5b3b7d551682",
+    "3da5c824bbc5c47d398621e4f68bbac24ff372931cc1cf3ea40a5354b1f72654",
+    "47ca52eae1ddd23fce3635278b347d24c30a1f1259958631d026a5be9e97ecd9",
+    "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+    "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
+    "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "7e1c46ba64cea5b783c19a9c89ae262fbb73731693f8c152fb2b77baa19b98a1",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+    "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+    "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
+    "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+    "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6",
+    "e824fa8a23dddcfd3b68d9d02af0754538dd42ec81989af1985a0aa047aa6b0b",
+    "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

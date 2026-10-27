@@ -1,0 +1,59 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "us-proposed-20261028-sredni-vashtar-reader-covers",
+  "edition_id": "sredni-vashtar",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "public_book": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "approval_evidence": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+    "checksum_manifest": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
+    "publication_manifest": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
+    "chapter:chapter-001": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "cover_front": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+    "cover_back": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+    "cover_provenance": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+  },
+  "territories": [
+    "US"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-28T00:00:00+05:30",
+  "valid_until": "2027-10-28T00:00:00+05:30",
+  "basis": "US-only proposed exact Reader/catalogue/cover use, relying on the retained US public-domain original/translated edition or existing first-party authorship as documented in the title matrix. Reuse existing owner cover-provenance declarations and original first-party compositions; actual current full cover bytes are separately bound. No claim of ownership in public-domain works or clearance for unselected new editorial matter. CC-licensed transcription conditions, legal reuse and ShareAlike rights remain intact; no new platform export/download feature is authorized. Existing IN records and rights remain unchanged. US activation, audio, generation, paid sessions, payment configuration, publication and deployment excluded.",
+  "evidence_sha256": [
+    "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+    "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+    "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+    "7a7539795abf230a5f9eef9535682dc54f34aaf3fa15015868fec0b504b4556c",
+    "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
+    "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+    "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+    "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb",
+    "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+    "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+    "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
+    "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b",
+    "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+  ],
+  "accepted_by": "Ronik Basak; direct human acceptance call_fd63aceab7874889b48cc98744f6223e/0; receipt sha256:7981e5f074e1c05e1f3f04ed565471c87617647ccbfd213448c4a8b52ffc61ea",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,14 @@
+{
+  "literary_source": "PG269 JohnLane1914; current publisher_US_PD source observation",
+  "model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "pinned_model_card_sha256": "64f65e809b51cc0c35f393fbbfcc2d735c0cb3fdbbc6f3fdc4a5e6ce55e9d088",
+  "card_matches_retained_runtime_manifest": true,
+  "runtime_version": "qwen-tts0.1.1",
+  "runtime_distribution_licence": "Apache-2.0",
+  "voice": "Built-in Ryan; no cloning",
+  "existing_producer_provenance_reused": true,
+  "new_US_scope_accepted": false,
+  "proposal_sha256": "e9c34617f441c9df1cdc1484a1759d81347eac042f78c3ef2b0ad5ba30646c2e",
+  "production_changed": false
+}
