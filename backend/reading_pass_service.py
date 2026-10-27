@@ -46,6 +46,17 @@ FREE_INDIA_READER_ENTITLEMENT = "india_pilot_free_text"
 FREE_INDIA_READER_SLUGS = frozenset({"a-ghost-story", "the-tell-tale-heart", "radharani"})
 
 
+def _validated_wallet_balance(user: Mapping[str, Any]) -> int:
+    """Fail closed on corrupt balances without normalizing or repairing the ledger."""
+    try:
+        return safe_seconds(int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0))
+    except (ValueError, TypeError, OverflowError) as exc:
+        raise ReadingPassError(
+            "BALANCE_UNAVAILABLE", 503,
+            "Reading Pass balance could not be verified. Please try again later.",
+        ) from exc
+
+
 def _now() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -196,7 +207,7 @@ class ReadingPassService:
         )
         if not user:
             raise ReadingPassError("AUTH_REQUIRED", 401, "A member account is required.")
-        balance = safe_seconds(int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0))
+        balance = _validated_wallet_balance(user)
         active = await self.db.reading_pass_sessions.find_one(
             {"user_id": user_id, "status": {"$in": list(ACTIVE_SESSION_STATUSES)}},
             {"_id": 0, "lease_token_hash": 0},
@@ -624,7 +635,7 @@ class ReadingPassService:
             )
             if not user or user.get("status") == "blocked":
                 raise ReadingPassError("AUTH_REQUIRED", 401, "A valid member session is required.")
-            balance = safe_seconds(int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0))
+            balance = _validated_wallet_balance(user)
             if balance <= 0 and not free_entitlement:
                 raise ReadingPassError("PASS_REQUIRED", 403, "A positive Reading Pass balance is required.", balance_seconds=0)
 
@@ -1423,7 +1434,7 @@ class ReadingPassService:
         )
         if not user:
             raise ReadingPassError("AUTH_REQUIRED", 401, "A member account is required.")
-        return safe_seconds(int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0))
+        return _validated_wallet_balance(user)
 
     async def _append_time_debit(
         self,

@@ -21,6 +21,13 @@ REPO = Path(__file__).resolve().parents[2]
 
 def context(monkeypatch, db=None, client=None):
     monkeypatch.setattr(installer, "_now", lambda: NOW)
+    # This is a synthetic approval/runtime fixture, not a new production cap
+    # qualification. Bind its source check to exact current fixture bytes;
+    # keep the frozen production constants and disabled entrypoint untouched.
+    monkeypatch.setattr(installer, "ENFORCEMENT_PINS", {
+        path: hashlib.sha256((REPO / path).read_bytes()).hexdigest()
+        for path in installer.ENFORCEMENT_PINS
+    })
     approval = installer.Approval(revision="a" * 40,
         deployment_id="00000000-0000-4000-8000-000000000001",
         private_account_selector_sha256=hashlib.sha256(ACCOUNT.encode()).hexdigest(),
@@ -199,3 +206,20 @@ def test_installer_delta_real_mongo(monkeypatch, scenario):
             assert await db.wallet_ledger.count_documents({}) == 0
             assert await db.wallet_transactions.count_documents({}) == 0
     asyncio.run(run())
+
+
+def test_synthetic_source_binding_detects_post_approval_change(monkeypatch, tmp_path):
+    frozen = installer.ENFORCEMENT_PINS
+    with monkeypatch.context() as local:
+        server, approval, env, _, _ = context(local)
+        for relative in installer.ENFORCEMENT_PINS:
+            target = tmp_path / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((REPO / relative).read_bytes())
+        server.__file__ = str(tmp_path / "backend/server.py")
+        installer.verify_runtime(server, approval, ACCOUNT, env)
+        with (tmp_path / "backend/server.py").open("ab") as changed:
+            changed.write(b"\n# synthetic post-approval mutation\n")
+        with pytest.raises(installer.InstallerStop, match="ENFORCEMENT_SOURCE_MISMATCH"):
+            installer.verify_runtime(server, approval, ACCOUNT, env)
+    assert installer.ENFORCEMENT_PINS is frozen
