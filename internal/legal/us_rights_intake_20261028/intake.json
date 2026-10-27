@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.reviewed-rights-intake.v1",
+  "base_source": "a4f76c51dfafe50ee35212cb707ea884ae12da62",
+  "owner_receipt_sha256": "35d183fc7146afb045f3f15a3436455e0a9fab94e00c72000ffc6386962d542f",
+  "records": [
+    {
+      "slug": "a-ghost-story",
+      "accepted_record_sha256": "b83e97548ca17518b53661b2d24b3cab268b185cd37fb8bd2bef6d71d3a4daca",
+      "original_draft_sha256": "1c1e2dba3804131d7766179ad5507dddc4e05722561347d3eaf2194430be12a4",
+      "packet_sha256": "351b3e33bb5284e521851482399c2fbde09a5dfc351ec6d14feb3771a69cb906",
+      "existing_IN_record_sha256": "8ee0b3978821236944094336b0628c50f1e46bf3be0d66981cd3361a3138bcfd"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "accepted_record_sha256": "03c3fc7f4a88a85924193afde77ffb2dfdaa882b42a13896b334b18b9e2eb0f3",
+      "original_draft_sha256": "cb39621a88849e9f25ec02146df60cd54e589755767a893853545f8f20752138",
+      "packet_sha256": "52473e43c5969e6122c03aca2893bccd1b6d316db4d8f1ffd6dfddea8bdb9a1a",
+      "existing_IN_record_sha256": "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd"
+    }
+  ],
+  "status": "OWNER_ACCEPTED_ISOLATED_SOURCE_INTAKE",
+  "runtime_registry_modified": false,
+  "active_IN_records_modified": false,
+  "US_activation_authorized": false,
+  "deployment_authorized": false,
+  "publication_authorized": false,
+  "accepted_at_utc": "2026-10-27T19:01:55.935287+00:00",
+  "validity_start_is_not_acceptance_timestamp": true
+}
