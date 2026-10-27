@@ -49,7 +49,8 @@ The historical565 backend lacks the India purchase guard and newer financial
 fixes. It is rejected as an approved fallback. The initial guard-only old-runtime
 offline proposal is retained only as rejected historical evidence and must not
 be used. The accepted **preparation direction** starts from the complete current
-backend633caa1a, retaining all Listener, payment-proof, atomic-refund, controlled
+backend `f98ce89f` (reviewed577), retaining the attribution repair plus all
+Listener, payment-proof, atomic-refund, controlled
 balance and entitlement code. Only a fail-closed purchase-initiation branch is
 inserted in its actual production middleware; existing middleware and every
 other backend file remain unchanged, including file modes.
@@ -74,3 +75,22 @@ guard-preserving rollback/containment operator approval; protected runner and li
 observer wiring; current source-role contract and CI; explicit later deployment
 authority. A local tar/manifest hash establishes neither serving nor rollback
 eligibility. No engineering dependency is an invitation for an owner waiver.
+
+## Bounded native metadata observer and protected preflight
+
+`scripts/india_release_observer.py` supplies concrete authenticated read commands for fixed Vercel project/candidate GETs and bounded Railway deployment metadata. It never requests variables, account identity, logs or customer data. Unknown shapes/scopes/read failures hold; only allowlisted metadata survives projection, not raw provider output. Local help verified the installed native CLI syntax. Tests inject inert responses; actual native CLI response compatibility is not claimed from those tests.
+
+The preflight uses a fixed journal namespace outside the checkout and does not create it, execute, dispatch or accept approval booleans as authority. Its result always retains the current no-execution prohibition and authentic platform executor/source-role/config/startup holds. A local folder is not proof of durable/shared protected-runner storage. Actual protected platform runner authentication/storage/approval wiring remains incomplete, explicitly rather than modeled as PASS.
+
+The protected read-only observation workflow/runner is now integrated in source
+as described in `protected_observer_runner.md`. Actual provider-write execution
+and durability/approval qualification remain separate holds.
+
+Reused read-only Railway observation from28October: the bounded ten-artifact
+inventory contains no reviewed guarded provider artifact. Current22c88931/e68d70bc
+is healthy, but capability `canRollback` does not prove guard/config qualification.
+The pinned CLI does not emit that capability; its missing field remains unknown.
+No provider build/deploy is permitted to manufacture the missing evidence.
+The old633/v4 receipt remains historical. The v5 offline variant is based on
+actual577 source and preserves its license notice, with only the closed-initiation
+middleware delta. Neither local receipt establishes provider eligibility.

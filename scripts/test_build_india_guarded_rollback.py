@@ -60,9 +60,17 @@ class GuardedContainmentTests(unittest.TestCase):
                                      ('backend/entry.sh', b'#!/bin/sh\nexit 0\n', 0o775)]:
                 item = tarfile.TarInfo(name); item.size = len(data); item.mode = mode
                 archive.addfile(item, io.BytesIO(data))
-        def frozen_git(*args): return stream.getvalue() if args[0] == 'archive' else source
+        def frozen_git(*args):
+            if args[0]=='rev-parse':return b.BACKEND_TREE.encode()
+            return stream.getvalue() if args[0] == 'archive' else source
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(b, 'git', side_effect=frozen_git):
             output = Path(tmp) / 'new-source'; report = b.build(output)
             self.assertEqual((output/'backend/server.py').stat().st_mode & 0o777, 0o644)
             self.assertEqual((output/'backend/entry.sh').stat().st_mode & 0o777, 0o755)
             self.assertEqual(report['files']['backend/entry.sh']['mode'], '0o755')
+
+    def test_wrong_frozen_backend_tree_stops_before_output_creation(self):
+        with tempfile.TemporaryDirectory() as temp,mock.patch.object(b,'git',return_value=b'0'*40):
+            output=Path(temp)/'not-created'
+            with self.assertRaisesRegex(ValueError,'Frozen backend subtree mismatch'):b.build(output)
+            self.assertFalse(output.exists())

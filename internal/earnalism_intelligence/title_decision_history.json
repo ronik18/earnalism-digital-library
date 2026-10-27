@@ -12156,5 +12156,26 @@
     "evidence": "internal/legal/us_catalogue_attribution_20261028/QUALIFICATION.json",
     "US_rights_granted": false,
     "production_changed": false
+  },
+  "india_protected_observer_20261028": {
+    "state": "BOUNDED_OBSERVER_PREFLIGHT_PREPARED_EXECUTOR_HELD",
+    "source": "scripts/india_release_observer.py",
+    "actual_provider_qualification": false,
+    "deployment": false
+  },
+  "protected_observer_runner_20261028": {
+    "state": "SOURCE_INTEGRATED_OPERATIONAL_HOLD",
+    "evidence": "internal/legal/protected_observer_runner.md",
+    "base": "b171b6e96d271c4714e1df76c14753e1e7549d02",
+    "reconciled_main": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
+    "baseline_history_keys_preserved": 80,
+    "focused_tests_passed": 51,
+    "platform_environment_rules_preserved": true,
+    "registered_self_hosted_release_runners": 0,
+    "observation_uses_existing_hosted_runner": true,
+    "native_railway_compatibility_verified": false,
+    "guarded_provider_artifact_qualified": false,
+    "execution_authorized": false,
+    "next_action": "Sole Integration Lane review and exact-head qualification; no workflow dispatch"
   }
 }

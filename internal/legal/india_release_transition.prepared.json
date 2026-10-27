@@ -1,6 +1,6 @@
 {
   "schema": "earnalism-india-transition-preparation.v1",
-  "application_sha": "12ad62091eac4d60aa4bc479dcda3b28b290c1cf",
+  "application_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
   "territories": ["IN"],
   "execution_enabled": false,
   "paid_sessions": false,
@@ -18,7 +18,7 @@
     "required_design": "Retain trusted IN purchase signing in any UI rollback; backend rollback must preserve India admission or fail closed purchase initiation while preserving verification/refund/webhook. A provider capability flag is insufficient."
   },
   "future_execution_requirements": [
-    "Implement and review provider execution adapters under separately authorized release scope; this preparation tool has no execution capability",
+    "Qualify reviewed provider adapters and the authentic protected write executor under separately authorized release scope; this preparation tool has no execution capability",
     "Populate actual qualified rollback artifacts and existing protected approval/config receipts; never promote nulls or modeled evidence into acceptance",
     "Reverify source/provider/config/startup and no-auto-deploy facts at actual execution, with secret custody retained",
     "Persist each write intent/result and reconcile unknown outcomes read-only; no blind retry"

@@ -74,10 +74,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          frozen_source=633caa1ac92d21d2aacc0e1d5f7a20151e9484f4
+          frozen_source=f98ce89f02f55e688e21a4ed5e02ca4b6c516d16
           git fetch --no-tags --depth=1 origin "$frozen_source"
           git cat-file -e "$frozen_source:backend/server.py"
-          [[ "$(git rev-parse "$frozen_source:backend")" == 'b88b63b4d744b6f33ff65d738e41247b3078d9e2' ]]
+          [[ "$(git rev-parse "$frozen_source:backend")" == '1dc5a64416b92980e31119bea76f9333e09f7bcd' ]]
 
       - name: Set up Node
         uses: actions/setup-node@v6
