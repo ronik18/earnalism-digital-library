@@ -74,3 +74,11 @@ guard-preserving rollback/containment operator approval; protected runner and li
 observer wiring; current source-role contract and CI; explicit later deployment
 authority. A local tar/manifest hash establishes neither serving nor rollback
 eligibility. No engineering dependency is an invitation for an owner waiver.
+
+## Bounded native metadata observer and protected preflight
+
+`scripts/india_release_observer.py` supplies concrete authenticated read commands for fixed Vercel project/candidate GETs and bounded Railway deployment metadata. It never requests variables, account identity, logs or customer data. Unknown shapes/scopes/read failures hold; only allowlisted metadata survives projection, not raw provider output. Local help verified the installed native CLI syntax. Tests inject inert responses; actual native CLI response compatibility is not claimed from those tests.
+
+The preflight uses a fixed journal namespace outside the checkout and does not create it, execute, dispatch or accept approval booleans as authority. Its result always retains the current no-execution prohibition and authentic platform executor/source-role/config/startup holds. A local folder is not proof of durable/shared protected-runner storage. Actual protected platform runner authentication/storage/approval wiring remains incomplete, explicitly rather than modeled as PASS.
+
+Reused read-only Railway observation from 28 October local date: the bounded10-artifact inventory contains no reviewed guarded633/v4 artifact. Current22c88931/e68d70bc is healthy but capability `canRollback` does not prove guard/config qualification. No provider build/deploy is permitted to manufacture the missing evidence. Existing artifact/config eligibility and actual protected executor require further qualification before execution; no owner waiver is requested.

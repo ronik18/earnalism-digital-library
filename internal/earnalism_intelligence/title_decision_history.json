@@ -12140,5 +12140,11 @@
     "qualification": "12selectornegative/positive testsPASS; actualpinnedvercel62.1.0 selection15377entriesPASS;9criticalassettests and nativecriticalassetcheckPASS",
     "production_changed": false,
     "next_action": "FreshheadallrequiredCI; no oldjobrerun, gatewaiver, deployment or paidactivity"
+  },
+  "india_protected_observer_20261028": {
+    "state": "BOUNDED_OBSERVER_PREFLIGHT_PREPARED_EXECUTOR_HELD",
+    "source": "scripts/india_release_observer.py",
+    "actual_provider_qualification": false,
+    "deployment": false
   }
 }
