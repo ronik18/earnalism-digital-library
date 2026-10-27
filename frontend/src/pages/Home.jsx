@@ -133,7 +133,7 @@ export default function Home() {
                 <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
               </button>
             </div>
-            <p id="newsletter-trust" className="reading-dispatch__trust">No spam. Just good reads.</p>
+            <p id="newsletter-trust" className="reading-dispatch__trust">By subscribing, you request occasional library emails. <a href="/privacy">Privacy</a>. Unsubscribe by emailing <a href="mailto:sales@reoenterprise.org?subject=Unsubscribe">sales@reoenterprise.org</a>.</p>
             <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
           </form>
         </div>

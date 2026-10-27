@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { OPTIONAL_ANALYTICS_ENABLED } from "./lib/privacyControls";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import { trackPageAnalyticsView } from "./lib/funnelAnalytics";
@@ -141,7 +142,7 @@ export function AppRouterContent() {
     <>
       <ScrollToTop />
       <RouteAnalytics />
-      {hostedForAnalytics && <Analytics mode="production" beforeSend={sanitizeWebAnalyticsEvent} />}
+      {OPTIONAL_ANALYTICS_ENABLED && hostedForAnalytics && <Analytics mode="production" beforeSend={sanitizeWebAnalyticsEvent} />}
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route element={<Layout />}>

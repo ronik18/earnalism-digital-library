@@ -249,3 +249,42 @@ test("only the India release proxy can forward a signed free Reader session star
     else process.env.EARNALISM_RELEASE_PROXY_SECRET = previousSecret;
   }
 });
+
+test("purchase admission signs India orders and denies overseas or unknown location before upstream", async () => {
+  const savedFetch = global.fetch;
+  const savedSecret = process.env.EARNALISM_RELEASE_PROXY_SECRET;
+  const savedEnvironment = process.env.VERCEL_ENV;
+  delete process.env.VERCEL_ENV;
+  process.env.EARNALISM_RELEASE_PROXY_SECRET = "isolated-commerce-proxy-secret-longer-than-32-characters";
+  const forwarded = [];
+  global.fetch = async (url, options) => {
+    forwarded.push({ url, headers: options.headers });
+    return { status: 204, headers: new Headers(), arrayBuffer: async () => new ArrayBuffer(0) };
+  };
+  try {
+    assert.equal(releaseProxy.protectedPurchasePath("/api/payments/topup"), true);
+    assert.equal(releaseProxy.protectedPurchasePath("/api/payments/webhook"), false);
+    assert.equal(releaseProxy.protectedPurchasePath("/api/payments/verify"), false);
+    for (const country of ["US", "GB", "", "ZZ"]) {
+      const req = Readable.from([]);
+      Object.assign(req, { url: "/api/payments/topup", method: "POST", headers: { "x-vercel-ip-country": country, "x-earnalism-release-country": "IN" } });
+      const response = { setHeader() {}, end() {} };
+      await releaseProxy(req, response);
+      assert.equal(response.statusCode, 451);
+    }
+    assert.equal(forwarded.length, 0);
+    const req = Readable.from([]);
+    Object.assign(req, { url: "/api/payments/topup", method: "POST", headers: { "x-vercel-ip-country": "IN" } });
+    const response = { setHeader() {}, end() {} };
+    await releaseProxy(req, response);
+    assert.equal(response.statusCode, 204);
+    assert.equal(forwarded.length, 1);
+    const headers = forwarded[0].headers;
+    assert.equal(headers.get("x-earnalism-release-country"), "IN");
+    assert.equal(headers.get("x-earnalism-release-signature"), releaseSignature(process.env.EARNALISM_RELEASE_PROXY_SECRET, "POST", "/api/payments/topup", "PUBLIC", Number(headers.get("x-earnalism-release-timestamp")), "IN"));
+  } finally {
+    global.fetch = savedFetch;
+    if (savedSecret === undefined) delete process.env.EARNALISM_RELEASE_PROXY_SECRET; else process.env.EARNALISM_RELEASE_PROXY_SECRET = savedSecret;
+    if (savedEnvironment === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = savedEnvironment;
+  }
+});

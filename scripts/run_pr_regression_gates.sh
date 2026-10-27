@@ -42,6 +42,9 @@ env \
   ENABLE_STARTUP_DB_MAINTENANCE=false \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_b2_audiobook_routing.py \
+    backend/tests/test_audiobook_package_v2_routes.py \
+    backend/tests/test_audio_stream_chunking.py \
+    backend/tests/test_unapproved_public_audio_asset_safety.py \
     backend/tests/test_agentic_ai_with_python_reader_only.py \
     scripts/test_repair_enchanted_april_reader_preflight.py
 
@@ -53,12 +56,14 @@ env \
   REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
-  "$PYTHON_BIN" -m pytest -q \
+  "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_client_matrix.py \
     backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
+    backend/tests/test_reading_pass_negative_balance.py \
+    backend/tests/test_package_integrity_and_preview_access.py \
     backend/tests/test_open_window_audio_acceptance_budget.py \
     backend/tests/test_audio_renewal_media_cookies.py \
     backend/tests/test_open_window_audio_cap_installer.py \
@@ -79,6 +84,9 @@ env READER_SEGMENT_MONGO_INTEGRATION=1 bash scripts/run_reader_benchmark.sh
 echo "==> Local UAT public-release hold seeding contract"
 "$PYTHON_BIN" -m unittest \
   scripts.test_seed_uat_canonical_pages \
+  scripts.test_run_bounded_pytest \
+  scripts.test_india_release_source_preflight \
+  scripts.test_india_release_transition \
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
@@ -96,9 +104,15 @@ echo "==> Signed territorial release proxy and public legal/Reader presentation 
 "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_release_proxy_auth.py \
   backend/tests/test_release_proxy_country_middleware.py
-node --test frontend/scripts/release-proxy.test.js
+node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-proxy-streaming.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
+  src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
+  src/experiences-v2/__tests__/listener-resume-authorization.test.jsx \
+  src/experiences-v2/__tests__/listener-protected-package-route.test.jsx \
+  src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx \
+  src/experiences-v2/__tests__/listener-transport-canary.test.jsx \
   src/legalDirectRoutes.test.js \
+  src/pages/LegalPages.test.jsx \
   src/bookDetailDirectRoute.test.js \
   src/components/Footer.test.js \
   src/components/ReferencePublicPages.test.jsx \

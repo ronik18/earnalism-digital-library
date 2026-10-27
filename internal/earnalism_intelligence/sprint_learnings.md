@@ -2770,3 +2770,27 @@ Publication metadata must survive the actual HTTP response model: pure catalogue
 BookDetail enrichment must recognize provider-private protected packages through exact canonical/manifest identity and approved QA, rather than treating omitted provider identity as an unreleased edition. Real public Book CTA acceptance is independent of direct Listener availability.44 targeted frontend tests PASS; no paid session.
 
 Actual audiobook Library filter acceptance is separate from Book CTA and Listener. Keep the legacy global audio switch false while respecting exact protected-package release allowlists; negative unrelated/malformed/held cases remain hidden.43focused testsPASS.
+
+## 2026-10-27 — Minimum international compliance preparation
+
+- A live payment API key is not evidence of international merchant acceptance, destination-tax treatment or completed provider acceptance. Record those separately and retain differing earlier observations.
+- Keep a short proposed first-country catalogue outside runtime rights registries until genuine exact-component decisions pass; original public-domain text does not automatically clear every edition layer.
+- With optional analytics disabled, suppress helper-created campaign/session storage as well as network delivery and Vercel measurement injection.
+- Enforce purchase geography at the backend before order creation, independently of the Reader exposure flag; preserve refund, verification and webhook paths.
+- Git worktree enumeration can stall on iCloud dataless HEAD metadata. Hydrate existing metadata rather than delete historical worktrees or bypass worktree protections.
+- Reuse the repository CI dependency install mode (`npm ci --legacy-peer-deps`) without changing the dependency lock. Local tests/build passed; full provider/HTTP financial acceptance and exact-head remote CI remain unproven.
+- Evidence and next integration action: `internal/legal/international_launch_20261027/README.md`.
+
+## Open Window Listener transport — 27 October 2026
+
+Natural media ending is not user pause: avoid an extra paused renewal before segment advancement. Playing cross-segment seeks require renewal before source assignment, with cancellation by newer intent. Backend StreamingResponse cannot deliver early bytes if its iterator reads1MiB or the frontend proxy buffers arrayBuffer; bound reads and pipe successful authorized segments with cancellation. Preserve no-store, territory, Range, cookies and denial semantics. Modern route tests must use real Requests and active immutable packages; archival provider URLs cannot override current public release gates. Billing candidates remain separate and no new paid playback is authorized.
+
+Synthetic historical installer tests need their own exact fixture-source binding, independent of frozen production pins. Confirm post-binding mutation rejection and restore production constants after each fixture. Never refresh stopped production installer authority merely to pass a transport-only regression.
+
+- 2026-10-27 PR570: a45minute hosted Mongo-group stall is not a passing test. Retain exact mandatory cases, bound fixture I/O and test-process waits, emit thread/case diagnostics, and verify real assertion failure and hung-child termination stay nonzero. See no_pass_access_dummy_audit_20261027.md; no production or paid playback acceptance inferred.
+
+- 2026-10-27 named operator policy: reuse the verified accepted contact notice in both React and generated legal output. Role acceptance resolves the named-contact fact, not mailbox delivery, processor/retention operations, accountant treatment or release-controller authority. Evidence: internal/legal/international_launch_20261027/operator-policy-followup.md.
+
+- 2026-10-27 India release preparation: verify squash review by exact root equality and actual checks; preserve distinct controller/artifact roles. Current frontend lacks purchase signing, so backend-first fails legitimate India orders. Provider rollback capability does not prove the old artifact preserves new territory controls. See internal/legal/india_release_preflight.md. No dispatch or paid session.
+
+- India transition preparation must reject backend-first ordering and incompatible rollback, stop on unknown writes, and never turn modeled stage completion into provider or deployment approval. Actual guarded rollback artifact qualification remains separate.

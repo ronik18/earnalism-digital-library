@@ -20,7 +20,7 @@ from backend.domain.reading_pass import canonical_page_records
 ROOT = Path(__file__).resolve().parents[2]
 GINNI = "book-d19e96859f"
 DRACULA = "dracula"
-OMITTED_FROM_LEGACY_CONFIG = ("a-white-heron", "the-selfish-giant")
+CURRENT_COMMERCIAL_TITLES = ("a-white-heron", "the-selfish-giant")
 CANONICAL_PAGE_ALIASES = (
     "/api/reading-pass/books/{slug}/pages/{page_index}",
     "/api/reader/book/{slug}/pages/{page_index}",
@@ -210,12 +210,13 @@ def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallba
         ROOT / "data" / "controlled_publications",
         ROOT / "backend" / "data" / "controlled_publications",
     )
-    for root in roots:
+    for root, expected_quarantine in zip(roots, (False, True)):
         artifact_dir = root / GINNI
-        assert catalog_truth.controlled_artifact_integrity_quarantined(GINNI, str(artifact_dir)) is True
-        assert "approval_evidence.json does not match its retained checksum-bound approval." in (
-            catalog_truth.controlled_artifact_validation_issues(GINNI, str(artifact_dir))
-        )
+        manifest = json.loads((artifact_dir / "checksum_manifest.json").read_text())
+        expected = next(row["sha256"] for row in manifest["files"] if row["file"] == "approval_evidence.json")
+        actual = hashlib.sha256((artifact_dir / "approval_evidence.json").read_bytes()).hexdigest()
+        assert (actual != expected) is expected_quarantine
+        assert catalog_truth.controlled_artifact_integrity_quarantined(GINNI, str(artifact_dir)) is expected_quarantine
 
     valid_dir = tmp_path / GINNI
     valid_dir.mkdir()
@@ -234,6 +235,14 @@ def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallba
         async def find_one(self, *_args, **_kwargs):
             pytest.fail("an integrity-quarantined artifact must not fall back to stale database metadata")
 
+    # Ginni is currently held outside the allowlist, independently of mirror integrity.
+    assert server._is_controlled_public_slug(GINNI) is False
+    assert asyncio.run(server._find_public_book_candidate(GINNI, {}, include_artifact_content=False)) == (None, "missing")
+    # Exercise the separate integrity gate with an isolated eligible fixture.
+    monkeypatch.setattr(server, "_is_controlled_public_slug", lambda slug: slug == GINNI)
+    # Exercise a genuine isolated mismatch, without assuming live records remain broken.
+    monkeypatch.setattr(server, "_controlled_artifact_is_integrity_quarantined",
+        lambda slug: catalog_truth.controlled_artifact_integrity_quarantined(slug, str(valid_dir)))
     monkeypatch.setattr(server, "db", SimpleNamespace(books=Database()))
     result = asyncio.run(server._find_public_book_candidate(GINNI, {}, include_artifact_content=False))
     assert result == (None, "integrity_quarantined")
@@ -357,13 +366,26 @@ def test_canonical_page_routes_remain_disabled_when_v2_is_disabled(monkeypatch):
         client.close()
 
 
-def test_titles_outside_the_controlled_release_remain_excluded():
-    assert set(OMITTED_FROM_LEGACY_CONFIG).isdisjoint(catalog_truth.LEGACY_CONTROLLED_LIVE_BOOK_SLUGS)
-    for slug in OMITTED_FROM_LEGACY_CONFIG:
-        assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
-        assert catalog_truth.can_expose_reader({"slug": slug}) is False
-        assert server._safe_live_public_projection(
-            catalog_truth.load_controlled_artifact_book(slug, include_content=False)
-        ) is None
-    api_rows = server._append_controlled_artifact_projections([])
-    assert set(OMITTED_FROM_LEGACY_CONFIG).isdisjoint({row["slug"] for row in api_rows})
+def test_current_commercial_titles_follow_release_authority():
+    registry = json.loads((ROOT / "backend/data/rights_decision_registry.json").read_text())
+    # Resolve the named current title policy rather than a historical omission list.
+    def entry(node, key):
+        if isinstance(node, dict):
+            if key in node: return node[key]
+            for value in node.values():
+                found = entry(value, key)
+                if found is not None: return found
+        return None
+    rows = {row["slug"] for row in server._append_controlled_artifact_projections([])}
+    for slug in CURRENT_COMMERCIAL_TITLES:
+        policy = entry(registry, "controlled-" + slug)
+        assert policy["access_mode"] == "COMMERCIAL_ENTITLEMENT"
+        assert policy["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
+        assert policy["countries"] == ["IN"]
+        assert slug in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+        book = catalog_truth.load_controlled_artifact_book(slug, include_content=False)
+        assert catalog_truth.can_expose_reader(book) is True
+        assert server._safe_live_public_projection(book) is not None
+        assert slug in rows
+    # Retain the negative check for genuinely unlisted editions.
+    assert catalog_truth.can_expose_reader({"slug": "dummy-unreleased-edition"}) is False
