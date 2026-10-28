@@ -8,38 +8,28 @@
     "publication_authorized": false,
     "paid_sessions": false
   },
-  "application_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
-  "application_root_tree": "618a6200594cc2e91912f7ad26486fb32dd92210",
-  "backend_artifact_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
-  "backend_review_sha": "eb0b25048c11ff79ca6290d25242abd2bb6849ac",
-  "backend_subtree": "1dc5a64416b92980e31119bea76f9333e09f7bcd",
-  "frontend_review_sha": "eb0b25048c11ff79ca6290d25242abd2bb6849ac",
-  "frontend_subtree": "f5836283c620b5907116cb08eb2c89858ded77c1",
+  "application_sha": "4dc9e8fd3f9eafd28445b408d376b73634ccfa56",
+  "application_root_tree": "874b52e0a18f21323980aea3100ee34348843104",
+  "backend_artifact_sha": "4dc9e8fd3f9eafd28445b408d376b73634ccfa56",
+  "backend_review_sha": "034aca052489786af0480911501aa046e17dbaeb",
+  "backend_subtree": "0be169311c1a344dc297be93af80e43857850808",
+  "frontend_review_sha": "034aca052489786af0480911501aa046e17dbaeb",
+  "frontend_subtree": "31c73e83bd2357d30681e82e934f61e35a54b86b",
   "required_checks": {
-    "eb0b25048c11ff79ca6290d25242abd2bb6849ac": [
+    "034aca052489786af0480911501aa046e17dbaeb": [
       "regression gate",
       "reconcile",
       "evidence",
-      "held-edition-evidence",
-      "Editorial/support owner-review artifact"
-    ],
-    "f5611a143ca4dbd24d0c3e395c432f9fe1be5b2d": [
-      "regression gate",
-      "reconcile",
-      "evidence",
+      "focused-owner-review",
+      "Owner-review artifact",
+      "Post-merge recovery owner evidence",
       "resolve-pr-head",
       "seamless-brand-review",
       "verify-published-owner-review"
     ]
   },
-  "frontend_artifact_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
-  "frontend_ui_review_reuse": {
-    "baseline_sha": "c1328ff7ca13bd15d0b93aff501e22f4fdf0a6a8",
-    "review_sha": "f5611a143ca4dbd24d0c3e395c432f9fe1be5b2d",
-    "baseline_root_tree": "9b0e77e1a1897916a413eb08d8d2441054b99ea5",
-    "old_blob": "4d92e89086079b37d6e11eee20881b8d4f757271",
-    "new_blob": "5e722d9fc2b97e7901a8dfbc51f8c9194e1bc1a6",
-    "scope": "Prior UI/browser evidence only: all frontend paths unchanged except the exact attribution-derived metadata blob. Select a new frontend build under later authority; do not reuse the old binary."
-  },
-  "binding_semantics": "Frontend and backend select the same actual coherent577 Git source, with separate component subtrees and exact577 reviewed-root checks. They are not the same provider artifact: provider image/deployment IDs, eligibility, config and approvals remain unqualified.575 UI evidence is reused only across the explicitly frozen, semantically checked attribution digest delta. No production pin or approval changes."
+  "frontend_artifact_sha": "4dc9e8fd3f9eafd28445b408d376b73634ccfa56",
+  "frontend_ui_review_reuse": null,
+  "binding_semantics": "Exact merged579 Git source, separate frontend/backend subtrees and full reviewed-root equality. Fresh579 browser/final published evidence replaces575 UI reuse. Git identities are not provider-built artifacts; artifact/config/executor/protected approvals remain unqualified. No deployment, US activation or paid sessions.",
+  "ui_review_mode": "EXACT_APPLICATION_REVIEW"
 }

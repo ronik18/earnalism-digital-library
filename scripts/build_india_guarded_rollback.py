@@ -10,9 +10,9 @@ import subprocess
 import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'f98ce89f02f55e688e21a4ed5e02ca4b6c516d16'
-GUARD = 'f98ce89f02f55e688e21a4ed5e02ca4b6c516d16'
-BACKEND_TREE = '1dc5a64416b92980e31119bea76f9333e09f7bcd'
+BASE = '4dc9e8fd3f9eafd28445b408d376b73634ccfa56'
+GUARD = '4dc9e8fd3f9eafd28445b408d376b73634ccfa56'
+BACKEND_TREE = '0be169311c1a344dc297be93af80e43857850808'
 CLOSED_BRANCH = '''
     if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
         return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED"}}, headers={"Cache-Control": "no-store"})

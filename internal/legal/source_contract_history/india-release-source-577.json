@@ -1,0 +1,45 @@
+{
+  "schema": "earnalism-india-source-preflight.v2",
+  "scope": {
+    "territories": [
+      "IN"
+    ],
+    "deployment_authorized": false,
+    "publication_authorized": false,
+    "paid_sessions": false
+  },
+  "application_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
+  "application_root_tree": "618a6200594cc2e91912f7ad26486fb32dd92210",
+  "backend_artifact_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
+  "backend_review_sha": "eb0b25048c11ff79ca6290d25242abd2bb6849ac",
+  "backend_subtree": "1dc5a64416b92980e31119bea76f9333e09f7bcd",
+  "frontend_review_sha": "eb0b25048c11ff79ca6290d25242abd2bb6849ac",
+  "frontend_subtree": "f5836283c620b5907116cb08eb2c89858ded77c1",
+  "required_checks": {
+    "eb0b25048c11ff79ca6290d25242abd2bb6849ac": [
+      "regression gate",
+      "reconcile",
+      "evidence",
+      "held-edition-evidence",
+      "Editorial/support owner-review artifact"
+    ],
+    "f5611a143ca4dbd24d0c3e395c432f9fe1be5b2d": [
+      "regression gate",
+      "reconcile",
+      "evidence",
+      "resolve-pr-head",
+      "seamless-brand-review",
+      "verify-published-owner-review"
+    ]
+  },
+  "frontend_artifact_sha": "f98ce89f02f55e688e21a4ed5e02ca4b6c516d16",
+  "frontend_ui_review_reuse": {
+    "baseline_sha": "c1328ff7ca13bd15d0b93aff501e22f4fdf0a6a8",
+    "review_sha": "f5611a143ca4dbd24d0c3e395c432f9fe1be5b2d",
+    "baseline_root_tree": "9b0e77e1a1897916a413eb08d8d2441054b99ea5",
+    "old_blob": "4d92e89086079b37d6e11eee20881b8d4f757271",
+    "new_blob": "5e722d9fc2b97e7901a8dfbc51f8c9194e1bc1a6",
+    "scope": "Prior UI/browser evidence only: all frontend paths unchanged except the exact attribution-derived metadata blob. Select a new frontend build under later authority; do not reuse the old binary."
+  },
+  "binding_semantics": "Frontend and backend select the same actual coherent577 Git source, with separate component subtrees and exact577 reviewed-root checks. They are not the same provider artifact: provider image/deployment IDs, eligibility, config and approvals remain unqualified.575 UI evidence is reused only across the explicitly frozen, semantically checked attribution digest delta. No production pin or approval changes."
+}
