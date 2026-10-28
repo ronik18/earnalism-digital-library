@@ -76,9 +76,21 @@ def qualify(contract, git, checks):
     for rev in (app, frontend, reviewed_front, controller):
         if git('rev-parse', rev + ':frontend') != contract['frontend_subtree']:
             raise ValueError('Frontend source changed')
-    qualify_ui_reuse(contract['frontend_ui_review_reuse'], app, git)
+    reuse = contract.get('frontend_ui_review_reuse')
+    if contract.get('ui_review_mode') == 'EXACT_APPLICATION_REVIEW':
+        if reuse is not None:
+            raise ValueError('Exact application review must not reuse prior UI evidence')
+        if not {'focused-owner-review', 'seamless-brand-review', 'verify-published-owner-review'}.issubset(
+                contract['required_checks'].get(reviewed_front, [])):
+            raise ValueError('Exact application browser review checks missing')
+        review_sources = (reviewed_front, reviewed_back)
+    else:
+        if contract.get('ui_review_mode') is not None:
+            raise ValueError('Unsupported UI review mode')
+        qualify_ui_reuse(reuse, app, git)
+        review_sources = (reviewed_front, reviewed_back, reuse['review_sha'])
     required_checks = contract['required_checks']
-    for reviewed in (reviewed_front, reviewed_back, contract['frontend_ui_review_reuse']['review_sha']):
+    for reviewed in review_sources:
         if not {'regression gate', 'reconcile'}.issubset(required_checks.get(reviewed, [])):
             raise ValueError('Reviewed source qualification checks missing')
     for rev, required in required_checks.items():

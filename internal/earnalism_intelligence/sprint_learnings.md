@@ -2825,3 +2825,5 @@ Four payment functions are already integrated exactly; current refund recipient/
 Current purchase credit must bind exact intent+credited status, never an existing wallet balance. Recovered529receipt handling passes12 mocked frontend tests; backend source/signup49PASS. No actual payment/provider acceptance claimed.
 
 Dependency symlinks can redirect Jest root to the donor checkout. Prior frontend localPASS was invalid as candidate evidence; explicit candidate --rootDir reproduced hosted6failures. Current fixture interface plus owned-media/intent fixes pass35tests. Require fresh hosted qualification.
+
+Bind controller and offline containment to exact merged579, replacing prior577 application roles and575 UI reuse with fresh579 browser review.61testsPASS; provider qualification remains false.

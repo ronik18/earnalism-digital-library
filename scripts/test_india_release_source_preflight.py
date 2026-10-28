@@ -7,7 +7,7 @@ from scripts.india_release_source_preflight import CONTRACT, qualify, SEO_METADA
 
 class SourcePreflightTests(unittest.TestCase):
     def setUp(self):
-        self.c = json.loads(CONTRACT.read_text())
+        self.c = json.loads((CONTRACT.parent / 'source_contract_history/india-release-source-577.json').read_text())
         self.values = {}
         for rev in (self.c['application_sha'], self.c['backend_artifact_sha'], self.c['backend_review_sha'],
                     self.c['frontend_artifact_sha'], self.c['frontend_review_sha']):
@@ -103,6 +103,25 @@ class SourcePreflightTests(unittest.TestCase):
             if args[0] == 'rev-parse' and args[1] == 'f' * 40 + ':frontend': return 'c' * 40
             return self.git(*args)
         with self.assertRaises(ValueError): qualify(self.c, changed, self.checks)
+
+    def test_exact579_review_requires_fresh_browser_checks(self):
+        c = json.loads(CONTRACT.read_text())
+        def git(*args):
+            if args[0] in ('status', 'merge-base'): return ''
+            ref = args[1]
+            if ref == 'HEAD': return 'f' * 40
+            if ref.endswith(':backend'): return c['backend_subtree']
+            if ref.endswith(':frontend'): return c['frontend_subtree']
+            return c['application_root_tree']
+        def checks(rev):
+            return [dict(name=n, status='completed', conclusion='success') for n in c['required_checks'][rev]]
+        self.assertEqual(qualify(c, git, checks)['status'], 'SOURCE_QUALIFIED_EXECUTION_HOLD')
+        for name in ('focused-owner-review', 'seamless-brand-review', 'verify-published-owner-review'):
+            changed = copy.deepcopy(c)
+            changed['required_checks'][c['frontend_review_sha']].remove(name)
+            with self.subTest(name=name), self.assertRaises(ValueError): qualify(changed, git, checks)
+        c['frontend_ui_review_reuse'] = self.c['frontend_ui_review_reuse']
+        with self.assertRaises(ValueError): qualify(c, git, checks)
 
     def test_dirty_checkout_denied(self):
         def dirty(*args): return ' M file' if args[0] == 'status' else self.git(*args)
