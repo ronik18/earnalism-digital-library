@@ -66,6 +66,7 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
     assert set(registry) == {
+        "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "india-20261028-radharani-attribution-metadata-successor",
         "india-20261026-the-open-window-protected-package-publication",
         "india-20261026-the-open-window-approved-revised-cover-pair",
@@ -360,3 +361,29 @@ def test_open_window_canary_metadata_preserves_reader_rights_and_exact_component
     components['public_book']='f'*64
     denied=evaluate_runtime_path('catalog_cta',record=record,edition_id='the-open-window',operator_id='reo-enterprise',country='IN',country_trusted=True,required_components=components,accepted_records=accepted,revoked_decision_ids=revoked,now=datetime.now(timezone.utc))
     assert not denied.passed
+
+
+@pytest.mark.parametrize("until,at,expected", [
+    ("LIFETIME", datetime(2099, 1, 1, tzinfo=timezone.utc), True),
+    ("LIFETIME", datetime(2020, 1, 1, tzinfo=timezone.utc), False),
+    ("lifetime", NOW, False), (None, NOW, False),
+    ("2027-01-01T00:00:00+00:00", datetime(2027, 1, 1, tzinfo=timezone.utc), False),
+])
+def test_explicit_lifetime_preserves_start_and_finite_expiry(until, at, expected):
+    record = synthetic_record()
+    record["valid_until"] = until
+    assert runtime_verdict("audio_manifest", record, now=at).passed is expected
+
+
+@pytest.mark.parametrize("overrides", [
+    {"country": "US"}, {"country_trusted": False},
+    {"required_components": {"voice_master": "e" * 64}},
+    {"revoked_decision_ids": frozenset({"synthetic-pilot"})},
+    {"accepted_records": {}},
+])
+def test_lifetime_never_bypasses_existing_protections(overrides):
+    record = synthetic_record()
+    record["valid_until"] = "LIFETIME"
+    overrides = dict(overrides)
+    registry = overrides.pop("accepted_records", None)
+    assert not runtime_verdict("audio_manifest", record, registry=registry if registry is not None else {record["decision_id"]: record_sha256(record)}, **overrides).passed

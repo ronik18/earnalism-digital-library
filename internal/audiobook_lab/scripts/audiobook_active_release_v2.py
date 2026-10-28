@@ -703,6 +703,15 @@ def validate_qa_candidate_release_descriptor(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
     candidate = descriptor.get("release_candidate_evidence")
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "owner_produced_source_units.v1":
+        try:
+            try:
+                from .owner_produced_package import validate as validate_owner_produced, OwnerProducedError
+            except ImportError:
+                from owner_produced_package import validate as validate_owner_produced, OwnerProducedError
+            return validate_owner_produced(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except OwnerProducedError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2"):
         try:
             try:

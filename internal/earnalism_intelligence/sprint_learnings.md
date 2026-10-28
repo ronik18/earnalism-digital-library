@@ -2827,3 +2827,5 @@ Current purchase credit must bind exact intent+credited status, never an existin
 Dependency symlinks can redirect Jest root to the donor checkout. Prior frontend localPASS was invalid as candidate evidence; explicit candidate --rootDir reproduced hosted6failures. Current fixture interface plus owned-media/intent fixes pass35tests. Require fresh hosted qualification.
 
 Bind controller and offline containment to exact merged579, replacing prior577 application roles and575 UI reuse with fresh579 browser review.61testsPASS; provider qualification remains false.
+
+Represent explicit lifetime rights as a distinct non-expiring value, not an invented distant date. Preserve revocation, start time, trusted territory, exact components and immutable registry acceptance. Source adoption and local media tests do not prove storage, customer billing or production playback. Existing provider context admission found primary account ID and named DR profile incomplete; no values exposed or configuration changed.

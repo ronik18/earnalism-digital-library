@@ -1,0 +1,47 @@
+{
+  "masterSHA256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+  "reviews": [
+    {
+      "unitId": "dialogue_and_notice",
+      "audioSHA256": "5b34ed06bf0857eded714418dd1ded3d8e156d350ff20f34c8f7a005e79f2c11",
+      "questionScope": "So he built a high wall all round it",
+      "actualOwnerAnswer": "So he built a high wall all round it.",
+      "authority": "Direct human reply in this conversation; wording only",
+      "reuseBasis": "Exact unchanged original PCM is present in the assembled master"
+    },
+    {
+      "unitId": "ending",
+      "audioSHA256": "42f7a2daea3abaa0bb3053e09aeaaf81c7d9643b2094d0a3d22839b1d92f4c5b",
+      "questionScope": "Complete Paradise sentence, without repeated once",
+      "actualOwnerAnswer": "Complete and natural; no repeated once",
+      "authority": "Direct human reply in this conversation; wording only",
+      "reuseBasis": "Exact unchanged original PCM is present in the assembled master"
+    },
+    {
+      "unitId": "gap-07",
+      "audioSHA256": "e98a90d9b032db781be0f51222bbacee36eb8d3f39aec14f87f53e2018cf1c13",
+      "questionScope": "North Wind ceased roaring",
+      "actualOwnerAnswer": "both are correct.",
+      "authority": "Direct human reply in this conversation; wording only",
+      "reuseBasis": "Exact unchanged original PCM is present in the assembled master"
+    },
+    {
+      "unitId": "gap-18",
+      "audioSHA256": "f2bd6ab9232f9bac3a14709329c71787252882d6e23e0038c5190189a1b89be7",
+      "questionScope": "Both occurrences of prints of two nails clear and natural",
+      "actualOwnerAnswer": "both are correct.",
+      "authority": "Direct human reply in this conversation; wording only",
+      "reuseBasis": "Exact unchanged original PCM is present in the assembled master"
+    },
+    {
+      "unitId": "gap-06",
+      "audioSHA256": "5ab3e87c8e6583a8eeb9cf00abe499f106618611b57ae3270f39d278701a22a4",
+      "questionScope": "No extra/repeated word after she gave none before He is too selfish",
+      "actualOwnerAnswer": "Correct; no extra or repeated word",
+      "authority": "Direct human reply in this conversation; wording only",
+      "reuseBasis": "Exact unchanged original PCM is present in the assembled master"
+    }
+  ],
+  "humanFullTitleListeningScore": null,
+  "noNewRightsOrPublicationApproval": true
+}

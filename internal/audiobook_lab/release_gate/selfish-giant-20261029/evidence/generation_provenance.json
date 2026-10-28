@@ -1,0 +1,12 @@
+{
+  "multiRunManifest": {
+    "path": "/private/tmp/earnalism-selfish-giant-release-readiness-20261028/MULTIRUN-MANIFEST.COMPLETE.json",
+    "sha256": "cfbf7f595df92404a410944cd35f7e7ce53180d0eea230a79bd39f570f61e929"
+  },
+  "masterProvenance": {
+    "path": "/private/tmp/earnalism-selfish-giant-lossless-master-complete-20261029/MULTIRUN-INPUT-PROVENANCE.json",
+    "sha256": "a2b0e495cf540fde59e6541d24a018fdbd1c21045da6b61569711df9f18d76b2"
+  },
+  "ownerProduced": true,
+  "original20Unchanged": true
+}

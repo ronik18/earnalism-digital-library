@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+  "edition_id": "the-selfish-giant",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_file": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "selected_manuscript": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "master_wav": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+    "master_mp3": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+    "audio_component_bindings": "6ea6bb62fcdb8797bcf1a2de737f26e8b45ce2149a505d3e984470bc5347cb21"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "audio_stream"
+  ],
+  "valid_from": "2026-10-28T18:30:00+00:00",
+  "valid_until": "LIFETIME",
+  "basis": "Owner explicitly accepts lifetime India audio-stream authority for this exact package; non-expiring control remains revocable and hash-bound. No release authority inferred.",
+  "evidence_sha256": [
+    "1dac1e4b7d03c280e5e53b780ec15b763f2c310b8dd353447a242f827489f2ec",
+    "d3e44fdb7c5a7f470e1fb0309c4e6220a8895b7f49f0d8a300d6e176ed647a27",
+    "cf3bcd55fe6bdc2d88d7fcf30e5bcccd916ec8f540fd9dcd36bf9d2086519455"
+  ],
+  "accepted_by": "owner_direct_reply",
+  "conditions_satisfied": true
+}
