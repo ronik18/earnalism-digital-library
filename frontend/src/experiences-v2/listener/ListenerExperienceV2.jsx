@@ -60,7 +60,14 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     ? `${Math.floor(passBalance / 60)} minutes left`
     : "Reading Pass required";
 
-  useEffect(() => () => { audioRef.current?.pause(); }, []);
+  useEffect(() => {
+    if (!canPlay || !presentation.canRender) return undefined;
+    const ownedAudio = audioRef.current;
+    return () => {
+      playbackIntentRef.current += 1;
+      ownedAudio?.pause();
+    };
+  }, [canPlay, presentation.canRender]);
 
   useEffect(() => {
     if (!audioManifest?.valid) return;
@@ -150,8 +157,9 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     const audio = audioRef.current;
     if (!audio || !canPlay) return;
     if (audio.paused) {
+      const intent = ++playbackIntentRef.current;
       Promise.resolve().then(() => onBeforePlayback?.()).then(() => {
-        if (audioRef.current !== audio || !audio.isConnected) return;
+        if (playbackIntentRef.current !== intent || audioRef.current !== audio || !audio.isConnected) return;
         const target = pausedSeekRef.current;
         pausedSeekRef.current = null;
         if (target && target.segmentId !== activeSegment?.segmentId) {

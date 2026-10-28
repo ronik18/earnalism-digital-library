@@ -13,6 +13,7 @@ jest.mock("../shared/ExperienceBottomNavigation", () => () => null);
 jest.mock("../../components/BookCoverImage", () => () => null);
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+// Playback admission uses the current onBeforePlayback contract; the component owns no interval.
 const version = `sha256-${"a".repeat(64)}`;
 const book = { slug: "isolated-listener-lifecycle", chapters: [{ id: "c1", title: "Chapter 1" }] };
 const audioManifest = {
@@ -72,7 +73,7 @@ test("media admitted after mount is paused on unmount even after React detaches 
   const audio = container.querySelector("audio"); await metadata(audio);
   await click("Play approved audiobook");
   expect(audio.paused).toBe(false);
-  expect(activeIntervals.size).toBe(1);
+  expect(activeIntervals.size).toBe(0);
   await unmount();
   expect(pauseStates).toContainEqual({ node: audio, connected: false });
   expect(audio.paused).toBe(true);
@@ -88,9 +89,9 @@ test("loss of admission pauses the owned node without leaving audio running afte
   expect(audio.paused).toBe(true);
 });
 
-test("segment transitions, speed and time renders retain media ownership and one monitor", async () => {
+test("segment transitions, speed and time renders retain media ownership and no added monitor", async () => {
   const prepare = jest.fn().mockResolvedValue(undefined);
-  await render({ onPreparePlayback: prepare });
+  await render({ onBeforePlayback: prepare });
   const audio = container.querySelector("audio"); await metadata(audio); await click("Play approved audiobook");
   const pauses = pauseStates.length;
   state(audio).time = 3;
@@ -103,12 +104,12 @@ test("segment transitions, speed and time renders retain media ownership and one
   await metadata(audio);
   expect(audio.playbackRate).toBe(1.25);
   expect(pauseStates).toHaveLength(pauses);
-  expect(activeIntervals.size).toBe(1);
+  expect(activeIntervals.size).toBe(0);
 });
 
 test("a pending preparation resolved after unmount cannot play the detached node", async () => {
   const pending = deferred(); const prepare = jest.fn(() => pending.promise);
-  await render({ onPreparePlayback: prepare });
+  await render({ onBeforePlayback: prepare });
   const audio = container.querySelector("audio"); await metadata(audio);
   await click("Play approved audiobook");
   expect(prepare).toHaveBeenCalledTimes(1);
@@ -121,7 +122,7 @@ test("a pending preparation resolved after unmount cannot play the detached node
 
 test("Stop invalidates an earlier preparation instead of letting its completion play", async () => {
   const pending = deferred();
-  await render({ onPreparePlayback: () => pending.promise });
+  await render({ onBeforePlayback: () => pending.promise });
   const audio = container.querySelector("audio"); await metadata(audio); await click("Play approved audiobook");
   const stop = [...container.querySelectorAll("button")].find(button => button.textContent === "Stop listening");
   await act(async () => stop.dispatchEvent(new MouseEvent("click", { bubbles: true })));
@@ -134,7 +135,7 @@ test("StrictMode replay cleans captured media and leaves one live monitor, then 
   await render({}, true);
   const audio = container.querySelector("audio");
   expect(pauseStates.some(value => value.node === audio)).toBe(true);
-  expect(activeIntervals.size).toBe(1);
+  expect(activeIntervals.size).toBe(0);
   await metadata(audio); await click("Play approved audiobook");
   await unmount();
   expect(audio.paused).toBe(true);

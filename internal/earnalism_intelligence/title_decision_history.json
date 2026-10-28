@@ -12205,5 +12205,14 @@
     "qualification": "12 frontend tests PASS across receipt, rendered checkout matrix and existing Pricing suite;49 backend source/signup tests retained; new tests wired into mandatory regression script",
     "production_changed": false,
     "next_action": "Finish preserved529 residual interaction tests and high-zoom source diagnosis; qualify exact source/workflow fingerprints and fresh CI before gated merge"
+  },
+  "preserved529_jest_root_listener_20261028": {
+    "date": "2026-10-28",
+    "decision": "CORRECT_LOCAL_JEST_SOURCE_ROOT_AND_LISTENER_PENDING_INTENT",
+    "finding": "Hosted579 surfaced6 lifecycle failures. Reused dependency symlink resolved local Jest root to donor checkout; prior frontend PASS was not valid candidate evidence. Explicit --rootDir reproduces all6 failures.",
+    "fix": "Adapt old fixture to current onBeforePlayback interface and no-component-interval contract; retain current paused-seek logic. Capture owned media node for detached cleanup and gate pending play completion with intent invalidated by Stop/unmount.",
+    "qualification": "35 tests in6suites PASS with explicit candidate root; full hosted successor gates pending",
+    "production_changed": false,
+    "next_action": "Push successor; all fresh exactheadCI/review required, no oldrun retry"
   }
 }
