@@ -1,3 +1,5 @@
+import useVisualPagination from './useVisualPagination';
+import * as paginationEngine from './visualPagination';
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter, Route, Routes, useNavigate, useLocation } from "react-router-dom";
@@ -730,4 +732,202 @@ test('public-only visual pages stop billable activity and a paused grant removes
   expect(pass.renewReadingPassLease.mock.calls[0][0].active).toBe(false);
   expect(text()).not.toContain('Page 4 manuscript.');
   expect(container.querySelector('[data-transport-chunks]').dataset.transportChunks).toBe('3');
+});
+
+
+test('a session conflict requires explicit native transfer and preserves the source URL', async () => {
+  pass.startReadingPassSession.mockRejectedValueOnce({ response: { status: 409, data: { detail: { code: 'SESSION_ACTIVE_ELSEWHERE', message: 'Reading Pass time is active on another device or tab.' } } } });
+  await mount('/reader/test-book?p=4&a=2&r=previous-source');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+  await click('Continue to this page');
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: 'test-book', pageIndex: 4 });
+  expect(text()).toContain('Continuing here ends your other active reading session.');
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  await click('Continue on this device');
+  expect(pass.startReadingPassSession).toHaveBeenLastCalledWith({ bookSlug: 'test-book', pageIndex: 4, transfer: true });
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe('/reader/test-book?p=4&a=2&r=previous-source');
+});
+
+test('an entitlement denial never offers session transfer or protected buffers', async () => {
+  pass.startReadingPassSession.mockRejectedValue({ response: { status: 403, data: { detail: { code: 'PASS_REQUIRED', message: 'A current Reading Pass is required.' } } } });
+  await openProtected();
+  expect(text()).not.toContain('Continue on this device');
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+});
+
+// Authorization scope is independently meaningful even when edition and DOM match.
+test("scope-only transition cancels old pagination and excludes stale completion/cache", async () => {
+  const calculations = [];
+  jest.spyOn(paginationEngine, 'paginateRenderedResponsive').mockImplementation((_source, _measure, _height, options) => {
+    const gate = deferred(); calculations.push({ ...gate, options }); return gate.promise;
+  });
+  let latest;
+  function ScopeProbe({ scope, pageBreaks = [] }) {
+    const sourceRef = React.useRef(null), viewportRef = React.useRef(null), measureRef = React.useRef(null);
+    latest = useVisualPagination({ sourceRef, viewportRef, measureRef, revision: 'same-edition', typography: 'same-type', authorizationScope: scope, pageBreaks });
+    return <div><div ref={sourceRef}><p>Identical canonical text</p></div><div ref={viewportRef} /><div ref={measureRef} /></div>;
+  }
+  const renderScope = async (scope, pageBreaks = []) => { await act(async () => root.render(<ScopeProbe scope={scope} pageBreaks={pageBreaks} />)); };
+  await renderScope('session-old');
+  expect(calculations).toHaveLength(1);
+  await renderScope('session-new');
+  expect(calculations[0].options.cancelled()).toBe(true);
+  expect(calculations).toHaveLength(2);
+  expect(latest.pending).toBe(true);
+  await act(async () => calculations[1].resolve([{ text: 'new-scope', html: '<p>new-scope</p>', start: 0, end: 9 }]));
+  await act(async () => calculations[0].resolve([{ text: 'stale-scope', html: '<p>stale-scope</p>', start: 0, end: 11 }]));
+  expect(latest.pages[0].text).toBe('new-scope');
+  expect(latest.signature.indexOf('same-edition')).toBe(0);
+  expect(latest.signature).toContain('|session-new|');
+  await renderScope('session-old');
+  expect(calculations).toHaveLength(3);
+  await renderScope('session-newer');
+  await act(async () => calculations[3].resolve([{ text: 'newest', html: '<p>newest</p>', start: 0, end: 6 }]));
+  await act(async () => calculations[2].reject(new Error('superseded old failure')));
+  expect(latest.error).toBe('');
+  expect(latest.pages[0].text).toBe('newest');
+  await renderScope('session-newer', [{ offset: 8, media: 0 }]);
+  expect(calculations).toHaveLength(5);
+  expect(calculations[4].options.pageBreaks).toEqual([{ offset: 8, media: 0 }]);
+  await renderScope('session-newer', [{ offset: 8, media: 0 }]);
+  expect(calculations).toHaveLength(5);
+});
+
+
+const entryManifest = () => ({ ...manifest(), canonical_pages: { ...manifest().canonical_pages, schema_version: "isolated-test-segments-v1", content_revision: "isolated-test-manifest-v1" } });
+const entryPosition = (index = 3, extra = {}) => ({ user_id: "test-reader", content_type: "text", content_id: "test-book", version: 12, publication_version_compatibility: "active", position: { canonical_page_index: index, chapter_id: "c1", segmentation_version: "isolated-test-segments-v1", manifest_version: "isolated-test-manifest-v1", publication_version_state: "bound" }, ...extra });
+test("entry restore waits before default page fetch or autosave and restores bound canonical page", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  const pending = deferred(); pass.getReadingPassPosition.mockReturnValue(pending.promise);
+  await mount("/reader/test-book");
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  expect(pass.saveReadingPassPosition).not.toHaveBeenCalled();
+  await act(async () => pending.resolve(entryPosition()));
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain("p=3");
+  expect(pass.saveReadingPassPosition.mock.calls.every(([value]) => value.pageIndex === 3)).toBe(true);
+  expect(pass.saveReadingPassPosition).toHaveBeenCalled();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+test("entry restore protected metadata never admits a Reading Pass automatically", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockResolvedValue(entryPosition(4));
+  await mount("/reader/test-book");
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain("p=4");
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+test.each([{ user_id: "other-reader" }, { publication_version_compatibility: "retained_nonactive" }, { position: {} }, { content_id: "other-book" }])("entry restore rejects unbound or foreign metadata %j", async extra => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockResolvedValue(entryPosition(3, extra));
+  await mount("/reader/test-book");
+  expect(container.querySelector('[data-testid="location"]').textContent).not.toContain("p=3");
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+test("entry restore late metadata does not replace explicit navigation", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  const pending = deferred(); pass.getReadingPassPosition.mockReturnValue(pending.promise);
+  await mount("/reader/test-book");
+  await act(async () => navigate("/reader/test-book?p=2"));
+  await act(async () => pending.resolve(entryPosition()));
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain("p=2");
+});
+test.each(["p=2", "p=2&a=0&r=isolated-test-manifest-v1"])("entry restore explicit source link wins: %s", async query => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockResolvedValue(entryPosition());
+  await mount(`/reader/test-book?${query}`);
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain(query);
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+test("entry restore revoked metadata request falls back to public entry without admission", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockRejectedValue({ response: { status: 401 } });
+  await mount("/reader/test-book");
+  expect(pass.getReadingPassPage.mock.calls.every(([, index]) => index <= 3)).toBe(true);
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+test("entry restore new reader starts at canonical page one", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockResolvedValue({ content_type: "text", content_id: "test-book", version: 0, position: {} });
+  await mount("/reader/test-book");
+  expect(pass.saveReadingPassPosition).toHaveBeenCalledWith(expect.objectContaining({ pageIndex: 1 }));
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test("entry restore keeps one manifest lifetime through balance and explicit query changes", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  const pending = deferred(); pass.getReadingPassPosition.mockReturnValue(pending.promise);
+  await mount("/reader/test-book");
+  const signal = userApi.get.mock.calls[0][1].signal;
+  mockUser = { ...mockUser, reading_seconds_balance: 1234 };
+  await mount("/reader/test-book");
+  await act(async () => navigate("/reader/test-book?p=2&a=0&r=explicit-edition"));
+  expect(userApi.get).toHaveBeenCalledTimes(1);
+  expect(signal.aborted).toBe(false);
+  await act(async () => pending.resolve(entryPosition()));
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe("/reader/test-book?p=2&a=0&r=explicit-edition");
+  expect(userApi.get).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test("entry restore rejects a previous account response after identity replacement", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  const oldPosition = deferred(), currentPosition = deferred();
+  pass.getReadingPassPosition.mockReturnValueOnce(oldPosition.promise).mockReturnValueOnce(currentPosition.promise);
+  await mount("/reader/test-book");
+  const oldSignal = userApi.get.mock.calls[0][1].signal;
+  mockUser = { id: "new-reader" };
+  await mount("/reader/test-book");
+  expect(oldSignal.aborted).toBe(true);
+  expect(userApi.get).toHaveBeenCalledTimes(2);
+  await act(async () => oldPosition.resolve(entryPosition(3)));
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe("/reader/test-book");
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  await act(async () => currentPosition.resolve(entryPosition(2, { user_id: "new-reader" })));
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe("/reader/test-book?p=2");
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test("semantic boundaries retain pending font and engine work and own an immutable snapshot", async () => {
+  const originalFonts = Object.getOwnPropertyDescriptor(document, "fonts");
+  const fontGate = deferred(), calculations = [];
+  const fonts = { load: jest.fn(() => fontGate.promise), ready: Promise.resolve(), addEventListener: jest.fn(), removeEventListener: jest.fn() };
+  Object.defineProperty(document, "fonts", { configurable: true, value: fonts });
+  jest.spyOn(paginationEngine, 'paginateRenderedResponsive').mockImplementation((_source, _measure, _height, options) => {
+    const gate = deferred(); calculations.push({ ...gate, options }); return gate.promise;
+  });
+  let latest;
+  function BoundaryProbe({ pageBreaks }) {
+    const sourceRef = React.useRef(null), viewportRef = React.useRef(null), measureRef = React.useRef(null);
+    latest = useVisualPagination({ sourceRef, viewportRef, measureRef, revision: 'edition', typography: 'type', authorizationScope: 'same-session', pageBreaks });
+    return <div><div ref={sourceRef}><p>Canonical text</p></div><div ref={viewportRef} /><div ref={measureRef} /></div>;
+  }
+  const renderBoundaries = async boundaries => { await act(async () => root.render(<BoundaryProbe pageBreaks={boundaries} />)); };
+  const initial = [{ offset: 8, media: 0 }];
+  try {
+    await renderBoundaries(initial);
+    await renderBoundaries([{ offset: 8, media: 0 }]);
+    expect(fonts.load).toHaveBeenCalledTimes(1);
+    expect(calculations).toHaveLength(0);
+    await act(async () => fontGate.resolve());
+    expect(calculations).toHaveLength(1);
+    expect(calculations[0].options.pageBreaks).toEqual(initial);
+    initial[0].offset = 99;
+    initial.push({ offset: 999, media: 0 });
+    expect(calculations[0].options.pageBreaks).toEqual([{ offset: 8, media: 0 }]);
+    await renderBoundaries([{ offset: 8, media: 0 }]);
+    expect(calculations[0].options.cancelled()).toBe(false);
+    expect(calculations).toHaveLength(1);
+    expect(fonts.load).toHaveBeenCalledTimes(1);
+    await renderBoundaries([{ offset: 12, media: 3 }]);
+    expect(calculations[0].options.cancelled()).toBe(true);
+    expect(calculations).toHaveLength(2);
+    expect(calculations[1].options.pageBreaks).toEqual([{ offset: 12, media: 3 }]);
+    await act(async () => calculations[1].resolve([{ text: 'current', html: '<p>current</p>', start: 0, end: 7 }]));
+    await act(async () => calculations[0].resolve([{ text: 'obsolete', html: '<p>obsolete</p>', start: 0, end: 8 }]));
+    expect(latest.pages[0].text).toBe('current');
+    expect(latest.error).toBe('');
+  } finally {
+    await act(async () => root.render(null));
+    if (originalFonts) Object.defineProperty(document, "fonts", originalFonts); else delete document.fonts;
+  }
 });

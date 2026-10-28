@@ -35,6 +35,9 @@ env \
 echo "==> Protected package publication proof and scope qualification"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
 
+echo "==> Preserved Reader source validation and dummy signup race"
+"$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py
+
 echo "==> Isolated owner-accepted US rights intake (no activation)"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_us_rights_intake.py scripts/test_owner_us_catalogue_intake.py
 
@@ -126,6 +129,13 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/components/ReferencePublicPages.test.jsx \
   src/pages/Library.test.jsx \
   src/pages/Pricing.test.jsx \
+  src/pages/Pricing.purchase.test.jsx \
+  src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx \
+  src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx \
+  src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx \
+  src/experiences-v2/reader/readerIndexBoundary.test.js \
+  src/experiences-v2/reader/visualPagination.test.js \
+  src/lib/paymentReceipt.test.js \
   src/authAccountLifecycle.test.jsx \
   src/staticSeoContract.test.js
 

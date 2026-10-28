@@ -12187,5 +12187,32 @@
     "guarded_provider_artifact_qualified": false,
     "execution_authorized": false,
     "next_action": "Sole Integration Lane review and exact-head qualification; no workflow dispatch"
+  },
+  "preserved529_residual_source_20261028": {
+    "date": "2026-10-28",
+    "decision": "RECOVER_ONLY_RESIDUAL_529_SOURCE_AND_SIGNUP_RACE_GUARD",
+    "base": "8c92e3af16c69643c96e88037a6c80c96c051849",
+    "preserved_head": "589ff3ced63e758665ad3d65f0a362fc80a9255a",
+    "scope": "Restore retained-edition offline validator and exact literal-angle Reader content handling; translate only known ascending email index signup race. Preserve latest refund recipient checks and already-integrated payment functions; no old Listener or workflow restore.",
+    "qualification": "49 focused dummy/offline tests PASS; source preparation only, no provider/customer writes",
+    "production_changed": false,
+    "next_action": "Finish residual receipt UI/test intent comparison, wire required tests and qualify coherent exact-head CI/review before merge"
+  },
+  "preserved529_purchase_receipt_20261028": {
+    "date": "2026-10-28",
+    "decision": "RECOVER_EXACT_PURCHASE_RECEIPT_CONFIRMATION_FROM_529",
+    "scope": "Pricing credit confirmation requires current intent id plus credited status, including webhook fallback; preexisting positive wallet is insufficient. No payment/provider calls executed: rendered tests mock all APIs.",
+    "qualification": "12 frontend tests PASS across receipt, rendered checkout matrix and existing Pricing suite;49 backend source/signup tests retained; new tests wired into mandatory regression script",
+    "production_changed": false,
+    "next_action": "Finish preserved529 residual interaction tests and high-zoom source diagnosis; qualify exact source/workflow fingerprints and fresh CI before gated merge"
+  },
+  "preserved529_jest_root_listener_20261028": {
+    "date": "2026-10-28",
+    "decision": "CORRECT_LOCAL_JEST_SOURCE_ROOT_AND_LISTENER_PENDING_INTENT",
+    "finding": "Hosted579 surfaced6 lifecycle failures. Reused dependency symlink resolved local Jest root to donor checkout; prior frontend PASS was not valid candidate evidence. Explicit --rootDir reproduces all6 failures.",
+    "fix": "Adapt old fixture to current onBeforePlayback interface and no-component-interval contract; retain current paused-seek logic. Capture owned media node for detached cleanup and gate pending play completion with intent invalidated by Stop/unmount.",
+    "qualification": "35 tests in6suites PASS with explicit candidate root; full hosted successor gates pending",
+    "production_changed": false,
+    "next_action": "Push successor; all fresh exactheadCI/review required, no oldrun retry"
   }
 }

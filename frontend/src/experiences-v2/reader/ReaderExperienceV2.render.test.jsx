@@ -3,6 +3,7 @@ jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a 
 import { createRoot } from "react-dom/client";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import { READER_SETTINGS_STORAGE_KEY } from "../../lib/readerSettings";
+import { ReaderContent, readerSourceText } from "./readerContent";
 import { readerNotebookKey } from "../../lib/readerNotebook";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -39,6 +40,45 @@ describe("ReaderExperienceV2 customer controls", () => {
   const change = (select, value) => act(() => {
     select.value = value;
     select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
+  test("only the authorized true final fragment shows preserved back artwork", async () => {
+    const book = { slug: 'retained-cover', title: 'Retained edition', cover_image_url: '/assets/front.png', back_cover_image_url: '/assets/back.png' };
+    const finalModel = { ...model, book, canonicalPage: 4, totalPages: 4, windowFirst: 4, windowLast: 4, content: <p>Retained last words.</p> };
+    await act(async () => root.render(<ReaderExperienceV2 model={finalModel} access={{ authorized: false }} />));
+    expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...finalModel, windowLast: 3 }} access={{ authorized: true }} />));
+    expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
+    await act(async () => root.render(<ReaderExperienceV2 model={finalModel} access={{ authorized: true }} />));
+    expect(container.querySelector('figure[aria-label="Back cover"] img').getAttribute('src')).toContain('back.png');
+    expect(container.querySelector('[data-testid="reader-reading-text"]').textContent).toContain('Retained last words.');
+  });
+
+  test("the public first fragment shows the preserved front artwork on the reader canvas", async () => {
+    const book = { title: 'Retained edition', cover_image_url: '/assets/front.png' };
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, book, canonicalPage: 1, windowFirst: 1, windowLast: 3, content: <p>Retained first words.</p> }} access={{ authorized: false }} />));
+    expect(container.querySelector('figure[aria-label="Front cover"] img').getAttribute('src')).toContain('front.png');
+    expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
+  });
+
+  test("the source-bound Index link changes only the authorized visual anchor", async () => {
+    const html = '<p>The book ends.</p><p>INDEX</p><p>Work, the right to</p>';
+    const onVisualAnchor = jest.fn();
+    const authorizedChapter = { plan: { key: 'reference-window', chapterId: 'last' }, html, textLength: readerSourceText(html).length, sources: [{ page: 4, start: 0, end: readerSourceText(html).length, revision: 'reference-r' }] };
+    const sourceAnchorForOffset = offset => ({ page: 4, offset, revision: 'reference-r' });
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, canonicalPage: 4, totalPages: 4, chapterTitle: 'Last chapter', contents: [{ page: 4, chapterId: 'last', label: 'Last chapter' }], authorizedChapter, sourceAnchorForOffset, offsetForSourceAnchor: (_page, offset) => offset, onVisualAnchor, content: <ReaderContent html={html} /> }} access={{ authorized: true }} />));
+    expect(container.querySelector('#reader-v2-title').textContent).toBe('Index');
+    expect(button('Index').getAttribute('aria-current')).toBe('page');
+    click(button('Index'));
+    expect(onVisualAnchor).toHaveBeenCalledWith('The book ends.'.length);
+    expect(authorizedChapter.html).toBe(html);
+  });
+
+  test("contents highlight the authorized chapter inside its transport range", async () => {
+    const contents = [{ page: 1, chapterId: 'first', label: 'First chapter' }, { page: 20, chapterId: 'last', label: 'Last chapter' }];
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, canonicalPage: 28, totalPages: 30, contents, authorizedChapter: { plan: { key: 'last-window', chapterId: 'last' }, textLength: 17, sources: [{ page: 28, start: 0, end: 17, revision: 'chapter-revision' }] }, content: <p>Last chapter body</p> }} access={{ authorized: true }} />));
+    expect(button('Last chapter').getAttribute('aria-current')).toBe('page');
+    expect(button('First chapter').hasAttribute('aria-current')).toBe(false);
   });
 
   test("image-only navigation, selector and bookmarks use structural anchors", async () => {
@@ -199,6 +239,22 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(button("Page 1").hasAttribute("aria-current")).toBe(false);
     click(button("Page 2"));
     expect(onRequestPage).toHaveBeenCalledTimes(1);
+  });
+
+  test("compact Contents uses real chapter destinations and respects pending authorization", async () => {
+    const onRequestPage = jest.fn();
+    const chapterModel = { ...model, contents: [{ page: 1, label: 'Opening' }, { page: 3, label: 'Final chapter' }, { page: 99, label: 'Outside edition' }], content: <p>Retained chapter body.</p> };
+    await act(async () => root.render(<ReaderExperienceV2 model={chapterModel} onRequestPage={onRequestPage} access={{ authorized: true }} />));
+    const select = container.querySelector('select[aria-label="Contents"]');
+    expect(select).not.toBeNull();
+    expect(select.closest(".reader-v2__navigation-selectors").querySelector('select[aria-label="Go to page"]')).not.toBeNull();
+    expect(select.closest(".reader-v2__chapter")).toBeNull();
+    expect([...select.options].map(option => option.value)).toEqual(['', 'chapter:1', 'chapter:3']);
+    expect(select.disabled).toBe(false);
+    act(() => { select.value = 'chapter:3'; select.dispatchEvent(new Event('change', { bubbles: true })); });
+    expect(onRequestPage).toHaveBeenCalledWith(3);
+    await act(async () => root.render(<ReaderExperienceV2 model={chapterModel} onRequestPage={onRequestPage} access={{ authorized: true, busy: true }} />));
+    expect(container.querySelector('select[aria-label="Contents"]').disabled).toBe(true);
   });
 
   test("the page selector and previous/next controls respect both book boundaries", () => {

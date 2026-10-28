@@ -201,3 +201,106 @@ test('undecoded measurement clones retain decoded source image geometry', () => 
     expect(parseFloat(image.style.height) + 30).toBeLessThanOrEqual(200);
   }
 });
+
+function seamRun(html, pageBreaks, capacity = 40, options = {}) {
+  const source = document.createElement('div'); source.innerHTML = html;
+  const measure = document.createElement('div');
+  const fits = () => measure.textContent.length <= capacity && measure.querySelectorAll('img').length <= 1;
+  return { source, measure, fits, pages: paginateRendered(source, measure, 100, fits, { ...options, pageBreaks }) };
+}
+function expectSeamIntegrity(source, pages, boundaries) {
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.slice(1).every((page, index) => page.start === pages[index].end)).toBe(true);
+  for (const boundary of boundaries) {
+    expect(pages.some(page => page.start === boundary.offset)).toBe(true);
+    expect(pages.some(page => page.start < boundary.offset && page.end > boundary.offset)).toBe(false);
+  }
+  const template = document.createElement('template'); template.innerHTML = pages.map(page => page.html).join('');
+  expect([...template.content.querySelectorAll('img')].map(image => image.getAttribute('src'))).toEqual([...source.querySelectorAll('img')].map(image => image.getAttribute('src')));
+}
+
+test.each([
+  ['split inline ancestors', '<p>Alpha <strong>bold <em>italic words</em> tail</strong> end.</p>', [{ offset: 16, media: 0 }]],
+  ['formatting whitespace', '<p>prefix words</p> \n\t <p>suffix words and tail</p>', [{ offset: 14, media: 0 }]],
+  ['heading lookahead across whitespace', '<p>previous</p><h2>Heading</h2> \n <p>following chapter words</p>', [{ offset: 16, media: 0 }]],
+  ['multiple seams in one node', '<p>one two three four five six seven eight nine ten</p>', [{ offset: 8, media: 0 }, { offset: 28, media: 0 }]],
+  ['nested original node', '<article><section><p>alpha <strong>beta <em>gamma words</em> delta</strong> tail</p></section></article>', [{ offset: 16, media: 0 }]],
+])('seams preserve every character and prevent crossing: %s', (_name, html, boundaries) => {
+  const { source, pages } = seamRun(html, boundaries, 22); expectSeamIntegrity(source, pages, boundaries);
+});
+
+test('canonical preview prefix remains identical after full chapter pagination', () => {
+  const html = '<p>one two three four five six seven eight nine ten</p>';
+  const { source, pages } = seamRun(html, [{ offset: 28, media: 0 }], 20);
+  const prefix = document.createElement('div'); prefix.innerHTML = '<p>' + source.textContent.slice(0, 28) + '</p>';
+  const measure = document.createElement('div'); const expected = paginateRendered(prefix, measure, 100, () => measure.textContent.length <= 20);
+  expect(pages.filter(page => page.end <= 28).map(page => [page.start, page.end, page.text])).toEqual(expected.map(page => [page.start, page.end, page.text]));
+  expect(pages[pageForAnchor(pages, 28)].start).toBe(28);
+});
+
+test('zero-text media seams preserve order and structural anchors', () => {
+  const boundary = { offset: 0, media: 1 };
+  const { source, pages } = seamRun('<figure><img src="/one"></figure><figure><img src="/two"></figure><p>tail words</p>', [boundary], 20);
+  expectSeamIntegrity(source, pages, [boundary]); expect(pages.flatMap(page => page.media)).toEqual([0, 1]);
+  for (const ordinal of [0, 1]) expect(pages[pageForAnchor(pages, `media:${ordinal}`)].media).toContain(ordinal);
+});
+
+test('between-row media seams preserve table row structure', () => {
+  const boundary = { offset: 5, media: 1 };
+  const { source, pages } = seamRun('<section><table><tbody><tr><td>first<img src="/one"></td></tr><tr><td>second<img src="/two"></td></tr></tbody></table></section>', [boundary], 20);
+  expectSeamIntegrity(source, pages, [boundary]);
+  const template = document.createElement('template'); template.innerHTML = pages.map(page => page.html).join(''); expect(template.content.querySelectorAll('tr')).toHaveLength(2);
+});
+
+test.each([
+  ['row interior', '<table><tr><td>cell words</td></tr></table>', { offset: 4, media: 0 }],
+  ['rowspan boundary', '<table><tbody><tr><td rowspan="2">shared</td><td>one</td></tr><tr><td>two</td></tr></tbody></table>', { offset: 9, media: 0 }],
+  ['figure caption interior', '<figure><img src="/one"><figcaption>caption words</figcaption></figure>', { offset: 4, media: 1 }],
+  ['figure media interior', '<figure><img src="/one"><img src="/two"></figure>', { offset: 0, media: 1 }],
+])('unsafe structural seam fails before output: %s', (_name, html, seam) => {
+  expect(() => seamRun(html, [seam], 40)).toThrow(/crosses.*row|figure/);
+});
+
+test('BR/HR and original nested source ordinal survive once', () => {
+  const { source, pages } = seamRun('<section><p>first<br><strong>second</strong><br>tail</p><hr><p>end</p></section>', [{ offset: 5, media: 0 }], 14);
+  expectSeamIntegrity(source, pages, [{ offset: 5, media: 0 }]);
+  const template = document.createElement('template'); template.innerHTML = pages.map(page => page.html).join('');
+  expect(template.content.querySelectorAll('br')).toHaveLength(2); expect(template.content.querySelectorAll('hr')).toHaveLength(1);
+  expect(pages.flatMap(page => page.structures).every(anchor => anchor === 'node:0')).toBe(true);
+});
+
+test('decoded image intrinsics survive source partition cloning', () => {
+  const source = document.createElement('div'); source.innerHTML = '<figure><img src="/art"></figure><p>tail</p>';
+  Object.defineProperties(source.querySelector('img'), { naturalWidth: { value: 640 }, naturalHeight: { value: 480 } });
+  const measure = document.createElement('div'); const pages = paginateRendered(source, measure, 100, () => true, { pageBreaks: [{ offset: 0, media: 1 }] });
+  const template = document.createElement('template'); template.innerHTML = pages[0].html; const image = template.content.querySelector('img');
+  expect(image.dataset.readerIntrinsicWidth).toBe('640'); expect(image.dataset.readerIntrinsicHeight).toBe('480'); expect(image.getAttribute('width')).toBe('640'); expect(image.getAttribute('height')).toBe('480');
+});
+
+test.each([
+  ['nodes', { nodes: 2 }], ['text', { textCharacters: 2 }], ['depth', { depth: 1 }], ['work', { workUnits: 2 }], ['seams', { seams: 1 }],
+])('preprocessing %s budget fails without source mutation', (_name, preprocessingLimits) => {
+  const source = document.createElement('div'); source.innerHTML = '<section><p>one two three four</p></section>'; const before = source.innerHTML;
+  expect(() => paginateRendered(source, document.createElement('div'), 100, () => true, { pageBreaks: [{ offset: 4, media: 0 }, { offset: 8, media: 0 }], preprocessingLimits })).toThrow(/budget/);
+  expect(source.innerHTML).toBe(before);
+});
+
+test('cancellation interrupts yielded preflight before cloning', async () => {
+  const source = document.createElement('div'); source.innerHTML = '<p>' + 'one two '.repeat(20) + '</p>'; const measure = document.createElement('div'); let cancelled = false; let enteredClone = false; let ticks = 0;
+  await expect(paginateRenderedResponsive(source, measure, 100, { pageBreaks: [{ offset: 8, media: 0 }], fits: () => true, clock: () => ticks += 9, schedule: resume => { cancelled = true; setTimeout(resume, 0); }, cancelled: () => cancelled, onPreprocessingStats: stats => { enteredClone ||= stats.enteredClone; } })).rejects.toMatchObject({ name: 'AbortError' });
+  expect(enteredClone).toBe(false); expect(measure.childNodes).toHaveLength(0);
+});
+
+test('responsive seams equal synchronous ranges and preserve yielded text', async () => {
+  const source = document.createElement('div'); source.innerHTML = '<p>' + 'one two three four '.repeat(30) + '</p>'; const measure = document.createElement('div'); const pageBreaks = [{ offset: 80, media: 0 }]; const fits = () => measure.textContent.length <= 80; let ticks = 0; let yields = 0;
+  const expected = paginateRendered(source, measure, 100, fits, { pageBreaks });
+  const actual = await paginateRenderedResponsive(source, measure, 100, { pageBreaks, fits, clock: () => ticks += 9, schedule: resume => { yields++; setTimeout(resume, 0); } });
+  expect(actual).toEqual(expected); expect(yields).toBeGreaterThan(0); expectSeamIntegrity(source, actual, pageBreaks);
+});
+
+test.each([["scientific-next-failure-diagnosis-v2.json", "<p data-reader-source-node=\"84\">has reached his highest state of efficiency; that is, when he is turning</p>\n<p data-reader-source-node=\"86\">out his largest daily output.</p>\n<p data-reader-source-node=\"88\">The truth of this fact is also perfectly clear in the case of two men</p>\n<p data-reader-source-node=\"90\">working together. To illustrate: if you and your workman have become so</p>\n<p data-reader-source-node=\"92\">skilful that you and he together are making two pairs of, shoes in a</p>\n<p data-reader-source-node=\"94\">day, while your competitor and his workman are making only one pair, it</p>\n<p data-reader-source-node=\"96\">is clear that after selling your two pairs of shoes you can pay your</p><p data-reader-source-node=\"97\">workman much higher wages than your competitor who produces only one</p>\n<p data-reader-source-node=\"99\">pair of shoes is able to pay his man, and that there will still be</p>\n<p data-reader-source-node=\"101\">enough money left over for you to have a larger profit than your</p>\n<p data-reader-source-node=\"103\">competitor.</p>\n<p data-reader-source-node=\"105\">In the case of a more complicated manufacturing establishment, it should</p>\n<p data-reader-source-node=\"107\">also be perfectly clear that the greatest permanent prosperity for the</p>\n<p data-reader-source-node=\"109\">workman, coupled with the greatest prosperity for the employer, can be</p>\n", 454], ["my-life-next-failure-diagnosis.json", "<p data-reader-source-node=\"278\">expect that, if everything be overturned, everyone will thereby get</p>\n<p data-reader-source-node=\"280\">three meals a day. Or, should everything be petrified, that thereby six</p><p data-reader-source-node=\"281\">per cent, interest may be paid. The trouble is that reformers and</p>\n<p data-reader-source-node=\"283\">reactionaries alike get away from the realities--from the primary</p>\n<p data-reader-source-node=\"285\">functions.</p>\n<p data-reader-source-node=\"287\">One of the counsels of caution is to be very certain that we do not</p>\n<p data-reader-source-node=\"289\">mistake a reactionary turn for a return of common sense. We have passed</p>\n<p data-reader-source-node=\"291\">through a period of fireworks of every description, and the making of a</p>\n<p data-reader-source-node=\"293\">great many idealistic maps of progress. We did not get anywhere. It was</p>\n<p data-reader-source-node=\"295\">a convention, not a march. Lovely things were said, but when we got home</p>\n<p data-reader-source-node=\"297\">we found the furnace out. Reactionaries have frequently taken advantage</p>\n<p data-reader-source-node=\"299\">of the recoil from such a period, and they have promised \"the good old</p>\n<p data-reader-source-node=\"301\">times\"--which usually means the bad old abuses--and because they are</p>\n<p data-reader-source-node=\"303\">perfectly void of vision they are sometimes regarded as \"practical men.\"</p>\n", 139]])('observed forward fragment starts exactly at public/protected seam: %s', (_name, html, offset) => { const boundary = { offset, media: 0 }; const { source, pages } = seamRun(html, [boundary], 500); expectSeamIntegrity(source, pages, [boundary]); expect(pages[pageForAnchor(pages, offset)].start).toBe(offset); });
+
+test('successful preflight reports entry into cloning so cancellation evidence is nonvacuous', () => {
+  const stats = []; seamRun('<p>one two three four</p>', [{ offset: 4, media: 0 }], 20, { onPreprocessingStats: value => stats.push(value) });
+  expect(stats.some(value => value.enteredClone === true)).toBe(true);
+});
