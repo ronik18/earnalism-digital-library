@@ -1,0 +1,11 @@
+{
+  "status": "PASS_ACTUAL_ADAPTER_TOPOLOGY_AND_READER_GROUPING",
+  "sourceWords": 1652,
+  "readerParagraphs": 23,
+  "groups": 6,
+  "durationMs": 777120,
+  "fullAdoptionValidation": "HOLD_DEFAULT_REGISTRY_EMPTY_AND_CANONICAL_AUDIO_RECORD_NOT_INTEGRATED",
+  "noRegistryOverride": true,
+  "codePath": "/Users/ronikbasak/.codex/worktrees/selfish-giant-package-adapter/earnalism-digital-library/internal/audiobook_lab/scripts/owner_produced_package.py",
+  "codeSHA256": "f69d122503a865e9f9f9c660c729932d1fee1779d8e9c1c9e92ae016fc58eaa5"
+}

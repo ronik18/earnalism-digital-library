@@ -1,0 +1,11 @@
+{
+  "sourceEvidence": {
+    "path": "/Users/ronikbasak/.codex/worktrees/selfish-giant-package-adapter/earnalism-digital-library/backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+    "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+  },
+  "manuscript": {
+    "path": "/private/tmp/earnalism-selfish-giant-protected-package-20261029/manuscript-exact.txt",
+    "sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  },
+  "scope": "Accepted complete1652word edition; no source change"
+}

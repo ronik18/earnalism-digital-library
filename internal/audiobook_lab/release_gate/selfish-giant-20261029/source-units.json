@@ -1,0 +1,202 @@
+[
+  {
+    "id": "opening",
+    "delivery_segment_id": "group-01",
+    "text": "EVERY afternoon, as they were coming from school, the children used to go\n\nand play in the Giant’s garden.\n\nIt was a large lovely garden, with soft green grass. Here and there over\n\nthe grass stood beautiful flowers like stars, and there were twelve\n\npeach-trees that in the spring-time broke out into delicate blossoms of\n\npink and pearl, and in the autumn bore rich fruit. The birds sat on the\n\ntrees and sang so sweetly that the children used to stop their games in\n\norder to listen to them. “How happy we are here!” they cried to each\n\nother.",
+    "source_start": 0,
+    "source_end": 546,
+    "text_sha256": "b925d22cc5cb0d0c62ad714f7288cbf374c88b84aef0d54b0f661852c40111ae",
+    "start_word": 0,
+    "end_word": 98
+  },
+  {
+    "id": "gap-01",
+    "delivery_segment_id": "group-02",
+    "text": "\n\nOne day the Giant came back. He had been to visit his friend the Cornish\n\nogre, and had stayed with him for seven years. After the seven years\n\nwere over he had said all that he had to say, for his conversation was\n\nlimited, and he determined to return to his own castle. When he arrived\n\nhe saw the children playing in the garden.\n\n",
+    "source_start": 546,
+    "source_end": 881,
+    "text_sha256": "f090d399595bf579a809149cc6cbfd450e48d3e3797661a22f83ad41c60512d6",
+    "start_word": 99,
+    "end_word": 162
+  },
+  {
+    "id": "dialogue_and_notice",
+    "delivery_segment_id": "group-03",
+    "text": "“What are you doing here?” he cried in a very gruff voice, and the\n\nchildren ran away.\n\n“My own garden is my own garden,” said the Giant; “any one can understand\n\nthat, and I will allow nobody to play in it but myself.” So he built a\n\nhigh wall all round it, and put up a notice-board.\n\nTRESPASSERS\n\nWILL BE\n\nPROSECUTED",
+    "source_start": 881,
+    "source_end": 1200,
+    "text_sha256": "24c0cd565e6771186897466b278aedc8d0045518ad05ce2e4dc7ef363450eee2",
+    "start_word": 163,
+    "end_word": 223
+  },
+  {
+    "id": "gap-03",
+    "delivery_segment_id": "group-04",
+    "text": "\n\nHe was a very selfish Giant.\n\nThe poor children had now nowhere to play. They tried to play on the\n\nroad, but the road was very dusty and full of hard stones, and they did\n\nnot like it. They used to wander round the high wall when their lessons\n\nwere over, and talk about the beautiful garden inside. “How happy we\n\nwere there,” they said to each other.\n\nThen the Spring came, and all over the country there were little blossoms\n\nand little birds. Only in the garden of the Selfish Giant it was still\n\nwinter.",
+    "source_start": 1200,
+    "source_end": 1711,
+    "text_sha256": "0a69c8e63d2e8953408502dc2df38516207f56146b1476d58c823f05244c5efc",
+    "start_word": 224,
+    "end_word": 319
+  },
+  {
+    "id": "gap-04",
+    "delivery_segment_id": "group-04",
+    "text": " The birds did not care to sing in it as there were no children,\n\nand the trees forgot to blossom. Once a beautiful flower put its head\n\nout from the grass, but when it saw the notice-board it was so sorry for\n\nthe children that it slipped back into the ground again, and went off to\n\nsleep. The only people who were pleased were the Snow and the Frost.\n\n",
+    "source_start": 1711,
+    "source_end": 2066,
+    "text_sha256": "5f1b7a17d24d53e92924d126eccd240d009126cac8c9499ecfed1d137c8558c0",
+    "start_word": 320,
+    "end_word": 388
+  },
+  {
+    "id": "weather_personification",
+    "delivery_segment_id": "group-04",
+    "text": "“Spring has forgotten this garden,” they cried, “so we will live here all\n\nthe year round.” The Snow covered up the grass with her great white\n\ncloak, and the Frost painted all the trees silver. Then they invited the\n\nNorth Wind to stay with them, and he came. He was wrapped in furs, and\n\nhe roared all day about the garden, and blew the chimney-pots down.\n\n“This is a delightful spot,” he said, “we must ask the Hail on a visit.”\n\nSo the Hail came. Every day for three hours he rattled on the roof of\n\nthe castle till he broke most of the slates, and then he ran round and\n\nround the garden as fast as he could go. He was dressed in grey, and his\n\nbreath was like ice.",
+    "source_start": 2066,
+    "source_end": 2736,
+    "text_sha256": "2609be5ecb07b5f5d849b03c68c6c15ba3099c2598904c1eaf00f2902122f9b5",
+    "start_word": 389,
+    "end_word": 519
+  },
+  {
+    "id": "gap-06",
+    "delivery_segment_id": "group-05",
+    "text": "\n\n“I cannot understand why the Spring is so late in coming,” said the\n\nSelfish Giant, as he sat at the window and looked out at his cold white\n\ngarden; “I hope there will be a change in the weather.”\n\nBut the Spring never came, nor the Summer. The Autumn gave golden fruit\n\nto every garden, but to the Giant’s garden she gave none. “He is too\n\nselfish,” she said. So it was always Winter there, and the North Wind,\n\nand the Hail, and the Frost, and the Snow danced about through the trees.",
+    "source_start": 2736,
+    "source_end": 3225,
+    "text_sha256": "9e9075a1452ebfc54d51d40730d127e8aa2e034f28403db1b97469740427ed89",
+    "start_word": 520,
+    "end_word": 612
+  },
+  {
+    "id": "gap-07",
+    "delivery_segment_id": "group-05",
+    "text": "\n\nOne morning the Giant was lying awake in bed when he heard some lovely\n\nmusic. It sounded so sweet to his ears that he thought it must be the\n\nKing’s musicians passing by. It was really only a little linnet singing\n\noutside his window, but it was so long since he had heard a bird sing in\n\nhis garden that it seemed to him to be the most beautiful music in the\n\nworld. Then the Hail stopped dancing over his head, and the North Wind\n\nceased roaring, and a delicious perfume came to him through the open\n\ncasement.",
+    "source_start": 3225,
+    "source_end": 3740,
+    "text_sha256": "47da06901c77998f8d6bbd6067199f9d37af61bc38b4b56a668e74f71746d9bc",
+    "start_word": 613,
+    "end_word": 710
+  },
+  {
+    "id": "gap-08",
+    "delivery_segment_id": "group-05",
+    "text": " “I believe the Spring has come at last,” said the Giant; and\n\nhe jumped out of bed and looked out.\n\nWhat did he see?\n\nHe saw a most wonderful sight. Through a little hole in the wall the\n\nchildren had crept in, and they were sitting in the branches of the\n\ntrees. In every tree that he could see there was a little child. And\n\nthe trees were so glad to have the children back again that they had\n\ncovered themselves with blossoms, and were waving their arms gently above\n\nthe children’s heads.",
+    "source_start": 3740,
+    "source_end": 4234,
+    "text_sha256": "fbb9fb02086890195c117f641c07f6bb64731362e718edae57dd155424e3ea74",
+    "start_word": 711,
+    "end_word": 803
+  },
+  {
+    "id": "gap-09",
+    "delivery_segment_id": "group-05",
+    "text": " The birds were flying about and twittering with\n\ndelight, and the flowers were looking up through the green grass and\n\nlaughing. It was a lovely scene, only in one corner it was still winter.\n\nIt was the farthest corner of the garden, and in it was standing a little\n\nboy. He was so small that he could not reach up to the branches of the\n\ntree, and he was wandering all round it, crying bitterly. The poor tree\n\nwas still quite covered with frost and snow, and the North Wind was\n\nblowing and roaring above it. “Climb up!",
+    "source_start": 4234,
+    "source_end": 4757,
+    "text_sha256": "21a831fbeb352b02d11040d71027bb79ef927744c6a2c98fb6a48d2ee0bc8577",
+    "start_word": 804,
+    "end_word": 901
+  },
+  {
+    "id": "gap-10",
+    "delivery_segment_id": "group-05",
+    "text": " little boy,” said the Tree, and\n\nit bent its branches down as low as it could; but the boy was too tiny.\n\n",
+    "source_start": 4757,
+    "source_end": 4864,
+    "text_sha256": "c12046cb87aebc47e83c5023add018ea20c2decec16c5a53bffcd30334cd73d6",
+    "start_word": 902,
+    "end_word": 923
+  },
+  {
+    "id": "turning_point",
+    "delivery_segment_id": "group-05",
+    "text": "And the Giant’s heart melted as he looked out. “How selfish I have\n\nbeen!” he said; “now I know why the Spring would not come here. I will\n\nput that poor little boy on the top of the tree, and then I will knock\n\ndown the wall, and my garden shall be the children’s playground for ever\n\nand ever.” He was really very sorry for what he had done.",
+    "source_start": 4864,
+    "source_end": 5207,
+    "text_sha256": "e765f0733951a455a10c4007f0573328429bc056e839f50552bb8c8fe33065d1",
+    "start_word": 924,
+    "end_word": 992
+  },
+  {
+    "id": "gap-12",
+    "delivery_segment_id": "group-05",
+    "text": "\n\nSo he crept downstairs and opened the front door quite softly, and went\n\nout into the garden. But when the children saw him they were so\n\nfrightened that they all ran away, and the garden became winter again.\n\nOnly the little boy did not run, for his eyes were so full of tears that\n\nhe did not see the Giant coming. And the Giant stole up behind him and\n\ntook him gently in his hand, and put him up into the tree.",
+    "source_start": 5207,
+    "source_end": 5623,
+    "text_sha256": "3ee3c5e16a2efc82f418a02c41a1e14c599516062bb61896d9fd7e2e4544ad97",
+    "start_word": 993,
+    "end_word": 1074
+  },
+  {
+    "id": "gap-13",
+    "delivery_segment_id": "group-05",
+    "text": " And the tree\n\nbroke at once into blossom, and the birds came and sang on it, and the\n\nlittle boy stretched out his two arms and flung them round the Giant’s\n\nneck, and kissed him. And the other children, when they saw that the\n\nGiant was not wicked any longer, came running back, and with them came\n\nthe Spring. “It is your garden now, little children,” said the Giant,\n\nand he took a great axe and knocked down the wall.",
+    "source_start": 5623,
+    "source_end": 6045,
+    "text_sha256": "696d3f4e893b370210d2a572e4906055d01160cb5923b93346b11dace31e1c9a",
+    "start_word": 1075,
+    "end_word": 1154
+  },
+  {
+    "id": "gap-14",
+    "delivery_segment_id": "group-05",
+    "text": " And when the people\n\nwere going to market at twelve o’clock they found the Giant playing with\n\nthe children in the most beautiful garden they had ever seen.\n\nAll day long they played, and in the evening they came to the Giant to\n\nbid him good-bye.\n\n“But where is your little companion?” he said: “the boy I put into the\n\ntree.” The Giant loved him the best because he had kissed him.\n\n“We don’t know,” answered the children; “he has gone away.”\n\n“You must tell him to be sure and come here to-morrow,” said the Giant.",
+    "source_start": 6045,
+    "source_end": 6563,
+    "text_sha256": "54c9cb54b40cdfabb78b970ec7274af863ad3ebd9f80ab8ccabbc588e009e342",
+    "start_word": 1155,
+    "end_word": 1250
+  },
+  {
+    "id": "gap-15",
+    "delivery_segment_id": "group-05",
+    "text": "\n\nBut the children said that they did not know where he lived, and had\n\nnever seen him before; and the Giant felt very sad.\n\nEvery afternoon, when school was over, the children came and played with\n\nthe Giant. But the little boy whom the Giant loved was never seen again.\n\nThe Giant was very kind to all the children, yet he longed for his first\n\nlittle friend, and often spoke of him. “How I would like to see him!” he\n\nused to say.\n\nYears went over, and the Giant grew very old and feeble.",
+    "source_start": 6563,
+    "source_end": 7054,
+    "text_sha256": "7106df17b9efeb5b60a838a3a3e02826190fec30add322b17822163f7f65640c",
+    "start_word": 1251,
+    "end_word": 1344
+  },
+  {
+    "id": "gap-16",
+    "delivery_segment_id": "group-05",
+    "text": " He could not\n\nplay about any more, so he sat in a huge armchair, and watched the\n\nchildren at their games, and admired his garden. “I have many beautiful\n\nflowers,” he said; “but the children are the most beautiful flowers of\n\nall.”\n\nOne winter morning he looked out of his window as he was dressing. He\n\ndid not hate the Winter now, for he knew that it was merely the Spring\n\nasleep, and that the flowers were resting.\n\nSuddenly he rubbed his eyes in wonder, and looked and looked. It\n\ncertainly was a marvellous sight.",
+    "source_start": 7054,
+    "source_end": 7575,
+    "text_sha256": "f8e2f75624279d663fb59213557c8f0cf4f8691eddb6ba221d8b6d6ebc06b541",
+    "start_word": 1345,
+    "end_word": 1439
+  },
+  {
+    "id": "gap-17",
+    "delivery_segment_id": "group-05",
+    "text": " In the farthest corner of the garden\n\nwas a tree quite covered with lovely white blossoms. Its branches were\n\nall golden, and silver fruit hung down from them, and underneath it stood\n\nthe little boy he had loved.\n\nDownstairs ran the Giant in great joy, and out into the garden. He\n\nhastened across the grass, and came near to the child. And when he came\n\nquite close his face grew red with anger, and he said, “Who hath dared to\n\nwound thee?”",
+    "source_start": 7575,
+    "source_end": 8019,
+    "text_sha256": "1969f5d1d04c4c9702d8866d4752b134f09001fca7fb4bc36d741aa66644a239",
+    "start_word": 1440,
+    "end_word": 1521
+  },
+  {
+    "id": "gap-18",
+    "delivery_segment_id": "group-05",
+    "text": " For on the palms of the child’s hands were the prints of\n\ntwo nails, and the prints of two nails were on the little feet.\n\n“Who hath dared to wound thee?” cried the Giant; “tell me, that I may\n\ntake my big sword and slay him.”\n\n",
+    "source_start": 8019,
+    "source_end": 8248,
+    "text_sha256": "cfd5f5df41a0dfdda24ef71f52beecaaa31a74777e0f30173aae3103128cd8bf",
+    "start_word": 1522,
+    "end_word": 1567
+  },
+  {
+    "id": "ending",
+    "delivery_segment_id": "group-06",
+    "text": "“Nay!” answered the child; “but these are the wounds of Love.”\n\n“Who art thou?” said the Giant, and a strange awe fell on him, and he\n\nknelt before the little child.\n\nAnd the child smiled on the Giant, and said to him, “You let me play once\n\nin your garden, to-day you shall come with me to my garden, which is\n\nParadise.”\n\nAnd when the children ran in that afternoon, they found the Giant lying\n\ndead under the tree, all covered with white blossoms.",
+    "source_start": 8248,
+    "source_end": 8698,
+    "text_sha256": "13e5c705744d8d121a7590fc7fbbabd6d115e80fb57d1a002ea398f1dc69c3d5",
+    "start_word": 1568,
+    "end_word": 1651
+  }
+]

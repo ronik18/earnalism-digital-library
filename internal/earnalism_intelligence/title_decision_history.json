@@ -12224,5 +12224,14 @@
     "provider_qualified": false,
     "production_changed": false,
     "next_action": "Exact controller source preflight then freshCI/independent review; no provider execution"
+  },
+  "selfish_giant_lifetime_source_20261029": {
+    "date": "2026-10-29",
+    "decision": "SELFISH_GIANT_EXACT_LIFETIME_INDIA_SOURCE_ADOPTION",
+    "scope": "Owner lifetime exact IN/audio_stream only, explicit non-expiring control with registry/revocation/component protections; no active pointer, US entitlement, auto-deploy or production change",
+    "qualification": "175 focused source rights/adoption/publication tests+10subtests PASS; actual masters,8evidence roles and exact20unit6group source bindings reused; hosted exact-head CI pending",
+    "provider_qualified": false,
+    "production_changed": false,
+    "next_action": "Fresh exact-head source review and CI; actual Listener fixture qualification and existing private storage-context completion, no uploads/spend"
   }
 }

@@ -239,9 +239,15 @@ def evaluate_accepted_record(
         if not isinstance(valid_from_raw, str) or not isinstance(valid_until_raw, str):
             raise ValueError("timestamps must be strings")
         valid_from = _instant(valid_from_raw)
-        valid_until = _instant(valid_until_raw)
-        if not valid_from <= now < valid_until:
-            reasons.append("DECISION_OUTSIDE_VALIDITY")
+        # Explicit non-expiring control remains registry-bound and revocable.
+        # Null/missing/unrecognised values still fail closed.
+        if valid_until_raw == "LIFETIME":
+            if now < valid_from:
+                reasons.append("DECISION_OUTSIDE_VALIDITY")
+        else:
+            valid_until = _instant(valid_until_raw)
+            if not valid_from <= now < valid_until:
+                reasons.append("DECISION_OUTSIDE_VALIDITY")
     except (KeyError, TypeError, ValueError, AttributeError):
         reasons.append("VALIDITY_INVALID")
 

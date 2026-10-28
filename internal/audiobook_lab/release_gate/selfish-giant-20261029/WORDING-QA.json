@@ -1,0 +1,883 @@
+{
+  "status": "WORDING_QUALIFIED_WITH_TARGETED_OWNER_ADJUDICATION_AND_RETAINED_ASR_LIMITATIONS",
+  "masterSHA256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+  "sourceSHA256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "canonicalWhitespaceWords": 1652,
+  "ASRComparisonTokens": 1660,
+  "tokenizationNote": "Hyphenated words are split by recognizer comparison;1660tokens is not an edition/content change.",
+  "models": [
+    {
+      "model": "base",
+      "rawTranscriptSHA256": "5a96dfb43dee7cf6a3ea33041db465b6d419ccc34e29afdbd834f856be5768a6",
+      "rawTokenAgreementPercent": 97.34939759036145,
+      "differences": [
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            45,
+            45
+          ],
+          "recognizedSpan": [
+            45,
+            46
+          ],
+          "expected": [],
+          "recognized": [
+            "teach"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            95,
+            95
+          ],
+          "recognizedSpan": [
+            96,
+            97
+          ],
+          "expected": [],
+          "recognized": [
+            "here"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            170,
+            170
+          ],
+          "recognizedSpan": [
+            172,
+            173
+          ],
+          "expected": [],
+          "recognized": [
+            "here"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            192,
+            194
+          ],
+          "recognizedSpan": [
+            195,
+            196
+          ],
+          "expected": [
+            "any",
+            "one"
+          ],
+          "recognized": [
+            "anyone"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            209,
+            210
+          ],
+          "recognizedSpan": [
+            211,
+            212
+          ],
+          "expected": [
+            "he"
+          ],
+          "recognized": [
+            "we"
+          ],
+          "classification": "OWNER_ADJUDICATED_EXACT_UNCHANGED_NOTICE"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            215,
+            216
+          ],
+          "recognizedSpan": [
+            217,
+            218
+          ],
+          "expected": [
+            "round"
+          ],
+          "recognized": [
+            "around"
+          ],
+          "classification": "OWNER_ADJUDICATED_EXACT_UNCHANGED_NOTICE"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            223,
+            224
+          ],
+          "recognizedSpan": [
+            225,
+            227
+          ],
+          "expected": [
+            "trespassers"
+          ],
+          "recognized": [
+            "tress",
+            "passers"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            269,
+            270
+          ],
+          "recognizedSpan": [
+            272,
+            273
+          ],
+          "expected": [
+            "round"
+          ],
+          "recognized": [
+            "around"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            359,
+            361
+          ],
+          "recognizedSpan": [
+            362,
+            363
+          ],
+          "expected": [
+            "notice",
+            "board"
+          ],
+          "recognized": [
+            "noticeboard"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            518,
+            519
+          ],
+          "recognizedSpan": [
+            520,
+            521
+          ],
+          "expected": [
+            "grey"
+          ],
+          "recognized": [
+            "gray"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            528,
+            529
+          ],
+          "recognizedSpan": [
+            530,
+            532
+          ],
+          "expected": [
+            "why"
+          ],
+          "recognized": [
+            "stand",
+            "where"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            555,
+            556
+          ],
+          "recognizedSpan": [
+            558,
+            559
+          ],
+          "expected": [
+            "hope"
+          ],
+          "recognized": [
+            "hoped"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            588,
+            588
+          ],
+          "recognizedSpan": [
+            591,
+            592
+          ],
+          "expected": [],
+          "recognized": [
+            "son"
+          ],
+          "classification": "OWNER_ADJUDICATED_NO_EXTRA_WORD"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            657,
+            658
+          ],
+          "recognizedSpan": [
+            661,
+            662
+          ],
+          "expected": [
+            "linnet"
+          ],
+          "recognized": [
+            "lynet"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            703,
+            704
+          ],
+          "recognizedSpan": [
+            707,
+            708
+          ],
+          "expected": [
+            "ceased"
+          ],
+          "recognized": [
+            "seized"
+          ],
+          "classification": "OWNER_ADJUDICATED_CEASED"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            768,
+            768
+          ],
+          "recognizedSpan": [
+            772,
+            773
+          ],
+          "expected": [],
+          "recognized": [
+            "trees"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            830,
+            830
+          ],
+          "recognizedSpan": [
+            835,
+            836
+          ],
+          "expected": [],
+          "recognized": [
+            "it"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            901,
+            901
+          ],
+          "recognizedSpan": [
+            907,
+            908
+          ],
+          "expected": [],
+          "recognized": [
+            "knowing"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            929,
+            930
+          ],
+          "recognizedSpan": [
+            936,
+            937
+          ],
+          "expected": [
+            "and"
+          ],
+          "recognized": [
+            "in"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            984,
+            986
+          ],
+          "recognizedSpan": [
+            991,
+            992
+          ],
+          "expected": [
+            "for",
+            "ever"
+          ],
+          "recognized": [
+            "forever"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1205,
+            1207
+          ],
+          "recognizedSpan": [
+            1211,
+            1212
+          ],
+          "expected": [
+            "good",
+            "bye"
+          ],
+          "recognized": [
+            "goodbye"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1253,
+            1255
+          ],
+          "recognizedSpan": [
+            1258,
+            1259
+          ],
+          "expected": [
+            "to",
+            "morrow"
+          ],
+          "recognized": [
+            "tomorrow"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1352,
+            1352
+          ],
+          "recognizedSpan": [
+            1356,
+            1357
+          ],
+          "expected": [],
+          "recognized": [
+            "people"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1392,
+            1392
+          ],
+          "recognizedSpan": [
+            1397,
+            1398
+          ],
+          "expected": [],
+          "recognized": [
+            "hours"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1423,
+            1424
+          ],
+          "recognizedSpan": [
+            1429,
+            1431
+          ],
+          "expected": [
+            "asleep"
+          ],
+          "recognized": [
+            "of",
+            "sleep"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1440,
+            1440
+          ],
+          "recognizedSpan": [
+            1447,
+            1448
+          ],
+          "expected": [],
+          "recognized": [
+            "looked"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1487,
+            1487
+          ],
+          "recognizedSpan": [
+            1495,
+            1496
+          ],
+          "expected": [],
+          "recognized": [
+            "ran"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1528,
+            1531
+          ],
+          "recognizedSpan": [
+            1537,
+            1539
+          ],
+          "expected": [
+            "thee",
+            "for",
+            "on"
+          ],
+          "recognized": [
+            "the",
+            "peron"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1533,
+            1533
+          ],
+          "recognizedSpan": [
+            1541,
+            1543
+          ],
+          "expected": [],
+          "recognized": [
+            "the",
+            "moms"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1539,
+            1540
+          ],
+          "recognizedSpan": [
+            1549,
+            1550
+          ],
+          "expected": [
+            "prints"
+          ],
+          "recognized": [
+            "prince"
+          ],
+          "classification": "OWNER_ADJUDICATED_PRINTS"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1545,
+            1546
+          ],
+          "recognizedSpan": [
+            1555,
+            1556
+          ],
+          "expected": [
+            "prints"
+          ],
+          "recognized": [
+            "prince"
+          ],
+          "classification": "OWNER_ADJUDICATED_PRINTS"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1585,
+            1585
+          ],
+          "recognizedSpan": [
+            1595,
+            1596
+          ],
+          "expected": [],
+          "recognized": [
+            "love"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            1638,
+            1638
+          ],
+          "recognizedSpan": [
+            1649,
+            1650
+          ],
+          "expected": [],
+          "recognized": [
+            "paradise"
+          ],
+          "classification": "UNCHANGED_OWNER_ACCEPTED_ENDING_ASR_INSERTION_NOT_CORROBORATED"
+        }
+      ]
+    },
+    {
+      "model": "small",
+      "rawTranscriptSHA256": "5dc39c44c929fe24d6184a43d6053cacf06c56f12a3ce2926efec8cb6c4b4f64",
+      "rawTokenAgreementPercent": 98.73493975903614,
+      "differences": [
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            49,
+            51
+          ],
+          "recognizedSpan": [
+            49,
+            50
+          ],
+          "expected": [
+            "spring",
+            "time"
+          ],
+          "recognized": [
+            "springtime"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            192,
+            194
+          ],
+          "recognizedSpan": [
+            191,
+            192
+          ],
+          "expected": [
+            "any",
+            "one"
+          ],
+          "recognized": [
+            "anyone"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            209,
+            210
+          ],
+          "recognizedSpan": [
+            207,
+            208
+          ],
+          "expected": [
+            "he"
+          ],
+          "recognized": [
+            "we"
+          ],
+          "classification": "OWNER_ADJUDICATED_EXACT_UNCHANGED_NOTICE"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            215,
+            216
+          ],
+          "recognizedSpan": [
+            213,
+            214
+          ],
+          "expected": [
+            "round"
+          ],
+          "recognized": [
+            "around"
+          ],
+          "classification": "OWNER_ADJUDICATED_EXACT_UNCHANGED_NOTICE"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            518,
+            519
+          ],
+          "recognizedSpan": [
+            516,
+            517
+          ],
+          "expected": [
+            "grey"
+          ],
+          "recognized": [
+            "gray"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            588,
+            588
+          ],
+          "recognizedSpan": [
+            586,
+            587
+          ],
+          "expected": [],
+          "recognized": [
+            "then"
+          ],
+          "classification": "OWNER_ADJUDICATED_NO_EXTRA_WORD"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            649,
+            649
+          ],
+          "recognizedSpan": [
+            648,
+            649
+          ],
+          "expected": [],
+          "recognized": [
+            "passing"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            984,
+            986
+          ],
+          "recognizedSpan": [
+            984,
+            985
+          ],
+          "expected": [
+            "for",
+            "ever"
+          ],
+          "recognized": [
+            "forever"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "insert",
+          "expectedSpan": [
+            988,
+            988
+          ],
+          "recognizedSpan": [
+            987,
+            988
+          ],
+          "expected": [],
+          "recognized": [
+            "there"
+          ],
+          "classification": "UNCORROBORATED_ASR_DIFFERENCE_NOT_PROVEN_SPEECH_DEFECT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1205,
+            1207
+          ],
+          "recognizedSpan": [
+            1205,
+            1206
+          ],
+          "expected": [
+            "good",
+            "bye"
+          ],
+          "recognized": [
+            "goodbye"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1253,
+            1255
+          ],
+          "recognizedSpan": [
+            1252,
+            1253
+          ],
+          "expected": [
+            "to",
+            "morrow"
+          ],
+          "recognized": [
+            "tomorrow"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1445,
+            1446
+          ],
+          "recognizedSpan": [
+            1443,
+            1444
+          ],
+          "expected": [
+            "marvellous"
+          ],
+          "recognized": [
+            "marvelous"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1539,
+            1540
+          ],
+          "recognizedSpan": [
+            1537,
+            1538
+          ],
+          "expected": [
+            "prints"
+          ],
+          "recognized": [
+            "prince"
+          ],
+          "classification": "OWNER_ADJUDICATED_PRINTS"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1545,
+            1546
+          ],
+          "recognizedSpan": [
+            1543,
+            1544
+          ],
+          "expected": [
+            "prints"
+          ],
+          "recognized": [
+            "prince"
+          ],
+          "classification": "OWNER_ADJUDICATED_PRINTS"
+        },
+        {
+          "operation": "replace",
+          "expectedSpan": [
+            1625,
+            1627
+          ],
+          "recognizedSpan": [
+            1623,
+            1624
+          ],
+          "expected": [
+            "to",
+            "day"
+          ],
+          "recognized": [
+            "today"
+          ],
+          "classification": "ORTHOGRAPHY_OR_WORD_SPLIT"
+        }
+      ]
+    }
+  ],
+  "corroboratedMaterialHoldRemaining": [],
+  "firstLastPassages": "Present in both full-master recognitions; retained ending wording already owner-confirmed",
+  "fullManuscriptSourceOrder": "Exact source bytes and all20 PCM units verified in order",
+  "claimsExcluded": [
+    "No claim of perfect word accuracy from ASR",
+    "No invented human listening score",
+    "No claim of actual assistant listening",
+    "No release or production playback approval"
+  ],
+  "ownerAdjudicationSHA256": "d0591e0a7c011e9748ba1f8fe62083fabfa9f29dd51adae5715e4eb4c51e485d",
+  "synthesisPerformed": false
+}
