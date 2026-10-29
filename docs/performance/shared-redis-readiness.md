@@ -121,3 +121,8 @@ invalidation, media rejection, public-only startup isolation, and the real ASGI
 public categories route/middleware with dummy catalogue and simulated outage.
 No customer/provider credentials, paid sessions, broad scans, FLUSH or CONFIG are
 used by the tests.
+
+The separate public-only opt-in uses a positive metadata-scope allowlist. Legacy
+Reader preview/chapter bodies, blog bodies and unknown future scopes remain local;
+the intentional free Reader entitlements do not change. Broader existing shared
+flags keep their previous scope and require their own qualification.

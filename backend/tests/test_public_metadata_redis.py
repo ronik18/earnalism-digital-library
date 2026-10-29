@@ -37,11 +37,11 @@ def bindings(client, prefix):
               _redis_available=True, _public_cache=OrderedDict(), _public_cache_generation=0,
               _cache_stats=defaultdict(int), _public_cache_fill_tickets=ContextVar(prefix, default=None),
               MEDIA_DATA_URI_RE=re.compile(r'data:(?:image|audio|video|application/octet-stream|application/pdf)/', re.I))
-    for name in ('_PUBLIC_CACHE_READ_SCRIPT', '_PUBLIC_CACHE_FILL_SCRIPT', '_PUBLIC_CACHE_INVALIDATE_SCRIPT'):
+    for name in ('_PUBLIC_CACHE_READ_SCRIPT', '_PUBLIC_CACHE_FILL_SCRIPT', '_PUBLIC_CACHE_INVALIDATE_SCRIPT', '_PUBLIC_METADATA_REDIS_SCOPES'):
         node = next(n for n in TREE.body if isinstance(n, ast.Assign)
                     and any(isinstance(t, ast.Name) and t.id == name for t in n.targets))
-        ns[name] = ast.literal_eval(node.value)
-    names = ('_redis_key', '_redis_text', '_redis_state_enabled', '_public_metadata_redis_enabled',
+        ns[name] = frozenset(ast.literal_eval(node.value.args[0])) if name == '_PUBLIC_METADATA_REDIS_SCOPES' else ast.literal_eval(node.value)
+    names = ('_redis_key', '_redis_text', '_redis_state_enabled', '_public_metadata_redis_enabled', '_public_cache_redis_for_key',
              '_ttl_with_jitter', '_redis_cache_payload_is_media', '_cache_payload_encode',
              '_cache_payload_encode_for_redis', '_cache_payload_decode', '_public_cache_ticket',
              '_public_cache_get', '_public_cache_set', '_public_cache_clear')
@@ -98,10 +98,10 @@ def test_metadata_outage_is_miss_not_stale_local():
         async def execute_command(self, *args): raise ConnectionError('dummy outage')
     async def run():
         ns = bindings(Broken(), 'offline-outage')
-        ns['_public_cache']['key'] = (time.monotonic()+300, {'stale': True})
-        assert await ns['_public_cache_get']('key') is None
+        ns['_public_cache']['categories:fixture'] = (time.monotonic()+300, {'stale': True})
+        assert await ns['_public_cache_get']('categories:fixture') is None
         assert ns['_cache_stats']['public-cache_read_error'] == 1
-        await ns['_public_cache_set']('key', {'fresh': True})  # no ticket: no write
+        await ns['_public_cache_set']('categories:fixture', {'fresh': True})  # no ticket: no write
     asyncio.run(run())
 
 
@@ -127,7 +127,7 @@ def test_real_public_metadata_redis(case):
             return await original(*args, **kwargs)
         client.execute_command = record
         generation = ns['_redis_key']('public-cache-v2','generation')
-        key='metadata'; payload={'title':'dummy', 'territory':'IN'}
+        key='categories:fixture'; payload={'title':'dummy', 'territory':'IN'}
         def payload_key(token):
             k=ns['_redis_key']('public-cache-v2',token,hashlib.sha256(key.encode()).hexdigest());known.add(k);return k
         async def seed(token='a'*32): await client.set(generation, token)
@@ -274,7 +274,22 @@ def test_codec_failure_does_not_fail_metadata_response():
         async def eval(self, *args): raise AssertionError('unserializable payload must not reach Redis')
     async def run():
         ns = bindings(Missing(), 'offline-codec')
-        assert await ns['_public_cache_get']('key') is None
-        await ns['_public_cache_set']('key', {'unsupported': lambda: None})
+        assert await ns['_public_cache_get']('categories:fixture') is None
+        await ns['_public_cache_set']('categories:fixture', {'unsupported': lambda: None})
         assert ns['_cache_stats']['public-cache_write_error'] == 1
+    asyncio.run(run())
+
+
+def test_public_only_scope_does_not_share_reader_or_blog_bodies():
+    async def run():
+        ns = bindings(object(), 'offline-scope')  # no Redis methods: any command fails
+        for scope in ['book_chapter', 'reader_preview_chapter', 'blog_detail', 'future_unknown_scope']:
+            key = scope + ':dummy'
+            assert not ns['_public_cache_redis_for_key'](key)
+            assert await ns['_public_cache_get'](key) is None
+            await ns['_public_cache_set'](key, {'content': 'intentional free preview remains local'})
+            assert (await ns['_public_cache_get'](key))['content']
+        assert ns['_public_cache_redis_for_key']('categories:dummy')
+        ns['REDIS_CACHE_ENABLED'] = True
+        assert ns['_public_cache_redis_for_key']('reader_preview_chapter:dummy')
     asyncio.run(run())

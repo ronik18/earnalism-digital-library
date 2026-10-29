@@ -2979,6 +2979,22 @@ def _public_metadata_redis_enabled() -> bool:
                 (REDIS_PUBLIC_METADATA_ENABLED or _redis_state_enabled()))
 
 
+# Positive opt-in scopes only. Legacy public preview/blog bodies retain their
+# existing local behavior unless the broader shared-state flags are enabled.
+_PUBLIC_METADATA_REDIS_SCOPES = frozenset({
+    "home_payload", "home_books_page", "categories", "home_curated_v4_controlled_truth_v3",
+    "home_surface_catalog_docs_v1", "home_surface_audio_contracts_v1",
+    "home_hero_contract_v1", "home_listening_contract_v1", "books", "book_detail",
+    "book_chapters", "featured", "settings_social", "settings_brand", "settings_public",
+    "reading_packs", "payment_packs", "payment_config", "payment_offers",
+})
+
+
+def _public_cache_redis_for_key(key: str) -> bool:
+    return bool(_public_metadata_redis_enabled() and
+                (_redis_state_enabled() or key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES))
+
+
 def _public_cache_ticket(key: str, ticket=None, *, consume: bool = False):
     tickets = dict(_public_cache_fill_tickets.get() or {})
     previous = tickets.pop(key, None)
@@ -2994,7 +3010,7 @@ async def _public_cache_get(key: str):
     _public_cache_ticket(key, consume=True)
     if not PUBLIC_CACHE_ENABLED:
         return None
-    if _public_metadata_redis_enabled():
+    if _public_cache_redis_for_key(key):
         try:
             # Exactly one application command on a hit or miss; no EVALSHA load retry.
             row = await _redis_client.execute_command(
@@ -3034,7 +3050,7 @@ async def _public_cache_set(key: str, value) -> None:
     ticket = _public_cache_ticket(key, consume=True)
     if not PUBLIC_CACHE_ENABLED or ticket is None:
         return
-    if _public_metadata_redis_enabled():
+    if _public_cache_redis_for_key(key):
         if ticket[0] != "redis":
             return
         try:
