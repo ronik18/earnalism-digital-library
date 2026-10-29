@@ -5,13 +5,112 @@ on:
   # deployment. Keep this broader legacy suite available for explicit audits
   # without running a second full pipeline on every change.
   workflow_dispatch:
+    inputs:
+      scope:
+        description: Qualification scope; full preserves the existing audit suite
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - selfish-giant-canary
+      expected_sha:
+        description: Exact commit required for the scoped no-deploy canary job
+        required: false
+        type: string
 
 concurrency:
   group: regression-suite-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
+  selfish-giant-canary:
+    if: inputs.scope == 'selfish-giant-canary'
+    name: exact Selfish Giant canary qualification (no deployment)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      ENVIRONMENT: uat
+      READING_PASS_V2_ENABLED: 'false'
+      ENABLE_STARTUP_DB_MAINTENANCE: 'false'
+      MONGODB_URL: mongodb://127.0.0.1:27017/earnalism_test
+      JWT_SECRET: isolated-ci-test-key-not-a-production-secret
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify exact source and clean checkout
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_SHA" ]]
+          [[ -z "$(git status --porcelain --untracked-files=all)" ]]
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install existing isolated backend test dependencies
+        run: >-
+          python -m pip install pytest fastapi==0.110.1 starlette==0.37.2
+          pydantic==2.12.5 email-validator motor==3.3.1 pymongo==4.5.0
+          bcrypt==4.1.3 PyJWT==2.12.1 python-jose==3.5.0
+          python-multipart==0.0.9 bleach==6.1.0 markdown==3.6
+          mammoth==1.7.1 Pillow==10.3.0 cloudinary==1.40.0 httpx==0.28.1
+          python-dotenv redis==5.0.8 boto3 requests
+      - name: Qualify exact adopted audio, rights and current HTTP contracts
+        run: >-
+          python -m pytest -q
+          internal/audiobook_lab/scripts/test_selfish_giant_adoption.py
+          internal/audiobook_lab/scripts/test_owner_produced_package.py
+          internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
+          backend/tests/test_rights_decision_gate.py
+          backend/tests/test_api_public_catalog_projection.py
+          backend/tests/test_public_catalog_controlled_cover_truth.py
+          backend/tests/test_protected_package_publication.py
+          backend/tests/test_listener_transport_canary_metadata.py
+          backend/tests/test_selfish_giant_canary_rights_bindings.py
+          backend/tests/test_runtime_source_attestation.py
+          backend/tests/test_deployment_attestation.py
+      - name: Verify exact manifest and full delivered Linux scan
+        run: |
+          python scripts/build_runtime_source_manifest.py --repo . --ref "$GITHUB_SHA" --verify
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend.utils.runtime_source_attestation import measure
+          result = measure(Path("backend"))
+          expected = json.loads(Path("backend/.runtime-source-manifest.json").read_text())
+          assert result["status"] == "MEASURED_MATCHES_MANIFEST", result
+          assert result["observed_sha256"] == expected["expected_sha256"], result
+          print(json.dumps(result, sort_keys=True))
+          PY
+  selfish-giant-frontend:
+    if: inputs.scope == 'selfish-giant-canary'
+    name: exact Selfish Giant frontend discovery (no deployment)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify exact source
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --prefix frontend --legacy-peer-deps
+      - name: Verify canonical publication and composed discovery contracts
+        run: |
+          node scripts/generate_static_seo_public_contract.mjs --check
+          CI=true npm --prefix frontend test -- --watchAll=false --runInBand --runTestsByPath src/lib/libraryCatalog.test.js src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/readerManifestAccess.test.js src/lib/audioReleaseSafety.test.js src/staticSeoContract.test.js
+      - name: Build actual frontend and verify static snapshots
+        run: CI=false npm --prefix frontend run build
   regression:
+    if: inputs.scope != 'selfish-giant-canary'
     name: backend + frontend + browser regression
     runs-on: ubuntu-latest
     timeout-minutes: 30

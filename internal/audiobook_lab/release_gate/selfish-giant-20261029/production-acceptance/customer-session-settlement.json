@@ -1,0 +1,12 @@
+{
+  "sessionEndHTTP": 200,
+  "ended": true,
+  "totalDebitSeconds": 530,
+  "withinApproved900Seconds": true,
+  "balanceDifferenceMatchesDebit": true,
+  "responseEventsTruncated": true,
+  "successfulRPCs": 107,
+  "postEndRenewalDenied": true,
+  "activeAudioElements": 0,
+  "terminalDebitSeconds": 9
+}

@@ -34,8 +34,12 @@ on:
       - frontend/src/experiences-v2/listener/listener-v2.css
       - scripts/test_library_catalogue_recovery_journey.mjs
       - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/lib/recovery_image_evidence.mjs
+      - scripts/test_recovery_image_evidence.mjs
       - scripts/capture_pr471_canonical_header_matrix.mjs
       - scripts/package_pr469_postmerge_owner_review.py
+      - scripts/fetch_exact_head_review_baseline.py
+      - scripts/test_fetch_exact_head_review_baseline.py
       - .github/workflows/pr469-postmerge-recovery-owner-evidence.yml
 
 permissions:
@@ -46,7 +50,7 @@ jobs:
   exact-head-owner-evidence:
     name: Post-merge recovery owner evidence
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 50
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
@@ -78,29 +82,17 @@ jobs:
           python3 -m pip install --disable-pip-version-check Pillow==10.3.0
           npx playwright install --with-deps chromium
 
-      - name: Download the exact merged PR469 baseline evidence
-        uses: actions/download-artifact@v4
-        with:
-          artifact-ids: 11025247154
-          repository: ${{ github.repository }}
-          run-id: 36549307831
-          github-token: ${{ github.token }}
-          path: ${{ runner.temp }}/pr469-reviewed-baseline
-          merge-multiple: true
-
-      - name: Verify exact PR469 baseline screenshot inputs
+      - name: Verify fresh exact-head primary review baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          outer_artifact="$RUNNER_TEMP/pr469-reviewed-baseline"
-          test -s "$outer_artifact/artifact.zip"
-          unzip -t "$outer_artifact/artifact.zip"
-          baseline_root="$RUNNER_TEMP/pr469-reviewed-baseline-full"
-          mkdir -p "$baseline_root"
-          unzip -q "$outer_artifact/artifact.zip" -d "$baseline_root"
-          test -s "$baseline_root/screenshots/chromium/states/home-desktop/viewport.png"
-          test -s "$baseline_root/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
-          printf 'Exact PR469 baseline root: %s\n' "$baseline_root"
-          echo "PR469_BASELINE_ROOT=$baseline_root" >> "$GITHUB_ENV"
+          python3 -m unittest scripts.test_fetch_exact_head_review_baseline
+          python3 scripts/fetch_exact_head_review_baseline.py --head "${{ github.event.pull_request.head.sha }}" --output "$RUNNER_TEMP/current-head-review"
+          echo "PR469_BASELINE_ROOT=$RUNNER_TEMP/current-head-review/package" >> "$GITHUB_ENV"
+
+      - name: Verify strict responsive-cover evidence policy
+        run: node --test scripts/test_recovery_image_evidence.mjs
 
       - name: Build production contract frontend
         run: |

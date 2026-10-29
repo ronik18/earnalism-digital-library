@@ -50,7 +50,7 @@ def image_contact_sheet(images: list[tuple[str, Path]], destination: Path) -> No
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--prior", required=True, help="Extracted exact-head PR469 owner-review artifact root")
+    parser.add_argument("--prior", required=True, help="Verified current exact-head primary review package root")
     parser.add_argument("--library", required=True, help="Output directory from test_library_catalogue_recovery_journey.mjs")
     parser.add_argument("--supplemental", required=True, help="Output directory from capture_pr469_postmerge_recovery_states.mjs")
     parser.add_argument("--output", required=True, help="Evidence package output directory")
@@ -63,7 +63,7 @@ def main() -> None:
     images_dir.mkdir(parents=True, exist_ok=True)
 
     selections = [
-        ("home-option-b-1440.png", prior / "screenshots/chromium/states/home-desktop/viewport.png", "Home · approved Option B · 1440"),
+        ("home-option-b-1440.png", prior / "screenshots/chromium/states/home-desktop/viewport.png", "Home · exact-head Option B · 1440"),
         ("library-normal-1440.png", prior / "screenshots/chromium/states/library-desktop/viewport.png", "Library · populated · 1440"),
         ("book-detail-live-1440.png", prior / "screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png", "Live Book Detail · 1440"),
         ("book-detail-unavailable-1440.png", prior / "screenshots/chromium/states/book-detail-desktop/viewport.png", "Unavailable Book Detail · 1440"),
@@ -144,7 +144,10 @@ def main() -> None:
         archive.write(delta_manifest_path, delta_manifest_path.name)
         for filename, _, _ in delta_selections:
             archive.write(images_dir / filename, f"owner-delta-images/{filename}")
-    prior_head = "b5d607a89ed756ab5efca058379ed1201b7d234b"
+    baseline = json.loads((prior / "baseline-receipt.json").read_text())
+    if baseline.get("head") != exact_head or baseline.get("classification") != "FRESH_EXACT_HEAD_RENDERED_EVIDENCE_NOT_HISTORICAL_PR469_APPROVAL":
+        raise ValueError("Baseline is not fresh exact-head rendered evidence")
+    prior_head = baseline["head"]
     library_summary = json.loads((library / "summary.json").read_text())
     supplemental_summary = json.loads((supplemental / "summary.json").read_text())
     manifest = {
@@ -152,10 +155,11 @@ def main() -> None:
         "repository": "ronik18/earnalism-digital-library",
         "pr_number": args.pr,
         "repair_head": exact_head,
-        "prior_owner_reviewed_head": prior_head,
-        "prior_evidence_run_id": 36549307831,
-        "prior_evidence_artifact_id": 11025247154,
-        "prior_evidence_reuse": "Unchanged Option B/product states only; every affected PR471 auth, Book Detail, Reader, and Library recovery state is freshly captured against repair head.",
+        "baseline_rendered_head": prior_head,
+        "baseline_classification": baseline["classification"],
+        "baseline_evidence_run_id": baseline["run_id"],
+        "baseline_evidence_artifact_id": baseline["artifact_id"],
+        "evidence_reuse": "Verified current-head primary rendered states plus fresh supplemental recovery interactions; no historical screenshot or owner approval inferred.",
         "capture_classification": "LOCAL_DETERMINISTIC_FIXTURES_NO_PRODUCTION_REQUESTS_OR_MUTATIONS",
         "my_library": "NA_PRODUCT_STATE: current product has no saved-book or reading-history source; truthful empty state retained.",
         "library_journey_result": library_summary.get("result"),
@@ -168,8 +172,8 @@ def main() -> None:
     readme = (
         f"PR {args.pr} post-merge production-readiness repair owner review\n"
         f"Exact repair head: {exact_head}\n"
-        f"Prior approved Option B head: {prior_head}\n\n"
-        "This packet contains approved exact-head PR469 imagery for unchanged states, plus fresh loopback-only captures for requested PR471 deltas. Interactions use synthetic local responses and fixtures. No production account, payment, customer record, catalogue state, or audio state was changed. My Library remains an honest empty state because no saved-book or reading-history API exists.\n\n"
+        f"Fresh rendered baseline head: {prior_head}\n\n"
+        "This packet reuses verified current exact-head primary browser imagery plus fresh loopback-only recovery captures. The expired PR469 artifact is not substituted or relabelled. Interactions use synthetic local responses and fixtures. No production account, payment, customer record, catalogue state, or audio state was changed. My Library remains an honest empty state because no saved-book or reading-history API exists.\n\n"
         "Automated capture does not equal owner visual approval. Every owner checklist item remains OWNER_REVIEW_REQUIRED. See manifest.json for screenshot hashes and fixture classification.\n"
     )
     (output / "README.txt").write_text(readme)

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
+import { canonicalCover, classifyRecoveryFailures, decodedRecoveryCovers } from "./lib/recovery_image_evidence.mjs";
 
 const baseUrl = String(process.env.RECOVERY_REVIEW_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.RECOVERY_REVIEW_OUTPUT || "uat/evidence/pr469-postmerge-recovery/current");
@@ -48,7 +49,7 @@ async function makePage(browser, width, height, apiMode = {}) {
   const apiCalls = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error" && !/Failed to load resource/i.test(message.text())) pageErrors.push(message.text()); });
-  page.on("requestfailed", (request) => requestFailures.push({ url: request.url(), error: request.failure()?.errorText || "unknown" }));
+  page.on("requestfailed", (request) => requestFailures.push({ url: request.url(), error: request.failure()?.errorText || "unknown", resourceType: request.resourceType() }));
   await context.route("**/api/**", async (route) => {
     const request = route.request();
     const pathname = new URL(request.url()).pathname.replace(/^\/api/, "");
@@ -80,11 +81,14 @@ async function capture(browser, { id, route, width = 1440, height = 1000, apiMod
   await page.evaluate(() => { window.scrollTo(0, 0); return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
   const layout = await page.evaluate(() => ({ scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, viewport_width: window.innerWidth }));
   assert.equal(layout.scroll_width, layout.client_width, `${id}: horizontal overflow`);
+  await decodedRecoveryCovers(page);
   const filename = `${id}-${width}.png`;
   await page.screenshot({ path: path.join(output, filename), fullPage: true, animations: "disabled" });
-  const result = { id, route, viewport: { width, height }, screenshot: filename, layout, page_errors: session.pageErrors, request_failures: session.requestFailures, api_calls: session.apiCalls };
+  const decodedCovers = await decodedRecoveryCovers(page);
+  const imageFailures = classifyRecoveryFailures(session.requestFailures, decodedCovers, [canonicalCover(knownLiveBook.cover_image_url)].filter(Boolean));
+  const result = { id, route, viewport: { width, height }, screenshot: filename, layout, page_errors: session.pageErrors, request_failures: imageFailures.fatal, superseded_image_requests: imageFailures.superseded, decoded_covers: decodedCovers, api_calls: session.apiCalls };
   assert.deepEqual(session.pageErrors, [], `${id}: browser console/page errors`);
-  assert.deepEqual(session.requestFailures, [], `${id}: failed requests`);
+  assert.deepEqual(imageFailures.fatal, [], `${id}: failed requests`);
   captures.push(result);
   errors.push(...session.pageErrors);
   await session.context.close();

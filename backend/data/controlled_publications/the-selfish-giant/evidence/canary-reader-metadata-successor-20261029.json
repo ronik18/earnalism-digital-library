@@ -1,0 +1,8 @@
+{
+  "schema": "earnalism.metadata-binding-successor.v1",
+  "scope": "Rebind exact unchanged India Reader/source/cover permissions after adding owner-authorized protected audio canary metadata. No new literary text, cover bytes, public audio authorization, territory or pricing.",
+  "owner_authority": "Native owner instructions to publish the full existing Selfish Giant audiobook and resolve blockers in this conversation,29October2026",
+  "predecessor_decision_id": "india-20261029-the-selfish-giant-owner-approved-cover-successor",
+  "reason": "Native audio canary metadata changed the exact public_book,reader_manifest,approval and checksum bytes; real public rights middleware requires a corresponding accepted metadata binding.",
+  "audio_rights_remain_separate": "india-20261029-the-selfish-giant-owner-produced-audio-control"
+}

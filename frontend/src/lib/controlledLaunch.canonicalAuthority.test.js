@@ -29,7 +29,7 @@ describe("frontend release mirror", () => {
       expect(publication.slug).toBe(slug);
       expect(publication.rights.status).toBe("APPROVED");
       expect(publication.reader_release).toMatchObject({ status: "APPROVED", exposed: true });
-      expect(publication.audio_release).toMatchObject({ status: slug === "the-open-window" ? "APPROVED" : "NOT_REQUESTED", exposed: slug === "the-open-window", required_for_reader_release: false });
+      expect(publication.audio_release).toMatchObject({ status: PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(slug) ? "APPROVED" : "NOT_REQUESTED", exposed: PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(slug), required_for_reader_release: false });
       expect(publicBook.slug).toBe(slug);
       // Accepted packages may intentionally retain their reviewed pre-activation
       // source status. The backend projects LIVE_APPROVED only after this

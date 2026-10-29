@@ -1,0 +1,66 @@
+{
+  "status": "DEPLOYED_ACCOUNTING_AND_AUTHENTICATED_USAGE_VERIFIED",
+  "sourceCommit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+  "deployedCommit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+  "backendDeployment": "9706d99a-83a7-4636-a4b0-01f3cd7523ac",
+  "fractionalRenewalRegressionPass": true,
+  "fractionalQualification": "Isolated real-Mongo transactions, not a new paid production session",
+  "nativeRegressionEvidenceSHA256": "6107f67726c868e0ec8d13c3ffd95bbf9f5a8b7179ec82429aaef11347dabc26",
+  "authenticatedUsagePaginationPass": true,
+  "usageUI": {
+    "signedInAccountPanel": true,
+    "exactSecondsVisible": true,
+    "olderPage2ChangedHistory": true,
+    "olderPage3ChangedHistory": true,
+    "beyondFormer100Rows": true,
+    "noHistoryErrors": true,
+    "thirdPageRows": 18,
+    "additionalPagesAvailable": true
+  },
+  "historicalLedgerFullyAudited": false,
+  "historicalRefundOrRepairPerformed": false,
+  "productionWalletMutations": false,
+  "paidSessionsStarted": 0,
+  "credentialsReadOrPrinted": false,
+  "privateIdentityPrinted": false,
+  "accountAmountsPrinted": false,
+  "reuse": {
+    "accountingOriginalSHA256": "9f4d9a53868cfdd5b7f532558297d93878c12efda0fc1ff17534fb4febb4722b",
+    "businessOriginalSHA256": "8a76633e77649a90dac618438ec6eb67faaebdeb1a5fd3c26b2fab4cf9068d7f",
+    "accountingDependenciesUnchanged": [
+      "backend/reading_pass_service.py",
+      "backend/domain/reading_pass.py",
+      "frontend/src/pages/Account.jsx",
+      "frontend/src/lib/accountPresentation.js"
+    ],
+    "actualRouteASTChecks": {
+      "user_transaction_page": {
+        "unchanged": true,
+        "normalizedASTSHA256": "de727ed53f3527300fcbc9b27c4bac0f1590b0081019a0d8ae270e9f39f349fb"
+      },
+      "user_my_transactions": {
+        "unchanged": true,
+        "normalizedASTSHA256": "9cae59e623e53e73dff5b1d0153a4e3429dcc69faf729e36d8a490fbfcc7bb4d"
+      },
+      "_reading_pass_start": {
+        "unchanged": true,
+        "normalizedASTSHA256": "c1554782b245b855bc9c3f5733781ebd615d726eeeb95b13748f59a9f04e952b"
+      },
+      "reading_pass_lease_renew": {
+        "unchanged": true,
+        "normalizedASTSHA256": "e5c028335c33e2e86e56a7475cb6bcff24d80674fb2271844447e51b914a6015"
+      },
+      "reading_pass_session_end": {
+        "unchanged": true,
+        "normalizedASTSHA256": "13385c5fbf205b22792a28b0974a5a0d37088484911d9bab1eb64d3c2d39ff0d"
+      }
+    },
+    "concurrencyStartSessionASTSHA256": "bb61f31747da1fb4657d2231e6f1be8afee2849d83bb51c0ae83fdf8fb6b7c61",
+    "concurrencyLocalTests": {
+      "passed": 59,
+      "logSHA256": "008351d0822e56c326f6de5960a6d4b20609d52d87a10ac086b496f3936319e1"
+    },
+    "limits": "Historical real conflict and authenticated pagination accepted only for unchanged dependencies. Current title playback and billing newly verified; no second paid session started."
+  },
+  "currentTitleSettlementSHA256": "439a140468c18c3d8ca1f9fca93644962994ea80306526c472e4a2056551a4d9"
+}

@@ -4,6 +4,43 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - frontend/src/pages/Home.jsx
+      - frontend/src/pages/Home.newsletter.test.jsx
+      - frontend/src/pages/Library.test.jsx
+      - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
+      - frontend/src/components/Header.jsx
+      - frontend/src/components/Header.css
+      - frontend/src/components/EarnalismBrandLockup.css
+      - frontend/src/config/publicNavigation.js
+      - frontend/src/components/AuthPageShell.jsx
+      - frontend/src/pages/Login.jsx
+      - frontend/src/pages/Signup.jsx
+      - frontend/src/authAccountTextRules.test.js
+      - frontend/src/lib/publicAccessCopy.js
+      - frontend/src/lib/bookDetailPresentation.js
+      - frontend/src/lib/bookDetailPresentation.test.js
+      - frontend/src/lib/controlledLaunch.js
+      - frontend/src/lib/controlledLaunch.canonicalAuthority.test.js
+      - frontend/src/lib/api.js
+      - frontend/src/lib/api.test.js
+      - frontend/src/pages/BookDetail.jsx
+      - 'frontend/api/\[...proxy\].js'
+      - frontend/scripts/release-proxy.test.js
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.jsx
+      - frontend/src/experiences-v2/reader/reader-v2.css
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx
+      - frontend/src/experiences-v2/shared/ExperienceHeader.jsx
+      - frontend/src/experiences-v2/shared/experiences-v2.css
+      - frontend/src/experiences-v2/listener/listener-v2.css
+      - scripts/test_library_catalogue_recovery_journey.mjs
+      - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/lib/recovery_image_evidence.mjs
+      - scripts/test_recovery_image_evidence.mjs
+      - scripts/capture_pr471_canonical_header_matrix.mjs
+      - scripts/package_pr469_postmerge_owner_review.py
+      - scripts/fetch_exact_head_review_baseline.py
+      - scripts/test_fetch_exact_head_review_baseline.py
+      - .github/workflows/pr469-postmerge-recovery-owner-evidence.yml
       - .github/workflows/seamless-brand-owner-review.yml
       - scripts/capture_seamless_brand_owner_review.mjs
       - scripts/run_seamless_brand_article_stability_gate.mjs
@@ -86,7 +123,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact checked-in frontend production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: 438be3db8ddf48b0edf6a6ae35d7892ac5454c2546cae8f80e369e3e2e1a35a2
+      PRODUCTION_SURFACE_SHA: 6e82aae63b882af3b05aa3e22af410c24d3aa3dbfc2b7ede7c82bc20a0eda8d5
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -503,7 +540,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: 438be3db8ddf48b0edf6a6ae35d7892ac5454c2546cae8f80e369e3e2e1a35a2
+      PRODUCTION_SURFACE_SHA: 6e82aae63b882af3b05aa3e22af410c24d3aa3dbfc2b7ede7c82bc20a0eda8d5
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

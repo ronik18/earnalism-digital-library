@@ -1785,7 +1785,7 @@ describe("UX conversion static signals", () => {
     expect(heldRoutes).toContain("Historical unavailable routes must be reconciled before activating their title release.");
   });
 
-  test("built released Selfish Giant snapshots enforce Reader access and disabled audio", () => {
+  test("built released Selfish Giant snapshots enforce Reader access and protected paid audio", () => {
     const slug = "the-selfish-giant";
     for (const kind of ["book", "reader", "listener"]) {
       const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
@@ -1804,7 +1804,7 @@ describe("UX conversion static signals", () => {
         expect(html).toContain('"@type":"Book"');
       } else {
         expect(metaContent(html, "name", "robots")).toBe("noindex,follow");
-        expect(html).toContain(kind === "reader" ? "Read The Selfish Giant" : "Listening is not available for The Selfish Giant in the current release.");
+        expect(html).toContain(kind === "reader" ? "Read The Selfish Giant" : "Listening to The Selfish Giant requires an active Reading Pass from the first second.");
       }
     }
   });

@@ -1,13 +1,12 @@
 {
   "schema": "earnalism.exact-reviewed-release-authority.v1",
-  "reviewed_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
-  "scope": "PR511_EXACT_OWNER_ACCEPTED_PACKAGE_BINDINGS_NOT_PRODUCTION_OBSERVATION",
+  "scope": "EXACT_CURRENT_ACCEPTED_COMPONENT_BINDINGS_SUCCESSOR_REQUIRES_FRESH_SOURCE_REVIEW",
   "authority_sha256": {
-    "data/controlled_launch.json": "e20a1c1dbd4723efcd83a9afd4fdfec4e3cec99fc6df0af22ea03e982c47194d",
-    "backend/data/controlled_launch.json": "e20a1c1dbd4723efcd83a9afd4fdfec4e3cec99fc6df0af22ea03e982c47194d",
+    "data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
+    "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "ba96a3563a27428db9b35a29a33a6675786a8c8032c61892cc8e0475b4219ec6"
+    "backend/data/rights_decision_registry.json": "aac2754298d8bdb4ad110a3d388c711cce8b5abdf797fcc916408e5778cee135"
   },
   "titles": {
     "a-ghost-story": {
@@ -685,8 +684,8 @@
       }
     },
     "the-selfish-giant": {
-      "decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
-      "record_sha256": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550",
+      "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
+      "record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
@@ -969,5 +968,8 @@
         "acceptance_review_b": "backend/data/controlled_publications/book-5704b31005/evidence/review_b.json"
       }
     }
-  }
+  },
+  "successor_binding_basis": "Current merged-main rights plus exact live Selfish Giant reader/cover/audio publication successor; candidate source and exact-head CI require fresh review. Historical non-cover decisions remain separate and unchanged.",
+  "historical_reviewed_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+  "successor_parent_candidate": "3554d9d26566dc9e0419fa0d5ce5518c06073c0f"
 }

@@ -1,0 +1,21 @@
+{
+  "status": "REPAIRED_CANARY_METADATA_AFTER_GUARDED_ROLLBACK",
+  "source_base": "66c79c545d2d731d6ee7cd22c6ff9d18da2329f5",
+  "adoption_source": "4dc9e7cab5a24e39e6f71faf3036081faf01bcdb",
+  "descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "duration_ms": 777120,
+  "storage": "26 payloads and final manifest uploaded and full-byte-verified in each independent store; 54 versions total",
+  "recording_reused": true,
+  "new_covers_preserved": true,
+  "territory": "IN",
+  "tests": "147 passed,10 subtests",
+  "public_audio_enabled": false,
+  "customer_sessions_started": 0,
+  "next": "Review repaired exact source; no-deploy CI; canary redeployment only after pass",
+  "reader_metadata_successor": "india-20261029-the-selfish-giant-audio-canary-reader-bindings",
+  "correction": "Rebind actual runtime Reader/cover component hashes after native canary metadata mutation; all literary source, chapters, cover bytes, uses and IN territory preserved",
+  "regression": "Actual server._release_rights_verdict: India all-catalogue/title/Reader pass; absent/US/GB country denied",
+  "rollback_deployment": "993dccf3-6b43-403f-af90-17934fcf5811",
+  "restored_public_catalogue_titles": 52
+}

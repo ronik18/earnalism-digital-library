@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { chromium } from "playwright";
-import { openEditorialRoute } from "./lib/editorial_capture_readiness.mjs";
+import { openEditorialRoute, prepareEditorialScreenshot } from "./lib/editorial_capture_readiness.mjs";
 
 const require = createRequire(import.meta.url);
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
@@ -71,6 +71,8 @@ async function captureApp(browser, state) {
   const response = await openEditorialRoute(page, baseUrl, route, required);
   await page.keyboard.press("Tab");
   const metrics = await page.evaluate((selector) => ({ required: Boolean(document.querySelector(selector)), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, focus: Boolean(document.activeElement?.matches("a[href],button,input,textarea,select")), logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "") && image.naturalWidth > 0) }), required);
+  console.log(JSON.stringify({ capture: id, route, stage: "visible-frame-and-screenshot" }));
+  await prepareEditorialScreenshot(page);
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });
   await context.close();
   return { id, route, viewport: { width, height }, status: response?.status() || 0, errors, ...metrics, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_CAPTURE" };
@@ -132,6 +134,8 @@ async function captureDirectStatus(browser, id, width, height, source, route, ha
     && requiredFaces.every(([family, weight]) => metrics.font_faces.some((face) => face.family === family && face.weight === weight && face.status === "loaded"));
   if (metrics.font_load_error) errors.push(`direct status document font load failed: ${metrics.font_load_error}`);
   if (strict && !fontsLoaded) errors.push("direct status document font resources or FontFace entries did not load");
+  console.log(JSON.stringify({ capture: id, route, stage: "visible-frame-and-screenshot" }));
+  await prepareEditorialScreenshot(page);
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });
   await context.close();
   return { id, route, viewport: { width, height }, status: result.status, document_response_status: documentResponse?.status() ?? null, errors, required: true, ...metrics, font_resources: fontResources, font_resource_errors: fontResourceErrors, font_expectations_applied: strict, font_resource_test_override: testAbortFontPath || null, fonts_loaded: fontsLoaded, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_HANDLER_CAPTURE", handler: source };
