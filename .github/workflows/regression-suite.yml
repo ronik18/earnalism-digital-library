@@ -86,6 +86,29 @@ jobs:
           assert result["observed_sha256"] == expected["expected_sha256"], result
           print(json.dumps(result, sort_keys=True))
           PY
+  selfish-giant-frontend:
+    if: inputs.scope == 'selfish-giant-canary'
+    name: exact Selfish Giant frontend discovery (no deployment)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify exact source
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --prefix frontend --legacy-peer-deps
+      - name: Verify canonical publication and composed discovery contracts
+        run: |
+          node scripts/generate_static_seo_public_contract.mjs --check
+          CI=true npm --prefix frontend test -- --watchAll=false --runInBand --runTestsByPath src/lib/libraryCatalog.test.js src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/readerManifestAccess.test.js src/lib/audioReleaseSafety.test.js src/staticSeoContract.test.js
+      - name: Build actual frontend and verify static snapshots
+        run: CI=false npm --prefix frontend run build
   regression:
     if: inputs.scope != 'selfish-giant-canary'
     name: backend + frontend + browser regression
