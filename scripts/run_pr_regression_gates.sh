@@ -26,7 +26,8 @@ echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 EARNALISM_REDIS_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is required}" \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
-    backend/tests/test_shared_redis_limiter_integration.py
+    backend/tests/test_shared_redis_limiter_integration.py \
+    backend/tests/test_public_metadata_redis.py
 
 echo "==> CORS cache contract (backend/tests/test_cors_cache_headers.py)"
 env \

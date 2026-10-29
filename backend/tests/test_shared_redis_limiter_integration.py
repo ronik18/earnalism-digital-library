@@ -306,6 +306,7 @@ def test_actual_initializer_transport_retry_preserves_one_admission_effect():
             pass
         init = {
             'REDIS_CACHE_ENABLED': True, 'MULTI_REPLICA_ENABLED': True,
+            'REDIS_PUBLIC_METADATA_ENABLED': False, 'PUBLIC_CACHE_ENABLED': False,
             'REDIS_URL': _endpoint(), 'REDIS_CACHE_FAIL_FAST': True,
             'REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS': 2.0,
             'REDIS_SOCKET_TIMEOUT_SECONDS': 2.0,
