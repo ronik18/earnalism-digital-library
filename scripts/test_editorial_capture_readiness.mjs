@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { openEditorialRoute } from "./lib/editorial_capture_readiness.mjs";
+import { openEditorialRoute, prepareEditorialScreenshot } from "./lib/editorial_capture_readiness.mjs";
 function fixture(failingStage) {
   const stages=[];
   const page={
@@ -17,4 +17,17 @@ test("ongoing unrelated connections do not gate a rendered editorial route",asyn
 });
 for(const stage of ["document","hydration","route","assets"])test("missing "+stage+" remains fatal without retry",async()=>{
   const {page,stages}=fixture(stage);await assert.rejects(openEditorialRoute(page,"http://127.0.0.1:13130","/journal","[data-testid=journal-page]"),new RegExp(stage+" failed"));assert.equal(stages.filter(s=>s===stage).length,1);
+});
+
+for (const failure of [null, "foreground", "layout", "frame"]) test("one bounded screenshot preparation: " + (failure || "ready"), async () => {
+  const stages = [];
+  const page = {
+    async bringToFront() { stages.push("foreground"); if (failure === "foreground") throw Error(failure); },
+    async waitForFunction(fn, arg, options) { stages.push("layout"); assert.equal(options.timeout, 10000); if (failure === "layout") throw Error(failure); },
+    async evaluate(fn) { stages.push("frame"); assert.match(String(fn), /requestAnimationFrame/); assert.match(String(fn), /3000/); if (failure === "frame") throw Error(failure); },
+  };
+  if (failure) await assert.rejects(prepareEditorialScreenshot(page), new RegExp(failure));
+  else await prepareEditorialScreenshot(page);
+  assert.equal(new Set(stages).size, stages.length);
+  if (!failure) assert.deepEqual(stages, ["foreground", "layout", "frame"]);
 });
