@@ -46,7 +46,8 @@ class Tests(unittest.TestCase):
    self.assertFalse(calls)
  def test_bootstrap_is_existing_backend_command_not_new_service(self):
   adapter=a.ProviderAdapter(Path('/private/tmp/inert-journal'))
-  c=adapter._command('release_guarded_bootstrap',{},Path('/private/tmp/inert-request'));self.assertEqual(c[:3],['railway','up','--ci']);self.assertIn(a.SERVICE,c)
+  c=adapter._command('release_guarded_bootstrap',{'source_root':'/private/tmp/inert-source'},Path('/private/tmp/inert-request'));self.assertEqual(c[:3],['railway','up','--ci']);self.assertIn(a.SERVICE,c)
+  self.assertEqual(c[-1],'/private/tmp/inert-source/backend');self.assertNotIn('--path-as-root',c)
  def test_final_backend_controller_rejects_absent_bootstrap(self):
   class Inert:
    def __init__(self,p):self.journal=p

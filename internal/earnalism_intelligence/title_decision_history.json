@@ -12275,5 +12275,15 @@
     "preserve": "Verified frontend and original healthy backend, accepted media/rights/covers/free Reader; no new paid sessions or US access.",
     "original_bootstrap_outcome": "RECONCILIATION_REQUIRED; stderr unavailable; no failure cause inferred",
     "next_action": "Independent review and fresh exact-head source gates; complete original operation reconciliation independently of diagnostic class."
+  },
+  "live_audiobook_backend_upload_scope_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "CLOSED_UPLOAD_SCOPE_SUCCESSOR_SOURCE_ONLY",
+    "preserve": "All latest diagnostics, India/US rights, covers, accepted audio, free Reader and financial safeguards.",
+    "original_operation_outcome": "NOT_APPLIED_VERIFIED; no replay; original failure cause unknown",
+    "next_action": "Independent integrated source review and mandatory exact-head CI; qualify OPEN successor before any corrected distinct guarded bootstrap under existing native pause authority."
   }
 }
