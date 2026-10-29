@@ -59,7 +59,8 @@
     "india-20261025-the-open-window-reader-cover-canary-metadata": "a01c6ad38b5177d7ddef594dc7749b35939e983a19a5c94e04ccda6bc6f224e4",
     "india-20261026-the-open-window-approved-revised-cover-pair": "0fa273a1924c5c918ff3c389f13f0cffe9494759ca32f559ed563114c269d0b0",
     "india-20261026-the-open-window-protected-package-publication": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
-    "india-20261029-the-selfish-giant-owner-approved-cover-successor": "8f97cc70b52a3828a548fb13bfd15180e7b20aeaab272e458352be8408c402fe"
+    "india-20261029-the-selfish-giant-owner-approved-cover-successor": "8f97cc70b52a3828a548fb13bfd15180e7b20aeaab272e458352be8408c402fe",
+    "india-20261029-the-selfish-giant-owner-produced-audio-control": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c"
   },
   "audio_package_bindings": {
     "the-open-window": {
@@ -67,6 +68,19 @@
         "basis": "Reference to the existing owner-accepted corrected-v1 audio-use adoption for this exact retained release; no Reader use expanded and no new rights declaration.",
         "decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
         "record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    },
+    "the-selfish-giant": {
+      "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
+        "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
+        "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+        "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
         "territories": [
           "IN"
         ],

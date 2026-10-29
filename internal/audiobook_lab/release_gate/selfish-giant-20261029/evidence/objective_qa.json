@@ -1,0 +1,20 @@
+{
+  "wording": {
+    "path": "/private/tmp/earnalism-selfish-giant-full-master-qa-20261029/WORDING-QA.json",
+    "sha256": "4dd5c82ca65a321830af9f395db2722a57d8bce9fe833f6d68542e7ebb4f2e37"
+  },
+  "timing": {
+    "path": "/private/tmp/earnalism-selfish-giant-full-master-qa-20261029/TIMING-TRANSITIONS.json",
+    "sha256": "6f312ae65091873d317a6e6510e8d319e7a7034b4e3384f9378b8eeb6a317741"
+  },
+  "sourceGrouping": {
+    "path": "/private/tmp/earnalism-selfish-giant-protected-package-20261029/SOURCE-PACKAGE-VALIDATION.json",
+    "sha256": "dc87c2510eb2a7a8475584de312fecf50895627756d42164ce746df799b52577"
+  },
+  "encodings": {
+    "path": "/private/tmp/earnalism-selfish-giant-protected-package-20261029/ASSET-QUALIFICATION.json",
+    "sha256": "5c479f18db8ffa9ec7591fe475383b5c1e7b0ea4bc2c94c55e642b905ca78945"
+  },
+  "humanScores": null,
+  "productionAcceptance": false
+}

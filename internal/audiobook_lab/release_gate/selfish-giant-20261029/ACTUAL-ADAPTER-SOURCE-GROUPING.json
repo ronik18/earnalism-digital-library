@@ -1,0 +1,8 @@
+{
+  "status": "PASS_ACTUAL_CURRENT_READER_PARSER_AND_SOURCE_GROUP_VALIDATOR",
+  "wordCount": 1652,
+  "paragraphCount": 23,
+  "groups": 6,
+  "descriptorPrepared": false,
+  "scope": "Exact actual Reader paragraph grouping only; not full package/adoption/release acceptance"
+}

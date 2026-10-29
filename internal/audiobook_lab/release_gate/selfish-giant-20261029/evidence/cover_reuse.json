@@ -1,0 +1,18 @@
+{
+  "reuseExistingAcceptedCovers": true,
+  "assets": [
+    {
+      "role": "cover_url",
+      "existingURL": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+      "filePresent": true,
+      "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd"
+    },
+    {
+      "role": "back_cover_url",
+      "existingURL": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+      "filePresent": true,
+      "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60"
+    }
+  ],
+  "reuploadPerformed": false
+}

@@ -1,38 +1,8 @@
 {
-  "slug": "the-selfish-giant",
-  "approved_to_publish": true,
-  "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
-  "allowCheckout": false,
-  "allowPayment": false,
-  "audiobook_enabled": false,
-  "audiobook_use_approved": false,
-  "audiobook_use_approval_source": "",
-  "audiobook_use_approved_at": "",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
-  "verified_at": "2026-10-03T04:20:29.339226+00:00",
-  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
-  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
-  "independent_reviews": {
-    "review_a": {
-      "file": "evidence/review_a.json",
-      "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
-    },
-    "review_b": {
-      "file": "evidence/review_b.json",
-      "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
-    }
-  },
-  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
-  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
-  "binding_review_status": "EXACT_OWNER_APPROVED_COVER_SUCCESSOR_SOURCE_CHECKED_PRODUCTION_PENDING",
-  "qa_scope": "Existing accepted text edition and Reader checks preserved; replacement covers inspected for exact title/author/publisher and story imagery, then explicitly approved by owner. Historical prior cover reviews apply only to predecessor assets.",
-  "audio_enabled": false,
   "actual_prospective_acceptance": {
-    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
     "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "canonical_version_observed": false,
     "evidence": {
       "review_a": {
         "file": "evidence/review_a.json",
@@ -43,11 +13,75 @@
         "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
       }
     },
-    "production_observed": false,
-    "canonical_version_observed": false,
-    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+    "production_observed": false
   },
-  "cover_front_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
+  "approved_to_publish": true,
+  "audio_enabled": false,
+  "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook_enabled": false,
+  "audiobook_package_canary": {
+    "approval_scope": "transport_canary_only_no_customer_discovery",
+    "blockers": [],
+    "candidate_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "candidate_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "catalog_audio_enabled": false,
+    "generated_at": "2026-10-29T12:09:55Z",
+    "hidden_before_proof_sha256": "29e0d42d34f9ac87d896ac362fe6c3005d926f0ec07b6ddfd02398ae66337eb0",
+    "hidden_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+    "package_endpoint_enabled": true,
+    "package_release_evidence_sha256": "13ecc09d779775ae1fda3c1d2dec28288d3426f4f071a03396424c6473c46a17",
+    "post_deploy_proof_required": [
+      "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+      "SEGMENT_RANGE_206",
+      "TIMESTAMPS_200",
+      "BROWSER_PLAYBACK_PASS"
+    ],
+    "primary_receipt_sha256": "2e47b5226a2732e543463843f75edfa4c37024e8155f1974f8b79fffd4754743",
+    "primary_release_manifest_receipt_sha256": "8738ecbb802d827af7dc1e91fb27030dae58c0fc4e1c022d5639d0b4c73df349",
+    "qa_candidate_release_descriptor_file_sha256": "92b330699dea16eb1e4b40eb89d44c2d008574b9f05b1d90c794fdce3ad8791a",
+    "replica_receipt_sha256": "f8fe1bfc133d54ae169c7137c33078364b10f0084b37864a8f49db762d543ae6",
+    "replica_release_manifest_receipt_sha256": "d0e183c107c37567d88e553d27c7eeacd94aedafa7b01dacb193c128076e119f",
+    "rollback_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+    "rollout_percentage": 5,
+    "rollout_salt": "selfish-giant-exact-b5b37816-20261029",
+    "schema_version": "audiobook_new_title_package_canary.v1",
+    "slug": "the-selfish-giant",
+    "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"
+  },
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved": false,
+  "audiobook_use_approved_at": "",
+  "binding_review_status": "EXACT_OWNER_APPROVED_COVER_SUCCESSOR_SOURCE_CHECKED_PRODUCTION_PENDING",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
   "cover_back_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
-  "cover_replacement_instruction_sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82"
+  "cover_front_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
+  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+  "cover_replacement_instruction_sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+    }
+  },
+  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
+  "qa_scope": "Existing accepted text edition and Reader checks preserved; replacement covers inspected for exact title/author/publisher and story imagery, then explicitly approved by owner. Historical prior cover reviews apply only to predecessor assets.",
+  "qa_status": "QA_PASSED",
+  "release_blockers": [
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "rights_tier": "A",
+  "slug": "the-selfish-giant",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
+  "verification_status": "approved",
+  "verified_at": "2026-10-03T04:20:29.339226+00:00"
 }

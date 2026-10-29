@@ -1,0 +1,27 @@
+{
+  "status": "ACTUAL_LOCAL_DERIVATIVE_ASSETS_NOT_RELEASE_APPROVED",
+  "master_wav": {
+    "path": "masters/master.wav",
+    "sha256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+    "size_bytes": 74603576,
+    "mime_type": "audio/wav"
+  },
+  "master_mp3": {
+    "path": "masters/master.mp3",
+    "sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+    "size_bytes": 6217581,
+    "mime_type": "audio/mpeg"
+  },
+  "masterDecoder": {
+    "decodedSamples": 18650880,
+    "decodedDurationMs": 777120.0,
+    "codec": "MP3_64kbps_mono_24k",
+    "audioSynthesis": false
+  },
+  "groups": 6,
+  "assets": 24,
+  "fullGroupCueOnly": true,
+  "originalMasterSHA256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+  "narrationGenerated": false,
+  "providerWrites": false
+}

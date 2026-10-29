@@ -1,0 +1,79 @@
+{
+  "schema": "earnalism.owner-produced-adoptions.v1",
+  "adoptions": [
+    {
+      "record": {
+        "status": "ADOPTED",
+        "policy": "owner_produced_source_units.v1",
+        "identity": {
+          "slug": "the-selfish-giant",
+          "title": "The Selfish Giant",
+          "author": "Oscar Wilde",
+          "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+          "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+          "master_wav_sha256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+          "master_mp3_sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b"
+        },
+        "authority_reference": "Direct owner: integrate lifetime India rights gate and canonical adoption; accepted unchanged tone/wording/master QA. Source candidate only until exact-head review and merge. No publication.",
+        "adopted_by": "Integration Lane under direct owner instruction",
+        "authority_evidence_sha256": "c1d98d7a022dbc84978c3d37e89ce8adce831cbbf3dddd9ada3666f204a572be",
+        "unresolved_material_defects": [],
+        "unresolved_wording_findings": [],
+        "evidence_sha256": {
+          "generation_provenance": "ff3612751d2f8197d29bc5dc407c2d903029dc1137372ad4706bf90860383b4e",
+          "objective_qa": "4ff67f1d2e82b5f28303b3c53cfb5e5ad834aaabbecc56b99a9e31717d31566c",
+          "material_wording_review": "953f3f2aa47c321cf5d0d15412c553b78c579bd4b0f9e2b50afc7d9a30eb2441",
+          "voice_direction_acceptance": "d372e58ce458e83134d3e112f1899706ade7326157d7906621cc8671cb261d20",
+          "model_voice_licence": "8e32c1f9b909337b8423ce80c3c0118b35fe179c1ef7c79e6ad28b7d2a11a32a",
+          "source_edition": "c3543c622dae96277825bb6da6026696a76ec4c9a83495cdfdfcd1d98eaa59cc",
+          "cover_reuse": "f1ca6cfb15524fabd63b826a159a285a0733dd8e835e97ba2b647346d96341ce",
+          "producer_authority": "93a04225facd3da36b603f00f53f09017077ebfb46fd712065308f63b25d5862"
+        },
+        "generation": {
+          "provider": "owner_colab_qwen",
+          "model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+          "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+          "voice": "Ryan",
+          "runtime_revision": "ac3df5dcba7f59c4074ac750dc817f0386abfe9b5c68d37569878f1c3d3abb19"
+        },
+        "audio_use_decision": {
+          "schema_version": "earnalism.rights-decision.v1",
+          "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+          "edition_id": "the-selfish-giant",
+          "operator_id": "reo-enterprise",
+          "status": "ACCEPTED",
+          "components": {
+            "source_file": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+            "selected_manuscript": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+            "master_wav": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+            "master_mp3": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+            "audio_component_bindings": "6ea6bb62fcdb8797bcf1a2de737f26e8b45ce2149a505d3e984470bc5347cb21"
+          },
+          "territories": [
+            "IN"
+          ],
+          "uses": [
+            "audio_stream"
+          ],
+          "valid_from": "2026-10-28T18:30:00+00:00",
+          "valid_until": "LIFETIME",
+          "basis": "Owner explicitly accepts lifetime India audio-stream authority for this exact package; non-expiring control remains revocable and hash-bound. No release authority inferred.",
+          "evidence_sha256": [
+            "1dac1e4b7d03c280e5e53b780ec15b763f2c310b8dd353447a242f827489f2ec",
+            "d3e44fdb7c5a7f470e1fb0309c4e6220a8895b7f49f0d8a300d6e176ed647a27",
+            "cf3bcd55fe6bdc2d88d7fcf30e5bcccd916ec8f540fd9dcd36bf9d2086519455"
+          ],
+          "accepted_by": "owner_direct_reply",
+          "conditions_satisfied": true
+        },
+        "chunk_mapping_sha256": "6ea6bb62fcdb8797bcf1a2de737f26e8b45ce2149a505d3e984470bc5347cb21",
+        "source_units_sha256": "2482d7738801c5c2bc716e83536fa185edb5724981ebedfd9be40021d3fd8599",
+        "reader_paragraph_map_sha256": "07752c643d749880466fe9d23c04862e472ca003f0bacedec5d3fbeaad491183",
+        "reader_content_sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+        "duration_ms": 777120,
+        "master_samples": 18650880
+      },
+      "record_sha256": "d09c3445e1d063f3044752190659eaef77548dd0b661b351be202b3cb3b08b3e"
+    }
+  ]
+}
