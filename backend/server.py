@@ -6725,21 +6725,26 @@ def _sweep_rate_limit_buckets(now: float) -> None:
             _rate_limit_hits.pop(key, None)
 
 
+_REDIS_RATE_LIMIT_ATOMIC_SCRIPT = "-- A transport retry reuses this invocation's internally generated UUID.\n-- Return the original admission without changing its score/TTL or consuming\n-- another slot. Never accept a caller-supplied admission UUID.\nif redis.call('ZSCORE', KEYS[1], ARGV[3]) then return 0 end\n-- Keep legacy monotonic-clock state intact; never reinterpret its scores.\nif redis.call('EXISTS', KEYS[2]) == 1 then\n    local ttl = redis.call('PTTL', KEYS[2])\n    if ttl <= 0 then return -1 end\n    return math.max(1, math.ceil(ttl / 1000))\nend\nlocal window = tonumber(ARGV[1])\nlocal limit = tonumber(ARGV[2])\nif window <= 0 or limit <= 0 then return math.max(1, window) end\nlocal clock = redis.call('TIME')\nlocal now = tonumber(clock[1]) + tonumber(clock[2]) / 1000000\nredis.call('ZREMRANGEBYSCORE', KEYS[1], 0, now - window)\nlocal count = redis.call('ZCARD', KEYS[1])\nif count >= limit then\n    local oldest = redis.call('ZRANGE', KEYS[1], 0, 0, 'WITHSCORES')\n    if #oldest >= 2 then\n        return math.max(1, math.floor(window - (now - tonumber(oldest[2]))))\n    end\n    return window\nend\nredis.call('ZADD', KEYS[1], now, ARGV[3])\nredis.call('EXPIRE', KEYS[1], window * 2)\nreturn 0"
+
+
 async def _redis_rate_limit_retry_after(key: str, limit: int, now: float) -> Optional[int]:
-    redis_key = _redis_key("rate-limit", hashlib.sha256(key.encode("utf-8")).hexdigest())
-    cutoff = now - RATE_LIMIT_WINDOW_SECONDS
-    await _redis_client.zremrangebyscore(redis_key, 0, cutoff)
-    count = await _redis_client.zcard(redis_key)
-    if count >= limit:
-        oldest = await _redis_client.zrange(redis_key, 0, 0, withscores=True)
-        if oldest:
-            oldest_score = float(oldest[0][1])
-            return max(1, int(RATE_LIMIT_WINDOW_SECONDS - (now - oldest_score)))
-        return RATE_LIMIT_WINDOW_SECONDS
-    member = f"{now:.6f}:{uuid.uuid4()}"
-    await _redis_client.zadd(redis_key, {member: now})
-    await _redis_client.expire(redis_key, RATE_LIMIT_WINDOW_SECONDS * 2)
-    return None
+    # Keep the caller API; host-monotonic `now` is only for the local fallback.
+    # Redis TIME is the shared clock, and admission/count/expiry are atomic.
+    # The shared client retains its existing transport retry policy; retries
+    # reuse this UUID and the script preserves one admission effect.
+    # Activation requires no mixed old/new shared-limiter writers. Retained
+    # legacy counters block admission rather than being reset or reinterpreted.
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+    redis_key = _redis_key("rate-limit-v2-server-time", digest)
+    legacy_key = _redis_key("rate-limit", digest)
+    retry_after = int(await _redis_client.eval(
+        _REDIS_RATE_LIMIT_ATOMIC_SCRIPT, 2, redis_key, legacy_key,
+        RATE_LIMIT_WINDOW_SECONDS, limit, str(uuid.uuid4()),
+    ))
+    if retry_after < 0:
+        raise RuntimeError("Retained legacy rate-limit state requires rollout reconciliation")
+    return retry_after or None
 
 
 async def _rate_limit_retry_after(request: Request) -> Optional[int]:
