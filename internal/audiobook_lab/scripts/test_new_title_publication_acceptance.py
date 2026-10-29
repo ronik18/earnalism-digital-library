@@ -80,6 +80,7 @@ class MirroredPromotionTests(AcceptanceTests):
                 for side in ['data','backend/data']:(root/side/'controlled_publications/the-open-window/rights_decision.json').write_bytes(manager.json_bytes(record))
                 registry=json.loads((root/'backend/data/rights_decision_registry.json').read_text());registry['accepted_records'][record['decision_id']]=record_sha256(record)
                 (root/'backend/data/rights_decision_registry.json').write_bytes(manager.json_bytes(registry))
+            prior_protected = json.loads((root/'data/controlled_launch.json').read_text()).get('protected_package_public_slugs', [])
             before={str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.rglob('*') if f.is_file()}
             b=json.loads((root/'data/controlled_publications/the-open-window/public_book.json').read_text())
             descriptor=b['audiobook_active_release']['candidate_release_descriptor_sha256'];package=b['audiobook_packages'][descriptor]
@@ -102,7 +103,7 @@ class MirroredPromotionTests(AcceptanceTests):
             self.assertTrue(public['audiobook_hidden_release_descriptor_sha256'])
             config=json.loads((root/'data/controlled_launch.json').read_text())
             self.assertIs(config['public_audio_exposure_enabled'],False)
-            self.assertEqual(config['protected_package_public_slugs'],['the-open-window'])
+            self.assertEqual(config['protected_package_public_slugs'], sorted(set(prior_protected) | {'the-open-window'}))
             with self.assertRaises(manager.ReleasePointerError):manager.promote_new_title_package(root,'the-open-window',apply=True,**args)
 
 if __name__=='__main__':unittest.main()
