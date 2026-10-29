@@ -69,6 +69,7 @@ jobs:
           backend/tests/test_api_public_catalog_projection.py
           backend/tests/test_protected_package_publication.py
           backend/tests/test_listener_transport_canary_metadata.py
+          backend/tests/test_selfish_giant_canary_rights_bindings.py
   regression:
     if: inputs.scope != 'selfish-giant-canary'
     name: backend + frontend + browser regression

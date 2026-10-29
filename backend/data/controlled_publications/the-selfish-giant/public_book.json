@@ -710,7 +710,7 @@
   "production_observed": false,
   "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
   "publicationStatus": "published",
-  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
+  "publication_authorization_sha256": "153734fb40eff3d6f7907fe8bb27ac21bb14e038a5332b573a449bfa9eb01b8b",
   "publication_status": "LIVE_APPROVED",
   "qa_status": "QA_PASSED",
   "readerStatus": "reader_ready",

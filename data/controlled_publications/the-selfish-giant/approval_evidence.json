@@ -72,7 +72,7 @@
       "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
     }
   },
-  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
+  "publication_authorization_sha256": "153734fb40eff3d6f7907fe8bb27ac21bb14e038a5332b573a449bfa9eb01b8b",
   "qa_scope": "Existing accepted text edition and Reader checks preserved; replacement covers inspected for exact title/author/publisher and story imagery, then explicitly approved by owner. Historical prior cover reviews apply only to predecessor assets.",
   "qa_status": "QA_PASSED",
   "release_blockers": [

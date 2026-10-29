@@ -1,8 +1,10 @@
 {
+  "slug": "the-selfish-giant",
+  "generated_at": "2026-10-29T12:42:31.919668+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "e42545127bf4a3c5677b4f9ef93fc1e886e66a5057e3cc0ee4305054625d3a73"
+      "sha256": "488ae8867b11ea42be478db33a66de9d11a784e3efd422a66321c92fe7b95062"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -53,12 +55,20 @@
       "sha256": "b1d859e0c2721a1fc9c0c0b2e9e47d9022360dcf7b10f25de32fa86cb57f1b48"
     },
     {
+      "file": "evidence/canary-reader-metadata-successor-20261029.json",
+      "sha256": "ad9427a0c4992d3fd75a11590e2a74948df977b1944b9a1568eec02836092a0f"
+    },
+    {
       "file": "evidence/cover-provenance-predecessor-20261029.json",
       "sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9"
     },
     {
       "file": "evidence/owner-cover-instruction-20261029.json",
       "sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82"
+    },
+    {
+      "file": "evidence/pre-canary-reader-cover-rights-20261029.json",
+      "sha256": "a8b27d27a2fc40615ea6c17e86e1e53f16a92b85887f05c27ee1fe456bb76380"
     },
     {
       "file": "evidence/review_a.json",
@@ -74,11 +84,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6f02a9ca09dcba1a2142655fa2025d5da08ca3f91ed438e129f7c6338c9ff8e0"
+      "sha256": "53194243fa3067056944a2e270a7341c6ec191c5a87e0853bd288edf11deaa4d"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59"
+      "sha256": "153734fb40eff3d6f7907fe8bb27ac21bb14e038a5332b573a449bfa9eb01b8b"
     },
     {
       "file": "reader_manifest.json",
@@ -88,7 +98,5 @@
       "file": "source_evidence.json",
       "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
     }
-  ],
-  "generated_at": "2026-10-29T12:09:55Z",
-  "slug": "the-selfish-giant"
+  ]
 }

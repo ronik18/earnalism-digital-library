@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-selfish-giant",
   "title": "The Selfish Giant",
-  "generated_at": "2026-10-29T08:55:25.912908+00:00",
+  "generated_at": "2026-10-29T12:42:31.919668+00:00",
   "content": {
     "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
     "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "dd805206f49b31ade223ba21d701862d0d71cb391a36e370b684bff8db33c381",
-    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "public_book": "53194243fa3067056944a2e270a7341c6ec191c5a87e0853bd288edf11deaa4d",
+    "reader_manifest": "7cf332eca4ddfd13c0dad77d1634fdc023a90a8d1cfdbe7e84b3808790749d36",
     "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
-    "approval_evidence": "1e4a2ea0aa4b9d8b3b0d099cde33213aaeaab198431303d7080426747803233a"
+    "approval_evidence": "488ae8867b11ea42be478db33a66de9d11a784e3efd422a66321c92fe7b95062"
   },
-  "manifest_sha256": "3377522dae80b4e293410741749a2c839e944bfb1257d1143517a04f89d2473c"
+  "manifest_sha256": "0f55d63fdc06ed480a04ba91fffc9a86daee31f9d9f7bc9e505fc1e83be28983"
 }
