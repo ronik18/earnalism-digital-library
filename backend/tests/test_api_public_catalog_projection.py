@@ -113,3 +113,71 @@ def test_selfish_giant_final_public_response_keeps_exact_protected_package(monke
     assert payload["audio_url"] == ""
     for private in ["audiobook_packages", "audiobook_public_package_approval", "audiobook_package_release_evidence", "rights_metadata", "source_hash"]:
         assert private not in payload
+
+
+def test_actual_candidate_merge_preserves_canonical_package_over_legacy_conveyor(monkeypatch):
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from types import SimpleNamespace
+    artifact = server._controlled_artifact_doc('the-selfish-giant')
+    # Historical approved conveyor metadata must not overwrite a later exact,
+    # independently approved immutable protected publication.
+    stale = {'slug': 'the-selfish-giant', 'audio_enabled': False,
+             'audiobook_enabled': False, 'audio_status': 'NOT_AVAILABLE',
+             'audiobook_release_gate': '', 'audio_qa_status': '',
+             'audiobook_release_conveyor': {'schema_version': server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                                           'audio_release_approved': True}}
+    async def find_one(*args, **kwargs): return stale
+    async def no_cache(*args, **kwargs): return None
+    monkeypatch.setattr(server, 'db', SimpleNamespace(books=SimpleNamespace(find_one=find_one)))
+    monkeypatch.setattr(server, '_public_cache_get', no_cache)
+    monkeypatch.setattr(server, '_public_cache_set', no_cache)
+    app = FastAPI()
+    app.get('/books/{slug}', response_model=server.PublicBookOut)(server.get_book)
+    response = TestClient(app).get('/books/the-selfish-giant')
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload['audio_enabled'] is True
+    assert payload['audiobook_delivery_mode'] == 'PROTECTED_PACKAGE_V2'
+    assert payload['audiobook_duration_ms'] == 777120
+    assert payload['audiobook_package_version'] == 'sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211'
+    assert payload['audio_url'] == ''
+    assert server._reader_audio_truth_doc(stale, 'the-selfish-giant')['audio_enabled'] is True
+    assert server._merge_controlled_publication_truth(stale, artifact, slug='the-selfish-giant')['audiobook_public_package_approval'] == artifact['audiobook_public_package_approval']
+
+
+def test_invalid_canonical_package_cannot_fall_back_to_legacy_database_approval():
+    import copy
+    artifact = copy.deepcopy(server._controlled_artifact_doc('the-selfish-giant'))
+    artifact['audiobook_public_package_approval']['acceptance_sha256'] = '0' * 64
+    legacy = {'audio_enabled': True, 'audiobook_enabled': True,
+              'audiobook_release_gate': 'APPROVED', 'audio_qa_status': 'QA_PASSED',
+              'audiobook_release_conveyor': {'schema_version': server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                                            'audio_release_approved': True}}
+    merged = server._merge_controlled_publication_truth(legacy, artifact, slug='the-selfish-giant')
+    assert not server.can_expose_audio(merged)
+
+
+def test_existing_legacy_conveyor_overlay_remains_available_to_legacy_format():
+    artifact = {'slug': 'legacy-fixture', 'audiobook_release_mode': 'LEGACY'}
+    database = {'audio_status': 'APPROVED',
+                'audiobook_release_conveyor': {'schema_version': server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                                              'audio_release_approved': True}}
+    merged = server._merge_controlled_publication_truth(database, artifact, slug='legacy-fixture')
+    assert merged['audio_status'] == database['audio_status']
+    assert merged['audiobook_release_conveyor'] == database['audiobook_release_conveyor']
+
+
+def test_explicit_canonical_protected_deny_cannot_be_reenabled_by_legacy_database():
+    import copy
+    artifact = copy.deepcopy(server._controlled_artifact_doc('the-selfish-giant'))
+    artifact['audio_enabled'] = False
+    artifact['audiobook_enabled'] = False
+    database = {'audio_enabled': True, 'audiobook_enabled': True,
+                'audiobook_assets': {'mp3': 'https://invalid.example/old.mp3'},
+                'audiobook_release_conveyor': {'schema_version': server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                                              'audio_release_approved': True}}
+    merged = server._merge_controlled_publication_truth(database, artifact, slug='the-selfish-giant')
+    assert merged['audio_enabled'] is False and merged['audiobook_enabled'] is False
+    assert merged['audiobook_assets'] == {}
+    assert not server.can_expose_audio(merged)

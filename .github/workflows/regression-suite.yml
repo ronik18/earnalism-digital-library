@@ -67,6 +67,7 @@ jobs:
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
           backend/tests/test_rights_decision_gate.py
           backend/tests/test_api_public_catalog_projection.py
+          backend/tests/test_public_catalog_controlled_cover_truth.py
           backend/tests/test_protected_package_publication.py
           backend/tests/test_listener_transport_canary_metadata.py
           backend/tests/test_selfish_giant_canary_rights_bindings.py

@@ -831,7 +831,7 @@ async def _expensive_job_slot(job_type: str):
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v17"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
-PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "release-containment-v1"
+PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "canonical-protected-package-v2"
 READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
@@ -2802,6 +2802,11 @@ def _merge_controlled_publication_truth(
             isinstance(conveyor, dict)
             and conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
             and conveyor.get("audio_release_approved") is True
+            # Canonical protected packages carry their own exact approval,
+            # rights and immutable receipts. Legacy conveyor fields cannot
+            # override that contract; invalid packages still fail closed in
+            # the existing protected-publication validator.
+            and artifact.get("audiobook_release_mode") != "PROTECTED_PACKAGE_V2"
         ):
             for field in CONTROLLED_PUBLICATION_DB_CONVEYOR_AUDIO_FIELDS:
                 if field in database_book:
