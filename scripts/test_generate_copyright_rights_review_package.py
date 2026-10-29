@@ -64,13 +64,14 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
                 publication = MODULE.read_json(directory / "publication_manifest.json")
                 expected_decision = ("india-20261026-the-open-window-protected-package-publication"
                                      if slug == "the-open-window"
+                                     else "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings" if slug == "the-selfish-giant"
                                      else f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
                 self.assertEqual(decision["decision_id"], expected_decision)
                 self.assertEqual(decision["territories"], ["IN"])
                 self.assertTrue(MODULE.accepted_controlled_release(slug, directory, ["IN"], registry))
                 self.assertFalse(MODULE.accepted_controlled_release(slug, directory, ["US"], registry))
                 self.assertTrue(publication["reader_release"]["exposed"])
-                self.assertEqual(publication["audio_release"]["exposed"], slug == "the-open-window")
+                self.assertEqual(publication["audio_release"]["exposed"], slug in {"the-open-window", "the-selfish-giant"})
 
     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
