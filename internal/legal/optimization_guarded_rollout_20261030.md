@@ -13,3 +13,7 @@ The historical #579 source-contract/rollback CLI and artifacts remain historical
 Local integrated source qualification: 110 tests pass with isolated inert financial handlers. Current corrected controller/observer preparation independently passed 97 combined tests; actual namespace and provider qualification remain separate. Unchanged local Listener component/audio evidence is reusable only within its exact source/media hashes; no new production paid-playback or billing claim is made.
 
 Next Integration command: python -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_guarded_release_controller scripts.test_provider_journal_durability scripts.test_provider_suppression_controls
+
+## Reviewed source sequence
+
+CLOSED bootstrap source merged as 9932616bc089ba90a6494b1909fb531df822657e after all exact99e37646076dcef376a2c2f3d99f0084f8dd6d97 applicable checks and independent review passed; tree3e6c929645a5ad7e8f27a0325e3293fadb760c25 matched. This OPEN successor removes only the early pause and must match the complete approved584 server exactly. Controller/journal, source/receipt checks, signed India guard, and tests remain. Both are source identities: no actual guarded provider artifact, purchase pause or reopening has occurred. Execute only after this successor also passes exact-head CI/review and matched merge, then establish real guarded recovery before its deployment.
