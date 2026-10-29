@@ -2829,3 +2829,5 @@ Dependency symlinks can redirect Jest root to the donor checkout. Prior frontend
 Bind controller and offline containment to exact merged579, replacing prior577 application roles and575 UI reuse with fresh579 browser review.61testsPASS; provider qualification remains false.
 
 Represent explicit lifetime rights as a distinct non-expiring value, not an invented distant date. Preserve revocation, start time, trusted territory, exact components and immutable registry acceptance. Source adoption and local media tests do not prove storage, customer billing or production playback. Existing provider context admission found primary account ID and named DR profile incomplete; no values exposed or configuration changed.
+
+Shared Redis admission must be atomic and use a shared server clock. Preserve private retry UUID effects across SDK transport retries without changing global cache retry policy. Legacy monotonic counters are retained, not reset. Distinguish configured replicas from actual running replicas; index declarations from installed metadata; source-local checks from target runtime and capacity. Offline validators never create/drop indexes or activate Redis.

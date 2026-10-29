@@ -26,7 +26,8 @@ def test_protected_delivery_and_lease_contract_is_fail_closed():
 def test_service_uses_transactions_unique_idempotency_and_server_time():
     source = (ROOT / 'backend' / 'reading_pass_service.py').read_text(encoding='utf-8')
     assert 'start_transaction()' in source
-    assert 'server_billable_seconds(' in source
+    assert 'async def _billable_interval(' in source
+    assert 'divmod(carry + micros, 1000000)' in source
     assert 'idempotency_key=f"heartbeat:{session_id}:{sequence}"' in source
     assert 'reading_seconds_balance": {"$gte": debit}' in source
     assert 'event_type": "PASS_CREDIT"' in source

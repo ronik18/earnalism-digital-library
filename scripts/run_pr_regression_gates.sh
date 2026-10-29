@@ -21,6 +21,13 @@ esac
 PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 
+echo "==> Shared Redis admission and read-only index/scaling metadata gates"
+"$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness
+EARNALISM_REDIS_INTEGRATION=1 \
+EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is required}" \
+  "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
+    backend/tests/test_shared_redis_limiter_integration.py
+
 echo "==> CORS cache contract (backend/tests/test_cors_cache_headers.py)"
 env \
   -u CORS_ORIGINS \
