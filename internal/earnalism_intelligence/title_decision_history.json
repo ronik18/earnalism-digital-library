@@ -12253,5 +12253,17 @@
     "production_changed": false,
     "paid_sessions": false,
     "next_action": "Regenerate exact staged runtime inventory, independent integrated review, all fresh applicable CI/reviews and match-head merge; prepare/review OPEN successor before any pause/deployment."
+  },
+  "live_audiobook_exact_reopen_source_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "closed_merged_source": "9932616bc089ba90a6494b1909fb531df822657e",
+    "approved_application_base": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
+    "status": "OPEN_SOURCE_PREPARATION_NOT_RUNTIME_STATE",
+    "preserve": "All accepted media, rights, covers, free Reader and financial behavior; no US activation.",
+    "production_changed": false,
+    "next_action": "Actual-source tests/inventory, independent review and all exact-head CI; matched merge before separately qualified provider bootstrap/OPEN execution."
   }
 }

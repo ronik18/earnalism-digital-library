@@ -9599,8 +9599,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 612556,
-      "sha256": "b362d8c2ed5dfc39d30d811fdd5dfae6f2f54d47bb9490746dba4fbce4bc817c"
+      "bytes": 612180,
+      "sha256": "fba827a9d898d83a91c07fa22d094fbfc3f8df4dd872be86c56941d9b6a55e81"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9658,5 +9658,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "078eca225e76c36450b7b81214635cf8114a95c551c14ed2445b664307c51c44"
+  "expected_sha256": "15968ac46358dbfc3364ed23b26600822c92a61c1748655438b5048529b49644"
 }
