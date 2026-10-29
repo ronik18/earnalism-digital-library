@@ -21,6 +21,9 @@ esac
 PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 
+echo "==> Exact purchase guard source and original India commerce boundary"
+"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory
+
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 "$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness
 EARNALISM_REDIS_INTEGRATION=1 \
@@ -104,6 +107,9 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_india_release_transition \
   scripts.test_build_india_guarded_rollback \
   scripts.test_india_release_provider_adapter \
+  scripts.test_guarded_release_controller \
+  scripts.test_provider_journal_durability \
+  scripts.test_provider_suppression_controls \
   scripts.test_india_release_observer \
   scripts.test_india_protected_runner \
   scripts.test_validate_book_commerce_final_review \
