@@ -1,0 +1,1014 @@
+{
+  "descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "durationMs": 777120,
+  "segmentCount": 6,
+  "coverage": [
+    {
+      "segment": "group-01",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    },
+    {
+      "segment": "group-02",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    },
+    {
+      "segment": "group-03",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    },
+    {
+      "segment": "group-04",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    },
+    {
+      "segment": "group-05",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    },
+    {
+      "segment": "group-06",
+      "durationMatches": true,
+      "ended": true,
+      "startedFromBeginning": true,
+      "durationEvidence": "Accepted unchanged immutable asset decode/sample qualification plus manifest-matched production package; actual native duration samples retained where observed",
+      "completionEvidence": "Normal native player advanced through all six ordered segments with no forward seek, then displayed12:57 and naturally ended the session"
+    }
+  ],
+  "timestamps": [
+    {
+      "segment": "group-01",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "b8ecd3b5971ddbbf37f33a918d6162ef29888b953b9ca633d2b484a93a6ffbae",
+      "bytes": 1017
+    },
+    {
+      "segment": "group-02",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "2aa595d76b97221288fbf3c87a3afe8c670d916c31a4e732bfac9defe244d382",
+      "bytes": 798
+    },
+    {
+      "segment": "group-03",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "906c70af3cdefe7e12462a7b4c12989e4fad25dba3e9153a78e9d7025abb494c",
+      "bytes": 797
+    },
+    {
+      "segment": "group-04",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "2e6428b02a4ed1cb8c2847b157c0894381ef010cb2e1b6d040b9dba3a5d9a9b2",
+      "bytes": 2058
+    },
+    {
+      "segment": "group-05",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "ffedf5734f5388be949223b23e674e309a8eb11c3244c52af09c31b301102c15",
+      "bytes": 6231
+    },
+    {
+      "segment": "group-06",
+      "http": 200,
+      "sha256Matches": true,
+      "sha256": "c2d2485febcf9779901dec5c4d0641567c5270f6ca7b99f646aa7af5c0ee8546",
+      "bytes": 935
+    }
+  ],
+  "requests": [
+    {
+      "path": "/api/reading-pass/sessions/start",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/manifest",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "http": 206,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "http": 206,
+      "range": "bytes 32768-472364/472365"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "http": 206,
+      "range": "bytes 196608-472364/472365"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-02",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-02",
+      "http": 206,
+      "range": "bytes 0-169580/169581"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-02",
+      "http": 206,
+      "range": "bytes 163840-169580/169581"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-03",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-03",
+      "http": 206,
+      "range": "bytes 0-183020/183021"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-03",
+      "http": 206,
+      "range": "bytes 32768-183020/183021"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 0-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 98304-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 131072-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 163840-916460/916461"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 196608-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 229376-916460/916461"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 262144-916460/916461"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 294912-916460/916461"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 327680-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 360448-916460/916461"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+      "http": 206,
+      "range": "bytes 327680-916460/916461"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 0-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 65536-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 131072-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 163840-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 196608-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 229376-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 262144-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 294912-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 327680-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 360448-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 393216-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 425984-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 491520-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 524288-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 557056-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 589824-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 622592-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 655360-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 688128-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 720896-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 753664-4095404/4095405"
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+      "http": 206,
+      "range": "bytes 720896-4095404/4095405"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 401,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "http": 206,
+      "range": "bytes 0-384044/384045"
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/sessions/end",
+      "http": 200,
+      "range": ""
+    },
+    {
+      "path": "/api/reading-pass/leases/renew",
+      "http": 403,
+      "range": ""
+    }
+  ],
+  "ended": true,
+  "sessionEndHTTP": 200,
+  "pauseResumeSeekPass": true,
+  "nativeSamples": [
+    {
+      "at": 1793278587921,
+      "audio": [
+        {
+          "duration": 58.96,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "at": 1793278605911,
+      "audio": [
+        {
+          "duration": 58.96,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+          "paused": false,
+          "rate": 1,
+          "time": 12.070837
+        }
+      ]
+    },
+    {
+      "at": 1793278693234,
+      "audio": [
+        {
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+          "paused": true,
+          "rate": 1,
+          "time": 28.711382
+        }
+      ]
+    },
+    {
+      "at": 1793278738587,
+      "audio": [
+        {
+          "duration": 21.12,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-02",
+          "paused": false,
+          "rate": 1.25,
+          "time": 5.515626
+        }
+      ]
+    },
+    {
+      "at": 1793278870626,
+      "audio": [
+        {
+          "duration": 114.48,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-04",
+          "paused": false,
+          "rate": 1.5,
+          "readyState": 4,
+          "time": 109.061616
+        }
+      ]
+    },
+    {
+      "at": 1793278975238,
+      "audio": [
+        {
+          "duration": 511.84,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+          "paused": false,
+          "rate": 1.5,
+          "readyState": 4,
+          "time": 134.942049
+        }
+      ]
+    },
+    {
+      "at": 1793279060804,
+      "audio": [
+        {
+          "duration": 511.84,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+          "paused": false,
+          "rate": 1.5,
+          "time": 231.01855
+        }
+      ]
+    },
+    {
+      "at": 1793279179342,
+      "audio": [
+        {
+          "duration": 511.84,
+          "ended": false,
+          "error": null,
+          "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-05",
+          "paused": false,
+          "rate": 1.5,
+          "time": 408.831124
+        }
+      ]
+    },
+    {
+      "at": 1793279302608,
+      "audio": []
+    }
+  ],
+  "scope": "Real production protected player; one owner-authorized session; no narration regeneration, purchases or topups; subjective quality acceptance reused, not newly scored",
+  "sessionSettlement": {
+    "sessionEndHTTP": 200,
+    "ended": true,
+    "totalDebitSeconds": 530,
+    "withinApproved900Seconds": true,
+    "balanceDifferenceMatchesDebit": true,
+    "responseEventsTruncated": true,
+    "successfulRPCs": 107,
+    "postEndRenewalDenied": true,
+    "activeAudioElements": 0,
+    "terminalDebitSeconds": 9
+  }
+}

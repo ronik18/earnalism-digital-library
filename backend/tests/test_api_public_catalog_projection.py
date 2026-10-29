@@ -89,3 +89,27 @@ def test_unreleased_book_response_model_keeps_package_metadata_empty():
     assert payload["audiobook_delivery_mode"] == ""
     assert payload["audiobook_package_version"] == ""
     assert payload["audiobook_duration_ms"] == 0
+
+
+def test_selfish_giant_final_public_response_keeps_exact_protected_package(monkeypatch):
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    artifact = server._controlled_artifact_doc("the-selfish-giant")
+    assert artifact is not None
+    async def no_cache(*args, **kwargs): return None
+    async def candidate(*args, **kwargs): return artifact, "controlled"
+    monkeypatch.setattr(server, "_public_cache_get", no_cache)
+    monkeypatch.setattr(server, "_public_cache_set", no_cache)
+    monkeypatch.setattr(server, "_find_public_book_candidate", candidate)
+    app = FastAPI()
+    app.get("/books/{slug}", response_model=server.PublicBookOut)(server.get_book)
+    response = TestClient(app).get("/books/the-selfish-giant")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["audio_enabled"] is True
+    assert payload["audiobook_delivery_mode"] == "PROTECTED_PACKAGE_V2"
+    assert payload["audiobook_package_version"] == "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211"
+    assert payload["audiobook_duration_ms"] == 777120
+    assert payload["audio_url"] == ""
+    for private in ["audiobook_packages", "audiobook_public_package_approval", "audiobook_package_release_evidence", "rights_metadata", "source_hash"]:
+        assert private not in payload

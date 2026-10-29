@@ -6986,14 +6986,17 @@ async def root_health_check():
 async def root_healthz_check(response: Response = None):
     try:
         from utils.deployment_attestation import deployment_attestation
+        from utils.runtime_source_attestation import runtime_source_attestation
     except ModuleNotFoundError:
         from backend.utils.deployment_attestation import deployment_attestation
+        from backend.utils.runtime_source_attestation import runtime_source_attestation
     if response is not None:
         response.headers["Cache-Control"] = "no-store"
     return {
         "status": "ok",
         "replica": "single" if not MULTI_REPLICA_ENABLED else os.environ.get("RAILWAY_REPLICA_ID", "multi"),
         "deployment": deployment_attestation(),
+        "runtime_source": runtime_source_attestation(),
     }
 
 

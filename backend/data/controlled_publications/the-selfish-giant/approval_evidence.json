@@ -21,9 +21,9 @@
   "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
   "approved_to_publish": true,
   "audio_enabled": false,
-  "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "audio_qa_status": "QA_PASSED",
-  "audiobook_enabled": false,
+  "audiobook_enabled": true,
   "audiobook_package_canary": {
     "approval_scope": "transport_canary_only_no_customer_discovery",
     "blockers": [],
@@ -62,6 +62,7 @@
   "cover_front_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
   "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
   "cover_replacement_instruction_sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82",
+  "endpoint_url": "/api/reader/book/the-selfish-giant/audiobook/manifest",
   "independent_reviews": {
     "review_a": {
       "file": "evidence/review_a.json",
@@ -81,6 +82,7 @@
   "rights_tier": "A",
   "slug": "the-selfish-giant",
   "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
   "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
   "verification_status": "approved",
   "verified_at": "2026-10-03T04:20:29.339226+00:00"

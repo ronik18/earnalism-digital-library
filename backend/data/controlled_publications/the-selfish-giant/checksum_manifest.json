@@ -1,10 +1,8 @@
 {
-  "slug": "the-selfish-giant",
-  "generated_at": "2026-10-29T12:42:31.919668+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "488ae8867b11ea42be478db33a66de9d11a784e3efd422a66321c92fe7b95062"
+      "sha256": "c28fc2f802ed24cd5094fd4794a4e251ab74e719d531bfbcf9d4f511d331daab"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -84,7 +82,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "53194243fa3067056944a2e270a7341c6ec191c5a87e0853bd288edf11deaa4d"
+      "sha256": "f1b584cf7d69820e424fcadc50cc6da8575484ac390cc440646b17f07a136f87"
     },
     {
       "file": "publication_authorization.json",
@@ -92,11 +90,13 @@
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "7cf332eca4ddfd13c0dad77d1634fdc023a90a8d1cfdbe7e84b3808790749d36"
+      "sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5"
     },
     {
       "file": "source_evidence.json",
       "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
     }
-  ]
+  ],
+  "generated_at": "2026-10-29T13:31:20Z",
+  "slug": "the-selfish-giant"
 }

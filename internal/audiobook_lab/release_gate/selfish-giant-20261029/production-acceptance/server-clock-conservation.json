@@ -1,0 +1,16 @@
+{
+  "renewalClockConservationPass": true,
+  "terminalClockBoundsPass": true,
+  "pausedIntervalsDebitZero": true,
+  "nonPlayingPriorIntervalsDebitZero": true,
+  "initialPreparationDebitZero": true,
+  "renewalIntervals": 105,
+  "clockPrecision": "Renewals: exact server-issued microsecond clocks with state-dependent expiry and fractional carry. Terminal: actual request/response transport interval calibrated against observed server clocks (2ms timestamp precision allowance); no invented transaction timestamp.",
+  "allServerClockIntervalsMatch": true,
+  "clockCalibration": {
+    "observedRenewals": 69,
+    "consistentServerClientClockBounds": true,
+    "terminalBasis": "Actual request/response transport interval, calibrated against server-issued lease timestamps; HTTP Date alone is response-time and not transaction-time",
+    "precisionAllowanceMs": 2
+  }
+}

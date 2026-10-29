@@ -4,25 +4,27 @@
   "allowPayment": false,
   "allowPublicReading": true,
   "approved_to_publish": true,
-  "audio_enabled": false,
+  "audio_enabled": true,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
   "audiobook": {},
   "audiobook_active_release": {
-    "active_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
-    "candidate_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "active_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "candidate_release_descriptor_sha256": "",
     "retained_release_descriptor_sha256s": [
       "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
       "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2"
     ],
     "rollout": {
-      "percentage": 5,
-      "salt": "selfish-giant-exact-b5b37816-20261029"
+      "percentage": 0,
+      "salt": ""
     },
     "schema_version": "audiobook_active_release.v1",
     "slug": "the-selfish-giant",
     "status": "ACTIVE"
   },
   "audiobook_assets": {},
-  "audiobook_enabled": false,
+  "audiobook_enabled": true,
   "audiobook_hidden_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
   "audiobook_legacy_release_descriptor_sha256": "",
   "audiobook_manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
@@ -45,15 +47,16 @@
     ],
     "primary_receipt_sha256": "2e47b5226a2732e543463843f75edfa4c37024e8155f1974f8b79fffd4754743",
     "primary_release_manifest_receipt_sha256": "8738ecbb802d827af7dc1e91fb27030dae58c0fc4e1c022d5639d0b4c73df349",
+    "public_discovery_exposed": true,
     "qa_candidate_release_descriptor_file_sha256": "92b330699dea16eb1e4b40eb89d44c2d008574b9f05b1d90c794fdce3ad8791a",
     "replica_receipt_sha256": "f8fe1bfc133d54ae169c7137c33078364b10f0084b37864a8f49db762d543ae6",
     "replica_release_manifest_receipt_sha256": "d0e183c107c37567d88e553d27c7eeacd94aedafa7b01dacb193c128076e119f",
     "rollback_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
-    "rollout_percentage": 5,
+    "rollout_percentage": 100,
     "rollout_salt": "selfish-giant-exact-b5b37816-20261029",
     "schema_version": "audiobook_new_title_package_canary.v1",
     "slug": "the-selfish-giant",
-    "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"
+    "status": "PUBLIC_PACKAGE_APPROVED"
   },
   "audiobook_package_release_evidence": {
     "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
@@ -639,7 +642,34 @@
       "word_count": 1652
     }
   },
-  "audiobook_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+  "audiobook_public_package_approval": {
+    "acceptance": {
+      "accounting_commit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+      "duration_ms": 777120,
+      "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "production_proof_sha256": {
+        "accounting": "f1248949aba26b0de60d673316af34987e88cf92b475b6cacb7b71b7d7280c44",
+        "business": "bf5aacc8a7e57f942b111624850c189df01536edafd8fffe34b791702ce69d34",
+        "playback": "ac7b16224cfe3fb132ee3430c4f2ceb0469341d1ce13b4e67fb849e3a3f0494a"
+      },
+      "public_activation_performed": false,
+      "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+      "schema_version": "audiobook_public_package_acceptance.v1",
+      "segment_count": 6
+    },
+    "acceptance_sha256": "322c2d7b716bdd2515c0672d1246a78bde24d075bb5ad2f23b703ba2add628d1",
+    "approved_at": "2026-10-29T13:31:20Z",
+    "approved_by": "Ronik Basak — explicit full audiobook publication authority; bounded customer playback accepted",
+    "audio_rights_decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+    "audio_rights_record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+    "endpoint": "/api/reader/book/the-selfish-giant/audiobook/manifest",
+    "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "schema_version": "audiobook_protected_package_publication.v1",
+    "slug": "the-selfish-giant",
+    "status": "PUBLIC_APPROVED"
+  },
+  "audiobook_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
   "author": "Oscar Wilde",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
   "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",

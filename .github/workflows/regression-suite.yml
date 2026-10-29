@@ -70,6 +70,21 @@ jobs:
           backend/tests/test_protected_package_publication.py
           backend/tests/test_listener_transport_canary_metadata.py
           backend/tests/test_selfish_giant_canary_rights_bindings.py
+          backend/tests/test_runtime_source_attestation.py
+          backend/tests/test_deployment_attestation.py
+      - name: Verify exact manifest and full delivered Linux scan
+        run: |
+          python scripts/build_runtime_source_manifest.py --repo . --ref "$GITHUB_SHA" --verify
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend.utils.runtime_source_attestation import measure
+          result = measure(Path("backend"))
+          expected = json.loads(Path("backend/.runtime-source-manifest.json").read_text())
+          assert result["status"] == "MEASURED_MATCHES_MANIFEST", result
+          assert result["observed_sha256"] == expected["expected_sha256"], result
+          print(json.dumps(result, sort_keys=True))
+          PY
   regression:
     if: inputs.scope != 'selfish-giant-canary'
     name: backend + frontend + browser regression
