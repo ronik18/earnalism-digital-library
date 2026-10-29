@@ -1,0 +1,20 @@
+{
+  "schema": "earnalism.native-business-scope-acceptance.v1",
+  "recorded_at": "2026-10-29T19:14:55.835271+00:00",
+  "question_item": "call_7ee37d37177f418bac270463afb20ef5",
+  "answer": "Approve temporary purchase pause",
+  "decision_packet": "BACKEND-RECOVERY-DECISION.md",
+  "scope": {
+    "guarded_recovery_bootstrap_on_existing_backend": true,
+    "temporary_new_pass_purchase_pause": true,
+    "reopen_after_verified_final_rollout": true,
+    "remain_closed_if_safe_recovery_not_complete": true,
+    "existing_reader_listener_preserved": true,
+    "verify_refund_webhook_code_preserved": true,
+    "new_services": false,
+    "paid_sessions": false,
+    "us_activation": false,
+    "waive_ci_or_review": false
+  },
+  "qualification": "ACTUAL_NATIVE_USER_REPLY_NOT_PROVIDER_OR_CI_ACCEPTANCE"
+}

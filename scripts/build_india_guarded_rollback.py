@@ -15,7 +15,7 @@ GUARD = '4dc9e8fd3f9eafd28445b408d376b73634ccfa56'
 BACKEND_TREE = '0be169311c1a344dc297be93af80e43857850808'
 CLOSED_BRANCH = '''
     if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
-        return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED"}}, headers={"Cache-Control": "no-store"})
+        return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED", "message": "New Reading Pass purchases are temporarily paused. Existing reading and listening access remains available."}}, headers={"Cache-Control": "no-store"})
 '''
 
 

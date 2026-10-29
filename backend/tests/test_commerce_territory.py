@@ -42,7 +42,8 @@ class CommerceTerritoryTests(unittest.TestCase):
     def test_actual_middleware_blocks_before_handler_independent_of_reader_flag(self):
         # Execute the actual middleware body without booting a production app,
         # loading credentials, importing the large server or touching databases.
-        source = Path(__file__).parents[1].joinpath("server.py").read_text()
+        from scripts.purchase_guard_source import normal_guard_source
+        source = normal_guard_source(Path(__file__).resolve().parents[2])
         function = next(n for n in ast.parse(source).body if isinstance(n, ast.AsyncFunctionDef) and n.name == "enforce_public_release_country")
         function.decorator_list = []
         class Response:
