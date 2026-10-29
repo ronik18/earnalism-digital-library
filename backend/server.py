@@ -260,6 +260,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager, suppress
+from contextvars import ContextVar
 from pymongo.errors import PyMongoError
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
@@ -600,6 +601,8 @@ MULTI_REPLICA_ENABLED = _env_bool("MULTI_REPLICA_ENABLED", False)
 REDIS_URL = os.environ.get("REDIS_URL", "").strip()
 REDIS_KEY_PREFIX = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
 REDIS_CACHE_ENABLED = _env_bool("REDIS_CACHE_ENABLED", bool(REDIS_URL) or MULTI_REPLICA_ENABLED)
+# Opt-in public metadata only; does not enable auth, wallet or limiter state.
+REDIS_PUBLIC_METADATA_ENABLED = _env_bool("REDIS_PUBLIC_METADATA_ENABLED", False)
 REDIS_CACHE_FAIL_FAST = _env_bool("REDIS_CACHE_FAIL_FAST", MULTI_REPLICA_ENABLED)
 REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS", 2.0)
 REDIS_SOCKET_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_TIMEOUT_SECONDS", 2.0)
@@ -1590,7 +1593,7 @@ PUBLIC_CACHE_PREFIXES = (
 
 async def initialize_replica_state_backends() -> None:
     global _redis_client, _redis_available
-    if not REDIS_CACHE_ENABLED and not MULTI_REPLICA_ENABLED:
+    if not REDIS_CACHE_ENABLED and not MULTI_REPLICA_ENABLED and not REDIS_PUBLIC_METADATA_ENABLED:
         logger.info("Redis cache/state disabled; using per-process local cache and rate-limit state.")
         return
     if not REDIS_URL:
@@ -1623,7 +1626,11 @@ async def initialize_replica_state_backends() -> None:
         logger.warning("%s Continuing without Redis.", message)
         return
     _redis_available = True
-    await _configure_redis_cache_policy()
+    # A public-only opt-in must never apply global Redis policy or shared state.
+    if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
+        await _configure_redis_cache_policy()
+    if PUBLIC_CACHE_ENABLED:
+        await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
     logger.info("Redis-backed cache/state is enabled.")
 
 
@@ -1640,7 +1647,7 @@ def _redis_key(*parts: str) -> str:
 
 
 def _redis_state_enabled() -> bool:
-    return bool(_redis_available and _redis_client is not None)
+    return bool(_redis_available and _redis_client is not None and (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED))
 
 
 def _redis_text(value: Any) -> str:
@@ -1814,11 +1821,6 @@ async def _redis_cache_delete_keys(*keys: str) -> None:
     except Exception:
         logger.warning("Redis cache key delete failed", exc_info=True)
         _cache_stats["redis_delete_error"] += 1
-
-
-def _public_cache_storage_key(generation: int, key: str) -> str:
-    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
-    return _redis_key("public-cache", str(generation), digest)
 
 
 def _public_cache_key(scope: str, **params) -> str:
@@ -2944,51 +2946,127 @@ async def _find_public_book_candidate(
     return None, "missing"
 
 
-async def _public_cache_generation_value() -> int:
-    if not _redis_state_enabled():
-        return _public_cache_generation
-    raw = await _redis_client.get(_redis_key("public-cache", "generation"))
-    if raw is None:
-        return 0
-    try:
-        return int(raw)
-    except (TypeError, ValueError):
-        return 0
+# A fresh opaque epoch prevents old entries becoming reachable after marker loss.
+# Standalone Redis only: the read script derives the payload key from the epoch.
+_PUBLIC_CACHE_READ_SCRIPT = """
+local generation = redis.call('GET', KEYS[1])
+if not generation or #generation ~= 32 or string.find(generation, '[^0-9a-f]') then
+    return false
+end
+return {generation, redis.call('GET', ARGV[1] .. generation .. ':' .. ARGV[2])}
+"""
+_PUBLIC_CACHE_FILL_SCRIPT = """
+if redis.call('GET', KEYS[1]) ~= ARGV[1] then return 0 end
+redis.call('SETEX', KEYS[2], ARGV[2], ARGV[3])
+return 1
+"""
+# Compare-and-rotate makes a transport replay a no-op after any intervening
+# invalidation. A replay must never restore an earlier epoch with retained data.
+_PUBLIC_CACHE_INVALIDATE_SCRIPT = """
+local current = redis.call('GET', KEYS[1])
+if current ~= ARGV[1] and not (not current and ARGV[1] == '') then return 0 end
+redis.call('SET', KEYS[1], ARGV[2])
+return 1
+"""
+# Copy-on-write task context: concurrent requests cannot replace each other's fill
+# tickets. Bounded and consumed on fill; an unpaired/warm writer cannot cache a
+# payload computed before a generation change.
+_public_cache_fill_tickets: ContextVar = ContextVar("public_cache_fill_tickets", default=None)
+
+
+def _public_metadata_redis_enabled() -> bool:
+    return bool(_redis_available and _redis_client is not None and
+                (REDIS_PUBLIC_METADATA_ENABLED or _redis_state_enabled()))
+
+
+# Positive opt-in scopes only. Legacy public preview/blog bodies retain their
+# existing local behavior unless the broader shared-state flags are enabled.
+_PUBLIC_METADATA_REDIS_SCOPES = frozenset({
+    "home_payload", "home_books_page", "categories", "home_curated_v4_controlled_truth_v3",
+    "home_surface_catalog_docs_v1", "home_surface_audio_contracts_v1",
+    "home_hero_contract_v1", "home_listening_contract_v1", "books", "book_detail",
+    "book_chapters", "featured", "settings_social", "settings_brand", "settings_public",
+    "reading_packs", "payment_packs", "payment_config", "payment_offers",
+})
+
+
+def _public_cache_redis_for_key(key: str) -> bool:
+    return bool(_public_metadata_redis_enabled() and
+                (_redis_state_enabled() or key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES))
+
+
+def _public_cache_ticket(key: str, ticket=None, *, consume: bool = False):
+    tickets = dict(_public_cache_fill_tickets.get() or {})
+    previous = tickets.pop(key, None)
+    if not consume and ticket is not None:
+        while len(tickets) >= 32:
+            tickets.pop(next(iter(tickets)))
+        tickets[key] = ticket
+    _public_cache_fill_tickets.set(tickets)
+    return previous
 
 
 async def _public_cache_get(key: str):
+    _public_cache_ticket(key, consume=True)
     if not PUBLIC_CACHE_ENABLED:
         return None
-    if _redis_state_enabled():
-        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        blob = await _redis_client.get(redis_key)
-        if not blob:
-            return None
+    if _public_cache_redis_for_key(key):
         try:
-            return _cache_payload_decode(blob)
+            # Exactly one application command on a hit or miss; no EVALSHA load retry.
+            row = await _redis_client.execute_command(
+                "EVAL_RO", _PUBLIC_CACHE_READ_SCRIPT, 1,
+                _redis_key("public-cache-v2", "generation"),
+                _redis_key("public-cache-v2") + ":", hashlib.sha256(key.encode("utf-8")).hexdigest(),
+            )
+            if not row or len(row) != 2:
+                return None
+            generation = _redis_text(row[0])
+            if not re.fullmatch(r"[0-9a-f]{32}", generation):
+                return None
+            if row[1] is not None:
+                try:
+                    return _cache_payload_decode(row[1])
+                except Exception:
+                    _cache_stats["public-cache_decode_error"] += 1
+            _public_cache_ticket(key, ("redis", generation))
         except Exception:
-            logger.warning("Failed to decode Redis public cache entry: %s", key)
-            return None
+            # Metadata is rebuilt through the authoritative route; never fall back
+            # to a stale local or generation-zero entry on Redis failure.
+            _cache_stats["public-cache_read_error"] += 1
+        return None
+    generation = _public_cache_generation
     item = _public_cache.get(key)
-    if not item:
-        return None
-    expires_at, value = item
-    if expires_at <= time.monotonic():
+    if item:
+        expires_at, value = item
+        if expires_at > time.monotonic():
+            _public_cache.move_to_end(key)
+            return value
         _public_cache.pop(key, None)
-        return None
-    _public_cache.move_to_end(key)
-    return value
+    _public_cache_ticket(key, ("local", generation))
+    return None
 
 
 async def _public_cache_set(key: str, value) -> None:
-    if not PUBLIC_CACHE_ENABLED:
+    ticket = _public_cache_ticket(key, consume=True)
+    if not PUBLIC_CACHE_ENABLED or ticket is None:
         return
-    if _redis_state_enabled():
-        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        payload = _cache_payload_encode_for_redis("public-cache", value)
-        if payload is None:
+    if _public_cache_redis_for_key(key):
+        if ticket[0] != "redis":
             return
-        await _redis_client.setex(redis_key, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), payload)
+        try:
+            payload = _cache_payload_encode_for_redis("public-cache", value)
+            if payload is None:
+                return
+            await _redis_client.eval(
+                _PUBLIC_CACHE_FILL_SCRIPT, 2,
+                _redis_key("public-cache-v2", "generation"),
+                _redis_key("public-cache-v2", ticket[1], hashlib.sha256(key.encode("utf-8")).hexdigest()),
+                ticket[1], _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), payload,
+            )
+        except Exception:
+            _cache_stats["public-cache_write_error"] += 1
+        return
+    if ticket != ("local", _public_cache_generation):
         return
     if _redis_cache_payload_is_media(value):
         _cache_stats["public-cache_media_skip"] += 1
@@ -3001,12 +3079,20 @@ async def _public_cache_set(key: str, value) -> None:
 
 async def _public_cache_clear() -> None:
     global _public_cache_generation
-    if _redis_state_enabled():
-        await _redis_client.incr(_redis_key("public-cache", "generation"))
-        await _redis_client.incr(_redis_key("reader-content-cache", "generation"))
-        return
     _public_cache_generation += 1
     _public_cache.clear()
+    if _public_metadata_redis_enabled():
+        # Read AFTER the source mutation, then compare-and-rotate atomically.
+        # If another clear supersedes this epoch (or our reply is lost), the Lua
+        # replay is a no-op, not a SET that could restore old retained entries.
+        marker = _redis_key("public-cache-v2", "generation")
+        expected = await _redis_client.get(marker)
+        await _redis_client.eval(
+            _PUBLIC_CACHE_INVALIDATE_SCRIPT, 1, marker,
+            expected if expected is not None else b"", uuid.uuid4().hex,
+        )
+    if _redis_state_enabled():
+        await _redis_client.incr(_redis_key("reader-content-cache", "generation"))
 
 
 def _client_etag_matches(request: Request, etag: str) -> bool:
@@ -7392,6 +7478,9 @@ async def get_home_listening(request: Request, limit: int = 3):
 
 async def _warm_home_surface_snapshots() -> None:
     try:
+        await _public_cache_get(_public_cache_key("home_hero_contract_v1"))
+        for limit in (3, 6):
+            await _public_cache_get(_public_cache_key("home_listening_contract_v1", limit=limit))
         docs = await _home_catalog_docs()
         hero_source = build_home_curated_payload_v4(
             docs,
@@ -13914,6 +14003,8 @@ async def admin_cache_status(_=Depends(require_admin)):
     return {
         "enabled": REDIS_CACHE_ENABLED,
         "available": _redis_state_enabled(),
+        "public_metadata_enabled": REDIS_PUBLIC_METADATA_ENABLED or REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED,
+        "public_metadata_available": _public_metadata_redis_enabled(),
         "multi_replica_enabled": MULTI_REPLICA_ENABLED,
         "key_prefix": REDIS_KEY_PREFIX,
         "timeouts_seconds": {

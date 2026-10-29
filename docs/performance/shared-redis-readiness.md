@@ -67,3 +67,62 @@ connection quota and Redis memory/client/eviction limits. Missing or malformed l
 remain UNKNOWN. A metadata match does not certify capacity, actual cache correctness
 or failover. Treat exit 2 as HOLD and exit 3 as UNQUALIFIED, not a test-run failure or
 permission to mutate provider settings.
+
+## Public metadata only (default off)
+
+`REDIS_PUBLIC_METADATA_ENABLED=false` is a separate opt-in. With the existing
+`REDIS_CACHE_ENABLED=false` and `MULTI_REPLICA_ENABLED=false`, a later explicit
+public-only activation initializes the connection and public generation marker,
+but does not enable auth/session/wallet/reader/limiter Redis state or apply
+`CONFIG SET`, even if the legacy startup-policy flag is true. No environment
+variable or provider setting is changed by this PR. A broad shared-state flag
+still retains its existing meaning and must be qualified separately.
+
+Public cache reads use one `EVAL_RO` command, atomically reading a strict lowercase
+32-hex epoch and its payload. This is a new `public-cache-v2` namespace: old integer
+or generation-zero entries cannot be reused. Startup initializes a missing marker
+with `SET NX` and a fresh random epoch. A missing, malformed or wrong-type marker
+subsequently causes a miss, never a fallback to zero or stale local data. No
+automatic repair of a corrupt marker is performed on reads. A later explicit
+invalidation reads the current epoch after the source mutation, then atomically
+compares and rotates it in Lua. A delayed transport replay cannot rewind to an
+earlier epoch; an intervening invalidation safely supersedes it. This deliberately
+uses two commands for invalidation, while cache reads use one.
+
+A miss records a bounded copy-on-write task-local fill ticket. The fill script
+compares that captured epoch and writes the TTL payload atomically. If an
+invalidation occurred while the route computed its response, the old fill is
+rejected. Concurrent requests cannot overwrite each other's tickets. Unpaired
+writers skip caching; warmers obtain tickets before reading source data. Local
+cache fills are fenced against local generation changes too. Cache reads may
+linearize just before an invalidation; this does not promise cancellation of an
+already returned/in-flight response. Legacy and new writers must not be mixed
+when shared caching is activated.
+
+Metadata read/write failures bypass caching and rebuild through the existing
+route. They do not use stale local fallback or alter live rights, auth, leases,
+financial decisions or binary-media exclusions. Invalidation failures remain
+visible errors rather than fabricated success. Existing Redis client deadlines
+and retry behavior are retained; no new API-latency or outage-availability promise
+is made. No database or production performance gain is certified by dummy tests.
+
+The script derives a payload key from the epoch inside Redis. Qualification is
+standalone-only; Redis Cluster/same-slot compatibility is not implied. Before
+activation, verify the actual backend-selected endpoint, `EVAL_RO`/script command
+ACL, private-network latency, memory/persistence roles, complete route behavior,
+writer drain/rollback and resource budget. Local Redis 8.10.1 and CI Redis 8.2.1
+fixtures are not proof of execution on the provider's Redis 8.2.9.
+
+The mandatory isolated Redis gate now includes
+`backend/tests/test_public_metadata_redis.py`. It uses only an explicitly admitted
+loopback fixture, random private test prefixes and exact-key cleanup. It covers
+one-command hits, marker loss/corruption, delayed and concurrent fills,
+invalidation, media rejection, public-only startup isolation, and the real ASGI
+public categories route/middleware with dummy catalogue and simulated outage.
+No customer/provider credentials, paid sessions, broad scans, FLUSH or CONFIG are
+used by the tests.
+
+The separate public-only opt-in uses a positive metadata-scope allowlist. Legacy
+Reader preview/chapter bodies, blog bodies and unknown future scopes remain local;
+the intentional free Reader entitlements do not change. Broader existing shared
+flags keep their previous scope and require their own qualification.
