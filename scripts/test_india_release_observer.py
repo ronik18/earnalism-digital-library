@@ -12,7 +12,7 @@ SHA = 'a4f76c51dfafe50ee35212cb707ea884ae12da62'
 class ObserverTests(unittest.TestCase):
     def observer(self, project=None, deployments=None, candidate=None):
         self.calls=[]
-        responses=[project if project is not None else {'id':PROJECT,'accountId':TEAM,'link':{'deploymentEnabled':False},'env':[{'value':'DO_NOT_RETAIN'}]}]
+        responses=[project if project is not None else {'id':PROJECT,'accountId':TEAM,'gitProviderOptions':{'createDeployments':'disabled'},'env':[{'value':'DO_NOT_RETAIN'}]}]
         if candidate is not None: responses.append(candidate)
         responses.append(deployments if deployments is not None else [{'id':'old','status':'SUCCESS','meta':{'commitHash':'e68d70bcf35797c5707b58511cad86dffaec5fe3'},'canRollback':True,'secret':'DO_NOT_RETAIN'}])
         def run(argv, **kw):

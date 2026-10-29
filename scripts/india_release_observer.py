@@ -97,14 +97,22 @@ class NativeMetadataObserver:
                               '--method', 'GET', '--raw', '--scope', TEAM])
         if not isinstance(project, dict) or project.get('id') != PROJECT or project.get('accountId') != TEAM:
             raise ValueError('Vercel project/team mismatch')
-        link = project.get('link') or {}
-        suppression = link.get('deploymentEnabled')
-        # Missing or per-branch maps are not interpreted as false.
+        # Actual provider control and repository suppression are independent.
+        provider_options=project.get('gitProviderOptions')
+        provider_disabled=isinstance(provider_options,dict) and provider_options.get('createDeployments')=='disabled'
+        try:
+            repository_config=json.loads((self.source_root/'frontend/vercel.json').read_text())
+            repository_disabled=isinstance(repository_config.get('git'),dict) and repository_config['git'].get('deploymentEnabled') is False
+        except (OSError,ValueError,TypeError,AttributeError):
+            repository_disabled=False
+        # No old link field or missing/per-branch map is interpreted as disabled.
         snapshot = {'schema': 'earnalism.provider-metadata-observation.v1',
             'observed_at': self.clock().isoformat(), 'project': PROJECT, 'team': TEAM,
             'railway_project': RAILWAY_PROJECT, 'service': SERVICE, 'environment': ENVIRONMENT,
             'verified_cli_versions': dict(CLI_VERSIONS),
-            'frontend_auto_deploy_disabled': suppression is False,
+            'frontend_provider_auto_deploy_disabled': provider_disabled,
+            'frontend_repository_auto_deploy_disabled': repository_disabled,
+            'frontend_auto_deploy_disabled': provider_disabled and repository_disabled,
             'backend_auto_deploy_disabled': None,
             'scope': 'ACTUAL_BOUNDED_METADATA_NOT_RELEASE_QUALIFICATION'}
         if candidate_id:

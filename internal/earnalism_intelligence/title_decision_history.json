@@ -12241,5 +12241,17 @@
     "qualification": "Mirrors, checksum entries, publication artifact hashes, public catalogue pair and accepted successor binding PASS locally; provider publication pending",
     "production_changed": false,
     "next_action": "Stage exact cover-only serving-source candidate, verify immutable pair and existing availability, then scoped production release"
+  },
+  "live_audiobook_guarded_optimization_preparation_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "base_merged_source": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
+    "status": "SOURCE_PREPARATION_ONLY",
+    "preserve": "Existing accepted recordings, packages, lifetime India rights, covers and Reader entitlements; accepted US records retained without US activation.",
+    "production_changed": false,
+    "paid_sessions": false,
+    "next_action": "Regenerate exact staged runtime inventory, independent integrated review, all fresh applicable CI/reviews and match-head merge; prepare/review OPEN successor before any pause/deployment."
   }
 }
