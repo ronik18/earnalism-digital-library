@@ -79,6 +79,19 @@ jobs:
           git cat-file -e "$frozen_source:backend/server.py"
           [[ "$(git rev-parse "$frozen_source:backend")" == '0be169311c1a344dc297be93af80e43857850808' ]]
 
+      - name: Fetch exact approved purchase guard source
+        if: hashFiles('internal/legal/purchase_guard_source.json') != ''
+        timeout-minutes: 2
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_pin="$(jq -er '.approved_merged_584_sha' internal/legal/purchase_guard_source.json)"
+          source_hash="$(jq -er '.approved_base_server_sha256' internal/legal/purchase_guard_source.json)"
+          [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          [[ "$source_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
+          git fetch --no-tags --depth=1 origin "$source_pin"
+          [[ "$(git show "$source_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$source_hash" ]]
+
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
