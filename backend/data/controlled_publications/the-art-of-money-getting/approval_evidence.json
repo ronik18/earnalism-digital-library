@@ -23,7 +23,7 @@
   "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
   "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
   "verified_at": "2026-10-03T04:03:12.455271+00:00",
-  "cover_provenance_sha256": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf",
+  "cover_provenance_sha256": "5b930ec47783f0915fb3ac1be337b4ef19200edd2008ea18349599b4dc79eef9",
   "cover_delivery_derivation_sha256": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
   "source_integrity_validation_sha256": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804",
   "accepted_by": "Automated title-preparation executor under the owner prospective cover-component/publication acceptance delegation of 2026-10-03 for issue #477, superseding the procedural cover deferral; no human approval, legal signature, or production observation inferred.",

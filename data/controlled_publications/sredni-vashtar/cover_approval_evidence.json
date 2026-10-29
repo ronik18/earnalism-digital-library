@@ -1,0 +1,112 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "sredni-vashtar",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-9dd8673295c6b127",
+      "slug": "sredni-vashtar",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a",
+      "remote_sha256": "9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+        "url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+        "sha256": "9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a",
+        "width": 800,
+        "height": 1200,
+        "bytes": 142374,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "df247875ce22e7210530fcf007297053e14c0e4ac3dbf6cb1b8d98e8b409e42d"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-b31f6a00c13fb1f7",
+      "slug": "sredni-vashtar",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281",
+      "remote_sha256": "b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+        "url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+        "sha256": "b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281",
+        "width": 800,
+        "height": 1200,
+        "bytes": 150026,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "67e5e789391803baebd29d7755d40088e7a4586d891394dfbab42dde0e230940"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-9dd8673295c6b127",
+    "back": "cover-replacement-20261030-back-b31f6a00c13fb1f7"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-9dd8673295c6b127",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "dominant_color": "#4A1C27",
+        "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-b31f6a00c13fb1f7",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+        "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "dominant_color": "#4A1C27",
+        "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+      }
+    }
+  }
+}

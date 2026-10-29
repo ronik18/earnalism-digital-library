@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "the-open-boat",
+    "url": "https://theearnalism.com/api/books/the-open-boat",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-open-boat",
+      "slug": "the-open-boat",
+      "title": "The Open Boat",
+      "author": "Stephen Crane",
+      "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "the-student",
+    "url": "https://theearnalism.com/api/books/the-student",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-student",
+      "slug": "the-student",
+      "title": "The Student",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "the-art-of-money-getting",
+    "url": "https://theearnalism.com/api/books/the-art-of-money-getting",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-art-of-money-getting",
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "author": "P. T. Barnum",
+      "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "dsires-baby",
+    "url": "https://theearnalism.com/api/books/dsires-baby",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-dsires-baby",
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "sredni-vashtar",
+    "url": "https://theearnalism.com/api/books/sredni-vashtar",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-sredni-vashtar",
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "the-cop-and-the-anthem",
+    "url": "https://theearnalism.com/api/books/the-cop-and-the-anthem",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-cop-and-the-anthem",
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "the-open-window",
+    "url": "https://theearnalism.com/api/books/the-open-window",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-open-window",
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "author": "Saki",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+      "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+      "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+      "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+      "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+      "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+      "back_cover_dominant_color": "#122D2F",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "the-selfish-giant",
+    "url": "https://theearnalism.com/api/books/the-selfish-giant",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-the-selfish-giant",
+      "slug": "the-selfish-giant",
+      "title": "The Selfish Giant",
+      "author": "Oscar Wilde",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+      "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+      "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+      "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+      "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+      "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+      "back_cover_dominant_color": "#254238",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  },
+  {
+    "slug": "book-5704b31005",
+    "url": "https://theearnalism.com/api/books/book-5704b31005",
+    "http_status": 200,
+    "public_metadata": {
+      "id": "controlled-book-5704b31005",
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+      "cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+      "back_cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+      "back_cover_thumbnail_url": "",
+      "back_cover_blur_placeholder": "",
+      "back_cover_dominant_color": "",
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED",
+      "audio_status": "NOT_AVAILABLE"
+    },
+    "stage": "PRE_PROMOTION_ROLLBACK_BASELINE"
+  }
+]

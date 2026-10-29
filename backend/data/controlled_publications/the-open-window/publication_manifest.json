@@ -1,7 +1,7 @@
 {
   "artifacts": {
-    "approval_evidence": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0",
-    "public_book": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955",
+    "approval_evidence": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3",
+    "public_book": "c8aeadbe8c0d6348de2a4d4c3a9f25a15db308bfd6204d3986a481a919291979",
     "reader_manifest": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
     "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
   },
@@ -43,10 +43,10 @@
     "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
   },
   "generated_at": "2026-10-26T15:00:00Z",
-  "manifest_sha256": "e712ac8b44b67e4761c8a0cd91fe092dd8afd279d4030151fa65d259491abd2a",
+  "manifest_sha256": "6971126c7ee7402519f98e885ee5e09dc1024a35af8472e7498cd1f1201abd10",
   "reader_release": {
     "blockers": [],
-    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+    "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
     "exposed": true,
     "qa_status": "QA_PASSED",
     "status": "APPROVED"

@@ -1,0 +1,110 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-student",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-853842d83dc49ee4",
+      "slug": "the-student",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e",
+      "remote_sha256": "853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+        "url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+        "sha256": "853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e",
+        "width": 800,
+        "height": 1200,
+        "bytes": 75660,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305790/earnalism/covers/front/cover_candidate_controlled-the-student-853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "2ca9476cb46810650ab1aa3280c44482dcc85a92e61ccab5ead52d8ae39ad0a7"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-e7e5bae7893221c0",
+      "slug": "the-student",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9",
+      "remote_sha256": "e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+        "url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+        "sha256": "e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9",
+        "width": 800,
+        "height": 1200,
+        "bytes": 84732,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305835/earnalism/covers/back/back_cover_candidate_controlled-the-student-e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "14b25b5a0fc6aa68462fec4822146c1a4d93b420cd8d722f9260e5ec5b1112a2"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-853842d83dc49ee4",
+    "back": "cover-replacement-20261030-back-e7e5bae7893221c0"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-853842d83dc49ee4",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "cover_status": "REVIEWED_FIRST_PARTY_DERIVATIVE",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_semantic_match_score": 9.8
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-e7e5bae7893221c0",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+        "cover_status": "REVIEWED_FIRST_PARTY_DERIVATIVE",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_semantic_match_score": 9.8
+      }
+    }
+  }
+}

@@ -5,18 +5,21 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "public_book": "feaab45695c1b52320bd59f15cbc514528596dba136b4483f114af801431eb95",
     "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
     "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
-    "approval_evidence": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
-    "checksum_manifest": "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa",
-    "publication_manifest": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
-    "cover_provenance": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071",
+    "approval_evidence": "c231bdd8b1afdd72bf682c2e47d9289377be1f75488234a0f689b8630d578ffa",
+    "checksum_manifest": "f1d194d3016afe38c6150f7f55cbf182edbda3bbf7cd714c691e0b4da5dd0a0c",
+    "publication_manifest": "10ff0700b0cdfdf715dc9dc276dd3ffdf6afa7930d11cec0e452813fda3c6dab",
+    "cover_provenance": "38a495be7b76a6e7704f5574daedff26a6dbd4055d0e5005baab514a50c7c8c9",
     "cover_delivery_derivation": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
     "cover_front_original_asset": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
     "cover_front_delivery_asset": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
     "cover_back_original_asset": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
-    "cover_back_delivery_asset": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3"
+    "cover_back_delivery_asset": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+    "cover_replacement_front_delivery": "853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e",
+    "cover_replacement_back_delivery": "e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9",
+    "cover_replacement_approval": "f9104fbb6e9f0215bd13e1265726e2fcda3845cd1c1cc39c67830d9b23efb4df"
   },
   "territories": [
     "IN"

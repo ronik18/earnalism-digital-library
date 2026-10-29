@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "changed_packages": 9,
+  "statuses": {
+    "book-5704b31005": "APPROVED",
+    "dsires-baby": "APPROVED",
+    "sredni-vashtar": "APPROVED",
+    "the-art-of-money-getting": "APPROVED",
+    "the-cop-and-the-anthem": "APPROVED",
+    "the-open-boat": "APPROVED",
+    "the-open-window": "APPROVED",
+    "the-selfish-giant": "APPROVED",
+    "the-student": "APPROVED"
+  },
+  "issues": [],
+  "reader_exposed": true,
+  "audio_exposed": true,
+  "release_authority_matches_reviewed_bindings": true
+}

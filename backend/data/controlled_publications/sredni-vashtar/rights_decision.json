@@ -5,21 +5,24 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "public_book": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c",
     "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
     "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
-    "approval_evidence": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
-    "checksum_manifest": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
-    "publication_manifest": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
-    "cover_provenance": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+    "approval_evidence": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e",
+    "checksum_manifest": "26fd3cf8658ae51513a19576d882573e427d3628c85c64342d89c9c7ee63a75d",
+    "publication_manifest": "3d0e3fbd031eaa0e39eec24e145cd193e4b7ae15d111c65c4958d4651804f2e4",
+    "cover_provenance": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b",
     "cover_delivery_derivation": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb",
     "cover_front_original_asset": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
     "cover_front_delivery_asset": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
     "cover_back_original_asset": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
     "cover_back_delivery_asset": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
-    "publication_authorization": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+    "publication_authorization": "426926d607a3ddaedfc3c0f374758a1fd8c0bf75d74b801fedbaa114bee96d9f",
     "acceptance_review_a": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
-    "acceptance_review_b": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+    "acceptance_review_b": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+    "cover_replacement_front_delivery": "9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a",
+    "cover_replacement_back_delivery": "b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281",
+    "cover_replacement_approval": "b01f78084e9c8164c40a33ceef4c934fad398eb09516e9d07b3025727ce4e2d5"
   },
   "territories": [
     "IN"

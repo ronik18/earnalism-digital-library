@@ -1,0 +1,258 @@
+{
+  "base_sha": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
+  "status": "SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "titles": [
+    {
+      "slug": "the-open-boat",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+          "url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+          "sha256": "2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb",
+          "width": 800,
+          "height": 1200,
+          "bytes": 88414,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305689/earnalism/covers/front/cover_candidate_controlled-the-open-boat-2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+          "url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+          "sha256": "599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c",
+          "width": 800,
+          "height": 1200,
+          "bytes": 61880,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305723/earnalism/covers/back/back_cover_candidate_controlled-the-open-boat-599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c.webp"
+        }
+      },
+      "old_record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "new_record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "the-student",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+          "url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+          "sha256": "853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e",
+          "width": 800,
+          "height": 1200,
+          "bytes": 75660,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305790/earnalism/covers/front/cover_candidate_controlled-the-student-853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+          "url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+          "sha256": "e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9",
+          "width": 800,
+          "height": 1200,
+          "bytes": 84732,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305835/earnalism/covers/back/back_cover_candidate_controlled-the-student-e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9.webp"
+        }
+      },
+      "old_record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+      "new_record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+          "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+          "sha256": "4cdaed41b8b2e173662dbd4dc9aaa7da336c67c3c8fa572833d1f69767ed1b7d",
+          "width": 800,
+          "height": 1200,
+          "bytes": 98112,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305586/earnalism/covers/front/cover_candidate_controlled-the-art-of-money-getting-4cdaed41b8b2e173662dbd4dc9aaa7da336c67c3c8fa572833d1f69767ed1b7d.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+          "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+          "sha256": "1639bd169616e489a5927ff90a7387427a96364a9f6346ba29443638bab9f9ae",
+          "width": 800,
+          "height": 1200,
+          "bytes": 114984,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305619/earnalism/covers/back/back_cover_candidate_controlled-the-art-of-money-getting-1639bd169616e489a5927ff90a7387427a96364a9f6346ba29443638bab9f9ae.webp"
+        }
+      },
+      "old_record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+      "new_record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "dsires-baby",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+          "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+          "sha256": "41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d",
+          "width": 800,
+          "height": 1200,
+          "bytes": 129472,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305858/earnalism/covers/front/cover_candidate_controlled-dsires-baby-41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+          "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+          "sha256": "27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9",
+          "width": 800,
+          "height": 1200,
+          "bytes": 87856,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305876/earnalism/covers/back/back_cover_candidate_controlled-dsires-baby-27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9.webp"
+        }
+      },
+      "old_record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "new_record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "sredni-vashtar",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+          "url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+          "sha256": "9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a",
+          "width": 800,
+          "height": 1200,
+          "bytes": 142374,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+          "url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+          "sha256": "b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281",
+          "width": 800,
+          "height": 1200,
+          "bytes": 150026,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp"
+        }
+      },
+      "old_record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "new_record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+          "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+          "sha256": "9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96",
+          "width": 800,
+          "height": 1200,
+          "bytes": 151682,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305976/earnalism/covers/front/cover_candidate_controlled-the-cop-and-the-anthem-9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+          "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+          "sha256": "8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4",
+          "width": 800,
+          "height": 1200,
+          "bytes": 103536,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305997/earnalism/covers/back/back_cover_candidate_controlled-the-cop-and-the-anthem-8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4.webp"
+        }
+      },
+      "old_record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "new_record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "the-open-window",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+          "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+          "sha256": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+          "width": 800,
+          "height": 1200,
+          "bytes": 120576,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306019/earnalism/covers/front/cover_candidate_controlled-the-open-window-00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+          "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+          "sha256": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
+          "width": 800,
+          "height": 1200,
+          "bytes": 67398,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306040/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615.webp"
+        }
+      },
+      "old_record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
+      "new_record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "the-selfish-giant",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+          "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+          "sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+          "width": 800,
+          "height": 1200,
+          "bytes": 141134,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+          "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+          "sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+          "width": 800,
+          "height": 1200,
+          "bytes": 90250,
+          "format": "WEBP",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306097/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508.webp"
+        }
+      },
+      "old_record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
+      "new_record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
+      "text_audio_access_preserved": true
+    },
+    {
+      "slug": "book-5704b31005",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+          "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+          "sha256": "a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519",
+          "width": 800,
+          "height": 1200,
+          "bytes": 172058,
+          "format": "JPEG",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306137/earnalism/covers/front/cover_candidate_controlled-book-5704b31005-a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519.jpg"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+          "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+          "sha256": "bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845",
+          "width": 800,
+          "height": 1200,
+          "bytes": 171462,
+          "format": "JPEG",
+          "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306185/earnalism/covers/back/back_cover_candidate_controlled-book-5704b31005-bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845.jpg"
+        }
+      },
+      "old_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "new_record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
+      "text_audio_access_preserved": true
+    }
+  ]
+}

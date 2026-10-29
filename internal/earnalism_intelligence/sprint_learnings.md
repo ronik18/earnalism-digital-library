@@ -2832,3 +2832,8 @@ Represent explicit lifetime rights as a distinct non-expiring value, not an inve
 
 Shared Redis admission must be atomic and use a shared server clock. Preserve private retry UUID effects across SDK transport retries without changing global cache retry policy. Legacy monotonic counters are retained, not reset. Distinguish configured replicas from actual running replicas; index declarations from installed metadata; source-local checks from target runtime and capacity. Offline validators never create/drop indexes or activate Redis.
 29 October cover-only release: authenticated cover intake is enabled even when generic media uploads are disabled. Canonical promotion returned503 because runtime mirrors were absent. Reuse both real uploaded immutable candidates; prepare a metadata-only successor on actual serving source rather than deploying unrelated main changes. No production success inferred.
+
+
+## Nine exact cover replacements — 30 October 2026
+
+Candidate upload is not canonical cover publication. Reuse stored exact-hash originals; preserve old cover bytes/mappings. Cover replacements also need checksum, publication-manifest, accepted-record/registry, bootstrap, reviewed-authority and static-SEO bindings. Preserve source/chapter/Reader/access state and both existing protected audiobooks. Keep schema annotations outside strict rights records. A model pixel qualification at4x must remain disclosed even when normal cover display is acceptable. Current source review and local build/tests do not establish deployed-source identity or authorize unrelated backend rollout.

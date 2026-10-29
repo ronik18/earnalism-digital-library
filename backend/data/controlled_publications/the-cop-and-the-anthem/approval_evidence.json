@@ -20,7 +20,7 @@
   "provenance_hash": "e56b326703e2719cda7eb81b9dc04edbd23eed61ce89cbece41db9338549565c",
   "verified_at": "2026-10-01T21:48:17.188009+00:00",
   "audio_enabled": false,
-  "cover_provenance_sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+  "cover_provenance_sha256": "e0691f273f056582a19955bf70cef7c99d4d12a060baa1416e578b78fa80195e",
   "actual_prospective_acceptance": {
     "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
     "accepted_at": "2026-10-03T04:59:53.954767+00:00",

@@ -5,17 +5,20 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+    "public_book": "ede0edd28084bafd25598ae07869592ecbbb1a4f470d0511e50a86597f2dd633",
     "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
     "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
-    "approval_evidence": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
-    "checksum_manifest": "50f5f926b4992e69b22a2113d4913065aedbb6215fe7a2cc0732d3401b17259d",
-    "publication_manifest": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876",
+    "approval_evidence": "ad2a4409b20b7b432c632362270f6ce747ead1327780c99447233338c0513df9",
+    "checksum_manifest": "ffb6de9ef9a3531d7de061d5a0f67927c8373bb36c26669905f0386d99015646",
+    "publication_manifest": "97828f1ed5223c2eeadcd3f5c767452f1282935d173e18122106c5c9e75b5669",
     "cover_preparation": "9cf2aaf4e5a08aa733a1874524df59170bfb96443b3b65dbe2ba1006dd72fe86",
-    "publication_authorization": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0",
-    "cover_provenance": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+    "publication_authorization": "b94c0d8fc80e209ad12af50f7e9f4f61f84a62e85aeb077bf1863a67d28b0acb",
+    "cover_provenance": "e0691f273f056582a19955bf70cef7c99d4d12a060baa1416e578b78fa80195e",
     "acceptance_review_a": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
-    "acceptance_review_b": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+    "acceptance_review_b": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+    "cover_replacement_front_delivery": "9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96",
+    "cover_replacement_back_delivery": "8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4",
+    "cover_replacement_approval": "1095f627977709101687aa8dd39e4726b793f7eda70b445541ed95c25b9b9a09"
   },
   "territories": [
     "IN"

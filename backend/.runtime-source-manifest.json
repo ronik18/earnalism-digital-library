@@ -110,7 +110,7 @@
     {
       "path": "data/approved_reader_bootstrap.json",
       "bytes": 12508,
-      "sha256": "aeddef693dc57075a1517107e8e714cdb1018457d3769e6374fb179fe329bcd1"
+      "sha256": "16f5d345a787c94187d5032bf7b578b53cc34e5680c1d89a767a39c72c6f5d98"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -1780,7 +1780,7 @@
     {
       "path": "data/controlled_publications/book-5704b31005/approval_evidence.json",
       "bytes": 2662,
-      "sha256": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28"
+      "sha256": "1a70f78a767a5f80633d4ffff208170838db73dbaac3efef4a189dbec4374ca7"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/chapters/chapter-001.json",
@@ -1789,13 +1789,18 @@
     },
     {
       "path": "data/controlled_publications/book-5704b31005/checksum_manifest.json",
-      "bytes": 2698,
-      "sha256": "e12ab04021ac3991ae3f802d3810a0ebb7edf6b82a2bbb80caf68736accab743"
+      "bytes": 2840,
+      "sha256": "449583aab4f38ebd279a93aa875de4912e66bb9d62d60cd0ab9fbb0daa8f6fd8"
+    },
+    {
+      "path": "data/controlled_publications/book-5704b31005/cover_approval_evidence.json",
+      "bytes": 6102,
+      "sha256": "5ed1c1fd211aba7285910447738f4c513164a728d3bd2eb68163f916b27f0180"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/cover_provenance.json",
-      "bytes": 7091,
-      "sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319"
+      "bytes": 9876,
+      "sha256": "1f45a8cd0deed8a1c432d59964200174e0e6f10da4bde358fa26be79a8861d80"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/covers/back-delivery.webp",
@@ -1854,18 +1859,18 @@
     },
     {
       "path": "data/controlled_publications/book-5704b31005/public_book.json",
-      "bytes": 5164,
-      "sha256": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87"
+      "bytes": 5718,
+      "sha256": "d4a813a2934b9d6b72f20f1bb34b6c6c2759412a9fd23d9464c2d05e42fd0a0a"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/publication_authorization.json",
       "bytes": 1825,
-      "sha256": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2"
+      "sha256": "abcfaac36e36c9160bac3b711b864af5e4577d189e520245f585f34ff15f8824"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/publication_manifest.json",
-      "bytes": 1976,
-      "sha256": "c8455db5baa2055ad7b5e29ce7f3f0a9c6802eb4e72bd664858d3b9853c65b04"
+      "bytes": 1983,
+      "sha256": "d8407559cb9e8d834bcf1f56699d932ca6f77f0774d296054ce7e50bcd1b91bf"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/reader_manifest.json",
@@ -1874,8 +1879,8 @@
     },
     {
       "path": "data/controlled_publications/book-5704b31005/rights_decision.json",
-      "bytes": 3393,
-      "sha256": "4bb60220f1b11794ef7634a135a69587523149c0c40c377ecc77e6e60033dba2"
+      "bytes": 3710,
+      "sha256": "16cd344d4be066b3895c47f6032af913db5736084ff699b36418dec185a28f04"
     },
     {
       "path": "data/controlled_publications/book-5704b31005/source_evidence.json",
@@ -3055,7 +3060,7 @@
     {
       "path": "data/controlled_publications/dsires-baby/approval_evidence.json",
       "bytes": 3037,
-      "sha256": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0"
+      "sha256": "6a66387f178fe9c153c6a81ccd95a7c1842b81d4dbc53b0d32d0fb21f3b285ab"
     },
     {
       "path": "data/controlled_publications/dsires-baby/chapters/chapter-001.json",
@@ -3064,8 +3069,13 @@
     },
     {
       "path": "data/controlled_publications/dsires-baby/checksum_manifest.json",
-      "bytes": 2005,
-      "sha256": "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283"
+      "bytes": 2147,
+      "sha256": "5b71f1655b8d6a8946548a2a15251f6515963aca2d63e58719c31d9480e5152e"
+    },
+    {
+      "path": "data/controlled_publications/dsires-baby/cover_approval_evidence.json",
+      "bytes": 6085,
+      "sha256": "6f813e02a1868ae2b9f9f622f46576de813a32fe2e31e4156b2440797b93adcf"
     },
     {
       "path": "data/controlled_publications/dsires-baby/cover_delivery_derivation.json",
@@ -3074,8 +3084,8 @@
     },
     {
       "path": "data/controlled_publications/dsires-baby/cover_provenance.json",
-      "bytes": 4933,
-      "sha256": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+      "bytes": 7627,
+      "sha256": "1692321c21590a424b1bb1d4b3a7853ae50ff65cd8e494452f1f20cd7a1c111e"
     },
     {
       "path": "data/controlled_publications/dsires-baby/covers/back.png",
@@ -3104,18 +3114,18 @@
     },
     {
       "path": "data/controlled_publications/dsires-baby/public_book.json",
-      "bytes": 4806,
-      "sha256": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b"
+      "bytes": 5333,
+      "sha256": "c07a664a78eebdd29daf286e11bb9a61df02c3b86f969efbcb358fd331a397f7"
     },
     {
       "path": "data/controlled_publications/dsires-baby/publication_authorization.json",
       "bytes": 1743,
-      "sha256": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe"
+      "sha256": "16cba191965347490f758136bb7fc54a094004bc5a08c030188198f0a44596cc"
     },
     {
       "path": "data/controlled_publications/dsires-baby/publication_manifest.json",
-      "bytes": 1964,
-      "sha256": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c"
+      "bytes": 1968,
+      "sha256": "15e80171e030a70cd1f091e4639997890bc184139599182e93d7e9ba55b41755"
     },
     {
       "path": "data/controlled_publications/dsires-baby/reader_manifest.json",
@@ -3124,8 +3134,8 @@
     },
     {
       "path": "data/controlled_publications/dsires-baby/rights_decision.json",
-      "bytes": 3566,
-      "sha256": "bf7d09e8c5e9752034ab8f3309417af983b951e41eebe07e94625e497db6fe2f"
+      "bytes": 3883,
+      "sha256": "f31e629875034c8d86070baf210f8136a2728508f820b7ca1edad7f0d005419b"
     },
     {
       "path": "data/controlled_publications/dsires-baby/source_evidence.json",
@@ -6120,7 +6130,7 @@
     {
       "path": "data/controlled_publications/sredni-vashtar/approval_evidence.json",
       "bytes": 2737,
-      "sha256": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0"
+      "sha256": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/chapters/chapter-001.json",
@@ -6129,8 +6139,13 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/checksum_manifest.json",
-      "bytes": 1603,
-      "sha256": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87"
+      "bytes": 1745,
+      "sha256": "26fd3cf8658ae51513a19576d882573e427d3628c85c64342d89c9c7ee63a75d"
+    },
+    {
+      "path": "data/controlled_publications/sredni-vashtar/cover_approval_evidence.json",
+      "bytes": 5943,
+      "sha256": "b01f78084e9c8164c40a33ceef4c934fad398eb09516e9d07b3025727ce4e2d5"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/cover_delivery_derivation.json",
@@ -6139,8 +6154,8 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/cover_provenance.json",
-      "bytes": 8499,
-      "sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+      "bytes": 11355,
+      "sha256": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/evidence/review_a.json",
@@ -6159,18 +6174,18 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/public_book.json",
-      "bytes": 5234,
-      "sha256": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01"
+      "bytes": 5900,
+      "sha256": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/publication_authorization.json",
       "bytes": 1751,
-      "sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734"
+      "sha256": "426926d607a3ddaedfc3c0f374758a1fd8c0bf75d74b801fedbaa114bee96d9f"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/publication_manifest.json",
-      "bytes": 1950,
-      "sha256": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d"
+      "bytes": 1973,
+      "sha256": "3d0e3fbd031eaa0e39eec24e145cd193e4b7ae15d111c65c4958d4651804f2e4"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/reader_manifest.json",
@@ -6179,8 +6194,8 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/rights_decision.json",
-      "bytes": 3746,
-      "sha256": "068975e061bd083b5e3714f90b8952c6c54402c231984520f3c41c188ea06259"
+      "bytes": 4063,
+      "sha256": "553930cf3aeab137ed0808f2d7ff012c43fe0382a69ce8a8f30dd9215ce3651b"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/source_evidence.json",
@@ -6295,7 +6310,7 @@
     {
       "path": "data/controlled_publications/the-art-of-money-getting/approval_evidence.json",
       "bytes": 2807,
-      "sha256": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627"
+      "sha256": "97b86a96208b8acb5dca7cb2b084efcbaa7e846cd48f4c4e83c0517f05d50474"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/chapters/chapter-001.json",
@@ -6304,8 +6319,13 @@
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/checksum_manifest.json",
-      "bytes": 2068,
-      "sha256": "e4ee2dc51ed9dc2d492dc377dbf9d69f34094140b71df5c29195c7187844d75b"
+      "bytes": 2210,
+      "sha256": "b6932d188f03e76e855add914780bf8117fa6eeff6b4f50eceeb9e1a406dd986"
+    },
+    {
+      "path": "data/controlled_publications/the-art-of-money-getting/cover_approval_evidence.json",
+      "bytes": 6420,
+      "sha256": "0e83af2f44b299cb33799594d951f1962e88dde8351db614a35fa1a2b0a32cb8"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/cover_delivery_derivation.json",
@@ -6314,8 +6334,8 @@
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/cover_provenance.json",
-      "bytes": 4393,
-      "sha256": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf"
+      "bytes": 7188,
+      "sha256": "5b930ec47783f0915fb3ac1be337b4ef19200edd2008ea18349599b4dc79eef9"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/covers/back.png",
@@ -6334,18 +6354,18 @@
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/public_book.json",
-      "bytes": 5192,
-      "sha256": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1"
+      "bytes": 5838,
+      "sha256": "d14261ddf863aee0c145bad3f59070c21c28a7ebcfb85401a47235d3c3dd2baa"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/publication_authorization.json",
       "bytes": 1791,
-      "sha256": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e"
+      "sha256": "1d7eecf4a1a36706ae7032a60e6d23d98f2b9aa5d79e9d653dd65bff3451fdfe"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/publication_manifest.json",
-      "bytes": 2017,
-      "sha256": "459cec0b1f2931f8ff034c1c6a867de9581d4eb11f63d00af4ea570c39952522"
+      "bytes": 2021,
+      "sha256": "6192869230ca8aff520586f22324f6cdcdf954fcd86d9c5276ee39a3f6869f40"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/reader_manifest.json",
@@ -6364,8 +6384,8 @@
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/rights_decision.json",
-      "bytes": 4111,
-      "sha256": "2af3109706aa08cf25979dbafb39895f4694cd4e1b1c1af9586eadb2fff56014"
+      "bytes": 4428,
+      "sha256": "26d8f82cf2178d4308433af99c3187e9057f4c1998b930b444680abf556f799c"
     },
     {
       "path": "data/controlled_publications/the-art-of-money-getting/source_evidence.json",
@@ -6630,7 +6650,7 @@
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
       "bytes": 2748,
-      "sha256": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf"
+      "sha256": "ad2a4409b20b7b432c632362270f6ce747ead1327780c99447233338c0513df9"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/chapters/chapter-001.json",
@@ -6639,8 +6659,13 @@
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json",
-      "bytes": 2528,
-      "sha256": "50f5f926b4992e69b22a2113d4913065aedbb6215fe7a2cc0732d3401b17259d"
+      "bytes": 2670,
+      "sha256": "ffb6de9ef9a3531d7de061d5a0f67927c8373bb36c26669905f0386d99015646"
+    },
+    {
+      "path": "data/controlled_publications/the-cop-and-the-anthem/cover_approval_evidence.json",
+      "bytes": 6539,
+      "sha256": "1095f627977709101687aa8dd39e4726b793f7eda70b445541ed95c25b9b9a09"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/cover_preparation.json",
@@ -6649,8 +6674,8 @@
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json",
-      "bytes": 6753,
-      "sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4"
+      "bytes": 9627,
+      "sha256": "e0691f273f056582a19955bf70cef7c99d4d12a060baa1416e578b78fa80195e"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/covers/original-back.png",
@@ -6699,18 +6724,18 @@
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/public_book.json",
-      "bytes": 4969,
-      "sha256": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de"
+      "bytes": 5546,
+      "sha256": "ede0edd28084bafd25598ae07869592ecbbb1a4f470d0511e50a86597f2dd633"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json",
       "bytes": 1771,
-      "sha256": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0"
+      "sha256": "b94c0d8fc80e209ad12af50f7e9f4f61f84a62e85aeb077bf1863a67d28b0acb"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json",
-      "bytes": 2005,
-      "sha256": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876"
+      "bytes": 2013,
+      "sha256": "97828f1ed5223c2eeadcd3f5c767452f1282935d173e18122106c5c9e75b5669"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
@@ -6719,8 +6744,8 @@
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/rights_decision.json",
-      "bytes": 3204,
-      "sha256": "b7a24c46afe9179d4ec46247e68c4fe31da8dde7466e9762dc554c1b8f3fae51"
+      "bytes": 3521,
+      "sha256": "27f9406680ff0004e50cd99b02d70a275aaaa980fecf91f51925ae063c856210"
     },
     {
       "path": "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
@@ -7584,13 +7609,18 @@
     },
     {
       "path": "data/controlled_publications/the-open-boat/checksum_manifest.json",
-      "bytes": 1184,
-      "sha256": "88b111949c9a8638798c506f31f68030645b9ba46ed25efd378e6005c7e620be"
+      "bytes": 1326,
+      "sha256": "0676cf9d9702d4eeb22885b978c7c95c618d3624e446ec856da6d9c0fd96e80f"
+    },
+    {
+      "path": "data/controlled_publications/the-open-boat/cover_approval_evidence.json",
+      "bytes": 5542,
+      "sha256": "b49aeab1a8c49eb839cc4032d52ffd73e10cc4047ebadd3abc8a97c1a0e852e2"
     },
     {
       "path": "data/controlled_publications/the-open-boat/cover_provenance.json",
-      "bytes": 2489,
-      "sha256": "e59cfb8f96345748ddcf1cc824fcdea4f574b4f078dc097466d07effc09ab887"
+      "bytes": 5080,
+      "sha256": "c0ab709795ddcdbf12d46a7d695b3c3e32ca04d416b92d782d84e77a8e8f7c34"
     },
     {
       "path": "data/controlled_publications/the-open-boat/highlight_sync.json",
@@ -7599,13 +7629,13 @@
     },
     {
       "path": "data/controlled_publications/the-open-boat/public_book.json",
-      "bytes": 3616,
-      "sha256": "ba4de39e81eecaa7b6cff9132c6afa265af5bd48bdb017b00ec8acdeb9cf91e2"
+      "bytes": 4410,
+      "sha256": "f81e26679cf1d8d75accd299e6c375cd82395dd8f3b9f9baca2f0a8cfec8e8e7"
     },
     {
       "path": "data/controlled_publications/the-open-boat/publication_manifest.json",
-      "bytes": 1940,
-      "sha256": "26c68b1900a65b58afd2fb8172dd9eb3122dcf3b46bbcbec8a43d8b0bef5e715"
+      "bytes": 1965,
+      "sha256": "53dc96ca485e685e9c05ab7d3824db0801060ce8d32a6d035032aef10f032da4"
     },
     {
       "path": "data/controlled_publications/the-open-boat/reader_manifest.json",
@@ -7619,8 +7649,8 @@
     },
     {
       "path": "data/controlled_publications/the-open-boat/rights_decision.json",
-      "bytes": 3266,
-      "sha256": "fbacb3045f2740761e1aad3104bf064eb54d39b59dfc79f3559ad470c2b97901"
+      "bytes": 3583,
+      "sha256": "6981d895ea25680784e44e4e847c8097ddf424bbeeba80c7834ef68971372b2a"
     },
     {
       "path": "data/controlled_publications/the-open-boat/source_evidence.json",
@@ -7630,7 +7660,7 @@
     {
       "path": "data/controlled_publications/the-open-window/approval_evidence.json",
       "bytes": 6075,
-      "sha256": "e1e687c98c2603d2e14ed677ee07fa5ee0b71cb520bd415fc78f66a4ee20b3f0"
+      "sha256": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3"
     },
     {
       "path": "data/controlled_publications/the-open-window/chapters/chapter-001.json",
@@ -7640,17 +7670,17 @@
     {
       "path": "data/controlled_publications/the-open-window/checksum_manifest.json",
       "bytes": 2433,
-      "sha256": "37386b6707ce76d100f038c791af8161e2e5b14ccbabbe1d0d3c17daa7d22be5"
+      "sha256": "7efa4e5e1b7516785b1ba5864267d0caced0a2d160e47de76eb458d3d800ec07"
     },
     {
       "path": "data/controlled_publications/the-open-window/cover_approval_evidence.json",
-      "bytes": 5075,
-      "sha256": "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa"
+      "bytes": 12896,
+      "sha256": "2e3b50e7a9ae3cc9a85e3303d81b1f3b0a4787e2f4bc3243481478daf5e97f51"
     },
     {
       "path": "data/controlled_publications/the-open-window/cover_provenance.json",
-      "bytes": 5143,
-      "sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
+      "bytes": 7914,
+      "sha256": "683e346792e11fb12035f77fb0b22cb08e65691e00a7a75cdaa19a58f02a7419"
     },
     {
       "path": "data/controlled_publications/the-open-window/covers/back-delivery.webp",
@@ -7699,18 +7729,18 @@
     },
     {
       "path": "data/controlled_publications/the-open-window/public_book.json",
-      "bytes": 185217,
-      "sha256": "dcfce575b1248f6fc3fba9a12182e46b087fb2c1a2d30d84130c3fa7f60b4955"
+      "bytes": 184535,
+      "sha256": "c8aeadbe8c0d6348de2a4d4c3a9f25a15db308bfd6204d3986a481a919291979"
     },
     {
       "path": "data/controlled_publications/the-open-window/publication_authorization.json",
       "bytes": 1832,
-      "sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e"
+      "sha256": "330b5d386e347510314fc62ffe7f18b4e63843c2cd47f99dc3043da1ba20bb95"
     },
     {
       "path": "data/controlled_publications/the-open-window/publication_manifest.json",
-      "bytes": 2726,
-      "sha256": "9b486c66a07f4a37cee4ecb18c8d19f46c9227a3def3e18b7192545e11a35ba3"
+      "bytes": 2627,
+      "sha256": "99df929ce7593b50fdf74cc8d69afac6aebdc1670ecbaa5180f495c6819bcb81"
     },
     {
       "path": "data/controlled_publications/the-open-window/reader_manifest.json",
@@ -7719,8 +7749,8 @@
     },
     {
       "path": "data/controlled_publications/the-open-window/rights_decision.json",
-      "bytes": 3855,
-      "sha256": "ba1c1b794cb717d7d968ddcc3e0b5a12b7b688ff55f650d2c60591c7c24bc947"
+      "bytes": 4172,
+      "sha256": "9cb800eeff9f13f6098f7e31bbd8859c8bff9dfd6de130edf4e63d1a2badd041"
     },
     {
       "path": "data/controlled_publications/the-open-window/source_evidence.json",
@@ -8285,7 +8315,7 @@
     {
       "path": "data/controlled_publications/the-selfish-giant/approval_evidence.json",
       "bytes": 4859,
-      "sha256": "c28fc2f802ed24cd5094fd4794a4e251ab74e719d531bfbcf9d4f511d331daab"
+      "sha256": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/chapters/chapter-001.json",
@@ -8295,17 +8325,17 @@
     {
       "path": "data/controlled_publications/the-selfish-giant/checksum_manifest.json",
       "bytes": 3559,
-      "sha256": "b605f5f918c96e4fb19f2610ca652cb450c1c02fabc1fa93cdd6aa9d7687748d"
+      "sha256": "750425dcbe1d7f9ae04ae8611aa4d3558a0f3286dbe484024111f18605596bf7"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/cover_approval_evidence.json",
-      "bytes": 5458,
-      "sha256": "d206507b3d5794668c7bb2430b2cdd23e2dc12f77317b44ff5a287a93caedb03"
+      "bytes": 13350,
+      "sha256": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/cover_provenance.json",
-      "bytes": 2903,
-      "sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc"
+      "bytes": 5539,
+      "sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/covers/back-delivery-20261029.webp",
@@ -8389,18 +8419,18 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/public_book.json",
-      "bytes": 49535,
-      "sha256": "f1b584cf7d69820e424fcadc50cc6da8575484ac390cc440646b17f07a136f87"
+      "bytes": 48859,
+      "sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_authorization.json",
       "bytes": 1498,
-      "sha256": "153734fb40eff3d6f7907fe8bb27ac21bb14e038a5332b573a449bfa9eb01b8b"
+      "sha256": "4799382e1fef39464dff1a85d0339bcd19d899745cef777c610799db0b89fdae"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_manifest.json",
-      "bytes": 2737,
-      "sha256": "550607d4fd2b3f5f0cf0845f0c80a22eefac1da438c81cdf03646fd051997e49"
+      "bytes": 2639,
+      "sha256": "7f063ead5c5baba5565ffae4f94fc260721f2c52598a09288c72cb8ef382c6f0"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/reader_manifest.json",
@@ -8409,8 +8439,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/rights_decision.json",
-      "bytes": 3010,
-      "sha256": "225b4d430de137b24e45e3c41017dbb8588ab5cd2a086dd3075f045b673f952c"
+      "bytes": 3327,
+      "sha256": "91c2106b7752ee3a2e6a576cfb5a69a782885676148df147c120d746c01007e3"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/source_evidence.json",
@@ -8505,7 +8535,7 @@
     {
       "path": "data/controlled_publications/the-student/approval_evidence.json",
       "bytes": 2050,
-      "sha256": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13"
+      "sha256": "c231bdd8b1afdd72bf682c2e47d9289377be1f75488234a0f689b8630d578ffa"
     },
     {
       "path": "data/controlled_publications/the-student/chapters/chapter-001.json",
@@ -8514,8 +8544,13 @@
     },
     {
       "path": "data/controlled_publications/the-student/checksum_manifest.json",
-      "bytes": 1328,
-      "sha256": "a6ab2dd64a2351490a30eb452f521f2a183d19c9493926949f656235b63f6baa"
+      "bytes": 1470,
+      "sha256": "f1d194d3016afe38c6150f7f55cbf182edbda3bbf7cd714c691e0b4da5dd0a0c"
+    },
+    {
+      "path": "data/controlled_publications/the-student/cover_approval_evidence.json",
+      "bytes": 5608,
+      "sha256": "f9104fbb6e9f0215bd13e1265726e2fcda3845cd1c1cc39c67830d9b23efb4df"
     },
     {
       "path": "data/controlled_publications/the-student/cover_delivery_derivation.json",
@@ -8524,8 +8559,8 @@
     },
     {
       "path": "data/controlled_publications/the-student/cover_provenance.json",
-      "bytes": 6143,
-      "sha256": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071"
+      "bytes": 8914,
+      "sha256": "38a495be7b76a6e7704f5574daedff26a6dbd4055d0e5005baab514a50c7c8c9"
     },
     {
       "path": "data/controlled_publications/the-student/highlight_sync.json",
@@ -8534,18 +8569,18 @@
     },
     {
       "path": "data/controlled_publications/the-student/public_book.json",
-      "bytes": 3831,
-      "sha256": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d"
+      "bytes": 4590,
+      "sha256": "feaab45695c1b52320bd59f15cbc514528596dba136b4483f114af801431eb95"
     },
     {
       "path": "data/controlled_publications/the-student/publication_authorization.json",
       "bytes": 1984,
-      "sha256": "9f01db83e80e49e656b0d7f069c018b269ddbb17006d4e7a38bbcddeac97975b"
+      "sha256": "8f6550793795c146b94ea0bcd1ed9b38f37a436b78b987f3394c5d4991d25f01"
     },
     {
       "path": "data/controlled_publications/the-student/publication_manifest.json",
-      "bytes": 1938,
-      "sha256": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5"
+      "bytes": 1958,
+      "sha256": "10ff0700b0cdfdf715dc9dc276dd3ffdf6afa7930d11cec0e452813fda3c6dab"
     },
     {
       "path": "data/controlled_publications/the-student/reader_manifest.json",
@@ -8554,8 +8589,8 @@
     },
     {
       "path": "data/controlled_publications/the-student/rights_decision.json",
-      "bytes": 3732,
-      "sha256": "b2c11fd36d71b24ddf7c6cd59e4561f94e2442299dc78d647e68a30d9e9498eb"
+      "bytes": 4049,
+      "sha256": "f650f6baf4d3e6532ecfb35271c5acef84e0e7262d461da81d37b422bed975db"
     },
     {
       "path": "data/controlled_publications/the-student/source_evidence.json",
@@ -9419,8 +9454,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 33303,
-      "sha256": "aac2754298d8bdb4ad110a3d388c711cce8b5abdf797fcc916408e5778cee135"
+      "bytes": 36598,
+      "sha256": "ff3584847cd05a1a6dcbe1d64dbad184709ddcd73e4be24105966e7cad5292ba"
     },
     {
       "path": "demand_scoring.py",
@@ -9658,5 +9693,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "15968ac46358dbfc3364ed23b26600822c92a61c1748655438b5048529b49644"
+  "expected_sha256": "1fb4af9dd3a84b117cfdce022d7f74bf1442ae98047fb1245e98e338cd210284"
 }

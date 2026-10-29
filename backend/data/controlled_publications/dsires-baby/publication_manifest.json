@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+    "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+    "public_book": "c07a664a78eebdd29daf286e11bb9a61df02c3b86f969efbcb358fd331a397f7",
     "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
     "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
-    "approval_evidence": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0"
+    "approval_evidence": "6a66387f178fe9c153c6a81ccd95a7c1842b81d4dbc53b0d32d0fb21f3b285ab"
   },
-  "manifest_sha256": "6d60915e99db336c7c9bcfdc8f2d3b8a278b51690fc517b31fd5d01e4b890202"
+  "manifest_sha256": "f3dbc2d35ca01dfb87f391955d8821efa4bb15d5e511d21ccea6c66a042d7528"
 }

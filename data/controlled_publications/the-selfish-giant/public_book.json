@@ -671,18 +671,18 @@
   "audiobook_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
   "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
   "author": "Oscar Wilde",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
   "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
   "back_cover_dominant_color": "#254238",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
-  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306097/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
   "benefits": [
     "Read a legally cleared digital text.",
     "Enjoy a clean, structured reading format.",
     "Access a render-safe ebook prepared for web reading."
   ],
-  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
   "category_slug": "young-readers",
   "chapters": [
     {
@@ -702,23 +702,23 @@
     }
   ],
   "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
   "cover_dimensions": {
-    "back": [
+    "front": [
       800,
       1200
     ],
-    "front": [
+    "back": [
       800,
       1200
     ]
   },
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
-  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+  "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+  "cover_provenance_sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe",
   "cover_semantic_match_score": 9.8,
-  "cover_status": "CLOUDINARY_ASSIGNED",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
+  "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
   "created_at": "2026-07-03T20:07:49Z",
   "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
   "dominant_color": "#254238",
@@ -777,7 +777,7 @@
   "slug": "the-selfish-giant",
   "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
   "subtitle": "",
-  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
   "title": "The Selfish Giant",
   "updated_at": "2026-10-29T08:53:03.392271+00:00",
   "verification_status": "approved",

@@ -60,7 +60,7 @@
   "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
   "cover_back_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
   "cover_front_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
-  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+  "cover_provenance_sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe",
   "cover_replacement_instruction_sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82",
   "endpoint_url": "/api/reader/book/the-selfish-giant/audiobook/manifest",
   "independent_reviews": {

@@ -1,7 +1,7 @@
 {
   "artifacts": {
-    "approval_evidence": "c28fc2f802ed24cd5094fd4794a4e251ab74e719d531bfbcf9d4f511d331daab",
-    "public_book": "f1b584cf7d69820e424fcadc50cc6da8575484ac390cc440646b17f07a136f87",
+    "approval_evidence": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
+    "public_book": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
     "reader_manifest": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5",
     "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
   },
@@ -43,10 +43,10 @@
     "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
   },
   "generated_at": "2026-10-29T13:31:20Z",
-  "manifest_sha256": "b34f53fcf85b09a96a01c3b05d27efc201782f14b601b6306031578a6f229570",
+  "manifest_sha256": "e5edebed1f2fb103a62b3c7a879b2ab1e0729b82b20110d9f65d7d27b3bd71e6",
   "reader_release": {
     "blockers": [],
-    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
     "exposed": true,
     "qa_status": "QA_PASSED",
     "status": "APPROVED"

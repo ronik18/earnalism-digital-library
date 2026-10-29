@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+    "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+    "public_book": "d4a813a2934b9d6b72f20f1bb34b6c6c2759412a9fd23d9464c2d05e42fd0a0a",
     "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
     "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
-    "approval_evidence": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28"
+    "approval_evidence": "1a70f78a767a5f80633d4ffff208170838db73dbaac3efef4a189dbec4374ca7"
   },
-  "manifest_sha256": "00bf94aebcc0b0a364228ec9127f9d2270805c832e24ff14457a09b5d4c2e70f"
+  "manifest_sha256": "ba007ed24add453519bad0c47f8ea5e193f5c267c4abdfd29cc11dc60e46c562"
 }

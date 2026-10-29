@@ -20,7 +20,7 @@
   "audio_authorized": false,
   "production_activation_authorized_by_this_file": false,
   "release_condition": "Two passing exact source/art preparations and actual prospective owner-delegated acceptance. Final accepted bindings, serialized selection, protected normal checks, merge, deployment/canary and truthful readback remain required.",
-  "cover_provenance_sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319",
+  "cover_provenance_sha256": "1f45a8cd0deed8a1c432d59964200174e0e6f10da4bde358fa26be79a8861d80",
   "cover_status": "EXACT_OWNER_PROVIDED_REVIEWED_ARTWORK_ACCEPTED_PRODUCTION_UNOBSERVED",
   "not_authorized": [
     "audio_stream",

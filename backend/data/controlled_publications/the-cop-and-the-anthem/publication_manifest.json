@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+    "public_book": "ede0edd28084bafd25598ae07869592ecbbb1a4f470d0511e50a86597f2dd633",
     "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
     "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
-    "approval_evidence": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf"
+    "approval_evidence": "ad2a4409b20b7b432c632362270f6ce747ead1327780c99447233338c0513df9"
   },
-  "manifest_sha256": "1c9ec73a2076559536c3f1b54e4631d50b74c6bf12d9b05d51fdabd7271ec731"
+  "manifest_sha256": "6711ac689f2eaa53a6df61881521c450d5e540be9a4664f423addd71dd530914"
 }

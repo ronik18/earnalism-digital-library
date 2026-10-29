@@ -11,7 +11,7 @@
   "chapter_sha256": {
     "chapter-001": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
   },
-  "cover_provenance_sha256": "1ca943f66c7e61b0b0515eed2696600faf97ebf1a423d38a88578c27e0e81071",
+  "cover_provenance_sha256": "38a495be7b76a6e7704f5574daedff26a6dbd4055d0e5005baab514a50c7c8c9",
   "cover_status": "EXACT_NEW_OWNER_DERIVATIVE_ACCEPTED_PRODUCTION_INACTIVE",
   "authorized_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and the direct prospective acceptance instruction 2026-10-03; no human signature inferred.",
   "verified_at": "2026-10-03T04:12:32.330374+00:00",

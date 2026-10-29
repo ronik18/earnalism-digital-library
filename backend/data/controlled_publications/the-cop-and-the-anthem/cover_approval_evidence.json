@@ -1,0 +1,112 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-cop-and-the-anthem",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-9b579a77d99a3892",
+      "slug": "the-cop-and-the-anthem",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96",
+      "remote_sha256": "9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+        "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+        "sha256": "9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96",
+        "width": 800,
+        "height": 1200,
+        "bytes": 151682,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305976/earnalism/covers/front/cover_candidate_controlled-the-cop-and-the-anthem-9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "07533b23f14eeca5cb9e7d47b49dbdd761c95fdb4c3a58b13c7cc7b00404f94e"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-8bb1d367fe07d1b5",
+      "slug": "the-cop-and-the-anthem",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4",
+      "remote_sha256": "8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+        "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+        "sha256": "8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4",
+        "width": 800,
+        "height": 1200,
+        "bytes": 103536,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305997/earnalism/covers/back/back_cover_candidate_controlled-the-cop-and-the-anthem-8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "84c95614808b458afbc0aefe23f95babe09e9c18cff779a4424b5b5cb29d10f3"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-9b579a77d99a3892",
+    "back": "cover-replacement-20261030-back-8bb1d367fe07d1b5"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-9b579a77d99a3892",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_DERIVATIVE",
+        "cover_provenance_sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4"
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-8bb1d367fe07d1b5",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_DERIVATIVE",
+        "cover_provenance_sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4"
+      }
+    }
+  }
+}

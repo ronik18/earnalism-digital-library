@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ba4de39e81eecaa7b6cff9132c6afa265af5bd48bdb017b00ec8acdeb9cf91e2",
+    "public_book": "f81e26679cf1d8d75accd299e6c375cd82395dd8f3b9f9baca2f0a8cfec8e8e7",
     "reader_manifest": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a",
     "source_evidence": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859",
     "approval_evidence": "8f6dc1da359bef3f9f9f863924def97e8cc46ebfc6bd014410199452baaa9959"
   },
-  "manifest_sha256": "967cd2250f61e79444c6775c512da7ba2c6ad3c6571c51e21c9625fa8e63baf7"
+  "manifest_sha256": "086921f44fe271f6fecf406c5ae7da2039cb8313d03ff3cb56e7ce37b75c63e3"
 }

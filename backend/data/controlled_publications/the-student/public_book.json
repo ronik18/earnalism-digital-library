@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "A seminary student tells the story of Peter's denial of Christ — and watches an old woman weep as if it happened yesterday.",
   "description": "In five pages, Chekhov achieves what theologians spend lifetimes on — the felt continuity of human suffering and consolation across nineteen centuries. Chekhov called it his favourite story.",
-  "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
-  "cover_status": "REVIEWED_FIRST_PARTY_DERIVATIVE",
+  "cover_url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "6 min",
   "formats": [
@@ -94,5 +94,8 @@
     ]
   },
   "cover_semantic_match_score": 9.8,
-  "publication_authorization_sha256": "9f01db83e80e49e656b0d7f069c018b269ddbb17006d4e7a38bbcddeac97975b"
+  "publication_authorization_sha256": "9f01db83e80e49e656b0d7f069c018b269ddbb17006d4e7a38bbcddeac97975b",
+  "cover_provenance_sha256": "38a495be7b76a6e7704f5574daedff26a6dbd4055d0e5005baab514a50c7c8c9",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305790/earnalism/covers/front/cover_candidate_controlled-the-student-853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305835/earnalism/covers/back/back_cover_candidate_controlled-the-student-e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9.webp"
 }

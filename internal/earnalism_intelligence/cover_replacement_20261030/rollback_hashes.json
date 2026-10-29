@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "the-open-boat",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 19054,
+    "sha256": "296b67825cf9bd73c3586afdd03cc09f837203e04de9202ea708191dfdb750e4",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-open-boat/front.webp"
+  },
+  {
+    "slug": "the-open-boat",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 25196,
+    "sha256": "39143f938d1c09214f3bd9ebd9545d404e944b6d0c4c156a89621a469958deee",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-open-boat/back.webp"
+  },
+  {
+    "slug": "the-student",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 21466,
+    "sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-student/front.webp"
+  },
+  {
+    "slug": "the-student",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 34462,
+    "sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-student/back.webp"
+  },
+  {
+    "slug": "the-art-of-money-getting",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 22292,
+    "sha256": "b1fd6a8d2b2f6a22f5eb6e2f76ed3602c5093757f82610a77ff7c2da4984f4f2",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-art-of-money-getting/front.webp"
+  },
+  {
+    "slug": "the-art-of-money-getting",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 43404,
+    "sha256": "42d362be686b5a23656c87b49f29e4850f02a08311374ef8fd195a93b343aeb8",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-art-of-money-getting/back.webp"
+  },
+  {
+    "slug": "dsires-baby",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 21064,
+    "sha256": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/dsires-baby/front.webp"
+  },
+  {
+    "slug": "dsires-baby",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 37294,
+    "sha256": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/dsires-baby/back.webp"
+  },
+  {
+    "slug": "sredni-vashtar",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 20932,
+    "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/sredni-vashtar/front.webp"
+  },
+  {
+    "slug": "sredni-vashtar",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 65832,
+    "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/sredni-vashtar/back.webp"
+  },
+  {
+    "slug": "the-cop-and-the-anthem",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 24996,
+    "sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-cop-and-the-anthem/front.webp"
+  },
+  {
+    "slug": "the-cop-and-the-anthem",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 37340,
+    "sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-cop-and-the-anthem/back.webp"
+  },
+  {
+    "slug": "the-open-window",
+    "side": "front",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+    "http_status": 200,
+    "content_type": "image/png",
+    "bytes": 2375219,
+    "sha256": "ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-open-window/front.png"
+  },
+  {
+    "slug": "the-open-window",
+    "side": "back",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+    "http_status": 200,
+    "content_type": "image/png",
+    "bytes": 2088336,
+    "sha256": "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-open-window/back.png"
+  },
+  {
+    "slug": "the-selfish-giant",
+    "side": "front",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 162974,
+    "sha256": "4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-selfish-giant/front.webp"
+  },
+  {
+    "slug": "the-selfish-giant",
+    "side": "back",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 149268,
+    "sha256": "afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/the-selfish-giant/back.webp"
+  },
+  {
+    "slug": "book-5704b31005",
+    "side": "front",
+    "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 23994,
+    "sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/book-5704b31005/front.webp"
+  },
+  {
+    "slug": "book-5704b31005",
+    "side": "back",
+    "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+    "http_status": 200,
+    "content_type": "image/webp",
+    "bytes": 33830,
+    "sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+    "local_copy": "/private/tmp/earnalism-cover-release-20261030/rollback-covers/book-5704b31005/back.webp"
+  }
+]

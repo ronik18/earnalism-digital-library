@@ -7,14 +7,14 @@
   "category_slug": "adventure",
   "short_description": "Four shipwrecked men row a tiny dinghy toward shore through crushing waves — nature utterly indifferent to their survival.",
   "description": "Based on Crane's own shipwreck, four men — a cook, an oiler, a correspondent, and the captain — row toward a Florida shore that keeps receding. Nature does not care whether they live or die. The oiler, the strongest, is the one who drowns.",
-  "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "39 min",
   "formats": [
@@ -89,5 +89,8 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "c0ab709795ddcdbf12d46a7d695b3c3e32ca04d416b92d782d84e77a8e8f7c34",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305689/earnalism/covers/front/cover_candidate_controlled-the-open-boat-2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305723/earnalism/covers/back/back_cover_candidate_controlled-the-open-boat-599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c.webp"
 }
