@@ -34,6 +34,8 @@ on:
       - frontend/src/experiences-v2/listener/listener-v2.css
       - scripts/test_library_catalogue_recovery_journey.mjs
       - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/lib/recovery_image_evidence.mjs
+      - scripts/test_recovery_image_evidence.mjs
       - scripts/capture_pr471_canonical_header_matrix.mjs
       - scripts/package_pr469_postmerge_owner_review.py
       - scripts/fetch_exact_head_review_baseline.py
