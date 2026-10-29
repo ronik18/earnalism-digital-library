@@ -12044,5 +12044,13 @@
     "change": "Reuse exact protected package allowlist plus actual delivery mode and safe release controls; global legacy audio remains false.",
     "validation": "43frontend testsPASS including exact-title discovery and six negative cases; source pins refreshed.",
     "production": "HELD_LIBRARY_DISCOVERY_NO_PAID_SESSION"
+  },
+  "selfish_giant_cover_serving_successor_20261029": {
+    "date": "2026-10-29",
+    "decision": "SELFISH_GIANT_EXACT_COVER_ONLY_SERVING_SUCCESSOR",
+    "scope": "Exact owner-approved front/back pair on actual serving af4f9d0 source; no application code, Reader text/audio, territory or pricing changes",
+    "qualification": "Mirrors, checksum entries, publication artifact hashes, public catalogue pair and accepted successor binding PASS locally; provider publication pending",
+    "production_changed": false,
+    "next_action": "Stage exact cover-only serving-source candidate, verify immutable pair and existing availability, then scoped production release"
   }
 }

@@ -11,20 +11,20 @@
   "chapter_sha256": {
     "chapter-001": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
   },
-  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
-  "cover_status": "EXACT_REVIEWED_OWNER_COMPONENTS_ACCEPTED_PRODUCTION_UNOBSERVED",
-  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+  "cover_status": "EXACT_OWNER_APPROVED_REPLACEMENT_PAIR_PRODUCTION_PENDING",
+  "authorized_by": "Ronik Basak explicit native owner cover publication instruction, 29 October 2026",
   "verified_at": "2026-10-03T04:59:53.954767+00:00",
   "publication_authorized": true,
   "audio_authorized": false,
   "production_activation_authorized_by_this_file": false,
-  "release_condition": "Actual prospective component/publication acceptance after two independent passing exact preparations. Final accepted bindings, serialized registry/allowlist, protected CI/normal merge/deployment/canary/truthful readback remain required.",
+  "release_condition": "Exact cover-only integrity, source review and applicable platform publication checks; no unrelated PR dependency",
   "not_authorized": [
     "audio_stream",
     "audio_download",
     "other editions",
     "production activation bypass"
   ],
-  "rights_decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
+  "rights_decision_id": "india-20261029-the-selfish-giant-owner-approved-cover-successor",
   "existing_text_scope_preserved": "TEXT_READER_ONLY_NON_COVER_COMPONENTS"
 }

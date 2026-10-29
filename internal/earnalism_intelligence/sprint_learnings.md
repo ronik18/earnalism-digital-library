@@ -2770,3 +2770,5 @@ Publication metadata must survive the actual HTTP response model: pure catalogue
 BookDetail enrichment must recognize provider-private protected packages through exact canonical/manifest identity and approved QA, rather than treating omitted provider identity as an unreleased edition. Real public Book CTA acceptance is independent of direct Listener availability.44 targeted frontend tests PASS; no paid session.
 
 Actual audiobook Library filter acceptance is separate from Book CTA and Listener. Keep the legacy global audio switch false while respecting exact protected-package release allowlists; negative unrelated/malformed/held cases remain hidden.43focused testsPASS.
+
+29 October cover-only release: authenticated cover intake is enabled even when generic media uploads are disabled. Canonical promotion returned503 because runtime mirrors were absent. Reuse both real uploaded immutable candidates; prepare a metadata-only successor on actual serving source rather than deploying unrelated main changes. No production success inferred.

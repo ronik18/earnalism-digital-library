@@ -13,8 +13,8 @@
   "audiobook_use_approved_at": "",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "verified_at": "2026-10-03T04:20:29.339226+00:00",
-  "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
-  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
+  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
   "independent_reviews": {
     "review_a": {
       "file": "evidence/review_a.json",
@@ -27,8 +27,8 @@
   },
   "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
   "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
-  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
-  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "binding_review_status": "EXACT_OWNER_APPROVED_COVER_SUCCESSOR_SOURCE_CHECKED_PRODUCTION_PENDING",
+  "qa_scope": "Existing accepted text edition and Reader checks preserved; replacement covers inspected for exact title/author/publisher and story imagery, then explicitly approved by owner. Historical prior cover reviews apply only to predecessor assets.",
   "audio_enabled": false,
   "actual_prospective_acceptance": {
     "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
@@ -47,6 +47,7 @@
     "canonical_version_observed": false,
     "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
   },
-  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
-  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+  "cover_front_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
+  "cover_back_qa_status": "EXACT_OWNER_APPROVED_VISUALLY_INSPECTED",
+  "cover_replacement_instruction_sha256": "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82"
 }

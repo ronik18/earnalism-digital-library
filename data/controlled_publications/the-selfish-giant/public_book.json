@@ -7,15 +7,15 @@
   "category_slug": "young-readers",
   "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
   "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
-  "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
-  "dominant_color": "#4A1C27",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#254238",
   "estimated_reading_time": "7 min",
   "formats": [
     "Ebook"
@@ -56,7 +56,7 @@
   "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
   "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
   "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
-  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "rights_basis": "Existing exact accepted India text source and Reader permissions preserved. This cover-only successor binds the new original generated illustration pair and deterministic typography expressly approved for production by the owner on 29 October 2026. Audio and territory permissions unchanged.",
   "rights_metadata": {
     "work_title": "The Selfish Giant",
     "work_slug": "the-selfish-giant",
@@ -96,7 +96,7 @@
   "allowPayment": false,
   "is_published": true,
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-08-16T06:45:34Z",
+  "updated_at": "2026-10-29T08:53:03.392271+00:00",
   "cover_dimensions": {
     "front": [
       800,
@@ -113,10 +113,15 @@
   "generate_audiobook": false,
   "audiobook_assets": {},
   "audiobook": {},
-  "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
-  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+  "publication_authorization_sha256": "96b44b2a001d61d6c367fc5864fe28a454bfdc43b44f0021e82e3a46cabaec59",
+  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
   "reader_enabled": true,
   "preview_enabled": true,
   "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
-  "production_observed": false
+  "production_observed": false,
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_dominant_color": "#254238"
 }
