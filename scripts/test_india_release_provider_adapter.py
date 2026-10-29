@@ -113,6 +113,22 @@ class ProviderAdapterTests(unittest.TestCase):
         self.assertEqual(result['process_exit_code'], 1)
         self.assertIn('RECONCILIATION_REQUIRED', result['state'])
 
+    def test_failed_cli_diagnostic_is_durable_without_raw_output_or_retry(self):
+        secret = 'synthetic-output-never-store'
+        def failed(*args, **kwargs):
+            self.calls.append(args)
+            return SimpleNamespace(returncode=1, stdout='',
+                stderr='dns error: failed to lookup address information '+secret)
+        adapter = self.adapter(run=failed)
+        result = adapter.perform('stage_frontend', self.binding, self.approval())
+        persisted = json.loads((self.root / 'journal' / (result['operation_id']+'.json')).read_text())
+        self.assertEqual(persisted['process_diagnostic']['class'], 'DNS_LOOKUP_FAILED')
+        self.assertNotIn(secret, json.dumps(persisted))
+        self.assertEqual(persisted['state'], 'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED')
+        with self.assertRaises(FileExistsError):
+            adapter.perform('stage_frontend', self.binding, self.approval())
+        self.assertEqual(len(self.calls), 1)
+
     def test_process_interruption_leaves_exclusive_intent(self):
         def interrupted(*args, **kwargs): raise SystemExit('synthetic process stop')
         adapter = self.adapter(run=interrupted)
