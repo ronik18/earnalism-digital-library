@@ -1,0 +1,11 @@
+{
+  "schema": "earnalism.exact-cover-owner-instruction.v1",
+  "slug": "the-selfish-giant",
+  "instruction": "Replace the previous pair of covers for \"The Selfish Giant\" with the newly created covers resolving any and every blocker coming along the way.",
+  "authority": "Native owner instruction in cover conversation after displayed pair and repeated explicit production direction, 29 October 2026",
+  "scope": "Exact front/back replacement only; no audio, text or territory change",
+  "candidate_sha256": {
+    "front": "4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce",
+    "back": "afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056"
+  }
+}

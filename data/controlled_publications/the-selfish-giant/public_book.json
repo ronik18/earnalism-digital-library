@@ -1,122 +1,789 @@
 {
-  "id": "controlled-the-selfish-giant",
-  "slug": "the-selfish-giant",
-  "title": "The Selfish Giant",
-  "subtitle": "",
+  "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit and fairy tales.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": true,
+  "approved_to_publish": true,
+  "audio_enabled": true,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook": {},
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "candidate_release_descriptor_sha256": "",
+    "retained_release_descriptor_sha256s": [
+      "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+      "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": ""
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "the-selfish-giant",
+    "status": "ACTIVE"
+  },
+  "audiobook_assets": {},
+  "audiobook_enabled": true,
+  "audiobook_hidden_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+  "audiobook_legacy_release_descriptor_sha256": "",
+  "audiobook_manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "audiobook_package_canary": {
+    "approval_scope": "transport_canary_only_no_customer_discovery",
+    "blockers": [],
+    "candidate_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "candidate_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "catalog_audio_enabled": false,
+    "generated_at": "2026-10-29T12:09:55Z",
+    "hidden_before_proof_sha256": "29e0d42d34f9ac87d896ac362fe6c3005d926f0ec07b6ddfd02398ae66337eb0",
+    "hidden_release_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+    "package_endpoint_enabled": true,
+    "package_release_evidence_sha256": "13ecc09d779775ae1fda3c1d2dec28288d3426f4f071a03396424c6473c46a17",
+    "post_deploy_proof_required": [
+      "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+      "SEGMENT_RANGE_206",
+      "TIMESTAMPS_200",
+      "BROWSER_PLAYBACK_PASS"
+    ],
+    "primary_receipt_sha256": "2e47b5226a2732e543463843f75edfa4c37024e8155f1974f8b79fffd4754743",
+    "primary_release_manifest_receipt_sha256": "8738ecbb802d827af7dc1e91fb27030dae58c0fc4e1c022d5639d0b4c73df349",
+    "public_discovery_exposed": true,
+    "qa_candidate_release_descriptor_file_sha256": "92b330699dea16eb1e4b40eb89d44c2d008574b9f05b1d90c794fdce3ad8791a",
+    "replica_receipt_sha256": "f8fe1bfc133d54ae169c7137c33078364b10f0084b37864a8f49db762d543ae6",
+    "replica_release_manifest_receipt_sha256": "d0e183c107c37567d88e553d27c7eeacd94aedafa7b01dacb193c128076e119f",
+    "rollback_descriptor_sha256": "0a89e9160794a34f0c8e71c3bdad16933d44d44ea1f12e3fb90dee0ffa87ffba",
+    "rollout_percentage": 100,
+    "rollout_salt": "selfish-giant-exact-b5b37816-20261029",
+    "schema_version": "audiobook_new_title_package_canary.v1",
+    "slug": "the-selfish-giant",
+    "status": "PUBLIC_PACKAGE_APPROVED"
+  },
+  "audiobook_package_release_evidence": {
+    "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
+      "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "primary_receipt_sha256": "2e47b5226a2732e543463843f75edfa4c37024e8155f1974f8b79fffd4754743",
+      "primary_release_manifest_receipt_sha256": "8738ecbb802d827af7dc1e91fb27030dae58c0fc4e1c022d5639d0b4c73df349",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f108c7fb3fc4c6e34_d20261029_m120203_c004_v0402015_t0021_u01793275323963",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/release-manifest.json",
+      "release_manifest_sha256": "038ad2002eb0b3ecc1f2e18efb8aa540d3f52d9c6797313ced493dbc62d91126",
+      "release_manifest_size_bytes": 33540,
+      "replica_receipt_sha256": "f8fe1bfc133d54ae169c7137c33078364b10f0084b37864a8f49db762d543ae6",
+      "replica_release_manifest_receipt_sha256": "d0e183c107c37567d88e553d27c7eeacd94aedafa7b01dacb193c128076e119f",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f1117f24bbe344d44_d20261029_m120311_c005_v0501039_t0038_u01793275391943",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "the-selfish-giant",
+      "staged_at": "2026-10-29T12:09:55Z"
+    }
+  },
+  "audiobook_packages": {
+    "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
+      "duration_ms": 777120,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+      "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "paragraph_count": 23,
+      "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+      "release_evidence_version": "owner_produced_source_units.v1",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 6,
+      "slug": "the-selfish-giant",
+      "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+      "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-audio-sha256-15222d46cb8cdff6f6a046d91f53c2f83c98a7f75707ed43f8ac7e022a6f391a.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f109ad703030053c4_d20261029_m115930_c005_v0501048_t0033_u01793275170971"
+                    }
+                  ],
+                  "sha256": "15222d46cb8cdff6f6a046d91f53c2f83c98a7f75707ed43f8ac7e022a6f391a",
+                  "size_bytes": 472365,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-audio-sha256-15222d46cb8cdff6f6a046d91f53c2f83c98a7f75707ed43f8ac7e022a6f391a.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103cbf969353a72c_d20261029_m115705_c004_v0402035_t0007_u01793275025722"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-metadata-sha256-3a4a32852e5713bb66baf9679bc00b98a2d8ac6aade7ea6d424af16602dd57b3.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f105c68296f4db6e7_d20261029_m115938_c005_v0501042_t0010_u01793275178811"
+                    }
+                  ],
+                  "sha256": "3a4a32852e5713bb66baf9679bc00b98a2d8ac6aade7ea6d424af16602dd57b3",
+                  "size_bytes": 541,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-metadata-sha256-3a4a32852e5713bb66baf9679bc00b98a2d8ac6aade7ea6d424af16602dd57b3.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1197bb2afabd8bef_d20261029_m115711_c004_v0402033_t0002_u01793275031473"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-timestamps-sha256-b8ecd3b5971ddbbf37f33a918d6162ef29888b953b9ca633d2b484a93a6ffbae.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f108837f190ccdf7f_d20261029_m115933_c005_v0501008_t0050_u01793275173412"
+                    }
+                  ],
+                  "sha256": "b8ecd3b5971ddbbf37f33a918d6162ef29888b953b9ca633d2b484a93a6ffbae",
+                  "size_bytes": 1017,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-timestamps-sha256-b8ecd3b5971ddbbf37f33a918d6162ef29888b953b9ca633d2b484a93a6ffbae.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1015bfec613241df_d20261029_m115707_c004_v0402011_t0047_u01793275027389"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-vtt-sha256-f99796977f306654dc27d6cfe55c229377c4c5a324d548219b5753ce4d809dd8.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10267c8184b8748f_d20261029_m115936_c005_v0501005_t0039_u01793275176109"
+                    }
+                  ],
+                  "sha256": "f99796977f306654dc27d6cfe55c229377c4c5a324d548219b5753ce4d809dd8",
+                  "size_bytes": 592,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-01-vtt-sha256-f99796977f306654dc27d6cfe55c229377c4c5a324d548219b5753ce4d809dd8.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1035913de0bac824_d20261029_m115709_c004_v0402003_t0042_u01793275029741"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 58960,
+              "end_paragraph": 1,
+              "end_word": 98,
+              "order": 0,
+              "segment_id": "group-01",
+              "start_paragraph": 0,
+              "start_word": 0
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-audio-sha256-a2fea49847f69de60367d43a8790995d011279491c68359e6d30db148998865d.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10308a9974f07569_d20261029_m115942_c005_v0501036_t0003_u01793275182810"
+                    }
+                  ],
+                  "sha256": "a2fea49847f69de60367d43a8790995d011279491c68359e6d30db148998865d",
+                  "size_bytes": 169581,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-audio-sha256-a2fea49847f69de60367d43a8790995d011279491c68359e6d30db148998865d.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f108b4c4a78158be6_d20261029_m115713_c004_v0402007_t0034_u01793275033342"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-metadata-sha256-35a792ae7fd749f74b8e5d8e4142bd01b4c7fb00dee07c882401541465ad206b.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f117813619d007407_d20261029_m115950_c005_v0501033_t0053_u01793275190480"
+                    }
+                  ],
+                  "sha256": "35a792ae7fd749f74b8e5d8e4142bd01b4c7fb00dee07c882401541465ad206b",
+                  "size_bytes": 548,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-metadata-sha256-35a792ae7fd749f74b8e5d8e4142bd01b4c7fb00dee07c882401541465ad206b.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107d8875f18330ba_d20261029_m115718_c004_v0402016_t0053_u01793275038227"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-timestamps-sha256-2aa595d76b97221288fbf3c87a3afe8c670d916c31a4e732bfac9defe244d382.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11887ff3b3cce59f_d20261029_m115945_c005_v0501046_t0018_u01793275185194"
+                    }
+                  ],
+                  "sha256": "2aa595d76b97221288fbf3c87a3afe8c670d916c31a4e732bfac9defe244d382",
+                  "size_bytes": 798,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-timestamps-sha256-2aa595d76b97221288fbf3c87a3afe8c670d916c31a4e732bfac9defe244d382.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f105ef36b43ea8ac5_d20261029_m115714_c004_v0402040_t0043_u01793275034934"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-vtt-sha256-acab29195a533940795a46b817bad2e3ff289721c68c43d94f04b6900debe947.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f104f58bac1f031bb_d20261029_m115947_c005_v0501050_t0014_u01793275187646"
+                    }
+                  ],
+                  "sha256": "acab29195a533940795a46b817bad2e3ff289721c68c43d94f04b6900debe947",
+                  "size_bytes": 375,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-02-vtt-sha256-acab29195a533940795a46b817bad2e3ff289721c68c43d94f04b6900debe947.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f112ceb4bd3624470_d20261029_m115716_c004_v0402001_t0038_u01793275036603"
+                  }
+                }
+              },
+              "cumulative_start_ms": 58960,
+              "duration_ms": 21120,
+              "end_paragraph": 2,
+              "end_word": 162,
+              "order": 1,
+              "segment_id": "group-02",
+              "start_paragraph": 2,
+              "start_word": 99
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-audio-sha256-853cb4e93b93e9ef62703782b55aecab7199993ae981c78266ca076739e2a048.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f109a2d7931d8f523_d20261029_m115953_c005_v0501004_t0035_u01793275193959"
+                    }
+                  ],
+                  "sha256": "853cb4e93b93e9ef62703782b55aecab7199993ae981c78266ca076739e2a048",
+                  "size_bytes": 183021,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-audio-sha256-853cb4e93b93e9ef62703782b55aecab7199993ae981c78266ca076739e2a048.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11934f1297b25243_d20261029_m115720_c004_v0402028_t0033_u01793275040224"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-metadata-sha256-78e39d35920911d51f0e71e88a93e82807860f7df56b96521a8433c39c85eb3e.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f117103a7d6550d17_d20261029_m120001_c005_v0501019_t0054_u01793275201484"
+                    }
+                  ],
+                  "sha256": "78e39d35920911d51f0e71e88a93e82807860f7df56b96521a8433c39c85eb3e",
+                  "size_bytes": 563,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-metadata-sha256-78e39d35920911d51f0e71e88a93e82807860f7df56b96521a8433c39c85eb3e.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103b8a3658fd2401_d20261029_m115725_c004_v0402034_t0043_u01793275045414"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-timestamps-sha256-906c70af3cdefe7e12462a7b4c12989e4fad25dba3e9153a78e9d7025abb494c.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1117a3de991f99a8_d20261029_m115956_c005_v0501051_t0030_u01793275196375"
+                    }
+                  ],
+                  "sha256": "906c70af3cdefe7e12462a7b4c12989e4fad25dba3e9153a78e9d7025abb494c",
+                  "size_bytes": 797,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-timestamps-sha256-906c70af3cdefe7e12462a7b4c12989e4fad25dba3e9153a78e9d7025abb494c.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f100063ce4aa8ef5d_d20261029_m115721_c004_v0402015_t0036_u01793275041933"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-vtt-sha256-95fcefdc2d9255db0963eead9dcd228a59e2c55da876aa3d2e6d4ea690838ed1.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f101b7a2dd0e91561_d20261029_m115958_c005_v0501036_t0016_u01793275198959"
+                    }
+                  ],
+                  "sha256": "95fcefdc2d9255db0963eead9dcd228a59e2c55da876aa3d2e6d4ea690838ed1",
+                  "size_bytes": 372,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-03-vtt-sha256-95fcefdc2d9255db0963eead9dcd228a59e2c55da876aa3d2e6d4ea690838ed1.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1020e76b715b61b7_d20261029_m115723_c004_v0402034_t0040_u01793275043753"
+                  }
+                }
+              },
+              "cumulative_start_ms": 80080,
+              "duration_ms": 22800,
+              "end_paragraph": 7,
+              "end_word": 223,
+              "order": 2,
+              "segment_id": "group-03",
+              "start_paragraph": 3,
+              "start_word": 163
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-audio-sha256-57e9595aec79a8deac78f0db5c1777c4d0b77f6f259854d23621c296c3982262.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f110412b2c3c89391_d20261029_m120009_c005_v0501046_t0032_u01793275209581"
+                    }
+                  ],
+                  "sha256": "57e9595aec79a8deac78f0db5c1777c4d0b77f6f259854d23621c296c3982262",
+                  "size_bytes": 916461,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-audio-sha256-57e9595aec79a8deac78f0db5c1777c4d0b77f6f259854d23621c296c3982262.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1179d2eadadaf2ca_d20261029_m115727_c004_v0402035_t0057_u01793275047014"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-metadata-sha256-027cd442d9c97f95b1e0d5cb0a66674290b550d9cdb338a43579ceb9eb8ccb37.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10626351e5618bc6_d20261029_m120017_c005_v0501010_t0055_u01793275217513"
+                    }
+                  ],
+                  "sha256": "027cd442d9c97f95b1e0d5cb0a66674290b550d9cdb338a43579ceb9eb8ccb37",
+                  "size_bytes": 601,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-metadata-sha256-027cd442d9c97f95b1e0d5cb0a66674290b550d9cdb338a43579ceb9eb8ccb37.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f118d5ca8e00a3533_d20261029_m115732_c004_v0402026_t0055_u01793275052229"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-timestamps-sha256-2e6428b02a4ed1cb8c2847b157c0894381ef010cb2e1b6d040b9dba3a5d9a9b2.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11827115a5d91847_d20261029_m120012_c005_v0501045_t0049_u01793275212333"
+                    }
+                  ],
+                  "sha256": "2e6428b02a4ed1cb8c2847b157c0894381ef010cb2e1b6d040b9dba3a5d9a9b2",
+                  "size_bytes": 2058,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-timestamps-sha256-2e6428b02a4ed1cb8c2847b157c0894381ef010cb2e1b6d040b9dba3a5d9a9b2.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103e6a8c888fbf52_d20261029_m115728_c004_v0402016_t0003_u01793275048784"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-vtt-sha256-a48f4a95c79c6f67f6e159d5c2ee6cc6f0669b3044e6957dd8c8808061f441d1.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f106acdee4ed95df4_d20261029_m120014_c005_v0501051_t0033_u01793275214863"
+                    }
+                  ],
+                  "sha256": "a48f4a95c79c6f67f6e159d5c2ee6cc6f0669b3044e6957dd8c8808061f441d1",
+                  "size_bytes": 1580,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-04-vtt-sha256-a48f4a95c79c6f67f6e159d5c2ee6cc6f0669b3044e6957dd8c8808061f441d1.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11305021b93a2484_d20261029_m115730_c004_v0402002_t0002_u01793275050485"
+                  }
+                }
+              },
+              "cumulative_start_ms": 102880,
+              "duration_ms": 114480,
+              "end_paragraph": 10,
+              "end_word": 519,
+              "order": 3,
+              "segment_id": "group-04",
+              "start_paragraph": 8,
+              "start_word": 224
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-audio-sha256-645a236cf3cb5bab118d0d07b9606882e65230069e587d50e77e316d705debe5.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1005acf815b7739d_d20261029_m120027_c005_v0501050_t0006_u01793275227535"
+                    }
+                  ],
+                  "sha256": "645a236cf3cb5bab118d0d07b9606882e65230069e587d50e77e316d705debe5",
+                  "size_bytes": 4095405,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-audio-sha256-645a236cf3cb5bab118d0d07b9606882e65230069e587d50e77e316d705debe5.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116b10cd1844b641_d20261029_m115734_c004_v0402039_t0018_u01793275054116"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-metadata-sha256-627f7da3896f62ae2b5f27144d42aaf209e655fa5ee95bf490c0fa149903df52.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1184256bc6c50a67_d20261029_m120041_c005_v0501048_t0048_u01793275241629"
+                    }
+                  ],
+                  "sha256": "627f7da3896f62ae2b5f27144d42aaf209e655fa5ee95bf490c0fa149903df52",
+                  "size_bytes": 735,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-metadata-sha256-627f7da3896f62ae2b5f27144d42aaf209e655fa5ee95bf490c0fa149903df52.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116b94be220c1f5d_d20261029_m115740_c004_v0402038_t0054_u01793275060517"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-timestamps-sha256-ffedf5734f5388be949223b23e674e309a8eb11c3244c52af09c31b301102c15.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1199e295f496750b_d20261029_m120035_c005_v0501046_t0040_u01793275235895"
+                    }
+                  ],
+                  "sha256": "ffedf5734f5388be949223b23e674e309a8eb11c3244c52af09c31b301102c15",
+                  "size_bytes": 6231,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-timestamps-sha256-ffedf5734f5388be949223b23e674e309a8eb11c3244c52af09c31b301102c15.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f110b834e63e3d11c_d20261029_m115737_c004_v0402040_t0003_u01793275057234"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-vtt-sha256-5f9999795bdaa9d12e07cdf56d6d28391c24ee1019d184bbe1308df8f50f843b.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f111067044230580c_d20261029_m120038_c005_v0501041_t0050_u01793275238701"
+                    }
+                  ],
+                  "sha256": "5f9999795bdaa9d12e07cdf56d6d28391c24ee1019d184bbe1308df8f50f843b",
+                  "size_bytes": 5568,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-05-vtt-sha256-5f9999795bdaa9d12e07cdf56d6d28391c24ee1019d184bbe1308df8f50f843b.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f111417733bd0c75f_d20261029_m115738_c004_v0402029_t0058_u01793275058833"
+                  }
+                }
+              },
+              "cumulative_start_ms": 217360,
+              "duration_ms": 511840,
+              "end_paragraph": 19,
+              "end_word": 1567,
+              "order": 4,
+              "segment_id": "group-05",
+              "start_paragraph": 11,
+              "start_word": 520
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-audio-sha256-2e061190ff1833807b8de6d48bd13ada52683970ce2f6145b40a05ec98ba6efa.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10274b36e3350cd2_d20261029_m120046_c005_v0501001_t0003_u01793275246612"
+                    }
+                  ],
+                  "sha256": "2e061190ff1833807b8de6d48bd13ada52683970ce2f6145b40a05ec98ba6efa",
+                  "size_bytes": 384045,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-audio-sha256-2e061190ff1833807b8de6d48bd13ada52683970ce2f6145b40a05ec98ba6efa.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f112d1a4ccd979433_d20261029_m115742_c004_v0402010_t0038_u01793275062292"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-metadata-sha256-45cf6c967e93c15f0e298addb824fbe412b197c696ee0207f5f66beadb76aa25.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1105f17270813a15_d20261029_m120055_c005_v0501042_t0057_u01793275255154"
+                    }
+                  ],
+                  "sha256": "45cf6c967e93c15f0e298addb824fbe412b197c696ee0207f5f66beadb76aa25",
+                  "size_bytes": 558,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-metadata-sha256-45cf6c967e93c15f0e298addb824fbe412b197c696ee0207f5f66beadb76aa25.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f114d2204773f25ae_d20261029_m115747_c004_v0402025_t0058_u01793275067967"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-timestamps-sha256-c2d2485febcf9779901dec5c4d0641567c5270f6ca7b99f646aa7af5c0ee8546.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1139853bef6169bf_d20261029_m120049_c005_v0501048_t0033_u01793275249086"
+                    }
+                  ],
+                  "sha256": "c2d2485febcf9779901dec5c4d0641567c5270f6ca7b99f646aa7af5c0ee8546",
+                  "size_bytes": 935,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-timestamps-sha256-c2d2485febcf9779901dec5c4d0641567c5270f6ca7b99f646aa7af5c0ee8546.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10973d0a64678568_d20261029_m115743_c004_v0402032_t0040_u01793275063961"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-vtt-sha256-109cacf7a1079ce26b9c7655fa1262c02662965cf811cef8094396dc73c0580d.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f116e4b1abf5b306c_d20261029_m120051_c005_v0501049_t0008_u01793275251750"
+                    }
+                  ],
+                  "sha256": "109cacf7a1079ce26b9c7655fa1262c02662965cf811cef8094396dc73c0580d",
+                  "size_bytes": 507,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-selfish-giant/releases/b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2/delivery/group-06-vtt-sha256-109cacf7a1079ce26b9c7655fa1262c02662965cf811cef8094396dc73c0580d.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1066a7e332a58662_d20261029_m115745_c004_v0402021_t0012_u01793275065669"
+                  }
+                }
+              },
+              "cumulative_start_ms": 729200,
+              "duration_ms": 47920,
+              "end_paragraph": 22,
+              "end_word": 1651,
+              "order": 5,
+              "segment_id": "group-06",
+              "start_paragraph": 20,
+              "start_word": 1568
+            }
+          ],
+          "end_paragraph": 22,
+          "end_word": 1651,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "The Selfish Giant"
+        }
+      ],
+      "word_count": 1652
+    }
+  },
+  "audiobook_public_package_approval": {
+    "acceptance": {
+      "accounting_commit": "bbc8d1130d0a6123fcf0754fdd1b87ac9b7f5c47",
+      "duration_ms": 777120,
+      "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "production_proof_sha256": {
+        "accounting": "f1248949aba26b0de60d673316af34987e88cf92b475b6cacb7b71b7d7280c44",
+        "business": "bf5aacc8a7e57f942b111624850c189df01536edafd8fffe34b791702ce69d34",
+        "playback": "ac7b16224cfe3fb132ee3430c4f2ceb0469341d1ce13b4e67fb849e3a3f0494a"
+      },
+      "public_activation_performed": false,
+      "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+      "schema_version": "audiobook_public_package_acceptance.v1",
+      "segment_count": 6
+    },
+    "acceptance_sha256": "322c2d7b716bdd2515c0672d1246a78bde24d075bb5ad2f23b703ba2add628d1",
+    "approved_at": "2026-10-29T13:31:20Z",
+    "approved_by": "Ronik Basak — explicit full audiobook publication authority; bounded customer playback accepted",
+    "audio_rights_decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+    "audio_rights_record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+    "endpoint": "/api/reader/book/the-selfish-giant/audiobook/manifest",
+    "release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "schema_version": "audiobook_protected_package_publication.v1",
+    "slug": "the-selfish-giant",
+    "status": "PUBLIC_APPROVED"
+  },
+  "audiobook_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "audiobook_release_mode": "PROTECTED_PACKAGE_V2",
   "author": "Oscar Wilde",
-  "category_slug": "young-readers",
-  "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
-  "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
-  "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
-  "dominant_color": "#4A1C27",
-  "estimated_reading_time": "7 min",
-  "formats": [
-    "Ebook"
-  ],
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_dominant_color": "#254238",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
   "benefits": [
     "Read a legally cleared digital text.",
     "Enjoy a clean, structured reading format.",
     "Access a render-safe ebook prepared for web reading."
   ],
-  "who_for": [
-    "General readers",
-    "Students and lifelong learners",
-    "Users who prefer structured digital reading"
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "category_slug": "young-readers",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 7,
+      "title": "The Selfish Giant",
+      "updated_at": "2026-07-03T20:07:49Z",
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "word_count": 1652
+    }
   ],
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_dimensions": {
+    "back": [
+      800,
+      1200
+    ],
+    "front": [
+      800,
+      1200
+    ]
+  },
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+  "cover_semantic_match_score": 9.8,
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "created_at": "2026-07-03T20:07:49Z",
+  "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
+  "dominant_color": "#254238",
+  "estimated_reading_time": "7 min",
+  "formats": [
+    "Ebook"
+  ],
+  "generate_audiobook": false,
+  "id": "controlled-the-selfish-giant",
+  "isLive": true,
+  "isPublic": true,
+  "is_published": true,
   "learnings": [
     "Understand the major themes and structure of the work.",
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
-  "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit and fairy tales.",
-  "chapters": [
-    {
-      "id": "chapter-001",
-      "order": 1,
-      "title": "The Selfish Giant",
-      "is_preview": true,
-      "has_images": false,
-      "image_count": 0,
-      "word_count": 1652,
-      "reading_minutes": 7,
-      "language_hint": "en",
-      "processing_status": "ready",
-      "processing_warnings": [],
-      "uploaded_at": "2026-07-03T20:07:49Z",
-      "updated_at": "2026-07-03T20:07:49Z"
-    }
-  ],
-  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
-  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "preview_enabled": true,
+  "production_observed": false,
   "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
-  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "publicationStatus": "published",
+  "publication_authorization_sha256": "153734fb40eff3d6f7907fe8bb27ac21bb14e038a5332b573a449bfa9eb01b8b",
+  "publication_status": "LIVE_APPROVED",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "reader_ready",
+  "reader_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "rights_basis": "Existing exact accepted India text source and Reader permissions preserved. This cover-only successor binds the new original generated illustration pair and deterministic typography expressly approved for production by the owner on 29 October 2026. Audio and territory permissions unchanged.",
   "rights_metadata": {
-    "work_title": "The Selfish Giant",
-    "work_slug": "the-selfish-giant",
-    "author_name": "Oscar Wilde",
     "author_death_year": 1900,
-    "original_publication_year": 1888,
-    "country_of_origin": "United Kingdom",
-    "source_url": "https://www.gutenberg.org/ebooks/902",
-    "source_name": "Project Gutenberg",
-    "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-    "translator_name": "",
-    "translator_death_year": null,
-    "illustrator_name": "",
-    "illustrator_death_year": null,
-    "editor_name": "",
-    "edition_publication_year": null,
-    "rights_tier": "A",
-    "verification_status": "approved",
+    "author_name": "Oscar Wilde",
     "blocked_reason": "",
+    "country_of_origin": "United Kingdom",
+    "edition_publication_year": null,
+    "editor_name": "",
+    "illustrator_death_year": null,
+    "illustrator_name": "",
+    "original_publication_year": 1888,
     "publication_region": "IN",
+    "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+    "rights_tier": "A",
+    "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/ebooks/902",
+    "translator_death_year": null,
+    "translator_name": "",
+    "verification_status": "approved",
     "verified_at": "2026-07-03T20:07:49Z",
-    "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record."
+    "work_slug": "the-selfish-giant",
+    "work_title": "The Selfish Giant"
   },
   "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "reader_ready",
-  "publicationStatus": "published",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
+  "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
   "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "is_published": true,
-  "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-08-16T06:45:34Z",
-  "cover_dimensions": {
-    "front": [
-      800,
-      1200
-    ],
-    "back": [
-      800,
-      1200
-    ]
-  },
-  "cover_semantic_match_score": 9.8,
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_assets": {},
-  "audiobook": {},
-  "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
-  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
-  "reader_enabled": true,
-  "preview_enabled": true,
-  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
-  "production_observed": false
+  "showInPublicLibrary": true,
+  "slug": "the-selfish-giant",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "subtitle": "",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+  "title": "The Selfish Giant",
+  "updated_at": "2026-10-29T08:53:03.392271+00:00",
+  "verification_status": "approved",
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ]
 }

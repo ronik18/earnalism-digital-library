@@ -1,0 +1,108 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-selfish-giant",
+  "active_approvals": {
+    "front": "selfish-giant-front-4f588de7e9c1d829",
+    "back": "selfish-giant-back-afba47af368f03c9"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "selfish-giant-front-4f588de7e9c1d829",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": "#4A1C27",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "selfish-giant-back-afba47af368f03c9",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "selfish-giant-front-4f588de7e9c1d829",
+      "slug": "the-selfish-giant",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce",
+      "remote_sha256": "4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce",
+        "version": "1793262908",
+        "version_id": "5af2e06ee4cec4c5ecae7e55cb221359",
+        "resource_type": "image",
+        "format": "webp"
+      },
+      "width": 800,
+      "height": 1200,
+      "approved_at": "2026-10-29T08:53:03.392271+00:00",
+      "approved_by": "Ronik Basak native owner instruction; source preparation by Codex",
+      "approval_note": "Replace the previous pair of covers for \"The Selfish Giant\" with the newly created covers resolving any and every blocker coming along the way.",
+      "rights_basis": "Exact new original generated illustrations and deterministic typography expressly approved by the owner for cover display; existing literary rights and all audio permissions unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "c275f7a3869fd9f3a9011259c88e65d99283e2a5ac4704a159d28b110131468b"
+    },
+    {
+      "event_id": "selfish-giant-back-afba47af368f03c9",
+      "slug": "the-selfish-giant",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056",
+      "remote_sha256": "afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056",
+        "version": "1793262926",
+        "version_id": "b2c2fcea4b03624a63d5c83c85a3e74e",
+        "resource_type": "image",
+        "format": "webp"
+      },
+      "width": 800,
+      "height": 1200,
+      "approved_at": "2026-10-29T08:53:03.392271+00:00",
+      "approved_by": "Ronik Basak native owner instruction; source preparation by Codex",
+      "approval_note": "Replace the previous pair of covers for \"The Selfish Giant\" with the newly created covers resolving any and every blocker coming along the way.",
+      "rights_basis": "Exact new original generated illustrations and deterministic typography expressly approved by the owner for cover display; existing literary rights and all audio permissions unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "e641bd8fffcb07b62f965ced1e304cf1f7c7368d4c18d4a2c2b7b3c5764e62f3"
+    }
+  ],
+  "updated_at": "2026-10-29T08:53:03.392271+00:00"
+}

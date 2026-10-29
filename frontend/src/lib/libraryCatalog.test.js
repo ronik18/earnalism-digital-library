@@ -129,3 +129,22 @@ describe("public protected package discovery", () => {
     expect(libraryPresentationForBook(candidate).canShowControls).toBe(false);
   });
 });
+
+
+describe("Selfish Giant protected package discovery", () => {
+  const book = { slug: "the-selfish-giant", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/the-selfish-giant", reader_url: "/reader/the-selfish-giant", audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audiobook_delivery_mode: "PROTECTED_PACKAGE_V2", audiobook_package_version: "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211", audiobook_duration_ms: 777120 };
+  it("includes the approved title in audiobook filters with existing access rules", () => {
+    expect(matchesLibraryFacets(book, "all", "approved-audiobook")).toBe(true);
+    expect(libraryPresentationForBook(book).canShowControls).toBe(true);
+  });
+  it.each([
+    { ...book, slug: "a-ghost-story" },
+    { ...book, audiobook_delivery_mode: "" },
+    { ...book, audiobook_package_version: "invalid" },
+    { ...book, audio_enabled: false, audiobook_enabled: false },
+    { ...book, audio_qa_status: "FAILED" },
+    { ...book, audiobook_release_gate: "HELD" },
+  ])("keeps denied or unbound audio out of discovery", (candidate) => {
+    expect(matchesLibraryFacets(candidate, "all", "approved-audiobook")).toBe(false);
+  });
+});

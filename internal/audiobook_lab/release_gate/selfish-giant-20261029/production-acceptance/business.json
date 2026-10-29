@@ -1,0 +1,62 @@
+{
+  "status": "PRODUCTION_SPEED_CONCURRENCY_AND_SERVER_BILLING_PASS",
+  "speedsObserved": [
+    1,
+    1.25,
+    1.5
+  ],
+  "secondClientStart": {
+    "http": 409,
+    "code": "SESSION_ACTIVE_ELSEWHERE"
+  },
+  "allServerClockIntervalsMatch": true,
+  "pausedIntervalsDebitZero": true,
+  "nonPlayingPriorIntervalsDebitZero": true,
+  "balanceDifferenceMatchesDebit": true,
+  "ended": true,
+  "endHTTP": 200,
+  "simultaneousPaidPlayback": false,
+  "totalDebitSeconds": 530,
+  "ownerApprovedMaximumSeconds": 900,
+  "reuse": {
+    "accountingOriginalSHA256": "9f4d9a53868cfdd5b7f532558297d93878c12efda0fc1ff17534fb4febb4722b",
+    "businessOriginalSHA256": "8a76633e77649a90dac618438ec6eb67faaebdeb1a5fd3c26b2fab4cf9068d7f",
+    "accountingDependenciesUnchanged": [
+      "backend/reading_pass_service.py",
+      "backend/domain/reading_pass.py",
+      "frontend/src/pages/Account.jsx",
+      "frontend/src/lib/accountPresentation.js"
+    ],
+    "actualRouteASTChecks": {
+      "user_transaction_page": {
+        "unchanged": true,
+        "normalizedASTSHA256": "de727ed53f3527300fcbc9b27c4bac0f1590b0081019a0d8ae270e9f39f349fb"
+      },
+      "user_my_transactions": {
+        "unchanged": true,
+        "normalizedASTSHA256": "9cae59e623e53e73dff5b1d0153a4e3429dcc69faf729e36d8a490fbfcc7bb4d"
+      },
+      "_reading_pass_start": {
+        "unchanged": true,
+        "normalizedASTSHA256": "c1554782b245b855bc9c3f5733781ebd615d726eeeb95b13748f59a9f04e952b"
+      },
+      "reading_pass_lease_renew": {
+        "unchanged": true,
+        "normalizedASTSHA256": "e5c028335c33e2e86e56a7475cb6bcff24d80674fb2271844447e51b914a6015"
+      },
+      "reading_pass_session_end": {
+        "unchanged": true,
+        "normalizedASTSHA256": "13385c5fbf205b22792a28b0974a5a0d37088484911d9bab1eb64d3c2d39ff0d"
+      }
+    },
+    "concurrencyStartSessionASTSHA256": "bb61f31747da1fb4657d2231e6f1be8afee2849d83bb51c0ae83fdf8fb6b7c61",
+    "concurrencyLocalTests": {
+      "passed": 59,
+      "logSHA256": "008351d0822e56c326f6de5960a6d4b20609d52d87a10ac086b496f3936319e1"
+    },
+    "limits": "Historical real conflict and authenticated pagination accepted only for unchanged dependencies. Current title playback and billing newly verified; no second paid session started."
+  },
+  "currentPlaybackDeployment": "44967119-d426-45fa-9081-c39a2e87a727",
+  "clockEvidenceSHA256": "1347a8812f166bac3239bf4c3a01a7df194f2c188dcc06acb185c2d359841b17",
+  "settlementEvidenceSHA256": "439a140468c18c3d8ca1f9fca93644962994ea80306526c472e4a2056551a4d9"
+}

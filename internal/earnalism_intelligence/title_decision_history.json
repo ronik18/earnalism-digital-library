@@ -12233,5 +12233,13 @@
     "provider_qualified": false,
     "production_changed": false,
     "next_action": "Fresh exact-head source review and CI; actual Listener fixture qualification and existing private storage-context completion, no uploads/spend"
+  },
+  "selfish_giant_cover_serving_successor_20261029": {
+    "date": "2026-10-29",
+    "decision": "SELFISH_GIANT_EXACT_COVER_ONLY_SERVING_SUCCESSOR",
+    "scope": "Exact owner-approved front/back pair on actual serving af4f9d0 source; no application code, Reader text/audio, territory or pricing changes",
+    "qualification": "Mirrors, checksum entries, publication artifact hashes, public catalogue pair and accepted successor binding PASS locally; provider publication pending",
+    "production_changed": false,
+    "next_action": "Stage exact cover-only serving-source candidate, verify immutable pair and existing availability, then scoped production release"
   }
 }

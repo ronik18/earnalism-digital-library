@@ -68,6 +68,9 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
     assert set(registry) == {
         "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "india-20261028-radharani-attribution-metadata-successor",
+        "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
+        "india-20261029-the-selfish-giant-audio-canary-reader-bindings",
+        "india-20261029-the-selfish-giant-owner-approved-cover-successor",
         "india-20261026-the-open-window-protected-package-publication",
         "india-20261026-the-open-window-approved-revised-cover-pair",
         "india-20261025-the-open-window-reader-cover-canary-metadata",

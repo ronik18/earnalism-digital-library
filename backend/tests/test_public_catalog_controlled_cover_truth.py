@@ -327,8 +327,8 @@ def test_controlled_reader_manifest_cannot_reenable_an_audio_disabled_artifact(m
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
-    assert '"catalog_truth": "release-containment-v1"' in cache_key
-    assert '"truth_gate": "audio-contract-v16"' in cache_key
+    assert '"catalog_truth": "canonical-protected-package-v2"' in cache_key
+    assert '"truth_gate": "audio-contract-v17"' in cache_key
 
 
 def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
@@ -350,11 +350,11 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     assert seen == [
         (
             "reader-content",
-            "book-access:audio-contract-v16:release-containment-v1:37:public:jekyll-and-hyde",
+            "book-access:audio-contract-v17:canonical-protected-package-v2:37:public:jekyll-and-hyde",
         ),
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v16:release-containment-v1:chapter-index.v1:37:public:jekyll-and-hyde",
+            "book-manifest:audio-contract-v17:canonical-protected-package-v2:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
 
@@ -421,7 +421,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     assert seen == [
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v16:release-containment-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
+            "book-manifest:audio-contract-v17:canonical-protected-package-v2:chapter-index.v1:562:public:the-gift-of-the-magi",
         )
     ]
     assert seen[0][1] != stale_key

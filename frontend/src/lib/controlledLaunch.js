@@ -65,7 +65,7 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
 // qualified.  This is a release control, not a client-only presentation hint.
 export const PUBLIC_PAID_COMMERCE_ENABLED = true;
 export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
-export const PUBLIC_PROTECTED_PACKAGE_SLUGS = Object.freeze(["the-open-window"]);
+export const PUBLIC_PROTECTED_PACKAGE_SLUGS = Object.freeze(["the-open-window", "the-selfish-giant"]);
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
