@@ -10,9 +10,9 @@
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
     "india-20260925-the-tell-tale-heart-commercial-reader-release": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
     "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
-    "india-20261001-a-horseman-in-the-sky-owner-text-reader": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
-    "india-20261001-a-mystery-of-heroism-owner-text-reader": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
-    "india-20261001-a-scandal-in-bohemia-owner-text-reader": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+    "india-20261001-a-horseman-in-the-sky-owner-text-reader": "1b14391053f923cca947e40b138ba8fb6bc8dc60a49a3c0e3549cffdb1645e26",
+    "india-20261001-a-mystery-of-heroism-owner-text-reader": "2c2adda070df0a68bcd5c9fac74c9b05a01d22975de9e0d0bc74260aa65a588c",
+    "india-20261001-a-scandal-in-bohemia-owner-text-reader": "815e60ef4c1849d94bb7ff00992e89dec949bb5bfb2754806b3f39f40d49b130",
     "india-20261001-agentic-ai-with-python-owner-text-reader": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
     "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
     "india-20261001-jekyll-and-hyde-owner-text-reader": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
@@ -631,6 +631,23 @@
         "previous_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
         "current_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
         "scope": "Two native credential-preserving image identities and dependencies only; no new rights decision."
+      }
+    },
+    "cover_next_three_20261031": {
+      "india-20261001-a-horseman-in-the-sky-owner-text-reader": {
+        "previous_record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+        "current_record_sha256": "1b14391053f923cca947e40b138ba8fb6bc8dc60a49a3c0e3549cffdb1645e26",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-a-mystery-of-heroism-owner-text-reader": {
+        "previous_record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+        "current_record_sha256": "2c2adda070df0a68bcd5c9fac74c9b05a01d22975de9e0d0bc74260aa65a588c",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-a-scandal-in-bohemia-owner-text-reader": {
+        "previous_record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+        "current_record_sha256": "815e60ef4c1849d94bb7ff00992e89dec949bb5bfb2754806b3f39f40d49b130",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
       }
     }
   },

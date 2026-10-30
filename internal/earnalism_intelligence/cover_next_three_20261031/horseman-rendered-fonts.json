@@ -1,0 +1,36 @@
+{
+  "pdf_sha256": "70243f0cf1b377c25978fdcbd91d586906ce7de872fa485722d0860b65ed718f",
+  "pages": [
+    {
+      "page": 1,
+      "resources": [
+        {
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0",
+          "resource": "/F22"
+        },
+        {
+          "base_font": "/BAAAAA+TimesNRMTPro-BoldCond",
+          "subtype": "/Type0",
+          "resource": "/F28"
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "resources": [
+        {
+          "base_font": "/AAAAAA+TimesNRMTPro-BoldCond",
+          "subtype": "/Type0",
+          "resource": "/F20"
+        },
+        {
+          "base_font": "/BAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0",
+          "resource": "/F25"
+        }
+      ]
+    }
+  ],
+  "scope": "Actual private native PDF resources. UNNAMED Type3 resource is not invented as a font family. Canva integrated Font Software permission covers raster export; proprietary Times is not claimed OFL. No public PDF or font binaries."
+}

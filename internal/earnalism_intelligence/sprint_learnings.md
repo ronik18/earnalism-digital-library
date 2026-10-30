@@ -2864,3 +2864,7 @@ Launch isolated subprocess tests with python -m from the explicit repository roo
 Expired Canva draft sessions can be restored only after unchanged-preimage reconciliation and exact approved-preview pixel equality. Actual rendered PDF font resources may be nested in Form XObjects. Existing accepted backend bindings, not a stale recursive root checksum, establish White Heron mirror baseline. Current main contains unrelated optimization and CLOSED purchase behaviour absent from the measured production source; cover-only authority must not silently deploy that delta.
 
 Native PNG caBX Content Credentials are independent of XMP. Inspect both before selecting a delivery conversion; retain untouched native exports when a local encoder would omit credentials. A native Canva JPEG at exact scale0.78125 produces800x1200 without canvas resize or layout changes. Preserve old rejected derivatives as historical, never as qualified delivery.
+
+
+## Next three covers —31 October2026
+Reuse suitable existing owner-origin artwork and restore only actual cutout or copy defects. Preserve originals, exact draft-save approval, actual native font resources and metadata-bearing delivery bytes. Native JPEG export avoids dropping existing APP11 credentials. Same-root asset identity evidence is component-specific. Local package download caches are reproducible; preserved source and recovery records are not disposable.

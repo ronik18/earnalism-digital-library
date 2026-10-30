@@ -1,0 +1,15 @@
+Browser tab: 1838738656, Title: "A Mystery of Heroism book cover pair - 1024 × 1536px", URL: "https://www.canva.com/design/DAHXWoHfnjc/Xzh_rVctsW_LEDmmv5waiw/edit".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
++		287 container
++			288 container AaEXpJgMaRy2RUve8DNROQ-AaEXpJgMuaeJeSbFL25WRA.png
++				289 heading AaEXpJgMaRy2RUve8DNROQ-AaEXpJgMuaeJeSbFL25WRA.png, Value: 4
++					290 text AaEXpJgMaRy2RUve8DNROQ-AaEXpJgMuaeJeSbFL25WRA.png
++				291 text Made by Ronik Basak with AI 22 days ago
++				292 content list
++					293 button Details
++					294 button Download
++					295 button Copy to Brand Kit
++						296 text Copy to Brand Kit
++						297 text New
++					298 button Move to Trash
+The focused UI element is 293 button Details

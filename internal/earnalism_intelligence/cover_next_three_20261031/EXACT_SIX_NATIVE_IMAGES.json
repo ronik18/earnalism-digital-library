@@ -1,0 +1,155 @@
+{
+  "observed_at": "2026-10-30T18:55:23.347723+00:00",
+  "images": [
+    {
+      "slug": "a-horseman-in-the-sky",
+      "side": "front",
+      "canva_design_id": "DAHXWkB5Tgs",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/horseman-native-web/1.jpg",
+      "master_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-horseman-in-the-sky/front.jpg",
+      "web_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+      "bytes": 88949,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": true,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "side": "back",
+      "canva_design_id": "DAHXWkB5Tgs",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/horseman-native-web/2.jpg",
+      "master_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-horseman-in-the-sky/back.jpg",
+      "web_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+      "bytes": 95304,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": true,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "side": "front",
+      "canva_design_id": "DAHZgpqBoaI",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/heroism-native-web/1.jpg",
+      "master_sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-mystery-of-heroism/front.jpg",
+      "web_sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+      "bytes": 89666,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": true,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "side": "back",
+      "canva_design_id": "DAHZgpqBoaI",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/heroism-native-web/2.jpg",
+      "master_sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-mystery-of-heroism/back.jpg",
+      "web_sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+      "bytes": 80124,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "side": "front",
+      "canva_design_id": "DAHZgoZDzWM",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/scandal-native-web/1.jpg",
+      "master_sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-scandal-in-bohemia/front.jpg",
+      "web_sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0",
+      "bytes": 75725,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "side": "back",
+      "canva_design_id": "DAHZgoZDzWM",
+      "master": "/private/tmp/earnalism-next-cover-batch-two-20261030/scandal-native-web/2.jpg",
+      "master_sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-two-20261030/web/a-scandal-in-bohemia/back.jpg",
+      "web_sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c",
+      "bytes": 74389,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low, scale0.78125; no local conversion",
+      "c2pa_jumb_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature-validity assertion"
+    }
+  ]
+}

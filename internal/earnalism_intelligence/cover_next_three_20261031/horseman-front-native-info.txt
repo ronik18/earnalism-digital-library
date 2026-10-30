@@ -1,0 +1,15 @@
+Browser tab: 1838738656, Title: "A Horseman in the Sky book cover - 1024 × 1536px", URL: "https://www.canva.com/design/DAHXWkB5Tgs/tSlh-uPva_E8ngd-YDb_eg/edit".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 257-259
+~			255 container AaEXpIweqBIue9jAxuMFZA-AaEXpIweYfoz7iWyEfO0IQ.png
+~				256 heading AaEXpIweqBIue9jAxuMFZA-AaEXpIweYfoz7iWyEfO0IQ.png, Value: 4
++					257 text AaEXpIweqBIue9jAxuMFZA-AaEXpIweYfoz7iWyEfO0IQ.png
++				258 text Made by Ronik Basak with AI 22 days ago
++				259 content list
++					260 button Details
++					261 button Download
++					262 button Copy to Brand Kit
++						263 text Copy to Brand Kit
++						264 text New
++					265 button Move to Trash
+The focused UI element is 260 button Details

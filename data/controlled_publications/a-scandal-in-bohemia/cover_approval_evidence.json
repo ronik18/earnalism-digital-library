@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "a-scandal-in-bohemia",
+  "history": [
+    {
+      "event_id": "cover-next-three-20261031-front-08aae5832e4b8187",
+      "slug": "a-scandal-in-bohemia",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+        "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+        "sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0",
+        "bytes": 75725,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "86409809d649ddd99c1f222542dd4fb7463612af6ca3aa4b07d29e9684873c00"
+    },
+    {
+      "event_id": "cover-next-three-20261031-back-d5c2e64835fe39df",
+      "slug": "a-scandal-in-bohemia",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+        "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+        "sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c",
+        "bytes": 74389,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "177e8da33c16f437dcb4c2847af1ad5d5a96c5a054e20833ed2a3d3b921896ee"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-three-20261031-front-08aae5832e4b8187",
+    "back": "cover-next-three-20261031-back-d5c2e64835fe39df"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-three-20261031-front-08aae5832e4b8187",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-three-20261031-back-d5c2e64835fe39df",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

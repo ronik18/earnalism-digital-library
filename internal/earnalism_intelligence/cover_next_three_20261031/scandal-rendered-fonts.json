@@ -1,0 +1,36 @@
+{
+  "pdf_sha256": "f4198d12a9722bc287d1423c49a011e7e25ea3cafba0c264196086efbc2c7982",
+  "pages": [
+    {
+      "page": 1,
+      "resources": [
+        {
+          "base_font": "/AAAAAA+Imbue48pt-Regular",
+          "subtype": "/Type0",
+          "resource": "/F6"
+        },
+        {
+          "base_font": "/BAAAAA+HKGrotesk-Regular",
+          "subtype": "/Type0",
+          "resource": "/F9"
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "resources": [
+        {
+          "base_font": "/AAAAAA+Imbue48pt-Regular",
+          "subtype": "/Type0",
+          "resource": "/F6"
+        },
+        {
+          "base_font": "/BAAAAA+HKGrotesk-Regular",
+          "subtype": "/Type0",
+          "resource": "/F9"
+        }
+      ]
+    }
+  ],
+  "scope": "Actual private native PDF resources. UNNAMED Type3 resource is not invented as a font family. Canva integrated Font Software permission covers raster export; proprietary Times is not claimed OFL. No public PDF or font binaries."
+}

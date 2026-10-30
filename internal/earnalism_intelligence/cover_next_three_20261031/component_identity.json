@@ -1,0 +1,749 @@
+{
+  "components": [
+    {
+      "id": "MAHXWjRMV5o",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpIweYfoz7iWyEfO0IQ.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 993,
+        "height": 1584,
+        "smart_tags": [
+          "landscape",
+          "mountain",
+          "tree",
+          "nature",
+          "rock"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWus6FaA",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhBZls2cPjKu-JTig.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 230,
+        "height": 198,
+        "smart_tags": [
+          "horse",
+          "flag",
+          "historic",
+          "cowboy",
+          "independence"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWucZFAQ",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhG80Bp500892iXMA.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 402,
+        "height": 575,
+        "smart_tags": [
+          "illustration"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWmPMISM",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhK3_NyczZbfzupyw.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 120,
+        "smart_tags": [
+          "filigree",
+          "ornate",
+          "decorative",
+          "ornament",
+          "gold",
+          "baroque",
+          "frame",
+          "border",
+          "retro",
+          "decorate",
+          "calligraphic",
+          "floral",
+          "victorian",
+          "elegance",
+          "illustration",
+          "swirl",
+          "classic",
+          "luxurious"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWu4PwRE",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhPJ2MciLXoelrkBg.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 120,
+        "smart_tags": [
+          "filigree",
+          "ornate",
+          "decorative",
+          "decorate",
+          "ornament",
+          "baroque",
+          "retro",
+          "gold",
+          "elegance",
+          "calligraphic",
+          "antique",
+          "illustration",
+          "border",
+          "swirl",
+          "design",
+          "heraldry"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWtxWuLk",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhTGsVfjglXws-2uw.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 120,
+        "smart_tags": [
+          "gold",
+          "ornate",
+          "frame",
+          "illustration",
+          "ornament",
+          "decorative",
+          "decorate",
+          "filigree",
+          "floral",
+          "calligraphic"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWoXqC4w",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhYKCf3uS1hPoZrIw.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 120,
+        "smart_tags": [
+          "gold",
+          "illustration",
+          "ornament",
+          "ornate",
+          "decorate",
+          "frame"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWgoL3FU",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhcV4X1e0tF4GIq2Q.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 135,
+        "height": 20,
+        "smart_tags": [
+          "gold",
+          "frame",
+          "illustration",
+          "golden",
+          "border"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWqhKSqc",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhk0IA1tUoPCQ8pmQ.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 135,
+        "height": 20,
+        "smart_tags": [
+          "gold",
+          "illustration",
+          "golden",
+          "frame"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWs_OOyc",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJhuoiY5cQ8ccptq6g.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 77,
+        "height": 40,
+        "smart_tags": [
+          "gold",
+          "leaf",
+          "plant",
+          "nature"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWqZZzhQ",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJh2Egp49SQrRu4hzQ.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 78,
+        "height": 40,
+        "smart_tags": [
+          "arrow",
+          "gold",
+          "archery",
+          "decorate",
+          "golden",
+          "ornament"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWpc9ii4",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJh_11ObPL3GRN944Q.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 345,
+        "height": 40,
+        "smart_tags": [
+          "gold",
+          "border",
+          "divider",
+          "decorate",
+          "ornament",
+          "frame",
+          "illustration",
+          "golden",
+          "decorative",
+          "design",
+          "ornate"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWtG8Ceo",
+      "type": "image",
+      "name": "AaEXpIweqBIue9jAxuMFZA-AaEXpJiI5m9L39AytfUHIw.png",
+      "created_at": 1791398025,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 211,
+        "height": 20,
+        "smart_tags": [
+          "gold",
+          "golden",
+          "divider",
+          "ornament",
+          "illustration",
+          "decorate",
+          "border",
+          "design"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWj2aZsU",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpNhGtkaswu7CAxnKfg.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 993,
+        "height": 1584,
+        "smart_tags": [
+          "frame",
+          "paper",
+          "background",
+          "retro",
+          "antique"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWuzSXlE",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvD3K5Lgc8btqntvA.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 955,
+        "height": 793,
+        "smart_tags": [
+          "horse",
+          "forest",
+          "tree",
+          "sunset",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWgv1F4M",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvI6BX6MraiZ3GnZA.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 120,
+        "smart_tags": [
+          "gold",
+          "decorate",
+          "ornament",
+          "ornate",
+          "illustration"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWiRShA4",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvNEKRFl-OYPT39WQ.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 134,
+        "height": 120,
+        "smart_tags": [
+          "gold",
+          "decorate",
+          "ornament",
+          "illustration",
+          "ornate",
+          "decorative",
+          "golden",
+          "filigree"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWuvTt1E",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvTTEXjcnPR2xcAOg.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 115,
+        "height": 140,
+        "smart_tags": [
+          "filigree",
+          "decorative",
+          "ornate",
+          "ornament",
+          "border",
+          "decorate",
+          "gold",
+          "retro",
+          "frame",
+          "baroque",
+          "swirl",
+          "calligraphic",
+          "divider",
+          "elegance",
+          "floral",
+          "victorian",
+          "illustration",
+          "classic",
+          "design"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWlxLemU",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvYqHvfMLBKYf-Sfw.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 134,
+        "height": 140,
+        "smart_tags": [
+          "gold",
+          "decorate",
+          "ornament",
+          "illustration",
+          "decorative",
+          "retro",
+          "design"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWgRDMqo",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvdEk9MKltuo0CyvA.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 459,
+        "height": 41,
+        "smart_tags": [
+          "gold",
+          "border",
+          "decorate",
+          "ornament",
+          "divider",
+          "frame",
+          "illustration",
+          "golden",
+          "design",
+          "decorative"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWsY9LkY",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvopk4lh-4toqUjZQ.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 459,
+        "height": 40,
+        "smart_tags": [
+          "gold",
+          "decorate",
+          "ornament",
+          "divider",
+          "illustration",
+          "golden",
+          "border",
+          "ornate",
+          "design"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWhvXzqk",
+      "type": "image",
+      "name": "AaEXpNhFxf8okHTo22YMPQ-AaEXpOvyO-lya9tpY87PAA.png",
+      "created_at": 1791398047,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 459,
+        "height": 41,
+        "smart_tags": [
+          "divider",
+          "gold",
+          "ornament",
+          "border",
+          "decorate",
+          "illustration",
+          "decorative",
+          "ornate",
+          "retro",
+          "design",
+          "frame"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWrMmaS0",
+      "type": "image",
+      "name": "AaEXpJgMaRy2RUve8DNROQ-AaEXpJgMuaeJeSbFL25WRA.png",
+      "created_at": 1791398028,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1055,
+        "height": 1491,
+        "smart_tags": [
+          "oil paint",
+          "painted",
+          "canvas",
+          "landscape"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWrNswtM",
+      "type": "image",
+      "name": "AaEXpJgMaRy2RUve8DNROQ-AaEXpKUDOosJZsxPdZQHcg.png",
+      "created_at": 1791398028,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 265,
+        "height": 318,
+        "smart_tags": [
+          "aqua",
+          "brick",
+          "retro"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWvixI7s",
+      "type": "image",
+      "name": "AaEXpJgMaRy2RUve8DNROQ-AaEXpKUIY832Bk4oJ3oSYw.png",
+      "created_at": 1791398028,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 366,
+        "height": 747,
+        "smart_tags": [
+          "illustration"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWuH-6Ak",
+      "type": "image",
+      "name": "AaEXpJgMaRy2RUve8DNROQ-AaEXpKUNL4eWa0yk1cXMIQ.png",
+      "created_at": 1791398028,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 163,
+        "height": 169,
+        "smart_tags": [
+          "decorative",
+          "floral",
+          "ornate",
+          "border",
+          "decorate",
+          "baroque",
+          "ornament",
+          "filigree",
+          "gold",
+          "leaf",
+          "damask",
+          "victorian",
+          "retro"
+        ]
+      }
+    },
+    {
+      "id": "MAHXWuKz6zQ",
+      "type": "image",
+      "name": "AaEXpJgMaRy2RUve8DNROQ-AaEXpKUXrmbhZZDsU7pXxw.png",
+      "created_at": 1791398028,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 447,
+        "height": 76,
+        "smart_tags": [
+          "gold",
+          "border",
+          "divider",
+          "ornament",
+          "decorate",
+          "retro",
+          "decorative",
+          "ornate",
+          "filigree",
+          "frame",
+          "illustration",
+          "design",
+          "golden",
+          "elegance"
+        ]
+      }
+    },
+    {
+      "id": "MAHZgh1MuUs",
+      "type": "image",
+      "name": "Earnalism heroism-back text-free restoration 20261030",
+      "created_at": 1793384582,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "oil paint",
+          "painted",
+          "drawing",
+          "landscape",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "MAHZglfRdek",
+      "type": "image",
+      "name": "Earnalism scandal-front text-free restoration 20261030",
+      "created_at": 1793384598,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "retro",
+          "fashion",
+          "portrait",
+          "antique",
+          "dress",
+          "historic",
+          "armchair"
+        ]
+      }
+    },
+    {
+      "id": "MAHZgkh7z3c",
+      "type": "image",
+      "name": "Earnalism scandal-back text-free restoration 20261030",
+      "created_at": 1793384611,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "night",
+          "window",
+          "architectural",
+          "retro",
+          "antique",
+          "inside",
+          "carriage",
+          "historic",
+          "frame"
+        ]
+      }
+    }
+  ],
+  "basis": "Actual Canva API filenames identify same-source cutouts and owner; actual Info panels record owner-created AI for the two Horseman roots and Heroism front. Three replacement art sources are built-in image-generation restorations recorded separately. No blanket claim about unrelated assets."
+}

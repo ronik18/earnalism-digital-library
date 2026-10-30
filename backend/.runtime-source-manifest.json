@@ -110,7 +110,7 @@
     {
       "path": "data/approved_reader_bootstrap.json",
       "bytes": 12508,
-      "sha256": "47cc979d0966a9920c204c7a260f45e51fd41b19c4d50c47d29d3ebdd3810c0f"
+      "sha256": "c18a9385a762ea53408dbcd1c416a6b9a8b7295ca354a6b0ccda39c7d6f5c1b7"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -184,13 +184,18 @@
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/checksum_manifest.json",
-      "bytes": 1192,
-      "sha256": "1b322ac61b215ad548fd5fbb53d23f3a9ba22284bbe18959ea2725745c08ab6d"
+      "bytes": 1334,
+      "sha256": "660f2a523af69c30e50bd5b27ac26281c489d80d648dbdcd9a5f4f0f4f90f259"
+    },
+    {
+      "path": "data/controlled_publications/a-horseman-in-the-sky/cover_approval_evidence.json",
+      "bytes": 5540,
+      "sha256": "60cb6f7d7f3c7e621eb2ef3d3ae949243680af641249ff710d173c9b3f65f060"
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/cover_provenance.json",
-      "bytes": 2529,
-      "sha256": "29cabaa07a389900131847493093c31cc6f325f3f4a5af662d8fe27886c3672a"
+      "bytes": 4785,
+      "sha256": "83bd35d8642b9e8a15c1d2f2b339d25fbf975d8053d9c174bfd63df51d71d621"
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/highlight_sync.json",
@@ -199,13 +204,13 @@
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/public_book.json",
-      "bytes": 3701,
-      "sha256": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8"
+      "bytes": 3919,
+      "sha256": "15e37c478b1684c18f3433b78b7e7b5c391b2186e3e7b18bd509c248c10b0053"
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/publication_manifest.json",
-      "bytes": 1972,
-      "sha256": "50ab70a25eadfdeeb56a0fd88d03244cbf7d564e534b22598a5d3f3dfb501736"
+      "bytes": 1988,
+      "sha256": "7cae767af7c79527a1e5ded2e3fe695dcb51782c6d1c67c19dc2d5aa8a18c6d7"
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/reader_manifest.json",
@@ -219,8 +224,8 @@
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/rights_decision.json",
-      "bytes": 3282,
-      "sha256": "649dfea2d9bc8aa038069a05d37d51074c366a12cbdab6772bb6c5d019ccf9a8"
+      "bytes": 3599,
+      "sha256": "dcfeabf04610cf3e3d1f74fde00e9a91e28ccd7c7bc32a6543c8309e867e958e"
     },
     {
       "path": "data/controlled_publications/a-horseman-in-the-sky/source_evidence.json",
@@ -274,13 +279,18 @@
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/checksum_manifest.json",
-      "bytes": 1191,
-      "sha256": "c8f23de2765818035fca711607b94b8a79373d32acce4e8b1de8d021fb224e65"
+      "bytes": 1333,
+      "sha256": "0df97b223ed55d6f0c5b68c76315e48d5ae8bef066d0fb7fcb138ed8b54adfcd"
+    },
+    {
+      "path": "data/controlled_publications/a-mystery-of-heroism/cover_approval_evidence.json",
+      "bytes": 5519,
+      "sha256": "349dd6abb8bd02862ebb4534dd69892594957b61c463102fceccac4e233dc598"
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/cover_provenance.json",
-      "bytes": 2524,
-      "sha256": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64"
+      "bytes": 4775,
+      "sha256": "ae6892c87bb0a0aa0a87b3e00b6f4b5cd39f851bc17801d1018092da19c0f43a"
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/highlight_sync.json",
@@ -289,13 +299,13 @@
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/public_book.json",
-      "bytes": 3683,
-      "sha256": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e"
+      "bytes": 3901,
+      "sha256": "683aee759d4d19d31ba2d2823415ebd5cdf0f957cdfa0211976bdc4beeb039ba"
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/publication_manifest.json",
-      "bytes": 1968,
-      "sha256": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7"
+      "bytes": 1984,
+      "sha256": "af32ec9cae69406fac2cd10e9d4e783e62099c6e3fe90d0cf3f9ec8ff83a7a0b"
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/reader_manifest.json",
@@ -309,8 +319,8 @@
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/rights_decision.json",
-      "bytes": 3280,
-      "sha256": "e5d45c9fa29b03c40b68b02b40d29bc8fff06f0265ae80f9d3d05a1bdadc953a"
+      "bytes": 3597,
+      "sha256": "0bdd6755a23d2e65b4ecee0c4470a39f21c46f7e2eea6d2d48031888f69f5e9d"
     },
     {
       "path": "data/controlled_publications/a-mystery-of-heroism/source_evidence.json",
@@ -329,13 +339,18 @@
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/checksum_manifest.json",
-      "bytes": 1191,
-      "sha256": "ac34171490600d73e0fe0e972fc20791a486cd936885677991a28e57e8de8a8a"
+      "bytes": 1333,
+      "sha256": "d501ebd74bd0e306e1faead82276e440395d1c2c55fcdd015ee98ecce2b6e08c"
+    },
+    {
+      "path": "data/controlled_publications/a-scandal-in-bohemia/cover_approval_evidence.json",
+      "bytes": 5519,
+      "sha256": "d458e65d4596daa26ef9077d4fca7ab89136eb03ff79a53d7ca2bd0b8917d772"
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/cover_provenance.json",
-      "bytes": 2524,
-      "sha256": "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd"
+      "bytes": 4775,
+      "sha256": "a30617e88b91d825e131b40b14eeea463bac194951b240a28095dc2420fdeedf"
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/highlight_sync.json",
@@ -344,13 +359,13 @@
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/public_book.json",
-      "bytes": 3622,
-      "sha256": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612"
+      "bytes": 3840,
+      "sha256": "1d7bf4cc239ccba4a574f908e559b39677703609f492a1dd21b5f73068c0c5a6"
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/publication_manifest.json",
-      "bytes": 1968,
-      "sha256": "201f40b780f3e3adf1879aad82bacd7310d3a63b7b62ea42d5da134bd775a8eb"
+      "bytes": 1984,
+      "sha256": "2cc7c49ca4e27bd3ff49b96af7a84439d454de48e910c76e4f062d5a40d6b9ff"
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/reader_manifest.json",
@@ -364,8 +379,8 @@
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/rights_decision.json",
-      "bytes": 3280,
-      "sha256": "8d291e3afff4e12a3e659539e0eac18900a97ca1a7652a1ca5c91f5e5fbe43f3"
+      "bytes": 3597,
+      "sha256": "aa958a0b5a5b66fc01006883dac34b1c61bca60b8633eac279ca8963a0f291ae"
     },
     {
       "path": "data/controlled_publications/a-scandal-in-bohemia/source_evidence.json",
@@ -9479,8 +9494,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 38212,
-      "sha256": "94af7eaaa765c14c317f2cb01eb3f1f29c471826442018f92c82b8a00f47dd50"
+      "bytes": 39370,
+      "sha256": "aba830d4cd531f37c358c5f94ea475c50516bc437282e558510d62fb206fe510"
     },
     {
       "path": "demand_scoring.py",
@@ -9728,5 +9743,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "ba2b0f18dcb0dcbfabfdf47bb4857eaa518d7ec891f77cae641b11f016f5c0f2"
+  "expected_sha256": "fcdbf0166836cb483f4e4932cdc53149866cf85b49207d96822f8945564a3e62"
 }
