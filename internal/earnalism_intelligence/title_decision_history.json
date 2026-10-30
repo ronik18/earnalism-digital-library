@@ -12285,5 +12285,16 @@
     "preserve": "All latest diagnostics, India/US rights, covers, accepted audio, free Reader and financial safeguards.",
     "original_operation_outcome": "NOT_APPLIED_VERIFIED; no replay; original failure cause unknown",
     "next_action": "Independent integrated source review and mandatory exact-head CI; qualify OPEN successor before any corrected distinct guarded bootstrap under existing native pause authority."
+  },
+  "live_audiobook_mongo_harness_correction_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "RELEASE_HELD_FOR_CORRECTED_EXACT_HEAD_CI",
+    "finding": "Actual hosted Mongo concurrency test deadline failure; original numeric task-ID barrier algorithm reproduced deadlock offline. Bounded original real-Mongo run passed; exact CI interleaving unproven.",
+    "correction": "Harness-only retained Task identities and bounded rendezvous/pair waits; all real CAS, same-ID recovery, bootstrap and rollback assertions retained.",
+    "qualification": "Fresh authenticated loopback Mongo7testsPASS, ownprocess shutdownverified; independent reviewPASS. No production application or provider change.",
+    "next_action": "Fresh exact-head all mandatory CI before merge and OPEN successor."
   }
 }
