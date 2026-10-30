@@ -392,7 +392,7 @@ def invalidate_redis_cache_generations() -> dict[str, Any]:
         return {
             "attempted": True,
             "error": str(exc),
-            "reason": "Redis invalidation failed; live verification may depend on TTL or an admin cache clear.",
+            "reason": "Legacy Redis invalidation failed; authoritative publication must be reconciled, never assume TTL establishes release truth.",
         }
 
 
@@ -588,6 +588,8 @@ def publish(args: argparse.Namespace) -> dict[str, Any]:
     update["publication_workflow"] = canonical_update({**before, **update})
     payload["rollback_plan"] = rollback_plan(payload["before_state"])
     if args.commit:
+        from backend.public_metadata_cache import reject_unsupported_writer
+        reject_unsupported_writer(db)
         result = db.books.update_one({"slug": ALLOWED_SLUG}, {"$set": update})
         payload["matched_count"] = int(result.matched_count)
         payload["modified_count"] = int(result.modified_count)
