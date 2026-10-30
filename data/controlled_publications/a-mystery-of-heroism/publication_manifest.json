@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "public_book": "683aee759d4d19d31ba2d2823415ebd5cdf0f957cdfa0211976bdc4beeb039ba",
     "reader_manifest": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
     "source_evidence": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
     "approval_evidence": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2"
   },
-  "manifest_sha256": "26ba400832ffef4ac1e2ebcae0ecaa67f3a9d833210a2d2f561f9e000d9c4617"
+  "manifest_sha256": "65032b46cf84db91c5c42a530b3dff07a7946d4faceaa12e6bd2580ee35bc414"
 }

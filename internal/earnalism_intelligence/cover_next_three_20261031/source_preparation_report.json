@@ -1,0 +1,387 @@
+{
+  "base": "52dfeab202f7e26219ce9ceb19f09bc9d88e3ab2",
+  "status": "PREPARED_NOT_DEPLOYED",
+  "titles": [
+    {
+      "slug": "a-horseman-in-the-sky",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+          "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+          "sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+          "bytes": 88949,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+          "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+          "sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+          "bytes": 95304,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41"
+        }
+      },
+      "previous_public": {
+        "id": "controlled-a-horseman-in-the-sky",
+        "slug": "a-horseman-in-the-sky",
+        "title": "A Horseman in the Sky",
+        "subtitle": "",
+        "author": "Ambrose Bierce",
+        "category_slug": "history-strategy",
+        "short_description": "A Union soldier spots a Confederate scout on a cliff — and shoots him, not knowing it is his own father.",
+        "description": "Carter Druse, a Virginian fighting for the Union, falls asleep on sentry duty and wakes to see a Confederate horseman on a cliff commanding a view of the entire Union position. He fires — and only a sergeant later witnesses what falls from the cliff.",
+        "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "estimated_reading_time": "11 min",
+        "formats": [
+          "Ebook"
+        ],
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "order": 1,
+            "title": "A Horseman in the Sky",
+            "is_preview": true,
+            "has_images": false,
+            "image_count": 0,
+            "word_count": 2488,
+            "reading_minutes": 11,
+            "language_hint": "en",
+            "processing_status": "ready",
+            "processing_warnings": [],
+            "uploaded_at": "2026-07-03T20:07:48Z",
+            "updated_at": "2026-08-15T20:29:34Z"
+          }
+        ],
+        "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
+        "content_hash": "3f89be2c6d914ead58cb73bf95c7912f9061c0552efb0c3c1d4fbc34946752bf",
+        "provenance_hash": "d6b045255992fbb0ad9ef6b59c3017dc1211c4cd52a5ef1eb7b576ddeb7f658e",
+        "rights_basis": "Ambrose Bierce died 1914; first published 1889. Public domain in India and the U.S.",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "approved_to_publish": true,
+        "publication_status": "LIVE_APPROVED",
+        "readerStatus": "reader_ready",
+        "publicationStatus": "live",
+        "isPublic": true,
+        "isLive": true,
+        "showInPublicLibrary": true,
+        "showInHomepage": false,
+        "allowPublicReading": true,
+        "allowCheckout": false,
+        "allowPayment": false,
+        "is_published": true,
+        "audio_enabled": false,
+        "audiobook_enabled": false,
+        "generate_audiobook": false,
+        "audiobook_provider": "",
+        "audiobook_voice": "",
+        "audio_asset_slug": "",
+        "created_at": "2026-07-03T20:07:48Z",
+        "updated_at": "2026-08-15T20:29:34Z",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "preserved_file_hashes": {
+        "reader_manifest.json": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
+        "reader_release_approval.json": "abacbdf60c02af5269baba9f6de932d191e6e465fcdc6b5de32d34f92ebbf599",
+        "source_evidence.json": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c",
+        "highlight_sync.json": "05b546dff59917be0427fcd086f35b7f9027dd217d00e7e43999d2e2f8696426",
+        "chapters/chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4"
+      },
+      "unchanged_rights_semantics": true,
+      "mirrors_and_checksums": "PASS"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+          "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+          "sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+          "bytes": 89666,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+          "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+          "sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+          "bytes": 80124,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb"
+        }
+      },
+      "previous_public": {
+        "id": "controlled-a-mystery-of-heroism",
+        "slug": "a-mystery-of-heroism",
+        "title": "A Mystery of Heroism",
+        "subtitle": "",
+        "author": "Stephen Crane",
+        "category_slug": "gothic-fiction",
+        "short_description": "A soldier crosses a battlefield under fire to fetch water from a well — and the bucket is spilled in the final seconds.",
+        "description": "Fred Collins risks his life crossing an artillery-swept field to fetch water for his regiment. He returns with the bucket full — and two lieutenants, jostling each other in greeting, spill every drop. Crane's most ironic meditation on the nature of heroism.",
+        "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "estimated_reading_time": "14 min",
+        "formats": [
+          "Ebook"
+        ],
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "about_author": "Stephen Crane (1871–1900) was an American author and journalist, pioneer of naturalism in American fiction.",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "order": 1,
+            "title": "A Mystery of Heroism",
+            "is_preview": true,
+            "has_images": false,
+            "image_count": 0,
+            "word_count": 3413,
+            "reading_minutes": 15,
+            "language_hint": "en",
+            "processing_status": "ready",
+            "processing_warnings": [],
+            "uploaded_at": "2026-07-03T20:07:47Z",
+            "updated_at": "2026-07-03T20:07:47Z"
+          }
+        ],
+        "source_hash": "f7dbf9d8194ae1cabc49bad7598b01e1094baae7fdbd294bf14369c0e822eccc",
+        "content_hash": "d17b7158385cf5f47704692be63189043372b91a143c9e02485d8b9cfe4e00fb",
+        "provenance_hash": "6e615167cdd7ffb8dc6a8d743a34f8b9184f80e8527ccf6e4b1f13d91c1f3628",
+        "rights_basis": "Stephen Crane died 1900; first published 1895. Public domain in India and the U.S.",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "approved_to_publish": true,
+        "publication_status": "LIVE_APPROVED",
+        "readerStatus": "reader_ready",
+        "publicationStatus": "live",
+        "isPublic": true,
+        "isLive": true,
+        "showInPublicLibrary": true,
+        "showInHomepage": false,
+        "allowPublicReading": true,
+        "allowCheckout": false,
+        "allowPayment": false,
+        "is_published": true,
+        "audio_enabled": false,
+        "audiobook_enabled": false,
+        "generate_audiobook": false,
+        "audiobook_provider": "",
+        "audiobook_voice": "",
+        "audio_asset_slug": "",
+        "created_at": "2026-07-03T20:07:47Z",
+        "updated_at": "2026-07-03T20:07:47Z",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "preserved_file_hashes": {
+        "reader_manifest.json": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+        "reader_release_approval.json": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
+        "source_evidence.json": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
+        "highlight_sync.json": "b49a1d12daf952d41f2ca24d495a70c2e57573c4e4b64fa9c399af58202dfefe",
+        "chapters/chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4"
+      },
+      "unchanged_rights_semantics": true,
+      "mirrors_and_checksums": "PASS"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+          "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+          "sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0",
+          "bytes": 75725,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "08aae5832e4b81879faf57e20cf2b3ecf6ef4a384288546cf5b41c863a36c8a0"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+          "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+          "sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c",
+          "bytes": 74389,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "d5c2e64835fe39df5cff8b10a915f72156cf1c890673093a1e9cedfd25acad3c"
+        }
+      },
+      "previous_public": {
+        "id": "controlled-a-scandal-in-bohemia",
+        "slug": "a-scandal-in-bohemia",
+        "title": "A Scandal in Bohemia",
+        "subtitle": "",
+        "author": "Arthur Conan Doyle",
+        "category_slug": "gothic-fiction",
+        "short_description": "Sherlock Holmes meets his match in Irene Adler — the only woman who ever outwitted him.",
+        "description": "Holmes is hired to recover a compromising photograph from the brilliant and fearless Irene Adler. For once, the world's greatest detective is outplayed — and he never forgets her. The story that introduced The Woman.",
+        "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "estimated_reading_time": "36 min",
+        "formats": [
+          "Ebook"
+        ],
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "order": 1,
+            "title": "A Scandal in Bohemia",
+            "is_preview": true,
+            "has_images": false,
+            "image_count": 0,
+            "word_count": 8542,
+            "reading_minutes": 36,
+            "language_hint": "en",
+            "processing_status": "ready",
+            "processing_warnings": [],
+            "uploaded_at": "2026-07-03T20:07:48Z",
+            "updated_at": "2026-08-15T22:12:42Z"
+          }
+        ],
+        "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c",
+        "content_hash": "ca95b6c1af79a8239e6641235f78ae0e31b5dd535800f76950b4f144650f0f0f",
+        "provenance_hash": "e3212953ceb32e1d32ebdb6e596b4851485edd17c7c6a944430b9c8c8fe34267",
+        "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "approved_to_publish": true,
+        "publication_status": "LIVE_APPROVED",
+        "readerStatus": "reader_ready",
+        "publicationStatus": "live",
+        "isPublic": true,
+        "isLive": true,
+        "showInPublicLibrary": true,
+        "showInHomepage": false,
+        "allowPublicReading": true,
+        "allowCheckout": false,
+        "allowPayment": false,
+        "is_published": true,
+        "audio_enabled": false,
+        "audiobook_enabled": false,
+        "generate_audiobook": false,
+        "audiobook_provider": "",
+        "audiobook_voice": "",
+        "audio_asset_slug": "",
+        "created_at": "2026-07-03T20:07:48Z",
+        "updated_at": "2026-08-15T22:12:42Z",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "preserved_file_hashes": {
+        "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+        "reader_release_approval.json": "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935",
+        "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
+        "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
+        "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+      },
+      "unchanged_rights_semantics": true,
+      "mirrors_and_checksums": "PASS"
+    }
+  ]
+}

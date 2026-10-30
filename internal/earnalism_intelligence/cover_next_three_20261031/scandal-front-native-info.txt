@@ -1,0 +1,15 @@
+Browser tab: 1838738656, Title: "A Scandal in Bohemia book cover pair - 1024 × 1536px", URL: "https://www.canva.com/design/DAHXWsV57TM/v3YJ37JbMZyFtF1FKBzpBw/edit".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
++		323 container
++			324 container AaEXpRSWu9kFCLlwE6epYA-AaEXpTIyD0YPbSwT3q-uqA.png
++				325 heading AaEXpRSWu9kFCLlwE6epYA-AaEXpTIyD0YPbSwT3q-uqA.png, Value: 4
++					326 text AaEXpRSWu9kFCLlwE6epYA-AaEXpTIyD0YPbSwT3q-uqA.png
++				327 text Made by Ronik Basak with AI 22 days ago
++				328 content list
++					329 button Details
++					330 button Download
++					331 button Copy to Brand Kit
++						332 text Copy to Brand Kit
++						333 text New
++					334 button Move to Trash
+The focused UI element is 329 button Details

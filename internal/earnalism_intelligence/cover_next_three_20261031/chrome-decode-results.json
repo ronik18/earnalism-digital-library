@@ -1,0 +1,65 @@
+{
+  "observed_at": "2026-10-30T18:56:57.975Z",
+  "results": [
+    {
+      "asset": "a-horseman-in-the-sky front",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    },
+    {
+      "asset": "a-horseman-in-the-sky back",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    },
+    {
+      "asset": "a-mystery-of-heroism front",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    },
+    {
+      "asset": "a-mystery-of-heroism back",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    },
+    {
+      "asset": "a-scandal-in-bohemia front",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    },
+    {
+      "asset": "a-scandal-in-bohemia back",
+      "decoded": true,
+      "display": {
+        "height": 300,
+        "width": 200
+      },
+      "height": 1200,
+      "width": 800
+    }
+  ]
+}

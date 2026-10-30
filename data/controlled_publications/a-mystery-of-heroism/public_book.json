@@ -7,14 +7,14 @@
   "category_slug": "gothic-fiction",
   "short_description": "A soldier crosses a battlefield under fire to fetch water from a well — and the bucket is spilled in the final seconds.",
   "description": "Fred Collins risks his life crossing an artillery-swept field to fetch water for his regiment. He returns with the bucket full — and two lieutenants, jostling each other in greeting, spill every drop. Crane's most ironic meditation on the nature of heroism.",
-  "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+  "coverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+  "cover_image": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "14 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "ae6892c87bb0a0aa0a87b3e00b6f4b5cd39f851bc17801d1018092da19c0f43a"
 }

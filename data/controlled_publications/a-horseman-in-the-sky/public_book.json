@@ -7,14 +7,14 @@
   "category_slug": "history-strategy",
   "short_description": "A Union soldier spots a Confederate scout on a cliff — and shoots him, not knowing it is his own father.",
   "description": "Carter Druse, a Virginian fighting for the Union, falls asleep on sentry duty and wakes to see a Confederate horseman on a cliff commanding a view of the entire Union position. He fires — and only a sergeant later witnesses what falls from the cliff.",
-  "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+  "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+  "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "11 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "83bd35d8642b9e8a15c1d2f2b339d25fbf975d8053d9c174bfd63df51d71d621"
 }

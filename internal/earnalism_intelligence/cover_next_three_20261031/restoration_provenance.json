@@ -1,0 +1,26 @@
+[
+  {
+    "key": "heroism-back",
+    "source_path": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-bfc8d53d-16fe-48fa-8346-e74cce685029.png",
+    "sha256": "3d8d331c9e65a29b30794c9bdbad2c04f069e1b2eae47171da02c1d2bce29405",
+    "canva_asset_id": "MAHZgh1MuUs",
+    "method": "Built-in image-generation edit of retained native Canva cover; text-free restoration, exact editable typography retained in Canva",
+    "source_png_native_credentials_present": true
+  },
+  {
+    "key": "scandal-front",
+    "source_path": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-f1411391-6d32-44e3-8419-18c89a039b1f.png",
+    "sha256": "e87da4dcc8bb9bbe500c2b6524c456b7d434f14832112e0ee49ff0db3fd1e25f",
+    "canva_asset_id": "MAHZglfRdek",
+    "method": "Built-in image-generation edit of retained native Canva cover; text-free restoration, exact editable typography retained in Canva",
+    "source_png_native_credentials_present": true
+  },
+  {
+    "key": "scandal-back",
+    "source_path": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-21c50a36-be0f-40c7-a1f0-fd22b36dd05f.png",
+    "sha256": "ecb25c29b4b32a1c9e1e8d5b08236f32d38ee75c130e478b8818346baf0929bd",
+    "canva_asset_id": "MAHZgkh7z3c",
+    "method": "Built-in image-generation edit of retained native Canva cover; text-free restoration, exact editable typography retained in Canva",
+    "source_png_native_credentials_present": true
+  }
+]

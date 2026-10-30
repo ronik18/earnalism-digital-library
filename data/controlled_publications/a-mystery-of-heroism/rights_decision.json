@@ -5,17 +5,20 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "public_book": "683aee759d4d19d31ba2d2823415ebd5cdf0f957cdfa0211976bdc4beeb039ba",
     "reader_manifest": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
     "source_evidence": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
     "approval_evidence": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
-    "checksum_manifest": "c8f23de2765818035fca711607b94b8a79373d32acce4e8b1de8d021fb224e65",
-    "publication_manifest": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7",
-    "cover_provenance": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64",
+    "checksum_manifest": "0df97b223ed55d6f0c5b68c76315e48d5ae8bef066d0fb7fcb138ed8b54adfcd",
+    "publication_manifest": "af32ec9cae69406fac2cd10e9d4e783e62099c6e3fe90d0cf3f9ec8ff83a7a0b",
+    "cover_provenance": "ae6892c87bb0a0aa0a87b3e00b6f4b5cd39f851bc17801d1018092da19c0f43a",
     "reader_release_approval": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
     "chapter_file:chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4",
     "cover_asset:front": "05dc95c5fb886dce25bc6f0422074c0d0e99879af999e592392800af5d157036",
-    "cover_asset:back": "39b2f0614d3b4304ed1bea68056d4b19320997a2c26711a893418323ec70ac29"
+    "cover_asset:back": "39b2f0614d3b4304ed1bea68056d4b19320997a2c26711a893418323ec70ac29",
+    "cover_replacement_front_delivery": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+    "cover_replacement_back_delivery": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+    "cover_replacement_approval": "349dd6abb8bd02862ebb4534dd69892594957b61c463102fceccac4e233dc598"
   },
   "territories": [
     "IN"

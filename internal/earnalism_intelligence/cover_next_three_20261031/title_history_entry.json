@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-10-30T19:00:08.548974+00:00",
+  "decision": "PREPARE_NEXT_THREE_APPROVED_COVER_PAIRS",
+  "base": "52dfeab202f7e26219ce9ceb19f09bc9d88e3ab2",
+  "titles": [
+    "a-horseman-in-the-sky",
+    "a-mystery-of-heroism",
+    "a-scandal-in-bohemia"
+  ],
+  "scope": "Six native JPEGs and necessary mirrored cover/dependency bindings; no app, manuscript/audio/access/customer changes",
+  "evidence": "internal/earnalism_intelligence/cover_next_three_20261031",
+  "production_mutations": 0,
+  "next_action": "Current-head review/CI then authorized serial cover-only deployment and served-byte verification"
+}

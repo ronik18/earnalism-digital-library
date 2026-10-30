@@ -1,0 +1,31 @@
+{
+  "scope": "Current source candidate; no hosted CI or production serving assertion",
+  "base": "52dfeab202f7e26219ce9ceb19f09bc9d88e3ab2",
+  "focused_tests": {
+    "passed": 385,
+    "log_sha256": "98fc0506f31fa2f9bee5b51cdaa6ab7a253988101937f20a646aaca495bea51f"
+  },
+  "workflow_cases": 46,
+  "workflow_log_sha256": "325f13a5aa7ea69067b5ecda17858575c76c212ccffed4c40d714695d07db7b2",
+  "catalogue": {
+    "result": "PASS",
+    "changed_packages": 3,
+    "statuses": {
+      "a-horseman-in-the-sky": "APPROVED",
+      "a-mystery-of-heroism": "APPROVED",
+      "a-scandal-in-bohemia": "APPROVED"
+    },
+    "issues": [],
+    "reader_exposed": true,
+    "audio_exposed": true,
+    "release_authority_matches_reviewed_bindings": true
+  },
+  "seo_freshness": "PASS",
+  "diff_check": "PASS",
+  "native_images": 6,
+  "browser_decodes": 6,
+  "runtime_sha256": "fcdbf0166836cb483f4e4932cdc53149866cf85b49207d96822f8945564a3e62",
+  "runtime_files": 1948,
+  "tests_environment": "Repository-pinned runtime dependencies, pytest8.4.2, pytest-asyncio1.2.0; isolated localhost/test flags, no paid or customer calls",
+  "ci": "NOT_YET_RUN"
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "a-horseman-in-the-sky",
+  "history": [
+    {
+      "event_id": "cover-next-three-20261031-front-aa18ecb7e1c35789",
+      "slug": "a-horseman-in-the-sky",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+        "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+        "sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+        "bytes": 88949,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "557bfed052f57d41030a8736451d045e766e649a56ed145b592285d41139c5ee"
+    },
+    {
+      "event_id": "cover-next-three-20261031-back-945fffedbe706628",
+      "slug": "a-horseman-in-the-sky",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+        "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+        "sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+        "bytes": 95304,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "83aec374f69ab14120c991ca627c8d5e51f939a13bf9f7d1e1fc3fffd24ca927"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-three-20261031-front-aa18ecb7e1c35789",
+    "back": "cover-next-three-20261031-back-945fffedbe706628"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-three-20261031-front-aa18ecb7e1c35789",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-three-20261031-back-945fffedbe706628",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

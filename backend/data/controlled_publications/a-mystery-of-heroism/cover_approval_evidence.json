@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "a-mystery-of-heroism",
+  "history": [
+    {
+      "event_id": "cover-next-three-20261031-front-5145b84f8b4f87eb",
+      "slug": "a-mystery-of-heroism",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+        "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+        "sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88",
+        "bytes": 89666,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "5145b84f8b4f87ebf920a5c367aee26b8c74331b0e0f962261cf604ba8607b88"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "49749c1935f9d18fbe5dcb0c307b0a67bc60b4c8b3f8f7cf120511975ab9a5c9"
+    },
+    {
+      "event_id": "cover-next-three-20261031-back-c68b9810a1f2e70d",
+      "slug": "a-mystery-of-heroism",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+        "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+        "sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb",
+        "bytes": 80124,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "c68b9810a1f2e70dbaaaadaf3bb64fa7281dbfcc080e311ee24e2c0d996567fb"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Heroism/Scandal exact repaired draft save approved, Horseman existing suitable saved design reused unchanged. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "688b844c674cee4e55fc2db2778b5d0571a61ff0418e5545cbaab99169d2e78e"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-three-20261031-front-5145b84f8b4f87eb",
+    "back": "cover-next-three-20261031-back-c68b9810a1f2e70d"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-three-20261031-front-5145b84f8b4f87eb",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-three-20261031-back-c68b9810a1f2e70d",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

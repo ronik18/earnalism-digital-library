@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "public_book": "1d7bf4cc239ccba4a574f908e559b39677703609f492a1dd21b5f73068c0c5a6",
     "reader_manifest": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
     "source_evidence": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
     "approval_evidence": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347"
   },
-  "manifest_sha256": "99ec8d83e43f5231a6868c2858b8aed4817340b251acac5296059217ec1aaa21"
+  "manifest_sha256": "0104650826c0b83ba8da08b8e5f9acac61b08d61b88f61b6cec720bffe183d04"
 }

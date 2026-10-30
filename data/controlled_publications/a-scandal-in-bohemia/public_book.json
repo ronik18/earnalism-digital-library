@@ -7,14 +7,14 @@
   "category_slug": "gothic-fiction",
   "short_description": "Sherlock Holmes meets his match in Irene Adler — the only woman who ever outwitted him.",
   "description": "Holmes is hired to recover a compromising photograph from the brilliant and fearless Irene Adler. For once, the world's greatest detective is outplayed — and he never forgets her. The story that introduced The Woman.",
-  "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+  "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+  "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover-08aae5832e4b8187.jpg",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover-d5c2e64835fe39df.jpg",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "36 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "a30617e88b91d825e131b40b14eeea463bac194951b240a28095dc2420fdeedf"
 }

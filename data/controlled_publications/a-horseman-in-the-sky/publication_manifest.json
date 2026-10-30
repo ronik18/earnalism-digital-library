@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8",
+    "public_book": "15e37c478b1684c18f3433b78b7e7b5c391b2186e3e7b18bd509c248c10b0053",
     "reader_manifest": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
     "source_evidence": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c",
     "approval_evidence": "11791436f943e5791b7efca9279a53679162c97f17e56f7a7697b202a251ba59"
   },
-  "manifest_sha256": "549877fd2e3f41571d367070c7aa647901b88f578a377c8148aa54cc71340905"
+  "manifest_sha256": "114c868516ce707823b4411471d9d217910f3434e37dc4aaa11ff28cdeec046b"
 }

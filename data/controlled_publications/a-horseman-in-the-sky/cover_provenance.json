@@ -1,41 +1,77 @@
 {
-  "schema": "earnalism.exact-existing-cover-provenance.v1",
+  "schema": "earnalism.exact-cover-provenance.v1",
   "slug": "a-horseman-in-the-sky",
-  "checked_at": "2026-10-01T05:38:07.922769+00:00",
-  "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
-  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
-  "cover": {
-    "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
-    "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
-    "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
-    "generator": "scripts/render_english_25_missing_covers.py",
-    "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
-    "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
-    "font_license_url": "https://dejavu-fonts.github.io/License.html",
-    "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
-    "assets": {
-      "front": {
-        "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover.webp",
-        "sha256": "b9fb8340aa519d19a32fefc276a26c72ba102f700e9dc9f643fb537f41526ff2",
-        "bytes": 19374,
-        "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      },
-      "back": {
-        "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover.webp",
-        "sha256": "6e55ee7d626fbc330b205a88d8728e456eaeeffd988ecef45022342139008cca",
-        "bytes": 22202,
-        "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      }
+  "status": "OWNER_AUTHORIZED_COVER_REPLACEMENT_SOURCE_CANDIDATE",
+  "scope": "Cover display only; existing literary/audio rights decisions and publication/access unchanged.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+      "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+      "sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a",
+      "bytes": 88949,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "aa18ecb7e1c35789e1569f83afcdab6615ec9545e6302529e484ccff69011b4a"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+      "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+      "sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41",
+      "bytes": 95304,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "945fffedbe706628e068a3b8e28618cb32469bf38c811c1df8026239d452ba41"
     }
   },
-  "new_art_generated": false,
-  "existing_art_replaced": false
+  "owner_instruction": {
+    "path": "internal/earnalism_intelligence/cover_next_three_20261031/owner_instruction.json",
+    "sha256": "b7c8e6e2cae1f4a26dde1bec25d3f0ead259fec76bb8da45c9d0a5f01b144122"
+  },
+  "evidence_directory": "internal/earnalism_intelligence/cover_next_three_20261031",
+  "artwork_origin": "Owner-origin Canva AI artwork and same-root components, with three identified text-free built-in restorations; exact editable Canva type. See bound component evidence. No exclusive or human-created claim.",
+  "metadata_preservation": "Untouched native Canva JPEG exports; no local re-encoding or metadata transplant. Original APP11/JUMBF credentials present in Horseman both and Heroism front retained. New restored-art pages have XMP but no native APP11; absence recorded. No signature validity or exclusive copyright claim.",
+  "previous_provenance": {
+    "schema": "earnalism.exact-existing-cover-provenance.v1",
+    "slug": "a-horseman-in-the-sky",
+    "checked_at": "2026-10-01T05:38:07.922769+00:00",
+    "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
+    "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "cover": {
+      "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+      "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+      "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+      "generator": "scripts/render_english_25_missing_covers.py",
+      "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+      "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+      "font_license_url": "https://dejavu-fonts.github.io/License.html",
+      "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover.webp",
+          "sha256": "b9fb8340aa519d19a32fefc276a26c72ba102f700e9dc9f643fb537f41526ff2",
+          "bytes": 19374,
+          "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        },
+        "back": {
+          "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover.webp",
+          "sha256": "6e55ee7d626fbc330b205a88d8728e456eaeeffd988ecef45022342139008cca",
+          "bytes": 22202,
+          "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "new_art_generated": false,
+    "existing_art_replaced": false
+  },
+  "production_verified": false
 }
