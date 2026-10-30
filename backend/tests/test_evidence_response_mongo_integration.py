@@ -1,12 +1,13 @@
 """Real process/restart/race tests; explicit disposable loopback replica set only."""
 import asyncio
 from copy import deepcopy
+import json
 import os
 from pathlib import Path
 import subprocess
 import sys
 import time
-from urllib.parse import urlparse
+import secrets
 import uuid
 
 import bcrypt
@@ -22,20 +23,28 @@ pytestmark = pytest.mark.skipif(os.environ.get('CATALOGUE_EVIDENCE_MONGO_INTEGRA
 
 
 class Harness:
-    def __init__(self, uri, db_name, port, logs):
+    def __init__(self, uri, db_name, port, logs, policy):
         self.uri, self.db_name, self.port, self.logs = uri, db_name, port, logs
+        self.policy = policy
         self.process = None
         self.log = None
         self.token = None
 
     def start(self):
-        env = dict(os.environ, MONGODB_URL=self.uri, DB_NAME=self.db_name,
+        from backend.tests.test_shared_redis_limiter_integration import _endpoint
+        redis_url = _endpoint()
+        env = {key: os.environ[key] for key in ('PATH', 'PYTHONPATH', 'PYTHONDONTWRITEBYTECODE')
+               if key in os.environ}
+        env.update(MONGODB_URL=self.uri, DB_NAME=self.db_name,
                    JWT_SECRET='disposable-response-fixture-signing-secret-0123456789',
                    ENVIRONMENT='uat', ENABLE_STARTUP_DB_MAINTENANCE='false',
                    ENABLE_BACKGROUND_WORKERS='false', ENABLE_AUDIOBOOK_PIPELINE='false',
                    ENABLE_SCHEDULED_JOBS='false', ENABLE_QUEUE_CONSUMER='false',
                    ENABLE_BOOK_RENDERING_JOBS='false', ENABLE_COVER_GENERATION='false',
-                   COST_CONTROL_MODE='true', REDIS_URL=os.environ.get('RESPONSE_TEST_REDIS', 'redis://127.0.0.1:26582/9'),
+                   COST_CONTROL_MODE='true', REDIS_URL=redis_url, REDIS_CACHE_ENABLED='false',
+                   MULTI_REPLICA_ENABLED='false', REDIS_PUBLIC_METADATA_ENABLED='false',
+                   READING_PASS_V2_ENABLED='false', AWS_EC2_METADATA_DISABLED='true',
+                   EARNALISM_STARTUP_DATA_GUARD_JSON=json.dumps(self.policy),
                    RAZORPAY_KEY_ID='', RAZORPAY_KEY_SECRET='', RAZORPAY_WEBHOOK_SECRET='')
         self.log = (self.logs / 'backend.log').open('a')
         self.process = subprocess.Popen([sys.executable, '-m', 'uvicorn', 'backend.server:app', '--host', '127.0.0.1', '--port', str(self.port)], env=env, stdout=self.log, stderr=self.log)
@@ -81,32 +90,60 @@ class Harness:
 
 @pytest.fixture(scope='module')
 def harness(tmp_path_factory):
-    uri = os.environ.get('RESPONSE_TEST_MONGO', '')
-    parsed = urlparse(uri)
-    if parsed.hostname != '127.0.0.1' or 'replicaSet=' not in uri:
-        raise RuntimeError('response tests require an explicit loopback replica set')
+    from scripts.uat_mongo_fixture import setup_configuration
+    # Admit only the already authenticated disposable fixture. Never accept an
+    # arbitrary app/provider URI or pass its setup principal into the backend.
+    config = setup_configuration(os.environ)
+    target = f"mongodb://127.0.0.1:{config['port']}/?replicaSet=earnalism-uat-rs0"
     name = 'response_ingestion_disposable_' + uuid.uuid4().hex
-    sync = MongoClient(uri, serverSelectionTimeoutMS=5000)
-    hello = sync.admin.command('hello')
-    assert hello.get('isWritablePrimary') and hello.get('setName')
-    async def indexes():
-        client = AsyncIOMotorClient(uri)
-        await initialize_evidence_indexes(client[name]); client.close()
-    asyncio.run(indexes())
-    db = sync[name]
-    db.users.insert_one({'id': 'response-admin', 'email': 'response-admin@example.com', 'role': 'admin', 'status': 'active', 'password_hash': bcrypt.hashpw(b'disposable-fixture-password', bcrypt.gensalt(rounds=4)).decode()})
-    instance = Harness(uri, name, int(os.environ.get('RESPONSE_TEST_PORT', '18282')), tmp_path_factory.mktemp('response-process'))
-    instance.sync, instance.db = sync, db
+    sync = MongoClient(target, username=config['principal'], password=config['password'],
+                       authSource='admin', serverSelectionTimeoutMS=3000,
+                       connectTimeoutMS=3000, socketTimeoutMS=5000)
+    from backend.tests.test_shared_redis_limiter_integration import _endpoint
+    _endpoint()  # Reject inherited remote Redis before any fixture writes.
+    principal, password = 'uat_evidence_' + secrets.token_hex(8), secrets.token_hex(32)
+    created, instance = False, None
     try:
+        hello = sync.admin.command('hello')
+        assert hello.get('isWritablePrimary') and hello.get('setName') == 'earnalism-uat-rs0'
+        sync.admin.command('createUser', principal, pwd=password, roles=[{'role':'readWrite','db':name}])
+        created = True
+        uri = f"mongodb://{principal}:{password}@127.0.0.1:{config['port']}/{name}?authSource=admin&replicaSet=earnalism-uat-rs0"
+        db = sync[name]
+        markers = [dict(uuid=str(uuid.uuid4()), slug='evidence-fixture-guard-'+letter,
+                        version='fixture-v1', segmentation_version='fixture-blocks-v1', generation=0)
+                   for letter in ('a','b')]
+        for marker in markers:
+            db.books.insert_one({'id':marker['uuid'],'slug':marker['slug'],'is_published':False})
+            db.reader_segment_manifests.insert_one({'book_slug':marker['slug'],'status':'active',
+                'version':marker['version'],'segmentation_version':marker['segmentation_version']})
+        policy = dict(database=name, principal=principal, authentication_database='admin', markers=markers)
+        async def indexes():
+            client = AsyncIOMotorClient(uri)
+            await initialize_evidence_indexes(client[name]); client.close()
+        asyncio.run(indexes())
+        db.users.insert_one({'id': 'response-admin', 'email': 'response-admin@example.com', 'role': 'admin', 'status': 'active', 'password_hash': bcrypt.hashpw(b'disposable-fixture-password', bcrypt.gensalt(rounds=4)).decode()})
+        instance = Harness(uri, name, int(os.environ.get('RESPONSE_TEST_PORT', '18282')), tmp_path_factory.mktemp('response-process'), policy)
+        instance.sync, instance.db = sync, db
         instance.start(); instance.login(); yield instance
     finally:
-        instance.stop(); sync.drop_database(name); sync.close()
+        try:
+            if instance is not None:
+                instance.stop()
+            if created:
+                try:
+                    sync.drop_database(name)
+                finally:
+                    sync.admin.command('dropUser', principal)
+        finally:
+            sync.close()
 
 
 @pytest.fixture(autouse=True)
 def seed(harness):
     for name in ('books', 'catalogue_evidence_decisions', 'catalogue_evidence_decision_audit', 'catalogue_evidence_requeue'):
-        harness.db[name].delete_many({})
+        query = {'id': {'$nin': [m['uuid'] for m in harness.policy['markers']]}} if name == 'books' else {}
+        harness.db[name].delete_many(query)
     harness.db.books.insert_many([dict(edition(), edition_id='book-' + str(n), slug='book-' + str(n), is_published=False) for n in (1, 2, 3)])
 
 
@@ -249,9 +286,9 @@ def test_unauthenticated_request_cannot_write(harness):
     assert harness.db.catalogue_evidence_decisions.count_documents({}) == 0
 
 
-def test_evidence_persistence_does_not_depend_on_redis_delivery(harness, monkeypatch):
-    # No Redis queue is produced: the transactional Mongo outbox is authoritative.
-    monkeypatch.setenv('RESPONSE_TEST_REDIS', 'redis://127.0.0.1:26583/9')
+def test_evidence_persistence_with_redis_modes_off(harness):
+    # Default-OFF independence, not enabled-cache outage evidence. The separate
+    # resilience suite exercises stalled/failed optional Redis connections.
     harness.restart()
     assert harness.submit(payload()).status_code == 200
     assert harness.db.catalogue_evidence_requeue.count_documents({}) == 1

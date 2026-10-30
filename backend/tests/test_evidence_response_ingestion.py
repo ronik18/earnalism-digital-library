@@ -29,6 +29,7 @@ def test_validation_is_exact_and_fail_closed():
 
 class Collection:
     def __init__(self): self.rows = []
+    def with_options(self, **kwargs): return self
     def matches(self, row, query):
         return all(row.get(k) == v if not isinstance(v, dict) else (row.get(k) in v['$in'] if '$in' in v else v.get('$ne') != row.get(k)) for k, v in query.items())
     async def find_one(self, query, projection=None, **kwargs):
@@ -60,6 +61,7 @@ class Client:
 class DB:
     def __init__(self):
         self.client = Client()
+        self.public_metadata_cache_control = Collection()
         self.books = Collection(); self.books.rows = [dict(edition(), _id='fixture-book')]
         self.catalogue_evidence_decisions = Collection(); self.catalogue_evidence_decision_audit = Collection(); self.catalogue_evidence_requeue = Collection()
 
