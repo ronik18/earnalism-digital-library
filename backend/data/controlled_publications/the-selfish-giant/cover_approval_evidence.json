@@ -2,55 +2,72 @@
   "schema_version": "earnalism.cover_approval_evidence.v1",
   "slug": "the-selfish-giant",
   "active_approvals": {
-    "front": "selfish-giant-front-4f588de7e9c1d829",
-    "back": "selfish-giant-back-afba47af368f03c9"
+    "front": "cover-replacement-20261030-front-666e17ea4b125954",
+    "back": "cover-replacement-20261030-back-592c71964e2e0e97"
   },
   "rollback_pointers": {
     "front": {
-      "from_event_id": "selfish-giant-front-4f588de7e9c1d829",
-      "to_event_id": null,
+      "from_event_id": "cover-replacement-20261030-front-666e17ea4b125954",
+      "to_event_id": "selfish-giant-front-4f588de7e9c1d829",
       "previous_canonical_cover": {
-        "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-        "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-        "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-        "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
-        "thumbnail_url": null,
-        "blur_placeholder": null,
-        "dominant_color": "#4A1C27",
-        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_dominant_color": "#254238",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
         "cover_dimensions": {
-          "front": [
-            800,
-            1200
-          ],
           "back": [
             800,
             1200
+          ],
+          "front": [
+            800,
+            1200
           ]
-        }
+        },
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "dominant_color": "#254238",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp"
       }
     },
     "back": {
-      "from_event_id": "selfish-giant-back-afba47af368f03c9",
-      "to_event_id": null,
+      "from_event_id": "cover-replacement-20261030-back-592c71964e2e0e97",
+      "to_event_id": "selfish-giant-back-afba47af368f03c9",
       "previous_canonical_cover": {
-        "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-        "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-        "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
-        "back_cover_thumbnail_url": null,
-        "back_cover_blur_placeholder": null,
-        "back_cover_dominant_color": null,
-        "cover_status": "CLOUDINARY_ASSIGNED",
+        "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_dominant_color": "#254238",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
         "cover_dimensions": {
-          "front": [
-            800,
-            1200
-          ],
           "back": [
             800,
             1200
+          ],
+          "front": [
+            800,
+            1200
           ]
-        }
+        },
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "cover_provenance_sha256": "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp",
+        "dominant_color": "#254238",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793262908/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-4f588de7e9c1d8299897fe82317c49000a39d27fc48c361ad1747c5e504018ce.webp"
       }
     }
   },
@@ -102,6 +119,52 @@
       "rights_basis": "Exact new original generated illustrations and deterministic typography expressly approved by the owner for cover display; existing literary rights and all audio permissions unchanged.",
       "reader_audio_release_truth_unchanged": true,
       "event_sha256": "e641bd8fffcb07b62f965ced1e304cf1f7c7368d4c18d4a2c2b7b3c5764e62f3"
+    },
+    {
+      "event_id": "cover-replacement-20261030-front-666e17ea4b125954",
+      "slug": "the-selfish-giant",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+      "remote_sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+        "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+        "sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+        "width": 800,
+        "height": 1200,
+        "bytes": 141134,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "5e032fc7b8f89090588d1104617988c1decec8d5d420ec7147a757823d797e2a"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-592c71964e2e0e97",
+      "slug": "the-selfish-giant",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+      "remote_sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+        "width": 800,
+        "height": 1200,
+        "bytes": 90250,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306097/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "c1b6436150d73700e38521694b7cca55265c0f7a36de54c1e1228d8e231b42b5"
     }
   ],
   "updated_at": "2026-10-29T08:53:03.392271+00:00"

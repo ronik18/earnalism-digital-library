@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "public_book": "feaab45695c1b52320bd59f15cbc514528596dba136b4483f114af801431eb95",
     "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
     "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
-    "approval_evidence": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13"
+    "approval_evidence": "c231bdd8b1afdd72bf682c2e47d9289377be1f75488234a0f689b8630d578ffa"
   },
-  "manifest_sha256": "d96c5a0e44a0d7d189dcc481c11d504163c8aee740f7e9390c7ab4c12dea0759"
+  "manifest_sha256": "feb9e336a379d67860d5c45cd2ef6d4926a477a3f748fbb8d800f057f107eb1d"
 }

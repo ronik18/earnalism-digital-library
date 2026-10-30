@@ -1,0 +1,110 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "book-5704b31005",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-a6cac9c9cab2b1b6",
+      "slug": "book-5704b31005",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519",
+      "remote_sha256": "a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+        "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+        "sha256": "a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519",
+        "width": 800,
+        "height": 1200,
+        "bytes": 172058,
+        "format": "JPEG",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306137/earnalism/covers/front/cover_candidate_controlled-book-5704b31005-a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519.jpg"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "16f77ecd635de00ee2a9f999891d1e249b8088da1e220b0f153a290590c9257b"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-bb0f98a310c5e83d",
+      "slug": "book-5704b31005",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845",
+      "remote_sha256": "bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+        "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+        "sha256": "bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845",
+        "width": 800,
+        "height": 1200,
+        "bytes": 171462,
+        "format": "JPEG",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306185/earnalism/covers/back/back_cover_candidate_controlled-book-5704b31005-bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845.jpg"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "b1c3ddc47cda948e724092a369b3b8501aa1d2dc4d5379b3d86a2148fd0f3c92"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-a6cac9c9cab2b1b6",
+    "back": "cover-replacement-20261030-back-bb0f98a310c5e83d"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-a6cac9c9cab2b1b6",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "coverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "cover_image": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#24362E",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_provenance_sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319"
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-bb0f98a310c5e83d",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "coverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "cover_image": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#24362E",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_provenance_sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319"
+      }
+    }
+  }
+}

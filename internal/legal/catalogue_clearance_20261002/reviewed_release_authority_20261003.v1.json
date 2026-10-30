@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "aac2754298d8bdb4ad110a3d388c711cce8b5abdf797fcc916408e5778cee135"
+    "backend/data/rights_decision_registry.json": "ff3584847cd05a1a6dcbe1d64dbad184709ddcd73e4be24105966e7cad5292ba"
   },
   "titles": {
     "a-ghost-story": {
@@ -294,7 +294,7 @@
     },
     "the-open-boat": {
       "decision_id": "india-20261001-the-open-boat-owner-text-reader",
-      "record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-open-boat/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-open-boat/reader_manifest.json",
@@ -306,7 +306,10 @@
         "reader_release_approval": "backend/data/controlled_publications/the-open-boat/reader_release_approval.json",
         "chapter_file:chapter-001.json": "backend/data/controlled_publications/the-open-boat/chapters/chapter-001.json",
         "cover_asset:front": "frontend/public/assets/books/the-open-boat/front-cover.webp",
-        "cover_asset:back": "frontend/public/assets/books/the-open-boat/back-cover.webp"
+        "cover_asset:back": "frontend/public/assets/books/the-open-boat/back-cover.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-open-boat/cover_approval_evidence.json"
       }
     },
     "the-pit-and-the-pendulum": {
@@ -540,7 +543,7 @@
     },
     "the-student": {
       "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
-      "record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+      "record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-student/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-student/reader_manifest.json",
@@ -553,12 +556,15 @@
         "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/the-student/the-student-cover_url.png",
         "cover_front_delivery_asset": "frontend/public/assets/books/the-student/front-7c5504f1.webp",
         "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/the-student/the-student-back_cover_url.png",
-        "cover_back_delivery_asset": "frontend/public/assets/books/the-student/back-47c93f26.webp"
+        "cover_back_delivery_asset": "frontend/public/assets/books/the-student/back-47c93f26.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-student/cover_approval_evidence.json"
       }
     },
     "the-art-of-money-getting": {
       "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
-      "record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+      "record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-art-of-money-getting/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-art-of-money-getting/reader_manifest.json",
@@ -573,7 +579,10 @@
         "cover_front_delivery": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
         "cover_back_delivery": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
         "cover_delivery_review_a": "backend/data/controlled_publications/the-art-of-money-getting/review_evidence/artmoney-delivery-review-a.json",
-        "cover_delivery_review_b": "backend/data/controlled_publications/the-art-of-money-getting/review_evidence/artmoney-delivery-review-b.json"
+        "cover_delivery_review_b": "backend/data/controlled_publications/the-art-of-money-getting/review_evidence/artmoney-delivery-review-b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-art-of-money-getting/cover_approval_evidence.json"
       }
     },
     "bn-035": {
@@ -609,7 +618,7 @@
     },
     "dsires-baby": {
       "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
-      "record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/dsires-baby/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/dsires-baby/reader_manifest.json",
@@ -625,12 +634,15 @@
         "cover_back_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
         "publication_authorization": "backend/data/controlled_publications/dsires-baby/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/dsires-baby/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/dsires-baby/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/dsires-baby/evidence/review_b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/dsires-baby/cover_approval_evidence.json"
       }
     },
     "sredni-vashtar": {
       "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
-      "record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/sredni-vashtar/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
@@ -646,12 +658,15 @@
         "cover_back_delivery_asset": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
         "publication_authorization": "backend/data/controlled_publications/sredni-vashtar/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/sredni-vashtar/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/sredni-vashtar/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/sredni-vashtar/evidence/review_b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/sredni-vashtar/cover_approval_evidence.json"
       }
     },
     "the-cop-and-the-anthem": {
       "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
-      "record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-cop-and-the-anthem/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
@@ -663,12 +678,15 @@
         "publication_authorization": "backend/data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json",
         "cover_provenance": "backend/data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json",
         "acceptance_review_a": "backend/data/controlled_publications/the-cop-and-the-anthem/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/the-cop-and-the-anthem/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/the-cop-and-the-anthem/evidence/review_b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-cop-and-the-anthem/cover_approval_evidence.json"
       }
     },
     "the-open-window": {
       "decision_id": "india-20261026-the-open-window-protected-package-publication",
-      "record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
+      "record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
@@ -680,12 +698,15 @@
         "publication_authorization": "backend/data/controlled_publications/the-open-window/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/the-open-window/evidence/review_a.json",
         "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json",
-        "cover_approval_evidence": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json"
+        "cover_approval_evidence": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json"
       }
     },
     "the-selfish-giant": {
       "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
-      "record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
+      "record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
@@ -696,7 +717,10 @@
         "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
         "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
       }
     },
     "the-science-of-getting-rich": {
@@ -952,7 +976,7 @@
     },
     "book-5704b31005": {
       "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
-      "record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/book-5704b31005/source_evidence.json",
         "source_integrity_validation": "backend/data/controlled_publications/book-5704b31005/source_integrity_validation.json",
@@ -965,7 +989,10 @@
         "publication_authorization": "backend/data/controlled_publications/book-5704b31005/publication_authorization.json",
         "owner_artwork_declaration": "backend/data/controlled_publications/book-5704b31005/owner_artwork_declaration.json",
         "acceptance_review_a": "backend/data/controlled_publications/book-5704b31005/evidence/review_a.json",
-        "acceptance_review_b": "backend/data/controlled_publications/book-5704b31005/evidence/review_b.json"
+        "acceptance_review_b": "backend/data/controlled_publications/book-5704b31005/evidence/review_b.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+        "cover_replacement_approval": "backend/data/controlled_publications/book-5704b31005/cover_approval_evidence.json"
       }
     }
   },

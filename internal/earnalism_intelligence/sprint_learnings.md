@@ -2846,3 +2846,8 @@ Backend-only Railway uploads must preserve the configured backend/ archive prefi
 Concurrent transaction tests must retain Task objects rather than numeric task IDs across gather phases; IDs can be recycled and silently bypass or deadlock a barrier. Rendezvous only the first callback for each request, bound both barrier and request-pair waits, and preserve real Mongo CAS/idempotency/rollback assertions. An algorithmic deadlock reproduction does not prove a particular hosted interleaving; record bounded original-run PASS separately from corrected-run PASS.
 
 After the corrected backend-only CLOSED source merges, reconcile its OPEN successor by removing only the exact temporary pause branch. Preserve upload seals, sanitized diagnostics and corrected concurrency tests. Qualify both immutable sources before pausing purchases; neither source CI nor a no-effect receipt proves a retained guarded provider image.
+
+
+## Nine exact cover replacements — 30 October 2026
+
+Candidate upload is not canonical cover publication. Reuse stored exact-hash originals; preserve old cover bytes/mappings. Cover replacements also need checksum, publication-manifest, accepted-record/registry, bootstrap, reviewed-authority and static-SEO bindings. Preserve source/chapter/Reader/access state and both existing protected audiobooks. Keep schema annotations outside strict rights records. A model pixel qualification at4x must remain disclosed even when normal cover display is acceptable. Current source review and local build/tests do not establish deployed-source identity or authorize unrelated backend rollout.

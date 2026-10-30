@@ -7,14 +7,14 @@
   "category_slug": "business",
   "short_description": "A clean digital reading edition of P. T. Barnum's business classic.",
   "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
-  "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
-  "cover_status": "EXACT_REVIEWED_OWNER_ART_DERIVATIVE_WEBP_DELIVERY_REVIEWED",
+  "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "57 min",
   "formats": [
@@ -133,5 +133,8 @@
     }
   },
   "sync_tier": "NONE",
-  "publication_authorization_sha256": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e"
+  "publication_authorization_sha256": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e",
+  "cover_provenance_sha256": "5b930ec47783f0915fb3ac1be337b4ef19200edd2008ea18349599b4dc79eef9",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305586/earnalism/covers/front/cover_candidate_controlled-the-art-of-money-getting-4cdaed41b8b2e173662dbd4dc9aaa7da336c67c3c8fa572833d1f69767ed1b7d.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305619/earnalism/covers/back/back_cover_candidate_controlled-the-art-of-money-getting-1639bd169616e489a5927ff90a7387427a96364a9f6346ba29443638bab9f9ae.webp"
 }

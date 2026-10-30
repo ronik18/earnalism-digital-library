@@ -94,7 +94,7 @@
     },
     {
       "decision_id": "india-20261001-the-open-boat-owner-text-reader",
-      "record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
       "slug": "the-open-boat"
     },
     {
@@ -154,12 +154,12 @@
     },
     {
       "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
-      "record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+      "record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
       "slug": "the-student"
     },
     {
       "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
-      "record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+      "record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
       "slug": "the-art-of-money-getting"
     },
     {
@@ -174,27 +174,27 @@
     },
     {
       "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
-      "record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
       "slug": "dsires-baby"
     },
     {
       "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
-      "record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
       "slug": "sredni-vashtar"
     },
     {
       "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
-      "record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
       "slug": "the-cop-and-the-anthem"
     },
     {
       "decision_id": "india-20261026-the-open-window-protected-package-publication",
-      "record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
+      "record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
       "slug": "the-open-window"
     },
     {
       "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
-      "record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
+      "record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
       "slug": "the-selfish-giant"
     },
     {
@@ -264,7 +264,7 @@
     },
     {
       "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
-      "record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
       "slug": "book-5704b31005"
     }
   ]

@@ -2,55 +2,72 @@
   "schema_version": "earnalism.cover_approval_evidence.v1",
   "slug": "the-open-window",
   "active_approvals": {
-    "front": "open-window-revised-front-ab934152cb8fb818",
-    "back": "open-window-revised-back-05d22a1728308733"
+    "front": "cover-replacement-20261030-front-00ad7161558c90b8",
+    "back": "cover-replacement-20261030-back-b5f55ed5a341460f"
   },
   "rollback_pointers": {
     "front": {
-      "from_event_id": "open-window-revised-front-ab934152cb8fb818",
-      "to_event_id": null,
+      "from_event_id": "cover-replacement-20261030-front-00ad7161558c90b8",
+      "to_event_id": "open-window-revised-front-ab934152cb8fb818",
       "previous_canonical_cover": {
-        "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-        "cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-        "coverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-        "cover_image": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
-        "thumbnail_url": null,
-        "blur_placeholder": null,
-        "dominant_color": "#4A1C27",
-        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_dominant_color": "#122D2F",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
         "cover_dimensions": {
           "back": [
-            800,
-            1200
-          ],
-          "front": [
-            800,
-            1200
-          ]
-        }
-      }
-    },
-    "back": {
-      "from_event_id": "open-window-revised-back-05d22a1728308733",
-      "to_event_id": null,
-      "previous_canonical_cover": {
-        "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-        "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-        "backCoverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
-        "back_cover_thumbnail_url": null,
-        "back_cover_blur_placeholder": null,
-        "back_cover_dominant_color": null,
-        "cover_status": "CLOUDINARY_ASSIGNED",
-        "cover_dimensions": {
-          "back": [
-            800,
-            1200
+            1600,
+            2400
           ],
           "front": [
             1600,
             2400
           ]
-        }
+        },
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "dominant_color": "#102A2C",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png"
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-b5f55ed5a341460f",
+      "to_event_id": "open-window-revised-back-05d22a1728308733",
+      "previous_canonical_cover": {
+        "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_dominant_color": "#122D2F",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "cover_dimensions": {
+          "back": [
+            1600,
+            2400
+          ],
+          "front": [
+            1600,
+            2400
+          ]
+        },
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+        "cover_semantic_match_score": 9.8,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png",
+        "dominant_color": "#102A2C",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793009156/earnalism/covers/front/cover_candidate_controlled-the-open-window-ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc.png"
       }
     }
   },
@@ -102,6 +119,52 @@
       "rights_basis": "Owner-approved revised Canva delivery, exact retained source-file hashes and prior cover QA",
       "reader_audio_release_truth_unchanged": true,
       "event_sha256": "d89b84bf2e0b54417ad7b7196555aacc346e8ce84474ae37fe9845635b79eca6"
+    },
+    {
+      "event_id": "cover-replacement-20261030-front-00ad7161558c90b8",
+      "slug": "the-open-window",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+      "remote_sha256": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+        "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+        "sha256": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+        "width": 800,
+        "height": 1200,
+        "bytes": 120576,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306019/earnalism/covers/front/cover_candidate_controlled-the-open-window-00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "a9f417d1f727a7c09fb840f349a3386e1d9c4b283a2d40d3ec4eab9f0aea84ee"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-b5f55ed5a341460f",
+      "slug": "the-open-window",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
+      "remote_sha256": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+        "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+        "sha256": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
+        "width": 800,
+        "height": 1200,
+        "bytes": 67398,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793306040/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "1d620e4a32d4dd9365f9369d5c96acb664cb85abf72ab9d65caf02a390a2862c"
     }
   ],
   "updated_at": "2026-10-26T10:23:01.242177+00:00"

@@ -16,7 +16,7 @@
   "allowCheckout": false,
   "allowPayment": false,
   "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
-  "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+  "cover_provenance_sha256": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b",
   "production_observed": false,
   "runtime_observed": false,
   "historical_metadata_preserved_only_in_preimages": true,

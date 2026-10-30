@@ -92,7 +92,7 @@
   "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
   "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
   "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
-  "cover_provenance_sha256": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+  "cover_provenance_sha256": "683e346792e11fb12035f77fb0b22cb08e65691e00a7a75cdaa19a58f02a7419",
   "endpoint_url": "/api/reader/book/the-open-window/audiobook/manifest",
   "independent_reviews": {
     "review_a": {

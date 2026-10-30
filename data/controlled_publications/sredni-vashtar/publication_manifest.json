@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "public_book": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c",
     "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
     "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
-    "approval_evidence": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0"
+    "approval_evidence": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e"
   },
-  "manifest_sha256": "ccfec13dbf80bb3dec95215f7f7759be8f622aa6de404d07a11c820ff281e29b"
+  "manifest_sha256": "7e026dd91710ea55c9b5a01e3dbd2cc5a3ff5f997b2e2d48ffca2b2967bbbafe"
 }

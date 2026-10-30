@@ -5,9 +5,9 @@
   "allowPublicReading": true,
   "approved_to_publish": true,
   "author": "Saki",
-  "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
   "benefits": [
     "Read a legally cleared digital text.",
     "Enjoy a clean, structured reading format.",
@@ -32,7 +32,7 @@
     }
   ],
   "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
-  "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
   "cover_dimensions": {
     "front": [
       800,
@@ -43,11 +43,11 @@
       1200
     ]
   },
-  "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
   "cover_semantic_match_score": 9.8,
-  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
-  "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
+  "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
   "created_at": "2026-07-03T20:07:48Z",
   "description": "Conradin was ten years old, and the doctor had pronounced his professional opinion that the boy would not live another five years. The doctor was silky and effete, and counted for little, but his opinion was endorsed by Mrs. de Ropp, who counted for nearly everything. Mrs. De Ropp was Conradin's cousin and guardian, and in his eyes she represented those three-fifths of the world that are necessary and disagreeable and real; the other two-fifths, in perpetual antagonism to the foregoing, were summed up in himself and his imagination. One of these days Conradin supposed he would succumb to the mastering pressure of wearisome necessary things--such as illnesses and coddling restrictions and drawn-out dullness. Without his imagination, which was rampant under the spur of loneliness, he would have succumbed long ago.",
   "dominant_color": "#4A1C27",
@@ -94,9 +94,11 @@
     "status": "DISABLED_TEXT_READER_ONLY"
   },
   "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
-  "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+  "cover_provenance_sha256": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b",
   "reader_enabled": true,
   "preview_enabled": true,
   "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
-  "production_observed": false
+  "production_observed": false,
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp"
 }

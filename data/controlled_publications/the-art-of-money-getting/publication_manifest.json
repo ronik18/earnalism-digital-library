@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+    "public_book": "d14261ddf863aee0c145bad3f59070c21c28a7ebcfb85401a47235d3c3dd2baa",
     "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
     "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
-    "approval_evidence": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627"
+    "approval_evidence": "97b86a96208b8acb5dca7cb2b084efcbaa7e846cd48f4c4e83c0517f05d50474"
   },
-  "manifest_sha256": "ace585b0a821dde1b06181a218dcb76a757da8f78e45f793a9dd7d0efdcfa1d8"
+  "manifest_sha256": "4d0559fc5da0f7cd31b1ed6ed002baeab6fa460b12db273dbdd3fcda905c1a66"
 }

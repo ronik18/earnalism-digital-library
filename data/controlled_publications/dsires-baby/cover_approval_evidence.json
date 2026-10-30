@@ -1,0 +1,112 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "dsires-baby",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-41886390fdf7c5d1",
+      "slug": "dsires-baby",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d",
+      "remote_sha256": "41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+        "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+        "sha256": "41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d",
+        "width": 800,
+        "height": 1200,
+        "bytes": 129472,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305858/earnalism/covers/front/cover_candidate_controlled-dsires-baby-41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "3d34a8f8ba2341f45c55671df820ffd0b2ce4e1014a56c0b3868495d114b076c"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-27e80af7db81b325",
+      "slug": "dsires-baby",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9",
+      "remote_sha256": "27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+        "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+        "sha256": "27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9",
+        "width": 800,
+        "height": 1200,
+        "bytes": 87856,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305876/earnalism/covers/back/back_cover_candidate_controlled-dsires-baby-27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "d1ba51690c1eb0f5e63f039d619752d5d87d117db83aad0b8b4e2a208884c879"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-41886390fdf7c5d1",
+    "back": "cover-replacement-20261030-back-27e80af7db81b325"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-41886390fdf7c5d1",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "coverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_image": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_semantic_match_score": 9.8,
+        "cover_provenance_sha256": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-27e80af7db81b325",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "coverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_image": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "cover_semantic_match_score": 9.8,
+        "cover_provenance_sha256": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+      }
+    }
+  }
+}

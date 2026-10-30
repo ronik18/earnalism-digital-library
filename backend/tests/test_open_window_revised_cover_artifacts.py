@@ -4,7 +4,7 @@ from pathlib import Path
 from backend.catalog_truth import load_controlled_artifact_book,public_book_projection
 from backend.rights_decision_gate import load_production_registry,record_sha256
 ROOT=Path(__file__).resolve().parents[2]
-EXPECTED={'front':'ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc','back':'05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a'}
+EXPECTED={'front':'00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482','back':'b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615'}
 def read(path):return json.loads(path.read_text())
 def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
     a=ROOT/'data/controlled_publications/the-open-window';b=ROOT/'backend/data/controlled_publications/the-open-window'
@@ -16,12 +16,16 @@ def test_exact_revised_cover_pair_mirrors_and_checksum_bindings():
     for kind,sha in EXPECTED.items():
         event=next(x for x in evidence['history'] if x['event_id']==evidence['active_approvals'][kind])
         assert event['candidate_sha256']==event['remote_sha256']==sha
-        assert event['cloudinary']['version_id']
-        assert event['cloudinary']['url']==book['cover_url' if kind=='front' else 'back_cover_url']
+        delivery=event['static_delivery']
+        assert delivery['sha256']==sha
+        assert hashlib.sha256((ROOT/delivery['path']).read_bytes()).hexdigest()==sha
+        assert delivery['url']==book['cover_url' if kind=='front' else 'back_cover_url']
+        assert '/image/upload/v' in delivery['stored_original_url'] and sha in delivery['stored_original_url']
+        assert any(prior.get('cloudinary',{}).get('version_id') for prior in evidence['history'] if prior['event_id']!=event['event_id'])
         assert event['reader_audio_release_truth_unchanged'] is True
     projected=load_controlled_artifact_book('the-open-window',artifact_dir=b)
-    assert EXPECTED['front'] in projected['cover_url']
-    assert EXPECTED['back'] in projected['back_cover_url']
+    assert EXPECTED['front'][:16] in projected['cover_url']
+    assert EXPECTED['back'][:16] in projected['back_cover_url']
     assert projected['audio_enabled'] is True
     public=public_book_projection(projected)
     assert public['audio_url'] == ''

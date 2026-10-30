@@ -1,0 +1,108 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-open-boat",
+  "history": [
+    {
+      "event_id": "cover-replacement-20261030-front-2d7932de2d158b09",
+      "slug": "the-open-boat",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb",
+      "remote_sha256": "2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+        "url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+        "sha256": "2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb",
+        "width": 800,
+        "height": 1200,
+        "bytes": 88414,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305689/earnalism/covers/front/cover_candidate_controlled-the-open-boat-2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "884629153d7254b20e036b1ff940c9ada3711beb1194550972bea8ea739d0e25"
+    },
+    {
+      "event_id": "cover-replacement-20261030-back-599ef5953790561f",
+      "slug": "the-open-boat",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c",
+      "remote_sha256": "599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c",
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+        "url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+        "sha256": "599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c",
+        "width": 800,
+        "height": 1200,
+        "bytes": 61880,
+        "format": "WEBP",
+        "stored_original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1793305723/earnalism/covers/back/back_cover_candidate_controlled-the-open-boat-599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c.webp"
+      },
+      "approved_by": "Direct owner GO LIVE instruction; prepared by Codex",
+      "approval_note": "Exact selected pair and approved private repairs; no publication/access/audio state changes.",
+      "rights_basis": "Retained owner-directed Canva artwork/native font raster-use evidence; underlying text/audio rights unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "fd9800ca5c5938a0c1e636411ee7faedcce360432496eb7d336b599ba23690b3"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-replacement-20261030-front-2d7932de2d158b09",
+    "back": "cover-replacement-20261030-back-599ef5953790561f"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-replacement-20261030-front-2d7932de2d158b09",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-replacement-20261030-back-599ef5953790561f",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}
