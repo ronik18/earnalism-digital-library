@@ -224,6 +224,42 @@ def test_real_mongo_rejects_cross_title_and_cross_kind_replay_and_recovers_same_
     asyncio.run(scenario())
 
 
+async def _join_transaction_pair_once(barrier, seen_tasks, *, phase, timeout=10):
+    # Keep actual Tasks alive across pairs. Numeric IDs can be recycled after
+    # gather releases a completed pair, leaving only one next task rendezvousing.
+    task = asyncio.current_task()
+    if task not in seen_tasks:
+        seen_tasks.add(task)
+        try:
+            await asyncio.wait_for(barrier.wait(), timeout)
+        except asyncio.TimeoutError as error:
+            raise TimeoutError(f"{phase}: first transaction pair did not rendezvous") from error
+
+
+def test_transaction_pair_harness_retains_tasks_across_pairs_and_skips_retries():
+    async def scenario():
+        import gc
+        barrier, seen = asyncio.Barrier(2), set()
+        async def attempt(phase):
+            await _join_transaction_pair_once(barrier, seen, phase=phase, timeout=.2)
+            # Mongo retries the callback in this same task; no second rendezvous.
+            await _join_transaction_pair_once(barrier, seen, phase=phase, timeout=.2)
+        for phase in range(16):
+            await asyncio.wait_for(asyncio.gather(attempt(str(phase)), attempt(str(phase))), 1)
+            await asyncio.sleep(0)
+            gc.collect()
+        assert len(seen) == 32
+        assert all(isinstance(task, asyncio.Task) and task.done() for task in seen)
+    asyncio.run(scenario())
+
+
+def test_transaction_pair_harness_reports_unpaired_callback():
+    async def scenario():
+        with pytest.raises(TimeoutError, match="fixture-phase: first transaction pair"):
+            await _join_transaction_pair_once(asyncio.Barrier(2), set(), phase="fixture-phase", timeout=.01)
+    asyncio.run(scenario())
+
+
 def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale_rollback(monkeypatch):
     async def scenario():
         async with _isolated_database() as database:
@@ -234,20 +270,17 @@ def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale
 
             async def coordinated_runner(callback, **kwargs):
                 async def coordinated(session):
-                    task = id(asyncio.current_task())
-                    if task not in seen_tasks:
-                        seen_tasks.add(task)
-                        await barrier.wait()
+                    await _join_transaction_pair_once(barrier, seen_tasks, phase="promotion")
                     return await callback(session)
                 return await original_runner(coordinated, **kwargs)
 
             monkeypatch.setattr(server, "_run_reader_segment_activation_transaction", coordinated_runner)
             first = _promotion("canonical-fixture-v2", "canonical-fixture-v1", 0, "mongo-concurrent-promote-a")
             second = _promotion("canonical-fixture-v2", "canonical-fixture-v1", 0, "mongo-concurrent-promote-b")
-            outcomes = await asyncio.gather(
+            outcomes = await asyncio.wait_for(asyncio.gather(
                 _http_code(server.admin_promote_reading_pass_segments("fixture-book", first, {"email": "fixture@example.test"})),
                 _http_code(server.admin_promote_reading_pass_segments("fixture-book", second, {"email": "fixture@example.test"})),
-            )
+            ), 30)
             assert sorted(kind for kind, _value in outcomes) == ["http", "result"]
             assert next(value for kind, value in outcomes if kind == "http") == "STALE_ACTIVE_SEGMENT_VERSION"
             state = await database.reader_segment_activation_state.find_one({"book_slug": "fixture-book"}, {"_id": 0})
@@ -258,7 +291,7 @@ def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale
             # not to perform two state transitions.
             winning_operation_id = next(value for kind, value in outcomes if kind == "result")["operation_id"]
             winning_payload = first if winning_operation_id == first.operation_id else second
-            retry_outcomes = await asyncio.gather(
+            retry_outcomes = await asyncio.wait_for(asyncio.gather(
                 _http_code(server.admin_promote_reading_pass_segments(
                     "fixture-book",
                     winning_payload,
@@ -269,7 +302,7 @@ def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale
                     winning_payload,
                     {"email": "fixture@example.test"},
                 )),
-            )
+            ), 30)
             assert retry_outcomes[0] == retry_outcomes[1]
             assert retry_outcomes[0][0] == "result"
 
@@ -281,14 +314,14 @@ def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale
             same_id_payload = _promotion(
                 "canonical-fixture-v2", "canonical-fixture-v1", 0, "mongo-concurrent-same-id"
             )
-            same_id_outcomes = await asyncio.gather(
+            same_id_outcomes = await asyncio.wait_for(asyncio.gather(
                 _http_code(server.admin_promote_reading_pass_segments(
                     "same-id-book", same_id_payload, {"email": "fixture@example.test"}
                 )),
                 _http_code(server.admin_promote_reading_pass_segments(
                     "same-id-book", same_id_payload, {"email": "fixture@example.test"}
                 )),
-            )
+            ), 30)
             assert [kind for kind, _value in same_id_outcomes] == ["result", "result"]
             assert same_id_outcomes[0][1] == same_id_outcomes[1][1]
             same_id_state = await database.reader_segment_activation_state.find_one(
@@ -317,18 +350,15 @@ def test_real_mongo_serializes_concurrent_promoters_retries_bootstraps_and_stale
 
             async def bootstrap_runner(callback, **kwargs):
                 async def coordinated(session):
-                    task = id(asyncio.current_task())
-                    if task not in bootstrap_seen:
-                        bootstrap_seen.add(task)
-                        await bootstrap_barrier.wait()
+                    await _join_transaction_pair_once(bootstrap_barrier, bootstrap_seen, phase="bootstrap")
                     return await callback(session)
                 return await original_runner(coordinated, **kwargs)
 
             monkeypatch.setattr(server, "_run_reader_segment_activation_transaction", bootstrap_runner)
-            bootstrap_outcomes = await asyncio.gather(
+            bootstrap_outcomes = await asyncio.wait_for(asyncio.gather(
                 _http_code(server.admin_bootstrap_reading_pass_segments("bootstrap-book", server.ReadingPassSegmentBootstrapIn(target_segmentation_version="canonical-fixture-v2", operation_id="mongo-bootstrap-a"), {"email": "fixture@example.test"})),
                 _http_code(server.admin_bootstrap_reading_pass_segments("bootstrap-book", server.ReadingPassSegmentBootstrapIn(target_segmentation_version="canonical-fixture-v2", operation_id="mongo-bootstrap-b"), {"email": "fixture@example.test"})),
-            )
+            ), 30)
             assert sorted(kind for kind, _value in bootstrap_outcomes) == ["http", "result"]
             assert next(value for kind, value in bootstrap_outcomes if kind == "http") == "ACTIVE_SEGMENT_VERSION_EXISTS"
 

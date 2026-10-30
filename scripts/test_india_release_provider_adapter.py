@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from concurrent.futures import ThreadPoolExecutor
 import threading
 import unittest
+from unittest.mock import patch
 from scripts import india_release_provider_adapter as a
 
 
@@ -128,6 +129,32 @@ class ProviderAdapterTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             adapter.perform('stage_frontend', self.binding, self.approval())
         self.assertEqual(len(self.calls), 1)
+
+    def test_backend_payload_seal_binds_actual_input_before_intent(self):
+        payload = {'source': 'a'*40, 'runtime_expected_sha256': 'd'*64,
+                   'files': [{'path':'backend/inert.py','sha256':'f'*64,'bytes':1}]}
+        b = {**self.binding, 'native_pause_acceptance_sha256':'b'*64,
+             'closed_server_sha256':'c'*64, 'source_delivery_sha256':'d'*64,
+             'purchase_mode':'CLOSED', 'current_backend_deployment_id':'inert-current',
+             'current_backend_source_sha':'e'*40, 'config_sha256':'c'*64,
+             'frontend_deployment_id':'dpl_INERT', 'backend_payload_sha256':a.digest(payload)}
+        approval = {**self.approval('release_guarded_bootstrap', b), 'bootstrap_preflight_sha256':'d'*64}
+        actual = {**self.observe(), **b, 'bootstrap_preflight_sha256':'d'*64,
+                  'current_backend_healthy':True, 'native_healthcheck_traffic_gating':True,
+                  'new_resources_or_config_changes':False, 'frontend_signed_purchase_ready':True,
+                  'cli_version':a.CLI_VERSIONS['railway']}
+        with patch.object(a.subprocess, 'check_output', side_effect=['a'*40,'']), \
+             patch('scripts.backend_upload_payload.qualify', return_value=payload):
+            with self.assertRaisesRegex(ValueError,'upload payload'):
+                self.adapter(observe=lambda *x:{**actual,'backend_payload_sha256':'0'*64}).perform('release_guarded_bootstrap',b,approval)
+        self.assertEqual(self.calls,[])
+        self.assertFalse((self.root/'journal').exists())
+        with patch.object(a.subprocess, 'check_output', side_effect=['a'*40,'']), \
+             patch('scripts.backend_upload_payload.qualify', return_value=payload):
+            result=self.adapter(observe=lambda *x:actual).perform('release_guarded_bootstrap',b,approval)
+        self.assertEqual(result['binding']['backend_payload_sha256'],a.digest(payload))
+        self.assertEqual(self.calls[0][-1],str(self.root.resolve()/'backend'))
+        self.assertIn('RECONCILIATION_REQUIRED',result['state'])
 
     def test_process_interruption_leaves_exclusive_intent(self):
         def interrupted(*args, **kwargs): raise SystemExit('synthetic process stop')

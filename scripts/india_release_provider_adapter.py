@@ -214,7 +214,8 @@ class ProviderAdapter:
                 raise ValueError('Invalid exact candidate identity')
             return ['vercel', 'promote', binding['deployment_id'], '--yes', '--scope', TEAM]
         return ['railway', 'up', '--ci', '--project', RAILWAY_PROJECT,
-                '--service', SERVICE, '--environment', ENVIRONMENT, '--json']
+                '--service', SERVICE, '--environment', ENVIRONMENT, '--json',
+                str(Path(binding['source_root']).resolve() / 'backend')]
 
     def perform(self, action, binding, approval):
         validate_approval(action, binding, approval, self.owner_authorized, self.clock())
@@ -274,6 +275,14 @@ class ProviderAdapter:
             dirty = subprocess.check_output(['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True).strip()
             if sha != binding['source_sha'] or dirty:
                 raise ValueError('Backend source not exact/clean')
+            # Railway5.71 with explicit --project uses cwd as archive prefix.
+            # Absolute backend input keeps backend/ paths; never path-as-root.
+            from scripts.backend_upload_payload import qualify
+            payload = qualify(source)
+            if (binding.get('backend_payload_sha256') != digest(payload)
+                    or actual.get('backend_payload_sha256') != digest(payload)
+                    or payload['runtime_expected_sha256'] != binding.get('source_delivery_sha256')):
+                raise ValueError('Exact reviewed backend upload payload unqualified')
         # Only one operations directory may be created beneath the existing
         # owner-admitted durable namespace; never recursively create ancestors.
         parent_info=self.journal.parent.lstat()
