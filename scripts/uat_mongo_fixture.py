@@ -11,7 +11,7 @@ from urllib.parse import parse_qs, urlparse
 from uuid import uuid4
 
 
-PREFIXES = {"rpseg_it_", "rpadmit_it_", "acceptance_cap_synthetic_",
+PREFIXES = {"public_metadata_it_", "rpseg_it_", "rpadmit_it_", "acceptance_cap_synthetic_",
             "acceptance_operator_synthetic_", "inspection_timeout_it_"}
 
 

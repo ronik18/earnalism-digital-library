@@ -261,6 +261,11 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager, suppress
 from contextvars import ContextVar
+from functools import wraps
+try:
+    import public_metadata_cache as metadata_cache
+except ModuleNotFoundError:
+    from backend import public_metadata_cache as metadata_cache
 from pymongo.errors import PyMongoError
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
@@ -1598,7 +1603,7 @@ async def initialize_replica_state_backends() -> None:
         return
     if not REDIS_URL:
         message = "REDIS_URL is required for shared Redis cache/state."
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message)
         logger.warning("%s Continuing without Redis.", message)
         return
@@ -1606,22 +1611,33 @@ async def initialize_replica_state_backends() -> None:
         import redis.asyncio as redis  # type: ignore
     except Exception as exc:
         message = "Redis cache/state requires the redis Python package."
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message) from exc
         logger.warning("%s Continuing without Redis.", message)
         return
     _redis_client = redis.from_url(
         REDIS_URL,
-        socket_connect_timeout=REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS,
-        socket_timeout=REDIS_SOCKET_TIMEOUT_SECONDS,
-        retry_on_timeout=True,
+        socket_connect_timeout=(max(.05, min(.25, REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS))
+                                if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
+                                else REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS),
+        socket_timeout=(max(.05, min(.25, REDIS_SOCKET_TIMEOUT_SECONDS))
+                        if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
+                        else REDIS_SOCKET_TIMEOUT_SECONDS),
+        retry_on_timeout=not (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)),
     )
     try:
         await _redis_client.ping()
     except Exception as exc:
+        close = getattr(_redis_client, "aclose", None)
+        if callable(close):
+            try:
+                await asyncio.wait_for(close(), .25)
+            except Exception:
+                logger.warning("Optional Redis startup connection cleanup incomplete")
         _redis_client = None
+        _redis_available = False
         message = f"Redis cache/state ping failed: {exc}"
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message) from exc
         logger.warning("%s Continuing without Redis.", message)
         return
@@ -1630,8 +1646,17 @@ async def initialize_replica_state_backends() -> None:
     if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
         await _configure_redis_cache_policy()
     if PUBLIC_CACHE_ENABLED:
-        await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
-    logger.info("Redis-backed cache/state is enabled.")
+        if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED):
+            try:
+                if not await metadata_cache.Control(db).startup():
+                    _redis_available = False
+                    logger.warning("Public metadata cache remains bypassed: durable fence/admission unavailable")
+            except Exception:
+                _redis_available = False
+                logger.warning("Public metadata cache startup unavailable; authoritative routes remain available")
+        else:
+            await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
+    logger.info("Redis-backed cache/state enabled." if _redis_available else "Public metadata cache bypassed; authoritative routes remain available.")
 
 
 async def close_replica_state_backends() -> None:
@@ -3000,6 +3025,60 @@ def _public_cache_redis_for_key(key: str) -> bool:
                 (_redis_state_enabled() or key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES))
 
 
+def _public_metadata_only_key(key: str) -> bool:
+    return bool(REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
+                and key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES)
+
+
+def _public_metadata_source_binding():
+    try:
+        try:
+            from utils.runtime_source_attestation import runtime_source_attestation
+        except ModuleNotFoundError:
+            from backend.utils.runtime_source_attestation import runtime_source_attestation
+        source = runtime_source_attestation()
+        digest = source.get("observed_sha256", "")
+        return digest if source.get("status") == "MEASURED_MATCHES_MANIFEST" and re.fullmatch(r"[0-9a-f]{64}", digest) else None
+    except Exception:
+        return None
+
+
+def _clear_local_public_metadata():
+    global _public_cache_generation
+    _public_cache_generation += 1
+    _public_cache.clear()
+
+
+def _public_metadata_mutation(handler):
+    # Original FastAPI signature resolves require_admin before this wrapper.
+    @wraps(handler)
+    async def guarded(*args, **kwargs):
+        if not (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)):
+            return await handler(*args, **kwargs)  # Defaults OFF/legacy unchanged.
+        result = None
+        completed = False
+        try:
+            async with metadata_cache.mutation(db, True, operation=handler.__name__):
+                _clear_local_public_metadata()
+                operation = metadata_cache.current_operation(db)
+                result = await handler(*args, **kwargs)
+                if isinstance(result, Response) and result.status_code >= 400:
+                    raise metadata_cache.AmbiguousResponse(result)
+                completed = True
+            return result
+        except metadata_cache.AmbiguousResponse as exc:
+            return exc.response  # Preserve response; durable fence remains.
+        except HTTPException:
+            raise
+        except Exception as exc:
+            if completed:
+                logger.warning("Metadata applied; cache finalization pending; do not replay source write operation=%s", operation, exc_info=True)
+                return result  # A lost finalization reply cannot turn success into 500.
+            logger.warning("Metadata mutation unavailable/ambiguous; do not replay", exc_info=True)
+            raise HTTPException(status_code=503, detail="Metadata mutation unavailable or requires reconciliation; do not retry blindly") from exc
+    return guarded
+
+
 def _public_cache_ticket(key: str, ticket=None, *, consume: bool = False):
     tickets = dict(_public_cache_fill_tickets.get() or {})
     previous = tickets.pop(key, None)
@@ -3014,6 +3093,24 @@ def _public_cache_ticket(key: str, ticket=None, *, consume: bool = False):
 async def _public_cache_get(key: str):
     _public_cache_ticket(key, consume=True)
     if not PUBLIC_CACHE_ENABLED:
+        return None
+    if _public_metadata_only_key(key):
+        if not _public_metadata_redis_enabled():
+            return None  # Optional Redis down: no extra Mongo authority round trip.
+        try:
+            authority = await metadata_cache.Control(db).read(cache=True)
+            if not authority or authority["state"] != "ACTIVE" or not _public_metadata_redis_enabled():
+                return None
+            source = _public_metadata_source_binding()
+            if not source:
+                return None
+            slot_key, logical = metadata_cache.slot(REDIS_KEY_PREFIX, key + ":source:" + source)
+            blob = await _redis_client.execute_command("EVAL_RO", metadata_cache.READ, 1, slot_key, authority["epoch"], logical)
+            if blob:
+                return metadata_cache.decode(blob)
+            _public_cache_ticket(key, ("durable", authority["epoch"], source))
+        except Exception:
+            _cache_stats["public-cache_read_error"] += 1
         return None
     if _public_cache_redis_for_key(key):
         try:
@@ -3055,6 +3152,22 @@ async def _public_cache_set(key: str, value) -> None:
     ticket = _public_cache_ticket(key, consume=True)
     if not PUBLIC_CACHE_ENABLED or ticket is None:
         return
+    if _public_metadata_only_key(key):
+        try:
+            if ticket[0] != "durable" or not _public_metadata_redis_enabled():
+                return
+            authority = await metadata_cache.Control(db).read(cache=True)
+            if not authority or authority["state"] != "ACTIVE" or authority["epoch"] != ticket[1]:
+                return
+            if len(ticket) != 3 or _public_metadata_source_binding() != ticket[2]:
+                return
+            payload = metadata_cache.encode(value)
+            slot_key, logical = metadata_cache.slot(REDIS_KEY_PREFIX, key + ":source:" + ticket[2])
+            await _redis_client.eval(metadata_cache.FILL, 1, slot_key, ticket[1], logical, payload,
+                                     min(600, max(1, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS))))
+        except Exception:
+            _cache_stats["public-cache_write_error"] += 1
+        return
     if _public_cache_redis_for_key(key):
         if ticket[0] != "redis":
             return
@@ -3082,10 +3195,14 @@ async def _public_cache_set(key: str, value) -> None:
         _public_cache.popitem(last=False)
 
 
-async def _public_cache_clear() -> None:
+async def _public_cache_clear(*, public_metadata: bool = True) -> None:
     global _public_cache_generation
     _public_cache_generation += 1
     _public_cache.clear()
+    if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED):
+        if public_metadata and not metadata_cache.mutation_held(db):
+            await metadata_cache.Control(db).rotate()
+        return
     if _public_metadata_redis_enabled():
         # Read AFTER the source mutation, then compare-and-rotate atomically.
         # If another clear supersedes this epoch (or our reply is lost), the Lua
@@ -5767,6 +5884,7 @@ class CatalogueEvidenceResponseIn(BaseModel):
 
 
 @api.post("/admin/catalogue/evidence-responses")
+@_public_metadata_mutation
 async def admin_ingest_catalogue_evidence(payload: CatalogueEvidenceResponseIn, admin=Depends(require_admin)):
     try:
         editions = await db.books.find(
@@ -6997,8 +7115,15 @@ async def production_hardening_middleware(request: Request, call_next):
     elif path.startswith(("/api/admin", "/api/users", "/api/reader", "/api/reading", "/api/payments")):
         response.headers.setdefault("Cache-Control", "no-store")
     if request.method in {"POST", "PUT", "PATCH", "DELETE"} and response.status_code < 400 and path.startswith("/api/admin"):
-        await _public_cache_clear()
-        _schedule_home_surface_warmup()
+        # Legacy shared mode retains its old contract. Public-only mode uses
+        # authenticated positive handler fences, never financial dependencies.
+        if _redis_state_enabled():
+            await _public_cache_clear()
+            _schedule_home_surface_warmup()
+        else:
+            _clear_local_public_metadata()
+            if not REDIS_PUBLIC_METADATA_ENABLED:
+                _schedule_home_surface_warmup()
     logger.info(_json.dumps({
         "event": "http_request",
         "request_id": request_id,
@@ -7835,6 +7960,7 @@ async def get_public_settings():
 
 # ---------- Admin: Books ----------
 @api.post("/admin/books", response_model=Book)
+@_public_metadata_mutation
 async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     data = payload.model_dump()
     rights_metadata = data.pop("rights_metadata", {}) or {}
@@ -7856,6 +7982,7 @@ async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     return doc
 
 @api.put("/admin/books/{slug}", response_model=Book)
+@_public_metadata_mutation
 async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)):
     existing = await db.books.find_one({"slug": slug}, {"_id": 0})
     if not existing:
@@ -7890,6 +8017,7 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
 
 
 @api.patch("/admin/books/{slug}/audiobook", response_model=Book)
+@_public_metadata_mutation
 async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Depends(require_admin)):
     existing = await db.books.find_one({"slug": slug}, {"_id": 0})
     if not existing:
@@ -7997,6 +8125,7 @@ async def admin_presign_audiobook_upload(slug: str, payload: AudiobookPresignIn,
 
 
 @api.post("/admin/books/{slug}/audiobook/release")
+@_public_metadata_mutation
 async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=Depends(require_admin)):
     """Verify one uploaded MP3 and atomically activate its public proxy route.
 
@@ -8186,6 +8315,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
 
 
 @api.patch("/admin/books/{slug}/home-curation")
+@_public_metadata_mutation
 async def admin_update_home_curation(slug: str, payload: HomeCurationIn, _=Depends(require_admin)):
     """Update editorial placement only; audio and reader release truth stay untouched."""
     existing = await db.books.find_one({"slug": slug}, {"_id": 0, "slug": 1})
@@ -8217,6 +8347,7 @@ async def admin_update_home_curation(slug: str, payload: HomeCurationIn, _=Depen
 
 
 @api.delete("/admin/books/{slug}")
+@_public_metadata_mutation
 async def admin_delete_book(slug: str, _=Depends(require_admin)):
     res = await db.books.delete_one({"slug": slug})
     return {"deleted": res.deleted_count}
@@ -8613,6 +8744,7 @@ async def admin_upload_docx_validator(
 
 
 @api.post("/admin/books/import-template")
+@_public_metadata_mutation
 async def admin_import_book_template(
     request: Request,
     docx_file: UploadFile = File(...),
@@ -8690,6 +8822,7 @@ async def _sync_canonical_book_workflow(slug: str) -> None:
     )
 
 @api.post("/admin/books/{slug}/chapters", response_model=Book)
+@_public_metadata_mutation
 async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_admin)):
     book = await _load_book_or_404(slug)
     _assert_public_rights_approved(book, "Source text")
@@ -8713,6 +8846,7 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
+@_public_metadata_mutation
 async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
     book = await _load_book_or_404(slug)
     existing = {c["id"]: c for c in (book.get("chapters") or [])}
@@ -8728,6 +8862,7 @@ async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
+@_public_metadata_mutation
 async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depends(require_admin)):
     book = await _load_book_or_404(slug)
     _assert_public_rights_approved(book, "Source text")
@@ -8753,6 +8888,7 @@ async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depend
     return await _load_book_or_404(slug)
 
 @api.delete("/admin/books/{slug}/chapters/{cid}", response_model=Book)
+@_public_metadata_mutation
 async def admin_delete_chapter(slug: str, cid: str, _=Depends(require_admin)):
     await _load_book_or_404(slug)
     res = await db.books.update_one({"slug": slug}, {"$pull": {"chapters": {"id": cid}}})
@@ -9011,6 +9147,7 @@ async def admin_upload_cover(
 
 
 @api.post("/admin/books/{slug}/cover/promote")
+@_public_metadata_mutation
 async def admin_promote_cover(
     slug: str,
     payload: CoverPromotionIn,
@@ -9333,6 +9470,7 @@ async def admin_promote_cover(
 
 
 @api.post("/admin/books/{slug}/chapters/{chapter_id}/upload")
+@_public_metadata_mutation
 async def admin_upload_chapter_file(
     slug: str,
     chapter_id: str,
@@ -9452,6 +9590,7 @@ async def admin_upload_image(
 
 # ---------- Admin: Categories ----------
 @api.post("/admin/categories", response_model=Category)
+@_public_metadata_mutation
 async def admin_create_cat(payload: CategoryIn, _=Depends(require_admin)):
     slug = slugify(payload.slug or payload.name)
     if await db.categories.find_one({"slug": slug}):
@@ -9461,6 +9600,7 @@ async def admin_create_cat(payload: CategoryIn, _=Depends(require_admin)):
     return cat
 
 @api.put("/admin/categories/{slug}", response_model=Category)
+@_public_metadata_mutation
 async def admin_update_cat(slug: str, payload: CategoryIn, _=Depends(require_admin)):
     existing = await db.categories.find_one({"slug": slug}, {"_id": 0})
     if not existing:
@@ -9471,6 +9611,7 @@ async def admin_update_cat(slug: str, payload: CategoryIn, _=Depends(require_adm
     return await db.categories.find_one({"slug": slug}, {"_id": 0})
 
 @api.delete("/admin/categories/{slug}")
+@_public_metadata_mutation
 async def admin_delete_cat(slug: str, _=Depends(require_admin)):
     res = await db.categories.delete_one({"slug": slug})
     return {"deleted": res.deleted_count}
@@ -9486,7 +9627,7 @@ async def admin_create_post(payload: BlogPostIn, _=Depends(require_admin)):
     values["content_html"] = sanitize_journal_html(values.get("content_html"))
     post = BlogPost(slug=slug, **{k: v for k, v in values.items() if k != "slug"})
     await db.blog_posts.insert_one(post.model_dump())
-    await _public_cache_clear()
+    await _public_cache_clear(public_metadata=False)
     return post
 
 @api.put("/admin/blog/{slug}", response_model=BlogPost)
@@ -9499,13 +9640,13 @@ async def admin_update_post(slug: str, payload: BlogPostIn, _=Depends(require_ad
     update["updated_at"] = now_iso()
     update["slug"] = slug
     await db.blog_posts.update_one({"slug": slug}, {"$set": update})
-    await _public_cache_clear()
+    await _public_cache_clear(public_metadata=False)
     return await db.blog_posts.find_one({"slug": slug}, {"_id": 0})
 
 @api.delete("/admin/blog/{slug}")
 async def admin_delete_post(slug: str, _=Depends(require_admin)):
     res = await db.blog_posts.delete_one({"slug": slug})
-    await _public_cache_clear()
+    await _public_cache_clear(public_metadata=False)
     return {"deleted": res.deleted_count}
 
 @api.get("/admin/blog", response_model=List[BlogPost])
@@ -9538,6 +9679,7 @@ async def admin_set_contact_status(cid: str, payload: ContactStatusIn, _=Depends
 
 # ---------- Admin: Settings (social) ----------
 @api.put("/admin/settings/social")
+@_public_metadata_mutation
 async def admin_set_social(payload: SocialIn, _=Depends(require_admin)):
     data = payload.model_dump()
     await db.settings.update_one(
@@ -9588,6 +9730,7 @@ async def admin_upload_brand_logo(
 
 
 @api.put("/admin/settings/brand")
+@_public_metadata_mutation
 async def admin_set_brand(payload: BrandIn, _=Depends(require_admin)):
     data = payload.model_dump()
     await db.settings.update_one(
@@ -9601,6 +9744,7 @@ async def admin_set_brand(payload: BrandIn, _=Depends(require_admin)):
 
 # ---------- Admin: Featured ----------
 @api.put("/admin/featured")
+@_public_metadata_mutation
 async def admin_set_featured(payload: FeaturedIn, _=Depends(require_admin)):
     book = await db.books.find_one({"slug": payload.book_slug}, {"_id": 0})
     if not book:
@@ -11466,6 +11610,7 @@ async def _build_reader_segment_candidate(slug: str, payload: ReadingPassSegment
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments/promote")
+@_public_metadata_mutation
 async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSegmentPromotionIn, admin=Depends(require_admin)):
     """Atomically promote or recover a retained, verified immutable version."""
     intent = _reader_segment_operation_intent(
@@ -11560,6 +11705,7 @@ async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSeg
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments/bootstrap")
+@_public_metadata_mutation
 async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassSegmentBootstrapIn, admin=Depends(require_admin)):
     return await _bootstrap_reader_segment_candidate(slug, payload, actor=f"admin:{admin.get('email', '')}")
 
@@ -11730,6 +11876,7 @@ async def _initialize_authorized_reader_release() -> list[dict]:
 
 
 @api.post("/admin/reading-pass/books/{slug}/text-revocation")
+@_public_metadata_mutation
 async def admin_revoke_reading_pass_text_publication(
     slug: str,
     payload: ReadingPassTextPublicationRevocationIn,

@@ -91,6 +91,14 @@ jobs:
           [[ "$source_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
           git fetch --no-tags --depth=1 origin "$source_pin"
           [[ "$(git show "$source_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$source_hash" ]]
+          if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
+            application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
+            application_hash="$(jq -er '.application_server_sha256' internal/legal/purchase_guard_source.json)"
+            [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            [[ "$application_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
+            git fetch --no-tags --depth=1 origin "$application_pin"
+            [[ "$(git show "$application_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$application_hash" ]]
+          fi
 
       - name: Set up Node
         uses: actions/setup-node@v6
