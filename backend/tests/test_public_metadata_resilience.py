@@ -185,7 +185,7 @@ def test_real_mongo_redis_cross_process_fence_restart_and_bounded_slots():
                 slot,_=m.slot(prefix,key+':source:'+'a'*64);known.add(slot)
                 await ns['_public_cache_set'](key,value)
             def worker(mode):
-                result=subprocess.run([sys.executable,str(Path(__file__).resolve()),'--worker',mode,db.name],env=os.environ,cwd=ROOT,capture_output=True,text=True,timeout=12)
+                result=subprocess.run([sys.executable,'-m','backend.tests.test_public_metadata_resilience','--worker',mode,db.name],env=os.environ,cwd=ROOT,capture_output=True,text=True,timeout=12)
                 return result
             try:
                 key='categories:real'
