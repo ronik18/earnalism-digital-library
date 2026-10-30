@@ -170,6 +170,7 @@ class ReadingPassService:
                     if (
                         attempt < 2
                         and getattr(exc, "has_error_label", lambda _label: False)("TransientTransactionError")
+                        and not getattr(exc, "has_error_label", lambda _label: False)("UnknownTransactionCommitResult")
                     ):
                         # A conflicting transaction may still be committing.
                         # Yield with a bounded backoff before opening a fresh
@@ -178,6 +179,10 @@ class ReadingPassService:
                         # in-flight writer.
                         await asyncio.sleep(0.01 * (attempt + 1))
                         continue
+                    if (getattr(exc, "has_error_label", lambda _label: False)("TransientTransactionError")
+                            and not getattr(exc, "has_error_label", lambda _label: False)("UnknownTransactionCommitResult")):
+                        raise ReadingPassError("TRANSACTION_CONTENTION", 503,
+                                               "Reading Pass is busy. Please try again shortly.") from exc
                     raise
                 for commit_attempt in range(3):
                     try:
@@ -188,14 +193,19 @@ class ReadingPassService:
                         unknown_commit = getattr(exc, "has_error_label", lambda _label: False)(
                             "UnknownTransactionCommitResult"
                         )
-                        if unknown_commit and commit_attempt < 2:
-                            continue
+                        if unknown_commit:
+                            if commit_attempt < 2:
+                                continue
+                            raise  # Never replay an ambiguously committed callback.
                         transient = getattr(exc, "has_error_label", lambda _label: False)(
                             "TransientTransactionError"
                         )
                         if transient and attempt < 2:
                             await asyncio.sleep(0.01 * (attempt + 1))
                             break
+                        if transient:
+                            raise ReadingPassError("TRANSACTION_CONTENTION", 503,
+                                                   "Reading Pass is busy. Please try again shortly.") from exc
                         raise
         assert last_error is not None
         raise last_error
@@ -445,6 +455,7 @@ class ReadingPassService:
         content_id: str,
         scope: Mapping[str, Any],
         now: datetime,
+        write_fence: bool = True,
     ) -> None:
         """Order a new protected-text lease against the durable revocation writer.
 
@@ -460,26 +471,32 @@ class ReadingPassService:
         segmentation_version = scope.get("segmentation_version")
         if not isinstance(generation, int) or generation < 0 or not isinstance(segmentation_version, str) or not segmentation_version:
             return
-        # Incrementing this fence makes every permitted start a real write,
-        # even under a fixed server clock.  The write is deliberately against
-        # the same pointer the revocation writer changes, so Mongo's
-        # transaction conflict rules order starts and revocations without
-        # changing the canonical publication identity.
-        updated = await self.db.reader_segment_activation_state.update_one(
-            {
-                "book_slug": content_id,
-                "active_segmentation_version": segmentation_version,
-                "generation": generation,
-                "text_revocation": {"$exists": False},
-            },
-            {
-                "$set": {"text_authority_last_start_at": now},
-                "$inc": {"text_authority_fence": 1},
-            },
-            session=mongo_session,
-        )
-        if updated.modified_count == 1:
-            return
+        selector = {
+            "book_slug": content_id,
+            "active_segmentation_version": segmentation_version,
+            "generation": generation,
+            "text_revocation": {"$exists": False},
+        }
+        if not write_fence:
+            # Fail denied starts before touching account/session state, without
+            # locking the shared title through all per-user admission work.
+            if await self.db.reader_segment_activation_state.find_one(
+                selector, {"_id": 1}, session=mongo_session
+            ):
+                return
+        else:
+            # This remains a real conditional write, now the last successful
+            # lease action in the SAME transaction. A concurrent publication or
+            # revocation write conflicts and aborts every preceding session,
+            # transfer, budget, device and audit write before any lease escapes.
+            updated = await self.db.reader_segment_activation_state.update_one(
+                selector,
+                {"$set": {"text_authority_last_start_at": now},
+                 "$inc": {"text_authority_fence": 1}},
+                session=mongo_session,
+            )
+            if updated.modified_count == 1:
+                return
         state = await self.db.reader_segment_activation_state.find_one(
             {"book_slug": content_id}, {"_id": 0, "text_revocation": 1}, session=mongo_session
         )
@@ -627,6 +644,7 @@ class ReadingPassService:
                     content_id=str(content_id),
                     scope=scope,
                     now=now,
+                    write_fence=False,
                 )
             user = await self.db.users.find_one(
                 {"id": user_id, "role": "user"},
@@ -797,6 +815,11 @@ class ReadingPassService:
                     "content_id": str(content_id)[:200],
                 },
             )
+            if content_kind == "text":
+                await self._assert_text_start_authority(
+                    mongo_session=mongo_session, content_id=str(content_id),
+                    scope=scope, now=now,
+                )
             return {
                 "session_id": session_id,
                 "lease_token": token,
