@@ -157,6 +157,44 @@ def test_rollback_fresh_local_reader_preserves_unresolved_fence_without_redis():
     run(case())
 
 
+@pytest.mark.parametrize('state',['missing','active','fenced','malformed','unavailable'])
+def test_rollback_intake_preserves_existing_control_without_creating_one(state):
+    async def case():
+        import functools,logging
+        from fastapi import HTTPException,Response
+        db=database();control=m.Control(db)
+        if state in {'active','fenced'}:assert await control.startup()
+        if state=='fenced':await control.begin(True,operation='inert_unknown')
+        if state=='malformed':db.public_metadata_cache_control.row={}
+        if state=='unavailable':db.public_metadata_cache_control.fail_read=True
+        before=dict(db.public_metadata_cache_control.row) if db.public_metadata_cache_control.row is not None else None
+        db.public_metadata_cache_control.calls.clear()
+        ns=server_bindings(db);ns.update(REDIS_PUBLIC_METADATA_ENABLED=False,
+            wraps=functools.wraps,HTTPException=HTTPException,Response=Response,logger=logging.getLogger('inert'))
+        tree=ast.parse((ROOT/'backend/server.py').read_text())
+        for name in ['_clear_local_public_metadata','_public_metadata_mutation']:
+            node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name)
+            exec(compile(ast.Module(body=[node],type_ignores=[]),'actual-wrapper','exec'),ns)
+        entered=[]
+        async def intake():
+            await m.reject_unsupported_writer_async(db)
+            entered.append(True);return {'ok':True}
+        guarded=ns['_public_metadata_mutation'](preserve_existing_control=True)(intake)
+        if state in {'missing','active'}:
+            assert await guarded()=={'ok':True} and entered==[True]
+            if state=='missing':
+                assert db.public_metadata_cache_control.row is None
+                assert all(call[0]=='read' for call in db.public_metadata_cache_control.calls)
+            else:
+                assert db.public_metadata_cache_control.row['state']=='ACTIVE'
+                assert db.public_metadata_cache_control.row['epoch']!=before['epoch']
+        else:
+            with pytest.raises(HTTPException) as error:await guarded()
+            assert error.value.status_code==503 and entered==[]
+            assert db.public_metadata_cache_control.row==before
+    run(case())
+
+
 def test_real_mongo_redis_cross_process_fence_restart_and_bounded_slots():
     import os,sys,subprocess,uuid
     if os.environ.get('EARNALISM_REDIS_INTEGRATION')!='1' or os.environ.get('READER_SEGMENT_MONGO_INTEGRATION')!='1':
@@ -260,7 +298,7 @@ def _worker():
 
 def test_positive_mutation_coverage_excludes_financial_and_upload_staging():
     tree=ast.parse((ROOT/'backend/server.py').read_text())
-    guarded={n.name for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and any(isinstance(d,ast.Name) and d.id=='_public_metadata_mutation' for d in n.decorator_list)}
+    guarded={n.name for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and any((isinstance(d,ast.Name) and d.id=='_public_metadata_mutation') or (isinstance(d,ast.Call) and isinstance(d.func,ast.Name) and d.func.id=='_public_metadata_mutation') for d in n.decorator_list)}
     assert guarded=={'_bootstrap_reader_segment_candidate','admin_ingest_catalogue_evidence','admin_create_book','admin_update_book','admin_update_book_audiobook','admin_release_audiobook','admin_update_home_curation','admin_delete_book','admin_import_book_template','admin_add_chapter','admin_reorder_chapters','admin_update_chapter','admin_delete_chapter','admin_promote_cover','admin_upload_chapter_file','admin_create_cat','admin_update_cat','admin_delete_cat','admin_set_social','admin_set_brand','admin_set_featured','admin_promote_reading_pass_segments','admin_bootstrap_reading_pass_segments','admin_revoke_reading_pass_text_publication'}
     for n in tree.body:
         if isinstance(n,ast.AsyncFunctionDef) and n.name in guarded and n.name.startswith('admin_'):

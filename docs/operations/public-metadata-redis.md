@@ -33,6 +33,11 @@ The default-OFF and legacy shared-state modes preserve their existing handler
 behavior. They are not certified as concurrent writers beside newly enabled
 public-only readers. Enabling shared public caching requires admitting every
 writer on the reviewed mode and draining older/OFF writers first.
+Evidence intake preserves any existing durable control even when the public
+flag is OFF: an absent record stays absent, an ACTIVE record uses the same-task
+fenced server path, and unresolved/malformed/unavailable control remains held.
+This avoids stranding the supported intake path after rollback without admitting
+unfenced legacy CLI writers or changing financial handlers.
 The internal authorized Reader-bootstrap helper is fenced too, including its
 startup/background caller. Startup database maintenance must remain OFF when
 admitting public-only Redis: its mixed metadata/financial migrations cannot run

@@ -3054,16 +3054,20 @@ def _clear_local_public_metadata():
     _public_cache.clear()
 
 
-def _public_metadata_mutation(handler):
+def _public_metadata_mutation(handler=None, *, preserve_existing_control=False):
+    if handler is None:
+        return lambda selected: _public_metadata_mutation(
+            selected, preserve_existing_control=preserve_existing_control)
     # Original FastAPI signature resolves require_admin before this wrapper.
     @wraps(handler)
     async def guarded(*args, **kwargs):
-        if not (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)):
+        enabled = REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
+        if not enabled and not preserve_existing_control:
             return await handler(*args, **kwargs)  # Defaults OFF/legacy unchanged.
         result = None
         completed = False
         try:
-            async with metadata_cache.mutation(db, True, operation=handler.__name__):
+            async with metadata_cache.mutation(db, enabled, operation=handler.__name__):
                 _clear_local_public_metadata()
                 operation = metadata_cache.current_operation(db)
                 result = await handler(*args, **kwargs)
@@ -5889,7 +5893,7 @@ class CatalogueEvidenceResponseIn(BaseModel):
 
 
 @api.post("/admin/catalogue/evidence-responses")
-@_public_metadata_mutation
+@_public_metadata_mutation(preserve_existing_control=True)
 async def admin_ingest_catalogue_evidence(payload: CatalogueEvidenceResponseIn, admin=Depends(require_admin)):
     try:
         editions = await db.books.find(
