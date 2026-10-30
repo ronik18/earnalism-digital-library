@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "scope": "Four native cover image assets only; final source CI and actual production release remain outstanding",
+  "approval": "Approve these exact four drafts and save",
+  "saved_state": "PASS exact richtexts/positions/fills",
+  "native_images": [
+    {
+      "slug": "the-stolen-white-elephant",
+      "side": "front",
+      "sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+      "bytes": 97102
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "side": "back",
+      "sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+      "bytes": 99141
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "side": "front",
+      "sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+      "bytes": 108590
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "side": "back",
+      "sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+      "bytes": 82504
+    }
+  ],
+  "browser_decode": "PASS four actual native JPEGs800x1200 at200x300cards",
+  "independent_pixels": "INDEPENDENT_PIXEL_REVIEW.md qualified model review; nothuman signoff",
+  "fonts": "Actual native private PDF resource evidence; retained Canva integrated Font Software raster-use permission",
+  "provenance": "Original generated PNG credentials and bytehashes retained; all four native JPEGs haveXMP and noAPP11. Ordinarynative layout/export omission disclosed; no localstripping/transplant/embeddedlineage/signaturevalidationclaim. Actual applicable retained-provenance evidence requirement satisfied; no absolutefinalchainruleinvented.",
+  "literary_audio_decisions": "UNCHANGED",
+  "customer_mutations": 0
+}

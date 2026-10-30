@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "A sacred white elephant is stolen — and the world's greatest detectives cannot find it despite it leaving a trail of destruction everywhere.",
   "description": "Twain's savage parody of detective fiction — an enormous white elephant wanders through American cities causing chaos while the detectives collect fees for clues and never look up. A perfect skewering of the genre Poe invented.",
-  "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+  "coverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+  "cover_image": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "29 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "f9f11769a406a0c3cdee493a19275b0e032fcf45b218165ba2a93bfb2133524d"
 }

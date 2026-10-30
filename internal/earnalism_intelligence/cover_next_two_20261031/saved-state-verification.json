@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "pairs": [
+    {
+      "key": "elephant",
+      "richtexts_positions_equal": true,
+      "fills_equal": true,
+      "draft_snapshot_sha256": "07ac7de359f3b71a97aec930eee45aa63323177c023e935613a504c7dcc83ece",
+      "saved_snapshot_sha256": "63794b7533631e1dc3c391c4cf269750d88e2f33002a389c512c020ffc76e710"
+    },
+    {
+      "key": "owl",
+      "richtexts_positions_equal": true,
+      "fills_equal": true,
+      "draft_snapshot_sha256": "b4eea5eb5eb4b1300c770d90d7a95d46ba03a186391dc3e66feb0386edf1ffe1",
+      "saved_snapshot_sha256": "2fe2b891809059d4e3f8b115cc03f6a9da2a925252517c88bd113d7774c4d45d"
+    }
+  ]
+}

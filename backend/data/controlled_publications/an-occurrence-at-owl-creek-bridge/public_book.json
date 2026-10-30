@@ -7,14 +7,14 @@
   "category_slug": "history-strategy",
   "short_description": "A Confederate civilian is hanged from a bridge — and in the split second of dying, escapes through an entire fantasy of survival.",
   "description": "Peyton Farquhar falls from the bridge — and in the fractured seconds of his death, lives out an elaborate, vivid escape home. The story that invented the unreliable dying mind as a narrative device. Bierce's finest achievement.",
-  "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+  "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+  "coverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+  "cover_image": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+  "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+  "backCoverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "16 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "cac617747c2f1711b2c0d767d5bd49bf8ef99277a83a5d59f275a6964863d5a4"
 }

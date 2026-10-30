@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "aba830d4cd531f37c358c5f94ea475c50516bc437282e558510d62fb206fe510"
+    "backend/data/rights_decision_registry.json": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
   },
   "titles": {
     "a-ghost-story": {
@@ -349,7 +349,7 @@
     },
     "the-stolen-white-elephant": {
       "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
-      "record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+      "record_sha256": "4e3e8ca904ffe8548614d00c5d05766874539f85e51064093a58699f27688b75",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-stolen-white-elephant/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-stolen-white-elephant/reader_manifest.json",
@@ -361,12 +361,15 @@
         "reader_release_approval": "backend/data/controlled_publications/the-stolen-white-elephant/reader_release_approval.json",
         "chapter_file:chapter-001.json": "backend/data/controlled_publications/the-stolen-white-elephant/chapters/chapter-001.json",
         "cover_asset:front": "frontend/public/assets/books/the-stolen-white-elephant/front-cover.webp",
-        "cover_asset:back": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp"
+        "cover_asset:back": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-stolen-white-elephant/cover_approval_evidence.json"
       }
     },
     "an-occurrence-at-owl-creek-bridge": {
       "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
-      "record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+      "record_sha256": "2751aa4db6797a08b04a8307a2534efbbe10dab05d551b04daf8a8855e96cff5",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json",
@@ -378,7 +381,10 @@
         "reader_release_approval": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_release_approval.json",
         "chapter_file:chapter-001.json": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/chapters/chapter-001.json",
         "cover_asset:front": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-        "cover_asset:back": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp"
+        "cover_asset:back": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+        "cover_replacement_approval": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/cover_approval_evidence.json"
       }
     },
     "the-enchanted-april": {

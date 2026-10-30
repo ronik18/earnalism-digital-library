@@ -1,0 +1,96 @@
+[
+  {
+    "key": "elephant",
+    "native_pdf_sha256": "1a0618e1e8e4728e0e06b639f9565355486b08f0e819b6052aa3bc0be96c8711",
+    "pages": [
+      {
+        "page": 1,
+        "resources": [
+          {
+            "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+            "subtype": "/Type0",
+            "resource": "/F6"
+          },
+          {
+            "base_font": "/BAAAAA+TeXGyreTermes-Regular",
+            "subtype": "/Type0",
+            "resource": "/F11"
+          },
+          {
+            "base_font": "UNNAMED",
+            "subtype": "/Type3",
+            "resource": "/F15"
+          },
+          {
+            "base_font": "UNNAMED",
+            "subtype": "/Type3",
+            "resource": "/F16"
+          }
+        ]
+      },
+      {
+        "page": 2,
+        "resources": [
+          {
+            "base_font": "/AAAAAA+Cardo-Regular",
+            "subtype": "/Type0",
+            "resource": "/F6"
+          },
+          {
+            "base_font": "/BAAAAA+Raleway-Bold",
+            "subtype": "/Type0",
+            "resource": "/F9"
+          }
+        ]
+      }
+    ],
+    "scope": "Private actual native PDF resources; no font/PDF distribution. UNNAMED Type3 not an invented family. Reuse retained Canva integrated Font Software raster permission, proprietary Times not OFL."
+  },
+  {
+    "key": "owl",
+    "native_pdf_sha256": "eb7a4580255fd9d7a9ef8963c726c6a763e8e5be45a523fee845f47c9f0a5f2f",
+    "pages": [
+      {
+        "page": 1,
+        "resources": [
+          {
+            "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+            "subtype": "/Type0",
+            "resource": "/F6"
+          },
+          {
+            "base_font": "/BAAAAA+TeXGyreTermes-Regular",
+            "subtype": "/Type0",
+            "resource": "/F11"
+          },
+          {
+            "base_font": "UNNAMED",
+            "subtype": "/Type3",
+            "resource": "/F15"
+          },
+          {
+            "base_font": "UNNAMED",
+            "subtype": "/Type3",
+            "resource": "/F16"
+          }
+        ]
+      },
+      {
+        "page": 2,
+        "resources": [
+          {
+            "base_font": "/AAAAAA+Cardo-Regular",
+            "subtype": "/Type0",
+            "resource": "/F6"
+          },
+          {
+            "base_font": "/BAAAAA+Raleway-Bold",
+            "subtype": "/Type0",
+            "resource": "/F9"
+          }
+        ]
+      }
+    ],
+    "scope": "Private actual native PDF resources; no font/PDF distribution. UNNAMED Type3 not an invented family. Reuse retained Canva integrated Font Software raster permission, proprietary Times not OFL."
+  }
+]

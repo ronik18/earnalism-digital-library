@@ -1,41 +1,77 @@
 {
-  "schema": "earnalism.exact-existing-cover-provenance.v1",
+  "schema": "earnalism.exact-cover-provenance.v1",
   "slug": "an-occurrence-at-owl-creek-bridge",
-  "checked_at": "2026-10-01T05:38:07.922769+00:00",
-  "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
-  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
-  "cover": {
-    "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
-    "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
-    "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
-    "generator": "scripts/render_english_25_missing_covers.py",
-    "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
-    "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
-    "font_license_url": "https://dejavu-fonts.github.io/License.html",
-    "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
-    "assets": {
-      "front": {
-        "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-        "sha256": "057d26a3babfb4659cb777826880ec625844003a137fa0e5f11828454a97c7cd",
-        "bytes": 21582,
-        "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      },
-      "back": {
-        "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
-        "sha256": "640ba85f97a923cb526413c5d84600be771f7492f05b5dc9fc7730a66c306d31",
-        "bytes": 24080,
-        "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      }
+  "status": "OWNER_AUTHORIZED_COVER_REPLACEMENT_SOURCE_CANDIDATE",
+  "scope": "Cover display only; existing literary/audio rights decisions and publication/access unchanged.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+      "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+      "sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+      "bytes": 108590,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+      "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+      "sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+      "bytes": 82504,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3"
     }
   },
-  "new_art_generated": false,
-  "existing_art_replaced": false
+  "owner_instruction": {
+    "path": "internal/earnalism_intelligence/cover_next_two_20261031/owner_instruction.json",
+    "sha256": "d31c82adfb8b1ebd03837bea7a7e5cb4adbdc3be73d4a4c31897d85fc9ea639f"
+  },
+  "evidence_directory": "internal/earnalism_intelligence/cover_next_two_20261031",
+  "artwork_origin": "Four original text-free built-in image-generation illustrations; exact editable Canva typography. Every image fill rebound to identified originals; inherited art removed. See exact component and source evidence. No exclusive or human-created claim.",
+  "metadata_preservation": "Untouched native Canva exports, no local re-encoding or metadata transplant. Original generated PNG credentials retained in exact master bytes. Actual final credential presence or omission recorded in EXACT_FOUR_NATIVE_IMAGES.json; no embedded-lineage, signature-validity, human-creation or exclusive-copyright assertion.",
+  "previous_provenance": {
+    "schema": "earnalism.exact-existing-cover-provenance.v1",
+    "slug": "an-occurrence-at-owl-creek-bridge",
+    "checked_at": "2026-10-01T05:38:07.922769+00:00",
+    "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
+    "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "cover": {
+      "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+      "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+      "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+      "generator": "scripts/render_english_25_missing_covers.py",
+      "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+      "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+      "font_license_url": "https://dejavu-fonts.github.io/License.html",
+      "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+          "sha256": "057d26a3babfb4659cb777826880ec625844003a137fa0e5f11828454a97c7cd",
+          "bytes": 21582,
+          "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        },
+        "back": {
+          "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+          "sha256": "640ba85f97a923cb526413c5d84600be771f7492f05b5dc9fc7730a66c306d31",
+          "bytes": 24080,
+          "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "new_art_generated": false,
+    "existing_art_replaced": false
+  },
+  "production_verified": false
 }

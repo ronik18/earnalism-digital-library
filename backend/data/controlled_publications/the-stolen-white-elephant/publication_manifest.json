@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "public_book": "903a9367d8e05eecdc3491a3984aa1abc077962770ac15a3db15e35aa456bdc6",
     "reader_manifest": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
     "source_evidence": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
     "approval_evidence": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50"
   },
-  "manifest_sha256": "86f82adb7e832fae7c51ab2bc5595e3364c1db79697ae602fb431bf9e7c5736c"
+  "manifest_sha256": "31834a991a3245e62faaa96a3a1aad8c00a17b75ccda620e3fedd3f7c4f6e3c6"
 }

@@ -1,0 +1,42 @@
+{
+  "scope": "Local source validation, no hosted-CI or production-serving claim",
+  "base": "42b988798e5f51c62e38014468d716e9b14713c0",
+  "focused_core_tests": {
+    "passed": 469,
+    "log_sha256": "880fcb60a1ac9d6cb5f6241a544b309c912c53289249c0579fbd2bd0b5e3cab8",
+    "files": [
+      "test_admin_book_cover_promotion.py",
+      "test_public_catalog_controlled_cover_truth.py",
+      "test_approved_reader_bootstrap.py",
+      "test_rights_decision_gate.py",
+      "test_controlled_publication_precheck.py",
+      "test_controlled_launch_parity.py"
+    ]
+  },
+  "workflow_cases": 46,
+  "workflow_log_sha256": "325f13a5aa7ea69067b5ecda17858575c76c212ccffed4c40d714695d07db7b2",
+  "catalogue": {
+    "result": "PASS",
+    "changed_packages": 2,
+    "statuses": {
+      "an-occurrence-at-owl-creek-bridge": "APPROVED",
+      "the-stolen-white-elephant": "APPROVED"
+    },
+    "issues": [],
+    "reader_exposed": true,
+    "audio_exposed": true,
+    "release_authority_matches_reviewed_bindings": true
+  },
+  "seo_freshness": "PASS",
+  "diff_check": "PASS",
+  "native_images": 4,
+  "browser_decodes": 4,
+  "runtime_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+  "runtime_files": 1950,
+  "additional_test_attempts": {
+    "expanded_backend": "482 passed, one failure; same audio expectation failure independently reproduced at base42b98879, unrelated A Ghost Story. See BASELINE_AUDIO_QUALIFICATION.json. Not fixed or hidden.",
+    "broad_browser_glob": "Actual-capture tests lack local fixture base URL; not claimed PASS. Current-head hosted capture workflow must pass. Initial missing js-yaml fixed by reusing existing task validation dependency path; correct workflow audit46casesPASS."
+  },
+  "customer_mutations": 0,
+  "ci": "PENDING exact-head mandatoryCI"
+}

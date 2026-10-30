@@ -1,0 +1,15 @@
+{
+  "base": "42b988798e5f51c62e38014468d716e9b14713c0",
+  "baseline_failure": "test_pending_candidate_is_private_across_all_public_book_surfaces expects A Ghost Story audio_enabled true; actual false",
+  "baseline_exit": 1,
+  "candidate_same_failure": true,
+  "log_sha256": "a28c56d1fe433b0f5ace382130d8020d51658f5ca137ef337b1dcbcd7f03c98c",
+  "baseline_inputs": {
+    "backend/server.py": "3c976134cd10d192f0f133a4be7630e105317ac298e4028eef539f440e2d7282",
+    "backend/tests/test_admin_book_cover_upload.py": "63dd544f8e51317f36705ddecd70baf6a49266d103292bf1c2b746e9c9a71dec",
+    "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "backend/data/rights_decision_registry.json": "aba830d4cd531f37c358c5f94ea475c50516bc437282e558510d62fb206fe510"
+  },
+  "scope": "Unrelated existing audio expectation; not fixed or audio-exposed under cover authority; required CI remains mandatory",
+  "fixture": "Reproducible read-only Git archive, no git worktree/branch. Removed only this task-created disposable fixture after test."
+}

@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+    "public_book": "ef49bb56859a5e50e7e58c046ebff6e4364d6f215b1ec7db222e8657b1eb724a",
     "reader_manifest": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
     "source_evidence": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
     "approval_evidence": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34"
   },
-  "manifest_sha256": "9c707d9f40fceb312946e3a9e954941551e5a942c8c0149658dc7adea01c3684"
+  "manifest_sha256": "8ef1210111f6c282c8a34abda6fa714cdc07c459fdb427cb321bde89689869da"
 }

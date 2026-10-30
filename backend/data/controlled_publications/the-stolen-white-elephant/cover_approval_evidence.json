@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-stolen-white-elephant",
+  "history": [
+    {
+      "event_id": "cover-next-two-20261031-front-55242b9efb5806b2",
+      "slug": "the-stolen-white-elephant",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+        "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+        "sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+        "bytes": 97102,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Two exact front/back pairs saved only after actual shown-preview approval recorded in owner_instruction.json. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "8bc9313008ba1dd80d46275978e01bc1059086236b3add1221f61137deac7c73"
+    },
+    {
+      "event_id": "cover-next-two-20261031-back-f23367df9c825ddc",
+      "slug": "the-stolen-white-elephant",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+        "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+        "sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+        "bytes": 99141,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Two exact front/back pairs saved only after actual shown-preview approval recorded in owner_instruction.json. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "5542dbc8b5af4e47826fbb5aa83e397ff027bf9e0af73efd29256491ce1bf18e"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-two-20261031-front-55242b9efb5806b2",
+    "back": "cover-next-two-20261031-back-f23367df9c825ddc"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-two-20261031-front-55242b9efb5806b2",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-two-20261031-back-f23367df9c825ddc",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

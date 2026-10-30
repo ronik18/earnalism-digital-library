@@ -2868,3 +2868,7 @@ Native PNG caBX Content Credentials are independent of XMP. Inspect both before 
 
 ## Next three covers —31 October2026
 Reuse suitable existing owner-origin artwork and restore only actual cutout or copy defects. Preserve originals, exact draft-save approval, actual native font resources and metadata-bearing delivery bytes. Native JPEG export avoids dropping existing APP11 credentials. Same-root asset identity evidence is component-specific. Local package download caches are reproducible; preserved source and recovery records are not disposable.
+
+
+## Two new cover pairs —31 October2026
+Reuse good covers; new title-specific original illustration and exact Canva typography require actual preview approval, saved-state equality and final native validation. Retain generated PNG credentials and disclose native derivative export omission without inventing a signature/ingredient-chain rule or claiming human creation. Actual final PDF resources and browser card decodes qualify only their stated scope.
