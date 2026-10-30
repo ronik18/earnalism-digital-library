@@ -2841,6 +2841,12 @@ Prepare and qualify the exact reopening successor after the CLOSED source merges
 
 Provider exit codes alone never establish write outcomes. Retain bounded nonsecret error classes and output hashes, not raw provider text or exception messages. Missing historical stderr cannot be recreated by replaying an uncertain write; classify it unknown and reconcile native history, pending work and actual serving source separately.
 
+Backend-only Railway uploads must preserve the configured backend/ archive prefix. Qualify actual membership using native ignore evaluation, reject symlinks/alternate ignore languages/unreviewed inputs, bind full-file hashes and measured runtime manifest to intent, and retain clean exact source checks. A smaller payload is a substantive scope correction, not proof of the historical failure cause. Never confuse an offline Python archive with actual CLI gzip bytes or provider acceptance.
+
+Concurrent transaction tests must retain Task objects rather than numeric task IDs across gather phases; IDs can be recycled and silently bypass or deadlock a barrier. Rendezvous only the first callback for each request, bound both barrier and request-pair waits, and preserve real Mongo CAS/idempotency/rollback assertions. An algorithmic deadlock reproduction does not prove a particular hosted interleaving; record bounded original-run PASS separately from corrected-run PASS.
+
+After the corrected backend-only CLOSED source merges, reconcile its OPEN successor by removing only the exact temporary pause branch. Preserve upload seals, sanitized diagnostics and corrected concurrency tests. Qualify both immutable sources before pausing purchases; neither source CI nor a no-effect receipt proves a retained guarded provider image.
+
 
 ## Nine exact cover replacements — 30 October 2026
 

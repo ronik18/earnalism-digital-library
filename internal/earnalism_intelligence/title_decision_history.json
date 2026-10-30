@@ -12276,6 +12276,38 @@
     "original_bootstrap_outcome": "RECONCILIATION_REQUIRED; stderr unavailable; no failure cause inferred",
     "next_action": "Independent review and fresh exact-head source gates; complete original operation reconciliation independently of diagnostic class."
   },
+  "live_audiobook_backend_upload_scope_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "CLOSED_UPLOAD_SCOPE_SUCCESSOR_SOURCE_ONLY",
+    "preserve": "All latest diagnostics, India/US rights, covers, accepted audio, free Reader and financial safeguards.",
+    "original_operation_outcome": "NOT_APPLIED_VERIFIED; no replay; original failure cause unknown",
+    "next_action": "Independent integrated source review and mandatory exact-head CI; qualify OPEN successor before any corrected distinct guarded bootstrap under existing native pause authority."
+  },
+  "live_audiobook_mongo_harness_correction_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "RELEASE_HELD_FOR_CORRECTED_EXACT_HEAD_CI",
+    "finding": "Actual hosted Mongo concurrency test deadline failure; original numeric task-ID barrier algorithm reproduced deadlock offline. Bounded original real-Mongo run passed; exact CI interleaving unproven.",
+    "correction": "Harness-only retained Task identities and bounded rendezvous/pair waits; all real CAS, same-ID recovery, bootstrap and rollback assertions retained.",
+    "qualification": "Fresh authenticated loopback Mongo7testsPASS, ownprocess shutdownverified; independent reviewPASS. No production application or provider change.",
+    "next_action": "Fresh exact-head all mandatory CI before merge and OPEN successor."
+  },
+  "live_audiobook_backend_only_reopening_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "EXACT_OPEN_SUCCESSOR_SOURCE_PREPARATION",
+    "closed_merged_source": "2abb331f2363f89c60f2399c69f1a6053d3f76ee",
+    "preserve": "Latest upload seals/diagnostics/harness fixes, accepted India/US rights, media/covers/free Reader and financial controls.",
+    "provider_writes": 0,
+    "next_action": "Fresh exact OPEN source tests/independentreview/CI then matchedmerge. Bind exact merged CLOSED+OPEN sources and fresh actual upload admission before corrected one-shot guarded bootstrap under existing native authority."
+  },
   "nine_cover_replacement_20261030": {
     "state": "SOURCE_CANDIDATE_VERIFIED_NOT_DEPLOYED",
     "base": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
