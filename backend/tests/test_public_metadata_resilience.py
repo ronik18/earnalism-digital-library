@@ -242,7 +242,7 @@ def test_public_optional_startup_timeout_policy_soft_failure_and_no_config():
     from unittest.mock import patch
     async def case():
         tree=ast.parse((ROOT/'backend/server.py').read_text());node=next(n for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and n.name=='initialize_replica_state_backends')
-        ns=dict(asyncio=asyncio,REDIS_CACHE_ENABLED=False,MULTI_REPLICA_ENABLED=False,REDIS_PUBLIC_METADATA_ENABLED=True,REDIS_CACHE_FAIL_FAST=True,REDIS_URL='redis://127.0.0.1:26379/0',REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS=2,REDIS_SOCKET_TIMEOUT_SECONDS=2,_redis_available=False,_redis_client=None,logger=logging.getLogger('dummy'))
+        ns=dict(ENABLE_STARTUP_DB_MAINTENANCE=False,asyncio=asyncio,REDIS_CACHE_ENABLED=False,MULTI_REPLICA_ENABLED=False,REDIS_PUBLIC_METADATA_ENABLED=True,REDIS_CACHE_FAIL_FAST=True,REDIS_URL='redis://127.0.0.1:26379/0',REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS=2,REDIS_SOCKET_TIMEOUT_SECONDS=2,_redis_available=False,_redis_client=None,logger=logging.getLogger('dummy'))
         exec(compile(ast.Module(body=[node],type_ignores=[]),'actual-initializer','exec'),ns)
         class Down:
             closed=False

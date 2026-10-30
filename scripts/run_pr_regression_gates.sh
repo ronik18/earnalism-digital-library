@@ -27,12 +27,15 @@ echo "==> Exact purchase guard source and original India commerce boundary"
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 "$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness
 READER_SEGMENT_MONGO_INTEGRATION=1 \
+CATALOGUE_EVIDENCE_MONGO_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is required}" \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
     backend/tests/test_shared_redis_limiter_integration.py \
     backend/tests/test_public_metadata_redis.py \
-    backend/tests/test_public_metadata_resilience.py
+    backend/tests/test_public_metadata_resilience.py \
+    backend/tests/test_evidence_response_ingestion.py \
+    backend/tests/test_evidence_response_mongo_integration.py
 
 echo "==> CORS cache contract (backend/tests/test_cors_cache_headers.py)"
 env \
