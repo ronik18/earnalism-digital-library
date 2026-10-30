@@ -6,7 +6,7 @@
   "closed_server_sha256": "b362d8c2ed5dfc39d30d811fdd5dfae6f2f54d47bb9490746dba4fbce4bc817c",
   "owner_receipt_path": "internal/legal/purchase_guard_owner_acceptance.json",
   "owner_receipt_sha256": "119a47b7f412f736be7b64347840e78fd2d9c7dcb23f63111ab009eba499dcd5",
-  "application_source_sha": "526fa9c09169e318a5baff1166ebd96112208186",
-  "application_server_sha256": "0a831df83e28632a0c770a03387764a0cf941d521f24078475939f8d0b4093d2",
-  "application_closed_server_sha256": "7e353cd045df83097911128cd599c2d706862e71860a3d6634b717eb6dd8e85b"
+  "application_source_sha": "9cf76a42492f128f8bc32e819b32493ab099ac0e",
+  "application_server_sha256": "003e2d98109b1cf75ed25241f1dd7468ab166db5a9e9ccbb2de5766c5f2bf3bc",
+  "application_closed_server_sha256": "89f982f50bf6b0255347fbcd6de411609d2845f4740ce526ae81d225850cce2c"
 }
