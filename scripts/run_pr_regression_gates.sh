@@ -66,6 +66,7 @@ env \
     backend/tests/test_b2_audiobook_routing.py \
     backend/tests/test_audiobook_package_v2_routes.py \
     backend/tests/test_audio_stream_chunking.py \
+    backend/tests/test_owned_stream_response.py \
     backend/tests/test_unapproved_public_audio_asset_safety.py \
     backend/tests/test_agentic_ai_with_python_reader_only.py \
     scripts/test_repair_enchanted_april_reader_preflight.py
@@ -81,6 +82,7 @@ env \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
+    backend/tests/test_reading_pass_admission_contention.py \
     backend/tests/test_reading_pass_client_matrix.py \
     backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
@@ -96,6 +98,7 @@ env \
     backend/tests/test_serving_publication_binding.py \
     backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
+    backend/tests/test_reading_pass_admission_contention_mongo.py \
     backend/tests/test_reading_pass_revocation_release_preflight.py \
     backend/tests/test_reader_device_session_binding.py \
     backend/tests/test_approved_reader_bootstrap.py \

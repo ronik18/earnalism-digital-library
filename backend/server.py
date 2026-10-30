@@ -256,6 +256,10 @@ from urllib.request import Request as UrlRequest, urlopen
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
+try:
+    from utils.owned_stream_response import owned_streaming_response
+except ModuleNotFoundError:
+    from backend.utils.owned_stream_response import owned_streaming_response
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
@@ -10774,8 +10778,8 @@ async def _stream_audiobook_asset_url(
         etag = str(obj.get("ETag") or "").strip()
         if etag:
             headers["ETag"] = etag
-        return StreamingResponse(
-            _streaming_body_iterator(obj["Body"]),
+        return await owned_streaming_response(
+            obj["Body"], _streaming_body_iterator,
             status_code=206,
             media_type=content_type,
             headers=headers,
@@ -10869,8 +10873,8 @@ async def _stream_audiobook_asset_url(
                 detail="Audiobook storage returned an invalid byte range",
             )
         headers["Content-Range"] = content_range
-    return StreamingResponse(
-        _streaming_body_iterator(obj["Body"]),
+    return await owned_streaming_response(
+        obj["Body"], _streaming_body_iterator,
         status_code=status_code,
         media_type=content_type,
         headers=headers,
