@@ -5718,9 +5718,6 @@ async def enforce_public_release_country(request: Request, call_next):
     production surface. The assertion authenticates the proxy and binds its
     observed country to the title-specific rights decision.
     """
-
-    if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
-        return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED", "message": "New Reading Pass purchases are temporarily paused. Existing reading and listening access remains available."}}, headers={"Cache-Control": "no-store"})
     if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:
         commerce = commerce_territory_verdict(
             request.headers, method=request.method, path=request.url.path,
