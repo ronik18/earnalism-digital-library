@@ -12326,5 +12326,18 @@
     "production_cover_mapping_changed": false,
     "text_audio_access_customer_state_changed": false,
     "owner_authority": "Direct cover GO LIVE and isolated-worktree exception; no expansion to unrelated backend changes."
+  },
+  "next_three_cover_replacement_20261030": {
+    "state": "SOURCE_CANDIDATE_NOT_DEPLOYED",
+    "base": "02b176fd59038f3c87b2828cb547b9cf39a2a98d",
+    "titles": [
+      "a-white-heron",
+      "the-canterville-ghost",
+      "the-pit-and-the-pendulum"
+    ],
+    "evidence": "internal/earnalism_intelligence/cover_next_three_20261030",
+    "production_cover_mapping_changed": false,
+    "text_audio_access_customer_state_changed": false,
+    "release_limit": "Do not deploy unrelated main optimization/CLOSED purchase delta under cover-only authority."
   }
 }

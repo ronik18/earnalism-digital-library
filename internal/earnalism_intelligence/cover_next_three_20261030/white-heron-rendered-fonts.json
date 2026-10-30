@@ -1,0 +1,52 @@
+{
+  "pdf_sha256": "6381d6d3e2b4af991e96ecee05833746a43f79d595fa94f25461df25a27dedf8",
+  "pages": [
+    {
+      "page": 1,
+      "fonts": [
+        {
+          "resource": "/F21",
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0"
+        },
+        {
+          "resource": "/F23",
+          "base_font": "/BAAAAA+TimesNRMTPro",
+          "subtype": "/Type0"
+        },
+        {
+          "resource": "/F23",
+          "base_font": "/BAAAAA+TimesNRMTPro",
+          "subtype": "/Type0"
+        }
+      ],
+      "extracted_text": "A  W h i t e\nH e r o n\nS a r a h  O r n e  J e w e t t\nE a r n a l i s m  -  A  R e o  E n t e r p r i s e  V e n t u r e  "
+    },
+    {
+      "page": 2,
+      "fonts": [
+        {
+          "resource": "/F25",
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0"
+        },
+        {
+          "resource": "/F25",
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0"
+        },
+        {
+          "resource": "/F25",
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0"
+        },
+        {
+          "resource": "/F25",
+          "base_font": "/AAAAAA+TimesNRMTPro-Cond",
+          "subtype": "/Type0"
+        }
+      ],
+      "extracted_text": "A  s e c r e t  w o r t h  p r o t e c t i n g .\nI n  t h e  N e w  E n g l a n d  w o o d s ,  y o u n g  S y l v i a  f i n d s  a  w o r l d  o f\nc o m p a n i o n s h i p  a m o n g  b i r d s  a n d  t r e e s .  A  v i s i t i n g  h u n t e r\no f f e r s  a  r e w a r d  f o r  t h e  l o c a t i o n  o f  a  r a r e  w h i t e  h e r o n ,\nd r a w i n g  h e r  t o w a r d  a  d i f f i c u l t  c h o i c e .  O n e  d a r i n g  c l i m b  a t\nd a w n  r e v e a l s  m o r e  t h a n  a  h i d d e n  n e s t .  S a r a h  O r n e  J e w e t t \u2019 s\nl u m i n o u s  s t o r y  e x p l o r e s  t h e  q u i e t  s t r e n g t h  o f  c o n s c i e n c e\na n d  o u r  b o n d  w i t h  t h e  n a t u r a l  w o r l d .\nS a r a h  O r n e  J e w e t t\nE a r n a l i s m  -  A  R e o  E n t e r p r i s e  V e n t u r e"
+    }
+  ]
+}

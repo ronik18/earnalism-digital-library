@@ -11,6 +11,14 @@
       "sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
     },
     {
+      "file": "cover_approval_evidence.json",
+      "sha256": "a111a7ec81e5f1ace6d15601b1e156ac74eb14fdc33f3d3108611919fa5950fd"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "fb486835ea0c65ec216e3b9cefa1d8c97523ee530b426acd1bfdb1b4a376a961"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "b755bfc522ef87f0de1854936a47e9bf48198af1dc171200b7363b2de0759fc5"
     },
@@ -20,15 +28,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a"
+      "sha256": "e036e6aad3e0a7e0598ca1973e1720bb3c1a746ae4f22e8b3fa14a98dc318668"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a"
-    },
-    {
-      "file": "rights_decision.json",
-      "sha256": "7a1edc8533649b238fdf3ea3b2ef847b8ad442983958ddac20e95878330b824c"
     },
     {
       "file": "source_evidence.json",

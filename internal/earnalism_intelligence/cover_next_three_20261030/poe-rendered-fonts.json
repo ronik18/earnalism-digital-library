@@ -1,0 +1,19 @@
+{
+  "pdf_sha256": "166c8c21b560e2f4bc4d3112c14fb50cdc8f7bd982f98c67d21ba525e99e56e9",
+  "pages": [
+    {
+      "page": 1,
+      "fonts": [
+        "/AAAAAA+IM_FELL_Double_Pica_Roman",
+        "/BAAAAA+TimesNRMTPro"
+      ]
+    },
+    {
+      "page": 2,
+      "fonts": [
+        "/AAAAAA+Crimson-Roman"
+      ]
+    }
+  ],
+  "scope": "Actual rendered fonts; private PDF not public font redistribution"
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-canterville-ghost",
+  "status": "OWNER_AUTHORIZED_COVER_REPLACEMENT_SOURCE_CANDIDATE",
+  "scope": "Cover display only; existing literary/audio rights decisions and publication/access unchanged.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+      "url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+      "sha256": "3e6e7773773cae3723637f3c3a256a31bd0c14cffcc64356bbee01d4762dd2f7",
+      "bytes": 165324,
+      "width": 800,
+      "height": 1200,
+      "format": "webp",
+      "master_sha256": "0b3c9ee2824d6c0b202fbc3c0aed79ced5d3aa8a83bd3964f1379831095d485d"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+      "url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+      "sha256": "4bac8e4ff4162cdf8b5b501e7b3d03fb7641e0ebed976e404c8f69d55b730b81",
+      "bytes": 135848,
+      "width": 800,
+      "height": 1200,
+      "format": "webp",
+      "master_sha256": "7c8e2a52eb860fb51c464599131f7fd00dfbcd4abe2b5320e74b06ff1b8e2310"
+    }
+  },
+  "owner_instruction": {
+    "path": "internal/earnalism_intelligence/cover_next_three_20261030/owner_instruction.json",
+    "sha256": "66c0bf3d1b66ff9397b32aadd2e0e917ce4471ff1c8c498ce22f35f2cd0dea23"
+  },
+  "evidence_directory": "internal/earnalism_intelligence/cover_next_three_20261030",
+  "artwork_origin": "Retained owner-directed Canva AI illustration and native type; Canterville restored with built-in image generation from original native export.",
+  "metadata_preservation": "Same-source native Canva XMP retained in WebP. No C2PA signature validity or exclusive copyright claim.",
+  "previous_provenance": null,
+  "production_verified": false
+}

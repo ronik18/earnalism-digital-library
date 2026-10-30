@@ -110,7 +110,7 @@
     {
       "path": "data/approved_reader_bootstrap.json",
       "bytes": 12508,
-      "sha256": "16f5d345a787c94187d5032bf7b578b53cc34e5680c1d89a767a39c72c6f5d98"
+      "sha256": "a39bae68131a43c8a9ea2142e36ea58ba790e740853e854faec9d1dec54e196e"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -384,8 +384,18 @@
     },
     {
       "path": "data/controlled_publications/a-white-heron/checksum_manifest.json",
-      "bytes": 1039,
-      "sha256": "fad32018ce69bef8229b63ab7d9819599a394f62c1ce836328234479d091fe7e"
+      "bytes": 1316,
+      "sha256": "8753ab60fc9f9f530adc22091521af6f65d8b53d3efefb0080327f8ac2b6ded2"
+    },
+    {
+      "path": "data/controlled_publications/a-white-heron/cover_approval_evidence.json",
+      "bytes": 5028,
+      "sha256": "a111a7ec81e5f1ace6d15601b1e156ac74eb14fdc33f3d3108611919fa5950fd"
+    },
+    {
+      "path": "data/controlled_publications/a-white-heron/cover_provenance.json",
+      "bytes": 1899,
+      "sha256": "fb486835ea0c65ec216e3b9cefa1d8c97523ee530b426acd1bfdb1b4a376a961"
     },
     {
       "path": "data/controlled_publications/a-white-heron/highlight_sync.json",
@@ -399,13 +409,13 @@
     },
     {
       "path": "data/controlled_publications/a-white-heron/public_book.json",
-      "bytes": 5215,
-      "sha256": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a"
+      "bytes": 5440,
+      "sha256": "e036e6aad3e0a7e0598ca1973e1720bb3c1a746ae4f22e8b3fa14a98dc318668"
     },
     {
       "path": "data/controlled_publications/a-white-heron/publication_manifest.json",
-      "bytes": 1928,
-      "sha256": "3465e865aa51a62c580d257f79595f2e0f9b36c75991e005fdaad2c5327ae6de"
+      "bytes": 1945,
+      "sha256": "ac71fa16b00cf068497993a32e6e7bb0e48a7ffa50c0609dbd8491343c17af25"
     },
     {
       "path": "data/controlled_publications/a-white-heron/reader_manifest.json",
@@ -414,8 +424,8 @@
     },
     {
       "path": "data/controlled_publications/a-white-heron/rights_decision.json",
-      "bytes": 1675,
-      "sha256": "63d42d1c813a0b883e81b395a9fa9580bddede8b99f91a3693c7a3870f7fa474"
+      "bytes": 2040,
+      "sha256": "6278f28d0cd9b2e2e8ff817a110370676433dae7c9c29cdc314777c47f937428"
     },
     {
       "path": "data/controlled_publications/a-white-heron/source_evidence.json",
@@ -6614,8 +6624,18 @@
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/checksum_manifest.json",
-      "bytes": 1737,
-      "sha256": "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d"
+      "bytes": 2014,
+      "sha256": "3a6efe2af2c0c341403e2c58252e19921d487a2952fcac34d00552ee0dfff069"
+    },
+    {
+      "path": "data/controlled_publications/the-canterville-ghost/cover_approval_evidence.json",
+      "bytes": 5196,
+      "sha256": "d88dbc5dc6797ef5700b90f20b34bbf638ae867cf5b8ea66bb6d18de3d709421"
+    },
+    {
+      "path": "data/controlled_publications/the-canterville-ghost/cover_provenance.json",
+      "bytes": 1939,
+      "sha256": "439e06a428d45a93139a6fe6ef96395e10881471a3e15af31977038cb40d63bc"
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/highlight_sync.json",
@@ -6624,13 +6644,13 @@
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/public_book.json",
-      "bytes": 6076,
-      "sha256": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0"
+      "bytes": 6301,
+      "sha256": "7a66c59fa6587c884c1688309de6ab607fe0317044f42ecad61730e4a065f1c8"
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/publication_manifest.json",
-      "bytes": 3153,
-      "sha256": "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a"
+      "bytes": 3170,
+      "sha256": "b13fd6d4df8e81e1e437a42e0ef95725c3572a43819b206c4fa3310daf7d166d"
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/reader_manifest.json",
@@ -6639,8 +6659,8 @@
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/rights_decision.json",
-      "bytes": 1760,
-      "sha256": "a8ffa314113ce53ef82534ac0bdbf29444bc8c6f0fcc218c453363b7de13e128"
+      "bytes": 2125,
+      "sha256": "524e8fa0369ec926499ed36e0e0f17eabc45e0d38b8186d24e4c544323392f76"
     },
     {
       "path": "data/controlled_publications/the-canterville-ghost/source_evidence.json",
@@ -7769,13 +7789,18 @@
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/checksum_manifest.json",
-      "bytes": 1195,
-      "sha256": "fb5f7ea77d39afb9872fea4e610592b071eb8aac7a3d9097e9f04653af58ad34"
+      "bytes": 1337,
+      "sha256": "084dacd4e8f41f70273fbe2eec8059464c1d31dd50d7547058ae2112970406be"
+    },
+    {
+      "path": "data/controlled_publications/the-pit-and-the-pendulum/cover_approval_evidence.json",
+      "bytes": 5259,
+      "sha256": "ac17e5eee48a61d19530000ef1794584b8ec8f60f36093826590a8c417184688"
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/cover_provenance.json",
-      "bytes": 2544,
-      "sha256": "eb7664ac057a4b3e74e31fe0c0897f398f9ab676f58bb4a68ceebad9828e1709"
+      "bytes": 4522,
+      "sha256": "8639fe2af6f4cfd0faf30ac192a5b26be885844c072a32ab465c61a570e0ef06"
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/highlight_sync.json",
@@ -7784,13 +7809,13 @@
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/public_book.json",
-      "bytes": 3684,
-      "sha256": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf"
+      "bytes": 3909,
+      "sha256": "c327e12642d57580c0c260aa12c8ba8f6f7a8db6b98f11f1d627ff3418772246"
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/publication_manifest.json",
-      "bytes": 1984,
-      "sha256": "7a71dedfe7704aa099d448ba23fc9246e8afad93b8eced53e65f282f0e5b57f3"
+      "bytes": 2001,
+      "sha256": "b630931dcffb83ff3ca2abe02ed4aeb463d3ca181f299dd874fa3e185bdacea4"
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json",
@@ -7804,8 +7829,8 @@
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/rights_decision.json",
-      "bytes": 3288,
-      "sha256": "e3effaab8f350fc370cad70ba7669b6768eff38d38a18cbced2c853bad60dc87"
+      "bytes": 3605,
+      "sha256": "80488b08fd65fbd257a26a477f4c75efe5979d6875d424cbeee2a81325e78985"
     },
     {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/source_evidence.json",
@@ -9454,8 +9479,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 36598,
-      "sha256": "ff3584847cd05a1a6dcbe1d64dbad184709ddcd73e4be24105966e7cad5292ba"
+      "bytes": 37769,
+      "sha256": "36485311388cd446998193013ee71335388391204d511e44ae9c4292b2373ba0"
     },
     {
       "path": "demand_scoring.py",
@@ -9703,5 +9728,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "25744e467d4c40797658c1e16ec662fff43f2e9dd1aa607978439164936fc7bb"
+  "expected_sha256": "47f8429e56f4abad2083f6b3e3789843496e262ca2bd2fefbd429adeaebc8575"
 }

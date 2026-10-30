@@ -7,14 +7,14 @@
   "category_slug": "gothic-fiction",
   "short_description": "A prisoner of the Spanish Inquisition survives a descending razor pendulum, a pit of blackness, and closing iron walls.",
   "description": "Condemned by the Inquisition, the narrator survives one impossible death after another in a dungeon of calculated terror — Poe's supreme study in sustained suspense and the will to survive.",
-  "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "26 min",
   "formats": [
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "8639fe2af6f4cfd0faf30ac192a5b26be885844c072a32ab465c61a570e0ef06"
 }

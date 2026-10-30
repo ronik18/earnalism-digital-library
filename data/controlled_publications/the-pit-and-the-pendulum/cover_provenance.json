@@ -1,41 +1,77 @@
 {
-  "schema": "earnalism.exact-existing-cover-provenance.v1",
+  "schema": "earnalism.exact-cover-provenance.v1",
   "slug": "the-pit-and-the-pendulum",
-  "checked_at": "2026-10-01T05:38:07.922769+00:00",
-  "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
-  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
-  "cover": {
-    "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
-    "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
-    "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
-    "generator": "scripts/render_english_25_missing_covers.py",
-    "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
-    "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
-    "font_license_url": "https://dejavu-fonts.github.io/License.html",
-    "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
-    "assets": {
-      "front": {
-        "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-        "sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
-        "bytes": 17058,
-        "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      },
-      "back": {
-        "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-        "sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
-        "bytes": 23152,
-        "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-        "dimensions": [
-          800,
-          1200
-        ]
-      }
+  "status": "OWNER_AUTHORIZED_COVER_REPLACEMENT_SOURCE_CANDIDATE",
+  "scope": "Cover display only; existing literary/audio rights decisions and publication/access unchanged.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+      "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+      "sha256": "0d4b96d950f4e044ad1c102117c31e5c418ad03e287d4316f594dca2276f9e88",
+      "bytes": 163750,
+      "width": 800,
+      "height": 1200,
+      "format": "webp",
+      "master_sha256": "9a98616c7b6fef8d25360affdcbad9eaac077ce9ecd096d514ffdab698478115"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+      "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+      "sha256": "099f97e4ecca2e383e647123ec2270a048ef141c4dce130cf1882d980649659a",
+      "bytes": 159668,
+      "width": 800,
+      "height": 1200,
+      "format": "webp",
+      "master_sha256": "37bb1b24256d67380ebffa46536ff510318dcac5b624821bc74a8d66ba563cdf"
     }
   },
-  "new_art_generated": false,
-  "existing_art_replaced": false
+  "owner_instruction": {
+    "path": "internal/earnalism_intelligence/cover_next_three_20261030/owner_instruction.json",
+    "sha256": "66c0bf3d1b66ff9397b32aadd2e0e917ce4471ff1c8c498ce22f35f2cd0dea23"
+  },
+  "evidence_directory": "internal/earnalism_intelligence/cover_next_three_20261030",
+  "artwork_origin": "Original built-in image generation, exact uploaded sources retained; Canva native type only.",
+  "metadata_preservation": "Same-source native Canva XMP retained in WebP. No C2PA signature validity or exclusive copyright claim.",
+  "previous_provenance": {
+    "schema": "earnalism.exact-existing-cover-provenance.v1",
+    "slug": "the-pit-and-the-pendulum",
+    "checked_at": "2026-10-01T05:38:07.922769+00:00",
+    "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
+    "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "cover": {
+      "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+      "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+      "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+      "generator": "scripts/render_english_25_missing_covers.py",
+      "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+      "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+      "font_license_url": "https://dejavu-fonts.github.io/License.html",
+      "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+          "sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
+          "bytes": 17058,
+          "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+          "sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
+          "bytes": 23152,
+          "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "new_art_generated": false,
+    "existing_art_replaced": false
+  },
+  "production_verified": false
 }

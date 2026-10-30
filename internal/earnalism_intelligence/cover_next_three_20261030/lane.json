@@ -1,0 +1,9 @@
+{
+  "owner": "Current cover task 01a0a89b-931a-7771-b978-f5d452c418da",
+  "path": "/private/tmp/earnalism-nine-cover-release-20261030",
+  "branch": "codex/nine-cover-release-20261030",
+  "base": "02b176fd59038f3c87b2828cb547b9cf39a2a98d",
+  "scope": "Six content-addressed images plus necessary mirrored cover bindings and derived catalogue seals",
+  "dependencies": "Current-head checks; production application compatibility and exclusive release slot required before deployment",
+  "preservation": "Other checkouts, branches and parked PR529 untouched"
+}

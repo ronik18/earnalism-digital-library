@@ -7,14 +7,14 @@
   "category_slug": "gothic-fiction",
   "short_description": "An American family moves into a haunted English manor and refuses to be scared — defeating the ancient ghost at every turn.",
   "description": "The Otis family — pragmatic, modern Americans — is utterly unimpressed by the Canterville Ghost's centuries of terrifying tenants. Only young Virginia feels compassion for him. Wilde's most charming story, satirising English tradition through the lens of American common sense.",
-  "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "48 min",
   "formats": [
@@ -179,5 +179,6 @@
       800,
       1200
     ]
-  }
+  },
+  "cover_provenance_sha256": "439e06a428d45a93139a6fe6ef96395e10881471a3e15af31977038cb40d63bc"
 }

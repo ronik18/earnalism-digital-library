@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "A girl who knows where a rare white heron nests must choose between telling a hunter she admires and protecting the bird.",
   "description": "Sylvia climbs a great pine tree at dawn and sees the whole world — including the white heron's nest. When she returns to the hunter who wants the bird for his collection, she finds she cannot speak. A perfect story about loyalty to the natural world over human desire.",
-  "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
-  "cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
-  "coverImage": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
-  "cover_image": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
-  "back_cover_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
-  "back_cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
-  "backCoverImage": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+  "coverImage": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+  "cover_image": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "18 min",
   "formats": [
@@ -120,5 +120,6 @@
   "audio_qa_status": "",
   "audiobook_release_mode": "",
   "audio_sha256": "",
-  "candidate_fingerprint": ""
+  "candidate_fingerprint": "",
+  "cover_provenance_sha256": "fb486835ea0c65ec216e3b9cefa1d8c97523ee530b426acd1bfdb1b4a376a961"
 }

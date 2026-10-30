@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "a-white-heron",
+  "history": [
+    {
+      "event_id": "cover-next-three-20261030-front-4eb9cd5b47c58c59",
+      "slug": "a-white-heron",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "4eb9cd5b47c58c596f7e51ac65e51d3063cbfb635fe6fd90b210aa11258b799d",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+        "sha256": "4eb9cd5b47c58c596f7e51ac65e51d3063cbfb635fe6fd90b210aa11258b799d",
+        "bytes": 172336,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f"
+      },
+      "approved_by": "Direct owner exact-preview and release instruction; prepared by Codex",
+      "approval_note": "Exact owner-approved saved design and bounded web derivative; not yet delivered remotely.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "8471425591a9612c9ff81945bbb8638a8347732ebc8cbb851f2bb08f312897ad"
+    },
+    {
+      "event_id": "cover-next-three-20261030-back-aa03dd638e1e1165",
+      "slug": "a-white-heron",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "aa03dd638e1e1165abeb24c69f9550eb7d630dd7fe1632b078195202246986d8",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+        "sha256": "aa03dd638e1e1165abeb24c69f9550eb7d630dd7fe1632b078195202246986d8",
+        "bytes": 114214,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8"
+      },
+      "approved_by": "Direct owner exact-preview and release instruction; prepared by Codex",
+      "approval_note": "Exact owner-approved saved design and bounded web derivative; not yet delivered remotely.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "9667bbc0ac69006c88ae79c85b876b9325ee7463a895de2a9b4b73447071358d"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-three-20261030-front-4eb9cd5b47c58c59",
+    "back": "cover-next-three-20261030-back-aa03dd638e1e1165"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-three-20261030-front-4eb9cd5b47c58c59",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-three-20261030-back-aa03dd638e1e1165",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/a-white-heron/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}
