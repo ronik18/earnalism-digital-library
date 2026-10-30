@@ -127,6 +127,30 @@ def test_default_off_and_legacy_mutation_wrapper_no_control_dependency():
     run(case())
 
 
+def test_rollback_fresh_local_reader_preserves_unresolved_fence_without_redis():
+    async def case():
+        db=database();control=m.Control(db);assert await control.startup()
+        await control.begin(True,operation='inert_unknown_source_outcome')
+        fence=dict(db.public_metadata_cache_control.row)
+        control_calls=len(db.public_metadata_cache_control.calls)
+        class ForbiddenRedis:
+            async def execute_command(self,*args):raise AssertionError('rollback must not read Redis')
+            async def eval(self,*args):raise AssertionError('rollback must not mutate Redis')
+        # A replacement reader starts with an empty local cache after ALL shared
+        # readers have drained. This does not certify a mixed-reader rollout.
+        reader=server_bindings(db)
+        reader.update(REDIS_PUBLIC_METADATA_ENABLED=False,REDIS_CACHE_ENABLED=False,
+                      MULTI_REPLICA_ENABLED=False,_redis_client=ForbiddenRedis())
+        key='categories:rollback'
+        assert await reader['_public_cache_get'](key) is None
+        current={'revision':'authoritative-current'}
+        await reader['_public_cache_set'](key,current)
+        assert await reader['_public_cache_get'](key)==current
+        assert db.public_metadata_cache_control.row==fence
+        assert len(db.public_metadata_cache_control.calls)==control_calls
+    run(case())
+
+
 def test_real_mongo_redis_cross_process_fence_restart_and_bounded_slots():
     import os,sys,subprocess,uuid
     if os.environ.get('EARNALISM_REDIS_INTEGRATION')!='1' or os.environ.get('READER_SEGMENT_MONGO_INTEGRATION')!='1':
