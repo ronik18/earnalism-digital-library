@@ -12296,5 +12296,16 @@
     "correction": "Harness-only retained Task identities and bounded rendezvous/pair waits; all real CAS, same-ID recovery, bootstrap and rollback assertions retained.",
     "qualification": "Fresh authenticated loopback Mongo7testsPASS, ownprocess shutdownverified; independent reviewPASS. No production application or provider change.",
     "next_action": "Fresh exact-head all mandatory CI before merge and OPEN successor."
+  },
+  "live_audiobook_backend_only_reopening_20261030": {
+    "titles": [
+      "the-selfish-giant",
+      "the-open-window"
+    ],
+    "status": "EXACT_OPEN_SUCCESSOR_SOURCE_PREPARATION",
+    "closed_merged_source": "2abb331f2363f89c60f2399c69f1a6053d3f76ee",
+    "preserve": "Latest upload seals/diagnostics/harness fixes, accepted India/US rights, media/covers/free Reader and financial controls.",
+    "provider_writes": 0,
+    "next_action": "Fresh exact OPEN source tests/independentreview/CI then matchedmerge. Bind exact merged CLOSED+OPEN sources and fresh actual upload admission before corrected one-shot guarded bootstrap under existing native authority."
   }
 }
