@@ -30,8 +30,8 @@ def bindings(client, prefix):
               io=io, pickle=pickle, re=re, time=time, uuid=uuid, zlib=zlib,
               Response=Response, UploadFile=UploadFile, logger=logging.getLogger(__name__),
               REDIS_KEY_PREFIX=prefix, REDIS_PUBLIC_METADATA_ENABLED=True,
-              REDIS_CACHE_ENABLED=False, MULTI_REPLICA_ENABLED=False,
-              PUBLIC_CACHE_ENABLED=True, PUBLIC_CACHE_TTL_SECONDS=300,
+              REDIS_CACHE_ENABLED=True, MULTI_REPLICA_ENABLED=False,
+              ENABLE_STARTUP_DB_MAINTENANCE=False, PUBLIC_CACHE_ENABLED=True, PUBLIC_CACHE_TTL_SECONDS=300,
               PUBLIC_CACHE_MAX_ENTRIES=96, REDIS_CACHE_TTL_JITTER_SECONDS=0,
               REDIS_CACHE_COMPRESS_MIN_BYTES=4096, _redis_client=client,
               _redis_available=True, _public_cache=OrderedDict(), _public_cache_generation=0,
@@ -44,7 +44,7 @@ def bindings(client, prefix):
     names = ('_redis_key', '_redis_text', '_redis_state_enabled', '_public_metadata_redis_enabled', '_public_cache_redis_for_key',
              '_ttl_with_jitter', '_redis_cache_payload_is_media', '_cache_payload_encode',
              '_cache_payload_encode_for_redis', '_cache_payload_decode', '_public_cache_ticket',
-             '_public_cache_get', '_public_cache_set', '_public_cache_clear')
+             '_public_metadata_only_key', '_public_cache_get', '_public_cache_set', '_public_cache_clear')
     for name in names:
         node = next(n for n in TREE.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.name == name)
         exec(compile(ast.Module(body=[node], type_ignores=[]), str(SERVER), 'exec'), ns)
@@ -85,6 +85,7 @@ def test_fill_ticket_bound_and_consumption():
 
 def test_public_only_never_enables_shared_authority():
     ns = bindings(object(), 'offline-flags')
+    ns['REDIS_CACHE_ENABLED'] = False
     assert ns['_public_metadata_redis_enabled']()
     assert not ns['_redis_state_enabled']()
     ns['REDIS_PUBLIC_METADATA_ENABLED'] = False
@@ -107,8 +108,8 @@ def test_metadata_outage_is_miss_not_stale_local():
 
 @pytest.mark.parametrize('case', ['read_hit', 'missing_generation', 'corrupt_generations',
     'expired_marker', 'delayed_fill', 'concurrent_fills', 'bad_payload', 'media_rejected',
-    'public_only_invalidation', 'initializer_public_only', 'invalidation_replay'])
-def test_real_public_metadata_redis(case):
+    'legacy_shared_invalidation', 'initializer_public_only', 'invalidation_replay'])
+def test_real_legacy_shared_cache_and_public_only_initializer(case):
     if os.environ.get('EARNALISM_REDIS_INTEGRATION') != '1':
         pytest.skip('explicit isolated Redis fixture required')
     url = _endpoint()
@@ -121,7 +122,7 @@ def test_real_public_metadata_redis(case):
         async def record(*args, **kwargs):
             calls.append(args)
             cmd = str(args[0]).upper()
-            if cmd in {'SET','SETEX','DEL','INCR','EXPIRE'}: known.add(args[1])
+            if cmd in {'SET','SETEX','DEL','INCR','INCRBY','EXPIRE'}: known.add(args[1])
             if cmd in {'EVAL','EVAL_RO'}:
                 for key in args[3:3+int(args[2])]: known.add(key)
             return await original(*args, **kwargs)
@@ -179,11 +180,11 @@ def test_real_public_metadata_redis(case):
                 assert await ns['_public_cache_get'](key) is None
                 await ns['_public_cache_set'](key,{'audio':b'ID3'})
                 assert await client.get(payload_key('a'*32)) is None
-            elif case == 'public_only_invalidation':
+            elif case == 'legacy_shared_invalidation':
                 calls.clear();await ns['_public_cache_clear']()
-                assert [c[0] for c in calls]==['GET','EVAL']
-                assert not ns['_redis_state_enabled']()
-                assert not any('reader-content' in str(c) for c in calls)
+                assert [c[0] for c in calls]==['GET','EVAL','INCRBY']
+                assert ns['_redis_state_enabled']()
+                assert any('reader-content' in str(c) for c in calls)
             elif case == 'invalidation_replay':
                 await ns['_public_cache_clear']()
                 first_clear=next(c for c in reversed(calls) if c[0]=='EVAL')
@@ -194,6 +195,9 @@ def test_real_public_metadata_redis(case):
                 assert await original(*first_clear)==0  # delayed replay of A's exact command
                 assert await ns['_public_cache_get'](key)=={'revision':'B'}
             elif case == 'initializer_public_only':
+                from backend import public_metadata_cache
+                from backend.tests.public_metadata_fixtures import database
+                ns.update(REDIS_CACHE_ENABLED=False,db=database(),metadata_cache=public_metadata_cache)
                 ns.update(REDIS_URL=url,REDIS_CACHE_FAIL_FAST=True,REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS=.3,
                           REDIS_SOCKET_TIMEOUT_SECONDS=1,_redis_available=False)
                 async def forbidden(): raise AssertionError('public-only startup must not configure Redis')
@@ -203,7 +207,7 @@ def test_real_public_metadata_redis(case):
                 with patch('redis.asyncio.from_url',return_value=client):
                     await ns['initialize_replica_state_backends']()
                 assert ns['_public_metadata_redis_enabled']() and not ns['_redis_state_enabled']()
-                assert re.fullmatch('[0-9a-f]{32}',(await client.get(generation)).decode())
+                assert (await public_metadata_cache.Control(ns['db']).read())['state']=='ACTIVE'
         finally:
             if known:
                 assert all(str(k).startswith(prefix+':') for k in known)
@@ -240,7 +244,11 @@ def test_actual_asgi_public_route_hit_invalidation_and_outage(monkeypatch):
             async def to_list(self,*args):
                 self.reads+=1;return [{'name':'dummy category','revision':self.reads}]
         categories=Categories()
-        monkeypatch.setattr(server,'db',SimpleNamespace(categories=categories))
+        from backend.tests.public_metadata_fixtures import database
+        dummy_db=database();dummy_db.categories=categories
+        await server.metadata_cache.Control(dummy_db).startup()
+        monkeypatch.setattr(server,'db',dummy_db)
+        monkeypatch.setattr(server,'_public_metadata_source_binding',lambda:'a'*64)
         for k,v in {'REDIS_KEY_PREFIX':prefix,'_redis_client':client,'_redis_available':True,
                     'REDIS_PUBLIC_METADATA_ENABLED':True,'REDIS_CACHE_ENABLED':False,
                     'MULTI_REPLICA_ENABLED':False,'RATE_LIMIT_ENABLED':False,'PUBLIC_CACHE_ENABLED':True}.items():
@@ -283,6 +291,7 @@ def test_codec_failure_does_not_fail_metadata_response():
 def test_public_only_scope_does_not_share_reader_or_blog_bodies():
     async def run():
         ns = bindings(object(), 'offline-scope')  # no Redis methods: any command fails
+        ns['REDIS_CACHE_ENABLED'] = False
         for scope in ['book_chapter', 'reader_preview_chapter', 'blog_detail', 'future_unknown_scope']:
             key = scope + ':dummy'
             assert not ns['_public_cache_redis_for_key'](key)
