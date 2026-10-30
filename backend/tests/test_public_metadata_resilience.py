@@ -133,9 +133,14 @@ def test_rollback_fresh_local_reader_preserves_unresolved_fence_without_redis():
         await control.begin(True,operation='inert_unknown_source_outcome')
         fence=dict(db.public_metadata_cache_control.row)
         control_calls=len(db.public_metadata_cache_control.calls)
+        redis_calls=[]
         class ForbiddenRedis:
-            async def execute_command(self,*args):raise AssertionError('rollback must not read Redis')
-            async def eval(self,*args):raise AssertionError('rollback must not mutate Redis')
+            async def execute_command(self,*args):
+                redis_calls.append(args)
+                raise AssertionError('rollback must not read Redis')
+            async def eval(self,*args):
+                redis_calls.append(args)
+                raise AssertionError('rollback must not mutate Redis')
         # A replacement reader starts with an empty local cache after ALL shared
         # readers have drained. This does not certify a mixed-reader rollout.
         reader=server_bindings(db)
@@ -148,6 +153,7 @@ def test_rollback_fresh_local_reader_preserves_unresolved_fence_without_redis():
         assert await reader['_public_cache_get'](key)==current
         assert db.public_metadata_cache_control.row==fence
         assert len(db.public_metadata_cache_control.calls)==control_calls
+        assert redis_calls==[]
     run(case())
 
 
