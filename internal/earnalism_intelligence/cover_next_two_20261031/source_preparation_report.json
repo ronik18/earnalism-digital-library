@@ -1,0 +1,260 @@
+{
+  "base": "42b988798e5f51c62e38014468d716e9b14713c0",
+  "status": "PREPARED_NOT_DEPLOYED",
+  "titles": [
+    {
+      "slug": "the-stolen-white-elephant",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+          "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+          "sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+          "bytes": 97102,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+          "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+          "sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+          "bytes": 99141,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e"
+        }
+      },
+      "previous_public": {
+        "id": "controlled-the-stolen-white-elephant",
+        "slug": "the-stolen-white-elephant",
+        "title": "The Stolen White Elephant",
+        "subtitle": "",
+        "author": "Mark Twain",
+        "category_slug": "literary-fiction",
+        "short_description": "A sacred white elephant is stolen — and the world's greatest detectives cannot find it despite it leaving a trail of destruction everywhere.",
+        "description": "Twain's savage parody of detective fiction — an enormous white elephant wanders through American cities causing chaos while the detectives collect fees for clues and never look up. A perfect skewering of the genre Poe invented.",
+        "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "estimated_reading_time": "29 min",
+        "formats": [
+          "Ebook"
+        ],
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "about_author": "Mark Twain (1835–1910) was an American author and humorist, one of the great literary voices of American democracy.",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "order": 1,
+            "title": "The Stolen White Elephant",
+            "is_preview": true,
+            "has_images": false,
+            "image_count": 0,
+            "word_count": 6821,
+            "reading_minutes": 29,
+            "language_hint": "en",
+            "processing_status": "ready",
+            "processing_warnings": [],
+            "uploaded_at": "2026-07-03T20:07:47Z",
+            "updated_at": "2026-08-15T21:49:10Z"
+          }
+        ],
+        "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517",
+        "content_hash": "1966dc3ff417b39ec3faeab8031f6c99f0138f8d1595f351147a023fed8f0235",
+        "provenance_hash": "6637344b47e4a4cb2f0afdce7adfaf8eca02d84429c408c533fb13cece300756",
+        "rights_basis": "Mark Twain died 1910; first published 1882. Public domain in India and the U.S.",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "approved_to_publish": true,
+        "publication_status": "LIVE_APPROVED",
+        "readerStatus": "reader_ready",
+        "publicationStatus": "live",
+        "isPublic": true,
+        "isLive": true,
+        "showInPublicLibrary": true,
+        "showInHomepage": false,
+        "allowPublicReading": true,
+        "allowCheckout": false,
+        "allowPayment": false,
+        "is_published": true,
+        "audio_enabled": false,
+        "audiobook_enabled": false,
+        "generate_audiobook": false,
+        "audiobook_provider": "",
+        "audiobook_voice": "",
+        "audio_asset_slug": "",
+        "created_at": "2026-07-03T20:07:47Z",
+        "updated_at": "2026-08-15T21:49:10Z",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "preserved_file_hashes": {
+        "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+        "reader_release_approval.json": "082659f804470885842ca8d704e4f8c71d2902ca57118e5b3b91436267e4b6b4",
+        "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
+        "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+        "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95"
+      },
+      "unchanged_rights_semantics": true,
+      "mirrors_and_checksums": "PASS"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+          "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+          "sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+          "bytes": 108590,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+          "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+          "sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+          "bytes": 82504,
+          "width": 800,
+          "height": 1200,
+          "format": "jpeg",
+          "master_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3"
+        }
+      },
+      "previous_public": {
+        "id": "controlled-an-occurrence-at-owl-creek-bridge",
+        "slug": "an-occurrence-at-owl-creek-bridge",
+        "title": "An Occurrence at Owl Creek Bridge",
+        "subtitle": "",
+        "author": "Ambrose Bierce",
+        "category_slug": "history-strategy",
+        "short_description": "A Confederate civilian is hanged from a bridge — and in the split second of dying, escapes through an entire fantasy of survival.",
+        "description": "Peyton Farquhar falls from the bridge — and in the fractured seconds of his death, lives out an elaborate, vivid escape home. The story that invented the unreliable dying mind as a narrative device. Bierce's finest achievement.",
+        "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "dominant_color": "#4A1C27",
+        "estimated_reading_time": "16 min",
+        "formats": [
+          "Ebook"
+        ],
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "order": 1,
+            "title": "An Occurrence at Owl Creek Bridge",
+            "is_preview": true,
+            "has_images": false,
+            "image_count": 0,
+            "word_count": 3764,
+            "reading_minutes": 16,
+            "language_hint": "en",
+            "processing_status": "ready",
+            "processing_warnings": [],
+            "uploaded_at": "2026-07-03T20:07:48Z",
+            "updated_at": "2026-08-16T06:21:21Z"
+          }
+        ],
+        "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6",
+        "content_hash": "0687ac64681f6c58ce748c89ecb8800b15be0591a2b6a75d512d985ac40134b7",
+        "provenance_hash": "7f8106f25b45e035360a6691d96e1412e8de72f5e1f95421c5bb431547d9cf30",
+        "rights_basis": "Ambrose Bierce died 1914; first published 1890. Public domain in India and the U.S.",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "approved_to_publish": true,
+        "publication_status": "LIVE_APPROVED",
+        "readerStatus": "reader_ready",
+        "publicationStatus": "live",
+        "isPublic": true,
+        "isLive": true,
+        "showInPublicLibrary": true,
+        "showInHomepage": false,
+        "allowPublicReading": true,
+        "allowCheckout": false,
+        "allowPayment": false,
+        "is_published": true,
+        "audio_enabled": false,
+        "audiobook_enabled": false,
+        "generate_audiobook": false,
+        "audiobook_provider": "",
+        "audiobook_voice": "",
+        "audio_asset_slug": "",
+        "created_at": "2026-07-03T20:07:48Z",
+        "updated_at": "2026-10-01T05:38:07.922769+00:00",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "preserved_file_hashes": {
+        "reader_manifest.json": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+        "reader_release_approval.json": "d6aae75c259146409557d9d2a8de528e40f88a23290ea3a317c27f2a4555556f",
+        "source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
+        "highlight_sync.json": "3f687193b859723dbdd8e278c5086d34eb85c5c7060a7aea8a6cd9677221e4e8",
+        "chapters/chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b"
+      },
+      "unchanged_rights_semantics": true,
+      "mirrors_and_checksums": "PASS"
+    }
+  ]
+}

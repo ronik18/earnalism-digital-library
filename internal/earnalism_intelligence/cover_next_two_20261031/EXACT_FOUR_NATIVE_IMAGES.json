@@ -1,0 +1,141 @@
+{
+  "observed_at": "2026-10-30T20:55:32.082995+00:00",
+  "images": [
+    {
+      "slug": "the-stolen-white-elephant",
+      "side": "front",
+      "canva_design_id": "DAHZhAfhUZQ",
+      "master": "/private/tmp/earnalism-cover-batch-three-20261031/elephant-native-web/1.jpg",
+      "master_sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+      "web_file": "/private/tmp/earnalism-cover-batch-three-20261031/web/the-stolen-white-elephant/front.jpg",
+      "web_sha256": "55242b9efb5806b2b329da15fd63b13a1860dc825b947d330881a5383c148bf8",
+      "bytes": 97102,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low at0.78125scale; no local conversion",
+      "segments": [
+        {
+          "marker": "0xe1",
+          "payload_bytes": 186,
+          "payload_sha256": "8db5f20ff0d14e74815740cac2411b3c04800ab1e7a7316fcbed41bbd4e70bfa"
+        },
+        {
+          "marker": "0xe1",
+          "payload_bytes": 3954,
+          "payload_sha256": "2077623add16bd61fc75abe4802814ae9b55d4f6d386f6c80bba62d5811cce3c"
+        }
+      ],
+      "APP11_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature/embedded lineage claim",
+      "original_art_evidence": "ORIGINAL_ART_IDENTITY.json"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "side": "back",
+      "canva_design_id": "DAHZhAfhUZQ",
+      "master": "/private/tmp/earnalism-cover-batch-three-20261031/elephant-native-web/2.jpg",
+      "master_sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+      "web_file": "/private/tmp/earnalism-cover-batch-three-20261031/web/the-stolen-white-elephant/back.jpg",
+      "web_sha256": "f23367df9c825ddcda523d367afa5f27b4b3910ace4d241da0a5596c2e81718e",
+      "bytes": 99141,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low at0.78125scale; no local conversion",
+      "segments": [
+        {
+          "marker": "0xe1",
+          "payload_bytes": 186,
+          "payload_sha256": "8db5f20ff0d14e74815740cac2411b3c04800ab1e7a7316fcbed41bbd4e70bfa"
+        },
+        {
+          "marker": "0xe1",
+          "payload_bytes": 3954,
+          "payload_sha256": "b930515e5f28303a72f4e48c064371f87f7d2ee88834d384c445c242e70dae2c"
+        }
+      ],
+      "APP11_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature/embedded lineage claim",
+      "original_art_evidence": "ORIGINAL_ART_IDENTITY.json"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "side": "front",
+      "canva_design_id": "DAHZhGTPQhc",
+      "master": "/private/tmp/earnalism-cover-batch-three-20261031/owl-native-web/1.jpg",
+      "master_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+      "web_file": "/private/tmp/earnalism-cover-batch-three-20261031/web/an-occurrence-at-owl-creek-bridge/front.jpg",
+      "web_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+      "bytes": 108590,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low at0.78125scale; no local conversion",
+      "segments": [
+        {
+          "marker": "0xe1",
+          "payload_bytes": 186,
+          "payload_sha256": "8db5f20ff0d14e74815740cac2411b3c04800ab1e7a7316fcbed41bbd4e70bfa"
+        },
+        {
+          "marker": "0xe1",
+          "payload_bytes": 3951,
+          "payload_sha256": "311e18ddc4d66b8c976a0c4d95f9bacf6d66528e71a4499282c5aa45a808e05c"
+        }
+      ],
+      "APP11_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature/embedded lineage claim",
+      "original_art_evidence": "ORIGINAL_ART_IDENTITY.json"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "side": "back",
+      "canva_design_id": "DAHZhGTPQhc",
+      "master": "/private/tmp/earnalism-cover-batch-three-20261031/owl-native-web/2.jpg",
+      "master_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+      "web_file": "/private/tmp/earnalism-cover-batch-three-20261031/web/an-occurrence-at-owl-creek-bridge/back.jpg",
+      "web_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+      "bytes": 82504,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "format": "jpeg",
+      "native_export": true,
+      "quality": "Canva native Low at0.78125scale; no local conversion",
+      "segments": [
+        {
+          "marker": "0xe1",
+          "payload_bytes": 186,
+          "payload_sha256": "8db5f20ff0d14e74815740cac2411b3c04800ab1e7a7316fcbed41bbd4e70bfa"
+        },
+        {
+          "marker": "0xe1",
+          "payload_bytes": 3951,
+          "payload_sha256": "18dda60d3db939365c19b364968a1b2aa3e8de86b7948b5b77cdfc50303fbe41"
+        }
+      ],
+      "APP11_present": false,
+      "xmp_present": true,
+      "signature_validation": "NOT_PERFORMED; no signature/embedded lineage claim",
+      "original_art_evidence": "ORIGINAL_ART_IDENTITY.json"
+    }
+  ]
+}

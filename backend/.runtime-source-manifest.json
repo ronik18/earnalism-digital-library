@@ -110,7 +110,7 @@
     {
       "path": "data/approved_reader_bootstrap.json",
       "bytes": 12508,
-      "sha256": "c18a9385a762ea53408dbcd1c416a6b9a8b7295ca354a6b0ccda39c7d6f5c1b7"
+      "sha256": "da6eaac968cc424de2c0c77423d97aca9aa0d5da21822e58d2998f4847c11e28"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -879,13 +879,18 @@
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/checksum_manifest.json",
-      "bytes": 1204,
-      "sha256": "bc0b789e822fe3ca5fc0813860e24e498ce44ac0481d064a94bc8d7fbf25d12d"
+      "bytes": 1346,
+      "sha256": "42b3b5bc667680f15ce85821847c580f9fa8f7f8553f3b520783a9169710c8eb"
+    },
+    {
+      "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/cover_approval_evidence.json",
+      "bytes": 5781,
+      "sha256": "aef62043bfaf66d4da22b15b724389c85bb5ee547b53399dbd8dc05d6cb74606"
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/cover_provenance.json",
-      "bytes": 2589,
-      "sha256": "aa55579e7bb3a8674021c24d4230debd9a2eb077507b0ffe7840ee44993467f3"
+      "bytes": 4977,
+      "sha256": "cac617747c2f1711b2c0d767d5bd49bf8ef99277a83a5d59f275a6964863d5a4"
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/highlight_sync.json",
@@ -894,13 +899,13 @@
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/public_book.json",
-      "bytes": 3847,
-      "sha256": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb"
+      "bytes": 4065,
+      "sha256": "ef49bb56859a5e50e7e58c046ebff6e4364d6f215b1ec7db222e8657b1eb724a"
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/publication_manifest.json",
-      "bytes": 2020,
-      "sha256": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf"
+      "bytes": 2036,
+      "sha256": "c0410f339d01b292ac26b96e92c6b0b735c26d9e379822853d524236ec94b6d0"
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json",
@@ -914,8 +919,8 @@
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/rights_decision.json",
-      "bytes": 3306,
-      "sha256": "95f924f4ad0f38e46d90b6556d8d40ae522ebd9c78dcdf3ff064311416005ca4"
+      "bytes": 3623,
+      "sha256": "6d3c948158e166a0658841d462dd24e35d0686f7b14867d91cb23bb0a36c2fa9"
     },
     {
       "path": "data/controlled_publications/an-occurrence-at-owl-creek-bridge/source_evidence.json",
@@ -8499,13 +8504,18 @@
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/checksum_manifest.json",
-      "bytes": 1196,
-      "sha256": "1754723183eedd3adf242e41cb61ef5f2eaf6d3bc3206e6a5f8633c49e2b174e"
+      "bytes": 1338,
+      "sha256": "7aeefa824d212e5fae44f95a9691ebda6c0df440524009591b80823ba2551b49"
+    },
+    {
+      "path": "data/controlled_publications/the-stolen-white-elephant/cover_approval_evidence.json",
+      "bytes": 5612,
+      "sha256": "fd2b123fbd8f4da64e3ee30f536c8cfbee0f28b83113ea770ba0dfad09e0a11c"
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/cover_provenance.json",
-      "bytes": 2549,
-      "sha256": "6dd79f1df7a4e2cde1fc6999903864d36cc00ceef043ad320152bbf97aea40d4"
+      "bytes": 4896,
+      "sha256": "f9f11769a406a0c3cdee493a19275b0e032fcf45b218165ba2a93bfb2133524d"
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/highlight_sync.json",
@@ -8514,13 +8524,13 @@
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/public_book.json",
-      "bytes": 3733,
-      "sha256": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214"
+      "bytes": 3951,
+      "sha256": "903a9367d8e05eecdc3491a3984aa1abc077962770ac15a3db15e35aa456bdc6"
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/publication_manifest.json",
-      "bytes": 1988,
-      "sha256": "4a8efaeccf7858192911a8310ae831466d7e7c539d8dac2f31caf80253689af2"
+      "bytes": 2004,
+      "sha256": "d576981c7fc7817f5de278718d95b3bef1477f2fe3c2e5d09778ee8c7d1399ed"
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/reader_manifest.json",
@@ -8534,8 +8544,8 @@
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/rights_decision.json",
-      "bytes": 3290,
-      "sha256": "7b9e344b3ebdffb619cbeb70c6e9fcc25d44491128b9094d40b33781e9b177d5"
+      "bytes": 3607,
+      "sha256": "82cf2dcc1935d6ffeb6944b4b6cd73183a9dbf8974ad61ecf9758cdcd9ec7df5"
     },
     {
       "path": "data/controlled_publications/the-stolen-white-elephant/source_evidence.json",
@@ -9494,8 +9504,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 39370,
-      "sha256": "aba830d4cd531f37c358c5f94ea475c50516bc437282e558510d62fb206fe510"
+      "bytes": 40171,
+      "sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
     },
     {
       "path": "demand_scoring.py",
@@ -9743,5 +9753,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "fcdbf0166836cb483f4e4932cdc53149866cf85b49207d96822f8945564a3e62"
+  "expected_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00"
 }

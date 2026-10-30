@@ -12363,5 +12363,16 @@
     "evidence": "internal/earnalism_intelligence/cover_next_three_20261031",
     "production_cover_mapping_changed": false,
     "text_audio_access_customer_state_changed": false
+  },
+  "next_two_cover_replacement_20261031": {
+    "state": "SOURCE_CANDIDATE_NOT_DEPLOYED",
+    "base": "42b988798e5f51c62e38014468d716e9b14713c0",
+    "titles": [
+      "the-stolen-white-elephant",
+      "an-occurrence-at-owl-creek-bridge"
+    ],
+    "evidence": "internal/earnalism_intelligence/cover_next_two_20261031",
+    "production_cover_mapping_changed": false,
+    "text_audio_access_customer_state_changed": false
   }
 }

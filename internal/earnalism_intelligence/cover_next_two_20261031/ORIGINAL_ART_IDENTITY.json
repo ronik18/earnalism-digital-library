@@ -1,0 +1,38 @@
+[
+  {
+    "key": "elephant-front",
+    "source_file": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-7fd5e23f-723a-4853-8173-9cc7af9ddbe5.png",
+    "retained_copy": "/private/tmp/earnalism-cover-batch-three-20261031/original-art/elephant-front.png",
+    "sha256": "f709a40ed1b11f4cf351fc43f153c28d5f8728864b940a51acef31b2fa3e21a7",
+    "bytes": 2714440,
+    "generation": "Builtin image_gen original text-free illustration, no external stock",
+    "credential_bytes_preserved": true
+  },
+  {
+    "key": "elephant-back",
+    "source_file": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-e3a8dcca-dc8a-4eb1-920e-479c39cca7dd.png",
+    "retained_copy": "/private/tmp/earnalism-cover-batch-three-20261031/original-art/elephant-back.png",
+    "sha256": "e5e28d273803a22ed12421790b38bd337ac4e5f208787d04610b749f8a6d6ac8",
+    "bytes": 2466802,
+    "generation": "Builtin image_gen original text-free illustration, no external stock",
+    "credential_bytes_preserved": true
+  },
+  {
+    "key": "owl-front",
+    "source_file": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-da5c4b2a-c561-4832-bdc4-2a88b9b442ee.png",
+    "retained_copy": "/private/tmp/earnalism-cover-batch-three-20261031/original-art/owl-front.png",
+    "sha256": "52c1aa3b8890fa7fba4ae427fbf38bcd634425438da5aaa505ab01a3477fd958",
+    "bytes": 2772961,
+    "generation": "Builtin image_gen original text-free illustration, no external stock",
+    "credential_bytes_preserved": true
+  },
+  {
+    "key": "owl-back",
+    "source_file": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-7dc5ca1b-9dc7-4ca4-ab9b-847fba1d2057.png",
+    "retained_copy": "/private/tmp/earnalism-cover-batch-three-20261031/original-art/owl-back.png",
+    "sha256": "4758383c7bce7a3869cbfc2a5561ad5d10fa843e8850da21d6862aea50918104",
+    "bytes": 2288083,
+    "generation": "Builtin image_gen original text-free illustration, no external stock",
+    "credential_bytes_preserved": true
+  }
+]

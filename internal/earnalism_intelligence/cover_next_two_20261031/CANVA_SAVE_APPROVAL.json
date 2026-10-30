@@ -1,0 +1,16 @@
+{
+  "confirmed": true,
+  "owner_response": "Approve these exact four drafts and save",
+  "question": "Approve saving these four exact private Canva drafts for The Stolen White Elephant and An Occurrence at Owl Creek Bridge, including the shown author/imprint contrast fixes? After saving I\u2019ll verify persistence, export, validate, map and release under your existing authorization.",
+  "recorded_at": "2026-10-30T20:48:14.928500+00:00",
+  "preview_hashes": {
+    "owl-draft-1.png": "8506cd2122283e985ae8f9c2baf966c8a5f52d10dd51e3bb2d1a90986f0d8bc7",
+    "elephant-draft-1.png": "4052afabb204a1e7d8d4b50d479045afff2cac868df70992f1887689ac74f6a5",
+    "owl-draft-2.png": "91b64dd81fa1260e6fa3a5fb0654d934e4a0908a477b0239c5e8af172e49d759",
+    "elephant-draft-2.png": "d2675b71c599808391a0bff432931fb56182cda765f01a1a1b7b1189bd058b0e"
+  },
+  "transactions_committed": [
+    "6793074776025817827",
+    "5027663722172811767"
+  ]
+}

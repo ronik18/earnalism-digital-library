@@ -1,0 +1,9 @@
+{
+  "instruction": "Continue with the next batch of live books whose covers need redesign. Use Canva and Codex together, preserve good covers and unrelated work, then validate, map and release each approved front/back pair autonomously.",
+  "titles": [
+    "the-stolen-white-elephant",
+    "an-occurrence-at-owl-creek-bridge"
+  ],
+  "save_approval": "Approve these exact four drafts and save",
+  "boundaries": "Cover-only, preserve good covers, originals, all literary/audio/customer/access/publication/billing states; no paid sessions"
+}

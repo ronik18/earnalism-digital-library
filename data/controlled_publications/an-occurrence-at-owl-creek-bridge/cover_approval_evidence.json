@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "an-occurrence-at-owl-creek-bridge",
+  "history": [
+    {
+      "event_id": "cover-next-two-20261031-front-0c424909badc6340",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+        "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+        "sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f",
+        "bytes": 108590,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "0c424909badc6340f0ee620920116e6fddb40bc27ce88fac6a73def46d62299f"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Two exact front/back pairs saved only after actual shown-preview approval recorded in owner_instruction.json. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "bb201a8b385f9f3752a4ad9eb116f77b8ade6895e8b5a2658d2aa7cc044a444f"
+    },
+    {
+      "event_id": "cover-next-two-20261031-back-d77f71c3b0ee1ac6",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+        "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+        "sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3",
+        "bytes": 82504,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "d77f71c3b0ee1ac6482a6d820dd78735b2a8e1eec956b163f788a44edbd7f6f3"
+      },
+      "approved_by": "Direct owner autonomous cover-release authority and applicable exact draft-save approval; prepared by Codex",
+      "approval_note": "Owner release scope is the selected cover batch; Two exact front/back pairs saved only after actual shown-preview approval recorded in owner_instruction.json. Exact native exports bound here; remote serving remains unverified.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "b5a6a63de31c510256e4efd82c6c16ce57782c4bc42d3b5010b51e60da2c404b"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-two-20261031-front-0c424909badc6340",
+    "back": "cover-next-two-20261031-back-d77f71c3b0ee1ac6"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-two-20261031-front-0c424909badc6340",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-two-20261031-back-d77f71c3b0ee1ac6",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

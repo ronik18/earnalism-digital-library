@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-10-30T20:58:08.181761+00:00",
+  "decision": "PREPARE_TWO_APPROVED_COVER_PAIRS",
+  "base": "42b988798e5f51c62e38014468d716e9b14713c0",
+  "titles": [
+    "the-stolen-white-elephant",
+    "an-occurrence-at-owl-creek-bridge"
+  ],
+  "scope": "Four native JPEGs and necessary mirrored cover/dependency bindings; no app/manuscript/audio/access/customer changes",
+  "evidence": "internal/earnalism_intelligence/cover_next_two_20261031",
+  "production_mutations": 0,
+  "next_action": "Current-head review/CI then authorized serial cover-only deployment and exact public mapping/hash verification"
+}

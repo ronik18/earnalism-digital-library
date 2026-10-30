@@ -1,0 +1,116 @@
+{
+  "components": [
+    {
+      "id": "MAHZhPXZXAU",
+      "type": "image",
+      "name": "Earnalism The Stolen White Elephant original text-free front 20261031",
+      "created_at": 1793392058,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "elephant",
+          "mammal",
+          "wildlife",
+          "oil paint",
+          "night"
+        ]
+      }
+    },
+    {
+      "id": "MAHZhAxq0aY",
+      "type": "image",
+      "name": "Earnalism The Stolen White Elephant original text-free back 20261031",
+      "created_at": 1793392070,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "retro",
+          "antique",
+          "book",
+          "night",
+          "lamp",
+          "indoor",
+          "inside",
+          "window",
+          "architectural",
+          "wooden"
+        ]
+      }
+    },
+    {
+      "id": "MAHZhIK4Xno",
+      "type": "image",
+      "name": "Earnalism Owl Creek Bridge original text-free front 20261031",
+      "created_at": 1793392294,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "bridge",
+          "river",
+          "forest",
+          "aqua",
+          "nature",
+          "sunset",
+          "landscape",
+          "scenery",
+          "tree",
+          "outdoor",
+          "sunrise",
+          "travel",
+          "wood",
+          "morning",
+          "sky",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "id": "MAHZhHCIZ5k",
+      "type": "image",
+      "name": "Earnalism Owl Creek Bridge original text-free back 20261031",
+      "created_at": 1793392306,
+      "owner": {
+        "user_id": "oUXRgKbvIhdkTxzPEVEJbU",
+        "team_id": "oBXRgiFMdtqRHP_cGiHKDc"
+      },
+      "metadata": {
+        "type": "image",
+        "width": 1024,
+        "height": 1536,
+        "smart_tags": [
+          "bridge",
+          "river",
+          "sunset",
+          "aqua",
+          "nature",
+          "landscape",
+          "railway",
+          "sky",
+          "cloud",
+          "scenery",
+          "outdoor",
+          "oil paint"
+        ]
+      }
+    }
+  ],
+  "basis": "Four exact first-party builtin image-generation originals imported into owner account, paired by actual asset IDs to approved saved fills. All inherited picture fills removed; editable typography retained. No blanket permission for unrelated components."
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "alt": "the-stolen-white-elephant front",
+    "card": {
+      "height": 300,
+      "width": 200
+    },
+    "complete": true,
+    "height": 1200,
+    "src": "http://127.0.0.1:8768/the-stolen-white-elephant-front.jpg",
+    "width": 800
+  },
+  {
+    "alt": "the-stolen-white-elephant back",
+    "card": {
+      "height": 300,
+      "width": 200
+    },
+    "complete": true,
+    "height": 1200,
+    "src": "http://127.0.0.1:8768/the-stolen-white-elephant-back.jpg",
+    "width": 800
+  },
+  {
+    "alt": "an-occurrence-at-owl-creek-bridge front",
+    "card": {
+      "height": 300,
+      "width": 200
+    },
+    "complete": true,
+    "height": 1200,
+    "src": "http://127.0.0.1:8768/an-occurrence-at-owl-creek-bridge-front.jpg",
+    "width": 800
+  },
+  {
+    "alt": "an-occurrence-at-owl-creek-bridge back",
+    "card": {
+      "height": 300,
+      "width": 200
+    },
+    "complete": true,
+    "height": 1200,
+    "src": "http://127.0.0.1:8768/an-occurrence-at-owl-creek-bridge-back.jpg",
+    "width": 800
+  }
+]
