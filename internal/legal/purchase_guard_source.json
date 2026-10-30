@@ -1,6 +1,6 @@
 {
   "schema": "earnalism.purchase-guard-source.v2",
-  "state": "OPEN",
+  "state": "CLOSED",
   "approved_merged_584_sha": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
   "approved_base_server_sha256": "fba827a9d898d83a91c07fa22d094fbfc3f8df4dd872be86c56941d9b6a55e81",
   "closed_server_sha256": "b362d8c2ed5dfc39d30d811fdd5dfae6f2f54d47bb9490746dba4fbce4bc817c",

@@ -13,7 +13,7 @@ class SuccessorContractTests(unittest.TestCase):
     def setUp(self):
         self.manifest = json.loads((ROOT / guard.PATH).read_text())
         self.historical = guard.exact_git_server(ROOT, self.manifest['approved_merged_584_sha'])
-        self.application = (ROOT / 'backend/server.py').read_bytes()
+        self.application = guard.validate(ROOT)[1]
 
     def check(self, *, manifest_edit=None, application=None, actual=None):
         application = self.application if application is None else application
