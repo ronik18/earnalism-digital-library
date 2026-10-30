@@ -31,7 +31,7 @@ def bindings(client, prefix):
               Response=Response, UploadFile=UploadFile, logger=logging.getLogger(__name__),
               REDIS_KEY_PREFIX=prefix, REDIS_PUBLIC_METADATA_ENABLED=True,
               REDIS_CACHE_ENABLED=True, MULTI_REPLICA_ENABLED=False,
-              PUBLIC_CACHE_ENABLED=True, PUBLIC_CACHE_TTL_SECONDS=300,
+              ENABLE_STARTUP_DB_MAINTENANCE=False, PUBLIC_CACHE_ENABLED=True, PUBLIC_CACHE_TTL_SECONDS=300,
               PUBLIC_CACHE_MAX_ENTRIES=96, REDIS_CACHE_TTL_JITTER_SECONDS=0,
               REDIS_CACHE_COMPRESS_MIN_BYTES=4096, _redis_client=client,
               _redis_available=True, _public_cache=OrderedDict(), _public_cache_generation=0,

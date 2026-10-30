@@ -1598,6 +1598,11 @@ PUBLIC_CACHE_PREFIXES = (
 
 async def initialize_replica_state_backends() -> None:
     global _redis_client, _redis_available
+    if (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
+            and ENABLE_STARTUP_DB_MAINTENANCE):
+        # Maintenance mixes metadata and financial migrations. It must not run
+        # behind admitted shared readers or acquire a cache dependency itself.
+        raise RuntimeError("Public metadata Redis admission requires startup database maintenance OFF")
     if not REDIS_CACHE_ENABLED and not MULTI_REPLICA_ENABLED and not REDIS_PUBLIC_METADATA_ENABLED:
         logger.info("Redis cache/state disabled; using per-process local cache and rate-limit state.")
         return
@@ -11710,6 +11715,7 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
     return await _bootstrap_reader_segment_candidate(slug, payload, actor=f"admin:{admin.get('email', '')}")
 
 
+@_public_metadata_mutation
 async def _bootstrap_reader_segment_candidate(slug: str, payload: ReadingPassSegmentBootstrapIn, *, actor: str):
     """Create the first active pointer for an otherwise uninitialized title.
 

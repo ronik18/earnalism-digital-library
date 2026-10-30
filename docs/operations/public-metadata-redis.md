@@ -33,6 +33,11 @@ The default-OFF and legacy shared-state modes preserve their existing handler
 behavior. They are not certified as concurrent writers beside newly enabled
 public-only readers. Enabling shared public caching requires admitting every
 writer on the reviewed mode and draining older/OFF writers first.
+The internal authorized Reader-bootstrap helper is fenced too, including its
+startup/background caller. Startup database maintenance must remain OFF when
+admitting public-only Redis: its mixed metadata/financial migrations cannot run
+behind shared readers or acquire a cache dependency. The incompatible
+configuration is rejected before Redis is contacted.
 
 ## Bounded failure behavior
 

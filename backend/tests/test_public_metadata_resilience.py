@@ -231,9 +231,9 @@ def _worker():
 def test_positive_mutation_coverage_excludes_financial_and_upload_staging():
     tree=ast.parse((ROOT/'backend/server.py').read_text())
     guarded={n.name for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and any(isinstance(d,ast.Name) and d.id=='_public_metadata_mutation' for d in n.decorator_list)}
-    assert guarded=={'admin_ingest_catalogue_evidence','admin_create_book','admin_update_book','admin_update_book_audiobook','admin_release_audiobook','admin_update_home_curation','admin_delete_book','admin_import_book_template','admin_add_chapter','admin_reorder_chapters','admin_update_chapter','admin_delete_chapter','admin_promote_cover','admin_upload_chapter_file','admin_create_cat','admin_update_cat','admin_delete_cat','admin_set_social','admin_set_brand','admin_set_featured','admin_promote_reading_pass_segments','admin_bootstrap_reading_pass_segments','admin_revoke_reading_pass_text_publication'}
+    assert guarded=={'_bootstrap_reader_segment_candidate','admin_ingest_catalogue_evidence','admin_create_book','admin_update_book','admin_update_book_audiobook','admin_release_audiobook','admin_update_home_curation','admin_delete_book','admin_import_book_template','admin_add_chapter','admin_reorder_chapters','admin_update_chapter','admin_delete_chapter','admin_promote_cover','admin_upload_chapter_file','admin_create_cat','admin_update_cat','admin_delete_cat','admin_set_social','admin_set_brand','admin_set_featured','admin_promote_reading_pass_segments','admin_bootstrap_reading_pass_segments','admin_revoke_reading_pass_text_publication'}
     for n in tree.body:
-        if isinstance(n,ast.AsyncFunctionDef) and n.name in guarded:
+        if isinstance(n,ast.AsyncFunctionDef) and n.name in guarded and n.name.startswith('admin_'):
             assert 'Depends(require_admin)' in ast.unparse(n.args)
 
 
@@ -364,5 +364,18 @@ def test_applied_finish_lost_reply_preserves_success_and_old_token_cannot_rewind
         with pytest.raises(ValueError):await m.Control(db).finish(tokens[0])
         assert await m.Control(db).read()==current
     run(case())
+
+def test_background_bootstrap_is_fenced_and_maintenance_combination_rejected():
+    tree=ast.parse((ROOT/'backend/server.py').read_text())
+    bootstrap=next(n for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and n.name=='_bootstrap_reader_segment_candidate')
+    assert any(isinstance(d,ast.Name) and d.id=='_public_metadata_mutation' for d in bootstrap.decorator_list)
+    node=next(n for n in tree.body if isinstance(n,ast.AsyncFunctionDef) and n.name=='initialize_replica_state_backends')
+    ns=dict(REDIS_PUBLIC_METADATA_ENABLED=True,REDIS_CACHE_ENABLED=False,
+            MULTI_REPLICA_ENABLED=False,ENABLE_STARTUP_DB_MAINTENANCE=True)
+    exec(compile(ast.Module(body=[node],type_ignores=[]),'actual-initializer','exec'),ns)
+    with patch('redis.asyncio.from_url',side_effect=AssertionError('must reject before Redis')):
+        with pytest.raises(RuntimeError,match='maintenance OFF'):
+            run(ns['initialize_replica_state_backends']())
+
 
 if __name__=='__main__':_worker()
