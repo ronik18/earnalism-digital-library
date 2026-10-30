@@ -76,6 +76,7 @@ env \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
+    backend/tests/test_reading_pass_rollback_transaction.py \
     backend/tests/test_reading_pass_client_matrix.py \
     backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \
