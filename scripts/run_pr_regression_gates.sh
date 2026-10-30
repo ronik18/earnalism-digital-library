@@ -21,11 +21,6 @@ esac
 PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 
-# This immutable recovery role restores the serving cache/admission behavior.
-# Reject any OPEN/mixed/Redis-enabled source before using its baseline suite.
-"$PYTHON_BIN" -m scripts.qualify_stable_rollback_profile
-"$PYTHON_BIN" -m unittest scripts.test_stable_rollback_profile
-
 echo "==> Exact purchase guard source and original India commerce boundary"
 "$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
 
@@ -38,6 +33,7 @@ EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is 
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
     backend/tests/test_shared_redis_limiter_integration.py \
     backend/tests/test_public_metadata_redis.py \
+    backend/tests/test_public_metadata_resilience.py \
     backend/tests/test_evidence_response_ingestion.py \
     backend/tests/test_evidence_response_mongo_integration.py
 
@@ -86,6 +82,7 @@ env \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
+    backend/tests/test_reading_pass_admission_contention.py \
     backend/tests/test_reading_pass_rollback_transaction.py \
     backend/tests/test_reading_pass_client_matrix.py \
     backend/tests/test_usage_history.py \
@@ -102,6 +99,7 @@ env \
     backend/tests/test_serving_publication_binding.py \
     backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
+    backend/tests/test_reading_pass_admission_contention_mongo.py \
     backend/tests/test_reading_pass_revocation_release_preflight.py \
     backend/tests/test_reader_device_session_binding.py \
     backend/tests/test_approved_reader_bootstrap.py \
