@@ -170,6 +170,7 @@ class ReadingPassService:
                     if (
                         attempt < 2
                         and getattr(exc, "has_error_label", lambda _label: False)("TransientTransactionError")
+                        and not getattr(exc, "has_error_label", lambda _label: False)("UnknownTransactionCommitResult")
                     ):
                         # A conflicting transaction may still be committing.
                         # Yield with a bounded backoff before opening a fresh
@@ -178,6 +179,10 @@ class ReadingPassService:
                         # in-flight writer.
                         await asyncio.sleep(0.01 * (attempt + 1))
                         continue
+                    if (getattr(exc, "has_error_label", lambda _label: False)("TransientTransactionError")
+                            and not getattr(exc, "has_error_label", lambda _label: False)("UnknownTransactionCommitResult")):
+                        raise ReadingPassError("TRANSACTION_CONTENTION", 503,
+                                               "Reading Pass is busy. Please try again shortly.") from exc
                     raise
                 for commit_attempt in range(3):
                     try:
@@ -188,14 +193,19 @@ class ReadingPassService:
                         unknown_commit = getattr(exc, "has_error_label", lambda _label: False)(
                             "UnknownTransactionCommitResult"
                         )
-                        if unknown_commit and commit_attempt < 2:
-                            continue
+                        if unknown_commit:
+                            if commit_attempt < 2:
+                                continue
+                            raise  # Never replay an ambiguously committed callback.
                         transient = getattr(exc, "has_error_label", lambda _label: False)(
                             "TransientTransactionError"
                         )
                         if transient and attempt < 2:
                             await asyncio.sleep(0.01 * (attempt + 1))
                             break
+                        if transient:
+                            raise ReadingPassError("TRANSACTION_CONTENTION", 503,
+                                                   "Reading Pass is busy. Please try again shortly.") from exc
                         raise
         assert last_error is not None
         raise last_error
