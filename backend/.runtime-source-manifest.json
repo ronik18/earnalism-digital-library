@@ -9499,8 +9499,8 @@
     },
     {
       "path": "evidence_response_ingestion.py",
-      "bytes": 11123,
-      "sha256": "b9cc502d3bb904831652e1838e136b4baf0612f363ed046d2cf757492861919f"
+      "bytes": 11502,
+      "sha256": "68f340de0d469b859534d837c6dd873da0baf8abf30930cfee57b0f252d73c7c"
     },
     {
       "path": "first_batch_dry_run.py",
@@ -9561,6 +9561,11 @@
       "path": "protected_package_publication.py",
       "bytes": 5336,
       "sha256": "601e3941117ae4c022619044643cfeecfd79636b94cf56bf948e99774c73175a"
+    },
+    {
+      "path": "public_metadata_cache.py",
+      "bytes": 10346,
+      "sha256": "3996c397c5c28c762e88dff04c0f50f742d3509093b05d361e001bdfd14b43c1"
     },
     {
       "path": "publication_manifest.py",
@@ -9683,6 +9688,11 @@
       "sha256": "c25677628afa9a5548b03c7f18a9dbef0a2c4d0d4e97536ed7fa9c7b788c5feb"
     },
     {
+      "path": "utils/owned_stream_response.py",
+      "bytes": 3556,
+      "sha256": "f2118ca53a165513fae1e53d739a47dfae41e30d115ed456abcd357258dc4db3"
+    },
+    {
       "path": "utils/runtime_source_attestation.py",
       "bytes": 5758,
       "sha256": "5b727cbeee610ab05c8bef1148664af8fb7081f0b4a38f11c38f17d55eda6877"
@@ -9693,5 +9703,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "c4870b0e5f203800b68735d6b411411284b09b329d114d6fe24e118de38c7b33"
+  "expected_sha256": "25744e467d4c40797658c1e16ec662fff43f2e9dd1aa607978439164936fc7bb"
 }

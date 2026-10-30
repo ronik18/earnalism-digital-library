@@ -120,6 +120,13 @@ async def ingest_response(*, db: Any, payload: Mapping[str, Any], edition: Mappi
     # Admission validation is repeated against the current server record inside
     # the transaction. A caller's stale snapshot never grants authority.
     record = validate_response(payload, edition, actor=actor)
+    try:
+        import public_metadata_cache as metadata_cache
+    except ModuleNotFoundError:
+        from backend import public_metadata_cache as metadata_cache
+    # API calls carry the same-task durable fence. Standalone legacy callers
+    # must not mutate publication authority while that cache control exists.
+    await metadata_cache.reject_unsupported_writer_async(db)
 
     async def commit(session):
         selector = {"_id": edition["_id"]} if "_id" in edition else {"slug": record["edition_id"]}

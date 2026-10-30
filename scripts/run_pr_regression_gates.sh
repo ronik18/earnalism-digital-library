@@ -21,16 +21,24 @@ esac
 PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 
+# This immutable recovery role restores the serving cache/admission behavior.
+# Reject any OPEN/mixed/Redis-enabled source before using its baseline suite.
+"$PYTHON_BIN" -m scripts.qualify_stable_rollback_profile
+
 echo "==> Exact purchase guard source and original India commerce boundary"
-"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory
+"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
 
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 "$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness
+READER_SEGMENT_MONGO_INTEGRATION=1 \
+CATALOGUE_EVIDENCE_MONGO_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is required}" \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
     backend/tests/test_shared_redis_limiter_integration.py \
-    backend/tests/test_public_metadata_redis.py
+    backend/tests/test_public_metadata_redis.py \
+    backend/tests/test_evidence_response_ingestion.py \
+    backend/tests/test_evidence_response_mongo_integration.py
 
 echo "==> CORS cache contract (backend/tests/test_cors_cache_headers.py)"
 env \
@@ -61,6 +69,7 @@ env \
     backend/tests/test_b2_audiobook_routing.py \
     backend/tests/test_audiobook_package_v2_routes.py \
     backend/tests/test_audio_stream_chunking.py \
+    backend/tests/test_owned_stream_response.py \
     backend/tests/test_unapproved_public_audio_asset_safety.py \
     backend/tests/test_agentic_ai_with_python_reader_only.py \
     scripts/test_repair_enchanted_april_reader_preflight.py
