@@ -4,7 +4,7 @@
     "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
     "india-20260925-a-ghost-story-commercial-reader-release": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
-    "india-20260925-a-white-heron-commercial-reader-release": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+    "india-20260925-a-white-heron-commercial-reader-release": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
     "india-20260925-radharani-commercial-reader-release": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
     "india-20260925-the-canterville-ghost-commercial-reader-release": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
@@ -624,6 +624,13 @@
         "previous_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
         "current_record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
         "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      }
+    },
+    "cover_native_credentials_20261030": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "previous_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+        "current_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
+        "scope": "Two native credential-preserving image identities and dependencies only; no new rights decision."
       }
     }
   },

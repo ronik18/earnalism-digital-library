@@ -47,15 +47,65 @@
       "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
       "reader_audio_release_truth_unchanged": true,
       "event_sha256": "9667bbc0ac69006c88ae79c85b876b9325ee7463a895de2a9b4b73447071358d"
+    },
+    {
+      "event_id": "cover-native-credentials-20261030-front-ae38e591300abbfa",
+      "slug": "a-white-heron",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+        "sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+        "bytes": 114241,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f",
+        "native_canva_export": true,
+        "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
+      },
+      "approved_by": "Existing owner-approved saved design and autonomous release instruction",
+      "approval_note": "Native export format correction only; same saved artwork, copy and positions; no new design approval inferred.",
+      "rights_basis": "Retain native Content Credentials and Canva raster-font permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "9e97e58bf77de3b566eabec32bcd4d3c1b0a9eed76ba8c42c7de077940c88125"
+    },
+    {
+      "event_id": "cover-native-credentials-20261030-back-5ac31a793801e2ba",
+      "slug": "a-white-heron",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+        "sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+        "bytes": 139902,
+        "width": 800,
+        "height": 1200,
+        "format": "jpeg",
+        "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8",
+        "native_canva_export": true,
+        "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
+      },
+      "approved_by": "Existing owner-approved saved design and autonomous release instruction",
+      "approval_note": "Native export format correction only; same saved artwork, copy and positions; no new design approval inferred.",
+      "rights_basis": "Retain native Content Credentials and Canva raster-font permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "3fa38e498dcddc5df9968d3c580e57b41ac1f5b2767dc61205142defb1e5d72f"
     }
   ],
   "active_approvals": {
-    "front": "cover-next-three-20261030-front-4eb9cd5b47c58c59",
-    "back": "cover-next-three-20261030-back-aa03dd638e1e1165"
+    "front": "cover-native-credentials-20261030-front-ae38e591300abbfa",
+    "back": "cover-native-credentials-20261030-back-5ac31a793801e2ba"
   },
   "rollback_pointers": {
     "front": {
-      "from_event_id": "cover-next-three-20261030-front-4eb9cd5b47c58c59",
+      "from_event_id": "cover-native-credentials-20261030-front-ae38e591300abbfa",
       "to_event_id": null,
       "previous_canonical_cover": {
         "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
@@ -76,10 +126,11 @@
             1200
           ]
         }
-      }
+      },
+      "superseded_unreleased_candidate_event": "cover-next-three-20261030-front-4eb9cd5b47c58c59"
     },
     "back": {
-      "from_event_id": "cover-next-three-20261030-back-aa03dd638e1e1165",
+      "from_event_id": "cover-native-credentials-20261030-back-5ac31a793801e2ba",
       "to_event_id": null,
       "previous_canonical_cover": {
         "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
@@ -100,7 +151,8 @@
             1200
           ]
         }
-      }
+      },
+      "superseded_unreleased_candidate_event": "cover-next-three-20261030-back-aa03dd638e1e1165"
     }
   }
 }

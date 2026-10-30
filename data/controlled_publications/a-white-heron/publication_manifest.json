@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+    "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e036e6aad3e0a7e0598ca1973e1720bb3c1a746ae4f22e8b3fa14a98dc318668",
+    "public_book": "1866de79c7c127b37ab842104775069b56a382357897ddadf381a5767819580a",
     "reader_manifest": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
     "source_evidence": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
     "approval_evidence": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50"
   },
-  "manifest_sha256": "02fd5be870b64bf57672567f74b03f95eed902beaccd2b04fe3ea65e5e09b310"
+  "manifest_sha256": "c3a83747cf5aebc18c1774020fbf0a62f5d14cc88820134df86fc985aac1a6f0"
 }

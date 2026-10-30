@@ -110,7 +110,7 @@
     {
       "path": "data/approved_reader_bootstrap.json",
       "bytes": 12508,
-      "sha256": "a39bae68131a43c8a9ea2142e36ea58ba790e740853e854faec9d1dec54e196e"
+      "sha256": "47cc979d0966a9920c204c7a260f45e51fd41b19c4d50c47d29d3ebdd3810c0f"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -385,17 +385,17 @@
     {
       "path": "data/controlled_publications/a-white-heron/checksum_manifest.json",
       "bytes": 1316,
-      "sha256": "8753ab60fc9f9f530adc22091521af6f65d8b53d3efefb0080327f8ac2b6ded2"
+      "sha256": "73477adbd3b47bfa7efea7e591051ab97181eaa303d664f0537a43a188d95a4e"
     },
     {
       "path": "data/controlled_publications/a-white-heron/cover_approval_evidence.json",
-      "bytes": 5028,
-      "sha256": "a111a7ec81e5f1ace6d15601b1e156ac74eb14fdc33f3d3108611919fa5950fd"
+      "bytes": 8207,
+      "sha256": "d68216241ad773faa351733d2baff7b4dd5f8f8956890cd2a11a95afa402ffcb"
     },
     {
       "path": "data/controlled_publications/a-white-heron/cover_provenance.json",
-      "bytes": 1899,
-      "sha256": "fb486835ea0c65ec216e3b9cefa1d8c97523ee530b426acd1bfdb1b4a376a961"
+      "bytes": 3419,
+      "sha256": "743a7e872b41cc387a05ccb941cb8bd0a6a4ed0f15c30868bc88cb145986a130"
     },
     {
       "path": "data/controlled_publications/a-white-heron/highlight_sync.json",
@@ -409,13 +409,13 @@
     },
     {
       "path": "data/controlled_publications/a-white-heron/public_book.json",
-      "bytes": 5440,
-      "sha256": "e036e6aad3e0a7e0598ca1973e1720bb3c1a746ae4f22e8b3fa14a98dc318668"
+      "bytes": 5433,
+      "sha256": "1866de79c7c127b37ab842104775069b56a382357897ddadf381a5767819580a"
     },
     {
       "path": "data/controlled_publications/a-white-heron/publication_manifest.json",
-      "bytes": 1945,
-      "sha256": "ac71fa16b00cf068497993a32e6e7bb0e48a7ffa50c0609dbd8491343c17af25"
+      "bytes": 1944,
+      "sha256": "5993019b36407f9a74b6bc6c5969cb40347f282154e4bb36a0a2504c591261cb"
     },
     {
       "path": "data/controlled_publications/a-white-heron/reader_manifest.json",
@@ -425,7 +425,7 @@
     {
       "path": "data/controlled_publications/a-white-heron/rights_decision.json",
       "bytes": 2040,
-      "sha256": "6278f28d0cd9b2e2e8ff817a110370676433dae7c9c29cdc314777c47f937428"
+      "sha256": "0273a90e6c4285c202075f28175721fc88030a0c935e7d527a51f2d064ac760c"
     },
     {
       "path": "data/controlled_publications/a-white-heron/source_evidence.json",
@@ -9479,8 +9479,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 37769,
-      "sha256": "36485311388cd446998193013ee71335388391204d511e44ae9c4292b2373ba0"
+      "bytes": 38212,
+      "sha256": "94af7eaaa765c14c317f2cb01eb3f1f29c471826442018f92c82b8a00f47dd50"
     },
     {
       "path": "demand_scoring.py",
@@ -9728,5 +9728,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "47f8429e56f4abad2083f6b3e3789843496e262ca2bd2fefbd429adeaebc8575"
+  "expected_sha256": "1ac74c7535baddd825a06fcefca9edc196498d4ab975b8c44149223208304590"
 }

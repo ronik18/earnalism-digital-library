@@ -6,24 +6,28 @@
       "slug": "a-white-heron",
       "assets": {
         "front": {
-          "path": "frontend/public/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
-          "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
-          "sha256": "4eb9cd5b47c58c596f7e51ac65e51d3063cbfb635fe6fd90b210aa11258b799d",
-          "bytes": 172336,
+          "path": "frontend/public/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+          "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+          "sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+          "bytes": 114241,
           "width": 800,
           "height": 1200,
-          "format": "webp",
-          "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f"
+          "format": "jpeg",
+          "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f",
+          "native_canva_export": true,
+          "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
         },
         "back": {
-          "path": "frontend/public/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
-          "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
-          "sha256": "aa03dd638e1e1165abeb24c69f9550eb7d630dd7fe1632b078195202246986d8",
-          "bytes": 114214,
+          "path": "frontend/public/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+          "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+          "sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+          "bytes": 139902,
           "width": 800,
           "height": 1200,
-          "format": "webp",
-          "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8"
+          "format": "jpeg",
+          "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8",
+          "native_canva_export": true,
+          "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
         }
       },
       "previous_public": {
@@ -158,7 +162,29 @@
         "chapters/chapter-001.json": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
       },
       "unchanged_rights_semantics": true,
-      "mirrors_and_checksums": "PASS"
+      "mirrors_and_checksums": "PASS",
+      "superseded_assets": {
+        "front": {
+          "path": "frontend/public/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+          "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+          "sha256": "4eb9cd5b47c58c596f7e51ac65e51d3063cbfb635fe6fd90b210aa11258b799d",
+          "bytes": 172336,
+          "width": 800,
+          "height": 1200,
+          "format": "webp",
+          "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+          "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+          "sha256": "aa03dd638e1e1165abeb24c69f9550eb7d630dd7fe1632b078195202246986d8",
+          "bytes": 114214,
+          "width": 800,
+          "height": 1200,
+          "format": "webp",
+          "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8"
+        }
+      }
     },
     {
       "slug": "the-canterville-ghost",

@@ -12338,6 +12338,7 @@
     "evidence": "internal/earnalism_intelligence/cover_next_three_20261030",
     "production_cover_mapping_changed": false,
     "text_audio_access_customer_state_changed": false,
-    "release_limit": "Do not deploy unrelated main optimization/CLOSED purchase delta under cover-only authority."
+    "release_limit": "Do not deploy unrelated main optimization/CLOSED purchase delta under cover-only authority.",
+    "native_provenance_correction": "White Heron WebPs rejected before production; exact native Canva JPEGs preserve C2PA and XMP; all copy/artwork retained."
   }
 }

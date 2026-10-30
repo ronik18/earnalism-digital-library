@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "36485311388cd446998193013ee71335388391204d511e44ae9c4292b2373ba0"
+    "backend/data/rights_decision_registry.json": "94af7eaaa765c14c317f2cb01eb3f1f29c471826442018f92c82b8a00f47dd50"
   },
   "titles": {
     "a-ghost-story": {
@@ -48,7 +48,7 @@
     },
     "a-white-heron": {
       "decision_id": "india-20260925-a-white-heron-commercial-reader-release",
-      "record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+      "record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/a-white-heron/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/a-white-heron/reader_manifest.json",
@@ -56,8 +56,8 @@
         "approval_evidence": "backend/data/controlled_publications/a-white-heron/approval_evidence.json",
         "checksum_manifest": "backend/data/controlled_publications/a-white-heron/checksum_manifest.json",
         "publication_manifest": "backend/data/controlled_publications/a-white-heron/publication_manifest.json",
-        "cover_replacement_front_delivery": "frontend/public/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
-        "cover_replacement_back_delivery": "frontend/public/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
         "cover_replacement_approval": "backend/data/controlled_publications/a-white-heron/cover_approval_evidence.json"
       }
     },

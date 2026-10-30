@@ -1,0 +1,84 @@
+{
+  "decoded": [
+    {
+      "asset": "a-white-heron front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "a-white-heron back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-canterville-ghost front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-canterville-ghost back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-pit-and-the-pendulum front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-pit-and-the-pendulum back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    }
+  ],
+  "images": [
+    {
+      "asset": "a-white-heron front",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/a-white-heron/front.jpg"
+    },
+    {
+      "asset": "a-white-heron back",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/a-white-heron/back.jpg"
+    },
+    {
+      "asset": "the-canterville-ghost front",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/the-canterville-ghost/front.webp"
+    },
+    {
+      "asset": "the-canterville-ghost back",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/the-canterville-ghost/back.webp"
+    },
+    {
+      "asset": "the-pit-and-the-pendulum front",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/the-pit-and-the-pendulum/front.webp"
+    },
+    {
+      "asset": "the-pit-and-the-pendulum back",
+      "complete": true,
+      "naturalHeight": 1200,
+      "naturalWidth": 800,
+      "src": "web/the-pit-and-the-pendulum/back.webp"
+    }
+  ]
+}

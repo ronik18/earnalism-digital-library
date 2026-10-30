@@ -17,5 +17,6 @@
   "static_seo": "generated then --check fresh",
   "diff_check": "PASS",
   "browser_decode": "6/6 Chrome native800x1200; display180x270",
-  "production_verified": false
+  "production_verified": false,
+  "source_binding": "Initial e35 source tests; native correction requires affected checks and fresh exact-head CI"
 }
