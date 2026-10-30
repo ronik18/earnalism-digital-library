@@ -3054,10 +3054,12 @@ def _clear_local_public_metadata():
     _public_cache.clear()
 
 
-def _public_metadata_mutation(handler=None, *, preserve_existing_control=False):
+def _public_metadata_mutation(handler=None, *, preserve_existing_control=False,
+                              failure_detail="Metadata mutation unavailable or requires reconciliation; do not retry blindly"):
     if handler is None:
         return lambda selected: _public_metadata_mutation(
-            selected, preserve_existing_control=preserve_existing_control)
+            selected, preserve_existing_control=preserve_existing_control,
+            failure_detail=failure_detail)
     # Original FastAPI signature resolves require_admin before this wrapper.
     @wraps(handler)
     async def guarded(*args, **kwargs):
@@ -3084,7 +3086,7 @@ def _public_metadata_mutation(handler=None, *, preserve_existing_control=False):
                 logger.warning("Metadata applied; cache finalization pending; do not replay source write operation=%s", operation, exc_info=True)
                 return result  # A lost finalization reply cannot turn success into 500.
             logger.warning("Metadata mutation unavailable/ambiguous; do not replay", exc_info=True)
-            raise HTTPException(status_code=503, detail="Metadata mutation unavailable or requires reconciliation; do not retry blindly") from exc
+            raise HTTPException(status_code=503, detail=failure_detail) from exc
     return guarded
 
 
@@ -5893,7 +5895,7 @@ class CatalogueEvidenceResponseIn(BaseModel):
 
 
 @api.post("/admin/catalogue/evidence-responses")
-@_public_metadata_mutation(preserve_existing_control=True)
+@_public_metadata_mutation(preserve_existing_control=True, failure_detail="EVIDENCE_STORAGE_UNAVAILABLE")
 async def admin_ingest_catalogue_evidence(payload: CatalogueEvidenceResponseIn, admin=Depends(require_admin)):
     try:
         editions = await db.books.find(
