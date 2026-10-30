@@ -2839,6 +2839,8 @@ Immutable source validators require explicit exact-base hydration in shallow CI,
 
 Prepare and qualify the exact reopening successor after the CLOSED source merges, before any purchase pause. Whole-server equality to the approved optimization base prevents stale-file restoration; keep controller/durability and underlying signed India boundary intact. Source merging does not prove actual purchase state or a recovery image.
 
+Provider exit codes alone never establish write outcomes. Retain bounded nonsecret error classes and output hashes, not raw provider text or exception messages. Missing historical stderr cannot be recreated by replaying an uncertain write; classify it unknown and reconcile native history, pending work and actual serving source separately.
+
 
 ## Nine exact cover replacements — 30 October 2026
 

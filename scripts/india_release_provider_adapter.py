@@ -27,6 +27,44 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
+def process_diagnostic(result=None, error=None):
+    """Retain evidence without provider text, credentials, or an outcome inference.
+
+    A CLI error class describes its report only. Even DNS/auth/local errors do
+    not clear an operation barrier or authorize a retry.
+    """
+    def payload(value):
+        if isinstance(value, bytes): return value
+        if isinstance(value, str): return value.encode('utf-8', errors='replace')
+        return b''
+    out = payload(getattr(result, 'stdout', None) if error is None else getattr(error, 'stdout', None))
+    err = payload(getattr(result, 'stderr', None) if error is None else getattr(error, 'stderr', None))
+    text = (out + b'\n' + err).decode('utf-8', errors='replace').lower()
+    code = getattr(result, 'returncode', None)
+    classes = set()
+    if 'dns error' in text and 'failed to lookup address information' in text:
+        classes.add('DNS_LOOKUP_FAILED')
+    if 'unauthorized' in text or 'please login' in text:
+        classes.add('AUTHENTICATION_REPORTED')
+    if 'unexpected argument' in text or 'unrecognized option' in text:
+        classes.add('CLI_ARGUMENT_REJECTED')
+    if 'failed to upload code. file too large' in text:
+        classes.add('UPLOAD_SIZE_REJECTED')
+    if 'failed to upload code with status code' in text:
+        classes.add('UPLOAD_HTTP_REJECTED')
+    if error is not None:
+        kind = 'PROCESS_TIMEOUT' if isinstance(error, (TimeoutError, subprocess.TimeoutExpired)) else 'PROCESS_EXCEPTION'
+    elif code == 0:
+        kind = 'PROCESS_EXIT_ZERO'
+    else:
+        kind = next(iter(classes)) if len(classes) == 1 else 'UNKNOWN_FAILURE'
+    return {'schema': 'earnalism-provider-process-diagnostic.v1',
+            'class': kind, 'effect': 'UNKNOWN_REQUIRES_NATIVE_RECONCILIATION',
+            'stdout_bytes': len(out), 'stderr_bytes': len(err),
+            'stdout_sha256': hashlib.sha256(out).hexdigest(),
+            'stderr_sha256': hashlib.sha256(err).hexdigest()}
+
+
 def _sync_directory(path):
     fd=os.open(path,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
     try:os.fsync(fd)
@@ -267,6 +305,7 @@ class ProviderAdapter:
             result = self.run(command, cwd=source, capture_output=True, text=True,
                               timeout=1200, check=False)
             intent['process_exit_code'] = result.returncode
+            intent['process_diagnostic'] = process_diagnostic(result)
             if action == 'stage_frontend' and result.returncode == 0:
                 try:
                     reported = json.loads(result.stdout).get('id', '')
@@ -274,8 +313,9 @@ class ProviderAdapter:
                         intent['unverified_provider_deployment_id'] = reported
                 except (ValueError, AttributeError):
                     pass
-        except Exception:
+        except Exception as error:
             intent['process_exit_code'] = None
+            intent['process_diagnostic'] = process_diagnostic(error=error)
         intent['state'] = 'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED'
         _durable_json(path, intent)
         return intent
