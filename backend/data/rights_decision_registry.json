@@ -4,9 +4,9 @@
     "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
     "india-20260925-a-ghost-story-commercial-reader-release": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
-    "india-20260925-a-white-heron-commercial-reader-release": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+    "india-20260925-a-white-heron-commercial-reader-release": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
     "india-20260925-radharani-commercial-reader-release": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
-    "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+    "india-20260925-the-canterville-ghost-commercial-reader-release": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
     "india-20260925-the-tell-tale-heart-commercial-reader-release": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
     "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
@@ -25,7 +25,7 @@
     "india-20261001-the-lady-with-the-dog-owner-text-reader": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
     "india-20261001-the-man-who-would-be-king-owner-text-reader": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
     "india-20261001-the-open-boat-owner-text-reader": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
-    "india-20261001-the-pit-and-the-pendulum-owner-text-reader": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+    "india-20261001-the-pit-and-the-pendulum-owner-text-reader": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
     "india-20261001-the-stolen-white-elephant-owner-text-reader": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
     "india-20261002-bn-059-reader-cover-display-reviewed": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b",
     "india-20261002-book-edfcf810c5-reader-cover-display-reviewed": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
@@ -607,6 +607,30 @@
         "previous_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
         "current_record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
         "scope": "Cover bindings only; no new literary/audio decision."
+      }
+    },
+    "cover_next_three_20261030": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "previous_record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+        "current_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20260925-the-canterville-ghost-commercial-reader-release": {
+        "previous_record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+        "current_record_sha256": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-the-pit-and-the-pendulum-owner-text-reader": {
+        "previous_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+        "current_record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      }
+    },
+    "cover_native_credentials_20261030": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "previous_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+        "current_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
+        "scope": "Two native credential-preserving image identities and dependencies only; no new rights decision."
       }
     }
   },

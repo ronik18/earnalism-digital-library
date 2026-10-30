@@ -1,0 +1,18 @@
+[
+  {
+    "side": "front",
+    "source": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-934d6c28-38d9-4740-abdd-d3d21c26dfe9.png",
+    "retained_copy": "/private/tmp/earnalism-next-cover-batch-20261030/original-poe-art/front.png",
+    "sha256": "00cde797f921aa6185d322f8249f7292063acb9bfeb2e5bca824a7d4cfa86f8c",
+    "canva_uploaded_asset": "MAHZd10kT20",
+    "origin": "Built-in image generation in this owner-authorized task; back uses front as style reference; text-free source pixels retained."
+  },
+  {
+    "side": "back",
+    "source": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-b0ca8534-aed4-4636-bdef-83d148c2f607.png",
+    "retained_copy": "/private/tmp/earnalism-next-cover-batch-20261030/original-poe-art/back.png",
+    "sha256": "d5ab772e5ae71a39635fd5e3b5f2de30481509efe2192cdce90d1627cc167f55",
+    "canva_uploaded_asset": "MAHZd9Wd5Ys",
+    "origin": "Built-in image generation in this owner-authorized task; back uses front as style reference; text-free source pixels retained."
+  }
+]

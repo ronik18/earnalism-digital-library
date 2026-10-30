@@ -1,0 +1,66 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "a-white-heron",
+  "status": "OWNER_AUTHORIZED_COVER_REPLACEMENT_SOURCE_CANDIDATE",
+  "scope": "Cover display only; existing literary/audio rights decisions and publication/access unchanged.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+      "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+      "sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+      "bytes": 114241,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f",
+      "native_canva_export": true,
+      "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+      "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+      "sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+      "bytes": 139902,
+      "width": 800,
+      "height": 1200,
+      "format": "jpeg",
+      "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8",
+      "native_canva_export": true,
+      "content_credentials": "Native JPEG APP11/JUMBF retained without re-encoding; signature validity not claimed"
+    }
+  },
+  "owner_instruction": {
+    "path": "internal/earnalism_intelligence/cover_next_three_20261030/owner_instruction.json",
+    "sha256": "66c0bf3d1b66ff9397b32aadd2e0e917ce4471ff1c8c498ce22f35f2cd0dea23"
+  },
+  "evidence_directory": "internal/earnalism_intelligence/cover_next_three_20261030",
+  "artwork_origin": "Retained owner-directed Canva AI illustration and native type; Canterville restored with built-in image generation from original native export.",
+  "metadata_preservation": "Exact untouched native Canva JPEGs preserve APP11/JUMBF/C2PA plus XMP. No metadata/signature transplant or signature validation claim.",
+  "previous_provenance": null,
+  "production_verified": false,
+  "superseded_candidate_derivatives": {
+    "assets": {
+      "front": {
+        "path": "frontend/public/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-4eb9cd5b47c58c59.webp",
+        "sha256": "4eb9cd5b47c58c596f7e51ac65e51d3063cbfb635fe6fd90b210aa11258b799d",
+        "bytes": 172336,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "4b7c92b4193d336a8d91ca8ce3f16085faa58c9580c88b6de525bc7a0ceedf1f"
+      },
+      "back": {
+        "path": "frontend/public/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+        "url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-aa03dd638e1e1165.webp",
+        "sha256": "aa03dd638e1e1165abeb24c69f9550eb7d630dd7fe1632b078195202246986d8",
+        "bytes": 114214,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "3247db3599ccf584661d0250acc9dc906a7974926c990c5139d7edeee7f789f8"
+      }
+    },
+    "reason": "XMP retained but native PNG caBX credentials omitted by local WebP conversion. Rejected before production."
+  }
+}

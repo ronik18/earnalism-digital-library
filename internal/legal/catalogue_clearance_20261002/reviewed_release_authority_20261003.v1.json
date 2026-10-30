@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "ff3584847cd05a1a6dcbe1d64dbad184709ddcd73e4be24105966e7cad5292ba"
+    "backend/data/rights_decision_registry.json": "94af7eaaa765c14c317f2cb01eb3f1f29c471826442018f92c82b8a00f47dd50"
   },
   "titles": {
     "a-ghost-story": {
@@ -48,14 +48,17 @@
     },
     "a-white-heron": {
       "decision_id": "india-20260925-a-white-heron-commercial-reader-release",
-      "record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+      "record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/a-white-heron/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/a-white-heron/reader_manifest.json",
         "source_evidence": "backend/data/controlled_publications/a-white-heron/source_evidence.json",
         "approval_evidence": "backend/data/controlled_publications/a-white-heron/approval_evidence.json",
         "checksum_manifest": "backend/data/controlled_publications/a-white-heron/checksum_manifest.json",
-        "publication_manifest": "backend/data/controlled_publications/a-white-heron/publication_manifest.json"
+        "publication_manifest": "backend/data/controlled_publications/a-white-heron/publication_manifest.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+        "cover_replacement_approval": "backend/data/controlled_publications/a-white-heron/cover_approval_evidence.json"
       }
     },
     "the-gift-of-the-magi": {
@@ -72,14 +75,17 @@
     },
     "the-canterville-ghost": {
       "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
-      "record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+      "record_sha256": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-canterville-ghost/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-canterville-ghost/reader_manifest.json",
         "source_evidence": "backend/data/controlled_publications/the-canterville-ghost/source_evidence.json",
         "approval_evidence": "backend/data/controlled_publications/the-canterville-ghost/approval_evidence.json",
         "checksum_manifest": "backend/data/controlled_publications/the-canterville-ghost/checksum_manifest.json",
-        "publication_manifest": "backend/data/controlled_publications/the-canterville-ghost/publication_manifest.json"
+        "publication_manifest": "backend/data/controlled_publications/the-canterville-ghost/publication_manifest.json",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-canterville-ghost/cover_approval_evidence.json"
       }
     },
     "the-adventures-of-sherlock-holmes": {
@@ -314,7 +320,7 @@
     },
     "the-pit-and-the-pendulum": {
       "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
-      "record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+      "record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/the-pit-and-the-pendulum/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json",
@@ -326,7 +332,10 @@
         "reader_release_approval": "backend/data/controlled_publications/the-pit-and-the-pendulum/reader_release_approval.json",
         "chapter_file:chapter-001.json": "backend/data/controlled_publications/the-pit-and-the-pendulum/chapters/chapter-001.json",
         "cover_asset:front": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-        "cover_asset:back": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp"
+        "cover_asset:back": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+        "cover_replacement_approval": "backend/data/controlled_publications/the-pit-and-the-pendulum/cover_approval_evidence.json"
       }
     },
     "the-stolen-white-elephant": {

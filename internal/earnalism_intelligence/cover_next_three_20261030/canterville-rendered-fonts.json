@@ -1,0 +1,19 @@
+{
+  "pdf_sha256": "1bb82a36dd71ffb5be5d881d308199deb9750d2700d9631ba3af1d9cd216a532",
+  "pages": [
+    {
+      "page": 1,
+      "fonts": [
+        "/AAAAAA+TimesNRMTPro-Cond"
+      ]
+    },
+    {
+      "page": 2,
+      "fonts": [
+        "/AAAAAA+TimesNRMTPro-Cond",
+        "/BAAAAA+TimesNRMTPro-BoldCond"
+      ]
+    }
+  ],
+  "scope": "Private actual-font audit; no public font-binary redistribution"
+}

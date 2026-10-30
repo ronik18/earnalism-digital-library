@@ -1,0 +1,226 @@
+Browser tab: 1838738579, Title: "A White Heron two-page book cover - 1024 × 1536px", URL: "https://www.canva.com/design/DAHZd071Y1M/is0OU4xdWeHUUl60ug5K5g/edit".
+1 AXWebArea A White Heron two-page book cover - 1024 × 1536px, URL: canva.com/design/DAHZd071Y1M/is0OU4xdWeHUUl60ug5K5g/edit
+	2 container
+		227 container
+			228 container AaEXa2Y_sLggfekUL5qeDw-AaEXa2Y_D-IHXsS0EvcLeQ.png
+				229 heading AaEXa2Y_sLggfekUL5qeDw-AaEXa2Y_D-IHXsS0EvcLeQ.png, Value: 4
+					230 text AaEXa2Y_sLggfekUL5qeDw-AaEXa2Y_D-IHXsS0EvcLeQ.png
+				231 text Made by Ronik Basak with AI 22 days ago
+				232 content list
+					233 button Details
+					234 button Download
+					235 button Copy to Brand Kit
+						236 text Copy to Brand Kit
+						237 text New
+					238 button Move to Trash
+		3 container
+			4 heading Canva editor, Value: 1
+				5 text Canva editor
+			97 text Changes will be saved automatically
+			6 link Description: Skip navigation, Value: canva.com/design/DAHZd071Y1M/is0OU4xdWeHUUl60ug5K5g/edit#_r_0_2
+			7 link Description: Skip to main content, Value: canva.com/design/DAHZd071Y1M/is0OU4xdWeHUUl60ug5K5g/edit#_r_0_3
+			8 container
+				98 menu bar Main
+					99 container Document controls
+						100 Home
+						101 (collapsed) File, Secondary Actions: Expand
+						102 Resize
+						103 Editing
+							104 text Editing
+						105 All changes saved
+					106 container Share and publish
+						107 container
+							108 text field (settable) Description: Design title, Value: A White Heron two-page book cover
+							109 text A White Heron two-page book cover
+						110 container
+							111 button (collapsed) Description: Ronik Basak, Secondary Actions: Expand
+						112 Analytics
+						113 (collapsed) Description: View all comments, Secondary Actions: Expand
+						114 Post to WhatsApp
+						115 Share
+				9 container
+					10 container Side Panel
+						11 heading Side Panel, Value: 2
+							12 text Side Panel
+						116 container
+							117 tab group Side Panel
+								118 tab (selectable, settable, boolean) Canva AI, Value: 0
+Canva AI
+								119 tab (selectable, settable, boolean) Templates, Value: 0
+Templates
+								120 tab (selectable, settable, boolean) Elements, Value: 0
+Elements
+								121 tab (selectable, settable, boolean) Text, Value: 0
+Text
+								122 tab (selectable, settable, boolean) Brand, Value: 0
+Pro
+Brand
+								123 tab (selectable, settable, boolean) Uploads, Value: 0
+Uploads
+								124 tab (selectable, settable, boolean) Tools, Value: 0
+Tools
+								125 tab (selectable, settable, boolean) Projects, Value: 0
+Projects
+								126 tab (selectable, settable, boolean) Apps, Value: 0
+Apps
+								127 tab (selectable, settable, boolean) Audio, Value: 0
+Audio
+								128 tab (selectable, settable, boolean) Background, Value: 0
+Background
+								129 tab (selectable, settable, boolean) AI Voice, Value: 0
+AI Voice
+								130 tab (selectable, settable, boolean) Captions, Value: 0
+Captions
+								131 tab (selectable, settable, boolean) EmojifyMe, Value: 0
+EmojifyMe
+								132 tab (selectable, settable, boolean) Krikey AI Animate, Value: 0
+Krikey AI Animate
+								133 tab (selectable, settable, boolean) Storybook Pic, Value: 0
+Storybook Pic
+								134 tab (selectable, settable, boolean) Clay Style, Value: 0
+Clay Style
+								135 tab (selectable, settable, boolean) Avatarify, Value: 0
+Avatarify
+								136 tab (selectable, settable, boolean) AI Image Enhancer, Value: 0
+AI Image Enhancer
+								137 tab (selectable, settable, boolean) Paintsplash Art, Value: 0
+Paintsplash Art
+								138 tab (selectable, settable, boolean) Shape Cropper, Value: 0
+Shape Cropper
+								139 tab (selectable, settable, boolean) Image Eraser, Value: 0
+Image Eraser
+								140 tab (selectable, settable, boolean) Video Upscaler, Value: 0
+Video Upscaler
+								141 tab (selectable, settable, boolean) Video Enhancer, Value: 0
+Video Enhancer
+								142 tab (selectable, settable, boolean) Video Captions, Value: 0
+Video Captions
+								143 tab (selectable, settable, boolean) AI Captions, Value: 0
+AI Captions
+								144 tab (selectable, settable, boolean) Subtitles Co., Value: 0
+Subtitles Co.
+								145 tab (selectable, settable, boolean) Gen Video, Value: 0
+Gen Video
+								146 tab (selectable, settable, boolean) AI Video Generator, Value: 0
+AI Video Generator
+								147 tab (selectable, settable, boolean) Starred, Value: 0
+Starred
+								148 tab (selectable, settable, boolean) Video Reverser, Value: 0
+Video Reverser
+					24 button Canvas entry point
+					25 container Canvas
+						149 toolbar Selected element common controls
+							150 container
+								151 button Ask Canva
+								152 button Edit
+								153 button Replace
+								154 button 5.0s, Edit timing
+								155 checkbox BG Remover Pro, Value: 0
+									156 text BG Remover
+									157 text Pro
+								158 pop up button (collapsed) Eraser, Secondary Actions: Expand
+								159 button Current color White
+									160 container #ffffff
+								161 button Crop
+								162 pop up button (collapsed) Flip, Secondary Actions: Expand
+								163 pop up button (collapsed) Description: Transparency, Secondary Actions: Expand
+								164 checkbox Description: Animate, Value: 0
+								165 button Position
+								166 checkbox Description: Copy style, Value: 0
+								167 button Comment
+								168 button Delete
+						26 container
+							27 container
+								28 container
+									29 container Page Controls
+										30 container
+											31 text Page 1  - 
+										32 container
+											33 text field (settable) Description: Page title, Value: Add page title
+											34 text Add page title
+										35 button (disabled) Move up
+										36 button Move down
+										170 button Hide page
+										37 button Only allow replacing content
+										38 button Duplicate page
+										39 button Delete page
+										40 button Add page
+									41 container
+										42 container Canvas content
+											171 container Description: Page 1, ID: accessibility_dom-0
+												172 Image Description: Element, ID: accessibility_dom-1
+												173 Image Description: Element, ID: accessibility_dom-2
+												174 Image Description: Element, ID: accessibility_dom-3
+												175 Image Description: Element, ID: accessibility_dom-4
+												176 Image Description: Element, ID: accessibility_dom-5
+												177 Image Description: Element, ID: accessibility_dom-6
+												178 Image Description: Element, ID: accessibility_dom-7
+												179 container Description: A White Heron, ID: accessibility_dom-8
+													180 text A White Heron
+												181 container Description: Sarah Orne Jewett, ID: accessibility_dom-9
+													182 text Sarah Orne Jewett
+												183 container Description: Earnalism - A Reo Enterprise Venture, ID: accessibility_dom-10
+													184 text Earnalism - A Reo Enterprise Venture
+									43 container Page Controls
+										44 container
+											45 text Page 2  - 
+										46 container
+											47 text field (settable) Description: Page title, Value: Add page title
+											48 text Add page title
+										49 button Move up
+										50 button (disabled) Move down
+										185 button Hide page
+										51 button Only allow replacing content
+										52 button Duplicate page
+										53 button Delete page
+										54 button Add page
+									55 container
+										56 container Canvas content
+											186 container Description: Page 2, ID: accessibility_dom-11
+												187 Image Description: Element, ID: accessibility_dom-12
+												188 Image Description: Element, ID: accessibility_dom-13
+												189 Image Description: Element, ID: accessibility_dom-14
+												190 Image Description: Element, ID: accessibility_dom-15
+												191 Image Description: Element, ID: accessibility_dom-16
+												192 Image Description: Element, ID: accessibility_dom-17
+												193 Image Description: Element, ID: accessibility_dom-18
+												194 Image Description: Element, ID: accessibility_dom-19
+												195 Image Description: Element, ID: accessibility_dom-20
+												196 container Description: A secret worth protecting., ID: accessibility_dom-21
+													197 text A secret worth protecting.
+												198 container Description: In the New England woods, young Sylvia finds a world of companionship among birds and trees. A vi..., ID: accessibility_dom-22
+													199 text In the New England woods, young Sylvia finds a world of companionship among birds and trees. A visiting hunter offers a reward for the location of a rare white heron, drawing her toward a difficult choice. One daring climb at dawn reveals more than a hidden nest. Sarah Orne Jewett’s luminous story explores the quiet strength of conscience and our bond with the natural world.
+												200 container Description: Sarah Orne Jewett, ID: accessibility_dom-23
+													201 text Sarah Orne Jewett
+												202 container Description: Earnalism - A Reo Enterprise Venture, ID: accessibility_dom-24
+													203 text Earnalism - A Reo Enterprise Venture
+										204 container
+										205 container
+											206 button Resize selection from top edge
+											207 button Resize selection from left edge
+											208 button Resize selection from right edge
+											209 button Resize selection from bottom edge
+											210 button Resize selection from top left corner
+											211 button Resize selection from top right corner
+											212 button Resize selection from bottom left corner
+											213 button Resize selection from bottom right corner
+									57 button Add page
+										58 heading Add page, Value: 5
+											59 text Add page
+									60 button (collapsed) Description: Add page type, Secondary Actions: Expand
+					214 container
+						215 button (collapsed) Notes, Secondary Actions: Expand
+						216 button (collapsed) Description: Show timer, Secondary Actions: Expand
+						217 container
+							218 slider (settable, float) Description: Zoom, Value: -0.9369999766349792, Details: -0.937
+						219 combo box (collapsed) Description: Zoom options, Value: 39%, Secondary Actions: Expand
+							220 text 39%
+						221 button (collapsed) Pages, Secondary Actions: Expand
+						222 button 2 / 2
+						223 button (collapsed) Description: Grid view, Secondary Actions: Expand
+						224 button Present full screen
+						225 container
+							226 button (collapsed) Description: Get help, Secondary Actions: Expand
+		61 text Canvas The side panel is where you can apply templates or add elements. To skip to the canvas, press “⌘F2”. The main navigation contains buttons for document level options. To switch between buttons, use the left and right keys and to activate, press Enter. To skip to the canvas, press “⌘F2”. The design title holds the name of your design. To edit the design title, press Enter. To stop editing the design title, press Escape. This button opens the menu with all the options to share and print your design.
+
+The focused UI element is 233 button Details

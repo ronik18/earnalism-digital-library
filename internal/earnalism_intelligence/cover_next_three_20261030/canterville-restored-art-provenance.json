@@ -1,0 +1,16 @@
+[
+  {
+    "side": "front",
+    "source": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-84bddde5-9e60-437c-9df4-2b9eeebaa47a.png",
+    "sha256": "ab22f5f86b0260c33e5a911c0c8a8af92244a919235d7cf71d3994c15997ec49",
+    "canva_asset": "MAHZeQ5A5uQ",
+    "method": "Built-in image-generation edit of retained native original Canva cover; original source preserved; text-free restored illustration"
+  },
+  {
+    "side": "back",
+    "source": "/Users/ronikbasak/.codex/generated_images/01a0a89b-931a-7771-b978-f5d452c418da/exec-d2cfa8c6-23e6-4fc1-9750-aaa591ce19a7.png",
+    "sha256": "9192eec919da19aed433d5cd7c4a364fa75d023d4542530d7437e346f7c87ab8",
+    "canva_asset": "MAHZeaEX11k",
+    "method": "Built-in image-generation edit of retained native original Canva cover; original source preserved; text-free restored illustration"
+  }
+]

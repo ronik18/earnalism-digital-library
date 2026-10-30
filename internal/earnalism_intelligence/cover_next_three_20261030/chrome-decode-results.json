@@ -1,0 +1,42 @@
+{
+  "historical_source_head": "e35c64886683a75887b820fb603eeda3811982ea",
+  "qualification": "Historical decode of superseded White Heron WebPs; final exact native filenames in chrome-native-final-decode.json",
+  "historical_results": [
+    {
+      "asset": "a-white-heron front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "a-white-heron back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-canterville-ghost front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-canterville-ghost back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-pit-and-the-pendulum front",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    },
+    {
+      "asset": "the-pit-and-the-pendulum back",
+      "width": 800,
+      "height": 1200,
+      "decoded": true
+    }
+  ]
+}

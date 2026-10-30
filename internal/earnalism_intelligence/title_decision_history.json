@@ -12326,5 +12326,30 @@
     "production_cover_mapping_changed": false,
     "text_audio_access_customer_state_changed": false,
     "owner_authority": "Direct cover GO LIVE and isolated-worktree exception; no expansion to unrelated backend changes."
+  },
+  "next_three_cover_replacement_20261030": {
+    "state": "SOURCE_CANDIDATE_NOT_DEPLOYED",
+    "base": "02b176fd59038f3c87b2828cb547b9cf39a2a98d",
+    "titles": [
+      "a-white-heron",
+      "the-canterville-ghost",
+      "the-pit-and-the-pendulum"
+    ],
+    "evidence": "internal/earnalism_intelligence/cover_next_three_20261030",
+    "production_cover_mapping_changed": false,
+    "text_audio_access_customer_state_changed": false,
+    "release_limit": "Do not deploy unrelated main optimization/CLOSED purchase delta under cover-only authority.",
+    "native_provenance_correction": "White Heron WebPs rejected before production; exact native Canva JPEGs preserve C2PA and XMP; all copy/artwork retained.",
+    "verified_open_handoff": {
+      "owner_instruction": "Approve the Integration Lane’s OPEN main baseline and release handoff. merge, deploy, GO LIVE.",
+      "verified_open_source": "d8e58c37694dfedfd34cc2b3566c899623300b84",
+      "verified_open_deployment": "92697d11-ac38-4d28-8a1a-decd64e714d3",
+      "verified_open_runtime": "83f6d423bb35d0fe6285c69e997fe608aa49f2621812e1d7f08bf28e37e49eac",
+      "open_receipt_sha256": "76d54fc9ec8dc66869fbf7979163e845e8b71f3b57a47958ecabfbc5ea06f8ae",
+      "scope": "Reconcile only the six approved cover files and their existing dependency chain onto actually verified OPEN main. All non-cover application/financial/Reader/Listener source remains exact OPEN baseline. No audio/rights semantics/publication/customer mutation.",
+      "cover_prior_head": "146a099d8b8dac24835a2fcf1b12732dd566e8a8",
+      "source_conflict_resolution": "Only mechanically derived backend inventory conflicted; regenerate from merged index with repository recipe, never select stale whole manifest.",
+      "production_cover_mapping_changed": false
+    }
   }
 }

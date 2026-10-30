@@ -1,0 +1,10 @@
+{
+  "instruction": "Approve saving the exact shown Canterville restoration. Continue final validation, then map and release all three cover pairs autonomously, preserving unrelated work and verifying all six covers are live.",
+  "scope": [
+    "a-white-heron",
+    "the-canterville-ghost",
+    "the-pit-and-the-pendulum"
+  ],
+  "type": "Direct owner instruction; no legal or human-review signature inferred",
+  "limit": "Cover display only. Preserve text/audio/access/territories/publication/customer and billing state."
+}

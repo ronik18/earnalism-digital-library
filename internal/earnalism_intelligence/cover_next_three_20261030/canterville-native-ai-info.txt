@@ -1,0 +1,241 @@
+Browser tab: 1838738579, Title: "The Canterville Ghost book cover - 1024 × 1536px", URL: "https://www.canva.com/design/DAHZd7CTV_I/25c9TxhgckWAMForWYwP_g/edit".
+0 AXWebArea The Canterville Ghost book cover - 1024 × 1536px, URL: canva.com/design/DAHZd7CTV_I/25c9TxhgckWAMForWYwP_g/edit
+	1 container
+		258 container
+			259 container AaEXobf4KVU2inNdpoFP1A-AaEXocndY7lg-w3wz6pB-w.png
+				260 heading AaEXobf4KVU2inNdpoFP1A-AaEXocndY7lg-w3wz6pB-w.png, Value: 4
+					261 text AaEXobf4KVU2inNdpoFP1A-AaEXocndY7lg-w3wz6pB-w.png
+				262 text Made by Ronik Basak with AI 22 days ago
+				263 content list
+					264 button Details
+					265 button Download
+					266 button Copy to Brand Kit
+						267 text Copy to Brand Kit
+						268 text New
+					269 button Move to Trash
+		28 container
+			29 heading Canva editor, Value: 1
+				30 text Canva editor
+			31 text Loading finished Changes will be saved automatically
+			32 link Description: Skip navigation, Value: canva.com/design/DAHZd7CTV_I/25c9TxhgckWAMForWYwP_g/edit#_r_0_2
+			33 link Description: Skip to main content, Value: canva.com/design/DAHZd7CTV_I/25c9TxhgckWAMForWYwP_g/edit#_r_0_3
+			34 container
+				35 menu bar Main
+					36 container Document controls
+						37 Home
+						38 (collapsed) File, Secondary Actions: Expand
+						39 Resize
+						40 Editing
+							41 text Editing
+						42 All changes saved
+					43 container Share and publish
+						44 container
+							45 text field (settable) Description: Design title, Value: The Canterville Ghost book cover
+							46 text The Canterville Ghost book cover
+						47 container
+							48 button (collapsed) Description: Ronik Basak, Secondary Actions: Expand
+						49 Analytics
+						50 (collapsed) Description: View all comments, Secondary Actions: Expand
+						51 Post to WhatsApp
+						52 Share
+				53 container
+					54 container Side Panel
+						55 heading Side Panel, Value: 2
+							56 text Side Panel
+						57 container
+							58 tab group Side Panel
+								59 tab (selectable, settable, boolean) Canva AI, Value: 0
+Canva AI
+								60 tab (selectable, settable, boolean) Templates, Value: 0
+Templates
+								61 tab (selectable, settable, boolean) Elements, Value: 0
+Elements
+								62 tab (selectable, settable, boolean) Text, Value: 0
+Text
+								63 tab (selectable, settable, boolean) Brand, Value: 0
+Pro
+Brand
+								64 tab (selectable, settable, boolean) Uploads, Value: 0
+Uploads
+								65 tab (selectable, settable, boolean) Tools, Value: 0
+Tools
+								66 tab (selectable, settable, boolean) Projects, Value: 0
+Projects
+								67 tab (selectable, settable, boolean) Apps, Value: 0
+Apps
+								68 tab (selectable, settable, boolean) Audio, Value: 0
+Audio
+								69 tab (selectable, settable, boolean) Background, Value: 0
+Background
+								70 tab (selectable, settable, boolean) AI Voice, Value: 0
+AI Voice
+								71 tab (selectable, settable, boolean) Captions, Value: 0
+Captions
+								72 tab (selectable, settable, boolean) EmojifyMe, Value: 0
+EmojifyMe
+								73 tab (selectable, settable, boolean) Krikey AI Animate, Value: 0
+Krikey AI Animate
+								74 tab (selectable, settable, boolean) Storybook Pic, Value: 0
+Storybook Pic
+								75 tab (selectable, settable, boolean) Clay Style, Value: 0
+Clay Style
+								76 tab (selectable, settable, boolean) Avatarify, Value: 0
+Avatarify
+								77 tab (selectable, settable, boolean) AI Image Enhancer, Value: 0
+AI Image Enhancer
+								78 tab (selectable, settable, boolean) Paintsplash Art, Value: 0
+Paintsplash Art
+								79 tab (selectable, settable, boolean) Shape Cropper, Value: 0
+Shape Cropper
+								80 tab (selectable, settable, boolean) Image Eraser, Value: 0
+Image Eraser
+								81 tab (selectable, settable, boolean) Video Upscaler, Value: 0
+Video Upscaler
+								82 tab (selectable, settable, boolean) Video Enhancer, Value: 0
+Video Enhancer
+								83 tab (selectable, settable, boolean) Video Captions, Value: 0
+Video Captions
+								84 tab (selectable, settable, boolean) AI Captions, Value: 0
+AI Captions
+								85 tab (selectable, settable, boolean) Subtitles Co., Value: 0
+Subtitles Co.
+								86 tab (selectable, settable, boolean) Gen Video, Value: 0
+Gen Video
+								87 tab (selectable, settable, boolean) AI Video Generator, Value: 0
+AI Video Generator
+								88 tab (selectable, settable, boolean) Starred, Value: 0
+Starred
+								89 tab (selectable, settable, boolean) Video Reverser, Value: 0
+Video Reverser
+					90 button Canvas entry point
+					91 container Canvas
+						214 toolbar Selected element common controls
+							215 container
+								216 button Edit
+								217 button Replace
+								218 checkbox BG Remover Pro, Value: 0
+									219 text BG Remover
+									220 text Pro
+								221 pop up button (collapsed) Eraser, Secondary Actions: Expand
+								222 container Colors
+									223 button Current color Dark gray purple
+										224 container #362c44
+									225 button Current color Gray blue
+										226 container #38425c
+									227 button Current color Gray orange
+										228 container #b3874c
+								229 pop up button (collapsed) Description: Stroke style, Secondary Actions: Expand
+								230 pop up button (collapsed) Description: Corner rounding, Secondary Actions: Expand
+								231 button Crop
+								232 pop up button (collapsed) Flip, Secondary Actions: Expand
+								233 pop up button (collapsed) Description: Transparency, Secondary Actions: Expand
+								234 checkbox Description: Animate, Value: 0
+								235 button Position
+								236 checkbox Description: Copy style, Value: 0
+						92 container
+							93 container
+								237 container Canvas
+								94 container
+									95 container Page Controls
+										96 container
+											97 text Page 1  - 
+										98 container
+											99 text field (settable) Description: Page title, Value: Add page title
+											100 text Add page title
+										101 button (disabled) Move up
+										102 button Move down
+										103 button Hide page
+										104 button Only allow replacing content
+										105 button Duplicate page
+										106 button Delete page
+										107 button Add page
+									108 container
+										109 container Canvas content
+											110 container Description: Page 1, ID: accessibility_dom-0
+												111 Image Description: Element, ID: accessibility_dom-1
+												112 Image Description: Element, ID: accessibility_dom-2
+												113 Image Description: Element, ID: accessibility_dom-3
+												114 Image Description: Element, ID: accessibility_dom-4
+												115 container Description: The, ID: accessibility_dom-5
+													116 text The
+												117 container Description: Canterville, ID: accessibility_dom-6
+													118 text Canterville
+												119 container Description: Ghost, ID: accessibility_dom-7
+													120 text Ghost
+												121 Image Description: Element, ID: accessibility_dom-8
+												122 container Description: Oscar Wilde, ID: accessibility_dom-9
+													123 text Oscar Wilde
+												124 container Description: Earnalism - A Reo Enterprise Venture, ID: accessibility_dom-10
+													125 text Earnalism - A Reo Enterprise Venture
+												126 Image Description: Element, ID: accessibility_dom-11
+									127 container Page Controls
+										128 container
+											129 text Page 2  - 
+										130 container
+											131 text field (settable) Description: Page title, Value: Add page title
+											132 text Add page title
+										133 button Move up
+										134 button (disabled) Move down
+										135 button Hide page
+										136 button Only allow replacing content
+										137 button Duplicate page
+										138 button Delete page
+										139 button Add page
+									140 container
+										141 container Canvas content
+											142 container Description: Page 2, ID: accessibility_dom-12
+												143 Image Description: Element, ID: accessibility_dom-13
+												144 Image Description: Element, ID: accessibility_dom-14
+												145 container Description: A haunted house. An unflappable family., ID: accessibility_dom-15
+													146 text A haunted house.
+													147 text An unflappable family.
+												148 container Description: When an American family settles into Canterville Chase, its resident ghost discovers that rattlin..., ID: accessibility_dom-16
+													149 text When an American family settles into Canterville Chase, its resident ghost discovers that rattling chains and terrifying appearances no longer have their old effect. Practical remedies and mischievous children turn his ancient haunting upside down. Oscar Wilde blends sparkling comedy with a gentler story of compassion, forgiveness and the longing for peace.
+												150 Image Description: Element, ID: accessibility_dom-17
+												151 container Description: Oscar Wilde, ID: accessibility_dom-18
+													152 text Oscar Wilde
+												153 Image Description: Element, ID: accessibility_dom-19
+												154 container Description: Earnalism - A Reo Enterprise Venture, ID: accessibility_dom-20
+													155 text Earnalism - A Reo Enterprise Venture
+												156 Image Description: Element, ID: accessibility_dom-21
+										238 container
+										239 container
+											240 button Resize selection from top edge
+											241 button Resize selection from left edge
+											242 button Resize selection from right edge
+											243 button Resize selection from bottom edge
+											244 button Resize selection from top left corner
+											245 button Resize selection from top right corner
+											246 button Resize selection from bottom left corner
+											247 button Resize selection from bottom right corner
+											248 button Rotate selection
+												249 image
+										250 toolbar Selected element common controls
+											251 container
+												252 button Ask Canva
+												253 button Comment
+												254 checkbox Description: Lock position and appearance, Value: 0
+												255 button Duplicate
+												256 button Delete
+												257 button More
+									157 button Add page
+										158 heading Add page, Value: 5
+											159 text Add page
+									160 button (collapsed) Description: Add page type, Secondary Actions: Expand
+					161 container
+						162 button (collapsed) Notes, Secondary Actions: Expand
+						163 button (collapsed) Description: Show timer, Secondary Actions: Expand
+						164 container
+							165 slider (settable, float) Description: Zoom, Value: -0.9369999766349792, Details: -0.937
+						166 combo box (collapsed) Description: Zoom options, Value: 39%, Secondary Actions: Expand
+							167 text 39%
+						168 button (collapsed) Pages, Secondary Actions: Expand
+						169 button 2 / 2
+						170 button (collapsed) Description: Grid view, Secondary Actions: Expand
+						171 button Present full screen
+						172 button Processing tasks
+						173 container
+							174 button (collapsed) Description: Get help, Secondary Actions: Expand
+		175 text Canvas The side panel is where you can apply templates or add elements. To skip to the canvas, press “⌘F2”. The main navigation contains buttons for document level options. To switch between buttons, use the left and right keys and to activate, press Enter. To skip to the canvas, press “⌘F2”. This button opens the menu with all the options to share and print your design. The design title holds the name of your design. To edit the design title, press Enter. To stop editing the design title, press Escape. Could not connect to the reCAPTCHA service. Please check your internet connection and reload to get a reCAPTCHA challenge.
+
+The focused UI element is 264 button Details

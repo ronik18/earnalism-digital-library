@@ -1,0 +1,23 @@
+{
+  "titles": [
+    "a-white-heron",
+    "the-canterville-ghost",
+    "the-pit-and-the-pendulum"
+  ],
+  "event": {
+    "date": "2026-10-30",
+    "decision": "PREPARE_THREE_EXACT_OWNER_APPROVED_COVER_PAIRS",
+    "base": "02b176fd59038f3c87b2828cb547b9cf39a2a98d",
+    "titles": [
+      "a-white-heron",
+      "the-canterville-ghost",
+      "the-pit-and-the-pendulum"
+    ],
+    "scope": "Six content-addressed images and necessary mirrored cover bindings; text/audio/access/customer semantics preserved.",
+    "evidence": "internal/earnalism_intelligence/cover_next_three_20261030",
+    "production_mutations": 0,
+    "next_action": "Complete source gates and current-head CI; do not deploy unrelated CLOSED purchase/optimization main changes under cover authority."
+  },
+  "history_structure": "dict",
+  "scope": "Additive cover evidence only; release history remains separate from actual serving proof"
+}

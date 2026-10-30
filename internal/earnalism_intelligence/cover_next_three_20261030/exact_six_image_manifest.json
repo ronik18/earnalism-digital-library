@@ -1,0 +1,132 @@
+{
+  "images": [
+    {
+      "slug": "a-white-heron",
+      "side": "front",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/white-heron-native-jpeg-low/1.jpg",
+      "master_sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/a-white-heron/front.jpg",
+      "web_sha256": "ae38e591300abbfae4325744da55c39ede09b7c71d752b6a126bb89e44350f76",
+      "bytes": 114241,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": "Canva native Low front / Medium back",
+      "metadata": "Exact native JPEG bytes with C2PA/JUMBF and XMP; no local conversion"
+    },
+    {
+      "slug": "a-white-heron",
+      "side": "back",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/white-heron-native-jpeg/2.jpg",
+      "master_sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+      "master_size": [
+        800,
+        1200
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/a-white-heron/back.jpg",
+      "web_sha256": "5ac31a793801e2ba3611961f0867643d642db75c8d54c2a142728821fed80cb2",
+      "bytes": 139902,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": "Canva native Low front / Medium back",
+      "metadata": "Exact native JPEG bytes with C2PA/JUMBF and XMP; no local conversion"
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "side": "front",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/canterville-native-approved/1.png",
+      "master_sha256": "0b3c9ee2824d6c0b202fbc3c0aed79ced5d3aa8a83bd3964f1379831095d485d",
+      "master_size": [
+        1024,
+        1536
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/the-canterville-ghost/front.webp",
+      "web_sha256": "3e6e7773773cae3723637f3c3a256a31bd0c14cffcc64356bbee01d4762dd2f7",
+      "bytes": 165324,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": 84,
+      "metadata": "Same-source Canva XMP retained; no cryptographic signature claim"
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "side": "back",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/canterville-native-approved/2.png",
+      "master_sha256": "7c8e2a52eb860fb51c464599131f7fd00dfbcd4abe2b5320e74b06ff1b8e2310",
+      "master_size": [
+        1024,
+        1536
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/the-canterville-ghost/back.webp",
+      "web_sha256": "4bac8e4ff4162cdf8b5b501e7b3d03fb7641e0ebed976e404c8f69d55b730b81",
+      "bytes": 135848,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": 90,
+      "metadata": "Same-source Canva XMP retained; no cryptographic signature claim"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "side": "front",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/poe-native-approved/1.png",
+      "master_sha256": "9a98616c7b6fef8d25360affdcbad9eaac077ce9ecd096d514ffdab698478115",
+      "master_size": [
+        1024,
+        1536
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/the-pit-and-the-pendulum/front.webp",
+      "web_sha256": "0d4b96d950f4e044ad1c102117c31e5c418ad03e287d4316f594dca2276f9e88",
+      "bytes": 163750,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": 90,
+      "metadata": "Same-source Canva XMP retained; no cryptographic signature claim"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "side": "back",
+      "master": "/private/tmp/earnalism-next-cover-batch-20261030/poe-native-approved/2.png",
+      "master_sha256": "37bb1b24256d67380ebffa46536ff510318dcac5b624821bc74a8d66ba563cdf",
+      "master_size": [
+        1024,
+        1536
+      ],
+      "web_file": "/private/tmp/earnalism-next-cover-batch-20261030/web/the-pit-and-the-pendulum/back.webp",
+      "web_sha256": "099f97e4ecca2e383e647123ec2270a048ef141c4dce130cf1882d980649659a",
+      "bytes": 159668,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGB",
+      "quality": 87,
+      "metadata": "Same-source Canva XMP retained; no cryptographic signature claim"
+    }
+  ],
+  "canva_saved_designs": {
+    "a-white-heron": "DAHZd071Y1M",
+    "the-canterville-ghost": "DAHZd7CTV_I",
+    "the-pit-and-the-pendulum": "DAHZdynGH_M"
+  },
+  "approval": "Direct exact shown private draft approvals; Canterville recovered previews independently pixel-compared identical before save.",
+  "public_serving_verified": false,
+  "qualification": "White Heron uses untouched native JPEGs retaining Content Credentials; four unaffected WebPs retain their native XMP. Earlier WebP pair explicitly rejected."
+}

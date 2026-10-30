@@ -1,0 +1,106 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-pit-and-the-pendulum",
+  "history": [
+    {
+      "event_id": "cover-next-three-20261030-front-0d4b96d950f4e044",
+      "slug": "the-pit-and-the-pendulum",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "0d4b96d950f4e044ad1c102117c31e5c418ad03e287d4316f594dca2276f9e88",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+        "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+        "sha256": "0d4b96d950f4e044ad1c102117c31e5c418ad03e287d4316f594dca2276f9e88",
+        "bytes": 163750,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "9a98616c7b6fef8d25360affdcbad9eaac077ce9ecd096d514ffdab698478115"
+      },
+      "approved_by": "Direct owner exact-preview and release instruction; prepared by Codex",
+      "approval_note": "Exact owner-approved saved design and bounded web derivative; not yet delivered remotely.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "e9e5402d33232a848f14347454782124510282a7cbc5f02b41607dd25111bc97"
+    },
+    {
+      "event_id": "cover-next-three-20261030-back-099f97e4ecca2e38",
+      "slug": "the-pit-and-the-pendulum",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "099f97e4ecca2e383e647123ec2270a048ef141c4dce130cf1882d980649659a",
+      "remote_sha256": null,
+      "static_delivery": {
+        "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+        "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+        "sha256": "099f97e4ecca2e383e647123ec2270a048ef141c4dce130cf1882d980649659a",
+        "bytes": 159668,
+        "width": 800,
+        "height": 1200,
+        "format": "webp",
+        "master_sha256": "37bb1b24256d67380ebffa46536ff510318dcac5b624821bc74a8d66ba563cdf"
+      },
+      "approved_by": "Direct owner exact-preview and release instruction; prepared by Codex",
+      "approval_note": "Exact owner-approved saved design and bounded web derivative; not yet delivered remotely.",
+      "rights_basis": "Owner-directed artwork with native font raster-use permission; literary/audio scope unchanged.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "98e4fe7ef5feb5a4740eccc1ababe11a82d42058054556c12f01beb4167e375f"
+    }
+  ],
+  "active_approvals": {
+    "front": "cover-next-three-20261030-front-0d4b96d950f4e044",
+    "back": "cover-next-three-20261030-back-099f97e4ecca2e38"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "cover-next-three-20261030-front-0d4b96d950f4e044",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "cover-next-three-20261030-back-099f97e4ecca2e38",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "coverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "cover_image": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "backCoverImage": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+        "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+        "cover_dimensions": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    }
+  }
+}

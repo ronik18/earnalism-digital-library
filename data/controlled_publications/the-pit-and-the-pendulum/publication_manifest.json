@@ -31,7 +31,7 @@
     "status": "APPROVED",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
     "blockers": []
   },
   "audio_release": {
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "public_book": "c327e12642d57580c0c260aa12c8ba8f6f7a8db6b98f11f1d627ff3418772246",
     "reader_manifest": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
     "source_evidence": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
     "approval_evidence": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6"
   },
-  "manifest_sha256": "3f3077243b1f6e3adfee1ddf8b0d0b2dec6ed3aecbf58f0ce6ef011c741c4b2f"
+  "manifest_sha256": "39d53445c98d7a1e474dafd5ee93920cdc52d53e48e94d44148a3f968d90ff54"
 }

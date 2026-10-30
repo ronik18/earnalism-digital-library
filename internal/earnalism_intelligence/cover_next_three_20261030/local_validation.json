@@ -1,0 +1,22 @@
+{
+  "focused_command": "PYTHONDONTWRITEBYTECODE=1 MONGODB_URL=mongodb://127.0.0.1:27017/earnalism_cover_offline JWT_SECRET=offline-cover-validation-secret ENVIRONMENT=test /private/tmp/earnalism-selfish-source-tests-20261029/bin/python -m pytest -q -p no:cacheprovider backend/tests/test_admin_book_cover_promotion.py backend/tests/test_public_catalog_controlled_cover_truth.py backend/tests/test_approved_reader_bootstrap.py",
+  "result": "385 passed; 2 dependency deprecation warnings;14.16sec",
+  "catalogue": {
+    "result": "PASS",
+    "changed_packages": 3,
+    "statuses": {
+      "a-white-heron": "APPROVED",
+      "the-canterville-ghost": "APPROVED",
+      "the-pit-and-the-pendulum": "APPROVED"
+    },
+    "issues": [],
+    "reader_exposed": true,
+    "audio_exposed": true,
+    "release_authority_matches_reviewed_bindings": true
+  },
+  "static_seo": "generated then --check fresh",
+  "diff_check": "PASS",
+  "browser_decode": "6/6 Chrome native800x1200; display180x270",
+  "production_verified": false,
+  "source_binding": "Initial e35 source tests; native correction requires affected checks and fresh exact-head CI"
+}
