@@ -2,7 +2,7 @@ import copy
 import hashlib
 import unittest
 
-from backend.domain.reading_pass import canonical_page_records
+from backend.domain.reading_pass import canonical_page_records, segment_manifest
 from scripts.prepare_reader_completeness_repairs import compare_pages, narrative_digest, render_chapters, complete_preview_matches
 
 
@@ -24,6 +24,16 @@ class CompletenessRepairTests(unittest.TestCase):
         self.assertEqual(r["missing_chapter_ids"], ["two"])
         self.assertEqual(r["candidate"]["manifest"]["total_pages"], 2)
         self.assertEqual(r["candidate"]["state"], "LOCAL_INACTIVE_NOT_STORED_OR_PROMOTED")
+
+    def test_candidate_manifest_binds_actual_candidate_version_without_mutating_source(self):
+        before = copy.deepcopy(self.records)
+        result = compare_pages("book", self.records, self.live)
+        version = result["candidate"]["segmentation_version"]
+        expected = [{**record, "segmentation_version": version} for record in self.records]
+        self.assertEqual(result["candidate"]["manifest"], segment_manifest(expected))
+        self.assertNotEqual(result["candidate"]["manifest"]["version"], segment_manifest(self.records)["version"])
+        self.assertEqual(self.records, before)
+        self.assertTrue(result["source_matches"])
 
     def test_reordered_or_changed_pages_do_not_match(self):
         for mutate in (lambda x: x.reverse(), lambda x: x[0].update(content_hash="0" * 64)):

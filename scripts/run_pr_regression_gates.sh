@@ -110,6 +110,7 @@ env READER_SEGMENT_MONGO_INTEGRATION=1 bash scripts/run_reader_benchmark.sh
 
 echo "==> Local UAT public-release hold seeding contract"
 "$PYTHON_BIN" -m unittest \
+  scripts.test_prepare_reader_completeness_repairs \
   scripts.test_seed_uat_canonical_pages \
   scripts.test_run_bounded_pytest \
   scripts.test_india_release_source_preflight \
@@ -158,6 +159,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx \
   src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx \
   src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx \
+  src/experiences-v2/reader/authorizedChapter.test.js \
   src/experiences-v2/reader/readerIndexBoundary.test.js \
   src/experiences-v2/reader/visualPagination.test.js \
   src/lib/paymentReceipt.test.js \

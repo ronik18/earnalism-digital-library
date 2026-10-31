@@ -28,7 +28,6 @@ def compare_pages(slug: str, records: list[dict], live: dict, delivery: dict | N
     rows = canonical.get("pages") or []
     expected = [(r["page_index"], r["chapter_id"], r["content_sha256"]) for r in records]
     observed = [(r.get("page_number"), r.get("chapter_id"), r.get("content_hash")) for r in rows]
-    manifest = segment_manifest(records)
     source_match = bool(records) and observed == expected and canonical.get("page_count") == len(records)
     delivery = delivery or {}
     # A manifest, admitted session or successful HTTP status alone proves no
@@ -45,6 +44,11 @@ def compare_pages(slug: str, records: list[dict], live: dict, delivery: dict | N
         and delivery.get("status") == 200
     )
     digest = hashlib.sha256(json.dumps(expected, separators=(",", ":")).encode()).hexdigest()
+    target_version = "complete-html-v1-" + digest[:32]
+    # Build uses this candidate version in every record before manifest hashing.
+    # Preserve source/live records; their version remains comparison evidence.
+    candidate_records = [{**record, "segmentation_version": target_version} for record in records]
+    manifest = segment_manifest(candidate_records)
     return {
         "slug": slug,
         "live_pages": canonical.get("page_count"),
@@ -57,7 +61,7 @@ def compare_pages(slug: str, records: list[dict], live: dict, delivery: dict | N
         "live_segmentation_version": canonical.get("schema_version"),
         "candidate": {
             "state": "LOCAL_INACTIVE_NOT_STORED_OR_PROMOTED",
-            "segmentation_version": "complete-html-v1-" + digest[:32],
+            "segmentation_version": target_version,
             "target_characters": 3200,
             "manifest": manifest,
             "pages": [{k: r[k] for k in ("page_index", "chapter_id", "content_sha256", "is_public_preview")} for r in records],
