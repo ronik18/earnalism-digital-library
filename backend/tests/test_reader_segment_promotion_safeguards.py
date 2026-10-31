@@ -256,6 +256,31 @@ def test_promotion_is_idempotent_and_stale_requests_cannot_mutate_active_pointer
     asyncio.run(scenario())
 
 
+def test_active_metadata_distinguishes_missing_legacy_pointer_without_creating_it(monkeypatch):
+    database = _database()
+    monkeypatch.setattr(server, "db", database)
+    database.reader_segment_activation_state.rows.clear()
+    before = copy.deepcopy(database.reader_segment_manifests.rows)
+    result = asyncio.run(server.admin_reading_pass_active_segments("fixture-book", {"email": "fixture@example.test"}))
+    assert result["activation_generation"] == 0  # Existing comparison convention, not admission authority.
+    assert result["activation_state_present"] is False
+    assert not database.reader_segment_activation_state.rows
+    assert database.reader_segment_manifests.rows == before
+
+
+@pytest.mark.parametrize("generation", [True, -1, "0", None])
+def test_active_metadata_rejects_malformed_generation_without_repair(monkeypatch, generation):
+    database = _database()
+    monkeypatch.setattr(server, "db", database)
+    database.reader_segment_activation_state.rows[0]["generation"] = generation
+    before = copy.deepcopy(database.reader_segment_activation_state.rows)
+    with pytest.raises(server.HTTPException) as failed:
+        asyncio.run(server.admin_reading_pass_active_segments("fixture-book", {"email": "fixture@example.test"}))
+    assert failed.value.status_code == 409
+    assert failed.value.detail["code"] == "ACTIVATION_STATE_INVALID"
+    assert database.reader_segment_activation_state.rows == before
+
+
 def test_unknown_commit_is_recovered_only_by_retrying_the_same_operation_id(monkeypatch):
     async def scenario():
         database = _database()
