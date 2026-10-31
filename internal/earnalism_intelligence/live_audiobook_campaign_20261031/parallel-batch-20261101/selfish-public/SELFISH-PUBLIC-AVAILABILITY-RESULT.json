@@ -1,0 +1,65 @@
+{
+  "observed_at": "2026-10-31T18:44:13.414972+00:00",
+  "title": "The Selfish Giant",
+  "slug": "the-selfish-giant",
+  "current_status": "PUBLIC_DISCOVERY_BOOK_LISTENER_PREAUTHORIZATION_VERIFIED_CURRENT_PROTECTED_PLAYBACK_HOLD",
+  "screenshot_symptom": "Owner earlier screenshot showed Listening unavailable on Selfish card while OpenWindow had Reading Pass required.",
+  "current_rendered_observations": {
+    "library_audiobook_filter": "Two editions visible. BOTH OpenWindow and Selfish cards show Reading Pass required, correct title/author/covers, LIVE badges. No Listening unavailable observed.",
+    "book": "Correct Selfish title/Oscar Wilde/approved cover; Audiobook Approved, Open Listening Room entry. Normal card\u2192Book\u2192Listener navigation succeeded.",
+    "listener": "Correct Selfish title/author/cover, Full audiobook,12:57,1 chapter, Authorize Listening visible, speed/seek/chapter controls disabled before authorization; Reading Pass required. No audio authorization click."
+  },
+  "assets_preserved": {
+    "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "duration_ms": 777120,
+    "no_narration_or_cover_changes": true
+  },
+  "diagnosis": "Earlier unavailable screenshot is NOT reproduced by fresh actual rendered customer UI, exact no-query catalogue response, detail response, Reader metadata or current served audio safety module. Current backend and frontend agree on accepted dry protected package. Historical client/cache state is plausible but not proven; do not label as confirmed cache cause or fabricate code fix.",
+  "code_patch_necessary_for_reported_symptom": false,
+  "source_files_changed": [],
+  "production_mutations": false,
+  "new_session_or_lease": false,
+  "customer_debit": false,
+  "new_synthesis": false,
+  "new_allocation": false,
+  "proof": [
+    {
+      "path": "library-current.png",
+      "sha256": "115054da6c320ea12c0363cf23ee6bd6e6ea41a470c6c79508f108a2b9e058e6",
+      "bytes": 104293
+    },
+    {
+      "path": "book-current.png",
+      "sha256": "c4da2438d33f276975c3bcdee3ed9b8dc25c760320daed963168a1e81edc6f8a",
+      "bytes": 124098
+    },
+    {
+      "path": "listener-current.png",
+      "sha256": "4eab2e00ed964602456f0a394818f545123f8cc8c331aaa594fb10942f01c106",
+      "bytes": 144915
+    },
+    {
+      "path": "library-current-ax.txt",
+      "sha256": "5024a499ffbdbb31dfd8be671cb9686fb9965e11de60adb6d3a4c8269e869129",
+      "bytes": 364
+    },
+    {
+      "path": "book-current-ax.txt",
+      "sha256": "bac6ef9a667ac89a65ca386a7625d59626d9e49e37cc8365eaa3a5a9a0ce64bf",
+      "bytes": 330
+    },
+    {
+      "path": "listener-current-ax.txt",
+      "sha256": "e1f6205b51a78fc7be2f3c944ee6a39d75646cfb558b178de708cc35349eb081",
+      "bytes": 338
+    }
+  ],
+  "browser_method": "CUA own NEW Chrome tab1838738798 named Selfish public QA; IAB unavailable, no Dot. No other existing tab claimed or manipulated. Own tab closed after proof.",
+  "pending_PR600": "OPEN inactive approved music successor at824f29a3706d5e25bbf30478bba5e42e28c2d3d8; do not merge/activate solely for this card issue. Dry current package preserved.",
+  "remaining_gates": [
+    "Genuine current-source protected playback and billing settlement remains UNVERIFIED for changed intent/stream/transaction dependencies; reuse exact-source automated tests and historical package proof only in actual scope.",
+    "Current full acceptance must be reconciled after other worker frontend release/source changes before authoritative LIVE."
+  ],
+  "next_exact_action": "Integrate fresh public-availability proof and remove only the old nonreproduced card-symptom blocker; preserve actual current-runtime protected-playback hold. Serialize any paid normal-session acceptance with Integration Lane, current source bindings and existing no-paid-session boundary. Do not create duplicate fix, frontend release, package upload or narration."
+}

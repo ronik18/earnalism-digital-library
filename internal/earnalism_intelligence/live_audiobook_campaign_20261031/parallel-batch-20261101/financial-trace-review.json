@@ -1,0 +1,162 @@
+{
+  "observed_at": "2026-10-31T19:54:54.517816+00:00",
+  "scope": "Independent readonly redactedjournal+exact9a/9fsource audit; no browser/account/session/testing/provider operations",
+  "own_session_hash_prefix": "e869c3f7a0da",
+  "journal_sha256": "cfb62beeacf74109df92b97eaa3f4dd76fcca6d820c7beaedefbcd52a13a0bfc",
+  "source_bindings": [
+    {
+      "path": "backend/reading_pass_service.py",
+      "sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195",
+      "refs_equal": [
+        "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+        "9f182f96a9f443ac211b1a7768a07d876e06def2"
+      ],
+      "canonical_equal": true
+    },
+    {
+      "path": "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx",
+      "sha256": "2ecc9d675abcc9a19dc8160591f450a0039aaa4b360777ac08a5980237e22ec8",
+      "refs_equal": [
+        "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+        "9f182f96a9f443ac211b1a7768a07d876e06def2"
+      ],
+      "canonical_equal": true
+    }
+  ],
+  "redacted_renewal_end_trace": [
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 9.281403,
+      "sequence": 1,
+      "active": false,
+      "playback_state": "buffering",
+      "response_captured": true,
+      "response_seconds_after_start_request": 12.597252,
+      "response_status": 200,
+      "deducted_seconds": 0
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 14.700887,
+      "sequence": 2,
+      "active": false,
+      "playback_state": "buffering",
+      "response_captured": true,
+      "response_seconds_after_start_request": 18.298338,
+      "response_status": 200,
+      "deducted_seconds": 0
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 18.29963,
+      "sequence": 3,
+      "active": true,
+      "playback_state": "playing",
+      "response_captured": true,
+      "response_seconds_after_start_request": 21.796317,
+      "response_status": 200,
+      "deducted_seconds": 0
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 21.797606,
+      "sequence": 4,
+      "active": false,
+      "playback_state": "paused",
+      "response_captured": true,
+      "response_seconds_after_start_request": 26.665499,
+      "response_status": 200,
+      "deducted_seconds": 3
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 26.667225,
+      "sequence": 5,
+      "active": false,
+      "playback_state": "paused",
+      "response_captured": true,
+      "response_seconds_after_start_request": 29.986135,
+      "response_status": 200,
+      "deducted_seconds": 0
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 33.3871,
+      "sequence": 6,
+      "active": false,
+      "playback_state": "buffering",
+      "response_captured": true,
+      "response_seconds_after_start_request": 36.727832,
+      "response_status": 200,
+      "deducted_seconds": 0
+    },
+    {
+      "operation": "renew",
+      "send_seconds_after_start_request": 36.729403,
+      "sequence": 7,
+      "active": false,
+      "playback_state": "buffering",
+      "response_captured": false,
+      "response_seconds_after_start_request": null,
+      "response_status": null,
+      "deducted_seconds": null
+    },
+    {
+      "operation": "end",
+      "send_seconds_after_start_request": 37.730602,
+      "sequence": null,
+      "active": null,
+      "playback_state": null,
+      "response_captured": false,
+      "response_seconds_after_start_request": null,
+      "response_status": null,
+      "deducted_seconds": null
+    }
+  ],
+  "observed_dom": {
+    "first_native_playing_wall_seconds": 15.097,
+    "initial_playing_wall_seconds": 21.141,
+    "pause_start_wall_seconds": 21.428,
+    "pause_end_wall_seconds": 33.484,
+    "paused_current_time_seconds_unchanged": 9.285501,
+    "resumed_wall_seconds": 37.781,
+    "playback_rate": 1.5,
+    "stop_end_request_sent": true,
+    "end_response_captured": false,
+    "tab_closed_wall_seconds": 38.082
+  },
+  "source_invariants": {
+    "bill_previous_interval": "renew_lease invokes _billable_interval on previous session document before changing billing_active to requestedstate; audio requires active and playback_state==playing.",
+    "inactive_no_charge": "_billable_interval returns0 when previous billing_active isfalse. Buffering preserves activeauthority but billing_active=false; paused status alsofalse.",
+    "per_interval_cap": "Integer microseconds capped at20,000,000; accountcarry is integer0..999999. Floor((cap+carry)/1e6)<=20whole seconds per interval, not21.",
+    "server_clock": "now captured server-side before transaction; client send/DOMtime and response latency do not establish exact server accrual endpoints.",
+    "terminal_once": "_settle_terminal_session uses min(now,leaseexpiry,optionalcutoff), CAS leaseversion/active status and transaction; terminalsets billing_active=false. endSessionmissing/ended returnsdeducted0.",
+    "stale_duplicate": "Heartbeat intent is idempotency-bound; stale version/sequence returnsdeducted0 ratherthan chargingreplay.",
+    "frontend_queue": "renewCurrentLease capturesrequestedstate atenqueue, executes serially, and checks lifecycleownership before dispatch and afterresponse. Stop invalidatesgeneration beforecleanup; inflightrenewal/end outcomes still need serverledger."
+  },
+  "mathematical_findings": [
+    {
+      "finding": "Confirmed observed own debit3 is consistent with one short server-activeinterval.",
+      "basis": "seq3 playing response0 beginsbillable state; seq4pausedresponse3 settles it; seq5pausedresponse0 andseq6bufferingresponse0 confirm later inactive intervals."
+    },
+    {
+      "finding": "Given only capturedsequence1..7, lateownend or expiry cannot produce29additional seconds.",
+      "basis": "seq6 confirmed200 installs billing_active=false; seq7 is alsoactive=false/buffering. End after either state bills0. Fractioncarry cannot producepositivebillabletimewheninactive."
+    },
+    {
+      "finding": "Even one hypothetical lateractiveinterval cannot explain29additionalwhole seconds.",
+      "basis": "Oneinterval maximum20includingaccountcarry. >=29 requiresatleast2additional billableintervals/activeauthority changes or anotherledger mutation, ifcode/configbindingshold."
+    },
+    {
+      "finding": "A38.082+20=58.082second whole-session envelope is only conditional, not a proved terminal bound.",
+      "basis": "It assumes lastacceptedactiveauthority was issued bytabclose and noqueued/inflightrenewal laterextendsauthority. Thejournal lacks finalserverresponse/ledger. Aggregate32 alone neither provesovercap norattributes thedebit; accountwide unrelatedmutations and missingown activity remain possibilities, not findings."
+    }
+  ],
+  "actual_financial_vulnerability_proven": false,
+  "attribution": "UNRESOLVED_DO_NOT_ASSIGN_BILLING_BUG_OTHER_USE_OR_THE_OWN_SESSION",
+  "account_observation_caveat": "Laterprofileaggregate32 minusinitialownledger3 gives29unattributed; profilechangealone isnot a sessionledger join. Readonlyworker must correlate all owner ledger entries by safe own-session hash/title/type/idempotency/timestamps and pagination, without starting a session.",
+  "queue_fairness_limit": "Serialized capturedstate may reach serverafter DOMstatechanged; nativepausedstability isobserved but fairbillingcannotbe inferred from DOMtiming orwalletdeltaalone. No transaction/race invariant violation proved here.",
+  "separate_driver_failure": "Journal records Input rejected value60.96. Source rangeinput step0.1 makes60.96 notstep-aligned; this supports a driverconstraint issue, notan accountingcause. Do not retryunderconsumedstart authority.",
+  "next_exact_action": "Use existingworker readonlyownerledger reconciliation toattribute the29seconds. Verify whether any postseq6activeheartbeat or additional billableintervalexists and whetherendcommitted. Do not start, renew, transfer, purchase, refund, mutate or deploy basedonthisreport.",
+  "no_new_authority_created": true
+}

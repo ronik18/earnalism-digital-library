@@ -1,0 +1,23 @@
+{
+  "reviewed_head": "0ee58645e",
+  "base": "688289198",
+  "scope": "Focused read-only six-title internal evidence batch; no ASR rerun, no signed-in/browser session contact, no Selfish tests",
+  "material_findings": [],
+  "conclusion": "NO_MATERIAL_FINDINGS",
+  "observations": [
+    "All changed tracked paths are internal/earnalism_intelligence evidence; no Reader/backend/frontend/source-publication mutation or raw audio in Git.",
+    "Ghost numeric ASR9.904 and boundary proof are explicitly separated from UNVERIFIED pronunciation/expression/listening;13differences retained with uncertainty, no invented full-title PASS.",
+    "Ghost exact source/master recovery hashes and historical/current provenance remain explicit; historical sample scores not converted to current whole-title acceptance.",
+    "Sredni obsolete synthesis blocker moved to historical resolved preparation record while real expression/joins/package gates remain; no new grant or retry.",
+    "Sredni derived timing is private/unadmitted, combines original measured alignment with exact PCM-derived1.265s suffix shift and measured replacement; full sync remains UNVERIFIED.",
+    "Magi exact complete-sentence spans validated against current source and SHA256; failed families stay closed.",
+    "Student import rights and missing archive remain BLOCKED; no unsupported non-US recording rights inference.",
+    "Selfish draft records preauthorization public rendered proof only, with genuine protected acceptance explicitly pending at reviewed commit.",
+    "No credential/private-key/Bearer/JWT/API-key literal patterns found in changed text; reviewed screenshots show public signed-out UI.",
+    "Existing later backend-byte followup distinguishes declared manifest source binding from unavailable provider Git metadata."
+  ],
+  "limits": [
+    "No fresh audio listening or re-evaluation of underlying source law performed in this focused review.",
+    "No inference about in-progress dedicated Selfish normal-account acceptance after this commit."
+  ]
+}

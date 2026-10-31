@@ -1,0 +1,39 @@
+{
+  "prepared_at": "2026-10-31T19:12:36.526092+00:00",
+  "status": "VALIDATED_EXISTING_UI_PROCEDURE_NOT_EXECUTABLE_UNDER_CONSUMED_GRANT",
+  "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "no_code_patch_or_deployment": true,
+  "new_grant_requirement": "One further normal owner-account acceptance session explicitly approved; never reset/reuse consumed intent. Use same selected account/existingcredit; no newSignin requestifstillauthenticated.",
+  "bounds": {
+    "ordinary_cleanup_reservation_seconds": 20,
+    "maximum_total_credit_delta_seconds": 120,
+    "planned_active_seconds": 31,
+    "planned_paused_seconds": 20,
+    "safety_stop_wall_seconds_after_authorize": 70,
+    "maximum_wall_seconds_after_authorize": 75,
+    "maximum_normal_live_lease_seconds": 20,
+    "conservative_bound_if_ownedrenewals_stopped_by75": 115,
+    "no_second_attempt_or_transfer": true
+  },
+  "new_required_setup": [
+    "Confirmstablecurrent source/config20 andexistingaccountpass baseline via its normal UI requests, withoutcredentials/PII/rawbalance output. Reuse unchanged QA/sourceevidence.",
+    "After ONE normalauthorization, WHILEPAUSED select existingchapterbutton01 The Selfish Giant; verifyVISIBLEtimeline0:00. Do not demand nativecurrentTime/source0 yet: pausedseekintentionallyqueuesit toprevent unrenewedRangefetch.",
+    "PressPlayonce. Normal renewal mustsucceedbefore sourcechanges; firstACTIVEspoken/playbacksegmentmustbegroup01 offset0. Initialgroup06METADATApreloadbeforeexplicitchapterselectionisexpectedretainedresume, notactualspokenplayback.",
+    "Continue only preparedboundedpause/resume/seek/naturaltransition/end cases thatfitdeadline. Stop/settleONLYownednewsession by70wall evenifcasesunfinished; no retry. Readonlypostflightmaycontinueafterterminalsettlement."
+  ],
+  "offline_proof": {
+    "tests": 3,
+    "elapsed_seconds": 1.08,
+    "result": "PASS_UNCHANGED_PLAYER_ORIGINAL_SOURCE",
+    "cases": [
+      "Before: completedbookmark restoreslastsegment at existing50msnativeend margin; Play+nativeend completes normally.",
+      "AfterPROCEDURE: existingchaptercontrolqueues0; nextPlay waitsfornormalrenewal, changesfirstsegment, appliesoffset0 onmetadata, thenplayswithoutimmediatecompletion.",
+      "Actualpartialbookmark2.5seconds remainsrestored andstoredunchanged absentexplicitchapterclick."
+    ],
+    "actual_player_source_hash_binding": "completed-progress-qa-source-binding.json",
+    "test_file": "completed-progress-qa/src/completed-progress.test.jsx",
+    "log": "completed-progress-qa.log",
+    "scope_limit": "IsolatedDOM/cosmeticshellmocks and actualunchangedplayer/progress/manifestcode, no realauth/player/lease/accountingPASS."
+  },
+  "no_additional_synthesis_allocation_purchase_private_media_egress": true
+}

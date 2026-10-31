@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "title": "The Selfish Giant",
+  "status": "BLOCKED_CURRENT_RUNTIME_ACCEPTANCE_INCOMPLETE",
+  "package": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "frontend": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+  "bundle_sha256": "32f1b3578bedba676a8d4a0c6a375a4a7b20edcd85d8fb730047ae5b289ab1c4",
+  "no_code_defect_established": true,
+  "no_further_automatic_start": true,
+  "cost": {
+    "own_whole_seconds": 7,
+    "attempt_1": 0,
+    "attempt_2": "unknown request; prior normal postflight delta0",
+    "attempt_3": 3,
+    "attempt_4": 4,
+    "absolute_balance_or_identity_saved": false
+  },
+  "gates": [
+    {
+      "case": "Public Library / Book / Listener availability, title, cover, duration, chapter metadata",
+      "result": "PASS_RENDERED",
+      "scope": "Fresh real browser; old unavailable-card symptom not reproduced."
+    },
+    {
+      "case": "Rights/source/full accepted dry media quality",
+      "result": "REUSE_UNCHANGED_EVIDENCE",
+      "scope": "b002 immutable package/source/rights unchanged; no new full listening review claimed."
+    },
+    {
+      "case": "Exact-source regression tests",
+      "result": "PASS_REUSED",
+      "scope": "99 transport tests; 264 frontend tests; 3 targeted transaction cases; current critical module bytes unchanged."
+    },
+    {
+      "case": "Normal protected authorization and media delivery",
+      "result": "PASS_OBSERVED",
+      "scope": "Own starts200, protected manifest200, Group01/02/06 native media206."
+    },
+    {
+      "case": "Paused chapter start",
+      "result": "PASS_VISIBLE_QUEUE_ONLY",
+      "scope": "Visible0 while paused; offline actual-package tests prove renewal-before-source. Fourth actual first playback had not started before next seek; do not claim actual Group01 offset0 playback."
+    },
+    {
+      "case": "Native pause / resume",
+      "result": "PASS_OBSERVED_1_5X",
+      "scope": "Third run position9.285501 unchanged12.056wallseconds, then resumed; not claimed as1x proof."
+    },
+    {
+      "case": "Native1x delivery / seek to Group02",
+      "result": "PASS_LIMITED",
+      "scope": "Fourth native Group02 position2.0651→4.104739 and later10.07919, pausedfalse/rate1. Initial Group01 was still paused; active-playing cross-segment seek semantics not fully exercised."
+    },
+    {
+      "case": "Natural Group01→02 transition after backseek58",
+      "result": "UNVERIFIED",
+      "scope": "No post-backseek Group01 response/activation or ended event captured. Group01 range only initial; renewal response for backseek arrived after containment. Cannot infer missing transition was product fault or observer miss."
+    },
+    {
+      "case": "Final-native end lifecycle",
+      "result": "PASS_OBSERVED_REUSED_1_5X_LIMITED",
+      "scope": "First run last Group06 ended naturally from near-end bookmark; normal End200/endedtrue/deducted0 on same exact runtime/package. No fullword/1x-final listening claim."
+    },
+    {
+      "case": "Latest own explicit End settlement",
+      "result": "UNVERIFIED",
+      "scope": "Own EndPOST sent; response not captured before bounded closure. Matching ledger consume4 proves debit only, not terminal state. No account UI terminal/idempotency field."
+    },
+    {
+      "case": "Budget / isolation / containment",
+      "result": "PASS_LIMITED",
+      "scope": "Own hashed-session ledger debit7 cumulative; no transfer/purchase/grant; own tabs closed. Latest terminal receipt unavailable; maximum live lease20 bounds any residual lease; no other session modified."
+    }
+  ],
+  "blockers": [
+    "Actual current-runtime active-playback cross-segment seek and natural internal segment transition remain unverified.",
+    "Latest own explicit End terminal receipt unavailable through supported normal Account UI; consume row alone is not terminal proof."
+  ],
+  "interpretation": "Instrumented controller proceeded on metadata rather than paused=false/time advancement, and timed out before queued return-seek renewal completed. No app transport/billing defect established. Do not patch or redeploy based on these failures.",
+  "next_exact_action": "Integration Lane adjudicate whether unchanged exact-source automated/historical evidence legitimately closes the remaining cases; otherwise retain BLOCKED and arrange supported normal-account verification with actual playback-ready event predicates. No fifth automatic start under this task."
+}

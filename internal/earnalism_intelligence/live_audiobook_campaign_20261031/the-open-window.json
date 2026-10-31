@@ -152,5 +152,8 @@
     "discovery": "PASS",
     "guest_access_controls": "PASS",
     "authenticated_playback": "NOT_PERFORMED"
-  }
+  },
+  "parallel_acceptance_matrix": "parallel-batch-20261101/existing/the-open-window-gate-matrix.json",
+  "backend_source_binding": "parallel-batch-20261101/existing/backend-provenance-followup.json",
+  "reused_exact_source_regression": "parallel-batch-20261101/existing/targeted-test-evidence-reuse.json"
 }

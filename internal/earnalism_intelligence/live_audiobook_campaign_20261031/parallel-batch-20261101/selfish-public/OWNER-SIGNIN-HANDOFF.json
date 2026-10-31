@@ -1,0 +1,18 @@
+{
+  "prepared_at": "2026-10-31T18:49:58.042193+00:00",
+  "status": "OWNER_PRIVATE_SIGNIN_HANDOFF_READY_NO_SUBMISSION",
+  "url": "https://theearnalism.com/login",
+  "browser": "Chrome",
+  "browser_id": "1",
+  "tab_id": "1838738805",
+  "session_name": "Earnalism owner sign-in",
+  "marked_handoff": true,
+  "verified_ui": "Normal Earnalism Sign In page with Continue with Google and empty email/password form. No input or submit performed.",
+  "screenshot": "owner-signin-ready.png",
+  "screenshot_sha256": "04e3b63ab8dce7a769b2841e8b87319771462f3d807b7d39040eee4f7000da73",
+  "credentials_read_or_entered": false,
+  "sign_in_submitted": false,
+  "lease_created": false,
+  "customer_debit": false,
+  "resume_instruction": "Root may bind tab1838738805 in Chrome after owner confirms private sign-in. Do not inspect fields or credentials. First rebind stable serving source/shared release slot and confirm intended account/session isolation; only then execute prepared normal-session acceptance."
+}

@@ -278,11 +278,11 @@
   "reconciliation_status": "INITIAL_INVENTORY_TRIAGED_TO_DOCUMENTED_BLOCKED",
   "existing_publicly_available_but_current_acceptance_blocked": 2,
   "reader_only_audio_hidden": 50,
-  "new_paid_playback_spend_usd": 0,
-  "required_next_integration_action": "Qualified listening adjudication of the exact 24.34-second private candidate and both joins; preserve original and candidate. Resolve material expression/transition concerns before further package work. No synthesis or review requests remain.",
+  "new_paid_playback_spend_usd": null,
+  "required_next_integration_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
-    "No new full subjective listening or paid playback performed.",
+    "No new full subjective listening performed. Later bounded normal protected playback consumed7whole ReadingPass credit seconds (matched own-session ledger); monetary conversion is unreported.",
     "Production costs for unqualified plans are unknown; prior costs remain in their original ledgers.",
     "BLOCKED is a current evidence/access state, not a claim that public-domain audio rights cannot be established.",
     "No publication setting, manuscript, cover, customer entitlement, account or provider configuration changed."
@@ -415,5 +415,29 @@
     "objective_adjudication": "sentence-repair/critical-review-adjudication.json",
     "new_allocation": false,
     "additional_synthesis": false
-  }
+  },
+  "latest_parallel_batch": {
+    "record": "parallel-batch-20261101/LANES.json",
+    "affected_titles": [
+      "the-student",
+      "a-ghost-story",
+      "the-gift-of-the-magi",
+      "the-open-window",
+      "the-selfish-giant",
+      "sredni-vashtar"
+    ],
+    "canonical_writer": "root",
+    "new_synthesis": 0,
+    "new_allocations": 0,
+    "new_paid_provider_requests": 0,
+    "no_publication_from_preparation": true
+  },
+  "dedicated_selfish_result": {
+    "record": "parallel-batch-20261101/selfish-runtime/FINAL-STATUS.json",
+    "status": "BLOCKED_CURRENT_RUNTIME_ACCEPTANCE_INCOMPLETE",
+    "own_reading_pass_seconds": 7,
+    "new_publication": false,
+    "verified_live": false
+  },
+  "new_paid_playback_spend_basis": "No purchase;7existing Reading Pass whole seconds consumed by matched own-session ledger. Monetary conversion and fractional carry unreported. Do not use unrelated account-wide balance changes as campaign cost."
 }

@@ -1,0 +1,139 @@
+{
+  "checked_at": "2026-10-31T18:31:56.767583+00:00",
+  "base_sha": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "slug": "the-gift-of-the-magi",
+  "status": "BLOCKED_CURRENT_AUDIO_PACKAGE_NOT_ADOPTED",
+  "chapter_json_sha256": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+  "canonical_content_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+  "canonical_word_count_whitespace_split": 2057,
+  "paragraph_count_blank_line_delimited": 177,
+  "normalized_word_sequence_sha256": "f32ebf1df2826126eac28341a0dba111be5a734828d9f7b6fffb41d9b95bfe27",
+  "reader_uses_only_existing_rights_decision_unchanged": true,
+  "new_provider_cost_usd": 0,
+  "new_allocations": 0,
+  "new_synthesis": false,
+  "publication": false,
+  "music": "SILENCE_NO_LICENSE_NEEDED",
+  "rights_analysis": {
+    "territory": "IN",
+    "underlying_source": "English original-language literary story, no modern introduction/translation/notes included",
+    "statute": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+    "author_death_year": 1910,
+    "published_in_lifetime": true,
+    "sections_22_23_analysis": "Even if pseudonymous publication term applies, publication+60 elapsed; if identity disclosure invokes author-life term,1910+60 elapsed at1971. Underlying literary term supports new narration in IN independently of Reader-use decision. No claim about modern recording rights follows from literary expiry.",
+    "reader_rights_do_not_authorize_audio_package": true,
+    "recording": "Owner is producer of demonstrably owner-directed recording per applicable AGENTS; retain original exact generation/provider/master provenance. Do not seek duplicate producer ownership approval.",
+    "source_metadata": "https://www.gutenberg.org/ebooks/7256",
+    "license_scope_status": "UNDERLYING_IN_TERM_ANALYSIS_PREPARED_PACKAGE_ADOPTION_PENDING"
+  },
+  "source_unchanged_by_this_lane": true,
+  "existing_import_packet": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi",
+    "metadata_sha256": "1673265bf4b3d89a7919f7fbe62695fb7bf44b46d48d06bf21fcfbd393efc387",
+    "packet_fingerprint_sha256": "4e197c3dea88ad1dedf2d09a68620ac164017662271b82d6005891b475f8275f",
+    "sanitized_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "source_matches_current": true,
+    "historical_release_evidence_packet_fingerprint_stale": true,
+    "stale_pointer_note": "July title release evidence says dd2867… but current packet metadata says4e197c…; authoritative current exact packet metadata must govern, do not silently reuse old seal."
+  },
+  "closed_attempts_do_not_repeat": [
+    "Google Studio-C baseline75a6fbc4…/8.5 minimum",
+    "Google Studio-C contextual716473a1…/8.3 minimum",
+    "Google Chirp3-HD Aoede cda6b9c8…/7.2 with robotic/mechanical flags",
+    "VoxCPM2 int8 v390390655d6…/8.5 robotic/choppy flags",
+    "Qwen3 Base MLX8bit v3900b0b10e2…/1.417947% clipped samples",
+    "CosyVoice3 MLXbf16 v390559d94ef…/wrong opening and missing grow/it’ll despite aggregate9.7758",
+    "Additional OpenAI/Kokoro failures remain in provider_performance_memory.json; do not treat a new filename as new authority"
+  ],
+  "resolved_blockers": [
+    "Exact current canonical source bound to existing human/import packet",
+    "Prior failed-family memory recovered; no need to audition those combinations again"
+  ],
+  "remaining_blockers": [
+    "Receive one complete exact-source licensed human/import narration with documentary recording/performance rights",
+    "Validate current packet, full ordered wording, pronunciation, objective acoustics and expressive listening",
+    "Measured timing/storage/current canonical audio-use adoption/protected customer acceptance"
+  ],
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root /tmp/earnalism-magi-import-validation --received-audio /absolute/path/to/received_narration.wav",
+  "voice_selection": "HUMAN_OR_LICENSED_IMPORT_REQUIRED_NO_NEW_SYNTHETIC_AUDITION_RECOMMENDED",
+  "pronunciation_review_terms": [
+    "Magi",
+    "Della",
+    "Jim",
+    "James Dillingham Young",
+    "Coney Island",
+    "Queen of Sheba",
+    "King Solomon",
+    "meretricious",
+    "fob"
+  ],
+  "representative_review_passages": [
+    {
+      "purpose": "opening_wealth_contrast_and_emotional_grounding",
+      "offset_basis": "zero-based Python Unicode code points; end exclusive; exact chapter content string including original whitespace",
+      "start_character": 0,
+      "end_character_exclusive": 614,
+      "start_utf8_byte": 0,
+      "end_utf8_byte_exclusive": 616,
+      "text": "One dollar and eighty-seven cents. That was all. And sixty cents of it\n\nwas in pennies. Pennies saved one and two at a time by bulldozing the\n\ngrocer and the vegetable man and the butcher until one’s cheeks burned\n\nwith the silent imputation of parsimony that such close dealing\n\nimplied. Three times Della counted it. One dollar and eighty-seven\n\ncents. And the next day would be Christmas.\n\nThere was clearly nothing to do but flop down on the shabby little\n\ncouch and howl. So Della did it. Which instigates the moral reflection\n\nthat life is made up of sobs, sniffles, and smiles, with sniffles\n\npredominating.",
+      "sha256": "3c0886be346e8285b6849107d3b6dd4ebf74a623238a5edbef61eb6e2d071fe2",
+      "word_count_whitespace_split": 105,
+      "complete_sentence_boundaries": true,
+      "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    },
+    {
+      "purpose": "hair_sale_dialogue_and_character_continuity",
+      "offset_basis": "zero-based Python Unicode code points; end exclusive; exact chapter content string including original whitespace",
+      "start_character": 3907,
+      "end_character_exclusive": 4374,
+      "start_utf8_byte": 3937,
+      "end_utf8_byte_exclusive": 4434,
+      "text": "Where she stopped the sign read: “Mme. Sofronie. Hair Goods of All\n\nKinds.” One flight up Della ran, and collected herself, panting.\n\nMadame, large, too white, chilly, hardly looked the “Sofronie.”\n\n“Will you buy my hair?” asked Della.\n\n“I buy hair,” said Madame. “Take yer hat off and let’s have a sight at\n\nthe looks of it.”\n\nDown rippled the brown cascade.\n\n“Twenty dollars,” said Madame, lifting the mass with a practised hand.\n\n“Give it to me quick,” said Della.",
+      "sha256": "90ccb1e13dc6f82c541bf341c0d4173a0c9c15e61d3b9b67c726e2027449c096",
+      "word_count_whitespace_split": 80,
+      "complete_sentence_boundaries": true,
+      "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    },
+    {
+      "purpose": "emotional_turn_natural_dialogue_and_contractions",
+      "offset_basis": "zero-based Python Unicode code points; end exclusive; exact chapter content string including original whitespace",
+      "start_character": 7139,
+      "end_character_exclusive": 7573,
+      "start_utf8_byte": 7231,
+      "end_utf8_byte_exclusive": 7695,
+      "text": "Della wriggled off the table and went for him.\n\n“Jim, darling,” she cried, “don’t look at me that way. I had my hair\n\ncut off and sold because I couldn’t have lived through Christmas\n\nwithout giving you a present. It’ll grow out again—you won’t mind, will\n\nyou? I just had to do it. My hair grows awfully fast. Say ‘Merry\n\nChristmas!’ Jim, and let’s be happy. You don’t know what a nice—what a\n\nbeautiful, nice gift I’ve got for you.”",
+      "sha256": "8ef8568807923d7b65ac01eaf024e8de3f08910c84901a26b56f390cc5233adc",
+      "word_count_whitespace_split": 80,
+      "complete_sentence_boundaries": true,
+      "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    },
+    {
+      "purpose": "revelation_restrained_warmth_and_irony",
+      "offset_basis": "zero-based Python Unicode code points; end exclusive; exact chapter content string including original whitespace",
+      "start_character": 10295,
+      "end_character_exclusive": 10616,
+      "start_utf8_byte": 10499,
+      "end_utf8_byte_exclusive": 10834,
+      "text": "Instead of obeying, Jim tumbled down on the couch and put his hands\n\nunder the back of his head and smiled.\n\n“Dell,” said he, “let’s put our Christmas presents away and keep ’em a\n\nwhile. They’re too nice to use just at present. I sold the watch to get\n\nthe money to buy your combs. And now suppose you put the chops on.”",
+      "sha256": "3e830194138a9519e85f8afbf5e72ff80726c6600653edaadac52e3662615555",
+      "word_count_whitespace_split": 63,
+      "complete_sentence_boundaries": true,
+      "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    },
+    {
+      "purpose": "ending_fidelity_including_these_two_and_reflective_expression",
+      "offset_basis": "zero-based Python Unicode code points; end exclusive; exact chapter content string including original whitespace",
+      "start_character": 10618,
+      "end_character_exclusive": 11298,
+      "start_utf8_byte": 10836,
+      "end_utf8_byte_exclusive": 11520,
+      "text": "The magi, as you know, were wise men—wonderfully wise men—who brought\n\ngifts to the Babe in the manger. They invented the art of giving\n\nChristmas presents. Being wise, their gifts were no doubt wise ones,\n\npossibly bearing the privilege of exchange in case of duplication. And\n\nhere I have lamely related to you the uneventful chronicle of two\n\nfoolish children in a flat who most unwisely sacrificed for each other\n\nthe greatest treasures of their house. But in a last word to the wise\n\nof these days let it be said that of all who give gifts these two were\n\nthe wisest. Of all who give and receive gifts, such as they are wisest.\n\nEverywhere they are wisest. They are the magi.",
+      "sha256": "a628baaa0e85c6348dfa90f260e7d74fae5063e4fffba4717e43c652200315b7",
+      "word_count_whitespace_split": 122,
+      "complete_sentence_boundaries": true,
+      "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    }
+  ],
+  "paragraph_count_note": "177 is the literal blank-line-delimited chunk count in the canonical stored text. Artificial reflow introduces blank lines within sentences; this count is not a count of semantic paragraphs and is not used as an audition cut rule.",
+  "representative_passage_cut_method": "Manually selected source-exact contiguous complete-sentence spans; preserve all intervening original whitespace. No paraphrase or omitted interior text. These are human/import review units, not authorization for synthesis."
+}

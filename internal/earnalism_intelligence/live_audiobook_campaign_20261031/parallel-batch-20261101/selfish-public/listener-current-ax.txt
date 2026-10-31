@@ -1,0 +1,3 @@
+Browser tab: 1838738798, Title: "The Selfish Giant — The Earnalism Digital Library", URL: "https://theearnalism.com/listener/the-selfish-giant".
+There has been no change in the accessibility tree.
+The focused UI element is 0 AXWebArea The Selfish Giant — The Earnalism Digital Library, URL: theearnalism.com/listener/the-selfish-giant

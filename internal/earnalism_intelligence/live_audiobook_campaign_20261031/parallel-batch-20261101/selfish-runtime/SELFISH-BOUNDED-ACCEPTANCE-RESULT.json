@@ -1,0 +1,67 @@
+{
+  "corrected_at": "2026-10-31T19:12:36.526092+00:00",
+  "status": "SCOPED_ACCEPTANCE_INCOMPLETE_RESTORED_NEAR_END_POSITION_NORMAL_COMPLETION",
+  "supersedes": "Initial inference of live media/transport failure is RETRACTED. Preserve raw network/DOM observations; no media HTTP failure established.",
+  "session_binding": "26962ee43001a86afd6f2a6810b054aa3f152ebbdad479a7701ca738a69f7453",
+  "authorize_attempts": 1,
+  "retry_allowed": false,
+  "grant_status": "CONSUMED_EVEN_WITH_ZERO_WHOLE_SECOND_CREDIT_DELTA",
+  "source_preflight": "PASS_SELFISH_EXECUTION_SOURCE_PREFLIGHT",
+  "observations": {
+    "normal_start_http": 200,
+    "protected_manifest_http": 200,
+    "initial_native_media_segment": "group-06",
+    "native_group06_range_http": [
+      206,
+      206
+    ],
+    "captured_prePlay_visible_position_seconds": 777.0999755859375,
+    "captured_prePlay_clock": "12:57 / 12:57",
+    "package_duration_seconds": 777.12,
+    "normal_playing_renew_http": 200,
+    "normal_end_http": 200,
+    "normal_end_response_ended": true,
+    "normal_end_deducted_seconds": 0,
+    "queued_renew_after_end_http": 403,
+    "no_media_HTTP_error_observed": true,
+    "current_material_transport_defect": "NOT_ESTABLISHED"
+  },
+  "cause": "The actual player restored a nearly completed package-bound position before Play. Its existing loadedmetadata behavior clamps restored final offset to native duration minus50ms. Play from there can naturally finish almost immediately; zero integer debit is consistent with the negligible interval. Actual browser storage values were neither inspected nor edited.",
+  "budget": {
+    "ordinary_expired_cleanup_whole_second_credit_delta": 0,
+    "total_observed_owner_whole_second_credit_delta": 0,
+    "absolute_balance_or_identity_retained": false,
+    "fractional_microsecond_carry": "NOT_MEASURED_DO_NOT_CLAIM_FREE_PLAYBACK_OR_ZERO_ELAPSED_TIME",
+    "normal_start_response_to_end_response_seconds": 15.252204999997048,
+    "start_response_already_observed_by_authorize_relative_seconds": 13.113,
+    "derived_terminal_response_authorize_relative_upper_bound_seconds": 28.365204999997047,
+    "tab_closed_after_authorize_wall_seconds": 85.187,
+    "late_tab_closure_note": "Tab closure85.187s is later than the operation75swalllimit, but the OWN session had already terminally settled by28.366s conservative network bound, before70ssafetydeadline. No ongoing accepted lease/playback continued to tab closure. Do not presentclosure85asdeadlinecompliance.",
+    "maximum_total_owner_credit_delta_seconds": 120,
+    "actual_debit_bound_pass": true
+  },
+  "case_results": {
+    "current_normal_authentication_admission": "PASS_ONE_NORMAL_START200",
+    "package_manifest_and_native_range_admission": "PASS_PROTECTED_MANIFEST200_AND_GROUP06_206_SCOPE_ONLY",
+    "initial_book_beginning_and_wording": "NOT_PERFORMED_RESTORED_END_POSITION",
+    "pause_resume": "NOT_PERFORMED",
+    "cross_segment_seek": "NOT_PERFORMED",
+    "natural_intermediate_transition": "NOT_PERFORMED",
+    "end_settlement": "PASS_OWN_NORMAL_COMPLETION_ENDED_TRUE_ZERO_INTEGER_DELTA_SCOPE_ONLY",
+    "current_full_audiobook_protected_playback_accounting_acceptance": "UNVERIFIED"
+  },
+  "existing_restart_affordance": {
+    "control": "Chapter button01 The Selfish Giant",
+    "source": "ListenerExperienceV2.jsx existing chapter.track cumulativeStartMs=0 seek",
+    "behavior": "Whilepaused clicksetsvisible0:00 andqueuesfirstsegmentoffset0. Native source/currentTime remain priorposition until nextPlay successfullyrenews; then sourcebecomesgroup01 offset0 andplay starts.",
+    "no_arbitrary_progress_reset_threshold": true,
+    "true_partial_bookmarks_preserved": true,
+    "validated_offline_tests": 3,
+    "offline_log_sha256": "d0c4724600da18b92cf3f033789b1ddca6975f25c834c3fdacff87ee8257b966"
+  },
+  "application_patch_required": false,
+  "deployment_required": false,
+  "other_session_or_customer_change": false,
+  "normal_owner_session_end_confirmed": true,
+  "current_next_blocker": "One additional explicitly authorized normal check is needed to observe the remaining cases from an explicit chapter-start position; previous grant is consumed. No new rights/voice/narration/purchase/deployment needed."
+}

@@ -1,0 +1,52 @@
+{
+  "recorded_at": "2026-10-31T18:56:51.760177+00:00",
+  "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "status": "NORMAL_START_NONTRANSFER_GUARD_PROVED_EXPIRED_SESSION_SETTLEMENT_EXCEPTION_RECORDED",
+  "source_sha256": {
+    "ListenerExperienceV2Route.jsx": "2ecc9d675abcc9a19dc8160591f450a0039aaa4b360777ac08a5980237e22ec8",
+    "readingPassApi.js": "644f16df6c2f60e5faac4d48a3376612c4343243d33801c357ee702cd7178f90",
+    "reading_pass_service.py.deployed": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195",
+    "server.py.deployed": "3c976134cd10d192f0f133a4be7630e105317ac298e4028eef539f440e2d7282"
+  },
+  "call_chain": [
+    {
+      "file": "ListenerExperienceV2Route.jsx",
+      "line": 241,
+      "behavior": "authorize calls startReadingPassAudioSession({bookSlug:slug,positionSeconds:0}); no transfer argument."
+    },
+    {
+      "file": "readingPassApi.js",
+      "line": 102,
+      "behavior": "transfer defaultsfalse; normal callposts/sessions/start, not/sessions/transfer."
+    },
+    {
+      "file": "server.py",
+      "line": 12353,
+      "behavior": "normalstart route calls_reading_pass_start(transfer=False), passed unchanged toservice."
+    },
+    {
+      "file": "reading_pass_service.py",
+      "line": 617,
+      "behavior": "start_session transfer defaultsFalse; conflict selection and handling occur insideoperation(mongo_session) transaction."
+    }
+  ],
+  "live_or_paused_nonexpired_existing_session": {
+    "result": "409 SESSION_ACTIVE_ELSEWHERE whennottransfer",
+    "branch_line": 706,
+    "other_session_settled_or_transferred_by_this_branch": false,
+    "new_session_created_on_denial": false,
+    "raw_error_active_session_metadata": "Do not output unrelated session identity/content; record only conflictcode andstop."
+  },
+  "expired_session_exception": {
+    "branch_line": 690,
+    "condition": "active statusactive/paused ANDnow>lease_expires_at+config.reconnect_grace_seconds",
+    "behavior": "Before nontransfer409guard, settle existing as expired via_settle_terminal_session(reasonlease_timeout_before_new_session),audit,active=None; maycharge prior billable time andthencreate new session.",
+    "never_claim": "Normalstart never touches/settles any existing statusactive record",
+    "scope_concern": "This potential prior-session debit is separate from this new31s/120s acceptance. No existence of such a record has been observed; do not assertconflict. Root must explicitly assess whether normal expired cleanup is routine within owner current scope or use supported readonlysessionstatus to ruleitout. Child willnotclick untilrootGO."
+  },
+  "automatic_transfer": false,
+  "takeover_ui_used": false,
+  "authorize_clicked": false,
+  "new_session_created": false,
+  "unnecessary_wallet_blocker_removed": "Dedicated wallet UI is not needed merely to prevent taking over a LIVE nonexpired session: atomic normalstart409 already protectsit. Keep expired-settlement caveat distinct, not a fabricated observed conflict."
+}

@@ -3,7 +3,7 @@
   "title": "The Selfish Giant",
   "book_id": "controlled-the-selfish-giant",
   "url": "https://theearnalism.com/book/the-selfish-giant",
-  "stage": "EXISTING_RELEASE_REUSE_VERIFICATION",
+  "stage": "BLOCKED_CURRENT_RUNTIME_ACCEPTANCE_INCOMPLETE",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -80,17 +80,28 @@
   "costs": {
     "new_provider_spend_usd": 0,
     "new_storage_spend_usd": 0,
-    "new_paid_playback_spend_usd": 0,
+    "new_paid_playback_spend_usd": null,
     "production_estimate_usd": null,
     "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
-    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET"
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "protected_acceptance": {
+      "whole_reading_pass_seconds_debited": 7,
+      "matched_own_ledger": true,
+      "unrelated_account_activity_excluded": true,
+      "monetary_value_usd": null,
+      "cash_purchase": false,
+      "fractional_usage_carry": "NOT_OBSERVED"
+    },
+    "paid_playback_cost_basis": "7whole existing ReadingPass credit seconds consumed, verified by matched own-session ledger; monetary conversion/fractional carry unreported, no cash purchase."
   },
   "blockers": [
     {
-      "code": "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED",
-      "evidence": "acceptance-source-comparison.json",
-      "detail": "Exact accepted-source tree comparison found changes in backend/server.py, backend/reading_pass_service.py and frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx. Unchanged package bytes alone cannot qualify this changed path. Historical real playback remains valid historical evidence.",
-      "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
+      "code": "ACTUAL_ACTIVE_SEEK_AND_NATURAL_INTERNAL_TRANSITION_UNVERIFIED",
+      "action": "Current protected media1x delivery observed, but the initial Play was still awaiting renewal when the controller advanced. Actual active-to-active seek and naturalGroup01→02 transition are not proven. Use the latency-aware qualified controller and correct actual source/native-playing readiness; no product patch or new narration justified by these observations."
+    },
+    {
+      "code": "LATEST_OWN_NORMAL_SESSION_TERMINAL_ACK_UNVERIFIED",
+      "action": "Own EndPOST sent and own tab closed, but End response was not captured. Matched own debit4 proves consumption only, not terminal status. Preserve the earlier same-runtime final-native End200 proof at1.5x in its limited scope; do not substitute it for the latest session terminal receipt."
     }
   ],
   "language": "en",
@@ -151,5 +162,28 @@
     "discovery": "PASS",
     "guest_access_controls": "PASS",
     "authenticated_playback": "NOT_PERFORMED"
+  },
+  "parallel_acceptance_matrix": "parallel-batch-20261101/existing/the-selfish-giant-gate-matrix.json",
+  "backend_source_binding": "parallel-batch-20261101/existing/backend-provenance-followup.json",
+  "reused_exact_source_regression": "parallel-batch-20261101/existing/targeted-test-evidence-reuse.json",
+  "fresh_rendered_public_verification": "parallel-batch-20261101/selfish-public/SELFISH-PUBLIC-AVAILABILITY-RESULT.json",
+  "bounded_acceptance_plan": "parallel-batch-20261101/selfish-public/SELFISH-PROTECTED-ACCEPTANCE-PLAN.json",
+  "owner_acceptance_authority": {
+    "source": "Explicit owner reply: Signed in—use this account for the bounded check",
+    "planned_active_seconds": 31,
+    "maximum_existing_credit_seconds": 120,
+    "purchase": false,
+    "shared_release_must_finish_first": true,
+    "status": "EXECUTED_BOUNDED_FOLLOWUP_COMPLETE_LIVE_GATES_UNVERIFIED",
+    "owner_attempt_count_limit": "NOT_SPECIFIED_NATIVE_OWNER_CAP_IS_CUMULATIVE_CREDIT",
+    "internal_attempt_limit": 4,
+    "actual_own_whole_seconds_debited": 7
+  },
+  "dedicated_runtime_followup": {
+    "summary": "parallel-batch-20261101/selfish-runtime/FINAL-STATUS.json",
+    "matrix": "parallel-batch-20261101/selfish-runtime/SELFISH-CONDENSED-FINAL-TITLE-MATRIX.json",
+    "new_publication": false,
+    "public_available": true,
+    "verified_live": false
   }
 }

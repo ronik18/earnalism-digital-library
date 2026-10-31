@@ -1,0 +1,35 @@
+{
+  "base": "0ee58645e",
+  "reviewed_head": "1575949",
+  "scope": "Read-only new internal evidence only; no ASR/test/browser/customer financial calls",
+  "conclusion": "TWO_TRUTHFUL_ACCOUNTING_CORRECTIONS_REQUIRED",
+  "material_findings": [
+    {
+      "severity": "P2",
+      "path": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/campaign-state.json",
+      "line": 285,
+      "finding": "Current limitations still say no paid playback performed despite bounded normal protected playback and7matched own credit seconds. Historical statement requires scoping or updating.",
+      "requested_change": "State no new full subjective listening; acknowledge bounded current-runtime paid-credit playback with7whole seconds and unknown USD/fractional carry."
+    },
+    {
+      "severity": "P2",
+      "path": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-selfish-giant.json",
+      "line": 83,
+      "finding": "Title costs.new_paid_playback_spend_usd remains0 while latest campaign and nested actual monetary value are correctly unknown/null. A numeric0 can misstate credit-consumption value.",
+      "requested_change": "Set to null/unreported with existing-credit debit basis; preserve7matched own seconds and historical costs."
+    }
+  ],
+  "checked_good": [
+    "FINAL-STATUS and condensed matrix retain BLOCKED and no actual patch/deployment inference.",
+    "Missing latest terminal receipt, active-to-active seek and natural internal transition are explicit.",
+    "10offline cases explicitly mock/controller predicate scope, never live acceptance.",
+    "Own attempt3+4debits sum3+4=7; no account-wide delta presented as own campaign cost.",
+    "No application, Reader, voice, cover or source mutation; dedicated healthy package preserved.",
+    "New changed text has no credential/token/private-key/JWT/Bearer/email literal pattern hits; identifier/unrelated-content key scan found no unexpected source values.",
+    "Samecanonical off-iCloud Git metadata recovery records preserve935snapshot/tree/index and original metadata."
+  ],
+  "limits": [
+    "Did not rerun QA/tests or touch signed-in browser/customer sessions.",
+    "Focused static evidence consistency review, not independent live acceptance."
+  ]
+}
