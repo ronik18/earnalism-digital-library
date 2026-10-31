@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-10-31T16:46:28.754167+00:00",
+  "scope": "Automated blind auditory review of exactly 17.98 seconds; not human/full-title acceptance",
+  "result": "CORROBORATED_WORDING_OMISSION_NEAR_ORIGINAL_CHUNK_BOUNDARY",
+  "exact_source_sentence": "Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars.",
+  "phrase_absent_from_review_transcript": "one of which was",
+  "review_reported_unclear_spans": [],
+  "review_reported_transcript_confidence": "High",
+  "human_owner_response": "I cannot tell; remains recorded separately as inconclusive",
+  "naturalness_observation": "The delivery has a clear, natural cadence. The phrasing is smooth, with no noticeable robotic or mechanical texture. The intelligibility is high, and the expression is neutral, with no significant emotional inflection. There are no noticeable artifacts in the audio.",
+  "whole_book_expression_and_nonrobotic_gate": "UNVERIFIED_NOT_PASSED_BY_THIS_CLIP",
+  "source_boundary_seconds": 155.4,
+  "boundary_evidence": "Original chunk tail/head and master waveform correlations exceed 0.99998 with zero lag; supports that master retained the original speech at this join, not an assembly omission. Does not itself prove lexical content.",
+  "repair_required_before_release": true,
+  "repair_performed": false,
+  "provider_requests_consumed": 1,
+  "remaining_requests": 0,
+  "usage_derived_estimated_usd": 0.0022928000000000002,
+  "provider_invoice_charge": "NOT_REPORTED",
+  "new_synthesis": false,
+  "new_allocation": false,
+  "release_ready": false
+}

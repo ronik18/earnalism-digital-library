@@ -279,7 +279,7 @@
   "existing_publicly_available_but_current_acceptance_blocked": 2,
   "reader_only_audio_hidden": 50,
   "new_paid_playback_spend_usd": 0,
-  "required_next_integration_action": "Integrate this recovery and owner-response checkpoint after exact-head checks. Continue only permitted review/recovery: explicit excerpt-transfer approval is pending for one <=$0.03 text-only OpenAI review; no allocation or synthesis. Keep material wording and full release gates held.",
+  "required_next_integration_action": "Integrate the exact approved-review result and complete-sentence repair packet after required checks. No new synthesis/allocation: retain BLOCKED until a qualified compatible replacement recording and all remaining content/expression/storage/runtime gates are available.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
     "No new full subjective listening or paid playback performed.",
@@ -294,11 +294,11 @@
     "new_publications": 0,
     "existing_public_audio_preserved": true
   },
-  "cumulative_provider_cost_status": "Prior Student existing-credit allocation charge/units not reported; no new provider calls or purchases in recovery followup. Do not interpret unknown as zero.",
+  "cumulative_provider_cost_status": "Current single approved audio review usage-derived estimate $0.0022928; provider invoice unreported. Earlier Student Colab credit charge/units remain unreported, so total campaign expense is unknown. Historical ledgers preserved.",
   "latest_recovery_followup": {
     "observed_at": "2026-10-31T10:54:17.955882+00:00",
     "student": "EXISTING_ZIP_NOT_RECOVERED_NO_REALLOCATION",
-    "sredni": "EXACT_LEGACY_AUDIO_RECOVERED_NUMERIC_ASR_PASS_SUSPECTED_OMISSION_HELD",
+    "sredni": "APPROVED_AUDIO_REVIEW_CORROBORATES_WORDING_DEFECT_REPAIR_PACKET_PREPARED",
     "source": "recovery-followup/",
     "new_colab_allocations": 0,
     "new_tts_calls": 0,
@@ -317,5 +317,30 @@
     "answer": "I cannot tell",
     "status": "INCONCLUSIVE_UNRESOLVED",
     "record": "owner-response-followup/owner-wording-response.json"
+  },
+  "latest_authorized_audio_review": {
+    "status": "CONSUMED_ONE_TEXT_ONLY_REVIEW_CORROBORATED_WORDING_DEFECT",
+    "slug": "sredni-vashtar",
+    "requests": 1,
+    "usage_derived_estimated_usd": 0.0022928000000000002,
+    "invoice_charge": "NOT_REPORTED",
+    "cost_envelope_usd": 0.03,
+    "remaining_requests": 0,
+    "new_synthesis": false,
+    "new_allocation": false,
+    "record": "owner-response-followup/review-interpretation.json"
+  },
+  "known_new_provider_usage_estimate_usd": 0.0022928000000000002,
+  "current_execution_constraints": {
+    "new_allocation": false,
+    "new_synthesis": false,
+    "review_grant_consumed": true,
+    "scope": "Current owner continuation; no reuse of leftover dollar envelope for another request."
+  },
+  "student_no_synthesis_import_research": {
+    "status": "METADATA_ONLY_RIGHTS_AND_EXACT_AUDIO_UNQUALIFIED",
+    "record": "the-student-production/licensed-import-candidates.json",
+    "audio_downloaded": false,
+    "extra_audio_review_requests": 0
   }
 }

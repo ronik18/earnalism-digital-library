@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-31T16:55:49.571136+00:00",
+  "slug": "the-student",
+  "stage": "METADATA_ONLY_HUMAN_NARRATION_IMPORT_RESEARCH",
+  "status": "UNQUALIFIED_NOT_DOWNLOADED_OR_SELECTED",
+  "underlying_literary_basis": "Previously independently qualified Chekhov/Garnett selected story for IN; not reapproved or expanded here.",
+  "canonical_text_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "candidates": [
+    {
+      "catalog_url": "https://librivox.org/short-story-collection-010/",
+      "section": 7,
+      "reader": "Arctura",
+      "catalog_duration": "00:09:56",
+      "catalog_date": "2007-02-13",
+      "linked_text_source": "https://classicreader.com/read.php/sid.6/bookid.393/",
+      "edition_identity": "NOT_VERIFIED_SOURCE_PAGE_UNAVAILABLE"
+    },
+    {
+      "catalog_url": "https://librivox.org/librivox-short-story-collection-vol-023/",
+      "section": 9,
+      "reader": "kricha12",
+      "catalog_duration": "00:12:11",
+      "catalog_date": "2008-02-22",
+      "linked_text_source": "https://www.gutenberg.org/etext/1944",
+      "edition_identity": "CATALOG_LINKS_SAME_PG1944_WORK; spoken exact-edition/body match not checked"
+    }
+  ],
+  "primary_rights_sources": [
+    "https://librivox.org/pages/public-domain/",
+    "https://wiki.librivox.org/index.php?title=Copyright_and_Public_Domain"
+  ],
+  "rights_observation": "Project states volunteers donate recordings to the public domain and permits commercial reuse, while catalog and public-domain page explicitly qualify the PD assurance to USA and require outside-USA verification. Do not treat public availability or the catalog label as a completed IN recording/performance-rights decision.",
+  "recording_performance_rights_for_IN": "UNVERIFIED; record-specific applicable dedication/license and territorial basis must be qualified before download/use",
+  "quality": "NOT_AUDITIONED; human narration is not automatically expressive, accurate or release-qualified",
+  "audio_downloaded": false,
+  "audio_uploaded": false,
+  "new_review_requests": 0,
+  "new_synthesis": false,
+  "new_allocation": false,
+  "cost_incurred_usd": 0,
+  "source_or_publication_changed": false,
+  "next_action": "Qualify applicable recording/performance commercial rights for IN and exact source/translation first, then validate full original audio and representative natural expressive delivery under authorized review scope. Do not contact readers or reuse the consumed OpenAI excerpt grant."
+}

@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_NOT_EXECUTABLE_UNDER_CURRENT_NO_SYNTHESIS_INSTRUCTION",
+  "slug": "sredni-vashtar",
+  "parent_master_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "source_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "generation_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "replacement_text_exact": "Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars.",
+  "strategy": "Replace the smallest complete source sentence in a compatible qualified original narrator; do not splice isolated words or combine a new Ryan/Girija sentence with Verse. Preserve healthy recording.",
+  "original_narrator": {
+    "provider": "OpenAI",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "current_matching_repair_capability": "NOT_QUALIFIED_NO_PROVIDER_CALL_PERFORMED"
+  },
+  "review_region_seconds": [
+    147.02,
+    165.0
+  ],
+  "region_is_approved_edit_boundary": false,
+  "affected_original_join_seconds": 155.4,
+  "future_boundary_requirement": "Use measured sentence start/end and actual speech/pause evidence; review both adjacent transitions. The 18-second excerpt contains following speech and must not be blindly replaced in full.",
+  "current_chunker_preflight": "Actual current tts_hook.chunk_text preserves full ordered text and places the complete target sentence in a single unit. No new chunker change or inference needed.",
+  "future_checks": [
+    "Exact complete corrected sentence and surrounding text, with no missing/repeated/substituted/invented words",
+    "Same qualified voice identity, pronunciation, natural rhythm, emotional attitude and acoustic consistency",
+    "Both adjacent sentence/segment transitions and every other original chunk join",
+    "All unresolved full-book content and pronunciation discrepancies",
+    "Full-title naturalness/expression/material quality rubric; do not infer from neutral short sample",
+    "Measured timing/navigation, immutable package and primary/DR receipts",
+    "Current rights/package adoption, source recheck and protected customer playback/accounting"
+  ],
+  "prohibited_current_operations": [
+    "new synthesis",
+    "new allocation",
+    "additional paid audio-review request under consumed grant",
+    "publication",
+    "destructive overwrite of original master"
+  ],
+  "no_cost_or_execution_authority_created": true
+}

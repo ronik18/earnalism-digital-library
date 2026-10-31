@@ -1,0 +1,90 @@
+{
+  "old_head": "04f0b6bd93488d3a1de42c760e776a19430382ba",
+  "new_head": "fb6884fbb41435b620775dfc80dac30f5a6eb448",
+  "direct_parent_verified": true,
+  "old_index_preserved": true,
+  "method": "Exact verified missing blobs, two-tree fast-forward of clean index/worktree, compare-and-swap branch ref; no reset/stash/force or merge of unrelated branch",
+  "fetched_blobs": [
+    {
+      "path": ".github/workflows/seamless-brand-owner-review.yml",
+      "git_blob": "c639e7d426f89d17f2d6e4aa334134d9e9aaa109",
+      "bytes": 47538
+    },
+    {
+      "path": "backend/server.py",
+      "git_blob": "fbc3e0d9511472fa492482717cc6aee04ac33e14",
+      "bytes": 621157
+    },
+    {
+      "path": "backend/tests/test_reader_segment_promotion_safeguards.py",
+      "git_blob": "4aa9ff570a5c674ad969d1c371ae5dd32d68c9b7",
+      "bytes": 25688
+    },
+    {
+      "path": "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx",
+      "git_blob": "45c6451f71c4c603ac15fd8515550aeea9913d9c",
+      "bytes": 54663
+    },
+    {
+      "path": "frontend/src/experiences-v2/reader/authorizedChapter.js",
+      "git_blob": "6d4feaf82c18267e0e59ecf174e857aa26755d00",
+      "bytes": 8548
+    },
+    {
+      "path": "frontend/src/experiences-v2/reader/authorizedChapter.test.js",
+      "git_blob": "56b867360d1c0b63737dfdb15fc5d4191a731852",
+      "bytes": 10439
+    },
+    {
+      "path": "internal/earnalism_intelligence/decision_ledger.jsonl",
+      "git_blob": "cdaff3d63015fc3dcd004f1ab7860173aa1208f7",
+      "bytes": 718146
+    },
+    {
+      "path": "internal/earnalism_intelligence/reader_completeness_20261031/HANDOFF.md",
+      "git_blob": "17744dc9e31e071bca2b48efb4a86b9cec7a0aef",
+      "bytes": 6388
+    },
+    {
+      "path": "internal/earnalism_intelligence/reader_completeness_20261031/INITIAL-HANDOFF.md",
+      "git_blob": "29d1b2278c2b029da6e0a8c7df23ff7e358a5d6a",
+      "bytes": 4694
+    },
+    {
+      "path": "internal/earnalism_intelligence/reader_completeness_20261031/PROVIDER-COUPLING-VERIFIED.json",
+      "git_blob": "90d6751e20c7ca0bc332744342733c074a99dd20",
+      "bytes": 1508
+    },
+    {
+      "path": "internal/earnalism_intelligence/sprint_learnings.md",
+      "git_blob": "88ab577e69ada70d8f5c50e10ac709f69ab79b3f",
+      "bytes": 327389
+    },
+    {
+      "path": "internal/earnalism_intelligence/title_decision_history.json",
+      "git_blob": "100dc572f8533c7cabd0c94d35198f0e801957e0",
+      "bytes": 791651
+    },
+    {
+      "path": "internal/legal/purchase_guard_source.json",
+      "git_blob": "d3599f5231f4e87e6f38e417284e3e4cda43bec1",
+      "bytes": 790
+    },
+    {
+      "path": "scripts/prepare_reader_completeness_repairs.py",
+      "git_blob": "188b7e831f420e0308b84b76a2ecb9d28358078e",
+      "bytes": 11087
+    },
+    {
+      "path": "scripts/run_pr_regression_gates.sh",
+      "git_blob": "4cd08a8d10fd25fe905590fecf05add710252ef5",
+      "bytes": 8899
+    },
+    {
+      "path": "scripts/test_prepare_reader_completeness_repairs.py",
+      "git_blob": "b17291460ab9c1cccdd91c1e665974b8388c3417",
+      "bytes": 5754
+    }
+  ],
+  "canonical_clean_aligned": true
+}

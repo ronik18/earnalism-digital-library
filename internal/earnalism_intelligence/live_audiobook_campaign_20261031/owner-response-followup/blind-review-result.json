@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-10-31T16:33:24.763601+00:00",
+  "status": "TEXT_ONLY_AUDIO_REVIEW_RETURNED",
+  "response_id": "chatcmpl-Ef6J9bJtObOXqee2B3ScDRPXrm1dU",
+  "model": "gpt-audio-mini-2025-12-15",
+  "content": "{\n  \"transcript\": \"Further back in the gloom stood a large hutch, divided into two compartments, fronted with close iron bars. This was the abode of a large polecat ferret, which a friendly butcher boy had once smuggled, cage and all.\",\n  \"unclear_spans\": [],\n  \"audible_delivery_observations\": \"The delivery has a clear, natural cadence. The phrasing is smooth, with no noticeable robotic or mechanical texture. The intelligibility is high, and the expression is neutral, with no significant emotional inflection. There are no noticeable artifacts in the audio.\",\n  \"confidence_in_exact_transcript\": \"High\",\n  \"limitations\": \"The clip is short and does not provide context beyond the immediate passage. There is no background noise or distortion noted.\"\n}",
+  "usage": {
+    "prompt_tokens": 353,
+    "completion_tokens": 166,
+    "total_tokens": 519,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 179,
+      "text_tokens": 174,
+      "image_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0,
+      "text_tokens": 166
+    }
+  },
+  "usage_derived_estimated_usd": 0.0022928000000000002,
+  "usage_upper_bound_estimated_usd": 0.0039284,
+  "provider_invoice_charge": "NOT_REPORTED",
+  "no_audio_generated": true,
+  "new_allocation": false,
+  "full_title_release_ready": false,
+  "scope": "Automated assessment of existing 17.98-second clip, not human listening or whole-title qualification"
+}
