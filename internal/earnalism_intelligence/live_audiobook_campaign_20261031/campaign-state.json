@@ -279,7 +279,7 @@
   "existing_publicly_available_but_current_acceptance_blocked": 2,
   "reader_only_audio_hidden": 50,
   "new_paid_playback_spend_usd": 0,
-  "required_next_integration_action": "Approve this exact 24.34-second private excerpt transfer and one bounded text-only review within $0.03; no retry, synthesis or allocation.",
+  "required_next_integration_action": "Qualified listening adjudication of the exact 24.34-second private candidate and both joins; preserve original and candidate. Resolve material expression/transition concerns before further package work. No synthesis or review requests remain.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
     "No new full subjective listening or paid playback performed.",
@@ -294,7 +294,7 @@
     "new_publications": 0,
     "existing_public_audio_preserved": true
   },
-  "cumulative_provider_cost_status": "Current single approved audio review usage-derived estimate $0.0022928; provider invoice unreported. Earlier Student Colab credit charge/units remain unreported, so total campaign expense is unknown. Historical ledgers preserved.",
+  "cumulative_provider_cost_status": "Prior Student Colab and provider invoice charges unreported. Known two audio-review usage estimates sum $0.0057818; synthesis9.6s estimated$0.0024 separately; do not present campaign total as actual invoiced spend.",
   "latest_recovery_followup": {
     "observed_at": "2026-10-31T10:54:17.955882+00:00",
     "student": "EXISTING_ZIP_NOT_RECOVERED_NO_REALLOCATION",
@@ -330,13 +330,13 @@
     "new_allocation": false,
     "record": "owner-response-followup/review-interpretation.json"
   },
-  "known_new_provider_usage_estimate_usd": 0.0022928000000000002,
+  "known_new_provider_usage_estimate_usd": 0.0057818,
   "current_execution_constraints": {
     "new_allocation": false,
     "new_synthesis": false,
     "single_sentence_synthesis_grant": "CONSUMED_ONE_REQUEST",
     "previous_excerpt_review_grant": "CONSUMED",
-    "new_join_review_transfer": "BLOCKED_AUTO_REVIEW_PENDING_EXPLICIT_PAYLOAD_APPROVAL"
+    "new_join_review_transfer": "EXPLICITLY_APPROVED_EXECUTED_ONCE_CONSUMED"
   },
   "student_no_synthesis_import_research": {
     "status": "METADATA_ONLY_RIGHTS_AND_EXACT_AUDIO_UNQUALIFIED",
@@ -347,7 +347,7 @@
   "latest_sentence_repair": {
     "recorded_at": "2026-10-31T18:15:21.246917+00:00",
     "slug": "sredni-vashtar",
-    "stage": "REPAIR_PRODUCED_LOCAL_WORDING_PASS_AUDITORY_QA_BLOCKED",
+    "stage": "REPAIR_WORDING_PASS_AUDITORY_QUALITY_HOLD",
     "status": "BLOCKED",
     "provider_requests": 1,
     "new_allocations": 0,
@@ -364,10 +364,10 @@
     "duration_delta_seconds": 1.265,
     "sample_clipping": "NONE_IN_24.34_SECOND_JOIN_CLIP",
     "join_clip_sample_peak_dbfs": -4.340406,
-    "naturalness": "UNVERIFIED",
-    "expression": "UNVERIFIED",
-    "voice_identity_continuity": "UNVERIFIED",
-    "both_joins_listening": "UNVERIFIED",
+    "naturalness": "CONCERNS_SLIGHT_MONOTONE",
+    "expression": "CONCERNS_LIMITED_PITCH_VARIATION",
+    "voice_identity_continuity": "AUTOMATED_REVIEW_BROADLY_CONSISTENT_NOT_FULL_QUALIFICATION",
+    "both_joins_listening": "AUTOMATED_CONCERNS_REQUIRE_QUALIFIED_LISTENING",
     "full_title": "BLOCKED",
     "new_publications": 0,
     "synthesis_cost_estimate_usd": 0.0024,
@@ -375,13 +375,45 @@
     "actual_provider_charge": "NOT_REPORTED",
     "cumulative_campaign_cost": "UNKNOWN_PRIOR_COLAB_COST_UNREPORTED",
     "private_assets_directory": "/tmp/earnalism-sredni-sentence-repair-20261031",
-    "next_action": "Approve this exact 24.34-second private excerpt transfer and one bounded text-only review within $0.03; no retry, synthesis or allocation.",
+    "next_action": "Qualified listening adjudication of the exact 24.34-second private candidate and both joins; preserve original and candidate. Resolve material expression/transition concerns before further package work. No synthesis or review requests remain.",
     "remaining_gates": [
       "Auditory QA exact replacement and both joins",
       "Resolve remaining full-title pronunciation/content discrepancies",
       "Measured corrected alignment/navigation",
       "Exact recording/provider rights and package adoption",
       "Immutable primary/DR storage and protected customer player/accounting acceptance"
-    ]
+    ],
+    "auditory_review": {
+      "recorded_at": "2026-10-31T18:17:25.979773+00:00",
+      "status": "EXECUTED_ONCE_CONTENT_CORROBORATED_QUALITY_CONCERNS_BLOCK_RELEASE",
+      "record": "sentence-repair/joins-review-result.json",
+      "requests": 1,
+      "remaining_requests": 0,
+      "usage_derived_estimated_usd": 0.003489,
+      "invoice_charge": "NOT_REPORTED",
+      "naturalness": "CONCERNS_SLIGHT_MONOTONE",
+      "expression": "CONCERNS_LIMITED_PITCH_VARIATION",
+      "voice_identity": "AUTOMATED_REVIEW_BROADLY_CONSISTENT_NOT_FULL_QUALIFICATION",
+      "both_joins": "AUTOMATED_CONCERNS_REQUIRE_QUALIFIED_LISTENING",
+      "objective_adjudication": "sentence-repair/critical-review-adjudication.json",
+      "new_allocation": false,
+      "additional_synthesis": false
+    }
+  },
+  "latest_join_audio_review": {
+    "recorded_at": "2026-10-31T18:17:25.979773+00:00",
+    "status": "EXECUTED_ONCE_CONTENT_CORROBORATED_QUALITY_CONCERNS_BLOCK_RELEASE",
+    "record": "sentence-repair/joins-review-result.json",
+    "requests": 1,
+    "remaining_requests": 0,
+    "usage_derived_estimated_usd": 0.003489,
+    "invoice_charge": "NOT_REPORTED",
+    "naturalness": "CONCERNS_SLIGHT_MONOTONE",
+    "expression": "CONCERNS_LIMITED_PITCH_VARIATION",
+    "voice_identity": "AUTOMATED_REVIEW_BROADLY_CONSISTENT_NOT_FULL_QUALIFICATION",
+    "both_joins": "AUTOMATED_CONCERNS_REQUIRE_QUALIFIED_LISTENING",
+    "objective_adjudication": "sentence-repair/critical-review-adjudication.json",
+    "new_allocation": false,
+    "additional_synthesis": false
   }
 }

@@ -1,0 +1,31 @@
+{
+  "measurements": [
+    {
+      "location": "incoming_cut",
+      "clip_seconds": 5.59,
+      "adjacent_sample_jump": 0.0,
+      "within_20ms_peak_dbfs": -90.30899869919436
+    },
+    {
+      "location": "replacement_start_after_padding",
+      "clip_seconds": 5.74,
+      "adjacent_sample_jump": 7.0,
+      "within_20ms_peak_dbfs": -53.78750264517783
+    },
+    {
+      "location": "outgoing_cut",
+      "clip_seconds": 15.34,
+      "adjacent_sample_jump": 14.0,
+      "within_20ms_peak_dbfs": -66.78717351808073
+    },
+    {
+      "location": "review_reported_click",
+      "clip_seconds": 6.02,
+      "adjacent_sample_jump": 917.0,
+      "within_20ms_peak_dbfs": -13.493080722252484
+    }
+  ],
+  "interpretation": "No inference of audible quality from low boundary amplitude. Whole prefix/suffix PCM equality disproves removal of the preceding word by this splice. Automated claims of clipped preceding speech and a 1.5-second pause are not independently established. Reported 6.02-second click falls inside replacement speech, not an edit boundary; do not erase a phoneme on that basis. Abrupt/timbre/expression findings remain unresolved auditory concerns; keep private and BLOCKED.",
+  "non_generating_repairs_performed_after_review": false,
+  "reason": "No verified deterministic repair addresses reported emotional flatness or uncertain auditory effects. Both one-request grants are consumed; preserve candidate for qualified listening rather than speculative edits."
+}

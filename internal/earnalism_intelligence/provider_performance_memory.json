@@ -136,8 +136,13 @@
         "model": "bulbul:v3",
         "voice": "ratan",
         "style": "literary_warm_pacing",
-        "contaminated_groups_requiring_regeneration": [0],
-        "groups_reusable": [1, 2],
+        "contaminated_groups_requiring_regeneration": [
+          0
+        ],
+        "groups_reusable": [
+          1,
+          2
+        ],
         "tts_input_clean": true,
         "tts_by_construction_verified_for_planned_sequence": true,
         "tts_input_coverage_percent": 100.0,
@@ -209,7 +214,10 @@
         "raw_asr_coverage": 0.1096,
         "raw_asr_token_order_similarity": 0.1033,
         "distinct_calibration_arm": "openai/gpt-4o-mini-transcribe/bn",
-        "distinct_calibration_scores": [7.9085, 9.0441],
+        "distinct_calibration_scores": [
+          7.9085,
+          9.0441
+        ],
         "distinct_calibration_ending_status": "ERROR_OPENAI_INSUFFICIENT_QUOTA",
         "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
         "local_whisper_medium_diagnostic": {
@@ -222,9 +230,21 @@
           "cost_usd": 0.0,
           "classification": "UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME"
         },
-        "saaras_transcribe_representative_normalized_scores": [9.776, 9.818, 9.737],
-        "saaras_transcribe_representative_phonetic_scores": [9.936, 9.898, 9.883],
-        "saaras_transcribe_representative_raw_scores": [8.6275, 8.8971, 8.7179],
+        "saaras_transcribe_representative_normalized_scores": [
+          9.776,
+          9.818,
+          9.737
+        ],
+        "saaras_transcribe_representative_phonetic_scores": [
+          9.936,
+          9.898,
+          9.883
+        ],
+        "saaras_transcribe_representative_raw_scores": [
+          8.6275,
+          8.8971,
+          8.7179
+        ],
         "saaras_full_asr_groups_attempted": 2,
         "saaras_full_asr_groups_passed_under_current_policy": 0,
         "saaras_historical_groups_recorded_passed": 1,
@@ -306,8 +326,18 @@
       "asr_model_revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
       "asr_model_weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
       "asr_qa_fingerprint": "86024b6a3a710156072c383e6a13e248401fa2d565b4311e2a17fbd3a3ac8695",
-      "representative_passage_scores": [0.8929, 1.9643, 0.7812, 0.9231],
-      "representative_passage_ordered_coverages": [0.0833, 0.1818, 0.0735, 0.0822],
+      "representative_passage_scores": [
+        0.8929,
+        1.9643,
+        0.7812,
+        0.9231
+      ],
+      "representative_passage_ordered_coverages": [
+        0.0833,
+        0.1818,
+        0.0735,
+        0.0822
+      ],
       "aggregate_raw_asr_source_score": 1.2617,
       "required_raw_asr_source_score": 9.7,
       "aggregate_ordered_coverage": 0.1011,
@@ -484,8 +514,18 @@
         "bf_emma_representative_attempt_fingerprint": "519fdef2999d9d8e9b7f01cd4b2cb571cff6e41a1457aab1925b45d0c30f9fe3",
         "bf_emma_representative_asr_repair_fingerprint": "804d06f2f84ce24a2af4a5e92039d8c28019a782dbe11df958fef91c16647193",
         "bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
-        "bf_emma_representative_asr_scores": [10.0, 9.6552, 10.0, 9.8776],
-        "bf_emma_representative_coverages": [1.0, 0.9655, 1.0, 0.9758],
+        "bf_emma_representative_asr_scores": [
+          10.0,
+          9.6552,
+          10.0,
+          9.8776
+        ],
+        "bf_emma_representative_coverages": [
+          1.0,
+          0.9655,
+          1.0,
+          0.9758
+        ],
         "bf_emma_ordered_content_integrity_pass": false,
         "bf_emma_passed_passages": 2,
         "bf_emma_failed_passages": {
@@ -500,10 +540,25 @@
         "source_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
         "attempt_fingerprint": "b693be6196019d6e44b22ac1cdcc7e1ea7099550f69eb326bb3cdacf4f27c6bf",
         "asr_config_fingerprint": "3610d60e9094c3f80f4c22d65b63db45f622f48b7ea927301acf01a221444075",
-        "representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
-        "representative_coverages": [1.0, 1.0, 1.0, 1.0],
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
         "ordered_content_integrity_pass": true,
-        "representative_listening_overall_scores": [8.7, 8.3, 9.5, 9.5],
+        "representative_listening_overall_scores": [
+          8.7,
+          8.3,
+          9.5,
+          9.5
+        ],
         "minimum_dimension_scores": {
           "naturalness": 8.5,
           "pronunciation": 9.0,
@@ -529,8 +584,18 @@
         "base_attempt_fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
         "execution_fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
         "asr_repair_fingerprint": "63c614ca791064d7bdcaaf8ad595c20198af55295a7d4b3a08d7fe4106ebac9e",
-        "representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
-        "representative_coverages": [1.0, 1.0, 1.0, 1.0],
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
         "ordered_content_integrity_pass": true,
         "listening_sample_fingerprint": "95278a7a57ff73b09e8f40dd9dc16a59c2c6d78f9f6dfd5e35064af7afb079fb",
         "listening_transport_valid_samples": 1,
@@ -554,8 +619,18 @@
         "attempt_fingerprint": "62d2a46ada6314da36e300f334a4cca0526c7ad102a2a4e86f3d7acb0c08d23d",
         "initial_asr_config_fingerprint": "9948402f62db1e9996ec1cdae16776c6bfd5dc382d600efa42d742c1bacb659a",
         "asr_repair_fingerprint": "127ebeb2c482a3c7d316e80570b2a6fe39f95d2c1783e185908795c8b7b169c6",
-        "representative_asr_scores": [9.9631, 10.0, 10.0, 9.8605],
-        "representative_coverages": [0.9926, 1.0, 1.0, 0.9815],
+        "representative_asr_scores": [
+          9.9631,
+          10.0,
+          10.0,
+          9.8605
+        ],
+        "representative_coverages": [
+          0.9926,
+          1.0,
+          1.0,
+          0.9815
+        ],
         "ordered_content_integrity_pass": false,
         "failed_passages": {
           "opening_social_cadence": "source token had missing under beam and greedy",
@@ -574,8 +649,18 @@
         "attempt_fingerprint": "f152ffdc135dea3c9ffd463138489739a80a163196059e7cc0130527d83a7ed1",
         "initial_asr_config_fingerprint": "4313b4d132c6b4886844e2431bd6180c426a7c4882317faa51f29f69290eee47",
         "asr_repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
-        "representative_asr_scores": [10.0, 9.8611, 8.6957, 10.0],
-        "representative_coverages": [1.0, 0.9861, 0.8642, 1.0],
+        "representative_asr_scores": [
+          10.0,
+          9.8611,
+          8.6957,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          0.9861,
+          0.8642,
+          1.0
+        ],
         "ordered_content_integrity_pass": false,
         "passed_passages": [
           "opening_literary_setting",
@@ -596,8 +681,18 @@
         "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
         "attempt_fingerprint": "dabff0b69632542f712b259fe039c9fa74092506141c71adb1d76b5afc21f33a",
         "asr_repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
-        "representative_asr_scores": [9.7959, 10.0, 9.902, 9.8824],
-        "representative_coverages": [0.9796, 1.0, 0.9902, 0.9882],
+        "representative_asr_scores": [
+          9.7959,
+          10.0,
+          9.902,
+          9.8824
+        ],
+        "representative_coverages": [
+          0.9796,
+          1.0,
+          0.9902,
+          0.9882
+        ],
         "ordered_content_integrity_pass": false,
         "passed_passages": 1,
         "failed_passages": {
@@ -616,8 +711,18 @@
         "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
         "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
         "asr_repair_fingerprint": "6377ce48f1d97e9f8e5cfdd602dce256332c6a6ced7767877a20774578d72533",
-        "representative_asr_scores": [10.0, 10.0, 10.0, 9.8605],
-        "representative_coverages": [1.0, 1.0, 1.0, 1.0],
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          9.8605
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
         "ordered_content_integrity_pass": false,
         "passed_passages": 3,
         "failed_passages": {
@@ -639,8 +744,18 @@
         "speed": 0.97,
         "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
         "asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
-        "representative_asr_scores": [10.0, 9.9408, 10.0, 10.0],
-        "representative_coverages": [1.0, 0.9882, 1.0, 1.0],
+        "representative_asr_scores": [
+          10.0,
+          9.9408,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          0.9882,
+          1.0,
+          1.0
+        ],
         "ordered_content_integrity_pass": false,
         "passed_passages": 3,
         "failed_passages": {
@@ -797,7 +912,7 @@
       },
       "next_action": "Do not repeat or repair this Gift CosyVoice3 fingerprint and do not spend on listening QA. Aggregate ASR above 9.7 cannot override the wrong opening or ordered-content failure; use exact source-bound delivery."
     },
-    "openai": {
+  "openai": {
       "status": "usable_but_must_pass_asr_sync_and_listening",
       "the_call_of_the_wild": {
         "status": "CLOSED_AFTER_REPRESENTATIVE_ASR_SOURCE_FAILURE",
@@ -805,8 +920,18 @@
         "voice": "verse",
         "attempt_fingerprint": "14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d",
         "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
-        "asr_source_scores": [9.6032, 9.5, 9.7041, 9.5849],
-        "coverage_scores": [0.9528, 0.95, 0.9762, 0.9549],
+        "asr_source_scores": [
+          9.6032,
+          9.5,
+          9.7041,
+          9.5849
+        ],
+        "coverage_scores": [
+          0.9528,
+          0.95,
+          0.9762,
+          0.9549
+        ],
         "ordered_content_integrity_passed": false,
         "listening_qa_ran": false,
         "public_audio_status": "AUDIO_HIDDEN",
@@ -879,10 +1004,16 @@
     "no_new_synthesis": true,
     "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/",
     "retry_policy": "No replay of failed Google Studio-C/Chirp Achird or consumed Student Ryan allocation. Prefer exact retained Verse candidate qualification.",
-    "current_full_local_ASR_scores": [9.686468646864686, 9.697469746974697],
+    "current_full_local_ASR_scores": [
+      9.686468646864686,
+      9.697469746974697
+    ],
     "current_content_gate": "REPOSITORY_NUMERIC_ASR_PASS_SUSPECTED_OMISSION_REQUIRES_ADJUDICATION",
     "generation_source_binding": "CANONICAL_PLUS_ONE_LF_EXACT_HASH_MATCH",
-    "repository_asr_scores": [9.7854, 9.814],
+    "repository_asr_scores": [
+      9.7854,
+      9.814
+    ],
     "current_full_local_ASR_scores_metric": "Supplementary 10*(1-WER), distinct from repository score"
   },
   "sredni_owner_response_followup_20261031": {
@@ -915,15 +1046,24 @@
     "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/licensed-import-candidates.json"
   },
   "sentence_repair_followups": [
-    {
-      "timestamp": "2026-10-31T18:15:21.246917+00:00",
-      "slug": "sredni-vashtar",
-      "event": "ONE_AUTHORIZED_SENTENCE_REPAIR_GENERATED_LOCAL_FIDELITY_PASS_AUDITORY_TRANSFER_BLOCKED",
-      "evidence": "live_audiobook_campaign_20261031/sentence-repair/REPAIR-RESULT.json",
-      "new_allocations": 0,
-      "synthesis_requests": 1,
-      "published": false,
-      "learning": "OpenAI streaming WAV may declare unknown frame lengths. Reconcile saved bytes locally; do not retry synthesis. Both local ASRs recover exact sentence but do not establish naturalness or voice continuity."
-    }
-  ]
+  {
+    "timestamp": "2026-10-31T18:15:21.246917+00:00",
+    "slug": "sredni-vashtar",
+    "event": "ONE_AUTHORIZED_SENTENCE_REPAIR_GENERATED_LOCAL_FIDELITY_PASS_AUDITORY_TRANSFER_BLOCKED",
+    "evidence": "live_audiobook_campaign_20261031/sentence-repair/REPAIR-RESULT.json",
+    "new_allocations": 0,
+    "synthesis_requests": 1,
+    "published": false,
+    "learning": "OpenAI streaming WAV may declare unknown frame lengths. Reconcile saved bytes locally; do not retry synthesis. Both local ASRs recover exact sentence but do not establish naturalness or voice continuity."
+  },
+  {
+    "timestamp": "2026-10-31T18:17:25.979773+00:00",
+    "slug": "sredni-vashtar",
+    "event": "APPROVED_JOIN_REVIEW_EXECUTED_ONCE_QUALITY_HOLD",
+    "usage_derived_estimated_usd": 0.003489,
+    "invoice": "NOT_REPORTED",
+    "evidence": "live_audiobook_campaign_20261031/sentence-repair/joins-review-result.json",
+    "learning": "Correct words and broadly consistent voice do not establish seamless expressive narration; automated timestamp claims need acoustic/listening adjudication. No speculative phoneme edits or synthesis retries."
+  }
+]
 }

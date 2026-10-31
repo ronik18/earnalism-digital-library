@@ -1,0 +1,38 @@
+{
+  "id": "chatcmpl-Ef7uhetWctg2AZkh6VpAK87JpVMfg",
+  "object": "chat.completion",
+  "created": 1793470575,
+  "model": "gpt-audio-mini-2025-12-15",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"transcript\": \"On which the boy lavished an affection that had scarcely another outlet. Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars. This was the abode of a large polecat ferret, which a friendly butcher boy had once smuggled, cage and all, into its present quarters.\",\n  \"wording_uncertainties\": [],\n  \"naturalness\": \"The delivery is mostly natural, with a measured pace appropriate to quiet gothic storytelling. The tone is calm and deliberate, though slightly monotone in places.\",\n  \"expression\": \"The emotional expression is subdued, fitting the gothic atmosphere. There is a slight lack of variation in pitch that could enhance the mood further.\",\n  \"voice_continuity\": \"The vocal identity is consistent throughout. The timbre is steady, with no noticeable shifts in tone or character.\",\n  \"incoming_join\": \"Between 5.59 and 15.34 seconds, there is a replacement of a complete sentence. The pause length is noticeable, approximately 1.5 seconds, and the transition is abrupt. There is a slight clipping of the preceding word, and the room tone changes subtly, indicating a join.\",\n  \"outgoing_join\": \"The outgoing join is abrupt, with a slight echo effect as the voice resumes. The level continuity is mostly stable, but there is a minor drop in volume at the start of the new sentence.\",\n  \"material_defects\": \"There is a minor click at 6.02 seconds, and a faint hum in the background from 6.10 to 6.15 seconds. The join between the two sentences is not seamless, with a slight tonal mismatch.\",\n  \"limitations\": \"The analysis is limited to the provided excerpt. The assessment of emotional expression is subjective and based on the available data. No numerical scores are provided.\"\n}",
+        "refusal": null,
+        "annotations": []
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 452,
+    "completion_tokens": 389,
+    "total_tokens": 841,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 243,
+      "text_tokens": 209,
+      "image_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0,
+      "text_tokens": 389
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": "fp_4a60add362"
+}

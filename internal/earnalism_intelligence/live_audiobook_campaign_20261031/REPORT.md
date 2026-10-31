@@ -94,3 +94,5 @@ Approved-review continuation: the exact 18-second OpenAI transfer was explicitly
 Student existing-human-recording alternative: two catalog metadata candidates recorded; one links PG1944. No download, audition or selection occurred because exact edition/audio and recording/performance territorial use remain unqualified. The original audition is preserved and no narrator/publication setting changed.
 
 31 October sentence repair: one Verse synthesis, no allocation; two local exact-word checks PASS, healthy speech preserved. Draft remains private/BLOCKED: naturalness, expression and both joins require auditory QA. New24.34s private transfer rejected pending exact approval. Estimated synthesis$0.0024; invoice and campaign cumulative cost unknown. Inventory totals unchanged52BLOCKED/0verifiedLIVE, two existing packages still public.
+
+Follow-up: owner approved exact24.34s payload; one review completed ($0.003489 usage-derived estimate, invoice unknown). Corrected wording corroborated; limited pitch variation and joins flagged. Transfer approval blocker is resolved, replaced by actual auditory quality hold. No extra synthesis, retry, allocation or publication.
