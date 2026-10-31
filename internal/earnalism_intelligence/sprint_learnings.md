@@ -2880,3 +2880,11 @@ Reuse good covers; new title-specific original illustration and exact Canva typo
 - Current exact-edition audio-package rights bindings exist for only Open Window and Selfish Giant. Reader rights and cost-only authority do not establish other audio/model/voice licenses.
 - Existing package/version/duration and guest UI checks pass, but player/billing files changed against accepted source trees. Preserve existing releases; do not claim fresh authenticated playback or repeat generation.
 - No paid calls, customer session, publication setting, text, or cover changed. Per-title blockers and evidence are in live_audiobook_campaign_20261031/.
+
+## The Student shortest-title qualification - 2026-10-31
+
+- PR #601 integrated evidence commit29e4b337c after exact-head CI PASS; reviewed/merged tree matched. Canonical fast-forwarded cleanly to c23a74650; remote payment work preserved.
+- The Student is the shortest audio-hidden Reader:1498 canonical words. Fresh original-source bytes match retained source hash; complete story and live chapter version match. India literary audio basis independently assessed, not borrowed from Reader-only approval.
+- Exact-source prose layout resolves106 artificial wraps:127 imported blocks become21 real paragraphs and40 synthesis units. Reader bytes stay unchanged.
+- Seven Ryan audition passages and actual-worker structural validation prepared; weights, synthesis, ASR and listening remain unperformed.
+- Automatic approval review rejected Google export of the source/code notebook. No workaround: exact notebook upload and bounded audition permission requested; no allocation or spending.

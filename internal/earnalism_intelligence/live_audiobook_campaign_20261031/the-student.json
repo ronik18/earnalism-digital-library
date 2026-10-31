@@ -3,7 +3,7 @@
   "title": "The Student",
   "book_id": "controlled-the-student",
   "url": "https://theearnalism.com/book/the-student",
-  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "stage": "PRIVATE_AUDITION_READY_EXPORT_APPROVAL_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -56,8 +56,10 @@
     "live_manifest_fields": {}
   },
   "voice": {
-    "status": "NOT_SELECTED_NOT_QUALIFIED",
-    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+    "speaker": "Ryan",
+    "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "status": "SEVEN_PASSAGE_AUDITION_PREPARED_NOT_QUALIFIED"
   },
   "music": {
     "selection": "SILENCE",
@@ -70,9 +72,18 @@
     "listening": "UNVERIFIED",
     "audio": "UNVERIFIED",
     "sync": "UNVERIFIED",
-    "live_playback": "UNVERIFIED"
+    "live_playback": "UNVERIFIED",
+    "source_equivalence": "PASS_FULL_STORY_WHITESPACE_ONLY_AND_LIVE_CHAPTER_VERSION"
   },
-  "repairs": [],
+  "repairs": [
+    {
+      "kind": "NARRATION_ONLY_REFERENCE_LAYOUT",
+      "artificial_line_breaks_resolved": 106,
+      "reader_files_changed": false,
+      "units_before": 127,
+      "units_after": 40
+    }
+  ],
   "costs": {
     "new_provider_spend_usd": 0,
     "new_storage_spend_usd": 0,
@@ -84,17 +95,23 @@
   },
   "blockers": [
     {
-      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
-      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+      "code": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_GOOGLE_PAYLOAD_UPLOAD",
+      "rejected_action": "Upload prepared 77 KB source-and-worker notebook to signed-in Google Colab/Drive",
+      "reason": "Audiobook task authorization did not explicitly authorize export of this payload to Google; local preparation allowed.",
+      "workaround_attempted": false,
+      "owner_approval_request": "Pending async request for this exact notebook upload and bounded audition.",
+      "notebook_sha256": "e69fe0478581410bf8b5eb69da440b1ae01b5a45f7120a81c795f4f84d6729fd"
     },
     {
-      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
-      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+      "code": "AUDITION_FULL_QA_PACKAGE_AND_RELEASE_REQUIRED",
+      "action": "Complete the prepared representative audition and verify its real quality before full generation. Then retain exact audio-use/package rights and supported storage/release evidence; never activate from preparation alone."
     }
   ],
   "language": "en",
   "rights": {
     "audio_package_bindings": {},
-    "reader_rights_do_not_establish_audio_rights": true
-  }
+    "reader_rights_do_not_establish_audio_rights": true,
+    "underlying_literary_audio_basis": "QUALIFIED_FOR_NEW_OWNER_DIRECTED_INDIA_RECORDING"
+  },
+  "production_checkpoint": "the-student-production/checkpoint.json"
 }

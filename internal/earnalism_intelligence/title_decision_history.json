@@ -12977,13 +12977,15 @@
       "status": "BLOCKED",
       "reader_unchanged": true,
       "audio_publicly_available": false,
-      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student.json",
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/checkpoint.json",
       "blockers": [
-        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
-        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+        "AUTOMATIC_APPROVAL_REVIEW_REJECTED_GOOGLE_PAYLOAD_UPLOAD",
+        "AUDITION_FULL_QA_PACKAGE_AND_RELEASE_REQUIRED"
       ],
       "new_spend_usd": 0,
-      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+      "observed_at": "2026-10-31T05:02:04.255156+00:00",
+      "stage": "PRIVATE_AUDITION_READY_EXPORT_APPROVAL_REQUIRED",
+      "source_qualification": "PASS"
     },
     "the-time-machine": {
       "status": "BLOCKED",

@@ -1,0 +1,65 @@
+{
+  "observed_at": "2026-10-31T05:40:02.203919+00:00",
+  "slug": "the-student",
+  "status": "PRIVATE_AUDITION_READY_EXPORT_APPROVAL_REQUIRED",
+  "integration": {
+    "pr": 601,
+    "reviewed_commit": "29e4b337c4be79d87c8eae8dcf02e5deb1eb40ac",
+    "merged_main": "c23a74650e15c05e787e82f909850fb333361c5c",
+    "reviewed_merged_tree_equal": true,
+    "regression_run": 41172662067,
+    "regression_status": "PASS",
+    "canonical_clean_aligned_before_preparation": true,
+    "deployment_performed": false,
+    "remote_payment_branch_unchanged": true,
+    "pr_only_branch_exception": "Explicit owner answer permits codex/audiobook-campaign-integration-20261031"
+  },
+  "source": {
+    "canonical_word_count": 1498,
+    "tokenizer_word_count": 1499,
+    "difference": "Different word-count tokenization only; full source byte hash and token sequence preserved.",
+    "canonical_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "complete_story_whitespace_only_comparison": "PASS",
+    "live_content_version_match": "PASS",
+    "reader_files_changed": false,
+    "soft_wrap_joins": 106,
+    "source_paragraphs": 21,
+    "synthesis_units": 40
+  },
+  "rights": {
+    "underlying_literary_audio_basis": "QUALIFIED_FOR_NEW_OWNER_DIRECTED_INDIA_RECORDING",
+    "prior_reader_decision_expanded": false,
+    "model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "model_license": "Apache-2.0; official pinned metadata retained",
+    "stock_voice_candidate": "Ryan",
+    "new_recording_package_rights_binding": "NOT_YET_CREATED",
+    "source_urls_internal_only": true
+  },
+  "quality": {
+    "actual_worker_contract": "PASS_STRUCTURAL_FIXTURE_ONLY",
+    "real_model_weights": "NOT_LOADED",
+    "audition": "NOT_RUN",
+    "full_title": "NOT_GENERATED",
+    "listening": "NOT_PERFORMED",
+    "ASR": "NOT_PERFORMED",
+    "public_release_ready": false
+  },
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "compute_allocations": 0,
+    "new_purchases": 0,
+    "colab_active_sessions_before_attempt": 0,
+    "proposed_scope": "Seven exact-source passages, one allocation, 30-minute maximum, one take/passage, no retry/purchase/full generation/publication. Existing Colab credits only after authorization; actual unit usage must be reconciled, not reported as zero."
+  },
+  "blocker": {
+    "code": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_GOOGLE_PAYLOAD_UPLOAD",
+    "rejected_action": "Upload prepared 77 KB source-and-worker notebook to signed-in Google Colab/Drive",
+    "reason": "Audiobook task authorization did not explicitly authorize export of this payload to Google; local preparation allowed.",
+    "workaround_attempted": false,
+    "owner_approval_request": "Pending async request for this exact notebook upload and bounded audition.",
+    "notebook_sha256": "e69fe0478581410bf8b5eb69da440b1ae01b5a45f7120a81c795f4f84d6729fd"
+  },
+  "notebook_placeholder_url": "https://colab.research.google.com/drive/1oY51SPtxb_c9LHfjD8efzjej12kDD3Cv",
+  "next_action": "After explicit owner export authorization, upload only the prepared notebook, verify the imported source, use one bounded existing-credit CUDA allocation, preserve the result and shut down. Never infer voice quality from the worker contract."
+}

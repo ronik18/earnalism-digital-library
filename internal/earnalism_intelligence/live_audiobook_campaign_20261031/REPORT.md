@@ -70,3 +70,7 @@ python3 /tmp/earnalism-main-approved-integration/internal/earnalism_intelligence
 ```
 
 With an existing checkpoint, this command prints the saved reconciliation and exits without rewriting evidence. It performs no production, provider generation, upload, publication, or paid customer-session action.
+
+## The Student continuation
+
+PR #601 merged at c23a74650 with exact-head gates passing; no deployment. The shortest audio-hidden book is source-qualified.106 artificial line wraps resolved in narration-only mapping;40 synthesis units and7 exact-source Ryan audition passages prepared. Underlying India literary audio basis independently qualified; package/voice suitability remain incomplete. Automatic approval review rejected export of the77KB notebook to Google Colab/Drive; explicit owner authorization is pending. No compute allocated or spend incurred. See [production checkpoint](the-student-production/checkpoint.json).
