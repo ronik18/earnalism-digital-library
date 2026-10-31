@@ -1,0 +1,247 @@
+{
+  "book": {
+    "estimated_reading_time": "29 min",
+    "title": "The Stolen White Elephant",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-stolen-white-elephant",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover-f23367df9c825ddc.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover-55242b9efb5806b2.jpg",
+    "updated_at": "2026-08-15T21:49:10Z",
+    "description": "Twain's savage parody of detective fiction — an enormous white elephant wanders through American cities causing chaos while the detectives collect fees for clues and never look up. A perfect skewering of the genre Poe invented.",
+    "dominant_color": "#4A1C27",
+    "author": "Mark Twain",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Mark Twain (1835–1910) was an American author and humorist, one of the great literary voices of American democracy.",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Stolen White Elephant",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "e362ea647891e94c68cc",
+        "word_count": 6821,
+        "reading_minutes": 29,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-stolen-white-elephant/chapter-001?v=e362ea647891e94c68cc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Stolen White Elephant",
+        "index_title": "The Stolen White Elephant",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-stolen-white-elephant",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A sacred white elephant is stolen — and the world's greatest detectives cannot find it despite it leaving a trail of destruction everywhere.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-stolen-white-elephant",
+    "reader_url": "/reader/the-stolen-white-elephant",
+    "preview_url": "/reader/the-stolen-white-elephant",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Stolen White Elephant",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "e362ea647891e94c68cc",
+      "word_count": 6821,
+      "reading_minutes": 29,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-stolen-white-elephant/chapter-001?v=e362ea647891e94c68cc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Stolen White Elephant",
+      "index_title": "The Stolen White Elephant",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "c83416399d2e2a8c",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "ef27153bc93fa2404472",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:36.693499+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-stolen-white-elephant/manifest",
+      "total_pages": 13
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-43863c2c2eef398891567a83d5be54f2",
+    "content_revision": "fccdfc7364b2cccfc3e936ce",
+    "page_count": 13,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-stolen-white-elephant:1:27844b0a2ef9ffcd",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "27844b0a2ef9ffcda83768c846b4663df67fdb5349312fbdc3181cd7b020bd90"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-stolen-white-elephant:2:77524a5bdfdc240f",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "77524a5bdfdc240f17273dc52d67cadbc190dc9555a119d81bc2d81c2bb36a2e"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-stolen-white-elephant:3:459eb2da33bdb710",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "459eb2da33bdb710d5009a6b1290daf5f61568867744e026087c5e4bcb62bc02"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-stolen-white-elephant:4:2226782d05898981",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "2226782d058989818be23e8b606870f4d1f92eab1bbed0ef07ee0cc0dc9bdbdd"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-stolen-white-elephant:5:023792e8d22e61c3",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "023792e8d22e61c31d9dd2e1d1a464943b52d64ae164404a48a71094f5089981"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-stolen-white-elephant:6:5d027290a44e8814",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "5d027290a44e8814855c4f799205296ff48474c16aad062c7b7819600f47aefc"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-stolen-white-elephant:7:f3fec47728cb8ab5",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "f3fec47728cb8ab506bd3ba13aa41968e98cca87deed2fea9678bab4f070e284"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-stolen-white-elephant:8:312e77dfbdb62083",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "312e77dfbdb62083a176fea03a67aa3b036998d96101c691910993f053dbc127"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-stolen-white-elephant:9:08d20df26bfcb245",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "08d20df26bfcb2456482eacaaa96564c923450653d73097ffd3aa2eb1d459745"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-stolen-white-elephant:10:de1263eb1051e00b",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "de1263eb1051e00bf53abd6ba0f9d086ad8c24cd0a3743f37baa49ef78853e68"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-stolen-white-elephant:11:7d738a07dfea6f46",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "7d738a07dfea6f4651781936a7e6b55b467d4d3c5a69b7a206b49570b15c6cfc"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-stolen-white-elephant:12:7bd852150c0e3249",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "7bd852150c0e32499e72067ed1e25e3dbb1c7912c70fea6cf6a7ea1132a59e2a"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-stolen-white-elephant:13:01136a47e7189c42",
+        "chapter_id": "chapter-001",
+        "content_revision": "fccdfc7364b2cccfc3e936ce",
+        "content_hash": "01136a47e7189c42cde383b891231fe61e76a10e63d8896a81aca9becd22c170"
+      }
+    ]
+  }
+}

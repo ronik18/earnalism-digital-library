@@ -1,0 +1,100 @@
+{
+  "slug": "an-occurrence-at-owl-creek-bridge",
+  "title": "An Occurrence at Owl Creek Bridge",
+  "book_id": "controlled-an-occurrence-at-owl-creek-bridge",
+  "url": "https://theearnalism.com/book/an-occurrence-at-owl-creek-bridge",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "90925181f7aaaad2cfaf50d9c55301c33b8c762431e8df9d0390609c5505978b",
+      "url": "https://theearnalism.com/api/reader/book/an-occurrence-at-owl-creek-bridge/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/source_evidence.json",
+      "sha256": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json",
+      "sha256": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/rights_decision.json",
+      "sha256": "6d3c948158e166a0658841d462dd24e35d0686f7b14867d91cb23bb0a36c2fa9"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/chapters/chapter-001.json",
+        "sha256": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "9c36dabe6b7af5c89132",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "fe389f8802c05599",
+      "updated_at": ""
+    },
+    "live_book_slug": "an-occurrence-at-owl-creek-bridge",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

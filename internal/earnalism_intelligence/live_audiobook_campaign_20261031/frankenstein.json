@@ -1,0 +1,208 @@
+{
+  "slug": "frankenstein",
+  "title": "Frankenstein",
+  "book_id": "controlled-frankenstein",
+  "url": "https://theearnalism.com/book/frankenstein",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:47Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "85933921b780ad259ba0b42783e8e7cd0a3a1819f6f479545f98bea1825b1d67",
+      "url": "https://theearnalism.com/api/reader/book/frankenstein/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/frankenstein/source_evidence.json",
+      "sha256": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/frankenstein/reader_manifest.json",
+      "sha256": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/frankenstein/rights_decision.json",
+      "sha256": "f98ce9a1345d9c4de912cef5eaa2d488e463568a42f85f35c032fd5e844c1efd"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-001.json",
+        "sha256": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-002.json",
+        "sha256": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-003.json",
+        "sha256": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-004.json",
+        "sha256": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-005.json",
+        "sha256": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-006.json",
+        "sha256": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-007.json",
+        "sha256": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-008.json",
+        "sha256": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-009.json",
+        "sha256": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-010.json",
+        "sha256": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-011.json",
+        "sha256": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-012.json",
+        "sha256": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-013.json",
+        "sha256": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-014.json",
+        "sha256": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-015.json",
+        "sha256": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-016.json",
+        "sha256": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-017.json",
+        "sha256": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-018.json",
+        "sha256": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-019.json",
+        "sha256": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-020.json",
+        "sha256": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-021.json",
+        "sha256": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-022.json",
+        "sha256": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-023.json",
+        "sha256": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-024.json",
+        "sha256": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-025.json",
+        "sha256": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-026.json",
+        "sha256": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-027.json",
+        "sha256": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b"
+      },
+      {
+        "path": "backend/data/controlled_publications/frankenstein/chapters/chapter-028.json",
+        "sha256": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a"
+      }
+    ],
+    "live_chapter_count": 28,
+    "live_version": "7bbcf8f53c1c6e5f7dce",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "a96fbf2bc5d29705",
+      "updated_at": ""
+    },
+    "live_book_slug": "frankenstein",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

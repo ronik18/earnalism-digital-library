@@ -1,0 +1,191 @@
+{
+  "book": {
+    "estimated_reading_time": "11 min",
+    "title": "A Horseman in the Sky",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-a-horseman-in-the-sky",
+    "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover-945fffedbe706628.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover-aa18ecb7e1c35789.jpg",
+    "updated_at": "2026-08-15T20:29:34Z",
+    "description": "Carter Druse, a Virginian fighting for the Union, falls asleep on sentry duty and wakes to see a Confederate horseman on a cliff commanding a view of the entire Union position. He fires — and only a sergeant later witnesses what falls from the cliff.",
+    "dominant_color": "#4A1C27",
+    "author": "Ambrose Bierce",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+    "category_slug": "history-strategy",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "A Horseman in the Sky",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "1e10a6cec274d31d191c",
+        "word_count": 2488,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/a-horseman-in-the-sky/chapter-001?v=1e10a6cec274d31d191c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "A Horseman in the Sky",
+        "index_title": "A Horseman in the Sky",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "a-horseman-in-the-sky",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A Union soldier spots a Confederate scout on a cliff — and shoots him, not knowing it is his own father.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/a-horseman-in-the-sky",
+    "reader_url": "/reader/a-horseman-in-the-sky",
+    "preview_url": "/reader/a-horseman-in-the-sky",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "A Horseman in the Sky",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "1e10a6cec274d31d191c",
+      "word_count": 2488,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/a-horseman-in-the-sky/chapter-001?v=1e10a6cec274d31d191c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "A Horseman in the Sky",
+      "index_title": "A Horseman in the Sky",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "1267a9d1db6add71",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "2f313ff23db4fe7bf23f",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:33.112388+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/a-horseman-in-the-sky/manifest",
+      "total_pages": 5
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-9fcd24a72a93074f1488effff0735816",
+    "content_revision": "cd1b4a95d367cef72d58664f",
+    "page_count": 5,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "a-horseman-in-the-sky:1:9f42aa63ce090faa",
+        "chapter_id": "chapter-001",
+        "content_revision": "cd1b4a95d367cef72d58664f",
+        "content_hash": "9f42aa63ce090faa93ee397fcf61d8999ab186c0277b64c85769a0c4a9f83188"
+      },
+      {
+        "page_number": 2,
+        "page_id": "a-horseman-in-the-sky:2:c91ce78c0c71dde0",
+        "chapter_id": "chapter-001",
+        "content_revision": "cd1b4a95d367cef72d58664f",
+        "content_hash": "c91ce78c0c71dde07d821564f8e0ddd4f39f8772c0e12214302fa4812cd31910"
+      },
+      {
+        "page_number": 3,
+        "page_id": "a-horseman-in-the-sky:3:75361312c0b6a068",
+        "chapter_id": "chapter-001",
+        "content_revision": "cd1b4a95d367cef72d58664f",
+        "content_hash": "75361312c0b6a0686d827807ece14aa62280f3eecbad93d329f80b9e1d0dc28e"
+      },
+      {
+        "page_number": 4,
+        "page_id": "a-horseman-in-the-sky:4:2c7f6ddd7056b3cd",
+        "chapter_id": "chapter-001",
+        "content_revision": "cd1b4a95d367cef72d58664f",
+        "content_hash": "2c7f6ddd7056b3cd7e3e4ae4cf73a23ddded798cab6be86206ca061cdfa7bf90"
+      },
+      {
+        "page_number": 5,
+        "page_id": "a-horseman-in-the-sky:5:42e79037996a194f",
+        "chapter_id": "chapter-001",
+        "content_revision": "cd1b4a95d367cef72d58664f",
+        "content_hash": "42e79037996a194f9f1dc22c27f556034e839b3c1aa46f6c0be0740d90a7d11d"
+      }
+    ]
+  }
+}

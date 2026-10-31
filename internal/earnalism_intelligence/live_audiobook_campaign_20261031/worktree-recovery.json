@@ -1,0 +1,15 @@
+{
+  "status": "RESTORED_VERIFIED_CLEAN_ALIGNED_BEFORE_CAMPAIGN_EDITS",
+  "branch": "codex/main-approved-integration",
+  "worktree": "/tmp/earnalism-main-approved-integration",
+  "verified_head": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "verified_origin_main": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "remote_main_rechecked": true,
+  "prior_commit": "57e518c2231c6828235f395955a791cdf85b312b",
+  "preserved_commit_ref": "refs/recovery/canonical-before-20261031-57e518c",
+  "prior_index_sha256": "86cd5532c934ef35f95310c27b47cdbb7dd7d202ecff66f66c211b545b9cf012",
+  "prior_metadata_backup": "/tmp/earnalism-canonical-recovery-20261031",
+  "prior_offloaded_pointer": "original .git/worktrees/earnalism-main-approved-integration2/commondir.icloud-preserved-20261031",
+  "recovery_method": "Isolated filtered Git fetch plus reuse of local objects; 310 missing raw exact-commit files independently verified against Git blob IDs before storage; existing registration reattached. Historical worktrees and branches retained.",
+  "extra_archive_transfer": "Stopped when no longer required; no archive content used to declare verification."
+}

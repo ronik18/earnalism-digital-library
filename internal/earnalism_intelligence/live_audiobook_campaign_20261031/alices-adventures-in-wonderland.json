@@ -1,0 +1,144 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "title": "Alice's Adventures in Wonderland",
+  "book_id": "controlled-alices-adventures-in-wonderland",
+  "url": "https://theearnalism.com/book/alices-adventures-in-wonderland",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:47Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "76681bfb0ef6a0e3bdc665ee9a17fd2d543eb0a996ee5461b83941fa21f78e84",
+      "url": "https://theearnalism.com/api/reader/book/alices-adventures-in-wonderland/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/source_evidence.json",
+      "sha256": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json",
+      "sha256": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/rights_decision.json",
+      "sha256": "f08a1f655972c171c6d79bd1f6e6bbd6c70fc8b5615a640be7afbf190e2cc2e6"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-001.json",
+        "sha256": "8205fcc40159a52c0ac878433ca135acc8b820571b6015f1616ff041ec0d935e"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-002.json",
+        "sha256": "f41220b3b84e839fc1c84e37f89455b87534fe7b7492f02955f9508e8310f829"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-003.json",
+        "sha256": "9d2feb516ef5104e33f04f4f31fbe8108227309daca34f01ca17b7d6cc895b7d"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-004.json",
+        "sha256": "5226735f5ff00c1fa9d055c6f122e1429c86718b86aa752170067773bca2ed04"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-005.json",
+        "sha256": "056255530ee75e137ce4c142b3eec9e20547e1b85fb37ff52382648e9c361d0a"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-006.json",
+        "sha256": "565565e860f26acf54d7872df325fa67a0b9d9cacbf3d3524a207ada3b1daaa7"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-007.json",
+        "sha256": "4c05ddf8a3fd50bb94f5d51289bcc1ea5b13b0e67d23f4776dd0562ab577dbbf"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-008.json",
+        "sha256": "49aa07cd80b74a84a214d2f2d326a0b437ab41a1b06e513b48befa2e5e7b7f64"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-009.json",
+        "sha256": "a83a03cd41f13520ace8224ef7062747c542f0b67a6913edf3becd54baa03263"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-010.json",
+        "sha256": "1f31659d20f404db043d73e59ec609c89df15b70ff064ffb3b8579bb277ddc1a"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-011.json",
+        "sha256": "4bfc2848c4cc3b275a9832662574cd13babbbe79b29d94f817a309d5a9238f52"
+      },
+      {
+        "path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters/chapter-012.json",
+        "sha256": "dc47a09ddfac3d793b58a627b30a5e9938c36c5879741fa0003650d1760b5c33"
+      }
+    ],
+    "live_chapter_count": 12,
+    "live_version": "6765e225e1a3ff665215",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "3783964b021c7b37",
+      "updated_at": ""
+    },
+    "live_book_slug": "alices-adventures-in-wonderland",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

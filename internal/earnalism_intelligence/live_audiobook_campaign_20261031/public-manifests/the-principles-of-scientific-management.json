@@ -1,0 +1,810 @@
+{
+  "book": {
+    "estimated_reading_time": "154 min",
+    "title": "The Principles of Scientific Management",
+    "who_for": [
+      "Business and entrepreneurship readers",
+      "Management and operations students",
+      "Readers interested in industrial history"
+    ],
+    "id": "controlled-the-principles-of-scientific-management",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+    "learnings": [
+      "Source-structured sections on scientific management.",
+      "Historical arguments around efficiency and work systems.",
+      "A clean text-only edition prepared for web reading."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+    "updated_at": "2026-07-03T20:07:49Z",
+    "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+    "dominant_color": "#4A1C27",
+    "author": "Frederick Winslow Taylor",
+    "created_at": "2026-07-03T20:07:49Z",
+    "benefits": [
+      "Read a structured public-domain management classic.",
+      "Move through the introduction and chapter sequence.",
+      "Study foundational language around efficiency and management."
+    ],
+    "about_author": "Frederick Winslow Taylor was an American mechanical engineer whose work helped shape early management and industrial engineering practice.",
+    "category_slug": "business",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "INTRODUCTION",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "5136a42f5baed24b4532",
+        "word_count": 795,
+        "reading_minutes": 4,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-001?v=5136a42f5baed24b4532",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Introduction",
+        "index_title": "Introduction",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "fb66d7cddca76b5c68f7",
+        "word_count": 5370,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-002?v=fb66d7cddca76b5c68f7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 1. Fundamentals Of Scientific Management",
+        "index_title": "Fundamentals Of Scientific Management",
+        "index_secondary_label": "Chapter 1"
+      },
+      {
+        "id": "chapter-003",
+        "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "cc989ed80b0cb9d0ea48",
+        "word_count": 109,
+        "reading_minutes": 1,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-003?v=cc989ed80b0cb9d0ea48",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 2. The Principles Of Scientific Management",
+        "index_title": "The Principles Of Scientific Management",
+        "index_secondary_label": "Chapter 2"
+      },
+      {
+        "id": "chapter-004",
+        "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "96618faef628f8997aba",
+        "word_count": 30188,
+        "reading_minutes": 126,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-004?v=96618faef628f8997aba",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "The Finest Type Of Ordinary Management",
+        "index_title": "The Finest Type Of Ordinary Management",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-principles-of-scientific-management",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A clean digital reading edition of Frederick Winslow Taylor's 1911 management monograph.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-principles-of-scientific-management",
+    "reader_url": "/reader/the-principles-of-scientific-management",
+    "preview_url": "/reader/the-principles-of-scientific-management",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "INTRODUCTION",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "5136a42f5baed24b4532",
+      "word_count": 795,
+      "reading_minutes": 4,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-001?v=5136a42f5baed24b4532",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Introduction",
+      "index_title": "Introduction",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "fb66d7cddca76b5c68f7",
+      "word_count": 5370,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-002?v=fb66d7cddca76b5c68f7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 1. Fundamentals Of Scientific Management",
+      "index_title": "Fundamentals Of Scientific Management",
+      "index_secondary_label": "Chapter 1"
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "cc989ed80b0cb9d0ea48",
+      "word_count": 109,
+      "reading_minutes": 1,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-003?v=cc989ed80b0cb9d0ea48",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 2. The Principles Of Scientific Management",
+      "index_title": "The Principles Of Scientific Management",
+      "index_secondary_label": "Chapter 2"
+    },
+    {
+      "id": "chapter-004",
+      "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "96618faef628f8997aba",
+      "word_count": 30188,
+      "reading_minutes": 126,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-principles-of-scientific-management/chapter-004?v=96618faef628f8997aba",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "The Finest Type Of Ordinary Management",
+      "index_title": "The Finest Type Of Ordinary Management",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "e4986bd4f9738f2b",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "1ee05caa5ff10199c6e8",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:48.042813+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-principles-of-scientific-management/manifest",
+      "total_pages": 78
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-172c65e11230dfe6d05537e6a550cece",
+    "content_revision": "68e1c58e915f9b2a5f652c91",
+    "page_count": 78,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-principles-of-scientific-management:1:c3024b9e139cd4a6",
+        "chapter_id": "chapter-001",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "c3024b9e139cd4a6ea46831de4fadf224c6d8c34d5b500185916e6e42c69641e"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-principles-of-scientific-management:2:2bea4a265d1ca76b",
+        "chapter_id": "chapter-001",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "2bea4a265d1ca76bda3e9cfe237459a5836cfd824b34c6798edaf9d3a8610f0f"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-principles-of-scientific-management:3:9a714edff6b2325a",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "9a714edff6b2325a3c05cfa0fb0e175c09b639cfd86b66ccf8c3010922295607"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-principles-of-scientific-management:4:1961a517603a8924",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "1961a517603a8924866a15138b04e7d742ffd917ff50860d006f347c3f7f86c7"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-principles-of-scientific-management:5:cba42407e8b3fdff",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "cba42407e8b3fdff01c3d02325399f229571ef887d9f2e4a381c69813cd2154a"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-principles-of-scientific-management:6:b518f05dd2452013",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b518f05dd2452013662b6215dd7b950cf209da80895a7d7d8be94875c4931273"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-principles-of-scientific-management:7:3448c1bc81fd24d4",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "3448c1bc81fd24d4eebf8877036f072516954f68b562de73737205de9df3ea6b"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-principles-of-scientific-management:8:d3866449e92c2ec9",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "d3866449e92c2ec9fe67a0619b6f5deb420efe7d4b7318053c649811f4f92b19"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-principles-of-scientific-management:9:b570a7d484542aca",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b570a7d484542acad60d6109690059ccfe7955e9f81957a17341dbb828f6800f"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-principles-of-scientific-management:10:6d076c40adfafc5d",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "6d076c40adfafc5d13418758b93c2c13183ac8b7581b81a498f4fca34fdec044"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-principles-of-scientific-management:11:7f8c31f0f2c50f7a",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "7f8c31f0f2c50f7a7830725c1a2b9cfebb526342c83401278d17fd8da44bbff8"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-principles-of-scientific-management:12:b07f302ae6297d60",
+        "chapter_id": "chapter-002",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b07f302ae6297d60f3b05ec97b385d4c7860e17183481c420d4314c39f4493e2"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-principles-of-scientific-management:13:07ce197521098ad1",
+        "chapter_id": "chapter-003",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "07ce197521098ad145a54b6e64680f57630960a8f74ec716b286b3324e9d7f50"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-principles-of-scientific-management:14:ad7edf494b138424",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "ad7edf494b138424a59b3009108d93139086a6aa23a734e2a97d98e81a48403a"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-principles-of-scientific-management:15:3155eec7e1fcd0d8",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "3155eec7e1fcd0d83bd672e3fb0f9df94f19231dd88ddde8200925001a81102e"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-principles-of-scientific-management:16:644f8690b447ec78",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "644f8690b447ec78a216f32a5238e0ef98e0aeea7c72e23db0e3edcbad206688"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-principles-of-scientific-management:17:82c2686dea1e069b",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "82c2686dea1e069b80adabd88e0c175e33d0f81bbd8d8c2f1ee22a1598cc5b09"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-principles-of-scientific-management:18:c03215babfe6b44b",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "c03215babfe6b44b86b10076c98b8e9820997780bf1dd5860a924b77299a6601"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-principles-of-scientific-management:19:690ad122b87e64aa",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "690ad122b87e64aae35c4ae864b3700f98b4417d67777b19346163fff373bec2"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-principles-of-scientific-management:20:48e8e06ad1f766b3",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "48e8e06ad1f766b36f08506fa5d5889988e7a8371db61ef3bef5c54411bbb44f"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-principles-of-scientific-management:21:64f6a392a092b950",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "64f6a392a092b9500dfe2eaf4159a6531a174d741e98fe58935b62f6d3505145"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-principles-of-scientific-management:22:ea56b7e4cfca54f4",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "ea56b7e4cfca54f44c19d370f3ade0ce28309314ac6917f9c80830216ee94122"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-principles-of-scientific-management:23:86375b72adb2fa92",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "86375b72adb2fa922b5626eed74da399fbef8bace3ad0aee8079504360165c60"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-principles-of-scientific-management:24:8ad508b0ee1b1a72",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8ad508b0ee1b1a72b9c560343bded3bd571a995aa1b12a9185778b0c131c35ee"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-principles-of-scientific-management:25:86f9b4cfc98a6c09",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "86f9b4cfc98a6c09d676f3f5c9b2dd5091d64396879cee217a3665687b6b2374"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-principles-of-scientific-management:26:81ee9aec4564757a",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "81ee9aec4564757a2757d7c2a16b946dfba072a50250c132968bc4e610e17db6"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-principles-of-scientific-management:27:1ec4b3bbff776174",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "1ec4b3bbff7761747a443d2653008bba507732d5fd6129ea955242d7edb6f595"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-principles-of-scientific-management:28:30ca54825e04d857",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "30ca54825e04d857453b735c6c462003ddd68df724b58c15b88aba4e0bcf3c20"
+      },
+      {
+        "page_number": 29,
+        "page_id": "the-principles-of-scientific-management:29:19c188caf7b1bf4f",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "19c188caf7b1bf4fde3348d588d3694d682e861fb852abbeaec3145096c49a03"
+      },
+      {
+        "page_number": 30,
+        "page_id": "the-principles-of-scientific-management:30:f2caf272832eaeff",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "f2caf272832eaeff76fa9c5f098e9667e93edc15f4e4928c6b12ed7226b29817"
+      },
+      {
+        "page_number": 31,
+        "page_id": "the-principles-of-scientific-management:31:8c1510233ffeda3e",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8c1510233ffeda3e76a01534d65b1053fb37399c3ee8850b5e6bff059455e0f0"
+      },
+      {
+        "page_number": 32,
+        "page_id": "the-principles-of-scientific-management:32:9a9f81c10f1a396e",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "9a9f81c10f1a396e29cad69c034b4a13c2e5fc9b36c0e25e30c31befbfd0825f"
+      },
+      {
+        "page_number": 33,
+        "page_id": "the-principles-of-scientific-management:33:85fe5a09a9967591",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "85fe5a09a99675910102c4993f7164068393857f075c550d48eabdcda9af3d6c"
+      },
+      {
+        "page_number": 34,
+        "page_id": "the-principles-of-scientific-management:34:089bf0b65091bc7a",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "089bf0b65091bc7a406e9c557a92b3320b24ebd45068cf1edcea33d3959979d0"
+      },
+      {
+        "page_number": 35,
+        "page_id": "the-principles-of-scientific-management:35:2f85d9150a07502e",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "2f85d9150a07502e491c83d8fb8284c7d5e01b4273a8f376d26787ac5d44a55f"
+      },
+      {
+        "page_number": 36,
+        "page_id": "the-principles-of-scientific-management:36:6b1f89c5476bd915",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "6b1f89c5476bd915447efbf69e5363d3768e41ac4a2371561913d38a47ef36b4"
+      },
+      {
+        "page_number": 37,
+        "page_id": "the-principles-of-scientific-management:37:7b2695c0115a1691",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "7b2695c0115a16915ad0ca16dfc99185f3b831cd742ddcc6386d03b4feab1f66"
+      },
+      {
+        "page_number": 38,
+        "page_id": "the-principles-of-scientific-management:38:b5b1a62d7bdd3ece",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b5b1a62d7bdd3ece8a0dbd86dbd953859dd6f02b55b327149d571273e45e086b"
+      },
+      {
+        "page_number": 39,
+        "page_id": "the-principles-of-scientific-management:39:01399d8a77b7d28a",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "01399d8a77b7d28ac5cbf5cc3eff7f94a36d8595d4f8dc47fc3cc98b4be9d5d8"
+      },
+      {
+        "page_number": 40,
+        "page_id": "the-principles-of-scientific-management:40:7fdba38a182e6732",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "7fdba38a182e673283bedd8add50e24862b614da4fba7d3df1d8cdfc43df2a58"
+      },
+      {
+        "page_number": 41,
+        "page_id": "the-principles-of-scientific-management:41:d69cae8e8d0a7e46",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "d69cae8e8d0a7e46c14da9c304431792239d8d11e111861e5bdff0c85de50d08"
+      },
+      {
+        "page_number": 42,
+        "page_id": "the-principles-of-scientific-management:42:beff456f20e4e368",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "beff456f20e4e3682f595a03b5d1371509e342575cccf8cbdc7b65dfd60e0ff4"
+      },
+      {
+        "page_number": 43,
+        "page_id": "the-principles-of-scientific-management:43:11c5d9880e13955d",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "11c5d9880e13955dc1f0a14c67321866bb938eb53b00eed783dac091980d142c"
+      },
+      {
+        "page_number": 44,
+        "page_id": "the-principles-of-scientific-management:44:ff1908f4f15976f0",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "ff1908f4f15976f0144bc7592e16b013042a534551e16ad8d72578e30bb2aa68"
+      },
+      {
+        "page_number": 45,
+        "page_id": "the-principles-of-scientific-management:45:fa5487de29e89361",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "fa5487de29e893611f8de7118f4a743756a651a161f3428b096dfbc98d115431"
+      },
+      {
+        "page_number": 46,
+        "page_id": "the-principles-of-scientific-management:46:97b0891f1bbee7eb",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "97b0891f1bbee7eb15bc0b87b698c75b5dc190a14e34c4c9e9464ec2ced132b3"
+      },
+      {
+        "page_number": 47,
+        "page_id": "the-principles-of-scientific-management:47:012e405b08e28ce2",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "012e405b08e28ce2b02e3677191021ef4a3800f1a641ce75ed4ca1072ad1f4d7"
+      },
+      {
+        "page_number": 48,
+        "page_id": "the-principles-of-scientific-management:48:8f3028910b44a36c",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8f3028910b44a36cda613556c65bb6008fdf59e11bdc6fb1a7e091f015f98695"
+      },
+      {
+        "page_number": 49,
+        "page_id": "the-principles-of-scientific-management:49:6464e0c526944c22",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "6464e0c526944c2244536d125786e84878b43abdd97f50e97835ad45328a2c9e"
+      },
+      {
+        "page_number": 50,
+        "page_id": "the-principles-of-scientific-management:50:de1a99201029ce83",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "de1a99201029ce83c992f4d25074e8e6b43e82621c174bd075454310575eedc4"
+      },
+      {
+        "page_number": 51,
+        "page_id": "the-principles-of-scientific-management:51:8a3fe3e264b474ef",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8a3fe3e264b474ef9006a13248e45120f2b85350db9714cc52079495a4a31f6e"
+      },
+      {
+        "page_number": 52,
+        "page_id": "the-principles-of-scientific-management:52:96b49edf79b61a6c",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "96b49edf79b61a6cddb40ac38e1db33f613a70ffcae31c775f3872d09e5f19bc"
+      },
+      {
+        "page_number": 53,
+        "page_id": "the-principles-of-scientific-management:53:ceaf8fff33ef2752",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "ceaf8fff33ef2752aa43d75cec40a9318e1af53261195ae718c1141feca3b643"
+      },
+      {
+        "page_number": 54,
+        "page_id": "the-principles-of-scientific-management:54:b773afdb3db5ce02",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b773afdb3db5ce02a99f9213f125bd16a7d3b3a59e3cdaa19d58dd3d24f5f1fe"
+      },
+      {
+        "page_number": 55,
+        "page_id": "the-principles-of-scientific-management:55:6ad7945524354eb5",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "6ad7945524354eb5d78e103a0021ebd010fffa3c7c7df3c6deb44c0cdf49aaed"
+      },
+      {
+        "page_number": 56,
+        "page_id": "the-principles-of-scientific-management:56:b390f922f9bdb7de",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b390f922f9bdb7deb94aa49e6d9e6abb8b1475ac5545968f727c7111b789e965"
+      },
+      {
+        "page_number": 57,
+        "page_id": "the-principles-of-scientific-management:57:d24f6ef6c8c201a8",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "d24f6ef6c8c201a88cd4dd21ad2b711b1eeeaa51a31612796a68fac08771c746"
+      },
+      {
+        "page_number": 58,
+        "page_id": "the-principles-of-scientific-management:58:0f45b453679f65d0",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "0f45b453679f65d0fb4e515cbe91545f6347fb3e133e29148f3e0970d6359aa7"
+      },
+      {
+        "page_number": 59,
+        "page_id": "the-principles-of-scientific-management:59:89999330efa04426",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "89999330efa044263c05fc2c937796fad3a4e8cf7c9447665a749cdbc3126882"
+      },
+      {
+        "page_number": 60,
+        "page_id": "the-principles-of-scientific-management:60:72f32c9bcca43d1e",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "72f32c9bcca43d1ebe4834e56b97208a0b25525ddf0205b48dc2bdea07b9914a"
+      },
+      {
+        "page_number": 61,
+        "page_id": "the-principles-of-scientific-management:61:fa6224641c01826a",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "fa6224641c01826a85ef7d0232d6f2a21188fece97da362ceea83f0e3a1bce76"
+      },
+      {
+        "page_number": 62,
+        "page_id": "the-principles-of-scientific-management:62:e648c105f8558fb7",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "e648c105f8558fb7a6214d499f03e2c25ab414a8e539774a417c5c10e9eb0718"
+      },
+      {
+        "page_number": 63,
+        "page_id": "the-principles-of-scientific-management:63:1479f0f4c35b0fc8",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "1479f0f4c35b0fc89d89913aafed09870b6f4855237eca2b1e0ced9ce8a9ae9d"
+      },
+      {
+        "page_number": 64,
+        "page_id": "the-principles-of-scientific-management:64:4c406e176fffc728",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "4c406e176fffc728b724466635db72186af4e3316dfc99100f227f08b61eadb2"
+      },
+      {
+        "page_number": 65,
+        "page_id": "the-principles-of-scientific-management:65:3a076c6dc434e54c",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "3a076c6dc434e54c325a77433d788a3b54b2326454ced8e59efecaf83d9fb3d5"
+      },
+      {
+        "page_number": 66,
+        "page_id": "the-principles-of-scientific-management:66:8db60869cffbe1a3",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8db60869cffbe1a343852619ba36e58c34818f78755a037cb218a253a0bde94c"
+      },
+      {
+        "page_number": 67,
+        "page_id": "the-principles-of-scientific-management:67:dc229c9c458959c3",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "dc229c9c458959c38c027f221fb347906dd372a355df89b152ed41c5a630d95e"
+      },
+      {
+        "page_number": 68,
+        "page_id": "the-principles-of-scientific-management:68:b641edf8b325af41",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "b641edf8b325af41e01462dd16ebef8db16f48e6cb79267da612cb5c797b6b89"
+      },
+      {
+        "page_number": 69,
+        "page_id": "the-principles-of-scientific-management:69:8526de972354f27f",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "8526de972354f27f72e41dced2ab0afebc355103ea90beb80d3d64559e66e84a"
+      },
+      {
+        "page_number": 70,
+        "page_id": "the-principles-of-scientific-management:70:23c1d2c9f73cc674",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "23c1d2c9f73cc6748f2ef35843c74b6c0fca47ad707df236f0bb4b1f5cffa664"
+      },
+      {
+        "page_number": 71,
+        "page_id": "the-principles-of-scientific-management:71:e1eb56756db92a6b",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "e1eb56756db92a6bf5d42e721a5c4ddbfd8678a603e9191e5303078ebc23a50b"
+      },
+      {
+        "page_number": 72,
+        "page_id": "the-principles-of-scientific-management:72:e13049c2308961df",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "e13049c2308961df93963b149e92a282c43de0cbe25a0cb7cfc9f241c405924c"
+      },
+      {
+        "page_number": 73,
+        "page_id": "the-principles-of-scientific-management:73:47d5abf95741bfbc",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "47d5abf95741bfbc6d076b6282e24a166e47c773614cf40695ebab4029dbce04"
+      },
+      {
+        "page_number": 74,
+        "page_id": "the-principles-of-scientific-management:74:6d84f096c7ad1325",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "6d84f096c7ad13258cf431dc607634fb12763c44372d0a7a4e2dfa96215e2a30"
+      },
+      {
+        "page_number": 75,
+        "page_id": "the-principles-of-scientific-management:75:3cb21a0992636b88",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "3cb21a0992636b8891ae387eafda30165819876c5d4009b78856cd9e9bd047f1"
+      },
+      {
+        "page_number": 76,
+        "page_id": "the-principles-of-scientific-management:76:69effd5e99aedae0",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "69effd5e99aedae00bcc4c856c4909d5ebc1b58bd8f0451f372ac4a53532efea"
+      },
+      {
+        "page_number": 77,
+        "page_id": "the-principles-of-scientific-management:77:cbc2ec103471020b",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "cbc2ec103471020b4addfcc1ebd56fa04ca0a35c5912e0b6e95fcec9c9cce1ae"
+      },
+      {
+        "page_number": 78,
+        "page_id": "the-principles-of-scientific-management:78:ad8ce8ad601217f0",
+        "chapter_id": "chapter-004",
+        "content_revision": "68e1c58e915f9b2a5f652c91",
+        "content_hash": "ad8ce8ad601217f0de643c14194278721568c5e2ddb2624cf9cfc9c94c39171e"
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "book": {
+    "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+    "estimated_reading_time": "9 min",
+    "back_cover_dominant_color": "#1C0B12",
+    "title": "The Gift of the Magi",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-gift-of-the-magi",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+    "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+    "updated_at": "2026-07-30T14:10:11Z",
+    "description": "Della sells her hair to buy Jim a watch chain. Jim sells his watch to buy Della combs. O. Henry's perfect twist becomes an immortal meditation on love, sacrifice, and the gifts that matter most.",
+    "dominant_color": "#220C14",
+    "author": "O. Henry",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+    "created_at": "2026-07-03T20:07:49Z",
+    "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings that illuminate ordinary American life.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Gift of the Magi",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "8096014d30b9fa9c11a5",
+        "word_count": 2109,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-gift-of-the-magi/chapter-001?v=8096014d30b9fa9c11a5",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Gift of the Magi",
+        "index_title": "The Gift of the Magi",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-gift-of-the-magi",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-gift-of-the-magi",
+    "reader_url": "/reader/the-gift-of-the-magi",
+    "preview_url": "/reader/the-gift-of-the-magi",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Gift of the Magi",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "8096014d30b9fa9c11a5",
+      "word_count": 2109,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-gift-of-the-magi/chapter-001?v=8096014d30b9fa9c11a5",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Gift of the Magi",
+      "index_title": "The Gift of the Magi",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "8a5df9a33611e54a",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "d07b19e61b9edea2b4da",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:32.040491+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-gift-of-the-magi/manifest",
+      "total_pages": 4
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "4505f1affe31163cb5e6ef32",
+    "page_count": 4,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-gift-of-the-magi:1:9b6e0342f2188772",
+        "chapter_id": "chapter-001",
+        "content_revision": "4505f1affe31163cb5e6ef32",
+        "content_hash": "9b6e0342f2188772ff48d529a2f193362aadae88a376323a654f0e5d6b29ad60"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-gift-of-the-magi:2:fc461619e63f900d",
+        "chapter_id": "chapter-001",
+        "content_revision": "4505f1affe31163cb5e6ef32",
+        "content_hash": "fc461619e63f900d0ceb977e234a55a73f447e03d9d8a010f56f0271a3417715"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-gift-of-the-magi:3:055e8061b797eafc",
+        "chapter_id": "chapter-001",
+        "content_revision": "4505f1affe31163cb5e6ef32",
+        "content_hash": "055e8061b797eafcf12d9c254783073676ff54cc1f1d97e07ad7ef24fccdc933"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-gift-of-the-magi:4:d4a36d4f7b7082ba",
+        "chapter_id": "chapter-001",
+        "content_revision": "4505f1affe31163cb5e6ef32",
+        "content_hash": "d4a36d4f7b7082ba09da0b5308a6b85692e9dd098870d7bc5af67d43e3d88b5a"
+      }
+    ]
+  }
+}

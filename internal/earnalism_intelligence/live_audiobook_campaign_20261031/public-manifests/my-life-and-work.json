@@ -1,0 +1,2058 @@
+{
+  "book": {
+    "estimated_reading_time": "395 min",
+    "title": "My Life and Work",
+    "who_for": [
+      "Business and entrepreneurship readers",
+      "Readers interested in industrial history",
+      "Students of management, manufacturing, and company-building"
+    ],
+    "id": "controlled-my-life-and-work",
+    "back_cover_url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+    "learnings": [
+      "Historical views on production and service.",
+      "Early twentieth-century thinking on industry and management.",
+      "A source-structured text prepared for web reading."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+    "cover_url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+    "updated_at": "2026-07-03T20:07:48Z",
+    "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+    "dominant_color": "#4A1C27",
+    "author": "Henry Ford and Samuel Crowther",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a structured edition of a public-domain business memoir.",
+      "Move through the original introduction and chapter sequence.",
+      "Study historical views on production, service, wages, and industry."
+    ],
+    "about_author": "Henry Ford was an American industrialist and founder of Ford Motor Company. Samuel Crowther was an American journalist and collaborator on business and industrial books.",
+    "category_slug": "business",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "INTRODUCTION",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "6e2da32104faac15721f",
+        "word_count": 6645,
+        "reading_minutes": 28,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-001?v=6e2da32104faac15721f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Introduction",
+        "index_title": "Introduction",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "CHAPTER I. THE BEGINNING OF BUSINESS",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "c25dcb0915ea2e6d3f08",
+        "word_count": 4015,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-002?v=c25dcb0915ea2e6d3f08",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 1. The Beginning Of Business",
+        "index_title": "The Beginning Of Business",
+        "index_secondary_label": "Chapter 1"
+      },
+      {
+        "id": "chapter-003",
+        "title": "CHAPTER II. WHAT I LEARNED ABOUT BUSINESS",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "b21fdf4babf427fab0dc",
+        "word_count": 4891,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-003?v=b21fdf4babf427fab0dc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 2. What I Learned About Business",
+        "index_title": "What I Learned About Business",
+        "index_secondary_label": "Chapter 2"
+      },
+      {
+        "id": "chapter-004",
+        "title": "CHAPTER III. STARTING THE REAL BUSINESS",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "d2786b046d56d20964d7",
+        "word_count": 5684,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-004?v=d2786b046d56d20964d7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 3. Starting The Real Business",
+        "index_title": "Starting The Real Business",
+        "index_secondary_label": "Chapter 3"
+      },
+      {
+        "id": "chapter-005",
+        "title": "CHAPTER IV. THE SECRET OF MANUFACTURING AND SERVING",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "112b2f2a14cd72452068",
+        "word_count": 4325,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-005?v=112b2f2a14cd72452068",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 4. The Secret Of Manufacturing And Serving",
+        "index_title": "The Secret Of Manufacturing And Serving",
+        "index_secondary_label": "Chapter 4"
+      },
+      {
+        "id": "chapter-006",
+        "title": "CHAPTER V. GETTING INTO PRODUCTION",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "d6d60b10626f20621e62",
+        "word_count": 4559,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-006?v=d6d60b10626f20621e62",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 5. Getting Into Production",
+        "index_title": "Getting Into Production",
+        "index_secondary_label": "Chapter 5"
+      },
+      {
+        "id": "chapter-007",
+        "title": "CHAPTER VI. MACHINES AND MEN",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "b9463b27f1a9aff61ecc",
+        "word_count": 4046,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-007?v=b9463b27f1a9aff61ecc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 6. Machines And Men",
+        "index_title": "Machines And Men",
+        "index_secondary_label": "Chapter 6"
+      },
+      {
+        "id": "chapter-008",
+        "title": "CHAPTER VII. THE TERROR OF THE MACHINE",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "7bc29963575680e73a78",
+        "word_count": 4331,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-008?v=7bc29963575680e73a78",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 7. The Terror Of The Machine",
+        "index_title": "The Terror Of The Machine",
+        "index_secondary_label": "Chapter 7"
+      },
+      {
+        "id": "chapter-009",
+        "title": "CHAPTER VIII. WAGES",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "c8a4873eeef013910560",
+        "word_count": 5146,
+        "reading_minutes": 22,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-009?v=c8a4873eeef013910560",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 8. Wages",
+        "index_title": "Wages",
+        "index_secondary_label": "Chapter 8"
+      },
+      {
+        "id": "chapter-010",
+        "title": "CHAPTER IX. WHY NOT ALWAYS HAVE GOOD BUSINESS?",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "1fc420f19254df3558b2",
+        "word_count": 3269,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-010?v=1fc420f19254df3558b2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 9. Why Not Always Have Good Business?",
+        "index_title": "Why Not Always Have Good Business?",
+        "index_secondary_label": "Chapter 9"
+      },
+      {
+        "id": "chapter-011",
+        "title": "CHAPTER X. HOW CHEAPLY CAN THINGS BE MADE?",
+        "order": 11,
+        "is_preview": true,
+        "content_version": "22ec927cfaa67e5f4cea",
+        "word_count": 5007,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-011?v=22ec927cfaa67e5f4cea",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 10. How Cheaply Can Things Be Made?",
+        "index_title": "How Cheaply Can Things Be Made?",
+        "index_secondary_label": "Chapter 10"
+      },
+      {
+        "id": "chapter-012",
+        "title": "CHAPTER XI. MONEY AND GOODS",
+        "order": 12,
+        "is_preview": true,
+        "content_version": "6e56edbc547c91e3b5fe",
+        "word_count": 4263,
+        "reading_minutes": 18,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-012?v=6e56edbc547c91e3b5fe",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 11. Money And Goods",
+        "index_title": "Money And Goods",
+        "index_secondary_label": "Chapter 11"
+      },
+      {
+        "id": "chapter-013",
+        "title": "CHAPTER XII. MONEY--MASTER OR SERVANT?",
+        "order": 13,
+        "is_preview": true,
+        "content_version": "d89a18074bac5f5aaadc",
+        "word_count": 4730,
+        "reading_minutes": 20,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-013?v=d89a18074bac5f5aaadc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 12. Money--Master Or Servant?",
+        "index_title": "Money--Master Or Servant?",
+        "index_secondary_label": "Chapter 12"
+      },
+      {
+        "id": "chapter-014",
+        "title": "CHAPTER XIII. WHY BE POOR?",
+        "order": 14,
+        "is_preview": true,
+        "content_version": "973b1e6f72051d35fc45",
+        "word_count": 3573,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-014?v=973b1e6f72051d35fc45",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 13. Why Be Poor?",
+        "index_title": "Why Be Poor?",
+        "index_secondary_label": "Chapter 13"
+      },
+      {
+        "id": "chapter-015",
+        "title": "CHAPTER XIV. THE TRACTOR AND POWER FARMING",
+        "order": 15,
+        "is_preview": true,
+        "content_version": "d362a2b5d3b80d5c0547",
+        "word_count": 3501,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-015?v=d362a2b5d3b80d5c0547",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 15,
+        "index_sequence_label": "15",
+        "display_title": "Chapter 14. The Tractor And Power Farming",
+        "index_title": "The Tractor And Power Farming",
+        "index_secondary_label": "Chapter 14"
+      },
+      {
+        "id": "chapter-016",
+        "title": "CHAPTER XV. WHY CHARITY?",
+        "order": 16,
+        "is_preview": true,
+        "content_version": "84b170cacd5bf1a86311",
+        "word_count": 5215,
+        "reading_minutes": 22,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-016?v=84b170cacd5bf1a86311",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 16,
+        "index_sequence_label": "16",
+        "display_title": "Chapter 15. Why Charity?",
+        "index_title": "Why Charity?",
+        "index_secondary_label": "Chapter 15"
+      },
+      {
+        "id": "chapter-017",
+        "title": "CHAPTER XVI. THE RAILROADS",
+        "order": 17,
+        "is_preview": true,
+        "content_version": "fa0faa5fd48f90ba8850",
+        "word_count": 3852,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-017?v=fa0faa5fd48f90ba8850",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 17,
+        "index_sequence_label": "17",
+        "display_title": "Chapter 16. The Railroads",
+        "index_title": "The Railroads",
+        "index_secondary_label": "Chapter 16"
+      },
+      {
+        "id": "chapter-018",
+        "title": "CHAPTER XVII. THINGS IN GENERAL",
+        "order": 18,
+        "is_preview": true,
+        "content_version": "c9cff6e368cd2fbe8851",
+        "word_count": 6147,
+        "reading_minutes": 26,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-018?v=c9cff6e368cd2fbe8851",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 18,
+        "index_sequence_label": "18",
+        "display_title": "Chapter 17. Things In General",
+        "index_title": "Things In General",
+        "index_secondary_label": "Chapter 17"
+      },
+      {
+        "id": "chapter-019",
+        "title": "CHAPTER XVIII. DEMOCRACY AND INDUSTRY",
+        "order": 19,
+        "is_preview": true,
+        "content_version": "62a431f34a69a08896d9",
+        "word_count": 4415,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-019?v=62a431f34a69a08896d9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 19,
+        "index_sequence_label": "19",
+        "display_title": "Chapter 18. Democracy And Industry",
+        "index_title": "Democracy And Industry",
+        "index_secondary_label": "Chapter 18"
+      },
+      {
+        "id": "chapter-020",
+        "title": "CHAPTER XIX. WHAT WE MAY EXPECT",
+        "order": 20,
+        "is_preview": true,
+        "content_version": "6f154941dcfb03daedb5",
+        "word_count": 6207,
+        "reading_minutes": 26,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/my-life-and-work/chapter-020?v=6f154941dcfb03daedb5",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 20,
+        "index_sequence_label": "20",
+        "display_title": "Chapter 19. What We May Expect",
+        "index_title": "What We May Expect",
+        "index_secondary_label": "Chapter 19"
+      }
+    ],
+    "slug": "my-life-and-work",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A clean digital reading edition of Henry Ford and Samuel Crowther's business memoir.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/my-life-and-work",
+    "reader_url": "/reader/my-life-and-work",
+    "preview_url": "/reader/my-life-and-work",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "INTRODUCTION",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "6e2da32104faac15721f",
+      "word_count": 6645,
+      "reading_minutes": 28,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-001?v=6e2da32104faac15721f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Introduction",
+      "index_title": "Introduction",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER I. THE BEGINNING OF BUSINESS",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "c25dcb0915ea2e6d3f08",
+      "word_count": 4015,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-002?v=c25dcb0915ea2e6d3f08",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 1. The Beginning Of Business",
+      "index_title": "The Beginning Of Business",
+      "index_secondary_label": "Chapter 1"
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER II. WHAT I LEARNED ABOUT BUSINESS",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "b21fdf4babf427fab0dc",
+      "word_count": 4891,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-003?v=b21fdf4babf427fab0dc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 2. What I Learned About Business",
+      "index_title": "What I Learned About Business",
+      "index_secondary_label": "Chapter 2"
+    },
+    {
+      "id": "chapter-004",
+      "title": "CHAPTER III. STARTING THE REAL BUSINESS",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "d2786b046d56d20964d7",
+      "word_count": 5684,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-004?v=d2786b046d56d20964d7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 3. Starting The Real Business",
+      "index_title": "Starting The Real Business",
+      "index_secondary_label": "Chapter 3"
+    },
+    {
+      "id": "chapter-005",
+      "title": "CHAPTER IV. THE SECRET OF MANUFACTURING AND SERVING",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "112b2f2a14cd72452068",
+      "word_count": 4325,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-005?v=112b2f2a14cd72452068",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 4. The Secret Of Manufacturing And Serving",
+      "index_title": "The Secret Of Manufacturing And Serving",
+      "index_secondary_label": "Chapter 4"
+    },
+    {
+      "id": "chapter-006",
+      "title": "CHAPTER V. GETTING INTO PRODUCTION",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "d6d60b10626f20621e62",
+      "word_count": 4559,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-006?v=d6d60b10626f20621e62",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 5. Getting Into Production",
+      "index_title": "Getting Into Production",
+      "index_secondary_label": "Chapter 5"
+    },
+    {
+      "id": "chapter-007",
+      "title": "CHAPTER VI. MACHINES AND MEN",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "b9463b27f1a9aff61ecc",
+      "word_count": 4046,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-007?v=b9463b27f1a9aff61ecc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 6. Machines And Men",
+      "index_title": "Machines And Men",
+      "index_secondary_label": "Chapter 6"
+    },
+    {
+      "id": "chapter-008",
+      "title": "CHAPTER VII. THE TERROR OF THE MACHINE",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "7bc29963575680e73a78",
+      "word_count": 4331,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-008?v=7bc29963575680e73a78",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 7. The Terror Of The Machine",
+      "index_title": "The Terror Of The Machine",
+      "index_secondary_label": "Chapter 7"
+    },
+    {
+      "id": "chapter-009",
+      "title": "CHAPTER VIII. WAGES",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "c8a4873eeef013910560",
+      "word_count": 5146,
+      "reading_minutes": 22,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-009?v=c8a4873eeef013910560",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 8. Wages",
+      "index_title": "Wages",
+      "index_secondary_label": "Chapter 8"
+    },
+    {
+      "id": "chapter-010",
+      "title": "CHAPTER IX. WHY NOT ALWAYS HAVE GOOD BUSINESS?",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "1fc420f19254df3558b2",
+      "word_count": 3269,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-010?v=1fc420f19254df3558b2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 9. Why Not Always Have Good Business?",
+      "index_title": "Why Not Always Have Good Business?",
+      "index_secondary_label": "Chapter 9"
+    },
+    {
+      "id": "chapter-011",
+      "title": "CHAPTER X. HOW CHEAPLY CAN THINGS BE MADE?",
+      "order": 11,
+      "is_preview": true,
+      "content_version": "22ec927cfaa67e5f4cea",
+      "word_count": 5007,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-011?v=22ec927cfaa67e5f4cea",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 10. How Cheaply Can Things Be Made?",
+      "index_title": "How Cheaply Can Things Be Made?",
+      "index_secondary_label": "Chapter 10"
+    },
+    {
+      "id": "chapter-012",
+      "title": "CHAPTER XI. MONEY AND GOODS",
+      "order": 12,
+      "is_preview": true,
+      "content_version": "6e56edbc547c91e3b5fe",
+      "word_count": 4263,
+      "reading_minutes": 18,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-012?v=6e56edbc547c91e3b5fe",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 11. Money And Goods",
+      "index_title": "Money And Goods",
+      "index_secondary_label": "Chapter 11"
+    },
+    {
+      "id": "chapter-013",
+      "title": "CHAPTER XII. MONEY--MASTER OR SERVANT?",
+      "order": 13,
+      "is_preview": true,
+      "content_version": "d89a18074bac5f5aaadc",
+      "word_count": 4730,
+      "reading_minutes": 20,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-013?v=d89a18074bac5f5aaadc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 12. Money--Master Or Servant?",
+      "index_title": "Money--Master Or Servant?",
+      "index_secondary_label": "Chapter 12"
+    },
+    {
+      "id": "chapter-014",
+      "title": "CHAPTER XIII. WHY BE POOR?",
+      "order": 14,
+      "is_preview": true,
+      "content_version": "973b1e6f72051d35fc45",
+      "word_count": 3573,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-014?v=973b1e6f72051d35fc45",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 13. Why Be Poor?",
+      "index_title": "Why Be Poor?",
+      "index_secondary_label": "Chapter 13"
+    },
+    {
+      "id": "chapter-015",
+      "title": "CHAPTER XIV. THE TRACTOR AND POWER FARMING",
+      "order": 15,
+      "is_preview": true,
+      "content_version": "d362a2b5d3b80d5c0547",
+      "word_count": 3501,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-015?v=d362a2b5d3b80d5c0547",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 15,
+      "index_sequence_label": "15",
+      "display_title": "Chapter 14. The Tractor And Power Farming",
+      "index_title": "The Tractor And Power Farming",
+      "index_secondary_label": "Chapter 14"
+    },
+    {
+      "id": "chapter-016",
+      "title": "CHAPTER XV. WHY CHARITY?",
+      "order": 16,
+      "is_preview": true,
+      "content_version": "84b170cacd5bf1a86311",
+      "word_count": 5215,
+      "reading_minutes": 22,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-016?v=84b170cacd5bf1a86311",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 16,
+      "index_sequence_label": "16",
+      "display_title": "Chapter 15. Why Charity?",
+      "index_title": "Why Charity?",
+      "index_secondary_label": "Chapter 15"
+    },
+    {
+      "id": "chapter-017",
+      "title": "CHAPTER XVI. THE RAILROADS",
+      "order": 17,
+      "is_preview": true,
+      "content_version": "fa0faa5fd48f90ba8850",
+      "word_count": 3852,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-017?v=fa0faa5fd48f90ba8850",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 17,
+      "index_sequence_label": "17",
+      "display_title": "Chapter 16. The Railroads",
+      "index_title": "The Railroads",
+      "index_secondary_label": "Chapter 16"
+    },
+    {
+      "id": "chapter-018",
+      "title": "CHAPTER XVII. THINGS IN GENERAL",
+      "order": 18,
+      "is_preview": true,
+      "content_version": "c9cff6e368cd2fbe8851",
+      "word_count": 6147,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-018?v=c9cff6e368cd2fbe8851",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 18,
+      "index_sequence_label": "18",
+      "display_title": "Chapter 17. Things In General",
+      "index_title": "Things In General",
+      "index_secondary_label": "Chapter 17"
+    },
+    {
+      "id": "chapter-019",
+      "title": "CHAPTER XVIII. DEMOCRACY AND INDUSTRY",
+      "order": 19,
+      "is_preview": true,
+      "content_version": "62a431f34a69a08896d9",
+      "word_count": 4415,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-019?v=62a431f34a69a08896d9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 19,
+      "index_sequence_label": "19",
+      "display_title": "Chapter 18. Democracy And Industry",
+      "index_title": "Democracy And Industry",
+      "index_secondary_label": "Chapter 18"
+    },
+    {
+      "id": "chapter-020",
+      "title": "CHAPTER XIX. WHAT WE MAY EXPECT",
+      "order": 20,
+      "is_preview": true,
+      "content_version": "6f154941dcfb03daedb5",
+      "word_count": 6207,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/my-life-and-work/chapter-020?v=6f154941dcfb03daedb5",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 20,
+      "index_sequence_label": "20",
+      "display_title": "Chapter 19. What We May Expect",
+      "index_title": "What We May Expect",
+      "index_secondary_label": "Chapter 19"
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "b91345f283bf0531",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "919b8595ece9abea6cfb",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:47.424871+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/my-life-and-work/manifest",
+      "total_pages": 174
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-49002844e6106f70325af06cc1d5bbf2",
+    "content_revision": "5f48e68e388ec093d54c75f0",
+    "page_count": 174,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "my-life-and-work:1:4d6067aadd5ee8b7",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4d6067aadd5ee8b791597177fdff8e3432d1252a1864375c5638a61c539a3972"
+      },
+      {
+        "page_number": 2,
+        "page_id": "my-life-and-work:2:eaf6116ba4ee8298",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "eaf6116ba4ee8298ef28dfeaa98c12154c3cc49b9c3a4ec81b75f44756377af1"
+      },
+      {
+        "page_number": 3,
+        "page_id": "my-life-and-work:3:2160e303c3cd1eed",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2160e303c3cd1eed3cf12e7481c28783084f3ca7c4abc9a0d0c3ed0780c27ac4"
+      },
+      {
+        "page_number": 4,
+        "page_id": "my-life-and-work:4:9afe3354ebc85414",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9afe3354ebc854149fa479b1bede2825a48d412a45128ddc298abd8c42cb02da"
+      },
+      {
+        "page_number": 5,
+        "page_id": "my-life-and-work:5:6e7e9144a8787d2a",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "6e7e9144a8787d2a6ba424c71e25949fff3921716b8dab3112ff428ebf49dbe1"
+      },
+      {
+        "page_number": 6,
+        "page_id": "my-life-and-work:6:bfe55c277cab3523",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "bfe55c277cab3523cbeb6a71adf042fab4abc4cb38da19744a607f4ac5a24af4"
+      },
+      {
+        "page_number": 7,
+        "page_id": "my-life-and-work:7:608e306442fe354b",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "608e306442fe354b8a6c8924276d77e8af52226f07a57ec45dd11f611b40e37e"
+      },
+      {
+        "page_number": 8,
+        "page_id": "my-life-and-work:8:324a659cacbbd9b2",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "324a659cacbbd9b218eedbf1a27144aecbe7f0c71f67b58dfc567529a9978144"
+      },
+      {
+        "page_number": 9,
+        "page_id": "my-life-and-work:9:41e17ebeb6eda6de",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "41e17ebeb6eda6de35a32527ed5ce8714450b716010abeed9eee7cec54d889f4"
+      },
+      {
+        "page_number": 10,
+        "page_id": "my-life-and-work:10:a6512f5c1f3e302d",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a6512f5c1f3e302dc5f467bd1073ef11387e0819b140fd76708c2603e82959ed"
+      },
+      {
+        "page_number": 11,
+        "page_id": "my-life-and-work:11:eee2de12c4f9c4a8",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "eee2de12c4f9c4a83ac2eb14edb5efc66bb6c95afb633d75fc45863448faeea7"
+      },
+      {
+        "page_number": 12,
+        "page_id": "my-life-and-work:12:e77c889931da4114",
+        "chapter_id": "chapter-001",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e77c889931da41142a9bb140ed91e1de0ce287d797b08bf8b2f4072c6380339d"
+      },
+      {
+        "page_number": 13,
+        "page_id": "my-life-and-work:13:e4f589780c51f2d6",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e4f589780c51f2d6a3b67f9f1b19ae29304270859ddc4f415e72b3a0b2fd1c92"
+      },
+      {
+        "page_number": 14,
+        "page_id": "my-life-and-work:14:ce71f67516f2cacc",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ce71f67516f2caccb3b40589dc24a8d9dafc6db91420726a102e7f94c7ca9bcc"
+      },
+      {
+        "page_number": 15,
+        "page_id": "my-life-and-work:15:eff7b0f3120e60bb",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "eff7b0f3120e60bb1657270aee8a4c878303b6f2b26bbfe95cc46458724655b2"
+      },
+      {
+        "page_number": 16,
+        "page_id": "my-life-and-work:16:8b1843887ce8df99",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "8b1843887ce8df99f0f7aee1abd7ccb95d86b083761969fea1d0a4654d28559e"
+      },
+      {
+        "page_number": 17,
+        "page_id": "my-life-and-work:17:0de33dab93630c34",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0de33dab93630c34761e6c987a6f296ec8a6791c79e167b4dd3e229404c3469a"
+      },
+      {
+        "page_number": 18,
+        "page_id": "my-life-and-work:18:1dc3003987dd24e7",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1dc3003987dd24e715e65f136d977d73c73a0fb51d15ad421cdda8a60b74211e"
+      },
+      {
+        "page_number": 19,
+        "page_id": "my-life-and-work:19:754ca3ff31740be6",
+        "chapter_id": "chapter-002",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "754ca3ff31740be6c81ba0ee0ebb442aba6abacedac50d4c59bf243d373cbf96"
+      },
+      {
+        "page_number": 20,
+        "page_id": "my-life-and-work:20:0ccb76333367c049",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0ccb76333367c0497acd3cd8857a44cba415005e5171503f814cdbd00c5efd9e"
+      },
+      {
+        "page_number": 21,
+        "page_id": "my-life-and-work:21:b5067bf5a65faefb",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b5067bf5a65faefb5056a04eaa4d0878968d5669073ea78dd2daecc4c5835337"
+      },
+      {
+        "page_number": 22,
+        "page_id": "my-life-and-work:22:f04541927ddf8da1",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "f04541927ddf8da1dbaa398b6695a645554577df8eef7f2dffbe352c4ccb27fb"
+      },
+      {
+        "page_number": 23,
+        "page_id": "my-life-and-work:23:5877c0d9b2783aca",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5877c0d9b2783acaebb335d429be26e0b223ebfcafac36c38479724fff889868"
+      },
+      {
+        "page_number": 24,
+        "page_id": "my-life-and-work:24:b9cfa6f00eeef207",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b9cfa6f00eeef207633c4e1d72f0abab30541138a2974fd6c35d5d31977e2a6a"
+      },
+      {
+        "page_number": 25,
+        "page_id": "my-life-and-work:25:4bbdebb266e64ba0",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4bbdebb266e64ba08ad1b31e1b4af4f4e2c7673d527495c32e6fa3875e3c73aa"
+      },
+      {
+        "page_number": 26,
+        "page_id": "my-life-and-work:26:67fbd0335c770b5e",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "67fbd0335c770b5e14593d7dcfcb4ea5d366324ee9168360be11e588d9a86e0f"
+      },
+      {
+        "page_number": 27,
+        "page_id": "my-life-and-work:27:c80b5a3c537eb640",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "c80b5a3c537eb64080718fdaccff7eb70954f7b3223d483b9494be22a0138ec7"
+      },
+      {
+        "page_number": 28,
+        "page_id": "my-life-and-work:28:5c658e74f434b688",
+        "chapter_id": "chapter-003",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5c658e74f434b6888467a5dac50050f036a0e5d86e66d16ba2db0c843ed9c269"
+      },
+      {
+        "page_number": 29,
+        "page_id": "my-life-and-work:29:e8eb0cec1f7bd677",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e8eb0cec1f7bd677bfb6bcef8aa3639f499aad0f81f098cd3f35b0431448ea76"
+      },
+      {
+        "page_number": 30,
+        "page_id": "my-life-and-work:30:d82c97fe0752a336",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "d82c97fe0752a33616796f112be2f26813f2641a75fab396b07e59f874502e5c"
+      },
+      {
+        "page_number": 31,
+        "page_id": "my-life-and-work:31:27370096b8650c32",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "27370096b8650c325083da41814702a5327126bfcfc0008b66914d792c7eaabe"
+      },
+      {
+        "page_number": 32,
+        "page_id": "my-life-and-work:32:ed2552ccf5c5cc45",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ed2552ccf5c5cc456852aa1b78d4a1138dbc8923e2e21ba549cbef50a3af4882"
+      },
+      {
+        "page_number": 33,
+        "page_id": "my-life-and-work:33:7864b2fd0bdb460e",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7864b2fd0bdb460e872f94e64b46c2bb103f78dfb8060749dd62ff8c6c4f2e60"
+      },
+      {
+        "page_number": 34,
+        "page_id": "my-life-and-work:34:17abd2513b8144c7",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "17abd2513b8144c788c642173edbb826263cb9bb962f10e4db7f904a4dedf2b7"
+      },
+      {
+        "page_number": 35,
+        "page_id": "my-life-and-work:35:fc555128e3f83b78",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "fc555128e3f83b787270a9b702f354c561860aa412806febd131c92c6a7397ac"
+      },
+      {
+        "page_number": 36,
+        "page_id": "my-life-and-work:36:7ae33d0dfbad8d33",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7ae33d0dfbad8d3313558d70de14d2a8408cd67977686d25f8e4495b87635d36"
+      },
+      {
+        "page_number": 37,
+        "page_id": "my-life-and-work:37:adb53dfbe1a496ff",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "adb53dfbe1a496fff4ed4415b83f738bfe05c72a76bf0924373cf9ace75e3139"
+      },
+      {
+        "page_number": 38,
+        "page_id": "my-life-and-work:38:6d4fee766d2b1dc8",
+        "chapter_id": "chapter-004",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "6d4fee766d2b1dc87a683ffcbe63e1ec83eed60fb369d20d9e8fd99ca1368e81"
+      },
+      {
+        "page_number": 39,
+        "page_id": "my-life-and-work:39:7971e55c9cca0974",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7971e55c9cca0974ebb90af6b7ea7414d5b6061f228dcb91453de6a08e79aca4"
+      },
+      {
+        "page_number": 40,
+        "page_id": "my-life-and-work:40:162b1929c2893cf8",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "162b1929c2893cf8eb1dc30cd2797b3760a7563ad22ece0c5e9de1df14e6b375"
+      },
+      {
+        "page_number": 41,
+        "page_id": "my-life-and-work:41:9aa1c5ffef71e415",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9aa1c5ffef71e41555d96d4589ec647ff8adcbd70077b3602fe132c67e1a8f10"
+      },
+      {
+        "page_number": 42,
+        "page_id": "my-life-and-work:42:d05aea4cfcb2d60d",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "d05aea4cfcb2d60d7d71491af40d157746364651bdf74a4236f9d659ef2c4deb"
+      },
+      {
+        "page_number": 43,
+        "page_id": "my-life-and-work:43:e90418a8c39acb70",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e90418a8c39acb70b01d8405afec6d2910574f30e5c417e706e4f09fd477e847"
+      },
+      {
+        "page_number": 44,
+        "page_id": "my-life-and-work:44:055b17a703da5734",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "055b17a703da5734a1cb5d3fc5d9baa531ee53c29f53092ca68ea765506d0c0c"
+      },
+      {
+        "page_number": 45,
+        "page_id": "my-life-and-work:45:ef3994a9df863e9b",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ef3994a9df863e9b259db056d521953632fbc06cfab29b80bc5a28cf1d20ff4c"
+      },
+      {
+        "page_number": 46,
+        "page_id": "my-life-and-work:46:e744685affdd201c",
+        "chapter_id": "chapter-005",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e744685affdd201c1101b5bdb2e1142f00f111f12ed3e6b9cfce48226273fdd6"
+      },
+      {
+        "page_number": 47,
+        "page_id": "my-life-and-work:47:927e29421bf5c02c",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "927e29421bf5c02c7c189ccf9c915c08d7aeb2745ca7f812624817cc5ef8b025"
+      },
+      {
+        "page_number": 48,
+        "page_id": "my-life-and-work:48:4730f45f767a7c61",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4730f45f767a7c6119844ae47d09850bc33ca933e7c0767eae8c44da4fe94f34"
+      },
+      {
+        "page_number": 49,
+        "page_id": "my-life-and-work:49:a4ca4fc21825bd2c",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a4ca4fc21825bd2c440aff1e386a85b334d3135989ce4e6e96aa14bda445d322"
+      },
+      {
+        "page_number": 50,
+        "page_id": "my-life-and-work:50:212c28f057c62d51",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "212c28f057c62d51ea17de5f9d4b9a5bf9a8944247d31173234863ad37e8a418"
+      },
+      {
+        "page_number": 51,
+        "page_id": "my-life-and-work:51:4fc5b1308c97214b",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4fc5b1308c97214b745d6c4d5845e06e630433f806ea714b35d148b749464aa3"
+      },
+      {
+        "page_number": 52,
+        "page_id": "my-life-and-work:52:b181a9edfd60cbdb",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b181a9edfd60cbdb6534a1ab5b90201c65b35d7d3cd30545c515744ecdaaa533"
+      },
+      {
+        "page_number": 53,
+        "page_id": "my-life-and-work:53:a5be5edf624288ab",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a5be5edf624288ab6ca78698013f65b57e4b7c32357f786e038a0f5c1a0b3674"
+      },
+      {
+        "page_number": 54,
+        "page_id": "my-life-and-work:54:35b0acee269f2326",
+        "chapter_id": "chapter-006",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "35b0acee269f232625d3bccb36705ffccfb76ae2c024acc76660376fa89086f8"
+      },
+      {
+        "page_number": 55,
+        "page_id": "my-life-and-work:55:1bc77df2e3d4ade2",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1bc77df2e3d4ade2ff28f22f9f7100356496eeff93a679fb646139fc3b3e314f"
+      },
+      {
+        "page_number": 56,
+        "page_id": "my-life-and-work:56:7886e46695d4f686",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7886e46695d4f6864519e782b5a2ca325f4e524f67d2af8d6fb955499bd6b0ce"
+      },
+      {
+        "page_number": 57,
+        "page_id": "my-life-and-work:57:5290b1aa5f9f05dc",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5290b1aa5f9f05dc102ec388fdc630c3d1349b6f3c45ca68ee621726fd7ea834"
+      },
+      {
+        "page_number": 58,
+        "page_id": "my-life-and-work:58:7624d542b4551ecb",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7624d542b4551ecb22e13e6c75a7adc9d794f62e9ce2701110e1e3c6d3f1e2ac"
+      },
+      {
+        "page_number": 59,
+        "page_id": "my-life-and-work:59:a83ee6a74c6cc9cd",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a83ee6a74c6cc9cd691c9c8464e75af9114666ab797d6373b471b4bc9f8be702"
+      },
+      {
+        "page_number": 60,
+        "page_id": "my-life-and-work:60:17ca9dfce29dbd41",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "17ca9dfce29dbd4143a4d8dd7272112cdaa07104a70c96f05a8be372cae30b9d"
+      },
+      {
+        "page_number": 61,
+        "page_id": "my-life-and-work:61:028b1c9b810e32d8",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "028b1c9b810e32d8a999c14e4f0b43c3875dc6d1c907cf49b9ae57a507651435"
+      },
+      {
+        "page_number": 62,
+        "page_id": "my-life-and-work:62:2125d6c5d8880843",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2125d6c5d888084372f0cf1b880eee0c7789762529fb9b97f000e5333cfdf6f5"
+      },
+      {
+        "page_number": 63,
+        "page_id": "my-life-and-work:63:dd2612e1af22db34",
+        "chapter_id": "chapter-007",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "dd2612e1af22db34be6bb4a7ba463651035941eae4c7afed41afa2641c82c20c"
+      },
+      {
+        "page_number": 64,
+        "page_id": "my-life-and-work:64:520620a228adc449",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "520620a228adc44980d511e995130a9a6bcb5392476d0518010be8280a682749"
+      },
+      {
+        "page_number": 65,
+        "page_id": "my-life-and-work:65:d5ac67df0741a64b",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "d5ac67df0741a64bae7f835641fd14a54a8a36b8567be4d6b56f53a233a7aaa2"
+      },
+      {
+        "page_number": 66,
+        "page_id": "my-life-and-work:66:76d3e5ef65a4f6a8",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "76d3e5ef65a4f6a87316b2dd19ff812096f58faf622d32a02eae6636fafc56b0"
+      },
+      {
+        "page_number": 67,
+        "page_id": "my-life-and-work:67:a8a5e7c5eb4bf1a5",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a8a5e7c5eb4bf1a5e79fd2a75742f63cdca9b6380f2aa0201e3e5c5ffd5b2ba2"
+      },
+      {
+        "page_number": 68,
+        "page_id": "my-life-and-work:68:59ddf2099a4d467e",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "59ddf2099a4d467e9609c0d192559e4cb9d821777e3f4e083b4daaa58e5a0788"
+      },
+      {
+        "page_number": 69,
+        "page_id": "my-life-and-work:69:4b24076cab7b8f7e",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4b24076cab7b8f7e0044b335303e931b28a7c1b010192aff0942b17e8b2bd28c"
+      },
+      {
+        "page_number": 70,
+        "page_id": "my-life-and-work:70:0a3c030129a7f8df",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0a3c030129a7f8dfa1b3c0e64a8e8a327398ab8b8e0a42aab628b4a3da059843"
+      },
+      {
+        "page_number": 71,
+        "page_id": "my-life-and-work:71:ff122b31186b6c87",
+        "chapter_id": "chapter-008",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ff122b31186b6c87fa81ba4fb37034ccc6799dc1e019435c78c0a88be5e65115"
+      },
+      {
+        "page_number": 72,
+        "page_id": "my-life-and-work:72:0c22f59c02e37ed7",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0c22f59c02e37ed774d4e9d190e7c006d56a8cf543a51182c9783fffb73f705b"
+      },
+      {
+        "page_number": 73,
+        "page_id": "my-life-and-work:73:25aa9025fb4872bf",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "25aa9025fb4872bfc69fb63d2394078f4f04d93f040746eb4717c684df796e2d"
+      },
+      {
+        "page_number": 74,
+        "page_id": "my-life-and-work:74:68889fb26d5e5f17",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "68889fb26d5e5f17e2badc8950addcb64cc161629c07c7717bce36cf3c59222f"
+      },
+      {
+        "page_number": 75,
+        "page_id": "my-life-and-work:75:50ad84d336c5b9ff",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "50ad84d336c5b9ff43c51c9d9aeff8840e186b71bfbbe4400eec5e03fc88ed0b"
+      },
+      {
+        "page_number": 76,
+        "page_id": "my-life-and-work:76:080e0bd14361213b",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "080e0bd14361213ba25c3b31968cdfed8549da685205532ec895891e391e6430"
+      },
+      {
+        "page_number": 77,
+        "page_id": "my-life-and-work:77:b5468191bd40c991",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b5468191bd40c9916bd6862f199d7ae2dd8408676a73380b1c097b5384fdf7aa"
+      },
+      {
+        "page_number": 78,
+        "page_id": "my-life-and-work:78:e7b45a4f83688341",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e7b45a4f836883415fd3e8f38c654ddb7fe16e03599ad02c83db369bff628b27"
+      },
+      {
+        "page_number": 79,
+        "page_id": "my-life-and-work:79:cea25daa77c47381",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "cea25daa77c47381314e13e86740928e46b641bd701ee98e86e10b5c27016c3a"
+      },
+      {
+        "page_number": 80,
+        "page_id": "my-life-and-work:80:8d4c78d7ea3ba9bc",
+        "chapter_id": "chapter-009",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "8d4c78d7ea3ba9bc6a2dbc7c010851f8a6e20612ab0e6e0f10a492db16aa4185"
+      },
+      {
+        "page_number": 81,
+        "page_id": "my-life-and-work:81:4339ed574b00ef01",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4339ed574b00ef013161cb8f7d283901f387375d0be71c9e919d863d33e4d2f6"
+      },
+      {
+        "page_number": 82,
+        "page_id": "my-life-and-work:82:24377b64feb30239",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "24377b64feb3023942842bd56553b34a5316c83fe727bf9538bcb66634832bbe"
+      },
+      {
+        "page_number": 83,
+        "page_id": "my-life-and-work:83:080ff990c37c77d9",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "080ff990c37c77d9b80fc59d7c0534c942ebf469be7dd11f97189836e2d98611"
+      },
+      {
+        "page_number": 84,
+        "page_id": "my-life-and-work:84:2b2b84649e9b2a08",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2b2b84649e9b2a086a49290fa9ce8673bf013b34152395a8566c2ba357332142"
+      },
+      {
+        "page_number": 85,
+        "page_id": "my-life-and-work:85:57e24cebd57d4be4",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "57e24cebd57d4be40c57563d75cfe84bfc636e805ed866af9d3d3dcd4800486a"
+      },
+      {
+        "page_number": 86,
+        "page_id": "my-life-and-work:86:997d22b515fab221",
+        "chapter_id": "chapter-010",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "997d22b515fab221ae6807dae939b76722f868b66b7c75344abf68bc8c80fffb"
+      },
+      {
+        "page_number": 87,
+        "page_id": "my-life-and-work:87:cee5d609299382b1",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "cee5d609299382b1043b09f867b03ac161ccf201d6597556af7fdb484ff438d0"
+      },
+      {
+        "page_number": 88,
+        "page_id": "my-life-and-work:88:7d01632368c56636",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7d01632368c56636c064bf1ba216134bafe8d6c6c66ab20ac2f7b703ecb5c4f4"
+      },
+      {
+        "page_number": 89,
+        "page_id": "my-life-and-work:89:976dde8860e3d2b0",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "976dde8860e3d2b06b19c8b7f990da50157a8ff181ece862d29513e7fdedfb46"
+      },
+      {
+        "page_number": 90,
+        "page_id": "my-life-and-work:90:0209875158e3b879",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0209875158e3b879457c44c41dd4e092bb2f45d8172b986e6df237f06e537c94"
+      },
+      {
+        "page_number": 91,
+        "page_id": "my-life-and-work:91:65d8512f49e2f318",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "65d8512f49e2f318cb82c6892a6734d6b8e1119b959887ad73d56eb0f30f45b8"
+      },
+      {
+        "page_number": 92,
+        "page_id": "my-life-and-work:92:7c80e0adccf5f2be",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7c80e0adccf5f2be817238404e37716c90e17b346e31abfa70c09b7e84e9ffd4"
+      },
+      {
+        "page_number": 93,
+        "page_id": "my-life-and-work:93:ad3dbfcee67d3911",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ad3dbfcee67d3911b43967e28838f62e79a3e4c9d400ce2457e03af45adcb23e"
+      },
+      {
+        "page_number": 94,
+        "page_id": "my-life-and-work:94:ddeee9072d57a67a",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ddeee9072d57a67ac8e8566b261b24c50586774dc85b092fb6c0d4897f764cb7"
+      },
+      {
+        "page_number": 95,
+        "page_id": "my-life-and-work:95:a66e4752c0c753ba",
+        "chapter_id": "chapter-011",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a66e4752c0c753ba490df4711060f55941c5092f6fb51cf971a4a0cf0fe29bcf"
+      },
+      {
+        "page_number": 96,
+        "page_id": "my-life-and-work:96:024d11f2a9f0a80b",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "024d11f2a9f0a80bcc96fdaf0fbd5a295d2d6d581ba518edacf015b57f8f40fe"
+      },
+      {
+        "page_number": 97,
+        "page_id": "my-life-and-work:97:e28c1353e51add2d",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e28c1353e51add2d7b2cf28d3c113a8d78101306f945b3044807f0b31c0636d6"
+      },
+      {
+        "page_number": 98,
+        "page_id": "my-life-and-work:98:32de55d8cf93904c",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "32de55d8cf93904c29c071842f597ef2b25ed8cb9021026d15e8bcc337f332f0"
+      },
+      {
+        "page_number": 99,
+        "page_id": "my-life-and-work:99:1d27d054b393e32d",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1d27d054b393e32d31b4cee7e156ee690e19f490200c07c2713b48776aab481c"
+      },
+      {
+        "page_number": 100,
+        "page_id": "my-life-and-work:100:8a5f3a45995064e8",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "8a5f3a45995064e842b31b03841bfdb7bb0d0480bafe51c24769fd6fcbd33677"
+      },
+      {
+        "page_number": 101,
+        "page_id": "my-life-and-work:101:b5074bf7eaa95181",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b5074bf7eaa95181e2cecca07e4f3148fc8d92da50dc0ac5c05409354185d3bb"
+      },
+      {
+        "page_number": 102,
+        "page_id": "my-life-and-work:102:ab02d71c0b2615a8",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ab02d71c0b2615a8779dffbb529be58e4195cf1eea38bb0fcb551ca5d403f2db"
+      },
+      {
+        "page_number": 103,
+        "page_id": "my-life-and-work:103:ca5ba34f0a67e94a",
+        "chapter_id": "chapter-012",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ca5ba34f0a67e94a0fe07944fb477c72598025c4a35e15567904eccef2c0ab80"
+      },
+      {
+        "page_number": 104,
+        "page_id": "my-life-and-work:104:5819a4715eb67f13",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5819a4715eb67f134644070df88352c00aa54befa5336a0d8b664e1a68c795f7"
+      },
+      {
+        "page_number": 105,
+        "page_id": "my-life-and-work:105:b6b1ecdab38f8fb0",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b6b1ecdab38f8fb07cc7ede48c709ae720b09afc4e480525e63540aa17a84145"
+      },
+      {
+        "page_number": 106,
+        "page_id": "my-life-and-work:106:c96973a339484c58",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "c96973a339484c5874c1385aedc529087b62c68da37a6528ecdcfd7c17bb2e98"
+      },
+      {
+        "page_number": 107,
+        "page_id": "my-life-and-work:107:c5613214be32884b",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "c5613214be32884b9ec02bd59d3700d7d72df77aa05b1e08ca63db7ef509b801"
+      },
+      {
+        "page_number": 108,
+        "page_id": "my-life-and-work:108:2d92cdcfd4cbaa5a",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2d92cdcfd4cbaa5a312d1535567a95f694739927f8f805bb0eaab09d10f4fd20"
+      },
+      {
+        "page_number": 109,
+        "page_id": "my-life-and-work:109:1198b8a3a5ea5333",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1198b8a3a5ea53339d8441fc06347a54bfc3b8579c3da3736b0dc842aecfeb82"
+      },
+      {
+        "page_number": 110,
+        "page_id": "my-life-and-work:110:30c9bc344a75f535",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "30c9bc344a75f535cac530111a74239f23003e96f8ce07cf301d9db758788321"
+      },
+      {
+        "page_number": 111,
+        "page_id": "my-life-and-work:111:7bc8d6ac9264266f",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7bc8d6ac9264266fda970bbbc4334c91afcc3bf3b29971293b96a3630104e451"
+      },
+      {
+        "page_number": 112,
+        "page_id": "my-life-and-work:112:0261fdbf4002f352",
+        "chapter_id": "chapter-013",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0261fdbf4002f35295e2d3be0b13d5193efc9fb8270cf1a03332970d807ae481"
+      },
+      {
+        "page_number": 113,
+        "page_id": "my-life-and-work:113:87f35ab59f7f8cda",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "87f35ab59f7f8cda2f2a738033cca9cb888beb883f90c8a486be9441b4c868a8"
+      },
+      {
+        "page_number": 114,
+        "page_id": "my-life-and-work:114:bccf7e756b65e9e3",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "bccf7e756b65e9e3e3d54cd5b3d471ea7f1839a92fe657c254452b80fc9563e5"
+      },
+      {
+        "page_number": 115,
+        "page_id": "my-life-and-work:115:96803b4baaf19ad9",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "96803b4baaf19ad985b0f45a036553fe99cd38a80c396fe028b8361d41c708b1"
+      },
+      {
+        "page_number": 116,
+        "page_id": "my-life-and-work:116:a61746480e50b850",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "a61746480e50b85092fdb214b6048b71dd2e24c9f72412d601c81a81b4d1a383"
+      },
+      {
+        "page_number": 117,
+        "page_id": "my-life-and-work:117:5d38d73a1d554ae2",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5d38d73a1d554ae24955980a151f0307b31c2fadbf4b77c06489fd96fd06d325"
+      },
+      {
+        "page_number": 118,
+        "page_id": "my-life-and-work:118:7a6b9b1ea1776855",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7a6b9b1ea1776855563cf33b12ee80d9feaa67f0d405902cea7c8d4c0619022d"
+      },
+      {
+        "page_number": 119,
+        "page_id": "my-life-and-work:119:11ad03ae6d2fee4e",
+        "chapter_id": "chapter-014",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "11ad03ae6d2fee4e4ae779520b4ed859c408c99b11b95d66cd9b480b357c1941"
+      },
+      {
+        "page_number": 120,
+        "page_id": "my-life-and-work:120:2cdcdc6299c21f66",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2cdcdc6299c21f66f8b1df67a50c23f7630dde3c2e2378181c6e3d779dba93e7"
+      },
+      {
+        "page_number": 121,
+        "page_id": "my-life-and-work:121:1e6432c464e1f136",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1e6432c464e1f13618199ecfc764fba9663b41616fe27f2584e478e940589ad9"
+      },
+      {
+        "page_number": 122,
+        "page_id": "my-life-and-work:122:5a17bc5f2730534d",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5a17bc5f2730534d0ff35e61b2e5e0e32af5704f571af4c2113edbad544a8c77"
+      },
+      {
+        "page_number": 123,
+        "page_id": "my-life-and-work:123:e4ce013296adcd6b",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e4ce013296adcd6b7671c09a9120acc82404095e5e1eee87cf7c8c9b2f1a473a"
+      },
+      {
+        "page_number": 124,
+        "page_id": "my-life-and-work:124:d7d33725a9910761",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "d7d33725a991076110dadd8e3d1b3ccda87410b7b4065a83857fbdec3586f012"
+      },
+      {
+        "page_number": 125,
+        "page_id": "my-life-and-work:125:08935a72074117d2",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "08935a72074117d20db079d080bc5ea4d701382a6bc468bf5a9228403741e644"
+      },
+      {
+        "page_number": 126,
+        "page_id": "my-life-and-work:126:63c9a9035a7e9396",
+        "chapter_id": "chapter-015",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "63c9a9035a7e9396895feae829a900e2cb343ad6060bedb1e844b6d26c7fa6ab"
+      },
+      {
+        "page_number": 127,
+        "page_id": "my-life-and-work:127:cf6b2d5371c4468e",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "cf6b2d5371c4468e9f867bb329e9993350b533f129c5fdd5b42cc3fe4a61d984"
+      },
+      {
+        "page_number": 128,
+        "page_id": "my-life-and-work:128:157ff7d7ef2aad50",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "157ff7d7ef2aad50094f094d6b418d994bc64d3a38e4d34a5e49490dea1a7245"
+      },
+      {
+        "page_number": 129,
+        "page_id": "my-life-and-work:129:3425ba7b791e8e29",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "3425ba7b791e8e29f22312ce0dec96f20f32192b855bc881e4e1dd0797f05daa"
+      },
+      {
+        "page_number": 130,
+        "page_id": "my-life-and-work:130:2d07263eb3714c3b",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2d07263eb3714c3bb242b544d3011078aafd821553f45b26274281c10a047b98"
+      },
+      {
+        "page_number": 131,
+        "page_id": "my-life-and-work:131:19296872a02de4be",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "19296872a02de4be466acd50fd2a0c4c79e04fa1644bb52b39eda36888503fbd"
+      },
+      {
+        "page_number": 132,
+        "page_id": "my-life-and-work:132:e5df44b12b91f76b",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e5df44b12b91f76bbb46530c80004d41757b67cb372b86d6e6526c66d54690b1"
+      },
+      {
+        "page_number": 133,
+        "page_id": "my-life-and-work:133:202eed538a54e2b3",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "202eed538a54e2b3602d345f3a0338f43f8c3587043bd17914cdc3468fd8a0ff"
+      },
+      {
+        "page_number": 134,
+        "page_id": "my-life-and-work:134:b2b764d11c86afb3",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b2b764d11c86afb3e040a879ba5b76f77e57c6012f27cc8085acd0a0e500eae9"
+      },
+      {
+        "page_number": 135,
+        "page_id": "my-life-and-work:135:5e6fc4f825af8d9d",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5e6fc4f825af8d9d2013878b08d8650f00aacdac56ae2e63a3b0bdde2b99daa8"
+      },
+      {
+        "page_number": 136,
+        "page_id": "my-life-and-work:136:b40983749c383502",
+        "chapter_id": "chapter-016",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b40983749c3835024b93f389f7a91029ef711fa913acfc6a5694172c65f45b43"
+      },
+      {
+        "page_number": 137,
+        "page_id": "my-life-and-work:137:4498894fdc57758e",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4498894fdc57758e077269104770257b372c603eaf0e52688cd93f596dbfd775"
+      },
+      {
+        "page_number": 138,
+        "page_id": "my-life-and-work:138:5e727faef2e5b4ee",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5e727faef2e5b4ee085c151c09e396439dd155a712dfc4414ecd30866d507eb8"
+      },
+      {
+        "page_number": 139,
+        "page_id": "my-life-and-work:139:93b7caf4a7ff16e5",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "93b7caf4a7ff16e5fcc892401105d4b4d71d535ec09aaa10b9e9ca8c23a103b1"
+      },
+      {
+        "page_number": 140,
+        "page_id": "my-life-and-work:140:9c7ff0f4bd53815d",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9c7ff0f4bd53815df3e4ece2d50e97d857bf86307b753a42a9b7b0da353dae14"
+      },
+      {
+        "page_number": 141,
+        "page_id": "my-life-and-work:141:0bad693afdc4d062",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "0bad693afdc4d062f6060c8df842c1a21fc4e1f17cacb1300e8e76a69f6f177c"
+      },
+      {
+        "page_number": 142,
+        "page_id": "my-life-and-work:142:229fef2d2335e872",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "229fef2d2335e872b184aec8a0b5d595d1fbb118fc256ed18685c61fd8fe17fb"
+      },
+      {
+        "page_number": 143,
+        "page_id": "my-life-and-work:143:2a5e26119edc2566",
+        "chapter_id": "chapter-017",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "2a5e26119edc2566bc5cf51a6c9e8be02b1aa09c1a4c113e3854aad18a357ecc"
+      },
+      {
+        "page_number": 144,
+        "page_id": "my-life-and-work:144:f35396adb464b6dc",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "f35396adb464b6dc62c65b594d473bff7542ec0d98cc670a83699d6a72e76faf"
+      },
+      {
+        "page_number": 145,
+        "page_id": "my-life-and-work:145:1de6d8ae733be7b7",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "1de6d8ae733be7b7cc419e1775018d67ec64cae5094a85805c27637c4383d4a2"
+      },
+      {
+        "page_number": 146,
+        "page_id": "my-life-and-work:146:62ec91aa262cee74",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "62ec91aa262cee748ee98e2811fe0f36a042100d7735ae3f89555aef724dada8"
+      },
+      {
+        "page_number": 147,
+        "page_id": "my-life-and-work:147:9195df6c8e990a18",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9195df6c8e990a1880a7c4a097f71fdf56df24b08b775fd0d274e9e2e8659f8c"
+      },
+      {
+        "page_number": 148,
+        "page_id": "my-life-and-work:148:97a4530ad90ae900",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "97a4530ad90ae9002904ab7e2d9c834fe7f3902f4846d215c618b35f8f603739"
+      },
+      {
+        "page_number": 149,
+        "page_id": "my-life-and-work:149:94b79ea8ac826fad",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "94b79ea8ac826fad37d9670bc2ed8cf876f91fd1fb1c7a3de80a9420adc8531c"
+      },
+      {
+        "page_number": 150,
+        "page_id": "my-life-and-work:150:9aca8bfe4bc57379",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9aca8bfe4bc57379ca5f4cec253d0f474dfb03a6c199ed0fe2ecd5add10623f5"
+      },
+      {
+        "page_number": 151,
+        "page_id": "my-life-and-work:151:7667227a23e33d81",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7667227a23e33d81b47eaa5daa27cd7e62a54dd1f130de913bb77fd2fb2867e2"
+      },
+      {
+        "page_number": 152,
+        "page_id": "my-life-and-work:152:32368b91667e0a48",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "32368b91667e0a48db55aaa9c84ac3ef57e76f10ea5571caabde7e7f35a01171"
+      },
+      {
+        "page_number": 153,
+        "page_id": "my-life-and-work:153:50fa353316a323f6",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "50fa353316a323f6e92d95c2923f2e182910d0aadaea86f421fe07d5a2a6c59e"
+      },
+      {
+        "page_number": 154,
+        "page_id": "my-life-and-work:154:ace5ed3173bf55b6",
+        "chapter_id": "chapter-018",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ace5ed3173bf55b6f65b39762c2853d56f79237be10ee40cd73e17d846b37903"
+      },
+      {
+        "page_number": 155,
+        "page_id": "my-life-and-work:155:4a6d906466666e86",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4a6d906466666e8663cc5445f27128b8a73e3065afecf14e0cf6468fa0d00866"
+      },
+      {
+        "page_number": 156,
+        "page_id": "my-life-and-work:156:19179f31648e8ebc",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "19179f31648e8ebc4806541ad0e004d537d3fec9a3f3581292cf89122956bbb0"
+      },
+      {
+        "page_number": 157,
+        "page_id": "my-life-and-work:157:3760e682258f6f8b",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "3760e682258f6f8b8d186ed0108e2652fb0ff66eafb7d7066249d51bedb9d76c"
+      },
+      {
+        "page_number": 158,
+        "page_id": "my-life-and-work:158:ab28c958b6435a40",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ab28c958b6435a40ea7737d2c0b647cd4233a96d334b6a047596a3cf78047eb6"
+      },
+      {
+        "page_number": 159,
+        "page_id": "my-life-and-work:159:6462eadfc04e6f14",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "6462eadfc04e6f14448f62c31492312cd664ed1616fc21148c022eaeac121c96"
+      },
+      {
+        "page_number": 160,
+        "page_id": "my-life-and-work:160:45ab3715ddd3ec8c",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "45ab3715ddd3ec8cdefbd71634aa3d4b7212d492283fa2a2b8278c253915fc5e"
+      },
+      {
+        "page_number": 161,
+        "page_id": "my-life-and-work:161:9c9a79af90de5ed9",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "9c9a79af90de5ed9198ca73f3d7370739a23e421c267d773f897de4cce3e2c64"
+      },
+      {
+        "page_number": 162,
+        "page_id": "my-life-and-work:162:5963570753d2c40c",
+        "chapter_id": "chapter-019",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "5963570753d2c40cc22fe4dc45ced2db8b141edb27d802098c107ff8b6d3a292"
+      },
+      {
+        "page_number": 163,
+        "page_id": "my-life-and-work:163:bc99e06b13cd4a97",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "bc99e06b13cd4a97147218dae04313a18230ca9a2eada67b7e8ff99e64f10223"
+      },
+      {
+        "page_number": 164,
+        "page_id": "my-life-and-work:164:ad50cacfe83d0791",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "ad50cacfe83d07916209210c752ebd8a67aae644984b708a27f545e785df1e79"
+      },
+      {
+        "page_number": 165,
+        "page_id": "my-life-and-work:165:4d5b0d17bedbf123",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "4d5b0d17bedbf1232c92c490f7dc8228ada784240bd2568d17e1a59ee8c24e4f"
+      },
+      {
+        "page_number": 166,
+        "page_id": "my-life-and-work:166:e100aa417de6aaf6",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "e100aa417de6aaf6faea3b665c1ba45c0dad27c4a2cd2c62a7d56b86958a52a2"
+      },
+      {
+        "page_number": 167,
+        "page_id": "my-life-and-work:167:b233629600e62e35",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "b233629600e62e35f35a5f57f78816438b7558c7793b5a6f510566db9fc7129a"
+      },
+      {
+        "page_number": 168,
+        "page_id": "my-life-and-work:168:7f073d8d9dc62556",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "7f073d8d9dc62556121f30572df5b1c10fa7d13a58a32d8c2ec994b7b4f2a869"
+      },
+      {
+        "page_number": 169,
+        "page_id": "my-life-and-work:169:00b7db6b91a27bac",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "00b7db6b91a27bacf0ff7358fe5b3bf4a3d5deccb1944071378a42ec0a093022"
+      },
+      {
+        "page_number": 170,
+        "page_id": "my-life-and-work:170:36f719c886b8f0c0",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "36f719c886b8f0c0d9edcf0a2b2f411a45bf7780c101c05ca467612c481af82f"
+      },
+      {
+        "page_number": 171,
+        "page_id": "my-life-and-work:171:f5f9a405b14ec9e1",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "f5f9a405b14ec9e17b3bc4c1309fbee4d39e50f8819640eaea26ba241a0445c4"
+      },
+      {
+        "page_number": 172,
+        "page_id": "my-life-and-work:172:8b9ea1aaa0c03b0a",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "8b9ea1aaa0c03b0a01305291cb5792c2ea6e6ff544db52438c42c3ada3cf854a"
+      },
+      {
+        "page_number": 173,
+        "page_id": "my-life-and-work:173:492ebb19daf06acb",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "492ebb19daf06acb728f6a1fad1a3a3400f3270be82b7b13adb61b580d069c49"
+      },
+      {
+        "page_number": 174,
+        "page_id": "my-life-and-work:174:19a877dc13188f0e",
+        "chapter_id": "chapter-020",
+        "content_revision": "5f48e68e388ec093d54c75f0",
+        "content_hash": "19a877dc13188f0e338c896124c668d5fed0dda00cb8e3ce923ced3ca599c39e"
+      }
+    ]
+  }
+}

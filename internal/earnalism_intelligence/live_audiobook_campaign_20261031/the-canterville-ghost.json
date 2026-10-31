@@ -1,0 +1,124 @@
+{
+  "slug": "the-canterville-ghost",
+  "title": "The Canterville Ghost",
+  "book_id": "controlled-the-canterville-ghost",
+  "url": "https://theearnalism.com/book/the-canterville-ghost",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-15T22:23:55Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "ca7fe631cf4542626893f4492d28df0ab2923b0ab2d43fa2034e9c6c48cec2de",
+      "url": "https://theearnalism.com/api/reader/book/the-canterville-ghost/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-canterville-ghost/source_evidence.json",
+      "sha256": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-canterville-ghost/reader_manifest.json",
+      "sha256": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-canterville-ghost/rights_decision.json",
+      "sha256": "524e8fa0369ec926499ed36e0e0f17eabc45e0d38b8186d24e4c544323392f76"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-001.json",
+        "sha256": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-002.json",
+        "sha256": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-003.json",
+        "sha256": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-004.json",
+        "sha256": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-005.json",
+        "sha256": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-006.json",
+        "sha256": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-canterville-ghost/chapters/chapter-007.json",
+        "sha256": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181"
+      }
+    ],
+    "live_chapter_count": 7,
+    "live_version": "eba9aac3bef2076fc9b9",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "60aaa472625141f6",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-canterville-ghost",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

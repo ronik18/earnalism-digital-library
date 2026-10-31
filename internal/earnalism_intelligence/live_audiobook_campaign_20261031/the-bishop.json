@@ -1,0 +1,100 @@
+{
+  "slug": "the-bishop",
+  "title": "The Bishop",
+  "book_id": "controlled-the-bishop",
+  "url": "https://theearnalism.com/book/the-bishop",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-16T07:38:39Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "4fcefebbe5a5115e82dc208c85b5c978808d0b7acaee52d89a29ec30836af3ed",
+      "url": "https://theearnalism.com/api/reader/book/the-bishop/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-bishop/source_evidence.json",
+      "sha256": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-bishop/reader_manifest.json",
+      "sha256": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-bishop/rights_decision.json",
+      "sha256": "a7c73f71ad33e4ad86a73891ea170422eab20e25983d0816a69c1492b567797d"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-bishop/chapters/chapter-001.json",
+        "sha256": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "4d8d5ad9e17f22f73c2a",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "e4b87deb298d8299",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-bishop",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "book": {
+    "estimated_reading_time": "14 min",
+    "title": "A Mystery of Heroism",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-a-mystery-of-heroism",
+    "back_cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover-c68b9810a1f2e70d.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover-5145b84f8b4f87eb.jpg",
+    "updated_at": "2026-07-03T20:07:47Z",
+    "description": "Fred Collins risks his life crossing an artillery-swept field to fetch water for his regiment. He returns with the bucket full — and two lieutenants, jostling each other in greeting, spill every drop. Crane's most ironic meditation on the nature of heroism.",
+    "dominant_color": "#4A1C27",
+    "author": "Stephen Crane",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Stephen Crane (1871–1900) was an American author and journalist, pioneer of naturalism in American fiction.",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "A Mystery of Heroism",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "8c133ea95b9f6202de0a",
+        "word_count": 3413,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/a-mystery-of-heroism/chapter-001?v=8c133ea95b9f6202de0a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "A Mystery of Heroism",
+        "index_title": "A Mystery of Heroism",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "a-mystery-of-heroism",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A soldier crosses a battlefield under fire to fetch water from a well — and the bucket is spilled in the final seconds.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/a-mystery-of-heroism",
+    "reader_url": "/reader/a-mystery-of-heroism",
+    "preview_url": "/reader/a-mystery-of-heroism",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "A Mystery of Heroism",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "8c133ea95b9f6202de0a",
+      "word_count": 3413,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/a-mystery-of-heroism/chapter-001?v=8c133ea95b9f6202de0a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "A Mystery of Heroism",
+      "index_title": "A Mystery of Heroism",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "527742656ddba366",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "42b62a886d7ecf706bba",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:33.477884+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/a-mystery-of-heroism/manifest",
+      "total_pages": 7
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-b2e87475d5d43916203113c034b95385",
+    "content_revision": "7c33872ef57fb96e27fb59c1",
+    "page_count": 7,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "a-mystery-of-heroism:1:89a3076c69f7514d",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "89a3076c69f7514d5c54c0fc175e35d3f3f7b7edebf0a21e112aef79f8da6c29"
+      },
+      {
+        "page_number": 2,
+        "page_id": "a-mystery-of-heroism:2:a25027913e8245be",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "a25027913e8245befaed929d3d9726f112d5b5cea8a3c0b94f99040e8f2f8191"
+      },
+      {
+        "page_number": 3,
+        "page_id": "a-mystery-of-heroism:3:23cebcbbff55f577",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "23cebcbbff55f57719af436a3c523bfb3521ef10a32b6567993e48d93cf342f8"
+      },
+      {
+        "page_number": 4,
+        "page_id": "a-mystery-of-heroism:4:19ff420892f98679",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "19ff420892f9867971ae64a1790aeb58e94e9abdec8e454cc3bf1a1f645e0a67"
+      },
+      {
+        "page_number": 5,
+        "page_id": "a-mystery-of-heroism:5:1a3423b59bc962e6",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "1a3423b59bc962e6286e4123d8e2604634c36c9ac077074f29665bbe7d736e45"
+      },
+      {
+        "page_number": 6,
+        "page_id": "a-mystery-of-heroism:6:934c55dc5ee141b3",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "934c55dc5ee141b316ba397713328ec58aa41e1fccfdb2cf7e044ff989971f73"
+      },
+      {
+        "page_number": 7,
+        "page_id": "a-mystery-of-heroism:7:0586df089c0e097f",
+        "chapter_id": "chapter-001",
+        "content_revision": "7c33872ef57fb96e27fb59c1",
+        "content_hash": "0586df089c0e097f0017e2a935aafc0e90264487cd234b4b65dab68beb094158"
+      }
+    ]
+  }
+}

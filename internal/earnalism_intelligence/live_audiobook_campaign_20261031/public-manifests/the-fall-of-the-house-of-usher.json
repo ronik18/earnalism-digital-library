@@ -1,0 +1,275 @@
+{
+  "book": {
+    "estimated_reading_time": "30 min",
+    "title": "The Fall of the House of Usher",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-fall-of-the-house-of-usher",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+    "updated_at": "2026-08-15T22:01:46Z",
+    "description": "Roderick Usher and his twin sister Madeline are the final, degenerate heirs of a centuries-old line. Their house — a sentient structure of rot and dread — mirrors their dissolution. Poe's supreme Gothic achievement.",
+    "dominant_color": "#4A1C27",
+    "author": "Edgar Allan Poe",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, master of Gothic horror and inventor of the detective story.",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Fall of the House of Usher",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "b50b419fd58ff35dab92",
+        "word_count": 7182,
+        "reading_minutes": 30,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-fall-of-the-house-of-usher/chapter-001?v=b50b419fd58ff35dab92",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Fall of the House of Usher",
+        "index_title": "The Fall of the House of Usher",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-fall-of-the-house-of-usher",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A visitor watches the last descendants of a doomed family collapse along with their crumbling ancestral mansion.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-fall-of-the-house-of-usher",
+    "reader_url": "/reader/the-fall-of-the-house-of-usher",
+    "preview_url": "/reader/the-fall-of-the-house-of-usher",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Fall of the House of Usher",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "b50b419fd58ff35dab92",
+      "word_count": 7182,
+      "reading_minutes": 30,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-fall-of-the-house-of-usher/chapter-001?v=b50b419fd58ff35dab92",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Fall of the House of Usher",
+      "index_title": "The Fall of the House of Usher",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "6038c3a4886b89fc",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "8746d3cb970671023193",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:35.142566+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-fall-of-the-house-of-usher/manifest",
+      "total_pages": 17
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-acf957244f4f64b69f366a9dea5d1cd3",
+    "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+    "page_count": 17,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-fall-of-the-house-of-usher:1:1b20c25ca2401c79",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "1b20c25ca2401c7918e27cec68405a18f1aec309c79aed568345934c07e50df2"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-fall-of-the-house-of-usher:2:55bcb1f27fa30629",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "55bcb1f27fa30629f9024dbeaeb39a98151e4125835db8cd6f49cd54de6916a6"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-fall-of-the-house-of-usher:3:9a45cd57b62e1e1d",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "9a45cd57b62e1e1d99a46f21881ae6850bfcdb9d71818b78766edabc082a939a"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-fall-of-the-house-of-usher:4:bb6228907d4e727a",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "bb6228907d4e727ad1811d5ab817ad5b9915c126e9b49bd883303e7c3746886a"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-fall-of-the-house-of-usher:5:e6214b08870bd457",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "e6214b08870bd4575fa555cf3b92b583f9ce1409434df38e77b150665760e344"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-fall-of-the-house-of-usher:6:45d4dcd17eeb51b2",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "45d4dcd17eeb51b24d057da820f3bc42d5300317b20ea42321177d2104cf27d0"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-fall-of-the-house-of-usher:7:925e9bb9c9ea0549",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "925e9bb9c9ea0549753905ddaaf69c20c5c184770cb731f16977f171042b535b"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-fall-of-the-house-of-usher:8:3ef4d7c638e4af93",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "3ef4d7c638e4af934014fbca24070401c6eec225c549284301aa2f86d1dfdbae"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-fall-of-the-house-of-usher:9:ae53441d29655abe",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "ae53441d29655abe95f306a9e549cddc66e127877583de76fd7fca41054cb752"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-fall-of-the-house-of-usher:10:ef978d92eb0622e0",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "ef978d92eb0622e0968a868d58b3d600e31569622d0607425fdc4d77f16887a7"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-fall-of-the-house-of-usher:11:0a04106beafa84e7",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "0a04106beafa84e7fb7ce3684e32f8d9cd70786fa98dc7900925f46ab12e1ab5"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-fall-of-the-house-of-usher:12:ac9209653ee7224b",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "ac9209653ee7224b55d44e57362c6097c2739a788788dc0b40e3ee73a6c50856"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-fall-of-the-house-of-usher:13:375e000237ea6726",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "375e000237ea67263d62fbba849e5b07b7ee43f19b577c521d9c0906b3011ac8"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-fall-of-the-house-of-usher:14:849883bf3d82bfa5",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "849883bf3d82bfa5554527fb50227ee0e27cd6da2ad02a2b6f56ca65f537f8b7"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-fall-of-the-house-of-usher:15:c34d0a5eb20c8e5d",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "c34d0a5eb20c8e5d9d4756cde116df96f9f77924abf53209e59c843c1dd09f54"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-fall-of-the-house-of-usher:16:333ba693bd8d7cc7",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "333ba693bd8d7cc706ad0af6b00882c47c8d4b2fbfeec049e8286b1d5b5f3afd"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-fall-of-the-house-of-usher:17:e3cbe6c193c56590",
+        "chapter_id": "chapter-001",
+        "content_revision": "3cdf8e2b85cbb4b85afae7d0",
+        "content_hash": "e3cbe6c193c56590d67b61cf9e8e61b8f8f59cd7f63048a3e467f550e27589b5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "slug": "a-scandal-in-bohemia",
+  "title": "A Scandal in Bohemia",
+  "book_id": "controlled-a-scandal-in-bohemia",
+  "url": "https://theearnalism.com/book/a-scandal-in-bohemia",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-15T22:12:42Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "12f988a9749656247b2914db816d0f2020d3d382e87ed8bb11acb86ab0d1509c",
+      "url": "https://theearnalism.com/api/reader/book/a-scandal-in-bohemia/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/a-scandal-in-bohemia/source_evidence.json",
+      "sha256": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/a-scandal-in-bohemia/reader_manifest.json",
+      "sha256": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/a-scandal-in-bohemia/rights_decision.json",
+      "sha256": "aa958a0b5a5b66fc01006883dac34b1c61bca60b8633eac279ca8963a0f291ae"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/a-scandal-in-bohemia/chapters/chapter-001.json",
+        "sha256": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "77480b405acd1c46eafa",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "3b08083b39b546b0",
+      "updated_at": ""
+    },
+    "live_book_slug": "a-scandal-in-bohemia",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

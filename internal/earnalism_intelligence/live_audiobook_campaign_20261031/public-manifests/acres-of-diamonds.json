@@ -1,0 +1,1105 @@
+{
+  "book": {
+    "estimated_reading_time": "185 min",
+    "title": "Acres of Diamonds",
+    "who_for": [
+      "Business and entrepreneurship readers",
+      "Readers interested in opportunity and enterprise classics",
+      "Students of public speaking and practical self-culture"
+    ],
+    "id": "controlled-acres-of-diamonds",
+    "back_cover_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+    "learnings": [
+      "Historical reflections on opportunity and enterprise.",
+      "The original lecture and supporting public-domain sections.",
+      "A clean web-ready edition for focused reading."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+    "cover_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+    "updated_at": "2026-07-03T20:07:48Z",
+    "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+    "dominant_color": "#4A1C27",
+    "author": "Russell H. Conwell",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read the public-domain text without source-file boilerplate.",
+      "Navigate the source heading structure where it is reliable.",
+      "Study a classic work on opportunity, enterprise, and public service."
+    ],
+    "about_author": "Russell H. Conwell was an American minister, lawyer, lecturer, and founder of Temple University.",
+    "category_slug": "business",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "AN APPRECIATION",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "88527ec387a5e9b0eb47",
+        "word_count": 281,
+        "reading_minutes": 2,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-001?v=88527ec387a5e9b0eb47",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "An Appreciation",
+        "index_title": "An Appreciation",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "ACRES OF DIAMONDS",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "1a8363fb1bc5dd317530",
+        "word_count": 15688,
+        "reading_minutes": 66,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-002?v=1a8363fb1bc5dd317530",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Acres Of Diamonds",
+        "index_title": "Acres Of Diamonds",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "I. THE STORY OF THE SWORD",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "a28c005f16714884671a",
+        "word_count": 3088,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-003?v=a28c005f16714884671a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "I. The Story Of The Sword",
+        "index_title": "I. The Story Of The Sword",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "II. THE BEGINNING AT OLD LEXINGTON",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "f455bd85dcac1155bda2",
+        "word_count": 2907,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-004?v=f455bd85dcac1155bda2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Ii. The Beginning At Old Lexington",
+        "index_title": "Ii. The Beginning At Old Lexington",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "III. STORY OF THE FIFTY-SEVEN CENTS",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "05d467cd0f47939c7038",
+        "word_count": 1518,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-005?v=05d467cd0f47939c7038",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Iii. Story Of The Fifty-Seven Cents",
+        "index_title": "Iii. Story Of The Fifty-Seven Cents",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "IV. HIS POWER AS ORATOR AND PREACHER",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "612c076fa9d2b537b6d9",
+        "word_count": 2779,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-006?v=612c076fa9d2b537b6d9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Iv. His Power As Orator And Preacher",
+        "index_title": "Iv. His Power As Orator And Preacher",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "V. GIFT FOR INSPIRING OTHERS",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "ccc0085f10bcaa40f06d",
+        "word_count": 2886,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-007?v=ccc0085f10bcaa40f06d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "V. Gift For Inspiring Others",
+        "index_title": "V. Gift For Inspiring Others",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "VI. MILLIONS OF HEARERS",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "af885e76acedef3a8614",
+        "word_count": 3529,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-008?v=af885e76acedef3a8614",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Vi. Millions Of Hearers",
+        "index_title": "Vi. Millions Of Hearers",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "VII. HOW A UNIVERSITY WAS FOUNDED",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "ef5c209167bdc590f766",
+        "word_count": 3726,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-009?v=ef5c209167bdc590f766",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Vii. How A University Was Founded",
+        "index_title": "Vii. How A University Was Founded",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-010",
+        "title": "VIII. HIS SPLENDID EFFICIENCY",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "7157f1708c169e355116",
+        "word_count": 2838,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-010?v=7157f1708c169e355116",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Viii. His Splendid Efficiency",
+        "index_title": "Viii. His Splendid Efficiency",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-011",
+        "title": "IX. THE STORY OF ACRES OF DIAMONDS",
+        "order": 11,
+        "is_preview": true,
+        "content_version": "47387308d27ff8f89191",
+        "word_count": 2637,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-011?v=47387308d27ff8f89191",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Ix. The Story Of Acres Of Diamonds",
+        "index_title": "Ix. The Story Of Acres Of Diamonds",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-012",
+        "title": "FIFTY YEARS ON THE LECTURE PLATFORM",
+        "order": 12,
+        "is_preview": true,
+        "content_version": "9f9559622550703f2a8d",
+        "word_count": 2176,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-012?v=9f9559622550703f2a8d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Fifty Years On The Lecture Platform",
+        "index_title": "Fifty Years On The Lecture Platform",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "acres-of-diamonds",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "Our Every-day Opportunities",
+    "short_description": "A clean digital reading edition of Russell H. Conwell's public-domain lecture collection.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/acres-of-diamonds",
+    "reader_url": "/reader/acres-of-diamonds",
+    "preview_url": "/reader/acres-of-diamonds",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "AN APPRECIATION",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "88527ec387a5e9b0eb47",
+      "word_count": 281,
+      "reading_minutes": 2,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-001?v=88527ec387a5e9b0eb47",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "An Appreciation",
+      "index_title": "An Appreciation",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "ACRES OF DIAMONDS",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "1a8363fb1bc5dd317530",
+      "word_count": 15688,
+      "reading_minutes": 66,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-002?v=1a8363fb1bc5dd317530",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Acres Of Diamonds",
+      "index_title": "Acres Of Diamonds",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "I. THE STORY OF THE SWORD",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "a28c005f16714884671a",
+      "word_count": 3088,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-003?v=a28c005f16714884671a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "I. The Story Of The Sword",
+      "index_title": "I. The Story Of The Sword",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "II. THE BEGINNING AT OLD LEXINGTON",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "f455bd85dcac1155bda2",
+      "word_count": 2907,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-004?v=f455bd85dcac1155bda2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Ii. The Beginning At Old Lexington",
+      "index_title": "Ii. The Beginning At Old Lexington",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "III. STORY OF THE FIFTY-SEVEN CENTS",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "05d467cd0f47939c7038",
+      "word_count": 1518,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-005?v=05d467cd0f47939c7038",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Iii. Story Of The Fifty-Seven Cents",
+      "index_title": "Iii. Story Of The Fifty-Seven Cents",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "IV. HIS POWER AS ORATOR AND PREACHER",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "612c076fa9d2b537b6d9",
+      "word_count": 2779,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-006?v=612c076fa9d2b537b6d9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Iv. His Power As Orator And Preacher",
+      "index_title": "Iv. His Power As Orator And Preacher",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "V. GIFT FOR INSPIRING OTHERS",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "ccc0085f10bcaa40f06d",
+      "word_count": 2886,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-007?v=ccc0085f10bcaa40f06d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "V. Gift For Inspiring Others",
+      "index_title": "V. Gift For Inspiring Others",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "VI. MILLIONS OF HEARERS",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "af885e76acedef3a8614",
+      "word_count": 3529,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-008?v=af885e76acedef3a8614",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Vi. Millions Of Hearers",
+      "index_title": "Vi. Millions Of Hearers",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "VII. HOW A UNIVERSITY WAS FOUNDED",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "ef5c209167bdc590f766",
+      "word_count": 3726,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-009?v=ef5c209167bdc590f766",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Vii. How A University Was Founded",
+      "index_title": "Vii. How A University Was Founded",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-010",
+      "title": "VIII. HIS SPLENDID EFFICIENCY",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "7157f1708c169e355116",
+      "word_count": 2838,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-010?v=7157f1708c169e355116",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Viii. His Splendid Efficiency",
+      "index_title": "Viii. His Splendid Efficiency",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-011",
+      "title": "IX. THE STORY OF ACRES OF DIAMONDS",
+      "order": 11,
+      "is_preview": true,
+      "content_version": "47387308d27ff8f89191",
+      "word_count": 2637,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-011?v=47387308d27ff8f89191",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Ix. The Story Of Acres Of Diamonds",
+      "index_title": "Ix. The Story Of Acres Of Diamonds",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-012",
+      "title": "FIFTY YEARS ON THE LECTURE PLATFORM",
+      "order": 12,
+      "is_preview": true,
+      "content_version": "9f9559622550703f2a8d",
+      "word_count": 2176,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/acres-of-diamonds/chapter-012?v=9f9559622550703f2a8d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Fifty Years On The Lecture Platform",
+      "index_title": "Fifty Years On The Lecture Platform",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "aec820937c52d2a1",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "a8ffa4f8883e1c161848",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:47.102939+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/acres-of-diamonds/manifest",
+      "total_pages": 79
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-f40a580d70199d348903af65598fb8e5",
+    "content_revision": "3a948d2bb0b2890b06a1fae9",
+    "page_count": 79,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "acres-of-diamonds:1:6c3743ea24a22dc4",
+        "chapter_id": "chapter-001",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "6c3743ea24a22dc42ade99d5f3a38a9efea7fc15cc30986e6573a1320f00b5bb"
+      },
+      {
+        "page_number": 2,
+        "page_id": "acres-of-diamonds:2:b968e028d526653d",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b968e028d526653da071a6f056da8b5cbb2bd50c9eb1e53bbf74ca49af9a8a9e"
+      },
+      {
+        "page_number": 3,
+        "page_id": "acres-of-diamonds:3:137a042f169b1c92",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "137a042f169b1c9230170855ec1257b44fbad2ba715183f9e001a93a38bc5136"
+      },
+      {
+        "page_number": 4,
+        "page_id": "acres-of-diamonds:4:b664cd76057978c2",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b664cd76057978c25a90169cef76afa3d40feea09410215468ccbf09eaca25d0"
+      },
+      {
+        "page_number": 5,
+        "page_id": "acres-of-diamonds:5:db0d55e5008dce86",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "db0d55e5008dce863483463f6391f43736dc717a4a9bc894be8902b91225d6e5"
+      },
+      {
+        "page_number": 6,
+        "page_id": "acres-of-diamonds:6:718290cd92a76c37",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "718290cd92a76c379bb02abfeb6e1c8556b3b5430df7bd4b0ab569fbf0b760c7"
+      },
+      {
+        "page_number": 7,
+        "page_id": "acres-of-diamonds:7:8f8109f8e1ebc667",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "8f8109f8e1ebc667c770aa14442e7c5f0e4c76151aa91547ac7b54b568cadfe4"
+      },
+      {
+        "page_number": 8,
+        "page_id": "acres-of-diamonds:8:dd774945ffe743d4",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "dd774945ffe743d4d8f0b48452ba4fc1279a64a20f9241a93482725bc7404667"
+      },
+      {
+        "page_number": 9,
+        "page_id": "acres-of-diamonds:9:2a50f861037e06ec",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "2a50f861037e06ec0bb4d345549c82429519963fb0ba29d8b81a4b746c9d663d"
+      },
+      {
+        "page_number": 10,
+        "page_id": "acres-of-diamonds:10:b2bf9a216ea009f0",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b2bf9a216ea009f0f66feefbee9b7d9b5d427f3c2aaa1af3c9eccdb7692978a4"
+      },
+      {
+        "page_number": 11,
+        "page_id": "acres-of-diamonds:11:6c3abbead03e751d",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "6c3abbead03e751de34b99cbb0b0c076b9b838a835161945837cfc229edc4928"
+      },
+      {
+        "page_number": 12,
+        "page_id": "acres-of-diamonds:12:524313edacc70e60",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "524313edacc70e60aa043be7e145d18b811478acd646786c713ccafea19f63a1"
+      },
+      {
+        "page_number": 13,
+        "page_id": "acres-of-diamonds:13:0c7c74b5fdb7ebf8",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "0c7c74b5fdb7ebf8a57de49a9b46e1e16f4cd8ebf641ba47a49cdbab4ac4ce1f"
+      },
+      {
+        "page_number": 14,
+        "page_id": "acres-of-diamonds:14:d450a5af38de71b1",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "d450a5af38de71b19991fa508e313c0d9574539852b8058d9bdb0796f424ae6f"
+      },
+      {
+        "page_number": 15,
+        "page_id": "acres-of-diamonds:15:c854e6de9972d2dd",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "c854e6de9972d2dd44667871c377718c5e70819df54a8441c25edb4fce82b0bf"
+      },
+      {
+        "page_number": 16,
+        "page_id": "acres-of-diamonds:16:64f8b6030ecb0d8c",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "64f8b6030ecb0d8cdf0b45efa654a9cb88707df7b245df283feef7e91cdf420d"
+      },
+      {
+        "page_number": 17,
+        "page_id": "acres-of-diamonds:17:0999efd5f24593e7",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "0999efd5f24593e72bf9ed090e8edde24afa98eb209b58ec0e152e0c0bc1d3f6"
+      },
+      {
+        "page_number": 18,
+        "page_id": "acres-of-diamonds:18:b62c4bfdefb6775e",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b62c4bfdefb6775e76020e339a1ceaa0d5d4ebaad2b23dd22944fe4a61c25915"
+      },
+      {
+        "page_number": 19,
+        "page_id": "acres-of-diamonds:19:7219d8741ae47112",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "7219d8741ae471123492e9c62324be6d58e2ca800ac32551c7ea88a0954d521b"
+      },
+      {
+        "page_number": 20,
+        "page_id": "acres-of-diamonds:20:5f6c3ec7035967da",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "5f6c3ec7035967dac9ef244460b5f609e4d3a458d3430a1f1a1f301de4b2db5f"
+      },
+      {
+        "page_number": 21,
+        "page_id": "acres-of-diamonds:21:56d4816d75369bf4",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "56d4816d75369bf492e6f71bed2092db56b786af29769ba9fe09fe0084989777"
+      },
+      {
+        "page_number": 22,
+        "page_id": "acres-of-diamonds:22:69ec2371266ffb59",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "69ec2371266ffb5953e9d0014a71a0d535fc34308a05ba06180368e7faa5f9e0"
+      },
+      {
+        "page_number": 23,
+        "page_id": "acres-of-diamonds:23:03be1efaf79de15b",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "03be1efaf79de15bca9656181a538fe445911fcb7dba3e0c394a178dbf33d4a0"
+      },
+      {
+        "page_number": 24,
+        "page_id": "acres-of-diamonds:24:521c4e2f54cc0b48",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "521c4e2f54cc0b480c13b7508d4622c0fcf39a70719b42630ae8c59bfc69a396"
+      },
+      {
+        "page_number": 25,
+        "page_id": "acres-of-diamonds:25:ab6620eeca92b09b",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "ab6620eeca92b09b763b35e854a1dd066eef3f78b7bef572230fac71655f4550"
+      },
+      {
+        "page_number": 26,
+        "page_id": "acres-of-diamonds:26:8b34f16a37708160",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "8b34f16a3770816097ed8aed27a7b23e7fb2b25bca6dce72b9ceb0ca9b91aec3"
+      },
+      {
+        "page_number": 27,
+        "page_id": "acres-of-diamonds:27:84c6c04bc239a77d",
+        "chapter_id": "chapter-002",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "84c6c04bc239a77dabde00a9a1ef579fd934584156b3fc06b864b69b6e9a2c4d"
+      },
+      {
+        "page_number": 28,
+        "page_id": "acres-of-diamonds:28:09b1631d66b3271c",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "09b1631d66b3271c34291bb29cf61358c3792d2712b35c2807af20b211e472ff"
+      },
+      {
+        "page_number": 29,
+        "page_id": "acres-of-diamonds:29:05d9ce6936be2b96",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "05d9ce6936be2b968c67c2bef093191191480996d67b2a9ea77b5258b3ac1df4"
+      },
+      {
+        "page_number": 30,
+        "page_id": "acres-of-diamonds:30:e11c91b816ba765a",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "e11c91b816ba765ae1d05c817d039876490bba7e976b85609097a220fb4cc1b6"
+      },
+      {
+        "page_number": 31,
+        "page_id": "acres-of-diamonds:31:0c0f7b1d9028b03f",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "0c0f7b1d9028b03f6e82643187384088d5011996080a105fce4274d6c800cb1d"
+      },
+      {
+        "page_number": 32,
+        "page_id": "acres-of-diamonds:32:e809e19f5fd86b30",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "e809e19f5fd86b30e297bf11503c487ca2547a0102122c27ba26984103c5e5e7"
+      },
+      {
+        "page_number": 33,
+        "page_id": "acres-of-diamonds:33:fd27be97cb52e8a6",
+        "chapter_id": "chapter-003",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "fd27be97cb52e8a6d613781cb72e83fd8157d4f0fb532c0b194bd8719378f016"
+      },
+      {
+        "page_number": 34,
+        "page_id": "acres-of-diamonds:34:a3680ce705e8adf6",
+        "chapter_id": "chapter-004",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "a3680ce705e8adf6bdc069bf83d20f8fa774477d28eb354aba1560d419173e4b"
+      },
+      {
+        "page_number": 35,
+        "page_id": "acres-of-diamonds:35:4ad4955af25e51aa",
+        "chapter_id": "chapter-004",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "4ad4955af25e51aae8847d00588267d50f2fcd2c4b309df11e1ded85d6860033"
+      },
+      {
+        "page_number": 36,
+        "page_id": "acres-of-diamonds:36:d0970232056183a1",
+        "chapter_id": "chapter-004",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "d0970232056183a1b4d324cfc12a977d9f58121666f601ae42de03006cfee1fb"
+      },
+      {
+        "page_number": 37,
+        "page_id": "acres-of-diamonds:37:7391ae79f213bef5",
+        "chapter_id": "chapter-004",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "7391ae79f213bef579d6b20ae9f0fe95930e5f514b3df78c1282d7aa5cf42707"
+      },
+      {
+        "page_number": 38,
+        "page_id": "acres-of-diamonds:38:3816fd3890d511cd",
+        "chapter_id": "chapter-004",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "3816fd3890d511cd19d5cdf63ee51e6c3800b2cdf0445ef9b4892efa1b2058a7"
+      },
+      {
+        "page_number": 39,
+        "page_id": "acres-of-diamonds:39:c294a2ece296aaca",
+        "chapter_id": "chapter-005",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "c294a2ece296aaca90d5e8571fd7491070d65b6a05275c3109a1f074712e37c1"
+      },
+      {
+        "page_number": 40,
+        "page_id": "acres-of-diamonds:40:866cc9a8c8628e77",
+        "chapter_id": "chapter-005",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "866cc9a8c8628e77ceef1396378d673577b8263a91edec1a506a23593b8c2e87"
+      },
+      {
+        "page_number": 41,
+        "page_id": "acres-of-diamonds:41:c28848b95d0a3093",
+        "chapter_id": "chapter-005",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "c28848b95d0a30930fcb676d3cd0863677e3b9156b77b5cd012d56aa3723ad3d"
+      },
+      {
+        "page_number": 42,
+        "page_id": "acres-of-diamonds:42:e3ab4127b18e4996",
+        "chapter_id": "chapter-006",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "e3ab4127b18e49965ad33b0740ea249fb9e320c091a2009fa711a346159b8813"
+      },
+      {
+        "page_number": 43,
+        "page_id": "acres-of-diamonds:43:b283b6c4592f8a30",
+        "chapter_id": "chapter-006",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b283b6c4592f8a30f6eeebeaee5d34e555c206e8790403dcde9d25278cce62e1"
+      },
+      {
+        "page_number": 44,
+        "page_id": "acres-of-diamonds:44:46250eef9a88de52",
+        "chapter_id": "chapter-006",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "46250eef9a88de5267621a392889a4295d5751586fb8bf834523af692b9aaaf3"
+      },
+      {
+        "page_number": 45,
+        "page_id": "acres-of-diamonds:45:3f8cd61754f422ba",
+        "chapter_id": "chapter-006",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "3f8cd61754f422baacca5c5bdc1e4b67336f515156682cd95e9e1c6a5900174b"
+      },
+      {
+        "page_number": 46,
+        "page_id": "acres-of-diamonds:46:65add36e4b78b319",
+        "chapter_id": "chapter-006",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "65add36e4b78b3190e6100f533822534dd7e031e8d4e54b464084521b4dc2999"
+      },
+      {
+        "page_number": 47,
+        "page_id": "acres-of-diamonds:47:3e26c11623cd3149",
+        "chapter_id": "chapter-007",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "3e26c11623cd3149c5415dd91a9dd2c607e15b6c7fda643b26e10ff8bdb66e9e"
+      },
+      {
+        "page_number": 48,
+        "page_id": "acres-of-diamonds:48:3293cfaf7816a754",
+        "chapter_id": "chapter-007",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "3293cfaf7816a754d1de7b6f0ee72c85257cf3bfdbe772e003785b30e87b49a3"
+      },
+      {
+        "page_number": 49,
+        "page_id": "acres-of-diamonds:49:b1b1daf4d604c883",
+        "chapter_id": "chapter-007",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "b1b1daf4d604c8832db567689c5a23605bea80d2d82d5f04df9148955294475e"
+      },
+      {
+        "page_number": 50,
+        "page_id": "acres-of-diamonds:50:5a7365dc0edfe486",
+        "chapter_id": "chapter-007",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "5a7365dc0edfe486a2b97f7c24fcfd308eb4f54f993c71cd3cff32979a014149"
+      },
+      {
+        "page_number": 51,
+        "page_id": "acres-of-diamonds:51:fc986f726ec491e3",
+        "chapter_id": "chapter-007",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "fc986f726ec491e30b0658cfece77cafd066396512e348f981a8951048283b4f"
+      },
+      {
+        "page_number": 52,
+        "page_id": "acres-of-diamonds:52:47a5574f408a1964",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "47a5574f408a196471c5887d47a6cf07c5cc57d8274af3ade9fee8c784150bb7"
+      },
+      {
+        "page_number": 53,
+        "page_id": "acres-of-diamonds:53:fdf47fb283568584",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "fdf47fb283568584fd3793f349b231cba15e7ae038576df72fa892bd2dab9c4d"
+      },
+      {
+        "page_number": 54,
+        "page_id": "acres-of-diamonds:54:0a93c0910c27f1bc",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "0a93c0910c27f1bceb5f190906229a90695f4d4b37b4c0270bce0a2f1df59737"
+      },
+      {
+        "page_number": 55,
+        "page_id": "acres-of-diamonds:55:8c4109881ffe971a",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "8c4109881ffe971af6e1c3d4f1d0990ba88974d577c7b27723563c3196507c7d"
+      },
+      {
+        "page_number": 56,
+        "page_id": "acres-of-diamonds:56:7460f9663deddd8a",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "7460f9663deddd8aeb40153e433add9aac87e60393d5802f64f8e8fcd5fe7da7"
+      },
+      {
+        "page_number": 57,
+        "page_id": "acres-of-diamonds:57:e15199a7733c87b3",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "e15199a7733c87b3a7aad5c67346ce10a0b5e12d1fd0848c53c19951006c391e"
+      },
+      {
+        "page_number": 58,
+        "page_id": "acres-of-diamonds:58:4d87bd9dd31f8cc2",
+        "chapter_id": "chapter-008",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "4d87bd9dd31f8cc252f443992945249090354a1937cf69c08587e9ea6b992f39"
+      },
+      {
+        "page_number": 59,
+        "page_id": "acres-of-diamonds:59:896137153831a361",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "896137153831a3615c50c72a10cbc9490c16c10d3a2209d247fd6c5392fad150"
+      },
+      {
+        "page_number": 60,
+        "page_id": "acres-of-diamonds:60:a468a00a2e9947cb",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "a468a00a2e9947cb27af1ec1812d9e07cba578587bd778a1ff4ae08fec094ee2"
+      },
+      {
+        "page_number": 61,
+        "page_id": "acres-of-diamonds:61:9bb44951143c5106",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "9bb44951143c510643e6846f43f50f912f06a23819de13cdb705d7dac6d606ce"
+      },
+      {
+        "page_number": 62,
+        "page_id": "acres-of-diamonds:62:5afae47e40985292",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "5afae47e40985292f25ea2af96e84f5e5b40d8e4c5422cceeeda55da1fc7b61f"
+      },
+      {
+        "page_number": 63,
+        "page_id": "acres-of-diamonds:63:ab020cb1c378a5e9",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "ab020cb1c378a5e943111ccfada2ae617c5f4314470a4bdbbcdfb59167cd8f49"
+      },
+      {
+        "page_number": 64,
+        "page_id": "acres-of-diamonds:64:cb7720fa1d0f204c",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "cb7720fa1d0f204cb82a30e455c73e1ce359a6d14c66b181113723745fcdba55"
+      },
+      {
+        "page_number": 65,
+        "page_id": "acres-of-diamonds:65:ab3fa6682a0aa2cd",
+        "chapter_id": "chapter-009",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "ab3fa6682a0aa2cd2e978dd4f89b0574690d6c93796a85926af0e41bb82e403c"
+      },
+      {
+        "page_number": 66,
+        "page_id": "acres-of-diamonds:66:3e6d7ef8d78b5b2a",
+        "chapter_id": "chapter-010",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "3e6d7ef8d78b5b2aa49c239594941fe6378400b1477f57acebb9900ed2c02505"
+      },
+      {
+        "page_number": 67,
+        "page_id": "acres-of-diamonds:67:f4609e1076c7af42",
+        "chapter_id": "chapter-010",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "f4609e1076c7af4216fdca5a66d4c5e250dd8ce408234f198b73e9240bdcc085"
+      },
+      {
+        "page_number": 68,
+        "page_id": "acres-of-diamonds:68:24809b98264502f0",
+        "chapter_id": "chapter-010",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "24809b98264502f0896b5b27d35177a5904e24c277d46bdb8b8b0bdcdabc1a74"
+      },
+      {
+        "page_number": 69,
+        "page_id": "acres-of-diamonds:69:127f5b334dc1446d",
+        "chapter_id": "chapter-010",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "127f5b334dc1446d4d832f14255ad5690ef5a61acbc1e54fdf7ef27caf565ba6"
+      },
+      {
+        "page_number": 70,
+        "page_id": "acres-of-diamonds:70:7a611becdb1999ab",
+        "chapter_id": "chapter-010",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "7a611becdb1999ab484eece5567a95102f60508f56123b5cd26ae8dde4cc59ba"
+      },
+      {
+        "page_number": 71,
+        "page_id": "acres-of-diamonds:71:86363efa94227e62",
+        "chapter_id": "chapter-011",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "86363efa94227e627426157b8c3a2f2229d42aba564c8c4b035550803abd1557"
+      },
+      {
+        "page_number": 72,
+        "page_id": "acres-of-diamonds:72:055cb122cd37584a",
+        "chapter_id": "chapter-011",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "055cb122cd37584a4b7d122767b16f64dc2816b4994f4a87c1a02cd67a111843"
+      },
+      {
+        "page_number": 73,
+        "page_id": "acres-of-diamonds:73:d22d306f6bf74c3f",
+        "chapter_id": "chapter-011",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "d22d306f6bf74c3fbe11ac25cf740e7f386af260db0fd0958ffc3f6c2fd32539"
+      },
+      {
+        "page_number": 74,
+        "page_id": "acres-of-diamonds:74:2b0dc23c8b661a79",
+        "chapter_id": "chapter-011",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "2b0dc23c8b661a79e02c80cf943b4a0b9acd5b6effe80e3898150d26330f1643"
+      },
+      {
+        "page_number": 75,
+        "page_id": "acres-of-diamonds:75:eb88cf45e1720e7f",
+        "chapter_id": "chapter-011",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "eb88cf45e1720e7fd0d145bb92707f0b97963af691fd23ad107cb4c6642e327f"
+      },
+      {
+        "page_number": 76,
+        "page_id": "acres-of-diamonds:76:77533be7065cb7bf",
+        "chapter_id": "chapter-012",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "77533be7065cb7bf83a81e4e1254a18611d40352bc677d8d5d4e3b533ec4f3cb"
+      },
+      {
+        "page_number": 77,
+        "page_id": "acres-of-diamonds:77:6dc65c70cfb44302",
+        "chapter_id": "chapter-012",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "6dc65c70cfb443026ce78ed6a904096501eb971e1e29ece1c28d1b4bdb49b1c6"
+      },
+      {
+        "page_number": 78,
+        "page_id": "acres-of-diamonds:78:f7c8ecfaf6f08e11",
+        "chapter_id": "chapter-012",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "f7c8ecfaf6f08e117b82ab887323a18d4cef0408aefa3771c4161a2c9e090cde"
+      },
+      {
+        "page_number": 79,
+        "page_id": "acres-of-diamonds:79:6bb27ddb6ee5f78d",
+        "chapter_id": "chapter-012",
+        "content_revision": "3a948d2bb0b2890b06a1fae9",
+        "content_hash": "6bb27ddb6ee5f78d9056be5bc0e326fcdb6925231eeecc235156654745b31729"
+      }
+    ]
+  }
+}

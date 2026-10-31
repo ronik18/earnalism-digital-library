@@ -1,0 +1,778 @@
+{
+  "book": {
+    "estimated_reading_time": "135 min",
+    "title": "The Call of the Wild",
+    "who_for": [
+      "Readers of classic literature",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-call-of-the-wild",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-back-8d86df17.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+    "learnings": [
+      "Understand the major themes and narrative structure of the work.",
+      "Engage with historically important public-domain literature.",
+      "Read the original English text without modern adaptation material."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-back-8d86df17.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+    "updated_at": "2026-07-03T20:07:48Z",
+    "description": "This cleaned text-only public-domain edition is prepared for structured digital reading on Earnalism.",
+    "dominant_color": "#4A1C27",
+    "author": "Jack London",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared public-domain classic.",
+      "Enjoy a clean, distraction-free digital reading format.",
+      "Explore enduring themes from classic literature."
+    ],
+    "about_author": "Jack London was an American novelist, journalist, and short story writer known for adventure fiction and naturalist themes.",
+    "category_slug": "adventure",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Chapter I. Into the Primitive",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "f4a61563d0f1285d3623",
+        "word_count": 3780,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-001?v=f4a61563d0f1285d3623",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Chapter 1. Into the Primitive",
+        "index_title": "Into the Primitive",
+        "index_secondary_label": "Chapter 1"
+      },
+      {
+        "id": "chapter-002",
+        "title": "Chapter II. The Law of Club and Fang",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "50df88e1e5a8fe983b46",
+        "word_count": 3335,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-002?v=50df88e1e5a8fe983b46",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 2. The Law of Club and Fang",
+        "index_title": "The Law of Club and Fang",
+        "index_secondary_label": "Chapter 2"
+      },
+      {
+        "id": "chapter-003",
+        "title": "Chapter III. The Dominant Primordial Beast",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "269c149d740aad078983",
+        "word_count": 5183,
+        "reading_minutes": 22,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-003?v=269c149d740aad078983",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 3. The Dominant Primordial Beast",
+        "index_title": "The Dominant Primordial Beast",
+        "index_secondary_label": "Chapter 3"
+      },
+      {
+        "id": "chapter-004",
+        "title": "Chapter IV. Who Has Won to Mastership",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "00d5e1682546e022bf71",
+        "word_count": 3233,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-004?v=00d5e1682546e022bf71",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 4. Who Has Won to Mastership",
+        "index_title": "Who Has Won to Mastership",
+        "index_secondary_label": "Chapter 4"
+      },
+      {
+        "id": "chapter-005",
+        "title": "Chapter V. The Toil of Trace and Trail",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "2bc2362ed9699ad4d34c",
+        "word_count": 5409,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-005?v=2bc2362ed9699ad4d34c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 5. The Toil of Trace and Trail",
+        "index_title": "The Toil of Trace and Trail",
+        "index_secondary_label": "Chapter 5"
+      },
+      {
+        "id": "chapter-006",
+        "title": "Chapter VI. For the Love of a Man",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "67f24a73267db3cd9dcd",
+        "word_count": 4805,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-006?v=67f24a73267db3cd9dcd",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 6. For the Love of a Man",
+        "index_title": "For the Love of a Man",
+        "index_secondary_label": "Chapter 6"
+      },
+      {
+        "id": "chapter-007",
+        "title": "Chapter VII. The Sounding of the Call",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "7eaf66862844affc89d4",
+        "word_count": 6256,
+        "reading_minutes": 27,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-007?v=7eaf66862844affc89d4",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 7. The Sounding of the Call",
+        "index_title": "The Sounding of the Call",
+        "index_secondary_label": "Chapter 7"
+      }
+    ],
+    "slug": "the-call-of-the-wild",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "An adventure story following Buck's transformation from domesticated dog to wild survivor.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-call-of-the-wild",
+    "reader_url": "/reader/the-call-of-the-wild",
+    "preview_url": "/reader/the-call-of-the-wild",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Chapter I. Into the Primitive",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "f4a61563d0f1285d3623",
+      "word_count": 3780,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-001?v=f4a61563d0f1285d3623",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Chapter 1. Into the Primitive",
+      "index_title": "Into the Primitive",
+      "index_secondary_label": "Chapter 1"
+    },
+    {
+      "id": "chapter-002",
+      "title": "Chapter II. The Law of Club and Fang",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "50df88e1e5a8fe983b46",
+      "word_count": 3335,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-002?v=50df88e1e5a8fe983b46",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 2. The Law of Club and Fang",
+      "index_title": "The Law of Club and Fang",
+      "index_secondary_label": "Chapter 2"
+    },
+    {
+      "id": "chapter-003",
+      "title": "Chapter III. The Dominant Primordial Beast",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "269c149d740aad078983",
+      "word_count": 5183,
+      "reading_minutes": 22,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-003?v=269c149d740aad078983",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 3. The Dominant Primordial Beast",
+      "index_title": "The Dominant Primordial Beast",
+      "index_secondary_label": "Chapter 3"
+    },
+    {
+      "id": "chapter-004",
+      "title": "Chapter IV. Who Has Won to Mastership",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "00d5e1682546e022bf71",
+      "word_count": 3233,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-004?v=00d5e1682546e022bf71",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 4. Who Has Won to Mastership",
+      "index_title": "Who Has Won to Mastership",
+      "index_secondary_label": "Chapter 4"
+    },
+    {
+      "id": "chapter-005",
+      "title": "Chapter V. The Toil of Trace and Trail",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "2bc2362ed9699ad4d34c",
+      "word_count": 5409,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-005?v=2bc2362ed9699ad4d34c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 5. The Toil of Trace and Trail",
+      "index_title": "The Toil of Trace and Trail",
+      "index_secondary_label": "Chapter 5"
+    },
+    {
+      "id": "chapter-006",
+      "title": "Chapter VI. For the Love of a Man",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "67f24a73267db3cd9dcd",
+      "word_count": 4805,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-006?v=67f24a73267db3cd9dcd",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 6. For the Love of a Man",
+      "index_title": "For the Love of a Man",
+      "index_secondary_label": "Chapter 6"
+    },
+    {
+      "id": "chapter-007",
+      "title": "Chapter VII. The Sounding of the Call",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "7eaf66862844affc89d4",
+      "word_count": 6256,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-call-of-the-wild/chapter-007?v=7eaf66862844affc89d4",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 7. The Sounding of the Call",
+      "index_title": "The Sounding of the Call",
+      "index_secondary_label": "Chapter 7"
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "5030f5c455c8614f",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "9df4bfc444deb0b655e5",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:40.206678+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-call-of-the-wild/manifest",
+      "total_pages": 58
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "606ed98e2f0dc802ba2e014f",
+    "page_count": 58,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-call-of-the-wild:1:e0111dfa9f854173",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "e0111dfa9f8541736b4b15e62ff31dd418b9d0b48e7626ea1255466cf0361e96"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-call-of-the-wild:2:47f92d5df4294765",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "47f92d5df4294765e8b077552c3284f99a0ecea5147f4f050e3a8ea8a4484fb9"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-call-of-the-wild:3:2e0075bc3d2bcbe7",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "2e0075bc3d2bcbe71926e0a5daaac9c4ab8e3673d2bd45736f7a4c98b657d9f7"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-call-of-the-wild:4:e98383cdaa0d171e",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "e98383cdaa0d171e89facbf02740b90c0f807e5c894f7d43939ec551428e1cd8"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-call-of-the-wild:5:f5dff2050e8fe8ae",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "f5dff2050e8fe8ae209929b60e5d90938295e0944516db41ca76f1d43a693751"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-call-of-the-wild:6:ae07033c0072a247",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "ae07033c0072a2474f5ae00254a1878a7cd59ce8791b35598b048b4856b1656a"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-call-of-the-wild:7:d69ba9151e9eb612",
+        "chapter_id": "chapter-001",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "d69ba9151e9eb6126ddb3f59041092fa19df4abe7994585cc5165a7cf9d1fa0e"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-call-of-the-wild:8:137ed21299ea233e",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "137ed21299ea233e959f70f2e178f289a0e0ae49e2939a2dcadcb38ed00f3fe2"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-call-of-the-wild:9:60fcb446ba6760ce",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "60fcb446ba6760ce37605965658a96befa6b3c814976744a0858fc73038fc3d4"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-call-of-the-wild:10:8bdb36790f3b48d4",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "8bdb36790f3b48d4b4664eb0bdf775115a0661083f40cc1f53883b096af8cfd2"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-call-of-the-wild:11:5fa7b3784ef2a41b",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "5fa7b3784ef2a41b2db2e39e1a70c56a3eaa51714cba80ee022f6db32956ce7c"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-call-of-the-wild:12:994527c1f4406133",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "994527c1f4406133404a61de22dffbac8b74d565d9b336b959bd25418605f9c1"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-call-of-the-wild:13:684aa61506e4a206",
+        "chapter_id": "chapter-002",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "684aa61506e4a206d14fae7f6e14933b0c8ac668f04971de22c16ae5467d814c"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-call-of-the-wild:14:7c31ba197e7f1db0",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "7c31ba197e7f1db0efb4103a39bcba36659a91356b8be91d0ba30fc1cd18c34f"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-call-of-the-wild:15:43270648e9bc6f26",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "43270648e9bc6f261c9fa9c1e54e08126d3a1260fa486f1bd9a725f286aea4e4"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-call-of-the-wild:16:0e3ec23a396bd253",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "0e3ec23a396bd2533a4289f2a1a2ca8a420f6d36b492cf7f570337191251299d"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-call-of-the-wild:17:ad74debb168c1a69",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "ad74debb168c1a69acc6bff587e12bf88ed987c277d4f702045ac207689261a4"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-call-of-the-wild:18:af28f47d1babd31d",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "af28f47d1babd31d27c6a3baaca4c3ea131f9cb305d8574a8ae4b6b95d72b660"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-call-of-the-wild:19:c469fa6013fa783c",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "c469fa6013fa783c91f22cb88a4819eaac75dab03529d385ad2541adbd4f3ac5"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-call-of-the-wild:20:35a0a6005a8f4615",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "35a0a6005a8f4615eac14d30227d7f8c633089b7597eade6e59888ae1b322305"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-call-of-the-wild:21:a0d6a626cff9cda2",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "a0d6a626cff9cda2ab96bbb312fcac896bdd008181ab72eccff4be50086d418f"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-call-of-the-wild:22:0210a202b29b9d07",
+        "chapter_id": "chapter-003",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "0210a202b29b9d0773ba7d382478c573f6073f14fe44e638b6c1b5e391f23848"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-call-of-the-wild:23:38cced0863601916",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "38cced0863601916cb51940b0b2e9ba13332ea46074df67037792c296e2e70f2"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-call-of-the-wild:24:3c193d7bb34394e9",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "3c193d7bb34394e979c7ad7eff51d16e0303f7be14f927df7c4bda4ed4b3c2bc"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-call-of-the-wild:25:744ef6053851badb",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "744ef6053851badb6d55db548045706f52ae8ac0aaafc5c04571677976c0378a"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-call-of-the-wild:26:46b942233111fb90",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "46b942233111fb90200cf9682e2a70df16c4641489f76329d038d8e9d17e53cd"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-call-of-the-wild:27:fbee663d038769b9",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "fbee663d038769b9f596f37bc3e4959aba03d5cf8f4b393bc4c641537f3be896"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-call-of-the-wild:28:dafc102a77044e33",
+        "chapter_id": "chapter-004",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "dafc102a77044e338e2558703ec3e60381087b475b228515e45f727aa0d5345d"
+      },
+      {
+        "page_number": 29,
+        "page_id": "the-call-of-the-wild:29:40af3fab241a9439",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "40af3fab241a94394a4937310f2f784a873f53fc5d2f143a4bd466ce9608fa1a"
+      },
+      {
+        "page_number": 30,
+        "page_id": "the-call-of-the-wild:30:dfd815449607d651",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "dfd815449607d651d0764148317b19db24f0e98e15cfa52d523d9f99cdfc3efb"
+      },
+      {
+        "page_number": 31,
+        "page_id": "the-call-of-the-wild:31:7ba2dc64180c7d1d",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "7ba2dc64180c7d1d75170a560ab838c6c16e184ebbe5d8f263f5cbc5db680a1d"
+      },
+      {
+        "page_number": 32,
+        "page_id": "the-call-of-the-wild:32:1d983aa10738ebb6",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "1d983aa10738ebb6e79086c9863e8319f2a490c1518c0342e8126368bb1f6132"
+      },
+      {
+        "page_number": 33,
+        "page_id": "the-call-of-the-wild:33:9d78e0130e6fc510",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "9d78e0130e6fc5109df2bd3cbbb7286b0a4d156a8bbbf5eb0114c67f47fe2fed"
+      },
+      {
+        "page_number": 34,
+        "page_id": "the-call-of-the-wild:34:2e80dc57759882ae",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "2e80dc57759882aefef45b75ae13514c2d10a3e58a1971ad9ed37a87e9c55c65"
+      },
+      {
+        "page_number": 35,
+        "page_id": "the-call-of-the-wild:35:768409f3276627e2",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "768409f3276627e2de06bb400dd9e3c138de5d39bc1b6cb824b87d455f8e19e3"
+      },
+      {
+        "page_number": 36,
+        "page_id": "the-call-of-the-wild:36:4283ad285ea346da",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "4283ad285ea346da609f163ca34916a1b6d10afb99b04f0279537c20519f2e7e"
+      },
+      {
+        "page_number": 37,
+        "page_id": "the-call-of-the-wild:37:bc3bd51242235273",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "bc3bd51242235273e78d6f103f6d93234683913fddb13b98ee2849717ab6a229"
+      },
+      {
+        "page_number": 38,
+        "page_id": "the-call-of-the-wild:38:8ece55b7daf471f5",
+        "chapter_id": "chapter-005",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "8ece55b7daf471f5804803b7715c034c6aef8f784f90ff1973f7de116e977e63"
+      },
+      {
+        "page_number": 39,
+        "page_id": "the-call-of-the-wild:39:d81b0fa34aa8c7b0",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "d81b0fa34aa8c7b0ba8d639cf88bcc71fc814469241b69ae1df39321d1a0998c"
+      },
+      {
+        "page_number": 40,
+        "page_id": "the-call-of-the-wild:40:6ca7d172d4090771",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "6ca7d172d40907711017ddcf756e96bb74252a12873686c88182301b76da1043"
+      },
+      {
+        "page_number": 41,
+        "page_id": "the-call-of-the-wild:41:cb8d35bf75a0aa1a",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "cb8d35bf75a0aa1a3267c663156e55bb49ea8c5a7c1eefe654d9c3913b561a84"
+      },
+      {
+        "page_number": 42,
+        "page_id": "the-call-of-the-wild:42:d2bb89bf4cf47d17",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "d2bb89bf4cf47d1773f57a574b2a08e56a73b974b347d4df996dd2d51435131e"
+      },
+      {
+        "page_number": 43,
+        "page_id": "the-call-of-the-wild:43:09acd9afc8adcacf",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "09acd9afc8adcacf124a82f6a0dd6122a97b5040d3405b7baa1fc8ffe357091a"
+      },
+      {
+        "page_number": 44,
+        "page_id": "the-call-of-the-wild:44:248f25c018d29c31",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "248f25c018d29c3156f69e9c5e0c37bd5d5ac08d20f40c5dcf6324d48428bf84"
+      },
+      {
+        "page_number": 45,
+        "page_id": "the-call-of-the-wild:45:bee41a0b23030b81",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "bee41a0b23030b81685243904ef8201b0a1849f4016e57d60845444ec8881e25"
+      },
+      {
+        "page_number": 46,
+        "page_id": "the-call-of-the-wild:46:8915d3fb9c9551d4",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "8915d3fb9c9551d4423d1b1fac9bb07efbbf25d344ece7fb86782f9d12e644fc"
+      },
+      {
+        "page_number": 47,
+        "page_id": "the-call-of-the-wild:47:a6d7a6149a398fa3",
+        "chapter_id": "chapter-006",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "a6d7a6149a398fa372a34e9670de054a0deabc511e7b0dc0b6b01aa13e8bf3d5"
+      },
+      {
+        "page_number": 48,
+        "page_id": "the-call-of-the-wild:48:a56a2703c8162525",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "a56a2703c816252589398a6809233aece56a7b78072a84122b3f9d95c1f2c672"
+      },
+      {
+        "page_number": 49,
+        "page_id": "the-call-of-the-wild:49:4e73b1d3192de59f",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "4e73b1d3192de59f07e37077be8616dbe9fa6ad3ed4e26a9d5873f3ed33af673"
+      },
+      {
+        "page_number": 50,
+        "page_id": "the-call-of-the-wild:50:d0b7697a048aeaa8",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "d0b7697a048aeaa814f79b443d1c6eabbe6b7de4f6ed79eadee7e4526d572536"
+      },
+      {
+        "page_number": 51,
+        "page_id": "the-call-of-the-wild:51:80d311db70c89d92",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "80d311db70c89d929bb8e68c4df4d5fc89c33ccc66cff85476548dc5a681fdf5"
+      },
+      {
+        "page_number": 52,
+        "page_id": "the-call-of-the-wild:52:4da07841ad784789",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "4da07841ad7847891682e3ca21ff4dfdd243f2b586c36f8094dfb6d62b3a9e59"
+      },
+      {
+        "page_number": 53,
+        "page_id": "the-call-of-the-wild:53:c8751b731c51fbf6",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "c8751b731c51fbf6e4a775f2303767b6a3893d609b7856f373083011fe69e271"
+      },
+      {
+        "page_number": 54,
+        "page_id": "the-call-of-the-wild:54:7cb14ef0e5666693",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "7cb14ef0e56666937a3fe0f0e077e06f9dabf1014a2764bf684e300e984d67cb"
+      },
+      {
+        "page_number": 55,
+        "page_id": "the-call-of-the-wild:55:19a2d9135a5b302c",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "19a2d9135a5b302c43a0f10e92dbde59aee36683b9c910fd19bf9577899c7dd6"
+      },
+      {
+        "page_number": 56,
+        "page_id": "the-call-of-the-wild:56:98ab8e5211744a19",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "98ab8e5211744a19e5b558616672202c7f061656ddc3ead0aa21fe78f999e655"
+      },
+      {
+        "page_number": 57,
+        "page_id": "the-call-of-the-wild:57:82b612d83554af55",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "82b612d83554af55f0467a43709b275956c763124c6ef4fd9d194d1b9f4469d8"
+      },
+      {
+        "page_number": 58,
+        "page_id": "the-call-of-the-wild:58:1b79e09be17425c1",
+        "chapter_id": "chapter-007",
+        "content_revision": "606ed98e2f0dc802ba2e014f",
+        "content_hash": "1b79e09be17425c103ac06525961dc1361b9586e3fbf05e335ea76f92c668ca2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2011 @@
+{
+  "book": {
+    "estimated_reading_time": "328 min",
+    "title": "The Enchanted April",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-enchanted-april",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+    "updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "description": "Four strangers — two bored wives, a widow, and an elderly recluse — rent a medieval Italian castle and discover that wisteria, sunshine, and freedom from ordinary life can remake even the most guarded soul.",
+    "dominant_color": "#4A1C27",
+    "author": "Elizabeth von Arnim",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Elizabeth von Arnim (1866–1941) was an Australian-British author celebrated for her witty, luminous novels of female independence and transformation.",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Chapter 1",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "ac0cac8632d145a6cd49",
+        "word_count": 4969,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-001?v=ac0cac8632d145a6cd49",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Chapter 1",
+        "index_title": "Chapter 1",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "Chapter 2",
+        "order": 2,
+        "is_preview": false,
+        "content_version": "a9c78b5ab6804f5cec22",
+        "word_count": 2594,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-002?v=a9c78b5ab6804f5cec22",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 2",
+        "index_title": "Chapter 2",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "Chapter 3",
+        "order": 3,
+        "is_preview": false,
+        "content_version": "6bcf12f475ef852f7c26",
+        "word_count": 3506,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-003?v=6bcf12f475ef852f7c26",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 3",
+        "index_title": "Chapter 3",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "Chapter 4",
+        "order": 4,
+        "is_preview": false,
+        "content_version": "b1d736bbce45c57f714f",
+        "word_count": 2024,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-004?v=b1d736bbce45c57f714f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 4",
+        "index_title": "Chapter 4",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "Chapter 5",
+        "order": 5,
+        "is_preview": false,
+        "content_version": "c9cd55a9220aa83bbf73",
+        "word_count": 3251,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-005?v=c9cd55a9220aa83bbf73",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 5",
+        "index_title": "Chapter 5",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "Chapter 6",
+        "order": 6,
+        "is_preview": false,
+        "content_version": "e43ac7515bb3d465c2ff",
+        "word_count": 4443,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-006?v=e43ac7515bb3d465c2ff",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 6",
+        "index_title": "Chapter 6",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "Chapter 7",
+        "order": 7,
+        "is_preview": false,
+        "content_version": "6228647e4f1b2c1e82fd",
+        "word_count": 2663,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-007?v=6228647e4f1b2c1e82fd",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 7",
+        "index_title": "Chapter 7",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "Chapter 8",
+        "order": 8,
+        "is_preview": false,
+        "content_version": "436feb8d4078b26e7888",
+        "word_count": 4964,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-008?v=436feb8d4078b26e7888",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 8",
+        "index_title": "Chapter 8",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "Chapter 9",
+        "order": 9,
+        "is_preview": false,
+        "content_version": "a05e399a543c49eb8cc0",
+        "word_count": 3524,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-009?v=a05e399a543c49eb8cc0",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 9",
+        "index_title": "Chapter 9",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-010",
+        "title": "Chapter 10",
+        "order": 10,
+        "is_preview": false,
+        "content_version": "0b509a7d5ecebc4fbacf",
+        "word_count": 3159,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-010?v=0b509a7d5ecebc4fbacf",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 10",
+        "index_title": "Chapter 10",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-011",
+        "title": "Chapter 11",
+        "order": 11,
+        "is_preview": false,
+        "content_version": "36cdb72f89a331187919",
+        "word_count": 2886,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-011?v=36cdb72f89a331187919",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 11",
+        "index_title": "Chapter 11",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-012",
+        "title": "Chapter 12",
+        "order": 12,
+        "is_preview": false,
+        "content_version": "4a234459ae9035c074f9",
+        "word_count": 4301,
+        "reading_minutes": 18,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-012?v=4a234459ae9035c074f9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 12",
+        "index_title": "Chapter 12",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-013",
+        "title": "Chapter 13",
+        "order": 13,
+        "is_preview": false,
+        "content_version": "da82192dee01931abf98",
+        "word_count": 5326,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-013?v=da82192dee01931abf98",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 13",
+        "index_title": "Chapter 13",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-014",
+        "title": "Chapter 14",
+        "order": 14,
+        "is_preview": false,
+        "content_version": "e396526fc3cd5d964a69",
+        "word_count": 3751,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-014?v=e396526fc3cd5d964a69",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 14",
+        "index_title": "Chapter 14",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-015",
+        "title": "Chapter 15",
+        "order": 15,
+        "is_preview": false,
+        "content_version": "9ea82d8cc0f64ddf0baa",
+        "word_count": 3994,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-015?v=9ea82d8cc0f64ddf0baa",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 15,
+        "index_sequence_label": "15",
+        "display_title": "Chapter 15",
+        "index_title": "Chapter 15",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-016",
+        "title": "Chapter 16",
+        "order": 16,
+        "is_preview": false,
+        "content_version": "ddef2c2d703af5617fee",
+        "word_count": 3969,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-016?v=ddef2c2d703af5617fee",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 16,
+        "index_sequence_label": "16",
+        "display_title": "Chapter 16",
+        "index_title": "Chapter 16",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-017",
+        "title": "Chapter 17",
+        "order": 17,
+        "is_preview": false,
+        "content_version": "1fc7a65bfed1f714c806",
+        "word_count": 3029,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-017?v=1fc7a65bfed1f714c806",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 17,
+        "index_sequence_label": "17",
+        "display_title": "Chapter 17",
+        "index_title": "Chapter 17",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-018",
+        "title": "Chapter 18",
+        "order": 18,
+        "is_preview": false,
+        "content_version": "01686fed27cc819c175b",
+        "word_count": 3312,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-018?v=01686fed27cc819c175b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 18,
+        "index_sequence_label": "18",
+        "display_title": "Chapter 18",
+        "index_title": "Chapter 18",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-019",
+        "title": "Chapter 19",
+        "order": 19,
+        "is_preview": false,
+        "content_version": "21b8ef58566fd1ef65a7",
+        "word_count": 3850,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-019?v=21b8ef58566fd1ef65a7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 19,
+        "index_sequence_label": "19",
+        "display_title": "Chapter 19",
+        "index_title": "Chapter 19",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-020",
+        "title": "Chapter 20",
+        "order": 20,
+        "is_preview": false,
+        "content_version": "87bef1bb26816b609eea",
+        "word_count": 2052,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-020?v=87bef1bb26816b609eea",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 20,
+        "index_sequence_label": "20",
+        "display_title": "Chapter 20",
+        "index_title": "Chapter 20",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-021",
+        "title": "Chapter 21",
+        "order": 21,
+        "is_preview": false,
+        "content_version": "9b2dec3ab0960add6112",
+        "word_count": 3344,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-021?v=9b2dec3ab0960add6112",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 21,
+        "index_sequence_label": "21",
+        "display_title": "Chapter 21",
+        "index_title": "Chapter 21",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-022",
+        "title": "Chapter 22",
+        "order": 22,
+        "is_preview": false,
+        "content_version": "b68101389f791e596e87",
+        "word_count": 3794,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-enchanted-april/chapter-022?v=b68101389f791e596e87",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 22,
+        "index_sequence_label": "22",
+        "display_title": "Chapter 22",
+        "index_title": "Chapter 22",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-enchanted-april",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "Complete Edition",
+    "short_description": "Four unhappy English women rent an Italian castle for April and find themselves unexpectedly transformed by beauty.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-enchanted-april",
+    "reader_url": "/reader/the-enchanted-april",
+    "preview_url": "/reader/the-enchanted-april",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Chapter 1",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "ac0cac8632d145a6cd49",
+      "word_count": 4969,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-001?v=ac0cac8632d145a6cd49",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Chapter 1",
+      "index_title": "Chapter 1",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "Chapter 2",
+      "order": 2,
+      "is_preview": false,
+      "content_version": "a9c78b5ab6804f5cec22",
+      "word_count": 2594,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-002?v=a9c78b5ab6804f5cec22",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 2",
+      "index_title": "Chapter 2",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "Chapter 3",
+      "order": 3,
+      "is_preview": false,
+      "content_version": "6bcf12f475ef852f7c26",
+      "word_count": 3506,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-003?v=6bcf12f475ef852f7c26",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 3",
+      "index_title": "Chapter 3",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "Chapter 4",
+      "order": 4,
+      "is_preview": false,
+      "content_version": "b1d736bbce45c57f714f",
+      "word_count": 2024,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-004?v=b1d736bbce45c57f714f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 4",
+      "index_title": "Chapter 4",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "Chapter 5",
+      "order": 5,
+      "is_preview": false,
+      "content_version": "c9cd55a9220aa83bbf73",
+      "word_count": 3251,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-005?v=c9cd55a9220aa83bbf73",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 5",
+      "index_title": "Chapter 5",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "Chapter 6",
+      "order": 6,
+      "is_preview": false,
+      "content_version": "e43ac7515bb3d465c2ff",
+      "word_count": 4443,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-006?v=e43ac7515bb3d465c2ff",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 6",
+      "index_title": "Chapter 6",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "Chapter 7",
+      "order": 7,
+      "is_preview": false,
+      "content_version": "6228647e4f1b2c1e82fd",
+      "word_count": 2663,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-007?v=6228647e4f1b2c1e82fd",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 7",
+      "index_title": "Chapter 7",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "Chapter 8",
+      "order": 8,
+      "is_preview": false,
+      "content_version": "436feb8d4078b26e7888",
+      "word_count": 4964,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-008?v=436feb8d4078b26e7888",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 8",
+      "index_title": "Chapter 8",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "Chapter 9",
+      "order": 9,
+      "is_preview": false,
+      "content_version": "a05e399a543c49eb8cc0",
+      "word_count": 3524,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-009?v=a05e399a543c49eb8cc0",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 9",
+      "index_title": "Chapter 9",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-010",
+      "title": "Chapter 10",
+      "order": 10,
+      "is_preview": false,
+      "content_version": "0b509a7d5ecebc4fbacf",
+      "word_count": 3159,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-010?v=0b509a7d5ecebc4fbacf",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 10",
+      "index_title": "Chapter 10",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-011",
+      "title": "Chapter 11",
+      "order": 11,
+      "is_preview": false,
+      "content_version": "36cdb72f89a331187919",
+      "word_count": 2886,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-011?v=36cdb72f89a331187919",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 11",
+      "index_title": "Chapter 11",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-012",
+      "title": "Chapter 12",
+      "order": 12,
+      "is_preview": false,
+      "content_version": "4a234459ae9035c074f9",
+      "word_count": 4301,
+      "reading_minutes": 18,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-012?v=4a234459ae9035c074f9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 12",
+      "index_title": "Chapter 12",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-013",
+      "title": "Chapter 13",
+      "order": 13,
+      "is_preview": false,
+      "content_version": "da82192dee01931abf98",
+      "word_count": 5326,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-013?v=da82192dee01931abf98",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 13",
+      "index_title": "Chapter 13",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-014",
+      "title": "Chapter 14",
+      "order": 14,
+      "is_preview": false,
+      "content_version": "e396526fc3cd5d964a69",
+      "word_count": 3751,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-014?v=e396526fc3cd5d964a69",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 14",
+      "index_title": "Chapter 14",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-015",
+      "title": "Chapter 15",
+      "order": 15,
+      "is_preview": false,
+      "content_version": "9ea82d8cc0f64ddf0baa",
+      "word_count": 3994,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-015?v=9ea82d8cc0f64ddf0baa",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 15,
+      "index_sequence_label": "15",
+      "display_title": "Chapter 15",
+      "index_title": "Chapter 15",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-016",
+      "title": "Chapter 16",
+      "order": 16,
+      "is_preview": false,
+      "content_version": "ddef2c2d703af5617fee",
+      "word_count": 3969,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-016?v=ddef2c2d703af5617fee",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 16,
+      "index_sequence_label": "16",
+      "display_title": "Chapter 16",
+      "index_title": "Chapter 16",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-017",
+      "title": "Chapter 17",
+      "order": 17,
+      "is_preview": false,
+      "content_version": "1fc7a65bfed1f714c806",
+      "word_count": 3029,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-017?v=1fc7a65bfed1f714c806",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 17,
+      "index_sequence_label": "17",
+      "display_title": "Chapter 17",
+      "index_title": "Chapter 17",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-018",
+      "title": "Chapter 18",
+      "order": 18,
+      "is_preview": false,
+      "content_version": "01686fed27cc819c175b",
+      "word_count": 3312,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-018?v=01686fed27cc819c175b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 18,
+      "index_sequence_label": "18",
+      "display_title": "Chapter 18",
+      "index_title": "Chapter 18",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-019",
+      "title": "Chapter 19",
+      "order": 19,
+      "is_preview": false,
+      "content_version": "21b8ef58566fd1ef65a7",
+      "word_count": 3850,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-019?v=21b8ef58566fd1ef65a7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 19,
+      "index_sequence_label": "19",
+      "display_title": "Chapter 19",
+      "index_title": "Chapter 19",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-020",
+      "title": "Chapter 20",
+      "order": 20,
+      "is_preview": false,
+      "content_version": "87bef1bb26816b609eea",
+      "word_count": 2052,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-020?v=87bef1bb26816b609eea",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 20,
+      "index_sequence_label": "20",
+      "display_title": "Chapter 20",
+      "index_title": "Chapter 20",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-021",
+      "title": "Chapter 21",
+      "order": 21,
+      "is_preview": false,
+      "content_version": "9b2dec3ab0960add6112",
+      "word_count": 3344,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-021?v=9b2dec3ab0960add6112",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 21,
+      "index_sequence_label": "21",
+      "display_title": "Chapter 21",
+      "index_title": "Chapter 21",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-022",
+      "title": "Chapter 22",
+      "order": 22,
+      "is_preview": false,
+      "content_version": "b68101389f791e596e87",
+      "word_count": 3794,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-enchanted-april/chapter-022?v=b68101389f791e596e87",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 22,
+      "index_sequence_label": "22",
+      "display_title": "Chapter 22",
+      "index_title": "Chapter 22",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "fd325022f02ec45a",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "f19f76667879cb83c6de",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:37.301387+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-enchanted-april/manifest",
+      "total_pages": 157
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-2645e5780f76a50d9ca2c44b2291ee43",
+    "content_revision": "081ecf451460e84e580a81e0",
+    "page_count": 157,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-enchanted-april:1:cd4676dd1fe39705",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "cd4676dd1fe39705ccd3a13a72ef32599aaddaf7939fde711f08f8752aa27fdc"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-enchanted-april:2:a796d607b97d9119",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "a796d607b97d9119b141aeb493e513b26bc35668a7cfd5fc8faee7d272cf980f"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-enchanted-april:3:ff5518c41e9a5347",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ff5518c41e9a53471cbbf81c081e46a4e6e4c028d2371488111f4ffcf4d174f4"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-enchanted-april:4:67df7810bb635161",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "67df7810bb635161b24c2d1fc4336ce7b1ad980febad6e79a2e4dcabd99f8188"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-enchanted-april:5:29da6c60edc147c0",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "29da6c60edc147c03977c4166be564c3ac6d10c391ffa1d9a33335b8ee42295d"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-enchanted-april:6:e5e749b3bd7831a3",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "e5e749b3bd7831a3d95862f505ff7d36d9f82caf7bb456c6361e5bbefa0c8d05"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-enchanted-april:7:4e10478c912f5f26",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4e10478c912f5f2642b77323b8e86027c32bdc9d703aef72b60b2f98015fd7b0"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-enchanted-april:8:15cd18e999679562",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "15cd18e999679562088d180ef27e25f4474a6db995b655c93e1b0cbfc8264177"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-enchanted-april:9:a4b2ba10f263cfc4",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "a4b2ba10f263cfc477d35fef8405a89fc1759204ee5178af3458a25ef5818604"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-enchanted-april:10:ae8683172bd37eb8",
+        "chapter_id": "chapter-001",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ae8683172bd37eb889107c3331196e1b368f4f9fe2bca134d3ab03c51d65b155"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-enchanted-april:11:be67eb6043beb6f1",
+        "chapter_id": "chapter-002",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "be67eb6043beb6f16c81cef3991672d8464403ab5e74989f52c5130a8ea4d68b"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-enchanted-april:12:c9b9a5ae5a19e134",
+        "chapter_id": "chapter-002",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c9b9a5ae5a19e1340479ec04c6e1b05258774612f0122feaf871f2985a0037d0"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-enchanted-april:13:c2c555e81d41c8f9",
+        "chapter_id": "chapter-002",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c2c555e81d41c8f924cf5b7c1c2507a5e5fef3262e1db1942d9a789b60a749e4"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-enchanted-april:14:8666aaa80a5e86d0",
+        "chapter_id": "chapter-002",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "8666aaa80a5e86d0701231c565b25f2eff2791a33ea0bbd682393e2268abdbc3"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-enchanted-april:15:2545c6c88038d89a",
+        "chapter_id": "chapter-002",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "2545c6c88038d89a15c9f050b51ce246bd32c5c310a83d9cd0a8970c37241f84"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-enchanted-april:16:47366d59f33df010",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "47366d59f33df0107f2668195b32eb1fbfb0357be9a82f63442e3a1a397912f0"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-enchanted-april:17:e8cc370a87e31daa",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "e8cc370a87e31daa62aa3e332ab94d3d8d8acdea931ec339cc3b68dd6898ab90"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-enchanted-april:18:143f5f3df3ec57cd",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "143f5f3df3ec57cd2aff1207f44b96cb1f0a2bee397cdcce737deba1d37e4502"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-enchanted-april:19:feabd7d38f7849d3",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "feabd7d38f7849d3dd52de895410f7d752eae82681a0033f53c1368bac486bf5"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-enchanted-april:20:f5a1114fa8890206",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f5a1114fa8890206c300940ff03996156f42f042a3093300e4ddacded1e575ad"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-enchanted-april:21:51038ba3028223b9",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "51038ba3028223b99fa46506b923e4d4cdcd690db30b0d777ee078f854d24ea7"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-enchanted-april:22:9ac6a6f403cc3945",
+        "chapter_id": "chapter-003",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "9ac6a6f403cc394577e115822334d9121fcd828c40bcadfd113122cb8aae65e3"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-enchanted-april:23:51e5ce1d6b0a7aca",
+        "chapter_id": "chapter-004",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "51e5ce1d6b0a7aca60a5a05fc9a372553b6f666350f8ac2a107e0da5b6cf3805"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-enchanted-april:24:735e093c0430a87a",
+        "chapter_id": "chapter-004",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "735e093c0430a87a693816752096933935e0046a95972d02cd9ee90ca9312f4d"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-enchanted-april:25:4a761c6078e1fa6e",
+        "chapter_id": "chapter-004",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4a761c6078e1fa6ee268c6473cfe44a43a6e5e12c9126433ea992388ef3759d2"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-enchanted-april:26:dec8fa14aa98161e",
+        "chapter_id": "chapter-004",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "dec8fa14aa98161e2b1036e72e4cefcd81156be1931177193120f7dc86d22140"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-enchanted-april:27:d543b2c3676af2d2",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "d543b2c3676af2d2fa592e2ab0440cec0892a6a9d47481cd52e922fb0cea4ecf"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-enchanted-april:28:fe13ba073536e7f6",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "fe13ba073536e7f65153285e79c7f607c3cd154292513a33fe09e3e76f332b22"
+      },
+      {
+        "page_number": 29,
+        "page_id": "the-enchanted-april:29:c359ed2110ff8f2d",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c359ed2110ff8f2d4ecdd756134aa1f75b5243b99e5027dda380e31744739703"
+      },
+      {
+        "page_number": 30,
+        "page_id": "the-enchanted-april:30:f449ccad8618f6c8",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f449ccad8618f6c8b891594f934b9487f3b5e8c4fdc7080f44e82942062017b8"
+      },
+      {
+        "page_number": 31,
+        "page_id": "the-enchanted-april:31:b9e965e97ce8687b",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b9e965e97ce8687bc67d8866428cf636dff90aafa7f37cd21e66026669809e7b"
+      },
+      {
+        "page_number": 32,
+        "page_id": "the-enchanted-april:32:c8457d2144988bc4",
+        "chapter_id": "chapter-005",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c8457d2144988bc40a2356223280ebf32d3575cd6d6de9523864ec73ea67625e"
+      },
+      {
+        "page_number": 33,
+        "page_id": "the-enchanted-april:33:a19d18ac758850d7",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "a19d18ac758850d7744d57596a1c0bfbf7af2a58d91f1f9c4bdca95cac2aa29e"
+      },
+      {
+        "page_number": 34,
+        "page_id": "the-enchanted-april:34:fa255f3686eb8ac4",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "fa255f3686eb8ac401321d47592c5fe4af790b50466adb5b297780b1268d9532"
+      },
+      {
+        "page_number": 35,
+        "page_id": "the-enchanted-april:35:cf02aa7b78402e4a",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "cf02aa7b78402e4a0adba61baf7a7722d46f5aaebb02c838907c42684e004db5"
+      },
+      {
+        "page_number": 36,
+        "page_id": "the-enchanted-april:36:b061f6baa7c83e3b",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b061f6baa7c83e3b14a720ba17e6c9f7ec2bea8dc4b57880ca5026920824a65e"
+      },
+      {
+        "page_number": 37,
+        "page_id": "the-enchanted-april:37:aee9ade8f333f6f5",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "aee9ade8f333f6f5d0440cff190ba6a678ec2d89d6fc63bc15c111c1f93d0dd9"
+      },
+      {
+        "page_number": 38,
+        "page_id": "the-enchanted-april:38:529763746ff4d539",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "529763746ff4d539b73b53785b9ef9acadb99678f231869aa8b8a425d91332ab"
+      },
+      {
+        "page_number": 39,
+        "page_id": "the-enchanted-april:39:319a0ba9e1e9691e",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "319a0ba9e1e9691e6bae7f7770333dcd04e2979ea11b302697ad6844720483e3"
+      },
+      {
+        "page_number": 40,
+        "page_id": "the-enchanted-april:40:5dfc3817e8818f68",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "5dfc3817e8818f6822a3925905ba972f9f7721ec26735fbe0e284d3c0c05bbe7"
+      },
+      {
+        "page_number": 41,
+        "page_id": "the-enchanted-april:41:569c71ea03684b8b",
+        "chapter_id": "chapter-006",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "569c71ea03684b8be192db45dadb76b0c84e92dc1dfc0c03aaf8149b25285317"
+      },
+      {
+        "page_number": 42,
+        "page_id": "the-enchanted-april:42:b567472cd71958cd",
+        "chapter_id": "chapter-007",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b567472cd71958cdbc4771026bf605b6cac6477059300a637ec3416055002ef8"
+      },
+      {
+        "page_number": 43,
+        "page_id": "the-enchanted-april:43:976b791edffd8a76",
+        "chapter_id": "chapter-007",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "976b791edffd8a76a5bd7dbb54686906309802dae441316bc0fe6576dbfb32b6"
+      },
+      {
+        "page_number": 44,
+        "page_id": "the-enchanted-april:44:8207d886522722a3",
+        "chapter_id": "chapter-007",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "8207d886522722a39fcbe13bd74a69958a2b85aaeb917206388f2c9035eb0d53"
+      },
+      {
+        "page_number": 45,
+        "page_id": "the-enchanted-april:45:e2648c3dabe33921",
+        "chapter_id": "chapter-007",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "e2648c3dabe33921e8002caa04310046705ce9c43b0f304850c111fdffae6841"
+      },
+      {
+        "page_number": 46,
+        "page_id": "the-enchanted-april:46:21364be1b58aa4dd",
+        "chapter_id": "chapter-007",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "21364be1b58aa4ddc52b22eb557b0ef71dcb7c6f5eb605bc9a4bdba9d8f2bed9"
+      },
+      {
+        "page_number": 47,
+        "page_id": "the-enchanted-april:47:c9f4364a9accfc83",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c9f4364a9accfc83d19b786e745e46af3baa8c5333e5578c45151fc33a6a54df"
+      },
+      {
+        "page_number": 48,
+        "page_id": "the-enchanted-april:48:2f400b519e3c72c7",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "2f400b519e3c72c7ed2ac98a24dc28933b7605c1c5eaea668e98715a0ade5cd6"
+      },
+      {
+        "page_number": 49,
+        "page_id": "the-enchanted-april:49:432a46c5b0bae9b3",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "432a46c5b0bae9b33e39d73fec56a440c3dedda5ae7ff4b16acd6dd9c0096d39"
+      },
+      {
+        "page_number": 50,
+        "page_id": "the-enchanted-april:50:20f944966e0adfcc",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "20f944966e0adfcc8f13338b10dbdd6f303b25ff16f4c4d3c18eb16dbd3701d1"
+      },
+      {
+        "page_number": 51,
+        "page_id": "the-enchanted-april:51:be8e0fcae6f2d4f7",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "be8e0fcae6f2d4f79e43ca3a3f4da3a62cc6a5a2991be8049178c33de2afe46f"
+      },
+      {
+        "page_number": 52,
+        "page_id": "the-enchanted-april:52:8a830bef9be20afd",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "8a830bef9be20afd69283117e35cf0992634ba5bfcb279e8c87c9c69d43d819d"
+      },
+      {
+        "page_number": 53,
+        "page_id": "the-enchanted-april:53:c8751faf9d7a46f4",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c8751faf9d7a46f463dcc93e644ac7446edb8caa8ef191f861f138cce6922393"
+      },
+      {
+        "page_number": 54,
+        "page_id": "the-enchanted-april:54:6bd98b3205e37ecc",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "6bd98b3205e37eccc8e6a0e4d2f18f295ada5ba3214b070cb14f2d51f6cebc5a"
+      },
+      {
+        "page_number": 55,
+        "page_id": "the-enchanted-april:55:8636f4a8e019a91d",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "8636f4a8e019a91dd0a21b23f84f61ee34251e83ef79d6a0f03410ba74d2b5db"
+      },
+      {
+        "page_number": 56,
+        "page_id": "the-enchanted-april:56:063c176b0710bfd8",
+        "chapter_id": "chapter-008",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "063c176b0710bfd82f796d5741337f98f6edb0783a607fa3d07143f763d0ea28"
+      },
+      {
+        "page_number": 57,
+        "page_id": "the-enchanted-april:57:16ea0b9970f78cd8",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "16ea0b9970f78cd8f668bb432c2b5b557af9363f80e86d0892a98e3f6f71653c"
+      },
+      {
+        "page_number": 58,
+        "page_id": "the-enchanted-april:58:850fdcb511c26718",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "850fdcb511c267188a9aa13edb6372e7d106a6b53e092faed6cf250ac739241a"
+      },
+      {
+        "page_number": 59,
+        "page_id": "the-enchanted-april:59:475cbc5f5ccf377e",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "475cbc5f5ccf377e7f91f56f3d3c2c509ca5d645b9d7cb5af1fddb9c999cd418"
+      },
+      {
+        "page_number": 60,
+        "page_id": "the-enchanted-april:60:ce9d05278c7ea81b",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ce9d05278c7ea81b90112b4cf132142a9b82de36262480ae7a72bb1970d8c1fd"
+      },
+      {
+        "page_number": 61,
+        "page_id": "the-enchanted-april:61:a06df6cd5ec3ca0b",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "a06df6cd5ec3ca0b54177b47c916e63da71ae9afa697537ac7ea691b538f0578"
+      },
+      {
+        "page_number": 62,
+        "page_id": "the-enchanted-april:62:8376de3b1e14a26a",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "8376de3b1e14a26ad6714decf613438b9709616bb10275195f00ba705b5e7003"
+      },
+      {
+        "page_number": 63,
+        "page_id": "the-enchanted-april:63:5986d2cc0111b5b8",
+        "chapter_id": "chapter-009",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "5986d2cc0111b5b88a460a14cd3d7d0822e2024b9340f0c23d48061c285b7dc3"
+      },
+      {
+        "page_number": 64,
+        "page_id": "the-enchanted-april:64:fe882e09b977fb5d",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "fe882e09b977fb5de636ad0c5bd0a52443d1bf750e6f03632247d8f9f97723c3"
+      },
+      {
+        "page_number": 65,
+        "page_id": "the-enchanted-april:65:0ea507dec95ca8f9",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0ea507dec95ca8f9886f095c678ff9347e46acd1435204f1c4495faf7f2e394b"
+      },
+      {
+        "page_number": 66,
+        "page_id": "the-enchanted-april:66:26e497261ecea168",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "26e497261ecea168dc42066ad33646257be85cc738f909e991b73f0aacb9983b"
+      },
+      {
+        "page_number": 67,
+        "page_id": "the-enchanted-april:67:04d4535fe8e62759",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "04d4535fe8e62759b04623d3ec27b79b5805cfb5514d00933daad3fb062fbb50"
+      },
+      {
+        "page_number": 68,
+        "page_id": "the-enchanted-april:68:204202e06f09a9bc",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "204202e06f09a9bc1f47021093d2ec6d4c3d00c82694540b211ee9e5cd4be14f"
+      },
+      {
+        "page_number": 69,
+        "page_id": "the-enchanted-april:69:2984f272055b8e87",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "2984f272055b8e87c7151bf76469b4f724adf9869b53a1c70852381c57033a4a"
+      },
+      {
+        "page_number": 70,
+        "page_id": "the-enchanted-april:70:3748966131f053ad",
+        "chapter_id": "chapter-010",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "3748966131f053ad3552c4ca60ac0b6a4e38871245926ee6c51e9b0f22f9f03b"
+      },
+      {
+        "page_number": 71,
+        "page_id": "the-enchanted-april:71:48425d6ca51fc397",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "48425d6ca51fc3977e796047ef79bfc3f8e56ca60c2c8ed31784bfca8cf2cb3e"
+      },
+      {
+        "page_number": 72,
+        "page_id": "the-enchanted-april:72:163bd60aa8923e5e",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "163bd60aa8923e5ee4c9ed2b055b5909318ea1d79a560d18fd7d1ff576a1adbd"
+      },
+      {
+        "page_number": 73,
+        "page_id": "the-enchanted-april:73:9d21558088b2d39d",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "9d21558088b2d39dc22559edde3f367d54154d7027fa5f7050d4f584903a3041"
+      },
+      {
+        "page_number": 74,
+        "page_id": "the-enchanted-april:74:e128e2d5d3a7a3dc",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "e128e2d5d3a7a3dc10d0bf2c8e44e72ec9c358b23998c96c6068799370bf1b4b"
+      },
+      {
+        "page_number": 75,
+        "page_id": "the-enchanted-april:75:845fb2d9687fbd3d",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "845fb2d9687fbd3d593146c01fd1fff51788d206c9e53202dc17bc83cece417e"
+      },
+      {
+        "page_number": 76,
+        "page_id": "the-enchanted-april:76:6cc160619e9ced86",
+        "chapter_id": "chapter-011",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "6cc160619e9ced861d6207c253f35f368a95477586f2f330ff71f54d59e6f6b2"
+      },
+      {
+        "page_number": 77,
+        "page_id": "the-enchanted-april:77:618e3abda1a0c428",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "618e3abda1a0c4286691b3abf400ec485770a00552459615a82d4563dea0479e"
+      },
+      {
+        "page_number": 78,
+        "page_id": "the-enchanted-april:78:5d8e455da1820d9c",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "5d8e455da1820d9cb15265daa0e0177080b1e4c3004f4c6a2d1d993a56cbba92"
+      },
+      {
+        "page_number": 79,
+        "page_id": "the-enchanted-april:79:cda54397a0641774",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "cda54397a06417740c013adce3d0dca6af000ba0f8c3761206680c7f8e4c376d"
+      },
+      {
+        "page_number": 80,
+        "page_id": "the-enchanted-april:80:cadd630d87fc9f0e",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "cadd630d87fc9f0e214e088e733b0b7ac356332bef98f9a69b100d480c473b17"
+      },
+      {
+        "page_number": 81,
+        "page_id": "the-enchanted-april:81:70eb510130415706",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "70eb510130415706460b195d3bbe3c7eb22d5d6ab468e34e3b1ffde11e06029f"
+      },
+      {
+        "page_number": 82,
+        "page_id": "the-enchanted-april:82:9464980ee8f05f76",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "9464980ee8f05f7672da8c4f066211c6fbbac5d072e34401e6e214096dfae093"
+      },
+      {
+        "page_number": 83,
+        "page_id": "the-enchanted-april:83:c93f2efffadb7b59",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c93f2efffadb7b59c43b003b88c0f3b26caf89e8bc939eca555feb2af9f2dcdb"
+      },
+      {
+        "page_number": 84,
+        "page_id": "the-enchanted-april:84:186cede2b3013832",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "186cede2b3013832898bdf25ffe8d5855c473ec35bfc898d65f7ded4e66c5a98"
+      },
+      {
+        "page_number": 85,
+        "page_id": "the-enchanted-april:85:ef7d0d4e3f9538b5",
+        "chapter_id": "chapter-012",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ef7d0d4e3f9538b5e91b2518f500595738fb9dffff93cde44d4b80b2618881d6"
+      },
+      {
+        "page_number": 86,
+        "page_id": "the-enchanted-april:86:6a8ec6ed2a7238fd",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "6a8ec6ed2a7238fd24c8ff64cba6ec55e23c9f4d6fefecf94f6899c73f856797"
+      },
+      {
+        "page_number": 87,
+        "page_id": "the-enchanted-april:87:31d1d58d54acd500",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "31d1d58d54acd50050e9ac415e266bdbb10a74fdbea08da2e591943f8fd73ee3"
+      },
+      {
+        "page_number": 88,
+        "page_id": "the-enchanted-april:88:82549a08110d500d",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "82549a08110d500d1b8699d8fba93373da10be18dfe4699afa6b618a6477af70"
+      },
+      {
+        "page_number": 89,
+        "page_id": "the-enchanted-april:89:88b75f7138e4611c",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "88b75f7138e4611c1171af4273981e766d4e8e1724208ebf720660a60be318c3"
+      },
+      {
+        "page_number": 90,
+        "page_id": "the-enchanted-april:90:0fa585db9f0fdaac",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0fa585db9f0fdaac10520ac957fe77017d3878f1f227745103fcfb1a52894dc3"
+      },
+      {
+        "page_number": 91,
+        "page_id": "the-enchanted-april:91:d522ac29487a9ffa",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "d522ac29487a9ffa240a14e3f6368c85d2e6f2ab1ff13a2874bab75bb89ddbf1"
+      },
+      {
+        "page_number": 92,
+        "page_id": "the-enchanted-april:92:4a1b8dc4fa620852",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4a1b8dc4fa620852d0d0ffed71195c976e79b1e6e8d825a11eda3f2c6995100d"
+      },
+      {
+        "page_number": 93,
+        "page_id": "the-enchanted-april:93:46dd5da39e1308f4",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "46dd5da39e1308f48e43057b3ca2f6a775b7795458bb7f2a853fc616980393a1"
+      },
+      {
+        "page_number": 94,
+        "page_id": "the-enchanted-april:94:3e54245c81c4ed08",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "3e54245c81c4ed08e76b7d9730b5e87640e091427a6f46096ce010d6e664fa16"
+      },
+      {
+        "page_number": 95,
+        "page_id": "the-enchanted-april:95:c31f1fcc5b8be559",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c31f1fcc5b8be559df100981c3fa07a914913f72c148f01f8f5cead905ff8c6c"
+      },
+      {
+        "page_number": 96,
+        "page_id": "the-enchanted-april:96:476e2d931dbadf07",
+        "chapter_id": "chapter-013",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "476e2d931dbadf07d935d96552d281d1d41e75165047665136829aab1791576f"
+      },
+      {
+        "page_number": 97,
+        "page_id": "the-enchanted-april:97:3631cbf55c0f17d8",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "3631cbf55c0f17d8f2c92004668002c25464a6d41065aaaf6d97944eb97bebc5"
+      },
+      {
+        "page_number": 98,
+        "page_id": "the-enchanted-april:98:f1371f828037659b",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f1371f828037659b6dc892c960d01d34191cc8a1da6ff7a4c1f697f8beef80f2"
+      },
+      {
+        "page_number": 99,
+        "page_id": "the-enchanted-april:99:f510e94559407768",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f510e94559407768e37ed24bbf038638f553ad3a07dc188a34e95e00ba01e3dc"
+      },
+      {
+        "page_number": 100,
+        "page_id": "the-enchanted-april:100:80f1d2d28aa382e6",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "80f1d2d28aa382e6271b35e5a64480302741b3b6eb96361a06516879cbf7e4a0"
+      },
+      {
+        "page_number": 101,
+        "page_id": "the-enchanted-april:101:3ea2bdf8902498b0",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "3ea2bdf8902498b05f484a766e089f96be1b6bab95546a8e24047400b462140b"
+      },
+      {
+        "page_number": 102,
+        "page_id": "the-enchanted-april:102:07ca0d3cceddba92",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "07ca0d3cceddba92bd42c1101f9681445fa81b6b9269079fb849e18430653cdd"
+      },
+      {
+        "page_number": 103,
+        "page_id": "the-enchanted-april:103:5f99809eec663458",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "5f99809eec66345823c5b9787759434adf3029e1269798632deb22a69a4caa29"
+      },
+      {
+        "page_number": 104,
+        "page_id": "the-enchanted-april:104:ac5b1a15530257ae",
+        "chapter_id": "chapter-014",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ac5b1a15530257ae0fdcd4cca0f60809fd1a776fb07fd7ecda6e1b0d7d08dc10"
+      },
+      {
+        "page_number": 105,
+        "page_id": "the-enchanted-april:105:0c3101bd3c5db7b0",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0c3101bd3c5db7b0b4b84ec0cc0e836b87c547dfaa821c87a8dd0ad1f9869cd3"
+      },
+      {
+        "page_number": 106,
+        "page_id": "the-enchanted-april:106:5a3a31404d4ebda0",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "5a3a31404d4ebda0ea1c9fc99378fe734c767c1b2961c3fcb0fd09bcb70f8e8c"
+      },
+      {
+        "page_number": 107,
+        "page_id": "the-enchanted-april:107:43d314099102faa2",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "43d314099102faa26d9870f3b440fe5b6b49516cec4d99a4d53b0f04aaafc914"
+      },
+      {
+        "page_number": 108,
+        "page_id": "the-enchanted-april:108:b79e19c909de8ec1",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b79e19c909de8ec1d5a73b9b7562aaa255b708aeabeeb2b5c24d1af59bb72d3d"
+      },
+      {
+        "page_number": 109,
+        "page_id": "the-enchanted-april:109:0ab9a6ea97d463ba",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0ab9a6ea97d463ba9f9ee0ac5bd44fe96d9411d810b25dc4c15f6f420132d75f"
+      },
+      {
+        "page_number": 110,
+        "page_id": "the-enchanted-april:110:296aae7c6807c36a",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "296aae7c6807c36ab8725f283318a4bda27d07ea6fa95e8bdf6fd42f42ae54f9"
+      },
+      {
+        "page_number": 111,
+        "page_id": "the-enchanted-april:111:6d9487363246a396",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "6d9487363246a3966cd78f9ff0709014a9777ab51998d11f86aa318fc4955a0f"
+      },
+      {
+        "page_number": 112,
+        "page_id": "the-enchanted-april:112:51d9f6cf3aaeecaa",
+        "chapter_id": "chapter-015",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "51d9f6cf3aaeecaa786c2f99dc4998aaf9c8ae575a5baab8fc63412f7dba4d10"
+      },
+      {
+        "page_number": 113,
+        "page_id": "the-enchanted-april:113:be05d4f9cdfc4dcf",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "be05d4f9cdfc4dcf7f6bc36aa88bf057a3baf952b52f5fc95570cee09b6d59c2"
+      },
+      {
+        "page_number": 114,
+        "page_id": "the-enchanted-april:114:4d794a2be729f6e7",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4d794a2be729f6e76dd7c30f641914c228a8324de94c199fe44cb4185fbabf91"
+      },
+      {
+        "page_number": 115,
+        "page_id": "the-enchanted-april:115:a1aed6513abc8769",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "a1aed6513abc8769cb8dcae3131e6b4160ccaa88dc02bad53ad3f0aa378972c5"
+      },
+      {
+        "page_number": 116,
+        "page_id": "the-enchanted-april:116:60718095885042c3",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "60718095885042c30c2b2ade219e093d6dcc51e218d8fdba924aeacff9a9e2e2"
+      },
+      {
+        "page_number": 117,
+        "page_id": "the-enchanted-april:117:9294f2c5258aaa83",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "9294f2c5258aaa8361cadeb53f361f382abdfa90b19e12081d8ac1492cea8760"
+      },
+      {
+        "page_number": 118,
+        "page_id": "the-enchanted-april:118:65ff43105b4fcd90",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "65ff43105b4fcd9063201732057272a4a15cfbe061c3b378c1624a5d7624703e"
+      },
+      {
+        "page_number": 119,
+        "page_id": "the-enchanted-april:119:0c6698ba02159838",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0c6698ba0215983812fb6b576adc2a3358fecb3605ceb3adec8d9094a6af1122"
+      },
+      {
+        "page_number": 120,
+        "page_id": "the-enchanted-april:120:4645801cb331a967",
+        "chapter_id": "chapter-016",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4645801cb331a967909200072948c5a79d8b93c8666edf01369f3bf2387ea75a"
+      },
+      {
+        "page_number": 121,
+        "page_id": "the-enchanted-april:121:6d63701484ae49be",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "6d63701484ae49beb63682bd7ae097fb0fd6e88676de9a049e03e6c3bc469c96"
+      },
+      {
+        "page_number": 122,
+        "page_id": "the-enchanted-april:122:1dd6ff580f7215a7",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "1dd6ff580f7215a7d26cafb00402d5ec6593e515d46e9bfd97c4e3042d832904"
+      },
+      {
+        "page_number": 123,
+        "page_id": "the-enchanted-april:123:dd2c383de3625e6b",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "dd2c383de3625e6b6f04c1450a2dbd88df72578af2f74a092fc41d15f6b8338d"
+      },
+      {
+        "page_number": 124,
+        "page_id": "the-enchanted-april:124:367eb92b7d443786",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "367eb92b7d44378673ca2ef10ad6231c28e0aab062b77e65721c59ab893ef954"
+      },
+      {
+        "page_number": 125,
+        "page_id": "the-enchanted-april:125:256ede9ff75d1ac5",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "256ede9ff75d1ac5f5094c0e24fc2ad4b23cb7f15a5536b15d18680fa2286e07"
+      },
+      {
+        "page_number": 126,
+        "page_id": "the-enchanted-april:126:607476b3045c9c40",
+        "chapter_id": "chapter-017",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "607476b3045c9c40d29cb8a1aa58bfc6ff2daf9024efba7b7bccedcda542b850"
+      },
+      {
+        "page_number": 127,
+        "page_id": "the-enchanted-april:127:f1e4e69297ffaa16",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f1e4e69297ffaa16547820849f13ada213bfcbb047a0e18abc8e98637de99a57"
+      },
+      {
+        "page_number": 128,
+        "page_id": "the-enchanted-april:128:1bf6026981d12f48",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "1bf6026981d12f487c1b4b78938a36c31581595eabf2dc369e46b5eb980da933"
+      },
+      {
+        "page_number": 129,
+        "page_id": "the-enchanted-april:129:f1adeec7053ebb3a",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f1adeec7053ebb3ab607e210c72d0c06662fdb4baa7e74d8e5b3060d2f11f5f1"
+      },
+      {
+        "page_number": 130,
+        "page_id": "the-enchanted-april:130:eeb2d6fa6c0c596e",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "eeb2d6fa6c0c596e226ac5aa496579f5346740bc4d18ba44d88e9af19da8dfd0"
+      },
+      {
+        "page_number": 131,
+        "page_id": "the-enchanted-april:131:13f8051a7312f83e",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "13f8051a7312f83ef198a44844b3f9d73df3d117863f2311d0375bff9641fc35"
+      },
+      {
+        "page_number": 132,
+        "page_id": "the-enchanted-april:132:cd2511a9af30e3a1",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "cd2511a9af30e3a1daef34310379a3aa2d180abd812749f46375b10cab4c674a"
+      },
+      {
+        "page_number": 133,
+        "page_id": "the-enchanted-april:133:0723e5bf706c2ec3",
+        "chapter_id": "chapter-018",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0723e5bf706c2ec37d1043717fb2f87eed401c6f0d9710019e5283aaf1648c5d"
+      },
+      {
+        "page_number": 134,
+        "page_id": "the-enchanted-april:134:88d6c83d4c2de526",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "88d6c83d4c2de5261d4a0a3b15282569cdbdc562a6de27d88a1616663ba6f239"
+      },
+      {
+        "page_number": 135,
+        "page_id": "the-enchanted-april:135:96cde1e4eb2f4003",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "96cde1e4eb2f4003425fc1a2a0b8d5d2bb85cc254b599781a3cdb78bbb079c0a"
+      },
+      {
+        "page_number": 136,
+        "page_id": "the-enchanted-april:136:04fc976ec25a1a95",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "04fc976ec25a1a958420eabfbaf49ccc574591c133a5b94e63ab31ecde5c5a63"
+      },
+      {
+        "page_number": 137,
+        "page_id": "the-enchanted-april:137:be14ed6ae103df25",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "be14ed6ae103df257687c14a87cd42dcb4a4bee659637e7faaf6c8b9778957cd"
+      },
+      {
+        "page_number": 138,
+        "page_id": "the-enchanted-april:138:ea649fff6cfdaf74",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "ea649fff6cfdaf745348aa411d4e76bc2dae5bc5e6696c67f35a8a999da9bca0"
+      },
+      {
+        "page_number": 139,
+        "page_id": "the-enchanted-april:139:1928068fff0e5871",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "1928068fff0e58713cf1326df08c6adc9a3440a627ddf0e37f680185a8ca9ade"
+      },
+      {
+        "page_number": 140,
+        "page_id": "the-enchanted-april:140:f3fd1145e13b4b61",
+        "chapter_id": "chapter-019",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "f3fd1145e13b4b6109c9366ea5ca89832c9f2bbb3086a4cfa9686170d2df8f66"
+      },
+      {
+        "page_number": 141,
+        "page_id": "the-enchanted-april:141:9b6c66fe50c22e38",
+        "chapter_id": "chapter-020",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "9b6c66fe50c22e3806dda1729b8a461e1825f7a2dccdd8edec67ffc06c0e2be5"
+      },
+      {
+        "page_number": 142,
+        "page_id": "the-enchanted-april:142:721be3fd83e19725",
+        "chapter_id": "chapter-020",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "721be3fd83e19725c19f851242f3440b83781a13f23aea6c7711c3a73b4d431b"
+      },
+      {
+        "page_number": 143,
+        "page_id": "the-enchanted-april:143:b08b4602d3e2be44",
+        "chapter_id": "chapter-020",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b08b4602d3e2be443ce5b32a3db8931c7b773ffa984fc7fc0b28211335f6aa4f"
+      },
+      {
+        "page_number": 144,
+        "page_id": "the-enchanted-april:144:b8791eb28592e88f",
+        "chapter_id": "chapter-020",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "b8791eb28592e88f9d179c1157cfb4dd424191a735c5b43494172b9aa46dfd2d"
+      },
+      {
+        "page_number": 145,
+        "page_id": "the-enchanted-april:145:501da9165ca8f538",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "501da9165ca8f538a95938e9182a8f2a00910d8ed837be8da301b55ce3f55f6a"
+      },
+      {
+        "page_number": 146,
+        "page_id": "the-enchanted-april:146:d4566d228771f470",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "d4566d228771f470409e68737dbe01f701110b4bf0f26eee7b4426c13f909db1"
+      },
+      {
+        "page_number": 147,
+        "page_id": "the-enchanted-april:147:c15f1679e206a6f7",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c15f1679e206a6f702abe042ca38d79444396738ce402fc318f8c49514cc5643"
+      },
+      {
+        "page_number": 148,
+        "page_id": "the-enchanted-april:148:4aa12d634df39cc7",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "4aa12d634df39cc75f88615662c1ee2d099000e94b05d7b2e8026996925f5500"
+      },
+      {
+        "page_number": 149,
+        "page_id": "the-enchanted-april:149:e3ba5133f3fe7ad2",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "e3ba5133f3fe7ad27f0827c43aeeee4e25e43c51d34cafdd2322bd8bcca841d0"
+      },
+      {
+        "page_number": 150,
+        "page_id": "the-enchanted-april:150:206641172ec709fe",
+        "chapter_id": "chapter-021",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "206641172ec709fe4ef3f97c3055040b75a7c34b6217e0075eed419ace4cc939"
+      },
+      {
+        "page_number": 151,
+        "page_id": "the-enchanted-april:151:c5ac0a05a7542efb",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "c5ac0a05a7542efb20f9ae88bfb3d7c61088a8e496cf15370b24bad3076295ed"
+      },
+      {
+        "page_number": 152,
+        "page_id": "the-enchanted-april:152:44e81c65c1e9b696",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "44e81c65c1e9b69620a61d493e4ba119224c435897c17b8ec992ebf97fa2689b"
+      },
+      {
+        "page_number": 153,
+        "page_id": "the-enchanted-april:153:1f1cf3da73b9da11",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "1f1cf3da73b9da11a053e62abdbf181a56dcaeb002c92186b78ef3844ca19c00"
+      },
+      {
+        "page_number": 154,
+        "page_id": "the-enchanted-april:154:0f21cfffe65ab5c7",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "0f21cfffe65ab5c74f0964b0fffc9d1e7499e9d1df141810af6c368637805138"
+      },
+      {
+        "page_number": 155,
+        "page_id": "the-enchanted-april:155:1e89c95d1b45db3c",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "1e89c95d1b45db3c79191039dff09d01553fe788c75baf0b5ca5988573a9be2c"
+      },
+      {
+        "page_number": 156,
+        "page_id": "the-enchanted-april:156:bf5da95f86bedb1e",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "bf5da95f86bedb1edec0d288db1e0c0820285a57366c738fc188433fbb377169"
+      },
+      {
+        "page_number": 157,
+        "page_id": "the-enchanted-april:157:849d26cda0d4d270",
+        "chapter_id": "chapter-022",
+        "content_revision": "081ecf451460e84e580a81e0",
+        "content_hash": "849d26cda0d4d2706969c0a872394e4f746181a395f30f07c9185c46c589e57c"
+      }
+    ]
+  }
+}

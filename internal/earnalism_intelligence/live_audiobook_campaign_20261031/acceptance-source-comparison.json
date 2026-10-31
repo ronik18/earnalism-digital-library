@@ -1,0 +1,89 @@
+{
+  "backend": {
+    "old_source": "c3cfbdadf5ddb81b5d65ed2e15ffdb0238f96fd8",
+    "files_compared": 8,
+    "changed": [
+      "backend/server.py",
+      "backend/reading_pass_service.py"
+    ],
+    "bindings": {
+      "backend/domain/__init__.py": {
+        "accepted_blob": "97b0a78dc789e18871208a7e6e93266ef2a97048",
+        "current_blob": "97b0a78dc789e18871208a7e6e93266ef2a97048"
+      },
+      "backend/domain/audiobook_release.py": {
+        "accepted_blob": "7234f2001562f66d4276b0c35b01b659d1535f9f",
+        "current_blob": "7234f2001562f66d4276b0c35b01b659d1535f9f"
+      },
+      "backend/domain/catalog.py": {
+        "accepted_blob": "79d288d58351068b2dcd10a1ea46f1b2872a6673",
+        "current_blob": "79d288d58351068b2dcd10a1ea46f1b2872a6673"
+      },
+      "backend/domain/chapter_index.py": {
+        "accepted_blob": "d069c680ba3f50e6937ec4cdc5948d87560cde47",
+        "current_blob": "d069c680ba3f50e6937ec4cdc5948d87560cde47"
+      },
+      "backend/domain/reading_billing.py": {
+        "accepted_blob": "239b66ca966d4fd252c146a34e2c26d9ba9161b5",
+        "current_blob": "239b66ca966d4fd252c146a34e2c26d9ba9161b5"
+      },
+      "backend/domain/reading_pass.py": {
+        "accepted_blob": "7c0e518866f6e3c53f56da915cb28f0effa38055",
+        "current_blob": "7c0e518866f6e3c53f56da915cb28f0effa38055"
+      },
+      "backend/reading_pass_service.py": {
+        "accepted_blob": "38aba180ed9910c66086c6ee5eed74c1ee8d50c7",
+        "current_blob": "5befefbd04c5eb51cec1bfdc96ee25fca2f6b5d7"
+      },
+      "backend/server.py": {
+        "accepted_blob": "8e39e296a0ebf183be23dbb3d5abe08c52e1ebe2",
+        "current_blob": "8236978b23cea16273fe9200958aa31f831ceaa7"
+      }
+    }
+  },
+  "frontend": {
+    "old_source": "f13646d94da652d64b1f7389dd5a71251d94ad30",
+    "files_compared": 9,
+    "changed": [
+      "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx"
+    ],
+    "bindings": {
+      "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": {
+        "accepted_blob": "3ba678a63c3332c15e48540ef77867fb4a0a62b8",
+        "current_blob": "601320db8fc189e472210bb40b69ef3a892615be"
+      },
+      "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": {
+        "accepted_blob": "de928751e47bd02a87781df2fb6fde4fa4e76858",
+        "current_blob": "de928751e47bd02a87781df2fb6fde4fa4e76858"
+      },
+      "frontend/src/experiences-v2/listener/listener-v2.css": {
+        "accepted_blob": "d51ea64522fd48cd4793321e89f4e1a163b3bf04",
+        "current_blob": "d51ea64522fd48cd4793321e89f4e1a163b3bf04"
+      },
+      "frontend/src/experiences-v2/listener/listenerRouteState.js": {
+        "accepted_blob": "2e142e0f547b374314471db0e5c80ab972ca1b9f",
+        "current_blob": "2e142e0f547b374314471db0e5c80ab972ca1b9f"
+      },
+      "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": {
+        "accepted_blob": "85cab4b9b4bf6a93b57ffab4bb2b66f2eeef1ab8",
+        "current_blob": "85cab4b9b4bf6a93b57ffab4bb2b66f2eeef1ab8"
+      },
+      "frontend/src/lib/audioPackageManifest.js": {
+        "accepted_blob": "51e000897ef9982a0843c591036dd9cf4b7faaea",
+        "current_blob": "51e000897ef9982a0843c591036dd9cf4b7faaea"
+      },
+      "frontend/src/lib/audioReleaseSafety.js": {
+        "accepted_blob": "6b5c731388d2bdcff2c742662708ae1c45f1d73a",
+        "current_blob": "6b5c731388d2bdcff2c742662708ae1c45f1d73a"
+      },
+      "frontend/src/lib/audiobookPlayback.js": {
+        "accepted_blob": "8179c8aaf3043d31d9c2b9ff99459ff794d018cb",
+        "current_blob": "8179c8aaf3043d31d9c2b9ff99459ff794d018cb"
+      },
+      "frontend/src/lib/readingPassApi.js": {
+        "accepted_blob": "ab6e4e165bba2cd572250c5a78bb995462e01e89",
+        "current_blob": "ab6e4e165bba2cd572250c5a78bb995462e01e89"
+      }
+    }
+  }
+}

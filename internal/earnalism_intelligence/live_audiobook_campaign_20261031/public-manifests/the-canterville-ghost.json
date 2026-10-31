@@ -1,0 +1,568 @@
+{
+  "book": {
+    "estimated_reading_time": "48 min",
+    "title": "The Canterville Ghost",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-canterville-ghost",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover-4bac8e4ff4162cdf.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover-3e6e7773773cae37.webp",
+    "updated_at": "2026-08-15T22:23:55Z",
+    "description": "The Otis family — pragmatic, modern Americans — is utterly unimpressed by the Canterville Ghost's centuries of terrifying tenants. Only young Virginia feels compassion for him. Wilde's most charming story, satirising English tradition through the lens of American common sense.",
+    "dominant_color": "#4A1C27",
+    "author": "Oscar Wilde",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit, his plays, and his only novel.",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "I",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "71a4fd35f751222ca29e",
+        "word_count": 1492,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-001?v=71a4fd35f751222ca29e",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "I",
+        "index_title": "I",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "II",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "54402e0cd5baa101cea0",
+        "word_count": 1177,
+        "reading_minutes": 5,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-002?v=54402e0cd5baa101cea0",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Ii",
+        "index_title": "Ii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "III",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "866f7711a7232595d7b2",
+        "word_count": 2270,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-003?v=866f7711a7232595d7b2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Iii",
+        "index_title": "Iii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "IV",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "173935cd7d8a36269f33",
+        "word_count": 1696,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-004?v=173935cd7d8a36269f33",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Iv",
+        "index_title": "Iv",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "V",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "dfefdf92ed8b1bf34f97",
+        "word_count": 1662,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-005?v=dfefdf92ed8b1bf34f97",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "V",
+        "index_title": "V",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "VI",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "87b4d824227aa91a2ba3",
+        "word_count": 1525,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-006?v=87b4d824227aa91a2ba3",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Vi",
+        "index_title": "Vi",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "VII",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "36e71919362437d92772",
+        "word_count": 1471,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-007?v=36e71919362437d92772",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Vii",
+        "index_title": "Vii",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-canterville-ghost",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "An American family moves into a haunted English manor and refuses to be scared — defeating the ancient ghost at every turn.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-canterville-ghost",
+    "reader_url": "/reader/the-canterville-ghost",
+    "preview_url": "/reader/the-canterville-ghost",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "I",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "71a4fd35f751222ca29e",
+      "word_count": 1492,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-001?v=71a4fd35f751222ca29e",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "I",
+      "index_title": "I",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "II",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "54402e0cd5baa101cea0",
+      "word_count": 1177,
+      "reading_minutes": 5,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-002?v=54402e0cd5baa101cea0",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Ii",
+      "index_title": "Ii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "III",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "866f7711a7232595d7b2",
+      "word_count": 2270,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-003?v=866f7711a7232595d7b2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Iii",
+      "index_title": "Iii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "IV",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "173935cd7d8a36269f33",
+      "word_count": 1696,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-004?v=173935cd7d8a36269f33",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Iv",
+      "index_title": "Iv",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "V",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "dfefdf92ed8b1bf34f97",
+      "word_count": 1662,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-005?v=dfefdf92ed8b1bf34f97",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "V",
+      "index_title": "V",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "VI",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "87b4d824227aa91a2ba3",
+      "word_count": 1525,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-006?v=87b4d824227aa91a2ba3",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Vi",
+      "index_title": "Vi",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "VII",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "36e71919362437d92772",
+      "word_count": 1471,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-canterville-ghost/chapter-007?v=36e71919362437d92772",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Vii",
+      "index_title": "Vii",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "60aaa472625141f6",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "eba9aac3bef2076fc9b9",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:31.793749+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-canterville-ghost/manifest",
+      "total_pages": 28
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-704fa0e1a6373356c3f6fa3210050ead",
+    "content_revision": "47fdacd02015a8df827c55e2",
+    "page_count": 28,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-canterville-ghost:1:7699d9dbc88ec2e0",
+        "chapter_id": "chapter-001",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "7699d9dbc88ec2e0e800917a16d089590d892f3a496d01c47f0913ade4332251"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-canterville-ghost:2:c31b6584250b8b80",
+        "chapter_id": "chapter-001",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "c31b6584250b8b8016cf52dd4bea82a406349ec3ed1122bf05f52117ae4c61f9"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-canterville-ghost:3:9e850dca2661311d",
+        "chapter_id": "chapter-001",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "9e850dca2661311d3f4007768f9fd5159421e5b8ce0c26b6089d555013051268"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-canterville-ghost:4:4003e5de3b9929e6",
+        "chapter_id": "chapter-001",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "4003e5de3b9929e6274ef8e1578ecdc465dff13e0878be23f525f1c6506ee4fd"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-canterville-ghost:5:ccb59301a2d4b9d9",
+        "chapter_id": "chapter-002",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "ccb59301a2d4b9d9f3d0efdf5eb1ec1479ed7d5cf4e3a1e2f2102d4a29ca08c6"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-canterville-ghost:6:3bd9cd4ed525ef38",
+        "chapter_id": "chapter-002",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "3bd9cd4ed525ef38634a75e8a36be9a99a76634b178a6ab033941ad3d45a35fe"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-canterville-ghost:7:238c7ca38cfd2895",
+        "chapter_id": "chapter-002",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "238c7ca38cfd2895aa61f483823ec0f5eea93fa8c4f6045c62b2a435cc1ec344"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-canterville-ghost:8:2ce7741ec231d8bf",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "2ce7741ec231d8bf02c1e1928de61ec98da6a43eedd3e557fdfbe966e79481a6"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-canterville-ghost:9:a72df1c96a49cc32",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "a72df1c96a49cc32afb4ac98871ae0d8e180efc6f20ef96584239067bd0db7a8"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-canterville-ghost:10:c3e2cbbb35208811",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "c3e2cbbb3520881103db745cae3115fa8b65104119101828befbc0efa41d6be2"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-canterville-ghost:11:1a50d6306139bb01",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "1a50d6306139bb0100bdeb44151a15c64f6dc5df1b1c1148658e5f5345f6cdf0"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-canterville-ghost:12:330323c444a99a5e",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "330323c444a99a5e2f26e9ccd9349b30c01fa97dc9f46519aa3ed1206d8db323"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-canterville-ghost:13:632fdd92d76f556f",
+        "chapter_id": "chapter-003",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "632fdd92d76f556fc80f160f2914630b1a44a7af023acff4ed6cc0ccbdd453c1"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-canterville-ghost:14:58ab6349f8e29755",
+        "chapter_id": "chapter-004",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "58ab6349f8e29755622acf70f2785caa96dfa0787f3665f2b7a7bf7592d08f7c"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-canterville-ghost:15:8a26e2a145583beb",
+        "chapter_id": "chapter-004",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "8a26e2a145583bebc8a8f5b977cb211e21dad4cdc71f8023ff829abc687373a2"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-canterville-ghost:16:a815f1b97e1c1c62",
+        "chapter_id": "chapter-004",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "a815f1b97e1c1c62ee9aa686add4526d88229127f333e8d23e902000ca8e82e8"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-canterville-ghost:17:7faa0fc11f52bf4f",
+        "chapter_id": "chapter-004",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "7faa0fc11f52bf4f97afcee1e3e2a38cb368ed8761372dd6272f04140cb5b00d"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-canterville-ghost:18:87a770975c0db48d",
+        "chapter_id": "chapter-005",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "87a770975c0db48d9cdee974c4fc7c5b1969354cf3c56f3b2d94ee2fdfde2b8b"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-canterville-ghost:19:4996869510ee5b48",
+        "chapter_id": "chapter-005",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "4996869510ee5b481554b7a9d47422d875c6367a07d5e8b0af6dcfcb426ca102"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-canterville-ghost:20:e4d511d972deed3b",
+        "chapter_id": "chapter-005",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "e4d511d972deed3bff4cb851bfb4de85b756d28b291ac0e718143e3a700aab74"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-canterville-ghost:21:30e28a01c42fc5cc",
+        "chapter_id": "chapter-005",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "30e28a01c42fc5ccb92b6d3c9c68425fab5dc6cf5543ea6f084e988a4a9f254b"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-canterville-ghost:22:7fa5adf231425b55",
+        "chapter_id": "chapter-006",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "7fa5adf231425b5590a72c73e4e0b2621e8e8ebc13f761b9c035a114b13fc176"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-canterville-ghost:23:3ebea01410ae479d",
+        "chapter_id": "chapter-006",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "3ebea01410ae479d9a0635069d88f2bb19403dd2ace1c1eadc6cbe44f95315ba"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-canterville-ghost:24:d9404f1d4772e075",
+        "chapter_id": "chapter-006",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "d9404f1d4772e07528a6b725be0c594ff695a3412338c78ef9df2b34932851ff"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-canterville-ghost:25:d90c96f2a6d03ed9",
+        "chapter_id": "chapter-007",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "d90c96f2a6d03ed91fad40c96742d545edb99e00ed5d785f1dceba602c8e5fa9"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-canterville-ghost:26:71e552fbb4ab4b0b",
+        "chapter_id": "chapter-007",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "71e552fbb4ab4b0b53ee0a385a1d60abfd5b3ff974fab35e065b03e47028b853"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-canterville-ghost:27:a83604f1d0125ebe",
+        "chapter_id": "chapter-007",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "a83604f1d0125ebea8d1c6d01b23b219961ce52280bd2d3feb9e03a12bfd9708"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-canterville-ghost:28:deb0aa770da8f360",
+        "chapter_id": "chapter-007",
+        "content_revision": "47fdacd02015a8df827c55e2",
+        "content_hash": "deb0aa770da8f360130722f963b6d53bc074c2dc8bfe26d8fcf91c117342dec2"
+      }
+    ]
+  }
+}

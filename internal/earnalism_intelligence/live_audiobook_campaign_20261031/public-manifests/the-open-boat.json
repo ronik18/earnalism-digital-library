@@ -1,0 +1,284 @@
+{
+  "book": {
+    "estimated_reading_time": "39 min",
+    "title": "The Open Boat",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-open-boat",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-back-599ef5953790561f.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-open-boat/the-open-boat-front-2d7932de2d158b09.webp",
+    "updated_at": "2026-08-15T22:31:13Z",
+    "description": "Based on Crane's own shipwreck, four men — a cook, an oiler, a correspondent, and the captain — row toward a Florida shore that keeps receding. Nature does not care whether they live or die. The oiler, the strongest, is the one who drowns.",
+    "dominant_color": "#4A1C27",
+    "author": "Stephen Crane",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305689/earnalism/covers/front/cover_candidate_controlled-the-open-boat-2d7932de2d158b090f6a7501ba9dac73cfc1fbc421ade9b194397e7e33a370bb.webp",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Stephen Crane (1871–1900) was an American author and journalist, a pioneer of naturalism and psychological realism in American fiction.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305723/earnalism/covers/back/back_cover_candidate_controlled-the-open-boat-599ef5953790561f2a129f426b117d9380bdbf16b47fc473d306098ceae45d6c.webp",
+    "category_slug": "adventure",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Open Boat",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "2c20717347e2aeedda2f",
+        "word_count": 9340,
+        "reading_minutes": 39,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-open-boat/chapter-001?v=2c20717347e2aeedda2f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Open Boat",
+        "index_title": "The Open Boat",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-open-boat",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "Four shipwrecked men row a tiny dinghy toward shore through crushing waves — nature utterly indifferent to their survival.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-open-boat",
+    "reader_url": "/reader/the-open-boat",
+    "preview_url": "/reader/the-open-boat",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Open Boat",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "2c20717347e2aeedda2f",
+      "word_count": 9340,
+      "reading_minutes": 39,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-open-boat/chapter-001?v=2c20717347e2aeedda2f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Open Boat",
+      "index_title": "The Open Boat",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "3d575ef09e0e2575",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "7b1cecc63a48daa8b7ce",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:36.025075+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-open-boat/manifest",
+      "total_pages": 18
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-982c1dd5729e56e4a1ee1924e35a8d24",
+    "content_revision": "6649030c2511ed5c7c8e5b1f",
+    "page_count": 18,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-open-boat:1:b62c4477878ec61f",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "b62c4477878ec61f19f1d5d28e2de39ca61cd9a113d805bdb5253259910b443d"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-open-boat:2:fed68150d7dd5e6e",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "fed68150d7dd5e6ed5daa78085d837ba7954fddeb9e38da737d596bd2ac5ae22"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-open-boat:3:ebb093a4d66e538f",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "ebb093a4d66e538f09aa08f4f8316899abba070e514e8563d0db00cbafa0f627"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-open-boat:4:a6fe43f101a44616",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "a6fe43f101a446169f0b5b7d75194b79ea2573ea6e949408aede3a2f02f08c22"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-open-boat:5:22d937770ad17bd1",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "22d937770ad17bd1dc85ee852348a588a10f40f762be8cd29854fa56f634d053"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-open-boat:6:ef7289ec981305de",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "ef7289ec981305de892857c519e21a8c8d9e12f8c08b9f41a9c06f41dd80776c"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-open-boat:7:a7050c4aa9765b6a",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "a7050c4aa9765b6a59cff116f8a6993592f9550cfa0abb89c333fe2e03900b83"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-open-boat:8:b21db107084f50ef",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "b21db107084f50efdce406f434098860500fd43935732bdfe690ef1a309165d7"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-open-boat:9:52eea90d8ade0145",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "52eea90d8ade0145ae8b1b66d2cbbe3a20ea38208cfb68d029f641afaf4b195b"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-open-boat:10:2e05ce4c55de2390",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "2e05ce4c55de23903b25d115ffc0c768b4b2c32122e6afd055e32c1773761cd4"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-open-boat:11:e5ca2313e1009679",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "e5ca2313e1009679ba864e9fd53bd809e1398ecebd0d592f669223b32d2056e7"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-open-boat:12:b45ae70479aee3b5",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "b45ae70479aee3b534aaa5f60391c36c427c56379b075d0198f0e50ca177f0ad"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-open-boat:13:b4493fca676f2895",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "b4493fca676f2895323580fc1d098f4a69eecae3b057fa85b1dcac2e8a390c98"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-open-boat:14:620a0cafe5432400",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "620a0cafe543240054947e96ac77b25ab867f8cfd2ab82811004c387eb6a62dc"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-open-boat:15:746ec75900510561",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "746ec75900510561b2e5632015b9380d0188737a18f058b9551752bc08bbb612"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-open-boat:16:a14e6f1c2cc400b8",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "a14e6f1c2cc400b8f907c90d03a49d78d4739b9c14c42b69a2507d63f0f63f6f"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-open-boat:17:4504a1419ac14057",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "4504a1419ac1405733784fbcb0955d2d864a612ff7f1b057140dff58ec2b610b"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-open-boat:18:74b098c379b6c97a",
+        "chapter_id": "chapter-001",
+        "content_revision": "6649030c2511ed5c7c8e5b1f",
+        "content_hash": "74b098c379b6c97aa5ccf3bd7ecc8c05ad04afd5098d615eea64f1e095be5e9a"
+      }
+    ]
+  }
+}

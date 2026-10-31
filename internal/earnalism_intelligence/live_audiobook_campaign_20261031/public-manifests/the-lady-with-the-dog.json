@@ -1,0 +1,254 @@
+{
+  "book": {
+    "estimated_reading_time": "28 min",
+    "title": "The Lady with the Dog",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-lady-with-the-dog",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/back-cover.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/back-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+    "updated_at": "2026-08-15T21:49:10Z",
+    "description": "Gurov, a bored Moscow banker, begins an affair with Anna at a Black Sea resort — expecting nothing. But this time, something genuine happens to both of them, and the story ends not with resolution but with the terrifying truth of love just beginning.",
+    "dominant_color": "#4A1C27",
+    "author": "Anton Chekhov",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Anton Chekhov (1860–1904) was a Russian physician and writer, the supreme master of the modern short story and one of the greatest playwrights in history.",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Lady with the Dog",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "8bd570ae49d0cfce1c05",
+        "word_count": 6628,
+        "reading_minutes": 28,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-lady-with-the-dog/chapter-001?v=8bd570ae49d0cfce1c05",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Lady with the Dog",
+        "index_title": "The Lady with the Dog",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-lady-with-the-dog",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A cynical womanizer falls genuinely and helplessly in love for the first time in his life.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-lady-with-the-dog",
+    "reader_url": "/reader/the-lady-with-the-dog",
+    "preview_url": "/reader/the-lady-with-the-dog",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Lady with the Dog",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "8bd570ae49d0cfce1c05",
+      "word_count": 6628,
+      "reading_minutes": 28,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-lady-with-the-dog/chapter-001?v=8bd570ae49d0cfce1c05",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Lady with the Dog",
+      "index_title": "The Lady with the Dog",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "6694045130b3f077",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "312a27daac9be40a9aac",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:35.425639+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-lady-with-the-dog/manifest",
+      "total_pages": 14
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-9035df1f0e2b329d3b285e2a88f63475",
+    "content_revision": "7a368d9431ba71dc2a0b24c1",
+    "page_count": 14,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-lady-with-the-dog:1:583b48e8b8df1d64",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "583b48e8b8df1d6423bc19c0acc9bb80bceba8e6b025da1ed601042f1d6f5841"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-lady-with-the-dog:2:a1e8e4cafb7b3115",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "a1e8e4cafb7b3115b7dc53638999046f933c4e0cfef38c4e46ddb41af68e8c7d"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-lady-with-the-dog:3:e66a69c559aaba3c",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "e66a69c559aaba3c90db142cc7879bdc60844a0e6058b5abad119967d205f7da"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-lady-with-the-dog:4:577552e6a146fb89",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "577552e6a146fb890a7260e70018ff886885666e51267db9308f6be175c0b009"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-lady-with-the-dog:5:cb9c8e0eed0df20a",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "cb9c8e0eed0df20a334e39cdcd4497aaac27a5a526501a9cd6a83676517397e1"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-lady-with-the-dog:6:c7b39820ad698f12",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "c7b39820ad698f1242763f82d14b6ac3c17bdaeca83edd8e66ed4fddf3caccf7"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-lady-with-the-dog:7:a061aa947013f3da",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "a061aa947013f3da94614c4d60f4756a3f50090a94276bb1b75c8450cc7afdc2"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-lady-with-the-dog:8:5a0682e053650ca1",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "5a0682e053650ca18765ed44e4f971d14bbf5fcb288e111354b77cd95bbc0333"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-lady-with-the-dog:9:511ba999df903f3d",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "511ba999df903f3db7c7390a6f579e6e57b124a7fa9a16c4bc76fbd9aa69cc5f"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-lady-with-the-dog:10:54cb28d3e1ef34c8",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "54cb28d3e1ef34c8e21c8083eac71abeaf930577d4866bfd452845e5a219b280"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-lady-with-the-dog:11:e5966c73bcdbafae",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "e5966c73bcdbafae50ce55cf26e31c09c0735573fc52f4bde250eed822f514c5"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-lady-with-the-dog:12:b298b29880461d97",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "b298b29880461d97d3c4132569c2cf31c80cfa85f37e401ba8fe3b2bb0f87bba"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-lady-with-the-dog:13:5cac737c38048204",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "5cac737c38048204fe49f5f1db031a8f1c3cffe41cb66da2c82eb9717f7c7f27"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-lady-with-the-dog:14:3bcbd9f48896a45d",
+        "chapter_id": "chapter-001",
+        "content_revision": "7a368d9431ba71dc2a0b24c1",
+        "content_hash": "3bcbd9f48896a45d807ca8305b4055b99e10c7955f027e4cc2bd8f9eb2592286"
+      }
+    ]
+  }
+}

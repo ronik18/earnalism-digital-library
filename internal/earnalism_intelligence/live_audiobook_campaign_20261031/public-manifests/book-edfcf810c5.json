@@ -1,0 +1,224 @@
+{
+  "book": {
+    "estimated_reading_time": "14 min",
+    "title": "ক্ষুধিত পাষাণ",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-book-edfcf810c5",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226493/earnalism/covers/back/book-edfcf810c5_back_1024x1536.webp",
+    "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226493/earnalism/covers/back/book-edfcf810c5_back_1024x1536.webp",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+    "updated_at": "2026-07-23T11:10:13Z",
+    "description": "A man alone in an ancient marble palace is possessed by visions of a vanished harem — the Hungry Stone devours him with the unsatisfied desires of centuries. Tagore's finest supernatural tale.",
+    "dominant_color": "#24362E",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "created_at": "2026-07-03T20:07:46Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "ক্ষুধিত পাষাণ",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "4359afd991af44ed052c",
+        "word_count": 3697,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/book-edfcf810c5/chapter-001?v=4359afd991af44ed052c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "ক্ষুধিত পাষাণ",
+        "index_title": "ক্ষুধিত পাষাণ",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "book-edfcf810c5",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "একটি প্রাচীন প্রাসাদে অতৃপ্ত আত্মার সাথে এক রাত কাটানোর রহস্যময় অভিজ্ঞতা।",
+    "text_license": {
+      "schema_version": "earnalism.text-license.v1",
+      "slug": "book-edfcf810c5",
+      "license": "CC-BY-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "ক্ষুধিত পাষাণ by রবীন্দ্রনাথ ঠাকুর; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+      "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+      "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+      "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4+%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3&oldid=1624859",
+      "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4+%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3&action=history"
+    },
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/book-edfcf810c5",
+    "reader_url": "/reader/book-edfcf810c5",
+    "preview_url": "/reader/book-edfcf810c5",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "ক্ষুধিত পাষাণ",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "4359afd991af44ed052c",
+      "word_count": 3697,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/book-edfcf810c5/chapter-001?v=4359afd991af44ed052c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "ক্ষুধিত পাষাণ",
+      "index_title": "ক্ষুধিত পাষাণ",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "28fff4d1417f8f78",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "d132350633e399f66b48",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:38.930548+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/book-edfcf810c5/manifest",
+      "total_pages": 8
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "014eeaa92d3ad2cda49d59e6",
+    "page_count": 8,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "book-edfcf810c5:1:0c3b4a48ed53c19f",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "0c3b4a48ed53c19ff9d55ab0bbfaeaad73058e69d7edd83e4a6749a0ad3f9420"
+      },
+      {
+        "page_number": 2,
+        "page_id": "book-edfcf810c5:2:819da365de7fe6f4",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "819da365de7fe6f47f5f814b201fd4f7ba106fddd6ae6e58ae8ca85ee0a8d7aa"
+      },
+      {
+        "page_number": 3,
+        "page_id": "book-edfcf810c5:3:95a785de4ca314ef",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "95a785de4ca314efe84efd35a2b684a5e4be0602220d1ac2d9cb5f114a1ff294"
+      },
+      {
+        "page_number": 4,
+        "page_id": "book-edfcf810c5:4:00f45ee480adb8d5",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "00f45ee480adb8d5d1348951ac8ccf00bc99e5988bfda270161ff4c2a8972119"
+      },
+      {
+        "page_number": 5,
+        "page_id": "book-edfcf810c5:5:4ea286bebfbd80d8",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "4ea286bebfbd80d8bed1037453d32d41e9606abdbc972b9aadeb373d877cd387"
+      },
+      {
+        "page_number": 6,
+        "page_id": "book-edfcf810c5:6:4d2c59bdd46f7802",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "4d2c59bdd46f7802f5f8669edc5be61f8c32a49a04e6c9183493b5cf141dc034"
+      },
+      {
+        "page_number": 7,
+        "page_id": "book-edfcf810c5:7:33a30ef429499b2f",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "33a30ef429499b2f646ad5be118e4363f10c400a507325f9375a37fc2e2e0caf"
+      },
+      {
+        "page_number": 8,
+        "page_id": "book-edfcf810c5:8:9507a321219c40ea",
+        "chapter_id": "chapter-001",
+        "content_revision": "014eeaa92d3ad2cda49d59e6",
+        "content_hash": "9507a321219c40ea1139777c53da358011c56198a4159d5b1b4ee2dca1545a27"
+      }
+    ]
+  }
+}

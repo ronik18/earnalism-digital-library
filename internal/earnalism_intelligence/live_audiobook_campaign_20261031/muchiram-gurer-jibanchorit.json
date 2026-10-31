@@ -1,0 +1,176 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "book_id": "controlled-muchiram-gurer-jibanchorit",
+  "url": "https://theearnalism.com/book/muchiram-gurer-jibanchorit",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:47Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "3f18d8086f1cb522dad555e93e67accaba24a9a6b15a3382e4942d24c679bc13",
+      "url": "https://theearnalism.com/api/reader/book/muchiram-gurer-jibanchorit/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
+      "sha256": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json",
+      "sha256": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/rights_decision.json",
+      "sha256": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-001.json",
+        "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-002.json",
+        "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-003.json",
+        "sha256": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-004.json",
+        "sha256": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-005.json",
+        "sha256": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-006.json",
+        "sha256": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-007.json",
+        "sha256": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-008.json",
+        "sha256": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-009.json",
+        "sha256": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-010.json",
+        "sha256": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-011.json",
+        "sha256": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-012.json",
+        "sha256": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-013.json",
+        "sha256": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c"
+      },
+      {
+        "path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/chapters/chapter-014.json",
+        "sha256": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413"
+      }
+    ],
+    "live_chapter_count": 14,
+    "live_version": "ebef684297620da48bb6",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "bd0e9442ec8af782",
+      "updated_at": ""
+    },
+    "live_book_slug": "muchiram-gurer-jibanchorit",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    },
+    {
+      "code": "PRIOR_CAMPAIGN_FAILURES_NO_BLIND_RETRY",
+      "action": "Obtain source-bound human narration through the prepared packet, then run complete source, listening, measured-sync, upload, metadata, endpoint, and browser validation.",
+      "evidence": [
+        "full-book listening failed on late passages",
+        "targeted Achird and slower Aoede repairs repeated sub-threshold fatal delivery failures",
+        "human narration or licensed audio candidate required"
+      ]
+    },
+    {
+      "code": "BENGALI_PILOT_SCALE_AND_BUDGET_GATES",
+      "action": "Respect the current pilot-first campaign state; establish a supported qualified runtime and enforced numeric campaign/per-title budget gates before any paid request; do not replay failed fingerprints."
+    }
+  ],
+  "language": "ben",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  },
+  "prior_campaign": {
+    "current_campaign_state": "HUMAN_NARRATION_REQUIRED",
+    "known_blockers": [
+      "full-book listening failed on late passages",
+      "targeted Achird and slower Aoede repairs repeated sub-threshold fatal delivery failures",
+      "human narration or licensed audio candidate required"
+    ],
+    "selected_strategy": "source_bound_human_narration_packet",
+    "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit",
+    "next_action": "Obtain source-bound human narration through the prepared packet, then run complete source, listening, measured-sync, upload, metadata, endpoint, and browser validation."
+  }
+}

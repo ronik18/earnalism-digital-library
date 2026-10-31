@@ -1,0 +1,156 @@
+{
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "book_id": "controlled-the-open-window",
+  "url": "https://theearnalism.com/book/the-open-window",
+  "stage": "EXISTING_RELEASE_REUSE_VERIFICATION",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-26T10:23:01.242177+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "1b15fa47a95c604149331311ce6f600aabb65c2abcac8e6be3a6a013b536eea4",
+      "url": "https://theearnalism.com/api/reader/book/the-open-window/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-open-window/source_evidence.json",
+      "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-open-window/reader_manifest.json",
+      "sha256": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-open-window/rights_decision.json",
+      "sha256": "9cb800eeff9f13f6098f7e31bbd8859c8bff9dfd6de130edf4e63d1a2badd041"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-open-window/chapters/chapter-001.json",
+        "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "0fb9ebac39ac0c6c628b",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": true,
+      "asset_slug": "the-open-window",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 491436,
+      "delivery_mode": "PROTECTED_PACKAGE_V2",
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "version": "df1a5c4c7731a646",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-open-window",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "RETAIN_ACCEPTED_RECORDING",
+    "speaker": "Ryan",
+    "model": "Qwen3-TTS CustomVoice",
+    "package": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "new_generation": false
+  },
+  "music": {
+    "selection": "RETAIN_EXISTING_ACCEPTED_MIX",
+    "new_music_added": false,
+    "current_subjective_balance_check": "NOT_PERFORMED"
+  },
+  "quality": {
+    "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "CURRENT_RUNTIME_ACCEPTANCE_NOT_ESTABLISHED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET"
+  },
+  "blockers": [
+    {
+      "code": "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED",
+      "evidence": "acceptance-source-comparison.json",
+      "detail": "Exact accepted-source tree comparison found changes in backend/server.py, backend/reading_pass_service.py and frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx. Unchanged package bytes alone cannot qualify this changed path. Historical real playback remains valid historical evidence.",
+      "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {
+      "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2": {
+        "basis": "Reference to the existing owner-accepted corrected-v1 audio-use adoption for this exact retained release; no Reader use expanded and no new rights declaration.",
+        "decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
+        "record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    },
+    "reader_rights_do_not_establish_audio_rights": true
+  },
+  "retained_playback_evidence": {
+    "path": "internal/audiobook_lab/release_gate/open_window_publication_evidence_20261026/playback.json",
+    "sha256": "9e22caeee79f48e3205b570aabd375e529f5d7c8b187efb9f1e305131df497f7"
+  },
+  "retained_playback_summary": {
+    "packageVersion": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "descriptor": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "durationMs": 491436,
+    "segmentCount": 29,
+    "status": "PLAYBACK_ACCOUNTING_PASS_PUBLIC_ACTIVATION_PENDING",
+    "ended": true,
+    "pauseResumeSeekPass": true,
+    "coverage_segments": 29
+  },
+  "catalog_audio": {
+    "audio_enabled": true,
+    "audio_status": "AVAILABLE",
+    "audio_qa_status": "QA_PASSED",
+    "audiobook_enabled": true,
+    "audiobook_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+    "audiobook_duration_ms": 491436,
+    "audiobook_release_gate": "APPROVED"
+  },
+  "live_audio_manifest_guest": {
+    "http": 401,
+    "url": "https://theearnalism.com/api/reader/book/the-open-window/audiobook/manifest"
+  },
+  "customer_page": {
+    "http": 200,
+    "sha256": "d5716dbc3c669f204a84e6a287751456c4947cf803aae8906d7cdaf531af3d06",
+    "url": "https://theearnalism.com/book/the-open-window"
+  },
+  "existing_publication_status": "PUBLICLY_AVAILABLE_UNCHANGED_CURRENT_FULL_ACCEPTANCE_BLOCKED",
+  "browser_observation": {
+    "method": "Live CUA browser, guest state",
+    "observed_at": "2026-10-31T05:02:04.255156+00:00",
+    "detail": "Correct title/author and Audiobook Approved with Open Listening Room link; listener shows Full audiobook, one chapter, expected duration, Authorize Listening and Reading Pass requirement; controls disabled before authorization. No authorization click, sign-in, or billable session performed.",
+    "duration": "8:11",
+    "discovery": "PASS",
+    "guest_access_controls": "PASS",
+    "authenticated_playback": "NOT_PERFORMED"
+  }
+}

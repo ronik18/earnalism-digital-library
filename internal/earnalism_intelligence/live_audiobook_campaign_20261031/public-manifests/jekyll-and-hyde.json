@@ -1,0 +1,846 @@
+{
+  "book": {
+    "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+    "estimated_reading_time": "107 min",
+    "back_cover_dominant_color": "#1B0A11",
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "who_for": [
+      "Readers of public-domain classics",
+      "Students and careful rereaders"
+    ],
+    "id": "controlled-jekyll-and-hyde",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+    "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+    "learnings": [
+      "A source-faithful public-domain reading edition prepared for Earnalism."
+    ],
+    "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+    "updated_at": "2026-08-16T05:16:57Z",
+    "description": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+    "dominant_color": "#1D0B13",
+    "author": "Robert Louis Stevenson",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+    "created_at": "2026-07-01T10:36:20Z",
+    "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+    "benefits": [
+      "Read a cleaned public-domain text without source repository boilerplate.",
+      "Use the quiet Earnalism reader with chapter navigation.",
+      "Access the work in a clean, chaptered reader."
+    ],
+    "about_author": "",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+    "category_slug": "classic-literature",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "STORY OF THE DOOR",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "c39567dc7e7c006724f1",
+        "word_count": 2400,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-001?v=c39567dc7e7c006724f1",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Story Of The Door",
+        "index_title": "Story Of The Door",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "SEARCH FOR MR. HYDE",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "04452c669ddedb44a773",
+        "word_count": 2945,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-002?v=04452c669ddedb44a773",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Search For Mr. Hyde",
+        "index_title": "Search For Mr. Hyde",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "DR. JEKYLL WAS QUITE AT EASE",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "bd00bbaa9d3f81ca38e4",
+        "word_count": 798,
+        "reading_minutes": 4,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-003?v=bd00bbaa9d3f81ca38e4",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Dr. Jekyll Was Quite At Ease",
+        "index_title": "Dr. Jekyll Was Quite At Ease",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "THE CAREW MURDER CASE",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "0f62b7aebcb5bf934d0f",
+        "word_count": 1665,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-004?v=0f62b7aebcb5bf934d0f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "The Carew Murder Case",
+        "index_title": "The Carew Murder Case",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "INCIDENT OF THE LETTER",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "b842f83c399fa51acb81",
+        "word_count": 1634,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-005?v=b842f83c399fa51acb81",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Incident Of The Letter",
+        "index_title": "Incident Of The Letter",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "INCIDENT OF DR. LANYON",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "e0dbeb977703d3064a3d",
+        "word_count": 1492,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-006?v=e0dbeb977703d3064a3d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Incident Of Dr. Lanyon",
+        "index_title": "Incident Of Dr. Lanyon",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "INCIDENT AT THE WINDOW",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "8af9a74ac33471502907",
+        "word_count": 553,
+        "reading_minutes": 3,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-007?v=8af9a74ac33471502907",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Incident At The Window",
+        "index_title": "Incident At The Window",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "THE LAST NIGHT",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "79422630516fa4561709",
+        "word_count": 4373,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-008?v=79422630516fa4561709",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "The Last Night",
+        "index_title": "The Last Night",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "DR. LANYON’S NARRATIVE",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "d1df5f32944d7bcbd001",
+        "word_count": 2805,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-009?v=d1df5f32944d7bcbd001",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Dr. Lanyon’s Narrative",
+        "index_title": "Dr. Lanyon’s Narrative",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-010",
+        "title": "HENRY JEKYLL’S FULL STATEMENT OF THE CASE",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "990b5d68fdde2fed1f93",
+        "word_count": 6944,
+        "reading_minutes": 29,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-010?v=990b5d68fdde2fed1f93",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Henry Jekyll’s Full Statement Of The Case",
+        "index_title": "Henry Jekyll’s Full Statement Of The Case",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "jekyll-and-hyde",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/jekyll-and-hyde",
+    "reader_url": "/reader/jekyll-and-hyde",
+    "preview_url": "/reader/jekyll-and-hyde",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "STORY OF THE DOOR",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "c39567dc7e7c006724f1",
+      "word_count": 2400,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-001?v=c39567dc7e7c006724f1",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Story Of The Door",
+      "index_title": "Story Of The Door",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "SEARCH FOR MR. HYDE",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "04452c669ddedb44a773",
+      "word_count": 2945,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-002?v=04452c669ddedb44a773",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Search For Mr. Hyde",
+      "index_title": "Search For Mr. Hyde",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "DR. JEKYLL WAS QUITE AT EASE",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "bd00bbaa9d3f81ca38e4",
+      "word_count": 798,
+      "reading_minutes": 4,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-003?v=bd00bbaa9d3f81ca38e4",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Dr. Jekyll Was Quite At Ease",
+      "index_title": "Dr. Jekyll Was Quite At Ease",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "THE CAREW MURDER CASE",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "0f62b7aebcb5bf934d0f",
+      "word_count": 1665,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-004?v=0f62b7aebcb5bf934d0f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "The Carew Murder Case",
+      "index_title": "The Carew Murder Case",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "INCIDENT OF THE LETTER",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "b842f83c399fa51acb81",
+      "word_count": 1634,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-005?v=b842f83c399fa51acb81",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Incident Of The Letter",
+      "index_title": "Incident Of The Letter",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "INCIDENT OF DR. LANYON",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "e0dbeb977703d3064a3d",
+      "word_count": 1492,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-006?v=e0dbeb977703d3064a3d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Incident Of Dr. Lanyon",
+      "index_title": "Incident Of Dr. Lanyon",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "INCIDENT AT THE WINDOW",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "8af9a74ac33471502907",
+      "word_count": 553,
+      "reading_minutes": 3,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-007?v=8af9a74ac33471502907",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Incident At The Window",
+      "index_title": "Incident At The Window",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "THE LAST NIGHT",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "79422630516fa4561709",
+      "word_count": 4373,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-008?v=79422630516fa4561709",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "The Last Night",
+      "index_title": "The Last Night",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "DR. LANYON’S NARRATIVE",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "d1df5f32944d7bcbd001",
+      "word_count": 2805,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-009?v=d1df5f32944d7bcbd001",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Dr. Lanyon’s Narrative",
+      "index_title": "Dr. Lanyon’s Narrative",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-010",
+      "title": "HENRY JEKYLL’S FULL STATEMENT OF THE CASE",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "990b5d68fdde2fed1f93",
+      "word_count": 6944,
+      "reading_minutes": 29,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/jekyll-and-hyde/chapter-010?v=990b5d68fdde2fed1f93",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Henry Jekyll’s Full Statement Of The Case",
+      "index_title": "Henry Jekyll’s Full Statement Of The Case",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "6d7b221893a87495",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "a1871e2aa95de2386a79",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:33.979988+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/jekyll-and-hyde/manifest",
+      "total_pages": 52
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "23c34da33a2e85bf41d8f431",
+    "page_count": 52,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "jekyll-and-hyde:1:2c733add2caecbad",
+        "chapter_id": "chapter-001",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "2c733add2caecbade869909b51c818dcfa5b81a1f15d29c11f2cdb5521ad8000"
+      },
+      {
+        "page_number": 2,
+        "page_id": "jekyll-and-hyde:2:60b10d7ec1c31b04",
+        "chapter_id": "chapter-001",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "60b10d7ec1c31b04f871796af1c461d84ef4a07680cf0105459843d4a17339ca"
+      },
+      {
+        "page_number": 3,
+        "page_id": "jekyll-and-hyde:3:2c720cc9a40a05b7",
+        "chapter_id": "chapter-001",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "2c720cc9a40a05b75328eafdecd0d12a1ab492f106882e22747bb858ce6bc8e9"
+      },
+      {
+        "page_number": 4,
+        "page_id": "jekyll-and-hyde:4:83e9c24cc46247f4",
+        "chapter_id": "chapter-001",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "83e9c24cc46247f4dcd8542026e2a1a968a96b0bc6cc9d7c501d9ce685f1986e"
+      },
+      {
+        "page_number": 5,
+        "page_id": "jekyll-and-hyde:5:bc6b4f5fea8aaf51",
+        "chapter_id": "chapter-001",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "bc6b4f5fea8aaf51c6e61a3403590d49eec38948d2badc1d22ec92899edbdd8a"
+      },
+      {
+        "page_number": 6,
+        "page_id": "jekyll-and-hyde:6:093d2fc29a966cb8",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "093d2fc29a966cb82aa3f502874c75447bc73fa5985eb77d9887b9df333478a2"
+      },
+      {
+        "page_number": 7,
+        "page_id": "jekyll-and-hyde:7:f79c3d7c91f25c42",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "f79c3d7c91f25c42f9819b007d566dc4a32633b3e6ca63e5a435bfed9d71a4f8"
+      },
+      {
+        "page_number": 8,
+        "page_id": "jekyll-and-hyde:8:4d719445a1c457a6",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "4d719445a1c457a68d9c62e32e147545b6014fa3782a78c0e66f3f8756c1f23f"
+      },
+      {
+        "page_number": 9,
+        "page_id": "jekyll-and-hyde:9:e668f267f7fb36ae",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "e668f267f7fb36ae45d3d1a408350c6f3d23954827fe4ceb9bce5a1c08701466"
+      },
+      {
+        "page_number": 10,
+        "page_id": "jekyll-and-hyde:10:73728e91e5af818a",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "73728e91e5af818a24bb08a41840eea83b6ddcd09711f2dd328f6782425192c9"
+      },
+      {
+        "page_number": 11,
+        "page_id": "jekyll-and-hyde:11:eddfbbe6610eec33",
+        "chapter_id": "chapter-002",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "eddfbbe6610eec33a6c82c29f553f60887151d83269cb13352397bf368e8f12b"
+      },
+      {
+        "page_number": 12,
+        "page_id": "jekyll-and-hyde:12:c4ddf79a02c3eb29",
+        "chapter_id": "chapter-003",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "c4ddf79a02c3eb290ee707f2a7b64a2808403843b083def7dbf5c064b8558630"
+      },
+      {
+        "page_number": 13,
+        "page_id": "jekyll-and-hyde:13:d2d4b8e14e3b88b2",
+        "chapter_id": "chapter-003",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "d2d4b8e14e3b88b2973fa57c5af6327c441362a62363d7ce3757eafa86a9d875"
+      },
+      {
+        "page_number": 14,
+        "page_id": "jekyll-and-hyde:14:141fd6fed826d841",
+        "chapter_id": "chapter-004",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "141fd6fed826d841d887dc86b7de047fba49c371b974a365e21fffc5b49190d1"
+      },
+      {
+        "page_number": 15,
+        "page_id": "jekyll-and-hyde:15:1f068d727d94b195",
+        "chapter_id": "chapter-004",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "1f068d727d94b195b25505b5a570c8c6ff1f9d2ce7a3937ff617073b5928484d"
+      },
+      {
+        "page_number": 16,
+        "page_id": "jekyll-and-hyde:16:4201a3292fe0945e",
+        "chapter_id": "chapter-004",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "4201a3292fe0945e9c3d600117aefef8edd069746dce150a3657c75322dda49c"
+      },
+      {
+        "page_number": 17,
+        "page_id": "jekyll-and-hyde:17:892dd8eb308f5437",
+        "chapter_id": "chapter-005",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "892dd8eb308f54379d4cb37787284e127d2bfe0fd6191894514f962921d9b1fd"
+      },
+      {
+        "page_number": 18,
+        "page_id": "jekyll-and-hyde:18:3fe9bd0ac8970eea",
+        "chapter_id": "chapter-005",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "3fe9bd0ac8970eea825af27dbcd2e423a9d4497a3c655676d8195e751db3e0a0"
+      },
+      {
+        "page_number": 19,
+        "page_id": "jekyll-and-hyde:19:012d8ce15bf62cd3",
+        "chapter_id": "chapter-005",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "012d8ce15bf62cd38874f956d9e7539097288ac1ecf8f09e33307ebbd581fc7d"
+      },
+      {
+        "page_number": 20,
+        "page_id": "jekyll-and-hyde:20:2b9a64f616b91597",
+        "chapter_id": "chapter-005",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "2b9a64f616b915976d97e5625ab978f15f3e455d09aff802ae25b95ad57ca004"
+      },
+      {
+        "page_number": 21,
+        "page_id": "jekyll-and-hyde:21:ea1451b018e930f9",
+        "chapter_id": "chapter-006",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "ea1451b018e930f9f748490bc0aefc319a3bcf6cb276e2b012999902ff626895"
+      },
+      {
+        "page_number": 22,
+        "page_id": "jekyll-and-hyde:22:90e02dd80910d090",
+        "chapter_id": "chapter-006",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "90e02dd80910d090fad13046b4c88dba445430144125a496a576aa7e321b62c0"
+      },
+      {
+        "page_number": 23,
+        "page_id": "jekyll-and-hyde:23:cf67547304fc5a1a",
+        "chapter_id": "chapter-006",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "cf67547304fc5a1a93051cc334195553306e870cb117d41c906144d8b9dda542"
+      },
+      {
+        "page_number": 24,
+        "page_id": "jekyll-and-hyde:24:93e8f3b839d2952c",
+        "chapter_id": "chapter-007",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "93e8f3b839d2952cdd557d4a36ac97af5484e0c7f74c8c71f0baced9843eb308"
+      },
+      {
+        "page_number": 25,
+        "page_id": "jekyll-and-hyde:25:42dc5e93c41d1979",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "42dc5e93c41d1979125fac0a88947a98fc63a55a41d08f796db6545f0e6465ef"
+      },
+      {
+        "page_number": 26,
+        "page_id": "jekyll-and-hyde:26:9d8e7dc5884e6780",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "9d8e7dc5884e6780b481be4f60c4bfbf1b86e89a0487303b32fcd1bd9be758e1"
+      },
+      {
+        "page_number": 27,
+        "page_id": "jekyll-and-hyde:27:b1f04259886daa55",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "b1f04259886daa555f3226eae2150c5459d5c7cbe113ff6c355dbe3db6463b9a"
+      },
+      {
+        "page_number": 28,
+        "page_id": "jekyll-and-hyde:28:0ed8ca49ede40e54",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "0ed8ca49ede40e549640408b3f26e2e836628332d8ada259b9e31d65c147d927"
+      },
+      {
+        "page_number": 29,
+        "page_id": "jekyll-and-hyde:29:49246166448cb6d6",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "49246166448cb6d696e0af85d2caf401da6b2162aed57ff0fb41f3f979ea014d"
+      },
+      {
+        "page_number": 30,
+        "page_id": "jekyll-and-hyde:30:0b3272352ac2a68e",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "0b3272352ac2a68e36bc4f079fb48c1bca6d4edac5975cae9e0c400b30848bd0"
+      },
+      {
+        "page_number": 31,
+        "page_id": "jekyll-and-hyde:31:5da5e659b2d6ce5b",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "5da5e659b2d6ce5bd69c4b9e2bbee99e0c4c942d1a109539cbe7364373f2e2b8"
+      },
+      {
+        "page_number": 32,
+        "page_id": "jekyll-and-hyde:32:a40e3a4e0648fb23",
+        "chapter_id": "chapter-008",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "a40e3a4e0648fb2360eb3a58cdef68cc9ca7829908b0f61a28f3643faaad14fd"
+      },
+      {
+        "page_number": 33,
+        "page_id": "jekyll-and-hyde:33:3a0942053b294282",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "3a0942053b294282285f66457a76ecc997e9d199003c23481108c7ef192e66b9"
+      },
+      {
+        "page_number": 34,
+        "page_id": "jekyll-and-hyde:34:4170d5ec0ade478b",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "4170d5ec0ade478bd8e5b660b89575449fc2af18befbe29235f3498b6375911d"
+      },
+      {
+        "page_number": 35,
+        "page_id": "jekyll-and-hyde:35:6b2006f8bee7c947",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "6b2006f8bee7c94749154e5e4f45b50b44ff1da5f88ef71252a15c9c37d16475"
+      },
+      {
+        "page_number": 36,
+        "page_id": "jekyll-and-hyde:36:9da163847e500caf",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "9da163847e500cafccb68cd428e1549f854ab7c440cc6ec80eb715e3abe5476d"
+      },
+      {
+        "page_number": 37,
+        "page_id": "jekyll-and-hyde:37:f6bd659e28144dad",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "f6bd659e28144dadcb2c26046bbf3dcd8441db98065a9d0265728666e5677f10"
+      },
+      {
+        "page_number": 38,
+        "page_id": "jekyll-and-hyde:38:e51ab22356c05c26",
+        "chapter_id": "chapter-009",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "e51ab22356c05c26040d5db569c61c676ea14b6bb5ba75f04ffdfeed52761901"
+      },
+      {
+        "page_number": 39,
+        "page_id": "jekyll-and-hyde:39:ee08d8b0bcb233da",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "ee08d8b0bcb233da96fc953e1adebbdba48f649d4b71539a39079a5ca6a4e845"
+      },
+      {
+        "page_number": 40,
+        "page_id": "jekyll-and-hyde:40:459587821d3e9f98",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "459587821d3e9f980547ea70a787a0bbe64bc0d7b1036f8bbebd7f3a7f0c585a"
+      },
+      {
+        "page_number": 41,
+        "page_id": "jekyll-and-hyde:41:34fd6f4f24d14965",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "34fd6f4f24d14965d84e424ba83c0a44f2e5d1160bf8a6d5f96a03df4a1eccc4"
+      },
+      {
+        "page_number": 42,
+        "page_id": "jekyll-and-hyde:42:0529aa3cc6a808c3",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "0529aa3cc6a808c323c1e900b5f4dd6a221e6cf1e4d065e73317e89b7a521618"
+      },
+      {
+        "page_number": 43,
+        "page_id": "jekyll-and-hyde:43:b1b2c8124c366aa8",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "b1b2c8124c366aa84a04cf64c6d334a9958ffad64155a4ddc1ddec8c38954193"
+      },
+      {
+        "page_number": 44,
+        "page_id": "jekyll-and-hyde:44:86c8bbfb53c3aad6",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "86c8bbfb53c3aad6449e938ce21dbef2b0179789aa16cf844a00d21d410a6cdf"
+      },
+      {
+        "page_number": 45,
+        "page_id": "jekyll-and-hyde:45:f6fd8d4673874628",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "f6fd8d4673874628305d4e42b0be6d839bc9ac9250a7dc0810f4d8aaa5e33844"
+      },
+      {
+        "page_number": 46,
+        "page_id": "jekyll-and-hyde:46:6f117157f87f1bbd",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "6f117157f87f1bbd00c27ebc3f67ffb1cefee891d8d0df9f1a0fc8fd4dd0d574"
+      },
+      {
+        "page_number": 47,
+        "page_id": "jekyll-and-hyde:47:f5ec1caedacb7567",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "f5ec1caedacb75679a64483afe8aad3ca5c66db9e9240e1c9135c46f86873df1"
+      },
+      {
+        "page_number": 48,
+        "page_id": "jekyll-and-hyde:48:047d85292f84e294",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "047d85292f84e294c930d2cffcd2a3061bf00c855763ef72473117e979b1b4cb"
+      },
+      {
+        "page_number": 49,
+        "page_id": "jekyll-and-hyde:49:7b383e5e9af94536",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "7b383e5e9af94536507ef4db942f6733f83cadbadece48eeb20fcb19d49092c5"
+      },
+      {
+        "page_number": 50,
+        "page_id": "jekyll-and-hyde:50:099a3fce40a5f229",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "099a3fce40a5f229afd77baf69221d29118b60d5fe7414f4a6cecf856038ca17"
+      },
+      {
+        "page_number": 51,
+        "page_id": "jekyll-and-hyde:51:9362e2adbc69bb36",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "9362e2adbc69bb36ec3cafe24b45644e135fce339d6371246051fa5efff66688"
+      },
+      {
+        "page_number": 52,
+        "page_id": "jekyll-and-hyde:52:541220268ca2932a",
+        "chapter_id": "chapter-010",
+        "content_revision": "23c34da33a2e85bf41d8f431",
+        "content_hash": "541220268ca2932a9f7283ee024de675a256fd2c1018bcdab4e511f7d5952dcd"
+      }
+    ]
+  }
+}

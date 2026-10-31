@@ -1,0 +1,180 @@
+{
+  "slug": "picture-of-dorian-gray",
+  "title": "The Picture of Dorian Gray",
+  "book_id": "controlled-picture-of-dorian-gray",
+  "url": "https://theearnalism.com/book/picture-of-dorian-gray",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "2d6ca086a9ff1cc8498a3ecd52a900b61acaa53b38f801deec3940b989f84ca4",
+      "url": "https://theearnalism.com/api/reader/book/picture-of-dorian-gray/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/picture-of-dorian-gray/source_evidence.json",
+      "sha256": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/picture-of-dorian-gray/reader_manifest.json",
+      "sha256": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/picture-of-dorian-gray/rights_decision.json",
+      "sha256": "aa0a30fc1f0b146200caabe354c310e0c48ae6e756580b071006cc4fcaf8f661"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-001.json",
+        "sha256": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-002.json",
+        "sha256": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-003.json",
+        "sha256": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-004.json",
+        "sha256": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-005.json",
+        "sha256": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-006.json",
+        "sha256": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-007.json",
+        "sha256": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-008.json",
+        "sha256": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-009.json",
+        "sha256": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-010.json",
+        "sha256": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-011.json",
+        "sha256": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-012.json",
+        "sha256": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-013.json",
+        "sha256": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-014.json",
+        "sha256": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-015.json",
+        "sha256": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-016.json",
+        "sha256": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-017.json",
+        "sha256": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-018.json",
+        "sha256": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-019.json",
+        "sha256": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-020.json",
+        "sha256": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7"
+      },
+      {
+        "path": "backend/data/controlled_publications/picture-of-dorian-gray/chapters/chapter-021.json",
+        "sha256": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376"
+      }
+    ],
+    "live_chapter_count": 21,
+    "live_version": "9079f2e57431af1e14b8",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "d9cd827c80b15548",
+      "updated_at": ""
+    },
+    "live_book_slug": "picture-of-dorian-gray",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

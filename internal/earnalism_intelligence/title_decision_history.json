@@ -12374,5 +12374,640 @@
     "evidence": "internal/earnalism_intelligence/cover_next_two_20261031",
     "production_cover_mapping_changed": false,
     "text_audio_access_customer_state_changed": false
+  },
+  "live_audiobook_campaign_20261031": {
+    "the-great-gatsby": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-great-gatsby.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-adventures-of-sherlock-holmes": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-adventures-of-sherlock-holmes.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "a-ghost-story": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/a-ghost-story.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "alices-adventures-in-wonderland": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/alices-adventures-in-wonderland.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "muchiram-gurer-jibanchorit": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/muchiram-gurer-jibanchorit.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "PRIOR_CAMPAIGN_FAILURES_NO_BLIND_RETRY",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "bn-035": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/bn-035.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "PRIOR_CAMPAIGN_FAILURES_NO_BLIND_RETRY",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "bn-059": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/bn-059.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "bn-066": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/bn-066.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "book-5704b31005": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/book-5704b31005.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "lokrahasya": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/lokrahasya.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "mrinalini": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/mrinalini.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "radharani": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/radharani.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+        "PRIOR_CAMPAIGN_FAILURES_NO_BLIND_RETRY",
+        "BENGALI_PILOT_SCALE_AND_BUDGET_GATES"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "book-edfcf810c5": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/book-edfcf810c5.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "jekyll-and-hyde": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/jekyll-and-hyde.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-open-window": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": true,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-open-window.json",
+      "blockers": [
+        "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "sredni-vashtar": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/sredni-vashtar.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "dsires-baby": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/dsires-baby.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-call-of-the-wild": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-call-of-the-wild.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-secret-garden": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-secret-garden.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-cop-and-the-anthem": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-cop-and-the-anthem.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-gift-of-the-magi": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-gift-of-the-magi.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "picture-of-dorian-gray": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/picture-of-dorian-gray.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "frankenstein": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/frankenstein.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "dracula": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/dracula.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "pride-and-prejudice": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/pride-and-prejudice.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-tell-tale-heart": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-tell-tale-heart.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "agentic-ai-with-python": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/agentic-ai-with-python.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-art-of-money-getting": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-art-of-money-getting.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-lady-with-the-dog": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-lady-with-the-dog.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-stolen-white-elephant": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-stolen-white-elephant.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-fall-of-the-house-of-usher": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-fall-of-the-house-of-usher.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "love-of-life": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/love-of-life.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "a-scandal-in-bohemia": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/a-scandal-in-bohemia.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-canterville-ghost": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-canterville-ghost.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-man-who-would-be-king": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-man-who-would-be-king.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-open-boat": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-open-boat.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-happy-prince": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-happy-prince.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "an-occurrence-at-owl-creek-bridge": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/an-occurrence-at-owl-creek-bridge.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-pit-and-the-pendulum": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-pit-and-the-pendulum.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-bishop": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-bishop.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-science-of-getting-rich": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-science-of-getting-rich.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-selfish-giant": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": true,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-selfish-giant.json",
+      "blockers": [
+        "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "a-white-heron": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/a-white-heron.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-enchanted-april": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-enchanted-april.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "a-horseman-in-the-sky": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/a-horseman-in-the-sky.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "a-mystery-of-heroism": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/a-mystery-of-heroism.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "acres-of-diamonds": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/acres-of-diamonds.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "my-life-and-work": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/my-life-and-work.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-principles-of-scientific-management": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-principles-of-scientific-management.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-student": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-time-machine": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-time-machine.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    },
+    "the-wonderful-wizard-of-oz": {
+      "status": "BLOCKED",
+      "reader_unchanged": true,
+      "audio_publicly_available": false,
+      "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-wonderful-wizard-of-oz.json",
+      "blockers": [
+        "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+        "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING"
+      ],
+      "new_spend_usd": 0,
+      "observed_at": "2026-10-31T05:02:04.255156+00:00"
+    }
   }
 }

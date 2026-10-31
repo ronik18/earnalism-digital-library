@@ -1,0 +1,212 @@
+{
+  "book": {
+    "estimated_reading_time": "18 min",
+    "title": "A White Heron",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-a-white-heron",
+    "back_cover_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/a-white-heron/back-cover-5ac31a793801e2ba.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover-ae38e591300abbfa.jpg",
+    "updated_at": "2026-09-24T15:34:05Z",
+    "description": "Sylvia climbs a great pine tree at dawn and sees the whole world — including the white heron's nest. When she returns to the hunter who wants the bird for his collection, she finds she cannot speak. A perfect story about loyalty to the natural world over human desire.",
+    "dominant_color": "#4A1C27",
+    "author": "Sarah Orne Jewett",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Sarah Orne Jewett (1849–1909) was an American author of regional fiction celebrated for her precise, loving portraits of rural New England life.",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "A White Heron",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "724297b3a854d36c7c48",
+        "word_count": 4261,
+        "reading_minutes": 18,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/a-white-heron/chapter-001?v=724297b3a854d36c7c48",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "A White Heron",
+        "index_title": "A White Heron",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "a-white-heron",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A girl who knows where a rare white heron nests must choose between telling a hunter she admires and protecting the bird.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/a-white-heron",
+    "reader_url": "/reader/a-white-heron",
+    "preview_url": "/reader/a-white-heron",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "A White Heron",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "724297b3a854d36c7c48",
+      "word_count": 4261,
+      "reading_minutes": 18,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/a-white-heron/chapter-001?v=724297b3a854d36c7c48",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "A White Heron",
+      "index_title": "A White Heron",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "8f1ce1895f0d5a76",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "3921401c060a66a5b3a2",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:30.474812+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/a-white-heron/manifest",
+      "total_pages": 8
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "eaad848c009d45298343a9e7",
+    "page_count": 8,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "a-white-heron:1:b8c9cbf5e5ba028f",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "b8c9cbf5e5ba028f8b6f1067e700208dcd29f34a86b8929d9e3a9131dc87ee21"
+      },
+      {
+        "page_number": 2,
+        "page_id": "a-white-heron:2:17e9dc71253ef7bf",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "17e9dc71253ef7bfb4e2571badad7a52a1ac0a151b0527b91cbc9c4e8b180c4a"
+      },
+      {
+        "page_number": 3,
+        "page_id": "a-white-heron:3:24cbd0aadfbef3dd",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "24cbd0aadfbef3dd13ecd0e50afc0aebf34ffa7988875594b1fb4c12f91e0726"
+      },
+      {
+        "page_number": 4,
+        "page_id": "a-white-heron:4:996c5bf81501ac53",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "996c5bf81501ac5345544bb0b0db9871cddede76ccf07aaa4eed0ab8f0298bcc"
+      },
+      {
+        "page_number": 5,
+        "page_id": "a-white-heron:5:729113b354d61ba9",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "729113b354d61ba96a7baffee0811614544864ef3267ea18fbf6ed958cf95421"
+      },
+      {
+        "page_number": 6,
+        "page_id": "a-white-heron:6:6b27ee50f02f0f5b",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "6b27ee50f02f0f5b7678eeba0df5d0fbd32dadc3212e60a9243adab48de57dc2"
+      },
+      {
+        "page_number": 7,
+        "page_id": "a-white-heron:7:4649c45c71980460",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "4649c45c71980460c2c4e513ffcd07edb91d4e12680f3fee8db9cf38489e8853"
+      },
+      {
+        "page_number": 8,
+        "page_id": "a-white-heron:8:280dad655d07ecdc",
+        "chapter_id": "chapter-001",
+        "content_revision": "eaad848c009d45298343a9e7",
+        "content_hash": "280dad655d07ecdcc12c0fb2d64279b8e27ee65b7a1e4125275b67b7bdf6e57b"
+      }
+    ]
+  }
+}

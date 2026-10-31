@@ -1,0 +1,152 @@
+{
+  "slug": "agentic-ai-with-python",
+  "title": "Agentic AI With Python",
+  "book_id": "307adb30-176d-4a7b-a499-e20c8312337b",
+  "url": "https://theearnalism.com/book/agentic-ai-with-python",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": null,
+    "public_manifest": {
+      "http": 200,
+      "sha256": "6cdd0d674d3c2319cba42afee05eae279858934893a10ec048900111990597d6",
+      "url": "https://theearnalism.com/api/reader/book/agentic-ai-with-python/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/agentic-ai-with-python/source_evidence.json",
+      "sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/agentic-ai-with-python/reader_manifest.json",
+      "sha256": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/agentic-ai-with-python/rights_decision.json",
+      "sha256": "9a3b8f3ac26f1326e5b94067829cdd70b65f72888fe209a9c93c0b3b4fa71ab7"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-001.json",
+        "sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-002.json",
+        "sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-003.json",
+        "sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-004.json",
+        "sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-005.json",
+        "sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-006.json",
+        "sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-007.json",
+        "sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-008.json",
+        "sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-009.json",
+        "sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-010.json",
+        "sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-011.json",
+        "sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-012.json",
+        "sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-013.json",
+        "sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03"
+      },
+      {
+        "path": "backend/data/controlled_publications/agentic-ai-with-python/chapters/chapter-014.json",
+        "sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da"
+      }
+    ],
+    "live_chapter_count": 14,
+    "live_version": "98c15c07f7a5d8b6f760",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "57ab75a898dce177",
+      "updated_at": ""
+    },
+    "live_book_slug": "agentic-ai-with-python",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

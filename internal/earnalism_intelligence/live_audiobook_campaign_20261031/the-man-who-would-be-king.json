@@ -1,0 +1,100 @@
+{
+  "slug": "the-man-who-would-be-king",
+  "title": "The Man Who Would Be King",
+  "book_id": "controlled-the-man-who-would-be-king",
+  "url": "https://theearnalism.com/book/the-man-who-would-be-king",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-15T22:31:13Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "447fd1a850abfd34ff45a946d41ace2be0ec4a6c61794f1129a79c615d62092a",
+      "url": "https://theearnalism.com/api/reader/book/the-man-who-would-be-king/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-man-who-would-be-king/source_evidence.json",
+      "sha256": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-man-who-would-be-king/reader_manifest.json",
+      "sha256": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-man-who-would-be-king/rights_decision.json",
+      "sha256": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-man-who-would-be-king/chapters/chapter-001.json",
+        "sha256": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "90db65bbabc82eac0ef5",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "64cf65b3dddef413",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-man-who-would-be-king",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

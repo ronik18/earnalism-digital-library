@@ -1,0 +1,100 @@
+{
+  "slug": "the-cop-and-the-anthem",
+  "title": "The Cop and the Anthem",
+  "book_id": "controlled-the-cop-and-the-anthem",
+  "url": "https://theearnalism.com/book/the-cop-and-the-anthem",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:48Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "95261ad905eef0bfcb7852128b2d1f9080d6df66fadc4cb3423133c6adde6692",
+      "url": "https://theearnalism.com/api/reader/book/the-cop-and-the-anthem/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
+      "sha256": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+      "sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-cop-and-the-anthem/rights_decision.json",
+      "sha256": "27f9406680ff0004e50cd99b02d70a275aaaa980fecf91f51925ae063c856210"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-cop-and-the-anthem/chapters/chapter-001.json",
+        "sha256": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "df2c71134e900448cd20",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "b3f86ea8d1f2a74f",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-cop-and-the-anthem",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}
