@@ -1,0 +1,33 @@
+{
+  "recorded_at": "2026-10-31T12:49:56.081063+00:00",
+  "status": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_PAYLOAD_TRANSFER_PENDING_OWNER_RESPONSE",
+  "planned_operation": "One blind text-only audio-understanding review of existing 17.98-second excerpt",
+  "destination": "https://api.openai.com/v1/chat/completions",
+  "model": "gpt-audio-mini-2025-12-15",
+  "clip_sha256": "50c807c59161e075aa6d1df9de5876dcd18c89a7249aabc02e065ee128630313",
+  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "max_requests": 1,
+  "automatic_retries": false,
+  "modalities": [
+    "text"
+  ],
+  "max_output_tokens": 600,
+  "cost_envelope_usd": 0.03,
+  "model_metadata_discovery": "Existing account lists selected audio model; metadata read only",
+  "price_basis": {
+    "source": "https://developers.openai.com/api/docs/pricing",
+    "audio_input_usd_per_million_tokens": 10,
+    "text_input_usd_per_million_tokens": 0.6,
+    "text_output_usd_per_million_tokens": 2.4,
+    "selection": "Lowest priced listed available audio-understanding model; full alternatives audio input $32/M. Local ASR and owner listening were inconclusive."
+  },
+  "rejected_action": "Upload private excerpt to the OpenAI API for text-only audio review",
+  "rejection_reason": "Broad audiobook/cost authorization does not specifically authorize sending this sensitive audio payload to that destination.",
+  "process_started": false,
+  "paid_inference_requests": 0,
+  "new_synthesis": false,
+  "new_allocations": 0,
+  "new_purchases": 0,
+  "workaround_attempted": false,
+  "required_owner_action": "Specific approval for this existing excerpt to OpenAI, one text-only review, <=$0.03 envelope, no retries/allocation/synthesis/publication. Pending async question; do not ask the same listening question again."
+}

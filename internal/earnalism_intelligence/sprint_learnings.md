@@ -2899,6 +2899,9 @@ Sredni critical followup: canonical plus one LF exactly reproduces the generatio
 
 Metric correction before integration: the two raw local scores above use 10*(1-word-error-rate), not the repository release scorer. The unchanged repository transcript_similarity gives 9.7854 and 9.814 with first/last PASS. Supersede the earlier “below 9.7” gate interpretation. Preserve both supplementary diagnostics and the suspected four-word omission hold: a passing aggregate score never proves every word is present. No new inference was needed.
 
+
+2026-10-31 owner response/recovery: all 935 staged paths exactly matched current remote main; stale local refs alone caused apparent dirtiness. Preserve index, patch, recovery commit/ref and verified prerequisite bundle before atomic ref repair; no working-file rewrite/reset/stash/delete. Owner wording answer “I cannot tell” stays inconclusive, never approval or confirmed omission. Natural, non-robotic, contextually expressive storytelling is an explicit release requirement, with no invented scores or bypasses. A text-only audio review remains blocked by automatic approval review on the specific private excerpt transfer; do not bypass or treat metadata/key presence as payload authorization.
+
 ## 2026-10-31 — Reader completeness and guarded access diagnosis
 
 - LIVE_APPROVED and an intact canonical manifest are not proof of full source coverage or protected delivery. Compare every page hash and ordered chapter against the validated complete edition.

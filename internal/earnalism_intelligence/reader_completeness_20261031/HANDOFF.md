@@ -67,3 +67,5 @@ The Integration Lane reconciled reviewed local candidate `5a21db116b894800a537d4
 Fresh existing-scope metadata now verifies Vercel provider `createDeployments=disabled` and repository Git deployment disabled; Railway production auto-deploy and PR environments are disabled. No settings changed. See `PROVIDER-COUPLING-VERIFIED.json`. Native owner authorizes source CI/reviews and merge after all gates pass, preserving PR600; no deployment, publication or paid sessions. PR600 remains independent and untouched. Real capacity/slow-title, runtime recovery, actual26-title pointer diagnosis and any live repair/acceptance remain separate release gates.
 
 Next action: complete exact successor-head CI and published protected review; merge only matching approved head and verify tree equality.
+
+Main advanced to `04f0b6bd93488d3a1de42c760e776a19430382ba` during PR605 qualification. The Integration Lane preserved all new campaign/voice-quality/recovery records and reconciled the three append-only history files by intent. Reader application, test, guard and review-source files remain identical to reviewed5a21; new successor-head hosted gates are required.

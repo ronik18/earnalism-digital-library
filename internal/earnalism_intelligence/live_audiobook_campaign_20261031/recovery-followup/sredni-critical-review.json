@@ -11,13 +11,15 @@
       165.0
     ],
     "evidence": "Historical audio-derived timestamps, fresh small.en and completed large-v3-turbo ASR all omit the phrase. ASR agreement is a review signal, not human confirmation.",
-    "listening_adjudication": "NOT_PERFORMED",
+    "listening_adjudication": "OWNER_LISTENING_INCONCLUSIVE_WORDING_UNRESOLVED",
     "repair_performed": false,
     "local_review_clip": {
       "path": "/tmp/earnalism-audiobook-recovery-followup-20261031/sredni-wording-review-147.02-165.00.wav",
       "sha256": "50c807c59161e075aa6d1df9de5876dcd18c89a7249aabc02e065ee128630313",
       "method": "Decoded original interval to PCM WAV; no speech generation, gain, music or edits within interval"
-    }
+    },
+    "owner_response": "I cannot tell",
+    "omission_confirmed": false
   },
   "rules": [
     "Do not accept an aggregate 9.7 score while a material word omission is unresolved.",
@@ -41,7 +43,9 @@
       "all_words_complete": "UNVERIFIED_SUSPECTED_OMISSION"
     },
     "additional_ASR_attempts": "NONE_PLANNED_TWO_FULL_LOCAL_COMPARISONS_COMPLETE",
-    "human_wording_question": "PENDING_OWNER_RESPONSE",
+    "human_wording_question": "ANSWERED_INCONCLUSIVELY_DO_NOT_REPEAT_SAME_CHECK",
     "correction": "Earlier comparison of WER-derived numbers to the canonical threshold mixed metrics. The unchanged repository scorer was applied offline to both complete transcripts; no new inference."
-  }
+  },
+  "owner_response_receipt": "../owner-response-followup/owner-wording-response.json",
+  "automated_audio_review_transfer_gate": "../owner-response-followup/audio-review-transfer-gate.json"
 }

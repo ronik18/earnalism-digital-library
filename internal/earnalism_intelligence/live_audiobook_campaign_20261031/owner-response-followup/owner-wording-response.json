@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-31T12:38:55.270016+00:00",
+  "slug": "sredni-vashtar",
+  "owner_response": "I cannot tell",
+  "question": "Can you hear “one of which was” between “two compartments” and “fronted with close iron bars”?",
+  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "clip_sha256": "50c807c59161e075aa6d1df9de5876dcd18c89a7249aabc02e065ee128630313",
+  "source_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "interpretation": "OWNER_LISTENING_INCONCLUSIVE_WORDING_UNRESOLVED",
+  "omission_confirmed": false,
+  "content_accuracy_approved": false,
+  "release_status": "BLOCKED",
+  "repair_authorized_by_this_response": false,
+  "new_allocation": false,
+  "new_synthesis": false,
+  "publication_changed": false,
+  "integration": {
+    "canonical_head": "2690e385b7d51ba139816df9049745c97c45c5e2",
+    "canonical_status_entries": 935,
+    "canonical_edited": false,
+    "reason": "AGENTS.md requires clean aligned canonical before edits; pre-existing staged changes preserved."
+  },
+  "required_next_action": "When canonical is clean, bind this exact owner response into the title checkpoint and ledgers. Obtain decisive qualified listening adjudication of the retained original audio before approving reuse or planning a correction. Do not ask the owner to repeat the same inconclusive check or infer that the phrase is missing."
+}
