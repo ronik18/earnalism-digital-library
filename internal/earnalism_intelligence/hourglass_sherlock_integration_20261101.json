@@ -64,9 +64,16 @@
     "independent_review": "PASS",
     "local_tests": {
       "baseline_cases": 23,
-      "evidence_input_cases": 24,
+      "evidence_input_cases": 26,
       "publication_workflow_cases": 46
     },
-    "required_next_gate": "Fresh exact-head CI and published review; no deployment."
+    "required_next_gate": "Fresh exact-head CI and published review; no deployment.",
+    "generator_consistency": {
+      "demonstrated_failure_head": "e4a019cc8392a63a271a3ee4ee5c31db65a967ed",
+      "cause": "Generator retained legacy four-file list while reviewed baseline binds six files.",
+      "repair": "Use validated baseline input_paths for Library route hashing; retain expected-value and observation equality gates.",
+      "actual_generator_tests": "Matching six-file source PASS; unreviewed mapping FAIL; unrelated synthetic route evidence remains FAIL.",
+      "independent_review": "PASS"
+    }
   }
 }
