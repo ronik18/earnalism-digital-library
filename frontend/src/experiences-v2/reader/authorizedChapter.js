@@ -27,15 +27,22 @@ export function chapterWindowPlan(manifest, pageIndex, protectedAccess) {
     key: JSON.stringify([current.chapter_id, protectedAccess ? 'leased' : 'preview', selected.map(row => [row.page_id, row.content_hash])]) };
 }
 
-export async function fetchChapterWindow({ plan, slug, totalPages, fetchChunk, signal, authorized = () => true, concurrency = 3 }) {
+// Reduce long chapter preparation latency without extending the nonbillable
+// preparation deadline. Every request still uses the ordinary leased endpoint.
+export const MAX_CHAPTER_FETCH_CONCURRENCY = 6;
+
+export async function fetchChapterWindow({ plan, slug, totalPages, fetchChunk, signal, authorized = () => true, concurrency = MAX_CHAPTER_FETCH_CONCURRENCY }) {
   const started = performance.now();
   const chunks = new Array(plan.rows.length);
   let cursor = 0;
   let bytes = 0;
   let networkMs = 0;
   let verificationMs = 0;
+  const workers = Number.isInteger(concurrency) && concurrency > 0
+    ? Math.min(concurrency, MAX_CHAPTER_FETCH_CONCURRENCY)
+    : MAX_CHAPTER_FETCH_CONCURRENCY;
   const check = () => { if (signal?.aborted || !authorized()) throw new Error('Reader authorization changed while opening this chapter.'); };
-  await Promise.all(Array.from({ length: Math.min(concurrency, plan.rows.length) }, async () => {
+  await Promise.all(Array.from({ length: Math.min(workers, plan.rows.length) }, async () => {
     while (cursor < plan.rows.length) {
       check();
       const slot = cursor++;

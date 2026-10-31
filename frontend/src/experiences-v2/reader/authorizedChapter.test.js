@@ -1,4 +1,4 @@
-import { chapterWindowPlan, fetchChapterWindow, chapterAnchor, transportAnchor } from './authorizedChapter';
+import { chapterWindowPlan, fetchChapterWindow, chapterAnchor, transportAnchor, MAX_CHAPTER_FETCH_CONCURRENCY } from './authorizedChapter';
 import { readerSourceText } from './readerContent';
 const { createHash } = require('crypto');
 const { TextEncoder } = require('util');
@@ -22,10 +22,49 @@ test('full chapter assembly preserves exact order with bounded parallel completi
   let running = 0, peak = 0;
   const get = jest.fn(async n => { running++; peak = Math.max(peak, running); await Promise.resolve(); running--; return chunk(n); });
   const window = await fetch(chapterWindowPlan(manifest(), 4, true), get);
-  expect(peak).toBeLessThanOrEqual(3);
+  expect(peak).toBeLessThanOrEqual(MAX_CHAPTER_FETCH_CONCURRENCY);
   expect(window.sources.map(item => item.page)).toEqual(Array.from({ length: 10 }, (_, n) => n + 1));
   expect(window.html).toBe(Array.from({ length: 10 }, (_, n) => chunk(n + 1).content).join(''));
   expect(readerSourceText(window.html).length).toBe(window.textLength);
+});
+test('a slow 66-page chapter completes inside the unchanged 60-second preparation budget', async () => {
+  jest.useFakeTimers();
+  try {
+    const totalPages = 66;
+    const value = manifest();
+    value.canonical_pages.page_count = totalPages;
+    value.canonical_pages.pages = Array.from({ length: totalPages }, (_, n) => ({
+      page_number: n + 1, page_id: `long-${n + 1}`, chapter_id: 'chapter-one', content_hash: hash(n + 1),
+    }));
+    const plan = chapterWindowPlan(value, totalPages, true);
+    let completed = false, running = 0, peak = 0;
+    const get = jest.fn(n => new Promise(resolve => {
+      running++; peak = Math.max(peak, running);
+      setTimeout(() => { running--; resolve({ ...chunk(n), total_pages: totalPages }); }, 4000);
+    }));
+    const result = fetchChapterWindow({ plan, slug: 'approved-fixture', totalPages, fetchChunk: get })
+      .then(window => { completed = true; return window; });
+    // Controlled network delay, not a claim about measured production latency.
+    for (let elapsed = 0; elapsed < 60000 && !completed; elapsed += 500) {
+      jest.advanceTimersByTime(500);
+      for (let n = 0; n < 8; n++) await Promise.resolve();
+    }
+    expect(completed).toBe(true);
+    expect(peak).toBeLessThanOrEqual(6);
+    expect(peak).toBeGreaterThan(3);
+    const window = await result;
+    expect(window.sources.map(source => source.page)).toEqual(Array.from({ length: totalPages }, (_, n) => n + 1));
+    expect(get).toHaveBeenCalledTimes(totalPages);
+  } finally {
+    jest.clearAllTimers(); jest.useRealTimers();
+  }
+});
+test.each([0, -1, NaN, 999])('invalid or excessive concurrency %s cannot widen the request bound', async concurrency => {
+  let running = 0, peak = 0;
+  const get = async n => { running++; peak = Math.max(peak, running); await Promise.resolve(); running--; return chunk(n); };
+  const window = await fetch(chapterWindowPlan(manifest(), 4, true), get, { concurrency });
+  expect(peak).toBeLessThanOrEqual(6);
+  expect(window.sources).toHaveLength(10);
 });
 test.each(['missing', 'duplicate', 'out-of-order', 'chapter-gap'])('%s manifest fails before acquisition', kind => {
   const value = manifest();

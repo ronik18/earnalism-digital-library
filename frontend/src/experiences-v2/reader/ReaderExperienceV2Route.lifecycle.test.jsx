@@ -186,7 +186,7 @@ test.each([0, 16112])("a visible 19-chunk opening delayed %i ms remains authoriz
   await mount("/reader/test-book?p=75");
   await click("Continue to this page");
   expect(delivered).toEqual(Array.from({ length: 9 }, (_, i) => 75 + i));
-  expect([...pending.keys()]).toEqual([84, 85, 86]);
+  expect([...pending.keys()]).toEqual([84, 85, 86, 87, 88, 89]);
   expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
   expect(text()).toContain("Opening your page");
   if (delayMs) { await tick(10000); await tick(delayMs - 10000); }
