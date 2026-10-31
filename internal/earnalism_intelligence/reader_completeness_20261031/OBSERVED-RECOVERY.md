@@ -55,3 +55,9 @@ Private nonsecret evidence root: `/Users/ronikbasak/Documents/ChatGPT/earnalism-
 | the-wonderful-wizard-of-oz | Complete-source successor | 76/77 | absent; no observed generation |
 
 Next Integration Lane action: review this test-only source candidate and exact prepared plan, then require applicable exact-head CI/reviews before any source integration. No deployment, publication, live build/promotion, settings, paid sessions or customer/ledger writes are authorized. Actual release-time source/rights/history, stored body integrity, idempotent recovery/containment, capacity and customer-path acceptance remain gates; no unchanged approval is re-requested here.
+
+## Authorized source integration
+
+Native owner authorized integration of these tested plans while retaining no-deploy/no-live-data scope. The exact nonexecuting26-title plan and three nonsecret metadata receipts are now retained here; source tests recompute all26 complete candidate manifests and accepted India rights, verify13identical-body successor metadata plusScientific, and preserve the absent-generation/CAS/rollback distinctions.27new source/rights cases and52focused tests passed locally. Required hosted exact-head CI and independent review remain source merge gates. The plan is not a runtime registry, grant or executor.
+
+Fresh existing-scope provider checks retain Vercel createDeployments disabled, Railway production auto-deploy disabled and PR environments disabled; no settings changed. Serving backend29df0933 declared1950-file inventory matches retained9a1b166e source; its serving GitSHA is unavailable. Currentproviderconfiguration declares2replicas, while actualenvironmentstatus reports1running/1total. Existing guarded recovery handlers are unchanged; admin metadata additions are not a prerequisite for the supported recovery operations. Exact image/dependency/config rollback remains unqualified if a future backend rollout is chosen.

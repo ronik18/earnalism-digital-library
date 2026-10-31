@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-31T16:55:57.868209+00:00",
+  "authority": "Native owner turn01a192de-42ac-7120-b412-057ffd2500ee: integrate tested recovery plans, preserve gates; no deploy/publish/live data changes",
+  "base": "fb6884fbb41435b620775dfc80dac30f5a6eb448",
+  "tested_predecessor": "fa4fe67013e4d95b9183980f6b2dc1be6b4efb54",
+  "plan": "PREPARED-26-DISPOSITION.json",
+  "active_or_executing": false,
+  "runtime_changed": false,
+  "new_plan_source_and_rights_tests": 27,
+  "focused_tests_passed": 52,
+  "reused_tests": {
+    "frontend": 111,
+    "authenticated_loopback_Mongo8.2.7": 8,
+    "observed_shape_in_memory_replay": 25,
+    "plan_methods": 2,
+    "negative_variants": 13
+  },
+  "provider_controls": {
+    "vercel_createDeployments": "disabled",
+    "railway_production_autoDeploy": "disabled explicit UI",
+    "railway_PRenvironments": "disabled Enable PR Environments UI",
+    "settings_changed": false
+  },
+  "PR600": "PRESERVED_OPEN824f29a3",
+  "remaining_gates": [
+    "All applicable exact-head CI and published/independent reviews before source merge",
+    "Separate actual release/data-operation authority",
+    "Fresh rights/source/revocation/CAS and stored body integrity before live repair",
+    "Production capacity/device/customer acceptance unavailable under current scope",
+    "Any backend rollout requires exact image/config-compatible recovery; provider canRollback alone is insufficient"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "scope": "26 active title slugs; reading_pass_text_revocation_operations intent.book_slug and current pointer revocation/history projected types/version/status only",
+  "matching_operation_rows": 0,
+  "present_pointer_types": {
+    "acres-of-diamonds": {
+      "text_revocation": "missing",
+      "text_revocation_history": "missing"
+    },
+    "the-principles-of-scientific-management": {
+      "text_revocation": "missing",
+      "text_revocation_history": "missing"
+    }
+  },
+  "no_financial_actor_reason_or_customer_fields_read": true,
+  "limits": "No matching records in these scoped current stores does not substitute for exact rights/source review, release-time recheck or immutable recovery/history checks",
+  "production_mutations": 0
+}
