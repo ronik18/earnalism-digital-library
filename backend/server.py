@@ -11479,11 +11479,16 @@ async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_ad
     state = await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 0})
     if state and state.get("active_segmentation_version") != active.get("segmentation_version"):
         raise HTTPException(status_code=409, detail={"code": "ACTIVATION_STATE_OUT_OF_SYNC", "message": "The canonical publication pointer requires investigation before promotion."})
+    if state is not None and (type(state.get("generation")) is not int or state["generation"] < 0):
+        raise HTTPException(status_code=409, detail={"code": "ACTIVATION_STATE_INVALID", "message": "The canonical publication generation requires investigation before promotion."})
     return {
         "book_slug": slug,
         "segmentation_version": active["segmentation_version"],
         "version": active["version"],
         "activation_generation": int((state or {}).get("generation", 0) or 0),
+        # Missing legacy state can still describe a retained manifest, but is
+        # not the physical pointer required by protected-session admission.
+        "activation_state_present": state is not None,
     }
 
 

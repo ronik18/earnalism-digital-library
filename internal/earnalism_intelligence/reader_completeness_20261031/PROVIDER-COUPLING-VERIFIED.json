@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-31T12:47:36.782344+00:00",
+  "status": "SOURCE_PUSH_PR_MERGE_DEPLOYMENT_COUPLING_DISABLED",
+  "vercel": {
+    "route": "installed official CLI existing authentication; GET /v9/projects/exactID, allowlisted metadata only",
+    "id": "prj_kxPN55TOJ23lDgoXIXrvqHtzy607",
+    "team": "team_HAGNRSEiW5MZXY2AhV0cQvE0",
+    "root": "frontend",
+    "repo": "ronik18/earnalism-digital-library",
+    "productionBranch": "main",
+    "createDeployments": "disabled",
+    "deployHooks": [],
+    "autoAssignCustomDomains": true,
+    "repository_git_deploymentEnabled": false,
+    "prior_connector403": "not retried; existing independently authorized CLI succeeded without new access"
+  },
+  "railway": {
+    "route": "existing authenticated Chrome UI",
+    "project": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "service": "5af42e7e-f518-4f6a-b602-d9950866501f",
+    "environment": "580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "branch": "main",
+    "root": "/backend",
+    "autoDeploy": "disabled explicit visible status + Enable button",
+    "PRenvironments": "disabled; visible Enable PR Environments button"
+  },
+  "source_workflows": "Reviewed isolated PR/main-push validation; production frontend workflow_dispatch only, not dispatched",
+  "mutations": 0,
+  "new_access": false,
+  "credentials_or_env_values_printed": false,
+  "boundary": "Permits normal source CI/PR/merge under current human instruction only; does not authorize deployment, publication, activation or live data repair"
+}
