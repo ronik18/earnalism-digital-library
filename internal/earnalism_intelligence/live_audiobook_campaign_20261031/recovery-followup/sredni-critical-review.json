@@ -27,12 +27,21 @@
     "Current legacy recording/provider adoption, storage retention, full content/subjective evidence and protected player acceptance remain required."
   ],
   "full_local_ASR": {
-    "small_en_raw_score": 9.686468646864686,
-    "large_v3_turbo_raw_score": 9.697469746974697,
-    "minimum": 9.7,
-    "both_below_threshold": true,
-    "rounding_to_PASS_forbidden": true,
+    "supplementary_word_error_rate_scores": {
+      "small_en": 9.686468646864686,
+      "large_v3_turbo": 9.697469746974697,
+      "metric": "10 * (1-WER); not directly comparable with repository score"
+    },
+    "repository_transcript_similarity_scores": {
+      "small_en": 9.7854,
+      "large_v3_turbo": 9.814,
+      "minimum": 9.7,
+      "numeric_threshold": "PASS_ONLY",
+      "first_last_words": "PASS_BOTH",
+      "all_words_complete": "UNVERIFIED_SUSPECTED_OMISSION"
+    },
     "additional_ASR_attempts": "NONE_PLANNED_TWO_FULL_LOCAL_COMPARISONS_COMPLETE",
-    "human_wording_question": "PENDING_OWNER_RESPONSE"
+    "human_wording_question": "PENDING_OWNER_RESPONSE",
+    "correction": "Earlier comparison of WER-derived numbers to the canonical threshold mixed metrics. The unchanged repository scorer was applied offline to both complete transcripts; no new inference."
   }
 }

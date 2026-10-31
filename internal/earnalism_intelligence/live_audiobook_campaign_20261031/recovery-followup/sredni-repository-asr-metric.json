@@ -1,0 +1,32 @@
+{
+  "scorer": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py:transcript_similarity",
+  "scorer_sha256": "5ef62f9a2c0532804795f989bac287c9e1d52695075f70fe59dbb1d858d1f654",
+  "scope": "Existing complete local transcripts only; no inference/network/provider operation",
+  "results": {
+    "sredni-local-asr.json": {
+      "raw_similarity": 0.9916,
+      "char_similarity": 0.9916,
+      "token_order_similarity": 0.9747,
+      "coverage": 0.9785,
+      "score": 9.7854,
+      "first_words_match": true,
+      "last_words_match": true,
+      "first_words_match_score": 1.0,
+      "last_words_match_score": 1.0
+    },
+    "sredni-turbo-local-asr.json": {
+      "raw_similarity": 0.9939,
+      "char_similarity": 0.9939,
+      "token_order_similarity": 0.9758,
+      "coverage": 0.9814,
+      "score": 9.814,
+      "first_words_match": true,
+      "last_words_match": true,
+      "first_words_match_score": 1.0,
+      "last_words_match_score": 1.0
+    }
+  },
+  "raw_word_error_rate_scores_are_a_separate_diagnostic": true,
+  "wording_omission_adjudication": "PENDING",
+  "release_ready": false
+}

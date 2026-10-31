@@ -69,19 +69,24 @@
     "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
   },
   "quality": {
-    "content": "CURRENT_ASR_BELOW_THRESHOLD_AND_POTENTIAL_WORD_OMISSION_UNADJUDICATED",
+    "content": "NUMERIC_REPOSITORY_ASR_PASS_BUT_POTENTIAL_WORD_OMISSION_UNADJUDICATED",
     "pronunciation": "UNVERIFIED",
     "listening": "HISTORICAL_EVIDENCE_RETAINED_CURRENT_APPLICABILITY_UNVERIFIED",
     "audio": "CHECKSUM_DURATION_AND_MEASURED_LOUDNESS_ONLY_NOT_RELEASE_ACCEPTANCE",
     "sync": "EXACT_HISTORICAL_MEASURED_TIMESTAMPS_RECOVERED_CURRENT_PARAGRAPH_MAPPING_UNVERIFIED",
     "live_playback": "UNVERIFIED",
     "source_equivalence": "PASS_COMPLETE_CURRENT_STORY_WHITESPACE_ONLY_AND_LIVE_VERSION",
-    "raw_asr_match_score": 9.686468646864686,
-    "raw_asr_match_scores": {
+    "supplementary_word_error_rate_scores": {
       "small_en": 9.686468646864686,
       "large_v3_turbo": 9.697469746974697,
+      "metric": "10*(1-WER), not canonical threshold metric"
+    },
+    "repository_asr_scores": {
+      "small_en": 9.7854,
+      "large_v3_turbo": 9.814,
       "minimum": 9.7,
-      "status": "BOTH_BELOW_THRESHOLD_NO_ROUNDING_TO_PASS"
+      "numeric_and_first_last_only": "PASS",
+      "complete_content_gate": "HELD_ON_MATERIAL_WORDING_UNCERTAINTY"
     }
   },
   "repairs": [],
@@ -97,8 +102,8 @@
   },
   "blockers": [
     {
-      "code": "CURRENT_ASR_BELOW_THRESHOLD_AND_SUSPECTED_MISSING_WORDS",
-      "action": "Both full local ASR comparisons are below 9.7 (9.686468646864686 and 9.697469746974697). Historical and both fresh ASR outputs omit “one of which was” around 2:33. A source-bound clip and owner wording question are pending; no score or prior aggregate acceptance overrides this material uncertainty. Exact generation-source hash is resolved; do not repeat synthesis or ASR blindly."
+      "code": "SUSPECTED_MISSING_WORDS_REQUIRE_LISTENING_ADJUDICATION",
+      "action": "Canonical transcript_similarity scores pass numerically (9.7854 and 9.814); supplementary WER-derived scores are not the canonical metric. Historical and both fresh ASR outputs omit “one of which was” around 2:33. Resolve the focused retained-audio wording question before reuse or repair. No aggregate score overrides unresolved word loss. Exact generation-source binding is resolved; do not replay synthesis or ASR blindly."
     },
     {
       "code": "EXACT_AUDIO_PACKAGE_RIGHTS_STORAGE_AND_RUNTIME_ACCEPTANCE_REQUIRED",
@@ -113,5 +118,6 @@
   },
   "reuse_preflight": "recovery-followup/sredni-source-and-reuse-preflight.json",
   "local_asr": "recovery-followup/sredni-local-asr.json",
-  "critical_review": "recovery-followup/sredni-critical-review.json"
+  "critical_review": "recovery-followup/sredni-critical-review.json",
+  "repository_asr_metric": "recovery-followup/sredni-repository-asr-metric.json"
 }

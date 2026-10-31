@@ -11910,5 +11910,6 @@
     }
   ],
   "interpretation": "Raw ASR differences require audio/source adjudication; not listening or pronunciation approval. Generation-source binding remains separate.",
-  "release_ready": false
+  "release_ready": false,
+  "metric": "10 * (1 - token Levenshtein word error rate), supplementary diagnostic; not repository transcript_similarity score"
 }

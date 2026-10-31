@@ -13047,14 +13047,22 @@
     "next_action": "Recover existing Student ZIP bytes without allocating; qualify the exact recovered Sredni candidate current-edition binding and remaining rights/QA/storage/player gates before any release.",
     "learning": "Inspect materialization flags before cloud-file reads: manifest was dataless while the MP3 and accepted timestamp sidecar were fully local. Recover those actual bytes separately; never let one placeholder imply all retained audio is unavailable.",
     "critical_review": {
-      "small_ASR": 9.686468646864686,
-      "large_turbo_ASR": 9.697469746974697,
-      "minimum": 9.7,
-      "both_below": true,
+      "repository_asr_scores": [
+        9.7854,
+        9.814
+      ],
+      "repository_minimum": 9.7,
+      "numeric_and_first_last_gate": "PASS_ONLY",
+      "supplementary_WER_scores": [
+        9.686468646864686,
+        9.697469746974697
+      ],
+      "supplementary_metric": "10*(1-WER), distinct from canonical scorer",
       "source_generation_hash": "RESOLVED_CANONICAL_PLUS_LF",
       "possible_omitted_words": "one of which was",
       "listening_adjudication": "PENDING",
-      "new_generation": false
+      "new_generation": false,
+      "metric_correction": "Earlier comparison mixed metrics; wording hold unchanged."
     }
   }
 }

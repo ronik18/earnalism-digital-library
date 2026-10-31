@@ -1008,7 +1008,12 @@
       9.686468646864686,
       9.697469746974697
     ],
-    "current_content_gate": "BOTH_BELOW_9_7_SUSPECTED_MATERIAL_OMISSION_DO_NOT_ROUND_OR_PUBLISH",
-    "generation_source_binding": "CANONICAL_PLUS_ONE_LF_EXACT_HASH_MATCH"
+    "current_content_gate": "REPOSITORY_NUMERIC_ASR_PASS_SUSPECTED_OMISSION_REQUIRES_ADJUDICATION",
+    "generation_source_binding": "CANONICAL_PLUS_ONE_LF_EXACT_HASH_MATCH",
+    "repository_asr_scores": [
+      9.7854,
+      9.814
+    ],
+    "current_full_local_ASR_scores_metric": "Supplementary 10*(1-WER), distinct from repository score"
   }
 }
