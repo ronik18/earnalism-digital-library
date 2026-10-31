@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { compareLibraryInteractionBaseline } from "./lib/library_interaction_baseline.mjs";
+import { compareLibraryInteractionBaseline, loadLibraryInteractionBaseline } from "./lib/library_interaction_baseline.mjs";
 
 const root = process.cwd();
 const arg = (name) => { const index = process.argv.indexOf(name); return index < 0 ? undefined : process.argv[index + 1]; };
@@ -32,7 +32,7 @@ const hashSet = (entries) => {
 };
 const routes = {
   home_library_commerce_body: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReadingPassesSurface.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/home-compact-burgundy.css", "frontend/src/styles/library-paper-review.css", "frontend/src/styles/reading-passes.css", "frontend/src/pages/Home.jsx", "frontend/src/pages/Library.jsx", "frontend/src/pages/Pricing.jsx", "frontend/src/pages/BookDetail.jsx", "frontend/src/pages/BookDetailReference.css"],
-  library_interaction_surface: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+  library_interaction_surface: loadLibraryInteractionBaseline(root).input_paths,
   shared_public_header: ["frontend/src/components/Header.jsx", "frontend/src/components/Header.css", "frontend/src/components/EarnalismBrandLockup.jsx", "frontend/src/components/EarnalismBrandLockup.css"],
   shared_footer: ["frontend/src/components/Footer.jsx", "frontend/src/components/FooterSocialLinks.jsx", "frontend/src/components/FooterWordmark.jsx", "frontend/src/components/FooterWordmark.css", "frontend/public/assets/brand/earnalism-footer-wordmark-ivory.png", "frontend/public/assets/brand/earnalism-footer-wordmark-ivory.provenance.json"],
   auth_account: ["frontend/src/components/AuthPageShell.jsx", "frontend/src/pages/Account.jsx", "frontend/src/pages/MyLibrary.jsx", "frontend/src/pages/MyLibrary.css", "frontend/src/context/AuthContext.jsx"],

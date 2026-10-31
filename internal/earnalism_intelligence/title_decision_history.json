@@ -1,4 +1,10 @@
 {
+  "hourglass_sherlock_ux_20261101": {
+    "scope": "SOURCE_INTEGRATION_ONLY",
+    "evidence": "hourglass_sherlock_integration_20261101.json",
+    "editorial_adoption": "Existing canonical PG1661 twelve-story India Reader only; no access grants or rights changes",
+    "deployment": false
+  },
   "agentic_ai_with_python_preparation_expiry_20261018": {
     "state": "LOCAL_UNIT_MONGO_AND_BROWSER_QUALIFIED_RELEASE_PENDING",
     "evidence": "reader_preparation_expiry_20261018.md",
