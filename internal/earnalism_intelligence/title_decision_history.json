@@ -13030,5 +13030,39 @@
       "expected_sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7"
     },
     "learning": "Never shut down early solely because files.download was requested. Verify durable retained bytes; preserve the hard absolute shutdown limit. Offline retention codec validation is not actual Drive transport validation."
+  },
+  "audiobook_recovery_followup_20261031": {
+    "observed_at": "2026-10-31T10:54:17.955882+00:00",
+    "decision": "INTEGRATE_PR603_RECOVER_EXISTING_ASSETS_WITHOUT_REALLOCATION",
+    "integration_base": "cb66ec1084ff5970943991d1e1d0327ad2d51aa9",
+    "pr603_checks": "PASS",
+    "student_recovery": "ZIP_NOT_FOUND_WITHIN_RECORDED_SUPPORTED_PATHS",
+    "sredni_recovery": "ACCEPTED_HISTORICAL_AUDIO_AND_TIMESTAMP_HASHES_MATCH",
+    "sredni_raw_local_asr_score": 9.686468646864686,
+    "quality_or_live_claim": false,
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/",
+    "new_allocations": 0,
+    "new_tts_calls": 0,
+    "new_purchases": 0,
+    "next_action": "Recover existing Student ZIP bytes without allocating; qualify the exact recovered Sredni candidate current-edition binding and remaining rights/QA/storage/player gates before any release.",
+    "learning": "Inspect materialization flags before cloud-file reads: manifest was dataless while the MP3 and accepted timestamp sidecar were fully local. Recover those actual bytes separately; never let one placeholder imply all retained audio is unavailable.",
+    "critical_review": {
+      "repository_asr_scores": [
+        9.7854,
+        9.814
+      ],
+      "repository_minimum": 9.7,
+      "numeric_and_first_last_gate": "PASS_ONLY",
+      "supplementary_WER_scores": [
+        9.686468646864686,
+        9.697469746974697
+      ],
+      "supplementary_metric": "10*(1-WER), distinct from canonical scorer",
+      "source_generation_hash": "RESOLVED_CANONICAL_PLUS_LF",
+      "possible_omitted_words": "one of which was",
+      "listening_adjudication": "PENDING",
+      "new_generation": false,
+      "metric_correction": "Earlier comparison mixed metrics; wording hold unchanged."
+    }
   }
 }

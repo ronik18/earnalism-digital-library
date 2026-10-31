@@ -65,5 +65,13 @@
   "next_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
   "notebook_url": "https://colab.research.google.com/drive/13WV0k4Gt2rQwxevyv4350DxGTomvdZJ5",
   "owner_export_approval": "EXPLICITLY_GRANTED_IN_CHAT",
-  "execution_evidence": "execution-20261031/generation-export-receipt.json"
+  "execution_evidence": "execution-20261031/generation-export-receipt.json",
+  "recovery_followup": "../recovery-followup/student-recovery.json",
+  "integration_execution_receipt": {
+    "pr": 603,
+    "merged_main": "cb66ec1084ff5970943991d1e1d0327ad2d51aa9",
+    "exact_head_ci": "PASS",
+    "reviewed_merged_tree_equal": true,
+    "deployment": false
+  }
 }

@@ -6,7 +6,7 @@
   "scope_frozen": true,
   "base_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "cost_only_authority": "OWNER_PREAUTHORIZED_COST_EFFECTIVE_IN_SCOPE_SUBJECT_TO_ENFORCED_LIMITS",
-  "new_provider_spend_usd": 0,
+  "new_provider_spend_usd": null,
   "new_publications": 0,
   "verified_live": 0,
   "blocked": 52,
@@ -279,7 +279,7 @@
   "existing_publicly_available_but_current_acceptance_blocked": 2,
   "reader_only_audio_hidden": 50,
   "new_paid_playback_spend_usd": 0,
-  "required_next_integration_action": "Resolve exact audio-use/model/voice qualification for the shortest eligible Reader title; for existing releases qualify current protected playback/accounting under authenticated normal access. Do not replay stale Bengali attempts.",
+  "required_next_integration_action": "Recover existing Student ZIP bytes without allocating; qualify the exact recovered Sredni candidate current-edition binding and remaining rights/QA/storage/player gates before any release.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
     "No new full subjective listening or paid playback performed.",
@@ -293,5 +293,15 @@
     "allocations_consumed": 1,
     "new_publications": 0,
     "existing_public_audio_preserved": true
+  },
+  "cumulative_provider_cost_status": "Prior Student existing-credit allocation charge/units not reported; no new provider calls or purchases in recovery followup. Do not interpret unknown as zero.",
+  "latest_recovery_followup": {
+    "observed_at": "2026-10-31T10:54:17.955882+00:00",
+    "student": "EXISTING_ZIP_NOT_RECOVERED_NO_REALLOCATION",
+    "sredni": "EXACT_LEGACY_AUDIO_RECOVERED_NUMERIC_ASR_PASS_SUSPECTED_OMISSION_HELD",
+    "source": "recovery-followup/",
+    "new_colab_allocations": 0,
+    "new_tts_calls": 0,
+    "new_purchases": 0
   }
 }

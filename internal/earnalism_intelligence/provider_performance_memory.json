@@ -994,5 +994,26 @@
     "transport": "FAILED_TO_VERIFY_ARCHIVE_BEFORE_SHUTDOWN",
     "retry": "NO_REPLAY_AUTHORIZED_SINGLE_ALLOCATION_CONSUMED",
     "not_a_provider_quality_plateau": true
+  },
+  "sredni_existing_candidate_recovery_20261031": {
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "status": "EXACT_EXISTING_BYTES_RECOVERED_NOT_NEW_QUALIFICATION",
+    "no_new_synthesis": true,
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/",
+    "retry_policy": "No replay of failed Google Studio-C/Chirp Achird or consumed Student Ryan allocation. Prefer exact retained Verse candidate qualification.",
+    "current_full_local_ASR_scores": [
+      9.686468646864686,
+      9.697469746974697
+    ],
+    "current_content_gate": "REPOSITORY_NUMERIC_ASR_PASS_SUSPECTED_OMISSION_REQUIRES_ADJUDICATION",
+    "generation_source_binding": "CANONICAL_PLUS_ONE_LF_EXACT_HASH_MATCH",
+    "repository_asr_scores": [
+      9.7854,
+      9.814
+    ],
+    "current_full_local_ASR_scores_metric": "Supplementary 10*(1-WER), distinct from repository score"
   }
 }

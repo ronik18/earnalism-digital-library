@@ -1,0 +1,286 @@
+{
+  "method": "SequenceMatcher token locations for review; edit count uses separate Levenshtein",
+  "differences": [
+    {
+      "kind": "replace",
+      "source_word_index": 27,
+      "expected": "effete",
+      "observed": "defeat",
+      "context": "doctor was silky and effete and counted for little"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 39,
+      "expected": "de ropp",
+      "observed": "duropp",
+      "context": "was endorsed by mrs de ropp who counted for nearly"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 47,
+      "expected": "de ropp",
+      "observed": "duropp",
+      "context": "for nearly everything mrs de ropp was conradin's cousin and"
+    },
+    {
+      "kind": "insert",
+      "source_word_index": 73,
+      "expected": "",
+      "observed": "well",
+      "context": "and disagreeable and real the other two fifths"
+    },
+    {
+      "kind": "insert",
+      "source_word_index": 135,
+      "expected": "",
+      "observed": "though",
+      "context": "have succumbed long ago mrs de ropp would"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 136,
+      "expected": "de ropp",
+      "observed": "durope",
+      "context": "succumbed long ago mrs de ropp would never in her"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 151,
+      "expected": "conradin",
+      "observed": "comradin",
+      "context": "herself that she disliked conradin though she might have"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 175,
+      "expected": "conradin",
+      "observed": "comradin",
+      "context": "not find particularly irksome conradin hated her with a"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 395,
+      "expected": "plumaged houdan",
+      "observed": "plummished hudan",
+      "context": "corner lived a ragged plumaged houdan hen on which the"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 423,
+      "expected": "one of which was",
+      "observed": "",
+      "context": "divided into two compartments one of which was fronted with close iron"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 439,
+      "expected": "polecat",
+      "observed": "pole cack",
+      "context": "abode of a large polecat ferret which a friendly"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 462,
+      "expected": "hoard",
+      "observed": "horde",
+      "context": "for a long secreted hoard of small silver conradin"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 466,
+      "expected": "conradin",
+      "observed": "conraden",
+      "context": "hoard of small silver conradin was dreadfully afraid of"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 472,
+      "expected": "lithe sharp",
+      "observed": "live shark",
+      "context": "dreadfully afraid of the lithe sharp fanged beast but it"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 551,
+      "expected": "near by",
+      "observed": "nearby",
+      "context": "week at a church near by and took conradin with"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 555,
+      "expected": "conradin",
+      "observed": "conradan",
+      "context": "near by and took conradin with her but to"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 572,
+      "expected": "rimmon",
+      "observed": "remen",
+      "context": "in the house of rimmon every thursday in the"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 613,
+      "expected": "winter time",
+      "observed": "wintertime",
+      "context": "scarlet berries in the winter time were offered at his"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 706,
+      "expected": "ropp",
+      "observed": "rop",
+      "context": "occasion when mrs de ropp suffered from acute toothache"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 714,
+      "expected": "conradin",
+      "observed": "konradin",
+      "context": "toothache for three days conradin kept up the festival"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 767,
+      "expected": "conradin",
+      "observed": "konradin",
+      "context": "cult of sredni vashtar conradin had long ago settled"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 805,
+      "expected": "de ropp",
+      "observed": "darap",
+      "context": "not very respectable mrs de ropp was the ground plan"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 822,
+      "expected": "conradin's",
+      "observed": "konradin's",
+      "context": "respectability after a while conradin's absorption in the tool"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 835,
+      "expected": "guardian",
+      "observed": "",
+      "context": "the notice of his guardian it is not good"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 862,
+      "expected": "houdan hen",
+      "observed": "hudanhen",
+      "context": "she announced that the houdan hen had been sold and"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 960,
+      "expected": "offence",
+      "observed": "offense",
+      "context": "gave trouble a deadly offence in the middle class"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 973,
+      "expected": "exclaimed",
+      "observed": "explained",
+      "context": "you liked toast she exclaimed with an injured air"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 980,
+      "expected": "he",
+      "observed": "",
+      "context": "injured air observing that he did not touch it"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1012,
+      "expected": "to night",
+      "observed": "tonight",
+      "context": "to chant his praises to night he asked a boon"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1016,
+      "expected": "a",
+      "observed": "to",
+      "context": "to night he asked a boon do one thing"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 1051,
+      "expected": "that",
+      "observed": "",
+      "context": "as he looked at that other empty corner conradin"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1097,
+      "expected": "de ropp",
+      "observed": "darap",
+      "context": "me sredni vashtar mrs de ropp noticed that the visits"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1157,
+      "expected": "key",
+      "observed": "tea",
+      "context": "found the carefully hidden key and forthwith marched down"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1178,
+      "expected": "bidden",
+      "observed": "bitten",
+      "context": "and conradin had been bidden to keep to the"
+    },
+    {
+      "kind": "insert",
+      "source_word_index": 1212,
+      "expected": "",
+      "observed": "self",
+      "context": "there conradin stationed himself he saw the woman"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1508,
+      "expected": "conradin",
+      "observed": "conradan",
+      "context": "for tea and still conradin stood and waited and"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1555,
+      "expected": "paean",
+      "observed": "payon",
+      "context": "began once again the paean of victory and devastation"
+    },
+    {
+      "kind": "insert",
+      "source_word_index": 1620,
+      "expected": "",
+      "observed": "conradin",
+      "context": "foot of the garden drank for a moment"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1715,
+      "expected": "enjoyment of",
+      "observed": "and join into",
+      "context": "butter and the slow enjoyment of eating it conradin listened"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1747,
+      "expected": "wondering",
+      "observed": "wandering",
+      "context": "the answering chorus of wondering ejaculations from the kitchen"
+    }
+  ],
+  "release_ready": false
+}

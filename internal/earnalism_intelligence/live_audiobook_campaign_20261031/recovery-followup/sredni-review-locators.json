@@ -1,0 +1,25 @@
+{
+  "scope": "Listening-review locators only; not word adjudication",
+  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "locators": [
+    {
+      "term": "compartments",
+      "start": 147.02,
+      "end": 159.42,
+      "ASR_text": " Further back in the gloom stood a large hutch, divided into two compartments, fronted with"
+    },
+    {
+      "term": "guardian",
+      "start": 14.84,
+      "end": 26.68,
+      "ASR_text": " Mrs. Duropp was Conradin's cousin and guardian, and in his eyes she represented those three"
+    },
+    {
+      "term": "hidden",
+      "start": 112.04,
+      "end": 123.36,
+      "ASR_text": " In a forgotten corner, however, almost hidden behind a dismal shrubbery, was a disused tool"
+    }
+  ],
+  "release_ready": false
+}
