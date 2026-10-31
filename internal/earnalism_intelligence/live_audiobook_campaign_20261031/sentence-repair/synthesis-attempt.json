@@ -1,0 +1,24 @@
+{
+  "approved": true,
+  "authority": "Explicit owner instruction: Approve one bounded synthesis of Sredni Vashtar\u2019s replacement sentence in the same qualified voice, no new allocation.",
+  "request": {
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "input": "Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars.",
+    "instructions": "Narrate as a warm classic literary audiobook narrator with clear pacing, natural pauses, and restrained emotion.",
+    "response_format": "wav",
+    "speed": 1.0
+  },
+  "input_sha256": "ea6069ec265b15d7daa23a645d614d95306ded0ede1dd657c1d7c1b5750e8604",
+  "parent_master_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "max_requests": 1,
+  "retries": 0,
+  "timeout_seconds": 45,
+  "new_allocation": false,
+  "estimated_usd": 0.004,
+  "estimated_cost_ceiling_usd": 0.03,
+  "actual_invoice_usd": null,
+  "cost_basis": "Fixed 22-word sentence; official estimated $0.015/min speech rate; conservative allowance under 16 seconds. No whole-book regeneration. API returns no usage receipt; invoice unknown.",
+  "status": "ATTEMPT_RESERVED_OUTCOME_PENDING",
+  "recorded_at": "2026-10-31T18:13:01.280520+00:00"
+}

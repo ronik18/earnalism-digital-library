@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_EXECUTABLE_UNDER_CURRENT_NO_SYNTHESIS_INSTRUCTION",
+  "status": "ONE_SENTENCE_GENERATED_AUDITORY_QUALIFICATION_PENDING",
   "slug": "sredni-vashtar",
   "parent_master_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
   "source_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
@@ -10,7 +10,7 @@
     "provider": "OpenAI",
     "model": "gpt-4o-mini-tts",
     "voice": "verse",
-    "current_matching_repair_capability": "NOT_QUALIFIED_NO_PROVIDER_CALL_PERFORMED"
+    "current_matching_repair_capability": "SAME_MODEL_ALIAS_VOICE_DIRECTION_GENERATED_CONTINUITY_UNVERIFIED"
   },
   "review_region_seconds": [
     147.02,
@@ -36,5 +36,7 @@
     "publication",
     "destructive overwrite of original master"
   ],
-  "no_cost_or_execution_authority_created": true
+  "no_cost_or_execution_authority_created": true,
+  "latest_authority": "Owner explicitly approved one sentence synthesis, no allocation; executed once. No further synthesis permitted.",
+  "execution_record": "../sentence-repair/REPAIR-RESULT.json"
 }

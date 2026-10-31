@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-31T18:15:21.246917+00:00",
+  "slug": "sredni-vashtar",
+  "stage": "REPAIR_PRODUCED_LOCAL_WORDING_PASS_AUDITORY_QA_BLOCKED",
+  "status": "BLOCKED",
+  "provider_requests": 1,
+  "new_allocations": 0,
+  "synthesis_remaining": 0,
+  "source_changed": false,
+  "replacement_sentence_words": 22,
+  "replacement_seconds": 9.6,
+  "local_exact_sentence_checks": {
+    "small.en": "PASS",
+    "large-v3-turbo": "PASS"
+  },
+  "healthy_decoded_prefix_and_suffix": "BITWISE_PRESERVED",
+  "private_candidate_seconds": 638.105,
+  "duration_delta_seconds": 1.265,
+  "sample_clipping": "NONE_IN_24.34_SECOND_JOIN_CLIP",
+  "join_clip_sample_peak_dbfs": -4.340406,
+  "naturalness": "UNVERIFIED",
+  "expression": "UNVERIFIED",
+  "voice_identity_continuity": "UNVERIFIED",
+  "both_joins_listening": "UNVERIFIED",
+  "full_title": "BLOCKED",
+  "new_publications": 0,
+  "synthesis_cost_estimate_usd": 0.0024,
+  "cost_basis": "9.6seconds at official approximate $0.015/min; not invoiced usage. Initial reserved estimate $0.004; envelope $0.03.",
+  "actual_provider_charge": "NOT_REPORTED",
+  "cumulative_campaign_cost": "UNKNOWN_PRIOR_COLAB_COST_UNREPORTED",
+  "private_assets_directory": "/tmp/earnalism-sredni-sentence-repair-20261031",
+  "next_action": "Approve this exact 24.34-second private excerpt transfer and one bounded text-only review within $0.03; no retry, synthesis or allocation.",
+  "remaining_gates": [
+    "Auditory QA exact replacement and both joins",
+    "Resolve remaining full-title pronunciation/content discrepancies",
+    "Measured corrected alignment/navigation",
+    "Exact recording/provider rights and package adoption",
+    "Immutable primary/DR storage and protected customer player/accounting acceptance"
+  ]
+}
