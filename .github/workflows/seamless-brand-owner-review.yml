@@ -123,7 +123,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact checked-in frontend production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: 7074b576e0e0a96156a1f66af523ccbaeb005e86dd2297d8660b4786ed6f1c04
+      PRODUCTION_SURFACE_SHA: 93834cf846bc6115a20a1064f9ac3b53d6b497258853b77cf50b8fa817058a86
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -540,7 +540,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: 7074b576e0e0a96156a1f66af523ccbaeb005e86dd2297d8660b4786ed6f1c04
+      PRODUCTION_SURFACE_SHA: 93834cf846bc6115a20a1064f9ac3b53d6b497258853b77cf50b8fa817058a86
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

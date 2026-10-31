@@ -77,7 +77,7 @@ def require(ok, message):
         raise OwnerProducedError(message)
 
 
-def load_adoption(slug):
+def load_adoption(slug, *, identity=None):
     try:
         r = json.loads(REGISTRY.read_text())
         require(
@@ -85,6 +85,9 @@ def load_adoption(slug):
             "Adoption registry schema",
         )
         entries = [x for x in r["adoptions"] if x["record"]["identity"]["slug"] == slug]
+        if identity is not None:
+            entries += [x for x in r.get("candidate_adoptions", []) if x["record"]["identity"]["slug"] == slug]
+            entries = [x for x in entries if x["record"]["identity"] == identity]
         require(len(entries) == 1, "Exactly one reviewed adoption required")
         e = entries[0]
         require(
@@ -95,6 +98,23 @@ def load_adoption(slug):
         return e["record"]
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as e:
         raise OwnerProducedError("Reviewed adoption unavailable") from None
+
+
+
+def evidence_roles(record):
+    return EVIDENCE_ROLES | ({"music_licence", "music_suitability", "mix_integrity", "public_music_credits"} if record.get("music") else set())
+
+
+def validate_music(descriptor, adoption):
+    music = adoption.get("music")
+    require(descriptor.get("music") == music, "Exact music component required")
+    if music is None:
+        return
+    require(music.get("schema") == "earnalism.music-component.v1" and music.get("voice_unchanged") is True, "Music provenance")
+    require(type(music.get("cue_start_ms")) is int and type(music.get("cue_end_ms")) is int and 0 <= music["cue_start_ms"] < music["cue_end_ms"] <= descriptor["duration_ms"], "Music timing")
+    require(validsha(music.get("music_source_sha256")) and music.get("owner_acceptance_sha256") == adoption["evidence_sha256"]["music_suitability"], "Music acceptance")
+    credit = music.get("credit", {})
+    require(credit.get("licence") == "CC BY 4.0" and credit.get("composer") and credit.get("music") and credit.get("changes") and credit.get("display_text") and credit.get("licence_url") == "https://creativecommons.org/licenses/by/4.0/" and str(credit.get("source_url", "")).startswith("https://incompetech.com/"), "Complete music attribution required")
 
 
 def mapping(package):
@@ -346,8 +366,9 @@ def validate(descriptor, package, controlled_language, downstream_gates):
             all(validsha(identity[k]) for k in identity if k.endswith("sha256")),
             "Missing exact identity",
         )
-        a = load_adoption(identity["slug"])
+        a = load_adoption(identity["slug"], identity=identity)
         candidate = descriptor["release_candidate_evidence"]
+        validate_music(descriptor, a)
         require(
             a.get("status") == "ADOPTED"
             and a.get("policy") == POLICY
@@ -386,7 +407,7 @@ def validate(descriptor, package, controlled_language, downstream_gates):
         )
         require(
             descriptor.get("evidence_sha256") == a.get("evidence_sha256")
-            and set(a["evidence_sha256"]) == EVIDENCE_ROLES
+            and set(a["evidence_sha256"]) == evidence_roles(a)
             and all(validsha(v) for v in a["evidence_sha256"].values()),
             "Exact complete evidence required",
         )
@@ -563,7 +584,7 @@ def prepare(bundle_path, output_dir):
         _, raw = file(ref)
         require(descriptor["evidence_sha256"].get(role) == sha(raw), "Evidence binding")
     require(
-        set(b["evidence_files"]) == EVIDENCE_ROLES, "Complete evidence files required"
+        set(b["evidence_files"]) == evidence_roles(descriptor), "Complete evidence files required"
     )
     for role in ("master_wav", "master_mp3"):
         p, raw = file(b[role])

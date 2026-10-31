@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
+    "backend/data/rights_decision_registry.json": "e5e4189ab8557a83a55c7ed03d786cb3e93e7617efcb0398bc5165f28f8ff926"
   },
   "titles": {
     "a-ghost-story": {
@@ -1022,5 +1022,15 @@
   },
   "successor_binding_basis": "Current merged-main rights plus exact live Selfish Giant reader/cover/audio publication successor; candidate source and exact-head CI require fresh review. Historical non-cover decisions remain separate and unchanged.",
   "historical_reviewed_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
-  "successor_parent_candidate": "3554d9d26566dc9e0419fa0d5ce5518c06073c0f"
+  "successor_parent_candidate": "3554d9d26566dc9e0419fa0d5ce5518c06073c0f",
+  "source_only_authority_amendments": [
+    {
+      "scope": "The Selfish Giant approved music successor: one additive India-only lifetime audio rights record and exact inactive package binding; no Reader decision, revocation, live pointer, cover or entitlement modified.",
+      "authority": "Direct native owner instruction to integrate music credit, terms and exact rights/package successor; source only, no production changes.",
+      "prior_registry_sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178",
+      "new_registry_sha256": "e5e4189ab8557a83a55c7ed03d786cb3e93e7617efcb0398bc5165f28f8ff926",
+      "evidence": "internal/audiobook_lab/release_gate/selfish_giant_music_20261031/source-integration-authority.json",
+      "preservation_check": "All previous accepted/revoked and audio_package_bindings values equal base 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12; all title component pins unchanged."
+    }
+  ]
 }

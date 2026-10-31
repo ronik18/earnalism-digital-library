@@ -1,0 +1,60 @@
+{
+  "offline_checks": "PASS",
+  "checks": {
+    "original_master_hash": true,
+    "exact_approved_preview_audio": true,
+    "unmodified_voice_float_tolerance_1e_7": true,
+    "all_samples_before_12m12_12_bit_identical": true,
+    "no_clipping": true,
+    "duration_777120ms_unchanged": true,
+    "no_music_only_tail": true,
+    "master_mp3_decoded_sample_count_exact": true,
+    "last_segment_decoded_sample_count_exact": true,
+    "supported_source_topology_validator": true,
+    "five_earlier_mp3_byte_identical": true,
+    "all_timing_and_vtt_assets_byte_identical": true
+  },
+  "changed_delivery_assets": [
+    "delivery/group-06.mp3",
+    "delivery/group-06.metadata.json"
+  ],
+  "unchanged_delivery_assets": [
+    "delivery/group-01.mp3",
+    "delivery/group-01.timestamps.json",
+    "delivery/group-01.vtt",
+    "delivery/group-01.metadata.json",
+    "delivery/group-02.mp3",
+    "delivery/group-02.timestamps.json",
+    "delivery/group-02.vtt",
+    "delivery/group-02.metadata.json",
+    "delivery/group-03.mp3",
+    "delivery/group-03.timestamps.json",
+    "delivery/group-03.vtt",
+    "delivery/group-03.metadata.json",
+    "delivery/group-04.mp3",
+    "delivery/group-04.timestamps.json",
+    "delivery/group-04.vtt",
+    "delivery/group-04.metadata.json",
+    "delivery/group-05.mp3",
+    "delivery/group-05.timestamps.json",
+    "delivery/group-05.vtt",
+    "delivery/group-05.metadata.json",
+    "delivery/group-06.timestamps.json",
+    "delivery/group-06.vtt"
+  ],
+  "peak_dBFS": -3.205333948135376,
+  "release_status": "HOLD_NOT_DEPLOYED",
+  "remaining_release_gates": [
+    "Review exact-hash adoption/rights successor and final CC-compatible delivery/attribution",
+    "Bind final descriptor/package identity through supported release manager; current accepted dry-package identity cannot certify mixed assets",
+    "Exact-head affected tests and independent/protected reviews before any authorized integration",
+    "New primary/DR immutable receipts and private retention verification when uploads authorized",
+    "Actual Listener/protected playback for changed final segment and package, within separately permitted acceptance scope",
+    "Sole release lane manual publication and both-alias source/discovery/cover/access checks when production authority granted"
+  ],
+  "reused_evidence_scope": "Accepted source, Ryan tone/wording, original timing, lifetime India scope; old storage/full-playback receipts apply only to unchanged old package, not final mixed successor",
+  "production_changed": false,
+  "provider_requests": 0,
+  "new_narration": false,
+  "spend": 0
+}

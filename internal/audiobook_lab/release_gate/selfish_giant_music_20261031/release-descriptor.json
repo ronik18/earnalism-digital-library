@@ -1,0 +1,88 @@
+{
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "author": "Oscar Wilde",
+  "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "master_wav_sha256": "7208c3d1fa3619b13c1e64d1d79774cea8298779a2f976aa03710a3907de4c52",
+  "master_mp3_sha256": "fd68eff5c6cc6334b4c070d7bf9452f6c51a5667b43bca9c32f439b52cf55200",
+  "schema_version": "audiobook_release_descriptor.v1",
+  "release_candidate_status": "OWNER_PRODUCED_QA_ADOPTED_STORAGE_PENDING",
+  "duration_ms": 777120,
+  "sample_rate": 24000,
+  "master_samples": 18650880,
+  "source_units_sha256": "2482d7738801c5c2bc716e83536fa185edb5724981ebedfd9be40021d3fd8599",
+  "reader_paragraph_map_sha256": "07752c643d749880466fe9d23c04862e472ca003f0bacedec5d3fbeaad491183",
+  "reader_content_sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+  "chunk_mapping_sha256": "6267bfd425ab00e6946658a46b70da66b6f2294f9d1d32e751ccaa462b8b55ec",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "highlight_sync_enabled": false,
+  "qa_evidence": {
+    "WORDING-QA.json": "4dd5c82ca65a321830af9f395db2722a57d8bce9fe833f6d68542e7ebb4f2e37",
+    "OWNER-WORDING-ADJUDICATION.json": "d0591e0a7c011e9748ba1f8fe62083fabfa9f29dd51adae5715e4eb4c51e485d",
+    "TIMING-TRANSITIONS.json": "6f312ae65091873d317a6e6510e8d319e7a7034b4e3384f9378b8eeb6a317741",
+    "ACTUAL-ADAPTER-SOURCE-GROUPING.json": "bcec79cfeef1007b5571b532801a86c900a75cec934023bcc81c01d36a1f9f2b"
+  },
+  "standing_authority_sha256": "dec1eaf5df7288e42637bac5bf43bfe77cb555de8788795c4a226dd61a24150e",
+  "generation": {
+    "provider": "owner_colab_qwen",
+    "model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "voice": "Ryan",
+    "runtime_revision": "ac3df5dcba7f59c4074ac750dc817f0386abfe9b5c68d37569878f1c3d3abb19"
+  },
+  "territories": [
+    "IN"
+  ],
+  "publicReleaseApproved": false,
+  "known_release_blockers": [
+    "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+    "PRIVATE_B2_DR_REPLICA_REQUIRED",
+    "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "evidence_sha256": {
+    "generation_provenance": "ff3612751d2f8197d29bc5dc407c2d903029dc1137372ad4706bf90860383b4e",
+    "objective_qa": "4ff67f1d2e82b5f28303b3c53cfb5e5ad834aaabbecc56b99a9e31717d31566c",
+    "material_wording_review": "953f3f2aa47c321cf5d0d15412c553b78c579bd4b0f9e2b50afc7d9a30eb2441",
+    "voice_direction_acceptance": "d372e58ce458e83134d3e112f1899706ade7326157d7906621cc8671cb261d20",
+    "model_voice_licence": "8e32c1f9b909337b8423ce80c3c0118b35fe179c1ef7c79e6ad28b7d2a11a32a",
+    "source_edition": "c3543c622dae96277825bb6da6026696a76ec4c9a83495cdfdfcd1d98eaa59cc",
+    "cover_reuse": "f1ca6cfb15524fabd63b826a159a285a0733dd8e835e97ba2b647346d96341ce",
+    "producer_authority": "93a04225facd3da36b603f00f53f09017077ebfb46fd712065308f63b25d5862",
+    "music_licence": "c50bfebdb51ae7bb88546dcbec159bbfdf09efe1eb6e5c370cb78a2e61124b7b",
+    "music_suitability": "8f264e85c869dfe6ad742888762162d686ceb275f3f491f8877c4f77558dc809",
+    "mix_integrity": "5ffa5d612d41ce26479817bbc3083886dc4689fc82d27f653f9bc19dfda3b049",
+    "public_music_credits": "17980941b624a0c15785268576978e42c2529c420694ec7e2986206dd60d8e73"
+  },
+  "release_candidate_evidence": {
+    "acceptance_policy": "owner_produced_source_units.v1",
+    "status": "OWNER_PRODUCED_QA_ADOPTED",
+    "adoption_sha256": "1187a1ae7b00507183ed573c125ef369c9a35d996fd30867ebab3a0dc4cd46ef",
+    "human_scores": null,
+    "all_release_gates_passed": false,
+    "highlight_sync_enabled": false
+  },
+  "music_credits_sha256": "17980941b624a0c15785268576978e42c2529c420694ec7e2986206dd60d8e73",
+  "owner_music_acceptance_sha256": "8f264e85c869dfe6ad742888762162d686ceb275f3f491f8877c4f77558dc809",
+  "music": {
+    "schema": "earnalism.music-component.v1",
+    "credit": {
+      "title": "The Selfish Giant",
+      "music": "Heartbreaking",
+      "composer": "Kevin MacLeod",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208",
+      "isrc": "USUAN1100208",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "45-second excerpt, fades, reduced level and mix under existing Ryan narration; no endorsement implied.",
+      "display_text": "Music: Heartbreaking — Kevin MacLeod (incompetech.com), licensed CC BY 4.0. Excerpted, faded and mixed under narration.",
+      "delivery_terms_review": "REQUIRED: attribution and CC rights must not be contradicted by final terms/effective technological measures; do not weaken auth or pass enforcement."
+    },
+    "cue_start_ms": 732120,
+    "cue_end_ms": 777120,
+    "music_source_sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+    "owner_acceptance_sha256": "8f264e85c869dfe6ad742888762162d686ceb275f3f491f8877c4f77558dc809",
+    "voice_unchanged": true
+  }
+}

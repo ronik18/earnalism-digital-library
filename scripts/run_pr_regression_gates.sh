@@ -49,7 +49,7 @@ env \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
 echo "==> Protected package publication proof and scope qualification"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py backend/tests/test_rights_decision_gate.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_music_public_descriptor.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_selfish_giant_music_successor.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py backend/tests/test_rights_decision_gate.py
 
 echo "==> Preserved Reader source validation and dummy signup race"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py
@@ -147,6 +147,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/experiences-v2/__tests__/listener-protected-package-route.test.jsx \
   src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx \
   src/experiences-v2/__tests__/listener-transport-canary.test.jsx \
+  src/components/AudiobookMusicNotice.test.jsx \
   src/legalDirectRoutes.test.js \
   src/pages/LegalPages.test.jsx \
   src/bookDetailDirectRoute.test.js \
