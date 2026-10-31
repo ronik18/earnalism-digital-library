@@ -90,3 +90,5 @@ Owner response/restoration: 935 staged paths were already byte-identical to veri
 
 
 Approved-review continuation: the exact 18-second OpenAI transfer was explicitly approved and executed once, text output only. Usage-derived estimate $0.0022928 (invoice unreported), below $0.03; grant consumed with no retry. Blind transcript also omits “one of which was”; sampled cadence is described as natural but expression neutral, with no whole-title qualification. Original chunk/master waveform comparison supports a defect in original boundary speech rather than a recoverable assembly omission. Complete-sentence matched-voice repair packet prepared; no synthesis/allocation/repair/publication occurred. Sredni stays BLOCKED, Student original ZIP still unavailable, and all other gates/counts remain unchanged.
+
+Student existing-human-recording alternative: two catalog metadata candidates recorded; one links PG1944. No download, audition or selection occurred because exact edition/audio and recording/performance territorial use remain unqualified. The original audition is preserved and no narrator/publication setting changed.

@@ -1036,5 +1036,13 @@
     "usage_derived_estimated_usd": 0.0022928000000000002,
     "invoice_charge": "NOT_REPORTED",
     "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/owner-response-followup/blind-review-result.json"
+  },
+  "student_human_import_metadata_20261031": {
+    "provider": "LibriVox catalog metadata only",
+    "candidates": 2,
+    "status": "NOT_SELECTED_NOT_AUDITIONED_RECORDING_IN_RIGHTS_UNVERIFIED",
+    "not_a_provider_quality_failure": true,
+    "audio_downloads": 0,
+    "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/licensed-import-candidates.json"
   }
 }

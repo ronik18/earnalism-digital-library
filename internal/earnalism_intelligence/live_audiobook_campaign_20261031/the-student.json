@@ -113,5 +113,11 @@
   "production_checkpoint": "the-student-production/checkpoint.json",
   "next_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
   "execution_checkpoint": "the-student-production/checkpoint.json",
-  "latest_recovery_evidence": "recovery-followup/student-recovery.json"
+  "latest_recovery_evidence": "recovery-followup/student-recovery.json",
+  "no_synthesis_alternative_research": {
+    "record": "the-student-production/licensed-import-candidates.json",
+    "status": "TWO_CATALOG_RECORDS_IDENTIFIED_NONE_RIGHTS_OR_AUDIO_QUALIFIED",
+    "original_audition_preserved": true,
+    "narrator_not_changed": true
+  }
 }

@@ -13192,5 +13192,18 @@
     "publication_changed": false,
     "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/owner-response-followup",
     "next_action": "Integrate the exact approved-review result and complete-sentence repair packet after required checks. No new synthesis/allocation: retain BLOCKED until a qualified compatible replacement recording and all remaining content/expression/storage/runtime gates are available."
+  },
+  "student_human_import_metadata_20261031": {
+    "observed_at": "2026-10-31T16:55:49.571136+00:00",
+    "decision": "QUALIFY_EXISTING_HUMAN_RECORDING_ALTERNATIVE_BEFORE_STUDENT_IMPORT",
+    "slug": "the-student",
+    "result": "TWO_METADATA_CANDIDATES_UNQUALIFIED_NO_AUDIO_DOWNLOADED",
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/licensed-import-candidates.json",
+    "literary_rights_not_repeated": true,
+    "recording_IN_rights": "UNVERIFIED",
+    "quality": "UNVERIFIED",
+    "no_synthesis_or_allocation": true,
+    "new_paid_calls": 0,
+    "next_action": "Resolve exact recording/performance territorial basis and source identity before download; never infer premium narration from a human narrator label or reuse consumed excerpt-review authority."
   }
 }

@@ -336,5 +336,11 @@
     "new_synthesis": false,
     "review_grant_consumed": true,
     "scope": "Current owner continuation; no reuse of leftover dollar envelope for another request."
+  },
+  "student_no_synthesis_import_research": {
+    "status": "METADATA_ONLY_RIGHTS_AND_EXACT_AUDIO_UNQUALIFIED",
+    "record": "the-student-production/licensed-import-candidates.json",
+    "audio_downloaded": false,
+    "extra_audio_review_requests": 0
   }
 }
