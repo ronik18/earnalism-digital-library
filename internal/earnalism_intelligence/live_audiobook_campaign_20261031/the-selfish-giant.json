@@ -80,7 +80,7 @@
   "costs": {
     "new_provider_spend_usd": 0,
     "new_storage_spend_usd": 0,
-    "new_paid_playback_spend_usd": 0,
+    "new_paid_playback_spend_usd": null,
     "production_estimate_usd": null,
     "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
     "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
@@ -91,7 +91,8 @@
       "monetary_value_usd": null,
       "cash_purchase": false,
       "fractional_usage_carry": "NOT_OBSERVED"
-    }
+    },
+    "paid_playback_cost_basis": "7whole existing ReadingPass credit seconds consumed, verified by matched own-session ledger; monetary conversion/fractional carry unreported, no cash purchase."
   },
   "blockers": [
     {

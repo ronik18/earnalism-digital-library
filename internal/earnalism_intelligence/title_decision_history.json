@@ -13258,5 +13258,16 @@
   "new_allocation": 0,
   "new_publications": 0,
   "learning": "Real playback/pause and1x protected delivery observed; controller incorrectly used a non-step-aligned value/saved1.5x and proceeded before nativeplaying. Corrected10-case offline helper candidate is not real browser proof. Stop bounded live lane; retain actual unverified cases and terminal receipt gap. Match own session ledger rather than account-wide deltas containing unrelated activity."
+},
+  "canonical_metadata_restoration_20261101": {
+  "timestamp": "2026-10-31T20:32:07.992960+00:00",
+  "event": "CANONICAL_GIT_METADATA_RESTORED_OUTSIDE_ICLOUD_SAME_PATH_BRANCH",
+  "record": "live_audiobook_campaign_20261031/parallel-batch-20261101/canonical-metadata-restoration/LOCAL-METADATA-RESTORATION.json",
+  "index_entries_preserved": 16169,
+  "source_tree_unchanged": true,
+  "original_metadata_retained": true,
+  "recovery_935_snapshot_and_bundle_preserved": true,
+  "new_git_metadata": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/canonical-git-local-20261101",
+  "learning": "Cloud object reads stalled insideunpack_trees despite no-optionallocks. ReconstructexactHEADtreefrompreservedindex intoexistinglocalobjectstore; verifytree/commit/index/fullcleanliness/935treebeforeatomic.gitredirect. Samecanonicalpathandbranch; no extra worktree, reset, stash, source overwrite or parkedbranch merge. Preserve hooks and noncredential guard settings."
 }
 }

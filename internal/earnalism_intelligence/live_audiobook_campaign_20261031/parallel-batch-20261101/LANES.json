@@ -68,5 +68,7 @@
     "own_reading_pass_whole_seconds_debited": 7
   },
   "private_audio_recovery": "sredni/private-recovery-manifest.json",
-  "next_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS."
+  "next_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS.",
+  "canonical_git_metadata": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/canonical-git-local-20261101",
+  "canonical_metadata_recovery_record": "canonical-metadata-restoration/LOCAL-METADATA-RESTORATION.json"
 }

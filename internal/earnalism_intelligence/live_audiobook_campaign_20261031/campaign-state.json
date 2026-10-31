@@ -282,7 +282,7 @@
   "required_next_integration_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
-    "No new full subjective listening or paid playback performed.",
+    "No new full subjective listening performed. Later bounded normal protected playback consumed7whole ReadingPass credit seconds (matched own-session ledger); monetary conversion is unreported.",
     "Production costs for unqualified plans are unknown; prior costs remain in their original ledgers.",
     "BLOCKED is a current evidence/access state, not a claim that public-domain audio rights cannot be established.",
     "No publication setting, manuscript, cover, customer entitlement, account or provider configuration changed."
