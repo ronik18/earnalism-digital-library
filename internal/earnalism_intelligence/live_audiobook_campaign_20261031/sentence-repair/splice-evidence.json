@@ -1,0 +1,22 @@
+{
+  "status": "PRIVATE_DRAFT_NOT_QUALIFIED",
+  "parent_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "candidate_sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+  "replacement_raw_sha256": "dfbbb664f5db1723445fc276233802759247adf168fa404c188c8d1d7ce0a6b0",
+  "decoded_healthy_prefix_sha256": "911292d0ee94323645a2aa6064895d9a07f1d06fd5fa185003eae7a81de4ee60",
+  "decoded_healthy_suffix_sha256": "5817331506c73fff9ccaa115dd512c774e27d4faf0eeaec593445e5acba26939",
+  "healthy_prefix_suffix_bitwise_preserved": true,
+  "edit_start_seconds": 149.59,
+  "edit_end_seconds": 158.075,
+  "cut_basis": "Measured -42dB silence:149.172\u2013150.011708 and157.83925\u2013158.312875",
+  "gain_applied_replacement_only": 1.0175769461346458,
+  "added_leading_silence_seconds": 0.15,
+  "duration_delta_seconds": 1.2650000000000006,
+  "candidate_seconds": 638.105,
+  "no_time_stretch": true,
+  "no_music_added": true,
+  "both_joins_listening": "UNVERIFIED",
+  "voice_continuity": "UNVERIFIED",
+  "full_title_gate": "BLOCKED",
+  "publication": false
+}

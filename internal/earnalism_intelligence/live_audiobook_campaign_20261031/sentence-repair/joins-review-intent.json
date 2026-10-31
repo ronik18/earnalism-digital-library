@@ -1,0 +1,15 @@
+{
+  "authority": "Current owner-directed sentence repair including wording, naturalness, expression and both joins; original campaign cost-only approval. New bounded QA operation, not reuse of consumed previous excerpt review grant.",
+  "destination": "https://api.openai.com/v1/chat/completions",
+  "audio_sha256": "fdffeb78de25805bbb131c9f14d42a041c19669d3dd0e2c3a9ad86d03155b62d",
+  "audio_seconds": 24.34,
+  "max_requests": 1,
+  "retry": false,
+  "text_only_output": true,
+  "synthesis": false,
+  "allocation": false,
+  "cost_envelope_usd": 0.03,
+  "conservative_estimate_usd": 0.02764,
+  "recorded_at": "2026-10-31T18:16:13.218150+00:00",
+  "status": "ATTEMPT_RESERVED_OUTCOME_PENDING"
+}

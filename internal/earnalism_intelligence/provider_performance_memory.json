@@ -1044,5 +1044,26 @@
     "not_a_provider_quality_failure": true,
     "audio_downloads": 0,
     "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/licensed-import-candidates.json"
+  },
+  "sentence_repair_followups": [
+  {
+    "timestamp": "2026-10-31T18:15:21.246917+00:00",
+    "slug": "sredni-vashtar",
+    "event": "ONE_AUTHORIZED_SENTENCE_REPAIR_GENERATED_LOCAL_FIDELITY_PASS_AUDITORY_TRANSFER_BLOCKED",
+    "evidence": "live_audiobook_campaign_20261031/sentence-repair/REPAIR-RESULT.json",
+    "new_allocations": 0,
+    "synthesis_requests": 1,
+    "published": false,
+    "learning": "OpenAI streaming WAV may declare unknown frame lengths. Reconcile saved bytes locally; do not retry synthesis. Both local ASRs recover exact sentence but do not establish naturalness or voice continuity."
+  },
+  {
+    "timestamp": "2026-10-31T18:17:25.979773+00:00",
+    "slug": "sredni-vashtar",
+    "event": "APPROVED_JOIN_REVIEW_EXECUTED_ONCE_QUALITY_HOLD",
+    "usage_derived_estimated_usd": 0.003489,
+    "invoice": "NOT_REPORTED",
+    "evidence": "live_audiobook_campaign_20261031/sentence-repair/joins-review-result.json",
+    "learning": "Correct words and broadly consistent voice do not establish seamless expressive narration; automated timestamp claims need acoustic/listening adjudication. No speculative phoneme edits or synthesis retries."
   }
+]
 }

@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-10-31T18:15:21.246917+00:00",
+  "status": "TRANSFER_REJECTED_NO_REQUEST_EXECUTED",
+  "audio_sha256": "fdffeb78de25805bbb131c9f14d42a041c19669d3dd0e2c3a9ad86d03155b62d",
+  "seconds": 24.34,
+  "destination": "https://api.openai.com/v1/chat/completions",
+  "reason": "Automatic approval review: new private repaired-audio excerpt not specifically authorized for external transfer; previous approval covered a different excerpt. Do not bypass.",
+  "required_action": "Approve this exact 24.34-second private excerpt transfer and one bounded text-only review within $0.03; no retry, synthesis or allocation.",
+  "synthesis_grant_consumed": true
+}

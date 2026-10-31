@@ -1,0 +1,13 @@
+{
+  "approved": true,
+  "authority": "Explicit owner reply: Approve this excerpt transfer and one review",
+  "recorded_at": "2026-10-31T18:16:13.140467+00:00",
+  "audio_sha256": "fdffeb78de25805bbb131c9f14d42a041c19669d3dd0e2c3a9ad86d03155b62d",
+  "seconds": 24.34,
+  "destination": "https://api.openai.com/v1/chat/completions",
+  "max_requests": 1,
+  "cost_ceiling_usd": 0.03,
+  "retry": false,
+  "new_synthesis": false,
+  "new_allocation": false
+}
