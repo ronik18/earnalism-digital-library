@@ -26,6 +26,14 @@ class MusicSuccessorTests(unittest.TestCase):
   with self.assertRaises(owner.OwnerProducedError):owner.validate(self.d,p,'en',owner.DOWNSTREAM)
  def test_no_storage_or_public_pass(self):
   self.assertFalse(self.d['release_candidate_evidence']['all_release_gates_passed']);self.assertEqual(self.d['known_release_blockers'],owner.DOWNSTREAM)
+ def test_registry_amendment_preserves_all_prior_authority(self):
+  review=json.loads((E/'registry-preservation.json').read_text())
+  registry=json.loads((ROOT/'backend/data/rights_decision_registry.json').read_text())
+  registry['accepted_records'].pop(review['allowed_new_decision_id'])
+  registry['audio_package_bindings']['the-selfish-giant'].pop(review['allowed_new_descriptor'])
+  self.assertEqual(owner.sha(owner.canonical(registry)),review['prior_registry_canonical_sha256'])
+  authority=json.loads((ROOT/'internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json').read_text())
+  self.assertEqual(authority['authority_sha256']['backend/data/rights_decision_registry.json'],owner.sha((ROOT/'backend/data/rights_decision_registry.json').read_bytes()))
  def test_mix_evidence_files_match_shipped_hashes(self):
   refs={'music_licence':'music-licence.json','music_suitability':'owner-music-acceptance.json','mix_integrity':'mix-integrity.json','public_music_credits':'public-credits.json'}
   for role,path in refs.items():self.assertEqual(owner.sha((E/path).read_bytes()),self.d['evidence_sha256'][role])
