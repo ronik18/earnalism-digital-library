@@ -1,0 +1,56 @@
+{
+  "observed_at": "2026-10-31T10:50:21.997833+00:00",
+  "title": "The Student",
+  "status": "EXISTING_ZIP_NOT_RECOVERED",
+  "expected_archive_sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7",
+  "expected_archive_bytes": 16073033,
+  "checks": [
+    {
+      "method": "Bounded local artifact search",
+      "roots": [
+        "Downloads",
+        "Desktop",
+        "Documents/ChatGPT",
+        "/private/tmp",
+        "user temporary directory"
+      ],
+      "depth_limits": "4 or 5",
+      "result": "No matching filename or expected-size ZIP found; not an exhaustive filesystem absence claim."
+    },
+    {
+      "method": "Google Drive name search",
+      "result": "No audition ZIP result; name search also omitted the known notebook, so search absence alone is inconclusive."
+    },
+    {
+      "method": "Known Colab parent folder direct listing",
+      "result": "Saved audition notebook and placeholder found; no audition ZIP listed. Folder API limited to at most 100 direct children."
+    },
+    {
+      "method": "Saved executed notebook",
+      "result": "79,553 bytes; stdout/export receipt and JavaScript only, no audio payload. Metadata modified time unchanged since generation."
+    },
+    {
+      "method": "Existing disconnected Colab page observed-asset inventory",
+      "result": "89 assets; no audition WAV/ZIP/blob asset found. Expired runtime asset URLs not fetched or persisted."
+    },
+    {
+      "method": "Incomplete local download candidate",
+      "result": "Unconfirmed 138745.crdownload has PDF header, is not audition ZIP; left unchanged."
+    }
+  ],
+  "browser_downloads_access": "Prior browser-policy rejection preserved; no alternate browser-profile or Chrome Downloads workaround attempted.",
+  "new_colab_allocations": 0,
+  "new_synthesis": 0,
+  "new_purchases": 0,
+  "shutdown_state": "Existing page offers Reconnect GPU; no reconnect performed. Prior zero-active-session receipt remains retained.",
+  "required_action": "Owner supplies existing ZIP path or retained original bytes. Do not replay under consumed one-allocation authority.",
+  "integration": {
+    "pr": 603,
+    "checks": "reconcile SUCCESS; regression gate SUCCESS; packaging SKIPPED",
+    "head": "102dd310d7162f5383ca12dfb749b54335887393",
+    "merged_main": "cb66ec1084ff5970943991d1e1d0327ad2d51aa9",
+    "reviewed_merged_tree_equal": true,
+    "canonical_clean_aligned_before_followup": true,
+    "deployment": false
+  }
+}

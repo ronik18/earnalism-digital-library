@@ -59,3 +59,11 @@ Generated packets and private customer-path/accounting receipts remain outside G
 Observed QA consumption130 seconds (2m10s), including expiry charges, from existing balance. No purchase/top-up/listening or session takeover; no active audit reader remained.
 
 **Next integration action:** review the isolated changes against current main and preserve the no-deploy/no-publish hold. Do not label the live blockers fixed until separately authorized deployment/promotion and actual customer-path qualification succeed.
+
+## Source integration successor
+
+The Integration Lane reconciled reviewed local candidate `5a21db116b894800a537d414427b640695435a30` with main `f287205d892d2cb9b8ff0263e34f15cf999cc7bc`, preserving the Student/Sredni recovery records by intent. The corrected inactive repair planner hashes its target segmentation version consistently; its 25-title replay is in-memory synthetic contract evidence, not production repair. Previous source-only checks: 24 Python, 109 frontend, 6 purchase-guard and 46 workflow cases passed; new exact-head hosted CI/reviews remain mandatory.
+
+Fresh existing-scope metadata now verifies Vercel provider `createDeployments=disabled` and repository Git deployment disabled; Railway production auto-deploy and PR environments are disabled. No settings changed. See `PROVIDER-COUPLING-VERIFIED.json`. Native owner authorizes source CI/reviews and merge after all gates pass, preserving PR600; no deployment, publication or paid sessions. PR600 remains independent and untouched. Real capacity/slow-title, runtime recovery, actual26-title pointer diagnosis and any live repair/acceptance remain separate release gates.
+
+Next action: complete exact successor-head CI and published protected review; merge only matching approved head and verify tree equality.

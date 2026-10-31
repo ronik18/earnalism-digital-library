@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-31T05:40:02.203919+00:00",
+  "observed_at": "2026-10-31T06:27:04.098893+00:00",
   "slug": "the-student",
-  "status": "PRIVATE_AUDITION_READY_EXPORT_APPROVAL_REQUIRED",
+  "status": "PRIVATE_GENERATION_COMPLETE_OUTPUT_RETENTION_BLOCKED",
   "integration": {
     "pr": 601,
     "reviewed_commit": "29e4b337c4be79d87c8eae8dcf02e5deb1eb40ac",
@@ -38,28 +38,40 @@
   },
   "quality": {
     "actual_worker_contract": "PASS_STRUCTURAL_FIXTURE_ONLY",
-    "real_model_weights": "NOT_LOADED",
-    "audition": "NOT_RUN",
+    "real_model_weights": "PINNED_MODEL_LOADED_IN_ONE_T4_ALLOCATION",
+    "audition": "SEVEN_PASSAGES_GENERATION_EXIT_SUCCESS_AUDIO_RETENTION_UNVERIFIED",
     "full_title": "NOT_GENERATED",
     "listening": "NOT_PERFORMED",
     "ASR": "NOT_PERFORMED",
-    "public_release_ready": false
+    "public_release_ready": false,
+    "basic_acoustic_receipts": "FIVE_METADATA_RECEIPTS_ONLY_NO_RETAINED_AUDIO"
   },
   "costs": {
-    "new_provider_spend_usd": 0,
-    "compute_allocations": 0,
+    "compute_allocations": 1,
     "new_purchases": 0,
-    "colab_active_sessions_before_attempt": 0,
-    "proposed_scope": "Seven exact-source passages, one allocation, 30-minute maximum, one take/passage, no retry/purchase/full generation/publication. Existing Colab credits only after authorization; actual unit usage must be reconciled, not reported as zero."
+    "actual_provider_charge": "NOT_REPORTED",
+    "observed_compute_units_per_hour": 1.15,
+    "estimated_30_minute_upper_bound_compute_units": 0.575,
+    "actual_compute_units": "NOT_REPORTED",
+    "shutdown_verified_before_30_minute_deadline": true
   },
   "blocker": {
-    "code": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_GOOGLE_PAYLOAD_UPLOAD",
-    "rejected_action": "Upload prepared 77 KB source-and-worker notebook to signed-in Google Colab/Drive",
-    "reason": "Audiobook task authorization did not explicitly authorize export of this payload to Google; local preparation allowed.",
-    "workaround_attempted": false,
-    "owner_approval_request": "Pending async request for this exact notebook upload and bounded audition.",
-    "notebook_sha256": "e69fe0478581410bf8b5eb69da440b1ae01b5a45f7120a81c795f4f84d6729fd"
+    "code": "AUDITION_ARCHIVE_RETENTION_UNVERIFIED",
+    "reason": "Generation exited successfully, but download failed before unconditional early shutdown; no retained audio bytes verified. No ASR or listening review performed.",
+    "required_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
+    "expected_sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7"
   },
   "notebook_placeholder_url": "https://colab.research.google.com/drive/1oY51SPtxb_c9LHfjD8efzjej12kDD3Cv",
-  "next_action": "After explicit owner export authorization, upload only the prepared notebook, verify the imported source, use one bounded existing-credit CUDA allocation, preserve the result and shut down. Never infer voice quality from the worker contract."
+  "next_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
+  "notebook_url": "https://colab.research.google.com/drive/13WV0k4Gt2rQwxevyv4350DxGTomvdZJ5",
+  "owner_export_approval": "EXPLICITLY_GRANTED_IN_CHAT",
+  "execution_evidence": "execution-20261031/generation-export-receipt.json",
+  "recovery_followup": "../recovery-followup/student-recovery.json",
+  "integration_execution_receipt": {
+    "pr": 603,
+    "merged_main": "cb66ec1084ff5970943991d1e1d0327ad2d51aa9",
+    "exact_head_ci": "PASS",
+    "reviewed_merged_tree_equal": true,
+    "deployment": false
+  }
 }

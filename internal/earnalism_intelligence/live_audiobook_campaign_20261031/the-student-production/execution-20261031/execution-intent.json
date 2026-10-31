@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-10-31T05:48:47.523496+00:00",
+  "source": "Direct typed owner instruction and explicit async approval in current chat",
+  "scope": "Upload The Student notebook to signed-in Google Colab/Drive and run seven-passage Ryan audition",
+  "notebook_sha256": "e69fe0478581410bf8b5eb69da440b1ae01b5a45f7120a81c795f4f84d6729fd",
+  "max_allocations": 1,
+  "max_request_to_shutdown_seconds": 1800,
+  "max_takes_per_passage": 1,
+  "purchases_allowed": false,
+  "automatic_replay_allowed": false,
+  "allocation_requests": 1,
+  "synthesis_requests": 7,
+  "state": "GENERATION_FINISHED_RETENTION_UNVERIFIED_SHUTDOWN_VERIFIED",
+  "allocation_request_at": "2026-10-31T05:50:06.598616+00:00",
+  "absolute_shutdown_deadline": "2026-10-31T06:20:06.598616+00:00",
+  "notebook_url": "https://colab.research.google.com/drive/13WV0k4Gt2rQwxevyv4350DxGTomvdZJ5",
+  "gpu_class": "T4",
+  "request_outcome": "CONNECTED_EXECUTING",
+  "observed_gpu": "Tesla T4",
+  "observed_cell_execution_count": 1,
+  "setup_elapsed_observed_seconds": 87,
+  "observed_at": "2026-10-31T05:56:14.046486+00:00",
+  "resource_observation": {
+    "observed_at": "2026-10-31T05:54:15.846384+00:00",
+    "active_sessions": 1,
+    "approx_compute_units_per_hour": 1.15,
+    "estimated_upper_bound_units_for_30_minutes": 0.575,
+    "actual_consumption": "NOT_YET_REPORTED",
+    "new_purchase_performed": false
+  },
+  "last_observation": {
+    "elapsed_seconds": 337,
+    "gpu_ram_gb": 9.4,
+    "status": "Notebook executing; result not yet emitted",
+    "no_replay": true
+  },
+  "passage_observations": {
+    "observed_at": "2026-10-31T06:02:38.709414+00:00",
+    "completed_first_takes": 5,
+    "expected": 7,
+    "worker_acoustic_checks": "PASS_FOR_FIVE_COMPLETED_ONLY",
+    "durations_seconds": [
+      25.28,
+      19.92,
+      24,
+      26.56,
+      23.6
+    ],
+    "content_and_listening": "UNVERIFIED"
+  },
+  "shutdown_observation": {
+    "observed_at": "2026-10-31T06:12:06.124684+00:00",
+    "active_sessions": 0,
+    "observed_before_absolute_deadline": true,
+    "replacement_allocation_requested": false
+  },
+  "no_purchases": true,
+  "synthesis_request_count_basis": "Seven planned passage first takes inferred from successful worker completion; five individual receipts retained. Worker numerical admission probe is separate."
+}

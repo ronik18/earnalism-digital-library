@@ -1,0 +1,47 @@
+{
+  "status": "MATERIAL_WORDING_REVIEW_REQUIRED_NOT_RELEASE_READY",
+  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "current_source_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "generation_source_binding": "Canonical content plus exactly LF matches recorded source 44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "focus": {
+    "source_text": "Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars.",
+    "suspected_omission": "one of which was",
+    "review_interval_seconds": [
+      147.02,
+      165.0
+    ],
+    "evidence": "Historical audio-derived timestamps, fresh small.en and completed large-v3-turbo ASR all omit the phrase. ASR agreement is a review signal, not human confirmation.",
+    "listening_adjudication": "NOT_PERFORMED",
+    "repair_performed": false,
+    "local_review_clip": {
+      "path": "/tmp/earnalism-audiobook-recovery-followup-20261031/sredni-wording-review-147.02-165.00.wav",
+      "sha256": "50c807c59161e075aa6d1df9de5876dcd18c89a7249aabc02e065ee128630313",
+      "method": "Decoded original interval to PCM WAV; no speech generation, gain, music or edits within interval"
+    }
+  },
+  "rules": [
+    "Do not accept an aggregate 9.7 score while a material word omission is unresolved.",
+    "No new synthesis, allocation, upload or publication has been authorized by this repair note.",
+    "Preserve original audio and measured timestamp bytes.",
+    "If actual omission is confirmed, prepare the smallest complete-sentence correction using an authorized compatible narrator, then rerun exact words, acoustic characteristics and both adjacent joins; never splice isolated words blindly.",
+    "Current legacy recording/provider adoption, storage retention, full content/subjective evidence and protected player acceptance remain required."
+  ],
+  "full_local_ASR": {
+    "supplementary_word_error_rate_scores": {
+      "small_en": 9.686468646864686,
+      "large_v3_turbo": 9.697469746974697,
+      "metric": "10 * (1-WER); not directly comparable with repository score"
+    },
+    "repository_transcript_similarity_scores": {
+      "small_en": 9.7854,
+      "large_v3_turbo": 9.814,
+      "minimum": 9.7,
+      "numeric_threshold": "PASS_ONLY",
+      "first_last_words": "PASS_BOTH",
+      "all_words_complete": "UNVERIFIED_SUSPECTED_OMISSION"
+    },
+    "additional_ASR_attempts": "NONE_PLANNED_TWO_FULL_LOCAL_COMPARISONS_COMPLETE",
+    "human_wording_question": "PENDING_OWNER_RESPONSE",
+    "correction": "Earlier comparison of WER-derived numbers to the canonical threshold mixed metrics. The unchanged repository scorer was applied offline to both complete transcripts; no new inference."
+  }
+}

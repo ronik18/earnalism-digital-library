@@ -1,0 +1,50 @@
+{
+  "source": "Owned Colab generation-report.json UI buffer copied before/reconciled after shutdown; partial snapshot only",
+  "status": "RUNNING_SNAPSHOT_FIVE_OF_SEVEN",
+  "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "worker_sha256": "55500c69d0529ded866c744d5242d1c9320625bece8eb56958b8086948e2beeb",
+  "dtype": "float32",
+  "model_load_seconds": 11.529380213,
+  "segments": [
+    {
+      "segment": "u000001--audition-ryan",
+      "attempt": 1,
+      "wav_sha256": "989f11e6fa17964d7b94d2a73e8bea1cb82e401abae169572a16645d3383baaf",
+      "duration_seconds": 25.28,
+      "worker_acoustic_status": "PASS_OBSERVED_BEFORE_SHUTDOWN",
+      "current_audio_bytes_retained": false
+    },
+    {
+      "segment": "u000003--audition-ryan",
+      "attempt": 1,
+      "wav_sha256": "28c860a4788036feb20db1f39077646964152497ace5ad4d703da319cad9ec57",
+      "duration_seconds": 19.92,
+      "worker_acoustic_status": "PASS_OBSERVED_BEFORE_SHUTDOWN",
+      "current_audio_bytes_retained": false
+    },
+    {
+      "segment": "u000010--audition-ryan",
+      "attempt": 1,
+      "wav_sha256": "ab6dbed6da5efbe82833f786b5638477dc0c3a5c07a21f7432ab3a66e8272548",
+      "duration_seconds": 24,
+      "worker_acoustic_status": "PASS_OBSERVED_BEFORE_SHUTDOWN",
+      "current_audio_bytes_retained": false
+    },
+    {
+      "segment": "u000007--audition-ryan",
+      "attempt": 1,
+      "wav_sha256": "15e5940ca11910ba5d9c84f95ea43a555b1e0a47f01b5d0c24b88517c119a08c",
+      "duration_seconds": 26.56,
+      "worker_acoustic_status": "PASS_OBSERVED_BEFORE_SHUTDOWN",
+      "current_audio_bytes_retained": false
+    },
+    {
+      "segment": "u000023--audition-ryan",
+      "attempt": 1,
+      "wav_sha256": "8f9f8d31f0174722f6c296c2d6553e08c93d1d553480cc32b7b06e40f96c9ec8",
+      "duration_seconds": 23.6,
+      "worker_acoustic_status": "PASS_OBSERVED_BEFORE_SHUTDOWN",
+      "current_audio_bytes_retained": false
+    }
+  ]
+}

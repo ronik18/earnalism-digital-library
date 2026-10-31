@@ -1,0 +1,243 @@
+{
+  "source_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "timestamp_sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+  "audio_hash": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "generation_source_hash": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "current_canonical_plus_LF_equals_generation_hash": true,
+  "comparison": "Exact retained audio-derived historical words versus current canonical; no source spelling correction or transcript rewrite.",
+  "historical_ASR_disagreements": [
+    {
+      "kind": "replace",
+      "source_word_index": 27,
+      "expected": "effete",
+      "historical_ASR": "a feat",
+      "context": "doctor was silky and effete and counted for little"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 39,
+      "expected": "de ropp",
+      "historical_ASR": "dorop",
+      "context": "was endorsed by mrs de ropp who counted for nearly"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 47,
+      "expected": "de ropp",
+      "historical_ASR": "dorop",
+      "context": "for nearly everything mrs de ropp was conradin's cousin and"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 136,
+      "expected": "de ropp",
+      "historical_ASR": "dorop",
+      "context": "succumbed long ago mrs de ropp would never in her"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 331,
+      "expected": "tool shed",
+      "historical_ASR": "toolshed",
+      "context": "shrubbery was a disused tool shed of respectable proportions and"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 423,
+      "expected": "one of which was",
+      "historical_ASR": "",
+      "context": "divided into two compartments one of which was fronted with close iron"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 439,
+      "expected": "polecat",
+      "historical_ASR": "polkak",
+      "context": "abode of a large polecat ferret which a friendly"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 472,
+      "expected": "lithe sharp",
+      "historical_ASR": "live shark",
+      "context": "dreadfully afraid of the lithe sharp fanged beast but it"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 488,
+      "expected": "tool shed",
+      "historical_ASR": "toolshed",
+      "context": "very presence in the tool shed was a secret and"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 495,
+      "expected": "joy to be kept scrupulously from the knowledge of the woman",
+      "historical_ASR": "",
+      "context": "a secret and fearful joy to be kept scrupulously from the knowledge of the woman as he privately dubbed"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 551,
+      "expected": "near by",
+      "historical_ASR": "nearby",
+      "context": "week at a church near by and took conradin with"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 572,
+      "expected": "rimmon",
+      "historical_ASR": "rimmen",
+      "context": "in the house of rimmon every thursday in the"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 580,
+      "expected": "silence",
+      "historical_ASR": "",
+      "context": "the dim and musty silence of the tool shed"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 583,
+      "expected": "tool shed",
+      "historical_ASR": "toolshed",
+      "context": "musty silence of the tool shed he worshipped with mystic"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 613,
+      "expected": "winter time",
+      "historical_ASR": "wintertime",
+      "context": "scarlet berries in the winter time were offered at his"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 706,
+      "expected": "ropp",
+      "historical_ASR": "raap",
+      "context": "occasion when mrs de ropp suffered from acute toothache"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 734,
+      "expected": "personally",
+      "historical_ASR": "",
+      "context": "that sredni vashtar was personally responsible for the toothache"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 756,
+      "expected": "houdan",
+      "historical_ASR": "houdon",
+      "context": "have given out the houdan hen was never drawn"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 806,
+      "expected": "ropp",
+      "historical_ASR": "raap",
+      "context": "very respectable mrs de ropp was the ground plan"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 826,
+      "expected": "tool shed",
+      "historical_ASR": "toolshed",
+      "context": "conradin's absorption in the tool shed began to attract the"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 862,
+      "expected": "houdan",
+      "historical_ASR": "houdon",
+      "context": "she announced that the houdan hen had been sold"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1012,
+      "expected": "to night",
+      "historical_ASR": "tonight",
+      "context": "to chant his praises to night he asked a boon"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1023,
+      "expected": "sredni",
+      "historical_ASR": "shredni",
+      "context": "one thing for me sredni vashtar the thing was"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1031,
+      "expected": "sredni",
+      "historical_ASR": "shredni",
+      "context": "was not specified as sredni vashtar was a god"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1094,
+      "expected": "sredni",
+      "historical_ASR": "shredni",
+      "context": "one thing for me sredni vashtar mrs de ropp"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1097,
+      "expected": "de ropp",
+      "historical_ASR": "dorop",
+      "context": "me sredni vashtar mrs de ropp noticed that the visits"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1157,
+      "expected": "key",
+      "historical_ASR": "tea",
+      "context": "found the carefully hidden key and forthwith marched down"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1394,
+      "expected": "sredni",
+      "historical_ASR": "shredni",
+      "context": "of his threatened idol sredni vashtar went forth his"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1402,
+      "expected": "thoughts",
+      "historical_ASR": "dots",
+      "context": "his thoughts were red thoughts and his teeth were"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1418,
+      "expected": "sredni",
+      "historical_ASR": "shredni",
+      "context": "he brought them death sredni vashtar the beautiful and"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1436,
+      "expected": "window pane",
+      "historical_ASR": "windowpane",
+      "context": "drew closer to the window pane the door of the"
+    },
+    {
+      "kind": "delete",
+      "source_word_index": 1637,
+      "expected": "bushes",
+      "historical_ASR": "",
+      "context": "to sight in the bushes such was the passing"
+    },
+    {
+      "kind": "replace",
+      "source_word_index": 1811,
+      "expected": "conradin",
+      "historical_ASR": "conradon",
+      "context": "the matter among themselves conradin made himself another piece"
+    }
+  ],
+  "decision": "Disagreements are review locators, not adjudication or listening PASS",
+  "release_ready": false
+}
