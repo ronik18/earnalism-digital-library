@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-10-31T18:30:14.130262+00:00",
+  "status": "DRAFT_MEASURED_TIMING_PREPARED_FULL_SYNC_GATE_UNVERIFIED",
+  "original_words": 1789,
+  "removed_words": 18,
+  "replacement_words": 22,
+  "candidate_words": 1793,
+  "prefix_words": 407,
+  "suffix_words": 1364,
+  "edit_interval": [
+    149.59,
+    158.075
+  ],
+  "measured_shift_seconds": 1.2650000000000006,
+  "replacement_first_last": [
+    {
+      "word": "Further",
+      "start": 149.74,
+      "end": 150.16
+    },
+    {
+      "word": "bars.",
+      "start": 158.4,
+      "end": 158.84
+    }
+  ],
+  "removed_transcript": "Further back in the gloom stood a large hutch divided into two compartments fronted with close iron bars",
+  "replacement_transcript": "Further back in the gloom stood a large hutch, divided into two compartments, one of which was fronted with close iron bars.",
+  "monotonic_word_starts": true,
+  "healthy_timing_basis": "Existing measured words retained unchanged before cut and shifted by exact1.265s after cut; no timing interpolation",
+  "timing_sha256": "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469",
+  "source_content_changed": false,
+  "full_source_qa": "UNVERIFIED",
+  "publication": false,
+  "new_provider_calls": 0,
+  "new_allocations": 0
+}

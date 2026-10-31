@@ -1,0 +1,145 @@
+{
+  "observed_at": "2026-10-31T18:31:11.680871+00:00",
+  "title": "The Student",
+  "slug": "the-student",
+  "canonical_base": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "lane": "READ_ONLY_STUDENT_RECOVERY_AND_IMPORT_RIGHTS",
+  "status": "BLOCKED",
+  "newly_completed_work": [
+    "Checked Drive notebook revision history instead of repeating prior filename/local/folder/browser probes",
+    "Traced the specific import collection Public Domain link to its actual Creative Commons legal tool"
+  ],
+  "drive_notebook": {
+    "file_id": "13WV0k4Gt2rQwxevyv4350DxGTomvdZJ5",
+    "title": "Earnalism_The_Student_Private_Audition_20261031.ipynb",
+    "mime_type": "application/vnd.google.colaboratory",
+    "current_bytes": 79553,
+    "modified_time": "2026-10-31T06:04:57.592Z",
+    "revisions": [
+      {
+        "id": "0B00aDQhiSJZERm9TUmNmMGlHbjVJOTJRekR2R05CZUsyWjNVPQ",
+        "modified_time": "2026-10-31T05:48:41.211Z",
+        "bytes": 77180,
+        "keep_forever": true
+      },
+      {
+        "id": "0B00aDQhiSJZEYVBxNnltYi9NbjlqR2ZuMnlXNDF4MFozenVFPQ",
+        "modified_time": "2026-10-31T05:50:55.223Z",
+        "bytes": 77101,
+        "keep_forever": false
+      },
+      {
+        "id": "0B00aDQhiSJZES0JHT0JZUXBZcllQNnhkWUV1anhPMU1kazkwPQ",
+        "modified_time": "2026-10-31T06:04:57.592Z",
+        "bytes": 79553,
+        "keep_forever": true
+      }
+    ],
+    "contents_fetched_this_lane": false,
+    "interpretation": "No additional post-generation or ZIP-sized file revision was exposed. The two earlier revisions precede generation completion and are smaller than the already inspected current notebook. This metadata route provides no retained audition bytes; not an exhaustive Drive absence claim."
+  },
+  "expected_audition_archive": {
+    "name": "Earnalism_Student_Private_Audition_20261031.zip",
+    "bytes": 16073033,
+    "sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7",
+    "recovered": false
+  },
+  "rights_distinctions": {
+    "underlying_literary_audio_basis": "Previously qualified selected Chekhov/Garnett story for a new owner-directed IN recording. Not changed or reapproved.",
+    "stock_model_voice": "Existing pinned Apache-2.0 Qwen Ryan audition does not qualify a different human recording.",
+    "import_candidate": "LibriVox Short Story Collection Vol023 section09, catalog reader kricha12,12m11s,2008-02-22; linked sourcePG1944",
+    "specific_recording_license_observation": "Fresh Internet Archive metadata licenseurl is http://creativecommons.org/licenses/publicdomain/ (metadata SHA256 3f1deeea609d8bfa9e501a26fe356b9fea7092f563e5f8597acf156795b8865f). The linked tool resolves to https://creativecommons.org/publicdomain/certification/1.0/us/: retired Copyright-Only Dedication or Public Domain Certification1.0 US, not CC0; the deed warns it may not apply outsideUS.",
+    "recording_performance_rights_for_IN": "UNVERIFIED. Catalog PD label alone does not establish applicability of record-specific recording and performer permissions for commercial IN reuse.",
+    "exact_spoken_edition_and_quality": "UNVERIFIED; no audio downloaded or listened to. PG1944 catalog link does not establish spoken full-text identity."
+  },
+  "primary_sources": [
+    "https://librivox.org/librivox-short-story-collection-vol-023/",
+    "https://archive.org/details/short_story023_0802_librivox",
+    "https://creativecommons.org/publicdomain/certification/1.0/us/",
+    "https://librivox.org/pages/public-domain/"
+  ],
+  "next_action": "Supply an existing retained original audition ZIP/local path matching the recorded checksum; otherwise obtain a record-specific recording/performer rights basis applicable to commercial IN reuse before any import audio download. Do not reconnect or replay the consumed Colab allocation. Do not contact readers without separate messaging authorization.",
+  "new_allocations": 0,
+  "new_synthesis_requests": 0,
+  "new_provider_requests": 0,
+  "audio_downloaded": false,
+  "publication": false,
+  "new_cost_incurred_usd": 0,
+  "historical_colab_actual_cost": "NOT_REPORTED_NOT_RESET",
+  "canonical_files_modified": false,
+  "live_import_metadata": {
+    "observed_at": "2026-10-31T18:30:41.353078+00:00",
+    "source_url": "https://archive.org/metadata/short_story023_0802_librivox",
+    "identifier": "short_story023_0802_librivox",
+    "licenseurl": "http://creativecommons.org/licenses/publicdomain/",
+    "rights": null,
+    "creator": null,
+    "publication_date": "2008-02-22",
+    "metadata_sha256": "3f1deeea609d8bfa9e501a26fe356b9fea7092f563e5f8597acf156795b8865f",
+    "student_files": [
+      {
+        "name": "shortstory023_student_add.mp3",
+        "format": "VBR MP3",
+        "title": "The Student",
+        "creator": "Anton Chekhov",
+        "length": "731.75",
+        "size": "11708089",
+        "sha1": "2d068102dbd612483baffc001c9d32e141596b25"
+      },
+      {
+        "name": "shortstory023_student_add.ogg",
+        "format": "Ogg Vorbis",
+        "title": null,
+        "creator": null,
+        "length": "729.19",
+        "size": "7393110",
+        "sha1": "d611a075514dac5408d63139b92a51b9246e0033"
+      },
+      {
+        "name": "shortstory023_student_add.png",
+        "format": "PNG",
+        "title": null,
+        "creator": null,
+        "length": null,
+        "size": "10454",
+        "sha1": "bd3d5d94a76ce3b0c867c3f3dc342fb76bf9ef0b"
+      },
+      {
+        "name": "shortstory023_student_add_64kb.mp3",
+        "format": "64Kbps MP3",
+        "title": "The Student",
+        "creator": "Anton Chekhov",
+        "length": "12:11",
+        "size": "5853357",
+        "sha1": "fbb4a1486b8c4d51ea7d33669eab2e8eb3a62504"
+      },
+      {
+        "name": "shortstory023_student_add_esshigh.json.gz",
+        "format": "Essentia High GZ",
+        "title": null,
+        "creator": null,
+        "length": null,
+        "size": "2082",
+        "sha1": "492f0eb325bd43a3963dc7a67ca59ac9db97f53e"
+      },
+      {
+        "name": "shortstory023_student_add_esslow.json.gz",
+        "format": "Essentia Low GZ",
+        "title": null,
+        "creator": null,
+        "length": null,
+        "size": "30393",
+        "sha1": "9d2cce89544fb1acd101f537af717c4da359e747"
+      },
+      {
+        "name": "shortstory023_student_add_spectrogram.png",
+        "format": "Spectrogram",
+        "title": null,
+        "creator": null,
+        "length": null,
+        "size": "313438",
+        "sha1": "7fd39352c403c7f4026bbde5736ccfa37554af9e"
+      }
+    ]
+  }
+}

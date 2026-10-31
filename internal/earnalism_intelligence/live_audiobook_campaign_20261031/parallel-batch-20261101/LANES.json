@@ -1,0 +1,71 @@
+{
+  "schema": "earnalism.parallel-audiobook-batch.v1",
+  "recorded_at": "2026-10-31T18:53:54.222376+00:00",
+  "client_date": "2026-11-01",
+  "timezone": "Asia/Kolkata",
+  "base_sha": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "owner_authority": "Direct request to parallelize efficiently, followed by dedicated Selfish Giant GO LIVE instruction. Prior allocation/synthesis/review limits preserved.",
+  "canonical_writer": "root Integration Lane only",
+  "new_branches_or_git_worktrees": 0,
+  "remote_pr_branch": "Existing explicitly approved codex/audiobook-campaign-integration-20261031 only",
+  "concurrency_limit_agents": 4,
+  "concurrent_heavy_jobs_max": 1,
+  "lanes": [
+    {
+      "owner": "student_recovery",
+      "titles": [
+        "the-student",
+        "a-ghost-story"
+      ],
+      "work": "Drive revision evidence, recording rights and one resumable offline full-title ASR analysis",
+      "path": "/tmp/earnalism-parallel-student-20261031 and /tmp/earnalism-parallel-ghost-qa-20261101",
+      "canonical_writes": false,
+      "status": "COMPLETE_QUALIFICATION_HOLDS_RECORDED"
+    },
+    {
+      "owner": "short_title_qualification",
+      "titles": [
+        "a-ghost-story",
+        "the-gift-of-the-magi"
+      ],
+      "work": "Exact historical master recovery, current source binding, import/failure memory and bounded other46-title scan",
+      "path": "/tmp/earnalism-parallel-short-titles-20261031",
+      "canonical_writes": false,
+      "status": "COMPLETE_QUALIFICATION_HOLDS_RECORDED"
+    },
+    {
+      "owner": "existing_audio_acceptance",
+      "titles": [
+        "the-open-window",
+        "the-selfish-giant"
+      ],
+      "work": "Shared source/test evidence reuse; then dedicated Selfish public rendered verification and normal-account protected acceptance preparation",
+      "path": "/tmp/earnalism-parallel-existing-20261031 and /tmp/earnalism-parallel-selfish-go-live-20261101",
+      "canonical_writes": false,
+      "status": "DEDICATED_SELFISH_FINAL_ACCEPTANCE_PENDING"
+    },
+    {
+      "owner": "root",
+      "titles": [
+        "sredni-vashtar"
+      ],
+      "work": "Derived private measured corrected timings and hash-verified local recovery copies; serialized campaign integration",
+      "path": "/tmp/earnalism-main-approved-integration",
+      "canonical_writes": true,
+      "status": "INTEGRATING_ONE_BATCH"
+    }
+  ],
+  "overlap_resolution": "Workers share read-only source and distinct artifact directories; only root edits ledgers/title records. No parallel commits or publication owners. Other Reader recovery frontend release remains separately owned and must finish before Selfish protected acceptance/release reconciliation.",
+  "costs": {
+    "new_paid_provider_requests": 0,
+    "new_synthesis": 0,
+    "new_allocations": 0,
+    "new_purchases": 0,
+    "new_customer_sessions_in_this_preparation": 0,
+    "ghost_local_cpu_wall_seconds": 637.23,
+    "storage_read_charge": "NOT_REPORTED",
+    "prior_campaign_costs": "PRESERVED_NOT_RESET"
+  },
+  "private_audio_recovery": "sredni/private-recovery-manifest.json",
+  "next_action": "Complete exactly the owner-confirmed bounded Selfish normal-account acceptance after shared frontend release is quiet; then update its truthful LIVE/BLOCKED result. Never regenerate healthy audio or repeat consumed grants."
+}

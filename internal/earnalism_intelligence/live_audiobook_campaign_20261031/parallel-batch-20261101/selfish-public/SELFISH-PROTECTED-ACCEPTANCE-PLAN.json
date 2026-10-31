@@ -1,0 +1,194 @@
+{
+  "prepared_at": "2026-10-31T18:48:35.380199+00:00",
+  "status": "PREPARED_NOT_EXECUTED_OWNER_ACCOUNT_AUTHENTICATION_AND_INTEGRATION_COORDINATION_REQUIRED",
+  "title": "The Selfish Giant",
+  "slug": "the-selfish-giant",
+  "book_url": "https://theearnalism.com/book/the-selfish-giant",
+  "listener_url": "https://theearnalism.com/listener/the-selfish-giant",
+  "package": {
+    "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "duration_ms": 777120,
+    "chapter_count": 1,
+    "chapter_id": "chapter-001",
+    "chapter_title": "The Selfish Giant",
+    "segment_count": 6,
+    "segments": [
+      {
+        "segment_id": "group-01",
+        "cumulative_start_ms": 0,
+        "duration_ms": 58960
+      },
+      {
+        "segment_id": "group-02",
+        "cumulative_start_ms": 58960,
+        "duration_ms": 21120
+      },
+      {
+        "segment_id": "group-03",
+        "cumulative_start_ms": 80080,
+        "duration_ms": 22800
+      },
+      {
+        "segment_id": "group-04",
+        "cumulative_start_ms": 102880,
+        "duration_ms": 114480
+      },
+      {
+        "segment_id": "group-05",
+        "cumulative_start_ms": 217360,
+        "duration_ms": 511840
+      },
+      {
+        "segment_id": "group-06",
+        "cumulative_start_ms": 729200,
+        "duration_ms": 47920
+      }
+    ],
+    "canonical_public_book_sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
+    "canonical_public_book_matches_live_measured_inventory": true
+  },
+  "source_binding": {
+    "backend_inventory_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+    "backend_manifest_sha256": "3204892598b46197bb6e80170a5a617891d89417d21f530dc7eae8a58cf47db6",
+    "declared_backend_files": 1950,
+    "independent_inventory_source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "provider_backend_git_sha": null,
+    "frontend_served_bundle": "main.2f5a5353.js",
+    "frontend_served_bundle_sha256": "1d555fd6180897292e85f62222087fcba4a213b02e2356f8dcd1a0552569087b",
+    "six_relevant_frontend_module_source_refs_equal": [
+      "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "9f182f96a9f443ac211b1a7768a07d876e06def2"
+    ],
+    "recheck_before_execution": "Other Reader/frontend worker is active. Integration Lane must first confirm release slot, record actual current backend attestation/served frontend identity, and reconcile relevant source changes. Never deploy/modify another worker source to run acceptance."
+  },
+  "authority_interpretation": {
+    "current_owner_scope": "Explicit owner GO LIVE plus original campaign cost-only preauthorization supports necessary, most-cost-effective routine supported-title acceptance; it does not identify a customer account, provide authentication, permit another person\u2019s balance, or bypass normal access.",
+    "no_blanket_owner_paid_session_ban_found_in_current_chat": true,
+    "examined_owner_constraints": [
+      "One Student Colab allocation30minutes/one take/no purchases: audition-specific, not an automatic global ban on using existing normal Reading Pass credit.",
+      "Sredni one sentence synthesis and separate one text-only review: consumed grants; do not reuse for anything here.",
+      "No new allocation/new synthesis does not itself authorize customer access, but does not prohibit a normal supported playback check."
+    ],
+    "historical_no_paid_session_locator": "open-window-handoff.md dated26October says latest owner boundary no paid session for that earlier OpenWindow release. It is a historical locator, not new authority or a cross-title current blanket ban.",
+    "other_reader_lane_no_paid_sessions": "A different active Reader task has its own no-paid-session boundary. Do not infer this is owner authorization for this audiobook lane or reinterpret that other lane\u2019s restrictions.",
+    "binding_child_execution_limit": "Root explicitly prohibits this child from creating a lease/debit or signing in. This preparation grants no execution permission and no paid session has occurred. Root must coordinate the single normal owner-account capability and integration slot.",
+    "no_reapproval_of_unchanged_audio_rights_voice_required": true
+  },
+  "account_admission": {
+    "identity": "One explicitly intended owner-controlled NORMAL member account only; never infer intent from whichever account is already signed into a tab.",
+    "current_available_authentication": "NOT_ESTABLISHED: the owned fresh public Chrome journey displayed Sign In and Reading Pass required; no login/account session was inspected, selected or attempted. No credentials/tokens read.",
+    "before_start": [
+      "Owner identifies/signs into intended existing member account through normal private UI; never paste/print/read credentials or an unrelated customer account.",
+      "Confirm that account has usable existing normal Reading Pass balance sufficient for the bounded check without purchase or new credit grant. Keep raw balances/identity private; record only scoped session deltas and a nonreversible account binding if necessary.",
+      "Confirm no other active owner-account Reader/Listener session. If one exists, stop and coordinate; do not transfer/end another worker\u2019s session.",
+      "If balance is insufficient, an existing acceptance interlock denies admission, or sign-in cannot be established, BLOCK; no purchase, admin waiver, gratis session, cap installer, revocation removal or allowance reset."
+    ],
+    "normal_endpoints_reference_only": [
+      "GET /api/reading-pass/wallet",
+      "POST /api/reading-pass/sessions/start",
+      "POST /api/reading-pass/leases/renew",
+      "POST /api/reading-pass/sessions/end",
+      "GET /api/users/me/transactions/page"
+    ],
+    "endpoint_operation_rule": "Use normal supported UI/controller only; these paths identify behavior, not permission to replay raw requests. No token extraction or broad private response capture."
+  },
+  "bounds": {
+    "maximum_serialized_sessions": 1,
+    "maximum_active_audio_seconds": 120,
+    "planned_active_audio_seconds": 31,
+    "planned_paused_wall_seconds": 30,
+    "speed": 1.0,
+    "safety_stop_active_seconds": 90,
+    "minimum_unused_active_margin_seconds": 30,
+    "operator_measurement": "Track cumulative actual playing time with monotonic timing and native playing/pause/waiting/ended events within this one owned tab. Never count seek jumps as listened time. Pause/stop early if projected active time approaches90seconds; absolute active ceiling120. Existing normal controls only; no custom server cap or silent financial config changes.",
+    "hard_cap_limitation": "This protocol does not install a platform-enforced120second debit cap. If a strict hard server-enforced cap rather than a bounded operator-controlled acceptance run is required, that capability is unavailable here; do not silently substitute an administrative override.",
+    "no_retry_of_uncertain_start": true,
+    "no_second_session_after_natural_end": true,
+    "no_purchases_or_credit_grants": true,
+    "no_other_customer_data": true
+  },
+  "steps": [
+    {
+      "id": "P0",
+      "operation": "READ_ONLY_PRECHECK",
+      "action": "After integration slot is available, confirm source bindings, correct Book/Listener package metadata and normal owner-account admission prerequisites. Record only this title/session evidence. No authorization click until prerequisites hold.",
+      "expected": "Package b00212b...,777120ms,1chapter,6declared segments; correct approved cover/title; no unresolved source mismatch."
+    },
+    {
+      "id": "P1",
+      "operation": "ONE_NORMAL_AUTHORIZATION_AND_PLAY",
+      "action": "Authorize Listening ONCE in intended owner account. At1.0x play group-01 from0:00 for about8active seconds. Read native DOM package/segment/duration fields only, never save media credentials.",
+      "expected": "Correct package attribute,group-01,native duration58.960seconds. Exactly one new owner-account session, no another title/session touched."
+    },
+    {
+      "id": "P2",
+      "operation": "PAUSE_AND_RENEW",
+      "action": "Pause for20wall seconds, enough to observe normal paused-state renewal/settlement if it occurs. Then resume and play about5active seconds.",
+      "expected": "Actual paused interval excluded by server accounting; normal resume renewal succeeds before protected playback. Do not infer paused-free billing solely from the unchanged displayed wallet integer."
+    },
+    {
+      "id": "P3",
+      "operation": "ACTIVE_CROSS_SEGMENT_SEEK",
+      "action": "While playing around13seconds, seek to60.960seconds (group-02 local2seconds), then play about4active seconds.",
+      "expected": "Renewal/admission before media-source transition,group-02 native21.120seconds,target near60.960. Seek jump itself is not charged as listening."
+    },
+    {
+      "id": "P4",
+      "operation": "NATURAL_SEGMENT_TRANSITION",
+      "action": "While playing seek back to57.960seconds (group-01 local57.960). Let native end at58.960 advance naturally into group-02; listen about2seconds there.",
+      "expected": "Natural end/next-segment transition not cancelled by pause-intent guard, no duplicate speech from wrong segment, no billable inactive gap. Totalabout3active seconds."
+    },
+    {
+      "id": "P5",
+      "operation": "PAUSED_SEEK_RESUME_AND_FINAL_NATURAL_END",
+      "action": "Pause; seek to766.120seconds (group-06 local36.920), remain paused for10wall seconds, then resume. Let final11seconds play and naturally finish at777.120.",
+      "expected": "Paused seek does not issue unauthorized media transition; resume renews before group-06 playback. Native final segment47.920seconds; overall12:57 completion and normal terminal-session settlement. No second authorization/session."
+    },
+    {
+      "id": "P6",
+      "operation": "OWNER_ONLY_SETTLEMENT_READBACK",
+      "action": "Read only the intended owner session\u2019s terminal status and new Selfish Giant usage/ledger entry through normal Account/usage surfaces. Reconcile server-clock billable active intervals and fractional carry, title/type and actual wallet delta. No unrelated customer or old transaction history.",
+      "expected": "Exactly one terminal Selfish session. Seek jumps, paused and any genuinely observed buffering intervals excluded. Net debit matches authoritative billable time and supported fractional carry/rounding semantics, within120seconds; never fabricate a cent/second tolerance. Raw identity/balance/lease credentials remain private."
+    }
+  ],
+  "evidence_reuse": {
+    "automated_exact_source_run": 41131752565,
+    "automated_exact_source_run_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/41131752565",
+    "audio_transport_group": "99passed; includesowned-stream close/disconnect/cancellation behavior",
+    "frontend_group": "21suites264tests passed; includes pending intent cancel onpause/stop/unmount,seekrenewal,segment lifecycle",
+    "transaction_failure_cases": "All3rollback_transaction tests passed; no failure injection against production needed",
+    "full_recording_and_delivery": "Reuse accepted immutable Ryan narration, six-group full historical native completion and exact rights/storage/content/timing proof. Do not play the entire12:57 again merely to repeat unchanged asset evidence.",
+    "not_retested_in_production": [
+      "Forced network stall/buffering",
+      "Unmount/stop race injection",
+      "Unknown transaction commit/fault injection",
+      "Multiple tabs/devices/transfer/speeds",
+      "Unrelated audiobooks or customers"
+    ],
+    "unobserved_buffering_rule": "If no natural buffering occurs, label fresh buffering observation NOT_PERFORMED and cite applicable exact-source automated evidence. Do not switch global network/offline settings or claim a new actual buffering test."
+  },
+  "failure_policy": {
+    "stop_on": [
+      "Wrong package/source/title/duration",
+      "Unexpected account identity or conflicting session",
+      "Unauthorized denial/interlock or insufficient balance",
+      "Unexpected debit/paused charge or unverifiable settlement",
+      "Material playback/narration issue",
+      "Cannot maintainactive<=120seconds with normal controls",
+      "Uncertain session-start result or production state change by another worker"
+    ],
+    "containment": "Pause/End only the workflow\u2019s owned normal session through supported UI; preserve its receipts. On uncertain result read that same session state before another write; never reauthorize or start replacement session. No global outage, entitlement edit, deployment rollback or original media modification."
+  },
+  "release_decision": {
+    "pass": "Only root Integration Lane may combine this scoped current runtime evidence with exact unchanged package/full-content/rights/storage proof and current public journey to mark The Selfish Giant verified LIVE. Record limits and actual source IDs; no universal or all-device billing claim.",
+    "hold": "Any missing identity/authentication, unresolved current runtime accounting evidence, source conflict or material defect keeps full verified LIVE blocked. Publicly available current dry package remains unchanged."
+  },
+  "precise_blocker": "INTENDED_OWNER_MEMBER_ACCOUNT_NOT_AUTHENTICATED_OR_IDENTIFIED_FOR_SINGLE_NORMAL_ACCEPTANCE_SESSION; integration slot currently shared with active Reader/frontend worker. No missing narration/license reapproval or code patch established.",
+  "next_exact_owner_action_for_root": "Sign in privately to the intended existing owner-controlled Earnalism member account for the prepared single-session Selfish Giant acceptance (<=120active seconds of existing normal Reading Pass credit; no purchase/newcredit/adminoverride). Root then verifies account/session isolation and current release source before one authorization. No credential should be sent in chat.",
+  "execution_occurred": false,
+  "leases_created": 0,
+  "customer_debits": 0,
+  "new_provider_spend_usd": 0
+}

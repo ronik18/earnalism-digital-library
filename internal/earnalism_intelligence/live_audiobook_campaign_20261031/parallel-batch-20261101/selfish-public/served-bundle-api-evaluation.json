@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "the-open-window",
+    "state": {
+      "status": "approved",
+      "canShowControls": true,
+      "releaseApproved": true,
+      "label": "Audiobook available",
+      "reason": "Release gate, listening QA, and audio asset are approved.",
+      "releaseGate": "APPROVED",
+      "qaStatus": "QA_PASSED",
+      "audioUrl": "",
+      "hasAudioAsset": true,
+      "packageManifestUrl": "",
+      "packageVersion": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "syncMode": "",
+      "highlightSyncEnabled": false
+    }
+  },
+  {
+    "slug": "the-selfish-giant",
+    "state": {
+      "status": "approved",
+      "canShowControls": true,
+      "releaseApproved": true,
+      "label": "Audiobook available",
+      "reason": "Release gate, listening QA, and audio asset are approved.",
+      "releaseGate": "APPROVED",
+      "qaStatus": "QA_PASSED",
+      "audioUrl": "",
+      "hasAudioAsset": true,
+      "packageManifestUrl": "",
+      "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "syncMode": "",
+      "highlightSyncEnabled": false
+    }
+  }
+]

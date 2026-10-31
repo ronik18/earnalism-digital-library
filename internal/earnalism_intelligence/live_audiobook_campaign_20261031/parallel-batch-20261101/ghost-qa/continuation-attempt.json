@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-10-31T18:42:27.404031+00:00",
+  "authority": "Parent explicitly authorized one further480s bounded localCPU continuation if first8min cap returns partial. No provider retry/allocation/synthesis.",
+  "cut_seconds": 677.94,
+  "resume_audio_start_seconds": 674.94,
+  "overlap_seconds": 3.0,
+  "previous_complete_word_end": 682.36,
+  "gap_selected": [
+    677.82,
+    678.06
+  ],
+  "max_seconds": 480,
+  "max_continuations": 1,
+  "retries": 0,
+  "network": false,
+  "local_files_only": true,
+  "new_provider_cost_usd": 0,
+  "status": "CONTINUATION_RESERVED"
+}

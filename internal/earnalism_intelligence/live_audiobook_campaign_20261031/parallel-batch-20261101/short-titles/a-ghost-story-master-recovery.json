@@ -1,0 +1,29 @@
+{
+  "operation": "OWNER_RECORDING_READ_ONLY_RECOVERY",
+  "path": "/tmp/earnalism-parallel-short-titles-20261031/a-ghost-story-retained-qualified.mp3",
+  "expected_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+  "actual_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+  "bytes": 7047789,
+  "sha256_pass": true,
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "24000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "880.944000",
+      "size": "7047789"
+    }
+  },
+  "new_synthesis": false,
+  "new_allocation": false,
+  "publication": false,
+  "provider_cost_usd": 0,
+  "remote_read_charge": "NOT_REPORTED",
+  "source": "Exact master locator in historical verified upload receipt; first HEAD200 exact recorded bytes; recovery is not current release acceptance"
+}

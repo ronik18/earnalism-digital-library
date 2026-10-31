@@ -3,7 +3,7 @@
   "title": "A Ghost Story",
   "book_id": "controlled-a-ghost-story",
   "url": "https://theearnalism.com/book/a-ghost-story",
-  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "stage": "EXACT_MASTER_RECOVERED_FULL_OFFLINE_ASR_COMPLETE_ADJUDICATION_PENDING",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -56,8 +56,27 @@
     "live_manifest_fields": {}
   },
   "voice": {
-    "status": "NOT_SELECTED_NOT_QUALIFIED",
-    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+    "status": "EXACT_HISTORICALLY_QUALIFIED_STUDIO_C_MASTER_RECOVERED_CURRENT_FULL_QUALIFICATION_PENDING",
+    "provider": "google",
+    "model": "google-cloud-texttospeech",
+    "voice": "en-GB-Studio-C",
+    "style": "source_preserving_ssml_88_percent",
+    "master_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "duration_seconds": 880.944,
+    "size_bytes": 7047789,
+    "historical_generation_attempt": "2ad1c4000044a5688a4866645e3bf2541ac31f6066b8aefc27275ee309b38e89",
+    "historical_qa": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_full_qa_runtime.json",
+    "historical_asr_score": 9.88,
+    "historical_listening_min": 9.4,
+    "historical_listening_confidence": 0.95,
+    "historical_fatal_flags": [],
+    "historical_samples": 6,
+    "current_whole_title_acceptance": "UNVERIFIED_DO_NOT_PROMOTE_HISTORICAL_SAMPLES_TO_FULL_CONTENT_PASS",
+    "current_recovery_receipt": "a-ghost-story-master-recovery.json",
+    "current_master_sha256_verified": true,
+    "current_duration_verified": true,
+    "private_recovered_path": "/tmp/earnalism-parallel-short-titles-20261031/a-ghost-story-retained-qualified.mp3",
+    "new_generation": false
   },
   "music": {
     "selection": "SILENCE",
@@ -84,17 +103,20 @@
   },
   "blockers": [
     {
-      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
-      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+      "code": "FULL_WORDING_PRONUNCIATION_AND_EXPRESSION_ADJUDICATION_REQUIRED",
+      "action": "Full cached offline ASR score9.904 and first/last PASS; adjudicate all13 source-bound differences (3demonstrably spacing-only) with private clips. Numeric score does not clear material uncertainty or establish human listening."
     },
     {
-      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
-      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+      "code": "EXACT_AUDIO_USE_PACKAGE_STORAGE_TIMING_RUNTIME_ADOPTION_REQUIRED",
+      "action": "Reuse existing exact owner-produced master/current ordered-source equivalence and applicable historical QA; qualify supported exact audio-use/provider package binding, measured navigation/primary+DR retention and actual protected customer acceptance. Do not promote rejected local take00190d74 or a legacy URL."
     }
   ],
   "language": "en",
   "rights": {
     "audio_package_bindings": {},
     "reader_rights_do_not_establish_audio_rights": true
-  }
+  },
+  "retained_master_qualification": "parallel-batch-20261101/short-titles/a-ghost-story-qualification.json",
+  "full_offline_asr": "parallel-batch-20261101/ghost-qa/UNION-SUMMARY.json",
+  "acoustic_analysis": "parallel-batch-20261101/short-titles/a-ghost-story-acoustic-analysis.json"
 }

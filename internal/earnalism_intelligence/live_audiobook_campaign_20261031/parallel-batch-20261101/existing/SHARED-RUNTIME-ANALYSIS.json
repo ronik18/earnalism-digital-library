@@ -1,0 +1,40 @@
+{
+  "source_comparison_status": "EXACT_PUBLIC_GITHUB_COMPARISON_TO_RETAINED_FRONTEND_SOURCE_BACKEND_GIT_SOURCE_UNVERIFIED",
+  "runtime_snapshot_matches_prior": true,
+  "backend_runtime_observed_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+  "live_backend_git_sha": null,
+  "live_backend_git_sha_status": "UNAVAILABLE_NOT_INFERRED_FROM_FRONTEND",
+  "historical_backend_source": "c3cfbdadf5ddb81b5d65ed2e15ffdb0238f96fd8",
+  "historical_frontend_source": "f13646d94da652d64b1f7389dd5a71251d94ad30",
+  "retained_frontend_provider_source": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "unchanged_accounting_AST_methods": [
+    "ReadingPassService._billable_interval",
+    "ReadingPassService._append_time_debit",
+    "ReadingPassService._debit_account",
+    "ReadingPassService._settle_terminal_session",
+    "ReadingPassService.end_session",
+    "ReadingPassService.renew_lease"
+  ],
+  "changed_shared_dependencies": [
+    "ReadingPassService._transaction: unknown-commit retry and contention handling",
+    "ReadingPassService.start_session / _balance / wallet_state: fail-closed balance validation; text-only authority fence movements",
+    "server._stream_audiobook_asset_url: owned streaming response and smaller iterator reads",
+    "ListenerExperienceV2: cancel stale playback intent on pause/stop/unmount; reauthorize active cross-segment seek; natural-end pause guard"
+  ],
+  "unaffected_route_AST": [
+    "reader_book_audiobook_package_manifest",
+    "reader_book_audiobook_package_segment",
+    "reading_pass_lease_renew",
+    "reading_pass_session_end",
+    "user_transaction_page",
+    "user_my_transactions"
+  ],
+  "analysis_limitation": "Named AST equality supports affected-case reuse, not transitive behavioral acceptance. The subsequent full1950-file manifest comparison DOES independently bind declared live backend source bytes to9a1b; provider Git metadata remains unavailable. No new playback/accounting/listening PASS.",
+  "backend_source_followup": {
+    "record": "backend-provenance-followup.json",
+    "status": "LIVE_DECLARED_1950_FILE_INVENTORY_MATCHES_EXACT_GIT_REF_SOURCE_BYTES",
+    "inventory_reference": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "file_count": 1950,
+    "provider_git_sha": null
+  }
+}

@@ -119,10 +119,6 @@
       "action": "Qualified listening adjudication of the exact 24.34-second private candidate and both joins; preserve original and candidate. Resolve material expression/transition concerns before further package work. No synthesis or review requests remain."
     },
     {
-      "code": "CORROBORATED_WORDING_DEFECT_REPAIR_REQUIRES_MATCHING_RECORDING",
-      "action": "Blind audio review also omits “one of which was” with no unclear spans, corroborating three transcript outputs. Original chunk/master waveforms match at the affected join; no healthy missing passage was recovered by reassembly. Prepare a complete-sentence correction in a qualified matching narrator and rerun wording, expression and adjacent joins. Current owner instruction prohibits new synthesis/allocation; the one audio-review request is consumed. Do not splice isolated words, change narrator mid-book or expose the defective master."
-    },
-    {
       "code": "EXACT_AUDIO_PACKAGE_RIGHTS_STORAGE_AND_RUNTIME_ACCEPTANCE_REQUIRED",
       "action": "Qualify the retained recording/provider rights scope for current edition, immutable primary/DR retention, measured paragraph/stanza sync and protected customer playback/accounting before activation. Do not reuse old active pointers or expose a legacy public URL."
     }
@@ -204,5 +200,16 @@
       "new_allocation": false,
       "additional_synthesis": false
     }
-  }
+  },
+  "resolved_preparation_blockers": {
+    "historical_parent_defect_remains_in_immutable_original": true,
+    "prior_blocker_record": [
+      {
+        "code": "CORROBORATED_WORDING_DEFECT_REPAIR_REQUIRES_MATCHING_RECORDING",
+        "action": "Blind audio review also omits “one of which was” with no unclear spans, corroborating three transcript outputs. Original chunk/master waveforms match at the affected join; no healthy missing passage was recovered by reassembly. Prepare a complete-sentence correction in a qualified matching narrator and rerun wording, expression and adjacent joins. Current owner instruction prohibits new synthesis/allocation; the one audio-review request is consumed. Do not splice isolated words, change narrator mid-book or expose the defective master."
+      }
+    ],
+    "current_repair": "One full sentence already generated under consumed grant; two local ASRs and approved auditory review recover all22words. Voice/expression/joins still held; do not request or run synthesis again."
+  },
+  "private_draft_timing_preparation": "parallel-batch-20261101/sredni/timing-derivation-proof.json"
 }

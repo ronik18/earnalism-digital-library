@@ -1,0 +1,420 @@
+{
+  "checked_at": "2026-10-31T18:35:38.211088+00:00",
+  "scope": "Frozen52 minus6 already-active titles; tracked historical title_runs and sprint1 release registry only; bounded read-only scan, no media reads/downloads/generation",
+  "frozen_inventory_count": 52,
+  "excluded_already_active_titles": [
+    "a-ghost-story",
+    "sredni-vashtar",
+    "the-gift-of-the-magi",
+    "the-open-window",
+    "the-selfish-giant",
+    "the-student"
+  ],
+  "remaining_titles_scanned": 46,
+  "ranked_retained_candidates": [],
+  "additional_qualified_full_recordings_found": 0,
+  "important_exclusions": [
+    {
+      "slug": "radharani",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
+      "reason": "Full candidate explicitly rejected: rawASR1.0962 and alternate calibration9.0441, first/last mismatch. Not counted; no retry."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram-gurer-jibanchorit_release_gate_evidence.json",
+      "reason": "Existing full Google candidate failed listening with robotic/mechanical/list-reading flags; not counted."
+    },
+    {
+      "slug": "bn-066",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/bn-066_release_gate_evidence.json",
+      "reason": "Full private recording has ASR0.8403 and no passing listening; not counted."
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_google_voice_bakeoff_20260728.json",
+      "reason": "Voice-bakeoff/representative evidence is not full-title recording or QA; not counted."
+    },
+    {
+      "slug": "the-secret-garden",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
+      "reason": "Chapter1failed; other26chapters not generated. Partial, excluded."
+    },
+    {
+      "slug": "book-d19e96859f",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
+      "reason": "Outside frozen52 and failed full release QA; no scope expansion or candidate count."
+    }
+  ],
+  "top3_cheapest_next_qualification_actions": [],
+  "top3_omission_reason": "No additional eligible full recording was established. Inventing three ranked candidates/actions would promote rejected, partial or evidence-missing audio. Existing Ghost recovery is the only newly substantiated full-recording reuse path in this batch and is deliberately excluded here as already active.",
+  "uncertainty": "Filename/registry scan is bounded and does not prove absence of untracked local/cloud masters. No offloaded sidecars or private storage inventories were hydrated. Exact source/master/provider binding for untracked media remains unknown.",
+  "provider_spend_this_scan_usd": 0,
+  "new_allocations": 0,
+  "new_synthesis": false,
+  "canonical_changes": false,
+  "title_scan": [
+    {
+      "slug": "the-tell-tale-heart",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "a06be0a68e1830b42912c51e50f6a5e64b15947e979ff2433c604e49e0c01358",
+      "historical_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "source_binding": {
+        "controlled_source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+        "audition_sanitized_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+        "audition_input_manifest_sha256": "66338d5a5a4949a37ede477ec6b414d01ac664d2a0401f49d3a9effd9f63aa56"
+      },
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "radharani",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "9a440a43c9008e8f182247f80d4f64afdecb90aa12f9ec55a7af557c2b69f401",
+      "historical_state": "FULL_PIPELINE_FAILED",
+      "exact_blocker": "RELEASE_FACTORY_RETURNED_2",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "a-white-heron",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "agentic-ai-with-python",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "5aca91651fdee411ca94eac762d924baa73ba69607011a0ae8f51dff014d1885",
+      "historical_state": "PREFLIGHT_BLOCKED",
+      "exact_blocker": "FRONT_COVER_LINKAGE_REQUIRED",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "love-of-life",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-bishop",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-open-boat",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-enchanted-april",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-happy-prince",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/picture-of-dorian-gray_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "2de67c793f1e43c791aff1d074dbf039f917ba46277acb8f09963f8f062672a9",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "dracula",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dracula_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "df22a66c0ab3bc16e384f8c8095ccb8d01be2eb3f31ed0b6f6595da2f4e3c139",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "492abf0a48b88ddfbabf90af6b823e73d272b3df861356a4d36f1cdc12b71240",
+      "historical_state": "PREFLIGHT_BLOCKED",
+      "exact_blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram-gurer-jibanchorit_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "4d6dee6ff84e8c0791b94265c2485f5fa77555fd39fd322f50ce4c8759f6dcb8",
+      "historical_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "exact_blocker": "AUTOMATED_PROVIDER_PATH_PLATEAUED; FULL_BOOK_LISTENING_GATE_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "source_binding": {
+        "controlled_source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+        "full_candidate_audio_sha256": "dcafb32f428da7cff43a7fadc1db7ca79eed80880886abab250f4f886dcdea1a"
+      },
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "bn-059",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "3c2baf875b6301b135913574b743945dab3e7c3896fa37a23fab9e26b5152c28",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "bn-035",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "065b19f6e91c79e9080ea9b74979fe274e0210582a49ab39bc2b3bafa0bd87e1",
+      "historical_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+      "exact_blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; SOURCE_BOUND_FULL_TITLE_DELIVERY_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "dsires-baby",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "596abc2cbceeacbeb46b1c2abf1107037681c4d28ec8dbbdcc47486b77d9ded9",
+      "historical_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+      "exact_blocker": "STUDIO_C_AND_CHIRP3_HD_ACHIRD_DIALOGUE_RISK_SAMPLES_FAILED_WITH_FATAL_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-cop-and-the-anthem_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "8d3879a0002811c0d4dc13b0b2d384cc1bc9b95bcc78022d39d7b4c3c4823287",
+      "historical_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+      "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "bn-066",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/bn-066_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "b6d74c007f8204cdf0c8615de226ca3a57c77064b0a38f48125043fa0409bfb4",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "lokrahasya",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "mrinalini",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "frankenstein",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/frankenstein_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "a2dbda9559aad860a7d4b9e3b4b6a5b4505c462113a2ef89257964bdf92ed74d",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "9004af886b91990d8aa932aecedae68e32b3d24d1a4366bc5ab54318085b6659",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "the-great-gatsby",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-secret-garden",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "ad1d98fcac7495f860ac83eb65c8318515c7c5ede4db83fa2354e5f655b06114",
+      "historical_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+      "exact_blocker": "CHAPTER_001_OBJECTIVE_REPAIR_FAILED; REMAINING_26_CHAPTERS_NOT_GENERATED; FULL_TITLE_AND_DOWNSTREAM_GATES_INCOMPLETE",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "the-time-machine",
+      "whole_release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_release_gate_evidence.json",
+      "eligible_retained_candidate": false,
+      "evidence_sha256": "0ac1e67b7fcdfaf1361ddaa5f50d030238e2e80b0effd1a836c09be14048c108",
+      "historical_state": "INCOMPLETE_FAIL_CLOSED",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "source_binding": {},
+      "master_binding": {},
+      "why_not_counted": "No complete accepted full-title source+master+QA evidence in this title checkpoint. Rejected, partial, representative-only and missing runs are not retained qualified candidates."
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "my-life-and-work",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    },
+    {
+      "slug": "book-5704b31005",
+      "whole_release_evidence_path": null,
+      "eligible_retained_candidate": false,
+      "why_not_counted": "No title-specific historical full-release checkpoint found in tracked title_runs for this frozen slug; not evidence that no media exists elsewhere."
+    }
+  ]
+}

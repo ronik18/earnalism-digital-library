@@ -1,0 +1,75 @@
+{
+  "observed_at": "2026-10-31T18:30:41.353078+00:00",
+  "source_url": "https://archive.org/metadata/short_story023_0802_librivox",
+  "identifier": "short_story023_0802_librivox",
+  "licenseurl": "http://creativecommons.org/licenses/publicdomain/",
+  "rights": null,
+  "creator": null,
+  "publication_date": "2008-02-22",
+  "metadata_sha256": "3f1deeea609d8bfa9e501a26fe356b9fea7092f563e5f8597acf156795b8865f",
+  "student_files": [
+    {
+      "name": "shortstory023_student_add.mp3",
+      "format": "VBR MP3",
+      "title": "The Student",
+      "creator": "Anton Chekhov",
+      "length": "731.75",
+      "size": "11708089",
+      "sha1": "2d068102dbd612483baffc001c9d32e141596b25"
+    },
+    {
+      "name": "shortstory023_student_add.ogg",
+      "format": "Ogg Vorbis",
+      "title": null,
+      "creator": null,
+      "length": "729.19",
+      "size": "7393110",
+      "sha1": "d611a075514dac5408d63139b92a51b9246e0033"
+    },
+    {
+      "name": "shortstory023_student_add.png",
+      "format": "PNG",
+      "title": null,
+      "creator": null,
+      "length": null,
+      "size": "10454",
+      "sha1": "bd3d5d94a76ce3b0c867c3f3dc342fb76bf9ef0b"
+    },
+    {
+      "name": "shortstory023_student_add_64kb.mp3",
+      "format": "64Kbps MP3",
+      "title": "The Student",
+      "creator": "Anton Chekhov",
+      "length": "12:11",
+      "size": "5853357",
+      "sha1": "fbb4a1486b8c4d51ea7d33669eab2e8eb3a62504"
+    },
+    {
+      "name": "shortstory023_student_add_esshigh.json.gz",
+      "format": "Essentia High GZ",
+      "title": null,
+      "creator": null,
+      "length": null,
+      "size": "2082",
+      "sha1": "492f0eb325bd43a3963dc7a67ca59ac9db97f53e"
+    },
+    {
+      "name": "shortstory023_student_add_esslow.json.gz",
+      "format": "Essentia Low GZ",
+      "title": null,
+      "creator": null,
+      "length": null,
+      "size": "30393",
+      "sha1": "9d2cce89544fb1acd101f537af717c4da359e747"
+    },
+    {
+      "name": "shortstory023_student_add_spectrogram.png",
+      "format": "Spectrogram",
+      "title": null,
+      "creator": null,
+      "length": null,
+      "size": "313438",
+      "sha1": "7fd39352c403c7f4026bbde5736ccfa37554af9e"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "master_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+  "scope": "Entire recovered 880.944-second master decoded offline with ffmpeg ebur128 true-peak analysis",
+  "integrated_loudness_lufs": -17.9,
+  "loudness_range_lu": 1.9,
+  "true_peak_dbfs": -0.3,
+  "raw_log_sha256": "874d950ac64a460196f25c96d31c5552a216e1fc4d9cd42e7682d9fa9c2109cc",
+  "audio_modified": false,
+  "listening_naturalness_expression": "UNVERIFIED_CURRENT_FULL_TITLE",
+  "release_gate": "NOT_PASSED",
+  "interpretation": "Measured level facts only; no invented title threshold or normalization. Near-zero true peak merits checking target delivery headroom before packaging. Retain exact original."
+}

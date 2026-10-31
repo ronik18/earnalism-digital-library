@@ -1,0 +1,116 @@
+{
+  "cut_seconds": 677.94,
+  "original_word_gap": [
+    677.82,
+    678.06
+  ],
+  "resume_audio_start_seconds": 674.94,
+  "overlap_seconds": 3.0,
+  "original_overlap_transcript": " me  like  the  peace  I  feel  when  I  am  there.",
+  "resumed_overlap_transcript": " me  like  the  peace  I  feel  when  I  am  there.",
+  "normalized_overlap_exact": true,
+  "prefix_last_words": [
+    {
+      "word": " the",
+      "start": 676.06,
+      "end": 676.2,
+      "probability": 0.9996097683906555
+    },
+    {
+      "word": " peace",
+      "start": 676.2,
+      "end": 676.5,
+      "probability": 0.9945934414863586
+    },
+    {
+      "word": " I",
+      "start": 676.5,
+      "end": 676.68,
+      "probability": 0.9998002648353577
+    },
+    {
+      "word": " feel",
+      "start": 676.68,
+      "end": 676.98,
+      "probability": 0.9999032020568848
+    },
+    {
+      "word": " when",
+      "start": 676.98,
+      "end": 677.22,
+      "probability": 0.9998703002929688
+    },
+    {
+      "word": " I",
+      "start": 677.22,
+      "end": 677.34,
+      "probability": 0.9999305009841919
+    },
+    {
+      "word": " am",
+      "start": 677.34,
+      "end": 677.5,
+      "probability": 0.9999157190322876
+    },
+    {
+      "word": " there.",
+      "start": 677.5,
+      "end": 677.82,
+      "probability": 0.9997782111167908
+    }
+  ],
+  "suffix_first_words": [
+    {
+      "word": " We",
+      "start": 678.1,
+      "end": 678.52,
+      "probability": 0.9995753169059753
+    },
+    {
+      "word": " talked",
+      "start": 678.52,
+      "end": 678.9,
+      "probability": 0.9997383952140808
+    },
+    {
+      "word": " along",
+      "start": 678.9,
+      "end": 679.22,
+      "probability": 0.9987565279006958
+    },
+    {
+      "word": " for",
+      "start": 679.22,
+      "end": 679.56,
+      "probability": 0.9999741315841675
+    },
+    {
+      "word": " half",
+      "start": 679.56,
+      "end": 679.86,
+      "probability": 0.9998227953910828
+    },
+    {
+      "word": " an",
+      "start": 679.86,
+      "end": 680.04,
+      "probability": 0.9996615648269653
+    },
+    {
+      "word": " hour.",
+      "start": 680.04,
+      "end": 680.36,
+      "probability": 0.9997465014457703
+    },
+    {
+      "word": " And",
+      "start": 680.58,
+      "end": 680.88,
+      "probability": 0.99969482421875
+    }
+  ],
+  "resumed_words_straddling_cut": [],
+  "first_job_audio_through": 682.36,
+  "continuation_audio_through": 880.06,
+  "dedup_rule": "Keep first-job words ending before quiet word-gap midpoint; keep resumed words whose measured midpoint is at or after that point. Three-second measured overlap retained separately; no source-forced transcript."
+}

@@ -1,0 +1,5 @@
+==> Audio transport, current release containment, and revised reader-only manuscript
+regression gate	UNKNOWN STEP	2026-10-30T21:39:03.7315377Z ........................................................................ [ 72%]
+regression gate	UNKNOWN STEP	2026-10-30T21:39:04.7438596Z ...........................                                              [100%]
+regression gate	UNKNOWN STEP	2026-10-30T21:39:04.7439496Z 99 passed in 6.80s
+regression gate	UNKNOWN STEP	2026-10-30T21:39:05.0167894Z 
