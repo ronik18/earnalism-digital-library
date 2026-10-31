@@ -256,6 +256,49 @@ def test_promotion_is_idempotent_and_stale_requests_cannot_mutate_active_pointer
     asyncio.run(scenario())
 
 
+def test_missing_legacy_pointer_requires_guarded_successor_not_bootstrap(monkeypatch):
+    """Observed legacy shape: active retained pages, no physical pointer.
+
+    This exercises existing handlers against dummy data, not a live repair.
+    Generation zero is the promotion protocol's legacy comparison convention,
+    never an observed physical pointer or permission to insert one directly.
+    """
+    async def scenario():
+        database = _database()
+        database.reader_segment_activation_state.rows.clear()
+        old_pages = copy.deepcopy(database.reader_content_segments.rows)
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        admin = {"email": "fixture@example.test"}
+
+        metadata = await server.admin_reading_pass_active_segments("fixture-book", admin)
+        assert metadata["activation_state_present"] is False
+        assert not database.reader_segment_activation_state.rows
+        with pytest.raises(server.HTTPException) as denied:
+            await server.admin_bootstrap_reading_pass_segments(
+                "fixture-book", server.ReadingPassSegmentBootstrapIn(
+                    target_segmentation_version="canonical-fixture-v2",
+                    operation_id="legacy-bootstrap-denied"), admin)
+        assert denied.value.detail["code"] == "ACTIVE_SEGMENT_VERSION_EXISTS"
+        assert not database.reader_segment_activation_state.rows
+
+        payload = _payload("canonical-fixture-v2", "canonical-fixture-v1", 0,
+                           "legacy-guarded-successor")
+        result = await server.admin_promote_reading_pass_segments("fixture-book", payload, admin)
+        assert result["activation_generation"] == 1
+        assert database.reader_segment_activation_state.rows[0]["generation"] == 1
+        assert database.reader_content_segments.rows == old_pages
+        assert await server.admin_promote_reading_pass_segments("fixture-book", payload, admin) == result
+        assert len(database.reading_pass_audit.rows) == 1
+        with pytest.raises(server.HTTPException) as stale:
+            await server.admin_promote_reading_pass_segments(
+                "fixture-book", payload.model_copy(update={"operation_id": "legacy-stale"}), admin)
+        assert stale.value.detail["code"] == "STALE_ACTIVE_SEGMENT_VERSION"
+        assert len(database.reading_pass_audit.rows) == 1
+
+    asyncio.run(scenario())
+
+
 def test_active_metadata_distinguishes_missing_legacy_pointer_without_creating_it(monkeypatch):
     database = _database()
     monkeypatch.setattr(server, "db", database)

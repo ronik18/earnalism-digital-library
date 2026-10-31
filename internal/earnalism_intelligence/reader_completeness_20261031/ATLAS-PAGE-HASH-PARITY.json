@@ -1,0 +1,189 @@
+{
+  "count": 26,
+  "all_match": true,
+  "scope": "SHA256 compact JSON ordered [page_index,chapter_id,stored_content_sha256] arrays; no live body hash recomputation",
+  "rows": [
+    {
+      "slug": "a-ghost-story",
+      "live_ordered_metadata_sha256": "3fc737a144876203aa40957db4fcf81f8cc3e326950f3ca2b059ab7fc2b8c373",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "a-white-heron",
+      "live_ordered_metadata_sha256": "738c9f938937870ea71d7e09d35e60aca57fd444b480c868e99f66cdd10ab1ed",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "live_ordered_metadata_sha256": "924656820cb4411b56fa411434ddc543a4fb2c3d45e593c562a6214173743e51",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 1
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "live_ordered_metadata_sha256": "ecdbb87d4d91226c5499e49f0b8f85c838a52cff2df3c1b6c4b004fb0a94bee1",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "bn-059",
+      "live_ordered_metadata_sha256": "c1b8deb80395d66a3630f32b937ef51e0680b31e7fd7fd6a97a9553edfecbd93",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 48
+    },
+    {
+      "slug": "bn-066",
+      "live_ordered_metadata_sha256": "0d895f83d932f62d987de545d155c141e944865f51d8f8b958e637ce9946de29",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 86
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "live_ordered_metadata_sha256": "724d90943032983489876d4a8c3be716e23f8dbc272313091899d18d567df28e",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 9
+    },
+    {
+      "slug": "dracula",
+      "live_ordered_metadata_sha256": "5d23e8fe3e441e5191347b33f8a11ee669917f405847d03a5ed53fd85b44eced",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 276
+    },
+    {
+      "slug": "dsires-baby",
+      "live_ordered_metadata_sha256": "2916edfa7b14c262b14b69ddb19c5016ecaa31c922db42cb529f385f1366e3c4",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "frankenstein",
+      "live_ordered_metadata_sha256": "7a5870e5359a277eaca10956a4ec39d37c6353ef51d878f20cc44f7ba1f7c554",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 6
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "live_ordered_metadata_sha256": "4cfda3c6324a0f39d5959b919170e874c23dffbd360f691f95f3417cebfe0f8d",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "lokrahasya",
+      "live_ordered_metadata_sha256": "7df323b8387779e8d2b15c39ee8feca4554386cc8a3ff1a2b4e304ec9fe8db72",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 54
+    },
+    {
+      "slug": "mrinalini",
+      "live_ordered_metadata_sha256": "073530498befc3d20936f5955b3e4ef4e34a356d08c96fc92fcbc269c293bba4",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 65
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "live_ordered_metadata_sha256": "471280b51c7e8b4d3aeedb3fc45413f68d7d3afab0006b9f2e2173fedac29330",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 17
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "live_ordered_metadata_sha256": "ef08efecb8f8e5a3ee7681875cf6423d9a691b6d7424256dec8d45daaa26f66b",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 258
+    },
+    {
+      "slug": "radharani",
+      "live_ordered_metadata_sha256": "72eb38336d60136fc70055492d0c67f93fa90a3b478e279d607626b0a085281c",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "sredni-vashtar",
+      "live_ordered_metadata_sha256": "9604ea9f5aad89e210ad4b8647ba11faf83ebf88a852ea5d4230e9b738594058",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "live_ordered_metadata_sha256": "48128e514776aa2718aa98547edf82139c8a64dc1daa7833d5e3710b66933ef7",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "live_ordered_metadata_sha256": "c0f1bc35d1978626feb6133ae2b3ffc65ca657b976bee2999378d6939492da59",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "live_ordered_metadata_sha256": "59a5dc5798c0a38f2a4f735db9d63da05bb3743845ef8b05faff8ec2f50ba27d",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "live_ordered_metadata_sha256": "ed9b4e24181794d6e80544ede1a5ecb4c720cb4eb6c353f9228fe70948985b50",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "live_ordered_metadata_sha256": "d4b9157ae36568e884a1c5ffe0305e84b637a7ea7b104e6c006b0ef4357a35f3",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-secret-garden",
+      "live_ordered_metadata_sha256": "464f3b37d482071ec73770c82c238393726373ffcf51d85f62161d0ccfb3ad91",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "live_ordered_metadata_sha256": "3829fb5d2b5d34e08fe99ae67cfb6706b2e4079f8604ec477972a48969040ba1",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": true,
+      "changed_candidate_pages": 0
+    },
+    {
+      "slug": "the-time-machine",
+      "live_ordered_metadata_sha256": "e6c60ee91962794617695ce2b144281e7fae6cab1a4d96a0a731875e2639ced1",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 70
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "live_ordered_metadata_sha256": "fcec1aa998bbca440bcb94277adfa45145e279e3554ececaad3269afc52aa3ec",
+      "retained_snapshot_parity": true,
+      "candidate_identical_page_body_hashes_and_order": false,
+      "changed_candidate_pages": 77
+    }
+  ]
+}

@@ -66,6 +66,54 @@ test.each([0, -1, NaN, 999])('invalid or excessive concurrency %s cannot widen t
   expect(peak).toBeLessThanOrEqual(6);
   expect(window.sources).toHaveLength(10);
 });
+test.each([4000, 6000])('two long Readers at %sms/page retain per-reader bounds and the unchanged deadline', async delay => {
+  jest.useFakeTimers();
+  try {
+    const totalPages = 66, value = manifest();
+    value.canonical_pages.page_count = totalPages;
+    value.canonical_pages.pages = Array.from({ length: totalPages }, (_, n) => ({
+      page_number: n + 1, page_id: `capacity-${n + 1}`, chapter_id: 'chapter-one', content_hash: hash(n + 1),
+    }));
+    const plan = chapterWindowPlan(value, totalPages, true);
+    let elapsed = 0, aggregate = 0, peakAggregate = 0;
+    const running = [0, 0], peaks = [0, 0], settled = [false, false], errors = [];
+    const results = [0, 1].map(reader => fetchChapterWindow({
+      plan, slug: 'approved-fixture', totalPages, authorized: () => elapsed < 60000,
+      fetchChunk: n => new Promise(resolve => {
+        running[reader]++; aggregate++;
+        peaks[reader] = Math.max(peaks[reader], running[reader]);
+        peakAggregate = Math.max(peakAggregate, aggregate);
+        setTimeout(() => {
+          running[reader]--; aggregate--;
+          resolve({ ...chunk(n), total_pages: totalPages });
+        }, delay);
+      }),
+    }).then(result => { settled[reader] = true; return result; }, error => {
+      settled[reader] = true; errors.push(error); return null;
+    }));
+    while (elapsed < 70000 && !settled.every(Boolean)) {
+      elapsed += 500; jest.advanceTimersByTime(500);
+      for (let n = 0; n < 8; n++) await Promise.resolve();
+    }
+    const windows = await Promise.all(results);
+    expect(peaks).toEqual([6, 6]);
+    // A fixture without server contention needs twelve aggregate slots.
+    // This is a capacity requirement, not production throughput evidence.
+    expect(peakAggregate).toBe(12);
+    if (delay === 4000) {
+      expect(elapsed).toBeLessThan(60000);
+      expect(errors).toHaveLength(0);
+      windows.forEach(window => expect(window.sources.map(row => row.page))
+        .toEqual(Array.from({ length: totalPages }, (_, n) => n + 1)));
+    } else {
+      expect(errors).toHaveLength(2);
+      errors.forEach(error => expect(error.message).toMatch(/authorization changed/));
+      expect(windows).toEqual([null, null]);
+    }
+  } finally {
+    jest.clearAllTimers(); jest.useRealTimers();
+  }
+});
 test.each(['missing', 'duplicate', 'out-of-order', 'chapter-gap'])('%s manifest fails before acquisition', kind => {
   const value = manifest();
   if (kind === 'missing') value.canonical_pages.pages.splice(3, 1);

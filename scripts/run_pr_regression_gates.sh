@@ -81,6 +81,7 @@ env \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 480 --trace-seconds 120 -- -vv \
     backend/tests/test_reader_segment_promotion_safeguards.py \
+    backend/tests/test_reader_observed_recovery_plan.py \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_admission_contention.py \

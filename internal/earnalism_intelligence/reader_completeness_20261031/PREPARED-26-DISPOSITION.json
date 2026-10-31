@@ -1,0 +1,821 @@
+{
+  "schema": "earnalism.observed-reader-recovery-proposal.v1",
+  "production_operations": 0,
+  "execution_adapter": null,
+  "source_runtime_base": "fb6884fbb41435b620775dfc80dac30f5a6eb448",
+  "scope_limits": [
+    "Stored metadata compared; no live body SHA recomputation",
+    "Observation is not an atomic release-time CAS grant",
+    "No new runtime endpoint, raw pointer insertion, automatic bootstrap, expiry, rights, preview or entitlement change",
+    "Old incomplete editions are retained history, not approved rollback"
+  ],
+  "rows": [
+    {
+      "slug": "a-ghost-story",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 5,
+      "candidate_pages": 5,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "07b6850201a2d7930163eda3",
+      "ordered_page_metadata_sha256": "3fc737a144876203aa40957db4fcf81f8cc3e326950f3ca2b059ab7fc2b8c373",
+      "candidate_segmentation_version": "complete-html-v1-3fc737a144876203aa40957db4fcf81f",
+      "candidate_manifest_version": "35e444099649835d0a6de90b",
+      "rights_record_sha256": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "a-white-heron",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 8,
+      "candidate_pages": 8,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "eaad848c009d45298343a9e7",
+      "ordered_page_metadata_sha256": "738c9f938937870ea71d7e09d35e60aca57fd444b480c868e99f66cdd10ab1ed",
+      "candidate_segmentation_version": "complete-html-v1-738c9f938937870ea71d7e09d35e60ac",
+      "candidate_manifest_version": "4fe75310260b59d4c0ee218f",
+      "rights_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 79,
+      "candidate_pages": 79,
+      "changed_candidate_pages": 1,
+      "observed_physical_pointer_present": true,
+      "observed_generation": 1,
+      "observed_segmentation_version": "approved-html-v1-f40a580d70199d348903af65598fb8e5",
+      "observed_manifest_version": "3a948d2bb0b2890b06a1fae9",
+      "ordered_page_metadata_sha256": "924656820cb4411b56fa411434ddc543a4fb2c3d45e593c562a6214173743e51",
+      "candidate_segmentation_version": "complete-html-v1-e359c47f9c0cd7cd8ad45c79a98cdb32",
+      "candidate_manifest_version": "c3e5e9dd96f5f9b39c184bd3",
+      "rights_record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "approved-html-v1-f40a580d70199d348903af65598fb8e5",
+        "expected_activation_generation": 1,
+        "generation_basis": "OBSERVED_PHYSICAL_POINTER",
+        "expected_result_generation": 2
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 50,
+      "candidate_pages": 50,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "ff8140cf85e86ae7682b7711",
+      "ordered_page_metadata_sha256": "ecdbb87d4d91226c5499e49f0b8f85c838a52cff2df3c1b6c4b004fb0a94bee1",
+      "candidate_segmentation_version": "complete-html-v1-ecdbb87d4d91226c5499e49f0b8f85c8",
+      "candidate_manifest_version": "bdddcea1299a20b8f7e3aa62",
+      "rights_record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "bn-059",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 47,
+      "candidate_pages": 48,
+      "changed_candidate_pages": 48,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "804471c0731d07cfa2309c38",
+      "ordered_page_metadata_sha256": "c1b8deb80395d66a3630f32b937ef51e0680b31e7fd7fd6a97a9553edfecbd93",
+      "candidate_segmentation_version": "complete-html-v1-0920779ce05c95fb5aa2ffbeb4f29749",
+      "candidate_manifest_version": "c45e2be758cf5615f1738ff1",
+      "rights_record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "bn-066",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 87,
+      "candidate_pages": 87,
+      "changed_candidate_pages": 86,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "68aeb6af35f7489e647be5fd",
+      "ordered_page_metadata_sha256": "0d895f83d932f62d987de545d155c141e944865f51d8f8b958e637ce9946de29",
+      "candidate_segmentation_version": "complete-html-v1-9c9dfde75fcdad2a4fb4c93108adbb38",
+      "candidate_manifest_version": "1e18a9ff5dc2801e3ae653c1",
+      "rights_record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 8,
+      "candidate_pages": 9,
+      "changed_candidate_pages": 9,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "014eeaa92d3ad2cda49d59e6",
+      "ordered_page_metadata_sha256": "724d90943032983489876d4a8c3be716e23f8dbc272313091899d18d567df28e",
+      "candidate_segmentation_version": "complete-html-v1-5ed232346eed98f1ef01ea53a6699661",
+      "candidate_manifest_version": "5dcff8b010609526ce4d3fb7",
+      "rights_record_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "dracula",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 275,
+      "candidate_pages": 276,
+      "changed_candidate_pages": 276,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "9a5a38294a81c159772c8ecb",
+      "ordered_page_metadata_sha256": "5d23e8fe3e441e5191347b33f8a11ee669917f405847d03a5ed53fd85b44eced",
+      "candidate_segmentation_version": "complete-html-v1-a629eb69d8fba6b687563174dd52b162",
+      "candidate_manifest_version": "4ac7dfa9316d4adbf625aec0",
+      "rights_record_sha256": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "dsires-baby",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 4,
+      "candidate_pages": 4,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "124f8b020c4fa88eba42a6d4",
+      "ordered_page_metadata_sha256": "2916edfa7b14c262b14b69ddb19c5016ecaa31c922db42cb529f385f1366e3c4",
+      "candidate_segmentation_version": "complete-html-v1-2916edfa7b14c262b14b69ddb19c5016",
+      "candidate_manifest_version": "5869acc7ba9e4b9ab54bf24e",
+      "rights_record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "frankenstein",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 144,
+      "candidate_pages": 144,
+      "changed_candidate_pages": 6,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "b760e748448bf223bb4bcc7d",
+      "ordered_page_metadata_sha256": "7a5870e5359a277eaca10956a4ec39d37c6353ef51d878f20cc44f7ba1f7c554",
+      "candidate_segmentation_version": "complete-html-v1-2e50a52e8e018f4f940708d52eca6ba6",
+      "candidate_manifest_version": "fbf982f207da5449738f4982",
+      "rights_record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 52,
+      "candidate_pages": 52,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "23c34da33a2e85bf41d8f431",
+      "ordered_page_metadata_sha256": "4cfda3c6324a0f39d5959b919170e874c23dffbd360f691f95f3417cebfe0f8d",
+      "candidate_segmentation_version": "complete-html-v1-4cfda3c6324a0f39d5959b919170e874",
+      "candidate_manifest_version": "759a912252ede3b051baef5c",
+      "rights_record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "lokrahasya",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 52,
+      "candidate_pages": 54,
+      "changed_candidate_pages": 54,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "52c5e33d852e503cd4588113",
+      "ordered_page_metadata_sha256": "7df323b8387779e8d2b15c39ee8feca4554386cc8a3ff1a2b4e304ec9fe8db72",
+      "candidate_segmentation_version": "complete-html-v1-1abee1df46321e8703f8fb8f3d6de6f7",
+      "candidate_manifest_version": "2f4284dfe819a8619a250822",
+      "rights_record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "mrinalini",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 85,
+      "candidate_pages": 87,
+      "changed_candidate_pages": 65,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "9adb8919cb6f2d293c2ce4b3",
+      "ordered_page_metadata_sha256": "073530498befc3d20936f5955b3e4ef4e34a356d08c96fc92fcbc269c293bba4",
+      "candidate_segmentation_version": "complete-html-v1-8d5a4088bd277af91fe3c2f39756bad9",
+      "candidate_manifest_version": "3ebf879fbedfceb282b467a6",
+      "rights_record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 3,
+      "candidate_pages": 20,
+      "changed_candidate_pages": 17,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "3a6526a11172c1ae962207d1",
+      "ordered_page_metadata_sha256": "471280b51c7e8b4d3aeedb3fc45413f68d7d3afab0006b9f2e2173fedac29330",
+      "candidate_segmentation_version": "complete-html-v1-99d2d3c67b6041ea934e56fe299ac5ab",
+      "candidate_manifest_version": "446a340e3bb61fb8890853a0",
+      "rights_record_sha256": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 241,
+      "candidate_pages": 258,
+      "changed_candidate_pages": 258,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "762707692a91098411373283",
+      "ordered_page_metadata_sha256": "ef08efecb8f8e5a3ee7681875cf6423d9a691b6d7424256dec8d45daaa26f66b",
+      "candidate_segmentation_version": "complete-html-v1-fbf04dec4bdf6753375f814da4ff0357",
+      "candidate_manifest_version": "2197567d3163fae0109ed0bf",
+      "rights_record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "radharani",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 17,
+      "candidate_pages": 17,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "47d09e046ef0fccbec91c599",
+      "ordered_page_metadata_sha256": "72eb38336d60136fc70055492d0c67f93fa90a3b478e279d607626b0a085281c",
+      "candidate_segmentation_version": "complete-html-v1-72eb38336d60136fc70055492d0c67f9",
+      "candidate_manifest_version": "8ce475f44050c95067927307",
+      "rights_record_sha256": "e2bf1284ede07ea5f2176bfc4d2e72726929a8d91af7e4abfb751517ee395e7a",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "sredni-vashtar",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 4,
+      "candidate_pages": 4,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "93a651174f9942b1c9fba18c",
+      "ordered_page_metadata_sha256": "9604ea9f5aad89e210ad4b8647ba11faf83ebf88a852ea5d4230e9b738594058",
+      "candidate_segmentation_version": "complete-html-v1-9604ea9f5aad89e210ad4b8647ba11fa",
+      "candidate_manifest_version": "49b950fefea9075bcd091a84",
+      "rights_record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 25,
+      "candidate_pages": 25,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "2d0c998e3dd9e9dc07204508",
+      "ordered_page_metadata_sha256": "48128e514776aa2718aa98547edf82139c8a64dc1daa7833d5e3710b66933ef7",
+      "candidate_segmentation_version": "complete-html-v1-48128e514776aa2718aa98547edf8213",
+      "candidate_manifest_version": "f28ace2a57b0bc868f4decc3",
+      "rights_record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 58,
+      "candidate_pages": 58,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "606ed98e2f0dc802ba2e014f",
+      "ordered_page_metadata_sha256": "c0f1bc35d1978626feb6133ae2b3ffc65ca657b976bee2999378d6939492da59",
+      "candidate_segmentation_version": "complete-html-v1-c0f1bc35d1978626feb6133ae2b3ffc6",
+      "candidate_manifest_version": "b66139db3f47e7907eed4501",
+      "rights_record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 5,
+      "candidate_pages": 5,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "cb05de36736eb2394d9c382c",
+      "ordered_page_metadata_sha256": "59a5dc5798c0a38f2a4f735db9d63da05bb3743845ef8b05faff8ec2f50ba27d",
+      "candidate_segmentation_version": "complete-html-v1-59a5dc5798c0a38f2a4f735db9d63da0",
+      "candidate_manifest_version": "e5730e25af19acbed62f8a5d",
+      "rights_record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 4,
+      "candidate_pages": 4,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "4505f1affe31163cb5e6ef32",
+      "ordered_page_metadata_sha256": "ed9b4e24181794d6e80544ede1a5ecb4c720cb4eb6c353f9228fe70948985b50",
+      "candidate_segmentation_version": "complete-html-v1-ed9b4e24181794d6e80544ede1a5ecb4",
+      "candidate_manifest_version": "c5e4a1a331e1c0f096ea1920",
+      "rights_record_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "QUALIFY_MERGED_TIMING_FIX_NO_DATA_MUTATION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 78,
+      "candidate_pages": 78,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": true,
+      "observed_generation": 1,
+      "observed_segmentation_version": "approved-html-v1-172c65e11230dfe6d05537e6a550cece",
+      "observed_manifest_version": "68e1c58e915f9b2a5f652c91",
+      "ordered_page_metadata_sha256": "d4b9157ae36568e884a1c5ffe0305e84b637a7ea7b104e6c006b0ef4357a35f3",
+      "candidate_segmentation_version": "complete-html-v1-d4b9157ae36568e884a1c5ffe0305e84",
+      "candidate_manifest_version": "af5452881fabdb0df3f14a39",
+      "rights_record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+      "promotion_precondition": null,
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-secret-garden",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 146,
+      "candidate_pages": 146,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "cd6040849206b3c788578830",
+      "ordered_page_metadata_sha256": "464f3b37d482071ec73770c82c238393726373ffcf51d85f62161d0ccfb3ad91",
+      "candidate_segmentation_version": "complete-html-v1-464f3b37d482071ec73770c82c238393",
+      "candidate_manifest_version": "fc98fdc7e576e23ca9097f45",
+      "rights_record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "IDENTICAL_BODIES_AND_PAGINATION_NEW_PUBLICATION_IDENTITY",
+      "live_pages": 4,
+      "candidate_pages": 4,
+      "changed_candidate_pages": 0,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "ce1155338b4bcaf2cb9a6c0e",
+      "ordered_page_metadata_sha256": "3829fb5d2b5d34e08fe99ae67cfb6706b2e4079f8604ec477972a48969040ba1",
+      "candidate_segmentation_version": "complete-html-v1-3829fb5d2b5d34e08fe99ae67cfb6706",
+      "candidate_manifest_version": "fe38c3c0a44e1b1c88d4c322",
+      "rights_record_sha256": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-time-machine",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 63,
+      "candidate_pages": 70,
+      "changed_candidate_pages": 70,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "ed3dc76ed85faa83acf044e8",
+      "ordered_page_metadata_sha256": "e6c60ee91962794617695ce2b144281e7fae6cab1a4d96a0a731875e2639ced1",
+      "candidate_segmentation_version": "complete-html-v1-7c4a086498c19de8e79395a2f007be0c",
+      "candidate_manifest_version": "47be97252933e18a29c30689",
+      "rights_record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "state": "OFFLINE_PROPOSAL_ONLY_NOT_LIVE_AUTHORITY",
+      "action": "EXISTING_INACTIVE_BUILD_THEN_GUARDED_SUCCESSOR_PROMOTION",
+      "page_scope": "COMPLETE_SOURCE_SUCCESSOR_CHANGED_PAGES",
+      "live_pages": 76,
+      "candidate_pages": 77,
+      "changed_candidate_pages": 77,
+      "observed_physical_pointer_present": false,
+      "observed_generation": null,
+      "observed_segmentation_version": "canonical-html-blocks-v1",
+      "observed_manifest_version": "57cf1e309d5529f767358c4e",
+      "ordered_page_metadata_sha256": "fcec1aa998bbca440bcb94277adfa45145e279e3554ececaad3269afc52aa3ec",
+      "candidate_segmentation_version": "complete-html-v1-6d58027a05319f4ffb43701955b5ba2b",
+      "candidate_manifest_version": "4b4e4aa9755cc80d62ec1038",
+      "rights_record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+      "promotion_precondition": {
+        "expected_active_segmentation_version": "canonical-html-blocks-v1",
+        "expected_activation_generation": 0,
+        "generation_basis": "EXISTING_TRANSACTION_HELPER_LEGACY_COMPARISON_CONVENTION_NOT_OBSERVED_ZERO",
+        "expected_result_generation": 1
+      },
+      "rollback": "RETAIN_OLD_VERSIONS_ONLY_NOT_APPROVED_CUSTOMER_READY_RESTORE_TARGET",
+      "required_before_any_live_write": [
+        "Separate scoped release/data-operation authority",
+        "Fresh transactional pointer/manifest/revocation and exact rights/source check",
+        "Supported inactive build; stored body hash and complete manifest verification",
+        "Preserve old versions, audited idempotent operation and stale-CAS denial",
+        "Qualified runtime/capacity/recovery and proportionate customer acceptance without bypassing entitlements"
+      ]
+    }
+  ],
+  "input_sha256": {
+    "diagnosis": "e25c13e98824b34edbd93ebb2c8cdcf021faaea3147f6a86203cbaa240200b01",
+    "parity": "77cbdd5e15163ced2c33815b40854a0b685d4b8d97e52ea2ca8968d8b0967fb0",
+    "revocation": "a41a549eae1780748867e4d41067227e547c27890df54fa40dd5973fda321faa",
+    "packet": "9f04b1fc41b3d2f6332af6d905b854ff76dd0fc33660f7c3e97a90bbc18fb844"
+  }
+}
