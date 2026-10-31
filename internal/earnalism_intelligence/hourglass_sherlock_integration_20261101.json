@@ -53,5 +53,20 @@
     "NATIVE-200-COMPLETE-CAPTURE.json": "342f6a183c66e27485c876cf5514afea2837c5813497ec83ea5c3c4b945d1d03",
     "captures/native-200-complete.png": "25446a724724b0fcaa6b3934d51960273212f4062d1f490eb36bc5c8b5848968",
     "NATIVE-FINAL-RESTORATION.json": "ad10d4ada3d413cc014c325e7acd8e30d55221628d4d550949366f4392c3bbe7"
+  },
+  "review_tooling_successor": {
+    "reason": "Changed Hourglass CSS correctly invalidated historical Task B interaction baseline; no failed workflow rerun.",
+    "record": "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json",
+    "reviewed_application_commit": "57818f6005652b9d832c7d65ee5e6a716bc4379c",
+    "interaction_sha256": "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975",
+    "production_source_sha256": "f39f126564adaa50edec1abb542ee4df28c0765ad0b3773454e56e2ed6e99894",
+    "historical_records_unchanged": true,
+    "independent_review": "PASS",
+    "local_tests": {
+      "baseline_cases": 23,
+      "evidence_input_cases": 24,
+      "publication_workflow_cases": 46
+    },
+    "required_next_gate": "Fresh exact-head CI and published review; no deployment."
   }
 }

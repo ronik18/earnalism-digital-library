@@ -65,11 +65,11 @@ def main():
     require(library.get("surface") == "library_interaction_surface", "Library baseline surface is invalid", failures)
     require(library.get("result") == "PASS" and library.get("changed_from_previous") is True and library.get("expected_change") is True, "Library baseline transition result fails", failures)
     require(library.get("expected_surface_sha256") == library.get("observed_surface_sha256"), "Library baseline expected and observed fingerprints differ", failures)
-    # Task B records the owner-directed Home destination/copy correction as an
+    # The Hourglass/Sherlock successor records the owner-directed fixes as an
     # exact source fingerprint. This is an interaction baseline, not visual
     # approval, and cannot be derived from the captured evidence itself.
-    require(library_path == "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json" and Path(library_path).exists(), "active Task B Library interaction baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86", "Library baseline expected fingerprint is not the owner-directed Task B interaction value", failures)
+    require(library_path == "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json" and Path(library_path).exists(), "active Hourglass/Sherlock Library interaction baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975", "Library baseline expected fingerprint is not the owner-directed Hourglass/Sherlock interaction value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")

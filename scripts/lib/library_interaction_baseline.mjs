@@ -40,7 +40,8 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
 // Earlier Home, Reading Room, and recovery records remain immutable historical
 // transitions. Runtime/evidence callers use the latest explicitly authorized
 // interaction transition as the active decision.
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = TASK_B_PRODUCTION_LINK_ACTION_BASELINE;
+export const HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE = "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -246,6 +247,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "OWNER_RELEASE_DIRECTIVE_TASK_B_RELEASE",
+  },
+  [HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "57818f6005652b9d832c7d65ee5e6a716bc4379c", tree: "df94462d1b9da4de026f032729e499d364564b73" },
+    previous: { recordPath: TASK_B_PRODUCTION_LINK_ACTION_BASELINE, commit: "dd863f9acaac139e55a8a1a724345ca72e5fdbf6", hash: "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86" },
+    authorizedHash: "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975",
+    inputPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js"],
+    changedPaths: ["frontend/src/styles/library-paper-review.css", "frontend/src/lib/controlledLaunch.js"],
+    unchangedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/libraryCatalogueComposition.js"],
+    authorization: "OWNER_DIRECTIVE_HOURGLASS_SHERLOCK_SOURCE_INTEGRATION_20261101",
   },
 };
 

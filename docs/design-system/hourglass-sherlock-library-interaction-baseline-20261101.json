@@ -1,0 +1,41 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/lib/controlledLaunch.js",
+    "frontend/src/lib/libraryCatalogueComposition.js"
+  ],
+  "reviewed_source": {
+    "commit": "57818f6005652b9d832c7d65ee5e6a716bc4379c",
+    "tree": "df94462d1b9da4de026f032729e499d364564b73"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json",
+    "reviewed_source_commit": "dd863f9acaac139e55a8a1a724345ca72e5fdbf6",
+    "surface_sha256": "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86"
+  },
+  "authorized_surface_sha256": "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/lib/controlledLaunch.js"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/pages/Library.jsx",
+      "frontend/src/lib/libraryCatalogueComposition.js"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_DIRECTIVE_HOURGLASS_SHERLOCK_SOURCE_INTEGRATION_20261101",
+    "scope": "Direct owner instruction to integrate the Hourglass and Sherlock fixes after all CI/reviews pass, preserving artwork, canonical links and entitlements. Records the independently reviewed application source; not visual approval, deployment or a rights/access grant. Includes the existing compositor and mapping in the input set so editorial admission changes remain fingerprinted.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "Source interaction transition only. Prior baselines remain immutable historical evidence. Reuses source-bound local responsive/keyboard/native200 QA; final exact-head CI and published review remain required. No production Reader acceptance, deployment or paid sessions."
+}

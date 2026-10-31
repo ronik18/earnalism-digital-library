@@ -11,7 +11,7 @@ const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
 const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
-const currentHash = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
+const currentHash = "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
@@ -89,9 +89,9 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
-test("active Task B link-integrity baseline is the canonical reproduced current surface", () => {
+test("active Hourglass/Sherlock baseline is the canonical reproduced current surface", () => {
   const baseline = compareLibraryInteractionBaseline(root);
-  assert.equal(currentRecord, "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json");
+  assert.equal(currentRecord, "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json");
   assert.equal(baseline.result, "PASS");
   assert.equal(baseline.expected_surface_sha256, currentHash);
   assert.equal(baseline.observed_surface_sha256, currentHash);
@@ -126,6 +126,12 @@ test("the now-stale issue380 Library baseline cannot satisfy the current run", (
   input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
   input.library_interaction_baseline.expected_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
   input.library_interaction_baseline.observed_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
+}));
+test("the historical Task B baseline cannot satisfy the current run", () => invalid((input) => {
+  input.library_interaction_baseline.approval_source = "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json";
+  input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
+  input.library_interaction_baseline.expected_surface_sha256 = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
+  input.library_interaction_baseline.observed_surface_sha256 = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
 }));
 test("an unauthorized Library baseline record fails", () => invalid((input) => { input.library_interaction_baseline.approval_source = "docs/design-system/pr360-library-interaction-baseline.json"; }));
 
