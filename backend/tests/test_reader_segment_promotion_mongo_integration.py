@@ -135,6 +135,45 @@ def _exact_approved_bootstrap_plan(monkeypatch):
     monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
 
 
+def test_real_mongo_missing_legacy_pointer_abort_is_atomic_then_successor_is_idempotent():
+    """No raw pointer insert: failed legacy recovery must abort its lazy state."""
+    async def scenario():
+        async with _isolated_database() as database:
+            await _seed_title(database, "fixture-book")
+            await database.reader_segment_activation_state.delete_many({"book_slug": "fixture-book"})
+            old_pages = await database.reader_content_segments.find({}, {"_id": 0}).sort("page_index", 1).to_list(10000)
+            admin = {"email": "fixture@example.test"}
+            metadata = await server.admin_reading_pass_active_segments("fixture-book", admin)
+            assert metadata["activation_state_present"] is False
+
+            # The helper tentatively creates legacy generation zero inside
+            # the transaction. An incorrect caller expectation must leave no
+            # pointer, audit, operation or manifest-status change behind.
+            with pytest.raises(server.HTTPException) as denied:
+                await server.admin_promote_reading_pass_segments(
+                    "fixture-book", _promotion("canonical-fixture-v2", "canonical-fixture-v1", 1,
+                                               "mongo-legacy-wrong-generation"), admin)
+            assert denied.value.detail["code"] == "STALE_ACTIVE_SEGMENT_VERSION"
+            assert await database.reader_segment_activation_state.count_documents({}) == 0
+            assert await database.reading_pass_audit.count_documents({}) == 0
+            assert await database.reader_segment_activation_operations.count_documents({}) == 0
+            assert await database.reader_segment_manifests.count_documents({"status": "active", "segmentation_version": "canonical-fixture-v1"}) == 1
+
+            payload = _promotion("canonical-fixture-v2", "canonical-fixture-v1", 0,
+                                 "mongo-legacy-guarded-successor")
+            first = await server.admin_promote_reading_pass_segments("fixture-book", payload, admin)
+            assert first["activation_generation"] == 1
+            assert await server.admin_promote_reading_pass_segments("fixture-book", payload, admin) == first
+            assert await database.reading_pass_audit.count_documents({}) == 1
+            assert await database.reader_segment_activation_operations.count_documents({}) == 1
+            pointer = await database.reader_segment_activation_state.find_one({"book_slug": "fixture-book"})
+            assert pointer["generation"] == 1
+            assert pointer["active_segmentation_version"] == "canonical-fixture-v2"
+            assert await database.reader_content_segments.find({}, {"_id": 0}).sort("page_index", 1).to_list(10000) == old_pages
+
+    asyncio.run(scenario())
+
+
 def test_real_mongo_installs_only_missing_bootstrap_uniqueness_and_preserves_retained_history(monkeypatch):
     _exact_approved_bootstrap_plan(monkeypatch)
 
