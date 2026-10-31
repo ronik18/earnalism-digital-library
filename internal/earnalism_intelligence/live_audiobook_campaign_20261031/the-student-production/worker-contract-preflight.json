@@ -1,0 +1,13 @@
+{
+  "schema": "earnalism.worker-contract-preflight.v1",
+  "actual_worker_sha256": "55500c69d0529ded866c744d5242d1c9320625bece8eb56958b8086948e2beeb",
+  "actual_job_sha256": "ec880e1b9abb0d6ed277c031b66ce674a3222561072e13326d0b79fa0eeb38e7",
+  "structural_job_contract": "PASS_WITH_EXPLICIT_CONFIG_ONLY_FIXTURE",
+  "real_model_weights": "MISSING_NOT_CLAIMED_PASS",
+  "inference": "NOT_RUN",
+  "fixture_rejected_by_weight_admission": true,
+  "invalid_flat_path_rejected": true,
+  "sample_count": 7,
+  "sample_words": 375,
+  "runtime_scope": "One allocation; 30 min maximum request-to-shutdown; one take/unit; no automatic failed/uncertain replay; no purchases; no full-title generation from this job."
+}

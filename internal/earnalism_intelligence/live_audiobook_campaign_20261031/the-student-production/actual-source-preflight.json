@@ -1,0 +1,1043 @@
+{
+  "status": "SOURCE_AND_PRIVATE_AUDIO_BASIS_QUALIFIED_RUNTIME_PENDING",
+  "slug": "the-student",
+  "word_count": 1499,
+  "source_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "raw_source_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "source_story_start": 198911,
+  "source_story_end": 207237,
+  "whole_story_exact_whitespace_match": true,
+  "canonical_chapter_checksums": "PASS",
+  "live_chapter_content_bindings": [
+    {
+      "chapter": "chapter-001",
+      "live_content_version": "875f9231e416a8b71713",
+      "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+    }
+  ],
+  "source_files_changed": false,
+  "segmented_units": 40,
+  "narration_layout": {
+    "status": "EXACT_REFERENCE_WHITESPACE_PROJECTION",
+    "ledger_sha256": "38fa5ab32a8fe0ba3b2e99e60fd4b97b639bd3638ffadc4378456fafd07655c9",
+    "ledger_file_sha256": "c16f62350e82c885aa92eba167eb803e150581ecacc85cf98919e07297746ac5",
+    "reference_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+    "reference_bytes_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "paragraph_basis": "REFERENCE_PROSE_PARAGRAPH_FOR_SELECTED_CHAPTERS",
+    "source_offsets": "UNCHANGED_CANONICAL_CHAPTER_CHARACTER_OFFSETS",
+    "canonical_display_block_ordinals_are_not_narration_paragraph_ordinals": true,
+    "human_editorial_approval": false,
+    "editorial_review_required": true
+  },
+  "layout_source": {
+    "canonical_content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "content_kind": "explicitly_selected_prose",
+    "reference_excerpt_start": 203024,
+    "reference_excerpt_end": 211491,
+    "reference_excerpt": "AT first the weather was fine and still. The thrushes were calling, and\r\nin the swamps close by something alive droned pitifully with a sound\r\nlike blowing into an empty bottle. A snipe flew by, and the shot aimed\r\nat it rang out with a gay, resounding note in the spring air. But\r\nwhen it began to get dark in the forest a cold, penetrating wind blew\r\ninappropriately from the east, and everything sank into silence. Needles\r\nof ice stretched across the pools, and it felt cheerless, remote, and\r\nlonely in the forest. There was a whiff of winter.\r\n\r\nIvan Velikopolsky, the son of a sacristan, and a student of the clerical\r\nacademy, returning home from shooting, walked all the time by the path\r\nin the water-side meadow. His fingers were numb and his face was burning\r\nwith the wind. It seemed to him that the cold that had suddenly come on\r\nhad destroyed the order and harmony of things, that nature itself felt\r\nill at ease, and that was why the evening darkness was falling more\r\nrapidly than usual. All around it was deserted and peculiarly gloomy.\r\nThe only light was one gleaming in the widows’ gardens near the river;\r\nthe village, over three miles away, and everything in the distance all\r\nround was plunged in the cold evening mist. The student remembered that,\r\nas he went out from the house, his mother was sitting barefoot on the\r\nfloor in the entry, cleaning the samovar, while his father lay on the\r\nstove coughing; as it was Good Friday nothing had been cooked, and\r\nthe student was terribly hungry. And now, shrinking from the cold, he\r\nthought that just such a wind had blown in the days of Rurik and in the\r\ntime of Ivan the Terrible and Peter, and in their time there had been\r\njust the same desperate poverty and hunger, the same thatched roofs with\r\nholes in them, ignorance, misery, the same desolation around, the same\r\ndarkness, the same feeling of oppression--all these had existed, did\r\nexist, and would exist, and the lapse of a thousand years would make\r\nlife no better. And he did not want to go home.\r\n\r\nThe gardens were called the widows’ because they were kept by two\r\nwidows, mother and daughter. A camp fire was burning brightly with a\r\ncrackling sound, throwing out light far around on the ploughed earth.\r\nThe widow Vasilisa, a tall, fat old woman in a man’s coat, was standing\r\nby and looking thoughtfully into the fire; her daughter Lukerya, a\r\nlittle pock-marked woman with a stupid-looking face, was sitting on\r\nthe ground, washing a caldron and spoons. Apparently they had just had\r\nsupper. There was a sound of men’s voices; it was the labourers watering\r\ntheir horses at the river.\r\n\r\n“Here you have winter back again,” said the student, going up to the\r\ncamp fire. “Good evening.”\r\n\r\nVasilisa started, but at once recognized him and smiled cordially.\r\n\r\n“I did not know you; God bless you,” she said.\r\n\r\n“You’ll be rich.”\r\n\r\nThey talked. Vasilisa, a woman of experience, who had been in service\r\nwith the gentry, first as a wet-nurse, afterwards as a children’s nurse,\r\nexpressed herself with refinement, and a soft, sedate smile never left\r\nher face; her daughter Lukerya, a village peasant woman, who had been\r\nbeaten by her husband, simply screwed up her eyes at the student and\r\nsaid nothing, and she had a strange expression like that of a deaf mute.\r\n\r\n“At just such a fire the Apostle Peter warmed himself,” said the\r\nstudent, stretching out his hands to the fire, “so it must have been\r\ncold then, too. Ah, what a terrible night it must have been, granny! An\r\nutterly dismal long night!”\r\n\r\nHe looked round at the darkness, shook his head abruptly and asked:\r\n\r\n“No doubt you have been at the reading of the Twelve Gospels?”\r\n\r\n“Yes, I have,” answered Vasilisa.\r\n\r\n“If you remember at the Last Supper Peter said to Jesus, ‘I am ready to\r\ngo with Thee into darkness and unto death.’ And our Lord answered him\r\nthus: ‘I say unto thee, Peter, before the cock croweth thou wilt have\r\ndenied Me thrice.’ After the supper Jesus went through the agony of\r\ndeath in the garden and prayed, and poor Peter was weary in spirit and\r\nfaint, his eyelids were heavy and he could not struggle against sleep.\r\nHe fell asleep. Then you heard how Judas the same night kissed Jesus and\r\nbetrayed Him to His tormentors. They took Him bound to the high priest\r\nand beat Him, while Peter, exhausted, worn out with misery and alarm,\r\nhardly awake, you know, feeling that something awful was just going\r\nto happen on earth, followed behind.... He loved Jesus passionately,\r\nintensely, and now he saw from far off how He was beaten...”\r\n\r\nLukerya left the spoons and fixed an immovable stare upon the student.\r\n\r\n“They came to the high priest’s,” he went on; “they began to question\r\nJesus, and meantime the labourers made a fire in the yard as it was\r\ncold, and warmed themselves. Peter, too, stood with them near the fire\r\nand warmed himself as I am doing. A woman, seeing him, said: ‘He was\r\nwith Jesus, too’--that is as much as to say that he, too, should be\r\ntaken to be questioned. And all the labourers that were standing near\r\nthe fire must have looked sourly and suspiciously at him, because he\r\nwas confused and said: ‘I don’t know Him.’ A little while after again\r\nsomeone recognized him as one of Jesus’ disciples and said: ‘Thou, too,\r\nart one of them,’ but again he denied it. And for the third time someone\r\nturned to him: ‘Why, did I not see thee with Him in the garden to-day?’\r\nFor the third time he denied it. And immediately after that time the\r\ncock crowed, and Peter, looking from afar off at Jesus, remembered the\r\nwords He had said to him in the evening.... He remembered, he came to\r\nhimself, went out of the yard and wept bitterly--bitterly. In the Gospel\r\nit is written: ‘He went out and wept bitterly.’ I imagine it: the\r\nstill, still, dark, dark garden, and in the stillness, faintly audible,\r\nsmothered sobbing...”\r\n\r\nT he student sighed and sank into thought. Still smiling, Vasilisa\r\nsuddenly gave a gulp, big tears flowed freely down her cheeks, and she\r\nscreened her face from the fire with her sleeve as though ashamed of her\r\ntears, and Lukerya, staring immovably at the student, flushed crimson,\r\nand her expression became strained and heavy like that of someone\r\nenduring intense pain.\r\n\r\nThe labourers came back from the river, and one of them riding a horse\r\nwas quite near, and the light from the fire quivered upon him. The\r\nstudent said good-night to the widows and went on. And again the\r\ndarkness was about him and his fingers began to be numb. A cruel wind\r\nwas blowing, winter really had come back and it did not feel as though\r\nEaster would be the day after to-morrow.\r\n\r\nNow the student was thinking about Vasilisa: since she had shed tears\r\nall that had happened to Peter the night before the Crucifixion must\r\nhave some relation to her....\r\n\r\nHe looked round. The solitary light was still gleaming in the darkness\r\nand no figures could be seen near it now. The student thought again that\r\nif Vasilisa had shed tears, and her daughter had been troubled, it\r\nwas evident that what he had just been telling them about, which had\r\nhappened nineteen centuries ago, had a relation to the present--to both\r\nwomen, to the desolate village, to himself, to all people. The old woman\r\nhad wept, not because he could tell the story touchingly, but because\r\nPeter was near to her, because her whole being was interested in what\r\nwas passing in Peter’s soul.\r\n\r\nAnd joy suddenly stirred in his soul, and he even stopped for a minute\r\nto take breath. “The past,” he thought, “is linked with the present by\r\nan unbroken chain of events flowing one out of another.” And it seemed\r\nto him that he had just seen both ends of that chain; that when he\r\ntouched one end the other quivered.\r\n\r\nWhen he crossed the river by the ferry boat and afterwards, mounting the\r\nhill, looked at his village and towards the west where the cold crimson\r\nsunset lay a narrow streak of light, he thought that truth and beauty\r\nwhich had guided human life there in the garden and in the yard of the\r\nhigh priest had continued without interruption to this day, and had\r\nevidently always been the chief thing in human life and in all earthly\r\nlife, indeed; and the feeling of youth, health, vigour--he was only\r\ntwenty-two--and the inexpressible sweet expectation of happiness, of\r\nunknown mysterious happiness, took possession of him little by little,\r\nand life seemed to him enchanting, marvellous, and full of lofty\r\nmeaning.",
+    "reference_excerpt_sha256": "4f039509ef70e2a5769a3a4a1ec1ccc5ae24714e9cff3ed1dbbea68a9e69409c",
+    "joins": [
+      {
+        "source_start": 71,
+        "source_end": 73,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 71,
+        "reference_end": 73,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 141,
+        "source_end": 143,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 141,
+        "reference_end": 143,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 213,
+        "source_end": 215,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 213,
+        "reference_end": 215,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 280,
+        "source_end": 282,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 280,
+        "reference_end": 282,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 351,
+        "source_end": 353,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 351,
+        "reference_end": 353,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 425,
+        "source_end": 427,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 425,
+        "reference_end": 427,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 496,
+        "source_end": 498,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 496,
+        "reference_end": 498,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 622,
+        "source_end": 624,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 624,
+        "reference_end": 626,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 694,
+        "source_end": 696,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 696,
+        "reference_end": 698,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 768,
+        "source_end": 770,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 770,
+        "reference_end": 772,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 841,
+        "source_end": 843,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 843,
+        "reference_end": 845,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 913,
+        "source_end": 915,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 915,
+        "reference_end": 917,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 982,
+        "source_end": 984,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 984,
+        "reference_end": 986,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1053,
+        "source_end": 1055,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1055,
+        "reference_end": 1057,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1125,
+        "source_end": 1127,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1127,
+        "reference_end": 1129,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1197,
+        "source_end": 1199,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1199,
+        "reference_end": 1201,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1271,
+        "source_end": 1273,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1273,
+        "reference_end": 1275,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1342,
+        "source_end": 1344,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1344,
+        "reference_end": 1346,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1413,
+        "source_end": 1415,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1415,
+        "reference_end": 1417,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1481,
+        "source_end": 1483,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1483,
+        "reference_end": 1485,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1552,
+        "source_end": 1554,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1554,
+        "reference_end": 1556,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1625,
+        "source_end": 1627,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1627,
+        "reference_end": 1629,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1696,
+        "source_end": 1698,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1698,
+        "reference_end": 1700,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1770,
+        "source_end": 1772,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1772,
+        "reference_end": 1774,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1842,
+        "source_end": 1844,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1844,
+        "reference_end": 1846,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1912,
+        "source_end": 1914,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1914,
+        "reference_end": 1916,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 1982,
+        "source_end": 1984,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 1984,
+        "reference_end": 1986,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2098,
+        "source_end": 2100,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2102,
+        "reference_end": 2104,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2168,
+        "source_end": 2170,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2172,
+        "reference_end": 2174,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2239,
+        "source_end": 2241,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2243,
+        "reference_end": 2245,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2312,
+        "source_end": 2314,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2316,
+        "reference_end": 2318,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2380,
+        "source_end": 2382,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2384,
+        "reference_end": 2386,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2449,
+        "source_end": 2451,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2453,
+        "reference_end": 2455,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2521,
+        "source_end": 2523,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2525,
+        "reference_end": 2527,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2595,
+        "source_end": 2597,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2599,
+        "reference_end": 2601,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2693,
+        "source_end": 2695,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2699,
+        "reference_end": 2701,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 2927,
+        "source_end": 2929,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 2941,
+        "reference_end": 2943,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3001,
+        "source_end": 3003,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3015,
+        "reference_end": 3017,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3073,
+        "source_end": 3075,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3087,
+        "reference_end": 3089,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3144,
+        "source_end": 3146,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3158,
+        "reference_end": 3160,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3214,
+        "source_end": 3216,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3228,
+        "reference_end": 3230,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3354,
+        "source_end": 3356,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3370,
+        "reference_end": 3372,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3424,
+        "source_end": 3426,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3440,
+        "reference_end": 3442,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3497,
+        "source_end": 3499,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3513,
+        "reference_end": 3515,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3767,
+        "source_end": 3769,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3791,
+        "reference_end": 3793,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3838,
+        "source_end": 3840,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3862,
+        "reference_end": 3864,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3909,
+        "source_end": 3911,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 3933,
+        "reference_end": 3935,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 3978,
+        "source_end": 3980,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4002,
+        "reference_end": 4004,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4050,
+        "source_end": 4052,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4074,
+        "reference_end": 4076,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4122,
+        "source_end": 4124,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4146,
+        "reference_end": 4148,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4196,
+        "source_end": 4198,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4220,
+        "reference_end": 4222,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4268,
+        "source_end": 4270,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4292,
+        "reference_end": 4294,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4339,
+        "source_end": 4341,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4363,
+        "reference_end": 4365,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4408,
+        "source_end": 4410,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4432,
+        "reference_end": 4434,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4478,
+        "source_end": 4480,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4502,
+        "reference_end": 4504,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4683,
+        "source_end": 4685,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4711,
+        "reference_end": 4713,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4752,
+        "source_end": 4754,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4780,
+        "reference_end": 4782,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4824,
+        "source_end": 4826,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4852,
+        "reference_end": 4854,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4894,
+        "source_end": 4896,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4922,
+        "reference_end": 4924,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 4963,
+        "source_end": 4965,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 4991,
+        "reference_end": 4993,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5034,
+        "source_end": 5036,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5062,
+        "reference_end": 5064,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5104,
+        "source_end": 5106,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5132,
+        "reference_end": 5134,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5175,
+        "source_end": 5177,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5203,
+        "reference_end": 5205,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5248,
+        "source_end": 5250,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5276,
+        "reference_end": 5278,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5322,
+        "source_end": 5324,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5350,
+        "reference_end": 5352,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5395,
+        "source_end": 5397,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5423,
+        "reference_end": 5425,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5465,
+        "source_end": 5467,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5493,
+        "reference_end": 5495,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5537,
+        "source_end": 5539,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5565,
+        "reference_end": 5567,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5608,
+        "source_end": 5610,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5636,
+        "reference_end": 5638,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5682,
+        "source_end": 5684,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5710,
+        "reference_end": 5712,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5749,
+        "source_end": 5751,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5777,
+        "reference_end": 5779,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5822,
+        "source_end": 5824,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5850,
+        "reference_end": 5852,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5913,
+        "source_end": 5915,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 5943,
+        "reference_end": 5945,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 5985,
+        "source_end": 5987,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6015,
+        "reference_end": 6017,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6059,
+        "source_end": 6061,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6089,
+        "reference_end": 6091,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6131,
+        "source_end": 6133,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6161,
+        "reference_end": 6163,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6198,
+        "source_end": 6200,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6228,
+        "reference_end": 6230,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6294,
+        "source_end": 6296,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6326,
+        "reference_end": 6328,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6362,
+        "source_end": 6364,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6394,
+        "reference_end": 6396,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6428,
+        "source_end": 6430,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6460,
+        "reference_end": 6462,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6499,
+        "source_end": 6501,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6531,
+        "reference_end": 6533,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6571,
+        "source_end": 6573,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6603,
+        "reference_end": 6605,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6684,
+        "source_end": 6686,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6718,
+        "reference_end": 6720,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6754,
+        "source_end": 6756,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6788,
+        "reference_end": 6790,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6857,
+        "source_end": 6859,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6893,
+        "reference_end": 6895,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6931,
+        "source_end": 6933,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 6967,
+        "reference_end": 6969,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 6999,
+        "source_end": 7001,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7035,
+        "reference_end": 7037,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7069,
+        "source_end": 7071,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7105,
+        "reference_end": 7107,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7142,
+        "source_end": 7144,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7178,
+        "reference_end": 7180,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7216,
+        "source_end": 7218,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7252,
+        "reference_end": 7254,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7287,
+        "source_end": 7289,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7323,
+        "reference_end": 7325,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7358,
+        "source_end": 7360,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7394,
+        "reference_end": 7396,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7460,
+        "source_end": 7462,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7498,
+        "reference_end": 7500,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7532,
+        "source_end": 7534,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7570,
+        "reference_end": 7572,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7604,
+        "source_end": 7606,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7642,
+        "reference_end": 7644,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7672,
+        "source_end": 7674,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7710,
+        "reference_end": 7712,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7783,
+        "source_end": 7785,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7823,
+        "reference_end": 7825,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7856,
+        "source_end": 7858,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7896,
+        "reference_end": 7898,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7927,
+        "source_end": 7929,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 7967,
+        "reference_end": 7969,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 7999,
+        "source_end": 8001,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8039,
+        "reference_end": 8041,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8068,
+        "source_end": 8070,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8108,
+        "reference_end": 8110,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8140,
+        "source_end": 8142,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8180,
+        "reference_end": 8182,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8209,
+        "source_end": 8211,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8249,
+        "reference_end": 8251,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8279,
+        "source_end": 8281,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8319,
+        "reference_end": 8321,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8351,
+        "source_end": 8353,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8391,
+        "reference_end": 8393,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      },
+      {
+        "source_start": 8417,
+        "source_end": 8419,
+        "whitespace_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+        "reference_start": 8457,
+        "reference_end": 8459,
+        "reference_whitespace_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+      }
+    ],
+    "retained_paragraph_breaks": [
+      {
+        "source_start": 548,
+        "source_end": 550
+      },
+      {
+        "source_start": 2031,
+        "source_end": 2033
+      },
+      {
+        "source_start": 2623,
+        "source_end": 2625
+      },
+      {
+        "source_start": 2721,
+        "source_end": 2723
+      },
+      {
+        "source_start": 2789,
+        "source_end": 2791
+      },
+      {
+        "source_start": 2837,
+        "source_end": 2839
+      },
+      {
+        "source_start": 2856,
+        "source_end": 2858
+      },
+      {
+        "source_start": 3288,
+        "source_end": 3290
+      },
+      {
+        "source_start": 3526,
+        "source_end": 3528
+      },
+      {
+        "source_start": 3595,
+        "source_end": 3597
+      },
+      {
+        "source_start": 3659,
+        "source_end": 3661
+      },
+      {
+        "source_start": 3694,
+        "source_end": 3696
+      },
+      {
+        "source_start": 4540,
+        "source_end": 4542
+      },
+      {
+        "source_start": 4612,
+        "source_end": 4614
+      },
+      {
+        "source_start": 5845,
+        "source_end": 5847
+      },
+      {
+        "source_start": 6222,
+        "source_end": 6224
+      },
+      {
+        "source_start": 6613,
+        "source_end": 6615
+      },
+      {
+        "source_start": 6785,
+        "source_end": 6787
+      },
+      {
+        "source_start": 7388,
+        "source_end": 7390
+      },
+      {
+        "source_start": 7709,
+        "source_end": 7711
+      }
+    ],
+    "canonical_paragraphs": 127,
+    "narration_paragraphs": 21
+  },
+  "representative_units": [
+    {
+      "id": "u000001",
+      "text_sha256": "056f54f940a2a1e04697ed281a815e8b0146f6a59966042838fb42c10b9b5ea0",
+      "text": "AT first the weather was fine and still. The thrushes were calling, and in the swamps close by something alive droned pitifully with a sound like blowing into an empty bottle. A snipe flew by, and the shot aimed at it rang out with a gay, resounding note in the spring air."
+    },
+    {
+      "id": "u000040",
+      "text_sha256": "e86fe637a54e5d86617fd4622d2e16c4d8ea05b77b354b142269d88a9d631015",
+      "text": "and had evidently always been the chief thing in human life and in all earthly life, indeed; and the feeling of youth, health, vigour--he was only twenty-two--and the inexpressible sweet expectation of happiness, of unknown mysterious happiness, took possession of him little by little, and life seemed to him enchanting, marvellous, and full of lofty meaning."
+    },
+    {
+      "id": "u000021",
+      "text_sha256": "65c29ac09245f24eb53f60f25d2702163353ad3cae5e8e6a4b5c94050e266d53",
+      "text": "“Yes, I have,” answered Vasilisa."
+    },
+    {
+      "id": "u000007",
+      "text_sha256": "057545489cf1bfcf9630f95873773f56ff16b1f06792eebea44ca1cbc61ae25d",
+      "text": "he thought that just such a wind had blown in the days of Rurik and in the time of Ivan the Terrible and Peter, and in their time there had been just the same desperate poverty and hunger, the same thatched roofs with holes in them, ignorance, misery, the same desolation around, the same darkness, the same feeling of oppression--all these had existed,"
+    },
+    {
+      "id": "u000016",
+      "text_sha256": "d869278e2b961b250c18252f6f883ed73f6f59e6ec6cd1c2620161ec18081bb3",
+      "text": "They talked. Vasilisa, a woman of experience, who had been in service with the gentry, first as a wet-nurse, afterwards as a children’s nurse, expressed herself with refinement, and a soft, sedate smile never left her face; her daughter Lukerya, a village peasant woman, who had been beaten by her husband, simply screwed up her eyes at the student and said nothing,"
+    },
+    {
+      "id": "u000020",
+      "text_sha256": "ed97a0ec63d6250f8310942523ad22fe9d4c2f8a1901afa8c73063c48b89ff46",
+      "text": "“No doubt you have been at the reading of the Twelve Gospels?”"
+    }
+  ],
+  "plan_hash": "d434d4b5fed219c905a070d79f384d789de53b5869158456a984761626a37e37",
+  "pronunciation_review_terms": [
+    "Ivan Velikopolsky",
+    "Vasilisa",
+    "Lukerya",
+    "Rurik",
+    "Judas"
+  ],
+  "voice_candidate": {
+    "speaker": "Ryan",
+    "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "qualified_for_this_title": false
+  },
+  "music": "SILENCE_REFLECTIVE_PROSE",
+  "private_generation_allowed_basis": {
+    "territories": [
+      "IN"
+    ],
+    "recording_owner": "Owner-directed new Earnalism recording; no borrowed audio",
+    "literary_basis": "Exact Chekhov/Garnett selected story. Documented last creator death 1946; selected publication no later than 1918. India sixty-year term elapsed under sections 22/24; section14 sound-recording right considered independently from prior Reader-only record. New owner task authorizes creating an exact new recording; does not convert old Reader record into audio license.",
+    "model_license": "Pinned official model Apache-2.0; built-in Ryan, no cloning; retain upstream model/runtime licenses and notices. Package-specific recording/territorial acceptance remains unperformed."
+  },
+  "production_cost_envelope": {
+    "preferred_option": "Existing free CUDA runtime, no purchased credits or new subscription",
+    "max_provider_spend_usd": 0,
+    "max_runtime_minutes": 30,
+    "max_allocations": 1,
+    "max_attempts_per_unit": 1,
+    "automatic_retries": false,
+    "scope": "Representative audition only; full title waits for actual audition quality evidence",
+    "fallback": "Do not silently switch provider or use unqualified fallback TTS"
+  },
+  "new_spend_usd": 0,
+  "generation_performed": false,
+  "public_release_ready": false,
+  "legacy_adapter_issue": "Old production_adapter requires LIVE_APPROVED in prepared canonical metadata, but current publication derivation leaves canonical public_book READY_FOR_ACTIVATION_GLOBAL_GATE while actual customer API is LIVE_APPROVED. No flags altered or legacy check claimed PASS; current source/checksum/version/whole-story checks performed independently."
+}
