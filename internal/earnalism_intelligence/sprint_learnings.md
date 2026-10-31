@@ -2888,3 +2888,19 @@ Reuse good covers; new title-specific original illustration and exact Canva typo
 - Exact-source prose layout resolves106 artificial wraps:127 imported blocks become21 real paragraphs and40 synthesis units. Reader bytes stay unchanged.
 - Seven Ryan audition passages and actual-worker structural validation prepared; weights, synthesis, ASR and listening remain unperformed.
 - Automatic approval review rejected Google export of the source/code notebook. No workaround: exact notebook upload and bounded audition permission requested; no allocation or spending.
+
+## 2026-10-31 — Reader completeness and guarded access diagnosis
+
+- LIVE_APPROVED and an intact canonical manifest are not proof of full source coverage or protected delivery. Compare every page hash and ordered chapter against the validated complete edition.
+- Retained active manifests can lack a physical activation pointer required by protected admission. Preserve the fail-closed check; use existing expected-version preparation/promotion after separate release authority, never silently bootstrap access during customer reads.
+- The V2 reader loads a chapter window before showing its requested canonical page. An admitted session or a short opening-screen timeout is not delivery proof. Explicitly settle test sessions and reconcile the existing approved pass allowance.
+- A package-style offline import can miss the backend utils sanitizer and escape HTML. The preparer now matches the backend module path and rejects renderer warnings; do not call an escaped fallback a source defect.
+- Source repairs and local test PASS do not establish live resolution. This lane does not deploy, promote, publish or modify rights/reader/audio/customer state. See reader_completeness_20261031.
+
+## 2026-10-31 — Completed Reader verification and local corrections
+
+- All52 titles have a recorded outcome:26 complete/readable,23 authority errors, one long-chapter preparation expiry, one accessible but source-unqualified edition, and one incomplete short public edition. Twelve source mismatches overlap these holds; never double-count or relabel them LIVE.
+- The end-of-book indicator is valid visible delivery evidence even when the generic Authorized chapter label is absent. Pair it with the exact leased page response and source hashes; do not let label-only instrumentation create a false failure or prolong billable display.
+- Scientific Management expired during chapter preparation after48 successful page responses. Local bounded concurrency3→6 reduces the controlled66-page slow-response workload without changing deadlines, page authorization, source hashes or preview boundaries. Production latency/capacity is not proven by that regression.
+- Admin-only metadata now distinguishes an absent physical pointer from generation-zero comparison metadata, and fails on malformed generations. No pointer is created or repaired by that read; consumer authority remains fail-closed.
+- Local validation:374 Python and113 frontend tests passed. Initial stale queue expectations and a sandbox loopback EPERM were resolved without waiving lifecycle/transport assertions. No push, merge, deployment, publication or provider/configuration change. Owner-approved QA consumed130 existing pass seconds, including expiry charges; no top-up or listening.
