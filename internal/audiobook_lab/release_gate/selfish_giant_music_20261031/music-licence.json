@@ -1,0 +1,25 @@
+{
+  "verified_at": "2026-10-30T09:02:02.441635+00:00",
+  "creator": "Kevin MacLeod",
+  "title": "Heartbreaking",
+  "isrc": "USUAN1100208",
+  "track_page": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208",
+  "catalog": "https://incompetech.com/music/royalty-free/pieces.json",
+  "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Heartbreaking.mp3",
+  "license": "CC BY4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "legalcode_url": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+  "verification": "Creator HTML attribution template plus exact official catalogue ISRC/filename; Creative Commons deed read successfully through web tool. Direct urllib deed fetch403; not represented as a saved licence HTML snapshot. CC BY4.0 legal code also read successfully through web tool on2026-10-30.",
+  "music_sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+  "bytes": 3947252,
+  "commercial_use_allowed_subject_to_terms": true,
+  "credit": "Music: \"Heartbreaking\" by Kevin MacLeod (incompetech.com), ISRC USUAN1100208. Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208. Licensed under Creative Commons Attribution 4.0 International: https://creativecommons.org/licenses/by/4.0/. Changes: edited for timing, reduced in level, faded and speech-ducked beneath narration. No endorsement implied.",
+  "music_fee": 0,
+  "scope": "Music only; narration/text rights remain separate",
+  "publication_requirements": [
+    "Retain creator/title/source/licence/change notice in published credits; MP3 metadata includes it for this private sample.",
+    "Do not impose additional restrictions or effective technological measures on licensed music; verify final delivery before publication.",
+    "No endorsement implied."
+  ],
+  "full_voiceover_or_publication_approved": false
+}

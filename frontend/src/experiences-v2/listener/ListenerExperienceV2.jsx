@@ -1,3 +1,4 @@
+import AudiobookMusicNotice from "../../components/AudiobookMusicNotice";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, Clock3, Pause, Play, RotateCcw, RotateCw } from "lucide-react";
 import ExperienceBottomNavigation from "../shared/ExperienceBottomNavigation";
@@ -241,6 +242,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
           <div className="listener-v2__utilities"><label>Speed<select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audioRef.current) audioRef.current.playbackRate = next; }} disabled={!canPlay}><option value="1">1.0×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>{readAlongSupported && <button type="button" onClick={onReadAlong}>Read Along</button>}</div></>}
         </div>
         <aside className="listener-v2__side" aria-label="Listening details">
+          <AudiobookMusicNotice book={book} />
           <section className="listener-v2__chapters" aria-labelledby="listener-v2-chapters-title">
             <div className="listener-v2__chapters-header"><h2 id="listener-v2-chapters-title">Chapters</h2><span>{chapters.length || audioManifest?.tracks?.length || 0}</span></div>
             {chapters.length > 0 ? <ol>{chapters.map((chapter, index) => {

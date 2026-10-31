@@ -63,7 +63,8 @@
     "india-20261029-the-selfish-giant-owner-produced-audio-control": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
     "india-20261029-the-selfish-giant-audio-canary-reader-bindings": "25f40123ea4f31cecf8bfab6d633dbfc2302ff721748fd291a4f3b6b7676c900",
     "india-20261029-the-selfish-giant-owner-approved-cover-successor": "8f97cc70b52a3828a548fb13bfd15180e7b20aeaab272e458352be8408c402fe",
-    "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774"
+    "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
+    "india-20261031-the-selfish-giant-approved-music-successor": "3d96db7880a4b02a446e1fe5a0f463708c761013498efdbd6b0bcf8e85fd4817"
   },
   "audio_package_bindings": {
     "the-open-window": {
@@ -84,6 +85,17 @@
         "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
         "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      },
+      "feb20677de837f2cca40308e14e7a9be5c5b4fda51ea6282bf9ccd61cd0e1369": {
+        "basis": "Owner-authorized source-only mixed successor. No active release pointer changed. Music CC BY 4.0 permissions preserved.",
+        "decision_id": "india-20261031-the-selfish-giant-approved-music-successor",
+        "record_sha256": "3d96db7880a4b02a446e1fe5a0f463708c761013498efdbd6b0bcf8e85fd4817",
         "territories": [
           "IN"
         ],

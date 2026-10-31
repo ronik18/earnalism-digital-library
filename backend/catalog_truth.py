@@ -1259,6 +1259,8 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
     )
     for field in [*INTERNAL_RIGHTS_FIELDS, *INTERNAL_AUDIO_FIELDS]:
         projected.pop(field, None)
+    # Reconstruct only the validated public package identity, never a raw internal hash.
+    projected["audiobook_release_descriptor_sha256"] = (book.get("audiobook_public_package_approval", {}).get("acceptance", {}).get("release_descriptor_sha256", "") if audio and protected_package_publication_valid(book) else "")
     return projected
 
 

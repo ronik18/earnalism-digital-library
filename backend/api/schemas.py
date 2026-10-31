@@ -224,6 +224,7 @@ class PublicBookOut(BaseModel):
     audio_qa_status: str = ""
     audiobook_delivery_mode: str = ""
     audiobook_package_version: str = ""
+    audiobook_release_descriptor_sha256: str = ""
     audiobook_duration_ms: int = 0
     cta_label: str = ""
     secondary_cta_label: str = ""

@@ -1,0 +1,20 @@
+{
+  "feb20677de837f2cca40308e14e7a9be5c5b4fda51ea6282bf9ccd61cd0e1369": {
+    "slug": "the-selfish-giant",
+    "release_descriptor_sha256": "feb20677de837f2cca40308e14e7a9be5c5b4fda51ea6282bf9ccd61cd0e1369",
+    "credit": {
+      "title": "The Selfish Giant",
+      "music": "Heartbreaking",
+      "composer": "Kevin MacLeod",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208",
+      "isrc": "USUAN1100208",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "45-second excerpt, fades, reduced level and mix under existing Ryan narration; no endorsement implied.",
+      "display_text": "Music: Heartbreaking — Kevin MacLeod (incompetech.com), licensed CC BY 4.0. Excerpted, faded and mixed under narration.",
+      "delivery_terms_review": "REQUIRED: attribution and CC rights must not be contradicted by final terms/effective technological measures; do not weaken auth or pass enforcement."
+    },
+    "cue_start_ms": 732120,
+    "cue_end_ms": 777120
+  }
+}

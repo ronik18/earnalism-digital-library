@@ -1,3 +1,4 @@
+import AudiobookMusicNotice from "../components/AudiobookMusicNotice";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles, Headphones, ShieldCheck } from "lucide-react";
@@ -391,6 +392,7 @@ export default function BookDetail() {
           {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel">
             <strong>Release &amp; Access</strong>
             <LicensedTextNotice book={publicBook} />
+            <AudiobookMusicNotice book={publicBook} />
             <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.freeReading ? detailPresentation.readerBody : detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>
             {isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}
             {publicBook.slug === "radharani" && (
