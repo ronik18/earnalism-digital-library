@@ -1,0 +1,20 @@
+{
+  "state": "LOCAL_FIX_TESTED_REVIEW_PENDING_NOT_DEPLOYED",
+  "base": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "titles": [
+    "the-time-machine",
+    "dracula"
+  ],
+  "diagnosis": "Actual start403 PREPARATION_EXPIRED; synthetic service reproduction confirms retained zero-debit preparation deadline denies reopening until existing cooldown boundary. Exact per-user historical timeline not re-observed; large chapter download is not established as common cause.",
+  "fix": "Expose bounded existing server retry_after_seconds on start and renew denials; monotonic frontend countdown with explicit manual retry. No policy, accounting, preparation budget, source, access, rights, territory or entitlement changes.",
+  "local_tests": {
+    "backend_preparation_and_concurrency": 71,
+    "frontend_helper_lifecycle_chapter_authority_transport": 151,
+    "transport_environment": "Initial loopback EPERM in sandbox; exact four tests rerun with local loopback permission passed.",
+    "diff_check": "PASS"
+  },
+  "current_production_access": "BOTH_HELD_UNCONFIRMED",
+  "additional_pass_seconds": 0,
+  "no_push_merge_deploy_publish": true,
+  "next_action": "Integration Lane independent source review; preserve release and paid-session approval gates."
+}

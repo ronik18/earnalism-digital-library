@@ -13,6 +13,7 @@ import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import ReaderOpening from "./ReaderOpening";
 import { clearReaderPageCache } from "./readerPageCache";
 import { chapterWindowPlan, fetchChapterWindow, chapterAnchor, transportAnchor } from "./authorizedChapter";
+import { preparationRetrySeconds } from "./preparationRecovery";
 
 const PREVIEW_PAGES = 3;
 const pageFromSearch = (search) => {
@@ -98,6 +99,23 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [sessionConflict, setSessionConflict] = useState(false);
+  const [preparationRetry, setPreparationRetry] = useState(null);
+  const preparationWait = preparationRetry?.remaining || 0;
+  const notePreparationFailure = useCallback((failure) => {
+    const seconds = preparationRetrySeconds(failure);
+    setPreparationRetry(seconds === null ? null : { until: performance.now() + seconds * 1000, remaining: seconds });
+  }, []);
+  const preparationUntil = preparationRetry?.until;
+  useEffect(() => {
+    if (!preparationUntil) return undefined;
+    const timer = window.setInterval(() => {
+      const remaining = Math.max(0, Math.ceil((preparationUntil - performance.now()) / 1000));
+      setPreparationRetry(current => current?.until === preparationUntil ? { ...current, remaining } : current);
+      if (!remaining) window.clearInterval(timer);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [preparationUntil]);
+
   const [balance, setBalance] = useState(null);
   const signedIn = Boolean(user);
   // Public/guest manifests can be cached independently of the customer. Only
@@ -300,6 +318,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
           publishLease({ ...current, status: "Expired" });
           setPageResult(null);
           setError(requestMessage(requestError, "Your reading session has ended. Continue when you are ready."));
+          notePreparationFailure(requestError);
         } else {
           // Preserve the last validated page only until the existing server
           // lease expires. The expiry timer below does not extend that grant.
@@ -311,7 +330,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     })();
     renewPromiseRef.current = pending;
     return pending;
-  }, [manifest, publishLease, slug]);
+  }, [manifest, publishLease, slug, notePreparationFailure]);
 
   const totalPages = Number(manifest?.access?.reading_pass?.total_pages || manifest?.canonical_pages?.page_count || 0);
   const expectedPage = (manifest?.canonical_pages?.pages || []).find((item) => Number(item.page_number || item.page_index) === canonicalPage);
@@ -435,6 +454,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         const status = failure?.response?.status || 0;
         setPageResult({ number: pageRef.current, status: "error", statusCode: status });
         setError(requestMessage(failure, failure.message || "This chapter could not be loaded. Please retry."));
+        notePreparationFailure(failure);
         if (requestLease) {
           publishLease({ ...requestLease, status: "Expired" });
           void settleLease("reader_v2_chapter_unavailable");
@@ -444,7 +464,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     // URL offsets and transport indexes inside this window do not start a new
     // download. Lease rotations are handled by the existing heartbeat/expiry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entryReady, windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture]);
+  }, [entryReady, windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture, notePreparationFailure]);
 
   const changePage = useCallback((nextPage, visualAnchor = 0, anchorRevision) => {
     visualNavigationRef.current = "";
@@ -456,7 +476,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   }, [search, setSearch]);
 
   const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision, transfer = false) => {
-    if (!Number.isInteger(nextPage) || nextPage < 1 || nextPage > totalPages || actionRef.current) return;
+    if (!Number.isInteger(nextPage) || nextPage < 1 || nextPage > totalPages || actionRef.current || preparationWait > 0) return;
     if (nextPage > previewLimit && !user) {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
       return;
@@ -488,6 +508,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         // Router transitions can render the old preview once before the new
         // URL commits. Do not settle the lease just issued for that transition.
         pendingPageRef.current = nextPage;
+        setPreparationRetry(null);
         publishLease(nextLease);
         setSessionConflict(false);
         lastActivityRef.current = Date.now();
@@ -498,12 +519,13 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       else changePage(nextPage, visualAnchor, anchorRevision);
     } catch (requestError) {
       if (aliveRef.current) setSessionConflict(requestError?.response?.data?.detail?.code === "SESSION_ACTIVE_ELSEWHERE");
+      if (aliveRef.current) notePreparationFailure(requestError);
       if (aliveRef.current) setError(requestMessage(requestError, requestError.message || (freeReading ? "Free Reader access could not be verified." : "A current Reading Pass is required to continue.")));
     } finally {
       actionRef.current = false;
       if (aliveRef.current) setBusy(false);
     }
-  }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user, previewLimit]);
+  }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user, previewLimit, preparationWait, notePreparationFailure]);
 
   const navigateAfterSettlement = useCallback(async (target, navigationPath) => {
     if (actionRef.current) return;
@@ -667,12 +689,14 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>Library</button>
     {!manifest && !loading && <button type="button" onClick={() => setManifestRetry((value) => value + 1)}>Retry reader</button>}
     {!user && canonicalPage > previewLimit && <Link data-testid="reader-recovery-sign-in" to={`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`}>Sign in to continue</Link>}
-    {validPage && enabled && (canonicalPage <= previewLimit || user) && <button type="button" data-testid="reader-authorize-chapter" onClick={() => authorizeAndContinue(canonicalPage)} disabled={busy}>{busy ? "Opening page…" : canonicalPage <= previewLimit ? "Retry page" : "Continue to this page"}</button>}
+    {validPage && enabled && (canonicalPage <= previewLimit || user) && <button type="button" data-testid="reader-authorize-chapter" onClick={() => authorizeAndContinue(canonicalPage)} disabled={busy || preparationWait > 0}>{busy ? "Opening page…" : canonicalPage <= previewLimit ? "Retry page" : "Continue to this page"}</button>}
     {sessionConflict && user && validPage && canonicalPage > previewLimit && <div role="status">
       <p>Continuing here ends your other active reading session.</p>
       <button type="button" onClick={() => authorizeAndContinue(canonicalPage, 0, undefined, true)} disabled={busy}>Continue on this device</button>
     </div>}
     {user && !freeReading && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
+    {preparationWait > 0 && <p role="status">Please wait {preparationWait} {preparationWait === 1 ? "second" : "seconds"} before trying again.</p>}
+    {preparationRetry && preparationWait === 0 && <p role="status">You can try opening this page again.</p>}
     {notice && <p role="status">{notice}</p>}
   </>;
   if (visualFixture) {

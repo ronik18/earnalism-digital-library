@@ -13226,5 +13226,18 @@
       "evidence": "live_audiobook_campaign_20261031/sentence-repair/joins-review-result.json",
       "learning": "Correct words and broadly consistent voice do not establish seamless expressive narration; automated timestamp claims need acoustic/listening adjudication. No speculative phoneme edits or synthesis retries."
     }
-  ]
+  ],
+  "time_machine_dracula_preparation_cooldown_20261101": {
+    "state": "LOCAL_FIX_TESTED_REVIEW_PENDING_NOT_DEPLOYED",
+    "titles": [
+      "the-time-machine",
+      "dracula"
+    ],
+    "evidence": "reader_completeness_20261031/PREPARATION-COOLDOWN-REPAIR-20261101.json",
+    "production_reader_verified": false,
+    "deployment_authorized": false,
+    "publication_changed": false,
+    "balance_adjusted": false,
+    "additional_pass_seconds": 0
+  }
 }
