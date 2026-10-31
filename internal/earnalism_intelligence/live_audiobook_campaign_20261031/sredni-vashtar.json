@@ -3,7 +3,7 @@
   "title": "Sredni Vashtar",
   "book_id": "controlled-sredni-vashtar",
   "url": "https://theearnalism.com/book/sredni-vashtar",
-  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "stage": "EXISTING_RECORDING_RECOVERED_CURRENT_QUALIFICATION_PENDING",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -56,8 +56,12 @@
     "live_manifest_fields": {}
   },
   "voice": {
-    "status": "NOT_SELECTED_NOT_QUALIFIED",
-    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+    "status": "EXACT_HISTORICAL_VERSE_AUDIO_RECOVERED_CURRENT_EDITION_QUALIFICATION_PENDING",
+    "speaker": "verse",
+    "model": "gpt-4o-mini-tts",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "new_generation": false,
+    "selection_reason": "Reuse checksum-identical historically accepted full recording before spending on a new candidate; labels alone do not qualify suitability."
   },
   "music": {
     "selection": "SILENCE",
@@ -65,12 +69,20 @@
     "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
   },
   "quality": {
-    "content": "UNVERIFIED",
+    "content": "CURRENT_ASR_BELOW_THRESHOLD_AND_POTENTIAL_WORD_OMISSION_UNADJUDICATED",
     "pronunciation": "UNVERIFIED",
-    "listening": "UNVERIFIED",
-    "audio": "UNVERIFIED",
-    "sync": "UNVERIFIED",
-    "live_playback": "UNVERIFIED"
+    "listening": "HISTORICAL_EVIDENCE_RETAINED_CURRENT_APPLICABILITY_UNVERIFIED",
+    "audio": "CHECKSUM_DURATION_AND_MEASURED_LOUDNESS_ONLY_NOT_RELEASE_ACCEPTANCE",
+    "sync": "EXACT_HISTORICAL_MEASURED_TIMESTAMPS_RECOVERED_CURRENT_PARAGRAPH_MAPPING_UNVERIFIED",
+    "live_playback": "UNVERIFIED",
+    "source_equivalence": "PASS_COMPLETE_CURRENT_STORY_WHITESPACE_ONLY_AND_LIVE_VERSION",
+    "raw_asr_match_score": 9.686468646864686,
+    "raw_asr_match_scores": {
+      "small_en": 9.686468646864686,
+      "large_v3_turbo": 9.697469746974697,
+      "minimum": 9.7,
+      "status": "BOTH_BELOW_THRESHOLD_NO_ROUNDING_TO_PASS"
+    }
   },
   "repairs": [],
   "costs": {
@@ -80,21 +92,26 @@
     "production_estimate_usd": null,
     "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
     "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
-    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred.",
+    "new_local_asr": "Cached local CPU only; zero provider requests or new model downloads"
   },
   "blockers": [
     {
-      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
-      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+      "code": "CURRENT_ASR_BELOW_THRESHOLD_AND_SUSPECTED_MISSING_WORDS",
+      "action": "Both full local ASR comparisons are below 9.7 (9.686468646864686 and 9.697469746974697). Historical and both fresh ASR outputs omit “one of which was” around 2:33. A source-bound clip and owner wording question are pending; no score or prior aggregate acceptance overrides this material uncertainty. Exact generation-source hash is resolved; do not repeat synthesis or ASR blindly."
     },
     {
-      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
-      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+      "code": "EXACT_AUDIO_PACKAGE_RIGHTS_STORAGE_AND_RUNTIME_ACCEPTANCE_REQUIRED",
+      "action": "Qualify the retained recording/provider rights scope for current edition, immutable primary/DR retention, measured paragraph/stanza sync and protected customer playback/accounting before activation. Do not reuse old active pointers or expose a legacy public URL."
     }
   ],
   "language": "en",
   "rights": {
     "audio_package_bindings": {},
-    "reader_rights_do_not_establish_audio_rights": true
-  }
+    "reader_rights_do_not_establish_audio_rights": true,
+    "underlying_literary_basis": "Independent IN expired-term analysis recorded in recovery-followup/sredni-source-and-reuse-preflight.json; legacy recording/package/provider adoption remains incomplete; Reader record unchanged."
+  },
+  "reuse_preflight": "recovery-followup/sredni-source-and-reuse-preflight.json",
+  "local_asr": "recovery-followup/sredni-local-asr.json",
+  "critical_review": "recovery-followup/sredni-critical-review.json"
 }

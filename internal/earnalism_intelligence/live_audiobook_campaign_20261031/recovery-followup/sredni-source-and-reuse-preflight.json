@@ -1,0 +1,101 @@
+{
+  "observed_at": "2026-10-31T10:54:17.642219+00:00",
+  "slug": "sredni-vashtar",
+  "stage": "EXISTING_RECORDING_RECOVERED_CURRENT_QUALIFICATION_PENDING",
+  "status": "BLOCKED",
+  "source": {
+    "current_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "word_count_whitespace": 1784,
+    "live_manifest_sha256": "355af7a1ec3496f4d8b1fd0fb8a2788cb2c99df492d84a5f0e801988459b6b0b",
+    "live_content_version": "e8e4e6ba86dcda85426b",
+    "whole_selected_story_whitespace_only_match": true,
+    "story_bounds": {
+      "after_heading": "SREDNI VASHTAR",
+      "before_heading": "ADRIAN",
+      "start": 87831,
+      "end": 98128
+    },
+    "current_raw_source_sha256": "7603e26566b899480e9066d19e02f62f93d281425bde6d70eda954c90a7a4395",
+    "retained_raw_source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "raw_receipt_changed_selected_story_matches": true,
+    "canonical_checksum_manifest": "PASS",
+    "files": {
+      "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+      "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+      "rights_decision.json": "553930cf3aeab137ed0808f2d7ff012c43fe0382a69ce8a8f30dd9215ce3651b"
+    },
+    "reader_files_changed": false
+  },
+  "underlying_literary_basis": {
+    "territory": "IN",
+    "scope": "Exact Saki story only; exclude Milne introduction, translators, covers and third-party audio",
+    "creator_death_year": 1916,
+    "lifetime_publication_evidence": "Retained verified 1912 edition; current official bibliographic summary says 1911; both predate 1916. No first-publication-date assertion added.",
+    "term_analysis": "Independent India sections 22/23 expired-term basis for literary narration; section14 sound-recording use considered separately. This does not expand the Reader-only rights record or bind the legacy recording.",
+    "official_sources": [
+      "https://www.gutenberg.org/ebooks/3688",
+      "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "https://copyright.gov.in/Copyright_Act_1957/chapter_iii.html"
+    ],
+    "legacy_voice_recording_rights": "CURRENT_EXACT_PACKAGE_ADOPTION_AND_PROVIDER_SCOPE_NOT_YET_QUALIFIED"
+  },
+  "retained_candidate": {
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "candidate_id": "candidate-61355c7842dbcbae",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "bytes": 10190637,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "636.840000"
+      }
+    },
+    "original_modified": false,
+    "recovered_copy": "/tmp/earnalism-audiobook-recovery-followup-20261031/sredni-retained.mp3",
+    "historical_generation_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "historical_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json",
+    "historical_qa_evidence_sha256": "30c25580bbd404c449e73fbd8b071ac81542c2af12d5712e57b0f7b86f2bdc6d",
+    "historical_qa_not_current_release_acceptance": true,
+    "timestamps_sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+    "timestamps_audio_hash_match": true,
+    "timestamps_source_hash": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "estimated_sync": false,
+    "generation_manifest": "Dataless iCloud placeholder; read stalled and was stopped. No second hydration read attempted.",
+    "current_generation_text_binding": "PASS_CANONICAL_TEXT_PLUS_ONE_TRAILING_LF_EQUALS_EXACT_RECORDED_GENERATION_SHA256",
+    "generation_source_reconstruction": "No lexical or punctuation changes: append exactly one LF byte to canonical content. SHA256 equals 44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21, independently bound to accepted audio by the checksum-verified measured timestamp sidecar.",
+    "historical_owner_minimum_score": 9.4
+  },
+  "audio_analysis": {
+    "method": "Full ffmpeg ebur128 decode, unmodified retained MP3",
+    "integrated_loudness_lufs": -25.9,
+    "loudness_range_lu": 4.2,
+    "true_peak_dbfs": -7.4,
+    "loudness_or_music_acceptance": "NOT_ADJUDICATED",
+    "new_mix_or_music": false
+  },
+  "strategy": "Preserve and qualify the exact historical Verse recording before considering new Ryan/Girija generation; do not repeat failed Google voices.",
+  "new_colab_allocations": 0,
+  "new_tts_calls": 0,
+  "new_purchases": 0,
+  "new_publications": 0,
+  "release_ready": false,
+  "remaining_gates": [
+    "Adjudicate current local ASR disagreements with exact retained audio; generation-source hash reconstructed exactly",
+    "Current package-specific voice/recording rights adoption",
+    "Pronunciation and listening-quality applicability or review",
+    "Current source-aligned measured paragraph/stanza navigation and sync",
+    "Protected primary/DR storage and retention verification",
+    "Current player/accounting/customer acceptance"
+  ]
+}

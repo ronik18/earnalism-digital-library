@@ -112,5 +112,6 @@
   },
   "production_checkpoint": "the-student-production/checkpoint.json",
   "next_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
-  "execution_checkpoint": "the-student-production/checkpoint.json"
+  "execution_checkpoint": "the-student-production/checkpoint.json",
+  "latest_recovery_evidence": "recovery-followup/student-recovery.json"
 }
