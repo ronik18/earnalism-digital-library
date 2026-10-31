@@ -72,6 +72,9 @@ export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // pipeline shell when its canonical public edition is already present.
 export const PIPELINE_CANONICAL_PUBLICATION_SLUGS = Object.freeze({
   [KSHUDHITA_PASHAN_SLUG]: "book-edfcf810c5",
+  // Editorial consolidation of the generic Adventures card, not a historical UUID alias.
+  // PG1661 twelve-story IN text edition; retain canonical publication and cover pair.
+  "sherlock-holmes": "the-adventures-of-sherlock-holmes",
 });
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";

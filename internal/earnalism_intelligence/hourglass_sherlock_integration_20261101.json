@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-10-31T20:47:48.096600+00:00",
+  "scope": "SOURCE_INTEGRATION_ONLY",
+  "base": "e4e4fa16893b179948b7b7dafb792f28765b217f",
+  "qa_base": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "owner_instruction": "Integrate Hourglass and Sherlock fixes after all gates pass; no deployment or paid sessions.",
+  "editorial_adoption": "Library-only generic sherlock-holmes card consolidation into existing admitted the-adventures-of-sherlock-holmes 12-story India Reader; not a UUID alias, new rights decision or access grant.",
+  "changes": [
+    "Reserve 99px original Hourglass artwork plus 16px gap at desktop and compact widths.",
+    "Suppress generic Sherlock shell only while the canonical publication passes existing release admission.",
+    "Ensure Library card actions are at least 44px wide."
+  ],
+  "preserved": [
+    "Original artwork bytes and crop",
+    "Canonical Book/Reader links and cover pair",
+    "Reader/free entitlements, rights and release controls",
+    "PR600 and parked history"
+  ],
+  "validation": {
+    "focused_jest": {
+      "suites": 5,
+      "tests": 41,
+      "result": "PASS"
+    },
+    "responsive_css_widths": [
+      1440,
+      1024,
+      768,
+      390,
+      320
+    ],
+    "cta_art_overlap_csspx2": 0,
+    "cta_art_gap_csspx": 16,
+    "native_zoom": {
+      "chrome_ui": "200%",
+      "protocol_zoom": 2,
+      "css_width": 615,
+      "dpr": 4,
+      "restored_protocol_zoom": 1
+    },
+    "keyboard": "Tab/ShiftTab/Enter/focus checked in source-rendered local fixture",
+    "scope_limit": "Synthetic canonical metadata and local navigation destinations; not full customer Reader/Book delivery, checkout or production proof."
+  },
+  "source_hashes": {
+    "frontend/src/lib/controlledLaunch.js": "9322e54a3ed1cefd997fb37f97d903b19c0f5eb91dd101efd8d7e1be3be3ebcc",
+    "frontend/src/styles/library-paper-review.css": "c706a4485d227f73922eaa3bf2c2418fca496589506ae6c836209774c2ea055a",
+    "frontend/src/lib/libraryCatalogueComposition.js": "8ac86b1f3f3fc4c92f4a4407e5f56f3701efbe23ef9c092f5e166f5a131bd5b6",
+    "frontend/public/assets/library/reading-pass-reference.png": "8aea024dd61b4eae9cdb2820f94d847f3fd6d1cdd1bfd88977e11930138597ae"
+  },
+  "qa_artifacts": {
+    "FINAL-QA-RESULT.json": "0da2227b4ed04748cbabba4746ac211066a326c1404c5783ad7220916525f5ec",
+    "QA-REPORT.md": "e5f56a68e3b403194defdfcecd794fbe2765151c501e092288fe56b3f68edc76",
+    "NATIVE-200-COMPLETE-CAPTURE.json": "342f6a183c66e27485c876cf5514afea2837c5813497ec83ea5c3c4b945d1d03",
+    "captures/native-200-complete.png": "25446a724724b0fcaa6b3934d51960273212f4062d1f490eb36bc5c8b5848968",
+    "NATIVE-FINAL-RESTORATION.json": "ad10d4ada3d413cc014c325e7acd8e30d55221628d4d550949366f4392c3bbe7"
+  }
+}
