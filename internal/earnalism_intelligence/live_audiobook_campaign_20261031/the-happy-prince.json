@@ -1,0 +1,100 @@
+{
+  "slug": "the-happy-prince",
+  "title": "The Happy Prince",
+  "book_id": "controlled-the-happy-prince",
+  "url": "https://theearnalism.com/book/the-happy-prince",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "389bde208fed179fb5723888a6128eaa60014ea1ebc4e1ce0493675a8103c4e2",
+      "url": "https://theearnalism.com/api/reader/book/the-happy-prince/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-happy-prince/source_evidence.json",
+      "sha256": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-happy-prince/reader_manifest.json",
+      "sha256": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-happy-prince/rights_decision.json",
+      "sha256": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-happy-prince/chapters/chapter-001.json",
+        "sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "3f14850e5b108a6230e4",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "6a530ef59c966b59",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-happy-prince",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

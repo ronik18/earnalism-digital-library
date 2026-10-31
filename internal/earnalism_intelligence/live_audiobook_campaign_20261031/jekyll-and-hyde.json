@@ -1,0 +1,136 @@
+{
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "book_id": "controlled-jekyll-and-hyde",
+  "url": "https://theearnalism.com/book/jekyll-and-hyde",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-16T05:16:57Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "6ff0c0ced9d02c8a0351a41bdccb2444ba94a376475fdcdb24fde0a391ca9b68",
+      "url": "https://theearnalism.com/api/reader/book/jekyll-and-hyde/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/jekyll-and-hyde/source_evidence.json",
+      "sha256": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/jekyll-and-hyde/reader_manifest.json",
+      "sha256": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/jekyll-and-hyde/rights_decision.json",
+      "sha256": "d2b42fe92836163db7ba17252e95661be0f35971e6311a3b46d78eceb210329a"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-001.json",
+        "sha256": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-002.json",
+        "sha256": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-003.json",
+        "sha256": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-004.json",
+        "sha256": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-005.json",
+        "sha256": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-006.json",
+        "sha256": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-007.json",
+        "sha256": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-008.json",
+        "sha256": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-009.json",
+        "sha256": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35"
+      },
+      {
+        "path": "backend/data/controlled_publications/jekyll-and-hyde/chapters/chapter-010.json",
+        "sha256": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9"
+      }
+    ],
+    "live_chapter_count": 10,
+    "live_version": "a1871e2aa95de2386a79",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "6d7b221893a87495",
+      "updated_at": ""
+    },
+    "live_book_slug": "jekyll-and-hyde",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

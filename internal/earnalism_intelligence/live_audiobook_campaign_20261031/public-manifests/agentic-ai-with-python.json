@@ -1,0 +1,2110 @@
+{
+  "book": {
+    "back_cover_blur_placeholder": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001-320.webp",
+    "estimated_reading_time": "396",
+    "back_cover_dominant_color": "#01091E",
+    "title": "Agentic AI With Python",
+    "who_for": [
+      "Python learners",
+      "Students",
+      "Freelancers",
+      "Developers",
+      "Founders",
+      "Working professionals"
+    ],
+    "id": "307adb30-176d-4a7b-a499-e20c8312337b",
+    "back_cover_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+    "learnings": [
+      "Design useful AI agent workflows.",
+      "Connect LLMs with documents, tools, and memory.",
+      "Evaluate and deploy safer agent applications."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001.webp",
+    "cover_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+    "description": "Agentic AI With Python is a practical, project-based guide to building AI assistants that read documents, retrieve knowledge, use tools, call APIs, remember approved context, apply guardrails, evaluate outputs, and deploy real applications.\n\nPython is a trademark of the Python Software Foundation. This independent book is not affiliated with the PSF.",
+    "dominant_color": "#010A1F",
+    "author": "Ronik Basak",
+    "thumbnail_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001-320.webp",
+    "created_at": "2026-05-23T17:31:45.559941+00:00",
+    "blur_placeholder": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001-320.webp",
+    "benefits": [
+      "Build practical Python AI assistants.",
+      "Learn RAG, tools, memory, guardrails, evaluation, and deployment.",
+      "Use safe project patterns without unnecessary live API calls."
+    ],
+    "about_author": "Ronik Basak writes practical technical learning material for builders who want to turn ideas into useful software.",
+    "back_cover_thumbnail_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001-320.webp",
+    "category_slug": "technology",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Chapter 1: Building Your First Python AI Assistant",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "d52277dcb02ed663d426",
+        "word_count": 6137,
+        "reading_minutes": 28,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-001?v=d52277dcb02ed663d426",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Chapter 1. Building Your First Python AI Assistant",
+        "index_title": "Building Your First Python AI Assistant",
+        "index_secondary_label": "Chapter 1"
+      },
+      {
+        "id": "chapter-002",
+        "title": "Chapter 2: LLMs, Prompts, Tokens and a Reusable API Client",
+        "order": 2,
+        "is_preview": false,
+        "content_version": "7210d4ec2f580e901475",
+        "word_count": 6465,
+        "reading_minutes": 29,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-002?v=7210d4ec2f580e901475",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 2. LLMs, Prompts, Tokens and a Reusable API Client",
+        "index_title": "LLMs, Prompts, Tokens and a Reusable API Client",
+        "index_secondary_label": "Chapter 2"
+      },
+      {
+        "id": "chapter-003",
+        "title": "Chapter 3: Your First Python AI App",
+        "order": 3,
+        "is_preview": false,
+        "content_version": "30c9709c1072ca620a0c",
+        "word_count": 5544,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-003?v=30c9709c1072ca620a0c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 3. Your First Python AI App",
+        "index_title": "Your First Python AI App",
+        "index_secondary_label": "Chapter 3"
+      },
+      {
+        "id": "chapter-004",
+        "title": "Chapter 4: RAG — Chat with Your Own Documents",
+        "order": 4,
+        "is_preview": false,
+        "content_version": "41fec63f65c7de8fd492",
+        "word_count": 7223,
+        "reading_minutes": 33,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-004?v=41fec63f65c7de8fd492",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 4. RAG — Chat with Your Own Documents",
+        "index_title": "RAG — Chat with Your Own Documents",
+        "index_secondary_label": "Chapter 4"
+      },
+      {
+        "id": "chapter-005",
+        "title": "Chapter 5: Embeddings, Vector Databases, and Semantic Search",
+        "order": 5,
+        "is_preview": false,
+        "content_version": "0fb6847f106bec3b3321",
+        "word_count": 6359,
+        "reading_minutes": 29,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-005?v=0fb6847f106bec3b3321",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 5. Embeddings, Vector Databases, and Semantic Search",
+        "index_title": "Embeddings, Vector Databases, and Semantic Search",
+        "index_secondary_label": "Chapter 5"
+      },
+      {
+        "id": "chapter-006",
+        "title": "Chapter 6: Tool-Using Agents in Python",
+        "order": 6,
+        "is_preview": false,
+        "content_version": "5c5639a047a50d0b7522",
+        "word_count": 7001,
+        "reading_minutes": 32,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-006?v=5c5639a047a50d0b7522",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 6. Tool-Using Agents in Python",
+        "index_title": "Tool-Using Agents in Python",
+        "index_secondary_label": "Chapter 6"
+      },
+      {
+        "id": "chapter-007",
+        "title": "Chapter 7: Memory — Giving an Assistant Useful Context",
+        "order": 7,
+        "is_preview": false,
+        "content_version": "da668191a2e790a1afdc",
+        "word_count": 6976,
+        "reading_minutes": 32,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-007?v=da668191a2e790a1afdc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 7. Memory — Giving an Assistant Useful Context",
+        "index_title": "Memory — Giving an Assistant Useful Context",
+        "index_secondary_label": "Chapter 7"
+      },
+      {
+        "id": "chapter-008",
+        "title": "Chapter 8: Workflow Automation with AI Agents",
+        "order": 8,
+        "is_preview": false,
+        "content_version": "a074714dc17ba8933c4f",
+        "word_count": 7854,
+        "reading_minutes": 36,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-008?v=a074714dc17ba8933c4f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 8. Workflow Automation with AI Agents",
+        "index_title": "Workflow Automation with AI Agents",
+        "index_secondary_label": "Chapter 8"
+      },
+      {
+        "id": "chapter-009",
+        "title": "Chapter 9: Multi-Step and Multi-Agent Workflows",
+        "order": 9,
+        "is_preview": false,
+        "content_version": "7597e1ead1c83dda8233",
+        "word_count": 6677,
+        "reading_minutes": 30,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-009?v=7597e1ead1c83dda8233",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 9. Multi-Step and Multi-Agent Workflows",
+        "index_title": "Multi-Step and Multi-Agent Workflows",
+        "index_secondary_label": "Chapter 9"
+      },
+      {
+        "id": "chapter-010",
+        "title": "Chapter 10: Guardrails, Safety, and Hallucination Control",
+        "order": 10,
+        "is_preview": false,
+        "content_version": "5093d5259ac839409f8b",
+        "word_count": 7959,
+        "reading_minutes": 36,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-010?v=5093d5259ac839409f8b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 10. Guardrails, Safety, and Hallucination Control",
+        "index_title": "Guardrails, Safety, and Hallucination Control",
+        "index_secondary_label": "Chapter 10"
+      },
+      {
+        "id": "chapter-011",
+        "title": "Chapter 11: Testing, Evaluation, Monitoring, and Cost Control",
+        "order": 11,
+        "is_preview": false,
+        "content_version": "9b6876e930a6362d0f3b",
+        "word_count": 7545,
+        "reading_minutes": 34,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-011?v=9b6876e930a6362d0f3b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 11. Testing, Evaluation, Monitoring, and Cost Control",
+        "index_title": "Testing, Evaluation, Monitoring, and Cost Control",
+        "index_secondary_label": "Chapter 11"
+      },
+      {
+        "id": "chapter-012",
+        "title": "Chapter 12: Deploying Your Python AI Agent",
+        "order": 12,
+        "is_preview": false,
+        "content_version": "7b12f5337a36c6d7a020",
+        "word_count": 7628,
+        "reading_minutes": 35,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-012?v=7b12f5337a36c6d7a020",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 12. Deploying Your Python AI Agent",
+        "index_title": "Deploying Your Python AI Agent",
+        "index_secondary_label": "Chapter 12"
+      },
+      {
+        "id": "chapter-013",
+        "title": "Chapter 13: Bringing the Projects Together",
+        "order": 13,
+        "is_preview": false,
+        "content_version": "da771d7b85436b20a67e",
+        "word_count": 2535,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-013?v=da771d7b85436b20a67e",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 13. Bringing the Projects Together",
+        "index_title": "Bringing the Projects Together",
+        "index_secondary_label": "Chapter 13"
+      },
+      {
+        "id": "chapter-014",
+        "title": "Chapter 14: Glossary and Your Next Project",
+        "order": 14,
+        "is_preview": false,
+        "content_version": "09146487d8518143c261",
+        "word_count": 1144,
+        "reading_minutes": 5,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-014?v=09146487d8518143c261",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 14. Glossary and Your Next Project",
+        "index_title": "Glossary and Your Next Project",
+        "index_secondary_label": "Chapter 14"
+      }
+    ],
+    "slug": "agentic-ai-with-python",
+    "formats": [
+      "Ebook",
+      "PDF",
+      "DOCX"
+    ],
+    "is_published": true,
+    "subtitle": "Build Practical AI Agents with RAG, Tools, Memory, Guardrails, Evaluation, and Deployment",
+    "short_description": "A practical, project-based guide to building useful AI agents with Python.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/agentic-ai-with-python",
+    "reader_url": "/reader/agentic-ai-with-python",
+    "preview_url": "/reader/agentic-ai-with-python",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Chapter 1: Building Your First Python AI Assistant",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "d52277dcb02ed663d426",
+      "word_count": 6137,
+      "reading_minutes": 28,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-001?v=d52277dcb02ed663d426",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Chapter 1. Building Your First Python AI Assistant",
+      "index_title": "Building Your First Python AI Assistant",
+      "index_secondary_label": "Chapter 1"
+    },
+    {
+      "id": "chapter-002",
+      "title": "Chapter 2: LLMs, Prompts, Tokens and a Reusable API Client",
+      "order": 2,
+      "is_preview": false,
+      "content_version": "7210d4ec2f580e901475",
+      "word_count": 6465,
+      "reading_minutes": 29,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-002?v=7210d4ec2f580e901475",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 2. LLMs, Prompts, Tokens and a Reusable API Client",
+      "index_title": "LLMs, Prompts, Tokens and a Reusable API Client",
+      "index_secondary_label": "Chapter 2"
+    },
+    {
+      "id": "chapter-003",
+      "title": "Chapter 3: Your First Python AI App",
+      "order": 3,
+      "is_preview": false,
+      "content_version": "30c9709c1072ca620a0c",
+      "word_count": 5544,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-003?v=30c9709c1072ca620a0c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 3. Your First Python AI App",
+      "index_title": "Your First Python AI App",
+      "index_secondary_label": "Chapter 3"
+    },
+    {
+      "id": "chapter-004",
+      "title": "Chapter 4: RAG — Chat with Your Own Documents",
+      "order": 4,
+      "is_preview": false,
+      "content_version": "41fec63f65c7de8fd492",
+      "word_count": 7223,
+      "reading_minutes": 33,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-004?v=41fec63f65c7de8fd492",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 4. RAG — Chat with Your Own Documents",
+      "index_title": "RAG — Chat with Your Own Documents",
+      "index_secondary_label": "Chapter 4"
+    },
+    {
+      "id": "chapter-005",
+      "title": "Chapter 5: Embeddings, Vector Databases, and Semantic Search",
+      "order": 5,
+      "is_preview": false,
+      "content_version": "0fb6847f106bec3b3321",
+      "word_count": 6359,
+      "reading_minutes": 29,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-005?v=0fb6847f106bec3b3321",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 5. Embeddings, Vector Databases, and Semantic Search",
+      "index_title": "Embeddings, Vector Databases, and Semantic Search",
+      "index_secondary_label": "Chapter 5"
+    },
+    {
+      "id": "chapter-006",
+      "title": "Chapter 6: Tool-Using Agents in Python",
+      "order": 6,
+      "is_preview": false,
+      "content_version": "5c5639a047a50d0b7522",
+      "word_count": 7001,
+      "reading_minutes": 32,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-006?v=5c5639a047a50d0b7522",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 6. Tool-Using Agents in Python",
+      "index_title": "Tool-Using Agents in Python",
+      "index_secondary_label": "Chapter 6"
+    },
+    {
+      "id": "chapter-007",
+      "title": "Chapter 7: Memory — Giving an Assistant Useful Context",
+      "order": 7,
+      "is_preview": false,
+      "content_version": "da668191a2e790a1afdc",
+      "word_count": 6976,
+      "reading_minutes": 32,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-007?v=da668191a2e790a1afdc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 7. Memory — Giving an Assistant Useful Context",
+      "index_title": "Memory — Giving an Assistant Useful Context",
+      "index_secondary_label": "Chapter 7"
+    },
+    {
+      "id": "chapter-008",
+      "title": "Chapter 8: Workflow Automation with AI Agents",
+      "order": 8,
+      "is_preview": false,
+      "content_version": "a074714dc17ba8933c4f",
+      "word_count": 7854,
+      "reading_minutes": 36,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-008?v=a074714dc17ba8933c4f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 8. Workflow Automation with AI Agents",
+      "index_title": "Workflow Automation with AI Agents",
+      "index_secondary_label": "Chapter 8"
+    },
+    {
+      "id": "chapter-009",
+      "title": "Chapter 9: Multi-Step and Multi-Agent Workflows",
+      "order": 9,
+      "is_preview": false,
+      "content_version": "7597e1ead1c83dda8233",
+      "word_count": 6677,
+      "reading_minutes": 30,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-009?v=7597e1ead1c83dda8233",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 9. Multi-Step and Multi-Agent Workflows",
+      "index_title": "Multi-Step and Multi-Agent Workflows",
+      "index_secondary_label": "Chapter 9"
+    },
+    {
+      "id": "chapter-010",
+      "title": "Chapter 10: Guardrails, Safety, and Hallucination Control",
+      "order": 10,
+      "is_preview": false,
+      "content_version": "5093d5259ac839409f8b",
+      "word_count": 7959,
+      "reading_minutes": 36,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-010?v=5093d5259ac839409f8b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 10. Guardrails, Safety, and Hallucination Control",
+      "index_title": "Guardrails, Safety, and Hallucination Control",
+      "index_secondary_label": "Chapter 10"
+    },
+    {
+      "id": "chapter-011",
+      "title": "Chapter 11: Testing, Evaluation, Monitoring, and Cost Control",
+      "order": 11,
+      "is_preview": false,
+      "content_version": "9b6876e930a6362d0f3b",
+      "word_count": 7545,
+      "reading_minutes": 34,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-011?v=9b6876e930a6362d0f3b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 11. Testing, Evaluation, Monitoring, and Cost Control",
+      "index_title": "Testing, Evaluation, Monitoring, and Cost Control",
+      "index_secondary_label": "Chapter 11"
+    },
+    {
+      "id": "chapter-012",
+      "title": "Chapter 12: Deploying Your Python AI Agent",
+      "order": 12,
+      "is_preview": false,
+      "content_version": "7b12f5337a36c6d7a020",
+      "word_count": 7628,
+      "reading_minutes": 35,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-012?v=7b12f5337a36c6d7a020",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 12. Deploying Your Python AI Agent",
+      "index_title": "Deploying Your Python AI Agent",
+      "index_secondary_label": "Chapter 12"
+    },
+    {
+      "id": "chapter-013",
+      "title": "Chapter 13: Bringing the Projects Together",
+      "order": 13,
+      "is_preview": false,
+      "content_version": "da771d7b85436b20a67e",
+      "word_count": 2535,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-013?v=da771d7b85436b20a67e",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 13. Bringing the Projects Together",
+      "index_title": "Bringing the Projects Together",
+      "index_secondary_label": "Chapter 13"
+    },
+    {
+      "id": "chapter-014",
+      "title": "Chapter 14: Glossary and Your Next Project",
+      "order": 14,
+      "is_preview": false,
+      "content_version": "09146487d8518143c261",
+      "word_count": 1144,
+      "reading_minutes": 5,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/agentic-ai-with-python/chapter-014?v=09146487d8518143c261",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 14. Glossary and Your Next Project",
+      "index_title": "Glossary and Your Next Project",
+      "index_secondary_label": "Chapter 14"
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "57ab75a898dce177",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "98c15c07f7a5d8b6f760",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:31.856204+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/agentic-ai-with-python/manifest",
+      "total_pages": 211
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-5660b0da970e88056cf9507f15c016da",
+    "content_revision": "2d6e081a92bbeac0e5364cf2",
+    "page_count": 211,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "agentic-ai-with-python:1:f1bcc49db9f62cfb",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f1bcc49db9f62cfb0c7e0faa4ea3373e1b1b3997c8746a9926cfec750ae1c198"
+      },
+      {
+        "page_number": 2,
+        "page_id": "agentic-ai-with-python:2:713cb8983b36a3e8",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "713cb8983b36a3e80db7e79c2762aa3023f90d199667db500259ac97834511b0"
+      },
+      {
+        "page_number": 3,
+        "page_id": "agentic-ai-with-python:3:4e5aadcc6d976a66",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4e5aadcc6d976a6666cfc23595f3f269305ceffb84c0dc62b44cbe7ab9fa00b4"
+      },
+      {
+        "page_number": 4,
+        "page_id": "agentic-ai-with-python:4:883d4df201617a3a",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "883d4df201617a3a1f1d1f1c5ac2711e793bb419212bceea195fb6debf544f26"
+      },
+      {
+        "page_number": 5,
+        "page_id": "agentic-ai-with-python:5:66dc6c9185effc14",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "66dc6c9185effc14f3f1de70cde963e4ad9ff1dc0220373ec7a93d68061f5dd6"
+      },
+      {
+        "page_number": 6,
+        "page_id": "agentic-ai-with-python:6:631234fce549104d",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "631234fce549104d8a638310fa8afebfae83de61c69433287ea0f0cd8c0cb6cc"
+      },
+      {
+        "page_number": 7,
+        "page_id": "agentic-ai-with-python:7:346515f0a2764407",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "346515f0a276440753de26d79e47f3ad7b45d76be3b242e639e140fcd40766b2"
+      },
+      {
+        "page_number": 8,
+        "page_id": "agentic-ai-with-python:8:a744ce12f800d661",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a744ce12f800d6613405e07aa70866622c130967e598d9ccc7e0d07e49b3ac63"
+      },
+      {
+        "page_number": 9,
+        "page_id": "agentic-ai-with-python:9:7592aabc0d51fec2",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7592aabc0d51fec261b1d66381732938e6d191dd4c5e162f406ba35bcb08ad27"
+      },
+      {
+        "page_number": 10,
+        "page_id": "agentic-ai-with-python:10:6012a4a100b5a72d",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6012a4a100b5a72d6a80adfe9b4150ca2c1b3ec5e2a171eced90104d79e133ac"
+      },
+      {
+        "page_number": 11,
+        "page_id": "agentic-ai-with-python:11:3dd71f819ba15a22",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3dd71f819ba15a2251e8ee1bca992e7689e571faff9cfea99a661dd4d8b912e1"
+      },
+      {
+        "page_number": 12,
+        "page_id": "agentic-ai-with-python:12:63ce70023666ccdb",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "63ce70023666ccdb8dfbc2f320c486c301a0893200ec14e19ec22c06ce91f483"
+      },
+      {
+        "page_number": 13,
+        "page_id": "agentic-ai-with-python:13:ccdfca97bf5459e6",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ccdfca97bf5459e6718c7725271a88ef60d101831da74b102cfac91da729632a"
+      },
+      {
+        "page_number": 14,
+        "page_id": "agentic-ai-with-python:14:cf93809758b508fc",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cf93809758b508fc1b25867c058ae01f0eacfaa9988e064d6abe36696ad64352"
+      },
+      {
+        "page_number": 15,
+        "page_id": "agentic-ai-with-python:15:4b9c019ca6794fae",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4b9c019ca6794fae223c9afdba9c648c354234c5b7ecd589d2ac9a50b15acdf5"
+      },
+      {
+        "page_number": 16,
+        "page_id": "agentic-ai-with-python:16:3d259382961051b1",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3d259382961051b1b8a507938cf9b58a1dcb9febd676a4bbf1667731e85cf52d"
+      },
+      {
+        "page_number": 17,
+        "page_id": "agentic-ai-with-python:17:08c476252a13befa",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "08c476252a13befa9b82606b44ab103df40b808c9a0169b3be58daad46b3a063"
+      },
+      {
+        "page_number": 18,
+        "page_id": "agentic-ai-with-python:18:cc820cadad4239cc",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cc820cadad4239cc862e50ce6858dd83ffd149632ae9339cbf60b23622b26706"
+      },
+      {
+        "page_number": 19,
+        "page_id": "agentic-ai-with-python:19:d5586a3024442654",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d5586a3024442654abba3aca447fa9611b4ad0ef6337754e0418af5bf6256cee"
+      },
+      {
+        "page_number": 20,
+        "page_id": "agentic-ai-with-python:20:4fef8d337f082db6",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4fef8d337f082db695b9238a709ffd40e4ebcef849161bfe3e72e1477b256075"
+      },
+      {
+        "page_number": 21,
+        "page_id": "agentic-ai-with-python:21:66945f7ea2900c6a",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "66945f7ea2900c6a819d52388d24433332883a71a44cc9cde13f840827663ac4"
+      },
+      {
+        "page_number": 22,
+        "page_id": "agentic-ai-with-python:22:8351047aafd5e8b7",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "8351047aafd5e8b7e37d61e223769393f5d93521e89a17add5f5a3bd27666586"
+      },
+      {
+        "page_number": 23,
+        "page_id": "agentic-ai-with-python:23:78c5fea620ec042e",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "78c5fea620ec042e8a2b15f974425020b4a271daa401d93c14454a640eb4340f"
+      },
+      {
+        "page_number": 24,
+        "page_id": "agentic-ai-with-python:24:59cc6ecb8d90682d",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "59cc6ecb8d90682dafd62409e5c5363b5781b0ed26b1b4d8e3c83741796cd4fe"
+      },
+      {
+        "page_number": 25,
+        "page_id": "agentic-ai-with-python:25:3edc43e18e5ded26",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3edc43e18e5ded2691e9d51f2886eb7c2ea2d7165899bf0cbf27d73b0235b12b"
+      },
+      {
+        "page_number": 26,
+        "page_id": "agentic-ai-with-python:26:35b2ac976a478d3b",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "35b2ac976a478d3b62125cb8f76bca58d9d10726afe7abc0d1d10c88f6cff09e"
+      },
+      {
+        "page_number": 27,
+        "page_id": "agentic-ai-with-python:27:3f7ecf2210e6be70",
+        "chapter_id": "chapter-002",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3f7ecf2210e6be708395f6e8e02fb2b518668cac53e859e1a6db5194f657b34c"
+      },
+      {
+        "page_number": 28,
+        "page_id": "agentic-ai-with-python:28:31881ca965ddb3a2",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "31881ca965ddb3a246c54f0b7b491a935883bed1f4cf22f0c2d445c8fffbf4f9"
+      },
+      {
+        "page_number": 29,
+        "page_id": "agentic-ai-with-python:29:c2ad76436ce2edc8",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c2ad76436ce2edc80abf7507ff556adab073119dc9688e0faf1e8c3e1a168be0"
+      },
+      {
+        "page_number": 30,
+        "page_id": "agentic-ai-with-python:30:0ff1a5d1f550f73f",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "0ff1a5d1f550f73f1c706386f93ef51d70de33f932846d6e8ae10eabc091d9e7"
+      },
+      {
+        "page_number": 31,
+        "page_id": "agentic-ai-with-python:31:5dbff0ea21aae367",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "5dbff0ea21aae367afefda51f58ef78d8e9e6342d61cf689d8afb6f06a8d76be"
+      },
+      {
+        "page_number": 32,
+        "page_id": "agentic-ai-with-python:32:964e4df4bf5eb632",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "964e4df4bf5eb63287844ec1aa834907e1ed17332706935d11c279769a65da25"
+      },
+      {
+        "page_number": 33,
+        "page_id": "agentic-ai-with-python:33:9b93d3fd7d6139a8",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9b93d3fd7d6139a88b2ba29351d6033add2f506545430564c7a130288a284bed"
+      },
+      {
+        "page_number": 34,
+        "page_id": "agentic-ai-with-python:34:d68a38e83cede9a8",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d68a38e83cede9a88eec12e4fcb8a51734c5a328fc5d769fb1954ab28a1b65be"
+      },
+      {
+        "page_number": 35,
+        "page_id": "agentic-ai-with-python:35:c786ef210c795457",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c786ef210c795457926f6c9bdae2093bb8f1708885c0d606c1e800a704c5c4ef"
+      },
+      {
+        "page_number": 36,
+        "page_id": "agentic-ai-with-python:36:9d33825a48a540ea",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9d33825a48a540ea4e9ef243e26567dd6b80fbc88089c8b0dfc49c166aa455d0"
+      },
+      {
+        "page_number": 37,
+        "page_id": "agentic-ai-with-python:37:7c6cefe4c97c7b3e",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7c6cefe4c97c7b3e9dd5943ec0054195c091c43a479b63823a01294fbd252cdb"
+      },
+      {
+        "page_number": 38,
+        "page_id": "agentic-ai-with-python:38:397a2569d87cbbc6",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "397a2569d87cbbc69038f0743e6f5952e6c3f69983d62b6991ab115c8a4d95d4"
+      },
+      {
+        "page_number": 39,
+        "page_id": "agentic-ai-with-python:39:11d8bddd9e2d66d9",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "11d8bddd9e2d66d9ff2b9c9be87218ab928072d528b6c74bedde11fff448071c"
+      },
+      {
+        "page_number": 40,
+        "page_id": "agentic-ai-with-python:40:aec7087cafc706b2",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "aec7087cafc706b207c52363c33a81cf23c00606eb3d88c01eed80cfe9e96649"
+      },
+      {
+        "page_number": 41,
+        "page_id": "agentic-ai-with-python:41:3a0132f081985ec0",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3a0132f081985ec004060a6a6f67afac97041cf550494253afc2edc6eedfd31e"
+      },
+      {
+        "page_number": 42,
+        "page_id": "agentic-ai-with-python:42:4773f4a4ffd1d20b",
+        "chapter_id": "chapter-003",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4773f4a4ffd1d20b934dd4b7e50a2b6f0ac4105f71f5ed22e05733f65f45ffbb"
+      },
+      {
+        "page_number": 43,
+        "page_id": "agentic-ai-with-python:43:6e877033c7f82666",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6e877033c7f82666176e161339c74abe1ca1a9f8c44f0cd8d69216f831e53ef2"
+      },
+      {
+        "page_number": 44,
+        "page_id": "agentic-ai-with-python:44:46be94397669bcf6",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "46be94397669bcf63df7067da79237b3254dc73c5aba6dd01035a55f1b74fb81"
+      },
+      {
+        "page_number": 45,
+        "page_id": "agentic-ai-with-python:45:d61e2665b626ff6b",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d61e2665b626ff6b9887d4f47a10673a545198c1aad97cd9453267686629f47a"
+      },
+      {
+        "page_number": 46,
+        "page_id": "agentic-ai-with-python:46:28c0416c0e0bd3f4",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "28c0416c0e0bd3f4ac7f814ecbd95c903ad9a2b6154b474fa331160a8ba5551d"
+      },
+      {
+        "page_number": 47,
+        "page_id": "agentic-ai-with-python:47:b4d20b33b187c2ff",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "b4d20b33b187c2ff993009f06a4b1aa59f9f33d15fe1e10a0f3c61456a230b80"
+      },
+      {
+        "page_number": 48,
+        "page_id": "agentic-ai-with-python:48:a3e24b46b20191db",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a3e24b46b20191db345a3c5ad3eb9e4ba0b925f9d10e7af85ab331b15e10d8a9"
+      },
+      {
+        "page_number": 49,
+        "page_id": "agentic-ai-with-python:49:cc8e67ca37de3e6c",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cc8e67ca37de3e6c1ea8c1ca80635b3dafd40620022ea20421f22dcb1b2b7664"
+      },
+      {
+        "page_number": 50,
+        "page_id": "agentic-ai-with-python:50:99715c10a8534ba6",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "99715c10a8534ba6a9440b0955d2bd8e759a8d7b82eee005e09d263296de123f"
+      },
+      {
+        "page_number": 51,
+        "page_id": "agentic-ai-with-python:51:926eef62bada94b4",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "926eef62bada94b401b064b3dc4948d3dbe2efafdf0772f43c1986b23fcc2400"
+      },
+      {
+        "page_number": 52,
+        "page_id": "agentic-ai-with-python:52:e697148e41fdad2b",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e697148e41fdad2bf9b262da25dfe2c9ac2e1e116fbc7710b19b489ef93b61f1"
+      },
+      {
+        "page_number": 53,
+        "page_id": "agentic-ai-with-python:53:8c2309dea7c48aa0",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "8c2309dea7c48aa068868c163476f5fdebe2f42cd247033baa9e2fac33916575"
+      },
+      {
+        "page_number": 54,
+        "page_id": "agentic-ai-with-python:54:477417b1da2f6702",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "477417b1da2f6702434f3ded3ae6793468714b05cc1573e3017c3b4b509cf2c3"
+      },
+      {
+        "page_number": 55,
+        "page_id": "agentic-ai-with-python:55:1b4352d42880ec2c",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "1b4352d42880ec2c0b73be1e9ee24b7df5b4f7f0569aed5bc9619955956f4669"
+      },
+      {
+        "page_number": 56,
+        "page_id": "agentic-ai-with-python:56:43d4c2bc807dfdd3",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "43d4c2bc807dfdd38b959093a43044c6e1f4b82a0ac66c50fbb111288c924c83"
+      },
+      {
+        "page_number": 57,
+        "page_id": "agentic-ai-with-python:57:1567023e711b6b84",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "1567023e711b6b84424ead7f4a931a9d1e77958ff9097dd80a90942594f50c71"
+      },
+      {
+        "page_number": 58,
+        "page_id": "agentic-ai-with-python:58:082fa29453df1be6",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "082fa29453df1be672297ece70fe071e951d84b0541d69d1f829bff036370409"
+      },
+      {
+        "page_number": 59,
+        "page_id": "agentic-ai-with-python:59:2afbb653044f6bd9",
+        "chapter_id": "chapter-004",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2afbb653044f6bd99ba131920913cecbee190719b474d08ff08fc19e533e4bd2"
+      },
+      {
+        "page_number": 60,
+        "page_id": "agentic-ai-with-python:60:48c7817ccac76261",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "48c7817ccac76261ac3c91e3fd5fc764e3cdc1c9151721075aae13e23b3cfddb"
+      },
+      {
+        "page_number": 61,
+        "page_id": "agentic-ai-with-python:61:15a410e44c326a74",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "15a410e44c326a74a53ffe941c8f45dab38271983e811f79294b7495af559567"
+      },
+      {
+        "page_number": 62,
+        "page_id": "agentic-ai-with-python:62:75bf6a4e48c4f81a",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "75bf6a4e48c4f81ac679592efa0f1460911a56f505bc7081d1c10dbd8fca29ac"
+      },
+      {
+        "page_number": 63,
+        "page_id": "agentic-ai-with-python:63:6d8d0dbe48ec2fe4",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6d8d0dbe48ec2fe47d10e4ab3c3dfada1d94c1c266f78f9b990df6123023ef6d"
+      },
+      {
+        "page_number": 64,
+        "page_id": "agentic-ai-with-python:64:0cb7d4cdd92e8083",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "0cb7d4cdd92e80837172d617867cd48c596f644bb7fff051376a62d9cc3b0dcf"
+      },
+      {
+        "page_number": 65,
+        "page_id": "agentic-ai-with-python:65:bdc140f69e0377a5",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bdc140f69e0377a5c536dc0c4e27b0bde2eede7c2fb4634009539e544c2c3cfa"
+      },
+      {
+        "page_number": 66,
+        "page_id": "agentic-ai-with-python:66:221ed2292ec0f49c",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "221ed2292ec0f49c7f4ec1de2808870648542b5cf9a74dbd12f49db3dcacf655"
+      },
+      {
+        "page_number": 67,
+        "page_id": "agentic-ai-with-python:67:2030fe0a018f0a22",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2030fe0a018f0a224ca1990db58a1b43f7d5000db7667ec1540ee6a869b3260a"
+      },
+      {
+        "page_number": 68,
+        "page_id": "agentic-ai-with-python:68:c4491d6f1b284995",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c4491d6f1b284995b6f453322600a9a44c432e4e43edac3ec4cc2c8edf9c277b"
+      },
+      {
+        "page_number": 69,
+        "page_id": "agentic-ai-with-python:69:2e5c21c53bc609f8",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2e5c21c53bc609f82c655daf07e81d06efaf0464985476a8102bff8b50b718b3"
+      },
+      {
+        "page_number": 70,
+        "page_id": "agentic-ai-with-python:70:db8dec7bbfe8061e",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "db8dec7bbfe8061e6b37b61b41d0c820630090b11ec44929315c5869577a7883"
+      },
+      {
+        "page_number": 71,
+        "page_id": "agentic-ai-with-python:71:6fb6724c4dd620df",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6fb6724c4dd620df058d1e3ea7fc8c0141187bc0a5f57972e8fdb42a9157be41"
+      },
+      {
+        "page_number": 72,
+        "page_id": "agentic-ai-with-python:72:b62f8654435023b4",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "b62f8654435023b4a755b01997bb6d2a21e13b5364510a1194a8b1db56946ddb"
+      },
+      {
+        "page_number": 73,
+        "page_id": "agentic-ai-with-python:73:53b369018b0bc96d",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "53b369018b0bc96d22cc10009f87ee8c10a6c98272a2bd6a3c1ef19334bd9792"
+      },
+      {
+        "page_number": 74,
+        "page_id": "agentic-ai-with-python:74:319f82a0a5414863",
+        "chapter_id": "chapter-005",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "319f82a0a54148638ab9f17a002622281437c72f4759dfb55327d08a5e939961"
+      },
+      {
+        "page_number": 75,
+        "page_id": "agentic-ai-with-python:75:bfd6437a56b69c22",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bfd6437a56b69c2270ba04a515bb813de76ac5f2cdefc4a9eb6c40650d9e04c8"
+      },
+      {
+        "page_number": 76,
+        "page_id": "agentic-ai-with-python:76:f75d3e71820be8be",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f75d3e71820be8be159ef25a89dc0d4918461c2810151ea3fa69abad85b69e3a"
+      },
+      {
+        "page_number": 77,
+        "page_id": "agentic-ai-with-python:77:fcaec8d3a9feec86",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "fcaec8d3a9feec86f7670519811ecef4505b7ddc4400e8273f65f0119bc0f7d9"
+      },
+      {
+        "page_number": 78,
+        "page_id": "agentic-ai-with-python:78:6ce52a30b080c4d6",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6ce52a30b080c4d6d9e2846cdef0035ae593072dd7f0dd66ebaa92a8a0826508"
+      },
+      {
+        "page_number": 79,
+        "page_id": "agentic-ai-with-python:79:c8f743b79c9d23cc",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c8f743b79c9d23ccffdc970f3d8ec7ace23fded611b6ced220c3507981457438"
+      },
+      {
+        "page_number": 80,
+        "page_id": "agentic-ai-with-python:80:7d721c43ca5b06e1",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7d721c43ca5b06e13ad8b81938d02c6dcd60ce8baaf597d4c29109bb1c3b7d5e"
+      },
+      {
+        "page_number": 81,
+        "page_id": "agentic-ai-with-python:81:3ff62f1e1cc3468e",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3ff62f1e1cc3468e612c3ec5c82cf1f10b4814573e0c73d6c087286e61ab468f"
+      },
+      {
+        "page_number": 82,
+        "page_id": "agentic-ai-with-python:82:b8171f1044a064b0",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "b8171f1044a064b07240e3c64e3f8c225cc5d916b2ef6fc540d8c86287b6f361"
+      },
+      {
+        "page_number": 83,
+        "page_id": "agentic-ai-with-python:83:e2916a6f603966ec",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e2916a6f603966ec3131dc52d9dfbfa16b9704125199fbd37340273abb5c3b06"
+      },
+      {
+        "page_number": 84,
+        "page_id": "agentic-ai-with-python:84:20c03a82f99dfdf7",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "20c03a82f99dfdf722bf215a9d4b3270c067c48234c675ad9052b72a2a2bfd10"
+      },
+      {
+        "page_number": 85,
+        "page_id": "agentic-ai-with-python:85:83681c46f3cab9f4",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "83681c46f3cab9f4cb8001b09205f9f83f697e40cc8ef4835a397bc8ef524973"
+      },
+      {
+        "page_number": 86,
+        "page_id": "agentic-ai-with-python:86:7960f5faa25c2d83",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7960f5faa25c2d832af9a474ad87a544759045d4ffe8e2db2b8db9c31c0ac28d"
+      },
+      {
+        "page_number": 87,
+        "page_id": "agentic-ai-with-python:87:33944b5bd0114963",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "33944b5bd011496331ae897e1c9596cfaf0f028699acbd4accf835472ad7b7c3"
+      },
+      {
+        "page_number": 88,
+        "page_id": "agentic-ai-with-python:88:9bb4dedaa975ac87",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9bb4dedaa975ac87b3a19bf6d997fe7e3a95983532c0b51bea5f8a8fc0675d82"
+      },
+      {
+        "page_number": 89,
+        "page_id": "agentic-ai-with-python:89:a5a82df5ed73814f",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a5a82df5ed73814f2915ca870d9c83c058ae8990afb286adde85432a9b52848f"
+      },
+      {
+        "page_number": 90,
+        "page_id": "agentic-ai-with-python:90:01caa1247a07b015",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "01caa1247a07b01531263004af2422a63f8d6e059282b72b501cd36979f2d5f0"
+      },
+      {
+        "page_number": 91,
+        "page_id": "agentic-ai-with-python:91:da174a34d0991a21",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "da174a34d0991a214db5eb518e1e816c8724f833586baf195326c2f9aefe19e1"
+      },
+      {
+        "page_number": 92,
+        "page_id": "agentic-ai-with-python:92:d9a2eaf6599e28e7",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d9a2eaf6599e28e7fdbed074aaa8be34b587242671422dc1695319b6638dcb30"
+      },
+      {
+        "page_number": 93,
+        "page_id": "agentic-ai-with-python:93:91b419af3d06c394",
+        "chapter_id": "chapter-006",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "91b419af3d06c394530e4d8746d01cd5a123499c706a7a8333d3158ec91964f0"
+      },
+      {
+        "page_number": 94,
+        "page_id": "agentic-ai-with-python:94:4461892688ddceaa",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4461892688ddceaa52277a36044b804463aeebf80805e12bfbc9d33359cf419d"
+      },
+      {
+        "page_number": 95,
+        "page_id": "agentic-ai-with-python:95:e7350d6ebb942df4",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e7350d6ebb942df49ab9d894575e55bf4b6bb8939fc7265fa61d03d6c5549720"
+      },
+      {
+        "page_number": 96,
+        "page_id": "agentic-ai-with-python:96:9402193baa586987",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9402193baa586987594e4a69a82fbadc8f9c769ba566389c81ea0a08e0cc3075"
+      },
+      {
+        "page_number": 97,
+        "page_id": "agentic-ai-with-python:97:02fc1e3d6fb8180e",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "02fc1e3d6fb8180eef928662316f807af13df550014e301f368aa7043eaa8a0f"
+      },
+      {
+        "page_number": 98,
+        "page_id": "agentic-ai-with-python:98:7e50076e360d6fa4",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7e50076e360d6fa49d8ab1864b4ad26994de864f72dc2fe43f10e8b62250e0f7"
+      },
+      {
+        "page_number": 99,
+        "page_id": "agentic-ai-with-python:99:64ec04e65f7f3211",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "64ec04e65f7f3211fea55b38be34bbba9d2819ebdc226fc72f5110d2503fd997"
+      },
+      {
+        "page_number": 100,
+        "page_id": "agentic-ai-with-python:100:b6a736cf0a435ed9",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "b6a736cf0a435ed911dee9ad17e4c1e866cfe7bb376dcb4b134096fc56a25297"
+      },
+      {
+        "page_number": 101,
+        "page_id": "agentic-ai-with-python:101:e59c22ba46f8be13",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e59c22ba46f8be13bed94cd29a74aaae7ca6d7369c1966b00ed3b702b7a5af01"
+      },
+      {
+        "page_number": 102,
+        "page_id": "agentic-ai-with-python:102:ca44f52744824dfb",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ca44f52744824dfb183c9a5792615f0b82adc0dcca335468eebe447fef1e0732"
+      },
+      {
+        "page_number": 103,
+        "page_id": "agentic-ai-with-python:103:2d6987639dd69ea3",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2d6987639dd69ea3ba6f2f1dffcc1e44b5bfdd23ee556274f7ea7563048280d8"
+      },
+      {
+        "page_number": 104,
+        "page_id": "agentic-ai-with-python:104:f3b35ecf053cdad0",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f3b35ecf053cdad0264615c915fa062399fd0c6f992d49728f22ed300bf2fe25"
+      },
+      {
+        "page_number": 105,
+        "page_id": "agentic-ai-with-python:105:2e93b77a6cd617e3",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2e93b77a6cd617e34136fca07ad6638481601fa060ced371f2404662b9ac2b56"
+      },
+      {
+        "page_number": 106,
+        "page_id": "agentic-ai-with-python:106:668d86ededf6a4b6",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "668d86ededf6a4b6b6e29a9917b93dc5f71ec2db0872bf0c161818e58437b2f3"
+      },
+      {
+        "page_number": 107,
+        "page_id": "agentic-ai-with-python:107:79306e70a9291324",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "79306e70a92913242f438d72573a21a413141dbe7444f730e8a114e1b5c3a947"
+      },
+      {
+        "page_number": 108,
+        "page_id": "agentic-ai-with-python:108:4e91249012b56709",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4e91249012b5670964f517897dabbd25159da8531bf2dd789e95e7de8b789caf"
+      },
+      {
+        "page_number": 109,
+        "page_id": "agentic-ai-with-python:109:a1e6ec25c1b42e6a",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a1e6ec25c1b42e6ade9b3428b92c0366bdd553397903e88f320f04954549e391"
+      },
+      {
+        "page_number": 110,
+        "page_id": "agentic-ai-with-python:110:42a253778eba8107",
+        "chapter_id": "chapter-007",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "42a253778eba8107a84d35ecc0add8312bc80bd4630691c8878b40ddcad3e1ec"
+      },
+      {
+        "page_number": 111,
+        "page_id": "agentic-ai-with-python:111:2077f6b876f867af",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2077f6b876f867af32feeaa08132d8141cfe032e7517e6dc26a8f955cc512e62"
+      },
+      {
+        "page_number": 112,
+        "page_id": "agentic-ai-with-python:112:f42f2bdad42846ea",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f42f2bdad42846ea35c8a2dfb25eed0f9fabf2c9001e8eb70fce87783632ba96"
+      },
+      {
+        "page_number": 113,
+        "page_id": "agentic-ai-with-python:113:397d5db9a835f623",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "397d5db9a835f6231be60258b153e5a5b90466cbc2f6bedaad2173c837e07ad5"
+      },
+      {
+        "page_number": 114,
+        "page_id": "agentic-ai-with-python:114:bab0040b9785a777",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bab0040b9785a7778807918c8e93d6183526270a3f260e495c03138ef62fdc7a"
+      },
+      {
+        "page_number": 115,
+        "page_id": "agentic-ai-with-python:115:48131b6e4028c889",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "48131b6e4028c889ab743efabcde82d6f62215ce384123b8b78c40147f924bd2"
+      },
+      {
+        "page_number": 116,
+        "page_id": "agentic-ai-with-python:116:40dc0187c23f69d8",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "40dc0187c23f69d85518b3b971d2062a3a207059a5468337b260d3bbdb872a26"
+      },
+      {
+        "page_number": 117,
+        "page_id": "agentic-ai-with-python:117:650688bc9543a770",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "650688bc9543a7707b8008959295e249fd07c3323aa294dbbb35e125215e7ac8"
+      },
+      {
+        "page_number": 118,
+        "page_id": "agentic-ai-with-python:118:05817ae7da72b00b",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "05817ae7da72b00b3ed7583cdd66d845b397c24f6d927da3311bc66843240e62"
+      },
+      {
+        "page_number": 119,
+        "page_id": "agentic-ai-with-python:119:80a3601b14dd5b6b",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "80a3601b14dd5b6bbfe91a2f98bea7cc8efe0e1335f136a776e0299c137cfa86"
+      },
+      {
+        "page_number": 120,
+        "page_id": "agentic-ai-with-python:120:2511368ae2fd327d",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "2511368ae2fd327d2da6fa04b00ef0cde476e26fd372d552f24f0f409514b825"
+      },
+      {
+        "page_number": 121,
+        "page_id": "agentic-ai-with-python:121:648caa9d488b34b1",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "648caa9d488b34b1feb3dc5f24ef67025ca364111262cd782fed386b7f0be570"
+      },
+      {
+        "page_number": 122,
+        "page_id": "agentic-ai-with-python:122:297183fd37b55115",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "297183fd37b5511551cb2a822890f69a3317311c5fd0d2533f5b0360cf29407b"
+      },
+      {
+        "page_number": 123,
+        "page_id": "agentic-ai-with-python:123:0847ccea38e6a1d1",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "0847ccea38e6a1d11f9fbe95a256857b9bfbd205908d57b13f4c9d0b77043edb"
+      },
+      {
+        "page_number": 124,
+        "page_id": "agentic-ai-with-python:124:52785c445b4bfa6c",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "52785c445b4bfa6cfede0425e632e46dda547b7bbbeaebf318cbc8e89fe5e06e"
+      },
+      {
+        "page_number": 125,
+        "page_id": "agentic-ai-with-python:125:7a2dac958c324b35",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7a2dac958c324b3575a5fc8710f8104ba5cb744e0794eeb99ff1db47574c80b0"
+      },
+      {
+        "page_number": 126,
+        "page_id": "agentic-ai-with-python:126:ea82b0f41a30d037",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ea82b0f41a30d0378ff30cc26322ea60b542f894aff64ac6ef25907f5a8a36f7"
+      },
+      {
+        "page_number": 127,
+        "page_id": "agentic-ai-with-python:127:44047d29128a9518",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "44047d29128a951834c2d259bdc5ebdd124fd154dc2305fabcbd20c3233ecf92"
+      },
+      {
+        "page_number": 128,
+        "page_id": "agentic-ai-with-python:128:9a5c1738314fe439",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9a5c1738314fe439f614668b1c2dda992608fa98ac40e4bbce8954fdfb5b8d00"
+      },
+      {
+        "page_number": 129,
+        "page_id": "agentic-ai-with-python:129:d1fcd971fb7c0684",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d1fcd971fb7c068488243b5d2d62990b98958253dc906d30d6de73a0dd7dd0f0"
+      },
+      {
+        "page_number": 130,
+        "page_id": "agentic-ai-with-python:130:06fe9141b090cc2f",
+        "chapter_id": "chapter-008",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "06fe9141b090cc2fab1b72597f79189993c330268faeb98611eda225381dac05"
+      },
+      {
+        "page_number": 131,
+        "page_id": "agentic-ai-with-python:131:59836e62267dcd56",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "59836e62267dcd56351a6a4341d53ad93e23ddedb4b0ba262ba7f1bf1e68288b"
+      },
+      {
+        "page_number": 132,
+        "page_id": "agentic-ai-with-python:132:24c76cdf0a2d0da6",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "24c76cdf0a2d0da6698f520ddff615f4df6a6e83cd26783855d60d5c12b19f7d"
+      },
+      {
+        "page_number": 133,
+        "page_id": "agentic-ai-with-python:133:ef2c09ae1554ffaf",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ef2c09ae1554ffaf892491fdf8e7bad05322215b6985f010a50866e5291d5c60"
+      },
+      {
+        "page_number": 134,
+        "page_id": "agentic-ai-with-python:134:22eab0ba9dac383f",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "22eab0ba9dac383f08916036b714432d280bbbf237dbaeeb42a131a2b769ef73"
+      },
+      {
+        "page_number": 135,
+        "page_id": "agentic-ai-with-python:135:bd8c3d1f0ef85809",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bd8c3d1f0ef858099f546c78dafce5c410c23856d9c8d1510bac429450db2e44"
+      },
+      {
+        "page_number": 136,
+        "page_id": "agentic-ai-with-python:136:798aee3f851dfc9d",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "798aee3f851dfc9d0276e488509c790761691315eccb4894ca33cb5954ce3a56"
+      },
+      {
+        "page_number": 137,
+        "page_id": "agentic-ai-with-python:137:fe718e88d48f8d7f",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "fe718e88d48f8d7f66731d90f67a65cbefd380c20a4d8aa5713c08824033f27f"
+      },
+      {
+        "page_number": 138,
+        "page_id": "agentic-ai-with-python:138:87711c2566c5c498",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "87711c2566c5c498c72bb3e4136061decb0aee69dce2e0eaed07a1fc62d77e3f"
+      },
+      {
+        "page_number": 139,
+        "page_id": "agentic-ai-with-python:139:bb6ce6738c98a2ac",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bb6ce6738c98a2ac3d01181d8d24c5afe3222fbb6195980e5051601982e170a0"
+      },
+      {
+        "page_number": 140,
+        "page_id": "agentic-ai-with-python:140:30323ba99aeb98fc",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "30323ba99aeb98fcdbc250d3c228e67372dc8e210b83d29d6ad0f80db5727349"
+      },
+      {
+        "page_number": 141,
+        "page_id": "agentic-ai-with-python:141:05ba025d574d62aa",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "05ba025d574d62aa76df53876d04265589b98e1a59482e5ecbed0575133af1cf"
+      },
+      {
+        "page_number": 142,
+        "page_id": "agentic-ai-with-python:142:1ff88e12128ec409",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "1ff88e12128ec409854e7e381e143349ebc44c5c4d4f6f320c6ec11767191820"
+      },
+      {
+        "page_number": 143,
+        "page_id": "agentic-ai-with-python:143:d3eb2fcbad1d6029",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d3eb2fcbad1d60298a18ad7bce56c20c1bdd1a7ec127bd41651b5aa634d17508"
+      },
+      {
+        "page_number": 144,
+        "page_id": "agentic-ai-with-python:144:ed214c7011cf4816",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ed214c7011cf4816ad785e2868dda34f9dc1dbaa1e09158c6ed7a7e5a29b5d6f"
+      },
+      {
+        "page_number": 145,
+        "page_id": "agentic-ai-with-python:145:672978818781daeb",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "672978818781daeb5f62470c5041c626957add67397e344eb936821942224b7d"
+      },
+      {
+        "page_number": 146,
+        "page_id": "agentic-ai-with-python:146:ae7298a68fa3ee8f",
+        "chapter_id": "chapter-009",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "ae7298a68fa3ee8f6a3d7bff6cdebca62bab4932772c06286bac444e86453580"
+      },
+      {
+        "page_number": 147,
+        "page_id": "agentic-ai-with-python:147:13a6270f2a8e429b",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "13a6270f2a8e429b312853143191bcf9e700bad545a4209bdf18e940d0e8f2e4"
+      },
+      {
+        "page_number": 148,
+        "page_id": "agentic-ai-with-python:148:90d694c533b27366",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "90d694c533b273663dc63c428c4c849b3ccdf19fcb22564be55fb0fcaf8a66f9"
+      },
+      {
+        "page_number": 149,
+        "page_id": "agentic-ai-with-python:149:bd595148b042e4bc",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "bd595148b042e4bcb8bac7eb37c9166044042660f75dbfbdf60e6f201427870a"
+      },
+      {
+        "page_number": 150,
+        "page_id": "agentic-ai-with-python:150:031caa0c9dd6e21d",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "031caa0c9dd6e21dc87349277bb034f704341341b29a2f4f7468e5491a34b72b"
+      },
+      {
+        "page_number": 151,
+        "page_id": "agentic-ai-with-python:151:c34336081ac74689",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c34336081ac74689755463ce04b504be31f31d5bd6a99f45459e27e2aabaae30"
+      },
+      {
+        "page_number": 152,
+        "page_id": "agentic-ai-with-python:152:a6f27128417398cc",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a6f27128417398cc4ad8c0f15214a56b1a4a7952974c476e42362288cfe494f1"
+      },
+      {
+        "page_number": 153,
+        "page_id": "agentic-ai-with-python:153:fc2543f269ddfcb5",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "fc2543f269ddfcb58324af042c24f9c47307bfefbd348310bc9741b9374abe62"
+      },
+      {
+        "page_number": 154,
+        "page_id": "agentic-ai-with-python:154:b020b84fe019014f",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "b020b84fe019014f2b9fedd00bd227eecb2b29028d7bccd1b4d6a01bab356663"
+      },
+      {
+        "page_number": 155,
+        "page_id": "agentic-ai-with-python:155:e2e0c62d5074b22a",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e2e0c62d5074b22a8f77b32a64f959df7150b1946d7a695e0cb38ea313b82841"
+      },
+      {
+        "page_number": 156,
+        "page_id": "agentic-ai-with-python:156:6a5411fd09248c90",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6a5411fd09248c90c72409330ea4ec2389973620bbe7938d65f96717dfc68b2a"
+      },
+      {
+        "page_number": 157,
+        "page_id": "agentic-ai-with-python:157:170711b9079cf41a",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "170711b9079cf41a4e0a924bd94a141226af0946dd20d8c1c93fcb14be2ea341"
+      },
+      {
+        "page_number": 158,
+        "page_id": "agentic-ai-with-python:158:cfdbf51a0a59809d",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cfdbf51a0a59809d09590dff59fcecface8a258a21b584f84544516530ba33bf"
+      },
+      {
+        "page_number": 159,
+        "page_id": "agentic-ai-with-python:159:a9f65d2a3cbc8de1",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a9f65d2a3cbc8de1d6969271b6853ad276404a86f6c75eeec546d8e981300f37"
+      },
+      {
+        "page_number": 160,
+        "page_id": "agentic-ai-with-python:160:4d02e41d81d66f42",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "4d02e41d81d66f420eefbf9b879d08adb8423b3485c415510689eb08036b30ea"
+      },
+      {
+        "page_number": 161,
+        "page_id": "agentic-ai-with-python:161:f3b988e47ea4c079",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f3b988e47ea4c079b568f70449d7015f966c61cc8634f1405481b716de7d672e"
+      },
+      {
+        "page_number": 162,
+        "page_id": "agentic-ai-with-python:162:246bf03b4da3ace9",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "246bf03b4da3ace9928cb3ae5e0017ad7e807a1c2cd0cda6061b28e440429e37"
+      },
+      {
+        "page_number": 163,
+        "page_id": "agentic-ai-with-python:163:02fce3ac4f16206d",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "02fce3ac4f16206d47653006b159284bb568b394bb968f1b1395e1719c13e598"
+      },
+      {
+        "page_number": 164,
+        "page_id": "agentic-ai-with-python:164:cd7fdc52845ff6d3",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cd7fdc52845ff6d39f92f7780f1c8cb76f06edae3e4549714045db379bd4ca04"
+      },
+      {
+        "page_number": 165,
+        "page_id": "agentic-ai-with-python:165:729046d773fd9527",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "729046d773fd952729b5332e217c095da3df194895417b005e621f078b450891"
+      },
+      {
+        "page_number": 166,
+        "page_id": "agentic-ai-with-python:166:fd733a2031a97d9c",
+        "chapter_id": "chapter-010",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "fd733a2031a97d9cdddfaeeb92811beae66a13c6a53783ee954f25cc63036713"
+      },
+      {
+        "page_number": 167,
+        "page_id": "agentic-ai-with-python:167:6a3663a0fb4eeba4",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6a3663a0fb4eeba40e1665951f370a152f044d07ad8801109deb62bf514b64bb"
+      },
+      {
+        "page_number": 168,
+        "page_id": "agentic-ai-with-python:168:55a9ab2a332c1e9d",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "55a9ab2a332c1e9dfe8d27cb6ab3948020fdc0b12e369775be567835a7d919b9"
+      },
+      {
+        "page_number": 169,
+        "page_id": "agentic-ai-with-python:169:36bcd425b05f8184",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "36bcd425b05f81849ada2c6b68d2ba1677096138c46989b4c967bcf1a81dd9fe"
+      },
+      {
+        "page_number": 170,
+        "page_id": "agentic-ai-with-python:170:650f4207fdb32124",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "650f4207fdb32124005f0f4b983d17b62c714525484b9307bf9d197adca044c5"
+      },
+      {
+        "page_number": 171,
+        "page_id": "agentic-ai-with-python:171:079ac3c1b6b94c7b",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "079ac3c1b6b94c7bf5000cd8a931b8d8fe5e0ffcca56d41d0ea1f0ba11bc766d"
+      },
+      {
+        "page_number": 172,
+        "page_id": "agentic-ai-with-python:172:e1ca1c84e9046d49",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e1ca1c84e9046d49a1e97a9be299e1d9e32dba5c9cfdf7cf3a041e2d4ffe739c"
+      },
+      {
+        "page_number": 173,
+        "page_id": "agentic-ai-with-python:173:25d886d13212a6a7",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "25d886d13212a6a79cefc9f5ad0d578e8eda73966df0d1e87918b8f1cc83ca5b"
+      },
+      {
+        "page_number": 174,
+        "page_id": "agentic-ai-with-python:174:c7436236d4aa1ea2",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c7436236d4aa1ea27b355a6e842bbf994e11388c4af95d441e3c498e10b361e5"
+      },
+      {
+        "page_number": 175,
+        "page_id": "agentic-ai-with-python:175:c0d8a0b318d64b4e",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c0d8a0b318d64b4e489d7d60d07717931269705094bdeb6769ea9f27df94c9a1"
+      },
+      {
+        "page_number": 176,
+        "page_id": "agentic-ai-with-python:176:c268f98f565ef0f9",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c268f98f565ef0f9b99a08903bc82099b9400efab4e7a107a82eacd025797ead"
+      },
+      {
+        "page_number": 177,
+        "page_id": "agentic-ai-with-python:177:385134519a35420f",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "385134519a35420f235511a0e48f5fea291b4b9cfbcccc1fbacb69d0b8d9f7e0"
+      },
+      {
+        "page_number": 178,
+        "page_id": "agentic-ai-with-python:178:81487921d594b65b",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "81487921d594b65b4a96c741956c380b0dec42ba75ead29d9caa6b6e6e787f43"
+      },
+      {
+        "page_number": 179,
+        "page_id": "agentic-ai-with-python:179:cb720836f9ec205b",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cb720836f9ec205b774fcd1b1b2b0f4a4db5ddf995dfd1dc6d31b8635201fe2f"
+      },
+      {
+        "page_number": 180,
+        "page_id": "agentic-ai-with-python:180:f1b03a2cf5e38f18",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f1b03a2cf5e38f183524974623428e228f51392a90bb9ff3cff0a3bd846d7e29"
+      },
+      {
+        "page_number": 181,
+        "page_id": "agentic-ai-with-python:181:a6a501c9ef8ff333",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a6a501c9ef8ff3337f3fb6c854807497375f8f7faf1049f354b4465854c69ed4"
+      },
+      {
+        "page_number": 182,
+        "page_id": "agentic-ai-with-python:182:03b57e52ad72303b",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "03b57e52ad72303bc8dcfb90540a0e8c73afa45ac0d60187dd5a567b005d330e"
+      },
+      {
+        "page_number": 183,
+        "page_id": "agentic-ai-with-python:183:6f9d6047e5b61ece",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "6f9d6047e5b61ece00db8a57d83b6be6587c3dac561b37372c8d27c61b7ea758"
+      },
+      {
+        "page_number": 184,
+        "page_id": "agentic-ai-with-python:184:f41a12bc69b898b4",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f41a12bc69b898b46e78e8bfbf69f0c221c7e52c4349a91c17c04b0aa1dde367"
+      },
+      {
+        "page_number": 185,
+        "page_id": "agentic-ai-with-python:185:056c38e40dbf962d",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "056c38e40dbf962dd6c6160e1dc2c6e35039b15b2fee0e200f70b4150ca51e57"
+      },
+      {
+        "page_number": 186,
+        "page_id": "agentic-ai-with-python:186:93c3a941d8337c00",
+        "chapter_id": "chapter-011",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "93c3a941d8337c004b3ab087681aa86e2969bdcca3369d75eeba48e0a4bbc014"
+      },
+      {
+        "page_number": 187,
+        "page_id": "agentic-ai-with-python:187:cdd713c0d68b6776",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "cdd713c0d68b677680863afcff156e0676af0ded7158968c461ca6cdfaceaf8b"
+      },
+      {
+        "page_number": 188,
+        "page_id": "agentic-ai-with-python:188:f7911d09e3dc28ed",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "f7911d09e3dc28ed8d6643a46d91e13b51283939a14e2157a0476954b30b4b88"
+      },
+      {
+        "page_number": 189,
+        "page_id": "agentic-ai-with-python:189:7df2ed9486abed7d",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "7df2ed9486abed7d944942898b58ccb649b7a138b2773798658b1f97ff505d99"
+      },
+      {
+        "page_number": 190,
+        "page_id": "agentic-ai-with-python:190:1a61103b8deaecc2",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "1a61103b8deaecc2da9de2286107e920661f51b163f49d2fe6dba6fceab92280"
+      },
+      {
+        "page_number": 191,
+        "page_id": "agentic-ai-with-python:191:304d4cab462a7783",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "304d4cab462a77837176ddd3a4323047a77bc6961b388ce0fa4557fc9d9a3ddd"
+      },
+      {
+        "page_number": 192,
+        "page_id": "agentic-ai-with-python:192:18f02eb9bd36e4cb",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "18f02eb9bd36e4cb4bf91e24b871b56231722a68238860b99ba879f1ad7adc91"
+      },
+      {
+        "page_number": 193,
+        "page_id": "agentic-ai-with-python:193:c1d0f48f5055c97d",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c1d0f48f5055c97d5f1a12c3ae422ae6127b93b0829af5c4caeca81c122f608d"
+      },
+      {
+        "page_number": 194,
+        "page_id": "agentic-ai-with-python:194:a705ab3bed3958a0",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a705ab3bed3958a04d4227b5a00fb5c6aaf6a7afaa5480430c268e568a14ffc1"
+      },
+      {
+        "page_number": 195,
+        "page_id": "agentic-ai-with-python:195:57d417ed03103a18",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "57d417ed03103a18a7705390f2a552e5c607a0d2ef6bc2f323a371ba0c623ec7"
+      },
+      {
+        "page_number": 196,
+        "page_id": "agentic-ai-with-python:196:a8122fe70b096147",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a8122fe70b0961473ea996462fe0ac48b18c8491dcf87276fb4b9ef4ddbfb457"
+      },
+      {
+        "page_number": 197,
+        "page_id": "agentic-ai-with-python:197:e4143d8f1f3a988d",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e4143d8f1f3a988d3eecb53663ccd8e56e797f71ce31d88f24121b3a818075f5"
+      },
+      {
+        "page_number": 198,
+        "page_id": "agentic-ai-with-python:198:d63ff65bb0d51aa9",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "d63ff65bb0d51aa98872bd109a77f1223cce66a2b609a29f978e5909abfc87ec"
+      },
+      {
+        "page_number": 199,
+        "page_id": "agentic-ai-with-python:199:42be0fa6ac5f895e",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "42be0fa6ac5f895e2d43950105723865d570e5b72648bad0412f30da6ca5f7ce"
+      },
+      {
+        "page_number": 200,
+        "page_id": "agentic-ai-with-python:200:293aaa01a5396acb",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "293aaa01a5396acb4432587128b5ca4d67b4f581c50b20f51751788e80c635f7"
+      },
+      {
+        "page_number": 201,
+        "page_id": "agentic-ai-with-python:201:e8f97523c2cf26dc",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e8f97523c2cf26dc4fa4381c83350d1779acc7b7f06d6c41849dd14d90f7c58c"
+      },
+      {
+        "page_number": 202,
+        "page_id": "agentic-ai-with-python:202:506e1ec8fc324e29",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "506e1ec8fc324e297ee266869f2d464b97d1781096bfdb37fc2c7502c56e0f4d"
+      },
+      {
+        "page_number": 203,
+        "page_id": "agentic-ai-with-python:203:9a3eb76b62e45738",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "9a3eb76b62e457380e6bc190e25f55e5f24585c5b91ccd39f2eb7cc5c4419070"
+      },
+      {
+        "page_number": 204,
+        "page_id": "agentic-ai-with-python:204:51bc6716ffdead46",
+        "chapter_id": "chapter-012",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "51bc6716ffdead4632c3cfc9a72a6ad6e4d1a83f57739ac05d60067b9b8afb20"
+      },
+      {
+        "page_number": 205,
+        "page_id": "agentic-ai-with-python:205:3f247b4a7665bee1",
+        "chapter_id": "chapter-013",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "3f247b4a7665bee1f47a50a5e3419e4fcdacb5cf381b7b3b5648da71d545ba8d"
+      },
+      {
+        "page_number": 206,
+        "page_id": "agentic-ai-with-python:206:c2bf609a12067664",
+        "chapter_id": "chapter-013",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "c2bf609a1206766435dc10920aed3dd1c7c1b31cb24b4cd0bacd788917f5d738"
+      },
+      {
+        "page_number": 207,
+        "page_id": "agentic-ai-with-python:207:11af480940005386",
+        "chapter_id": "chapter-013",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "11af480940005386a203ebab21d0ed16352fe6175e9dc2d3c74646d37f3f0894"
+      },
+      {
+        "page_number": 208,
+        "page_id": "agentic-ai-with-python:208:282ae0c77963681f",
+        "chapter_id": "chapter-013",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "282ae0c77963681f7385e0044ddf2869aeece9fce77fba69ca2bf9b8cd44f26a"
+      },
+      {
+        "page_number": 209,
+        "page_id": "agentic-ai-with-python:209:a56194b36adb3ba5",
+        "chapter_id": "chapter-013",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "a56194b36adb3ba5584f04987a3197193b53709c79e347d88d1e53bef28752d9"
+      },
+      {
+        "page_number": 210,
+        "page_id": "agentic-ai-with-python:210:e99d2b56f7863a65",
+        "chapter_id": "chapter-014",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "e99d2b56f7863a653c0ef152e444c9923b04cb0e6e46670ae12ee91baa09c206"
+      },
+      {
+        "page_number": 211,
+        "page_id": "agentic-ai-with-python:211:98be97ab91e343b3",
+        "chapter_id": "chapter-014",
+        "content_revision": "2d6e081a92bbeac0e5364cf2",
+        "content_hash": "98be97ab91e343b3cd6fceb076af06b22108fd0cae29f8d72bfcead5af79615a"
+      }
+    ]
+  }
+}

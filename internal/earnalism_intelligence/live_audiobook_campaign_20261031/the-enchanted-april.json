@@ -1,0 +1,184 @@
+{
+  "slug": "the-enchanted-april",
+  "title": "The Enchanted April",
+  "book_id": "controlled-the-enchanted-april",
+  "url": "https://theearnalism.com/book/the-enchanted-april",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "dfa8275691728eefbda008a5d3f7c30da155961c752aacade216a09b0e3bbd36",
+      "url": "https://theearnalism.com/api/reader/book/the-enchanted-april/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-enchanted-april/source_evidence.json",
+      "sha256": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-enchanted-april/reader_manifest.json",
+      "sha256": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-enchanted-april/rights_decision.json",
+      "sha256": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-001.json",
+        "sha256": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-002.json",
+        "sha256": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-003.json",
+        "sha256": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-004.json",
+        "sha256": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-005.json",
+        "sha256": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-006.json",
+        "sha256": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-007.json",
+        "sha256": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-008.json",
+        "sha256": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-009.json",
+        "sha256": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-010.json",
+        "sha256": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-011.json",
+        "sha256": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-012.json",
+        "sha256": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-013.json",
+        "sha256": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-014.json",
+        "sha256": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-015.json",
+        "sha256": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-016.json",
+        "sha256": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-017.json",
+        "sha256": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-018.json",
+        "sha256": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-019.json",
+        "sha256": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-020.json",
+        "sha256": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-021.json",
+        "sha256": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-enchanted-april/chapters/chapter-022.json",
+        "sha256": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659"
+      }
+    ],
+    "live_chapter_count": 22,
+    "live_version": "f19f76667879cb83c6de",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "fd325022f02ec45a",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-enchanted-april",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

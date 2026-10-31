@@ -1,0 +1,183 @@
+{
+  "book": {
+    "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+    "estimated_reading_time": "7 min",
+    "back_cover_dominant_color": "#254238",
+    "title": "The Selfish Giant",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-selfish-giant",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+    "updated_at": "2026-10-29T08:53:03.392271+00:00",
+    "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
+    "dominant_color": "#254238",
+    "author": "Oscar Wilde",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
+    "created_at": "2026-07-03T20:07:49Z",
+    "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit and fairy tales.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306097/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508.webp",
+    "category_slug": "young-readers",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Selfish Giant",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "150bdf112236466945f5",
+        "word_count": 1652,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-selfish-giant/chapter-001?v=150bdf112236466945f5",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Selfish Giant",
+        "index_title": "The Selfish Giant",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-selfish-giant",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "public_route": "/book/the-selfish-giant",
+    "reader_url": "/reader/the-selfish-giant",
+    "preview_url": "/reader/the-selfish-giant",
+    "audio_url": "",
+    "audio_status": "AVAILABLE",
+    "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+    "audiobook_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "audiobook_duration_ms": 777120,
+    "audiobook_release_gate": "APPROVED",
+    "audio_qa_status": "QA_PASSED",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Selfish Giant",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "150bdf112236466945f5",
+      "word_count": 1652,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-selfish-giant/chapter-001?v=150bdf112236466945f5",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Selfish Giant",
+      "index_title": "The Selfish Giant",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": true,
+    "asset_slug": "the-selfish-giant",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 777120,
+    "delivery_mode": "PROTECTED_PACKAGE_V2",
+    "release_gate": "APPROVED",
+    "qa_status": "QA_PASSED",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "version": "009e67b8c63a7483",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "dd46ec8d382c9e53203a",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:42.939012+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-selfish-giant/manifest",
+      "total_pages": 3
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "5245872e15bf7f710998052f",
+    "page_count": 3,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-selfish-giant:1:36d4720c1ba72ece",
+        "chapter_id": "chapter-001",
+        "content_revision": "5245872e15bf7f710998052f",
+        "content_hash": "36d4720c1ba72ecede2ac3b2cc1e3f0a0690098dfa4b94d21c6fec3967d1b04a"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-selfish-giant:2:1c5f80c724de7c59",
+        "chapter_id": "chapter-001",
+        "content_revision": "5245872e15bf7f710998052f",
+        "content_hash": "1c5f80c724de7c59efdb863f4e8c4b213cc84f5a11d2aee40781567151f72aba"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-selfish-giant:3:546053f72c565dda",
+        "chapter_id": "chapter-001",
+        "content_revision": "5245872e15bf7f710998052f",
+        "content_hash": "546053f72c565dda97ac7be4654bc97974afd68b575c778a525c1b0750dad6f8"
+      }
+    ]
+  }
+}

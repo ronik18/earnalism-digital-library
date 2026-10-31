@@ -1,0 +1,2000 @@
+{
+  "book": {
+    "estimated_reading_time": "332 min",
+    "title": "The Picture of Dorian Gray",
+    "who_for": [
+      "Readers of public-domain classics",
+      "Students and careful rereaders"
+    ],
+    "id": "controlled-picture-of-dorian-gray",
+    "back_cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+    "learnings": [
+      "A source-faithful public-domain reading edition prepared for Earnalism."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+    "updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "description": "A clean Earnalism reader edition of The Picture of Dorian Gray, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+    "dominant_color": "#4A1C27",
+    "author": "Oscar Wilde",
+    "created_at": "2026-07-01T10:36:20Z",
+    "benefits": [
+      "Read a cleaned public-domain text without source repository boilerplate.",
+      "Use the quiet Earnalism reader with chapter navigation.",
+      "Access the work in a clean, chaptered reader."
+    ],
+    "about_author": "",
+    "category_slug": "classic-literature",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "THE PREFACE",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "7a539f21aacac83babb9",
+        "word_count": 382,
+        "reading_minutes": 2,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-001?v=7a539f21aacac83babb9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Preface",
+        "index_title": "The Preface",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "CHAPTER I.",
+        "order": 2,
+        "is_preview": false,
+        "content_version": "5c5b1b808ad605a8ef38",
+        "word_count": 4978,
+        "reading_minutes": 21,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-002?v=5c5b1b808ad605a8ef38",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 1",
+        "index_title": "Chapter 1",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "CHAPTER II.",
+        "order": 3,
+        "is_preview": false,
+        "content_version": "050a4cc4f6dd0f02e400",
+        "word_count": 5660,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-003?v=050a4cc4f6dd0f02e400",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 2",
+        "index_title": "Chapter 2",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "CHAPTER III.",
+        "order": 4,
+        "is_preview": false,
+        "content_version": "8a8a23a22f0e8bd386b7",
+        "word_count": 4452,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-004?v=8a8a23a22f0e8bd386b7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 3",
+        "index_title": "Chapter 3",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "CHAPTER IV.",
+        "order": 5,
+        "is_preview": false,
+        "content_version": "85af996399cd68cbd451",
+        "word_count": 5631,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-005?v=85af996399cd68cbd451",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 4",
+        "index_title": "Chapter 4",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "CHAPTER V.",
+        "order": 6,
+        "is_preview": false,
+        "content_version": "c3a7682ca452bb4dae92",
+        "word_count": 4424,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-006?v=c3a7682ca452bb4dae92",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 5",
+        "index_title": "Chapter 5",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "CHAPTER VI.",
+        "order": 7,
+        "is_preview": false,
+        "content_version": "128fd38e6b6fb1d17113",
+        "word_count": 2837,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-007?v=128fd38e6b6fb1d17113",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 6",
+        "index_title": "Chapter 6",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "CHAPTER VII.",
+        "order": 8,
+        "is_preview": false,
+        "content_version": "31e7493f98a543ec4212",
+        "word_count": 4458,
+        "reading_minutes": 19,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-008?v=31e7493f98a543ec4212",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 7",
+        "index_title": "Chapter 7",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "CHAPTER VIII.",
+        "order": 9,
+        "is_preview": false,
+        "content_version": "a13efbd576b0d358809a",
+        "word_count": 5324,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-009?v=a13efbd576b0d358809a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 8",
+        "index_title": "Chapter 8",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-010",
+        "title": "CHAPTER IX.",
+        "order": 10,
+        "is_preview": false,
+        "content_version": "e0667cbba35f1e1c3a58",
+        "word_count": 3922,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-010?v=e0667cbba35f1e1c3a58",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 9",
+        "index_title": "Chapter 9",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-011",
+        "title": "CHAPTER X.",
+        "order": 11,
+        "is_preview": false,
+        "content_version": "9c38f42c875f0a790a46",
+        "word_count": 3268,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-011?v=9c38f42c875f0a790a46",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 10",
+        "index_title": "Chapter 10",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-012",
+        "title": "CHAPTER XI.",
+        "order": 12,
+        "is_preview": false,
+        "content_version": "265c11ac36dc1adb831d",
+        "word_count": 7441,
+        "reading_minutes": 32,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-012?v=265c11ac36dc1adb831d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 11",
+        "index_title": "Chapter 11",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-013",
+        "title": "CHAPTER XII.",
+        "order": 13,
+        "is_preview": false,
+        "content_version": "26bcf7516b980c6f4893",
+        "word_count": 2791,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-013?v=26bcf7516b980c6f4893",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 12",
+        "index_title": "Chapter 12",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-014",
+        "title": "CHAPTER XIII.",
+        "order": 14,
+        "is_preview": false,
+        "content_version": "0fc51ca7acdbbef05735",
+        "word_count": 2514,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-014?v=0fc51ca7acdbbef05735",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 13",
+        "index_title": "Chapter 13",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-015",
+        "title": "CHAPTER XIV.",
+        "order": 15,
+        "is_preview": false,
+        "content_version": "a4f726e1d446c3c22bc2",
+        "word_count": 4571,
+        "reading_minutes": 20,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-015?v=a4f726e1d446c3c22bc2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 15,
+        "index_sequence_label": "15",
+        "display_title": "Chapter 14",
+        "index_title": "Chapter 14",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-016",
+        "title": "CHAPTER XV.",
+        "order": 16,
+        "is_preview": false,
+        "content_version": "fa8f25110a313f267e18",
+        "word_count": 3165,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-016?v=fa8f25110a313f267e18",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 16,
+        "index_sequence_label": "16",
+        "display_title": "Chapter 15",
+        "index_title": "Chapter 15",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-017",
+        "title": "CHAPTER XVI.",
+        "order": 17,
+        "is_preview": false,
+        "content_version": "c416736c0ba423211f1b",
+        "word_count": 3130,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-017?v=c416736c0ba423211f1b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 17,
+        "index_sequence_label": "17",
+        "display_title": "Chapter 16",
+        "index_title": "Chapter 16",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-018",
+        "title": "CHAPTER XVII.",
+        "order": 18,
+        "is_preview": false,
+        "content_version": "b10cce918ca303956c2c",
+        "word_count": 1809,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-018?v=b10cce918ca303956c2c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 18,
+        "index_sequence_label": "18",
+        "display_title": "Chapter 17",
+        "index_title": "Chapter 17",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-019",
+        "title": "CHAPTER XVIII.",
+        "order": 19,
+        "is_preview": false,
+        "content_version": "677b29a8e63ef35d8109",
+        "word_count": 3352,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-019?v=677b29a8e63ef35d8109",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 19,
+        "index_sequence_label": "19",
+        "display_title": "Chapter 18",
+        "index_title": "Chapter 18",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-020",
+        "title": "CHAPTER XIX.",
+        "order": 20,
+        "is_preview": false,
+        "content_version": "cc5a153eaecdd0fc832a",
+        "word_count": 3612,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-020?v=cc5a153eaecdd0fc832a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 20,
+        "index_sequence_label": "20",
+        "display_title": "Chapter 19",
+        "index_title": "Chapter 19",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-021",
+        "title": "CHAPTER XX.",
+        "order": 21,
+        "is_preview": false,
+        "content_version": "d4ad2c6f7a0af6ef1ab7",
+        "word_count": 1936,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-021?v=d4ad2c6f7a0af6ef1ab7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 21,
+        "index_sequence_label": "21",
+        "display_title": "Chapter 20",
+        "index_title": "Chapter 20",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "picture-of-dorian-gray",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "Complete Revised Edition",
+    "short_description": "A clean Earnalism reader edition of The Picture of Dorian Gray, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/picture-of-dorian-gray",
+    "reader_url": "/reader/picture-of-dorian-gray",
+    "preview_url": "/reader/picture-of-dorian-gray",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "THE PREFACE",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "7a539f21aacac83babb9",
+      "word_count": 382,
+      "reading_minutes": 2,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-001?v=7a539f21aacac83babb9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Preface",
+      "index_title": "The Preface",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER I.",
+      "order": 2,
+      "is_preview": false,
+      "content_version": "5c5b1b808ad605a8ef38",
+      "word_count": 4978,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-002?v=5c5b1b808ad605a8ef38",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 1",
+      "index_title": "Chapter 1",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER II.",
+      "order": 3,
+      "is_preview": false,
+      "content_version": "050a4cc4f6dd0f02e400",
+      "word_count": 5660,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-003?v=050a4cc4f6dd0f02e400",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 2",
+      "index_title": "Chapter 2",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "CHAPTER III.",
+      "order": 4,
+      "is_preview": false,
+      "content_version": "8a8a23a22f0e8bd386b7",
+      "word_count": 4452,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-004?v=8a8a23a22f0e8bd386b7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 3",
+      "index_title": "Chapter 3",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "CHAPTER IV.",
+      "order": 5,
+      "is_preview": false,
+      "content_version": "85af996399cd68cbd451",
+      "word_count": 5631,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-005?v=85af996399cd68cbd451",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 4",
+      "index_title": "Chapter 4",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "CHAPTER V.",
+      "order": 6,
+      "is_preview": false,
+      "content_version": "c3a7682ca452bb4dae92",
+      "word_count": 4424,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-006?v=c3a7682ca452bb4dae92",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 5",
+      "index_title": "Chapter 5",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "CHAPTER VI.",
+      "order": 7,
+      "is_preview": false,
+      "content_version": "128fd38e6b6fb1d17113",
+      "word_count": 2837,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-007?v=128fd38e6b6fb1d17113",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 6",
+      "index_title": "Chapter 6",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "CHAPTER VII.",
+      "order": 8,
+      "is_preview": false,
+      "content_version": "31e7493f98a543ec4212",
+      "word_count": 4458,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-008?v=31e7493f98a543ec4212",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 7",
+      "index_title": "Chapter 7",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "CHAPTER VIII.",
+      "order": 9,
+      "is_preview": false,
+      "content_version": "a13efbd576b0d358809a",
+      "word_count": 5324,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-009?v=a13efbd576b0d358809a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 8",
+      "index_title": "Chapter 8",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-010",
+      "title": "CHAPTER IX.",
+      "order": 10,
+      "is_preview": false,
+      "content_version": "e0667cbba35f1e1c3a58",
+      "word_count": 3922,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-010?v=e0667cbba35f1e1c3a58",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 9",
+      "index_title": "Chapter 9",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-011",
+      "title": "CHAPTER X.",
+      "order": 11,
+      "is_preview": false,
+      "content_version": "9c38f42c875f0a790a46",
+      "word_count": 3268,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-011?v=9c38f42c875f0a790a46",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 10",
+      "index_title": "Chapter 10",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-012",
+      "title": "CHAPTER XI.",
+      "order": 12,
+      "is_preview": false,
+      "content_version": "265c11ac36dc1adb831d",
+      "word_count": 7441,
+      "reading_minutes": 32,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-012?v=265c11ac36dc1adb831d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 11",
+      "index_title": "Chapter 11",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-013",
+      "title": "CHAPTER XII.",
+      "order": 13,
+      "is_preview": false,
+      "content_version": "26bcf7516b980c6f4893",
+      "word_count": 2791,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-013?v=26bcf7516b980c6f4893",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 12",
+      "index_title": "Chapter 12",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-014",
+      "title": "CHAPTER XIII.",
+      "order": 14,
+      "is_preview": false,
+      "content_version": "0fc51ca7acdbbef05735",
+      "word_count": 2514,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-014?v=0fc51ca7acdbbef05735",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 13",
+      "index_title": "Chapter 13",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-015",
+      "title": "CHAPTER XIV.",
+      "order": 15,
+      "is_preview": false,
+      "content_version": "a4f726e1d446c3c22bc2",
+      "word_count": 4571,
+      "reading_minutes": 20,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-015?v=a4f726e1d446c3c22bc2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 15,
+      "index_sequence_label": "15",
+      "display_title": "Chapter 14",
+      "index_title": "Chapter 14",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-016",
+      "title": "CHAPTER XV.",
+      "order": 16,
+      "is_preview": false,
+      "content_version": "fa8f25110a313f267e18",
+      "word_count": 3165,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-016?v=fa8f25110a313f267e18",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 16,
+      "index_sequence_label": "16",
+      "display_title": "Chapter 15",
+      "index_title": "Chapter 15",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-017",
+      "title": "CHAPTER XVI.",
+      "order": 17,
+      "is_preview": false,
+      "content_version": "c416736c0ba423211f1b",
+      "word_count": 3130,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-017?v=c416736c0ba423211f1b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 17,
+      "index_sequence_label": "17",
+      "display_title": "Chapter 16",
+      "index_title": "Chapter 16",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-018",
+      "title": "CHAPTER XVII.",
+      "order": 18,
+      "is_preview": false,
+      "content_version": "b10cce918ca303956c2c",
+      "word_count": 1809,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-018?v=b10cce918ca303956c2c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 18,
+      "index_sequence_label": "18",
+      "display_title": "Chapter 17",
+      "index_title": "Chapter 17",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-019",
+      "title": "CHAPTER XVIII.",
+      "order": 19,
+      "is_preview": false,
+      "content_version": "677b29a8e63ef35d8109",
+      "word_count": 3352,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-019?v=677b29a8e63ef35d8109",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 19,
+      "index_sequence_label": "19",
+      "display_title": "Chapter 18",
+      "index_title": "Chapter 18",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-020",
+      "title": "CHAPTER XIX.",
+      "order": 20,
+      "is_preview": false,
+      "content_version": "cc5a153eaecdd0fc832a",
+      "word_count": 3612,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-020?v=cc5a153eaecdd0fc832a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 20,
+      "index_sequence_label": "20",
+      "display_title": "Chapter 19",
+      "index_title": "Chapter 19",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-021",
+      "title": "CHAPTER XX.",
+      "order": 21,
+      "is_preview": false,
+      "content_version": "d4ad2c6f7a0af6ef1ab7",
+      "word_count": 1936,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/picture-of-dorian-gray/chapter-021?v=d4ad2c6f7a0af6ef1ab7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 21,
+      "index_sequence_label": "21",
+      "display_title": "Chapter 20",
+      "index_title": "Chapter 20",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "d9cd827c80b15548",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "9079f2e57431af1e14b8",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:37.959575+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/picture-of-dorian-gray/manifest",
+      "total_pages": 161
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-2e8196a937af24c52f66ade1e0352b73",
+    "content_revision": "033d2546e7443d3fd9733722",
+    "page_count": 161,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "picture-of-dorian-gray:1:4a7cf29169b1270d",
+        "chapter_id": "chapter-001",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4a7cf29169b1270d880bcc7685f4065da1bfc3cb19447e59894b2bf81deeb2e1"
+      },
+      {
+        "page_number": 2,
+        "page_id": "picture-of-dorian-gray:2:b3dc109db3b4dfda",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b3dc109db3b4dfda8443ac438d3ea970b9ae73c50462bc8811e0ae8c269cc874"
+      },
+      {
+        "page_number": 3,
+        "page_id": "picture-of-dorian-gray:3:99dacd2d43153582",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "99dacd2d4315358221393b47f21febbc24f6259a90880557a198363201ce3917"
+      },
+      {
+        "page_number": 4,
+        "page_id": "picture-of-dorian-gray:4:3b21cffafc7f1d18",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3b21cffafc7f1d1856ea8e8e7bfc495e90f6b1f36d26fe183686bb0449a5a8d9"
+      },
+      {
+        "page_number": 5,
+        "page_id": "picture-of-dorian-gray:5:d5223f428cad5f50",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "d5223f428cad5f500408ff43fb18fe905d156be2dd9e49bb594ccbda606d299e"
+      },
+      {
+        "page_number": 6,
+        "page_id": "picture-of-dorian-gray:6:5282f16986a03178",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5282f16986a03178f9ae2d8fbfdcba42ca6c0e258a516bc8d8b24b35aa13bdd0"
+      },
+      {
+        "page_number": 7,
+        "page_id": "picture-of-dorian-gray:7:8835bf3b6de9f6ae",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8835bf3b6de9f6aeec6d1cdb4399ec9ea98d00a70c06c71ea9fc0da6832dbbda"
+      },
+      {
+        "page_number": 8,
+        "page_id": "picture-of-dorian-gray:8:40e09c3870ea248b",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "40e09c3870ea248b4daa31b20aef32fa8d5973f1a24789e2746d0a2031597d5e"
+      },
+      {
+        "page_number": 9,
+        "page_id": "picture-of-dorian-gray:9:3122b83d235d91a9",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3122b83d235d91a9270c80468e489baf053eb5d4db06f238902302fb940dc8cb"
+      },
+      {
+        "page_number": 10,
+        "page_id": "picture-of-dorian-gray:10:96b1cb26bc1009bb",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "96b1cb26bc1009bb4968e3a9c6ba0ca3953ebe23f7b50117ab9d8ff408a8e0c0"
+      },
+      {
+        "page_number": 11,
+        "page_id": "picture-of-dorian-gray:11:b49dbe950330ceff",
+        "chapter_id": "chapter-002",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b49dbe950330ceff9ea76c0c51686056dcdc8b0e7d93b8bcb0031fdae7d604ac"
+      },
+      {
+        "page_number": 12,
+        "page_id": "picture-of-dorian-gray:12:edaa39ee4ffea0b8",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "edaa39ee4ffea0b844c9927e6b498bd1100761e626b30359fa6cd77f5a629f89"
+      },
+      {
+        "page_number": 13,
+        "page_id": "picture-of-dorian-gray:13:2084bcd1c261cc4a",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2084bcd1c261cc4a2eae023687f0d635aceff9295d338ece298b31ae3fa48571"
+      },
+      {
+        "page_number": 14,
+        "page_id": "picture-of-dorian-gray:14:4fc9e9909597dc8d",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4fc9e9909597dc8d2f9f074c32e0dbfa33f20c2fcba0fd79fe7274ec46dc1ca2"
+      },
+      {
+        "page_number": 15,
+        "page_id": "picture-of-dorian-gray:15:3af16c9180d7e9ba",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3af16c9180d7e9ba73850d3eeed722f6d629b50d9e16901ef5cb65311f2a7f69"
+      },
+      {
+        "page_number": 16,
+        "page_id": "picture-of-dorian-gray:16:5f8b243b30d8da00",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5f8b243b30d8da002af1ab283952ba8e02f2a7a6d28be88c32c7684c639775f4"
+      },
+      {
+        "page_number": 17,
+        "page_id": "picture-of-dorian-gray:17:c43bb1f1c3ffa802",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "c43bb1f1c3ffa8026a03e6780a7a102f1dbcdef6d5f8b2c9fd92c2347d859661"
+      },
+      {
+        "page_number": 18,
+        "page_id": "picture-of-dorian-gray:18:6bab6c01bb1a234d",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "6bab6c01bb1a234d3a22d06fa96831f90c485335b17e4d32f1cdb393b181c185"
+      },
+      {
+        "page_number": 19,
+        "page_id": "picture-of-dorian-gray:19:f65306ec988509ab",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f65306ec988509ab23a4ef010f30d52d97f38c662763084b4655244e7ba95701"
+      },
+      {
+        "page_number": 20,
+        "page_id": "picture-of-dorian-gray:20:2f371ee8877b92b4",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2f371ee8877b92b4e18cb4a6a6092dd7b9dc27086c5210a1fc3c2b2be6dcdc84"
+      },
+      {
+        "page_number": 21,
+        "page_id": "picture-of-dorian-gray:21:df60db260ad9df58",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "df60db260ad9df580bccb1f893a0abe2e5239dcf9456b949630b019ff0d818a6"
+      },
+      {
+        "page_number": 22,
+        "page_id": "picture-of-dorian-gray:22:30722172695668ce",
+        "chapter_id": "chapter-003",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "30722172695668cea642ef094c513c97a95435a749a175f1d2174945fec872e5"
+      },
+      {
+        "page_number": 23,
+        "page_id": "picture-of-dorian-gray:23:3db94be9d4481f9e",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3db94be9d4481f9e396b454bf713be84ef3d27c4b54a92c46d00e7e149cd8f1f"
+      },
+      {
+        "page_number": 24,
+        "page_id": "picture-of-dorian-gray:24:bda896bfbe5a4bc9",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "bda896bfbe5a4bc97f9f3ac2c467366a55fac36df178a570d495d964010efa8b"
+      },
+      {
+        "page_number": 25,
+        "page_id": "picture-of-dorian-gray:25:e217fe394d3104e0",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "e217fe394d3104e05aeafaf84e62b3728f301dea196bc4c2f7577c1bcb9b7927"
+      },
+      {
+        "page_number": 26,
+        "page_id": "picture-of-dorian-gray:26:28bea40f86b8ac17",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "28bea40f86b8ac17f5a0577e49776b157cbe9231fdaed529150a8412e2c444ae"
+      },
+      {
+        "page_number": 27,
+        "page_id": "picture-of-dorian-gray:27:d9249760b6ab3f29",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "d9249760b6ab3f29327638353e3b48d9f01e46c1e98c4512e097a19bab24b0fb"
+      },
+      {
+        "page_number": 28,
+        "page_id": "picture-of-dorian-gray:28:f5b824ea3a2a680f",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f5b824ea3a2a680fe1a6ed5346b423d40fb0f368690592451c48f075648eb645"
+      },
+      {
+        "page_number": 29,
+        "page_id": "picture-of-dorian-gray:29:caabb411a170f951",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "caabb411a170f95169cb60eb52973249fd22bebda3b23f1465db927ee1a05a3c"
+      },
+      {
+        "page_number": 30,
+        "page_id": "picture-of-dorian-gray:30:2f9e6d9792eefe81",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2f9e6d9792eefe81d37af632204dcde5df558033f8321528f932449f0f3b9329"
+      },
+      {
+        "page_number": 31,
+        "page_id": "picture-of-dorian-gray:31:9cb859e4f6dc0f81",
+        "chapter_id": "chapter-004",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9cb859e4f6dc0f81e08b8b3138609f6b1cd171b095fbe55423264ec982a63607"
+      },
+      {
+        "page_number": 32,
+        "page_id": "picture-of-dorian-gray:32:2f03918622f85f88",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2f03918622f85f88f645a81fa1da3b42e45414eaca3ea0c9397f6628f71ea005"
+      },
+      {
+        "page_number": 33,
+        "page_id": "picture-of-dorian-gray:33:087c6ea240c351f3",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "087c6ea240c351f34630bf3cf350806202041865cf8559777b322ba497b6cd17"
+      },
+      {
+        "page_number": 34,
+        "page_id": "picture-of-dorian-gray:34:56c8187eebeb3142",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "56c8187eebeb3142c8eb6afb795fc3445f3a5b04468ca2e96ef72c2a9efd4d6c"
+      },
+      {
+        "page_number": 35,
+        "page_id": "picture-of-dorian-gray:35:9614c8ee61f2254f",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9614c8ee61f2254f03ddfd1a33589ea5e60a39298b3f250cbcd1c7f5ab15e6f0"
+      },
+      {
+        "page_number": 36,
+        "page_id": "picture-of-dorian-gray:36:9fda746bbeea839e",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9fda746bbeea839ec1c1d251bff1f6d863df7ca27ff550f728cf0db552053872"
+      },
+      {
+        "page_number": 37,
+        "page_id": "picture-of-dorian-gray:37:b8b686d84d788b88",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b8b686d84d788b88a344d020438c3e5a0a1913fe63e915feacf00a6566524479"
+      },
+      {
+        "page_number": 38,
+        "page_id": "picture-of-dorian-gray:38:7ea2eaae05de2689",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7ea2eaae05de26893a73c9730f288b49afe26ca918501ac52bd92781e89df9c5"
+      },
+      {
+        "page_number": 39,
+        "page_id": "picture-of-dorian-gray:39:866d1bf91811c254",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "866d1bf91811c254a8828672832d2151ec6c6f43ae247869194ad0c3f3d9a4cd"
+      },
+      {
+        "page_number": 40,
+        "page_id": "picture-of-dorian-gray:40:8ab6192900e86eb3",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8ab6192900e86eb3ceb1c19d0970c9df7863e5b235a7e5f0ae840f1407702941"
+      },
+      {
+        "page_number": 41,
+        "page_id": "picture-of-dorian-gray:41:1b1ba959cfa12607",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "1b1ba959cfa12607c9cfbd1e36b44f77ff35c3ae916a9e5e37d43459b272baf4"
+      },
+      {
+        "page_number": 42,
+        "page_id": "picture-of-dorian-gray:42:8b6564ac57748b6e",
+        "chapter_id": "chapter-005",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8b6564ac57748b6e7db81dc5d56f5918f835a1d11c8e6503dbdf0806516dcecc"
+      },
+      {
+        "page_number": 43,
+        "page_id": "picture-of-dorian-gray:43:e3de93fc34f984ed",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "e3de93fc34f984ed5e3ee9da82898813d7ec52d0cd5e79d86f78343ee0f60240"
+      },
+      {
+        "page_number": 44,
+        "page_id": "picture-of-dorian-gray:44:f380df5646283539",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f380df5646283539417834a0f4184c275705f486163edfc0df04ce2ff5cb1d6a"
+      },
+      {
+        "page_number": 45,
+        "page_id": "picture-of-dorian-gray:45:7bcc1be549b76589",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7bcc1be549b765896f31b4e154b3b739c962521d64604745202493bc8d13d9d5"
+      },
+      {
+        "page_number": 46,
+        "page_id": "picture-of-dorian-gray:46:a8f5b606e9793265",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a8f5b606e9793265e44fcef0cbd5cd1dab219850cddc79e935e0f1332b9a4639"
+      },
+      {
+        "page_number": 47,
+        "page_id": "picture-of-dorian-gray:47:a8120ad1465814b6",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a8120ad1465814b6c4a7a18d07bd1144d0af7229ca20f48178d95f51e523ede6"
+      },
+      {
+        "page_number": 48,
+        "page_id": "picture-of-dorian-gray:48:8a09d2ac08b55f0a",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8a09d2ac08b55f0abb2466832c74e29f1f438b3d47ba13b753f2bca7582abde4"
+      },
+      {
+        "page_number": 49,
+        "page_id": "picture-of-dorian-gray:49:905a57ee48b825ea",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "905a57ee48b825ea1ca25f110a4e9ba8daa2661e24d0b81b5b1185bc5cc19ca3"
+      },
+      {
+        "page_number": 50,
+        "page_id": "picture-of-dorian-gray:50:de246413f7b5697f",
+        "chapter_id": "chapter-006",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "de246413f7b5697f8dd8f1ba599c7ef9bf2cefb30eb13b0ec1bb00ad049a7b64"
+      },
+      {
+        "page_number": 51,
+        "page_id": "picture-of-dorian-gray:51:5111cc8b84d0887d",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5111cc8b84d0887d0521b87a5eb0eed904e2f1ba71a89861095eaaa586d1a6b2"
+      },
+      {
+        "page_number": 52,
+        "page_id": "picture-of-dorian-gray:52:5e1e8a0d85611f2f",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5e1e8a0d85611f2f4fe8b0a19b730a036b8a7e509ce0c3a45c9babeb5b65818c"
+      },
+      {
+        "page_number": 53,
+        "page_id": "picture-of-dorian-gray:53:6b9fd362c3200979",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "6b9fd362c32009798358995f5d63f80ae4f8b08cb0afd4d975583ae72b75a61b"
+      },
+      {
+        "page_number": 54,
+        "page_id": "picture-of-dorian-gray:54:4eae170b78d4aec0",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4eae170b78d4aec05ab1431d7bd64fd6332cd5d8890524be7972a9a57bfc288e"
+      },
+      {
+        "page_number": 55,
+        "page_id": "picture-of-dorian-gray:55:c527f3334bd9792b",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "c527f3334bd9792b18014b34722e7b3e0ba580e6f977553916243013fc15d09b"
+      },
+      {
+        "page_number": 56,
+        "page_id": "picture-of-dorian-gray:56:affa95dffc301d47",
+        "chapter_id": "chapter-007",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "affa95dffc301d477fbc1205935df7830ebe1ba7a9977003a75af4858e81bcd0"
+      },
+      {
+        "page_number": 57,
+        "page_id": "picture-of-dorian-gray:57:879220d7196f1e30",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "879220d7196f1e306d17e62bdea1c630d2ceee7f781fbb79b13b266288f61f42"
+      },
+      {
+        "page_number": 58,
+        "page_id": "picture-of-dorian-gray:58:efee5fa74c6c550a",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "efee5fa74c6c550a2c7a88d04db808e12d1a13e2f2b8f2bdf61c97d75b87e1a7"
+      },
+      {
+        "page_number": 59,
+        "page_id": "picture-of-dorian-gray:59:9b284e7ad3ee0de8",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9b284e7ad3ee0de82fb01a60dfeba2306c54f4c3e20e52b4d4d792749b26fca9"
+      },
+      {
+        "page_number": 60,
+        "page_id": "picture-of-dorian-gray:60:cba50bb4cc7da4bb",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "cba50bb4cc7da4bb9c3a32504f16eb748121142ba860a18faf25090dc973b61e"
+      },
+      {
+        "page_number": 61,
+        "page_id": "picture-of-dorian-gray:61:1225321fa6709d4f",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "1225321fa6709d4fda6fa683eb1bd5e0a65197be8deb98ea6ad7c68d7355fff5"
+      },
+      {
+        "page_number": 62,
+        "page_id": "picture-of-dorian-gray:62:32e3522fd07a7d5a",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "32e3522fd07a7d5a69c9cc98e54931c2aa0ab18295b421437ec0e1a1fbe87eca"
+      },
+      {
+        "page_number": 63,
+        "page_id": "picture-of-dorian-gray:63:28af448f818a368c",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "28af448f818a368c515b632fc937d47243fc89fad3a05270fa27ae69760a7d10"
+      },
+      {
+        "page_number": 64,
+        "page_id": "picture-of-dorian-gray:64:c8b07bd0bb635aee",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "c8b07bd0bb635aeeeed34fb77a560a7ec7d65d7704d8d002719983659de35f8e"
+      },
+      {
+        "page_number": 65,
+        "page_id": "picture-of-dorian-gray:65:8a60d1f86a8571cd",
+        "chapter_id": "chapter-008",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8a60d1f86a8571cd714bfe1ad729643a10c58e3e706dc343c167f20f386d21db"
+      },
+      {
+        "page_number": 66,
+        "page_id": "picture-of-dorian-gray:66:7fd77c24b8dc617b",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7fd77c24b8dc617b961518c73efb78e635d28dac76165174f8fca8521fb4a152"
+      },
+      {
+        "page_number": 67,
+        "page_id": "picture-of-dorian-gray:67:bb77cacb4f0b2552",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "bb77cacb4f0b2552ada851e12841b9364fa6322c6e79fea03317a7bc41e66293"
+      },
+      {
+        "page_number": 68,
+        "page_id": "picture-of-dorian-gray:68:2b77407cb41dc437",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2b77407cb41dc437d87f352dc62f6eec81870c561de59a3eac04a71d3b8ff438"
+      },
+      {
+        "page_number": 69,
+        "page_id": "picture-of-dorian-gray:69:41b55eb0d1419437",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "41b55eb0d14194374b1467dd2e51ca6505a53f78f8a4aa6a427a099d028bd010"
+      },
+      {
+        "page_number": 70,
+        "page_id": "picture-of-dorian-gray:70:dc9676139b18e464",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "dc9676139b18e4641278b7769d1d30c39dd08cb55d1791dd09f42ed16f5c2b73"
+      },
+      {
+        "page_number": 71,
+        "page_id": "picture-of-dorian-gray:71:bf90c61d3e87aae5",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "bf90c61d3e87aae51364a0995bd0d96142aecd6c7ab6c9d983da12b0a5416499"
+      },
+      {
+        "page_number": 72,
+        "page_id": "picture-of-dorian-gray:72:2dc64f57c3d23c11",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "2dc64f57c3d23c11601fd6ebcd5d6636bd2a67e95a5cce458830e4b989173f8a"
+      },
+      {
+        "page_number": 73,
+        "page_id": "picture-of-dorian-gray:73:306509f69fc2ee4e",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "306509f69fc2ee4e845f9cd20126f02b8977f82377bafe4e49c5abfb3c56ab81"
+      },
+      {
+        "page_number": 74,
+        "page_id": "picture-of-dorian-gray:74:7ac67fc379b95ac2",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7ac67fc379b95ac2f8fb9cc6e60c578ecb3ef4868e0655d17f74a7ca2cd80bba"
+      },
+      {
+        "page_number": 75,
+        "page_id": "picture-of-dorian-gray:75:49e8556c7b8e01c2",
+        "chapter_id": "chapter-009",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "49e8556c7b8e01c20f40ab60c0d41d55daa42f094d0a6baf6f9e999e63a11df0"
+      },
+      {
+        "page_number": 76,
+        "page_id": "picture-of-dorian-gray:76:4a4d0c20386f5c1f",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4a4d0c20386f5c1fdbc94611610a8fe58bee2d4efdbc30f4c93991812ddd6cda"
+      },
+      {
+        "page_number": 77,
+        "page_id": "picture-of-dorian-gray:77:9917af5b6b01e70b",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9917af5b6b01e70be72f344f44ab62d6965cc3687b31f2930ca319dd16a39048"
+      },
+      {
+        "page_number": 78,
+        "page_id": "picture-of-dorian-gray:78:44ad6bb3e73f7c05",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "44ad6bb3e73f7c055c4094fa41e552e55eafec41ad1365b8488b275a7bc659b2"
+      },
+      {
+        "page_number": 79,
+        "page_id": "picture-of-dorian-gray:79:606a5dba41237776",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "606a5dba412377760a42d61d1206209b7f7eee1f99e06fdec5c5ce4b79fddd3d"
+      },
+      {
+        "page_number": 80,
+        "page_id": "picture-of-dorian-gray:80:289b235b453b41d9",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "289b235b453b41d9b99ae75e5ffb2c55e071a35af2e2f03d831ec9eec0dda451"
+      },
+      {
+        "page_number": 81,
+        "page_id": "picture-of-dorian-gray:81:02a58aca4a74da82",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "02a58aca4a74da8272a7ba45e474068426323e1e4273d5abb9370fcac8b5cc74"
+      },
+      {
+        "page_number": 82,
+        "page_id": "picture-of-dorian-gray:82:9686f49dbcec605d",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9686f49dbcec605dd729d6747ea4078590c38d63773d5ec7bfb652562ae726d9"
+      },
+      {
+        "page_number": 83,
+        "page_id": "picture-of-dorian-gray:83:3de7b13e9600288e",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3de7b13e9600288eb19259f7a96ec8055715184578db89443c96a672f4ca6984"
+      },
+      {
+        "page_number": 84,
+        "page_id": "picture-of-dorian-gray:84:387ac179cc8ff756",
+        "chapter_id": "chapter-010",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "387ac179cc8ff75603c01b1849bfc559e1117382618dd6f114be5460c92b632e"
+      },
+      {
+        "page_number": 85,
+        "page_id": "picture-of-dorian-gray:85:76831d628c588a6b",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "76831d628c588a6bfb67db78bfb1c7953c524e38ee8dc6444dc8e9783b77e150"
+      },
+      {
+        "page_number": 86,
+        "page_id": "picture-of-dorian-gray:86:f4b05ddc48578935",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f4b05ddc485789359b9a2990e2f4dffd0cab40bef36bd5b4caef2f18ef16dafe"
+      },
+      {
+        "page_number": 87,
+        "page_id": "picture-of-dorian-gray:87:18f51a0e61d86e17",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "18f51a0e61d86e170390946f2342336e75b8d2b143753ac7268150481bc6c6bf"
+      },
+      {
+        "page_number": 88,
+        "page_id": "picture-of-dorian-gray:88:cef00b63d5a58ec5",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "cef00b63d5a58ec5e193a14b093fc5a13cb8b990eb54bb980701318c77452618"
+      },
+      {
+        "page_number": 89,
+        "page_id": "picture-of-dorian-gray:89:b3226836aa0a0bca",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b3226836aa0a0bca722ab786571b4a11cdb4a2907ae63c3db482e5e323228ccd"
+      },
+      {
+        "page_number": 90,
+        "page_id": "picture-of-dorian-gray:90:a2b19bc636db0a4e",
+        "chapter_id": "chapter-011",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a2b19bc636db0a4e92e896ba51052ff40b1ddbaeb2d78b486e9b21814cf294e5"
+      },
+      {
+        "page_number": 91,
+        "page_id": "picture-of-dorian-gray:91:5e3cfde94102fc0e",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5e3cfde94102fc0e13430ed71af0bc0e3dba5ee472409d59dd78d92260153149"
+      },
+      {
+        "page_number": 92,
+        "page_id": "picture-of-dorian-gray:92:ccc05e345a771adc",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "ccc05e345a771adc29961caeb7c41e32ab5b133e4a98ef4a228a6abdef150126"
+      },
+      {
+        "page_number": 93,
+        "page_id": "picture-of-dorian-gray:93:27b86d7416ab5d50",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "27b86d7416ab5d5022c484273d3d07968156530fadcb1554b52742808d4aabd8"
+      },
+      {
+        "page_number": 94,
+        "page_id": "picture-of-dorian-gray:94:4ca778f3aeccd6bc",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4ca778f3aeccd6bc3b7a3bef888660f5bc7519bb7d1c1553154b4db5ce7f2a52"
+      },
+      {
+        "page_number": 95,
+        "page_id": "picture-of-dorian-gray:95:725bad66e163081d",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "725bad66e163081d75bf0c851a6b155817cb288431f1b5a14895c48ef0690d4f"
+      },
+      {
+        "page_number": 96,
+        "page_id": "picture-of-dorian-gray:96:bdaaa2393661c3d5",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "bdaaa2393661c3d54c68480654eed4f6c480a10e6d25a6fb762e4062aeecd8d9"
+      },
+      {
+        "page_number": 97,
+        "page_id": "picture-of-dorian-gray:97:707c3fbabe606046",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "707c3fbabe606046176d5112c4ac8dfd2035516c9250b0a759824dc02170b8f3"
+      },
+      {
+        "page_number": 98,
+        "page_id": "picture-of-dorian-gray:98:409f2f25e1060580",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "409f2f25e1060580459fab838ddeaee5411df91905c8547b9b9400b76c8aff63"
+      },
+      {
+        "page_number": 99,
+        "page_id": "picture-of-dorian-gray:99:4e7b6be09ae1fa7f",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4e7b6be09ae1fa7f3f68d3349dd53fbdb502cdbde6b2af5951236554ab7b7c64"
+      },
+      {
+        "page_number": 100,
+        "page_id": "picture-of-dorian-gray:100:7bfd45584f1c8a54",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7bfd45584f1c8a541476836886bd610ead424da0ee218e52af491a46cccea0c4"
+      },
+      {
+        "page_number": 101,
+        "page_id": "picture-of-dorian-gray:101:8ee578274f777891",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8ee578274f77789193168f9005ee1eaa81a2dcf408370210567cb76680d61a04"
+      },
+      {
+        "page_number": 102,
+        "page_id": "picture-of-dorian-gray:102:15d5c466368e5a6f",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "15d5c466368e5a6f423bf32b2e9199e074a727e4bd0bbe84d64db4d7baa8d931"
+      },
+      {
+        "page_number": 103,
+        "page_id": "picture-of-dorian-gray:103:7d6e30cbd9e4dcc4",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7d6e30cbd9e4dcc45faa1a9e80b7af6291e9df81db929ba9514b1fafa70cb04b"
+      },
+      {
+        "page_number": 104,
+        "page_id": "picture-of-dorian-gray:104:9c555b4f12e841ee",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9c555b4f12e841eebdda83a55da6014b56dccd2c6e361a54818de8ecc2792458"
+      },
+      {
+        "page_number": 105,
+        "page_id": "picture-of-dorian-gray:105:09e817f14706d5a9",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "09e817f14706d5a9ceadf2a27ed0632b2965ad0e8cc63b78c932e93817ecf27c"
+      },
+      {
+        "page_number": 106,
+        "page_id": "picture-of-dorian-gray:106:653a6f612a0a2a2c",
+        "chapter_id": "chapter-012",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "653a6f612a0a2a2c28a61f296ac3df41fa1590118b91374fa474545dc783ec91"
+      },
+      {
+        "page_number": 107,
+        "page_id": "picture-of-dorian-gray:107:9ff404f1a09b7ff9",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9ff404f1a09b7ff992e9f72d6211adaa50f608945d4df48634688def2c3d39a1"
+      },
+      {
+        "page_number": 108,
+        "page_id": "picture-of-dorian-gray:108:596e5b9cc9763bd3",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "596e5b9cc9763bd38ec22140e590c0dde3525dc78b8f8dc951d76f66dc55ec67"
+      },
+      {
+        "page_number": 109,
+        "page_id": "picture-of-dorian-gray:109:30964bf73ee19c1c",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "30964bf73ee19c1cb3f37982f3c2fc3b465338efd284cd02eb9ec3006d6de4da"
+      },
+      {
+        "page_number": 110,
+        "page_id": "picture-of-dorian-gray:110:1a2d7927062e3d26",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "1a2d7927062e3d26df39836c9f7087976fd8a34001894655283a4e2cffbeaebe"
+      },
+      {
+        "page_number": 111,
+        "page_id": "picture-of-dorian-gray:111:4fd367fdb292b4f7",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4fd367fdb292b4f7c2c261ad8ecb323fdd234f313ac0ba71e3563c8b10a24d20"
+      },
+      {
+        "page_number": 112,
+        "page_id": "picture-of-dorian-gray:112:96670657e98dcb74",
+        "chapter_id": "chapter-013",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "96670657e98dcb74f9dd18b8697b1b7d8022669d853e9842ef0ed8f9627d53a1"
+      },
+      {
+        "page_number": 113,
+        "page_id": "picture-of-dorian-gray:113:d9a679f3fd4256f8",
+        "chapter_id": "chapter-014",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "d9a679f3fd4256f89c959d1c41a65cc560ffb1973c2d3efaf316ba4e6a8549fe"
+      },
+      {
+        "page_number": 114,
+        "page_id": "picture-of-dorian-gray:114:a81ad84967f03684",
+        "chapter_id": "chapter-014",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a81ad84967f036843164273844bc8b1abb58c376c62a7910ba1134889385b38d"
+      },
+      {
+        "page_number": 115,
+        "page_id": "picture-of-dorian-gray:115:9a6d004258ee0d9b",
+        "chapter_id": "chapter-014",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "9a6d004258ee0d9b8acb5246ca661b188a0e6af239d30722c31c925346a23603"
+      },
+      {
+        "page_number": 116,
+        "page_id": "picture-of-dorian-gray:116:6a01ce9b1f2a3aba",
+        "chapter_id": "chapter-014",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "6a01ce9b1f2a3aba77dcd85462d8d4f6a4e5fea43bc3ca970d41ead69e57c4b1"
+      },
+      {
+        "page_number": 117,
+        "page_id": "picture-of-dorian-gray:117:1390a16450874a72",
+        "chapter_id": "chapter-014",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "1390a16450874a72db1d354fdad00082c226ee62e452c24f07c40e21b6fea4c6"
+      },
+      {
+        "page_number": 118,
+        "page_id": "picture-of-dorian-gray:118:a8724cde1ea7522a",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a8724cde1ea7522a6f038899a17732cab66580bde33b122fa14caea51b0031b4"
+      },
+      {
+        "page_number": 119,
+        "page_id": "picture-of-dorian-gray:119:3545342484399323",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "3545342484399323fe475fcc1a6a1a924feb898d9e6ed17300e0e55d548cc36a"
+      },
+      {
+        "page_number": 120,
+        "page_id": "picture-of-dorian-gray:120:f736df1809179513",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f736df1809179513526c985268bd21e6d91ccc310a1839cfe433698886fb7381"
+      },
+      {
+        "page_number": 121,
+        "page_id": "picture-of-dorian-gray:121:afd888fa7e5a749e",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "afd888fa7e5a749eeff45c27bd6294d8a3f4db80abb85ac9f7a50abc86059a8c"
+      },
+      {
+        "page_number": 122,
+        "page_id": "picture-of-dorian-gray:122:65663360a412475f",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "65663360a412475f0bf09964a5e400a268ec923672a06ba1213e0dd4ecf3171d"
+      },
+      {
+        "page_number": 123,
+        "page_id": "picture-of-dorian-gray:123:5c84b45fd81f3b26",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5c84b45fd81f3b2693ed3861f548da4d58a11fc4a65c0340fa01697209444866"
+      },
+      {
+        "page_number": 124,
+        "page_id": "picture-of-dorian-gray:124:34e0c633fd2a43d7",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "34e0c633fd2a43d7a39e0c37a19f72057cd41106b7f6fccce49987ee3e28ecbf"
+      },
+      {
+        "page_number": 125,
+        "page_id": "picture-of-dorian-gray:125:a7b83d039089be72",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a7b83d039089be723adb0b20fefa16dd2d908b7a3582b428753ba128a55d293d"
+      },
+      {
+        "page_number": 126,
+        "page_id": "picture-of-dorian-gray:126:57d6849f56b46026",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "57d6849f56b46026e9d2d10e3e4055c2f0e2df557bb600c9c523527d3649caa7"
+      },
+      {
+        "page_number": 127,
+        "page_id": "picture-of-dorian-gray:127:028e1d0136e79917",
+        "chapter_id": "chapter-015",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "028e1d0136e79917e0a2db3184030aa79010ab38fdcd5f92f3b4ff947cd1a30b"
+      },
+      {
+        "page_number": 128,
+        "page_id": "picture-of-dorian-gray:128:81a125304b6c4863",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "81a125304b6c4863780822eed24779b6015304c955085390cceedc8188c75d11"
+      },
+      {
+        "page_number": 129,
+        "page_id": "picture-of-dorian-gray:129:141d46b35fefa3df",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "141d46b35fefa3dfeeb142f5a07b17595e8bf5db8656bb89612c76c7afc9060e"
+      },
+      {
+        "page_number": 130,
+        "page_id": "picture-of-dorian-gray:130:56f644605b5bc284",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "56f644605b5bc2846c360f8a2c4488b1d2d710fe0cfc1155dce6519adfab61f6"
+      },
+      {
+        "page_number": 131,
+        "page_id": "picture-of-dorian-gray:131:4baa80e35fdd35fa",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "4baa80e35fdd35fa19ddf0ba7b5904b92fb08209052490ee9b0aa6c9ec0e1641"
+      },
+      {
+        "page_number": 132,
+        "page_id": "picture-of-dorian-gray:132:43231a87a0f48097",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "43231a87a0f4809771333982567dae49562c21677ce450852c75fcc6ac5cc53b"
+      },
+      {
+        "page_number": 133,
+        "page_id": "picture-of-dorian-gray:133:06ae2b365d951ed3",
+        "chapter_id": "chapter-016",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "06ae2b365d951ed3c73fb02c7947dc58952cc61700cc9a72654e431d929c29ed"
+      },
+      {
+        "page_number": 134,
+        "page_id": "picture-of-dorian-gray:134:b49872789bfe9990",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b49872789bfe9990131a8f315269e5ffd93b9a40f767d2942a8a274d49d51404"
+      },
+      {
+        "page_number": 135,
+        "page_id": "picture-of-dorian-gray:135:982981613b1e025b",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "982981613b1e025bc8ac21dfc2d2601171920eb92fcb9eadb7ed322ae345cd96"
+      },
+      {
+        "page_number": 136,
+        "page_id": "picture-of-dorian-gray:136:81e012117a7c638d",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "81e012117a7c638d6118dbb6af0b63ff08842f81688ad890756efa1cd69af12a"
+      },
+      {
+        "page_number": 137,
+        "page_id": "picture-of-dorian-gray:137:d5e503f73d18d7d9",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "d5e503f73d18d7d973ec823a07fc3b1a60eda1f85158984d05a1a6448c34b4df"
+      },
+      {
+        "page_number": 138,
+        "page_id": "picture-of-dorian-gray:138:bddd1a01e9aa7012",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "bddd1a01e9aa7012bd6f467107fbd7269d96d4e36f8ff9f6f5e44411ff1c335e"
+      },
+      {
+        "page_number": 139,
+        "page_id": "picture-of-dorian-gray:139:c0812264c43451b8",
+        "chapter_id": "chapter-017",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "c0812264c43451b86d84b19cccb5f0413a6f46953b9cb474ad9dd203e7157c39"
+      },
+      {
+        "page_number": 140,
+        "page_id": "picture-of-dorian-gray:140:e22d1fca63673773",
+        "chapter_id": "chapter-018",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "e22d1fca6367377383c2a76a25041f8fd418b4db2b33fc1d36a1389a5620a6bc"
+      },
+      {
+        "page_number": 141,
+        "page_id": "picture-of-dorian-gray:141:b1ef3d9f8f3fb848",
+        "chapter_id": "chapter-018",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "b1ef3d9f8f3fb848c0c6088dff6eaabfaa368b9ab4e00be28c99681fd149c743"
+      },
+      {
+        "page_number": 142,
+        "page_id": "picture-of-dorian-gray:142:8a9a4f33febcb506",
+        "chapter_id": "chapter-018",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8a9a4f33febcb5063a0c61fc4f3a098ee0840fb540c2d1d87c47219cc0c317d5"
+      },
+      {
+        "page_number": 143,
+        "page_id": "picture-of-dorian-gray:143:32d194fef4c17418",
+        "chapter_id": "chapter-018",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "32d194fef4c17418dc7532056287d86ab1cbf898cf9bb27a629b1594d398e762"
+      },
+      {
+        "page_number": 144,
+        "page_id": "picture-of-dorian-gray:144:5f78e8bd532a27eb",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "5f78e8bd532a27ebaa6c37bb11ccc25ad91f2e0659eedf18f9afc6e89a9cfb3f"
+      },
+      {
+        "page_number": 145,
+        "page_id": "picture-of-dorian-gray:145:15115ca7c5482bdf",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "15115ca7c5482bdf111adfbe04cd4b67b9fa9e2a23d1e68616f5ea553eb429f1"
+      },
+      {
+        "page_number": 146,
+        "page_id": "picture-of-dorian-gray:146:959c48335ef43d04",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "959c48335ef43d041b11097f70091cf472bf799c1beaf45e0c96110c732f055c"
+      },
+      {
+        "page_number": 147,
+        "page_id": "picture-of-dorian-gray:147:8116f830851cce6f",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8116f830851cce6f0dca0a0d75e40ad83737a45b9a33eed57ca2912f3426c55c"
+      },
+      {
+        "page_number": 148,
+        "page_id": "picture-of-dorian-gray:148:8a7d1e9cf72a8963",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "8a7d1e9cf72a8963a56e204a7022e473371cd5d5114a322842acb4c36bdcce40"
+      },
+      {
+        "page_number": 149,
+        "page_id": "picture-of-dorian-gray:149:10ab19d7c443687f",
+        "chapter_id": "chapter-019",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "10ab19d7c443687fa072bc4cca49fadce5cad06d762b6bb905556c7fddaf7c67"
+      },
+      {
+        "page_number": 150,
+        "page_id": "picture-of-dorian-gray:150:7a6c94ff4f5b4eac",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "7a6c94ff4f5b4eacaecd08a129409d8386f854cf11808939b3134a7b016e9f5b"
+      },
+      {
+        "page_number": 151,
+        "page_id": "picture-of-dorian-gray:151:960a83394ea34b97",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "960a83394ea34b97abd6cf2f6743a9250718fba5cd403410b013ca3c6bd98043"
+      },
+      {
+        "page_number": 152,
+        "page_id": "picture-of-dorian-gray:152:f728bb57b7d0128a",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "f728bb57b7d0128a01939a02766e4659689e44232a9fd39c2519131bbcd36ec4"
+      },
+      {
+        "page_number": 153,
+        "page_id": "picture-of-dorian-gray:153:d1727003fd435503",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "d1727003fd435503853794b7754bba8681191a01d6e091e3704326a17d30aadb"
+      },
+      {
+        "page_number": 154,
+        "page_id": "picture-of-dorian-gray:154:fadabe8a3ae05a4e",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "fadabe8a3ae05a4efecc976199029773f46e60ab38ca4770b5cc9b93212acf8b"
+      },
+      {
+        "page_number": 155,
+        "page_id": "picture-of-dorian-gray:155:45fbb0779f4389ae",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "45fbb0779f4389ae3c4e6b1dddbfbc271a9b4de9a4397a168fe0668947dd3047"
+      },
+      {
+        "page_number": 156,
+        "page_id": "picture-of-dorian-gray:156:e7c585896ade3e9a",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "e7c585896ade3e9af989e48a8a3ef68f15ec5601e31df1fdfe19816b4c3f4e88"
+      },
+      {
+        "page_number": 157,
+        "page_id": "picture-of-dorian-gray:157:41345279d51f8d30",
+        "chapter_id": "chapter-020",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "41345279d51f8d3006933abbe120e2176741c8d00399235a6b7769afaa92e78f"
+      },
+      {
+        "page_number": 158,
+        "page_id": "picture-of-dorian-gray:158:a94612741bf9b122",
+        "chapter_id": "chapter-021",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "a94612741bf9b122b0e238ffb2c90c41f2dc881b4c52a70bc8d71dbd4a5621be"
+      },
+      {
+        "page_number": 159,
+        "page_id": "picture-of-dorian-gray:159:44cf50235f211348",
+        "chapter_id": "chapter-021",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "44cf50235f2113486649f161b86dec39fcb3bf104423f897d5240226bc764a02"
+      },
+      {
+        "page_number": 160,
+        "page_id": "picture-of-dorian-gray:160:1c62a13e14745106",
+        "chapter_id": "chapter-021",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "1c62a13e1474510677d5987bce958678a776ae181a4376d1a0df98f4527e1330"
+      },
+      {
+        "page_number": 161,
+        "page_id": "picture-of-dorian-gray:161:99d9393d304136fe",
+        "chapter_id": "chapter-021",
+        "content_revision": "033d2546e7443d3fd9733722",
+        "content_hash": "99d9393d304136fe646575afe52245df66a2b6c6fbef878a4c04960988d7f941"
+      }
+    ]
+  }
+}

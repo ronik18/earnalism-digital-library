@@ -1,0 +1,144 @@
+{
+  "slug": "acres-of-diamonds",
+  "title": "Acres of Diamonds",
+  "book_id": "controlled-acres-of-diamonds",
+  "url": "https://theearnalism.com/book/acres-of-diamonds",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:48Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "c3efc6e18af8234d09443e58c0d2edea1c89108c843b906af7d7f9f199dccf6d",
+      "url": "https://theearnalism.com/api/reader/book/acres-of-diamonds/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/acres-of-diamonds/source_evidence.json",
+      "sha256": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/acres-of-diamonds/reader_manifest.json",
+      "sha256": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/acres-of-diamonds/rights_decision.json",
+      "sha256": "abc46de93644bb5031c300721f468c5448050f1ec407e78a9fff297647468f10"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-001.json",
+        "sha256": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-002.json",
+        "sha256": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-003.json",
+        "sha256": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-004.json",
+        "sha256": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-005.json",
+        "sha256": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-006.json",
+        "sha256": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-007.json",
+        "sha256": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-008.json",
+        "sha256": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-009.json",
+        "sha256": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-010.json",
+        "sha256": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-011.json",
+        "sha256": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4"
+      },
+      {
+        "path": "backend/data/controlled_publications/acres-of-diamonds/chapters/chapter-012.json",
+        "sha256": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b"
+      }
+    ],
+    "live_chapter_count": 12,
+    "live_version": "a8ffa4f8883e1c161848",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "aec820937c52d2a1",
+      "updated_at": ""
+    },
+    "live_book_slug": "acres-of-diamonds",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

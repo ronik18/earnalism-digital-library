@@ -1,0 +1,290 @@
+{
+  "schema": "earnalism.live-audiobook-campaign.v1",
+  "observed_at": "2026-10-31T04:59:29.657125+00:00",
+  "initial_inventory_count": 52,
+  "initial_inventory_sha256": "5f8326ee29ae3f6e9426e83b871b7829e2c41333c999f397aca84fde0b6fc25e",
+  "scope_frozen": true,
+  "base_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "cost_only_authority": "OWNER_PREAUTHORIZED_COST_EFFECTIVE_IN_SCOPE_SUBJECT_TO_ENFORCED_LIMITS",
+  "new_provider_spend_usd": 0,
+  "new_publications": 0,
+  "verified_live": 0,
+  "blocked": 52,
+  "records": [
+    {
+      "slug": "a-ghost-story",
+      "status": "BLOCKED",
+      "record": "a-ghost-story.json"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "status": "BLOCKED",
+      "record": "the-tell-tale-heart.json"
+    },
+    {
+      "slug": "radharani",
+      "status": "BLOCKED",
+      "record": "radharani.json"
+    },
+    {
+      "slug": "a-white-heron",
+      "status": "BLOCKED",
+      "record": "a-white-heron.json"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "status": "BLOCKED",
+      "record": "the-gift-of-the-magi.json"
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "status": "BLOCKED",
+      "record": "the-canterville-ghost.json"
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "status": "BLOCKED",
+      "record": "the-adventures-of-sherlock-holmes.json"
+    },
+    {
+      "slug": "agentic-ai-with-python",
+      "status": "BLOCKED",
+      "record": "agentic-ai-with-python.json"
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "status": "BLOCKED",
+      "record": "a-horseman-in-the-sky.json"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "status": "BLOCKED",
+      "record": "a-mystery-of-heroism.json"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "status": "BLOCKED",
+      "record": "a-scandal-in-bohemia.json"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "status": "BLOCKED",
+      "record": "jekyll-and-hyde.json"
+    },
+    {
+      "slug": "love-of-life",
+      "status": "BLOCKED",
+      "record": "love-of-life.json"
+    },
+    {
+      "slug": "the-bishop",
+      "status": "BLOCKED",
+      "record": "the-bishop.json"
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "status": "BLOCKED",
+      "record": "the-fall-of-the-house-of-usher.json"
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "status": "BLOCKED",
+      "record": "the-lady-with-the-dog.json"
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "status": "BLOCKED",
+      "record": "the-man-who-would-be-king.json"
+    },
+    {
+      "slug": "the-open-boat",
+      "status": "BLOCKED",
+      "record": "the-open-boat.json"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "status": "BLOCKED",
+      "record": "the-pit-and-the-pendulum.json"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "status": "BLOCKED",
+      "record": "the-stolen-white-elephant.json"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "status": "BLOCKED",
+      "record": "an-occurrence-at-owl-creek-bridge.json"
+    },
+    {
+      "slug": "the-enchanted-april",
+      "status": "BLOCKED",
+      "record": "the-enchanted-april.json"
+    },
+    {
+      "slug": "the-happy-prince",
+      "status": "BLOCKED",
+      "record": "the-happy-prince.json"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "status": "BLOCKED",
+      "record": "picture-of-dorian-gray.json"
+    },
+    {
+      "slug": "dracula",
+      "status": "BLOCKED",
+      "record": "dracula.json"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "status": "BLOCKED",
+      "record": "book-edfcf810c5.json"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "status": "BLOCKED",
+      "record": "muchiram-gurer-jibanchorit.json"
+    },
+    {
+      "slug": "bn-059",
+      "status": "BLOCKED",
+      "record": "bn-059.json"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "status": "BLOCKED",
+      "record": "the-call-of-the-wild.json"
+    },
+    {
+      "slug": "the-student",
+      "status": "BLOCKED",
+      "record": "the-student.json"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "status": "BLOCKED",
+      "record": "the-art-of-money-getting.json"
+    },
+    {
+      "slug": "bn-035",
+      "status": "BLOCKED",
+      "record": "bn-035.json"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "status": "BLOCKED",
+      "record": "alices-adventures-in-wonderland.json"
+    },
+    {
+      "slug": "dsires-baby",
+      "status": "BLOCKED",
+      "record": "dsires-baby.json"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "status": "BLOCKED",
+      "record": "sredni-vashtar.json"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "status": "BLOCKED",
+      "record": "the-cop-and-the-anthem.json"
+    },
+    {
+      "slug": "the-open-window",
+      "status": "BLOCKED",
+      "record": "the-open-window.json"
+    },
+    {
+      "slug": "the-selfish-giant",
+      "status": "BLOCKED",
+      "record": "the-selfish-giant.json"
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "status": "BLOCKED",
+      "record": "the-science-of-getting-rich.json"
+    },
+    {
+      "slug": "bn-066",
+      "status": "BLOCKED",
+      "record": "bn-066.json"
+    },
+    {
+      "slug": "lokrahasya",
+      "status": "BLOCKED",
+      "record": "lokrahasya.json"
+    },
+    {
+      "slug": "mrinalini",
+      "status": "BLOCKED",
+      "record": "mrinalini.json"
+    },
+    {
+      "slug": "frankenstein",
+      "status": "BLOCKED",
+      "record": "frankenstein.json"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "status": "BLOCKED",
+      "record": "pride-and-prejudice.json"
+    },
+    {
+      "slug": "the-great-gatsby",
+      "status": "BLOCKED",
+      "record": "the-great-gatsby.json"
+    },
+    {
+      "slug": "the-secret-garden",
+      "status": "BLOCKED",
+      "record": "the-secret-garden.json"
+    },
+    {
+      "slug": "the-time-machine",
+      "status": "BLOCKED",
+      "record": "the-time-machine.json"
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "status": "BLOCKED",
+      "record": "acres-of-diamonds.json"
+    },
+    {
+      "slug": "my-life-and-work",
+      "status": "BLOCKED",
+      "record": "my-life-and-work.json"
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "status": "BLOCKED",
+      "record": "the-principles-of-scientific-management.json"
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "status": "BLOCKED",
+      "record": "the-wonderful-wizard-of-oz.json"
+    },
+    {
+      "slug": "book-5704b31005",
+      "status": "BLOCKED",
+      "record": "book-5704b31005.json"
+    }
+  ],
+  "production_mutations": 0,
+  "note": "BLOCKED describes current evidence gaps, not a legal conclusion that the literary work is unavailable for audio. No missing check is PASS.",
+  "completed_at": "2026-10-31T05:02:04.255156+00:00",
+  "reconciliation_status": "INITIAL_INVENTORY_TRIAGED_TO_DOCUMENTED_BLOCKED",
+  "existing_publicly_available_but_current_acceptance_blocked": 2,
+  "reader_only_audio_hidden": 50,
+  "new_paid_playback_spend_usd": 0,
+  "required_next_integration_action": "Resolve exact audio-use/model/voice qualification for the shortest eligible Reader title; for existing releases qualify current protected playback/accounting under authenticated normal access. Do not replay stale Bengali attempts.",
+  "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "limitations": [
+    "No new full subjective listening or paid playback performed.",
+    "Production costs for unqualified plans are unknown; prior costs remain in their original ledgers.",
+    "BLOCKED is a current evidence/access state, not a claim that public-domain audio rights cannot be established.",
+    "No publication setting, manuscript, cover, customer entitlement, account or provider configuration changed."
+  ]
+}

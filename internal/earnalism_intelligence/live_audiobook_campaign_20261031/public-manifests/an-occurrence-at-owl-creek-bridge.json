@@ -1,0 +1,212 @@
+{
+  "book": {
+    "estimated_reading_time": "16 min",
+    "title": "An Occurrence at Owl Creek Bridge",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-an-occurrence-at-owl-creek-bridge",
+    "back_cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover-d77f71c3b0ee1ac6.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover-0c424909badc6340.jpg",
+    "updated_at": "2026-10-01T05:38:07.922769+00:00",
+    "description": "Peyton Farquhar falls from the bridge — and in the fractured seconds of his death, lives out an elaborate, vivid escape home. The story that invented the unreliable dying mind as a narrative device. Bierce's finest achievement.",
+    "dominant_color": "#4A1C27",
+    "author": "Ambrose Bierce",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+    "category_slug": "history-strategy",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "An Occurrence at Owl Creek Bridge",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "5ec719067f0063d7149d",
+        "word_count": 3764,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/an-occurrence-at-owl-creek-bridge/chapter-001?v=5ec719067f0063d7149d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "An Occurrence at Owl Creek Bridge",
+        "index_title": "An Occurrence at Owl Creek Bridge",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "an-occurrence-at-owl-creek-bridge",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A Confederate civilian is hanged from a bridge — and in the split second of dying, escapes through an entire fantasy of survival.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/an-occurrence-at-owl-creek-bridge",
+    "reader_url": "/reader/an-occurrence-at-owl-creek-bridge",
+    "preview_url": "/reader/an-occurrence-at-owl-creek-bridge",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "An Occurrence at Owl Creek Bridge",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "5ec719067f0063d7149d",
+      "word_count": 3764,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/an-occurrence-at-owl-creek-bridge/chapter-001?v=5ec719067f0063d7149d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "An Occurrence at Owl Creek Bridge",
+      "index_title": "An Occurrence at Owl Creek Bridge",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "fe389f8802c05599",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "9c36dabe6b7af5c89132",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:37.031569+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/an-occurrence-at-owl-creek-bridge/manifest",
+      "total_pages": 8
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-f26f41c92b72e611579aee274c43ef1f",
+    "content_revision": "516eac4477d62b9e9737465c",
+    "page_count": 8,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "an-occurrence-at-owl-creek-bridge:1:f7e45a1321ae6dd6",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "f7e45a1321ae6dd6e4167c44a3d9391678de0e8a3e2523766664ea15952ff591"
+      },
+      {
+        "page_number": 2,
+        "page_id": "an-occurrence-at-owl-creek-bridge:2:6c48a83f3fc3a087",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "6c48a83f3fc3a087451fa2e54d4a844cda269dec7716c17a969740d3e15630c5"
+      },
+      {
+        "page_number": 3,
+        "page_id": "an-occurrence-at-owl-creek-bridge:3:3b1167d4bc472503",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "3b1167d4bc472503dd119d60c371cf19ee889211685348a1e4c4cbb1b97b6e2c"
+      },
+      {
+        "page_number": 4,
+        "page_id": "an-occurrence-at-owl-creek-bridge:4:2ace029f9a14217a",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "2ace029f9a14217af77b1678f958a9a39bddc8425e2e43d9a8fc61449d8c1913"
+      },
+      {
+        "page_number": 5,
+        "page_id": "an-occurrence-at-owl-creek-bridge:5:ee84149c062b3444",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "ee84149c062b3444b0a1ed7d265a1892798efda9231dc8ae4c99d97bb2ec3431"
+      },
+      {
+        "page_number": 6,
+        "page_id": "an-occurrence-at-owl-creek-bridge:6:eff814adfffc0d74",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "eff814adfffc0d746d0a6e249276a61fccd3edbf0a3c346bf8650b08cfb65c94"
+      },
+      {
+        "page_number": 7,
+        "page_id": "an-occurrence-at-owl-creek-bridge:7:f569c52470fcf5bf",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "f569c52470fcf5bf3df2915e1f4dc9597f74c0170a4c147c92ea12e77f251723"
+      },
+      {
+        "page_number": 8,
+        "page_id": "an-occurrence-at-owl-creek-bridge:8:d90b2e8c0d87bf41",
+        "chapter_id": "chapter-001",
+        "content_revision": "516eac4477d62b9e9737465c",
+        "content_hash": "d90b2e8c0d87bf41b6e1594efa9c4e513280ff93a686311f124b9180864844ee"
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "book": {
+    "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+    "estimated_reading_time": "9 min",
+    "back_cover_dominant_color": "#2D1318",
+    "title": "The Tell-Tale Heart",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-tell-tale-heart",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+    "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "updated_at": "2026-07-30T14:06:24.686192+00:00",
+    "description": "A nameless narrator insists on his sanity while confessing to murder — but the dead man's heartbeat grows louder and louder until confession becomes inevitable. Poe's most claustrophobic psychological masterpiece.",
+    "dominant_color": "#311717",
+    "author": "Edgar Allan Poe",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "created_at": "2026-07-03T20:07:47Z",
+    "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, the master of Gothic horror and the inventor of the modern detective story.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Tell-Tale Heart",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "b8d6ede9f4f8a8ddad5b",
+        "word_count": 2155,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-tell-tale-heart/chapter-001?v=b8d6ede9f4f8a8ddad5b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Tell-Tale Heart",
+        "index_title": "The Tell-Tale Heart",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-tell-tale-heart",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-tell-tale-heart",
+    "reader_url": "/reader/the-tell-tale-heart",
+    "preview_url": "/reader/the-tell-tale-heart",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Tell-Tale Heart",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "b8d6ede9f4f8a8ddad5b",
+      "word_count": 2155,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-tell-tale-heart/chapter-001?v=b8d6ede9f4f8a8ddad5b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Tell-Tale Heart",
+      "index_title": "The Tell-Tale Heart",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "0b843ee8ea4fe22f",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "d76ddee1457e54d7e4ef",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:30.492329+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-tell-tale-heart/manifest",
+      "total_pages": 4
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "ce1155338b4bcaf2cb9a6c0e",
+    "page_count": 4,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-tell-tale-heart:1:5d72b02b429cf06a",
+        "chapter_id": "chapter-001",
+        "content_revision": "ce1155338b4bcaf2cb9a6c0e",
+        "content_hash": "5d72b02b429cf06a6e15e78d2e58f90f968b1a4a2701e56704dfd40b00702b17"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-tell-tale-heart:2:3cd2f2ea03c8b579",
+        "chapter_id": "chapter-001",
+        "content_revision": "ce1155338b4bcaf2cb9a6c0e",
+        "content_hash": "3cd2f2ea03c8b579215afabbaccd00365e58a13e567d3196e90b4f4a34ab90e3"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-tell-tale-heart:3:b8561fbd64b27980",
+        "chapter_id": "chapter-001",
+        "content_revision": "ce1155338b4bcaf2cb9a6c0e",
+        "content_hash": "b8561fbd64b279807860d581879e64d7aee4942ed09a50991ac7eb978fe50179"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-tell-tale-heart:4:dbe390d237c5a485",
+        "chapter_id": "chapter-001",
+        "content_revision": "ce1155338b4bcaf2cb9a6c0e",
+        "content_hash": "dbe390d237c5a48589caeb86db5be4d171b4d6e1132007a4fb711ad63b718fef"
+      }
+    ]
+  }
+}

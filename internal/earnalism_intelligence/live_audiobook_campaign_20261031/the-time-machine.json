@@ -1,0 +1,164 @@
+{
+  "slug": "the-time-machine",
+  "title": "The Time Machine",
+  "book_id": "controlled-the-time-machine",
+  "url": "https://theearnalism.com/book/the-time-machine",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:48Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "9bbcaef88503c93bdfaeb9d5b0549682af9486232e14059ccd1ac635fba984a0",
+      "url": "https://theearnalism.com/api/reader/book/the-time-machine/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-time-machine/source_evidence.json",
+      "sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-time-machine/reader_manifest.json",
+      "sha256": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-time-machine/rights_decision.json",
+      "sha256": "55d1e3d3c84c3ec5596464d48d2e62f2044c0856915cded009d9d93f98ff2fcd"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-001.json",
+        "sha256": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-002.json",
+        "sha256": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-003.json",
+        "sha256": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-004.json",
+        "sha256": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-005.json",
+        "sha256": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-006.json",
+        "sha256": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-007.json",
+        "sha256": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-008.json",
+        "sha256": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-009.json",
+        "sha256": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-010.json",
+        "sha256": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-011.json",
+        "sha256": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-012.json",
+        "sha256": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-013.json",
+        "sha256": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-014.json",
+        "sha256": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-015.json",
+        "sha256": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-016.json",
+        "sha256": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-time-machine/chapters/chapter-017.json",
+        "sha256": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04"
+      }
+    ],
+    "live_chapter_count": 17,
+    "live_version": "8de1bf02398319fc3b13",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "c454e11d71375aa9",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-time-machine",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

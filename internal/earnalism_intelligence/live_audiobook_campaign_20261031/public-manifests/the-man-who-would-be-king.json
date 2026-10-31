@@ -1,0 +1,352 @@
+{
+  "book": {
+    "estimated_reading_time": "60 min",
+    "title": "The Man Who Would Be King",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-man-who-would-be-king",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/back-cover.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/back-cover.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
+    "updated_at": "2026-08-15T22:31:13Z",
+    "description": "Carnehan and Dravot march into the mountains of Kafiristan with twenty rifles and a plan to make themselves kings. For a time they succeed beyond all reason — until a single human mistake destroys everything. Kipling's most ambitious and devastating adventure story.",
+    "dominant_color": "#4A1C27",
+    "author": "Rudyard Kipling",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Rudyard Kipling (1865–1936) was a British author and poet, the first English-language writer to receive the Nobel Prize in Literature.",
+    "category_slug": "adventure",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Man Who Would Be King",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "e3cde100c27324bf3664",
+        "word_count": 14303,
+        "reading_minutes": 60,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-man-who-would-be-king/chapter-001?v=e3cde100c27324bf3664",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Man Who Would Be King",
+        "index_title": "The Man Who Would Be King",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-man-who-would-be-king",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "Two British adventurers set out to become kings of Kafiristan — and very nearly succeed.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-man-who-would-be-king",
+    "reader_url": "/reader/the-man-who-would-be-king",
+    "preview_url": "/reader/the-man-who-would-be-king",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Man Who Would Be King",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "e3cde100c27324bf3664",
+      "word_count": 14303,
+      "reading_minutes": 60,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-man-who-would-be-king/chapter-001?v=e3cde100c27324bf3664",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Man Who Would Be King",
+      "index_title": "The Man Who Would Be King",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "64cf65b3dddef413",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "90db65bbabc82eac0ef5",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:35.706654+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-man-who-would-be-king/manifest",
+      "total_pages": 28
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-cef379e655853f99a9fecd1c8bc97149",
+    "content_revision": "aa9dba77a040b8c2e6d071d6",
+    "page_count": 28,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-man-who-would-be-king:1:3a13555ad0a7232b",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "3a13555ad0a7232bb3ea7af5b5899c7ad0fa6b4fef2e77a326585f2e0e81e099"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-man-who-would-be-king:2:1f867a5127eda5ea",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "1f867a5127eda5ea4daa860c27086f1f31b40be3276fddf33f8f83edcc019354"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-man-who-would-be-king:3:0b31c13314f0fc1d",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "0b31c13314f0fc1d67cf99dbe8c749a9d966bfc0e8ed86f1ff09623f7eda5492"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-man-who-would-be-king:4:e8187d7962e88fd7",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "e8187d7962e88fd749f95536c6f29296971c87f5fa9ced2bc8be8f301f619913"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-man-who-would-be-king:5:ef72ffc17de2f07a",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "ef72ffc17de2f07ae2c03d47bc22919f83898fc494d25ff5217bb5a1dcb87e9e"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-man-who-would-be-king:6:2f944f3d9889534c",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "2f944f3d9889534cac7e377d5bd734a48b991025efc16be96dab0dc21a7f46b2"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-man-who-would-be-king:7:6f6efebabc6618ff",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "6f6efebabc6618ffc8b84ace486ad1712d25bcda00a6389150b600655e1db6c2"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-man-who-would-be-king:8:d7d7d78c1b55a747",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "d7d7d78c1b55a747636503e86e12926beede1c09a980a2419855d9b72c62357f"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-man-who-would-be-king:9:49d0f92afbc4e9b3",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "49d0f92afbc4e9b3af7d6d003201c2c3b43ff94d7de59f9791cef6c7c9a7f850"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-man-who-would-be-king:10:1b6ad7419436a415",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "1b6ad7419436a41570b1a286476ed4b7877d2922f4f898902b960c34a5e5c8d0"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-man-who-would-be-king:11:8d945fb69cdce552",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "8d945fb69cdce552109feb37aeaca8a42d86e7a43f7b701eee2c14d782850b08"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-man-who-would-be-king:12:7c2d8e00b0d5210c",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "7c2d8e00b0d5210c6671dbb50a0a1692e34314583a82d615d8e0fab7d5494c6b"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-man-who-would-be-king:13:ad038f4dbc43afc9",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "ad038f4dbc43afc94de9ce82c0dc1911a650ed968bf841f83cd960caed9960f1"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-man-who-would-be-king:14:3bed357d48dafbd1",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "3bed357d48dafbd1ee9434b9f8cad6853208f5c02aa98bce6b7b5ac00eb86492"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-man-who-would-be-king:15:6f1f1b53ea802746",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "6f1f1b53ea802746bea1ca129b48b6d546ab80d140c551cd0b49176335d60637"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-man-who-would-be-king:16:e3e0179b81e09e2f",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "e3e0179b81e09e2f21affaf4fed267ac23ca913076f4ff85220236899e0573c8"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-man-who-would-be-king:17:fb3908b2330488bd",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "fb3908b2330488bd76113335f2bc936c56a7d85783823e4b1d0b557d68fbab73"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-man-who-would-be-king:18:bc5206c089483066",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "bc5206c089483066ff1343ff783138b00b0629a000ca99e54312cd9b86b4a16c"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-man-who-would-be-king:19:711020152666dbb0",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "711020152666dbb03f973ea59463f7c591785c7864343a667468724808641ffa"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-man-who-would-be-king:20:1244baa71b274262",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "1244baa71b274262b8b227f16182b0e5418ce2c79532b5663869122a3133d69e"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-man-who-would-be-king:21:654ead928add3226",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "654ead928add322645f7d64c4d55a62b0e1ffe4d7292cc2012df4b0970dbf3f8"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-man-who-would-be-king:22:c888f53ec64a11c0",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "c888f53ec64a11c0fd3b9d510f7a36230aaabf1b4a9ecb323387fea049ad6419"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-man-who-would-be-king:23:d3dbc2feb1d81054",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "d3dbc2feb1d81054bb46f414bf79818b4bbbe2377f7deafea899da4f5a705b36"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-man-who-would-be-king:24:be4e101d390ccfc0",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "be4e101d390ccfc00239b9459a005111af3dedb3c4d5536de6a6eafae629a0af"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-man-who-would-be-king:25:bd86207f8c23d867",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "bd86207f8c23d867700af07c385841de4dc1372672e62e3479e9e643716d17ea"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-man-who-would-be-king:26:9db6cd03d0d3cce8",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "9db6cd03d0d3cce8797df8b8790515324710c0ac28c689d9149e1d1b13c7e407"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-man-who-would-be-king:27:33860128a6df0f37",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "33860128a6df0f377772cc8250bbb4c52c91c47f1dac5f33ac00ed5520a415bb"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-man-who-would-be-king:28:b090631ac06f95a7",
+        "chapter_id": "chapter-001",
+        "content_revision": "aa9dba77a040b8c2e6d071d6",
+        "content_hash": "b090631ac06f95a7832efcf4220599de2c1a51a44b131c6aed0b7179c1981601"
+      }
+    ]
+  }
+}

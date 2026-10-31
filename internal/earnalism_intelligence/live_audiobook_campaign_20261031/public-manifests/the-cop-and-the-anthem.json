@@ -1,0 +1,193 @@
+{
+  "book": {
+    "estimated_reading_time": "10 min",
+    "title": "The Cop and the Anthem",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-cop-and-the-anthem",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-8bb1d367fe07d1b5.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-9b579a77d99a3892.webp",
+    "updated_at": "2026-07-03T20:07:48Z",
+    "description": "Soapy tries everything to get arrested — disorderly conduct, theft, harassment — and fails each time. Then a church anthem moves him to reform. Then a policeman arrests him. O. Henry's most perfectly constructed irony.",
+    "dominant_color": "#4A1C27",
+    "author": "O. Henry",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305976/earnalism/covers/front/cover_candidate_controlled-the-cop-and-the-anthem-9b579a77d99a3892f810320ff69fb97a6a5371a0f24d6e9037af8c78b986cb96.webp",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305997/earnalism/covers/back/back_cover_candidate_controlled-the-cop-and-the-anthem-8bb1d367fe07d1b5962724240269bf1e28c3441e8a8d89dfa28d010791953ae4.webp",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Cop and the Anthem",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "02439b029effe39f17b2",
+        "word_count": 2306,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-cop-and-the-anthem/chapter-001?v=02439b029effe39f17b2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Cop and the Anthem",
+        "index_title": "The Cop and the Anthem",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-cop-and-the-anthem",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A homeless man tries repeatedly to get arrested to spend winter in jail — and fails every time until it is too late.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-cop-and-the-anthem",
+    "reader_url": "/reader/the-cop-and-the-anthem",
+    "preview_url": "/reader/the-cop-and-the-anthem",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Cop and the Anthem",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "02439b029effe39f17b2",
+      "word_count": 2306,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-cop-and-the-anthem/chapter-001?v=02439b029effe39f17b2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Cop and the Anthem",
+      "index_title": "The Cop and the Anthem",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "b3f86ea8d1f2a74f",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "df2c71134e900448cd20",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:42.642480+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-cop-and-the-anthem/manifest",
+      "total_pages": 5
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "cb05de36736eb2394d9c382c",
+    "page_count": 5,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-cop-and-the-anthem:1:7f967cc2e5e6e2ff",
+        "chapter_id": "chapter-001",
+        "content_revision": "cb05de36736eb2394d9c382c",
+        "content_hash": "7f967cc2e5e6e2ff1b1c79f380bbe27231fbc351d468b7edb9d157d8de24bba1"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-cop-and-the-anthem:2:4163fffcabcfe00b",
+        "chapter_id": "chapter-001",
+        "content_revision": "cb05de36736eb2394d9c382c",
+        "content_hash": "4163fffcabcfe00bdcb496d088ae0c9fcfc3ad6677f3d81f1523fbb11c56fe17"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-cop-and-the-anthem:3:f1c6404b9ef34614",
+        "chapter_id": "chapter-001",
+        "content_revision": "cb05de36736eb2394d9c382c",
+        "content_hash": "f1c6404b9ef3461440d34ae65da8a937576b500c77e0692fd3c01db05a2f3d09"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-cop-and-the-anthem:4:026db216e49e1067",
+        "chapter_id": "chapter-001",
+        "content_revision": "cb05de36736eb2394d9c382c",
+        "content_hash": "026db216e49e1067bb8a9a5cc0174651c8ed14beab0390440acf6e1bdc3cb6cb"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-cop-and-the-anthem:5:5f81cd38e80db552",
+        "chapter_id": "chapter-001",
+        "content_revision": "cb05de36736eb2394d9c382c",
+        "content_hash": "5f81cd38e80db55253b9a87ed131808ca72432ce476b799692fbe79d48ff7521"
+      }
+    ]
+  }
+}

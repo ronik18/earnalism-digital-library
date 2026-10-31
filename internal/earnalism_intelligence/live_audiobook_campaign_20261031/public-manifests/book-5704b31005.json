@@ -1,0 +1,205 @@
+{
+  "book": {
+    "estimated_reading_time": "8 min",
+    "title": "বিচারক",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-book-5704b31005",
+    "back_cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+    "cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-bb0f98a310c5e83d.jpg",
+    "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-a6cac9c9cab2b1b6.jpg",
+    "updated_at": "2026-07-03T20:07:46Z",
+    "description": "A judge who prides himself on impartiality finds himself the subject of a moral reckoning — Tagore's meditation on the gap between institutional justice and human truth.",
+    "dominant_color": "#24362E",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306137/earnalism/covers/front/cover_candidate_controlled-book-5704b31005-a6cac9c9cab2b1b6ec9355e29432f55f42c95ad956b6492683a527046d79e519.jpg",
+    "created_at": "2026-07-03T20:07:46Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306185/earnalism/covers/back/back_cover_candidate_controlled-book-5704b31005-bb0f98a310c5e83d7bd9220f0ee834dbf5739873698933eed3cae15ac4b0d845.jpg",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "বিচারক",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "d72d79205d14d4237619",
+        "word_count": 1989,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/book-5704b31005/chapter-001?v=d72d79205d14d4237619",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "বিচারক",
+        "index_title": "বিচারক",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "book-5704b31005",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "বিচারকের আসনে বসা মানুষটিই যখন বিচার্য হয়ে পড়েন, তখন ন্যায়বিচারের স্বরূপ উন্মোচিত হয়।",
+    "text_license": {
+      "schema_version": "earnalism.text-license.v1",
+      "slug": "book-5704b31005",
+      "license": "CC-BY-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "বিচারক by রবীন্দ্রনাথ ঠাকুর; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+      "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+      "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+      "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%AC%E0%A6%BF%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A6%95&oldid=1624865",
+      "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%AC%E0%A6%BF%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A6%95&action=history"
+    },
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/book-5704b31005",
+    "reader_url": "/reader/book-5704b31005",
+    "preview_url": "/reader/book-5704b31005",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "বিচারক",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "d72d79205d14d4237619",
+      "word_count": 1989,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/book-5704b31005/chapter-001?v=d72d79205d14d4237619",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "বিচারক",
+      "index_title": "বিচারক",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "8adb80309f7c6f89",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "07f576d4f214ee8b3cd4",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:48.412895+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/book-5704b31005/manifest",
+      "total_pages": 5
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-c469a1b1109688361c09eac0dd9996bd",
+    "content_revision": "0943ad74bf330549b4376a9e",
+    "page_count": 5,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "book-5704b31005:1:f30c79de6aae0aed",
+        "chapter_id": "chapter-001",
+        "content_revision": "0943ad74bf330549b4376a9e",
+        "content_hash": "f30c79de6aae0aed34517072899a33ce43a8263df6a0b4eaf93b3fd807769fbd"
+      },
+      {
+        "page_number": 2,
+        "page_id": "book-5704b31005:2:46baee58e15a26c3",
+        "chapter_id": "chapter-001",
+        "content_revision": "0943ad74bf330549b4376a9e",
+        "content_hash": "46baee58e15a26c39a55d85e8f14c8cd92965697a577378a81ea3755d38d50bb"
+      },
+      {
+        "page_number": 3,
+        "page_id": "book-5704b31005:3:cd641cd50cf8a777",
+        "chapter_id": "chapter-001",
+        "content_revision": "0943ad74bf330549b4376a9e",
+        "content_hash": "cd641cd50cf8a777da422c927635a07d356c29602a65009799f27c5ade0ad081"
+      },
+      {
+        "page_number": 4,
+        "page_id": "book-5704b31005:4:9a0449fc4d729e52",
+        "chapter_id": "chapter-001",
+        "content_revision": "0943ad74bf330549b4376a9e",
+        "content_hash": "9a0449fc4d729e52079e450899e2f895b033cfec5a76dfa47114cf5a8cd215f0"
+      },
+      {
+        "page_number": 5,
+        "page_id": "book-5704b31005:5:60e69b22770377a1",
+        "chapter_id": "chapter-001",
+        "content_revision": "0943ad74bf330549b4376a9e",
+        "content_hash": "60e69b22770377a1d28105b10ffd7ccb5ea78e0b8f6aec9fd63f3e5ed0025676"
+      }
+    ]
+  }
+}

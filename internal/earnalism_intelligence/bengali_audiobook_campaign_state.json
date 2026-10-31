@@ -572,5 +572,12 @@
     "publication_performed": false,
     "release_gate_mutated": false,
     "next_action": "Do not repeat this fingerprint; use a materially different provider or approved human or licensed narration path and rerun all gates."
+  },
+  "live_catalog_campaign_20261031": {
+    "state": "BLOCKED_PREFLIGHT_NO_PAID_CALLS",
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/campaign-state.json",
+    "historical_pilot_and_attempt_state_preserved": true,
+    "paid_env_gates_missing_in_this_runtime": true,
+    "broad_scale_started": false
   }
 }

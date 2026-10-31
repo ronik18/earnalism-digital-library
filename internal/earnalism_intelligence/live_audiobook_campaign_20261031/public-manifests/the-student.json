@@ -1,0 +1,179 @@
+{
+  "book": {
+    "estimated_reading_time": "6 min",
+    "title": "The Student",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-student",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-student/the-student-back-e7e5bae7893221c0.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-student/the-student-front-853842d83dc49ee4.webp",
+    "updated_at": "2026-07-03T20:07:49Z",
+    "description": "In five pages, Chekhov achieves what theologians spend lifetimes on — the felt continuity of human suffering and consolation across nineteen centuries. Chekhov called it his favourite story.",
+    "dominant_color": "#4A1C27",
+    "author": "Anton Chekhov",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305790/earnalism/covers/front/cover_candidate_controlled-the-student-853842d83dc49ee4dac320c072c28587f9ba2bfde66e5d8d5f322983e0e25b9e.webp",
+    "created_at": "2026-07-03T20:07:49Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Anton Chekhov (1860–1904) was a Russian physician and writer, supreme master of the modern short story.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305835/earnalism/covers/back/back_cover_candidate_controlled-the-student-e7e5bae7893221c0dcfa69c3d5ff65c046f9c441cea18a9e6358b205499423d9.webp",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Student",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "875f9231e416a8b71713",
+        "word_count": 1498,
+        "reading_minutes": 7,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-student/chapter-001?v=875f9231e416a8b71713",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Student",
+        "index_title": "The Student",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-student",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A seminary student tells the story of Peter's denial of Christ — and watches an old woman weep as if it happened yesterday.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-student",
+    "reader_url": "/reader/the-student",
+    "preview_url": "/reader/the-student",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Student",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "875f9231e416a8b71713",
+      "word_count": 1498,
+      "reading_minutes": 7,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-student/chapter-001?v=875f9231e416a8b71713",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Student",
+      "index_title": "The Student",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "119a60265d503e72",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "6ab881f3c45d3cf68acd",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:40.383080+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-student/manifest",
+      "total_pages": 3
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-aa5f14c6d0ea1aa49f83c81127bbc6bf",
+    "content_revision": "fe55ca07f3994609398d0a4c",
+    "page_count": 3,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-student:1:affe604a814deb35",
+        "chapter_id": "chapter-001",
+        "content_revision": "fe55ca07f3994609398d0a4c",
+        "content_hash": "affe604a814deb354b9537a04f520fba466b6e4f0fdb5058688575f9cc487ab2"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-student:2:4a600bcfcf769016",
+        "chapter_id": "chapter-001",
+        "content_revision": "fe55ca07f3994609398d0a4c",
+        "content_hash": "4a600bcfcf769016207c7766689b30c7542974f76bb790f264396eaff87b4ff5"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-student:3:f6f3e5af2ee7db74",
+        "chapter_id": "chapter-001",
+        "content_revision": "fe55ca07f3994609398d0a4c",
+        "content_hash": "f6f3e5af2ee7db7449cf229dbd3ce7439f72a351465ad7c19a4bfaf13a2b294c"
+      }
+    ]
+  }
+}

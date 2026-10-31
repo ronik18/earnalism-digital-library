@@ -1,0 +1,1124 @@
+{
+  "book": {
+    "estimated_reading_time": "202 min",
+    "title": "The Great Gatsby",
+    "who_for": [
+      "Fans of American literary fiction",
+      "Students studying the Jazz Age and the American Dream",
+      "Readers who enjoy psychological character studies"
+    ],
+    "id": "controlled-the-great-gatsby",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+    "learnings": [
+      "Explore Fitzgerald's critique of wealth, class, and the American Dream.",
+      "Understand the symbolism and narrative craft of a modernist novel.",
+      "Read the original 1925 text without modern adaptation material."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+    "updated_at": "2026-08-16T14:30:00Z",
+    "description": "This public-domain edition of Fitzgerald's 1925 novel is prepared for structured digital reading on Earnalism.",
+    "dominant_color": "#4A1C27",
+    "author": "F. Scott Fitzgerald",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read the defining novel of the American Jazz Age.",
+      "Enjoy a clean, structured reading format.",
+      "Access a legally cleared, unabridged classic."
+    ],
+    "about_author": "F. Scott Fitzgerald (1896–1940) was an American novelist and short story writer, widely regarded as one of the greatest American writers of the 20th century.",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "title": "Dedication and Epigraph",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "df23adaccb38d2f9eb62",
+        "word_count": 37,
+        "reading_minutes": 1,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-000?v=df23adaccb38d2f9eb62",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Dedication and Epigraph",
+        "index_title": "Dedication and Epigraph",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-001",
+        "title": "I",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "1036919b636e3afad920",
+        "word_count": 5943,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-001?v=1036919b636e3afad920",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "I",
+        "index_title": "I",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-002",
+        "title": "II",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "5fe87ad987e49528ffad",
+        "word_count": 4293,
+        "reading_minutes": 18,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-002?v=5fe87ad987e49528ffad",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Ii",
+        "index_title": "Ii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-003",
+        "title": "III",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "91d10946fbcddbb8443a",
+        "word_count": 5769,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-003?v=91d10946fbcddbb8443a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Iii",
+        "index_title": "Iii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-004",
+        "title": "IV",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "656afade523cdac40467",
+        "word_count": 5477,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-004?v=656afade523cdac40467",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Iv",
+        "index_title": "Iv",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-005",
+        "title": "V",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "2f333afdc7c4988bcaac",
+        "word_count": 4256,
+        "reading_minutes": 18,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-005?v=2f333afdc7c4988bcaac",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "V",
+        "index_title": "V",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "VI",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "4d260a77afd1341769a9",
+        "word_count": 4057,
+        "reading_minutes": 17,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-006?v=4d260a77afd1341769a9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Vi",
+        "index_title": "Vi",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "VII",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "0bb4e003346fa80487b9",
+        "word_count": 8811,
+        "reading_minutes": 37,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-007?v=0bb4e003346fa80487b9",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Vii",
+        "index_title": "Vii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "VIII",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "02dff3a7f35751c43dfc",
+        "word_count": 4564,
+        "reading_minutes": 20,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-008?v=02dff3a7f35751c43dfc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Viii",
+        "index_title": "Viii",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "IX",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "99c68cd700e5e72ec811",
+        "word_count": 5255,
+        "reading_minutes": 22,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-great-gatsby/chapter-009?v=99c68cd700e5e72ec811",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Ix",
+        "index_title": "Ix",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-great-gatsby",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "The mysterious millionaire Jay Gatsby pursues his lost love across the glittering, hollow world of 1920s New York.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-great-gatsby",
+    "reader_url": "/reader/the-great-gatsby",
+    "preview_url": "/reader/the-great-gatsby",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-000",
+      "title": "Dedication and Epigraph",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "df23adaccb38d2f9eb62",
+      "word_count": 37,
+      "reading_minutes": 1,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-000?v=df23adaccb38d2f9eb62",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Dedication and Epigraph",
+      "index_title": "Dedication and Epigraph",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-001",
+      "title": "I",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "1036919b636e3afad920",
+      "word_count": 5943,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-001?v=1036919b636e3afad920",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "I",
+      "index_title": "I",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-002",
+      "title": "II",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "5fe87ad987e49528ffad",
+      "word_count": 4293,
+      "reading_minutes": 18,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-002?v=5fe87ad987e49528ffad",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Ii",
+      "index_title": "Ii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-003",
+      "title": "III",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "91d10946fbcddbb8443a",
+      "word_count": 5769,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-003?v=91d10946fbcddbb8443a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Iii",
+      "index_title": "Iii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-004",
+      "title": "IV",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "656afade523cdac40467",
+      "word_count": 5477,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-004?v=656afade523cdac40467",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Iv",
+      "index_title": "Iv",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-005",
+      "title": "V",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "2f333afdc7c4988bcaac",
+      "word_count": 4256,
+      "reading_minutes": 18,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-005?v=2f333afdc7c4988bcaac",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "V",
+      "index_title": "V",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "VI",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "4d260a77afd1341769a9",
+      "word_count": 4057,
+      "reading_minutes": 17,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-006?v=4d260a77afd1341769a9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Vi",
+      "index_title": "Vi",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "VII",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "0bb4e003346fa80487b9",
+      "word_count": 8811,
+      "reading_minutes": 37,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-007?v=0bb4e003346fa80487b9",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Vii",
+      "index_title": "Vii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "VIII",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "02dff3a7f35751c43dfc",
+      "word_count": 4564,
+      "reading_minutes": 20,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-008?v=02dff3a7f35751c43dfc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Viii",
+      "index_title": "Viii",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "IX",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "99c68cd700e5e72ec811",
+      "word_count": 5255,
+      "reading_minutes": 22,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-great-gatsby/chapter-009?v=99c68cd700e5e72ec811",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Ix",
+      "index_title": "Ix",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "01d8372847eb4573",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "384861f3dab4c0769d1a",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:45.796589+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-great-gatsby/manifest",
+      "total_pages": 92
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-f17b90358e98262ca18747e81d40ea0c",
+    "content_revision": "3e17410476afa2ffeee12808",
+    "page_count": 92,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-great-gatsby:1:f6bcc56502a1c12b",
+        "chapter_id": "chapter-000",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f6bcc56502a1c12b80005abdd42b17a6b39c60aa228fafc05b717edcc0c168c2"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-great-gatsby:2:62f7a8fe31c7e470",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "62f7a8fe31c7e470fed9266447cafb9acfd4f79a83ceb51622758b30da4a92e9"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-great-gatsby:3:d045e311075b1554",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "d045e311075b1554bb90c289295fc224ccf9f0f74ce39eb30564414d614fc05f"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-great-gatsby:4:ed014a1f5692e289",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "ed014a1f5692e289d8f0f3ead816675b638cc41e04dd7e69970f1c681abe0e79"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-great-gatsby:5:c7c9b67d7358e09a",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "c7c9b67d7358e09a09041e6c97610c56f97893fabe2707a9eb1b3d497b6cac02"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-great-gatsby:6:4be24c47efc393c1",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "4be24c47efc393c1d5031571d60e1b9b911179e02d57d689160cdbc9ed3a1d27"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-great-gatsby:7:82d8d518a8a98d97",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "82d8d518a8a98d978ee5f7938c3f0dcc01aeac3478836f74ed605ab09f5c9b7a"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-great-gatsby:8:357deaef634affc9",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "357deaef634affc91dc86ad9beb7e6ccf34ef23d39c3e71a268b2dba17179d4d"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-great-gatsby:9:9d1c0977a6250fb7",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "9d1c0977a6250fb74d3835f8b694254b5eaa06f936fb4ca5c6b9faccae287a81"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-great-gatsby:10:ea9571c2d76bbf13",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "ea9571c2d76bbf1301d482b1b50c805f4e13089ae8d0ee72597f3b3447a02849"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-great-gatsby:11:a84ef2d9c061c84e",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "a84ef2d9c061c84e6080bc1c32b4f02fec48bf8ee82aa49138e0d212103aa134"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-great-gatsby:12:0410fc14f714470b",
+        "chapter_id": "chapter-001",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "0410fc14f714470b8c90a3dafba339a79b13572c86e1fee8edf108c84a370080"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-great-gatsby:13:f66e0bd7d6b7aecd",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f66e0bd7d6b7aecd712e7b7cdce1f2fff72aa79982325fdd8094784245e4952d"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-great-gatsby:14:1fe2d465bbca334b",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "1fe2d465bbca334b955402a3e97c9d9ca26fda872701d4ae0e0cc7846dfe82f7"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-great-gatsby:15:fda47f5d7cf0091e",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "fda47f5d7cf0091ea77a68827d8ad900f082259e654455893ebac29d0f0eedcd"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-great-gatsby:16:335f550b96f925d9",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "335f550b96f925d965657d134e4dfa0eba9f36ecc35ab9db19e61ad259e402e9"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-great-gatsby:17:ddf86aa134b69e0e",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "ddf86aa134b69e0e4f0f6913d3afe97ad18e12ba1a12ece01ee14b30fd9e504a"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-great-gatsby:18:63ef54b86dda48ba",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "63ef54b86dda48ba6c77bf19a17f138d359fff4c39906d9c9f7b757f445c1f73"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-great-gatsby:19:0a07db353f56deae",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "0a07db353f56deae293ccf393feeda00490e82e8043f5b159a614ddd8c8f5aaa"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-great-gatsby:20:8bab232b004c333a",
+        "chapter_id": "chapter-002",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "8bab232b004c333a3d1b4a082ec70096acd4a1e93afd967ebe9049a2df2ba012"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-great-gatsby:21:e9b484da7ab79a6f",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e9b484da7ab79a6f5ec6e90b6485c3f501076c508d2ebd68122b442bf71da288"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-great-gatsby:22:9ac2ba75f74041fe",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "9ac2ba75f74041fe8e1d507da2bf8b2bcfa8fa93e4491d1c33746849b6a07da3"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-great-gatsby:23:f6bddaf89bfb5741",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f6bddaf89bfb57414688a15957118c1c18e3f0d1fbdb901f8751efec4c5a5b51"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-great-gatsby:24:798b61e8dbef8a19",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "798b61e8dbef8a1940c65e24abd5b6457421f15733cedaa2dd2d47a35bc3360f"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-great-gatsby:25:aec7a2b5d3b6c6cd",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "aec7a2b5d3b6c6cd8e3a6d5c69bd99e70c75526bc79327a2b97e65d224276b7d"
+      },
+      {
+        "page_number": 26,
+        "page_id": "the-great-gatsby:26:92d1d8008a1765cd",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "92d1d8008a1765cdf2f5ad4e2c2c5012596cff44a1454a2056c0fd62ae98dc28"
+      },
+      {
+        "page_number": 27,
+        "page_id": "the-great-gatsby:27:025d03f0f19feb53",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "025d03f0f19feb53b189ef2b096ffb6d22566199bdd13d04b3997a8a73b35fff"
+      },
+      {
+        "page_number": 28,
+        "page_id": "the-great-gatsby:28:a11c3c01ea22335d",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "a11c3c01ea22335d4a8d9768b7df27f1b9795c28bd46915b9b127c3e93509530"
+      },
+      {
+        "page_number": 29,
+        "page_id": "the-great-gatsby:29:e5ff48c2c3028aa7",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e5ff48c2c3028aa7bc40105e4461a927f408bcda5f64e3104ee6ea034172177f"
+      },
+      {
+        "page_number": 30,
+        "page_id": "the-great-gatsby:30:b8ad35eb45ac3e59",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b8ad35eb45ac3e59f9d8ed9c6cac2d543bba4205e0eb4d6b96219236c9dcef2c"
+      },
+      {
+        "page_number": 31,
+        "page_id": "the-great-gatsby:31:71e05db2b669056d",
+        "chapter_id": "chapter-003",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "71e05db2b669056dd1f5d803928b7f6cd25e44a6e6915335f02adea3eacf8a40"
+      },
+      {
+        "page_number": 32,
+        "page_id": "the-great-gatsby:32:83ff9422e92d139f",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "83ff9422e92d139fe612a5021bf8c07ba3202fe98505846cac12329cdfc77bf6"
+      },
+      {
+        "page_number": 33,
+        "page_id": "the-great-gatsby:33:7d3deaeccd5fb5a2",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "7d3deaeccd5fb5a2e09d73a56f298085fe5cf5444b9505e1843efc7b4c222cf2"
+      },
+      {
+        "page_number": 34,
+        "page_id": "the-great-gatsby:34:ab0ff49658c7bf7f",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "ab0ff49658c7bf7ff518178d6c4b5b5d75487e59bf837692feed95d234c9dae2"
+      },
+      {
+        "page_number": 35,
+        "page_id": "the-great-gatsby:35:a5705cd754ce4f6c",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "a5705cd754ce4f6cf57ffb7f83e791ee26d38f0f8482430a36ff99634082da7d"
+      },
+      {
+        "page_number": 36,
+        "page_id": "the-great-gatsby:36:04e37fc822fe74bb",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "04e37fc822fe74bbd9858faa0c6a4dea39b79b1214b80a7db9d1a6963d052591"
+      },
+      {
+        "page_number": 37,
+        "page_id": "the-great-gatsby:37:508f103df50f3d79",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "508f103df50f3d79f5f3e40f6662bc658f607ce6ae0e12afbecf1dc33161803d"
+      },
+      {
+        "page_number": 38,
+        "page_id": "the-great-gatsby:38:39e617d8f5357394",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "39e617d8f53573945dcb97ee87ae11ed8c05ea5a4d4a147d7ac562e432f0b418"
+      },
+      {
+        "page_number": 39,
+        "page_id": "the-great-gatsby:39:90cebba142223708",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "90cebba142223708a31fa5b091cb1840b0c59296b7eea7ea192b1c3fa6d0bd6a"
+      },
+      {
+        "page_number": 40,
+        "page_id": "the-great-gatsby:40:032d23d2e4e1bd0f",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "032d23d2e4e1bd0ff663fc9348fad6dbab5c0495baa7b8cfd8990381e3db5056"
+      },
+      {
+        "page_number": 41,
+        "page_id": "the-great-gatsby:41:83bea94b8bda72c6",
+        "chapter_id": "chapter-004",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "83bea94b8bda72c6c1017ad64cd32b764b3a4f66c2914e5486eba0cb4077fd04"
+      },
+      {
+        "page_number": 42,
+        "page_id": "the-great-gatsby:42:d3f910dc96b456d8",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "d3f910dc96b456d8b32f7d7111a69f261be8ff9bd37cf6c75713acdbdc306a16"
+      },
+      {
+        "page_number": 43,
+        "page_id": "the-great-gatsby:43:b44c489b20f93751",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b44c489b20f9375151d98797a6a182c55fa1f224b0e86d31862fa4050076d2bb"
+      },
+      {
+        "page_number": 44,
+        "page_id": "the-great-gatsby:44:4246d542855fc7ef",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "4246d542855fc7ef77eaca23e6b823fe940f90e415d26b2ddd73ce9d6fe52ae4"
+      },
+      {
+        "page_number": 45,
+        "page_id": "the-great-gatsby:45:1f33cb48f918a704",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "1f33cb48f918a70485f42f155c55a3862a11a3a98d5b38c59c7331efdc53a6b8"
+      },
+      {
+        "page_number": 46,
+        "page_id": "the-great-gatsby:46:247b0586b89ed8cd",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "247b0586b89ed8cdcc7bda57ac6e98197b42b03fbb937b8219b88775126cb4b0"
+      },
+      {
+        "page_number": 47,
+        "page_id": "the-great-gatsby:47:1f873027904452ad",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "1f873027904452ad9f4bf87d4398da120cc3fea943e98257ec9499a8809470b4"
+      },
+      {
+        "page_number": 48,
+        "page_id": "the-great-gatsby:48:e366f81f1ff374aa",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e366f81f1ff374aa6dcd74e1d2031b4307af2b2fdc4e4841ada33376540391a5"
+      },
+      {
+        "page_number": 49,
+        "page_id": "the-great-gatsby:49:be6d66fe288a4c9f",
+        "chapter_id": "chapter-005",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "be6d66fe288a4c9f9cbc7504dc7527dfedcfc366aba84c4e1fa1a925318439cd"
+      },
+      {
+        "page_number": 50,
+        "page_id": "the-great-gatsby:50:e42cb5d00ddf13cf",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e42cb5d00ddf13cf879520cae1e81b5e147c09a876cf7ab4ccf8133bbd7fa06e"
+      },
+      {
+        "page_number": 51,
+        "page_id": "the-great-gatsby:51:40221a747898eee3",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "40221a747898eee34041aa35cfa94eb3877e457e3d4e01d9babfaa2336abb824"
+      },
+      {
+        "page_number": 52,
+        "page_id": "the-great-gatsby:52:35a7c233b6e125db",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "35a7c233b6e125dbfa6b01fa39c5064c663fc6c954afabc733e91b728f3872e7"
+      },
+      {
+        "page_number": 53,
+        "page_id": "the-great-gatsby:53:a73e900e3c4296b6",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "a73e900e3c4296b63415436e7d442c352c949ae8215f50bf2382e6fcb86df7e7"
+      },
+      {
+        "page_number": 54,
+        "page_id": "the-great-gatsby:54:1972385e28df81c4",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "1972385e28df81c43bb6ae7b61d3210b96a5722b94e402c64e087463ee44823c"
+      },
+      {
+        "page_number": 55,
+        "page_id": "the-great-gatsby:55:b0ed6197bc3ed0d5",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b0ed6197bc3ed0d5281be6e37240dd3c0bf97246694e8a5da210f897a2252ef7"
+      },
+      {
+        "page_number": 56,
+        "page_id": "the-great-gatsby:56:de1bba6c0eec5348",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "de1bba6c0eec5348e94ca4463fc92d9d80156a8c41edaa8b19f542cdd1ba6683"
+      },
+      {
+        "page_number": 57,
+        "page_id": "the-great-gatsby:57:163b83f72303f0a9",
+        "chapter_id": "chapter-006",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "163b83f72303f0a9b29d8bd5a0205cdfa03325b0d1db7d7e393c1a7d0835d19a"
+      },
+      {
+        "page_number": 58,
+        "page_id": "the-great-gatsby:58:87af6ba67893afb2",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "87af6ba67893afb29a82a7653c9e406874f3183a522f802ec8e87f57aa94e9ec"
+      },
+      {
+        "page_number": 59,
+        "page_id": "the-great-gatsby:59:076c757c71bb143f",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "076c757c71bb143fd56624b2339b9d1cde48a7f8ebb3a29de57a6033a9280f45"
+      },
+      {
+        "page_number": 60,
+        "page_id": "the-great-gatsby:60:3304f3e44a2bed2e",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "3304f3e44a2bed2ed46f313b7a7ba5a0079de2b4e052aa3199c8b060102e23a7"
+      },
+      {
+        "page_number": 61,
+        "page_id": "the-great-gatsby:61:9ab3262b2cecac54",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "9ab3262b2cecac54a1c3726c080a984a341565e3fee9c1f4ec7846cf6a39a464"
+      },
+      {
+        "page_number": 62,
+        "page_id": "the-great-gatsby:62:b5d09be7fd841bf3",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b5d09be7fd841bf39a9e9480eadd13ac9e2684618e0edc01fbad2aab7eb8f8be"
+      },
+      {
+        "page_number": 63,
+        "page_id": "the-great-gatsby:63:f4ecdd5997d134a8",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f4ecdd5997d134a88f648237b9bca0ed03d3074941d6ec36319b2a8a06657ba5"
+      },
+      {
+        "page_number": 64,
+        "page_id": "the-great-gatsby:64:9fbddc2fcbf800ac",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "9fbddc2fcbf800ac9599f29a80f9d1ae048bfc326e595634bf11dc14efb3b861"
+      },
+      {
+        "page_number": 65,
+        "page_id": "the-great-gatsby:65:74086cddd4ffa613",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "74086cddd4ffa61370ffb97162beb465f99208a0e8bba3a3267368fb52dbf022"
+      },
+      {
+        "page_number": 66,
+        "page_id": "the-great-gatsby:66:566b33a73848106c",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "566b33a73848106c1c4334e6928f07b4966b87a62dc97bedf55a0d6298533c9e"
+      },
+      {
+        "page_number": 67,
+        "page_id": "the-great-gatsby:67:95aef6898cdf0ec9",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "95aef6898cdf0ec9daf9885cb33cfffe56546c3e61998aa66f9db14149c7dce7"
+      },
+      {
+        "page_number": 68,
+        "page_id": "the-great-gatsby:68:4ae0bba5be0ed56a",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "4ae0bba5be0ed56a9fa9ccebfa354aa2ccfea6573ba51e53be1ce9796ce8f6fc"
+      },
+      {
+        "page_number": 69,
+        "page_id": "the-great-gatsby:69:2466238a5a7958a6",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "2466238a5a7958a6c10eca0b7cb4d86154ca1df54f4412fda8ba1767bf60e5b1"
+      },
+      {
+        "page_number": 70,
+        "page_id": "the-great-gatsby:70:19791c39ae48fed1",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "19791c39ae48fed178dc898452b64a8b6e7c3c1a4029c1ffb1320e3f6654bfd7"
+      },
+      {
+        "page_number": 71,
+        "page_id": "the-great-gatsby:71:f93cf998c22e782b",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f93cf998c22e782b87429e76ea5448f74adfbe7198563e1a25c92b1e39b1126c"
+      },
+      {
+        "page_number": 72,
+        "page_id": "the-great-gatsby:72:2905ab46daa5342d",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "2905ab46daa5342d985091f88c4959df80dbbea049e0f4d6ba38e3eaeb99ea05"
+      },
+      {
+        "page_number": 73,
+        "page_id": "the-great-gatsby:73:b14bd18487f8622d",
+        "chapter_id": "chapter-007",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b14bd18487f8622d22d075549703b03b0b3bf8c9b0e3716b8d903cd7e0c8d254"
+      },
+      {
+        "page_number": 74,
+        "page_id": "the-great-gatsby:74:6e9b612d8e4b6973",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "6e9b612d8e4b6973f7a2c5d31f7de60a1b2c8cc62a8424635781b11a2b00c908"
+      },
+      {
+        "page_number": 75,
+        "page_id": "the-great-gatsby:75:736bae91545930ec",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "736bae91545930ecbea0b10f03b7793973eeb994afd707a867ae4f38878580b0"
+      },
+      {
+        "page_number": 76,
+        "page_id": "the-great-gatsby:76:607d0a92a4a4bfdf",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "607d0a92a4a4bfdf4021ba7efedf015a8265d81642df4746dac303fda013dd69"
+      },
+      {
+        "page_number": 77,
+        "page_id": "the-great-gatsby:77:38016826f643b023",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "38016826f643b023268dc60b2763cc7f2a1e6d173925d50e5418d591e77101ea"
+      },
+      {
+        "page_number": 78,
+        "page_id": "the-great-gatsby:78:b87bc04b34ab3ff1",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "b87bc04b34ab3ff1d8c54c5b79e45a5f331796c186b1cf5fedbc01c1b3893109"
+      },
+      {
+        "page_number": 79,
+        "page_id": "the-great-gatsby:79:35c30125588de1dc",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "35c30125588de1dcfe54f5dac52304f61b4edbc5bc23c9926e4d265bd8e98def"
+      },
+      {
+        "page_number": 80,
+        "page_id": "the-great-gatsby:80:80a3790441334f30",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "80a3790441334f304eb8fea51613fe4e1be9dde0e359fedce52156eec69325c2"
+      },
+      {
+        "page_number": 81,
+        "page_id": "the-great-gatsby:81:c4dcb8f3b67f4d33",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "c4dcb8f3b67f4d3368e2ca395dddd502a5d64906136574c2febf38aaa4eec6c7"
+      },
+      {
+        "page_number": 82,
+        "page_id": "the-great-gatsby:82:8d22891dc49c3b62",
+        "chapter_id": "chapter-008",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "8d22891dc49c3b6267def9ed58832c7800da9babab8e268ad25de830efb91ef8"
+      },
+      {
+        "page_number": 83,
+        "page_id": "the-great-gatsby:83:c62ea9313a60ec95",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "c62ea9313a60ec950447b5db0dee45f9ad5c3659ed9ea8d0064e6b8f8c79db5b"
+      },
+      {
+        "page_number": 84,
+        "page_id": "the-great-gatsby:84:8b5d61f094b37b17",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "8b5d61f094b37b179ebd31d2451bb96a88179b5d22031383b43fe0684bdffdaa"
+      },
+      {
+        "page_number": 85,
+        "page_id": "the-great-gatsby:85:d5b9804eec9c8e69",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "d5b9804eec9c8e69562663b0459f4dede9761ea062fccf37a11b91bad82d3d38"
+      },
+      {
+        "page_number": 86,
+        "page_id": "the-great-gatsby:86:e6c324783952bf33",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e6c324783952bf33cbd2a60d0607c71f77142744aaa96eae94dc2387c1583dc0"
+      },
+      {
+        "page_number": 87,
+        "page_id": "the-great-gatsby:87:e85714fc93c0dd2a",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "e85714fc93c0dd2a7cc455cd0c2561d0ca3ad2b075e127076d55cd8b271fc097"
+      },
+      {
+        "page_number": 88,
+        "page_id": "the-great-gatsby:88:af389784f14d2343",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "af389784f14d2343ba9d159fa2fbb0caaca6d975288845b2662a83b166ca7eb1"
+      },
+      {
+        "page_number": 89,
+        "page_id": "the-great-gatsby:89:f2ee8bc683f77487",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f2ee8bc683f77487ceded194fe6272db9ecfd7a48a7c1d90c520f2b6831238d6"
+      },
+      {
+        "page_number": 90,
+        "page_id": "the-great-gatsby:90:57d0449fedb60dea",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "57d0449fedb60deac230b1d7a0cb5298566f703c3df28fa468725b8b516051d8"
+      },
+      {
+        "page_number": 91,
+        "page_id": "the-great-gatsby:91:a625afa4e93bf9ec",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "a625afa4e93bf9ecfb8d74440f751400bd10696b1311b4f0066ac8db2f80c57d"
+      },
+      {
+        "page_number": 92,
+        "page_id": "the-great-gatsby:92:f46f2d6701751998",
+        "chapter_id": "chapter-009",
+        "content_revision": "3e17410476afa2ffeee12808",
+        "content_hash": "f46f2d6701751998a86ef678902710bd70669ef34b72ce7ca6dffb9b4cb6d3f4"
+      }
+    ]
+  }
+}

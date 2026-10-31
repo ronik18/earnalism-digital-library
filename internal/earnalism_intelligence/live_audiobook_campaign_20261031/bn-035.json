@@ -1,0 +1,155 @@
+{
+  "slug": "bn-035",
+  "title": "বড়দিদি",
+  "book_id": "controlled-bn-035",
+  "url": "https://theearnalism.com/book/bn-035",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:46Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "1dc0c0966c9719f2d61bc47e2e8c5bfdf961fb0986b84624150502b2b2451520",
+      "url": "https://theearnalism.com/api/reader/book/bn-035/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/bn-035/source_evidence.json",
+      "sha256": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/bn-035/reader_manifest.json",
+      "sha256": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/bn-035/rights_decision.json",
+      "sha256": "a4848d50339a0194b0f0a8f489354e7d52666154f998f459f51b8a1e301a7555"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-001.json",
+        "sha256": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-002.json",
+        "sha256": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-003.json",
+        "sha256": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-004.json",
+        "sha256": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-005.json",
+        "sha256": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-006.json",
+        "sha256": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-007.json",
+        "sha256": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-008.json",
+        "sha256": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-009.json",
+        "sha256": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-035/chapters/chapter-010.json",
+        "sha256": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6"
+      }
+    ],
+    "live_chapter_count": 10,
+    "live_version": "72f648504a01386d5e90",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "b5f2680d7ecab1ea",
+      "updated_at": ""
+    },
+    "live_book_slug": "bn-035",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    },
+    {
+      "code": "PRIOR_CAMPAIGN_FAILURES_NO_BLIND_RETRY",
+      "action": "Restore OpenAI gpt-audio billing/quota or approve a different independent audio judge, then run one bounded title-scoped audition from the persisted four-passage artifact; do not start full-title generation.",
+      "evidence": [
+        "OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA"
+      ]
+    },
+    {
+      "code": "BENGALI_PILOT_SCALE_AND_BUDGET_GATES",
+      "action": "Respect the current pilot-first campaign state; establish a supported qualified runtime and enforced numeric campaign/per-title budget gates before any paid request; do not replay failed fingerprints."
+    }
+  ],
+  "language": "ben",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  },
+  "prior_campaign": {
+    "current_campaign_state": "PASSAGES_READY_OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
+    "known_blockers": [
+      "OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA"
+    ],
+    "selected_strategy": "canonical_four_passage_bounded_audition_after_listening_judge_restore",
+    "next_action": "Restore OpenAI gpt-audio billing/quota or approve a different independent audio judge, then run one bounded title-scoped audition from the persisted four-passage artifact; do not start full-title generation."
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "slug": "dracula",
+  "title": "Dracula",
+  "book_id": "controlled-dracula",
+  "url": "https://theearnalism.com/book/dracula",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:47Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "e17a60bddeddde8339b1e88a6a14c78305f85a795f9dbed5c0b802edbb3da0c3",
+      "url": "https://theearnalism.com/api/reader/book/dracula/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/dracula/source_evidence.json",
+      "sha256": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/dracula/reader_manifest.json",
+      "sha256": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/dracula/rights_decision.json",
+      "sha256": "61e3508fe614c2d45f25ca25806258acca86b2b9940ed1c90fbfb370485dc8c1"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-000.json",
+        "sha256": "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-001.json",
+        "sha256": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-002.json",
+        "sha256": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-003.json",
+        "sha256": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-004.json",
+        "sha256": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-005.json",
+        "sha256": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-006.json",
+        "sha256": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-007.json",
+        "sha256": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-008.json",
+        "sha256": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-009.json",
+        "sha256": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-010.json",
+        "sha256": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-011.json",
+        "sha256": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-012.json",
+        "sha256": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-013.json",
+        "sha256": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-014.json",
+        "sha256": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-015.json",
+        "sha256": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-016.json",
+        "sha256": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-017.json",
+        "sha256": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-018.json",
+        "sha256": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-019.json",
+        "sha256": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-020.json",
+        "sha256": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-021.json",
+        "sha256": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-022.json",
+        "sha256": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-023.json",
+        "sha256": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-024.json",
+        "sha256": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-025.json",
+        "sha256": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-026.json",
+        "sha256": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4"
+      },
+      {
+        "path": "backend/data/controlled_publications/dracula/chapters/chapter-027.json",
+        "sha256": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f"
+      }
+    ],
+    "live_chapter_count": 28,
+    "live_version": "07e4ee7eaadd7ed652f3",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "33fd900e4d99421b",
+      "updated_at": ""
+    },
+    "live_book_slug": "dracula",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

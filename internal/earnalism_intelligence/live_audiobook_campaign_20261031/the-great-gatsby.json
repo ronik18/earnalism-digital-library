@@ -1,0 +1,136 @@
+{
+  "slug": "the-great-gatsby",
+  "title": "The Great Gatsby",
+  "book_id": "controlled-the-great-gatsby",
+  "url": "https://theearnalism.com/book/the-great-gatsby",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-16T14:30:00Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "c4717d31726c5b25b7fab5bec228f2e825893566e05b40315d18690edc342564",
+      "url": "https://theearnalism.com/api/reader/book/the-great-gatsby/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-great-gatsby/source_evidence.json",
+      "sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-great-gatsby/reader_manifest.json",
+      "sha256": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-great-gatsby/rights_decision.json",
+      "sha256": "58fa702d3638de7b38ef32f30c0ccf2f3592ad55ee927fd4e298c24ec6614960"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-000.json",
+        "sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-001.json",
+        "sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-002.json",
+        "sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-003.json",
+        "sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-004.json",
+        "sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-005.json",
+        "sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-006.json",
+        "sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-007.json",
+        "sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-008.json",
+        "sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-great-gatsby/chapters/chapter-009.json",
+        "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9"
+      }
+    ],
+    "live_chapter_count": 10,
+    "live_version": "384861f3dab4c0769d1a",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "01d8372847eb4573",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-great-gatsby",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "title": "The Science of Getting Rich",
+  "book_id": "controlled-the-science-of-getting-rich",
+  "url": "https://theearnalism.com/book/the-science-of-getting-rich",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-08-15T23:13:35Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "f7196ddf57280771337c1ba20d19f2169f54c10842ac9b8cc2225658ef7d64dc",
+      "url": "https://theearnalism.com/api/reader/book/the-science-of-getting-rich/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-science-of-getting-rich/source_evidence.json",
+      "sha256": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
+      "sha256": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-science-of-getting-rich/rights_decision.json",
+      "sha256": "f64d4cca5215c9dc14d42457ea413cc527fa6fe1fec2ea360f4a35109f93d378"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-001.json",
+        "sha256": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-002.json",
+        "sha256": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-003.json",
+        "sha256": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-004.json",
+        "sha256": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-005.json",
+        "sha256": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-006.json",
+        "sha256": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-007.json",
+        "sha256": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-008.json",
+        "sha256": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-009.json",
+        "sha256": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-010.json",
+        "sha256": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-011.json",
+        "sha256": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-012.json",
+        "sha256": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-013.json",
+        "sha256": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-014.json",
+        "sha256": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-015.json",
+        "sha256": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-016.json",
+        "sha256": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-017.json",
+        "sha256": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-science-of-getting-rich/chapters/chapter-018.json",
+        "sha256": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14"
+      }
+    ],
+    "live_chapter_count": 18,
+    "live_version": "b40302f7e9985bb50d9b",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "cee0be9516e8e28a",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-science-of-getting-rich",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

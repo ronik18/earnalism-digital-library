@@ -1,0 +1,158 @@
+{
+  "slug": "bn-059",
+  "title": "কমলাকান্তের দপ্তর",
+  "book_id": "controlled-bn-059",
+  "url": "https://theearnalism.com/book/bn-059",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:46Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "859a013f2514ef985cae56eb182661793048785a289e79aee9b01e7b18abb67e",
+      "url": "https://theearnalism.com/api/reader/book/bn-059/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/bn-059/source_evidence.json",
+      "sha256": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/bn-059/reader_manifest.json",
+      "sha256": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/bn-059/rights_decision.json",
+      "sha256": "f198582d878b50fe32f3038551f237647e269a4ccbce32836ae3f23792e4fecc"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-001.json",
+        "sha256": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-002.json",
+        "sha256": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-003.json",
+        "sha256": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-004.json",
+        "sha256": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-005.json",
+        "sha256": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-006.json",
+        "sha256": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-007.json",
+        "sha256": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-008.json",
+        "sha256": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-009.json",
+        "sha256": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-010.json",
+        "sha256": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-011.json",
+        "sha256": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-012.json",
+        "sha256": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042"
+      },
+      {
+        "path": "backend/data/controlled_publications/bn-059/chapters/chapter-013.json",
+        "sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af"
+      }
+    ],
+    "live_chapter_count": 13,
+    "live_version": "290f672f7bfc0e41a145",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "11f94cc63a050009",
+      "updated_at": ""
+    },
+    "live_book_slug": "bn-059",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    },
+    {
+      "code": "BENGALI_PILOT_SCALE_AND_BUDGET_GATES",
+      "action": "Respect the current pilot-first campaign state; establish a supported qualified runtime and enforced numeric campaign/per-title budget gates before any paid request; do not replay failed fingerprints."
+    }
+  ],
+  "language": "ben",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  },
+  "prior_campaign": {
+    "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+    "known_blockers": [],
+    "selected_strategy": "adaptive_sarvam_after_pilot",
+    "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+  }
+}

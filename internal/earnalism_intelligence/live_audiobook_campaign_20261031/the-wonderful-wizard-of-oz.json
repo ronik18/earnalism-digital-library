@@ -1,0 +1,196 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "title": "The Wonderful Wizard of Oz",
+  "book_id": "controlled-the-wonderful-wizard-of-oz",
+  "url": "https://theearnalism.com/book/the-wonderful-wizard-of-oz",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-03T20:07:47Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "be20075248ae63570e9dc73ec7ed65e17058585aee1544524cf18dd63ace0efb",
+      "url": "https://theearnalism.com/api/reader/book/the-wonderful-wizard-of-oz/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/source_evidence.json",
+      "sha256": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json",
+      "sha256": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/rights_decision.json",
+      "sha256": "e1c8875754fcf46330cb5f14c915b3183ba6f4afd430c9bf306131db496ef08f"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-000.json",
+        "sha256": "118662968ffae09a39b945b4e23611134f002de106fc175769bcc6b0d3f23171"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-001.json",
+        "sha256": "47eba6c96f51a6bcb2bde839312a2a487dfd7cbbefb64d9fd8f26f9e09b8a2a3"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-002.json",
+        "sha256": "8c32e4ea4ce72dca82dafc112f750adeadaa8371715022e01ce15f2209c828ca"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-003.json",
+        "sha256": "7a5162887dd0f1d7caedb9c389c09af052cb7662aa9bf88cfc1a833b3ff681bd"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-004.json",
+        "sha256": "b2abb71a6657d4996d40a5153fd6fc9da28645cf213b7905aca12ef368da5104"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-005.json",
+        "sha256": "0671e6fb23eb9bee17bea9ec34f735227af6907fc09821014116cd78fe4dc103"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-006.json",
+        "sha256": "7f544ecf190fc44e24bf9da2ae9c1ca721f061cd4e84600beb25c911b586ca10"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-007.json",
+        "sha256": "059ce4904d10f05ba6174dd9de4121239844e98dbf6e9f71bd905291bc6cf369"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-008.json",
+        "sha256": "e82cab6532aec3f5cbc81525475862a79efb7477da2be5a4fa5702df7fa72ffc"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-009.json",
+        "sha256": "ccd55e81a04d06cf466ac4efed76bb3c41f20df66fe5a7a28b37bd0f3f1b489f"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-010.json",
+        "sha256": "e405c6479f80643ffae80cb112237daba55b94308d0e2489a8196e991f91db82"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-011.json",
+        "sha256": "1548a87a716c760b5bf4ac9334e185ac3b9692e099dbcc892a5241dfcd53e076"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-012.json",
+        "sha256": "19a281cd8265ea71bad736152d21a3c9ceb3ad4631d6c314391caa016cbdcb52"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-013.json",
+        "sha256": "a33c3e949883bab750a4a3fed0b1d7a8ccb466b741b11d49f656ecae48632eff"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-014.json",
+        "sha256": "71a15fe2fc31371944909ddb9c70caef653f4bc6262ab488bbb4c7a793138574"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-015.json",
+        "sha256": "c0c5044d71a15d20ef413473916b6d263ce4bc07fc8d9ad9c309a7ba41d2c9d9"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-016.json",
+        "sha256": "ef577dfed5d075f8f90c31f1bb82a24957be8718b9718cfdb28f7fd8df376554"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-017.json",
+        "sha256": "4765b4825ee8014b8d6dcd96d2bd31174087f11e3f52ed19fbe830d63963af60"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-018.json",
+        "sha256": "665d674b8eb7dcf30ebee5f00c38877b12e9f874f0d708371a82803d7743a605"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-019.json",
+        "sha256": "89627bd9ec55bd369f6805538ea2d1dbe8073f6c7c4776199776ef332f62d7d8"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-020.json",
+        "sha256": "06ded42ac082874263b58c4c80c0bd0be859c2506b762035f8dff7bbe3480954"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-021.json",
+        "sha256": "06d09334a48d348344d7f21da5ada91c6f949903cfbec602e80c7fe55e7d8f84"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-022.json",
+        "sha256": "bc298db53227232ae528e897fc85091c706904bd1d4cfdbb32127f089496d5dd"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-023.json",
+        "sha256": "bf4ed5e7ebf8b5402a9d58545161150f084443e3f5b95234445dde15dfb3acec"
+      },
+      {
+        "path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/chapters/chapter-024.json",
+        "sha256": "64c9fab6b003c799f01caadbb2b4a1278149c092467b0f65a1647d35cf382386"
+      }
+    ],
+    "live_chapter_count": 25,
+    "live_version": "6f36b6e4dd9de2564fba",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "62b1c647884c4ba6",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-wonderful-wizard-of-oz",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}

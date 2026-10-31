@@ -1,0 +1,2136 @@
+{
+  "book": {
+    "estimated_reading_time": "316 min",
+    "title": "Frankenstein",
+    "who_for": [
+      "Readers of classic literature",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-frankenstein",
+    "back_cover_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-back-36740657.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+    "learnings": [
+      "Understand the major themes and narrative structure of the work.",
+      "Engage with historically important public-domain literature.",
+      "Read the original English text without modern adaptation material."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-back-36740657.webp",
+    "cover_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+    "updated_at": "2026-07-03T20:07:47Z",
+    "description": "This cleaned text-only public-domain edition is prepared for structured digital reading on Earnalism.",
+    "dominant_color": "#4A1C27",
+    "author": "Mary Wollstonecraft Shelley",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a legally cleared public-domain classic.",
+      "Enjoy a clean, distraction-free digital reading format.",
+      "Explore enduring themes from classic literature."
+    ],
+    "about_author": "Mary Wollstonecraft Shelley was an English novelist best known for Frankenstein; or, The Modern Prometheus.",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Letter 1. To Mrs. Saville, England",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "88553615dd064a8a8a70",
+        "word_count": 1198,
+        "reading_minutes": 5,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-001?v=88553615dd064a8a8a70",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Letter 1. To Mrs. Saville, England",
+        "index_title": "To Mrs. Saville, England",
+        "index_secondary_label": "Letter 1"
+      },
+      {
+        "id": "chapter-002",
+        "title": "Letter 2. To Mrs. Saville, England",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "64cd7081eb6e985a9e0c",
+        "word_count": 1309,
+        "reading_minutes": 6,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-002?v=64cd7081eb6e985a9e0c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Letter 2. To Mrs. Saville, England",
+        "index_title": "To Mrs. Saville, England",
+        "index_secondary_label": "Letter 2"
+      },
+      {
+        "id": "chapter-003",
+        "title": "Letter 3. To Mrs. Saville, England",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "cc6a288064f250bce2b0",
+        "word_count": 296,
+        "reading_minutes": 2,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-003?v=cc6a288064f250bce2b0",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Letter 3. To Mrs. Saville, England",
+        "index_title": "To Mrs. Saville, England",
+        "index_secondary_label": "Letter 3"
+      },
+      {
+        "id": "chapter-004",
+        "title": "Letter 4. To Mrs. Saville, England",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "626d92f953e89b676324",
+        "word_count": 2733,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-004?v=626d92f953e89b676324",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Letter 4. To Mrs. Saville, England",
+        "index_title": "To Mrs. Saville, England",
+        "index_secondary_label": "Letter 4"
+      },
+      {
+        "id": "chapter-005",
+        "title": "Chapter 1",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "8e78beef8f89a66e4de8",
+        "word_count": 1780,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-005?v=8e78beef8f89a66e4de8",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 1",
+        "index_title": "Chapter 1",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-006",
+        "title": "Chapter 2",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "3a7ba4ee8476afcb9dea",
+        "word_count": 2211,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-006?v=3a7ba4ee8476afcb9dea",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 2",
+        "index_title": "Chapter 2",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-007",
+        "title": "Chapter 3",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "650609122689d7de2a30",
+        "word_count": 2688,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-007?v=650609122689d7de2a30",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 3",
+        "index_title": "Chapter 3",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-008",
+        "title": "Chapter 4",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "497df1ffe0a88001a4e6",
+        "word_count": 2537,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-008?v=497df1ffe0a88001a4e6",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 4",
+        "index_title": "Chapter 4",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-009",
+        "title": "Chapter 5",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "d559d2883c4d7df5ab86",
+        "word_count": 2359,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-009?v=d559d2883c4d7df5ab86",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 5",
+        "index_title": "Chapter 5",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-010",
+        "title": "Chapter 6",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "009f7a49a09cf11a1ca2",
+        "word_count": 2728,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-010?v=009f7a49a09cf11a1ca2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 6",
+        "index_title": "Chapter 6",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-011",
+        "title": "Chapter 7",
+        "order": 11,
+        "is_preview": true,
+        "content_version": "a97af5f0774012c611c2",
+        "word_count": 3566,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-011?v=a97af5f0774012c611c2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 7",
+        "index_title": "Chapter 7",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-012",
+        "title": "Chapter 8",
+        "order": 12,
+        "is_preview": true,
+        "content_version": "a1c0e40aef0c37789e46",
+        "word_count": 3100,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-012?v=a1c0e40aef0c37789e46",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 8",
+        "index_title": "Chapter 8",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-013",
+        "title": "Chapter 9",
+        "order": 13,
+        "is_preview": true,
+        "content_version": "d35baf9583a9aebccd5b",
+        "word_count": 2222,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-013?v=d35baf9583a9aebccd5b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 9",
+        "index_title": "Chapter 9",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-014",
+        "title": "Chapter 10",
+        "order": 14,
+        "is_preview": true,
+        "content_version": "c3052f38ec42ff522a75",
+        "word_count": 2361,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-014?v=c3052f38ec42ff522a75",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 10",
+        "index_title": "Chapter 10",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-015",
+        "title": "Chapter 11",
+        "order": 15,
+        "is_preview": true,
+        "content_version": "833c91cb2ce3ea40f884",
+        "word_count": 2905,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-015?v=833c91cb2ce3ea40f884",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 15,
+        "index_sequence_label": "15",
+        "display_title": "Chapter 11",
+        "index_title": "Chapter 11",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-016",
+        "title": "Chapter 12",
+        "order": 16,
+        "is_preview": true,
+        "content_version": "49a19aada40dc81cfe76",
+        "word_count": 2076,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-016?v=49a19aada40dc81cfe76",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 16,
+        "index_sequence_label": "16",
+        "display_title": "Chapter 12",
+        "index_title": "Chapter 12",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-017",
+        "title": "Chapter 13",
+        "order": 17,
+        "is_preview": true,
+        "content_version": "ab438098620f1cfa5e02",
+        "word_count": 2038,
+        "reading_minutes": 9,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-017?v=ab438098620f1cfa5e02",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 17,
+        "index_sequence_label": "17",
+        "display_title": "Chapter 13",
+        "index_title": "Chapter 13",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-018",
+        "title": "Chapter 14",
+        "order": 18,
+        "is_preview": true,
+        "content_version": "9916fb9b172b8da6def6",
+        "word_count": 1853,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-018?v=9916fb9b172b8da6def6",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 18,
+        "index_sequence_label": "18",
+        "display_title": "Chapter 14",
+        "index_title": "Chapter 14",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-019",
+        "title": "Chapter 15",
+        "order": 19,
+        "is_preview": true,
+        "content_version": "5132a0ea1a2c9023097a",
+        "word_count": 3017,
+        "reading_minutes": 13,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-019?v=5132a0ea1a2c9023097a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 19,
+        "index_sequence_label": "19",
+        "display_title": "Chapter 15",
+        "index_title": "Chapter 15",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-020",
+        "title": "Chapter 16",
+        "order": 20,
+        "is_preview": true,
+        "content_version": "d8184fd6c5950dcd5129",
+        "word_count": 3204,
+        "reading_minutes": 14,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-020?v=d8184fd6c5950dcd5129",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 20,
+        "index_sequence_label": "20",
+        "display_title": "Chapter 16",
+        "index_title": "Chapter 16",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-021",
+        "title": "Chapter 17",
+        "order": 21,
+        "is_preview": true,
+        "content_version": "c31a16f582f44604e7f5",
+        "word_count": 1920,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-021?v=c31a16f582f44604e7f5",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 21,
+        "index_sequence_label": "21",
+        "display_title": "Chapter 17",
+        "index_title": "Chapter 17",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-022",
+        "title": "Chapter 18",
+        "order": 22,
+        "is_preview": true,
+        "content_version": "301d46577c2a2beb48d0",
+        "word_count": 2853,
+        "reading_minutes": 12,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-022?v=301d46577c2a2beb48d0",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 22,
+        "index_sequence_label": "22",
+        "display_title": "Chapter 18",
+        "index_title": "Chapter 18",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-023",
+        "title": "Chapter 19",
+        "order": 23,
+        "is_preview": true,
+        "content_version": "5321037cfafcdcf70795",
+        "word_count": 2615,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-023?v=5321037cfafcdcf70795",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 23,
+        "index_sequence_label": "23",
+        "display_title": "Chapter 19",
+        "index_title": "Chapter 19",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-024",
+        "title": "Chapter 20",
+        "order": 24,
+        "is_preview": true,
+        "content_version": "51e2152b03df737e22f8",
+        "word_count": 3525,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-024?v=51e2152b03df737e22f8",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 24,
+        "index_sequence_label": "24",
+        "display_title": "Chapter 20",
+        "index_title": "Chapter 20",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-025",
+        "title": "Chapter 21",
+        "order": 25,
+        "is_preview": true,
+        "content_version": "801cb9d6128c545bc29d",
+        "word_count": 3745,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-025?v=801cb9d6128c545bc29d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 25,
+        "index_sequence_label": "25",
+        "display_title": "Chapter 21",
+        "index_title": "Chapter 21",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-026",
+        "title": "Chapter 22",
+        "order": 26,
+        "is_preview": true,
+        "content_version": "7bf63532761126b61968",
+        "word_count": 3424,
+        "reading_minutes": 15,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-026?v=7bf63532761126b61968",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 26,
+        "index_sequence_label": "26",
+        "display_title": "Chapter 22",
+        "index_title": "Chapter 22",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-027",
+        "title": "Chapter 23",
+        "order": 27,
+        "is_preview": true,
+        "content_version": "a757afabe7864e38ac45",
+        "word_count": 2597,
+        "reading_minutes": 11,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-027?v=a757afabe7864e38ac45",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 27,
+        "index_sequence_label": "27",
+        "display_title": "Chapter 23",
+        "index_title": "Chapter 23",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-028",
+        "title": "Chapter 24",
+        "order": 28,
+        "is_preview": true,
+        "content_version": "3f204146d42c7dd74c81",
+        "word_count": 8251,
+        "reading_minutes": 35,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/frankenstein/chapter-028?v=3f204146d42c7dd74c81",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 28,
+        "index_sequence_label": "28",
+        "display_title": "Chapter 24",
+        "index_title": "Chapter 24",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "frankenstein",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "Or, The Modern Prometheus",
+    "short_description": "A gothic novel about creation, responsibility, isolation, and the consequences of unchecked ambition.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/frankenstein",
+    "reader_url": "/reader/frankenstein",
+    "preview_url": "/reader/frankenstein",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Letter 1. To Mrs. Saville, England",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "88553615dd064a8a8a70",
+      "word_count": 1198,
+      "reading_minutes": 5,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-001?v=88553615dd064a8a8a70",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Letter 1. To Mrs. Saville, England",
+      "index_title": "To Mrs. Saville, England",
+      "index_secondary_label": "Letter 1"
+    },
+    {
+      "id": "chapter-002",
+      "title": "Letter 2. To Mrs. Saville, England",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "64cd7081eb6e985a9e0c",
+      "word_count": 1309,
+      "reading_minutes": 6,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-002?v=64cd7081eb6e985a9e0c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Letter 2. To Mrs. Saville, England",
+      "index_title": "To Mrs. Saville, England",
+      "index_secondary_label": "Letter 2"
+    },
+    {
+      "id": "chapter-003",
+      "title": "Letter 3. To Mrs. Saville, England",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "cc6a288064f250bce2b0",
+      "word_count": 296,
+      "reading_minutes": 2,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-003?v=cc6a288064f250bce2b0",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Letter 3. To Mrs. Saville, England",
+      "index_title": "To Mrs. Saville, England",
+      "index_secondary_label": "Letter 3"
+    },
+    {
+      "id": "chapter-004",
+      "title": "Letter 4. To Mrs. Saville, England",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "626d92f953e89b676324",
+      "word_count": 2733,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-004?v=626d92f953e89b676324",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Letter 4. To Mrs. Saville, England",
+      "index_title": "To Mrs. Saville, England",
+      "index_secondary_label": "Letter 4"
+    },
+    {
+      "id": "chapter-005",
+      "title": "Chapter 1",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "8e78beef8f89a66e4de8",
+      "word_count": 1780,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-005?v=8e78beef8f89a66e4de8",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 1",
+      "index_title": "Chapter 1",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-006",
+      "title": "Chapter 2",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "3a7ba4ee8476afcb9dea",
+      "word_count": 2211,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-006?v=3a7ba4ee8476afcb9dea",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 2",
+      "index_title": "Chapter 2",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-007",
+      "title": "Chapter 3",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "650609122689d7de2a30",
+      "word_count": 2688,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-007?v=650609122689d7de2a30",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 3",
+      "index_title": "Chapter 3",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-008",
+      "title": "Chapter 4",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "497df1ffe0a88001a4e6",
+      "word_count": 2537,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-008?v=497df1ffe0a88001a4e6",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 4",
+      "index_title": "Chapter 4",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-009",
+      "title": "Chapter 5",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "d559d2883c4d7df5ab86",
+      "word_count": 2359,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-009?v=d559d2883c4d7df5ab86",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 5",
+      "index_title": "Chapter 5",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-010",
+      "title": "Chapter 6",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "009f7a49a09cf11a1ca2",
+      "word_count": 2728,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-010?v=009f7a49a09cf11a1ca2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 6",
+      "index_title": "Chapter 6",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-011",
+      "title": "Chapter 7",
+      "order": 11,
+      "is_preview": true,
+      "content_version": "a97af5f0774012c611c2",
+      "word_count": 3566,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-011?v=a97af5f0774012c611c2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 7",
+      "index_title": "Chapter 7",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-012",
+      "title": "Chapter 8",
+      "order": 12,
+      "is_preview": true,
+      "content_version": "a1c0e40aef0c37789e46",
+      "word_count": 3100,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-012?v=a1c0e40aef0c37789e46",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 8",
+      "index_title": "Chapter 8",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-013",
+      "title": "Chapter 9",
+      "order": 13,
+      "is_preview": true,
+      "content_version": "d35baf9583a9aebccd5b",
+      "word_count": 2222,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-013?v=d35baf9583a9aebccd5b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 9",
+      "index_title": "Chapter 9",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-014",
+      "title": "Chapter 10",
+      "order": 14,
+      "is_preview": true,
+      "content_version": "c3052f38ec42ff522a75",
+      "word_count": 2361,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-014?v=c3052f38ec42ff522a75",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 10",
+      "index_title": "Chapter 10",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-015",
+      "title": "Chapter 11",
+      "order": 15,
+      "is_preview": true,
+      "content_version": "833c91cb2ce3ea40f884",
+      "word_count": 2905,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-015?v=833c91cb2ce3ea40f884",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 15,
+      "index_sequence_label": "15",
+      "display_title": "Chapter 11",
+      "index_title": "Chapter 11",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-016",
+      "title": "Chapter 12",
+      "order": 16,
+      "is_preview": true,
+      "content_version": "49a19aada40dc81cfe76",
+      "word_count": 2076,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-016?v=49a19aada40dc81cfe76",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 16,
+      "index_sequence_label": "16",
+      "display_title": "Chapter 12",
+      "index_title": "Chapter 12",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-017",
+      "title": "Chapter 13",
+      "order": 17,
+      "is_preview": true,
+      "content_version": "ab438098620f1cfa5e02",
+      "word_count": 2038,
+      "reading_minutes": 9,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-017?v=ab438098620f1cfa5e02",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 17,
+      "index_sequence_label": "17",
+      "display_title": "Chapter 13",
+      "index_title": "Chapter 13",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-018",
+      "title": "Chapter 14",
+      "order": 18,
+      "is_preview": true,
+      "content_version": "9916fb9b172b8da6def6",
+      "word_count": 1853,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-018?v=9916fb9b172b8da6def6",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 18,
+      "index_sequence_label": "18",
+      "display_title": "Chapter 14",
+      "index_title": "Chapter 14",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-019",
+      "title": "Chapter 15",
+      "order": 19,
+      "is_preview": true,
+      "content_version": "5132a0ea1a2c9023097a",
+      "word_count": 3017,
+      "reading_minutes": 13,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-019?v=5132a0ea1a2c9023097a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 19,
+      "index_sequence_label": "19",
+      "display_title": "Chapter 15",
+      "index_title": "Chapter 15",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-020",
+      "title": "Chapter 16",
+      "order": 20,
+      "is_preview": true,
+      "content_version": "d8184fd6c5950dcd5129",
+      "word_count": 3204,
+      "reading_minutes": 14,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-020?v=d8184fd6c5950dcd5129",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 20,
+      "index_sequence_label": "20",
+      "display_title": "Chapter 16",
+      "index_title": "Chapter 16",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-021",
+      "title": "Chapter 17",
+      "order": 21,
+      "is_preview": true,
+      "content_version": "c31a16f582f44604e7f5",
+      "word_count": 1920,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-021?v=c31a16f582f44604e7f5",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 21,
+      "index_sequence_label": "21",
+      "display_title": "Chapter 17",
+      "index_title": "Chapter 17",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-022",
+      "title": "Chapter 18",
+      "order": 22,
+      "is_preview": true,
+      "content_version": "301d46577c2a2beb48d0",
+      "word_count": 2853,
+      "reading_minutes": 12,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-022?v=301d46577c2a2beb48d0",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 22,
+      "index_sequence_label": "22",
+      "display_title": "Chapter 18",
+      "index_title": "Chapter 18",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-023",
+      "title": "Chapter 19",
+      "order": 23,
+      "is_preview": true,
+      "content_version": "5321037cfafcdcf70795",
+      "word_count": 2615,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-023?v=5321037cfafcdcf70795",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 23,
+      "index_sequence_label": "23",
+      "display_title": "Chapter 19",
+      "index_title": "Chapter 19",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-024",
+      "title": "Chapter 20",
+      "order": 24,
+      "is_preview": true,
+      "content_version": "51e2152b03df737e22f8",
+      "word_count": 3525,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-024?v=51e2152b03df737e22f8",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 24,
+      "index_sequence_label": "24",
+      "display_title": "Chapter 20",
+      "index_title": "Chapter 20",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-025",
+      "title": "Chapter 21",
+      "order": 25,
+      "is_preview": true,
+      "content_version": "801cb9d6128c545bc29d",
+      "word_count": 3745,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-025?v=801cb9d6128c545bc29d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 25,
+      "index_sequence_label": "25",
+      "display_title": "Chapter 21",
+      "index_title": "Chapter 21",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-026",
+      "title": "Chapter 22",
+      "order": 26,
+      "is_preview": true,
+      "content_version": "7bf63532761126b61968",
+      "word_count": 3424,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-026?v=7bf63532761126b61968",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 26,
+      "index_sequence_label": "26",
+      "display_title": "Chapter 22",
+      "index_title": "Chapter 22",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-027",
+      "title": "Chapter 23",
+      "order": 27,
+      "is_preview": true,
+      "content_version": "a757afabe7864e38ac45",
+      "word_count": 2597,
+      "reading_minutes": 11,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-027?v=a757afabe7864e38ac45",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 27,
+      "index_sequence_label": "27",
+      "display_title": "Chapter 23",
+      "index_title": "Chapter 23",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-028",
+      "title": "Chapter 24",
+      "order": 28,
+      "is_preview": true,
+      "content_version": "3f204146d42c7dd74c81",
+      "word_count": 8251,
+      "reading_minutes": 35,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/frankenstein/chapter-028?v=3f204146d42c7dd74c81",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 28,
+      "index_sequence_label": "28",
+      "display_title": "Chapter 24",
+      "index_title": "Chapter 24",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "a96fbf2bc5d29705",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "7bbcf8f53c1c6e5f7dce",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:44.926002+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/frankenstein/manifest",
+      "total_pages": 144
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "b760e748448bf223bb4bcc7d",
+    "page_count": 144,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "frankenstein:1:3032feba9ecf94a8",
+        "chapter_id": "chapter-001",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "3032feba9ecf94a85b6d3fa7ba87a30c0e34a5d599a26ee8696134dd0b8bdf7a"
+      },
+      {
+        "page_number": 2,
+        "page_id": "frankenstein:2:5ad4f940b1ab4251",
+        "chapter_id": "chapter-001",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5ad4f940b1ab4251c7ee2a9b165c67717e63f2e114b2b22eb3b93be7472037eb"
+      },
+      {
+        "page_number": 3,
+        "page_id": "frankenstein:3:a85312c19dc8e012",
+        "chapter_id": "chapter-001",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "a85312c19dc8e012bb8c03be874585291821f623f1e26e3e7a54dc7ff672ff90"
+      },
+      {
+        "page_number": 4,
+        "page_id": "frankenstein:4:12c1782bf5236e73",
+        "chapter_id": "chapter-002",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "12c1782bf5236e731da7bf0b89a4af78c1921487ae19e84dd9d8abf5f24e221d"
+      },
+      {
+        "page_number": 5,
+        "page_id": "frankenstein:5:c0dfd2bca7ab6647",
+        "chapter_id": "chapter-002",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "c0dfd2bca7ab6647e593ccacc7f510ed174945e20ffddfa8275702b45a92ec39"
+      },
+      {
+        "page_number": 6,
+        "page_id": "frankenstein:6:6779073674b19f73",
+        "chapter_id": "chapter-002",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6779073674b19f73ecb3efe089207e9316c6ee5d4b806d62c10ade03f40fefc9"
+      },
+      {
+        "page_number": 7,
+        "page_id": "frankenstein:7:875ea297cb1e99d2",
+        "chapter_id": "chapter-003",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "875ea297cb1e99d248881ef2e382175b19a1d5bcca40bc8f2d3d774b86063ec0"
+      },
+      {
+        "page_number": 8,
+        "page_id": "frankenstein:8:5a29a5271ba1549f",
+        "chapter_id": "chapter-004",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5a29a5271ba1549f48ab7f02856f87c33caaba0e2b50824b8047d1a835cc5bba"
+      },
+      {
+        "page_number": 9,
+        "page_id": "frankenstein:9:2a99ded4d6a18ef4",
+        "chapter_id": "chapter-004",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2a99ded4d6a18ef45443f5ddbca8f1d4c5f962fb5d655de7d46afae359c3380d"
+      },
+      {
+        "page_number": 10,
+        "page_id": "frankenstein:10:abd80bb85ed7d768",
+        "chapter_id": "chapter-004",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "abd80bb85ed7d768da19ddcb803d3ac7f690f8081861b2c7801ab20715ac1ada"
+      },
+      {
+        "page_number": 11,
+        "page_id": "frankenstein:11:2c750f56402c743e",
+        "chapter_id": "chapter-004",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2c750f56402c743eb4ef8bc99e569d42a62fe434712e0eba3e9a5389a0076b49"
+      },
+      {
+        "page_number": 12,
+        "page_id": "frankenstein:12:0241667c05eb0780",
+        "chapter_id": "chapter-004",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "0241667c05eb07809a50c2165b5ee14892f148d5aae2e98538faf5edc4995cff"
+      },
+      {
+        "page_number": 13,
+        "page_id": "frankenstein:13:cb269eaf25b070ac",
+        "chapter_id": "chapter-005",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "cb269eaf25b070acdf6c146c5526b34001e3f91e6ad0b2d5e217e85726739bd3"
+      },
+      {
+        "page_number": 14,
+        "page_id": "frankenstein:14:8a4aeaac687240bb",
+        "chapter_id": "chapter-005",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "8a4aeaac687240bba638c4c1e5d003a50828f843fd341f8541dca87669de9646"
+      },
+      {
+        "page_number": 15,
+        "page_id": "frankenstein:15:d25bfcfd11bbe5b9",
+        "chapter_id": "chapter-005",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "d25bfcfd11bbe5b9dcd6237399256d1a29ab11e4028f3e5a996acb779f6eef0a"
+      },
+      {
+        "page_number": 16,
+        "page_id": "frankenstein:16:e8e9168bd4a5351c",
+        "chapter_id": "chapter-005",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "e8e9168bd4a5351c1b660c4d1a6ae5079929b3f013139508e0003bf9d8f35306"
+      },
+      {
+        "page_number": 17,
+        "page_id": "frankenstein:17:054763dd3c08f95f",
+        "chapter_id": "chapter-006",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "054763dd3c08f95f3f497e27d2cda926db6186efb5039021d9a868680fa97f3a"
+      },
+      {
+        "page_number": 18,
+        "page_id": "frankenstein:18:1608c51a03e6f074",
+        "chapter_id": "chapter-006",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "1608c51a03e6f074aa3f4f7be20674cea949db468153267ec63717b7c82bd3b0"
+      },
+      {
+        "page_number": 19,
+        "page_id": "frankenstein:19:4259732b1618e335",
+        "chapter_id": "chapter-006",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4259732b1618e335113fe33c5c4735769cd92371a779a541a9f841b54d211570"
+      },
+      {
+        "page_number": 20,
+        "page_id": "frankenstein:20:989bf8413e931d28",
+        "chapter_id": "chapter-006",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "989bf8413e931d2830de9897beab25c382286ea03de5eeed788eb09023a9ff96"
+      },
+      {
+        "page_number": 21,
+        "page_id": "frankenstein:21:4eddfd8d3fee2423",
+        "chapter_id": "chapter-007",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4eddfd8d3fee2423e23196f4b06f92b672a3a5b165f4a575533a581dca4e35b6"
+      },
+      {
+        "page_number": 22,
+        "page_id": "frankenstein:22:74bac9ae15d7cb04",
+        "chapter_id": "chapter-007",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "74bac9ae15d7cb0471bc7c868d173f582eebc425ff20c283ccfb30af43f80387"
+      },
+      {
+        "page_number": 23,
+        "page_id": "frankenstein:23:c6bc1883d2403a7d",
+        "chapter_id": "chapter-007",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "c6bc1883d2403a7d4bd4d1cb9e96ddf358c56346cea426958e12f02d96d648e0"
+      },
+      {
+        "page_number": 24,
+        "page_id": "frankenstein:24:251b45bb6ce2b428",
+        "chapter_id": "chapter-007",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "251b45bb6ce2b4288bb6d2b4e7568d5e41e54993fc91b4e60ec169d56cceeab8"
+      },
+      {
+        "page_number": 25,
+        "page_id": "frankenstein:25:406a21421a2602b5",
+        "chapter_id": "chapter-007",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "406a21421a2602b55a8ebd5ea6b124d0cebcd053956efa182081b7f24d1c0baa"
+      },
+      {
+        "page_number": 26,
+        "page_id": "frankenstein:26:6071575e54afe606",
+        "chapter_id": "chapter-008",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6071575e54afe60639347338c498e3b8188440c62296e22295c2b5202706ffbb"
+      },
+      {
+        "page_number": 27,
+        "page_id": "frankenstein:27:24fad54a756170a9",
+        "chapter_id": "chapter-008",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "24fad54a756170a9c63c72034a4716778d44cfbefe7f9f643a848f724466e52d"
+      },
+      {
+        "page_number": 28,
+        "page_id": "frankenstein:28:3fcbc04c0a5da498",
+        "chapter_id": "chapter-008",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "3fcbc04c0a5da49875dcf25cd960871da45b952dc887863ed8c0c1b25d486278"
+      },
+      {
+        "page_number": 29,
+        "page_id": "frankenstein:29:bdeb4672f9b78c36",
+        "chapter_id": "chapter-008",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "bdeb4672f9b78c36217b1970bb8739a64b98f28385a177c1560e26a8db0bdb92"
+      },
+      {
+        "page_number": 30,
+        "page_id": "frankenstein:30:f1705fff29ec43b3",
+        "chapter_id": "chapter-008",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f1705fff29ec43b36da06fddcfe6380e02f48afd65c789bbad2bcc4540597154"
+      },
+      {
+        "page_number": 31,
+        "page_id": "frankenstein:31:5ed9c519d600e6d8",
+        "chapter_id": "chapter-009",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5ed9c519d600e6d819bc2f31552c0c1c7f7e00833a9dcf843fafe45ab5106a27"
+      },
+      {
+        "page_number": 32,
+        "page_id": "frankenstein:32:7e5639d3ce11fe4f",
+        "chapter_id": "chapter-009",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "7e5639d3ce11fe4ff12708269c46411cd4800e6f0737eba7a4f7015e912d9b97"
+      },
+      {
+        "page_number": 33,
+        "page_id": "frankenstein:33:82dd01378b29924e",
+        "chapter_id": "chapter-009",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "82dd01378b29924e1f9322d6a193ddfc2050811b4b67c50f6e249309b065bcc5"
+      },
+      {
+        "page_number": 34,
+        "page_id": "frankenstein:34:0abab6f3eedda23b",
+        "chapter_id": "chapter-009",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "0abab6f3eedda23be05cc5ee2a893a4edb01371795e3f5138eee3c874727fff6"
+      },
+      {
+        "page_number": 35,
+        "page_id": "frankenstein:35:4883c92bc0ed4b51",
+        "chapter_id": "chapter-009",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4883c92bc0ed4b510dd3937f029831fae5c04111a2925e758284e12b95648fb2"
+      },
+      {
+        "page_number": 36,
+        "page_id": "frankenstein:36:06386c27578e82c7",
+        "chapter_id": "chapter-010",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "06386c27578e82c7d01a9a6554fbdeb99765aa26dee3f1d78370182087c8b180"
+      },
+      {
+        "page_number": 37,
+        "page_id": "frankenstein:37:58d610412c951190",
+        "chapter_id": "chapter-010",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "58d610412c9511907cc812bc882de8da2bbea72f0187b6704241e9de42568acc"
+      },
+      {
+        "page_number": 38,
+        "page_id": "frankenstein:38:f9ae0b10f40e7616",
+        "chapter_id": "chapter-010",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f9ae0b10f40e76162ac19227d5ec4a6beb782474e2796526f6c05e240fc222cb"
+      },
+      {
+        "page_number": 39,
+        "page_id": "frankenstein:39:72957bc2de205954",
+        "chapter_id": "chapter-010",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "72957bc2de205954f2bf43aafde842fcd5fea4dafff98462673c2dfef5592b13"
+      },
+      {
+        "page_number": 40,
+        "page_id": "frankenstein:40:7a8c5e5a58572547",
+        "chapter_id": "chapter-010",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "7a8c5e5a58572547137313f396741cd644ed79059bef23b36bc0440ebd67a6ad"
+      },
+      {
+        "page_number": 41,
+        "page_id": "frankenstein:41:4faca54c59fe8ef7",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4faca54c59fe8ef7a813704eafb24606c19f2849051e760edb6e1d6e10f645c3"
+      },
+      {
+        "page_number": 42,
+        "page_id": "frankenstein:42:6810f5ddf9b0992b",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6810f5ddf9b0992bf93613814892b051bfdeac6c57799e14bede3b6d90801983"
+      },
+      {
+        "page_number": 43,
+        "page_id": "frankenstein:43:c0da5cf9b296b7f2",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "c0da5cf9b296b7f25ab58c809aa44acea0f1d85cd4f4b71c6fcc3cc59cbfac67"
+      },
+      {
+        "page_number": 44,
+        "page_id": "frankenstein:44:4a7fcc948cd84af3",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4a7fcc948cd84af3cd7137dedce86e99cb47b78c777e36f528077b828d975ed3"
+      },
+      {
+        "page_number": 45,
+        "page_id": "frankenstein:45:df11075305a34d24",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "df11075305a34d245b4bff888e7434f4a7c8243c22712f0c5c3fddc29fdf4f38"
+      },
+      {
+        "page_number": 46,
+        "page_id": "frankenstein:46:a59fa24182e689b0",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "a59fa24182e689b0b7e1376e2716a88547e5239befb9742ead1d15d3caf3af12"
+      },
+      {
+        "page_number": 47,
+        "page_id": "frankenstein:47:2962c3900e9fa346",
+        "chapter_id": "chapter-011",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2962c3900e9fa34696970e850c4c60598e9104ab2f6bb04076dc0e7071428026"
+      },
+      {
+        "page_number": 48,
+        "page_id": "frankenstein:48:cb0339a8584c0c93",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "cb0339a8584c0c932c7318ebae86f7fe0c8cd180d7e5ddf08d08410b82419c5a"
+      },
+      {
+        "page_number": 49,
+        "page_id": "frankenstein:49:7e1a3098fbca2faf",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "7e1a3098fbca2faf600e0ef54a7b538f111fd7010094495703a4cbb47e80f027"
+      },
+      {
+        "page_number": 50,
+        "page_id": "frankenstein:50:998a29ed18f07d9d",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "998a29ed18f07d9d3cf8964f61e731e3e54a63a150246337e94ab946077263b0"
+      },
+      {
+        "page_number": 51,
+        "page_id": "frankenstein:51:4928f6c6913ca859",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4928f6c6913ca859ee8d6ece39b39043acd0ca177776cbea8854a52373d77683"
+      },
+      {
+        "page_number": 52,
+        "page_id": "frankenstein:52:a3bc3416f6dd89ab",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "a3bc3416f6dd89ab55840746e106edaa8f39cc50360fd29c85e39fa5aa4f4f0c"
+      },
+      {
+        "page_number": 53,
+        "page_id": "frankenstein:53:090047a0dd5ed4d9",
+        "chapter_id": "chapter-012",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "090047a0dd5ed4d9dc625772e4646e9c0bc30e7fa1f2ec16978538bba021323f"
+      },
+      {
+        "page_number": 54,
+        "page_id": "frankenstein:54:40da24ab76d78280",
+        "chapter_id": "chapter-013",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "40da24ab76d78280e2a9ccceef0f4ccfd77c2f9182578b63d6e60c318ca31512"
+      },
+      {
+        "page_number": 55,
+        "page_id": "frankenstein:55:26cf7f1ba6239f0f",
+        "chapter_id": "chapter-013",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "26cf7f1ba6239f0f89318e4fcc670398ff5cd4dd86ddd2d727f8d0d9ee656315"
+      },
+      {
+        "page_number": 56,
+        "page_id": "frankenstein:56:10a3cd0f6bcfc602",
+        "chapter_id": "chapter-013",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "10a3cd0f6bcfc602990076e6894fe65bb1ed766adfff98002d23a222e2a13164"
+      },
+      {
+        "page_number": 57,
+        "page_id": "frankenstein:57:f46f2f2791f06715",
+        "chapter_id": "chapter-013",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f46f2f2791f06715273a709ee5a4ad90c47770d6843d5ef03cd34596a26a2c10"
+      },
+      {
+        "page_number": 58,
+        "page_id": "frankenstein:58:aaf506763a747a38",
+        "chapter_id": "chapter-014",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "aaf506763a747a385cb39f3af2755519bb0460212dc5df0ebbabe6cfc51229c6"
+      },
+      {
+        "page_number": 59,
+        "page_id": "frankenstein:59:b734e31695541b0b",
+        "chapter_id": "chapter-014",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "b734e31695541b0bfc9fda31b194ebbede7463481304b921a72d33bdf7525c90"
+      },
+      {
+        "page_number": 60,
+        "page_id": "frankenstein:60:3d0d8241d4aecfbb",
+        "chapter_id": "chapter-014",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "3d0d8241d4aecfbb27ab014503a866cd560c114a6270f7fec24b3f19b4b0fdfb"
+      },
+      {
+        "page_number": 61,
+        "page_id": "frankenstein:61:2af212a514c4bf98",
+        "chapter_id": "chapter-014",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2af212a514c4bf9864320afe0eca524fbf95b91dbbf518eb7e8dbc65c79a4932"
+      },
+      {
+        "page_number": 62,
+        "page_id": "frankenstein:62:105c97ce62c24487",
+        "chapter_id": "chapter-014",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "105c97ce62c244874303dfe1a64038b683642ec25db0986fbf58b23b726d4c27"
+      },
+      {
+        "page_number": 63,
+        "page_id": "frankenstein:63:f08a747324636516",
+        "chapter_id": "chapter-015",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f08a747324636516b1b2bd3f00343d59c7bbe7d7a73d560537db0d0ea7923322"
+      },
+      {
+        "page_number": 64,
+        "page_id": "frankenstein:64:da5c171592a00c5f",
+        "chapter_id": "chapter-015",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "da5c171592a00c5fad5211b5d44f86cbe45bb79786664a7c2a8943ba7a30ad58"
+      },
+      {
+        "page_number": 65,
+        "page_id": "frankenstein:65:2294b2c45b498b2d",
+        "chapter_id": "chapter-015",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2294b2c45b498b2d33e4894c04a8da4b4d4a6984539fff4e4f7e958568644b19"
+      },
+      {
+        "page_number": 66,
+        "page_id": "frankenstein:66:a9d0997c7417e823",
+        "chapter_id": "chapter-015",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "a9d0997c7417e8238cd3c2af32160d1994d2a7874f3f21ce772a272a073b9f5f"
+      },
+      {
+        "page_number": 67,
+        "page_id": "frankenstein:67:7f2bd80c6331cb90",
+        "chapter_id": "chapter-015",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "7f2bd80c6331cb9048b61b2e03e996c10daac98dd6a1619860d905e2fc31139c"
+      },
+      {
+        "page_number": 68,
+        "page_id": "frankenstein:68:ba4533cb825a344d",
+        "chapter_id": "chapter-016",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "ba4533cb825a344d2db73b37448fe0456cd363060a8acfd2173b9da300849190"
+      },
+      {
+        "page_number": 69,
+        "page_id": "frankenstein:69:0eeb53510a6b5396",
+        "chapter_id": "chapter-016",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "0eeb53510a6b539613c887a58cf48f45fd942cb2880524f25698ee1438052daa"
+      },
+      {
+        "page_number": 70,
+        "page_id": "frankenstein:70:e5c20f74024eff28",
+        "chapter_id": "chapter-016",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "e5c20f74024eff28894eb4248c147be741d785929a30e2ca48695cd3c34b2211"
+      },
+      {
+        "page_number": 71,
+        "page_id": "frankenstein:71:2e2cca4f16385c8a",
+        "chapter_id": "chapter-016",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2e2cca4f16385c8a65d87e24b7a7d19286c878ac0a290048fcf8857b02dbe03e"
+      },
+      {
+        "page_number": 72,
+        "page_id": "frankenstein:72:cad77d315c3644ec",
+        "chapter_id": "chapter-017",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "cad77d315c3644ec2cedadcaa06c29cc7610fc61aa9d6adedc7a07d654c36f67"
+      },
+      {
+        "page_number": 73,
+        "page_id": "frankenstein:73:068b14def4fa34e7",
+        "chapter_id": "chapter-017",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "068b14def4fa34e75e2d74b02304f8b5d6afbd05c95b8f6e758dac81d0597f75"
+      },
+      {
+        "page_number": 74,
+        "page_id": "frankenstein:74:96d5c8fe01a1d4c0",
+        "chapter_id": "chapter-017",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "96d5c8fe01a1d4c05a2b03e2a8eea80967b6c0b9dc9c8edae014bb0b8327e9c8"
+      },
+      {
+        "page_number": 75,
+        "page_id": "frankenstein:75:e4a9b630cb1da4a2",
+        "chapter_id": "chapter-017",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "e4a9b630cb1da4a20c5c071838a28d66ae660d70e6c94598d68985106d2d1ee2"
+      },
+      {
+        "page_number": 76,
+        "page_id": "frankenstein:76:8d98a1c18bda1cbd",
+        "chapter_id": "chapter-018",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "8d98a1c18bda1cbd6b7b459b0a4c5c2cfc971370249e049c30d3daa3542a48be"
+      },
+      {
+        "page_number": 77,
+        "page_id": "frankenstein:77:1283dc3df1e19be3",
+        "chapter_id": "chapter-018",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "1283dc3df1e19be34a75cf0f6d5e585ea292d9d82151d83abb609998ee6a477a"
+      },
+      {
+        "page_number": 78,
+        "page_id": "frankenstein:78:f6407c01e5320f43",
+        "chapter_id": "chapter-018",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f6407c01e5320f4355f3e3d8da261fb902af232b25995496e1eb67f3387233ae"
+      },
+      {
+        "page_number": 79,
+        "page_id": "frankenstein:79:f5d0d981da306c70",
+        "chapter_id": "chapter-018",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f5d0d981da306c703624bd8baf3f028607a684c3803c23ce8e093ac62cf2d4d3"
+      },
+      {
+        "page_number": 80,
+        "page_id": "frankenstein:80:6c6963faeba61274",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6c6963faeba61274905c94b0fd7ea989cc226a88f4c3f1b5fb52a351a28079ba"
+      },
+      {
+        "page_number": 81,
+        "page_id": "frankenstein:81:4dc2c1703ec8c5e5",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4dc2c1703ec8c5e529a3a6eef424ff1a0d2b7225882ee3bb6c658a921134e5c1"
+      },
+      {
+        "page_number": 82,
+        "page_id": "frankenstein:82:939b286df1e821e1",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "939b286df1e821e1e533639ef5734e12c498be0833766c15019b29cfb4799fac"
+      },
+      {
+        "page_number": 83,
+        "page_id": "frankenstein:83:eab695e0d4ef7dba",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "eab695e0d4ef7dbac9f3c551adbbf2baedf8195e16a76f3a0d1126e589d31604"
+      },
+      {
+        "page_number": 84,
+        "page_id": "frankenstein:84:0d495b384da6c467",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "0d495b384da6c467b436747b16f008d99c76464c047c12ba418d9a7a75f54cb2"
+      },
+      {
+        "page_number": 85,
+        "page_id": "frankenstein:85:f7b94084463ec364",
+        "chapter_id": "chapter-019",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f7b94084463ec364f2d7693f814bcbf0b28ec62a8fe09e97b723b18814a8cde1"
+      },
+      {
+        "page_number": 86,
+        "page_id": "frankenstein:86:5713968438af6bf8",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5713968438af6bf8c691bb9c811cfd1a434084331eb6d1671c5c45e68d10c485"
+      },
+      {
+        "page_number": 87,
+        "page_id": "frankenstein:87:03a4e7b38961390e",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "03a4e7b38961390ebbcd7721f0450f870898cd859b807ac20711fd8e30eba03c"
+      },
+      {
+        "page_number": 88,
+        "page_id": "frankenstein:88:64ed26afeb5dd5e9",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "64ed26afeb5dd5e9587893c0bc53b963dc47c34c5d6885732699afad64d9733f"
+      },
+      {
+        "page_number": 89,
+        "page_id": "frankenstein:89:d5b4ac8e7de60038",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "d5b4ac8e7de60038c41d049ef8064d39aa173cca4231c547e7dfc0454d0904cd"
+      },
+      {
+        "page_number": 90,
+        "page_id": "frankenstein:90:5082d30ee5228081",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5082d30ee5228081e70721bcae7e8303a08790532ba44e29ddbbf2e7ae509161"
+      },
+      {
+        "page_number": 91,
+        "page_id": "frankenstein:91:db5e9706ebd167aa",
+        "chapter_id": "chapter-020",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "db5e9706ebd167aa9d79bdfb94e6308cd1cb00b756d4b4727121b41512f84b6e"
+      },
+      {
+        "page_number": 92,
+        "page_id": "frankenstein:92:dd40865864ec78f8",
+        "chapter_id": "chapter-021",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "dd40865864ec78f8f14003b5124e039bce7a3a181a2530aed0e0eadda9fa13e0"
+      },
+      {
+        "page_number": 93,
+        "page_id": "frankenstein:93:045e53ecfebf294c",
+        "chapter_id": "chapter-021",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "045e53ecfebf294cf9042b3b2bf847bb4334e78649b5a1840be8a47e9ea0df5e"
+      },
+      {
+        "page_number": 94,
+        "page_id": "frankenstein:94:6f22d514652bbe13",
+        "chapter_id": "chapter-021",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6f22d514652bbe138c98f244696a5b7d94f9e559e5a6796fabcd16ffa2d59908"
+      },
+      {
+        "page_number": 95,
+        "page_id": "frankenstein:95:48a195106be21e88",
+        "chapter_id": "chapter-021",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "48a195106be21e88876cd008a64a5daa9deff21b4f1e2e82ee228661d7abe92b"
+      },
+      {
+        "page_number": 96,
+        "page_id": "frankenstein:96:431115a866408bb2",
+        "chapter_id": "chapter-022",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "431115a866408bb2f80e69f73caf8118c8fc27bfb2d1496e973fc0e839cb8917"
+      },
+      {
+        "page_number": 97,
+        "page_id": "frankenstein:97:5f8c6a0b61f79589",
+        "chapter_id": "chapter-022",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5f8c6a0b61f795895cd31d07479e20f99ebd3cf7131caf17f65ee220622d574b"
+      },
+      {
+        "page_number": 98,
+        "page_id": "frankenstein:98:2e728faf679acfd0",
+        "chapter_id": "chapter-022",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "2e728faf679acfd0a3e7a286dd40309e37e992163c96c887cc24edbac427d568"
+      },
+      {
+        "page_number": 99,
+        "page_id": "frankenstein:99:0223a5b999a60956",
+        "chapter_id": "chapter-022",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "0223a5b999a60956501437500bc443a40128fc9ccd1ebd02e0a9038f056c37cf"
+      },
+      {
+        "page_number": 100,
+        "page_id": "frankenstein:100:07d219e707476dc3",
+        "chapter_id": "chapter-022",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "07d219e707476dc36b6ec5653ec4ba00f3d72bba865e6f115c8b0b994d5b760f"
+      },
+      {
+        "page_number": 101,
+        "page_id": "frankenstein:101:4670189796af89f3",
+        "chapter_id": "chapter-023",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4670189796af89f3b72a563119c410f88e7de5ff6db9d1bbae123f2cdc8dacf1"
+      },
+      {
+        "page_number": 102,
+        "page_id": "frankenstein:102:5f2ae19a1fb4b754",
+        "chapter_id": "chapter-023",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5f2ae19a1fb4b7546c54a042cac9c03eb1c7066523a80054d970d2647604ec04"
+      },
+      {
+        "page_number": 103,
+        "page_id": "frankenstein:103:70a4ae148ac1ca69",
+        "chapter_id": "chapter-023",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "70a4ae148ac1ca69286eacfc5c0faad85326956999fbc36b2f98b60054f0a46b"
+      },
+      {
+        "page_number": 104,
+        "page_id": "frankenstein:104:f6dc6b1f29c5ca5d",
+        "chapter_id": "chapter-023",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f6dc6b1f29c5ca5d3bb5fe749af10fbf0f9bc92b2c916c80ed9674a88fb746f2"
+      },
+      {
+        "page_number": 105,
+        "page_id": "frankenstein:105:6fed786ddf8d8ab6",
+        "chapter_id": "chapter-023",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6fed786ddf8d8ab6d0b0dee376c1324d5021d074cffa68d09fdf9e1e27d09add"
+      },
+      {
+        "page_number": 106,
+        "page_id": "frankenstein:106:689dd880d3856134",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "689dd880d38561344e4ec46f6163c5698bc61a7da0745dc2165d15c38afc931d"
+      },
+      {
+        "page_number": 107,
+        "page_id": "frankenstein:107:e649b344df4bd70c",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "e649b344df4bd70c22b38631b5bf159083dd43237437097bf169b7ba19f27c4f"
+      },
+      {
+        "page_number": 108,
+        "page_id": "frankenstein:108:fe51aa099c69cb42",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "fe51aa099c69cb42ec4ab46ab0b0135f4b546e2a1dae95f404e6cc2f31db2280"
+      },
+      {
+        "page_number": 109,
+        "page_id": "frankenstein:109:35237c773807088c",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "35237c773807088c0d94b9ae82003aa98e491c35c40cf204a79559cf3a7967ff"
+      },
+      {
+        "page_number": 110,
+        "page_id": "frankenstein:110:6490f8007129df4a",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6490f8007129df4a26359e44a2f681db0040b89eb265fa1aa5184869c60f28f9"
+      },
+      {
+        "page_number": 111,
+        "page_id": "frankenstein:111:af48d0687dc9f714",
+        "chapter_id": "chapter-024",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "af48d0687dc9f7145e9a85479524cb393da0d46ec8177250a767703401f299d8"
+      },
+      {
+        "page_number": 112,
+        "page_id": "frankenstein:112:6074aa04a0a9e899",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6074aa04a0a9e899c68d64cbd75e63a5c261dc3406a494553b1f532430ff4e6d"
+      },
+      {
+        "page_number": 113,
+        "page_id": "frankenstein:113:b6722ffdbe1e53da",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "b6722ffdbe1e53da18a71b297282a12d8b2cabda8a6f6467b024ed0f2d964e51"
+      },
+      {
+        "page_number": 114,
+        "page_id": "frankenstein:114:10cb8ed8bbd79104",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "10cb8ed8bbd791048702037399c1baf83fd0fdf853e93362b1b7070e7343689c"
+      },
+      {
+        "page_number": 115,
+        "page_id": "frankenstein:115:97ded2bf4a75e083",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "97ded2bf4a75e08371a40d7fdcf047d502b4d80506b859b9a0bcc09c85d6b013"
+      },
+      {
+        "page_number": 116,
+        "page_id": "frankenstein:116:5e8434c2f3cdfac7",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "5e8434c2f3cdfac79a19c57259493e1d60f7d54a01aade0165ecbbab635f9207"
+      },
+      {
+        "page_number": 117,
+        "page_id": "frankenstein:117:4a3c2ea92ab7442e",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4a3c2ea92ab7442e3d8a42ddba7ad6d0f93d246a5b506005c495f242cd1be2d0"
+      },
+      {
+        "page_number": 118,
+        "page_id": "frankenstein:118:1317d963e0f2d087",
+        "chapter_id": "chapter-025",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "1317d963e0f2d0873633bb164a93ae1531a3707ddddf07db99034fb592198569"
+      },
+      {
+        "page_number": 119,
+        "page_id": "frankenstein:119:cfba1b85340d399b",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "cfba1b85340d399b65b979600f9d61974cc33883d67959ae9ae614aa1790bc78"
+      },
+      {
+        "page_number": 120,
+        "page_id": "frankenstein:120:209909485d5a3a19",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "209909485d5a3a195a6d43b4607c36eccc9e8b001345fa28ad899ce0371be75b"
+      },
+      {
+        "page_number": 121,
+        "page_id": "frankenstein:121:3174c82baea8d5b4",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "3174c82baea8d5b411018e02dc9bd7809f389d01c1254b66e6d14a39799d1535"
+      },
+      {
+        "page_number": 122,
+        "page_id": "frankenstein:122:c1acf126c7446082",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "c1acf126c744608223097db13b65dff577e2471b8b7e98d603410af2d6eb8b31"
+      },
+      {
+        "page_number": 123,
+        "page_id": "frankenstein:123:3113d9c3cd5c1d56",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "3113d9c3cd5c1d562e4b95f2b9ba7f43e7ddc16991504d3123a1a52dede4e56a"
+      },
+      {
+        "page_number": 124,
+        "page_id": "frankenstein:124:b2d622a2e28d485d",
+        "chapter_id": "chapter-026",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "b2d622a2e28d485dfd5827cc6f321e38b4ec86397c879ea5c83696185a59dd83"
+      },
+      {
+        "page_number": 125,
+        "page_id": "frankenstein:125:d96bd31aa9a0a6d8",
+        "chapter_id": "chapter-027",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "d96bd31aa9a0a6d84cded777457154aabbea943907ff45f8b9747d143b3b88ae"
+      },
+      {
+        "page_number": 126,
+        "page_id": "frankenstein:126:1888843e25b4b5eb",
+        "chapter_id": "chapter-027",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "1888843e25b4b5eb35bc44f417fbba6d4690d60b747c61c88c97844625fe1570"
+      },
+      {
+        "page_number": 127,
+        "page_id": "frankenstein:127:6bf246ad62c2f7fc",
+        "chapter_id": "chapter-027",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6bf246ad62c2f7fc4b60047cdcbd043c2429bf23a3f7de47046aa76eb11ab770"
+      },
+      {
+        "page_number": 128,
+        "page_id": "frankenstein:128:a118516163c697e9",
+        "chapter_id": "chapter-027",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "a118516163c697e90ce8730b06e408cbe5acd9cf3c6735aaeda08dd8f033a7d2"
+      },
+      {
+        "page_number": 129,
+        "page_id": "frankenstein:129:6e7a93559144a18d",
+        "chapter_id": "chapter-027",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "6e7a93559144a18d1ff2a246557ebd24a92a4568bec0db49b0a85ecdc88f0dc8"
+      },
+      {
+        "page_number": 130,
+        "page_id": "frankenstein:130:27227546f5307cd9",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "27227546f5307cd96b45c4faf23e90d7c5b1031ce72729b48524bd72c04ff091"
+      },
+      {
+        "page_number": 131,
+        "page_id": "frankenstein:131:fd66cf7bd1e735a4",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "fd66cf7bd1e735a4937fdd06db8f318046b9dae2726b2c1f47c1ec2edd5af941"
+      },
+      {
+        "page_number": 132,
+        "page_id": "frankenstein:132:4e061974617ed472",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "4e061974617ed472009f342b47fee44b8272136c4f952fcfdeb3e2301c289b2f"
+      },
+      {
+        "page_number": 133,
+        "page_id": "frankenstein:133:8677871bcc0e5931",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "8677871bcc0e593123d190ef3c530338c0bc1d324e31de25437613bc38cd5083"
+      },
+      {
+        "page_number": 134,
+        "page_id": "frankenstein:134:239832c2bf59c43f",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "239832c2bf59c43f67337fab24d2b9ba3c71d13d30a6e1c18b39750989a0749a"
+      },
+      {
+        "page_number": 135,
+        "page_id": "frankenstein:135:81c11659a58924a4",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "81c11659a58924a469f51feb46643fedc76a5a27cbbcbf636847912e458f014b"
+      },
+      {
+        "page_number": 136,
+        "page_id": "frankenstein:136:84496808da7d7532",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "84496808da7d753222c07dc29697558fc8655230049fd6fc615cb5a7c80b1323"
+      },
+      {
+        "page_number": 137,
+        "page_id": "frankenstein:137:f4b77c1d5a9e62d3",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "f4b77c1d5a9e62d357d8133add16ee4849481a18cbc0632a3d147a9f8edd2a18"
+      },
+      {
+        "page_number": 138,
+        "page_id": "frankenstein:138:17df3832c7ee7f13",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "17df3832c7ee7f13a8576bdb75bec0aaca16e0a0aa4a8a3d7d991c85e9ac7978"
+      },
+      {
+        "page_number": 139,
+        "page_id": "frankenstein:139:92aa42759307bead",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "92aa42759307beadf6abc26efba0ea057eba0596b66d8f2572a7646c11526008"
+      },
+      {
+        "page_number": 140,
+        "page_id": "frankenstein:140:95eefac78b4aed26",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "95eefac78b4aed26fac7cc413fcd9e0be470a7c2dce6935cffaf228b123fa88a"
+      },
+      {
+        "page_number": 141,
+        "page_id": "frankenstein:141:db6729cae5a0bafc",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "db6729cae5a0bafc9213af2fe3064d6940fecc35fd70c9405937ddf43be107cd"
+      },
+      {
+        "page_number": 142,
+        "page_id": "frankenstein:142:06f9bfa4ed61da80",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "06f9bfa4ed61da8096f6cb4446edc2c4b1d97de326fb9601874a0ac47813d219"
+      },
+      {
+        "page_number": 143,
+        "page_id": "frankenstein:143:08d682dddb5a15e6",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "08d682dddb5a15e67ca6ddc6b6e2b58136fab43b46a43fc549b876a9cbd4219b"
+      },
+      {
+        "page_number": 144,
+        "page_id": "frankenstein:144:52013a61efaa378a",
+        "chapter_id": "chapter-028",
+        "content_revision": "b760e748448bf223bb4bcc7d",
+        "content_hash": "52013a61efaa378a06d4892064ec39636646d27442f4d0c98195f25adbadba79"
+      }
+    ]
+  }
+}

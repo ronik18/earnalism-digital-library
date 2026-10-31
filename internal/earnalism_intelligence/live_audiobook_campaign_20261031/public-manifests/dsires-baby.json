@@ -1,0 +1,186 @@
+{
+  "book": {
+    "estimated_reading_time": "9 min",
+    "title": "Désirée's Baby",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-dsires-baby",
+    "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-27e80af7db81b325.webp",
+    "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-41886390fdf7c5d1.webp",
+    "updated_at": "2026-07-03T20:07:48Z",
+    "description": "Désirée is abandoned by her husband Armand when their baby's appearance suggests African ancestry — but the letter he burns reveals the truth is the reverse. Chopin's most shattering story of racial prejudice and its ironic destruction of the bigot.",
+    "dominant_color": "#4A1C27",
+    "author": "Kate Chopin",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305858/earnalism/covers/front/cover_candidate_controlled-dsires-baby-41886390fdf7c5d114eb9c7bf97634a5a77159a7e11586e601cfbaa512fe3f0d.webp",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Kate Chopin (1850–1904) was an American author whose pioneering fiction explored female consciousness, desire, and race in the American South.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305876/earnalism/covers/back/back_cover_candidate_controlled-dsires-baby-27e80af7db81b3255e2b0fa9d1f6164daf3589e4814e3f593adb963cb39c0fa9.webp",
+    "category_slug": "literary-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Désirée's Baby",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "9eb56c8345610e991884",
+        "word_count": 2178,
+        "reading_minutes": 10,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dsires-baby/chapter-001?v=9eb56c8345610e991884",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Désirée's Baby",
+        "index_title": "Désirée's Baby",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "dsires-baby",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A Louisiana plantation wife is cast out when her baby shows signs of Black ancestry — but the truth points elsewhere.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/dsires-baby",
+    "reader_url": "/reader/dsires-baby",
+    "preview_url": "/reader/dsires-baby",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Désirée's Baby",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "9eb56c8345610e991884",
+      "word_count": 2178,
+      "reading_minutes": 10,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dsires-baby/chapter-001?v=9eb56c8345610e991884",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Désirée's Baby",
+      "index_title": "Désirée's Baby",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "bbe46ff770ca958e",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "3f173dbd0a1f5ef99b5d",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:41.925732+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/dsires-baby/manifest",
+      "total_pages": 4
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "124f8b020c4fa88eba42a6d4",
+    "page_count": 4,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "dsires-baby:1:411edf3d3026c692",
+        "chapter_id": "chapter-001",
+        "content_revision": "124f8b020c4fa88eba42a6d4",
+        "content_hash": "411edf3d3026c6926c3a4191a6821b8d0c86b16d4e0da6b3a82754c1be0f2ce5"
+      },
+      {
+        "page_number": 2,
+        "page_id": "dsires-baby:2:d8ef7b50a9a23315",
+        "chapter_id": "chapter-001",
+        "content_revision": "124f8b020c4fa88eba42a6d4",
+        "content_hash": "d8ef7b50a9a233153546229019afba3201a8cc0a6b8174cf61c16108b3b01ea1"
+      },
+      {
+        "page_number": 3,
+        "page_id": "dsires-baby:3:5c6d87e702d68dc1",
+        "chapter_id": "chapter-001",
+        "content_revision": "124f8b020c4fa88eba42a6d4",
+        "content_hash": "5c6d87e702d68dc1d41e03aa486c35a415d20502db0abbb9484d9993be38d5f5"
+      },
+      {
+        "page_number": 4,
+        "page_id": "dsires-baby:4:badbb3ed222eab68",
+        "chapter_id": "chapter-001",
+        "content_revision": "124f8b020c4fa88eba42a6d4",
+        "content_hash": "badbb3ed222eab68a1e28fb4eb0be54948ae0e1fce41dcb5b3e79a9edecec0ec"
+      }
+    ]
+  }
+}

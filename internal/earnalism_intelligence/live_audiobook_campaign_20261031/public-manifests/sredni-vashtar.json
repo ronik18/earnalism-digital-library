@@ -1,0 +1,186 @@
+{
+  "book": {
+    "estimated_reading_time": "8 min",
+    "title": "Sredni Vashtar",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-sredni-vashtar",
+    "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+    "updated_at": "2026-07-14T09:33:44Z",
+    "description": "Conradin was ten years old, and the doctor had pronounced his professional opinion that the boy would not live another five years. The doctor was silky and effete, and counted for little, but his opinion was endorsed by Mrs. de Ropp, who counted for nearly everything. Mrs. De Ropp was Conradin's cousin and guardian, and in his eyes she represented those three-fifths of the world that are necessary and disagreeable and real; the other two-fifths, in perpetual antagonism to the foregoing, were summed up in himself and his imagination. One of these days Conradin supposed he would succumb to the mastering pressure of wearisome necessary things--such as illnesses and coddling restrictions and drawn-out dullness. Without his imagination, which was rampant under the spur of loneliness, he would have succumbed long ago.",
+    "dominant_color": "#4A1C27",
+    "author": "Saki",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp",
+    "created_at": "2026-07-03T20:07:48Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories, killed in action in World War I.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "Sredni Vashtar",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "e8e4e6ba86dcda85426b",
+        "word_count": 1787,
+        "reading_minutes": 8,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/sredni-vashtar/chapter-001?v=e8e4e6ba86dcda85426b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Sredni Vashtar",
+        "index_title": "Sredni Vashtar",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "sredni-vashtar",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/sredni-vashtar",
+    "reader_url": "/reader/sredni-vashtar",
+    "preview_url": "/reader/sredni-vashtar",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "Sredni Vashtar",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "e8e4e6ba86dcda85426b",
+      "word_count": 1787,
+      "reading_minutes": 8,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/sredni-vashtar/chapter-001?v=e8e4e6ba86dcda85426b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Sredni Vashtar",
+      "index_title": "Sredni Vashtar",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "9673550b01bb10f4",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "1c6c2d139354ace8d06a",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:41.968608+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/sredni-vashtar/manifest",
+      "total_pages": 4
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "93a651174f9942b1c9fba18c",
+    "page_count": 4,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "sredni-vashtar:1:2d248971b014934b",
+        "chapter_id": "chapter-001",
+        "content_revision": "93a651174f9942b1c9fba18c",
+        "content_hash": "2d248971b014934b934875bff79eea65679d4c4e082ee8f678e9a423281605c9"
+      },
+      {
+        "page_number": 2,
+        "page_id": "sredni-vashtar:2:2b79bd7ab510cb5b",
+        "chapter_id": "chapter-001",
+        "content_revision": "93a651174f9942b1c9fba18c",
+        "content_hash": "2b79bd7ab510cb5be0b9bca0cc8f50e8c7c1c42bd0967f509a0a4ea15663dc22"
+      },
+      {
+        "page_number": 3,
+        "page_id": "sredni-vashtar:3:76d3616216c77af6",
+        "chapter_id": "chapter-001",
+        "content_revision": "93a651174f9942b1c9fba18c",
+        "content_hash": "76d3616216c77af6256119c948e6ffb764ded70019b773f1cbba3cd6c3e2656a"
+      },
+      {
+        "page_number": 4,
+        "page_id": "sredni-vashtar:4:97d14cc5c09f7ea1",
+        "chapter_id": "chapter-001",
+        "content_revision": "93a651174f9942b1c9fba18c",
+        "content_hash": "97d14cc5c09f7ea1ec99997c6ac7bfe285322a569da7344f83ed35364c3a178b"
+      }
+    ]
+  }
+}

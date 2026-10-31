@@ -2872,3 +2872,11 @@ Reuse suitable existing owner-origin artwork and restore only actual cutout or c
 
 ## Two new cover pairs —31 October2026
 Reuse good covers; new title-specific original illustration and exact Canva typography require actual preview approval, saved-state equality and final native validation. Retain generated PNG credentials and disclose native derivative export omission without inventing a signature/ingredient-chain rule or claiming human creation. Actual final PDF resources and browser card decodes qualify only their stated scope.
+
+## Live audiobook campaign and Git recovery - 2026-10-31
+
+- Restored canonical worktree without deleting history: original index/metadata backed up and divergent commit retained under a recovery ref. Isolated object retrieval and exact Git-blob validation bypassed iCloud reference stalls.
+- Frozen public scope is 52 LIVE reading titles, with 50 audio-hidden and two existing audio packages. All public Reader manifests returned 200.
+- Current exact-edition audio-package rights bindings exist for only Open Window and Selfish Giant. Reader rights and cost-only authority do not establish other audio/model/voice licenses.
+- Existing package/version/duration and guest UI checks pass, but player/billing files changed against accepted source trees. Preserve existing releases; do not claim fresh authenticated playback or repeat generation.
+- No paid calls, customer session, publication setting, text, or cover changed. Per-title blockers and evidence are in live_audiobook_campaign_20261031/.

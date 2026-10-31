@@ -1,0 +1,3055 @@
+{
+  "book": {
+    "estimated_reading_time": "685 min",
+    "title": "Dracula",
+    "who_for": [
+      "Fans of horror and Gothic fiction",
+      "Students of Victorian literature",
+      "Readers who enjoy epistolary narrative structures"
+    ],
+    "id": "controlled-dracula",
+    "back_cover_url": "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    "learnings": [
+      "Explore Victorian anxieties about sexuality, foreignness, and the supernatural.",
+      "Understand how Stoker constructed the modern vampire archetype.",
+      "Read the original epistolary text without modern adaptation material."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    "cover_url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    "updated_at": "2026-07-03T20:07:47Z",
+    "description": "This public-domain edition of Stoker's 1897 novel is prepared for structured digital reading on Earnalism.",
+    "dominant_color": "#4A1C27",
+    "author": "Bram Stoker",
+    "thumbnail_url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read the novel that defined the modern vampire myth.",
+      "Enjoy a clean, structured reading format.",
+      "Access a legally cleared, unabridged classic."
+    ],
+    "about_author": "Bram Stoker (1847–1912) was an Irish author best known for his 1897 Gothic horror novel Dracula. He was also the personal assistant of actor Henry Irving.",
+    "back_cover_thumbnail_url": "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "title": "Preface",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "2d6f89c1748dd930118d",
+        "word_count": 77,
+        "reading_minutes": 1,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-000?v=2d6f89c1748dd930118d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "Preface",
+        "index_title": "Preface",
+        "index_secondary_label": ""
+      },
+      {
+        "id": "chapter-001",
+        "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+        "order": 2,
+        "is_preview": true,
+        "content_version": "e83044228c066aba120e",
+        "word_count": 5745,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-001?v=e83044228c066aba120e",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 2,
+        "index_sequence_label": "02",
+        "display_title": "Chapter 1. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 1"
+      },
+      {
+        "id": "chapter-002",
+        "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+        "order": 3,
+        "is_preview": true,
+        "content_version": "85ce4b7c6fe78f5ec9a7",
+        "word_count": 5521,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-002?v=85ce4b7c6fe78f5ec9a7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 3,
+        "index_sequence_label": "03",
+        "display_title": "Chapter 2. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 2"
+      },
+      {
+        "id": "chapter-003",
+        "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+        "order": 4,
+        "is_preview": true,
+        "content_version": "529e3552c4feb9540e0f",
+        "word_count": 5740,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-003?v=529e3552c4feb9540e0f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 4,
+        "index_sequence_label": "04",
+        "display_title": "Chapter 3. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 3"
+      },
+      {
+        "id": "chapter-004",
+        "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+        "order": 5,
+        "is_preview": true,
+        "content_version": "af378da103f4b9fff07c",
+        "word_count": 5874,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-004?v=af378da103f4b9fff07c",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 5,
+        "index_sequence_label": "05",
+        "display_title": "Chapter 4. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 4"
+      },
+      {
+        "id": "chapter-005",
+        "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
+        "order": 6,
+        "is_preview": true,
+        "content_version": "cee1dd42ed3db712ef45",
+        "word_count": 3643,
+        "reading_minutes": 16,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-005?v=cee1dd42ed3db712ef45",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 6,
+        "index_sequence_label": "06",
+        "display_title": "Chapter 5. Mina Murray’s Correspondence",
+        "index_title": "Mina Murray’s Correspondence",
+        "index_secondary_label": "Chapter 5"
+      },
+      {
+        "id": "chapter-006",
+        "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+        "order": 7,
+        "is_preview": true,
+        "content_version": "8ce5fd77c6deec70a6cc",
+        "word_count": 5790,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-006?v=8ce5fd77c6deec70a6cc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 7,
+        "index_sequence_label": "07",
+        "display_title": "Chapter 6. Mina Murray’s Journal",
+        "index_title": "Mina Murray’s Journal",
+        "index_secondary_label": "Chapter 6"
+      },
+      {
+        "id": "chapter-007",
+        "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+        "order": 8,
+        "is_preview": true,
+        "content_version": "c185cf882d12ee13057f",
+        "word_count": 5620,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-007?v=c185cf882d12ee13057f",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 8,
+        "index_sequence_label": "08",
+        "display_title": "Chapter 7. Cutting From “The Dailygraph,” 8 August",
+        "index_title": "Cutting From “The Dailygraph,” 8 August",
+        "index_secondary_label": "Chapter 7"
+      },
+      {
+        "id": "chapter-008",
+        "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+        "order": 9,
+        "is_preview": true,
+        "content_version": "cfcfd58c1a53fe214fff",
+        "word_count": 6369,
+        "reading_minutes": 27,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-008?v=cfcfd58c1a53fe214fff",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 9,
+        "index_sequence_label": "09",
+        "display_title": "Chapter 8. Mina Murray’s Journal",
+        "index_title": "Mina Murray’s Journal",
+        "index_secondary_label": "Chapter 8"
+      },
+      {
+        "id": "chapter-009",
+        "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
+        "order": 10,
+        "is_preview": true,
+        "content_version": "aa35b7e9f94dc7bd74b0",
+        "word_count": 5994,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-009?v=aa35b7e9f94dc7bd74b0",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 10,
+        "index_sequence_label": "10",
+        "display_title": "Chapter 9. Mina Harker’s Correspondence",
+        "index_title": "Mina Harker’s Correspondence",
+        "index_secondary_label": "Chapter 9"
+      },
+      {
+        "id": "chapter-010",
+        "title": "CHAPTER X. DR. SEWARD’S DIARY",
+        "order": 11,
+        "is_preview": true,
+        "content_version": "9e53a74c4655b0acf3c1",
+        "word_count": 6003,
+        "reading_minutes": 26,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-010?v=9e53a74c4655b0acf3c1",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 11,
+        "index_sequence_label": "11",
+        "display_title": "Chapter 10. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 10"
+      },
+      {
+        "id": "chapter-011",
+        "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
+        "order": 12,
+        "is_preview": true,
+        "content_version": "789664ef00e466a78868",
+        "word_count": 5259,
+        "reading_minutes": 22,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-011?v=789664ef00e466a78868",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 12,
+        "index_sequence_label": "12",
+        "display_title": "Chapter 11. Lucy Westenra’s Diary",
+        "index_title": "Lucy Westenra’s Diary",
+        "index_secondary_label": "Chapter 11"
+      },
+      {
+        "id": "chapter-012",
+        "title": "CHAPTER XII. DR. SEWARD’S DIARY",
+        "order": 13,
+        "is_preview": true,
+        "content_version": "c858ca760b21440064d7",
+        "word_count": 7377,
+        "reading_minutes": 31,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-012?v=c858ca760b21440064d7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 13,
+        "index_sequence_label": "13",
+        "display_title": "Chapter 12. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 12"
+      },
+      {
+        "id": "chapter-013",
+        "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
+        "order": 14,
+        "is_preview": true,
+        "content_version": "9ecb16b18c9f07a98c3b",
+        "word_count": 6678,
+        "reading_minutes": 28,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-013?v=9ecb16b18c9f07a98c3b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 14,
+        "index_sequence_label": "14",
+        "display_title": "Chapter 13. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 13"
+      },
+      {
+        "id": "chapter-014",
+        "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
+        "order": 15,
+        "is_preview": true,
+        "content_version": "cc2e8928a1289d0223a7",
+        "word_count": 6521,
+        "reading_minutes": 28,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-014?v=cc2e8928a1289d0223a7",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 15,
+        "index_sequence_label": "15",
+        "display_title": "Chapter 14. Mina Harker’s Journal",
+        "index_title": "Mina Harker’s Journal",
+        "index_secondary_label": "Chapter 14"
+      },
+      {
+        "id": "chapter-015",
+        "title": "CHAPTER XV. DR. SEWARD’S DIARY",
+        "order": 16,
+        "is_preview": true,
+        "content_version": "45948af254c744ef555d",
+        "word_count": 5871,
+        "reading_minutes": 25,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-015?v=45948af254c744ef555d",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 16,
+        "index_sequence_label": "16",
+        "display_title": "Chapter 15. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 15"
+      },
+      {
+        "id": "chapter-016",
+        "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+        "order": 17,
+        "is_preview": true,
+        "content_version": "9877c92962c2058cd789",
+        "word_count": 4610,
+        "reading_minutes": 20,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-016?v=9877c92962c2058cd789",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 17,
+        "index_sequence_label": "17",
+        "display_title": "Chapter 16. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 16"
+      },
+      {
+        "id": "chapter-017",
+        "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+        "order": 18,
+        "is_preview": true,
+        "content_version": "3fee34a5fcfad712294b",
+        "word_count": 5660,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-017?v=3fee34a5fcfad712294b",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 18,
+        "index_sequence_label": "18",
+        "display_title": "Chapter 17. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 17"
+      },
+      {
+        "id": "chapter-018",
+        "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+        "order": 19,
+        "is_preview": true,
+        "content_version": "59cb5ff6a2903ed7a92a",
+        "word_count": 6999,
+        "reading_minutes": 30,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-018?v=59cb5ff6a2903ed7a92a",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 19,
+        "index_sequence_label": "19",
+        "display_title": "Chapter 18. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 18"
+      },
+      {
+        "id": "chapter-019",
+        "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+        "order": 20,
+        "is_preview": true,
+        "content_version": "20bf7a2fe30f9deb4ffb",
+        "word_count": 5730,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-019?v=20bf7a2fe30f9deb4ffb",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 20,
+        "index_sequence_label": "20",
+        "display_title": "Chapter 19. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 19"
+      },
+      {
+        "id": "chapter-020",
+        "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+        "order": 21,
+        "is_preview": true,
+        "content_version": "265c8d2ba27dcd40f1dc",
+        "word_count": 6009,
+        "reading_minutes": 26,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-020?v=265c8d2ba27dcd40f1dc",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 21,
+        "index_sequence_label": "21",
+        "display_title": "Chapter 20. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 20"
+      },
+      {
+        "id": "chapter-021",
+        "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
+        "order": 22,
+        "is_preview": true,
+        "content_version": "e6e572ab528e3cb484fa",
+        "word_count": 6243,
+        "reading_minutes": 27,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-021?v=e6e572ab528e3cb484fa",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 22,
+        "index_sequence_label": "22",
+        "display_title": "Chapter 21. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 21"
+      },
+      {
+        "id": "chapter-022",
+        "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+        "order": 23,
+        "is_preview": true,
+        "content_version": "aed4efe82f3680a801f1",
+        "word_count": 5495,
+        "reading_minutes": 23,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-022?v=aed4efe82f3680a801f1",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 23,
+        "index_sequence_label": "23",
+        "display_title": "Chapter 22. Jonathan Harker’s Journal",
+        "index_title": "Jonathan Harker’s Journal",
+        "index_secondary_label": "Chapter 22"
+      },
+      {
+        "id": "chapter-023",
+        "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
+        "order": 24,
+        "is_preview": true,
+        "content_version": "fe2c7d8efc635a308453",
+        "word_count": 5725,
+        "reading_minutes": 24,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-023?v=fe2c7d8efc635a308453",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 24,
+        "index_sequence_label": "24",
+        "display_title": "Chapter 23. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 23"
+      },
+      {
+        "id": "chapter-024",
+        "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+        "order": 25,
+        "is_preview": true,
+        "content_version": "d9010174970a836b97d3",
+        "word_count": 6353,
+        "reading_minutes": 27,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-024?v=d9010174970a836b97d3",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 25,
+        "index_sequence_label": "25",
+        "display_title": "Chapter 24. Dr. Seward’s Phonograph Diary, Spoken By Van Helsing",
+        "index_title": "Dr. Seward’s Phonograph Diary, Spoken By Van Helsing",
+        "index_secondary_label": "Chapter 24"
+      },
+      {
+        "id": "chapter-025",
+        "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
+        "order": 26,
+        "is_preview": true,
+        "content_version": "8e28708003779b2c3bb2",
+        "word_count": 6323,
+        "reading_minutes": 27,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-025?v=8e28708003779b2c3bb2",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 26,
+        "index_sequence_label": "26",
+        "display_title": "Chapter 25. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 25"
+      },
+      {
+        "id": "chapter-026",
+        "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
+        "order": 27,
+        "is_preview": true,
+        "content_version": "e26c096152c280554f42",
+        "word_count": 7222,
+        "reading_minutes": 31,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-026?v=e26c096152c280554f42",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 27,
+        "index_sequence_label": "27",
+        "display_title": "Chapter 26. Dr. Seward’s Diary",
+        "index_title": "Dr. Seward’s Diary",
+        "index_secondary_label": "Chapter 26"
+      },
+      {
+        "id": "chapter-027",
+        "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+        "order": 28,
+        "is_preview": true,
+        "content_version": "c13d727ff9b8608adacb",
+        "word_count": 7938,
+        "reading_minutes": 34,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/dracula/chapter-027?v=c13d727ff9b8608adacb",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 28,
+        "index_sequence_label": "28",
+        "display_title": "Chapter 27. Mina Harker’s Journal",
+        "index_title": "Mina Harker’s Journal",
+        "index_secondary_label": "Chapter 27"
+      }
+    ],
+    "slug": "dracula",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "An epistolary Gothic horror novel tracing Count Dracula's attempt to move from Transylvania to England.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/dracula",
+    "reader_url": "/reader/dracula",
+    "preview_url": "/reader/dracula",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-000",
+      "title": "Preface",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "2d6f89c1748dd930118d",
+      "word_count": 77,
+      "reading_minutes": 1,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-000?v=2d6f89c1748dd930118d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "Preface",
+      "index_title": "Preface",
+      "index_secondary_label": ""
+    },
+    {
+      "id": "chapter-001",
+      "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+      "order": 2,
+      "is_preview": true,
+      "content_version": "e83044228c066aba120e",
+      "word_count": 5745,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-001?v=e83044228c066aba120e",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 2,
+      "index_sequence_label": "02",
+      "display_title": "Chapter 1. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 1"
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 3,
+      "is_preview": true,
+      "content_version": "85ce4b7c6fe78f5ec9a7",
+      "word_count": 5521,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-002?v=85ce4b7c6fe78f5ec9a7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 3,
+      "index_sequence_label": "03",
+      "display_title": "Chapter 2. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 2"
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 4,
+      "is_preview": true,
+      "content_version": "529e3552c4feb9540e0f",
+      "word_count": 5740,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-003?v=529e3552c4feb9540e0f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 4,
+      "index_sequence_label": "04",
+      "display_title": "Chapter 3. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 3"
+    },
+    {
+      "id": "chapter-004",
+      "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 5,
+      "is_preview": true,
+      "content_version": "af378da103f4b9fff07c",
+      "word_count": 5874,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-004?v=af378da103f4b9fff07c",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 5,
+      "index_sequence_label": "05",
+      "display_title": "Chapter 4. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 4"
+    },
+    {
+      "id": "chapter-005",
+      "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
+      "order": 6,
+      "is_preview": true,
+      "content_version": "cee1dd42ed3db712ef45",
+      "word_count": 3643,
+      "reading_minutes": 16,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-005?v=cee1dd42ed3db712ef45",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 6,
+      "index_sequence_label": "06",
+      "display_title": "Chapter 5. Mina Murray’s Correspondence",
+      "index_title": "Mina Murray’s Correspondence",
+      "index_secondary_label": "Chapter 5"
+    },
+    {
+      "id": "chapter-006",
+      "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+      "order": 7,
+      "is_preview": true,
+      "content_version": "8ce5fd77c6deec70a6cc",
+      "word_count": 5790,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-006?v=8ce5fd77c6deec70a6cc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 7,
+      "index_sequence_label": "07",
+      "display_title": "Chapter 6. Mina Murray’s Journal",
+      "index_title": "Mina Murray’s Journal",
+      "index_secondary_label": "Chapter 6"
+    },
+    {
+      "id": "chapter-007",
+      "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+      "order": 8,
+      "is_preview": true,
+      "content_version": "c185cf882d12ee13057f",
+      "word_count": 5620,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-007?v=c185cf882d12ee13057f",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 8,
+      "index_sequence_label": "08",
+      "display_title": "Chapter 7. Cutting From “The Dailygraph,” 8 August",
+      "index_title": "Cutting From “The Dailygraph,” 8 August",
+      "index_secondary_label": "Chapter 7"
+    },
+    {
+      "id": "chapter-008",
+      "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+      "order": 9,
+      "is_preview": true,
+      "content_version": "cfcfd58c1a53fe214fff",
+      "word_count": 6369,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-008?v=cfcfd58c1a53fe214fff",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 9,
+      "index_sequence_label": "09",
+      "display_title": "Chapter 8. Mina Murray’s Journal",
+      "index_title": "Mina Murray’s Journal",
+      "index_secondary_label": "Chapter 8"
+    },
+    {
+      "id": "chapter-009",
+      "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
+      "order": 10,
+      "is_preview": true,
+      "content_version": "aa35b7e9f94dc7bd74b0",
+      "word_count": 5994,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-009?v=aa35b7e9f94dc7bd74b0",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 10,
+      "index_sequence_label": "10",
+      "display_title": "Chapter 9. Mina Harker’s Correspondence",
+      "index_title": "Mina Harker’s Correspondence",
+      "index_secondary_label": "Chapter 9"
+    },
+    {
+      "id": "chapter-010",
+      "title": "CHAPTER X. DR. SEWARD’S DIARY",
+      "order": 11,
+      "is_preview": true,
+      "content_version": "9e53a74c4655b0acf3c1",
+      "word_count": 6003,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-010?v=9e53a74c4655b0acf3c1",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 11,
+      "index_sequence_label": "11",
+      "display_title": "Chapter 10. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 10"
+    },
+    {
+      "id": "chapter-011",
+      "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
+      "order": 12,
+      "is_preview": true,
+      "content_version": "789664ef00e466a78868",
+      "word_count": 5259,
+      "reading_minutes": 22,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-011?v=789664ef00e466a78868",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 12,
+      "index_sequence_label": "12",
+      "display_title": "Chapter 11. Lucy Westenra’s Diary",
+      "index_title": "Lucy Westenra’s Diary",
+      "index_secondary_label": "Chapter 11"
+    },
+    {
+      "id": "chapter-012",
+      "title": "CHAPTER XII. DR. SEWARD’S DIARY",
+      "order": 13,
+      "is_preview": true,
+      "content_version": "c858ca760b21440064d7",
+      "word_count": 7377,
+      "reading_minutes": 31,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-012?v=c858ca760b21440064d7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 13,
+      "index_sequence_label": "13",
+      "display_title": "Chapter 12. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 12"
+    },
+    {
+      "id": "chapter-013",
+      "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
+      "order": 14,
+      "is_preview": true,
+      "content_version": "9ecb16b18c9f07a98c3b",
+      "word_count": 6678,
+      "reading_minutes": 28,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-013?v=9ecb16b18c9f07a98c3b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 14,
+      "index_sequence_label": "14",
+      "display_title": "Chapter 13. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 13"
+    },
+    {
+      "id": "chapter-014",
+      "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
+      "order": 15,
+      "is_preview": true,
+      "content_version": "cc2e8928a1289d0223a7",
+      "word_count": 6521,
+      "reading_minutes": 28,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-014?v=cc2e8928a1289d0223a7",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 15,
+      "index_sequence_label": "15",
+      "display_title": "Chapter 14. Mina Harker’s Journal",
+      "index_title": "Mina Harker’s Journal",
+      "index_secondary_label": "Chapter 14"
+    },
+    {
+      "id": "chapter-015",
+      "title": "CHAPTER XV. DR. SEWARD’S DIARY",
+      "order": 16,
+      "is_preview": true,
+      "content_version": "45948af254c744ef555d",
+      "word_count": 5871,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-015?v=45948af254c744ef555d",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 16,
+      "index_sequence_label": "16",
+      "display_title": "Chapter 15. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 15"
+    },
+    {
+      "id": "chapter-016",
+      "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+      "order": 17,
+      "is_preview": true,
+      "content_version": "9877c92962c2058cd789",
+      "word_count": 4610,
+      "reading_minutes": 20,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-016?v=9877c92962c2058cd789",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 17,
+      "index_sequence_label": "17",
+      "display_title": "Chapter 16. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 16"
+    },
+    {
+      "id": "chapter-017",
+      "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+      "order": 18,
+      "is_preview": true,
+      "content_version": "3fee34a5fcfad712294b",
+      "word_count": 5660,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-017?v=3fee34a5fcfad712294b",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 18,
+      "index_sequence_label": "18",
+      "display_title": "Chapter 17. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 17"
+    },
+    {
+      "id": "chapter-018",
+      "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+      "order": 19,
+      "is_preview": true,
+      "content_version": "59cb5ff6a2903ed7a92a",
+      "word_count": 6999,
+      "reading_minutes": 30,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-018?v=59cb5ff6a2903ed7a92a",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 19,
+      "index_sequence_label": "19",
+      "display_title": "Chapter 18. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 18"
+    },
+    {
+      "id": "chapter-019",
+      "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+      "order": 20,
+      "is_preview": true,
+      "content_version": "20bf7a2fe30f9deb4ffb",
+      "word_count": 5730,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-019?v=20bf7a2fe30f9deb4ffb",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 20,
+      "index_sequence_label": "20",
+      "display_title": "Chapter 19. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 19"
+    },
+    {
+      "id": "chapter-020",
+      "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+      "order": 21,
+      "is_preview": true,
+      "content_version": "265c8d2ba27dcd40f1dc",
+      "word_count": 6009,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-020?v=265c8d2ba27dcd40f1dc",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 21,
+      "index_sequence_label": "21",
+      "display_title": "Chapter 20. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 20"
+    },
+    {
+      "id": "chapter-021",
+      "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
+      "order": 22,
+      "is_preview": true,
+      "content_version": "e6e572ab528e3cb484fa",
+      "word_count": 6243,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-021?v=e6e572ab528e3cb484fa",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 22,
+      "index_sequence_label": "22",
+      "display_title": "Chapter 21. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 21"
+    },
+    {
+      "id": "chapter-022",
+      "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+      "order": 23,
+      "is_preview": true,
+      "content_version": "aed4efe82f3680a801f1",
+      "word_count": 5495,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-022?v=aed4efe82f3680a801f1",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 23,
+      "index_sequence_label": "23",
+      "display_title": "Chapter 22. Jonathan Harker’s Journal",
+      "index_title": "Jonathan Harker’s Journal",
+      "index_secondary_label": "Chapter 22"
+    },
+    {
+      "id": "chapter-023",
+      "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
+      "order": 24,
+      "is_preview": true,
+      "content_version": "fe2c7d8efc635a308453",
+      "word_count": 5725,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-023?v=fe2c7d8efc635a308453",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 24,
+      "index_sequence_label": "24",
+      "display_title": "Chapter 23. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 23"
+    },
+    {
+      "id": "chapter-024",
+      "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+      "order": 25,
+      "is_preview": true,
+      "content_version": "d9010174970a836b97d3",
+      "word_count": 6353,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-024?v=d9010174970a836b97d3",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 25,
+      "index_sequence_label": "25",
+      "display_title": "Chapter 24. Dr. Seward’s Phonograph Diary, Spoken By Van Helsing",
+      "index_title": "Dr. Seward’s Phonograph Diary, Spoken By Van Helsing",
+      "index_secondary_label": "Chapter 24"
+    },
+    {
+      "id": "chapter-025",
+      "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
+      "order": 26,
+      "is_preview": true,
+      "content_version": "8e28708003779b2c3bb2",
+      "word_count": 6323,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-025?v=8e28708003779b2c3bb2",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 26,
+      "index_sequence_label": "26",
+      "display_title": "Chapter 25. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 25"
+    },
+    {
+      "id": "chapter-026",
+      "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
+      "order": 27,
+      "is_preview": true,
+      "content_version": "e26c096152c280554f42",
+      "word_count": 7222,
+      "reading_minutes": 31,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-026?v=e26c096152c280554f42",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 27,
+      "index_sequence_label": "27",
+      "display_title": "Chapter 26. Dr. Seward’s Diary",
+      "index_title": "Dr. Seward’s Diary",
+      "index_secondary_label": "Chapter 26"
+    },
+    {
+      "id": "chapter-027",
+      "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+      "order": 28,
+      "is_preview": true,
+      "content_version": "c13d727ff9b8608adacb",
+      "word_count": 7938,
+      "reading_minutes": 34,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/dracula/chapter-027?v=c13d727ff9b8608adacb",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 28,
+      "index_sequence_label": "28",
+      "display_title": "Chapter 27. Mina Harker’s Journal",
+      "index_title": "Mina Harker’s Journal",
+      "index_secondary_label": "Chapter 27"
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "33fd900e4d99421b",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "07e4ee7eaadd7ed652f3",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:38.312308+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/dracula/manifest",
+      "total_pages": 275
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "9a5a38294a81c159772c8ecb",
+    "page_count": 275,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "dracula:1:888506a3882ebd46",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "888506a3882ebd46a7290f522e95fba3bef3251622524798648c7ceb0391ab07"
+      },
+      {
+        "page_number": 2,
+        "page_id": "dracula:2:6196607f4de155df",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6196607f4de155df73ec31271bad7f16f5ed7702e0268b0b0fc49516215bb267"
+      },
+      {
+        "page_number": 3,
+        "page_id": "dracula:3:dd530b04d8cb7859",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "dd530b04d8cb7859b924d3e90d7e866173b7ba3aebd424e261b5e36bd97bd8dd"
+      },
+      {
+        "page_number": 4,
+        "page_id": "dracula:4:a54a80003225b546",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a54a80003225b546cee975ebc3bf5164e6180d48f5114e39781a5c16e7c6ef47"
+      },
+      {
+        "page_number": 5,
+        "page_id": "dracula:5:166a36d08150adb2",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "166a36d08150adb271912a9e4b45ce9b28cbdaf9c5cb8ce6ab58067684d27379"
+      },
+      {
+        "page_number": 6,
+        "page_id": "dracula:6:0dfbc52e8c41cf30",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0dfbc52e8c41cf30b73bf4f904375dd137eb84168d93bf4753771f107841b485"
+      },
+      {
+        "page_number": 7,
+        "page_id": "dracula:7:2af886c70fa88608",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2af886c70fa88608602ebe8d2aa355a9ffdea2901cd4e78d9a94100e76bd1e76"
+      },
+      {
+        "page_number": 8,
+        "page_id": "dracula:8:b1d1abf7e5e9d633",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b1d1abf7e5e9d633217ab4e11973582e19f5bea74524cc422cf7303e8f8af104"
+      },
+      {
+        "page_number": 9,
+        "page_id": "dracula:9:02d1f3cbdcc75267",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "02d1f3cbdcc75267b926ed0543bc063a1de677e958e56a4d17a04e95092888ca"
+      },
+      {
+        "page_number": 10,
+        "page_id": "dracula:10:bec5c65cff4b55c0",
+        "chapter_id": "chapter-001",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "bec5c65cff4b55c0a504da5efb9b22632a0f766eba06bbaad881502fb0d31cdd"
+      },
+      {
+        "page_number": 11,
+        "page_id": "dracula:11:b309e85a176b2365",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b309e85a176b2365b32d98c1b1de7c19aadab9e6799241c3e2c30b485a63f8bf"
+      },
+      {
+        "page_number": 12,
+        "page_id": "dracula:12:f000ccf548dc2a56",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f000ccf548dc2a56a7a392dc752b79269082aa61549275c8a480b6dce82cb1f0"
+      },
+      {
+        "page_number": 13,
+        "page_id": "dracula:13:edf604bf6b8016f7",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "edf604bf6b8016f7a4e2bb4d733a33afe3821799d9406c8a9b9f09f89e573e16"
+      },
+      {
+        "page_number": 14,
+        "page_id": "dracula:14:5fa110f63235cc7f",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5fa110f63235cc7f422300fb095ba0525cbc633134a8c140f2a4e9bde2efee76"
+      },
+      {
+        "page_number": 15,
+        "page_id": "dracula:15:a5cf7fea3a83a1db",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a5cf7fea3a83a1db157dbff4ad362035457d881d4ba0910c9dd4f4cf6141dd68"
+      },
+      {
+        "page_number": 16,
+        "page_id": "dracula:16:abaebde383edb341",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "abaebde383edb341fca60b0ae40711e55de23a10d1d7682118a7b90c8726f65e"
+      },
+      {
+        "page_number": 17,
+        "page_id": "dracula:17:dd442c6a4bf8fea5",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "dd442c6a4bf8fea50e5632516647420bc87f6fd678acd76ec3eae83709ee584d"
+      },
+      {
+        "page_number": 18,
+        "page_id": "dracula:18:32f1aa095a20b815",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "32f1aa095a20b815fb87efd0fb10711bfae04f6bcba240998279fb5ae342a185"
+      },
+      {
+        "page_number": 19,
+        "page_id": "dracula:19:ec2cf7e10670ec33",
+        "chapter_id": "chapter-002",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ec2cf7e10670ec33066373a220a9746bcefb85aa2fe392ce7b6cccf2a71b4b8f"
+      },
+      {
+        "page_number": 20,
+        "page_id": "dracula:20:7138173eea133a21",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "7138173eea133a212b9b86089c2a7ce2570358ac260dbde320bdc2783fb9beb9"
+      },
+      {
+        "page_number": 21,
+        "page_id": "dracula:21:537d50d44332488b",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "537d50d44332488b24a29fd36e9269cb820eef833967176103a9143e0c0571d7"
+      },
+      {
+        "page_number": 22,
+        "page_id": "dracula:22:5da85a0dbb9f3fe2",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5da85a0dbb9f3fe2997ffaaa24401b73eabc3631b7e2cdccbdab620182c20ef8"
+      },
+      {
+        "page_number": 23,
+        "page_id": "dracula:23:09d26e1b461e10ed",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "09d26e1b461e10ede603dd1605850d63e4f2c1a379bf644090c8dfb3e45165d7"
+      },
+      {
+        "page_number": 24,
+        "page_id": "dracula:24:be3f6b2bd7923c8e",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "be3f6b2bd7923c8eb45e8c9602160d25ec2f3149d8b3f3f3070b1db3c9e7e24d"
+      },
+      {
+        "page_number": 25,
+        "page_id": "dracula:25:f38f97b012cccf15",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f38f97b012cccf15a703b4215d3200c51379dbc244ac552cd00e6a15b3f8775c"
+      },
+      {
+        "page_number": 26,
+        "page_id": "dracula:26:b8b3575d65e439f5",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b8b3575d65e439f5e1413c3df794c42ef3a5fe85098f7b3e5ddace29f7b3131f"
+      },
+      {
+        "page_number": 27,
+        "page_id": "dracula:27:2eddc324ffe9071e",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2eddc324ffe9071e0581410dd61c853ef25f4ae505df44bff2535df43eb98bb8"
+      },
+      {
+        "page_number": 28,
+        "page_id": "dracula:28:081c801f56d795e7",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "081c801f56d795e7e2698be6fdcbd6fbebd9c4038f17b076386e040c1212f5d5"
+      },
+      {
+        "page_number": 29,
+        "page_id": "dracula:29:977a4846001d09fe",
+        "chapter_id": "chapter-003",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "977a4846001d09fe44597f63a9d81c5c4f40c072e56577afd5cd0705b8eb632e"
+      },
+      {
+        "page_number": 30,
+        "page_id": "dracula:30:e91f6e35b9be6db6",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e91f6e35b9be6db6e33745f890d331fb436567158ba8ffc0027f355949026524"
+      },
+      {
+        "page_number": 31,
+        "page_id": "dracula:31:1b4564436c67c68b",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1b4564436c67c68b36f16112c950600c66361bedab2b5b59590fd2ecdfd2437c"
+      },
+      {
+        "page_number": 32,
+        "page_id": "dracula:32:7f8c2ea62c408177",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "7f8c2ea62c40817716a6b8cdf6d2e6bd968bfa317297b99ba52fabf38501a6e5"
+      },
+      {
+        "page_number": 33,
+        "page_id": "dracula:33:ff7319c3de25828f",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ff7319c3de25828ff3a6895405c97cbbe9baeb20621acf13aafbd6ce44f0782e"
+      },
+      {
+        "page_number": 34,
+        "page_id": "dracula:34:e837d1ce584dc134",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e837d1ce584dc134f06b45041f91c56bf65b5d7e590677dd17e52f95c34f4677"
+      },
+      {
+        "page_number": 35,
+        "page_id": "dracula:35:22254ca4c0f646e7",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "22254ca4c0f646e7395c9b4e068e9ce7fc7014018b8bf1f474679bbae0f31838"
+      },
+      {
+        "page_number": 36,
+        "page_id": "dracula:36:9fbdd092fcb99af0",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9fbdd092fcb99af0f6a8968c32ca563f1046446ea97eafac3245d063ff32aac9"
+      },
+      {
+        "page_number": 37,
+        "page_id": "dracula:37:34512cc3d97ed20b",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "34512cc3d97ed20b1f6a8caf411b0d90a0e1499b2edaa692cfc50f2bada2bdc8"
+      },
+      {
+        "page_number": 38,
+        "page_id": "dracula:38:43eb0ba1aadad9e8",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "43eb0ba1aadad9e8d34e1e33a846f5a951ebe112d4da824122d3bc61da5fc4e0"
+      },
+      {
+        "page_number": 39,
+        "page_id": "dracula:39:f2b5eb7648e54710",
+        "chapter_id": "chapter-004",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f2b5eb7648e547103452326a87b43add7a58a0f046d24e595d462098c5b25efa"
+      },
+      {
+        "page_number": 40,
+        "page_id": "dracula:40:cbf06a16c419b3d0",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cbf06a16c419b3d098180424748d590076247d1bb4af318e357d28afed4d802c"
+      },
+      {
+        "page_number": 41,
+        "page_id": "dracula:41:4845549e6a12ba85",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "4845549e6a12ba858744b2b8c9d411609f5e65f17b630d866657b31a6e39f30e"
+      },
+      {
+        "page_number": 42,
+        "page_id": "dracula:42:31fbff28a6ead774",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "31fbff28a6ead774684a484f6b66556d477e3413b36d8b38073ffd9cc6e38b72"
+      },
+      {
+        "page_number": 43,
+        "page_id": "dracula:43:9f1a158e2cbf1097",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9f1a158e2cbf1097bb5938eb0e77fc954b202fd63d0658429272f9e6f31f17e3"
+      },
+      {
+        "page_number": 44,
+        "page_id": "dracula:44:55b2cce06422e281",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "55b2cce06422e281b0ffccac131cf7dcd97caf61db409845f3f0f123f4dcc9d1"
+      },
+      {
+        "page_number": 45,
+        "page_id": "dracula:45:c8c9f235f47ad921",
+        "chapter_id": "chapter-005",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c8c9f235f47ad921425636e09d584aaa31988e9d5e532670a4576ff9fe30b135"
+      },
+      {
+        "page_number": 46,
+        "page_id": "dracula:46:cfb2015ddd8724f8",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cfb2015ddd8724f8bdf00b4551f8216e8b6a91786e33cdeb4877685e43331d17"
+      },
+      {
+        "page_number": 47,
+        "page_id": "dracula:47:6e32b310cd801ed1",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6e32b310cd801ed1a1c398f35080ab6f1364db7f0a882471431197202a738bcb"
+      },
+      {
+        "page_number": 48,
+        "page_id": "dracula:48:bf219fe25fc97034",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "bf219fe25fc970340a4799f20f98b4a1b887478542db0e29514016209c9eedde"
+      },
+      {
+        "page_number": 49,
+        "page_id": "dracula:49:bc2720216a5967bd",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "bc2720216a5967bdb144ccca62399c08d183ac77191fb4a993e34b7d47791b86"
+      },
+      {
+        "page_number": 50,
+        "page_id": "dracula:50:3eb6d947f1a4d29b",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3eb6d947f1a4d29bf9b3609a5c29c0d8d95613e2cdb769e397e9202b53798209"
+      },
+      {
+        "page_number": 51,
+        "page_id": "dracula:51:308127614df30d7f",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "308127614df30d7f079a0df400fe76944a50117cb04b6acead0de3d76fd7b508"
+      },
+      {
+        "page_number": 52,
+        "page_id": "dracula:52:8b80b7982cccb29e",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8b80b7982cccb29e86f9ab8f964741e8842090ed4e1ec030155cb2e54ee3e1d9"
+      },
+      {
+        "page_number": 53,
+        "page_id": "dracula:53:9e36106bfae3eb0a",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9e36106bfae3eb0a1659159b39961f1bd64108224506a53a00dacd9f45d1981d"
+      },
+      {
+        "page_number": 54,
+        "page_id": "dracula:54:1120eb99ec1c99e9",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1120eb99ec1c99e93cf961d926ca96bd12f469161159a492a34c36451ccb2146"
+      },
+      {
+        "page_number": 55,
+        "page_id": "dracula:55:a105a67eaa1a68a4",
+        "chapter_id": "chapter-006",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a105a67eaa1a68a413ec5a53c756fbc7066b32904fcf4f799174b0a8fc7daaba"
+      },
+      {
+        "page_number": 56,
+        "page_id": "dracula:56:e142753640a04b83",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e142753640a04b83de16e8adf01726aa67105238fc6df745371db941c73f23a3"
+      },
+      {
+        "page_number": 57,
+        "page_id": "dracula:57:fb1888f4ceec7070",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "fb1888f4ceec7070a462d8e0e6925c0af9f25f6292f4c12a16a9c59658862b5e"
+      },
+      {
+        "page_number": 58,
+        "page_id": "dracula:58:70bab9e5c2515d24",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "70bab9e5c2515d2464f62c516255ae3fe09f8c30dee4c7ad16aa1bfc479e0450"
+      },
+      {
+        "page_number": 59,
+        "page_id": "dracula:59:1fbdca8b00285591",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1fbdca8b00285591b9d61457f409fc368bf4661db751b5e40fcea74d269969ea"
+      },
+      {
+        "page_number": 60,
+        "page_id": "dracula:60:f9b06c19bc1f9155",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f9b06c19bc1f9155b85a1459c5d43b82287d05ba9e724fd8bd7ebcea3d2c16b2"
+      },
+      {
+        "page_number": 61,
+        "page_id": "dracula:61:e3d7f4eac0d0185d",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e3d7f4eac0d0185d61ec8efa9d4c4e54461138ca422207f22f5011330aaea6c8"
+      },
+      {
+        "page_number": 62,
+        "page_id": "dracula:62:4757c7a0ce8b6744",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "4757c7a0ce8b674464a4faaeee4fc16ae080f5873930a3fc74cc218db6697d28"
+      },
+      {
+        "page_number": 63,
+        "page_id": "dracula:63:62730154f4d5000a",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "62730154f4d5000a31648079a82afa76f3e5a44f2490760de082d0ba47cb7638"
+      },
+      {
+        "page_number": 64,
+        "page_id": "dracula:64:d087a3bb0dbef2d1",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d087a3bb0dbef2d1c43711078217fae5cef702ae1e8b23fd68b5c5696880cf67"
+      },
+      {
+        "page_number": 65,
+        "page_id": "dracula:65:2a828351b4abe255",
+        "chapter_id": "chapter-007",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2a828351b4abe255bda00743bd5ca007f7cb4f1803c5f2ccc981d58003078410"
+      },
+      {
+        "page_number": 66,
+        "page_id": "dracula:66:19d8cbf1a7cd7f0b",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "19d8cbf1a7cd7f0b78e2ce6ea05212ba92316cf9ba896ef0a39598076bde1d49"
+      },
+      {
+        "page_number": 67,
+        "page_id": "dracula:67:5b5d8896aa2b42b6",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5b5d8896aa2b42b6df86113dc22e25c8be2ac761ae6fee80d9c3ece99dc074ca"
+      },
+      {
+        "page_number": 68,
+        "page_id": "dracula:68:fb4ded74e851b50d",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "fb4ded74e851b50d951f269303a2801b4b4261bf05daa0d12a154a967e47aa01"
+      },
+      {
+        "page_number": 69,
+        "page_id": "dracula:69:959f99dcbf976773",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "959f99dcbf976773969a30a8ffe0234c6e4bdfb7a15ca02196f373ce61b07730"
+      },
+      {
+        "page_number": 70,
+        "page_id": "dracula:70:f8df310f30a04b44",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f8df310f30a04b44992a2e88747b8a3ce2d4195cb6b5641f6ec54ce31ea9c21a"
+      },
+      {
+        "page_number": 71,
+        "page_id": "dracula:71:9cb51f9d2ad189fe",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9cb51f9d2ad189fe7a5db73269d96ca530a85b32a13bda2335e84d60571d2017"
+      },
+      {
+        "page_number": 72,
+        "page_id": "dracula:72:e32f9dceb7fd6f7b",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e32f9dceb7fd6f7b3f906f31a632e0f1faadc726ac63b4e14096f93560d4933f"
+      },
+      {
+        "page_number": 73,
+        "page_id": "dracula:73:8fd0fe45d9a59a33",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8fd0fe45d9a59a3315e1eae5ce5f8c6e5a1e3149acb9c60f42ff53d46ed6c310"
+      },
+      {
+        "page_number": 74,
+        "page_id": "dracula:74:52e5b3a57c2efc5f",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "52e5b3a57c2efc5fb428add0d8aa9429f623441e06312c1f7c7f3a6f38352c68"
+      },
+      {
+        "page_number": 75,
+        "page_id": "dracula:75:34908bad27acaa39",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "34908bad27acaa392f1b36aaf0cb758d193de5ecf0989da5ccddb7e5fffcf694"
+      },
+      {
+        "page_number": 76,
+        "page_id": "dracula:76:985a73411b4fa65d",
+        "chapter_id": "chapter-008",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "985a73411b4fa65d1dffffdaf0ba33efaf58a803afb3e1ae1242f997d0ab46c5"
+      },
+      {
+        "page_number": 77,
+        "page_id": "dracula:77:3d6ae7de7d822742",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3d6ae7de7d822742b874abf2eaf91580e920f72421788c09b91517735d586497"
+      },
+      {
+        "page_number": 78,
+        "page_id": "dracula:78:2e7ba119c9bccf6b",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2e7ba119c9bccf6b7050bdfded8d621941e68452c2d3c04574d0e05d95109209"
+      },
+      {
+        "page_number": 79,
+        "page_id": "dracula:79:530429d57db3e3b2",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "530429d57db3e3b2dafc638ac2a9924a1a2ff070061d22eed562350e634d80b8"
+      },
+      {
+        "page_number": 80,
+        "page_id": "dracula:80:26a8d8d104d41bc8",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "26a8d8d104d41bc8f1008b5d60a5e785faa5175c9139a9f26f4b83ddb0183e83"
+      },
+      {
+        "page_number": 81,
+        "page_id": "dracula:81:466975efa4a6da89",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "466975efa4a6da89204714c00fe2ade3b471eac74ea040e00eb930126ee87c8d"
+      },
+      {
+        "page_number": 82,
+        "page_id": "dracula:82:a071e9c879a60c93",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a071e9c879a60c93dcbcc7f8e6998bef066d4273eaf21e26242ac863a373eb4f"
+      },
+      {
+        "page_number": 83,
+        "page_id": "dracula:83:c3c2e258afe57804",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c3c2e258afe57804b1a9ba8f35e24c1322034b933f72bfade2737648ad5f1a94"
+      },
+      {
+        "page_number": 84,
+        "page_id": "dracula:84:41527c57ec907b6f",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "41527c57ec907b6f602f7a398bb1ff6672fd6f30d28fc8095409ea450b8871c4"
+      },
+      {
+        "page_number": 85,
+        "page_id": "dracula:85:d82eae6c1bb29a60",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d82eae6c1bb29a60f471c58a88638f82ebda87453efa68e128fc22250d4b29f3"
+      },
+      {
+        "page_number": 86,
+        "page_id": "dracula:86:85f51ca3c5ec885f",
+        "chapter_id": "chapter-009",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "85f51ca3c5ec885f7abfceee5b14130c45a2e67959262454bebb65b4a02e1b6b"
+      },
+      {
+        "page_number": 87,
+        "page_id": "dracula:87:06e8ff310ec6d5fc",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "06e8ff310ec6d5fccdaff24991c52f63e91a8fe8bb916d45c2a1cb27cd05d704"
+      },
+      {
+        "page_number": 88,
+        "page_id": "dracula:88:0c78cee3c9ffcf94",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0c78cee3c9ffcf94a8b220c17ab88181ef90ee417607b37270521ff312254329"
+      },
+      {
+        "page_number": 89,
+        "page_id": "dracula:89:657bc54a8d4fa5a4",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "657bc54a8d4fa5a40caba8954b1e569dc0b299872b7125ed64568f6269d36159"
+      },
+      {
+        "page_number": 90,
+        "page_id": "dracula:90:f42fc4ae093b1823",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f42fc4ae093b1823d9a9d56849c92e26aac3a13ca80c77716cff0ed1de683cf9"
+      },
+      {
+        "page_number": 91,
+        "page_id": "dracula:91:88b1cad31a35c995",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "88b1cad31a35c995cef5e3a18892c69ca247073b73b966783fb3943b99692135"
+      },
+      {
+        "page_number": 92,
+        "page_id": "dracula:92:0db75cd614e2c7b4",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0db75cd614e2c7b4c7220ec5e5174b1edd17e499adca4b6ef4167d75c8b49b71"
+      },
+      {
+        "page_number": 93,
+        "page_id": "dracula:93:c6a84f57dbdf3878",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c6a84f57dbdf38783f0fe2b1765c3a6b99b1e58e9f311dcbf5b4f3bf69eb6a59"
+      },
+      {
+        "page_number": 94,
+        "page_id": "dracula:94:b9653d7594e17aaf",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b9653d7594e17aaf9b4c24e9a2a4a733682d4f637736cc2e5d96b49cfce170c4"
+      },
+      {
+        "page_number": 95,
+        "page_id": "dracula:95:0b5fa1dba26e91e5",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0b5fa1dba26e91e5affd6c7f5133495d5b911ebbe0d168bda60bb0bf0d0abd98"
+      },
+      {
+        "page_number": 96,
+        "page_id": "dracula:96:b12233a32e08e8de",
+        "chapter_id": "chapter-010",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b12233a32e08e8de6d30fb5d2f7afe82def723a561dd6268b7ed8d8606183e19"
+      },
+      {
+        "page_number": 97,
+        "page_id": "dracula:97:2cf2cf5b4055a3c9",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2cf2cf5b4055a3c98aad33cfd4c71d83c426a681a225249b19ac6170058d634d"
+      },
+      {
+        "page_number": 98,
+        "page_id": "dracula:98:5ba27059d26b7dd7",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5ba27059d26b7dd7209d3a79e4b92fbaf5944a42a46c968429c4476107de9ced"
+      },
+      {
+        "page_number": 99,
+        "page_id": "dracula:99:fd94be3a8de73d75",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "fd94be3a8de73d7580744ffe1af5aa37dbccc0c2eb3fd32e13a259dbacd4ba19"
+      },
+      {
+        "page_number": 100,
+        "page_id": "dracula:100:0e0a9be76a01168a",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0e0a9be76a01168a95f60fe1600048b3939d1683602c0ce0f590d05be0594c75"
+      },
+      {
+        "page_number": 101,
+        "page_id": "dracula:101:26dbac85d354a37c",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "26dbac85d354a37cced4d157080c58eadcda57acc73598ea31175c7f6079ef67"
+      },
+      {
+        "page_number": 102,
+        "page_id": "dracula:102:a387bbc6a2b7f19d",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a387bbc6a2b7f19dd2eaadf39b0295c0a27c354fc109ef4dc9b44dc0d72b70e7"
+      },
+      {
+        "page_number": 103,
+        "page_id": "dracula:103:3561c154bfdf5c1d",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3561c154bfdf5c1dec3f1a9465995512b7625dace6ea9659f5c06bf42eebbe35"
+      },
+      {
+        "page_number": 104,
+        "page_id": "dracula:104:022ef5c6b5a1f1d1",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "022ef5c6b5a1f1d180993475b084ec1f3325fb9af719ad303043dc4fed07a3f7"
+      },
+      {
+        "page_number": 105,
+        "page_id": "dracula:105:8988e395974984f3",
+        "chapter_id": "chapter-011",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8988e395974984f315ead6ae083b172e6eaff457df77b8f20d75e33974236ee1"
+      },
+      {
+        "page_number": 106,
+        "page_id": "dracula:106:52b7273d0f503231",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "52b7273d0f503231ffc6b1bc408b18dd2104ce914b1aad6e3b1954c16cb37a1a"
+      },
+      {
+        "page_number": 107,
+        "page_id": "dracula:107:d586272a600a5b1a",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d586272a600a5b1af6cf4b28fb9b953b65e830814cca8d08dfe24e1147c490ad"
+      },
+      {
+        "page_number": 108,
+        "page_id": "dracula:108:2d1176756284ea23",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2d1176756284ea23256fcaf06429a050083c476dd07157d66dfb15726b1bca84"
+      },
+      {
+        "page_number": 109,
+        "page_id": "dracula:109:27b5a42bc718be58",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "27b5a42bc718be58cca277ecb9bfef50698baef2955ed0dc9ec2c8449627c9ff"
+      },
+      {
+        "page_number": 110,
+        "page_id": "dracula:110:486e6e045a277c9d",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "486e6e045a277c9d75b8f7150af2615ea03553bc23d83fcab3cb34872e881e48"
+      },
+      {
+        "page_number": 111,
+        "page_id": "dracula:111:6892437fb663626a",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6892437fb663626a082e2fb76ec66bfa34de3494c177197249d72045f6952157"
+      },
+      {
+        "page_number": 112,
+        "page_id": "dracula:112:d881a4846d455d6e",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d881a4846d455d6ec86f01ac4487d6466bfc785c3039e2fb8d7526c0ac349e39"
+      },
+      {
+        "page_number": 113,
+        "page_id": "dracula:113:1efe5e5d8681bdcf",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1efe5e5d8681bdcf17966e65664232c6ec166a7f7201bfd915fff66dc924a7ce"
+      },
+      {
+        "page_number": 114,
+        "page_id": "dracula:114:11a2a0089f4f720c",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "11a2a0089f4f720ce1c5aeaf906aa06ddae068e295c0c51b64ae07091f5451c1"
+      },
+      {
+        "page_number": 115,
+        "page_id": "dracula:115:fd59b8c6810cdb77",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "fd59b8c6810cdb776a2f6610b2617aca440d2602d82431902fbb8d530dfddbe2"
+      },
+      {
+        "page_number": 116,
+        "page_id": "dracula:116:463b281b93884b7d",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "463b281b93884b7dfe581c7adaf7c2176f250b9dcc2bb00cb7c3c33956f8e8d1"
+      },
+      {
+        "page_number": 117,
+        "page_id": "dracula:117:a6756caca2f38597",
+        "chapter_id": "chapter-012",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a6756caca2f38597d8c83e1d7b1e28bf8f634271b526eec892a77c2eae42d1dd"
+      },
+      {
+        "page_number": 118,
+        "page_id": "dracula:118:84d07d041c78e9e2",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "84d07d041c78e9e2c1b1fb0fbee238d19f757fa2ec44c87c22d8150392298f5e"
+      },
+      {
+        "page_number": 119,
+        "page_id": "dracula:119:3bca1097c3611f81",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3bca1097c3611f819594d12b9bf2f110aed9ea6691c8b711ae717cee4b22e0ff"
+      },
+      {
+        "page_number": 120,
+        "page_id": "dracula:120:8667180113259c59",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8667180113259c5920df5fdab612a77bf1685f9a004d365e5a87c9bc315f31e0"
+      },
+      {
+        "page_number": 121,
+        "page_id": "dracula:121:ef2c6a59d003b8a0",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ef2c6a59d003b8a034d13e8e21c1355b89a9297851d196a5330025812d92984c"
+      },
+      {
+        "page_number": 122,
+        "page_id": "dracula:122:b8ea9f56869d1b9a",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b8ea9f56869d1b9afe3bd73331c2d0a1b96a2294ab54f3c443f07630254526fb"
+      },
+      {
+        "page_number": 123,
+        "page_id": "dracula:123:f34991c8ffe9ccc1",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f34991c8ffe9ccc16624e4eda8c98b020697db2046a54d44c02a2443dbbd056b"
+      },
+      {
+        "page_number": 124,
+        "page_id": "dracula:124:cbdd7f6265ec35b6",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cbdd7f6265ec35b6ef4ef50ceabcb15a2c7166292ec3607ba45c2e856d15c2e1"
+      },
+      {
+        "page_number": 125,
+        "page_id": "dracula:125:3f07f15eae3a4884",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3f07f15eae3a48842c6a2189c53acf2de0f31a888849fad8c3db7d199f5646f0"
+      },
+      {
+        "page_number": 126,
+        "page_id": "dracula:126:a07b85cd8c514cc7",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a07b85cd8c514cc757bff305e42ccccb23953b23be4513acb0c7abec019fa751"
+      },
+      {
+        "page_number": 127,
+        "page_id": "dracula:127:5b2a2680bc08fbfa",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5b2a2680bc08fbfafb3fd06430dc8be93201edcb3d50c306c9aea10657c4a106"
+      },
+      {
+        "page_number": 128,
+        "page_id": "dracula:128:da3daf0361ab32e0",
+        "chapter_id": "chapter-013",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "da3daf0361ab32e0242c902c9553be9825aa81c6e5d4ea3a75442dc636a40982"
+      },
+      {
+        "page_number": 129,
+        "page_id": "dracula:129:d2805550b029a5aa",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d2805550b029a5aa85aed7a8bab9d792fbd85da7d6bb0803d4c96c5265f6827e"
+      },
+      {
+        "page_number": 130,
+        "page_id": "dracula:130:de905950951b69b4",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "de905950951b69b42391fca2d116afe6c2f43adc380279c1f493e5f84e7176a5"
+      },
+      {
+        "page_number": 131,
+        "page_id": "dracula:131:a51a4e4cfe5805f3",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a51a4e4cfe5805f3d7883e86812f726c653bfea8afd25f1eb240d80955f0d811"
+      },
+      {
+        "page_number": 132,
+        "page_id": "dracula:132:68647ab7a89002e8",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "68647ab7a89002e8ee89143b1afc9561d495c3a3066899569c81e3585e1ba393"
+      },
+      {
+        "page_number": 133,
+        "page_id": "dracula:133:2b81b2bc6c6195fb",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2b81b2bc6c6195fb5acd02feb8c8fb9192ecb0333bd9242813d150c1d94ff608"
+      },
+      {
+        "page_number": 134,
+        "page_id": "dracula:134:0a6ebca4cd46141b",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0a6ebca4cd46141bb04ac6f9d95df8c76c5d60825245357f8d8afa8112ae41a7"
+      },
+      {
+        "page_number": 135,
+        "page_id": "dracula:135:1b8322a6436bdc96",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1b8322a6436bdc96803d35fcd845a30d3a06e8b302d983445d8af5aa3ede7a22"
+      },
+      {
+        "page_number": 136,
+        "page_id": "dracula:136:9ad035ce4fd00c78",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9ad035ce4fd00c7874966c76fe6bb6f616dcf4c34f30bbf3c3849e932f66268e"
+      },
+      {
+        "page_number": 137,
+        "page_id": "dracula:137:c781ba7fe74a9a41",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c781ba7fe74a9a41d871d8b9201b6d8bcc7a7a19b1c6d1c1b685507f01a6b955"
+      },
+      {
+        "page_number": 138,
+        "page_id": "dracula:138:6b73261d1bfa8be9",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6b73261d1bfa8be9e8d0d5ec8cd7d403151b2274059f17148de7e7e0e70d1bef"
+      },
+      {
+        "page_number": 139,
+        "page_id": "dracula:139:998b1718cfa9295c",
+        "chapter_id": "chapter-014",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "998b1718cfa9295c9a19de24007a5639b449eb4d97e1752ea3176ee79d5a3f0f"
+      },
+      {
+        "page_number": 140,
+        "page_id": "dracula:140:012fe369fa89031b",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "012fe369fa89031bd516933ab8e830d5c477de2cd787dec0cfa9dc14c9e2224e"
+      },
+      {
+        "page_number": 141,
+        "page_id": "dracula:141:9d2c69f01bd4fcd3",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9d2c69f01bd4fcd37409ef5ff05249318c8840c311507c9ef3322641cc4b51ab"
+      },
+      {
+        "page_number": 142,
+        "page_id": "dracula:142:9839c0a8e9d5d175",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9839c0a8e9d5d175c219bdb7204d1617d247a0b20e4bfb969b4021a5d1ff57af"
+      },
+      {
+        "page_number": 143,
+        "page_id": "dracula:143:541c53d4ab77c949",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "541c53d4ab77c949374ef7a73fe6426be1e18235806ac2849f02ad4fc56f136c"
+      },
+      {
+        "page_number": 144,
+        "page_id": "dracula:144:347796ea3b266d24",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "347796ea3b266d24c5bc024fdb636b47634490c6ac4909ace02b7fcb370e8769"
+      },
+      {
+        "page_number": 145,
+        "page_id": "dracula:145:b888d081b807a0f7",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b888d081b807a0f7b1f5df921b2db01ca5d2177bbea334a14277bcb24cc0e5be"
+      },
+      {
+        "page_number": 146,
+        "page_id": "dracula:146:40613ab1208530db",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "40613ab1208530db689e480d7b8a8d32ba026f6db9e1c30c7590db21138f1a35"
+      },
+      {
+        "page_number": 147,
+        "page_id": "dracula:147:58ae4f9119593ee5",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "58ae4f9119593ee57ad2ebd44e2d6f921deb1c42f925b3d5e7577b5e0fdb150e"
+      },
+      {
+        "page_number": 148,
+        "page_id": "dracula:148:c8be4326d5cd9969",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c8be4326d5cd996925e59c481d896ff019ee82aea693a36fc23146595b39dad2"
+      },
+      {
+        "page_number": 149,
+        "page_id": "dracula:149:b7eb282744e02981",
+        "chapter_id": "chapter-015",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b7eb282744e029817c561ce481828b4a3f874a8507a070895660abc0d7e062da"
+      },
+      {
+        "page_number": 150,
+        "page_id": "dracula:150:dbfb988df9f5dedb",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "dbfb988df9f5dedbc13af677caa38cfa5bbc636a67fb9e95699915d36208b1d2"
+      },
+      {
+        "page_number": 151,
+        "page_id": "dracula:151:95c3c101413d3777",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "95c3c101413d3777bc683563478ebb97ac9cc9bcab42364bd75bc926667f66b6"
+      },
+      {
+        "page_number": 152,
+        "page_id": "dracula:152:8c4502f92ab308a4",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8c4502f92ab308a4cf4fd2c590a4d13875382ed60bcc6e9d81e7e2d40e4b0be8"
+      },
+      {
+        "page_number": 153,
+        "page_id": "dracula:153:230602497fd4341b",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "230602497fd4341b20f468156ecb6deff82c1486120a6e985177b0b8d9af5adf"
+      },
+      {
+        "page_number": 154,
+        "page_id": "dracula:154:699eeebc42999312",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "699eeebc42999312cd024971e718d1b9ede5f2605b8dac5bfc7d62a016f212ce"
+      },
+      {
+        "page_number": 155,
+        "page_id": "dracula:155:f501de40755f5bf7",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f501de40755f5bf72d39ab9039f3621d1a0b9f1566c64dd4dd6d6a77a239943c"
+      },
+      {
+        "page_number": 156,
+        "page_id": "dracula:156:b7ac9f81ff6e85ae",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b7ac9f81ff6e85aeba9346faf5f44a0f683896518885f529e1f62fed5b06ee9b"
+      },
+      {
+        "page_number": 157,
+        "page_id": "dracula:157:df62949ffdaf9c29",
+        "chapter_id": "chapter-016",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "df62949ffdaf9c294d7b1d8aa7028d608a261d8f7dc2494b766f7af40e247584"
+      },
+      {
+        "page_number": 158,
+        "page_id": "dracula:158:87585867009d49e4",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "87585867009d49e4c32c80a0c4abdcd3c0f9baa15b4a5da5f5eed41db13c3bb2"
+      },
+      {
+        "page_number": 159,
+        "page_id": "dracula:159:964ca4bc442b4d4c",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "964ca4bc442b4d4cd68d8f3dcb688fedcbfc21f95a716193001d84813df87243"
+      },
+      {
+        "page_number": 160,
+        "page_id": "dracula:160:45e5a000758fa672",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "45e5a000758fa67259998812accf38f98caf6a665215b11ba493f34c3a1a0da0"
+      },
+      {
+        "page_number": 161,
+        "page_id": "dracula:161:8bb32a2d272fbc95",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8bb32a2d272fbc95a3fa6ec495ff5db6a379f50e9f7ad6dfb6d7a2856e5de561"
+      },
+      {
+        "page_number": 162,
+        "page_id": "dracula:162:45d4edd631ae5a2e",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "45d4edd631ae5a2e5f81dd6c9d5dc4852153eb99a3ddad86634d71459b1c9c2a"
+      },
+      {
+        "page_number": 163,
+        "page_id": "dracula:163:1731dd814196e4ba",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1731dd814196e4bac7085a66fd9bbc4f3deeddf8cacff7720e2cf6d38d9fe5e7"
+      },
+      {
+        "page_number": 164,
+        "page_id": "dracula:164:5d572539c5f9793d",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5d572539c5f9793d1c93e0a0ff21e882439848f3235fc1e02623e336c72a1ac6"
+      },
+      {
+        "page_number": 165,
+        "page_id": "dracula:165:cddb7fb25d19b29f",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cddb7fb25d19b29fec1e832168d4d975205093f4f943f4f98eb40aed36a75db9"
+      },
+      {
+        "page_number": 166,
+        "page_id": "dracula:166:78e9d03b44dbe85e",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "78e9d03b44dbe85e97e057758121174d14bd6e98cf86fb9f261cda3d6444d474"
+      },
+      {
+        "page_number": 167,
+        "page_id": "dracula:167:7ccc102ee0986f7b",
+        "chapter_id": "chapter-017",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "7ccc102ee0986f7b1deb3b57f67ddf3785cbc62a69768920d62a85873d8868ba"
+      },
+      {
+        "page_number": 168,
+        "page_id": "dracula:168:cdff00c014fa40dd",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cdff00c014fa40dd0b6f9a290f8836efd727d60ad0b4997853d8ac80c635fbf7"
+      },
+      {
+        "page_number": 169,
+        "page_id": "dracula:169:4280291f0f5322ad",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "4280291f0f5322ad5e037b8b384bf0477542bc6b412da3996c3a5b8f33c2a77f"
+      },
+      {
+        "page_number": 170,
+        "page_id": "dracula:170:1ac6d74285644d71",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1ac6d74285644d715ea176d0c18360e71d4e3ac7a5ce5510c12eddfd77774f18"
+      },
+      {
+        "page_number": 171,
+        "page_id": "dracula:171:d09a6c2bedc99707",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d09a6c2bedc997079d68f14c9de052ce4c0c25aafe98bfb3d06e95beb9d20e19"
+      },
+      {
+        "page_number": 172,
+        "page_id": "dracula:172:00e8b8436b3960fb",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "00e8b8436b3960fbe7275f2ac98654500ad69ae7754530947316b7a958dfb1b0"
+      },
+      {
+        "page_number": 173,
+        "page_id": "dracula:173:22d3b0b74c237a6b",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "22d3b0b74c237a6b7b3e02630111d1cb4a06315051943b19bedc6dee77176001"
+      },
+      {
+        "page_number": 174,
+        "page_id": "dracula:174:e830f4ed79daf20f",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e830f4ed79daf20fc4aac11af224a86935a682391a3dca1e8dde04743967f69e"
+      },
+      {
+        "page_number": 175,
+        "page_id": "dracula:175:5a2d5d2b0904f93e",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5a2d5d2b0904f93e711ecd86093b38075539b2c56d90ec656456f1d71f8a9eab"
+      },
+      {
+        "page_number": 176,
+        "page_id": "dracula:176:32417787d12b2067",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "32417787d12b2067b629b885a452d1fd1ed40de0a38c3e0a0e42068fc3be7903"
+      },
+      {
+        "page_number": 177,
+        "page_id": "dracula:177:756da8050a4d93e1",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "756da8050a4d93e15b13ab719380978e1e4167371a071e893bc8c5c26bc3a153"
+      },
+      {
+        "page_number": 178,
+        "page_id": "dracula:178:3409e4ed0ab917af",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3409e4ed0ab917af246f7106633bbd37d0d9d4c524ec026e9d1ba083b44ca593"
+      },
+      {
+        "page_number": 179,
+        "page_id": "dracula:179:08c12bb6ac69b7c3",
+        "chapter_id": "chapter-018",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "08c12bb6ac69b7c3f17a4153d1bcd561031e922a97e72cb65f7d8c49ccd6af7c"
+      },
+      {
+        "page_number": 180,
+        "page_id": "dracula:180:2d5a083912e8184d",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2d5a083912e8184dbbace3f7edb4f345314334cf9224722c319179ff99ff9777"
+      },
+      {
+        "page_number": 181,
+        "page_id": "dracula:181:c31d04e61353ee84",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c31d04e61353ee848bd826503191e26e48ada637954402709b0869f58ac5194d"
+      },
+      {
+        "page_number": 182,
+        "page_id": "dracula:182:31c55c9173807199",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "31c55c9173807199eec49f66380df0db154259218dd5d34a4ff7c28c58f503f1"
+      },
+      {
+        "page_number": 183,
+        "page_id": "dracula:183:96a120c407417de4",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "96a120c407417de45b68e47fe7665ddfafea2f4a1821795587c23a96be5e0960"
+      },
+      {
+        "page_number": 184,
+        "page_id": "dracula:184:13d47524613e0974",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "13d47524613e0974ca3ddc277939d251e03faa622aa35418c1570641598d7815"
+      },
+      {
+        "page_number": 185,
+        "page_id": "dracula:185:ce036e1d6b7253fa",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ce036e1d6b7253facb027f4cd7babf1f2c28cac4af1ed8987ec87af5f95e09f5"
+      },
+      {
+        "page_number": 186,
+        "page_id": "dracula:186:1acc87e6b61ef807",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1acc87e6b61ef807b0068289a762d198be7fd74039a8c2623ac8b04f23f9a399"
+      },
+      {
+        "page_number": 187,
+        "page_id": "dracula:187:c508be7fa3381470",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c508be7fa3381470a639db90534f44ab5a5ea108c5923eb6b0fc330b5ccf2c0e"
+      },
+      {
+        "page_number": 188,
+        "page_id": "dracula:188:802cfaf4e69fb554",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "802cfaf4e69fb554092b89ab510403fad8ad4480d143ac002bcf3248bbe89b04"
+      },
+      {
+        "page_number": 189,
+        "page_id": "dracula:189:1f5938ed33bd72bf",
+        "chapter_id": "chapter-019",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1f5938ed33bd72bfd177b2e745e001ac493a6bea9cba636b46fbc0cacad34d3e"
+      },
+      {
+        "page_number": 190,
+        "page_id": "dracula:190:3029ade66558c1a9",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3029ade66558c1a99d573b1761a8533afe790b9ed5da7ead10c0e080a9e022f6"
+      },
+      {
+        "page_number": 191,
+        "page_id": "dracula:191:2438ee7d639bcc36",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "2438ee7d639bcc363bfee4f9161c86a2ed8c4f91b079477ce2ec98829163d072"
+      },
+      {
+        "page_number": 192,
+        "page_id": "dracula:192:f9fa5ea8a9cf7227",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f9fa5ea8a9cf72276f684768d8c108cd1d5c9bc5f6463db07e8951b58451462b"
+      },
+      {
+        "page_number": 193,
+        "page_id": "dracula:193:ccfe8681e8e60911",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ccfe8681e8e6091186c493e8185983b524d516d8c70d1727ec55bbc39ec9ebf5"
+      },
+      {
+        "page_number": 194,
+        "page_id": "dracula:194:25f3e66447be9cbe",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "25f3e66447be9cbecfea9c43a02ead5d2f430eb04cebb87646029bd83361fb99"
+      },
+      {
+        "page_number": 195,
+        "page_id": "dracula:195:93196b297a1962a2",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "93196b297a1962a2c4d45bade7e9b8338d3f946dd8a1fdea6c1c4af42d8c2527"
+      },
+      {
+        "page_number": 196,
+        "page_id": "dracula:196:32d04ac7f9f5617d",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "32d04ac7f9f5617d2767ff764a1c413c9361c8a9375104faf7e9f4ce73e039b9"
+      },
+      {
+        "page_number": 197,
+        "page_id": "dracula:197:26e079b2c06d566b",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "26e079b2c06d566bae8f841de2d758427a6c48eda6ff819930266e360f3b1462"
+      },
+      {
+        "page_number": 198,
+        "page_id": "dracula:198:e37ea8fa400fad8b",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e37ea8fa400fad8b671e2230c3dbc3dbac21bf26149f461d44e9bd62bad7de54"
+      },
+      {
+        "page_number": 199,
+        "page_id": "dracula:199:5629a32eecf4b3fb",
+        "chapter_id": "chapter-020",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5629a32eecf4b3fb0caf6e0f4aa01637b735d0e6345a2b538921d06e5cf0aebe"
+      },
+      {
+        "page_number": 200,
+        "page_id": "dracula:200:06ad295be6a0195f",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "06ad295be6a0195f5a2f959984ebf98891044bd78feda6b0b8f4516f2ba08eb8"
+      },
+      {
+        "page_number": 201,
+        "page_id": "dracula:201:89eb87037fea280d",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "89eb87037fea280d128c86d247e2a8122995c4148920b12d4ead0a71a5584c51"
+      },
+      {
+        "page_number": 202,
+        "page_id": "dracula:202:11066e7d22e1e150",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "11066e7d22e1e1503ca01c4d1915e27d7906a0624a4731360bb4b9b0350e46f0"
+      },
+      {
+        "page_number": 203,
+        "page_id": "dracula:203:a3a8ecb3596253ce",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a3a8ecb3596253ceb478bfbbc057066eb3726821e2ea26010c6673634ed713af"
+      },
+      {
+        "page_number": 204,
+        "page_id": "dracula:204:24d5ded6088d216f",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "24d5ded6088d216f1ac2f08d74ea6e1bf2c3900374be1709b82eea6414fc8c50"
+      },
+      {
+        "page_number": 205,
+        "page_id": "dracula:205:a355987aaddfd2e0",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a355987aaddfd2e0944170b54aa8106221ad34390fa1d17276ac00ec715c1fdc"
+      },
+      {
+        "page_number": 206,
+        "page_id": "dracula:206:27a6ac38e6aea87c",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "27a6ac38e6aea87ced37de148c06545a6fcaeb189eb0da02ff23481e4bcc1e53"
+      },
+      {
+        "page_number": 207,
+        "page_id": "dracula:207:e7c983a0d208ee46",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e7c983a0d208ee46fffd934be913c370d2ad70bd8aadf3bf33edd77f3ccec8c2"
+      },
+      {
+        "page_number": 208,
+        "page_id": "dracula:208:db895152cac5baa5",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "db895152cac5baa52cd5f13689cfe27fdcd695deb7f50ab6492f5a67ac385376"
+      },
+      {
+        "page_number": 209,
+        "page_id": "dracula:209:a7f67e1f47a908c5",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a7f67e1f47a908c51d8cdef7c85a3f64fbca20e72b9bf068ad3594a8537ada69"
+      },
+      {
+        "page_number": 210,
+        "page_id": "dracula:210:9f61c9c33e9176e5",
+        "chapter_id": "chapter-021",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9f61c9c33e9176e52ca5fe93a68d4c1c9584f4ad0f0338c52404175d0f3e04aa"
+      },
+      {
+        "page_number": 211,
+        "page_id": "dracula:211:76de20e8e04ceacc",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "76de20e8e04ceaccd4d702cbc5405b6d11376bf2d53d27c1c012ec3a34c5b79b"
+      },
+      {
+        "page_number": 212,
+        "page_id": "dracula:212:50f0ad1c617b73d9",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "50f0ad1c617b73d973883e866b4f066ad2d678291aca52aac01603a1e4318344"
+      },
+      {
+        "page_number": 213,
+        "page_id": "dracula:213:e8c48c1d37dca460",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e8c48c1d37dca460133ddb82a1a1a31632b2c5bb923e1f89d17877261e39cf08"
+      },
+      {
+        "page_number": 214,
+        "page_id": "dracula:214:c51bd2b473a428a8",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c51bd2b473a428a84b518534ef2a2cffb5c14baaba5fa04905c052da3c43ff42"
+      },
+      {
+        "page_number": 215,
+        "page_id": "dracula:215:6bcb201be974f689",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6bcb201be974f68949afa02a81d3bab505a64854845eee7e7862d6fbf926d00c"
+      },
+      {
+        "page_number": 216,
+        "page_id": "dracula:216:4e0981fc2fa09722",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "4e0981fc2fa097225ddf5457beeb296ce557effc51f9841ef4094f900efc5fac"
+      },
+      {
+        "page_number": 217,
+        "page_id": "dracula:217:da9debf8342ecb46",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "da9debf8342ecb468aaeddce8329bdb67eed6ed00c3b7a36bfd8b2d61bcef582"
+      },
+      {
+        "page_number": 218,
+        "page_id": "dracula:218:96c55a3c04334c7c",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "96c55a3c04334c7cdcc89c067b5e1ca9c27705d4c758a13da0d5cc1cdf925698"
+      },
+      {
+        "page_number": 219,
+        "page_id": "dracula:219:3cd45efe976c9b96",
+        "chapter_id": "chapter-022",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "3cd45efe976c9b96205622b334fd56f9998fdfff3d9870a430a2318a9de3be4d"
+      },
+      {
+        "page_number": 220,
+        "page_id": "dracula:220:864d7a6605b9fd81",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "864d7a6605b9fd811887a8ee1639b182509493be53d1c2425e6b68fe7d906d98"
+      },
+      {
+        "page_number": 221,
+        "page_id": "dracula:221:e58a922b6c5e16d0",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e58a922b6c5e16d0ad974ab2f8d2e685c43dacb862504851c54c923406cf6fe8"
+      },
+      {
+        "page_number": 222,
+        "page_id": "dracula:222:380192fbd2401915",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "380192fbd2401915d68752e2554c733b3abd0f9d5ff7e8c6322e565ce897350a"
+      },
+      {
+        "page_number": 223,
+        "page_id": "dracula:223:a2407e0dd3c97c3f",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a2407e0dd3c97c3f314c82de9f5aaa49241bad9aaedc4b44792e9424fb770c7b"
+      },
+      {
+        "page_number": 224,
+        "page_id": "dracula:224:74506c68f0af7c20",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "74506c68f0af7c20e7402d20ba4668ab42c5b0a0f86bdcae1bfb3158cde3716a"
+      },
+      {
+        "page_number": 225,
+        "page_id": "dracula:225:d2b7880e46c4e4e2",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d2b7880e46c4e4e2c916a93c533f6d703d0a2f0b6df87f3711f94d88afa7777d"
+      },
+      {
+        "page_number": 226,
+        "page_id": "dracula:226:4ba7edc014c2b10d",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "4ba7edc014c2b10dddbe7082443df4632f72a1bf293153da9e8175449c5919f1"
+      },
+      {
+        "page_number": 227,
+        "page_id": "dracula:227:f154991beefc983b",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f154991beefc983bde5fdcae46f0c035dcfb9338851c5b9095b4540d6f6dea1e"
+      },
+      {
+        "page_number": 228,
+        "page_id": "dracula:228:a3b87f92b6bacb2b",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a3b87f92b6bacb2b581b0c090dce72651e85a917a4d7539d6cfc2d8e798a0b17"
+      },
+      {
+        "page_number": 229,
+        "page_id": "dracula:229:7859bfc4321bdc61",
+        "chapter_id": "chapter-023",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "7859bfc4321bdc61561e538fbed1e0a52b373d70a4ae2454e064230e47d67187"
+      },
+      {
+        "page_number": 230,
+        "page_id": "dracula:230:89f104ff0246e047",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "89f104ff0246e04709fec61862a75b148b5598cc0adea00cecbca40ff83f1d21"
+      },
+      {
+        "page_number": 231,
+        "page_id": "dracula:231:73970c73d11fab96",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "73970c73d11fab96f6cfaf01057358bce7a48aad49154b969e90d69a5b1e72a1"
+      },
+      {
+        "page_number": 232,
+        "page_id": "dracula:232:87bd4d9652de8e79",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "87bd4d9652de8e7980b2d3d9d12d9299c6a23fd6f313fe81547fc32406966a09"
+      },
+      {
+        "page_number": 233,
+        "page_id": "dracula:233:0585317b65eaa875",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0585317b65eaa875760a62f69cff3815a5206f45eff64f9b2b934bed31901d2d"
+      },
+      {
+        "page_number": 234,
+        "page_id": "dracula:234:ec7aec9b2745b749",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "ec7aec9b2745b74900ba68f35a019ac309bb3f62d0dd117d72f3ee0e219c5f7e"
+      },
+      {
+        "page_number": 235,
+        "page_id": "dracula:235:9c2979b484150e79",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9c2979b484150e79053426b76605823b93e36de5caa41e892e6c1910f2c3f69a"
+      },
+      {
+        "page_number": 236,
+        "page_id": "dracula:236:86c5db35dd47cf02",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "86c5db35dd47cf023084ce38aa7d491c9a2fb1a34dd522ecccfbc75a2dc5008b"
+      },
+      {
+        "page_number": 237,
+        "page_id": "dracula:237:25dc8ca9f81db8df",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "25dc8ca9f81db8df2c70fc9d790f34b8d02740895f0c8925947b8d5e42b2e03f"
+      },
+      {
+        "page_number": 238,
+        "page_id": "dracula:238:e2e43e74897178f0",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e2e43e74897178f0e68bdf76f46a07e89b5001faaa23332b75c337e58feb5210"
+      },
+      {
+        "page_number": 239,
+        "page_id": "dracula:239:c5cb4049946c891e",
+        "chapter_id": "chapter-024",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c5cb4049946c891ee603c0a01903a535bdc5f3c40e0439b83924cbee98ce2cda"
+      },
+      {
+        "page_number": 240,
+        "page_id": "dracula:240:0410ccdc29aebc54",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "0410ccdc29aebc5483ce1d01c2ee800a03fb463ce240577d12d927a6746de490"
+      },
+      {
+        "page_number": 241,
+        "page_id": "dracula:241:6bbe4cd5329d5fb5",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6bbe4cd5329d5fb5e70136e679ad4b757050474f1e91ffd3961a1a74b29794f3"
+      },
+      {
+        "page_number": 242,
+        "page_id": "dracula:242:c61dfc687ad5a5fa",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c61dfc687ad5a5fab024c31cb9c2efd91772cb15b325b9701a12325dc3c45e2d"
+      },
+      {
+        "page_number": 243,
+        "page_id": "dracula:243:adb4f5f07a1feaef",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "adb4f5f07a1feaefc6a2d8f015cd547ffd37256089344328be0b7688133fcbd5"
+      },
+      {
+        "page_number": 244,
+        "page_id": "dracula:244:f613f133fb9141b2",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f613f133fb9141b23b8747eadad817b6c9a5bfecdfa5964cb8d1c6081e59d0eb"
+      },
+      {
+        "page_number": 245,
+        "page_id": "dracula:245:fd014208a2f1c444",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "fd014208a2f1c444fca682d6da8eccc8c0be51d8366b8c5e7966ec6d00942839"
+      },
+      {
+        "page_number": 246,
+        "page_id": "dracula:246:66999d8001754ade",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "66999d8001754ade48e9c58a71b0891636997dc91a037a1789cd97acb24718df"
+      },
+      {
+        "page_number": 247,
+        "page_id": "dracula:247:02c116df84488b91",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "02c116df84488b9142800e63da9fdb2c37d15cbf1fee86542d4b2f7ad2053562"
+      },
+      {
+        "page_number": 248,
+        "page_id": "dracula:248:c450e4b5ef6d397d",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "c450e4b5ef6d397d9bf850d25a8ebbc781c559c7437290d80df3caa0b10c3b18"
+      },
+      {
+        "page_number": 249,
+        "page_id": "dracula:249:f2381f6ee3d601c7",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f2381f6ee3d601c79e3250e0337cccfbe8c493871df73b0f0c6a3f61ee048597"
+      },
+      {
+        "page_number": 250,
+        "page_id": "dracula:250:6cbb6ebeaff5b7f3",
+        "chapter_id": "chapter-025",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6cbb6ebeaff5b7f3a0afbe39e1fd129872c21fb27c6f66fcbd3c5e42c74c5eaa"
+      },
+      {
+        "page_number": 251,
+        "page_id": "dracula:251:f0539fe990edd8b7",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f0539fe990edd8b79402f7875273c94bcc22902c28680df561a7ee4233275c6a"
+      },
+      {
+        "page_number": 252,
+        "page_id": "dracula:252:614062e56a378e16",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "614062e56a378e16af603fac92919fb111ac56d09837a8524c0ec1cfafc9f7dc"
+      },
+      {
+        "page_number": 253,
+        "page_id": "dracula:253:8dfe8b669c7ec388",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8dfe8b669c7ec3887f331ce837feee8c607478f14fc2ab99769b8c54011aa817"
+      },
+      {
+        "page_number": 254,
+        "page_id": "dracula:254:10bcfa43bedbd1f0",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "10bcfa43bedbd1f077aaf5c28646423e5b815ae8c0b9f1bd574464fbc432458f"
+      },
+      {
+        "page_number": 255,
+        "page_id": "dracula:255:f177b331dfc5ab1d",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "f177b331dfc5ab1ddc8604e9fe08e9264696a1f7735a2b6903f093f97e3fd325"
+      },
+      {
+        "page_number": 256,
+        "page_id": "dracula:256:a1481d10284c1ac4",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a1481d10284c1ac4fef5d60aefd1b88537d5a61a51565b666b7620d38a7c8c86"
+      },
+      {
+        "page_number": 257,
+        "page_id": "dracula:257:7e3825dccf1172d6",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "7e3825dccf1172d68a0ff399f61c5572c9fedd6a23019332fbd137dc07439e9c"
+      },
+      {
+        "page_number": 258,
+        "page_id": "dracula:258:1b595bc9ad3c6011",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "1b595bc9ad3c601173fdda375c621623a9866e85d43edafb0915e55adc9c9ead"
+      },
+      {
+        "page_number": 259,
+        "page_id": "dracula:259:27f178ef71f6925f",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "27f178ef71f6925f0f2a141324122204c70f8f164fb1454177ef001adf12c930"
+      },
+      {
+        "page_number": 260,
+        "page_id": "dracula:260:585b878c87b4e4c8",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "585b878c87b4e4c83ac601e7de19587e65310b2acdf330ceaf74382209d48959"
+      },
+      {
+        "page_number": 261,
+        "page_id": "dracula:261:31666db518721044",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "31666db5187210443c5198d6a280bee99442d443567c07593dc507fb588bd55b"
+      },
+      {
+        "page_number": 262,
+        "page_id": "dracula:262:5a6a77bee4b7bf7f",
+        "chapter_id": "chapter-026",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "5a6a77bee4b7bf7f71eb06493431c4bd292f7178645f5f475e545e0878c03466"
+      },
+      {
+        "page_number": 263,
+        "page_id": "dracula:263:d43861ce50dc7dc0",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d43861ce50dc7dc0cc7c21b503adc5244601a6436c4c119c318d57bef7533288"
+      },
+      {
+        "page_number": 264,
+        "page_id": "dracula:264:748b27e47145dc88",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "748b27e47145dc88279642fc762c2a82c404e5c07a0361d8e58c3cb80c87a7d9"
+      },
+      {
+        "page_number": 265,
+        "page_id": "dracula:265:a769d19174e1f4c4",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "a769d19174e1f4c4be4eaa56252500c2b70f09356acccd5fa19f91db86b63ac7"
+      },
+      {
+        "page_number": 266,
+        "page_id": "dracula:266:8c169403d0351880",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "8c169403d0351880efb0e3817ec2a09bde790331ba748d8e8104f0eaaad072ac"
+      },
+      {
+        "page_number": 267,
+        "page_id": "dracula:267:395437028a7c184c",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "395437028a7c184c44e6bc762684677e8b53d348adab84a54c1b5021d94a88ac"
+      },
+      {
+        "page_number": 268,
+        "page_id": "dracula:268:b4b069ab6c7006de",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "b4b069ab6c7006dee92aea5e8cc7da019ed3f1d3a570672ab0d6b64f60b12688"
+      },
+      {
+        "page_number": 269,
+        "page_id": "dracula:269:92079217d43329bf",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "92079217d43329bf9b704c963cdc4c1caae218530a6064396d36bdbdcb1607dc"
+      },
+      {
+        "page_number": 270,
+        "page_id": "dracula:270:d8d7462842c2770c",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d8d7462842c2770c510e142d0868eb67b9c8236009fb8fa5cad4b60093b2c7fd"
+      },
+      {
+        "page_number": 271,
+        "page_id": "dracula:271:9de5f9c936462d09",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "9de5f9c936462d098a81ef1e9287118d013246b2946618933e9b9c9ccaed7a23"
+      },
+      {
+        "page_number": 272,
+        "page_id": "dracula:272:e7b18bb4e8026137",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "e7b18bb4e80261375caae15e0a3b004c7290885c49d329a74c3f981e01dc369a"
+      },
+      {
+        "page_number": 273,
+        "page_id": "dracula:273:d5ecd52ea88e8d43",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "d5ecd52ea88e8d436a0901a01ed6f6c4fadbdb3dd0875dc0c5c453bb69f16dd1"
+      },
+      {
+        "page_number": 274,
+        "page_id": "dracula:274:6d1344ca2342ed6a",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "6d1344ca2342ed6a4b5a1b65a3bcd9360cf84a8d3f8f8e4c31a209da87ad502b"
+      },
+      {
+        "page_number": 275,
+        "page_id": "dracula:275:cf8a5a10becb5273",
+        "chapter_id": "chapter-027",
+        "content_revision": "9a5a38294a81c159772c8ecb",
+        "content_hash": "cf8a5a10becb5273bbd6ba5e8762b55fdb18587de21256508c216f5b4c05dc1c"
+      }
+    ]
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "book": {
+    "estimated_reading_time": "26 min",
+    "title": "The Pit and the Pendulum",
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "id": "controlled-the-pit-and-the-pendulum",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover-099f97e4ecca2e38.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover-0d4b96d950f4e044.webp",
+    "updated_at": "2026-08-15T21:27:37Z",
+    "description": "Condemned by the Inquisition, the narrator survives one impossible death after another in a dungeon of calculated terror — Poe's supreme study in sustained suspense and the will to survive.",
+    "dominant_color": "#4A1C27",
+    "author": "Edgar Allan Poe",
+    "created_at": "2026-07-03T20:07:49Z",
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, master of Gothic horror and inventor of the detective story.",
+    "category_slug": "gothic-fiction",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Pit and the Pendulum",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "5ce348e16a97c759b382",
+        "word_count": 6149,
+        "reading_minutes": 26,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-pit-and-the-pendulum/chapter-001?v=5ce348e16a97c759b382",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Pit and the Pendulum",
+        "index_title": "The Pit and the Pendulum",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-pit-and-the-pendulum",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "",
+    "short_description": "A prisoner of the Spanish Inquisition survives a descending razor pendulum, a pit of blackness, and closing iron walls.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-pit-and-the-pendulum",
+    "reader_url": "/reader/the-pit-and-the-pendulum",
+    "preview_url": "/reader/the-pit-and-the-pendulum",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Pit and the Pendulum",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "5ce348e16a97c759b382",
+      "word_count": 6149,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-pit-and-the-pendulum/chapter-001?v=5ce348e16a97c759b382",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Pit and the Pendulum",
+      "index_title": "The Pit and the Pendulum",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "7fdef13f81149e9c",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "e95f0fc50b79a83ccbac",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:36.414190+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-pit-and-the-pendulum/manifest",
+      "total_pages": 13
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "approved-html-v1-41acd0e415a3dcfa777f82f90eb1dd82",
+    "content_revision": "dfcf8d205e180e4ce5f89b7d",
+    "page_count": 13,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-pit-and-the-pendulum:1:206e6cff356e0d2c",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "206e6cff356e0d2c0ea42f620f036c95b98f0916d303ea28cfdef6b4d5b09604"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-pit-and-the-pendulum:2:536bdde6f6ee49f5",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "536bdde6f6ee49f55d76c572eed3d0c1602bd3936255d18e1e5ba9d2159b33f7"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-pit-and-the-pendulum:3:9dcae840b00e76d8",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "9dcae840b00e76d8d616b0357c626a916af9fbcc9a32fcf443dd3f961662f5d9"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-pit-and-the-pendulum:4:9c07b20ff561f1f2",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "9c07b20ff561f1f246ec7c9efe465016fa613d1b7e436186cba3c3739240968b"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-pit-and-the-pendulum:5:08dc70f81d2b4f49",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "08dc70f81d2b4f49c3adc98e2082c0439ca0452151d859ba012dc6494e781f87"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-pit-and-the-pendulum:6:20556786044a8e9b",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "20556786044a8e9b2986a65252a98ba621727dc744433bbf1dfc883333733241"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-pit-and-the-pendulum:7:591a7635f6284edd",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "591a7635f6284eddc62b94cd73b9708cccd8462d1790b84bc638f3a8e26109bc"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-pit-and-the-pendulum:8:63126cbb16c1d160",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "63126cbb16c1d160674f3274439519d22b9740e7306abd622b4ca0cb1130e619"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-pit-and-the-pendulum:9:8f7f85604cec21cb",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "8f7f85604cec21cb1e8883b90421cd8759da1caef164a750390da0d7ea5773a2"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-pit-and-the-pendulum:10:8cb16c04eae4f2f3",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "8cb16c04eae4f2f39c9c2df1286a34599a0720a85dec2fbb360f531912556683"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-pit-and-the-pendulum:11:db2d8ecb5e7d477c",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "db2d8ecb5e7d477c338b3147356cc11613c9a497e3720464d91bb24c6ff8af1c"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-pit-and-the-pendulum:12:00860802960590c1",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "00860802960590c137bc1ef9242a21cbe8c6f6f04d47fadea216f45edc6ad414"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-pit-and-the-pendulum:13:f4912d2d9955c1ed",
+        "chapter_id": "chapter-001",
+        "content_revision": "dfcf8d205e180e4ce5f89b7d",
+        "content_hash": "f4912d2d9955c1ed4702ba055ce52347ca77b623ba68ca050d0bdf86df544315"
+      }
+    ]
+  }
+}

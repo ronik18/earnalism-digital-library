@@ -1,0 +1,333 @@
+{
+  "book": {
+    "estimated_reading_time": "57 min",
+    "title": "The Art of Money Getting",
+    "who_for": [
+      "Business and entrepreneurship readers",
+      "Students of classic enterprise writing",
+      "Readers interested in historical advice on money and work"
+    ],
+    "id": "controlled-the-art-of-money-getting",
+    "back_cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+    "cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+    "learnings": [
+      "Classic views on saving, effort, and business judgment.",
+      "Historical language around enterprise and personal discipline.",
+      "A compact public-domain text prepared for web reading."
+    ],
+    "back_cover_image_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-1639bd169616e489.webp",
+    "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-4cdaed41b8b2e173.webp",
+    "updated_at": "2026-07-03T20:07:47Z",
+    "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+    "dominant_color": "#4A1C27",
+    "author": "P. T. Barnum",
+    "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305586/earnalism/covers/front/cover_candidate_controlled-the-art-of-money-getting-4cdaed41b8b2e173662dbd4dc9aaa7da336c67c3c8fa572833d1f69767ed1b7d.webp",
+    "created_at": "2026-07-03T20:07:47Z",
+    "benefits": [
+      "Read a clean, boilerplate-free business classic.",
+      "Use a focused reader edition without source-file distractions.",
+      "Review practical reflections on earning, thrift, persistence, and enterprise."
+    ],
+    "about_author": "P. T. Barnum was an American showman, promoter, and entrepreneur whose writings often turned personal business experience into practical advice.",
+    "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305619/earnalism/covers/back/back_cover_candidate_controlled-the-art-of-money-getting-1639bd169616e489a5927ff90a7387427a96364a9f6346ba29443638bab9f9ae.webp",
+    "category_slug": "business",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "title": "The Art of Money Getting",
+        "order": 1,
+        "is_preview": true,
+        "content_version": "8d75e9020f94329a0715",
+        "word_count": 13564,
+        "reading_minutes": 57,
+        "processing_status": "ready",
+        "has_images": false,
+        "content_url": "/api/reader/chapter/the-art-of-money-getting/chapter-001?v=8d75e9020f94329a0715",
+        "index_contract": "chapter-index.v1",
+        "index_sequence": 1,
+        "index_sequence_label": "01",
+        "display_title": "The Art of Money Getting",
+        "index_title": "The Art of Money Getting",
+        "index_secondary_label": ""
+      }
+    ],
+    "slug": "the-art-of-money-getting",
+    "formats": [
+      "Ebook"
+    ],
+    "is_published": true,
+    "subtitle": "Golden Rules for Making Money",
+    "short_description": "A clean digital reading edition of P. T. Barnum's business classic.",
+    "publication_status": "LIVE_APPROVED",
+    "launch_status": "LIVE_APPROVED",
+    "reader_enabled": true,
+    "preview_enabled": true,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "public_route": "/book/the-art-of-money-getting",
+    "reader_url": "/reader/the-art-of-money-getting",
+    "preview_url": "/reader/the-art-of-money-getting",
+    "audio_url": "",
+    "audio_status": "NOT_AVAILABLE",
+    "audiobook_delivery_mode": "",
+    "audiobook_package_version": "",
+    "audiobook_duration_ms": 0,
+    "audiobook_release_gate": "",
+    "audio_qa_status": "",
+    "cta_label": "Read",
+    "secondary_cta_label": "Read the first 3 pages free",
+    "public_json_ld_enabled": true,
+    "source_note": "Public-domain source verified for controlled reading.",
+    "rights_note": "Approved classic reading release."
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "The Art of Money Getting",
+      "order": 1,
+      "is_preview": true,
+      "content_version": "8d75e9020f94329a0715",
+      "word_count": 13564,
+      "reading_minutes": 57,
+      "processing_status": "ready",
+      "has_images": false,
+      "content_url": "/api/reader/chapter/the-art-of-money-getting/chapter-001?v=8d75e9020f94329a0715",
+      "index_contract": "chapter-index.v1",
+      "index_sequence": 1,
+      "index_sequence_label": "01",
+      "display_title": "The Art of Money Getting",
+      "index_title": "The Art of Money Getting",
+      "index_secondary_label": ""
+    }
+  ],
+  "audio": {
+    "enabled": false,
+    "asset_slug": "",
+    "provider": "",
+    "voice": "",
+    "assets": {},
+    "url": "",
+    "size": 0,
+    "duration_ms": 0,
+    "release_gate": "",
+    "qa_status": "",
+    "sync_mode": "",
+    "highlight_sync_enabled": false,
+    "narration_disclosure": "",
+    "package_version": "",
+    "version": "c0a51aa1731ca786",
+    "updated_at": ""
+  },
+  "chapter_index_contract": "chapter-index.v1",
+  "version": "497675b87b21efdb6f8b",
+  "content_generation": 0,
+  "generated_at": "2026-10-31T04:59:40.677553+00:00",
+  "access": {
+    "role": "guest",
+    "authenticated": false,
+    "admin_preview": false,
+    "wallet_seconds": 0,
+    "can_read_paid": false,
+    "reading_pass": {
+      "enabled": true,
+      "free_entitlement": false,
+      "segments_ready": true,
+      "public_text_pages": 3,
+      "public_audio_seconds": 0,
+      "heartbeat_seconds": 10,
+      "maximum_lease_seconds": 20,
+      "text_inactivity_seconds": 120,
+      "book_manifest_url": "/api/reading-pass/books/the-art-of-money-getting/manifest",
+      "total_pages": 25
+    }
+  },
+  "canonical_pages": {
+    "schema_version": "canonical-html-blocks-v1",
+    "content_revision": "2d0c998e3dd9e9dc07204508",
+    "page_count": 25,
+    "ordering": "page_index_ascending_immutable",
+    "preview_policy": {
+      "unit": "canonical_page",
+      "public_limit": 3,
+      "enforced_by": "server",
+      "ready": true
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_id": "the-art-of-money-getting:1:7966e868b527e08f",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "7966e868b527e08f1c5f20ea151d64162b34bfb2ba1fd165afd237dd3e4564d9"
+      },
+      {
+        "page_number": 2,
+        "page_id": "the-art-of-money-getting:2:4af619aaab2e9320",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "4af619aaab2e93205d73d220bb7fea23755aa73f6d0d08200c68802fb4616ce2"
+      },
+      {
+        "page_number": 3,
+        "page_id": "the-art-of-money-getting:3:9191a4d9277562c7",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "9191a4d9277562c7f971582850490079dc5df553e724737ccd7184b5627ff4e1"
+      },
+      {
+        "page_number": 4,
+        "page_id": "the-art-of-money-getting:4:c9170a12516f61b5",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "c9170a12516f61b5d57a9bfbe182038580a46154ea5e9540c1bbac3d4c991877"
+      },
+      {
+        "page_number": 5,
+        "page_id": "the-art-of-money-getting:5:243db4973b12315a",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "243db4973b12315a1ddcd0f767c3a21994f8c76ef16c6f5180ff813b3c176c80"
+      },
+      {
+        "page_number": 6,
+        "page_id": "the-art-of-money-getting:6:d299ac42b10f1c60",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "d299ac42b10f1c60af24f6d6de7ac27edf831ba18d6472bfc4adeffd1cfe498d"
+      },
+      {
+        "page_number": 7,
+        "page_id": "the-art-of-money-getting:7:33c4ac792258fb45",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "33c4ac792258fb45d25b8a7d2b59f9b47bdd8b916401858461277a6097bbc8c7"
+      },
+      {
+        "page_number": 8,
+        "page_id": "the-art-of-money-getting:8:8c0d9535729e25a5",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "8c0d9535729e25a545c84eb6213f1705b379ec0063317cbdee581fdd1da71a19"
+      },
+      {
+        "page_number": 9,
+        "page_id": "the-art-of-money-getting:9:0a26b47bcc8fc988",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "0a26b47bcc8fc988d56970b2cbf7a51b73d1fa89edb86a16e5447df5622f6791"
+      },
+      {
+        "page_number": 10,
+        "page_id": "the-art-of-money-getting:10:1aea0c132d13101e",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "1aea0c132d13101e141f1c021b3913d5aa55d8b9df13ee835d2fbfb52768bbbb"
+      },
+      {
+        "page_number": 11,
+        "page_id": "the-art-of-money-getting:11:21ed6577fe848427",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "21ed6577fe8484276790a140bb6ca4ff3426176450888724538107eb4c927a8d"
+      },
+      {
+        "page_number": 12,
+        "page_id": "the-art-of-money-getting:12:cc10f79379b49f32",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "cc10f79379b49f3233e680b0b8804e2b499d3ecb041aee0f5722c417839064d3"
+      },
+      {
+        "page_number": 13,
+        "page_id": "the-art-of-money-getting:13:4c027e8327fdead0",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "4c027e8327fdead0f2feaaccbacd4d2aab362a031768d9248b82de3d3a3a0215"
+      },
+      {
+        "page_number": 14,
+        "page_id": "the-art-of-money-getting:14:146d86cd8a536226",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "146d86cd8a5362262dcb23e2f11680783b7770bf9de2decec650be87162e3206"
+      },
+      {
+        "page_number": 15,
+        "page_id": "the-art-of-money-getting:15:e069b40c33e3cfc3",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "e069b40c33e3cfc3471103080f5a3703ce64d0037c089008d8c67dc75a90516f"
+      },
+      {
+        "page_number": 16,
+        "page_id": "the-art-of-money-getting:16:3a056e5beafb5a7f",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "3a056e5beafb5a7f4ead77a574989e0e169595d9224c3fd96f1d02f3789a0c39"
+      },
+      {
+        "page_number": 17,
+        "page_id": "the-art-of-money-getting:17:8e45242c4a2d3e8c",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "8e45242c4a2d3e8c6671ab6b1d0a5d36617f0207d34699cc4056db3e7386bff6"
+      },
+      {
+        "page_number": 18,
+        "page_id": "the-art-of-money-getting:18:3b0830fc4b645cff",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "3b0830fc4b645cff9d975ea9a962a987bf3d5cf933cc0a226ac36504cfcb1d25"
+      },
+      {
+        "page_number": 19,
+        "page_id": "the-art-of-money-getting:19:2d8d56a20b10718b",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "2d8d56a20b10718b410af73f55b1808630bfff9c365b1ae89f700ba99a62eb3e"
+      },
+      {
+        "page_number": 20,
+        "page_id": "the-art-of-money-getting:20:46c5f20487bd349f",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "46c5f20487bd349f9a78d6a8f426536fc5a5a5c6800355ecac05e4e3c19ce574"
+      },
+      {
+        "page_number": 21,
+        "page_id": "the-art-of-money-getting:21:98b8d59e5e66e958",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "98b8d59e5e66e9585d43c1c9f192466603391cade6c54aa081918b4a13b25ef2"
+      },
+      {
+        "page_number": 22,
+        "page_id": "the-art-of-money-getting:22:a6a82308a5cb15b6",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "a6a82308a5cb15b69ca4236333bbe75714bf4397cdc0e2b75562467a4139c315"
+      },
+      {
+        "page_number": 23,
+        "page_id": "the-art-of-money-getting:23:f2a22434cbfd3593",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "f2a22434cbfd3593f6e297ce6cfd74dac98b6f45647522c028af094991525793"
+      },
+      {
+        "page_number": 24,
+        "page_id": "the-art-of-money-getting:24:33e987db583079fd",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "33e987db583079fdeb61e1aae7e4c56dd1c036e84a53cbdd121737286e6af063"
+      },
+      {
+        "page_number": 25,
+        "page_id": "the-art-of-money-getting:25:fae75c4e2c623e55",
+        "chapter_id": "chapter-001",
+        "content_revision": "2d0c998e3dd9e9dc07204508",
+        "content_hash": "fae75c4e2c623e55b477bec120b8e93547f2261cb78ab94ff17a8d7e765b65c6"
+      }
+    ]
+  }
+}

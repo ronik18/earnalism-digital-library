@@ -1,0 +1,100 @@
+{
+  "slug": "book-edfcf810c5",
+  "title": "ক্ষুধিত পাষাণ",
+  "book_id": "controlled-book-edfcf810c5",
+  "url": "https://theearnalism.com/book/book-edfcf810c5",
+  "stage": "RIGHTS_AND_PRODUCTION_PREFLIGHT",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-07-23T11:10:13Z",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "7252b43be58246f9cd71cd0cdb2b1a859db05c84374778c3bebff5e88b64e862",
+      "url": "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/book-edfcf810c5/source_evidence.json",
+      "sha256": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/book-edfcf810c5/reader_manifest.json",
+      "sha256": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/book-edfcf810c5/rights_decision.json",
+      "sha256": "945a033c58c60143b7e7c3f198ed415df8d5244868aa24a87edfc3258a1972ec"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/book-edfcf810c5/chapters/chapter-001.json",
+        "sha256": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "d132350633e399f66b48",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": false,
+      "asset_slug": "",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 0,
+      "release_gate": "",
+      "qa_status": "",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "",
+      "version": "28fff4d1417f8f78",
+      "updated_at": ""
+    },
+    "live_book_slug": "book-edfcf810c5",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "NOT_SELECTED_NOT_QUALIFIED",
+    "candidates": "Title/language-specific Ryan, Girija or qualified alternative; no voice-label-only acceptance"
+  },
+  "music": {
+    "selection": "SILENCE",
+    "license_required": false,
+    "reason": "No licensed score supplied; preserve intelligibility and avoid adding unqualified music"
+  },
+  "quality": {
+    "content": "UNVERIFIED",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "UNVERIFIED"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": 0,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "production_estimate_blocker": "No qualified voice/provider/package and exact audio-use binding; a numeric estimate here would imply an unselected production plan. No new spend was incurred."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_EDITION_AUDIO_USE_AND_VOICE_LICENSE_NOT_QUALIFIED",
+      "action": "Qualify underlying literary audio rights and territory from retained source-term evidence; retain applicable stock voice/model terms and bind the exact narration package through the supported audio-use workflow. Current owner campaign authority covers routine work; do not infer a license or require duplicate cost-only approval."
+    },
+    {
+      "code": "QUALIFIED_FULL_TITLE_RECORDING_AND_QA_MISSING",
+      "action": "After rights/provider qualification, audition representative passages, freeze source/settings and produce or import one complete source-bound title; pass full content, pronunciation, acoustic, listening, measured-sync and protected-playback checks before release."
+    }
+  ],
+  "language": "ben",
+  "rights": {
+    "audio_package_bindings": {},
+    "reader_rights_do_not_establish_audio_rights": true
+  }
+}
