@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-31T12:40:19.856799+00:00",
+  "worktree": "/tmp/earnalism-main-approved-integration",
+  "head_before": "2690e385b7d51ba139816df9049745c97c45c5e2",
+  "local_origin_main_before": "2690e385b7d51ba139816df9049745c97c45c5e2",
+  "remote_main_verified": "f287205d892d2cb9b8ff0263e34f15cf999cc7bc",
+  "index_tree": "63c452112f6b4da7125fa88e6d554a3030d5b6d0",
+  "index_sha256": "d2f40077c2ef7d16a1646ec5dfdecf531cf14c545bc2b3b00e7686e04ea57b67",
+  "staged_path_count": 935,
+  "unstaged_count": 0,
+  "untracked": "",
+  "archive": "/tmp/earnalism-canonical-935-preservation-20261031",
+  "restored_at": "2026-10-31T12:41:13.044942+00:00",
+  "snapshot_commit": "4865c1e8631fec72c1a2d4c4cc02bddf5197e668",
+  "snapshot_ref": "refs/recovery/canonical-935-staged-20261031",
+  "preserved_old_head_ref": "refs/recovery/canonical-before-935-restore-20261031",
+  "restoration_method": "Atomic compare-and-swap ref repair only; index entries and working files unchanged; no reset/stash/checkout/delete",
+  "staged_tree_equals_remote_main": true,
+  "final_head": "f287205d892d2cb9b8ff0263e34f15cf999cc7bc",
+  "final_clean": true,
+  "archive_hashes": {
+    "index.before": "d2f40077c2ef7d16a1646ec5dfdecf531cf14c545bc2b3b00e7686e04ea57b67",
+    "head.before.txt": "7d25e1eb0c84ac7e6451b96ec9e220a09b3971a258e6096b8ee502f24a6a5368",
+    "status.before.z": "3a819f46c341c2e24e8449998ab59b74bc6bfee9689953a52bbfbab14eaf6a03",
+    "staged.binary.patch": "19a430769ed2f06aa2df07c7f5abef28821e1d636949d5fe26097f1b986f15d3",
+    "index-tree.txt": "e8dae02d59afa481bb05f8a29f3b221de4312c0fc6473035c339400454b7fe67",
+    "index-entries.z": "0c67dc3379ac9a6ae2e188b5a18ce5e0a2bd1fdfbef65a244a6c61556966de17",
+    "staged.raw.z": "2f31b8dcc7d7f32eefbbb6d8675582c294e84f82c8c69e9d022092763c2efdaa"
+  },
+  "portable_bundle": {
+    "path": "/tmp/earnalism-canonical-935-preservation-20261031/935-staged.bundle",
+    "sha256": "ad4e08f62ed24372636bda95325a05a24a1923f341a7953ce16b0a2864f7c91a",
+    "verified": true,
+    "required_preserved_parent": "2690e385b7d51ba139816df9049745c97c45c5e2"
+  }
+}

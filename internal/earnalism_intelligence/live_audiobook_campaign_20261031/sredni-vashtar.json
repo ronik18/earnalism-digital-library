@@ -87,7 +87,8 @@
       "minimum": 9.7,
       "numeric_and_first_last_only": "PASS",
       "complete_content_gate": "HELD_ON_MATERIAL_WORDING_UNCERTAINTY"
-    }
+    },
+    "wording_adjudication": "OWNER_INCONCLUSIVE_QUALIFIED_AUDIO_REVIEW_STILL_REQUIRED"
   },
   "repairs": [],
   "costs": {
@@ -103,7 +104,7 @@
   "blockers": [
     {
       "code": "SUSPECTED_MISSING_WORDS_REQUIRE_LISTENING_ADJUDICATION",
-      "action": "Canonical transcript_similarity scores pass numerically (9.7854 and 9.814); supplementary WER-derived scores are not the canonical metric. Historical and both fresh ASR outputs omit “one of which was” around 2:33. Resolve the focused retained-audio wording question before reuse or repair. No aggregate score overrides unresolved word loss. Exact generation-source binding is resolved; do not replay synthesis or ASR blindly."
+      "action": "Owner answered “I cannot tell”; preserve the uncertainty and do not ask the same listening question again. Obtain decisive qualified auditory evidence of the exact retained phrase before reuse or repair. Numeric ASR/source binding remain qualified only within their recorded scope. No synthesis/allocation under this continuation."
     },
     {
       "code": "EXACT_AUDIO_PACKAGE_RIGHTS_STORAGE_AND_RUNTIME_ACCEPTANCE_REQUIRED",
@@ -119,5 +120,15 @@
   "reuse_preflight": "recovery-followup/sredni-source-and-reuse-preflight.json",
   "local_asr": "recovery-followup/sredni-local-asr.json",
   "critical_review": "recovery-followup/sredni-critical-review.json",
-  "repository_asr_metric": "recovery-followup/sredni-repository-asr-metric.json"
+  "repository_asr_metric": "recovery-followup/sredni-repository-asr-metric.json",
+  "owner_wording_response": {
+    "answer": "I cannot tell",
+    "interpretation": "INCONCLUSIVE_NOT_APPROVAL_NOT_CONFIRMED_OMISSION",
+    "receipt": "owner-response-followup/owner-wording-response.json"
+  },
+  "external_audio_review": {
+    "status": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_PAYLOAD_TRANSFER_PENDING_OWNER_RESPONSE",
+    "record": "owner-response-followup/audio-review-transfer-gate.json"
+  },
+  "voice_quality_direction": "../audiobook_voice_quality_owner_direction_20261031.md"
 }
