@@ -1,0 +1,80 @@
+{
+  "schema": "earnalism.selfish-normal-acceptance-intent.v1",
+  "intent_id": "f1e210b1-9def-4d99-b3db-f90130a10478",
+  "prepared_at": "2026-10-31T18:55:29.186674+00:00",
+  "status": "CONSUMED_OWN_NORMAL_SESSION_ENDED_ZERO_INTEGER_DELTA_ACCEPTANCE_INCOMPLETE_NEAR_END_RESTORE",
+  "owner_authority": "Signed in—use this account for the bounded check",
+  "owner_authority_scope": "One serialized normal owner-controlled account acceptance session for The Selfish Giant, planned31active seconds and maximum120, existing normal Reading Pass credit only; no purchase/topup/admincredit/newTTS/mediaegress. Execute only after other release is finished and root verifies stable source/shared slot.",
+  "owner_account_binding": {
+    "method": "Explicit owner-designated retained signed-in browser context; no raw identity, email, account balance, tokens or cookies persisted",
+    "browser": "Chrome",
+    "browser_id": "1",
+    "tab_id": "1838738805",
+    "normal_account_signed_in_observed": true,
+    "existing_credit_covers_120s_from_visible_UI": true,
+    "active_readingpass_consumption_session_absent": "NOT_CLAIMED_NORMAL_START_ATOMIC_NONTRANSFER_GUARD_USED"
+  },
+  "slug": "the-selfish-giant",
+  "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "maximum_normal_sessions": 1,
+  "maximum_authorize_clicks": 1,
+  "authorize_clicks_reserved_or_sent": 1,
+  "automatic_retry": false,
+  "session_binding": "26962ee43001a86afd6f2a6810b054aa3f152ebbdad479a7701ca738a69f7453",
+  "planned_active_seconds": 31,
+  "maximum_active_seconds": 120,
+  "safety_stop_active_seconds": 90,
+  "playback_speed": 1,
+  "root_shared_slot_source_go_received": true,
+  "current_preauthorization_UI": {
+    "title_correct": true,
+    "full_audiobook": true,
+    "duration": "12:57",
+    "authorize_button_present": true,
+    "seek_disabled": true,
+    "credentials_inspected": false
+  },
+  "must_pass_before_authorize": [
+    "Root confirms other release finished, exclusive integration/session slot free and actual current backend/frontend source bindings reconciled",
+    "Owner-designated account still signed in and existing normal credit sufficient",
+    "Reserve one authorize click in this durable intent BEFORE UI action; uncertain result consumes it and forbids another click",
+    "Bind actual resulting session identity privately to this intent and compare package/slug/version before playback"
+  ],
+  "post_start_receipt_requirements": [
+    "Same normal owner-account browser context and exact workflow-owned session only",
+    "Private session binding and monotonic active-time ledger; publish only hashed opaque linkage where needed, never lease credential or raw identity/balance",
+    "Store only scoped debit/duration deltas, pause/buffering/seek evidence and terminal settlement in integrated evidence",
+    "No paid retry or second normal session; no new purchase/credit/grant/override/capinstaller"
+  ],
+  "events": [
+    {
+      "at": "2026-10-31T18:55:29.186674+00:00",
+      "event": "OWNER_SIGNIN_AND_PREAUTH_READINESS_OBSERVED_NO_SESSION_CREATED"
+    },
+    {
+      "at": "2026-10-31T19:03:20.571527+00:00",
+      "event": "ROOT_SOURCE_GO_AND_NORMAL_EXPIRED_CLEANUP20_WITHIN_TOTAL120_PROTOCOL_ADOPTED; FRESHBOTHALIASES_SOURCECONFIG_PACKAGE_CRITICALMODULEPASS"
+    },
+    {
+      "at": "2026-10-31T19:12:36.526092+00:00",
+      "event": "CORRECTED_NEAR_END_RESTORE_WITH_NORMAL_COMPLETION; EXISTING_CHAPTER_START_AFFORDANCE_VALIDATED_OFFLINE3PASS; NOAPPCHANGE_OR_NEWSESSION"
+    }
+  ],
+  "maximum_total_credit_debit_seconds": 120,
+  "ordinary_expired_cleanup_reserved_seconds": 20,
+  "safety_stop_wall_seconds": 70,
+  "maximum_wall_seconds_after_authorize": 75,
+  "maximum_lease_seconds": 20,
+  "conservative_total_credit_bound_seconds": 115,
+  "authorize_reserved_at": "2026-10-31T19:04:13.834Z",
+  "resultFile": "SELFISH-BOUNDED-ACCEPTANCE-RESULT.json",
+  "sessionEndObservedBeforeWallSeconds": 55.17,
+  "ordinaryCleanupDeltaSeconds": 0,
+  "totalCreditDeltaSeconds": 0,
+  "retryAllowed": false,
+  "session_terminal_authorize_relative_upper_bound_seconds": 28.365204999997047,
+  "initial_transport_failure_inference": "RETRACTED",
+  "root_cause_record": "SELFISH-BOUNDED-ACCEPTANCE-RESULT.json",
+  "next_authorization_requires_new_explicit_owner_grant": true
+}

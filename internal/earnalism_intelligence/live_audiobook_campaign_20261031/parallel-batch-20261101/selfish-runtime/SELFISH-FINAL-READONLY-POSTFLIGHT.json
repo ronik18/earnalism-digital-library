@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-31T19:39:43.732Z",
+  "status": "OWNER_ONLY_READONLY_POSTFLIGHT_MATCHED_SESSION_LEDGER",
+  "profileHttp": 200,
+  "historyHttp": 200,
+  "finalAttemptWholeSecondCreditDelta": 3,
+  "cumulativeWholeSecondCreditDelta": 3,
+  "matchingOwnSessionLedgerRows": [
+    {
+      "type": "consume",
+      "seconds": -3,
+      "createdAt": "2026-10-31T19:36:25.555909+00:00",
+      "contentType": "audio",
+      "contentId": "the-selfish-giant"
+    }
+  ],
+  "otherCustomerOrHistoricalRowsRetained": false,
+  "rawIdentityAbsoluteBalanceOrCredentialsRetained": false,
+  "newLeaseCreated": false,
+  "sessionTerminalStatus": "NOT_EXPOSED_BY_NORMAL_ACCOUNT_USAGE_UI_END_POST_SENT_RESPONSE_NOT_CAPTURED",
+  "matchingOwnSessionLedgerSignedSeconds": -3,
+  "matchingOwnSessionLedgerDebitSeconds": 3,
+  "ledgerSignConvention": "consume rows represent debit with negative seconds; derived owner debit magnitude3 matches whole-second credit delta3."
+}

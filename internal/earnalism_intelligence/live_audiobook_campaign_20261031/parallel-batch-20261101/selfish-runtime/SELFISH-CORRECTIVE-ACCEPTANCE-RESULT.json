@@ -1,0 +1,27 @@
+{
+  "status": "CORRECTIVE_UI_PROCEDURE_ERROR_NORMAL_REQUEST_DISPATCH_AND_SETTLEMENT_UNVERIFIED",
+  "observations": [],
+  "error": {
+    "type": "Error",
+    "reason": "NORMAL_UI_OR_PLAYBACK_CASE_FAILED"
+  },
+  "finishedWallSeconds": 4.345,
+  "normalEndConfirmed": false,
+  "totalOwnerCreditDeltaSeconds": 0,
+  "endDeductedSeconds": null,
+  "firstAttemptCreditDeltaSeconds": 0,
+  "cumulativeMaximumCreditSeconds": 120,
+  "correctiveAuthorizeAttempts": 1,
+  "noThirdStart": true,
+  "rawIdentityAbsoluteBalanceOrCredentialsSaved": false,
+  "cumulativeOwnerCreditDeltaSeconds": 0,
+  "creditDeltaEvidence": "SELFISH-CORRECTIVE-READONLY-POSTFLIGHT.json passive normalusers/me200; no absolutebalance/identitysaved",
+  "actual_normal_start_count": "UNVERIFIED_RESERVATION_IS_NOT_SERVER_REQUEST_COUNT",
+  "failureStage": "Before first observation append: Authorizeclick/AX,Playwait/AX,chapterclick/AX; precise awaited operation unknown",
+  "exactErrorMessage": "NOT_RETAINED_DIAGNOSTIC_GAP_DO_NOT_INVENT",
+  "scriptedPlayReached": false,
+  "allProtectedCaseResults": "UNPERFORMED_OR_UNVERIFIED_NO_PASS_INFERRED_FROM_ZERO_DEBIT",
+  "diagnostic_fix": "CORRECTIVE-DIAGNOSTIC-FIX.md",
+  "executed_driver": "CORRECTIVE-DRIVER-EXECUTED.js",
+  "updatedAt": "2026-10-31T19:23:49.494392+00:00"
+}

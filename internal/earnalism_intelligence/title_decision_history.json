@@ -13245,5 +13245,18 @@
   "new_allocations": 0,
   "new_paid_provider_requests": 0,
   "release_ready": false
+},
+  "selfish_runtime_bounded_followup_20261101": {
+  "timestamp": "2026-10-31T20:26:04.396478+00:00",
+  "event": "DEDICATED_SELFISH_RUNTIME_BOUNDED_FOLLOWUP_BLOCKED_NO_PRODUCT_DEFECT_PROVEN",
+  "slug": "the-selfish-giant",
+  "record": "live_audiobook_campaign_20261031/parallel-batch-20261101/selfish-runtime/FINAL-STATUS.json",
+  "normal_starts_known_or_uncertain": 4,
+  "own_credit_whole_seconds": 7,
+  "new_purchases": 0,
+  "new_synthesis": 0,
+  "new_allocation": 0,
+  "new_publications": 0,
+  "learning": "Real playback/pause and1x protected delivery observed; controller incorrectly used a non-step-aligned value/saved1.5x and proceeded before nativeplaying. Corrected10-case offline helper candidate is not real browser proof. Stop bounded live lane; retain actual unverified cases and terminal receipt gap. Match own session ledger rather than account-wide deltas containing unrelated activity."
 }
 }

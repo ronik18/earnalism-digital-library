@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/lib/controlledLaunch.js",
+      "sha256": "b65eeff0fdd3affe060b9f57c6fa1c41eafd7cd774f7795dddd4433f7395340b",
+      "bytes": 13408
+    },
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/lib/audioReleaseSafety.js",
+      "sha256": "01395828ed938b4de9a968779d343e21c42eeb31c715e2f18dc9dc9588d064e1",
+      "bytes": 8217
+    },
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/lib/libraryCatalog.js",
+      "sha256": "42a197bbe47dc16d35b4d8b39bdd251670b89711be8c0c6c30922b22cecb3c2b",
+      "bytes": 4156
+    },
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/lib/libraryCatalogueComposition.js",
+      "sha256": "8ac86b1f3f3fc4c92f4a4407e5f56f3701efbe23ef9c092f5e166f5a131bd5b6",
+      "bytes": 872
+    },
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "sha256": "39b9af16ef5e3804d74dea421cb85b3cb02da374af2bebe742b4239b7508b1cb",
+      "bytes": 27828
+    },
+    {
+      "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "path": "frontend/src/pages/Library.jsx",
+      "sha256": "28a23d8f39927fa83dd39940fd2222e1f8d23c0eefb886be8de1613312cbf14f",
+      "bytes": 13604
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/lib/controlledLaunch.js",
+      "sha256": "b65eeff0fdd3affe060b9f57c6fa1c41eafd7cd774f7795dddd4433f7395340b",
+      "bytes": 13408
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/lib/audioReleaseSafety.js",
+      "sha256": "01395828ed938b4de9a968779d343e21c42eeb31c715e2f18dc9dc9588d064e1",
+      "bytes": 8217
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/lib/libraryCatalog.js",
+      "sha256": "42a197bbe47dc16d35b4d8b39bdd251670b89711be8c0c6c30922b22cecb3c2b",
+      "bytes": 4156
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/lib/libraryCatalogueComposition.js",
+      "sha256": "8ac86b1f3f3fc4c92f4a4407e5f56f3701efbe23ef9c092f5e166f5a131bd5b6",
+      "bytes": 872
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "sha256": "39b9af16ef5e3804d74dea421cb85b3cb02da374af2bebe742b4239b7508b1cb",
+      "bytes": 27828
+    },
+    {
+      "ref": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+      "path": "frontend/src/pages/Library.jsx",
+      "sha256": "28a23d8f39927fa83dd39940fd2222e1f8d23c0eefb886be8de1613312cbf14f",
+      "bytes": 13604
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/lib/controlledLaunch.js",
+      "sha256": "b65eeff0fdd3affe060b9f57c6fa1c41eafd7cd774f7795dddd4433f7395340b",
+      "bytes": 13408
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/lib/audioReleaseSafety.js",
+      "sha256": "01395828ed938b4de9a968779d343e21c42eeb31c715e2f18dc9dc9588d064e1",
+      "bytes": 8217
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/lib/libraryCatalog.js",
+      "sha256": "42a197bbe47dc16d35b4d8b39bdd251670b89711be8c0c6c30922b22cecb3c2b",
+      "bytes": 4156
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/lib/libraryCatalogueComposition.js",
+      "sha256": "8ac86b1f3f3fc4c92f4a4407e5f56f3701efbe23ef9c092f5e166f5a131bd5b6",
+      "bytes": 872
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "sha256": "39b9af16ef5e3804d74dea421cb85b3cb02da374af2bebe742b4239b7508b1cb",
+      "bytes": 27828
+    },
+    {
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "path": "frontend/src/pages/Library.jsx",
+      "sha256": "28a23d8f39927fa83dd39940fd2222e1f8d23c0eefb886be8de1613312cbf14f",
+      "bytes": 13604
+    }
+  ],
+  "all_relevant_source_equal": true,
+  "refs": [
+    "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "688289198e550a1c592f7dc242c9ab36a7cf433e",
+    "9f182f96a9f443ac211b1a7768a07d876e06def2"
+  ],
+  "scope": "Six relevant Library/audio availability modules compared byte-for-byte at retainedfrontend9a, current688 and pendingReader9f; this is source equivalence, not a fresh provider deploymentSHA."
+}

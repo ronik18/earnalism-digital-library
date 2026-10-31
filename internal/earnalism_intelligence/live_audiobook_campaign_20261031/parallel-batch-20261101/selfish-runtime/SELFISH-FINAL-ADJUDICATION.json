@@ -1,0 +1,136 @@
+{
+  "recorded_at": "2026-10-31T19:41:14.584889+00:00",
+  "status": "BLOCKED_FIRM_FINAL_AUTOMATION_LIMIT_SCOPED_RUNTIME_ACCEPTANCE_INCOMPLETE",
+  "no_further_automatic_starts": true,
+  "internal_maximum_total_starts_known_or_uncertain": 3,
+  "owner_cumulative_credit_limit_seconds": 120,
+  "actual_owner_cumulative_whole_second_credit_debit": 3,
+  "debit_reconciled": true,
+  "prior_first_and_uncertain_second_credit_delta_seconds": 0,
+  "final_start_request_observed": 1,
+  "final_start_http": 200,
+  "protected_manifest_http": 200,
+  "native_206_segments_observed": [
+    "group-06 metadata resume",
+    "group-01 explicit chapter restart"
+  ],
+  "actual_chapter_restart": {
+    "chapter_control_enabled": true,
+    "visible_zero_before_Play": true,
+    "first_native_group01_ready_observation": {
+      "label": "first-active-group01",
+      "wallSeconds": 9.649,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    "scope": "Existing normal chapter control worked; no chapter mapping or product-code fix established."
+  },
+  "native_playback_observed": {
+    "initial": {
+      "label": "initial-playing",
+      "wallSeconds": 21.141,
+      "audio": {
+        "currentTime": 9.179613,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": false,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    "paused_start": {
+      "label": "pause-1-start",
+      "wallSeconds": 21.428,
+      "audio": {
+        "currentTime": 9.285501,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    "paused_end": {
+      "label": "pause-1-end",
+      "wallSeconds": 33.484,
+      "audio": {
+        "currentTime": 9.285501,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    "pause_wall_seconds": 12.056000000000001,
+    "paused_native_position_unchanged": true,
+    "resumed": {
+      "label": "resumed",
+      "wallSeconds": 37.781,
+      "audio": {
+        "currentTime": 10.560206,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": false,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    "actual_speed": 1.5,
+    "planned_speed": 1.0,
+    "speed_deviation": "Saved user playback speed was restored. Driver did not explicitly select1.0 beforePlay; do not label this a1x acceptance or infer active wall time from media-time advance."
+  },
+  "failure": {
+    "kind": "AUTOMATION_INPUT_NOT_PRODUCT_TRANSPORT",
+    "stage": "seek-60.96:native-setValue",
+    "exact_error": "Error: Input rejected value \"60.96\"",
+    "input_contract": "The actual supported range has step0.1. Driver requested60.96, not a valid step-multiple. Ordinary pointer/valid0.1step seeking is not proven broken.",
+    "product_patch_required": false,
+    "network_abort_notes": "ERR_ABORTED on prior media range requests accompanies preload/source changes; no HTTP media failure established. Do not relabel these as a narration/transport defect."
+  },
+  "remaining_cases": {
+    "active_cross_segment_seek": "NOT_PERFORMED_INVALID_UI_INPUT_ABORTED",
+    "natural_intermediate_transition": "NOT_PERFORMED",
+    "paused_final_cross_segment_seek": "NOT_PERFORMED",
+    "full_natural_ending_in_corrected_from_zero_session": "NOT_PERFORMED",
+    "whole_title_fresh_listening": "NOT_PERFORMED_REUSE_UNCHANGED_ACCEPTED_MASTER_ONLY",
+    "current_complete_protected_player_billing_gate": "UNVERIFIED"
+  },
+  "containment": {
+    "own_end_POST_sent": true,
+    "own_end_response_status": "NOT_CAPTURED_BEFORE_OWN_TAB_CLOSED",
+    "normal_end_confirmed": false,
+    "own_tab_closed_wall_seconds": 38.082,
+    "last_lease_maximum_seconds": 20,
+    "no_other_tab_or_session_stopped": true,
+    "postflight_normal_profile_http": 200,
+    "postflight_normal_usage_http": 200,
+    "matching_this_session_ledger_debit_seconds": 3,
+    "actual_terminal_session_status": "NOT_EXPOSED_BY_NORMAL_ACCOUNT_USAGE_UI; do not inferended from ledger alone",
+    "no_more_customer_writes_or_authorizations": true
+  },
+  "next_action": "Root integrates truthful partial proof and holds current complete runtime acceptance. Firm automated retry limit reached; no additional start under this automatic continuation. If further independent normal-customer acceptance is authorized later, use enabled readiness, explicit1.0speed, actualrange0.1step values such as61.0/58.0/773.1, and wait for terminal response while owned tab remains open. This is a future procedure, not a new execution grant.",
+  "public_package": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "source_narration_rights_covers_unchanged": true,
+  "application_changes": false,
+  "new_deployment": false,
+  "PR600_untouched": true,
+  "new_synthesis_allocation_purchase_media_egress": false,
+  "absolute_balance_identity_credential_saved": false
+}

@@ -42,7 +42,7 @@
       "work": "Shared source/test evidence reuse; then dedicated Selfish public rendered verification and normal-account protected acceptance preparation",
       "path": "/tmp/earnalism-parallel-existing-20261031 and /tmp/earnalism-parallel-selfish-go-live-20261101",
       "canonical_writes": false,
-      "status": "DEDICATED_SELFISH_FINAL_ACCEPTANCE_PENDING"
+      "status": "DEDICATED_SELFISH_BOUNDED_RUN_FINISHED_BLOCKED"
     },
     {
       "owner": "root",
@@ -52,7 +52,7 @@
       "work": "Derived private measured corrected timings and hash-verified local recovery copies; serialized campaign integration",
       "path": "/tmp/earnalism-main-approved-integration",
       "canonical_writes": true,
-      "status": "INTEGRATING_ONE_BATCH"
+      "status": "ONE_BATCH_SOURCE_INTEGRATION_PENDING_CHECKS"
     }
   ],
   "overlap_resolution": "Workers share read-only source and distinct artifact directories; only root edits ledgers/title records. No parallel commits or publication owners. Other Reader recovery frontend release remains separately owned and must finish before Selfish protected acceptance/release reconciliation.",
@@ -61,11 +61,12 @@
     "new_synthesis": 0,
     "new_allocations": 0,
     "new_purchases": 0,
-    "new_customer_sessions_in_this_preparation": 0,
+    "new_customer_sessions_in_this_preparation": "See dedicated followup:4normalstarts known or uncertain; source unchanged; no further automatic start",
     "ghost_local_cpu_wall_seconds": 637.23,
     "storage_read_charge": "NOT_REPORTED",
-    "prior_campaign_costs": "PRESERVED_NOT_RESET"
+    "prior_campaign_costs": "PRESERVED_NOT_RESET",
+    "own_reading_pass_whole_seconds_debited": 7
   },
   "private_audio_recovery": "sredni/private-recovery-manifest.json",
-  "next_action": "Complete exactly the owner-confirmed bounded Selfish normal-account acceptance after shared frontend release is quiet; then update its truthful LIVE/BLOCKED result. Never regenerate healthy audio or repeat consumed grants."
+  "next_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS."
 }

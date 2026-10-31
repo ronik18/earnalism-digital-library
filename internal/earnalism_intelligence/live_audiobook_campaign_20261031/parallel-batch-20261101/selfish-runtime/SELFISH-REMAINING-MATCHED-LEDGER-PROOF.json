@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-31T20:04:03.856Z",
+  "normalAccountHttp": 200,
+  "normalLedgerHttp": 200,
+  "sameIntendedOwner": true,
+  "sessionHash": "b0725a0ce63519fda0ed5fe9f20c56fa73e1872b2da9d758957259b92a05bb4e",
+  "matchingRows": [
+    {
+      "type": "consume",
+      "seconds": -4,
+      "reason": "Reading Pass audio: the-selfish-giant",
+      "content_type": "audio",
+      "content_id": "the-selfish-giant",
+      "created_at": "2026-10-31T19:58:15.969532+00:00"
+    }
+  ],
+  "fourthOwnWholeSecondDebit": 4,
+  "priorOwnWholeSecondDebit": 3,
+  "cumulativeOwnWholeSecondDebit": 7,
+  "terminalStateExposed": false,
+  "terminalEndResponseConfirmed": false,
+  "absoluteBalanceIdentityOrCredentialsSaved": false,
+  "noFurtherStart": true,
+  "account_window_delta_omitted": "Use hashed-session matching ledger totals, not an account-wide delta containing other activity."
+}

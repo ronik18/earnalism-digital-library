@@ -1,0 +1,83 @@
+{
+  "observed_at": "2026-10-31T19:24:35.971143+00:00",
+  "task": "Independent read-only analysis of Selfish corrective driver setup",
+  "source_bindings": [
+    {
+      "path": "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx",
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "sha256": "811feace83398aa58146ffa13983975bdf92902a4d8fddb362295e6351f7c9bd",
+      "canonical_file_equal": true
+    },
+    {
+      "path": "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx",
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "sha256": "2ecc9d675abcc9a19dc8160591f450a0039aaa4b360777ac08a5980237e22ec8",
+      "canonical_file_equal": true
+    },
+    {
+      "path": "frontend/src/lib/audiobookPlayback.js",
+      "ref": "9f182f96a9f443ac211b1a7768a07d876e06def2",
+      "sha256": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
+      "canonical_file_equal": true
+    }
+  ],
+  "no_browser_account_network_or_source_mutation": true,
+  "actual_cause": "UNDETERMINED_NO_DRIVER_TAPE_OR_ORIGINAL_EXCEPTION",
+  "observed_artifact_facts": {
+    "corrective_wall_seconds": 4.345,
+    "corrective_observations": [],
+    "saved_error": "Error:NORMAL_UI_OR_PLAYBACK_CASE_FAILED",
+    "normal_end_confirmed": false,
+    "readonly_postflight_whole_second_delta": 0,
+    "readonly_postflight_authorize_and_chapter_regex_counts": 1,
+    "original_lifecycle_tests": "3PASS in completed-progress-qa.log; mocks authorized access, readyState3, nativeaudio and renewal. Supports player semantics only.",
+    "locator_test_attempt": "completed-progress-locator-qa.log failed before tests because dom-accessibility-api missing. Current testfile no longer imports that package; do not conflate failed locator attempt with original3PASS or actual browser failure.",
+    "actual_corrective_driver_file": "Not found among available files; no wait or session inspection attempted."
+  },
+  "source_backed_risks": [
+    {
+      "risk": "Premature post-authorize locator/readiness assertion",
+      "source": "ListenerExperienceV2Route.jsx:229-260 and112-160; ListenerExperienceV2.jsx:42,237-250",
+      "explanation": "Authorize resolves start-session then sets lease. Protected package fetch/normalization is a separate effect; canPlay requires authorized+validmanifest+activeaudioURL. A completed click or one matching chapterlocator does not prove enabledchapter/Play readiness. Locatorcount includes disabled controls before authorization.",
+      "actual_failure_proven": false
+    },
+    {
+      "risk": "Chapter accessible-name exactness/whitespace mismatch",
+      "source": "ListenerExperienceV2.jsx:246-255",
+      "explanation": "Chapter button accessible text is paddednumber+chaptertitle+formattedduration whenpositive; it has no dedicatedaria-label. A full exact name withoutduration may fail. Existing read-onlypostflight counts bothoriginal/flexibleregex as1, reducing evidence for a generallywrongregex but not proving livepostauth readiness.",
+      "actual_failure_proven": false
+    },
+    {
+      "risk": "Mistaking paused seek semantics for failure",
+      "source": "ListenerExperienceV2.jsx:121-133,156-186",
+      "explanation": "Paused chapterclick only queues target and changes visible timeline. Native currentTime/data-segment-id legitimately remain restoredlastsegment. NextPlay awaitsnormalrenewal before switchingsegment; loadedmetadata applies pendingoffset once readyState>=1 then requestsplayback. Requiring nativezero immediately afterpausedchapterclick is incorrect.",
+      "actual_failure_proven": false
+    },
+    {
+      "risk": "Treating click or play event as active playback proof",
+      "source": "ListenerExperienceV2.jsx:156-186,237; ListenerExperienceV2Route.jsx:178-198",
+      "explanation": "Play click can await renewal and metadata. Native play event changes icon/state; native playing event reports active state to route. Wait for measurable group01 progression and actualplaying, capture renewal+package errors withoutassuming start.",
+      "actual_failure_proven": false
+    },
+    {
+      "risk": "Late observer installation or cleanup before evidence persistence",
+      "source": "SELFISH-CORRECTIVE-ACCEPTANCE-RESULT.json and parent reported closebeforepersist",
+      "explanation": "Empty observations and generic error cannot locate failedstage or prove whether normalstart succeeded. A future driver should attach redacted request/lifecycle observers before authorize and persist lastphase+safeexception+tape before tabcleanup, with safetyclose in guaranteedfinally. This is an instrumentation correction, not authority for anotherstart.",
+      "actual_failure_proven": false
+    }
+  ],
+  "corrective_preflight_only": [
+    "Privately identify exactoriginal driver and locally validate syntax/import/tool APIs and locator method support without opening a page or starting session. No unavailabledependency assumed installed.",
+    "Define explicit stage checkpoints: beforeauthorize; authorizeclickstarted; normalstartstatus; manifestverified; chaptervisible+enabled; pausedtimelinezero; singlePlayclick; normalrenewalstatus; group01metadata; firstplaying+progress; cleanup/endobserved.",
+    "If future action is authorized, use ordinary UI exactexisting Play aria-label and chapterregex including optionalduration; wait for visible+enabled uniquecontrols and authorizingstate resolution, not count alone. Do not demand nativezero beforePlay.",
+    "Bound readiness waits within the same existingoverall deadline; ontimeout stop only ownedcontext, save redactederror/tape and reconcileunknownwrite read-only. Never reuseconsumedintent, repeatAuthorize, clearlocalStorage, forgeevents, alterbookmarks or inferzerocharge meansallcasespassed."
+  ],
+  "cannot_prove": [
+    "Whether corrective start-session request reachedserver or createdlease",
+    "Which automationline/locator/readinessassertion failed",
+    "Whether invalidlocator, networkdelay, manifestrejection, autoplayerror, sourcechange or appbug caused4.345s exit",
+    "Terminalsettlement from UI result alone; later whole-seconddelta0 is limited accountingobservation",
+    "Real playback/naturalness/content/billingacceptance from3isolatedDOMtests or missingobservations"
+  ],
+  "authority": "No new start, transfer, debit, grant, synthesis, allocation or review request authorized by this report."
+}

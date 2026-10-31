@@ -3,7 +3,7 @@
   "title": "The Selfish Giant",
   "book_id": "controlled-the-selfish-giant",
   "url": "https://theearnalism.com/book/the-selfish-giant",
-  "stage": "FRESH_PUBLIC_CARD_BOOK_LISTENER_VERIFIED_PROTECTED_ACCEPTANCE_PENDING",
+  "stage": "BLOCKED_CURRENT_RUNTIME_ACCEPTANCE_INCOMPLETE",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -83,14 +83,24 @@
     "new_paid_playback_spend_usd": 0,
     "production_estimate_usd": null,
     "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
-    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET"
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "protected_acceptance": {
+      "whole_reading_pass_seconds_debited": 7,
+      "matched_own_ledger": true,
+      "unrelated_account_activity_excluded": true,
+      "monetary_value_usd": null,
+      "cash_purchase": false,
+      "fractional_usage_carry": "NOT_OBSERVED"
+    }
   },
   "blockers": [
     {
-      "code": "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED",
-      "evidence": "acceptance-source-comparison.json",
-      "detail": "Exact accepted-source tree comparison found changes in backend/server.py, backend/reading_pass_service.py and frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx. Unchanged package bytes alone cannot qualify this changed path. Historical real playback remains valid historical evidence.",
-      "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
+      "code": "ACTUAL_ACTIVE_SEEK_AND_NATURAL_INTERNAL_TRANSITION_UNVERIFIED",
+      "action": "Current protected media1x delivery observed, but the initial Play was still awaiting renewal when the controller advanced. Actual active-to-active seek and naturalGroup01→02 transition are not proven. Use the latency-aware qualified controller and correct actual source/native-playing readiness; no product patch or new narration justified by these observations."
+    },
+    {
+      "code": "LATEST_OWN_NORMAL_SESSION_TERMINAL_ACK_UNVERIFIED",
+      "action": "Own EndPOST sent and own tab closed, but End response was not captured. Matched own debit4 proves consumption only, not terminal status. Preserve the earlier same-runtime final-native End200 proof at1.5x in its limited scope; do not substitute it for the latest session terminal receipt."
     }
   ],
   "language": "en",
@@ -163,6 +173,16 @@
     "maximum_existing_credit_seconds": 120,
     "purchase": false,
     "shared_release_must_finish_first": true,
-    "status": "APPROVED_NOT_EXECUTED_IN_THIS_PREPARATION"
+    "status": "EXECUTED_BOUNDED_FOLLOWUP_COMPLETE_LIVE_GATES_UNVERIFIED",
+    "owner_attempt_count_limit": "NOT_SPECIFIED_NATIVE_OWNER_CAP_IS_CUMULATIVE_CREDIT",
+    "internal_attempt_limit": 4,
+    "actual_own_whole_seconds_debited": 7
+  },
+  "dedicated_runtime_followup": {
+    "summary": "parallel-batch-20261101/selfish-runtime/FINAL-STATUS.json",
+    "matrix": "parallel-batch-20261101/selfish-runtime/SELFISH-CONDENSED-FINAL-TITLE-MATRIX.json",
+    "new_publication": false,
+    "public_available": true,
+    "verified_live": false
   }
 }

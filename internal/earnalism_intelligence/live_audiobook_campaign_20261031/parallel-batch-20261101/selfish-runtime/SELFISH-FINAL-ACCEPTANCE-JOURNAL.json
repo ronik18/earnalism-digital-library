@@ -1,0 +1,2611 @@
+{
+  "schema": "earnalism.selfish.final-normal-check.v1",
+  "status": "BLOCKED_FIRM_FINAL_AUTOMATION_LIMIT_SCOPED_RUNTIME_ACCEPTANCE_INCOMPLETE",
+  "ownerMaximumCumulativeCreditSeconds": 120,
+  "internalMaximumTotalStarts": 3,
+  "priorStartsKnownOrUncertain": 2,
+  "priorWholeSecondCreditDelta": 0,
+  "ordinaryCleanupReservationSeconds": 20,
+  "maximumLiveLeaseSeconds": 20,
+  "safetyCloseWallSeconds": 70,
+  "stage": "network:after-owned-session-stop",
+  "stages": [
+    {
+      "label": "preauth-authorize:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:35:58.130Z",
+      "wallSeconds": 0
+    },
+    {
+      "label": "preauth-authorize:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:00.424Z",
+      "wallSeconds": 0
+    },
+    {
+      "label": "Authorize Listening:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:00.437Z",
+      "wallSeconds": 0
+    },
+    {
+      "label": "Authorize Listening:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:00.482Z",
+      "wallSeconds": 0.045
+    },
+    {
+      "label": "Authorize Listening:native-click-index-31",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:00.487Z",
+      "wallSeconds": 0.05
+    },
+    {
+      "label": "Authorize Listening:native-click-index-31",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:00.597Z",
+      "wallSeconds": 0.16
+    },
+    {
+      "label": "Authorize Listening:post-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:00.613Z",
+      "wallSeconds": 0.176
+    },
+    {
+      "label": "Authorize Listening:post-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:00.797Z",
+      "wallSeconds": 0.36
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:00.803Z",
+      "wallSeconds": 0.366
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:00.809Z",
+      "wallSeconds": 0.372
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:00.814Z",
+      "wallSeconds": 0.377
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.067Z",
+      "wallSeconds": 0.63
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.067Z",
+      "wallSeconds": 0.63
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.075Z",
+      "wallSeconds": 0.638
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.083Z",
+      "wallSeconds": 0.646
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.335Z",
+      "wallSeconds": 0.898
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.335Z",
+      "wallSeconds": 0.898
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.345Z",
+      "wallSeconds": 0.908
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.353Z",
+      "wallSeconds": 0.916
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.605Z",
+      "wallSeconds": 1.168
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.606Z",
+      "wallSeconds": 1.169
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.614Z",
+      "wallSeconds": 1.177
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.621Z",
+      "wallSeconds": 1.184
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.873Z",
+      "wallSeconds": 1.436
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.873Z",
+      "wallSeconds": 1.436
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:01.881Z",
+      "wallSeconds": 1.444
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:01.887Z",
+      "wallSeconds": 1.45
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.139Z",
+      "wallSeconds": 1.702
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.140Z",
+      "wallSeconds": 1.703
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.147Z",
+      "wallSeconds": 1.71
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.154Z",
+      "wallSeconds": 1.717
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.404Z",
+      "wallSeconds": 1.967
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.405Z",
+      "wallSeconds": 1.968
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.411Z",
+      "wallSeconds": 1.974
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.416Z",
+      "wallSeconds": 1.979
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.669Z",
+      "wallSeconds": 2.232
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.669Z",
+      "wallSeconds": 2.232
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.678Z",
+      "wallSeconds": 2.241
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.684Z",
+      "wallSeconds": 2.247
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.936Z",
+      "wallSeconds": 2.499
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.937Z",
+      "wallSeconds": 2.5
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:02.945Z",
+      "wallSeconds": 2.508
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:02.953Z",
+      "wallSeconds": 2.516
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.203Z",
+      "wallSeconds": 2.766
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.204Z",
+      "wallSeconds": 2.767
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.211Z",
+      "wallSeconds": 2.774
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.218Z",
+      "wallSeconds": 2.781
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.470Z",
+      "wallSeconds": 3.033
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.470Z",
+      "wallSeconds": 3.033
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.478Z",
+      "wallSeconds": 3.041
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.484Z",
+      "wallSeconds": 3.047
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.737Z",
+      "wallSeconds": 3.3
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.737Z",
+      "wallSeconds": 3.3
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:03.745Z",
+      "wallSeconds": 3.308
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:03.751Z",
+      "wallSeconds": 3.314
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.003Z",
+      "wallSeconds": 3.566
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.003Z",
+      "wallSeconds": 3.566
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.010Z",
+      "wallSeconds": 3.573
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.017Z",
+      "wallSeconds": 3.58
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.269Z",
+      "wallSeconds": 3.832
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.270Z",
+      "wallSeconds": 3.833
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.278Z",
+      "wallSeconds": 3.841
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.285Z",
+      "wallSeconds": 3.848
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.537Z",
+      "wallSeconds": 4.1
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.538Z",
+      "wallSeconds": 4.101
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.545Z",
+      "wallSeconds": 4.108
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.560Z",
+      "wallSeconds": 4.123
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.812Z",
+      "wallSeconds": 4.375
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.813Z",
+      "wallSeconds": 4.376
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:04.820Z",
+      "wallSeconds": 4.383
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:04.826Z",
+      "wallSeconds": 4.389
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.079Z",
+      "wallSeconds": 4.642
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.079Z",
+      "wallSeconds": 4.642
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.086Z",
+      "wallSeconds": 4.649
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.093Z",
+      "wallSeconds": 4.656
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.345Z",
+      "wallSeconds": 4.908
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.346Z",
+      "wallSeconds": 4.909
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.353Z",
+      "wallSeconds": 4.916
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.370Z",
+      "wallSeconds": 4.933
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.623Z",
+      "wallSeconds": 5.186
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.623Z",
+      "wallSeconds": 5.186
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.629Z",
+      "wallSeconds": 5.192
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.636Z",
+      "wallSeconds": 5.199
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.888Z",
+      "wallSeconds": 5.451
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.889Z",
+      "wallSeconds": 5.452
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:05.896Z",
+      "wallSeconds": 5.459
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:05.903Z",
+      "wallSeconds": 5.466
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.155Z",
+      "wallSeconds": 5.718
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.156Z",
+      "wallSeconds": 5.719
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.164Z",
+      "wallSeconds": 5.727
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.172Z",
+      "wallSeconds": 5.735
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.424Z",
+      "wallSeconds": 5.987
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.424Z",
+      "wallSeconds": 5.987
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.432Z",
+      "wallSeconds": 5.995
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.440Z",
+      "wallSeconds": 6.003
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.692Z",
+      "wallSeconds": 6.255
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.692Z",
+      "wallSeconds": 6.255
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.699Z",
+      "wallSeconds": 6.262
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.705Z",
+      "wallSeconds": 6.268
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.957Z",
+      "wallSeconds": 6.52
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.958Z",
+      "wallSeconds": 6.521
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:06.965Z",
+      "wallSeconds": 6.528
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:06.974Z",
+      "wallSeconds": 6.537
+    },
+    {
+      "label": "play-after-manifest:readiness-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.226Z",
+      "wallSeconds": 6.789
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.227Z",
+      "wallSeconds": 6.79
+    },
+    {
+      "label": "play-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.235Z",
+      "wallSeconds": 6.799
+    },
+    {
+      "label": "chapter-after-manifest:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.245Z",
+      "wallSeconds": 6.808
+    },
+    {
+      "label": "chapter-after-manifest:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.251Z",
+      "wallSeconds": 6.814
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.257Z",
+      "wallSeconds": 6.82
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.277Z",
+      "wallSeconds": 6.84
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.285Z",
+      "wallSeconds": 6.848
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.488Z",
+      "wallSeconds": 7.051
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.488Z",
+      "wallSeconds": 7.051
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.499Z",
+      "wallSeconds": 7.062
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.508Z",
+      "wallSeconds": 7.071
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.709Z",
+      "wallSeconds": 7.272
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.710Z",
+      "wallSeconds": 7.273
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.720Z",
+      "wallSeconds": 7.283
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.727Z",
+      "wallSeconds": 7.29
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.928Z",
+      "wallSeconds": 7.491
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.928Z",
+      "wallSeconds": 7.491
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:07.942Z",
+      "wallSeconds": 7.505
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:07.951Z",
+      "wallSeconds": 7.514
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.154Z",
+      "wallSeconds": 7.717
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.154Z",
+      "wallSeconds": 7.717
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.165Z",
+      "wallSeconds": 7.728
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.174Z",
+      "wallSeconds": 7.737
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.376Z",
+      "wallSeconds": 7.939
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.377Z",
+      "wallSeconds": 7.94
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.387Z",
+      "wallSeconds": 7.95
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.396Z",
+      "wallSeconds": 7.959
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.597Z",
+      "wallSeconds": 8.16
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.598Z",
+      "wallSeconds": 8.161
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.618Z",
+      "wallSeconds": 8.181
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.626Z",
+      "wallSeconds": 8.189
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.828Z",
+      "wallSeconds": 8.391
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.829Z",
+      "wallSeconds": 8.392
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:08.839Z",
+      "wallSeconds": 8.402
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:08.845Z",
+      "wallSeconds": 8.408
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.047Z",
+      "wallSeconds": 8.61
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.048Z",
+      "wallSeconds": 8.611
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.060Z",
+      "wallSeconds": 8.623
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.068Z",
+      "wallSeconds": 8.631
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.270Z",
+      "wallSeconds": 8.833
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.271Z",
+      "wallSeconds": 8.834
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.282Z",
+      "wallSeconds": 8.845
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.290Z",
+      "wallSeconds": 8.853
+    },
+    {
+      "label": "restored-metadata-ready:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.493Z",
+      "wallSeconds": 9.056
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.493Z",
+      "wallSeconds": 9.056
+    },
+    {
+      "label": "restored-metadata-ready:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.506Z",
+      "wallSeconds": 9.069
+    },
+    {
+      "label": "chapter-01-restart:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.514Z",
+      "wallSeconds": 9.077
+    },
+    {
+      "label": "chapter-01-restart:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.558Z",
+      "wallSeconds": 9.121
+    },
+    {
+      "label": "chapter-01-restart:native-click-index-50",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.565Z",
+      "wallSeconds": 9.128
+    },
+    {
+      "label": "chapter-01-restart:native-click-index-50",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.580Z",
+      "wallSeconds": 9.143
+    },
+    {
+      "label": "chapter-01-restart:post-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.588Z",
+      "wallSeconds": 9.151
+    },
+    {
+      "label": "chapter-01-restart:post-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.785Z",
+      "wallSeconds": 9.348
+    },
+    {
+      "label": "chapter-visible-zero",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.792Z",
+      "wallSeconds": 9.355
+    },
+    {
+      "label": "chapter-visible-zero",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.811Z",
+      "wallSeconds": 9.374
+    },
+    {
+      "label": "Play approved audiobook:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.820Z",
+      "wallSeconds": 9.383
+    },
+    {
+      "label": "Play approved audiobook:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.856Z",
+      "wallSeconds": 9.419
+    },
+    {
+      "label": "Play approved audiobook:native-click-index-33",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.861Z",
+      "wallSeconds": 9.424
+    },
+    {
+      "label": "Play approved audiobook:native-click-index-33",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:09.878Z",
+      "wallSeconds": 9.441
+    },
+    {
+      "label": "Play approved audiobook:post-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:09.884Z",
+      "wallSeconds": 9.447
+    },
+    {
+      "label": "Play approved audiobook:post-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.066Z",
+      "wallSeconds": 9.629
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.073Z",
+      "wallSeconds": 9.636
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.081Z",
+      "wallSeconds": 9.644
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.087Z",
+      "wallSeconds": 9.65
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.289Z",
+      "wallSeconds": 9.852
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.290Z",
+      "wallSeconds": 9.853
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.301Z",
+      "wallSeconds": 9.864
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.315Z",
+      "wallSeconds": 9.878
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.517Z",
+      "wallSeconds": 10.08
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.518Z",
+      "wallSeconds": 10.081
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.530Z",
+      "wallSeconds": 10.093
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.537Z",
+      "wallSeconds": 10.1
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.739Z",
+      "wallSeconds": 10.302
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.740Z",
+      "wallSeconds": 10.303
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.751Z",
+      "wallSeconds": 10.314
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.759Z",
+      "wallSeconds": 10.322
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.961Z",
+      "wallSeconds": 10.524
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.962Z",
+      "wallSeconds": 10.525
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:10.973Z",
+      "wallSeconds": 10.536
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:10.981Z",
+      "wallSeconds": 10.544
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.183Z",
+      "wallSeconds": 10.746
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.183Z",
+      "wallSeconds": 10.746
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.193Z",
+      "wallSeconds": 10.756
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.201Z",
+      "wallSeconds": 10.764
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.404Z",
+      "wallSeconds": 10.967
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.404Z",
+      "wallSeconds": 10.967
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.416Z",
+      "wallSeconds": 10.979
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.432Z",
+      "wallSeconds": 10.995
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.634Z",
+      "wallSeconds": 11.197
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.634Z",
+      "wallSeconds": 11.197
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.647Z",
+      "wallSeconds": 11.21
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.656Z",
+      "wallSeconds": 11.219
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.858Z",
+      "wallSeconds": 11.421
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.859Z",
+      "wallSeconds": 11.422
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:11.871Z",
+      "wallSeconds": 11.434
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:11.880Z",
+      "wallSeconds": 11.443
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.081Z",
+      "wallSeconds": 11.644
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.081Z",
+      "wallSeconds": 11.644
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.092Z",
+      "wallSeconds": 11.655
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.099Z",
+      "wallSeconds": 11.662
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.300Z",
+      "wallSeconds": 11.863
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.301Z",
+      "wallSeconds": 11.864
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.312Z",
+      "wallSeconds": 11.875
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.320Z",
+      "wallSeconds": 11.883
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.522Z",
+      "wallSeconds": 12.085
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.523Z",
+      "wallSeconds": 12.086
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.534Z",
+      "wallSeconds": 12.097
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.542Z",
+      "wallSeconds": 12.105
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.745Z",
+      "wallSeconds": 12.308
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.745Z",
+      "wallSeconds": 12.308
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.756Z",
+      "wallSeconds": 12.319
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.764Z",
+      "wallSeconds": 12.327
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.966Z",
+      "wallSeconds": 12.529
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.967Z",
+      "wallSeconds": 12.53
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:12.978Z",
+      "wallSeconds": 12.541
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:12.985Z",
+      "wallSeconds": 12.548
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.188Z",
+      "wallSeconds": 12.751
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.189Z",
+      "wallSeconds": 12.752
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.208Z",
+      "wallSeconds": 12.771
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.228Z",
+      "wallSeconds": 12.791
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.429Z",
+      "wallSeconds": 12.992
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.430Z",
+      "wallSeconds": 12.993
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.444Z",
+      "wallSeconds": 13.007
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.452Z",
+      "wallSeconds": 13.015
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.654Z",
+      "wallSeconds": 13.217
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.654Z",
+      "wallSeconds": 13.218
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.665Z",
+      "wallSeconds": 13.228
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.673Z",
+      "wallSeconds": 13.236
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.876Z",
+      "wallSeconds": 13.439
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.877Z",
+      "wallSeconds": 13.44
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:13.887Z",
+      "wallSeconds": 13.45
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:13.895Z",
+      "wallSeconds": 13.458
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.095Z",
+      "wallSeconds": 13.658
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.096Z",
+      "wallSeconds": 13.659
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.120Z",
+      "wallSeconds": 13.683
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.129Z",
+      "wallSeconds": 13.692
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.332Z",
+      "wallSeconds": 13.895
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.332Z",
+      "wallSeconds": 13.895
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.347Z",
+      "wallSeconds": 13.91
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.356Z",
+      "wallSeconds": 13.919
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.559Z",
+      "wallSeconds": 14.122
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.559Z",
+      "wallSeconds": 14.122
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.574Z",
+      "wallSeconds": 14.137
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.584Z",
+      "wallSeconds": 14.147
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.786Z",
+      "wallSeconds": 14.349
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.787Z",
+      "wallSeconds": 14.35
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:14.798Z",
+      "wallSeconds": 14.361
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:14.807Z",
+      "wallSeconds": 14.37
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.010Z",
+      "wallSeconds": 14.573
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.010Z",
+      "wallSeconds": 14.573
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.025Z",
+      "wallSeconds": 14.588
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.034Z",
+      "wallSeconds": 14.597
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.236Z",
+      "wallSeconds": 14.799
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.237Z",
+      "wallSeconds": 14.8
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.249Z",
+      "wallSeconds": 14.812
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.256Z",
+      "wallSeconds": 14.819
+    },
+    {
+      "label": "first-active-group01:metadata-poll-wait",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.458Z",
+      "wallSeconds": 15.021
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.460Z",
+      "wallSeconds": 15.023
+    },
+    {
+      "label": "first-active-group01:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:15.525Z",
+      "wallSeconds": 15.088
+    },
+    {
+      "label": "first-active-6s",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:15.534Z",
+      "wallSeconds": 15.097
+    },
+    {
+      "label": "first-active-6s",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.536Z",
+      "wallSeconds": 21.099
+    },
+    {
+      "label": "initial-playing:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.558Z",
+      "wallSeconds": 21.121
+    },
+    {
+      "label": "initial-playing:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.569Z",
+      "wallSeconds": 21.132
+    },
+    {
+      "label": "Pause approved audiobook:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.579Z",
+      "wallSeconds": 21.142
+    },
+    {
+      "label": "Pause approved audiobook:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.627Z",
+      "wallSeconds": 21.19
+    },
+    {
+      "label": "Pause approved audiobook:native-click-index-33",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.634Z",
+      "wallSeconds": 21.197
+    },
+    {
+      "label": "Pause approved audiobook:native-click-index-33",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.646Z",
+      "wallSeconds": 21.21
+    },
+    {
+      "label": "Pause approved audiobook:post-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.657Z",
+      "wallSeconds": 21.22
+    },
+    {
+      "label": "Pause approved audiobook:post-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.840Z",
+      "wallSeconds": 21.403
+    },
+    {
+      "label": "pause-1-start:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.847Z",
+      "wallSeconds": 21.41
+    },
+    {
+      "label": "pause-1-start:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:21.857Z",
+      "wallSeconds": 21.42
+    },
+    {
+      "label": "paused-12s",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:21.865Z",
+      "wallSeconds": 21.428
+    },
+    {
+      "label": "paused-12s",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:33.868Z",
+      "wallSeconds": 33.431
+    },
+    {
+      "label": "pause-1-end:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:33.903Z",
+      "wallSeconds": 33.466
+    },
+    {
+      "label": "pause-1-end:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:33.912Z",
+      "wallSeconds": 33.475
+    },
+    {
+      "label": "Play approved audiobook:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:33.922Z",
+      "wallSeconds": 33.485
+    },
+    {
+      "label": "Play approved audiobook:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:33.962Z",
+      "wallSeconds": 33.525
+    },
+    {
+      "label": "Play approved audiobook:native-click-index-33",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:33.969Z",
+      "wallSeconds": 33.532
+    },
+    {
+      "label": "Play approved audiobook:native-click-index-33",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:33.985Z",
+      "wallSeconds": 33.548
+    },
+    {
+      "label": "Play approved audiobook:post-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:33.992Z",
+      "wallSeconds": 33.555
+    },
+    {
+      "label": "Play approved audiobook:post-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:34.176Z",
+      "wallSeconds": 33.739
+    },
+    {
+      "label": "resumed-4s",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:34.184Z",
+      "wallSeconds": 33.747
+    },
+    {
+      "label": "resumed-4s",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:38.187Z",
+      "wallSeconds": 37.75
+    },
+    {
+      "label": "resumed:DOM",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:38.205Z",
+      "wallSeconds": 37.768
+    },
+    {
+      "label": "resumed:DOM",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:38.213Z",
+      "wallSeconds": 37.776
+    },
+    {
+      "label": "seek:isEnabled",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:38.219Z",
+      "wallSeconds": 37.782
+    },
+    {
+      "label": "seek:isEnabled",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:38.224Z",
+      "wallSeconds": 37.787
+    },
+    {
+      "label": "seek-60.96:fresh-AX",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:38.228Z",
+      "wallSeconds": 37.791
+    },
+    {
+      "label": "seek-60.96:fresh-AX",
+      "status": "AFTER",
+      "at": "2026-10-31T19:36:38.262Z",
+      "wallSeconds": 37.825
+    },
+    {
+      "label": "seek-60.96:native-setValue",
+      "status": "BEFORE",
+      "at": "2026-10-31T19:36:38.267Z",
+      "wallSeconds": 37.83
+    }
+  ],
+  "requests": [
+    {
+      "requestId": "26791.138",
+      "path": "/api/reading-pass/sessions/start",
+      "method": "POST",
+      "timestamp": 205038.332953,
+      "wallTime": 1793475360.593653
+    },
+    {
+      "requestId": "26791.141",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/manifest",
+      "method": "GET",
+      "timestamp": 205043.031035,
+      "wallTime": 1793475365.292726
+    },
+    {
+      "requestId": "26791.149",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "method": "GET",
+      "timestamp": 205044.818488,
+      "wallTime": 1793475367.080477
+    },
+    {
+      "requestId": "26791.150",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "method": "GET",
+      "timestamp": 205044.852068,
+      "wallTime": 1793475367.114061
+    },
+    {
+      "requestId": "26791.151",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "method": "GET",
+      "timestamp": 205047.135408,
+      "wallTime": 1793475369.397749
+    },
+    {
+      "requestId": "26791.152",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205047.614356,
+      "wallTime": 1793475369.876838,
+      "active": false,
+      "playbackState": "buffering",
+      "sequence": 1
+    },
+    {
+      "requestId": "26791.153",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "method": "GET",
+      "timestamp": 205049.107002,
+      "wallTime": 1793475371.369605
+    },
+    {
+      "requestId": "26791.154",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "method": "GET",
+      "timestamp": 205050.935259,
+      "wallTime": 1793475373.198078
+    },
+    {
+      "requestId": "26791.155",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205053.03384,
+      "wallTime": 1793475375.296898,
+      "active": false,
+      "playbackState": "buffering",
+      "sequence": 2
+    },
+    {
+      "requestId": "26791.156",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "method": "GET",
+      "timestamp": 205054.222679,
+      "wallTime": 1793475376.485833
+    },
+    {
+      "requestId": "26791.157",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205056.632583,
+      "wallTime": 1793475378.896052,
+      "active": true,
+      "playbackState": "playing",
+      "sequence": 3
+    },
+    {
+      "requestId": "26791.158",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205060.130559,
+      "wallTime": 1793475382.394183,
+      "active": false,
+      "playbackState": "paused",
+      "sequence": 4
+    },
+    {
+      "requestId": "26791.159",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205065.000178,
+      "wallTime": 1793475387.264078,
+      "active": false,
+      "playbackState": "paused",
+      "sequence": 5
+    },
+    {
+      "requestId": "26791.160",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205071.720053,
+      "wallTime": 1793475393.98423,
+      "active": false,
+      "playbackState": "buffering",
+      "sequence": 6
+    },
+    {
+      "requestId": "26791.161",
+      "path": "/api/reading-pass/leases/renew",
+      "method": "POST",
+      "timestamp": 205075.062356,
+      "wallTime": 1793475397.326655,
+      "active": false,
+      "playbackState": "buffering",
+      "sequence": 7
+    },
+    {
+      "requestId": "26791.162",
+      "path": "/api/reading-pass/sessions/end",
+      "method": "POST",
+      "timestamp": 205076.063555,
+      "wallTime": 1793475398.327866
+    }
+  ],
+  "responses": [
+    {
+      "requestId": "26791.138",
+      "path": "/api/reading-pass/sessions/start",
+      "status": 200,
+      "timestamp": 205043.022436,
+      "deductedSeconds": 0
+    },
+    {
+      "requestId": "26791.141",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/manifest",
+      "status": 200,
+      "timestamp": 205044.780928
+    },
+    {
+      "requestId": "26791.150",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "status": 206,
+      "timestamp": 205046.942685
+    },
+    {
+      "requestId": "26791.151",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "status": 206,
+      "timestamp": 205048.91874
+    },
+    {
+      "requestId": "26791.153",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-06",
+      "status": 206,
+      "timestamp": 205050.885665
+    },
+    {
+      "requestId": "26791.152",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205050.930205,
+      "deductedSeconds": 0
+    },
+    {
+      "requestId": "26791.154",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "status": 206,
+      "timestamp": 205052.752979
+    },
+    {
+      "requestId": "26791.156",
+      "path": "/api/reader/book/the-selfish-giant/audiobook/packages/sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211/segments/group-01",
+      "status": 206,
+      "timestamp": 205056.085652
+    },
+    {
+      "requestId": "26791.155",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205056.631291,
+      "deductedSeconds": 0
+    },
+    {
+      "requestId": "26791.157",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205060.12927,
+      "deductedSeconds": 0
+    },
+    {
+      "requestId": "26791.158",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205064.998452,
+      "deductedSeconds": 3
+    },
+    {
+      "requestId": "26791.159",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205068.319088,
+      "deductedSeconds": 0
+    },
+    {
+      "requestId": "26791.160",
+      "path": "/api/reading-pass/leases/renew",
+      "status": 200,
+      "timestamp": 205075.060785,
+      "deductedSeconds": 0
+    }
+  ],
+  "observations": [
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 6.848,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 7.07,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 7.29,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 7.514,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 7.736,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 7.959,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 8.189,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 8.407,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 8.63,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 8.853,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "restored-metadata-ready",
+      "wallSeconds": 9.077,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 9.649,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 9.877,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 10.099,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 10.322,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 10.544,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 10.764,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 47.92,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 1,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 10.995,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 11.218,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 11.443,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 11.661,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 11.882,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 12.105,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 12.327,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 12.548,
+      "audio": {
+        "currentTime": 47.87,
+        "duration": 48.00024,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-06"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 12.79,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 13.015,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 13.236,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 13.458,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 13.692,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 13.919,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 14.146,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 14.37,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 14.597,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 14.819,
+      "audio": {
+        "currentTime": 0,
+        "duration": null,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1,
+        "readyState": 0,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "first-active-group01",
+      "wallSeconds": 15.097,
+      "audio": {
+        "currentTime": 0.106683,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": false,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "initial-playing",
+      "wallSeconds": 21.141,
+      "audio": {
+        "currentTime": 9.179613,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": false,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "pause-1-start",
+      "wallSeconds": 21.428,
+      "audio": {
+        "currentTime": 9.285501,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "pause-1-end",
+      "wallSeconds": 33.484,
+      "audio": {
+        "currentTime": 9.285501,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": true,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    },
+    {
+      "label": "resumed",
+      "wallSeconds": 37.781,
+      "audio": {
+        "currentTime": 10.560206,
+        "duration": 58.96,
+        "ended": false,
+        "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "paused": false,
+        "rate": 1.5,
+        "readyState": 4,
+        "segment": "group-01"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "stage": "play-after-manifest:isEnabled",
+      "type": "NETWORK_LOADING_FAILED",
+      "error": "net::ERR_ABORTED",
+      "requestId": "26791.149"
+    },
+    {
+      "stage": "restored-metadata-ready:DOM",
+      "type": "NETWORK_LOADING_FAILED",
+      "error": "net::ERR_ABORTED",
+      "requestId": "26791.150"
+    },
+    {
+      "stage": "first-active-group01:DOM",
+      "type": "NETWORK_LOADING_FAILED",
+      "error": "net::ERR_ABORTED",
+      "requestId": "26791.153"
+    },
+    {
+      "stage": "first-active-group01:DOM",
+      "type": "NETWORK_LOADING_FAILED",
+      "error": "net::ERR_ABORTED",
+      "requestId": "26791.154"
+    },
+    {
+      "stage": "seek-60.96:native-setValue",
+      "type": "Error",
+      "error": "Error: Input rejected value \"60.96\""
+    },
+    {
+      "stage": "seek-60.96:native-setValue",
+      "type": "Error",
+      "error": "Error: Input rejected value \"60.96\""
+    }
+  ],
+  "authorizeReservations": 1,
+  "actualNormalStartRequestsObserved": 1,
+  "normalStartHttp": 200,
+  "normalEndConfirmed": false,
+  "ownSessionBinding": "e869c3f7a0da2114e3d6466c2042ae28eb60dec6c7986e41a5d5ea47e7d18f15",
+  "noFurtherAutomaticStart": true,
+  "rootGo": true,
+  "rawIdentityAbsoluteBalanceOrCredentialsSaved": false,
+  "updatedAt": "2026-10-31T19:36:38.519Z",
+  "elapsedWallSeconds": 38.082,
+  "authorizeReservedAt": "2026-10-31T19:36:00.437Z",
+  "visibleChapterStartZero": true,
+  "closedWallSeconds": 38.082,
+  "finalNormalStartCount": 1,
+  "finalNoFurtherAutomaticStart": true,
+  "postflight_actual_cumulative_credit_debit_seconds": 3,
+  "postflight_own_session_ledger_debit_seconds": 3,
+  "adjudication_record": "SELFISH-FINAL-ADJUDICATION.json",
+  "account_window_delta_omitted": "Use hashed-session matching ledger totals, not an account-wide delta containing other activity."
+}

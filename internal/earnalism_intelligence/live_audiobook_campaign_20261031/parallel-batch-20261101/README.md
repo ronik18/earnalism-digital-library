@@ -6,3 +6,7 @@ Ghost: exact historical full master recovered; whitespace-equivalent current sou
 
 Next exact continuation prompt:
 “Resume the dedicated Selfish Giant worker from SELFISH-PROTECTED-ACCEPTANCE-PLAN.json and the owner-confirmed account. Wait for the separately owned Reader frontend release to become quiet, rebind actual served sources/package, ensure no conflicting session, perform one normal-account acceptance (~31active seconds, maximum120existing credit seconds, no purchase), preserve media/rights/PR600 and other workers. Record real observed billing/playback and LIVE only if every required gate passes; otherwise precise BLOCKED. No new synthesis/allocation or repeated unchanged full tests.”
+
+## Dedicated Selfish runtime result
+
+Public available; full current runtime verification BLOCKED. Four normalstarts known/uncertain retained; matched own-session ledger7wholecreditseconds, no purchase. The app and healthy approved media were not modified. Controller mistakes are not evidence of media failure. Current1x delivery/pause facts remain scoped; actualactive-to-active seek/naturalintermediate transition and latestterminalACK are unverified. See selfish-runtime/FINAL-STATUS.json and10-case offline helper candidate; no furtherautomaticstart.
