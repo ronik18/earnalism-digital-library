@@ -1,0 +1,132 @@
+{
+  "status": "PRIVATE_LOCAL_AUDIT_COPY_NOT_RELEASE_PRIMARY_OR_DR",
+  "files": [
+    {
+      "name": "SELFISH-PROTECTED-ACCEPTANCE-INTENT.json",
+      "sha256": "2ac3a06ab53dc964587a3ddd3a7771e2473a9a51f838cfccdaf176330c60739b",
+      "bytes": 4400,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-PROTECTED-ACCEPTANCE-INTENT.json"
+    },
+    {
+      "name": "SELFISH-BOUNDED-ACCEPTANCE-RESULT.json",
+      "sha256": "9513547f6f3abaf3fd9b1c589b41a70cbb317ea47197c9706d50a3948b3c2714",
+      "bytes": 4218,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-BOUNDED-ACCEPTANCE-RESULT.json"
+    },
+    {
+      "name": "SELFISH-CORRECTED-CHAPTER-START-PROCEDURE.json",
+      "sha256": "3bf90771a7b63770dca9259470d372b8fb52b9575bd28538029f2f9791914018",
+      "bytes": 2799,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CORRECTED-CHAPTER-START-PROCEDURE.json"
+    },
+    {
+      "name": "SELFISH-CORRECTIVE-ACCEPTANCE-INTENT.json",
+      "sha256": "d04796270b0dac1e7b59f273cd6f83d00502bdee78cecb1c5c25596c0d73c445",
+      "bytes": 2792,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CORRECTIVE-ACCEPTANCE-INTENT.json"
+    },
+    {
+      "name": "SELFISH-CORRECTIVE-ACCEPTANCE-RESULT.json",
+      "sha256": "103b686293638828d2ec9e507b4c8ae15df976df5f859706633e9604e1c540e2",
+      "bytes": 1278,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CORRECTIVE-ACCEPTANCE-RESULT.json"
+    },
+    {
+      "name": "CORRECTIVE-DRIVER-EXECUTED.js",
+      "sha256": "266ed2138046fa949435b495e40aedbf589bcb22fd084b95867948e4f3dccfe2",
+      "bytes": 6206,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/CORRECTIVE-DRIVER-EXECUTED.js"
+    },
+    {
+      "name": "CORRECTIVE-DIAGNOSTIC-FIX.md",
+      "sha256": "cc834cf258dd6b1dac23814f3a186b9969d4349c7b14eeedfff1602a3492d99f",
+      "bytes": 3429,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/CORRECTIVE-DIAGNOSTIC-FIX.md"
+    },
+    {
+      "name": "SELFISH-FINAL-ACCEPTANCE-JOURNAL.json",
+      "sha256": "cfb62beeacf74109df92b97eaa3f4dd76fcca6d820c7beaedefbcd52a13a0bfc",
+      "bytes": 70467,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-FINAL-ACCEPTANCE-JOURNAL.json"
+    },
+    {
+      "name": "SELFISH-FINAL-READONLY-POSTFLIGHT.json",
+      "sha256": "6f00936693b217067e9bed63e7bfa5330ebd3268aaab4e4614c927faaab0ebe4",
+      "bytes": 942,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-FINAL-READONLY-POSTFLIGHT.json"
+    },
+    {
+      "name": "SELFISH-FINAL-ADJUDICATION.json",
+      "sha256": "a3195f9cb055d8f527bf06765eb6f020fa08d41aa8e6a33532b5da48d7bc0290",
+      "bytes": 5701,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-FINAL-ADJUDICATION.json"
+    },
+    {
+      "name": "SELFISH-REMAINING-ACCEPTANCE-JOURNAL.json",
+      "sha256": "7e51497a6957e69020ea78b0ca63c6d925732051f7af6e7a51c8ca2b8b39d4da",
+      "bytes": 75945,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-REMAINING-ACCEPTANCE-JOURNAL.json"
+    },
+    {
+      "name": "SELFISH-REMAINING-MATCHED-LEDGER-PROOF.json",
+      "sha256": "d7d302587a7508ea969bc26cec13a8aee0d0339e185c671061658a8c2595bfbd",
+      "bytes": 805,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-REMAINING-MATCHED-LEDGER-PROOF.json"
+    },
+    {
+      "name": "SELFISH-CONDENSED-FINAL-TITLE-MATRIX.json",
+      "sha256": "5179821b3ced499415aa259321d810fc898555f4157af5fd9398ec6ef62a3c43",
+      "bytes": 4443,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CONDENSED-FINAL-TITLE-MATRIX.json"
+    },
+    {
+      "name": "SELFISH-REMAINING-ACTUAL-INPUT-CONTRACT.json",
+      "sha256": "88209871fa7b838b99b8a57c8b8f948bc16bae03a7fff6d8b50265b7adfbd511",
+      "bytes": 298,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-REMAINING-ACTUAL-INPUT-CONTRACT.json"
+    },
+    {
+      "name": "availability-source-ref-comparison.json",
+      "sha256": "c06d8599fdcb3355a37b8dc4793a71c2dfa95bc1a393c637ae340e71f777e521",
+      "bytes": 4604,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/availability-source-ref-comparison.json"
+    },
+    {
+      "name": "SELFISH-NORMAL-START-ISOLATION-PROOF.json",
+      "sha256": "6604e370e11536ace7cd9fe22362cb637834c53e3c44df65cb38a4f3807fe8e6",
+      "bytes": 2995,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-NORMAL-START-ISOLATION-PROOF.json"
+    },
+    {
+      "name": "SELFISH-CONTROLLER-OFFLINE-RESULTS.json",
+      "sha256": "10bad57012c904660cfbabb18fdbbae18649d812377eb55d6c987b3c2cf779f6",
+      "bytes": 1152,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CONTROLLER-OFFLINE-RESULTS.json"
+    },
+    {
+      "name": "SELFISH-OFFLINE-CONTROLLER-HANDOFF.md",
+      "sha256": "d8cc5b8ad788c41d7d60227f4a4a45a85128ecb4586f5ace0f57e20ed05a0a9f",
+      "bytes": 1493,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-OFFLINE-CONTROLLER-HANDOFF.md"
+    },
+    {
+      "name": "SELFISH-NEXT-CONTROLLER-CANDIDATE.mjs",
+      "sha256": "862dbc056e39a7ef46f36cdb673b43a9a0ae881927cf2043928a33b9dd540941",
+      "bytes": 17895,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-NEXT-CONTROLLER-CANDIDATE.mjs"
+    },
+    {
+      "name": "SELFISH-CONTROLLER-READINESS.mjs",
+      "sha256": "385d4ed071c99d4e7b98625a8b120e4966462c3ab9bb3efee3edc3a532ea68c3",
+      "bytes": 1094,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CONTROLLER-READINESS.mjs"
+    },
+    {
+      "name": "SELFISH-CONTROLLER-OFFLINE-TEST.mjs",
+      "sha256": "a1fda2f7dfee4c4334c2d86b4a9c8f6510310f854621f1e9f6a8ef30042f01bf",
+      "bytes": 2932,
+      "private_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-runtime-audit/SELFISH-CONTROLLER-OFFLINE-TEST.mjs"
+    }
+  ],
+  "no_raw_customer_identity_or_balance_in_committed_evidence": true
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "path": "backend/server.py",
+    "accepted_source": "c3cfbdadf5ddb81b5d65ed2e15ffdb0238f96fd8",
+    "accepted_sha256": "ba9f2e5a0379b23a60bb5fff690cb9ddfced038539b9b2344f7a7d5e1bee45a8",
+    "diff_lines": 1071,
+    "comparison_source": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "comparison_sha256": "3c976134cd10d192f0f133a4be7630e105317ac298e4028eef539f440e2d7282",
+    "source_limitation": "9a1b is the retained provider-reported frontend source and prior repository comparison base. Backend live git_sha is null; these backend diffs do NOT prove deployed backend Git provenance."
+  },
+  {
+    "path": "backend/reading_pass_service.py",
+    "accepted_source": "c3cfbdadf5ddb81b5d65ed2e15ffdb0238f96fd8",
+    "accepted_sha256": "f28f6af29ee961dd7ed5a1590d31052245cae59868f4b77a54306a1fe5d4c4a8",
+    "diff_lines": 169,
+    "comparison_source": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "comparison_sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195",
+    "source_limitation": "9a1b is the retained provider-reported frontend source and prior repository comparison base. Backend live git_sha is null; these backend diffs do NOT prove deployed backend Git provenance."
+  },
+  {
+    "path": "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx",
+    "accepted_source": "f13646d94da652d64b1f7389dd5a71251d94ad30",
+    "accepted_sha256": "53436f2979f54f9632c86b88ef9b0b71196c813d6a33dac561ded858bab40081",
+    "diff_lines": 99,
+    "comparison_source": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "comparison_sha256": "811feace83398aa58146ffa13983975bdf92902a4d8fddb362295e6351f7c9bd",
+    "source_limitation": "9a1b is the retained provider-reported frontend source and prior repository comparison base. Backend live git_sha is null; these backend diffs do NOT prove deployed backend Git provenance."
+  }
+]

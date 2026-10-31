@@ -1,0 +1,22 @@
+{
+  "range": {
+    "max": "777.12",
+    "min": "0",
+    "step": "0.1"
+  },
+  "speedDisabled": true,
+  "speedOptions": [
+    {
+      "label": "1.0×",
+      "value": "1"
+    },
+    {
+      "label": "1.25×",
+      "value": "1.25"
+    },
+    {
+      "label": "1.5×",
+      "value": "1.5"
+    }
+  ]
+}

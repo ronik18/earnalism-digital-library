@@ -1,0 +1,75 @@
+{
+  "observed_at": "2026-10-31T18:33:37.212005+00:00",
+  "status": "LIVE_DECLARED_1950_FILE_INVENTORY_MATCHES_EXACT_GIT_REF_SOURCE_BYTES",
+  "local_manifest_path": "/tmp/earnalism-main-approved-integration/backend/.runtime-source-manifest.json",
+  "local_manifest_sha256": "3204892598b46197bb6e80170a5a617891d89417d21f530dc7eae8a58cf47db6",
+  "live_manifest_sha256": "3204892598b46197bb6e80170a5a617891d89417d21f530dc7eae8a58cf47db6",
+  "inventory_digest_verified": true,
+  "live_runtime_digest": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+  "file_count": 1950,
+  "relevant_file_bindings": [
+    {
+      "path": "server.py",
+      "bytes": 620666,
+      "sha256": "3c976134cd10d192f0f133a4be7630e105317ac298e4028eef539f440e2d7282",
+      "local_comparison_path": "/tmp/earnalism-parallel-existing-20261031/server.py.deployed",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "reading_pass_service.py",
+      "bytes": 92000,
+      "sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195",
+      "local_comparison_path": "/tmp/earnalism-parallel-existing-20261031/reading_pass_service.py.deployed",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "domain/reading_pass.py",
+      "bytes": 11015,
+      "sha256": "514bd49f4b9442840636c5c1fc89892842e2d9967589bfc93703072674d00068",
+      "local_comparison_path": "/tmp/earnalism-main-approved-integration/backend/domain/reading_pass.py",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "domain/reading_billing.py",
+      "bytes": 1911,
+      "sha256": "dbaacbf47b99614286146f734fa2154083becd2d2ffcabfdf615f5213331f512",
+      "local_comparison_path": "/tmp/earnalism-main-approved-integration/backend/domain/reading_billing.py",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "domain/audiobook_release.py",
+      "bytes": 12941,
+      "sha256": "bfd8403a032059f9c0aa81ba145c72a8e22cb8795bac8e6f076e507a9388793e",
+      "local_comparison_path": "/tmp/earnalism-main-approved-integration/backend/domain/audiobook_release.py",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "utils/owned_stream_response.py",
+      "bytes": 3556,
+      "sha256": "f2118ca53a165513fae1e53d739a47dfae41e30d115ed456abcd357258dc4db3",
+      "local_comparison_path": "/tmp/earnalism-main-approved-integration/backend/utils/owned_stream_response.py",
+      "local_bytes_match_live_declared_measured_entry": true
+    },
+    {
+      "path": "utils/runtime_source_attestation.py",
+      "bytes": 5758,
+      "sha256": "5b727cbeee610ab05c8bef1148664af8fb7081f0b4a38f11c38f17d55eda6877",
+      "local_comparison_path": "/tmp/earnalism-main-approved-integration/backend/utils/runtime_source_attestation.py",
+      "local_bytes_match_live_declared_measured_entry": true
+    }
+  ],
+  "live_backend_git_sha": null,
+  "git_sha_inferred": false,
+  "backend_source_comparison_scope": "server.py and reading_pass_service.py public GitHub9a source bytes match exact entries in the independently live-measured manifest. Other listed local source files likewise match exact live-measured entries.",
+  "remaining_limits": [
+    "Public attestation is a declared1950-file immutable process snapshot, not universal filesystem integrity or provider Git-SHA metadata.",
+    "No protected playback, rendered browser or billing proof created."
+  ],
+  "full_inventory_git_ref_comparison": {
+    "ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "manifest_semantically_equal": true,
+    "inventory_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+    "file_count": 1950
+  },
+  "remaining_blocker_resolved": "Missing relevant backend source-byte provenance resolved within declared manifest scope. Provider git_sha remains null; actual current protected playback/accounting remains unverified."
+}

@@ -1,0 +1,19 @@
+{
+  "prepared_at": "2026-10-31T20:21:33.327021+00:00",
+  "status": "LOCAL_METADATA_PREPARED_NOT_REDIRECTED",
+  "canonical": "/tmp/earnalism-main-approved-integration",
+  "new_metadata": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/canonical-git-local-20261101",
+  "original_metadata": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/.git/worktrees/earnalism-main-approved-integration2",
+  "head": "0ee58645e8e5801d079644846bf7012d4c2d5a14",
+  "origin_main": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "head_tree": "b26777d516dd6e6ee5d6d63b99eba41fac1f57fb",
+  "reconstructed_index_tree_matches_head": true,
+  "index_entries": 16169,
+  "original_index_sha256": "782a3f4e11c04efd2ec55240f54bfe3617f8f9b1f144c7d97755571f75856e4f",
+  "original_gitfile_sha256": "7393cc0b41a8006aab44877aec862172d01d2c9f446bad00504c91c1bdedc5ab",
+  "private_objects_materialized": 2020,
+  "original_metadata_modified": false,
+  "source_files_modified": false,
+  "additional_worktree_or_feature_branch_created": false,
+  "preserved_935_bundle": "/tmp/earnalism-canonical-935-preservation-20261031/935-staged.bundle"
+}

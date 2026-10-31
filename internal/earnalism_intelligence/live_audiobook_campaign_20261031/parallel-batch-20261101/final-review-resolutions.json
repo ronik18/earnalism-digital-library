@@ -1,0 +1,15 @@
+{
+  "reviewed_source": "1575949",
+  "review": "final-evidence-review.json",
+  "resolved": [
+    {
+      "finding": "stale_no_paid_playback",
+      "result": "Historical limitation now acknowledges7creditseconds of later protectedplayback, no newfullsubjectivelistening."
+    },
+    {
+      "finding": "title_USD_zero",
+      "result": "Title USDnull,7wholecreditseconds and monetary/fractionalvalueunreported; no purchase."
+    }
+  ],
+  "scope": "Rootverifiedchangedfields; independentreviewfindingsretainedunchanged. No application/media/gatewaiver."
+}

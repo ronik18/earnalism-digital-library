@@ -1,0 +1,247 @@
+{
+  "status": "HASH_VERIFIED_PRIVATE_LOCAL_RECOVERY_COPY_NOT_RELEASE_STORAGE",
+  "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101",
+  "assets": [
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/replacement.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/replacement.wav",
+      "bytes": 460844,
+      "sha256": "dfbbb664f5db1723445fc276233802759247adf168fa404c188c8d1d7ce0a6b0"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/replacement-canonical.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/replacement-canonical.wav",
+      "bytes": 460878,
+      "sha256": "49c404c9de496a0e11463a1f4f874ca25e2078e040c5b6c6ed48a497c3cfb5bc"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/candidate-private.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/candidate-private.wav",
+      "bytes": 30629084,
+      "sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/both-joins-review.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/both-joins-review.wav",
+      "bytes": 1168364,
+      "sha256": "fdffeb78de25805bbb131c9f14d42a041c19669d3dd0e2c3a9ad86d03155b62d"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/synthesis-attempt.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/synthesis-attempt.json",
+      "bytes": 1256,
+      "sha256": "8b1dcb4bf67536cbd63cacd564a64219b90bc0548e3c2154013b9607c4b3966c"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/synthesis-reconciliation.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/synthesis-reconciliation.json",
+      "bytes": 1742,
+      "sha256": "915158c18da1060cb98c3fb6e20544f516ba7126a94129f0ec989757545be5bd"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/join-transfer-approval.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/join-transfer-approval.json",
+      "bytes": 450,
+      "sha256": "578ad8358480d4f872621a02c583cc0271afa9d5ceeacd220a86f8584d3bb9f8"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/joins-review-intent.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/joins-review-intent.json",
+      "bytes": 692,
+      "sha256": "b40ab64c9403cb03f3aca903d044b2eee87e9f4c6e9ceaf199bef54feb4211a7"
+    },
+    {
+      "source": "/tmp/earnalism-sredni-sentence-repair-20261031/joins-review-result.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/joins-review-result.json",
+      "bytes": 2687,
+      "sha256": "6ce65fce6be9dc78ba5bd63567954d5947dd2d0e62834719bbd8b873506e88e4"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-sredni-20261031/candidate-draft-timestamps.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-timing/candidate-draft-timestamps.json",
+      "bytes": 143745,
+      "sha256": "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-sredni-20261031/timing-derivation-proof.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-timing/timing-derivation-proof.json",
+      "bytes": 1266,
+      "sha256": "0d7d35e8a27df3d3475e13e2b190f50d48fecdb32d2731b25096b9eab4019cf7"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-short-titles-20261031/a-ghost-story-retained-qualified.mp3",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost/a-ghost-story-retained-qualified.mp3",
+      "bytes": 7047789,
+      "sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-short-titles-20261031/a-ghost-story-master-recovery.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost/a-ghost-story-master-recovery.json",
+      "bytes": 934,
+      "sha256": "c41eb3f2b57e66331ece059307997c9a3ace091ee803998938b0fb03787a5603"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/word-timings-draft.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/word-timings-draft.json",
+      "bytes": 294119,
+      "sha256": "71dadaa8152f047738672725703cd8141657d781354b35675a5375281c09b700"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/transcript.txt",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/transcript.txt",
+      "bytes": 12994,
+      "sha256": "efd1b460614a73c682ac4c3c6f8ee7be2c115f050b6e8889f833d47e8c5a9756"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-review-manifest.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-review-manifest.json",
+      "bytes": 17971,
+      "sha256": "fddff0ea6d554c7697270c54bb7380051a528083b37168bd98dcfb5415dde8ab"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/UNION-SUMMARY.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/UNION-SUMMARY.json",
+      "bytes": 2703,
+      "sha256": "7fd7d08beadcf74317ef43d2929d21c0f2079fa3d604af8c5884a11242176d24"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/sequence-differences.json",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/sequence-differences.json",
+      "bytes": 8029,
+      "sha256": "1459bae376f7c90042cab621ede664c3ecd2c0a00cfb88353d52f6a2e92d3206"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/segments-progress.jsonl",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/segments-progress.jsonl",
+      "bytes": 189619,
+      "sha256": "96c66e0e2efe34f0a618d7c35f5ac51029eb01b53967b3c29445e7c7962ec1ba"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/continuation-segments-progress.jsonl",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/continuation-segments-progress.jsonl",
+      "bytes": 55221,
+      "sha256": "1257fab8884a1df0ea8c22b39804710b4b690b4b431d8da9ff1e5175f3964fad"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-02-136.74-144.16.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-02-136.74-144.16.wav",
+      "bytes": 356238,
+      "sha256": "0dfdddc1fbe13f802e742e65b48f8cb57915c51a2cfdb574f442a7c3880525d3"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-05-453.32-460.58.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-05-453.32-460.58.wav",
+      "bytes": 348558,
+      "sha256": "551adf329eef477694a558e9d373486e4f914fb1c7b2d3b9f30ef228ca249835"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-01-27.22-34.56.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-01-27.22-34.56.wav",
+      "bytes": 352398,
+      "sha256": "fd689cde24b9f9d3a3979b518d3c7f2e23596e908cb142fc915556dc26f3a1d6"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-04-175.04-182.42.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-04-175.04-182.42.wav",
+      "bytes": 354318,
+      "sha256": "ee1a096f336fc44be273dac4e140b0c7f2f37d78d851eec8fad018d221afa656"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-06-726.38-733.56.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-06-726.38-733.56.wav",
+      "bytes": 344718,
+      "sha256": "d0e19d326a34c04d469b489b9bde018620cc4e716daa9d469278af82f4ab38be"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/private-wording-03-152.52-159.98.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/private-wording-03-152.52-159.98.wav",
+      "bytes": 358158,
+      "sha256": "7457b27a1b32d4d5b987233377cb45b40f4661a94889f2d412d3bdcd2a1b9801"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-12-876.620-880.896.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-12-876.620-880.896.wav",
+      "bytes": 205326,
+      "sha256": "af525a9a0e2c64e2d5472fc6e98d5972f1599f13098a4981500a8db5d919a2ce"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-11-829.540-835.960.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-11-829.540-835.960.wav",
+      "bytes": 308238,
+      "sha256": "1f49f82008733e9b0dd3e6f8a3774cff5328a7f27cd12cf04e261d3529973d07"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-03-153.020-159.480.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-03-153.020-159.480.wav",
+      "bytes": 310158,
+      "sha256": "88d0eddeffaa320931b252202347cbb18df6afda19c323c6746e002fbc730bff"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-09-726.880-733.060.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-09-726.880-733.060.wav",
+      "bytes": 296718,
+      "sha256": "67c44db98560351f4d9dfe76135edd1b1b2cf4ce6542c6fcae77ff662e9c7d83"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-08-661.480-668.240.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-08-661.480-668.240.wav",
+      "bytes": 324558,
+      "sha256": "2effeb8e15cafd3a2a36449e9e66b627169f738ad55a00fded62d488e8f26fdf"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-10-755.240-761.600.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-10-755.240-761.600.wav",
+      "bytes": 305358,
+      "sha256": "b01a96e63a5969716f654f9a875b6b07b0edef193e8027fd5e9da2be654464ac"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-04-175.540-181.920.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-04-175.540-181.920.wav",
+      "bytes": 306318,
+      "sha256": "a79ffb35657f1620255efd3bfc13d42c74ec32c0b3c57a1fcf72f67c4f6b3e9c"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-02-131.860-143.660.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-02-131.860-143.660.wav",
+      "bytes": 566478,
+      "sha256": "3654af32f7e618b29ff52a4f6b51a2130d7187f91a953075adaf506da8ae4d55"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-06-571.160-577.640.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-06-571.160-577.640.wav",
+      "bytes": 311118,
+      "sha256": "0aa1422c1d4adc19c7c3579172fe0af278f9d44cebe97ba81286ce5312d75f08"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-05-453.820-460.080.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-05-453.820-460.080.wav",
+      "bytes": 300558,
+      "sha256": "926b074e5c832b6f4eadbcf4676a79e619ec53110bb7025519a1760de514b1fc"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-01-27.720-34.060.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-01-27.720-34.060.wav",
+      "bytes": 304398,
+      "sha256": "00ec7da74b7aca1f29ebb790bd834e031bdd2d4d646a863c16291570fb594b81"
+    },
+    {
+      "source": "/tmp/earnalism-parallel-ghost-qa-20261101/all-differences-context/clip-07-639.080-645.440.wav",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/ghost-qa/all-differences-context/clip-07-639.080-645.440.wav",
+      "bytes": 305358,
+      "sha256": "b51a90c41233cf7d64eb0fa322c09a0e64449a4c4f0528f18357853dc16db8bc"
+    },
+    {
+      "source": "/tmp/earnalism-audiobook-recovery-followup-20261031/sredni-retained.mp3",
+      "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/original-retained.mp3",
+      "bytes": 10190637,
+      "sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a"
+    }
+  ],
+  "count": 39,
+  "total_bytes": 56649996,
+  "raw_audio_in_git": false,
+  "provider_uploads": 0,
+  "new_synthesis": false,
+  "primary_dr_release_gate": "UNVERIFIED_THIS_IS_LOCAL_RECOVERY_ONLY",
+  "separate_physical_device_or_offsite": false
+}

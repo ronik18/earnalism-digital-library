@@ -1,0 +1,82 @@
+{
+  "recorded_at": "2026-10-31T18:35:54.082517+00:00",
+  "status": "REUSE_EXACT_SOURCE_AUTOMATED_REGRESSION_PASS_REAL_RUNTIME_ACCEPTANCE_UNVERIFIED",
+  "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "source_binding": "backend-provenance-followup.json independently matches all1950 declared live backend source files to9a1b. Frontend source9a1b is retained provider evidence; no fresh provider metadata mutation/query performed.",
+  "run_id": 41131752565,
+  "run_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/41131752565",
+  "run_conclusion": "success",
+  "run_head_sha": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "run_metadata_sha256": "b3568c532a139e5d55845bbf536dac1a7f256aa436d4e0e2a2c9dcff29999d10",
+  "retained_full_log_sha256": "bdad59b4fff2f8e951904e5befe4d3306b837bf45569075792157fc4fe89140d",
+  "test_file_bindings": [
+    {
+      "path": "backend/tests/test_owned_stream_response.py",
+      "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "test_file_sha256": "b0ea662697456d072bd36dd2b20841e0b71c2c348902f05c946075b9fd21ecc5",
+      "included_in_exact_source_regression_script": true
+    },
+    {
+      "path": "backend/tests/test_reading_pass_rollback_transaction.py",
+      "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "test_file_sha256": "28b57902320859755a535f4ee6560af2633f025ddf7819ced5a449d92ee02336",
+      "included_in_exact_source_regression_script": true
+    },
+    {
+      "path": "frontend/src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx",
+      "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "test_file_sha256": "942b04b82e0acb44a544d5712d9aebf9194a313e6a87b83110d7744b732a8a50",
+      "included_in_exact_source_regression_script": true
+    },
+    {
+      "path": "frontend/src/experiences-v2/__tests__/listener-resume-authorization.test.jsx",
+      "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "test_file_sha256": "81425768dd6a71ab8601ceb3c6d8f59c46a3237afb622b1d3d9122715e08400d",
+      "included_in_exact_source_regression_script": true
+    },
+    {
+      "path": "frontend/src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx",
+      "source_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+      "test_file_sha256": "672db2f11123c610e8b49e2d195a7068fefdbc0ccf73fd3c7fead8545df3b430",
+      "included_in_exact_source_regression_script": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "Owned streaming body close/disconnect/slow-close/saturated-pool/read-failure cleanup",
+      "status": "PASS_REUSED_AUTOMATED",
+      "evidence": "Exact-source script includes test_owned_stream_response.py in audio transport group; retained run log group99passed in6.80s, no skipped tests reported."
+    },
+    {
+      "case": "Known transaction contention503 and unknown commit never replaying callback",
+      "status": "PASS_REUSED_AUTOMATED",
+      "evidence": "Run log individually records all3 test_reading_pass_rollback_transaction.py tests PASSED."
+    },
+    {
+      "case": "Pause/stop/unmount cancellation of pending playback and media ownership",
+      "status": "PASS_REUSED_AUTOMATED",
+      "evidence": "PASS listener-playback-lifecycle.test.jsx; exact-source test file bound."
+    },
+    {
+      "case": "Active cross-segment seek renew-before-source and delayed result cancellation",
+      "status": "PASS_REUSED_AUTOMATED",
+      "evidence": "PASS listener-resume-authorization.test.jsx; exact-source file contains playing-seek renewal and pause/stop/unmount/newer-seek cases."
+    },
+    {
+      "case": "Segment lifecycle and end transition behavior",
+      "status": "PASS_REUSED_AUTOMATED",
+      "evidence": "PASS listener-segment-lifecycle.test.jsx. The associated frontend group totals21suites/264tests passed."
+    },
+    {
+      "case": "Actual signed-in protected playback, per-title navigation, pause/buffering billing settlement, rendered Listener UI",
+      "status": "UNVERIFIED",
+      "evidence": "No new authorized customer session, lease, debit, playback or browser-rendered Listener navigation performed; automated fixtures do not prove live acceptance."
+    }
+  ],
+  "new_test_runs": 0,
+  "new_ci_runs": 0,
+  "new_sessions": 0,
+  "customer_debits": 0,
+  "cost_usd": 0,
+  "next_action": "Reuse this exact-source automated evidence; do not rerun unchanged full suites. Complete only genuinely missing current real protected playback/accounting and rendered UI acceptance under scoped normal-session authority."
+}

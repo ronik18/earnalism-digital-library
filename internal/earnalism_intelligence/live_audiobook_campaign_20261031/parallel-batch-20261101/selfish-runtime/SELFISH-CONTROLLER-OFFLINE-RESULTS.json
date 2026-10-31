@@ -1,0 +1,48 @@
+{
+  "offlineOnly": true,
+  "liveAcceptanceProven": false,
+  "cases": [
+    {
+      "case": "deferred Play 3000ms cannot release next seek early",
+      "pass": true,
+      "readyAt": 3200
+    },
+    {
+      "case": "deferred Play 5000ms cannot release next seek early",
+      "pass": true,
+      "readyAt": 5200
+    },
+    {
+      "case": "metadata ready but paused never qualifies",
+      "pass": true
+    },
+    {
+      "case": "wrong native speed fails closed",
+      "pass": true
+    },
+    {
+      "case": "actual range step and larger transition observation margin",
+      "pass": true
+    },
+    {
+      "case": "terminal ACK deferred 3000ms retained before close",
+      "pass": true
+    },
+    {
+      "case": "terminal ACK deferred 5000ms retained before close",
+      "pass": true
+    },
+    {
+      "case": "missing ACK remains unverified and preserves70s hard-close",
+      "pass": true
+    },
+    {
+      "case": "55s backseek with 3000ms renewal observes Group01 then natural Group02",
+      "pass": true
+    },
+    {
+      "case": "55s backseek with 5000ms renewal observes Group01 then natural Group02",
+      "pass": true
+    }
+  ]
+}

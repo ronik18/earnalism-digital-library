@@ -1,0 +1,236 @@
+[
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      91,
+      92
+    ],
+    "observed_token_range": [
+      91,
+      92
+    ],
+    "expected": "slazy",
+    "observed": "lazy",
+    "expected_context": "of the stairway and an invisible cobweb swung its slazy woof in my face and clung there i shuddered",
+    "observed_context": "of the stairway and an invisible cobweb swung its lazy woof in my face and clung there i shuddered",
+    "approx_audio_start": 30.72,
+    "approx_audio_end": 31.06,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      380,
+      382
+    ],
+    "observed_token_range": [
+      380,
+      381
+    ],
+    "expected": "some one",
+    "observed": "someone",
+    "expected_context": "slowly toward the foot of the bed as if some one were pulling them i could not stir i could",
+    "observed_context": "slowly toward the foot of the bed as if someone were pulling them i could not stir i could",
+    "approx_audio_start": 134.86,
+    "approx_audio_end": 135.32,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      395,
+      396
+    ],
+    "observed_token_range": [
+      394,
+      395
+    ],
+    "expected": "blankets",
+    "observed": "blanket",
+    "expected_context": "could not stir i could not speak still the blankets slipped deliberately away till my breast was uncovered then",
+    "observed_context": "could not stir i could not speak still the blanket slipped deliberately away till my breast was uncovered then",
+    "approx_audio_start": 140.24,
+    "approx_audio_end": 140.66,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      433,
+      434
+    ],
+    "observed_token_range": [
+      432,
+      433
+    ],
+    "expected": "torpid",
+    "observed": "torpered",
+    "expected_context": "that steady pull began and once more i lay torpid a century of dragging seconds till my breast was",
+    "observed_context": "that steady pull began and once more i lay torpered a century of dragging seconds till my breast was",
+    "approx_audio_start": 156.02,
+    "approx_audio_end": 156.48,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      502,
+      503
+    ],
+    "observed_token_range": [
+      501,
+      502
+    ],
+    "expected": "blankets",
+    "observed": "blanket",
+    "expected_context": "my hold parted and for the third time the blankets slid away i groaned an answering groan came from",
+    "observed_context": "my hold parted and for the third time the blanket slid away i groaned an answering groan came from",
+    "approx_audio_start": 178.54,
+    "approx_audio_end": 178.92,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      1276,
+      1277
+    ],
+    "observed_token_range": [
+      1275,
+      1276
+    ],
+    "expected": "fan",
+    "observed": "found",
+    "expected_context": "and yet i felt a faint gust of air fan my cheek and presently was conscious of a huge",
+    "observed_context": "and yet i felt a faint gust of air found my cheek and presently was conscious of a huge",
+    "approx_audio_start": 456.82,
+    "approx_audio_end": 457.08,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      1598,
+      1599
+    ],
+    "observed_token_range": [
+      1597,
+      1598
+    ],
+    "expected": "theater",
+    "observed": "theatre",
+    "expected_context": "tolerated anywhere by cultivated people except in a respectable theater and not even there if the nudity were of",
+    "observed_context": "tolerated anywhere by cultivated people except in a respectable theatre and not even there if the nudity were of",
+    "approx_audio_start": 574.16,
+    "approx_audio_end": 574.64,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      1807,
+      1808
+    ],
+    "observed_token_range": [
+      1806,
+      1807
+    ],
+    "expected": "sitz",
+    "observed": "sits",
+    "expected_context": "of my red blankets over his shoulders inverted my sitz bath on his head helmet fashion and made himself",
+    "observed_context": "of my red blankets over his shoulders inverted my sits bath on his head helmet fashion and made himself",
+    "approx_audio_start": 642.08,
+    "approx_audio_end": 642.44,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      1867,
+      1868
+    ],
+    "observed_token_range": [
+      1866,
+      1867
+    ],
+    "expected": "chilblains",
+    "observed": "chillblains",
+    "expected_context": "your legs that they are gouged up so infernal chilblains i caught them clear up to the back of",
+    "observed_context": "your legs that they are gouged up so infernal chillblains i caught them clear up to the back of",
+    "approx_audio_start": 664.48,
+    "approx_audio_end": 665.24,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "insert",
+    "expected_token_range": [
+      2057,
+      2057
+    ],
+    "observed_token_range": [
+      2056,
+      2057
+    ],
+    "expected": "",
+    "observed": "night",
+    "expected_context": "for nobody ever came to the museum at midnight then it occurred to me to come over the",
+    "observed_context": "for nobody ever came to the museum at midnight night then it occurred to me to come over the",
+    "approx_audio_start": 729.88,
+    "approx_audio_end": 730.06,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      2136,
+      2138
+    ],
+    "observed_token_range": [
+      2136,
+      2137
+    ],
+    "expected": "to night",
+    "observed": "tonight",
+    "expected_context": "but when i saw a light in your room to night i roused my energies again and went at it",
+    "observed_context": "but when i saw a light in your room tonight i roused my energies again and went at it",
+    "approx_audio_start": 758.24,
+    "approx_audio_end": 758.6,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      2327,
+      2328
+    ],
+    "observed_token_range": [
+      2326,
+      2327
+    ],
+    "expected": "mantel",
+    "observed": "mantle",
+    "expected_context": "pipe from his mouth and laid it on the mantel then stood irresolute a moment unconsciously from old habit",
+    "observed_context": "pipe from his mouth and laid it on the mantle then stood irresolute a moment unconsciously from old habit",
+    "approx_audio_start": 832.54,
+    "approx_audio_end": 832.96,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  },
+  {
+    "operation": "replace",
+    "expected_token_range": [
+      2463,
+      2465
+    ],
+    "observed_token_range": [
+      2462,
+      2463
+    ],
+    "expected": "bath tub",
+    "observed": "bathtub",
+    "expected_context": "he had carried off my red blanket and my bath tub",
+    "observed_context": "he had carried off my red blanket and my bathtub",
+    "approx_audio_start": 879.62,
+    "approx_audio_end": 880.06,
+    "classification": "SUSPECTED_MATERIAL_DIFFERENCE_REQUIRES_ADJUDICATION_NOT_PROVEN_AUDIO_DEFECT"
+  }
+]

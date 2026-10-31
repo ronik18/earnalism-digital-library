@@ -119,5 +119,7 @@
     "status": "TWO_CATALOG_RECORDS_IDENTIFIED_NONE_RIGHTS_OR_AUDIO_QUALIFIED",
     "original_audition_preserved": true,
     "narrator_not_changed": true
-  }
+  },
+  "parallel_revision_recovery": "parallel-batch-20261101/student/student-parallel-findings.json",
+  "parallel_next_action": "Supply an existing retained original audition ZIP/local path matching the recorded checksum; otherwise obtain a record-specific recording/performer rights basis applicable to commercial IN reuse before any import audio download. Do not reconnect or replay the consumed Colab allocation. Do not contact readers without separate messaging authorization."
 }

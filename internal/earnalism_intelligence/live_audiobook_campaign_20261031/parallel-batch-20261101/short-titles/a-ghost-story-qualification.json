@@ -1,0 +1,118 @@
+{
+  "checked_at": "2026-10-31T18:31:56.767583+00:00",
+  "base_sha": "688289198e550a1c592f7dc242c9ab36a7cf433e",
+  "slug": "a-ghost-story",
+  "status": "BLOCKED_CURRENT_AUDIO_PACKAGE_NOT_ADOPTED",
+  "chapter_json_sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+  "canonical_content_sha256": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+  "canonical_word_count_whitespace_split": 2423,
+  "paragraph_count_blank_line_delimited": 30,
+  "normalized_word_sequence_sha256": "7333e2732fd4c1da37e05dfceb213858122d9344ef9b3afc25ed233e2f4751f9",
+  "reader_uses_only_existing_rights_decision_unchanged": true,
+  "new_provider_cost_usd": 0,
+  "new_allocations": 0,
+  "new_synthesis": false,
+  "publication": false,
+  "music": "SILENCE_NO_LICENSE_NEEDED",
+  "rights_analysis": {
+    "territory": "IN",
+    "underlying_source": "English original-language literary story, no modern introduction/translation/notes included",
+    "statute": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+    "author_death_year": 1910,
+    "published_in_lifetime": true,
+    "sections_22_23_analysis": "Even if pseudonymous publication term applies, publication+60 elapsed; if identity disclosure invokes author-life term,1910+60 elapsed at1971. Underlying literary term supports new narration in IN independently of Reader-use decision. No claim about modern recording rights follows from literary expiry.",
+    "reader_rights_do_not_authorize_audio_package": true,
+    "recording": "Owner is producer of demonstrably owner-directed recording per applicable AGENTS; retain original exact generation/provider/master provenance. Do not seek duplicate producer ownership approval.",
+    "source_metadata": "https://www.gutenberg.org/ebooks/3189",
+    "license_scope_status": "UNDERLYING_IN_TERM_ANALYSIS_PREPARED_PACKAGE_ADOPTION_PENDING",
+    "publication_evidence_note": "Identified original-language Sketches New and Old collection was published1875 during author lifetime; this is not an assertion that1875 was the first appearance of the individual story."
+  },
+  "source_unchanged_by_this_lane": true,
+  "historical_source_binding": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/source_manuscripts/a-ghost-story/clean_manuscript.txt",
+    "sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+    "matches_generation_source_sha256": true,
+    "raw_characters": 13216,
+    "canonical_characters": 13046,
+    "normalized_whitespace_equal": true,
+    "interpretation": "Only whitespace wrapping differs. Do not edit source book or regenerate narration. Actual full title content/audio checks remain required."
+  },
+  "retained_candidate": {
+    "provider": "google",
+    "model": "google-cloud-texttospeech",
+    "voice": "en-GB-Studio-C",
+    "style": "source_preserving_ssml_88_percent",
+    "master_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "duration_seconds": 880.944,
+    "size_bytes": 7047789,
+    "historical_generation_attempt": "2ad1c4000044a5688a4866645e3bf2541ac31f6066b8aefc27275ee309b38e89",
+    "historical_qa": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_full_qa_runtime.json",
+    "historical_asr_score": 9.88,
+    "historical_listening_min": 9.4,
+    "historical_listening_confidence": 0.95,
+    "historical_fatal_flags": [],
+    "historical_samples": 6,
+    "current_whole_title_acceptance": "UNVERIFIED_DO_NOT_PROMOTE_HISTORICAL_SAMPLES_TO_FULL_CONTENT_PASS",
+    "current_recovery_receipt": "a-ghost-story-master-recovery.json",
+    "current_master_sha256_verified": true,
+    "current_duration_verified": true,
+    "private_recovered_path": "/tmp/earnalism-parallel-short-titles-20261031/a-ghost-story-retained-qualified.mp3"
+  },
+  "provider_terms": {
+    "documentation": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+    "terms": "https://cloud.google.com/terms/service-terms",
+    "observed": "Google explicitly documents use of generated speech files in applications and audio recordings subject to terms and law. This is stock Studio-C, not a clone/reference transfer.",
+    "not_inferred": "Current exact account agreement, indefinite storage/DR profile, immutable canonical rights/package decision and protected customer acceptance remain unqualified."
+  },
+  "resolved_blockers": [
+    "Retained qualified master locator identified with historical immutable digest",
+    "Authoritative historical source recovers exact ordered words after whitespace-only folding",
+    "Historical generation and quality receipts recovered; no new synthesis needed",
+    "Exact qualified owner master recovered once; SHA256/byte size/duration/format all match July receipt"
+  ],
+  "remaining_blockers": [
+    "Complete current source-bound full content/pronunciation/transition check reusing unchanged evidence only within actual scope",
+    "Adopt exact audio package/provider rights under supported audio-use workflow, without changing Reader-only decision",
+    "Recover exact measured timestamps/chapters/meta and validate source/word ordering; no estimated sync",
+    "Qualify current immutable primary/DR retention and protected player/accounting"
+  ],
+  "next_exact_action": "Read a-ghost-story-master-recovery.json; if SHA256 c0e52985…/880.944s match, run offline CPU transcript comparison against canonical chapter and recover exact measured timing metadata. Do not regenerate, publish or reuse stale legacy URL.",
+  "pronunciation_review_terms": [
+    "Broadway",
+    "Cardiff Giant",
+    "Cardiff"
+  ],
+  "voice_selection": "RETAIN_EXACT_HISTORICALLY_QUALIFIED_STUDIO_C_MASTER_PENDING_CURRENT_QUALIFICATION",
+  "representative_review_passages": [
+    {
+      "paragraph_index_zero_based": 0,
+      "text": "I took a large room, far up Broadway, in a huge old building whose upper\nstories had been wholly unoccupied for years until I came. The place had\nlong been given up to dust and cobwebs, to solitude and silence.\nI seemed groping among the tombs and invading the privacy of the dead,\nthat first night I climbed up to my quarters. For the first time in my\nlife a superstitious dread came over me; and as I turned a dark angle of\nthe stairway and an invisible cobweb swung its slazy woof in my face and\nclung there, I shuddered as one who had encountered a phantom.",
+      "sha256": "f38c3d2b541889401229703f2cfda19d431cdfb331b4ca37637b4c063c2c7488",
+      "purpose": "opening"
+    },
+    {
+      "paragraph_index_zero_based": 7,
+      "text": "All my misery vanished--for a child might know that no harm could come\nwith that benignant countenance. My cheerful spirits returned at once,\nand in sympathy with them the gas flamed up brightly again. Never a\nlonely outcast was so glad to welcome company as I was to greet the\nfriendly giant. I said:",
+      "sha256": "96b1d36cb77fcff3a6d2859322bf297deaf861a0fe39c9311afd4ab817beff51",
+      "purpose": "early_voice_dialogue"
+    },
+    {
+      "paragraph_index_zero_based": 15,
+      "text": "“Well, I will not break any more furniture. But what am I to do? I have\nnot had a chance to sit down for a century.” And the tears came into his\neyes.",
+      "sha256": "073c9fa0971e7ca0feda67de9ca68e4e58e5c3c4c76e36d3b3d7269178a4454a",
+      "purpose": "middle_adversarial"
+    },
+    {
+      "paragraph_index_zero_based": 22,
+      "text": "“This transcends everything! everything that ever did occur! Why you\npoor blundering old fossil, you have had all your trouble for nothing\n--you have been haunting a plaster cast of yourself--the real Cardiff\nGiant is in Albany!--[A fact. The original fraud was ingeniously and\nfraudfully duplicated, and exhibited in New York as the “only genuine”\n Cardiff Giant (to the unspeakable disgust of the owners of the real\ncolossus) at the very same time that the latter was drawing crowds at a\nmuseum in Albany,]--Confound it, don't you know your own remains?”",
+      "sha256": "96956a01ad8ac9650a7d85eab173d58a632b6c41eefcc8a2e7522baedc60f4b7",
+      "purpose": "late_expression"
+    },
+    {
+      "paragraph_index_zero_based": 29,
+      "text": "I heard his stately tramp die away, step by step down the stairs and out\ninto the deserted street, and felt sorry that he was gone, poor fellow\n--and sorrier still that he had carried off my red blanket and my\nbath-tub.",
+      "sha256": "9f228c3ac2a33e920b6323a407c13e50ff310a2e4112012580fd95cf32ae16ba",
+      "purpose": "ending"
+    }
+  ]
+}

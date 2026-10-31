@@ -1,0 +1,87 @@
+{
+  "slug": "the-selfish-giant",
+  "observed_at": "2026-10-31T18:32:21.493224+00:00",
+  "status": "PUBLICLY_AVAILABLE_UNCHANGED_CURRENT_RUNTIME_ACCEPTANCE_BLOCKED",
+  "observed_read_only_gates": {
+    "public_reader_manifest_http": 200,
+    "protected_audio_manifest_guest_http": 401,
+    "book_page_http": 200,
+    "book_HTML_hash_matches_retained_snapshot": true,
+    "package_version_matches_accepted_record": true,
+    "reader_edition_version_matches_campaign_snapshot": true,
+    "duration_matches_accepted_record": true,
+    "preauthorization_audio_url": "",
+    "delivery_mode": "PROTECTED_PACKAGE_V2",
+    "current_rendered_listener_UI_navigation": "UNVERIFIED_NOT_PERFORMED",
+    "public_discovery_scope": "HTTP metadata and Book HTML only; no fresh Library/filter rendering or navigation PASS"
+  },
+  "retained_bindings": {
+    "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "duration_ms": 777120,
+    "reader_version": "dd46ec8d382c9e53203a",
+    "historical_real_playback": {
+      "path": "internal/audiobook_lab/release_gate/selfish-giant-20261029/production-acceptance/playback.json",
+      "sha256": "ac7b16224cfe3fb132ee3430c4f2ceb0469341d1ce13b4e67fb849e3a3f0494a"
+    },
+    "historical_real_playback_summary": {
+      "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+      "durationMs": 777120,
+      "segmentCount": 6,
+      "ended": true,
+      "pauseResumeSeekPass": true,
+      "coverage_segments": 6
+    },
+    "audio_rights_binding": {
+      "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
+        "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
+        "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+        "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    }
+  },
+  "reuse_decisions": {
+    "accepted_master_narrator_mix_content_and_sync": "RETAIN_EXACT_PACKAGE_ACCEPTANCE; no asset change, no new production/listening inference",
+    "rights": "REUSE_EXACT_EXISTING_AUDIO_PACKAGE_BINDING_IN_TERRITORY; no Reader-rights expansion",
+    "historical_native_completion": "RETAIN_HISTORICAL_PROOF_ALL_ACCEPTED_SEGMENTS; do not claim current changed player completion",
+    "accounting_core": "Named unchanged AST functions support focused reuse, but changed transaction/admission/stream/UI dependencies retain a genuine current acceptance hold",
+    "public_Book_HTML_and_metadata": "FRESH_READ_ONLY_PASS_SCOPE_HTTP_CONTENT_BINDING_ONLY; no fresh rendered browser claim"
+  },
+  "remaining_material_cases": [
+    "Bounded normal session admission and wallet/ledger settlement on the actual deployed source",
+    "Pause\u2192resume while renewal pending; stop/unmount cancels stale pending playback",
+    "Active cross-segment seek must renew before source transition, preserve target and debit only actual active time",
+    "Natural segment ending/transition and end-session settlement must not be cancelled or billed while paused/buffering",
+    "Protected Range/media behavior and disconnect with owned stream response",
+    "Per-title correct immutable package/chapter/duration after real authorization"
+  ],
+  "prohibited_in_this_lane": [
+    "Authorize Listening click",
+    "lease creation",
+    "customer debit",
+    "new synthesis/allocation/storage upload",
+    "release flags or deployment mutations"
+  ],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_customer_debits": 0,
+    "historical_costs": "UNCHANGED_UNREPORTED_NOT_ZEROED"
+  },
+  "next_supported_no_debit_action": "Reuse accepted immutable package/rights/full-content evidence and the exact backend runtime inventory binding. Reuse applicable existing isolated playback-intent/stream-close/transaction tests, run missing focused cases only. Current real protected playback/accounting still needs specifically authorized normal-session capability under no-paid-session boundary.",
+  "remaining_required_owner_capability": "A specifically authorized normal Reading Pass acceptance envelope is needed before any new lease/customer-debit operation under the current no-paid-session boundary. Ask once only if all independent source and focused-test preparation is finished.",
+  "live_verified": false,
+  "backend_source_followup": {
+    "status": "LIVE_DECLARED_1950_FILE_INVENTORY_MATCHES_EXACT_GIT_REF_SOURCE_BYTES",
+    "record": "backend-provenance-followup.json",
+    "inventory_ref": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "scope": "All1950 declared delivered backend files; inventory and exact manifest bytes match fresh public runtime attestation. No provider Git-SHA inferred.",
+    "provider_git_sha": null
+  }
+}

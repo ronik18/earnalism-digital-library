@@ -1,0 +1,464 @@
+[
+  {
+    "url": "https://theearnalism.com/api/healthz",
+    "http": 200,
+    "sha256": "1f5024edb6d3577156af3b6a2184d9aa41351cfe54803655785a77a993410590",
+    "bytes": 701,
+    "observed_at": "2026-10-31T18:30:30.447235+00:00",
+    "json": {
+      "status": "ok",
+      "replica": "single",
+      "deployment": {
+        "git_sha": null,
+        "deployment_id": "29df0933-6abb-49e1-a2e0-4e9df5d96a80",
+        "project_id": "a8533934-35c4-463e-9f43-577a9ac391ee",
+        "service_id": "5af42e7e-f518-4f6a-b602-d9950866501f",
+        "environment_id": "580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+        "status": "UNAVAILABLE"
+      },
+      "runtime_source": {
+        "status": "MEASURED_MATCHES_MANIFEST",
+        "scope": "git-tracked-backend-delivery-excluding-build-only-files-and-manifest-v1",
+        "observed_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+        "manifest_sha256": "3204892598b46197bb6e80170a5a617891d89417d21f530dc7eae8a58cf47db6",
+        "file_count": 1950,
+        "measured_at_unix": 1793396759.0102952,
+        "snapshot_cached_for_process": true
+      }
+    }
+  },
+  {
+    "url": "https://theearnalism.com/api/reader/book/the-open-window/manifest",
+    "http": 200,
+    "sha256": "002dcad44daf7b393f4de3b9b61362c8fa147f8e5d02d2d47909a77b57a8f683",
+    "bytes": 6488,
+    "observed_at": "2026-10-31T18:30:31.380245+00:00",
+    "json": {
+      "book": {
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793009204/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a.png",
+        "estimated_reading_time": "5 min",
+        "back_cover_dominant_color": "#122D2F",
+        "title": "The Open Window",
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "id": "controlled-the-open-window",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+        "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+        "updated_at": "2026-10-26T10:23:01.242177+00:00",
+        "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window \u2014 and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
+        "dominant_color": "#102A2C",
+        "author": "Saki",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306019/earnalism/covers/front/cover_candidate_controlled-the-open-window-00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482.webp",
+        "created_at": "2026-07-03T20:07:49Z",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793306019/earnalism/covers/front/cover_candidate_controlled-the-open-window-00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482.webp",
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "about_author": "Saki (H.H. Munro, 1870\u20131916) was a British author of darkly comic and macabre short stories.",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306040/earnalism/covers/back/back_cover_candidate_controlled-the-open-window-b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615.webp",
+        "category_slug": "literary-fiction",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "title": "The Open Window",
+            "order": 1,
+            "is_preview": true,
+            "content_version": "f8af4f2208a80b35ebbd",
+            "word_count": 1219,
+            "reading_minutes": 6,
+            "processing_status": "ready",
+            "has_images": false,
+            "content_url": "/api/reader/chapter/the-open-window/chapter-001?v=f8af4f2208a80b35ebbd",
+            "index_contract": "chapter-index.v1",
+            "index_sequence": 1,
+            "index_sequence_label": "01",
+            "display_title": "The Open Window",
+            "index_title": "The Open Window",
+            "index_secondary_label": ""
+          }
+        ],
+        "slug": "the-open-window",
+        "formats": [
+          "Ebook"
+        ],
+        "is_published": true,
+        "subtitle": "",
+        "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story \u2014 and it works perfectly.",
+        "publication_status": "LIVE_APPROVED",
+        "launch_status": "LIVE_APPROVED",
+        "reader_enabled": true,
+        "preview_enabled": true,
+        "audio_enabled": true,
+        "audiobook_enabled": true,
+        "public_route": "/book/the-open-window",
+        "reader_url": "/reader/the-open-window",
+        "preview_url": "/reader/the-open-window",
+        "audio_url": "",
+        "audio_status": "AVAILABLE",
+        "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+        "audiobook_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+        "audiobook_duration_ms": 491436,
+        "audiobook_release_gate": "APPROVED",
+        "audio_qa_status": "QA_PASSED",
+        "cta_label": "Read",
+        "secondary_cta_label": "Read the first 3 pages free",
+        "public_json_ld_enabled": true,
+        "source_note": "Public-domain source verified for controlled reading.",
+        "rights_note": "Approved classic reading release."
+      },
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "title": "The Open Window",
+          "order": 1,
+          "is_preview": true,
+          "content_version": "f8af4f2208a80b35ebbd",
+          "word_count": 1219,
+          "reading_minutes": 6,
+          "processing_status": "ready",
+          "has_images": false,
+          "content_url": "/api/reader/chapter/the-open-window/chapter-001?v=f8af4f2208a80b35ebbd",
+          "index_contract": "chapter-index.v1",
+          "index_sequence": 1,
+          "index_sequence_label": "01",
+          "display_title": "The Open Window",
+          "index_title": "The Open Window",
+          "index_secondary_label": ""
+        }
+      ],
+      "audio": {
+        "enabled": true,
+        "asset_slug": "the-open-window",
+        "provider": "",
+        "voice": "",
+        "assets": {},
+        "url": "",
+        "size": 0,
+        "duration_ms": 491436,
+        "delivery_mode": "PROTECTED_PACKAGE_V2",
+        "release_gate": "APPROVED",
+        "qa_status": "QA_PASSED",
+        "sync_mode": "",
+        "highlight_sync_enabled": false,
+        "narration_disclosure": "",
+        "package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+        "version": "df1a5c4c7731a646",
+        "updated_at": ""
+      },
+      "chapter_index_contract": "chapter-index.v1",
+      "version": "0fb9ebac39ac0c6c628b",
+      "content_generation": 0,
+      "generated_at": "2026-10-31T18:30:30.729615+00:00",
+      "access": {
+        "role": "guest",
+        "authenticated": false,
+        "admin_preview": false,
+        "wallet_seconds": 0,
+        "can_read_paid": false,
+        "reading_pass": {
+          "enabled": true,
+          "free_entitlement": false,
+          "segments_ready": true,
+          "public_text_pages": 3,
+          "public_audio_seconds": 0,
+          "heartbeat_seconds": 10,
+          "maximum_lease_seconds": 20,
+          "text_inactivity_seconds": 120,
+          "book_manifest_url": "/api/reading-pass/books/the-open-window/manifest",
+          "total_pages": 3
+        }
+      },
+      "canonical_pages": {
+        "schema_version": "canonical-html-blocks-v1",
+        "content_revision": "e0d1520b45e1e4b0d1ac2f46",
+        "page_count": 3,
+        "ordering": "page_index_ascending_immutable",
+        "preview_policy": {
+          "unit": "canonical_page",
+          "public_limit": 3,
+          "enforced_by": "server",
+          "ready": true
+        },
+        "pages": [
+          {
+            "page_number": 1,
+            "page_id": "the-open-window:1:050e5891af38c449",
+            "chapter_id": "chapter-001",
+            "content_revision": "e0d1520b45e1e4b0d1ac2f46",
+            "content_hash": "050e5891af38c4491d20a0a0e2acaad518d08bd220db38764b96cf8fd009ad49"
+          },
+          {
+            "page_number": 2,
+            "page_id": "the-open-window:2:2bd73758e6f1f21b",
+            "chapter_id": "chapter-001",
+            "content_revision": "e0d1520b45e1e4b0d1ac2f46",
+            "content_hash": "2bd73758e6f1f21bf3c6fd90662f652f5c53e383c453a081a420e1f6fd305397"
+          },
+          {
+            "page_number": 3,
+            "page_id": "the-open-window:3:2e946923c53778c6",
+            "chapter_id": "chapter-001",
+            "content_revision": "e0d1520b45e1e4b0d1ac2f46",
+            "content_hash": "2e946923c53778c6d0defc36cb8d22ad47155f8685cd2bf6c38fa9b494c44e76"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://theearnalism.com/api/reader/book/the-open-window/audiobook/manifest",
+    "http": 401,
+    "sha256": "298cafdc8a4a875f49ec7ba0e2ef75c20f0bbedc4d1df9721b92ebc9114bb507",
+    "bytes": 214,
+    "observed_at": "2026-10-31T18:30:30.412709+00:00",
+    "json": {
+      "ok": false,
+      "detail": {
+        "code": "AUTH_REQUIRED",
+        "message": "A current authenticated Reading Pass lease is required."
+      },
+      "error": {
+        "code": 401,
+        "message": "Request failed"
+      },
+      "request_id": "875f0894-b161-467b-806b-cc0b601a93ae"
+    }
+  },
+  {
+    "url": "https://theearnalism.com/api/reader/book/the-selfish-giant/manifest",
+    "http": 200,
+    "sha256": "e12dfe9dd5209a4860c8f0b19563b3e4934e39bea3fc8647fcc5d1bc4c67c161",
+    "bytes": 6569,
+    "observed_at": "2026-10-31T18:30:31.674687+00:00",
+    "json": {
+      "book": {
+        "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793262926/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-afba47af368f03c9adff3033a4f8902934b54a72554c6e985036c21fae3da056.webp",
+        "estimated_reading_time": "7 min",
+        "back_cover_dominant_color": "#254238",
+        "title": "The Selfish Giant",
+        "who_for": [
+          "General readers",
+          "Students and lifelong learners",
+          "Users who prefer structured digital reading"
+        ],
+        "id": "controlled-the-selfish-giant",
+        "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+        "learnings": [
+          "Understand the major themes and structure of the work.",
+          "Engage with the text in a clean digital format.",
+          "Read without unrelated source-file boilerplate."
+        ],
+        "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+        "updated_at": "2026-10-29T08:53:03.392271+00:00",
+        "description": "The Giant drives children from his garden \u2014 and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
+        "dominant_color": "#254238",
+        "author": "Oscar Wilde",
+        "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
+        "created_at": "2026-07-03T20:07:49Z",
+        "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1793306060/earnalism/covers/front/cover_candidate_controlled-the-selfish-giant-666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e.webp",
+        "benefits": [
+          "Read a legally cleared digital text.",
+          "Enjoy a clean, structured reading format.",
+          "Access a render-safe ebook prepared for web reading."
+        ],
+        "about_author": "Oscar Wilde (1854\u20131900) was an Irish poet, playwright, and author celebrated for his wit and fairy tales.",
+        "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793306097/earnalism/covers/back/back_cover_candidate_controlled-the-selfish-giant-592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508.webp",
+        "category_slug": "young-readers",
+        "chapters": [
+          {
+            "id": "chapter-001",
+            "title": "The Selfish Giant",
+            "order": 1,
+            "is_preview": true,
+            "content_version": "150bdf112236466945f5",
+            "word_count": 1652,
+            "reading_minutes": 7,
+            "processing_status": "ready",
+            "has_images": false,
+            "content_url": "/api/reader/chapter/the-selfish-giant/chapter-001?v=150bdf112236466945f5",
+            "index_contract": "chapter-index.v1",
+            "index_sequence": 1,
+            "index_sequence_label": "01",
+            "display_title": "The Selfish Giant",
+            "index_title": "The Selfish Giant",
+            "index_secondary_label": ""
+          }
+        ],
+        "slug": "the-selfish-giant",
+        "formats": [
+          "Ebook"
+        ],
+        "is_published": true,
+        "subtitle": "",
+        "short_description": "A giant forbids children from his garden and is punished with eternal winter \u2014 until one small boy changes everything.",
+        "publication_status": "LIVE_APPROVED",
+        "launch_status": "LIVE_APPROVED",
+        "reader_enabled": true,
+        "preview_enabled": true,
+        "audio_enabled": true,
+        "audiobook_enabled": true,
+        "public_route": "/book/the-selfish-giant",
+        "reader_url": "/reader/the-selfish-giant",
+        "preview_url": "/reader/the-selfish-giant",
+        "audio_url": "",
+        "audio_status": "AVAILABLE",
+        "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+        "audiobook_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "audiobook_duration_ms": 777120,
+        "audiobook_release_gate": "APPROVED",
+        "audio_qa_status": "QA_PASSED",
+        "cta_label": "Read",
+        "secondary_cta_label": "Read the first 3 pages free",
+        "public_json_ld_enabled": true,
+        "source_note": "Public-domain source verified for controlled reading.",
+        "rights_note": "Approved classic reading release."
+      },
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "title": "The Selfish Giant",
+          "order": 1,
+          "is_preview": true,
+          "content_version": "150bdf112236466945f5",
+          "word_count": 1652,
+          "reading_minutes": 7,
+          "processing_status": "ready",
+          "has_images": false,
+          "content_url": "/api/reader/chapter/the-selfish-giant/chapter-001?v=150bdf112236466945f5",
+          "index_contract": "chapter-index.v1",
+          "index_sequence": 1,
+          "index_sequence_label": "01",
+          "display_title": "The Selfish Giant",
+          "index_title": "The Selfish Giant",
+          "index_secondary_label": ""
+        }
+      ],
+      "audio": {
+        "enabled": true,
+        "asset_slug": "the-selfish-giant",
+        "provider": "",
+        "voice": "",
+        "assets": {},
+        "url": "",
+        "size": 0,
+        "duration_ms": 777120,
+        "delivery_mode": "PROTECTED_PACKAGE_V2",
+        "release_gate": "APPROVED",
+        "qa_status": "QA_PASSED",
+        "sync_mode": "",
+        "highlight_sync_enabled": false,
+        "narration_disclosure": "",
+        "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+        "version": "009e67b8c63a7483",
+        "updated_at": ""
+      },
+      "chapter_index_contract": "chapter-index.v1",
+      "version": "dd46ec8d382c9e53203a",
+      "content_generation": 0,
+      "generated_at": "2026-10-31T18:30:31.070452+00:00",
+      "access": {
+        "role": "guest",
+        "authenticated": false,
+        "admin_preview": false,
+        "wallet_seconds": 0,
+        "can_read_paid": false,
+        "reading_pass": {
+          "enabled": true,
+          "free_entitlement": false,
+          "segments_ready": true,
+          "public_text_pages": 3,
+          "public_audio_seconds": 0,
+          "heartbeat_seconds": 10,
+          "maximum_lease_seconds": 20,
+          "text_inactivity_seconds": 120,
+          "book_manifest_url": "/api/reading-pass/books/the-selfish-giant/manifest",
+          "total_pages": 3
+        }
+      },
+      "canonical_pages": {
+        "schema_version": "canonical-html-blocks-v1",
+        "content_revision": "5245872e15bf7f710998052f",
+        "page_count": 3,
+        "ordering": "page_index_ascending_immutable",
+        "preview_policy": {
+          "unit": "canonical_page",
+          "public_limit": 3,
+          "enforced_by": "server",
+          "ready": true
+        },
+        "pages": [
+          {
+            "page_number": 1,
+            "page_id": "the-selfish-giant:1:36d4720c1ba72ece",
+            "chapter_id": "chapter-001",
+            "content_revision": "5245872e15bf7f710998052f",
+            "content_hash": "36d4720c1ba72ecede2ac3b2cc1e3f0a0690098dfa4b94d21c6fec3967d1b04a"
+          },
+          {
+            "page_number": 2,
+            "page_id": "the-selfish-giant:2:1c5f80c724de7c59",
+            "chapter_id": "chapter-001",
+            "content_revision": "5245872e15bf7f710998052f",
+            "content_hash": "1c5f80c724de7c59efdb863f4e8c4b213cc84f5a11d2aee40781567151f72aba"
+          },
+          {
+            "page_number": 3,
+            "page_id": "the-selfish-giant:3:546053f72c565dda",
+            "chapter_id": "chapter-001",
+            "content_revision": "5245872e15bf7f710998052f",
+            "content_hash": "546053f72c565dda97ac7be4654bc97974afd68b575c778a525c1b0750dad6f8"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://theearnalism.com/api/reader/book/the-selfish-giant/audiobook/manifest",
+    "http": 401,
+    "sha256": "0773d3b08992b7cd365bc79cdc800aa9c4b779b170250d31dd6efae116bd6ced",
+    "bytes": 214,
+    "observed_at": "2026-10-31T18:30:30.896438+00:00",
+    "json": {
+      "ok": false,
+      "detail": {
+        "code": "AUTH_REQUIRED",
+        "message": "A current authenticated Reading Pass lease is required."
+      },
+      "error": {
+        "code": 401,
+        "message": "Request failed"
+      },
+      "request_id": "eba4145d-94c8-4aed-bb55-18c183bb5def"
+    }
+  },
+  {
+    "url": "https://theearnalism.com/book/the-open-window",
+    "http": 200,
+    "sha256": "d5716dbc3c669f204a84e6a287751456c4947cf803aae8906d7cdaf531af3d06",
+    "bytes": 7386,
+    "observed_at": "2026-10-31T18:30:31.044996+00:00",
+    "html_title_present": true
+  },
+  {
+    "url": "https://theearnalism.com/book/the-selfish-giant",
+    "http": 200,
+    "sha256": "830719e3a681c09967242dd3cfe03142896639d4425784d52e81954b4809890a",
+    "bytes": 7538,
+    "observed_at": "2026-10-31T18:30:31.218832+00:00",
+    "html_title_present": true
+  }
+]
