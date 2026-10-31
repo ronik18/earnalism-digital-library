@@ -13011,5 +13011,24 @@
       "new_spend_usd": 0,
       "observed_at": "2026-10-31T05:02:04.255156+00:00"
     }
+  },
+  "the_student_private_audition_execution_20261031": {
+    "observed_at": "2026-10-31T06:27:04.098893+00:00",
+    "decision": "PRIVATE_GENERATION_COMPLETE_OUTPUT_RETENTION_BLOCKED",
+    "slug": "the-student",
+    "integration_base": "f756d259aa292f3171f41428ecfa3e7c0a3c526d",
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/checkpoint.json",
+    "owner_export_approval": "EXPLICIT",
+    "allocations_consumed": 1,
+    "new_purchases": 0,
+    "actual_cost": "NOT_REPORTED",
+    "release_ready": false,
+    "blocker": {
+      "code": "AUDITION_ARCHIVE_RETENTION_UNVERIFIED",
+      "reason": "Generation exited successfully, but download failed before unconditional early shutdown; no retained audio bytes verified. No ASR or listening review performed.",
+      "required_action": "Locate existing Earnalism_Student_Private_Audition_20261031.zip and provide its local path for checksum verification. Do not reconnect or replay: the single allocation and passage takes are consumed.",
+      "expected_sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7"
+    },
+    "learning": "Never shut down early solely because files.download was requested. Verify durable retained bytes; preserve the hard absolute shutdown limit. Offline retention codec validation is not actual Drive transport validation."
   }
 }

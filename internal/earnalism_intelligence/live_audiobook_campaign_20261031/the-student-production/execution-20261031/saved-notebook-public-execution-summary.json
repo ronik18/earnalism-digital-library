@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.private-audition-execution-summary.v1",
+  "source_notebook_id": "13WV0k4Gt2rQwxevyv4350DxGTomvdZJ5",
+  "execution_count": 1,
+  "elapsed_ms": 844094,
+  "streams": [
+    {
+      "stream": "stdout",
+      "text": [
+        "{\"stage\": \"admission\", \"gpu\": \"Tesla T4\", \"samples\": 7, \"new_cash_spend_ceiling_usd\": 0, \"max_minutes\": 30}\n",
+        "GENERATED_REQUIRES_REAL_TEXT_AUDIO_AND_LISTENING_REVIEW; NOT_RELEASE_READY\n",
+        "{\"export\": \"Earnalism_Student_Private_Audition_20261031.zip\", \"bytes\": 16073033, \"sha256\": \"ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7\", \"release_ready\": false}\n"
+      ]
+    },
+    {
+      "stream": "stdout",
+      "text": [
+        "Export requested. This allocation will disconnect in 90 seconds; no automatic retry.\n"
+      ]
+    }
+  ],
+  "private_identity_and_javascript_transport_metadata_omitted": true
+}

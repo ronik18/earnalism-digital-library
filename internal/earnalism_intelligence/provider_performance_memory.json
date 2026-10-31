@@ -986,5 +986,13 @@
       "synthesis_performed": false,
       "next_action": "Repair or rotate the Azure Speech key before any future title-specific preflight; do not infer usability from variable presence."
     }
+  },
+  "student_qwen_ryan_execution_20261031": {
+    "evidence": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/checkpoint.json",
+    "generation": "SUCCESS_EXIT",
+    "quality": "UNASSESSED_NO_RETAINED_AUDIO",
+    "transport": "FAILED_TO_VERIFY_ARCHIVE_BEFORE_SHUTDOWN",
+    "retry": "NO_REPLAY_AUTHORIZED_SINGLE_ALLOCATION_CONSUMED",
+    "not_a_provider_quality_plateau": true
   }
 }
