@@ -1,5 +1,5 @@
 {
-  "status": "MATERIAL_WORDING_REVIEW_REQUIRED_NOT_RELEASE_READY",
+  "status": "CORROBORATED_CONTENT_DEFECT_REPAIR_REQUIRED_NOT_RELEASE_READY",
   "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
   "current_source_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
   "generation_source_binding": "Canonical content plus exactly LF matches recorded source 44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
@@ -19,7 +19,9 @@
       "method": "Decoded original interval to PCM WAV; no speech generation, gain, music or edits within interval"
     },
     "owner_response": "I cannot tell",
-    "omission_confirmed": false
+    "omission_confirmed": false,
+    "automated_auditory_result": "BLIND_AUDIO_REVIEW_CORROBORATES_MISSING_PHRASE_NO_UNCLEAR_SPANS",
+    "human_omission_confirmation": "NOT_ESTABLISHED_OWNER_INCONCLUSIVE"
   },
   "rules": [
     "Do not accept an aggregate 9.7 score while a material word omission is unresolved.",
@@ -47,5 +49,7 @@
     "correction": "Earlier comparison of WER-derived numbers to the canonical threshold mixed metrics. The unchanged repository scorer was applied offline to both complete transcripts; no new inference."
   },
   "owner_response_receipt": "../owner-response-followup/owner-wording-response.json",
-  "automated_audio_review_transfer_gate": "../owner-response-followup/audio-review-transfer-gate.json"
+  "automated_audio_review_transfer_gate": "../owner-response-followup/audio-review-transfer-gate.json",
+  "automated_auditory_evidence": "../owner-response-followup/review-interpretation.json",
+  "repair_plan": "../owner-response-followup/matched-voice-repair-packet.json"
 }

@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-31T16:32:59.545568+00:00",
+  "approved": true,
+  "owner_statement": "Approve sending the existing 18-second Sredni excerpt to OpenAI for one text-only review within $0.03, no retry, allocation or synthesis. Continue autonomously and keep the naturalness and expressive storytelling gates strict.",
+  "authority_source": "EXPLICIT_OWNER_RESPONSE_AFTER_PAYLOAD_REJECTION",
+  "clip_sha256": "50c807c59161e075aa6d1df9de5876dcd18c89a7249aabc02e065ee128630313",
+  "destination": "https://api.openai.com/v1/chat/completions",
+  "max_requests": 1,
+  "cost_envelope_usd": 0.03,
+  "no_synthesis": true,
+  "no_allocation": true,
+  "no_retry": true,
+  "modalities": [
+    "text"
+  ],
+  "full_book_or_release_approval": false
+}
