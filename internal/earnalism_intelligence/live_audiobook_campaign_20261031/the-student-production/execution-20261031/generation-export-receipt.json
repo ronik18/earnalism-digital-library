@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-10-31T06:10:44.059612+00:00",
+  "saved_notebook_sha256": "3b76c94dd5a59d928b2365c0b381763b104ab41e3fc2c394f51fd6637e9afa44",
+  "execution_count": 1,
+  "notebook_runtime_elapsed_ms": 844094,
+  "generation_process_exit": "SUCCESS_OBSERVED_BEFORE_EXPORT",
+  "expected_title_passages": 7,
+  "archive_receipt": {
+    "export": "Earnalism_Student_Private_Audition_20261031.zip",
+    "bytes": 16073033,
+    "sha256": "ad378dd1d3c6eac0f1a4d00e824f6ed3a991a897ff9cc422b969a10e454659f7",
+    "release_ready": false
+  },
+  "archive_retention": "UNVERIFIED_NOT_PRESENT_AT_KNOWN_LOCAL_DESTINATIONS",
+  "browser_transfer_error": "Colab output JavaScript could not load; browser requested reload; no security settings weakened",
+  "synthesis_replayed": false,
+  "replacement_allocation_requested": false,
+  "listening_and_ASR": "NOT_PERFORMED_NO_RETAINED_AUDIO",
+  "publication_ready": false
+}

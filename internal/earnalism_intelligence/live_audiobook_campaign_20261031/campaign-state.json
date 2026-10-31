@@ -286,5 +286,12 @@
     "Production costs for unqualified plans are unknown; prior costs remain in their original ledgers.",
     "BLOCKED is a current evidence/access state, not a claim that public-domain audio rights cannot be established.",
     "No publication setting, manuscript, cover, customer entitlement, account or provider configuration changed."
-  ]
+  ],
+  "student_audition_execution": {
+    "status": "PRIVATE_GENERATION_COMPLETE_OUTPUT_RETENTION_BLOCKED",
+    "evidence": "the-student-production/checkpoint.json",
+    "allocations_consumed": 1,
+    "new_publications": 0,
+    "existing_public_audio_preserved": true
+  }
 }

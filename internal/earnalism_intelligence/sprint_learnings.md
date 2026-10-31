@@ -2888,3 +2888,6 @@ Reuse good covers; new title-specific original illustration and exact Canva typo
 - Exact-source prose layout resolves106 artificial wraps:127 imported blocks become21 real paragraphs and40 synthesis units. Reader bytes stay unchanged.
 - Seven Ryan audition passages and actual-worker structural validation prepared; weights, synthesis, ASR and listening remain unperformed.
 - Automatic approval review rejected Google export of the source/code notebook. No workaround: exact notebook upload and bounded audition permission requested; no allocation or spending.
+
+
+2026-10-31 The Student: one approved seven-passage Ryan allocation completed generation; archive transfer was unverified before early shutdown. Zero active sessions confirmed before the 30-minute deadline. Do not treat success stdout or five acoustic metadata receipts as retained audio or listening approval. No second allocation, purchase or publication. Require a retained-byte transport probe and per-passage persistence before future separately authorized inference; offline codec tests alone do not qualify Google transport. See internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-student-production/checkpoint.json.

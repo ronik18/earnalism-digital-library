@@ -74,3 +74,6 @@ With an existing checkpoint, this command prints the saved reconciliation and ex
 ## The Student continuation
 
 PR #601 merged at c23a74650 with exact-head gates passing; no deployment. The shortest audio-hidden book is source-qualified.106 artificial line wraps resolved in narration-only mapping;40 synthesis units and7 exact-source Ryan audition passages prepared. Underlying India literary audio basis independently qualified; package/voice suitability remain incomplete. Automatic approval review rejected export of the77KB notebook to Google Colab/Drive; explicit owner authorization is pending. No compute allocated or spend incurred. See [production checkpoint](the-student-production/checkpoint.json).
+
+
+The Student execution update: owner approved Google upload and the bounded run. Seven passages generated in one allocation (cell elapsed 844.094 seconds); zero active sessions verified before deadline. Archive retention failed verification, so content/listening qualification remains BLOCKED. No new audiobook publication; campaign reconciliation remains 52 BLOCKED, including two preserved existing public packages awaiting current-source verification. Actual provider credit usage is unavailable; no purchases. Existing ZIP checksum and recovery action are in the execution checkpoint.

@@ -1,0 +1,14 @@
+{
+  "status": "OFFLINE_CODEC_ROUNDTRIP_AND_FAILURE_CASES_PASS",
+  "checks": [
+    "exact byte/hash roundtrip",
+    "corruption rejected",
+    "missing required artifact rejected",
+    "path traversal rejected"
+  ],
+  "fixture_is_real_speech": false,
+  "Google_Drive_transport_tested": false,
+  "GPU_allocated": false,
+  "synthesis_performed": false,
+  "new_authority": "Existing one-allocation allowance consumed; no replacement approved."
+}
