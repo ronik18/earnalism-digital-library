@@ -18,6 +18,7 @@ import {
   PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE,
   TASK_B_PRODUCTION_LINK_ACTION_BASELINE,
+  HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -192,8 +193,8 @@ test("the directly requested post-merge Library recovery preserves the approved 
 
 test("the owner-authorized Task B Home link correction has an exact source-bound transition", () => {
   const baseline = loadLibraryInteractionBaseline(root, TASK_B_PRODUCTION_LINK_ACTION_BASELINE);
-  const comparison = compareLibraryInteractionBaseline(root, TASK_B_PRODUCTION_LINK_ACTION_BASELINE);
-  assert.equal(compareLibraryInteractionBaseline(root).approval_source, TASK_B_PRODUCTION_LINK_ACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(TASK_B_PRODUCTION_LINK_ACTION_BASELINE), TASK_B_PRODUCTION_LINK_ACTION_BASELINE);
+
   assert.equal(comparison.previous_surface_sha256, "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf");
   assert.equal(comparison.expected_surface_sha256, "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86");
   assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
@@ -238,6 +239,22 @@ test("an unauthorized PR466 homepage baseline mutation fails closed", () => {
   value.owner_authorization.reference = "UNAUTHORIZED";
   write(record, value);
   assert.throws(() => loadLibraryInteractionBaseline(temporary, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE));
+});
+
+test("the owner-directed Hourglass/Sherlock successor matches current source and preserves the previous record", () => {
+  const baseline = loadLibraryInteractionBaseline(root, HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(root);
+  assert.equal(comparison.approval_source, HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.expected_surface_sha256, "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975");
+  assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
+  assert.equal(comparison.result, "PASS");
+  assert.equal(baseline.previous_baseline.record_path, TASK_B_PRODUCTION_LINK_ACTION_BASELINE);
+  assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/styles/library-paper-review.css", "frontend/src/lib/controlledLaunch.js"]);
+  for (const input of baseline.input_paths) {
+    const temporary = materializeReviewedSurface(HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
+    fs.appendFileSync(path.join(temporary, input), "\n// unauthorized change\n");
+    assert.equal(compareLibraryInteractionBaseline(temporary).result, "FAIL");
+  }
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));

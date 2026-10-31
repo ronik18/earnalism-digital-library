@@ -39,7 +39,7 @@
 .reference-library .reference-filter-group button[aria-pressed="true"] { color: #fff9ee; background: #651d32; border-color: #651d32; font-weight: 500; }
 /* The original hourglass photograph is positioned at native resolution.
    The clip excludes the reference's button; all card copy and CTA are live HTML. */
-.reference-library .reference-library__pass { position: relative; isolation: isolate; min-height: 216px; padding: 20px 15px; margin-top: 24px; overflow: hidden; background: linear-gradient(145deg,#e2c9a2,#e3caa4 50%,#e8c996) !important; border: 1px solid #dec295; border-radius: 10px; }
+.reference-library .reference-library__pass { position: relative; isolation: isolate; min-height: 216px; padding: 20px 15px 115px; margin-top: 24px; overflow: hidden; background: linear-gradient(145deg,#e2c9a2,#e3caa4 50%,#e8c996) !important; border: 1px solid #dec295; border-radius: 10px; }
 .reference-library .reference-library__pass h2 { position: relative; z-index: 1; margin: 0; color: #3b2725; font: 500 1.4rem/1.15 var(--qh-display); letter-spacing: -.01em; }
 .reference-library .reference-library__pass p { position: relative; z-index: 1; margin: 10px 0 16px; color: #47342c; font: 400 .8125rem/1.5 var(--qh-ui); }
 .reference-library .reference-library__pass a { position: relative; z-index: 2; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; max-width: 100%; border: 1px solid #c49849; border-radius: 5px; padding: 8px 10px; background: linear-gradient(125deg,#ecd092,#d4aa5e); color: #35231b; font: 500 .75rem/1.35 var(--qh-ui); text-decoration: none; box-shadow: inset 0 1px 0 #f7e4b6; }
@@ -49,7 +49,7 @@
 .reference-library .reference-library__pass-art img { position: absolute; width: 1168px; height: 1474px; max-width: none; left: -120px; top: -990px; }
 .reference-library .reference-library__pass--compact { display: none; }
 @media (max-width: 1023px) {
-  .reference-library .reference-library__pass--compact { display: block; max-width: 380px; min-height: 172px; margin-top: 32px; padding: 20px; }
+  .reference-library .reference-library__pass--compact { display: block; max-width: 380px; min-height: 172px; margin-top: 32px; padding: 20px 20px 115px; }
   .reference-library .reference-library__pass--compact p { margin: 8px 0 14px; }
   .reference-library .reference-library__pass--compact .reference-library__pass-art { right: 10px; bottom: 0; }
 }
@@ -65,7 +65,7 @@
 .reference-library .reference-book-tile__title { color: #302027 !important; font: 400 1.1rem/1.25 var(--qh-display); min-height: 2.5em; }
 .reference-library .reference-book-tile__author { color: #76635e !important; font-size: .75rem; line-height: 1.5; }
 .reference-library .reference-book-tile__actions { flex-wrap: wrap; gap: 0 .55rem; margin-top: .05rem; }
-.reference-library .reference-book-tile__actions a { min-height: 44px; color: #651d32 !important; font-size: .8125rem; font-weight: 500; text-decoration: none; }
+.reference-library .reference-book-tile__actions a { min-height: 44px; min-width: 44px; color: #651d32 !important; font-size: .8125rem; font-weight: 500; text-decoration: none; }
 .reference-library .reference-book-tile__actions a:hover { text-decoration: underline; text-underline-offset: .2em; }
 .reference-library .reference-book-tile__locked-audio { color: #6c5958; min-height: 1.5rem; font-size: .75rem; line-height: 1.4; }
 .reference-library .reference-book-tile__status { top: .55rem; left: .5rem; font-size: .625rem; letter-spacing: .04em; font-weight: 600; text-transform: uppercase; border-radius: .2rem; padding: .38rem .42rem; background: #ebc681; color: #362019; }

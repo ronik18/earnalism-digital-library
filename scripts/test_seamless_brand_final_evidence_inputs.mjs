@@ -5,13 +5,13 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { compareLibraryInteractionBaseline, DEFAULT_LIBRARY_INTERACTION_BASELINE } from "./lib/library_interaction_baseline.mjs";
+import { compareLibraryInteractionBaseline, loadLibraryInteractionBaseline, DEFAULT_LIBRARY_INTERACTION_BASELINE } from "./lib/library_interaction_baseline.mjs";
 
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
 const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
-const currentHash = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
+const currentHash = "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
@@ -89,9 +89,9 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
-test("active Task B link-integrity baseline is the canonical reproduced current surface", () => {
+test("active Hourglass/Sherlock baseline is the canonical reproduced current surface", () => {
   const baseline = compareLibraryInteractionBaseline(root);
-  assert.equal(currentRecord, "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json");
+  assert.equal(currentRecord, "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json");
   assert.equal(baseline.result, "PASS");
   assert.equal(baseline.expected_surface_sha256, currentHash);
   assert.equal(baseline.observed_surface_sha256, currentHash);
@@ -127,6 +127,75 @@ test("the now-stale issue380 Library baseline cannot satisfy the current run", (
   input.library_interaction_baseline.expected_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
   input.library_interaction_baseline.observed_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
 }));
+test("the historical Task B baseline cannot satisfy the current run", () => invalid((input) => {
+  input.library_interaction_baseline.approval_source = "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json";
+  input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
+  input.library_interaction_baseline.expected_surface_sha256 = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
+  input.library_interaction_baseline.observed_surface_sha256 = "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86";
+}));
 test("an unauthorized Library baseline record fails", () => invalid((input) => { input.library_interaction_baseline.approval_source = "docs/design-system/pr360-library-interaction-baseline.json"; }));
 
+
+
+// Exercise the actual generator, not just the downstream validator. All capture
+// metadata here is synthetic; unrelated route hashes deliberately remain FAIL.
+const generatorFixture = fs.mkdtempSync(path.join(os.tmpdir(), "library-generator-inputs-"));
+const copy = (relative) => {
+  const target = path.join(generatorFixture, relative);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.copyFileSync(path.join(root, relative), target);
+};
+const activeBaseline = loadLibraryInteractionBaseline(root);
+for (const relative of [...activeBaseline.input_paths, "frontend/package.json", "frontend/package-lock.json", "frontend/vercel.json", "frontend/public/assets/brand/earnalism-brand-lockup.png"]) copy(relative);
+fs.symlinkSync(path.join(root, "docs"), path.join(generatorFixture, "docs"));
+const generatorChromium = path.join(generatorFixture, "chromium");
+const generatorCross = path.join(generatorFixture, "cross");
+const generatorOutput = path.join(generatorFixture, "output");
+fs.mkdirSync(generatorChromium, { recursive: true });
+fs.mkdirSync(generatorCross, { recursive: true });
+const routeFamilies = ["home_library_commerce_body", "shared_public_header", "shared_footer", "auth_account", "editorial_campaign", "book_detail", "error_surfaces", "reader", "listener"];
+write(path.join(generatorChromium, "capture-summary.json"), {
+  route_surface_hashes: Object.fromEntries(routeFamilies.map((name) => [name, "a".repeat(64)])),
+  expected_state_count: stateCount, captured_state_count: stateCount, stable_state_count: stateCount,
+  rendered_ui_defect_states: [], production_mutation_count: 0,
+});
+const states = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states;
+for (const state of states) {
+  const directory = path.join(generatorChromium, "states", state.id);
+  fs.mkdirSync(directory, { recursive: true });
+  write(path.join(directory, "metadata.json"), { fixture: "synthetic-generator-test-only", zoom: 100 });
+}
+const cross = Object.fromEntries(["firefox", "webkit"].map((browser) => [browser, {
+  expected_state_count: shellCount, captured_state_count: shellCount, stable_state_count: shellCount, rendered_ui_result: "PASS",
+}]));
+write(path.join(generatorCross, "cross-browser-summary.json"), cross);
+for (const browser of Object.keys(cross)) {
+  fs.mkdirSync(path.join(generatorCross, browser));
+  write(path.join(generatorCross, browser, "capture-summary.json"), cross[browser]);
+}
+const build = path.join(generatorFixture, "frontend/build");
+fs.mkdirSync(build);
+write(path.join(build, "static-seo-snapshot-manifest.json"), { routes: [{ route: "/" }] });
+write(path.join(build, "index.html"), '<title>Synthetic generator test</title><link rel="canonical" href="https://theearnalism.com/"><meta name="robots" content="index,follow"><img src="https://theearnalism.com/assets/brand/earnalism-brand-lockup.png">');
+const generate = () => {
+  execFileSync(process.execPath, [path.join(root, "scripts/generate_seamless_brand_final_evidence_inputs.mjs"), "--output", generatorOutput, "--chromium", generatorChromium, "--cross-browser", generatorCross], {
+    cwd: generatorFixture, stdio: "pipe",
+    env: { ...process.env, GIT_DIR: execFileSync("git", ["rev-parse", "--absolute-git-dir"], { cwd: root, encoding: "utf8" }).trim(), GIT_WORK_TREE: generatorFixture },
+  });
+  return JSON.parse(fs.readFileSync(path.join(generatorOutput, "route-surface-hashes.json"), "utf8"));
+};
+test("actual generator hashes the reviewed six-file Library input set consistently", () => {
+  const generated = generate();
+  expectLibrary(generated, "PASS");
+  assert.equal(generated.route_family_hashes.library_interaction_surface.current_hash, currentHash);
+  assert.equal(generated.route_family_hashes.library_interaction_surface.approval_source, currentRecord);
+  assert.equal(generated.route_family_hashes.reader.result, "FAIL", "synthetic captures must not imply real route acceptance");
+});
+function expectLibrary(generated, expected) {
+  assert.equal(generated.route_family_hashes.library_interaction_surface.result, expected);
+}
+test("actual generator rejects an unreviewed mapping change despite synthetic capture values", () => {
+  fs.appendFileSync(path.join(generatorFixture, "frontend/src/lib/controlledLaunch.js"), "\n// unreviewed test mutation\n");
+  expectLibrary(generate(), "FAIL");
+});
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
