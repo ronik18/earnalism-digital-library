@@ -1,6 +1,6 @@
 {
   "recorded_at": "2026-10-31T12:49:56.081063+00:00",
-  "status": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_PAYLOAD_TRANSFER_PENDING_OWNER_RESPONSE",
+  "status": "EXPLICIT_OWNER_APPROVAL_BOUND_ONE_REVIEW_EXECUTED_RESULT_RETAINED",
   "planned_operation": "One blind text-only audio-understanding review of existing 17.98-second excerpt",
   "destination": "https://api.openai.com/v1/chat/completions",
   "model": "gpt-audio-mini-2025-12-15",
@@ -23,11 +23,24 @@
   },
   "rejected_action": "Upload private excerpt to the OpenAI API for text-only audio review",
   "rejection_reason": "Broad audiobook/cost authorization does not specifically authorize sending this sensitive audio payload to that destination.",
-  "process_started": false,
-  "paid_inference_requests": 0,
+  "process_started": true,
+  "paid_inference_requests": 1,
   "new_synthesis": false,
   "new_allocations": 0,
   "new_purchases": 0,
   "workaround_attempted": false,
-  "required_owner_action": "Specific approval for this existing excerpt to OpenAI, one text-only review, <=$0.03 envelope, no retries/allocation/synthesis/publication. Pending async question; do not ask the same listening question again."
+  "required_owner_action": "NONE_FOR_CONSUMED_REVIEW. No further request/retry is permitted under this grant. Any future new narration remains prohibited by current instruction.",
+  "prior_rejection": {
+    "status": "AUTOMATIC_APPROVAL_REVIEW_REJECTED_PAYLOAD_TRANSFER_PENDING_OWNER_RESPONSE",
+    "reason": "Broad audiobook/cost authorization does not specifically authorize sending this sensitive audio payload to that destination.",
+    "process_started": false
+  },
+  "owner_approval_receipt": "owner-transfer-approval.json",
+  "review_result": "blind-review-result.json",
+  "review_interpretation": "review-interpretation.json",
+  "usage_derived_estimated_usd": 0.0022928000000000002,
+  "usage_upper_bound_estimated_usd": 0.0039284,
+  "provider_invoice_charge": "NOT_REPORTED",
+  "request_envelope_closed": true,
+  "remaining_requests": 0
 }

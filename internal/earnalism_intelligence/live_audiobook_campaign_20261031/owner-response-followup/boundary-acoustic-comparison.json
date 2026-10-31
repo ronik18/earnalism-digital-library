@@ -1,0 +1,20 @@
+{
+  "boundary_seconds": 155.4,
+  "source": "Original local chunks compared with the retained master; no synthesis or external transfer",
+  "observations": {
+    "chunk_0_tail_vs_master": {
+      "max_normalized_correlation": 0.9999843575072356,
+      "lag_seconds": 0.0,
+      "scope": "Decoded local waveform similarity only, not wording/listening approval"
+    },
+    "chunk_1_head_vs_master": {
+      "max_normalized_correlation": 0.9999882315674161,
+      "lag_seconds": 0.0,
+      "scope": "Decoded local waveform similarity only, not wording/listening approval"
+    }
+  },
+  "interpretation": "High similarity on both sides supports that the master retained the original chunk speech at this join; it does not establish lexical completeness or justify an automatic splice.",
+  "new_allocation": false,
+  "new_synthesis": false,
+  "release_ready": false
+}
