@@ -72,27 +72,30 @@ def main() -> int:
         from pymongo import MongoClient
     except ImportError as exc:
         raise SystemExit(f"BLOCKED: pymongo is required: {exc}") from exc
-    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard")
-    client.admin.command("ping")
-    db_name = os.environ.get("MONGODB_DB_NAME") or os.environ.get("DB_NAME") or mongo_url.rsplit("/", 1)[-1].split("?", 1)[0] or "earnalism"
-    collection = client[db_name][os.environ.get("MONGODB_BOOKS_COLLECTION", "books")]
-    books = list(collection.find({}, {"_id": 0}))
-    roots = [args.artifact_root, args.artifact_root.parent.parent.parent / "data" / "controlled_publications"]
-    rows = [inspect_slug(roots, str(book.get("slug") or ""), book) for book in books]
-    report = {
-        "mode": "read_only_reconciliation",
-        "book_count": len(rows),
-        "artifact_missing_count": sum("missing_controlled_artifact" in row["blockers"] for row in rows),
-        "reader_unproven_count": sum("reader_exposure_unproven" in row["blockers"] for row in rows),
-        "audio_unproven_count": sum(not row["audio_exposure_proven"] for row in rows),
-        "ready_count": sum(not row["blockers"] for row in rows),
-        "roots": [str(root) for root in roots],
-        "rows": rows,
-    }
-    args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print("books={book_count} missing_artifacts={artifact_missing_count} reader_unproven={reader_unproven_count} ready={ready_count}".format(**report))
-    print(f"wrote={args.output}")
-    return 0
+    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard", maxPoolSize=8, minPoolSize=0, maxConnecting=2)
+    try:
+        client.admin.command("ping")
+        db_name = os.environ.get("MONGODB_DB_NAME") or os.environ.get("DB_NAME") or mongo_url.rsplit("/", 1)[-1].split("?", 1)[0] or "earnalism"
+        collection = client[db_name][os.environ.get("MONGODB_BOOKS_COLLECTION", "books")]
+        books = list(collection.find({}, {"_id": 0}))
+        roots = [args.artifact_root, args.artifact_root.parent.parent.parent / "data" / "controlled_publications"]
+        rows = [inspect_slug(roots, str(book.get("slug") or ""), book) for book in books]
+        report = {
+            "mode": "read_only_reconciliation",
+            "book_count": len(rows),
+            "artifact_missing_count": sum("missing_controlled_artifact" in row["blockers"] for row in rows),
+            "reader_unproven_count": sum("reader_exposure_unproven" in row["blockers"] for row in rows),
+            "audio_unproven_count": sum(not row["audio_exposure_proven"] for row in rows),
+            "ready_count": sum(not row["blockers"] for row in rows),
+            "roots": [str(root) for root in roots],
+            "rows": rows,
+        }
+        args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print("books={book_count} missing_artifacts={artifact_missing_count} reader_unproven={reader_unproven_count} ready={ready_count}".format(**report))
+        print(f"wrote={args.output}")
+        return 0
+    finally:
+        client.close()
 
 
 if __name__ == "__main__":

@@ -573,41 +573,44 @@ def publish(args: argparse.Namespace) -> dict[str, Any]:
         write_publication_report(payload, Path(args.report))
         return payload
 
-    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard")
-    db_name = os.environ.get("DB_NAME") or database_name_from_mongo_url(mongo_url)
-    db = client[db_name]
-    before = db.books.find_one({"slug": ALLOWED_SLUG}, {"_id": 0}) or {}
-    payload["before_state"] = public_state(before)
-    if not before:
-        payload["status"] = "BLOCKED"
-        payload["issues"].append("Dracula book record was not found.")
+    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard", maxPoolSize=8, minPoolSize=0, maxConnecting=2)
+    try:
+        db_name = os.environ.get("DB_NAME") or database_name_from_mongo_url(mongo_url)
+        db = client[db_name]
+        before = db.books.find_one({"slug": ALLOWED_SLUG}, {"_id": 0}) or {}
+        payload["before_state"] = public_state(before)
+        if not before:
+            payload["status"] = "BLOCKED"
+            payload["issues"].append("Dracula book record was not found.")
+            write_publication_report(payload, Path(args.report))
+            return payload
+
+        update = controlled_publication_update(context.source_evidence, now=payload["generated_at"])
+        update["publication_workflow"] = canonical_update({**before, **update})
+        payload["rollback_plan"] = rollback_plan(payload["before_state"])
+        if args.commit:
+            from backend.public_metadata_cache import reject_unsupported_writer
+            reject_unsupported_writer(db)
+            result = db.books.update_one({"slug": ALLOWED_SLUG}, {"$set": update})
+            payload["matched_count"] = int(result.matched_count)
+            payload["modified_count"] = int(result.modified_count)
+            payload["mutation_performed"] = True
+            payload["cache_invalidation"] = invalidate_redis_cache_generations()
+        else:
+            payload["matched_count"] = 1
+            payload["modified_count"] = 0
+            payload["cache_invalidation"] = {"attempted": False, "reason": "dry-run"}
+
+        after = db.books.find_one({"slug": ALLOWED_SLUG}, {"_id": 0}) or {}
+        payload["after_state"] = public_state(after)
+        payload["live_verification"] = live_verify(args.api_base_url, args.web_base_url) if args.live_verify else {}
+        if args.commit and not payload["live_verification"].get("pass"):
+            payload["status"] = "PUBLISHED_WITH_VERIFICATION_BLOCKERS"
+            payload["issues"].append("Live verification did not pass.")
         write_publication_report(payload, Path(args.report))
         return payload
-
-    update = controlled_publication_update(context.source_evidence, now=payload["generated_at"])
-    update["publication_workflow"] = canonical_update({**before, **update})
-    payload["rollback_plan"] = rollback_plan(payload["before_state"])
-    if args.commit:
-        from backend.public_metadata_cache import reject_unsupported_writer
-        reject_unsupported_writer(db)
-        result = db.books.update_one({"slug": ALLOWED_SLUG}, {"$set": update})
-        payload["matched_count"] = int(result.matched_count)
-        payload["modified_count"] = int(result.modified_count)
-        payload["mutation_performed"] = True
-        payload["cache_invalidation"] = invalidate_redis_cache_generations()
-    else:
-        payload["matched_count"] = 1
-        payload["modified_count"] = 0
-        payload["cache_invalidation"] = {"attempted": False, "reason": "dry-run"}
-
-    after = db.books.find_one({"slug": ALLOWED_SLUG}, {"_id": 0}) or {}
-    payload["after_state"] = public_state(after)
-    payload["live_verification"] = live_verify(args.api_base_url, args.web_base_url) if args.live_verify else {}
-    if args.commit and not payload["live_verification"].get("pass"):
-        payload["status"] = "PUBLISHED_WITH_VERIFICATION_BLOCKERS"
-        payload["issues"].append("Live verification did not pass.")
-    write_publication_report(payload, Path(args.report))
-    return payload
+    finally:
+        client.close()
 
 
 def parse_args() -> argparse.Namespace:

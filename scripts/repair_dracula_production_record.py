@@ -122,10 +122,14 @@ def connect_books_collection():
         from pymongo import MongoClient  # type: ignore
     except Exception as exc:  # pragma: no cover - environment-specific dependency issue.
         return None, f"pymongo unavailable: {exc}"
-    client = MongoClient(mongo_url, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000)
-    db = client[database_name_from_url(mongo_url)]
-    client.admin.command("ping")
-    return db.books, ""
+    client = MongoClient(mongo_url, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000, maxPoolSize=8, minPoolSize=0, maxConnecting=2)
+    try:
+        db = client[database_name_from_url(mongo_url)]
+        client.admin.command("ping")
+        return db.books, ""
+    except BaseException:
+        client.close()
+        raise
 
 
 def write_reports(report: dict[str, Any], output_dir: Path, *, applied: bool) -> None:
@@ -172,56 +176,60 @@ def run_repair(*, apply: bool, output_dir: Path) -> dict[str, Any]:
     current: dict[str, Any] | None = None
     collection = None
     db_error = ""
-    if not blockers:
-        try:
-            collection, db_error = connect_books_collection()
-            if collection is not None:
-                current = collection.find_one({"slug": "dracula"}, {"_id": 0})
-        except Exception as exc:
-            db_error = str(exc)
-    if db_error:
-        blockers.append(db_error)
-    if desired:
-        desired["publication_workflow"] = canonical_update({**(current or {}), **desired})
+    try:
+        if not blockers:
+            try:
+                collection, db_error = connect_books_collection()
+                if collection is not None:
+                    current = collection.find_one({"slug": "dracula"}, {"_id": 0})
+            except Exception as exc:
+                db_error = str(exc)
+        if db_error:
+            blockers.append(db_error)
+        if desired:
+            desired["publication_workflow"] = canonical_update({**(current or {}), **desired})
 
-    changed_fields = comparable_changes(current, desired) if desired else []
-    would_insert = current is None and bool(desired) and not blockers
-    would_update = current is not None and bool(changed_fields) and bool(desired) and not blockers
-    mutation_performed = False
-    if apply:
-        if blockers:
-            blockers.append("--apply refused because blockers are present.")
-        elif collection is None or desired is None:
-            blockers.append("--apply refused because the database or desired document is unavailable.")
-        else:
-            collection.update_one(
-                {"slug": "dracula"},
-                {
-                    "$set": desired,
-                    "$unset": {field: "" for field in UNSAFE_AUDIO_FIELDS if field not in {"audiobook", "audiobook_assets", "generate_audiobook"}},
-                },
-                upsert=True,
-            )
-            mutation_performed = True
+        changed_fields = comparable_changes(current, desired) if desired else []
+        would_insert = current is None and bool(desired) and not blockers
+        would_update = current is not None and bool(changed_fields) and bool(desired) and not blockers
+        mutation_performed = False
+        if apply:
+            if blockers:
+                blockers.append("--apply refused because blockers are present.")
+            elif collection is None or desired is None:
+                blockers.append("--apply refused because the database or desired document is unavailable.")
+            else:
+                collection.update_one(
+                    {"slug": "dracula"},
+                    {
+                        "$set": desired,
+                        "$unset": {field: "" for field in UNSAFE_AUDIO_FIELDS if field not in {"audiobook", "audiobook_assets", "generate_audiobook"}},
+                    },
+                    upsert=True,
+                )
+                mutation_performed = True
 
-    report = {
-        "generated_at": now_iso(),
-        "mode": "apply" if apply else "dry-run",
-        "mutation_performed": mutation_performed,
-        "operator_approval_required": not apply,
-        "artifact_valid": bool(status.get("available")),
-        "artifact_issues": status.get("issues", []),
-        "db_error": db_error,
-        "current_dracula_present": current is not None,
-        "would_insert": would_insert,
-        "would_update": would_update,
-        "changed_fields": changed_fields,
-        "audio_remains_disabled": bool(desired and desired.get("audio_enabled") is False and desired.get("audiobook_enabled") is False),
-        "reader_manifest_would_be_available": bool(desired and len(desired.get("chapters") or []) == 27),
-        "blockers": blockers,
-    }
-    write_reports(report, output_dir, applied=apply)
-    return report
+        report = {
+            "generated_at": now_iso(),
+            "mode": "apply" if apply else "dry-run",
+            "mutation_performed": mutation_performed,
+            "operator_approval_required": not apply,
+            "artifact_valid": bool(status.get("available")),
+            "artifact_issues": status.get("issues", []),
+            "db_error": db_error,
+            "current_dracula_present": current is not None,
+            "would_insert": would_insert,
+            "would_update": would_update,
+            "changed_fields": changed_fields,
+            "audio_remains_disabled": bool(desired and desired.get("audio_enabled") is False and desired.get("audiobook_enabled") is False),
+            "reader_manifest_would_be_available": bool(desired and len(desired.get("chapters") or []) == 27),
+            "blockers": blockers,
+        }
+        write_reports(report, output_dir, applied=apply)
+        return report
+    finally:
+        if collection is not None:
+            collection.database.client.close()
 
 
 def main() -> int:
