@@ -1,0 +1,62 @@
+{
+  "record": {
+    "schema": "earnalism.retained-master-derivative-adoption.v1",
+    "status": "ADOPTED",
+    "scope": "SOURCE_QA_ONLY_STORAGE_AND_RUNTIME_PENDING",
+    "policy": "retained_master_continuous_derivative.v1",
+    "descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+    "parent_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+    "parent_adoption_record_sha256": "1c5063691e41912d7fb5222bd98cc8ff6f6a562b4be17d9965cbf5587050f413",
+    "exact_master_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+    "derivative_mapping_sha256": "7cff333da061b79428e21712eda1a90f9816ef92ddbc1f8ba0d9349a356e0bad",
+    "audio_use_decision": {
+      "accepted_by": "Codex Integration Lane delegated metadata recorder under direct owner release continuation; unchanged inherited rights only, no new legal signature",
+      "basis": "Owner Sentinel_f42363405eac8191b7ec99dd7dd164c1 adopts the independently supported India commercial audio-use basis for only the exact original English selected PG269/John Lane1914 text and corrected Earnalism-produced recording/chunk set. Retained source-term/Qwen Apache2 built-in Ryan qualification and standing producer attestation reused; no specific unresolved third-party restriction identified. Non-PG-branded commercial presentation only, provenance private. No exclusive output copyright, worldwide grant, legal signature or universal warranty claimed. Administrative validity is bounded by the existing edition record horizon, not a new external licence term. Existing Reader/cover decision and historical excluded edition unchanged. This rights-only decision does not approve acoustics, storage, entitlement, playback/accounting or publication. Unit24 owner-accepted uncertainty and six lexical risks remain. Metadata-only derivative rebinding under the direct 1 November 2026 owner release continuation: identical accepted source/manuscript/WAV/MP3/stock voice and dry narration; only delivery topology and measured cue sidecars change. Existing India audio_stream territory/use and original expiry/lifetime interpretation are retained. No new licence, legal opinion, human listening score, storage receipt or publication acceptance is asserted.",
+      "components": {
+        "audio_component_bindings": "7cff333da061b79428e21712eda1a90f9816ef92ddbc1f8ba0d9349a356e0bad",
+        "master_mp3": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+        "master_wav": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+        "owner_adoption": "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+        "selected_manuscript": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+        "source_file": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+        "staging_manifest": "6fd5dc12fc1658eeb2fe34e2e4900030f3f0c8e991eebaf9a613b997b7b705f5",
+        "derivative_scope_authority": "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820"
+      },
+      "conditions_satisfied": true,
+      "decision_id": "india-20261101-the-open-window-continuous-master-bindings",
+      "edition_id": "the-open-window",
+      "evidence_sha256": [
+        "7ffbc8546291a74f731420b7a269faab3c20d8fabc8f1094fc0627de2b9f1e58",
+        "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+        "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3",
+        "b6ce420f9810f21d7bd89e76b174c9c93f4c5bbf2e34757d6a943da460405727",
+        "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+        "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820",
+        "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d"
+      ],
+      "operator_id": "reo-enterprise",
+      "schema_version": "earnalism.rights-decision.v1",
+      "status": "ACCEPTED",
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "audio_stream"
+      ],
+      "valid_from": "2026-11-01T04:16:20.897070+00:00",
+      "valid_until": "2036-10-02T00:00:00+00:00"
+    },
+    "authority_evidence_sha256": "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820",
+    "adopted_by": "Integration Lane under direct owner continuation; unchanged parent acceptance reused",
+    "all_release_gates_passed": false,
+    "human_scores": null,
+    "remaining_gates": [
+      "PRIVATE_PRIMARY_AND_DR_STORAGE",
+      "FULL_BYTE_RECEIPTS_AND_FINALIZATION",
+      "EXACT_HEAD_REVIEW_CI_AND_REQUIRED_DEPLOYMENT",
+      "CURRENT_PROTECTED_RUNTIME_ACCOUNTING_AND_PUBLIC_VERIFICATION"
+    ],
+    "notes": "Source QA adoption only, not publication. Existing title-specific parent listening limitations remain unchanged. No media generation, encoding or upload."
+  },
+  "record_sha256": "2148dbf209ee97ab0196bf345ebf0d8e7ed3b6c0c59f3cd8ae6b8c5a49cf5926"
+}

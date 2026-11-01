@@ -1,0 +1,21 @@
+{
+  "status": "ok",
+  "replica": "single",
+  "deployment": {
+    "git_sha": null,
+    "deployment_id": "29df0933-6abb-49e1-a2e0-4e9df5d96a80",
+    "project_id": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "service_id": "5af42e7e-f518-4f6a-b602-d9950866501f",
+    "environment_id": "580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "status": "UNAVAILABLE"
+  },
+  "runtime_source": {
+    "status": "MEASURED_MATCHES_MANIFEST",
+    "scope": "git-tracked-backend-delivery-excluding-build-only-files-and-manifest-v1",
+    "observed_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00",
+    "manifest_sha256": "3204892598b46197bb6e80170a5a617891d89417d21f530dc7eae8a58cf47db6",
+    "file_count": 1950,
+    "measured_at_unix": 1793396759.0102952,
+    "snapshot_cached_for_process": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "earnalism.retained-master-derivative-adoption.v1",
+  "status": "PENDING_REVIEW_NOT_ACCEPTED",
+  "descriptor_sha256": "db7ee5e0693103553d40d0261da61e4df946c8ee2754d2ec40c0c5657a8d137f",
+  "parent_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "exact_master_sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+  "policy": "retained_master_continuous_derivative.v1"
+}

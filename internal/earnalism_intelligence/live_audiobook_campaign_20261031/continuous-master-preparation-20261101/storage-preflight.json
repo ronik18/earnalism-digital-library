@@ -1,0 +1,5 @@
+{
+  "detail": "prod",
+  "error": "STORAGE_CONFIGURATION_MISSING",
+  "passed": false
+}

@@ -1,0 +1,45 @@
+{
+  "duration_ms": 491436,
+  "highlight_sync_enabled": false,
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "paragraph_count": 29,
+  "release_descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+  "release_evidence_version": "retained_master_continuous_derivative.v1",
+  "schema_version": "audiobook_package_semantics.v2",
+  "segment_count": 1,
+  "slug": "the-open-window",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "word_count": 1208,
+  "package_schema_version": "audiobook_package_manifest.v2",
+  "tracks": [
+    {
+      "chapter_id": "chapter-001",
+      "end_paragraph": 28,
+      "end_word": 1207,
+      "id": "chapter-001",
+      "order": 0,
+      "start_paragraph": 0,
+      "start_word": 0,
+      "title": "The Open Window",
+      "chunks": [
+        {
+          "segment_id": "chapter-001-full",
+          "order": 0,
+          "start_word": 0,
+          "end_word": 1207,
+          "start_paragraph": 0,
+          "end_paragraph": 28,
+          "cumulative_start_ms": 0,
+          "duration_ms": 491436,
+          "asset_ids": {
+            "audio": "chapter-001-full-audio",
+            "timestamps": "chapter-001-full-timestamps",
+            "metadata": "chapter-001-full-metadata",
+            "vtt": "chapter-001-full-vtt"
+          }
+        }
+      ]
+    }
+  ]
+}

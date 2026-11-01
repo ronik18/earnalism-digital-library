@@ -703,6 +703,15 @@ def validate_qa_candidate_release_descriptor(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
     candidate = descriptor.get("release_candidate_evidence")
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "retained_master_continuous_derivative.v1":
+        try:
+            try:
+                from .retained_master_derivative import validate as validate_derivative
+            except ImportError:
+                from retained_master_derivative import validate as validate_derivative
+            return validate_derivative(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except (ValueError, KeyError, TypeError, OSError) as exc:
+            raise ReleasePointerError(str(exc)) from None
     if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "owner_produced_source_units.v1":
         try:
             try:

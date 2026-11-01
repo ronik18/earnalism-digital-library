@@ -66,6 +66,8 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
     assert set(registry) == {
+        "india-20261101-the-selfish-giant-continuous-master-bindings",
+        "india-20261101-the-open-window-continuous-master-bindings",
         "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "india-20261028-radharani-attribution-metadata-successor",
         "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",

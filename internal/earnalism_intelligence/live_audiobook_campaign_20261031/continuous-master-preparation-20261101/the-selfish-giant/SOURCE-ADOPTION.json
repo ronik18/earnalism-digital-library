@@ -1,0 +1,59 @@
+{
+  "record": {
+    "schema": "earnalism.retained-master-derivative-adoption.v1",
+    "status": "ADOPTED",
+    "scope": "SOURCE_QA_ONLY_STORAGE_AND_RUNTIME_PENDING",
+    "policy": "retained_master_continuous_derivative.v1",
+    "descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2",
+    "parent_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "parent_adoption_record_sha256": "d09c3445e1d063f3044752190659eaef77548dd0b661b351be202b3cb3b08b3e",
+    "exact_master_sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+    "derivative_mapping_sha256": "f47d443156e246ca2ee79cb4115a847ebd0d30a5c03c2722b421f918bc44bba2",
+    "audio_use_decision": {
+      "schema_version": "earnalism.rights-decision.v1",
+      "decision_id": "india-20261101-the-selfish-giant-continuous-master-bindings",
+      "edition_id": "the-selfish-giant",
+      "operator_id": "reo-enterprise",
+      "status": "ACCEPTED",
+      "components": {
+        "source_file": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+        "selected_manuscript": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+        "master_wav": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+        "master_mp3": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+        "audio_component_bindings": "f47d443156e246ca2ee79cb4115a847ebd0d30a5c03c2722b421f918bc44bba2",
+        "derivative_scope_authority": "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820"
+      },
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "audio_stream"
+      ],
+      "valid_from": "2026-11-01T04:16:20.897070+00:00",
+      "valid_until": "LIFETIME",
+      "basis": "Owner explicitly accepts lifetime India audio-stream authority for this exact package; non-expiring control remains revocable and hash-bound. No release authority inferred. Metadata-only derivative rebinding under the direct 1 November 2026 owner release continuation: identical accepted source/manuscript/WAV/MP3/stock voice and dry narration; only delivery topology and measured cue sidecars change. Existing India audio_stream territory/use and original expiry/lifetime interpretation are retained. No new licence, legal opinion, human listening score, storage receipt or publication acceptance is asserted.",
+      "evidence_sha256": [
+        "1dac1e4b7d03c280e5e53b780ec15b763f2c310b8dd353447a242f827489f2ec",
+        "d3e44fdb7c5a7f470e1fb0309c4e6220a8895b7f49f0d8a300d6e176ed647a27",
+        "cf3bcd55fe6bdc2d88d7fcf30e5bcccd916ec8f540fd9dcd36bf9d2086519455",
+        "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820",
+        "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2"
+      ],
+      "accepted_by": "Codex Integration Lane delegated metadata recorder under direct owner release continuation; unchanged inherited rights only, no new legal signature",
+      "conditions_satisfied": true
+    },
+    "authority_evidence_sha256": "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820",
+    "adopted_by": "Integration Lane under direct owner continuation; unchanged parent acceptance reused",
+    "all_release_gates_passed": false,
+    "human_scores": null,
+    "remaining_gates": [
+      "PRIVATE_PRIMARY_AND_DR_STORAGE",
+      "FULL_BYTE_RECEIPTS_AND_FINALIZATION",
+      "EXACT_HEAD_REVIEW_CI_AND_REQUIRED_DEPLOYMENT",
+      "CURRENT_PROTECTED_RUNTIME_ACCOUNTING_AND_PUBLIC_VERIFICATION"
+    ],
+    "notes": "Source QA adoption only, not publication. Existing title-specific parent listening limitations remain unchanged. No media generation, encoding or upload."
+  },
+  "record_sha256": "e5a3c811093a4eb20de1d618c10dc825c62da3e073651b1c284425c4b3f2f847"
+}

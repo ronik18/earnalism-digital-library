@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-01T03:18:33.706210+00:00",
+  "base_sha": "64c8fe1f5e6dd1265df821f1e1ab5209bdce30a0",
+  "scope": "Read-only policy/adoption/provenance review. No audio/UI/session/networkmedia/paidcall/release and no validator execution in this task.",
+  "selfish": {
+    "exact_adopted_policy": "owner_produced_source_units.v1",
+    "registry": "internal/audiobook_lab/release_gate/owner_produced_package_adoptions.json",
+    "adoption_sha256": "d09c3445e1d063f3044752190659eaef77548dd0b661b351be202b3cb3b08b3e",
+    "master_wav_sha256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+    "exact_authority_quote": "Direct owner: integrate lifetime India rights gate and canonical adoption; accepted unchanged tone/wording/master QA. Source candidate only until exact-head review and merge. No publication.",
+    "native_validator": "internal/audiobook_lab/scripts/owner_produced_package.py:349",
+    "validator_quote": "candidate == {\"acceptance_policy\": POLICY, \"status\": \"OWNER_PRODUCED_QA_ADOPTED\", \"adoption_sha256\": sha(canonical(a)), \"human_scores\": None, \"all_release_gates_passed\": False, \"highlight_sync_enabled\": False}",
+    "other_native_requirements": "Exact source/master identity, adopted trusted record, actual adoption authority, unresolved_material_defects=[] and unresolved_wording_findings=[],8bound evidence roles, pinned Ryan/model/runtime, exact delivery/Reader paragraph mapping, scoped accepted India audio decision; all downstream gates remain required.",
+    "precise_qualitative_evidence": "Opening voice/direction accepted as Tone is suitable; continue with Ryan. Five targeted material wording responses retained. Full objective wording/timing/source-unit QA bound. This is exact accepted source-unit qualitative disposition, not evidence of comprehensive perceptual listening.",
+    "humanFullTitleListeningScore": null,
+    "actual_entire_perceptual_listening_event_documented": false,
+    "reuse_judgment": "Supported exact owner-approved qualitative package adoption can be reused for unchanged voice/media under its explicit title-specific policy. Null human score is intentional and must not become an invented numeric/new-human-loop blocker. Label voice/wording disposition OWNER_ACCEPTED_EXACT_SOURCE_UNIT_POLICY, with limited underlying listening scope; never call full-title perceptual review performed or scored. A real new material defect or an explicit new comprehensive-listening requirement would need the affected review; do not waive such a requirement using the registry alone.",
+    "strict_owner_direction_compatibility": "The31October direction requires natural/nonrobotic expressive audio and no material known defects, and forbids turning one sample into full-title acceptance. Current retained package is unchanged and already precisely adopted; preserve that bounded acceptance without inventing whole-title scores or declaring all modern perceptual checks performed. There is no basis to reopen synthesis or require a second human numeric score solely to fill null.",
+    "genuine_remaining_gate": "Current-runtime protected playback/accounting cases not proven by exact source adoption or ASR: actual active-to-active cross-segment seek, natural internal transition and latest own End terminal receipt in latest saved acceptance. Determine applicable fresh changed-area proof or precisely reusable unchanged dependency evidence before LIVE.",
+    "read_only_native_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 /tmp/earnalism-two-title-critical-review-20261101/validate_exact_selfish_adoption.py",
+    "command_scope": "Only pre-storage exact native adoption, not performance/listening/live playback; command prepared, not run."
+  },
+  "open_window": {
+    "exact_policy": "open_window_listened_successor.v2",
+    "registry": "internal/audiobook_lab/release_gate/open_window_successor_adoptions.json",
+    "native_validator": "internal/audiobook_lab/scripts/open_window_successor_acceptance.py:110",
+    "owner_full_title_listening_sha256": "630916e110c62a4c320e799870ae2a7cb0bfb387df02258732cbbaf20a6f5105",
+    "owner_source_following_sha256": "a3d16bf2c27c7639ea635700792bcdddd139bee3a84650b6938b0641bb4e56d2",
+    "scope": "Exact owner source-following full-title qualitative record exists, no universal human numeric score. Native listened policy explicitly checks the full-title review type and frozen hashes. Reuse unchanged package acceptance and owner-accepted Unit24 uncertainty only within its actual scope.",
+    "current_runtime_gate": "Changed current player/accounting source dependencies still require applicable genuine proof; whole-title listening/adoption does not establish transport/accounting."
+  },
+  "production_source_reuse": {
+    "retained_backend_evidence": "live_audiobook_campaign_20261031/parallel-batch-20261101/existing/backend-provenance-followup.json",
+    "binding_scope": "Declared1950file runtime manifest exact source-byte comparison to9a1b; providerGitSHA remains unavailable. It is not a universal filesystem integrity proof.",
+    "changed_dependencies": "SHARED-RUNTIME-ANALYSIS names start_session/_transaction balance validation, owned media streaming and Listener playback-intent/active seek behavior changes vs older accepted source. Unchanged leaf ASTs alone do not prove transitive current acceptance.",
+    "later_title_current_source": "Saved condensedSelfish matrix binds observed frontend9f182f96 and bundle32f1b357\u2026; source-equality/public/rendered proof must be reused only within that binding. No live network recheck in this review.",
+    "do_not_do": "Do not equate no media change with unchanged billing/player. Do not replay full audiobook listening to compensate for an unrelated runtime proof gap."
+  },
+  "findings": [],
+  "no_canonical_edits": true
+}

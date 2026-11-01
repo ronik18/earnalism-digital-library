@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-11-01T03:54:38.207636+00:00",
+  "scope": "Independent static corrected derivative adapter plus exact Selfish duration exception; no canonical/UI/storage/financial operations and no test rerun",
+  "reviewed_files": {
+    "/tmp/earnalism-continuous-master-candidate-20261101/retained_master_derivative.py": "32a73754562357418bbc53c9989a61a3c87ff594d9b7f79c12e7f79d478ff401",
+    "/tmp/earnalism-continuous-master-candidate-20261101/manager-dispatch.patch": "b2937a616fced1f80b19416092e5a87d5c54bfeee56c031268e2ec1b372b7f8c",
+    "/tmp/earnalism-continuous-master-candidate-20261101/retained-master-derivative-candidate.patch": "ba2a9ae64ff8dddf6068dd03c037eb452351ad09817cb2535208054a2b9df032",
+    "/tmp/earnalism-selfish-duration-review-20261101/candidate/exact-master-duration-exception.patch": "a5b98f52f91aaf839a4a21b01db2fd4e1d9dfd4683295fedbaaf52d9aab56618"
+  },
+  "material_findings": [],
+  "resolved_prior_finding": "Parent PUBLIC_APPROVED strings no longer stand alone: exact pinned parent descriptor/adoption digest, frozen native manager editorial+INrights and exact3historicalproductionproofs are actually revalidated; copied acceptance/right marker tampering is denied.",
+  "corrected_adapter_observations": [
+    "Original OpenWindow listened successor/owner-produced policies remain unchanged.",
+    "New descriptor/master/source/retainedtiming/sidecar hashes and new topology identity remain explicit.",
+    "New policy dispatch goes to dedicated validator, never old numeric fallback.",
+    "New fixed reviewed derivative registry remains EMPTY and exact new derivative rights/map adoption required; old decision is not a new component binding.",
+    "Historical parent proof explicitly scoped; new topology/current production runtime and genuine storage receipts remain unverified.",
+    "Actual manager negative fixture log reports exact reviewed derivative adoption required, not absence of temporary repo context.",
+    "Reviewed16positive/negative test log; did not relabel as independently rerun tests."
+  ],
+  "duration_exception_observations": [
+    "Default720000ms unchanged;777120ms allowed only for exact Selfish source/manuscript,1652words,23paragraphs,onefullchapter/segmentbounds and original6,217,581byteMP3 SHA256/mime.",
+    "Any unmatched master/title/source/topology uses default bound; native asset/package/adoption/rights/primaryDR/runtime checks remain required.",
+    "No claim that20second lease equals stream lifetime; no new download/entitlement authority inferred.",
+    "Narrow capability correction is implementation work, not a new policy waiver or publication approval; mandatory impacted exact-head tests/CI remain."
+  ],
+  "remaining_external_blocker": "Native storage preflight already reports STORAGE_CONFIGURATION_MISSING prod. Existing authorized private PROD+DR upload/retention_admin contexts needed. No key creation or unrelated purchase is implied.",
+  "conclusion": "NO_OUTSTANDING_MATERIAL_FINDINGS_IN_CORRECTED_OFFLINE_CANDIDATE_RELEASE_REMAINS_BLOCKED",
+  "no_new_approval_package_requested": true
+}

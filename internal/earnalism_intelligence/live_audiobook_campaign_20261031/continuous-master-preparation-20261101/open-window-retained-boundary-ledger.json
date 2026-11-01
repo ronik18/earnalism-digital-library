@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-11-01T03:45:16.930Z",
+  "sessionHash": "2263fae731fb4377366d3f0f4cd83bd26c35e0f50a4dea6ae0e1e3b637b7f649",
+  "matchingRows": [
+    {
+      "type": "consume",
+      "seconds": -4,
+      "content_type": "audio",
+      "content_id": "the-open-window",
+      "created_at": "2026-11-01T03:40:23.266386+00:00"
+    },
+    {
+      "type": "consume",
+      "seconds": -3,
+      "content_type": "audio",
+      "content_id": "the-open-window",
+      "created_at": "2026-11-01T03:40:11.696198+00:00"
+    }
+  ],
+  "ownWholeSecondDebit": 7,
+  "cumulativeOwnWholeSecondDebit": 51,
+  "originalCreditCeilingSeconds": 120,
+  "terminalAck": "BROWSER_NOT_CAPTURED; separate backend same-time EndHTTP200 recovered; exact ended flag not exposed",
+  "unrelatedRowsExcluded": true,
+  "noFurtherStarts": true
+}

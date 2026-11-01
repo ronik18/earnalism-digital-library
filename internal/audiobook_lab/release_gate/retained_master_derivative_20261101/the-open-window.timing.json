@@ -1,0 +1,263 @@
+[
+  {
+    "id": "paragraph-001",
+    "start_ms": 0,
+    "end_ms": 9840,
+    "start_sample": 0,
+    "end_sample": 236160,
+    "source_char_start": 0,
+    "source_char_end": 147
+  },
+  {
+    "id": "paragraph-002",
+    "start_ms": 9840,
+    "end_ms": 32076,
+    "start_sample": 236160,
+    "end_sample": 769829,
+    "source_char_start": 149,
+    "source_char_end": 496
+  },
+  {
+    "id": "paragraph-003",
+    "start_ms": 32076,
+    "end_ms": 57117,
+    "start_sample": 769829,
+    "end_sample": 1370809,
+    "source_char_start": 498,
+    "source_char_end": 858
+  },
+  {
+    "id": "paragraph-004",
+    "start_ms": 57117,
+    "end_ms": 65434,
+    "start_sample": 1370809,
+    "end_sample": 1570406,
+    "source_char_start": 860,
+    "source_char_end": 1002
+  },
+  {
+    "id": "paragraph-005",
+    "start_ms": 65434,
+    "end_ms": 73153,
+    "start_sample": 1570406,
+    "end_sample": 1755661,
+    "source_char_start": 1004,
+    "source_char_end": 1129
+  },
+  {
+    "id": "paragraph-006",
+    "start_ms": 73153,
+    "end_ms": 84945,
+    "start_sample": 1755661,
+    "end_sample": 2038669,
+    "source_char_start": 1131,
+    "source_char_end": 1308
+  },
+  {
+    "id": "paragraph-007",
+    "start_ms": 84945,
+    "end_ms": 88481,
+    "start_sample": 2038669,
+    "end_sample": 2123540,
+    "source_char_start": 1310,
+    "source_char_end": 1366
+  },
+  {
+    "id": "paragraph-008",
+    "start_ms": 88481,
+    "end_ms": 95664,
+    "start_sample": 2123540,
+    "end_sample": 2295932,
+    "source_char_start": 1368,
+    "source_char_end": 1458
+  },
+  {
+    "id": "paragraph-009",
+    "start_ms": 95664,
+    "end_ms": 108232,
+    "start_sample": 2295932,
+    "end_sample": 2597579,
+    "source_char_start": 1460,
+    "source_char_end": 1669
+  },
+  {
+    "id": "paragraph-010",
+    "start_ms": 108232,
+    "end_ms": 115789,
+    "start_sample": 2597579,
+    "end_sample": 2778933,
+    "source_char_start": 1671,
+    "source_char_end": 1780
+  },
+  {
+    "id": "paragraph-011",
+    "start_ms": 115789,
+    "end_ms": 124077,
+    "start_sample": 2778933,
+    "end_sample": 2977851,
+    "source_char_start": 1782,
+    "source_char_end": 1880
+  },
+  {
+    "id": "paragraph-012",
+    "start_ms": 124077,
+    "end_ms": 138966,
+    "start_sample": 2977851,
+    "end_sample": 3335180,
+    "source_char_start": 1882,
+    "source_char_end": 2034
+  },
+  {
+    "id": "paragraph-013",
+    "start_ms": 138966,
+    "end_ms": 149802,
+    "start_sample": 3335180,
+    "end_sample": 3595254,
+    "source_char_start": 2036,
+    "source_char_end": 2154
+  },
+  {
+    "id": "paragraph-014",
+    "start_ms": 149802,
+    "end_ms": 235965,
+    "start_sample": 3595254,
+    "end_sample": 5663161,
+    "source_char_start": 2156,
+    "source_char_end": 3353
+  },
+  {
+    "id": "paragraph-015",
+    "start_ms": 235965,
+    "end_ms": 246600,
+    "start_sample": 5663161,
+    "end_sample": 5918407,
+    "source_char_start": 3355,
+    "source_char_end": 3523
+  },
+  {
+    "id": "paragraph-016",
+    "start_ms": 246600,
+    "end_ms": 250843,
+    "start_sample": 5918407,
+    "end_sample": 6020222,
+    "source_char_start": 3525,
+    "source_char_end": 3570
+  },
+  {
+    "id": "paragraph-017",
+    "start_ms": 250843,
+    "end_ms": 255222,
+    "start_sample": 6020222,
+    "end_sample": 6125327,
+    "source_char_start": 3572,
+    "source_char_end": 3618
+  },
+  {
+    "id": "paragraph-018",
+    "start_ms": 255222,
+    "end_ms": 274666,
+    "start_sample": 6125327,
+    "end_sample": 6591974,
+    "source_char_start": 3620,
+    "source_char_end": 3922
+  },
+  {
+    "id": "paragraph-019",
+    "start_ms": 274666,
+    "end_ms": 313643,
+    "start_sample": 6591974,
+    "end_sample": 7527434,
+    "source_char_start": 3924,
+    "source_char_end": 4462
+  },
+  {
+    "id": "paragraph-020",
+    "start_ms": 313643,
+    "end_ms": 343798,
+    "start_sample": 7527434,
+    "end_sample": 8251153,
+    "source_char_start": 4464,
+    "source_char_end": 4901
+  },
+  {
+    "id": "paragraph-021",
+    "start_ms": 343798,
+    "end_ms": 356353,
+    "start_sample": 8251153,
+    "end_sample": 8552481,
+    "source_char_start": 4903,
+    "source_char_end": 5075
+  },
+  {
+    "id": "paragraph-022",
+    "start_ms": 356353,
+    "end_ms": 363494,
+    "start_sample": 8552481,
+    "end_sample": 8723860,
+    "source_char_start": 5077,
+    "source_char_end": 5195
+  },
+  {
+    "id": "paragraph-023",
+    "start_ms": 363494,
+    "end_ms": 382681,
+    "start_sample": 8723860,
+    "end_sample": 9184350,
+    "source_char_start": 5197,
+    "source_char_end": 5494
+  },
+  {
+    "id": "paragraph-024",
+    "start_ms": 382681,
+    "end_ms": 409883,
+    "start_sample": 9184350,
+    "end_sample": 9837182,
+    "source_char_start": 5496,
+    "source_char_end": 5889
+  },
+  {
+    "id": "paragraph-025",
+    "start_ms": 409883,
+    "end_ms": 425257,
+    "start_sample": 9837182,
+    "end_sample": 10206176,
+    "source_char_start": 5891,
+    "source_char_end": 6129
+  },
+  {
+    "id": "paragraph-026",
+    "start_ms": 425257,
+    "end_ms": 437617,
+    "start_sample": 10206176,
+    "end_sample": 10502803,
+    "source_char_start": 6131,
+    "source_char_end": 6308
+  },
+  {
+    "id": "paragraph-027",
+    "start_ms": 437617,
+    "end_ms": 454757,
+    "start_sample": 10502803,
+    "end_sample": 10914163,
+    "source_char_start": 6310,
+    "source_char_end": 6521
+  },
+  {
+    "id": "paragraph-028",
+    "start_ms": 454757,
+    "end_ms": 487063,
+    "start_sample": 10914163,
+    "end_sample": 11689510,
+    "source_char_start": 6523,
+    "source_char_end": 6873
+  },
+  {
+    "id": "paragraph-029",
+    "start_ms": 487063,
+    "end_ms": 491436,
+    "start_sample": 11689510,
+    "end_sample": 11794472,
+    "source_char_start": 6875,
+    "source_char_end": 6918
+  }
+]

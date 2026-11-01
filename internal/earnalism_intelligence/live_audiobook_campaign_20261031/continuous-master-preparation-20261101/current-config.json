@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "public_text_pages": 3,
+  "public_audio_seconds": 0,
+  "heartbeat_seconds": 10,
+  "maximum_lease_seconds": 20,
+  "reconnect_grace_seconds": 15,
+  "text_inactivity_seconds": 120
+}

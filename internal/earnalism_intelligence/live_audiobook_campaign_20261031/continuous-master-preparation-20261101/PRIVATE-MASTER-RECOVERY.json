@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "the-open-window",
+    "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/two-title-masters/the-open-window-1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5.mp3",
+    "sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+    "bytes": 7864365,
+    "same_device_private_recovery_only": true,
+    "primary_dr_gate": "NOT_SATISFIED_BY_THIS_COPY"
+  },
+  {
+    "slug": "the-selfish-giant",
+    "private_recovery_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/two-title-masters/the-selfish-giant-8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b.mp3",
+    "sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+    "bytes": 6217581,
+    "same_device_private_recovery_only": true,
+    "primary_dr_gate": "NOT_SATISFIED_BY_THIS_COPY"
+  }
+]
