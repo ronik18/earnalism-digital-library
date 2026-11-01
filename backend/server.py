@@ -5721,9 +5721,12 @@ async def _run_startup_database_maintenance_with_retry() -> None:
 
 async def _release_startup_maintenance_lock(lock_key: str, token: str) -> None:
     try:
-        current = _redis_text(await _redis_client.get(lock_key))
-        if current == token:
-            await _redis_client.delete(lock_key)
+        # Compare and delete atomically: a lock may expire and be acquired by
+        # another replica between separate GET/DELETE commands.
+        await _redis_client.eval(
+            "if redis.call('GET', KEYS[1]) == ARGV[1] then return redis.call('DEL', KEYS[1]) else return 0 end",
+            1, lock_key, token,
+        )
     except Exception:
         logger.warning("Failed to release startup maintenance lock cleanly.", exc_info=True)
 
