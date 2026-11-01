@@ -27,12 +27,12 @@ def journal_identity(journal):
  return digest(rows)
 def support_identity():
  root=Path(__file__).resolve().parent
- names=('india_release_provider_adapter.py','reader612_recovery_source.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py')
+ names=('india_release_provider_adapter.py','reader612_recovery_source.py','reader612_native_observer.py','india_release_observer.py','india_protected_runner.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py')
  return digest({name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
 def qualify_controller_preparation(binding):
  root=Path(__file__).resolve().parent
  need(binding.get('execution_authorized') is False and binding.get('native_qualified') is False,'Preparation cannot authorize execution')
- expected={'reader612_native_restore.py','reader612_recovery_source.py','india_release_provider_adapter.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py'}
+ expected={'reader612_native_restore.py','reader612_recovery_source.py','reader612_native_observer.py','india_release_observer.py','india_protected_runner.py','india_release_provider_adapter.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py'}
  files=binding.get('controller_files',{})
  need(set(files)==expected,'Exact controller dependency inventory required')
  for name,h in files.items():need(h==hashlib.sha256((root/name).read_bytes()).hexdigest(),'Controller dependency mismatch: '+name)

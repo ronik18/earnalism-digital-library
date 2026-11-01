@@ -30,9 +30,16 @@ identity. An uncertain attempt cannot be replayed in another directory. The
 exact scalar native rollback request restores the captured baseline deployment;
 no current-source rebuild or old frontend restoration is implied.
 
-Execution defaults false and there is no executable CLI entry point. An
-authenticated owner/platform gate, actual immutable-source/native observer,
-and normal provider transport are explicit **unbound integration dependencies**.
+Execution defaults false and there is no executable CLI entry point. The fixed
+native metadata observer and exact bounded native restore transport are source
+bound in `reader612_native_observer.py`, reusing the existing reviewed read-only
+observer. Config evidence is separately provided by the authenticated existing
+`describe_service` connector and must match the reviewed receipt hash and
+freshness window. No variables, credentials or raw provider metadata are retained.
+An authenticated owner/platform approval resolver is still an explicit
+**external platform integration dependency**: the repository has no Python API
+that resolves actual native-owner/protected approval records. It cannot be
+replaced with local issuer strings or approval booleans.
 Synthetic gate/observer callbacks in unit tests are not real approval or native
 qualification. This PR does not claim execution-controller integration ready.
 
@@ -40,9 +47,11 @@ qualification. This PR does not claim execution-controller integration ready.
 
 1. Require applicable exact-head no-deploy CI and independent source/controller
    review. Preserve the immutable source branch and the live OPEN application.
-2. Bind concrete reviewed authenticated gate/observer/transport implementations
-   under the sole release owner. Never reuse a local `approved: true` dictionary
-   as authenticity or import the old self-authorizing native operator.
+2. Bind the actual authenticated owner/protected connector resolver under the
+   sole release owner. The fixed observer and transport are prepared, but their
+   unit tests do not authenticate config receipts or supply native authority.
+   Never reuse a local `approved: true` dictionary as authenticity or import the
+   old self-authorizing native operator.
 3. Only after later explicit owner/protected backend qualification and purchase
    pause authority, refresh actual provider/config/alias/journal evidence within
    15 minutes and bind the named rollback operator and canonical journal identity.
