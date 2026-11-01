@@ -931,3 +931,48 @@ test("semantic boundaries retain pending font and engine work and own an immutab
     if (originalFonts) Object.defineProperty(document, "fonts", originalFonts); else delete document.fonts;
   }
 });
+
+const preparationDenied = seconds => ({ response: { status:403, data:{ detail:{ code:'PREPARATION_EXPIRED', message:'The bounded Reader preparation window expired.', retry_after_seconds:seconds } } } });
+test('preparation cooldown waits monotonically and needs an explicit new admission', async () => {
+  pass.startReadingPassSession.mockRejectedValueOnce(preparationDenied(3));
+  await openProtected();
+  const retry = () => container.querySelector('[data-testid="reader-authorize-chapter"]');
+  expect(retry().disabled).toBe(true);
+  expect(text()).toContain('Please wait 3 seconds');
+  await click('Continue to this page');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  jest.setSystemTime(new Date('2035-01-01T00:00:00Z'));
+  await tick(2000);
+  expect(retry().disabled).toBe(true);
+  expect(text()).toContain('Please wait 1 second');
+  await tick(1000);
+  expect(retry().disabled).toBe(false);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(text()).toContain('You can try opening this page again.');
+  await click('Continue to this page');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(2);
+});
+
+test('preparation timing from lease expiry cannot auto-start a replacement session', async () => {
+  preparationContract();
+  const pending = deferred();
+  pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
+  pass.renewReadingPassLease.mockRejectedValueOnce(preparationDenied(120));
+  await openProtected();
+  await tick(10000);
+  expect(text()).toContain('Please wait 120 seconds');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  await tick(120000);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(container.querySelector('article.reader-v2__canvas')).toBeNull();
+});
+
+test.each(['other-book','identity'])('preparation cooldown cannot follow a different %s', async change => {
+  pass.startReadingPassSession.mockRejectedValueOnce(preparationDenied(120));
+  await openProtected();
+  if (change === 'identity') { mockUser = {id:'another-reader'}; await mount(); }
+  else await act(async () => navigate('/reader/other-book?p=4'));
+  expect(text()).not.toContain('Please wait');
+  expect(container.querySelector('[data-testid="reader-authorize-chapter"]').disabled).toBe(false);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+});

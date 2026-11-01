@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import math
 from datetime import datetime, timedelta, timezone
 import secrets
 import uuid
@@ -44,6 +45,14 @@ except ImportError:  # production-style import from backend cwd
 ACTIVE_SESSION_STATUSES = {"active", "paused"}
 FREE_INDIA_READER_ENTITLEMENT = "india_pilot_free_text"
 FREE_INDIA_READER_SLUGS = frozenset({"a-ghost-story", "the-tell-tale-heart", "radharani"})
+
+
+def _preparation_retry_context(deadline, now, inactivity_seconds):
+    """Describe the existing cooldown; never renew it or grant reading access."""
+    if not isinstance(deadline, datetime):
+        return {}
+    retry_at = ensure_utc(deadline) + timedelta(seconds=inactivity_seconds)
+    return {"retry_after_seconds": max(0, math.ceil((retry_at - ensure_utc(now)).total_seconds()))}
 
 
 def _validated_wallet_balance(user: Mapping[str, Any]) -> int:
@@ -747,7 +756,10 @@ class ReadingPassService:
                 if retained and now >= preparation_deadline + timedelta(seconds=self.config.text_inactivity_seconds):
                     preparation_deadline = now + timedelta(seconds=self.config.text_preparation_seconds)
                 if now >= preparation_deadline:
-                    raise ReadingPassError("PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.")
+                    raise ReadingPassError(
+                        "PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.",
+                        **_preparation_retry_context(preparation_deadline, now, self.config.text_inactivity_seconds),
+                    )
                 await self.db.users.update_one({"id": user_id}, {"$set": {
                     f"reader_preparation_windows.{preparation_key}": preparation_deadline,
                 }}, session=mongo_session)
@@ -1254,7 +1266,8 @@ class ReadingPassService:
                     terminal_status="expired", reason="preparation_timeout",
                 )
                 await self._audit("preparation_expired", session=mongo_session, document={"session_id": session_id, "deducted_seconds": debit})
-                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after}
+                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after,
+                        **_preparation_retry_context(session_doc.get("preparation_deadline"), now, self.config.text_inactivity_seconds)}
             grace_deadline = ensure_utc(session_doc["lease_expires_at"]) + timedelta(seconds=self.config.reconnect_grace_seconds)
             if now > grace_deadline:
                 await self.db.reading_pass_sessions.update_one(
@@ -1288,7 +1301,8 @@ class ReadingPassService:
                     terminal_status="expired", reason="preparation_timeout",
                 )
                 await self._audit("preparation_expired", session=mongo_session, document={"session_id": session_id, "deducted_seconds": debit})
-                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after}
+                return {"terminal_error": "PREPARATION_EXPIRED", "balance_seconds": balance_after,
+                        **_preparation_retry_context(preparation_deadline, now, self.config.text_inactivity_seconds)}
             if preparing and session_doc.get("text_phase") not in {"preparing", "inactive"}:
                 raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 409, "Readable time cannot be relabeled as preparation.")
             genuinely_active = bool(active)
@@ -1434,7 +1448,11 @@ class ReadingPassService:
         result = await self._transaction(operation)
         terminal_error = result.get("terminal_error")
         if terminal_error == "PREPARATION_EXPIRED":
-            raise ReadingPassError("PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.", balance_seconds=result["balance_seconds"])
+            raise ReadingPassError(
+                "PREPARATION_EXPIRED", 403, "The bounded Reader preparation window expired.",
+                balance_seconds=result["balance_seconds"],
+                **({"retry_after_seconds": result["retry_after_seconds"]} if "retry_after_seconds" in result else {}),
+            )
         if terminal_error == "CONTENT_REVOKED":
             raise ReadingPassError(
                 "CONTENT_REVOKED", 403,

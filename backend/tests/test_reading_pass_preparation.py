@@ -304,3 +304,63 @@ def test_simultaneous_preparation_receipts_transition_once(monkeypatch):
         assert len(f.db.reading_pass_heartbeats.rows) == 1
         assert f.db.wallet_ledger.rows == []
     asyncio.run(run())
+
+
+@pytest.mark.parametrize('elapsed,wait', [(60,120),(60.1,120),(61,119),(179.1,1)])
+def test_preparation_denial_advises_existing_cooldown_without_extending_it(monkeypatch, elapsed, wait):
+    async def run():
+        f = Fixture(monkeypatch)
+        original = await f.start()
+        f.at(15)
+        await f.end()
+        f.at(elapsed)
+        with pytest.raises(ReadingPassError) as error:
+            await f.start()
+        assert error.value.context['retry_after_seconds'] == wait
+        assert f.db.users.rows[0]['reading_seconds_balance'] == 120
+        assert f.db.wallet_ledger.rows == []
+        assert list(f.db.users.rows[0]['reader_preparation_windows'].values()) == [datetime.fromisoformat(original['preparation_expires_at'])]
+        f.at(180)
+        retry = await f.start()
+        assert retry['text_phase'] == 'preparing'
+        assert retry['preparation_expires_at'] == (f.origin + timedelta(seconds=240)).isoformat()
+    asyncio.run(run())
+
+
+def test_preparation_renew_expiry_reports_same_cooldown_and_no_bill(monkeypatch):
+    async def run():
+        f = Fixture(monkeypatch)
+        await f.start()
+        for second in (10,20,30,40,50):
+            f.at(second)
+            await f.renew('preparing')
+        f.at(60)
+        with pytest.raises(ReadingPassError) as error:
+            await f.renew('preparing')
+        assert error.value.context == {'balance_seconds':120,'retry_after_seconds':120}
+        assert f.db.wallet_ledger.rows == []
+        assert f.db.reading_pass_sessions.rows[0]['status'] == 'expired'
+    asyncio.run(run())
+
+
+def test_zero_debit_readable_exit_retains_cooldown_but_positive_reading_does_not(monkeypatch):
+    async def run():
+        f = Fixture(monkeypatch)
+        await f.start()
+        f.at(10)
+        await f.renew('readable')
+        ended = await f.end()
+        assert ended['deducted_seconds'] == 0
+        f.at(61)
+        with pytest.raises(ReadingPassError) as error:
+            await f.start()
+        assert error.value.context['retry_after_seconds'] == 119
+        f.at(180)
+        await f.start()
+        f.at(190)
+        await f.renew('readable')
+        f.at(191)
+        assert (await f.end())['deducted_seconds'] == 1
+        assert (await f.start())['text_phase'] == 'preparing'
+        assert f.db.users.rows[0]['reading_seconds_balance'] == 119
+    asyncio.run(run())
