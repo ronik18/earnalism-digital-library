@@ -13405,6 +13405,31 @@
       "files": 1952,
       "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3",
       "builder_verification": "PASS"
+    },
+    "ci_source_binding_successor": {
+      "at": "2026-11-01T21:36:32.903515+00:00",
+      "superseded_head": "93b18098fd0ab80dfba5953d51e9cadea4cf0a71",
+      "observed_ci_failures": [
+        "Registry baseline still pinned pre-#614/624 source-QA append-only registry",
+        "Frontend capture/publication surface pins predated exact adapter change",
+        "Duplicate direct pytest invocation ran before prepared dependencies"
+      ],
+      "registry_patch_sha256": "b76e6c07ce8ab5942cb5b7dccfaf5ce628bcaf12e9cde076bf616bb3f23f66f5",
+      "registry_peer_review_sha256": "be9af9a5a9f756e2105975c05c8975d88d9f39910acbd728841b6455eb462ff2",
+      "workflow_patch_sha256": "8fb25cf626b0518ff86a34d5efbceb51ae2f6941088b392328c1f62e25587532",
+      "workflow_peer_review_sha256": "c347e72cca168c6773e7634f56d0e8f9a78062de1006ac251ad72c32b9e2e8bb",
+      "registry_history": "Exact7adca30c→890862ac→7efe07a7: three reviewed source-QA accepted records and exactD2 IN/audio_stream binding only; registry and assertion code unchanged",
+      "frontend_source_surface_sha256": "81da53d9933e03f52f3936b0d159b5497f2d92171f48a9b7b124735c2936b867",
+      "local_changed_checks": {
+        "catalogue_unittest_pass": 43,
+        "workflow_cases_pass": 46,
+        "full_catalogue_verifier": "PASS;143historically changed packages,zero issues",
+        "runtime_ref_verification": "PASS;backendunchanged1952/f73d0af1"
+      },
+      "unchanged_evidence_reused": "178Python/32subtests;120legacy/5localopt-inMongoSKIPs;12guard/territory;7adapter;54frontend andbuild/172snapshots from exact unchangedbehavior source",
+      "hosted_successor_ci": "PENDING_FRESH_EXACT_HEAD",
+      "runtime_publication": "BLOCKED_ALL_REAL_NEW_GATES_UNPERFORMED",
+      "new_allocation_synthesis": false
     }
   }
 }

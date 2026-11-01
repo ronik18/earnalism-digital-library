@@ -1,0 +1,85 @@
+{
+  "schema": "earnalism.reviewed_registry_sourceqa_successor.v1",
+  "scope": "EXACT_PIN_REBIND_OF_ALREADY_MERGED_SOURCE_QA_ONLY_RECORDS_NO_NEW_AUTHORITY",
+  "predecessor_reviewed_authority": {
+    "path": "internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json",
+    "git_commit": "b4bc7585a87b7546db3270f3bfd63bd436e8585a",
+    "sha256": "17cc7984a226ea8fdd99d6d06ffabe457fc3c87e122ef776e4b4438953f57d40",
+    "authority_sha256": {
+      "data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
+      "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
+      "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
+      "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
+      "backend/data/rights_decision_registry.json": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
+    }
+  },
+  "registry_path": "backend/data/rights_decision_registry.json",
+  "registry_history": [
+    {
+      "commit": "b4bc7585a87b7546db3270f3bfd63bd436e8585a",
+      "sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178",
+      "kind": "EXISTING_REVIEWED_PIN"
+    },
+    {
+      "commit": "f5706d328e08ab330f65f604f51df322b65646f1",
+      "sha256": "890862ac7350eea4b7149d47805a6066c11a3d05e343f86e3faaac89b224fc55",
+      "merged_pr": 614,
+      "added_accepted_records": {
+        "india-20261101-the-open-window-continuous-master-bindings": "c00b2b9112f2b52d0d94275d075922a54131df82c556e56a9757984991663d2c",
+        "india-20261101-the-selfish-giant-continuous-master-bindings": "a838b9d294d170cb96eda4afc6550ffd54c8a1fb93a72529be28dc4f567e0c02"
+      },
+      "existing_records_revocations_audio_bindings": "UNCHANGED",
+      "publication_acceptance": "NONE_SOURCE_QA_ONLY"
+    },
+    {
+      "commit": "c980ff2da048db7a164648f06f707440b2a8124c",
+      "sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561",
+      "merged_pr": 624,
+      "added_accepted_records": {
+        "india-20261102-the-selfish-giant-cedar-scored-audio": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5"
+      },
+      "added_audio_package_bindings": {
+        "the-selfish-giant": {
+          "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258": {
+            "basis": "Exact independently reviewed Cedar source-QA component-rights adoption only; no active/public pointer, storage or runtime proof inferred.",
+            "decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+            "record_sha256": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5",
+            "territories": [
+              "IN"
+            ],
+            "uses": [
+              "audio_stream"
+            ]
+          }
+        }
+      },
+      "existing_records_revocations_audio_bindings": "UNCHANGED",
+      "publication_acceptance": "NONE_SOURCE_QA_ONLY"
+    }
+  ],
+  "source_evidence_sha256": {
+    "internal/audiobook_lab/release_gate/retained_master_derivative_adoptions.json": "25d31605146c162fe147b89425fb77ee54ae9586f38c0a2ba5e526c75694ad47",
+    "internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/SOURCE-PROPOSAL-INDEPENDENT-REVIEW.json": "116fce30c3a53dc1d9d8fdd3e8374c76f99354d9c0cf8a0b318ba90f7d95762c",
+    "internal/audiobook_lab/release_gate/selfish-giant-cedar-20261102/source-qa-adoption.json": "d4c5ad03fddc6ad3b02ccb91276793299af88af897b6a253cfe11f174a1f4e0a",
+    "internal/audiobook_lab/release_gate/selfish-giant-cedar-20261102/audio-use-decision.json": "e68ed5728f5dc60066f68c44761bbba5e1a13aa8d655e9bb58d8d3a25f21c8b2",
+    "internal/audiobook_lab/release_gate/selfish-giant-cedar-20261102/review/INDEPENDENT-ACTUAL-CANDIDATE-REVIEW-07f19140.json": "b1bb9724fe80b77daacf879505dce8f40f0ba893020978433ab404620a2cfb6a"
+  },
+  "source_bound_scope": {
+    "new_decisions": [
+      "IN",
+      "audio_stream"
+    ],
+    "unchanged": [
+      "all prior accepted-record hashes",
+      "revoked_decision_ids",
+      "all prior audio_package_bindings",
+      "52reviewed Reader/title component bindings",
+      "both launch/exclusion authorities",
+      "controlled books/chapters/covers/Reader artifacts",
+      "active/public audio pointers"
+    ],
+    "source_qa_downstream_holds": "UNCHANGED",
+    "storage_runtime_or_live_approval": false
+  },
+  "fresh_review_requirement": "This successor requires independent exact-diff source review and the held-edition CI gate. It does not waive assert_reviewed_authority or qualify production media."
+}

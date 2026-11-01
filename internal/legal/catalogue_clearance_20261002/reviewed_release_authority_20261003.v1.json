@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
+    "backend/data/rights_decision_registry.json": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561"
   },
   "titles": {
     "a-ghost-story": {
@@ -1022,5 +1022,12 @@
   },
   "successor_binding_basis": "Current merged-main rights plus exact live Selfish Giant reader/cover/audio publication successor; candidate source and exact-head CI require fresh review. Historical non-cover decisions remain separate and unchanged.",
   "historical_reviewed_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
-  "successor_parent_candidate": "3554d9d26566dc9e0419fa0d5ce5518c06073c0f"
+  "successor_parent_candidate": "3554d9d26566dc9e0419fa0d5ce5518c06073c0f",
+  "registry_sourceqa_successor_20261102": {
+    "path": "internal/legal/catalogue_clearance_20261002/reviewed_registry_sourceqa_successor_20261102.v1.json",
+    "sha256": "c6fd9c72131909be01768f30e940db82d3cd616aed5f92e071c65524322675c0",
+    "predecessor_registry_sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178",
+    "reviewed_registry_sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561",
+    "scope": "Already merged #614 and #624 source-QA registry additions only; no release/publication change"
+  }
 }
