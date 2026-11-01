@@ -1,0 +1,41 @@
+{
+  "schema_version": "audiobook_package_upload_plan.v2",
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/",
+  "release_status": "RELEASE_CANDIDATE",
+  "assets": [
+    {
+      "asset_id": "chapter-001-full-audio",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/two-title-masters/the-open-window-1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5.mp3",
+      "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-audio-sha256-1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5.mp3",
+      "sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+      "size_bytes": 7864365,
+      "mime_type": "audio/mpeg"
+    },
+    {
+      "asset_id": "chapter-001-full-timestamps",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-open-window/chapter-001-full.timestamps.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-timestamps-sha256-16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b.json",
+      "sha256": "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+      "size_bytes": 17212,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-metadata",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-open-window/chapter-001-full.metadata.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-metadata-sha256-fdb87a9c4adf6c2ab4446a0adf00bebfbcddc4216eca2d6fffa41d2339befcc0.json",
+      "sha256": "fdb87a9c4adf6c2ab4446a0adf00bebfbcddc4216eca2d6fffa41d2339befcc0",
+      "size_bytes": 501,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-vtt",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-open-window/chapter-001-full.vtt",
+      "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-vtt-sha256-14b334be7618abed9b685aaef174beee970db152aad7e159c948bb90e9ed5f6a.vtt",
+      "sha256": "14b334be7618abed9b685aaef174beee970db152aad7e159c948bb90e9ed5f6a",
+      "size_bytes": 8283,
+      "mime_type": "text/vtt"
+    }
+  ]
+}

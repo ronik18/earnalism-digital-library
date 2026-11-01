@@ -1,0 +1,182 @@
+[
+  {
+    "id": "opening",
+    "start_ms": 0,
+    "end_ms": 58960,
+    "start_sample": 0,
+    "end_sample": 1415040,
+    "source_char_start": 0,
+    "source_char_end": 546
+  },
+  {
+    "id": "gap-01",
+    "start_ms": 58960,
+    "end_ms": 80080,
+    "start_sample": 1415040,
+    "end_sample": 1921920,
+    "source_char_start": 546,
+    "source_char_end": 881
+  },
+  {
+    "id": "dialogue_and_notice",
+    "start_ms": 80080,
+    "end_ms": 102880,
+    "start_sample": 1921920,
+    "end_sample": 2469120,
+    "source_char_start": 881,
+    "source_char_end": 1200
+  },
+  {
+    "id": "gap-03",
+    "start_ms": 102880,
+    "end_ms": 136240,
+    "start_sample": 2469120,
+    "end_sample": 3269760,
+    "source_char_start": 1200,
+    "source_char_end": 1711
+  },
+  {
+    "id": "gap-04",
+    "start_ms": 136240,
+    "end_ms": 164800,
+    "start_sample": 3269760,
+    "end_sample": 3955200,
+    "source_char_start": 1711,
+    "source_char_end": 2066
+  },
+  {
+    "id": "weather_personification",
+    "start_ms": 164800,
+    "end_ms": 217360,
+    "start_sample": 3955200,
+    "end_sample": 5216640,
+    "source_char_start": 2066,
+    "source_char_end": 2736
+  },
+  {
+    "id": "gap-06",
+    "start_ms": 217360,
+    "end_ms": 258000,
+    "start_sample": 5216640,
+    "end_sample": 6192000,
+    "source_char_start": 2736,
+    "source_char_end": 3225
+  },
+  {
+    "id": "gap-07",
+    "start_ms": 258000,
+    "end_ms": 298960,
+    "start_sample": 6192000,
+    "end_sample": 7175040,
+    "source_char_start": 3225,
+    "source_char_end": 3740
+  },
+  {
+    "id": "gap-08",
+    "start_ms": 298960,
+    "end_ms": 341120,
+    "start_sample": 7175040,
+    "end_sample": 8186880,
+    "source_char_start": 3740,
+    "source_char_end": 4234
+  },
+  {
+    "id": "gap-09",
+    "start_ms": 341120,
+    "end_ms": 382560,
+    "start_sample": 8186880,
+    "end_sample": 9181440,
+    "source_char_start": 4234,
+    "source_char_end": 4757
+  },
+  {
+    "id": "gap-10",
+    "start_ms": 382560,
+    "end_ms": 391760,
+    "start_sample": 9181440,
+    "end_sample": 9402240,
+    "source_char_start": 4757,
+    "source_char_end": 4864
+  },
+  {
+    "id": "turning_point",
+    "start_ms": 391760,
+    "end_ms": 427840,
+    "start_sample": 9402240,
+    "end_sample": 10268160,
+    "source_char_start": 4864,
+    "source_char_end": 5207
+  },
+  {
+    "id": "gap-12",
+    "start_ms": 427840,
+    "end_ms": 482320,
+    "start_sample": 10268160,
+    "end_sample": 11575680,
+    "source_char_start": 5207,
+    "source_char_end": 5623
+  },
+  {
+    "id": "gap-13",
+    "start_ms": 482320,
+    "end_ms": 514560,
+    "start_sample": 11575680,
+    "end_sample": 12349440,
+    "source_char_start": 5623,
+    "source_char_end": 6045
+  },
+  {
+    "id": "gap-14",
+    "start_ms": 514560,
+    "end_ms": 568400,
+    "start_sample": 12349440,
+    "end_sample": 13641600,
+    "source_char_start": 6045,
+    "source_char_end": 6563
+  },
+  {
+    "id": "gap-15",
+    "start_ms": 568400,
+    "end_ms": 611120,
+    "start_sample": 13641600,
+    "end_sample": 14666880,
+    "source_char_start": 6563,
+    "source_char_end": 7054
+  },
+  {
+    "id": "gap-16",
+    "start_ms": 611120,
+    "end_ms": 664800,
+    "start_sample": 14666880,
+    "end_sample": 15955200,
+    "source_char_start": 7054,
+    "source_char_end": 7575
+  },
+  {
+    "id": "gap-17",
+    "start_ms": 664800,
+    "end_ms": 711120,
+    "start_sample": 15955200,
+    "end_sample": 17066880,
+    "source_char_start": 7575,
+    "source_char_end": 8019
+  },
+  {
+    "id": "gap-18",
+    "start_ms": 711120,
+    "end_ms": 729200,
+    "start_sample": 17066880,
+    "end_sample": 17500800,
+    "source_char_start": 8019,
+    "source_char_end": 8248
+  },
+  {
+    "id": "ending",
+    "start_ms": 729200,
+    "end_ms": 777120,
+    "start_sample": 17500800,
+    "end_sample": 18650880,
+    "source_char_start": 8248,
+    "source_char_end": 8698
+  }
+]

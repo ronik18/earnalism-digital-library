@@ -1,0 +1,117 @@
+{
+  "duration_ms": 491436,
+  "highlight_sync_enabled": false,
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "paragraph_count": 29,
+  "release_descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+  "release_evidence_version": "retained_master_continuous_derivative.v1",
+  "schema_version": "audiobook_package_manifest.v2",
+  "segment_count": 1,
+  "slug": "the-open-window",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "word_count": 1208,
+  "tracks": [
+    {
+      "chapter_id": "chapter-001",
+      "end_paragraph": 28,
+      "end_word": 1207,
+      "id": "chapter-001",
+      "order": 0,
+      "start_paragraph": 0,
+      "start_word": 0,
+      "title": "The Open Window",
+      "chunks": [
+        {
+          "segment_id": "chapter-001-full",
+          "order": 0,
+          "start_word": 0,
+          "end_word": 1207,
+          "start_paragraph": 0,
+          "end_paragraph": 28,
+          "cumulative_start_ms": 0,
+          "duration_ms": 491436,
+          "assets": {
+            "audio": {
+              "sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+              "size_bytes": 7864365,
+              "mime_type": "audio/mpeg",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-audio-sha256-1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5.mp3",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-audio-sha256-1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5.mp3",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "timestamps": {
+              "sha256": "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+              "size_bytes": 17212,
+              "mime_type": "application/json",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-timestamps-sha256-16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b.json",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-timestamps-sha256-16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b.json",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "metadata": {
+              "sha256": "fdb87a9c4adf6c2ab4446a0adf00bebfbcddc4216eca2d6fffa41d2339befcc0",
+              "size_bytes": 501,
+              "mime_type": "application/json",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-metadata-sha256-fdb87a9c4adf6c2ab4446a0adf00bebfbcddc4216eca2d6fffa41d2339befcc0.json",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-metadata-sha256-fdb87a9c4adf6c2ab4446a0adf00bebfbcddc4216eca2d6fffa41d2339befcc0.json",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "vtt": {
+              "sha256": "14b334be7618abed9b685aaef174beee970db152aad7e159c948bb90e9ed5f6a",
+              "size_bytes": 8283,
+              "mime_type": "text/vtt",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-vtt-sha256-14b334be7618abed9b685aaef174beee970db152aad7e159c948bb90e9ed5f6a.vtt",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-open-window/releases/e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d/delivery/chapter-001-full-vtt-sha256-14b334be7618abed9b685aaef174beee970db152aad7e159c948bb90e9ed5f6a.vtt",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "package_version": "sha256-602499678876cd50728d9773e4d73a3b039be4c864a9a0e640ce008225e99654"
+}

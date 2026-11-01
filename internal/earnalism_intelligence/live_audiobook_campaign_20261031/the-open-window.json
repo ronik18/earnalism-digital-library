@@ -3,7 +3,7 @@
   "title": "The Open Window",
   "book_id": "controlled-the-open-window",
   "url": "https://theearnalism.com/book/the-open-window",
-  "stage": "EXISTING_RELEASE_REUSE_VERIFICATION",
+  "stage": "SOURCE_QA_ADOPTED_CONTINUOUS_MASTER_STORAGE_CONTEXT_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -61,12 +61,14 @@
     "speaker": "Ryan",
     "model": "Qwen3-TTS CustomVoice",
     "package": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
-    "new_generation": false
+    "new_generation": false,
+    "qualitative_disposition": "REUSE_EXACT_FROZEN_PARENT_POLICY_WITH_STATED_LISTENING_SCOPE"
   },
   "music": {
-    "selection": "RETAIN_EXISTING_ACCEPTED_MIX",
+    "selection": "SILENCE_DRY_ACCEPTED_MASTER_VERIFIED",
     "new_music_added": false,
-    "current_subjective_balance_check": "NOT_PERFORMED"
+    "current_subjective_balance_check": "NO_BACKGROUND_MUSIC_LAYER_TO_BALANCE",
+    "evidence": "continuous-master-preparation-20261101/open-window-dry-provenance.json"
   },
   "quality": {
     "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
@@ -74,23 +76,33 @@
     "listening": "UNVERIFIED",
     "audio": "UNVERIFIED",
     "sync": "UNVERIFIED",
-    "live_playback": "CURRENT_RUNTIME_ACCEPTANCE_NOT_ESTABLISHED"
+    "live_playback": "PARTIAL_CURRENT_RUNTIME_RENEWAL_BACKLOG_BLOCKS_VERIFIED_LIVE"
   },
   "repairs": [],
   "costs": {
     "new_provider_spend_usd": 0,
     "new_storage_spend_usd": 0,
-    "new_paid_playback_spend_usd": 0,
+    "new_paid_playback_spend_usd": null,
     "production_estimate_usd": null,
     "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
-    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET"
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "known_own_reading_pass_whole_seconds": 29
   },
   "blockers": [
     {
-      "code": "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED",
-      "evidence": "acceptance-source-comparison.json",
-      "detail": "Exact accepted-source tree comparison found changes in backend/server.py, backend/reading_pass_service.py and frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx. Unchanged package bytes alone cannot qualify this changed path. Historical real playback remains valid historical evidence.",
-      "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
+      "code": "CURRENT_RUNTIME_INTERNAL_TRANSITION_GAP",
+      "detail": "Native+actualcomposed delayedrenewal evidence exposeslong orderednext-segmentadmission gap; do not declare smoothcurrentplayback. No newlyqualifiedLIVE.",
+      "action": "Use exactunchangedcontinuousmaster successor, then actualsingle-source seek/pause/end/currentaccounting acceptance."
+    },
+    {
+      "code": "PRIVATE_PRIMARY_DR_STORAGE_CONTEXT_MISSING",
+      "detail": "NativepreflightfailedSTORAGE_CONFIGURATION_MISSING. No primaryorDRprofilesconfiguredinthisruntime; noexpiryinferred.",
+      "action": "ExistingoperatorprivatelysuppliesvalidPRODandindependentDR upload/retention-admincontext with exactnewdescriptorprefixscope; runnativepreflightthenbudgetedimmutableupload/finalize."
+    },
+    {
+      "code": "DERIVATIVE_PRODUCTION_ACCEPTANCE_NOT_PERFORMED",
+      "detail": "NoactualprimaryDRreceipt, finalizedpackage, exactheadCI/deployment ornewruntimeacceptance for thisdraft.",
+      "action": "Complete supported downstreamgates and actualcustomerverification; retainBLOCKEDuntilallpass."
     }
   ],
   "language": "en",
@@ -155,5 +167,15 @@
   },
   "parallel_acceptance_matrix": "parallel-batch-20261101/existing/the-open-window-gate-matrix.json",
   "backend_source_binding": "parallel-batch-20261101/existing/backend-provenance-followup.json",
-  "reused_exact_source_regression": "parallel-batch-20261101/existing/targeted-test-evidence-reuse.json"
+  "reused_exact_source_regression": "parallel-batch-20261101/existing/targeted-test-evidence-reuse.json",
+  "continuous_master_checkpoint": "continuous-master-preparation-20261101/CHECKPOINT.json",
+  "prior_blockers_before_continuous_master_20261101": [
+    {
+      "code": "CURRENT_PLAYER_BILLING_ACCEPTANCE_REQUIRED",
+      "evidence": "acceptance-source-comparison.json",
+      "detail": "Exact accepted-source tree comparison found changes in backend/server.py, backend/reading_pass_service.py and frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx. Unchanged package bytes alone cannot qualify this changed path. Historical real playback remains valid historical evidence.",
+      "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
+    }
+  ],
+  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY"
 }

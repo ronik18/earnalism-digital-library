@@ -19,6 +19,74 @@ from typing import Any
 PACKAGE_SCHEMA_VERSION = "audiobook_package_manifest.v2"
 ACTIVE_RELEASE_SCHEMA_VERSION = "audiobook_active_release.v1"
 MAX_SEGMENT_DURATION_MS = 12 * 60 * 1000
+def segment_duration_limit_ms(package, track, segment):
+    """Exact unchanged-master transport exception; never a rights/release grant.
+
+    Default remains twelve minutes. A separate reviewed derivative adoption and
+    all ordinary package/storage validations still apply to this one recording.
+    """
+    if not all(isinstance(value, Mapping) for value in (package, track, segment)):
+        return MAX_SEGMENT_DURATION_MS
+    tracks = package.get("tracks")
+    chunks = track.get("chunks")
+    assets = segment.get("assets")
+    audio = assets.get("audio") if isinstance(assets, Mapping) else None
+    if not isinstance(audio, Mapping):
+        return MAX_SEGMENT_DURATION_MS
+    expected_package = {
+        "slug": "the-selfish-giant",
+        "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+        "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+        "duration_ms": 777120,
+        "segment_count": 1,
+        "word_count": 1652,
+        "paragraph_count": 23,
+    }
+    expected_track = {
+        "id": "chapter-001",
+        "chapter_id": "chapter-001",
+        "order": 0,
+        "start_word": 0,
+        "end_word": 1651,
+        "start_paragraph": 0,
+        "end_paragraph": 22,
+    }
+    expected_segment = {
+        "order": 0,
+        "cumulative_start_ms": 0,
+        "duration_ms": 777120,
+        "start_word": 0,
+        "end_word": 1651,
+        "start_paragraph": 0,
+        "end_paragraph": 22,
+    }
+
+    def exact_fields(value, expected):
+        return all(
+            type(value.get(key)) is type(wanted) and value[key] == wanted
+            for key, wanted in expected.items()
+        )
+
+    if (
+        exact_fields(package, expected_package)
+        and exact_fields(track, expected_track)
+        and exact_fields(segment, expected_segment)
+        and isinstance(tracks, list)
+        and len(tracks) == 1
+        and tracks[0] == track
+        and isinstance(chunks, list)
+        and len(chunks) == 1
+        and chunks[0] == segment
+        and audio.get("sha256")
+        == "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b"
+        and type(audio.get("size_bytes")) is int
+        and audio["size_bytes"] == 6217581
+        and audio.get("mime_type") == "audio/mpeg"
+    ):
+        return 777120
+    return MAX_SEGMENT_DURATION_MS
+
+
 ROLLOUT_PERCENTAGES = frozenset({0, 5, 25, 100})
 
 _SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9._-]{0,119}$")
@@ -555,7 +623,7 @@ def validate_audiobook_package(
                 segment.get("duration_ms"),
                 f"{segment_label}.duration_ms",
                 minimum=1,
-                maximum=MAX_SEGMENT_DURATION_MS,
+                maximum=segment_duration_limit_ms(raw, track, segment),
             )
 
             assets = _mapping(segment.get("assets"), f"{segment_label}.assets")

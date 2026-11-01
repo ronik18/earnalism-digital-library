@@ -1,0 +1,18 @@
+{
+  "status": "BACKLOG_REPRODUCED_MINIMAL_PARTIAL_FIX_ONLY",
+  "baseRouteSHA256": "2ecc9d675abcc9a19dc8160591f450a0039aaa4b360777ac08a5980237e22ec8",
+  "baselineActualComposed": "PASS reproduces5 post-ended pending renewals [playing,buffering,buffering,playing,buffering] using actualRoute+Listener and deferred normalHTTP; heartbeat explicitly injected duringpendingwork",
+  "candidateActualComposed": "3PASS: normalrenew/backwardseek; backlog4preserving[playing,buffering,playing,buffering]; adjacentbufferingbarriers shareoneHTTP andnewerintentwins whilelaterplaying remainsnewrequest",
+  "candidateScope": "Skip periodicheartbeat whenANYrenewalpending; joinonlyadjacentidenticalobservedstate pendingpromise ifsamegenerationandsession. Preserveeverydistinctstate/latestlease/lifecyclefailure/ownend behavior.",
+  "financialSafety": "No backenddebit/rate/lease/caps modifications; no distinctplaying/buffering/paused event isdeleted. Joiningadjacentidenticalstate removes redundantrequest only. Must runrootchangedarea/lifecycle/transaction suites and independentreview beforeintegration.",
+  "residualMaterialGap": "At3\u20135s each, FOURrequired orderedstates canstill create12\u201320s naturalgap; thispartialoptimization alone cannotqualifyunforgettablelistenerexperience. Needprotocol-awarebarrier/latencydesign preservingauthoritativebilling andsecurity, notblindstate dropping.",
+  "noProductionCalls": true,
+  "noNewFundedTests": true,
+  "noCanonicalChanges": true,
+  "patch": "listener-renewal-queue-candidate.patch",
+  "logs": [
+    "composed-backlog-before.log",
+    "composed-backlog-after.log"
+  ],
+  "nextExactCommand": "Review patch and residual safety gap; do not deploy or start paid verification on claim thisfullyrepairs gap."
+}

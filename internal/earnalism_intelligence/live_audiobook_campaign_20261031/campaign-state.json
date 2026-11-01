@@ -279,7 +279,7 @@
   "existing_publicly_available_but_current_acceptance_blocked": 2,
   "reader_only_audio_hidden": 50,
   "new_paid_playback_spend_usd": null,
-  "required_next_integration_action": "Qualify the latency-aware controller/adapter before another live run; use actual native paused=false and advancing time, valid0.1step seeks (55.0 gives observation margin), explicit1x, and captured terminal response. Continue only from a newly scoped execution decision after this bounded4-start batch; preserve the original cumulative120credit ceiling and7already debited. Never relabel unperformed cases PASS.",
+  "required_next_integration_action": "Finish exact-head offline-preparation integration, then obtain existing private PROD/DR profile context for native preflight. Supported immutable storage/finalization, required manual deployment and actual new-runtime/public acceptance remain blocked until storage is qualified. No allocation, synthesis or original credit-ceiling reset.",
   "source_preflight": "canonical clean and exact origin/main before campaign evidence edits; 9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
   "limitations": [
     "No new full subjective listening performed. Later bounded normal protected playback consumed7whole ReadingPass credit seconds (matched own-session ledger); monetary conversion is unreported.",
@@ -439,5 +439,7 @@
     "new_publication": false,
     "verified_live": false
   },
-  "new_paid_playback_spend_basis": "No purchase;7existing Reading Pass whole seconds consumed by matched own-session ledger. Monetary conversion and fractional carry unreported. Do not use unrelated account-wide balance changes as campaign cost."
+  "new_paid_playback_spend_basis": "51wholeexistingReadingPassseconds cumulative:22Selfish+29OpenWindow, ownhashedsessionledgeronly.69nominalremainingoforiginal120; monetaryvalue/fractionalcarryunreported. No newpurchase, allocation or synthesis.",
+  "two_title_continuous_master_checkpoint": "continuous-master-preparation-20261101/CHECKPOINT.json",
+  "known_own_cumulative_playback_credit_whole_seconds": 51
 }

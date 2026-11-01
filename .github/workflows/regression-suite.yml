@@ -64,6 +64,8 @@ jobs:
           python -m pytest -q
           internal/audiobook_lab/scripts/test_selfish_giant_adoption.py
           internal/audiobook_lab/scripts/test_owner_produced_package.py
+          internal/audiobook_lab/scripts/test_retained_master_derivative.py
+          backend/tests/test_exact_retained_master_duration.py
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
           backend/tests/test_rights_decision_gate.py
           backend/tests/test_api_public_catalog_projection.py

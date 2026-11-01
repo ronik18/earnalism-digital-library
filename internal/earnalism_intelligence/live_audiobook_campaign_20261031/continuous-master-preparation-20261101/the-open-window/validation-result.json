@@ -1,0 +1,8 @@
+{
+  "source_qa_adoption": "PASS_EXACT_NATIVE_MANAGER_AND_TRUSTED_IN_BINDING",
+  "native_structural_pass": true,
+  "storage_uploaded": false,
+  "release_approved": false,
+  "all_release_gates_passed": false,
+  "production_finalize_allowed": false
+}

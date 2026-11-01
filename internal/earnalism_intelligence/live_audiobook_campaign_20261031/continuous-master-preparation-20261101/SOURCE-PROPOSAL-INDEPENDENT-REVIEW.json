@@ -1,0 +1,50 @@
+{
+  "scope": "Independent proposal unit review only, temporary in-memory accepted-record addition. No trusted registry/canonical/storage/network/UI mutations; no human listening or new rights claimed.",
+  "material_findings": [],
+  "source_authority_valid_for_scope": "Direct continuation permits routine exact unchanged-master delivery metadata/QA adoption; not a new literary/model/voice license or publication acceptance.",
+  "rows": [
+    {
+      "slug": "the-open-window",
+      "rights_record_sha256": "c00b2b9112f2b52d0d94275d075922a54131df82c556e56a9757984991663d2c",
+      "adoption_record_sha256": "2148dbf209ee97ab0196bf345ebf0d8e7ed3b6c0c59f3cd8ae6b8c5a49cf5926",
+      "descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+      "unchanged_inherited_components_and_scope": true,
+      "native_unmodified_gate_proposal_cases": {
+        "without_registry_addition": "DENIED_AS_EXPECTED",
+        "IN_exact_in_memory_proposal": "PASS_SIMULATED_TRUST_ONLY",
+        "US": "DENIED_AS_EXPECTED",
+        "download": "DENIED_AS_EXPECTED",
+        "wrong_component": "DENIED_AS_EXPECTED",
+        "new_decision_revoked": "DENIED_AS_EXPECTED",
+        "after_original_expiry": "DENIED_AS_EXPECTED"
+      },
+      "actual_trusted_registry_addition": false,
+      "actual_release_gates_passed": false
+    },
+    {
+      "slug": "the-selfish-giant",
+      "rights_record_sha256": "a838b9d294d170cb96eda4afc6550ffd54c8a1fb93a72529be28dc4f567e0c02",
+      "adoption_record_sha256": "e5a3c811093a4eb20de1d618c10dc825c62da3e073651b1c284425c4b3f2f847",
+      "descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2",
+      "unchanged_inherited_components_and_scope": true,
+      "native_unmodified_gate_proposal_cases": {
+        "without_registry_addition": "DENIED_AS_EXPECTED",
+        "IN_exact_in_memory_proposal": "PASS_SIMULATED_TRUST_ONLY",
+        "US": "DENIED_AS_EXPECTED",
+        "download": "DENIED_AS_EXPECTED",
+        "wrong_component": "DENIED_AS_EXPECTED",
+        "new_decision_revoked": "DENIED_AS_EXPECTED",
+        "original_lifetime_2099": "PASS_SIMULATED_TRUST_ONLY"
+      },
+      "actual_trusted_registry_addition": false,
+      "actual_release_gates_passed": false
+    }
+  ],
+  "lifecycle_followup": "Reviewed archival-parent-lifecycle-followup.patch: immutable parent pins+old native QA/rights/3historical proofs replace current mutable live approval pointer dependency. Parent rights are re-evaluated through native gate on every qualification, so new child approval cannot resurrect revoked parent.",
+  "conclusion": "NO_GENUINE_SCOPE_OR_AUTHORITY_GAP_IDENTIFIED_IN_HASH_BOUND_SOURCE_QA_ONLY_PROPOSALS",
+  "remaining_actual_gates": [
+    "Root reviewed trusted registry application plus affected tests/mandatoryCI",
+    "Existing private PROD/independentDR upload+retention_admin capability and genuine receipts",
+    "Current new-topology protected runtime/accounting and production publication verification"
+  ]
+}

@@ -54,8 +54,8 @@
     },
     {
       "path": "audiobook_packages.py",
-      "bytes": 30129,
-      "sha256": "474095234b820e83a76f5c262881936e86d61de7447208980a36105aead59d33"
+      "bytes": 32526,
+      "sha256": "02cee8359f72a69772ecbfd019cb2d31b2f532e065be8b0bb47513858a04f146"
     },
     {
       "path": "audiobook_voice_pipeline.py",
@@ -9504,8 +9504,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 40171,
-      "sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178"
+      "bytes": 40439,
+      "sha256": "890862ac7350eea4b7149d47805a6066c11a3d05e343f86e3faaac89b224fc55"
     },
     {
       "path": "demand_scoring.py",
@@ -9654,8 +9654,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 92000,
-      "sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195"
+      "bytes": 92986,
+      "sha256": "ebdb19cd0aa9c50db89643e59437c49fa6b856b777d4335656c53eec26083520"
     },
     {
       "path": "release_proxy_auth.py",
@@ -9689,8 +9689,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 620666,
-      "sha256": "3c976134cd10d192f0f133a4be7630e105317ac298e4028eef539f440e2d7282"
+      "bytes": 621157,
+      "sha256": "59f74bd349434da1d11b496ae6cd4593e27718fdf4c54c7bcd99e51205560039"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9753,5 +9753,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00"
+  "expected_sha256": "c0e12042697c2567283519a1ebbf8e268cd9cb4d35afd8ca7414fe99068886cc"
 }
