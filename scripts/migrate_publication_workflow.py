@@ -69,82 +69,85 @@ def mongo_report(*, root: Path, apply: bool, report_path: Path, skip_slugs: set[
         from pymongo import MongoClient
     except ImportError as exc:
         raise SystemExit(f"BLOCKED: pymongo is required for --mongo: {exc}") from exc
-    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard")
-    client.admin.command("ping")
-    db_name = os.environ.get("MONGODB_DB_NAME") or os.environ.get("DB_NAME")
-    if not db_name:
-        db_name = mongo_url.rsplit("/", 1)[-1].split("?", 1)[0] or "earnalism"
-    collection = client[db_name][os.environ.get("MONGODB_BOOKS_COLLECTION", "books")]
-    books = list(collection.find({}, {"_id": 0}))
-    results: list[dict[str, Any]] = []
-    for book in books:
-        slug = str(book.get("slug") or "").strip()
-        if slug in skip_slugs:
-            continue
-        artifact, evidence, artifact_issues = artifact_for(
-            [root, root.parent.parent.parent / "data" / "controlled_publications"], slug
-        ) if slug else ({}, {}, ["book is missing slug"])
-        result = normalize_publication_workflow(book, approved_artifact=artifact, release_evidence=evidence)
-        issues = artifact_issues + validate_publication_workflow(result.workflow)
-        if artifact.get("audio_enabled") is True or artifact.get("audiobook_enabled") is True or evidence.get("audiobook_enabled") is True:
-            artifact_dir = next((candidate for candidate in (root / slug, root.parent.parent.parent / "data" / "controlled_publications" / slug) if candidate.is_dir()), root / slug)
-            issues.extend(controlled_artifact_validation_issues(slug, str(artifact_dir)))
-        if not result.workflow.get("publication", {}).get("reader_exposed") and book.get("is_published"):
-            issues.append("reader exposure is not explicitly proven; PUBLISHED was not used as proof")
-        if result.workflow.get("publication", {}).get("audio_exposed"):
-            required = ("release_status", "qa_status", "sidecars_complete", "synchronization_verified", "checksum_verified", "endpoint_verified")
-            if any(not result.workflow.get("audio", {}).get(field) for field in required):
-                issues.append("audio exposure lacks complete release-gate evidence")
-        results.append({
-            "slug": slug,
-            "before_sha256": digest(book.get("publication_workflow")),
-            "after_sha256": digest(result.workflow),
-            "changed": result.changed,
-            "conflicts": result.conflicts,
-            "issues": sorted(set(issues)),
-            "workflow": result.workflow,
-            "audit_event": result.audit_event,
-        })
-    # Conflicts are retained in the report, but precedence resolves them. Only
-    # artifact/evidence/validation issues are unresolved and can block writes.
-    unresolved = sum(bool(item["issues"]) for item in results)
-    report: dict[str, Any] = {
-        "schema_name": SCHEMA_NAME,
-        "schema_version": SCHEMA_VERSION,
-        "mode": "apply" if apply else "preflight",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "book_count": len(results),
-        "changed_count": sum(item["changed"] for item in results),
-        "conflict_count": sum(len(item["conflicts"]) for item in results),
-        "unresolved_count": unresolved,
-        "writes_performed": 0,
-        "results": results,
-    }
-    if apply and unresolved:
-        report["status"] = "BLOCKED_UNRESOLVED_CONFLICTS"
-    elif apply:
-        for item in results:
-            if not item["changed"]:
+    client = MongoClient(mongo_url, serverSelectionTimeoutMS=15000, uuidRepresentation="standard", maxPoolSize=8, minPoolSize=0, maxConnecting=2)
+    try:
+        client.admin.command("ping")
+        db_name = os.environ.get("MONGODB_DB_NAME") or os.environ.get("DB_NAME")
+        if not db_name:
+            db_name = mongo_url.rsplit("/", 1)[-1].split("?", 1)[0] or "earnalism"
+        collection = client[db_name][os.environ.get("MONGODB_BOOKS_COLLECTION", "books")]
+        books = list(collection.find({}, {"_id": 0}))
+        results: list[dict[str, Any]] = []
+        for book in books:
+            slug = str(book.get("slug") or "").strip()
+            if slug in skip_slugs:
                 continue
-            slug = item["slug"]
-            event = dict(item["audit_event"])
-            event["event_id"] = digest({"slug": slug, "workflow_sha256": item["after_sha256"]})
-            update = {"$set": {"publication_workflow": item["workflow"]}, "$addToSet": {"publication_workflow_audit": event}}
-            collection.update_one({"slug": slug}, update)
-            reread = collection.find_one({"slug": slug}, {"_id": 0}) or {}
-            observed = digest(reread.get("publication_workflow"))
-            item["reread_sha256"] = observed
-            if observed != item["after_sha256"]:
-                item["issues"].append("post-write hash mismatch")
-                break
-            report["writes_performed"] += 1
-        report["status"] = "APPLIED" if not any(item["issues"] for item in results) else "APPLIED_WITH_VERIFICATION_FAILURE"
-    else:
-        report["status"] = "PREFLIGHT_BLOCKED" if unresolved else "PREFLIGHT_READY"
-    report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"books={report['book_count']} changed={report['changed_count']} conflicts={report['conflict_count']} unresolved={report['unresolved_count']} status={report['status']}")
-    print(f"wrote={report_path}")
-    return 0 if report["status"] in {"PREFLIGHT_READY", "APPLIED"} else 2
+            artifact, evidence, artifact_issues = artifact_for(
+                [root, root.parent.parent.parent / "data" / "controlled_publications"], slug
+            ) if slug else ({}, {}, ["book is missing slug"])
+            result = normalize_publication_workflow(book, approved_artifact=artifact, release_evidence=evidence)
+            issues = artifact_issues + validate_publication_workflow(result.workflow)
+            if artifact.get("audio_enabled") is True or artifact.get("audiobook_enabled") is True or evidence.get("audiobook_enabled") is True:
+                artifact_dir = next((candidate for candidate in (root / slug, root.parent.parent.parent / "data" / "controlled_publications" / slug) if candidate.is_dir()), root / slug)
+                issues.extend(controlled_artifact_validation_issues(slug, str(artifact_dir)))
+            if not result.workflow.get("publication", {}).get("reader_exposed") and book.get("is_published"):
+                issues.append("reader exposure is not explicitly proven; PUBLISHED was not used as proof")
+            if result.workflow.get("publication", {}).get("audio_exposed"):
+                required = ("release_status", "qa_status", "sidecars_complete", "synchronization_verified", "checksum_verified", "endpoint_verified")
+                if any(not result.workflow.get("audio", {}).get(field) for field in required):
+                    issues.append("audio exposure lacks complete release-gate evidence")
+            results.append({
+                "slug": slug,
+                "before_sha256": digest(book.get("publication_workflow")),
+                "after_sha256": digest(result.workflow),
+                "changed": result.changed,
+                "conflicts": result.conflicts,
+                "issues": sorted(set(issues)),
+                "workflow": result.workflow,
+                "audit_event": result.audit_event,
+            })
+        # Conflicts are retained in the report, but precedence resolves them. Only
+        # artifact/evidence/validation issues are unresolved and can block writes.
+        unresolved = sum(bool(item["issues"]) for item in results)
+        report: dict[str, Any] = {
+            "schema_name": SCHEMA_NAME,
+            "schema_version": SCHEMA_VERSION,
+            "mode": "apply" if apply else "preflight",
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "book_count": len(results),
+            "changed_count": sum(item["changed"] for item in results),
+            "conflict_count": sum(len(item["conflicts"]) for item in results),
+            "unresolved_count": unresolved,
+            "writes_performed": 0,
+            "results": results,
+        }
+        if apply and unresolved:
+            report["status"] = "BLOCKED_UNRESOLVED_CONFLICTS"
+        elif apply:
+            for item in results:
+                if not item["changed"]:
+                    continue
+                slug = item["slug"]
+                event = dict(item["audit_event"])
+                event["event_id"] = digest({"slug": slug, "workflow_sha256": item["after_sha256"]})
+                update = {"$set": {"publication_workflow": item["workflow"]}, "$addToSet": {"publication_workflow_audit": event}}
+                collection.update_one({"slug": slug}, update)
+                reread = collection.find_one({"slug": slug}, {"_id": 0}) or {}
+                observed = digest(reread.get("publication_workflow"))
+                item["reread_sha256"] = observed
+                if observed != item["after_sha256"]:
+                    item["issues"].append("post-write hash mismatch")
+                    break
+                report["writes_performed"] += 1
+            report["status"] = "APPLIED" if not any(item["issues"] for item in results) else "APPLIED_WITH_VERIFICATION_FAILURE"
+        else:
+            report["status"] = "PREFLIGHT_BLOCKED" if unresolved else "PREFLIGHT_READY"
+        report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"books={report['book_count']} changed={report['changed_count']} conflicts={report['conflict_count']} unresolved={report['unresolved_count']} status={report['status']}")
+        print(f"wrote={report_path}")
+        return 0 if report["status"] in {"PREFLIGHT_READY", "APPLIED"} else 2
+    finally:
+        client.close()
 
 
 def main() -> int:
