@@ -9689,8 +9689,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 623381,
-      "sha256": "8b62e9e4290a5d8b12afb9bb7214a861018ab2b5521e5dc060d821bf8e614236"
+      "bytes": 623579,
+      "sha256": "b143f0d25e76b6fbef18ca42a441010350f6fb22b1e7af063ac1e3767fe7f61f"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9748,10 +9748,15 @@
       "sha256": "5b727cbeee610ab05c8bef1148664af8fb7081f0b4a38f11c38f17d55eda6877"
     },
     {
+      "path": "utils/streaming_drain.py",
+      "bytes": 864,
+      "sha256": "df453e751989d7fe0d3740dea6141d32638d6e2211a014721953c742fefdb396"
+    },
+    {
       "path": "visual_design_engine.py",
       "bytes": 27775,
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "7669a39a9d3a9d4a6a52d9e57389086bb65f3dabee636b9c180f000d0b6a9410"
+  "expected_sha256": "0d7b2dd77f5976fdebed22c8b9ece20ae4aa8f57f5f91a02c29dd51d0cfec2cd"
 }
