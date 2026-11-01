@@ -4,7 +4,7 @@ The config connector and optional future anonymous CLOSED probe are trusted I/O
 capabilities, not caller-provided favorable proof dictionaries. Missing capability
 fails closed. Unit tests replace all I/O with synthetic transport responses.
 """
-from datetime import datetime,timezone
+from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import hashlib,json,re,urllib.request,ast,subprocess
 from scripts.india_release_observer import NativeMetadataObserver
@@ -113,7 +113,9 @@ class Reader612PhaseCollector(NativeMetadataObserver):
   need(len(rows)==1,'ADMIN_ROUTING_ATTESTATION_UNAVAILABLE')
   event=rows[0]
   need(event.get('requestId')==request_id and event.get('deploymentId')==deployment and event.get('method')=='GET' and event.get('path')=='/api/admin/cache/status' and type(event.get('httpStatus')) is int and event['httpStatus']==200 and isinstance(event.get('deploymentInstanceId'),str) and bool(event['deploymentInstanceId']),'ADMIN_ROUTING_ATTESTATION_UNAVAILABLE')
-  route={k:event[k] for k in ('requestId','deploymentId','deploymentInstanceId','httpStatus','method','path')}
+  observed=datetime.fromisoformat(event.get('timestamp','').replace('Z','+00:00'));now=self.clock()
+  need(observed.tzinfo is not None and timedelta(0)<=now-observed<=timedelta(minutes=15),'ADMIN_ROUTING_ATTESTATION_STALE_OR_UNBOUND')
+  route={k:event[k] for k in ('requestId','deploymentId','deploymentInstanceId','httpStatus','method','path','timestamp')}
   need(status==200 and isinstance(raw,bytes) and len(raw)<=1048576,'ADMIN_RUNTIME_CHANNEL_UNBOUND_HOLD')
   flags=json.loads(raw)
   # public_metadata_enabled is an OR-derived effective state, not an independent

@@ -37,7 +37,7 @@ class Collect(unittest.TestCase):
   self.calls.append(argv)
   if argv[-1]=='--version':return subprocess.CompletedProcess(argv,0,CLI_VERSIONS[argv[0]],'')
   if argv[:2]==['railway','logs']:
-   if '--http' in argv:return subprocess.CompletedProcess(argv,0,json.dumps({'requestId':argv[argv.index('--request-id')+1],'deploymentId':self.dep,'deploymentInstanceId':'SYNTHETIC-instance','httpStatus':200,'method':'GET','path':'/api/admin/cache/status'}),'')
+   if '--http' in argv:return subprocess.CompletedProcess(argv,0,json.dumps({'requestId':argv[argv.index('--request-id')+1],'deploymentId':self.dep,'deploymentInstanceId':'SYNTHETIC-instance','timestamp':'2026-11-01T11:59:59Z','httpStatus':200,'method':'GET','path':'/api/admin/cache/status'}),'')
    rows=[{'timestamp':'2026-11-01T11:59:10Z','message':x} for x in ['INFO:     Application startup complete.',p.DISABLED,'Startup database maintenance suppressed (acceptance_containment=False).']];return subprocess.CompletedProcess(argv,0,'\n'.join(json.dumps(x) for x in rows),'')
   if argv[:2]==['railway','api']:
    q=argv[2]
@@ -222,4 +222,14 @@ class Collect(unittest.TestCase):
    return result
   self.c.run=unrelated
   with self.assertRaises(ValueError):self.common()
+ def test_admin_routing_timestamp_missing_stale_future_or_naive_denies(self):
+  original=self.run_cli
+  for timestamp in ['', '2026-11-01T11:44:59Z','2026-11-01T12:00:01Z','2026-11-01T11:59:59']:
+   def transport(argv,**kw):
+    result=original(argv,**kw)
+    if '--http' in argv:
+     row=json.loads(result.stdout);row['timestamp']=timestamp;result.stdout=json.dumps(row)
+    return result
+   self.c.run=transport
+   with self.subTest(timestamp=timestamp),self.assertRaises(ValueError):self.common()
 if __name__=='__main__':unittest.main()

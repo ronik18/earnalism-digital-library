@@ -28,7 +28,9 @@ The phase collector uses fixed bounded read destinations and exact source,
 image, configuration, runtime inventory, startup/database, aliases, public book,
 cover Git-object and guest-denial checks. Redis OFF proof requires both the
 source-equivalent startup message and an authenticated admin response joined by
-request ID to that deployment's native HTTP log and observed instance. This is
+request ID to that deployment's native HTTP log and observed instance. The HTTP
+event must have an aware timestamp within the existing 15-minute bound, with no
+future timestamp; missing or stale routing evidence is denied. This is
 observed-process evidence, not an assertion about all replicas. Unknown provider
 shapes, missing auth/config channels or changed preserved assets fail closed.
 Raw provider logs, variables, credentials, cookies and identities are not saved.

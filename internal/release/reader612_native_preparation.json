@@ -30,7 +30,7 @@
     "reader612_protected_approval.py": "a7753e8f0a7c79c7ce18037aa049bdc7c416112834092b0fcbc9420ba2d5e326",
     "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129",
     "reader612_phase_bridge.py": "1181b6004d191fcbc5248f4eceeee1eb4155636a3af6c649ef1ef7c07050e10b",
-    "reader612_phase_collectors.py": "bc45cfe23cfe2fa05b38ab5977d9dd55d981e0e38ad0d84b513d6596bdea07e4"
+    "reader612_phase_collectors.py": "6d3fe2673f2d1cc424681570144ddd3f504cac701204f0931363246fb9e7e333"
   },
   "controller_integration_status": "SOURCE_BOUND_PHASE_BRIDGE_AND_READ_ONLY_COLLECTORS_NO_CURRENT_APPROVAL_OR_EXECUTION",
   "approval_workflow_sha256": "692189b0fb202714adc53270d0700abba9690f602e09d89365b6e50fb7c9b6c4",
