@@ -38,7 +38,7 @@ for (const slug of nearReadySlugs) {
   assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
   books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
 }
-const expectedHeaderUrl = "?language=bn&availability=reader-ready";
+const expectedHeaderUrl = "?language=bn";
 const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"];
 const fallbackEligibleSlugs = [];
 const ineligibleSlugs = ["synthetic-held-bengali-draft", "reader-disabled-edition", "kshudhita-pashan"];
@@ -59,9 +59,9 @@ function referenceSurface(page) {
 
 async function selectedControls(page, mobile) {
   const language = filterGroup(page, mobile, "language").getByRole("button", { name: "Bengali", exact: true });
-  const status = filterGroup(page, mobile, "listening").getByRole("button", { name: "Reader only", exact: true });
+  const status = filterGroup(page, mobile, "listening").getByRole("button", { name: "All releases", exact: true });
   await assertSelected(language, "Bengali");
-  await assertSelected(status, "Reader only");
+  await assertSelected(status, "All releases");
 }
 
 function filterSurface(page, mobile) {
@@ -97,8 +97,8 @@ async function assertNoHorizontalOverflow(page, label) {
 
 async function assertDrawerOptionPolicy(page, mobile) {
   if (!mobile) return;
-  assert.equal(await filterGroup(page, true, "language").getByRole("button", { name: "All books", exact: true }).count(), 0, "Language must retain its compact hideAll behavior");
-  assert.equal(await filterGroup(page, true, "reading").getByRole("button", { name: "All forms", exact: true }).count(), 0, "Format must retain its compact hideAll behavior");
+  assert.equal(await filterGroup(page, true, "language").getByRole("button", { name: "All languages", exact: true }).count(), 1, "Language must expose its reset option");
+  assert.equal(await filterGroup(page, true, "reading").getByRole("button", { name: "All forms", exact: true }).count(), 1, "Format must expose its reset option");
   assert.equal(await filterGroup(page, true, "listening").getByRole("button", { name: "All releases", exact: true }).count(), 1, "Listening must expose All releases by stable group id");
 }
 
@@ -157,7 +157,7 @@ async function assertCurrentControlledLaunchResults(page, name) {
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
   for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
     const previousCount = shownCount - nextCount;
-    const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
+    const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Available to read`, exact: true });
     await more.click();
     await assertDisplayedSlugs(page, fixtureOrder.slice(0, shownCount));
     const firstNewCover = referenceSurface(page).getByTestId(`reference-book-${fixtureOrder[previousCount]}`).locator("a[href]").first();
@@ -204,7 +204,7 @@ async function assertApprovedAudioWithoutRuntimeCard(page, name) {
   const cards = referenceSurface(page).getByTestId(`reference-book-${approvedAudioWithoutRuntimeSlug}`);
   await cards.first().waitFor();
   const count = await cards.count();
-  assert.equal(count, 2, `${name}: approved mixed-format edition must remain present in both Live now and Audiobooks shelves`);
+  assert.equal(count, 1, `${name}: a mixed-format edition must appear once across shelves`);
   for (let index = 0; index < count; index += 1) {
     const card = cards.nth(index);
     await expectText(card.locator(".reference-book-tile__status"), "Live", `${name}: approved mixed-format edition became coming soon`);
@@ -212,7 +212,7 @@ async function assertApprovedAudioWithoutRuntimeCard(page, name) {
     await detail.waitFor();
     assert.equal(await detail.getAttribute("href"), `/reader/${approvedAudioWithoutRuntimeSlug}`, `${name}: approved mixed-format preview lost its reader destination`);
     assert.equal(await card.getByRole("link", { name: "Notify me", exact: true }).count(), 0, `${name}: approved mixed-format edition redirected to Notify me`);
-    assert.equal(await card.getByText("Listening unavailable", { exact: true }).count(), 1, `${name}: unavailable Reader runtime was not explained truthfully`);
+    assert.equal(await card.getByRole("link", { name: "Listen", exact: true }).count(), 0, `${name}: an unqualified audio runtime must not expose a Listen link`);
   }
 }
 

@@ -3,7 +3,7 @@ import path from "path";
 
 const source = (file) => fs.readFileSync(path.join(__dirname, file), "utf8");
 
-const AUTH_PRODUCT_ACCESS_COPY = "The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved.";
+import { AUTH_PRODUCT_ACCESS_COPY } from "./lib/publicAccessCopy";
 
 describe("auth and account customer-copy contract", () => {
   const authShell = source("components/AuthPageShell.jsx");
@@ -17,8 +17,8 @@ describe("auth and account customer-copy contract", () => {
       expect(page).toContain("AUTH_PRODUCT_ACCESS_COPY");
       expect(page).not.toContain("Pass purchases are not available yet.");
     });
-    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Reading Pass is required from page 4 on eligible titles.");
-    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Listening appears only where an edition is approved.");
+    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Reading Pass is required beyond the preview on pass-required editions.");
+    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Listening is available only for released audiobooks and requires an active Reading Pass.");
     expect(account).not.toContain(AUTH_PRODUCT_ACCESS_COPY);
   });
 

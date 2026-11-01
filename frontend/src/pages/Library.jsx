@@ -1,134 +1,53 @@
+import productCopy from "../content/productCopy.json";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 import { api } from "../lib/api";
-import BookCard from "../components/BookCard";
-import { notifyUrl } from "../lib/controlledLaunch";
-import { languageOfBook, listeningFilterFromSearch, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
+import { selectLibraryBooks } from "../lib/libraryCatalog";
+import { libraryFiltersFromSearch } from "../lib/libraryFilterState";
+import { genresOfBook } from "../lib/libraryDiscovery";
 import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
-import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
-import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import useSEO from "../hooks/useSEO";
 import { ReferenceLibrarySurface } from "../components/EditorialHomeLibrarySurfaces";
-
-const LANGUAGE_FILTERS = [
-  { slug: "all", name: "All languages" },
-  { slug: "bn", name: "Bengali" },
-  { slug: "en", name: "English" },
-];
-const READING_FILTERS = [
-  { slug: "all", name: "All forms" },
-  { slug: "novel", name: "Novels" },
-  { slug: "short-story", name: "Short stories" },
-  { slug: "poetry", name: "Poetry & essays" },
-];
-const LISTENING_FILTERS = [
-  { slug: "all", name: "All listening" },
-  { slug: "available", name: "Listening available" },
-  { slug: "hidden", name: "Audio hidden" },
-];
-const SORT_OPTIONS = [
-  { slug: "recently-approved", name: "Recently approved" },
-  { slug: "title", name: "Title" },
-  { slug: "author", name: "Author" },
-  { slug: "short-reads", name: "Shortest reads" },
-];
-
-function readingForm(book = {}) {
-  const value = `${book.category_slug || ""} ${book.category || ""} ${book.title || ""} ${book.short_description || ""}`.toLowerCase();
-  if (/poem|poetry|essay|verse|কবিতা/.test(value)) return "poetry";
-  if (/short|story|গল্প/.test(value)) return "short-story";
-  return "novel";
-}
-
-function readingMatches(book, value) {
-  return value === "all" || readingForm(book) === value;
-}
-
-function listeningMatches(book, value) {
-  if (value === "all") return true;
-  // The public catalogue receives a release decision, not a listening lease or
-  // media URL.  Keep the Audiobooks shelf aligned with that verified decision;
-  // runtime playback eligibility remains a separate, server-enforced concern.
-  const approved = audiobookReleaseState(book).releaseApproved;
-  return value === "available" ? approved : !approved;
-}
-
-function FilterChips({ label, value, options, onChange, testId }) {
-  return (
-    <fieldset className="library-explorer__facet" data-testid={testId}>
-      <legend>{label}</legend>
-      <div className="library-explorer__chips">
-        {options.map((option) => (
-          <button
-            key={option.slug}
-            type="button"
-            aria-pressed={value === option.slug}
-            onClick={() => onChange(option.slug)}
-          >
-            {option.name}
-          </button>
-        ))}
-      </div>
-    </fieldset>
-  );
-}
 
 export default function Library() {
   const [params, setParams] = useSearchParams();
   const [liveBooks, setLiveBooks] = useState([]);
-  const [curation, setCuration] = useState(() => getHomeCurationSnapshot());
   const [catalogueState, setCatalogueState] = useState("loading");
   const [catalogueRequest, setCatalogueRequest] = useState(0);
   const [retryingCatalogue, setRetryingCatalogue] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [query, setQuery] = useState(params.get("q") || "");
   const catalogueRequestIdRef = useRef(0);
   const catalogueRequestInFlightRef = useRef(false);
-  const language = params.get("language") || "all";
-  const reading = params.get("reading") || (params.get("category") && !["all", "live", "pipeline"].includes(params.get("category")) ? params.get("category") : "all");
-  const listening = listeningFilterFromSearch(params);
-  const genre = params.get("genre") || "all";
-  const sort = params.get("sort") || "recently-approved";
-  const loading = catalogueState === "loading";
+  const { query, language, reading, listening, genre, sort, stage } = libraryFiltersFromSearch(params);
 
   useSEO({
     title: "Library | Bengali and English Classics on Earnalism",
-    description: "Explore Earnalism's Bengali and English classics through one calm, curated collection.",
-    image: curation?.featured?.cover_image_url,
-    imageAlt: "Earnalism graphical book cover artwork",
+    description: productCopy.libraryDescription,
     canonicalPath: "/library",
   });
 
   useEffect(() => {
     const controller = new AbortController();
-    const requestId = catalogueRequestIdRef.current + 1;
-    catalogueRequestIdRef.current = requestId;
+    const requestId = ++catalogueRequestIdRef.current;
     catalogueRequestInFlightRef.current = true;
-    Promise.allSettled([
-      api.get("/books", { signal: controller.signal }),
-      fetchHomeCuration(controller.signal),
-    ]).then(([booksResult, curationResult]) => {
+    // Catalogue readiness must not wait for Home curation or optional imagery.
+    // Bound only this public request; financial and auth transports are unchanged.
+    api.get("/books", { signal: controller.signal, timeout: 15000 }).then(({ data }) => {
       if (controller.signal.aborted || catalogueRequestIdRef.current !== requestId) return;
-      if (booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data)) {
-        setLiveBooks(booksResult.value.data);
-        setCatalogueState(booksResult.value.data.length ? "ready" : "empty");
-      } else {
-        // A network failure must not revive bundled Reader editions while the
-        // server-held public release is unavailable.
-        setLiveBooks([]);
-        setCatalogueState("unavailable");
-      }
-      if (curationResult.status === "fulfilled") setCuration(curationResult.value);
+      if (!Array.isArray(data)) throw new Error("Invalid catalogue response");
+      setLiveBooks(data);
+      setCatalogueState(data.length ? "ready" : "empty");
+    }).catch(() => {
+      if (controller.signal.aborted || catalogueRequestIdRef.current !== requestId) return;
+      setLiveBooks([]);
+      setCatalogueState("unavailable");
     }).finally(() => {
       if (!controller.signal.aborted && catalogueRequestIdRef.current === requestId) {
         catalogueRequestInFlightRef.current = false;
         setRetryingCatalogue(false);
       }
     });
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, [catalogueRequest]);
 
   const retryCatalogue = () => {
@@ -137,126 +56,43 @@ export default function Library() {
     setRetryingCatalogue(true);
     setCatalogueRequest((request) => request + 1);
   };
-
   const updateParam = (key, value, fallback = "all") => {
     setParams((current) => {
       const next = new URLSearchParams(current);
-      if (!value || value === fallback) next.delete(key);
-      else next.set(key, value);
-      if (key === "reading") next.delete("category");
+      const effective = libraryFiltersFromSearch(current);
+      if (current.has("category") && !["live", "pipeline"].includes(current.get("category"))) {
+        if (effective.reading !== "all") next.set("reading", effective.reading);
+        if (effective.genre !== "all") next.set("genre", effective.genre);
+        next.delete("category");
+      }
+      if (key === "stage") { next.delete("category"); return next; }
+      if (!value || value === fallback) next.delete(key); else next.set(key, value);
       if (key === "listening") next.delete("availability");
       return next;
     });
   };
+  const resetReferenceFilters = () => setParams((current) => {
+    const next = new URLSearchParams(current);
+    ["language", "reading", "listening", "genre", "category", "availability"].forEach((key) => next.delete(key));
+    return next;
+  });
+  // An empty or failed live response must not revive bundled candidate cards.
+  const allBooks = useMemo(() => catalogueState === "ready" ? composeLibraryCatalog(liveBooks) : [], [liveBooks, catalogueState]);
+  const filteredBooks = useMemo(() => selectLibraryBooks(allBooks, {
+    query, language, reading, listening, genre, sort, stage,
+  }), [allBooks, genre, language, listening, query, reading, sort, stage]);
+  const genres = useMemo(() => [...new Set(allBooks.flatMap(genresOfBook))].sort(), [allBooks]);
+  const handleSearch = (value) => setParams((current) => {
+    const next = new URLSearchParams(current);
+    if (value.trim()) next.set("q", value); else next.delete("q");
+    return next;
+  }, { replace: true });
 
-  const resetReferenceFilters = () => {
-    setParams((current) => {
-      const next = new URLSearchParams(current);
-      ["language", "reading", "listening", "genre", "category", "availability"].forEach((key) => next.delete(key));
-      return next;
-    });
-  };
-
-  const allBooks = useMemo(() => composeLibraryCatalog(liveBooks), [liveBooks]);
-
-  const filteredBooks = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return sortLibraryBooks(allBooks.filter((book) => {
-      const text = `${book.title || ""} ${book.title_en || ""} ${book.author || ""} ${book.short_description || ""}`.toLowerCase();
-      return (!normalized || text.includes(normalized))
-        && matchesLibraryFacets(book, language, listening === "available" ? "approved-audiobook" : "all")
-        && (listening !== "hidden" || matchesLibraryFacets(book, language, "audio-hidden"))
-        && readingMatches(book, reading)
-        && listeningMatches(book, listening)
-        && (genre === "all" || book.category_slug === genre);
-    }), sort);
-  }, [allBooks, genre, language, listening, query, reading, sort]);
-
-  const genres = useMemo(() => Array.from(new Set(allBooks.map((book) => book.category_slug).filter(Boolean))).sort(), [allBooks]);
-
-  const handleSearch = (value) => {
-    setQuery(value);
-    setParams((current) => {
-      const next = new URLSearchParams(current);
-      if (value.trim()) next.set("q", value);
-      else next.delete("q");
-      return next;
-    }, { replace: true });
-  };
-
-  return (
-    <div className="library-page" data-testid="library-page">
-      <ReferenceLibrarySurface
-        filteredBooks={filteredBooks}
-        loading={loading}
-        catalogueState={catalogueState}
-        retryingCatalogue={retryingCatalogue}
-        onRetryCatalogue={retryCatalogue}
-        query={query}
-        language={language}
-        reading={reading}
-        listening={listening}
-        genre={genre}
-        genres={genres}
-        sort={sort}
-        onSearch={handleSearch}
-        onParam={updateParam}
-        onResetFilters={resetReferenceFilters}
-        filtersOpen={filtersOpen}
-        setFiltersOpen={setFiltersOpen}
-      />
-      <div className="reference-library__legacy-content" aria-hidden="true">
-
-      <main id="library-collection" className="library-main">
-        <section className="library-explorer" aria-labelledby="explorer-title">
-          <div className="library-explorer__heading">
-            <div>
-              <p className="library-overline">THE OPEN SHELF</p>
-              <h2 id="explorer-title">Explore the collection.</h2>
-              <p>One mixed shelf for Bengali and English classics, with access and listening status kept clear.</p>
-            </div>
-            <div className="library-explorer__count" aria-live="polite"><Check size={15} aria-hidden="true" /> {filteredBooks.length} editions in view</div>
-          </div>
-          <div className="library-explorer__toolbar">
-            <label className="library-search" htmlFor="library-search-input">
-              <span>Search the Library</span>
-              <div><Search size={16} aria-hidden="true" /><input id="library-search-input" data-testid="library-search" value={query} onChange={(event) => handleSearch(event.target.value)} placeholder="Search by title or author" /></div>
-            </label>
-            <label className="library-sort" htmlFor="library-sort-select">
-              <span>Arrange</span>
-              <select id="library-sort-select" data-testid="library-sort" value={sort} onChange={(event) => updateParam("sort", event.target.value, "recently-approved")}>
-                {SORT_OPTIONS.map((option) => <option key={option.slug} value={option.slug}>{option.name}</option>)}
-              </select>
-            </label>
-            <button type="button" className="library-filter-trigger" onClick={() => setFiltersOpen(true)} aria-haspopup="dialog" aria-expanded={filtersOpen}>Filters</button>
-          </div>
-          <div className="library-explorer__filters">
-            <FilterChips label="Language" value={language} options={LANGUAGE_FILTERS} onChange={(value) => updateParam("language", value)} testId="language-filters" />
-            <FilterChips label="Literary form" value={reading} options={READING_FILTERS} onChange={(value) => updateParam("reading", value)} testId="reading-filters" />
-            <FilterChips label="Listening" value={listening} options={LISTENING_FILTERS} onChange={(value) => updateParam("listening", value)} testId="listening-filters" />
-          </div>
-          {filtersOpen && <div className="library-filter-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div className="library-filter-drawer__panel"><div className="library-filter-drawer__head"><strong>Filters</strong><button type="button" className="library-filter-trigger" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X size={16} aria-hidden="true" /> Close</button></div><div className="library-explorer__filters"><FilterChips label="Language" value={language} options={LANGUAGE_FILTERS} onChange={(value) => updateParam("language", value)} testId="mobile-language-filters" /><FilterChips label="Literary form" value={reading} options={READING_FILTERS} onChange={(value) => updateParam("reading", value)} testId="mobile-reading-filters" /><FilterChips label="Listening" value={listening} options={LISTENING_FILTERS} onChange={(value) => updateParam("listening", value)} testId="mobile-listening-filters" /></div></div></div>}
-        </section>
-
-        <section className="library-collection" aria-labelledby="collection-title">
-          <div className="library-collection__header">
-            <div><p className="library-overline">CURATED EDITIONS</p><h2 id="collection-title">A single shelf, many ways in.</h2></div>
-            <p><Headphones size={16} aria-hidden="true" /> Listening appears only where the release evidence allows it.</p>
-          </div>
-          {loading ? <div className="library-empty" role="status" aria-live="polite">Opening the collection...</div> : filteredBooks.length > 0 ? (
-            <div className="library-book-grid" data-testid="library-book-grid">{filteredBooks.map((book, index) => <BookCard key={book.slug} book={book} priority={index < 3} />)}</div>
-          ) : (
-            <div className="library-empty" data-testid="library-empty"><SlidersHorizontal size={20} aria-hidden="true" /><h3>No editions match these filters.</h3><p>Try removing a filter or searching for another title or author.</p><button type="button" onClick={() => { setQuery(""); setParams(new URLSearchParams()); }}>Clear filters</button></div>
-          )}
-        </section>
-
-        <aside className="library-pipeline-note" aria-labelledby="pipeline-title">
-          <div className="library-pipeline-note__mark" aria-hidden="true">E</div>
-          <div><p className="library-overline">THE SHELF KEEPS ITS PROMISE</p><h2 id="pipeline-title">Some stories are still being prepared.</h2><p>Titles in preparation remain visible as invitations, not products. Reader and listening routes open only when their editorial and release checks are complete.</p></div>
-          <Link to={notifyUrl("library-release-notes")}>Request an update <ArrowRight size={15} aria-hidden="true" /></Link>
-        </aside>
-      </main>
-      </div>
-    </div>
-  );
+  return <div className="library-page" data-testid="library-page">
+    <ReferenceLibrarySurface filteredBooks={filteredBooks} loading={catalogueState === "loading"}
+      catalogueState={catalogueState} retryingCatalogue={retryingCatalogue} onRetryCatalogue={retryCatalogue}
+      query={query} language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} stage={stage}
+      onSearch={handleSearch} onParam={updateParam} onResetFilters={resetReferenceFilters}
+      filtersOpen={filtersOpen} setFiltersOpen={setFiltersOpen} />
+  </div>;
 }

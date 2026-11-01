@@ -25,7 +25,7 @@ export default function NotFound() {
         </div>
         <aside className="error-route-panel__note" aria-label="Recovery guidance">
           <span>THE READING DESK</span>
-          <p>Return to a reader-ready title, or begin again from the library.</p>
+          <p>Return to an available title, or begin again from the library.</p>
         </aside>
       </section>
     </PublicPageFrame>

@@ -3,7 +3,7 @@ import { useSettings } from "../context/SettingsContext";
 
 const SITE_URL = (process.env.REACT_APP_SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const DEFAULT_TITLE = "The Earnalism Digital Library";
-const DEFAULT_DESCRIPTION = "A calm Bengali and English digital library for reader-ready classics, graphical editions, and evidence-gated audiobooks.";
+const DEFAULT_DESCRIPTION = "Bengali and English classics for a curious life: read available editions online and discover selected audiobooks on Earnalism.";
 // Owner-designed Dracula cover used as the fallback OG image for the
 // controlled launch until a separate approved brand share image exists.
 const FALLBACK_OG_IMAGE =

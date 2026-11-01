@@ -6,7 +6,7 @@ describe("canonical public navigation", () => {
       "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About",
     ]);
     expect(PUBLIC_NAV_ITEMS.map(({ to }) => to)).toEqual([
-      "/", "/library", "/library?language=bn&availability=reader-ready", "/library?language=en",
+      "/", "/library", "/library?language=bn", "/library?language=en",
       "/library?availability=approved-audiobook", "/pricing", "/journal", "/about",
     ]);
   });

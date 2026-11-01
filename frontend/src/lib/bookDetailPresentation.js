@@ -1,6 +1,6 @@
 import { audiobookNarrationDisclosure, audiobookReleaseState } from "./audioReleaseSafety";
 
-const BENGALI_RE = /[\u0980-\u09FF]/;
+import { languageOfBook } from "./libraryCatalog";
 
 function text(value = "") {
   return String(value || "").trim();
@@ -24,10 +24,7 @@ export function releaseSafeBookCopy(value = "", audioApproved = false) {
 }
 
 export function languageOfBookDetail(book = {}) {
-  const explicit = text(book.language || book.language_code || book.lang || book.locale).toLowerCase();
-  if (explicit.startsWith("bn") || explicit.startsWith("ben")) return "bn";
-  if (explicit.startsWith("en") || explicit.startsWith("eng")) return "en";
-  return BENGALI_RE.test(`${book.title || ""} ${book.subtitle || ""} ${book.author || ""} ${book.description || ""}`) ? "bn" : "en";
+  return languageOfBook(book);
 }
 
 export function isReaderReadyBook(book = {}) {
@@ -71,17 +68,17 @@ export function bookDetailPresentationForBook(book = {}) {
       : "Reading edition in preparation",
     readerBody: readerRuntimeAvailable
       ? freeReading
-        ? "Read the opening 3 pages free. A valid Reading Pass is required from page 4."
+        ? "This edition is available to you under its free Reader entitlement. Read online while that entitlement remains eligible."
         : "Open the text in Earnalism's quiet reader with the current approved edition."
       : readerReady
-        ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
+        ? "This edition cannot be opened right now. Explore the Library for another title."
         : "This reading edition is still in preparation.",
     audioBadgeLabel: audioApproved ? "Audiobook Approved" : "Listening unavailable",
     audioHeading: audioApproved
       ? "Listening room approved"
       : audioReleaseApproved
         ? "Listening currently unavailable"
-        : "Audio waits for release gates",
+        : "No audiobook is currently available",
     audioBody: audioApproved
       ? "Open the Listening Room to listen to this audiobook."
       : audioReleaseApproved

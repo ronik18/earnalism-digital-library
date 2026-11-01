@@ -19,6 +19,7 @@ import {
   PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE,
   TASK_B_PRODUCTION_LINK_ACTION_BASELINE,
   HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE,
+  LIBRARY_QUALITY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -243,7 +244,7 @@ test("an unauthorized PR466 homepage baseline mutation fails closed", () => {
 
 test("the owner-directed Hourglass/Sherlock successor matches current source and preserves the previous record", () => {
   const baseline = loadLibraryInteractionBaseline(root, HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
-  const comparison = compareLibraryInteractionBaseline(root);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE), HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.approval_source, HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.expected_surface_sha256, "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975");
   assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
@@ -253,7 +254,17 @@ test("the owner-directed Hourglass/Sherlock successor matches current source and
   for (const input of baseline.input_paths) {
     const temporary = materializeReviewedSurface(HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE);
     fs.appendFileSync(path.join(temporary, input), "\n// unauthorized change\n");
-    assert.equal(compareLibraryInteractionBaseline(temporary).result, "FAIL");
+    assert.equal(compareLibraryInteractionBaseline(temporary, HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE).result, "FAIL");
+  }
+});
+
+test("Library quality source matches its explicit successor and rejects each input mutation", () => {
+  const baseline = loadLibraryInteractionBaseline(root, LIBRARY_QUALITY_INTERACTION_BASELINE);
+  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  for (const input of baseline.input_paths) {
+    const temporary = materializeReviewedSurface(LIBRARY_QUALITY_INTERACTION_BASELINE);
+    fs.appendFileSync(path.join(temporary,input), "\nunauthorized mutation\n");
+    assert.equal(compareLibraryInteractionBaseline(temporary).result,"FAIL");
   }
 });
 

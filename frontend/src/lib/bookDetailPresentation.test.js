@@ -11,8 +11,8 @@ describe("bookDetailPresentation", () => {
     const free = bookDetailPresentationForBook(book);
     expect(free.freeReading).toBe(true);
     expect(free.primaryReadLabel).toBe("Start with free preview");
-    expect(free.readerBody).toMatch(/opening 3 pages free/);
-    expect(free.readerBody).toMatch(/Reading Pass is required from page 4/);
+    expect(free.readerBody).toContain("under its free Reader entitlement");
+    expect(free.readerBody).not.toMatch(/Reading Pass is required/);
     const unavailable = bookDetailPresentationForBook({ ...book, _readerManifest: { access: { reading_pass: { enabled: true, segments_ready: false, free_entitlement: true } } } });
     expect(unavailable.freeReading).toBe(false);
     expect(unavailable.primaryReadHref).toBe("/library");
@@ -99,7 +99,7 @@ describe("bookDetailPresentation", () => {
 
     expect(presentation.listenCtaVisible).toBe(false);
     expect(presentation.audioBadgeLabel).toBe("Listening unavailable");
-    expect(presentation.audioHeading).toBe("Audio waits for release gates");
+    expect(presentation.audioHeading).toBe("No audiobook is currently available");
     expect(presentation.syncCopy).toBe("");
     expect(presentation.allowAudioStructuredData).toBe(false);
   });
@@ -148,7 +148,7 @@ describe("bookDetailPresentation", () => {
         audio_enabled: true,
       });
       expect(presentation.listenCtaVisible).toBe(false);
-      expect(presentation.audioHeading).toBe("Audio waits for release gates");
+      expect(presentation.audioHeading).toBe("No audiobook is currently available");
       expect(presentation.allowAudioStructuredData).toBe(false);
     }
   });

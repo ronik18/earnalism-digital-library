@@ -41,7 +41,7 @@ describe("public CTA accuracy contract", () => {
 
   test("home paths describe their exact language and release-gated destinations", () => {
     expect(homeSurfaces).toContain('"Bengali Classics", <>Timeless works that continue<br />to inspire.</>');
-    expect(homeSurfaces).toContain('"/library?language=bn&availability=reader-ready"');
+    expect(homeSurfaces).toContain('"/library?language=bn"');
     expect(homeSurfaces).toContain('"English Classics", <>Enduring voices from around<br />the world.</>');
     expect(homeSurfaces).toContain('"/library?language=en"');
     expect(homeSurfaces).toContain('"The Listening Room", <>Stories to hear in quiet moments,<br />on walks, and along the way.</>');

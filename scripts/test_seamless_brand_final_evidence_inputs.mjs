@@ -11,7 +11,7 @@ const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
 const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
-const currentHash = "5ccaaef2ff0fb795e701933703bb79e50f79043738e2276e93566edac8a9b975";
+const currentHash = "fc3fdb96377c0257dc8e7086dd54cfeb3eba4ae43b41f695d0a715a4fbeee555";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
@@ -89,9 +89,9 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
-test("active Hourglass/Sherlock baseline is the canonical reproduced current surface", () => {
+test("active Library quality baseline is the canonical reproduced current surface", () => {
   const baseline = compareLibraryInteractionBaseline(root);
-  assert.equal(currentRecord, "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json");
+  assert.equal(currentRecord, "docs/design-system/library-quality-interaction-baseline-20261101.json");
   assert.equal(baseline.result, "PASS");
   assert.equal(baseline.expected_surface_sha256, currentHash);
   assert.equal(baseline.observed_surface_sha256, currentHash);

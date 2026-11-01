@@ -483,3 +483,59 @@
   .optionb-site-footer [data-testid="footer-contact"] { grid-column: auto; }
   .commerce-page { padding-block: 1.5rem; }
 }
+
+
+/* Warm gold is an action treatment, not low-contrast text on cream.
+   Keep inline/legal/navigation links dark; preserve anchor destinations. */
+:root {
+  --action-gold: #d4aa5e;
+  --action-gold-hover: #e5bf7b;
+  --action-gold-ink: #35231b;
+  --action-gold-edge: #651d32;
+}
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) a:is(
+  .btn-primary, .reference-button--burgundy, .reference-button--gold, .rp-button,
+  .journal-v2__primary-link
+),
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) :is(
+  .about-v3__library-note, .about-v3__desk, .reference-home__pass-grid,
+  .journal-v2__library-note, .journal-v2__library-cta
+) > a,
+.layout--sitewide-option-b .reference-library .reference-book-tile__actions a,
+.layout--sitewide-option-b .reference-library .reference-library-drawer__footer .reference-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: .55rem .8rem;
+  border: 1px solid var(--action-gold-edge);
+  border-radius: .35rem;
+  background: var(--action-gold) !important;
+  color: var(--action-gold-ink) !important;
+  text-decoration: none;
+}
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) a:is(.btn-primary, .reference-button--burgundy, .reference-button--gold, .rp-button, .journal-v2__primary-link):hover,
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) :is(.about-v3__library-note, .about-v3__desk, .reference-home__pass-grid, .journal-v2__library-note, .journal-v2__library-cta) > a:hover,
+.layout--sitewide-option-b .reference-library .reference-book-tile__actions a:hover,
+.layout--sitewide-option-b .reference-library .reference-library-drawer__footer .reference-button:hover {
+  background: var(--action-gold-hover) !important;
+  color: var(--action-gold-ink) !important;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) a:is(.btn-primary, .reference-button--burgundy, .reference-button--gold, .rp-button, .journal-v2__primary-link):focus-visible,
+:is(.layout--sitewide-option-b, .layout--homepage-option-b) :is(.about-v3__library-note, .about-v3__desk, .reference-home__pass-grid, .journal-v2__library-note, .journal-v2__library-cta) > a:focus-visible,
+.layout--sitewide-option-b .reference-library .reference-book-tile__actions a:focus-visible,
+.layout--sitewide-option-b .reference-library .reference-library-drawer__footer .reference-button:focus-visible {
+  outline: 2px solid var(--action-gold-edge);
+  outline-offset: 3px;
+}
+@media (forced-colors: active) {
+  .layout--sitewide-option-b .reference-library .reference-book-tile__actions a,
+  .layout--sitewide-option-b .reference-library .reference-library-drawer__footer .reference-button {
+    background: ButtonFace !important;
+    color: ButtonText !important;
+    border-color: ButtonText;
+  }
+}

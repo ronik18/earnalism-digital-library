@@ -61,7 +61,7 @@ const JOURNEY_ROUTES = [
 
 const CTA_CHECKS = [
   { id: "browse_library_click", sourcePath: "/", label: "Browse Library", expectedPath: "/library" },
-  { id: "browse_bengali_click", sourcePath: "/", label: "Browse Bengali classics", expectedPath: "/library", expectedSearch: "language=bn&availability=reader-ready" },
+  { id: "browse_bengali_click", sourcePath: "/", label: "Browse Bengali classics", expectedPath: "/library", expectedSearch: "language=bn" },
   { id: "browse_english_click", sourcePath: "/", label: "Browse English classics", expectedPath: "/library", expectedSearch: "language=en" },
   { id: "approved_audiobooks_click", sourcePath: "/", label: "Explore approved audiobooks", expectedPath: "/library", expectedSearch: "availability=approved-audiobook" },
   { id: "book_public_pages_click", sourcePath: "/book/dracula", label: "Read the first 3 pages free", expectedPath: "/reader/dracula" },

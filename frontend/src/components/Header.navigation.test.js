@@ -11,7 +11,7 @@ describe("premium header navigation", () => {
     expect(navigation).not.toContain("HOME_OPTION_B_NAV_ITEMS");
     expect(navigation).toContain('{ key: "home", to: "/", label: "Home" }');
     expect(navigation).toContain('{ key: "library", to: "/library", label: "Library" }');
-    expect(navigation).toContain('{ key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" }');
+    expect(navigation).toContain('{ key: "bengali", to: "/library?language=bn", label: "Bengali Classics" }');
     expect(navigation).toContain('{ key: "english", to: "/library?language=en", label: "English Classics" }');
     expect(navigation).toContain('{ key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
     expect(navigation).toContain('{ key: "reading-pass", to: "/pricing", label: "Reading Pass" }');

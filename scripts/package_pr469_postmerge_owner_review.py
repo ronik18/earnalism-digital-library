@@ -120,7 +120,7 @@ def main() -> None:
         ):
             delta_selections.append((f"delta-library-{state}-{width}.png", library / source_name, f"{label} · {width}"))
     for width in (1440, 1024, 390):
-        delta_selections.append((f"delta-library-live-and-coming-soon-{width}.png", supplemental / f"library-canonical-live-and-coming-soon-{width}.png", f"Library · canonical live + coming soon · {width}"))
+        delta_selections.append((f"delta-library-live-and-coming-soon-{width}.png", supplemental / f"library-canonical-live-and-coming-soon-{width}.png", f"Library · canonical live + in preparation · {width}"))
     delta_records = [copy(source, images_dir / filename, label) for filename, source, label in delta_selections]
     delta_contact_sheet = output / "owner-delta-contact-sheet.png"
     image_contact_sheet([(label, images_dir / filename) for filename, _, label in delta_selections], delta_contact_sheet)

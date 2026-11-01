@@ -1,0 +1,373 @@
+{
+  "a-ghost-story": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-tell-tale-heart": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "radharani": {
+    "language": "bn",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "a-white-heron": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-gift-of-the-magi": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-canterville-ghost": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-adventures-of-sherlock-holmes": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "agentic-ai-with-python": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "technology"
+    ]
+  },
+  "a-horseman-in-the-sky": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "historical-fiction"
+    ]
+  },
+  "a-mystery-of-heroism": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "historical-fiction"
+    ]
+  },
+  "a-scandal-in-bohemia": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "jekyll-and-hyde": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "love-of-life": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "the-bishop": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-fall-of-the-house-of-usher": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-lady-with-the-dog": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-man-who-would-be-king": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "the-open-boat": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "the-pit-and-the-pendulum": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-stolen-white-elephant": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery",
+      "satire"
+    ]
+  },
+  "an-occurrence-at-owl-creek-bridge": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "historical-fiction"
+    ]
+  },
+  "the-enchanted-april": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-happy-prince": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "fantasy",
+      "children-classics"
+    ]
+  },
+  "picture-of-dorian-gray": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "dracula": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "book-edfcf810c5": {
+    "language": "bn",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "muchiram-gurer-jibanchorit": {
+    "language": "bn",
+    "form": "novel",
+    "genres": [
+      "satire"
+    ]
+  },
+  "bn-059": {
+    "language": "bn",
+    "form": "poetry",
+    "genres": [
+      "satire"
+    ]
+  },
+  "the-call-of-the-wild": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "the-student": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-art-of-money-getting": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "business"
+    ]
+  },
+  "bn-035": {
+    "language": "bn",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "alices-adventures-in-wonderland": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "fantasy",
+      "children-classics"
+    ]
+  },
+  "dsires-baby": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "sredni-vashtar": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-cop-and-the-anthem": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "satire"
+    ]
+  },
+  "the-open-window": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "satire"
+    ]
+  },
+  "the-selfish-giant": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "fantasy",
+      "children-classics"
+    ]
+  },
+  "the-science-of-getting-rich": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "business"
+    ]
+  },
+  "bn-066": {
+    "language": "bn",
+    "form": "novel",
+    "genres": [
+      "historical-fiction"
+    ]
+  },
+  "lokrahasya": {
+    "language": "bn",
+    "form": "poetry",
+    "genres": [
+      "satire"
+    ]
+  },
+  "mrinalini": {
+    "language": "bn",
+    "form": "novel",
+    "genres": [
+      "historical-fiction"
+    ]
+  },
+  "frankenstein": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "gothic-fiction",
+      "science-fiction"
+    ]
+  },
+  "pride-and-prejudice": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-great-gatsby": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-secret-garden": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "children-classics",
+      "literary-fiction"
+    ]
+  },
+  "the-time-machine": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "science-fiction"
+    ]
+  },
+  "acres-of-diamonds": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "business"
+    ]
+  },
+  "my-life-and-work": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "business"
+    ]
+  },
+  "the-principles-of-scientific-management": {
+    "language": "en",
+    "form": "nonfiction",
+    "genres": [
+      "business"
+    ]
+  },
+  "the-wonderful-wizard-of-oz": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "fantasy",
+      "children-classics"
+    ]
+  },
+  "book-5704b31005": {
+    "language": "bn",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  }
+}

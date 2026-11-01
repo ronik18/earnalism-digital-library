@@ -30,7 +30,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 CANONICAL_SITE_URL = "https://theearnalism.com"
-ACCESS_COPY = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass."
+PRODUCT_COPY = json.loads((ROOT / "frontend/src/content/productCopy.json").read_text())
+ACCESS_COPY = PRODUCT_COPY["readerAccess"] + " " + PRODUCT_COPY["listeningAccess"]
+PAID_COMMERCE_ENABLED = json.loads((ROOT / "data/controlled_launch.json").read_text()).get("public_paid_commerce_enabled") is True
 FORBIDDEN_COPY = (
     "Chapter 1 free", "First chapter free", "Chapter 1 is on us", "Preview chapter unlocked",
     "First 3 minutes free", "First 180 seconds free", "Free audiobook preview",
@@ -400,8 +402,8 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
             failures.append("missing route-specific preview-access description")
         if "read the 3-page preview" not in text:
             failures.append("missing approved three-page preview CTA")
-        if not re.search(r'"isAccessibleForFree"\s*:\s*false', html, re.I):
-            failures.append("Book structured data must mark full access unavailable")
+        if re.search(r'"isAccessibleForFree"\s*:', html, re.I):
+            failures.append("Book structured data must not invent a full-edition free-access declaration")
         if any("listen" in normalize(label) for _, label in facts.links):
             failures.append("book exposes an active Listen CTA")
     elif policy["kind"] == "disabled_listener":
@@ -416,8 +418,11 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
     elif policy["kind"] == "pricing":
         if "reading pass" not in title and "pricing" not in title:
             failures.append("missing route-specific Pricing or Reading Pass identity")
-        if "paid checkout are unavailable" not in description:
-            failures.append("missing disabled-checkout description")
+        required = "one-time prepaid reading passes for eligible online reading and released audiobooks in india." if PAID_COMMERCE_ENABLED else "reading pass purchases are not available in this launch."
+        if required not in description:
+            failures.append("Pricing description does not match controlled commerce availability")
+        if PAID_COMMERCE_ENABLED and any(phrase in text for phrase in ("paid checkout is unavailable", "reading pass purchases are not available")):
+            failures.append("Pricing body contradicts enabled controlled commerce")
     elif policy["kind"] == "library" and "library" not in title:
         failures.append("missing Library route identity")
     elif policy["kind"] == "reader" and normalize(policy["title"]) not in title:

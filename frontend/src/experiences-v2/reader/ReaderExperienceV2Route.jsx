@@ -531,7 +531,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     if (actionRef.current) return;
     actionRef.current = true;
     setBusy(true);
-    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
+    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", bengali: "/library?language=bn", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
     try {
       if (!await settleLease("reader_v2_navigation")) {
         setNotice("Your reading session could not be closed. Please retry before leaving this reader.");
@@ -711,7 +711,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     } : { ...READER_V2_FIXTURE };
     Object.assign(fixtureModel, { visualFixture: true, progress: null, readingTime: "", readingPass: "Sign in to check Reading Pass balance" });
     return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target, navigationPath) => {
-      const destinations = { back: "/book/dracula", library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: "/login", bookmark: "/login?next=%2Freader%2Fdracula" };
+      const destinations = { back: "/book/dracula", library: "/library", search: "/library", bengali: "/library?language=bn", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: "/login", bookmark: "/login?next=%2Freader%2Fdracula" };
       if (navigationPath || destinations[target]) navigate(navigationPath || destinations[target]);
     }} />;
   }

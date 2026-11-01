@@ -7,23 +7,23 @@ import "../styles/editorial-support.css";
 
 const READING_PATHS = [
   {
-    title: "Find a reader-ready edition",
+    title: "Find an available edition",
     tag: "Discover",
-    body: "Browse Bengali and English classics that are available for the current release.",
+    body: "Explore the Bengali and English classics currently open in the Library.",
     to: "/library",
-    cta: "Browse reader-ready editions",
+    cta: "Browse available editions",
   },
   {
     title: "Begin with the preview",
     tag: "Read",
-    body: `${PUBLIC_PREVIEW_COPY}. The page boundary is defined by the edition, never by a chapter marker.`,
+    body: `${PUBLIC_PREVIEW_COPY} Let a few pages introduce the work before you choose how to continue.`,
     to: "/library",
-    cta: "Browse reader-ready editions",
+    cta: "Browse available editions",
   },
   {
     title: "Continue when it matters",
     tag: "Return",
-    body: `${READING_TIME_COPY} Choose a Reading Pass only when you want to continue.`,
+    body: `${READING_TIME_COPY} Choose a Reading Pass when your selected edition requires one.`,
     to: "/pricing",
     cta: "View Reading Passes",
   },
@@ -32,7 +32,7 @@ const READING_PATHS = [
 export default function MicroStoryLanding() {
   useSEO({
     title: "A Quiet Reading Invitation — Earnalism",
-    description: "Find a reader-ready Earnalism edition, begin with the canonical preview, and continue with a Reading Pass when you choose.",
+    description: "Find an Earnalism edition, begin with an available preview, and let a story open the door to your next read.",
     canonicalPath: "/micro-story",
   });
 
@@ -42,7 +42,7 @@ export default function MicroStoryLanding() {
         <div className="micro-story-hero__copy">
           <p className="micro-story-hero__eyebrow">A quiet way into the library</p>
           <h1 id="micro-story-title">Begin with a story, then stay as long as it holds you.</h1>
-          <p>{PUBLIC_ACCESS_COPY} Explore reader-ready editions before deciding whether to add Reading Pass time.</p>
+          <p>{PUBLIC_ACCESS_COPY} Explore available editions before deciding whether to add Reading Pass time.</p>
           <div className="micro-story-hero__actions">
             <Link
               to="/library?source=reading_invitation"
@@ -51,7 +51,7 @@ export default function MicroStoryLanding() {
             >
               Explore the Library <ArrowRight size={15} />
             </Link>
-            <p>Choose a title first. Reading time is only relevant when you decide to continue.</p>
+            <p>Choose a title first. Its page explains the available reading and listening options.</p>
           </div>
         </div>
         <aside className="micro-story-hero__aside" aria-label="What to expect before choosing a pass">
