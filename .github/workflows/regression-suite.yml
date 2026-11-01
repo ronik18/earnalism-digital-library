@@ -67,6 +67,7 @@ jobs:
           internal/audiobook_lab/scripts/test_selfish_giant_adoption.py
           internal/audiobook_lab/scripts/test_owner_produced_package.py
           internal/audiobook_lab/scripts/test_native_scored_package.py
+          internal/audiobook_lab/scripts/test_selfish_cedar_source_adoption.py
           internal/audiobook_lab/scripts/test_retained_master_derivative.py
           backend/tests/test_exact_retained_master_duration.py
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
