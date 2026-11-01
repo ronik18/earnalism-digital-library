@@ -3,7 +3,7 @@
   "title": "The Selfish Giant",
   "book_id": "controlled-the-selfish-giant",
   "url": "https://theearnalism.com/book/the-selfish-giant",
-  "stage": "SOURCE_QA_ADOPTED_CONTINUOUS_MASTER_STORAGE_CONTEXT_REQUIRED",
+  "stage": "CEDAR_SOURCE_QA_ADOPTED_STORAGE_AND_NEW_RUNTIME_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -57,26 +57,49 @@
     "live_manifest_fields": {}
   },
   "voice": {
-    "status": "RETAIN_ACCEPTED_RECORDING",
-    "speaker": "Ryan",
-    "model": "Qwen3-TTS CustomVoice",
-    "package": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
-    "new_generation": false,
-    "qualitative_disposition": "REUSE_EXACT_FROZEN_PARENT_POLICY_WITH_STATED_LISTENING_SCOPE"
+    "status": "OWNER_FULL_SCORED_ACCEPTED_NATIVE_SOURCE_QA_ADOPTED",
+    "speaker": "Cedar",
+    "model": "gpt-realtime-2.1-mini",
+    "generation_responses": 17,
+    "listened_mp3_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+    "new_generation_performed_by_this_registration": false,
+    "provider": "owner_openai_realtime",
+    "publication_mp3_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "source_qa_descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258"
   },
   "music": {
-    "selection": "SILENCE_DRY_ACCEPTED_MASTER_VERIFIED",
-    "new_music_added": false,
-    "current_subjective_balance_check": "NO_BACKGROUND_MUSIC_LAYER_TO_BALANCE",
-    "evidence": "continuous-master-preparation-20261101/selfish-master-identity.json"
+    "selection": [
+      "Heartwarming",
+      "Heartbreaking"
+    ],
+    "creator": "Kevin MacLeod",
+    "full_scored_owner_review": "OWNER_ACCEPTED_EXACT_LISTENED_MP3_UNCHANGED_AUDIO_PUBLICATION_SUCCESSOR",
+    "licence": "CC BY4.0",
+    "new_music_generation": false,
+    "source_qa_music_evidence_sha256": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346"
   },
   "quality": {
-    "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
-    "pronunciation": "UNVERIFIED",
-    "listening": "UNVERIFIED",
-    "audio": "UNVERIFIED",
-    "sync": "UNVERIFIED",
-    "live_playback": "PARTIAL_CURRENT_RUNTIME_RENEWAL_BACKLOG_BLOCKS_VERIFIED_LIVE"
+    "content": "AUDIO_DERIVED_RAW_ASR_PLUS_EXPLICIT_OWNER_ADJUDICATION",
+    "pronunciation": "OWNER_ACCEPTED_COMPLETE_SCORED_BOOK",
+    "audio": "RETAINED_TECHNICAL_METERS_AND_OWNER_FULL_SCORED_ACCEPTANCE",
+    "sync": "MEASURED_AUDIO_DERIVED_23_READER_PARAGRAPHS_NO_WORD_PRECISION_CLAIM",
+    "live_playback": "UNVERIFIED_FOR_NEW_CEDAR_PACKAGE",
+    "adjudicated_content_score": 10.0,
+    "listening_scores": {
+      "anti_choppy_join_score": 9.5,
+      "anti_robotic_texture_score": 9.8,
+      "confidence_score": 0.96,
+      "continuity_score": 9.7,
+      "emotional_expression_score": 9.7,
+      "listener_enjoyment_score": 9.8,
+      "naturalness_score": 9.8,
+      "overall_listening_score": 9.8,
+      "pacing_score": 9.5,
+      "pronunciation_score": 9.8,
+      "punctuation_pause_score": 9.4
+    },
+    "physical_devices": "UNVERIFIED",
+    "raw_ASR_metrics": "UNCHANGED"
   },
   "repairs": [],
   "costs": {
@@ -95,23 +118,37 @@
       "fractional_usage_carry": "NOT_OBSERVED"
     },
     "paid_playback_cost_basis": "7whole existing ReadingPass credit seconds consumed, verified by matched own-session ledger; monetary conversion/fractional carry unreported, no cash purchase.",
-    "known_own_reading_pass_whole_seconds": 22
+    "known_own_reading_pass_whole_seconds": 22,
+    "native_cedar_production": {
+      "budget_usd": 2,
+      "invoice_verified": false,
+      "new_allocations": 0,
+      "prior_CU_history": "PRESERVED_IN_EXISTING_LEDGER_NOT_RESET",
+      "responses_consumed": 17,
+      "returned_usage_token_estimate_usd": 0.2282264,
+      "synthesis_retries": 0
+    }
   },
   "blockers": [
     {
-      "code": "CURRENT_RUNTIME_INTERNAL_TRANSITION_GAP",
-      "detail": "Native+actualcomposed delayedrenewal evidence exposeslong orderednext-segmentadmission gap; do not declare smoothcurrentplayback. No newlyqualifiedLIVE.",
-      "action": "Use exactunchangedcontinuousmaster successor, then actualsingle-source seek/pause/end/currentaccounting acceptance."
+      "code": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
     },
     {
-      "code": "PRIVATE_PRIMARY_DR_STORAGE_CONTEXT_MISSING",
-      "detail": "NativepreflightfailedSTORAGE_CONFIGURATION_MISSING. No primaryorDRprofilesconfiguredinthisruntime; noexpiryinferred.",
-      "action": "ExistingoperatorprivatelysuppliesvalidPRODandindependentDR upload/retention-admincontext with exactnewdescriptorprefixscope; runnativepreflightthenbudgetedimmutableupload/finalize."
+      "code": "PRIVATE_B2_DR_REPLICA_REQUIRED",
+      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
     },
     {
-      "code": "DERIVATIVE_PRODUCTION_ACCEPTANCE_NOT_PERFORMED",
-      "detail": "NoactualprimaryDRreceipt, finalizedpackage, exactheadCI/deployment ornewruntimeacceptance for thisdraft.",
-      "action": "Complete supported downstreamgates and actualcustomerverification; retainBLOCKEDuntilallpass."
+      "code": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+    },
+    {
+      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution.",
+      "code": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+    },
+    {
+      "action": "Owner decision/profile qualification remains separate; no new keys, caps or ledger resets authorized by source adoption.",
+      "code": "REPLACEMENT_KEYS_AND_ADDITIVE_CARRIED_BUDGET_AUTHORITY_PENDING"
     }
   ],
   "language": "en",
@@ -121,6 +158,17 @@
         "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
         "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      },
+      "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258": {
+        "basis": "Exact independently reviewed Cedar source-QA component-rights adoption only; no active/public pointer, storage or runtime proof inferred.",
+        "decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+        "record_sha256": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5",
         "territories": [
           "IN"
         ],
@@ -207,5 +255,17 @@
       "action": "Own EndPOST sent and own tab closed, but End response was not captured. Matched own debit4 proves consumption only, not terminal status. Preserve the earlier same-runtime final-native End200 proof at1.5x in its limited scope; do not substitute it for the latest session terminal receipt."
     }
   ],
-  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY"
+  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY",
+  "new_cedar_recording": {
+    "adoption_sha256": "d9365137dbf49b4e9326a695a6908e4f6508aea2f47be577bf94312ae473416b",
+    "audio_use_decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+    "audio_use_record_sha256": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5",
+    "descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+    "existing_public_audio_unchanged": true,
+    "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "old_publication_and_playback_not_current_Cedar_evidence": true,
+    "publication_status": "NOT_PUBLISHED_STORAGE_AND_RUNTIME_PENDING",
+    "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "source_qa_record": "internal/audiobook_lab/release_gate/selfish-giant-cedar-20261102/source-qa-adoption.json"
+  }
 }

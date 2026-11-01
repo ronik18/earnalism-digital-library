@@ -1,0 +1,211 @@
+{
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "book_id": "controlled-the-selfish-giant",
+  "url": "https://theearnalism.com/book/the-selfish-giant",
+  "stage": "SOURCE_QA_ADOPTED_CONTINUOUS_MASTER_STORAGE_CONTEXT_REQUIRED",
+  "status": "BLOCKED",
+  "source_version": {
+    "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+    "catalog_updated_at": "2026-10-29T08:53:03.392271+00:00",
+    "public_manifest": {
+      "http": 200,
+      "sha256": "c27c1befc840147870f0d7d1a37ba47fc07155f7ef8fc0209361b1f0168fb587",
+      "url": "https://theearnalism.com/api/reader/book/the-selfish-giant/manifest"
+    },
+    "source_evidence.json": {
+      "path": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+    },
+    "reader_manifest.json": {
+      "path": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5"
+    },
+    "rights_decision.json": {
+      "path": "backend/data/controlled_publications/the-selfish-giant/rights_decision.json",
+      "sha256": "91c2106b7752ee3a2e6a576cfb5a69a782885676148df147c120d746c01007e3"
+    },
+    "chapters": [
+      {
+        "path": "backend/data/controlled_publications/the-selfish-giant/chapters/chapter-001.json",
+        "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+      }
+    ],
+    "live_chapter_count": 1,
+    "live_version": "dd46ec8d382c9e53203a",
+    "live_content_generation": 0,
+    "live_audio": {
+      "enabled": true,
+      "asset_slug": "the-selfish-giant",
+      "provider": "",
+      "voice": "",
+      "assets": {},
+      "url": "",
+      "size": 0,
+      "duration_ms": 777120,
+      "delivery_mode": "PROTECTED_PACKAGE_V2",
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "sync_mode": "",
+      "highlight_sync_enabled": false,
+      "narration_disclosure": "",
+      "package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "version": "009e67b8c63a7483",
+      "updated_at": ""
+    },
+    "live_book_slug": "the-selfish-giant",
+    "live_manifest_fields": {}
+  },
+  "voice": {
+    "status": "RETAIN_ACCEPTED_RECORDING",
+    "speaker": "Ryan",
+    "model": "Qwen3-TTS CustomVoice",
+    "package": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "new_generation": false,
+    "qualitative_disposition": "REUSE_EXACT_FROZEN_PARENT_POLICY_WITH_STATED_LISTENING_SCOPE"
+  },
+  "music": {
+    "selection": "SILENCE_DRY_ACCEPTED_MASTER_VERIFIED",
+    "new_music_added": false,
+    "current_subjective_balance_check": "NO_BACKGROUND_MUSIC_LAYER_TO_BALANCE",
+    "evidence": "continuous-master-preparation-20261101/selfish-master-identity.json"
+  },
+  "quality": {
+    "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
+    "pronunciation": "UNVERIFIED",
+    "listening": "UNVERIFIED",
+    "audio": "UNVERIFIED",
+    "sync": "UNVERIFIED",
+    "live_playback": "PARTIAL_CURRENT_RUNTIME_RENEWAL_BACKLOG_BLOCKS_VERIFIED_LIVE"
+  },
+  "repairs": [],
+  "costs": {
+    "new_provider_spend_usd": 0,
+    "new_storage_spend_usd": 0,
+    "new_paid_playback_spend_usd": null,
+    "production_estimate_usd": null,
+    "estimate_status": "NOT_ESTIMATED_BEFORE_RIGHTS_AND_PROVIDER_QUALIFICATION",
+    "historical_costs": "RETAINED_IN_EXISTING_LEDGERS_NOT_RESET",
+    "protected_acceptance": {
+      "whole_reading_pass_seconds_debited": 7,
+      "matched_own_ledger": true,
+      "unrelated_account_activity_excluded": true,
+      "monetary_value_usd": null,
+      "cash_purchase": false,
+      "fractional_usage_carry": "NOT_OBSERVED"
+    },
+    "paid_playback_cost_basis": "7whole existing ReadingPass credit seconds consumed, verified by matched own-session ledger; monetary conversion/fractional carry unreported, no cash purchase.",
+    "known_own_reading_pass_whole_seconds": 22
+  },
+  "blockers": [
+    {
+      "code": "CURRENT_RUNTIME_INTERNAL_TRANSITION_GAP",
+      "detail": "Native+actualcomposed delayedrenewal evidence exposeslong orderednext-segmentadmission gap; do not declare smoothcurrentplayback. No newlyqualifiedLIVE.",
+      "action": "Use exactunchangedcontinuousmaster successor, then actualsingle-source seek/pause/end/currentaccounting acceptance."
+    },
+    {
+      "code": "PRIVATE_PRIMARY_DR_STORAGE_CONTEXT_MISSING",
+      "detail": "NativepreflightfailedSTORAGE_CONFIGURATION_MISSING. No primaryorDRprofilesconfiguredinthisruntime; noexpiryinferred.",
+      "action": "ExistingoperatorprivatelysuppliesvalidPRODandindependentDR upload/retention-admincontext with exactnewdescriptorprefixscope; runnativepreflightthenbudgetedimmutableupload/finalize."
+    },
+    {
+      "code": "DERIVATIVE_PRODUCTION_ACCEPTANCE_NOT_PERFORMED",
+      "detail": "NoactualprimaryDRreceipt, finalizedpackage, exactheadCI/deployment ornewruntimeacceptance for thisdraft.",
+      "action": "Complete supported downstreamgates and actualcustomerverification; retainBLOCKEDuntilallpass."
+    }
+  ],
+  "language": "en",
+  "rights": {
+    "audio_package_bindings": {
+      "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2": {
+        "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
+        "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
+        "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    },
+    "reader_rights_do_not_establish_audio_rights": true
+  },
+  "retained_playback_evidence": {
+    "path": "internal/audiobook_lab/release_gate/selfish-giant-20261029/production-acceptance/playback.json",
+    "sha256": "ac7b16224cfe3fb132ee3430c4f2ceb0469341d1ce13b4e67fb849e3a3f0494a"
+  },
+  "retained_playback_summary": {
+    "packageVersion": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "durationMs": 777120,
+    "segmentCount": 6,
+    "ended": true,
+    "pauseResumeSeekPass": true,
+    "coverage_segments": 6
+  },
+  "catalog_audio": {
+    "audio_enabled": true,
+    "audio_status": "AVAILABLE",
+    "audio_qa_status": "QA_PASSED",
+    "audiobook_enabled": true,
+    "audiobook_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+    "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+    "audiobook_duration_ms": 777120,
+    "audiobook_release_gate": "APPROVED"
+  },
+  "live_audio_manifest_guest": {
+    "http": 401,
+    "url": "https://theearnalism.com/api/reader/book/the-selfish-giant/audiobook/manifest"
+  },
+  "customer_page": {
+    "http": 200,
+    "sha256": "830719e3a681c09967242dd3cfe03142896639d4425784d52e81954b4809890a",
+    "url": "https://theearnalism.com/book/the-selfish-giant"
+  },
+  "existing_publication_status": "PUBLICLY_AVAILABLE_UNCHANGED_CURRENT_FULL_ACCEPTANCE_BLOCKED",
+  "browser_observation": {
+    "method": "Live CUA browser, guest state",
+    "observed_at": "2026-10-31T05:02:04.255156+00:00",
+    "detail": "Correct title/author and Audiobook Approved with Open Listening Room link; listener shows Full audiobook, one chapter, expected duration, Authorize Listening and Reading Pass requirement; controls disabled before authorization. No authorization click, sign-in, or billable session performed.",
+    "duration": "12:57",
+    "discovery": "PASS",
+    "guest_access_controls": "PASS",
+    "authenticated_playback": "NOT_PERFORMED"
+  },
+  "parallel_acceptance_matrix": "parallel-batch-20261101/existing/the-selfish-giant-gate-matrix.json",
+  "backend_source_binding": "parallel-batch-20261101/existing/backend-provenance-followup.json",
+  "reused_exact_source_regression": "parallel-batch-20261101/existing/targeted-test-evidence-reuse.json",
+  "fresh_rendered_public_verification": "parallel-batch-20261101/selfish-public/SELFISH-PUBLIC-AVAILABILITY-RESULT.json",
+  "bounded_acceptance_plan": "parallel-batch-20261101/selfish-public/SELFISH-PROTECTED-ACCEPTANCE-PLAN.json",
+  "owner_acceptance_authority": {
+    "source": "Explicit owner reply: Signed in—use this account for the bounded check",
+    "planned_active_seconds": 31,
+    "maximum_existing_credit_seconds": 120,
+    "purchase": false,
+    "shared_release_must_finish_first": true,
+    "status": "EXECUTED_BOUNDED_FOLLOWUP_COMPLETE_LIVE_GATES_UNVERIFIED",
+    "owner_attempt_count_limit": "NOT_SPECIFIED_NATIVE_OWNER_CAP_IS_CUMULATIVE_CREDIT",
+    "internal_attempt_limit": 4,
+    "actual_own_whole_seconds_debited": 7
+  },
+  "dedicated_runtime_followup": {
+    "summary": "parallel-batch-20261101/selfish-runtime/FINAL-STATUS.json",
+    "matrix": "parallel-batch-20261101/selfish-runtime/SELFISH-CONDENSED-FINAL-TITLE-MATRIX.json",
+    "new_publication": false,
+    "public_available": true,
+    "verified_live": false
+  },
+  "continuous_master_checkpoint": "continuous-master-preparation-20261101/CHECKPOINT.json",
+  "prior_blockers_before_continuous_master_20261101": [
+    {
+      "code": "ACTUAL_ACTIVE_SEEK_AND_NATURAL_INTERNAL_TRANSITION_UNVERIFIED",
+      "action": "Current protected media1x delivery observed, but the initial Play was still awaiting renewal when the controller advanced. Actual active-to-active seek and naturalGroup01→02 transition are not proven. Use the latency-aware qualified controller and correct actual source/native-playing readiness; no product patch or new narration justified by these observations."
+    },
+    {
+      "code": "LATEST_OWN_NORMAL_SESSION_TERMINAL_ACK_UNVERIFIED",
+      "action": "Own EndPOST sent and own tab closed, but End response was not captured. Matched own debit4 proves consumption only, not terminal status. Preserve the earlier same-runtime final-native End200 proof at1.5x in its limited scope; do not substitute it for the latest session terminal receipt."
+    }
+  ],
+  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY"
+}

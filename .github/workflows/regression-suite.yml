@@ -59,11 +59,14 @@ jobs:
           python-multipart==0.0.9 bleach==6.1.0 markdown==3.6
           mammoth==1.7.1 Pillow==10.3.0 cloudinary==1.40.0 httpx==0.28.1
           python-dotenv redis==5.0.8 boto3 requests
+      - name: Install local native-audio decoder test prerequisites
+        run: sudo apt-get update && sudo apt-get install --yes ffmpeg
       - name: Qualify exact adopted audio, rights and current HTTP contracts
         run: >-
           python -m pytest -q
           internal/audiobook_lab/scripts/test_selfish_giant_adoption.py
           internal/audiobook_lab/scripts/test_owner_produced_package.py
+          internal/audiobook_lab/scripts/test_native_scored_package.py
           internal/audiobook_lab/scripts/test_retained_master_derivative.py
           backend/tests/test_exact_retained_master_duration.py
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
@@ -137,6 +140,9 @@ jobs:
           node-version: "20"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
+
+      - name: Install local native-audio decoder test prerequisites
+        run: sudo apt-get update && sudo apt-get install --yes ffmpeg
 
       - name: Install backend regression dependencies
         run: |

@@ -1,0 +1,86 @@
+{
+  "actual_record_file_sha256": {
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/ADOPTION.PROPOSED.json": "41872399f945764704e6068d773b3d614359f3f061dbd931f699c5e23444e1f4",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/AUDIO-USE-DECISION.PROPOSED.json": "4a880a0e8b3aec24d6a69e90294ad4dff03d365762cd81881f95e2c394480d30",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/REGISTRY.PROPOSED.json": "02c31afe0c9ef3a9c134d16a7416b784dd15140880903e0c82cd0f6254143de3",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/SOURCE-QA-BUNDLE.PROPOSED.json": "07f19140cb9935a54c9f44293c11d45995e24ee6af9b0957506f2e4728b7a8a5"
+  },
+  "actual_records_unchanged": true,
+  "allocation_or_synthesis": 0,
+  "at": "2026-11-01T19:19:23.254404+00:00",
+  "canonical_writes": 0,
+  "conditional": {
+    "manager_returns_exact_projected_descriptor": true,
+    "native_local_prepare_result": {
+      "output_dir": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/CONDITIONAL-OUTPUT-QUARANTINED-TO-PENDING",
+      "public_release_approved": false,
+      "status": "LOCAL_NATIVE_SOURCE_QA_PREPARED_STORAGE_PENDING",
+      "upload_performed": false
+    },
+    "original_projected_output_file_hashes_before_quarantine": {
+      "package-semantics.json": "68c19ae5b364697835f83c6a3f5ec809cd73002ec00d7519080e0265f7703b2e",
+      "release-descriptor.json": "813e2580740c7a46d89d0b1571aaec660c97f225066f29a5478ef7e9336d3851",
+      "upload-plan.json": "ca9566ab08be71cb69772be8819de815886e7aafdfb5a7b456758c148825758a"
+    },
+    "output_quarantined_to_real_pending_descriptor": "40c7f9406cf768a98f428c523ff40e66323c2d83bba280e31589f8fa99db8fcf",
+    "result": "ACTUAL_SOURCE_AUDIO_EVIDENCE_STRUCTURE_QUALIFIED_CONDITIONALLY_NOT_ADOPTED",
+    "upload_status_after_quarantine": "SOURCE_ADOPTION_PENDING"
+  },
+  "direct_actual_records": {
+    "audio_rights_denial_reasons": [
+      "DECISION_NOT_ACCEPTED",
+      "DECISION_NOT_TRUSTED_OR_CHANGED",
+      "REVIEW_ATTRIBUTION_MISSING",
+      "CONDITIONS_NOT_SATISFIED"
+    ],
+    "native_sourceqa_denial": "Exact native adoption identity"
+  },
+  "new_owner_artistic_or_source_permission": "NOT_REQUIRED_BY_IDENTIFIED_FACTS",
+  "next_gate": "Independent exact candidate review, clean canonical one-lane integration and genuine registry adoption; actual storage key/cap decision and qualification remain separate",
+  "not_claimed": [
+    "canonical sourceQA adoption",
+    "accepted production rights decision",
+    "CI on final canonical commit",
+    "actual storage proof",
+    "new runtime/playback/accounting/publication",
+    "physical-device review",
+    "word-level timing precision"
+  ],
+  "overall_status": "PROPOSED_REVIEW_PENDING_NOT_AUTHORITATIVE_PASS",
+  "physical_checks": "Real native prepare reads/hashes actual local masterWAV/MP3/listenedMP3/manuscript/12evidencefiles/fourdeliveryassets, independently compares decoded PCM+elementary packet bytes and verifies actual Reader/source grouping; no substituted media or fixture evidence",
+  "projected_fields_only": {
+    "adoption.adopted_by": [
+      "",
+      "CONDITIONAL_PRIVATE_QUALIFICATION_NOT_ACTUAL_ADOPTION"
+    ],
+    "adoption.status": [
+      "PROPOSED_REVIEW_PENDING",
+      "ADOPTED"
+    ],
+    "audio_use_decision.accepted_by": [
+      "",
+      "CONDITIONAL_PRIVATE_QUALIFICATION_NOT_ACTUAL_ACCEPTANCE"
+    ],
+    "audio_use_decision.conditions_satisfied": [
+      false,
+      true
+    ],
+    "audio_use_decision.status": [
+      "PROPOSED_REVIEW_PENDING",
+      "ACCEPTED"
+    ],
+    "descriptor.known_release_blockers": "Remove only source-adoption-pending hold for conditional check; keep all4downstream gates",
+    "descriptor.release_candidate_evidence": "Conditional projected-adoption canonical hash/status; actual scores unchanged; all_release_gates_passedfalse/highlightfalse",
+    "descriptor.release_candidate_status": [
+      "SOURCE_ADOPTION_PENDING",
+      "OWNER_PRODUCED_NATIVE_SCORED_QA_ADOPTED_STORAGE_PENDING"
+    ],
+    "package.release_descriptor_sha256": [
+      "actual pending 40c7f9406cf768a98f428c523ff40e66323c2d83bba280e31589f8fa99db8fcf",
+      "conditional projected 1e38bd4e731a9e60b0324d6a4e08ac56cb8dfb46a3a441558d5bab5f3cd771e0"
+    ],
+    "private_trust_context": "In-memory exact projected new audio-use digest appended to read-only current accepted-record map; revocations unchanged"
+  },
+  "provider_or_storage_calls": 0,
+  "schema": "earnalism.cedar_actual_candidate_conditional_qualification.v1"
+}

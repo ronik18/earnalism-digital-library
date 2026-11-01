@@ -20,6 +20,7 @@ esac
 
 PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
+command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null || { echo "local FFmpeg/FFprobe are required for exact native audio identity tests" >&2; exit 64; }
 
 echo "==> Exact purchase guard source and original India commerce boundary"
 "$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
@@ -49,7 +50,7 @@ env \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
 echo "==> Protected package publication proof and scope qualification"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py internal/audiobook_lab/scripts/test_retained_master_derivative.py backend/tests/test_exact_retained_master_duration.py backend/tests/test_rights_decision_gate.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_native_scored_package.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py internal/audiobook_lab/scripts/test_retained_master_derivative.py backend/tests/test_exact_retained_master_duration.py backend/tests/test_rights_decision_gate.py
 
 echo "==> Preserved Reader source validation and dummy signup race"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py

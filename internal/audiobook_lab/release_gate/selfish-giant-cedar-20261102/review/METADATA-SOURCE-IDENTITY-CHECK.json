@@ -1,0 +1,47 @@
+{
+  "schema": "earnalism.cedar_metadata_source_identity_check.v1",
+  "status": "ACTUAL_SOURCE_HELPER_CHECKS_ON_PRIVATE_COPIES_ONLY",
+  "canonical_writes": 0,
+  "actual_helper": "audiobook_active_release_v2._controlled_hashes",
+  "controlled_hashes_before": [
+    "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  ],
+  "controlled_hashes_after": [
+    "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  ],
+  "controlled_source_identity_unchanged": true,
+  "manuscript_source_unchanged": true,
+  "source_fingerprint_function": "No _source_fingerprint definition/reference exists in inspected canonical backend/scripts/internal source. The serving/package contract reads explicit source_hash/content_hash values.",
+  "broad_publication_fingerprint_before": "d8ad59bdd6c7422a50192adf8f894e3fa9a73220c3d6ec41a984ef78e44dffed",
+  "broad_publication_fingerprint_after_metadata_change": "dfb8ea3ebbcf88f78efc4f1893949fc65f443f3357073c352d57ff04740cc454",
+  "broad_publication_fingerprint_changed": true,
+  "changed_metadata_fields": [
+    "audiobook_provider",
+    "audiobook_voice",
+    "narration_disclosure",
+    "existing nested audiobook provider/voice/narration_disclosure"
+  ],
+  "metadata_document_changes": {
+    "public_book": {
+      "reconstructed_json_bytes_before_sha256": "4cef8a8d2dcb2e8b6fd6333b48de32777aa6058b68d66232565a12631675869c",
+      "planned_json_bytes_after_sha256": "882703650acedf077236c87eafc1c2d5c8dfde1382dbf2f5c633f8c09222a70f",
+      "actual_existing_file_bytes_sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10"
+    },
+    "reader_manifest": {
+      "reconstructed_json_bytes_before_sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5",
+      "planned_json_bytes_after_sha256": "131aafeb31668180851b1ba44ebb091a5163dc7240344424cc52789528fca5db",
+      "actual_existing_file_bytes_sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5"
+    }
+  },
+  "interpretation": "Keep descriptor controlled_source_sha25677ae and manuscriptc55; do not substitute whole-publication fingerprint. Any write must use fresh current fingerprint and regenerate coherent mirrored metadata/checksums/derived publication and Reader rights hashes/cache/bootstrap/runtime-source inventory through supported integration workflow.",
+  "binding_order": [
+    "Keep controlled source_hash77ae/content_hashc55 and exact manuscript text unchanged.",
+    "In one reviewed canonical source integration assemble provider/voice/AI disclosure together with intended new package state in BOTH controlled mirrors; do not expose the new recording merely through metadata.",
+    "Regenerate changed public/Reader/approval bytes and checksum_manifest, publication_manifest using supported builders; use fresh publication_fingerprint as concurrency guard.",
+    "Rebind the existing independently accepted Reader metadata decision to those new exact artifact hashes preserving original underlying rights, uses, validity and prior records; add its new accepted digest/bootstrap binding. Keep new exact Cedar audio-use decision and descriptor mapping separate.",
+    "Rebuild derived catalogue/bootstrap/cache/SEO fixtures and backend runtime-source manifest from staged exact files, run exact-head required CI/reviews and only then supported deployment/canary/customer verification/promotion."
+  ],
+  "metadata_workflow_limit": "Existing manager MANAGED_FIELDS do not include provider/voice/narration_disclosure and existing promote_new_title_package also leaves them unchanged. Integration must use supported coherent metadata writer/rebinding path; stage/promote alone will otherwise leave stale Ryan labels. Frozen patch0e625 is not widened by this finding."
+}

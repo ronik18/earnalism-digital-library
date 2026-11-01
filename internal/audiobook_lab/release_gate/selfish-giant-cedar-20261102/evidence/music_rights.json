@@ -1,0 +1,73 @@
+{
+  "facts": {
+    "attribution_and_changes_prepared": true,
+    "owner_full_mix_accepted": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+      "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+      "size_bytes": 6729
+    },
+    "publication_conditions": "Preserve attribution and licensed-component permissions; actual storage/runtime release unverified.",
+    "tracks": [
+      {
+        "creator": "Kevin MacLeod",
+        "isrc": "USUAN1100208",
+        "licence": "CC BY4.0",
+        "sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+        "title": "Heartbreaking"
+      },
+      {
+        "creator": "Kevin MacLeod",
+        "isrc": "USUAN1100207",
+        "licence": "CC BY4.0",
+        "sha256": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+        "title": "Heartwarming"
+      }
+    ]
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/support/API-AND-MUSIC-PRIMARY-RIGHTS-OBSERVATIONS.json",
+      "sha256": "b1a9ae4c72eca73bb50e7f1e18756cccacecd58bca6279bd0c92f99c865a554b",
+      "size_bytes": 2831
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/MUSIC-SELECTION.json",
+      "sha256": "a73f823779e52f7cb70db5afd1faf972f8ec32a6251feab12f90527022a9f6e1",
+      "size_bytes": 6088
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/creator-current-track.html",
+      "sha256": "0aaccc3d496fc4ae189e27e3fe2d4f5216266e3bcccf2e0ba77fb1b57a28fa94",
+      "size_bytes": 26826
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/retained-creator-track-page.html",
+      "sha256": "0aaccc3d496fc4ae189e27e3fe2d4f5216266e3bcccf2e0ba77fb1b57a28fa94",
+      "size_bytes": 26826
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/creator-current-licenses.html",
+      "sha256": "479019ed42fd8384c63c04bd95dc6d0e0e0da505ddd6f567a13018c724f8416d",
+      "size_bytes": 12146
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/official-selected-catalogue.json",
+      "sha256": "9433f98bf5fd74292bd8a15db6fa4307ce80ee6888625583f9028e0e123d7627",
+      "size_bytes": 1720
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/SCORED-RENDER-INTENT.json",
+      "sha256": "43a3bd32e4834f28add70869df6dac9c4a276b1d91cea78c2f547582db8e7f1e",
+      "size_bytes": 929
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/draft-delivery/the-selfish-giant.metadata.json",
+      "sha256": "ed5a0168bb2a2daefc9be2aeca0b9b32cf0911b928e78ac1cf7dd91da5f43603",
+      "size_bytes": 1293
+    }
+  ],
+  "role": "music_rights",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

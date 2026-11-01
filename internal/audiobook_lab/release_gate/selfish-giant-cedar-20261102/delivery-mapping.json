@@ -1,0 +1,58 @@
+{
+  "duration_ms": 541807,
+  "highlight_sync_enabled": false,
+  "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "paragraph_count": 23,
+  "release_descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+  "segment_count": 1,
+  "slug": "the-selfish-giant",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+  "tracks": [
+    {
+      "chapter_id": "chapter-001",
+      "chunks": [
+        {
+          "assets": {
+            "audio": {
+              "mime_type": "audio/mpeg",
+              "sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+              "size_bytes": 13005786
+            },
+            "metadata": {
+              "mime_type": "application/json",
+              "sha256": "ed5a0168bb2a2daefc9be2aeca0b9b32cf0911b928e78ac1cf7dd91da5f43603",
+              "size_bytes": 1293
+            },
+            "timestamps": {
+              "mime_type": "application/json",
+              "sha256": "3c4d0f5d44e62416d0eb8d85d585788d08281d146ff740a1ecf321c4103da69e",
+              "size_bytes": 18966
+            },
+            "vtt": {
+              "mime_type": "text/vtt",
+              "sha256": "4308240a6eb5bc21ae22b8a86ae351b5529a2be5930f0de789964fc82a587140",
+              "size_bytes": 9800
+            }
+          },
+          "cumulative_start_ms": 0,
+          "duration_ms": 541807,
+          "end_paragraph": 22,
+          "end_word": 1651,
+          "order": 0,
+          "segment_id": "chapter-001-full",
+          "start_paragraph": 0,
+          "start_word": 0
+        }
+      ],
+      "end_paragraph": 22,
+      "end_word": 1651,
+      "id": "chapter-001",
+      "order": 0,
+      "start_paragraph": 0,
+      "start_word": 0,
+      "title": "The Selfish Giant"
+    }
+  ],
+  "word_count": 1652
+}

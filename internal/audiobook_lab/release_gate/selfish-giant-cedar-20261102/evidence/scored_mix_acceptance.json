@@ -1,0 +1,160 @@
+{
+  "schema": "earnalism.owner_complete_scored_review.v1",
+  "recorded_at": "2026-11-01T18:33:34.312347+00:00",
+  "evidence_kind": "DIRECT_OWNER_RESPONSE",
+  "question_item_id": "call_c683b0f7b5614b30bef9f46255707567:0",
+  "owner_answer_verbatim": "All ten ratings are valid and the confidence score has improved from 0.90 to 0.96. For each of the ASR flagged words, I would like to report that source words were \"heard\".",
+  "serialization_scope": "Canonicalrecordofprovidedquestionreply, notnative-message-bytehash",
+  "review_scope": "Questionrequestedcomplete9m02scoredMP3,naturalness/expression/everyvoicejoin/speechclarity/audiblemusicthroughoutincludingUnits01to03,andreportmaterialdefects. Owneraffirmedalltenfulltitlescoreswithimprovedconfidence andall sixsourcewordsheard. No materialdefectreported.",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/The-Selfish-Giant-Cedar-Scored-Draft-v1.mp3",
+    "sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+    "bytes": 13006384,
+    "duration_seconds": 541.8072083333333
+  },
+  "source_manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "source_manifest_sha256": "496edf59b87ef13e4ea4c178453e8e1699968a2b43f5bb0c0f46aeb6887b6d86",
+  "scores": {
+    "naturalness_score": 9.8,
+    "pronunciation_score": 9.8,
+    "emotional_expression_score": 9.7,
+    "punctuation_pause_score": 9.4,
+    "pacing_score": 9.5,
+    "continuity_score": 9.7,
+    "anti_robotic_texture_score": 9.8,
+    "anti_choppy_join_score": 9.5,
+    "listener_enjoyment_score": 9.8,
+    "overall_listening_score": 9.8,
+    "confidence_score": 0.96
+  },
+  "score_values_origin": "Exactprior10ratings explicitlycarriedbyowner tocomplete scoredbook; confidenceexplicitlyupdatedto0.96",
+  "wording_adjudications": [
+    {
+      "id": "WORD-01",
+      "unit": "fresh-unit-03",
+      "expected": "round",
+      "recognized": "around",
+      "source_context": "so he built a high wall all round it and put up a notice board trespassers",
+      "unit_ASR_estimated_word_seconds": [
+        16.82,
+        17.08
+      ],
+      "full_draft_review_window_seconds": [
+        71.52720833333333,
+        75.78720833333333
+      ],
+      "full_draft_review_window_label": "1:11–1:15",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "b9502662066902ec0373b2c9e70e5baecaa9fd85469e45abab1783feb2224109",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    },
+    {
+      "id": "WORD-02",
+      "unit": "fresh-unit-04",
+      "expected": "round",
+      "recognized": "around",
+      "source_context": "not like it they used to wander round the high wall when their lessons were over",
+      "unit_ASR_estimated_word_seconds": [
+        13.5,
+        13.84
+      ],
+      "full_draft_review_window_seconds": [
+        89.65720833333333,
+        93.99720833333333
+      ],
+      "full_draft_review_window_label": "1:29–1:33",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "2dbdc06ca4d5e9d953497994dff97b5109776329de1568b9e1099cc36e3b873c",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    },
+    {
+      "id": "WORD-03",
+      "unit": "fresh-unit-06",
+      "expected": "slates",
+      "recognized": "sleets",
+      "source_context": "castle till he broke most of the slates and then he ran round and round the",
+      "unit_ASR_estimated_word_seconds": [
+        33.7,
+        34.08
+      ],
+      "full_draft_review_window_seconds": [
+        161.7072083333333,
+        166.0872083333333
+      ],
+      "full_draft_review_window_label": "2:41–2:46",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "3a50fb71fd3aaedac18ed2093704d615292b115481fbc66b7e7242388c25ffcf",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    },
+    {
+      "id": "WORD-04",
+      "unit": "fresh-unit-10",
+      "expected": "round it",
+      "recognized": "rounded",
+      "source_context": "the tree and he was wandering all round it crying bitterly the poor tree was still quite",
+      "unit_ASR_estimated_word_seconds": [
+        22.96,
+        23.36
+      ],
+      "full_draft_review_window_seconds": [
+        285.5172083333333,
+        289.91720833333335
+      ],
+      "full_draft_review_window_label": "4:45–4:49",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "20a91c05d558423c2b6ffcf8c53b8cc77bb5a8b61bb3e166a005292357ae144a",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    },
+    {
+      "id": "WORD-05",
+      "unit": "fresh-unit-12",
+      "expected": "knocked",
+      "recognized": "not",
+      "source_context": "and he took a great axe and knocked down the wall",
+      "unit_ASR_estimated_word_seconds": [
+        47.56,
+        47.8
+      ],
+      "full_draft_review_window_seconds": [
+        372.11720833333334,
+        375.5072083333333
+      ],
+      "full_draft_review_window_label": "6:12–6:15",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "2be276228c68ecaefd5354be7be9d64691a5fc9e071f703ef5a2b3d0bdc6361a",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    },
+    {
+      "id": "WORD-06",
+      "unit": "fresh-unit-14",
+      "expected": "of",
+      "recognized": "with",
+      "source_context": "his first little friend and often spoke of him how i would like to see him",
+      "unit_ASR_estimated_word_seconds": [
+        23.1,
+        23.24
+      ],
+      "full_draft_review_window_seconds": [
+        428.30720833333334,
+        432.4472083333333
+      ],
+      "full_draft_review_window_label": "7:08–7:12",
+      "status": "UNVERIFIED_ASR_MAY_BE_WRONG_NO_SPOKEN_DEFECT_VERDICT",
+      "audiosha256": "13ef394613d654091bd71fcd34950ba8eb87573efc43fdb4b17761294cde3c11",
+      "owner_disposition": "SOURCE_WORDS_HEARD",
+      "resolved": true
+    }
+  ],
+  "known_material_findings_reported_in_this_review": [],
+  "complete_scored_critical_listening": "OWNER_ACCEPTED_EXACT_MP3",
+  "music_balance_and_continuity": "OWNER_ACCEPTED_WITHIN_REQUESTED_COMPLETE_SCORED_REVIEW_SCOPE; notautomaticmeterproof",
+  "unperformed_device_checks": "UNVERIFIED; no assertionnormal/lowvolume/specificheadphonesorphysicaldevicesfromthisresponse",
+  "formal_paragraph_sync": "UNVERIFIED_SEPARATE_QUALIFICATION_REQUIRED",
+  "storage_runtime_customer_playback_LIVE": "NOT_ESTABLISHED_BY_LISTENING",
+  "new_synthesis_or_transfer": "NONE"
+}

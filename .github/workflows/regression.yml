@@ -140,8 +140,8 @@ jobs:
           python3 -m scripts.reader612_recovery_source --source-root "$RUNNER_TEMP/reader612-closed-source" --binding "$binding"
           python3 -m unittest scripts.test_reader612_recovery_source scripts.test_reader612_native_restore scripts.test_reader612_native_observer scripts.test_reader612_protected_approval scripts.test_reader612_phase_bridge scripts.test_reader612_phase_collectors -v
 
-      - name: Install launcher test prerequisite
-        run: sudo apt-get update && sudo apt-get install --yes ripgrep
+      - name: Install launcher and native-audio test prerequisites
+        run: sudo apt-get update && sudo apt-get install --yes ripgrep ffmpeg
 
       - name: Validate retained successor editorial admission
         run: python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_open_window_successor_acceptance.py -v
@@ -149,6 +149,7 @@ jobs:
       - name: Validate exact retained-master derivative admission
         run: |
           python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_retained_master_derivative.py -v
+          python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_native_scored_package.py -v
           python3 -m unittest discover -s backend/tests -p test_exact_retained_master_duration.py -v
 
       - name: Validate catalogue worker permission boundaries

@@ -1,0 +1,123 @@
+{
+  "at": "2026-11-01T19:14:09.539508+00:00",
+  "status": "EXISTING_ENGLISH_AND_ALL_LANGUAGE_POLICY_PROVENANCE_VERIFIED_NO_NEW_POLICY",
+  "policy_name": "platform_audiobook_acceptance_v4_89",
+  "owner_policy_decision": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/platform_audiobook_acceptance_v4_89_policy_decision.json",
+    "sha256": "561fb5c5bfbc0fe58d7706af141ee1ff603fb3e7c7fe7333a66fd27182666c55",
+    "scope": "All new Earnalism audiobook release evaluations, including Sprint 1 Bengali and English titles",
+    "effective_at": "2026-07-28T07:47:01Z",
+    "owner_decision": "UNIFY_ALL_SUBJECTIVE_LISTENING_CUTOFFS_AT_8_9",
+    "listening_gate": {
+      "overall_listening_score_min": 8.9,
+      "confidence_score_min": 0.9,
+      "per_dimension_score_min": 8.9,
+      "anti_robotic_texture_score_min": 8.9,
+      "anti_choppy_join_score_min": 8.9,
+      "fatal_flags_required_false": true
+    },
+    "objective_gates_unchanged": {
+      "asr_manuscript_score_min": 9.7,
+      "coverage_min": 0.98,
+      "first_words_match_required": true,
+      "last_words_match_required": true,
+      "ordered_content_integrity_required": true,
+      "measured_sync_required": true,
+      "estimated_sync_forbidden": true,
+      "rights_required": true,
+      "cover_required": true,
+      "upload_checksum_required": true,
+      "metadata_approval_required": true,
+      "endpoint_200_206_required": true,
+      "browser_playback_required": true,
+      "empty_blocker_list_required": true
+    }
+  },
+  "active_policy": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/audiobook_acceptance_policy.json",
+    "sha256": "f9055f0147796edfde1be2658954f597b2312f43868f5a5a8927bb5326cde96e",
+    "language_scope": "all"
+  },
+  "trusted_decision_records": [
+    {
+      "line": 111,
+      "record": {
+        "timestamp": "2026-07-28T07:47:01Z",
+        "workstream": "platform_audiobook_acceptance_policy",
+        "slug_or_area": "all-audiobook-release-evaluations,all-32-sprint1-titles",
+        "decision": "unify_all_subjective_listening_thresholds_at_8_9_without_lowering_objective_fidelity",
+        "evidence": {
+          "policy": "platform_audiobook_acceptance_v4_89",
+          "overall_listening_score_min": 8.9,
+          "per_dimension_score_min": 8.9,
+          "anti_robotic_texture_score_min": 8.9,
+          "anti_choppy_join_score_min": 8.9,
+          "confidence_score_min": 0.9,
+          "fatal_flags_required_false": true,
+          "asr_manuscript_score_min": 9.7,
+          "coverage_min": 0.98,
+          "newly_full_title_release_ready": 0,
+          "production_readers": 32,
+          "production_audiobooks": 4,
+          "public_state_mutated": false,
+          "audio_uploaded": false,
+          "audiobook_published": false
+        },
+        "selected_option": "make_8_9_the_default_active_listening_policy_and_reclassify_complete_evidence_only",
+        "release_gate_reason": "Listening quality and transcript fidelity are different controls. Lowering subjective listening dimensions does not prove missing words, ordered content, measured sync, or downstream delivery, so no incomplete pilot may publish.",
+        "cost_control": "Policy and evidence audit only; no provider, TTS, ASR, upload, publication, or paid-lock call ran.",
+        "result": "PLATFORM_V4_89_ACTIVE_ZERO_NEW_FULL_TITLE_RELEASE_READY",
+        "next_action": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/test_sprint1_audiobook_89_policy.py"
+      }
+    },
+    {
+      "line": 168,
+      "record": {
+        "timestamp": "2026-07-30T15:36:25Z",
+        "workstream": "audiobook_package_v2_new_title_listening_policy_binding",
+        "slug_or_area": "package-v2-runtime",
+        "decision": "bind_new_title_canary_quality_to_controlled_language_and_exact_active_listening_policy",
+        "evidence": {
+          "branch": "codex/package-v2-new-title-public-canary",
+          "english_policy": "platform_audiobook_acceptance_v4_89",
+          "english_overall_and_dimension_min": 8.9,
+          "bengali_policy": "bengali_audiobook_acceptance_v2_92",
+          "bengali_overall_and_dimension_min": 9.2,
+          "confidence_min": 0.9,
+          "fatal_flags_required": [],
+          "controlled_language_match_required": true,
+          "descriptor_policy_binding_required": true,
+          "asr_score_min_unchanged": 9.7,
+          "source_coverage_min_unchanged": 0.98,
+          "rights_cover_storage_endpoint_browser_gates_unchanged": true,
+          "audio_uploaded": false,
+          "catalog_mutated": false,
+          "publication_performed": false,
+          "paid_tts_lock_touched": false
+        },
+        "selected_option": "Carry the exact controlled language and listening-policy name from the hash-bound QA package into the release descriptor, then enforce the matching language-specific threshold again at canary activation.",
+        "release_gate_reason": "A hard-coded 9.2 value incorrectly rejects a passing active-policy English candidate, while a global 8.9 value could weaken the stricter Bengali release boundary. Exact language and policy binding prevents both errors.",
+        "customer_experience_reason": "Only a full-title candidate evaluated under the correct language policy can enter the hidden transport cohort; all non-listening gates and ordinary customer audio-hidden behavior remain unchanged.",
+        "cost_reason": "Local validation and tests only; no provider, storage, deployment, or paid-lock action.",
+        "risk": "Previously built QA-candidate descriptors without explicit language and policy fields now fail closed and must be rebuilt from their unchanged exact evidence.",
+        "result": "LANGUAGE_POLICY_AWARE_CANARY_VALIDATION_IMPLEMENTED_PENDING_PR",
+        "next_action": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_audiobook_package_builder_v2_qa_candidate.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_package_v2_public_projection_safety.py"
+      }
+    }
+  ],
+  "existing_enforcement": {
+    "manager": {
+      "path": "/tmp/earnalism-main-approved-integration/internal/audiobook_lab/scripts/audiobook_active_release_v2.py",
+      "sha256": "ae347a04b2c8d489c6853248d174e12bc4659c36b777c28840113695b62c7b7b",
+      "fields": [
+        "QA_CANDIDATE_ENGLISH_LISTENING_POLICY",
+        "QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS"
+      ],
+      "English_branch": "controlled_family==english selects platform_audiobook_acceptance_v4_89"
+    },
+    "objective_ASR_minimum": "audiobook_package_builder_v2.QA_CANDIDATE_ASR_SCORE_MIN=9.7; commonaudio_derived_asr_gate also requirescoverage.98/order.97/firstlast/measuredwords"
+  },
+  "actual_owner_score_applicability": "TheSelfishGiant isEnglish/ownerproduced; actualscores9.4\u20139.8/conf.96 exceed currentapplicable floor. Scoresandfullscored listening evidence remainexactfilebound; no newscore or policyfabricated.",
+  "Bengali_AGENTS_scope": "Not used as soleauthority forEnglish; separatetrustedplatformownerdecision and existingEnglishenforcement verified.",
+  "new_adoption_registration_release_rights_decision": "NOT_CREATED_BY_THIS_PROVENANCE_CHECK"
+}

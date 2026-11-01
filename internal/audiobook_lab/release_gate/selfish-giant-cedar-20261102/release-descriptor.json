@@ -1,0 +1,68 @@
+{
+  "author": "Oscar Wilde",
+  "channels": 2,
+  "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "duration_ms": 541807,
+  "evidence_sha256": {
+    "container_metadata_reuse": "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+    "cover_reuse": "fdebb6d9f9915db161dc69b53c97ba4e177b9fcfe9465634d013a132988aedce",
+    "generation_provenance": "b64903abfaa81b24f19bd276040f2ea54d69d397205822d3c0365f8a4ef67e73",
+    "material_wording_review": "663fe88e0667a2f0fcb7b652fa4de05dd788eb5e9c9e778d656592e051b445da",
+    "measured_alignment": "beaf6e30311d8cacdd140a64ea7bea412ae95e2746e5f43ce8a4eeade9f26d99",
+    "model_voice_licence": "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+    "music_rights": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+    "objective_qa": "c8feef5f6457e9bfdb999c12df7a764c71bee6c897c8fbab91aec1b0d71cfa9a",
+    "producer_authority": "9ae68906b727608ed212b8627ca0e9ff2e7d62fb6f320d79b5e2688172d0981e",
+    "scored_mix_acceptance": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+    "source_edition": "1b308d9777e35e95b5b81d2a30f3f02c3e7dc52f477ed487da3153a4333e5f6e",
+    "voice_direction_acceptance": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+  },
+  "generation": {
+    "model_id": "gpt-realtime-2.1-mini",
+    "model_revision": null,
+    "provider": "owner_openai_realtime",
+    "runtime_revision": "823ac4359c37d9ea00a8b015b296e9704b1d5eb30c8cda15ee0d90ec41e3fc29",
+    "voice": "cedar"
+  },
+  "highlight_sync_enabled": false,
+  "known_release_blockers": [
+    "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+    "PRIVATE_B2_DR_REPLICA_REQUIRED",
+    "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "listened_master_mp3_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+  "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "master_mp3_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+  "master_samples": 26006746,
+  "master_wav_sha256": "ba0bbb3cf60b596ce73b16cdd690ec65c5b3fab80c075cc56de66e08e46c857c",
+  "measured_alignment_sha256": "beaf6e30311d8cacdd140a64ea7bea412ae95e2746e5f43ce8a4eeade9f26d99",
+  "reader_paragraph_map_sha256": "07752c643d749880466fe9d23c04862e472ca003f0bacedec5d3fbeaad491183",
+  "release_candidate_evidence": {
+    "acceptance_policy": "owner_produced_native_scored.v1",
+    "adoption_sha256": "d9365137dbf49b4e9326a695a6908e4f6508aea2f47be577bf94312ae473416b",
+    "all_release_gates_passed": false,
+    "highlight_sync_enabled": false,
+    "human_scores": {
+      "anti_choppy_join_score": 9.5,
+      "anti_robotic_texture_score": 9.8,
+      "confidence_score": 0.96,
+      "continuity_score": 9.7,
+      "emotional_expression_score": 9.7,
+      "listener_enjoyment_score": 9.8,
+      "naturalness_score": 9.8,
+      "overall_listening_score": 9.8,
+      "pacing_score": 9.5,
+      "pronunciation_score": 9.8,
+      "punctuation_pause_score": 9.4
+    },
+    "status": "OWNER_PRODUCED_NATIVE_SCORED_QA_ADOPTED"
+  },
+  "release_candidate_status": "OWNER_PRODUCED_NATIVE_SCORED_QA_ADOPTED_STORAGE_PENDING",
+  "sample_rate": 48000,
+  "schema_version": "audiobook_release_descriptor.v1",
+  "slug": "the-selfish-giant",
+  "source_units_sha256": "8a85f099f29242a542381cdc5fc16f0a6652d46c19d68ab7dd0851d975662c56",
+  "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+  "title": "The Selfish Giant"
+}

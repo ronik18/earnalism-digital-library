@@ -1,0 +1,119 @@
+{
+  "facts": {
+    "invoice_reconciled": false,
+    "new_allocations": 0,
+    "one_shot_limit": 17,
+    "prior_cost_token_estimate_usd": 0.2282264,
+    "provider_result_copies": [
+      {
+        "path": "support/provider-results/fresh-unit-01.result.json",
+        "sha256": "e670733d7376b5457be94d135356e96c52fca20b6571c5c797044e4f3f90d4f8",
+        "size_bytes": 1568
+      },
+      {
+        "path": "support/provider-results/fresh-unit-02.result.json",
+        "sha256": "8df036621354f56685e9f5c67f6655d0d7d06f28581d6705aa7956f8684c030a",
+        "size_bytes": 1336
+      },
+      {
+        "path": "support/provider-results/fresh-unit-03.result.json",
+        "sha256": "10f5467243b211fe208446f35f9a0f5bb0ece5ac47f06139d244a41a7f77b2dd",
+        "size_bytes": 1351
+      },
+      {
+        "path": "support/provider-results/fresh-unit-04.result.json",
+        "sha256": "a4c4f682d84bb07038c93cf1c2db216781c1d75d33bed13cf98c85c6f9ce9cc3",
+        "size_bytes": 1520
+      },
+      {
+        "path": "support/provider-results/fresh-unit-05.result.json",
+        "sha256": "41bf319672df7844743591581f5a9cb336b9c80350724c42f0875f94017f4884",
+        "size_bytes": 1357
+      },
+      {
+        "path": "support/provider-results/fresh-unit-06.result.json",
+        "sha256": "16bca43b34f4e900b203aafa605db66c44ed9228f21527ef966761c93801fa14",
+        "size_bytes": 1678
+      },
+      {
+        "path": "support/provider-results/fresh-unit-07.result.json",
+        "sha256": "3f318a394711712103d489d25fb38c3b9c327dc2db13231f598ede81974d37ac",
+        "size_bytes": 1508
+      },
+      {
+        "path": "support/provider-results/fresh-unit-08.result.json",
+        "sha256": "41d805c22b27d82209d2386b85272b13473a96ecfa410bff99d616ed4da69f3f",
+        "size_bytes": 1518
+      },
+      {
+        "path": "support/provider-results/fresh-unit-09.result.json",
+        "sha256": "e272516bb8ce034593cd23314fdddb0b789c52ee2adc7871e0d6e0d99f6f77f0",
+        "size_bytes": 1506
+      },
+      {
+        "path": "support/provider-results/fresh-unit-10.result.json",
+        "sha256": "d84f93aef63f4428c1edf0de3d4d74cd083b0bf64d1136106c986610dc373c60",
+        "size_bytes": 1644
+      },
+      {
+        "path": "support/provider-results/fresh-unit-11.result.json",
+        "sha256": "aaa6319cf7f444f2fad0682d0ea9d53868c5e65ec6be25813c78a9f582b2cfa3",
+        "size_bytes": 1370
+      },
+      {
+        "path": "support/provider-results/fresh-unit-12.result.json",
+        "sha256": "6a6f07fbc4852129e2f5660f101ea33b6c1b829101db5b1caae3c631c62e2d8c",
+        "size_bytes": 1843
+      },
+      {
+        "path": "support/provider-results/fresh-unit-13.result.json",
+        "sha256": "6155193256eeb8754e742b0e341dd3616984b7b1e3042ea2f8be7b039112b033",
+        "size_bytes": 1545
+      },
+      {
+        "path": "support/provider-results/fresh-unit-14.result.json",
+        "sha256": "8caa8d90570d3cec030e3478913d43a27334554b957cfdd2061b363aa6fb8150",
+        "size_bytes": 1502
+      },
+      {
+        "path": "support/provider-results/fresh-unit-15.result.json",
+        "sha256": "e1dc1eb1aeb344ea8762bcd193563e8cc7c6acfbb7e8d3471747037b7fcfdcad",
+        "size_bytes": 1534
+      },
+      {
+        "path": "support/provider-results/fresh-unit-16.result.json",
+        "sha256": "e89409ed82377840c7bba8aa4f5e0733903ceec3dfb1e7424cdcc5751c493308",
+        "size_bytes": 1687
+      },
+      {
+        "path": "support/provider-results/fresh-unit-17.result.json",
+        "sha256": "a683413cede352aecc35489ec409305e704596c0c81f41047b20797a756bf172",
+        "size_bytes": 1474
+      }
+    ],
+    "responses": 17,
+    "retries": 0,
+    "unique_response_ids": 17
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/GENERATION-RECONCILIATION.json",
+      "sha256": "8f704c33b6c2c683d48174d021f1f30ad4e31f48fb51bbd5fb8d7a173d6ae0d8",
+      "size_bytes": 20916
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-realtime-proposal/NATIVE-INPUT-MANIFEST.json",
+      "sha256": "496edf59b87ef13e4ea4c178453e8e1699968a2b43f5bb0c0f46aeb6887b6d86",
+      "size_bytes": 48436
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-realtime-proposal/native_realtime.py",
+      "sha256": "823ac4359c37d9ea00a8b015b296e9704b1d5eb30c8cda15ee0d90ec41e3fc29",
+      "size_bytes": 20661
+    }
+  ],
+  "role": "generation_provenance",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

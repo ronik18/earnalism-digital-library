@@ -1,0 +1,84 @@
+{
+  "schema": "earnalism.independent_actual_sourceqa_candidate_review.v1",
+  "reviewer": "cedar_join_engineering",
+  "at": "2026-11-01T19:26:09.960561+00:00",
+  "status": "NO_MATERIAL_EVIDENCE_GAP_FOUND_PRIVATE_CANDIDATE_ONLY",
+  "candidate": {
+    "bundle_file_sha256": "07f19140cb9935a54c9f44293c11d45995e24ee6af9b0957506f2e4728b7a8a5",
+    "adoption_canonical_sha256": "bf8950417cde51317cc6f138ba6df761a320086d179aaf8fb6ed646038aea19b",
+    "descriptor_canonical_sha256": "40c7f9406cf768a98f428c523ff40e66323c2d83bba280e31589f8fa99db8fcf",
+    "conditional_proof_file_sha256": "720e28dd32c32c358bc66afb37234fd41b768e0f07d1234b6c54e43c496fa42b",
+    "metadata_identity_proof_file_sha256": "1b79587ab4be161b9c81309af3bc8db3196f6aae13fa1ba52f26392cd3201f45",
+    "frozen_source_patch_sha256": "0e625dd2364c10411e8c6f26b0b48653f64a89722fac4b58d6e15339a240bc05"
+  },
+  "independently_rechecked_now": {
+    "file_references": 117,
+    "distinct_file_hashes": 78,
+    "all_exact_hashes_and_declared_sizes_match": true,
+    "evidence_roles": 12,
+    "source_units": 17,
+    "source_chars": 8698,
+    "public_whitespace_words": 1652,
+    "source_spans_complete_contiguous_exact_once_in_order": true,
+    "measured_reader_paragraph_cues": 23,
+    "cue_times_text_source_offsets_identical_to_previously_independently_qualified_measured_sidecar": true,
+    "safe_whitespace_word_index_range": [
+      0,
+      1651
+    ],
+    "public_metadata_no_private_local_paths": true,
+    "persisted_proposed_records_denied_and_unchanged": true,
+    "conditional_output_quarantined_to_real_pending_descriptor": true
+  },
+  "authority_and_rights_review": {
+    "standing_owner_authority": "Original autonomous gated audiobook publication request, explicit native stock Cedar plan and exact full scored listening acceptance are bound as actual authority; no new approval inferred. Historical Ryan source/producer reference is not adopted as current audio QA or a Cedar audio grant.",
+    "source_and_cover": "Unchanged accepted underlying source and cover records carry forward only their original scope; exact current source and manuscript hashes verified.",
+    "new_audio_use_record": "Exact Cedar/master/music/components are separately bound in a proposed India audio_stream decision. Proposed LIFETIME is a nonexpiring revocable policy proposal, not an already accepted grant or a worldwide/right-use expansion.",
+    "model_voice": "Actual stock Cedar API provenance and primary API-output terms observations are bound; ChatGPT Voice commercial permission is not inferred. Hidden model revision remains null/unknown.",
+    "music": "Exact Kevin MacLeod Heartwarming USUAN1100207 and Heartbreaking USUAN1100208 originals, retained creator/catalogue CC BY4 evidence and attribution/change notices are bound. Final runtime must preserve applicable licensed-music permissions and attribution; runtime/access/ETM compatibility is not established by this private review.",
+    "new_owner_artistic_or_source_permission_identified": "NONE; mandatory exact adoption and rights acceptance/registration remain separate authoritative actions, not inferred from this review."
+  },
+  "policy": {
+    "source": "Existing platform all-language v4.89 owner policy explicitly includes English; not solely Bengali AGENTS.8.9 overall/per dimension, .90 confidence, unchanged ASR9.7.",
+    "provenance_file_sha256": "937e043056c4723b4cd368ed22dcabe662b5fdbf8271af758f830eeedf7fc220",
+    "observed_owner_dimension_range": [
+      9.4,
+      9.8
+    ],
+    "confidence": 0.96
+  },
+  "metric_truth": {
+    "ASR_token_slots": 1670,
+    "timing_lexical_slots": 1660,
+    "public_whitespace_words": 1652,
+    "ASR_score_semantics": "10.0 is explicitly owner/orthography-adjudicated source metric; raw ASR evidence/metrics remain unchanged. No new raw-ASR score or word-precise timing claim.",
+    "interior_zero_duration_raw_ASR_word": "Preserved; paragraph-boundary qualification only.",
+    "no_fabricated_whole_release_pass": true
+  },
+  "reused_exact_audio_proof": {
+    "delivery_mp3_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "listened_mp3_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+    "canonical_PCM_f32le_48k_stereo_sha256": "e6043c9b4580d0a53b3619bf94a6aafa80e44530735b0d49f98dbed84b1d5e8b",
+    "elementary_MP3_packets_sha256": "de42ed2665d057c35570814d681eff01939ae0ed0f69c05081ba45c4fd135fd6",
+    "frames": 26006746,
+    "basis": "Reused this lane independently decoded and packet-extracted exact same file hashes in prior d935 review; not redundantly decoded this turn. ID3-only publication successor, no synthesis/mastering change."
+  },
+  "conditional_validation_scope": "Inspected actual qualification script and proof. Direct proposed records fail closed. Authorized in-memory status/actor/conditions/trust projection exercises frozen native prepare and manager with actual bytes, then rebinds all persisted output to proposed descriptor and SOURCE_ADOPTION_PENDING. Conditional success supplies structural feasibility only.",
+  "findings": [],
+  "remaining_authoritative_actions": [
+    "Integration Lane exact native sourceQA adoption plus independent India audio-use acceptance/trust/registration, with actor attribution and real conditions satisfied.",
+    "Coherent provider/voice/AI-disclosure update in both controlled mirrors using fresh publication fingerprint; preserve controlled source/manuscript hashes; regenerate exact checksums/publication/Reader metadata rights hashes and derived state. Stage/promote alone leaves Ryan labels unchanged.",
+    "Canonical reviewed code/adoption/metadata integration and exact-head required CI; private 44-test results are not hosted CI.",
+    "Supported bounded PROD/DR storage/checksum/retention, source-version recheck, production runtime/player/endpoint/license/access/device/customer verification and empty blockers before release."
+  ],
+  "unverified_or_not_claimed": [
+    "Canonical trusted adoption/rights state",
+    "Hosted CI or deployed code",
+    "PROD/DR uploads and checksums",
+    "Runtime endpoint/browser/customer access and device checks",
+    "Fine phrase music synchronization or word-level highlighting precision",
+    "Invoice reconciliation",
+    "LIVE"
+  ],
+  "writes_this_review": "New independent review file only; no canonical, provider, storage, key, synthesis, allocation or original asset writes."
+}

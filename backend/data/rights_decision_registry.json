@@ -65,7 +65,8 @@
     "india-20261029-the-selfish-giant-owner-approved-cover-successor": "8f97cc70b52a3828a548fb13bfd15180e7b20aeaab272e458352be8408c402fe",
     "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
     "india-20261101-the-open-window-continuous-master-bindings": "c00b2b9112f2b52d0d94275d075922a54131df82c556e56a9757984991663d2c",
-    "india-20261101-the-selfish-giant-continuous-master-bindings": "a838b9d294d170cb96eda4afc6550ffd54c8a1fb93a72529be28dc4f567e0c02"
+    "india-20261101-the-selfish-giant-continuous-master-bindings": "a838b9d294d170cb96eda4afc6550ffd54c8a1fb93a72529be28dc4f567e0c02",
+    "india-20261102-the-selfish-giant-cedar-scored-audio": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5"
   },
   "audio_package_bindings": {
     "the-open-window": {
@@ -86,6 +87,17 @@
         "basis": "Owner-accepted lifetime exact India audio-stream source adoption; no active/public release pointer or US activation.",
         "decision_id": "india-20261029-the-selfish-giant-owner-produced-audio-control",
         "record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      },
+      "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258": {
+        "basis": "Exact independently reviewed Cedar source-QA component-rights adoption only; no active/public pointer, storage or runtime proof inferred.",
+        "decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+        "record_sha256": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5",
         "territories": [
           "IN"
         ],

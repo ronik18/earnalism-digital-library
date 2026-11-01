@@ -441,5 +441,11 @@
   },
   "new_paid_playback_spend_basis": "51wholeexistingReadingPassseconds cumulative:22Selfish+29OpenWindow, ownhashedsessionledgeronly.69nominalremainingoforiginal120; monetaryvalue/fractionalcarryunreported. No newpurchase, allocation or synthesis.",
   "two_title_continuous_master_checkpoint": "continuous-master-preparation-20261101/CHECKPOINT.json",
-  "known_own_cumulative_playback_credit_whole_seconds": 51
+  "known_own_cumulative_playback_credit_whole_seconds": 51,
+  "selfish_cedar_sourceqa_registration": {
+    "descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+    "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-selfish-giant.json",
+    "remaining_gate": "Approved bounded PROD/DR context and additive carried ledger, actual storage/finalization/current-runtime/customer acceptance.",
+    "stage": "SOURCE_QA_ADOPTED_ONLY_NOT_LIVE"
+  }
 }

@@ -1,0 +1,42 @@
+{
+  "facts": {
+    "ASR_adjudication_token_slots": 1670,
+    "audio_derived_or_measured": true,
+    "auto_estimated_sync": false,
+    "no_word_precision_claim": true,
+    "paragraph_count": 23,
+    "timing_lexical_slots": 1660,
+    "word_count": 1652
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/timing-qualification-20261102/TIMING-QUALIFICATION-RESULT.json",
+      "sha256": "3a22e1a6f7df15df2699af585acbdcd4e385fca0611dcf78ccdf6c36a0c86c6c",
+      "size_bytes": 12803
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/timing-qualification-20261102/MEASURED-READER-PARAGRAPHS.timestamps.json",
+      "sha256": "e92000b1587b5ecd646291ad9d83284c9418c0da3409c849c9ef22d7460e3bab",
+      "size_bytes": 25107
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/timing-qualification-20261102/WORD-INDEX-SEMANTICS-AND-TIMING-LIMITS.json",
+      "sha256": "d17a69f7173740002e4419c9290f4d44844ccf7e208a06dec72c2500432b2cd8",
+      "size_bytes": 12074
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102-v2/CONTAINER-METADATA-AUDIO-REUSE.json",
+      "sha256": "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+      "size_bytes": 3688
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/DRAFT-SOURCE-AND-DELIVERY-STRUCTURE.json",
+      "sha256": "0c074577a1f8b911ab0d9211cd46f78a108ab941cd8f0b2edd3efa13a88b874e",
+      "size_bytes": 1176
+    }
+  ],
+  "role": "measured_alignment",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

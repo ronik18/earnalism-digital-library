@@ -1,0 +1,202 @@
+{
+  "adopted_by": "Integration Lane under direct owner standing source, producer, native Cedar and gated publication authority",
+  "adoption_scope": "SOURCE_QA_ONLY_STORAGE_AND_RUNTIME_PENDING",
+  "alignment": {
+    "audio_derived_or_measured": true,
+    "auto_estimated_sync": false,
+    "master_mp3_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "paragraph_count": 23,
+    "timestamps_sha256": "3c4d0f5d44e62416d0eb8d85d585788d08281d146ff740a1ecf321c4103da69e",
+    "word_count": 1652
+  },
+  "audio_use_decision": {
+    "accepted_by": "Integration Lane under direct owner standing source, producer, native Cedar and gated publication authority; exact India audio_stream component-rights registration, not public release",
+    "basis": "Exact stockCedar API scored recording: unchanged accepted India public-domain source and owner producer/gated-publication scope; explicit native Cedar API plan; Services Agreement4.1 API-output basis (not ChatGPT Voice); exact two creator-licensed CC BY4 music sources with final attribution/change notices. Component/source conditions are adopted here; final runtime must preserve licensed-component permissions and credits before release. No worldwide/download grant or old Ryan audio adoption. Non-expiring revocable control; all storage/runtime/accounting/publication gates remain mandatory.",
+    "components": {
+      "audio_component_bindings": "fffe9a5882e5a735bbe24b254d4af09e4aba94ce6ed10eae3cb1d8da1888fe22",
+      "container_metadata_reuse": "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+      "listened_master_mp3": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+      "master_mp3": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+      "master_wav": "ba0bbb3cf60b596ce73b16cdd690ec65c5b3fab80c075cc56de66e08e46c857c",
+      "model_voice_licence": "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+      "music_heartbreaking_original": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+      "music_heartwarming_original": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+      "music_rights": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+      "selected_manuscript": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+      "source_file": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+    },
+    "conditions_satisfied": true,
+    "decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+    "edition_id": "the-selfish-giant",
+    "evidence_sha256": [
+      "1b308d9777e35e95b5b81d2a30f3f02c3e7dc52f477ed487da3153a4333e5f6e",
+      "9ae68906b727608ed212b8627ca0e9ff2e7d62fb6f320d79b5e2688172d0981e",
+      "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+      "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+      "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+      "b1bb9724fe80b77daacf879505dce8f40f0ba893020978433ab404620a2cfb6a"
+    ],
+    "operator_id": "reo-enterprise",
+    "schema_version": "earnalism.rights-decision.v1",
+    "status": "ACCEPTED",
+    "territories": [
+      "IN"
+    ],
+    "uses": [
+      "audio_stream"
+    ],
+    "valid_from": "2026-11-01T18:33:34.312347+00:00",
+    "valid_until": "LIFETIME"
+  },
+  "authority_evidence_sha256": "9ae68906b727608ed212b8627ca0e9ff2e7d62fb6f320d79b5e2688172d0981e",
+  "authority_reference": "Exact source-QA adoption after independently reviewed actual Cedar packet07f19140; standing gated audiobook campaign authority + explicit native stockCedar approval + owner complete scored acceptance. Storage, runtime, accounting and publication remain separate mandatory gates.",
+  "chunk_mapping_sha256": "fffe9a5882e5a735bbe24b254d4af09e4aba94ce6ed10eae3cb1d8da1888fe22",
+  "container_metadata_reuse": {
+    "at": "2026-11-01T18:55:00.279521+00:00",
+    "canonical_decoded_PCM_format": {
+      "channels": 2,
+      "duration_seconds": 541.8072083333333,
+      "format": "f32le",
+      "frames": 26006746,
+      "sample_rate": 48000
+    },
+    "changed_scope": "OnlyID3title/author/AI disclosure/album/licenceattribution; allprivate/draft/proposed/reviewlanguage removed andactualtagreadbackverified. Earlier1f167containerpreservedbutrejectedforpublicationmetadata.",
+    "evidence_reuse": "ExactcanonicaldecodedPCMandelementaryMP3packetidentitiespreservelistening/wordadjudication/quality/timing scope. No artistic/narration/mastering change.",
+    "ffmpeg_version": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "items": {
+      "delivery": {
+        "canonical_decoded_PCM": {
+          "bytes": 208053968,
+          "sha256": "e6043c9b4580d0a53b3619bf94a6aafa80e44530735b0d49f98dbed84b1d5e8b"
+        },
+        "elementary_encoded_audio_packets": {
+          "bytes": 13004352,
+          "sha256": "de42ed2665d057c35570814d681eff01939ae0ed0f69c05081ba45c4fd135fd6"
+        },
+        "file_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102-v2/the-selfish-giant-cedar-scored.mp3"
+      },
+      "listened": {
+        "canonical_decoded_PCM": {
+          "bytes": 208053968,
+          "sha256": "e6043c9b4580d0a53b3619bf94a6aafa80e44530735b0d49f98dbed84b1d5e8b"
+        },
+        "elementary_encoded_audio_packets": {
+          "bytes": 13004352,
+          "sha256": "de42ed2665d057c35570814d681eff01939ae0ed0f69c05081ba45c4fd135fd6"
+        },
+        "file_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/The-Selfish-Giant-Cedar-Scored-Draft-v1.mp3"
+      }
+    },
+    "new_encode_synthesis_or_allocation": false,
+    "owner_acceptance": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+      "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+    },
+    "publication_ready": "NO_separatenativeadoption/storage/runtimegatesstillrequired",
+    "publication_tag_readback": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102-v2/PUBLICATION-TAG-READBACK.json",
+      "sha256": "daf51ab03e7bdac59b3ca86c7a39af7cf2846e68524ff5e263580a48bcd838a0"
+    },
+    "schema": "earnalism.container_metadata_audio_reuse.v1",
+    "source_baseline_evidence_reuse": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102/CONTAINER-METADATA-AUDIO-REUSE.json",
+      "sha256": "4d7d6bd0d182843890e01927855362065ce939bb7fc7b12f9770b63be7d5db92",
+      "why_applicable": "Originalowner-listenedMP3fileSHAunchanged; prioractualsourcePCM/packetmeasurementreused. Newdeliverybothhashesindependentlyrecomputed andequal."
+    },
+    "status": "PASS_EXACT_DECODED_PCM_AND_ELEMENTARY_PACKET_EQUALITY_METADATA_ONLY"
+  },
+  "duration_ms": 541807,
+  "evidence_sha256": {
+    "container_metadata_reuse": "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+    "cover_reuse": "fdebb6d9f9915db161dc69b53c97ba4e177b9fcfe9465634d013a132988aedce",
+    "generation_provenance": "b64903abfaa81b24f19bd276040f2ea54d69d397205822d3c0365f8a4ef67e73",
+    "material_wording_review": "663fe88e0667a2f0fcb7b652fa4de05dd788eb5e9c9e778d656592e051b445da",
+    "measured_alignment": "beaf6e30311d8cacdd140a64ea7bea412ae95e2746e5f43ce8a4eeade9f26d99",
+    "model_voice_licence": "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+    "music_rights": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+    "objective_qa": "c8feef5f6457e9bfdb999c12df7a764c71bee6c897c8fbab91aec1b0d71cfa9a",
+    "producer_authority": "9ae68906b727608ed212b8627ca0e9ff2e7d62fb6f320d79b5e2688172d0981e",
+    "scored_mix_acceptance": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+    "source_edition": "1b308d9777e35e95b5b81d2a30f3f02c3e7dc52f477ed487da3153a4333e5f6e",
+    "voice_direction_acceptance": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+  },
+  "generation": {
+    "model_id": "gpt-realtime-2.1-mini",
+    "model_revision": null,
+    "provider": "owner_openai_realtime",
+    "runtime_revision": "823ac4359c37d9ea00a8b015b296e9704b1d5eb30c8cda15ee0d90ec41e3fc29",
+    "voice": "cedar"
+  },
+  "generation_counts": {
+    "new_allocations": 0,
+    "one_shot_limit": 17,
+    "responses": 17,
+    "retries": 0
+  },
+  "human_scores": {
+    "anti_choppy_join_score": 9.5,
+    "anti_robotic_texture_score": 9.8,
+    "confidence_score": 0.96,
+    "continuity_score": 9.7,
+    "emotional_expression_score": 9.7,
+    "listener_enjoyment_score": 9.8,
+    "naturalness_score": 9.8,
+    "overall_listening_score": 9.8,
+    "pacing_score": 9.5,
+    "pronunciation_score": 9.8,
+    "punctuation_pause_score": 9.4
+  },
+  "identity": {
+    "author": "Oscar Wilde",
+    "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "master_mp3_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "master_wav_sha256": "ba0bbb3cf60b596ce73b16cdd690ec65c5b3fab80c075cc56de66e08e46c857c",
+    "slug": "the-selfish-giant",
+    "title": "The Selfish Giant"
+  },
+  "listened_master_mp3_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+  "master_samples": 26006746,
+  "policy": "owner_produced_native_scored.v1",
+  "quality": {
+    "all_joins_reviewed": true,
+    "asr_metric_semantics": "Audio-derived raw ASR plus explicitly disclosed owner wording/orthographic adjudication; unchanged raw metrics retained. Not a new raw-ASRscore.",
+    "asr_score": 10.0,
+    "auto_estimated_sync": false,
+    "fatal_flags": [],
+    "fine_phrase_score_timing": "NOT_VERIFIED; accepted conservative content/unit-led ambience, no word-tier claim",
+    "first_words_match": true,
+    "full_scored_mix_listening_performed": true,
+    "full_title_listening_performed": true,
+    "last_words_match": true,
+    "music_continuity_and_intelligibility_reviewed": true,
+    "ordered_content_integrity": true,
+    "source_coverage": 1.0,
+    "unperformed_device_checks": "UNVERIFIED"
+  },
+  "reader_content_sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+  "reader_paragraph_map_sha256": "07752c643d749880466fe9d23c04862e472ca003f0bacedec5d3fbeaad491183",
+  "review_provenance": {
+    "ASR_adjudication_slots": 1670,
+    "actual_bundle_sha256": "07f19140cb9935a54c9f44293c11d45995e24ee6af9b0957506f2e4728b7a8a5",
+    "conditional_qualification_sha256": "720e28dd32c32c358bc66afb37234fd41b768e0f07d1234b6c54e43c496fa42b",
+    "independent_review_sha256": "b1bb9724fe80b77daacf879505dce8f40f0ba893020978433ab404620a2cfb6a",
+    "native_profile_patch_sha256": "0e625dd2364c10411e8c6f26b0b48653f64a89722fac4b58d6e15339a240bc05",
+    "owner_complete_scored_acceptance_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+    "public_whitespace_words": 1652,
+    "raw_ASR_metrics_preserved": true,
+    "timing_lexical_slots": 1660
+  },
+  "score": {
+    "attribution_bound": true,
+    "licensed_instrumental_score": true,
+    "reviewed_mp3_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+    "rights_evidence_sha256": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346"
+  },
+  "source_units_sha256": "8a85f099f29242a542381cdc5fc16f0a6652d46c19d68ab7dd0851d975662c56",
+  "status": "ADOPTED",
+  "unresolved_material_defects": [],
+  "unresolved_wording_findings": []
+}

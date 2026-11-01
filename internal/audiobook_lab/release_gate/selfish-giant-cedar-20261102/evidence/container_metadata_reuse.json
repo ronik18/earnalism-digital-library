@@ -1,0 +1,56 @@
+{
+  "schema": "earnalism.container_metadata_audio_reuse.v1",
+  "at": "2026-11-01T18:55:00.279521+00:00",
+  "status": "PASS_EXACT_DECODED_PCM_AND_ELEMENTARY_PACKET_EQUALITY_METADATA_ONLY",
+  "items": {
+    "listened": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/The-Selfish-Giant-Cedar-Scored-Draft-v1.mp3",
+      "file_sha256": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+      "canonical_decoded_PCM": {
+        "sha256": "e6043c9b4580d0a53b3619bf94a6aafa80e44530735b0d49f98dbed84b1d5e8b",
+        "bytes": 208053968
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "de42ed2665d057c35570814d681eff01939ae0ed0f69c05081ba45c4fd135fd6",
+        "bytes": 13004352
+      }
+    },
+    "delivery": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102-v2/the-selfish-giant-cedar-scored.mp3",
+      "file_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+      "canonical_decoded_PCM": {
+        "sha256": "e6043c9b4580d0a53b3619bf94a6aafa80e44530735b0d49f98dbed84b1d5e8b",
+        "bytes": 208053968
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "de42ed2665d057c35570814d681eff01939ae0ed0f69c05081ba45c4fd135fd6",
+        "bytes": 13004352
+      }
+    }
+  },
+  "canonical_decoded_PCM_format": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "f32le",
+    "frames": 26006746,
+    "duration_seconds": 541.8072083333333
+  },
+  "ffmpeg_version": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "source_baseline_evidence_reuse": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102/CONTAINER-METADATA-AUDIO-REUSE.json",
+    "sha256": "4d7d6bd0d182843890e01927855362065ce939bb7fc7b12f9770b63be7d5db92",
+    "why_applicable": "Originalowner-listenedMP3fileSHAunchanged; prioractualsourcePCM/packetmeasurementreused. Newdeliverybothhashesindependentlyrecomputed andequal."
+  },
+  "publication_tag_readback": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/publication-container-20261102-v2/PUBLICATION-TAG-READBACK.json",
+    "sha256": "daf51ab03e7bdac59b3ca86c7a39af7cf2846e68524ff5e263580a48bcd838a0"
+  },
+  "owner_acceptance": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+    "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+  },
+  "changed_scope": "OnlyID3title/author/AI disclosure/album/licenceattribution; allprivate/draft/proposed/reviewlanguage removed andactualtagreadbackverified. Earlier1f167containerpreservedbutrejectedforpublicationmetadata.",
+  "evidence_reuse": "ExactcanonicaldecodedPCMandelementaryMP3packetidentitiespreservelistening/wordadjudication/quality/timing scope. No artistic/narration/mastering change.",
+  "new_encode_synthesis_or_allocation": false,
+  "publication_ready": "NO_separatenativeadoption/storage/runtimegatesstillrequired"
+}

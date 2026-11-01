@@ -1,0 +1,1008 @@
+{
+  "at": "2026-11-01T18:47:16.678141+00:00",
+  "status": "COMPLETE_AUDIO_DERIVED_CONTENT_QA_WITH_EXPLICIT_HUMAN_ADJUDICATION",
+  "source_manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "source_manifest_sha256": "496edf59b87ef13e4ea4c178453e8e1699968a2b43f5bb0c0f46aeb6887b6d86",
+  "owner_complete_review": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+    "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+  },
+  "owner_scores": {
+    "naturalness_score": 9.8,
+    "pronunciation_score": 9.8,
+    "emotional_expression_score": 9.7,
+    "punctuation_pause_score": 9.4,
+    "pacing_score": 9.5,
+    "continuity_score": 9.7,
+    "anti_robotic_texture_score": 9.8,
+    "anti_choppy_join_score": 9.5,
+    "listener_enjoyment_score": 9.8,
+    "overall_listening_score": 9.8,
+    "confidence_score": 0.96
+  },
+  "raw_ASR_evidence_never_edited": true,
+  "units": [
+    {
+      "id": "fresh-unit-01",
+      "source_text_sha256": "e1984edbd9b29302b17fc8ed8167b533e253e28b77ccb2360bcfe5d58fcf2705",
+      "audio_sha256": "22257cbd655cd0a1534a5fdd6d04dff88aec50693ab9f0d8e0f6ca946dae3b37",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-pilot-review/asr/REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9885,
+        "char_similarity": 0.9885,
+        "token_order_similarity": 0.9655,
+        "coverage": 0.9452,
+        "score": 9.4521,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "every afternoon as they were coming from school the children used to go and play in the giant s garden it was a large lovely garden with soft green grass here and there over the grass stood beautiful flowers like stars and there were twelve peach trees that in the spring time broke out into delicate blossoms of pink and pearl and in the autumn bore rich fruit the birds sat on the trees and sang so sweetly that the children used to stop their games in order to listen to them how happy we are here they cried to each other",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            44,
+            45
+          ],
+          "ASR_word_span": [
+            44,
+            45
+          ],
+          "source_tokens": [
+            "twelve"
+          ],
+          "ASR_tokens": [
+            "12"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            50,
+            52
+          ],
+          "ASR_word_span": [
+            50,
+            51
+          ],
+          "source_tokens": [
+            "spring",
+            "time"
+          ],
+          "ASR_tokens": [
+            "springtime"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            66,
+            67
+          ],
+          "ASR_word_span": [
+            65,
+            66
+          ],
+          "source_tokens": [
+            "rich"
+          ],
+          "ASR_tokens": [
+            "which"
+          ],
+          "basis": "Earlierdirectownerconfirmedrichfruit/andastrangeawe",
+          "evidence_sha256": "8d6f59989e24aab934b8071dfeedf8feb1f811e93347b587ab4b06bd4fbd4d3e"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 102,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-02",
+      "source_text_sha256": "64bbd426e42b2b2e8450a6da05b0820cb23553b42172646fc233af0a0177931a",
+      "audio_sha256": "69607619963057642f6ecfed134dbe10a88df9e2a0050464800e02d17d1984c3",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-pilot-review/retained-pace-repair-01/ASR-CHECK-RESULT.json",
+        "sha256": "785edb415a0438229073fa4a72e8480d1a4b9b0fb325265b2c176fbf9c4a02a7"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "one day the giant came back he had been to visit his friend the cornish ogre and had stayed with him for seven years after the seven years were over he had said all that he had to say for his conversation was limited and he determined to return to his own castle when he arrived he saw the children playing in the garden",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 64,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-03",
+      "source_text_sha256": "914afc7cc5ecf9538cbbb2f39bffd496102892e07f4c6d08cd05383a6c6cbb5c",
+      "audio_sha256": "b9502662066902ec0373b2c9e70e5baecaa9fd85469e45abab1783feb2224109",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-03.asr.json",
+        "sha256": "96ee6c47b817399a126352129816a6bb36860e91586b8a784e3289c0f07f63a8"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9966,
+        "char_similarity": 0.9966,
+        "token_order_similarity": 0.9593,
+        "coverage": 0.94,
+        "score": 9.4,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 0.9286
+      },
+      "adjudicated_source_lexical_transcript": "what are you doing here he cried in a very gruff voice and the children ran away my own garden is my own garden said the giant any one can understand that and i will allow nobody to play in it but myself so he built a high wall all round it and put up a notice board trespassers will be prosecuted",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            27,
+            29
+          ],
+          "ASR_word_span": [
+            27,
+            28
+          ],
+          "source_tokens": [
+            "any",
+            "one"
+          ],
+          "ASR_tokens": [
+            "anyone"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            50,
+            51
+          ],
+          "ASR_word_span": [
+            49,
+            50
+          ],
+          "source_tokens": [
+            "round"
+          ],
+          "ASR_tokens": [
+            "around"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 62,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-04",
+      "source_text_sha256": "30bdab32b03abbc6b0ff4aecb27291d0917c2bb3d9040aaeba142ef4aa9a5e56",
+      "audio_sha256": "2dbdc06ca4d5e9d953497994dff97b5109776329de1568b9e1099cc36e3b873c",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-04.asr.json",
+        "sha256": "9641a6f15c23cda21d446c04959dfa6e648788060cc03b6dbbec611f107aeac1"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.999,
+        "char_similarity": 0.999,
+        "token_order_similarity": 0.9896,
+        "coverage": 0.9841,
+        "score": 9.8413,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "he was a very selfish giant the poor children had now nowhere to play they tried to play on the road but the road was very dusty and full of hard stones and they did not like it they used to wander round the high wall when their lessons were over and talk about the beautiful garden inside how happy we were there they said to each other then the spring came and all over the country there were little blossoms and little birds only in the garden of the selfish giant it was still winter",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            42,
+            43
+          ],
+          "ASR_word_span": [
+            42,
+            43
+          ],
+          "source_tokens": [
+            "round"
+          ],
+          "ASR_tokens": [
+            "around"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 96,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-05",
+      "source_text_sha256": "da025ffa52faacb8c4e454e9bf4dd01562917816dcd4040041f77a9307e2f318",
+      "audio_sha256": "eb6f4a4294eef9aa2a71069eac3e57e3038f1a54d5a2a95b6964e48d1dbdcb5b",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-05.asr.json",
+        "sha256": "a721be46f69ab957b45a44b352243897f39fa18d6f6d2cfb1f4e35fe1b2c566a"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "the birds did not care to sing in it as there were no children and the trees forgot to blossom once a beautiful flower put its head out from the grass but when it saw the notice board it was so sorry for the children that it slipped back into the ground again and went off to sleep the only people who were pleased were the snow and the frost",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 70,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-06",
+      "source_text_sha256": "dabe4be9c748c652af24230ac18e8bafb769005456309ca2a02fd8cca9fbe33d",
+      "audio_sha256": "3a50fb71fd3aaedac18ed2093704d615292b115481fbc66b7e7242388c25ffcf",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-06.asr.json",
+        "sha256": "6b31dbb90b9468376f958d8333315b67aa5a64dcac37651cdcf9bc7562a73817"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9953,
+        "char_similarity": 0.9953,
+        "token_order_similarity": 0.9848,
+        "coverage": 0.9759,
+        "score": 9.759,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 0.9286
+      },
+      "adjudicated_source_lexical_transcript": "spring has forgotten this garden they cried so we will live here all the year round the snow covered up the grass with her great white cloak and the frost painted all the trees silver then they invited the north wind to stay with them and he came he was wrapped in furs and he roared all day about the garden and blew the chimney pots down this is a delightful spot he said we must ask the hail on a visit so the hail came every day for three hours he rattled on the roof of the castle till he broke most of the slates and then he ran round and round the garden as fast as he could go he was dressed in grey and his breath was like ice",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            105,
+            106
+          ],
+          "ASR_word_span": [
+            105,
+            106
+          ],
+          "source_tokens": [
+            "slates"
+          ],
+          "ASR_tokens": [
+            "sleets"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            125,
+            126
+          ],
+          "ASR_word_span": [
+            125,
+            126
+          ],
+          "source_tokens": [
+            "grey"
+          ],
+          "ASR_tokens": [
+            "gray"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 132,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-07",
+      "source_text_sha256": "274e35560e1d477725add6c640fa25c23be26c423c81216bb5cb4c8782c31069",
+      "audio_sha256": "55213ea8bb633d8048d2b55391aebd997a05aa3bbec02d420f01c2bbdb79d473",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-07.asr.json",
+        "sha256": "ab964ebb094a02fd1dc7c1b90740f4f12d62939506245c4a7fcbc6226537d7c1"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "i cannot understand why the spring is so late in coming said the selfish giant as he sat at the window and looked out at his cold white garden i hope there will be a change in the weather but the spring never came nor the summer the autumn gave golden fruit to every garden but to the giant s garden she gave none he is too selfish she said so it was always winter there and the north wind and the hail and the frost and the snow danced about through the trees",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 94,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-08",
+      "source_text_sha256": "b7e767684e09ef66d79ef7934a6226350c5eb3dbf3660886e3162a117115ebd8",
+      "audio_sha256": "a397cb3fa111a3273cd13711ed625f1196e5ea457138ed4896fb75cac118d3c6",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-08.asr.json",
+        "sha256": "39f35fe12ef4950094bf1415c6eb350c1df2457b3725e0c92d2afafd7fcc7f22"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "one morning the giant was lying awake in bed when he heard some lovely music it sounded so sweet to his ears that he thought it must be the king s musicians passing by it was really only a little linnet singing outside his window but it was so long since he had heard a bird sing in his garden that it seemed to him to be the most beautiful music in the world then the hail stopped dancing over his head and the north wind ceased roaring and a delicious perfume came to him through the open casement",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 99,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-09",
+      "source_text_sha256": "ad7f0767bcaebf972a5f01355dbd6181a49d1c0dfbace1e15e03da86315aaa65",
+      "audio_sha256": "f87380ed0d4b271773c928be56d91d8aaf74e9ae12de289f67b95b02c054289d",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-09.asr.json",
+        "sha256": "8728b49cfd31c54264ddc1bd22e05474fe559b17ae66f44d8016eac9bf3a0ade"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "i believe the spring has come at last said the giant and he jumped out of bed and looked out what did he see he saw a most wonderful sight through a little hole in the wall the children had crept in and they were sitting in the branches of the trees in every tree that he could see there was a little child and the trees were so glad to have the children back again that they had covered themselves with blossoms and were waving their arms gently above the children s heads",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 94,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-10",
+      "source_text_sha256": "b2a42531697e9299ddb7819d9aa66f805b463a33dcb29d3926676b24507892eb",
+      "audio_sha256": "20a91c05d558423c2b6ffcf8c53b8cc77bb5a8b61bb3e166a005292357ae144a",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-10.asr.json",
+        "sha256": "1dae8759cdc65c399cb9ba0bc6d8ced3c4aa33621d93e515285e2de060600dd2"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9958,
+        "char_similarity": 0.9958,
+        "token_order_similarity": 0.9874,
+        "coverage": 0.9853,
+        "score": 9.8529,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "the birds were flying about and twittering with delight and the flowers were looking up through the green grass and laughing it was a lovely scene only in one corner it was still winter it was the farthest corner of the garden and in it was standing a little boy he was so small that he could not reach up to the branches of the tree and he was wandering all round it crying bitterly the poor tree was still quite covered with frost and snow and the north wind was blowing and roaring above it climb up little boy said the tree and it bent its branches down as low as it could but the boy was too tiny",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            71,
+            73
+          ],
+          "ASR_word_span": [
+            71,
+            72
+          ],
+          "source_tokens": [
+            "round",
+            "it"
+          ],
+          "ASR_tokens": [
+            "rounded"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 120,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-11",
+      "source_text_sha256": "627c6b31833d09b28734b83e5b2c5ba4fed6517ce1732490571bee94fe735190",
+      "audio_sha256": "e62283dd62c0bd81d98ea3578d30fc2627dc5475873a3de61c610a02f7bd9a56",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-pilot-review/asr/REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9985,
+        "char_similarity": 0.9985,
+        "token_order_similarity": 0.9787,
+        "coverage": 1.0,
+        "score": 9.9847,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "and the giant s heart melted as he looked out how selfish i have been he said now i know why the spring would not come here i will put that poor little boy on the top of the tree and then i will knock down the wall and my garden shall be the children s playground for ever and ever he was really very sorry for what he had done",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            57,
+            59
+          ],
+          "ASR_word_span": [
+            57,
+            58
+          ],
+          "source_tokens": [
+            "for",
+            "ever"
+          ],
+          "ASR_tokens": [
+            "forever"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 71,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-12",
+      "source_text_sha256": "458c68154f7569e50f84333b8520ba1134b9dd7ad5938d3a542d4c80438a588d",
+      "audio_sha256": "2be276228c68ecaefd5354be7be9d64691a5fc9e071f703ef5a2b3d0bdc6361a",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-12.asr.json",
+        "sha256": "73919187492e33a7883502de5a66a5cbe52a24ed2f3caa5507cbe0ed634158da"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9963,
+        "char_similarity": 0.9963,
+        "token_order_similarity": 0.9939,
+        "coverage": 0.989,
+        "score": 9.8901,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 0.9286
+      },
+      "adjudicated_source_lexical_transcript": "so he crept downstairs and opened the front door quite softly and went out into the garden but when the children saw him they were so frightened that they all ran away and the garden became winter again only the little boy did not run for his eyes were so full of tears that he did not see the giant coming and the giant stole up behind him and took him gently in his hand and put him up into the tree and the tree broke at once into blossom and the birds came and sang on it and the little boy stretched out his two arms and flung them round the giant s neck and kissed him and the other children when they saw that the giant was not wicked any longer came running back and with them came the spring it is your garden now little children said the giant and he took a great axe and knocked down the wall",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            159,
+            160
+          ],
+          "ASR_word_span": [
+            159,
+            160
+          ],
+          "source_tokens": [
+            "knocked"
+          ],
+          "ASR_tokens": [
+            "not"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 163,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-13",
+      "source_text_sha256": "5f92f4719dbb18fc7d9d5f8d2bf186e0b757254ed30e0303faef69d8d8d7acea",
+      "audio_sha256": "760d2294fe3af4144a5cd0c1c5e7511fe0fd384b2dec1ade2e0a94ef607e7208",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-new13-decoder-repaired/fresh-unit-13.asr.json",
+        "sha256": "c8e5a1d1bb9ee119a0317e558d83ef87e8481731a8600baac4ac38d852cf94a3"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9897,
+        "char_similarity": 0.9897,
+        "token_order_similarity": 0.9596,
+        "coverage": 0.9412,
+        "score": 9.4118,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 0.9286,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "and when the people were going to market at twelve o clock they found the giant playing with the children in the most beautiful garden they had ever seen all day long they played and in the evening they came to the giant to bid him good bye but where is your little companion he said the boy i put into the tree the giant loved him the best because he had kissed him we don t know answered the children he has gone away you must tell him to be sure and come here to morrow said the giant",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            9,
+            10
+          ],
+          "ASR_word_span": [
+            9,
+            10
+          ],
+          "source_tokens": [
+            "twelve"
+          ],
+          "ASR_tokens": [
+            "12"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            46,
+            48
+          ],
+          "ASR_word_span": [
+            46,
+            47
+          ],
+          "source_tokens": [
+            "good",
+            "bye"
+          ],
+          "ASR_tokens": [
+            "goodbye"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            95,
+            97
+          ],
+          "ASR_word_span": [
+            94,
+            95
+          ],
+          "source_tokens": [
+            "to",
+            "morrow"
+          ],
+          "ASR_tokens": [
+            "tomorrow"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 100,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-14",
+      "source_text_sha256": "c86e441f1e52a54a039c6f48b18ef579ce35f84cc87939bb174fc9a8ae029591",
+      "audio_sha256": "13ef394613d654091bd71fcd34950ba8eb87573efc43fdb4b17761294cde3c11",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-remaining3/fresh-unit-14.asr.json",
+        "sha256": "0d2e2d0b3f2ed7f61ce7dc2bb0219246cb72125235b481b08158c36374138bc6"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9936,
+        "char_similarity": 0.9936,
+        "token_order_similarity": 0.9894,
+        "coverage": 0.9833,
+        "score": 9.8333,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "but the children said that they did not know where he lived and had never seen him before and the giant felt very sad every afternoon when school was over the children came and played with the giant but the little boy whom the giant loved was never seen again the giant was very kind to all the children yet he longed for his first little friend and often spoke of him how i would like to see him he used to say years went over and the giant grew very old and feeble",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            70,
+            71
+          ],
+          "ASR_word_span": [
+            70,
+            71
+          ],
+          "source_tokens": [
+            "of"
+          ],
+          "ASR_tokens": [
+            "with"
+          ],
+          "basis": "Completeownerreviewexplicitlysayssourcewordsheard",
+          "evidence_sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 94,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-15",
+      "source_text_sha256": "f666d9a9ce2fbbcc91c91d40625e301d58de175a7c6229556bf8c21b5a97d83f",
+      "audio_sha256": "ca3d90a3bfdff9a7ccb073a6d500f6ac598b3bcfbc74e25f29db22cc7aff741c",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-remaining3/fresh-unit-15.asr.json",
+        "sha256": "7eb0f41e94960b42a81e9f0ff0a1ff3ec276fd1e7e22805201cc50e446340a75"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.998,
+        "char_similarity": 0.998,
+        "token_order_similarity": 0.9735,
+        "coverage": 0.9516,
+        "score": 9.5161,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 0.9286
+      },
+      "adjudicated_source_lexical_transcript": "he could not play about any more so he sat in a huge armchair and watched the children at their games and admired his garden i have many beautiful flowers he said but the children are the most beautiful flowers of all one winter morning he looked out of his window as he was dressing he did not hate the winter now for he knew that it was merely the spring asleep and that the flowers were resting suddenly he rubbed his eyes in wonder and looked and looked it certainly was a marvellous sight",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            5,
+            7
+          ],
+          "ASR_word_span": [
+            5,
+            6
+          ],
+          "source_tokens": [
+            "any",
+            "more"
+          ],
+          "ASR_tokens": [
+            "anymore"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            93,
+            94
+          ],
+          "ASR_word_span": [
+            92,
+            93
+          ],
+          "source_tokens": [
+            "marvellous"
+          ],
+          "ASR_tokens": [
+            "marvelous"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 95,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-16",
+      "source_text_sha256": "15c147c52313d680981ff47db28000a3ae51082937682c8cda279bbfa3fce21d",
+      "audio_sha256": "2ae13e479a77d446e77f7debfebc889b857bdcaada8ff8effbd105df37dd19e7",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/asr-remaining3/fresh-unit-16.asr.json",
+        "sha256": "8e943301760399751242a8474a265efbd391b1071ddf59e0fbbc6a3c7fb72763"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "in the farthest corner of the garden was a tree quite covered with lovely white blossoms its branches were all golden and silver fruit hung down from them and underneath it stood the little boy he had loved downstairs ran the giant in great joy and out into the garden he hastened across the grass and came near to the child and when he came quite close his face grew red with anger and he said who hath dared to wound thee for on the palms of the child s hands were the prints of two nails and the prints of two nails were on the little feet who hath dared to wound thee cried the giant tell me that i may take my big sword and slay him",
+      "adjudications": [],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 129,
+      "all_source_tokens_once_in_order": true
+    },
+    {
+      "id": "fresh-unit-17",
+      "source_text_sha256": "3f414b281c5b370bb065ac4c92cf12d217f9d7f5c28ac499a411ee0ac840ecf6",
+      "audio_sha256": "1636e9969045a1e4b6e708349c3b92b4574d44ef87262a92359980aa8ffdf015",
+      "raw_ASR_evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-pilot-review/asr/REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504"
+      },
+      "raw_metric_unchanged": {
+        "raw_similarity": 0.9929,
+        "char_similarity": 0.9929,
+        "token_order_similarity": 0.9704,
+        "coverage": 0.9831,
+        "score": 9.8305,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "adjudicated_source_lexical_transcript": "nay answered the child but these are the wounds of love who art thou said the giant and a strange awe fell on him and he knelt before the little child and the child smiled on the giant and said to him you let me play once in your garden to day you shall come with me to my garden which is paradise and when the children ran in that afternoon they found the giant lying dead under the tree all covered with white blossoms",
+      "adjudications": [
+        {
+          "operation": "replace",
+          "source_word_span": [
+            17,
+            18
+          ],
+          "ASR_word_span": [
+            17,
+            18
+          ],
+          "source_tokens": [
+            "and"
+          ],
+          "ASR_tokens": [
+            "that"
+          ],
+          "basis": "Earlierdirectownerconfirmedrichfruit/andastrangeawe",
+          "evidence_sha256": "8d6f59989e24aab934b8071dfeedf8feb1f811e93347b587ab4b06bd4fbd4d3e"
+        },
+        {
+          "operation": "replace",
+          "source_word_span": [
+            50,
+            52
+          ],
+          "ASR_word_span": [
+            50,
+            51
+          ],
+          "source_tokens": [
+            "to",
+            "day"
+          ],
+          "ASR_tokens": [
+            "today"
+          ],
+          "basis": "Disclosedspelling/compound/numberorthographyonly,nospokencontentchange",
+          "evidence_sha256": "1705d6b9163c2c440603029485ad592f5009580f4206db929521fb59087d60a7"
+        }
+      ],
+      "audio_derived_adjudicated_metric": {
+        "raw_similarity": 1.0,
+        "char_similarity": 1.0,
+        "token_order_similarity": 1.0,
+        "coverage": 1.0,
+        "score": 10.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "first_words_match_score": 1.0,
+        "last_words_match_score": 1.0
+      },
+      "source_token_count": 85,
+      "all_source_tokens_once_in_order": true
+    }
+  ],
+  "source_lexical_slots_total": 1670,
+  "source_public_whitespace_words": 1652,
+  "coverage_order_first_last": "PASS_SCOPED_ALL17_AUDIO_DERIVED_ASR_AND_OWNER_WORD_ADJUDICATION",
+  "all_six_new_wording_questions_resolved": true,
+  "full_scored_listening": "OWNER_ACCEPTED",
+  "paragraph_sync": "Separate timingqualificationrecord required, no wordprecisionclaim",
+  "release_package_storage_RUNTIME_LIVE": "NOT_ESTABLISHED"
+}
