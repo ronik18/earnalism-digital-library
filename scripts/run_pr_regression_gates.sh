@@ -25,7 +25,7 @@ echo "==> Exact purchase guard source and original India commerce boundary"
 "$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
 
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
-"$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness
+"$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness backend.tests.test_startup_maintenance_lock_release
 READER_SEGMENT_MONGO_INTEGRATION=1 \
 CATALOGUE_EVIDENCE_MONGO_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION=1 \

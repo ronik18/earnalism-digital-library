@@ -1,0 +1,25 @@
+name: Earnalism email route test (intentional failure)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: earnalism-email-route-test
+  cancel-in-progress: false
+
+jobs:
+  labelled-notification-validation:
+    name: Labelled notification test — not a production incident
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Produce the owner-authorized test notification
+        run: |
+          echo 'LABELLED TEST: native GitHub Actions failure-email route validation.'
+          echo 'This intentional failure is not an Earnalism production incident.'
+          echo 'No checkout, credentials, customer data, production request or provider setting is used.'
+          echo 'Do not rerun to green. Verify the expected email once and retain this test record.'
+          exit 1
