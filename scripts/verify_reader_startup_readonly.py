@@ -22,10 +22,10 @@ def main():
         'reader_segment_activation_state': [([('book_slug', 1)], None)],
         'reader_segment_activation_operations': [([('operation_id', 1)], None)],
     }
-    client = MongoClient(uri, serverSelectionTimeoutMS=8000, connectTimeoutMS=8000)
-    db = client[os.environ.get('DB_NAME') or urlparse(uri).path.lstrip('/').split('/')[0] or 'earnalism']
+    client = MongoClient(uri, serverSelectionTimeoutMS=8000, connectTimeoutMS=8000, maxPoolSize=8, minPoolSize=0, maxConnecting=2)
     rows, missing = [], []
     try:
+        db = client[os.environ.get('DB_NAME') or urlparse(uri).path.lstrip('/').split('/')[0] or 'earnalism']
         for collection, constraints in required.items():
             indexes = db[collection].index_information()
             for keys, partial in constraints:

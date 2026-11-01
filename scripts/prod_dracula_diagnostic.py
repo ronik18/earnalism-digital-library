@@ -88,8 +88,9 @@ def read_only_db_status() -> dict[str, Any]:
         from pymongo import MongoClient  # type: ignore
     except Exception as exc:  # pragma: no cover - dependency issue is environment-specific.
         return {"configured": True, "ok": False, "error": f"pymongo unavailable: {exc}"}
+    client = None
     try:
-        client = MongoClient(mongo_url, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000)
+        client = MongoClient(mongo_url, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000, maxPoolSize=8, minPoolSize=0, maxConnecting=2)
         db = client[database_name_from_url(mongo_url)]
         client.admin.command("ping")
         count = db.books.count_documents({})
@@ -104,6 +105,9 @@ def read_only_db_status() -> dict[str, Any]:
         }
     except Exception as exc:
         return {"configured": True, "ok": False, "error": str(exc)}
+    finally:
+        if client is not None:
+            client.close()
 
 
 def legacy_output_evidence_available() -> bool:
