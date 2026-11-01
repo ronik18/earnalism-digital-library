@@ -6,7 +6,9 @@ on:
     paths:
       - frontend/src/pages/Home.jsx
       - frontend/src/pages/Home.newsletter.test.jsx
+      - frontend/src/pages/Library.jsx
       - frontend/src/pages/Library.test.jsx
+      - frontend/src/pages/Library.integration.test.jsx
       - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
       - frontend/src/components/Header.jsx
       - frontend/src/components/Header.css
