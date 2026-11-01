@@ -211,6 +211,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: repeated click started another catalogue request`);
   await captureFullPageAtTop(page, path.join(output, `library-pending-retry-${viewport.width}.png`));
   await page.getByTestId("library-reference-surface").getByTestId("library-search").fill("A Ghost Story");
+  await page.waitForURL((url) => url.searchParams.get("q") === "A Ghost Story");
   const searchDuringRetry = new URL(page.url()).searchParams;
   assert.equal(searchDuringRetry.get("language"), "en", `${viewport.width}px retry: language filter was not retained`);
   assert.equal(searchDuringRetry.get("availability"), "reader-ready", `${viewport.width}px retry: availability filter was not retained`);

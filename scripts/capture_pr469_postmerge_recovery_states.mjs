@@ -30,13 +30,16 @@ const knownLiveBook = {
   audiobook_enabled: false,
   audiobook_assets: {},
 };
-const comingSoonBook = {
-  slug: "frankenstein", title: "Frankenstein", title_en: "Frankenstein", author: "Mary Wollstonecraft Shelley",
+// Use an edition that is actually held under current release authority. A live
+// title must never be relabelled as unavailable to preserve an old screenshot.
+const heldSlug = "calculus-made-easy";
+assert.equal(liveSlugs.includes(heldSlug), false, "Recovery fixture must remain genuinely held");
+const heldBook = {
+  slug: heldSlug, title: "Calculus Made Easy", title_en: "Calculus Made Easy", author: "Silvanus P. Thompson",
   language: "en", publication_status: "COMING_SOON_PIPELINE", pipeline_stage: "PIPELINE_ONLY",
-  reader_enabled: false, public_route: "/book/frankenstein", reader_url: "", preview_enabled: false,
+  reader_enabled: false, public_route: `/book/${heldSlug}`, reader_url: "", preview_enabled: false,
   preview_url: "", chapters: [], audiobook_enabled: false, audio_enabled: false, audiobook_assets: {},
-  short_description: "A future Gothic shelf candidate. Cover evidence remains pending, so this title stays in preparation.",
-  cover_image_url: "/assets/books/frankenstein/front-cover.webp",
+  short_description: "A study-material candidate in preparation, not a live reading product.",
 };
 
 async function makePage(browser, width, height, apiMode = {}) {
@@ -61,8 +64,8 @@ async function makePage(browser, width, height, apiMode = {}) {
     if (mode?.body !== undefined) return route.fulfill({ status: mode.status || 200, contentType: "application/json", body: JSON.stringify(mode.body) });
     if (pathname === "/settings") return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
     if (pathname === "/books") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([knownLiveBook]) });
+    if (pathname === `/books/${heldSlug}`) return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(heldBook) });
     if (pathname === "/books/a-ghost-story") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(knownLiveBook) });
-    if (pathname === "/books/frankenstein") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(comingSoonBook) });
     if (pathname === "/payments/offers") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ packs: [{ id: "30", minutes: 30, price_inr: 49 }, { id: "60", minutes: 60, price_inr: 89 }, { id: "180", minutes: 180, price_inr: 239 }, { id: "600", minutes: 600, price_inr: 499 }], config: { configured: false, mode: "visual-fixture" } }) });
     if (pathname === "/payments/packs") return route.fulfill({ status: 200, contentType: "application/json", body: "[]" });
     return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
@@ -182,7 +185,7 @@ for (const width of [1440, 390]) {
   }
 
   for (const width of [1440, 390]) {
-    for (const book of [knownLiveBook, comingSoonBook]) {
+    for (const book of [knownLiveBook, heldBook]) {
       await capture(browser, {
         id: book.slug === "a-ghost-story" ? "book-detail-a-ghost-story" : "book-detail-coming-soon",
         route: `/book/${book.slug}`,
@@ -220,11 +223,12 @@ for (const width of [1440, 390]) {
         await page.getByText("A Ghost Story", { exact: true }).first().waitFor();
         await page.getByTestId("reference-book-a-ghost-story").getByText("Live", { exact: true }).waitFor();
         await page.getByTestId("reference-book-a-ghost-story").getByRole("link", { name: "Details", exact: true }).waitFor();
-        await page.getByTestId("reference-book-frankenstein").waitFor();
-        await page.getByTestId("reference-book-frankenstein").getByText("Coming soon", { exact: true }).waitFor();
-        const titleInquiry = page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Ask about title", exact: true });
+        await page.getByTestId(`reference-book-${heldSlug}`).waitFor();
+        await page.getByTestId(`reference-book-${heldSlug}`).getByText("In preparation", { exact: true }).waitFor();
+        const titleInquiry = page.getByTestId(`reference-book-${heldSlug}`).getByRole("link", { name: "Ask about title", exact: true });
         await titleInquiry.waitFor();
-        assert.equal(await titleInquiry.getAttribute("href"), "/contact?interest=frankenstein");
+        assert.equal(await titleInquiry.getAttribute("href"), `/contact?interest=${heldSlug}`);
+        assert.equal(await page.getByTestId(`reference-book-${heldSlug}`).locator('a[href^="/reader/"], a[href^="/listener/"], a[href^="/book/"]').count(), 0, "Held edition must not expose consumption or Book routes");
         assert.equal(liveSlugs.includes("a-ghost-story"), true, "live Library screenshot must be grounded in controlled-launch authority");
       },
     });
@@ -269,7 +273,7 @@ const result = {
     live_title: "A Ghost Story from data/controlled_publications/a-ghost-story/public_book.json and data/controlled_launch.json",
     live_title_audio: "NOT_REQUESTED, not exposed, no assets",
     reader_manifest: "No runtime access/segments_ready claims supplied; detail screenshot preserves Reader currently unavailable",
-    coming_soon_title: "Frankenstein pipeline state; reader_enabled=false; no preview or audio",
+    coming_soon_title: "Calculus Made Easy; verified outside current live authority; reader_enabled=false; no preview or audio",
   },
   output,
   captures,
