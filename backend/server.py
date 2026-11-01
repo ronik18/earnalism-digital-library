@@ -7122,7 +7122,6 @@ async def production_hardening_middleware(request: Request, call_next):
         response.headers["X-Request-ID"] = request_id
         return response
 
-    _shutdown_state["inflight"] = int(_shutdown_state.get("inflight", 0)) + 1
     try:
         retry_after = await _rate_limit_retry_after(request)
         if retry_after is not None:
@@ -7140,8 +7139,6 @@ async def production_hardening_middleware(request: Request, call_next):
     except Exception:
         logger.exception("Unhandled request failure")
         raise
-    finally:
-        _shutdown_state["inflight"] = max(0, int(_shutdown_state.get("inflight", 1)) - 1)
 
     response.headers["X-Request-ID"] = request_id
     _security_headers(response)
@@ -14342,8 +14339,16 @@ app.add_middleware(
         "X-Reader-Chapter-Version",
     ],
 )
-# Registered last so this raw ASGI middleware sees headers after CORS and gzip.
+# Header projection runs outside CORS and gzip; lifecycle accounting wraps it.
 app.add_middleware(PublicCacheVaryOriginMiddleware)
+
+# Outermost user middleware awaits its full ASGI application, not only
+# call_next's response headers. This preserves streaming and background cleanup.
+try:
+    from utils.streaming_drain import StreamingDrainMiddleware
+except ImportError:
+    from backend.utils.streaming_drain import StreamingDrainMiddleware
+app.add_middleware(StreamingDrainMiddleware, state=_shutdown_state)
 
 
 # ---------- Seed ----------

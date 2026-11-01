@@ -28,13 +28,12 @@ reset counters merely to obtain a passing test.
 
 ## Configuration side effects and rollback
 
-Enabling either shared-state flag can initialize Redis. If
-`REDIS_CONFIGURE_ON_STARTUP=true`, startup can also issue global `CONFIG SET` commands.
-A source-only merge must not activate flags or change memory/eviction policy. Any later
-activation proposal must explicitly account for existing Redis roles, persistence,
-memory limits, ACL, failure behavior, cost bounds and retained state. Setting startup
-configuration to false avoids those implicit policy changes, but does not qualify the
-remaining runtime behavior by itself.
+Merged #621 removes global CONFIG SET from protected startup. Broad shared-state
+startup now requires configure-on-startup=false, verified noeviction and finite
+positive maxmemory above observed used_memory. This is a source gate, not proof
+of actual provider ACL, peak headroom, persistence or mixed-writer safety. Older
+serving/recovery sources may still mutate policy and must not be treated as
+Redis-enabled rollback artifacts merely because #621 merged.
 
 Never label a return to multiple local-only limiter processes a safe rollback. Retain
 exact source/configuration, drain and containment evidence. Provider changes, index
@@ -126,3 +125,27 @@ The separate public-only opt-in uses a positive metadata-scope allowlist. Legacy
 Reader preview/chapter bodies, blog bodies and unknown future scopes remain local;
 the intentional free Reader entitlements do not change. Broader existing shared
 flags keep their previous scope and require their own qualification.
+
+## Streaming drain and controller admission successor
+
+HTTP lifetime accounting now wraps the user ASGI middleware stack and awaits
+its complete downstream application, including streaming body and background
+cleanup. It forwards receive/send without buffering media or changing range
+headers. Cancellation, disconnect and send/iterator failures release accounting
+exactly once. New non-health requests retain the existing draining503 response.
+Framework ServerErrorMiddleware remains outside user middleware; this is not
+proof of every framework-generated error send or process termination behavior.
+
+The existing lifespan15second bound and Uvicorn default10second graceful period
+are unchanged. Source tests do not certify the provider termination grace,
+routing withdrawal, client recovery or actual Redis-enabled up/down behavior.
+General health OK remains liveness, not stream-drain/Redis-readiness approval.
+
+The existing offline checker now computes explicit per-node old/new/process
+budgets and diagnoses controller target/enforcement gaps. See
+[scaling admission](scaling-admission.md). Unknown other clients, reserve or
+maximum overlap never becomes zero. Current idle replica counts cannot replace
+maximum old+replacement cohorts. No supplied boolean can certify the external
+controller's write path. Native Judoscale remains unmediated by this script;
+a supported guarded Custom API boundary requires a separately reviewed actual
+implementation and authorized provider routing change, neither performed here.
