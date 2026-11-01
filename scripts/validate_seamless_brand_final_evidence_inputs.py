@@ -68,8 +68,8 @@ def main():
     # The Library quality successor records the owner-directed fixes as an
     # exact source fingerprint. This is an interaction baseline, not visual
     # approval, and cannot be derived from the captured evidence itself.
-    require(library_path == "docs/design-system/library-quality-interaction-baseline-20261101.json" and Path(library_path).exists(), "active Library quality Library interaction baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "fc3fdb96377c0257dc8e7086dd54cfeb3eba4ae43b41f695d0a715a4fbeee555", "Library baseline expected fingerprint is not the owner-directed Library quality interaction value", failures)
+    require(library_path == "docs/design-system/library-timeout-interaction-baseline-20261101.json" and Path(library_path).exists(), "active Library timeout Library interaction baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "c23d2c99ccecc927d0cfed186dc66cf3b1ac31c41c6829b7c7f5f5a2451eefa3", "Library baseline expected fingerprint is not the owner-directed Library timeout interaction value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")

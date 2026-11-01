@@ -1,0 +1,11 @@
+# Library transport deadline correction
+
+Lane: `/private/tmp/earnalism-library-timeout-correction-20261101`, branch `codex/library-timeout-correction-20261101`, owner `/root/library_performance_audit`; root remains sole merge/deploy owner. Base `d892e1eec6d2bac724d7a8fbcb2a3bb2f63216b6`. Overlap: Library.jsx and source-bound interaction baseline/final-input validators; reconcile any later main change by intent through the Integration Lane.
+
+Actual candidate browser acceptance found the new 15-second deadline aborting valid catalogue requests. Root observed anonymous public TTFB 17.5–26.8 seconds and first cards 21–40 seconds. This correction extends only the Library request to a finite 60 seconds. It preserves one request, unmount cancellation, request identity, no automatic retries, explicit retry, no optional curation and no stale/error fallback inventory. It does not reduce or claim to fix backend latency.
+
+Application commit `9b8c35ab89cdfc2dca4d9f8666b48fc3b3797771`, tree `18aa1da9d262a91d9e173bbfd38b0a93f40bed5b`, contains only Library.jsx and its integration tests. The exact successor source record preserves the accepted PR613 baseline unchanged and binds the one changed input path to this commit. It is source-only preparation, not visual/rights approval or serving-source acceptance.
+
+Local validation: Library component/source suites 17/17 PASS. A real Axios instance passes request config to a deterministic offline transport: a 27-second response succeeds beyond the former 15-second cutoff; the actual 60-second transport deadline fails closed, late response cannot revive inventory, and only an explicit retry starts the second request. Baseline contracts 25/25 and final-evidence input/generator checks 26/26 PASS, including mutation rejection and historical records. Independent review, latest-main reconciliation, required exact-head hosted CI and published reviews are still required. No push, PR, provider calls, deployment, settings, Redis enablement or paid sessions by this lane.
+
+Next Integration Lane action: independently review this scoped successor, reconcile any overlapping new main source without rewriting the application provenance commit, then run exact-head CI. Keep staged PR613 candidate unpromoted until a corrected merged successor passes actual browser acceptance.

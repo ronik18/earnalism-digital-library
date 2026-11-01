@@ -1,0 +1,55 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/lib/controlledLaunch.js",
+    "frontend/src/lib/libraryCatalogueComposition.js",
+    "frontend/src/lib/libraryCatalog.js",
+    "frontend/src/lib/libraryFilterState.js",
+    "frontend/src/lib/libraryDiscovery.js",
+    "frontend/src/data/libraryDiscoveryMetadata.json",
+    "frontend/src/content/productCopy.json",
+    "frontend/src/design-system/sitewide-option-b.css",
+    "frontend/src/config/publicNavigation.js"
+  ],
+  "reviewed_source": {
+    "commit": "9b8c35ab89cdfc2dca4d9f8666b48fc3b3797771",
+    "tree": "18aa1da9d262a91d9e173bbfd38b0a93f40bed5b"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/library-quality-interaction-baseline-20261101.json",
+    "reviewed_source_commit": "0a4d066c30602c28a2c911b9d72a57b05d3e4d73",
+    "surface_sha256": "fc3fdb96377c0257dc8e7086dd54cfeb3eba4ae43b41f695d0a715a4fbeee555"
+  },
+  "authorized_surface_sha256": "c23d2c99ccecc927d0cfed186dc66cf3b1ac31c41c6829b7c7f5f5a2451eefa3",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/pages/Library.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/lib/controlledLaunch.js",
+      "frontend/src/lib/libraryCatalogueComposition.js",
+      "frontend/src/lib/libraryCatalog.js",
+      "frontend/src/lib/libraryFilterState.js",
+      "frontend/src/lib/libraryDiscovery.js",
+      "frontend/src/data/libraryDiscoveryMetadata.json",
+      "frontend/src/content/productCopy.json",
+      "frontend/src/design-system/sitewide-option-b.css",
+      "frontend/src/config/publicNavigation.js"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_DIRECTIVE_LIBRARY_QUALITY_TIMEOUT_CORRECTION_20261101",
+    "scope": "Latest direct owner GO LIVE instruction includes safe correction of demonstrated candidate blockers. Extend only Library catalogue transport deadline to 60 seconds after actual 17.5\u201326.8 second TTFB cancelled by the 15-second candidate. Source transition only; not visual approval, runtime acceptance, rights approval or proof of backend latency improvement. Independent review and fresh exact-head CI remain required.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "Prepared exact application-source transition; independent review and mandatory exact-head CI/final published reviews still required. Historical PR613 record immutable. No backend/settings/Redis/provider change, no paid session, no claim backend latency fixed."
+}

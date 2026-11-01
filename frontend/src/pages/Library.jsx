@@ -32,7 +32,7 @@ export default function Library() {
     catalogueRequestInFlightRef.current = true;
     // Catalogue readiness must not wait for Home curation or optional imagery.
     // Bound only this public request; financial and auth transports are unchanged.
-    api.get("/books", { signal: controller.signal, timeout: 15000 }).then(({ data }) => {
+    api.get("/books", { signal: controller.signal, timeout: 60000 }).then(({ data }) => {
       if (controller.signal.aborted || catalogueRequestIdRef.current !== requestId) return;
       if (!Array.isArray(data)) throw new Error("Invalid catalogue response");
       setLiveBooks(data);

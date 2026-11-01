@@ -42,7 +42,8 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
 // interaction transition as the active decision.
 export const HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE = "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json";
 export const LIBRARY_QUALITY_INTERACTION_BASELINE = "docs/design-system/library-quality-interaction-baseline-20261101.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = LIBRARY_QUALITY_INTERACTION_BASELINE;
+export const LIBRARY_TIMEOUT_INTERACTION_BASELINE = "docs/design-system/library-timeout-interaction-baseline-20261101.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = LIBRARY_TIMEOUT_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -266,6 +267,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/pages/Library.jsx", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js"],
     authorization: "OWNER_DIRECTIVE_LIBRARY_QUALITY_SINGLE_PR_20261101",
+  },
+  [LIBRARY_TIMEOUT_INTERACTION_BASELINE]: {
+    reviewedSource: {"commit": "9b8c35ab89cdfc2dca4d9f8666b48fc3b3797771", "tree": "18aa1da9d262a91d9e173bbfd38b0a93f40bed5b"},
+    previous: { recordPath: LIBRARY_QUALITY_INTERACTION_BASELINE, commit: "0a4d066c30602c28a2c911b9d72a57b05d3e4d73", hash: "fc3fdb96377c0257dc8e7086dd54cfeb3eba4ae43b41f695d0a715a4fbeee555" },
+    authorizedHash: "c23d2c99ccecc927d0cfed186dc66cf3b1ac31c41c6829b7c7f5f5a2451eefa3",
+    inputPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js"],
+    changedPaths: ["frontend/src/pages/Library.jsx"],
+    unchangedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js"],
+    authorization: "OWNER_DIRECTIVE_LIBRARY_QUALITY_TIMEOUT_CORRECTION_20261101",
   },
 };
 

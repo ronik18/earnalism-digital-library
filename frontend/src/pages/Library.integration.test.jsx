@@ -37,7 +37,7 @@ test("books publish independently, with one catalogue and no optional curation r
   expect(container.querySelector('.reference-library__legacy-content')).toBeNull();
   expect(api.get).toHaveBeenCalledTimes(1);
   expect(api.get.mock.calls[0][0]).toBe("/books");
-  expect(api.get.mock.calls[0][1].timeout).toBe(15000);
+  expect(api.get.mock.calls[0][1].timeout).toBe(60000);
 });
 test("empty and failed responses never revive bundled editions; explicit retry recovers", async () => {
   api.get.mockResolvedValueOnce({ data: [] }); await mount();
@@ -115,4 +115,73 @@ test("held preparation cards offer enquiry only, never Reader, Listener or paid 
   expect(destinations.every(href=>href.startsWith('/contact?'))).toBe(true);
   expect(cards[0].querySelector('audio,video,button')).toBeNull();
   expect(cards[0].textContent).not.toMatch(/Pass required|Start Reading|Listen/);
+});
+
+// Real Axios request configuration flows into a deterministic offline transport.
+// Its deadline competes with the response timer; tests do not resolve the mock
+// manually or infer timeout behaviour from an assertion on the numeric constant.
+function delayedCatalogueTransport(outcomes) {
+  const axios = jest.requireActual("axios");
+  let requests = 0;
+  const instance = axios.create({ adapter: (config) => new Promise((resolve, reject) => {
+    const outcome = outcomes[requests++];
+    let settled = false;
+    const finish = (callback, value) => {
+      if (settled) return;
+      settled = true; clearTimeout(response); clearTimeout(deadline);
+      config.signal?.removeEventListener("abort", abort);
+      callback(value);
+    };
+    const abort = () => finish(reject, new axios.CanceledError("cancelled"));
+    const response = setTimeout(() => finish(resolve, {
+      data: outcome.data, status: 200, statusText: "OK", headers: {}, config,
+    }), outcome.delay);
+    const deadline = setTimeout(() => finish(reject, new axios.AxiosError(
+      "catalogue transport deadline", "ECONNABORTED", config,
+    )), config.timeout);
+    config.signal?.addEventListener("abort", abort, { once: true });
+    if (config.signal?.aborted) abort();
+  }) });
+  api.get.mockImplementation((...args) => instance.get(...args));
+  return () => requests;
+}
+const advanceTransport = async (milliseconds) => act(async () => {
+  jest.advanceTimersByTime(milliseconds);
+  await Promise.resolve(); await Promise.resolve();
+});
+test("a legitimate 27-second catalogue response survives the former 15-second deadline", async () => {
+  jest.useFakeTimers();
+  try {
+    const count = delayedCatalogueTransport([{ delay: 27000, data: [reader()] }]);
+    await mount(); await advanceTransport(15001);
+    expect(container.textContent).toContain("Opening the collection");
+    expect(container.querySelector('[data-testid="library-catalogue-error"]')).toBeNull();
+    await advanceTransport(11999);
+    expect(container.querySelector('[data-testid="reference-book-frankenstein"]')).not.toBeNull();
+    expect(count()).toBe(1);
+  } finally { jest.useRealTimers(); }
+});
+test("the 60-second transport deadline fails closed until one explicit retry, without late revival", async () => {
+  jest.useFakeTimers();
+  try {
+    const count = delayedCatalogueTransport([
+      { delay: 90000, data: [reader()] },
+      { delay: 27000, data: [reader("the-time-machine", "The Time Machine")] },
+    ]);
+    await mount(); await advanceTransport(59999);
+    expect(container.querySelector('[data-testid="library-catalogue-error"]')).toBeNull();
+    await advanceTransport(1);
+    expect(container.querySelector('[data-testid="library-catalogue-error"]')).not.toBeNull();
+    expect(container.querySelectorAll('.reference-book-tile')).toHaveLength(0);
+    await advanceTransport(30000); // Original response time cannot revive stale inventory.
+    expect(container.querySelectorAll('.reference-book-tile')).toHaveLength(0);
+    expect(count()).toBe(1);
+    await click(container.querySelector('[data-testid="library-catalogue-retry"]'));
+    await click(container.querySelector('[data-testid="library-catalogue-retry"]'));
+    expect(count()).toBe(2);
+    await advanceTransport(27000);
+    expect(container.querySelector('[data-testid="reference-book-the-time-machine"]')).not.toBeNull();
+    expect(container.querySelector('a[href="/reader/frankenstein"]')).toBeNull();
+    expect(count()).toBe(2);
+  } finally { jest.useRealTimers(); }
 });
