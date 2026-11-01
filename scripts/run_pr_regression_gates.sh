@@ -84,6 +84,7 @@ env \
     backend/tests/test_reader_observed_recovery_plan.py \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
     backend/tests/test_reading_pass_service_concurrency.py \
+    backend/tests/test_reading_pass_preparation.py \
     backend/tests/test_reading_pass_admission_contention.py \
     backend/tests/test_reading_pass_rollback_transaction.py \
     backend/tests/test_reading_pass_client_matrix.py \
@@ -161,6 +162,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx \
   src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx \
   src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx \
+  src/experiences-v2/reader/preparationRecovery.test.js \
   src/experiences-v2/reader/authorizedChapter.test.js \
   src/experiences-v2/reader/readerIndexBoundary.test.js \
   src/experiences-v2/reader/visualPagination.test.js \

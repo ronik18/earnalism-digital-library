@@ -16,5 +16,11 @@
   "current_production_access": "BOTH_HELD_UNCONFIRMED",
   "additional_pass_seconds": 0,
   "no_push_merge_deploy_publish": true,
-  "next_action": "Integration Lane independent source review; preserve release and paid-session approval gates."
+  "next_action": "Integration Lane independent source review; preserve release and paid-session approval gates.",
+  "ci_coverage_followup": {
+    "finding": "Preparation backend and timing-helper tests were not in the mandatory regression list.",
+    "correction": "Include both existing test files in required regression runner; application source unchanged.",
+    "next_gate": "Fresh exact-head required CI and published review before source merge.",
+    "paid_sessions": 0
+  }
 }
