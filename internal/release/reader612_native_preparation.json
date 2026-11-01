@@ -1,0 +1,30 @@
+{
+  "schema": "earnalism.reader612-native-source-binding.v1",
+  "role": "PRIOR_READER_CORE_CLOSED_RECOVERY",
+  "source_sha": "fed035bf88c6a878a37679828c219c29997ad496",
+  "tree_sha": "a51072ee5c315c0374997f582f708630c1b5d205",
+  "application_base": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
+  "prior_reader_source": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "payload_membership_sha256": "b8931288020f6f8e584983bc0c2e1cf0f7d2fc437f16d406955459e8ced53fe5",
+  "payload_files": 2127,
+  "runtime_sha256": "014565f50c637dd24389d825761d2f3efc0fceb3c339d2c88a4c8e5573d2cad3",
+  "closed_server_sha256": "f897a827a1f83409f51bfae310d72a8de343f5f1d017e2a70195510b99203c72",
+  "execution_authorized": false,
+  "native_qualified": false,
+  "retained_backend": "29df0933-6abb-49e1-a2e0-4e9df5d96a80",
+  "retained_snapshot": "66f2865d-8e5c-458a-8205-07dd757594a1",
+  "retained_image": "sha256:aa043116edde7a75430ac96c9a293a7c1a19e39e882da95cbea83fda4f7b3718",
+  "retained_frontend": "dpl_83KVsPijkuNRopHVhtSnzz9QhZPs",
+  "retained_frontend_source": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
+  "evidence_limit": "Retained baseline identities only; refresh actual provider/config/aliases/journal before later authorized execution; no purchase pause authority",
+  "controller_files": {
+    "reader612_native_restore.py": "f5ba07008f34052bac1951c27144aadc6c08922999b12d500c66d820629f6fc4",
+    "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129",
+    "india_release_provider_adapter.py": "464d1672f5ec840cdae3edf536d5601d2582ae03f522fecabf5741d4f46ae28c",
+    "backend_upload_payload.py": "c8140623a4955dbfe08a76a6c44866a328d252e20a491fd3be678d2d55ce2296",
+    "purchase_guard_source.py": "19578982f72fc0377c5c70cdd8f594e8a19838fcc3aeed6db535f5f3c6a052de",
+    "build_runtime_source_manifest.py": "ced747227eb60affc28059183dada9e4969ccfcd6dfe36a8eacedd0afe94b4d5",
+    "qualify_stable_rollback_profile.py": "de065e5e6d2c65965e00a00996084ff045576c0248921f8c7fb569e83b3e3fea"
+  },
+  "controller_integration_status": "SOURCE_ONLY_AUTHENTIC_GATE_OBSERVER_TRANSPORT_NOT_BOUND_OR_EXECUTED"
+}
