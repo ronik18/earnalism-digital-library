@@ -1,0 +1,43 @@
+{
+  "status": "PASS_LOCAL_MASTER_EXACT_20_UNIT_PCM_CONCAT",
+  "masterPath": "/tmp/earnalism-selfish-giant-lossless-master-complete-20261029/master.wav",
+  "masterSHA256": "f394114ee8a6fd8c798ab84c2f22892632b086f211ad050b870dff38bb6aa6ed",
+  "durationMs": 777120,
+  "units": [
+    "opening",
+    "gap-01",
+    "dialogue_and_notice",
+    "gap-03",
+    "gap-04",
+    "weather_personification",
+    "gap-06",
+    "gap-07",
+    "gap-08",
+    "gap-09",
+    "gap-10",
+    "turning_point",
+    "gap-12",
+    "gap-13",
+    "gap-14",
+    "gap-15",
+    "gap-16",
+    "gap-17",
+    "gap-18",
+    "ending"
+  ],
+  "all20OriginalWavAndPcmHashesVerified": true,
+  "concatenatedInputPCMEqualsMasterPCM": true,
+  "noAdditionalMusicLayerOrAudioProcessingInMaster": true,
+  "perceptualReviewPerformed": false,
+  "localPlaybackCapability": "Local file can be rendered for human listening; this model has no listed inbound audio-listening/review tool. CUA native playback does not itself confer model hearing. No external transfer requested or performed.",
+  "smallestRemainingPerceptualScope": "One continuous12m57s critical listen of exact master, covering all20 units and19 joins against authoritative text. Reuse opening tone and5 targeted wording decisions; focus remaining spans on naturalness, expressive arc, consistent voice, prosody/robotic texture, unresolved ASR alternatives, perceived loudness and joins. No music balancing check needed for this proven pure narration master; confirm intended silence/dry presentation.",
+  "retainedFullTitleAcceptanceFound": false,
+  "searchScope": [
+    "canonical exact release-gate records",
+    "original full-master QA report and evidence",
+    "original v10 wording/tone report",
+    "completion independent reviews (controller scope only)"
+  ],
+  "numericScoreRequiredByThisFinding": false,
+  "remainingCapability": "Existing local human-capable audio review or separately authorized audio-aware review; cannot replace full listening with ASR/acoustic metrics."
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "audiobook_package_upload_plan.v2",
+  "slug": "the-selfish-giant",
+  "release_descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2",
+  "immutable_prefix": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/",
+  "release_status": "RELEASE_CANDIDATE",
+  "assets": [
+    {
+      "asset_id": "chapter-001-full-audio",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/two-title-masters/the-selfish-giant-8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b.mp3",
+      "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-audio-sha256-8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b.mp3",
+      "sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+      "size_bytes": 6217581,
+      "mime_type": "audio/mpeg"
+    },
+    {
+      "asset_id": "chapter-001-full-timestamps",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-selfish-giant/chapter-001-full.timestamps.json",
+      "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-timestamps-sha256-997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280.json",
+      "sha256": "997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280",
+      "size_bytes": 15944,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-metadata",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-selfish-giant/chapter-001-full.metadata.json",
+      "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-metadata-sha256-ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838.json",
+      "sha256": "ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838",
+      "size_bytes": 503,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-vtt",
+      "local_path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-selfish-giant/chapter-001-full.vtt",
+      "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-vtt-sha256-6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546.vtt",
+      "sha256": "6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546",
+      "size_bytes": 9517,
+      "mime_type": "text/vtt"
+    }
+  ]
+}

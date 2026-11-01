@@ -1,0 +1,217 @@
+{
+  "status": "DRY_NARRATION_PROVENANCE_AND_EXACT_LOCAL_PACKAGE_BYTES_VERIFIED",
+  "music": false,
+  "music_license": "NOT_APPLICABLE_NO_ADDED_SCORE",
+  "basis": [
+    "Original source-bound mastering candidate_manifest.json explicitly music:false; only loudnorm mastering filter",
+    "assemble_corrected_master.py uses np.concatenate([original prefix,source-bound narration repair,original suffix]) and PCM/MP3 encode, no music input or mixing",
+    "Current exact accepted WAV+MP3, original master, repair and all29deliverychunk hashes verified from retained local bytes"
+  ],
+  "master_checks": {
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/corrected-master-v1/the-open-window.corrected-v1.wav": {
+      "expected": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+      "actual": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+      "matches": true
+    },
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/corrected-master-v1/the-open-window.corrected-v1.mp3": {
+      "expected": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+      "actual": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+      "matches": true
+    },
+    "/Users/ronikbasak/Documents/Codex/2026-10-12/task-2/mastering-candidates/20261012-lossless-v1/narration.candidate.mp3": {
+      "expected": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+      "actual": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+      "matches": true
+    },
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/u000024-suffix-repair-v1.wav": {
+      "expected": "4324ace4cc5b7caea523b4546908b220a63bd01c35f037a633f359eae4b083aa",
+      "actual": "4324ace4cc5b7caea523b4546908b220a63bd01c35f037a633f359eae4b083aa",
+      "matches": true
+    }
+  },
+  "chunk_checks": [
+    {
+      "segment": "paragraph-001",
+      "actual": "25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063",
+      "expected": "25c79e4c5f2b530f82dd7093ce9cc9d399a24770e16bf508284760323edb7063",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-002",
+      "actual": "ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018",
+      "expected": "ec7197e5dc078d3ddc8633c3f05dfe7d8017253b1d32cac85d85372feaa4c018",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-003",
+      "actual": "f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079",
+      "expected": "f94ab2855421f885583903bbf71e605aa350c5237d3c5ad47841965c75e39079",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-004",
+      "actual": "699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5",
+      "expected": "699b0d5a6cc3bd3aab5fb2a2307c619ff80f5de0092827d2d318ef94fa00e4e5",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-005",
+      "actual": "8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784",
+      "expected": "8bc6407f32e740db51eb70b69d61fd19934bfdc312b2f2ce40a871a1dd5cf784",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-006",
+      "actual": "4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3",
+      "expected": "4a341a0a2a2daf3bbbdeed9c9bbcd9f8d5e2336e00a08ff32f0108c38d57d9f3",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-007",
+      "actual": "d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133",
+      "expected": "d3084d4005f725d4016de90b4b52c8395cf375f024093f2824d6ae4e248f8133",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-008",
+      "actual": "90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c",
+      "expected": "90085349f5a7368ae3e871ffa5b6b6962e8985108eba577bd5c782de58f4284c",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-009",
+      "actual": "460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2",
+      "expected": "460c7eec3d6889cd4d2c2d0af00c350c3f41d60579064a7a4a6ac5821c714fb2",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-010",
+      "actual": "20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23",
+      "expected": "20e4a40c7b22dc7261240284c7c0cf0221975f544e3ad7b3ff90fa05b1198d23",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-011",
+      "actual": "f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad",
+      "expected": "f619ea6ab50a184f58ed8a39ae7506fe1b85f8150df1722329c4bc83cc0633ad",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-012",
+      "actual": "eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c",
+      "expected": "eda1a70cf561b776d7a93dcb685fa394bfca28bbf0f96e1ead86d64d6bc9af4c",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-013",
+      "actual": "3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1",
+      "expected": "3cd6f49f2d46c36638e01a5eafb7b581b7dffb768e2b65d150bb91d8a650c5a1",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-014",
+      "actual": "3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23",
+      "expected": "3f361dc9162a3e241641dad4eed8fcc3c9cf0ac14d1e80bbcd4d36d583aa6d23",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-015",
+      "actual": "b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385",
+      "expected": "b97df48c0c5137802000579bd6fd33af2855498dea8a34ce4353e4f8b2293385",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-016",
+      "actual": "3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310",
+      "expected": "3606c05f1410f7f5afd7cc2023345724c301fe1a2ef8137665c991c23c992310",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-017",
+      "actual": "cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec",
+      "expected": "cbf85af09652c2800f5105f3315ff7decb2c92a1cd1af543fb9841621bd0f2ec",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-018",
+      "actual": "94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4",
+      "expected": "94d52f28cb2bf121ae6cd50814b374d0f9495f42179ae06658bc3506895733c4",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-019",
+      "actual": "9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9",
+      "expected": "9ebdc3fe54812f95d10cd80b9a4792bf83d0379ffbc7815d5b818d64f60319e9",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-020",
+      "actual": "abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72",
+      "expected": "abfae0e496322009a45c90baf4520681a01475126c74eba5450abd64ada40d72",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-021",
+      "actual": "efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2",
+      "expected": "efd1d189e08896081fc232786565bc01c42e61c022284aa0d46f1a6bba6d2df2",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-022",
+      "actual": "019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18",
+      "expected": "019e19d7d3a1677bb4937dbfb3cec443816c41fd6189cd61b403a3dc0bf4bd18",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-023",
+      "actual": "74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96",
+      "expected": "74797f45d4e26329df2d2f24ea74cf6e8f036325b2e016ea51b752e4b3426c96",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-024",
+      "actual": "e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217",
+      "expected": "e193115a54e1a0f1cf06bc67ada7f9a65da38f09780b06059c3555867e137217",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-025",
+      "actual": "dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5",
+      "expected": "dd9325a9f6ef5ed1b2acca4b81acaea0054e4b1e36895e64df8da8b7dfeca1f5",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-026",
+      "actual": "69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5",
+      "expected": "69cf3f9877056581b94d5f7a5eb893f42dc6ab9eb384e99e6dd028450caa96a5",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-027",
+      "actual": "531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4",
+      "expected": "531375cb8564cfb86a32953dcd54cee0dd2fdd816b57f34b55a3f2fad9d15fb4",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-028",
+      "actual": "1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96",
+      "expected": "1a0be4a2e5daa6e393eabcddd15dd945c5a50292a3381eea65dfcafbfe2bec96",
+      "matches": true
+    },
+    {
+      "segment": "paragraph-029",
+      "actual": "4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9",
+      "expected": "4004fdbe09a1fc5e06e05669952819b5a020006bed3ebb25c7c30716a9c575a9",
+      "matches": true
+    }
+  ],
+  "all_checks_pass": true,
+  "evidence_files_sha256": {
+    "/Users/ronikbasak/Documents/Codex/2026-10-12/task-2/mastering-candidates/20261012-lossless-v1/candidate_manifest.json": "5d2e7375b1d19db2de6662478fdf78c1543c3d784fffae63c3ad582ac9e65642",
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/assemble_corrected_master.py": "c2a536029f0b7fed0b98cc2536e218eebcf869c931b8824c78ae571d9aa5c5ad",
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/corrected-master-v1/MASTER_PROVENANCE_AND_QA.json": "787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7",
+    "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/corrected-master-v1/LISTENER_STAGING_RECEIPT.json": "50e1f35cfaccf4d9db2ca449c580e61956616840612fb4286ec2fbe76c6b9b52"
+  },
+  "new_synthesis_allocation_media_egress_browser_or_playback": false,
+  "remaining_gate": "Root-owned current protected runtime/player/accounting acceptance; no new music qualification required"
+}

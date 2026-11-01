@@ -1,0 +1,62 @@
+{
+  "schema_version": "audiobook_release_descriptor.v1",
+  "derivative_schema": "earnalism.retained-master-derivative-descriptor.v1",
+  "release_candidate_status": "RETAINED_MASTER_SOURCE_QA_ADOPTED_STORAGE_PENDING",
+  "release_candidate_evidence": {
+    "acceptance_policy": "retained_master_continuous_derivative.v1",
+    "status": "EXACT_PARENT_QA_REUSED_SOURCE_ADOPTION_ONLY",
+    "all_release_gates_passed": false
+  },
+  "policy": "retained_master_continuous_derivative.v1",
+  "slug": "the-selfish-giant",
+  "parent_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+  "parent_release_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "parent_public_acceptance_sha256": "322c2d7b716bdd2515c0672d1246a78bde24d075bb5ad2f23b703ba2add628d1",
+  "parent_rights_record_sha256": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
+  "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "master_mp3_sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+  "duration_ms": 777120,
+  "retained_measured_bounds_sha256": "9261061f6044b1c0e16a5591523a51f253d876425d09bcb82ed55440807969e1",
+  "retained_unit_count": 20,
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "highlight_sync_enabled": false,
+  "voice_rights_covers_source_unchanged": true,
+  "territories": [
+    "IN"
+  ],
+  "publication_approved": false,
+  "required_gates": [
+    "DERIVATIVE_POLICY_ADOPTION",
+    "EXACT_DERIVATIVE_RIGHTS_BINDING",
+    "PRIMARY_AND_DR_EXACT_RECEIPTS",
+    "FULL_CRITICAL_REVIEW_OR_VALID_UNCHANGED_REUSE",
+    "PROTECTED_RUNTIME_ACCEPTANCE",
+    "SERIAL_RELEASE_VERIFICATION"
+  ],
+  "parent_qualification": {
+    "parent_adoption_record_sha256": "d09c3445e1d063f3044752190659eaef77548dd0b661b351be202b3cb3b08b3e",
+    "parent_descriptor_sha256": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+    "native_editorial_and_india_rights_validated": true,
+    "native_production_acceptance_validated": true,
+    "native_production_acceptance_scope": "HISTORICAL_EXACT_PARENT_ONLY_NOT_NEW_TOPOLOGY_OR_CURRENT_RUNTIME",
+    "parent_proof_sha256": {
+      "playback": "ac7b16224cfe3fb132ee3430c4f2ceb0469341d1ce13b4e67fb849e3a3f0494a",
+      "business": "bf5aacc8a7e57f942b111624850c189df01536edafd8fffe34b791702ce69d34",
+      "accounting": "f1248949aba26b0de60d673316af34987e88cf92b475b6cacb7b71b7d7280c44"
+    },
+    "parent_acceptance_sha256": "322c2d7b716bdd2515c0672d1246a78bde24d075bb5ad2f23b703ba2add628d1"
+  },
+  "delivery_sidecar_sha256": {
+    "timestamps": "997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280",
+    "metadata": "ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838",
+    "vtt": "6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546"
+  },
+  "known_release_blockers": [
+    "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+    "PRIVATE_B2_DR_REPLICA_REQUIRED",
+    "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "source_authority_sha256": "ba5e6ac04c53828147200a1547c9841c10310d6d319b02c0cdc8793429dd4820"
+}

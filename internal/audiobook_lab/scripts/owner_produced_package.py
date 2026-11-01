@@ -19,7 +19,7 @@ from rights_decision_gate import evaluate_accepted_record, load_production_regis
 from audiobook_packages import (
     validate_audiobook_package,
     AudiobookPackageValidationError,
-    MAX_SEGMENT_DURATION_MS,
+    segment_duration_limit_ms,
 )
 
 POLICY = "owner_produced_source_units.v1"
@@ -162,7 +162,7 @@ def validate_topology(package):
                 )
                 and c["end_word"] >= word
                 and c["end_paragraph"] >= paragraph
-                and 0 < c["duration_ms"] <= MAX_SEGMENT_DURATION_MS,
+                and 0 < c["duration_ms"] <= segment_duration_limit_ms(package, t, c),
                 "Measured finite unit bounds",
             )
             require(set(c["assets"]) == set(ROLES), "Exact asset roles")

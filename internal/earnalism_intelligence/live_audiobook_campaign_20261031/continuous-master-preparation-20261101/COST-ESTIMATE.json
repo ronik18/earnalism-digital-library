@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-01T04:05:03.474322+00:00",
+  "source": "https://www.backblaze.com/blog/backblaze-pricing-and-product-updates/",
+  "rate_usd_per_decimal_tb_month": 6.95,
+  "rate_effective": "2026-05-01",
+  "account_contract_and_free_allowance": "NOT_INSPECTED; marginalactualmaydiffer",
+  "actual_new_storage_write_spend_usd": 0,
+  "books": [
+    {
+      "slug": "the-open-window",
+      "four_payload_bytes_per_store": 7890361,
+      "two_store_bytes_plus64KiB_manifest_per_store_reservation": 15911794,
+      "estimated_added_monthly_usd": 0.0001105869683,
+      "new_narration_usd": 0,
+      "storage_uploads_performed": false,
+      "verification_egress_cost_usd": null,
+      "egress_estimate_status": "NOT_VERIFIED_NOT_PERFORMED",
+      "source_qualified_descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d"
+    },
+    {
+      "slug": "the-selfish-giant",
+      "four_payload_bytes_per_store": 6243545,
+      "two_store_bytes_plus64KiB_manifest_per_store_reservation": 12618162,
+      "estimated_added_monthly_usd": 8.769622590000001e-05,
+      "new_narration_usd": 0,
+      "storage_uploads_performed": false,
+      "verification_egress_cost_usd": null,
+      "egress_estimate_status": "NOT_VERIFIED_NOT_PERFORMED",
+      "source_qualified_descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2"
+    }
+  ],
+  "cumulative_estimated_added_monthly_usd": 0.0001982831942,
+  "cost_effective_basis": "No new narration/encoding/music; reuse exact acceptedmasters and existing approvedindependentstores. Partialqueuededupe doesnotmeetsmoothhandoff goal; switchingproviders/newvoices addsrights/compute/storagecostwithoutsolvingcurrenttransport.",
+  "calculation_assumption": "Decimal TB; posted PAYG rate, not an inspected account invoice. Existing retained versions remain in place. Egress rate/contract/allowance availability unverified.",
+  "github_ci_compute_usd": "NOT_REPORTED; mandatory existing exact-head workflow, no narration allocation"
+}

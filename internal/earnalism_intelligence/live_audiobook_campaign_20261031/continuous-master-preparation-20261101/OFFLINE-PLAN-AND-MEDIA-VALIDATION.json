@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "the-open-window",
+    "native_storage_plan": "PASS_REAL_LOCAL_FULL_BYTE_VALIDATION_NO_NETWORK",
+    "assets": 4,
+    "bytes_each_store": 7890361,
+    "release_descriptor_sha256": "8935084a1a82ddc49e7d4ab8e19129e60f3fd3fa366968f12752934c7e912ceb",
+    "master_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+    "master_bytes": 7864365,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "491.436333",
+        "size": "7864365"
+      }
+    },
+    "storage_uploaded": false
+  },
+  {
+    "slug": "the-selfish-giant",
+    "native_storage_plan": "PASS_REAL_LOCAL_FULL_BYTE_VALIDATION_NO_NETWORK",
+    "assets": 4,
+    "bytes_each_store": 6243545,
+    "release_descriptor_sha256": "db7ee5e0693103553d40d0261da61e4df946c8ee2754d2ec40c0c5657a8d137f",
+    "master_sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+    "master_bytes": 6217581,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "777.120000",
+        "size": "6217581"
+      }
+    },
+    "storage_uploaded": false
+  }
+]

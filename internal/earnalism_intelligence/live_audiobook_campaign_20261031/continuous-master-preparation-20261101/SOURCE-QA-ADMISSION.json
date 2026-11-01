@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "the-open-window",
+    "descriptor_sha256": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+    "source_qa_admission": "PASS_EXACT_NATIVE_MANAGER_AND_TRUSTED_IN_BINDING",
+    "scope": "PRE_STORAGE_SOURCE_QA_ONLY",
+    "all_release_gates_passed": false,
+    "storage_uploaded": false,
+    "production_finalize_allowed": false,
+    "current_runtime_acceptance": "NOT_PERFORMED_FOR_NEW_TOPOLOGY"
+  },
+  {
+    "slug": "the-selfish-giant",
+    "descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2",
+    "source_qa_admission": "PASS_EXACT_NATIVE_MANAGER_AND_TRUSTED_IN_BINDING",
+    "scope": "PRE_STORAGE_SOURCE_QA_ONLY",
+    "all_release_gates_passed": false,
+    "storage_uploaded": false,
+    "production_finalize_allowed": false,
+    "current_runtime_acceptance": "NOT_PERFORMED_FOR_NEW_TOPOLOGY"
+  }
+]

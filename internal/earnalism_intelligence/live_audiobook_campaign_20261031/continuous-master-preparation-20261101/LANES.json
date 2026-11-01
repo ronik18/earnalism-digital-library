@@ -1,0 +1,32 @@
+{
+  "base_main": "59c9613cb654649b6d18d8209323075fd1a2a17b",
+  "canonical_worktree": "/tmp/earnalism-main-approved-integration",
+  "canonical_branch": "codex/main-approved-integration",
+  "integration_owner": "root",
+  "branches_or_parallel_commit_worktrees_created": false,
+  "serialized_paid_runtime_checks": true,
+  "remaining_original_credit_ceiling_seconds": 69,
+  "lanes": [
+    {
+      "owner": "root",
+      "scope": "Only canonical writer, account checks, source adoptions, integration/release decisions",
+      "outcome": "No new publication; source candidates qualified, storage context blocked"
+    },
+    {
+      "owner": "existing_audio_acceptance",
+      "scope": "Selfish provenance, delayed composed runtime reproduction and derivative builder/archival-parent preparation",
+      "production_writes": false
+    },
+    {
+      "owner": "readiness_audit",
+      "scope": "Open Window dry provenance, entitlement/duration safety and independent code review",
+      "production_writes": false
+    },
+    {
+      "owner": "short_title_qualification",
+      "scope": "Independent source/rights proposal review and nonsecret storage capability discovery",
+      "production_writes": false
+    }
+  ],
+  "resource_rule": "No new narration allocation, synthesis, encoding or external audio review. Only root used bounded member playback; children prepared/reviewed offline."
+}

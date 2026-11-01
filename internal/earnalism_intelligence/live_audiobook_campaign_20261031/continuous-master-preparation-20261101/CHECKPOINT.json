@@ -1,0 +1,43 @@
+{
+  "schema": "earnalism.two-title-continuous-master-preparation.v1",
+  "at": "2026-11-01T04:05:03.474322+00:00",
+  "integration_base": "59c9613cb654649b6d18d8209323075fd1a2a17b",
+  "status": "BLOCKED_PRIVATE_STORAGE_CONTEXT_AND_DERIVATIVE_RELEASE_GATES",
+  "new_publications": 0,
+  "verified_live": 0,
+  "current_public_editions_preserved": true,
+  "no_source_book_or_cover_or_music_change": true,
+  "no_synthesis_encoding_allocation_or_purchase": true,
+  "voice": "Retained stock Ryan/Qwen3 CustomVoice in both exact accepted masters; parent title-specific native QA/rights/history revalidated. No new full-title human scores.",
+  "music": "Both exact masters proven dry, no score added; source-bound OpenWindowmusicfalse and Selfish20-unit PCM concat verified.",
+  "runtime_findings": [
+    "Selfish actualGroup01 nearzero1x and activeforwardseekGroup02 advancing, plus ownEnd200 endedtrue; backward case and naturalnext are not completed fresh proofs.",
+    "OpenWindow nativeparagraph001 and002 play/seek/ended, correctnextsegmentselection; continued next-segment playing not observed before bounded containment.",
+    "Actual composed currentRoute+Listener reproduces serial distinctstate/duplicateheartbeat renewal backlog. Taildedupe saves1RTT only and is NOT accepted as completeexperience repair.",
+    "Latest ownStopHTTP200 recovered in backendsame-time logs; browserendedbodyflag notcaptured. No replay of that Endwrite.",
+    "No20secondstreamlifetimeguarantee: admissioncheckslease once,64KiBchunksboundmemory; admittedbody closesEOF/disconnect/cancel. Financiallease/settlement20s remains independently verified configuration."
+  ],
+  "continuous_master_plan": "Reuse unchanged fullMP3s, onechapter/onesegment, retain all29/20measuredsourceunitcues and exacttext; no encoding/synthesis. Source/version/master/voice/rights unchanged.",
+  "duration_guard": "Default720000 unchanged. ExactSelfish777120/6217581-byte source/manuscript/master andsinglechapter/segment exception reviewed/native-tested; existingmemberbookleasealreadyaccessesall6segments. Not a generic15minraise, rightsgrant, or liveacceptance.",
+  "draft_validation": "Both exact source-only derivatives pass native schema and actual manager/source-QA/native India metadata binding. Storage locators remain explicitly unuploaded placeholders; no finalized package or LIVE proof.",
+  "storage_context": "All16PROD/DRidentity/upload/retention-adminenvnames absent; actualnativepreflightSTORAGE_CONFIGURATION_MISSING(prod). No currentprofileexpiry conclusion or newkeys created. Existingoperatorcontextneededprivately; title-specificprefix coverage notborrowed.",
+  "known_own_whole_credit_seconds": {
+    "the-selfish-giant": 22,
+    "the-open-window": 29,
+    "cumulative": 51,
+    "original_ceiling": 120,
+    "remaining_nominal": 69
+  },
+  "spend": {
+    "new_generation_or_review_provider_usd": 0,
+    "new_storage_writes_usd": 0,
+    "new_purchases_usd": 0,
+    "reading_pass_monetary_conversion_usd": null,
+    "fractional_carry": "NOT_REPORTED",
+    "attribution": "Own-session-hashed ledger rows only; unrelatedaccountactivity excluded."
+  },
+  "next_integration_action": "Finish exact-head offline-preparation integration, then obtain existing private PROD/DR profile context for native preflight. Supported immutable storage/finalization, required manual deployment and actual new-runtime/public acceptance remain blocked until storage is qualified. No allocation, synthesis or original credit-ceiling reset.",
+  "derivative_source_adoption": "REGISTERED_SOURCE_QA_ONLY_UNDER_DIRECT_OWNER_SCOPE",
+  "recovery": "Both exact MP3 masters copied byte-for-byte into owner-private durable local storage, SHA verified, same physical device; not independent primary/DR storage.",
+  "future_acceptance_bound": "51 whole credits already consumed; 69 nominal remain of original120. Do not reuse historical controllers with stale7/32/44 counters, reset journals, or start another pre-repair funded check."
+}

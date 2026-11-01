@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-01T03:32:12.511Z",
+  "sessionHash": "41fd44561e88eedcc05d8d3f7613f8362cdf7e1a588ed9ca39291857de60a73c",
+  "matchingRows": [
+    {
+      "type": "consume",
+      "seconds": -6,
+      "content_type": "audio",
+      "content_id": "the-open-window",
+      "created_at": "2026-11-01T03:28:18.600103+00:00"
+    },
+    {
+      "type": "consume",
+      "seconds": -4,
+      "content_type": "audio",
+      "content_id": "the-open-window",
+      "created_at": "2026-11-01T03:28:12.025300+00:00"
+    }
+  ],
+  "ownWholeSecondDebit": 10,
+  "cumulativeOwnWholeSecondDebit": 32,
+  "originalCreditCeilingSeconds": 120,
+  "terminalAck": "End200 endedtrue",
+  "unrelatedRowsExcluded": true
+}

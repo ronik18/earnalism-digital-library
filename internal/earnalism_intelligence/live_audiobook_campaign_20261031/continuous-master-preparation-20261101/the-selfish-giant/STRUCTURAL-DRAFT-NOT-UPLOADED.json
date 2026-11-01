@@ -1,0 +1,117 @@
+{
+  "duration_ms": 777120,
+  "highlight_sync_enabled": false,
+  "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "paragraph_count": 23,
+  "release_descriptor_sha256": "6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2",
+  "release_evidence_version": "retained_master_continuous_derivative.v1",
+  "schema_version": "audiobook_package_manifest.v2",
+  "segment_count": 1,
+  "slug": "the-selfish-giant",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "sync_tier": "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+  "word_count": 1652,
+  "tracks": [
+    {
+      "chapter_id": "chapter-001",
+      "end_paragraph": 22,
+      "end_word": 1651,
+      "id": "chapter-001",
+      "order": 0,
+      "start_paragraph": 0,
+      "start_word": 0,
+      "title": "The Selfish Giant",
+      "chunks": [
+        {
+          "segment_id": "chapter-001-full",
+          "order": 0,
+          "start_word": 0,
+          "end_word": 1651,
+          "start_paragraph": 0,
+          "end_paragraph": 22,
+          "cumulative_start_ms": 0,
+          "duration_ms": 777120,
+          "assets": {
+            "audio": {
+              "sha256": "8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b",
+              "size_bytes": 6217581,
+              "mime_type": "audio/mpeg",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-audio-sha256-8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b.mp3",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-audio-sha256-8cbaecc48b84372dcab020b4514d2e50c4a6f386018de573baa98bb7e7fb6d0b.mp3",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "timestamps": {
+              "sha256": "997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280",
+              "size_bytes": 15944,
+              "mime_type": "application/json",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-timestamps-sha256-997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280.json",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-timestamps-sha256-997780ebfd8f59ed0288ab9f82fa15c616f37cfc3ef1efd9e43f1b5027245280.json",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "metadata": {
+              "sha256": "ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838",
+              "size_bytes": 503,
+              "mime_type": "application/json",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-metadata-sha256-ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838.json",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-metadata-sha256-ebded616e76b1898bbb27d01b1ca8afde1657f8e96be64f3cec8b65a9b941838.json",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            },
+            "vtt": {
+              "sha256": "6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546",
+              "size_bytes": 9517,
+              "mime_type": "text/vtt",
+              "storage": {
+                "store": "draft-primary",
+                "bucket": "draft-not-uploaded-primary",
+                "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-vtt-sha256-6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546.vtt",
+                "version_id": "DRAFT-NOT-UPLOADED"
+              },
+              "replicas": [
+                {
+                  "store": "draft-dr",
+                  "bucket": "draft-not-uploaded-dr",
+                  "key": "v1/prod/sprint1/the-selfish-giant/releases/6f118eef0ad5cebabc29166a9ceea8a09bd1c73efc9914144a2a577db56750c2/delivery/chapter-001-full-vtt-sha256-6c039a0f5029bd56d52c554f107fc36aef9473ec3d0d6c6d7a78737c0c7f0546.vtt",
+                  "version_id": "DRAFT-NOT-UPLOADED"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "package_version": "sha256-957cf8206099ac085eeb8a77c03a05f2fdc5d1e2fc21dd18e93ded3311762423"
+}

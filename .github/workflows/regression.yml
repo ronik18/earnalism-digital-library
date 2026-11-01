@@ -126,6 +126,11 @@ jobs:
       - name: Validate retained successor editorial admission
         run: python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_open_window_successor_acceptance.py -v
 
+      - name: Validate exact retained-master derivative admission
+        run: |
+          python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_retained_master_derivative.py -v
+          python3 -m unittest discover -s backend/tests -p test_exact_retained_master_duration.py -v
+
       - name: Validate catalogue worker permission boundaries
         run: python3 -m unittest scripts.test_reader_benchmark_runner scripts.test_catalogue_compliance_workflow_cost scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
