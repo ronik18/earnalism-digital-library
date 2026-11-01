@@ -103,3 +103,16 @@ test("changing one facet preserves a different legacy facet and exposes legacy s
   await click(container.querySelector('[aria-label="Remove In preparation filter"]'));
   expect(container.querySelector('[aria-label="Remove In preparation filter"]')).toBeNull();
 });
+
+test("held preparation cards offer enquiry only, never Reader, Listener or paid actions", async () => {
+  api.get.mockResolvedValue({data:[reader()]});
+  await mount(["/library?q=Calculus%20Made%20Easy"]);
+  const cards = container.querySelectorAll('.reference-book-tile');
+  expect(cards).toHaveLength(1);
+  expect(cards[0].textContent).toContain('In preparation');
+  const destinations = [...cards[0].querySelectorAll('a')].map(a=>a.getAttribute('href'));
+  expect(destinations.length).toBeGreaterThan(0);
+  expect(destinations.every(href=>href.startsWith('/contact?'))).toBe(true);
+  expect(cards[0].querySelector('audio,video,button')).toBeNull();
+  expect(cards[0].textContent).not.toMatch(/Pass required|Start Reading|Listen/);
+});

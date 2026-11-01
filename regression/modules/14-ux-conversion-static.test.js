@@ -80,6 +80,7 @@ describe("UX conversion static signals", () => {
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
   const bookDetailPresentation = read("frontend/src/lib/bookDetailPresentation.js");
   const library = read("frontend/src/pages/Library.jsx");
+  const productCopy = JSON.parse(read("frontend/src/content/productCopy.json"));
   const about = read("frontend/src/pages/About.jsx");
   const journal = read("frontend/src/pages/Journal.jsx");
   const publicIndex = read("frontend/public/index.html");
@@ -209,6 +210,7 @@ describe("UX conversion static signals", () => {
     footer,
     controlledLaunch,
     publicAccessCopy,
+    JSON.stringify(productCopy),
     staticSnapshotGenerator,
   ].join("\n");
   const livePaymentEvidenceDocs = [
@@ -230,8 +232,8 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("<ReferenceHomeSurface");
     expect(home).not.toContain("Listen Now");
     expect(home).not.toContain("Play audiobook");
-    expect(editorialHomeSurface).toContain("A calmer place for<br />timeless reading.");
-    expect(editorialHomeSurface).toContain('<h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>');
+    expect(productCopy.homeTitle).toBe("Carry a world of stories into your day.");
+    expect(editorialHomeSurface).toContain('<h1 id="reference-home-title">{productCopy.homeTitle}</h1>');
     expect(editorialHomeSurface).toContain("Explore the Library");
     expect(editorialHomeSurface).toContain('aria-label="Explore the library by collection"');
     expect(editorialHomeSurface).toContain("Bengali Classics");
@@ -242,7 +244,7 @@ describe("UX conversion static signals", () => {
     expect(editorialHomeSurface).toContain("<ReaderPerspectives />");
     expect(editorialHomeSurface).not.toContain("listeningItems");
     expect(editorialHomeSurface).not.toContain("Listen Now");
-    expect(library).toContain("audiobookReleaseState(book).releaseApproved");
+    expect(editorialHomeSurface).toContain('availabilityOfBook(book) === "approved-audiobook"');
     expect(referencePublicPages).toContain("Enter the Library");
     expect(referencePublicPages).toContain("Discover listening");
     expect(referencePublicPages).toContain("Timeless Bengali and English classics.");
@@ -258,8 +260,10 @@ describe("UX conversion static signals", () => {
     expect(referencePublicPages).toContain("Find the language, voice, and story that feels like home.");
     expect(referencePublicPages).toContain("Stories in voice, released with care.");
     expect(referencePublicPages).toContain("{PUBLIC_ACCESS_COPY}");
-    expect(publicAccessCopy).toContain('PUBLIC_PREVIEW_COPY = "Read the first 3 pages free."');
-    expect(publicAccessCopy).toContain('LISTENING_ACCESS_COPY = "Listening is available only for released audiobooks and requires an active Reading Pass."');
+    expect(publicAccessCopy).toContain("PUBLIC_PREVIEW_COPY = productCopy.preview");
+    expect(productCopy.preview).toBe("Read the first 3 pages free.");
+    expect(publicAccessCopy).toContain("LISTENING_ACCESS_COPY = productCopy.listeningAccess");
+    expect(productCopy.listeningAccess).toBe("Listening is available only for released audiobooks and requires an active Reading Pass.");
     expect(referencePublicPages).toContain("Stay with a story for as long as it holds you.");
     expect(referencePublicPages).toContain("No subscription or autorenewal");
     expect(referencePublicPages).toContain("View Reading Passes");
@@ -432,15 +436,15 @@ describe("UX conversion static signals", () => {
   });
 
   test("library and book pages expose controlled reader-only paths without broad catalog or payment overclaim", () => {
-    expect(library).toContain("One mixed shelf for Bengali and English classics, with access and listening status kept clear.");
-    expect(library).toContain("CURATED EDITIONS");
-    expect(library).toContain('data-testid="library-book-grid"');
-    expect(library).toContain('testId="language-filters"');
-    expect(library).toContain('testId="listening-filters"');
-    expect(library).toContain("Listening appears only where the release evidence allows it.");
-    expect(library).toContain("Some stories are still being prepared.");
-    expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
-    expect(library).toContain("Request an update");
+    expect(library).toContain("<ReferenceLibrarySurface");
+    expect(library).toContain("selectLibraryBooks(allBooks");
+    expect(library).not.toContain("library-book-grid");
+    expect(editorialHomeSurface).toContain('aria-label="Library filters"');
+    expect(editorialHomeSurface).toContain('aria-label="Library editions"');
+    expect(editorialHomeSurface).toContain('availabilityOfBook(book) === "approved-audiobook"');
+    expect(editorialHomeSurface).toContain("These editions are not available yet. Ask about a title that interests you.");
+    expect(editorialHomeSurface).toContain('const href = live ? `/book/${book.slug}` : notifyUrl(book.slug)');
+    expect(editorialHomeSurface).toContain('<Link to={href}>Ask about title</Link>');
     expect(bookDetail).toContain('data-testid="start-reading"');
     expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start with free preview" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library"');
     expect(bookDetailPresentation).toContain('book?._readerManifest?.access?.reading_pass?.free_entitlement === true');
@@ -457,7 +461,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetailPresentation).toContain("audioState.canShowControls");
   });
 
-  test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
+  test("historical revenue evidence is retained while current access remains qualified", () => {
     expect(paymentRevenueConfidenceReport).toContain("Status: `HOLD_FOR_CONTROLLED_TEST_MODE_CHECKOUT`");
     expect(paymentRevenueConfidenceReport).toContain("Current confidence score: `9.1/10`");
     expect(paymentRevenueConfidenceReport).toContain("No live Razorpay payment was run");
@@ -1261,19 +1265,13 @@ describe("UX conversion static signals", () => {
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
     expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
-    expect(library).toContain('className="library-pipeline-note"');
-    expect(library).toContain("Some stories are still being prepared.");
-    expect(library).toContain("Titles in preparation remain visible as invitations, not products.");
-    expect(library).toContain("Request an update");
-
-    const libraryPipelineBlock = extractBetween(
-      library,
-      'className="library-pipeline-note"',
-      "</aside>"
-    );
-
+    expect(editorialHomeSurface).toContain('["In preparation", "These editions are not available yet. Ask about a title that interests you.", comingSoon]');
+    const libraryPipelineBlock = extractBetween(editorialHomeSurface, ': live ? <Link to={href}>Details</Link> : ', '</div>');
+    expect(editorialHomeSurface).toContain('canShowPreview(book) ?');
+    expect(editorialHomeSurface).toContain('const href = live ? `/book/${book.slug}` : notifyUrl(book.slug)');
+    expect(libraryPipelineBlock).toContain('availabilityOfBook(book) === "approved-audiobook"');
     expect(shelfTwoSlideshow).not.toContain("Notify Me");
-    expect(libraryPipelineBlock).toContain("Request an update");
+    expect(editorialHomeSurface).toContain('<Link to={href}>Ask about title</Link>');
     expect(libraryPipelineBlock).not.toContain("Notify Me");
 
     for (const block of [libraryPipelineBlock]) {
@@ -1501,14 +1499,16 @@ describe("UX conversion static signals", () => {
     expect(signup).toContain('data-testid="signup-wallet-note"');
     expect(signup).toContain("AUTH_PRODUCT_ACCESS_COPY");
     expect(signup).not.toContain("Pass purchases are not available yet.");
-    expect(publicAccessCopy).toContain("The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved.");
+    expect(publicAccessCopy).toContain('export const AUTH_PRODUCT_ACCESS_COPY = `${PUBLIC_READER_ACCESS_COPY} ${LISTENING_ACCESS_COPY}`;');
+    expect(productCopy.readerAccess).toBe("The first 3 canonical pages are free where a preview is available. A Reading Pass is required beyond the preview on pass-required editions.");
+    expect(productCopy.listeningAccess).toBe("Listening is available only for released audiobooks and requires an active Reading Pass.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet.");
+    expect(account).toContain("The first 3 pages are free where a preview is available. Continuing beyond the preview on pass-required editions requires a valid Reading Pass; pass purchases are not available yet.");
     expect(account).toContain("Continue reading");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
     expect(reader).toContain("Other chapters require sign-in and reading time from your wallet.");
-    expect(useSeo).toContain("A calm Bengali and English digital library");
+    expect(useSeo).toContain("Bengali and English classics for a curious life");
   });
 
   test("analytics retains future payment event names without activating disabled checkout", () => {
@@ -1581,8 +1581,9 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('aria-describedby="newsletter-description newsletter-trust newsletter-status"');
     expect(home).toContain("<span>Your name</span>");
     expect(home).toContain("<span>Email address</span>");
-    expect(library).toContain('htmlFor="library-search-input"');
-    expect(library).toContain('placeholder="Search by title or author"');
+    expect(editorialHomeSurface).toContain('aria-label="Search the Library"');
+    expect(editorialHomeSurface).toContain('placeholder="Title or author"');
+    expect(editorialHomeSurface).toContain('value={query} onChange={(event) => onSearch(event.target.value)}');
     expect(login).toContain('aria-describedby="login-continuation-help"');
     expect(signup).toContain('aria-describedby="signup-wallet-help"');
     expect(contact).toContain("<span className=\"editorial-kicker mb-2 block\">Your name</span>");
@@ -1618,7 +1619,8 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("Loading");
     expect(bookDetail).toContain('data-testid="book-load-error"');
     expect(bookDetail).toContain('data-testid="book-not-found"');
-    expect(library).toContain('data-testid="library-empty"');
+    for (const id of ["library-catalogue-empty", "library-no-results", "library-catalogue-error"]) expect(editorialHomeSurface).toContain(`data-testid="${id}"`);
+    expect(library).toContain('loading={catalogueState === "loading"}');
   });
 
   test("daily growth audit is a recurring command with snapshot reports", () => {
@@ -1839,13 +1841,15 @@ describe("UX conversion static signals", () => {
     const homeHtml = readOptional("frontend/build/index.html");
     const readerHtml = readOptional("frontend/build/reader/a-ghost-story/index.html");
     if (!homeHtml || !readerHtml) {
-      expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
+      expect(staticSnapshotGenerator).toContain("Bengali and English classics for a curious life.");
+      expect(staticSnapshotGenerator).toContain("productCopy.readerAccess");
+      expect(staticSnapshotGenerator).toContain("productCopy.listeningAccess");
       return;
     }
 
-    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.");
+    expect(homeHtml).toContain(productCopy.homeTitle);
+    expect(homeHtml).toContain(productCopy.readerAccess);
+    expect(homeHtml).toContain(productCopy.listeningAccess);
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
@@ -1954,7 +1958,7 @@ describe("UX conversion static signals", () => {
     expect(footer).toContain("<FooterSocialLinks links={social} />");
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
-    expect(footer).toContain("Good books. A kinder tomorrow.");
+    expect(footer).toContain("Good books. Wider horizons.");
     expect(footer).toContain('import FooterWordmark from "./FooterWordmark"');
     expect(footer).toContain("A Reo Enterprise Venture");
     expect(footer).not.toContain('bg-[#fff9ee]');

@@ -4,6 +4,8 @@ const { execFileSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "../..");
 const SITE_URL = "https://theearnalism.com";
+const PRODUCT_COPY = JSON.parse(fs.readFileSync(path.join(ROOT,"frontend/src/content/productCopy.json"),"utf8"));
+const CONTROLLED_LAUNCH = JSON.parse(fs.readFileSync(path.join(ROOT,"data/controlled_launch.json"),"utf8"));
 const STATIC_SEO_PUBLIC_CONTRACT = JSON.parse(fs.readFileSync(
   path.join(ROOT, "frontend/static-seo/controlled-publication-public.json"),
   "utf8",
@@ -177,15 +179,15 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
   test("homepage, library, and pricing snapshots preserve the release-truth contract", () => {
     const releaseCopy = PUBLIC_RELEASE_HELD
       ? "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed."
-      : "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
-    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
+      : `${PRODUCT_COPY.readerAccess} ${PRODUCT_COPY.listeningAccess}`;
+    expect(homeHtml).toContain(PRODUCT_COPY.homeTitle);
     for (const html of [homeHtml, libraryHtml]) {
       expect(html).toContain(releaseCopy);
       expect(html).not.toMatch(/QA_PASSED|APPROVED/);
       expect(html).not.toMatch(/Chapter 1 is free|Read Chapter 1|Start with Chapter 1|The First Chapter|7-day/i);
     }
     if (!PUBLIC_RELEASE_HELD) {
-      expect(pricingHtml).toContain("Reading Passes and paid checkout are unavailable in this launch.");
+      expect(pricingHtml).toContain(CONTROLLED_LAUNCH.public_paid_commerce_enabled === true ? "One-time prepaid Reading Passes" : "Reading Pass purchases are not available in this launch.");
       expect(pricingHtml).toContain('name="robots" content="noindex,follow"');
     }
   });
