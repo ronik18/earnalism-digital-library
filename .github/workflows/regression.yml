@@ -120,6 +120,26 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Qualify immutable Reader612 recovery source without deployment
+        if: hashFiles('internal/release/reader612_native_preparation.json') != ''
+        timeout-minutes: 5
+        shell: bash
+        env:
+          REDIS_CACHE_ENABLED: 'false'
+          REDIS_PUBLIC_METADATA_ENABLED: 'false'
+          MULTI_REPLICA_ENABLED: 'false'
+        run: |
+          set -euo pipefail
+          binding=internal/release/reader612_native_preparation.json
+          for field in source_sha application_base prior_reader_source; do
+            source_pin="$(jq -er ".$field" "$binding")"
+            [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            git fetch --no-tags --depth=1 origin "$source_pin"
+          done
+          git worktree add --detach "$RUNNER_TEMP/reader612-closed-source" "$(jq -er '.source_sha' "$binding")"
+          python3 -m scripts.reader612_recovery_source --source-root "$RUNNER_TEMP/reader612-closed-source" --binding "$binding"
+          python3 -m unittest scripts.test_reader612_recovery_source scripts.test_reader612_native_restore scripts.test_reader612_native_observer -v
+
       - name: Install launcher test prerequisite
         run: sudo apt-get update && sudo apt-get install --yes ripgrep
 
