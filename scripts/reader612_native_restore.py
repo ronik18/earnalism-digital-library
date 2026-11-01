@@ -66,6 +66,7 @@ def admit(binding,approval_reference,*,action=ACTION,protected_gate=None,source_
  gate=protected_gate(approval_reference,action,bd)
  need(gate.get('issuer')=='AUTHENTIC_NATIVE_OWNER_PROTECTED_GATE' and gate.get('receipt_sha256')==approval_reference and gate.get('binding_sha256')==bd and gate.get('action')==action,'Unbound authentic protected operation')
  need(gate.get('native_turn_id') and gate.get('scope')=='BACKEND612_QUALIFICATION_PAUSE_AND_EXACT_BASELINE_RESTORE','Frontend-only/historical authority insufficient')
+ need(isinstance(gate.get('rollback_operator'),str) and bool(gate['rollback_operator'].strip()),'Named rollback operator required')
  issued=fresh(gate['issued_at'],now);expires=datetime.fromisoformat(gate['expires_at'])
  need(expires.tzinfo is not None and issued<=now<expires<=issued+timedelta(minutes=15),'Expired/overlong protected operation')
  need(issued>=datetime(2026,11,1,tzinfo=timezone.utc),'Historical authority is not current permission')

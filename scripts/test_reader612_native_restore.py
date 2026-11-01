@@ -11,7 +11,7 @@ class Restore(unittest.TestCase):
   self.b['controller_sha256']=hashlib.sha256(Path(m.__file__).read_bytes()).hexdigest();self.b['support_sha256']=m.support_identity();self.b['journal_identity_sha256']=m.journal_identity(self.j);self.schema={'name':'deploymentRollback','argument':{'name':'id','type':'String!'},'return':'Boolean!'};self.calls=Mock(return_value=subprocess.CompletedProcess([],0,'{"data":{"deploymentRollback":true}}',''))
  def tearDown(self):self.jp.stop();self.tmp.cleanup()
  def observe(self,b):return {'scope':'ACTUAL_IMMUTABLE_SOURCE_AND_NATIVE_BASELINE','binding_sha256':m.digest(b),'observed_at':self.now.isoformat(),'qualified_native_receipt_sha256':'c'*64,'current_runtime_sha256':b['runtime_sha256'],'current_deployment_id':b['current_deployment_id'],'baseline_can_rollback':True,**{k:True for k in ['source_tree_payload_verified','baseline_image_snapshot_config_verified','auto_deploy_off','all_effective_redis_flags_off','current_healthy','no_staged_changes']}}
- def gate(self,ref,action,digest):return {'issuer':'AUTHENTIC_NATIVE_OWNER_PROTECTED_GATE','receipt_sha256':ref,'binding_sha256':digest,'action':action,'native_turn_id':'SYNTHETIC_TEST_ONLY','scope':'BACKEND612_QUALIFICATION_PAUSE_AND_EXACT_BASELINE_RESTORE','issued_at':self.now.isoformat(),'expires_at':(self.now+timedelta(minutes=5)).isoformat()}
+ def gate(self,ref,action,digest):return {'issuer':'AUTHENTIC_NATIVE_OWNER_PROTECTED_GATE','receipt_sha256':ref,'binding_sha256':digest,'action':action,'native_turn_id':'SYNTHETIC_TEST_ONLY','rollback_operator':'SYNTHETIC_TEST_OPERATOR','scope':'BACKEND612_QUALIFICATION_PAUSE_AND_EXACT_BASELINE_RESTORE','issued_at':self.now.isoformat(),'expires_at':(self.now+timedelta(minutes=5)).isoformat()}
  def perform(self,**kw):
   args={'execution_enabled':True,'protected_gate':self.gate,'source_observer':self.observe,'transport':self.calls,'clock':lambda:self.now};args.update(kw);return m.perform_restore(self.b,'a'*64,self.j,self.schema,**args)
  def test_default_denies_all_calls(self):
@@ -38,6 +38,9 @@ class Restore(unittest.TestCase):
    def gate(*a):
     g=self.gate(*a);g['issued_at']=(self.now-delta).isoformat();return g
    with self.assertRaises(ValueError):self.perform(protected_gate=gate)
+  self.calls.assert_not_called()
+ def test_named_rollback_operator_required(self):
+  with self.assertRaisesRegex(ValueError,'Named rollback operator'):self.perform(protected_gate=lambda *a:{**self.gate(*a),'rollback_operator':''})
   self.calls.assert_not_called()
  def test_source_native_observation_mismatch_denied(self):
   for change in [{'binding_sha256':'b'*64},{'auto_deploy_off':False},{'all_effective_redis_flags_off':False},{'qualified_native_receipt_sha256':''},{'current_runtime_sha256':'0'*64}]:

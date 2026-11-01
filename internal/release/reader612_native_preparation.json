@@ -18,7 +18,7 @@
   "retained_frontend_source": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
   "evidence_limit": "Retained baseline identities only; refresh actual provider/config/aliases/journal before later authorized execution; no purchase pause authority",
   "controller_files": {
-    "reader612_native_restore.py": "f5ba07008f34052bac1951c27144aadc6c08922999b12d500c66d820629f6fc4",
+    "reader612_native_restore.py": "cb89de324b9318b61f03874c73a1d3d57fa52e2675076036bc3a4c1f32c43a12",
     "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129",
     "india_release_provider_adapter.py": "464d1672f5ec840cdae3edf536d5601d2582ae03f522fecabf5741d4f46ae28c",
     "backend_upload_payload.py": "c8140623a4955dbfe08a76a6c44866a328d252e20a491fd3be678d2d55ce2296",
