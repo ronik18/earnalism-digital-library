@@ -138,7 +138,7 @@ jobs:
           done
           git worktree add --detach "$RUNNER_TEMP/reader612-closed-source" "$(jq -er '.source_sha' "$binding")"
           python3 -m scripts.reader612_recovery_source --source-root "$RUNNER_TEMP/reader612-closed-source" --binding "$binding"
-          python3 -m unittest scripts.test_reader612_recovery_source scripts.test_reader612_native_restore scripts.test_reader612_native_observer -v
+          python3 -m unittest scripts.test_reader612_recovery_source scripts.test_reader612_native_restore scripts.test_reader612_native_observer scripts.test_reader612_protected_approval -v
 
       - name: Install launcher test prerequisite
         run: sudo apt-get update && sudo apt-get install --yes ripgrep
