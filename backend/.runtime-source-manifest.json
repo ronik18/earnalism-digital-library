@@ -69,8 +69,8 @@
     },
     {
       "path": "catalog_truth.py",
-      "bytes": 62539,
-      "sha256": "ce21b892dc6482166eb97c8c94a8b87234481c8141994e88c0e11c309f75ece2"
+      "bytes": 62575,
+      "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
     },
     {
       "path": "commerce_territory.py",
@@ -9588,6 +9588,11 @@
       "sha256": "11acb7c1c597df8b5b010ee9a7b9ce527c899c660b06aa125e3cf0cc46743caa"
     },
     {
+      "path": "native_audiobook_replacement.py",
+      "bytes": 11740,
+      "sha256": "3da94a0e0147b7c9b370176d1dc8e0c765dfd608bfa1e51f83fbee5d1503f695"
+    },
+    {
       "path": "open_window_audio_cap_installer.py",
       "bytes": 14270,
       "sha256": "8b6ea94c87b26d634eb20c1e8d2964cf6303cc7ae1ae192cb93a81325d899ef1"
@@ -9654,8 +9659,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 92986,
-      "sha256": "ebdb19cd0aa9c50db89643e59437c49fa6b856b777d4335656c53eec26083520"
+      "bytes": 94045,
+      "sha256": "c967c21edb56d3bf68cc0228dd29a7b0b4a1883ae5d186199e75e08cb6a487ed"
     },
     {
       "path": "release_proxy_auth.py",
@@ -9689,8 +9694,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 623579,
-      "sha256": "b143f0d25e76b6fbef18ca42a441010350f6fb22b1e7af063ac1e3767fe7f61f"
+      "bytes": 629244,
+      "sha256": "67a13ccc9ac93e3f56d4cb098319e6daed625048c79ccc7b99a68ebe4340565e"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9758,5 +9763,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "99e5ae9288f59cf37fac7ace09b3dea269a161a6f0ac0661d7e1ba3680872979"
+  "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3"
 }

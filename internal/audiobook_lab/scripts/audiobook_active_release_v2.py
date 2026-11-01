@@ -1647,6 +1647,8 @@ def stage_candidate(
         raise ReleasePointerError("A canonical non-empty sticky rollout salt is required")
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
+    if context["public_book"].get("audiobook_native_replacement"):
+        raise ReleasePointerError("Native replacement requires its dedicated private-stage/promotion/guarded-restore workflow")
     operation_time = generated_at or utc_now()
     validated, receipt_evidence = _validated_release_bundle(
         context,
@@ -2334,6 +2336,8 @@ def set_rollout(
         raise ReleasePointerError("rollout percentage must be one of 0, 5, 25, 100")
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
+    if context["public_book"].get("audiobook_native_replacement"):
+        raise ReleasePointerError("Native replacement requires its dedicated private-stage/promotion/guarded-restore workflow")
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")
@@ -2486,6 +2490,8 @@ def rollback_release(
         raise ReleasePointerError("rollback target must be legacy or previous")
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
+    if context["public_book"].get("audiobook_native_replacement"):
+        raise ReleasePointerError("Native replacement requires its dedicated private-stage/promotion/guarded-restore workflow")
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")
@@ -2598,6 +2604,8 @@ def deactivate_release(
 
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
+    if context["public_book"].get("audiobook_native_replacement"):
+        raise ReleasePointerError("Native replacement requires its dedicated private-stage/promotion/guarded-restore workflow")
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")
@@ -2680,6 +2688,8 @@ def reactivate_release(
 
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
+    if context["public_book"].get("audiobook_native_replacement"):
+        raise ReleasePointerError("Native replacement requires its dedicated private-stage/promotion/guarded-restore workflow")
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")

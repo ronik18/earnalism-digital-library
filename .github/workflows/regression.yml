@@ -151,6 +151,8 @@ jobs:
           python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_retained_master_derivative.py -v
           python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_native_scored_package.py -v
           python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_selfish_cedar_source_adoption.py -v
+          python3 -m pytest -q internal/audiobook_lab/scripts/test_native_replacement_release.py internal/audiobook_lab/scripts/test_native_continuous_acceptance.py backend/tests/test_native_audiobook_replacement_http.py
+          node frontend/scripts/native-replacement-presentation.test.mjs
           python3 -m unittest discover -s backend/tests -p test_exact_retained_master_duration.py -v
 
       - name: Validate catalogue worker permission boundaries

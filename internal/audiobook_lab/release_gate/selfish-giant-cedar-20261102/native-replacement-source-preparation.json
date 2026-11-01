@@ -1,0 +1,71 @@
+{
+  "schema": "earnalism.native_replacement_source_preparation.v1",
+  "at": "2026-11-01T21:11:25.376350+00:00",
+  "lane": "Integration Lane",
+  "source_base": "963221cf5dade17fceae4d794ebc22ae2dd240cb",
+  "title": "the-selfish-giant",
+  "descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+  "audio_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+  "initial_reviewed_patch_sha256": "d9c5e0f5c6466c206d330936097ae8801f1d3d761f5328223ad59aee7f751f1a",
+  "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
+  "behavior": [
+    "Stage exact private candidate while preserving current ordinary public predecessor",
+    "Require independently retained member grant and normal authenticated IN Reading Pass lease; no cookie/query authority",
+    "Bind Cedar and licensed music credits to exact promotion",
+    "Guard complete prior artifact and Reader bootstrap restoration against same-title concurrency",
+    "Validate full served-body identity plus bounded real playback and numeric financial conservation; full production listen and uninterrupted endurance explicitly UNPERFORMED"
+  ],
+  "owner_complete_scored_confidence": 0.96,
+  "local_validation": {
+    "python_source_lifecycle_rights": {
+      "passed": 178,
+      "subtests": 32,
+      "seconds": 7.29
+    },
+    "legacy_transport_accounting": {
+      "passed": 120,
+      "existing_opt_in_mongo_skipped": 5
+    },
+    "javascript_actual_adapter_cases": 7,
+    "frontend_jest": {
+      "suites": 5,
+      "passed": 54
+    },
+    "production_frontend_build": "PASS",
+    "static_snapshots": 172,
+    "static_snapshot_assertions": 3701
+  },
+  "real_mongo_provider_runtime": "UNPERFORMED_LOCALLY",
+  "deployment": "UNPERFORMED",
+  "keys_or_storage_writes": 0,
+  "grant_or_customer_debits": 0,
+  "allocation_or_synthesis": 0,
+  "remaining_gates": [
+    "Exact-head required CI and independent published source review",
+    "Owner-approved replacement profiles and additive carried storage/QA limits; preserve prior counters and journals",
+    "Actual primary and independent DR upload, retention, full readbacks and finalized package",
+    "Actual original120 member lineage settlement, carry and current grant reconciliation",
+    "Merged exact backend/frontend deployment and authenticated full served-body decode",
+    "Bounded real playback/music/navigation/access/lease/accounting proofs",
+    "Proof-bound public promotion and customer release verification"
+  ],
+  "source_guard": "Retain exact protected purchase/financial/lease handler AST and original owner receipt; bind actual application commit separately",
+  "next_exact_prompt": "Integrate the exact reviewed lifecycle source successor on canonical, preserve protected financial handlers, regenerate staged runtime inventory, and run exact-head CI/review. Do not infer production readiness.",
+  "storage_and_listening_authority_scopes": {
+    "native_storage_adapter": "Carried cumulative budget applies to operator preflight/upload/full-download verification/replication; unchanged pending four-key/41MiB up/80MiB down/44MiB metadata proposal. No reset or new allowance inferred.",
+    "normal_customer_playback": "Separate original120 cumulative ReadingPass credit authority; actual member settlement/carry/current grant and bounded transfer/cost record required. Not represented as adapter-budget I/O.",
+    "withdrawn_unnecessary_proposal": "No new QA-only server byte guard/global216MiB cap; actual original receipts/schema do not extend storage adapter cap to runtime responses."
+  },
+  "auth_successor": {
+    "patch_sha256": "1dab0faefdd7bb6148885e30a311bdbde45a5f270a1ffe8a1f4af77313d05c7e",
+    "manifest_sha256": "349c5f5df6009930c90605c1eceae1fe9e749c373b2e4c7b069a8bd320d57558",
+    "server_sha256": "67a13ccc9ac93e3f56d4cb098319e6daed625048c79ccc7b99a68ebe4340565e",
+    "guard_code_changed": false,
+    "protected_handlers_AST_preserved": 9,
+    "protected_renewal_bytes_preserved": true,
+    "real_auth_new_cases": 14,
+    "preparer_test_report_sha256": "abc1b204e8df32853f727a728e77446cdd354c2df895002c711a69a27db930e6",
+    "independent_review": "PENDING_FINAL_EXACT_HEAD"
+  },
+  "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3"
+}

@@ -447,5 +447,11 @@
     "record": "internal/earnalism_intelligence/live_audiobook_campaign_20261031/the-selfish-giant.json",
     "remaining_gate": "Approved bounded PROD/DR context and additive carried ledger, actual storage/finalization/current-runtime/customer acceptance.",
     "stage": "SOURCE_QA_ADOPTED_ONLY_NOT_LIVE"
+  },
+  "selfish_cedar_replacement_source_preparation": {
+    "evidence": "internal/audiobook_lab/release_gate/selfish-giant-cedar-20261102/native-replacement-source-preparation.json",
+    "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
+    "new_publications": 0,
+    "new_allocation_synthesis": 0
   }
 }
