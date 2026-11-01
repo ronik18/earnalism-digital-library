@@ -1,5 +1,5 @@
 name: Backend612 protected approval record ONLY
-run-name: 'APPROVAL ONLY Backend612 ${{ inputs.action }} binding=${{ inputs.binding_sha256 }} operator=${{ inputs.rollback_operator }} — NO EXECUTION'
+run-name: 'APPROVAL ONLY Backend612 ${{ inputs.action }} binding=${{ inputs.binding_sha256 }} controller=${{ inputs.controller_sha }} operator=${{ inputs.rollback_operator }} — NO EXECUTION'
 on:
   workflow_dispatch:
     inputs:

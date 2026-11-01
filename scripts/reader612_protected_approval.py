@@ -15,6 +15,7 @@ import subprocess
 from scripts.india_release_provider_adapter import digest
 
 REPO='ronik18/earnalism-digital-library'
+REPOSITORY_ID=1232345982
 ENVIRONMENT='reader-frontend-production'
 ENVIRONMENT_ID=23963594893
 OWNER_ID=19212527
@@ -52,7 +53,11 @@ class GitHubProtectedApprovalResolver:
         if self.git('rev-parse','HEAD')!=self.controller_sha or self.git('status','--porcelain','--untracked-files=all'):
             raise ValueError('Exact clean reviewed controller checkout required')
         run=self._get('actions/runs/'+str(self.run_id))
+        title='APPROVAL ONLY Backend612 '+action+' binding='+binding_sha256+' controller='+self.controller_sha+' operator='+self.operator+' — NO EXECUTION'
         if (run.get('id')!=self.run_id or run.get('repository',{}).get('full_name')!=REPO
+                or run.get('repository',{}).get('id')!=REPOSITORY_ID
+                or run.get('head_repository',{}).get('id')!=REPOSITORY_ID
+                or run.get('display_title')!=title
                 or run.get('head_repository',{}).get('full_name')!=REPO
                 or run.get('head_branch')!='main' or run.get('head_sha')!=self.controller_sha
                 or run.get('event')!='workflow_dispatch' or run.get('run_attempt')!=1

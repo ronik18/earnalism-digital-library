@@ -14,7 +14,8 @@ class Tests(unittest.TestCase):
         self.now=datetime(2026,11,1,12,tzinfo=timezone.utc);self.sha='a'*40;self.binding='b'*64
         self.action='release_guarded_bootstrap';self.operator='FIXTURE_OPERATOR';self.calls=[]
         comment='APPROVE_BACKEND612 '+self.action+' '+self.binding+' '+self.sha+' '+self.operator
-        self.rows=[{'id':123,'repository':{'full_name':m.REPO},'head_repository':{'full_name':m.REPO},
+        self.rows=[{'id':123,'repository':{'full_name':m.REPO,'id':m.REPOSITORY_ID},'head_repository':{'full_name':m.REPO,'id':m.REPOSITORY_ID},
+            'display_title':'APPROVAL ONLY Backend612 '+self.action+' binding='+self.binding+' controller='+self.sha+' operator='+self.operator+' — NO EXECUTION',
             'head_branch':'main','head_sha':self.sha,'event':'workflow_dispatch','run_attempt':1,
             'path':m.WORKFLOW,'status':'completed','conclusion':'success','created_at':self.now.isoformat(),
             'head_commit':{'id':self.sha,'tree_id':'d'*40}},
@@ -43,7 +44,8 @@ class Tests(unittest.TestCase):
     def test_other_workflow_head_repository_event_or_attempt_denied(self):
         for key,value in [('path','.github/workflows/india-protected-observation.yml'),('head_sha','c'*40),
             ('head_branch','feature'),('event','pull_request'),('run_attempt',2),('conclusion','failure'),
-            ('repository',{'full_name':'other/repository'}),('head_repository',{'full_name':'other/repository'})]:
+            ('repository',{'full_name':'other/repository'}),('head_repository',{'full_name':'other/repository'}),
+            ('display_title','APPROVAL ONLY frontend'),('repository',{'full_name':m.REPO,'id':1})]:
             old=self.rows[0][key];self.rows[0][key]=value
             with self.subTest(key=key),self.assertRaises(ValueError):self.resolver().inspect(self.action,self.binding)
             self.rows[0][key]=old
