@@ -28,7 +28,7 @@ def default_public_get(path):
  try:
   with urllib.request.build_opener(_NoRedirect()).open(url,timeout=25) as r:return r.status,dict(r.headers),r.read(1048577)
  except urllib.error.HTTPError as r:return r.code,dict(r.headers),r.read(1048577)
-def normal_frontend_closed_probe(method,url,body):
+def normal_frontend_closed_probe(method,url,body,*,phase_identity=None):
  # Future authorized phase only; collector calls this after exact CLOSED proof.
  need((method,url,body)==('POST','https://theearnalism.com/api/payments/topup',b'{}'),'Only fixed anonymous normal frontend CLOSED probe admitted')
  request=urllib.request.Request(url,data=body,method=method,headers={'Content-Type':'application/json'})
@@ -236,7 +236,9 @@ class Reader612PhaseCollector(NativeMetadataObserver):
   # Root must bind the exact closed source helper; no arbitrary early-return bool.
   from scripts.purchase_guard_source import validate
   m,_,closed=validate(self.role_source_root);need(m['state']=='CLOSED' and closed==(self.role_source_root/'backend/server.py').read_bytes(),'Actual exact CLOSED helper unavailable')
-  status,headers,raw=purchase_probe('POST','https://theearnalism.com/api/payments/topup',b'{}')
+  phase={'deployment_id':dep,'image':facts['native']['image'],'snapshot':facts['native']['snapshot'],
+   'runtime_sha256':facts['runtime_sha256'],'config_sha256':facts['config_sha256']}
+  status,headers,raw=purchase_probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity=phase)
   need(status==503 and len(raw)<=65536 and json.loads(raw)['detail']['code']=='PURCHASE_INITIATION_CLOSED' and {k.lower():v for k,v in headers.items()}.get('cache-control')=='no-store','Actual inert CLOSED acceptance missing')
   actual={**b,'scope':'ACTUAL_PROVIDER_AND_SOURCE','operation_id':record['operation_id'],'action':'release_guarded_bootstrap','outcome':'APPLIED','deployment_id':dep,'guarded_backend_deployment_id':dep,'retained_image_id':facts['native']['image'],'snapshot_id':facts['native']['snapshot'],'source_tree_sha':source['tree_sha'],'native_file_config_sha256':facts['native']['file_config_sha256'],'startup_complete':True,'database_healthy':True,'source_attestation_matches':True,'native_can_rollback':True,'config_compatible':True,'existing_reader_listener_preserved':True,'verify_refund_webhook_code_preserved':True,'closed_guest_status':503,'purchase_pause_proof':'MEASURED_EXACT_EARLY_RETURN_AND_ANONYMOUS_503','actual_facts_sha256':digest(facts)}
   actual['recovery_receipt_sha256']=self._artifact_receipt(actual);actual['receipt_sha256']=digest(actual);return actual

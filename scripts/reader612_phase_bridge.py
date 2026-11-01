@@ -188,8 +188,14 @@ class Reader612PhaseBridge:
     def _closed_probe_once(self,record):
         """Durable at-most-once probe; crash uncertainty never permits replay."""
         path=native.CANONICAL_JOURNAL/(record['operation_id']+'.closed-probe.request.json')
-        identity={'operation_id':record['operation_id'],'binding_sha256':digest(record['binding'])}
-        def probe(method,url,body):
+        def probe(method,url,body,*,phase_identity):
+            need(isinstance(phase_identity,dict) and set(phase_identity)=={'deployment_id','image','snapshot','runtime_sha256','config_sha256'}
+                and native.UUID.fullmatch(phase_identity['deployment_id'] or '')
+                and native.UUID.fullmatch(phase_identity['snapshot'] or '')
+                and re.fullmatch(r'sha256:[a-f0-9]{64}',phase_identity['image'] or '')
+                and phase_identity['runtime_sha256']==record['binding']['source_delivery_sha256']
+                and phase_identity['config_sha256']==record['binding']['config_sha256'],'Exact observed CLOSED artifact required')
+            identity={'operation_id':record['operation_id'],'binding_sha256':digest(record['binding']),'phase':phase_identity}
             need((method,url,body)==('POST','https://theearnalism.com/api/payments/topup',b'{}'),'Only exact inert CLOSED probe admitted')
             if path.exists():
                 saved=_read_journal(path)

@@ -68,11 +68,12 @@ class Bridge(unittest.TestCase):
   with self.assertRaises(ValueError):self.x.reconcile_qualification(r['operation_id'])
   self.assertTrue((self.j/'_write-barrier.json').exists())
  def test_at_most_once_closed_probe_and_crash_uncertainty(self):
-  r={'operation_id':'a'*64,'binding':self.P};self.c.purchase_probe.return_value=(503,{'Cache-Control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}');probe=self.x._closed_probe_once(r)
-  self.assertEqual(probe('POST','https://theearnalism.com/api/payments/topup',b'{}')[0],503);self.assertEqual(probe('POST','https://theearnalism.com/api/payments/topup',b'{}')[0],503);self.assertEqual(self.c.purchase_probe.call_count,1)
+  r={'operation_id':'a'*64,'binding':self.P};phase={'deployment_id':'33333333-3333-3333-3333-333333333333','image':'sha256:'+'d'*64,'snapshot':'44444444-4444-4444-4444-444444444444','runtime_sha256':self.P['source_delivery_sha256'],'config_sha256':self.P['config_sha256']};self.c.purchase_probe.return_value=(503,{'Cache-Control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}');probe=self.x._closed_probe_once(r)
+  self.assertEqual(probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity=phase)[0],503);self.assertEqual(probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity=phase)[0],503);self.assertEqual(self.c.purchase_probe.call_count,1)
+  with self.assertRaisesRegex(ValueError,'never repeat'):probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity={**phase,'deployment_id':'55555555-5555-5555-5555-555555555555'})
   r['operation_id']='b'*64;self.c.purchase_probe.side_effect=TimeoutError();probe=self.x._closed_probe_once(r)
-  with self.assertRaises(TimeoutError):probe('POST','https://theearnalism.com/api/payments/topup',b'{}')
-  with self.assertRaisesRegex(ValueError,'never repeat'):probe('POST','https://theearnalism.com/api/payments/topup',b'{}')
+  with self.assertRaises(TimeoutError):probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity=phase)
+  with self.assertRaisesRegex(ValueError,'never repeat'):probe('POST','https://theearnalism.com/api/payments/topup',b'{}',phase_identity=phase)
   self.assertEqual(self.c.purchase_probe.call_count,2)
  def test_restore_preparation_reuses_exact_durable_receipt_not_post(self):
   r=self.qualify();source={'runtime_sha256':self.N['runtime_sha256']}

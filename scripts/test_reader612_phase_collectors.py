@@ -98,13 +98,13 @@ class Collect(unittest.TestCase):
   self.c.purchase_probe=None
   with self.assertRaisesRegex(ValueError,'CLOSED_PROBE_UNBOUND'):self.c.collect_closed(self.closed(),self.expected)
   record=self.closed();record['state']='APPLIED_VERIFIED'
-  with self.assertRaises(ValueError):self.c.collect_closed(record,self.expected,purchase_probe=lambda *a:None)
+  with self.assertRaises(ValueError):self.c.collect_closed(record,self.expected,purchase_probe=lambda *a,**kw:None)
  def test_closed_real_methods_mock_probe_and_source_only(self):
   self.runtime=self.n['runtime_sha256'];r=self.closed();source={'source_sha':self.n['source_sha'],'tree_sha':self.n['tree_sha'],'runtime_sha256':self.runtime}
-  probe=lambda *a:(503,{'cache-control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}')
+  probe=lambda *a,**kw:(503,{'cache-control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}')
   with patch.object(p,'qualify_binding',return_value=source),patch('scripts.purchase_guard_source.validate',return_value=({'state':'CLOSED'},b'',(self.root/'backend/server.py').read_bytes())):
    x=self.c.collect_closed(r,self.expected,purchase_probe=probe);self.assertEqual(x['snapshot_id'],SNAP);self.assertEqual(x['purchase_pause_proof'],'MEASURED_EXACT_EARLY_RETURN_AND_ANONYMOUS_503')
-   with self.assertRaises(ValueError):self.c.collect_closed(r,self.expected,purchase_probe=lambda *a:(401,{},b'{}'))
+   with self.assertRaises(ValueError):self.c.collect_closed(r,self.expected,purchase_probe=lambda *a,**kw:(401,{},b'{}'))
  def test_restore_does_not_trust_favorable_retention_boolean(self):
   r={'action':'restore_original_native_after_reader612_qualification','state':'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED','binding':self.n,'operation_id':'e'*64,'started_at':'2026-11-01T11:58:00+00:00'}
   self.expected['qualified_recovery']={'qualified':True}
@@ -140,7 +140,7 @@ class Collect(unittest.TestCase):
  def test_actual_qualified_receipt_method_checks_hash_and_journal(self):
   self.runtime=self.n['runtime_sha256'];r=self.closed();source={'source_sha':self.n['source_sha'],'tree_sha':self.n['tree_sha'],'runtime_sha256':self.runtime}
   with patch.object(p,'qualify_binding',return_value=source),patch('scripts.purchase_guard_source.validate',return_value=({'state':'CLOSED'},b'',(self.root/'backend/server.py').read_bytes())):
-   q=self.c.collect_closed(r,self.expected,purchase_probe=lambda *a:(503,{'cache-control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}'))
+   q=self.c.collect_closed(r,self.expected,purchase_probe=lambda *a,**kw:(503,{'cache-control':'no-store'},b'{"detail":{"code":"PURCHASE_INITIATION_CLOSED"}}'))
   self.expected['qualified_recovery']=q;restore={'binding':self.n}
   journal={'state':'APPLIED_VERIFIED','action':'release_guarded_bootstrap','binding':{'source_sha':self.n['source_sha']},'guarded_recovery_receipt_sha256':q['recovery_receipt_sha256'],'reconciliation_receipt_sha256':q['receipt_sha256']}
   with patch('scripts.india_release_provider_adapter._read_journal',return_value=journal):

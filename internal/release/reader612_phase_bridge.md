@@ -20,7 +20,8 @@ preflight proof, verifying all their covered digests during later recovery.
 Canonical full observations are retained before reconciliation clears a barrier.
 A CLOSED probe has its own durable intent/result: a timeout or crash with no
 verified result stops permanently rather than repeating it. A completed result
-can be reused without another POST. Restore preparation reads the original
+can be reused without another POST only for the identical observed deployment,
+image, snapshot, runtime and configuration; phase drift is a hard hold. Restore preparation reads the original
 verified artifact receipt; it does not regenerate historical evidence.
 
 The phase collector uses fixed bounded read destinations and exact source,
