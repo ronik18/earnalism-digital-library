@@ -13359,7 +13359,8 @@
       },
       "production_frontend_build": "PASS",
       "static_snapshots": 172,
-      "static_snapshot_assertions": 3701
+      "static_snapshot_assertions": 3701,
+      "purchase_territory_and_source_guard_tests_passed": 12
     },
     "real_mongo_provider_runtime": "UNPERFORMED_LOCALLY",
     "deployment": "UNPERFORMED",
@@ -13391,8 +13392,19 @@
       "protected_renewal_bytes_preserved": true,
       "real_auth_new_cases": 14,
       "preparer_test_report_sha256": "abc1b204e8df32853f727a728e77446cdd354c2df895002c711a69a27db930e6",
-      "independent_review": "PENDING_FINAL_EXACT_HEAD"
+      "independent_review": {
+        "status": "NO_MATERIAL_FINDINGS_SOURCE_ONLY",
+        "sha256": "5443de01d3d2809ebcdce0a08ca4a264ebb43820d0628e1ca2860966f84b6c2b",
+        "independent_composed_tests_passed": 36,
+        "real_auth_cases": 14
+      }
     },
-    "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3"
+    "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3",
+    "actual_application_source_commit": "14bd75445ee19366ea1a57468c7e08601b490b0c",
+    "actual_staged_runtime_inventory": {
+      "files": 1952,
+      "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3",
+      "builder_verification": "PASS"
+    }
   }
 }
