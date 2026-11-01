@@ -1,0 +1,37 @@
+{
+  "facts": {
+    "new_adoption": "PROPOSED_REVIEW_PENDING",
+    "standing_owner_producer_and_gated_publication_authority": "Carried forward by exact scope; no new owner approval asserted or requested."
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/support/standing-owner-publication-scope.json",
+      "sha256": "960713d156030bf1e41cf05d8deeb78276d52683ee9822842ccaf4596938eb75",
+      "size_bytes": 1517
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-approved-operator/DIRECT-OWNER-APPROVAL-EVIDENCE.json",
+      "sha256": "149eca16f9e932fd76de3b8d1f754501af3a518ef1a31b88f60081deff5e076b",
+      "size_bytes": 997
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-approved-operator/ACTUAL-NATIVE-AUTHORITY.json",
+      "sha256": "441bd4715057a7a25629c23578d77631638615d8804f98ffcca3d86789939749",
+      "size_bytes": 895
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+      "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+      "size_bytes": 6729
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/support/historical-source-producer-authority-reference.json",
+      "sha256": "29335d94a44dd55efa68d856d58ffe33339d77d0f5822419969231ce8427f13e",
+      "size_bytes": 4242
+    }
+  ],
+  "role": "producer_authority",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

@@ -1,0 +1,43 @@
+{
+  "facts": {
+    "scope": "Underlying literary source and Reader evidence only; Reader record is not an audio-use grant. New audio decision is separately proposed.",
+    "unchanged_source": {
+      "author": "Oscar Wilde",
+      "controlled_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+      "manuscript_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+      "slug": "the-selfish-giant",
+      "title": "The Selfish Giant"
+    }
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+      "size_bytes": 8462
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
+      "size_bytes": 48859
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-selfish-giant/rights_decision.json",
+      "sha256": "91c2106b7752ee3a2e6a576cfb5a69a782885676148df147c120d746c01007e3",
+      "size_bytes": 3327
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/source-plan/authoritative-manuscript-UNCHANGED.txt",
+      "sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+      "size_bytes": 8846
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/support/historical-source-producer-authority-reference.json",
+      "sha256": "29335d94a44dd55efa68d856d58ffe33339d77d0f5822419969231ce8427f13e",
+      "size_bytes": 4242
+    }
+  ],
+  "role": "source_edition",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

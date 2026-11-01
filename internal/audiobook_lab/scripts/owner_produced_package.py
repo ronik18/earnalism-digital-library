@@ -116,12 +116,12 @@ def mapping(package):
     return sha(canonical(tracks))
 
 
-def validate_topology(package):
+def validate_topology(package, *, expected_sync_tier="SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY"):
     word = paragraph = elapsed = count = 0
     seen = set()
     require(
         package.get("highlight_sync_enabled") is False
-        and package.get("sync_tier") == "SOURCE_UNIT_PARAGRAPH_BOUNDS_ONLY",
+        and package.get("sync_tier") == expected_sync_tier,
         "Package sync claim",
     )
     require(bool(package["tracks"]), "Empty tracks")

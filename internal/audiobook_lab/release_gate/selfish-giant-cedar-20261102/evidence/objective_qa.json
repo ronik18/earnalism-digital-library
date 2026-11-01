@@ -1,0 +1,135 @@
+{
+  "facts": {
+    "ASR_adjudication_token_slots": 1670,
+    "actual_owner_full_scored_review": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+      "sha256": "ebb1fea766be347cb35526dba9e18b082fec5cf25fc3be3ed5bd0b920079973f",
+      "size_bytes": 6729
+    },
+    "actual_raw_ASR_copies": [
+      {
+        "path": "support/raw-ASR/fresh-unit-01-REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504",
+        "size_bytes": 53913
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-02-ASR-CHECK-RESULT.json",
+        "sha256": "785edb415a0438229073fa4a72e8480d1a4b9b0fb325265b2c176fbf9c4a02a7",
+        "size_bytes": 9066
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-03-fresh-unit-03.asr.json",
+        "sha256": "96ee6c47b817399a126352129816a6bb36860e91586b8a784e3289c0f07f63a8",
+        "size_bytes": 8684
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-04-fresh-unit-04.asr.json",
+        "sha256": "9641a6f15c23cda21d446c04959dfa6e648788060cc03b6dbbec611f107aeac1",
+        "size_bytes": 12777
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-05-fresh-unit-05.asr.json",
+        "sha256": "a721be46f69ab957b45a44b352243897f39fa18d6f6d2cfb1f4e35fe1b2c566a",
+        "size_bytes": 9232
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-06-fresh-unit-06.asr.json",
+        "sha256": "6b31dbb90b9468376f958d8333315b67aa5a64dcac37651cdcf9bc7562a73817",
+        "size_bytes": 17375
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-07-fresh-unit-07.asr.json",
+        "sha256": "ab964ebb094a02fd1dc7c1b90740f4f12d62939506245c4a7fcbc6226537d7c1",
+        "size_bytes": 12099
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-08-fresh-unit-08.asr.json",
+        "sha256": "39f35fe12ef4950094bf1415c6eb350c1df2457b3725e0c92d2afafd7fcc7f22",
+        "size_bytes": 12733
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-09-fresh-unit-09.asr.json",
+        "sha256": "8728b49cfd31c54264ddc1bd22e05474fe559b17ae66f44d8016eac9bf3a0ade",
+        "size_bytes": 12116
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-10-fresh-unit-10.asr.json",
+        "sha256": "1dae8759cdc65c399cb9ba0bc6d8ced3c4aa33621d93e515285e2de060600dd2",
+        "size_bytes": 15567
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-11-REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504",
+        "size_bytes": 53913
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-12-fresh-unit-12.asr.json",
+        "sha256": "73919187492e33a7883502de5a66a5cbe52a24ed2f3caa5507cbe0ed634158da",
+        "size_bytes": 20805
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-13-fresh-unit-13.asr.json",
+        "sha256": "c8e5a1d1bb9ee119a0317e558d83ef87e8481731a8600baac4ac38d852cf94a3",
+        "size_bytes": 13400
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-14-fresh-unit-14.asr.json",
+        "sha256": "0d2e2d0b3f2ed7f61ce7dc2bb0219246cb72125235b481b08158c36374138bc6",
+        "size_bytes": 12485
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-15-fresh-unit-15.asr.json",
+        "sha256": "7eb0f41e94960b42a81e9f0ff0a1ff3ec276fd1e7e22805201cc50e446340a75",
+        "size_bytes": 12799
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-16-fresh-unit-16.asr.json",
+        "sha256": "8e943301760399751242a8474a265efbd391b1071ddf59e0fbbc6a3c7fb72763",
+        "size_bytes": 16404
+      },
+      {
+        "path": "support/raw-ASR/fresh-unit-17-REPORT.json",
+        "sha256": "7d3beab6cba71270588ffad3cc09db864a368c11c5a7c2efe0913bf9e9349504",
+        "size_bytes": 53913
+      }
+    ],
+    "adjudicated_min_score": 10.0,
+    "floor_ASR": 9.7,
+    "floor_confidence": 0.9,
+    "floor_overall_and_dimensions": 8.9,
+    "physical_devices_unperformed": "UNVERIFIED",
+    "policy": "platform_audiobook_acceptance_v4_89",
+    "policy_scope": "all languages including English",
+    "public_whitespace_words": 1652,
+    "raw_scores_unchanged": true,
+    "source_coverage": 1.0,
+    "timing_lexical_slots": 1660,
+    "word_timing_precision_not_claimed": true
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/COMPLETE-ADJUDICATED-CONTENT-QA-20261102.json",
+      "sha256": "663fe88e0667a2f0fcb7b652fa4de05dd788eb5e9c9e778d656592e051b445da",
+      "size_bytes": 44297
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/SCORED-DRAFT-TECHNICAL-RESULT.json",
+      "sha256": "0d1856bf16f79ab78ad750edd2579b10c01fc38cddbdf962beb5a097ca8c83d3",
+      "size_bytes": 15574
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/platform_audiobook_acceptance_v4_89_policy_decision.json",
+      "sha256": "561fb5c5bfbc0fe58d7706af141ee1ff603fb3e7c7fe7333a66fd27182666c55",
+      "size_bytes": 2123
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/independent-review-actual-sourceqa-20261102/ENGLISH-POLICY-PROVENANCE.json",
+      "sha256": "937e043056c4723b4cd368ed22dcabe662b5fdbf8271af758f830eeedf7fc220",
+      "size_bytes": 7341
+    }
+  ],
+  "role": "objective_qa",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

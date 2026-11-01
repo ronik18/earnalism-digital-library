@@ -9504,8 +9504,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 40439,
-      "sha256": "890862ac7350eea4b7149d47805a6066c11a3d05e343f86e3faaac89b224fc55"
+      "bytes": 41084,
+      "sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561"
     },
     {
       "path": "demand_scoring.py",
@@ -9758,5 +9758,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "0d7b2dd77f5976fdebed22c8b9ece20ae4aa8f57f5f91a02c29dd51d0cfec2cd"
+  "expected_sha256": "99e5ae9288f59cf37fac7ace09b3dea269a161a6f0ac0661d7e1ba3680872979"
 }

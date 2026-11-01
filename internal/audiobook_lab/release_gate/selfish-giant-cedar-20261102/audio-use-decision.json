@@ -1,0 +1,39 @@
+{
+  "accepted_by": "Integration Lane under direct owner standing source, producer, native Cedar and gated publication authority; exact India audio_stream component-rights registration, not public release",
+  "basis": "Exact stockCedar API scored recording: unchanged accepted India public-domain source and owner producer/gated-publication scope; explicit native Cedar API plan; Services Agreement4.1 API-output basis (not ChatGPT Voice); exact two creator-licensed CC BY4 music sources with final attribution/change notices. Component/source conditions are adopted here; final runtime must preserve licensed-component permissions and credits before release. No worldwide/download grant or old Ryan audio adoption. Non-expiring revocable control; all storage/runtime/accounting/publication gates remain mandatory.",
+  "components": {
+    "audio_component_bindings": "fffe9a5882e5a735bbe24b254d4af09e4aba94ce6ed10eae3cb1d8da1888fe22",
+    "container_metadata_reuse": "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+    "listened_master_mp3": "01f8ceb814bac04932bd72163f3a99e19b49590b927bb2fbfcc296222d03eb69",
+    "master_mp3": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "master_wav": "ba0bbb3cf60b596ce73b16cdd690ec65c5b3fab80c075cc56de66e08e46c857c",
+    "model_voice_licence": "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+    "music_heartbreaking_original": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+    "music_heartwarming_original": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+    "music_rights": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+    "selected_manuscript": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "source_file": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+  },
+  "conditions_satisfied": true,
+  "decision_id": "india-20261102-the-selfish-giant-cedar-scored-audio",
+  "edition_id": "the-selfish-giant",
+  "evidence_sha256": [
+    "1b308d9777e35e95b5b81d2a30f3f02c3e7dc52f477ed487da3153a4333e5f6e",
+    "9ae68906b727608ed212b8627ca0e9ff2e7d62fb6f320d79b5e2688172d0981e",
+    "3b3fd556e46552565226c9cef44b97454ee380cefc2da292bd58c0f7f5701c9a",
+    "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346",
+    "d5b645742e0e8a3341291a5526a53a82e08a37744b21ffa6b0c5cf764a3773cd",
+    "b1bb9724fe80b77daacf879505dce8f40f0ba893020978433ab404620a2cfb6a"
+  ],
+  "operator_id": "reo-enterprise",
+  "schema_version": "earnalism.rights-decision.v1",
+  "status": "ACCEPTED",
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "audio_stream"
+  ],
+  "valid_from": "2026-11-01T18:33:34.312347+00:00",
+  "valid_until": "LIFETIME"
+}

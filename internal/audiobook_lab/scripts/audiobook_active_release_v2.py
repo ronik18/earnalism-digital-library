@@ -712,6 +712,15 @@ def validate_qa_candidate_release_descriptor(
             return validate_derivative(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
         except (ValueError, KeyError, TypeError, OSError) as exc:
             raise ReleasePointerError(str(exc)) from None
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "owner_produced_native_scored.v1":
+        try:
+            try:
+                from .native_scored_package import validate as validate_native_scored
+            except ImportError:
+                from native_scored_package import validate as validate_native_scored
+            return validate_native_scored(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except ValueError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "owner_produced_source_units.v1":
         try:
             try:

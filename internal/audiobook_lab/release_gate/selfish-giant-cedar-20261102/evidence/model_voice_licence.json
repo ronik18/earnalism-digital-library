@@ -1,0 +1,41 @@
+{
+  "facts": {
+    "AI_disclosure_prepared": true,
+    "API_not_ChatGPT_Voice": true,
+    "generation": {
+      "model_id": "gpt-realtime-2.1-mini",
+      "model_revision": null,
+      "provider": "owner_openai_realtime",
+      "runtime_revision": "823ac4359c37d9ea00a8b015b296e9704b1d5eb30c8cda15ee0d90ec41e3fc29",
+      "voice": "cedar"
+    },
+    "hidden_model_weights_revision": "UNKNOWN_NO_DATED_SNAPSHOT_CLAIM",
+    "stock_not_cloned_voice": true
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-full-draft-20261101/release-preparation-20261102/actual-sourceqa-candidate-20261102/support/API-AND-MUSIC-PRIMARY-RIGHTS-OBSERVATIONS.json",
+      "sha256": "b1a9ae4c72eca73bb50e7f1e18756cccacecd58bca6279bd0c92f99c865a554b",
+      "size_bytes": 2831
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-realtime-proposal/PRIMARY-SOURCES-AND-RIGHTS.md",
+      "sha256": "600c743edd358b2038145a875f12640033999805050fb71f8223b5b87d980f78",
+      "size_bytes": 3775
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-cedar-approved-operator/DIRECT-OWNER-APPROVAL-EVIDENCE.json",
+      "sha256": "149eca16f9e932fd76de3b8d1f754501af3a518ef1a31b88f60081deff5e076b",
+      "size_bytes": 997
+    },
+    {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-fresh-production-20261101/native-realtime-proposal/native_realtime.py",
+      "sha256": "823ac4359c37d9ea00a8b015b296e9704b1d5eb30c8cda15ee0d90ec41e3fc29",
+      "size_bytes": 20661
+    }
+  ],
+  "role": "model_voice_licence",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}

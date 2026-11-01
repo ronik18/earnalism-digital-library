@@ -1,0 +1,33 @@
+{
+  "facts": {
+    "back_sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+    "front_sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+    "scope": "Unchanged exact owner-approved cover pair; no new artwork or rights expansion."
+  },
+  "new_check_or_approval_inferred": false,
+  "references": [
+    {
+      "path": "/tmp/earnalism-main-approved-integration/frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+      "size_bytes": 141134
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+      "sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+      "size_bytes": 90250
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
+      "size_bytes": 48859
+    },
+    {
+      "path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-selfish-giant/rights_decision.json",
+      "sha256": "91c2106b7752ee3a2e6a576cfb5a69a782885676148df147c120d746c01007e3",
+      "size_bytes": 3327
+    }
+  ],
+  "role": "cover_reuse",
+  "schema": "earnalism.native_cedar_actual_evidence.v1",
+  "status": "ACTUAL_RETAINED_FACTS_AND_PROPOSED_BINDING_REVIEW_PENDING"
+}
