@@ -26,8 +26,10 @@
     "purchase_guard_source.py": "19578982f72fc0377c5c70cdd8f594e8a19838fcc3aeed6db535f5f3c6a052de",
     "qualify_stable_rollback_profile.py": "de065e5e6d2c65965e00a00996084ff045576c0248921f8c7fb569e83b3e3fea",
     "reader612_native_observer.py": "e83bea335b404861735a2d959c95eb4e7716a04919e29df7ffd9a89507d4e9c2",
-    "reader612_native_restore.py": "1ab223f316ead5704285bd37dff202f452f051a40653fbab57462d6f6536b209",
+    "reader612_native_restore.py": "71fc08e4b5de754be54b1d56aab8060c34da7e8920a866dce5c9515de98653cf",
+    "reader612_protected_approval.py": "1fad7b4568e3a42bff8f70d0830d7a3453a69dc1f996b5fcd2cd319405e92e5f",
     "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129"
   },
-  "controller_integration_status": "FIXED_READ_OBSERVER_AND_RESTORE_TRANSPORT_SOURCE_BOUND_AUTHENTIC_NATIVE_OWNER_CONNECTOR_RESOLVER_REQUIRED"
+  "controller_integration_status": "SOURCE_BOUND_GITHUB_PROTECTED_BACKEND_REVIEW_RESOLVER_NO_CURRENT_APPROVAL_OR_EXECUTION",
+  "approval_workflow_sha256": "4900dd7945b49a9d36c312504c84ab69a620c51b3f125d4f1ab23f134e11ad78"
 }

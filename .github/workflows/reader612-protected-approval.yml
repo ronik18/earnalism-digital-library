@@ -1,0 +1,36 @@
+name: Backend612 protected approval record ONLY
+run-name: 'APPROVAL ONLY Backend612 ${{ inputs.action }} binding=${{ inputs.binding_sha256 }} operator=${{ inputs.rollback_operator }} — NO EXECUTION'
+on:
+  workflow_dispatch:
+    inputs:
+      controller_sha:
+        description: Exact reviewed merged-main controller SHA
+        required: true
+        type: string
+      action:
+        description: Exact later-authorized backend action; this workflow never executes it
+        required: true
+        type: choice
+        options:
+          - release_guarded_bootstrap
+          - restore_original_native_after_reader612_qualification
+      binding_sha256:
+        description: Exact complete source/payload/controller/config/journal binding digest
+        required: true
+        type: string
+      rollback_operator:
+        description: Named operator; approval comment must bind this exact value
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  record:
+    name: Record Backend612 approval only — NO EXECUTION
+    if: github.repository == 'ronik18/earnalism-digital-library' && github.ref == 'refs/heads/main' && inputs.controller_sha == github.sha && github.run_attempt == 1
+    environment: reader-frontend-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: No provider execution or approval mutation
+        run: echo 'Human review is recorded by GitHub. This job does not deploy, pause purchases, invoke providers, or issue local approval.'
