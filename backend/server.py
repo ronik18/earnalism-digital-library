@@ -1602,6 +1602,7 @@ PUBLIC_CACHE_PREFIXES = (
 
 async def initialize_replica_state_backends() -> None:
     global _redis_client, _redis_available
+    _redis_available = False
     if (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
             and ENABLE_STARTUP_DB_MAINTENANCE):
         # Maintenance mixes metadata and financial migrations. It must not run
@@ -1612,7 +1613,7 @@ async def initialize_replica_state_backends() -> None:
         return
     if not REDIS_URL:
         message = "REDIS_URL is required for shared Redis cache/state."
-        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
+        if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message)
         logger.warning("%s Continuing without Redis.", message)
         return
@@ -1620,7 +1621,7 @@ async def initialize_replica_state_backends() -> None:
         import redis.asyncio as redis  # type: ignore
     except Exception as exc:
         message = "Redis cache/state requires the redis Python package."
-        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
+        if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message) from exc
         logger.warning("%s Continuing without Redis.", message)
         return
@@ -1646,25 +1647,35 @@ async def initialize_replica_state_backends() -> None:
         _redis_client = None
         _redis_available = False
         message = f"Redis cache/state ping failed: {exc}"
-        if (REDIS_CACHE_ENABLED and REDIS_CACHE_FAIL_FAST) or MULTI_REPLICA_ENABLED:
+        if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
             raise RuntimeError(message) from exc
         logger.warning("%s Continuing without Redis.", message)
         return
-    _redis_available = True
-    # A public-only opt-in must never apply global Redis policy or shared state.
+    # Never expose shared state, or initialize its keys, before actual safe
+    # read-only policy admission. Public-only metadata remains independent.
     if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
-        await _configure_redis_cache_policy()
-    if PUBLIC_CACHE_ENABLED:
-        if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED):
+        try:
+            await _configure_redis_cache_policy()
+            if PUBLIC_CACHE_ENABLED:
+                await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
+        except (Exception, asyncio.CancelledError):
+            _redis_available = False
             try:
-                if not await metadata_cache.Control(db).startup():
-                    _redis_available = False
-                    logger.warning("Public metadata cache remains bypassed: durable fence/admission unavailable")
-            except Exception:
+                await asyncio.wait_for(_redis_client.aclose(), .25)
+            except (Exception, asyncio.CancelledError):
+                logger.warning("Rejected Redis startup connection cleanup incomplete")
+            _redis_client = None
+            raise
+    _redis_available = True
+    if (PUBLIC_CACHE_ENABLED and REDIS_PUBLIC_METADATA_ENABLED
+            and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)):
+        try:
+            if not await metadata_cache.Control(db).startup():
                 _redis_available = False
-                logger.warning("Public metadata cache startup unavailable; authoritative routes remain available")
-        else:
-            await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
+                logger.warning("Public metadata cache remains bypassed: durable fence/admission unavailable")
+        except Exception:
+            _redis_available = False
+            logger.warning("Public metadata cache startup unavailable; authoritative routes remain available")
     logger.info("Redis-backed cache/state enabled." if _redis_available else "Public metadata cache bypassed; authoritative routes remain available.")
 
 
@@ -1691,23 +1702,50 @@ def _redis_text(value: Any) -> str:
 
 
 async def _configure_redis_cache_policy() -> None:
+    """Read-only protected-state admission; application startup never CONFIG SETs."""
     global _redis_config_status
-    _redis_config_status = {"attempted": False, "applied": {}, "errors": {}}
-    if not REDIS_CONFIGURE_ON_STARTUP or _redis_client is None:
-        return
-    _redis_config_status["attempted"] = True
-    config_pairs: Dict[str, str] = {}
-    if REDIS_MAXMEMORY:
-        config_pairs["maxmemory"] = REDIS_MAXMEMORY
-    if REDIS_MAXMEMORY_POLICY:
-        config_pairs["maxmemory-policy"] = REDIS_MAXMEMORY_POLICY
-    for name, value in config_pairs.items():
-        try:
-            await _redis_client.config_set(name, value)
-            _redis_config_status["applied"][name] = value
-        except Exception as exc:
-            _redis_config_status["errors"][name] = str(exc)[:240]
-            logger.warning("Redis CONFIG SET %s failed; continuing with provider defaults.", name, exc_info=True)
+    _redis_config_status = {
+        "attempted": False, "applied": {}, "errors": {},
+        "scope": "READ_ONLY_PROTECTED_STATE_POLICY", "protected_policy_verified": False,
+    }
+    if REDIS_CONFIGURE_ON_STARTUP:
+        _redis_config_status["errors"]["policy"] = "STARTUP_CONFIGURATION_WRITES_FORBIDDEN"
+        raise RuntimeError("Protected Redis requires REDIS_CONFIGURE_ON_STARTUP=false")
+    if _redis_client is None:
+        _redis_config_status["errors"]["policy"] = "POLICY_CLIENT_UNAVAILABLE"
+        raise RuntimeError("Protected Redis policy client unavailable")
+    timeout = max(.05, min(2.0, REDIS_SOCKET_TIMEOUT_SECONDS))
+    try:
+        config = await asyncio.wait_for(
+            _redis_client.config_get("maxmemory", "maxmemory-policy"), timeout,
+        )
+        memory = await asyncio.wait_for(_redis_client.info("memory"), timeout)
+        if not isinstance(config, dict) or not isinstance(memory, dict):
+            raise ValueError("Unknown policy response shape")
+        def text(value):
+            if isinstance(value, bytes):
+                return value.decode("ascii", errors="strict")
+            if isinstance(value, str):
+                return value
+            raise ValueError("Unknown policy value type")
+        policy = {text(key): text(value) for key, value in config.items()}
+        used = memory.get("used_memory", memory.get(b"used_memory"))
+        if type(used) is not int or used < 0:
+            raise ValueError("Unknown memory observation")
+        maximum = policy.get("maxmemory", "")
+        if not maximum.isascii() or not maximum.isdecimal():
+            raise ValueError("Unknown memory limit")
+        maximum = int(maximum)
+    except Exception:
+        _redis_config_status["errors"]["policy"] = "READ_ONLY_POLICY_UNAVAILABLE"
+        raise RuntimeError("Protected Redis policy could not be verified") from None
+    if policy.get("maxmemory-policy") != "noeviction" or maximum <= 0 or used >= maximum:
+        _redis_config_status["errors"]["policy"] = "UNSAFE_EVICTION_OR_MEMORY_POLICY"
+        raise RuntimeError("Protected Redis requires noeviction and bounded available memory")
+    _redis_config_status["observed"] = {
+        "maxmemory-policy": "noeviction", "maxmemory": maximum, "used_memory": used,
+    }
+    _redis_config_status["protected_policy_verified"] = True
 
 
 def _ttl_with_jitter(ttl_seconds: int) -> int:
