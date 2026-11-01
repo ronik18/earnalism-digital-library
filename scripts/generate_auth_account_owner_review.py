@@ -36,7 +36,7 @@ def review_html(records: list[dict]) -> str:
         for item in records
     )
     return f'''<!doctype html><html><head><meta charset="utf-8"><title>Earnalism auth and account owner review</title><style>
-body{{margin:0;background:#f6f1e8;color:#1a211c;font:16px system-ui,sans-serif}}header{{padding:22px;background:#0b1512;color:#fff8ea}}main{{max-width:1480px;margin:auto;padding:28px}}section{{margin:0 0 44px;padding:20px;background:#fffdf8;border:1px solid #d5c59f;border-radius:14px}}h1,h2{{font-family:Georgia,serif}}.comparison{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}figure{{margin:0;border:1px solid #dfd2b4;padding:8px;background:white}}img{{width:100%;display:block}}figcaption{{margin-top:8px;font-size:13px}}pre{{overflow:auto;background:#0b1512;color:#fff8ea;padding:14px;font-size:12px}}@media(max-width:720px){{.comparison{{grid-template-columns:1fr}}}}</style></head><body><header><h1>Auth and Account visual owner review</h1><p>PR #414 · deterministic local fixtures · animation disabled · UTC / en-US</p></header><main><section><h2>Validation summary</h2><p>All captures must have status 200, required components present, zero console/page errors, and zero horizontal overflow. Released India editions offer a free three-page preview; page 4 onward requires a Reading Pass. Public audio and paid checkout are unavailable.</p></section>{sections}</main></body></html>'''
+body{{margin:0;background:#f6f1e8;color:#1a211c;font:16px system-ui,sans-serif}}header{{padding:22px;background:#0b1512;color:#fff8ea}}main{{max-width:1480px;margin:auto;padding:28px}}section{{margin:0 0 44px;padding:20px;background:#fffdf8;border:1px solid #d5c59f;border-radius:14px}}h1,h2{{font-family:Georgia,serif}}.comparison{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}figure{{margin:0;border:1px solid #dfd2b4;padding:8px;background:white}}img{{width:100%;display:block}}figcaption{{margin-top:8px;font-size:13px}}pre{{overflow:auto;background:#0b1512;color:#fff8ea;padding:14px;font-size:12px}}@media(max-width:720px){{.comparison{{grid-template-columns:1fr}}}}</style></head><body><header><h1>Auth and Account visual owner review</h1><p>PR #414 · deterministic local fixtures · animation disabled · UTC / en-US</p></header><main><section><h2>Validation summary</h2><p>All captures must have status 200, required components present, zero console/page errors, and zero horizontal overflow. Eligible editions offer a free three-canonical-page preview; pass-required editions require a Reading Pass beyond it. Released audiobooks require an active Reading Pass. Free Reader exceptions and current commerce controls remain intact.</p></section>{sections}</main></body></html>'''
 
 
 def main() -> int:
@@ -58,10 +58,17 @@ def main() -> int:
         "account": (root / "frontend/src/pages/Account.jsx").read_text(),
         "auth_policy": (root / "frontend/src/lib/publicAccessCopy.js").read_text(),
     }
-    locked_sentence = "A valid Reading Pass is required from page 4."
-    auth_policy_copy = "The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved."
+    locked_sentence = "A valid Reading Pass is required beyond the preview on pass-required editions."
+    product_copy = json.loads((root / "frontend/src/content/productCopy.json").read_text())
+    qualified_product_copy = (
+        product_copy.get("readerAccess") == "The first 3 canonical pages are free where a preview is available. A Reading Pass is required beyond the preview on pass-required editions."
+        and product_copy.get("listeningAccess") == "Listening is available only for released audiobooks and requires an active Reading Pass."
+    )
     copy_contract = {
-        "auth_uses_shared_release_safe_product_copy": auth_policy_copy in sources["auth_policy"] and all("AUTH_PRODUCT_ACCESS_COPY" in sources[name] for name in ("login", "signup")),
+        "auth_uses_shared_release_safe_product_copy": qualified_product_copy
+        and 'export const AUTH_PRODUCT_ACCESS_COPY = `${PUBLIC_READER_ACCESS_COPY} ${LISTENING_ACCESS_COPY}`;' in sources["auth_policy"]
+        and 'export const PUBLIC_READER_ACCESS_COPY = productCopy.readerAccess;' in sources["auth_policy"]
+        and 'export const LISTENING_ACCESS_COPY = productCopy.listeningAccess;' in sources["auth_policy"] and all("AUTH_PRODUCT_ACCESS_COPY" in sources[name] for name in ("login", "signup")),
         "account_preview_boundary_remains_truthful": locked_sentence in sources["account"],
         "stale_auth_purchase_claim_absent": all("Pass purchases are not available yet." not in sources[name] for name in ("login", "signup")),
         "signup_accessibility_copy_library_wide": "Create an account to manage your Reading Pass and return to your place across eligible books." in sources["signup"],

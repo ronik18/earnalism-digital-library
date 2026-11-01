@@ -35,18 +35,16 @@ class StaticSeoCanaryTests(unittest.TestCase):
 
     def test_current_approved_book_html_passes(self) -> None:
         html = page(title="A Ghost Story by Mark Twain | The Earnalism", description="A Ghost Story reader-ready edition. " + ACCESS, h1="A Ghost Story by <em>Mark Twain</em>", canonical="https://theearnalism.com/book/a-ghost-story", body=ACCESS + " Read the 3-page preview", links="<a href='/reader/a-ghost-story'>Read the 3-page preview</a>")
-        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         self.assertEqual(self.inspect("/book/a-ghost-story", html)["result"], "PASS")
 
     def test_sherlock_text_reader_book_and_reader_routes_have_release_safe_metadata(self) -> None:
         book = page(title="The Adventures of Sherlock Holmes | The Earnalism", description="The Adventures of Sherlock Holmes reader edition. " + ACCESS, h1="The Adventures of Sherlock Holmes", canonical="https://theearnalism.com/book/the-adventures-of-sherlock-holmes", body=ACCESS, links="<a href='/reader/the-adventures-of-sherlock-holmes'>Read the 3-page preview</a>")
-        book = book.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         reader = page(title="Read The Adventures of Sherlock Holmes | The Earnalism Reader", description=ACCESS, h1="Read The Adventures of Sherlock Holmes", canonical="https://theearnalism.com/book/the-adventures-of-sherlock-holmes", robots="noindex,follow", body=ACCESS)
         self.assertEqual(self.inspect("/book/the-adventures-of-sherlock-holmes", book)["result"], "PASS")
         self.assertEqual(self.inspect("/reader/the-adventures-of-sherlock-holmes", reader)["result"], "PASS")
 
     def test_current_approved_pricing_html_passes(self) -> None:
-        html = page(title="Reading Passes | The Earnalism", description="Reading Passes and paid checkout are unavailable in this launch.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="Paid checkout is unavailable.")
+        html = page(title="Reading Passes | The Earnalism", description="One-time prepaid Reading Passes for eligible online reading and released audiobooks in India. No subscription or automatic renewal.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="Paid checkout is unavailable.")
         self.assertEqual(self.inspect("/pricing", html)["result"], "PASS")
 
     def test_obsolete_and_unsafe_html_fails(self) -> None:
@@ -59,7 +57,6 @@ class StaticSeoCanaryTests(unittest.TestCase):
 
     def test_safe_markup_variation_passes(self) -> None:
         html = page(title="A Ghost Story by Mark Twain &amp; The Earnalism", description="A Ghost Story reader edition &amp; " + ACCESS, h1="A Ghost Story <span>by Mark Twain</span>", canonical="https://theearnalism.com/book/a-ghost-story?ignored=value", body=ACCESS, links="<a href='/reader/a-ghost-story'>Read the 3-page preview</a>")
-        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         self.assertEqual(self.inspect("/book/a-ghost-story", html)["result"], "PASS")
 
     def test_full_free_book_metadata_is_rejected(self) -> None:
@@ -67,12 +64,12 @@ class StaticSeoCanaryTests(unittest.TestCase):
         html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":true}</script></head>')
         failures = self.inspect("/book/a-ghost-story", html)["failures"]
         self.assertTrue(any("three-page preview" in failure for failure in failures))
-        self.assertTrue(any("full access unavailable" in failure for failure in failures))
+        self.assertTrue(any("free-access declaration" in failure for failure in failures))
 
     def test_missing_route_identity_or_access_contract_fails(self) -> None:
         html = page(title="The Earnalism", description="Available now", h1="Choose time", canonical="https://theearnalism.com/pricing", body="A quiet digital library.")
         failures = self.inspect("/pricing", html)["failures"]
-        self.assertTrue(any("disabled-checkout" in failure for failure in failures))
+        self.assertTrue(any("controlled commerce availability" in failure for failure in failures))
         self.assertTrue(any("route-specific" in failure for failure in failures))
 
     def test_reader_requires_noindex_but_keeps_access_contract(self) -> None:
@@ -101,7 +98,7 @@ class StaticSeoCanaryTests(unittest.TestCase):
 
     def test_selfish_giant_released_routes_reject_stale_hold_or_audio(self):
         slug, title = "the-selfish-giant", "The Selfish Giant"
-        book = page(title=title + " | The Earnalism", description=title + " reader edition. " + ACCESS, h1=title, canonical=f"https://theearnalism.com/book/{slug}", body=ACCESS, links=f"<a href='/reader/{slug}'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
+        book = page(title=title + " | The Earnalism", description=title + " reader edition. " + ACCESS, h1=title, canonical=f"https://theearnalism.com/book/{slug}", body=ACCESS, links=f"<a href='/reader/{slug}'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book"}</script>')
         reader = page(title="Read " + title + " | The Earnalism Reader", description=ACCESS, h1="Read " + title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=ACCESS)
         audio_copy = "Listening is not available for The Selfish Giant in the current release."
         listener = page(title="Listen to " + title + " | The Earnalism", description=audio_copy, h1=title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=audio_copy + " " + ACCESS)
@@ -117,7 +114,7 @@ class StaticSeoCanaryTests(unittest.TestCase):
             self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, changed, "https://theearnalism.com" + route)["result"], "FAIL")
 
     def test_dracula_released_reader_and_book_keep_audio_disabled(self):
-        book = page(title="Dracula | The Earnalism", description="Dracula reader edition. " + ACCESS, h1="Dracula", canonical="https://theearnalism.com/book/dracula", body=ACCESS, links="<a href='/reader/dracula'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
+        book = page(title="Dracula | The Earnalism", description="Dracula reader edition. " + ACCESS, h1="Dracula", canonical="https://theearnalism.com/book/dracula", body=ACCESS, links="<a href='/reader/dracula'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book"}</script>')
         reader = page(title="Read Dracula | The Earnalism Reader", description=ACCESS, h1="Read Dracula", canonical="https://theearnalism.com/book/dracula", robots="noindex,follow", body=ACCESS)
         self.assertEqual(self.inspect("/book/dracula", book)["result"], "PASS")
         self.assertEqual(self.inspect("/reader/dracula", reader)["result"], "PASS")
@@ -296,7 +293,7 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         source_root = SCRIPT.parent.parent
-        files = ["frontend/src/content/legalPolicies.json", "frontend/scripts/static-seo-template.mjs", "frontend/scripts/generate-static-seo-snapshots.mjs", "frontend/scripts/verify-static-seo-snapshots.mjs", "frontend/scripts/unavailable-title-routes.mjs", "frontend/static-seo/controlled-publication-public.json", "frontend/static-seo/editorial-public.json", "frontend/public/index.html", "data/controlled_launch.json"]
+        files = ["frontend/src/content/productCopy.json", "frontend/src/content/legalPolicies.json", "frontend/scripts/static-seo-template.mjs", "frontend/scripts/generate-static-seo-snapshots.mjs", "frontend/scripts/verify-static-seo-snapshots.mjs", "frontend/scripts/unavailable-title-routes.mjs", "frontend/static-seo/controlled-publication-public.json", "frontend/static-seo/editorial-public.json", "frontend/public/index.html", "data/controlled_launch.json"]
         for relative in files:
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
