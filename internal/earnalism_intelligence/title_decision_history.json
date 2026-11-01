@@ -13288,5 +13288,22 @@
     "publication_changed": false,
     "balance_adjusted": false,
     "additional_pass_seconds": 0
+  },
+  "reader612_runtime_inventory_20261101": {
+    "client_date": "2026-11-01",
+    "decision": "REPAIR_READER612_EXACT_RUNTIME_INVENTORY_SOURCE_ONLY",
+    "base": "59c9613cb654649b6d18d8209323075fd1a2a17b",
+    "expected_runtime_sha256": "34f74e37f23dd29994eafbeebd2025524f8ffd90ae384f35efc4b647d090e664",
+    "files": 1950,
+    "changed_delivered_paths": [
+      "reading_pass_service.py",
+      "server.py"
+    ],
+    "tests": "8 existing source-attestation/upload-boundary tests PASS; exact-ref inventory VERIFY PASS",
+    "learning": "Merged backend edits require regenerated exact delivered-source inventory. A frontend-only Library release must not imply backend rollout. Historical actual recovery receipts do not automatically prove current asset/core/config compatibility.",
+    "integration_owner": "Integration Lane",
+    "deploy": false,
+    "publish": false,
+    "paid_sessions": 0
   }
 }
