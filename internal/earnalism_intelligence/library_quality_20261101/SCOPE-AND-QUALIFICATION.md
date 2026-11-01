@@ -17,3 +17,11 @@ Shared accurate access copy preserves free Reader exceptions, three canonical pr
 ## Evidence boundaries
 
 Anonymous before samples: Library HTML TTFB 0.148–0.150s; books API 0.502–1.859s; optional curation 0.367–2.021s. Small network samples are not browser LCP or cache-hit proof. Removing a request barrier and hidden rendering is verified; no invented global bundle saving. Local browser uses actual production React build and captured public metadata, not production playback/billing evidence. Exact-head CI, published review, merge tree equality and qualified manual frontend-only release remain required. Auto-deploy remains off; no Redis/settings/index/audio/paid-session mutation.
+
+## Final reconciled source qualification
+
+Reconciled normally with merged #614 (f5706d328e08ab330f65f604f51df322b65646f1), preserving continuous-master adoption, current cover/rights bindings and both regression sets. Book detail and Book JSON-LD now use the same discovery taxonomy and validated language as Library; no blanket full-book free-access schema flag is emitted. Free Reader eligibility and all authorization gates are unchanged. Independent copy/taxonomy review found no blocker.
+
+The required browser journey had retained the old primary Bengali Reader-only URL and hidden mobile reset expectations. Its primary menu contract now includes all Bengali editions and exposes usable reset controls; explicit legacy Reader-only parsing/negative tests remain. This is a source-contract correction, not a waiver of browser acceptance. Final local validation: 398 frontend gate tests, 21 additional copy/presentation tests, and a production build with 172 snapshots/3701 SEO assertions passed. Exact-head hosted browser and published reviews remain mandatory.
+
+Latest verified native instruction in the coordinated release chat prohibits deployment, publication and paid sessions. This PR is source integration only until that changes. #615 is already closed as superseded, with its branch preserved. Current-source guarded recovery proposal independently preserves 1949 other delivered files and the current Reader/audio/rights behaviour; this source-only result is not an actual retained provider image, startup/configuration or execution qualification.

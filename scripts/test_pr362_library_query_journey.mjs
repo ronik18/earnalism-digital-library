@@ -38,7 +38,7 @@ for (const slug of nearReadySlugs) {
   assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
   books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
 }
-const expectedHeaderUrl = "?language=bn&availability=reader-ready";
+const expectedHeaderUrl = "?language=bn";
 const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"];
 const fallbackEligibleSlugs = [];
 const ineligibleSlugs = ["synthetic-held-bengali-draft", "reader-disabled-edition", "kshudhita-pashan"];
@@ -59,9 +59,9 @@ function referenceSurface(page) {
 
 async function selectedControls(page, mobile) {
   const language = filterGroup(page, mobile, "language").getByRole("button", { name: "Bengali", exact: true });
-  const status = filterGroup(page, mobile, "listening").getByRole("button", { name: "Reader only", exact: true });
+  const status = filterGroup(page, mobile, "listening").getByRole("button", { name: "All releases", exact: true });
   await assertSelected(language, "Bengali");
-  await assertSelected(status, "Reader only");
+  await assertSelected(status, "All releases");
 }
 
 function filterSurface(page, mobile) {
@@ -97,8 +97,8 @@ async function assertNoHorizontalOverflow(page, label) {
 
 async function assertDrawerOptionPolicy(page, mobile) {
   if (!mobile) return;
-  assert.equal(await filterGroup(page, true, "language").getByRole("button", { name: "All books", exact: true }).count(), 0, "Language must retain its compact hideAll behavior");
-  assert.equal(await filterGroup(page, true, "reading").getByRole("button", { name: "All forms", exact: true }).count(), 0, "Format must retain its compact hideAll behavior");
+  assert.equal(await filterGroup(page, true, "language").getByRole("button", { name: "All languages", exact: true }).count(), 1, "Language must expose its reset option");
+  assert.equal(await filterGroup(page, true, "reading").getByRole("button", { name: "All forms", exact: true }).count(), 1, "Format must expose its reset option");
   assert.equal(await filterGroup(page, true, "listening").getByRole("button", { name: "All releases", exact: true }).count(), 1, "Listening must expose All releases by stable group id");
 }
 

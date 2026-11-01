@@ -23,9 +23,10 @@ import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntime
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
+import { genresOfBook } from "../lib/libraryDiscovery";
+import { languageOfBook } from "../lib/libraryCatalog";
 import "./BookDetailReference.css";
 
-const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
 
 function isValidBookPayload(value) {
@@ -179,7 +180,8 @@ export default function BookDetail() {
     }
   }, [book, loading]);
 
-  const bookLanguage = publicBook && BENGALI_RE.test(`${publicBook.title || ""} ${publicBook.description || ""} ${publicBook.short_description || ""}`) ? "bn" : "en";
+  const bookLanguage = publicBook ? languageOfBook(publicBook) : "en";
+  const bookGenres = publicBook ? genresOfBook(publicBook).map((genre) => genre.replace(/-/g, " ")) : [];
   const rights = publicBook?.publication_workflow?.rights || {};
   const bookSchemaAllowed = publicBook?.public_json_ld_enabled === true || publicBook?.slug === LIVE_APPROVED_SLUG || (
     rights?.rights_tier === "A"
@@ -195,16 +197,15 @@ export default function BookDetail() {
     ...(publicBook.cover_image_url ? { "image": publicBook.cover_image_url } : {}),
     "bookFormat": "https://schema.org/EBook",
     "inLanguage": bookLanguage,
+    ...(bookGenres.length ? { "genre": bookGenres } : {}),
     "author": { "@type": publicBook.author && publicBook.author !== "The Earnalism" ? "Person" : "Organization", "name": publicBook.author || "The Earnalism" },
     "publisher": { "@type": "Organization", "name": "The Earnalism" },
     "url": `${SITE_URL}/book/${publicBook.slug}`,
     "mainEntityOfPage": `${SITE_URL}/book/${publicBook.slug}`,
     "numberOfPages": publicBook.page_count || undefined,
     ...(publicBook.slug === LIVE_APPROVED_SLUG ? {
-      "genre": "Gothic fiction",
-      "isAccessibleForFree": true,
       "copyrightYear": 1897,
-    } : { "isAccessibleForFree": true }),
+    } : {}),
   } : null;
 
   if (loading) return (
@@ -287,7 +288,7 @@ export default function BookDetail() {
         </div>
 
         <div className="lg:col-span-7 book-detail-reference__details">
-          <div className="overline mb-5">{publicBook.category_slug?.replace(/-/g, ' ')}</div>
+          <div className="overline mb-5" data-testid="book-discovery-genres">{bookGenres.join(" · ")}</div>
           <h1 className={detailPresentation.titleClassName}>{publicBook.title}</h1>
           {publicBook.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {publicBook.author}</p>}
           {publicBook.subtitle && <p className="font-serif-display italic text-lg sm:text-[1.32rem] text-burgundy-soft mt-5 leading-snug">{publicBook.subtitle}</p>}
@@ -306,7 +307,7 @@ export default function BookDetail() {
                 <p><strong className="text-burgundy">Source:</strong> {DRACULA_SOURCE_NOTE}</p>
                 <p><strong className="text-burgundy">Rights status:</strong> {DRACULA_RIGHTS_NOTE}</p>
                 <p><strong className="text-burgundy">First published:</strong> 1897</p>
-                <p><strong className="text-burgundy">Audio:</strong> Audiobooks appear only after release-gate evidence approves them.</p>
+                <p><strong className="text-burgundy">Audio:</strong> Audiobooks are offered only where listening is available for this edition.</p>
               </div>
             </div>
           )}
@@ -379,8 +380,8 @@ export default function BookDetail() {
             <div className="book-experience-panel__item">
               <ShieldCheck size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
-                <strong>Release truth preserved</strong>
-                <p>Reader, cover, rights, and audio states follow production metadata instead of marketing claims.</p>
+                <strong>Know what’s available</strong>
+                <p>Each edition shows its current reading and listening options before you begin.</p>
               </div>
             </div>
           <div className="mt-8" data-testid="book-share">

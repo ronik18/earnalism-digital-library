@@ -158,6 +158,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/components/ReferencePublicPages.test.jsx \
   src/pages/Library.test.jsx \
   src/pages/Library.integration.test.jsx \
+  src/pages/BookDetail.discovery.test.jsx \
   src/lib/libraryDiscovery.test.js \
   src/lib/libraryCatalog.test.js \
   src/lib/libraryFilters.test.js \

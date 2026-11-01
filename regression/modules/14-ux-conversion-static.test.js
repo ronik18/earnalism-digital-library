@@ -450,7 +450,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetailPresentation).toContain('book?._readerManifest?.access?.reading_pass?.free_entitlement === true');
     expect(bookDetailPresentation).toContain('primaryReadHref: readerRuntimeAvailable ? readerHref : "/library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
-    expect(bookDetail).toContain("Audio:</strong> Audiobooks appear only after release-gate evidence approves them.");
+    expect(bookDetail).toContain("Audio:</strong> Audiobooks are offered only where listening is available for this edition.");
     expect(bookDetail).toContain('data-testid="book-reading-pass"');
     expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="book-experience-truth"');
@@ -822,7 +822,7 @@ describe("UX conversion static signals", () => {
     expect(publicLaunchSources).not.toContain("Approved Tier A Core Reading Candidate");
     expect(publicLaunchSources).toContain("audiobook_enabled: false");
     expect(publicLaunchSources).toContain("generate_audiobook: false");
-    expect(publicLaunchSources).toContain("Audiobooks appear only after release-gate evidence approves them.");
+    expect(publicLaunchSources).toContain("Audiobooks are offered only where listening is available for this edition.");
     expect(publicLaunchSources).not.toMatch(/audiobook experience in private review/i);
     expect(publicLaunchSources).not.toMatch(/\bAudio (is )?not available yet\b/i);
     expect(publicLaunchSources).not.toMatch(/\bDracula audiobook is not available yet\b/i);

@@ -22,7 +22,7 @@ const activeLabelByState = {
 const routes = [
   { id: "home", path: "/" },
   { id: "library", path: "/library" },
-  { id: "bengali-classics", path: "/library?language=bn&availability=reader-ready" },
+  { id: "bengali-classics", path: "/library?language=bn" },
   { id: "english-classics", path: "/library?language=en" },
   { id: "audiobooks", path: "/library?availability=approved-audiobook" },
   { id: "book-detail", path: "/book/a-ghost-story" },
