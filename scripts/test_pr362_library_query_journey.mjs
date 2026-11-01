@@ -157,7 +157,7 @@ async function assertCurrentControlledLaunchResults(page, name) {
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
   for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
     const previousCount = shownCount - nextCount;
-    const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
+    const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Available to read`, exact: true });
     await more.click();
     await assertDisplayedSlugs(page, fixtureOrder.slice(0, shownCount));
     const firstNewCover = referenceSurface(page).getByTestId(`reference-book-${fixtureOrder[previousCount]}`).locator("a[href]").first();
@@ -204,7 +204,7 @@ async function assertApprovedAudioWithoutRuntimeCard(page, name) {
   const cards = referenceSurface(page).getByTestId(`reference-book-${approvedAudioWithoutRuntimeSlug}`);
   await cards.first().waitFor();
   const count = await cards.count();
-  assert.equal(count, 2, `${name}: approved mixed-format edition must remain present in both Live now and Audiobooks shelves`);
+  assert.equal(count, 1, `${name}: a mixed-format edition must appear once across shelves`);
   for (let index = 0; index < count; index += 1) {
     const card = cards.nth(index);
     await expectText(card.locator(".reference-book-tile__status"), "Live", `${name}: approved mixed-format edition became coming soon`);
@@ -212,7 +212,7 @@ async function assertApprovedAudioWithoutRuntimeCard(page, name) {
     await detail.waitFor();
     assert.equal(await detail.getAttribute("href"), `/reader/${approvedAudioWithoutRuntimeSlug}`, `${name}: approved mixed-format preview lost its reader destination`);
     assert.equal(await card.getByRole("link", { name: "Notify me", exact: true }).count(), 0, `${name}: approved mixed-format edition redirected to Notify me`);
-    assert.equal(await card.getByText("Listening unavailable", { exact: true }).count(), 1, `${name}: unavailable Reader runtime was not explained truthfully`);
+    assert.equal(await card.getByRole("link", { name: "Listen", exact: true }).count(), 0, `${name}: an unqualified audio runtime must not expose a Listen link`);
   }
 }
 
