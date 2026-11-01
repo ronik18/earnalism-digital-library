@@ -26,10 +26,13 @@
     "purchase_guard_source.py": "19578982f72fc0377c5c70cdd8f594e8a19838fcc3aeed6db535f5f3c6a052de",
     "qualify_stable_rollback_profile.py": "de065e5e6d2c65965e00a00996084ff045576c0248921f8c7fb569e83b3e3fea",
     "reader612_native_observer.py": "e83bea335b404861735a2d959c95eb4e7716a04919e29df7ffd9a89507d4e9c2",
-    "reader612_native_restore.py": "71fc08e4b5de754be54b1d56aab8060c34da7e8920a866dce5c9515de98653cf",
+    "reader612_native_restore.py": "c97d82f5f13faa57bbb7f4aa2504f526e1cb6542b814d364ec6a6269364b714e",
     "reader612_protected_approval.py": "a7753e8f0a7c79c7ce18037aa049bdc7c416112834092b0fcbc9420ba2d5e326",
-    "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129"
+    "reader612_recovery_source.py": "8b91308b311bd88216b14d5066d0a1a6adaa05d451bd69709dcc898b4f06b129",
+    "reader612_phase_bridge.py": "1181b6004d191fcbc5248f4eceeee1eb4155636a3af6c649ef1ef7c07050e10b",
+    "reader612_phase_collectors.py": "6d3fe2673f2d1cc424681570144ddd3f504cac701204f0931363246fb9e7e333"
   },
-  "controller_integration_status": "SOURCE_BOUND_GITHUB_PROTECTED_BACKEND_REVIEW_RESOLVER_NO_CURRENT_APPROVAL_OR_EXECUTION",
-  "approval_workflow_sha256": "692189b0fb202714adc53270d0700abba9690f602e09d89365b6e50fb7c9b6c4"
+  "controller_integration_status": "SOURCE_BOUND_PHASE_BRIDGE_AND_READ_ONLY_COLLECTORS_NO_CURRENT_APPROVAL_OR_EXECUTION",
+  "approval_workflow_sha256": "692189b0fb202714adc53270d0700abba9690f602e09d89365b6e50fb7c9b6c4",
+  "acceptance_contract_sha256": "4733989a26447910a75d7c49d4d16940b9c9815f68ad00fbc1068e11f5d38e9d"
 }

@@ -27,18 +27,20 @@ def journal_identity(journal):
  return digest(rows)
 def support_identity():
  root=Path(__file__).resolve().parent
- names=('india_release_provider_adapter.py','reader612_recovery_source.py','reader612_native_observer.py','reader612_protected_approval.py','india_release_observer.py','india_protected_runner.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py')
+ names=('india_release_provider_adapter.py','reader612_recovery_source.py','reader612_native_observer.py','reader612_protected_approval.py','india_release_observer.py','india_protected_runner.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py','reader612_phase_bridge.py','reader612_phase_collectors.py')
  rows={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names}
+ rows['acceptance_contract']=digest(json.loads((root.parent/'internal/release/reader612_phase_acceptance.json').read_text()))
  rows['approval_workflow']=hashlib.sha256((root.parent/'.github/workflows/reader612-protected-approval.yml').read_bytes()).hexdigest()
  return digest(rows)
 def qualify_controller_preparation(binding):
  root=Path(__file__).resolve().parent
  need(binding.get('execution_authorized') is False and binding.get('native_qualified') is False,'Preparation cannot authorize execution')
- expected={'reader612_native_restore.py','reader612_recovery_source.py','reader612_native_observer.py','reader612_protected_approval.py','india_release_observer.py','india_protected_runner.py','india_release_provider_adapter.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py'}
+ expected={'reader612_native_restore.py','reader612_recovery_source.py','reader612_native_observer.py','reader612_protected_approval.py','india_release_observer.py','india_protected_runner.py','india_release_provider_adapter.py','backend_upload_payload.py','purchase_guard_source.py','build_runtime_source_manifest.py','qualify_stable_rollback_profile.py','reader612_phase_bridge.py','reader612_phase_collectors.py'}
  files=binding.get('controller_files',{})
  need(set(files)==expected,'Exact controller dependency inventory required')
  for name,h in files.items():need(h==hashlib.sha256((root/name).read_bytes()).hexdigest(),'Controller dependency mismatch: '+name)
  need(binding.get('approval_workflow_sha256')==hashlib.sha256((root.parent/'.github/workflows/reader612-protected-approval.yml').read_bytes()).hexdigest(),'Approval workflow source mismatch')
+ need(binding.get('acceptance_contract_sha256')==digest(json.loads((root.parent/'internal/release/reader612_phase_acceptance.json').read_text())),'Reviewed acceptance contract mismatch')
  return {'result':'PASS_OFFLINE_CONTROLLER_SOURCE_BINDING_ONLY','native_qualified':False,'execution_authorized':False,'authentic_gate_integration':'SOURCE_BOUND_GITHUB_PROTECTED_REVIEW_RESOLVER_NO_CURRENT_APPROVAL','actual_native_observer_transport':'NOT_EXECUTED'}
 def validate_binding(b):
  need(isinstance(b,dict) and set(b)==FIELDS,'Exact complete binding required')

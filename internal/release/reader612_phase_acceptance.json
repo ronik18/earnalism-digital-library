@@ -1,0 +1,74 @@
+{
+  "schema": "earnalism.reader612.phase-acceptance.v1",
+  "frontend_deployment_id": "dpl_83KVsPijkuNRopHVhtSnzz9QhZPs",
+  "frontend_source_sha": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
+  "books": {
+    "the-selfish-giant": {
+      "slug": "the-selfish-giant",
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+      "audiobook_package_version": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+      "audiobook_duration_ms": 777120,
+      "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp"
+    },
+    "the-open-window": {
+      "slug": "the-open-window",
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "audiobook_delivery_mode": "PROTECTED_PACKAGE_V2",
+      "audiobook_package_version": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "audiobook_duration_ms": 491436,
+      "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+      "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp"
+    }
+  },
+  "covers": {
+    "the-selfish-giant:cover_url": {
+      "path": "/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "sha256": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+      "bytes": 141134
+    },
+    "the-selfish-giant:back_cover_url": {
+      "path": "/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+      "sha256": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
+      "bytes": 90250
+    },
+    "the-open-window:cover_url": {
+      "path": "/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+      "sha256": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+      "bytes": 120576
+    },
+    "the-open-window:back_cover_url": {
+      "path": "/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+      "sha256": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
+      "bytes": 67398
+    }
+  },
+  "runtime_file_count": 1950,
+  "prior_signed_protocol": {
+    "frontend_source_sha": "ca37aee6e6233392987611ff0f84a44179e27410",
+    "frontend_deployment_id": "dpl_B8ZiHR9NsAHAo4nxMNgagnGpN4my",
+    "proof_source_sha": "02b176fd59038f3c87b2828cb547b9cf39a2a98d",
+    "native_receipt_sha256": "87f732064d113bc79555a8044e9b4e605465de8c42de04e07d612ecddd60b1cc",
+    "qualification_receipt_sha256": "2726caf15d2ec4bbadb2c50afa95343cb761d89c88d33acdae3cff897840d669",
+    "technical_status": "PASS_NATIVE_CLOSED_RECOVERY",
+    "config_sha256": "d67446bab1a77a1d52a45a548d05fce542917623136274fc4c200df151717861",
+    "protected_path_git_objects": {
+      "frontend/api": "d349b50a1bfcb41a76b0aaa0f48b68bacf9a5101",
+      "frontend/src/lib/api.js": "829358196f602b51f91515941d8cddf76b977d2f",
+      "frontend/src/lib/paymentReceipt.js": "e12dc8b95e4287becab2c13b7f431eae5927ca0d",
+      "frontend/src/lib/readingPassApi.js": "ab6e4e165bba2cd572250c5a78bb995462e01e89",
+      "frontend/vercel.json": "57e0a10fd25c1cb0bf26e0b63ae40e3f286309ce"
+    },
+    "authority_limit": "Technical unchanged signed protocol only, never historical execution authority"
+  },
+  "phase_policy": {
+    "role_source_sha": "fed035bf88c6a878a37679828c219c29997ad496",
+    "role_runtime_sha256": "014565f50c637dd24389d825761d2f3efc0fceb3c339d2c88a4c8e5573d2cad3",
+    "baseline_deployment_id": "29df0933-6abb-49e1-a2e0-4e9df5d96a80",
+    "baseline_runtime_sha256": "28f3da2e95f9bb7c010fbb705bd463f69682161296fa6a2d2c28b2d1678a6b00"
+  },
+  "preservation_scope": "Loaded source/public metadata/auth-denial plus unchanged protocol/financial handlers, not new paid playback/content/mobile proof"
+}
