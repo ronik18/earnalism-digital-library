@@ -1,12 +1,12 @@
 {
   "schema": "earnalism.purchase-guard-source.v2",
-  "state": "OPEN",
+  "state": "CLOSED",
   "approved_merged_584_sha": "e79e76d9b060bd7bf72e87a0de7452e8135cceb7",
   "approved_base_server_sha256": "fba827a9d898d83a91c07fa22d094fbfc3f8df4dd872be86c56941d9b6a55e81",
   "closed_server_sha256": "b362d8c2ed5dfc39d30d811fdd5dfae6f2f54d47bb9490746dba4fbce4bc817c",
   "owner_receipt_path": "internal/legal/purchase_guard_owner_acceptance.json",
   "owner_receipt_sha256": "119a47b7f412f736be7b64347840e78fd2d9c7dcb23f63111ab009eba499dcd5",
-  "application_source_sha": "178307a8250c04d04d158f569da0ace400c14233",
+  "application_source_sha": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
   "application_server_sha256": "fb2ccb64ede4fa28612129b95489615b2ca3c31a40dafae7e8b76016a2948bdc",
   "application_closed_server_sha256": "f897a827a1f83409f51bfae310d72a8de343f5f1d017e2a70195510b99203c72"
 }

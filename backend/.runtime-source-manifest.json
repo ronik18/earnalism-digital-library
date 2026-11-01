@@ -9654,8 +9654,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 92986,
-      "sha256": "ebdb19cd0aa9c50db89643e59437c49fa6b856b777d4335656c53eec26083520"
+      "bytes": 92000,
+      "sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195"
     },
     {
       "path": "release_proxy_auth.py",
@@ -9689,8 +9689,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 621157,
-      "sha256": "59f74bd349434da1d11b496ae6cd4593e27718fdf4c54c7bcd99e51205560039"
+      "bytes": 621721,
+      "sha256": "f897a827a1f83409f51bfae310d72a8de343f5f1d017e2a70195510b99203c72"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9753,5 +9753,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "c0e12042697c2567283519a1ebbf8e268cd9cb4d35afd8ca7414fe99068886cc"
+  "expected_sha256": "014565f50c637dd24389d825761d2f3efc0fceb3c339d2c88a4c8e5573d2cad3"
 }

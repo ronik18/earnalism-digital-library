@@ -1,0 +1,10 @@
+{
+  "schema": "earnalism.reader612-recovery-source.v1",
+  "role": "PRIOR_READER_CORE_CLOSED_RECOVERY",
+  "base_source_sha": "3fe9bc598d5c7fa1a8f1d0265bcba0ed704b5a92",
+  "prior_reader_source_sha": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
+  "prior_reader_sha256": "47c9eba3b121bbbbf7d21974dee6e70937f0d75912f2a0946efb267f93be8195",
+  "closed_server_sha256": "f897a827a1f83409f51bfae310d72a8de343f5f1d017e2a70195510b99203c72",
+  "execution_authorized": false,
+  "native_qualified": false
+}
