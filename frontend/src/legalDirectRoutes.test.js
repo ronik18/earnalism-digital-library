@@ -27,7 +27,8 @@ describe("public legal direct-route contract", () => {
     expect(legalRenderer).toContain('canonicalPath="/privacy"');
     expect(legalRenderer).toContain('canonicalPath="/terms"');
     expect(legalRenderer).toContain('canonicalPath="/copyright"');
-    expect(legalPages).toContain("free preview of pages 1–3");
+    expect(legalPages).toContain("For editions requiring a Reading Pass, pages 1–3 provide a free preview");
+    expect(legalPages).toContain("Separately offered free Reader access remains subject to its stated eligibility.");
     expect(legalPages).toContain("page 4 onward requires a valid Reading Pass entitlement");
     expect(legalPages).toContain("₹49 for 30 minutes");
     expect(legalRenderer).toContain('to="/contact?intent=rights"');
