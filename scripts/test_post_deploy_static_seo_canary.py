@@ -44,8 +44,12 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertEqual(self.inspect("/reader/the-adventures-of-sherlock-holmes", reader)["result"], "PASS")
 
     def test_current_approved_pricing_html_passes(self) -> None:
-        html = page(title="Reading Passes | The Earnalism", description="One-time prepaid Reading Passes for eligible online reading and released audiobooks in India. No subscription or automatic renewal.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="Paid checkout is unavailable.")
+        html = page(title="Reading Passes | The Earnalism", description="One-time prepaid Reading Passes for eligible online reading and released audiobooks in India. No subscription or automatic renewal.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="One-time prepaid Reading Passes for eligible online reading and released audiobooks in India. No subscription or automatic renewal.")
         self.assertEqual(self.inspect("/pricing", html)["result"], "PASS")
+
+    def test_pricing_enabled_metadata_cannot_hide_disabled_checkout_body(self) -> None:
+        html = page(title="Reading Passes | The Earnalism", description="One-time prepaid Reading Passes for eligible online reading and released audiobooks in India.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="Paid checkout is unavailable.")
+        self.assertEqual(self.inspect("/pricing", html)["result"], "FAIL")
 
     def test_obsolete_and_unsafe_html_fails(self) -> None:
         html = page(title="Earnalism | Bengali and English Classics", description="Chapter 1 free", h1="A library made for lingering", canonical="https://theearnalism.com/", body="Free audiobook preview https://storage.example/audio.mp3")

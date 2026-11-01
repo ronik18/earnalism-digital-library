@@ -421,6 +421,8 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         required = "one-time prepaid reading passes for eligible online reading and released audiobooks in india." if PAID_COMMERCE_ENABLED else "reading pass purchases are not available in this launch."
         if required not in description:
             failures.append("Pricing description does not match controlled commerce availability")
+        if PAID_COMMERCE_ENABLED and any(phrase in text for phrase in ("paid checkout is unavailable", "reading pass purchases are not available")):
+            failures.append("Pricing body contradicts enabled controlled commerce")
     elif policy["kind"] == "library" and "library" not in title:
         failures.append("missing Library route identity")
     elif policy["kind"] == "reader" and normalize(policy["title"]) not in title:
