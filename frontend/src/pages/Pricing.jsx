@@ -265,7 +265,7 @@ function PricingAvailable() {
           </h1>
           <div className="gold-rule-thin mx-auto mt-7" />
           <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] mt-7 max-w-2xl mx-auto">
-            {PUBLIC_ACCESS_COPY} When you are ready to continue a reader-ready classic, add reading time to your wallet. {READING_TIME_COPY}
+            {PUBLIC_ACCESS_COPY} For pass-required editions, add reading time when you are ready to continue. {READING_TIME_COPY}
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             {PUBLIC_READER_EXPOSURE_ENABLED ? (

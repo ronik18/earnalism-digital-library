@@ -11,7 +11,8 @@ const publicationContractPath = path.join(frontendDir, "static-seo", "controlled
 const editorialContractPath = path.join(frontendDir, "static-seo", "editorial-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const brandImage = siteUrl + "/assets/brand/earnalism-brand-lockup.png";
-const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
+const productCopy = JSON.parse(await readFile(path.join(frontendDir, "src/content/productCopy.json"), "utf8"));
+const accessCopy = `${productCopy.readerAccess} ${productCopy.listeningAccess}`;
 const forbiddenCopy = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const headStart = "<!-- earnalism-static-seo:start -->";
 const headEnd = "<!-- earnalism-static-seo:end -->";
@@ -65,7 +66,7 @@ async function contracts() {
     && editorial.journal && editorial.journal.canonical_route === "/journal"
     && articles.every((article) => article.slug && article.title && article.excerpt && article.author);
   if (!validBooks || !validEditorial) throw new Error("Static SEO contract is stale or invalid. Refresh the checked-in public-safe contracts before building.");
-  return { books, releaseHeld, unavailableRoutes: unavailableTitleRoutes(liveApprovedSlugs), editorial: { ...editorial, articles } };
+  return { books, releaseHeld, paidCommerceEnabled: controlledLaunch.public_paid_commerce_enabled === true, unavailableRoutes: unavailableTitleRoutes(liveApprovedSlugs), editorial: { ...editorial, articles } };
 }
 
 function removeManagedHead(source) {
@@ -130,20 +131,24 @@ function webPage(title, description, route) {
   return { "@context": "https://schema.org", "@type": "WebPage", name: title, description, url: absolute(route), isPartOf: { "@type": "WebSite", name: "The Earnalism Digital Library", url: siteUrl } };
 }
 
-function standardPages(editorial, { releaseHeld = false, releasedBookCount = 0 } = {}) {
+function standardPages(editorial, { releaseHeld = false, releasedBookCount = 0, paidCommerceEnabled = false } = {}) {
   const releaseCopy = releaseHeld
     ? "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed."
     : accessCopy;
+  const commerceAvailable = paidCommerceEnabled && !releaseHeld;
+  const commerceCopy = releaseHeld ? releaseCopy : commerceAvailable
+    ? "One-time prepaid Reading Passes for eligible online reading and released audiobooks in India. No subscription or automatic renewal. View current offers and terms before purchase."
+    : "Reading Pass purchases are not available in this launch. Explore " + releasedBookCount + " released India Reader previews.";
   const pages = [
-    ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + releaseCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
-    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + releaseCopy, "Library", "Bengali and English classics.", "/library", "Explore released editions"],
-    ["/pricing", "Reading Passes | The Earnalism", releaseHeld ? releaseCopy : "Reading Passes and paid checkout are unavailable in this launch. Explore " + releasedBookCount + " released India Reader previews.", "Reading Passes", "Paid checkout is unavailable.", "/library", "Explore the Library"],
-    ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
+    ["/", "Earnalism | Bengali and English Classics", "Bengali and English classics for a curious life. " + releaseCopy, "The Earnalism Digital Library", productCopy.homeTitle, "/library", "Explore the Library"],
+    ["/library", "Library | The Earnalism Digital Library", "Find a familiar voice, a fresh perspective, or the beginning of your next reading habit. " + releaseCopy, "Library", "The Library", "/library", "Explore released editions"],
+    ["/pricing", "Reading Passes | The Earnalism", commerceCopy, "Reading Passes", commerceAvailable ? "Reading time, at your own pace." : "Reading Pass purchases are currently unavailable.", "/library", "Explore the Library"],
+    ["/about", "About Earnalism | The Earnalism Digital Library", "Bengali and English classics for a curious life. Read available editions online, discover selected audiobooks, and return when a story calls you back.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
     ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
     ["/privacy", "Privacy | The Earnalism", "How the current Earnalism website handles information used to operate the service.", "Earnalism", "Privacy", "/contact?intent=reader", "Privacy requests"],
     ["/terms", "Terms of Use | The Earnalism", "The terms that apply to the current Earnalism reading experience.", "Earnalism", "Terms of Use", "/contact?intent=reader", "Contact the library desk"],
     ["/copyright", "Copyright and Content | The Earnalism", "Information about Earnalism content, intellectual property, and rights concerns.", "Earnalism", "Copyright and Content", "/contact?intent=rights", "Raise a rights concern"],
-    ["/micro-story", "A Quiet Reading Invitation | The Earnalism", releaseHeld ? releaseCopy : "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
+    ["/micro-story", "A Quiet Reading Invitation | The Earnalism", releaseHeld ? releaseCopy : "Find an available Earnalism edition and begin with its preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
   ].map((row) => ({
     path: row[0], title: row[1], description: legalPolicies[row[0]]?.description || row[2], robots: row[0] === "/pricing" ? "noindex,follow" : undefined, jsonLd: [webPage(row[1], legalPolicies[row[0]]?.description || row[2], row[0])],
     staticBody: legalPolicies[row[0]] ? legalBody(legalPolicies[row[0]]) : shell(row[3], row[4], row[2], [{ href: row[5], label: row[6] }]),
@@ -177,6 +182,8 @@ function standardPages(editorial, { releaseHeld = false, releasedBookCount = 0 }
   return [...pages, journal, ...articles, ...privatePages];
 }
 
+// Public-preview metadata does not establish the full edition’s access pricing.
+// Omit unsupported pricing assertions until the contract supplies that scope.
 function publicationPages(books) {
   return books.flatMap((book) => {
     const bookRoute = "/book/" + book.slug;
@@ -188,7 +195,7 @@ function publicationPages(books) {
       ? "Listening to " + book.title + " requires an active Reading Pass from the first second."
       : "Listening is not available for " + book.title + " in the current release.";
     return [
-      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: coverImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: coverImage, isAccessibleForFree: false }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the 3-page preview" }], [accessCopy]) },
+      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: coverImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: coverImage }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the 3-page preview" }], [accessCopy]) },
       { path: readerRoute, title: "Read " + book.title + " | The Earnalism Reader", description: accessCopy + " This reader route is noindex.", canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Reader", "Read " + book.title + ".", accessCopy, [{ href: bookRoute, label: "Book details" }]) },
       { path: listenerRoute, title: "Listen to " + book.title + " | The Earnalism", description: listening, canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Listening", book.title, listening, [{ href: bookRoute, label: "Book details" }], ["Public audio preview: 0 seconds.", accessCopy]) },
     ];
@@ -222,7 +229,7 @@ async function main() {
   // metadata only from published backend articles, including newly authored posts.
   await writeFile(path.join(buildDir, "journal-app-shell.html"), source, "utf8");
   const safe = await contracts();
-  const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld, releasedBookCount: safe.books.length }), ...publicationPages(safe.books), ...unavailablePages(safe.unavailableRoutes)];
+  const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld, releasedBookCount: safe.books.length, paidCommerceEnabled: safe.paidCommerceEnabled }), ...publicationPages(safe.books), ...unavailablePages(safe.unavailableRoutes)];
   const paths = new Set();
   for (const page of pages) {
     if (paths.has(page.path)) throw new Error("Duplicate static SEO route: " + page.path);

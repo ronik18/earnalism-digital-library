@@ -21,7 +21,7 @@ export default function MyLibrary() {
         </header>
 
         <div className="my-library-v2__availability" aria-label="Library availability">
-          <div><BookOpen size={16} aria-hidden="true" /><span><b>Books</b><small>Browse reader-ready editions</small></span></div>
+          <div><BookOpen size={16} aria-hidden="true" /><span><b>Books</b><small>Browse available editions</small></span></div>
           <div><Headphones size={16} aria-hidden="true" /><span><b>Listening</b><small>Available only when a title is released</small></span></div>
         </div>
 
@@ -31,7 +31,7 @@ export default function MyLibrary() {
             <p className="my-library-v2__section-kicker">Your shelf</p>
             <h2 id="my-library-empty-title">No saved titles to show.</h2>
             <p>This page doesn’t yet show saved books or reading progress. Explore the Library to choose your next read.</p>
-            <Link to="/library?availability=reader-ready" data-testid="my-library-browse-ready">Browse reader-ready editions <ArrowUpRight size={15} aria-hidden="true" /></Link>
+            <Link to="/library" data-testid="my-library-browse-ready">Browse available editions <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </section>
 
           <aside className="my-library-v2__next" aria-labelledby="my-library-next-title">

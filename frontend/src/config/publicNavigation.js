@@ -1,7 +1,9 @@
+import { listeningFilterFromSearch } from "../lib/libraryFilterState";
+
 export const PUBLIC_NAV_ITEMS = Object.freeze([
   { key: "home", to: "/", label: "Home" },
   { key: "library", to: "/library", label: "Library" },
-  { key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
+  { key: "bengali", to: "/library?language=bn", label: "Bengali Classics" },
   { key: "english", to: "/library?language=en", label: "English Classics" },
   { key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" },
   { key: "reading-pass", to: "/pricing", label: "Reading Pass" },
@@ -16,7 +18,7 @@ export function isPublicNavItemActive(item, location) {
   if (item.key === "journal") return pathname === "/journal" || pathname.startsWith("/journal/");
   if (item.key === "home") return pathname === "/";
   if (pathname === "/library") {
-    const activeKey = params.get("availability") === "approved-audiobook"
+    const activeKey = listeningFilterFromSearch(params) === "available"
       ? "audiobooks"
       : params.get("language") === "bn"
         ? "bengali"

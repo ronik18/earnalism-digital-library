@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Check, ChevronDown, Clock3, Gift, Headphones, Landmark, Feather, Eye, CirclePause, Heart, CreditCard, MonitorSmartphone, Languages } from 'lucide-react';
 import { availableReadingPasses } from '../lib/readingPassOffers';
+import { LISTENING_ACCESS_COPY, READING_TIME_COPY } from '../lib/publicAccessCopy';
 import '../styles/reading-passes.css';
 
 const ART = '/assets/commerce/';
@@ -9,10 +10,10 @@ const PERSONAS = [
   ['new-reader', 'For the first chapter', 'Let curiosity choose your next companion.'],
   ['daily-reader', 'For your everyday pause', 'A little reading. A little room for yourself.'],
   ['deep-reader', 'For the long way home', 'Some stories deserve an unhurried evening.'],
-  ['audio-reader', 'For a story in your ear', 'Discover listening editions as they become available.'],
+  ['audio-reader', 'For a story in your ear', 'Let an available audiobook accompany a quiet hour.'],
 ];
 const FAQ = [
-  ['Is a Reading Pass a subscription?', 'No. Reading Passes are one-time purchases and do not auto-renew. Choose another only when you want more reading time.'],
+  ['Is a Reading Pass a subscription?', 'No. Reading Passes are one-time purchases and do not auto-renew. Choose another only when you want more reading or listening time.'],
   ['How long is my pass valid?', 'Purchased unused Reading Pass minutes do not expire. A pass is a one-time purchase, not a subscription.'],
   ['Can I try a book before choosing?', 'Where a preview is available, the first 3 canonical text pages are free. Listening is available only for released audiobooks and requires an active Reading Pass.'],
 ];
@@ -28,13 +29,13 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
     <section className="rp-hero" aria-labelledby="rp-title">
       <div className="rp-hero-inner">
         <div className="rp-hero-copy">
-        <p>Purchases and edition delivery are currently available in India only. <Link to="/terms">Availability, refunds and terms</Link>.</p>
+        <p>Reading Pass purchases and online reading and listening are currently available in India only. <Link to="/terms">Availability, refunds and terms</Link>.</p>
           <p className="rp-eyebrow">READING PASSES</p>
           <h1 id="rp-title">Read more.<br/>Live the stories.</h1>
           <p className="rp-lede">For the pages that call you back.<br/>Make a little room for a world beyond your own.</p>
           <ul className="rp-hero-points">
             <li><Eye aria-hidden="true"/>3 free pages where a preview is available</li>
-            <li><Clock3 aria-hidden="true"/>Reading time runs only while you read</li>
+            <li><Clock3 aria-hidden="true"/>{READING_TIME_COPY}</li>
             <li><CirclePause aria-hidden="true"/>One-time passes. No auto-renewal.</li>
           </ul>
           <a className="rp-text-link" href="#reading-passes">Find your Reading Pass <ArrowRight aria-hidden="true"/></a>
@@ -82,15 +83,15 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
     <div className="rp-section rp-assurance" aria-label="Reading Pass essentials">
       <MiniFact icon={CreditCard} title="A clear choice">Price and validity together</MiniFact>
       <MiniFact icon={CirclePause} title="No auto-renewal">Another pass is your decision</MiniFact>
-      <MiniFact icon={Clock3} title="Time to read">Minutes used while reading</MiniFact>
+      <MiniFact icon={Clock3} title="Time to explore">{READING_TIME_COPY}</MiniFact>
       <MiniFact icon={Eye} title="A first glimpse">3 pages where available</MiniFact>
-      <MiniFact icon={Headphones} title="Listening">Audiobooks are unavailable in this launch</MiniFact>
+      <MiniFact icon={Headphones} title="Listening">{LISTENING_ACCESS_COPY}</MiniFact>
     </div>
 
     <section className="rp-section rp-rhythm" aria-labelledby="rp-rhythm-title">
       <h2 id="rp-rhythm-title">Less to think about. More to get lost in.</h2><p className="rp-center-copy">A simple way to make space for stories.</p>
       <div className="rp-rhythm-grid">
-        <article><Clock3 aria-hidden="true"/><h3>Your minutes</h3><p>A pass gives you reading time,<br/>across eligible editions.</p></article>
+        <article><Clock3 aria-hidden="true"/><h3>Your minutes</h3><p>Reading and listening time,<br/>where the edition allows.</p></article>
         <article><BookOpen aria-hidden="true"/><h3>Your curiosity</h3><p>Begin with a preview,<br/>where one is available.</p></article>
         <article><Heart aria-hidden="true"/><h3>Your own rhythm</h3><p>No recurring subscription.<br/>Choose when to come back.</p></article>
       </div>

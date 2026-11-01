@@ -1,3 +1,4 @@
+import productCopy from "../content/productCopy.json";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -31,6 +32,7 @@ import {
   PUBLIC_AUDIO_EXPOSURE_ENABLED,
   PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
+import { LIBRARY_READING_FORMS } from "../lib/libraryDiscovery";
 import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
 import LibraryBrowseShelf from "./LibraryBrowseShelf";
@@ -78,7 +80,7 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
           data-visual-mask="cover-art"
         />
         <span className={`reference-book-tile__status ${live ? "is-live" : "is-soon"}`} data-visual-mask="availability">
-          {live ? "Live" : "Coming soon"}
+          {live ? "Live" : "In preparation"}
         </span>
       </Link>
       <div className="reference-book-tile__details">
@@ -86,7 +88,8 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
         <span className="reference-book-tile__author" data-visual-mask="book-author">{book.author || "Earnalism edition"}</span>
         <div className="reference-book-tile__actions">
           {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Ask about title</Link>}
-          {audio.releaseApproved ? <span className="reference-book-tile__locked-audio">{audio.canShowControls ? "Reading Pass required" : "Listening unavailable"}</span> : null}
+          {showListen && availabilityOfBook(book) === "approved-audiobook" ? <Link to={`/listener/${book.slug}`}>Listen</Link> : null}
+          {availabilityOfBook(book) === "approved-audiobook" ? <span className="reference-book-tile__locked-audio">{audio.canShowControls ? "Pass required to listen" : "Listening unavailable"}</span> : null}
         </div>
       </div>
     </article>
@@ -143,8 +146,8 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
           <p className="reference-kicker">LITERATURE LIVES HERE</p>
-          <h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>
-          <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read in stillness, or listen as stories travel with you through the day.</p>
+          <h1 id="reference-home-title">{productCopy.homeTitle}</h1>
+          <p className="reference-home__lede">{productCopy.homeIntroduction}</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--burgundy" data-testid="home-reference-primary-cta">Explore the Library <ArrowRight aria-hidden="true" /></Link>
             {PUBLIC_AUDIO_EXPOSURE_ENABLED && <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline" data-testid="home-reference-listening-cta"><Headphones aria-hidden="true" />Enter the Listening Room <ArrowRight aria-hidden="true" /></Link>}
@@ -163,17 +166,17 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
       <section className="reference-home__journey" aria-labelledby="home-discovery-title">
         <div className="reference-home__discovery-intro">
           <div>
-            <p className="reference-kicker">A LIBRARY WITHOUT BORDERS</p>
+            <p className="reference-kicker">A LIBRARY WITHIN REACH</p>
             <h2 id="home-discovery-title">Discover. Read. Listen. Belong.</h2>
           </div>
           <div className="reference-home__discovery-copy">
-            <p>From cherished Bengali classics to world literature, The Earnalism Digital Library brings timeless books to your screen — and, where available, into your ears. A space for curious minds, quiet moments, and a deeper connection to the written word.</p>
+            <p>A spare moment can become a doorway. Return to familiar voices, meet an unfamiliar world, and carry a new thought into the rest of your day.</p>
             <Link to="/library" className="reference-text-link">Explore all books <ArrowRight aria-hidden="true" /></Link>
           </div>
         </div>
         <div className="reference-home__discovery-grid" aria-label="Explore the library by collection">
           {[
-            ["Bengali Classics", <>Timeless works that continue<br />to inspire.</>, "/assets/home-option-b/bengali-classics.webp", "/library?language=bn&availability=reader-ready"],
+            ["Bengali Classics", <>Timeless works that continue<br />to inspire.</>, "/assets/home-option-b/bengali-classics.webp", "/library?language=bn"],
             ["English Classics", <>Enduring voices from around<br />the world.</>, "/assets/home-option-b/english-classics.webp", "/library?language=en"],
             ["The Listening Room", <>Stories to hear in quiet moments,<br />on walks, and along the way.</>, "/assets/home-option-b/listening-room.webp", "/library?availability=approved-audiobook"],
             ["Browse the Library", <>Explore available editions<br />from the full catalogue.</>, "/assets/home-option-b/curated-collections.webp", "/library#library-collection"],
@@ -192,16 +195,16 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
           <p className="reference-kicker">THE EARNALISM READING PASS</p>
-          <h2 id="reference-pass-title">More books. A calmer you.</h2>
-          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? `${PUBLIC_PREVIEW_COPY} Continue from page 4 with a Reading Pass${startingPrice === null ? "" : ` from ₹${startingPrice}`}. One-time purchase · unused time never expires.` : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
+          <h2 id="reference-pass-title">Make room for another chapter.</h2>
+          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? `Begin with an available preview. For editions requiring a pass, continue beyond it with prepaid reading time${startingPrice === null ? "" : ` from ₹${startingPrice}`}. One-time purchase · unused time never expires.` : "Begin with an available preview. Reading Pass purchases are not available right now."}</p>
           <p className="reference-home__pass-listening-note">Where a title includes an approved audiobook, your literary journey may continue in voice as well as on the page.</p>
           {PUBLIC_PAID_COMMERCE_ENABLED ? <ul>
             <li><Clock3 aria-hidden="true" /><span><strong>Time that stays yours</strong><small>Unused Reading Pass time never expires.</small></span></li>
-            <li><BookOpen aria-hidden="true" /><span><strong>Read on any device</strong><small>Continue your books across supported screens.</small></span></li>
+            <li><BookOpen aria-hidden="true" /><span><strong>Read on supported devices</strong><small>Continue your books across supported screens.</small></span></li>
             <li><Headphones aria-hidden="true" /><span><strong>Listen where available</strong><small>Selected titles may offer an approved listening experience.</small></span></li>
           </ul> : <ul>
             <li><BookOpen aria-hidden="true" />Preview the first 3 pages of released titles</li>
-            <li><Clock3 aria-hidden="true" />A valid Reading Pass is required from page 4</li>
+            <li><Clock3 aria-hidden="true" />A valid Reading Pass is required beyond the preview on pass-required editions</li>
             <li><ShieldCheck aria-hidden="true" />Pass purchases are not available yet</li>
           </ul>}
           <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "View Reading Pass Plans" : "Browse the Library"}</Link>
@@ -210,8 +213,8 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
           <div className="reference-home__pass-cards" aria-label={PUBLIC_PAID_COMMERCE_ENABLED ? "Reading Pass options" : "Reading access"}>
             {!PUBLIC_PAID_COMMERCE_ENABLED ? [
               ["Begin with a preview", "3 pages", "Read the opening of an eligible title."],
-              ["Continue with a Pass", "Page 4+", "A valid Reading Pass is required."],
-              ["Passes not on sale", "Coming soon", "Purchases are not available yet."],
+              ["Continue where eligible", "Beyond the preview", "A valid Reading Pass is required on pass-required editions."],
+              ["Passes not on sale", "Unavailable", "Purchases are not available right now."],
             ].map(([title, value, copy]) => <article key={title}><h3>{title}</h3><strong className="reference-home__pass-price reference-home__pass-price--message">{value}</strong><p>{copy}</p></article>) : passes.length ? passes.map((pack) => <article key={pack.id} className={pack.recommended ? "is-featured" : ""}>
               {pack.recommended && <span className="reference-home__pass-badge">{illustrativePasses ? "Featured plan" : "Recommended"}</span>}
               <h3>{pack.minutes} Minutes</h3>
@@ -235,7 +238,7 @@ function ClockMark(props) {
 function CompactFilters({ language, reading, listening, genre, genres, sort, hideAll = false, showAllForGroups = [], drawer = false, onChange }) {
   const groups = [
     ["Language", language, [["all", "All languages"], ["bn", "Bengali"], ["en", "English"]], "language"],
-    ["Format", reading, [["all", "All forms"], ["novel", "Novels"], ["short-story", "Short stories"], ["poetry", "Poetry & essays"]], "reading"],
+    ["Format", reading, LIBRARY_READING_FORMS.map(({slug, name}) => [slug, name]), "reading"],
     ["Status", listening, [["all", "All releases"], ["available", "Audiobooks"], ["hidden", "Reader only"]], "listening"],
     ["Genre", genre, [["all", "All genres"], ...genres.map((value) => [value, value.replace(/-/g, " ")])], "genre"],
   ];
@@ -243,12 +246,12 @@ function CompactFilters({ language, reading, listening, genre, genres, sort, hid
   const shouldHideAllOption = (groupId, slug) => hideAll && slug === "all" && !showAllForGroups.includes(groupId);
   if (drawer) {
     return <>
-      <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Featured</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label>
+      <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Library order</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label>
       {drawerGroups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" data-filter-group={key} key={label}><legend>{label}</legend>{options.filter(([slug]) => !shouldHideAllOption(key, slug)).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}
       <fieldset className="reference-filter-group" data-filter-group="genre"><legend>Genre</legend><label className="reference-filter-select"><span className="sr-only">Genre</span><select value={genre} onChange={(event) => onChange("genre", event.target.value)}>{groups[3][2].map(([slug, name]) => <option value={slug} key={slug}>{name}</option>)}</select></label></fieldset>
     </>;
   }
-  return <>{groups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" data-filter-group={key} key={label}><legend>{label}</legend>{options.filter(([slug]) => !shouldHideAllOption(key, slug)).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}{sort !== undefined ? <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Featured</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label> : null}</>;
+  return <>{groups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" data-filter-group={key} key={label}><legend>{label}</legend>{options.filter(([slug]) => !shouldHideAllOption(key, slug)).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}{sort !== undefined ? <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Library order</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label> : null}</>;
 }
 
 function getRenderedFocusableControls(container) {
@@ -277,6 +280,7 @@ export function ReferenceLibrarySurface({
   filteredBooks,
   loading,
   catalogueState,
+  stage = "all",
   retryingCatalogue,
   onRetryCatalogue,
   query,
@@ -297,23 +301,24 @@ export function ReferenceLibrarySurface({
   const searchRef = useRef(null);
   const activeFilters = [
     ["language", language, {bn:"Bengali",en:"English"}[language] || language],
-    ["reading", reading, {novel:"Novels","short-story":"Short stories",poetry:"Poetry & essays"}[reading] || reading],
+    ["reading", reading, {novel:"Novels & novellas","short-story":"Short stories & collections",poetry:"Poetry & essays",nonfiction:"Nonfiction"}[reading] || reading],
     ["listening", listening, {available:"Audiobooks",hidden:"Reader only"}[listening] || listening],
     ["genre", genre, genre?.replace(/-/g," ")],
+    ["stage", stage, stage === "live" ? "Live editions" : "In preparation"],
   ].filter(([,value]) => value && value !== "all");
   const resultLabel = `${filteredBooks.length} ${filteredBooks.length === 1 ? "edition" : "editions"}`;
-  const filterKey = JSON.stringify([query,language,reading,listening,genre,sort,catalogueState]);
+  const filterKey = JSON.stringify([query,language,reading,listening,genre,sort,stage,catalogueState]);
   const clearSearch = () => { onSearch(""); requestAnimationFrame(() => searchRef.current?.focus()); };
   const clearFilters = () => { onResetFilters(); requestAnimationFrame(() => searchRef.current?.focus()); };
-  const live = filteredBooks.filter(isLive);
+  const live = filteredBooks.filter((book) => availabilityOfBook(book) === "reader-ready");
   const comingSoon = filteredBooks.filter((book) => !isLive(book));
-  const approvedAudio = filteredBooks.filter((book) => audiobookReleaseState(book).releaseApproved);
+  const approvedAudio = filteredBooks.filter((book) => availabilityOfBook(book) === "approved-audiobook");
   const catalogueUnavailable = catalogueState === "unavailable";
   const catalogueIsEmpty = catalogueState === "empty";
   const shelves = [
-    ["Live now", "Meet the editions on our shelves. Open a book for its reading options.", live],
-    ["Coming soon", "More stories are on their way. Leave your interest with us.", comingSoon],
-    ["Audiobooks", "Stories with an approved audio edition. Each book shows whether listening is available.", approvedAudio],
+    ["Available to read", "Find a familiar voice, a fresh perspective, or the beginning of your next reading habit.", live],
+    ["In preparation", "These editions are not available yet. Ask about a title that interests you.", comingSoon],
+    ["Audiobooks", "Stories with a voice. Open an edition to see its listening access.", approvedAudio],
   ];
   const update = (key, value) => onParam(key, value, key === "sort" ? "recently-approved" : "all");
   const closeFilters = () => {
@@ -382,7 +387,7 @@ export function ReferenceLibrarySurface({
         <div><p className="reference-kicker">THE EARNALISM LIBRARY</p><h1>The Library</h1><span>Find a familiar favourite. Make room for a new one.</span></div>
         <div className="reference-library__controls">
           <div className="reference-search"><Search aria-hidden="true" /><input ref={searchRef} type="search" data-testid="library-search" value={query} onChange={(event) => onSearch(event.target.value)} placeholder="Title or author" aria-label="Search the Library" />{query && <button type="button" className="reference-search-clear" aria-label="Clear search" onClick={clearSearch}><X aria-hidden="true" /></button>}</div>
-          <label className="reference-sort">Sort by<select data-testid="library-sort" value={sort} onChange={(event) => onParam("sort", event.target.value, "recently-approved")}><option value="recently-approved">Featured</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label>
+          <label className="reference-sort">Sort by<select data-testid="library-sort" value={sort} onChange={(event) => onParam("sort", event.target.value, "recently-approved")}><option value="recently-approved">Library order</option><option value="title">Title A–Z</option><option value="author">Author A–Z</option><option value="short-reads">Shortest first</option></select></label>
           <button ref={filterTriggerRef} className="reference-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(true)}><SlidersHorizontal aria-hidden="true" /> Filters{activeFilters.length > 0 && <span className="reference-filter-count">{activeFilters.length}</span>}</button>
         </div>
       </header>
@@ -390,15 +395,15 @@ export function ReferenceLibrarySurface({
         <p role="status" aria-live="polite" aria-atomic="true">{loading ? "Finding your next read…" : catalogueUnavailable ? "The Library is temporarily unavailable." : `${resultLabel}${query ? " found" : " to explore"}`}</p>
         {activeFilters.length > 0 && <div className="reference-active-filters" aria-label="Active filters">{activeFilters.map(([key,,label]) => <button key={key} type="button" aria-label={`Remove ${label} filter`} onClick={() => { update(key,"all"); requestAnimationFrame(() => searchRef.current?.focus()); }}>{label}<X aria-hidden="true" /></button>)}<button type="button" className="reference-clear-filters" onClick={clearFilters}>Clear filters</button></div>}
       </div>
-      <div className="reference-library__content">
+      <div className="reference-library__content" id="library-collection">
         <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} onChange={update} /><LibraryReadingPassCard /></aside>
         <section className="reference-library__shelves" aria-label="Library editions" aria-busy={loading}>
           {catalogueUnavailable ? <div className="reference-library__recovery" role="alert" data-testid="library-catalogue-error"><p>We couldn’t load the Library just now. Your search and filters are unchanged.</p><button type="button" className="reference-button reference-library__recovery-retry" data-testid="library-catalogue-retry" onClick={onRetryCatalogue} disabled={retryingCatalogue}>{retryingCatalogue ? "Trying again…" : "Try again"}</button></div> : null}
-          {loading ? <p className="reference-loading" role="status">Opening the collection…</p> : catalogueUnavailable ? null : catalogueIsEmpty && !filteredBooks.length ? <div className="reference-library__no-results" data-testid="library-catalogue-empty"><BookOpen aria-hidden="true" /><h2>The shelves are quiet for now.</h2><p>There are no editions in this collection yet. Please visit again soon.</p></div> : !filteredBooks.length ? <div className="reference-library__no-results" data-testid="library-no-results"><Search aria-hidden="true" /><h2>No stories found this time.</h2><p>{query ? <>Nothing matches “{query}”{activeFilters.length ? " with these filters" : ""}. Try another title or author.</> : "Try a different language, form or release option."}</p><div>{query && <button type="button" onClick={clearSearch}>Clear search</button>}{activeFilters.length > 0 && <button type="button" onClick={clearFilters}>Clear filters</button>}</div></div> : shelves.map(([title,copy,books]) => <LibraryBrowseShelf key={`${title}-${filterKey}`} title={title} copy={copy} books={books} renderBook={(book,index) => <BookTile key={book.slug} book={book} compact priority={index < 2} />} />)}
+          {loading ? <p className="reference-loading" role="status">Opening the collection…</p> : catalogueUnavailable ? null : catalogueIsEmpty && !filteredBooks.length ? <div className="reference-library__no-results" data-testid="library-catalogue-empty"><BookOpen aria-hidden="true" /><h2>The shelves are quiet for now.</h2><p>There are no editions in this collection yet. Please visit again soon.</p></div> : !filteredBooks.length ? <div className="reference-library__no-results" data-testid="library-no-results"><Search aria-hidden="true" /><h2>No stories found this time.</h2><p>{query ? <>Nothing matches “{query}”{activeFilters.length ? " with these filters" : ""}. Try another title or author.</> : "Try a different language, form or release option."}</p><div>{query && <button type="button" onClick={clearSearch}>Clear search</button>}{activeFilters.length > 0 && <button type="button" onClick={clearFilters}>Clear filters</button>}</div></div> : shelves.map(([title,copy,books]) => <LibraryBrowseShelf key={`${title}-${filterKey}`} title={title} copy={copy} books={books} renderBook={(book,index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={availabilityOfBook(book) === "approved-audiobook"} />} />)}
         </section>
       </div>
       <LibraryReadingPassCard compact />
-      {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters" onMouseDown={(event) => { if (event.target === event.currentTarget) closeFilters(); }}><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><div className="reference-library-drawer__body"><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll showAllForGroups={["listening"]} drawer onChange={update} /></div><div className="reference-library-drawer__footer"><p role="status" aria-live="polite">Filters update as you choose.</p><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>{loading ? "Return to Library" : `Show ${resultLabel}`}</button></div></div></div> : null}
+      {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters" onMouseDown={(event) => { if (event.target === event.currentTarget) closeFilters(); }}><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><div className="reference-library-drawer__body"><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} drawer onChange={update} /></div><div className="reference-library-drawer__footer"><p role="status" aria-live="polite">Filters update as you choose.</p><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>{loading ? "Return to Library" : `Show ${resultLabel}`}</button></div></div></div> : null}
     </div>
   );
 }

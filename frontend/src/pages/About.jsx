@@ -1,3 +1,4 @@
+import productCopy from "../content/productCopy.json";
 import useSEO from "../hooks/useSEO";
 import { Link } from "react-router-dom";
 import PublicPageFrame from "../components/PublicPageFrame";
@@ -6,16 +7,16 @@ import "../styles/editorial-support.css";
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=85";
 
 const PRINCIPLES = [
-  { title: "Our philosophy", body: "We believe books are long instruments. They earn their place in a reader's life by returning, season after season, to be opened again. Earnalism grows through restraint, not volume, so trust stays ahead of persuasion." },
-  { title: "What we curate", body: "Bengali classics, English classics, and reader-first editions move through source, rights, text QA, cover, and publication review before any public reading or listening claim is made." },
-  { title: "For readers", body: "Reader-ready titles are complete literary editions, not placeholders waiting for audio. Audiobooks appear only when approval evidence proves the listening room is ready." },
-  { title: "The Earnalism promise", body: "Read with depth. Curate with care. Publish with evidence. These are the standards we keep before a book, audiobook, or campaign becomes public." },
+  { title: "Our philosophy", body: "A good book can outlast the moment in which you meet it. A few pages may offer fresh language, a wider perspective or a useful question for study and work. What grows from that encounter is yours to shape." },
+  { title: "What we curate", body: "Beloved Bengali voices and enduring English classics, chosen with care. Discover the editions available in your location, with respect for the work, its history and the people behind it." },
+  { title: "For readers", body: "Read available editions online and discover selected audiobooks. Begin with a preview where offered; choose a prepaid Reading Pass when the edition requires one. No recurring subscription or automatic renewal." },
+  { title: "The Earnalism promise", body: "A library should invite discovery and earn trust. We keep access clear, care for the words, and leave you free to choose what to read next." },
 ];
 
 export default function About() {
   useSEO({
     title: "About Earnalism — Bengali and English Digital Library",
-    description: "Earnalism is a calm Bengali and English digital library where reader-ready classics are published with source care, graphical covers, and evidence-gated audiobooks.",
+    description: "Bengali and English classics for a curious life. Read available editions online, discover selected audiobooks, and return when a story calls you back.",
     image: HERO_IMG,
   });
   return (
@@ -26,7 +27,8 @@ export default function About() {
             <div>
               <p className="editorial-kicker">Our story · volume I</p>
               <h1 id="about-page-title">A quiet <em>reading room</em> for Bengali and English classics.</h1>
-              <p className="about-v3__lede">A small literary room with deep margins, graphical editions, and release truth before every public claim.</p>
+              <p className="about-v3__lede">{productCopy.aboutIntroduction}</p>
+              <p className="about-v3__benefit">{productCopy.aboutBenefit}</p>
             </div>
             <aside className="about-v3__library-note" aria-label="Begin with the Library">
               <span>From the reading desk</span>

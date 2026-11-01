@@ -7,7 +7,8 @@ const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const rootDir = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const contractDir = path.join(frontendDir, "static-seo");
-const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4. Listening is available only for released audiobooks and requires an active Reading Pass.";
+const productCopy = JSON.parse(await readFile(path.join(frontendDir, "src/content/productCopy.json"), "utf8"));
+const accessCopy = `${productCopy.readerAccess} ${productCopy.listeningAccess}`;
 const heldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 const forbidden = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const paidContinuation = ["Listening requires an active Reading Pass", "View Reading Passes", "Reading time is used only while you read"];
@@ -109,12 +110,15 @@ async function main() {
     }
     if (route === "/pricing") {
       state.assertions += 1;
-      if (!normalized.includes((releaseHeld ? heldCopy : "Reading Passes and paid checkout are unavailable in this launch").toLowerCase())) fail(route + " must describe disabled checkout", state);
+      const commerceCopy = releaseHeld ? heldCopy : controlledLaunch.public_paid_commerce_enabled === true
+        ? "One-time prepaid Reading Passes for eligible online reading and released audiobooks in India."
+        : "Reading Pass purchases are not available in this launch.";
+      if (!normalized.includes(commerceCopy.toLowerCase())) fail(route + " must match the controlled commerce state", state);
       if (!normalized.includes('name="robots" content="noindex,follow"')) fail(route + " must be noindex", state);
     }
     if (!heldTitle && route.startsWith("/book/")) {
       state.assertions += 2;
-      if (!normalized.includes('"isaccessibleforfree":false')) fail(route + " must not mark the full edition free", state);
+      if (/"isaccessibleforfree"\s*:/i.test(normalized)) fail(route + " must not invent a full-edition free-access declaration", state);
       if (!normalized.includes("read the 3-page preview")) fail(route + " must offer only the public preview", state);
     }
     if (route === "/journal" || route.startsWith("/journal/") || route === "/contact") {

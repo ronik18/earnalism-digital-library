@@ -1,20 +1,15 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
 import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
 
+import { discoveryMetadataForBook, readingFormOfBook, genresOfBook } from "./libraryDiscovery";
+
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
-export function listeningFilterFromSearch(params) {
-  const explicitListening = params.get("listening");
-  if (explicitListening) return explicitListening;
-  if (params.get("availability") === "approved-audiobook") return "available";
-  if (params.get("availability") === "reader-ready") return "hidden";
-  return "all";
-}
+export { listeningFilterFromSearch } from "./libraryFilterState";
 
 export function languageOfBook(book = {}) {
-  const explicit = String(book.language || book.language_code || book.lang || book.locale || "").toLowerCase();
-  if (explicit.startsWith("bn") || explicit.startsWith("ben")) return "bn";
-  if (explicit.startsWith("en") || explicit.startsWith("eng")) return "en";
+  const curated = discoveryMetadataForBook(book)?.language;
+  if (curated) return curated;
   return BENGALI_RE.test(`${book.title || ""} ${book.title_en || ""} ${book.author || ""}`) ? "bn" : "en";
 }
 
@@ -56,11 +51,11 @@ export function libraryPresentationForBook(book = {}) {
       : readerReady ? "Audio Hidden" : "Release Gated",
     availabilityNote: audiobookApproved
       ? (listeningAvailable
-        ? "Provider-backed narration is available through the approved Reader runtime."
-        : "Audiobook release is approved; listening is unavailable in the current Reader runtime.")
+        ? "This audiobook is ready to accompany your reading life. An active Reading Pass is required to listen."
+        : "Listening is not available for this edition right now.")
       : readerReady
-        ? "Reader edition live · audio intentionally hidden until release evidence passes."
-        : "Reader and listening routes remain closed until editorial and release gates pass.",
+        ? "Read this edition online. An audiobook is not currently offered."
+        : "This edition is still in preparation and is not available to read or listen to.",
     canShowControls: listeningAvailable,
   };
 }
@@ -78,6 +73,16 @@ export function normalizedBookTitle(book = {}) {
   return String(book.title_en || book.title || "").toLocaleLowerCase();
 }
 
+// Discovery estimate only; never used for playback, lease or billing timing.
+function estimatedReadingMinutes(book) {
+  const value = String(book.estimated_reading_time || "").trim().toLowerCase();
+  const hours = value.match(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?|h)\b/);
+  const minutes = value.match(/(\d+(?:\.\d+)?)\s*(?:minutes?|mins?|m)\b/);
+  if (hours || minutes) return Number(hours?.[1] || 0) * 60 + Number(minutes?.[1] || 0);
+  if (/^\d+(?:\.\d+)?$/.test(value) && Number(value) > 0) return Number(value);
+  return Number(book.word_count) > 0 ? Number(book.word_count) / 200 : Number.POSITIVE_INFINITY;
+}
+
 export function sortLibraryBooks(books = [], sort = "recently-approved") {
   const next = [...books];
   if (sort === "title") {
@@ -85,11 +90,21 @@ export function sortLibraryBooks(books = [], sort = "recently-approved") {
   } else if (sort === "author") {
     next.sort((a, b) => String(a.author || "").localeCompare(String(b.author || "")));
   } else if (sort === "short-reads") {
-    next.sort((a, b) => {
-      const aMinutes = Number(String(a.estimated_reading_time || "").match(/\d+/)?.[0] || a.word_count || 999999);
-      const bMinutes = Number(String(b.estimated_reading_time || "").match(/\d+/)?.[0] || b.word_count || 999999);
-      return aMinutes - bMinutes;
-    });
+    next.sort((a, b) => estimatedReadingMinutes(a) - estimatedReadingMinutes(b));
   }
+
   return next;
+}
+
+
+export function selectLibraryBooks(books, { query = "", language = "all", reading = "all", listening = "all", genre = "all", sort = "recently-approved", stage = "all" } = {}) {
+  const needle = query.trim().normalize("NFC").toLocaleLowerCase();
+  return sortLibraryBooks(books.filter((book) => {
+    const text = `${book.title || ""} ${book.title_en || ""} ${book.author || ""} ${book.short_description || ""}`.normalize("NFC").toLocaleLowerCase();
+    return (!needle || text.includes(needle))
+      && matchesLibraryFacets(book, language, listening === "available" ? "approved-audiobook" : listening === "hidden" ? "audio-hidden" : "all")
+      && (reading === "all" || readingFormOfBook(book) === reading)
+      && (genre === "all" || genresOfBook(book).includes(genre))
+      && (stage === "all" || (stage === "live" ? canShowStartReading(book) : !canShowStartReading(book)));
+  }), sort);
 }

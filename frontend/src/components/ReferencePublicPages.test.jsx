@@ -15,7 +15,7 @@ const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/p
 describe("Reference public page surfaces", () => {
   test("keeps listening controls behind release truth", () => {
     expect(source).toContain('import { audiobookReleaseState } from "../lib/audioReleaseSafety"');
-    expect(source).toContain("audio.releaseApproved");
+    expect(source).toContain('availabilityOfBook(book) === "approved-audiobook"');
     expect(home).not.toContain("fetchHomeListening");
     expect(home).not.toContain("Listen");
   });
@@ -91,7 +91,8 @@ describe("Reference public page surfaces", () => {
   });
 
   test("ships the Option B homepage hierarchy and keeps exact responsive offer breakpoints", () => {
-    expect(source).toContain("A calmer place for<br />timeless reading.");
+    expect(source).toContain("productCopy.homeTitle");
+    expect(JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/content/productCopy.json"), "utf8")).homeTitle).toBe("Carry a world of stories into your day.");
     expect(source).toContain("/assets/home-option-b/hero-reading-room.webp");
     expect(source).toContain("/assets/home-option-b/bengali-classics.webp");
     expect(source).toContain("/assets/home-option-b/english-classics.webp");
@@ -126,7 +127,7 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps approved audiobook cards behind the public release gate", () => {
-    expect(source).toContain("audio.releaseApproved");
+    expect(source).toContain('availabilityOfBook(book) === "approved-audiobook"');
     expect(home).not.toContain("listeningItems");
     expect(home).not.toContain("Listen");
   });
@@ -144,7 +145,8 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain('reference-library-drawer');
     expect(source).toContain('reference-filter-reset');
     expect(source).toContain('hideAll');
-    expect(source).toContain('showAllForGroups={["listening"]}');
+    expect(source).not.toContain('showAllForGroups={["listening"]}');
+    expect(source).toContain("LIBRARY_READING_FORMS");
     expect(source).toContain('shouldHideAllOption(key, slug)');
     expect(source).toContain('"Genre"');
     expect(source).toContain('element.setAttribute("inert", "")');

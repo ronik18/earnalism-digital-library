@@ -261,7 +261,7 @@ export default function ListenerExperienceV2Route() {
   }, [invalidateLifecycle, navigate, ownsLifecycle, setLeaseState, slug, user]);
 
   if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target, destination) => {
-    const destinations = { back: `/book/${slug || "a-ghost-story"}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/listener/${slug || "a-ghost-story"}`)}` };
+    const destinations = { back: `/book/${slug || "a-ghost-story"}`, library: "/library", search: "/library", bengali: "/library?language=bn", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/listener/${slug || "a-ghost-story"}`)}` };
     if (destination || destinations[target]) navigate(destination || destinations[target]);
   }} />;
   const leaveListener = async (target, destination) => {
@@ -274,7 +274,7 @@ export default function ListenerExperienceV2Route() {
     if (target === "about") navigate("/about");
     if (target === "profile") navigate("/account");
     if (target === "signin") navigate(`/login?next=${encodeURIComponent(`/listener/${slug}`)}`);
-    if (target === "bengali") navigate("/library?language=bn&availability=reader-ready");
+    if (target === "bengali") navigate("/library?language=bn");
     if (target === "english") navigate("/library?language=en");
     if (target === "audiobooks") navigate("/library?availability=approved-audiobook");
   };

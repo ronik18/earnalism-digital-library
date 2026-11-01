@@ -2936,3 +2936,6 @@ No-synthesis Student alternative: two official catalog records identified, one l
 - 2026-11-01: Hourglass/Sherlock source integration reuses exact responsive and genuine native 200% zoom QA after unchanged-source comparison. Native zoom requires protocol confirmation and restoring zoom; screenshot wrappers may crop. Keep generic shells queued when canonical admission fails. See hourglass_sherlock_integration_20261101.json. No deployment or paid session.
 
 - 1 November 2026 Reader follow-up: a zero-debit readable exit can retain the fixed title/manifest preparation deadline. Reopening after expiry but before the existing inactivity cooldown returns PREPARATION_EXPIRED. Report server-authoritative retry timing and offer explicit retry, preserving the unchanged budget and all gates. Time Machine final chapter has1chunk, Dracula13, while Scientific65chunks passed; do not infer a shared large-chapter cause. Local source repair is not live verification; no new pass use or release.
+
+### 2026-11-01 — Library quality
+Remove optional-request readiness barriers and hidden duplicate rendering; partition shelves by strict public availability. Discovery taxonomy must not alter rights/entitlements. Test URL aliases in both facet directions. Share accurate access copy with SEO verification. Remediable hidden titles are not terminal deletion candidates.

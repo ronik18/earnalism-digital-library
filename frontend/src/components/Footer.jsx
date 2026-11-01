@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="min-w-0 max-w-full" data-testid="footer-brand">
             <FooterWordmark />
             <p id="footer-brand-statement" className="mt-3 max-w-lg font-serif-display text-base leading-snug text-[#f6ead7] sm:text-lg">
-              Good books. A kinder tomorrow.
+              Good books. Wider horizons.
             </p>
             <FooterSocialLinks links={social} />
           </div>

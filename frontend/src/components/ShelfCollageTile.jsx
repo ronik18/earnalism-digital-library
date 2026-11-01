@@ -14,7 +14,7 @@ const ICONS = {
 };
 
 const LIBRARY_ROUTE_BY_SHELF = {
-  "bengali-life-and-legacy": "/library?language=bn&availability=reader-ready",
+  "bengali-life-and-legacy": "/library?language=bn",
   "gothic-and-the-uncanny": "/library?language=en",
   "love-society-and-human-nature": "/library?language=en",
   "adventure-nature-and-wonder": "/library?language=en",

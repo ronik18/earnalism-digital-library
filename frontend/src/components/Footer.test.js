@@ -31,7 +31,7 @@ describe("Footer compact colophon", () => {
   });
 
   test("keeps premium public copy, copyright protection, and accessible navigation", () => {
-    expect(footerSource).toContain("Good books. A kinder tomorrow.");
+    expect(footerSource).toContain("Good books. Wider horizons.");
     expect(footerSource).toContain('data-testid="footer-venture-attribution"');
     expect(footerSource).toContain("A Reo Enterprise Venture");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
