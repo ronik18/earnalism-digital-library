@@ -1,0 +1,69 @@
+{
+  "schema": "earnalism.successor-adoption-registry.v1",
+  "adoptions": [
+    {
+      "record": {
+        "acceptance_representation_sha256": "6154c53218c1720d22e1de3dd7222535ef98a4c10507d885b32d00ff90bb5117",
+        "audio_use_decision": {
+          "accepted_by": "Codex delegated acceptance recorder under explicit owner Sentinel_f42363405eac8191b7ec99dd7dd164c1; no human/external signature inferred",
+          "basis": "Owner Sentinel_f42363405eac8191b7ec99dd7dd164c1 adopts the independently supported India commercial audio-use basis for only the exact original English selected PG269/John Lane1914 text and corrected Earnalism-produced recording/chunk set. Retained source-term/Qwen Apache2 built-in Ryan qualification and standing producer attestation reused; no specific unresolved third-party restriction identified. Non-PG-branded commercial presentation only, provenance private. No exclusive output copyright, worldwide grant, legal signature or universal warranty claimed. Administrative validity is bounded by the existing edition record horizon, not a new external licence term. Existing Reader/cover decision and historical excluded edition unchanged. This rights-only decision does not approve acoustics, storage, entitlement, playback/accounting or publication. Unit24 owner-accepted uncertainty and six lexical risks remain.",
+          "components": {
+            "audio_component_bindings": "a0ca9abe6741ce0f5a7df8ee863fd4f7664cda65da2eac8f1900872de82611fe",
+            "master_mp3": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+            "master_wav": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+            "owner_adoption": "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+            "selected_manuscript": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+            "source_file": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+            "staging_manifest": "6fd5dc12fc1658eeb2fe34e2e4900030f3f0c8e991eebaf9a613b997b7b705f5"
+          },
+          "conditions_satisfied": true,
+          "decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
+          "edition_id": "the-open-window",
+          "evidence_sha256": [
+            "7ffbc8546291a74f731420b7a269faab3c20d8fabc8f1094fc0627de2b9f1e58",
+            "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+            "7ffbc8546291a74f731420b7a269faab3c20d8fabc8f1094fc0627de2b9f1e58",
+            "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3",
+            "b6ce420f9810f21d7bd89e76b174c9c93f4c5bbf2e34757d6a943da460405727"
+          ],
+          "operator_id": "reo-enterprise",
+          "schema_version": "earnalism.rights-decision.v1",
+          "status": "ACCEPTED",
+          "territories": [
+            "IN"
+          ],
+          "uses": [
+            "audio_stream"
+          ],
+          "valid_from": "2026-10-20T19:46:18.321023+00:00",
+          "valid_until": "2036-10-02T00:00:00+00:00"
+        },
+        "book_uuid": "74251b53-9e18-49fb-9fff-bb7c505633d4",
+        "controlled_source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+        "deployed_source_join_sha256": "17383a702b9eb3b8fc24f6c34beacdc702b1e422fedf14603a0a791bdc9282e0",
+        "listening_evidence_sha256": {
+          "deployed_source_join": "17383a702b9eb3b8fc24f6c34beacdc702b1e422fedf14603a0a791bdc9282e0",
+          "local_qa_proposal": "22eae5d1baa406bc907b6cc6d65c98afed36537528b5315bb4366a063bef8940",
+          "owner_full_title_listening": "630916e110c62a4c320e799870ae2a7cb0bfb387df02258732cbbaf20a6f5105",
+          "owner_source_following": "a3d16bf2c27c7639ea635700792bcdddd139bee3a84650b6938b0641bb4e56d2",
+          "six_lexical_findings": "9f2343a5f39332959ae8ec640b8f90ed31bc4fd758e11228a199b5d34cce28df"
+        },
+        "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+        "master_mp3_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+        "master_wav_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+        "policy": "open_window_listened_successor.v2",
+        "policy_adoption": {
+          "adopted_by": "Ronik Basak / Reo Enterprise",
+          "authority_reference": "Frozen annex approval required; not installed",
+          "decision_sha256": "15904ecea7b6d391123bff2ba14d8687e16aac15a2bd9933db8490a76791e1d2",
+          "status": "ADOPTED"
+        },
+        "slug": "the-open-window",
+        "status": "ADOPTED",
+        "unaddressed_material_defects": []
+      },
+      "record_sha256": "1c5063691e41912d7fb5222bd98cc8ff6f6a562b4be17d9965cbf5587050f413"
+    }
+  ],
+  "note": "Exact owner-approved listened-successor adoption; legacy policy unchanged. Production playback and overall QA remain unverified."
+}

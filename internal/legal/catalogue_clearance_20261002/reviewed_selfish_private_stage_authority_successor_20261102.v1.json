@@ -1,0 +1,88 @@
+{
+  "schema": "earnalism.reviewed_selfish_private_stage_authority_successor.v1",
+  "scope": "EXACT_SUPPORTED_PRIVATE_STAGE_READER_METADATA_REBIND_ONLY_OLD_PUBLIC_AUDIO_UNCHANGED",
+  "predecessor_files": {
+    "internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102/pre-stage-reviewed-authority.json": "be677ca16ba74c847fa8f3ab16e3d359934928632748323c2f88a34b9fb3ee8c",
+    "internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102/pre-stage-rights-registry.json": "d2a2baafc761ee5eafe89b3fd288da8dca71662dc8cf7aa047895d96fa539288",
+    "internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102/ACTUAL-PRIVATE-STAGE-RESULT.json": "5f9fa45b57b833183ff90943be71d3f7064b09211feb13e536c2a393a061caa6",
+    "internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102/prior-public-restore.snapshot.json": "6f6e39759ed7e9892230d9d2381f132551917814376bb65bf5d4447398a6c681"
+  },
+  "predecessor_registry_sha256": "d2a2baafc761ee5eafe89b3fd288da8dca71662dc8cf7aa047895d96fa539288",
+  "reviewed_registry_sha256": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0",
+  "added_accepted_records": {
+    "india-20261102-the-selfish-giant-cedar-private-stage": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d"
+  },
+  "title": "the-selfish-giant",
+  "predecessor_title_binding": {
+    "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
+    "record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
+    }
+  },
+  "reviewed_title_binding": {
+    "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "record_sha256": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
+    }
+  },
+  "actual_transaction": {
+    "schema_version": "earnalism.native_replacement_source_transaction.v1",
+    "operation": "STAGE_PRIVATE",
+    "slug": "the-selfish-giant",
+    "snapshot_sha256": "e6e72d4c3cad5c512f035e0b4fdcffc27f0f2adb299c6b562ee0e99cb00efb91",
+    "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "applied": true,
+    "deployment_and_playback": "UNVERIFIED",
+    "files": {
+      "backend/data/controlled_publications/the-selfish-giant/public_book.json": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+      "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+      "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
+      "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba",
+      "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+      "backend/data/controlled_publications/the-selfish-giant/rights_decision.json": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39",
+      "data/controlled_publications/the-selfish-giant/public_book.json": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+      "data/controlled_publications/the-selfish-giant/reader_manifest.json": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+      "data/controlled_publications/the-selfish-giant/approval_evidence.json": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
+      "data/controlled_publications/the-selfish-giant/checksum_manifest.json": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba",
+      "data/controlled_publications/the-selfish-giant/publication_manifest.json": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+      "data/controlled_publications/the-selfish-giant/rights_decision.json": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39",
+      "backend/data/rights_decision_registry.json": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0",
+      "backend/data/approved_reader_bootstrap.json": "6e4572f01e9e57124170fa866069713a1eedb38bf7dfd869d9fd71a7e449df35"
+    },
+    "target_bootstrap_row_sha256": "b9a6565f3e9f22b79cd0ff2a3a24c004ae21296e5e29991cd5e2d7a8bd036c06"
+  },
+  "restore_snapshot_file_sha256": "6f6e39759ed7e9892230d9d2381f132551917814376bb65bf5d4447398a6c681",
+  "restore_snapshot_canonical_sha256": "e6e72d4c3cad5c512f035e0b4fdcffc27f0f2adb299c6b562ee0e99cb00efb91",
+  "source_qa_adoptions_audio_bindings_revocations_and_other51_titles_unchanged": true,
+  "old_selected_public_audio_descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "new_candidate_status": "STAGED_PRIVATE",
+  "source_references_are_actual_not_synthetic": true,
+  "runtime_grant_deployment_or_LIVE_approval": false,
+  "review_requirement": "Fresh exact-diff Integration Lane review and held-edition checks; assert_reviewed_authority unchanged. No exemption, generic policy relaxation or new rights scope."
+}

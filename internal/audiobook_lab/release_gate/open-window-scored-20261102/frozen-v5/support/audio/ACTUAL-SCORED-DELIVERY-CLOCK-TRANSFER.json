@@ -1,0 +1,505 @@
+{
+  "schema": "earnalism.open_window_actual_scored_delivery_clock_transfer.v1",
+  "status": "PASS_ACTUAL_FULL_DECODE_AND_MEASURED_WAVEFORM_CLOCK_TRANSFER",
+  "lossless_scored_wav_sha256": "f2b80840b9797819934282f20f2f139b3cda33aef8f05825378cbb499eae4167",
+  "publication_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+  "canonical_decoded_mp3_f32le_sha256": "cf4d11651ad2be8c79f9692197a31e017cc61c4404f1dad1a9c1cb0beeff0018",
+  "sample_rate": 48000,
+  "channels": 2,
+  "exact_lossless_and_decoded_frame_count": 23588944,
+  "duration_seconds": 491.4363333333333,
+  "check_count": 48,
+  "checks": [
+    {
+      "source_frame": 0,
+      "time_seconds": 0.0,
+      "window_start_frame": 0,
+      "window_end_frame": 72000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999880310223265,
+      "zero_lag_correlation": 0.9999880310223265
+    },
+    {
+      "source_frame": 472320,
+      "time_seconds": 9.84,
+      "window_start_frame": 400320,
+      "window_end_frame": 544320,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999885118021719,
+      "zero_lag_correlation": 0.9999885118021719
+    },
+    {
+      "source_frame": 1440000,
+      "time_seconds": 30.0,
+      "window_start_frame": 1368000,
+      "window_end_frame": 1512000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999695220319634,
+      "zero_lag_correlation": 0.9999695220319634
+    },
+    {
+      "source_frame": 1539658,
+      "time_seconds": 32.076208333333334,
+      "window_start_frame": 1467658,
+      "window_end_frame": 1611658,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.999977133103185,
+      "zero_lag_correlation": 0.999977133103185
+    },
+    {
+      "source_frame": 2741618,
+      "time_seconds": 57.117041666666665,
+      "window_start_frame": 2669618,
+      "window_end_frame": 2813618,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999776926480874,
+      "zero_lag_correlation": 0.9999776926480874
+    },
+    {
+      "source_frame": 2880000,
+      "time_seconds": 60.0,
+      "window_start_frame": 2808000,
+      "window_end_frame": 2952000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999106763597988,
+      "zero_lag_correlation": 0.9999106763597988
+    },
+    {
+      "source_frame": 3140812,
+      "time_seconds": 65.43358333333333,
+      "window_start_frame": 3068812,
+      "window_end_frame": 3212812,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999869038881979,
+      "zero_lag_correlation": 0.9999869038881979
+    },
+    {
+      "source_frame": 3511322,
+      "time_seconds": 73.15254166666666,
+      "window_start_frame": 3439322,
+      "window_end_frame": 3583322,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999927399339132,
+      "zero_lag_correlation": 0.9999927399339132
+    },
+    {
+      "source_frame": 4077338,
+      "time_seconds": 84.94454166666667,
+      "window_start_frame": 4005338,
+      "window_end_frame": 4149338,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999899598290108,
+      "zero_lag_correlation": 0.9999899598290108
+    },
+    {
+      "source_frame": 4247080,
+      "time_seconds": 88.48083333333334,
+      "window_start_frame": 4175080,
+      "window_end_frame": 4319080,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999904148337886,
+      "zero_lag_correlation": 0.9999904148337886
+    },
+    {
+      "source_frame": 4320000,
+      "time_seconds": 90.0,
+      "window_start_frame": 4248000,
+      "window_end_frame": 4392000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999968580947299,
+      "zero_lag_correlation": 0.9999968580947299
+    },
+    {
+      "source_frame": 4591864,
+      "time_seconds": 95.66383333333333,
+      "window_start_frame": 4519864,
+      "window_end_frame": 4663864,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.999996484259524,
+      "zero_lag_correlation": 0.999996484259524
+    },
+    {
+      "source_frame": 5195158,
+      "time_seconds": 108.23245833333333,
+      "window_start_frame": 5123158,
+      "window_end_frame": 5267158,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999905641125832,
+      "zero_lag_correlation": 0.9999905641125832
+    },
+    {
+      "source_frame": 5557866,
+      "time_seconds": 115.788875,
+      "window_start_frame": 5485866,
+      "window_end_frame": 5629866,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999699191431746,
+      "zero_lag_correlation": 0.9999699191431746
+    },
+    {
+      "source_frame": 5760000,
+      "time_seconds": 120.0,
+      "window_start_frame": 5688000,
+      "window_end_frame": 5832000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999736090833417,
+      "zero_lag_correlation": 0.9999736090833417
+    },
+    {
+      "source_frame": 5955702,
+      "time_seconds": 124.077125,
+      "window_start_frame": 5883702,
+      "window_end_frame": 6027702,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999664401524697,
+      "zero_lag_correlation": 0.9999664401524697
+    },
+    {
+      "source_frame": 6670360,
+      "time_seconds": 138.96583333333334,
+      "window_start_frame": 6598360,
+      "window_end_frame": 6742360,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999885833943991,
+      "zero_lag_correlation": 0.9999885833943991
+    },
+    {
+      "source_frame": 7190508,
+      "time_seconds": 149.80225,
+      "window_start_frame": 7118508,
+      "window_end_frame": 7262508,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999896551876082,
+      "zero_lag_correlation": 0.9999896551876082
+    },
+    {
+      "source_frame": 7200000,
+      "time_seconds": 150.0,
+      "window_start_frame": 7128000,
+      "window_end_frame": 7272000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999897189592919,
+      "zero_lag_correlation": 0.9999897189592919
+    },
+    {
+      "source_frame": 8640000,
+      "time_seconds": 180.0,
+      "window_start_frame": 8568000,
+      "window_end_frame": 8712000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9998817418346677,
+      "zero_lag_correlation": 0.9998817418346677
+    },
+    {
+      "source_frame": 10080000,
+      "time_seconds": 210.0,
+      "window_start_frame": 10008000,
+      "window_end_frame": 10152000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999891076776835,
+      "zero_lag_correlation": 0.9999891076776835
+    },
+    {
+      "source_frame": 11326322,
+      "time_seconds": 235.96504166666668,
+      "window_start_frame": 11254322,
+      "window_end_frame": 11398322,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999810482224606,
+      "zero_lag_correlation": 0.9999810482224606
+    },
+    {
+      "source_frame": 11520000,
+      "time_seconds": 240.0,
+      "window_start_frame": 11448000,
+      "window_end_frame": 11592000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999715219590649,
+      "zero_lag_correlation": 0.9999715219590649
+    },
+    {
+      "source_frame": 11836814,
+      "time_seconds": 246.60029166666666,
+      "window_start_frame": 11764814,
+      "window_end_frame": 11908814,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999805313826712,
+      "zero_lag_correlation": 0.9999805313826712
+    },
+    {
+      "source_frame": 12040444,
+      "time_seconds": 250.84258333333332,
+      "window_start_frame": 11968444,
+      "window_end_frame": 12112444,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9997625084319468,
+      "zero_lag_correlation": 0.9997625084319468
+    },
+    {
+      "source_frame": 12250654,
+      "time_seconds": 255.22195833333333,
+      "window_start_frame": 12178654,
+      "window_end_frame": 12322654,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999692693113076,
+      "zero_lag_correlation": 0.9999692693113076
+    },
+    {
+      "source_frame": 12960000,
+      "time_seconds": 270.0,
+      "window_start_frame": 12888000,
+      "window_end_frame": 13032000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999682768777336,
+      "zero_lag_correlation": 0.9999682768777336
+    },
+    {
+      "source_frame": 13183948,
+      "time_seconds": 274.66558333333336,
+      "window_start_frame": 13111948,
+      "window_end_frame": 13255948,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999674038774096,
+      "zero_lag_correlation": 0.9999674038774096
+    },
+    {
+      "source_frame": 13517760,
+      "time_seconds": 281.62,
+      "window_start_frame": 13445760,
+      "window_end_frame": 13589760,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999816810164356,
+      "zero_lag_correlation": 0.9999816810164356
+    },
+    {
+      "source_frame": 13721280,
+      "time_seconds": 285.86,
+      "window_start_frame": 13649280,
+      "window_end_frame": 13793280,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999308734545892,
+      "zero_lag_correlation": 0.9999308734545892
+    },
+    {
+      "source_frame": 14400000,
+      "time_seconds": 300.0,
+      "window_start_frame": 14328000,
+      "window_end_frame": 14472000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999681837758144,
+      "zero_lag_correlation": 0.9999681837758144
+    },
+    {
+      "source_frame": 15054868,
+      "time_seconds": 313.6430833333333,
+      "window_start_frame": 14982868,
+      "window_end_frame": 15126868,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.999965741065924,
+      "zero_lag_correlation": 0.999965741065924
+    },
+    {
+      "source_frame": 15840000,
+      "time_seconds": 330.0,
+      "window_start_frame": 15768000,
+      "window_end_frame": 15912000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999964119315029,
+      "zero_lag_correlation": 0.9999964119315029
+    },
+    {
+      "source_frame": 16502306,
+      "time_seconds": 343.7980416666667,
+      "window_start_frame": 16430306,
+      "window_end_frame": 16574306,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999972859866905,
+      "zero_lag_correlation": 0.9999972859866905
+    },
+    {
+      "source_frame": 17104962,
+      "time_seconds": 356.353375,
+      "window_start_frame": 17032962,
+      "window_end_frame": 17176962,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999885752683219,
+      "zero_lag_correlation": 0.9999885752683219
+    },
+    {
+      "source_frame": 17280000,
+      "time_seconds": 360.0,
+      "window_start_frame": 17208000,
+      "window_end_frame": 17352000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999413960636039,
+      "zero_lag_correlation": 0.9999413960636039
+    },
+    {
+      "source_frame": 17447720,
+      "time_seconds": 363.4941666666667,
+      "window_start_frame": 17375720,
+      "window_end_frame": 17519720,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999396612747915,
+      "zero_lag_correlation": 0.9999396612747915
+    },
+    {
+      "source_frame": 18368700,
+      "time_seconds": 382.68125,
+      "window_start_frame": 18296700,
+      "window_end_frame": 18440700,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999729236669503,
+      "zero_lag_correlation": 0.9999729236669503
+    },
+    {
+      "source_frame": 18720000,
+      "time_seconds": 390.0,
+      "window_start_frame": 18648000,
+      "window_end_frame": 18792000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999985560854642,
+      "zero_lag_correlation": 0.9999985560854642
+    },
+    {
+      "source_frame": 19674364,
+      "time_seconds": 409.88258333333334,
+      "window_start_frame": 19602364,
+      "window_end_frame": 19746364,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999950624967892,
+      "zero_lag_correlation": 0.9999950624967892
+    },
+    {
+      "source_frame": 20160000,
+      "time_seconds": 420.0,
+      "window_start_frame": 20088000,
+      "window_end_frame": 20232000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999909769571845,
+      "zero_lag_correlation": 0.9999909769571845
+    },
+    {
+      "source_frame": 20412352,
+      "time_seconds": 425.25733333333335,
+      "window_start_frame": 20340352,
+      "window_end_frame": 20484352,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999940723665032,
+      "zero_lag_correlation": 0.9999940723665032
+    },
+    {
+      "source_frame": 21005606,
+      "time_seconds": 437.61679166666664,
+      "window_start_frame": 20933606,
+      "window_end_frame": 21077606,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9998601222674716,
+      "zero_lag_correlation": 0.9998601222674716
+    },
+    {
+      "source_frame": 21600000,
+      "time_seconds": 450.0,
+      "window_start_frame": 21528000,
+      "window_end_frame": 21672000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999907090871463,
+      "zero_lag_correlation": 0.9999907090871463
+    },
+    {
+      "source_frame": 21828326,
+      "time_seconds": 454.7567916666667,
+      "window_start_frame": 21756326,
+      "window_end_frame": 21900326,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999461810510132,
+      "zero_lag_correlation": 0.9999461810510132
+    },
+    {
+      "source_frame": 23040000,
+      "time_seconds": 480.0,
+      "window_start_frame": 22968000,
+      "window_end_frame": 23112000,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.999980972463696,
+      "zero_lag_correlation": 0.999980972463696
+    },
+    {
+      "source_frame": 23379020,
+      "time_seconds": 487.0629166666667,
+      "window_start_frame": 23307020,
+      "window_end_frame": 23451020,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999903205878117,
+      "zero_lag_correlation": 0.9999903205878117
+    },
+    {
+      "source_frame": 23588943,
+      "time_seconds": 491.4363125,
+      "window_start_frame": 23516943,
+      "window_end_frame": 23588944,
+      "best_lag_at_3000Hz_samples": 0,
+      "best_lag_seconds": 0.0,
+      "correlation": 0.9999975012678739,
+      "zero_lag_correlation": 0.9999975012678739
+    }
+  ],
+  "minimum_correlation": 0.9997625084319468,
+  "maximum_absolute_best_lag_seconds": 0.0,
+  "method": "Actual full MP3 decode; compare mono-fold local waveform against exact retained lossless scored master near every29 sourcegroup start, both physical repair joins,30s grid and end. Downsample16 for lag search at1/3000s resolution across+-10ms. This is clock transfer, not source-word or listening certification.",
+  "narration_clock_basis": "Existing exact2x resampling/constant-gain/music-only mixing proof e6ff53d68e8284a7f277897614531bea23e4fb87fab7290be3a1d9e4356ec4d9 independently binds retained narration to lossless scored master; no timing edits.",
+  "scope_limits": [
+    "No word precision or forced alignment claim.",
+    "This does not install source adoption, rights, storage or runtime acceptance.",
+    "No new listening score or ASR inference."
+  ],
+  "new_model_provider_allocation_synthesis": 0,
+  "input_files_unchanged": true
+}

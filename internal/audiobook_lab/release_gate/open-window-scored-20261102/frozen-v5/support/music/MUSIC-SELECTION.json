@@ -1,0 +1,91 @@
+{
+  "status": "SELECTED_MUSIC_FILES_AND_PRIMARY_LICENCE_BASIS_FOR_PRIVATE_SCORED_DRAFT_NOT_PUBLICATION_PASS",
+  "verified_date": "2026-11-01",
+  "tracks": [
+    {
+      "title": "Heartbreaking",
+      "creator": "Kevin MacLeod",
+      "isrc": "USUAN1100208",
+      "local_path": "/tmp/earnalism-selfish-retained-scored-draft-20261101/music/Heartbreaking-Kevin-MacLeod-original.mp3",
+      "sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+      "size_bytes": 3947252,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2
+          },
+          {
+            "codec_name": "mjpeg"
+          }
+        ],
+        "format": {
+          "duration": "96.048000"
+        }
+      },
+      "existing_retained_asset": true,
+      "licence": "CC BY4.0",
+      "track_page": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208",
+      "official_download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Heartbreaking.mp3",
+      "catalogue": "https://incompetech.com/music/royalty-free/pieces.json",
+      "creator_licence_page": "https://incompetech.com/music/royalty-free/licenses/",
+      "licence_deed": "https://creativecommons.org/licenses/by/4.0/",
+      "legal_code": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+      "creative_role_proposal": "Quiet loss, winter loneliness, absent boy and reflective final resolution; not an all-book sad loop",
+      "subjective_listening": "NOT_PERFORMED_BY_THIS_LANE; creatorcatalogue mood/instrumentation guidesprovisionalselectiononly",
+      "commercial_mixing_and_distribution_basis": "Creator supplies originalPianorecording fromexactcataloguefilename and appliesCCBY4via officialtrackHTMLattributiontemplate. CClegalcode2(a)(1) permitsreproduce/share/adapt subjecttoconditions; soundtrackandcomposition rights onlytolicensorcontrolledscope.",
+      "planned_credit": "Music: \u201cHeartbreaking\u201d \u2014 Kevin MacLeod (incompetech.com), ISRC USUAN1100208. Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208. Licence: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Changes: excerpted/arranged, level-adjusted, faded and ducked under narration (update to actual render). No endorsement implied."
+    },
+    {
+      "title": "Heartwarming",
+      "creator": "Kevin MacLeod",
+      "isrc": "USUAN1100207",
+      "local_path": "/tmp/earnalism-selfish-retained-scored-draft-20261101/music/Heartwarming-Kevin-MacLeod-original.mp3",
+      "sha256": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+      "size_bytes": 2971312,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2
+          },
+          {
+            "codec_name": "mjpeg"
+          }
+        ],
+        "format": {
+          "duration": "72.024000"
+        }
+      },
+      "existing_retained_asset": false,
+      "licence": "CC BY4.0",
+      "track_page": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207",
+      "official_download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Heartwarming.mp3",
+      "catalogue": "https://incompetech.com/music/royalty-free/pieces.json",
+      "creator_licence_page": "https://incompetech.com/music/royalty-free/licenses/",
+      "licence_deed": "https://creativecommons.org/licenses/by/4.0/",
+      "legal_code": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+      "creative_role_proposal": "Light garden motif and reconciliation/Spring return; sparing phrases not continuous busy melody",
+      "subjective_listening": "NOT_PERFORMED_BY_THIS_LANE; creatorcatalogue mood/instrumentation guidesprovisionalselectiononly",
+      "commercial_mixing_and_distribution_basis": "Creator supplies originalPianorecording fromexactcataloguefilename and appliesCCBY4via officialtrackHTMLattributiontemplate. CClegalcode2(a)(1) permitsreproduce/share/adapt subjecttoconditions; soundtrackandcomposition rights onlytolicensorcontrolledscope.",
+      "planned_credit": "Music: \u201cHeartwarming\u201d \u2014 Kevin MacLeod (incompetech.com), ISRC USUAN1100207. Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207. Licence: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Changes: excerpted/arranged, level-adjusted, faded and ducked under narration (update to actual render). No endorsement implied."
+    }
+  ],
+  "rights_conditions": [
+    "Attachcreator/title/source/licence/ISRC andactualmodificationcreditstocompleteprivateartifactandretainnativefilemetadatawherepractical",
+    "Commercialreproduction/adaptation/distributionperCCBY4conditions; noShareAlikeorNonCommercialrestriction inthislicence",
+    "Noadditionaltermsoreffectivetechnologicalmeasuresrestrictinglicensedmusicrights; preserveauthentication/ReadingPass and separatelyqualifypubliclicencecompatiblecredit/deliverybeforepublication",
+    "No worldwideexpansionofunderlyingstory/narrationrights; existingIndiaeditionauthorityindependent",
+    "Nobuying,nolicensefee,newmusicgeneration,narrationgeneration,privateuploadsorpublicreleaseperformed"
+  ],
+  "provenance": "Heartbreakingoriginalhash matchesparkedPR600retainedlicencepacket; old45secendingmix/acceptance not reusedasnewwholebookmixapproval. Heartwarmingnewfreecompanionselectedbecause no brightgarden-themedretainedassetwasfound; verifiedprimarycatalogue+creatorCCBY4templateBEFOREofficialdownload.",
+  "narration_quality": "Do notmaskUnit01/02identity/phrasing/pauses; rootrepairandfullmixreviewremainpending",
+  "cue_timing": "SOURCE_ANCHORS_ONLY_BIND_TO_REPAIRED_NARRATION_MEASURED_BOUNDS; noestimatedsync",
+  "audio_only_render_note": "BothsourceMP3s containattachedMJPEGcoverart; maponlyaudiointofinalmix,noartreuseorartlicenceclaim"
+}

@@ -1,0 +1,216 @@
+{
+  "unit": "u000012",
+  "master_interval_seconds": [
+    116.317125,
+    124.077125
+  ],
+  "expected_text": "“Her tragedy?” asked Framton; somehow in this restful country spot tragedies seemed out of place.",
+  "ctc_transcript": "HER TRAGEDY ASKED FRAMPTON SOMEHOW IN THIS RESTFUL COUNTRY SPOT TRAGEDIES SEEMED OUT OF PLACE",
+  "ctc_words": [
+    {
+      "word": "HER",
+      "start": 116.43743507751938,
+      "end": 116.61790019379845,
+      "mean_character_frame_posterior": 0.9151525497436523
+    },
+    {
+      "word": "TRAGEDY",
+      "start": 116.9788304263566,
+      "end": 117.52022577519381,
+      "mean_character_frame_posterior": 0.9082977260862078
+    },
+    {
+      "word": "ASKED",
+      "start": 118.08167280361758,
+      "end": 118.26213791989665,
+      "mean_character_frame_posterior": 0.9992586731910705
+    },
+    {
+      "word": "FRAMPTON",
+      "start": 118.32229295865633,
+      "end": 118.7233265503876,
+      "mean_character_frame_posterior": 0.984474390745163
+    },
+    {
+      "word": "SOMEHOW",
+      "start": 119.44518701550388,
+      "end": 119.84622060723515,
+      "mean_character_frame_posterior": 0.9999228119850159
+    },
+    {
+      "word": "IN",
+      "start": 120.24725419896642,
+      "end": 120.28735755813953,
+      "mean_character_frame_posterior": 0.9999109506607056
+    },
+    {
+      "word": "THIS",
+      "start": 120.3675642764858,
+      "end": 120.48787435400517,
+      "mean_character_frame_posterior": 0.999724954366684
+    },
+    {
+      "word": "RESTFUL",
+      "start": 120.68839114987081,
+      "end": 121.04932138242894,
+      "mean_character_frame_posterior": 0.9999419110161918
+    },
+    {
+      "word": "COUNTRY",
+      "start": 121.16963145994832,
+      "end": 121.5105100129199,
+      "mean_character_frame_posterior": 0.9832245622362409
+    },
+    {
+      "word": "SPOT",
+      "start": 121.57066505167958,
+      "end": 121.85138856589148,
+      "mean_character_frame_posterior": 0.9991621971130371
+    },
+    {
+      "word": "TRAGEDIES",
+      "start": 122.21231879844962,
+      "end": 122.75371414728683,
+      "mean_character_frame_posterior": 0.9290780160162184
+    },
+    {
+      "word": "SEEMED",
+      "start": 122.85397254521965,
+      "end": 123.15474773901809,
+      "mean_character_frame_posterior": 0.9993009666601816
+    },
+    {
+      "word": "OUT",
+      "start": 123.33521285529716,
+      "end": 123.41541957364342,
+      "mean_character_frame_posterior": 0.9999479452768961
+    },
+    {
+      "word": "OF",
+      "start": 123.47557461240311,
+      "end": 123.51567797157624,
+      "mean_character_frame_posterior": 0.9999299049377441
+    },
+    {
+      "word": "PLACE",
+      "start": 123.63598804909562,
+      "end": 123.93676324289406,
+      "mean_character_frame_posterior": 0.9999545574188232
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        3,
+        4
+      ],
+      "recognized_word_span": [
+        3,
+        4
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Her",
+      "start": 116.58,
+      "end": 116.72,
+      "probability": 0.6600349545478821
+    },
+    {
+      "word": " tragedy?",
+      "start": 116.72,
+      "end": 117.5,
+      "probability": 0.7145142555236816
+    },
+    {
+      "word": " asked",
+      "start": 118.1,
+      "end": 118.26,
+      "probability": 0.7040781378746033
+    },
+    {
+      "word": " Frampton.",
+      "start": 118.26,
+      "end": 118.7,
+      "probability": 0.8149626851081848
+    },
+    {
+      "word": " Somehow,",
+      "start": 119.38,
+      "end": 119.88,
+      "probability": 0.9662306904792786
+    },
+    {
+      "word": " in",
+      "start": 120.24,
+      "end": 120.32,
+      "probability": 0.9980132579803467
+    },
+    {
+      "word": " this",
+      "start": 120.32,
+      "end": 120.66,
+      "probability": 0.997434675693512
+    },
+    {
+      "word": " restful",
+      "start": 120.66,
+      "end": 121.14,
+      "probability": 0.9723221957683563
+    },
+    {
+      "word": " country",
+      "start": 121.14,
+      "end": 121.42,
+      "probability": 0.9877657890319824
+    },
+    {
+      "word": " spot,",
+      "start": 121.42,
+      "end": 122.0,
+      "probability": 0.975646436214447
+    },
+    {
+      "word": " tragedies",
+      "start": 122.26,
+      "end": 122.6,
+      "probability": 0.9249030351638794
+    },
+    {
+      "word": " seemed",
+      "start": 122.6,
+      "end": 123.16,
+      "probability": 0.9859967827796936
+    },
+    {
+      "word": " out",
+      "start": 123.16,
+      "end": 123.42,
+      "probability": 0.9982950091362
+    },
+    {
+      "word": " of",
+      "start": 123.42,
+      "end": 123.66,
+      "probability": 0.9941575527191162
+    },
+    {
+      "word": " place.",
+      "start": 123.66,
+      "end": 123.98,
+      "probability": 0.9991624355316162
+    }
+  ],
+  "whisper_transcript_in_unit": "Her tragedy? asked Frampton. Somehow, in this restful country spot, tragedies seemed out of place.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.30481379100000083
+}

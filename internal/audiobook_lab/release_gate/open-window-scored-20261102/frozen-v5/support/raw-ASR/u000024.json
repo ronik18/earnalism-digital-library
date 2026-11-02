@@ -1,0 +1,692 @@
+{
+  "unit": "u000024",
+  "master_interval_seconds": [
+    275.1764166666667,
+    293.4964166666667
+  ],
+  "expected_text": "She rattled on cheerfully about the shooting and the scarcity of birds, and the prospects for duck in the winter. To Framton it was all purely horrible.",
+  "ctc_transcript": "SHE RATTLED ON CHEERFULLY ABOUT THE SHOOTING AND THE SCARCITY OF BIRDS AND THE PROSPECTS FOR DUCK IN THE WINTER SOME ONE THING IT'S VERY EUROKE IT TO PUT TURN THE GIVE MADE THAT THEY AL LORD AND THEN AFORE THE SLUCK WILL WAIY AH THIS SAID COUD TELL O NAT'S A SORE",
+  "ctc_words": [
+    {
+      "word": "SHE",
+      "start": 275.31656967213115,
+      "end": 275.41667896174863,
+      "mean_character_frame_posterior": 0.9914557337760925
+    },
+    {
+      "word": "RATTLED",
+      "start": 275.53681010928966,
+      "end": 275.8972035519126,
+      "mean_character_frame_posterior": 0.9953202775546482
+    },
+    {
+      "word": "ON",
+      "start": 275.99731284153006,
+      "end": 276.05737841530055,
+      "mean_character_frame_posterior": 0.9992332756519318
+    },
+    {
+      "word": "CHEERFULLY",
+      "start": 276.157487704918,
+      "end": 276.5779467213115,
+      "mean_character_frame_posterior": 0.9892128705978394
+    },
+    {
+      "word": "ABOUT",
+      "start": 276.6580341530055,
+      "end": 276.85825273224043,
+      "mean_character_frame_posterior": 0.9992875099182129
+    },
+    {
+      "word": "THE",
+      "start": 276.8982964480874,
+      "end": 276.95836202185797,
+      "mean_character_frame_posterior": 0.9915454387664795
+    },
+    {
+      "word": "SHOOTING",
+      "start": 277.03844945355195,
+      "end": 277.39884289617487,
+      "mean_character_frame_posterior": 0.9799433499574661
+    },
+    {
+      "word": "AND",
+      "start": 277.77925819672134,
+      "end": 277.83932377049183,
+      "mean_character_frame_posterior": 0.9005372921625773
+    },
+    {
+      "word": "THE",
+      "start": 277.8993893442623,
+      "end": 277.9594549180328,
+      "mean_character_frame_posterior": 0.9878597656885783
+    },
+    {
+      "word": "SCARCITY",
+      "start": 278.0395423497268,
+      "end": 278.52006693989074,
+      "mean_character_frame_posterior": 0.9966691955924034
+    },
+    {
+      "word": "OF",
+      "start": 278.5801325136612,
+      "end": 278.6201762295082,
+      "mean_character_frame_posterior": 0.9985466599464417
+    },
+    {
+      "word": "BIRDS",
+      "start": 278.7202855191257,
+      "end": 279.0806789617487,
+      "mean_character_frame_posterior": 0.9851763844490051
+    },
+    {
+      "word": "AND",
+      "start": 279.5011379781421,
+      "end": 279.58122540983607,
+      "mean_character_frame_posterior": 0.9861827691396078
+    },
+    {
+      "word": "THE",
+      "start": 279.64129098360655,
+      "end": 279.70135655737704,
+      "mean_character_frame_posterior": 0.9785195787747701
+    },
+    {
+      "word": "PROSPECTS",
+      "start": 279.7614221311476,
+      "end": 280.28199043715847,
+      "mean_character_frame_posterior": 0.9245717326800028
+    },
+    {
+      "word": "FOR",
+      "start": 280.34205601092896,
+      "end": 280.42214344262294,
+      "mean_character_frame_posterior": 0.9783070286115011
+    },
+    {
+      "word": "DUCK",
+      "start": 280.502230874317,
+      "end": 280.70244945355194,
+      "mean_character_frame_posterior": 0.999228909611702
+    },
+    {
+      "word": "IN",
+      "start": 280.7625150273224,
+      "end": 280.8025587431694,
+      "mean_character_frame_posterior": 0.9855337142944336
+    },
+    {
+      "word": "THE",
+      "start": 280.8626243169399,
+      "end": 280.9226898907104,
+      "mean_character_frame_posterior": 0.9642108678817749
+    },
+    {
+      "word": "WINTER",
+      "start": 280.9627336065574,
+      "end": 281.1829740437159,
+      "mean_character_frame_posterior": 0.9211952487627665
+    },
+    {
+      "word": "SOME",
+      "start": 282.10397950819674,
+      "end": 282.2641543715847,
+      "mean_character_frame_posterior": 0.9857955425977707
+    },
+    {
+      "word": "ONE",
+      "start": 282.3842855191257,
+      "end": 282.48439480874316,
+      "mean_character_frame_posterior": 0.9827283024787903
+    },
+    {
+      "word": "THING",
+      "start": 282.6445696721312,
+      "end": 282.82476639344264,
+      "mean_character_frame_posterior": 0.9792612075805665
+    },
+    {
+      "word": "IT'S",
+      "start": 282.88483196721313,
+      "end": 283.0049631147541,
+      "mean_character_frame_posterior": 0.9265932142734528
+    },
+    {
+      "word": "VERY",
+      "start": 283.1050724043716,
+      "end": 283.3853784153006,
+      "mean_character_frame_posterior": 0.9839905053377151
+    },
+    {
+      "word": "EUROKE",
+      "start": 283.6656844262295,
+      "end": 284.006056010929,
+      "mean_character_frame_posterior": 0.8480523824691772
+    },
+    {
+      "word": "IT",
+      "start": 284.0661215846995,
+      "end": 284.1061653005465,
+      "mean_character_frame_posterior": 0.7219160795211792
+    },
+    {
+      "word": "TO",
+      "start": 284.16623087431697,
+      "end": 284.20627459016396,
+      "mean_character_frame_posterior": 0.9750745892524719
+    },
+    {
+      "word": "PUT",
+      "start": 284.28636202185794,
+      "end": 284.4465368852459,
+      "mean_character_frame_posterior": 0.9924413164456686
+    },
+    {
+      "word": "TURN",
+      "start": 284.5866898907104,
+      "end": 284.86699590163937,
+      "mean_character_frame_posterior": 0.9344292730093002
+    },
+    {
+      "word": "THE",
+      "start": 285.70791393442624,
+      "end": 285.7880013661202,
+      "mean_character_frame_posterior": 0.8780524929364523
+    },
+    {
+      "word": "GIVE",
+      "start": 285.8680887978142,
+      "end": 286.04828551912567,
+      "mean_character_frame_posterior": 0.9703026562929153
+    },
+    {
+      "word": "MADE",
+      "start": 286.1483948087432,
+      "end": 286.30856967213117,
+      "mean_character_frame_posterior": 0.8278027772903442
+    },
+    {
+      "word": "THAT",
+      "start": 286.36863524590166,
+      "end": 286.46874453551914,
+      "mean_character_frame_posterior": 0.933415412902832
+    },
+    {
+      "word": "THEY",
+      "start": 286.5288101092896,
+      "end": 286.6489412568306,
+      "mean_character_frame_posterior": 0.7938441634178162
+    },
+    {
+      "word": "AL",
+      "start": 286.7090068306011,
+      "end": 286.7490505464481,
+      "mean_character_frame_posterior": 0.5470389723777771
+    },
+    {
+      "word": "LORD",
+      "start": 286.8291379781421,
+      "end": 287.10944398907105,
+      "mean_character_frame_posterior": 0.9743729829788208
+    },
+    {
+      "word": "AND",
+      "start": 287.4097718579235,
+      "end": 287.4898592896175,
+      "mean_character_frame_posterior": 0.9540947477022806
+    },
+    {
+      "word": "THEN",
+      "start": 287.5299030054645,
+      "end": 287.6500341530055,
+      "mean_character_frame_posterior": 0.8107146322727203
+    },
+    {
+      "word": "AFORE",
+      "start": 287.75014344262297,
+      "end": 288.2106461748634,
+      "mean_character_frame_posterior": 0.8602258563041687
+    },
+    {
+      "word": "THE",
+      "start": 288.4509084699454,
+      "end": 288.53099590163936,
+      "mean_character_frame_posterior": 0.9879299799601237
+    },
+    {
+      "word": "SLUCK",
+      "start": 288.57103961748635,
+      "end": 288.8113019125683,
+      "mean_character_frame_posterior": 0.9481419801712037
+    },
+    {
+      "word": "WILL",
+      "start": 288.8513456284153,
+      "end": 288.9914986338798,
+      "mean_character_frame_posterior": 0.8385029435157776
+    },
+    {
+      "word": "WAIY",
+      "start": 289.0115204918033,
+      "end": 289.21173907103827,
+      "mean_character_frame_posterior": 0.7034053355455399
+    },
+    {
+      "word": "AH",
+      "start": 290.33296311475414,
+      "end": 290.4130505464481,
+      "mean_character_frame_posterior": 0.775861918926239
+    },
+    {
+      "word": "THIS",
+      "start": 290.73340027322405,
+      "end": 290.853531420765,
+      "mean_character_frame_posterior": 0.8852433413267136
+    },
+    {
+      "word": "SAID",
+      "start": 290.933618852459,
+      "end": 291.133837431694,
+      "mean_character_frame_posterior": 0.9953764230012894
+    },
+    {
+      "word": "COUD",
+      "start": 291.5943401639344,
+      "end": 291.75451502732244,
+      "mean_character_frame_posterior": 0.7273112088441849
+    },
+    {
+      "word": "TELL",
+      "start": 291.8546243169399,
+      "end": 292.0348210382514,
+      "mean_character_frame_posterior": 0.9304680973291397
+    },
+    {
+      "word": "O",
+      "start": 292.15495218579235,
+      "end": 292.17497404371585,
+      "mean_character_frame_posterior": 0.9032516479492188
+    },
+    {
+      "word": "NAT'S",
+      "start": 292.7155642076503,
+      "end": 292.89576092896175,
+      "mean_character_frame_posterior": 0.7460509240627289
+    },
+    {
+      "word": "A",
+      "start": 292.95582650273224,
+      "end": 292.97584836065573,
+      "mean_character_frame_posterior": 0.8933483362197876
+    },
+    {
+      "word": "SORE",
+      "start": 293.0559357923497,
+      "end": 293.3362418032787,
+      "mean_character_frame_posterior": 0.9811146259307861
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "insert",
+      "expected": [],
+      "recognized": [
+        "some",
+        "one",
+        "thing",
+        "it's",
+        "very",
+        "euroke",
+        "it"
+      ],
+      "reference_word_span": [
+        20,
+        20
+      ],
+      "recognized_word_span": [
+        20,
+        27
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "framton",
+        "it",
+        "was",
+        "all",
+        "purely",
+        "horrible"
+      ],
+      "recognized": [
+        "put",
+        "turn",
+        "the",
+        "give",
+        "made",
+        "that",
+        "they",
+        "al",
+        "lord",
+        "and",
+        "then",
+        "afore",
+        "the",
+        "sluck",
+        "will",
+        "waiy",
+        "ah",
+        "this",
+        "said",
+        "coud",
+        "tell",
+        "o",
+        "nat's",
+        "a",
+        "sore"
+      ],
+      "reference_word_span": [
+        21,
+        27
+      ],
+      "recognized_word_span": [
+        28,
+        53
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " She",
+      "start": 275.14,
+      "end": 275.54,
+      "probability": 0.9576831459999084
+    },
+    {
+      "word": " rattled",
+      "start": 275.54,
+      "end": 275.8,
+      "probability": 0.962470293045044
+    },
+    {
+      "word": " on",
+      "start": 275.8,
+      "end": 276.22,
+      "probability": 0.992482602596283
+    },
+    {
+      "word": " cheerfully",
+      "start": 276.22,
+      "end": 276.6,
+      "probability": 0.990703821182251
+    },
+    {
+      "word": " about",
+      "start": 276.6,
+      "end": 276.92,
+      "probability": 0.9959036707878113
+    },
+    {
+      "word": " the",
+      "start": 276.92,
+      "end": 277.04,
+      "probability": 0.9930311441421509
+    },
+    {
+      "word": " shooting",
+      "start": 277.04,
+      "end": 277.34,
+      "probability": 0.9848434329032898
+    },
+    {
+      "word": " and",
+      "start": 277.34,
+      "end": 277.92,
+      "probability": 0.7300821542739868
+    },
+    {
+      "word": " the",
+      "start": 277.92,
+      "end": 278.14,
+      "probability": 0.9820104241371155
+    },
+    {
+      "word": " scarcity",
+      "start": 278.14,
+      "end": 278.46,
+      "probability": 0.9948170781135559
+    },
+    {
+      "word": " of",
+      "start": 278.46,
+      "end": 278.76,
+      "probability": 0.9985417127609253
+    },
+    {
+      "word": " birds,",
+      "start": 278.76,
+      "end": 279.1,
+      "probability": 0.9906665682792664
+    },
+    {
+      "word": " and",
+      "start": 279.5,
+      "end": 279.64,
+      "probability": 0.9933504462242126
+    },
+    {
+      "word": " the",
+      "start": 279.64,
+      "end": 279.78,
+      "probability": 0.9903488159179688
+    },
+    {
+      "word": " prospects",
+      "start": 279.78,
+      "end": 280.22,
+      "probability": 0.9909900426864624
+    },
+    {
+      "word": " for",
+      "start": 280.22,
+      "end": 280.56,
+      "probability": 0.9698550701141357
+    },
+    {
+      "word": " duck",
+      "start": 280.56,
+      "end": 280.72,
+      "probability": 0.8851445913314819
+    },
+    {
+      "word": " in",
+      "start": 280.72,
+      "end": 280.84,
+      "probability": 0.9596466422080994
+    },
+    {
+      "word": " the",
+      "start": 280.84,
+      "end": 280.98,
+      "probability": 0.9922522902488708
+    },
+    {
+      "word": " winter.",
+      "start": 280.98,
+      "end": 281.26,
+      "probability": 0.9666627049446106
+    },
+    {
+      "word": " Someone",
+      "start": 281.98,
+      "end": 282.4,
+      "probability": 0.49928346276283264
+    },
+    {
+      "word": " think",
+      "start": 282.4,
+      "end": 282.86,
+      "probability": 0.4779115915298462
+    },
+    {
+      "word": " it's",
+      "start": 282.86,
+      "end": 283.12,
+      "probability": 0.9774312078952789
+    },
+    {
+      "word": " very",
+      "start": 283.12,
+      "end": 283.44,
+      "probability": 0.9571788311004639
+    },
+    {
+      "word": " uroquid",
+      "start": 283.44,
+      "end": 284.08,
+      "probability": 0.4730774387717247
+    },
+    {
+      "word": " to",
+      "start": 284.08,
+      "end": 284.26,
+      "probability": 0.9580574035644531
+    },
+    {
+      "word": " put",
+      "start": 284.26,
+      "end": 284.44,
+      "probability": 0.9903478622436523
+    },
+    {
+      "word": " turn,",
+      "start": 284.44,
+      "end": 285.0,
+      "probability": 0.5022777318954468
+    },
+    {
+      "word": " that",
+      "start": 285.7,
+      "end": 285.86,
+      "probability": 0.7611802220344543
+    },
+    {
+      "word": " give",
+      "start": 285.86,
+      "end": 286.02,
+      "probability": 0.64592444896698
+    },
+    {
+      "word": " me",
+      "start": 286.02,
+      "end": 286.32,
+      "probability": 0.9858188629150391
+    },
+    {
+      "word": " that",
+      "start": 286.32,
+      "end": 286.46,
+      "probability": 0.9356733560562134
+    },
+    {
+      "word": " they",
+      "start": 286.46,
+      "end": 286.68,
+      "probability": 0.91143798828125
+    },
+    {
+      "word": " outlord,",
+      "start": 286.68,
+      "end": 287.14,
+      "probability": 0.5604667067527771
+    },
+    {
+      "word": " and",
+      "start": 287.42,
+      "end": 287.56,
+      "probability": 0.9900094866752625
+    },
+    {
+      "word": " then",
+      "start": 287.56,
+      "end": 287.76,
+      "probability": 0.9499419927597046
+    },
+    {
+      "word": " a",
+      "start": 287.76,
+      "end": 287.78,
+      "probability": 0.5020821690559387
+    },
+    {
+      "word": " for",
+      "start": 287.78,
+      "end": 288.2,
+      "probability": 0.45519447326660156
+    },
+    {
+      "word": " the",
+      "start": 288.2,
+      "end": 288.58,
+      "probability": 0.5162882804870605
+    },
+    {
+      "word": " sluckle",
+      "start": 288.58,
+      "end": 288.86,
+      "probability": 0.7608328461647034
+    },
+    {
+      "word": " way.",
+      "start": 288.86,
+      "end": 289.28,
+      "probability": 0.7103952169418335
+    },
+    {
+      "word": " Oh,",
+      "start": 289.28,
+      "end": 290.32,
+      "probability": 0.19020865857601166
+    },
+    {
+      "word": " this",
+      "start": 290.68,
+      "end": 290.92,
+      "probability": 0.8761584162712097
+    },
+    {
+      "word": " said,",
+      "start": 290.92,
+      "end": 291.44,
+      "probability": 0.9585471153259277
+    },
+    {
+      "word": " could",
+      "start": 291.66,
+      "end": 291.72,
+      "probability": 0.3032587766647339
+    },
+    {
+      "word": " Tello,",
+      "start": 291.72,
+      "end": 292.16,
+      "probability": 0.35557781159877777
+    },
+    {
+      "word": " NASA",
+      "start": 292.78,
+      "end": 292.92,
+      "probability": 0.16208548843860626
+    },
+    {
+      "word": " soar.",
+      "start": 292.92,
+      "end": 293.44,
+      "probability": 0.5635773539543152
+    }
+  ],
+  "whisper_transcript_in_unit": "She rattled on cheerfully about the shooting and the scarcity of birds, and the prospects for duck in the winter. Someone think it's very uroquid to put turn, that give me that they outlord, and then a for the sluckle way. Oh, this said, could Tello, NASA soar.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 1.055253583999999
+}

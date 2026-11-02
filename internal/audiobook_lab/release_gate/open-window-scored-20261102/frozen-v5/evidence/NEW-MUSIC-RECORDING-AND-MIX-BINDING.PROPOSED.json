@@ -1,0 +1,49 @@
+{
+  "schema": "earnalism.open_window_exact_scored_music_binding_proposed.v1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "delivery_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+  "listened_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+  "lossless_mix_wav_sha256": "f2b80840b9797819934282f20f2f139b3cda33aef8f05825378cbb499eae4167",
+  "recordings": [
+    {
+      "title": "Heartwarming",
+      "creator": "Kevin MacLeod",
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/Heartwarming-Kevin-MacLeod-original.mp3",
+      "sha256": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+      "licence": "CC BY4.0",
+      "existing_music_evidence": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/MUSIC-SELECTION.json",
+      "artwork": "Do not reuse attached image; map audio only",
+      "selection_status": "PROVISIONAL_ARTISTIC_SUITABILITY_UNVERIFIED"
+    },
+    {
+      "title": "Heartbreaking",
+      "creator": "Kevin MacLeod",
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/Heartbreaking-Kevin-MacLeod-original.mp3",
+      "sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+      "licence": "CC BY4.0",
+      "existing_music_evidence": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/MUSIC-SELECTION.json",
+      "artwork": "Do not reuse attached image; map audio only",
+      "selection_status": "PROVISIONAL_ARTISTIC_SUITABILITY_UNVERIFIED"
+    }
+  ],
+  "actual_mix": {
+    "music_excerpts": 11,
+    "musical_scenes": 6,
+    "intentional_silence_scenes": 4,
+    "narration_not_ducked": true,
+    "common_master_gain_db": -0.96
+  },
+  "evidence_sha256": {
+    "music_licence": "a73f823779e52f7cb70db5afd1faf972f8ec32a6251feab12f90527022a9f6e1",
+    "music_credit": "4b017c890a34b7eb7f7ae45606ba18532ed8ac58c5e4369ef757a0cad044f29b",
+    "score_plan": "d5e737122460c9b2ab0aafd37cfeeb7103c6ea1fd07cc8bf205699626bd18b58",
+    "technical_mix": "e6ff53d68e8284a7f277897614531bea23e4fb87fab7290be3a1d9e4356ec4d9",
+    "owner_full_scored_acceptance": "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a"
+  },
+  "licence_conditions": [
+    "CC BY4.0 title/creator/source/licence/adaptation attribution required",
+    "No endorsement, exclusive music copyright or attached-artwork reuse claimed",
+    "Customer-visible credits and licence-compatible protected delivery unverified"
+  ],
+  "owner_listening": "Complete exact mix accepted; artistic suitability not inferred merely from track labels."
+}

@@ -1,0 +1,102 @@
+{
+  "unit": "u000039",
+  "master_interval_seconds": [
+    495.23275,
+    499.07275
+  ],
+  "expected_text": "Romance at short notice was her speciality.",
+  "ctc_transcript": "ROMANCE AT SHORT NOTICE WAS HER SPECIALITY",
+  "ctc_words": [
+    {
+      "word": "ROMANCE",
+      "start": 495.41369240837696,
+      "end": 495.97662434554974,
+      "mean_character_frame_posterior": 0.9966113311903817
+    },
+    {
+      "word": "AT",
+      "start": 496.31840445026177,
+      "end": 496.35861387434556,
+      "mean_character_frame_posterior": 0.9953037798404694
+    },
+    {
+      "word": "SHORT",
+      "start": 496.5596609947644,
+      "end": 496.82102225130893,
+      "mean_character_frame_posterior": 0.9997798085212708
+    },
+    {
+      "word": "NOTICE",
+      "start": 497.0019646596859,
+      "end": 497.3638494764398,
+      "mean_character_frame_posterior": 0.9992363055547079
+    },
+    {
+      "word": "WAS",
+      "start": 497.46437303664925,
+      "end": 497.6252107329843,
+      "mean_character_frame_posterior": 0.9999566475550333
+    },
+    {
+      "word": "HER",
+      "start": 497.7458390052356,
+      "end": 497.8865719895288,
+      "mean_character_frame_posterior": 0.9998202522595724
+    },
+    {
+      "word": "SPECIALITY",
+      "start": 498.0474096858639,
+      "end": 498.9521217277487,
+      "mean_character_frame_posterior": 0.996917724609375
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Romance",
+      "start": 495.34,
+      "end": 495.84,
+      "probability": 0.898705005645752
+    },
+    {
+      "word": " at",
+      "start": 495.84,
+      "end": 496.62,
+      "probability": 0.5407757759094238
+    },
+    {
+      "word": " short",
+      "start": 496.62,
+      "end": 496.8,
+      "probability": 0.9399172067642212
+    },
+    {
+      "word": " notice",
+      "start": 496.8,
+      "end": 497.32,
+      "probability": 0.987551748752594
+    },
+    {
+      "word": " was",
+      "start": 497.32,
+      "end": 497.72,
+      "probability": 0.9886484742164612
+    },
+    {
+      "word": " her",
+      "start": 497.72,
+      "end": 498.06,
+      "probability": 0.9958571791648865
+    },
+    {
+      "word": " speciality.",
+      "start": 498.06,
+      "end": 498.96,
+      "probability": 0.9023758172988892
+    }
+  ],
+  "whisper_transcript_in_unit": "Romance at short notice was her speciality.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.13435300000000439
+}

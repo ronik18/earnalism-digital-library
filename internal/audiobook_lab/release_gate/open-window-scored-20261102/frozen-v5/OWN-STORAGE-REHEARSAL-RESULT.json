@@ -1,0 +1,75 @@
+{
+  "schema": "earnalism.open_window_scored_offline_carried_storage_rehearsal.v1",
+  "status": "OFFLINE_ACTUAL_ADAPTER_WITH_FAKE_STORES_ONLY_NOT_STORAGE_QUALIFICATION",
+  "descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "source_packet_status": "PROPOSED_NOT_ADOPTED",
+  "payload_assets_per_store_bytes": 11824717,
+  "reserved_final_manifest_bytes_per_store": 65536,
+  "payload_plus_manifest_per_store": 11890253,
+  "predecessor_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/continuous-private-staging-20261101/the-open-window/storage-budget.json",
+  "predecessor_sha256": "68770ec864527cf14925e733e71ae239b166dbfe2c0fc436c9e7ec99cc037e4a",
+  "predecessor_identity": "e22d565502fcafc0d900a271329a1e4658ec5e53074eaf7e4241beb18224040d",
+  "old_used_carried": {
+    "download_bytes": 31587312,
+    "metadata_bytes": 18874386,
+    "requests": 141,
+    "upload_bytes": 15793656,
+    "versions": 10
+  },
+  "old_ten_ordered_attempted_hashes": [
+    "13f6c51aaebba1d8aa593803b325fce20ce6ae0925c42bc7b574eeee310250ab",
+    "f7c3294b5a459ed1dd72483526bf85c8492a5b10101550ea049329c95451f8bb",
+    "f9ab6d523a5a899433eabc77e0d97d2dd5b4bb588751d02fc4b3495a49c3f795",
+    "426b87ddb639f7057743d61ad7fd62a5431f0ece586ddd23658bbd50ccce243a",
+    "5671d0597f9ce8e5388ac8da1ce4b53304a320e25887ba6a61519dba93ff4295",
+    "854ab1b29cbb76e7ef462c980a4b1db518b2e2d508fefe8f69ce71cd01e4b02c",
+    "2d714ae8390d8f44b1edd60181aff0765c76418f27d1e07636a545bd4f687cce",
+    "d5c630884ad7866d8ebdbf6bbcb71cb24b57fe8277cf2a05713d5aeab08df016",
+    "1951b86a4ab684efd1bcbf89a1ebe55271e1e54ffd58dbaec2333cd0a95f8754",
+    "c6be4d51436ce154339a173f1cb28a27e5a5f9d2a07b4f867eadbc812ae44550"
+  ],
+  "predecessor_unchanged": true,
+  "new_operation_delta": {
+    "download_bytes": 47561012,
+    "metadata_bytes": 16777232,
+    "requests": 119,
+    "upload_bytes": 23780506,
+    "versions": 10
+  },
+  "projected_cumulative_used": {
+    "download_bytes": 79148324,
+    "metadata_bytes": 35651618,
+    "requests": 260,
+    "upload_bytes": 39574162,
+    "versions": 20
+  },
+  "proposed_total_limits_NOT_APPROVED": {
+    "requests": 2000,
+    "upload_bytes": 41943040,
+    "download_bytes": 83886080,
+    "versions": 176,
+    "metadata_bytes": 46137344
+  },
+  "remaining_if_approved": {
+    "requests": 1740,
+    "upload_bytes": 2368878,
+    "download_bytes": 4737756,
+    "versions": 156,
+    "metadata_bytes": 10485726
+  },
+  "actual_native_read_model": {
+    "preflight_runs": 8,
+    "metadata_requests_per_run": 2,
+    "bounded_bytes_per_response": 1048577
+  },
+  "actual_upload_readback_adapter_sha256": "aa3396219a946e6480764403a0cff9757f7f5c8a5c5122bfe16b8be51fc3e8dd",
+  "actual_budget_module_sha256": "eb167d5d68ecda02149725944ca7ac36117489a525ade5126eec05c614130299",
+  "real_provider_calls": 0,
+  "active_budget_or_original_file_writes": 0,
+  "not_proven": [
+    "Actual provider endpoints/account/bucket/privacy/retention/versioning/expiry/destination absence",
+    "Real versionIDs/final manifest actualsize/sourceQA native admission",
+    "Storage receipt or public readiness"
+  ],
+  "scope": "Model one bounded four-asset PROD upload/fullverify, full DR replication/fullverify, finalmanifest PROD+DR similarly. No second full-master read/replay margin is available; partial/uncertain phases must reconcile receipts before continuing. Protected customer traffic has separate original120 authority and actual measured provider bytes, not an operator-budget escape route."
+}

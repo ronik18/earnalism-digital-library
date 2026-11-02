@@ -1,0 +1,148 @@
+{
+  "operation": "replicate",
+  "receipt_schema": "audiobook_package_storage_receipt.v1",
+  "receipt_role": "replica",
+  "generated_at": "2026-11-02T06:04:11Z",
+  "production_store": {
+    "role": "prod",
+    "endpoint_host": "s3.region-1.example.invalid",
+    "region": "region-1",
+    "bucket": "private-bucket-1",
+    "account_identity_declared": true,
+    "account_fingerprint": "07e998012c1137de",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_PROD_"
+  },
+  "dr_store": {
+    "role": "dr",
+    "endpoint_host": "s3.region-2.example.invalid",
+    "region": "region-2",
+    "bucket": "private-bucket-2",
+    "account_identity_declared": true,
+    "account_fingerprint": "703039e88185964b",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_DR_"
+  },
+  "store": {
+    "role": "dr",
+    "endpoint_host": "s3.region-2.example.invalid",
+    "region": "region-2",
+    "bucket": "private-bucket-2",
+    "account_identity_declared": true,
+    "account_fingerprint": "703039e88185964b",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_DR_"
+  },
+  "profiles_used": {
+    "production": {
+      "object_io": "upload",
+      "retention_preflight": "retention_admin"
+    },
+    "disaster_recovery": {
+      "object_io": "upload",
+      "retention_preflight": "retention_admin"
+    }
+  },
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/",
+  "release_status": "RELEASE_CANDIDATE",
+  "retention_days": 365,
+  "objects": [
+    {
+      "asset_id": "chapter-001-full-audio",
+      "store": "dr",
+      "bucket": "private-bucket-2",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+      "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+      "size_bytes": 11797552,
+      "mime_type": "audio/mpeg",
+      "version_id": "version-101",
+      "primary_version_id": "version-1",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.560490+00:00",
+      "action": "REPLICATED_AND_VERIFIED",
+      "full_download_verified": true,
+      "primary_receipt_verified": true
+    },
+    {
+      "asset_id": "chapter-001-full-timestamps",
+      "store": "dr",
+      "bucket": "private-bucket-2",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+      "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+      "size_bytes": 17612,
+      "mime_type": "application/json",
+      "version_id": "version-102",
+      "primary_version_id": "version-2",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.573413+00:00",
+      "action": "REPLICATED_AND_VERIFIED",
+      "full_download_verified": true,
+      "primary_receipt_verified": true
+    },
+    {
+      "asset_id": "chapter-001-full-metadata",
+      "store": "dr",
+      "bucket": "private-bucket-2",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+      "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+      "size_bytes": 1870,
+      "mime_type": "application/json",
+      "version_id": "version-103",
+      "primary_version_id": "version-3",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.576124+00:00",
+      "action": "REPLICATED_AND_VERIFIED",
+      "full_download_verified": true,
+      "primary_receipt_verified": true
+    },
+    {
+      "asset_id": "chapter-001-full-vtt",
+      "store": "dr",
+      "bucket": "private-bucket-2",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+      "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+      "size_bytes": 7683,
+      "mime_type": "text/vtt",
+      "version_id": "version-104",
+      "primary_version_id": "version-4",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.577034+00:00",
+      "action": "REPLICATED_AND_VERIFIED",
+      "full_download_verified": true,
+      "primary_receipt_verified": true
+    }
+  ],
+  "passed": true
+}

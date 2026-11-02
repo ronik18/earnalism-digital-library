@@ -1,0 +1,438 @@
+{
+  "unit": "u000035",
+  "master_interval_seconds": [
+    433.41320833333333,
+    445.25320833333336
+  ],
+  "expected_text": "“Here we are, my dear,” said the bearer of the white mackintosh, coming in through the window; “fairly muddy, but most of it’s dry. Who was that who bolted out as we came up?”",
+  "ctc_transcript": "HERE WE ARE MY DEAR SAID THE BEAR OF THE WHITE MACKINTOSH COMING IN THROUGH THE WINDOW FAIRLY MUDDY BUT MOST OF IT'S DRY WHO WAS THAT WHO BOLTED OUT AS WE CAME UP",
+  "ctc_words": [
+    {
+      "word": "HERE",
+      "start": 433.4933436971235,
+      "end": 433.7137159475465,
+      "mean_character_frame_posterior": 0.9333818107843399
+    },
+    {
+      "word": "WE",
+      "start": 433.8739866751269,
+      "end": 433.9541220389171,
+      "mean_character_frame_posterior": 0.8200780153274536
+    },
+    {
+      "word": "ARE",
+      "start": 434.23459581218276,
+      "end": 434.33476501692047,
+      "mean_character_frame_posterior": 0.9989485939343771
+    },
+    {
+      "word": "MY",
+      "start": 434.4750019035533,
+      "end": 434.81557719966156,
+      "mean_character_frame_posterior": 0.999873012304306
+    },
+    {
+      "word": "DEAR",
+      "start": 434.9958817681895,
+      "end": 435.27635554145513,
+      "mean_character_frame_posterior": 0.9747535884380341
+    },
+    {
+      "word": "SAID",
+      "start": 435.8172692470389,
+      "end": 435.9775399746193,
+      "mean_character_frame_posterior": 0.9998263865709305
+    },
+    {
+      "word": "THE",
+      "start": 436.0176076565144,
+      "end": 436.09774302030456,
+      "mean_character_frame_posterior": 0.9999120434125265
+    },
+    {
+      "word": "BEAR",
+      "start": 436.1578445431472,
+      "end": 436.33814911167514,
+      "mean_character_frame_posterior": 0.9990999400615692
+    },
+    {
+      "word": "OF",
+      "start": 436.4583521573604,
+      "end": 436.4984198392555,
+      "mean_character_frame_posterior": 0.9994427859783173
+    },
+    {
+      "word": "THE",
+      "start": 436.5384875211506,
+      "end": 436.59858904399323,
+      "mean_character_frame_posterior": 0.9997727672259012
+    },
+    {
+      "word": "WHITE",
+      "start": 436.65869056683584,
+      "end": 436.8189612944162,
+      "mean_character_frame_posterior": 0.9452916383743286
+    },
+    {
+      "word": "MACKINTOSH",
+      "start": 436.8990966582064,
+      "end": 437.56021340947547,
+      "mean_character_frame_posterior": 0.9142134606838226
+    },
+    {
+      "word": "COMING",
+      "start": 437.88075486463623,
+      "end": 438.1411947969543,
+      "mean_character_frame_posterior": 0.9998431205749512
+    },
+    {
+      "word": "IN",
+      "start": 438.20129631979694,
+      "end": 438.24136400169203,
+      "mean_character_frame_posterior": 0.9997109472751617
+    },
+    {
+      "word": "THROUGH",
+      "start": 438.3014655245347,
+      "end": 438.5018039340101,
+      "mean_character_frame_posterior": 0.9507282035691398
+    },
+    {
+      "word": "THE",
+      "start": 438.5418716159052,
+      "end": 438.6019731387479,
+      "mean_character_frame_posterior": 0.9997043013572693
+    },
+    {
+      "word": "WINDOW",
+      "start": 438.6620746615905,
+      "end": 438.9425484348562,
+      "mean_character_frame_posterior": 0.9953497250874838
+    },
+    {
+      "word": "FAIRLY",
+      "start": 439.66376670896784,
+      "end": 440.0644435279188,
+      "mean_character_frame_posterior": 0.9998834331830343
+    },
+    {
+      "word": "MUDDY",
+      "start": 440.1846465736041,
+      "end": 440.5051880287648,
+      "mean_character_frame_posterior": 0.9999006986618042
+    },
+    {
+      "word": "BUT",
+      "start": 440.96596637055836,
+      "end": 441.22640630287646,
+      "mean_character_frame_posterior": 0.9999340375264486
+    },
+    {
+      "word": "MOST",
+      "start": 441.5269139170897,
+      "end": 441.7072184856176,
+      "mean_character_frame_posterior": 0.9999070763587952
+    },
+    {
+      "word": "OF",
+      "start": 441.7873538494078,
+      "end": 441.8274215313029,
+      "mean_character_frame_posterior": 0.9994727373123169
+    },
+    {
+      "word": "IT'S",
+      "start": 441.9075568950931,
+      "end": 442.0077260998308,
+      "mean_character_frame_posterior": 0.9267559498548508
+    },
+    {
+      "word": "DRY",
+      "start": 442.0477937817259,
+      "end": 442.308233714044,
+      "mean_character_frame_posterior": 0.9967009623845419
+    },
+    {
+      "word": "WHO",
+      "start": 443.02945198815564,
+      "end": 443.1296211928934,
+      "mean_character_frame_posterior": 0.9999792178471884
+    },
+    {
+      "word": "WAS",
+      "start": 443.2097565566836,
+      "end": 443.2898919204738,
+      "mean_character_frame_posterior": 0.8876584966977438
+    },
+    {
+      "word": "THAT",
+      "start": 443.3900611252115,
+      "end": 443.590399534687,
+      "mean_character_frame_posterior": 0.9998878985643387
+    },
+    {
+      "word": "WHO",
+      "start": 443.6705348984772,
+      "end": 443.7707041032149,
+      "mean_character_frame_posterior": 0.8907475471496582
+    },
+    {
+      "word": "BOLTED",
+      "start": 443.8508394670051,
+      "end": 444.17138092216584,
+      "mean_character_frame_posterior": 0.9990598857402802
+    },
+    {
+      "word": "OUT",
+      "start": 444.31161780879864,
+      "end": 444.39175317258884,
+      "mean_character_frame_posterior": 0.9999165534973145
+    },
+    {
+      "word": "AS",
+      "start": 444.49192237732655,
+      "end": 444.53199005922164,
+      "mean_character_frame_posterior": 0.9998858571052551
+    },
+    {
+      "word": "WE",
+      "start": 444.61212542301183,
+      "end": 444.692260786802,
+      "mean_character_frame_posterior": 0.9999849796295166
+    },
+    {
+      "word": "CAME",
+      "start": 444.75236230964464,
+      "end": 444.9727345600677,
+      "mean_character_frame_posterior": 0.9998773634433746
+    },
+    {
+      "word": "UP",
+      "start": 445.1330052876481,
+      "end": 445.17307296954317,
+      "mean_character_frame_posterior": 0.9991734027862549
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "bearer"
+      ],
+      "recognized": [
+        "bear"
+      ],
+      "reference_word_span": [
+        7,
+        8
+      ],
+      "recognized_word_span": [
+        7,
+        8
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'Here",
+      "start": 433.2,
+      "end": 433.76,
+      "probability": 0.31345291435718536
+    },
+    {
+      "word": " we",
+      "start": 433.76,
+      "end": 434.02,
+      "probability": 0.9704986810684204
+    },
+    {
+      "word": " are,",
+      "start": 434.02,
+      "end": 434.5,
+      "probability": 0.9975368976593018
+    },
+    {
+      "word": " my",
+      "start": 434.56,
+      "end": 434.9,
+      "probability": 0.9786726236343384
+    },
+    {
+      "word": " dear,'",
+      "start": 434.9,
+      "end": 435.64,
+      "probability": 0.7879491150379181
+    },
+    {
+      "word": " said",
+      "start": 435.64,
+      "end": 435.96,
+      "probability": 0.9923313856124878
+    },
+    {
+      "word": " the",
+      "start": 435.96,
+      "end": 436.18,
+      "probability": 0.9946324825286865
+    },
+    {
+      "word": " bear",
+      "start": 436.18,
+      "end": 436.38,
+      "probability": 0.460182249546051
+    },
+    {
+      "word": " of",
+      "start": 436.38,
+      "end": 436.56,
+      "probability": 0.9944825172424316
+    },
+    {
+      "word": " the",
+      "start": 436.56,
+      "end": 436.64,
+      "probability": 0.9896031022071838
+    },
+    {
+      "word": " white",
+      "start": 436.64,
+      "end": 436.8,
+      "probability": 0.8779604434967041
+    },
+    {
+      "word": " Macintosh,",
+      "start": 436.8,
+      "end": 437.4,
+      "probability": 0.8453646302223206
+    },
+    {
+      "word": " coming",
+      "start": 437.9,
+      "end": 438.1,
+      "probability": 0.9846674799919128
+    },
+    {
+      "word": " in",
+      "start": 438.1,
+      "end": 438.38,
+      "probability": 0.9979081153869629
+    },
+    {
+      "word": " through",
+      "start": 438.38,
+      "end": 438.46,
+      "probability": 0.9933792352676392
+    },
+    {
+      "word": " the",
+      "start": 438.46,
+      "end": 438.62,
+      "probability": 0.997917115688324
+    },
+    {
+      "word": " window.",
+      "start": 438.62,
+      "end": 439.0,
+      "probability": 0.9991583824157715
+    },
+    {
+      "word": " Fairly",
+      "start": 439.64,
+      "end": 440.18,
+      "probability": 0.845248818397522
+    },
+    {
+      "word": " muddy,",
+      "start": 440.18,
+      "end": 440.46,
+      "probability": 0.9774545431137085
+    },
+    {
+      "word": " but",
+      "start": 440.98,
+      "end": 441.26,
+      "probability": 0.9977931976318359
+    },
+    {
+      "word": " most",
+      "start": 441.26,
+      "end": 441.72,
+      "probability": 0.967372477054596
+    },
+    {
+      "word": " of",
+      "start": 441.72,
+      "end": 441.88,
+      "probability": 0.989354133605957
+    },
+    {
+      "word": " it's",
+      "start": 441.88,
+      "end": 442.06,
+      "probability": 0.7366251349449158
+    },
+    {
+      "word": " dry.",
+      "start": 442.06,
+      "end": 442.36,
+      "probability": 0.9986982345581055
+    },
+    {
+      "word": " Who",
+      "start": 443.02,
+      "end": 443.16,
+      "probability": 0.9525933861732483
+    },
+    {
+      "word": " was",
+      "start": 443.16,
+      "end": 443.4,
+      "probability": 0.7915185689926147
+    },
+    {
+      "word": " that",
+      "start": 443.4,
+      "end": 443.68,
+      "probability": 0.9885293841362
+    },
+    {
+      "word": " who",
+      "start": 443.68,
+      "end": 443.9,
+      "probability": 0.9685854911804199
+    },
+    {
+      "word": " bolted",
+      "start": 443.9,
+      "end": 444.08,
+      "probability": 0.9889447093009949
+    },
+    {
+      "word": " out",
+      "start": 444.08,
+      "end": 444.4,
+      "probability": 0.9882020354270935
+    },
+    {
+      "word": " as",
+      "start": 444.4,
+      "end": 444.62,
+      "probability": 0.9909022450447083
+    },
+    {
+      "word": " we",
+      "start": 444.62,
+      "end": 444.74,
+      "probability": 0.9974911212921143
+    },
+    {
+      "word": " came",
+      "start": 444.74,
+      "end": 444.94,
+      "probability": 0.9968642592430115
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'Here we are, my dear,' said the bear of the white Macintosh, coming in through the window. Fairly muddy, but most of it's dry. Who was that who bolted out as we came",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.39439479199999994
+}

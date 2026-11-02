@@ -1,5 +1,5 @@
 """Exact reviewed registry-pin successor; no publication, providers or new rights."""
-import copy,hashlib,json,os,subprocess,tempfile,unittest
+import base64,copy,hashlib,json,os,subprocess,tempfile,unittest
 from datetime import datetime,timezone
 from pathlib import Path
 from scripts import catalogue_clearance_release_bindings as bindings
@@ -9,6 +9,8 @@ ROOT=Path(__file__).resolve().parents[1]
 EVIDENCE_ROOT=ROOT
 REGISTRY='backend/data/rights_decision_registry.json'
 REFERENCE='registry_sourceqa_successor_20261102'
+OPEN_REFERENCE='open_window_scored_sourceqa_successor_20261102'
+STAGE_REFERENCE='selfish_private_stage_authority_successor_20261102'
 PREDECESSOR='b4bc7585a87b7546db3270f3bfd63bd436e8585a'
 CONTINUOUS='f5706d328e08ab330f65f604f51df322b65646f1'
 CEDAR='c980ff2da048db7a164648f06f707440b2a8124c'
@@ -26,6 +28,45 @@ def load_receipt(baseline):
     return json.loads(raw)
 
 
+def load_open_successor(baseline):
+    raw=(EVIDENCE_ROOT/baseline[OPEN_REFERENCE]['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==baseline[OPEN_REFERENCE]['sha256'], 'Open scored registry review digest changed'
+    successor=json.loads(raw)
+    assert successor['schema']=='earnalism.reviewed_open_window_scored_registry_successor.v1'
+    assert successor['predecessor']['registry_sha256']==load_receipt(baseline)['registry_history'][-1]['sha256']
+    assert successor['publication_storage_or_runtime_approval'] is False
+    return successor
+
+
+def load_stage_successor(baseline):
+    raw=(EVIDENCE_ROOT/baseline[STAGE_REFERENCE]['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==baseline[STAGE_REFERENCE]['sha256'], 'Private-stage review receipt changed'
+    receipt=json.loads(raw)
+    assert receipt['schema']=='earnalism.reviewed_selfish_private_stage_authority_successor.v1'
+    assert receipt['runtime_grant_deployment_or_LIVE_approval'] is False
+    for path,digest in receipt['predecessor_files'].items():
+        assert hashlib.sha256((EVIDENCE_ROOT/path).read_bytes()).hexdigest()==digest, 'Private-stage predecessor changed'
+    return receipt
+
+def add_stage_registry(expected,baseline):
+    if STAGE_REFERENCE in baseline:
+        stage=load_stage_successor(baseline)
+        archived=EVIDENCE_ROOT/'internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102/pre-stage-rights-registry.json'
+        assert hashlib.sha256(archived.read_bytes()).hexdigest()==stage['predecessor_registry_sha256']
+        assert expected==json.loads(archived.read_text()), 'Unexpected predecessor permissions'
+        expected['accepted_records'].update(stage['added_accepted_records'])
+    return expected
+
+def add_stage_baseline(expected,baseline):
+    if STAGE_REFERENCE in baseline:
+        stage=load_stage_successor(baseline)
+        assert expected['titles'][stage['title']]==stage['predecessor_title_binding']
+        expected['authority_sha256'][REGISTRY]=stage['reviewed_registry_sha256']
+        expected['titles'][stage['title']]=stage['reviewed_title_binding']
+        expected[STAGE_REFERENCE]=baseline[STAGE_REFERENCE]
+    return expected
+
+
 class RegistrySuccessorTests(unittest.TestCase):
     def baseline(self):return bindings.load(ROOT/bindings.REVIEWED_AUTHORITY)
 
@@ -37,6 +78,11 @@ class RegistrySuccessorTests(unittest.TestCase):
         self.assertEqual(expected['authority_sha256'],receipt['predecessor_reviewed_authority']['authority_sha256'])
         expected['authority_sha256'][REGISTRY]=receipt['registry_history'][-1]['sha256']
         expected[REFERENCE]=baseline[REFERENCE]
+        if OPEN_REFERENCE in baseline:
+            successor=load_open_successor(baseline)
+            expected['authority_sha256'][REGISTRY]=successor['reviewed_registry_sha256']
+            expected[OPEN_REFERENCE]=baseline[OPEN_REFERENCE]
+        expected=add_stage_baseline(expected,baseline)
         self.assertEqual(baseline,expected)  # Includes every title/component, old scope and historical field.
         self.assertEqual(bindings.sha(ROOT/REGISTRY),baseline['authority_sha256'][REGISTRY])
         self.assertEqual(len(baseline['titles']),52)
@@ -56,6 +102,11 @@ class RegistrySuccessorTests(unittest.TestCase):
         expected['accepted_records'].update(history[2]['added_accepted_records'])
         expected['audio_package_bindings']['the-selfish-giant'][D2]=history[2]['added_audio_package_bindings']['the-selfish-giant'][D2]
         self.assertEqual(versions[2],expected)
+        if OPEN_REFERENCE in self.baseline():
+            successor=load_open_successor(self.baseline())
+            expected['accepted_records'].update(successor['added_accepted_records'])
+            expected['audio_package_bindings']['the-open-window'].update(successor['added_audio_package_bindings']['the-open-window'])
+        expected=add_stage_registry(expected,self.baseline())
         self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
         self.assertEqual(sum(len(row.get('added_accepted_records',{})) for row in history),3)
         self.assertEqual(history[2]['added_audio_package_bindings']['the-selfish-giant'][D2]['territories'],['IN'])
@@ -79,6 +130,67 @@ class RegistrySuccessorTests(unittest.TestCase):
                     accepted_records=current['accepted_records'],revoked_decision_ids=frozenset(current['revoked_decision_ids']),
                     now=datetime(2026,11,2,tzinfo=timezone.utc))
                 self.assertIs(verdict.passed,passed,(record['decision_id'],country,use,verdict.reasons))
+
+    def test_open_scored_successor_only_exact_record_and_binding(self):
+        baseline=self.baseline()
+        self.assertIn(OPEN_REFERENCE,baseline)
+        successor=load_open_successor(baseline)
+        raw=git_bytes(successor['predecessor']['git_commit'],REGISTRY)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),successor['predecessor']['registry_sha256'])
+        expected=json.loads(raw)
+        source=ROOT/'internal/audiobook_lab/release_gate/open-window-scored-20261102'
+        record=json.loads((source/'audio-use-decision.json').read_text())
+        self.assertEqual(successor['added_accepted_records'],{record['decision_id']:record_sha256(record)})
+        self.assertEqual(record['territories'],['IN']);self.assertEqual(record['uses'],['audio_stream'])
+        self.assertEqual(record['valid_until'],'2036-10-02T00:00:00+00:00')
+        expected['accepted_records'].update(successor['added_accepted_records'])
+        expected['audio_package_bindings']['the-open-window'].update(successor['added_audio_package_bindings']['the-open-window'])
+        expected=add_stage_registry(expected,self.baseline())
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        if STAGE_REFERENCE in baseline:
+            stage=load_stage_successor(baseline)
+            self.assertEqual(successor['reviewed_registry_sha256'],stage['predecessor_registry_sha256'])
+            self.assertEqual(bindings.sha(ROOT/REGISTRY),stage['reviewed_registry_sha256'])
+        else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
+        for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
+        parent=json.loads(git_bytes(successor['predecessor']['git_commit'],bindings.REVIEWED_AUTHORITY))
+        self.assertEqual(hashlib.sha256(git_bytes(successor['predecessor']['git_commit'],bindings.REVIEWED_AUTHORITY)).hexdigest(),successor['predecessor']['reviewed_authority_sha256'])
+        parent['authority_sha256'][REGISTRY]=successor['reviewed_registry_sha256'];parent[OPEN_REFERENCE]=baseline[OPEN_REFERENCE]
+        self.assertEqual(baseline,add_stage_baseline(parent,baseline))
+
+    def test_actual_supported_private_stage_only_new_reader_record_and_exact14files(self):
+        baseline=self.baseline();self.assertIn(STAGE_REFERENCE,baseline);receipt=load_stage_successor(baseline)
+        folder=EVIDENCE_ROOT/'internal/legal/catalogue_clearance_20261002/selfish_private_stage_20261102'
+        before=json.loads((folder/'pre-stage-rights-registry.json').read_text())
+        oldbaseline=json.loads((folder/'pre-stage-reviewed-authority.json').read_text())
+        snapshot=json.loads((folder/'prior-public-restore.snapshot.json').read_text())
+        actual=json.loads((folder/'ACTUAL-PRIVATE-STAGE-RESULT.json').read_text())
+        self.assertEqual(receipt['actual_transaction'],actual['transaction'])
+        self.assertEqual(len(actual['transaction']['files']),14)
+        for path,digest in actual['transaction']['files'].items():self.assertEqual(bindings.sha(ROOT/path),digest)
+        expected=copy.deepcopy(before);expected['accepted_records'].update(receipt['added_accepted_records'])
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        self.assertEqual(add_stage_baseline(oldbaseline,baseline),baseline)
+        prior=json.loads(base64.b64decode(snapshot['files']['rights_decision.json']))
+        current=json.loads((ROOT/'backend/data/controlled_publications/the-selfish-giant/rights_decision.json').read_text())
+        self.assertEqual(receipt['added_accepted_records'],{current['decision_id']:record_sha256(current)})
+        self.assertEqual(current['decision_id'],'india-20261102-the-selfish-giant-cedar-private-stage')
+        for key in prior:
+            if key not in ('decision_id','components','basis','evidence_sha256'):self.assertEqual(current[key],prior[key],key)
+        self.assertEqual(receipt['reviewed_title_binding']['component_paths'],receipt['predecessor_title_binding']['component_paths'])
+        for key,path in receipt['reviewed_title_binding']['component_paths'].items():self.assertEqual(current['components'][key],bindings.sha(ROOT/path))
+        oldbook=json.loads(base64.b64decode(snapshot['files']['public_book.json']))
+        newbook=json.loads((ROOT/'backend/data/controlled_publications/the-selfish-giant/public_book.json').read_text())
+        for field in actual['old_public_fields_preserved']:self.assertEqual(newbook.get(field),oldbook.get(field),field)
+        self.assertEqual(newbook['audiobook_native_replacement']['status'],'STAGED_PRIVATE')
+        self.assertEqual(newbook['audiobook_active_release']['active_release_descriptor_sha256'],receipt['old_selected_public_audio_descriptor'])
+        from backend.protected_package_publication import protected_package_publication_valid
+        self.assertTrue(protected_package_publication_valid(newbook))
+        bootstrap=json.loads((ROOT/'backend/data/approved_reader_bootstrap.json').read_text())
+        row=[r for r in bootstrap['titles'] if r['slug']=='the-selfish-giant'][0]
+        self.assertEqual(hashlib.sha256(json.dumps(row,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest(),actual['transaction']['target_bootstrap_row_sha256'])
+        self.assertEqual(len(baseline['titles']),52)
+        self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-selfish-giant',baseline),ROOT/'backend/data/controlled_publications/the-selfish-giant')
 
     def test_current_exact_registry_pin_passes_unmodified_authority_assertion(self):
         self.assertEqual(bindings.assert_reviewed_authority(ROOT),self.baseline())

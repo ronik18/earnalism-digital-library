@@ -1,0 +1,505 @@
+{
+  "unit": "u000036",
+  "master_interval_seconds": [
+    445.75320833333336,
+    462.39320833333335
+  ],
+  "expected_text": "“A most extraordinary man, a Mr. Nuttel,” said Mrs. Sappleton; “could only talk about his illnesses, and dashed off without a word of good-bye or apology when you arrived. One would think he had seen a ghost.”",
+  "ctc_transcript": "A MOST EXTRAORDINARY MAN A MISTER NUTDLE SAID MISSUS SAPPLETON COULD ONLY TALK ABOUT HIS ILLNESSES AND DASHED OFF WITHOUT A WORD OF GOOD BYE OR APOLOGY WHEN YOU ARRIVED ONE WOULD THINK HE HAD SEEN A GHOST",
+  "ctc_words": [
+    {
+      "word": "A",
+      "start": 445.9334249398316,
+      "end": 445.95344900722023,
+      "mean_character_frame_posterior": 0.9950893521308899
+    },
+    {
+      "word": "MOST",
+      "start": 446.0735934115524,
+      "end": 446.3138822202166,
+      "mean_character_frame_posterior": 0.9997907131910324
+    },
+    {
+      "word": "EXTRAORDINARY",
+      "start": 446.51412289410354,
+      "end": 447.53535033092663,
+      "mean_character_frame_posterior": 0.9634278141535245
+    },
+    {
+      "word": "MAN",
+      "start": 447.63547066787004,
+      "end": 447.9158076113117,
+      "mean_character_frame_posterior": 0.9999289313952128
+    },
+    {
+      "word": "A",
+      "start": 448.67672217208184,
+      "end": 448.69674623947054,
+      "mean_character_frame_posterior": 0.9846628904342651
+    },
+    {
+      "word": "MISTER",
+      "start": 448.796866576414,
+      "end": 449.117251654633,
+      "mean_character_frame_posterior": 0.9733482698599497
+    },
+    {
+      "word": "NUTDLE",
+      "start": 449.19734792418774,
+      "end": 449.5377570697955,
+      "mean_character_frame_posterior": 0.8704228301843008
+    },
+    {
+      "word": "SAID",
+      "start": 450.11845502406743,
+      "end": 450.25862349578824,
+      "mean_character_frame_posterior": 0.9998148828744888
+    },
+    {
+      "word": "MISSUS",
+      "start": 450.3587438327317,
+      "end": 450.6190567087846,
+      "mean_character_frame_posterior": 0.9322992563247681
+    },
+    {
+      "word": "SAPPLETON",
+      "start": 450.6791289109507,
+      "end": 451.1797305956679,
+      "mean_character_frame_posterior": 0.965462777349684
+    },
+    {
+      "word": "COULD",
+      "start": 451.78045261732854,
+      "end": 451.94064515643805,
+      "mean_character_frame_posterior": 0.9983209609985352
+    },
+    {
+      "word": "ONLY",
+      "start": 452.20095803249103,
+      "end": 452.4212227737666,
+      "mean_character_frame_posterior": 0.999897688627243
+    },
+    {
+      "word": "TALK",
+      "start": 452.5613912454874,
+      "end": 452.781655986763,
+      "mean_character_frame_posterior": 0.9619574099779129
+    },
+    {
+      "word": "ABOUT",
+      "start": 452.9018003910951,
+      "end": 453.10204106498196,
+      "mean_character_frame_posterior": 0.9926227927207947
+    },
+    {
+      "word": "HIS",
+      "start": 453.162113267148,
+      "end": 453.2422095367028,
+      "mean_character_frame_posterior": 0.9973961313565572
+    },
+    {
+      "word": "ILLNESSES",
+      "start": 453.38237800842364,
+      "end": 453.88297969314084,
+      "mean_character_frame_posterior": 0.9918427268664042
+    },
+    {
+      "word": "AND",
+      "start": 454.4236295126354,
+      "end": 454.50372578219014,
+      "mean_character_frame_posterior": 0.9891344110171
+    },
+    {
+      "word": "DASHED",
+      "start": 454.66391832129966,
+      "end": 455.04437560168475,
+      "mean_character_frame_posterior": 0.9962831238905588
+    },
+    {
+      "word": "OFF",
+      "start": 455.3247125451264,
+      "end": 455.4648810168472,
+      "mean_character_frame_posterior": 0.8659244974454244
+    },
+    {
+      "word": "WITHOUT",
+      "start": 455.54497728640195,
+      "end": 455.82531422984357,
+      "mean_character_frame_posterior": 0.9861645528248378
+    },
+    {
+      "word": "A",
+      "start": 455.8853864320097,
+      "end": 455.90541049939833,
+      "mean_character_frame_posterior": 0.999478280544281
+    },
+    {
+      "word": "WORD",
+      "start": 456.0055308363418,
+      "end": 456.2858677797834,
+      "mean_character_frame_posterior": 0.9999379068613052
+    },
+    {
+      "word": "OF",
+      "start": 456.4060121841155,
+      "end": 456.44606031889293,
+      "mean_character_frame_posterior": 0.9992497563362122
+    },
+    {
+      "word": "GOOD",
+      "start": 456.5261565884477,
+      "end": 456.6863491275572,
+      "mean_character_frame_posterior": 0.9918546080589294
+    },
+    {
+      "word": "BYE",
+      "start": 456.76644539711197,
+      "end": 457.0668064079423,
+      "mean_character_frame_posterior": 0.8818662563959757
+    },
+    {
+      "word": "OR",
+      "start": 457.64750436221425,
+      "end": 457.7075765643803,
+      "mean_character_frame_posterior": 0.9999635815620422
+    },
+    {
+      "word": "APOLOGY",
+      "start": 457.8277209687124,
+      "end": 458.368370788207,
+      "mean_character_frame_posterior": 0.999821696962629
+    },
+    {
+      "word": "WHEN",
+      "start": 458.42844299037307,
+      "end": 458.52856332731653,
+      "mean_character_frame_posterior": 0.999932274222374
+    },
+    {
+      "word": "YOU",
+      "start": 458.5686114620939,
+      "end": 458.64870773164864,
+      "mean_character_frame_posterior": 0.9998186429341634
+    },
+    {
+      "word": "ARRIVED",
+      "start": 458.7488280685921,
+      "end": 459.269453820698,
+      "mean_character_frame_posterior": 0.994074148791177
+    },
+    {
+      "word": "ONE",
+      "start": 460.0904405836342,
+      "end": 460.19056092057764,
+      "mean_character_frame_posterior": 0.9999898274739584
+    },
+    {
+      "word": "WOULD",
+      "start": 460.2706571901324,
+      "end": 460.4308497292419,
+      "mean_character_frame_posterior": 0.9979320168495178
+    },
+    {
+      "word": "THINK",
+      "start": 460.51094599879667,
+      "end": 460.73121074007224,
+      "mean_character_frame_posterior": 0.9999364972114563
+    },
+    {
+      "word": "HE",
+      "start": 461.11166802045733,
+      "end": 461.1717402226234,
+      "mean_character_frame_posterior": 0.9999904632568359
+    },
+    {
+      "word": "HAD",
+      "start": 461.23181242478944,
+      "end": 461.3319327617329,
+      "mean_character_frame_posterior": 0.9996869564056396
+    },
+    {
+      "word": "SEEN",
+      "start": 461.452077166065,
+      "end": 461.6723419073406,
+      "mean_character_frame_posterior": 0.9999655187129974
+    },
+    {
+      "word": "A",
+      "start": 461.77246224428404,
+      "end": 461.7924863116727,
+      "mean_character_frame_posterior": 0.9993728995323181
+    },
+    {
+      "word": "GHOST",
+      "start": 461.87258258122745,
+      "end": 462.27306392900124,
+      "mean_character_frame_posterior": 0.999862802028656
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "mr",
+        "nuttel"
+      ],
+      "recognized": [
+        "mister",
+        "nutdle"
+      ],
+      "reference_word_span": [
+        5,
+        7
+      ],
+      "recognized_word_span": [
+        5,
+        7
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "mrs"
+      ],
+      "recognized": [
+        "missus"
+      ],
+      "reference_word_span": [
+        8,
+        9
+      ],
+      "recognized_word_span": [
+        8,
+        9
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " A",
+      "start": 445.7,
+      "end": 445.98,
+      "probability": 0.07146317511796951
+    },
+    {
+      "word": " most",
+      "start": 445.98,
+      "end": 446.46,
+      "probability": 0.9044667482376099
+    },
+    {
+      "word": " extraordinary",
+      "start": 446.46,
+      "end": 447.26,
+      "probability": 0.9897466897964478
+    },
+    {
+      "word": " man.",
+      "start": 447.26,
+      "end": 448.04,
+      "probability": 0.9973287582397461
+    },
+    {
+      "word": " A",
+      "start": 448.62,
+      "end": 448.8,
+      "probability": 0.3478158712387085
+    },
+    {
+      "word": " Mr.",
+      "start": 448.8,
+      "end": 449.18,
+      "probability": 0.7752923369407654
+    },
+    {
+      "word": " Nuddle,\"",
+      "start": 449.42,
+      "end": 450.18,
+      "probability": 0.39331068098545074
+    },
+    {
+      "word": " said",
+      "start": 450.18,
+      "end": 450.28,
+      "probability": 0.9801583886146545
+    },
+    {
+      "word": " Mrs.",
+      "start": 450.28,
+      "end": 450.7,
+      "probability": 0.9605569243431091
+    },
+    {
+      "word": " Sappleton.",
+      "start": 450.88,
+      "end": 451.12,
+      "probability": 0.5020838677883148
+    },
+    {
+      "word": " Could",
+      "start": 451.8,
+      "end": 451.9,
+      "probability": 0.014421667903661728
+    },
+    {
+      "word": " only",
+      "start": 451.9,
+      "end": 452.38,
+      "probability": 0.9971717000007629
+    },
+    {
+      "word": " talk",
+      "start": 452.38,
+      "end": 452.82,
+      "probability": 0.9978492259979248
+    },
+    {
+      "word": " about",
+      "start": 452.82,
+      "end": 453.1,
+      "probability": 0.9986353516578674
+    },
+    {
+      "word": " his",
+      "start": 453.1,
+      "end": 453.32,
+      "probability": 0.9970307350158691
+    },
+    {
+      "word": " illnesses",
+      "start": 453.32,
+      "end": 453.92,
+      "probability": 0.9856248497962952
+    },
+    {
+      "word": " and",
+      "start": 453.92,
+      "end": 454.7,
+      "probability": 0.6793162226676941
+    },
+    {
+      "word": " dashed",
+      "start": 454.7,
+      "end": 455.02,
+      "probability": 0.968950092792511
+    },
+    {
+      "word": " off",
+      "start": 455.02,
+      "end": 455.54,
+      "probability": 0.9957889914512634
+    },
+    {
+      "word": " without",
+      "start": 455.54,
+      "end": 455.82,
+      "probability": 0.9942781925201416
+    },
+    {
+      "word": " a",
+      "start": 455.82,
+      "end": 456.06,
+      "probability": 0.9938302636146545
+    },
+    {
+      "word": " word",
+      "start": 456.06,
+      "end": 456.3,
+      "probability": 0.9973111152648926
+    },
+    {
+      "word": " of",
+      "start": 456.3,
+      "end": 456.52,
+      "probability": 0.994907796382904
+    },
+    {
+      "word": " goodbye,",
+      "start": 456.52,
+      "end": 457.04,
+      "probability": 0.4867918789386749
+    },
+    {
+      "word": " or",
+      "start": 457.64,
+      "end": 457.76,
+      "probability": 0.9927615523338318
+    },
+    {
+      "word": " apology",
+      "start": 457.76,
+      "end": 458.32,
+      "probability": 0.9564324617385864
+    },
+    {
+      "word": " when",
+      "start": 458.32,
+      "end": 458.56,
+      "probability": 0.973059892654419
+    },
+    {
+      "word": " he",
+      "start": 458.56,
+      "end": 458.6,
+      "probability": 0.6112685203552246
+    },
+    {
+      "word": " arrived.",
+      "start": 458.6,
+      "end": 459.26,
+      "probability": 0.9925196170806885
+    },
+    {
+      "word": " One",
+      "start": 460.0,
+      "end": 460.2,
+      "probability": 0.9906522035598755
+    },
+    {
+      "word": " would",
+      "start": 460.2,
+      "end": 460.52,
+      "probability": 0.9982086420059204
+    },
+    {
+      "word": " think",
+      "start": 460.52,
+      "end": 460.8,
+      "probability": 0.9986311793327332
+    },
+    {
+      "word": " he",
+      "start": 460.8,
+      "end": 461.18,
+      "probability": 0.9448195695877075
+    },
+    {
+      "word": " had",
+      "start": 461.18,
+      "end": 461.44,
+      "probability": 0.9761115312576294
+    },
+    {
+      "word": " seen",
+      "start": 461.44,
+      "end": 461.68,
+      "probability": 0.9986134767532349
+    },
+    {
+      "word": " a",
+      "start": 461.68,
+      "end": 461.92,
+      "probability": 0.9954754710197449
+    },
+    {
+      "word": " ghost.",
+      "start": 461.92,
+      "end": 462.34,
+      "probability": 0.987569272518158
+    }
+  ],
+  "whisper_transcript_in_unit": "A most extraordinary man. A Mr. Nuddle,\" said Mrs. Sappleton. Could only talk about his illnesses and dashed off without a word of goodbye, or apology when he arrived. One would think he had seen a ghost.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.625877250000002
+}

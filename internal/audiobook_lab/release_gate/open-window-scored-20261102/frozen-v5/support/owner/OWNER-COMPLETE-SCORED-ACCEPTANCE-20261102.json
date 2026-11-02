@@ -1,0 +1,74 @@
+{
+  "schema": "earnalism.owner_complete_scored_listening_acceptance.v1",
+  "recorded_at_utc": "2026-11-02T05:03:18.316920+00:00",
+  "question_id": "call_47fedea2239d4a6a84e7a8ded6e3503c:0",
+  "question_verbatim": "Open Window’s scores are recorded as 9.8/10 for the first nine dimensions, 9.7 overall, confidence 0.97. Your two “Yes” answers leave three observations unclear. Please confirm all three together, or identify exceptions: you heard the full 8:11; the 1:48–1:56 line is clear at both normal and low volume; and the source words were heard in all six flagged groups. Any timestamped defects?",
+  "answer_verbatim": "All three confirmed; no defects.",
+  "authoritative_message_source": "Exact question and actual owner reply provided by parent; append-only recording.",
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "listened_mp3": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/The-Open-Window-Provisional-Scored-Draft-v1.mp3",
+    "sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+    "bytes": 11796854,
+    "decoded_duration_seconds": 491.436333,
+    "user_review_duration_label": "8:11"
+  },
+  "scale_and_ratings_receipt": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/OWNER-REVIEW-SCALE-AND-NUMBERED-RESPONSE-20261102.json",
+    "sha256": "292e16cefc0d17e11afd4f15025936b34b033801376d7b88c4f89a0ae9818a83"
+  },
+  "prior_pending_receipt_sha256": "f761c0c52d0499dc9a3115b30205557397f03fe364d514e95faa513fdeea087d",
+  "original_pending_bytes_preserved": true,
+  "ratings_0_to_10": {
+    "naturalness": 9.8,
+    "pronunciation": 9.8,
+    "emotion": 9.8,
+    "grammatical_pauses": 9.8,
+    "pacing": 9.8,
+    "voice_continuity": 9.8,
+    "nonrobotic_texture": 9.8,
+    "smooth_joins": 9.8,
+    "enjoyment": 9.8,
+    "overall_quality": 9.7
+  },
+  "confidence_0_to_1": 0.97,
+  "observations": {
+    "complete_exact_scored_book_listened": "OWNER_CONFIRMED",
+    "quiet_line_1m48s_to_1m56s_normal_volume": "CLEAR_OWNER_CONFIRMED",
+    "quiet_line_1m48s_to_1m56s_low_volume": "CLEAR_OWNER_CONFIRMED",
+    "six_source_word_groups": {
+      "aunt": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED",
+      "married": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED",
+      "dusk": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED",
+      "a look / round": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED",
+      "Framton": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED",
+      "bearer": "SOURCE_WORDS_HEARD_OWNER_CONFIRMED"
+    },
+    "timestamped_defects": "NONE_REPORTED_OWNER_EXPLICIT_NO_DEFECTS"
+  },
+  "local_owner_listening_gate": {
+    "status": "PASS",
+    "minimum_each_dimension": 8.9,
+    "minimum_confidence": 0.9,
+    "scores_are_actual_owner_observations": true,
+    "whole_book_not_isolated_sample": true,
+    "scope": "Exact private scored MP3 only; musical silences and complete final mix heard by owner. No new raw-ASR score or technical result invented."
+  },
+  "not_inferred": [
+    "new raw ASR recognition score",
+    "source-QA registry adoption",
+    "new exact scored-audio rights decision",
+    "publication-compatible metadata",
+    "timing-transfer delivery qualification",
+    "storage upload/readback/DR",
+    "production runtime or player",
+    "Reading Pass debit/accounting",
+    "customer discovery",
+    "LIVE publication"
+  ],
+  "new_provider_calls": 0,
+  "new_allocation_or_synthesis": 0,
+  "new_credit_debit": 0,
+  "no_further_owner_listening_clarification_required": true
+}

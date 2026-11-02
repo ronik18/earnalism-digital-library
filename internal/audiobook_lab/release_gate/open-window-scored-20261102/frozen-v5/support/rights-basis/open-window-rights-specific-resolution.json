@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-19T04:45:53.201075+00:00",
+  "scope": "Open Window unresolved rights facts only; no source/audio/Reader/production mutations",
+  "master_sha256": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+  "canonical_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "facts_closed": {
+    "foreign_work_rule": "Official International Copyright Order 1999 para3(a) applies Indian Act to scheduled-country first publications as if Indian; UK is scheduled; para7 caps term at origin-country term. Specific missing foreign-work citation supplied.",
+    "pseudonym_analysis": "Retained 1914 lifetime edition and Saki death1916 support expiry by end1976 under section22; section23 publication-based route would expire earlier. This is legal analysis for qualified acceptance, not registry clearance.",
+    "model_permission": "Pinned code and CustomVoice model declared Apache2. Commercial use of licensed code/model supported; no noncommercial or separate Ryan fee restriction located.",
+    "ryan_identity": "Pinned card explicitly lists Ryan as built-in English CustomVoice speaker; supplied inference uses speaker=Ryan, not voice clone input.",
+    "source": "Reuse exact PG269 1914 John Lane selected story binding; no replacement or source-text change."
+  },
+  "remaining_decisions": {
+    "owner_producer_attestation": "Ronik/Reo must identify the legal person who took initiative/responsibility for this recording, confirm authority to authorize Reo commercial streaming of this exact master and any operator/contractor interests, and supply approved public producer name/address and recording first-publication particulars. Do not assert exclusive AI output copyright.",
+    "qualified_acceptance": "Existing programme requires identified qualified acceptance of distinct IN audio_stream source/recording binding. Public-domain analysis can support this; current accepted Reader-only audio exclusion cannot be rewritten by inference. No verified qualified reviewer found in bounded programme records.",
+    "source_presentation": "Use exact same text with a reviewed non-branded commercial presentation; official PG policy distinguishes removal of PG references from commercial PG trademark use. Preserve source provenance privately; do not silently apply new trademark terms or pay royalties. If branded paid distribution is chosen, comply with PG1.E8 or obtain written permission from Project Gutenberg Literary Archive Foundation and Project Gutenberg Trademark LLC under1.E9.",
+    "voice_output": "No separate output grant/performer warranty found in pinned card/license. Absence alone is not a new prohibition or requirement for bespoke permission. Qualified reviewer must record whether Apache model permission and built-in provenance suffice; only if a separate affirmative warranty is required seek it from official Qwen/Alibaba model publisher, not a guessed Ryan performer. Owner cannot attest away third-party rights.",
+    "listening": "Ronik is the only identified actual listener in inspected programme records; Unit24 UNCLEAR, no full-title approval. Availability and independent reviewer qualification not established. Parent should secure a genuine source-checked listener for all19 flagged regions and entire499.07275s final encode using existing Library master and pending form; no new engagement/contact performed."
+  },
+  "sources": {
+    "international_order": "https://copyright.gov.in/documents/international%20copyright%20order.htm",
+    "act": "https://copyright.gov.in/documents/copyrightrules1957.pdf",
+    "exact_source_catalogue": "https://www.gutenberg.org/ebooks/269",
+    "pg_terms": "https://www.gutenberg.org/policy/license.html",
+    "code_license": "https://github.com/QwenLM/Qwen3-TTS/blob/022e286b98fbec7e1e916cb940cdf532cd9f488e/LICENSE",
+    "model_card": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/blob/0c0e3051f131929182e2c023b9537f8b1c68adfe/README.md"
+  },
+  "rights_clearance_granted": false,
+  "human_listening_fabricated": false,
+  "third_parties_contacted": false,
+  "cost": 0
+}

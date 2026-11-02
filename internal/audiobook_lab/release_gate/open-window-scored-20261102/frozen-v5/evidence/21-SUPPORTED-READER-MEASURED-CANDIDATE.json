@@ -1,0 +1,521 @@
+{
+  "schema": "earnalism.open_window_supported_reader_measured_candidate.v1",
+  "status": "PROPOSED_PENDING_INDEPENDENT_QUALIFICATION",
+  "audio_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "raw_hard_wrap_blocks": 109,
+  "actual_supported_reader_paragraphs": 21,
+  "retained_source_unit_groups": 29,
+  "auto_estimated_sync": false,
+  "word_highlighting": false,
+  "method": "Actual existing Reader reflow helper gives21 semantic paragraph spans. Every start is an exact member of29 retained measured PCM group starts; carry those starts and next supported paragraph start/end. No109-wrap-fragment requirement, word-time fitting or duration interpolation.",
+  "actual_reader_map_sha256": "5062680eca57d0b278e9c749bfeff7587782b66d176a7664cacd09bcaa5866ed",
+  "reader_renderer_sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+  "all21_starts_exact_existing_measured_group_members": true,
+  "paragraphs": [
+    {
+      "id": "reader-paragraph-001",
+      "source_char_start": 0,
+      "source_char_end": 1002,
+      "text": "“My aunt will be down presently, Mr. Nuttel,” said a very self-possessed young lady of fifteen; “in the meantime you must try and put up with me.” Framton Nuttel endeavoured to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing. “I know how it will be,” his sister had said when he was preparing to migrate to this rural retreat; “you will bury yourself down there and not speak to a living soul, and your nerves will be worse than ever from moping. I shall just give you letters of introduction to all the people I know there. Some of them, as far as I can remember, were quite nice.” Framton wondered whether Mrs. Sappleton, the lady to whom he was presenting one of the letters of introduction, came into the nice division.",
+      "raw_source_text_sha256": "ad8d404697e1830c3e4414d72655afd12c12449578b2be38442f5c0402bb4661",
+      "retained_measured_group_id": "paragraph-001",
+      "start_ms": 0,
+      "start_sample_at_24k": 0,
+      "end_ms": 65434
+    },
+    {
+      "id": "reader-paragraph-002",
+      "source_char_start": 1004,
+      "source_char_end": 1308,
+      "text": "“Do you know many of the people round here?” asked the niece, when she judged that they had had sufficient silent communion. “Hardly a soul,” said Framton. “My sister was staying here, at the rectory, you know, some four years ago, and she gave me letters of introduction to some of the people here.”",
+      "raw_source_text_sha256": "e250495abbe252a8bad3813a1f2106cb68969ce40e373884e4a799b8fb858b1a",
+      "retained_measured_group_id": "paragraph-005",
+      "start_ms": 65434,
+      "start_sample_at_24k": 1570406,
+      "end_ms": 84945
+    },
+    {
+      "id": "reader-paragraph-003",
+      "source_char_start": 1310,
+      "source_char_end": 1458,
+      "text": "He made the last statement in a tone of distinct regret. “Then you know practically nothing about my aunt?” pursued the self-possessed young lady.",
+      "raw_source_text_sha256": "b136dacc11787c3901a876d825faa513d4a4f52ff9412efcd744edaaf19bd7c0",
+      "retained_measured_group_id": "paragraph-007",
+      "start_ms": 84945,
+      "start_sample_at_24k": 2038669,
+      "end_ms": 95664
+    },
+    {
+      "id": "reader-paragraph-004",
+      "source_char_start": 1460,
+      "source_char_end": 1669,
+      "text": "“Only her name and address,” admitted the caller. He was wondering whether Mrs. Sappleton was in the married or widowed state. An undefinable something about the room seemed to suggest masculine habitation.",
+      "raw_source_text_sha256": "c3977e51c6fcf91506cc08fb8eff18bc0f0cddf18647aa7127bdf4ab406d4377",
+      "retained_measured_group_id": "paragraph-009",
+      "start_ms": 95664,
+      "start_sample_at_24k": 2295932,
+      "end_ms": 108232
+    },
+    {
+      "id": "reader-paragraph-005",
+      "source_char_start": 1671,
+      "source_char_end": 1780,
+      "text": "“Her great tragedy happened just three years ago,” said the child; “that would be since your sister’s time.”",
+      "raw_source_text_sha256": "e4bd3625aba59b5381fd7f300f292d4e6fc677f2ff35a6063f1d435e8196df75",
+      "retained_measured_group_id": "paragraph-010",
+      "start_ms": 108232,
+      "start_sample_at_24k": 2597579,
+      "end_ms": 115789
+    },
+    {
+      "id": "reader-paragraph-006",
+      "source_char_start": 1782,
+      "source_char_end": 1880,
+      "text": "“Her tragedy?” asked Framton; somehow in this restful country spot tragedies seemed out of place.",
+      "raw_source_text_sha256": "f598c34ff777bf2aa5bd2ed534910fef053b4d61230acd73dd580ebcb6f95d92",
+      "retained_measured_group_id": "paragraph-011",
+      "start_ms": 115789,
+      "start_sample_at_24k": 2778933,
+      "end_ms": 124077
+    },
+    {
+      "id": "reader-paragraph-007",
+      "source_char_start": 1882,
+      "source_char_end": 2034,
+      "text": "“You may wonder why we keep that window wide open on an October afternoon,” said the niece, indicating a large French window that opened on to a lawn.",
+      "raw_source_text_sha256": "ff31dccdf5f59b297cae9c8c9e706f95db64d73298e47bed0ed4b70d2b045d1f",
+      "retained_measured_group_id": "paragraph-012",
+      "start_ms": 124077,
+      "start_sample_at_24k": 2977851,
+      "end_ms": 138966
+    },
+    {
+      "id": "reader-paragraph-008",
+      "source_char_start": 2036,
+      "source_char_end": 2154,
+      "text": "“It is quite warm for the time of the year,” said Framton; “but has that window got anything to do with the tragedy?”",
+      "raw_source_text_sha256": "6fc71fe15eecd2a63ece701d70df5f6eb639bb7622ad13d39256d875fcf3fe3e",
+      "retained_measured_group_id": "paragraph-013",
+      "start_ms": 138966,
+      "start_sample_at_24k": 3335180,
+      "end_ms": 149802
+    },
+    {
+      "id": "reader-paragraph-009",
+      "source_char_start": 2156,
+      "source_char_end": 3353,
+      "text": "“Out through that window, three years ago to a day, her husband and her two young brothers went off for their day’s shooting. They never came back. In crossing the moor to their favourite snipe-shooting ground they were all three engulfed in a treacherous piece of bog. It had been that dreadful wet summer, you know, and places that were safe in other years gave way suddenly without warning. Their bodies were never recovered. That was the dreadful part of it.” Here the child’s voice lost its self-possessed note and became falteringly human. “Poor aunt always thinks that they will come back some day, they and the little brown spaniel that was lost with them, and walk in at that window just as they used to do. That is why the window is kept open every evening till it is quite dusk. Poor dear aunt, she has often told me how they went out, her husband with his white waterproof coat over his arm, and Ronnie, her youngest brother, singing ‘Bertie, why do you bound?’ as he always did to tease her, because she said it got on her nerves. Do you know, sometimes on still, quiet evenings like this, I almost get a creepy feeling that they will all walk in through that window—”",
+      "raw_source_text_sha256": "2754e8feb1e3880446e737817e0bf1ae80cb30ac7dcc73c97625e9d937711a9e",
+      "retained_measured_group_id": "paragraph-014",
+      "start_ms": 149802,
+      "start_sample_at_24k": 3595254,
+      "end_ms": 235965
+    },
+    {
+      "id": "reader-paragraph-010",
+      "source_char_start": 3355,
+      "source_char_end": 3523,
+      "text": "She broke off with a little shudder. It was a relief to Framton when the aunt bustled into the room with a whirl of apologies for being late in making her appearance.",
+      "raw_source_text_sha256": "c85a37383ac1549a3ab51d6af23e86c45371147c51132cdb75c0f124fbf9bb9a",
+      "retained_measured_group_id": "paragraph-015",
+      "start_ms": 235965,
+      "start_sample_at_24k": 5663161,
+      "end_ms": 246600
+    },
+    {
+      "id": "reader-paragraph-011",
+      "source_char_start": 3525,
+      "source_char_end": 3570,
+      "text": "“I hope Vera has been amusing you?” she said.",
+      "raw_source_text_sha256": "4c6d3b88630584f00f70908097844a42b8d4845e7ace5988287f3bbcc5173b38",
+      "retained_measured_group_id": "paragraph-016",
+      "start_ms": 246600,
+      "start_sample_at_24k": 5918407,
+      "end_ms": 250843
+    },
+    {
+      "id": "reader-paragraph-012",
+      "source_char_start": 3572,
+      "source_char_end": 3618,
+      "text": "“She has been very interesting,” said Framton.",
+      "raw_source_text_sha256": "9c5d126b063f08517cd698dc937545bdde7c72dd151f613922d13d766fa30508",
+      "retained_measured_group_id": "paragraph-017",
+      "start_ms": 250843,
+      "start_sample_at_24k": 6020222,
+      "end_ms": 255222
+    },
+    {
+      "id": "reader-paragraph-013",
+      "source_char_start": 3620,
+      "source_char_end": 3922,
+      "text": "“I hope you don’t mind the open window,” said Mrs. Sappleton briskly; “my husband and brothers will be home directly from shooting, and they always come in this way. They’ve been out for snipe in the marshes to-day, so they’ll make a fine mess over my poor carpets. So like you men-folk, isn’t it?”",
+      "raw_source_text_sha256": "fa9eda3e484a59c9d15ef850b42429f6432aeda737de833849515e31781b81bf",
+      "retained_measured_group_id": "paragraph-018",
+      "start_ms": 255222,
+      "start_sample_at_24k": 6125327,
+      "end_ms": 274666
+    },
+    {
+      "id": "reader-paragraph-014",
+      "source_char_start": 3924,
+      "source_char_end": 4462,
+      "text": "She rattled on cheerfully about the shooting and the scarcity of birds, and the prospects for duck in the winter. To Framton it was all purely horrible. He made a desperate but only partially successful effort to turn the talk on to a less ghastly topic; he was conscious that his hostess was giving him only a fragment of her attention, and her eyes were constantly straying past him to the open window and the lawn beyond. It was certainly an unfortunate coincidence that he should have paid his visit on this tragic anniversary.",
+      "raw_source_text_sha256": "62ae728b09ffe5914f6b57c93fc1e1a6639a3a4d9013564bb946039376f462ae",
+      "retained_measured_group_id": "paragraph-019",
+      "start_ms": 274666,
+      "start_sample_at_24k": 6591974,
+      "end_ms": 313643
+    },
+    {
+      "id": "reader-paragraph-015",
+      "source_char_start": 4464,
+      "source_char_end": 5075,
+      "text": "“The doctors agree in ordering me complete rest, an absence of mental excitement, and avoidance of anything in the nature of violent physical exercise,” announced Framton, who laboured under the tolerably widespread delusion that total strangers and chance acquaintances are hungry for the least detail of one’s ailments and infirmities, their cause and cure. “On the matter of diet they are not so much in agreement,” he continued. “No?” said Mrs. Sappleton, in a voice which only replaced a yawn at the last moment. Then she suddenly brightened into alert attention—but not to what Framton was saying.",
+      "raw_source_text_sha256": "936bb81cb47f1689341fa52dcfb71f03c4978683ab1f3bc645fdbed331727bdc",
+      "retained_measured_group_id": "paragraph-020",
+      "start_ms": 313643,
+      "start_sample_at_24k": 7527434,
+      "end_ms": 356353
+    },
+    {
+      "id": "reader-paragraph-016",
+      "source_char_start": 5077,
+      "source_char_end": 5195,
+      "text": "“Here they are at last!” she cried. “Just in time for tea, and don’t they look as if they were muddy up to the eyes!”",
+      "raw_source_text_sha256": "cf8c27a21ef09ed9c76713383d5679fb73f940b92f39a66a7f8f00630c4db5eb",
+      "retained_measured_group_id": "paragraph-022",
+      "start_ms": 356353,
+      "start_sample_at_24k": 8552481,
+      "end_ms": 363494
+    },
+    {
+      "id": "reader-paragraph-017",
+      "source_char_start": 5197,
+      "source_char_end": 5494,
+      "text": "Framton shivered slightly and turned towards the niece with a look intended to convey sympathetic comprehension. The child was staring out through the open window with dazed horror in her eyes. In a chill shock of nameless fear Framton swung round in his seat and looked in the same direction.",
+      "raw_source_text_sha256": "890fe8d69b32afe6eeda48d66f62aaad8fd76cbb638b6ece999ba70b2f7b216f",
+      "retained_measured_group_id": "paragraph-023",
+      "start_ms": 363494,
+      "start_sample_at_24k": 8723860,
+      "end_ms": 382681
+    },
+    {
+      "id": "reader-paragraph-018",
+      "source_char_start": 5496,
+      "source_char_end": 5889,
+      "text": "In the deepening twilight three figures were walking across the lawn towards the window; they all carried guns under their arms, and one of them was additionally burdened with a white coat hung over his shoulders. A tired brown spaniel kept close at their heels. Noiselessly they neared the house, and then a hoarse young voice chanted out of the dusk: “I said, Bertie, why do you bound?”",
+      "raw_source_text_sha256": "b95636678ddd79333c15a96e35052372f98972ff443b797cc6de0bc1d112eede",
+      "retained_measured_group_id": "paragraph-024",
+      "start_ms": 382681,
+      "start_sample_at_24k": 9184350,
+      "end_ms": 409883
+    },
+    {
+      "id": "reader-paragraph-019",
+      "source_char_start": 5891,
+      "source_char_end": 6129,
+      "text": "Framton grabbed wildly at his stick and hat; the hall-door, the gravel-drive, and the front gate were dimly-noted stages in his headlong retreat. A cyclist coming along the road had to run into the hedge to avoid an imminent collision.",
+      "raw_source_text_sha256": "ad2bf199dfa03a04998812139630b59df6dbeae3139c27de8e8cb6b3a73274eb",
+      "retained_measured_group_id": "paragraph-025",
+      "start_ms": 409883,
+      "start_sample_at_24k": 9837182,
+      "end_ms": 425257
+    },
+    {
+      "id": "reader-paragraph-020",
+      "source_char_start": 6131,
+      "source_char_end": 6308,
+      "text": "“Here we are, my dear,” said the bearer of the white mackintosh, coming in through the window; “fairly muddy, but most of it’s dry. Who was that who bolted out as we came up?”",
+      "raw_source_text_sha256": "c2200789ed907dd61427b4e65b0dbf6e15a9f60cc8d316a8090fa1eee34146a7",
+      "retained_measured_group_id": "paragraph-026",
+      "start_ms": 425257,
+      "start_sample_at_24k": 10206176,
+      "end_ms": 437617
+    },
+    {
+      "id": "reader-paragraph-021",
+      "source_char_start": 6310,
+      "source_char_end": 6918,
+      "text": "“A most extraordinary man, a Mr. Nuttel,” said Mrs. Sappleton; “could only talk about his illnesses, and dashed off without a word of good-bye or apology when you arrived. One would think he had seen a ghost.” “I expect it was the spaniel,” said the niece calmly; “he told me he had a horror of dogs. He was once hunted into a cemetery somewhere on the banks of the Ganges by a pack of pariah dogs, and had to spend the night in a newly dug grave with the creatures snarling and grinning and foaming just above him. Enough to make anyone lose their nerve.” Romance at short notice was her speciality.",
+      "raw_source_text_sha256": "2b8031aa84f5570ba0f475c363abdb51cc03c35a3bdb4d970d0b0dc2de5dd1ed",
+      "retained_measured_group_id": "paragraph-027",
+      "start_ms": 437617,
+      "start_sample_at_24k": 10502803,
+      "end_ms": 491436
+    }
+  ],
+  "original29_measured_groups": [
+    {
+      "end_ms": 9840,
+      "end_sample": 236160,
+      "id": "paragraph-001",
+      "source_char_end": 147,
+      "source_char_start": 0,
+      "start_ms": 0,
+      "start_sample": 0
+    },
+    {
+      "end_ms": 32076,
+      "end_sample": 769829,
+      "id": "paragraph-002",
+      "source_char_end": 496,
+      "source_char_start": 149,
+      "start_ms": 9840,
+      "start_sample": 236160
+    },
+    {
+      "end_ms": 57117,
+      "end_sample": 1370809,
+      "id": "paragraph-003",
+      "source_char_end": 858,
+      "source_char_start": 498,
+      "start_ms": 32076,
+      "start_sample": 769829
+    },
+    {
+      "end_ms": 65434,
+      "end_sample": 1570406,
+      "id": "paragraph-004",
+      "source_char_end": 1002,
+      "source_char_start": 860,
+      "start_ms": 57117,
+      "start_sample": 1370809
+    },
+    {
+      "end_ms": 73153,
+      "end_sample": 1755661,
+      "id": "paragraph-005",
+      "source_char_end": 1129,
+      "source_char_start": 1004,
+      "start_ms": 65434,
+      "start_sample": 1570406
+    },
+    {
+      "end_ms": 84945,
+      "end_sample": 2038669,
+      "id": "paragraph-006",
+      "source_char_end": 1308,
+      "source_char_start": 1131,
+      "start_ms": 73153,
+      "start_sample": 1755661
+    },
+    {
+      "end_ms": 88481,
+      "end_sample": 2123540,
+      "id": "paragraph-007",
+      "source_char_end": 1366,
+      "source_char_start": 1310,
+      "start_ms": 84945,
+      "start_sample": 2038669
+    },
+    {
+      "end_ms": 95664,
+      "end_sample": 2295932,
+      "id": "paragraph-008",
+      "source_char_end": 1458,
+      "source_char_start": 1368,
+      "start_ms": 88481,
+      "start_sample": 2123540
+    },
+    {
+      "end_ms": 108232,
+      "end_sample": 2597579,
+      "id": "paragraph-009",
+      "source_char_end": 1669,
+      "source_char_start": 1460,
+      "start_ms": 95664,
+      "start_sample": 2295932
+    },
+    {
+      "end_ms": 115789,
+      "end_sample": 2778933,
+      "id": "paragraph-010",
+      "source_char_end": 1780,
+      "source_char_start": 1671,
+      "start_ms": 108232,
+      "start_sample": 2597579
+    },
+    {
+      "end_ms": 124077,
+      "end_sample": 2977851,
+      "id": "paragraph-011",
+      "source_char_end": 1880,
+      "source_char_start": 1782,
+      "start_ms": 115789,
+      "start_sample": 2778933
+    },
+    {
+      "end_ms": 138966,
+      "end_sample": 3335180,
+      "id": "paragraph-012",
+      "source_char_end": 2034,
+      "source_char_start": 1882,
+      "start_ms": 124077,
+      "start_sample": 2977851
+    },
+    {
+      "end_ms": 149802,
+      "end_sample": 3595254,
+      "id": "paragraph-013",
+      "source_char_end": 2154,
+      "source_char_start": 2036,
+      "start_ms": 138966,
+      "start_sample": 3335180
+    },
+    {
+      "end_ms": 235965,
+      "end_sample": 5663161,
+      "id": "paragraph-014",
+      "source_char_end": 3353,
+      "source_char_start": 2156,
+      "start_ms": 149802,
+      "start_sample": 3595254
+    },
+    {
+      "end_ms": 246600,
+      "end_sample": 5918407,
+      "id": "paragraph-015",
+      "source_char_end": 3523,
+      "source_char_start": 3355,
+      "start_ms": 235965,
+      "start_sample": 5663161
+    },
+    {
+      "end_ms": 250843,
+      "end_sample": 6020222,
+      "id": "paragraph-016",
+      "source_char_end": 3570,
+      "source_char_start": 3525,
+      "start_ms": 246600,
+      "start_sample": 5918407
+    },
+    {
+      "end_ms": 255222,
+      "end_sample": 6125327,
+      "id": "paragraph-017",
+      "source_char_end": 3618,
+      "source_char_start": 3572,
+      "start_ms": 250843,
+      "start_sample": 6020222
+    },
+    {
+      "end_ms": 274666,
+      "end_sample": 6591974,
+      "id": "paragraph-018",
+      "source_char_end": 3922,
+      "source_char_start": 3620,
+      "start_ms": 255222,
+      "start_sample": 6125327
+    },
+    {
+      "end_ms": 313643,
+      "end_sample": 7527434,
+      "id": "paragraph-019",
+      "source_char_end": 4462,
+      "source_char_start": 3924,
+      "start_ms": 274666,
+      "start_sample": 6591974
+    },
+    {
+      "end_ms": 343798,
+      "end_sample": 8251153,
+      "id": "paragraph-020",
+      "source_char_end": 4901,
+      "source_char_start": 4464,
+      "start_ms": 313643,
+      "start_sample": 7527434
+    },
+    {
+      "end_ms": 356353,
+      "end_sample": 8552481,
+      "id": "paragraph-021",
+      "source_char_end": 5075,
+      "source_char_start": 4903,
+      "start_ms": 343798,
+      "start_sample": 8251153
+    },
+    {
+      "end_ms": 363494,
+      "end_sample": 8723860,
+      "id": "paragraph-022",
+      "source_char_end": 5195,
+      "source_char_start": 5077,
+      "start_ms": 356353,
+      "start_sample": 8552481
+    },
+    {
+      "end_ms": 382681,
+      "end_sample": 9184350,
+      "id": "paragraph-023",
+      "source_char_end": 5494,
+      "source_char_start": 5197,
+      "start_ms": 363494,
+      "start_sample": 8723860
+    },
+    {
+      "end_ms": 409883,
+      "end_sample": 9837182,
+      "id": "paragraph-024",
+      "source_char_end": 5889,
+      "source_char_start": 5496,
+      "start_ms": 382681,
+      "start_sample": 9184350
+    },
+    {
+      "end_ms": 425257,
+      "end_sample": 10206176,
+      "id": "paragraph-025",
+      "source_char_end": 6129,
+      "source_char_start": 5891,
+      "start_ms": 409883,
+      "start_sample": 9837182
+    },
+    {
+      "end_ms": 437617,
+      "end_sample": 10502803,
+      "id": "paragraph-026",
+      "source_char_end": 6308,
+      "source_char_start": 6131,
+      "start_ms": 425257,
+      "start_sample": 10206176
+    },
+    {
+      "end_ms": 454757,
+      "end_sample": 10914163,
+      "id": "paragraph-027",
+      "source_char_end": 6521,
+      "source_char_start": 6310,
+      "start_ms": 437617,
+      "start_sample": 10502803
+    },
+    {
+      "end_ms": 487063,
+      "end_sample": 11689510,
+      "id": "paragraph-028",
+      "source_char_end": 6873,
+      "source_char_start": 6523,
+      "start_ms": 454757,
+      "start_sample": 10914163
+    },
+    {
+      "end_ms": 491436,
+      "end_sample": 11794472,
+      "id": "paragraph-029",
+      "source_char_end": 6918,
+      "source_char_start": 6875,
+      "start_ms": 487063,
+      "start_sample": 11689510
+    }
+  ],
+  "clock_transfer_evidence_sha256": {
+    "source_custody": "787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7",
+    "exact2x_no_narration_timing_edit_and_common_gain_music_residuals": "e6ff53d68e8284a7f277897614531bea23e4fb87fab7290be3a1d9e4356ec4d9",
+    "listened_to_publication_exact_PCM_packets": "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+    "actual48window_waveform_clock_transfer": "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0"
+  },
+  "review_required": [
+    "Independent21semantic Reader mapping and unchanged-narration clock-transfer qualification",
+    "Exact future profile source-QA admission; no word precision claim"
+  ]
+}

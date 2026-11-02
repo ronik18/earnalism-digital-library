@@ -1,23 +1,23 @@
 {
   "accepted_by": "Existing explicit Ronik Basak title publication authority; deterministic exact metadata component rebinding by Codex",
-  "basis": "Rebind exact unchanged India Reader/source/cover permissions after adding owner-authorized protected audio canary metadata. No new literary text, cover bytes, public audio authorization, territory or pricing.; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted.",
+  "basis": "Rebind exact unchanged India Reader/source/cover permissions after adding owner-authorized protected audio canary metadata. No new literary text, cover bytes, public audio authorization, territory or pricing.; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted.; Owner-authorized private native audiobook replacement staging; prior public audiobook remains selected, Reader content and uses unchanged; no publication acceptance claimed.",
   "components": {
     "acceptance_review_a": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3",
     "acceptance_review_b": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d",
     "approval_evidence": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
-    "checksum_manifest": "750425dcbe1d7f9ae04ae8611aa4d3558a0f3286dbe484024111f18605596bf7",
+    "checksum_manifest": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba",
     "cover_provenance": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe",
-    "public_book": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
-    "publication_authorization": "4799382e1fef39464dff1a85d0339bcd19d899745cef777c610799db0b89fdae",
-    "publication_manifest": "7f063ead5c5baba5565ffae4f94fc260721f2c52598a09288c72cb8ef382c6f0",
-    "reader_manifest": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5",
-    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
-    "cover_replacement_front_delivery": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+    "cover_replacement_approval": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760",
     "cover_replacement_back_delivery": "592c71964e2e0e9762ae5b437d1c6134ed6daf1eaedf5f5b8e0f499aa1832508",
-    "cover_replacement_approval": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760"
+    "cover_replacement_front_delivery": "666e17ea4b1259540724c101affad29eed578c34e57108c00e0165e23fbeef5e",
+    "public_book": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+    "publication_authorization": "4799382e1fef39464dff1a85d0339bcd19d899745cef777c610799db0b89fdae",
+    "publication_manifest": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+    "reader_manifest": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
   },
   "conditions_satisfied": true,
-  "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
+  "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
   "edition_id": "the-selfish-giant",
   "evidence_sha256": [
     "ea7a7a575a8825e29c65008817b4865ba6b498f380393fe79719fa34b9e73e83",
@@ -32,7 +32,8 @@
     "3f1886dcb352c69395321b32a33c7818e1252a7788042e2faf7c5bfe79dbef82",
     "c93fb4ba80ffbaff9d1bba98bc031f59f3f0d29c8c760459590269a069e50ddc",
     "ad9427a0c4992d3fd75a11590e2a74948df977b1944b9a1568eec02836092a0f",
-    "fe5445b09b90e36b51c715d46b6991a6a25b9bb45364352c2f2b6fa77664a058"
+    "fe5445b09b90e36b51c715d46b6991a6a25b9bb45364352c2f2b6fa77664a058",
+    "5c26036acacce6dce986011ab071c159fb6c4c6b6677e8b1c7dbc73e91352a55"
   ],
   "operator_id": "reo-enterprise",
   "schema_version": "earnalism.rights-decision.v1",

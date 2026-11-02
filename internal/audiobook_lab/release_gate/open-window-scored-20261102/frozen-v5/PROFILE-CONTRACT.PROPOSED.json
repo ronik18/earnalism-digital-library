@@ -1,0 +1,85 @@
+{
+  "schema": "earnalism.open_window_scored_retained_profile_proposal.v1",
+  "status": "PROPOSED_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "policy": "open_window_scored_retained_successor.v1",
+  "identity": {
+    "slug": "the-open-window",
+    "title": "The Open Window",
+    "author": "Saki",
+    "controlled_source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "master_wav_sha256": "f2b80840b9797819934282f20f2f139b3cda33aef8f05825378cbb499eae4167",
+    "master_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+    "listened_master_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f"
+  },
+  "exact_descriptor_canonical_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "actual_delivery": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "frames": 23588944,
+    "duration_ms": 491436,
+    "segment_count": 1,
+    "public_whitespace_word_count": 1208,
+    "ASR_lexical_token_count": 1219,
+    "actual_supported_reader_paragraphs": 21,
+    "retained_measured_source_groups": 29,
+    "raw_wrap_fragments_not_paragraph_requirement": 109,
+    "highlight_sync_enabled": false,
+    "auto_estimated_sync": false
+  },
+  "generation": {
+    "provider": "owner_retained_qwen",
+    "voice": "Ryan",
+    "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "new_synthesis_or_allocations": 0
+  },
+  "unchanged_policies": [
+    "Frozen dry Open Window retained/listened successor and continuous derivative remain unchanged.",
+    "Selfish Cedar owner_produced_native_scored.v1 remains title/model/voice/source/count-specific; no relabel."
+  ],
+  "minimum_admission_contract": [
+    "Require exact actual accepted source/producer/stockRyan and CC BY music provenance plus new exact IN audio_stream registry binding; only committed trusted registry can adopt.",
+    "Require full owner mix acceptance fe85, metadata-only exact f9→32827 reuse4a5, and exact12 timed-name adjudicatione359/diagnostic18d, preserving previous6 confirmations.",
+    "Require every raw ASR/file/provenance hash and actual current recording projection, with scoped owner corrections only. Literal owner-adjudicated CTC AND fullWhisper score>=9.7. No need to use normalized comparator for pass. No global name alias or unperformed raw new-inference claim.",
+    "Require actual first/last source token matches, all39 source spans once in order, source/manuscript/voice unchanged and no remaining known material wording defect; preserve recognizer residuals rather than pretending text equality.",
+    "Require exact existing Reader reflow helper/hash/map,21 measured paragraph starts from exact29 retained group members, full exact-frame clock proof294acccc and no estimated/word-highlight claim.",
+    "Require actual complete technical/mix/full-owner review and actual licensed/music attribution bound to the exact finalmix/delivery, no sourcebook/Reader/cover modification.",
+    "All four downstream storage/controlled activation/current endpoint+browser gates remain required; source QA cannot grant publication."
+  ],
+  "numeric_facts": {
+    "raw_CTC_score": 9.622641509433961,
+    "raw_full_Whisper_score": 9.639048400328138,
+    "literal_scoped_owner_adjudicated_CTC_score": 9.786710418375717,
+    "literal_scoped_owner_adjudicated_full_Whisper_score": 9.786710418375717,
+    "optional_spoken_text_CTC_score": 9.868744872846595,
+    "optional_spoken_text_Whisper_score": 9.81132075471698,
+    "first_last_literal_RAW_source_tokens_match": true,
+    "owner_first_nine_dimensions": 9.8,
+    "owner_overall": 9.7,
+    "owner_confidence": 0.97,
+    "clock_min_correlation": 0.9997625084319468,
+    "clock_max_abs_best_lag_seconds": 0.0
+  },
+  "optional_comparator_scope": {
+    "aliases": {
+      "mr": "mister",
+      "mrs": "missus",
+      "endeavoured": "endeavored",
+      "favourite": "favorite",
+      "laboured": "labored"
+    },
+    "meaning": "Honorific expansion and disclosed UK/US spelling only, no proper-name phonetic substitutions or new audible-word claims."
+  },
+  "no_speciality_specialty_alias": true,
+  "source_ending_raw_recognized_by_both": "short notice was her speciality",
+  "proposed_supporting_files": {
+    "descriptor": "release-descriptor.PROPOSED.json",
+    "adoption": "SOURCE-QA-ADOPTION.PROPOSED.json",
+    "new_IN_audio_use": "IN-AUDIO-USE-RECORD.PROPOSED.json",
+    "four_asset_plan": "upload-plan.PROPOSED-NOT-AUTHORIZED.json"
+  },
+  "implementation_and_current_native_dispatch": "PENDING_SERIAL_INTEGRATION_LANE_REVIEWED_SOURCE_CHANGE",
+  "profile_does_not_provision_grants_or_change_capital_wallets": true,
+  "publication_status": "BLOCKED_PENDING_TRUST_SOURCE_IMPLEMENTATION_STORAGE_AND_RUNTIME"
+}

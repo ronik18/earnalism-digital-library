@@ -1,0 +1,312 @@
+{
+  "unit": "u000014",
+  "master_interval_seconds": [
+    139.48225,
+    149.80225
+  ],
+  "expected_text": "“It is quite warm for the time of the year,” said Framton; “but has that window got anything to do with the tragedy?”",
+  "ctc_transcript": "IT IS QUITE WARM FOR THE TIME OF THE YEAR SAID FRAMPTON BUT HAS THAT WINDOW GOT ANYTHING TO DO WITH THE TRAGEDY",
+  "ctc_words": [
+    {
+      "word": "IT",
+      "start": 139.6625995145631,
+      "end": 139.702677184466,
+      "mean_character_frame_posterior": 0.9999583959579468
+    },
+    {
+      "word": "IS",
+      "start": 139.96318203883496,
+      "end": 140.06337621359222,
+      "mean_character_frame_posterior": 0.9999799132347107
+    },
+    {
+      "word": "QUITE",
+      "start": 140.26376456310678,
+      "end": 140.52426941747572,
+      "mean_character_frame_posterior": 0.9056451797485352
+    },
+    {
+      "word": "WARM",
+      "start": 140.64450242718445,
+      "end": 141.0052014563107,
+      "mean_character_frame_posterior": 0.9997866153717041
+    },
+    {
+      "word": "FOR",
+      "start": 141.24566747572814,
+      "end": 141.38593932038833,
+      "mean_character_frame_posterior": 0.9992890357971191
+    },
+    {
+      "word": "THE",
+      "start": 141.44605582524272,
+      "end": 141.60636650485435,
+      "mean_character_frame_posterior": 0.9525044361750284
+    },
+    {
+      "word": "TIME",
+      "start": 141.92698786407766,
+      "end": 142.20753155339804,
+      "mean_character_frame_posterior": 0.993578776717186
+    },
+    {
+      "word": "OF",
+      "start": 142.30772572815533,
+      "end": 142.34780339805823,
+      "mean_character_frame_posterior": 0.9999560713768005
+    },
+    {
+      "word": "THE",
+      "start": 142.44799757281552,
+      "end": 142.5081140776699,
+      "mean_character_frame_posterior": 0.9992697437604269
+    },
+    {
+      "word": "YEAR",
+      "start": 142.58826941747571,
+      "end": 142.8688131067961,
+      "mean_character_frame_posterior": 0.9891693890094757
+    },
+    {
+      "word": "SAID",
+      "start": 143.71044417475727,
+      "end": 143.8907936893204,
+      "mean_character_frame_posterior": 0.9998288452625275
+    },
+    {
+      "word": "FRAMPTON",
+      "start": 143.97094902912622,
+      "end": 144.45188106796115,
+      "mean_character_frame_posterior": 0.9675550386309624
+    },
+    {
+      "word": "BUT",
+      "start": 145.05304611650485,
+      "end": 145.27347330097086,
+      "mean_character_frame_posterior": 0.9992673198382059
+    },
+    {
+      "word": "HAS",
+      "start": 145.69428883495144,
+      "end": 145.83456067961166,
+      "mean_character_frame_posterior": 0.9491837024688721
+    },
+    {
+      "word": "THAT",
+      "start": 145.95479368932038,
+      "end": 146.1351432038835,
+      "mean_character_frame_posterior": 0.9987916648387909
+    },
+    {
+      "word": "WINDOW",
+      "start": 146.2754150485437,
+      "end": 146.6761917475728,
+      "mean_character_frame_posterior": 0.9970681269963583
+    },
+    {
+      "word": "GOT",
+      "start": 146.97677427184465,
+      "end": 147.17716262135923,
+      "mean_character_frame_posterior": 0.9998343785603842
+    },
+    {
+      "word": "ANYTHING",
+      "start": 147.41762864077668,
+      "end": 147.7783276699029,
+      "mean_character_frame_posterior": 0.9871541634202003
+    },
+    {
+      "word": "TO",
+      "start": 147.85848300970872,
+      "end": 147.9185995145631,
+      "mean_character_frame_posterior": 0.9999690651893616
+    },
+    {
+      "word": "DO",
+      "start": 147.97871601941748,
+      "end": 148.13902669902913,
+      "mean_character_frame_posterior": 0.9999818801879883
+    },
+    {
+      "word": "WITH",
+      "start": 148.27929854368932,
+      "end": 148.43960922330098,
+      "mean_character_frame_posterior": 0.9999813437461853
+    },
+    {
+      "word": "THE",
+      "start": 148.5598422330097,
+      "end": 148.76023058252426,
+      "mean_character_frame_posterior": 0.9933073123296102
+    },
+    {
+      "word": "TRAGEDY",
+      "start": 149.08085194174757,
+      "end": 149.68201699029126,
+      "mean_character_frame_posterior": 0.9849282417978559
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        11,
+        12
+      ],
+      "recognized_word_span": [
+        11,
+        12
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " It",
+      "start": 139.62,
+      "end": 139.72,
+      "probability": 0.06010109931230545
+    },
+    {
+      "word": " is",
+      "start": 139.72,
+      "end": 140.2,
+      "probability": 0.9821292161941528
+    },
+    {
+      "word": " quite",
+      "start": 140.2,
+      "end": 140.5,
+      "probability": 0.9950641989707947
+    },
+    {
+      "word": " warm",
+      "start": 140.5,
+      "end": 141.08,
+      "probability": 0.9988741278648376
+    },
+    {
+      "word": " for",
+      "start": 141.08,
+      "end": 141.5,
+      "probability": 0.9943363070487976
+    },
+    {
+      "word": " the",
+      "start": 141.5,
+      "end": 141.68,
+      "probability": 0.9948049187660217
+    },
+    {
+      "word": " time",
+      "start": 141.68,
+      "end": 142.24,
+      "probability": 0.9242795705795288
+    },
+    {
+      "word": " of",
+      "start": 142.24,
+      "end": 142.44,
+      "probability": 0.9985186457633972
+    },
+    {
+      "word": " the",
+      "start": 142.44,
+      "end": 142.52,
+      "probability": 0.9941121935844421
+    },
+    {
+      "word": " year,",
+      "start": 142.52,
+      "end": 143.14,
+      "probability": 0.9990546107292175
+    },
+    {
+      "word": " said",
+      "start": 143.82,
+      "end": 144.02,
+      "probability": 0.9818724989891052
+    },
+    {
+      "word": " Frampton.",
+      "start": 144.02,
+      "end": 144.46,
+      "probability": 0.8105908930301666
+    },
+    {
+      "word": " But",
+      "start": 145.04,
+      "end": 145.32,
+      "probability": 0.8942842483520508
+    },
+    {
+      "word": " has",
+      "start": 145.32,
+      "end": 145.86,
+      "probability": 0.8516964912414551
+    },
+    {
+      "word": " that",
+      "start": 145.86,
+      "end": 146.3,
+      "probability": 0.9946887493133545
+    },
+    {
+      "word": " window",
+      "start": 146.3,
+      "end": 146.74,
+      "probability": 0.9994407296180725
+    },
+    {
+      "word": " got",
+      "start": 146.74,
+      "end": 147.14,
+      "probability": 0.989990234375
+    },
+    {
+      "word": " anything",
+      "start": 147.14,
+      "end": 147.7,
+      "probability": 0.9954766631126404
+    },
+    {
+      "word": " to",
+      "start": 147.7,
+      "end": 147.94,
+      "probability": 0.9978518486022949
+    },
+    {
+      "word": " do",
+      "start": 147.94,
+      "end": 148.18,
+      "probability": 0.9982784986495972
+    },
+    {
+      "word": " with",
+      "start": 148.18,
+      "end": 148.86,
+      "probability": 0.9976420402526855
+    },
+    {
+      "word": " the",
+      "start": 148.86,
+      "end": 148.86,
+      "probability": 0.40058082342147827
+    },
+    {
+      "word": " tragedy?",
+      "start": 148.86,
+      "end": 149.58,
+      "probability": 0.8605475425720215
+    }
+  ],
+  "whisper_transcript_in_unit": "It is quite warm for the time of the year, said Frampton. But has that window got anything to do with the tragedy?",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.3409582090000072
+}

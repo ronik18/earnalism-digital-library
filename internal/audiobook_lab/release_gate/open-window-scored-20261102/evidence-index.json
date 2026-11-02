@@ -1,0 +1,509 @@
+{
+  "schema": "earnalism.open-window-scored-evidence-index.v1",
+  "files": {
+    "frozen-v5/IN-AUDIO-USE-RECORD.PROPOSED.json": {
+      "sha256": "cdb1e9f6fc80f412510a0eb3bf9000e87d56a60c5d8fae7a86d6cf8347f6b847",
+      "bytes": 4630
+    },
+    "frozen-v5/LOCAL-PACKET-QUALITY-CHECKS.json": {
+      "sha256": "6c60ca1e75edab635e67a7bd590e2c33d72fc80efcf95643345dec957db115a8",
+      "bytes": 1838
+    },
+    "frozen-v5/MANIFEST-FINAL-PROPOSED.json": {
+      "sha256": "89b0623e0e94289b1f615b1fb6c072644799346aa47cbc7c92965c9fd41989df",
+      "bytes": 14224
+    },
+    "frozen-v5/MANIFEST.PROPOSED.json": {
+      "sha256": "afe025aa8eed8636981aae18e5e8d779858ff6b60d4c1de9084a4328aaa0d2ba",
+      "bytes": 24343
+    },
+    "frozen-v5/OWN-CARRIED-BUDGET.CONSTRUCTOR-PROPOSAL.json": {
+      "sha256": "ac6305da42e06b35dc51df88616296d3e210697e4d9bf70d1c8dd08c3246c170",
+      "bytes": 3456
+    },
+    "frozen-v5/OWN-FOUR-RESTRICTED-KEYS.PROPOSED-NOT-AUTHORIZED.json": {
+      "sha256": "9f5115e19cf3c065575c27637a8de45e7179ae440bfd7879316430b0cd6a97ce",
+      "bytes": 4005
+    },
+    "frozen-v5/OWN-STORAGE-REHEARSAL-RESULT.json": {
+      "sha256": "33b4e138b7f333cafe537cac546a23a485ad45b9c03c02670b8105cb63098988",
+      "bytes": 3572
+    },
+    "frozen-v5/PROFILE-CONTRACT.PROPOSED.json": {
+      "sha256": "761d27fd61f95045de02bf8cd83f209c5a32f0438892bbcdb50d45ea7b654130",
+      "bytes": 4873
+    },
+    "frozen-v5/SOURCE-QA-ADOPTION.PROPOSED.json": {
+      "sha256": "1cb02d1ce736f5fb8879a2eb3f17e43fe48064ac3094f55e9a56a2c585ad8861",
+      "bytes": 9596
+    },
+    "frozen-v5/assets/chapter-001-full.metadata.json": {
+      "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+      "bytes": 1870
+    },
+    "frozen-v5/assets/chapter-001-full.timestamps.json": {
+      "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+      "bytes": 17612
+    },
+    "frozen-v5/assets/chapter-001-full.vtt": {
+      "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+      "bytes": 7683
+    },
+    "frozen-v5/check-history/pre-input-binding-5e0bc6dda01311f0eb5ac73bcfac2a034b1964fd5e313be43ab1404cfd11aadc.json": {
+      "sha256": "5e0bc6dda01311f0eb5ac73bcfac2a034b1964fd5e313be43ab1404cfd11aadc",
+      "bytes": 1012
+    },
+    "frozen-v5/check-history/verify-pre-input-binding-e5d1a834005be7321952539ead66ac9a7ace6f8acfe0e12eaebd8dc058e2f56e.py": {
+      "sha256": "e5d1a834005be7321952539ead66ac9a7ace6f8acfe0e12eaebd8dc058e2f56e",
+      "bytes": 8585
+    },
+    "frozen-v5/evidence/21-SUPPORTED-READER-MEASURED-CANDIDATE.json": {
+      "sha256": "69bafd8629295cf880e2d9e62e43934643925f6fef2d4db5adbcc8bba643d7d2",
+      "bytes": 22720
+    },
+    "frozen-v5/evidence/ACTUAL-ASR-AND-SIX-OWNER-ADJUDICATIONS.json": {
+      "sha256": "b36c6f66d2a995cfd03b73f15486edda003a2a3d91789e5236a69b6bb42bd770",
+      "bytes": 248768
+    },
+    "frozen-v5/evidence/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json": {
+      "sha256": "5062680eca57d0b278e9c749bfeff7587782b66d176a7664cacd09bcaa5866ed",
+      "bytes": 3761
+    },
+    "frozen-v5/evidence/NEW-MUSIC-RECORDING-AND-MIX-BINDING.PROPOSED.json": {
+      "sha256": "cc50b127592d258c48b1aef876d861f305d2fd1183647316dd858184aed5dfb0",
+      "bytes": 3031
+    },
+    "frozen-v5/evidence/SOURCE-INTEGRITY.json": {
+      "sha256": "5bf3e589eb134129374c9f6b49e01015c2fa0cf751dd531a1510414e2a7418db",
+      "bytes": 573
+    },
+    "frozen-v5/manuscript.txt": {
+      "sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+      "bytes": 7078
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-64KiB-final-manifest-reserve.json": {
+      "sha256": "efc0cd923b5aeacab63232e9071d7dd40f6d50b255679f125fea058a4e1b46d4",
+      "bytes": 65536
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-NOT-ACTIVE-carried-budget.json": {
+      "sha256": "b537ff664cf98ccf71d2ac12643de209e8f8f4b4490195ee2b6f89ad7992f6b4",
+      "bytes": 1717
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-manifest-plan.json": {
+      "sha256": "11c1870cea96b6043b178afb11ed426eb6c91db778be828fe7dacfe2058fa6f6",
+      "bytes": 1042
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase0-primary.json": {
+      "sha256": "b3fdb8e153c6990e10ad22f63122b6fffeef43709ebf2a5843cd513a23285cf7",
+      "bytes": 4002
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase0-replica.json": {
+      "sha256": "fb0bc501fad441579b3d22cb1906516233c848bd9019233cd5dca28e8535c1d5",
+      "bytes": 5521
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase1-primary.json": {
+      "sha256": "ea7284bae4aaa8330fada9cf9255d64e32068e2cd12411f7a9d2387d28708745",
+      "bytes": 1794
+    },
+    "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase1-replica.json": {
+      "sha256": "f9205c50d7601261d0bf7fea32f2dbe1033ddb2129f3f2a8df0eb46eb3b00a1b",
+      "bytes": 3064
+    },
+    "frozen-v5/package-identity.PROPOSED.json": {
+      "sha256": "e2cfabd7d9e2c05160b19f9576002f53333b86069c1c0e9c69f0fe0f2eb0f2fb",
+      "bytes": 2157
+    },
+    "frozen-v5/rehearse_own_storage.py": {
+      "sha256": "bcb6bf18f2cd3ac960c9087ee7102c0e4afb35af9a998b3f8a98e61be7bb136b",
+      "bytes": 9317
+    },
+    "frozen-v5/release-descriptor.PROPOSED.json": {
+      "sha256": "dc2cc66f93eae0f7c21a856b2068c4043b94eacf723f5f8c08310ec136b1989c",
+      "bytes": 5151
+    },
+    "frozen-v5/support/audio/ACTUAL-SCORED-DELIVERY-CLOCK-TRANSFER.json": {
+      "sha256": "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0",
+      "bytes": 16585
+    },
+    "frozen-v5/support/audio/CONTAINER-METADATA-AUDIO-REUSE.json": {
+      "sha256": "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+      "bytes": 6618
+    },
+    "frozen-v5/support/audio/TECHNICAL-RESULT.json": {
+      "sha256": "e6ff53d68e8284a7f277897614531bea23e4fb87fab7290be3a1d9e4356ec4d9",
+      "bytes": 28415
+    },
+    "frozen-v5/support/historical-trust/ORIGINAL-ACCEPTED-AUDIO-USE-RECORD.json": {
+      "sha256": "d94e201db0a550c33d9067cd16b623ea704b7fa61a5f283d8533b3bdc74f5440",
+      "bytes": 2569
+    },
+    "frozen-v5/support/historical-trust/open_window_successor_adoptions.json": {
+      "sha256": "020b594099b53111990837f1109fe71e6c1f4201c00f108c4701a56d2944fdd7",
+      "bytes": 4922
+    },
+    "frozen-v5/support/historical-trust/retained_master_derivative_adoptions.json": {
+      "sha256": "25d31605146c162fe147b89425fb77ee54ae9586f38c0a2ba5e526c75694ad47",
+      "bytes": 9624
+    },
+    "frozen-v5/support/music/MUSIC-CREDITS.txt": {
+      "sha256": "4b017c890a34b7eb7f7ae45606ba18532ed8ac58c5e4369ef757a0cad044f29b",
+      "bytes": 788
+    },
+    "frozen-v5/support/music/MUSIC-SELECTION.json": {
+      "sha256": "a73f823779e52f7cb70db5afd1faf972f8ec32a6251feab12f90527022a9f6e1",
+      "bytes": 6088
+    },
+    "frozen-v5/support/music/SCORE-PLAN.json": {
+      "sha256": "d5e737122460c9b2ab0aafd37cfeeb7103c6ea1fd07cc8bf205699626bd18b58",
+      "bytes": 15092
+    },
+    "frozen-v5/support/owner/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json": {
+      "sha256": "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a",
+      "bytes": 3724
+    },
+    "frozen-v5/support/owner/OWNER-FRAMTON-TWELVE-EXCERPT-ADJUDICATION-20261102.json": {
+      "sha256": "e359a75515950401b14c8c1f0733b8d00c2fc1d49dd4d71f4e0ff2fdec28858e",
+      "bytes": 11832
+    },
+    "frozen-v5/support/owner/OWNER-REVIEW-SCALE-AND-NUMBERED-RESPONSE-20261102.json": {
+      "sha256": "292e16cefc0d17e11afd4f15025936b34b033801376d7b88c4f89a0ae9818a83",
+      "bytes": 2442
+    },
+    "frozen-v5/support/raw-ASR/ALL_UNITS_CTC.json": {
+      "sha256": "f0aec9d1b8786c02e0157eb205b4ef8c66f349335fd9fa7c5c07d8d3c9baeb78",
+      "bytes": 474475
+    },
+    "frozen-v5/support/raw-ASR/FOCUSED_REPAIR_QA.json": {
+      "sha256": "c5d766738d2816fbf317edfbb0f4e3432d3b4b8a345dbcf68793b843d33cb0e3",
+      "bytes": 2388
+    },
+    "frozen-v5/support/raw-ASR/FULL_MASTER_WHISPER.json": {
+      "sha256": "2165ed5c827897e7e14a8462d730016cd7509f4a375b5d6e670741cd12b42849",
+      "bytes": 272572
+    },
+    "frozen-v5/support/raw-ASR/PROVENANCE.json": {
+      "sha256": "b1d7cc2d3586918e955f2ab9ae97d95c94a8832437b60d1fe5f3390214e303a3",
+      "bytes": 668
+    },
+    "frozen-v5/support/raw-ASR/u000001.json": {
+      "sha256": "16745374273c8d7e1e5a9d27d647f40b664019d77472ab67ca071fbc42bdb3b0",
+      "bytes": 9154
+    },
+    "frozen-v5/support/raw-ASR/u000002.json": {
+      "sha256": "47fe6b819460ddd0686b948b827b06c291f50c15586f3dc883d0444ee7848f01",
+      "bytes": 18359
+    },
+    "frozen-v5/support/raw-ASR/u000003.json": {
+      "sha256": "f7b4f0bf878e12f71ced399286bce091c0a37bb232b934babfa1a6770e8621be",
+      "bytes": 17731
+    },
+    "frozen-v5/support/raw-ASR/u000004.json": {
+      "sha256": "1ee81586e32721f7a61703611bdcd04c8d261c9f290e2399df5101f077a904d2",
+      "bytes": 4103
+    },
+    "frozen-v5/support/raw-ASR/u000005.json": {
+      "sha256": "50b39e96f18854de5a426fbe5f023633009f7798606814f6a3010a32b29b84c0",
+      "bytes": 8137
+    },
+    "frozen-v5/support/raw-ASR/u000006.json": {
+      "sha256": "bec242f2b5a2d6e1e2bddabab6785223d5e9070ef5b34478615c77b47b155aad",
+      "bytes": 7099
+    },
+    "frozen-v5/support/raw-ASR/u000007.json": {
+      "sha256": "d0257b9392c1b297418d7f923bc6404b155e10e772c0a98c692cd714fa3e4d7d",
+      "bytes": 10405
+    },
+    "frozen-v5/support/raw-ASR/u000008.json": {
+      "sha256": "faca1577126abaa2614e7893cf89ff4b4da183c5ed70ae42e15bd9cb4cfa486e",
+      "bytes": 3949
+    },
+    "frozen-v5/support/raw-ASR/u000009.json": {
+      "sha256": "7f1ef23c7c45ec0de9c72bc56f10840f6bf16a119538a8fc2713aa798a4fa896",
+      "bytes": 4914
+    },
+    "frozen-v5/support/raw-ASR/u000010.json": {
+      "sha256": "f72d725a269e1f48df05da6cf6f92585a9ac65279fb8b7009e11e180fa2c6220",
+      "bytes": 11181
+    },
+    "frozen-v5/support/raw-ASR/u000011.json": {
+      "sha256": "0636c58bf9d5d5cb3b9abae1a01e7cd00a2410324916a141e4b9fc15cae849e8",
+      "bytes": 6005
+    },
+    "frozen-v5/support/raw-ASR/u000012.json": {
+      "sha256": "f16b4ab1f1d40afa3bc5915aa862f4b55c3e296c6ec461e79bf6b47ed3bee44f",
+      "bytes": 5524
+    },
+    "frozen-v5/support/raw-ASR/u000013.json": {
+      "sha256": "aae1659ee86c106f1aa15739f615108e68e05e55b6e6455c09b3c8aed6cbcbf2",
+      "bytes": 9064
+    },
+    "frozen-v5/support/raw-ASR/u000014.json": {
+      "sha256": "ea565a8491e0d6a2a13cfc2639cc55de8ed6bd397aa8eaba1d84f91b3943995f",
+      "bytes": 7784
+    },
+    "frozen-v5/support/raw-ASR/u000015.json": {
+      "sha256": "58ab89add5992dd664f28a9a4a44d1da34be5a3b304545e0d36a1abd34ea7dac",
+      "bytes": 15456
+    },
+    "frozen-v5/support/raw-ASR/u000016.json": {
+      "sha256": "b1d6b3f28e4f5d3ba57c1fbf889cfc253adf4b6d81fb7554a7c033105ee30347",
+      "bytes": 14842
+    },
+    "frozen-v5/support/raw-ASR/u000017.json": {
+      "sha256": "b73c03d092fc8bbb9227a56e9437dd874bc920705bb69ee9643882a1f381d181",
+      "bytes": 15439
+    },
+    "frozen-v5/support/raw-ASR/u000018.json": {
+      "sha256": "3e64964afb56dee6b8782ac1357bfba8d3e622bba16aaeb1d429ee4f157bb31f",
+      "bytes": 15643
+    },
+    "frozen-v5/support/raw-ASR/u000019.json": {
+      "sha256": "5e9d3118bb35b59d089d71bacc4e4862cc9e1ba9c21ab2b1455af2f9646844a8",
+      "bytes": 8170
+    },
+    "frozen-v5/support/raw-ASR/u000020.json": {
+      "sha256": "90afff699981d5c725187aaffc162cf52989371fea7d4c411b62e5cdd9f617b3",
+      "bytes": 10495
+    },
+    "frozen-v5/support/raw-ASR/u000021.json": {
+      "sha256": "e0d499ded4b8b7e9c9680aea4d678e220598186d6ba1b65da1103d28e4738bd4",
+      "bytes": 3643
+    },
+    "frozen-v5/support/raw-ASR/u000022.json": {
+      "sha256": "238da36cbf4fc2754f3ff0f63aad8f015096e3246ab349bfb3fe07ba3c31673f",
+      "bytes": 3121
+    },
+    "frozen-v5/support/raw-ASR/u000023.json": {
+      "sha256": "3d89857f70f7bf1952478830d27559b3184ef02d733d268a8a5181016f3fb5d7",
+      "bytes": 17249
+    },
+    "frozen-v5/support/raw-ASR/u000024.json": {
+      "sha256": "bfdc90cc52a00ecdd64afbba78b3dddb7bc5d0889ea2232b5cac8f652555b28d",
+      "bytes": 16728
+    },
+    "frozen-v5/support/raw-ASR/u000025.json": {
+      "sha256": "542cb37bc32a78df6db0c4f9c957555c486465f8276dbc03e9433a752f3476bf",
+      "bytes": 15845
+    },
+    "frozen-v5/support/raw-ASR/u000026.json": {
+      "sha256": "26c76e0d241c12f2cd7cd446da75369066a2415834cc476e000517d77c9a8e22",
+      "bytes": 5721
+    },
+    "frozen-v5/support/raw-ASR/u000027.json": {
+      "sha256": "d142394e414d671f20008c3f4983ec0a30e0c39cf8bd7346e7c009f9ee3e4adc",
+      "bytes": 17601
+    },
+    "frozen-v5/support/raw-ASR/u000028.json": {
+      "sha256": "706a14a2046091d066b3f6796acf3c7d19ff164237e41fb209e360d1356563c6",
+      "bytes": 5125
+    },
+    "frozen-v5/support/raw-ASR/u000029.json": {
+      "sha256": "b4444e86ea211b24eb840efe744d4e10970e4737c4833598606f64948452bc3c",
+      "bytes": 10200
+    },
+    "frozen-v5/support/raw-ASR/u000030.json": {
+      "sha256": "c4ed18daed8487b959c88fd61b7d44aa821febee50baf9eeccdbf9abd3f08ec9",
+      "bytes": 8070
+    },
+    "frozen-v5/support/raw-ASR/u000031.json": {
+      "sha256": "9e38d32b88b40a3ea73a35f7d540ea38cca61016465e66569b3ea6300670b358",
+      "bytes": 16460
+    },
+    "frozen-v5/support/raw-ASR/u000032.json": {
+      "sha256": "daa6d63bbba63bd6bb8bcad0ae9a614d9eb6de6590e69d6f3ffb82a86be918af",
+      "bytes": 14311
+    },
+    "frozen-v5/support/raw-ASR/u000033.json": {
+      "sha256": "3c253c52fd1ada975ed7b579691163a0045a6b74ed7fbdb51a00b3e520948ea4",
+      "bytes": 7531
+    },
+    "frozen-v5/support/raw-ASR/u000034.json": {
+      "sha256": "719a7d37f9622892ee72b74bc502d2d37cf8ceb1b8ea3fb11a938a3ec2ea1204",
+      "bytes": 14457
+    },
+    "frozen-v5/support/raw-ASR/u000035.json": {
+      "sha256": "f8ba355d3753c47c3730dcb7bb2481054fa1aab7ba33b4a92878474f00f69f20",
+      "bytes": 10895
+    },
+    "frozen-v5/support/raw-ASR/u000036.json": {
+      "sha256": "78ee61cb9273950cb2ea8bc3d6b7a9b07125f1e5414db349a9ecc838215061aa",
+      "bytes": 12449
+    },
+    "frozen-v5/support/raw-ASR/u000037.json": {
+      "sha256": "cf299958f3daf06053d1e05c3e60bfa28fb90bd4a0144b94c488b070e0ad933d",
+      "bytes": 18987
+    },
+    "frozen-v5/support/raw-ASR/u000038.json": {
+      "sha256": "f08f19d014b029facf1eed911891c260f84a0d82223a3dbb468e5c9d954ce5ed",
+      "bytes": 3338
+    },
+    "frozen-v5/support/raw-ASR/u000039.json": {
+      "sha256": "141ca5922975cbd0b5d161dec7d195bcdc2a62b7049f5006af7943b37ca63f7d",
+      "bytes": 2821
+    },
+    "frozen-v5/support/retained-source/MASTER_PROVENANCE_AND_QA.json": {
+      "sha256": "787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7",
+      "bytes": 19197
+    },
+    "frozen-v5/support/retained-source/QA_WORD_COUNT_SUPPLEMENT.json": {
+      "sha256": "b44c06cb2af8ec3a27decb07c82b6f0e2d45ec7d5551247188b3bebab3d59697",
+      "bytes": 1021
+    },
+    "frozen-v5/support/retained-source/SUCCESSOR_RIGHTS_BINDING.json": {
+      "sha256": "b6ce420f9810f21d7bd89e76b174c9c93f4c5bbf2e34757d6a943da460405727",
+      "bytes": 1947
+    },
+    "frozen-v5/support/rights-basis/open-window-ai-rights-assessment.json": {
+      "sha256": "040ac2230ee967ab1c273c4858f306515c6888b3fe61d90cedbcf858fa866b5b",
+      "bytes": 4102
+    },
+    "frozen-v5/support/rights-basis/open-window-rights-specific-resolution.json": {
+      "sha256": "817da1cf481004d6f324b0c86bb0678e2cd3987cc9c473a20e5f18028b7c759f",
+      "bytes": 4117
+    },
+    "frozen-v5/support/rights-basis/owner-producer-authorization-and-listening-policy-check.json": {
+      "sha256": "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3",
+      "bytes": 3357
+    },
+    "frozen-v5/support/source/chapter-001.json": {
+      "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+      "bytes": 7948
+    },
+    "frozen-v5/support/source/readerContent.js": {
+      "sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+      "bytes": 3365
+    },
+    "frozen-v5/support/source/rights_decision.json": {
+      "sha256": "9cb800eeff9f13f6098f7e31bbd8859c8bff9dfd6de130edf4e63d1a2badd041",
+      "bytes": 4172
+    },
+    "frozen-v5/support/timing/chapter-001-full.timestamps.json": {
+      "sha256": "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+      "bytes": 17212
+    },
+    "frozen-v5/upload-plan.PROPOSED-NOT-AUTHORIZED.json": {
+      "sha256": "60ace0c29f1323f12b254eee55227e2a2ffda70c4365c9a427eca8fdd4e27b87",
+      "bytes": 3257
+    },
+    "frozen-v5/verify_proposed_packet.py": {
+      "sha256": "23477f4f182d4b425a367edd2b8b790c1a64a0a2e612ca1510f5686d8ef77dce",
+      "bytes": 9076
+    },
+    "supporting-review/INDEPENDENT-V5-PACKET-REVIEW.json": {
+      "sha256": "7024ecd1c5de9d9d32f42369539ad7bf295121799f747c97eacd0efb23829114",
+      "bytes": 8137
+    },
+    "supporting-review/PCM-IDENTITY-PROOF.json": {
+      "sha256": "f57142005967fbc3ff2574fbc72d36e3d2e5ea8c95744e27f22818ed2fcd336e",
+      "bytes": 16772
+    }
+  },
+  "original_path_to_committed_copy": {
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/IN-AUDIO-USE-RECORD.PROPOSED.json": "frozen-v5/IN-AUDIO-USE-RECORD.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/LOCAL-PACKET-QUALITY-CHECKS.json": "frozen-v5/LOCAL-PACKET-QUALITY-CHECKS.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/MANIFEST-FINAL-PROPOSED.json": "frozen-v5/MANIFEST-FINAL-PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/MANIFEST.PROPOSED.json": "frozen-v5/MANIFEST.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-CARRIED-BUDGET.CONSTRUCTOR-PROPOSAL.json": "frozen-v5/OWN-CARRIED-BUDGET.CONSTRUCTOR-PROPOSAL.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-FOUR-RESTRICTED-KEYS.PROPOSED-NOT-AUTHORIZED.json": "frozen-v5/OWN-FOUR-RESTRICTED-KEYS.PROPOSED-NOT-AUTHORIZED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-STORAGE-REHEARSAL-RESULT.json": "frozen-v5/OWN-STORAGE-REHEARSAL-RESULT.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/PROFILE-CONTRACT.PROPOSED.json": "frozen-v5/PROFILE-CONTRACT.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/SOURCE-QA-ADOPTION.PROPOSED.json": "frozen-v5/SOURCE-QA-ADOPTION.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.metadata.json": "frozen-v5/assets/chapter-001-full.metadata.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.timestamps.json": "frozen-v5/assets/chapter-001-full.timestamps.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.vtt": "frozen-v5/assets/chapter-001-full.vtt",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/check-history/pre-input-binding-5e0bc6dda01311f0eb5ac73bcfac2a034b1964fd5e313be43ab1404cfd11aadc.json": "frozen-v5/check-history/pre-input-binding-5e0bc6dda01311f0eb5ac73bcfac2a034b1964fd5e313be43ab1404cfd11aadc.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/check-history/verify-pre-input-binding-e5d1a834005be7321952539ead66ac9a7ace6f8acfe0e12eaebd8dc058e2f56e.py": "frozen-v5/check-history/verify-pre-input-binding-e5d1a834005be7321952539ead66ac9a7ace6f8acfe0e12eaebd8dc058e2f56e.py",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/21-SUPPORTED-READER-MEASURED-CANDIDATE.json": "frozen-v5/evidence/21-SUPPORTED-READER-MEASURED-CANDIDATE.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/ACTUAL-ASR-AND-SIX-OWNER-ADJUDICATIONS.json": "frozen-v5/evidence/ACTUAL-ASR-AND-SIX-OWNER-ADJUDICATIONS.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json": "frozen-v5/evidence/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/NEW-MUSIC-RECORDING-AND-MIX-BINDING.PROPOSED.json": "frozen-v5/evidence/NEW-MUSIC-RECORDING-AND-MIX-BINDING.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/SOURCE-INTEGRITY.json": "frozen-v5/evidence/SOURCE-INTEGRITY.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/manuscript.txt": "frozen-v5/manuscript.txt",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-64KiB-final-manifest-reserve.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-64KiB-final-manifest-reserve.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-NOT-ACTIVE-carried-budget.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-NOT-ACTIVE-carried-budget.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-manifest-plan.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-manifest-plan.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-phase0-primary.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase0-primary.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-phase0-replica.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase0-replica.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-phase1-primary.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase1-primary.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-phase1-replica.json": "frozen-v5/offline-storage-rehearsal/SYNTHETIC-phase1-replica.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/package-identity.PROPOSED.json": "frozen-v5/package-identity.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/rehearse_own_storage.py": "frozen-v5/rehearse_own_storage.py",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/release-descriptor.PROPOSED.json": "frozen-v5/release-descriptor.PROPOSED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/audio/ACTUAL-SCORED-DELIVERY-CLOCK-TRANSFER.json": "frozen-v5/support/audio/ACTUAL-SCORED-DELIVERY-CLOCK-TRANSFER.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/audio/CONTAINER-METADATA-AUDIO-REUSE.json": "frozen-v5/support/audio/CONTAINER-METADATA-AUDIO-REUSE.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/audio/TECHNICAL-RESULT.json": "frozen-v5/support/audio/TECHNICAL-RESULT.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/historical-trust/ORIGINAL-ACCEPTED-AUDIO-USE-RECORD.json": "frozen-v5/support/historical-trust/ORIGINAL-ACCEPTED-AUDIO-USE-RECORD.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/historical-trust/open_window_successor_adoptions.json": "frozen-v5/support/historical-trust/open_window_successor_adoptions.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/historical-trust/retained_master_derivative_adoptions.json": "frozen-v5/support/historical-trust/retained_master_derivative_adoptions.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/music/MUSIC-CREDITS.txt": "frozen-v5/support/music/MUSIC-CREDITS.txt",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/music/MUSIC-SELECTION.json": "frozen-v5/support/music/MUSIC-SELECTION.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/music/SCORE-PLAN.json": "frozen-v5/support/music/SCORE-PLAN.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/owner/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json": "frozen-v5/support/owner/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/owner/OWNER-FRAMTON-TWELVE-EXCERPT-ADJUDICATION-20261102.json": "frozen-v5/support/owner/OWNER-FRAMTON-TWELVE-EXCERPT-ADJUDICATION-20261102.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/owner/OWNER-REVIEW-SCALE-AND-NUMBERED-RESPONSE-20261102.json": "frozen-v5/support/owner/OWNER-REVIEW-SCALE-AND-NUMBERED-RESPONSE-20261102.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/ALL_UNITS_CTC.json": "frozen-v5/support/raw-ASR/ALL_UNITS_CTC.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/FOCUSED_REPAIR_QA.json": "frozen-v5/support/raw-ASR/FOCUSED_REPAIR_QA.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/FULL_MASTER_WHISPER.json": "frozen-v5/support/raw-ASR/FULL_MASTER_WHISPER.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/PROVENANCE.json": "frozen-v5/support/raw-ASR/PROVENANCE.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000001.json": "frozen-v5/support/raw-ASR/u000001.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000002.json": "frozen-v5/support/raw-ASR/u000002.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000003.json": "frozen-v5/support/raw-ASR/u000003.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000004.json": "frozen-v5/support/raw-ASR/u000004.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000005.json": "frozen-v5/support/raw-ASR/u000005.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000006.json": "frozen-v5/support/raw-ASR/u000006.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000007.json": "frozen-v5/support/raw-ASR/u000007.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000008.json": "frozen-v5/support/raw-ASR/u000008.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000009.json": "frozen-v5/support/raw-ASR/u000009.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000010.json": "frozen-v5/support/raw-ASR/u000010.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000011.json": "frozen-v5/support/raw-ASR/u000011.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000012.json": "frozen-v5/support/raw-ASR/u000012.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000013.json": "frozen-v5/support/raw-ASR/u000013.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000014.json": "frozen-v5/support/raw-ASR/u000014.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000015.json": "frozen-v5/support/raw-ASR/u000015.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000016.json": "frozen-v5/support/raw-ASR/u000016.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000017.json": "frozen-v5/support/raw-ASR/u000017.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000018.json": "frozen-v5/support/raw-ASR/u000018.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000019.json": "frozen-v5/support/raw-ASR/u000019.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000020.json": "frozen-v5/support/raw-ASR/u000020.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000021.json": "frozen-v5/support/raw-ASR/u000021.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000022.json": "frozen-v5/support/raw-ASR/u000022.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000023.json": "frozen-v5/support/raw-ASR/u000023.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000024.json": "frozen-v5/support/raw-ASR/u000024.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000025.json": "frozen-v5/support/raw-ASR/u000025.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000026.json": "frozen-v5/support/raw-ASR/u000026.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000027.json": "frozen-v5/support/raw-ASR/u000027.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000028.json": "frozen-v5/support/raw-ASR/u000028.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000029.json": "frozen-v5/support/raw-ASR/u000029.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000030.json": "frozen-v5/support/raw-ASR/u000030.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000031.json": "frozen-v5/support/raw-ASR/u000031.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000032.json": "frozen-v5/support/raw-ASR/u000032.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000033.json": "frozen-v5/support/raw-ASR/u000033.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000034.json": "frozen-v5/support/raw-ASR/u000034.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000035.json": "frozen-v5/support/raw-ASR/u000035.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000036.json": "frozen-v5/support/raw-ASR/u000036.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000037.json": "frozen-v5/support/raw-ASR/u000037.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000038.json": "frozen-v5/support/raw-ASR/u000038.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/raw-ASR/u000039.json": "frozen-v5/support/raw-ASR/u000039.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/retained-source/MASTER_PROVENANCE_AND_QA.json": "frozen-v5/support/retained-source/MASTER_PROVENANCE_AND_QA.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/retained-source/QA_WORD_COUNT_SUPPLEMENT.json": "frozen-v5/support/retained-source/QA_WORD_COUNT_SUPPLEMENT.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/retained-source/SUCCESSOR_RIGHTS_BINDING.json": "frozen-v5/support/retained-source/SUCCESSOR_RIGHTS_BINDING.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/rights-basis/open-window-ai-rights-assessment.json": "frozen-v5/support/rights-basis/open-window-ai-rights-assessment.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/rights-basis/open-window-rights-specific-resolution.json": "frozen-v5/support/rights-basis/open-window-rights-specific-resolution.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/rights-basis/owner-producer-authorization-and-listening-policy-check.json": "frozen-v5/support/rights-basis/owner-producer-authorization-and-listening-policy-check.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/source/chapter-001.json": "frozen-v5/support/source/chapter-001.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/source/readerContent.js": "frozen-v5/support/source/readerContent.js",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/source/rights_decision.json": "frozen-v5/support/source/rights_decision.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/timing/chapter-001-full.timestamps.json": "frozen-v5/support/timing/chapter-001-full.timestamps.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/upload-plan.PROPOSED-NOT-AUTHORIZED.json": "frozen-v5/upload-plan.PROPOSED-NOT-AUTHORIZED.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/verify_proposed_packet.py": "frozen-v5/verify_proposed_packet.py",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/independent-v5-review-20261102/INDEPENDENT-V5-PACKET-REVIEW.json": "supporting-review/INDEPENDENT-V5-PACKET-REVIEW.json",
+    "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v4/residual-name-review/diagnostic-12-clips/PCM-IDENTITY-PROOF.json": "supporting-review/PCM-IDENTITY-PROOF.json"
+  },
+  "media_not_committed": [
+    "actual_lossless_master",
+    "master_mp3",
+    "listened_master_mp3",
+    "diagnostic_audio"
+  ],
+  "frozen_v5_manifest_sha256": "89b0623e0e94289b1f615b1fb6c072644799346aa47cbc7c92965c9fd41989df"
+}

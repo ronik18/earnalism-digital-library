@@ -1,0 +1,156 @@
+{
+  "schema": "earnalism.open-window-v5.independent-proposed-packet-review.v1",
+  "at_utc": "2026-11-02T06:35:10.668273+00:00",
+  "status": "PASS_FROZEN_PROPOSED_PACKET_REVIEW_ONLY_NOT_TRUST_OR_UPLOAD_AUTHORITY",
+  "manifest_sha256": "89b0623e0e94289b1f615b1fb6c072644799346aa47cbc7c92965c9fd41989df",
+  "profile_contract_sha256": "761d27fd61f95045de02bf8cd83f209c5a32f0438892bbcdb50d45ea7b654130",
+  "descriptor_canonical_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "extended_check_report_sha256": "790c6ace40a62cae444261241c02e1512a0ca181f53d09cb084c94c2ff08763a",
+  "material_findings": [],
+  "independent_checks": {
+    "provided_idempotent_verifier": "PASS_36_HASH_REFS_21_CUES_3_NEGATIVE_GUARDS",
+    "all18_final_refs_rehashed": true,
+    "canonical_current_reader_chapter_and_helper_match": true,
+    "own_fake_rehearsal": "ISOLATED_COPY_REPRODUCED_FROZEN_MODEL_BUDGET_AND_KEY_PROPOSAL_HASHES",
+    "raw_v4_projections_and_previous_group_corrections_unchanged": true,
+    "new_Whisper_changes_only12_name_substitutions": true,
+    "new_CTC12_changes_scoped_in_units_and_owner_windows": true,
+    "owner_diagnostic_and_PCM_identity_proof_hashes_verified": true
+  },
+  "actual_ASR_vs_derived": {
+    "method": "Literal lowercase alphabetic/apostrophe source tokens. Minimum Levenshtein alignment; among equal edit counts prefer most exact ordered source matches. Independent LCS previously confirmed same ordered counts. No spoken-text aliases used for these numbers.",
+    "metrics": {
+      "raw_CTC": {
+        "edits": 46,
+        "substitutions": 42,
+        "deletions": 0,
+        "insertions": 4,
+        "ordered_exact_source_matches": 1177,
+        "reference_tokens": 1219,
+        "recognized_tokens": 1223,
+        "score_0_to_10": 9.622641509433961,
+        "ordered_source_match_fraction": 0.9655455291222313
+      },
+      "raw_Whisper": {
+        "edits": 44,
+        "substitutions": 36,
+        "deletions": 5,
+        "insertions": 3,
+        "ordered_exact_source_matches": 1178,
+        "reference_tokens": 1219,
+        "recognized_tokens": 1217,
+        "score_0_to_10": 9.639048400328138,
+        "ordered_source_match_fraction": 0.9663658736669402
+      },
+      "scoped_CTC": {
+        "edits": 26,
+        "substitutions": 24,
+        "deletions": 0,
+        "insertions": 2,
+        "ordered_exact_source_matches": 1195,
+        "reference_tokens": 1219,
+        "recognized_tokens": 1221,
+        "score_0_to_10": 9.786710418375717,
+        "ordered_source_match_fraction": 0.9803117309269893
+      },
+      "scoped_Whisper": {
+        "edits": 26,
+        "substitutions": 19,
+        "deletions": 5,
+        "insertions": 2,
+        "ordered_exact_source_matches": 1195,
+        "reference_tokens": 1219,
+        "recognized_tokens": 1216,
+        "score_0_to_10": 9.786710418375717,
+        "ordered_source_match_fraction": 0.9803117309269893
+      }
+    },
+    "source_span_construction": "39 exact spans cover manuscript once; structural custody only, explicitly not independently audible coverage.",
+    "first_raw_and_derived_5": [
+      "my",
+      "aunt",
+      "will",
+      "be",
+      "down"
+    ],
+    "last_raw_and_derived_5": [
+      "short",
+      "notice",
+      "was",
+      "her",
+      "speciality"
+    ],
+    "speciality_specialty_alias_used": false,
+    "optional_aliases_not_used_for_pass": {
+      "mr": "mister",
+      "mrs": "missus",
+      "endeavoured": "endeavored",
+      "favourite": "favorite",
+      "laboured": "labored"
+    },
+    "owner_scope": "Prior six reviewed wording groups; actual old edit records differ by recognizer. Exactly12 new timed Framton windows under e359, not a global proper-name alias.",
+    "raw_recognizer_residuals": "Preserved; literal derived transcript not represented as text equality or100percent audible coverage.",
+    "new_model_inference_or_current_mix_ASR_claim": false
+  },
+  "timing_audio_quality": {
+    "actual_Reader_paragraphs": 21,
+    "raw_hard_wrap_fragments": 109,
+    "retained_measured_groups": 29,
+    "all21_starts_and_ends_exact_old_measured_boundaries": true,
+    "clock_transfer_sha256": "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0",
+    "actual_retained_clock_windows": 48,
+    "min_correlation": 0.9997625084319468,
+    "max_abs_lag_seconds": 0,
+    "sample_rate": 48000,
+    "channels": 2,
+    "frames": 23588944,
+    "duration_ms": 491436,
+    "word_highlight_or_estimated_sync_claim": false,
+    "listened_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+    "delivery_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+    "reuse_evidence_sha256": "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+    "owner_full_mix": "Nine dimensions9.8; overall9.7;confidence.97, full8:11/quietline normal+low and prior6 wordgroups explicitly confirmed. Latest e359 confirms12namewindows.",
+    "new_listening_performed_by_reviewer": false
+  },
+  "rights": {
+    "existing_accepted_source_stock_Ryan_basis_reuse": "Exact same source/manuscript/producer and INaudio_stream horizon; no worldwide/exclusiveAIoutput or new signature claim.",
+    "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice stockRyan at pinned revision; no cloning or new synthesis.",
+    "music": "Exact retained Heartwarming/Heartbreaking recordings by KevinMacLeod, CC BY4 with new recording/mix bindings and attribution in clean delivery metadata.",
+    "music_recording_hashes_independently_verified": true,
+    "new_decision_status": "PROPOSED_REVIEW_PENDING; accepted_by null; conditions_satisfied false. Current trust/adoption NOT granted.",
+    "still_needed": "Committed trusted exact new sourceQA/INstream registry binding and customer-visible credits/licence-compatible delivery verification. Historical provisional music/technical labels remain historical, not new performed-check claims."
+  },
+  "own_storage_proposal": {
+    "status": "CAPACITY_MODEL_PASS_NOT_APPROVED_NOT_ACTIVE",
+    "old_ledger_sha256": "68770ec864527cf14925e733e71ae239b166dbfe2c0fc436c9e7ec99cc037e4a",
+    "old10_ordered_attempts_and_all_counters_preserved": true,
+    "projected_cumulative_used": {
+      "download_bytes": 79148324,
+      "metadata_bytes": 35651618,
+      "requests": 260,
+      "upload_bytes": 39574162,
+      "versions": 20
+    },
+    "proposed_TOTAL_limits_NOT_APPROVED": {
+      "requests": 2000,
+      "upload_bytes": 41943040,
+      "download_bytes": 83886080,
+      "versions": 176,
+      "metadata_bytes": 46137344
+    },
+    "additional_own_keys_proposed_only": 4,
+    "ttl_seconds": 7200,
+    "no_Selfish_key_budget_or_authority_borrowed": true,
+    "retention_note": "Fake rehearsal uses generic365 default and proves arithmetic only. Future actual dispatcher must explicitly bind observed/own accepted retention baseline (existing stores30days), before any create/upload; no generic-default assumption or extra cap/retry authorized."
+  },
+  "remaining_required_gates": [
+    "Actual narrow title-specific source profile/native dispatch + trusted exact INrights/adoption via clean IntegrationLane and CI/review. Future profile computes literal ASRscore and ordered source match fractions, never uses structural39span coverage as audio1.0.",
+    "Own exact carried-cap/fourkey owner authority after final preparation; no existing Selfish allowance applies.",
+    "Actual destination privacy/versioning/retention/scopedkey/expiry, immutable upload/fullreads/DR/finalmanifest and actual packageversion.",
+    "Original120 member-budget reconciliation, actual deployed endpoint/player/accounting, protected access/credits and customer-visible release verification."
+  ],
+  "canonical_adoption_or_profile_edits": 0,
+  "provider_key_or_cap_or_cache_operations": 0,
+  "new_audio_synthesis_or_allocation": 0,
+  "next_exact_prompt": "Use this frozen proposed e412 packet and independent raw-versus-scoped metrics to implement the one narrow OpenWindow SOURCE_QA/INrights registration through IntegrationLane, preserving existing policies and all downstream gates. Do not upload or create keys from this proposal."
+}

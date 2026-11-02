@@ -1,0 +1,374 @@
+{
+  "unit": "u000001",
+  "master_interval_seconds": [
+    0.0,
+    9.84
+  ],
+  "expected_text": "“My aunt will be down presently, Mr. Nuttel,” said a very self-possessed young lady of fifteen; “in the meantime you must try and put up with me.”",
+  "ctc_transcript": "MY AUNT WILL BE DOWN PRESENTLY MISTER NUTTLE SAID A VERY SELF POSSESSED YOUNG LADY OF FIFTEEN IN THE MEANTIME YOU MUST TRY AND PUT UP WITH ME",
+  "ctc_words": [
+    {
+      "word": "MY",
+      "start": 0.14028513238289206,
+      "end": 0.2805702647657841,
+      "mean_character_frame_posterior": 0.9994226694107056
+    },
+    {
+      "word": "AUNT",
+      "start": 0.42085539714867615,
+      "end": 0.5811812627291243,
+      "mean_character_frame_posterior": 0.9191744476556778
+    },
+    {
+      "word": "WILL",
+      "start": 0.6413034623217923,
+      "end": 0.8016293279022404,
+      "mean_character_frame_posterior": 0.9998837411403656
+    },
+    {
+      "word": "BE",
+      "start": 0.8417107942973523,
+      "end": 0.9018329938900204,
+      "mean_character_frame_posterior": 0.9999905228614807
+    },
+    {
+      "word": "DOWN",
+      "start": 0.9819959266802445,
+      "end": 1.2625661914460284,
+      "mean_character_frame_posterior": 0.9995748847723007
+    },
+    {
+      "word": "PRESENTLY",
+      "start": 1.4429327902240325,
+      "end": 1.943951120162933,
+      "mean_character_frame_posterior": 0.9999545613924662
+    },
+    {
+      "word": "MISTER",
+      "start": 2.0641955193482686,
+      "end": 2.344765784114053,
+      "mean_character_frame_posterior": 0.9996856649716696
+    },
+    {
+      "word": "NUTTLE",
+      "start": 2.404887983706721,
+      "end": 2.745580448065173,
+      "mean_character_frame_posterior": 0.8990971446037292
+    },
+    {
+      "word": "SAID",
+      "start": 3.2265580448065174,
+      "end": 3.3868839103869655,
+      "mean_character_frame_posterior": 0.9952433109283447
+    },
+    {
+      "word": "A",
+      "start": 3.4670468431771893,
+      "end": 3.4870875763747455,
+      "mean_character_frame_posterior": 0.9996315240859985
+    },
+    {
+      "word": "VERY",
+      "start": 3.6273727087576373,
+      "end": 3.927983706720978,
+      "mean_character_frame_posterior": 0.9990397542715073
+    },
+    {
+      "word": "SELF",
+      "start": 4.0883095723014256,
+      "end": 4.288716904276987,
+      "mean_character_frame_posterior": 0.876760721206665
+    },
+    {
+      "word": "POSSESSED",
+      "start": 4.388920570264766,
+      "end": 4.789735234215886,
+      "mean_character_frame_posterior": 0.9515982601377699
+    },
+    {
+      "word": "YOUNG",
+      "start": 4.8698981670061094,
+      "end": 5.050264765784114,
+      "mean_character_frame_posterior": 0.9999873399734497
+    },
+    {
+      "word": "LADY",
+      "start": 5.130427698574338,
+      "end": 5.390957230142567,
+      "mean_character_frame_posterior": 0.9999916255474091
+    },
+    {
+      "word": "OF",
+      "start": 5.471120162932791,
+      "end": 5.5112016293279025,
+      "mean_character_frame_posterior": 0.9998566210269928
+    },
+    {
+      "word": "FIFTEEN",
+      "start": 5.591364562118127,
+      "end": 6.092382892057027,
+      "mean_character_frame_posterior": 0.9945968389511108
+    },
+    {
+      "word": "IN",
+      "start": 6.693604887983707,
+      "end": 6.733686354378818,
+      "mean_character_frame_posterior": 0.9996730089187622
+    },
+    {
+      "word": "THE",
+      "start": 6.793808553971488,
+      "end": 6.853930753564155,
+      "mean_character_frame_posterior": 0.9998267690340678
+    },
+    {
+      "word": "MEANTIME",
+      "start": 6.9140529531568236,
+      "end": 7.455152749490835,
+      "mean_character_frame_posterior": 0.9841525852680206
+    },
+    {
+      "word": "YOU",
+      "start": 7.855967413441956,
+      "end": 7.956171079429735,
+      "mean_character_frame_posterior": 0.9824433128039042
+    },
+    {
+      "word": "MUST",
+      "start": 8.096456211812628,
+      "end": 8.316904276985744,
+      "mean_character_frame_posterior": 0.999956876039505
+    },
+    {
+      "word": "TRY",
+      "start": 8.43714867617108,
+      "end": 8.73775967413442,
+      "mean_character_frame_posterior": 0.9715422590573629
+    },
+    {
+      "word": "AND",
+      "start": 8.837963340122199,
+      "end": 8.898085539714868,
+      "mean_character_frame_posterior": 0.8352252840995789
+    },
+    {
+      "word": "PUT",
+      "start": 8.998289205702648,
+      "end": 9.198696537678208,
+      "mean_character_frame_posterior": 0.9993405143419901
+    },
+    {
+      "word": "UP",
+      "start": 9.298900203665989,
+      "end": 9.359022403258654,
+      "mean_character_frame_posterior": 0.9999570250511169
+    },
+    {
+      "word": "WITH",
+      "start": 9.439185336048881,
+      "end": 9.53938900203666,
+      "mean_character_frame_posterior": 0.9731900542974472
+    },
+    {
+      "word": "ME",
+      "start": 9.63959266802444,
+      "end": 9.739796334012219,
+      "mean_character_frame_posterior": 0.9999775290489197
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "mr",
+        "nuttel"
+      ],
+      "recognized": [
+        "mister",
+        "nuttle"
+      ],
+      "reference_word_span": [
+        6,
+        8
+      ],
+      "recognized_word_span": [
+        6,
+        8
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " My",
+      "start": 0.0,
+      "end": 0.36,
+      "probability": 0.21031554043293
+    },
+    {
+      "word": " aunt",
+      "start": 0.36,
+      "end": 0.62,
+      "probability": 0.9787617921829224
+    },
+    {
+      "word": " will",
+      "start": 0.62,
+      "end": 0.78,
+      "probability": 0.9911109209060669
+    },
+    {
+      "word": " be",
+      "start": 0.78,
+      "end": 1.0,
+      "probability": 0.9980929493904114
+    },
+    {
+      "word": " down",
+      "start": 1.0,
+      "end": 1.3,
+      "probability": 0.9588620066642761
+    },
+    {
+      "word": " presently,",
+      "start": 1.3,
+      "end": 1.92,
+      "probability": 0.9718043208122253
+    },
+    {
+      "word": " Mr.",
+      "start": 2.1,
+      "end": 2.34,
+      "probability": 0.9306709170341492
+    },
+    {
+      "word": " Nuddle,\"",
+      "start": 2.68,
+      "end": 3.32,
+      "probability": 0.46666212876637775
+    },
+    {
+      "word": " said",
+      "start": 3.32,
+      "end": 3.36,
+      "probability": 0.988807737827301
+    },
+    {
+      "word": " a",
+      "start": 3.36,
+      "end": 3.6,
+      "probability": 0.9958374500274658
+    },
+    {
+      "word": " very",
+      "start": 3.6,
+      "end": 3.92,
+      "probability": 0.9889744520187378
+    },
+    {
+      "word": " self",
+      "start": 3.92,
+      "end": 4.4,
+      "probability": 0.9984160661697388
+    },
+    {
+      "word": "-possessed",
+      "start": 4.4,
+      "end": 4.74,
+      "probability": 0.984888345003128
+    },
+    {
+      "word": " young",
+      "start": 4.74,
+      "end": 4.98,
+      "probability": 0.9934476017951965
+    },
+    {
+      "word": " lady",
+      "start": 4.98,
+      "end": 5.38,
+      "probability": 0.9903781414031982
+    },
+    {
+      "word": " of",
+      "start": 5.38,
+      "end": 5.58,
+      "probability": 0.9903815388679504
+    },
+    {
+      "word": " 15.",
+      "start": 5.58,
+      "end": 6.14,
+      "probability": 0.7336731553077698
+    },
+    {
+      "word": " In",
+      "start": 6.7,
+      "end": 6.72,
+      "probability": 0.5221786499023438
+    },
+    {
+      "word": " the",
+      "start": 6.72,
+      "end": 6.88,
+      "probability": 0.99898761510849
+    },
+    {
+      "word": " meantime,",
+      "start": 6.88,
+      "end": 7.36,
+      "probability": 0.9557203650474548
+    },
+    {
+      "word": " you",
+      "start": 7.9,
+      "end": 7.96,
+      "probability": 0.9882606267929077
+    },
+    {
+      "word": " must",
+      "start": 7.96,
+      "end": 8.3,
+      "probability": 0.9994670748710632
+    },
+    {
+      "word": " try",
+      "start": 8.3,
+      "end": 8.82,
+      "probability": 0.9973353743553162
+    },
+    {
+      "word": " and",
+      "start": 8.82,
+      "end": 9.02,
+      "probability": 0.977978527545929
+    },
+    {
+      "word": " put",
+      "start": 9.02,
+      "end": 9.16,
+      "probability": 0.9943670630455017
+    },
+    {
+      "word": " up",
+      "start": 9.16,
+      "end": 9.44,
+      "probability": 0.9980819225311279
+    },
+    {
+      "word": " with",
+      "start": 9.44,
+      "end": 9.64,
+      "probability": 0.998691737651825
+    },
+    {
+      "word": " me.",
+      "start": 9.64,
+      "end": 9.96,
+      "probability": 0.9992905855178833
+    }
+  ],
+  "whisper_transcript_in_unit": "My aunt will be down presently, Mr. Nuddle,\" said a very self -possessed young lady of 15. In the meantime, you must try and put up with me.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.3704185409999923
+}

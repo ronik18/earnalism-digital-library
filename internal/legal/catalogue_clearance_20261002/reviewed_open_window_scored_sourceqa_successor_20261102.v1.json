@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.reviewed_open_window_scored_registry_successor.v1",
+  "scope": "EXACT_NEW_RETAINED_SCORED_IN_AUDIO_SOURCE_QA_REGISTRATION_ONLY",
+  "predecessor": {
+    "git_commit": "15b157e5555b67ede6fd649fb9057d314c36bf3c",
+    "reviewed_authority_path": "internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json",
+    "reviewed_authority_sha256": "6b458f1ff94a4058a2d59aeff331a8af6a9be09b9b8bafd674a7feeee1a06ce1",
+    "registry_sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561"
+  },
+  "registry_path": "backend/data/rights_decision_registry.json",
+  "reviewed_registry_sha256": "d2a2baafc761ee5eafe89b3fd288da8dca71662dc8cf7aa047895d96fa539288",
+  "added_accepted_records": {
+    "india-20261102-the-open-window-scored-retained-audio": "e49ebb5c843d8f5321d2034b93dc72769d2bcd03d13d8eef94d0ca0b5caf3dec"
+  },
+  "added_audio_package_bindings": {
+    "the-open-window": {
+      "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219": {
+        "basis": "Exact independently reviewed retained Ryan scored source-QA component rights only; predecessor public release, Reader and source remain unchanged. Storage/runtime/publication pending.",
+        "decision_id": "india-20261102-the-open-window-scored-retained-audio",
+        "record_sha256": "e49ebb5c843d8f5321d2034b93dc72769d2bcd03d13d8eef94d0ca0b5caf3dec",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    }
+  },
+  "source_evidence_sha256": {
+    "internal/audiobook_lab/release_gate/open_window_scored_adoptions.json": "73d607c0dc47574ae10357f5160e2736310502439939364b6b775cc052b6fbba",
+    "internal/audiobook_lab/release_gate/open-window-scored-20261102/source-qa-adoption.json": "43ebbaf75c839596f806d15e62f82550e9353251fc966623255c076962ed2710",
+    "internal/audiobook_lab/release_gate/open-window-scored-20261102/audio-use-decision.json": "e628d28a2a0f61a46509529abefbfda007bcab13e76706338530c20fbe7fbdb5",
+    "internal/audiobook_lab/release_gate/open-window-scored-20261102/evidence-index.json": "2e41694b08e26769f26a400a2896ab9160b9f5ac6f9ee03da6ab341df3f9d160"
+  },
+  "unchanged": [
+    "all predecessor accepted records and revocations",
+    "all previous audio package bindings",
+    "all52 reviewed title/component records",
+    "controlled books/Reader/covers/source",
+    "active public package pointers",
+    "all prior review receipts and historical pin chain"
+  ],
+  "publication_storage_or_runtime_approval": false,
+  "qualification_note": "Future source integration proposal only until actual Integration Lane applies this exact patch and reviews CI; no private test is production approval."
+}

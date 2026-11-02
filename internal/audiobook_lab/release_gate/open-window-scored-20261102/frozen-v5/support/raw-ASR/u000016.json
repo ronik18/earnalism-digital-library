@@ -1,0 +1,582 @@
+{
+  "unit": "u000016",
+  "master_interval_seconds": [
+    167.27708333333334,
+    189.99708333333334
+  ],
+  "expected_text": "It had been that dreadful wet summer, you know, and places that were safe in other years gave way suddenly without warning. Their bodies were never recovered. That was the dreadful part of it.” Here the child’s voice lost its self-possessed note and became falteringly human.",
+  "ctc_transcript": "IT HAD BEEN THAT DREADFUL WET SUMMER YOU KNOW AND PLACES THAT WERE SAFE IN OTHER YEARS GAVE WAY SUDDENLY WITHOUT WARNING THEIR BODIES WERE NEVER RECOVERED THAT WAS THE DREADFUL PART OF IT HERE THE CHILD'S VOICE LOST ITS SELF POSSESSED NOTE AND BECAME FALTERINGLY HUMAN",
+  "ctc_words": [
+    {
+      "word": "IT",
+      "start": 167.43722430249633,
+      "end": 167.47725954478707,
+      "mean_character_frame_posterior": 0.9998950958251953
+    },
+    {
+      "word": "HAD",
+      "start": 167.5573300293686,
+      "end": 167.63740051395007,
+      "mean_character_frame_posterior": 0.9997816284497579
+    },
+    {
+      "word": "BEEN",
+      "start": 167.73748861967695,
+      "end": 167.95768245227606,
+      "mean_character_frame_posterior": 0.9653283953666687
+    },
+    {
+      "word": "THAT",
+      "start": 168.25794676945668,
+      "end": 168.41808773861968,
+      "mean_character_frame_posterior": 0.9988649934530258
+    },
+    {
+      "word": "DREADFUL",
+      "start": 168.59824632892804,
+      "end": 169.1787573421439,
+      "mean_character_frame_posterior": 0.9734275937080383
+    },
+    {
+      "word": "WET",
+      "start": 169.29886306901616,
+      "end": 169.4990392804699,
+      "mean_character_frame_posterior": 0.8671040733655294
+    },
+    {
+      "word": "SUMMER",
+      "start": 169.63916262848753,
+      "end": 169.93942694566815,
+      "mean_character_frame_posterior": 0.9979556202888489
+    },
+    {
+      "word": "YOU",
+      "start": 170.039515051395,
+      "end": 170.1195855359765,
+      "mean_character_frame_posterior": 0.9999767144521078
+    },
+    {
+      "word": "KNOW",
+      "start": 170.199656020558,
+      "end": 170.41984985315713,
+      "mean_character_frame_posterior": 0.9946719408035278
+    },
+    {
+      "word": "AND",
+      "start": 171.00036086637297,
+      "end": 171.08043135095448,
+      "mean_character_frame_posterior": 0.9920803507169088
+    },
+    {
+      "word": "PLACES",
+      "start": 171.20053707782674,
+      "end": 171.62090712187958,
+      "mean_character_frame_posterior": 0.9998950362205505
+    },
+    {
+      "word": "THAT",
+      "start": 171.68095998531572,
+      "end": 171.80106571218795,
+      "mean_character_frame_posterior": 0.9927049875259399
+    },
+    {
+      "word": "WERE",
+      "start": 171.84110095447872,
+      "end": 171.96120668135094,
+      "mean_character_frame_posterior": 0.9826778918504715
+    },
+    {
+      "word": "SAFE",
+      "start": 172.0813124082232,
+      "end": 172.3215238619677,
+      "mean_character_frame_posterior": 0.9999929666519165
+    },
+    {
+      "word": "IN",
+      "start": 172.42161196769456,
+      "end": 172.46164720998533,
+      "mean_character_frame_posterior": 0.9994339346885681
+    },
+    {
+      "word": "OTHER",
+      "start": 172.66182342143907,
+      "end": 172.82196439060206,
+      "mean_character_frame_posterior": 0.9931163787841797
+    },
+    {
+      "word": "YEARS",
+      "start": 172.94207011747432,
+      "end": 173.30238729809105,
+      "mean_character_frame_posterior": 0.9994485020637512
+    },
+    {
+      "word": "GAVE",
+      "start": 173.78281020558003,
+      "end": 174.08307452276065,
+      "mean_character_frame_posterior": 0.9999678432941437
+    },
+    {
+      "word": "WAY",
+      "start": 174.24321549192365,
+      "end": 174.46340932452276,
+      "mean_character_frame_posterior": 0.999987522761027
+    },
+    {
+      "word": "SUDDENLY",
+      "start": 174.82372650513952,
+      "end": 175.34418465491925,
+      "mean_character_frame_posterior": 0.9603039026260376
+    },
+    {
+      "word": "WITHOUT",
+      "start": 175.70450183553598,
+      "end": 176.10485425844348,
+      "mean_character_frame_posterior": 0.9997707775660923
+    },
+    {
+      "word": "WARNING",
+      "start": 176.2249599853157,
+      "end": 176.68536527165932,
+      "mean_character_frame_posterior": 0.9699552570070539
+    },
+    {
+      "word": "THEIR",
+      "start": 177.14577055800294,
+      "end": 177.30591152716593,
+      "mean_character_frame_posterior": 0.999736487865448
+    },
+    {
+      "word": "BODIES",
+      "start": 177.36596439060207,
+      "end": 177.76631681350955,
+      "mean_character_frame_posterior": 0.9290383954842886
+    },
+    {
+      "word": "WERE",
+      "start": 177.9464754038179,
+      "end": 178.08659875183554,
+      "mean_character_frame_posterior": 0.9993775933980942
+    },
+    {
+      "word": "NEVER",
+      "start": 178.24673972099853,
+      "end": 178.56702165932452,
+      "mean_character_frame_posterior": 0.9976466298103333
+    },
+    {
+      "word": "RECOVERED",
+      "start": 178.70714500734215,
+      "end": 179.34770888399413,
+      "mean_character_frame_posterior": 0.9536252617835999
+    },
+    {
+      "word": "THAT",
+      "start": 179.96825513950074,
+      "end": 180.20846659324522,
+      "mean_character_frame_posterior": 0.9326339066028595
+    },
+    {
+      "word": "WAS",
+      "start": 180.32857232011747,
+      "end": 180.44867804698973,
+      "mean_character_frame_posterior": 0.9626192251841227
+    },
+    {
+      "word": "THE",
+      "start": 180.5487661527166,
+      "end": 180.64885425844346,
+      "mean_character_frame_posterior": 0.9986682732899984
+    },
+    {
+      "word": "DREADFUL",
+      "start": 180.74894236417035,
+      "end": 181.20934765051396,
+      "mean_character_frame_posterior": 0.9900858253240585
+    },
+    {
+      "word": "PART",
+      "start": 181.38950624082233,
+      "end": 181.66975293685758,
+      "mean_character_frame_posterior": 0.9998310208320618
+    },
+    {
+      "word": "OF",
+      "start": 181.74982342143906,
+      "end": 181.7898586637298,
+      "mean_character_frame_posterior": 0.9997971653938293
+    },
+    {
+      "word": "IT",
+      "start": 181.97001725403817,
+      "end": 182.0300701174743,
+      "mean_character_frame_posterior": 0.9999062418937683
+    },
+    {
+      "word": "HERE",
+      "start": 182.95088069016154,
+      "end": 183.23112738619676,
+      "mean_character_frame_posterior": 0.9999355673789978
+    },
+    {
+      "word": "THE",
+      "start": 183.55140932452275,
+      "end": 183.65149743024963,
+      "mean_character_frame_posterior": 0.9991682569185892
+    },
+    {
+      "word": "CHILD'S",
+      "start": 183.75158553597652,
+      "end": 184.19197320117473,
+      "mean_character_frame_posterior": 0.9796947922025409
+    },
+    {
+      "word": "VOICE",
+      "start": 184.29206130690162,
+      "end": 184.63236086637298,
+      "mean_character_frame_posterior": 0.9999309659004212
+    },
+    {
+      "word": "LOST",
+      "start": 184.81251945668134,
+      "end": 185.11278377386196,
+      "mean_character_frame_posterior": 0.9999904930591583
+    },
+    {
+      "word": "ITS",
+      "start": 185.21287187958885,
+      "end": 185.31295998531573,
+      "mean_character_frame_posterior": 0.9882965087890625
+    },
+    {
+      "word": "SELF",
+      "start": 185.37301284875184,
+      "end": 185.61322430249635,
+      "mean_character_frame_posterior": 0.7721246182918549
+    },
+    {
+      "word": "POSSESSED",
+      "start": 185.7133124082232,
+      "end": 186.15370007342145,
+      "mean_character_frame_posterior": 0.9998876518673367
+    },
+    {
+      "word": "NOTE",
+      "start": 186.21375293685756,
+      "end": 186.45396439060207,
+      "mean_character_frame_posterior": 0.9953898191452026
+    },
+    {
+      "word": "AND",
+      "start": 186.9744225403818,
+      "end": 187.07451064610868,
+      "mean_character_frame_posterior": 0.9998973806699117
+    },
+    {
+      "word": "BECAME",
+      "start": 187.15458113069016,
+      "end": 187.61498641703378,
+      "mean_character_frame_posterior": 0.9529776672522227
+    },
+    {
+      "word": "FALTERINGLY",
+      "start": 188.0753917033774,
+      "end": 188.77600844346549,
+      "mean_character_frame_posterior": 0.9971081722866405
+    },
+    {
+      "word": "HUMAN",
+      "start": 188.87609654919237,
+      "end": 189.25643135095447,
+      "mean_character_frame_posterior": 0.9993429541587829
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " It",
+      "start": 167.34,
+      "end": 167.48,
+      "probability": 0.5406316518783569
+    },
+    {
+      "word": " had",
+      "start": 167.48,
+      "end": 167.7,
+      "probability": 0.9908746480941772
+    },
+    {
+      "word": " been",
+      "start": 167.7,
+      "end": 168.24,
+      "probability": 0.998591959476471
+    },
+    {
+      "word": " that",
+      "start": 168.24,
+      "end": 168.56,
+      "probability": 0.9793316125869751
+    },
+    {
+      "word": " dreadful",
+      "start": 168.56,
+      "end": 169.18,
+      "probability": 0.5711863040924072
+    },
+    {
+      "word": " wet",
+      "start": 169.18,
+      "end": 169.5,
+      "probability": 0.7294230461120605
+    },
+    {
+      "word": " summer,",
+      "start": 169.5,
+      "end": 169.94,
+      "probability": 0.9932734966278076
+    },
+    {
+      "word": " you",
+      "start": 170.12,
+      "end": 170.12,
+      "probability": 0.9673543572425842
+    },
+    {
+      "word": " know,",
+      "start": 170.12,
+      "end": 170.58,
+      "probability": 0.9989226460456848
+    },
+    {
+      "word": " and",
+      "start": 170.86,
+      "end": 171.14,
+      "probability": 0.9606746435165405
+    },
+    {
+      "word": " places",
+      "start": 171.14,
+      "end": 171.6,
+      "probability": 0.9949139356613159
+    },
+    {
+      "word": " that",
+      "start": 171.6,
+      "end": 171.84,
+      "probability": 0.9942110776901245
+    },
+    {
+      "word": " were",
+      "start": 171.84,
+      "end": 172.08,
+      "probability": 0.997531533241272
+    },
+    {
+      "word": " safe",
+      "start": 172.08,
+      "end": 172.32,
+      "probability": 0.9991427659988403
+    },
+    {
+      "word": " in",
+      "start": 172.32,
+      "end": 172.6,
+      "probability": 0.9914137125015259
+    },
+    {
+      "word": " other",
+      "start": 172.6,
+      "end": 172.78,
+      "probability": 0.9922667145729065
+    },
+    {
+      "word": " years",
+      "start": 172.78,
+      "end": 173.54,
+      "probability": 0.9988847374916077
+    },
+    {
+      "word": " gave",
+      "start": 173.54,
+      "end": 174.08,
+      "probability": 0.9109804034233093
+    },
+    {
+      "word": " way",
+      "start": 174.08,
+      "end": 174.66,
+      "probability": 0.9682877659797668
+    },
+    {
+      "word": " suddenly.",
+      "start": 174.66,
+      "end": 175.44,
+      "probability": 0.9559633731842041
+    },
+    {
+      "word": " Without",
+      "start": 175.72,
+      "end": 176.06,
+      "probability": 0.995076596736908
+    },
+    {
+      "word": " warning,",
+      "start": 176.06,
+      "end": 176.68,
+      "probability": 0.9972405433654785
+    },
+    {
+      "word": " their",
+      "start": 177.08,
+      "end": 177.28,
+      "probability": 0.9945845007896423
+    },
+    {
+      "word": " bodies",
+      "start": 177.28,
+      "end": 177.8,
+      "probability": 0.9976916313171387
+    },
+    {
+      "word": " were",
+      "start": 177.8,
+      "end": 178.08,
+      "probability": 0.9978867173194885
+    },
+    {
+      "word": " never",
+      "start": 178.08,
+      "end": 178.56,
+      "probability": 0.9988685846328735
+    },
+    {
+      "word": " recovered.",
+      "start": 178.56,
+      "end": 179.26,
+      "probability": 0.9992032647132874
+    },
+    {
+      "word": " That",
+      "start": 179.88,
+      "end": 180.24,
+      "probability": 0.9942408800125122
+    },
+    {
+      "word": " was",
+      "start": 180.24,
+      "end": 180.48,
+      "probability": 0.9975663423538208
+    },
+    {
+      "word": " the",
+      "start": 180.48,
+      "end": 180.72,
+      "probability": 0.9956570863723755
+    },
+    {
+      "word": " dreadful",
+      "start": 180.72,
+      "end": 181.18,
+      "probability": 0.8820400834083557
+    },
+    {
+      "word": " part",
+      "start": 181.18,
+      "end": 181.68,
+      "probability": 0.999286949634552
+    },
+    {
+      "word": " of",
+      "start": 181.68,
+      "end": 181.92,
+      "probability": 0.9987316727638245
+    },
+    {
+      "word": " it.",
+      "start": 181.92,
+      "end": 182.3,
+      "probability": 0.9994099140167236
+    },
+    {
+      "word": " Here,",
+      "start": 183.0,
+      "end": 183.3,
+      "probability": 0.9905909895896912
+    },
+    {
+      "word": " the",
+      "start": 183.58,
+      "end": 183.72,
+      "probability": 0.9668265581130981
+    },
+    {
+      "word": " child's",
+      "start": 183.72,
+      "end": 184.3,
+      "probability": 0.9895680546760559
+    },
+    {
+      "word": " voice",
+      "start": 184.3,
+      "end": 184.62,
+      "probability": 0.999388575553894
+    },
+    {
+      "word": " lost",
+      "start": 184.62,
+      "end": 185.08,
+      "probability": 0.9901116490364075
+    },
+    {
+      "word": " its",
+      "start": 185.08,
+      "end": 185.34,
+      "probability": 0.8975638747215271
+    },
+    {
+      "word": " self",
+      "start": 185.34,
+      "end": 185.76,
+      "probability": 0.9988034963607788
+    },
+    {
+      "word": "-possessed",
+      "start": 185.76,
+      "end": 186.04,
+      "probability": 0.9740134179592133
+    },
+    {
+      "word": " note",
+      "start": 186.04,
+      "end": 186.5,
+      "probability": 0.9969887137413025
+    },
+    {
+      "word": " and",
+      "start": 186.5,
+      "end": 187.08,
+      "probability": 0.8436787724494934
+    },
+    {
+      "word": " became",
+      "start": 187.08,
+      "end": 187.76,
+      "probability": 0.9926948547363281
+    },
+    {
+      "word": " falteringly",
+      "start": 187.76,
+      "end": 188.76,
+      "probability": 0.8533670504887899
+    },
+    {
+      "word": " human.",
+      "start": 188.76,
+      "end": 189.3,
+      "probability": 0.9959871172904968
+    }
+  ],
+  "whisper_transcript_in_unit": "It had been that dreadful wet summer, you know, and places that were safe in other years gave way suddenly. Without warning, their bodies were never recovered. That was the dreadful part of it. Here, the child's voice lost its self -possessed note and became falteringly human.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.868075165999997
+}

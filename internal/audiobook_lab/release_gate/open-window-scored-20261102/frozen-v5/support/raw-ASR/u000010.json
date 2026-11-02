@@ -1,0 +1,456 @@
+{
+  "unit": "u000010",
+  "master_interval_seconds": [
+    96.23245833333333,
+    108.23245833333333
+  ],
+  "expected_text": "“Only her name and address,” admitted the caller. He was wondering whether Mrs. Sappleton was in the married or widowed state. An undefinable something about the room seemed to suggest masculine habitation.",
+  "ctc_transcript": "ONLY HER NAME AN ADDRESS ADMITTED THE CALLER HE WAS WONDERING WHETHER MISSUS SAPLETON WAS IN THE MERRIED OR WIDOWED STATE AN UNDEFINABLE SOMETHING ABOUT THE ROOM SEEMED TO SUGGEST MASCULINE HABITATION",
+  "ctc_words": [
+    {
+      "word": "ONLY",
+      "start": 96.43279222314969,
+      "end": 96.59305933500278,
+      "mean_character_frame_posterior": 0.9999911487102509
+    },
+    {
+      "word": "HER",
+      "start": 96.65315950194768,
+      "end": 96.75332644685587,
+      "mean_character_frame_posterior": 0.9998258550961813
+    },
+    {
+      "word": "NAME",
+      "start": 96.79339322481914,
+      "end": 96.95366033667223,
+      "mean_character_frame_posterior": 0.9996922761201859
+    },
+    {
+      "word": "AN",
+      "start": 97.01376050361714,
+      "end": 97.05382728158041,
+      "mean_character_frame_posterior": 0.9172339737415314
+    },
+    {
+      "word": "ADDRESS",
+      "start": 97.17402761547022,
+      "end": 97.57469539510294,
+      "mean_character_frame_posterior": 0.979865048612867
+    },
+    {
+      "word": "ADMITTED",
+      "start": 98.13563028658875,
+      "end": 98.4361311213133,
+      "mean_character_frame_posterior": 0.9929074645042419
+    },
+    {
+      "word": "THE",
+      "start": 98.4962312882582,
+      "end": 98.55633145520311,
+      "mean_character_frame_posterior": 0.9999246199925741
+    },
+    {
+      "word": "CALLER",
+      "start": 98.59639823316638,
+      "end": 98.91693245687256,
+      "mean_character_frame_posterior": 0.9983390867710114
+    },
+    {
+      "word": "HE",
+      "start": 99.51793412632163,
+      "end": 99.57803429326655,
+      "mean_character_frame_posterior": 0.9999808669090271
+    },
+    {
+      "word": "WAS",
+      "start": 99.63813446021146,
+      "end": 99.718268016138,
+      "mean_character_frame_posterior": 0.8333065708478292
+    },
+    {
+      "word": "WONDERING",
+      "start": 99.81843496104618,
+      "end": 100.159002573734,
+      "mean_character_frame_posterior": 0.9999085730976529
+    },
+    {
+      "word": "WHETHER",
+      "start": 100.19906935169726,
+      "end": 100.39940324151362,
+      "mean_character_frame_posterior": 0.9955986397606986
+    },
+    {
+      "word": "MISSUS",
+      "start": 100.47953679744018,
+      "end": 100.7199374652198,
+      "mean_character_frame_posterior": 0.9996471504370371
+    },
+    {
+      "word": "SAPLETON",
+      "start": 100.7800376321647,
+      "end": 101.28087235670561,
+      "mean_character_frame_posterior": 0.9472392424941063
+    },
+    {
+      "word": "WAS",
+      "start": 101.34097252365052,
+      "end": 101.4411394685587,
+      "mean_character_frame_posterior": 0.999997615814209
+    },
+    {
+      "word": "IN",
+      "start": 101.54130641346688,
+      "end": 101.58137319143016,
+      "mean_character_frame_posterior": 0.9999366402626038
+    },
+    {
+      "word": "THE",
+      "start": 101.64147335837507,
+      "end": 101.70157352531997,
+      "mean_character_frame_posterior": 0.9989723960558573
+    },
+    {
+      "word": "MERRIED",
+      "start": 101.74164030328325,
+      "end": 102.14230808291596,
+      "mean_character_frame_posterior": 0.7917470761707851
+    },
+    {
+      "word": "OR",
+      "start": 102.40274213967723,
+      "end": 102.46284230662214,
+      "mean_character_frame_posterior": 0.9999356269836426
+    },
+    {
+      "word": "WIDOWED",
+      "start": 102.56300925153032,
+      "end": 102.86351008625486,
+      "mean_character_frame_posterior": 0.9951321056910923
+    },
+    {
+      "word": "STATE",
+      "start": 102.92361025319977,
+      "end": 103.22411108792431,
+      "mean_character_frame_posterior": 0.8891705393791198
+    },
+    {
+      "word": "AN",
+      "start": 103.96534648024485,
+      "end": 104.00541325820812,
+      "mean_character_frame_posterior": 0.9997657537460327
+    },
+    {
+      "word": "UNDEFINABLE",
+      "start": 104.12561359209793,
+      "end": 104.72661526154701,
+      "mean_character_frame_posterior": 0.9998442476445978
+    },
+    {
+      "word": "SOMETHING",
+      "start": 104.80674881747356,
+      "end": 105.12728304117974,
+      "mean_character_frame_posterior": 0.9863317741288079
+    },
+    {
+      "word": "ABOUT",
+      "start": 105.18738320812464,
+      "end": 105.36768370895938,
+      "mean_character_frame_posterior": 0.9999553442001343
+    },
+    {
+      "word": "THE",
+      "start": 105.40775048692264,
+      "end": 105.46785065386754,
+      "mean_character_frame_posterior": 0.999897837638855
+    },
+    {
+      "word": "ROOM",
+      "start": 105.52795082081246,
+      "end": 105.76835148859209,
+      "mean_character_frame_posterior": 0.9953533113002777
+    },
+    {
+      "word": "SEEMED",
+      "start": 105.92861860044518,
+      "end": 106.14898587924317,
+      "mean_character_frame_posterior": 0.9999421536922455
+    },
+    {
+      "word": "TO",
+      "start": 106.18905265720645,
+      "end": 106.24915282415135,
+      "mean_character_frame_posterior": 0.9999912977218628
+    },
+    {
+      "word": "SUGGEST",
+      "start": 106.30925299109626,
+      "end": 106.70992077072898,
+      "mean_character_frame_posterior": 0.9514501179967608
+    },
+    {
+      "word": "MASCULINE",
+      "start": 106.85015449360044,
+      "end": 107.41108938508624,
+      "mean_character_frame_posterior": 0.9977759586440192
+    },
+    {
+      "word": "HABITATION",
+      "start": 107.45115616304952,
+      "end": 108.07219122148024,
+      "mean_character_frame_posterior": 0.9675407826900482
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "and"
+      ],
+      "recognized": [
+        "an"
+      ],
+      "reference_word_span": [
+        3,
+        4
+      ],
+      "recognized_word_span": [
+        3,
+        4
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "mrs",
+        "sappleton"
+      ],
+      "recognized": [
+        "missus",
+        "sapleton"
+      ],
+      "reference_word_span": [
+        12,
+        14
+      ],
+      "recognized_word_span": [
+        12,
+        14
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "married"
+      ],
+      "recognized": [
+        "merried"
+      ],
+      "reference_word_span": [
+        17,
+        18
+      ],
+      "recognized_word_span": [
+        17,
+        18
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Only",
+      "start": 96.36,
+      "end": 96.58,
+      "probability": 0.847829282283783
+    },
+    {
+      "word": " her",
+      "start": 96.58,
+      "end": 96.78,
+      "probability": 0.9939476251602173
+    },
+    {
+      "word": " name",
+      "start": 96.78,
+      "end": 96.96,
+      "probability": 0.9988077878952026
+    },
+    {
+      "word": " and",
+      "start": 96.96,
+      "end": 97.12,
+      "probability": 0.9658525586128235
+    },
+    {
+      "word": " address,",
+      "start": 97.12,
+      "end": 97.7,
+      "probability": 0.9982238411903381
+    },
+    {
+      "word": " admitted",
+      "start": 98.06,
+      "end": 98.4,
+      "probability": 0.9614593386650085
+    },
+    {
+      "word": " the",
+      "start": 98.4,
+      "end": 98.68,
+      "probability": 0.8347752690315247
+    },
+    {
+      "word": " caller.",
+      "start": 98.68,
+      "end": 98.92,
+      "probability": 0.97773277759552
+    },
+    {
+      "word": " He",
+      "start": 99.52,
+      "end": 99.64,
+      "probability": 0.9908062815666199
+    },
+    {
+      "word": " was",
+      "start": 99.64,
+      "end": 99.76,
+      "probability": 0.9993174076080322
+    },
+    {
+      "word": " wondering",
+      "start": 99.76,
+      "end": 100.06,
+      "probability": 0.9969526529312134
+    },
+    {
+      "word": " whether",
+      "start": 100.06,
+      "end": 100.42,
+      "probability": 0.988312304019928
+    },
+    {
+      "word": " Mrs.",
+      "start": 100.42,
+      "end": 100.68,
+      "probability": 0.8792334198951721
+    },
+    {
+      "word": " Sappleton",
+      "start": 100.98,
+      "end": 101.14,
+      "probability": 0.5998096764087677
+    },
+    {
+      "word": " was",
+      "start": 101.14,
+      "end": 101.46,
+      "probability": 0.9981465339660645
+    },
+    {
+      "word": " in",
+      "start": 101.46,
+      "end": 101.64,
+      "probability": 0.9979999661445618
+    },
+    {
+      "word": " the",
+      "start": 101.64,
+      "end": 101.76,
+      "probability": 0.978988766670227
+    },
+    {
+      "word": " Mary",
+      "start": 101.76,
+      "end": 102.06,
+      "probability": 0.3975297808647156
+    },
+    {
+      "word": " or",
+      "start": 102.06,
+      "end": 102.6,
+      "probability": 0.787196159362793
+    },
+    {
+      "word": " widowed",
+      "start": 102.6,
+      "end": 102.88,
+      "probability": 0.9377642869949341
+    },
+    {
+      "word": " state.",
+      "start": 102.88,
+      "end": 103.26,
+      "probability": 0.971286952495575
+    },
+    {
+      "word": " An",
+      "start": 103.96,
+      "end": 104.08,
+      "probability": 0.976311981678009
+    },
+    {
+      "word": " undefinable",
+      "start": 104.08,
+      "end": 104.7,
+      "probability": 0.9076478481292725
+    },
+    {
+      "word": " something",
+      "start": 104.7,
+      "end": 105.06,
+      "probability": 0.9814599752426147
+    },
+    {
+      "word": " about",
+      "start": 105.06,
+      "end": 105.34,
+      "probability": 0.9962611794471741
+    },
+    {
+      "word": " the",
+      "start": 105.34,
+      "end": 105.56,
+      "probability": 0.9960671067237854
+    },
+    {
+      "word": " room",
+      "start": 105.56,
+      "end": 105.78,
+      "probability": 0.9925446510314941
+    },
+    {
+      "word": " seemed",
+      "start": 105.78,
+      "end": 106.1,
+      "probability": 0.9574706554412842
+    },
+    {
+      "word": " to",
+      "start": 106.1,
+      "end": 106.32,
+      "probability": 0.998615026473999
+    },
+    {
+      "word": " suggest",
+      "start": 106.32,
+      "end": 106.74,
+      "probability": 0.9987358450889587
+    },
+    {
+      "word": " masculine",
+      "start": 106.74,
+      "end": 107.34,
+      "probability": 0.9651426672935486
+    },
+    {
+      "word": " habitation.",
+      "start": 107.34,
+      "end": 108.12,
+      "probability": 0.9926571846008301
+    }
+  ],
+  "whisper_transcript_in_unit": "Only her name and address, admitted the caller. He was wondering whether Mrs. Sappleton was in the Mary or widowed state. An undefinable something about the room seemed to suggest masculine habitation.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.40688108400000544
+}

@@ -3,7 +3,7 @@
   "title": "The Selfish Giant",
   "book_id": "controlled-the-selfish-giant",
   "url": "https://theearnalism.com/book/the-selfish-giant",
-  "stage": "CEDAR_SOURCE_QA_ADOPTED_STORAGE_AND_NEW_RUNTIME_REQUIRED",
+  "stage": "CEDAR_PRIVATE_SOURCE_STAGED_INTEGRATION_AND_RUNTIME_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -131,24 +131,16 @@
   },
   "blockers": [
     {
-      "code": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      "code": "SCOPED_GRANT_SOURCE_INTEGRATION_REQUIRED",
+      "action": "Complete independent review, exact-head source checks and Integration Lane merge/deployment."
     },
     {
-      "code": "PRIVATE_B2_DR_REPLICA_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      "code": "CURRENT_OWNER_HISTORY_AND_REMAINING_CREDIT_UNQUERIED",
+      "action": "Reconcile original shared120 ceiling with authoritative retained history; no reset or assumed allowance."
     },
     {
-      "code": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
-    },
-    {
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution.",
-      "code": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
-    },
-    {
-      "action": "Owner decision/profile qualification remains separate; no new keys, caps or ledger resets authorized by source adoption.",
-      "code": "REPLACEMENT_KEYS_AND_ADDITIVE_CARRIED_BUDGET_AUTHORITY_PENDING"
+      "code": "PROTECTED_RUNTIME_ACCOUNTING_AND_PUBLIC_VERIFICATION_REQUIRED",
+      "action": "Verify exact deployed candidate, bounded playback/accounting, promotion and final customer experience."
     }
   ],
   "language": "en",
@@ -273,5 +265,84 @@
     "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
     "ordinary_public_predecessor_unchanged": true,
     "remaining_runtime_gates": "ALL_UNPERFORMED; original source-QA holds preserved"
+  },
+  "prior_campaign_state_before_20261102_release_progress": {
+    "stage": "CEDAR_SOURCE_QA_ADOPTED_STORAGE_AND_NEW_RUNTIME_REQUIRED",
+    "blockers": [
+      {
+        "code": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "code": "PRIVATE_B2_DR_REPLICA_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "code": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution.",
+        "code": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+      },
+      {
+        "action": "Owner decision/profile qualification remains separate; no new keys, caps or ledger resets authorized by source adoption.",
+        "code": "REPLACEMENT_KEYS_AND_ADDITIVE_CARRIED_BUDGET_AUTHORITY_PENDING"
+      }
+    ],
+    "quality": {
+      "content": "AUDIO_DERIVED_RAW_ASR_PLUS_EXPLICIT_OWNER_ADJUDICATION",
+      "pronunciation": "OWNER_ACCEPTED_COMPLETE_SCORED_BOOK",
+      "audio": "RETAINED_TECHNICAL_METERS_AND_OWNER_FULL_SCORED_ACCEPTANCE",
+      "sync": "MEASURED_AUDIO_DERIVED_23_READER_PARAGRAPHS_NO_WORD_PRECISION_CLAIM",
+      "live_playback": "UNVERIFIED_FOR_NEW_CEDAR_PACKAGE",
+      "adjudicated_content_score": 10.0,
+      "listening_scores": {
+        "anti_choppy_join_score": 9.5,
+        "anti_robotic_texture_score": 9.8,
+        "confidence_score": 0.96,
+        "continuity_score": 9.7,
+        "emotional_expression_score": 9.7,
+        "listener_enjoyment_score": 9.8,
+        "naturalness_score": 9.8,
+        "overall_listening_score": 9.8,
+        "pacing_score": 9.5,
+        "pronunciation_score": 9.8,
+        "punctuation_pause_score": 9.4
+      },
+      "physical_devices": "UNVERIFIED",
+      "raw_ASR_metrics": "UNCHANGED"
+    },
+    "music": {
+      "selection": [
+        "Heartwarming",
+        "Heartbreaking"
+      ],
+      "creator": "Kevin MacLeod",
+      "full_scored_owner_review": "OWNER_ACCEPTED_EXACT_LISTENED_MP3_UNCHANGED_AUDIO_PUBLICATION_SUCCESSOR",
+      "licence": "CC BY4.0",
+      "new_music_generation": false,
+      "source_qa_music_evidence_sha256": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346"
+    }
+  },
+  "storage_20261102": {
+    "package_version": "sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2",
+    "manifest_sha256": "44fe7fa244e69a4004423cd5d78d417ee49789ead3fd3eb241a6ed316f09ed03",
+    "primary_and_dr": "EXACT_VERSIONS_FULL_READBACK_AND_RETENTION_VERIFIED",
+    "independent_audit_sha256": "7962544032447cba820c723eb5da52147e94b42db338ac45ad0770fbaef1cdb8",
+    "private_stage": "LOCAL_SUPPORTED_STAGE_APPLIED_STAGED_PRIVATE_NOT_DEPLOYED",
+    "retention_days": 30,
+    "automatic_deletion": false,
+    "private_stage_result_sha256": "5f9fa45b57b833183ff90943be71d3f7064b09211feb13e536c2a393a061caa6"
+  },
+  "release_progress_note": "No new synthesis or allocation. Historical public audio remains selected; current local source/stage is not deployed or LIVE. Unperformed gates remain unverified; original120 remaining is unknown.",
+  "scoped_review_source_20261102": {
+    "local_source_commit": "791ca48d18cbf470124c3306b75de91f93fb4540",
+    "reviewed_core_sha256": "ceca8876ffba65381611ec77cab989605167d1dff174966d6c070f7b0931d35e",
+    "actual_committed_focused_tests": "174_PASS_6_OPT_IN_SKIPS",
+    "actual_local_Mongo": "4_DISTINCT_SYNTHETIC_CASES_ACROSS_BOUND_RUNS_INCLUDING_REAL_WALLET_LEDGER_ABORT",
+    "production_member_or_grant_or_DB_operations": "NOT_PERFORMED",
+    "actual_remaining_credit_seconds": null,
+    "remote_integration_and_deployment": "PENDING"
   }
 }

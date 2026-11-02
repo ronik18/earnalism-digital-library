@@ -1,0 +1,318 @@
+{
+  "unit": "u000030",
+  "master_interval_seconds": [
+    364.49058333333335,
+    371.13058333333333
+  ],
+  "expected_text": "“Here they are at last!” she cried. “Just in time for tea, and don’t they look as if they were muddy up to the eyes!”",
+  "ctc_transcript": "HERE THEY ARE AT LAST SHE CRIED JUST IN TIME FOR TEA AND DON'T THEY LOOK AS IF THEY WERE MUDDY UP TO THE EYES",
+  "ctc_words": [
+    {
+      "word": "HERE",
+      "start": 364.61094587109767,
+      "end": 364.77142925478347,
+      "mean_character_frame_posterior": 0.9626950472593307
+    },
+    {
+      "word": "THEY",
+      "start": 364.85167094662637,
+      "end": 364.95197306143,
+      "mean_character_frame_posterior": 0.999872475862503
+    },
+    {
+      "word": "ARE",
+      "start": 365.0723355991944,
+      "end": 365.1525772910373,
+      "mean_character_frame_posterior": 0.9899923205375671
+    },
+    {
+      "word": "AT",
+      "start": 365.2528794058409,
+      "end": 365.29300025176235,
+      "mean_character_frame_posterior": 0.9998272359371185
+    },
+    {
+      "word": "LAST",
+      "start": 365.393302366566,
+      "end": 365.7142691339376,
+      "mean_character_frame_posterior": 0.9997833222150803
+    },
+    {
+      "word": "SHE",
+      "start": 365.81457124874123,
+      "end": 365.9148733635448,
+      "mean_character_frame_posterior": 0.9999567667643229
+    },
+    {
+      "word": "CRIED",
+      "start": 365.9951150553877,
+      "end": 366.3160818227593,
+      "mean_character_frame_posterior": 0.9995340466499328
+    },
+    {
+      "word": "JUST",
+      "start": 366.9178945115811,
+      "end": 367.1586195871098,
+      "mean_character_frame_posterior": 0.8239368945360184
+    },
+    {
+      "word": "IN",
+      "start": 367.25892170191344,
+      "end": 367.29904254783486,
+      "mean_character_frame_posterior": 0.9998278915882111
+    },
+    {
+      "word": "TIME",
+      "start": 367.41940508559924,
+      "end": 367.6601301611279,
+      "mean_character_frame_posterior": 0.9999525845050812
+    },
+    {
+      "word": "FOR",
+      "start": 367.74037185297084,
+      "end": 367.8206135448137,
+      "mean_character_frame_posterior": 0.9997927149136862
+    },
+    {
+      "word": "TEA",
+      "start": 367.9209156596173,
+      "end": 368.10145946626386,
+      "mean_character_frame_posterior": 0.9979093869527181
+    },
+    {
+      "word": "AND",
+      "start": 368.50266792547836,
+      "end": 368.5628491943605,
+      "mean_character_frame_posterior": 0.9210748076438904
+    },
+    {
+      "word": "DON'T",
+      "start": 368.6430908862034,
+      "end": 368.8436951158107,
+      "mean_character_frame_posterior": 0.9994605660438538
+    },
+    {
+      "word": "THEY",
+      "start": 368.8838159617321,
+      "end": 369.0041784994965,
+      "mean_character_frame_posterior": 0.9991912245750427
+    },
+    {
+      "word": "LOOK",
+      "start": 369.1044806143001,
+      "end": 369.2850244209466,
+      "mean_character_frame_posterior": 0.9999696016311646
+    },
+    {
+      "word": "AS",
+      "start": 369.38532653575027,
+      "end": 369.4254473816717,
+      "mean_character_frame_posterior": 0.9999110102653503
+    },
+    {
+      "word": "IF",
+      "start": 369.50568907351465,
+      "end": 369.54580991943607,
+      "mean_character_frame_posterior": 0.9997915029525757
+    },
+    {
+      "word": "THEY",
+      "start": 369.6059911883182,
+      "end": 369.70629330312187,
+      "mean_character_frame_posterior": 0.9999358505010605
+    },
+    {
+      "word": "WERE",
+      "start": 369.7464141490433,
+      "end": 369.84671626384693,
+      "mean_character_frame_posterior": 0.9616076052188873
+    },
+    {
+      "word": "MUDDY",
+      "start": 369.92695795568983,
+      "end": 370.16768303121853,
+      "mean_character_frame_posterior": 0.9962372064590455
+    },
+    {
+      "word": "UP",
+      "start": 370.26798514602217,
+      "end": 370.32816641490433,
+      "mean_character_frame_posterior": 0.9996944665908813
+    },
+    {
+      "word": "TO",
+      "start": 370.3883476837865,
+      "end": 370.46858937562945,
+      "mean_character_frame_posterior": 0.9988738298416138
+    },
+    {
+      "word": "THE",
+      "start": 370.5287706445116,
+      "end": 370.6090123363545,
+      "mean_character_frame_posterior": 0.9991061091423035
+    },
+    {
+      "word": "EYES",
+      "start": 370.8296769889225,
+      "end": 370.97009994964753,
+      "mean_character_frame_posterior": 0.9993866086006165
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " �Here",
+      "start": 364.58,
+      "end": 364.78,
+      "probability": 0.9774642288684845
+    },
+    {
+      "word": " they",
+      "start": 364.78,
+      "end": 364.96,
+      "probability": 0.9655596017837524
+    },
+    {
+      "word": " are",
+      "start": 364.96,
+      "end": 365.18,
+      "probability": 0.9973602890968323
+    },
+    {
+      "word": " at",
+      "start": 365.18,
+      "end": 365.46,
+      "probability": 0.8897863626480103
+    },
+    {
+      "word": " last�",
+      "start": 365.46,
+      "end": 365.76,
+      "probability": 0.8048734962940216
+    },
+    {
+      "word": " she",
+      "start": 365.76,
+      "end": 365.92,
+      "probability": 0.8955094814300537
+    },
+    {
+      "word": " cried.",
+      "start": 365.92,
+      "end": 366.34,
+      "probability": 0.9952180981636047
+    },
+    {
+      "word": " Just",
+      "start": 366.34,
+      "end": 367.18,
+      "probability": 0.4507759213447571
+    },
+    {
+      "word": " in",
+      "start": 367.18,
+      "end": 367.36,
+      "probability": 0.9885923266410828
+    },
+    {
+      "word": " time",
+      "start": 367.36,
+      "end": 367.74,
+      "probability": 0.9970146417617798
+    },
+    {
+      "word": " for",
+      "start": 367.74,
+      "end": 367.9,
+      "probability": 0.9841355681419373
+    },
+    {
+      "word": " tea,",
+      "start": 367.9,
+      "end": 368.24,
+      "probability": 0.9643452763557434
+    },
+    {
+      "word": " and",
+      "start": 368.5,
+      "end": 368.6,
+      "probability": 0.9858424067497253
+    },
+    {
+      "word": " don't",
+      "start": 368.6,
+      "end": 368.84,
+      "probability": 0.9925554990768433
+    },
+    {
+      "word": " they",
+      "start": 368.84,
+      "end": 369.1,
+      "probability": 0.9940125346183777
+    },
+    {
+      "word": " look",
+      "start": 369.1,
+      "end": 369.3,
+      "probability": 0.9931435585021973
+    },
+    {
+      "word": " as",
+      "start": 369.3,
+      "end": 369.46,
+      "probability": 0.9907886385917664
+    },
+    {
+      "word": " if",
+      "start": 369.46,
+      "end": 369.64,
+      "probability": 0.9907524585723877
+    },
+    {
+      "word": " they",
+      "start": 369.64,
+      "end": 369.74,
+      "probability": 0.9928975105285645
+    },
+    {
+      "word": " were",
+      "start": 369.74,
+      "end": 369.82,
+      "probability": 0.9960624575614929
+    },
+    {
+      "word": " muddy",
+      "start": 369.82,
+      "end": 370.12,
+      "probability": 0.9935907125473022
+    },
+    {
+      "word": " up",
+      "start": 370.12,
+      "end": 370.4,
+      "probability": 0.9920974969863892
+    },
+    {
+      "word": " to",
+      "start": 370.4,
+      "end": 370.6,
+      "probability": 0.9927761554718018
+    },
+    {
+      "word": " the",
+      "start": 370.6,
+      "end": 370.64,
+      "probability": 0.9879675507545471
+    },
+    {
+      "word": " eyes?",
+      "start": 370.64,
+      "end": 371.08,
+      "probability": 0.966249942779541
+    }
+  ],
+  "whisper_transcript_in_unit": "�Here they are at last� she cried. Just in time for tea, and don't they look as if they were muddy up to the eyes?",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.20715091600000335
+}

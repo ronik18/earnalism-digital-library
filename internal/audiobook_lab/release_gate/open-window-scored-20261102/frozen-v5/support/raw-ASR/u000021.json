@@ -1,0 +1,144 @@
+{
+  "unit": "u000021",
+  "master_interval_seconds": [
+    247.16258333333334,
+    250.84258333333332
+  ],
+  "expected_text": "“I hope Vera has been amusing you?” she said.",
+  "ctc_transcript": "I HOPE VIRA HAS BEEN AMUSING YOU SHE SAID",
+  "ctc_words": [
+    {
+      "word": "I",
+      "start": 247.3636762295082,
+      "end": 247.3837855191257,
+      "mean_character_frame_posterior": 0.9999727010726929
+    },
+    {
+      "word": "HOPE",
+      "start": 247.5245505464481,
+      "end": 247.74575273224045,
+      "mean_character_frame_posterior": 0.8986646234989166
+    },
+    {
+      "word": "VIRA",
+      "start": 247.90662704918034,
+      "end": 248.30881284153006,
+      "mean_character_frame_posterior": 0.9775528758764267
+    },
+    {
+      "word": "HAS",
+      "start": 248.429468579235,
+      "end": 248.5501243169399,
+      "mean_character_frame_posterior": 0.9994608362515768
+    },
+    {
+      "word": "BEEN",
+      "start": 248.6707800546448,
+      "end": 248.8316543715847,
+      "mean_character_frame_posterior": 0.9999646246433258
+    },
+    {
+      "word": "AMUSING",
+      "start": 248.91209153005465,
+      "end": 249.4349330601093,
+      "mean_character_frame_posterior": 0.9999598264694214
+    },
+    {
+      "word": "YOU",
+      "start": 249.51537021857925,
+      "end": 249.67624453551915,
+      "mean_character_frame_posterior": 0.8861725330352783
+    },
+    {
+      "word": "SHE",
+      "start": 250.23930464480875,
+      "end": 250.3398510928962,
+      "mean_character_frame_posterior": 0.997766931851705
+    },
+    {
+      "word": "SAID",
+      "start": 250.4605068306011,
+      "end": 250.70181830601095,
+      "mean_character_frame_posterior": 0.9998696595430374
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "vera"
+      ],
+      "recognized": [
+        "vira"
+      ],
+      "reference_word_span": [
+        2,
+        3
+      ],
+      "recognized_word_span": [
+        2,
+        3
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'I",
+      "start": 246.94,
+      "end": 247.5,
+      "probability": 0.498542707413435
+    },
+    {
+      "word": " hope",
+      "start": 247.5,
+      "end": 247.94,
+      "probability": 0.9959993362426758
+    },
+    {
+      "word": " Vera",
+      "start": 247.94,
+      "end": 248.22,
+      "probability": 0.7575356364250183
+    },
+    {
+      "word": " has",
+      "start": 248.22,
+      "end": 248.62,
+      "probability": 0.9875654578208923
+    },
+    {
+      "word": " been",
+      "start": 248.62,
+      "end": 248.88,
+      "probability": 0.9987492561340332
+    },
+    {
+      "word": " amusing",
+      "start": 248.88,
+      "end": 249.3,
+      "probability": 0.9686747193336487
+    },
+    {
+      "word": " you,'",
+      "start": 249.3,
+      "end": 249.96,
+      "probability": 0.8108032941818237
+    },
+    {
+      "word": " she",
+      "start": 249.96,
+      "end": 250.38,
+      "probability": 0.9764907360076904
+    },
+    {
+      "word": " said.",
+      "start": 250.38,
+      "end": 250.82,
+      "probability": 0.9975466132164001
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'I hope Vera has been amusing you,' she said.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.12175754100000802
+}

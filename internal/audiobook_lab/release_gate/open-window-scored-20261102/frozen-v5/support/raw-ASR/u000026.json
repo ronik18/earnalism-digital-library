@@ -1,0 +1,216 @@
+{
+  "unit": "u000026",
+  "master_interval_seconds": [
+    313.8395,
+    321.2795
+  ],
+  "expected_text": "It was certainly an unfortunate coincidence that he should have paid his visit on this tragic anniversary.",
+  "ctc_transcript": "IT WAS CERTAINLY AN UNFORTUNATE COINCIDENCE THAT HE SHOULD HAVE PAID HIS VISIT ON THIS TRAGIC ANNIVERSARY",
+  "ctc_words": [
+    {
+      "word": "IT",
+      "start": 314.04003908355793,
+      "end": 314.08014690026954,
+      "mean_character_frame_posterior": 0.9999481439590454
+    },
+    {
+      "word": "WAS",
+      "start": 314.2606320754717,
+      "end": 314.6015485175202,
+      "mean_character_frame_posterior": 0.9995959997177124
+    },
+    {
+      "word": "CERTAINLY",
+      "start": 315.26332749326144,
+      "end": 315.7646752021563,
+      "mean_character_frame_posterior": 0.9932195941607157
+    },
+    {
+      "word": "AN",
+      "start": 315.8448908355795,
+      "end": 315.8849986522911,
+      "mean_character_frame_posterior": 0.9748100340366364
+    },
+    {
+      "word": "UNFORTUNATE",
+      "start": 315.9652142857143,
+      "end": 316.7272628032345,
+      "mean_character_frame_posterior": 0.9774984338066794
+    },
+    {
+      "word": "COINCIDENCE",
+      "start": 316.8275323450135,
+      "end": 317.4893113207547,
+      "mean_character_frame_posterior": 0.9761187163266268
+    },
+    {
+      "word": "THAT",
+      "start": 317.9104433962264,
+      "end": 318.050820754717,
+      "mean_character_frame_posterior": 0.9998119324445724
+    },
+    {
+      "word": "HE",
+      "start": 318.11098247978435,
+      "end": 318.1711442048517,
+      "mean_character_frame_posterior": 0.9999539256095886
+    },
+    {
+      "word": "SHOULD",
+      "start": 318.3115215633423,
+      "end": 318.53211455525604,
+      "mean_character_frame_posterior": 0.8753023147583008
+    },
+    {
+      "word": "HAVE",
+      "start": 318.57222237196765,
+      "end": 318.6724919137466,
+      "mean_character_frame_posterior": 0.9991357922554016
+    },
+    {
+      "word": "PAID",
+      "start": 318.7727614555256,
+      "end": 319.01340835579515,
+      "mean_character_frame_posterior": 0.9997942000627518
+    },
+    {
+      "word": "HIS",
+      "start": 319.0735700808625,
+      "end": 319.1738396226415,
+      "mean_character_frame_posterior": 0.9998053709665934
+    },
+    {
+      "word": "VISIT",
+      "start": 319.27410916442045,
+      "end": 319.5548638814016,
+      "mean_character_frame_posterior": 0.9113787055015564
+    },
+    {
+      "word": "ON",
+      "start": 319.6551334231806,
+      "end": 319.6952412398922,
+      "mean_character_frame_posterior": 0.9994851648807526
+    },
+    {
+      "word": "THIS",
+      "start": 319.73534905660375,
+      "end": 319.85567250673853,
+      "mean_character_frame_posterior": 0.9993008822202682
+    },
+    {
+      "word": "TRAGIC",
+      "start": 320.03615768194067,
+      "end": 320.47734366576816,
+      "mean_character_frame_posterior": 0.9936580856641134
+    },
+    {
+      "word": "ANNIVERSARY",
+      "start": 320.59766711590294,
+      "end": 321.2594460916442,
+      "mean_character_frame_posterior": 0.999676151709123
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " was,",
+      "start": 314.06,
+      "end": 314.9,
+      "probability": 0.9840757250785828
+    },
+    {
+      "word": " certainly,",
+      "start": 315.12,
+      "end": 315.74,
+      "probability": 0.9654801487922668
+    },
+    {
+      "word": " an",
+      "start": 315.94,
+      "end": 315.94,
+      "probability": 0.9898389577865601
+    },
+    {
+      "word": " unfortunate",
+      "start": 315.94,
+      "end": 316.74,
+      "probability": 0.9982422590255737
+    },
+    {
+      "word": " coincidence",
+      "start": 316.74,
+      "end": 317.56,
+      "probability": 0.9984655380249023
+    },
+    {
+      "word": " that",
+      "start": 317.56,
+      "end": 318.02,
+      "probability": 0.9036867618560791
+    },
+    {
+      "word": " he",
+      "start": 318.02,
+      "end": 318.28,
+      "probability": 0.9962106943130493
+    },
+    {
+      "word": " should",
+      "start": 318.28,
+      "end": 318.56,
+      "probability": 0.9916894435882568
+    },
+    {
+      "word": " have",
+      "start": 318.56,
+      "end": 318.78,
+      "probability": 0.9257377982139587
+    },
+    {
+      "word": " paid",
+      "start": 318.78,
+      "end": 318.98,
+      "probability": 0.99086993932724
+    },
+    {
+      "word": " his",
+      "start": 318.98,
+      "end": 319.22,
+      "probability": 0.995629072189331
+    },
+    {
+      "word": " visit",
+      "start": 319.22,
+      "end": 319.56,
+      "probability": 0.9978066086769104
+    },
+    {
+      "word": " on",
+      "start": 319.56,
+      "end": 319.76,
+      "probability": 0.9935978651046753
+    },
+    {
+      "word": " this",
+      "start": 319.76,
+      "end": 319.98,
+      "probability": 0.9740453362464905
+    },
+    {
+      "word": " tragic",
+      "start": 319.98,
+      "end": 320.5,
+      "probability": 0.9988308548927307
+    },
+    {
+      "word": " anniversary.",
+      "start": 320.5,
+      "end": 321.26,
+      "probability": 0.9981091022491455
+    }
+  ],
+  "whisper_transcript_in_unit": "was, certainly, an unfortunate coincidence that he should have paid his visit on this tragic anniversary.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.23316879200000074
+}

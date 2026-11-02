@@ -3829,6 +3829,16 @@
         "history": "Owner-scoped keyset pages, exactseconds and content labels for new debits",
         "validation": "131backend+19frontend+46workflowPASS;3realMongo isolatedcasesPASS; production untouched",
         "next": "Exact-head CI/published review then merge/manual deployment; activation held"
+      },
+      "retained_scored_source_progress_20261102": {
+        "at": "2026-11-02T10:19:01.333434+00:00",
+        "status": "LOCAL_QUALIFIED_SOURCE_NOT_NEW_LIVE",
+        "new_candidate_status": "BLOCKED_PENDING_REAL_DOWNSTREAM_GATES",
+        "scope_source_checkpoint": "791ca48d18cbf470124c3306b75de91f93fb4540",
+        "actual_stage": "SOURCE_QA_E412_ONLY_STORAGE_AND_LIFECYCLE_PENDING",
+        "actual_remaining_original120_seconds": null,
+        "new_synthesis_or_allocation": false,
+        "existing_Reader_and_public_audio_preserved": true
       }
     },
     "sredni-vashtar": {
@@ -7521,7 +7531,17 @@
         "next_action": "Keep the exact bytes live and monitor API, Range, checksum, cache, and browser playback; do not regenerate or replace without a new checksum-bound two-gate attempt."
       },
       "current_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
-      "current_content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+      "current_content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+      "retained_scored_source_progress_20261102": {
+        "at": "2026-11-02T10:19:01.333434+00:00",
+        "status": "LOCAL_QUALIFIED_SOURCE_NOT_NEW_LIVE",
+        "new_candidate_status": "BLOCKED_PENDING_REAL_DOWNSTREAM_GATES",
+        "scope_source_checkpoint": "791ca48d18cbf470124c3306b75de91f93fb4540",
+        "actual_stage": "STAGED_PRIVATE_288_OLD_PUBLIC_B5_PRESERVED",
+        "actual_remaining_original120_seconds": null,
+        "new_synthesis_or_allocation": false,
+        "existing_Reader_and_public_audio_preserved": true
+      }
     },
     "a-white-heron": {
       "latest_decision": "INDIA_RIGHTS_TEXT_COVER_COMPLETE_PREPARED_FOR_COMMERCIAL_CUTOVER",

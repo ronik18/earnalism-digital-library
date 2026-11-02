@@ -1,0 +1,714 @@
+{
+  "unit": "u000003",
+  "master_interval_seconds": [
+    32.629041666666666,
+    52.389041666666664
+  ],
+  "expected_text": "“I know how it will be,” his sister had said when he was preparing to migrate to this rural retreat; “you will bury yourself down there and not speak to a living soul, and your nerves will be worse than ever from moping. I shall just give you letters of introduction to all the people I know there.",
+  "ctc_transcript": "I KNOW HOW IT WILL BE HIS SISTER HAD SAID WHEN HE WAS PREPARING TO MIGRATE TO THIS RURAL RETREAT YOU WILL BURY YOURSELF DOWN THERE AND NOT SPEAK TO A LIVING SOUL AND YOUR NERVES WILL BE WORSE THAN EVER FROM MOPING I SHALL JUST GIVE YOU LETTERS OF INTRODUCTION TO ALL THE PEOPLE I KNOW THERE",
+  "ctc_words": [
+    {
+      "word": "I",
+      "start": 32.82924430091185,
+      "end": 32.84926456433637,
+      "mean_character_frame_posterior": 0.9998319149017334
+    },
+    {
+      "word": "KNOW",
+      "start": 33.0895077254306,
+      "end": 33.26969009625127,
+      "mean_character_frame_posterior": 0.9998712837696075
+    },
+    {
+      "word": "HOW",
+      "start": 33.38981167679838,
+      "end": 33.52995352077001,
+      "mean_character_frame_posterior": 0.9998810092608134
+    },
+    {
+      "word": "IT",
+      "start": 33.6300548378926,
+      "end": 33.67009536474164,
+      "mean_character_frame_posterior": 0.9999727010726929
+    },
+    {
+      "word": "WILL",
+      "start": 33.750176418439715,
+      "end": 33.9503790526849,
+      "mean_character_frame_posterior": 0.9996617436408997
+    },
+    {
+      "word": "BE",
+      "start": 34.050480369807495,
+      "end": 34.21064247720365,
+      "mean_character_frame_posterior": 0.9999904036521912
+    },
+    {
+      "word": "HIS",
+      "start": 34.95139222391084,
+      "end": 35.05149354103344,
+      "mean_character_frame_posterior": 0.9998931884765625
+    },
+    {
+      "word": "SISTER",
+      "start": 35.15159485815603,
+      "end": 35.43187854609929,
+      "mean_character_frame_posterior": 0.999989926815033
+    },
+    {
+      "word": "HAD",
+      "start": 35.511959599797365,
+      "end": 35.61206091691996,
+      "mean_character_frame_posterior": 0.9692169825236002
+    },
+    {
+      "word": "SAID",
+      "start": 35.73218249746707,
+      "end": 35.95240539513678,
+      "mean_character_frame_posterior": 0.9999548196792603
+    },
+    {
+      "word": "WHEN",
+      "start": 36.21266881965552,
+      "end": 36.33279040020263,
+      "mean_character_frame_posterior": 0.9999217987060547
+    },
+    {
+      "word": "HE",
+      "start": 36.39285119047619,
+      "end": 36.45291198074975,
+      "mean_character_frame_posterior": 0.9999789595603943
+    },
+    {
+      "word": "WAS",
+      "start": 36.5129727710233,
+      "end": 36.61307408814589,
+      "mean_character_frame_posterior": 0.8365166783332825
+    },
+    {
+      "word": "PREPARING",
+      "start": 36.693155141843974,
+      "end": 37.09356041033435,
+      "mean_character_frame_posterior": 0.9991587996482849
+    },
+    {
+      "word": "TO",
+      "start": 37.17364146403242,
+      "end": 37.233702254305975,
+      "mean_character_frame_posterior": 0.99989914894104
+    },
+    {
+      "word": "MIGRATE",
+      "start": 37.293763044579535,
+      "end": 37.71418857649443,
+      "mean_character_frame_posterior": 0.9489087206976754
+    },
+    {
+      "word": "TO",
+      "start": 37.77424936676798,
+      "end": 37.83431015704154,
+      "mean_character_frame_posterior": 0.9949299693107605
+    },
+    {
+      "word": "THIS",
+      "start": 37.894370947315096,
+      "end": 38.01449252786221,
+      "mean_character_frame_posterior": 0.9991413503885269
+    },
+    {
+      "word": "RURAL",
+      "start": 38.154634371833836,
+      "end": 38.394877532928064,
+      "mean_character_frame_posterior": 0.994743549823761
+    },
+    {
+      "word": "RETREAT",
+      "start": 38.49497885005066,
+      "end": 38.89538411854103,
+      "mean_character_frame_posterior": 0.9999713727406093
+    },
+    {
+      "word": "YOU",
+      "start": 39.596093338399186,
+      "end": 39.7162149189463,
+      "mean_character_frame_posterior": 0.9998888174692789
+    },
+    {
+      "word": "WILL",
+      "start": 39.87637702634245,
+      "end": 40.156660714285714,
+      "mean_character_frame_posterior": 0.9982798844575882
+    },
+    {
+      "word": "BURY",
+      "start": 40.33684308510638,
+      "end": 40.57708624620061,
+      "mean_character_frame_posterior": 0.9800842702388763
+    },
+    {
+      "word": "YOURSELF",
+      "start": 40.63714703647416,
+      "end": 41.01753204154002,
+      "mean_character_frame_posterior": 0.9995191171765327
+    },
+    {
+      "word": "DOWN",
+      "start": 41.13765362208713,
+      "end": 41.3178359929078,
+      "mean_character_frame_posterior": 0.9992435127496719
+    },
+    {
+      "word": "THERE",
+      "start": 41.397917046605876,
+      "end": 41.57809941742654,
+      "mean_character_frame_posterior": 0.984922456741333
+    },
+    {
+      "word": "AND",
+      "start": 41.97850468591692,
+      "end": 42.058585739615,
+      "mean_character_frame_posterior": 0.9997602502504984
+    },
+    {
+      "word": "NOT",
+      "start": 42.15868705673759,
+      "end": 42.37890995440729,
+      "mean_character_frame_posterior": 0.9347532192866007
+    },
+    {
+      "word": "SPEAK",
+      "start": 42.499031534954405,
+      "end": 42.779315222897665,
+      "mean_character_frame_posterior": 0.9508080840110779
+    },
+    {
+      "word": "TO",
+      "start": 42.89943680344478,
+      "end": 42.97951785714285,
+      "mean_character_frame_posterior": 0.999458372592926
+    },
+    {
+      "word": "A",
+      "start": 43.099639437689966,
+      "end": 43.119659701114486,
+      "mean_character_frame_posterior": 0.9998027682304382
+    },
+    {
+      "word": "LIVING",
+      "start": 43.19974075481257,
+      "end": 43.48002444275583,
+      "mean_character_frame_posterior": 0.999757707118988
+    },
+    {
+      "word": "SOUL",
+      "start": 43.60014602330294,
+      "end": 43.84038918439716,
+      "mean_character_frame_posterior": 0.9999607801437378
+    },
+    {
+      "word": "AND",
+      "start": 44.581138931104356,
+      "end": 44.641199721377916,
+      "mean_character_frame_posterior": 0.997011661529541
+    },
+    {
+      "word": "YOUR",
+      "start": 44.74130103850051,
+      "end": 44.921483409321176,
+      "mean_character_frame_posterior": 0.9996981024742126
+    },
+    {
+      "word": "NERVES",
+      "start": 45.0616252532928,
+      "end": 45.421989994934144,
+      "mean_character_frame_posterior": 0.9867544174194336
+    },
+    {
+      "word": "WILL",
+      "start": 45.56213183890577,
+      "end": 45.722293946301924,
+      "mean_character_frame_posterior": 0.9999815225601196
+    },
+    {
+      "word": "BE",
+      "start": 45.76233447315096,
+      "end": 45.82239526342452,
+      "mean_character_frame_posterior": 0.8459804058074951
+    },
+    {
+      "word": "WORSE",
+      "start": 45.94251684397163,
+      "end": 46.28286132218845,
+      "mean_character_frame_posterior": 0.9639289975166321
+    },
+    {
+      "word": "THAN",
+      "start": 46.4430234295846,
+      "end": 46.56314501013171,
+      "mean_character_frame_posterior": 0.9561312198638916
+    },
+    {
+      "word": "EVER",
+      "start": 46.82340843465045,
+      "end": 47.00359080547112,
+      "mean_character_frame_posterior": 0.9996675550937653
+    },
+    {
+      "word": "FROM",
+      "start": 47.163752912867274,
+      "end": 47.3038947568389,
+      "mean_character_frame_posterior": 0.9902835935354233
+    },
+    {
+      "word": "MOPING",
+      "start": 47.38397581053698,
+      "end": 47.764360815602835,
+      "mean_character_frame_posterior": 0.8354469438393911
+    },
+    {
+      "word": "I",
+      "start": 48.384988981762916,
+      "end": 48.405009245187436,
+      "mean_character_frame_posterior": 0.999991774559021
+    },
+    {
+      "word": "SHALL",
+      "start": 48.48509029888551,
+      "end": 48.6852929331307,
+      "mean_character_frame_posterior": 0.9929194808006286
+    },
+    {
+      "word": "JUST",
+      "start": 48.80541451367781,
+      "end": 49.02563741134752,
+      "mean_character_frame_posterior": 0.9998653531074524
+    },
+    {
+      "word": "GIVE",
+      "start": 49.145758991894624,
+      "end": 49.28590083586626,
+      "mean_character_frame_posterior": 0.9999959170818329
+    },
+    {
+      "word": "YOU",
+      "start": 49.3259413627153,
+      "end": 49.40602241641338,
+      "mean_character_frame_posterior": 0.9999963839848837
+    },
+    {
+      "word": "LETTERS",
+      "start": 49.526143996960485,
+      "end": 49.826447948328266,
+      "mean_character_frame_posterior": 0.9999852010181972
+    },
+    {
+      "word": "OF",
+      "start": 49.906529002026346,
+      "end": 49.94656952887538,
+      "mean_character_frame_posterior": 0.999927818775177
+    },
+    {
+      "word": "INTRODUCTION",
+      "start": 50.04667084599797,
+      "end": 50.647278748733534,
+      "mean_character_frame_posterior": 0.9964471509059271
+    },
+    {
+      "word": "TO",
+      "start": 50.76740032928065,
+      "end": 50.86750164640324,
+      "mean_character_frame_posterior": 0.8698396682739258
+    },
+    {
+      "word": "ALL",
+      "start": 51.047684017223915,
+      "end": 51.14778533434651,
+      "mean_character_frame_posterior": 0.9878816405932108
+    },
+    {
+      "word": "THE",
+      "start": 51.227866388044575,
+      "end": 51.307947441742655,
+      "mean_character_frame_posterior": 0.9998643596967062
+    },
+    {
+      "word": "PEOPLE",
+      "start": 51.34798796859169,
+      "end": 51.66831218338399,
+      "mean_character_frame_posterior": 0.9934369524319967
+    },
+    {
+      "word": "I",
+      "start": 51.7884337639311,
+      "end": 51.80845402735562,
+      "mean_character_frame_posterior": 0.9999822378158569
+    },
+    {
+      "word": "KNOW",
+      "start": 51.888535081053696,
+      "end": 52.02867692502532,
+      "mean_character_frame_posterior": 0.9987147897481918
+    },
+    {
+      "word": "THERE",
+      "start": 52.12877824214792,
+      "end": 52.32898087639311,
+      "mean_character_frame_posterior": 0.9999144434928894
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " I",
+      "start": 32.72,
+      "end": 32.84,
+      "probability": 0.04451901093125343
+    },
+    {
+      "word": " know",
+      "start": 32.84,
+      "end": 33.3,
+      "probability": 0.9732335805892944
+    },
+    {
+      "word": " how",
+      "start": 33.3,
+      "end": 33.6,
+      "probability": 0.9968705773353577
+    },
+    {
+      "word": " it",
+      "start": 33.6,
+      "end": 33.72,
+      "probability": 0.9969377517700195
+    },
+    {
+      "word": " will",
+      "start": 33.72,
+      "end": 34.0,
+      "probability": 0.9908502101898193
+    },
+    {
+      "word": " be,",
+      "start": 34.0,
+      "end": 34.52,
+      "probability": 0.9991760849952698
+    },
+    {
+      "word": " his",
+      "start": 34.72,
+      "end": 35.08,
+      "probability": 0.9080331325531006
+    },
+    {
+      "word": " sister",
+      "start": 35.08,
+      "end": 35.46,
+      "probability": 0.9910905361175537
+    },
+    {
+      "word": " had",
+      "start": 35.46,
+      "end": 35.68,
+      "probability": 0.8524928689002991
+    },
+    {
+      "word": " said,",
+      "start": 35.68,
+      "end": 36.06,
+      "probability": 0.9976409673690796
+    },
+    {
+      "word": " when",
+      "start": 36.26,
+      "end": 36.32,
+      "probability": 0.9889405369758606
+    },
+    {
+      "word": " he",
+      "start": 36.32,
+      "end": 36.5,
+      "probability": 0.9967933297157288
+    },
+    {
+      "word": " was",
+      "start": 36.5,
+      "end": 36.64,
+      "probability": 0.996440589427948
+    },
+    {
+      "word": " preparing",
+      "start": 36.64,
+      "end": 37.02,
+      "probability": 0.995532751083374
+    },
+    {
+      "word": " to",
+      "start": 37.02,
+      "end": 37.32,
+      "probability": 0.9985938668251038
+    },
+    {
+      "word": " migrate",
+      "start": 37.32,
+      "end": 37.62,
+      "probability": 0.995245635509491
+    },
+    {
+      "word": " to",
+      "start": 37.62,
+      "end": 37.9,
+      "probability": 0.9965803027153015
+    },
+    {
+      "word": " this",
+      "start": 37.9,
+      "end": 38.18,
+      "probability": 0.9892561435699463
+    },
+    {
+      "word": " rural",
+      "start": 38.18,
+      "end": 38.38,
+      "probability": 0.8368370532989502
+    },
+    {
+      "word": " retreat.",
+      "start": 38.38,
+      "end": 38.96,
+      "probability": 0.998775064945221
+    },
+    {
+      "word": " You",
+      "start": 39.58,
+      "end": 39.74,
+      "probability": 0.9137582778930664
+    },
+    {
+      "word": " will",
+      "start": 39.74,
+      "end": 40.18,
+      "probability": 0.9845671653747559
+    },
+    {
+      "word": " bury",
+      "start": 40.18,
+      "end": 40.56,
+      "probability": 0.9844410419464111
+    },
+    {
+      "word": " yourself",
+      "start": 40.56,
+      "end": 41.06,
+      "probability": 0.992429792881012
+    },
+    {
+      "word": " down",
+      "start": 41.06,
+      "end": 41.32,
+      "probability": 0.9986555576324463
+    },
+    {
+      "word": " there",
+      "start": 41.32,
+      "end": 41.72,
+      "probability": 0.9959945678710938
+    },
+    {
+      "word": " and",
+      "start": 41.72,
+      "end": 42.14,
+      "probability": 0.8508142232894897
+    },
+    {
+      "word": " not",
+      "start": 42.14,
+      "end": 42.44,
+      "probability": 0.9985837936401367
+    },
+    {
+      "word": " speak",
+      "start": 42.44,
+      "end": 42.8,
+      "probability": 0.9988042116165161
+    },
+    {
+      "word": " to",
+      "start": 42.8,
+      "end": 43.06,
+      "probability": 0.998573899269104
+    },
+    {
+      "word": " a",
+      "start": 43.06,
+      "end": 43.2,
+      "probability": 0.9975493550300598
+    },
+    {
+      "word": " living",
+      "start": 43.2,
+      "end": 43.44,
+      "probability": 0.9993425011634827
+    },
+    {
+      "word": " soul,",
+      "start": 43.44,
+      "end": 43.94,
+      "probability": 0.9946883916854858
+    },
+    {
+      "word": " and",
+      "start": 44.54,
+      "end": 44.72,
+      "probability": 0.993528425693512
+    },
+    {
+      "word": " your",
+      "start": 44.72,
+      "end": 45.04,
+      "probability": 0.9943652153015137
+    },
+    {
+      "word": " nerves",
+      "start": 45.04,
+      "end": 45.44,
+      "probability": 0.996408998966217
+    },
+    {
+      "word": " will",
+      "start": 45.44,
+      "end": 45.72,
+      "probability": 0.994156002998352
+    },
+    {
+      "word": " be",
+      "start": 45.72,
+      "end": 45.98,
+      "probability": 0.9981423616409302
+    },
+    {
+      "word": " worse",
+      "start": 45.98,
+      "end": 46.32,
+      "probability": 0.995253324508667
+    },
+    {
+      "word": " than",
+      "start": 46.32,
+      "end": 46.76,
+      "probability": 0.9896003007888794
+    },
+    {
+      "word": " ever",
+      "start": 46.76,
+      "end": 47.2,
+      "probability": 0.9988994598388672
+    },
+    {
+      "word": " from",
+      "start": 47.2,
+      "end": 47.4,
+      "probability": 0.9930853843688965
+    },
+    {
+      "word": " moping.",
+      "start": 47.4,
+      "end": 47.74,
+      "probability": 0.8054029047489166
+    },
+    {
+      "word": " I",
+      "start": 48.16,
+      "end": 48.42,
+      "probability": 0.9962491393089294
+    },
+    {
+      "word": " shall",
+      "start": 48.42,
+      "end": 48.66,
+      "probability": 0.9961979985237122
+    },
+    {
+      "word": " just",
+      "start": 48.66,
+      "end": 49.1,
+      "probability": 0.9798984527587891
+    },
+    {
+      "word": " give",
+      "start": 49.1,
+      "end": 49.32,
+      "probability": 0.9984355568885803
+    },
+    {
+      "word": " you",
+      "start": 49.32,
+      "end": 49.54,
+      "probability": 0.9978967905044556
+    },
+    {
+      "word": " letters",
+      "start": 49.54,
+      "end": 49.74,
+      "probability": 0.9891139268875122
+    },
+    {
+      "word": " of",
+      "start": 49.74,
+      "end": 50.14,
+      "probability": 0.9989608526229858
+    },
+    {
+      "word": " introduction",
+      "start": 50.14,
+      "end": 50.54,
+      "probability": 0.9894784092903137
+    },
+    {
+      "word": " to",
+      "start": 50.54,
+      "end": 50.98,
+      "probability": 0.9981212019920349
+    },
+    {
+      "word": " all",
+      "start": 50.98,
+      "end": 51.22,
+      "probability": 0.9978712797164917
+    },
+    {
+      "word": " the",
+      "start": 51.22,
+      "end": 51.34,
+      "probability": 0.19892215728759766
+    },
+    {
+      "word": " people",
+      "start": 51.34,
+      "end": 51.6,
+      "probability": 0.9805508852005005
+    },
+    {
+      "word": " I",
+      "start": 51.6,
+      "end": 51.8,
+      "probability": 0.9833812713623047
+    },
+    {
+      "word": " know",
+      "start": 51.8,
+      "end": 52.04,
+      "probability": 0.9975793957710266
+    },
+    {
+      "word": " there.",
+      "start": 52.04,
+      "end": 52.46,
+      "probability": 0.960701048374176
+    }
+  ],
+  "whisper_transcript_in_unit": "I know how it will be, his sister had said, when he was preparing to migrate to this rural retreat. You will bury yourself down there and not speak to a living soul, and your nerves will be worse than ever from moping. I shall just give you letters of introduction to all the people I know there.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.6991989170000039
+}

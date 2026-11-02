@@ -1,0 +1,186 @@
+{
+  "unit": "u000009",
+  "master_interval_seconds": [
+    89.02383333333333,
+    95.66383333333333
+  ],
+  "expected_text": "“Then you know practically nothing about my aunt?” pursued the self-possessed young lady.",
+  "ctc_transcript": "THEN YOU KNOW PRACTICALLY NOTHING ABOUT MY AUNT PURSUED THE SELF POSSESSED YOUNG LADY",
+  "ctc_words": [
+    {
+      "word": "THEN",
+      "start": 89.14419587109768,
+      "end": 89.44510221550856,
+      "mean_character_frame_posterior": 0.9965956211090088
+    },
+    {
+      "word": "YOU",
+      "start": 89.76606898288016,
+      "end": 89.84631067472306,
+      "mean_character_frame_posterior": 0.9985938866933187
+    },
+    {
+      "word": "KNOW",
+      "start": 89.92655236656596,
+      "end": 90.04691490433031,
+      "mean_character_frame_posterior": 0.9905875623226166
+    },
+    {
+      "word": "PRACTICALLY",
+      "start": 90.22745871097683,
+      "end": 90.88945266868076,
+      "mean_character_frame_posterior": 0.9411681186069142
+    },
+    {
+      "word": "NOTHING",
+      "start": 91.04993605236656,
+      "end": 91.45114451158106,
+      "mean_character_frame_posterior": 0.9877937350954328
+    },
+    {
+      "word": "ABOUT",
+      "start": 91.59156747230614,
+      "end": 91.83229254783484,
+      "mean_character_frame_posterior": 0.9997995376586915
+    },
+    {
+      "word": "MY",
+      "start": 91.91253423967774,
+      "end": 92.05295720040282,
+      "mean_character_frame_posterior": 0.9999716877937317
+    },
+    {
+      "word": "AUNT",
+      "start": 92.25356143001007,
+      "end": 92.41404481369587,
+      "mean_character_frame_posterior": 0.9970479607582092
+    },
+    {
+      "word": "PURSUED",
+      "start": 93.65779103726082,
+      "end": 94.13924118831822,
+      "mean_character_frame_posterior": 0.9998877899987357
+    },
+    {
+      "word": "THE",
+      "start": 94.1994224572004,
+      "end": 94.2796641490433,
+      "mean_character_frame_posterior": 0.997938871383667
+    },
+    {
+      "word": "SELF",
+      "start": 94.3599058408862,
+      "end": 94.54044964753272,
+      "mean_character_frame_posterior": 0.9999904930591583
+    },
+    {
+      "word": "POSSESSED",
+      "start": 94.64075176233635,
+      "end": 95.04196022155085,
+      "mean_character_frame_posterior": 0.9950970874892341
+    },
+    {
+      "word": "YOUNG",
+      "start": 95.10214149043303,
+      "end": 95.26262487411883,
+      "mean_character_frame_posterior": 0.999975609779358
+    },
+    {
+      "word": "LADY",
+      "start": 95.34286656596173,
+      "end": 95.58359164149043,
+      "mean_character_frame_posterior": 0.9155808687210083
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Then,",
+      "start": 89.16,
+      "end": 89.58,
+      "probability": 0.4367106258869171
+    },
+    {
+      "word": " you",
+      "start": 89.88,
+      "end": 89.88,
+      "probability": 0.942514181137085
+    },
+    {
+      "word": " know,",
+      "start": 89.88,
+      "end": 90.3,
+      "probability": 0.997931718826294
+    },
+    {
+      "word": " practically",
+      "start": 90.3,
+      "end": 90.66,
+      "probability": 0.9852146506309509
+    },
+    {
+      "word": " nothing",
+      "start": 90.66,
+      "end": 91.38,
+      "probability": 0.9801672101020813
+    },
+    {
+      "word": " about",
+      "start": 91.38,
+      "end": 91.8,
+      "probability": 0.9934317469596863
+    },
+    {
+      "word": " my",
+      "start": 91.8,
+      "end": 92.14,
+      "probability": 0.7768969535827637
+    },
+    {
+      "word": " aunt?",
+      "start": 92.14,
+      "end": 92.46,
+      "probability": 0.9922836422920227
+    },
+    {
+      "word": " Pursued",
+      "start": 93.64,
+      "end": 94.12,
+      "probability": 0.7038959860801697
+    },
+    {
+      "word": " the",
+      "start": 94.12,
+      "end": 94.32,
+      "probability": 0.8817497491836548
+    },
+    {
+      "word": " self",
+      "start": 94.32,
+      "end": 94.64,
+      "probability": 0.983974277973175
+    },
+    {
+      "word": "-possessed",
+      "start": 94.64,
+      "end": 94.98,
+      "probability": 0.9722422510385513
+    },
+    {
+      "word": " young",
+      "start": 94.98,
+      "end": 95.22,
+      "probability": 0.9685212969779968
+    },
+    {
+      "word": " lady.",
+      "start": 95.22,
+      "end": 95.62,
+      "probability": 0.997557520866394
+    }
+  ],
+  "whisper_transcript_in_unit": "Then, you know, practically nothing about my aunt? Pursued the self -possessed young lady.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.21183979200000636
+}

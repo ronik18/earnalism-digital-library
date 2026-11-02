@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561"
+    "backend/data/rights_decision_registry.json": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0"
   },
   "titles": {
     "a-ghost-story": {
@@ -729,8 +729,8 @@
       }
     },
     "the-selfish-giant": {
-      "decision_id": "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings",
-      "record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
+      "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
+      "record_sha256": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
@@ -1029,5 +1029,17 @@
     "predecessor_registry_sha256": "7adca30c0e4e1f3d23e9221ee6b4d9650eb9064c64143ea03cc09038015ee178",
     "reviewed_registry_sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561",
     "scope": "Already merged #614 and #624 source-QA registry additions only; no release/publication change"
+  },
+  "open_window_scored_sourceqa_successor_20261102": {
+    "path": "internal/legal/catalogue_clearance_20261002/reviewed_open_window_scored_sourceqa_successor_20261102.v1.json",
+    "sha256": "3d4dbe618fd8f5d1a3bd8767d362cba4a0b369a87275f9b8473eb51baadb1ba9",
+    "predecessor_registry_sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561",
+    "reviewed_registry_sha256": "d2a2baafc761ee5eafe89b3fd288da8dca71662dc8cf7aa047895d96fa539288",
+    "scope": "EXACT_NEW_RETAINED_SCORED_IN_AUDIO_SOURCE_QA_REGISTRATION_ONLY"
+  },
+  "selfish_private_stage_authority_successor_20261102": {
+    "path": "internal/legal/catalogue_clearance_20261002/reviewed_selfish_private_stage_authority_successor_20261102.v1.json",
+    "sha256": "11ce583507fb849331b1c8f0caa37c1788daba822455cfc96316ec423ee734ff",
+    "scope": "EXACT_SUPPORTED_PRIVATE_STAGE_READER_METADATA_REBIND_ONLY_OLD_PUBLIC_AUDIO_UNCHANGED"
   }
 }

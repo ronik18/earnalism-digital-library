@@ -1,0 +1,14 @@
+{
+  "schema": "earnalism.open_window_source_integrity.v1",
+  "status": "PASS_STRUCTURAL_SOURCE_CUSTODY_ONLY",
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "characters": 6918,
+  "whitespace_words": 1208,
+  "alphabetic_apostrophe_tokens": 1219,
+  "original39_spans_cover_in_order_once": true,
+  "missing_duplicated_reordered_source_plan_content": false,
+  "raw_hard_wrap_blocks": 109,
+  "actual_supported_reader_paragraphs": 21,
+  "retained_group_count": 29,
+  "source_custody_is_not_independent_audible_word_coverage": true
+}

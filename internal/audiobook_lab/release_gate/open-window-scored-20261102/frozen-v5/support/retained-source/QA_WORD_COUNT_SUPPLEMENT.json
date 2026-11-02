@@ -1,0 +1,20 @@
+{
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "master_wav_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+  "listener_mp3_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+  "structural_coverage": {
+    "verdict": "PASS",
+    "source_words": 1219,
+    "mapped_words": 1219,
+    "source_plan_missing_words": 0,
+    "source_plan_duplicated_words": 0,
+    "source_plan_reordered_words": 0,
+    "all_39_source_segments_retained_in_order": true,
+    "unmodified_prefix_suffix_pcm_exact": true,
+    "repair_pcm_exact": true,
+    "limit": "Source/custody completeness is not independently verified audible word coverage. Existing remaining region uncertainties retained.",
+    "word_count_convention": "1219 alphabetic/apostrophe tokens; 1208 whitespace tokens used by existing package contract (hyphen compounds remain single tokens).",
+    "source_whitespace_word_count": 1208,
+    "mapped_whitespace_word_count": 1208
+  }
+}

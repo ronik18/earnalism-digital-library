@@ -1,0 +1,420 @@
+{
+  "unit": "u000020",
+  "master_interval_seconds": [
+    236.52029166666668,
+    246.60029166666666
+  ],
+  "expected_text": "She broke off with a little shudder. It was a relief to Framton when the aunt bustled into the room with a whirl of apologies for being late in making her appearance.",
+  "ctc_transcript": "SHE BROKE OFF WITH A LITTLE SHUDDER IT WAS A RELIEF TO FRANPTON WHEN THE AUNT BUSTLED INTO THE ROOM WITH A WHIRL OF APOLOGIES FOR BEING LATE IN MAKING HER APPEARANCE",
+  "ctc_words": [
+    {
+      "word": "SHE",
+      "start": 236.66056999668655,
+      "end": 236.7607688038436,
+      "mean_character_frame_posterior": 0.999981681505839
+    },
+    {
+      "word": "BROKE",
+      "start": 236.8609676110007,
+      "end": 237.12148450960902,
+      "mean_character_frame_posterior": 0.9652373552322387
+    },
+    {
+      "word": "OFF",
+      "start": 237.30184236249173,
+      "end": 237.4220809310802,
+      "mean_character_frame_posterior": 0.894277811050415
+    },
+    {
+      "word": "WITH",
+      "start": 237.50223997680584,
+      "end": 237.6024387839629,
+      "mean_character_frame_posterior": 0.9990033209323883
+    },
+    {
+      "word": "A",
+      "start": 237.68259782968855,
+      "end": 237.70263759111995,
+      "mean_character_frame_posterior": 0.9954654574394226
+    },
+    {
+      "word": "LITTLE",
+      "start": 237.7827966368456,
+      "end": 238.00323401259112,
+      "mean_character_frame_posterior": 0.9999124606450399
+    },
+    {
+      "word": "SHUDDER",
+      "start": 238.08339305831677,
+      "end": 238.38398947978794,
+      "mean_character_frame_posterior": 0.9844826034137181
+    },
+    {
+      "word": "IT",
+      "start": 239.22565945990723,
+      "end": 239.26573898277005,
+      "mean_character_frame_posterior": 0.9999772310256958
+    },
+    {
+      "word": "WAS",
+      "start": 239.3258582670643,
+      "end": 239.42605707422135,
+      "mean_character_frame_posterior": 0.9999840259552002
+    },
+    {
+      "word": "A",
+      "start": 239.5262558813784,
+      "end": 239.5462956428098,
+      "mean_character_frame_posterior": 0.9965226650238037
+    },
+    {
+      "word": "RELIEF",
+      "start": 239.60641492710405,
+      "end": 240.00721015573228,
+      "mean_character_frame_posterior": 0.999976396560669
+    },
+    {
+      "word": "TO",
+      "start": 240.08736920145793,
+      "end": 240.16752824718358,
+      "mean_character_frame_posterior": 0.9998569786548615
+    },
+    {
+      "word": "FRANPTON",
+      "start": 240.24768729290923,
+      "end": 240.66852228296887,
+      "mean_character_frame_posterior": 0.9400117099285126
+    },
+    {
+      "word": "WHEN",
+      "start": 240.7286415672631,
+      "end": 240.82884037442017,
+      "mean_character_frame_posterior": 0.9997971802949905
+    },
+    {
+      "word": "THE",
+      "start": 240.86891989728298,
+      "end": 240.92903918157722,
+      "mean_character_frame_posterior": 0.9389018813769022
+    },
+    {
+      "word": "AUNT",
+      "start": 241.10939703445993,
+      "end": 241.2496753644798,
+      "mean_character_frame_posterior": 0.9629939049482346
+    },
+    {
+      "word": "BUSTLED",
+      "start": 241.3899536944997,
+      "end": 241.7707091616965,
+      "mean_character_frame_posterior": 0.9935904230390277
+    },
+    {
+      "word": "INTO",
+      "start": 241.89094773028498,
+      "end": 242.05126582173625,
+      "mean_character_frame_posterior": 0.9993414580821991
+    },
+    {
+      "word": "THE",
+      "start": 242.1314248674619,
+      "end": 242.19154415175615,
+      "mean_character_frame_posterior": 0.9997371236483256
+    },
+    {
+      "word": "ROOM",
+      "start": 242.2717031974818,
+      "end": 242.49214057322732,
+      "mean_character_frame_posterior": 0.9880844056606293
+    },
+    {
+      "word": "WITH",
+      "start": 242.59233938038437,
+      "end": 242.71257794897284,
+      "mean_character_frame_posterior": 0.9985564202070236
+    },
+    {
+      "word": "A",
+      "start": 242.8328165175613,
+      "end": 242.85285627899273,
+      "mean_character_frame_posterior": 0.9966961145401001
+    },
+    {
+      "word": "WHIRL",
+      "start": 242.9530550861498,
+      "end": 243.25365150762096,
+      "mean_character_frame_posterior": 0.9660920262336731
+    },
+    {
+      "word": "OF",
+      "start": 243.43400936050367,
+      "end": 243.47408888336648,
+      "mean_character_frame_posterior": 0.9999598264694214
+    },
+    {
+      "word": "APOLOGIES",
+      "start": 243.57428769052353,
+      "end": 244.1955202948973,
+      "mean_character_frame_posterior": 0.9948776695463393
+    },
+    {
+      "word": "FOR",
+      "start": 244.27567934062293,
+      "end": 244.37587814777999,
+      "mean_character_frame_posterior": 0.9999722242355347
+    },
+    {
+      "word": "BEING",
+      "start": 244.45603719350564,
+      "end": 244.63639504638834,
+      "mean_character_frame_posterior": 0.9996336340904236
+    },
+    {
+      "word": "LATE",
+      "start": 244.7365938535454,
+      "end": 244.97707099072235,
+      "mean_character_frame_posterior": 0.9999284893274307
+    },
+    {
+      "word": "IN",
+      "start": 245.13738908217363,
+      "end": 245.17746860503647,
+      "mean_character_frame_posterior": 0.9996641874313354
+    },
+    {
+      "word": "MAKING",
+      "start": 245.29770717362493,
+      "end": 245.5782638336647,
+      "mean_character_frame_posterior": 0.9565164744853973
+    },
+    {
+      "word": "HER",
+      "start": 245.63838311795894,
+      "end": 245.738581925116,
+      "mean_character_frame_posterior": 0.9997256000836691
+    },
+    {
+      "word": "APPEARANCE",
+      "start": 245.81874097084162,
+      "end": 246.41993381378398,
+      "mean_character_frame_posterior": 0.9953760087490082
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "franpton"
+      ],
+      "reference_word_span": [
+        12,
+        13
+      ],
+      "recognized_word_span": [
+        12,
+        13
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " She",
+      "start": 236.56,
+      "end": 236.8,
+      "probability": 0.9787888526916504
+    },
+    {
+      "word": " broke",
+      "start": 236.8,
+      "end": 237.06,
+      "probability": 0.9989796280860901
+    },
+    {
+      "word": " off",
+      "start": 237.06,
+      "end": 237.52,
+      "probability": 0.9898802042007446
+    },
+    {
+      "word": " with",
+      "start": 237.52,
+      "end": 237.66,
+      "probability": 0.9952318072319031
+    },
+    {
+      "word": " a",
+      "start": 237.66,
+      "end": 237.76,
+      "probability": 0.993776798248291
+    },
+    {
+      "word": " little",
+      "start": 237.76,
+      "end": 237.98,
+      "probability": 0.9958236217498779
+    },
+    {
+      "word": " shudder.",
+      "start": 237.98,
+      "end": 238.4,
+      "probability": 0.49662303924560547
+    },
+    {
+      "word": " It",
+      "start": 238.4,
+      "end": 239.22,
+      "probability": 0.20291051268577576
+    },
+    {
+      "word": " was",
+      "start": 239.22,
+      "end": 239.44,
+      "probability": 0.9922633171081543
+    },
+    {
+      "word": " a",
+      "start": 239.44,
+      "end": 239.58,
+      "probability": 0.9914534091949463
+    },
+    {
+      "word": " relief",
+      "start": 239.58,
+      "end": 239.98,
+      "probability": 0.998730480670929
+    },
+    {
+      "word": " to",
+      "start": 239.98,
+      "end": 240.34,
+      "probability": 0.9974180459976196
+    },
+    {
+      "word": " Frampton",
+      "start": 240.34,
+      "end": 240.62,
+      "probability": 0.7550375163555145
+    },
+    {
+      "word": " when",
+      "start": 240.62,
+      "end": 240.86,
+      "probability": 0.9438095092773438
+    },
+    {
+      "word": " the",
+      "start": 240.86,
+      "end": 241.08,
+      "probability": 0.9814001321792603
+    },
+    {
+      "word": " aunt",
+      "start": 241.08,
+      "end": 241.3,
+      "probability": 0.934836745262146
+    },
+    {
+      "word": " bustled",
+      "start": 241.3,
+      "end": 241.78,
+      "probability": 0.938145786523819
+    },
+    {
+      "word": " into",
+      "start": 241.78,
+      "end": 242.06,
+      "probability": 0.9944217801094055
+    },
+    {
+      "word": " the",
+      "start": 242.06,
+      "end": 242.28,
+      "probability": 0.9962500929832458
+    },
+    {
+      "word": " room",
+      "start": 242.28,
+      "end": 242.52,
+      "probability": 0.9992737174034119
+    },
+    {
+      "word": " with",
+      "start": 242.52,
+      "end": 242.78,
+      "probability": 0.9846323728561401
+    },
+    {
+      "word": " a",
+      "start": 242.78,
+      "end": 242.86,
+      "probability": 0.9788498282432556
+    },
+    {
+      "word": " whirl",
+      "start": 242.86,
+      "end": 243.26,
+      "probability": 0.9716992378234863
+    },
+    {
+      "word": " of",
+      "start": 243.26,
+      "end": 243.54,
+      "probability": 0.9965360164642334
+    },
+    {
+      "word": " apologies",
+      "start": 243.54,
+      "end": 244.12,
+      "probability": 0.9520791172981262
+    },
+    {
+      "word": " for",
+      "start": 244.12,
+      "end": 244.44,
+      "probability": 0.9962722063064575
+    },
+    {
+      "word": " being",
+      "start": 244.44,
+      "end": 244.66,
+      "probability": 0.9935442209243774
+    },
+    {
+      "word": " late",
+      "start": 244.66,
+      "end": 245.0,
+      "probability": 0.997066080570221
+    },
+    {
+      "word": " in",
+      "start": 245.0,
+      "end": 245.24,
+      "probability": 0.7195596694946289
+    },
+    {
+      "word": " making",
+      "start": 245.24,
+      "end": 245.52,
+      "probability": 0.9983355402946472
+    },
+    {
+      "word": " her",
+      "start": 245.52,
+      "end": 245.78,
+      "probability": 0.987740695476532
+    },
+    {
+      "word": " appearance.",
+      "start": 245.78,
+      "end": 246.52,
+      "probability": 0.9865878224372864
+    }
+  ],
+  "whisper_transcript_in_unit": "She broke off with a little shudder. It was a relief to Frampton when the aunt bustled into the room with a whirl of apologies for being late in making her appearance.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.3524867080000007
+}

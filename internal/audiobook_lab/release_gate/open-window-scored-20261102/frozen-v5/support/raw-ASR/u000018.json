@@ -1,0 +1,636 @@
+{
+  "unit": "u000018",
+  "master_interval_seconds": [
+    208.089,
+    225.849
+  ],
+  "expected_text": "Poor dear aunt, she has often told me how they went out, her husband with his white waterproof coat over his arm, and Ronnie, her youngest brother, singing ‘Bertie, why do you bound?’ as he always did to tease her, because she said it got on her nerves.",
+  "ctc_transcript": "POOR DEAR AUNT SHE HAS OFTEN TOLD ME HOW THEY WENT OUT HER HUSBAND WITH HIS WHITE WATER PROOF COAT OVER HIS ARM AND RAWNIE HER YOUNGEST BROTHER SINGING BERTIE WHY DO YOU BOUND AS HE ALWAYS DID TO TEASE HER BECAUSE SHE SAID IT GOT ON HER NERVES",
+  "ctc_words": [
+    {
+      "word": "POOR",
+      "start": 208.18911273957158,
+      "end": 208.48945095828637,
+      "mean_character_frame_posterior": 0.9893376529216766
+    },
+    {
+      "word": "DEAR",
+      "start": 208.68967643742954,
+      "end": 208.8698793686584,
+      "mean_character_frame_posterior": 0.9492891877889633
+    },
+    {
+      "word": "AUNT",
+      "start": 209.13017249154453,
+      "end": 209.29035287485908,
+      "mean_character_frame_posterior": 0.9857874065637589
+    },
+    {
+      "word": "SHE",
+      "start": 209.85098421645998,
+      "end": 209.97111950394589,
+      "mean_character_frame_posterior": 0.9995770851771036
+    },
+    {
+      "word": "HAS",
+      "start": 210.07123224351747,
+      "end": 210.17134498308906,
+      "mean_character_frame_posterior": 0.9999154408772787
+    },
+    {
+      "word": "OFTEN",
+      "start": 210.39159301014655,
+      "end": 210.63186358511837,
+      "mean_character_frame_posterior": 0.9995279669761657
+    },
+    {
+      "word": "TOLD",
+      "start": 210.75199887260428,
+      "end": 210.9922694475761,
+      "mean_character_frame_posterior": 0.9971650391817093
+    },
+    {
+      "word": "ME",
+      "start": 211.07235963923338,
+      "end": 211.13242728297632,
+      "mean_character_frame_posterior": 0.8877354562282562
+    },
+    {
+      "word": "HOW",
+      "start": 211.2125174746336,
+      "end": 211.31263021420517,
+      "mean_character_frame_posterior": 0.9999689261118571
+    },
+    {
+      "word": "THEY",
+      "start": 211.35267531003382,
+      "end": 211.4527880496054,
+      "mean_character_frame_posterior": 0.9858099818229675
+    },
+    {
+      "word": "WENT",
+      "start": 211.5328782412627,
+      "end": 211.6730360766629,
+      "mean_character_frame_posterior": 0.9989322572946548
+    },
+    {
+      "word": "OUT",
+      "start": 211.83321645997745,
+      "end": 211.95335174746336,
+      "mean_character_frame_posterior": 0.9998029470443726
+    },
+    {
+      "word": "HER",
+      "start": 212.57405073280722,
+      "end": 212.6741634723788,
+      "mean_character_frame_posterior": 0.9994340340296427
+    },
+    {
+      "word": "HUSBAND",
+      "start": 212.7742762119504,
+      "end": 213.13468207440812,
+      "mean_character_frame_posterior": 0.998775133064815
+    },
+    {
+      "word": "WITH",
+      "start": 213.19474971815106,
+      "end": 213.29486245772267,
+      "mean_character_frame_posterior": 0.9998513758182526
+    },
+    {
+      "word": "HIS",
+      "start": 213.3549301014656,
+      "end": 213.43502029312288,
+      "mean_character_frame_posterior": 0.8716042836507162
+    },
+    {
+      "word": "WHITE",
+      "start": 213.5351330326945,
+      "end": 213.75538105975198,
+      "mean_character_frame_posterior": 0.9632688641548157
+    },
+    {
+      "word": "WATER",
+      "start": 213.85549379932357,
+      "end": 214.135809470124,
+      "mean_character_frame_posterior": 0.9983079314231873
+    },
+    {
+      "word": "PROOF",
+      "start": 214.2158996617813,
+      "end": 214.39610259301014,
+      "mean_character_frame_posterior": 0.9991448283195495
+    },
+    {
+      "word": "COAT",
+      "start": 214.49621533258173,
+      "end": 214.71646335963922,
+      "mean_character_frame_posterior": 0.9995534271001816
+    },
+    {
+      "word": "OVER",
+      "start": 214.87664374295377,
+      "end": 215.05684667418262,
+      "mean_character_frame_posterior": 0.9988770186901093
+    },
+    {
+      "word": "HIS",
+      "start": 215.1369368658399,
+      "end": 215.21702705749718,
+      "mean_character_frame_posterior": 0.999724288781484
+    },
+    {
+      "word": "ARM",
+      "start": 215.457297632469,
+      "end": 215.55741037204058,
+      "mean_character_frame_posterior": 0.9998718698819479
+    },
+    {
+      "word": "AND",
+      "start": 215.99790642615557,
+      "end": 216.05797406989853,
+      "mean_character_frame_posterior": 0.9929029941558838
+    },
+    {
+      "word": "RAWNIE",
+      "start": 216.19813190529877,
+      "end": 216.53851521984217,
+      "mean_character_frame_posterior": 0.9835318525632223
+    },
+    {
+      "word": "HER",
+      "start": 216.9389661781285,
+      "end": 217.03907891770012,
+      "mean_character_frame_posterior": 0.9984641671180725
+    },
+    {
+      "word": "YOUNGEST",
+      "start": 217.1191691093574,
+      "end": 217.43952987598647,
+      "mean_character_frame_posterior": 0.9956811964511871
+    },
+    {
+      "word": "BROTHER",
+      "start": 217.51962006764373,
+      "end": 217.83998083427284,
+      "mean_character_frame_posterior": 0.9997545395578656
+    },
+    {
+      "word": "SINGING",
+      "start": 218.2604543404735,
+      "end": 218.6008376550169,
+      "mean_character_frame_posterior": 0.9487277695110866
+    },
+    {
+      "word": "BERTIE",
+      "start": 219.2816042841037,
+      "end": 219.62198759864714,
+      "mean_character_frame_posterior": 0.8757344782352448
+    },
+    {
+      "word": "WHY",
+      "start": 220.34279932356256,
+      "end": 220.4829571589628,
+      "mean_character_frame_posterior": 0.9993200699488322
+    },
+    {
+      "word": "DO",
+      "start": 220.52300225479144,
+      "end": 220.58306989853438,
+      "mean_character_frame_posterior": 0.7994751036167145
+    },
+    {
+      "word": "YOU",
+      "start": 220.62311499436302,
+      "end": 220.70320518602028,
+      "mean_character_frame_posterior": 0.8505056699117025
+    },
+    {
+      "word": "BOUND",
+      "start": 220.78329537767758,
+      "end": 221.10365614430665,
+      "mean_character_frame_posterior": 0.9882719993591309
+    },
+    {
+      "word": "AS",
+      "start": 221.90455806087937,
+      "end": 221.96462570462234,
+      "mean_character_frame_posterior": 0.9999290108680725
+    },
+    {
+      "word": "HE",
+      "start": 222.02469334836528,
+      "end": 222.10478354002254,
+      "mean_character_frame_posterior": 0.9994131624698639
+    },
+    {
+      "word": "ALWAYS",
+      "start": 222.2649639233371,
+      "end": 222.5052344983089,
+      "mean_character_frame_posterior": 0.999835342168808
+    },
+    {
+      "word": "DID",
+      "start": 222.6053472378805,
+      "end": 222.78555016910934,
+      "mean_character_frame_posterior": 0.9554718732833862
+    },
+    {
+      "word": "TO",
+      "start": 222.86564036076663,
+      "end": 222.9457305524239,
+      "mean_character_frame_posterior": 0.9999224543571472
+    },
+    {
+      "word": "TEASE",
+      "start": 223.02582074408116,
+      "end": 223.26609131905298,
+      "mean_character_frame_posterior": 0.9999738693237304
+    },
+    {
+      "word": "HER",
+      "start": 223.32615896279594,
+      "end": 223.44629425028185,
+      "mean_character_frame_posterior": 0.9970536629358927
+    },
+    {
+      "word": "BECAUSE",
+      "start": 223.8267226606539,
+      "end": 224.08701578354,
+      "mean_character_frame_posterior": 0.9999844687325614
+    },
+    {
+      "word": "SHE",
+      "start": 224.12706087936866,
+      "end": 224.20715107102592,
+      "mean_character_frame_posterior": 0.9199456175168356
+    },
+    {
+      "word": "SAID",
+      "start": 224.32728635851183,
+      "end": 224.52751183765503,
+      "mean_character_frame_posterior": 0.9992122948169708
+    },
+    {
+      "word": "IT",
+      "start": 224.6076020293123,
+      "end": 224.64764712514094,
+      "mean_character_frame_posterior": 0.9680728316307068
+    },
+    {
+      "word": "GOT",
+      "start": 224.7277373167982,
+      "end": 224.96800789177001,
+      "mean_character_frame_posterior": 0.9995642701784769
+    },
+    {
+      "word": "ON",
+      "start": 225.0681206313416,
+      "end": 225.10816572717025,
+      "mean_character_frame_posterior": 0.981363832950592
+    },
+    {
+      "word": "HER",
+      "start": 225.1882559188275,
+      "end": 225.2883686583991,
+      "mean_character_frame_posterior": 0.9981778264045715
+    },
+    {
+      "word": "NERVES",
+      "start": 225.32841375422774,
+      "end": 225.66879706877114,
+      "mean_character_frame_posterior": 0.971965620915095
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "waterproof"
+      ],
+      "recognized": [
+        "water",
+        "proof"
+      ],
+      "reference_word_span": [
+        17,
+        18
+      ],
+      "recognized_word_span": [
+        17,
+        19
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "ronnie"
+      ],
+      "recognized": [
+        "rawnie"
+      ],
+      "reference_word_span": [
+        23,
+        24
+      ],
+      "recognized_word_span": [
+        24,
+        25
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Poor,",
+      "start": 208.2,
+      "end": 208.58,
+      "probability": 0.9121597409248352
+    },
+    {
+      "word": " dear",
+      "start": 208.74,
+      "end": 208.88,
+      "probability": 0.9889523386955261
+    },
+    {
+      "word": " Anne,",
+      "start": 208.88,
+      "end": 209.32,
+      "probability": 0.662345826625824
+    },
+    {
+      "word": " she",
+      "start": 209.74,
+      "end": 210.0,
+      "probability": 0.9847682118415833
+    },
+    {
+      "word": " has",
+      "start": 210.0,
+      "end": 210.26,
+      "probability": 0.9942556023597717
+    },
+    {
+      "word": " often",
+      "start": 210.26,
+      "end": 210.64,
+      "probability": 0.9981735944747925
+    },
+    {
+      "word": " told",
+      "start": 210.64,
+      "end": 210.94,
+      "probability": 0.9990925788879395
+    },
+    {
+      "word": " me",
+      "start": 210.94,
+      "end": 211.2,
+      "probability": 0.9981827735900879
+    },
+    {
+      "word": " how",
+      "start": 211.2,
+      "end": 211.34,
+      "probability": 0.9976108074188232
+    },
+    {
+      "word": " they",
+      "start": 211.34,
+      "end": 211.5,
+      "probability": 0.9969775676727295
+    },
+    {
+      "word": " went",
+      "start": 211.5,
+      "end": 211.64,
+      "probability": 0.9956783652305603
+    },
+    {
+      "word": " out.",
+      "start": 211.64,
+      "end": 212.08,
+      "probability": 0.9992949962615967
+    },
+    {
+      "word": " Her",
+      "start": 212.54,
+      "end": 212.68,
+      "probability": 0.9967417120933533
+    },
+    {
+      "word": " husband",
+      "start": 212.68,
+      "end": 213.04,
+      "probability": 0.9990137815475464
+    },
+    {
+      "word": " with",
+      "start": 213.04,
+      "end": 213.32,
+      "probability": 0.8830111026763916
+    },
+    {
+      "word": " his",
+      "start": 213.32,
+      "end": 213.64,
+      "probability": 0.9936849474906921
+    },
+    {
+      "word": " White",
+      "start": 213.64,
+      "end": 213.94,
+      "probability": 0.26464951038360596
+    },
+    {
+      "word": " waterproof",
+      "start": 213.94,
+      "end": 214.32,
+      "probability": 0.8660666346549988
+    },
+    {
+      "word": " coat",
+      "start": 214.32,
+      "end": 214.78,
+      "probability": 0.9981757402420044
+    },
+    {
+      "word": " over",
+      "start": 214.78,
+      "end": 215.04,
+      "probability": 0.9592856764793396
+    },
+    {
+      "word": " his",
+      "start": 215.04,
+      "end": 215.3,
+      "probability": 0.9785873293876648
+    },
+    {
+      "word": " arm,",
+      "start": 215.3,
+      "end": 215.74,
+      "probability": 0.9932292699813843
+    },
+    {
+      "word": " and",
+      "start": 216.0,
+      "end": 216.2,
+      "probability": 0.9750956892967224
+    },
+    {
+      "word": " Ronnie,",
+      "start": 216.2,
+      "end": 216.52,
+      "probability": 0.6299089193344116
+    },
+    {
+      "word": " her",
+      "start": 216.92,
+      "end": 217.04,
+      "probability": 0.9972800016403198
+    },
+    {
+      "word": " youngest",
+      "start": 217.04,
+      "end": 217.38,
+      "probability": 0.9938259124755859
+    },
+    {
+      "word": " brother,",
+      "start": 217.38,
+      "end": 217.88,
+      "probability": 0.9963383674621582
+    },
+    {
+      "word": " singing,",
+      "start": 218.38,
+      "end": 218.56,
+      "probability": 0.9847497940063477
+    },
+    {
+      "word": " birdie,",
+      "start": 219.34,
+      "end": 219.86,
+      "probability": 0.476187527179718
+    },
+    {
+      "word": " why",
+      "start": 220.42,
+      "end": 220.5,
+      "probability": 0.6578668355941772
+    },
+    {
+      "word": " do",
+      "start": 220.5,
+      "end": 220.62,
+      "probability": 0.9912029504776001
+    },
+    {
+      "word": " you",
+      "start": 220.62,
+      "end": 220.76,
+      "probability": 0.9985007047653198
+    },
+    {
+      "word": " bound?",
+      "start": 220.76,
+      "end": 221.14,
+      "probability": 0.8271871209144592
+    },
+    {
+      "word": " As",
+      "start": 221.86,
+      "end": 222.0,
+      "probability": 0.9780584573745728
+    },
+    {
+      "word": " he",
+      "start": 222.0,
+      "end": 222.2,
+      "probability": 0.9583016037940979
+    },
+    {
+      "word": " always",
+      "start": 222.2,
+      "end": 222.6,
+      "probability": 0.9886640906333923
+    },
+    {
+      "word": " did",
+      "start": 222.6,
+      "end": 222.86,
+      "probability": 0.9969251751899719
+    },
+    {
+      "word": " to",
+      "start": 222.86,
+      "end": 223.02,
+      "probability": 0.980897068977356
+    },
+    {
+      "word": " tease",
+      "start": 223.02,
+      "end": 223.24,
+      "probability": 0.9978208541870117
+    },
+    {
+      "word": " her,",
+      "start": 223.24,
+      "end": 223.62,
+      "probability": 0.9983165264129639
+    },
+    {
+      "word": " because",
+      "start": 223.82,
+      "end": 224.06,
+      "probability": 0.9911365509033203
+    },
+    {
+      "word": " she",
+      "start": 224.06,
+      "end": 224.22,
+      "probability": 0.984363853931427
+    },
+    {
+      "word": " said",
+      "start": 224.22,
+      "end": 224.54,
+      "probability": 0.9930383563041687
+    },
+    {
+      "word": " it",
+      "start": 224.54,
+      "end": 224.74,
+      "probability": 0.9876973032951355
+    },
+    {
+      "word": " got",
+      "start": 224.74,
+      "end": 224.9,
+      "probability": 0.9924496412277222
+    },
+    {
+      "word": " on",
+      "start": 224.9,
+      "end": 225.18,
+      "probability": 0.9968017339706421
+    },
+    {
+      "word": " her",
+      "start": 225.18,
+      "end": 225.3,
+      "probability": 0.990990161895752
+    },
+    {
+      "word": " nerves.",
+      "start": 225.3,
+      "end": 225.72,
+      "probability": 0.9988569021224976
+    }
+  ],
+  "whisper_transcript_in_unit": "Poor, dear Anne, she has often told me how they went out. Her husband with his White waterproof coat over his arm, and Ronnie, her youngest brother, singing, birdie, why do you bound? As he always did to tease her, because she said it got on her nerves.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.6110343330000063
+}
