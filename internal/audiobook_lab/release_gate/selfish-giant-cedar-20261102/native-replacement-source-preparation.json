@@ -74,10 +74,10 @@
     }
   },
   "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3",
-  "actual_application_source_commit": "14bd75445ee19366ea1a57468c7e08601b490b0c",
+  "actual_application_source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
   "actual_staged_runtime_inventory": {
     "files": 1952,
-    "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3",
+    "expected_sha256": "84336513d7987ed60436e0ed750892ff86a9d54d2070b214601c6e0d49c70412",
     "builder_verification": "PASS"
   },
   "ci_source_binding_successor": {
@@ -104,5 +104,28 @@
     "hosted_successor_ci": "PENDING_FRESH_EXACT_HEAD",
     "runtime_publication": "BLOCKED_ALL_REAL_NEW_GATES_UNPERFORMED",
     "new_allocation_synthesis": false
+  },
+  "before_request_state_compatibility_fix": {
+    "actual_application_source_commit": "14bd75445ee19366ea1a57468c7e08601b490b0c",
+    "actual_staged_runtime_inventory": {
+      "files": 1952,
+      "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3",
+      "builder_verification": "PASS"
+    }
+  },
+  "legacy_request_state_compatibility_successor": {
+    "at": "2026-11-02T03:18:33.758662+00:00",
+    "previous_reviewed_head": "9c585b577fa1db0c943565e6402fff37fa582eff",
+    "source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
+    "server_sha256": "9c11d87384ba6a3101fefa6bc3db962dc2bfc9eeddb83df3dc6384e7e6fb67fa",
+    "changed_behavior": "Missing optional internal request.state selects no private authority; real verified state behavior unchanged",
+    "source_change": "Exactly3 nested getattr reads; no tests, guard logic or protected handler AST changed",
+    "independent_review_sha256": "5f6a68d71dad45bce8f72c6fdda9cc7fd8c7cc88e43acf3c16f27d27a68b0043",
+    "canonical_affected_tests_passed": 160,
+    "independent_legacy_B2_tests_passed": 35,
+    "source_binding": "Only3 supported application identity fields updated; old owner receipt and OPEN state unchanged",
+    "full_hosted_successor_ci": "PENDING",
+    "reused_frontend_surface_sha256": "81da53d9933e03f52f3936b0d159b5497f2d92171f48a9b7b124735c2936b867",
+    "real_production_gates": "ALL_UNPERFORMED_FOR_NEW_PACKAGE"
   }
 }
