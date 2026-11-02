@@ -9693,6 +9693,11 @@
       "sha256": "df15604a8dabdcd18de03ab9398bc02e0844a4637765dd3855a8f321d8294ccd"
     },
     {
+      "path": "reading_pass_admission.py",
+      "bytes": 13419,
+      "sha256": "0203529ddb176e8740dae3e36c317ebea0be8c7df5f2ff089022eef9d46754ac"
+    },
+    {
       "path": "reading_pass_service.py",
       "bytes": 96366,
       "sha256": "09b2b4af430b9c321c28f72051908f7f3b83c92595ee41e36a35ec99c5de875f"
@@ -9729,8 +9734,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 634107,
-      "sha256": "8509e7e484dfa81b089768ced70d4bd9d2e97176ba53d90d25c672c1a0989c06"
+      "bytes": 639505,
+      "sha256": "b7ea5bc8b0e3143a9d4f7ec74601a05fc1ecbb17ab910aa93e4fb70b62650089"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9798,5 +9803,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "3fff180061f59b1198658870a3d98e3c4992ff4b3db353e37ed61dc43698c393"
+  "expected_sha256": "a2893e47dc76a1bf67ce6d2fabd0c4b9f7b5ddbaf372d37276a92a1ddf137f42"
 }

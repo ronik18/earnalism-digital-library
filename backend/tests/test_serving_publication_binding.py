@@ -83,6 +83,14 @@ def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypat
         os.environ.setdefault('READING_PASS_TOKEN_SECRET', 'binding-test-only-not-production')
         from backend import server, catalog_truth
         from backend.utils import deployment_attestation
+        # The route supports both uvicorn module layouts. Bind its actual
+        # metadata imports as well as package imports in a mixed test process.
+        try:
+            import catalog_truth as route_catalog_truth
+            from utils import deployment_attestation as route_deployment_attestation
+        except ImportError:
+            route_catalog_truth = catalog_truth
+            route_deployment_attestation = deployment_attestation
         from backend.tests.test_reading_pass_service_concurrency import Collection
         from httpx import ASGITransport, AsyncClient
         args = fixture(tmp_path)
@@ -103,9 +111,11 @@ def test_authenticated_route_metadata_and_fail_closed_states(tmp_path, monkeypat
         async def cache_write(*_args): raise AssertionError('Diagnostic must not populate cache')
         monkeypatch.setattr(server, '_redis_cache_get', cache_get)
         monkeypatch.setattr(server, '_redis_cache_set', cache_write)
-        monkeypatch.setattr(catalog_truth, 'controlled_artifact_dir', lambda slug: args['root'])
-        monkeypatch.setattr(deployment_attestation, 'deployment_attestation',
-            lambda: {'status': 'UNAVAILABLE' if case == 'missing-provider' else 'AVAILABLE', 'git_sha': 'f'*40})
+        for module in {catalog_truth, route_catalog_truth}:
+            monkeypatch.setattr(module, 'controlled_artifact_dir', lambda slug: args['root'])
+        for module in {deployment_attestation, route_deployment_attestation}:
+            monkeypatch.setattr(module, 'deployment_attestation',
+                lambda: {'status': 'UNAVAILABLE' if case == 'missing-provider' else 'AVAILABLE', 'git_sha': 'f'*40})
         async def admin(): return {'role': 'admin', 'id': 'synthetic-admin'}
         server.app.dependency_overrides[server.require_admin] = admin
         try:
