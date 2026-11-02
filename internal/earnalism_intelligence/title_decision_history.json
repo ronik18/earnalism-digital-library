@@ -13630,5 +13630,18 @@
     "review": "Prior v2 code and additive learning review retained; this narrow successor reviewed separately before final exacthead publication",
     "provider_or_policy_or_DB_or_paid_actions": false,
     "next_exact_prompt": "Review narrow predicate/test and additive records, then transport samePR633 successor and require fresh exact-head CI; never rerun failed providers."
+  },
+  "reader612_startup_proof_consumer_correction_20261103": {
+    "at": "2026-11-02T21:59:21.567796+00:00",
+    "lane": "Integration source-only exact-head CI correction",
+    "decision": "PROPAGATE_REQUIRED_STARTUP_PROOF_THROUGH_REAL_READER_RECOVERY_CALLER",
+    "failed_head": "c159a2eb6bb8e13e013b111114db2c9288e4aea4",
+    "failed_run": 41530735279,
+    "actual_failure": "Reader61274-testgroup:1stalecontrollerdependencyinventory+7bootstrapcallerpaths missingnewrequiredstartupreceipt; no providerfailedjobrerun",
+    "correction": "Bind optional complete5hashstartup inputs insideauthenticatedcoveredparent beforeapproval; incompleteofflinepreparation remainsnotauthority. Addactualstartup_read capability defaultNone, failclosedbeforeproviderreads ifunbound, validateexactguardreceipt afterbaseline/source/protocol checks, projectonly2safe fields. Rebuildexactcontrollerdependencyinventoryincludingnewhelper; preserveallrole/artifact/defaultfalsefields. Positivefixtures useexplicit syntheticproof; newnegativecases covermissing/partial/staleoroverridingcapability andcoverage.",
+    "tests": "ExactReadergroup78PASS; composed14module164unittestPASS; no liveDB/provider or actualqualification",
+    "independent_review_sha256": "9ae835b4b166b2e5515e1bb0320c9775f3fd18bd0039b74820345870c51ae43a",
+    "policy_or_provider_or_DB_or_paid_actions": false,
+    "next_exact_prompt": "Reviewadditivelearning, commitactualconsumer/derivedbindingfix, normalFFsame633 andrequirefreshsuccessor exact-headCI/publishedreview before source merge; failedc159 remainsfailed."
   }
 }

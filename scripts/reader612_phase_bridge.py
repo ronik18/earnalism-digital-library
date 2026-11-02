@@ -26,6 +26,8 @@ OWNER_SCOPE={'guarded_native_qualification','temporary_purchase_pause','conditio
     'separate_closed_source_exception','preserve_reader_listener','no_paid_sessions','no_financial_mutations',
     'no_resources_settings_redis_or_us_changes'}
 SCHEMA='earnalism.reader612-reviewed-bridge.v1'
+STARTUP_BINDING_FIELDS=('startup_policy_sha256','startup_guard_source_sha256',
+    'startup_marker_identity_sha256','startup_context_sha256','startup_data_receipt_sha256')
 
 
 def need(ok,message):
@@ -66,7 +68,7 @@ class Reader612PhaseBridge:
         need(accepted.tzinfo is not None and timedelta(0)<=now-accepted<timedelta(hours=24),'Historical/future owner instruction cannot authorize this operation')
         return digest(record)
 
-    def prepare_qualification(self,owner_record,config_sha256):
+    def prepare_qualification(self,owner_record,config_sha256,*,startup_binding=None):
         """Offline files only. Returns bindings, never approval or execution flags."""
         controller=local_git('rev-parse','HEAD')
         need(not local_git('status','--porcelain','--untracked-files=all'),'Exact clean controller required before binding')
@@ -86,6 +88,14 @@ class Reader612PhaseBridge:
             'closed_server_sha256':s['closed_server_sha256'],'native_pause_acceptance_sha256':owner_digest,
             'purchase_mode':'CLOSED','current_backend_deployment_id':s['retained_backend'],
             'current_backend_source_sha':s['prior_reader_source'],'config_sha256':config_sha256}
+        # Offline preparation may remain incomplete. Execution never fills or
+        # invents these inputs: the covered parent must bind them before its
+        # authentic protected approval, then the actual collector corroborates.
+        if startup_binding is not None:
+            need(isinstance(startup_binding,dict) and set(startup_binding)==set(STARTUP_BINDING_FIELDS)
+                and all(isinstance(v,str) and native.HASH.fullmatch(v) and v!='0'*64 for v in startup_binding.values()),
+                'Exact startup evidence binding required')
+            provider.update(startup_binding)
         binding={'source_sha':s['source_sha'],'tree_sha':s['tree_sha'],'baseline_source_sha':s['prior_reader_source'],
             'role':native.ROLE,'project':RAILWAY_PROJECT,'service':SERVICE,'environment':ENVIRONMENT,
             'baseline_deployment_id':s['retained_backend'],'baseline_image':s['retained_image'],
@@ -102,7 +112,10 @@ class Reader612PhaseBridge:
     def _verify_prepared(self,prepared,owner_record):
         need(prepared['scope']=='OFFLINE_PREPARATION_NOT_AUTHORITY','Only exact prepared phase binding admitted')
         need(prepared['acceptance_contract']==self.acceptance,'Acceptance overrides forbidden')
-        actual=self.prepare_qualification(owner_record,prepared['provider_binding']['config_sha256'])
+        present=set(prepared['provider_binding']) & set(STARTUP_BINDING_FIELDS)
+        need(not present or present==set(STARTUP_BINDING_FIELDS),'Partial startup binding forbidden')
+        startup={k:prepared['provider_binding'][k] for k in STARTUP_BINDING_FIELDS} if present else None
+        actual=self.prepare_qualification(owner_record,prepared['provider_binding']['config_sha256'],startup_binding=startup)
         need(actual==prepared,'Source/payload/controller/owner/journal/phase changed since approval binding')
         return actual
 

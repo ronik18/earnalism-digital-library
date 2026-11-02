@@ -36,8 +36,8 @@ def normal_frontend_closed_probe(method,url,body,*,phase_identity=None):
   with urllib.request.build_opener(_NoRedirect()).open(request,timeout=25) as response:return response.status,dict(response.headers),response.read(65537)
  except urllib.error.HTTPError as response:return response.code,dict(response.headers),response.read(65537)
 class Reader612PhaseCollector(NativeMetadataObserver):
- def __init__(self,source_root,*,run,config_reader=None,public_get=default_public_get,admin_read=None,role_source_root=None,purchase_probe=None,clock=lambda:datetime.now(timezone.utc)):
-  super().__init__(source_root,run=run,clock=clock);self.config_reader=config_reader;self.public_get=public_get;self.admin_read=admin_read;self.role_source_root=Path(role_source_root).resolve() if role_source_root else self.source_root;self.purchase_probe=purchase_probe
+ def __init__(self,source_root,*,run,config_reader=None,public_get=default_public_get,admin_read=None,role_source_root=None,purchase_probe=None,startup_read=None,clock=lambda:datetime.now(timezone.utc)):
+  super().__init__(source_root,run=run,clock=clock);self.config_reader=config_reader;self.public_get=public_get;self.admin_read=admin_read;self.role_source_root=Path(role_source_root).resolve() if role_source_root else self.source_root;self.purchase_probe=purchase_probe;self.startup_read=startup_read
  def _json_get(self,path,status=200):
   s,headers,raw=self.public_get(path);need(s==status and len(raw)<=1048576,'Unexpected public response/size')
   return json.loads(raw) if status==200 else None
@@ -189,6 +189,7 @@ class Reader612PhaseCollector(NativeMetadataObserver):
   return digest({'prior_receipt':prior['native_receipt_sha256'],'prior_source':prior['frontend_source_sha'],'current_source':expected['frontend_source_sha'],'objects':prior['protected_path_git_objects']})
  def collect_preflight(self,binding,source_binding,expected):
   expected=self._bound_expected(expected)
+  need(callable(self.startup_read),'STARTUP_DATA_CHANNEL_UNBOUND: actual authorized startup guard collector required')
   need(binding['baseline_deployment_id']==binding['current_deployment_id'],'Baseline phase mismatch')
   self._flag_source_equivalence(binding);self._baseline_source(binding)
   facts=self._common(binding['baseline_deployment_id'],binding['baseline_runtime_sha256'],binding['config_sha256'],expected)
@@ -211,6 +212,11 @@ class Reader612PhaseCollector(NativeMetadataObserver):
   proof['bootstrap_preflight_sha256']=digest({'facts':stable,'source':source,'upload':digest(U),'provider_binding':digest(P)})
   proof['provider_actual']={**P,'scope':'ACTUAL_PROVIDER_AND_SOURCE','qualified':False,'auto_deploy':False,'authenticated_provider_account':True,'cli_version':'5.71.0','provider_identity_sha256':proof['provider_identity_sha256'],'bootstrap_preflight_sha256':proof['bootstrap_preflight_sha256'],'current_backend_healthy':True,'native_healthcheck_traffic_gating':True,'new_resources_or_config_changes':False}
   protocol=self._signed_frontend_compatibility(expected)
+  startup=self.startup_read(P)
+  need(isinstance(startup,dict) and set(startup)=={'startup_policy_sha256','startup_data_qualification'},'Exact actual startup projection required')
+  from scripts.startup_dispatch_qualification import validate_startup_qualification
+  validate_startup_qualification(P,{'config_sha256':binding['config_sha256']},startup,self.clock())
+  proof['provider_actual'].update(startup)
   proof['provider_actual']['frontend_signed_purchase_ready']=True
   proof['provider_actual']['qualified']=callable(self.purchase_probe)
   proof['provider_actual']['signed_protocol_reuse_sha256']=protocol

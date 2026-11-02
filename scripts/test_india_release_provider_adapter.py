@@ -10,13 +10,13 @@ from unittest.mock import patch
 from scripts import india_release_provider_adapter as a
 
 
-def startup_fixture(binding, now, guard_sha):
+def startup_fixture(binding, now, guard_sha, *, config_sha='c'*64):
     """Synthetic proof only; never a provider or database acceptance receipt."""
     proof = {'schema':'earnalism.startup-data-dispatch-qualification.v1',
         'scope':'ACTUAL_STARTUP_POLICY_AND_CANARIES',
         'phase':'INSTALLED_POLICY_BEFORE_BACKEND_DISPATCH',
         'source_sha':binding['source_sha'], 'source_delivery_sha256':binding['source_delivery_sha256'],
-        'config_sha256':'c'*64, 'policy_sha256':'1'*64, 'guard_source_sha256':guard_sha,
+        'config_sha256':config_sha, 'policy_sha256':'1'*64, 'guard_source_sha256':guard_sha,
         'marker_identity_sha256':'2'*64, 'markers_sha256':'3'*64, 'marker_count':2,
         'context_sha256':'4'*64, 'method':'DIRECT_AUTHORIZED_METADATA_READ',
         'snapshot_sha256':None, 'observed_at':now.isoformat(), 'guard_verified':True}
