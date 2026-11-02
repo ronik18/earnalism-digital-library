@@ -90,6 +90,11 @@ env \
     backend/tests/test_reading_pass_preparation.py \
     backend/tests/test_reading_pass_admission_contention.py \
     backend/tests/test_reading_pass_rollback_transaction.py \
+    backend/tests/test_scoped_motor_admission.py \
+    backend/tests/test_scoped_hardening.py \
+    backend/tests/test_scoped_ownership.py \
+    backend/tests/test_reading_pass_admission_wiring.py \
+    backend/tests/test_reading_pass_native_admission.py \
     backend/tests/test_reading_pass_client_matrix.py \
     backend/tests/test_usage_history.py \
     backend/tests/test_reading_pass_acceptance_budget.py \

@@ -559,6 +559,7 @@ USER_ACCESS_TOKEN_EXPIRE_MINUTES = _env_int("USER_ACCESS_TOKEN_EXPIRE_MINUTES", 
 USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
 READING_PASS_V2_ENABLED = _env_bool("READING_PASS_V2_ENABLED", False)
+READING_PASS_SCOPED_ADMISSION_ENABLED = _env_bool("READING_PASS_SCOPED_ADMISSION_ENABLED", False)
 TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int(
     "TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 5 if READING_PASS_V2_ENABLED else 1
 )
@@ -584,6 +585,90 @@ reading_pass_service = ReadingPassService(
     config=READING_PASS_CONFIG,
     token_secret=READING_PASS_TOKEN_SECRET,
 )
+
+# Keep the original service/database/client identities for payments, refunds and
+# all non-renewal operations. Only the original instance renewal method is rebound to the admitted view.
+_reading_pass_scoped_admission = None
+_reading_pass_scoped_original_service = None
+_reading_pass_scoped_renewal_service = None
+_reading_pass_scoped_renewal_function = None
+_reading_pass_scoped_config = None
+_reading_pass_scoped_token_secret = None
+
+
+def _initialize_reading_pass_scoped_admission() -> None:
+    global _reading_pass_scoped_admission
+    global _reading_pass_scoped_original_service
+    global _reading_pass_scoped_renewal_service
+    global _reading_pass_scoped_renewal_function, _reading_pass_scoped_config, _reading_pass_scoped_token_secret
+    if not READING_PASS_SCOPED_ADMISSION_ENABLED:
+        return
+    if _reading_pass_scoped_admission is not None:
+        raise RuntimeError("Reading Pass scoped admission already initialized")
+    if reading_pass_service.db is not db or reading_pass_service.client is not client:
+        raise RuntimeError("Original Reading Pass client/database binding changed")
+    function = ReadingPassService.renew_lease
+    if getattr(reading_pass_service.renew_lease, "__func__", None) is not function:
+        raise RuntimeError("Original renewal implementation changed")
+    try:
+        from backend.reading_pass_admission import ScopedAdmission
+    except ImportError:
+        from reading_pass_admission import ScopedAdmission
+    admission = ScopedAdmission(client, capacity=8)
+    renewal_service = ReadingPassService(
+        db=admission.database(db),
+        client=admission,
+        config=reading_pass_service.config,
+        token_secret=reading_pass_service.token_secret,
+    )
+    # Explicit dependency composition, not a business/HTTP function rewrite.
+    reading_pass_service.renew_lease = function.__get__(renewal_service, ReadingPassService)
+    _reading_pass_scoped_renewal_function = function
+    _reading_pass_scoped_config = reading_pass_service.config
+    _reading_pass_scoped_token_secret = reading_pass_service.token_secret
+    _reading_pass_scoped_original_service = reading_pass_service
+    _reading_pass_scoped_renewal_service = renewal_service
+    _reading_pass_scoped_admission = admission
+
+
+def _reading_pass_renewal_engine():
+    """Validate opt-in composition; never select a raw enabled bypass."""
+    if not READING_PASS_SCOPED_ADMISSION_ENABLED:
+        return reading_pass_service
+    original = _reading_pass_scoped_original_service
+    renewal = _reading_pass_scoped_renewal_service
+    admission = _reading_pass_scoped_admission
+    function = _reading_pass_scoped_renewal_function
+    if (
+        admission is None or admission.closed or original is None or renewal is None
+        or reading_pass_service is not original
+        or getattr(original, "db", None) is not db or getattr(original, "client", None) is not client
+        or getattr(admission, "raw", None) is not client or getattr(renewal, "client", None) is not admission
+        or getattr(getattr(renewal, "db", None), "raw", None) is not db
+        or getattr(original, "config", None) is not _reading_pass_scoped_config
+        or getattr(renewal, "config", None) is not _reading_pass_scoped_config
+        or getattr(original, "token_secret", None) != _reading_pass_scoped_token_secret
+        or getattr(renewal, "token_secret", None) != _reading_pass_scoped_token_secret
+        or function is not ReadingPassService.renew_lease
+        or getattr(getattr(original, "renew_lease", None), "__self__", None) is not renewal
+        or getattr(getattr(original, "renew_lease", None), "__func__", None) is not function
+    ):
+        raise HTTPException(status_code=503, detail="Reading Pass admission binding unavailable")
+    return renewal
+
+
+async def _drain_reading_pass_scoped_admission(deadline: float) -> None:
+    if not READING_PASS_SCOPED_ADMISSION_ENABLED:
+        return
+    if _reading_pass_scoped_admission is None:
+        raise RuntimeError("Reading Pass admission shutdown binding is missing")
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        _reading_pass_scoped_admission.closed = True
+        raise asyncio.TimeoutError("Reading Pass admission drain budget exhausted")
+    await _reading_pass_scoped_admission.drain(timeout=remaining)
+
+
 SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
 if SESSION_TOUCH_INTERVAL_SECONDS > 0:
     SESSION_TOUCH_INTERVAL_SECONDS = min(
@@ -5894,6 +5979,12 @@ async def _verify_startup_data_before_writes() -> None:
 async def lifespan(_app: FastAPI):
     # ----- startup -----
     await _verify_startup_data_before_writes()
+    try:
+        _initialize_reading_pass_scoped_admission()
+    except BaseException:
+        # Initialization is synchronous: no admitted request work exists yet.
+        client.close()
+        raise
     acceptance_contained = _acceptance_release_containment()
     _install_sigterm_drain_marker()
     _log_cost_control_startup()
@@ -5905,21 +5996,24 @@ async def lifespan(_app: FastAPI):
     _schedule_home_surface_warmup()
     approved_reader_task = None if acceptance_contained else asyncio.create_task(_initialize_authorized_reader_release())
 
-    yield
-
-    # ----- shutdown -----
-    _mark_shutdown_draining()
-    if approved_reader_task is not None:
-        approved_reader_task.cancel()
-        try:
-            await approved_reader_task
-        except asyncio.CancelledError:
-            pass
-    drain_deadline = time.monotonic() + 15
-    while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
-        await asyncio.sleep(0.1)
-    await close_replica_state_backends()
-    client.close()
+    try:
+        yield
+    finally:
+        # ----- shutdown -----
+        _mark_shutdown_draining()
+        if approved_reader_task is not None:
+            approved_reader_task.cancel()
+            try:
+                await approved_reader_task
+            except asyncio.CancelledError:
+                pass
+        drain_deadline = time.monotonic() + 15
+        while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
+            await asyncio.sleep(0.1)
+        # Share the original fifteen-second drain budget; fail closed.
+        await _drain_reading_pass_scoped_admission(drain_deadline)
+        await close_replica_state_backends()
+        client.close()
 
 
 app = FastAPI(
@@ -5935,6 +6029,18 @@ try:
     from commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
 except ImportError:
     from backend.commerce_territory import COMMERCE_ORDER_PATH, commerce_territory_verdict
+
+
+# Earlier registration makes this deny-only guard inner to country/hardening.
+@app.middleware("http")
+async def enforce_reading_pass_admission_binding(request: Request, call_next):
+    if (READING_PASS_SCOPED_ADMISSION_ENABLED and request.method == "POST"
+            and request.url.path == "/api/reading-pass/leases/renew"):
+        try:
+            _reading_pass_renewal_engine()
+        except HTTPException as exc:
+            return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+    return await call_next(request)
 
 
 @app.middleware("http")
