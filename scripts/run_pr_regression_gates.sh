@@ -32,6 +32,7 @@ CATALOGUE_EVIDENCE_MONGO_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION=1 \
 EARNALISM_REDIS_INTEGRATION_URL="${UAT_REDIS_URL:?isolated Redis fixture URL is required}" \
   "$PYTHON_BIN" scripts/run_bounded_pytest.py --timeout-seconds 120 --trace-seconds 45 -- -q \
+    backend/tests/test_bounded_redis_limiter.py \
     backend/tests/test_shared_redis_limiter_integration.py \
     backend/tests/test_public_metadata_redis.py \
     backend/tests/test_public_metadata_resilience.py \

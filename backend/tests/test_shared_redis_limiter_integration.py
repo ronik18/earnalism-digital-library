@@ -305,7 +305,8 @@ def test_actual_initializer_transport_retry_preserves_one_admission_effect():
         async def no_config_mutation():
             pass
         init = {
-            'REDIS_CACHE_ENABLED': True, 'MULTI_REPLICA_ENABLED': True,
+            # V2 cache-only compatibility; bounded multi-replica mode is tested separately.
+            'REDIS_CACHE_ENABLED': True, 'MULTI_REPLICA_ENABLED': False,
             'REDIS_PUBLIC_METADATA_ENABLED': False, 'PUBLIC_CACHE_ENABLED': False,
             'REDIS_URL': _endpoint(), 'REDIS_CACHE_FAIL_FAST': True,
             'REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS': 2.0,

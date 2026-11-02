@@ -1,4 +1,6 @@
+import asyncio
 import importlib
+import pytest
 import sys
 from pathlib import Path
 
@@ -6,6 +8,19 @@ from pathlib import Path
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
+
+
+@pytest.fixture(autouse=True)
+def _synchronous_import_loop():
+    # Motor GridFS asks for a loop during synchronous server import. Earlier
+    # IsolatedAsyncioTestCase cases may have cleared the policy's current loop.
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        yield
+    finally:
+        loop.close()
+        asyncio.set_event_loop(None)
 
 
 def _server(monkeypatch):
