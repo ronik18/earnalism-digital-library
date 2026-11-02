@@ -230,6 +230,24 @@ def micros(delta):
     return max(0, (delta.days * 86400 + delta.seconds) * 1000000 + delta.microseconds)
 
 
+def _legacy_bson_timestamp(value):
+    """Persisted Python datetimes use BSON's millisecond precision, never epsilon."""
+    at = utc(value)
+    need(at.microsecond % 1000 == 0, 'LEGACY_PERSISTED_TIMESTAMP_NOT_BSON_MILLISECOND')
+    return at
+
+
+def _legacy_interval_upper_microseconds(previous, endpoint, response_expiry):
+    # _billable_interval starts at the persisted millisecond timestamp, but its
+    # current `now` may be up to 999us later than the BSON heartbeat/terminal row.
+    # Its persisted lease expiry is the BSON floor of the precise JSON response.
+    # Bound the actual billing interval, including submillisecond truncation,
+    # while preserving the service's strict 20s per-interval cap.
+    stored_expiry = response_expiry.replace(microsecond=(response_expiry.microsecond // 1000) * 1000)
+    stop_upper = min(endpoint + timedelta(microseconds=999), stored_expiry)
+    return min(micros(stop_upper - previous), 20000000)
+
+
 def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions, heartbeats, ledger, transactions):
     """Exact complete server intervals; conservative upper bound, never WPM/credits.
 
@@ -237,7 +255,9 @@ def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions
     either title since the original approval, including zero-debit rows. A complete
     heartbeat version chain and genuine immutable terminal settlement are required.
     Last-interval expiry is retained in the last response, not reconstructed from
-    the terminal row's overwritten lease expiry. Unknowns HOLD.
+    the terminal row's overwritten lease expiry. BSON endpoint uncertainty is
+    conservatively bounded by 999us per billable interval, never subtracted.
+    Unknowns HOLD.
     """
     for rows in (sessions, heartbeats, ledger, transactions):
         need(isinstance(rows, list) and len(rows) <= MAX_ROWS, 'LEGACY_HISTORY_NOT_BOUNDED')
@@ -258,7 +278,7 @@ def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions
         total_credit += amount
     total_time = 0
     for row in sessions:
-        sid = row['id']; created = utc(row.get('created_at')); settled = utc(row.get('settlement_at'))
+        sid = row['id']; created = _legacy_bson_timestamp(row.get('created_at')); settled = _legacy_bson_timestamp(row.get('settlement_at'))
         need(row.get('user_id') == user_id and row.get('content_type') == 'audio'
              and row.get('content_id') in {'the-selfish-giant', 'the-open-window'}
              and row.get('status') in {'ended', 'expired', 'exhausted', 'transferred', 'revoked'}
@@ -276,7 +296,7 @@ def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions
         debits = {r['idempotency_key']: r['debit'] for r in ledger if r['session_id'] == sid}
         expected_keys = set(); previous = created; expiry = created; billable = False; last_sequence = 0
         for h in hb:
-            at = utc(h.get('created_at')); response = h.get('response')
+            at = _legacy_bson_timestamp(h.get('created_at')); response = h.get('response')
             need(previous <= at <= settled and isinstance(response, dict)
                  and response.get('session_id') == sid and response.get('content_type') == 'audio'
                  and response.get('content_id') == row['content_id'] and response.get('lease_version') == h['lease_version'] + 1
@@ -284,7 +304,7 @@ def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions
                  and type(h.get('active')) is bool and isinstance(h.get('playback_state'), str)
                  and response.get('status') in {'Running', 'Connecting', 'Paused', 'Exhausted'}, 'LEGACY_HEARTBEAT_STATE_UNKNOWN')
             if billable:
-                total_time += min(micros(min(at, expiry) - previous), 20000000)
+                total_time += _legacy_interval_upper_microseconds(previous, at, expiry)
             amount = response.get('deducted_seconds')
             need(type(amount) is int and amount >= 0, 'LEGACY_RESPONSE_DEBIT_REQUIRED')
             key = f"heartbeat:{sid}:{h['sequence']}"
@@ -292,13 +312,16 @@ def reconcile_legacy(*, user_id, ids, original_started_at, observed_at, sessions
             if amount:
                 expected_keys.add(key)
             expiry = utc(response.get('lease_expires_at'))
-            need(at <= expiry <= at + timedelta(seconds=20), 'LEGACY_LEASE_HORIZON_UNKNOWN')
+            # Same precise now produces JSON expiry and BSON created_at. The
+            # latter loses at most999us; floor JSON expiry just as Mongo does.
+            stored_expiry = expiry.replace(microsecond=(expiry.microsecond // 1000) * 1000)
+            need(at <= stored_expiry <= at + timedelta(seconds=20), 'LEGACY_LEASE_HORIZON_UNKNOWN')
             billable = h['active'] and h['playback_state'].lower() == 'playing' and response['status'] == 'Running'
             if billable:
                 need(type(response.get('balance_seconds')) is int and response['balance_seconds'] > 0, 'LEGACY_RUNNING_BALANCE_UNKNOWN')
             previous, last_sequence = at, h['sequence']
         if billable:
-            total_time += min(micros(min(settled, expiry) - previous), 20000000)
+            total_time += _legacy_interval_upper_microseconds(previous, settled, expiry)
         need(utc(row.get('lease_issued_at')) == previous and row.get('last_sequence', 0) == last_sequence, 'FINAL_LEGACY_LEASE_CHAIN_CHANGED')
         terminal = f"terminal:{sid}:{version}:{row['status']}"
         if terminal in debits:

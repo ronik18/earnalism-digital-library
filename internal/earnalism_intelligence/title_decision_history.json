@@ -13536,8 +13536,7 @@
     "actual_source_commit_CI_deployment_membergrant_playback_customer_acceptance": "PENDING",
     "publication": "UNPERFORMED",
     "actual_invoice": "UNVERIFIED_PARTIAL_ESTIMATES_ONLY"
-  }
-,
+  },
   "open_window_scored_private_stage_chapter_index_20261102": {
     "at": "2026-11-02T16:45:41.994568+00:00",
     "lane": "Integration Lane source-only CI successor",
@@ -13558,8 +13557,7 @@
     "new_allocation_or_synthesis": false,
     "runtime_LIVE": "UNPERFORMED",
     "next_exact_prompt": "Independent reviewer: verify this fixed manifest expectation against already reviewed14-path evidence, unchanged Reader sources and preserved application/guard; require fresh exact-head CI before merge."
-  }
-,
+  },
   "serving_binding_import_alias_fixture_20261103": {
     "at": "2026-11-02T18:54:49.721589+00:00",
     "lane": "Integration source-only fixture correction",
@@ -13580,5 +13578,21 @@
     "runtime_source_or_publication_proof": false,
     "provider_or_customer_mutations": 0,
     "next_exact_prompt": "Verify exact fixture/learning diff, run both import layouts and mandatory new-head CI; retain failed run, no route weakening or data-hash replacement."
+  },
+  "legacy_bson_precision_source_successor_20261103": {
+    "at": "2026-11-02T19:14:44.788741+00:00",
+    "lane": "Integration Lane source-only precision successor",
+    "decision": "CONSERVATIVELY_BOUND_LEGACY_BSON_TIMESTAMP_PRECISION",
+    "base_source": "f5a462275bcfe5d955742df8b7b605787c0b5d66",
+    "scope": "TWO_REVIEWED_SOURCE_TEST_PATHS_PLUS_ADDITIVE_LEARNING",
+    "patch_sha256": "62393bfe3523c2803bbb5033bb2b98e6f4434e58325b627fb61ba9940dad950e",
+    "independent_review_sha256": "cb5dfd72c69f24f523db930c88f6da491aa297f880f954352f169b2eddf40a7a",
+    "local_actual_tests": "66PASS0SKIP",
+    "learning": "Persisted BSON endpoints truncate to milliseconds while JSON response expiry retains microseconds. Bound endpoint uncertainty conservatively by at most999us only for actual millisecond-aligned stored timestamps; floor persisted expiry and retain strict20second intervals and original cumulative limit. Non-BSON timestamps, >=1ms horizon excess, missing histories and exhausted original authority still HOLD. Never widen a general tolerance or rewrite source evidence.",
+    "original_allowance": "PRESERVED_NOT_RESET; fresh current-source execution authority remains separately unverified",
+    "historical_immutable_evidence": "Retained review only; no raw customer snapshot or credential read by Integration",
+    "new_grants_or_customer_ledger_writes": false,
+    "production_or_provider_actions": false,
+    "next_exact_prompt": "Integration Lane: bind actual application commit and supported guard/runtime inventory, require fresh exact-head CI and published review, match-head source merge/tree equality, then hand clean main to existing book release owner for separately qualified frontend-first rollout."
   }
 }
