@@ -6,7 +6,7 @@ SOURCE=Path(__file__).resolve().parents[1]/'server.py'
 NAMES={'initialize_replica_state_backends','_configure_redis_cache_policy'}
 class FakeRedis:
  def __init__(self):
-  self.calls=[];self.policy={'maxmemory':'1000000','maxmemory-policy':'noeviction'};self.memory={'used_memory':100};self.failure=None;self.hang=False;self.ping_failure=False;self.closing_hangs=False;self.set_failure=False;self.ns=None
+  self.calls=[];self.connection_pool=types.SimpleNamespace(max_connections=16);self.policy={'maxmemory':'1000000','maxmemory-policy':'noeviction'};self.memory={'used_memory':100};self.failure=None;self.hang=False;self.ping_failure=False;self.closing_hangs=False;self.set_failure=False;self.ns=None
  async def ping(self):
   self.calls.append('PING')
   if self.ping_failure:raise ConnectionError('SYNTHETIC_PRIVATE_DIAGNOSTIC')

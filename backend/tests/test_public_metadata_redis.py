@@ -41,7 +41,7 @@ def bindings(client, prefix):
         node = next(n for n in TREE.body if isinstance(n, ast.Assign)
                     and any(isinstance(t, ast.Name) and t.id == name for t in n.targets))
         ns[name] = frozenset(ast.literal_eval(node.value.args[0])) if name == '_PUBLIC_METADATA_REDIS_SCOPES' else ast.literal_eval(node.value)
-    names = ('_redis_key', '_redis_text', '_redis_state_enabled', '_public_metadata_redis_enabled', '_public_cache_redis_for_key',
+    names = ('_redis_key', '_redis_text', '_redis_state_enabled', '_redis_cache_enabled', '_public_metadata_redis_enabled', '_public_cache_redis_for_key',
              '_ttl_with_jitter', '_redis_cache_payload_is_media', '_cache_payload_encode',
              '_cache_payload_encode_for_redis', '_cache_payload_decode', '_public_cache_ticket',
              '_public_metadata_only_key', '_public_cache_get', '_public_cache_set', '_public_cache_clear')

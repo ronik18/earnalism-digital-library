@@ -705,6 +705,9 @@ B2_AUDIOBOOK_PROD_WRITE_SECRET_ACCESS_KEY = (
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
 RATE_LIMIT_ENABLED = _env_bool("RATE_LIMIT_ENABLED", True)
 RATE_LIMIT_WINDOW_SECONDS = _env_int("RATE_LIMIT_WINDOW_SECONDS", 60)
+# No activation default: a finite policy must be explicitly admitted first.
+REDIS_LIMITER_SLOTS = _env_int("REDIS_LIMITER_SLOTS", 0, minimum=0)
+REDIS_LIMITER_GENERATION = os.environ.get("REDIS_LIMITER_GENERATION", "").strip()
 RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 1200)
 RATE_LIMIT_PUBLIC_PER_MINUTE = _env_int("RATE_LIMIT_PUBLIC_PER_MINUTE", 30000)
 RATE_LIMIT_READER_PER_MINUTE = _env_int("RATE_LIMIT_READER_PER_MINUTE", 15000)
@@ -1637,8 +1640,15 @@ async def initialize_replica_state_backends() -> None:
                         if REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)
                         else REDIS_SOCKET_TIMEOUT_SECONDS),
         retry_on_timeout=not (REDIS_PUBLIC_METADATA_ENABLED and not (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED)),
+        max_connections=16,  # finite per-process pool; not a fleet/cost budget
     )
     try:
+        if MULTI_REPLICA_ENABLED:
+            # URL query options override redis-py constructor keywords. Inspect
+            # the actual pool before any connection; never enlarge a lower cap.
+            actual_pool_limit = getattr(getattr(_redis_client, "connection_pool", None), "max_connections", None)
+            if type(actual_pool_limit) is not int or not 1 <= actual_pool_limit <= 16:
+                raise RuntimeError("Bounded shared Redis requires an effective pool limit of 1..16")
         await _redis_client.ping()
     except Exception as exc:
         close = getattr(_redis_client, "aclose", None)
@@ -1659,7 +1669,9 @@ async def initialize_replica_state_backends() -> None:
     if REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED:
         try:
             await _configure_redis_cache_policy()
-            if PUBLIC_CACHE_ENABLED:
+            if MULTI_REPLICA_ENABLED:
+                await _configure_bounded_shared_state()
+            if PUBLIC_CACHE_ENABLED and REDIS_CACHE_ENABLED:
                 await _redis_client.set(_redis_key("public-cache-v2", "generation"), uuid.uuid4().hex, nx=True)
         except (Exception, asyncio.CancelledError):
             _redis_available = False
@@ -1696,6 +1708,37 @@ def _redis_key(*parts: str) -> str:
 
 def _redis_state_enabled() -> bool:
     return bool(_redis_available and _redis_client is not None and (REDIS_CACHE_ENABLED or MULTI_REPLICA_ENABLED))
+
+
+def _redis_cache_enabled() -> bool:
+    # Optional cache population must not follow essential shared-state activation.
+    return bool(_redis_available and _redis_client is not None and REDIS_CACHE_ENABLED)
+
+
+def _bounded_redis_policy():
+    try:
+        from backend.bounded_redis_limiter import Policy
+    except ModuleNotFoundError:
+        from bounded_redis_limiter import Policy
+    return Policy(REDIS_LIMITER_SLOTS, RATE_LIMIT_WINDOW_SECONDS, {
+        "public": RATE_LIMIT_PUBLIC_PER_MINUTE, "reading-pass": RATE_LIMIT_READING_PASS_PER_MINUTE,
+        "reader": RATE_LIMIT_READER_PER_MINUTE, "auth": RATE_LIMIT_AUTH_PER_MINUTE,
+        "webhook": RATE_LIMIT_WEBHOOK_PER_MINUTE, "payments": RATE_LIMIT_PAYMENT_PER_MINUTE,
+        "analytics": RATE_LIMIT_ANALYTICS_PER_MINUTE, "upload": RATE_LIMIT_UPLOAD_PER_MINUTE,
+        "api": RATE_LIMIT_DEFAULT_PER_MINUTE,
+    }, REDIS_LIMITER_GENERATION)
+
+
+async def _configure_bounded_shared_state():
+    # First protected activation has only the essential limiter writer. Optional
+    # caches, unbounded RUM vocabulary and maintenance require separate budgets.
+    if PUBLIC_CACHE_ENABLED or REDIS_CACHE_ENABLED or REDIS_PUBLIC_METADATA_ENABLED or READER_RUM_ENABLED or ENABLE_STARTUP_DB_MAINTENANCE:
+        raise RuntimeError("Bounded shared Redis requires local/shared cache/RUM/maintenance OFF")
+    try:
+        from backend.bounded_redis_limiter import verify_policy
+    except ModuleNotFoundError:
+        from bounded_redis_limiter import verify_policy
+    await verify_policy(_redis_client, REDIS_KEY_PREFIX, _bounded_redis_policy())
 
 
 def _redis_text(value: Any) -> str:
@@ -1841,7 +1884,7 @@ def _cache_digest_key(namespace: str, key: str) -> str:
 
 
 async def _redis_cache_get(namespace: str, key: str) -> Any:
-    if not _redis_state_enabled():
+    if not _redis_cache_enabled():
         _cache_stats[f"{namespace}_miss"] += 1
         return None
     redis_key = _cache_digest_key(namespace, key)
@@ -1865,7 +1908,7 @@ async def _redis_cache_get(namespace: str, key: str) -> Any:
 
 
 async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int) -> None:
-    if ttl_seconds <= 0 or not _redis_state_enabled():
+    if ttl_seconds <= 0 or not _redis_cache_enabled():
         return
     redis_key = _cache_digest_key(namespace, key)
     try:
@@ -1879,7 +1922,7 @@ async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: in
 
 
 async def _redis_cache_delete(namespace: str, key: str) -> None:
-    if not _redis_state_enabled():
+    if not _redis_cache_enabled():
         return
     try:
         await _redis_client.delete(_cache_digest_key(namespace, key))
@@ -1889,7 +1932,7 @@ async def _redis_cache_delete(namespace: str, key: str) -> None:
 
 
 async def _redis_cache_delete_keys(*keys: str) -> None:
-    if not keys or not _redis_state_enabled():
+    if not keys or not _redis_cache_enabled():
         return
     try:
         await _redis_client.delete(*keys)
@@ -3056,7 +3099,7 @@ _public_cache_fill_tickets: ContextVar = ContextVar("public_cache_fill_tickets",
 
 def _public_metadata_redis_enabled() -> bool:
     return bool(_redis_available and _redis_client is not None and
-                (REDIS_PUBLIC_METADATA_ENABLED or _redis_state_enabled()))
+                (REDIS_PUBLIC_METADATA_ENABLED or _redis_cache_enabled()))
 
 
 # Positive opt-in scopes only. Legacy public preview/blog bodies retain their
@@ -3072,7 +3115,7 @@ _PUBLIC_METADATA_REDIS_SCOPES = frozenset({
 
 def _public_cache_redis_for_key(key: str) -> bool:
     return bool(_public_metadata_redis_enabled() and
-                (_redis_state_enabled() or key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES))
+                (_redis_cache_enabled() or key.split(":", 1)[0] in _PUBLIC_METADATA_REDIS_SCOPES))
 
 
 def _public_metadata_only_key(key: str) -> bool:
@@ -3269,7 +3312,7 @@ async def _public_cache_clear(*, public_metadata: bool = True) -> None:
             _PUBLIC_CACHE_INVALIDATE_SCRIPT, 1, marker,
             expected if expected is not None else b"", uuid.uuid4().hex,
         )
-    if _redis_state_enabled():
+    if _redis_cache_enabled():
         await _redis_client.incr(_redis_key("reader-content-cache", "generation"))
 
 
@@ -3383,7 +3426,7 @@ class PublicCacheVaryOriginMiddleware:
 
 
 async def _reader_content_cache_generation_value() -> int:
-    if not _redis_state_enabled():
+    if not _redis_cache_enabled():
         return 0
     raw = await _redis_client.get(_redis_key("reader-content-cache", "generation"))
     if raw is None:
@@ -3415,7 +3458,7 @@ def _user_payment_intents_cache_id(user_id: str) -> str:
 
 
 async def _cache_user_doc(user: Optional[dict]) -> None:
-    if not user or not _redis_state_enabled():
+    if not user or not _redis_cache_enabled():
         return
     doc = {k: v for k, v in dict(user).items() if k not in {"_id", "password_hash"}}
     try:
@@ -3431,7 +3474,7 @@ async def _cache_user_doc(user: Optional[dict]) -> None:
 async def _cached_user_doc(user_id: str) -> Optional[dict]:
     if not user_id:
         return None
-    if _redis_state_enabled():
+    if _redis_cache_enabled():
         try:
             blob = await _redis_client.get(_user_cache_key(user_id))
             if blob:
@@ -3447,7 +3490,7 @@ async def _cached_user_doc(user_id: str) -> Optional[dict]:
 
 
 async def _cache_user_session(session: Optional[dict]) -> None:
-    if not session or not _redis_state_enabled():
+    if not session or not _redis_cache_enabled():
         return
     doc = {k: v for k, v in dict(session).items() if k != "_id"}
     try:
@@ -3463,7 +3506,7 @@ async def _cache_user_session(session: Optional[dict]) -> None:
 async def _cached_user_session(session_id: str, user_id: Optional[str] = None) -> Optional[dict]:
     if not session_id:
         return None
-    if _redis_state_enabled():
+    if _redis_cache_enabled():
         try:
             blob = await _redis_client.get(_user_session_cache_key(session_id))
             if blob:
@@ -3484,7 +3527,7 @@ async def _cached_user_session(session_id: str, user_id: Optional[str] = None) -
 
 
 async def _set_user_wallet_cache(user_id: str, wallet_seconds: int) -> None:
-    if not user_id or not _redis_state_enabled():
+    if not user_id or not _redis_cache_enabled():
         return
     try:
         await _redis_client.setex(_user_wallet_cache_key(user_id), _ttl_with_jitter(USER_WALLET_CACHE_TTL_SECONDS), int(wallet_seconds))
@@ -3494,7 +3537,7 @@ async def _set_user_wallet_cache(user_id: str, wallet_seconds: int) -> None:
 
 
 async def _cached_user_wallet_seconds(user_id: str) -> int:
-    if _redis_state_enabled():
+    if _redis_cache_enabled():
         try:
             raw = await _redis_client.get(_user_wallet_cache_key(user_id))
             if raw is not None:
@@ -3511,7 +3554,7 @@ async def _cached_user_wallet_seconds(user_id: str) -> int:
 
 
 async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
-    if not user_id or not _redis_state_enabled():
+    if not user_id or not _redis_cache_enabled():
         return
     keys = [_user_cache_key(user_id), _user_wallet_cache_key(user_id)]
     for session_id in session_ids or []:
@@ -3530,7 +3573,7 @@ async def _invalidate_user_cache_strict(user_id: str, *, session_ids: Optional[L
     is still usable is unsafe. This intentionally bypasses the best-effort
     wrappers and lets the operator retry the same persisted operation.
     """
-    if not user_id or not _redis_state_enabled():
+    if not user_id or not _redis_cache_enabled():
         return
     keys = [
         _user_cache_key(user_id),
@@ -6864,7 +6907,7 @@ def _safe_tag_map(values: Dict[str, Any], *, limit: int = 30) -> Dict[str, str]:
 
 
 async def _aggregate_reader_metric(event: str, timings: Dict[str, float], metrics: Dict[str, float]) -> None:
-    if not _redis_state_enabled():
+    if not _redis_cache_enabled():
         return
     day = datetime.utcnow().date().isoformat()
     redis_key = _redis_key("reader-rum", day, event)
@@ -7013,6 +7056,13 @@ async def _redis_rate_limit_retry_after(key: str, limit: int, now: float) -> Opt
     # Activation requires no mixed old/new shared-limiter writers. Retained
     # legacy counters block admission rather than being reset or reinterpreted.
     digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+    if globals().get("MULTI_REPLICA_ENABLED", False):
+        try:
+            from backend.bounded_redis_limiter import retry_after
+        except ModuleNotFoundError:
+            from bounded_redis_limiter import retry_after
+        return await retry_after(_redis_client, REDIS_KEY_PREFIX, _bounded_redis_policy(),
+                                 key.split(":", 1)[0], digest)
     redis_key = _redis_key("rate-limit-v2-server-time", digest)
     legacy_key = _redis_key("rate-limit", digest)
     retry_after = int(await _redis_client.eval(
