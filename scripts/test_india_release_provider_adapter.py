@@ -10,6 +10,22 @@ from unittest.mock import patch
 from scripts import india_release_provider_adapter as a
 
 
+def startup_fixture(binding, now, guard_sha, *, config_sha='c'*64):
+    """Synthetic proof only; never a provider or database acceptance receipt."""
+    proof = {'schema':'earnalism.startup-data-dispatch-qualification.v1',
+        'scope':'ACTUAL_STARTUP_POLICY_AND_CANARIES',
+        'phase':'INSTALLED_POLICY_BEFORE_BACKEND_DISPATCH',
+        'source_sha':binding['source_sha'], 'source_delivery_sha256':binding['source_delivery_sha256'],
+        'config_sha256':config_sha, 'policy_sha256':'1'*64, 'guard_source_sha256':guard_sha,
+        'marker_identity_sha256':'2'*64, 'markers_sha256':'3'*64, 'marker_count':2,
+        'context_sha256':'4'*64, 'method':'DIRECT_AUTHORIZED_METADATA_READ',
+        'snapshot_sha256':None, 'observed_at':now.isoformat(), 'guard_verified':True}
+    bound = {**binding, 'startup_policy_sha256':proof['policy_sha256'],
+        'startup_guard_source_sha256':guard_sha, 'startup_marker_identity_sha256':'2'*64,
+        'startup_context_sha256':'4'*64, 'startup_data_receipt_sha256':a.digest(proof)}
+    return bound, {'startup_policy_sha256':proof['policy_sha256'], 'startup_data_qualification':proof}
+
+
 class ProviderAdapterTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
@@ -138,8 +154,11 @@ class ProviderAdapterTests(unittest.TestCase):
              'purchase_mode':'CLOSED', 'current_backend_deployment_id':'inert-current',
              'current_backend_source_sha':'e'*40, 'config_sha256':'c'*64,
              'frontend_deployment_id':'dpl_INERT', 'backend_payload_sha256':a.digest(payload)}
+        (self.root/'backend').mkdir()
+        (self.root/'backend/startup_data_guard.py').write_bytes(b'SYNTHETIC_GUARD_SOURCE')
+        b, startup = startup_fixture(b, self.now, a.hashlib.sha256(b'SYNTHETIC_GUARD_SOURCE').hexdigest())
         approval = {**self.approval('release_guarded_bootstrap', b), 'bootstrap_preflight_sha256':'d'*64}
-        actual = {**self.observe(), **b, 'bootstrap_preflight_sha256':'d'*64,
+        actual = {**self.observe(), **b, **startup, 'bootstrap_preflight_sha256':'d'*64,
                   'current_backend_healthy':True, 'native_healthcheck_traffic_gating':True,
                   'new_resources_or_config_changes':False, 'frontend_signed_purchase_ready':True,
                   'cli_version':a.CLI_VERSIONS['railway']}

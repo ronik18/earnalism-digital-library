@@ -7,6 +7,7 @@ from datetime import datetime,timezone
 from unittest.mock import patch,Mock
 from scripts import reader612_phase_collectors as p
 from scripts.india_release_provider_adapter import CLI_VERSIONS,digest
+from scripts.test_india_release_provider_adapter import startup_fixture
 ID='11111111-1111-1111-1111-111111111111';SNAP='22222222-2222-2222-2222-222222222222';OLD='33333333-3333-3333-3333-333333333333'
 class Collect(unittest.TestCase):
  def setUp(self):
@@ -16,6 +17,7 @@ class Collect(unittest.TestCase):
   cfg=digest({'config':self.config['config'],'config_file':hashlib.sha256(b'{}').hexdigest(),'volumes':[]})
   self.n={'baseline_deployment_id':ID,'current_deployment_id':ID,'baseline_image':self.image,'baseline_snapshot':SNAP,'baseline_runtime_sha256':self.runtime,'baseline_source_sha':'4'*40,'source_sha':'5'*40,'tree_sha':'6'*40,'runtime_sha256':'c'*64,'config_sha256':cfg}
   self.u={'runtime_expected_sha256':self.n['runtime_sha256'],'files':[]};self.n['payload_sha256']=digest(self.u);self.P={'purchase_mode':'CLOSED','closed_server_sha256':hashlib.sha256((self.root/'backend/server.py').read_bytes()).hexdigest(),'frontend_deployment_id':'dpl_SYNTHETIC','frontend_source_sha':'7'*40,'current_backend_deployment_id':ID,'current_backend_source_sha':'4'*40,'source_sha':self.n['source_sha'],'source_delivery_sha256':self.n['runtime_sha256'],'config_sha256':cfg,'backend_payload_sha256':digest(self.u)}
+  self.P,self.startup=startup_fixture(self.P,datetime(2026,11,1,12,tzinfo=timezone.utc),'f'*64,config_sha=cfg)
   self.expected={'runtime_file_count':1950,'frontend_deployment_id':'dpl_SYNTHETIC','frontend_source_sha':'7'*40,'books':{slug:{k:(slug if k=='slug' else True if k in ('audio_enabled','audiobook_enabled') else 'SYNTHETIC_'+k) for k in p.FIELDS} for slug in p.BOOKS},'provider_binding':self.P,'upload_payload':self.u,'native_binding':self.n,'phase_deployment_id':ID,'role_binding':{}}
   self.expected['covers']={};self.expected['prior_signed_protocol']={}
   self.expected['acceptance_contract']={k:copy.deepcopy(self.expected[k]) for k in ['books','frontend_deployment_id','frontend_source_sha','runtime_file_count','covers','prior_signed_protocol']}
@@ -23,6 +25,7 @@ class Collect(unittest.TestCase):
   self.n['payload_sha256']=digest({'schema':p.BRIDGE_SCHEMA,'upload_payload':self.u,'provider_binding':self.P,'acceptance_contract':self.expected['acceptance_contract']})
   (self.root/'internal/release').mkdir(parents=True);(self.root/'internal/release/reader612_phase_acceptance.json').write_text(json.dumps(self.expected['acceptance_contract']))
   self.c=p.Reader612PhaseCollector(self.root,run=self.run_cli,config_reader=self.describe,public_get=self.get,admin_read=self.admin,clock=lambda:datetime(2026,11,1,12,tzinfo=timezone.utc));self.c._covers_source=Mock(return_value='f'*64);self.c.purchase_probe=Mock(side_effect=AssertionError('NO_PREFLIGHT_POST'))
+  self.c.startup_read=Mock(side_effect=lambda _:copy.deepcopy(self.startup))
  def tearDown(self):self.tmp.cleanup()
  def describe(self,**kw):self.assertEqual(kw,{'project_id':p.RAILWAY_PROJECT,'service_id':p.SERVICE,'environment_id':p.ENVIRONMENT});return self.config
  def admin(self,method,url):self.assertEqual((method,url),('GET','https://api.theearnalism.com/api/admin/cache/status'));return 200,json.dumps(self.admin_flags).encode(),{'request_id':'SYNTHETIC-request-1'}
@@ -88,6 +91,20 @@ class Collect(unittest.TestCase):
    x=self.c.collect_preflight(self.n,{},self.expected);self.assertEqual(x['binding_sha256'],digest(self.n));self.assertTrue(x['provider_actual']['frontend_signed_purchase_ready']);self.assertTrue(x['provider_actual']['qualified'])
    self.u['runtime_expected_sha256']='f'*64
    with self.assertRaises(ValueError):self.c.collect_preflight(self.n,{},self.expected)
+ def test_missing_startup_capability_stops_before_provider_or_admin_reads(self):
+  self.c.startup_read=None
+  with self.assertRaisesRegex(ValueError,'STARTUP_DATA_CHANNEL_UNBOUND'):self.c.collect_preflight(self.n,{},self.expected)
+  self.assertEqual(self.calls,[])
+ def test_actual_startup_policy_receipt_is_bound_and_cannot_supply_qualified_flag(self):
+  source={'source_sha':self.n['source_sha'],'tree_sha':self.n['tree_sha'],'runtime_sha256':self.n['runtime_sha256'],'payload_membership_sha256':hashlib.sha256(b'[]').hexdigest(),'payload_files':0}
+  with patch.object(self.c,'_flag_source_equivalence'),patch.object(self.c,'_baseline_source'),patch.object(self.c,'_signed_frontend_compatibility',return_value='f'*64),patch.object(p,'qualify_binding',return_value=source):
+   actual=self.c.collect_preflight(self.n,{},self.expected)['provider_actual']
+   self.assertEqual(actual['startup_data_qualification'],self.startup['startup_data_qualification'])
+   self.c.startup_read.assert_called_once_with(self.P)
+   self.startup['qualified']=True
+   with self.assertRaisesRegex(ValueError,'Exact actual startup projection'):self.c.collect_preflight(self.n,{},self.expected)
+   self.startup.pop('qualified');self.startup['startup_policy_sha256']='e'*64
+   with self.assertRaisesRegex(ValueError,'installed provider policy'):self.c.collect_preflight(self.n,{},self.expected)
  def closed(self):
   self.P['current_backend_deployment_id']=OLD;self.n['baseline_deployment_id']=OLD;self.n['current_deployment_id']=OLD
   self.expected['acceptance_contract']['phase_policy']['baseline_deployment_id']=OLD

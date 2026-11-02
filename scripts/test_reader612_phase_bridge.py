@@ -6,6 +6,7 @@ from unittest.mock import Mock,patch
 from scripts import reader612_phase_bridge as b
 from scripts import reader612_native_restore as n
 from scripts import india_release_provider_adapter as a
+from scripts.test_india_release_provider_adapter import startup_fixture
 
 class Bridge(unittest.TestCase):
  def setUp(self):
@@ -15,10 +16,13 @@ class Bridge(unittest.TestCase):
   self.c=Mock();self.x=b.Reader612PhaseBridge.__new__(b.Reader612PhaseBridge);self.x.role_root=self.root;self.x.clock=lambda:self.now;self.x.collector=self.c
   self.x.source_binding={'source_sha':'3'*40};self.x.acceptance={'synthetic':'NOT_LIVE_PROOF'};self.U={'files':[],'runtime_expected_sha256':'4'*64}
   self.P={'source_sha':'3'*40,'source_root':str(self.root),'frontend_deployment_id':'dpl_SYNTHETIC','frontend_source_sha':'5'*40,'backend_payload_sha256':a.digest(self.U),'source_delivery_sha256':'4'*64,'closed_server_sha256':'6'*64,'native_pause_acceptance_sha256':a.digest(self.owner),'purchase_mode':'CLOSED','current_backend_deployment_id':'11111111-1111-1111-1111-111111111111','current_backend_source_sha':'7'*40,'config_sha256':'8'*64}
+  (self.root/'backend').mkdir();(self.root/'backend/startup_data_guard.py').write_bytes(b'SYNTHETIC_CLOSED_GUARD')
+  self.P,startup=startup_fixture(self.P,self.now,hashlib.sha256(b'SYNTHETIC_CLOSED_GUARD').hexdigest(),config_sha='8'*64)
   self.N={'source_sha':self.P['source_sha'],'tree_sha':'9'*40,'baseline_source_sha':'7'*40,'role':n.ROLE,'project':a.RAILWAY_PROJECT,'service':a.SERVICE,'environment':a.ENVIRONMENT,'baseline_deployment_id':self.P['current_backend_deployment_id'],'baseline_snapshot':'22222222-2222-2222-2222-222222222222','baseline_image':'sha256:'+'a'*64,'current_deployment_id':self.P['current_backend_deployment_id'],**dict.fromkeys(n.DIGEST_FIELDS,'b'*64)}
   self.N.update(payload_sha256=a.digest(b.covered_envelope(self.U,self.P,self.x.acceptance)),runtime_sha256='4'*64,config_sha256='8'*64,controller_sha256=hashlib.sha256(Path(n.__file__).read_bytes()).hexdigest(),support_sha256=n.support_identity(),journal_identity_sha256=n.journal_identity(self.j))
   self.prepared={'scope':'OFFLINE_PREPARATION_NOT_AUTHORITY','controller_sha':self.controller,'native_binding':self.N,'provider_binding':self.P,'upload_payload':self.U,'acceptance_contract':self.x.acceptance}
   self.actual={**self.P,'scope':'ACTUAL_PROVIDER_AND_SOURCE','qualified':True,'provider_identity_sha256':'c'*64,'bootstrap_preflight_sha256':'d'*64,'authenticated_provider_account':True,'auto_deploy':False,'cli_version':a.CLI_VERSIONS['railway'],'frontend_signed_purchase_ready':True,'current_backend_healthy':True,'native_healthcheck_traffic_gating':True,'new_resources_or_config_changes':False}
+  self.actual.update(startup)
   self.proof={'scope':'ACTUAL_IMMUTABLE_SOURCE_AND_NATIVE_BASELINE','binding_sha256':a.digest(self.N),'observed_at':self.now.isoformat(),**dict.fromkeys(['source_tree_payload_verified','baseline_image_snapshot_config_verified','auto_deploy_off','all_effective_redis_flags_off','current_healthy','no_staged_changes'],True),'provider_actual':self.actual}
   self.c.collect_preflight.return_value=self.proof;self.x._verify_prepared=Mock(return_value=self.prepared);self.x._resolver=Mock(return_value=self.gate);self.calls=[]
   a._durable_json(self.j/('e'*64+'.json'),{'state':'APPLIED_VERIFIED','action':'promote_frontend','binding':{'source_sha':self.P['frontend_source_sha'],'deployment_id':self.P['frontend_deployment_id']},'reconciliation_receipt_sha256':'f'*64},exclusive=True)
@@ -55,6 +59,27 @@ class Bridge(unittest.TestCase):
   self.proof['binding_sha256']='0'*64
   with self.assertRaises(ValueError):self.perform()
   self.assertEqual(self.calls,[])
+ def test_startup_receipt_is_required_and_remains_in_authentic_parent_coverage(self):
+  original=copy.deepcopy(self.actual)
+  self.actual.pop('startup_data_qualification')
+  with self.assertRaisesRegex(ValueError,'startup data qualification'):self.perform()
+  self.assertEqual(self.calls,[])
+  self.actual.update(original)
+  # The missing-proof rejection preceded the provider barrier; legitimate
+  # evidence can still be prepared, but no provider effect was claimed.
+  r=self.perform();coverage=self.x._coverage(r)
+  self.assertEqual(coverage['prepared']['provider_binding']['startup_data_receipt_sha256'],
+   a.digest(coverage['preflight_proof']['provider_actual']['startup_data_qualification']))
+ def test_startup_input_changes_parent_envelope_and_partial_binding_denies(self):
+  original=a.digest(b.covered_envelope(self.U,self.P,self.x.acceptance))
+  changed=copy.deepcopy(self.P);changed['startup_policy_sha256']='f'*64
+  self.assertNotEqual(original,a.digest(b.covered_envelope(self.U,changed,self.x.acceptance)))
+  self.x.prepare_qualification=Mock(return_value=self.prepared)
+  b.Reader612PhaseBridge._verify_prepared(self.x,self.prepared,self.owner)
+  self.assertEqual(self.x.prepare_qualification.call_args.kwargs['startup_binding'],
+   {k:self.P[k] for k in b.STARTUP_BINDING_FIELDS})
+  partial=copy.deepcopy(self.prepared);partial['provider_binding'].pop('startup_context_sha256')
+  with self.assertRaisesRegex(ValueError,'Partial startup'):b.Reader612PhaseBridge._verify_prepared(self.x,partial,self.owner)
  def test_stored_admission_owner_or_proof_tamper_denies(self):
   r=self.perform();path=self.j/(r['approval_sha256']+'.coverage.request.json');original=a._read_journal(path)
   for field in ['admission','owner_scope_record','preflight_proof']:
