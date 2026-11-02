@@ -110,6 +110,69 @@ def require_digest(value):
     return isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) and value != '0' * 64
 
 
+def operation_identity(action, binding):
+    """Ordinary identities remain byte-for-byte compatible with old journals."""
+    value = {'action': action, 'source_sha': binding['source_sha'],
+        'candidate': binding.get('deployment_id') if action == 'promote_frontend' else None,
+        'project': RAILWAY_PROJECT if action in {'release_backend', 'release_guarded_bootstrap'} else PROJECT,
+        'service': SERVICE if action in {'release_backend', 'release_guarded_bootstrap'} else None,
+        'environment': ENVIRONMENT if action in {'release_backend', 'release_guarded_bootstrap'} else 'production'}
+    if 'corrective_backend' in binding:
+        value['corrective_backend_sha256'] = digest(binding['corrective_backend'])
+    return digest(value)
+
+
+def corrective_predecessor(journal, action, binding, approval):
+    """One reviewed policy correction, never a retry or a journal override."""
+    if 'corrective_backend' not in binding:
+        return None
+    c = binding['corrective_backend']
+    fields = {'schema', 'failed_operation_id', 'failed_record_sha256',
+              'failed_reconciliation_receipt_sha256', 'failed_startup_policy_sha256',
+              'failed_policy_marker_identity_sha256', 'policy_change_approval_sha256'}
+    if (action != 'release_backend' or not isinstance(c, dict) or set(c) != fields
+            or c['schema'] != 'earnalism.corrective-backend-policy.v1'
+            or not all(require_digest(c[k]) for k in fields - {'schema'})):
+        raise ValueError('Exact corrective backend policy binding required')
+    if (not require_digest(binding.get('startup_policy_sha256'))
+            or c['failed_startup_policy_sha256'] == binding['startup_policy_sha256']
+            or c['failed_policy_marker_identity_sha256'] != binding.get('startup_marker_identity_sha256')
+            or approval.get('startup_policy_change_receipt_sha256') != c['policy_change_approval_sha256']):
+        raise ValueError('Approved changed policy with identical canaries required')
+    old = _read_journal(Path(journal) / (c['failed_operation_id'] + '.json'))
+    old_binding = old.get('binding')
+    if (old.get('state') != 'NOT_APPLIED_VERIFIED' or old.get('action') != 'release_backend'
+            or not isinstance(old_binding, dict) or 'corrective_backend' in old_binding
+            or not re.fullmatch('[0-9a-f]{40}', old_binding.get('source_sha', ''))
+            or old.get('operation_id') != c['failed_operation_id']
+            or operation_identity('release_backend', old_binding) != c['failed_operation_id']
+            or digest(old) != c['failed_record_sha256']
+            or old.get('reconciliation_receipt_sha256') != c['failed_reconciliation_receipt_sha256']):
+        raise ValueError('Immutable terminal ordinary failed predecessor required')
+    claim = Path(journal) / ('.corrective-' + c['failed_operation_id'] + '.claim')
+    if claim.exists():
+        raise FileExistsError('Original failed operation already consumed its one correction')
+    return c, claim
+
+
+def validate_corrective_observation(correction, binding, actual):
+    if correction is None:
+        return
+    c, _ = correction
+    observed = actual.get('corrective_backend')
+    if (not isinstance(observed, dict)
+            or observed.get('scope') != 'ACTUAL_FAILED_OPERATION_AND_APPROVED_POLICY_CHANGE'
+            or observed.get('policy_change_approved') is not True
+            or observed.get('failed_startup_code') != 'STARTUP_DATA_GUARD_PUBLICATION'
+            or not require_digest(observed.get('failure_receipt_sha256'))
+            or observed.get('railway_project') != RAILWAY_PROJECT
+            or observed.get('service') != SERVICE or observed.get('environment') != ENVIRONMENT
+            or observed.get('approved_policy_sha256') != binding['startup_policy_sha256']
+            or any(observed.get(k) != v for k, v in c.items())
+            or actual['startup_data_qualification']['marker_count'] != 2):
+        raise ValueError('Actual failed-policy and approved two-canary correction proof required')
+
+
 def validate_action_recovery(action, binding, actual):
     """Trusted live observer only; synthetic tests never create real receipts."""
     if action == 'release_guarded_bootstrap':
@@ -219,22 +282,35 @@ class ProviderAdapter:
 
     def perform(self, action, binding, approval):
         validate_approval(action, binding, approval, self.owner_authorized, self.clock())
-        operation_id = digest({'action': action, 'source_sha': binding['source_sha'],
-            'candidate': binding.get('deployment_id') if action == 'promote_frontend' else None,
-            'project': RAILWAY_PROJECT if action in {'release_backend', 'release_guarded_bootstrap'} else PROJECT,
-            'service': SERVICE if action in {'release_backend', 'release_guarded_bootstrap'} else None,
-            'environment': ENVIRONMENT if action in {'release_backend', 'release_guarded_bootstrap'} else 'production'})
+        correction = corrective_predecessor(self.journal, action, binding, approval)
+        operation_id = operation_identity(action, binding)
         path = self.journal / (operation_id + '.json')
         if path.exists():
             raise FileExistsError('Provider operation already has a durable intent')
         # A local path, additional binding field or changed approval must never
         # turn one unknown remote write into another permitted operation.
+        prior_records = []
         for prior in self.journal.glob('*.json'):
             if prior.name.endswith('.request.json'):
                 continue
             record = _read_journal(prior)
+            prior_records.append(record)
             if record.get('state') not in {'APPLIED_VERIFIED', 'NOT_APPLIED_VERIFIED'}:
                 raise FileExistsError('Unresolved provider write requires read-only reconciliation')
+        if action == 'release_backend' and correction is None:
+            # A controller-only/empty source commit must not mint a retry of
+            # the same failed delivered backend under a new Git SHA.
+            for old in prior_records:
+                if (old.get('action') == 'release_backend' and old.get('state') == 'NOT_APPLIED_VERIFIED'
+                        and 'corrective_backend' not in old.get('binding', {})
+                        and require_digest(binding.get('source_delivery_sha256'))
+                        and old.get('binding', {}).get('source_delivery_sha256') == binding['source_delivery_sha256']):
+                    resolved = any(r.get('state') == 'APPLIED_VERIFIED'
+                        and require_digest(r.get('reconciliation_receipt_sha256'))
+                        and r.get('binding', {}).get('corrective_backend', {}).get('failed_operation_id') == old.get('operation_id')
+                        for r in prior_records)
+                    if not resolved:
+                        raise ValueError('Same failed delivered backend requires explicit corrective binding')
         if self.observe is None:
             raise ValueError('Actual provider/source/config/rollback observer is required')
         # Observer must perform actual read-only source, provider/config, guarded
@@ -266,6 +342,9 @@ class ProviderAdapter:
                     or actual.get('frontend_deployment_id') != binding['frontend_deployment_id']
                     or (action == 'release_backend' and actual.get('startup_qualified') is not True)):
                 raise ValueError('Frontend-first/startup prerequisites unqualified')
+            from scripts.startup_dispatch_qualification import validate_startup_qualification
+            validate_startup_qualification(binding, approval, actual, self.clock())
+            validate_corrective_observation(correction, binding, actual)
         source = Path(binding['source_root']).resolve()
         if action in {'release_backend', 'release_guarded_bootstrap'}:
             # Never upload a dirty or misidentified checkout or accept an input
@@ -275,6 +354,9 @@ class ProviderAdapter:
             dirty = subprocess.check_output(['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True).strip()
             if sha != binding['source_sha'] or dirty:
                 raise ValueError('Backend source not exact/clean')
+            guard_sha = hashlib.sha256((source / 'backend/startup_data_guard.py').read_bytes()).hexdigest()
+            if guard_sha != binding['startup_guard_source_sha256']:
+                raise ValueError('Measured startup guard source differs')
             # Railway5.71 with explicit --project uses cwd as archive prefix.
             # Absolute backend input keeps backend/ paths; never path-as-root.
             from scripts.backend_upload_payload import qualify
@@ -295,12 +377,22 @@ class ProviderAdapter:
             raise ValueError('Unsafe journal directory')
         _sync_directory(self.journal.parent)
         _sync_directory(self.journal)
+        if action in {'release_backend', 'release_guarded_bootstrap'}:
+            # Recheck freshness after potentially slow source/payload reads.
+            validate_approval(action, binding, approval, self.owner_authorized, self.clock())
+            validate_startup_qualification(binding, approval, actual, self.clock())
         barrier = self.journal / '_write-barrier.json'
         _durable_json(barrier, {'operation_id': operation_id, 'state': 'INTENT_RECONCILE_BEFORE_RETRY'}, exclusive=True)
         intent = {'operation_id': operation_id, 'action': action, 'binding': binding,
                   'approval_sha256': digest(approval), 'started_at': self.clock().isoformat(),
                   'state': 'INTENT_RECONCILE_BEFORE_RETRY'}
         _durable_json(path, intent, exclusive=True)
+        if correction is not None:
+            # Re-read the permanent predecessor under the exclusive write
+            # barrier; an altered/outstanding outcome cannot acquire a claim.
+            c, claim = corrective_predecessor(self.journal, action, binding, approval)
+            _durable_json(claim, {'failed_operation_id': c['failed_operation_id'],
+                'operation_id': operation_id, 'state': 'CORRECTION_CONSUMED_NO_RETRY'}, exclusive=True)
         request = self.journal / (operation_id + '.request.json')
         if action == 'stage_frontend':
             _durable_json(request, {'name': 'earnalism', 'project': PROJECT,

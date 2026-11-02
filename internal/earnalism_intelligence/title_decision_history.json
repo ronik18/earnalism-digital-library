@@ -13594,5 +13594,29 @@
     "new_grants_or_customer_ledger_writes": false,
     "production_or_provider_actions": false,
     "next_exact_prompt": "Integration Lane: bind actual application commit and supported guard/runtime inventory, require fresh exact-head CI and published review, match-head source merge/tree equality, then hand clean main to existing book release owner for separately qualified frontend-first rollout."
+  },
+  "backend_startup_policy_corrective_controller_20261103": {
+    "at": "2026-11-02T21:35:14.445472+00:00",
+    "lane": "Integration Lane controller source-only corrective preparation",
+    "decision": "BIND_ONE_BACKEND_POLICY_CORRECTION_TO_VERIFIED_FAILURE_AND_FRESH_STARTUP_DATA",
+    "base_source": "b3d3293f006a7f2ae8c24a4ee973240082716dd3",
+    "scope": "CONTROLLER_AND_PREFLIGHT_ONLY_NO_APP_POLICY_OR_PROVIDER_EXECUTION",
+    "actual_failure": "STARTUP_DATA_GUARD_PUBLICATION on retained one backend attempt; original operation permanently NOT_APPLIED_VERIFIED, never retried",
+    "root_cause_evidence": "Two original nonsecret policy tuples match predecessors of independently verified authorized Oct31 Reader recoveries; exactmarkercomparison4b39284b and freshpublictuplesce4c1d retained externally. No identityfields or rawsnapshot included.",
+    "fix": "Actual installed policy and unchanged startup guard qualification required, exact source/runtime/config/context/marker bindings, direct versus snapshot method explicit. Original snapshot capture time must remain fresh; replay time cannot refresh evidence. One permanent correction claim per ordinary terminal failed operation, with actual approval/failure evidence and same canaries; new controller-only SHA cannot retry same failed delivered backend. Durable intent precedes under-barrier predecessor revalidation so rejection is reconcilable.",
+    "independent_review": "v1 CHANGES_REQUESTED for snapshot freshness and orphan intent; both fixed BEFORE source commit; v2 no blocking source findings",
+    "focused_tests": "85 unittest PASS including meaningful negative cases; synthetic local proofs are not native production/runtime or authority PASS",
+    "preserved": [
+      "original journals/permanent attempts",
+      "Reader/Listener entitlements",
+      "accepted India/US rights",
+      "live covers/audio",
+      "application/guard code",
+      "RedisOFF/defaults",
+      "parked PR627/600/529 and dirty original work"
+    ],
+    "authority": "Routine source fix only; policy/canary/principal read/change authority remains separate and pending actual owner action",
+    "provider_settings_policy_DB_grants_or_paid_actions": false,
+    "next_exact_prompt": "Integration: publish reviewed source via existing transport, require all applicable exact-head CI and actual published review, match-head merge/tree equality, then hand clean source to existing sole release owner for separately authorized exact policy correction and distinct reviewed execution. No operation replay."
   }
 }

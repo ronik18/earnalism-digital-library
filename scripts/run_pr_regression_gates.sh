@@ -128,6 +128,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_india_release_transition \
   scripts.test_build_india_guarded_rollback \
   scripts.test_india_release_provider_adapter \
+  scripts.test_startup_dispatch_qualification \
+  scripts.test_corrective_backend_dispatch \
   scripts.test_provider_process_diagnostic \
   scripts.test_backend_upload_payload \
   scripts.test_guarded_release_controller \
