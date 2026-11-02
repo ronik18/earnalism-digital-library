@@ -117,7 +117,8 @@ def test_complete_legacy_bound_is_measured_separately_from_credit():
     r['sessions'][0]['last_billed_at']=r['sessions'][0]['lease_expires_at']=r['sessions'][0]['settlement_at']
     result=proof.reconcile_legacy(**r)
     assert result['legacy_credit_bound_seconds']==51
-    assert result['legacy_time_bound_microseconds']==50500000
+    # Three uncapped terminal endpoints each lose at most 999us in BSON.
+    assert result['legacy_time_bound_microseconds']==50500000+3*999
     assert result['lineage_status']=='CONSERVATIVE_PROVEN_BOUND'
 
 
@@ -176,7 +177,8 @@ def test_actual_operator_provision_snapshot_readback_and_guarded_close(tmp_path,
         monkeypatch.setattr(op.native,'rights_for_review_phase',lambda *args,**kwargs:({'package_version':scope.PACKAGE},{}))
         result=await op.execute_one_shot(db=db,client=client,admitted=a,book={})
         assert result['status']=='COMMIT_RECEIPT_OBSERVED' and client.commits==1
-        assert result['actual_remaining_seconds']==69
+        # Three submillisecond endpoint bounds leave 68 whole seconds, never 69.
+        assert result['actual_remaining_seconds']==68
         assert db.users.rows[0]['reading_seconds_balance']==300
         from dataclasses import replace
         gid=db[scope.GRANTS].rows[0]['_id']
@@ -372,3 +374,85 @@ def test_expiry_between_namespace_ddl_calls_stops_next_write_status_only(tmp_pat
             await op.prepare_namespace_one_shot(db=db,client=client,admitted=a,book={})
         assert writes==[('collection',scope.WORKFLOWS)] and db[scope.GRANTS].rows==[]
     asyncio.run(run())
+
+
+# These tests use actual local BSON encoding, not a generic timestamp tolerance.
+def test_legacy_bson_json_precision_and_terminal_upper_bound():
+    from bson import BSON
+    from bson.codec_options import CodecOptions
+    r=legacy_records()
+    for row,h in zip(r['sessions'],r['heartbeats']):
+        start=h['created_at']
+        precise_start=start+timedelta(microseconds=125)
+        h['created_at']=BSON.encode({'at':precise_start}).decode(codec_options=CodecOptions(tz_aware=True))['at']
+        h['response']['lease_expires_at']=(precise_start+timedelta(seconds=20)).isoformat()
+        precise_stop=start+timedelta(seconds=17,microseconds=900)
+        persisted_stop=BSON.encode({'at':precise_stop}).decode(codec_options=CodecOptions(tz_aware=True))['at']
+        row['settlement_at']=row['last_billed_at']=row['lease_expires_at']=persisted_stop
+    before=proof.digest(r)
+    result=proof.reconcile_legacy(**r)
+    assert result['legacy_credit_bound_seconds']==51
+    assert result['legacy_time_bound_microseconds']==51000000+3*999
+    assert result['legacy_time_bound_microseconds']>=51000000+3*900
+    assert proof.digest(r)==before  # No raw timestamp/evidence rewriting.
+
+
+@pytest.mark.parametrize('excess_us,accepted',[(0,True),(125,True),(999,True),(1000,False),(1001,False),(1000000,False)])
+def test_legacy_precision_horizon_is_exact_bson_bin(excess_us,accepted):
+    r=legacy_records();h=r['heartbeats'][0]
+    h['response']['lease_expires_at']=(h['created_at']+timedelta(seconds=20,microseconds=excess_us)).isoformat()
+    if accepted:
+        assert proof.reconcile_legacy(**r)['legacy_credit_bound_seconds']==51
+    else:
+        with pytest.raises(proof.AdmissionStop,match='LEGACY_LEASE_HORIZON_UNKNOWN'):
+            proof.reconcile_legacy(**r)
+
+
+@pytest.mark.parametrize('field',['heartbeat','created','settled'])
+def test_legacy_non_bson_persisted_precision_does_not_get_tolerance(field):
+    r=legacy_records()
+    if field=='heartbeat':r['heartbeats'][0]['created_at']+=timedelta(microseconds=1)
+    elif field=='created':r['sessions'][0]['created_at']+=timedelta(microseconds=1)
+    else:r['sessions'][0]['settlement_at']+=timedelta(microseconds=1)
+    with pytest.raises(proof.AdmissionStop,match='LEGACY_PERSISTED_TIMESTAMP_NOT_BSON_MILLISECOND'):
+        proof.reconcile_legacy(**r)
+
+
+def test_legacy_submillisecond_intermediate_and_terminal_bounds_are_conservative():
+    from bson import BSON
+    from bson.codec_options import CodecOptions
+    start=NOW-timedelta(minutes=1)
+    precise_next=start+timedelta(seconds=3,microseconds=876)
+    endpoint=BSON.encode({'at':precise_next}).decode(codec_options=CodecOptions(tz_aware=True))['at']
+    expiry=start+timedelta(seconds=20,microseconds=125)
+    assert proof._legacy_interval_upper_microseconds(start,endpoint,expiry)==3000999
+    assert proof._legacy_interval_upper_microseconds(start,endpoint,expiry)>=3000876
+    # Service sees persisted expiry, not the precise response's trailing125us.
+    assert proof._legacy_interval_upper_microseconds(start,start+timedelta(seconds=25),expiry)==20000000
+    assert proof._legacy_interval_upper_microseconds(start,start,start+timedelta(seconds=20))==999
+
+
+def _legacy_many_synthetic_sessions(count,duration):
+    r=legacy_records();template={k:copy.deepcopy(v[0]) for k,v in r.items() if k in ('sessions','heartbeats','ledger','transactions')}
+    for k in template:r[k]=[]
+    for i in range(count):
+        sid=f'SYNTHETIC-precision-{i}';at=NOW-timedelta(minutes=20-i);end=at+timedelta(seconds=duration)
+        for k in template:
+            row=copy.deepcopy(template[k]);row['id']=sid if k=='sessions' else f'{k}-{sid}'
+            if k=='sessions':row.update(created_at=at,lease_issued_at=at,settlement_at=end,last_billed_at=end,lease_expires_at=end,seconds_consumed=duration)
+            else:row['session_id']=sid
+            if k=='heartbeats':row.update(created_at=at,idempotency_key='client-'+sid);row['response'].update(session_id=sid,lease_expires_at=(at+timedelta(seconds=20,microseconds=125)).isoformat())
+            elif k=='ledger':row.update(debit=duration,signed_seconds=-duration,idempotency_key=f'terminal:{sid}:2:ended',source_transaction_id='transactions-'+sid)
+            elif k=='transactions':row['seconds']=-duration
+            r[k].append(row)
+    r['ids']=[row['id'] for row in r['sessions']]
+    return r
+
+
+def test_legacy_precision_preserves_exact120_cap_without_epsilon():
+    r=_legacy_many_synthetic_sessions(6,20)
+    assert proof.reconcile_legacy(**r)['legacy_time_bound_microseconds']==120000000
+    r=_legacy_many_synthetic_sessions(8,15)
+    assert sum(row['debit'] for row in r['ledger'])==120
+    with pytest.raises(proof.AdmissionStop,match='ORIGINAL_120_BOUND_EXHAUSTED_OR_USAGE_FLOOR_MISSING'):
+        proof.reconcile_legacy(**r)  #120000000 raw+7992 uncertainty must HOLD.
