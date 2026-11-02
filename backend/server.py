@@ -170,7 +170,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
-    from backend import audio_acceptance_budget, native_audiobook_replacement
+    from backend import audio_acceptance_budget, native_audiobook_replacement, native_audiobook_profiles
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -186,6 +186,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
     import audio_acceptance_budget
     import native_audiobook_replacement
+    import native_audiobook_profiles
 
 try:
     from backend.domain.catalog import (
@@ -4074,7 +4075,7 @@ def _selected_audiobook_package(
     native_scope = getattr(getattr(request, "state", None), "native_replacement_scope", None) if request is not None else None
     if native_scope is not None:
         try:
-            selected = native_audiobook_replacement.selected_from_verified_scope(book, native_scope)
+            selected = native_audiobook_profiles.selected_from_verified_scope(book, native_scope)
             return selected, selected["release_descriptor_sha256"], ""
         except (native_audiobook_replacement.ReplacementError, TypeError, KeyError, ValueError):
             return None, "", ""
@@ -10279,12 +10280,8 @@ async def user_claim_reader_reward(user=Depends(require_user)):
 async def _native_replacement_member_scope(book, user_id, request, *, session_scope=None):
     """Recheck retained private authority after normal auth, without wallet writes."""
     native_session = isinstance(session_scope, dict) and bool(session_scope.get("native_replacement_authorization_id"))
-    marker = book.get(native_audiobook_replacement.FIELD) if isinstance(book, dict) else None
-    if (not isinstance(book, dict) or book.get("slug") != native_audiobook_replacement.SLUG
-            or not isinstance(marker, dict)
-            or marker.get("schema_version") != native_audiobook_replacement.SCHEMA
-            or marker.get("status") not in {"STAGED_PRIVATE", "PROMOTED_PUBLIC"}
-            or marker.get("candidate_descriptor_sha256") != native_audiobook_replacement.DESCRIPTOR):
+    profile = native_audiobook_profiles.review_profile(book)
+    if profile is None:
         if native_session:
             raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
         return None
@@ -10305,6 +10302,8 @@ async def _native_replacement_member_scope(book, user_id, request, *, session_sc
         if native_session:
             raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
         return None
+    if profile.SLUG != native_audiobook_replacement.SLUG:
+        raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
     verdict = _release_proxy_access_verdict(request)
     try:
         scope = native_audiobook_replacement.private_scope(book, user_id, budget,
@@ -10370,11 +10369,12 @@ def _listener_transport_canary_audio(audio, slug, request, principal):
 async def _listener_authorized_audio(audio, slug, request, principal):
     # A verified promotion uses ordinary public presentation, including for the
     # same bounded reviewer. The persisted scoped counter is not reinstalled.
-    if slug == native_audiobook_replacement.SLUG:
+    profile = native_audiobook_profiles.profile_for_slug(slug)
+    if profile is not None:
         artifact = _controlled_artifact_doc(slug,include_content=False)
         if artifact and (artifact.get(native_audiobook_replacement.FIELD) or {}).get('status') == 'PROMOTED_PUBLIC':
             try:
-                if native_audiobook_replacement.public_review_package(artifact):
+                if profile.public_review_package(artifact):
                     ordinary=dict(audio);ordinary.pop('transport_canary',None);return ordinary,''
             except (ValueError,KeyError,TypeError):
                 pass  # Existing fail-closed public projection remains authoritative.
@@ -10384,7 +10384,7 @@ async def _listener_authorized_audio(audio, slug, request, principal):
         if artifact and artifact.get(native_audiobook_replacement.FIELD):
             scope = await _native_replacement_member_scope(artifact, principal["id"], request)
             if scope:
-                package = native_audiobook_replacement.selected_from_verified_scope(artifact, scope)
+                package = native_audiobook_profiles.selected_from_verified_scope(artifact, scope)
                 return {**audio, "transport_canary": {
                     "enabled": True, "slug": slug,
                     "scope": native_audiobook_replacement.PRIVATE_SCOPE,
@@ -12532,7 +12532,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         # The rollout cookie is scoped to /reader/book/<slug>, not this
         # session-start endpoint. Bind the trusted exact candidate here;
         # protected media still independently enforces cohort selection.
-        if payload.content_id == audio_acceptance_budget.SLUG:
+        if native_scope is None and payload.content_id == audio_acceptance_budget.SLUG:
             descriptor = audio_acceptance_budget.DESCRIPTOR
             package = _validated_audiobook_package(book, payload.content_id,
                 raw_package=_book_audiobook_release_packages(book).get(descriptor),

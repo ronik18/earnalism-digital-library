@@ -1,4 +1,4 @@
-"""Default-local, exact Selfish metadata operator. Never run by application startup.
+"""Default-local, exact two-title metadata operator. Never run by application startup.
 
 No-argument/check-local mode reads no environment, credentials or database. Runtime
 modes require an externally pinned actual authority packet, exact private connection
@@ -21,7 +21,8 @@ def local_source_sha256():
     root = Path(__file__).parent
     names = ('native_audio_review_authority.py', 'native_audio_review_operator.py',
              'native_audio_review_operator_cli.py', 'native_audio_review_scope.py',
-             'native_audiobook_replacement.py', 'reading_pass_service.py', 'server.py')
+             'native_audiobook_replacement.py', 'native_audiobook_profiles.py',
+             'open_window_audiobook_replacement.py', 'reading_pass_service.py', 'server.py')
     return proof.digest([{ 'path': n, 'sha256': hashlib.sha256((root / n).read_bytes()).hexdigest()} for n in names])
 
 
@@ -75,8 +76,10 @@ async def runtime(a, bundle, receipts):
             return await operator.status(db, client, admitted)
         proof.need(a.execute or a.prepare_namespace, 'EXPLICIT_EXECUTE_REQUIRED')
         proof.need((admitted.action=='prepare-namespace') is a.prepare_namespace, 'RUNTIME_ACTION_MISMATCH')
-        book = load_controlled_artifact_book('the-selfish-giant', include_content=False)
-        proof.need(isinstance(book, dict), 'QUALIFIED_CONTROLLED_BOOK_REQUIRED')
+        operator.operation_profile(admitted)  # Closed title/descriptor/package/owner scope.
+        book = load_controlled_artifact_book(admitted.slug, include_content=False)
+        proof.need(isinstance(book, dict) and book.get('slug') == admitted.slug,
+                   'QUALIFIED_EXACT_CONTROLLED_BOOK_REQUIRED')
         # The exclusive durable marker survives ANY failure. A second --execute
         # for the same operation is denied even if no DB result can be observed.
         seal(a.journal, admitted.operation_id + '.attempt.json', {

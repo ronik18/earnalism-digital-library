@@ -1,0 +1,95 @@
+{
+  "schema": "earnalism.reviewed_open_window_private_stage_authority_successor.v1",
+  "proposal_status": "PROPOSED_FOR_INTEGRATION_NOT_YET_CANONICAL",
+  "scope": "EXACT_SUPPORTED_PRIVATE_STAGE_READER_METADATA_REBIND_ONLY_OLD_PUBLIC_AUDIO_UNCHANGED",
+  "predecessor_files": {
+    "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/pre-stage-reviewed-authority.json": "516a54f83a0ddecd13be7f91fcdfa00bfb0a73d631fca99ff07b543a1f3456e6",
+    "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/pre-stage-rights-registry.json": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0",
+    "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/pre-stage-approved-reader-bootstrap.json": "6e4572f01e9e57124170fa866069713a1eedb38bf7dfd869d9fd71a7e449df35",
+    "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/prior-public-restore.snapshot.json": "b56e89b921d6c05bc3f3859d4a698ca25c4d9038726485733e9082753aae9eeb",
+    "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/PRIVATE-STAGE-PROPOSAL-RESULT.json": "cca581cdb37a688b92b52d18b182bb3d754075841c438d10ec76a8968cb9a436"
+  },
+  "predecessor_registry_sha256": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0",
+  "reviewed_registry_sha256": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54",
+  "added_accepted_records": {
+    "india-20261102-the-open-window-scored-private-stage": "4660907932e29a0053d3f32eb4b8264bb5c1669a114f6d07823d5928c4f65ad8"
+  },
+  "title": "the-open-window",
+  "predecessor_title_binding": {
+    "decision_id": "india-20261026-the-open-window-protected-package-publication",
+    "record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-open-window/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-open-window/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-open-window/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-open-window/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-open-window/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-open-window/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-open-window/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json",
+      "cover_approval_evidence": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json"
+    }
+  },
+  "reviewed_title_binding": {
+    "decision_id": "india-20261102-the-open-window-scored-private-stage",
+    "record_sha256": "4660907932e29a0053d3f32eb4b8264bb5c1669a114f6d07823d5928c4f65ad8",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-open-window/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-open-window/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-open-window/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-open-window/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-open-window/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-open-window/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-open-window/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json",
+      "cover_approval_evidence": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-open-window/the-open-window-back-b5f55ed5a341460f.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-open-window/cover_approval_evidence.json"
+    }
+  },
+  "proposed_transaction": {
+    "applied": false,
+    "deployment_and_playback": "UNVERIFIED",
+    "files": {
+      "backend/data/approved_reader_bootstrap.json": "a62bed43e3cb7a6e1e0e8d3cdcceb936f7733487cb4c8ba729ab24574b0bd703",
+      "backend/data/controlled_publications/the-open-window/approval_evidence.json": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3",
+      "backend/data/controlled_publications/the-open-window/checksum_manifest.json": "40ea9327567a3d25891f015f8ae08d7e5747bafee42752a114ffa1d7cdfa2cbe",
+      "backend/data/controlled_publications/the-open-window/public_book.json": "03569318eba6e24c3ceaeb41fa186c6cb8fb5fcefb44f1c54af69408ec23ff14",
+      "backend/data/controlled_publications/the-open-window/publication_manifest.json": "4e345b9dda9fb4272dfcd94768b786483b1f4260bd64ae25e706a2190d236c89",
+      "backend/data/controlled_publications/the-open-window/reader_manifest.json": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045",
+      "backend/data/controlled_publications/the-open-window/rights_decision.json": "03db183eb1bfe95e2d95914a85fc7ee4a16b97fa4b3e925a02ac002ace7ef9b0",
+      "backend/data/rights_decision_registry.json": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54",
+      "data/controlled_publications/the-open-window/approval_evidence.json": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3",
+      "data/controlled_publications/the-open-window/checksum_manifest.json": "40ea9327567a3d25891f015f8ae08d7e5747bafee42752a114ffa1d7cdfa2cbe",
+      "data/controlled_publications/the-open-window/public_book.json": "03569318eba6e24c3ceaeb41fa186c6cb8fb5fcefb44f1c54af69408ec23ff14",
+      "data/controlled_publications/the-open-window/publication_manifest.json": "4e345b9dda9fb4272dfcd94768b786483b1f4260bd64ae25e706a2190d236c89",
+      "data/controlled_publications/the-open-window/reader_manifest.json": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045",
+      "data/controlled_publications/the-open-window/rights_decision.json": "03db183eb1bfe95e2d95914a85fc7ee4a16b97fa4b3e925a02ac002ace7ef9b0"
+    },
+    "operation": "STAGE_PRIVATE",
+    "schema_version": "earnalism.native_replacement_source_transaction.v1",
+    "slug": "the-open-window",
+    "snapshot_sha256": "855f678a05784c48302eaa964de4e0bae32321b5c0e72e31112b0ef892699815",
+    "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "target_bootstrap_row_sha256": "5ce50e58ce04ac65d20e0b63e67c9b4ec009d76c90315408b818a4c56436da22"
+  },
+  "all14proposed_files_verified_against_real_owned_private_apply": true,
+  "source_transaction_scope": "PLAIN_PRIVATE_COPY_PROPOSAL_NOT_CANONICAL_ADOPTION",
+  "preserved_shared_predecessor_files": {
+    "backend/data/rights_decision_registry.json": "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/pre-stage-rights-registry.json",
+    "backend/data/approved_reader_bootstrap.json": "internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/pre-stage-approved-reader-bootstrap.json"
+  },
+  "old_selected_public_audio_descriptor": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+  "new_candidate_status": "STAGED_PRIVATE",
+  "source_qa_audio_bindings_revocations_and_other51titles_unchanged": true,
+  "runtime_grant_deployment_or_LIVE_approval": false,
+  "independent_actual_storage_audit_sha256": "635030738b8da0a24ba382b31b98f84ae5e13bf9ad7635d0a37965456d0a2418"
+}

@@ -11,6 +11,7 @@ REGISTRY='backend/data/rights_decision_registry.json'
 REFERENCE='registry_sourceqa_successor_20261102'
 OPEN_REFERENCE='open_window_scored_sourceqa_successor_20261102'
 STAGE_REFERENCE='selfish_private_stage_authority_successor_20261102'
+OPEN_STAGE_REFERENCE='open_window_private_stage_authority_successor_20261102'
 PREDECESSOR='b4bc7585a87b7546db3270f3bfd63bd436e8585a'
 CONTINUOUS='f5706d328e08ab330f65f604f51df322b65646f1'
 CEDAR='c980ff2da048db7a164648f06f707440b2a8124c'
@@ -48,6 +49,34 @@ def load_stage_successor(baseline):
         assert hashlib.sha256((EVIDENCE_ROOT/path).read_bytes()).hexdigest()==digest, 'Private-stage predecessor changed'
     return receipt
 
+def load_open_stage_successor(baseline):
+    ref=baseline[OPEN_STAGE_REFERENCE];raw=(EVIDENCE_ROOT/ref['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ref['sha256'], 'Open private-stage review digest changed'
+    receipt=json.loads(raw)
+    assert receipt['schema']=='earnalism.reviewed_open_window_private_stage_authority_successor.v1'
+    assert receipt['runtime_grant_deployment_or_LIVE_approval'] is False
+    for path,digest in receipt['predecessor_files'].items():
+        assert hashlib.sha256((EVIDENCE_ROOT/path).read_bytes()).hexdigest()==digest, 'Open private-stage predecessor changed'
+    return receipt
+
+def add_open_stage_registry(expected,baseline):
+    if OPEN_STAGE_REFERENCE in baseline:
+        r=load_open_stage_successor(baseline)
+        archive=EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]
+        assert expected==json.loads(archive.read_text()), 'Unexpected Open predecessor permissions'
+        expected['accepted_records'].update(r['added_accepted_records'])
+    return expected
+
+def add_open_stage_baseline(expected,baseline):
+    if OPEN_STAGE_REFERENCE in baseline:
+        r=load_open_stage_successor(baseline)
+        assert expected['titles'][r['title']]==r['predecessor_title_binding']
+        assert expected['authority_sha256'][REGISTRY]==r['predecessor_registry_sha256']
+        expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
+        expected['titles'][r['title']]=r['reviewed_title_binding']
+        expected[OPEN_STAGE_REFERENCE]=baseline[OPEN_STAGE_REFERENCE]
+    return expected
+
 def add_stage_registry(expected,baseline):
     if STAGE_REFERENCE in baseline:
         stage=load_stage_successor(baseline)
@@ -55,7 +84,7 @@ def add_stage_registry(expected,baseline):
         assert hashlib.sha256(archived.read_bytes()).hexdigest()==stage['predecessor_registry_sha256']
         assert expected==json.loads(archived.read_text()), 'Unexpected predecessor permissions'
         expected['accepted_records'].update(stage['added_accepted_records'])
-    return expected
+    return add_open_stage_registry(expected,baseline)
 
 def add_stage_baseline(expected,baseline):
     if STAGE_REFERENCE in baseline:
@@ -64,7 +93,7 @@ def add_stage_baseline(expected,baseline):
         expected['authority_sha256'][REGISTRY]=stage['reviewed_registry_sha256']
         expected['titles'][stage['title']]=stage['reviewed_title_binding']
         expected[STAGE_REFERENCE]=baseline[STAGE_REFERENCE]
-    return expected
+    return add_open_stage_baseline(expected,baseline)
 
 
 class RegistrySuccessorTests(unittest.TestCase):
@@ -150,7 +179,8 @@ class RegistrySuccessorTests(unittest.TestCase):
         if STAGE_REFERENCE in baseline:
             stage=load_stage_successor(baseline)
             self.assertEqual(successor['reviewed_registry_sha256'],stage['predecessor_registry_sha256'])
-            self.assertEqual(bindings.sha(ROOT/REGISTRY),stage['reviewed_registry_sha256'])
+            final=load_open_stage_successor(baseline)['reviewed_registry_sha256'] if OPEN_STAGE_REFERENCE in baseline else stage['reviewed_registry_sha256']
+            self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
         parent=json.loads(git_bytes(successor['predecessor']['git_commit'],bindings.REVIEWED_AUTHORITY))
@@ -167,9 +197,13 @@ class RegistrySuccessorTests(unittest.TestCase):
         actual=json.loads((folder/'ACTUAL-PRIVATE-STAGE-RESULT.json').read_text())
         self.assertEqual(receipt['actual_transaction'],actual['transaction'])
         self.assertEqual(len(actual['transaction']['files']),14)
-        for path,digest in actual['transaction']['files'].items():self.assertEqual(bindings.sha(ROOT/path),digest)
+        for path,digest in actual['transaction']['files'].items():
+            current=ROOT/path
+            if OPEN_STAGE_REFERENCE in baseline and path in (REGISTRY,'backend/data/approved_reader_bootstrap.json'):
+                current=EVIDENCE_ROOT/load_open_stage_successor(baseline)['preserved_shared_predecessor_files'][path]
+            self.assertEqual(bindings.sha(current),digest)
         expected=copy.deepcopy(before);expected['accepted_records'].update(receipt['added_accepted_records'])
-        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),add_open_stage_registry(expected,baseline))
         self.assertEqual(add_stage_baseline(oldbaseline,baseline),baseline)
         prior=json.loads(base64.b64decode(snapshot['files']['rights_decision.json']))
         current=json.loads((ROOT/'backend/data/controlled_publications/the-selfish-giant/rights_decision.json').read_text())
@@ -213,6 +247,29 @@ class RegistrySuccessorTests(unittest.TestCase):
                 with patch.object(bindings,'REVIEWED_AUTHORITY',str(newpin)):
                     with self.assertRaisesRegex(AssertionError,'Unreviewed release authority change'):
                         bindings.assert_reviewed_authority(root)
+
+    def test_open_private_stage_exact_reader_binding_without_public_or_scope_change(self):
+        baseline=self.baseline();r=load_open_stage_successor(baseline)
+        before=json.loads((EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]).read_text())
+        expected=copy.deepcopy(before);expected['accepted_records'].update(r['added_accepted_records'])
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        self.assertEqual(len(r['proposed_transaction']['files']),14)
+        for path,digest in r['proposed_transaction']['files'].items():self.assertEqual(bindings.sha(ROOT/path),digest)
+        current=json.loads((ROOT/'backend/data/controlled_publications/the-open-window/rights_decision.json').read_text())
+        self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
+        snapshot=json.loads((EVIDENCE_ROOT/'internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/prior-public-restore.snapshot.json').read_text())
+        prior=json.loads(base64.b64decode(snapshot['files']['rights_decision.json']))
+        for key in prior:
+            if key not in ('decision_id','components','basis','evidence_sha256'):self.assertEqual(current[key],prior[key],key)
+        self.assertEqual(r['reviewed_title_binding']['component_paths'],r['predecessor_title_binding']['component_paths'])
+        oldbook=json.loads(base64.b64decode(snapshot['files']['public_book.json']))
+        book=json.loads((ROOT/'backend/data/controlled_publications/the-open-window/public_book.json').read_text())
+        for field in ('audiobook_active_release','audiobook_public_package_approval','audiobook_publication_acceptance','audio_enabled','audiobook_enabled','chapters','content_hash'):
+            self.assertEqual(book.get(field),oldbook.get(field),field)
+        self.assertEqual(book['audiobook_native_replacement']['status'],'STAGED_PRIVATE')
+        self.assertEqual(book['audiobook_active_release']['active_release_descriptor_sha256'],r['old_selected_public_audio_descriptor'])
+        self.assertEqual(len(baseline['titles']),52)
+        self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-open-window',baseline),ROOT/'backend/data/controlled_publications/the-open-window')
 
 
 if __name__=='__main__':unittest.main()

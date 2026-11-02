@@ -246,7 +246,7 @@ def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_publishe
                 and record["decision_id"] == "india-20261025-the-open-window-reader-cover-canary-metadata"
                 and record["accepted_by"] == 'Ronik Basak / Reo Enterprise direct Open Window GO LIVE and scoped automation approval in current chat; metadata-only binding successor, no external signature inferred.')
             or (slug == "the-open-window"
-                and record["decision_id"] in {"india-20261026-the-open-window-approved-revised-cover-pair", "india-20261026-the-open-window-protected-package-publication"}
+                and record["decision_id"] in {"india-20261026-the-open-window-approved-revised-cover-pair", "india-20261026-the-open-window-protected-package-publication", "india-20261102-the-open-window-scored-private-stage"}
                 and record["accepted_by"] == "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.")
             or (slug == "the-selfish-giant"
                 and record["decision_id"] == "india-20261102-the-selfish-giant-cedar-private-stage"

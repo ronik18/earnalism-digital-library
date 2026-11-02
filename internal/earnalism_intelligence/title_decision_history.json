@@ -13503,5 +13503,38 @@
       "new_allocation_synthesis": false,
       "post_promotion_grant_and_customer_checks": "UNPERFORMED; thissourcefixdoesnotqualifythem"
     }
+  },
+  "two_title_retained_scored_storage_private_source_20261102": {
+    "at": "2026-11-02T16:09:26.247290+00:00",
+    "scope": "ACTUAL_STORAGE_AND_REVIEWED_PRIVATE_SOURCE_PROPOSAL_NOT_DEPLOYED_OR_LIVE",
+    "base_commit": "40bac6fb35fbd53e4eed6da76f69f78d5e617011",
+    "open_package": "sha256-c2b0f27571aa437b61a1367c9e5157fd6f43ec2b307db09ba902083f481c9bca",
+    "open_manifest_sha256": "66753bcd655f893a6cfce67a359e9dc6ef879ff07cefc810a575f08ecc9ca089",
+    "open_storage_audit_sha256": "635030738b8da0a24ba382b31b98f84ae5e13bf9ad7635d0a37965456d0a2418",
+    "open_native_cumulative_used": {
+      "requests": 260,
+      "upload_bytes": 39456028,
+      "download_bytes": 78912056,
+      "metadata_bytes": 35651618,
+      "versions": 20
+    },
+    "attempted_objects": 20,
+    "original10attempts_preserved": true,
+    "original120_remaining": null,
+    "newly_verified_live": 0,
+    "new_allocation_or_synthesis": false,
+    "same_parent_authorization_recovery_sha256": "23d86cf34360a7bb8fc2a6135fbe7fed3f83c8df76f938fac17664abfa1a6948",
+    "same_parent_authorization_requests": 2,
+    "original_caches_4f_anchor_and_all_intents_preserved": true,
+    "additional_open_tempkeys_created": 4,
+    "pre_provider_import_hold_audit_sha256": "941a453605e1f42427e27ea8ec6bde084070dd42c6f9a3009cc6a2259d21eb45",
+    "correct_existing_native_interpreter": "/private/tmp/earnalism-cedar-storage-native-env-20261102/bin/python3.12",
+    "no_provider_replay_or_counter_reset_after_import_hold": true,
+    "private_stage_proposal_sha256": "cca581cdb37a688b92b52d18b182bb3d754075841c438d10ec76a8968cb9a436",
+    "source_code_independent_review_sha256": "7f05b0d018fdf9f038967305d6fcb3ff4417843dafabee57c028cbf38b9623b9",
+    "old_public_audio_reader_content_and_covers_preserved": true,
+    "actual_source_commit_CI_deployment_membergrant_playback_customer_acceptance": "PENDING",
+    "publication": "UNPERFORMED",
+    "actual_invoice": "UNVERIFIED_PARTIAL_ESTIMATES_ONLY"
   }
 }
