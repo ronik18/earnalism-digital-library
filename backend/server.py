@@ -10238,6 +10238,17 @@ async def _native_replacement_member_scope(book, user_id, request, *, session_sc
         if native_session:
             raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
         return None
+    try:
+        try:
+            from . import native_audio_review_scope as scoped_review
+        except ImportError:
+            import native_audio_review_scope as scoped_review
+        verdict = _release_proxy_access_verdict(request)
+        scoped = await scoped_review.member_scope(db,book,user_id,
+            country=verdict.country if verdict.allowed else None,now=datetime.now(timezone.utc),session_scope=session_scope)
+        if scoped is not None:return scoped
+    except (ReadingPassError, native_audiobook_replacement.ReplacementError, KeyError, ValueError, TypeError):
+        raise HTTPException(status_code=403,detail={"code":"NATIVE_REPLACEMENT_SCOPE_DENIED"}) from None
     row = await db.users.find_one({"id": user_id}, {"_id": 0, "reader_acceptance_budget": 1}) or {}
     budget = row.get("reader_acceptance_budget")
     if not isinstance(budget, dict) or "native_replacement_authorization" not in budget:
@@ -10307,6 +10318,16 @@ def _listener_transport_canary_audio(audio, slug, request, principal):
 
 
 async def _listener_authorized_audio(audio, slug, request, principal):
+    # A verified promotion uses ordinary public presentation, including for the
+    # same bounded reviewer. The persisted scoped counter is not reinstalled.
+    if slug == native_audiobook_replacement.SLUG:
+        artifact = _controlled_artifact_doc(slug,include_content=False)
+        if artifact and (artifact.get(native_audiobook_replacement.FIELD) or {}).get('status') == 'PROMOTED_PUBLIC':
+            try:
+                if native_audiobook_replacement.public_review_package(artifact):
+                    ordinary=dict(audio);ordinary.pop('transport_canary',None);return ordinary,''
+            except (ValueError,KeyError,TypeError):
+                pass  # Existing fail-closed public projection remains authoritative.
     if (request.query_params.get("transport_canary") == "1"
             and principal and principal.get("role") == "user"):
         artifact = _controlled_artifact_doc(slug, include_content=False)

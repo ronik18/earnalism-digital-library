@@ -466,3 +466,87 @@ def test_unrelated_or_missing_native_candidate_never_reads_member_data(monkeypat
         else:
             assert await server._native_replacement_member_scope(book, "user-1", None) is None
     asyncio.run(run())
+
+
+@pytest.fixture
+def scoped_composed(composed,monkeypatch):
+    """Synthetic storage refs imply synthetic package version; source target stays288.
+
+    Substitute only the fixture's expected package constant so actual route/
+    rights/service machinery runs on the existing fully validated source fixture.
+    This is not registration of a second production package or real owner grant.
+    """
+    from backend import native_audio_review_scope as scoped
+    from backend.tests.test_native_audio_review_scope import seeded,Client
+    c=composed;assert scoped.PACKAGE==native.ACTUAL_PACKAGE=='sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2'
+    monkeypatch.setattr(scoped,'PACKAGE',c['package']['package_version'])
+    monkeypatch.setattr(native,'ACTUAL_PACKAGE',c['package']['package_version'])
+    fixture,w,g=seeded(c['clock'][0]);g['package_version']=c['package']['package_version']
+    c['db'].users.rows[0].pop('reader_acceptance_budget')  # Synthetic fixture setup only.
+    c['db'][scoped.WORKFLOWS].rows=[w];c['db'][scoped.GRANTS].rows=[g]
+    c['service'].client=Client(c['db'])
+    c['scoped']=scoped
+    return c
+
+
+def test_scoped_actual_routes_select_private_candidate_then_keep_ordinary_reader_unrestricted(scoped_composed):
+    async def run():
+        c=scoped_composed;s=c['scoped']
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=server.app),base_url='https://fixture') as client:
+            lease=await start(client)
+            p=f'/api/reader/book/{native.SLUG}/audiobook/manifest'
+            r=await client.get(p,headers=signed('GET',p));assert r.status_code==200,r.text
+            assert r.json()['package_version']==c['package']['package_version']
+            assert c['db'].reading_pass_sessions.rows[0]['scope'][s.SCOPE_KEY]=='selfish-SYNTHETIC'
+            assert 'reader_acceptance_budget' not in c['db'].users.rows[0]
+            p='/api/reading-pass/leases/renew'
+            r=await client.post(p,json=dict(session_id=lease['session_id'],lease_version=1,sequence=1,
+                idempotency_key='scoped-start-play',active=True,playback_state='playing'),headers=signed('POST',p))
+            assert r.status_code==200,r.text
+            c['clock'][0]+=timedelta(seconds=2)
+            p='/api/reading-pass/sessions/end'
+            r=await client.post(p,json=dict(session_id=lease['session_id']),headers=signed('POST',p))
+            assert r.status_code==200,r.text
+            w=c['db'][s.WORKFLOWS].rows[0]
+            assert w['native_billable_microseconds']==2000000 and w['native_wallet_debit_seconds']==2
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize('mutation',['closed','expired','wrong-member','wrong-country','null-user-cap'])
+def test_scoped_actual_media_denies_changed_grant_before_storage(scoped_composed,mutation):
+    async def run():
+        c=scoped_composed;s=c['scoped']
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=server.app),base_url='https://fixture') as client:
+            await start(client);g=c['db'][s.GRANTS].rows[0]
+            p=f'/api/reader/book/{native.SLUG}/audiobook/manifest';headers=signed('GET',p)
+            if mutation=='closed':g['state']='CLOSED'
+            elif mutation=='expired':g['expires_at']=datetime.now(timezone.utc)-timedelta(seconds=1)
+            elif mutation=='wrong-member':g['user_id']='other-member'
+            elif mutation=='wrong-country':headers=signed('GET',p,'US')
+            else:c['db'].users.rows[0]['reader_acceptance_budget']=None
+            r=await client.get(p,headers=headers);assert r.status_code in (401,403),r.text
+            assert not c['seen'] and c['db'].users.rows[0]['reading_seconds_balance']==300
+    asyncio.run(run())
+
+
+def test_scoped_same_grant_survives_genuine_public_promotion_with_public_presentation(scoped_composed):
+    async def run():
+        c=scoped_composed;s=c['scoped'];before=copy.deepcopy(c['db'][s.GRANTS].rows)
+        # Actual supported transaction, explicitly synthetic local production proofs.
+        source_fixtures.release.promote(c['root'],snapshot_record=c['source_snapshot'],
+            decision_id='india-fixture-the-selfish-giant-scoped-public-carry',approved_by='SYNTHETIC_FIXTURE_ONLY',
+            generated_at=datetime.now(timezone.utc).isoformat(),apply=True,
+            **__import__('test_native_continuous_acceptance').arguments(c['package']))
+        for loaded in {truth,importlib.import_module(server.load_controlled_artifact_book.__module__)}:
+            loaded.clear_controlled_artifact_caches()
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=server.app),base_url='https://fixture') as client:
+            await start(client)
+            p=f'/api/reader/book/{native.SLUG}/audiobook/manifest'
+            r=await client.get(p,headers=signed('GET',p));assert r.status_code==200,r.text
+            assert r.json()['package_version']==c['package']['package_version']
+            assert r.json().get('transport_canary') is None
+            assert 'private_member_review' not in r.text
+        after=c['db'][s.GRANTS].rows
+        assert len(after)==1 and after[0]['_id']==before[0]['_id'] and after[0]['workflow_id']==before[0]['workflow_id']
+        assert c['db'][s.WORKFLOWS].rows[0]['used_credit_seconds']==61
+    asyncio.run(run())

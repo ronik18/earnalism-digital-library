@@ -74,6 +74,12 @@ def _iso(value: datetime) -> str:
     return ensure_utc(value).isoformat()
 
 
+try:
+    from . import native_audio_review_scope as scoped_native_review
+except ImportError:
+    import native_audio_review_scope as scoped_native_review
+
+
 class ReadingPassService:
     def __init__(self, *, db, client, config: ReadingPassConfig, token_secret: str) -> None:
         self.db = db
@@ -93,6 +99,8 @@ class ReadingPassService:
         )
         budget = (user or {}).get("reader_acceptance_budget")
         scope = document.get("scope") or {}
+        if scope.get(scoped_native_review.SCOPE_KEY):
+            return await scoped_native_review.resolve(self.db,document,_now(),mongo_session,starting=starting)
         if ((isinstance(budget, dict) and "native_replacement_authorization" in budget)
                 or scope.get("native_replacement_authorization_id")):
             # Validate the carried authority in this same transaction. Normal
@@ -152,14 +160,26 @@ class ReadingPassService:
     def _acceptance_remaining(budget, now):
         if budget is None:
             return None
+        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+            return budget.remaining(now)
         if ensure_utc(budget["expires_at"]) <= now:
             return 0
         return budget["maximum_seconds"] - budget["consumed_seconds"]
 
+    @staticmethod
+    def _acceptance_debit_remaining(budget):
+        if isinstance(budget,scoped_native_review.ScopedReviewBudget):return budget.wallet_remaining()
+        return budget['maximum_seconds']-budget['consumed_seconds']
+
     async def _debit_account(self, user_id, debit, budget, mongo_session):
         query = {"id": user_id, "role": "user", "reading_seconds_balance": {"$gte": debit}}
         increments = {"reading_seconds_balance": -debit, "wallet_seconds": -debit}
-        if budget is not None:
+        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+            # Same transaction as normal wallet/ledger/carry/session settlement.
+            # No user acceptance field is populated or overwritten.
+            await budget.debit(debit,mongo_session)
+            query['reader_acceptance_budget']={'$exists':False}
+        elif budget is not None:
             # Exact snapshot CAS plus the transaction couples budget, wallet,
             # ledger and session. Competing renew/terminal writes cannot overspend.
             query.update({f"reader_acceptance_budget.{key}": value for key, value in budget.items()})
@@ -532,7 +552,7 @@ class ReadingPassService:
             "Reader availability could not be verified.",
         )
 
-    async def _billable_interval(self, document, now, mongo_session, *, cutoff=None):
+    async def _billable_interval(self, document, now, mongo_session, *, cutoff=None, budget=None):
         """Conserve subsecond usage on the account across every session boundary.
 
         The account remainder and session/ledger transition share one transaction.
@@ -549,6 +569,8 @@ class ReadingPassService:
         delta = max(timedelta(0), stop - start)
         micros = min((delta.days * 86400 + delta.seconds) * 1000000 + delta.microseconds,
                      self.config.maximum_lease_seconds * 1000000)
+        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+            micros=await budget.interval(micros,mongo_session)
         if not micros:
             return 0
         account = await self.db.users.find_one({"id": document["user_id"]},
@@ -581,11 +603,11 @@ class ReadingPassService:
         billing_cutoff = ensure_utc(billing_cutoff_at or now)
         if budget is not None:
             billing_cutoff = min(billing_cutoff, ensure_utc(budget["expires_at"]))
-        billable = await self._billable_interval(session_doc, now, mongo_session, cutoff=billing_cutoff)
+        billable = await self._billable_interval(session_doc, now, mongo_session, cutoff=billing_cutoff,budget=budget)
         balance = await self._balance(user_id, mongo_session)
         debit = min(balance, billable)
         if budget is not None:
-            debit = min(debit, budget["maximum_seconds"] - budget["consumed_seconds"])
+            debit = min(debit, self._acceptance_debit_remaining(budget))
         balance_after = balance - debit
         if debit:
             await self._debit_account(user_id, debit, budget, mongo_session)
@@ -599,6 +621,7 @@ class ReadingPassService:
                 content_type=str(session_doc.get("content_type") or ""),
                 content_id=str(session_doc.get("content_id") or ""),
                 billing_cutoff_at=billing_cutoff,
+                native_review_scope=session_doc.get("scope") if isinstance(budget,scoped_native_review.ScopedReviewBudget) else None,
             )
         await self._release_preparation_window(session_doc, debit, mongo_session)
         updated_session = await self.db.reading_pass_sessions.update_one(
@@ -748,6 +771,8 @@ class ReadingPassService:
             if remaining is not None and remaining <= 0:
                 return {"terminal_only": True, "acceptance_exhausted": True}
             budget = await self._reserve_audio_acceptance_start(user_id, budget, mongo_session)
+            if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+                await budget.claim(mongo_session)  # Shared native-only row fences start versus close.
             session_id = str(uuid.uuid4())
             preparing = prepare_text and content_kind == "text" and not free_entitlement
             preparation_key = hashlib.sha256(f"{content_id}:{scope.get('manifest_version', '')}".encode()).hexdigest() if preparing else ""
@@ -1333,13 +1358,15 @@ class ReadingPassService:
                 genuinely_active = genuinely_active and str(playback_state or "").lower() == "playing"
             budget = await self._acceptance_budget(session_doc, mongo_session)
             billable = await self._billable_interval(session_doc, now, mongo_session,
-                cutoff=ensure_utc(budget["expires_at"]) if budget is not None else None)
+                cutoff=ensure_utc(budget["expires_at"]) if budget is not None else None,budget=budget)
             balance = await self._balance(user_id, mongo_session)
             debit = 0 if free_entitlement else min(balance, billable)
             if budget is not None:
-                debit = min(debit, budget["maximum_seconds"] - budget["consumed_seconds"])
+                debit = min(debit, self._acceptance_debit_remaining(budget))
             remaining = self._acceptance_remaining(budget, now)
-            if remaining is not None:
+            if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+                remaining=budget.remaining(now,pending_debit=debit)
+            elif remaining is not None:
                 remaining = max(0, remaining - debit)
             balance_after = balance - debit
             next_version = current_version + 1
@@ -1375,6 +1402,7 @@ class ReadingPassService:
                     idempotency_key=f"heartbeat:{session_id}:{sequence}",
                     content_type=str(session_doc.get("content_type") or ""),
                     content_id=str(session_doc.get("content_id") or ""),
+                    native_review_scope=session_doc.get("scope") if isinstance(budget,scoped_native_review.ScopedReviewBudget) else None,
                 )
 
             await self._release_preparation_window(session_doc, debit, mongo_session)
@@ -1504,8 +1532,16 @@ class ReadingPassService:
         content_type: str,
         content_id: str,
         billing_cutoff_at: Optional[datetime] = None,
+        native_review_scope: Optional[Mapping[str, Any]] = None,
     ) -> None:
         now = _now()
+        native_refs = {}
+        if native_review_scope is not None:
+            # Server-owned scope only; normal financial records retain their
+            # exact structure. Durable references forbid counter reinitialization
+            # if scoped workflow/session metadata is later absent.
+            native_refs = {k: native_review_scope[k] for k in
+                (scoped_native_review.SCOPE_KEY, 'native_audio_review_workflow_id')}
         transaction_id = str(uuid.uuid4())
         await self.db.wallet_transactions.insert_one(
             {
@@ -1519,6 +1555,7 @@ class ReadingPassService:
                 "created_at": _iso(now),
                 "actor": "reading-pass-v2",
                 "session_id": session_id,
+                **native_refs,
                 **({"billing_cutoff_at": _iso(billing_cutoff_at)} if billing_cutoff_at else {}),
             },
             session=mongo_session,
@@ -1543,6 +1580,7 @@ class ReadingPassService:
                 "metadata": {
                     "content_type": content_type,
                     "content_id": content_id[:200],
+                    **native_refs,
                     **({"billing_cutoff_at": _iso(billing_cutoff_at)} if billing_cutoff_at else {}),
                 },
             },

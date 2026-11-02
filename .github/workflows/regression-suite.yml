@@ -71,6 +71,8 @@ jobs:
           internal/audiobook_lab/scripts/test_native_replacement_release.py
           internal/audiobook_lab/scripts/test_native_continuous_acceptance.py
           backend/tests/test_native_audiobook_replacement_http.py
+          backend/tests/test_native_audio_review_scope.py
+          backend/tests/test_native_audio_review_operator.py
           internal/audiobook_lab/scripts/test_retained_master_derivative.py
           backend/tests/test_exact_retained_master_duration.py
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py

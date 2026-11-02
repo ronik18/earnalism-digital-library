@@ -93,6 +93,42 @@ def rights_for_candidate(book, *, country, now):
     need(verdict.passed,'Native candidate rights denied')
     return package,marker
 
+ACTUAL_PACKAGE='sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2'
+
+def public_review_package(book):
+    """Recognize exact independently approved public D2; never loosen candidate()."""
+    marker=book.get(FIELD)
+    if not isinstance(marker,dict) or marker.get('status')!='PROMOTED_PUBLIC':return None
+    need(book.get('slug')==SLUG and marker.get('schema_version')==SCHEMA
+         and marker.get('candidate_descriptor_sha256')==DESCRIPTOR
+         and marker.get('candidate_package_version')==ACTUAL_PACKAGE,'Exact promoted native marker required')
+    need(protected_package_publication_valid(book),'Public native approval unavailable')
+    state=validate_active_release_state(book['audiobook_active_release'])
+    need(state['active_release_descriptor_sha256']==DESCRIPTOR,'Ordinary public native selection changed')
+    package=validate_audiobook_package(book['audiobook_packages'][DESCRIPTOR],expected_slug=SLUG,
+        expected_source_sha256=SOURCE,expected_manuscript_sha256=MANUSCRIPT,expected_release_descriptor_sha256=DESCRIPTOR)
+    need(package['package_version']==ACTUAL_PACKAGE and package['duration_ms']==541807
+         and package['segment_count']==1 and package['word_count']==1652 and package['paragraph_count']==23
+         and package['tracks'][0]['chunks'][0]['assets']['audio']['sha256']==AUDIO,'Exact public native media required')
+    need(marker.get('promotion_acceptance_sha256')==book['audiobook_public_package_approval']['acceptance_sha256']
+         and marker.get('package_release_evidence_sha256')==digest(book['audiobook_package_release_evidence'][DESCRIPTOR]),'Public native acceptance/storage binding changed')
+    return package,marker
+
+def rights_for_review_phase(book,*,country,now):
+    """Private selection remains strict; public carry needs real public approval."""
+    if (book.get(FIELD) or {}).get('status')=='STAGED_PRIVATE':
+        return rights_for_candidate(book,country=country,now=now)
+    selected=public_review_package(book);need(selected is not None,'Native review phase unavailable')
+    package,marker=selected
+    need(country=='IN' and isinstance(now,datetime) and now.tzinfo is not None,'Native review country/clock untrusted')
+    record=marker['audio_use_decision'];accepted,revoked=load_production_registry();binding=load_audio_package_binding(SLUG,DESCRIPTOR)
+    need(binding and binding['decision_id']==record['decision_id'] and binding['record_sha256']==record_sha256(record),'Public native rights binding changed')
+    verdict=evaluate_accepted_record(record,edition_id=SLUG,operator_id='reo-enterprise',country=country,country_trusted=True,
+        use='audio_stream',required_components={'source_file':SOURCE,'selected_manuscript':MANUSCRIPT,'master_mp3':AUDIO,'audio_component_bindings':mapping(package)},
+        accepted_records=accepted,revoked_decision_ids=revoked,now=now)
+    need(verdict.passed,'Public native rights denied')
+    return package,marker
+
 def private_scope(book,user_id,budget,*,country,now,session_scope=None):
     """No builder/reset: only an already authorized, privately installed carried account grant."""
     if not isinstance(budget,dict) or 'native_replacement_authorization' not in budget:return None
@@ -135,7 +171,7 @@ def validate_carried_grant(budget,user_id,*,now,package_version,session_scope=No
 
 def selected_from_verified_scope(book,scope):
     """Only called with server-owned state after normal lease authorization and grant recheck."""
-    selected=candidate(book)
+    selected=candidate(book) if (book.get(FIELD) or {}).get('status')=='STAGED_PRIVATE' else public_review_package(book)
     if not selected:return None
     package,marker=selected
     need(isinstance(scope,dict) and scope.get('acceptance_test_id')==TEST_ID
