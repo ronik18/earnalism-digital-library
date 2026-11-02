@@ -214,8 +214,9 @@ for (const width of [1440, 390]) {
 
   for (const width of [1440, 1024, 390]) {
     await capture(browser, {
-      id: "library-canonical-live-and-coming-soon",
+      id: "library-canonical-live-held-excluded",
       route: "/library",
+      apiMode: { "/books": { body: [knownLiveBook, heldBook] } },
       width,
       height: width === 390 ? 844 : width === 1024 ? 768 : 1000,
       assertState: async (page) => {
@@ -223,12 +224,14 @@ for (const width of [1440, 390]) {
         await page.getByText("A Ghost Story", { exact: true }).first().waitFor();
         await page.getByTestId("reference-book-a-ghost-story").getByText("Live", { exact: true }).waitFor();
         await page.getByTestId("reference-book-a-ghost-story").getByRole("link", { name: "Details", exact: true }).waitFor();
-        await page.getByTestId(`reference-book-${heldSlug}`).waitFor();
-        await page.getByTestId(`reference-book-${heldSlug}`).getByText("In preparation", { exact: true }).waitFor();
-        const titleInquiry = page.getByTestId(`reference-book-${heldSlug}`).getByRole("link", { name: "Ask about title", exact: true });
-        await titleInquiry.waitFor();
-        assert.equal(await titleInquiry.getAttribute("href"), `/contact?interest=${heldSlug}`);
-        assert.equal(await page.getByTestId(`reference-book-${heldSlug}`).locator('a[href^="/reader/"], a[href^="/listener/"], a[href^="/book/"]').count(), 0, "Held edition must not expose consumption or Book routes");
+        // Retain a genuinely held row in the API fixture and verify the new
+        // presentation boundary; never relabel it as live or remove source data.
+        assert.equal(liveSlugs.includes(heldSlug), false);
+        assert.equal(await page.getByTestId(`reference-book-${heldSlug}`).count(), 0, "Held edition must be absent from the visible Library");
+        assert.equal(await page.getByRole("heading", { name: "In preparation", exact: true }).count(), 0);
+        assert.equal(await page.locator('[data-testid^="reference-book-"]').count(), 1, "Only the actual live fixture may contribute to visible cards");
+        assert.equal(await page.locator(".reference-library__results-bar").getByRole("status").innerText(), "1 edition to explore");
+        assert.equal(await page.locator(`a[href="/reader/${heldSlug}"], a[href="/listener/${heldSlug}"], a[href="/book/${heldSlug}"]`).count(), 0, "Held edition must not expose consumption or Book routes");
         assert.equal(liveSlugs.includes("a-ghost-story"), true, "live Library screenshot must be grounded in controlled-launch authority");
       },
     });
