@@ -1,0 +1,56 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/lib/controlledLaunch.js",
+    "frontend/src/lib/libraryCatalogueComposition.js",
+    "frontend/src/lib/libraryCatalog.js",
+    "frontend/src/lib/libraryFilterState.js",
+    "frontend/src/lib/libraryDiscovery.js",
+    "frontend/src/data/libraryDiscoveryMetadata.json",
+    "frontend/src/content/productCopy.json",
+    "frontend/src/design-system/sitewide-option-b.css",
+    "frontend/src/config/publicNavigation.js"
+  ],
+  "reviewed_source": {
+    "commit": "274298d0ada1c5a852ab8cae7c4dfbeef1c5dd1a",
+    "tree": "0e1e0b635faa57f8c1b087134aea1b9ba226e9c1",
+    "base": "15b157e5555b67ede6fd649fb9057d314c36bf3c"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/library-timeout-interaction-baseline-20261101.json",
+    "reviewed_source_commit": "9b8c35ab89cdfc2dca4d9f8666b48fc3b3797771",
+    "surface_sha256": "c23d2c99ccecc927d0cfed186dc66cf3b1ac31c41c6829b7c7f5f5a2451eefa3"
+  },
+  "authorized_surface_sha256": "343a78079117fa32197ee2c79b5f6f871f8bdf398edf592588ad8dfec08e8dc6",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/lib/controlledLaunch.js",
+      "frontend/src/lib/libraryCatalogueComposition.js",
+      "frontend/src/lib/libraryCatalog.js",
+      "frontend/src/lib/libraryFilterState.js",
+      "frontend/src/lib/libraryDiscovery.js",
+      "frontend/src/data/libraryDiscoveryMetadata.json",
+      "frontend/src/content/productCopy.json",
+      "frontend/src/design-system/sitewide-option-b.css",
+      "frontend/src/config/publicNavigation.js"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_DIRECTIVE_LIBRARY_VISIBLE_ONLY_GOLD_SOURCE_RECONCILIATION_20261102",
+    "scope": "Verified native owner request in Review video publishing policies turn 01a19a9f authorizes reconciling the already independently reviewed Library UI change onto current main, CI and supported desktop/mobile QA. UI directive removes preparation presentation and highlights Show More in gold/burgundy. Exact reviewed four-file bytes retained from a3019f8c; this successor is source evidence only, not rendered approval, merge, deployment, publication, provider or paid-session authority.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "Exact source transition only. Historical baseline remains immutable; independent successor review and fresh exact-head CI including real hosted rendering and published artifact verification are required. Native local loopback/Chromium denials retained, no retry/bypass. No production changes."
+}

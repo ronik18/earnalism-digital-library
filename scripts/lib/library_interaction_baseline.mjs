@@ -43,7 +43,8 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
 export const HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE = "docs/design-system/hourglass-sherlock-library-interaction-baseline-20261101.json";
 export const LIBRARY_QUALITY_INTERACTION_BASELINE = "docs/design-system/library-quality-interaction-baseline-20261101.json";
 export const LIBRARY_TIMEOUT_INTERACTION_BASELINE = "docs/design-system/library-timeout-interaction-baseline-20261101.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = LIBRARY_TIMEOUT_INTERACTION_BASELINE;
+export const LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE = "docs/design-system/library-visible-gold-interaction-baseline-20261102.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -277,6 +278,52 @@ const baselineContracts = {
     unchangedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js"],
     authorization: "OWNER_DIRECTIVE_LIBRARY_QUALITY_TIMEOUT_CORRECTION_20261101",
   },
+  [LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE]: {
+    "reviewedSource": {
+        "commit": "274298d0ada1c5a852ab8cae7c4dfbeef1c5dd1a",
+        "tree": "0e1e0b635faa57f8c1b087134aea1b9ba226e9c1",
+        "base": "15b157e5555b67ede6fd649fb9057d314c36bf3c"
+    },
+    "previous": {
+        "recordPath": "docs/design-system/library-timeout-interaction-baseline-20261101.json",
+        "commit": "9b8c35ab89cdfc2dca4d9f8666b48fc3b3797771",
+        "hash": "c23d2c99ccecc927d0cfed186dc66cf3b1ac31c41c6829b7c7f5f5a2451eefa3"
+    },
+    "authorizedHash": "343a78079117fa32197ee2c79b5f6f871f8bdf398edf592588ad8dfec08e8dc6",
+    "inputPaths": [
+        "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+        "frontend/src/components/ReferencePublicPages.css",
+        "frontend/src/styles/library-paper-review.css",
+        "frontend/src/pages/Library.jsx",
+        "frontend/src/lib/controlledLaunch.js",
+        "frontend/src/lib/libraryCatalogueComposition.js",
+        "frontend/src/lib/libraryCatalog.js",
+        "frontend/src/lib/libraryFilterState.js",
+        "frontend/src/lib/libraryDiscovery.js",
+        "frontend/src/data/libraryDiscoveryMetadata.json",
+        "frontend/src/content/productCopy.json",
+        "frontend/src/design-system/sitewide-option-b.css",
+        "frontend/src/config/publicNavigation.js"
+    ],
+    "changedPaths": [
+        "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+        "frontend/src/styles/library-paper-review.css",
+        "frontend/src/pages/Library.jsx"
+    ],
+    "unchangedPaths": [
+        "frontend/src/components/ReferencePublicPages.css",
+        "frontend/src/lib/controlledLaunch.js",
+        "frontend/src/lib/libraryCatalogueComposition.js",
+        "frontend/src/lib/libraryCatalog.js",
+        "frontend/src/lib/libraryFilterState.js",
+        "frontend/src/lib/libraryDiscovery.js",
+        "frontend/src/data/libraryDiscoveryMetadata.json",
+        "frontend/src/content/productCopy.json",
+        "frontend/src/design-system/sitewide-option-b.css",
+        "frontend/src/config/publicNavigation.js"
+    ],
+    "authorization": "OWNER_DIRECTIVE_LIBRARY_VISIBLE_ONLY_GOLD_SOURCE_RECONCILIATION_20261102"
+}
 };
 
 function contractForRecordPath(recordPath) {
