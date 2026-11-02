@@ -10228,9 +10228,18 @@ async def user_claim_reader_reward(user=Depends(require_user)):
 
 async def _native_replacement_member_scope(book, user_id, request, *, session_scope=None):
     """Recheck retained private authority after normal auth, without wallet writes."""
+    native_session = isinstance(session_scope, dict) and bool(session_scope.get("native_replacement_authorization_id"))
+    marker = book.get(native_audiobook_replacement.FIELD) if isinstance(book, dict) else None
+    if (not isinstance(book, dict) or book.get("slug") != native_audiobook_replacement.SLUG
+            or not isinstance(marker, dict)
+            or marker.get("schema_version") != native_audiobook_replacement.SCHEMA
+            or marker.get("status") not in {"STAGED_PRIVATE", "PROMOTED_PUBLIC"}
+            or marker.get("candidate_descriptor_sha256") != native_audiobook_replacement.DESCRIPTOR):
+        if native_session:
+            raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
+        return None
     row = await db.users.find_one({"id": user_id}, {"_id": 0, "reader_acceptance_budget": 1}) or {}
     budget = row.get("reader_acceptance_budget")
-    native_session = isinstance(session_scope, dict) and bool(session_scope.get("native_replacement_authorization_id"))
     if not isinstance(budget, dict) or "native_replacement_authorization" not in budget:
         if native_session:
             raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})

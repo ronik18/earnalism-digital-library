@@ -437,3 +437,32 @@ def test_real_auth_unrelated_endpoint_does_not_lookup_renewal_scope(composed, mo
             assert response.status_code == 200, response.text
             assert response.json()['wallet_seconds'] == 300
     asyncio.run(run())
+
+
+@pytest.mark.parametrize("case", ["none", "other", "missing", "malformed", "stale", "wrong-descriptor", "wrong-schema"])
+@pytest.mark.parametrize("native_bound", [False, True])
+def test_unrelated_or_missing_native_candidate_never_reads_member_data(monkeypatch, case, native_bound):
+    from types import SimpleNamespace
+    marker = {"schema_version": native.SCHEMA, "status": "STAGED_PRIVATE",
+              "candidate_descriptor_sha256": native.DESCRIPTOR}
+    book = {"slug": native.SLUG, native.FIELD: marker}
+    if case == "none": book = None
+    elif case == "other": book["slug"] = "another-book"
+    elif case == "missing": del book[native.FIELD]
+    elif case == "malformed": book[native.FIELD] = "not-a-marker"
+    elif case == "stale": marker["status"] = "REMOVED"
+    elif case == "wrong-descriptor": marker["candidate_descriptor_sha256"] = "f" * 64
+    else: marker["schema_version"] = "unreviewed-schema"
+    async def forbidden(*args, **kwargs):
+        raise AssertionError("Inapplicable candidate queried private member data")
+    monkeypatch.setattr(server, "db", SimpleNamespace(users=SimpleNamespace(find_one=forbidden)))
+    scope = {"native_replacement_authorization_id": "SYNTHETIC-retained-grant"} if native_bound else None
+    async def run():
+        if native_bound:
+            with pytest.raises(server.HTTPException) as error:
+                await server._native_replacement_member_scope(book, "user-1", None, session_scope=scope)
+            assert error.value.status_code == 403
+            assert error.value.detail["code"] == "NATIVE_REPLACEMENT_SCOPE_DENIED"
+        else:
+            assert await server._native_replacement_member_scope(book, "user-1", None) is None
+    asyncio.run(run())
