@@ -114,8 +114,8 @@
     },
     {
       "path": "data/approved_reader_bootstrap.json",
-      "bytes": 12484,
-      "sha256": "6e4572f01e9e57124170fa866069713a1eedb38bf7dfd869d9fd71a7e449df35"
+      "bytes": 12475,
+      "sha256": "a62bed43e3cb7a6e1e0e8d3cdcceb936f7733487cb4c8ba729ab24574b0bd703"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -7714,8 +7714,8 @@
     },
     {
       "path": "data/controlled_publications/the-open-window/checksum_manifest.json",
-      "bytes": 2433,
-      "sha256": "7efa4e5e1b7516785b1ba5864267d0caced0a2d160e47de76eb458d3d800ec07"
+      "bytes": 2445,
+      "sha256": "40ea9327567a3d25891f015f8ae08d7e5747bafee42752a114ffa1d7cdfa2cbe"
     },
     {
       "path": "data/controlled_publications/the-open-window/cover_approval_evidence.json",
@@ -7774,8 +7774,8 @@
     },
     {
       "path": "data/controlled_publications/the-open-window/public_book.json",
-      "bytes": 184535,
-      "sha256": "c8aeadbe8c0d6348de2a4d4c3a9f25a15db308bfd6204d3986a481a919291979"
+      "bytes": 199577,
+      "sha256": "03569318eba6e24c3ceaeb41fa186c6cb8fb5fcefb44f1c54af69408ec23ff14"
     },
     {
       "path": "data/controlled_publications/the-open-window/publication_authorization.json",
@@ -7784,18 +7784,18 @@
     },
     {
       "path": "data/controlled_publications/the-open-window/publication_manifest.json",
-      "bytes": 2627,
-      "sha256": "99df929ce7593b50fdf74cc8d69afac6aebdc1670ecbaa5180f495c6819bcb81"
+      "bytes": 2639,
+      "sha256": "4e345b9dda9fb4272dfcd94768b786483b1f4260bd64ae25e706a2190d236c89"
     },
     {
       "path": "data/controlled_publications/the-open-window/reader_manifest.json",
-      "bytes": 179394,
-      "sha256": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384"
+      "bytes": 194436,
+      "sha256": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045"
     },
     {
       "path": "data/controlled_publications/the-open-window/rights_decision.json",
-      "bytes": 4172,
-      "sha256": "9cb800eeff9f13f6098f7e31bbd8859c8bff9dfd6de130edf4e63d1a2badd041"
+      "bytes": 4410,
+      "sha256": "03db183eb1bfe95e2d95914a85fc7ee4a16b97fa4b3e925a02ac002ace7ef9b0"
     },
     {
       "path": "data/controlled_publications/the-open-window/source_evidence.json",
@@ -9509,8 +9509,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 41905,
-      "sha256": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0"
+      "bytes": 42032,
+      "sha256": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54"
     },
     {
       "path": "demand_scoring.py",
@@ -9594,23 +9594,28 @@
     },
     {
       "path": "native_audio_review_authority.py",
-      "bytes": 18214,
-      "sha256": "697349c35c3b11c21d27e4973010a34bbd464be765db7aca19e7b6da0b4ef137"
+      "bytes": 20054,
+      "sha256": "aa08f7b1a21002bc7c817295d46f3cd275985c1e7572a6851477648eec36533b"
     },
     {
       "path": "native_audio_review_operator.py",
-      "bytes": 23742,
-      "sha256": "13f67fed0a502825fbf637784321a01b839261974282557a7d69c95f04829209"
+      "bytes": 25389,
+      "sha256": "ec284a30b54ba220e8152c1867a4a1c2535dd1178a5ed85e93777617698a6a31"
     },
     {
       "path": "native_audio_review_operator_cli.py",
-      "bytes": 7831,
-      "sha256": "11b26a77a22799e8991bd7cb9565f66d08c83683731f58172af0524ba9fe8d48"
+      "bytes": 8068,
+      "sha256": "f877e07e235fd6117f918106d11e6353bb337189496cc50b8e34d1b66aaf830f"
     },
     {
       "path": "native_audio_review_scope.py",
-      "bytes": 9419,
-      "sha256": "bff209be5305b39d4cfd695107623fc67271f70ff38e6023477174961f97da3e"
+      "bytes": 10482,
+      "sha256": "bf34f5c245a61dc462b3b0728a250797468eadccf83560a7ca9ac1a4016242a2"
+    },
+    {
+      "path": "native_audiobook_profiles.py",
+      "bytes": 1242,
+      "sha256": "4736dd3e88f3cb79ceca8f391046b50c41ec4d27a56d7e04e3e924d87e5060cd"
     },
     {
       "path": "native_audiobook_replacement.py",
@@ -9636,6 +9641,11 @@
       "path": "open_window_audio_cap_recovery.py",
       "bytes": 10437,
       "sha256": "2372c53660bc5e6de12e3db84aec784dbae6a9a99ff2fcddfe3c5d7a49b06627"
+    },
+    {
+      "path": "open_window_audiobook_replacement.py",
+      "bytes": 12087,
+      "sha256": "3f9bc8e553390187e12745d148b9f44390e222e9c1142fa33dcbf6402c72f453"
     },
     {
       "path": "protected_package_publication.py",
@@ -9719,8 +9729,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 634260,
-      "sha256": "f6c5b2b050aac243db2eb5a1c65629aeae488412fcbbcc3741ac5256598d2494"
+      "bytes": 634107,
+      "sha256": "8509e7e484dfa81b089768ced70d4bd9d2e97176ba53d90d25c672c1a0989c06"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9788,5 +9798,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "ec8c3f3cb4bef88a527231c5350dbc57bea30ec9d7534b431d8e0d7ee7b92e3b"
+  "expected_sha256": "3fff180061f59b1198658870a3d98e3c4992ff4b3db353e37ed61dc43698c393"
 }
