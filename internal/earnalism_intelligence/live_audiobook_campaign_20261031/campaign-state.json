@@ -453,5 +453,212 @@
     "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
     "new_publications": 0,
     "new_allocation_synthesis": 0
+  },
+  "four_title_retained_audiobook_cohort_and_skill_learning_20261103": {
+    "at": "2026-11-02T23:02:01.212474+00:00",
+    "decision": "PRESERVE_FOUR_TITLE_RETENTION_TRUTH_AND_INSTALLED_SKILL_LEARNINGS",
+    "base_source": "149b01e7ea92ec413033d8e9c4931f9b647834e7",
+    "shortest_eligible_English_ranking": [
+      {
+        "slug": "the-student",
+        "authoritative_whitespace_words": 1485,
+        "source_body_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+      },
+      {
+        "slug": "sredni-vashtar",
+        "authoritative_whitespace_words": 1784,
+        "source_body_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+      },
+      {
+        "slug": "the-gift-of-the-magi",
+        "authoritative_whitespace_words": 2057,
+        "source_body_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+      }
+    ],
+    "quality_target": {
+      "requested_genuine_complete_scored_mean_minimum_per_title": 9.8,
+      "cross_title_pooling": false,
+      "actual_new_full_scored_scores": "UNPERFORMED_NOT_INVENTED",
+      "historical_scores_and_existing_language_policy_unchanged": true,
+      "all_per_dimension_confidence_fatal_flag_fidelity_rights_sync_and_runtime_gates_remain_strict": true
+    },
+    "title_checkpoints": {
+      "the-student": {
+        "voice": "Qwen Ryan historical audition; not qualified complete narration",
+        "audition_source_selection": {
+          "token_words": 375,
+          "full_source_token_words": 1499,
+          "percentage_rounded": 25.02,
+          "meaning": "PLANNED_PASSAGE_SELECTION_ONLY_NOT_ASR_OR_VERIFIED_AUDIO_COVERAGE",
+          "selected_units": 7,
+          "historical_full_planned_units": 40,
+          "unattempted_historical_units": 33
+        },
+        "complete_audio": "NOT_GENERATED; retained audition bytes still unverified",
+        "future_proposed_unit_count_is_not_historical_count": true,
+        "status": "BLOCKED_COMPLETE_SOURCE_BOUND_NARRATION_AND_QA"
+      },
+      "sredni-vashtar": {
+        "voice": "OpenAI stock Verse / gpt-4o-mini-tts; not Ryan",
+        "retained_repaired_candidate_sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+        "retained_candidate_seconds": 638.105,
+        "status": "BLOCKED_GENUINE_FULL_SCORED_REVIEW_ALIGNMENT_COMPLETENESS_AND_RELEASE_GATES",
+        "known_voice_or_join_concerns_not_cleared_by_music": true,
+        "scored_diagnostic_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+        "full_scored_owner_review": "SHARED_COMPLETE10M38_DRAFT_ACTUAL_REVIEW_PENDING_NO_NEW_SCORES",
+        "source_equivalence": "Verified difference only CRLF/LF representation; authoritative source unchanged.",
+        "measured_alignment": "148of158blocks anchored;10held/3zero rows;notplayeradmitted or complete syncPASS.",
+        "eleven_inherited_ASR_timing_gap_words": "Root-observed one13s offline excerpt recognizer finds all11;not a new fullASR or proof of speechomission.",
+        "new_synthesis_basis": "NONE_ESTABLISHED;timing/alignment/music/storage/runtime holds cannot authorize regeneration."
+      },
+      "the-gift-of-the-magi": {
+        "retained_human_candidate_sha256": "ad64c77240f6bce92f0976396b13131104b602d05327167dd47c40b0b112d4fc",
+        "candidate_disposition": "REJECTED_FOR_CURRENT_AUTHORITATIVE_EDITION_ON_OBJECTIVE_CONTENT_AND_FORMAT_GATES",
+        "basis": "Two cached recognizers corroborate material alternate/inserted/omitted wording; actual received MP3 also fails supported bitrate. Preserve original candidate and reports; never upencode or score to disguise absence.",
+        "artistic_listening_rating": "UNPERFORMED_NOT_REJECTED_ON_ARTISTIC_SCORE",
+        "full_scored_target_not_established": true,
+        "status": "BLOCKED_COMPLETE_EXACT_SOURCE_QUALIFIED_NARRATION"
+      },
+      "book-5704b31005": {
+        "title": "বিচারক",
+        "voice_preference": "Girija; Roopa approval not transferred",
+        "paragraph23_intro_and_ending": "EXACT_SOURCE72CHAR_UI_RECORDS_AND_ROOT_ASSOCIATED_RETAINED_INTRO_ENDING_FILES;spokenfidelityUNVERIFIED",
+        "paragraph23_dialogue": "VISIBLE_TEST_ESO_DIFFERS_FROM_AUTHORITATIVE_ES; exact retained source recording not qualified",
+        "source_audio_bytes": "Intro f1c78a64,dialogue18b307d5,ending6ad2ba07 now retained and decoded; complete exact edition and modified-dialogue wording remain unqualified.",
+        "current_visible_plan": "Creator; generation-date commercial entitlement remains unverified",
+        "normal_UI_download_failures_preserved_no_blind_repeats": true,
+        "full_source_fidelity_sync_scored_listening_rights_runtime": "UNVERIFIED",
+        "status": "BLOCKED_EXACT_DIALOGUE_COMPLETE_SOURCE_AND_FULL_EDITION_QUALIFICATION",
+        "retained_native_save_files": [
+          {
+            "sha256": "f6b0b22ad0288be6ba883856086ee0a2516588c7ca96007014e6f6e4f59dfa55",
+            "size_bytes": 850765,
+            "duration_seconds": 52.11425
+          },
+          {
+            "sha256": "f1c78a64a589e402f2b88576a4b06b20a836bd1bfab28485d1ee5e2f0267d4c2",
+            "size_bytes": 112231,
+            "duration_seconds": 5.955875
+          },
+          {
+            "sha256": "18b307d59f3c228d5ead9e8724591dba92b444576984195585b4337edef34db9",
+            "size_bytes": 75033,
+            "duration_seconds": 3.631
+          },
+          {
+            "sha256": "6ad2ba076ceb6f51bdb325728b34d9198b5c198f58eb7965cc559a8a66c4dd55",
+            "size_bytes": 113485,
+            "duration_seconds": 6.03425
+          }
+        ],
+        "transport_resolution": "Supported native pending Save dialogs resolved retained inbound custody; preserve prior timeout observations. No Chrome download/history workaround.",
+        "local_intro_ASR": "FAILED_TypeError_NO_RESULT_NO_ASR_PASS_NO_RETRY",
+        "current_public_library_voice_id": "3DF5lO2rtqNp6A9emuj0",
+        "current_library_id_is_historical_generation_binding": false,
+        "current_plan_labels": [
+          "You’re currently on Creator plan",
+          "Renews on November 23",
+          "Commercial license for Speech and Music"
+        ],
+        "historical_entitlement_and_retained_dialogue_owner_fact_reply": "PENDING_UNVERIFIED",
+        "no_voice_selection_add_generation_or_billing_change_from_observation": true
+      }
+    },
+    "installed_host_skill": {
+      "entrypoint_sha256": "f90c852859edf95f3c8f6dde7d78df80a91bc30c4085021747d5680132c5aeea",
+      "reviewed_seven_file_delta_installed": true,
+      "all15host_hashes_reverified": true,
+      "independent_forward_cases": 11,
+      "scope": "SYNTHETIC_OFFLINE_SKILL_DECISIONS_NOT_AUDIOBOOK_QA",
+      "cached_plugin_version": "1.0.1+sha.beb76a9092d9",
+      "all14cached_plugin_hashes_unchanged_reverified": true,
+      "current_expected_source_set": "14original_reviewed_files_plus1independently_reviewed_campaign_execution_successor",
+      "current_campaign_execution_sha256": "c99487e3158eeeda3bd0e4322703fbfcfc837f2b51c1a604627a88b520a96b82",
+      "three_paragraph_successor_review_sha256": "07edf3a428b89c94c26104f6a09d7640ef6d352848132c07bbcd0296ae9d22b9",
+      "host_entrypoint_f90c_unchanged": true
+    },
+    "constraints": {
+      "new_allocation": false,
+      "new_synthesis": false,
+      "new_paid_Earnalism_session": false,
+      "original_credit_or_cost_counter_reset": false,
+      "provider_or_policy_or_DB_write_by_learning_packet": false,
+      "prepared_guard_scope_question_sha256": "8628bc9d32593694d7f6661510707e6a81dbe3bf5e3a7c1091504912b8a673fa",
+      "prepared_guard_scope_question_status": "PENDING_ACTUAL_OWNER_REPLY_NOT_AUTHORITY",
+      "only_Integration_Lane_may_integrate_or_release": true,
+      "new_native_cohort_question_sha256": "40e3d7aee5c035a8057cd2abe86cc391e6e80d2feca505aef528c25456631b3c",
+      "new_native_cohort_question_status": "ROOT_REPORTED_ASKED_REPLY_PENDING_NO_AUTHORITY_CREATED_BY_THIS_PACKET"
+    },
+    "evidence": {
+      "ranking": {
+        "artifact": "RANKED-QUALIFICATION.json",
+        "sha256": "11b5a92ad2d8a593b409ae814861ce4a8e241b5a6143065774c20fe020c2ffda"
+      },
+      "Student_audition_custody": {
+        "artifact": "RETAINED-RYAN-AUDITION-AUDIT.json",
+        "sha256": "ae1ec7796ec936dd244838964c88a0c83490d4e501cf875c537c5046ae9041b7"
+      },
+      "Magi_candidate_objective_rejection": {
+        "artifact": "FINAL-OBJECTIVE-CANDIDATE-DISPOSITION.json",
+        "sha256": "22c64979da4be3cea4dc4712c730c53efeb5fcccd2657a3e1ca2ca97791f7a25"
+      },
+      "Bicharak_latest_Root_observation": {
+        "artifact": "NATIVE-SAVE-RECOVERY-SUCCESSOR-20261103.json",
+        "sha256": "5e65eed7e9fa1879c1ddb47e1d52fcdc01ef1da7b79eb5f2ef7e06bdd0707643"
+      },
+      "host_skill_install": {
+        "artifact": "HOST-INSTALL-RESULT.json",
+        "sha256": "262915aadb98c6979b35c46f46707c32b2e69c71709d17bfda2910ee89d25510"
+      },
+      "independent_skill_forward_decisions": {
+        "artifact": "FORWARD-EVALUATION.json",
+        "sha256": "b2563f25e9ac9b34c61374ae5e04bb601e77d0b8e2d5aa385b6c32a9d5c10ad8"
+      },
+      "Bicharak_current_library_plan_observation": {
+        "artifact": "CURRENT-VOICE-ID-AND-PLAN-OBSERVATION-20261103.json",
+        "sha256": "0de1ec7eebca4919f0b51abfb76bbd74655e8c630f5ff6115f07b57708d3b57a"
+      },
+      "host_skill_recovery_reference_install": {
+        "artifact": "retained-recovery-learning-successor/INSTALL-RESULT.json",
+        "sha256": "d75dc949379fb2b538e87ea89feecc619020e7f82168e5bb2d327e6441cff746"
+      },
+      "cohort_executor_preparation_peer_review": {
+        "artifact": "INDEPENDENT-COHORT-EXECUTOR-REVIEW.json",
+        "sha256": "2341b776ceb5ceb3e89380d1f51148098abde095fbcb25801e60a0ffade833df"
+      },
+      "Sredni_full_scored_diagnostic": {
+        "artifact": "Sredni-Vashtar-Scored-Diagnostic-v1.mp3",
+        "sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790"
+      },
+      "Sredni_source_equivalence_notes": {
+        "artifact": "review-source-equivalence-successor-20261103/MANIFEST.SUCCESSOR.json",
+        "sha256": "5bc75fdfbbe8a2809dc789302e09bf5b753b2b63f2c7e2b8db12a8fc3cc161bb"
+      },
+      "Sredni_measured_map_handoff": {
+        "artifact": "measured-map-successor-20261103-v2/MANIFEST.HANDOFF.json",
+        "sha256": "5e01dc730bb800304c3b3871ac9c4a8a4323a8c79cb5aaffcf760174b631d23d"
+      }
+    },
+    "new_publications_or_verified_LIVE_from_this_checkpoint": 0,
+    "preserved_original_inventory_statuses": 52,
+    "next_exact_integration_action": "Integration Lane: review this four-record evidence-only patch against exact preimage hashes and fresh clean merged main, preserving all52 status rows and historical scores/counters; continue independent retained qualification and collect only genuinely missing authority. No generation, credit reset, policy read/write or publication is authorized by these records.",
+    "inventory_summary_untouched": {
+      "initial_inventory_count": 52,
+      "initial_inventory_sha256": "5f8326ee29ae3f6e9426e83b871b7829e2c41333c999f397aca84fde0b6fc25e",
+      "verified_live": 0,
+      "blocked": 52,
+      "new_publications": 0,
+      "scope_frozen": true
+    },
+    "cohort_executor_preparation": {
+      "source_sha256": "eebd27f371f3665edeeb046a603e49bb58f59cf39171ab979c041bb9b92ae958",
+      "manifest_sha256": "67a38377d6188ba200545695db7a7c2f62b9004c81bdb822feccd741af8fc43e",
+      "peer_review_sha256": "2341b776ceb5ceb3e89380d1f51148098abde095fbcb25801e60a0ffade833df",
+      "independent_offline_cases": "26PASS0SKIP_SYNTHETIC_ONLY",
+      "real_SDK_schema_source_jobs": "41PASS_NO_CLIENT_KEY_OR_PROVIDER",
+      "fixed_limits": "5USD_TOTAL;1.50Student/1.75Sredni/1.75Magi;12/14/15one-shotresponses;max2inflight/1perbook;noalloc/purchase/retry",
+      "Sredni_conditional_scope": "Actual same-source/ae535 retained owner-confirmed irreparable narration/content defect or genuine complete-scored mean<9.8 attributable to narration with safe retained repair infeasible; no timing/alignment/music/storage/runtime basis.",
+      "actual_generation_pilot_or_release": "UNPERFORMED;newscopedownerreplyrequired"
+    }
   }
 }
