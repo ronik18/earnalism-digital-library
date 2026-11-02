@@ -344,5 +344,20 @@
     "production_member_or_grant_or_DB_operations": "NOT_PERFORMED",
     "actual_remaining_credit_seconds": null,
     "remote_integration_and_deployment": "PENDING"
+  },
+  "source_ci_fixture_reconciliation_20261102": {
+    "status": "LOCAL_SOURCE_ONLY_NOT_LIVE",
+    "base_source": "50b93591c06f8cbb890fb03783edb49bed916fe8",
+    "failed_run_preserved": 41433568264,
+    "exact_current_reader_manifest_sha256": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+    "exact_current_reader_rights_decision": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "reader_content_chapters_covers_entitlements_and_old_public_B5": "UNCHANGED_AGAINST_PRE_STAGE15b",
+    "current_catalogue_fixture_group": "79PASS_1SKIP_74SUBTESTS",
+    "downstream_local_checks": "16PYTHON_PROXY_28NODE_PROXY_400FRONTEND_UNIT_PASS",
+    "historical_fixtures_accepted_rights_records": "PRESERVED",
+    "full_UAT_browser_and_fresh_new_head_CI": "UNPERFORMED",
+    "runtime_member_account_and_public_promotion": "STILL_REQUIRED",
+    "learning": "Exact private audiobook staging changes current Reader metadata hashes and exact rights bindings without changing Reader text, order or ordinary public selection. Audit active catalogue/rights/hash fixtures and validate the downstream gate group before transport; preserve historical fixtures and accepted records. Bounded historical Git-object admission is separate from local partial-repository hydration. Preserve failed runs and keep runtime/LIVE checks unperformed until genuinely observed.",
+    "next_exact_prompt": "Integration Lane: transport the reviewed exact successor on existing PR #628 and require fresh exact-head CI, then return the clean canonical slot for queued Redis work."
   }
 }
