@@ -64,7 +64,7 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
                 publication = MODULE.read_json(directory / "publication_manifest.json")
                 expected_decision = ("india-20261026-the-open-window-protected-package-publication"
                                      if slug == "the-open-window"
-                                     else "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings" if slug == "the-selfish-giant"
+                                     else "india-20261102-the-selfish-giant-cedar-private-stage" if slug == "the-selfish-giant"
                                      else f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
                 self.assertEqual(decision["decision_id"], expected_decision)
                 self.assertEqual(decision["territories"], ["IN"])
