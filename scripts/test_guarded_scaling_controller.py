@@ -16,9 +16,27 @@ from scripts.guarded_scaling_controller import (
 )
 
 TARGET=Target('a8533934-35c4-463e-9f43-577a9ac391ee','580b250c-80ee-48ad-bfbe-fa4e31a6b378','5af42e7e-f518-4f6a-b602-d9950866501f')
+REDIS_TARGET=replace(TARGET,service_id='f133dcdc-17f4-42a3-92c7-3aa76ccd26b1')
 DIGEST='a'*64
 ATLAS='1'*24+'/fixture'
 TOKEN='dummy_test_only_'+'x'*32
+
+from scripts.scaling_resource_admission import ManagedClientGrant, budget_digest
+
+class DummyManagedAuthority:
+    # Explicit synthetic authority, not an external-custody implementation.
+    def verify(self, **kw):
+        return ManagedClientGrant(kw['target_key'],kw['source_digest'],kw['provider_revision'],
+            kw['atlas_resource'],budget_digest(kw['budget']),kw['desired'],1001)
+
+def redis_budget():
+    return {'application_target_key':TARGET.key,'redis_target_key':REDIS_TARGET.key,'source_digest':DIGEST,'observed_at':1000,
+        'persistence_mode':'forking','rdb_enabled':True,'aof_enabled':False,
+        'maxmemory_bytes':100,'used_memory_bytes':10,'intended_dataset_bytes':90,
+        'parent_rss_upper_bound_bytes':120,'persistence_cow_upper_bound_bytes':120,
+        'excluded_buffers_upper_bound_bytes':10,'other_process_upper_bound_bytes':10,
+        'safety_reserve_bytes':20,'approved_memory_envelope_bytes':280,
+        'provider_enforced_limit_bytes':300,'policy':'noeviction','startup_config_writes':False}
 
 
 def observation():
@@ -27,6 +45,7 @@ def observation():
         'nodes':3,'observed_running_replicas':2,'max_current_web_replicas':10,'max_replacement_replicas':10,
         'other_connections_per_node':20,'reserve_connections_per_node':50,
         'cohorts':[cohort('current_web'),cohort('replacement_web')]}}
+    limits['redis_memory_budget']=redis_budget()
     return Observation(TARGET,DIGEST,'r1',1000,2,2,False,True,True,True,
         {'WEB_CONCURRENCY':1,'MONGODB_MAX_POOL_SIZE':8},limits)
 
@@ -56,8 +75,8 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.path=Path(self.temp.name)/'journal.sqlite'
         self.journal=Journal(self.path);self.provider=DummyProvider()
-        self.policy=Policy(TARGET,DIGEST,1,10,atlas_resource=ATLAS,enabled=True,provider_timeout=.05)
-        self.controller=Controller(self.policy,self.journal,self.provider,clock=lambda:1000)
+        self.policy=Policy(TARGET,DIGEST,1,10,atlas_resource=ATLAS,enabled=True,provider_timeout=.05,redis_target=REDIS_TARGET,approved_redis_memory_envelope_bytes=280)
+        self.controller=Controller(self.policy,self.journal,self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
     def tearDown(self):self.temp.cleanup()
 
     async def test_allowed_call_has_committed_intent_before_single_write(self):
@@ -70,10 +89,10 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(self.provider.writes),1)
 
     async def test_disabled_default_never_calls_provider(self):
-        c=Controller(replace(self.policy,enabled=False),self.journal,self.provider,clock=lambda:1000)
+        c=Controller(replace(self.policy,enabled=False),self.journal,self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
         with self.assertRaises(Held):await c.scale(3)
         self.assertEqual(self.provider.reads,0);self.assertEqual(self.provider.writes,[])
-        c=Controller(self.policy,self.journal,clock=lambda:1000)
+        c=Controller(self.policy,self.journal,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
         with self.assertRaises(Held):await c.scale(3)
 
     async def test_authentication_and_supported_get_shape(self):
@@ -169,7 +188,7 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
         self.provider.error=TimeoutError('dummy lost reply, no secret export')
         with self.assertRaises(TimeoutError):await self.controller.scale(3)
         self.assertEqual(self.journal.active(TARGET)['state'],'UNKNOWN')
-        c=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000)
+        c=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
         with self.assertRaises(Held):await c.scale(4)
         self.assertEqual(len(self.provider.writes),1)
         self.assertEqual((await c.reconcile())['status'],'RECONCILED')
@@ -188,7 +207,7 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
         self.provider.error=TimeoutError('dummy lost reply')
         with self.assertRaises(TimeoutError):await self.controller.scale(3)
         row=self.journal.active(TARGET);original=self.provider.receipts[row['id']]
-        changed=Controller(replace(self.policy,source_digest='b'*64),Journal(self.path),self.provider,clock=lambda:1000)
+        changed=Controller(replace(self.policy,source_digest='b'*64),Journal(self.path),self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
         self.provider.receipts[row['id']]=replace(original,source_digest='b'*64)
         with self.assertRaises(Held):await changed.reconcile()
         self.assertIsNotNone(self.journal.active(TARGET))
@@ -208,7 +227,7 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
         first=asyncio.create_task(self.controller.scale(3))
         try:
             await asyncio.wait_for(self.provider.entered.wait(),1)
-            other=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000)
+            other=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
             with self.assertRaises(Held):await other.scale(4)
         finally:self.provider.release.set();await first
         self.assertEqual(len(self.provider.writes),1)
@@ -223,7 +242,7 @@ class ControllerTests(unittest.IsolatedAsyncioTestCase):
                 await both.wait()
             return self.provider.current
         self.provider.observe=observe;self.provider.release=asyncio.Event()
-        other=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000)
+        other=Controller(self.policy,Journal(self.path),self.provider,clock=lambda:1000,managed_client_authority=DummyManagedAuthority())
         tasks=[asyncio.create_task(c.scale(3)) for c in (self.controller,other)]
         try:
             done,pending=await asyncio.wait(tasks,timeout=1,return_when=asyncio.FIRST_COMPLETED)

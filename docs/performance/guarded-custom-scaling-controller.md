@@ -120,3 +120,29 @@ Sources:
 - https://docs.railway.com/deployments/deployment-teardown
 - https://www.mongodb.com/docs/atlas/reference/atlas-limits/
 - https://pymongo.readthedocs.io/en/4.5.0/faq.html
+
+
+## Conditional resource admission (source preparation only)
+
+The controller also requires an injected managed-client authority and an explicit
+Redis target and approved memory envelope. The shipped authority is disabled.
+A typed grant binds the Atlas budget, source, provider revision, requested count
+and freshness. Its expiry is proof freshness, never permission to release
+capacity while an operation is PENDING or UNKNOWN, including after a crash.
+An actual authority must enforce the outside-client/custody boundary; JSON,
+source pool caps and local semaphores cannot establish that boundary.
+
+Redis observations bind both native application and Redis identities and source.
+Admission rejects unknown or zero maxmemory, unsafe policy, stale observations,
+insufficient dataset headroom and a budget exceeding the explicit policy or
+provider envelope. Forking persistence requires a conservative copy-on-write
+allowance at least as large as the parent RSS bound. The caller cannot choose an
+approved envelope through the public scale request. No real budget value or
+owner approval is supplied by synthetic tests.
+
+These checks run before the existing provider intent/write path, on both fresh
+observations. They do not introduce a listener, credential loader, native adapter,
+external client authority or production configuration. Unknown external clients
+and the observed Redis maxmemory=0 remain unqualified. Actual shared-state,
+exclusive controller, durable journal and runtime scale/drain evidence are still
+required. No deployment, spend, load tests, paid sessions or US activation.

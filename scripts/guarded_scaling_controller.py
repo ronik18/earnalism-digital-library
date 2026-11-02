@@ -28,6 +28,10 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 from scripts.check_scaling_readiness import connection_envelope
+from scripts.scaling_resource_admission import (
+    ResourceHeld, DisabledManagedClientAuthority,
+    managed_client_admission, redis_memory_admission,
+)
 
 
 class Held(Exception):
@@ -61,6 +65,8 @@ class Policy:
     enabled: bool = False
     evidence_max_age: float = 15
     provider_timeout: float = 2
+    redis_target: Target | None = None
+    approved_redis_memory_envelope_bytes: int | None = None
 
     def __post_init__(self):
         if not isinstance(self.target,Target):raise ValueError('Exact native target required')
@@ -69,6 +75,9 @@ class Policy:
             raise ValueError('Explicit finite scale range required')
         if not isinstance(self.atlas_resource,str) or not re.fullmatch('[0-9a-f]{24}/[A-Za-z0-9_.-]{1,64}',self.atlas_resource):raise ValueError('Exact Atlas project/cluster binding required')
         if type(self.enabled) is not bool:raise ValueError('Explicit execution mode required')
+        if self.redis_target is not None and not isinstance(self.redis_target,Target):raise ValueError('Exact Redis target required')
+        if self.redis_target==self.target:raise ValueError('Redis service must be distinct from application service')
+        if self.approved_redis_memory_envelope_bytes is not None and (type(self.approved_redis_memory_envelope_bytes) is not int or self.approved_redis_memory_envelope_bytes<=0):raise ValueError('Positive explicit approved Redis envelope required')
         for value in (self.evidence_max_age,self.provider_timeout):
             if type(value) not in (int,float) or not math.isfinite(value) or not 0 < value <= 30:
                 raise ValueError('Bounded evidence and transport deadlines required')
@@ -187,8 +196,9 @@ class Journal:
 
 
 class Controller:
-    def __init__(self,policy,journal,provider=None,clock=time.time):
+    def __init__(self,policy,journal,provider=None,clock=time.time,managed_client_authority=None):
         self.policy,self.journal,self.provider,self.clock=policy,journal,provider or DisabledProvider(),clock
+        self.managed_client_authority=managed_client_authority or DisabledManagedClientAuthority()
 
     async def observe(self):
         o=copy.deepcopy(await asyncio.wait_for(self.provider.observe(self.policy.target),self.policy.provider_timeout))
@@ -214,6 +224,17 @@ class Controller:
         if type(current_bound) is not int or current_bound<max(o.running,desired):raise Held('ROLLOUT_BOUND_UNKNOWN')
         result=connection_envelope(o.config,o.limits,o.running)
         if result['status']!='CONDITIONAL_BOUND' or result['metadataEnvelopeWithinQuota'] is not True:raise Held('ATLAS_HEADROOM_UNQUALIFIED')
+        if self.policy.redis_target is None:raise Held('REDIS_TARGET_REQUIRED')
+        if self.policy.approved_redis_memory_envelope_bytes is None:raise Held('REDIS_APPROVED_MEMORY_ENVELOPE_REQUIRED')
+        try:
+            managed_client_admission(self.managed_client_authority,
+                target_key=o.target.key,source_digest=o.source_digest,
+                provider_revision=o.revision,atlas_resource=self.policy.atlas_resource,
+                desired=desired,budget=budget,now=self.clock(),max_age=self.policy.evidence_max_age)
+            redis_memory_admission(o.limits.get('redis_memory_budget'),
+                application_target_key=o.target.key,redis_target_key=self.policy.redis_target.key,source_digest=o.source_digest,
+                approved_memory_envelope_bytes=self.policy.approved_redis_memory_envelope_bytes,now=self.clock(),max_age=self.policy.evidence_max_age)
+        except ResourceHeld as exc:raise Held(exc.code) from None
         return result
 
     @staticmethod
