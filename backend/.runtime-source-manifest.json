@@ -68,6 +68,11 @@
       "sha256": "822c2f82ea168eb0ec6c35507975634623b4e68665c93f4d2ce10c0dda0d2eb0"
     },
     {
+      "path": "bounded_redis_limiter.py",
+      "bytes": 7492,
+      "sha256": "06eace8504e29987f47dbc7ef373b80ce60abac044cce574db71cdab9aae9c67"
+    },
+    {
       "path": "catalog_truth.py",
       "bytes": 62575,
       "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
@@ -9714,8 +9719,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 631363,
-      "sha256": "aca5216c8b6d57a4eac0eb9025e160659bd39f2294c4c467354b58fc42a78938"
+      "bytes": 634260,
+      "sha256": "f6c5b2b050aac243db2eb5a1c65629aeae488412fcbbcc3741ac5256598d2494"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9783,5 +9788,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "88b763e774f2c26157f81d23ded406499ae27bc9a1c858993cf533e9f31c15d8"
+  "expected_sha256": "ec8c3f3cb4bef88a527231c5350dbc57bea30ec9d7534b431d8e0d7ee7b92e3b"
 }
