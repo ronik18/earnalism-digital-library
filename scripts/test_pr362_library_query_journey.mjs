@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { execFileSync } from "node:child_process";
 import { chromium } from "playwright";
 
 const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
@@ -146,6 +148,63 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
   }
 }
 
+// Additional exact-head evidence for the owner-directed visible-only/gold UI.
+// Runs only inside the existing isolated dummy-data browser journey, never live.
+async function assertVisibleGoldPresentation(page, name) {
+  const surface = referenceSurface(page);
+  assert.equal(await surface.getByRole("heading", { name: "In preparation", exact: true }).count(), 0);
+  const more = surface.getByRole("button", { name: "Show 10 more editions in Available to read", exact: true });
+  await more.waitFor();
+  const output = process.env.LIBRARY_VISIBLE_GOLD_QA_OUTPUT;
+  const directory = output ? join(output, name) : null;
+  if (directory) {
+    mkdirSync(directory, { recursive: true });
+    await page.screenshot({ path: join(directory, "library-viewport.png") });
+  }
+  await page.evaluate(() => document.fonts.ready);
+  await more.scrollIntoViewIfNeeded();
+  await page.mouse.move(0, 0);
+  const measure = () => more.evaluate((element) => {
+    const style = getComputedStyle(element), box = element.getBoundingClientRect();
+    return { color: style.color, background: style.backgroundColor, outline: style.outlineStyle,
+      outlineWidth: style.outlineWidth, outlineOffset: style.outlineOffset,
+      focusVisible: element.matches(":focus-visible"), width: box.width, height: box.height,
+      scrollWidth: document.documentElement.scrollWidth, viewportWidth: document.documentElement.clientWidth };
+  });
+  const normal = await measure();
+  if (directory) await more.screenshot({ path: join(directory, "show-more-normal.png") });
+  await more.focus();
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Shift+Tab");
+  assert.equal(await more.evaluate((element) => element === document.activeElement), true, "Keyboard must return to Show More");
+  const focused = await measure();
+  if (directory) await page.screenshot({ path: join(directory, "show-more-keyboard-focus.png") });
+  await more.hover();
+  await page.waitForFunction(() => {
+    const button = document.querySelector(".reference-library-show-more");
+    return button && getComputedStyle(button).backgroundColor === "rgb(53, 16, 24)";
+  });
+  const hovered = await measure();
+  if (directory) {
+    await more.screenshot({ path: join(directory, "show-more-hover.png") });
+    writeFileSync(join(directory, "measurements.json"), JSON.stringify({
+      head: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
+      fixture: "ISOLATED_DUMMY_API_NOT_PRODUCTION", viewport: page.viewportSize(),
+      preparationHeadingCount: 0, normal, focused, hovered,
+    }, null, 2) + "\n");
+  }
+  assert.equal(normal.background, "rgb(181, 138, 69)", "Show More must use the established gold");
+  assert.equal(normal.color, "rgb(53, 16, 24)", "Gold action text must use dark burgundy");
+  assert.ok(normal.height >= 44 && normal.width >= 44, "Show More needs an accessible target");
+  assert.ok(normal.scrollWidth <= normal.viewportWidth, "Button viewport must not overflow");
+  assert.equal(focused.focusVisible, true, "Actual keyboard focus must be visible");
+  assert.equal(focused.outline, "solid");
+  assert.equal(focused.outlineWidth, "3px");
+  assert.equal(focused.outlineOffset, "4px");
+  assert.equal(hovered.background, "rgb(53, 16, 24)");
+  assert.equal(hovered.color, "rgb(181, 138, 69)");
+}
+
 async function assertCurrentControlledLaunchResults(page, name) {
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
   await referenceSurface(page).waitFor();
@@ -155,10 +214,12 @@ async function assertCurrentControlledLaunchResults(page, name) {
   assert.equal(fixtureOrder.length, 52, "The current release fixture must contain exactly 52 approved editions");
   assert.equal(new Set(fixtureOrder).size, 52, "Canonical editions must occur once in the release fixture");
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
+  await assertVisibleGoldPresentation(page, name);
   for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
     const previousCount = shownCount - nextCount;
     const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Available to read`, exact: true });
-    await more.click();
+    if (previousCount === 10) await more.press("Enter");
+    else await more.click();
     await assertDisplayedSlugs(page, fixtureOrder.slice(0, shownCount));
     const firstNewCover = referenceSurface(page).getByTestId(`reference-book-${fixtureOrder[previousCount]}`).locator("a[href]").first();
     await page.waitForFunction((slug) => document.activeElement === document.querySelector(`[data-testid="reference-book-${slug}"] a[href]`), fixtureOrder[previousCount]);
