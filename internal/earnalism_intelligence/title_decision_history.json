@@ -13400,10 +13400,10 @@
       }
     },
     "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3",
-    "actual_application_source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
+    "actual_application_source_commit": "2617cea98267d46b8ee34ce19e1f53a4bf528fd6",
     "actual_staged_runtime_inventory": {
       "files": 1952,
-      "expected_sha256": "84336513d7987ed60436e0ed750892ff86a9d54d2070b214601c6e0d49c70412",
+      "expected_sha256": "eb5fe344e06d8a542a545ffdde73018ae88c39e22bc83e1fe9243dbd640185a7",
       "builder_verification": "PASS"
     },
     "ci_source_binding_successor": {
@@ -13453,6 +13453,35 @@
       "full_hosted_successor_ci": "PENDING",
       "reused_frontend_surface_sha256": "81da53d9933e03f52f3936b0d159b5497f2d92171f48a9b7b124735c2936b867",
       "real_production_gates": "ALL_UNPERFORMED_FOR_NEW_PACKAGE"
+    },
+    "before_candidate_applicability_fix": {
+      "actual_application_source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
+      "actual_staged_runtime_inventory": {
+        "files": 1952,
+        "expected_sha256": "84336513d7987ed60436e0ed750892ff86a9d54d2070b214601c6e0d49c70412",
+        "builder_verification": "PASS"
+      }
+    },
+    "native_candidate_applicability_successor": {
+      "at": "2026-11-02T03:40:49.391392+00:00",
+      "prior_head": "0e63f07f439bab7c81d89c5df238cca38bbe8799",
+      "application_source_commit": "2617cea98267d46b8ee34ce19e1f53a4bf528fd6",
+      "server_sha256": "ac7700495215fd0085b0a55a41f7d99ec0d56622476fd11fe13a9da35731220d",
+      "test_sha256": "9ff2df298ace295decba2257baf6783a0065ee9ec43aa0f6439a2c09f8cbba8d",
+      "behavior": "Query member grant only for exact Selfish marker title/schema/status/D2. Other or absent/stale/malformed candidates returnordinaryNone or denynative-bound403 without DBreads. Full grant/rights/IN/transaction checks remain.",
+      "actual_affected_tests": {
+        "passed": 245,
+        "existing_local_opt_in_Mongo_skipped": 2,
+        "new_boundary_cases": 14
+      },
+      "guard_tests_passed": 12,
+      "independent_review_sha256": "55ade02d0c62da6d42a01bcd090cbeb0ed796719e1d6fb71de277f70623bc85a",
+      "independent_negative_balance_native_cases_passed": 61,
+      "protected_AST_handlers_unchanged": 9,
+      "fresh_exact_head_CI": "REQUIRED_PENDING",
+      "production_actions": 0,
+      "new_allocation_synthesis": false,
+      "post_promotion_grant_and_customer_checks": "UNPERFORMED; thissourcefixdoesnotqualifythem"
     }
   }
 }
