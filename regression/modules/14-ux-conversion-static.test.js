@@ -442,7 +442,8 @@ describe("UX conversion static signals", () => {
     expect(editorialHomeSurface).toContain('aria-label="Library filters"');
     expect(editorialHomeSurface).toContain('aria-label="Library editions"');
     expect(editorialHomeSurface).toContain('availabilityOfBook(book) === "approved-audiobook"');
-    expect(editorialHomeSurface).toContain("These editions are not available yet. Ask about a title that interests you.");
+    expect(editorialHomeSurface).not.toContain('["In preparation",');
+    expect(library).toContain("composeLibraryCatalog(liveBooks).filter(canShowStartReading)");
     expect(editorialHomeSurface).toContain('const href = live ? `/book/${book.slug}` : notifyUrl(book.slug)');
     expect(editorialHomeSurface).toContain('<Link to={href}>Ask about title</Link>');
     expect(bookDetail).toContain('data-testid="start-reading"');
@@ -1265,7 +1266,7 @@ describe("UX conversion static signals", () => {
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
     expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
-    expect(editorialHomeSurface).toContain('["In preparation", "These editions are not available yet. Ask about a title that interests you.", comingSoon]');
+    expect(editorialHomeSurface).not.toContain('["In preparation",');
     const libraryPipelineBlock = extractBetween(editorialHomeSurface, ': live ? <Link to={href}>Details</Link> : ', '</div>');
     expect(editorialHomeSurface).toContain('canShowPreview(book) ?');
     expect(editorialHomeSurface).toContain('const href = live ? `/book/${book.slug}` : notifyUrl(book.slug)');
