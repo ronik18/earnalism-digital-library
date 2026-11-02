@@ -359,5 +359,35 @@
     "runtime_member_account_and_public_promotion": "STILL_REQUIRED",
     "learning": "Exact private audiobook staging changes current Reader metadata hashes and exact rights bindings without changing Reader text, order or ordinary public selection. Audit active catalogue/rights/hash fixtures and validate the downstream gate group before transport; preserve historical fixtures and accepted records. Bounded historical Git-object admission is separate from local partial-repository hydration. Preserve failed runs and keep runtime/LIVE checks unperformed until genuinely observed.",
     "next_exact_prompt": "Integration Lane: transport the reviewed exact successor on existing PR #628 and require fresh exact-head CI, then return the clean canonical slot for queued Redis work."
+  },
+  "final_regression_fixture_reconciliation_20261102": {
+    "status": "LOCAL_SOURCE_ONLY_NOT_LIVE",
+    "base_source": "6e7aa2e3da7c793ba355d0eded2528622b429811",
+    "failed_ci_run_preserved": 41436779295,
+    "derived_static_seo_contract": "THREE_PROVENANCE_HASHES_CHANGED_52_PUBLIC_ROWS_EXACT_UNCHANGED",
+    "current_reader_decision": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "local_full17_module_result": "143PASS_4SKIP_PR_SOURCE_FIXTURE_ONLY",
+    "local_environment": "Cached frontendJest27 plus private genuine-host-Web-API adapter; no fake responses or assertions added; isolated loopback, no DB/Redis credentials",
+    "fresh_hosted_CI_and_applicable_editorial_support_blog_Reader_evidence": "REQUIRED_UNPERFORMED_FOR_NEW_HEAD",
+    "production_and_public_release": "STILL_BLOCKED_BY_EXISTING_RUNTIME_GATES",
+    "learning": "Audit current exact-stage bindings across regression/ as well as backend/tests and scripts; regenerate the static SEO contract and prove changes are provenance-only when public rows are unchanged. Run the full locally applicable17-module PR regression group before transport. Preserve historical fixtures and failed runs. Local fixture scores, native-Web-API compatibility adapters and PR-mode skipped checks never establish production, browser or publication readiness; require fresh pinned hosted CI."
+  },
+  "current_cost_truth_20261102": {
+    "baseline_initial_inventory_cost_fields": "PRESERVED_UNCHANGED_AS_HISTORY",
+    "partial_Cedar_API_usage_estimate_usd": 0.2282264,
+    "estimate_scope": "PARTIAL_NATIVE_CEDAR_API_USAGE_NOT_CAMPAIGN_TOTAL_OR_INVOICE",
+    "verified_new_storage_bytes_prod_plus_dr": 26084650,
+    "gross_new_storage_planning_usd_30_days": 0.0001812883175,
+    "planning_rate_evidence_sha256": "0871ff2fd86fc7e8c65d96e368a90a6d2746abe4a978ad4fe288be4c77eb29fd",
+    "planning_excludes": [
+      "free_tier",
+      "tax",
+      "contract_adjustments",
+      "prior_versions"
+    ],
+    "actual_provider_invoices": "UNVERIFIED",
+    "confirmed_cumulative_campaign_cost": null,
+    "currency_conversion": "NOT_PERFORMED",
+    "consumed_counters_and_budget_limits": "UNCHANGED"
   }
 }
