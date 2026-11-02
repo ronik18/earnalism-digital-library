@@ -237,7 +237,8 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         'dsires-baby': '83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee',
         'sredni-vashtar': '2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad',
         'the-cop-and-the-anthem': 'a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22',
-        'the-open-window': '9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384',
+        # Reviewed scored private-stage metadata; Reader text/order and public selection remain unchanged.
+        'the-open-window': '9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045',
         # Exact Cedar private-stage metadata successor; Reader content/order and public selection unchanged.
         'the-selfish-giant': '3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945',
         'the-science-of-getting-rich': 'a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7',

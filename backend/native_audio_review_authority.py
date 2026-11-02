@@ -25,6 +25,9 @@ SHA = re.compile(r'^[0-9a-f]{64}$')
 # the owner confirmed that intended account. Callers cannot move it past usage.
 ORIGINAL_WINDOW_START = datetime(2026, 10, 31, 18, 49, 58, 42193, tzinfo=timezone.utc)
 MAX_ROWS = 1000
+BOTH_TITLES_RECEIPT_SHA256='6a504d1b50044e414e0449e47d9eff613ea202b3428b0d4ffc9788bc94abc241'
+BOTH_TITLES_QUESTION_ID='call_b1d9f73029464a8987cafeef8dcd6b06'
+BOTH_TITLES_QUESTION='The previously approved Earnalism member session has expired. Please sign in privately in the Chrome login tab I opened, using the same intended member account, then reply “Signed in.” I’ll keep any checks for both titles within the remaining 113 seconds of the original 120-second credit ceiling, with no purchases. Do not send credentials here.'
 class AdmissionStop(ValueError):
     """Code-only errors: never print input, identities, database errors or secrets."""
 
@@ -131,9 +134,14 @@ def parse_authority(path, expected_sha256, *, now, allow_expired=False):
     b = private_json(path, expected_sha256)
     need(b.get('schema') == SCHEMA and b.get('action') in {'provision', 'close', 'prepare-namespace'}, 'EXACT_AUTHORITY_SCHEMA_REQUIRED')
     need(isinstance(b.get('operation_id'), str) and re.fullmatch(r'[A-Za-z0-9_-]{16,128}', b['operation_id']), 'OPERATION_ID_REQUIRED')
-    need(b.get('country') == 'IN' and b.get('slug') == 'the-selfish-giant'
-         and b.get('descriptor_sha256') == 'd2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258'
-         and b.get('package_version') == 'sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2', 'EXACT_BOOK_PACKAGE_SCOPE_REQUIRED')
+    try:
+        from . import native_audiobook_profiles as profiles
+    except ImportError:
+        import native_audiobook_profiles as profiles
+    profile=profiles.profile_for_slug(b.get('slug'))
+    need(profile is not None and b.get('country')=='IN'
+         and b.get('descriptor_sha256')==profile.DESCRIPTOR
+         and b.get('package_version')==profiles.actual_package(profile),'EXACT_BOOK_PACKAGE_SCOPE_REQUIRED')
     uh, ah = identity_hash(b.get('user_id')), identity_hash(b.get('auth_session_id'))
     receipts = {}
     for key in ('owner', 'identity', 'execution', 'legacy', 'source', 'intent'):
@@ -142,6 +150,21 @@ def parse_authority(path, expected_sha256, *, now, allow_expired=False):
         receipts[key] = private_json(ref['path'], ref['sha256'])
     owner = receipts['owner']
     qualify_original_owner(owner,b['owner']['sha256'])
+    if b['slug']=='the-open-window':
+        ref=b.get('continuation')
+        need(isinstance(ref,dict) and set(ref)=={'path','sha256'}
+             and ref['sha256']==BOTH_TITLES_RECEIPT_SHA256,'EXACT_ORIGINAL120_CONTINUATION_REQUIRED')
+        continuation=private_json(ref['path'],ref['sha256'])
+        need(continuation.get('schema')=='earnalism.owner_original120_both_titles_reply.v1'
+             and continuation.get('question_id')==BOTH_TITLES_QUESTION_ID
+             and continuation.get('question')==BOTH_TITLES_QUESTION and continuation.get('answer')=='Signed in'
+             and continuation.get('original_owner_scope_sha256')==b['owner']['sha256']
+             and continuation.get('titles')==['the-selfish-giant','the-open-window']
+             and continuation.get('maximum_cumulative_existing_credit_seconds')==120
+             and continuation.get('remaining113_is_historical_not_current_authority') is True
+             and continuation.get('current_remaining') is None
+             and continuation.get('creates_new_allowance_or_reset') is False,'ORIGINAL120_CONTINUATION_NEVER_RESETS_ALLOWANCE')
+        receipts['continuation']=continuation
     now = utc(now)
     expires = utc(b.get('expires_at'))
     need(utc(b.get('created_at')) <= expires and 0 < (expires - utc(b['created_at'])).total_seconds() <= 900,
@@ -199,7 +222,7 @@ def parse_authority(path, expected_sha256, *, now, allow_expired=False):
          and intent.get('expected_state_sha256') == b.get('expected_state_sha256'), 'EXACT_DURABLE_INTENT_REQUIRED')
     need(isinstance(b.get('expected_state_sha256'), str) and SHA.fullmatch(b['expected_state_sha256']), 'EXPECTED_SCOPED_STATE_REQUIRED')
     if b['action'] == 'close':
-        need(isinstance(b.get('grant_id'), str) and b['grant_id'].startswith('selfish-'), 'EXACT_CLOSE_GRANT_REQUIRED')
+        need(isinstance(b.get('grant_id'), str) and b['grant_id'].startswith('selfish-' if b['slug']=='the-selfish-giant' else 'open-window-'), 'EXACT_CLOSE_GRANT_REQUIRED')
     return b, receipts
 
 

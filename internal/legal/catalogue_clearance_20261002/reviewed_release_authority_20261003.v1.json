@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0"
+    "backend/data/rights_decision_registry.json": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54"
   },
   "titles": {
     "a-ghost-story": {
@@ -709,8 +709,8 @@
       }
     },
     "the-open-window": {
-      "decision_id": "india-20261026-the-open-window-protected-package-publication",
-      "record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
+      "decision_id": "india-20261102-the-open-window-scored-private-stage",
+      "record_sha256": "4660907932e29a0053d3f32eb4b8264bb5c1669a114f6d07823d5928c4f65ad8",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
@@ -1041,5 +1041,9 @@
     "path": "internal/legal/catalogue_clearance_20261002/reviewed_selfish_private_stage_authority_successor_20261102.v1.json",
     "sha256": "11ce583507fb849331b1c8f0caa37c1788daba822455cfc96316ec423ee734ff",
     "scope": "EXACT_SUPPORTED_PRIVATE_STAGE_READER_METADATA_REBIND_ONLY_OLD_PUBLIC_AUDIO_UNCHANGED"
+  },
+  "open_window_private_stage_authority_successor_20261102": {
+    "path": "internal/legal/catalogue_clearance_20261002/reviewed_open_window_private_stage_authority_successor_20261102.v1.json",
+    "sha256": "e4813a8bfb53e028097379165ef7e5009466d298b79cc94c8805faf00365263f"
   }
 }

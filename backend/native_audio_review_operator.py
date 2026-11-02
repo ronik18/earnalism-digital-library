@@ -14,10 +14,12 @@ try:
     from . import native_audiobook_replacement as native
     from . import native_audio_review_scope as scoped
     from . import native_audio_review_authority as authority
+    from . import native_audiobook_profiles as profiles
 except ImportError:
     import native_audiobook_replacement as native
     import native_audio_review_scope as scoped
     import native_audio_review_authority as authority
+    import native_audiobook_profiles as profiles
 
 OPERATIONS='native_audio_review_operations'
 class OperatorStop(ValueError):pass
@@ -57,6 +59,10 @@ class AdmittedOperation:
     authority_sha256:str
     expires_at:datetime
     expected_state_sha256:str
+    slug:str=native.SLUG
+    descriptor_sha256:str=native.DESCRIPTOR
+    package_version:str=scoped.PACKAGE
+    continuation_sha256:str=''
     grant_id:str=''  # Required only to close an already exact-scope grant.
 
 def admit_authority(path,expected_sha256,*,now,allow_expired=False):
@@ -67,7 +73,20 @@ def admit_authority(path,expected_sha256,*,now,allow_expired=False):
         execution_authority_sha256=b['execution']['sha256'],private_intent_sha256=b['intent']['sha256'],
         legacy_session_ids=tuple(r['legacy']['original_session_ids']),legacy_fingerprint_sha256=r['legacy']['projection_sha256'],
         original_started_at=authority.utc(r['legacy']['original_started_at']),authority_sha256=expected_sha256,
-        expires_at=authority.utc(b['expires_at']),expected_state_sha256=b['expected_state_sha256'],grant_id=b.get('grant_id',''))
+        expires_at=authority.utc(b['expires_at']),expected_state_sha256=b['expected_state_sha256'],grant_id=b.get('grant_id',''),
+        slug=b['slug'],descriptor_sha256=b['descriptor_sha256'],package_version=b['package_version'],
+        continuation_sha256=(b.get('continuation') or {}).get('sha256',''))
+
+def operation_profile(a):
+    profile=profiles.profile_for_slug(a.slug)
+    need(profile is not None and a.descriptor_sha256==profile.DESCRIPTOR
+         and a.package_version==profiles.actual_package(profile),
+         'EXACT_ADMITTED_PROFILE_REQUIRED')
+    if a.slug=='the-open-window':
+        need(a.owner_scope_sha256==authority.ORIGINAL_OWNER_RECEIPT_SHA256
+             and a.continuation_sha256==authority.BOTH_TITLES_RECEIPT_SHA256,
+             'OPEN_SAME_ORIGINAL120_CONTINUATION_REQUIRED')
+    return profile
 
 def require_live_authority(a):
     need(datetime.now(timezone.utc)<scoped.utc(a.expires_at),'OPERATION_AUTHORITY_EXPIRED_BEFORE_MUTATION')
@@ -130,6 +149,7 @@ async def snapshot(db,a,session=None,*,require_current_auth=True):
     return workflow_id,workflow,grants
 
 async def status_in_snapshot(db,a,session):
+    profile=operation_profile(a)
     user=await member(db,a,session,require_no_user_cap=False,require_current_auth=False)
     workflow_id,workflow,grants=await snapshot(db,a,session,require_current_auth=False)
     if workflow is not None:
@@ -145,10 +165,12 @@ async def status_in_snapshot(db,a,session):
         target=[g for g in grants if g['_id']==receipt.get('grant_id')]
         need(workflow and len(target)==1 and target[0].get('user_id')==a.user_id
             and all(target[0].get(k)==v for k,v in {'schema':scoped.GRANT_SCHEMA,
-                'workflow_id':workflow_id,'slug':native.SLUG,'descriptor_sha256':native.DESCRIPTOR,
-                'package_version':scoped.PACKAGE,'country':'IN','owner_scope_sha256':a.owner_scope_sha256,
+                'workflow_id':workflow_id,'slug':profile.SLUG,'descriptor_sha256':profile.DESCRIPTOR,
+                'package_version':a.package_version,'country':'IN','owner_scope_sha256':a.owner_scope_sha256,
                 'legacy_lineage_sha256':workflow['legacy_lineage_sha256']}.items())
             and target[0].get('state') in {'OPEN','CLOSED'},'COMMITTED_COUNTER_OR_GRANT_MISSING')
+        if a.slug=='the-open-window':
+            need(target[0].get('continuation_sha256')==a.continuation_sha256,'OPEN_CONTINUATION_READBACK_CHANGED')
         if a.action=='close':
             need(target[0].get('state')=='CLOSED' and target[0].get('close_operation_id')==a.operation_id
                 and target[0].get('counter_archive_sha256')==receipt.get('counter_snapshot_sha256'), 'CLOSE_READBACK_MISMATCH')
@@ -187,10 +209,11 @@ async def has_retained_workflow_references(db,a,workflow_id,session):
     return False
 
 async def operation(db,a,book,session):
+    profile=operation_profile(a)
     await member(db,a,session)
     if a.action=='provision':
-        package,_=native.rights_for_review_phase(book,country='IN',now=datetime.now(timezone.utc))
-        need(package['package_version']==scoped.PACKAGE,'ACTUAL_NATIVE_PACKAGE_REQUIRED')
+        package,_=profile.rights_for_review_phase(book,country='IN',now=datetime.now(timezone.utc))
+        need(package['package_version']==a.package_version,'ACTUAL_NATIVE_PACKAGE_REQUIRED')
     workflow_id,w,grants=await snapshot(db,a,session)
     need(digest({'workflow':w,'grants':sorted(grants,key=lambda g:g['_id'])})==a.expected_state_sha256,'EXPECTED_SCOPED_STATE_CHANGED_NO_RETRY')
     existing=await db[OPERATIONS].find_one({'_id':a.operation_id},session=session)
@@ -198,6 +221,7 @@ async def operation(db,a,book,session):
     now=datetime.now(timezone.utc)
     if a.action=='provision':
         need(w is not None or not grants,'MISSING_WORKFLOW_WITH_RETAINED_GRANT_HISTORY_NO_RESET')
+        need(a.slug!='the-open-window' or w is not None,'OPEN_MUST_REUSE_RETAINED_ORIGINAL120_WORKFLOW_NO_INITIALIZATION')
         if w is None:
             need(not await has_retained_workflow_references(db,a,workflow_id,session),
                 'MISSING_WORKFLOW_WITH_ANY_RETAINED_REFERENCE_NO_RESET')
@@ -225,11 +249,12 @@ async def operation(db,a,book,session):
         w=dict(w,revision=w['revision']+1)
         need(now<scoped.utc(a.expires_at)<=now+timedelta(minutes=15)
             and max((w['used_microseconds']+999999)//1000000,w['used_credit_seconds'])<120,'NO_POSITIVE_BOUNDED_SCOPE')
-        grant_id='selfish-'+digest({'workflow':workflow_id,'authorization_operation':a.operation_id})
+        grant_id=('selfish-' if a.slug==native.SLUG else 'open-window-')+digest({'workflow':workflow_id,'authorization_operation':a.operation_id})
         grant={'_id':grant_id,'schema':scoped.GRANT_SCHEMA,'user_id':a.user_id,'workflow_id':workflow_id,
-            'slug':native.SLUG,'descriptor_sha256':native.DESCRIPTOR,'package_version':scoped.PACKAGE,'country':'IN',
+            'slug':profile.SLUG,'descriptor_sha256':profile.DESCRIPTOR,'package_version':a.package_version,'country':'IN',
             'owner_scope_sha256':a.owner_scope_sha256,'legacy_lineage_sha256':a.lineage_evidence_sha256,
             'state':'OPEN','epoch':0,'created_at':now,'expires_at':a.expires_at,'operation_id':a.operation_id}
+        if a.slug=='the-open-window':grant['continuation_sha256']=a.continuation_sha256
         require_live_authority(a)
         await db[scoped.GRANTS].insert_one(grant,session=session)
     elif a.action=='close':
@@ -240,8 +265,10 @@ async def operation(db,a,book,session):
         need(len(targets)==1 and targets[0].get('state')=='OPEN','EXACT_OPEN_GRANT_REQUIRED')
         grant=targets[0];grant_id=grant['_id']
         need(grant.get('schema')==scoped.GRANT_SCHEMA and grant.get('user_id')==a.user_id
-            and grant.get('slug')==native.SLUG and grant.get('descriptor_sha256')==native.DESCRIPTOR
-            and grant.get('package_version')==scoped.PACKAGE and grant.get('country')=='IN','EXACT_GRANT_CLOSE_SCOPE_REQUIRED')
+            and grant.get('slug')==profile.SLUG and grant.get('descriptor_sha256')==profile.DESCRIPTOR
+            and grant.get('package_version')==a.package_version and grant.get('country')=='IN','EXACT_GRANT_CLOSE_SCOPE_REQUIRED')
+        if a.slug=='the-open-window':
+            need(grant.get('continuation_sha256')==a.continuation_sha256,'OPEN_EXACT_CONTINUATION_REQUIRED_FOR_CLOSE')
         rows=await db.reading_pass_sessions.find({'user_id':a.user_id,'scope.native_audio_review_grant_id':grant_id},
             {'_id':0,'status':1,'active_lock':1,'billing_active':1,'settlement_at':1},session=session).limit(1001).to_list(1001)
         need(len(rows)<=1000 and all(r.get('status') in scoped.TERMINAL and 'active_lock' not in r
@@ -290,11 +317,13 @@ async def validate_namespace(db):
     need(result['qualified'],'SCOPED_METADATA_NAMESPACES_OR_INDEXES_MISSING_EXPLICIT_PREPARATION_REQUIRED')
 
 async def prepare_namespace_one_shot(*,db,client,admitted,book):
+    a=admitted
+    profile=operation_profile(a)
     need(admitted.action=='prepare-namespace' and client.options.retry_writes is False and db.client is client,
         'EXACT_NAMESPACE_ACTION_AND_NO_RETRY_CLIENT_REQUIRED')
     need(datetime.now(timezone.utc)<admitted.expires_at,'NAMESPACE_AUTHORITY_EXPIRED')
-    package,_=native.rights_for_review_phase(book,country='IN',now=datetime.now(timezone.utc))
-    need(package['package_version']==scoped.PACKAGE,'ACTUAL_NATIVE_NAMESPACE_PACKAGE_REQUIRED')
+    package,_=profile.rights_for_review_phase(book,country='IN',now=datetime.now(timezone.utc))
+    need(package['package_version']==a.package_version,'ACTUAL_NATIVE_NAMESPACE_PACKAGE_REQUIRED')
     # Snapshot/majority admission only; no user/session/financial mutation.
     async with await client.start_session() as s:
         s.start_transaction(read_concern=ReadConcern('snapshot'),write_concern=WriteConcern('majority',wtimeout=5000))

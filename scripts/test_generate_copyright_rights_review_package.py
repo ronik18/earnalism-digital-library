@@ -62,7 +62,7 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
                 directory = MODULE.controlled_package_dir(slug)
                 decision = MODULE.read_json(directory / "rights_decision.json")
                 publication = MODULE.read_json(directory / "publication_manifest.json")
-                expected_decision = ("india-20261026-the-open-window-protected-package-publication"
+                expected_decision = ("india-20261102-the-open-window-scored-private-stage"
                                      if slug == "the-open-window"
                                      else "india-20261102-the-selfish-giant-cedar-private-stage" if slug == "the-selfish-giant"
                                      else f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")

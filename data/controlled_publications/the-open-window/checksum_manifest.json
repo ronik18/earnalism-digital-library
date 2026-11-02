@@ -54,7 +54,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "c8aeadbe8c0d6348de2a4d4c3a9f25a15db308bfd6204d3986a481a919291979"
+      "sha256": "03569318eba6e24c3ceaeb41fa186c6cb8fb5fcefb44f1c54af69408ec23ff14"
     },
     {
       "file": "publication_authorization.json",
@@ -62,13 +62,13 @@
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384"
+      "sha256": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045"
     },
     {
       "file": "source_evidence.json",
       "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
     }
   ],
-  "generated_at": "2026-10-26T15:00:00Z",
+  "generated_at": "2026-11-02T15:47:31.323460+00:00",
   "slug": "the-open-window"
 }

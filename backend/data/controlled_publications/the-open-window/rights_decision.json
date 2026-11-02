@@ -1,24 +1,24 @@
 {
   "accepted_by": "Ronik Basak / Reo Enterprise direct approval of the revised cover pair and instruction to address all three Open Window cases and GO LIVE in this integration conversation; no external signature inferred.",
-  "basis": "Prospective exact-binding successor for the owner-approved revised Canva front/back cover pair, hashes ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc and 05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a. Direct owner instruction in the integration chat authorizes publishing this approved pair after QA. Genuine admin-intake identities, remote full-byte equality and the existing canonical promoter bind these exact assets; cover_approval_evidence records their immutable versions and rollback pointers. Existing India reader/source permissions, operator and expiry are preserved. Historical cover_provenance and prior decisions remain history, not evidence of a new review. No new audio permission, external signature, other edition, or production cover observation is inferred.; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted.",
+  "basis": "Prospective exact-binding successor for the owner-approved revised Canva front/back cover pair, hashes ab934152cb8fb81836c9e644bae2af453d11871df22f7183e5de0fc25838bdfc and 05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a. Direct owner instruction in the integration chat authorizes publishing this approved pair after QA. Genuine admin-intake identities, remote full-byte equality and the existing canonical promoter bind these exact assets; cover_approval_evidence records their immutable versions and rollback pointers. Existing India reader/source permissions, operator and expiry are preserved. Historical cover_provenance and prior decisions remain history, not evidence of a new review. No new audio permission, external signature, other edition, or production cover observation is inferred.; Prospective metadata rebind for owner-authorized protected package publication; Reader uses and validity unchanged; audio rights remain separately accepted.; Owner-authorized private native audiobook replacement staging; prior public audiobook remains selected, Reader content and uses unchanged; no publication acceptance claimed.",
   "components": {
     "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
     "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
     "approval_evidence": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3",
-    "checksum_manifest": "7efa4e5e1b7516785b1ba5864267d0caced0a2d160e47de76eb458d3d800ec07",
+    "checksum_manifest": "40ea9327567a3d25891f015f8ae08d7e5747bafee42752a114ffa1d7cdfa2cbe",
     "cover_approval_evidence": "2e3b50e7a9ae3cc9a85e3303d81b1f3b0a4787e2f4bc3243481478daf5e97f51",
     "cover_provenance": "683e346792e11fb12035f77fb0b22cb08e65691e00a7a75cdaa19a58f02a7419",
-    "public_book": "c8aeadbe8c0d6348de2a4d4c3a9f25a15db308bfd6204d3986a481a919291979",
-    "publication_authorization": "330b5d386e347510314fc62ffe7f18b4e63843c2cd47f99dc3043da1ba20bb95",
-    "publication_manifest": "99df929ce7593b50fdf74cc8d69afac6aebdc1670ecbaa5180f495c6819bcb81",
-    "reader_manifest": "9982f681ccc11973c7692f1e388407e77a6df0c135e2fbc8a69cff5bb2a68384",
-    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
-    "cover_replacement_front_delivery": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+    "cover_replacement_approval": "2e3b50e7a9ae3cc9a85e3303d81b1f3b0a4787e2f4bc3243481478daf5e97f51",
     "cover_replacement_back_delivery": "b5f55ed5a341460f01409df93ab6121c78944f14d571515374ab2b9d72884615",
-    "cover_replacement_approval": "2e3b50e7a9ae3cc9a85e3303d81b1f3b0a4787e2f4bc3243481478daf5e97f51"
+    "cover_replacement_front_delivery": "00ad7161558c90b80569649e93173847792316bc472bbc096d399e5048b48482",
+    "public_book": "03569318eba6e24c3ceaeb41fa186c6cb8fb5fcefb44f1c54af69408ec23ff14",
+    "publication_authorization": "330b5d386e347510314fc62ffe7f18b4e63843c2cd47f99dc3043da1ba20bb95",
+    "publication_manifest": "4e345b9dda9fb4272dfcd94768b786483b1f4260bd64ae25e706a2190d236c89",
+    "reader_manifest": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045",
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
   },
   "conditions_satisfied": true,
-  "decision_id": "india-20261026-the-open-window-protected-package-publication",
+  "decision_id": "india-20261102-the-open-window-scored-private-stage",
   "edition_id": "the-open-window",
   "evidence_sha256": [
     "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
@@ -34,7 +34,8 @@
     "05d22a1728308733d7a25f4271a47f310aecf23f9e73e63191e971b79d524b3a",
     "7d189fa753261022c3b5bce987037669bd1fa86c725b749c311157a7dcb6bdaa",
     "a01c6ad38b5177d7ddef594dc7749b35939e983a19a5c94e04ccda6bc6f224e4",
-    "172d0c9f90a26e670d54760228b4df8458b536e64d77dbcc298016f85c17e41c"
+    "172d0c9f90a26e670d54760228b4df8458b536e64d77dbcc298016f85c17e41c",
+    "90711c40daa5ba2ffd0464c2d042e8f5ba5be6910608850c75de675b3b6d75c0"
   ],
   "operator_id": "reo-enterprise",
   "schema_version": "earnalism.rights-decision.v1",

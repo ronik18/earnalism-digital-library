@@ -74,6 +74,10 @@ jobs:
           backend/tests/test_native_audio_review_scope.py
           backend/tests/test_native_audio_review_operator.py
           internal/audiobook_lab/scripts/test_open_window_scored_retained.py
+          internal/audiobook_lab/scripts/test_open_window_replacement_release.py
+          internal/audiobook_lab/scripts/test_open_window_continuous_acceptance.py
+          backend/tests/test_open_native_review_scope.py
+          backend/tests/test_open_native_replacement_http.py
           scripts/test_catalogue_clearance_registry_successor.py
           internal/audiobook_lab/scripts/test_retained_master_derivative.py
           backend/tests/test_exact_retained_master_duration.py

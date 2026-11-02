@@ -28,6 +28,96 @@
   "audiobook_hidden_release_descriptor_sha256": "44d5cf997345060bc09a1dd8b031ea864a8c2bd23515a1577d8ca9141fb2b56f",
   "audiobook_legacy_release_descriptor_sha256": "",
   "audiobook_manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "audiobook_native_replacement": {
+    "audio_use_decision": {
+      "accepted_by": "Earnalism Integration Lane under standing owner source/producer/publication authority and exact retained-scored listening acceptance; source QA registration only",
+      "basis": "Existing owner-accepted India source, producer and licensed stock Ryan basis retained with its existing expiry. Exact new retained scored recording, Kevin MacLeod CC BY4 recordings and adaptations/attribution, actual full scored owner acceptance and metadata-only unchanged-audio successor are independently hash-bound. No worldwide or exclusive grant, no Reader/source/covers change, no storage/runtime/publication approval.",
+      "components": {
+        "audio_component_bindings": "606b4cdd4a5b3724fb7f46cb02f42f46a321df85dfb778ec146d1e2ef1967de4",
+        "container_metadata_reuse": "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+        "frozen_source_qa_manifest": "89b0623e0e94289b1f615b1fb6c072644799346aa47cbc7c92965c9fd41989df",
+        "listened_master_mp3": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+        "master_mp3": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+        "master_wav": "f2b80840b9797819934282f20f2f139b3cda33aef8f05825378cbb499eae4167",
+        "model_voice_licence": "817da1cf481004d6f324b0c86bb0678e2cd3987cc9c473a20e5f18028b7c759f",
+        "music_rights": "cc50b127592d258c48b1aef876d861f305d2fd1183647316dd858184aed5dfb0",
+        "owner_full_scored_acceptance": "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a",
+        "owner_twelve_name_windows": "e359a75515950401b14c8c1f0733b8d00c2fc1d49dd4d71f4e0ff2fdec28858e",
+        "selected_manuscript": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+        "source_file": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+        "source_qa_descriptor": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219"
+      },
+      "conditions_satisfied": true,
+      "decision_id": "india-20261102-the-open-window-scored-retained-audio",
+      "edition_id": "the-open-window",
+      "evidence_sha256": [
+        "7ffbc8546291a74f731420b7a269faab3c20d8fabc8f1094fc0627de2b9f1e58",
+        "0b25e25ba28a3f7f0abf76aa563e6d0c3d31ec15816456df8c014fd9e2bb2663",
+        "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3",
+        "b6ce420f9810f21d7bd89e76b174c9c93f4c5bbf2e34757d6a943da460405727",
+        "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+        "9cb800eeff9f13f6098f7e31bbd8859c8bff9dfd6de130edf4e63d1a2badd041",
+        "020b594099b53111990837f1109fe71e6c1f4201c00f108c4701a56d2944fdd7",
+        "25d31605146c162fe147b89425fb77ee54ae9586f38c0a2ba5e526c75694ad47",
+        "787aed8eaa7ac80677de1c56ee88c25a26b800ae2652ba97136eedb6695ea8b7",
+        "b44c06cb2af8ec3a27decb07c82b6f0e2d45ec7d5551247188b3bebab3d59697",
+        "c5d766738d2816fbf317edfbb0f4e3432d3b4b8a345dbcf68793b843d33cb0e3",
+        "b1d7cc2d3586918e955f2ab9ae97d95c94a8832437b60d1fe5f3390214e303a3",
+        "2165ed5c827897e7e14a8462d730016cd7509f4a375b5d6e670741cd12b42849",
+        "f0aec9d1b8786c02e0157eb205b4ef8c66f349335fd9fa7c5c07d8d3c9baeb78",
+        "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a",
+        "e359a75515950401b14c8c1f0733b8d00c2fc1d49dd4d71f4e0ff2fdec28858e",
+        "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0",
+        "292e16cefc0d17e11afd4f15025936b34b033801376d7b88c4f89a0ae9818a83",
+        "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+        "e6ff53d68e8284a7f277897614531bea23e4fb87fab7290be3a1d9e4356ec4d9",
+        "f2b80840b9797819934282f20f2f139b3cda33aef8f05825378cbb499eae4167",
+        "d5e737122460c9b2ab0aafd37cfeeb7103c6ea1fd07cc8bf205699626bd18b58",
+        "a73f823779e52f7cb70db5afd1faf972f8ec32a6251feab12f90527022a9f6e1",
+        "4b017c890a34b7eb7f7ae45606ba18532ed8ac58c5e4369ef757a0cad044f29b",
+        "040ac2230ee967ab1c273c4858f306515c6888b3fe61d90cedbcf858fa866b5b",
+        "817da1cf481004d6f324b0c86bb0678e2cd3987cc9c473a20e5f18028b7c759f",
+        "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+        "b36c6f66d2a995cfd03b73f15486edda003a2a3d91789e5236a69b6bb42bd770",
+        "5062680eca57d0b278e9c749bfeff7587782b66d176a7664cacd09bcaa5866ed",
+        "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+        "69bafd8629295cf880e2d9e62e43934643925f6fef2d4db5adbcc8bba643d7d2",
+        "5bf3e589eb134129374c9f6b49e01015c2fa0cf751dd531a1510414e2a7418db",
+        "d94e201db0a550c33d9067cd16b623ea704b7fa61a5f283d8533b3bdc74f5440",
+        "cc50b127592d258c48b1aef876d861f305d2fd1183647316dd858184aed5dfb0",
+        "89b0623e0e94289b1f615b1fb6c072644799346aa47cbc7c92965c9fd41989df",
+        "7024ecd1c5de9d9d32f42369539ad7bf295121799f747c97eacd0efb23829114"
+      ],
+      "operator_id": "reo-enterprise",
+      "schema_version": "earnalism.rights-decision.v1",
+      "status": "ACCEPTED",
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "audio_stream"
+      ],
+      "valid_from": "2026-10-20T19:46:18.321023+00:00",
+      "valid_until": "2036-10-02T00:00:00+00:00"
+    },
+    "candidate_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+    "candidate_package_version": "sha256-c2b0f27571aa437b61a1367c9e5157fd6f43ec2b307db09ba902083f481c9bca",
+    "package_release_evidence_sha256": "c0289eadea66cccab766b4feb734460b00dcd159cd933e3a2481025c2f779b34",
+    "post_deploy_proof_required": [
+      "PRIVATE_AUTHENTICATED_EXACT_PACKAGE_PLAYBACK",
+      "RANGE_TIMESTAMPS_AND_CHAPTER_NAVIGATION",
+      "SOURCE_AND_BILLING_IDENTITY",
+      "PUBLIC_PROOF_BOUND_PROMOTION_AND_GUARDED_RESTORE"
+    ],
+    "predecessor_descriptor_sha256": "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2",
+    "predecessor_public_approval_sha256": "22692c4fb767f29c2725bec10fe4a554f6b517cce8bfcb926cd0fc01bbffc7be",
+    "private_scope": "native_replacement_authorized_member_only",
+    "schema_version": "audiobook_native_replacement.v1",
+    "slug": "the-open-window",
+    "snapshot_sha256": "855f678a05784c48302eaa964de4e0bae32321b5c0e72e31112b0ef892699815",
+    "staged_at": "2026-11-02T15:47:31.323460+00:00",
+    "status": "STAGED_PRIVATE"
+  },
   "audiobook_package_canary": {
     "approval_scope": "transport_canary_only_no_customer_discovery",
     "blockers": [],
@@ -97,6 +187,29 @@
       "schema_version": "audiobook_package_release_evidence.v1",
       "slug": "the-open-window",
       "staged_at": "2026-10-25T15:35:29Z"
+    },
+    "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219": {
+      "package_version": "sha256-c2b0f27571aa437b61a1367c9e5157fd6f43ec2b307db09ba902083f481c9bca",
+      "primary_receipt_sha256": "cdcf97bc6c1a16facab37bd7ac421c477a617fdea32a2f1f609f0c3b6381e422",
+      "primary_release_manifest_receipt_sha256": "514d9d0680361a289fda6e6fcf9d63e81f9415d7284bef35bff9b52eb3e775c7",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f114b13c45743885f_d20261102_m153431_c004_v0402035_t0009_u01793633671898",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/release-manifest.json",
+      "release_manifest_sha256": "66753bcd655f893a6cfce67a359e9dc6ef879ff07cefc810a575f08ecc9ca089",
+      "release_manifest_size_bytes": 6469,
+      "replica_receipt_sha256": "862ccf3b4bc82eb8e003aca13a9a60da8eba51eeb5d623281246cc07dfad2fb4",
+      "replica_release_manifest_receipt_sha256": "b78bb43e68ba1a2254984a3434e2714a2ae56b5ff5edb8c4b9d069ceeac8ee1a",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f102940e34703a65b_d20261102_m153445_c005_v0501052_t0022_u01793633685906",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "the-open-window",
+      "staged_at": "2026-11-02T15:47:31.323460+00:00"
     }
   },
   "audiobook_packages": {
@@ -2680,6 +2793,123 @@
         }
       ],
       "word_count": 1208
+    },
+    "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219": {
+      "duration_ms": 491436,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+      "package_version": "sha256-c2b0f27571aa437b61a1367c9e5157fd6f43ec2b307db09ba902083f481c9bca",
+      "paragraph_count": 21,
+      "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+      "release_evidence_version": "open_window_scored_retained_successor.v1",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 1,
+      "slug": "the-open-window",
+      "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+      "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1035782884d451a3_d20261102_m153357_c005_v0501010_t0039_u01793633637409"
+                    }
+                  ],
+                  "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+                  "size_bytes": 11797552,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f118afc3e0659fb1e_d20261102_m153322_c004_v0402003_t0056_u01793633602346"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1150c8b46013ac5d_d20261102_m153414_c005_v0501051_t0023_u01793633654053"
+                    }
+                  ],
+                  "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+                  "size_bytes": 1870,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1021888862efd30f_d20261102_m153333_c004_v0402038_t0058_u01793633613229"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f113a4e23c26000bd_d20261102_m153411_c005_v0501010_t0049_u01793633651218"
+                    }
+                  ],
+                  "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+                  "size_bytes": 17612,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f107ff8f217a4d1ff_d20261102_m153331_c004_v0402039_t0016_u01793633611012"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10735f1f8020e5e8_d20261102_m153418_c005_v0501048_t0002_u01793633658395"
+                    }
+                  ],
+                  "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+                  "size_bytes": 7683,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f109343f0b8ade98c_d20261102_m153335_c004_v0402004_t0049_u01793633615083"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 491436,
+              "end_paragraph": 20,
+              "end_word": 1207,
+              "order": 0,
+              "segment_id": "chapter-001-full",
+              "start_paragraph": 0,
+              "start_word": 0
+            }
+          ],
+          "end_paragraph": 20,
+          "end_word": 1207,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "The Open Window"
+        }
+      ],
+      "word_count": 1208
     }
   },
   "audiobook_public_package_approval": {
@@ -2744,11 +2974,11 @@
   "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
   "coverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-00ad7161558c90b8.webp",
   "cover_dimensions": {
-    "front": [
+    "back": [
       800,
       1200
     ],
-    "back": [
+    "front": [
       800,
       1200
     ]
