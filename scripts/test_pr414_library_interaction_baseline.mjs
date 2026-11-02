@@ -21,6 +21,7 @@ import {
   HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE,
   LIBRARY_QUALITY_INTERACTION_BASELINE,
   LIBRARY_TIMEOUT_INTERACTION_BASELINE,
+  LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -271,12 +272,25 @@ test("Library quality source matches its explicit successor and rejects each inp
 
 test("Library timeout successor binds exact source and rejects each input mutation", () => {
   const baseline = loadLibraryInteractionBaseline(root, LIBRARY_TIMEOUT_INTERACTION_BASELINE);
-  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.equal(compareLibraryInteractionBaseline(materializeReviewedSurface(LIBRARY_TIMEOUT_INTERACTION_BASELINE), LIBRARY_TIMEOUT_INTERACTION_BASELINE).result, "PASS");
   assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/pages/Library.jsx"]);
   for (const input of baseline.input_paths) {
     const temporary = materializeReviewedSurface(LIBRARY_TIMEOUT_INTERACTION_BASELINE);
     fs.appendFileSync(path.join(temporary,input), "\nunauthorized mutation\n");
-    assert.equal(compareLibraryInteractionBaseline(temporary).result,"FAIL");
+    assert.equal(compareLibraryInteractionBaseline(temporary, LIBRARY_TIMEOUT_INTERACTION_BASELINE).result,"FAIL");
+  }
+});
+test("visible-only gold successor is exact while every modified input fails closed", () => {
+  const baseline = loadLibraryInteractionBaseline(root, LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE);
+  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.equal(baseline.previous_baseline.record_path, LIBRARY_TIMEOUT_INTERACTION_BASELINE);
+  assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx",
+  ]);
+  for (const input of baseline.input_paths) {
+    const temporary = materializeReviewedSurface(LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE);
+    fs.appendFileSync(path.join(temporary, input), "\nunauthorized mutation\n");
+    assert.equal(compareLibraryInteractionBaseline(temporary, LIBRARY_VISIBLE_GOLD_INTERACTION_BASELINE).result, "FAIL");
   }
 });
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
