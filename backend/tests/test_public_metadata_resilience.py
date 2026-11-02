@@ -320,7 +320,7 @@ def test_public_optional_startup_timeout_policy_soft_failure_and_no_config():
         with patch('redis.asyncio.from_url',return_value=down) as construct:
             await ns['initialize_replica_state_backends']()
         assert not ns['_redis_available'] and ns['_redis_client'] is None and down.closed
-        assert construct.call_args.kwargs=={'socket_connect_timeout':.25,'socket_timeout':.25,'retry_on_timeout':False}
+        assert construct.call_args.kwargs=={'socket_connect_timeout':.25,'socket_timeout':.25,'retry_on_timeout':False,'max_connections':16}
     run(case())
 
 
