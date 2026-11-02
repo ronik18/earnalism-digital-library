@@ -109,8 +109,8 @@
     },
     {
       "path": "data/approved_reader_bootstrap.json",
-      "bytes": 12508,
-      "sha256": "da6eaac968cc424de2c0c77423d97aca9aa0d5da21822e58d2998f4847c11e28"
+      "bytes": 12484,
+      "sha256": "6e4572f01e9e57124170fa866069713a1eedb38bf7dfd869d9fd71a7e449df35"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -8369,8 +8369,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/checksum_manifest.json",
-      "bytes": 3559,
-      "sha256": "750425dcbe1d7f9ae04ae8611aa4d3558a0f3286dbe484024111f18605596bf7"
+      "bytes": 3571,
+      "sha256": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/cover_approval_evidence.json",
@@ -8464,8 +8464,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/public_book.json",
-      "bytes": 48859,
-      "sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10"
+      "bytes": 61611,
+      "sha256": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_authorization.json",
@@ -8474,18 +8474,18 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_manifest.json",
-      "bytes": 2639,
-      "sha256": "7f063ead5c5baba5565ffae4f94fc260721f2c52598a09288c72cb8ef382c6f0"
+      "bytes": 2651,
+      "sha256": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/reader_manifest.json",
-      "bytes": 42828,
-      "sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5"
+      "bytes": 55580,
+      "sha256": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/rights_decision.json",
-      "bytes": 3327,
-      "sha256": "91c2106b7752ee3a2e6a576cfb5a69a782885676148df147c120d746c01007e3"
+      "bytes": 3550,
+      "sha256": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/source_evidence.json",
@@ -9504,8 +9504,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 41084,
-      "sha256": "7efe07a775ccf49582e7fe1b297a6c9a451eb047bef146b6df5e095a64878561"
+      "bytes": 41905,
+      "sha256": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0"
     },
     {
       "path": "demand_scoring.py",
@@ -9588,9 +9588,29 @@
       "sha256": "11acb7c1c597df8b5b010ee9a7b9ce527c899c660b06aa125e3cf0cc46743caa"
     },
     {
+      "path": "native_audio_review_authority.py",
+      "bytes": 18214,
+      "sha256": "697349c35c3b11c21d27e4973010a34bbd464be765db7aca19e7b6da0b4ef137"
+    },
+    {
+      "path": "native_audio_review_operator.py",
+      "bytes": 23742,
+      "sha256": "13f67fed0a502825fbf637784321a01b839261974282557a7d69c95f04829209"
+    },
+    {
+      "path": "native_audio_review_operator_cli.py",
+      "bytes": 7831,
+      "sha256": "11b26a77a22799e8991bd7cb9565f66d08c83683731f58172af0524ba9fe8d48"
+    },
+    {
+      "path": "native_audio_review_scope.py",
+      "bytes": 9419,
+      "sha256": "bff209be5305b39d4cfd695107623fc67271f70ff38e6023477174961f97da3e"
+    },
+    {
       "path": "native_audiobook_replacement.py",
-      "bytes": 11740,
-      "sha256": "3da94a0e0147b7c9b370176d1dc8e0c765dfd608bfa1e51f83fbee5d1503f695"
+      "bytes": 14789,
+      "sha256": "9a100d18fe7df05ac20520e95be27185d36a2652753bf33eef3b4a241c99f2c7"
     },
     {
       "path": "open_window_audio_cap_installer.py",
@@ -9659,8 +9679,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 94045,
-      "sha256": "c967c21edb56d3bf68cc0228dd29a7b0b4a1883ae5d186199e75e08cb6a487ed"
+      "bytes": 96366,
+      "sha256": "09b2b4af430b9c321c28f72051908f7f3b83c92595ee41e36a35ec99c5de875f"
     },
     {
       "path": "release_proxy_auth.py",
@@ -9694,8 +9714,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 629942,
-      "sha256": "ac7700495215fd0085b0a55a41f7d99ec0d56622476fd11fe13a9da35731220d"
+      "bytes": 631363,
+      "sha256": "aca5216c8b6d57a4eac0eb9025e160659bd39f2294c4c467354b58fc42a78938"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9763,5 +9783,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "eb5fe344e06d8a542a545ffdde73018ae88c39e22bc83e1fe9243dbd640185a7"
+  "expected_sha256": "88b763e774f2c26157f81d23ded406499ae27bc9a1c858993cf533e9f31c15d8"
 }
