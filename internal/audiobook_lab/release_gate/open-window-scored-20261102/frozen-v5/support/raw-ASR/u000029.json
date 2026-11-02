@@ -1,0 +1,413 @@
+{
+  "unit": "u000029",
+  "master_interval_seconds": [
+    351.9897916666667,
+    363.9897916666667
+  ],
+  "expected_text": "“No?” said Mrs. Sappleton, in a voice which only replaced a yawn at the last moment. Then she suddenly brightened into alert attention—but not to what Framton was saying.",
+  "ctc_transcript": "NO SAID MISSUS SAPPLETON IN A VOICE WHICH ONLY REPLACED A YAWN AT THE LAST MOMENT THEN SHE SUDDENLY BRIGHTENED INTO ALERT ATTENTION BUT NOT TO WHAT FRAMPTON WAS SAYING",
+  "ctc_words": [
+    {
+      "word": "NO",
+      "start": 352.1700921675014,
+      "end": 352.47059300222594,
+      "mean_character_frame_posterior": 0.9439034163951874
+    },
+    {
+      "word": "SAID",
+      "start": 353.3720955063996,
+      "end": 353.53236261825265,
+      "mean_character_frame_posterior": 0.9997375905513763
+    },
+    {
+      "word": "MISSUS",
+      "start": 353.6124961741792,
+      "end": 353.85289684195885,
+      "mean_character_frame_posterior": 0.9991564055283865
+    },
+    {
+      "word": "SAPPLETON",
+      "start": 353.9330303978854,
+      "end": 354.4739319003896,
+      "mean_character_frame_posterior": 0.9921399619844224
+    },
+    {
+      "word": "IN",
+      "start": 354.85456629104067,
+      "end": 354.89463306900393,
+      "mean_character_frame_posterior": 0.9999675750732422
+    },
+    {
+      "word": "A",
+      "start": 354.97476662493045,
+      "end": 354.9948000139121,
+      "mean_character_frame_posterior": 0.9998586177825928
+    },
+    {
+      "word": "VOICE",
+      "start": 355.07493356983866,
+      "end": 355.35540101558155,
+      "mean_character_frame_posterior": 0.9642953515052796
+    },
+    {
+      "word": "WHICH",
+      "start": 355.4355345715081,
+      "end": 355.57576829437954,
+      "mean_character_frame_posterior": 0.999976110458374
+    },
+    {
+      "word": "ONLY",
+      "start": 355.7560687952143,
+      "end": 355.936369296049,
+      "mean_character_frame_posterior": 0.9999711215496063
+    },
+    {
+      "word": "REPLACED",
+      "start": 355.9964694629939,
+      "end": 356.4372040205899,
+      "mean_character_frame_posterior": 0.9957034513354301
+    },
+    {
+      "word": "A",
+      "start": 356.5373709654981,
+      "end": 356.55740435447973,
+      "mean_character_frame_posterior": 0.9974671602249146
+    },
+    {
+      "word": "YAWN",
+      "start": 356.6175045214246,
+      "end": 356.9380387451308,
+      "mean_character_frame_posterior": 0.999963790178299
+    },
+    {
+      "word": "AT",
+      "start": 357.1584060239288,
+      "end": 357.1984728018921,
+      "mean_character_frame_posterior": 0.9996806681156158
+    },
+    {
+      "word": "THE",
+      "start": 357.258572968837,
+      "end": 357.3387065247635,
+      "mean_character_frame_posterior": 0.9988882144292196
+    },
+    {
+      "word": "LAST",
+      "start": 357.3787733027268,
+      "end": 357.6592407484697,
+      "mean_character_frame_posterior": 0.9991176724433899
+    },
+    {
+      "word": "MOMENT",
+      "start": 357.77944108235954,
+      "end": 358.0999753060657,
+      "mean_character_frame_posterior": 0.9997947712739309
+    },
+    {
+      "word": "THEN",
+      "start": 358.68094358653315,
+      "end": 358.80114392042293,
+      "mean_character_frame_posterior": 0.9999439120292664
+    },
+    {
+      "word": "SHE",
+      "start": 358.90131086533114,
+      "end": 359.0014778102393,
+      "mean_character_frame_posterior": 0.999995231628418
+    },
+    {
+      "word": "SUDDENLY",
+      "start": 359.14171153311077,
+      "end": 359.5624127017251,
+      "mean_character_frame_posterior": 0.9999377578496933
+    },
+    {
+      "word": "BRIGHTENED",
+      "start": 359.6625796466333,
+      "end": 360.08328081524763,
+      "mean_character_frame_posterior": 0.9849233746528625
+    },
+    {
+      "word": "INTO",
+      "start": 360.1634143711742,
+      "end": 360.3637482609906,
+      "mean_character_frame_posterior": 0.9951334744691849
+    },
+    {
+      "word": "ALERT",
+      "start": 360.48394859488036,
+      "end": 360.72434926266,
+      "mean_character_frame_posterior": 0.9949011445045471
+    },
+    {
+      "word": "ATTENTION",
+      "start": 360.8245162075682,
+      "end": 361.2652507651642,
+      "mean_character_frame_posterior": 0.9980397754245334
+    },
+    {
+      "word": "BUT",
+      "start": 361.76608548970506,
+      "end": 361.8862858235949,
+      "mean_character_frame_posterior": 0.9999833106994629
+    },
+    {
+      "word": "NOT",
+      "start": 362.046552935448,
+      "end": 362.28695360322763,
+      "mean_character_frame_posterior": 0.9999677340189616
+    },
+    {
+      "word": "TO",
+      "start": 362.3470537701725,
+      "end": 362.4271873260991,
+      "mean_character_frame_posterior": 0.9988860785961151
+    },
+    {
+      "word": "WHAT",
+      "start": 362.487287493044,
+      "end": 362.6074878269338,
+      "mean_character_frame_posterior": 0.9268333166837692
+    },
+    {
+      "word": "FRAMPTON",
+      "start": 362.7276881608236,
+      "end": 363.18845610740124,
+      "mean_character_frame_posterior": 0.9952730014920235
+    },
+    {
+      "word": "WAS",
+      "start": 363.2685896633278,
+      "end": 363.3887899972176,
+      "mean_character_frame_posterior": 0.9666392008463541
+    },
+    {
+      "word": "SAYING",
+      "start": 363.4889569421258,
+      "end": 363.8295245548136,
+      "mean_character_frame_posterior": 0.9447638789812723
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "mrs"
+      ],
+      "recognized": [
+        "missus"
+      ],
+      "reference_word_span": [
+        2,
+        3
+      ],
+      "recognized_word_span": [
+        2,
+        3
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        27,
+        28
+      ],
+      "recognized_word_span": [
+        27,
+        28
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " �No�",
+      "start": 352.8,
+      "end": 353.4,
+      "probability": 0.8590996265411377
+    },
+    {
+      "word": " said",
+      "start": 353.4,
+      "end": 353.58,
+      "probability": 0.7223861813545227
+    },
+    {
+      "word": " Mrs.",
+      "start": 353.58,
+      "end": 353.94,
+      "probability": 0.9434927105903625
+    },
+    {
+      "word": " Sappleton,",
+      "start": 353.98,
+      "end": 354.3,
+      "probability": 0.6176043351491293
+    },
+    {
+      "word": " in",
+      "start": 354.78,
+      "end": 354.94,
+      "probability": 0.868408203125
+    },
+    {
+      "word": " a",
+      "start": 354.94,
+      "end": 355.1,
+      "probability": 0.9959665536880493
+    },
+    {
+      "word": " voice",
+      "start": 355.1,
+      "end": 355.32,
+      "probability": 0.9967944025993347
+    },
+    {
+      "word": " which",
+      "start": 355.32,
+      "end": 355.64,
+      "probability": 0.9807173609733582
+    },
+    {
+      "word": " only",
+      "start": 355.64,
+      "end": 355.92,
+      "probability": 0.997003972530365
+    },
+    {
+      "word": " replaced",
+      "start": 355.92,
+      "end": 356.44,
+      "probability": 0.9686057567596436
+    },
+    {
+      "word": " a",
+      "start": 356.44,
+      "end": 356.66,
+      "probability": 0.22202736139297485
+    },
+    {
+      "word": " yawn",
+      "start": 356.66,
+      "end": 356.92,
+      "probability": 0.9918922185897827
+    },
+    {
+      "word": " at",
+      "start": 356.92,
+      "end": 357.24,
+      "probability": 0.975043773651123
+    },
+    {
+      "word": " the",
+      "start": 357.24,
+      "end": 357.36,
+      "probability": 0.9901359677314758
+    },
+    {
+      "word": " last",
+      "start": 357.36,
+      "end": 357.66,
+      "probability": 0.9947728514671326
+    },
+    {
+      "word": " moment.",
+      "start": 357.66,
+      "end": 358.12,
+      "probability": 0.9956294298171997
+    },
+    {
+      "word": " Then",
+      "start": 358.68,
+      "end": 358.84,
+      "probability": 0.986461341381073
+    },
+    {
+      "word": " she",
+      "start": 358.84,
+      "end": 359.02,
+      "probability": 0.9823749661445618
+    },
+    {
+      "word": " suddenly",
+      "start": 359.02,
+      "end": 359.52,
+      "probability": 0.9728376865386963
+    },
+    {
+      "word": " brightened",
+      "start": 359.52,
+      "end": 360.1,
+      "probability": 0.9031771123409271
+    },
+    {
+      "word": " into",
+      "start": 360.1,
+      "end": 360.42,
+      "probability": 0.978320837020874
+    },
+    {
+      "word": " alert",
+      "start": 360.42,
+      "end": 360.72,
+      "probability": 0.9924935102462769
+    },
+    {
+      "word": " attention,",
+      "start": 360.72,
+      "end": 361.32,
+      "probability": 0.9954262375831604
+    },
+    {
+      "word": " but",
+      "start": 361.72,
+      "end": 362.06,
+      "probability": 0.993689775466919
+    },
+    {
+      "word": " not",
+      "start": 362.06,
+      "end": 362.32,
+      "probability": 0.9961555600166321
+    },
+    {
+      "word": " to",
+      "start": 362.32,
+      "end": 362.54,
+      "probability": 0.9618424773216248
+    },
+    {
+      "word": " what",
+      "start": 362.54,
+      "end": 362.84,
+      "probability": 0.9974384307861328
+    },
+    {
+      "word": " Frampton",
+      "start": 362.84,
+      "end": 363.12,
+      "probability": 0.7878036797046661
+    },
+    {
+      "word": " was",
+      "start": 363.12,
+      "end": 363.38,
+      "probability": 0.9939032196998596
+    },
+    {
+      "word": " saying.",
+      "start": 363.38,
+      "end": 363.88,
+      "probability": 0.9972538352012634
+    }
+  ],
+  "whisper_transcript_in_unit": "�No� said Mrs. Sappleton, in a voice which only replaced a yawn at the last moment. Then she suddenly brightened into alert attention, but not to what Frampton was saying.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.4091923750000035
+}

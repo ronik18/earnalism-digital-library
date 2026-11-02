@@ -1,0 +1,34 @@
+{
+  "status": "SUCCESSOR_RIGHTS_BINDING_PREPARED_NOT_PRODUCTION_ADOPTED",
+  "territory": "IN",
+  "use": "commercial_audio_streaming",
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "successor_master_wav_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+  "successor_mp3_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+  "duration_ms": 491436,
+  "literary_work": "Same retained selected original PG269/1914JohnLane story; prior India public-domain assessment reused, no translation/editorial-content addition.",
+  "model_voice": "Same pinned Qwen Apache2 CustomVoice/Ryan basis; new seven-word sidecar binds actual model/source/seed; no voice clone reference.",
+  "producer": "Standing owner Earnalism production attestation and exact new generation/assembly authorization retained; no fictitious human reviewer.",
+  "historical_excluded_edition": "UNCHANGED_EXCLUDED",
+  "current_production_UUID_source_admission": "UNVERIFIED; supplied UUID is not automatically joined by these local artifacts.",
+  "production_mutations": 0,
+  "evidence": [
+    {
+      "path": "open-window-ai-rights-assessment.json",
+      "sha256": "040ac2230ee967ab1c273c4858f306515c6888b3fe61d90cedbcf858fa866b5b"
+    },
+    {
+      "path": "owner-producer-authorization-and-listening-policy-check.json",
+      "sha256": "c1b7eedb026ef3aed8523af17aebad4e0b95f7d7cfff8a8fee643f8faa90cad3"
+    },
+    {
+      "path": "unit24-retained-20261020/u000024-suffix-repair-v1.wav.json",
+      "sha256": "c206830caf77b84c6f74b460ef603d6bd10294db0a360f030e36da7fd8ccbbc3"
+    }
+  ],
+  "limitations": [
+    "Prior assessment describes its scope and is not a professional legal opinion.",
+    "No old exact-master rights or package receipts relabelled as new production receipts.",
+    "Successor source/protected-storage/authenticated playback/accounting adoption remains required."
+  ]
+}

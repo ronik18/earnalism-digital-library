@@ -1,0 +1,120 @@
+{
+  "unit": "u000022",
+  "master_interval_seconds": [
+    251.38195833333333,
+    255.22195833333333
+  ],
+  "expected_text": "“She has been very interesting,” said Framton.",
+  "ctc_transcript": "SHE HAS BEEN VERY INTERESTING SAID FRAMPTON",
+  "ctc_words": [
+    {
+      "word": "SHE",
+      "start": 251.62321487783595,
+      "end": 251.78405257417103,
+      "mean_character_frame_posterior": 0.9999831914901733
+    },
+    {
+      "word": "HAS",
+      "start": 251.98509969458988,
+      "end": 252.24646095113437,
+      "mean_character_frame_posterior": 0.999434252580007
+    },
+    {
+      "word": "BEEN",
+      "start": 252.38719393542758,
+      "end": 252.6083457678883,
+      "mean_character_frame_posterior": 0.8769236356019974
+    },
+    {
+      "word": "VERY",
+      "start": 252.8697070244328,
+      "end": 253.21148712914484,
+      "mean_character_frame_posterior": 0.887593150138855
+    },
+    {
+      "word": "INTERESTING",
+      "start": 253.4326389616056,
+      "end": 254.09609445898778,
+      "mean_character_frame_posterior": 0.9962372075427662
+    },
+    {
+      "word": "SAID",
+      "start": 254.39766513961607,
+      "end": 254.57860754799302,
+      "mean_character_frame_posterior": 0.9997998476028442
+    },
+    {
+      "word": "FRAMPTON",
+      "start": 254.67913110820243,
+      "end": 255.1214347731239,
+      "mean_character_frame_posterior": 0.907599650323391
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        6,
+        7
+      ],
+      "recognized_word_span": [
+        6,
+        7
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'She",
+      "start": 251.34,
+      "end": 251.84,
+      "probability": 0.7097340822219849
+    },
+    {
+      "word": " has",
+      "start": 251.84,
+      "end": 252.32,
+      "probability": 0.9872193336486816
+    },
+    {
+      "word": " been",
+      "start": 252.32,
+      "end": 252.76,
+      "probability": 0.9977464079856873
+    },
+    {
+      "word": " very",
+      "start": 252.76,
+      "end": 253.2,
+      "probability": 0.8613654971122742
+    },
+    {
+      "word": " interesting,'",
+      "start": 253.2,
+      "end": 254.02,
+      "probability": 0.9693584144115448
+    },
+    {
+      "word": " said",
+      "start": 254.02,
+      "end": 254.6,
+      "probability": 0.9930709004402161
+    },
+    {
+      "word": " Frampton.",
+      "start": 254.6,
+      "end": 255.06,
+      "probability": 0.9919376075267792
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'She has been very interesting,' said Frampton.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.24569720799999573
+}

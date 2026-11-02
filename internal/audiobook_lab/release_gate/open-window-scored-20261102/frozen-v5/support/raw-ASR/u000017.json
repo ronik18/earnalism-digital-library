@@ -1,0 +1,624 @@
+{
+  "unit": "u000017",
+  "master_interval_seconds": [
+    190.23025,
+    207.83025
+  ],
+  "expected_text": "“Poor aunt always thinks that they will come back some day, they and the little brown spaniel that was lost with them, and walk in at that window just as they used to do. That is why the window is kept open every evening till it is quite dusk.",
+  "ctc_transcript": "POOR AUNT ALWAYS THINKS THAT THEY WILL COME BACK SOME DAY THEY AND THE LITTLE BROWN SPANIEL THAT WAS LOST WITH THEM AND WALK IN AT THAT WINDOW JUST AS THEY USED TO DO THAT IS WHY THE WINDOW IS KEPT OPEN EVERY EVENING TILL IT IS QUITE DUST",
+  "ctc_words": [
+    {
+      "word": "POOR",
+      "start": 190.31034101251424,
+      "end": 190.5105685437998,
+      "mean_character_frame_posterior": 0.9998535215854645
+    },
+    {
+      "word": "AUNT",
+      "start": 190.770864334471,
+      "end": 190.93104635949945,
+      "mean_character_frame_posterior": 0.8940392583608627
+    },
+    {
+      "word": "ALWAYS",
+      "start": 191.1713193970421,
+      "end": 191.47166069397042,
+      "mean_character_frame_posterior": 0.9701600472132365
+    },
+    {
+      "word": "THINKS",
+      "start": 191.61181996587032,
+      "end": 191.8921385096701,
+      "mean_character_frame_posterior": 0.9997274478276571
+    },
+    {
+      "word": "THAT",
+      "start": 191.95220676905575,
+      "end": 192.0723432878271,
+      "mean_character_frame_posterior": 0.9894309043884277
+    },
+    {
+      "word": "THEY",
+      "start": 192.1123887940842,
+      "end": 192.23252531285553,
+      "mean_character_frame_posterior": 0.9997332543134689
+    },
+    {
+      "word": "WILL",
+      "start": 192.2925935722412,
+      "end": 192.43275284414108,
+      "mean_character_frame_posterior": 0.9999023228883743
+    },
+    {
+      "word": "COME",
+      "start": 192.49282110352675,
+      "end": 192.63298037542663,
+      "mean_character_frame_posterior": 0.8889228999614716
+    },
+    {
+      "word": "BACK",
+      "start": 192.73309414106942,
+      "end": 192.95334442548352,
+      "mean_character_frame_posterior": 0.9993403404951096
+    },
+    {
+      "word": "SOME",
+      "start": 193.0935036973834,
+      "end": 193.2737084755404,
+      "mean_character_frame_posterior": 0.9797218590974808
+    },
+    {
+      "word": "DAY",
+      "start": 193.37382224118318,
+      "end": 193.55402701934017,
+      "mean_character_frame_posterior": 0.9999560515085856
+    },
+    {
+      "word": "THEY",
+      "start": 194.37495989761092,
+      "end": 194.6552784414107,
+      "mean_character_frame_posterior": 0.9942922592163086
+    },
+    {
+      "word": "AND",
+      "start": 195.0957790102389,
+      "end": 195.25596103526738,
+      "mean_character_frame_posterior": 0.9995845953623453
+    },
+    {
+      "word": "THE",
+      "start": 195.49623407281,
+      "end": 195.57632508532424,
+      "mean_character_frame_posterior": 0.9998088876406351
+    },
+    {
+      "word": "LITTLE",
+      "start": 195.63639334470992,
+      "end": 195.85664362912402,
+      "mean_character_frame_posterior": 0.9999794960021973
+    },
+    {
+      "word": "BROWN",
+      "start": 195.9167118885097,
+      "end": 196.1770076791809,
+      "mean_character_frame_posterior": 0.9999545574188232
+    },
+    {
+      "word": "SPANIEL",
+      "start": 196.29714419795224,
+      "end": 196.7176220136519,
+      "mean_character_frame_posterior": 0.9363275000027248
+    },
+    {
+      "word": "THAT",
+      "start": 196.81773577929465,
+      "end": 196.95789505119455,
+      "mean_character_frame_posterior": 0.9788101315498352
+    },
+    {
+      "word": "WAS",
+      "start": 197.01796331058023,
+      "end": 197.09805432309443,
+      "mean_character_frame_posterior": 0.9999823172887167
+    },
+    {
+      "word": "LOST",
+      "start": 197.19816808873722,
+      "end": 197.478486632537,
+      "mean_character_frame_posterior": 0.9999758005142212
+    },
+    {
+      "word": "WITH",
+      "start": 197.57860039817976,
+      "end": 197.71875967007963,
+      "mean_character_frame_posterior": 0.9769505262374878
+    },
+    {
+      "word": "THEM",
+      "start": 197.79885068259387,
+      "end": 197.97905546075086,
+      "mean_character_frame_posterior": 0.9995532631874084
+    },
+    {
+      "word": "AND",
+      "start": 198.37951052332198,
+      "end": 198.45960153583619,
+      "mean_character_frame_posterior": 0.999954342842102
+    },
+    {
+      "word": "WALK",
+      "start": 198.53969254835042,
+      "end": 198.73992007963597,
+      "mean_character_frame_posterior": 0.9260192662477493
+    },
+    {
+      "word": "IN",
+      "start": 198.88007935153584,
+      "end": 198.9401476109215,
+      "mean_character_frame_posterior": 0.9998980760574341
+    },
+    {
+      "word": "AT",
+      "start": 199.16039789533562,
+      "end": 199.20044340159274,
+      "mean_character_frame_posterior": 0.9998717904090881
+    },
+    {
+      "word": "THAT",
+      "start": 199.2605116609784,
+      "end": 199.42069368600684,
+      "mean_character_frame_posterior": 0.9993815124034882
+    },
+    {
+      "word": "WINDOW",
+      "start": 199.5208074516496,
+      "end": 199.86119425483506,
+      "mean_character_frame_posterior": 0.9667463501294454
+    },
+    {
+      "word": "JUST",
+      "start": 200.30169482366327,
+      "end": 200.5619906143345,
+      "mean_character_frame_posterior": 0.999622568488121
+    },
+    {
+      "word": "AS",
+      "start": 200.76221814562004,
+      "end": 200.8222864050057,
+      "mean_character_frame_posterior": 0.9619302451610565
+    },
+    {
+      "word": "THEY",
+      "start": 200.92240017064847,
+      "end": 201.02251393629126,
+      "mean_character_frame_posterior": 0.999698594212532
+    },
+    {
+      "word": "USED",
+      "start": 201.1826959613197,
+      "end": 201.34287798634813,
+      "mean_character_frame_posterior": 0.8995577543973923
+    },
+    {
+      "word": "TO",
+      "start": 201.4029462457338,
+      "end": 201.48303725824803,
+      "mean_character_frame_posterior": 0.9996953010559082
+    },
+    {
+      "word": "DO",
+      "start": 201.56312827076223,
+      "end": 201.70328754266214,
+      "mean_character_frame_posterior": 0.9999929666519165
+    },
+    {
+      "word": "THAT",
+      "start": 202.7845162116041,
+      "end": 203.02478924914678,
+      "mean_character_frame_posterior": 0.9999130219221115
+    },
+    {
+      "word": "IS",
+      "start": 203.24503953356088,
+      "end": 203.285085039818,
+      "mean_character_frame_posterior": 0.9999455213546753
+    },
+    {
+      "word": "WHY",
+      "start": 203.3651760523322,
+      "end": 203.48531257110355,
+      "mean_character_frame_posterior": 0.9684184590975443
+    },
+    {
+      "word": "THE",
+      "start": 203.56540358361775,
+      "end": 203.64549459613198,
+      "mean_character_frame_posterior": 0.9994432330131531
+    },
+    {
+      "word": "WINDOW",
+      "start": 203.7255856086462,
+      "end": 204.02592690557452,
+      "mean_character_frame_posterior": 0.9999937613805135
+    },
+    {
+      "word": "IS",
+      "start": 204.2661999431172,
+      "end": 204.3062454493743,
+      "mean_character_frame_posterior": 0.9999246597290039
+    },
+    {
+      "word": "KEPT",
+      "start": 204.38633646188853,
+      "end": 204.56654124004552,
+      "mean_character_frame_posterior": 0.9999150782823563
+    },
+    {
+      "word": "OPEN",
+      "start": 204.76676877133107,
+      "end": 204.98701905574518,
+      "mean_character_frame_posterior": 0.9899080991744995
+    },
+    {
+      "word": "EVERY",
+      "start": 205.38747411831628,
+      "end": 205.66779266211606,
+      "mean_character_frame_posterior": 0.9040590167045593
+    },
+    {
+      "word": "EVENING",
+      "start": 205.84799744027305,
+      "end": 206.16836149032994,
+      "mean_character_frame_posterior": 0.9499192067555019
+    },
+    {
+      "word": "TILL",
+      "start": 206.50874829351537,
+      "end": 206.68895307167236,
+      "mean_character_frame_posterior": 0.9979175180196762
+    },
+    {
+      "word": "IT",
+      "start": 206.74902133105803,
+      "end": 206.78906683731515,
+      "mean_character_frame_posterior": 0.9998355805873871
+    },
+    {
+      "word": "IS",
+      "start": 206.88918060295794,
+      "end": 206.92922610921502,
+      "mean_character_frame_posterior": 0.9995909929275513
+    },
+    {
+      "word": "QUITE",
+      "start": 207.08940813424346,
+      "end": 207.34970392491468,
+      "mean_character_frame_posterior": 0.9724218606948852
+    },
+    {
+      "word": "DUST",
+      "start": 207.48986319681458,
+      "end": 207.77018174061436,
+      "mean_character_frame_posterior": 0.9779143780469894
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "dusk"
+      ],
+      "recognized": [
+        "dust"
+      ],
+      "reference_word_span": [
+        48,
+        49
+      ],
+      "recognized_word_span": [
+        48,
+        49
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Poor",
+      "start": 190.02,
+      "end": 190.66,
+      "probability": 0.6114283204078674
+    },
+    {
+      "word": " Anne",
+      "start": 190.66,
+      "end": 190.96,
+      "probability": 0.3591926395893097
+    },
+    {
+      "word": " always",
+      "start": 190.96,
+      "end": 191.4,
+      "probability": 0.9926192164421082
+    },
+    {
+      "word": " thinks",
+      "start": 191.4,
+      "end": 191.9,
+      "probability": 0.9904057383537292
+    },
+    {
+      "word": " that",
+      "start": 191.9,
+      "end": 192.16,
+      "probability": 0.8962851762771606
+    },
+    {
+      "word": " they",
+      "start": 192.16,
+      "end": 192.28,
+      "probability": 0.9959244728088379
+    },
+    {
+      "word": " will",
+      "start": 192.28,
+      "end": 192.46,
+      "probability": 0.9925261735916138
+    },
+    {
+      "word": " come",
+      "start": 192.46,
+      "end": 192.74,
+      "probability": 0.996507465839386
+    },
+    {
+      "word": " back",
+      "start": 192.74,
+      "end": 192.98,
+      "probability": 0.9987194538116455
+    },
+    {
+      "word": " some",
+      "start": 192.98,
+      "end": 193.3,
+      "probability": 0.2434936761856079
+    },
+    {
+      "word": " day.",
+      "start": 193.3,
+      "end": 193.72,
+      "probability": 0.9948611855506897
+    },
+    {
+      "word": " They",
+      "start": 194.46,
+      "end": 194.64,
+      "probability": 0.9767603278160095
+    },
+    {
+      "word": " and",
+      "start": 194.64,
+      "end": 195.3,
+      "probability": 0.5796993970870972
+    },
+    {
+      "word": " the",
+      "start": 195.3,
+      "end": 195.64,
+      "probability": 0.9636455774307251
+    },
+    {
+      "word": " little",
+      "start": 195.64,
+      "end": 195.8,
+      "probability": 0.9582545161247253
+    },
+    {
+      "word": " brown",
+      "start": 195.8,
+      "end": 196.2,
+      "probability": 0.9201881289482117
+    },
+    {
+      "word": " spaniel",
+      "start": 196.2,
+      "end": 196.68,
+      "probability": 0.8807238638401031
+    },
+    {
+      "word": " that",
+      "start": 196.68,
+      "end": 197.0,
+      "probability": 0.981090247631073
+    },
+    {
+      "word": " was",
+      "start": 197.0,
+      "end": 197.14,
+      "probability": 0.9982234835624695
+    },
+    {
+      "word": " lost",
+      "start": 197.14,
+      "end": 197.48,
+      "probability": 0.997054934501648
+    },
+    {
+      "word": " with",
+      "start": 197.48,
+      "end": 197.76,
+      "probability": 0.9948146939277649
+    },
+    {
+      "word": " them",
+      "start": 197.76,
+      "end": 198.14,
+      "probability": 0.9908866882324219
+    },
+    {
+      "word": " and",
+      "start": 198.14,
+      "end": 198.56,
+      "probability": 0.7737842202186584
+    },
+    {
+      "word": " walk",
+      "start": 198.56,
+      "end": 198.76,
+      "probability": 0.9805225729942322
+    },
+    {
+      "word": " in",
+      "start": 198.76,
+      "end": 199.12,
+      "probability": 0.9878040552139282
+    },
+    {
+      "word": " at",
+      "start": 199.12,
+      "end": 199.26,
+      "probability": 0.953665018081665
+    },
+    {
+      "word": " that",
+      "start": 199.26,
+      "end": 199.52,
+      "probability": 0.9825034737586975
+    },
+    {
+      "word": " window",
+      "start": 199.52,
+      "end": 199.84,
+      "probability": 0.9980741739273071
+    },
+    {
+      "word": " just",
+      "start": 199.84,
+      "end": 200.56,
+      "probability": 0.9186584949493408
+    },
+    {
+      "word": " as",
+      "start": 200.56,
+      "end": 200.92,
+      "probability": 0.9977216124534607
+    },
+    {
+      "word": " they",
+      "start": 200.92,
+      "end": 201.1,
+      "probability": 0.9964655637741089
+    },
+    {
+      "word": " used",
+      "start": 201.1,
+      "end": 201.36,
+      "probability": 0.9836862683296204
+    },
+    {
+      "word": " to",
+      "start": 201.36,
+      "end": 201.56,
+      "probability": 0.997922956943512
+    },
+    {
+      "word": " do.",
+      "start": 201.56,
+      "end": 202.02,
+      "probability": 0.9966800212860107
+    },
+    {
+      "word": " That",
+      "start": 202.62,
+      "end": 203.08,
+      "probability": 0.9666546583175659
+    },
+    {
+      "word": " is",
+      "start": 203.08,
+      "end": 203.32,
+      "probability": 0.9886025786399841
+    },
+    {
+      "word": " why",
+      "start": 203.32,
+      "end": 203.5,
+      "probability": 0.9984645843505859
+    },
+    {
+      "word": " the",
+      "start": 203.5,
+      "end": 203.66,
+      "probability": 0.9947734475135803
+    },
+    {
+      "word": " window",
+      "start": 203.66,
+      "end": 204.0,
+      "probability": 0.9929463267326355
+    },
+    {
+      "word": " is",
+      "start": 204.0,
+      "end": 204.36,
+      "probability": 0.9942376613616943
+    },
+    {
+      "word": " kept",
+      "start": 204.36,
+      "end": 204.54,
+      "probability": 0.9986615180969238
+    },
+    {
+      "word": " open",
+      "start": 204.54,
+      "end": 205.02,
+      "probability": 0.9972785115242004
+    },
+    {
+      "word": " every",
+      "start": 205.02,
+      "end": 205.62,
+      "probability": 0.9878566265106201
+    },
+    {
+      "word": " evening",
+      "start": 205.62,
+      "end": 206.18,
+      "probability": 0.9984752535820007
+    },
+    {
+      "word": " till",
+      "start": 206.18,
+      "end": 206.66,
+      "probability": 0.7376684546470642
+    },
+    {
+      "word": " it",
+      "start": 206.66,
+      "end": 206.86,
+      "probability": 0.9965775609016418
+    },
+    {
+      "word": " is",
+      "start": 206.86,
+      "end": 207.06,
+      "probability": 0.9836108684539795
+    },
+    {
+      "word": " quite",
+      "start": 207.06,
+      "end": 207.32,
+      "probability": 0.988021969795227
+    },
+    {
+      "word": " dusk.",
+      "start": 207.32,
+      "end": 207.82,
+      "probability": 0.9354389905929565
+    }
+  ],
+  "whisper_transcript_in_unit": "Poor Anne always thinks that they will come back some day. They and the little brown spaniel that was lost with them and walk in at that window just as they used to do. That is why the window is kept open every evening till it is quite dusk.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.606303749999995
+}

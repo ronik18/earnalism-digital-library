@@ -1,0 +1,137 @@
+{
+  "unit": "u000038",
+  "master_interval_seconds": [
+    489.33933333333334,
+    494.69933333333336
+  ],
+  "expected_text": "Enough to make anyone lose their nerve.”",
+  "ctc_transcript": "EEENOUGH TO MAKE ANYONE LOSE THEIR NERVES",
+  "ctc_words": [
+    {
+      "word": "EEENOUGH",
+      "start": 489.68060674157306,
+      "end": 492.4308689138577,
+      "mean_character_frame_posterior": 0.8619933873414993
+    },
+    {
+      "word": "TO",
+      "start": 492.5312434456929,
+      "end": 492.6316179775281,
+      "mean_character_frame_posterior": 0.9550524055957794
+    },
+    {
+      "word": "MAKE",
+      "start": 492.71191760299627,
+      "end": 492.91266666666667,
+      "mean_character_frame_posterior": 0.9999607801437378
+    },
+    {
+      "word": "ANYONE",
+      "start": 493.1736404494382,
+      "end": 493.53498876404495,
+      "mean_character_frame_posterior": 0.9826753636201223
+    },
+    {
+      "word": "LOSE",
+      "start": 493.6955880149813,
+      "end": 493.8963370786517,
+      "mean_character_frame_posterior": 0.9781577885150909
+    },
+    {
+      "word": "THEIR",
+      "start": 493.97663670411987,
+      "end": 494.1372359550562,
+      "mean_character_frame_posterior": 0.9993505001068115
+    },
+    {
+      "word": "NERVES",
+      "start": 494.2175355805243,
+      "end": 494.57888389513107,
+      "mean_character_frame_posterior": 0.9158633351325989
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "enough"
+      ],
+      "recognized": [
+        "eeenough"
+      ],
+      "reference_word_span": [
+        0,
+        1
+      ],
+      "recognized_word_span": [
+        0,
+        1
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "nerve"
+      ],
+      "recognized": [
+        "nerves"
+      ],
+      "reference_word_span": [
+        6,
+        7
+      ],
+      "recognized_word_span": [
+        6,
+        7
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Enough",
+      "start": 491.56,
+      "end": 492.36,
+      "probability": 0.30976858735084534
+    },
+    {
+      "word": " to",
+      "start": 492.36,
+      "end": 492.68,
+      "probability": 0.996132493019104
+    },
+    {
+      "word": " make",
+      "start": 492.68,
+      "end": 492.9,
+      "probability": 0.9986603260040283
+    },
+    {
+      "word": " anyone",
+      "start": 492.9,
+      "end": 493.54,
+      "probability": 0.9847678542137146
+    },
+    {
+      "word": " lose",
+      "start": 493.54,
+      "end": 493.9,
+      "probability": 0.970848560333252
+    },
+    {
+      "word": " their",
+      "start": 493.9,
+      "end": 494.26,
+      "probability": 0.9971578121185303
+    },
+    {
+      "word": " nerve.",
+      "start": 494.26,
+      "end": 494.68,
+      "probability": 0.7602270245552063
+    }
+  ],
+  "whisper_transcript_in_unit": "Enough to make anyone lose their nerve.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.19272820800000545
+}

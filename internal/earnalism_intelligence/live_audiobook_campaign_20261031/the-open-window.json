@@ -3,7 +3,7 @@
   "title": "The Open Window",
   "book_id": "controlled-the-open-window",
   "url": "https://theearnalism.com/book/the-open-window",
-  "stage": "SOURCE_QA_ADOPTED_CONTINUOUS_MASTER_STORAGE_CONTEXT_REQUIRED",
+  "stage": "SCORED_SOURCE_QA_REGISTERED_LOCAL_INTEGRATION_STORAGE_AND_LIFECYCLE_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -65,18 +65,32 @@
     "qualitative_disposition": "REUSE_EXACT_FROZEN_PARENT_POLICY_WITH_STATED_LISTENING_SCOPE"
   },
   "music": {
-    "selection": "SILENCE_DRY_ACCEPTED_MASTER_VERIFIED",
-    "new_music_added": false,
-    "current_subjective_balance_check": "NO_BACKGROUND_MUSIC_LAYER_TO_BALANCE",
-    "evidence": "continuous-master-preparation-20261101/open-window-dry-provenance.json"
+    "selection": [
+      "Heartwarming",
+      "Heartbreaking"
+    ],
+    "creator": "Kevin MacLeod",
+    "licence": "CC BY4.0",
+    "status": "OWNER_FULL_SCORED_ACCEPTED",
+    "cue_count": 6,
+    "intentional_silences": 4,
+    "new_music_generation": false
   },
   "quality": {
     "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
-    "pronunciation": "UNVERIFIED",
-    "listening": "UNVERIFIED",
+    "pronunciation": "OWNER_SOURCE_WORDS_ADJUDICATED_INCLUDING_ALL_TWELVE_FRAMTON",
+    "listening": "OWNER_FULL_SCORED_ACCEPTED",
     "audio": "UNVERIFIED",
     "sync": "UNVERIFIED",
-    "live_playback": "PARTIAL_CURRENT_RUNTIME_RENEWAL_BACKLOG_BLOCKS_VERIFIED_LIVE"
+    "live_playback": "UNVERIFIED_FOR_SCORED_SUCCESSOR",
+    "owner_scores": {
+      "first_nine_dimensions": 9.8,
+      "overall": 9.7,
+      "confidence": 0.97
+    },
+    "quiet_line": "OWNER_CLEAR_NORMAL_AND_LOW_VOLUME",
+    "adjudicated_literal_asr_score": 9.7867104184,
+    "source_profile": "ACTUAL_CANONICAL_REGISTERED_SOURCE_QA_PREPARED_STORAGE_PENDING"
   },
   "repairs": [],
   "costs": {
@@ -90,19 +104,28 @@
   },
   "blockers": [
     {
-      "code": "CURRENT_RUNTIME_INTERNAL_TRANSITION_GAP",
-      "detail": "Native+actualcomposed delayedrenewal evidence exposeslong orderednext-segmentadmission gap; do not declare smoothcurrentplayback. No newlyqualifiedLIVE.",
-      "action": "Use exactunchangedcontinuousmaster successor, then actualsingle-source seek/pause/end/currentaccounting acceptance."
+      "code": "MERGED_MAIN_SOURCE_AND_EXACT_HEAD_CI_REQUIRED",
+      "action": "Integrate reviewed registered source profile through Integration Lane; local source qualification is not deployed/public availability."
     },
     {
-      "code": "PRIVATE_PRIMARY_DR_STORAGE_CONTEXT_MISSING",
-      "detail": "NativepreflightfailedSTORAGE_CONFIGURATION_MISSING. No primaryorDRprofilesconfiguredinthisruntime; noexpiryinferred.",
-      "action": "ExistingoperatorprivatelysuppliesvalidPRODandindependentDR upload/retention-admincontext with exactnewdescriptorprefixscope; runnativepreflightthenbudgetedimmutableupload/finalize."
+      "code": "SCOPED_LIFECYCLE_EXTENSION_REQUIRED",
+      "action": "Implement exact scored-package private-stage/member/promotion support without relaxing existing candidate validators."
     },
     {
-      "code": "DERIVATIVE_PRODUCTION_ACCEPTANCE_NOT_PERFORMED",
-      "detail": "NoactualprimaryDRreceipt, finalizedpackage, exactheadCI/deployment ornewruntimeacceptance for thisdraft.",
-      "action": "Complete supported downstreamgates and actualcustomerverification; retainBLOCKEDuntilallpass."
+      "code": "BOUNDED_STORAGE_KEY_AND_CARRIED_LIMIT_AUTHORITY_REQUIRED",
+      "action": "Prepare supported exact-prefix upload then obtain specific additional key and carried-limit authority; previous allowances remain consumed."
+    },
+    {
+      "code": "EXACT_PRIMARY_DR_STORAGE_REQUIRED",
+      "action": "Upload and independently verify accepted scored successor under approved envelope."
+    },
+    {
+      "code": "SHARED120_HISTORY_AND_RUNTIME_ACCEPTANCE_REQUIRED",
+      "action": "Use original shared owner workflow, authoritative remaining credit and exact deployed playback/accounting checks."
+    },
+    {
+      "code": "PUBLIC_PROMOTION_AND_CUSTOMER_VERIFICATION_REQUIRED",
+      "action": "Promote only accepted tested package and verify live customer experience."
     }
   ],
   "language": "en",
@@ -177,5 +200,51 @@
       "action": "Use an authenticated normal Reading Pass customer session to complete bounded current-source protected playback, navigation, pause/resume and billing settlement acceptance for the unchanged package; reuse existing immutable audio, rights, storage and full-content evidence. Do not regenerate or toggle the release."
     }
   ],
-  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY"
+  "continuous_master_source_qa": "SOURCE_QA_ADOPTED_PRE_STORAGE_ONLY",
+  "prior_campaign_state_before_20261102_release_progress": {
+    "stage": "SOURCE_QA_ADOPTED_CONTINUOUS_MASTER_STORAGE_CONTEXT_REQUIRED",
+    "blockers": [
+      {
+        "code": "CURRENT_RUNTIME_INTERNAL_TRANSITION_GAP",
+        "detail": "Native+actualcomposed delayedrenewal evidence exposeslong orderednext-segmentadmission gap; do not declare smoothcurrentplayback. No newlyqualifiedLIVE.",
+        "action": "Use exactunchangedcontinuousmaster successor, then actualsingle-source seek/pause/end/currentaccounting acceptance."
+      },
+      {
+        "code": "PRIVATE_PRIMARY_DR_STORAGE_CONTEXT_MISSING",
+        "detail": "NativepreflightfailedSTORAGE_CONFIGURATION_MISSING. No primaryorDRprofilesconfiguredinthisruntime; noexpiryinferred.",
+        "action": "ExistingoperatorprivatelysuppliesvalidPRODandindependentDR upload/retention-admincontext with exactnewdescriptorprefixscope; runnativepreflightthenbudgetedimmutableupload/finalize."
+      },
+      {
+        "code": "DERIVATIVE_PRODUCTION_ACCEPTANCE_NOT_PERFORMED",
+        "detail": "NoactualprimaryDRreceipt, finalizedpackage, exactheadCI/deployment ornewruntimeacceptance for thisdraft.",
+        "action": "Complete supported downstreamgates and actualcustomerverification; retainBLOCKEDuntilallpass."
+      }
+    ],
+    "quality": {
+      "content": "RETAINED_PACKAGE_ACCEPTANCE_AVAILABLE",
+      "pronunciation": "UNVERIFIED",
+      "listening": "UNVERIFIED",
+      "audio": "UNVERIFIED",
+      "sync": "UNVERIFIED",
+      "live_playback": "PARTIAL_CURRENT_RUNTIME_RENEWAL_BACKLOG_BLOCKS_VERIFIED_LIVE"
+    },
+    "music": {
+      "selection": "SILENCE_DRY_ACCEPTED_MASTER_VERIFIED",
+      "new_music_added": false,
+      "current_subjective_balance_check": "NO_BACKGROUND_MUSIC_LAYER_TO_BALANCE",
+      "evidence": "continuous-master-preparation-20261101/open-window-dry-provenance.json"
+    }
+  },
+  "scored_successor_20261102": {
+    "descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+    "publication_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+    "owner_listened_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+    "actual_storage": "NOT_PERFORMED",
+    "source_patch_sha256": "c8bcd7c66025e11396f771de32e7f08aca8a80be6250adb292b6967b32f45cba",
+    "source_patch_status": "APPLIED_LOCAL_INDEPENDENTLY_REVIEWED_NOT_MERGED_OR_DEPLOYED",
+    "actual_canonical_sourceqa_prepare": "PASS_DIRECT_CANONICAL_REGISTRY_NO_TRUST_PROJECTION",
+    "asset_bytes_per_store": 11824717,
+    "Open_specific_lifecycle": "NOT_IMPLEMENTED_SEPARATE_HOLD_SELFISH_D2_SCOPE_NOT_REUSED"
+  },
+  "release_progress_note": "No new synthesis or allocation. Historical public audio remains selected; current local source/stage is not deployed or LIVE. Unperformed gates remain unverified; original120 remaining is unknown."
 }

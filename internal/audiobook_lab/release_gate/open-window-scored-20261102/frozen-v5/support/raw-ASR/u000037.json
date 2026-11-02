@@ -1,0 +1,768 @@
+{
+  "unit": "u000037",
+  "master_interval_seconds": [
+    462.96229166666666,
+    489.1222916666667
+  ],
+  "expected_text": "“I expect it was the spaniel,” said the niece calmly; “he told me he had a horror of dogs. He was once hunted into a cemetery somewhere on the banks of the Ganges by a pack of pariah dogs, and had to spend the night in a newly dug grave with the creatures snarling and grinning and foaming just above him.",
+  "ctc_transcript": "I EXPECT IT WAS THE SPANIEL SAID THE NIECE CALMLY HE TOLD ME HE HAD A HORROR OF DOGS HE WAS ONCE HUNTED INTO A CEMETERY SOMEWHERE ON THE BANKS OF THE GANGES BY A PACK OF PARIOT DOGS AND HAD TO SPEND THE NIGHT IN A NEWLY DUG GRAVE WITH THE CREATURES SNARLING AND GRINNING AND FOAMING JUST ABOVE HIM",
+  "ctc_words": [
+    {
+      "word": "I",
+      "start": 463.262521199949,
+      "end": 463.28253650216783,
+      "mean_character_frame_posterior": 0.9988516569137573
+    },
+    {
+      "word": "EXPECT",
+      "start": 463.78291905763837,
+      "end": 464.383378124203,
+      "mean_character_frame_posterior": 0.9995632668336233
+    },
+    {
+      "word": "IT",
+      "start": 464.82371477301706,
+      "end": 464.86374537745473,
+      "mean_character_frame_posterior": 0.9995686709880829
+    },
+    {
+      "word": "WAS",
+      "start": 464.9638218885488,
+      "end": 465.06389839964294,
+      "mean_character_frame_posterior": 0.9999733765920004
+    },
+    {
+      "word": "THE",
+      "start": 465.18399021295585,
+      "end": 465.26405142183114,
+      "mean_character_frame_posterior": 0.9995610117912292
+    },
+    {
+      "word": "SPANIEL",
+      "start": 465.36412793292527,
+      "end": 465.9445716972711,
+      "mean_character_frame_posterior": 0.9859218938010079
+    },
+    {
+      "word": "SAID",
+      "start": 466.5050001593981,
+      "end": 466.6651225771487,
+      "mean_character_frame_posterior": 0.9998914152383804
+    },
+    {
+      "word": "THE",
+      "start": 466.72516848380513,
+      "end": 466.7852143904616,
+      "mean_character_frame_posterior": 0.9992652535438538
+    },
+    {
+      "word": "NIECE",
+      "start": 466.8652755993369,
+      "end": 467.1254745281816,
+      "mean_character_frame_posterior": 0.9135707139968872
+    },
+    {
+      "word": "CALMLY",
+      "start": 467.2455663414945,
+      "end": 467.7259335947462,
+      "mean_character_frame_posterior": 0.9997564454873403
+    },
+    {
+      "word": "HE",
+      "start": 468.38643856796733,
+      "end": 468.4664997768426,
+      "mean_character_frame_posterior": 0.9999812245368958
+    },
+    {
+      "word": "TOLD",
+      "start": 468.6066068923744,
+      "end": 468.88682112343787,
+      "mean_character_frame_posterior": 0.9945439398288727
+    },
+    {
+      "word": "ME",
+      "start": 468.986897634532,
+      "end": 469.12700475006375,
+      "mean_character_frame_posterior": 0.9999793767929077
+    },
+    {
+      "word": "HE",
+      "start": 469.3872036789084,
+      "end": 469.48728019000254,
+      "mean_character_frame_posterior": 0.999970018863678
+    },
+    {
+      "word": "HAD",
+      "start": 469.60737200331545,
+      "end": 469.8075250255037,
+      "mean_character_frame_posterior": 0.9634360273679098
+    },
+    {
+      "word": "A",
+      "start": 470.0076780476919,
+      "end": 470.02769334991075,
+      "mean_character_frame_posterior": 0.9979523420333862
+    },
+    {
+      "word": "HORROR",
+      "start": 470.14778516322366,
+      "end": 470.5280759053813,
+      "mean_character_frame_posterior": 0.9832536478837332
+    },
+    {
+      "word": "OF",
+      "start": 470.68819832313187,
+      "end": 470.7282289275695,
+      "mean_character_frame_posterior": 0.9999316930770874
+    },
+    {
+      "word": "DOGS",
+      "start": 470.86833604310124,
+      "end": 471.42876450522823,
+      "mean_character_frame_posterior": 0.9995615929365158
+    },
+    {
+      "word": "HE",
+      "start": 472.1893459895435,
+      "end": 472.24939189619994,
+      "mean_character_frame_posterior": 0.89155712723732
+    },
+    {
+      "word": "WAS",
+      "start": 472.34946840729407,
+      "end": 472.44954491838814,
+      "mean_character_frame_posterior": 0.8443186481793722
+    },
+    {
+      "word": "ONCE",
+      "start": 472.7497744516705,
+      "end": 472.8898815672022,
+      "mean_character_frame_posterior": 0.9999659955501556
+    },
+    {
+      "word": "HUNTED",
+      "start": 473.029988682734,
+      "end": 473.4102794248916,
+      "mean_character_frame_posterior": 0.9981959462165833
+    },
+    {
+      "word": "INTO",
+      "start": 473.6104324470798,
+      "end": 473.81058546926806,
+      "mean_character_frame_posterior": 0.9996292144060135
+    },
+    {
+      "word": "A",
+      "start": 473.91066198036214,
+      "end": 473.930677282581,
+      "mean_character_frame_posterior": 0.9989049434661865
+    },
+    {
+      "word": "CEMETERY",
+      "start": 474.01073849145627,
+      "end": 474.6111975580209,
+      "mean_character_frame_posterior": 0.9979831427335739
+    },
+    {
+      "word": "SOMEWHERE",
+      "start": 474.73128937133384,
+      "end": 475.21165662458554,
+      "mean_character_frame_posterior": 0.8923748466703627
+    },
+    {
+      "word": "ON",
+      "start": 475.7120391800561,
+      "end": 475.75206978449376,
+      "mean_character_frame_posterior": 0.9997474551200867
+    },
+    {
+      "word": "THE",
+      "start": 475.83213099336905,
+      "end": 475.8921769000255,
+      "mean_character_frame_posterior": 0.9998911221822103
+    },
+    {
+      "word": "BANKS",
+      "start": 476.0122687133384,
+      "end": 476.31249824662075,
+      "mean_character_frame_posterior": 0.9998144745826721
+    },
+    {
+      "word": "OF",
+      "start": 476.43259005993366,
+      "end": 476.47262066437133,
+      "mean_character_frame_posterior": 0.9998662769794464
+    },
+    {
+      "word": "THE",
+      "start": 476.5526818732466,
+      "end": 476.6127277799031,
+      "mean_character_frame_posterior": 0.999701201915741
+    },
+    {
+      "word": "GANGES",
+      "start": 476.6927889887784,
+      "end": 477.21318684646775,
+      "mean_character_frame_posterior": 0.9403123954931895
+    },
+    {
+      "word": "BY",
+      "start": 477.6735387975006,
+      "end": 477.7936306108136,
+      "mean_character_frame_posterior": 0.9999381303787231
+    },
+    {
+      "word": "A",
+      "start": 477.89370712190765,
+      "end": 477.9137224241265,
+      "mean_character_frame_posterior": 0.9984347224235535
+    },
+    {
+      "word": "PACK",
+      "start": 478.0338142374394,
+      "end": 478.33404377072173,
+      "mean_character_frame_posterior": 0.9998535215854645
+    },
+    {
+      "word": "OF",
+      "start": 478.43412028181586,
+      "end": 478.4741508862535,
+      "mean_character_frame_posterior": 0.9999472498893738
+    },
+    {
+      "word": "PARIOT",
+      "start": 478.59424269956645,
+      "end": 479.1346558594746,
+      "mean_character_frame_posterior": 0.8445931077003479
+    },
+    {
+      "word": "DOGS",
+      "start": 479.19470176613106,
+      "end": 479.63503841494514,
+      "mean_character_frame_posterior": 0.9807015508413315
+    },
+    {
+      "word": "AND",
+      "start": 480.1954668770722,
+      "end": 480.25551278372865,
+      "mean_character_frame_posterior": 0.9947036703427633
+    },
+    {
+      "word": "HAD",
+      "start": 480.37560459704156,
+      "end": 480.5957729214486,
+      "mean_character_frame_posterior": 0.9999318917592367
+    },
+    {
+      "word": "TO",
+      "start": 480.6758341303239,
+      "end": 480.7558953391992,
+      "mean_character_frame_posterior": 0.9999305009841919
+    },
+    {
+      "word": "SPEND",
+      "start": 480.8359565480745,
+      "end": 481.0761401747003,
+      "mean_character_frame_posterior": 0.9971409678459168
+    },
+    {
+      "word": "THE",
+      "start": 481.1361860813568,
+      "end": 481.21624729023205,
+      "mean_character_frame_posterior": 0.9990087350209554
+    },
+    {
+      "word": "NIGHT",
+      "start": 481.29630849910734,
+      "end": 481.55650742795206,
+      "mean_character_frame_posterior": 0.9994676589965821
+    },
+    {
+      "word": "IN",
+      "start": 481.7366451479214,
+      "end": 481.7766757523591,
+      "mean_character_frame_posterior": 0.9998804330825806
+    },
+    {
+      "word": "A",
+      "start": 481.8567369612344,
+      "end": 481.87675226345317,
+      "mean_character_frame_posterior": 0.9967932105064392
+    },
+    {
+      "word": "NEWLY",
+      "start": 482.0168593789849,
+      "end": 482.3571195167049,
+      "mean_character_frame_posterior": 0.9777411699295044
+    },
+    {
+      "word": "DUG",
+      "start": 482.47721133001784,
+      "end": 482.67736435220604,
+      "mean_character_frame_posterior": 0.9998552004496256
+    },
+    {
+      "word": "GRAVE",
+      "start": 482.8174714677378,
+      "end": 483.21777751211425,
+      "mean_character_frame_posterior": 0.9012664198875427
+    },
+    {
+      "word": "WITH",
+      "start": 483.65811416092833,
+      "end": 483.77820597424125,
+      "mean_character_frame_posterior": 0.9998767971992493
+    },
+    {
+      "word": "THE",
+      "start": 483.8182365786789,
+      "end": 483.8982977875542,
+      "mean_character_frame_posterior": 0.9941322604815165
+    },
+    {
+      "word": "CREATURES",
+      "start": 483.9983742986483,
+      "end": 484.43871094746237,
+      "mean_character_frame_posterior": 0.9870922168095907
+    },
+    {
+      "word": "SNARLING",
+      "start": 484.5588027607753,
+      "end": 485.0992159206835,
+      "mean_character_frame_posterior": 0.9013647064566612
+    },
+    {
+      "word": "AND",
+      "start": 485.69967498724816,
+      "end": 485.81976680056107,
+      "mean_character_frame_posterior": 0.9662385185559591
+    },
+    {
+      "word": "GRINNING",
+      "start": 485.9598739160928,
+      "end": 486.34016465825044,
+      "mean_character_frame_posterior": 0.8825843259692192
+    },
+    {
+      "word": "AND",
+      "start": 486.5803482848763,
+      "end": 486.70044009818923,
+      "mean_character_frame_posterior": 0.9926189581553141
+    },
+    {
+      "word": "FOAMING",
+      "start": 486.8805778181586,
+      "end": 487.3209144669727,
+      "mean_character_frame_posterior": 0.9923979980604989
+    },
+    {
+      "word": "JUST",
+      "start": 487.88134292909973,
+      "end": 488.18157246238206,
+      "mean_character_frame_posterior": 0.9999726414680481
+    },
+    {
+      "word": "ABOVE",
+      "start": 488.4217560890079,
+      "end": 488.7019703200714,
+      "mean_character_frame_posterior": 0.9986173987388611
+    },
+    {
+      "word": "HIM",
+      "start": 488.7820315289467,
+      "end": 488.94215394669726,
+      "mean_character_frame_posterior": 0.8394708037376404
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "pariah"
+      ],
+      "recognized": [
+        "pariot"
+      ],
+      "reference_word_span": [
+        37,
+        38
+      ],
+      "recognized_word_span": [
+        37,
+        38
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " I",
+      "start": 463.0,
+      "end": 463.46,
+      "probability": 0.07217194885015488
+    },
+    {
+      "word": " expect",
+      "start": 463.46,
+      "end": 464.38,
+      "probability": 0.9279683232307434
+    },
+    {
+      "word": " it",
+      "start": 464.38,
+      "end": 464.94,
+      "probability": 0.9741536974906921
+    },
+    {
+      "word": " was",
+      "start": 464.94,
+      "end": 465.14,
+      "probability": 0.9984643459320068
+    },
+    {
+      "word": " the",
+      "start": 465.14,
+      "end": 465.52,
+      "probability": 0.9898465275764465
+    },
+    {
+      "word": " Spaniel,",
+      "start": 465.52,
+      "end": 465.94,
+      "probability": 0.7218474596738815
+    },
+    {
+      "word": " said",
+      "start": 466.58,
+      "end": 466.68,
+      "probability": 0.984093427658081
+    },
+    {
+      "word": " the",
+      "start": 466.68,
+      "end": 466.88,
+      "probability": 0.991041362285614
+    },
+    {
+      "word": " niece",
+      "start": 466.88,
+      "end": 467.16,
+      "probability": 0.9677532315254211
+    },
+    {
+      "word": " calmly.",
+      "start": 467.16,
+      "end": 467.68,
+      "probability": 0.9469444751739502
+    },
+    {
+      "word": " He",
+      "start": 468.1,
+      "end": 468.54,
+      "probability": 0.9909239411354065
+    },
+    {
+      "word": " told",
+      "start": 468.54,
+      "end": 468.86,
+      "probability": 0.9984967708587646
+    },
+    {
+      "word": " me",
+      "start": 468.86,
+      "end": 469.38,
+      "probability": 0.9978904128074646
+    },
+    {
+      "word": " he",
+      "start": 469.38,
+      "end": 469.5,
+      "probability": 0.9829753041267395
+    },
+    {
+      "word": " had",
+      "start": 469.5,
+      "end": 469.84,
+      "probability": 0.995225191116333
+    },
+    {
+      "word": " a",
+      "start": 469.84,
+      "end": 470.0,
+      "probability": 0.9924622774124146
+    },
+    {
+      "word": " horror",
+      "start": 470.0,
+      "end": 470.52,
+      "probability": 0.9170800447463989
+    },
+    {
+      "word": " of",
+      "start": 470.52,
+      "end": 470.9,
+      "probability": 0.9985010623931885
+    },
+    {
+      "word": " dogs.",
+      "start": 470.9,
+      "end": 471.52,
+      "probability": 0.9955278038978577
+    },
+    {
+      "word": " He",
+      "start": 471.52,
+      "end": 472.24,
+      "probability": 0.5143072605133057
+    },
+    {
+      "word": " was",
+      "start": 472.24,
+      "end": 472.52,
+      "probability": 0.987139880657196
+    },
+    {
+      "word": " once",
+      "start": 472.52,
+      "end": 473.06,
+      "probability": 0.9885261058807373
+    },
+    {
+      "word": " hunted",
+      "start": 473.06,
+      "end": 473.4,
+      "probability": 0.9836423397064209
+    },
+    {
+      "word": " into",
+      "start": 473.4,
+      "end": 473.82,
+      "probability": 0.9724578261375427
+    },
+    {
+      "word": " a",
+      "start": 473.82,
+      "end": 474.0,
+      "probability": 0.984351634979248
+    },
+    {
+      "word": " cemetery",
+      "start": 474.0,
+      "end": 474.56,
+      "probability": 0.9961064457893372
+    },
+    {
+      "word": " somewhere",
+      "start": 474.56,
+      "end": 475.26,
+      "probability": 0.9831469655036926
+    },
+    {
+      "word": " on",
+      "start": 475.26,
+      "end": 475.82,
+      "probability": 0.8942588567733765
+    },
+    {
+      "word": " the",
+      "start": 475.82,
+      "end": 476.0,
+      "probability": 0.9952272176742554
+    },
+    {
+      "word": " banks",
+      "start": 476.0,
+      "end": 476.32,
+      "probability": 0.9936195015907288
+    },
+    {
+      "word": " of",
+      "start": 476.32,
+      "end": 476.56,
+      "probability": 0.9966818690299988
+    },
+    {
+      "word": " the",
+      "start": 476.56,
+      "end": 476.76,
+      "probability": 0.9877436757087708
+    },
+    {
+      "word": " Ganges",
+      "start": 476.76,
+      "end": 477.08,
+      "probability": 0.7883189022541046
+    },
+    {
+      "word": " by",
+      "start": 477.08,
+      "end": 477.86,
+      "probability": 0.9361798763275146
+    },
+    {
+      "word": " a",
+      "start": 477.86,
+      "end": 478.08,
+      "probability": 0.9887701272964478
+    },
+    {
+      "word": " pack",
+      "start": 478.08,
+      "end": 478.36,
+      "probability": 0.9968194961547852
+    },
+    {
+      "word": " of",
+      "start": 478.36,
+      "end": 478.66,
+      "probability": 0.9969056248664856
+    },
+    {
+      "word": " pariah",
+      "start": 478.66,
+      "end": 479.0,
+      "probability": 0.7401840686798096
+    },
+    {
+      "word": " dogs",
+      "start": 479.0,
+      "end": 479.72,
+      "probability": 0.9636160135269165
+    },
+    {
+      "word": " and",
+      "start": 479.72,
+      "end": 480.24,
+      "probability": 0.5718563795089722
+    },
+    {
+      "word": " had",
+      "start": 480.24,
+      "end": 480.68,
+      "probability": 0.9946104288101196
+    },
+    {
+      "word": " to",
+      "start": 480.68,
+      "end": 480.8,
+      "probability": 0.9989713430404663
+    },
+    {
+      "word": " spend",
+      "start": 480.8,
+      "end": 481.04,
+      "probability": 0.9964195489883423
+    },
+    {
+      "word": " the",
+      "start": 481.04,
+      "end": 481.24,
+      "probability": 0.9871122241020203
+    },
+    {
+      "word": " night",
+      "start": 481.24,
+      "end": 481.6,
+      "probability": 0.9983966946601868
+    },
+    {
+      "word": " in",
+      "start": 481.6,
+      "end": 481.84,
+      "probability": 0.9931960105895996
+    },
+    {
+      "word": " a",
+      "start": 481.84,
+      "end": 482.02,
+      "probability": 0.9923536777496338
+    },
+    {
+      "word": " newly",
+      "start": 482.02,
+      "end": 482.34,
+      "probability": 0.990223228931427
+    },
+    {
+      "word": " dug",
+      "start": 482.34,
+      "end": 482.78,
+      "probability": 0.9816094040870667
+    },
+    {
+      "word": " grave",
+      "start": 482.78,
+      "end": 483.26,
+      "probability": 0.9958435893058777
+    },
+    {
+      "word": " with",
+      "start": 483.26,
+      "end": 483.82,
+      "probability": 0.966331958770752
+    },
+    {
+      "word": " the",
+      "start": 483.82,
+      "end": 483.98,
+      "probability": 0.9648397564888
+    },
+    {
+      "word": " creatures",
+      "start": 483.98,
+      "end": 484.4,
+      "probability": 0.8498156666755676
+    },
+    {
+      "word": " snarling",
+      "start": 484.4,
+      "end": 485.02,
+      "probability": 0.9581964313983917
+    },
+    {
+      "word": " and",
+      "start": 485.02,
+      "end": 486.06,
+      "probability": 0.8396337032318115
+    },
+    {
+      "word": " grinning",
+      "start": 486.06,
+      "end": 486.36,
+      "probability": 0.9966435432434082
+    },
+    {
+      "word": " and",
+      "start": 486.36,
+      "end": 486.94,
+      "probability": 0.9932289123535156
+    },
+    {
+      "word": " foaming",
+      "start": 486.94,
+      "end": 487.42,
+      "probability": 0.9911501407623291
+    },
+    {
+      "word": " just",
+      "start": 487.42,
+      "end": 488.32,
+      "probability": 0.9195108413696289
+    },
+    {
+      "word": " above",
+      "start": 488.32,
+      "end": 488.64,
+      "probability": 0.9984790682792664
+    },
+    {
+      "word": " him.",
+      "start": 488.64,
+      "end": 489.42,
+      "probability": 0.9970971345901489
+    }
+  ],
+  "whisper_transcript_in_unit": "I expect it was the Spaniel, said the niece calmly. He told me he had a horror of dogs. He was once hunted into a cemetery somewhere on the banks of the Ganges by a pack of pariah dogs and had to spend the night in a newly dug grave with the creatures snarling and grinning and foaming just above him.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 1.059849916999994
+}

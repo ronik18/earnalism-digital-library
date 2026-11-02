@@ -1,0 +1,670 @@
+{
+  "unit": "u000031",
+  "master_interval_seconds": [
+    371.67766666666665,
+    390.31766666666664
+  ],
+  "expected_text": "Framton shivered slightly and turned towards the niece with a look intended to convey sympathetic comprehension. The child was staring out through the open window with dazed horror in her eyes. In a chill shock of nameless fear Framton swung round in his seat and looked in the same direction.",
+  "ctc_transcript": "FRANTON SHIVERED SLIGHTLY AND TURNED TOWARDS THE NIECE WITH THE LOOK INTENDED TO CONVEY SYMPATHETIC COMPREHENSION THE CHILD WAS STARING OUT THROUGH THE OPEN WINDOW WITH DAZED HORROR IN HER EYES IN A CHILL SHOCK OF NAMELESS FEAR FRANTON SWUNG ROUND IN HIS SEAT AND LOOKED IN THE SAME DIRECTION",
+  "ctc_words": [
+    {
+      "word": "FRANTON",
+      "start": 371.77777407805223,
+      "end": 372.15818224131755,
+      "mean_character_frame_posterior": 0.933829767363412
+    },
+    {
+      "word": "SHIVERED",
+      "start": 372.2783111349803,
+      "end": 372.6186763336914,
+      "mean_character_frame_posterior": 0.988356351852417
+    },
+    {
+      "word": "SLIGHTLY",
+      "start": 372.69876226279985,
+      "end": 373.0991919083423,
+      "mean_character_frame_posterior": 0.9986726492643356
+    },
+    {
+      "word": "AND",
+      "start": 373.1592563551736,
+      "end": 373.23934228428215,
+      "mean_character_frame_posterior": 0.9953983227411906
+    },
+    {
+      "word": "TURNED",
+      "start": 373.3194282133906,
+      "end": 373.5797074829932,
+      "mean_character_frame_posterior": 0.8869023025035858
+    },
+    {
+      "word": "TOWARDS",
+      "start": 373.6597934121017,
+      "end": 374.0001586108127,
+      "mean_character_frame_posterior": 0.9930616617202759
+    },
+    {
+      "word": "THE",
+      "start": 374.10026602219835,
+      "end": 374.1803519513068,
+      "mean_character_frame_posterior": 0.999655028184255
+    },
+    {
+      "word": "NIECE",
+      "start": 374.26043788041534,
+      "end": 374.5006956677408,
+      "mean_character_frame_posterior": 0.964171314239502
+    },
+    {
+      "word": "WITH",
+      "start": 374.56076011457213,
+      "end": 374.6808890082349,
+      "mean_character_frame_posterior": 0.9998653680086136
+    },
+    {
+      "word": "THE",
+      "start": 374.74095345506623,
+      "end": 374.8010179018976,
+      "mean_character_frame_posterior": 0.7666833400726318
+    },
+    {
+      "word": "LOOK",
+      "start": 374.8610823487289,
+      "end": 375.041275689223,
+      "mean_character_frame_posterior": 0.9843789339065552
+    },
+    {
+      "word": "INTENDED",
+      "start": 375.12136161833155,
+      "end": 375.5818557107053,
+      "mean_character_frame_posterior": 0.9979683309793472
+    },
+    {
+      "word": "TO",
+      "start": 375.6419201575367,
+      "end": 375.6819631220909,
+      "mean_character_frame_posterior": 0.9999613761901855
+    },
+    {
+      "word": "CONVEY",
+      "start": 375.7420275689223,
+      "end": 376.14245721446474,
+      "mean_character_frame_posterior": 0.9997930626074473
+    },
+    {
+      "word": "SYMPATHETIC",
+      "start": 376.3626935195131,
+      "end": 376.9633379878267,
+      "mean_character_frame_posterior": 0.9985447200861844
+    },
+    {
+      "word": "COMPREHENSION",
+      "start": 377.0434239169352,
+      "end": 377.8042402434658,
+      "mean_character_frame_posterior": 0.999984493622413
+    },
+    {
+      "word": "THE",
+      "start": 378.6050995345507,
+      "end": 378.68518546365914,
+      "mean_character_frame_posterior": 0.9998555183410645
+    },
+    {
+      "word": "CHILD",
+      "start": 378.7852928750447,
+      "end": 379.1056365914787,
+      "mean_character_frame_posterior": 0.9816152215003967
+    },
+    {
+      "word": "WAS",
+      "start": 379.18572252058715,
+      "end": 379.2858299319728,
+      "mean_character_frame_posterior": 0.9703142046928406
+    },
+    {
+      "word": "STARING",
+      "start": 379.36591586108125,
+      "end": 379.7663455066237,
+      "mean_character_frame_posterior": 0.997868972165244
+    },
+    {
+      "word": "OUT",
+      "start": 379.8664529180093,
+      "end": 379.9665603293949,
+      "mean_character_frame_posterior": 0.9999358654022217
+    },
+    {
+      "word": "THROUGH",
+      "start": 380.02662477622624,
+      "end": 380.20681811672034,
+      "mean_character_frame_posterior": 0.9983116899217878
+    },
+    {
+      "word": "THE",
+      "start": 380.2468610812746,
+      "end": 380.3269470103831,
+      "mean_character_frame_posterior": 0.9809135993321737
+    },
+    {
+      "word": "OPEN",
+      "start": 380.4470759040458,
+      "end": 380.6272692445399,
+      "mean_character_frame_posterior": 0.9954446405172348
+    },
+    {
+      "word": "WINDOW",
+      "start": 380.74739813820264,
+      "end": 381.0076774078052,
+      "mean_character_frame_posterior": 0.9958206911881765
+    },
+    {
+      "word": "WITH",
+      "start": 381.0877633369137,
+      "end": 381.1878707482993,
+      "mean_character_frame_posterior": 0.9983944147825241
+    },
+    {
+      "word": "DAZED",
+      "start": 381.32802112423917,
+      "end": 381.6683863229502,
+      "mean_character_frame_posterior": 0.9850253582000732
+    },
+    {
+      "word": "HORROR",
+      "start": 381.8285581811672,
+      "end": 382.16892337987827,
+      "mean_character_frame_posterior": 0.9879477322101593
+    },
+    {
+      "word": "IN",
+      "start": 382.24900930898673,
+      "end": 382.28905227354096,
+      "mean_character_frame_posterior": 0.9998704791069031
+    },
+    {
+      "word": "HER",
+      "start": 382.34911672037236,
+      "end": 382.44922413175794,
+      "mean_character_frame_posterior": 0.9985353549321493
+    },
+    {
+      "word": "EYES",
+      "start": 382.7095034013605,
+      "end": 382.8496537773004,
+      "mean_character_frame_posterior": 0.978357583284378
+    },
+    {
+      "word": "IN",
+      "start": 383.5504056569996,
+      "end": 383.5904486215539,
+      "mean_character_frame_posterior": 0.9993641078472137
+    },
+    {
+      "word": "A",
+      "start": 383.65051306838524,
+      "end": 383.67053455066235,
+      "mean_character_frame_posterior": 0.9931840300559998
+    },
+    {
+      "word": "CHILL",
+      "start": 383.770641962048,
+      "end": 384.03092123165055,
+      "mean_character_frame_posterior": 0.9951696753501892
+    },
+    {
+      "word": "SHOCK",
+      "start": 384.1710716075904,
+      "end": 384.4713938417472,
+      "mean_character_frame_posterior": 0.9999717473983765
+    },
+    {
+      "word": "OF",
+      "start": 384.5715012531328,
+      "end": 384.6115442176871,
+      "mean_character_frame_posterior": 0.9998047351837158
+    },
+    {
+      "word": "NAMELESS",
+      "start": 384.7516945936269,
+      "end": 385.1521242391693,
+      "mean_character_frame_posterior": 0.9861833453178406
+    },
+    {
+      "word": "FEAR",
+      "start": 385.2722531328321,
+      "end": 385.5125109201575,
+      "mean_character_frame_posterior": 0.9999836981296539
+    },
+    {
+      "word": "FRANTON",
+      "start": 386.1531983530254,
+      "end": 386.55362799856783,
+      "mean_character_frame_posterior": 0.8827907357897077
+    },
+    {
+      "word": "SWUNG",
+      "start": 386.6737568922306,
+      "end": 386.93403616183315,
+      "mean_character_frame_posterior": 0.9871401190757751
+    },
+    {
+      "word": "ROUND",
+      "start": 387.05416505549584,
+      "end": 387.31444432509846,
+      "mean_character_frame_posterior": 0.9999005556106567
+    },
+    {
+      "word": "IN",
+      "start": 387.41455173648404,
+      "end": 387.4545947010383,
+      "mean_character_frame_posterior": 0.9986434876918793
+    },
+    {
+      "word": "HIS",
+      "start": 387.5146591478697,
+      "end": 387.59474507697814,
+      "mean_character_frame_posterior": 0.9993447860081991
+    },
+    {
+      "word": "SEAT",
+      "start": 387.6748310060866,
+      "end": 387.9150887934121,
+      "mean_character_frame_posterior": 0.9904819428920746
+    },
+    {
+      "word": "AND",
+      "start": 388.33553992123166,
+      "end": 388.4156258503401,
+      "mean_character_frame_posterior": 0.971507708231608
+    },
+    {
+      "word": "LOOKED",
+      "start": 388.5157332617257,
+      "end": 388.79603401360544,
+      "mean_character_frame_posterior": 0.9994486371676127
+    },
+    {
+      "word": "IN",
+      "start": 388.9562058718224,
+      "end": 388.99624883637665,
+      "mean_character_frame_posterior": 0.9999014139175415
+    },
+    {
+      "word": "THE",
+      "start": 389.0362918009309,
+      "end": 389.11637773003935,
+      "mean_character_frame_posterior": 0.8933666745821635
+    },
+    {
+      "word": "SAME",
+      "start": 389.2565281059792,
+      "end": 389.55685034013607,
+      "mean_character_frame_posterior": 0.9999885261058807
+    },
+    {
+      "word": "DIRECTION",
+      "start": 389.65695775152165,
+      "end": 390.2375807375582,
+      "mean_character_frame_posterior": 0.9665345549583435
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "franton"
+      ],
+      "reference_word_span": [
+        0,
+        1
+      ],
+      "recognized_word_span": [
+        0,
+        1
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "a"
+      ],
+      "recognized": [
+        "the"
+      ],
+      "reference_word_span": [
+        9,
+        10
+      ],
+      "recognized_word_span": [
+        9,
+        10
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "franton"
+      ],
+      "reference_word_span": [
+        38,
+        39
+      ],
+      "recognized_word_span": [
+        38,
+        39
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Frampton",
+      "start": 371.9,
+      "end": 372.22,
+      "probability": 0.5433934032917023
+    },
+    {
+      "word": " shivered",
+      "start": 372.22,
+      "end": 372.54,
+      "probability": 0.8846943974494934
+    },
+    {
+      "word": " slightly",
+      "start": 372.54,
+      "end": 373.1,
+      "probability": 0.9940242171287537
+    },
+    {
+      "word": " and",
+      "start": 373.1,
+      "end": 373.28,
+      "probability": 0.7879804372787476
+    },
+    {
+      "word": " turned",
+      "start": 373.28,
+      "end": 373.56,
+      "probability": 0.9916115403175354
+    },
+    {
+      "word": " towards",
+      "start": 373.56,
+      "end": 374.1,
+      "probability": 0.8569353818893433
+    },
+    {
+      "word": " the",
+      "start": 374.1,
+      "end": 374.26,
+      "probability": 0.998201847076416
+    },
+    {
+      "word": " niece",
+      "start": 374.26,
+      "end": 374.5,
+      "probability": 0.6914267539978027
+    },
+    {
+      "word": " with",
+      "start": 374.5,
+      "end": 374.7,
+      "probability": 0.952386736869812
+    },
+    {
+      "word": " the",
+      "start": 374.7,
+      "end": 374.9,
+      "probability": 0.5632988810539246
+    },
+    {
+      "word": " look",
+      "start": 374.9,
+      "end": 375.08,
+      "probability": 0.9948704242706299
+    },
+    {
+      "word": " intended",
+      "start": 375.08,
+      "end": 375.56,
+      "probability": 0.9642444849014282
+    },
+    {
+      "word": " to",
+      "start": 375.56,
+      "end": 375.76,
+      "probability": 0.9983372688293457
+    },
+    {
+      "word": " convey",
+      "start": 375.76,
+      "end": 376.14,
+      "probability": 0.9921563863754272
+    },
+    {
+      "word": " sympathetic",
+      "start": 376.14,
+      "end": 376.84,
+      "probability": 0.9926284551620483
+    },
+    {
+      "word": " comprehension.",
+      "start": 376.84,
+      "end": 377.78,
+      "probability": 0.998429000377655
+    },
+    {
+      "word": " The",
+      "start": 378.62,
+      "end": 378.68,
+      "probability": 0.9909437298774719
+    },
+    {
+      "word": " child",
+      "start": 378.68,
+      "end": 379.08,
+      "probability": 0.9981436729431152
+    },
+    {
+      "word": " was",
+      "start": 379.08,
+      "end": 379.32,
+      "probability": 0.9987391829490662
+    },
+    {
+      "word": " staring",
+      "start": 379.32,
+      "end": 379.62,
+      "probability": 0.9943503737449646
+    },
+    {
+      "word": " out",
+      "start": 379.62,
+      "end": 380.02,
+      "probability": 0.9990476965904236
+    },
+    {
+      "word": " through",
+      "start": 380.02,
+      "end": 380.2,
+      "probability": 0.9849092364311218
+    },
+    {
+      "word": " the",
+      "start": 380.2,
+      "end": 380.4,
+      "probability": 0.9954391121864319
+    },
+    {
+      "word": " open",
+      "start": 380.4,
+      "end": 380.64,
+      "probability": 0.9936938881874084
+    },
+    {
+      "word": " window",
+      "start": 380.64,
+      "end": 381.0,
+      "probability": 0.9987986087799072
+    },
+    {
+      "word": " with",
+      "start": 381.0,
+      "end": 381.38,
+      "probability": 0.9902514219284058
+    },
+    {
+      "word": " dazed",
+      "start": 381.38,
+      "end": 381.64,
+      "probability": 0.8828458189964294
+    },
+    {
+      "word": " horror",
+      "start": 381.64,
+      "end": 382.14,
+      "probability": 0.794877827167511
+    },
+    {
+      "word": " in",
+      "start": 382.14,
+      "end": 382.3,
+      "probability": 0.997708797454834
+    },
+    {
+      "word": " her",
+      "start": 382.3,
+      "end": 382.48,
+      "probability": 0.9978919625282288
+    },
+    {
+      "word": " eyes.",
+      "start": 382.48,
+      "end": 382.96,
+      "probability": 0.9985505938529968
+    },
+    {
+      "word": " In",
+      "start": 383.54,
+      "end": 383.62,
+      "probability": 0.9890439510345459
+    },
+    {
+      "word": " a",
+      "start": 383.62,
+      "end": 383.82,
+      "probability": 0.9962829947471619
+    },
+    {
+      "word": " chill",
+      "start": 383.82,
+      "end": 384.0,
+      "probability": 0.8770416975021362
+    },
+    {
+      "word": " shock",
+      "start": 384.0,
+      "end": 384.46,
+      "probability": 0.9745476841926575
+    },
+    {
+      "word": " of",
+      "start": 384.46,
+      "end": 384.76,
+      "probability": 0.9984422326087952
+    },
+    {
+      "word": " nameless",
+      "start": 384.76,
+      "end": 385.0,
+      "probability": 0.9860616326332092
+    },
+    {
+      "word": " fear,",
+      "start": 385.0,
+      "end": 385.72,
+      "probability": 0.9991316199302673
+    },
+    {
+      "word": " Frampton",
+      "start": 386.3,
+      "end": 386.58,
+      "probability": 0.962396502494812
+    },
+    {
+      "word": " swung",
+      "start": 386.58,
+      "end": 386.88,
+      "probability": 0.9971302151679993
+    },
+    {
+      "word": " around",
+      "start": 386.88,
+      "end": 387.28,
+      "probability": 0.5556706786155701
+    },
+    {
+      "word": " in",
+      "start": 387.28,
+      "end": 387.5,
+      "probability": 0.9911807179450989
+    },
+    {
+      "word": " his",
+      "start": 387.5,
+      "end": 387.7,
+      "probability": 0.968161940574646
+    },
+    {
+      "word": " seat",
+      "start": 387.7,
+      "end": 388.0,
+      "probability": 0.998903751373291
+    },
+    {
+      "word": " and",
+      "start": 388.0,
+      "end": 388.54,
+      "probability": 0.948663055896759
+    },
+    {
+      "word": " looked",
+      "start": 388.54,
+      "end": 388.78,
+      "probability": 0.9962037205696106
+    },
+    {
+      "word": " in",
+      "start": 388.78,
+      "end": 389.04,
+      "probability": 0.9949588179588318
+    },
+    {
+      "word": " the",
+      "start": 389.04,
+      "end": 389.18,
+      "probability": 0.9948363304138184
+    },
+    {
+      "word": " same",
+      "start": 389.18,
+      "end": 389.56,
+      "probability": 0.9994086027145386
+    },
+    {
+      "word": " direction.",
+      "start": 389.56,
+      "end": 390.2,
+      "probability": 0.9981576800346375
+    }
+  ],
+  "whisper_transcript_in_unit": "Frampton shivered slightly and turned towards the niece with the look intended to convey sympathetic comprehension. The child was staring out through the open window with dazed horror in her eyes. In a chill shock of nameless fear, Frampton swung around in his seat and looked in the same direction.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.6844214999999991
+}

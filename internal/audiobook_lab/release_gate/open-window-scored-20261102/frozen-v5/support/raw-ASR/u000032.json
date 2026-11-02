@@ -1,0 +1,564 @@
+{
+  "unit": "u000032",
+  "master_interval_seconds": [
+    390.8231666666667,
+    408.90316666666666
+  ],
+  "expected_text": "In the deepening twilight three figures were walking across the lawn towards the window; they all carried guns under their arms, and one of them was additionally burdened with a white coat hung over his shoulders. A tired brown spaniel kept close at their heels.",
+  "ctc_transcript": "IN THE DEEPENING TWILIGHT THREE FIGURES WERE WALKING ACROSS THE LAWN TOWARDS THE WINDOW THEY ALL CARRIED GUNS UNDER THEIR ARMS AND ONE OF THEM WAS ADDITIONALLY BURDENED WITH A WHITE COAT HUNG OVER HIS SHOULDERS A TIRED BROWN SPANIEL KEPT CLOSE AT THEIR HEELS",
+  "ctc_words": [
+    {
+      "word": "IN",
+      "start": 390.9633217054264,
+      "end": 391.0033660022149,
+      "mean_character_frame_posterior": 0.9999528527259827
+    },
+    {
+      "word": "THE",
+      "start": 391.0834545957918,
+      "end": 391.1635431893688,
+      "mean_character_frame_posterior": 0.9969767928123474
+    },
+    {
+      "word": "DEEPENING",
+      "start": 391.2236096345515,
+      "end": 391.66409689922483,
+      "mean_character_frame_posterior": 0.994417256779141
+    },
+    {
+      "word": "TWILIGHT",
+      "start": 391.76420764119604,
+      "end": 392.3648720930233,
+      "mean_character_frame_posterior": 0.9956146404147148
+    },
+    {
+      "word": "THREE",
+      "start": 393.24584662236987,
+      "end": 393.52615669988927,
+      "mean_character_frame_posterior": 0.9994714617729187
+    },
+    {
+      "word": "FIGURES",
+      "start": 393.7464003322259,
+      "end": 394.2069097452935,
+      "mean_character_frame_posterior": 0.9281432032585144
+    },
+    {
+      "word": "WERE",
+      "start": 394.28699833887043,
+      "end": 394.42715337763013,
+      "mean_character_frame_posterior": 0.9491827636957169
+    },
+    {
+      "word": "WALKING",
+      "start": 394.48721982281285,
+      "end": 394.80757419712074,
+      "mean_character_frame_posterior": 0.9635535904339382
+    },
+    {
+      "word": "ACROSS",
+      "start": 394.8876627906977,
+      "end": 395.1879950166113,
+      "mean_character_frame_posterior": 0.9026649594306946
+    },
+    {
+      "word": "THE",
+      "start": 395.2881057585825,
+      "end": 395.3681943521595,
+      "mean_character_frame_posterior": 0.9997034867604574
+    },
+    {
+      "word": "LAWN",
+      "start": 395.408238648948,
+      "end": 395.7085708748616,
+      "mean_character_frame_posterior": 0.999032273888588
+    },
+    {
+      "word": "TOWARDS",
+      "start": 395.82870376522703,
+      "end": 396.12903599114065,
+      "mean_character_frame_posterior": 0.924237711088998
+    },
+    {
+      "word": "THE",
+      "start": 396.20912458471764,
+      "end": 396.26919102990036,
+      "mean_character_frame_posterior": 0.9997569521268209
+    },
+    {
+      "word": "WINDOW",
+      "start": 396.32925747508307,
+      "end": 396.6696339977852,
+      "mean_character_frame_posterior": 0.9999943375587463
+    },
+    {
+      "word": "THEY",
+      "start": 397.23025415282393,
+      "end": 397.33036489479514,
+      "mean_character_frame_posterior": 0.9999796748161316
+    },
+    {
+      "word": "ALL",
+      "start": 397.43047563676635,
+      "end": 397.55060852713177,
+      "mean_character_frame_posterior": 0.9999394615491232
+    },
+    {
+      "word": "CARRIED",
+      "start": 397.63069712070876,
+      "end": 397.9310293466224,
+      "mean_character_frame_posterior": 0.9976613095828465
+    },
+    {
+      "word": "GUNS",
+      "start": 398.0311400885936,
+      "end": 398.3514944629014,
+      "mean_character_frame_posterior": 0.9980150759220123
+    },
+    {
+      "word": "UNDER",
+      "start": 398.4716273532669,
+      "end": 398.6117823920266,
+      "mean_character_frame_posterior": 0.9992119908332825
+    },
+    {
+      "word": "THEIR",
+      "start": 398.6718488372093,
+      "end": 398.83202602436324,
+      "mean_character_frame_posterior": 0.9995521903038025
+    },
+    {
+      "word": "ARMS",
+      "start": 398.99220321151716,
+      "end": 399.21244684385385,
+      "mean_character_frame_posterior": 0.9852519184350967
+    },
+    {
+      "word": "AND",
+      "start": 399.893199889258,
+      "end": 399.95326633444074,
+      "mean_character_frame_posterior": 0.9823663433392843
+    },
+    {
+      "word": "ONE",
+      "start": 400.1134435215947,
+      "end": 400.17350996677743,
+      "mean_character_frame_posterior": 0.9995272755622864
+    },
+    {
+      "word": "OF",
+      "start": 400.23357641196014,
+      "end": 400.27362070874864,
+      "mean_character_frame_posterior": 0.9999766945838928
+    },
+    {
+      "word": "THEM",
+      "start": 400.35370930232557,
+      "end": 400.51388648947955,
+      "mean_character_frame_posterior": 0.8947709649801254
+    },
+    {
+      "word": "WAS",
+      "start": 400.634019379845,
+      "end": 400.7541522702104,
+      "mean_character_frame_posterior": 0.9999963442484537
+    },
+    {
+      "word": "ADDITIONALLY",
+      "start": 400.8542630121816,
+      "end": 401.4349053156146,
+      "mean_character_frame_posterior": 0.9849959413210551
+    },
+    {
+      "word": "BURDENED",
+      "start": 401.5149939091916,
+      "end": 401.91543687707644,
+      "mean_character_frame_posterior": 0.9903371185064316
+    },
+    {
+      "word": "WITH",
+      "start": 402.11565836101886,
+      "end": 402.2357912513843,
+      "mean_character_frame_posterior": 0.999995082616806
+    },
+    {
+      "word": "A",
+      "start": 402.3158798449613,
+      "end": 402.3359019933555,
+      "mean_character_frame_posterior": 0.9995005130767822
+    },
+    {
+      "word": "WHITE",
+      "start": 402.3959684385382,
+      "end": 402.6162120708749,
+      "mean_character_frame_posterior": 0.9999707221984864
+    },
+    {
+      "word": "COAT",
+      "start": 402.75636710963454,
+      "end": 403.0166550387597,
+      "mean_character_frame_posterior": 0.9873958081007004
+    },
+    {
+      "word": "HUNG",
+      "start": 403.23689867109636,
+      "end": 403.3970758582503,
+      "mean_character_frame_posterior": 0.9710306376218796
+    },
+    {
+      "word": "OVER",
+      "start": 403.4971866002215,
+      "end": 403.6573637873754,
+      "mean_character_frame_posterior": 0.9999163001775742
+    },
+    {
+      "word": "HIS",
+      "start": 403.7374523809524,
+      "end": 403.8375631229236,
+      "mean_character_frame_posterior": 0.9985610842704773
+    },
+    {
+      "word": "SHOULDERS",
+      "start": 403.9376738648948,
+      "end": 404.39818327796235,
+      "mean_character_frame_posterior": 0.9978990356127421
+    },
+    {
+      "word": "A",
+      "start": 405.279157807309,
+      "end": 405.2991799557032,
+      "mean_character_frame_posterior": 0.9998936653137207
+    },
+    {
+      "word": "TIRED",
+      "start": 405.4193128460687,
+      "end": 405.87982225913623,
+      "mean_character_frame_posterior": 0.9999565362930298
+    },
+    {
+      "word": "BROWN",
+      "start": 405.99995514950166,
+      "end": 406.3002873754153,
+      "mean_character_frame_posterior": 0.9999655246734619
+    },
+    {
+      "word": "SPANIEL",
+      "start": 406.42042026578076,
+      "end": 406.96101827242524,
+      "mean_character_frame_posterior": 0.9979758432933262
+    },
+    {
+      "word": "KEPT",
+      "start": 407.1211954595792,
+      "end": 407.36146124031006,
+      "mean_character_frame_posterior": 0.9836894124746323
+    },
+    {
+      "word": "CLOSE",
+      "start": 407.52163842746404,
+      "end": 407.9020592469546,
+      "mean_character_frame_posterior": 0.9913524270057679
+    },
+    {
+      "word": "AT",
+      "start": 408.0021699889258,
+      "end": 408.0422142857143,
+      "mean_character_frame_posterior": 0.99970543384552
+    },
+    {
+      "word": "THEIR",
+      "start": 408.0822585825028,
+      "end": 408.2424357696567,
+      "mean_character_frame_posterior": 0.996894645690918
+    },
+    {
+      "word": "HEELS",
+      "start": 408.3225243632337,
+      "end": 408.68292303433003,
+      "mean_character_frame_posterior": 0.9444149255752563
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " In",
+      "start": 390.9,
+      "end": 391.08,
+      "probability": 0.9882166981697083
+    },
+    {
+      "word": " the",
+      "start": 391.08,
+      "end": 391.22,
+      "probability": 0.9762402772903442
+    },
+    {
+      "word": " deepening",
+      "start": 391.22,
+      "end": 391.64,
+      "probability": 0.9926801919937134
+    },
+    {
+      "word": " twilight,",
+      "start": 391.64,
+      "end": 392.26,
+      "probability": 0.9541405439376831
+    },
+    {
+      "word": " three",
+      "start": 392.96,
+      "end": 393.52,
+      "probability": 0.9611368179321289
+    },
+    {
+      "word": " figures",
+      "start": 393.52,
+      "end": 394.12,
+      "probability": 0.9932490587234497
+    },
+    {
+      "word": " were",
+      "start": 394.12,
+      "end": 394.48,
+      "probability": 0.9979249238967896
+    },
+    {
+      "word": " walking",
+      "start": 394.48,
+      "end": 394.78,
+      "probability": 0.996552586555481
+    },
+    {
+      "word": " across",
+      "start": 394.78,
+      "end": 395.14,
+      "probability": 0.99793541431427
+    },
+    {
+      "word": " the",
+      "start": 395.14,
+      "end": 395.46,
+      "probability": 0.9984523057937622
+    },
+    {
+      "word": " lawn",
+      "start": 395.46,
+      "end": 395.7,
+      "probability": 0.9952303171157837
+    },
+    {
+      "word": " on",
+      "start": 395.7,
+      "end": 395.92,
+      "probability": 0.15482152998447418
+    },
+    {
+      "word": " towards",
+      "start": 395.92,
+      "end": 396.14,
+      "probability": 0.7249193787574768
+    },
+    {
+      "word": " the",
+      "start": 396.14,
+      "end": 396.3,
+      "probability": 0.9948825836181641
+    },
+    {
+      "word": " window.",
+      "start": 396.3,
+      "end": 396.76,
+      "probability": 0.9943917393684387
+    },
+    {
+      "word": " They",
+      "start": 397.26,
+      "end": 397.36,
+      "probability": 0.9875370860099792
+    },
+    {
+      "word": " all",
+      "start": 397.36,
+      "end": 397.68,
+      "probability": 0.9970267415046692
+    },
+    {
+      "word": " carried",
+      "start": 397.68,
+      "end": 397.88,
+      "probability": 0.9899961948394775
+    },
+    {
+      "word": " guns",
+      "start": 397.88,
+      "end": 398.36,
+      "probability": 0.9931882619857788
+    },
+    {
+      "word": " under",
+      "start": 398.36,
+      "end": 398.6,
+      "probability": 0.9986633062362671
+    },
+    {
+      "word": " their",
+      "start": 398.6,
+      "end": 398.84,
+      "probability": 0.9954244494438171
+    },
+    {
+      "word": " arms,",
+      "start": 398.84,
+      "end": 399.32,
+      "probability": 0.9973986148834229
+    },
+    {
+      "word": " and",
+      "start": 399.8,
+      "end": 399.98,
+      "probability": 0.9931930899620056
+    },
+    {
+      "word": " one",
+      "start": 399.98,
+      "end": 400.22,
+      "probability": 0.9972615242004395
+    },
+    {
+      "word": " of",
+      "start": 400.22,
+      "end": 400.38,
+      "probability": 0.9947245717048645
+    },
+    {
+      "word": " them",
+      "start": 400.38,
+      "end": 400.6,
+      "probability": 0.9968132376670837
+    },
+    {
+      "word": " was",
+      "start": 400.6,
+      "end": 400.8,
+      "probability": 0.9980491399765015
+    },
+    {
+      "word": " additionally",
+      "start": 400.8,
+      "end": 401.42,
+      "probability": 0.9940721392631531
+    },
+    {
+      "word": " burdened",
+      "start": 401.42,
+      "end": 401.96,
+      "probability": 0.9935544729232788
+    },
+    {
+      "word": " with",
+      "start": 401.96,
+      "end": 402.28,
+      "probability": 0.9167328476905823
+    },
+    {
+      "word": " a",
+      "start": 402.28,
+      "end": 402.42,
+      "probability": 0.9911961555480957
+    },
+    {
+      "word": " white",
+      "start": 402.42,
+      "end": 402.62,
+      "probability": 0.9955937266349792
+    },
+    {
+      "word": " coat",
+      "start": 402.62,
+      "end": 403.1,
+      "probability": 0.999180018901825
+    },
+    {
+      "word": " hung",
+      "start": 403.1,
+      "end": 403.4,
+      "probability": 0.9888068437576294
+    },
+    {
+      "word": " over",
+      "start": 403.4,
+      "end": 403.66,
+      "probability": 0.994293212890625
+    },
+    {
+      "word": " his",
+      "start": 403.66,
+      "end": 403.94,
+      "probability": 0.9763784408569336
+    },
+    {
+      "word": " shoulders.",
+      "start": 403.94,
+      "end": 404.3,
+      "probability": 0.9841729402542114
+    },
+    {
+      "word": " A",
+      "start": 405.18,
+      "end": 405.44,
+      "probability": 0.9869393110275269
+    },
+    {
+      "word": " tired",
+      "start": 405.44,
+      "end": 405.86,
+      "probability": 0.9912918210029602
+    },
+    {
+      "word": " brown",
+      "start": 405.86,
+      "end": 406.26,
+      "probability": 0.633121132850647
+    },
+    {
+      "word": " spaniel",
+      "start": 406.26,
+      "end": 406.88,
+      "probability": 0.8170025050640106
+    },
+    {
+      "word": " kept",
+      "start": 406.88,
+      "end": 407.32,
+      "probability": 0.9922724962234497
+    },
+    {
+      "word": " close",
+      "start": 407.32,
+      "end": 407.86,
+      "probability": 0.9984188079833984
+    },
+    {
+      "word": " at",
+      "start": 407.86,
+      "end": 408.1,
+      "probability": 0.9945240020751953
+    },
+    {
+      "word": " their",
+      "start": 408.1,
+      "end": 408.32,
+      "probability": 0.9973835349082947
+    },
+    {
+      "word": " heels.",
+      "start": 408.32,
+      "end": 409.0,
+      "probability": 0.9995068311691284
+    }
+  ],
+  "whisper_transcript_in_unit": "In the deepening twilight, three figures were walking across the lawn on towards the window. They all carried guns under their arms, and one of them was additionally burdened with a white coat hung over his shoulders. A tired brown spaniel kept close at their heels.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.6424666249999973
+}

@@ -1,0 +1,467 @@
+{
+  "schema": "earnalism.open-window.corrected-master.v1",
+  "created_at_utc": "2026-10-20T19:14:31.656174+00:00",
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "original_master_sha256": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+  "repair_sha256": "4324ace4cc5b7caea523b4546908b220a63bd01c35f037a633f359eae4b083aa",
+  "master_wav_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+  "listener_mp3_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+  "sample_rate": 24000,
+  "samples": 11794472,
+  "duration_seconds": 491.4363333333333,
+  "package_duration_ms": 491436,
+  "old_samples": 11977746,
+  "removed_original_interval_samples": [
+    6758880,
+    7043914
+  ],
+  "inserted_samples": 101760,
+  "sample_delta": -183274,
+  "repair_source_char_interval": [
+    4039,
+    4078
+  ],
+  "repair_source_text": "To Framton it was all purely horrible.",
+  "voice": "Ryan",
+  "weights_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "repair_seed": 1726,
+  "owner_acceptance": {
+    "source_message": "Sentinel_c1b8578024c88191b1ea60ef7451fc8e",
+    "scope": "Specific retained repair Framton pronunciation only",
+    "verdict": "OWNER-ACCEPTED UNCERTAINTY",
+    "acoustic_pass": false
+  },
+  "structural_coverage": {
+    "verdict": "PASS",
+    "source_words": 1219,
+    "mapped_words": 1219,
+    "source_plan_missing_words": 0,
+    "source_plan_duplicated_words": 0,
+    "source_plan_reordered_words": 0,
+    "all_39_source_segments_retained_in_order": true,
+    "unmodified_prefix_suffix_pcm_exact": true,
+    "repair_pcm_exact": true,
+    "limit": "Source/custody completeness is not independently verified audible word coverage. Existing remaining region uncertainties retained."
+  },
+  "waveform": {
+    "finite": true,
+    "peak": 0.7647238969802856,
+    "clipped_samples": 0,
+    "joins": [
+      {
+        "sample": 6758880,
+        "seconds": 281.62,
+        "absolute_sample_step": 0.00032648886553943157,
+        "left_20ms_rms": 0.0007023713551461697,
+        "right_20ms_rms": 1.567381332279183e-05
+      },
+      {
+        "sample": 6860640,
+        "seconds": 285.86,
+        "absolute_sample_step": 1.2843960575992242e-05,
+        "left_20ms_rms": 1.7857979401014745e-05,
+        "right_20ms_rms": 7.015008804955869e-07
+      }
+    ],
+    "encoded_samples": 11794472,
+    "encoded_finite": true,
+    "encoded_peak": 0.7267985343933105,
+    "encoded_clipped_samples": 0
+  },
+  "changed_sentence_existing_acoustic_evidence": "All remaining six words recovered by base.en/small.en/CTC; exact Framton name accepted only by owner. Original preceding20words and following sentence retained.",
+  "spoken_completeness": "NO_NEW_CONFIRMED_MISSING_OR_DUPLICATED_WORDS; remaining unchanged uncertain regions not relabelled PASS",
+  "perceptual_continuity": "NOT_CERTIFIED; measured splice joins recorded, no fabricated listening",
+  "production_admission": "NOT_REQUESTED_OR_GRANTED",
+  "timeline": [
+    {
+      "source_segment_id": "u000001",
+      "source_char_start": 0,
+      "source_char_end": 147,
+      "text_sha256": "94bde3c072f586d02ae3aa3b539f41366c4d05cf8a8e106867fc9d6c1af0045e",
+      "start_sample": 0,
+      "end_sample": 236160,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "f6f0b76d4bcf119efa5931f2fa8871c0307a7ee4f31f060fe557b89dc3123671"
+    },
+    {
+      "source_segment_id": "u000002",
+      "source_char_start": 149,
+      "source_char_end": 496,
+      "text_sha256": "434f03a611d48403aa4b86f034af4f0bc41ebaa5df8e877843c5cbb7b3ff49ee",
+      "start_sample": 249509,
+      "end_sample": 769829,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "65f55e1047a575c13668f4b7ea08dfcc1cb536c00ed6f9816767e8498c1d5410"
+    },
+    {
+      "source_segment_id": "u000003",
+      "source_char_start": 498,
+      "source_char_end": 800,
+      "text_sha256": "e4cc7363c33ab6fb823fe158cc5bf70416ce79ee75932ee09d6bc3650c671970",
+      "start_sample": 783097,
+      "end_sample": 1257337,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "d44fc913aa9abf9555996e974d730c2338005388b1be316e22fc9c435f5def91"
+    },
+    {
+      "source_segment_id": "u000004",
+      "source_char_start": 801,
+      "source_char_end": 858,
+      "text_sha256": "4f10e47cd5abdbdcd1a4dd505cbed75d99a09a7c1cc01e979dc21407c7f4e818",
+      "start_sample": 1263289,
+      "end_sample": 1370809,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "21ce0470fbb56e1162122cc5472d041f85e32383499c6946f7d6cab56f2cd1c7"
+    },
+    {
+      "source_segment_id": "u000005",
+      "source_char_start": 860,
+      "source_char_end": 1002,
+      "text_sha256": "2a9740f62608d2125a42f946baad63f7ec2fb1d2907454aed6e8e28c7b8bc119",
+      "start_sample": 1384166,
+      "end_sample": 1570406,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "efba55da88b3f857e56f34b5434adc4683aa8ed63c97c36e5db79d7f84409ca9"
+    },
+    {
+      "source_segment_id": "u000006",
+      "source_char_start": 1004,
+      "source_char_end": 1129,
+      "text_sha256": "115a5814dce57415f0133f87e5d16efb7af08035a493fff96d3de822bafbf800",
+      "start_sample": 1582861,
+      "end_sample": 1755661,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "a82f76e81e3a318c3027077f886c15fd4e43690778f7a5f228390c20cbe1360c"
+    },
+    {
+      "source_segment_id": "u000007",
+      "source_char_start": 1131,
+      "source_char_end": 1308,
+      "text_sha256": "d3bcc92314cc2d73cac707eb471f4f5b92cae7fcad15fcf3f2a7a5cf2d4ed530",
+      "start_sample": 1767949,
+      "end_sample": 2038669,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "51db5f43390d95dc6f6b92effd138147cbdec443f9d6e2ddcd5d26ab847d98d0"
+    },
+    {
+      "source_segment_id": "u000008",
+      "source_char_start": 1310,
+      "source_char_end": 1366,
+      "text_sha256": "07e50bed3c7d83e949c0a8348994971cbb3825d3d5f350704ba91bce1be357d4",
+      "start_sample": 2050580,
+      "end_sample": 2123540,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "2d0e9cfc2bcdf475fff5b47a2a29ec894017ecadb5dcc5de6d078f0901af1889"
+    },
+    {
+      "source_segment_id": "u000009",
+      "source_char_start": 1368,
+      "source_char_end": 1458,
+      "text_sha256": "ba55a149d9523d067b3bc5db49314db572290dc4173fb5e9ecb823350655f2e8",
+      "start_sample": 2136572,
+      "end_sample": 2295932,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "e56b92e17d63f4bbc2748e4f744ff80da9fd29c3ea81314937a7516bd070cf6a"
+    },
+    {
+      "source_segment_id": "u000010",
+      "source_char_start": 1460,
+      "source_char_end": 1669,
+      "text_sha256": "bd9ee5e260c5c2a859c2ae50cc951c98356ba0d0bf59637e2a426bab942ba0b5",
+      "start_sample": 2309579,
+      "end_sample": 2597579,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "fc3a60e5b4e7a2b4e90faed7fcb49b58bf15461e6f0d45f383629752924299c3"
+    },
+    {
+      "source_segment_id": "u000011",
+      "source_char_start": 1671,
+      "source_char_end": 1780,
+      "text_sha256": "688f3379ebc6815d504ab09448c226be077efd7259ae7ceee77b6fbed8a1a9ca",
+      "start_sample": 2609973,
+      "end_sample": 2778933,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "8cb9ce40b032defaa7bd2d9d615f1f7103dea8a1ba18b22a9e0dde0d713779db"
+    },
+    {
+      "source_segment_id": "u000012",
+      "source_char_start": 1782,
+      "source_char_end": 1880,
+      "text_sha256": "86f94114e98d6178809623aa4f5b22372965b2c9aa649b39a916954214510456",
+      "start_sample": 2791611,
+      "end_sample": 2977851,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "d612d682f9d41fb780c5fb9d42c5c3cbb0b098f7be58b50485c1a4234689ea3c"
+    },
+    {
+      "source_segment_id": "u000013",
+      "source_char_start": 1882,
+      "source_char_end": 2034,
+      "text_sha256": "3c5589fb73160a9b33d1209bf3316575a366e39b811d1b94a6cbc858a71e5896",
+      "start_sample": 2991500,
+      "end_sample": 3335180,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "9c1a5f4cb4b8ec77d2c31f4c9e2b379dc1431a9c2016620227b9a4902f4ca65c"
+    },
+    {
+      "source_segment_id": "u000014",
+      "source_char_start": 2036,
+      "source_char_end": 2154,
+      "text_sha256": "64b447a0a307f51c9831510a3f025b5209a3ee6ffbfbfb5dce56f4659ff2f681",
+      "start_sample": 3347574,
+      "end_sample": 3595254,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "32ed3959f647a6231e13c1bcffed75923ffc92bb525cf24c66a09fd3fff2cfb5"
+    },
+    {
+      "source_segment_id": "u000015",
+      "source_char_start": 2156,
+      "source_char_end": 2428,
+      "text_sha256": "72ec55ed7789c12eb0dbb8170f7aaedb50d2bb41cba7f85ccc86143b08652f72",
+      "start_sample": 3608072,
+      "end_sample": 4009352,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "a3cc7dd957029c381fe24437d81d01209a246c10841357a14c5cccf291351745"
+    },
+    {
+      "source_segment_id": "u000016",
+      "source_char_start": 2429,
+      "source_char_end": 2708,
+      "text_sha256": "6a4de9b6deb22921da24557a3df7d3f9b0f485989c48f44e0701c8d67c12616e",
+      "start_sample": 4014650,
+      "end_sample": 4559930,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "c26ee849a2b802655594841377d0b740bc209b2b6c0f1ba58bedf348fa782267"
+    },
+    {
+      "source_segment_id": "u000017",
+      "source_char_start": 2709,
+      "source_char_end": 2956,
+      "text_sha256": "4f56b7d49ec35f15f355538ccdd6900df4611bbd51d26567b873fa4e98e0fe29",
+      "start_sample": 4565526,
+      "end_sample": 4987926,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "4f080c1badd2c88866754891631776092828d6f8f95559fcc42d62da6a534663"
+    },
+    {
+      "source_segment_id": "u000018",
+      "source_char_start": 2957,
+      "source_char_end": 3213,
+      "text_sha256": "e248d995f272c56d089743b253398cbb7f8395799f9a6db0b1140044c0ae1397",
+      "start_sample": 4994136,
+      "end_sample": 5420376,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "d4234dadc5ab229fd3b4beb8035d5a519ad2158629b26eaf85fc7cb9306c7036"
+    },
+    {
+      "source_segment_id": "u000019",
+      "source_char_start": 3214,
+      "source_char_end": 3353,
+      "text_sha256": "0b709a6c619185e2c58bed0ce3a689e1260ed720f5dd4ab56a212417ab7492bb",
+      "start_sample": 5425081,
+      "end_sample": 5663161,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "cf1049dd49912e284577f4ca93083da071e30487ab4e192efa14feeac848b3f5"
+    },
+    {
+      "source_segment_id": "u000020",
+      "source_char_start": 3355,
+      "source_char_end": 3523,
+      "text_sha256": "0bfa34640a54c9b5710cf73ba97368ced3e45945bed814a0c52ab0da9bb0effc",
+      "start_sample": 5676487,
+      "end_sample": 5918407,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "15bd31be70d9f77e89429da0fc83798e84db82218d153c45e0129f1e0a45bd18"
+    },
+    {
+      "source_segment_id": "u000021",
+      "source_char_start": 3525,
+      "source_char_end": 3570,
+      "text_sha256": "4c6d3b88630584f00f70908097844a42b8d4845e7ace5988287f3bbcc5173b38",
+      "start_sample": 5931902,
+      "end_sample": 6020222,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "4f1186c3bc85714fbf4fa59c8e603bd6514e734d4d577b55cd5ec4d10444203a"
+    },
+    {
+      "source_segment_id": "u000022",
+      "source_char_start": 3572,
+      "source_char_end": 3618,
+      "text_sha256": "9c5d126b063f08517cd698dc937545bdde7c72dd151f613922d13d766fa30508",
+      "start_sample": 6033167,
+      "end_sample": 6125327,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "ca04aa7102758b02b957bd7956fd2673d20aa75fa7ac90b709a695bf190075f3"
+    },
+    {
+      "source_segment_id": "u000023",
+      "source_char_start": 3620,
+      "source_char_end": 3922,
+      "text_sha256": "8047ff413099515e76518b89b3990fa75927f1f2ef28ec71d4ae1642da66dc3b",
+      "start_sample": 6138854,
+      "end_sample": 6591974,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "9fe57bb95cda932cd94235a89e513b0f3a37e6d72b631420e10b2ed685358482"
+    },
+    {
+      "source_segment_id": "u000024",
+      "source_char_start": 3924,
+      "source_char_end": 4078,
+      "text_sha256": "2dd2a6f3333b507d67d392ded4bbd102dadbb844833b10ff01e7c181089a0fe8",
+      "start_sample": 6604234,
+      "end_sample": 6860640,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT_EXCEPT_SOURCE_BOUND_SUFFIX",
+      "original_audio_sha256": "e611c4a78788530a171873f6280d62f1ebe13f09acbbc5b04487cb874d3a909a"
+    },
+    {
+      "source_segment_id": "u000025",
+      "source_char_start": 4079,
+      "source_char_end": 4353,
+      "text_sha256": "cb38e4c6f5c58671bfe9931fc4cb019c727542d4249f8f6a362431d7303bf8bb",
+      "start_sample": 6865678,
+      "end_sample": 7343758,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "7b2579b8e0ac2c3c21dc5532a447b8a3e4d497f40f7b1e989942d1086d6eb67c"
+    },
+    {
+      "source_segment_id": "u000026",
+      "source_char_start": 4355,
+      "source_char_end": 4462,
+      "text_sha256": "a18373e312046337b6ea92009b056390b214aa9945b548c6b32ea5bbff475062",
+      "start_sample": 7348874,
+      "end_sample": 7527434,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "b369e67cdfc504ea0cbe63fa9a2096a22346acdf1ad2cbcf18c533248eab41bd"
+    },
+    {
+      "source_segment_id": "u000027",
+      "source_char_start": 4464,
+      "source_char_end": 4827,
+      "text_sha256": "12825fd653ad3c8d1628d8de02ba2fdea8d3c1fb146096ad307177f357640a71",
+      "start_sample": 7540641,
+      "end_sample": 8141601,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "d2c8de5e00dc676001a2f6f846727f33167201f906d87ef358beb6445bcb56b6"
+    },
+    {
+      "source_segment_id": "u000028",
+      "source_char_start": 4829,
+      "source_char_end": 4901,
+      "text_sha256": "6b80b9ad0422bc3661998afac7909bbad5b51e9660c5e30bc69643ff86116c90",
+      "start_sample": 8147473,
+      "end_sample": 8251153,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "cafec7d7212c502c51e525a305cbf3ac3aa8a5aa9150fb9dbf82d3a8adc3cb9a"
+    },
+    {
+      "source_segment_id": "u000029",
+      "source_char_start": 4903,
+      "source_char_end": 5075,
+      "text_sha256": "1e7aaab9c6b986de33d6910ed41f1512b65c1b061b89e715f4351a20bca18ccf",
+      "start_sample": 8264481,
+      "end_sample": 8552481,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "14fea4cdb7f91d9155f5d3144869b0e67ef15d4b3625b9b3e46f940cb07383e2"
+    },
+    {
+      "source_segment_id": "u000030",
+      "source_char_start": 5077,
+      "source_char_end": 5195,
+      "text_sha256": "c8be0d0eb6e6423c948fe7b7fbeda1215eee4c206337a01cc198532b46f769c4",
+      "start_sample": 8564500,
+      "end_sample": 8723860,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "99df0b4ecc2fba1a42d988e59e5c238a6fb6f5eccc36a51dbf7579ae3850235c"
+    },
+    {
+      "source_segment_id": "u000031",
+      "source_char_start": 5197,
+      "source_char_end": 5494,
+      "text_sha256": "529dd0a716510a0ec5d831831b4a6a2cdcd9fca9b7651eb317eaeed3f3558e4a",
+      "start_sample": 8736990,
+      "end_sample": 9184350,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "f0150d6bd87d1153287dcd82447a86dfed29e012c9c99df4fa7233b617bc29b0"
+    },
+    {
+      "source_segment_id": "u000032",
+      "source_char_start": 5496,
+      "source_char_end": 5761,
+      "text_sha256": "8a669f059ebdf1d815a10b8deeef878367f968e5fa9c01725b18a87de4232cce",
+      "start_sample": 9196482,
+      "end_sample": 9630402,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "88672e498ba4ea2af8ae309e0c5130efeb4c1416a8b4c318b7747caeb6abcb2e"
+    },
+    {
+      "source_segment_id": "u000033",
+      "source_char_start": 5762,
+      "source_char_end": 5889,
+      "text_sha256": "84121dc06da70a151bec138b28bef835e79bbdbf958a5640906522f481ad31ad",
+      "start_sample": 9635582,
+      "end_sample": 9837182,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "c2ab971f40f0d3fa03193862d2b2ae3a1718ca4923ec26dc0c2fe3af2d5c99d6"
+    },
+    {
+      "source_segment_id": "u000034",
+      "source_char_start": 5891,
+      "source_char_end": 6129,
+      "text_sha256": "1d627bf402b8090169aaae2cb48c029bacaa8ea6dc61369b0acb32f506d1439e",
+      "start_sample": 9849056,
+      "end_sample": 10206176,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "04d6128f429674d628e3581a2eeaea95b4ff928c03d04f574c12cc527fd0e3ce"
+    },
+    {
+      "source_segment_id": "u000035",
+      "source_char_start": 6131,
+      "source_char_end": 6308,
+      "text_sha256": "b47c6ff16ac699efa81461b8e7707385abde8b5d4ef47c8a7c09800d625fee27",
+      "start_sample": 10218643,
+      "end_sample": 10502803,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "42e828be6af31c56a0d068fccca020d0ce8b330e001e5236e2d0983387017618"
+    },
+    {
+      "source_segment_id": "u000036",
+      "source_char_start": 6310,
+      "source_char_end": 6521,
+      "text_sha256": "5b9763a0be76d491ea75aaf55e0ab21c894c9ce73d875241f685363bc8da5c16",
+      "start_sample": 10514803,
+      "end_sample": 10914163,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "3dfb8f9908b6f262c03119afd8ec74e81ab0ba4ccb2ddc9f3496780c2da69645"
+    },
+    {
+      "source_segment_id": "u000037",
+      "source_char_start": 6523,
+      "source_char_end": 6832,
+      "text_sha256": "2a906529235936e953b455a6c3aa9a998aad4b2a64fae7875af2371b5d5ad1f4",
+      "start_sample": 10927821,
+      "end_sample": 11555661,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "3ced5fa2db69385d499fe47b5fbf6786af403227d483807660267306d40371cf"
+    },
+    {
+      "source_segment_id": "u000038",
+      "source_char_start": 6833,
+      "source_char_end": 6873,
+      "text_sha256": "a6a74213711abc68c2eecb8162f93bdbc4b9279abbdcbbbd154d11f8b243c323",
+      "start_sample": 11560870,
+      "end_sample": 11689510,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "564a8e01f7e567da4068e6b7a4d6f98428d9afea0a407b3e0c8d0fd285dde790"
+    },
+    {
+      "source_segment_id": "u000039",
+      "source_char_start": 6875,
+      "source_char_end": 6918,
+      "text_sha256": "d66faf9576e9f10d19d2b607056239255ff34cd723b5cf87951fad2a629b7d7e",
+      "start_sample": 11702312,
+      "end_sample": 11794472,
+      "audio_origin": "ORIGINAL_DECODED_PCM_EXACT",
+      "original_audio_sha256": "4981901ee6245b02b5cde722b8564c7a3c2f1d5d00b445d6a79829cc963f000c"
+    }
+  ]
+}

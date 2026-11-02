@@ -1,0 +1,50 @@
+{
+  "status": "ACTUAL_SUPPORTED_PRIVATE_SOURCE_STAGE_APPLIED_NOT_PUBLIC_OR_DEPLOYED",
+  "core_head": "791ca48d18cbf470124c3306b75de91f93fb4540",
+  "old_public_fields_preserved": [
+    "audiobook_active_release",
+    "audiobook_public_package_approval",
+    "audiobook_provider",
+    "audiobook_voice",
+    "narration_disclosure",
+    "chapters",
+    "cover_image_url",
+    "back_cover_image_url",
+    "source_hash",
+    "content_hash"
+  ],
+  "actual_package_version": "sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2",
+  "descriptor": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+  "old_active_descriptor": "b5b378168211d61ac80341e74cbfacaf0d5590a18300a5c91db4684626e343a2",
+  "snapshot_sha256": "6f6e39759ed7e9892230d9d2381f132551917814376bb65bf5d4447398a6c681",
+  "dryrun_sha256": "0f7fdfeffa3d2a6307759ce18c79802af847682239860fb6731450bd8261f202",
+  "apply_sha256": "53fc4a1fc4c1d3aaa7df7b94a6015fed292e57fb0bacd9175d8d22e546136c79",
+  "production_DB_provider_grant_deploy_calls": 0,
+  "wrapper_history": "Earlier read-only dryrun wrapper expected nonexisting source_mutation field and stopped BEFORE apply; supported actual field applied verified here; no mutation retry",
+  "transaction": {
+    "schema_version": "earnalism.native_replacement_source_transaction.v1",
+    "operation": "STAGE_PRIVATE",
+    "slug": "the-selfish-giant",
+    "snapshot_sha256": "e6e72d4c3cad5c512f035e0b4fdcffc27f0f2adb299c6b562ee0e99cb00efb91",
+    "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "applied": true,
+    "deployment_and_playback": "UNVERIFIED",
+    "files": {
+      "backend/data/controlled_publications/the-selfish-giant/public_book.json": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+      "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+      "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
+      "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba",
+      "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+      "backend/data/controlled_publications/the-selfish-giant/rights_decision.json": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39",
+      "data/controlled_publications/the-selfish-giant/public_book.json": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+      "data/controlled_publications/the-selfish-giant/reader_manifest.json": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+      "data/controlled_publications/the-selfish-giant/approval_evidence.json": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
+      "data/controlled_publications/the-selfish-giant/checksum_manifest.json": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba",
+      "data/controlled_publications/the-selfish-giant/publication_manifest.json": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+      "data/controlled_publications/the-selfish-giant/rights_decision.json": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39",
+      "backend/data/rights_decision_registry.json": "a0c6d6e4f80567f14ee55b45fe7bb7df533ec31527b2b75871220daa78bd20d0",
+      "backend/data/approved_reader_bootstrap.json": "6e4572f01e9e57124170fa866069713a1eedb38bf7dfd869d9fd71a7e449df35"
+    },
+    "target_bootstrap_row_sha256": "b9a6565f3e9f22b79cd0ff2a3a24c004ae21296e5e29991cd5e2d7a8bd036c06"
+  }
+}

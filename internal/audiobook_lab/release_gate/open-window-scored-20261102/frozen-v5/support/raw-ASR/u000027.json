@@ -1,0 +1,701 @@
+{
+  "unit": "u000027",
+  "master_interval_seconds": [
+    321.82979166666667,
+    346.8697916666667
+  ],
+  "expected_text": "“The doctors agree in ordering me complete rest, an absence of mental excitement, and avoidance of anything in the nature of violent physical exercise,” announced Framton, who laboured under the tolerably widespread delusion that total strangers and chance acquaintances are hungry for the least detail of one’s ailments and infirmities, their cause and cure.",
+  "ctc_transcript": "THE DOCTORS AGREE IN ORDERING ME COMPLETE REST AN ABSENCE OF MENTAL EXCITEMENT AND AVOIDANCE OF ANYTHING IN THE NATURE OF VIOLENT PHYSICAL EXERCISE ANNOUNCED FRAMPTON WHO LABORED UNDER THE TOLERABLY WIDESPREAD DELUSION THAT TOTAL STRANGERS AND CHANCE ACQUAINTANCES ARE HUNGRY FOR THE LEAST DETAIL OF ONE'S AILMENTS AND INFIRMITIES THEIR CAUSE AND CURE",
+  "ctc_words": [
+    {
+      "word": "THE",
+      "start": 321.9098556155076,
+      "end": 321.9899195643485,
+      "mean_character_frame_posterior": 0.9988399346669515
+    },
+    {
+      "word": "DOCTORS",
+      "start": 322.04996752597924,
+      "end": 322.49031924460434,
+      "mean_character_frame_posterior": 0.9993043286459786
+    },
+    {
+      "word": "AGREE",
+      "start": 322.6104151678657,
+      "end": 322.9707029376499,
+      "mean_character_frame_posterior": 0.9771631240844727
+    },
+    {
+      "word": "IN",
+      "start": 323.2509267585931,
+      "end": 323.31097472022384,
+      "mean_character_frame_posterior": 0.9998593628406525
+    },
+    {
+      "word": "ORDERING",
+      "start": 323.4911186051159,
+      "end": 323.8113744004796,
+      "mean_character_frame_posterior": 0.981904499232769
+    },
+    {
+      "word": "ME",
+      "start": 323.89143834932054,
+      "end": 323.9915182853717,
+      "mean_character_frame_posterior": 0.999846488237381
+    },
+    {
+      "word": "COMPLETE",
+      "start": 324.19167815747403,
+      "end": 324.6920778377298,
+      "mean_character_frame_posterior": 0.9445609375834465
+    },
+    {
+      "word": "REST",
+      "start": 324.89223770983216,
+      "end": 325.1924775179856,
+      "mean_character_frame_posterior": 0.9999129176139832
+    },
+    {
+      "word": "AN",
+      "start": 325.67286121103115,
+      "end": 325.71289318545166,
+      "mean_character_frame_posterior": 0.9891451299190521
+    },
+    {
+      "word": "ABSENCE",
+      "start": 325.9330690447642,
+      "end": 326.3133728017586,
+      "mean_character_frame_posterior": 0.9998996938977923
+    },
+    {
+      "word": "OF",
+      "start": 326.3934367505995,
+      "end": 326.43346872501996,
+      "mean_character_frame_posterior": 0.9999192357063293
+    },
+    {
+      "word": "MENTAL",
+      "start": 326.5735806354916,
+      "end": 326.87382044364506,
+      "mean_character_frame_posterior": 0.9998946388562521
+    },
+    {
+      "word": "EXCITEMENT",
+      "start": 326.97390037969626,
+      "end": 327.55436400879296,
+      "mean_character_frame_posterior": 0.9880483865737915
+    },
+    {
+      "word": "AND",
+      "start": 328.1148116506794,
+      "end": 328.23490757394086,
+      "mean_character_frame_posterior": 0.9999780257542928
+    },
+    {
+      "word": "AVOIDANCE",
+      "start": 328.6552433053557,
+      "end": 329.1556429856115,
+      "mean_character_frame_posterior": 0.9996586773130629
+    },
+    {
+      "word": "OF",
+      "start": 329.25572292166265,
+      "end": 329.2957548960831,
+      "mean_character_frame_posterior": 0.9998623430728912
+    },
+    {
+      "word": "ANYTHING",
+      "start": 329.55596272981614,
+      "end": 329.9162504996003,
+      "mean_character_frame_posterior": 0.9998513460159302
+    },
+    {
+      "word": "IN",
+      "start": 330.07637839728216,
+      "end": 330.1164103717026,
+      "mean_character_frame_posterior": 0.9966544508934021
+    },
+    {
+      "word": "THE",
+      "start": 330.1964743205436,
+      "end": 330.2565222821743,
+      "mean_character_frame_posterior": 0.9999576012293497
+    },
+    {
+      "word": "NATURE",
+      "start": 330.3566022182254,
+      "end": 330.69687400079937,
+      "mean_character_frame_posterior": 0.999977687994639
+    },
+    {
+      "word": "OF",
+      "start": 330.836985911271,
+      "end": 330.87701788569143,
+      "mean_character_frame_posterior": 0.9997957050800323
+    },
+    {
+      "word": "VIOLENT",
+      "start": 330.99711380895286,
+      "end": 331.357401578737,
+      "mean_character_frame_posterior": 0.9535749639783587
+    },
+    {
+      "word": "PHYSICAL",
+      "start": 331.49751348920864,
+      "end": 331.8377852717826,
+      "mean_character_frame_posterior": 0.997692808508873
+    },
+    {
+      "word": "EXERCISE",
+      "start": 332.01792915667465,
+      "end": 332.61840877298164,
+      "mean_character_frame_posterior": 0.998675562441349
+    },
+    {
+      "word": "ANNOUNCED",
+      "start": 333.2389043764988,
+      "end": 333.599192146283,
+      "mean_character_frame_posterior": 0.999891546037462
+    },
+    {
+      "word": "FRAMPTON",
+      "start": 333.71928806954435,
+      "end": 334.15963978816944,
+      "mean_character_frame_posterior": 0.9883888512849808
+    },
+    {
+      "word": "WHO",
+      "start": 334.59999150679454,
+      "end": 334.70007144284574,
+      "mean_character_frame_posterior": 0.9999707142512003
+    },
+    {
+      "word": "LABORED",
+      "start": 334.8001513788969,
+      "end": 335.1204071742606,
+      "mean_character_frame_posterior": 0.9990100690296718
+    },
+    {
+      "word": "UNDER",
+      "start": 335.2004711231015,
+      "end": 335.3405830335731,
+      "mean_character_frame_posterior": 0.9206880331039429
+    },
+    {
+      "word": "THE",
+      "start": 335.42064698241404,
+      "end": 335.500710931255,
+      "mean_character_frame_posterior": 0.993643581867218
+    },
+    {
+      "word": "TOLERABLY",
+      "start": 335.5607588928857,
+      "end": 336.12120653477217,
+      "mean_character_frame_posterior": 0.9497202436129252
+    },
+    {
+      "word": "WIDESPREAD",
+      "start": 336.2212864708233,
+      "end": 336.84178207434053,
+      "mean_character_frame_posterior": 0.9885350406169892
+    },
+    {
+      "word": "DELUSION",
+      "start": 336.9018300359712,
+      "end": 337.36219774180654,
+      "mean_character_frame_posterior": 0.9991015866398811
+    },
+    {
+      "word": "THAT",
+      "start": 337.80254946043163,
+      "end": 337.9426613709033,
+      "mean_character_frame_posterior": 0.9998698979616165
+    },
+    {
+      "word": "TOTAL",
+      "start": 338.06275729416467,
+      "end": 338.34298111510793,
+      "mean_character_frame_posterior": 0.9987451076507569
+    },
+    {
+      "word": "STRANGERS",
+      "start": 338.4430610511591,
+      "end": 338.94346073141486,
+      "mean_character_frame_posterior": 0.9999753899044461
+    },
+    {
+      "word": "AND",
+      "start": 339.123604616307,
+      "end": 339.2036685651479,
+      "mean_character_frame_posterior": 0.9997286597887675
+    },
+    {
+      "word": "CHANCE",
+      "start": 339.30374850119904,
+      "end": 339.5639563349321,
+      "mean_character_frame_posterior": 0.9782852927843729
+    },
+    {
+      "word": "ACQUAINTANCES",
+      "start": 339.644020283773,
+      "end": 340.2444999000799,
+      "mean_character_frame_posterior": 0.9988448253044715
+    },
+    {
+      "word": "ARE",
+      "start": 340.7048676059153,
+      "end": 340.80494754196644,
+      "mean_character_frame_posterior": 0.9999316533406576
+    },
+    {
+      "word": "HUNGRY",
+      "start": 340.88501149080736,
+      "end": 341.2052672861711,
+      "mean_character_frame_posterior": 0.9999031921227773
+    },
+    {
+      "word": "FOR",
+      "start": 341.32536320943245,
+      "end": 341.40542715827337,
+      "mean_character_frame_posterior": 0.9999630053838094
+    },
+    {
+      "word": "THE",
+      "start": 341.46547511990406,
+      "end": 341.54553906874503,
+      "mean_character_frame_posterior": 0.837751030921936
+    },
+    {
+      "word": "LEAST",
+      "start": 341.6456190047962,
+      "end": 341.8657948641087,
+      "mean_character_frame_posterior": 0.9917242646217346
+    },
+    {
+      "word": "DETAIL",
+      "start": 342.00590677458035,
+      "end": 342.4262425059952,
+      "mean_character_frame_posterior": 0.9993496735890707
+    },
+    {
+      "word": "OF",
+      "start": 342.8065462629896,
+      "end": 342.8465782374101,
+      "mean_character_frame_posterior": 0.9999256134033203
+    },
+    {
+      "word": "ONE'S",
+      "start": 343.0667540967226,
+      "end": 343.2268819944045,
+      "mean_character_frame_posterior": 0.9886075496673584
+    },
+    {
+      "word": "AILMENTS",
+      "start": 343.40702587929655,
+      "end": 343.78732963629096,
+      "mean_character_frame_posterior": 0.9989129304885864
+    },
+    {
+      "word": "AND",
+      "start": 344.08756944444445,
+      "end": 344.1876493804956,
+      "mean_character_frame_posterior": 0.9995545744895935
+    },
+    {
+      "word": "INFIRMITIES",
+      "start": 344.307745303757,
+      "end": 344.8681929456435,
+      "mean_character_frame_posterior": 0.9688907048918984
+    },
+    {
+      "word": "THEIR",
+      "start": 345.2284807154277,
+      "end": 345.40862460031974,
+      "mean_character_frame_posterior": 0.9907173752784729
+    },
+    {
+      "word": "CAUSE",
+      "start": 345.48868854916066,
+      "end": 345.84897631894484,
+      "mean_character_frame_posterior": 0.999976110458374
+    },
+    {
+      "word": "AND",
+      "start": 346.22928007593924,
+      "end": 346.3293600119904,
+      "mean_character_frame_posterior": 0.9999630053838094
+    },
+    {
+      "word": "CURE",
+      "start": 346.4894879096723,
+      "end": 346.7897277178257,
+      "mean_character_frame_posterior": 0.9999315589666367
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        25,
+        26
+      ],
+      "recognized_word_span": [
+        25,
+        26
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "laboured"
+      ],
+      "recognized": [
+        "labored"
+      ],
+      "reference_word_span": [
+        27,
+        28
+      ],
+      "recognized_word_span": [
+        27,
+        28
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " The",
+      "start": 321.88,
+      "end": 322.04,
+      "probability": 0.9247300028800964
+    },
+    {
+      "word": " doctors",
+      "start": 322.04,
+      "end": 322.4,
+      "probability": 0.9722631573677063
+    },
+    {
+      "word": " agree",
+      "start": 322.4,
+      "end": 323.02,
+      "probability": 0.875665009021759
+    },
+    {
+      "word": " in",
+      "start": 323.02,
+      "end": 323.42,
+      "probability": 0.9255558848381042
+    },
+    {
+      "word": " ordering",
+      "start": 323.42,
+      "end": 323.7,
+      "probability": 0.9825316667556763
+    },
+    {
+      "word": " me",
+      "start": 323.7,
+      "end": 324.18,
+      "probability": 0.9703734517097473
+    },
+    {
+      "word": " complete",
+      "start": 324.18,
+      "end": 324.6,
+      "probability": 0.9763898849487305
+    },
+    {
+      "word": " rest,",
+      "start": 324.6,
+      "end": 325.28,
+      "probability": 0.9898131489753723
+    },
+    {
+      "word": " an",
+      "start": 325.8,
+      "end": 325.86,
+      "probability": 0.621902346611023
+    },
+    {
+      "word": " absence",
+      "start": 325.86,
+      "end": 326.2,
+      "probability": 0.9989457726478577
+    },
+    {
+      "word": " of",
+      "start": 326.2,
+      "end": 326.58,
+      "probability": 0.999068558216095
+    },
+    {
+      "word": " mental",
+      "start": 326.58,
+      "end": 326.9,
+      "probability": 0.9902771711349487
+    },
+    {
+      "word": " excitement",
+      "start": 326.9,
+      "end": 327.46,
+      "probability": 0.9908679723739624
+    },
+    {
+      "word": " and",
+      "start": 327.46,
+      "end": 328.3,
+      "probability": 0.6711620092391968
+    },
+    {
+      "word": " avoidance",
+      "start": 328.3,
+      "end": 329.08,
+      "probability": 0.9347854852676392
+    },
+    {
+      "word": " of",
+      "start": 329.08,
+      "end": 329.5,
+      "probability": 0.997523844242096
+    },
+    {
+      "word": " anything",
+      "start": 329.5,
+      "end": 329.88,
+      "probability": 0.9972372055053711
+    },
+    {
+      "word": " in",
+      "start": 329.88,
+      "end": 330.18,
+      "probability": 0.9928764700889587
+    },
+    {
+      "word": " the",
+      "start": 330.18,
+      "end": 330.3,
+      "probability": 0.9939283132553101
+    },
+    {
+      "word": " nature",
+      "start": 330.3,
+      "end": 330.66,
+      "probability": 0.9962965846061707
+    },
+    {
+      "word": " of",
+      "start": 330.66,
+      "end": 331.0,
+      "probability": 0.9988924860954285
+    },
+    {
+      "word": " violent",
+      "start": 331.0,
+      "end": 331.36,
+      "probability": 0.964625358581543
+    },
+    {
+      "word": " physical",
+      "start": 331.36,
+      "end": 331.84,
+      "probability": 0.975700318813324
+    },
+    {
+      "word": " exercise.",
+      "start": 331.84,
+      "end": 332.72,
+      "probability": 0.9960047602653503
+    },
+    {
+      "word": " Announced",
+      "start": 333.14,
+      "end": 333.56,
+      "probability": 0.9300394654273987
+    },
+    {
+      "word": " Frampton,",
+      "start": 333.56,
+      "end": 334.2,
+      "probability": 0.7566163837909698
+    },
+    {
+      "word": " who",
+      "start": 334.64,
+      "end": 334.8,
+      "probability": 0.9968051910400391
+    },
+    {
+      "word": " labored",
+      "start": 334.8,
+      "end": 335.1,
+      "probability": 0.9424225986003876
+    },
+    {
+      "word": " under",
+      "start": 335.1,
+      "end": 335.38,
+      "probability": 0.995917022228241
+    },
+    {
+      "word": " the",
+      "start": 335.38,
+      "end": 335.54,
+      "probability": 0.9913011193275452
+    },
+    {
+      "word": " tolerably",
+      "start": 335.54,
+      "end": 336.1,
+      "probability": 0.9933606684207916
+    },
+    {
+      "word": " widespread",
+      "start": 336.1,
+      "end": 336.78,
+      "probability": 0.9769414067268372
+    },
+    {
+      "word": " delusion",
+      "start": 336.78,
+      "end": 337.4,
+      "probability": 0.9893627762794495
+    },
+    {
+      "word": " that",
+      "start": 337.4,
+      "end": 338.02,
+      "probability": 0.8524919152259827
+    },
+    {
+      "word": " total",
+      "start": 338.02,
+      "end": 338.34,
+      "probability": 0.9691376090049744
+    },
+    {
+      "word": " strangers",
+      "start": 338.34,
+      "end": 338.92,
+      "probability": 0.9969064593315125
+    },
+    {
+      "word": " and",
+      "start": 338.92,
+      "end": 339.16,
+      "probability": 0.46712514758110046
+    },
+    {
+      "word": " chance",
+      "start": 339.16,
+      "end": 339.6,
+      "probability": 0.5066284537315369
+    },
+    {
+      "word": " acquaintances",
+      "start": 339.6,
+      "end": 340.16,
+      "probability": 0.9651327729225159
+    },
+    {
+      "word": " are",
+      "start": 340.16,
+      "end": 340.88,
+      "probability": 0.9815102815628052
+    },
+    {
+      "word": " hungry",
+      "start": 340.88,
+      "end": 341.18,
+      "probability": 0.9903512597084045
+    },
+    {
+      "word": " for",
+      "start": 341.18,
+      "end": 341.48,
+      "probability": 0.9973520040512085
+    },
+    {
+      "word": " the",
+      "start": 341.48,
+      "end": 341.6,
+      "probability": 0.9950985312461853
+    },
+    {
+      "word": " least",
+      "start": 341.6,
+      "end": 342.02,
+      "probability": 0.9957908391952515
+    },
+    {
+      "word": " detail",
+      "start": 342.02,
+      "end": 342.48,
+      "probability": 0.98191237449646
+    },
+    {
+      "word": " of",
+      "start": 342.48,
+      "end": 342.96,
+      "probability": 0.992024302482605
+    },
+    {
+      "word": " one's",
+      "start": 342.96,
+      "end": 343.86,
+      "probability": 0.9546440541744232
+    },
+    {
+      "word": " ailments",
+      "start": 343.86,
+      "end": 343.86,
+      "probability": 0.989920973777771
+    },
+    {
+      "word": " and",
+      "start": 343.86,
+      "end": 344.26,
+      "probability": 0.9903784990310669
+    },
+    {
+      "word": " infirmities,",
+      "start": 344.26,
+      "end": 344.92,
+      "probability": 0.9934205810228983
+    },
+    {
+      "word": " their",
+      "start": 345.3,
+      "end": 345.44,
+      "probability": 0.9687406420707703
+    },
+    {
+      "word": " cause",
+      "start": 345.44,
+      "end": 345.9,
+      "probability": 0.9895971417427063
+    },
+    {
+      "word": " and",
+      "start": 345.9,
+      "end": 346.5,
+      "probability": 0.9244081974029541
+    },
+    {
+      "word": " cure.",
+      "start": 346.5,
+      "end": 346.84,
+      "probability": 0.9962311387062073
+    }
+  ],
+  "whisper_transcript_in_unit": "The doctors agree in ordering me complete rest, an absence of mental excitement and avoidance of anything in the nature of violent physical exercise. Announced Frampton, who labored under the tolerably widespread delusion that total strangers and chance acquaintances are hungry for the least detail of one's ailments and infirmities, their cause and cure.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 1.0039019169999932
+}

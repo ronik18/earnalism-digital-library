@@ -134,6 +134,13 @@ class Cursor:
     def sort(self, *_args):
         return self
 
+    def max_time_ms(self, _milliseconds):
+        return self
+
+    def limit(self, limit):
+        self.rows = self.rows[:limit]
+        return self
+
     async def to_list(self, _limit):
         return copy.deepcopy(self.rows)
 
@@ -197,6 +204,11 @@ class Collection:
 
 
 class Database:
+    def __getitem__(self, name):
+        if not hasattr(self, name):
+            setattr(self, name, Collection())
+        return getattr(self, name)
+
     def __init__(self, balance=120):
         self.users = Collection([{
             'id': 'user-1', 'role': 'user', 'status': 'active',

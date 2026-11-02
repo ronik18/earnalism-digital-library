@@ -1,0 +1,228 @@
+{
+  "unit": "u000011",
+  "master_interval_seconds": [
+    108.748875,
+    115.788875
+  ],
+  "expected_text": "“Her great tragedy happened just three years ago,” said the child; “that would be since your sister’s time.”",
+  "ctc_transcript": "HER GREAT TRAGEDY HAPPENED JUST THREE YEARS AGO SAID THE CHILD THAT WOULD BE SINCE YOUR SISTER'S TIME",
+  "ctc_words": [
+    {
+      "word": "HER",
+      "start": 108.90933084045584,
+      "end": 109.0497297008547,
+      "mean_character_frame_posterior": 0.9806933601697286
+    },
+    {
+      "word": "GREAT",
+      "start": 109.21018554131054,
+      "end": 109.4508693019943,
+      "mean_character_frame_posterior": 0.9439221620559692
+    },
+    {
+      "word": "TRAGEDY",
+      "start": 109.57121118233619,
+      "end": 110.09269266381766,
+      "mean_character_frame_posterior": 0.9755681753158569
+    },
+    {
+      "word": "HAPPENED",
+      "start": 110.21303454415954,
+      "end": 110.61417414529915,
+      "mean_character_frame_posterior": 0.9964943081140518
+    },
+    {
+      "word": "JUST",
+      "start": 110.69440206552706,
+      "end": 110.87491488603989,
+      "mean_character_frame_posterior": 0.9995206594467163
+    },
+    {
+      "word": "THREE",
+      "start": 110.9551428062678,
+      "end": 111.19582656695157,
+      "mean_character_frame_posterior": 0.9999171733856201
+    },
+    {
+      "word": "YEARS",
+      "start": 111.27605448717948,
+      "end": 111.49668126780627,
+      "mean_character_frame_posterior": 0.9992559552192688
+    },
+    {
+      "word": "AGO",
+      "start": 111.5769091880342,
+      "end": 111.79753596866097,
+      "mean_character_frame_posterior": 0.9300439357757568
+    },
+    {
+      "word": "SAID",
+      "start": 112.2588465099715,
+      "end": 112.41930235042734,
+      "mean_character_frame_posterior": 0.9689045697450638
+    },
+    {
+      "word": "THE",
+      "start": 112.47947329059829,
+      "end": 112.53964423076923,
+      "mean_character_frame_posterior": 0.9998426040013632
+    },
+    {
+      "word": "CHILD",
+      "start": 112.59981517094018,
+      "end": 112.94078383190883,
+      "mean_character_frame_posterior": 0.9999856233596802
+    },
+    {
+      "word": "THAT",
+      "start": 113.68289209401709,
+      "end": 113.84334793447293,
+      "mean_character_frame_posterior": 0.891431599855423
+    },
+    {
+      "word": "WOULD",
+      "start": 113.92357585470086,
+      "end": 114.06397471509972,
+      "mean_character_frame_posterior": 0.9983509540557861
+    },
+    {
+      "word": "BE",
+      "start": 114.14420263532763,
+      "end": 114.26454451566951,
+      "mean_character_frame_posterior": 0.9999904036521912
+    },
+    {
+      "word": "SINCE",
+      "start": 114.50522827635328,
+      "end": 114.70579807692307,
+      "mean_character_frame_posterior": 0.980208694934845
+    },
+    {
+      "word": "YOUR",
+      "start": 114.76596901709402,
+      "end": 114.88631089743589,
+      "mean_character_frame_posterior": 0.9948704689741135
+    },
+    {
+      "word": "SISTER'S",
+      "start": 114.9865957977208,
+      "end": 115.36767841880342,
+      "mean_character_frame_posterior": 0.9740839377045631
+    },
+    {
+      "word": "TIME",
+      "start": 115.44790633903133,
+      "end": 115.70864707977208,
+      "mean_character_frame_posterior": 0.9696464538574219
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " great",
+      "start": 109.06,
+      "end": 109.52,
+      "probability": 0.81637042760849
+    },
+    {
+      "word": " tragedy",
+      "start": 109.52,
+      "end": 110.02,
+      "probability": 0.9959871172904968
+    },
+    {
+      "word": " happened",
+      "start": 110.02,
+      "end": 110.54,
+      "probability": 0.9964291453361511
+    },
+    {
+      "word": " just",
+      "start": 110.54,
+      "end": 110.94,
+      "probability": 0.9740272164344788
+    },
+    {
+      "word": " three",
+      "start": 110.94,
+      "end": 111.18,
+      "probability": 0.9444700479507446
+    },
+    {
+      "word": " years",
+      "start": 111.18,
+      "end": 111.52,
+      "probability": 0.9976668357849121
+    },
+    {
+      "word": " ago,",
+      "start": 111.52,
+      "end": 111.92,
+      "probability": 0.9979246854782104
+    },
+    {
+      "word": " said",
+      "start": 112.36,
+      "end": 112.42,
+      "probability": 0.993709921836853
+    },
+    {
+      "word": " the",
+      "start": 112.42,
+      "end": 112.64,
+      "probability": 0.9959248304367065
+    },
+    {
+      "word": " child.",
+      "start": 112.64,
+      "end": 113.0,
+      "probability": 0.9746050834655762
+    },
+    {
+      "word": " That",
+      "start": 113.74,
+      "end": 113.84,
+      "probability": 0.8147086501121521
+    },
+    {
+      "word": " would",
+      "start": 113.84,
+      "end": 114.1,
+      "probability": 0.9963071346282959
+    },
+    {
+      "word": " be",
+      "start": 114.1,
+      "end": 114.42,
+      "probability": 0.9973504543304443
+    },
+    {
+      "word": " since",
+      "start": 114.42,
+      "end": 114.68,
+      "probability": 0.9594222903251648
+    },
+    {
+      "word": " your",
+      "start": 114.68,
+      "end": 114.94,
+      "probability": 0.9815694093704224
+    },
+    {
+      "word": " sister's",
+      "start": 114.94,
+      "end": 115.42,
+      "probability": 0.9877793490886688
+    },
+    {
+      "word": " time.",
+      "start": 115.42,
+      "end": 115.92,
+      "probability": 0.997654378414154
+    }
+  ],
+  "whisper_transcript_in_unit": "great tragedy happened just three years ago, said the child. That would be since your sister's time.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.22001329099998657
+}

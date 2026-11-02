@@ -1,0 +1,17 @@
+{
+  "schema_version": "audiobook_package_upload_plan.v2",
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/",
+  "release_status": "RELEASE_CANDIDATE",
+  "assets": [
+    {
+      "asset_id": "release-manifest",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/offline-storage-rehearsal/SYNTHETIC-64KiB-final-manifest-reserve.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/release-manifest.json",
+      "sha256": "efc0cd923b5aeacab63232e9071d7dd40f6d50b255679f125fea058a4e1b46d4",
+      "size_bytes": 65536,
+      "mime_type": "application/json"
+    }
+  ]
+}

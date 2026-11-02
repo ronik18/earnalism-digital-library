@@ -1,0 +1,51 @@
+{
+  "recorded_at": "2026-10-19T05:10:07.757728+00:00",
+  "owner_message_id": "Sentinel_89d7bd6524d08191b37c5686aae7b88b",
+  "producer_authority": "CONFIRMED_BY_OWNER",
+  "confirmed_facts": [
+    "Ronik personally initiated,directed,took responsibility for exact recording",
+    "Ronik holds relevant producer rights or sufficient authority for Earnalism commercial streaming in India",
+    "No known third-party producer,performer,contractor or agreement restriction"
+  ],
+  "authorization": {
+    "title": "The Open Window",
+    "source": "RecordedPG269/1914JohnLane selectedstory",
+    "canonical_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "duration_seconds": 499.07275,
+    "master_sha256": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+    "territory": "IN",
+    "use": "commercial_streaming",
+    "historical_excluded_edition": "UNCHANGED_EXCLUDED"
+  },
+  "activation": "OWNER_CONDITIONALLY_APPROVED_NOT_EXECUTED",
+  "conditions": [
+    "applicable text/model/voice commercial rights",
+    "producer confirmation",
+    "genuine full-title listening acceptance",
+    "exact-edition protectedListeneradmission",
+    "signed-in fullplayback/seek/resume/accesscontrols",
+    "production safety/platformpermissions"
+  ],
+  "listening": {
+    "owner": "Ronik Basak only identified human",
+    "acceptance": "PENDING_NO_COMPLETION_INFERRED",
+    "minimum_human_action": "Listen source-checked to all499.07275seconds using existing current19packet; disposition19regions including Unit24; explicitly accept fulltitle with no unresolvedmaterialdefects or identify defects.",
+    "existing_packet": "libfile_01634ceea30c81918e9219e93e55ba5c",
+    "master": "libfile_cfc10490e4c08191881ac5b5f145dbc2"
+  },
+  "numeric_policy": {
+    "owner_direction": "Simplify only if purelyinternal and no legal/contractual/technical requirement depends on numericthresholds",
+    "finding": "TECHNICAL_DEPENDENCY_EXISTS_IN_RETAINED_RELEASE_VALIDATOR",
+    "handler": "/Users/ronikbasak/Documents/Codex/2026-10-12/task-2/release-preparation-child/integration-preparation-20261013/controlled-integration-git-candidate/internal/audiobook_lab/scripts/audiobook_active_release_v2.py",
+    "handler_sha256": "63ec05732fbdf340ba4d9d9d9a47ea640457f1a6f2255f7e940c02ff34990cca",
+    "lines": "63-79declarespolicy/minima;765policyidentity;774-780requiresallscores;791-808enforcesthresholds;732requires6samples",
+    "policy_change_applied": false,
+    "reason": "Cannot certify ownercondition satisfied while code rejects missingnumericvalues. This is software enforcement of internalpolicy, not evidence law requires numericratings. No fabricated scores or bypass.",
+    "next_technical_action_for_parent": "Library/Listenerowner confirms currentservingvalidator; if authorized revisepolicy and validator together with focusedtests and normalGitHubroute, keeping actual fulltitlehumanacceptance/materialdefect/sourcebindings. Distinct from Reader release; do not alter sharedworkspace here.",
+    "legal_contractual_result": "No numericthresholdlegalrule established in reused statutory/model evidence; no contrary externalcontract identified in boundedrecords; not a universal absence claim."
+  },
+  "no_regeneration": true,
+  "no_thirdparty_engagement": true,
+  "no_production_activation": true,
+  "reader_untouched": true
+}

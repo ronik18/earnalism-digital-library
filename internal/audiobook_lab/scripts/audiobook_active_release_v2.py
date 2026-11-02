@@ -730,6 +730,15 @@ def validate_qa_candidate_release_descriptor(
             return validate_owner_produced(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
         except OwnerProducedError as exc:
             raise ReleasePointerError(str(exc)) from None
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "open_window_scored_retained_successor.v1":
+        try:
+            try:
+                from .open_window_scored_retained import validate as validate_scored_retained, Error as ScoredRetainedError
+            except ImportError:
+                from open_window_scored_retained import validate as validate_scored_retained, Error as ScoredRetainedError
+            return validate_scored_retained(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except ScoredRetainedError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") in ("open_window_retained_successor.v1", "open_window_listened_successor.v2"):
         try:
             try:

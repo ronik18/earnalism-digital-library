@@ -1,0 +1,276 @@
+{
+  "unit": "u000006",
+  "master_interval_seconds": [
+    65.95254166666666,
+    73.15254166666666
+  ],
+  "expected_text": "“Do you know many of the people round here?” asked the niece, when she judged that they had had sufficient silent communion.",
+  "ctc_transcript": "DO YOU KNOW MANY OF THE PEOPLE ROUND HERE ASKED THE NIECE WHEN SHE JUDGED THAT THEY HAD HAD SUFFICIENT SILENT COMMUNION",
+  "ctc_words": [
+    {
+      "word": "DO",
+      "start": 66.05282021819869,
+      "end": 66.11298734911792,
+      "mean_character_frame_posterior": 0.9996888637542725
+    },
+    {
+      "word": "YOU",
+      "start": 66.21326590064994,
+      "end": 66.31354445218199,
+      "mean_character_frame_posterior": 0.9127069314320883
+    },
+    {
+      "word": "KNOW",
+      "start": 66.47399013463324,
+      "end": 66.6946029480037,
+      "mean_character_frame_posterior": 0.9999147653579712
+    },
+    {
+      "word": "MANY",
+      "start": 66.85504863045496,
+      "end": 67.07566144382544,
+      "mean_character_frame_posterior": 0.9999667704105377
+    },
+    {
+      "word": "OF",
+      "start": 67.13582857474465,
+      "end": 67.17593999535747,
+      "mean_character_frame_posterior": 0.9999728798866272
+    },
+    {
+      "word": "THE",
+      "start": 67.23610712627669,
+      "end": 67.31632996750231,
+      "mean_character_frame_posterior": 0.9998319347699484
+    },
+    {
+      "word": "PEOPLE",
+      "start": 67.37649709842154,
+      "end": 67.65727704271123,
+      "mean_character_frame_posterior": 0.9192007184028625
+    },
+    {
+      "word": "ROUND",
+      "start": 67.77761130454967,
+      "end": 68.01827982822655,
+      "mean_character_frame_posterior": 0.998406708240509
+    },
+    {
+      "word": "HERE",
+      "start": 68.11855837975858,
+      "end": 68.37928261374186,
+      "mean_character_frame_posterior": 0.9917985945940018
+    },
+    {
+      "word": "ASKED",
+      "start": 68.86061966109563,
+      "end": 69.04112105385329,
+      "mean_character_frame_posterior": 0.9999311566352844
+    },
+    {
+      "word": "THE",
+      "start": 69.10128818477251,
+      "end": 69.16145531569173,
+      "mean_character_frame_posterior": 0.9998631278673807
+    },
+    {
+      "word": "NIECE",
+      "start": 69.24167815691736,
+      "end": 69.50240239090064,
+      "mean_character_frame_posterior": 0.8869525551795959
+    },
+    {
+      "word": "WHEN",
+      "start": 69.90351659702878,
+      "end": 70.02385085886722,
+      "mean_character_frame_posterior": 0.9999825954437256
+    },
+    {
+      "word": "SHE",
+      "start": 70.08401798978645,
+      "end": 70.18429654131847,
+      "mean_character_frame_posterior": 0.9935112595558167
+    },
+    {
+      "word": "JUDGED",
+      "start": 70.30463080315691,
+      "end": 70.68568929897864,
+      "mean_character_frame_posterior": 0.9992168247699738
+    },
+    {
+      "word": "THAT",
+      "start": 70.80602356081708,
+      "end": 70.90630211234911,
+      "mean_character_frame_posterior": 0.999934583902359
+    },
+    {
+      "word": "THEY",
+      "start": 70.94641353296193,
+      "end": 71.06674779480036,
+      "mean_character_frame_posterior": 0.9998888820409775
+    },
+    {
+      "word": "HAD",
+      "start": 71.12691492571959,
+      "end": 71.1870820566388,
+      "mean_character_frame_posterior": 0.9369874795277914
+    },
+    {
+      "word": "HAD",
+      "start": 71.26730489786443,
+      "end": 71.40769487000928,
+      "mean_character_frame_posterior": 0.9993461966514587
+    },
+    {
+      "word": "SUFFICIENT",
+      "start": 71.50797342154131,
+      "end": 72.0494775998143,
+      "mean_character_frame_posterior": 0.999801105260849
+    },
+    {
+      "word": "SILENT",
+      "start": 72.18986757195914,
+      "end": 72.53081464716806,
+      "mean_character_frame_posterior": 0.9999071558316549
+    },
+    {
+      "word": "COMMUNION",
+      "start": 72.59098177808727,
+      "end": 73.05226311513462,
+      "mean_character_frame_posterior": 0.9403626587655809
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'Do",
+      "start": 65.98,
+      "end": 66.16,
+      "probability": 0.49434852600097656
+    },
+    {
+      "word": " you",
+      "start": 66.16,
+      "end": 66.48,
+      "probability": 0.9971132278442383
+    },
+    {
+      "word": " know",
+      "start": 66.48,
+      "end": 66.68,
+      "probability": 0.9986404776573181
+    },
+    {
+      "word": " many",
+      "start": 66.68,
+      "end": 67.06,
+      "probability": 0.9786384701728821
+    },
+    {
+      "word": " of",
+      "start": 67.06,
+      "end": 67.26,
+      "probability": 0.9968221187591553
+    },
+    {
+      "word": " the",
+      "start": 67.26,
+      "end": 67.36,
+      "probability": 0.99713134765625
+    },
+    {
+      "word": " people",
+      "start": 67.36,
+      "end": 67.64,
+      "probability": 0.9992332458496094
+    },
+    {
+      "word": " around",
+      "start": 67.64,
+      "end": 67.98,
+      "probability": 0.6742442846298218
+    },
+    {
+      "word": " here?'",
+      "start": 67.98,
+      "end": 68.86,
+      "probability": 0.7001700848340988
+    },
+    {
+      "word": " asked",
+      "start": 68.86,
+      "end": 69.04,
+      "probability": 0.9637427926063538
+    },
+    {
+      "word": " the",
+      "start": 69.04,
+      "end": 69.22,
+      "probability": 0.976254940032959
+    },
+    {
+      "word": " niece,",
+      "start": 69.22,
+      "end": 69.54,
+      "probability": 0.9570069313049316
+    },
+    {
+      "word": " when",
+      "start": 69.92,
+      "end": 70.0,
+      "probability": 0.9724485874176025
+    },
+    {
+      "word": " she",
+      "start": 70.0,
+      "end": 70.24,
+      "probability": 0.9986697435379028
+    },
+    {
+      "word": " judged",
+      "start": 70.24,
+      "end": 70.66,
+      "probability": 0.9720517992973328
+    },
+    {
+      "word": " that",
+      "start": 70.66,
+      "end": 70.92,
+      "probability": 0.9822340607643127
+    },
+    {
+      "word": " they",
+      "start": 70.92,
+      "end": 71.1,
+      "probability": 0.9942399263381958
+    },
+    {
+      "word": " had",
+      "start": 71.1,
+      "end": 71.3,
+      "probability": 0.9934198260307312
+    },
+    {
+      "word": " had",
+      "start": 71.3,
+      "end": 71.48,
+      "probability": 0.9912841320037842
+    },
+    {
+      "word": " sufficient",
+      "start": 71.48,
+      "end": 72.04,
+      "probability": 0.9904911518096924
+    },
+    {
+      "word": " silent",
+      "start": 72.04,
+      "end": 72.58,
+      "probability": 0.9074021577835083
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'Do you know many of the people around here?' asked the niece, when she judged that they had had sufficient silent",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.2247307500000062
+}

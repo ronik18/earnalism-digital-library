@@ -1,0 +1,294 @@
+{
+  "unit": "u000033",
+  "master_interval_seconds": [
+    409.119,
+    417.519
+  ],
+  "expected_text": "Noiselessly they neared the house, and then a hoarse young voice chanted out of the dusk: “I said, Bertie, why do you bound?”",
+  "ctc_transcript": "NOISELESSLY THEY NEARED THE HOUSE AND THEN A HOARSE YOUNG VOICE CHANTED OUT OF THE DUSK I SAID BERTIE WHY DO YOU BOUND",
+  "ctc_words": [
+    {
+      "word": "NOISELESSLY",
+      "start": 409.2994295942721,
+      "end": 409.96100477326974,
+      "mean_character_frame_posterior": 0.9592936309901151
+    },
+    {
+      "word": "THEY",
+      "start": 410.0411957040573,
+      "end": 410.1614821002387,
+      "mean_character_frame_posterior": 0.998368963599205
+    },
+    {
+      "word": "NEARED",
+      "start": 410.24167303102627,
+      "end": 410.46219809069214,
+      "mean_character_frame_posterior": 0.9553775489330292
+    },
+    {
+      "word": "THE",
+      "start": 410.52234128878285,
+      "end": 410.62257995226736,
+      "mean_character_frame_posterior": 0.9997914632161459
+    },
+    {
+      "word": "HOUSE",
+      "start": 410.70277088305494,
+      "end": 411.0034868735084,
+      "mean_character_frame_posterior": 0.9988139152526856
+    },
+    {
+      "word": "AND",
+      "start": 411.44453699284014,
+      "end": 411.5046801909308,
+      "mean_character_frame_posterior": 0.8912994066874186
+    },
+    {
+      "word": "THEN",
+      "start": 411.5848711217184,
+      "end": 411.7452529832936,
+      "mean_character_frame_posterior": 0.994699701666832
+    },
+    {
+      "word": "A",
+      "start": 412.18630310262535,
+      "end": 412.2063508353222,
+      "mean_character_frame_posterior": 0.9997232556343079
+    },
+    {
+      "word": "HOARSE",
+      "start": 412.2865417661098,
+      "end": 412.54716229116946,
+      "mean_character_frame_posterior": 0.9959636529286703
+    },
+    {
+      "word": "YOUNG",
+      "start": 412.6273532219571,
+      "end": 412.8077828162291,
+      "mean_character_frame_posterior": 0.9283520460128785
+    },
+    {
+      "word": "VOICE",
+      "start": 412.92806921241055,
+      "end": 413.2087374701671,
+      "mean_character_frame_posterior": 0.9999400019645691
+    },
+    {
+      "word": "CHANTED",
+      "start": 413.3490715990454,
+      "end": 413.70993078758954,
+      "mean_character_frame_posterior": 0.9716593538011823
+    },
+    {
+      "word": "OUT",
+      "start": 413.8903603818616,
+      "end": 413.9905990453461,
+      "mean_character_frame_posterior": 0.9697903593381246
+    },
+    {
+      "word": "OF",
+      "start": 414.0507422434368,
+      "end": 414.0908377088306,
+      "mean_character_frame_posterior": 0.9988070428371429
+    },
+    {
+      "word": "THE",
+      "start": 414.1509809069213,
+      "end": 414.21112410501195,
+      "mean_character_frame_posterior": 0.9995450774828593
+    },
+    {
+      "word": "DUSK",
+      "start": 414.31136276849645,
+      "end": 414.63212649164683,
+      "mean_character_frame_posterior": 0.9999382644891739
+    },
+    {
+      "word": "I",
+      "start": 415.173415274463,
+      "end": 415.19346300715995,
+      "mean_character_frame_posterior": 0.9971200227737427
+    },
+    {
+      "word": "SAID",
+      "start": 415.3538448687351,
+      "end": 415.6144653937948,
+      "mean_character_frame_posterior": 0.9965584576129913
+    },
+    {
+      "word": "BERTIE",
+      "start": 415.7147040572793,
+      "end": 416.01542004773273,
+      "mean_character_frame_posterior": 0.8192899922529856
+    },
+    {
+      "word": "WHY",
+      "start": 416.5567088305489,
+      "end": 416.6970429594272,
+      "mean_character_frame_posterior": 0.997701108455658
+    },
+    {
+      "word": "DO",
+      "start": 416.737138424821,
+      "end": 416.7972816229117,
+      "mean_character_frame_posterior": 0.6836377084255219
+    },
+    {
+      "word": "YOU",
+      "start": 416.8774725536993,
+      "end": 416.9576634844869,
+      "mean_character_frame_posterior": 0.9999319314956665
+    },
+    {
+      "word": "BOUND",
+      "start": 417.03785441527447,
+      "end": 417.35861813842484,
+      "mean_character_frame_posterior": 0.9991449117660522
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Noiselessly,",
+      "start": 409.5,
+      "end": 410.1,
+      "probability": 0.7754845917224884
+    },
+    {
+      "word": " they",
+      "start": 410.1,
+      "end": 410.2,
+      "probability": 0.9977553486824036
+    },
+    {
+      "word": " neared",
+      "start": 410.2,
+      "end": 410.44,
+      "probability": 0.9257825613021851
+    },
+    {
+      "word": " the",
+      "start": 410.44,
+      "end": 410.7,
+      "probability": 0.9709674119949341
+    },
+    {
+      "word": " house,",
+      "start": 410.7,
+      "end": 411.08,
+      "probability": 0.9964590668678284
+    },
+    {
+      "word": " and",
+      "start": 411.28,
+      "end": 411.6,
+      "probability": 0.9937511086463928
+    },
+    {
+      "word": " then",
+      "start": 411.6,
+      "end": 412.14,
+      "probability": 0.9912697076797485
+    },
+    {
+      "word": " a",
+      "start": 412.14,
+      "end": 412.22,
+      "probability": 0.8491607904434204
+    },
+    {
+      "word": " horse",
+      "start": 412.22,
+      "end": 412.54,
+      "probability": 0.8906096816062927
+    },
+    {
+      "word": " young",
+      "start": 412.54,
+      "end": 412.78,
+      "probability": 0.6468684077262878
+    },
+    {
+      "word": " voice",
+      "start": 412.78,
+      "end": 413.28,
+      "probability": 0.9269987344741821
+    },
+    {
+      "word": " chanted",
+      "start": 413.28,
+      "end": 413.62,
+      "probability": 0.9734237790107727
+    },
+    {
+      "word": " out",
+      "start": 413.62,
+      "end": 414.02,
+      "probability": 0.9874868392944336
+    },
+    {
+      "word": " of",
+      "start": 414.02,
+      "end": 414.16,
+      "probability": 0.993624210357666
+    },
+    {
+      "word": " the",
+      "start": 414.16,
+      "end": 414.24,
+      "probability": 0.9967687129974365
+    },
+    {
+      "word": " dusk,",
+      "start": 414.24,
+      "end": 414.68,
+      "probability": 0.793279230594635
+    },
+    {
+      "word": " I",
+      "start": 415.0,
+      "end": 415.3,
+      "probability": 0.08700614422559738
+    },
+    {
+      "word": " said,",
+      "start": 415.3,
+      "end": 415.68,
+      "probability": 0.9958320260047913
+    },
+    {
+      "word": " Bertie,",
+      "start": 415.7,
+      "end": 416.08,
+      "probability": 0.6319050192832947
+    },
+    {
+      "word": " why",
+      "start": 416.34,
+      "end": 416.72,
+      "probability": 0.8329300880432129
+    },
+    {
+      "word": " do",
+      "start": 416.72,
+      "end": 416.82,
+      "probability": 0.9833284616470337
+    },
+    {
+      "word": " you",
+      "start": 416.82,
+      "end": 417.02,
+      "probability": 0.999168872833252
+    },
+    {
+      "word": " bound?",
+      "start": 417.02,
+      "end": 417.38,
+      "probability": 0.8360132575035095
+    }
+  ],
+  "whisper_transcript_in_unit": "Noiselessly, they neared the house, and then a horse young voice chanted out of the dusk, I said, Bertie, why do you bound?",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.2754132919999961
+}

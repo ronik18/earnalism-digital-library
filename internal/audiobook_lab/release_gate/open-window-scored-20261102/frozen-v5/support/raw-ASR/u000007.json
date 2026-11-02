@@ -1,0 +1,420 @@
+{
+  "unit": "u000007",
+  "master_interval_seconds": [
+    73.66454166666666,
+    84.94454166666667
+  ],
+  "expected_text": "“Hardly a soul,” said Framton. “My sister was staying here, at the rectory, you know, some four years ago, and she gave me letters of introduction to some of the people here.”",
+  "ctc_transcript": "HARDLY A SOUL SAID FRANCSON MY SISTER WAS STAYING HERE AT THE RECTORY YOU KNOW SOME FOUR YEARS AGO AND SHE GAVE ME LETTERS OF INTRODUCTION TO SOME OF THE PEOPLE HERE",
+  "ctc_words": [
+    {
+      "word": "HARDLY",
+      "start": 73.84486138247483,
+      "end": 74.20550081409118,
+      "mean_character_frame_posterior": 0.9994997978210449
+    },
+    {
+      "word": "A",
+      "start": 74.30567843398461,
+      "end": 74.32571395796329,
+      "mean_character_frame_posterior": 0.9995360374450684
+    },
+    {
+      "word": "SOUL",
+      "start": 74.40585605387803,
+      "end": 74.64628234162225,
+      "mean_character_frame_posterior": 0.9639374315738678
+    },
+    {
+      "word": "SAID",
+      "start": 75.32749015689757,
+      "end": 75.48777434872706,
+      "mean_character_frame_posterior": 0.9997483044862747
+    },
+    {
+      "word": "FRANCSON",
+      "start": 75.60798749259916,
+      "end": 76.02873349615157,
+      "mean_character_frame_posterior": 0.7674783244729042
+    },
+    {
+      "word": "MY",
+      "start": 76.830154455299,
+      "end": 76.93033207519242,
+      "mean_character_frame_posterior": 0.9999915361404419
+    },
+    {
+      "word": "SISTER",
+      "start": 77.03050969508585,
+      "end": 77.29097150680876,
+      "mean_character_frame_posterior": 0.9996972878774008
+    },
+    {
+      "word": "WAS",
+      "start": 77.35107807874482,
+      "end": 77.43122017465956,
+      "mean_character_frame_posterior": 0.9999412695566813
+    },
+    {
+      "word": "STAYING",
+      "start": 77.51136227057431,
+      "end": 77.83193065423328,
+      "mean_character_frame_posterior": 0.997449244771685
+    },
+    {
+      "word": "HERE",
+      "start": 77.91207275014801,
+      "end": 78.11242798993487,
+      "mean_character_frame_posterior": 0.9948128461837769
+    },
+    {
+      "word": "AT",
+      "start": 78.51313846950859,
+      "end": 78.55320951746596,
+      "mean_character_frame_posterior": 0.9992819130420685
+    },
+    {
+      "word": "THE",
+      "start": 78.59328056542333,
+      "end": 78.67342266133807,
+      "mean_character_frame_posterior": 0.9505859812100729
+    },
+    {
+      "word": "RECTORY",
+      "start": 78.7535647572528,
+      "end": 79.15427523682652,
+      "mean_character_frame_posterior": 0.997102175440107
+    },
+    {
+      "word": "YOU",
+      "start": 79.61509228833629,
+      "end": 79.69523438425104,
+      "mean_character_frame_posterior": 0.9994295239448547
+    },
+    {
+      "word": "KNOW",
+      "start": 79.7553409561871,
+      "end": 79.8755541000592,
+      "mean_character_frame_posterior": 0.9993671178817749
+    },
+    {
+      "word": "SOME",
+      "start": 80.37644219952635,
+      "end": 80.51669086737715,
+      "mean_character_frame_posterior": 0.9894014596939087
+    },
+    {
+      "word": "FOUR",
+      "start": 80.61686848727058,
+      "end": 80.77715267910006,
+      "mean_character_frame_posterior": 0.9995469897985458
+    },
+    {
+      "word": "YEARS",
+      "start": 80.8572947750148,
+      "end": 81.03761449082297,
+      "mean_character_frame_posterior": 0.9384156465530396
+    },
+    {
+      "word": "AGO",
+      "start": 81.11775658673771,
+      "end": 81.29807630254588,
+      "mean_character_frame_posterior": 0.9999879598617554
+    },
+    {
+      "word": "AND",
+      "start": 81.87910649792776,
+      "end": 81.93921306986383,
+      "mean_character_frame_posterior": 0.9991995692253113
+    },
+    {
+      "word": "SHE",
+      "start": 81.99931964179987,
+      "end": 82.0994972616933,
+      "mean_character_frame_posterior": 0.9978593985239664
+    },
+    {
+      "word": "GAVE",
+      "start": 82.15960383362936,
+      "end": 82.35995907341622,
+      "mean_character_frame_posterior": 0.9999247342348099
+    },
+    {
+      "word": "ME",
+      "start": 82.42006564535228,
+      "end": 82.50020774126702,
+      "mean_character_frame_posterior": 0.9999869465827942
+    },
+    {
+      "word": "LETTERS",
+      "start": 82.60038536116045,
+      "end": 82.88088269686205,
+      "mean_character_frame_posterior": 0.9885027068001884
+    },
+    {
+      "word": "OF",
+      "start": 82.98106031675547,
+      "end": 83.02113136471284,
+      "mean_character_frame_posterior": 0.9997298121452332
+    },
+    {
+      "word": "INTRODUCTION",
+      "start": 83.1012734606276,
+      "end": 83.66226813203079,
+      "mean_character_frame_posterior": 0.9819977482159933
+    },
+    {
+      "word": "TO",
+      "start": 83.74241022794553,
+      "end": 83.82255232386026,
+      "mean_character_frame_posterior": 0.9997190833091736
+    },
+    {
+      "word": "SOME",
+      "start": 83.88265889579633,
+      "end": 84.02290756364712,
+      "mean_character_frame_posterior": 0.9998677670955658
+    },
+    {
+      "word": "OF",
+      "start": 84.06297861160449,
+      "end": 84.10304965956186,
+      "mean_character_frame_posterior": 0.9989097714424133
+    },
+    {
+      "word": "THE",
+      "start": 84.16315623149792,
+      "end": 84.22326280343398,
+      "mean_character_frame_posterior": 0.9996331731478373
+    },
+    {
+      "word": "PEOPLE",
+      "start": 84.28336937537004,
+      "end": 84.56386671107164,
+      "mean_character_frame_posterior": 0.9899366398652395
+    },
+    {
+      "word": "HERE",
+      "start": 84.64400880698638,
+      "end": 84.80429299881587,
+      "mean_character_frame_posterior": 0.9992447048425674
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "francson"
+      ],
+      "reference_word_span": [
+        4,
+        5
+      ],
+      "recognized_word_span": [
+        4,
+        5
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'Hardly",
+      "start": 73.74,
+      "end": 74.36,
+      "probability": 0.6548908861974875
+    },
+    {
+      "word": " a",
+      "start": 74.36,
+      "end": 74.46,
+      "probability": 0.5825801491737366
+    },
+    {
+      "word": " soul,'",
+      "start": 74.46,
+      "end": 75.12,
+      "probability": 0.9105411171913147
+    },
+    {
+      "word": " said",
+      "start": 75.12,
+      "end": 75.54,
+      "probability": 0.987757682800293
+    },
+    {
+      "word": " Frampton.",
+      "start": 75.54,
+      "end": 76.0,
+      "probability": 0.9930843710899353
+    },
+    {
+      "word": " My",
+      "start": 76.76,
+      "end": 76.94,
+      "probability": 0.6319923996925354
+    },
+    {
+      "word": " sister",
+      "start": 76.94,
+      "end": 77.26,
+      "probability": 0.9993739724159241
+    },
+    {
+      "word": " was",
+      "start": 77.26,
+      "end": 77.5,
+      "probability": 0.9973276853561401
+    },
+    {
+      "word": " staying",
+      "start": 77.5,
+      "end": 77.76,
+      "probability": 0.9940066337585449
+    },
+    {
+      "word": " here",
+      "start": 77.76,
+      "end": 78.26,
+      "probability": 0.9957291483879089
+    },
+    {
+      "word": " at",
+      "start": 78.26,
+      "end": 78.56,
+      "probability": 0.8166503310203552
+    },
+    {
+      "word": " the",
+      "start": 78.56,
+      "end": 78.74,
+      "probability": 0.9939420819282532
+    },
+    {
+      "word": " rectory.",
+      "start": 78.74,
+      "end": 79.2,
+      "probability": 0.9006072282791138
+    },
+    {
+      "word": " You",
+      "start": 79.6,
+      "end": 79.7,
+      "probability": 0.8999927043914795
+    },
+    {
+      "word": " know,",
+      "start": 79.7,
+      "end": 80.0,
+      "probability": 0.9992456436157227
+    },
+    {
+      "word": " Some",
+      "start": 80.0,
+      "end": 80.48,
+      "probability": 0.3648538291454315
+    },
+    {
+      "word": " four",
+      "start": 80.48,
+      "end": 80.82,
+      "probability": 0.9534148573875427
+    },
+    {
+      "word": " years",
+      "start": 80.82,
+      "end": 81.04,
+      "probability": 0.9984961748123169
+    },
+    {
+      "word": " ago,",
+      "start": 81.04,
+      "end": 81.36,
+      "probability": 0.9979263544082642
+    },
+    {
+      "word": " and",
+      "start": 81.82,
+      "end": 81.98,
+      "probability": 0.9886977672576904
+    },
+    {
+      "word": " she",
+      "start": 81.98,
+      "end": 82.14,
+      "probability": 0.9982313513755798
+    },
+    {
+      "word": " gave",
+      "start": 82.14,
+      "end": 82.36,
+      "probability": 0.9988960027694702
+    },
+    {
+      "word": " me",
+      "start": 82.36,
+      "end": 82.6,
+      "probability": 0.9988771080970764
+    },
+    {
+      "word": " letters",
+      "start": 82.6,
+      "end": 82.82,
+      "probability": 0.9949701428413391
+    },
+    {
+      "word": " of",
+      "start": 82.82,
+      "end": 83.08,
+      "probability": 0.9988542795181274
+    },
+    {
+      "word": " introduction",
+      "start": 83.08,
+      "end": 83.6,
+      "probability": 0.9833046197891235
+    },
+    {
+      "word": " to",
+      "start": 83.6,
+      "end": 83.84,
+      "probability": 0.9969722032546997
+    },
+    {
+      "word": " some",
+      "start": 83.84,
+      "end": 84.06,
+      "probability": 0.998450517654419
+    },
+    {
+      "word": " of",
+      "start": 84.06,
+      "end": 84.16,
+      "probability": 0.9948378205299377
+    },
+    {
+      "word": " the",
+      "start": 84.16,
+      "end": 84.24,
+      "probability": 0.9990363121032715
+    },
+    {
+      "word": " people",
+      "start": 84.24,
+      "end": 84.52,
+      "probability": 0.9983614087104797
+    },
+    {
+      "word": " here.",
+      "start": 84.52,
+      "end": 85.08,
+      "probability": 0.9885696768760681
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'Hardly a soul,' said Frampton. My sister was staying here at the rectory. You know, Some four years ago, and she gave me letters of introduction to some of the people here.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.3951589579999961
+}

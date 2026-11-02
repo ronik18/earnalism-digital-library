@@ -1,0 +1,690 @@
+{
+  "unit": "u000023",
+  "master_interval_seconds": [
+    255.78558333333334,
+    274.66558333333336
+  ],
+  "expected_text": "“I hope you don’t mind the open window,” said Mrs. Sappleton briskly; “my husband and brothers will be home directly from shooting, and they always come in this way. They’ve been out for snipe in the marshes to-day, so they’ll make a fine mess over my poor carpets. So like you men-folk, isn’t it?”",
+  "ctc_transcript": "I HOPE YOU DON'T MIND THE OPEN WINDOW SAID MISSUS SAPPLETON BRISKLY MY HUSBAND AND BROTHERS WILL BE HOME DIRECTLY FROM SHOOTING AND THEY ALWAYS COME IN THIS WAY THEY'VE BEEN OUT FOR SNIPE IN THE MARSHES TO DAY SO THEY'LL MAKE A FINE MESS OVER MY POOR CARPETS SO LIKE YOU MEN FOLK ISN'T IT",
+  "ctc_words": [
+    {
+      "word": "I",
+      "start": 255.94575300459528,
+      "end": 255.965774213503,
+      "mean_character_frame_posterior": 0.9999747276306152
+    },
+    {
+      "word": "HOPE",
+      "start": 256.08590146694945,
+      "end": 256.2460711382114,
+      "mean_character_frame_posterior": 0.9972911924123764
+    },
+    {
+      "word": "YOU",
+      "start": 256.3061347649346,
+      "end": 256.3661983916578,
+      "mean_character_frame_posterior": 0.9999591112136841
+    },
+    {
+      "word": "DON'T",
+      "start": 256.42626201838107,
+      "end": 256.586431689643,
+      "mean_character_frame_posterior": 0.8986363887786866
+    },
+    {
+      "word": "MIND",
+      "start": 256.6464953163662,
+      "end": 256.90677103216683,
+      "mean_character_frame_posterior": 0.9999496936798096
+    },
+    {
+      "word": "THE",
+      "start": 256.98685586779783,
+      "end": 257.0869619123365,
+      "mean_character_frame_posterior": 0.9944119056065878
+    },
+    {
+      "word": "OPEN",
+      "start": 257.2671527925062,
+      "end": 257.4673648815836,
+      "mean_character_frame_posterior": 0.9936986714601517
+    },
+    {
+      "word": "WINDOW",
+      "start": 257.6075133439378,
+      "end": 257.96789510427715,
+      "mean_character_frame_posterior": 0.9999801715215048
+    },
+    {
+      "word": "SAID",
+      "start": 258.5284889536939,
+      "end": 258.66863741604806,
+      "mean_character_frame_posterior": 0.999538853764534
+    },
+    {
+      "word": "MISSUS",
+      "start": 258.74872225167906,
+      "end": 259.0089979674797,
+      "mean_character_frame_posterior": 0.9694345394770304
+    },
+    {
+      "word": "SAPPLETON",
+      "start": 259.0890828031106,
+      "end": 259.56959181689643,
+      "mean_character_frame_posterior": 0.9825025399525961
+    },
+    {
+      "word": "BRISKLY",
+      "start": 259.6496766525274,
+      "end": 260.07012203959,
+      "mean_character_frame_posterior": 0.9998449427740914
+    },
+    {
+      "word": "MY",
+      "start": 260.79088556026863,
+      "end": 260.89099160480737,
+      "mean_character_frame_posterior": 0.9999833106994629
+    },
+    {
+      "word": "HUSBAND",
+      "start": 261.0111188582538,
+      "end": 261.3514794096854,
+      "mean_character_frame_posterior": 0.9985217877796718
+    },
+    {
+      "word": "AND",
+      "start": 261.4315642453164,
+      "end": 261.4916278720396,
+      "mean_character_frame_posterior": 0.9794097940127054
+    },
+    {
+      "word": "BROTHERS",
+      "start": 261.57171270767054,
+      "end": 261.95211567691763,
+      "mean_character_frame_posterior": 0.9357035085558891
+    },
+    {
+      "word": "WILL",
+      "start": 262.0121793036409,
+      "end": 262.1923701838105,
+      "mean_character_frame_posterior": 0.9998699426651001
+    },
+    {
+      "word": "BE",
+      "start": 262.23241260162604,
+      "end": 262.29247622834924,
+      "mean_character_frame_posterior": 0.9999968409538269
+    },
+    {
+      "word": "HOME",
+      "start": 262.3725610639802,
+      "end": 262.5327307352421,
+      "mean_character_frame_posterior": 0.9987250119447708
+    },
+    {
+      "word": "DIRECTLY",
+      "start": 262.6128155708731,
+      "end": 263.0933245846589,
+      "mean_character_frame_posterior": 0.9981818646192551
+    },
+    {
+      "word": "FROM",
+      "start": 263.1734094202899,
+      "end": 263.2935366737363,
+      "mean_character_frame_posterior": 0.999247670173645
+    },
+    {
+      "word": "SHOOTING",
+      "start": 263.41366392718277,
+      "end": 263.7540244786143,
+      "mean_character_frame_posterior": 0.9982811585068703
+    },
+    {
+      "word": "AND",
+      "start": 264.17446986567694,
+      "end": 264.2545547013079,
+      "mean_character_frame_posterior": 0.9987886746724447
+    },
+    {
+      "word": "THEY",
+      "start": 264.29459711912335,
+      "end": 264.3947031636621,
+      "mean_character_frame_posterior": 0.9582745730876923
+    },
+    {
+      "word": "ALWAYS",
+      "start": 264.474787999293,
+      "end": 264.7350637150937,
+      "mean_character_frame_posterior": 0.995477686325709
+    },
+    {
+      "word": "COME",
+      "start": 264.8551909685401,
+      "end": 265.07542426652526,
+      "mean_character_frame_posterior": 0.9999927878379822
+    },
+    {
+      "word": "IN",
+      "start": 265.15550910215626,
+      "end": 265.19555151997173,
+      "mean_character_frame_posterior": 0.999346524477005
+    },
+    {
+      "word": "THIS",
+      "start": 265.27563635560267,
+      "end": 265.39576360904914,
+      "mean_character_frame_posterior": 0.9983695298433304
+    },
+    {
+      "word": "WAY",
+      "start": 265.5559332803111,
+      "end": 265.7761665782962,
+      "mean_character_frame_posterior": 0.9999909400939941
+    },
+    {
+      "word": "THEY'VE",
+      "start": 266.41684526334393,
+      "end": 266.6370785613291,
+      "mean_character_frame_posterior": 0.9930878622191293
+    },
+    {
+      "word": "BEEN",
+      "start": 266.67712097914455,
+      "end": 266.81726944149875,
+      "mean_character_frame_posterior": 0.9997719973325729
+    },
+    {
+      "word": "OUT",
+      "start": 266.877333068222,
+      "end": 266.9774391127607,
+      "mean_character_frame_posterior": 0.9999467929204305
+    },
+    {
+      "word": "FOR",
+      "start": 267.0375027394839,
+      "end": 267.13760878402263,
+      "mean_character_frame_posterior": 0.999957005182902
+    },
+    {
+      "word": "SNIPE",
+      "start": 267.2377148285613,
+      "end": 267.6181177978084,
+      "mean_character_frame_posterior": 0.9910803318023682
+    },
+    {
+      "word": "IN",
+      "start": 267.67818142453166,
+      "end": 267.71822384234713,
+      "mean_character_frame_posterior": 0.9995054006576538
+    },
+    {
+      "word": "THE",
+      "start": 267.77828746907034,
+      "end": 267.83835109579354,
+      "mean_character_frame_posterior": 0.9994299213091532
+    },
+    {
+      "word": "MARSHES",
+      "start": 267.8984147225168,
+      "end": 268.2387752739484,
+      "mean_character_frame_posterior": 0.999264291354588
+    },
+    {
+      "word": "TO",
+      "start": 268.3388813184871,
+      "end": 268.41896615411804,
+      "mean_character_frame_posterior": 0.9998089373111725
+    },
+    {
+      "word": "DAY",
+      "start": 268.4790297808413,
+      "end": 268.63919945210324,
+      "mean_character_frame_posterior": 0.9999862909317017
+    },
+    {
+      "word": "SO",
+      "start": 269.19979330151995,
+      "end": 269.27987813715094,
+      "mean_character_frame_posterior": 0.9998543560504913
+    },
+    {
+      "word": "THEY'LL",
+      "start": 269.3599629727819,
+      "end": 269.58019627076703,
+      "mean_character_frame_posterior": 0.9954527957098824
+    },
+    {
+      "word": "MAKE",
+      "start": 269.6402598974903,
+      "end": 269.78040835984444,
+      "mean_character_frame_posterior": 0.9999450296163559
+    },
+    {
+      "word": "A",
+      "start": 269.8805144043832,
+      "end": 269.9005356132909,
+      "mean_character_frame_posterior": 0.9994025230407715
+    },
+    {
+      "word": "FINE",
+      "start": 270.0406840756451,
+      "end": 270.32098100035347,
+      "mean_character_frame_posterior": 0.9988202899694443
+    },
+    {
+      "word": "MESS",
+      "start": 270.4611294627077,
+      "end": 270.7214051785083,
+      "mean_character_frame_posterior": 0.9066652059555054
+    },
+    {
+      "word": "OVER",
+      "start": 270.90159605867797,
+      "end": 271.0617657299399,
+      "mean_character_frame_posterior": 0.9993491619825363
+    },
+    {
+      "word": "MY",
+      "start": 271.14185056557085,
+      "end": 271.22193540120185,
+      "mean_character_frame_posterior": 0.904094398021698
+    },
+    {
+      "word": "POOR",
+      "start": 271.36208386355605,
+      "end": 271.54227474372567,
+      "mean_character_frame_posterior": 0.9995513558387756
+    },
+    {
+      "word": "CARPETS",
+      "start": 271.7024444149876,
+      "end": 272.20297463768117,
+      "mean_character_frame_posterior": 0.9988081710679191
+    },
+    {
+      "word": "SO",
+      "start": 272.7635684870979,
+      "end": 272.90371694945213,
+      "mean_character_frame_posterior": 0.9999194741249084
+    },
+    {
+      "word": "LIKE",
+      "start": 273.063886620714,
+      "end": 273.22405629197596,
+      "mean_character_frame_posterior": 0.9999891519546509
+    },
+    {
+      "word": "YOU",
+      "start": 273.28411991869916,
+      "end": 273.3842259632379,
+      "mean_character_frame_posterior": 0.9999669790267944
+    },
+    {
+      "word": "MEN",
+      "start": 273.48433200777663,
+      "end": 273.6244804701308,
+      "mean_character_frame_posterior": 0.9998886783917745
+    },
+    {
+      "word": "FOLK",
+      "start": 273.74460772357725,
+      "end": 273.94481981265466,
+      "mean_character_frame_posterior": 0.9958178848028183
+    },
+    {
+      "word": "ISN'T",
+      "start": 274.26515915517854,
+      "end": 274.46537124425595,
+      "mean_character_frame_posterior": 0.9620062947273255
+    },
+    {
+      "word": "IT",
+      "start": 274.5454560798869,
+      "end": 274.58549849770236,
+      "mean_character_frame_posterior": 0.9997536242008209
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "mrs"
+      ],
+      "recognized": [
+        "missus"
+      ],
+      "reference_word_span": [
+        9,
+        10
+      ],
+      "recognized_word_span": [
+        9,
+        10
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " \"'I",
+      "start": 255.74,
+      "end": 256.04,
+      "probability": 0.8787917494773865
+    },
+    {
+      "word": " hope",
+      "start": 256.04,
+      "end": 256.3,
+      "probability": 0.9985302686691284
+    },
+    {
+      "word": " you",
+      "start": 256.3,
+      "end": 256.4,
+      "probability": 0.9986163377761841
+    },
+    {
+      "word": " don't",
+      "start": 256.4,
+      "end": 256.62,
+      "probability": 0.9977810382843018
+    },
+    {
+      "word": " mind",
+      "start": 256.62,
+      "end": 256.92,
+      "probability": 0.9949295520782471
+    },
+    {
+      "word": " the",
+      "start": 256.92,
+      "end": 257.2,
+      "probability": 0.9643024802207947
+    },
+    {
+      "word": " open",
+      "start": 257.2,
+      "end": 257.5,
+      "probability": 0.9358945488929749
+    },
+    {
+      "word": " window,'",
+      "start": 257.5,
+      "end": 258.42,
+      "probability": 0.9719016551971436
+    },
+    {
+      "word": " said",
+      "start": 258.42,
+      "end": 258.7,
+      "probability": 0.97627192735672
+    },
+    {
+      "word": " Mrs.",
+      "start": 258.7,
+      "end": 259.06,
+      "probability": 0.9707880616188049
+    },
+    {
+      "word": " Sappleton",
+      "start": 259.18,
+      "end": 259.46,
+      "probability": 0.576487253109614
+    },
+    {
+      "word": " briskly.",
+      "start": 259.46,
+      "end": 260.14,
+      "probability": 0.8980320394039154
+    },
+    {
+      "word": " \"'My",
+      "start": 260.64,
+      "end": 260.96,
+      "probability": 0.7928586900234222
+    },
+    {
+      "word": " husband",
+      "start": 260.96,
+      "end": 261.3,
+      "probability": 0.9974827170372009
+    },
+    {
+      "word": " and",
+      "start": 261.3,
+      "end": 261.48,
+      "probability": 0.997128427028656
+    },
+    {
+      "word": " brothers",
+      "start": 261.48,
+      "end": 261.88,
+      "probability": 0.9895937442779541
+    },
+    {
+      "word": " will",
+      "start": 261.88,
+      "end": 262.14,
+      "probability": 0.9975104331970215
+    },
+    {
+      "word": " be",
+      "start": 262.14,
+      "end": 262.4,
+      "probability": 0.9995269775390625
+    },
+    {
+      "word": " home",
+      "start": 262.4,
+      "end": 262.56,
+      "probability": 0.9702968001365662
+    },
+    {
+      "word": " directly",
+      "start": 262.56,
+      "end": 262.98,
+      "probability": 0.9960817694664001
+    },
+    {
+      "word": " from",
+      "start": 262.98,
+      "end": 263.32,
+      "probability": 0.9931269884109497
+    },
+    {
+      "word": " shooting,",
+      "start": 263.32,
+      "end": 263.74,
+      "probability": 0.9974130988121033
+    },
+    {
+      "word": " and",
+      "start": 264.2,
+      "end": 264.26,
+      "probability": 0.9511363506317139
+    },
+    {
+      "word": " they",
+      "start": 264.26,
+      "end": 264.42,
+      "probability": 0.9977263808250427
+    },
+    {
+      "word": " always",
+      "start": 264.42,
+      "end": 264.76,
+      "probability": 0.9970625042915344
+    },
+    {
+      "word": " come",
+      "start": 264.76,
+      "end": 265.08,
+      "probability": 0.9984337687492371
+    },
+    {
+      "word": " in",
+      "start": 265.08,
+      "end": 265.3,
+      "probability": 0.9822140336036682
+    },
+    {
+      "word": " this",
+      "start": 265.3,
+      "end": 265.44,
+      "probability": 0.9991959929466248
+    },
+    {
+      "word": " way.",
+      "start": 265.44,
+      "end": 265.9,
+      "probability": 0.9998010993003845
+    },
+    {
+      "word": " They've",
+      "start": 265.9,
+      "end": 266.64,
+      "probability": 0.8078896701335907
+    },
+    {
+      "word": " been",
+      "start": 266.64,
+      "end": 266.82,
+      "probability": 0.9963926672935486
+    },
+    {
+      "word": " out",
+      "start": 266.82,
+      "end": 267.08,
+      "probability": 0.9984346032142639
+    },
+    {
+      "word": " for",
+      "start": 267.08,
+      "end": 267.3,
+      "probability": 0.9948248863220215
+    },
+    {
+      "word": " snipe",
+      "start": 267.3,
+      "end": 267.6,
+      "probability": 0.9198021292686462
+    },
+    {
+      "word": " in",
+      "start": 267.6,
+      "end": 267.78,
+      "probability": 0.9666673541069031
+    },
+    {
+      "word": " the",
+      "start": 267.78,
+      "end": 267.9,
+      "probability": 0.9765325784683228
+    },
+    {
+      "word": " marshes",
+      "start": 267.9,
+      "end": 268.28,
+      "probability": 0.9836230576038361
+    },
+    {
+      "word": " today,",
+      "start": 268.28,
+      "end": 268.84,
+      "probability": 0.9727073907852173
+    },
+    {
+      "word": " so",
+      "start": 269.06,
+      "end": 269.36,
+      "probability": 0.955948531627655
+    },
+    {
+      "word": " they'll",
+      "start": 269.36,
+      "end": 269.58,
+      "probability": 0.9884979724884033
+    },
+    {
+      "word": " make",
+      "start": 269.58,
+      "end": 269.82,
+      "probability": 0.9946491122245789
+    },
+    {
+      "word": " a",
+      "start": 269.82,
+      "end": 270.04,
+      "probability": 0.9966553449630737
+    },
+    {
+      "word": " fine",
+      "start": 270.04,
+      "end": 270.32,
+      "probability": 0.9958627223968506
+    },
+    {
+      "word": " mess",
+      "start": 270.32,
+      "end": 270.76,
+      "probability": 0.9983705878257751
+    },
+    {
+      "word": " over",
+      "start": 270.76,
+      "end": 271.06,
+      "probability": 0.9897034764289856
+    },
+    {
+      "word": " my",
+      "start": 271.06,
+      "end": 271.36,
+      "probability": 0.9933631420135498
+    },
+    {
+      "word": " poor",
+      "start": 271.36,
+      "end": 271.58,
+      "probability": 0.9952516555786133
+    },
+    {
+      "word": " carpets.",
+      "start": 271.58,
+      "end": 272.48,
+      "probability": 0.9937326610088348
+    },
+    {
+      "word": " So",
+      "start": 272.8,
+      "end": 272.92,
+      "probability": 0.9523333311080933
+    },
+    {
+      "word": " like",
+      "start": 272.92,
+      "end": 273.28,
+      "probability": 0.7814386487007141
+    },
+    {
+      "word": " you",
+      "start": 273.28,
+      "end": 273.5,
+      "probability": 0.988362729549408
+    },
+    {
+      "word": " menfolk,",
+      "start": 273.5,
+      "end": 274.02,
+      "probability": 0.6971968412399292
+    },
+    {
+      "word": " isn't",
+      "start": 274.24,
+      "end": 274.44,
+      "probability": 0.9897049963474274
+    }
+  ],
+  "whisper_transcript_in_unit": "\"'I hope you don't mind the open window,' said Mrs. Sappleton briskly. \"'My husband and brothers will be home directly from shooting, and they always come in this way. They've been out for snipe in the marshes today, so they'll make a fine mess over my poor carpets. So like you menfolk, isn't",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.8032964159999949
+}

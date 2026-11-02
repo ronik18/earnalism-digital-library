@@ -1,0 +1,19 @@
+{
+  "schema": "earnalism.scored-retained-delivery.v1",
+  "slug": "the-open-window",
+  "policy": "open_window_scored_retained_successor.v1",
+  "segment_id": "chapter-001-full",
+  "duration_ms": 491436,
+  "audio_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+  "listened_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+  "owner_acceptance_sha256": "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a",
+  "scoped_name_adjudication_sha256": "e359a75515950401b14c8c1f0733b8d00c2fc1d49dd4d71f4e0ff2fdec28858e",
+  "actual_clock_transfer_sha256": "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0",
+  "container_reuse_sha256": "4a5a293ef666bafd6913f914b60694572a2d4dc04270364dce4d42ef0ad4a883",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "measured_timing_evidence_sha256": "69bafd8629295cf880e2d9e62e43934643925f6fef2d4db5adbcc8bba643d7d2",
+  "narration_synthesis": false,
+  "new_score_from_retained_licensed_recordings": true,
+  "narration_disclosure": "AI narration: stock Ryan, Qwen3-TTS CustomVoice. The Open Window by Saki. Music: “Heartwarming” — Kevin MacLeod (incompetech.com), ISRC USUAN1100207; “Heartbreaking” — Kevin MacLeod (incompetech.com), ISRC USUAN1100208. Sources: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207 and https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208. Licence: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Changes: excerpted, arranged with reprises and intentional silences, level-adjusted, faded, music-only ducked, and mixed beneath narration with common constant output gain. No endorsement implied."
+}

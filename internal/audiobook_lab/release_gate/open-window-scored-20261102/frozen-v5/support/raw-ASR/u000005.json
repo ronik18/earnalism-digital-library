@@ -1,0 +1,331 @@
+{
+  "unit": "u000005",
+  "master_interval_seconds": [
+    57.67358333333333,
+    65.43358333333333
+  ],
+  "expected_text": "Framton wondered whether Mrs. Sappleton, the lady to whom he was presenting one of the letters of introduction, came into the nice division.",
+  "ctc_transcript": "FRAMPTON WONDERED WHETHER MISSUS SAPLETON THE LADY TO WHOM HE WAS PRESENTING ONE OF THE LETTERS OF INTRODUCTION CAME INTO THE NICE DIVISION",
+  "ctc_words": [
+    {
+      "word": "FRAMPTON",
+      "start": 57.79389341085271,
+      "end": 58.19492700258398,
+      "mean_character_frame_posterior": 0.9424419403076172
+    },
+    {
+      "word": "WONDERED",
+      "start": 58.31523708010336,
+      "end": 58.6761673126615,
+      "mean_character_frame_posterior": 0.9740998595952988
+    },
+    {
+      "word": "WHETHER",
+      "start": 58.77642571059432,
+      "end": 59.03709754521964,
+      "mean_character_frame_posterior": 0.9927241291318621
+    },
+    {
+      "word": "MISSUS",
+      "start": 59.17745930232558,
+      "end": 59.4381311369509,
+      "mean_character_frame_posterior": 0.9833624263604482
+    },
+    {
+      "word": "SAPLETON",
+      "start": 59.518337855297155,
+      "end": 60.07978488372093,
+      "mean_character_frame_posterior": 0.9788934364914894
+    },
+    {
+      "word": "THE",
+      "start": 60.42066343669251,
+      "end": 60.52092183462533,
+      "mean_character_frame_posterior": 0.888282299041748
+    },
+    {
+      "word": "LADY",
+      "start": 60.581076873385015,
+      "end": 60.80164534883721,
+      "mean_character_frame_posterior": 0.9999965131282806
+    },
+    {
+      "word": "TO",
+      "start": 60.8618003875969,
+      "end": 60.92195542635659,
+      "mean_character_frame_posterior": 0.9997498393058777
+    },
+    {
+      "word": "WHOM",
+      "start": 60.98211046511628,
+      "end": 61.16257558139535,
+      "mean_character_frame_posterior": 0.8740500658750534
+    },
+    {
+      "word": "HE",
+      "start": 61.22273062015504,
+      "end": 61.28288565891473,
+      "mean_character_frame_posterior": 0.9999712109565735
+    },
+    {
+      "word": "WAS",
+      "start": 61.34304069767442,
+      "end": 61.42324741602067,
+      "mean_character_frame_posterior": 0.9997722705205282
+    },
+    {
+      "word": "PRESENTING",
+      "start": 61.52350581395349,
+      "end": 62.00474612403101,
+      "mean_character_frame_posterior": 0.9981998324394226
+    },
+    {
+      "word": "ONE",
+      "start": 62.125056201550386,
+      "end": 62.20526291989664,
+      "mean_character_frame_posterior": 0.9999832709630331
+    },
+    {
+      "word": "OF",
+      "start": 62.24536627906977,
+      "end": 62.285469638242894,
+      "mean_character_frame_posterior": 0.999895453453064
+    },
+    {
+      "word": "THE",
+      "start": 62.32557299741602,
+      "end": 62.385728036175706,
+      "mean_character_frame_posterior": 0.9996343453725179
+    },
+    {
+      "word": "LETTERS",
+      "start": 62.4458830749354,
+      "end": 62.72660658914729,
+      "mean_character_frame_posterior": 0.9999234676361084
+    },
+    {
+      "word": "OF",
+      "start": 62.80681330749354,
+      "end": 62.846916666666665,
+      "mean_character_frame_posterior": 0.9998556077480316
+    },
+    {
+      "word": "INTRODUCTION",
+      "start": 62.92712338501292,
+      "end": 63.54872545219638,
+      "mean_character_frame_posterior": 0.9995104769865671
+    },
+    {
+      "word": "CAME",
+      "start": 63.929707364341084,
+      "end": 64.13022416020672,
+      "mean_character_frame_posterior": 0.9999289065599442
+    },
+    {
+      "word": "INTO",
+      "start": 64.21043087855297,
+      "end": 64.37084431524548,
+      "mean_character_frame_posterior": 0.9961103647947311
+    },
+    {
+      "word": "THE",
+      "start": 64.43099935400517,
+      "end": 64.49115439276486,
+      "mean_character_frame_posterior": 0.9986917972564697
+    },
+    {
+      "word": "NICE",
+      "start": 64.57136111111112,
+      "end": 64.77187790697674,
+      "mean_character_frame_posterior": 0.9999760687351227
+    },
+    {
+      "word": "DIVISION",
+      "start": 64.83203294573643,
+      "end": 65.25311821705426,
+      "mean_character_frame_posterior": 0.9997492358088493
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "frampton"
+      ],
+      "reference_word_span": [
+        0,
+        1
+      ],
+      "recognized_word_span": [
+        0,
+        1
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "mrs",
+        "sappleton"
+      ],
+      "recognized": [
+        "missus",
+        "sapleton"
+      ],
+      "reference_word_span": [
+        3,
+        5
+      ],
+      "recognized_word_span": [
+        3,
+        5
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Frampton",
+      "start": 57.88,
+      "end": 58.16,
+      "probability": 0.7931132316589355
+    },
+    {
+      "word": " wondered",
+      "start": 58.16,
+      "end": 58.6,
+      "probability": 0.9979434609413147
+    },
+    {
+      "word": " whether",
+      "start": 58.6,
+      "end": 59.16,
+      "probability": 0.9881306886672974
+    },
+    {
+      "word": " Mrs.",
+      "start": 59.16,
+      "end": 59.44,
+      "probability": 0.8475509881973267
+    },
+    {
+      "word": " Sappleton,",
+      "start": 59.76,
+      "end": 59.94,
+      "probability": 0.6090810398260752
+    },
+    {
+      "word": " the",
+      "start": 60.52,
+      "end": 60.54,
+      "probability": 0.9957131147384644
+    },
+    {
+      "word": " lady",
+      "start": 60.54,
+      "end": 60.76,
+      "probability": 0.9601022005081177
+    },
+    {
+      "word": " to",
+      "start": 60.76,
+      "end": 61.0,
+      "probability": 0.9907298684120178
+    },
+    {
+      "word": " whom",
+      "start": 61.0,
+      "end": 61.18,
+      "probability": 0.9987998008728027
+    },
+    {
+      "word": " he",
+      "start": 61.18,
+      "end": 61.28,
+      "probability": 0.9969719648361206
+    },
+    {
+      "word": " was",
+      "start": 61.28,
+      "end": 61.48,
+      "probability": 0.9991021156311035
+    },
+    {
+      "word": " presenting",
+      "start": 61.48,
+      "end": 61.94,
+      "probability": 0.99583899974823
+    },
+    {
+      "word": " one",
+      "start": 61.94,
+      "end": 62.26,
+      "probability": 0.9926313161849976
+    },
+    {
+      "word": " of",
+      "start": 62.26,
+      "end": 62.34,
+      "probability": 0.9977424144744873
+    },
+    {
+      "word": " the",
+      "start": 62.34,
+      "end": 62.36,
+      "probability": 0.9967108964920044
+    },
+    {
+      "word": " letters",
+      "start": 62.36,
+      "end": 62.66,
+      "probability": 0.9833418130874634
+    },
+    {
+      "word": " of",
+      "start": 62.66,
+      "end": 62.92,
+      "probability": 0.9988766312599182
+    },
+    {
+      "word": " introduction,",
+      "start": 62.92,
+      "end": 63.5,
+      "probability": 0.9762059450149536
+    },
+    {
+      "word": " came",
+      "start": 63.96,
+      "end": 64.08,
+      "probability": 0.997040331363678
+    },
+    {
+      "word": " into",
+      "start": 64.08,
+      "end": 64.4,
+      "probability": 0.9845900535583496
+    },
+    {
+      "word": " the",
+      "start": 64.4,
+      "end": 64.56,
+      "probability": 0.9955623149871826
+    },
+    {
+      "word": " nice",
+      "start": 64.56,
+      "end": 64.82,
+      "probability": 0.7924791574478149
+    },
+    {
+      "word": " division.",
+      "start": 64.82,
+      "end": 65.22,
+      "probability": 0.9970183372497559
+    }
+  ],
+  "whisper_transcript_in_unit": "Frampton wondered whether Mrs. Sappleton, the lady to whom he was presenting one of the letters of introduction, came into the nice division.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.2477653329999896
+}

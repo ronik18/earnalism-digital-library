@@ -1,0 +1,21 @@
+{
+  "schema": "earnalism.open_window_v5_local_proposed_packet_checks.v1",
+  "status": "PASS_LOCAL_EXACT_FACT_AND_GENERIC_STRUCTURE_CHECKS_NOT_TRUST_ADOPTION",
+  "exact_hash_references_verified": 36,
+  "raw39_units_and_prior6_adjudications_unchanged": true,
+  "twelve_new_name_changes_per_recognizer": 12,
+  "no_global_proper_name_alias": true,
+  "all_metrics_recomputed": true,
+  "all39_source_spans_once_in_order": true,
+  "first_and_last_source_tokens_match_both_actual_derived_recognizers": true,
+  "actual_supported_reader_paragraphs": 21,
+  "all21_starts_exact_inherited29_measured_groups": true,
+  "generic_cue_count": 21,
+  "negative_identity_estimation_guards": 3,
+  "actual48window_clock_proof_bound": true,
+  "owner_full_mix_ratings_unchanged": true,
+  "remaining_known_material_wording_findings": [],
+  "source_profile_implementation_and_trusted_registration": "PENDING",
+  "external_storage_runtime_customer_gates": "UNPERFORMED",
+  "no_provider_or_model_or_canonical_or_active_budget_calls": true
+}

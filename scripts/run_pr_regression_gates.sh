@@ -50,7 +50,7 @@ env \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
 echo "==> Protected package publication proof and scope qualification"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_native_scored_package.py internal/audiobook_lab/scripts/test_selfish_cedar_source_adoption.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py internal/audiobook_lab/scripts/test_retained_master_derivative.py backend/tests/test_exact_retained_master_duration.py backend/tests/test_rights_decision_gate.py internal/audiobook_lab/scripts/test_native_replacement_release.py internal/audiobook_lab/scripts/test_native_continuous_acceptance.py backend/tests/test_native_audiobook_replacement_http.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_native_scored_package.py internal/audiobook_lab/scripts/test_selfish_cedar_source_adoption.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py internal/audiobook_lab/scripts/test_retained_master_derivative.py backend/tests/test_exact_retained_master_duration.py backend/tests/test_rights_decision_gate.py internal/audiobook_lab/scripts/test_native_replacement_release.py internal/audiobook_lab/scripts/test_native_continuous_acceptance.py backend/tests/test_native_audiobook_replacement_http.py backend/tests/test_native_audio_review_scope.py backend/tests/test_native_audio_review_operator.py internal/audiobook_lab/scripts/test_open_window_scored_retained.py
 node frontend/scripts/native-replacement-presentation.test.mjs
 
 echo "==> Preserved Reader source validation and dummy signup race"
@@ -132,7 +132,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
-  scripts.test_process_full_catalogue
+  scripts.test_process_full_catalogue \
+  scripts.test_catalogue_clearance_registry_successor
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
 node scripts/test_regression_asset_isolation.cjs

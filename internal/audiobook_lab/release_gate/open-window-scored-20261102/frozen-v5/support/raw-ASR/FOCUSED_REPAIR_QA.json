@@ -1,0 +1,92 @@
+{
+  "wav_sha256": "4324ace4cc5b7caea523b4546908b220a63bd01c35f037a633f359eae4b083aa",
+  "expected": "To Framton it was all purely horrible.",
+  "whisper": {
+    "text": " To France, it was all purely horrible.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.02,
+        "text": " To France, it was all purely horrible.",
+        "tokens": [
+          50363,
+          1675,
+          4881,
+          11,
+          340,
+          373,
+          477,
+          14177,
+          12361,
+          13,
+          50571
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.6790515581766764,
+        "compression_ratio": 0.8260869565217391,
+        "no_speech_prob": 0.008430647663772106,
+        "words": [
+          {
+            "word": " To",
+            "start": 0.0,
+            "end": 1.04,
+            "probability": 0.2584737241268158
+          },
+          {
+            "word": " France,",
+            "start": 1.04,
+            "end": 1.56,
+            "probability": 0.13166171312332153
+          },
+          {
+            "word": " it",
+            "start": 1.8,
+            "end": 2.56,
+            "probability": 0.6897270083427429
+          },
+          {
+            "word": " was",
+            "start": 2.56,
+            "end": 2.76,
+            "probability": 0.980363667011261
+          },
+          {
+            "word": " all",
+            "start": 2.76,
+            "end": 3.22,
+            "probability": 0.9827398061752319
+          },
+          {
+            "word": " purely",
+            "start": 3.22,
+            "end": 3.54,
+            "probability": 0.9830658435821533
+          },
+          {
+            "word": " horrible.",
+            "start": 3.54,
+            "end": 4.02,
+            "probability": 0.9960632920265198
+          }
+        ]
+      }
+    ],
+    "language": "en"
+  },
+  "ctc": "TO FRANCE IN IT WAS ALL PURELY HORRIBLE",
+  "whisper_exact_normalized_match": false,
+  "ctc_exact_normalized_match": false,
+  "duration_seconds": 4.24,
+  "peak": 0.4866708219051361,
+  "finite": true,
+  "clipped_fraction": 0.0,
+  "source_prompt": false,
+  "device": "cpu",
+  "new_paid_compute": 0,
+  "limitations": [
+    "ASR agreement supports spoken words; subjective listening and narrator identity are not certified.",
+    "No full-master admission or finite alignment bound inferred."
+  ]
+}

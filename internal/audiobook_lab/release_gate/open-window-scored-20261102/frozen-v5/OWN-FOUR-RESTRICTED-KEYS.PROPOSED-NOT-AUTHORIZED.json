@@ -1,0 +1,109 @@
+{
+  "schema": "earnalism.open_window_four_scoped_key_request_proposal.v1",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "maximum_additional_keys_requested": 4,
+  "actual_new_keys_created": 0,
+  "ttl_seconds": 7200,
+  "descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "requests": [
+    {
+      "sequence": 1,
+      "store": "prod",
+      "role": "upload",
+      "expected_bucket_name": "earnalism-audiobooks-prod-v2-236e72b043e2",
+      "request": {
+        "accountId": "236e72b043e2",
+        "capabilities": [
+          "listBuckets",
+          "listFiles",
+          "readFiles",
+          "readFileRetentions",
+          "writeFiles"
+        ],
+        "keyName": "ear-openwindow-scored-prod-upload-20261102",
+        "validDurationInSeconds": 7200,
+        "bucketIds": [
+          "22c3760e0722abf094f30e12"
+        ],
+        "namePrefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/"
+      },
+      "request_sha256": "b58b66f8b57478daebe0af6108327a727e34a0d57159bd84876a467a5992697b",
+      "status": "PROPOSED_NOT_AUTHORIZED_NOT_SENT"
+    },
+    {
+      "sequence": 2,
+      "store": "prod",
+      "role": "configuration-reader",
+      "expected_bucket_name": "earnalism-audiobooks-prod-v2-236e72b043e2",
+      "request": {
+        "accountId": "236e72b043e2",
+        "capabilities": [
+          "listBuckets",
+          "readBuckets",
+          "readBucketRetentions"
+        ],
+        "keyName": "ear-openwindow-scored-prod-config-20261102",
+        "validDurationInSeconds": 7200,
+        "bucketIds": [
+          "22c3760e0722abf094f30e12"
+        ]
+      },
+      "request_sha256": "3c590d1d673e3c9770e51edadfaf8a2ce324905476cab2747ed04937389541b2",
+      "status": "PROPOSED_NOT_AUTHORIZED_NOT_SENT"
+    },
+    {
+      "sequence": 3,
+      "store": "dr",
+      "role": "upload",
+      "expected_bucket_name": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+      "request": {
+        "accountId": "8af6a3af49d8",
+        "capabilities": [
+          "listBuckets",
+          "listFiles",
+          "readFiles",
+          "readFileRetentions",
+          "writeFiles"
+        ],
+        "keyName": "ear-openwindow-scored-dr-upload-20261102",
+        "validDurationInSeconds": 7200,
+        "bucketIds": [
+          "a83aafe65a63aaff94f90d18"
+        ],
+        "namePrefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/"
+      },
+      "request_sha256": "42398d7c751cda4e72f8a2f03e55759fde3449667ebd6fc2c9f9339ab34eee1e",
+      "status": "PROPOSED_NOT_AUTHORIZED_NOT_SENT"
+    },
+    {
+      "sequence": 4,
+      "store": "dr",
+      "role": "configuration-reader",
+      "expected_bucket_name": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+      "request": {
+        "accountId": "8af6a3af49d8",
+        "capabilities": [
+          "listBuckets",
+          "readBuckets",
+          "readBucketRetentions"
+        ],
+        "keyName": "ear-openwindow-scored-dr-config-20261102",
+        "validDurationInSeconds": 7200,
+        "bucketIds": [
+          "a83aafe65a63aaff94f90d18"
+        ]
+      },
+      "request_sha256": "19d853326738b5426dc8fb1feea82fd43fdf8bd7c6867bab156e29ed55bafbcf",
+      "status": "PROPOSED_NOT_AUTHORIZED_NOT_SENT"
+    }
+  ],
+  "owner_receipt_sha256": null,
+  "no_borrowed_selfish_keys_or_cap": true,
+  "authority_preconditions": [
+    "Supported scored-retained sourceQA/rights/profile integrated and actual exact-headCI/review passes",
+    "Actual relevant merged source inputs and clean canonical handoff qualified",
+    "Current final descriptor/fourasset bytes unchanged or proposal superseded before approval",
+    "Own originalbudget/tenattempt history preserved and explicit owner carriedcap/keycount decision retained",
+    "Provider/admin auth remains available without new keys/master reset/broader permissions; freshness, durable intents and uncertainty safety reviewed before any create"
+  ]
+}

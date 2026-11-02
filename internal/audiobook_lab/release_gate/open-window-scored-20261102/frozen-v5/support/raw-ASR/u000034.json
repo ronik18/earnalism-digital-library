@@ -1,0 +1,586 @@
+{
+  "unit": "u000034",
+  "master_interval_seconds": [
+    418.01375,
+    432.89375
+  ],
+  "expected_text": "Framton grabbed wildly at his stick and hat; the hall-door, the gravel-drive, and the front gate were dimly-noted stages in his headlong retreat. A cyclist coming along the road had to run into the hedge to avoid an imminent collision.",
+  "ctc_transcript": "OUR MANTON GRABBED WILDLY AT HIS STICK AND HAT THE HALL DOOR THE GRAVEL DRIVE AND THE FRONT GATE WERE DIMLY NOTED STAGES IN HIS HEADLONG RETREAT A CYCLIST COMING ALONG THE ROAD HAD TO RUN INTO THE HEDGE TO AVOID AN IMMINENT COLLISION UN",
+  "ctc_words": [
+    {
+      "word": "OUR",
+      "start": 418.15393842530284,
+      "end": 418.2340460969045,
+      "mean_character_frame_posterior": 0.8326682448387146
+    },
+    {
+      "word": "MANTON",
+      "start": 418.27409993270527,
+      "end": 418.63458445491256,
+      "mean_character_frame_posterior": 0.9641289512316386
+    },
+    {
+      "word": "GRABBED",
+      "start": 418.69466520861374,
+      "end": 418.9950689771198,
+      "mean_character_frame_posterior": 0.9902759194374084
+    },
+    {
+      "word": "WILDLY",
+      "start": 419.0751766487214,
+      "end": 419.4757150067295,
+      "mean_character_frame_posterior": 0.9996221760908762
+    },
+    {
+      "word": "AT",
+      "start": 419.5357957604307,
+      "end": 419.57584959623154,
+      "mean_character_frame_posterior": 0.9980805218219757
+    },
+    {
+      "word": "HIS",
+      "start": 419.6159034320323,
+      "end": 419.6960111036339,
+      "mean_character_frame_posterior": 0.9558403293291727
+    },
+    {
+      "word": "STICK",
+      "start": 419.75609185733515,
+      "end": 419.9763879542396,
+      "mean_character_frame_posterior": 0.9999091625213623
+    },
+    {
+      "word": "AND",
+      "start": 420.0364687079408,
+      "end": 420.11657637954244,
+      "mean_character_frame_posterior": 0.9234253366788229
+    },
+    {
+      "word": "HAT",
+      "start": 420.1766571332436,
+      "end": 420.37692631224763,
+      "mean_character_frame_posterior": 0.8683702349662781
+    },
+    {
+      "word": "THE",
+      "start": 420.83754542395695,
+      "end": 420.91765309555853,
+      "mean_character_frame_posterior": 0.970264752705892
+    },
+    {
+      "word": "HALL",
+      "start": 420.9977607671602,
+      "end": 421.23808378196503,
+      "mean_character_frame_posterior": 0.9990607053041458
+    },
+    {
+      "word": "DOOR",
+      "start": 421.33821837146706,
+      "end": 421.55851446837147,
+      "mean_character_frame_posterior": 0.9992741197347641
+    },
+    {
+      "word": "THE",
+      "start": 421.89897207267836,
+      "end": 421.97907974427994,
+      "mean_character_frame_posterior": 0.9988757173220316
+    },
+    {
+      "word": "GRAVEL",
+      "start": 422.0191335800808,
+      "end": 422.33956426648723,
+      "mean_character_frame_posterior": 0.992010772228241
+    },
+    {
+      "word": "DRIVE",
+      "start": 422.43969885598926,
+      "end": 422.8001833781965,
+      "mean_character_frame_posterior": 0.9996189713478089
+    },
+    {
+      "word": "AND",
+      "start": 423.2808294078062,
+      "end": 423.3409101615074,
+      "mean_character_frame_posterior": 0.9269610246022543
+    },
+    {
+      "word": "THE",
+      "start": 423.38096399730824,
+      "end": 423.4610716689098,
+      "mean_character_frame_posterior": 0.9935876329739889
+    },
+    {
+      "word": "FRONT",
+      "start": 423.54117934051146,
+      "end": 423.7614754374159,
+      "mean_character_frame_posterior": 0.9999685049057007
+    },
+    {
+      "word": "GATE",
+      "start": 423.8415831090175,
+      "end": 424.08190612382236,
+      "mean_character_frame_posterior": 0.9930990487337112
+    },
+    {
+      "word": "WERE",
+      "start": 424.1820407133244,
+      "end": 424.3022022207268,
+      "mean_character_frame_posterior": 0.9371415972709656
+    },
+    {
+      "word": "DIMLY",
+      "start": 424.44239064602965,
+      "end": 424.7628213324361,
+      "mean_character_frame_posterior": 0.9283083319664002
+    },
+    {
+      "word": "NOTED",
+      "start": 424.8429290040377,
+      "end": 425.1032789367429,
+      "mean_character_frame_posterior": 0.9545793294906616
+    },
+    {
+      "word": "STAGES",
+      "start": 425.18338660834456,
+      "end": 425.62397880215343,
+      "mean_character_frame_posterior": 0.9505175848801931
+    },
+    {
+      "word": "IN",
+      "start": 425.72411339165546,
+      "end": 425.76416722745626,
+      "mean_character_frame_posterior": 0.8498920798301697
+    },
+    {
+      "word": "HIS",
+      "start": 425.8242479811575,
+      "end": 425.92438257065953,
+      "mean_character_frame_posterior": 0.861525317033132
+    },
+    {
+      "word": "HEADLONG",
+      "start": 426.0044902422611,
+      "end": 426.46510935397043,
+      "mean_character_frame_posterior": 0.9616260007023811
+    },
+    {
+      "word": "RETREAT",
+      "start": 426.5652439434724,
+      "end": 426.9657823014805,
+      "mean_character_frame_posterior": 0.995576092175075
+    },
+    {
+      "word": "A",
+      "start": 427.8669936069987,
+      "end": 427.88702052489907,
+      "mean_character_frame_posterior": 0.9940604567527771
+    },
+    {
+      "word": "CYCLIST",
+      "start": 428.0071820323015,
+      "end": 428.46780114401076,
+      "mean_character_frame_posterior": 0.9943543672561646
+    },
+    {
+      "word": "COMING",
+      "start": 428.5479088156124,
+      "end": 428.78823183041726,
+      "mean_character_frame_posterior": 0.9812002778053284
+    },
+    {
+      "word": "ALONG",
+      "start": 428.84831258411845,
+      "end": 429.0686086810229,
+      "mean_character_frame_posterior": 0.999580693244934
+    },
+    {
+      "word": "THE",
+      "start": 429.1286894347241,
+      "end": 429.20879710632573,
+      "mean_character_frame_posterior": 0.9992936452229818
+    },
+    {
+      "word": "ROAD",
+      "start": 429.2688778600269,
+      "end": 429.4891739569314,
+      "mean_character_frame_posterior": 0.9999873638153076
+    },
+    {
+      "word": "HAD",
+      "start": 429.56928162853296,
+      "end": 429.6894431359354,
+      "mean_character_frame_posterior": 0.9997908473014832
+    },
+    {
+      "word": "TO",
+      "start": 429.74952388963663,
+      "end": 429.7895777254374,
+      "mean_character_frame_posterior": 0.9997097253799438
+    },
+    {
+      "word": "RUN",
+      "start": 429.84965847913867,
+      "end": 429.96981998654104,
+      "mean_character_frame_posterior": 0.9394305944442749
+    },
+    {
+      "word": "INTO",
+      "start": 430.0499276581427,
+      "end": 430.2101430013459,
+      "mean_character_frame_posterior": 0.9991546124219894
+    },
+    {
+      "word": "THE",
+      "start": 430.27022375504714,
+      "end": 430.3503314266487,
+      "mean_character_frame_posterior": 0.999619742234548
+    },
+    {
+      "word": "HEDGE",
+      "start": 430.39038526244957,
+      "end": 430.63070827725437,
+      "mean_character_frame_posterior": 0.9989109396934509
+    },
+    {
+      "word": "TO",
+      "start": 430.7308428667564,
+      "end": 430.79092362045765,
+      "mean_character_frame_posterior": 0.9888593852519989
+    },
+    {
+      "word": "AVOID",
+      "start": 430.91108512786,
+      "end": 431.19146197846567,
+      "mean_character_frame_posterior": 0.9994247198104859
+    },
+    {
+      "word": "AN",
+      "start": 431.2915965679677,
+      "end": 431.33165040376855,
+      "mean_character_frame_posterior": 0.9970783889293671
+    },
+    {
+      "word": "IMMINENT",
+      "start": 431.4518119111709,
+      "end": 431.752215679677,
+      "mean_character_frame_posterior": 0.9748500511050224
+    },
+    {
+      "word": "COLLISION",
+      "start": 431.8122964333782,
+      "end": 432.2528886271871,
+      "mean_character_frame_posterior": 0.9979627993371751
+    },
+    {
+      "word": "UN",
+      "start": 432.63340006729476,
+      "end": 432.693480820996,
+      "mean_character_frame_posterior": 0.8364242911338806
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton"
+      ],
+      "recognized": [
+        "our",
+        "manton"
+      ],
+      "reference_word_span": [
+        0,
+        1
+      ],
+      "recognized_word_span": [
+        0,
+        2
+      ]
+    },
+    {
+      "tag": "insert",
+      "expected": [],
+      "recognized": [
+        "un"
+      ],
+      "reference_word_span": [
+        43,
+        43
+      ],
+      "recognized_word_span": [
+        44,
+        45
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Our",
+      "start": 418.14,
+      "end": 418.26,
+      "probability": 0.44478416442871094
+    },
+    {
+      "word": " mountain",
+      "start": 418.26,
+      "end": 418.58,
+      "probability": 0.27908453345298767
+    },
+    {
+      "word": " grabbed",
+      "start": 418.58,
+      "end": 418.96,
+      "probability": 0.8133087754249573
+    },
+    {
+      "word": " wildly",
+      "start": 418.96,
+      "end": 419.46,
+      "probability": 0.9779154658317566
+    },
+    {
+      "word": " at",
+      "start": 419.46,
+      "end": 419.64,
+      "probability": 0.9867473840713501
+    },
+    {
+      "word": " his",
+      "start": 419.64,
+      "end": 419.84,
+      "probability": 0.9244159460067749
+    },
+    {
+      "word": " stick",
+      "start": 419.84,
+      "end": 419.96,
+      "probability": 0.8632668852806091
+    },
+    {
+      "word": " and",
+      "start": 419.96,
+      "end": 420.22,
+      "probability": 0.8031788468360901
+    },
+    {
+      "word": " hat,",
+      "start": 420.22,
+      "end": 420.44,
+      "probability": 0.9895159006118774
+    },
+    {
+      "word": " the",
+      "start": 420.86,
+      "end": 421.02,
+      "probability": 0.9894397854804993
+    },
+    {
+      "word": " all",
+      "start": 421.02,
+      "end": 421.24,
+      "probability": 0.8778373003005981
+    },
+    {
+      "word": " door,",
+      "start": 421.24,
+      "end": 421.64,
+      "probability": 0.6338755488395691
+    },
+    {
+      "word": " the",
+      "start": 422.0,
+      "end": 422.06,
+      "probability": 0.9959885478019714
+    },
+    {
+      "word": " gravel",
+      "start": 422.06,
+      "end": 422.32,
+      "probability": 0.997986912727356
+    },
+    {
+      "word": " drive,",
+      "start": 422.32,
+      "end": 422.84,
+      "probability": 0.9904454946517944
+    },
+    {
+      "word": " And",
+      "start": 422.84,
+      "end": 423.38,
+      "probability": 0.23351316154003143
+    },
+    {
+      "word": " the",
+      "start": 423.38,
+      "end": 423.58,
+      "probability": 0.9742977619171143
+    },
+    {
+      "word": " front",
+      "start": 423.58,
+      "end": 423.72,
+      "probability": 0.9728561639785767
+    },
+    {
+      "word": " gate",
+      "start": 423.72,
+      "end": 424.1,
+      "probability": 0.9888202548027039
+    },
+    {
+      "word": " were",
+      "start": 424.1,
+      "end": 424.32,
+      "probability": 0.9232252240180969
+    },
+    {
+      "word": " dimly",
+      "start": 424.32,
+      "end": 424.8,
+      "probability": 0.9694764912128448
+    },
+    {
+      "word": "-noted",
+      "start": 424.8,
+      "end": 425.1,
+      "probability": 0.6516180237134298
+    },
+    {
+      "word": " stages",
+      "start": 425.1,
+      "end": 425.56,
+      "probability": 0.9796614646911621
+    },
+    {
+      "word": " in",
+      "start": 425.56,
+      "end": 425.82,
+      "probability": 0.7810511589050293
+    },
+    {
+      "word": " his",
+      "start": 425.82,
+      "end": 426.02,
+      "probability": 0.9066099524497986
+    },
+    {
+      "word": " headlong",
+      "start": 426.02,
+      "end": 426.52,
+      "probability": 0.7516318261623383
+    },
+    {
+      "word": " retreat.",
+      "start": 426.52,
+      "end": 427.02,
+      "probability": 0.9984381794929504
+    },
+    {
+      "word": " A",
+      "start": 427.84,
+      "end": 427.98,
+      "probability": 0.9707946181297302
+    },
+    {
+      "word": " cyclist",
+      "start": 427.98,
+      "end": 428.34,
+      "probability": 0.9758414030075073
+    },
+    {
+      "word": " coming",
+      "start": 428.34,
+      "end": 428.74,
+      "probability": 0.9804841876029968
+    },
+    {
+      "word": " along",
+      "start": 428.74,
+      "end": 429.06,
+      "probability": 0.9983693957328796
+    },
+    {
+      "word": " the",
+      "start": 429.06,
+      "end": 429.26,
+      "probability": 0.9967126846313477
+    },
+    {
+      "word": " road",
+      "start": 429.26,
+      "end": 429.5,
+      "probability": 0.9973307847976685
+    },
+    {
+      "word": " had",
+      "start": 429.5,
+      "end": 429.68,
+      "probability": 0.9705924391746521
+    },
+    {
+      "word": " to",
+      "start": 429.68,
+      "end": 429.84,
+      "probability": 0.9947383999824524
+    },
+    {
+      "word": " run",
+      "start": 429.84,
+      "end": 429.96,
+      "probability": 0.9977374076843262
+    },
+    {
+      "word": " into",
+      "start": 429.96,
+      "end": 430.26,
+      "probability": 0.9866151213645935
+    },
+    {
+      "word": " the",
+      "start": 430.26,
+      "end": 430.38,
+      "probability": 0.994510293006897
+    },
+    {
+      "word": " hedge",
+      "start": 430.38,
+      "end": 430.64,
+      "probability": 0.7831097841262817
+    },
+    {
+      "word": " to",
+      "start": 430.64,
+      "end": 430.82,
+      "probability": 0.9948031306266785
+    },
+    {
+      "word": " avoid",
+      "start": 430.82,
+      "end": 431.2,
+      "probability": 0.9982739686965942
+    },
+    {
+      "word": " an",
+      "start": 431.2,
+      "end": 431.38,
+      "probability": 0.9318982362747192
+    },
+    {
+      "word": " imminent",
+      "start": 431.38,
+      "end": 431.7,
+      "probability": 0.9768275022506714
+    },
+    {
+      "word": " collision.",
+      "start": 431.7,
+      "end": 432.2,
+      "probability": 0.9987887740135193
+    }
+  ],
+  "whisper_transcript_in_unit": "Our mountain grabbed wildly at his stick and hat, the all door, the gravel drive, And the front gate were dimly -noted stages in his headlong retreat. A cyclist coming along the road had to run into the hedge to avoid an imminent collision.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.5182958749999926
+}

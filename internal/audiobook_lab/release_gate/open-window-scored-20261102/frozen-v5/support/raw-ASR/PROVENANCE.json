@@ -1,0 +1,16 @@
+{
+  "at_utc": "2026-10-19T05:38:28.744068+00:00",
+  "master_sha256": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "master_duration_seconds": 499.07275,
+  "decoded_sample_rate": 16000,
+  "decoded_samples": 7985164,
+  "decoded_pcm_sha256": "fb08859bd2a4935eb3cbca4c8ad921a0aafd76442442849aa78728b3bb339908",
+  "whisper_checkpoint_sha256": "25a8566e1d0c1e2231d1c762132cd20e0f96a85d16145c3a00adf5d1ac670ead",
+  "torch_version": "2.8.0",
+  "torchaudio_version": "2.8.0",
+  "device": "cpu",
+  "threads": 2,
+  "new_paid_spend": 0,
+  "source_prompt_used": false
+}

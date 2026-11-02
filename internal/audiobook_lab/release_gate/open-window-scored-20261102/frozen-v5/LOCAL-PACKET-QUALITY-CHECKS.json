@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.open_window_v5_local_proposed_packet_checks.v1",
+  "status": "PASS_LOCAL_EXACT_FACT_AND_GENERIC_STRUCTURE_CHECKS_NOT_TRUST_ADOPTION",
+  "proposal_manifest_file_sha256": "afe025aa8eed8636981aae18e5e8d779858ff6b60d4c1de9084a4328aaa0d2ba",
+  "descriptor_canonical_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "timestamp_file_sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+  "asr_projection_file_sha256": "b36c6f66d2a995cfd03b73f15486edda003a2a3d91789e5236a69b6bb42bd770",
+  "four_asset_sha256": {
+    "chapter-001-full-audio": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+    "chapter-001-full-timestamps": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+    "chapter-001-full-metadata": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+    "chapter-001-full-vtt": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef"
+  },
+  "exact_hash_references_verified": 36,
+  "raw39_units_and_prior6_adjudications_unchanged": true,
+  "twelve_new_name_changes_per_recognizer": 12,
+  "no_global_proper_name_alias": true,
+  "all_metrics_recomputed": true,
+  "all39_source_spans_once_in_order": true,
+  "first_and_last_source_tokens_match_both_actual_derived_recognizers": true,
+  "actual_supported_reader_paragraphs": 21,
+  "all21_starts_exact_inherited29_measured_groups": true,
+  "generic_cue_count": 21,
+  "negative_identity_estimation_guards": 3,
+  "actual48window_clock_proof_bound": true,
+  "owner_full_mix_ratings_unchanged": true,
+  "remaining_known_material_wording_findings": [],
+  "source_profile_implementation_and_trusted_registration": "PENDING",
+  "external_storage_runtime_customer_gates": "UNPERFORMED",
+  "no_provider_or_model_or_canonical_or_active_budget_calls": true
+}

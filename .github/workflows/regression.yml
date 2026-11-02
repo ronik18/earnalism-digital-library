@@ -68,6 +68,29 @@ jobs:
           echo "RELEASE_SOURCE_SHA=${TARGET_SHA}"
           echo 'RELEASE_SOURCE_CLEAN=YES'
 
+      - name: Fetch bounded reviewed catalogue history
+        timeout-minutes: 2
+        shell: bash
+        env:
+          GIT_NO_LAZY_FETCH: '1'
+        run: |
+          set -euo pipefail
+          # These four immutable trees back the strict offline history tests.
+          # Fetch missing objects only; never substitute current-file contents.
+          for source_pin in \
+            b4bc7585a87b7546db3270f3bfd63bd436e8585a \
+            f5706d328e08ab330f65f604f51df322b65646f1 \
+            c980ff2da048db7a164648f06f707440b2a8124c \
+            15b157e5555b67ede6fd649fb9057d314c36bf3c; do
+            if ! git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/data/rights_decision_registry.json" 2>/dev/null ||
+               ! git -c remote.origin.promisor=false cat-file -e "$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$source_pin"
+            fi
+            git -c remote.origin.promisor=false cat-file -e "$source_pin^{commit}"
+            git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/data/rights_decision_registry.json"
+            git -c remote.origin.promisor=false cat-file -e "$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json"
+          done
+
       - name: Fetch exact retained containment source
         if: hashFiles('scripts/build_india_guarded_rollback.py') != ''
         timeout-minutes: 2

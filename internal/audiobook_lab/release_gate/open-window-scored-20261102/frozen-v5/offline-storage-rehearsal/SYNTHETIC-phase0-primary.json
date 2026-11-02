@@ -1,0 +1,95 @@
+{
+  "operation": "upload",
+  "receipt_schema": "audiobook_package_storage_receipt.v1",
+  "receipt_role": "primary",
+  "generated_at": "2026-11-02T06:04:11Z",
+  "store": {
+    "role": "prod",
+    "endpoint_host": "s3.region-1.example.invalid",
+    "region": "region-1",
+    "bucket": "private-bucket-1",
+    "account_identity_declared": true,
+    "account_fingerprint": "07e998012c1137de",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_PROD_"
+  },
+  "profiles_used": {
+    "object_io": "upload",
+    "retention_preflight": "retention_admin"
+  },
+  "release_eligible": true,
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/",
+  "release_status": "RELEASE_CANDIDATE",
+  "retention_days": 365,
+  "objects": [
+    {
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+      "asset_id": "chapter-001-full-audio",
+      "store": "prod",
+      "bucket": "private-bucket-1",
+      "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+      "size_bytes": 11797552,
+      "mime_type": "audio/mpeg",
+      "version_id": "version-1",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.517374+00:00",
+      "full_download_verified": true,
+      "action": "UPLOADED_AND_VERIFIED"
+    },
+    {
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+      "asset_id": "chapter-001-full-timestamps",
+      "store": "prod",
+      "bucket": "private-bucket-1",
+      "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+      "size_bytes": 17612,
+      "mime_type": "application/json",
+      "version_id": "version-2",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.528672+00:00",
+      "full_download_verified": true,
+      "action": "UPLOADED_AND_VERIFIED"
+    },
+    {
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+      "asset_id": "chapter-001-full-metadata",
+      "store": "prod",
+      "bucket": "private-bucket-1",
+      "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+      "size_bytes": 1870,
+      "mime_type": "application/json",
+      "version_id": "version-3",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.529292+00:00",
+      "full_download_verified": true,
+      "action": "UPLOADED_AND_VERIFIED"
+    },
+    {
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+      "asset_id": "chapter-001-full-vtt",
+      "store": "prod",
+      "bucket": "private-bucket-1",
+      "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+      "size_bytes": 7683,
+      "mime_type": "text/vtt",
+      "version_id": "version-4",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.529772+00:00",
+      "full_download_verified": true,
+      "action": "UPLOADED_AND_VERIFIED"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,156 @@
+{
+  "unit": "u000004",
+  "master_interval_seconds": [
+    52.63704166666667,
+    57.117041666666665
+  ],
+  "expected_text": "Some of them, as far as I can remember, were quite nice.”",
+  "ctc_transcript": "SOME OF THEM AS FAR AS I CAN REMEMBER WERE QUITE NICE",
+  "ctc_words": [
+    {
+      "word": "SOME",
+      "start": 52.837938527653215,
+      "end": 53.01874570254111,
+      "mean_character_frame_posterior": 0.9901502281427383
+    },
+    {
+      "word": "OF",
+      "start": 53.119194133034384,
+      "end": 53.15937350523169,
+      "mean_character_frame_posterior": 0.9999436140060425
+    },
+    {
+      "word": "THEM",
+      "start": 53.23973224962631,
+      "end": 53.400449738415546,
+      "mean_character_frame_posterior": 0.9997974038124084
+    },
+    {
+      "word": "AS",
+      "start": 53.92278157698057,
+      "end": 53.96296094917788,
+      "mean_character_frame_posterior": 0.9999890327453613
+    },
+    {
+      "word": "FAR",
+      "start": 54.103588751868465,
+      "end": 54.28439592675635,
+      "mean_character_frame_posterior": 0.9998757441838583
+    },
+    {
+      "word": "AS",
+      "start": 54.364754671150976,
+      "end": 54.425023729446934,
+      "mean_character_frame_posterior": 0.999958336353302
+    },
+    {
+      "word": "I",
+      "start": 54.525472159940215,
+      "end": 54.545561846038865,
+      "mean_character_frame_posterior": 0.9999814033508301
+    },
+    {
+      "word": "CAN",
+      "start": 54.60583090433483,
+      "end": 54.7062793348281,
+      "mean_character_frame_posterior": 0.9990782340367635
+    },
+    {
+      "word": "REMEMBER",
+      "start": 54.826817451420034,
+      "end": 55.28888023168909,
+      "mean_character_frame_posterior": 0.9888216927647591
+    },
+    {
+      "word": "WERE",
+      "start": 55.97192955904335,
+      "end": 56.132647047832585,
+      "mean_character_frame_posterior": 0.9957382827997208
+    },
+    {
+      "word": "QUITE",
+      "start": 56.233095478325865,
+      "end": 56.49426139760837,
+      "mean_character_frame_posterior": 0.9975308179855347
+    },
+    {
+      "word": "NICE",
+      "start": 56.6147995142003,
+      "end": 56.93623449177878,
+      "mean_character_frame_posterior": 0.9657485634088516
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Some",
+      "start": 52.8,
+      "end": 53.04,
+      "probability": 0.8693024516105652
+    },
+    {
+      "word": " of",
+      "start": 53.04,
+      "end": 53.18,
+      "probability": 0.9968269467353821
+    },
+    {
+      "word": " them,",
+      "start": 53.18,
+      "end": 53.74,
+      "probability": 0.9959158301353455
+    },
+    {
+      "word": " as",
+      "start": 53.74,
+      "end": 54.02,
+      "probability": 0.9983264803886414
+    },
+    {
+      "word": " far",
+      "start": 54.02,
+      "end": 54.32,
+      "probability": 0.9979233145713806
+    },
+    {
+      "word": " as",
+      "start": 54.32,
+      "end": 54.5,
+      "probability": 0.9896777868270874
+    },
+    {
+      "word": " I",
+      "start": 54.5,
+      "end": 54.6,
+      "probability": 0.997783362865448
+    },
+    {
+      "word": " can",
+      "start": 54.6,
+      "end": 54.76,
+      "probability": 0.9959936141967773
+    },
+    {
+      "word": " remember,",
+      "start": 54.76,
+      "end": 55.3,
+      "probability": 0.9983183145523071
+    },
+    {
+      "word": " were",
+      "start": 55.84,
+      "end": 56.08,
+      "probability": 0.9897351264953613
+    },
+    {
+      "word": " quite",
+      "start": 56.08,
+      "end": 56.44,
+      "probability": 0.9899265766143799
+    }
+  ],
+  "whisper_transcript_in_unit": "Some of them, as far as I can remember, were quite",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.14853462499999637
+}

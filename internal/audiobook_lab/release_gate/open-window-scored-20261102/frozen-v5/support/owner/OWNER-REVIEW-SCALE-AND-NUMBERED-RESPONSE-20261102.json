@@ -1,0 +1,33 @@
+{
+  "schema": "earnalism.owner_scored_review_scale_and_numbered_reply.v1",
+  "recorded_at_utc": "2026-11-02T05:03:18.316920+00:00",
+  "question_id": "call_2a89cc95eba0411487ac229cb487efd1:0",
+  "question_verbatim": "For Open Window, does 0.98 mean 9.8/10 for the first nine dimensions, and 0.97 mean 9.7/10 overall (confidence 0.97)? Please also confirm: (1) you listened to the full 8:11; (2) “Her great tragedy happened…” at 1:48–1:56 is clear at normal and low volume, or mark either unperformed/uncertain; (3) source words were heard for all six flagged groups—aunt, married, dusk, “a look”/“round”, Framton, bearer—or identify substitutions/uncertainty. Report any timestamped defects. These observations remain unverified until confirmed.",
+  "answer_verbatim": "1. For Open Window, 0.98 means 9.8/10 for the first nine dimensions, and 0.97 mean 9.7/10 overall (confidence 0.97), 2. Yes, 3. Yes",
+  "authoritative_message_source": "Exact text provided by parent from actual owner reply; no terminal full stop added.",
+  "prior_pending_receipt_sha256": "f761c0c52d0499dc9a3115b30205557397f03fe364d514e95faa513fdeea087d",
+  "prior_pending_preimage_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/owner-response-history/original-pending-f761c0c52d0499dc9a3115b30205557397f03fe364d514e95faa513fdeea087d.json",
+  "listened_mp3_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+  "ratings_0_to_10": {
+    "naturalness": 9.8,
+    "pronunciation": 9.8,
+    "emotion": 9.8,
+    "grammatical_pauses": 9.8,
+    "pacing": 9.8,
+    "voice_continuity": 9.8,
+    "nonrobotic_texture": 9.8,
+    "smooth_joins": 9.8,
+    "enjoyment": 9.8,
+    "overall_quality": 9.7
+  },
+  "confidence_0_to_1": 0.97,
+  "scale_confirmation": "EXPLICIT",
+  "full_listen_from_this_reply_alone": "NOT_EXPLICITLY_CONFIRMED",
+  "numbered_assents": {
+    "2": "Yes",
+    "3": "Yes"
+  },
+  "assent_mapping_note": "Literal question numbering supports quiet-line and six-word-group assent; first numbered response instead answers unnumbered scale question. Do not infer complete listening from this reply alone. Later definitive response resolves all three observations.",
+  "timestamped_defects": "NOT_REPORTED_IN_THIS_REPLY",
+  "publication_or_storage_authority_inferred": false
+}

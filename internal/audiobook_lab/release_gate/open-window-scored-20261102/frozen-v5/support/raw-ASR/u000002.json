@@ -1,0 +1,741 @@
+{
+  "unit": "u000002",
+  "master_interval_seconds": [
+    10.396208333333334,
+    32.076208333333334
+  ],
+  "expected_text": "Framton Nuttel endeavoured to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing.",
+  "ctc_transcript": "FRAMPTON NUTTLE ENDEAVORED TO SAY THE CORRECT SOMETHING WHICH SHOULD DULY FLATTER THE NIECE OF THE MOMENT WITHOUT UNDULY DISCOUNTING THE IGT THAT WAS TO COME PRIVATELY HE DOUBTED MORE THAN EVER WHETHER THESE FORMAL VISITS ON A SUCCESSION OF TOTAL STRANGERS WOULD DO MUCH TOWARDS HELPING THE NERVE CURE WHICH HE WAS SUPPOSED TO BE UNDERGOING",
+  "ctc_words": [
+    {
+      "word": "FRAMPTON",
+      "start": 10.596393005540166,
+      "end": 11.076836218836565,
+      "mean_character_frame_posterior": 0.9787629395723343
+    },
+    {
+      "word": "NUTTLE",
+      "start": 11.236983956602032,
+      "end": 11.537260964912281,
+      "mean_character_frame_posterior": 0.9419138630231222
+    },
+    {
+      "word": "ENDEAVORED",
+      "start": 11.677390235457064,
+      "end": 12.177851915974147,
+      "mean_character_frame_posterior": 0.9073176562786103
+    },
+    {
+      "word": "TO",
+      "start": 12.237907317636196,
+      "end": 12.297962719298246,
+      "mean_character_frame_posterior": 0.999822348356247
+    },
+    {
+      "word": "SAY",
+      "start": 12.37803658818098,
+      "end": 12.538184325946446,
+      "mean_character_frame_posterior": 0.9996175567309061
+    },
+    {
+      "word": "THE",
+      "start": 12.61825819482918,
+      "end": 12.698332063711913,
+      "mean_character_frame_posterior": 0.9949366450309753
+    },
+    {
+      "word": "CORRECT",
+      "start": 12.75838746537396,
+      "end": 13.198793744228993,
+      "mean_character_frame_posterior": 0.9004691668919155
+    },
+    {
+      "word": "SOMETHING",
+      "start": 13.338923014773776,
+      "end": 13.71927389196676,
+      "mean_character_frame_posterior": 0.9832078814506531
+    },
+    {
+      "word": "WHICH",
+      "start": 13.799347760849493,
+      "end": 13.939477031394276,
+      "mean_character_frame_posterior": 0.999976372718811
+    },
+    {
+      "word": "SHOULD",
+      "start": 13.999532433056325,
+      "end": 14.179698638042476,
+      "mean_character_frame_posterior": 0.9984338780244192
+    },
+    {
+      "word": "DULY",
+      "start": 14.319827908587257,
+      "end": 14.64012338411819,
+      "mean_character_frame_posterior": 0.9999890327453613
+    },
+    {
+      "word": "FLATTER",
+      "start": 14.76023418744229,
+      "end": 15.080529662973223,
+      "mean_character_frame_posterior": 0.9768011229378837
+    },
+    {
+      "word": "THE",
+      "start": 15.180621999076639,
+      "end": 15.260695867959374,
+      "mean_character_frame_posterior": 0.9988457560539246
+    },
+    {
+      "word": "NIECE",
+      "start": 15.340769736842105,
+      "end": 15.601009810710988,
+      "mean_character_frame_posterior": 0.9259140133857727
+    },
+    {
+      "word": "OF",
+      "start": 15.741139081255772,
+      "end": 15.781176015697138,
+      "mean_character_frame_posterior": 0.9998018741607666
+    },
+    {
+      "word": "THE",
+      "start": 15.861249884579872,
+      "end": 15.941323753462605,
+      "mean_character_frame_posterior": 0.9985792835553488
+    },
+    {
+      "word": "MOMENT",
+      "start": 16.021397622345336,
+      "end": 16.381730032317638,
+      "mean_character_frame_posterior": 0.9958106478055319
+    },
+    {
+      "word": "WITHOUT",
+      "start": 16.481822368421053,
+      "end": 16.84215477839335,
+      "mean_character_frame_posterior": 0.9404749359403338
+    },
+    {
+      "word": "UNDULY",
+      "start": 17.082376385041552,
+      "end": 17.522782663896585,
+      "mean_character_frame_posterior": 0.9999814430872599
+    },
+    {
+      "word": "DISCOUNTING",
+      "start": 17.602856532779317,
+      "end": 18.2234290166205,
+      "mean_character_frame_posterior": 0.9999247518452731
+    },
+    {
+      "word": "THE",
+      "start": 18.283484418282548,
+      "end": 18.3435398199446,
+      "mean_character_frame_posterior": 0.9995054205258688
+    },
+    {
+      "word": "IGT",
+      "start": 18.4636506232687,
+      "end": 18.5837614265928,
+      "mean_character_frame_posterior": 0.5932157437006632
+    },
+    {
+      "word": "THAT",
+      "start": 18.803964566020316,
+      "end": 18.924075369344415,
+      "mean_character_frame_posterior": 0.9998151659965515
+    },
+    {
+      "word": "WAS",
+      "start": 18.964112303785782,
+      "end": 19.064204639889198,
+      "mean_character_frame_posterior": 0.9997625946998596
+    },
+    {
+      "word": "TO",
+      "start": 19.124260041551246,
+      "end": 19.20433391043398,
+      "mean_character_frame_posterior": 0.9997261166572571
+    },
+    {
+      "word": "COME",
+      "start": 19.24437084487535,
+      "end": 19.464573984302866,
+      "mean_character_frame_posterior": 0.9979181885719299
+    },
+    {
+      "word": "PRIVATELY",
+      "start": 20.525552746999075,
+      "end": 21.246217566943677,
+      "mean_character_frame_posterior": 0.9997945096757677
+    },
+    {
+      "word": "HE",
+      "start": 21.64658691135734,
+      "end": 21.706642313019394,
+      "mean_character_frame_posterior": 0.9999809265136719
+    },
+    {
+      "word": "DOUBTED",
+      "start": 21.80673464912281,
+      "end": 22.12703012465374,
+      "mean_character_frame_posterior": 0.9973864044461932
+    },
+    {
+      "word": "MORE",
+      "start": 22.22712246075716,
+      "end": 22.38727019852262,
+      "mean_character_frame_posterior": 0.9999104142189026
+    },
+    {
+      "word": "THAN",
+      "start": 22.42730713296399,
+      "end": 22.54741793628809,
+      "mean_character_frame_posterior": 0.9998991042375565
+    },
+    {
+      "word": "EVER",
+      "start": 22.747602608494923,
+      "end": 22.907750346260386,
+      "mean_character_frame_posterior": 0.991875097155571
+    },
+    {
+      "word": "WHETHER",
+      "start": 23.188008887349955,
+      "end": 23.448248961218837,
+      "mean_character_frame_posterior": 0.9987239497048515
+    },
+    {
+      "word": "THESE",
+      "start": 23.548341297322253,
+      "end": 23.688470567867036,
+      "mean_character_frame_posterior": 0.9872950434684753
+    },
+    {
+      "word": "FORMAL",
+      "start": 23.76854443674977,
+      "end": 24.088839912280704,
+      "mean_character_frame_posterior": 0.9477008978525797
+    },
+    {
+      "word": "VISITS",
+      "start": 24.18893224838412,
+      "end": 24.509227723915053,
+      "mean_character_frame_posterior": 0.9688176214694977
+    },
+    {
+      "word": "ON",
+      "start": 24.689393928901204,
+      "end": 24.729430863342564,
+      "mean_character_frame_posterior": 0.9995430409908295
+    },
+    {
+      "word": "A",
+      "start": 24.78948626500462,
+      "end": 24.8095047322253,
+      "mean_character_frame_posterior": 0.9969833493232727
+    },
+    {
+      "word": "SUCCESSION",
+      "start": 24.86956013388735,
+      "end": 25.450095683287167,
+      "mean_character_frame_posterior": 0.9976841509342194
+    },
+    {
+      "word": "OF",
+      "start": 25.59022495383195,
+      "end": 25.630261888273317,
+      "mean_character_frame_posterior": 0.9999401569366455
+    },
+    {
+      "word": "TOTAL",
+      "start": 25.750372691597416,
+      "end": 26.030631232686982,
+      "mean_character_frame_posterior": 0.9988744974136352
+    },
+    {
+      "word": "STRANGERS",
+      "start": 26.110705101569714,
+      "end": 26.69124065096953,
+      "mean_character_frame_posterior": 0.9923634860250685
+    },
+    {
+      "word": "WOULD",
+      "start": 27.271776200369345,
+      "end": 27.411905470914128,
+      "mean_character_frame_posterior": 0.9994921922683716
+    },
+    {
+      "word": "DO",
+      "start": 27.47196087257618,
+      "end": 27.572053208679595,
+      "mean_character_frame_posterior": 0.9998609125614166
+    },
+    {
+      "word": "MUCH",
+      "start": 27.752219413665745,
+      "end": 27.992441020313944,
+      "mean_character_frame_posterior": 0.999481126666069
+    },
+    {
+      "word": "TOWARDS",
+      "start": 28.132570290858727,
+      "end": 28.39281036472761,
+      "mean_character_frame_posterior": 0.9402583071163723
+    },
+    {
+      "word": "HELPING",
+      "start": 28.472884233610344,
+      "end": 28.813198176361958,
+      "mean_character_frame_posterior": 0.9317420550755092
+    },
+    {
+      "word": "THE",
+      "start": 28.87325357802401,
+      "end": 28.95332744690674,
+      "mean_character_frame_posterior": 0.9991204142570496
+    },
+    {
+      "word": "NERVE",
+      "start": 29.033401315789476,
+      "end": 29.273622922437674,
+      "mean_character_frame_posterior": 0.9996758818626403
+    },
+    {
+      "word": "CURE",
+      "start": 29.353696791320406,
+      "end": 29.593918397968604,
+      "mean_character_frame_posterior": 0.7756873667240143
+    },
+    {
+      "word": "WHICH",
+      "start": 29.994287742382273,
+      "end": 30.114398545706372,
+      "mean_character_frame_posterior": 0.9308989644050598
+    },
+    {
+      "word": "HE",
+      "start": 30.194472414589104,
+      "end": 30.254527816251155,
+      "mean_character_frame_posterior": 0.9866630434989929
+    },
+    {
+      "word": "WAS",
+      "start": 30.334601685133887,
+      "end": 30.434694021237306,
+      "mean_character_frame_posterior": 0.9999643564224243
+    },
+    {
+      "word": "SUPPOSED",
+      "start": 30.514767890120037,
+      "end": 31.01522957063712,
+      "mean_character_frame_posterior": 0.996284045279026
+    },
+    {
+      "word": "TO",
+      "start": 31.095303439519853,
+      "end": 31.155358841181904,
+      "mean_character_frame_posterior": 0.9999736547470093
+    },
+    {
+      "word": "BE",
+      "start": 31.215414242843952,
+      "end": 31.295488111726684,
+      "mean_character_frame_posterior": 0.999971330165863
+    },
+    {
+      "word": "UNDERGOING",
+      "start": 31.43561738227147,
+      "end": 32.016152931671286,
+      "mean_character_frame_posterior": 0.9995552897453308
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "framton",
+        "nuttel",
+        "endeavoured"
+      ],
+      "recognized": [
+        "frampton",
+        "nuttle",
+        "endeavored"
+      ],
+      "reference_word_span": [
+        0,
+        3
+      ],
+      "recognized_word_span": [
+        0,
+        3
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "aunt"
+      ],
+      "recognized": [
+        "igt"
+      ],
+      "reference_word_span": [
+        21,
+        22
+      ],
+      "recognized_word_span": [
+        21,
+        22
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Frampton",
+      "start": 10.48,
+      "end": 11.08,
+      "probability": 0.7989381551742554
+    },
+    {
+      "word": " Nuddle",
+      "start": 11.08,
+      "end": 11.56,
+      "probability": 0.8151485919952393
+    },
+    {
+      "word": " endeavored",
+      "start": 11.56,
+      "end": 12.16,
+      "probability": 0.9770660102367401
+    },
+    {
+      "word": " to",
+      "start": 12.16,
+      "end": 12.44,
+      "probability": 0.9970158338546753
+    },
+    {
+      "word": " say",
+      "start": 12.44,
+      "end": 12.54,
+      "probability": 0.9974580407142639
+    },
+    {
+      "word": " the",
+      "start": 12.54,
+      "end": 12.76,
+      "probability": 0.918390154838562
+    },
+    {
+      "word": " correct",
+      "start": 12.76,
+      "end": 13.12,
+      "probability": 0.9495470523834229
+    },
+    {
+      "word": " something",
+      "start": 13.12,
+      "end": 13.7,
+      "probability": 0.9597229361534119
+    },
+    {
+      "word": " which",
+      "start": 13.7,
+      "end": 14.02,
+      "probability": 0.905158281326294
+    },
+    {
+      "word": " should",
+      "start": 14.02,
+      "end": 14.3,
+      "probability": 0.9956902861595154
+    },
+    {
+      "word": " duly",
+      "start": 14.3,
+      "end": 14.6,
+      "probability": 0.8215820789337158
+    },
+    {
+      "word": " flatter",
+      "start": 14.6,
+      "end": 15.04,
+      "probability": 0.9861110746860504
+    },
+    {
+      "word": " the",
+      "start": 15.04,
+      "end": 15.36,
+      "probability": 0.8519906401634216
+    },
+    {
+      "word": " niece",
+      "start": 15.36,
+      "end": 15.62,
+      "probability": 0.824521005153656
+    },
+    {
+      "word": " of",
+      "start": 15.62,
+      "end": 15.84,
+      "probability": 0.9928601384162903
+    },
+    {
+      "word": " the",
+      "start": 15.84,
+      "end": 15.98,
+      "probability": 0.9968544840812683
+    },
+    {
+      "word": " moment",
+      "start": 15.98,
+      "end": 16.34,
+      "probability": 0.9949407577514648
+    },
+    {
+      "word": " without",
+      "start": 16.34,
+      "end": 16.82,
+      "probability": 0.9492168426513672
+    },
+    {
+      "word": " unduly",
+      "start": 16.82,
+      "end": 17.5,
+      "probability": 0.9686541855335236
+    },
+    {
+      "word": " discounting",
+      "start": 17.5,
+      "end": 18.36,
+      "probability": 0.9869301617145538
+    },
+    {
+      "word": " the",
+      "start": 18.36,
+      "end": 18.44,
+      "probability": 0.995028555393219
+    },
+    {
+      "word": " aunt",
+      "start": 18.44,
+      "end": 18.6,
+      "probability": 0.3866921067237854
+    },
+    {
+      "word": " that",
+      "start": 18.6,
+      "end": 18.96,
+      "probability": 0.8833186030387878
+    },
+    {
+      "word": " was",
+      "start": 18.96,
+      "end": 19.12,
+      "probability": 0.9977497458457947
+    },
+    {
+      "word": " to",
+      "start": 19.12,
+      "end": 19.28,
+      "probability": 0.9986934065818787
+    },
+    {
+      "word": " come.",
+      "start": 19.28,
+      "end": 19.7,
+      "probability": 0.9961495399475098
+    },
+    {
+      "word": " Privately,",
+      "start": 20.58,
+      "end": 21.22,
+      "probability": 0.8637783527374268
+    },
+    {
+      "word": " he",
+      "start": 21.54,
+      "end": 21.76,
+      "probability": 0.9984754920005798
+    },
+    {
+      "word": " doubted",
+      "start": 21.76,
+      "end": 22.06,
+      "probability": 0.9923028945922852
+    },
+    {
+      "word": " more",
+      "start": 22.06,
+      "end": 22.38,
+      "probability": 0.9805906414985657
+    },
+    {
+      "word": " than",
+      "start": 22.38,
+      "end": 22.66,
+      "probability": 0.9970369338989258
+    },
+    {
+      "word": " ever",
+      "start": 22.66,
+      "end": 23.06,
+      "probability": 0.9960271120071411
+    },
+    {
+      "word": " whether",
+      "start": 23.06,
+      "end": 23.42,
+      "probability": 0.9773732423782349
+    },
+    {
+      "word": " these",
+      "start": 23.42,
+      "end": 23.78,
+      "probability": 0.9816980361938477
+    },
+    {
+      "word": " formal",
+      "start": 23.78,
+      "end": 24.04,
+      "probability": 0.9897910952568054
+    },
+    {
+      "word": " visits",
+      "start": 24.04,
+      "end": 24.46,
+      "probability": 0.9959656000137329
+    },
+    {
+      "word": " on",
+      "start": 24.46,
+      "end": 24.76,
+      "probability": 0.9966310858726501
+    },
+    {
+      "word": " a",
+      "start": 24.76,
+      "end": 24.9,
+      "probability": 0.9941443800926208
+    },
+    {
+      "word": " succession",
+      "start": 24.9,
+      "end": 25.4,
+      "probability": 0.9958813190460205
+    },
+    {
+      "word": " of",
+      "start": 25.4,
+      "end": 25.74,
+      "probability": 0.9990359544754028
+    },
+    {
+      "word": " total",
+      "start": 25.74,
+      "end": 26.04,
+      "probability": 0.9966863989830017
+    },
+    {
+      "word": " strangers",
+      "start": 26.04,
+      "end": 26.68,
+      "probability": 0.9984595775604248
+    },
+    {
+      "word": " would",
+      "start": 26.68,
+      "end": 27.32,
+      "probability": 0.6816244125366211
+    },
+    {
+      "word": " do",
+      "start": 27.32,
+      "end": 27.64,
+      "probability": 0.9934372305870056
+    },
+    {
+      "word": " much",
+      "start": 27.64,
+      "end": 28.08,
+      "probability": 0.9962683916091919
+    },
+    {
+      "word": " towards",
+      "start": 28.08,
+      "end": 28.38,
+      "probability": 0.8891575932502747
+    },
+    {
+      "word": " helping",
+      "start": 28.38,
+      "end": 28.74,
+      "probability": 0.9955497980117798
+    },
+    {
+      "word": " the",
+      "start": 28.74,
+      "end": 29.0,
+      "probability": 0.9919791221618652
+    },
+    {
+      "word": " nerve",
+      "start": 29.0,
+      "end": 29.28,
+      "probability": 0.9084112048149109
+    },
+    {
+      "word": " cure",
+      "start": 29.28,
+      "end": 29.64,
+      "probability": 0.9783021211624146
+    },
+    {
+      "word": " which",
+      "start": 29.64,
+      "end": 30.12,
+      "probability": 0.5262658596038818
+    },
+    {
+      "word": " he",
+      "start": 30.12,
+      "end": 30.32,
+      "probability": 0.9914888143539429
+    },
+    {
+      "word": " was",
+      "start": 30.32,
+      "end": 30.46,
+      "probability": 0.9938278794288635
+    },
+    {
+      "word": " supposed",
+      "start": 30.46,
+      "end": 30.86,
+      "probability": 0.9908343553543091
+    },
+    {
+      "word": " to",
+      "start": 30.86,
+      "end": 31.2,
+      "probability": 0.9978070855140686
+    },
+    {
+      "word": " be",
+      "start": 31.2,
+      "end": 31.38,
+      "probability": 0.997870922088623
+    },
+    {
+      "word": " undergoing.",
+      "start": 31.38,
+      "end": 31.98,
+      "probability": 0.9974121451377869
+    }
+  ],
+  "whisper_transcript_in_unit": "Frampton Nuddle endeavored to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately, he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.8174874590000059
+}

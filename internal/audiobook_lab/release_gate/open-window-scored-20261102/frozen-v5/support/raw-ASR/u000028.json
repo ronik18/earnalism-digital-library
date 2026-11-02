@@ -1,0 +1,198 @@
+{
+  "unit": "u000028",
+  "master_interval_seconds": [
+    347.11445833333335,
+    351.43445833333334
+  ],
+  "expected_text": "“On the matter of diet they are not so much in agreement,” he continued.",
+  "ctc_transcript": "ON THE MATTER OF DIET THEY ARE NOT SO MUCH IN AGREEMENT HE CONTINUED",
+  "ctc_words": [
+    {
+      "word": "ON",
+      "start": 347.37566763565894,
+      "end": 347.4359467054264,
+      "mean_character_frame_posterior": 0.9940225183963776
+    },
+    {
+      "word": "THE",
+      "start": 347.5364118217054,
+      "end": 347.61678391472867,
+      "mean_character_frame_posterior": 0.9965075850486755
+    },
+    {
+      "word": "MATTER",
+      "start": 347.67706298449616,
+      "end": 347.9382722868217,
+      "mean_character_frame_posterior": 0.999108244975408
+    },
+    {
+      "word": "OF",
+      "start": 348.018644379845,
+      "end": 348.0588304263566,
+      "mean_character_frame_posterior": 0.999011754989624
+    },
+    {
+      "word": "DIET",
+      "start": 348.13920251937986,
+      "end": 348.4606908914729,
+      "mean_character_frame_posterior": 0.9972290396690369
+    },
+    {
+      "word": "THEY",
+      "start": 348.7419932170543,
+      "end": 348.84245833333335,
+      "mean_character_frame_posterior": 0.9968058466911316
+    },
+    {
+      "word": "ARE",
+      "start": 348.9027374031008,
+      "end": 348.98310949612403,
+      "mean_character_frame_posterior": 0.9990580876668295
+    },
+    {
+      "word": "NOT",
+      "start": 349.04338856589146,
+      "end": 349.1840397286822,
+      "mean_character_frame_posterior": 0.9999312162399292
+    },
+    {
+      "word": "SO",
+      "start": 349.26441182170544,
+      "end": 349.3648769379845,
+      "mean_character_frame_posterior": 0.999930202960968
+    },
+    {
+      "word": "MUCH",
+      "start": 349.4653420542636,
+      "end": 349.6059932170543,
+      "mean_character_frame_posterior": 0.9902540445327759
+    },
+    {
+      "word": "IN",
+      "start": 349.72655135658914,
+      "end": 349.76673740310076,
+      "mean_character_frame_posterior": 0.9749256372451782
+    },
+    {
+      "word": "AGREEMENT",
+      "start": 349.84710949612406,
+      "end": 350.30924903100777,
+      "mean_character_frame_posterior": 0.9978705379698012
+    },
+    {
+      "word": "HE",
+      "start": 350.71110949612404,
+      "end": 350.77138856589147,
+      "mean_character_frame_posterior": 0.979794979095459
+    },
+    {
+      "word": "CONTINUED",
+      "start": 350.8517606589147,
+      "end": 351.3741792635659,
+      "mean_character_frame_posterior": 0.9987198445532057
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " �Huh,",
+      "start": 347.2,
+      "end": 347.52,
+      "probability": 0.1932305023947265
+    },
+    {
+      "word": " in",
+      "start": 347.52,
+      "end": 347.62,
+      "probability": 0.4960747957229614
+    },
+    {
+      "word": " the",
+      "start": 347.62,
+      "end": 347.68,
+      "probability": 0.9590150117874146
+    },
+    {
+      "word": " matter",
+      "start": 347.68,
+      "end": 347.92,
+      "probability": 0.990120530128479
+    },
+    {
+      "word": " of",
+      "start": 347.92,
+      "end": 348.16,
+      "probability": 0.9737994074821472
+    },
+    {
+      "word": " diet,",
+      "start": 348.16,
+      "end": 348.42,
+      "probability": 0.9814210534095764
+    },
+    {
+      "word": " they",
+      "start": 348.72,
+      "end": 348.88,
+      "probability": 0.9507509469985962
+    },
+    {
+      "word": " are",
+      "start": 348.88,
+      "end": 348.94,
+      "probability": 0.9068299531936646
+    },
+    {
+      "word": " not",
+      "start": 348.94,
+      "end": 349.32,
+      "probability": 0.9956820011138916
+    },
+    {
+      "word": " so",
+      "start": 349.32,
+      "end": 349.42,
+      "probability": 0.9939820170402527
+    },
+    {
+      "word": " much",
+      "start": 349.42,
+      "end": 349.72,
+      "probability": 0.9993259906768799
+    },
+    {
+      "word": " in",
+      "start": 349.72,
+      "end": 349.8,
+      "probability": 0.8460090756416321
+    },
+    {
+      "word": " agreement",
+      "start": 349.8,
+      "end": 350.26,
+      "probability": 0.9968460202217102
+    },
+    {
+      "word": ",�",
+      "start": 350.26,
+      "end": 350.66,
+      "probability": 0.5870473831892014
+    },
+    {
+      "word": " he",
+      "start": 350.66,
+      "end": 350.8,
+      "probability": 0.9735402464866638
+    },
+    {
+      "word": " continued.",
+      "start": 350.8,
+      "end": 351.34,
+      "probability": 0.9943751096725464
+    }
+  ],
+  "whisper_transcript_in_unit": "�Huh, in the matter of diet, they are not so much in agreement ,� he continued.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.14696762500000204
+}

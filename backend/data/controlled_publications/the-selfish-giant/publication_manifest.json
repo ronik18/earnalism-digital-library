@@ -1,8 +1,8 @@
 {
   "artifacts": {
     "approval_evidence": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
-    "public_book": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10",
-    "reader_manifest": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5",
+    "public_book": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6",
+    "reader_manifest": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
     "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
   },
   "audio_release": {
@@ -42,8 +42,8 @@
     "sanitized": true,
     "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
   },
-  "generated_at": "2026-10-29T13:31:20Z",
-  "manifest_sha256": "e5edebed1f2fb103a62b3c7a879b2ab1e0729b82b20110d9f65d7d27b3bd71e6",
+  "generated_at": "2026-11-02T10:06:08.842681+00:00",
+  "manifest_sha256": "b8b1ec47745b53aebecd6a998529592dace4db1bf13350d364cab12565fb6521",
   "reader_release": {
     "blockers": [],
     "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",

@@ -1,0 +1,173 @@
+{
+  "schema": "earnalism.open_window_scored_v5_final_private_handoff.v1",
+  "status": "FROZEN_PROPOSED_NOT_ADOPTED_NOT_UPLOAD_AUTHORITY",
+  "exact_descriptor_canonical_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "files": {
+    "MANIFEST.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/MANIFEST.PROPOSED.json",
+      "sha256": "afe025aa8eed8636981aae18e5e8d779858ff6b60d4c1de9084a4328aaa0d2ba",
+      "bytes": 24343
+    },
+    "PROFILE-CONTRACT.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/PROFILE-CONTRACT.PROPOSED.json",
+      "sha256": "761d27fd61f95045de02bf8cd83f209c5a32f0438892bbcdb50d45ea7b654130",
+      "bytes": 4873
+    },
+    "release-descriptor.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/release-descriptor.PROPOSED.json",
+      "sha256": "dc2cc66f93eae0f7c21a856b2068c4043b94eacf723f5f8c08310ec136b1989c",
+      "bytes": 5151
+    },
+    "package-identity.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/package-identity.PROPOSED.json",
+      "sha256": "e2cfabd7d9e2c05160b19f9576002f53333b86069c1c0e9c69f0fe0f2eb0f2fb",
+      "bytes": 2157
+    },
+    "SOURCE-QA-ADOPTION.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/SOURCE-QA-ADOPTION.PROPOSED.json",
+      "sha256": "1cb02d1ce736f5fb8879a2eb3f17e43fe48064ac3094f55e9a56a2c585ad8861",
+      "bytes": 9596
+    },
+    "IN-AUDIO-USE-RECORD.PROPOSED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/IN-AUDIO-USE-RECORD.PROPOSED.json",
+      "sha256": "cdb1e9f6fc80f412510a0eb3bf9000e87d56a60c5d8fae7a86d6cf8347f6b847",
+      "bytes": 4630
+    },
+    "upload-plan.PROPOSED-NOT-AUTHORIZED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/upload-plan.PROPOSED-NOT-AUTHORIZED.json",
+      "sha256": "60ace0c29f1323f12b254eee55227e2a2ffda70c4365c9a427eca8fdd4e27b87",
+      "bytes": 3257
+    },
+    "LOCAL-PACKET-QUALITY-CHECKS.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/LOCAL-PACKET-QUALITY-CHECKS.json",
+      "sha256": "6c60ca1e75edab635e67a7bd590e2c33d72fc80efcf95643345dec957db115a8",
+      "bytes": 1838
+    },
+    "verify_proposed_packet.py": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/verify_proposed_packet.py",
+      "sha256": "23477f4f182d4b425a367edd2b8b790c1a64a0a2e612ca1510f5686d8ef77dce",
+      "bytes": 9076
+    },
+    "rehearse_own_storage.py": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/rehearse_own_storage.py",
+      "sha256": "bcb6bf18f2cd3ac960c9087ee7102c0e4afb35af9a998b3f8a98e61be7bb136b",
+      "bytes": 9317
+    },
+    "OWN-STORAGE-REHEARSAL-RESULT.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-STORAGE-REHEARSAL-RESULT.json",
+      "sha256": "33b4e138b7f333cafe537cac546a23a485ad45b9c03c02670b8105cb63098988",
+      "bytes": 3572
+    },
+    "OWN-CARRIED-BUDGET.CONSTRUCTOR-PROPOSAL.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-CARRIED-BUDGET.CONSTRUCTOR-PROPOSAL.json",
+      "sha256": "ac6305da42e06b35dc51df88616296d3e210697e4d9bf70d1c8dd08c3246c170",
+      "bytes": 3456
+    },
+    "OWN-FOUR-RESTRICTED-KEYS.PROPOSED-NOT-AUTHORIZED.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/OWN-FOUR-RESTRICTED-KEYS.PROPOSED-NOT-AUTHORIZED.json",
+      "sha256": "9f5115e19cf3c065575c27637a8de45e7179ae440bfd7879316430b0cd6a97ce",
+      "bytes": 4005
+    },
+    "evidence/ACTUAL-ASR-AND-SIX-OWNER-ADJUDICATIONS.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/ACTUAL-ASR-AND-SIX-OWNER-ADJUDICATIONS.json",
+      "sha256": "b36c6f66d2a995cfd03b73f15486edda003a2a3d91789e5236a69b6bb42bd770",
+      "bytes": 248768
+    },
+    "evidence/21-SUPPORTED-READER-MEASURED-CANDIDATE.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/21-SUPPORTED-READER-MEASURED-CANDIDATE.json",
+      "sha256": "69bafd8629295cf880e2d9e62e43934643925f6fef2d4db5adbcc8bba643d7d2",
+      "bytes": 22720
+    },
+    "evidence/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/evidence/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json",
+      "sha256": "5062680eca57d0b278e9c749bfeff7587782b66d176a7664cacd09bcaa5866ed",
+      "bytes": 3761
+    },
+    "support/owner/OWNER-FRAMTON-TWELVE-EXCERPT-ADJUDICATION-20261102.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/owner/OWNER-FRAMTON-TWELVE-EXCERPT-ADJUDICATION-20261102.json",
+      "sha256": "e359a75515950401b14c8c1f0733b8d00c2fc1d49dd4d71f4e0ff2fdec28858e",
+      "bytes": 11832
+    },
+    "support/audio/ACTUAL-SCORED-DELIVERY-CLOCK-TRANSFER.json": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/support/audio/ACTUAL-SCORED-DELIVERY-CLOCK-TRANSFER.json",
+      "sha256": "294acccc5f728c699f58b738afe495a0d3b0c2854d34aeb61112d769cfb965a0",
+      "bytes": 16585
+    }
+  },
+  "asset_bytes_per_store": 11824717,
+  "assets": [
+    {
+      "asset_id": "chapter-001-full-audio",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.mp3",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+      "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+      "size_bytes": 11797552,
+      "mime_type": "audio/mpeg"
+    },
+    {
+      "asset_id": "chapter-001-full-timestamps",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.timestamps.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+      "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+      "size_bytes": 17612,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-metadata",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.metadata.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+      "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+      "size_bytes": 1870,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-vtt",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.vtt",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+      "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+      "size_bytes": 7683,
+      "mime_type": "text/vtt"
+    }
+  ],
+  "actual_local_checks": "PASS_HASH_SOURCE_ARITHMETIC_FIRST_LAST_GENERIC21CUES_AND3NEGATIVEGUARDS_PLUS_BOUND_ACTUAL48WINDOW_AUDIO_CLOCK",
+  "raw_ASR_and_all_v4_preimages_untouched": true,
+  "current_remaining_material_wording_findings": [],
+  "wording_authority": "Actual owner6fullmix confirmations +12specificnamewindows e359; no global name aliases.",
+  "artistic_owner_full_mix_scores_unchanged": "Nine9.8/overall9.7/confidence.97",
+  "delivery_metadata": "Neutral factual schema/fields and actual clean32827 AI/music credits; no draft/private/proposed/publication-state labels embedded in served metadata.",
+  "own_storage_model": {
+    "predecessor_sha256": "68770ec864527cf14925e733e71ae239b166dbfe2c0fc436c9e7ec99cc037e4a",
+    "own_old_ten_attempts_and_all_counters_carried": true,
+    "projected_cumulative_used": {
+      "download_bytes": 79148324,
+      "metadata_bytes": 35651618,
+      "requests": 260,
+      "upload_bytes": 39574162,
+      "versions": 20
+    },
+    "proposed_total_limits_NOT_APPROVED": {
+      "requests": 2000,
+      "upload_bytes": 41943040,
+      "download_bytes": 83886080,
+      "versions": 176,
+      "metadata_bytes": 46137344
+    },
+    "four_additional_Open_Window_scoped_keys": "PROPOSED_ONLY_NOT_APPROVED_NOT_CREATED",
+    "no_borrowed_Selfish_authority": true
+  },
+  "verification_commands": {
+    "read_only_idempotent_local_check": "/opt/homebrew/opt/python@3.11/bin/python3.11 verify_proposed_packet.py",
+    "one_off_fake_adapter_rehearsal_already_run": "/opt/homebrew/opt/python@3.11/bin/python3.11 rehearse_own_storage.py",
+    "fake_rehearsal_no_automatic_repeat": "Existing output intentionally prevents replay. Independent reviewer can run an isolated copied fixture/output, preserving original old ledger and all frozen files."
+  },
+  "remaining_gates": [
+    "Independent private packet/contract review.",
+    "Actual narrow source profile implementation/native dispatch + exact IN rights/adoption trusted registration through clean Integration Lane + actual CI/review.",
+    "Own exact carried-cap/fourkey authority after actual final preparation; approved Selfish4keys/D2caps do not apply.",
+    "Real destination privacy/retention/versioning/preflight, upload/fullread/DR/finalmanifest and final real packageversion.",
+    "Supported exact member-grant/original120 reconciliation, current deployed endpoint/player/accounting and proof-bound promotion/guarded restore/customer-visible verification."
+  ],
+  "no_owner_listening_question_pending": true,
+  "new_external_calls_or_models_or_synthesis_or_allocation_or_account_reads_or_canonical_changes_or_key_creations_or_active_budget_amendments": 0,
+  "next_exact_prompt": "Independently review this frozen v5 proposed Open Window SOURCE_QA profile/descriptor/IN rights packet and literal scoped owner-derived ASR arithmetic; preserve old policies/source/Reader, then let Integration Lane prepare the one focused source registration implementation. Do not upload/publish or create keys from this proposal."
+}

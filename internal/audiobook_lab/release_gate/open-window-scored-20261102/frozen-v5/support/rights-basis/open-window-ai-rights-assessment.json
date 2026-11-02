@@ -1,0 +1,39 @@
+{
+  "schema": "earnalism.ai-rights-assessment.v1",
+  "assessed_at": "2026-10-19T04:58:45.847891+00:00",
+  "assessor": "Codex AI; no professional legal credentials or human signature claimed",
+  "status": "EVIDENCE_BASED_ASSESSMENT_COMPLETE_FACTUAL_ATTESTATION_PENDING",
+  "scope": "Distinct prospective India audio_stream binding for existing Open Window Qwen/Ryan master; old excluded-edition decision unchanged",
+  "source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "master_sha256": "da1f8cb935693b2f695c9df0c50ecd94e7aac8bf5132802746e002c9ab7d3022",
+  "assessment": {
+    "literary_work": "Evidence supports expired India economic copyright for Saki original selected story: lifetime1914 publication/death1916; official Act22/23 and International Copyright Order3/7. No translation or separately authored editorial content admitted. AI assessment supports commercial narration of this exact selected literary text in India; no claim of worldwide rights or exclusive ownership.",
+    "model_voice": "Pinned Qwen code/CustomVoice model Apache2 declarations support commercial model/code use; Ryan is officially supplied English built-in voice. Existing provenance records no clone reference input. No separate Ryan noncommercial restriction found. A separate affirmative output warranty is not imposed merely because Apache disclaims warranties.",
+    "source_route": "Same PG269 source retained. Non-branded commercial presentation avoids invoking paid PG trademark route; internal provenance retained. Any actual PG-branded paid distribution must satisfy PG terms separately.",
+    "producer": "Owner-directed private generation, Ronik reviews and custody support Ronik-led production initiative. These are evidence of commissioning/control, not conclusive identification of the legal producer or proof of every operator/contractor grant. Need exact legal entity and authority confirmation; do not require an external lawyer just for this factual point.",
+    "reviewer_requirement": "No cited law establishes a universal requirement for external lawyer clearance. Earlier qualified-acceptance wording is programme policy, not professional-review law. This transparent AI assessment can be reviewed/adopted under authorized policy; no live registry mutation performed."
+  },
+  "minimum_owner_attestation": "Confirm the legal producer is [Ronik Basak trading as Reo Enterprise / exact entity], that it commissioned and controls this preserved Qwen/Ryan recording and has authority to stream it commercially in India, with no undisclosed third-party operator/contractor restriction. Provide or confirm its approved public producer name/address for recording particulars.",
+  "listening": {
+    "owner_statement": "Consider real listener for the8:19master done",
+    "recorded_as": "Owner reports full-title listen complete; exact dates/device/source checking/scores not supplied",
+    "not_inferred": [
+      "passing dimension scores",
+      "six timecoded observations",
+      "resolution of19flags",
+      "replacement ofUnit24UNCLEAR"
+    ],
+    "minimum_actual_judgment": "After actual source-checked listening, confirm whether all19flagged passages including Unit24 match or identify remaining defects; provide the nine named dimension scores, overall and confidence required by existing release contract. Six real sample observations remain required by handler; cannot manufacture them."
+  },
+  "sources": [
+    "https://copyright.gov.in/documents/copyrightrules1957.pdf",
+    "https://copyright.gov.in/documents/international%20copyright%20order.htm",
+    "https://www.gutenberg.org/ebooks/269",
+    "https://www.gutenberg.org/policy/license.html",
+    "https://github.com/QwenLM/Qwen3-TTS/blob/022e286b98fbec7e1e916cb940cdf532cd9f488e/LICENSE",
+    "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/blob/0c0e3051f131929182e2c023b9537f8b1c68adfe/README.md"
+  ],
+  "no_commercial_activation": true,
+  "source_binding": "Retained exact source verified; current deployed UUID/source admission remains separate gate",
+  "no_audio_generation": true
+}

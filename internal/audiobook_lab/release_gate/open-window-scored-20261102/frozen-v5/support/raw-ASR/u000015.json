@@ -1,0 +1,623 @@
+{
+  "unit": "u000015",
+  "master_interval_seconds": [
+    150.33633333333333,
+    167.05633333333333
+  ],
+  "expected_text": "“Out through that window, three years ago to a day, her husband and her two young brothers went off for their day’s shooting. They never came back. In crossing the moor to their favourite snipe-shooting ground they were all three engulfed in a treacherous piece of bog.",
+  "ctc_transcript": "OUT THROUGH THAT WINDOW THREE YEARS AGO TO A DAY HER HUSBAND AND HER TWO YOUNG BROTHERS WENT OFF FOR THEIR DAY'S SHOOTING THEY NEVER CAME BACK IN CROSSING THE MOOR TO THEIR FAVORITE SNIPE SHOOTING GROUND THEY WERE ALL THREE ENGULFED IN A TREACHEROUS PIECE OF BAW",
+  "ctc_words": [
+    {
+      "word": "OUT",
+      "start": 150.4965249500998,
+      "end": 150.61666866267464,
+      "mean_character_frame_posterior": 0.9998968640963236
+    },
+    {
+      "word": "THROUGH",
+      "start": 150.65671656686627,
+      "end": 150.85695608782436,
+      "mean_character_frame_posterior": 0.9996033225740705
+    },
+    {
+      "word": "THAT",
+      "start": 150.89700399201595,
+      "end": 151.01714770459083,
+      "mean_character_frame_posterior": 0.9989443123340607
+    },
+    {
+      "word": "WINDOW",
+      "start": 151.11726746506986,
+      "end": 151.4376506986028,
+      "mean_character_frame_posterior": 0.9999184807141622
+    },
+    {
+      "word": "THREE",
+      "start": 152.07841716566867,
+      "end": 152.33872854291417,
+      "mean_character_frame_posterior": 0.9918285608291626
+    },
+    {
+      "word": "YEARS",
+      "start": 152.3988003992016,
+      "end": 152.6390878243513,
+      "mean_character_frame_posterior": 0.9946943640708923
+    },
+    {
+      "word": "AGO",
+      "start": 152.7191836327345,
+      "end": 152.8993992015968,
+      "mean_character_frame_posterior": 0.9999280174573263
+    },
+    {
+      "word": "TO",
+      "start": 153.07961477045907,
+      "end": 153.1797345309381,
+      "mean_character_frame_posterior": 0.9999390840530396
+    },
+    {
+      "word": "A",
+      "start": 153.29987824351298,
+      "end": 153.3199021956088,
+      "mean_character_frame_posterior": 0.9996886253356934
+    },
+    {
+      "word": "DAY",
+      "start": 153.3799740518962,
+      "end": 153.6402854291417,
+      "mean_character_frame_posterior": 0.9999425013860067
+    },
+    {
+      "word": "HER",
+      "start": 154.30107584830338,
+      "end": 154.42121956087823,
+      "mean_character_frame_posterior": 0.9997757077217102
+    },
+    {
+      "word": "HUSBAND",
+      "start": 154.5213393213573,
+      "end": 154.92181836327345,
+      "mean_character_frame_posterior": 0.9685584902763367
+    },
+    {
+      "word": "AND",
+      "start": 154.98189021956088,
+      "end": 155.0419620758483,
+      "mean_character_frame_posterior": 0.9999295870463053
+    },
+    {
+      "word": "HER",
+      "start": 155.0820099800399,
+      "end": 155.18212974051895,
+      "mean_character_frame_posterior": 0.9895629286766052
+    },
+    {
+      "word": "TWO",
+      "start": 155.2622255489022,
+      "end": 155.40239321357285,
+      "mean_character_frame_posterior": 0.980252742767334
+    },
+    {
+      "word": "YOUNG",
+      "start": 155.5225369261477,
+      "end": 155.70275249500997,
+      "mean_character_frame_posterior": 0.9757050275802612
+    },
+    {
+      "word": "BROTHERS",
+      "start": 155.78284830339322,
+      "end": 156.14327944111776,
+      "mean_character_frame_posterior": 0.9856090024113655
+    },
+    {
+      "word": "WENT",
+      "start": 156.2634231536926,
+      "end": 156.42361477045907,
+      "mean_character_frame_posterior": 0.999916285276413
+    },
+    {
+      "word": "OFF",
+      "start": 156.52373453093813,
+      "end": 156.64387824351297,
+      "mean_character_frame_posterior": 0.9998493989308676
+    },
+    {
+      "word": "FOR",
+      "start": 156.6839261477046,
+      "end": 156.78404590818363,
+      "mean_character_frame_posterior": 0.9992859562238058
+    },
+    {
+      "word": "THEIR",
+      "start": 156.84411776447106,
+      "end": 156.98428542914172,
+      "mean_character_frame_posterior": 0.9983386516571044
+    },
+    {
+      "word": "DAY'S",
+      "start": 157.08440518962075,
+      "end": 157.34471656686625,
+      "mean_character_frame_posterior": 0.9466237187385559
+    },
+    {
+      "word": "SHOOTING",
+      "start": 157.4448363273453,
+      "end": 157.80526746506985,
+      "mean_character_frame_posterior": 0.9962216168642044
+    },
+    {
+      "word": "THEY",
+      "start": 158.46605788423153,
+      "end": 158.58620159680638,
+      "mean_character_frame_posterior": 0.9986344426870346
+    },
+    {
+      "word": "NEVER",
+      "start": 158.72636926147703,
+      "end": 158.96665668662675,
+      "mean_character_frame_posterior": 0.9336391806602478
+    },
+    {
+      "word": "CAME",
+      "start": 159.0868003992016,
+      "end": 159.28703992015969,
+      "mean_character_frame_posterior": 0.9996927678585052
+    },
+    {
+      "word": "BACK",
+      "start": 159.38715968063872,
+      "end": 159.64747105788422,
+      "mean_character_frame_posterior": 0.9999918341636658
+    },
+    {
+      "word": "IN",
+      "start": 160.36833333333334,
+      "end": 160.40838123752494,
+      "mean_character_frame_posterior": 0.9999097585678101
+    },
+    {
+      "word": "CROSSING",
+      "start": 160.5285249500998,
+      "end": 160.90898003992015,
+      "mean_character_frame_posterior": 0.975652851164341
+    },
+    {
+      "word": "THE",
+      "start": 160.9690518962076,
+      "end": 161.0491477045908,
+      "mean_character_frame_posterior": 0.9998631278673807
+    },
+    {
+      "word": "MOOR",
+      "start": 161.10921956087824,
+      "end": 161.28943512974053,
+      "mean_character_frame_posterior": 0.9785966277122498
+    },
+    {
+      "word": "TO",
+      "start": 161.40957884231537,
+      "end": 161.4896746506986,
+      "mean_character_frame_posterior": 0.9996942281723022
+    },
+    {
+      "word": "THEIR",
+      "start": 161.5297225548902,
+      "end": 161.66989021956087,
+      "mean_character_frame_posterior": 0.9975271582603454
+    },
+    {
+      "word": "FAVORITE",
+      "start": 161.7700099800399,
+      "end": 162.13044111776446,
+      "mean_character_frame_posterior": 0.9689262136816978
+    },
+    {
+      "word": "SNIPE",
+      "start": 162.2105369261477,
+      "end": 162.4708483033932,
+      "mean_character_frame_posterior": 0.9954957365989685
+    },
+    {
+      "word": "SHOOTING",
+      "start": 162.53092015968065,
+      "end": 162.79123153692615,
+      "mean_character_frame_posterior": 0.9996839389204979
+    },
+    {
+      "word": "GROUND",
+      "start": 162.85130339321356,
+      "end": 163.1716866267465,
+      "mean_character_frame_posterior": 0.9946137368679047
+    },
+    {
+      "word": "THEY",
+      "start": 163.6522614770459,
+      "end": 163.75238123752496,
+      "mean_character_frame_posterior": 0.9993985593318939
+    },
+    {
+      "word": "WERE",
+      "start": 163.81245309381237,
+      "end": 163.9325968063872,
+      "mean_character_frame_posterior": 0.9999653398990631
+    },
+    {
+      "word": "ALL",
+      "start": 164.17288423153693,
+      "end": 164.29302794411177,
+      "mean_character_frame_posterior": 0.9997261762619019
+    },
+    {
+      "word": "THREE",
+      "start": 164.41317165668661,
+      "end": 164.67348303393214,
+      "mean_character_frame_posterior": 0.9998796582221985
+    },
+    {
+      "word": "ENGULFED",
+      "start": 164.77360279441118,
+      "end": 165.2742015968064,
+      "mean_character_frame_posterior": 0.995354562997818
+    },
+    {
+      "word": "IN",
+      "start": 165.3342734530938,
+      "end": 165.37432135728542,
+      "mean_character_frame_posterior": 0.9994854629039764
+    },
+    {
+      "word": "A",
+      "start": 165.45441716566864,
+      "end": 165.47444111776446,
+      "mean_character_frame_posterior": 0.999381422996521
+    },
+    {
+      "word": "TREACHEROUS",
+      "start": 165.57456087824352,
+      "end": 166.09518363273452,
+      "mean_character_frame_posterior": 0.9982520287687128
+    },
+    {
+      "word": "PIECE",
+      "start": 166.2153273453094,
+      "end": 166.43559081836327,
+      "mean_character_frame_posterior": 0.9151615977287293
+    },
+    {
+      "word": "OF",
+      "start": 166.51568662674651,
+      "end": 166.5557345309381,
+      "mean_character_frame_posterior": 0.9999822974205017
+    },
+    {
+      "word": "BAW",
+      "start": 166.67587824351295,
+      "end": 166.93618962075848,
+      "mean_character_frame_posterior": 0.9161698818206787
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "favourite"
+      ],
+      "recognized": [
+        "favorite"
+      ],
+      "reference_word_span": [
+        33,
+        34
+      ],
+      "recognized_word_span": [
+        33,
+        34
+      ]
+    },
+    {
+      "tag": "replace",
+      "expected": [
+        "bog"
+      ],
+      "recognized": [
+        "baw"
+      ],
+      "reference_word_span": [
+        47,
+        48
+      ],
+      "recognized_word_span": [
+        47,
+        48
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Out",
+      "start": 150.5,
+      "end": 150.66,
+      "probability": 0.9867086410522461
+    },
+    {
+      "word": " through",
+      "start": 150.66,
+      "end": 150.86,
+      "probability": 0.9818778038024902
+    },
+    {
+      "word": " that",
+      "start": 150.86,
+      "end": 151.12,
+      "probability": 0.9955477714538574
+    },
+    {
+      "word": " window,",
+      "start": 151.12,
+      "end": 151.58,
+      "probability": 0.9994837045669556
+    },
+    {
+      "word": " three",
+      "start": 152.18,
+      "end": 152.3,
+      "probability": 0.9662957787513733
+    },
+    {
+      "word": " years",
+      "start": 152.3,
+      "end": 152.68,
+      "probability": 0.9986231327056885
+    },
+    {
+      "word": " ago",
+      "start": 152.68,
+      "end": 152.96,
+      "probability": 0.9982808828353882
+    },
+    {
+      "word": " to",
+      "start": 152.96,
+      "end": 153.24,
+      "probability": 0.843620777130127
+    },
+    {
+      "word": " a",
+      "start": 153.24,
+      "end": 153.42,
+      "probability": 0.9964845180511475
+    },
+    {
+      "word": " day,",
+      "start": 153.42,
+      "end": 153.82,
+      "probability": 0.9982267022132874
+    },
+    {
+      "word": " her",
+      "start": 154.24,
+      "end": 154.42,
+      "probability": 0.9970846772193909
+    },
+    {
+      "word": " husband",
+      "start": 154.42,
+      "end": 154.82,
+      "probability": 0.9988594055175781
+    },
+    {
+      "word": " and",
+      "start": 154.82,
+      "end": 155.08,
+      "probability": 0.9971422553062439
+    },
+    {
+      "word": " her",
+      "start": 155.08,
+      "end": 155.32,
+      "probability": 0.9757669568061829
+    },
+    {
+      "word": " two",
+      "start": 155.32,
+      "end": 155.46,
+      "probability": 0.9898848533630371
+    },
+    {
+      "word": " young",
+      "start": 155.46,
+      "end": 155.7,
+      "probability": 0.9926995635032654
+    },
+    {
+      "word": " brothers",
+      "start": 155.7,
+      "end": 156.18,
+      "probability": 0.9946548938751221
+    },
+    {
+      "word": " went",
+      "start": 156.18,
+      "end": 156.4,
+      "probability": 0.9909278750419617
+    },
+    {
+      "word": " off",
+      "start": 156.4,
+      "end": 156.72,
+      "probability": 0.9954879879951477
+    },
+    {
+      "word": " for",
+      "start": 156.72,
+      "end": 156.86,
+      "probability": 0.9967473745346069
+    },
+    {
+      "word": " their",
+      "start": 156.86,
+      "end": 157.04,
+      "probability": 0.9958056211471558
+    },
+    {
+      "word": " days",
+      "start": 157.04,
+      "end": 157.36,
+      "probability": 0.4557139575481415
+    },
+    {
+      "word": " shooting.",
+      "start": 157.36,
+      "end": 157.74,
+      "probability": 0.9604246020317078
+    },
+    {
+      "word": " They",
+      "start": 158.34,
+      "end": 158.58,
+      "probability": 0.997369647026062
+    },
+    {
+      "word": " never",
+      "start": 158.58,
+      "end": 158.96,
+      "probability": 0.9990888833999634
+    },
+    {
+      "word": " came",
+      "start": 158.96,
+      "end": 159.28,
+      "probability": 0.9988842606544495
+    },
+    {
+      "word": " back,",
+      "start": 159.28,
+      "end": 159.98,
+      "probability": 0.9997062087059021
+    },
+    {
+      "word": " in",
+      "start": 160.36,
+      "end": 160.56,
+      "probability": 0.6225683093070984
+    },
+    {
+      "word": " crossing",
+      "start": 160.56,
+      "end": 160.84,
+      "probability": 0.9982618689537048
+    },
+    {
+      "word": " the",
+      "start": 160.84,
+      "end": 161.22,
+      "probability": 0.7664783596992493
+    },
+    {
+      "word": " to",
+      "start": 161.22,
+      "end": 161.44,
+      "probability": 0.2906377613544464
+    },
+    {
+      "word": " their",
+      "start": 161.44,
+      "end": 161.72,
+      "probability": 0.9732922315597534
+    },
+    {
+      "word": " favorite",
+      "start": 161.72,
+      "end": 162.24,
+      "probability": 0.95216965675354
+    },
+    {
+      "word": " snipe",
+      "start": 162.24,
+      "end": 162.46,
+      "probability": 0.7027689218521118
+    },
+    {
+      "word": " shooting",
+      "start": 162.46,
+      "end": 162.74,
+      "probability": 0.6451177000999451
+    },
+    {
+      "word": " ground,",
+      "start": 162.74,
+      "end": 163.22,
+      "probability": 0.9844430088996887
+    },
+    {
+      "word": " they",
+      "start": 163.78,
+      "end": 163.78,
+      "probability": 0.9629517793655396
+    },
+    {
+      "word": " were",
+      "start": 163.78,
+      "end": 164.0,
+      "probability": 0.9962026476860046
+    },
+    {
+      "word": " all",
+      "start": 164.0,
+      "end": 164.36,
+      "probability": 0.9930952191352844
+    },
+    {
+      "word": " three",
+      "start": 164.36,
+      "end": 164.64,
+      "probability": 0.9337160587310791
+    },
+    {
+      "word": " engulfed",
+      "start": 164.64,
+      "end": 165.24,
+      "probability": 0.9846590757369995
+    },
+    {
+      "word": " in",
+      "start": 165.24,
+      "end": 165.54,
+      "probability": 0.9916782379150391
+    },
+    {
+      "word": " a",
+      "start": 165.54,
+      "end": 165.6,
+      "probability": 0.9423326849937439
+    },
+    {
+      "word": " treacherous",
+      "start": 165.6,
+      "end": 166.08,
+      "probability": 0.9984248876571655
+    },
+    {
+      "word": " piece",
+      "start": 166.08,
+      "end": 166.5,
+      "probability": 0.9157764911651611
+    },
+    {
+      "word": " of",
+      "start": 166.5,
+      "end": 166.74,
+      "probability": 0.9980424642562866
+    },
+    {
+      "word": " bog.",
+      "start": 166.74,
+      "end": 167.04,
+      "probability": 0.5693303942680359
+    }
+  ],
+  "whisper_transcript_in_unit": "Out through that window, three years ago to a day, her husband and her two young brothers went off for their days shooting. They never came back, in crossing the to their favorite snipe shooting ground, they were all three engulfed in a treacherous piece of bog.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.5865174590000066
+}

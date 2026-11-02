@@ -1,0 +1,100 @@
+{
+  "operation": "replicate",
+  "receipt_schema": "audiobook_package_storage_receipt.v1",
+  "receipt_role": "replica",
+  "generated_at": "2026-11-02T06:04:11Z",
+  "production_store": {
+    "role": "prod",
+    "endpoint_host": "s3.region-1.example.invalid",
+    "region": "region-1",
+    "bucket": "private-bucket-1",
+    "account_identity_declared": true,
+    "account_fingerprint": "07e998012c1137de",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_PROD_"
+  },
+  "dr_store": {
+    "role": "dr",
+    "endpoint_host": "s3.region-2.example.invalid",
+    "region": "region-2",
+    "bucket": "private-bucket-2",
+    "account_identity_declared": true,
+    "account_fingerprint": "703039e88185964b",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_DR_"
+  },
+  "store": {
+    "role": "dr",
+    "endpoint_host": "s3.region-2.example.invalid",
+    "region": "region-2",
+    "bucket": "private-bucket-2",
+    "account_identity_declared": true,
+    "account_fingerprint": "703039e88185964b",
+    "credential_profiles": {
+      "object_io": {
+        "name": "upload",
+        "configured": true
+      },
+      "retention_preflight": {
+        "name": "retention_admin",
+        "configured": true
+      }
+    },
+    "release_eligible": true,
+    "environment_prefix": "B2_AUDIOBOOK_DR_"
+  },
+  "profiles_used": {
+    "production": {
+      "object_io": "upload",
+      "retention_preflight": "retention_admin"
+    },
+    "disaster_recovery": {
+      "object_io": "upload",
+      "retention_preflight": "retention_admin"
+    }
+  },
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/",
+  "release_status": "RELEASE_CANDIDATE",
+  "retention_days": 365,
+  "objects": [
+    {
+      "asset_id": "release-manifest",
+      "store": "dr",
+      "bucket": "private-bucket-2",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/release-manifest.json",
+      "sha256": "efc0cd923b5aeacab63232e9071d7dd40f6d50b255679f125fea058a4e1b46d4",
+      "size_bytes": 65536,
+      "mime_type": "application/json",
+      "version_id": "version-105",
+      "primary_version_id": "version-5",
+      "object_lock_mode": "GOVERNANCE",
+      "retain_until": "2027-11-02T06:04:11.604376+00:00",
+      "action": "REPLICATED_AND_VERIFIED",
+      "full_download_verified": true,
+      "primary_receipt_verified": true
+    }
+  ],
+  "passed": true
+}

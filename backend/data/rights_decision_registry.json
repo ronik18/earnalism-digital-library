@@ -60,12 +60,14 @@
     "india-20261026-the-open-window-approved-revised-cover-pair": "0fa273a1924c5c918ff3c389f13f0cffe9494759ca32f559ed563114c269d0b0",
     "india-20261026-the-open-window-protected-package-publication": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
     "india-20261028-radharani-attribution-metadata-successor": "e2bf1284ede07ea5f2176bfc4d2e72726929a8d91af7e4abfb751517ee395e7a",
-    "india-20261029-the-selfish-giant-owner-produced-audio-control": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
     "india-20261029-the-selfish-giant-audio-canary-reader-bindings": "25f40123ea4f31cecf8bfab6d633dbfc2302ff721748fd291a4f3b6b7676c900",
     "india-20261029-the-selfish-giant-owner-approved-cover-successor": "8f97cc70b52a3828a548fb13bfd15180e7b20aeaab272e458352be8408c402fe",
+    "india-20261029-the-selfish-giant-owner-produced-audio-control": "a64ee8743c69afe896265ef97b0cfca58759fddfe0a3eac04c1cf668f58a0c3c",
     "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
     "india-20261101-the-open-window-continuous-master-bindings": "c00b2b9112f2b52d0d94275d075922a54131df82c556e56a9757984991663d2c",
     "india-20261101-the-selfish-giant-continuous-master-bindings": "a838b9d294d170cb96eda4afc6550ffd54c8a1fb93a72529be28dc4f567e0c02",
+    "india-20261102-the-open-window-scored-retained-audio": "e49ebb5c843d8f5321d2034b93dc72769d2bcd03d13d8eef94d0ca0b5caf3dec",
+    "india-20261102-the-selfish-giant-cedar-private-stage": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
     "india-20261102-the-selfish-giant-cedar-scored-audio": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5"
   },
   "audio_package_bindings": {
@@ -74,6 +76,17 @@
         "basis": "Reference to the existing owner-accepted corrected-v1 audio-use adoption for this exact retained release; no Reader use expanded and no new rights declaration.",
         "decision_id": "india-20261020-the-open-window-corrected-v1-audio-owner-adopted",
         "record_sha256": "7f00f2deb1d2ab014801e5154429983bb9198324d8a8c37e17e7cae5a1511cef",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      },
+      "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219": {
+        "basis": "Exact independently reviewed retained Ryan scored source-QA component rights only; predecessor public release, Reader and source remain unchanged. Storage/runtime/publication pending.",
+        "decision_id": "india-20261102-the-open-window-scored-retained-audio",
+        "record_sha256": "e49ebb5c843d8f5321d2034b93dc72769d2bcd03d13d8eef94d0ca0b5caf3dec",
         "territories": [
           "IN"
         ],
@@ -550,6 +563,106 @@
     }
   },
   "historical_records": {
+    "cover_native_credentials_20261030": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "current_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
+        "previous_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+        "scope": "Two native credential-preserving image identities and dependencies only; no new rights decision."
+      }
+    },
+    "cover_next_three_20261030": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "current_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
+        "previous_record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20260925-the-canterville-ghost-commercial-reader-release": {
+        "current_record_sha256": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
+        "previous_record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-the-pit-and-the-pendulum-owner-text-reader": {
+        "current_record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
+        "previous_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      }
+    },
+    "cover_next_three_20261031": {
+      "india-20261001-a-horseman-in-the-sky-owner-text-reader": {
+        "current_record_sha256": "1b14391053f923cca947e40b138ba8fb6bc8dc60a49a3c0e3549cffdb1645e26",
+        "previous_record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-a-mystery-of-heroism-owner-text-reader": {
+        "current_record_sha256": "2c2adda070df0a68bcd5c9fac74c9b05a01d22975de9e0d0bc74260aa65a588c",
+        "previous_record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-a-scandal-in-bohemia-owner-text-reader": {
+        "current_record_sha256": "815e60ef4c1849d94bb7ff00992e89dec949bb5bfb2754806b3f39f40d49b130",
+        "previous_record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      }
+    },
+    "cover_next_two_20261031": {
+      "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader": {
+        "current_record_sha256": "2751aa4db6797a08b04a8307a2534efbbe10dab05d551b04daf8a8855e96cff5",
+        "previous_record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      },
+      "india-20261001-the-stolen-white-elephant-owner-text-reader": {
+        "current_record_sha256": "4e3e8ca904ffe8548614d00c5d05766874539f85e51064093a58699f27688b75",
+        "previous_record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
+      }
+    },
+    "cover_replacement_20261030": {
+      "india-20261001-the-open-boat-owner-text-reader": {
+        "current_record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
+        "previous_record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted": {
+        "current_record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
+        "previous_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted": {
+        "current_record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
+        "previous_record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted": {
+        "current_record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
+        "previous_record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed": {
+        "current_record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
+        "previous_record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted": {
+        "current_record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
+        "previous_record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261003-the-student-reader-cover-display-reviewed": {
+        "current_record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
+        "previous_record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261026-the-open-window-protected-package-publication": {
+        "current_record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
+        "previous_record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      },
+      "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": {
+        "current_record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
+        "previous_record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
+        "scope": "Cover bindings only; no new literary/audio decision."
+      }
+    },
     "superseded_runtime_bindings": {
       "india-20260925-a-ghost-story-commercial-reader-release": {
         "prior_candidate_decision_sha256": "9463d029b34a0e39a7ace8bcd95354e573a1c9f2841f09f7ecf5014b70d93b25",
@@ -574,106 +687,6 @@
         "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
         "prior_registry_binding_sha256": "9fd042186ad91fda9547180e04de76bea35ed9b8e6201765cd14a86891fac3dd",
         "superseded_reason": "A derived checksum row referenced a root-only file absent from the runtime package; the row was removed without changing rights-relevant content."
-      }
-    },
-    "cover_replacement_20261030": {
-      "india-20261001-the-open-boat-owner-text-reader": {
-        "previous_record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
-        "current_record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-the-student-reader-cover-display-reviewed": {
-        "previous_record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
-        "current_record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed": {
-        "previous_record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
-        "current_record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted": {
-        "previous_record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
-        "current_record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted": {
-        "previous_record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
-        "current_record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted": {
-        "previous_record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
-        "current_record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261026-the-open-window-protected-package-publication": {
-        "previous_record_sha256": "7b0da6932d56780c2589a3f9002550b5bec79c0f9cddb53bf5aca299372e432a",
-        "current_record_sha256": "b0429dc0d00499425f2d96d2dd752bc476436203d9a08acb7efbb15584cc309c",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261029-the-selfish-giant-protected-audio-publication-reader-bindings": {
-        "previous_record_sha256": "ebf6be54744ba2f5f88ce77bdeafa75505905d688aeccc896054219e43d4e4c0",
-        "current_record_sha256": "b3c6c410c2253cdf48b46c4bd3cbfb61bd56ba7c08bfe098099d6f3f1df30774",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      },
-      "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted": {
-        "previous_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
-        "current_record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
-        "scope": "Cover bindings only; no new literary/audio decision."
-      }
-    },
-    "cover_next_three_20261030": {
-      "india-20260925-a-white-heron-commercial-reader-release": {
-        "previous_record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
-        "current_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      },
-      "india-20260925-the-canterville-ghost-commercial-reader-release": {
-        "previous_record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
-        "current_record_sha256": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      },
-      "india-20261001-the-pit-and-the-pendulum-owner-text-reader": {
-        "previous_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
-        "current_record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      }
-    },
-    "cover_native_credentials_20261030": {
-      "india-20260925-a-white-heron-commercial-reader-release": {
-        "previous_record_sha256": "361701965d9b7a6c74355069aeae1193586e3164ccf49760ca0b7c3dbcfdff52",
-        "current_record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
-        "scope": "Two native credential-preserving image identities and dependencies only; no new rights decision."
-      }
-    },
-    "cover_next_three_20261031": {
-      "india-20261001-a-horseman-in-the-sky-owner-text-reader": {
-        "previous_record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
-        "current_record_sha256": "1b14391053f923cca947e40b138ba8fb6bc8dc60a49a3c0e3549cffdb1645e26",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      },
-      "india-20261001-a-mystery-of-heroism-owner-text-reader": {
-        "previous_record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
-        "current_record_sha256": "2c2adda070df0a68bcd5c9fac74c9b05a01d22975de9e0d0bc74260aa65a588c",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      },
-      "india-20261001-a-scandal-in-bohemia-owner-text-reader": {
-        "previous_record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
-        "current_record_sha256": "815e60ef4c1849d94bb7ff00992e89dec949bb5bfb2754806b3f39f40d49b130",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      }
-    },
-    "cover_next_two_20261031": {
-      "india-20261001-the-stolen-white-elephant-owner-text-reader": {
-        "previous_record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
-        "current_record_sha256": "4e3e8ca904ffe8548614d00c5d05766874539f85e51064093a58699f27688b75",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
-      },
-      "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader": {
-        "previous_record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
-        "current_record_sha256": "2751aa4db6797a08b04a8307a2534efbbe10dab05d551b04daf8a8855e96cff5",
-        "scope": "Existing cover component hashes rebound; no new decision, use or territory."
       }
     }
   },

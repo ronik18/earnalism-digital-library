@@ -1,0 +1,318 @@
+{
+  "unit": "u000019",
+  "master_interval_seconds": [
+    226.04504166666666,
+    235.96504166666668
+  ],
+  "expected_text": "Do you know, sometimes on still, quiet evenings like this, I almost get a creepy feeling that they will all walk in through that window—”",
+  "ctc_transcript": "DO YOU KNOW SOMETIMES ON STILL QUIET EVENINGS LIKE THIS I ALMOST GET A CREEPY FEELING THAT THEY WILL ALL WALK IN THROUGH THAT WINDOW",
+  "ctc_words": [
+    {
+      "word": "DO",
+      "start": 226.1853244949495,
+      "end": 226.2454457070707,
+      "mean_character_frame_posterior": 0.9992733299732208
+    },
+    {
+      "word": "YOU",
+      "start": 226.3055669191919,
+      "end": 226.40576893939394,
+      "mean_character_frame_posterior": 0.9709970355033875
+    },
+    {
+      "word": "KNOW",
+      "start": 226.50597095959594,
+      "end": 226.7264154040404,
+      "mean_character_frame_posterior": 0.9999343156814575
+    },
+    {
+      "word": "SOMETIMES",
+      "start": 227.40778914141413,
+      "end": 227.96892045454544,
+      "mean_character_frame_posterior": 0.9493631654315524
+    },
+    {
+      "word": "ON",
+      "start": 228.59017297979798,
+      "end": 228.6302537878788,
+      "mean_character_frame_posterior": 0.999817430973053
+    },
+    {
+      "word": "STILL",
+      "start": 228.81061742424242,
+      "end": 229.1312638888889,
+      "mean_character_frame_posterior": 0.9983685731887817
+    },
+    {
+      "word": "QUIET",
+      "start": 229.31162752525253,
+      "end": 229.63227398989898,
+      "mean_character_frame_posterior": 0.9999671220779419
+    },
+    {
+      "word": "EVENINGS",
+      "start": 229.8126376262626,
+      "end": 230.1733648989899,
+      "mean_character_frame_posterior": 0.9913131967186928
+    },
+    {
+      "word": "LIKE",
+      "start": 230.29360732323232,
+      "end": 230.47397095959596,
+      "mean_character_frame_posterior": 0.9999960958957672
+    },
+    {
+      "word": "THIS",
+      "start": 230.5942133838384,
+      "end": 230.83469823232323,
+      "mean_character_frame_posterior": 0.9998695403337479
+    },
+    {
+      "word": "I",
+      "start": 231.59623358585858,
+      "end": 231.61627398989899,
+      "mean_character_frame_posterior": 0.9999916553497314
+    },
+    {
+      "word": "ALMOST",
+      "start": 231.71647601010102,
+      "end": 231.97700126262626,
+      "mean_character_frame_posterior": 0.9837045868237814
+    },
+    {
+      "word": "GET",
+      "start": 232.03712247474746,
+      "end": 232.1373244949495,
+      "mean_character_frame_posterior": 0.9838427106539408
+    },
+    {
+      "word": "A",
+      "start": 232.2174861111111,
+      "end": 232.2375265151515,
+      "mean_character_frame_posterior": 0.9993723034858704
+    },
+    {
+      "word": "CREEPY",
+      "start": 232.31768813131313,
+      "end": 232.658375,
+      "mean_character_frame_posterior": 0.9983103473981222
+    },
+    {
+      "word": "FEELING",
+      "start": 232.7786174242424,
+      "end": 233.1393446969697,
+      "mean_character_frame_posterior": 0.999692576272147
+    },
+    {
+      "word": "THAT",
+      "start": 233.21950631313132,
+      "end": 233.35978914141413,
+      "mean_character_frame_posterior": 0.9969009608030319
+    },
+    {
+      "word": "THEY",
+      "start": 233.39986994949496,
+      "end": 233.52011237373736,
+      "mean_character_frame_posterior": 0.9085942506790161
+    },
+    {
+      "word": "WILL",
+      "start": 233.5601931818182,
+      "end": 233.7405568181818,
+      "mean_character_frame_posterior": 0.9999668002128601
+    },
+    {
+      "word": "ALL",
+      "start": 233.92092045454544,
+      "end": 234.06120328282827,
+      "mean_character_frame_posterior": 0.9998859365781149
+    },
+    {
+      "word": "WALK",
+      "start": 234.1814457070707,
+      "end": 234.38184974747475,
+      "mean_character_frame_posterior": 0.9817004501819611
+    },
+    {
+      "word": "IN",
+      "start": 234.60229419191919,
+      "end": 234.6624154040404,
+      "mean_character_frame_posterior": 0.9999540448188782
+    },
+    {
+      "word": "THROUGH",
+      "start": 234.90290025252526,
+      "end": 235.1634255050505,
+      "mean_character_frame_posterior": 0.923397924218859
+    },
+    {
+      "word": "THAT",
+      "start": 235.24358712121213,
+      "end": 235.40391035353534,
+      "mean_character_frame_posterior": 0.9990148991346359
+    },
+    {
+      "word": "WINDOW",
+      "start": 235.52415277777777,
+      "end": 235.84479924242424,
+      "mean_character_frame_posterior": 0.9998786946137747
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " Do",
+      "start": 226.22,
+      "end": 226.3,
+      "probability": 0.7797318696975708
+    },
+    {
+      "word": " you",
+      "start": 226.3,
+      "end": 226.5,
+      "probability": 0.9955251812934875
+    },
+    {
+      "word": " know,",
+      "start": 226.5,
+      "end": 226.88,
+      "probability": 0.9988967180252075
+    },
+    {
+      "word": " sometimes,",
+      "start": 227.62,
+      "end": 228.04,
+      "probability": 0.9920026063919067
+    },
+    {
+      "word": " on",
+      "start": 228.52,
+      "end": 228.66,
+      "probability": 0.9862177968025208
+    },
+    {
+      "word": " still",
+      "start": 228.66,
+      "end": 229.26,
+      "probability": 0.9850625991821289
+    },
+    {
+      "word": " quiet",
+      "start": 229.26,
+      "end": 229.64,
+      "probability": 0.951478898525238
+    },
+    {
+      "word": " evenings",
+      "start": 229.64,
+      "end": 230.12,
+      "probability": 0.9886115193367004
+    },
+    {
+      "word": " like",
+      "start": 230.12,
+      "end": 230.46,
+      "probability": 0.9927944540977478
+    },
+    {
+      "word": " this,",
+      "start": 230.46,
+      "end": 231.08,
+      "probability": 0.9984153509140015
+    },
+    {
+      "word": " I",
+      "start": 231.38,
+      "end": 231.68,
+      "probability": 0.9939478635787964
+    },
+    {
+      "word": " almost",
+      "start": 231.68,
+      "end": 231.94,
+      "probability": 0.9925795197486877
+    },
+    {
+      "word": " get",
+      "start": 231.94,
+      "end": 232.18,
+      "probability": 0.9980233907699585
+    },
+    {
+      "word": " a",
+      "start": 232.18,
+      "end": 232.32,
+      "probability": 0.9957131147384644
+    },
+    {
+      "word": " creepy",
+      "start": 232.32,
+      "end": 232.62,
+      "probability": 0.9923761487007141
+    },
+    {
+      "word": " feeling",
+      "start": 232.62,
+      "end": 233.14,
+      "probability": 0.9991315007209778
+    },
+    {
+      "word": " that",
+      "start": 233.14,
+      "end": 233.34,
+      "probability": 0.9612794518470764
+    },
+    {
+      "word": " they",
+      "start": 233.34,
+      "end": 233.58,
+      "probability": 0.9967599511146545
+    },
+    {
+      "word": " will",
+      "start": 233.58,
+      "end": 233.8,
+      "probability": 0.9648683667182922
+    },
+    {
+      "word": " all",
+      "start": 233.8,
+      "end": 234.22,
+      "probability": 0.9877578020095825
+    },
+    {
+      "word": " walk",
+      "start": 234.22,
+      "end": 234.46,
+      "probability": 0.998424768447876
+    },
+    {
+      "word": " in",
+      "start": 234.46,
+      "end": 234.84,
+      "probability": 0.9929239749908447
+    },
+    {
+      "word": " through",
+      "start": 234.84,
+      "end": 235.12,
+      "probability": 0.978056788444519
+    },
+    {
+      "word": " that",
+      "start": 235.12,
+      "end": 235.5,
+      "probability": 0.9836456775665283
+    },
+    {
+      "word": " window.",
+      "start": 235.5,
+      "end": 235.92,
+      "probability": 0.999078631401062
+    }
+  ],
+  "whisper_transcript_in_unit": "Do you know, sometimes, on still quiet evenings like this, I almost get a creepy feeling that they will all walk in through that window.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.35196041599999717
+}

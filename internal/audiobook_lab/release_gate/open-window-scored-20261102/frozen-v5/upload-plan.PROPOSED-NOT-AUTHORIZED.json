@@ -1,0 +1,41 @@
+{
+  "schema_version": "audiobook_package_upload_plan.v2",
+  "slug": "the-open-window",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "immutable_prefix": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/",
+  "release_status": "RELEASE_CANDIDATE",
+  "assets": [
+    {
+      "asset_id": "chapter-001-full-audio",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.mp3",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-audio-sha256-32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9.mp3",
+      "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+      "size_bytes": 11797552,
+      "mime_type": "audio/mpeg"
+    },
+    {
+      "asset_id": "chapter-001-full-timestamps",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.timestamps.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-timestamps-sha256-126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831.json",
+      "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+      "size_bytes": 17612,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-metadata",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.metadata.json",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-metadata-sha256-3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca.json",
+      "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+      "size_bytes": 1870,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "chapter-001-full-vtt",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/proposed-scored-sourceqa-20261102-v5/assets/chapter-001-full.vtt",
+      "key": "v1/prod/sprint1/the-open-window/releases/e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219/delivery/chapter-001-full-vtt-sha256-94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef.vtt",
+      "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+      "size_bytes": 7683,
+      "mime_type": "text/vtt"
+    }
+  ]
+}

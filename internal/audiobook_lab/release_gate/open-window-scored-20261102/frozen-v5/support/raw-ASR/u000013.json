@@ -1,0 +1,354 @@
+{
+  "unit": "u000013",
+  "master_interval_seconds": [
+    124.64583333333333,
+    138.96583333333334
+  ],
+  "expected_text": "“You may wonder why we keep that window wide open on an October afternoon,” said the niece, indicating a large French window that opened on to a lawn.",
+  "ctc_transcript": "YOU MAY WONDER WHY WE KEEP THAT WINDOW WIDE OPEN ON AN OCTOBER AFTERNOON SAID THE NIECE INDICATING A LARGE FRENCH WINDOW THAT OPENED ON TO A LAWN",
+  "ctc_words": [
+    {
+      "word": "YOU",
+      "start": 124.76600116550117,
+      "end": 124.88616899766899,
+      "mean_character_frame_posterior": 0.9926430185635885
+    },
+    {
+      "word": "MAY",
+      "start": 125.04639277389276,
+      "end": 125.26670046620046,
+      "mean_character_frame_posterior": 0.8887988130251566
+    },
+    {
+      "word": "WONDER",
+      "start": 125.50703613053612,
+      "end": 125.86753962703962,
+      "mean_character_frame_posterior": 0.9940108259518942
+    },
+    {
+      "word": "WHY",
+      "start": 126.36823892773893,
+      "end": 126.64863053613053,
+      "mean_character_frame_posterior": 0.999920109907786
+    },
+    {
+      "word": "WE",
+      "start": 126.84891025641025,
+      "end": 126.94905011655011,
+      "mean_character_frame_posterior": 0.9999778866767883
+    },
+    {
+      "word": "KEEP",
+      "start": 127.08924592074591,
+      "end": 127.34960955710955,
+      "mean_character_frame_posterior": 0.9998118579387665
+    },
+    {
+      "word": "THAT",
+      "start": 127.44974941724941,
+      "end": 127.58994522144522,
+      "mean_character_frame_posterior": 0.999714270234108
+    },
+    {
+      "word": "WINDOW",
+      "start": 127.71011305361304,
+      "end": 128.05058857808856,
+      "mean_character_frame_posterior": 0.9997314512729645
+    },
+    {
+      "word": "WIDE",
+      "start": 128.29092424242424,
+      "end": 128.6113717948718,
+      "mean_character_frame_posterior": 0.9999748170375824
+    },
+    {
+      "word": "OPEN",
+      "start": 128.93181934731933,
+      "end": 129.172155011655,
+      "mean_character_frame_posterior": 0.864553228020668
+    },
+    {
+      "word": "ON",
+      "start": 129.79302214452213,
+      "end": 129.83307808857808,
+      "mean_character_frame_posterior": 0.9986312687397003
+    },
+    {
+      "word": "AN",
+      "start": 129.95324592074593,
+      "end": 129.99330186480185,
+      "mean_character_frame_posterior": 0.9962952733039856
+    },
+    {
+      "word": "OCTOBER",
+      "start": 130.23363752913752,
+      "end": 130.85450466200464,
+      "mean_character_frame_posterior": 0.9697225519589016
+    },
+    {
+      "word": "AFTERNOON",
+      "start": 131.09484032634032,
+      "end": 131.6155675990676,
+      "mean_character_frame_posterior": 0.981202761332194
+    },
+    {
+      "word": "SAID",
+      "start": 132.59693822843823,
+      "end": 132.757162004662,
+      "mean_character_frame_posterior": 0.8835477530956268
+    },
+    {
+      "word": "THE",
+      "start": 132.83727389277388,
+      "end": 132.91738578088578,
+      "mean_character_frame_posterior": 0.9997198184331259
+    },
+    {
+      "word": "NIECE",
+      "start": 132.9774696969697,
+      "end": 133.27788927738928,
+      "mean_character_frame_posterior": 0.8259542346000671
+    },
+    {
+      "word": "INDICATING",
+      "start": 133.91878438228437,
+      "end": 134.53965151515152,
+      "mean_character_frame_posterior": 0.9576775312423706
+    },
+    {
+      "word": "A",
+      "start": 134.80001515151514,
+      "end": 134.82004312354312,
+      "mean_character_frame_posterior": 0.9987409710884094
+    },
+    {
+      "word": "LARGE",
+      "start": 134.9802668997669,
+      "end": 135.36079836829836,
+      "mean_character_frame_posterior": 0.9844460129737854
+    },
+    {
+      "word": "FRENCH",
+      "start": 135.5410501165501,
+      "end": 135.80141375291376,
+      "mean_character_frame_posterior": 0.8726392289002737
+    },
+    {
+      "word": "WINDOW",
+      "start": 135.94160955710956,
+      "end": 136.28208508158508,
+      "mean_character_frame_posterior": 0.9999856948852539
+    },
+    {
+      "word": "THAT",
+      "start": 136.88292424242422,
+      "end": 137.02312004662005,
+      "mean_character_frame_posterior": 0.9996275007724762
+    },
+    {
+      "word": "OPENED",
+      "start": 137.28348368298367,
+      "end": 137.60393123543122,
+      "mean_character_frame_posterior": 0.9958865642547607
+    },
+    {
+      "word": "ON",
+      "start": 137.90435081585082,
+      "end": 137.9844627039627,
+      "mean_character_frame_posterior": 0.9787878096103668
+    },
+    {
+      "word": "TO",
+      "start": 138.10463053613054,
+      "end": 138.22479836829837,
+      "mean_character_frame_posterior": 0.9998575747013092
+    },
+    {
+      "word": "A",
+      "start": 138.38502214452214,
+      "end": 138.40505011655011,
+      "mean_character_frame_posterior": 0.9988860487937927
+    },
+    {
+      "word": "LAWN",
+      "start": 138.48516200466202,
+      "end": 138.8256375291375,
+      "mean_character_frame_posterior": 0.9997784346342087
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " You",
+      "start": 124.7,
+      "end": 124.92,
+      "probability": 0.4104444682598114
+    },
+    {
+      "word": " may",
+      "start": 124.92,
+      "end": 125.32,
+      "probability": 0.9980977177619934
+    },
+    {
+      "word": " wonder",
+      "start": 125.32,
+      "end": 125.9,
+      "probability": 0.9992313385009766
+    },
+    {
+      "word": " why",
+      "start": 125.9,
+      "end": 126.68,
+      "probability": 0.8801733255386353
+    },
+    {
+      "word": " we",
+      "start": 126.68,
+      "end": 127.1,
+      "probability": 0.9976385831832886
+    },
+    {
+      "word": " keep",
+      "start": 127.1,
+      "end": 127.34,
+      "probability": 0.9982030391693115
+    },
+    {
+      "word": " that",
+      "start": 127.34,
+      "end": 127.72,
+      "probability": 0.9913679957389832
+    },
+    {
+      "word": " window",
+      "start": 127.72,
+      "end": 128.04,
+      "probability": 0.9986456036567688
+    },
+    {
+      "word": " wide",
+      "start": 128.04,
+      "end": 128.54,
+      "probability": 0.9980218410491943
+    },
+    {
+      "word": " open",
+      "start": 128.54,
+      "end": 129.28,
+      "probability": 0.9988634586334229
+    },
+    {
+      "word": " on",
+      "start": 129.28,
+      "end": 129.86,
+      "probability": 0.9616079330444336
+    },
+    {
+      "word": " an",
+      "start": 129.86,
+      "end": 130.16,
+      "probability": 0.9844676852226257
+    },
+    {
+      "word": " October",
+      "start": 130.16,
+      "end": 130.8,
+      "probability": 0.9824734926223755
+    },
+    {
+      "word": " afternoon.",
+      "start": 130.8,
+      "end": 131.76,
+      "probability": 0.989163875579834
+    },
+    {
+      "word": " said",
+      "start": 131.76,
+      "end": 132.74,
+      "probability": 0.5321741104125977
+    },
+    {
+      "word": " the",
+      "start": 132.74,
+      "end": 132.98,
+      "probability": 0.9513770341873169
+    },
+    {
+      "word": " niece,",
+      "start": 132.98,
+      "end": 133.38,
+      "probability": 0.973767876625061
+    },
+    {
+      "word": " indicating",
+      "start": 133.9,
+      "end": 134.44,
+      "probability": 0.9908360242843628
+    },
+    {
+      "word": " a",
+      "start": 134.44,
+      "end": 134.96,
+      "probability": 0.9790306687355042
+    },
+    {
+      "word": " large",
+      "start": 134.96,
+      "end": 135.38,
+      "probability": 0.9882918000221252
+    },
+    {
+      "word": " French",
+      "start": 135.38,
+      "end": 135.88,
+      "probability": 0.9236019253730774
+    },
+    {
+      "word": " window",
+      "start": 135.88,
+      "end": 136.36,
+      "probability": 0.9598988890647888
+    },
+    {
+      "word": " that",
+      "start": 136.36,
+      "end": 137.2,
+      "probability": 0.9655382633209229
+    },
+    {
+      "word": " opened",
+      "start": 137.2,
+      "end": 137.56,
+      "probability": 0.9959986209869385
+    },
+    {
+      "word": " on",
+      "start": 137.56,
+      "end": 138.18,
+      "probability": 0.7963426113128662
+    },
+    {
+      "word": " to",
+      "start": 138.18,
+      "end": 138.34,
+      "probability": 0.9964021444320679
+    },
+    {
+      "word": " a",
+      "start": 138.34,
+      "end": 138.52,
+      "probability": 0.27551427483558655
+    },
+    {
+      "word": " lawn.",
+      "start": 138.52,
+      "end": 138.92,
+      "probability": 0.9770596027374268
+    }
+  ],
+  "whisper_transcript_in_unit": "You may wonder why we keep that window wide open on an October afternoon. said the niece, indicating a large French window that opened on to a lawn.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.5296105839999967
+}

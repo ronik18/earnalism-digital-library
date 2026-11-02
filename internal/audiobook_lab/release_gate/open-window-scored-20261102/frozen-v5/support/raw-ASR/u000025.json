@@ -1,0 +1,636 @@
+{
+  "unit": "u000025",
+  "master_interval_seconds": [
+    293.70633333333336,
+    313.6263333333333
+  ],
+  "expected_text": "He made a desperate but only partially successful effort to turn the talk on to a less ghastly topic; he was conscious that his hostess was giving him only a fragment of her attention, and her eyes were constantly straying past him to the open window and the lawn beyond.",
+  "ctc_transcript": "HE MADE A DESPERATE BUT ONLY PARTIALLY SUCCESSFUL EFFORT TO TURN THE TALK ON TO A LESS GHASTLY TOPIC HE WAS CONSCIOUS THAT HIS HOSTESS WAS GIVING HIM ONLY A FRAGMENT OF HER ATTENTION AND HER EYES WERE CONSTANTLY STRAYING PAST HIM TO THE OPEN WINDOW IN THE LAWN BEYOND",
+  "ctc_words": [
+    {
+      "word": "HE",
+      "start": 293.80643383584595,
+      "end": 293.86649413735347,
+      "mean_character_frame_posterior": 0.8530833721160889
+    },
+    {
+      "word": "MADE",
+      "start": 293.966594639866,
+      "end": 294.1067353433836,
+      "mean_character_frame_posterior": 0.9999604225158691
+    },
+    {
+      "word": "A",
+      "start": 294.1868157453937,
+      "end": 294.2068358458962,
+      "mean_character_frame_posterior": 0.9996708631515503
+    },
+    {
+      "word": "DESPERATE",
+      "start": 294.3669966499163,
+      "end": 294.84747906197657,
+      "mean_character_frame_posterior": 0.9996829827626547
+    },
+    {
+      "word": "BUT",
+      "start": 295.0076398659967,
+      "end": 295.1277604690118,
+      "mean_character_frame_posterior": 0.9999484221140543
+    },
+    {
+      "word": "ONLY",
+      "start": 295.3479815745394,
+      "end": 295.56820268006703,
+      "mean_character_frame_posterior": 0.9999911785125732
+    },
+    {
+      "word": "PARTIALLY",
+      "start": 295.78842378559466,
+      "end": 296.2889262981575,
+      "mean_character_frame_posterior": 0.9414413306448195
+    },
+    {
+      "word": "SUCCESSFUL",
+      "start": 296.3690067001675,
+      "end": 296.9696097152429,
+      "mean_character_frame_posterior": 0.8765610158443451
+    },
+    {
+      "word": "EFFORT",
+      "start": 297.129770519263,
+      "end": 297.3900318257957,
+      "mean_character_frame_posterior": 0.9997118910153707
+    },
+    {
+      "word": "TO",
+      "start": 297.53017252931323,
+      "end": 297.65029313232833,
+      "mean_character_frame_posterior": 0.9999533295631409
+    },
+    {
+      "word": "TURN",
+      "start": 297.95059463986604,
+      "end": 298.13077554438865,
+      "mean_character_frame_posterior": 0.9998014718294144
+    },
+    {
+      "word": "THE",
+      "start": 298.2308760469012,
+      "end": 298.29093634840876,
+      "mean_character_frame_posterior": 0.999596893787384
+    },
+    {
+      "word": "TALK",
+      "start": 298.3509966499163,
+      "end": 298.5912378559464,
+      "mean_character_frame_posterior": 0.9997571706771851
+    },
+    {
+      "word": "ON",
+      "start": 298.91155946398663,
+      "end": 298.97161976549415,
+      "mean_character_frame_posterior": 0.999932587146759
+    },
+    {
+      "word": "TO",
+      "start": 299.13178056951426,
+      "end": 299.25190117252936,
+      "mean_character_frame_posterior": 0.9894295036792755
+    },
+    {
+      "word": "A",
+      "start": 299.41206197654947,
+      "end": 299.432082077052,
+      "mean_character_frame_posterior": 0.9979053735733032
+    },
+    {
+      "word": "LESS",
+      "start": 299.8124639865997,
+      "end": 300.07272529313235,
+      "mean_character_frame_posterior": 0.9669642895460129
+    },
+    {
+      "word": "GHASTLY",
+      "start": 300.33298659966505,
+      "end": 300.8134690117253,
+      "mean_character_frame_posterior": 0.9719015445028033
+    },
+    {
+      "word": "TOPIC",
+      "start": 300.9135695142379,
+      "end": 301.33399162479066,
+      "mean_character_frame_posterior": 0.9993344783782959
+    },
+    {
+      "word": "HE",
+      "start": 302.31497654941376,
+      "end": 302.3750368509213,
+      "mean_character_frame_posterior": 0.9946631193161011
+    },
+    {
+      "word": "WAS",
+      "start": 302.45511725293136,
+      "end": 302.5351976549414,
+      "mean_character_frame_posterior": 0.9999947945276896
+    },
+    {
+      "word": "CONSCIOUS",
+      "start": 302.6553182579565,
+      "end": 303.11578056951424,
+      "mean_character_frame_posterior": 0.9807308846049838
+    },
+    {
+      "word": "THAT",
+      "start": 303.21588107202683,
+      "end": 303.31598157453936,
+      "mean_character_frame_posterior": 0.9999304711818695
+    },
+    {
+      "word": "HIS",
+      "start": 303.35602177554443,
+      "end": 303.43610217755446,
+      "mean_character_frame_posterior": 0.990222156047821
+    },
+    {
+      "word": "HOSTESS",
+      "start": 303.53620268006705,
+      "end": 303.9966649916248,
+      "mean_character_frame_posterior": 0.9770374808992658
+    },
+    {
+      "word": "WAS",
+      "start": 304.0767453936349,
+      "end": 304.21688609715244,
+      "mean_character_frame_posterior": 0.9999773104985555
+    },
+    {
+      "word": "GIVING",
+      "start": 304.41708710217756,
+      "end": 304.67734840871026,
+      "mean_character_frame_posterior": 0.9984654486179352
+    },
+    {
+      "word": "HIM",
+      "start": 304.7374087102178,
+      "end": 304.83750921273037,
+      "mean_character_frame_posterior": 0.997933586438497
+    },
+    {
+      "word": "ONLY",
+      "start": 305.1578308207705,
+      "end": 305.3980720268007,
+      "mean_character_frame_posterior": 0.9568209648132324
+    },
+    {
+      "word": "A",
+      "start": 305.47815242881074,
+      "end": 305.49817252931325,
+      "mean_character_frame_posterior": 0.9994751811027527
+    },
+    {
+      "word": "FRAGMENT",
+      "start": 305.63831323283085,
+      "end": 306.1388157453937,
+      "mean_character_frame_posterior": 0.8854899108409882
+    },
+    {
+      "word": "OF",
+      "start": 306.3590368509213,
+      "end": 306.3990770519263,
+      "mean_character_frame_posterior": 0.9998924732208252
+    },
+    {
+      "word": "HER",
+      "start": 306.47915745393635,
+      "end": 306.55923785594644,
+      "mean_character_frame_posterior": 0.9242313106854757
+    },
+    {
+      "word": "ATTENTION",
+      "start": 306.65933835845897,
+      "end": 307.1198006700168,
+      "mean_character_frame_posterior": 0.999898632367452
+    },
+    {
+      "word": "AND",
+      "start": 308.0807654941374,
+      "end": 308.1408257956449,
+      "mean_character_frame_posterior": 0.9928045471509298
+    },
+    {
+      "word": "HER",
+      "start": 308.2008860971525,
+      "end": 308.2809664991625,
+      "mean_character_frame_posterior": 0.9251211881637573
+    },
+    {
+      "word": "EYES",
+      "start": 308.52120770519264,
+      "end": 308.66134840871024,
+      "mean_character_frame_posterior": 0.9170803427696228
+    },
+    {
+      "word": "WERE",
+      "start": 308.7414288107203,
+      "end": 308.88156951423787,
+      "mean_character_frame_posterior": 0.9984428882598877
+    },
+    {
+      "word": "CONSTANTLY",
+      "start": 309.00169011725296,
+      "end": 309.5822730318258,
+      "mean_character_frame_posterior": 0.9893013060092926
+    },
+    {
+      "word": "STRAYING",
+      "start": 309.6823735343384,
+      "end": 310.06275544388615,
+      "mean_character_frame_posterior": 0.8991957455873489
+    },
+    {
+      "word": "PAST",
+      "start": 310.1628559463987,
+      "end": 310.4831775544389,
+      "mean_character_frame_posterior": 0.9999324232339859
+    },
+    {
+      "word": "HIM",
+      "start": 310.5432378559464,
+      "end": 310.643338358459,
+      "mean_character_frame_posterior": 0.9997393488883972
+    },
+    {
+      "word": "TO",
+      "start": 310.76345896147404,
+      "end": 310.88357956448914,
+      "mean_character_frame_posterior": 0.9324449598789215
+    },
+    {
+      "word": "THE",
+      "start": 310.94363986599666,
+      "end": 311.00370016750423,
+      "mean_character_frame_posterior": 0.9999624490737915
+    },
+    {
+      "word": "OPEN",
+      "start": 311.16386097152434,
+      "end": 311.34404187604696,
+      "mean_character_frame_posterior": 0.9833161234855652
+    },
+    {
+      "word": "WINDOW",
+      "start": 311.4841825795645,
+      "end": 311.84454438860973,
+      "mean_character_frame_posterior": 0.9999893506368002
+    },
+    {
+      "word": "IN",
+      "start": 312.30500670016755,
+      "end": 312.34504690117257,
+      "mean_character_frame_posterior": 0.850714236497879
+    },
+    {
+      "word": "THE",
+      "start": 312.4251273031826,
+      "end": 312.5052077051927,
+      "mean_character_frame_posterior": 0.9981205463409424
+    },
+    {
+      "word": "LAWN",
+      "start": 312.5652680067002,
+      "end": 312.82552931323283,
+      "mean_character_frame_posterior": 0.9808447808027267
+    },
+    {
+      "word": "BEYOND",
+      "start": 312.96567001675044,
+      "end": 313.46617252931327,
+      "mean_character_frame_posterior": 0.9980400800704956
+    }
+  ],
+  "text_edit_differences": [
+    {
+      "tag": "replace",
+      "expected": [
+        "and"
+      ],
+      "recognized": [
+        "in"
+      ],
+      "reference_word_span": [
+        46,
+        47
+      ],
+      "recognized_word_span": [
+        46,
+        47
+      ]
+    }
+  ],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " He",
+      "start": 293.9,
+      "end": 293.9,
+      "probability": 0.7047165632247925
+    },
+    {
+      "word": " made",
+      "start": 293.9,
+      "end": 294.1,
+      "probability": 0.9816931486129761
+    },
+    {
+      "word": " a",
+      "start": 294.1,
+      "end": 294.34,
+      "probability": 0.7146850824356079
+    },
+    {
+      "word": " desperate",
+      "start": 294.34,
+      "end": 294.8,
+      "probability": 0.9930862188339233
+    },
+    {
+      "word": " but",
+      "start": 294.8,
+      "end": 295.28,
+      "probability": 0.7184273600578308
+    },
+    {
+      "word": " only",
+      "start": 295.28,
+      "end": 295.84,
+      "probability": 0.9927636981010437
+    },
+    {
+      "word": " partially",
+      "start": 295.84,
+      "end": 296.24,
+      "probability": 0.9765092730522156
+    },
+    {
+      "word": " successful",
+      "start": 296.24,
+      "end": 296.96,
+      "probability": 0.9955897331237793
+    },
+    {
+      "word": " effort",
+      "start": 296.96,
+      "end": 297.4,
+      "probability": 0.9944913387298584
+    },
+    {
+      "word": " to",
+      "start": 297.4,
+      "end": 297.74,
+      "probability": 0.9759572148323059
+    },
+    {
+      "word": " turn",
+      "start": 297.74,
+      "end": 298.18,
+      "probability": 0.9827647805213928
+    },
+    {
+      "word": " the",
+      "start": 298.18,
+      "end": 298.28,
+      "probability": 0.9873457551002502
+    },
+    {
+      "word": " talk",
+      "start": 298.28,
+      "end": 298.66,
+      "probability": 0.9858742952346802
+    },
+    {
+      "word": " on",
+      "start": 298.66,
+      "end": 299.08,
+      "probability": 0.8815128803253174
+    },
+    {
+      "word": " to",
+      "start": 299.08,
+      "end": 299.38,
+      "probability": 0.9781858921051025
+    },
+    {
+      "word": " a",
+      "start": 299.38,
+      "end": 299.82,
+      "probability": 0.9903295040130615
+    },
+    {
+      "word": " less",
+      "start": 299.82,
+      "end": 300.36,
+      "probability": 0.981269359588623
+    },
+    {
+      "word": " ghastly",
+      "start": 300.36,
+      "end": 300.9,
+      "probability": 0.9565745194753011
+    },
+    {
+      "word": " topic.",
+      "start": 300.9,
+      "end": 301.54,
+      "probability": 0.9957614541053772
+    },
+    {
+      "word": " He",
+      "start": 302.18,
+      "end": 302.38,
+      "probability": 0.988061785697937
+    },
+    {
+      "word": " was",
+      "start": 302.38,
+      "end": 302.6,
+      "probability": 0.9991557598114014
+    },
+    {
+      "word": " conscious",
+      "start": 302.6,
+      "end": 303.06,
+      "probability": 0.9942429661750793
+    },
+    {
+      "word": " that",
+      "start": 303.06,
+      "end": 303.36,
+      "probability": 0.9944773316383362
+    },
+    {
+      "word": " his",
+      "start": 303.36,
+      "end": 303.58,
+      "probability": 0.992485761642456
+    },
+    {
+      "word": " hostess",
+      "start": 303.58,
+      "end": 304.04,
+      "probability": 0.9837348461151123
+    },
+    {
+      "word": " was",
+      "start": 304.04,
+      "end": 304.26,
+      "probability": 0.9967671632766724
+    },
+    {
+      "word": " giving",
+      "start": 304.26,
+      "end": 304.62,
+      "probability": 0.9866266846656799
+    },
+    {
+      "word": " him",
+      "start": 304.62,
+      "end": 305.06,
+      "probability": 0.9966802597045898
+    },
+    {
+      "word": " only",
+      "start": 305.06,
+      "end": 305.44,
+      "probability": 0.9956859350204468
+    },
+    {
+      "word": " a",
+      "start": 305.44,
+      "end": 305.7,
+      "probability": 0.9965067505836487
+    },
+    {
+      "word": " fragment",
+      "start": 305.7,
+      "end": 306.04,
+      "probability": 0.9912334084510803
+    },
+    {
+      "word": " of",
+      "start": 306.04,
+      "end": 306.46,
+      "probability": 0.9962198138237
+    },
+    {
+      "word": " her",
+      "start": 306.46,
+      "end": 306.6,
+      "probability": 0.9831420183181763
+    },
+    {
+      "word": " attention,",
+      "start": 306.6,
+      "end": 307.2,
+      "probability": 0.9962171912193298
+    },
+    {
+      "word": " and",
+      "start": 307.62,
+      "end": 308.14,
+      "probability": 0.9899317026138306
+    },
+    {
+      "word": " her",
+      "start": 308.14,
+      "end": 308.36,
+      "probability": 0.988034188747406
+    },
+    {
+      "word": " eyes",
+      "start": 308.36,
+      "end": 308.68,
+      "probability": 0.9996612071990967
+    },
+    {
+      "word": " were",
+      "start": 308.68,
+      "end": 308.94,
+      "probability": 0.9938645958900452
+    },
+    {
+      "word": " constantly",
+      "start": 308.94,
+      "end": 309.58,
+      "probability": 0.9959860444068909
+    },
+    {
+      "word": " straying",
+      "start": 309.58,
+      "end": 310.08,
+      "probability": 0.460440918803215
+    },
+    {
+      "word": " past",
+      "start": 310.08,
+      "end": 310.54,
+      "probability": 0.9803035855293274
+    },
+    {
+      "word": " him",
+      "start": 310.54,
+      "end": 310.72,
+      "probability": 0.9900895357131958
+    },
+    {
+      "word": " to",
+      "start": 310.72,
+      "end": 310.92,
+      "probability": 0.9870507717132568
+    },
+    {
+      "word": " the",
+      "start": 310.92,
+      "end": 311.08,
+      "probability": 0.9945611357688904
+    },
+    {
+      "word": " open",
+      "start": 311.08,
+      "end": 311.38,
+      "probability": 0.9911363124847412
+    },
+    {
+      "word": " window",
+      "start": 311.38,
+      "end": 311.9,
+      "probability": 0.993391752243042
+    },
+    {
+      "word": " and",
+      "start": 311.9,
+      "end": 312.42,
+      "probability": 0.799159824848175
+    },
+    {
+      "word": " the",
+      "start": 312.42,
+      "end": 312.64,
+      "probability": 0.9789882898330688
+    },
+    {
+      "word": " lawn",
+      "start": 312.64,
+      "end": 312.84,
+      "probability": 0.9942599534988403
+    },
+    {
+      "word": " beyond.",
+      "start": 312.84,
+      "end": 313.46,
+      "probability": 0.9937469959259033
+    }
+  ],
+  "whisper_transcript_in_unit": "He made a desperate but only partially successful effort to turn the talk on to a less ghastly topic. He was conscious that his hostess was giving him only a fragment of her attention, and her eyes were constantly straying past him to the open window and the lawn beyond.",
+  "ctc_exact_normalized_match": false,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.868924082999996
+}

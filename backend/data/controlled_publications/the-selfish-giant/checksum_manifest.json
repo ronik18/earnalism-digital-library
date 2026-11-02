@@ -82,7 +82,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "544480af5f2d9dbb9ff50e6d81baa5cf2760c94de7276a8c1634b46c5a462f10"
+      "sha256": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6"
     },
     {
       "file": "publication_authorization.json",
@@ -90,13 +90,13 @@
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "c2395b2cf9cb19146ebdfc2f16e731c98840565ddf02e8642966de51f7dd9ba5"
+      "sha256": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945"
     },
     {
       "file": "source_evidence.json",
       "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
     }
   ],
-  "generated_at": "2026-10-29T13:31:20Z",
+  "generated_at": "2026-11-02T10:06:08.842681+00:00",
   "slug": "the-selfish-giant"
 }

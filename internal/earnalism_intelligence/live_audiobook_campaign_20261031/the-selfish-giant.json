@@ -3,7 +3,7 @@
   "title": "The Selfish Giant",
   "book_id": "controlled-the-selfish-giant",
   "url": "https://theearnalism.com/book/the-selfish-giant",
-  "stage": "CEDAR_SOURCE_QA_ADOPTED_STORAGE_AND_NEW_RUNTIME_REQUIRED",
+  "stage": "CEDAR_PRIVATE_SOURCE_STAGED_INTEGRATION_AND_RUNTIME_REQUIRED",
   "status": "BLOCKED",
   "source_version": {
     "repository_commit": "9a1b166e189cebc9b2b75baf20a95d2eb33a3c12",
@@ -131,24 +131,16 @@
   },
   "blockers": [
     {
-      "code": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      "code": "SCOPED_GRANT_SOURCE_INTEGRATION_REQUIRED",
+      "action": "Complete independent review, exact-head source checks and Integration Lane merge/deployment."
     },
     {
-      "code": "PRIVATE_B2_DR_REPLICA_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      "code": "CURRENT_OWNER_HISTORY_AND_REMAINING_CREDIT_UNQUERIED",
+      "action": "Reconcile original shared120 ceiling with authoritative retained history; no reset or assumed allowance."
     },
     {
-      "code": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
-    },
-    {
-      "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution.",
-      "code": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
-    },
-    {
-      "action": "Owner decision/profile qualification remains separate; no new keys, caps or ledger resets authorized by source adoption.",
-      "code": "REPLACEMENT_KEYS_AND_ADDITIVE_CARRIED_BUDGET_AUTHORITY_PENDING"
+      "code": "PROTECTED_RUNTIME_ACCOUNTING_AND_PUBLIC_VERIFICATION_REQUIRED",
+      "action": "Verify exact deployed candidate, bounded playback/accounting, promotion and final customer experience."
     }
   ],
   "language": "en",
@@ -273,5 +265,129 @@
     "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
     "ordinary_public_predecessor_unchanged": true,
     "remaining_runtime_gates": "ALL_UNPERFORMED; original source-QA holds preserved"
+  },
+  "prior_campaign_state_before_20261102_release_progress": {
+    "stage": "CEDAR_SOURCE_QA_ADOPTED_STORAGE_AND_NEW_RUNTIME_REQUIRED",
+    "blockers": [
+      {
+        "code": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "code": "PRIVATE_B2_DR_REPLICA_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "code": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution."
+      },
+      {
+        "action": "Complete supported exact new Cedar release gate; no old audio/receipt or live claim substitution.",
+        "code": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+      },
+      {
+        "action": "Owner decision/profile qualification remains separate; no new keys, caps or ledger resets authorized by source adoption.",
+        "code": "REPLACEMENT_KEYS_AND_ADDITIVE_CARRIED_BUDGET_AUTHORITY_PENDING"
+      }
+    ],
+    "quality": {
+      "content": "AUDIO_DERIVED_RAW_ASR_PLUS_EXPLICIT_OWNER_ADJUDICATION",
+      "pronunciation": "OWNER_ACCEPTED_COMPLETE_SCORED_BOOK",
+      "audio": "RETAINED_TECHNICAL_METERS_AND_OWNER_FULL_SCORED_ACCEPTANCE",
+      "sync": "MEASURED_AUDIO_DERIVED_23_READER_PARAGRAPHS_NO_WORD_PRECISION_CLAIM",
+      "live_playback": "UNVERIFIED_FOR_NEW_CEDAR_PACKAGE",
+      "adjudicated_content_score": 10.0,
+      "listening_scores": {
+        "anti_choppy_join_score": 9.5,
+        "anti_robotic_texture_score": 9.8,
+        "confidence_score": 0.96,
+        "continuity_score": 9.7,
+        "emotional_expression_score": 9.7,
+        "listener_enjoyment_score": 9.8,
+        "naturalness_score": 9.8,
+        "overall_listening_score": 9.8,
+        "pacing_score": 9.5,
+        "pronunciation_score": 9.8,
+        "punctuation_pause_score": 9.4
+      },
+      "physical_devices": "UNVERIFIED",
+      "raw_ASR_metrics": "UNCHANGED"
+    },
+    "music": {
+      "selection": [
+        "Heartwarming",
+        "Heartbreaking"
+      ],
+      "creator": "Kevin MacLeod",
+      "full_scored_owner_review": "OWNER_ACCEPTED_EXACT_LISTENED_MP3_UNCHANGED_AUDIO_PUBLICATION_SUCCESSOR",
+      "licence": "CC BY4.0",
+      "new_music_generation": false,
+      "source_qa_music_evidence_sha256": "c41f579737067c9891ec0022219942c33a883667995491c6e0c302ce8517c346"
+    }
+  },
+  "storage_20261102": {
+    "package_version": "sha256-288896c0fa472ce2a13c76d022b717805c21a8620b0bdb0662055685bd365fa2",
+    "manifest_sha256": "44fe7fa244e69a4004423cd5d78d417ee49789ead3fd3eb241a6ed316f09ed03",
+    "primary_and_dr": "EXACT_VERSIONS_FULL_READBACK_AND_RETENTION_VERIFIED",
+    "independent_audit_sha256": "7962544032447cba820c723eb5da52147e94b42db338ac45ad0770fbaef1cdb8",
+    "private_stage": "LOCAL_SUPPORTED_STAGE_APPLIED_STAGED_PRIVATE_NOT_DEPLOYED",
+    "retention_days": 30,
+    "automatic_deletion": false,
+    "private_stage_result_sha256": "5f9fa45b57b833183ff90943be71d3f7064b09211feb13e536c2a393a061caa6"
+  },
+  "release_progress_note": "No new synthesis or allocation. Historical public audio remains selected; current local source/stage is not deployed or LIVE. Unperformed gates remain unverified; original120 remaining is unknown.",
+  "scoped_review_source_20261102": {
+    "local_source_commit": "791ca48d18cbf470124c3306b75de91f93fb4540",
+    "reviewed_core_sha256": "ceca8876ffba65381611ec77cab989605167d1dff174966d6c070f7b0931d35e",
+    "actual_committed_focused_tests": "174_PASS_6_OPT_IN_SKIPS",
+    "actual_local_Mongo": "4_DISTINCT_SYNTHETIC_CASES_ACROSS_BOUND_RUNS_INCLUDING_REAL_WALLET_LEDGER_ABORT",
+    "production_member_or_grant_or_DB_operations": "NOT_PERFORMED",
+    "actual_remaining_credit_seconds": null,
+    "remote_integration_and_deployment": "PENDING"
+  },
+  "source_ci_fixture_reconciliation_20261102": {
+    "status": "LOCAL_SOURCE_ONLY_NOT_LIVE",
+    "base_source": "50b93591c06f8cbb890fb03783edb49bed916fe8",
+    "failed_run_preserved": 41433568264,
+    "exact_current_reader_manifest_sha256": "3f69f93e1e4527e3af4fc65918fe8b59fb85cc67a3d403b6b9efd7eea9646945",
+    "exact_current_reader_rights_decision": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "reader_content_chapters_covers_entitlements_and_old_public_B5": "UNCHANGED_AGAINST_PRE_STAGE15b",
+    "current_catalogue_fixture_group": "79PASS_1SKIP_74SUBTESTS",
+    "downstream_local_checks": "16PYTHON_PROXY_28NODE_PROXY_400FRONTEND_UNIT_PASS",
+    "historical_fixtures_accepted_rights_records": "PRESERVED",
+    "full_UAT_browser_and_fresh_new_head_CI": "UNPERFORMED",
+    "runtime_member_account_and_public_promotion": "STILL_REQUIRED",
+    "learning": "Exact private audiobook staging changes current Reader metadata hashes and exact rights bindings without changing Reader text, order or ordinary public selection. Audit active catalogue/rights/hash fixtures and validate the downstream gate group before transport; preserve historical fixtures and accepted records. Bounded historical Git-object admission is separate from local partial-repository hydration. Preserve failed runs and keep runtime/LIVE checks unperformed until genuinely observed.",
+    "next_exact_prompt": "Integration Lane: transport the reviewed exact successor on existing PR #628 and require fresh exact-head CI, then return the clean canonical slot for queued Redis work."
+  },
+  "final_regression_fixture_reconciliation_20261102": {
+    "status": "LOCAL_SOURCE_ONLY_NOT_LIVE",
+    "base_source": "6e7aa2e3da7c793ba355d0eded2528622b429811",
+    "failed_ci_run_preserved": 41436779295,
+    "derived_static_seo_contract": "THREE_PROVENANCE_HASHES_CHANGED_52_PUBLIC_ROWS_EXACT_UNCHANGED",
+    "current_reader_decision": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "local_full17_module_result": "143PASS_4SKIP_PR_SOURCE_FIXTURE_ONLY",
+    "local_environment": "Cached frontendJest27 plus private genuine-host-Web-API adapter; no fake responses or assertions added; isolated loopback, no DB/Redis credentials",
+    "fresh_hosted_CI_and_applicable_editorial_support_blog_Reader_evidence": "REQUIRED_UNPERFORMED_FOR_NEW_HEAD",
+    "production_and_public_release": "STILL_BLOCKED_BY_EXISTING_RUNTIME_GATES",
+    "learning": "Audit current exact-stage bindings across regression/ as well as backend/tests and scripts; regenerate the static SEO contract and prove changes are provenance-only when public rows are unchanged. Run the full locally applicable17-module PR regression group before transport. Preserve historical fixtures and failed runs. Local fixture scores, native-Web-API compatibility adapters and PR-mode skipped checks never establish production, browser or publication readiness; require fresh pinned hosted CI."
+  },
+  "current_cost_truth_20261102": {
+    "baseline_initial_inventory_cost_fields": "PRESERVED_UNCHANGED_AS_HISTORY",
+    "partial_Cedar_API_usage_estimate_usd": 0.2282264,
+    "estimate_scope": "PARTIAL_NATIVE_CEDAR_API_USAGE_NOT_CAMPAIGN_TOTAL_OR_INVOICE",
+    "verified_new_storage_bytes_prod_plus_dr": 26084650,
+    "gross_new_storage_planning_usd_30_days": 0.0001812883175,
+    "planning_rate_evidence_sha256": "0871ff2fd86fc7e8c65d96e368a90a6d2746abe4a978ad4fe288be4c77eb29fd",
+    "planning_excludes": [
+      "free_tier",
+      "tax",
+      "contract_adjustments",
+      "prior_versions"
+    ],
+    "actual_provider_invoices": "UNVERIFIED",
+    "confirmed_cumulative_campaign_cost": null,
+    "currency_conversion": "NOT_PERFORMED",
+    "consumed_counters_and_budget_limits": "UNCHANGED"
   }
 }

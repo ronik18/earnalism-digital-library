@@ -1,0 +1,116 @@
+{
+  "schema": "earnalism.container_metadata_audio_reuse.v1",
+  "recorded_at_utc": "2026-11-02T05:13:16.808750+00:00",
+  "status": "PASS_EXACT_DECODED_PCM_AND_ELEMENTARY_PACKET_EQUALITY_METADATA_ONLY",
+  "slug": "the-open-window",
+  "canonical_decoded_PCM_format": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "f32le",
+    "frames": 23588944
+  },
+  "decoded_duration_seconds": 491.4363333333333,
+  "items": {
+    "listened": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/The-Open-Window-Provisional-Scored-Draft-v1.mp3",
+      "file_sha256": "f9c9e103003b1a71e68ab2f293f48f0ba2c3c3d5854a28dc55a664592414ea3f",
+      "file_bytes": 11796854,
+      "canonical_decoded_PCM": {
+        "sha256": "cf4d11651ad2be8c79f9692197a31e017cc61c4404f1dad1a9c1cb0beeff0018",
+        "bytes": 188711552
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "9c602eda6430d01f4583e37f06f48d226f850525a1eaad72cd854edbc84544e4",
+        "bytes": 11795328
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2,
+            "tags": {
+              "encoder": "Lavc63.1."
+            }
+          }
+        ],
+        "format": {
+          "tags": {
+            "title": "The Open Window — private provisional scored draft",
+            "artist": "Earnalism; AI narration: Ryan (Qwen)",
+            "composer": "Saki (text); Kevin MacLeod (music)",
+            "album": "Earnalism Digital Library — private review",
+            "comment": "Music: “Heartwarming” — Kevin MacLeod (incompetech.com), ISRC USUAN1100207. Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207. “Heartbreaking” — Kevin MacLeod (incompetech.com), ISRC USUAN1100208. Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208. Both licensed under Creative Commons Attribution4.0 International, https://creativecommons.org/licenses/by/4.0/. Changes: excerpted, arranged with reprises and intentional silences, level-calibrated, faded, music-only ducked, and mixed beneath narration with common constant output gain. No endorsement implied. Private provisional draft; not released.",
+            "encoder": "Lavf63.1.102"
+          }
+        }
+      }
+    },
+    "delivery": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/publication-container-20261102-v1/the-open-window-ryan-scored.mp3",
+      "file_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+      "file_bytes": 11797552,
+      "canonical_decoded_PCM": {
+        "sha256": "cf4d11651ad2be8c79f9692197a31e017cc61c4404f1dad1a9c1cb0beeff0018",
+        "bytes": 188711552
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "9c602eda6430d01f4583e37f06f48d226f850525a1eaad72cd854edbc84544e4",
+        "bytes": 11795328
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2,
+            "tags": {
+              "encoder": "Lavf"
+            }
+          }
+        ],
+        "format": {
+          "tags": {
+            "title": "The Open Window",
+            "artist": "Earnalism; AI narration: stock Ryan (Qwen3-TTS CustomVoice)",
+            "author": "Saki",
+            "composer": "Kevin MacLeod",
+            "album": "Earnalism Digital Library",
+            "genre": "Audiobook",
+            "track": "1",
+            "comment": "AI narration: stock Ryan, Qwen3-TTS CustomVoice. The Open Window by Saki. Music: “Heartwarming” — Kevin MacLeod (incompetech.com), ISRC USUAN1100207; “Heartbreaking” — Kevin MacLeod (incompetech.com), ISRC USUAN1100208. Sources: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207 and https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100208. Licence: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/. Changes: excerpted, arranged with reprises and intentional silences, level-adjusted, faded, music-only ducked, and mixed beneath narration with common constant output gain. No endorsement implied.",
+            "encoder": "Lavf63.1.102"
+          }
+        }
+      }
+    }
+  },
+  "source_owner_acceptance": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/open-window-retained-audit-20261102/provisional-scored-preview-v1/OWNER-COMPLETE-SCORED-ACCEPTANCE-20261102.json",
+    "sha256": "fe85c11059c4f7a3154226bab97ad5e2ddc2485de64916d9980c8b2dadd91d1a",
+    "scope": "Complete exact f9c9 scored MP3, all ten ratings and confidence0.97, normal/low quietline and six words; no new listening claim."
+  },
+  "owner_acceptance_reuse": "VALID_FOR_EXACT_UNCHANGED_AUDIO_METADATA_ONLY_SUCCESSOR_NO_NEW_LISTENING_REQUIRED",
+  "publication_tag_readback": "PASS_CLEAN_TITLE_AUTHOR_RYAN_AI_DISCLOSURE_AND_ACTUAL_CC_BY4_MUSIC_CREDITS_NO_DRAFT_OR_PRIVATE_MARKERS",
+  "timing_reference": {
+    "source_manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "retained29_source_unit_timing_sha256": "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+    "scope": "No change to owner-listened scored audio/frame identity. Rebinding exact29 measured source-unit/Reader sidecars and old-dry-to-new-score transfer remains separate, not created by metadata-only proof; no word precision/highlighting claimed."
+  },
+  "metadata_copy_intent_sha256": "b3013ee510d8965a2d3f8dad595b0bcf04a57d848b3c1cf5e4457fc7d403e588",
+  "narration_synthesis_or_allocation": 0,
+  "audio_reencodes_or_mix_changes": 0,
+  "provider_calls": 0,
+  "source_original_preserved": true,
+  "publication_status": "PREPARED_NOT_ADOPTED_NOT_STORED_NOT_LIVE",
+  "remaining_gates": [
+    "Narrow scored-retained Open Window SOURCE_QA profile/registry and exact IN audio/music rights",
+    "New exact package/sidecar/sourceQA bindings and source integration CI/review",
+    "Own authorized carried storage/profile plan and genuine receipts",
+    "Supported nonpublic runtime/grant/accounting and customer-facing verification"
+  ]
+}

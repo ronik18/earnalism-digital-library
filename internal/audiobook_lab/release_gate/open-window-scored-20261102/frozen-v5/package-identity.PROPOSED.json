@@ -1,0 +1,62 @@
+{
+  "schema_version": "audiobook_package_manifest.v2",
+  "release_evidence_version": "open_window_scored_retained_successor.v1",
+  "slug": "the-open-window",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "release_descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+  "duration_ms": 491436,
+  "segment_count": 1,
+  "word_count": 1208,
+  "paragraph_count": 21,
+  "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+  "highlight_sync_enabled": false,
+  "tracks": [
+    {
+      "id": "chapter-001",
+      "chapter_id": "chapter-001",
+      "title": "The Open Window",
+      "order": 0,
+      "start_word": 0,
+      "end_word": 1207,
+      "start_paragraph": 0,
+      "end_paragraph": 20,
+      "chunks": [
+        {
+          "segment_id": "chapter-001-full",
+          "order": 0,
+          "start_word": 0,
+          "end_word": 1207,
+          "start_paragraph": 0,
+          "end_paragraph": 20,
+          "cumulative_start_ms": 0,
+          "duration_ms": 491436,
+          "assets": {
+            "audio": {
+              "sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9",
+              "size_bytes": 11797552,
+              "mime_type": "audio/mpeg"
+            },
+            "timestamps": {
+              "sha256": "126454f84f7bf1c9fc5b39958eeaa1fe9141e1da528fbeea884661b8399c4831",
+              "size_bytes": 17612,
+              "mime_type": "application/json"
+            },
+            "metadata": {
+              "sha256": "3b6736d69baa3fbdd3e0b8df2fc59a9a1648f5da0b960229f366e7b9dbaafeca",
+              "size_bytes": 1870,
+              "mime_type": "application/json"
+            },
+            "vtt": {
+              "sha256": "94029f0529d5aa66347c9284a1b15f9e7a68ec803658b11b0130df40458de9ef",
+              "size_bytes": 7683,
+              "mime_type": "text/vtt"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "package_version": "PENDING_REAL_IMMUTABLE_STORAGE_BINDINGS_NOT_FABRICATED",
+  "proposal_status": "PROPOSED_NOT_ADOPTED"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "earnalism.open_window_scored_source_preparation.v1",
+  "status": "PRIVATE_IMPLEMENTATION_PREPARED_PENDING_AUTHORITATIVE_INTEGRATION",
+  "base_commit": "15b157e5555b67ede6fd649fb9057d314c36bf3c",
+  "identity": {
+    "descriptor_sha256": "e41267aae8dca016c76c38f1e7123493eee0f94fe70651ced2211428494a6219",
+    "delivery_mp3_sha256": "32827f8c28b9815b0fccf50ec8486e23e563dfb952c00920610e6c8e8c5730a9"
+  },
+  "implemented_contract": "Separate retained-scored Ryan SOURCE_QA policy; immutable submitted descriptor, separately reviewed committed adoption and exact IN audio_stream rights; no legacy dry/Cedar policy changes.",
+  "recognition_truth": {
+    "raw_CTC": 9.622641509433961,
+    "raw_Whisper": 9.639048400328138,
+    "literal_scoped_each": 9.786710418375717,
+    "exact_ordered_matches": 1195,
+    "source_lexical_tokens": 1219,
+    "coverage": 0.9803117309269893,
+    "source_plan_custody_separate": true,
+    "edits_authorized_only": "6 owner full-mix groups plus12 exact timed Framton windows; no global name/speciality aliases"
+  },
+  "reader_truth": {
+    "semantic_paragraphs": 21,
+    "retained_measured_groups": 29,
+    "wrap_fragments_not_paragraphs": 109,
+    "auto_estimated_sync": false,
+    "highlighting": false
+  },
+  "evidence_reuse": "Actual full scored owner9.8 first9/9.7overall/confidence.97, existing raw ASR/retained replacement and full physical metadata-only32827 audio preserved. No repeat synthesis/listening/provider needed.",
+  "private_tests": {
+    "focused": 22,
+    "registry_history": 6,
+    "skips": 0,
+    "actual_local_media_prepare": "PASS_PRIVATE_FUTURE_REGISTRY_FIXTURE_ONLY_NOT_CANONICAL"
+  },
+  "source_QA_adoption_is_authoritative_only_after": "Integration Lane applies/reviews the proposed accepted-record/registry patch and actual canonical checks pass. Private tests do not adopt.",
+  "remaining_gates": [
+    "Actual canonical source adoption and exact-head CI/review",
+    "Own separate approved carried budget and four-key authority",
+    "Real protected storage upload/readback/DR/finalized package version",
+    "Narrow e412 current-public replacement/private grant/operator path (current Selfish D2 operator is not applicable)",
+    "Original120 cumulative settlement/fractional/session reconciliation without reset or borrowing old600 policy",
+    "Real deployed endpoint/player/credit and customer-facing score-credit verification",
+    "Proof-bound promotion and exact guarded restore"
+  ],
+  "publication_approved": false,
+  "canonical_source_or_public_assets_mutated_by_preparation": false,
+  "provider_calls": 0,
+  "allocations": 0,
+  "new_synthesis": 0
+}

@@ -1,0 +1,256 @@
+{
+  "schema": "earnalism.open_window_private_score_plan.v1",
+  "status": "PREPARED_PLAN_ONLY_NO_AUDIO_RENDER_OR_PUBLICATION",
+  "entire_authoritative_source_read": true,
+  "source_content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "source_file_sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+  "source_path": "/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/the-open-window/chapters/chapter-001.json",
+  "master_sha256": "1fd37c818d4869eac8548811c714bd8907d0753ffa31b37fbf63d6e4764059a5",
+  "timing_path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/continuous-master-preparation-20261101/the-open-window/chapter-001-full.timestamps.json",
+  "timing_sha256": "16849dd859bb6646da3a52c6903d30f3c4638444e0a798999adaf07deba8860b",
+  "interpretation": "A comedy of unreliable storytelling and social misunderstanding. Vera manipulates a nervous visitor; the apparent tragedy is invented and the returning hunters are ordinary people. Preserve the misdirection without supernatural effects or scoring the narrator as sincerely grieving. Reprise the polite facade under Vera\u2019s second improvised lie; let the final line deliver its own irony.",
+  "narrator_disposition": "Keep exact retained Ryan identity. No new acting controls, pitch/time edits or synthesis; historical phonetic/acoustic uncertainties remain blocking until adjudicated.",
+  "tracks": [
+    {
+      "title": "Heartwarming",
+      "creator": "Kevin MacLeod",
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/Heartwarming-Kevin-MacLeod-original.mp3",
+      "sha256": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+      "licence": "CC BY4.0",
+      "existing_music_evidence": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/MUSIC-SELECTION.json",
+      "artwork": "Do not reuse attached image; map audio only",
+      "selection_status": "PROVISIONAL_ARTISTIC_SUITABILITY_UNVERIFIED"
+    },
+    {
+      "title": "Heartbreaking",
+      "creator": "Kevin MacLeod",
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/Heartbreaking-Kevin-MacLeod-original.mp3",
+      "sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+      "licence": "CC BY4.0",
+      "existing_music_evidence": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/selfish-retained-scored-draft-20261101/music/MUSIC-SELECTION.json",
+      "artwork": "Do not reuse attached image; map audio only",
+      "selection_status": "PROVISIONAL_ARTISTIC_SUITABILITY_UNVERIFIED"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "S01",
+      "first_unit": "paragraph-001",
+      "last_unit": "paragraph-004",
+      "start_ms": 0,
+      "end_ms": 65434,
+      "music": "Heartwarming",
+      "purpose": "Polite country-house facade and social discomfort; restrained neutral piano motif, no promise of reconciliation.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S02",
+      "first_unit": "paragraph-005",
+      "last_unit": "paragraph-009",
+      "start_ms": 65434,
+      "end_ms": 108232,
+      "music": null,
+      "purpose": "Intentional silence for Vera probing how little Framton knows; retain dry irony and wording clarity.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S03",
+      "first_unit": "paragraph-010",
+      "last_unit": "paragraph-014",
+      "start_ms": 108232,
+      "end_ms": 235965,
+      "music": "Heartbreaking",
+      "purpose": "Vera constructs apparently tragic absence; a quiet provisional melancholy from her performance, no horror or supernatural sting.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S04",
+      "first_unit": "paragraph-015",
+      "last_unit": "paragraph-018",
+      "start_ms": 235965,
+      "end_ms": 274666,
+      "music": "Heartwarming",
+      "purpose": "Return of brisk ordinary domestic bustle makes the social contrast audible without signaling the trick.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S05",
+      "first_unit": "paragraph-019",
+      "last_unit": "paragraph-019",
+      "start_ms": 274666,
+      "end_ms": 313643,
+      "music": "Heartbreaking",
+      "purpose": "Framton alone hears ghastly implications; sparse undercurrent, do not assert the imagined tragedy as narrator fact.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S06",
+      "first_unit": "paragraph-020",
+      "last_unit": "paragraph-021",
+      "start_ms": 313643,
+      "end_ms": 356353,
+      "music": null,
+      "purpose": "Intentional silence lets self-important medical detail and the nearly suppressed yawn carry the comic tension.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S07",
+      "first_unit": "paragraph-022",
+      "last_unit": "paragraph-023",
+      "start_ms": 356353,
+      "end_ms": 382681,
+      "music": "Heartbreaking",
+      "purpose": "Momentary unease follows Framton and Vera\u2019s performed horror; soft entry, no crescendo or reveal cue.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S08",
+      "first_unit": "paragraph-024",
+      "last_unit": "paragraph-025",
+      "start_ms": 382681,
+      "end_ms": 425257,
+      "music": null,
+      "purpose": "Intentional silence around the returning figures, chant and headlong exit: preserve Unit24/wording intelligibility and comic momentum.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S09",
+      "first_unit": "paragraph-026",
+      "last_unit": "paragraph-028",
+      "start_ms": 425257,
+      "end_ms": 487063,
+      "music": "Heartwarming",
+      "purpose": "Return to matter-of-fact house scene and Vera\u2019s calm second invention; reprise the polite facade rather than add a sentimental resolution.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    },
+    {
+      "id": "S10",
+      "first_unit": "paragraph-029",
+      "last_unit": "paragraph-029",
+      "start_ms": 487063,
+      "end_ms": 491436,
+      "music": null,
+      "purpose": "Final ironic sentence alone; no wink, sting, laugh, invented sound, or extra tail that changes its timing.",
+      "render_status": "NOT_RENDERED",
+      "performance_status": "NOT_LISTENED"
+    }
+  ],
+  "coverage": "All29 actual retained source units accounted for; each belongs to a provisional musical scene or explicit whole-unit intentional silence. No internal sentence times invented.",
+  "mix_direction": {
+    "starting_point_only": "Narration unchanged and dominant; calibrate each audible phrase to measured speech, starting around20\u201326dB below local speech RMS, not an unmeasured fixed gain. These are provisional engineering choices, not quality PASS.",
+    "ducking": "Music-only restrained smoothly released ducking; avoid gates that make the bed vanish and recover it naturally in genuine pauses.",
+    "transitions": "Carry music across processing-unit joins when the scene continues. Select real musical phrase endpoints and complementary fades by actual listening; exact source offsets/phrase loops remain unselected.",
+    "priority": "If retained pieces feel sentimental or expose the twist, hold selection rather than claim suitable or buy/generate replacements. Music must not conceal word/voice defects.",
+    "checks_required": "Speech intelligibility at normal/low volume; mono fold-down; every join; music coverage/audibility where planned; no clipping/pumping; source/word boundaries unchanged; final duration/timing transfer measured."
+  },
+  "review_preparation": {
+    "six_lexical_queries": [
+      {
+        "historical_unit": "u000002",
+        "source_context": "Framton Nuttel endeavoured to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing.",
+        "prior_uncertainty": "aunt / ain\u2019t / night / igt; base.en recovers aunt. No established omission.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-002",
+            "start_ms": 9840,
+            "end_ms": 32076,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      },
+      {
+        "historical_unit": "u000010",
+        "source_context": "\u201cOnly her name and address,\u201d admitted the caller. He was wondering whether Mrs. Sappleton was in the married or widowed state. An undefinable something about the room seemed to suggest masculine habitation.",
+        "prior_uncertainty": "married / merry / Mary / merried; original large recovers married and CTC phonetic spelling compatible. Weak and vs an is common reduction; exact audio remains uncertain.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-009",
+            "start_ms": 95664,
+            "end_ms": 108232,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      },
+      {
+        "historical_unit": "u000017",
+        "source_context": "\u201cPoor aunt always thinks that they will come back some day, they and the little brown spaniel that was lost with them, and walk in at that window just as they used to do. That is why the window is kept open every evening till it is quite dusk.",
+        "prior_uncertainty": "dusk / dust; base.en and small.en recover dusk, other methods dust. Final consonant unresolved.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-014",
+            "start_ms": 149802,
+            "end_ms": 235965,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      },
+      {
+        "historical_unit": "u000031",
+        "source_context": "Framton shivered slightly and turned towards the niece with a look intended to convey sympathetic comprehension. The child was staring out through the open window with dazed horror in her eyes. In a chill shock of nameless fear Framton swung round in his seat and looked in the same direction.",
+        "prior_uncertainty": "a / the and round / around; original large recovers a/round, others differ. No confirmed deletion, exact article uncertain.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-023",
+            "start_ms": 363494,
+            "end_ms": 382681,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      },
+      {
+        "historical_unit": "u000034",
+        "source_context": "Framton grabbed wildly at his stick and hat; the hall-door, the gravel-drive, and the front gate were dimly-noted stages in his headlong retreat. A cyclist coming along the road had to run into the hedge to avoid an imminent collision.",
+        "prior_uncertainty": "Framton / Armanton / our mountain, plus CTC-only terminal un. Potential name corruption remains substantive uncertainty; not covered by Unit24 owner acceptance. Original hall-door recovered by large and CTC; no demonstrated omission.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-025",
+            "start_ms": 409883,
+            "end_ms": 425257,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      },
+      {
+        "historical_unit": "u000035",
+        "source_context": "\u201cHere we are, my dear,\u201d said the bearer of the white mackintosh, coming in through the window; \u201cfairly muddy, but most of it\u2019s dry. Who was that who bolted out as we came up?\u201d",
+        "prior_uncertainty": "bearer / bear across retained recognizers; meaningful missing-syllable risk unresolved. Large/CTC recover who was/source ending; small-only who is not confirmed defect.",
+        "actual_review_question": "Source wording heard / substitution heard (state words) / uncertain; do not guess from text.",
+        "measured_review_windows": [
+          {
+            "id": "paragraph-026",
+            "start_ms": 425257,
+            "end_ms": 437617,
+            "precision": "WHOLE_MEASURED_SOURCE_UNIT_ONLY_NOT_WORD_TIME"
+          }
+        ],
+        "status": "UNVERIFIED_PENDING_GENUINE_ADJUDICATION"
+      }
+    ],
+    "unit24": "Previous owner accepted uncertainty in unit24. Do not map original u000024 blindly onto regrouped paragraph024; recover original boundary manifest before making a timestamp-specific question. Existing acceptance does not resolve the six independent risks.",
+    "whole_mix_review": "Once actually rendered, share complete exact scored MP3 and ask naturalness/pronunciation/emotion/grammatical pauses/pacing/identity/nonrobotic texture/joins/enjoyment/overall scores and confidence, timestamped defects or uncertainty, and music fit/clarity/continuity. Never borrow Selfish Giant ratings.",
+    "not_requested_from_owner_now": true
+  },
+  "storage": "Dry candidate storage receipts remain valid only for original bytes. Any rendered scored master requires new exact rights/component/adoption/descriptor and storage receipts; no new uploads/keys authorized by this plan.",
+  "new_provider_calls": 0,
+  "new_audio_files": 0,
+  "new_allocations": 0
+}

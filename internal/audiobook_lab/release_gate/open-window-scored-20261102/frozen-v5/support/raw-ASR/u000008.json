@@ -1,0 +1,150 @@
+{
+  "unit": "u000008",
+  "master_interval_seconds": [
+    85.44083333333333,
+    88.48083333333334
+  ],
+  "expected_text": "He made the last statement in a tone of distinct regret.",
+  "ctc_transcript": "HE MADE THE LAST STATEMENT IN A TONE OF DISTINCT REGRET",
+  "ctc_words": [
+    {
+      "word": "HE",
+      "start": 85.52136313465783,
+      "end": 85.58176048565122,
+      "mean_character_frame_posterior": 0.997094601392746
+    },
+    {
+      "word": "MADE",
+      "start": 85.66229028697572,
+      "end": 85.82334988962472,
+      "mean_character_frame_posterior": 0.9999697208404541
+    },
+    {
+      "word": "THE",
+      "start": 85.88374724061809,
+      "end": 85.96427704194261,
+      "mean_character_frame_posterior": 0.998532255490621
+    },
+    {
+      "word": "LAST",
+      "start": 86.02467439293598,
+      "end": 86.24613134657837,
+      "mean_character_frame_posterior": 0.9938407838344574
+    },
+    {
+      "word": "STATEMENT",
+      "start": 86.30652869757174,
+      "end": 86.70917770419426,
+      "mean_character_frame_posterior": 0.9865669541888766
+    },
+    {
+      "word": "IN",
+      "start": 86.80983995584988,
+      "end": 86.85010485651213,
+      "mean_character_frame_posterior": 0.9997933506965637
+    },
+    {
+      "word": "A",
+      "start": 86.93063465783663,
+      "end": 86.95076710816777,
+      "mean_character_frame_posterior": 0.9971649050712585
+    },
+    {
+      "word": "TONE",
+      "start": 87.03129690949227,
+      "end": 87.25275386313466,
+      "mean_character_frame_posterior": 0.9998173713684082
+    },
+    {
+      "word": "OF",
+      "start": 87.31315121412803,
+      "end": 87.35341611479028,
+      "mean_character_frame_posterior": 0.9999291300773621
+    },
+    {
+      "word": "DISTINCT",
+      "start": 87.4339459161148,
+      "end": 87.87685982339956,
+      "mean_character_frame_posterior": 0.9561704248189926
+    },
+    {
+      "word": "REGRET",
+      "start": 88.01778697571744,
+      "end": 88.40030353200882,
+      "mean_character_frame_posterior": 0.9925084511439005
+    }
+  ],
+  "text_edit_differences": [],
+  "whisper_words_in_unit_by_midpoint": [
+    {
+      "word": " He",
+      "start": 85.62,
+      "end": 85.62,
+      "probability": 0.8158665299415588
+    },
+    {
+      "word": " made",
+      "start": 85.62,
+      "end": 85.8,
+      "probability": 0.9970144033432007
+    },
+    {
+      "word": " the",
+      "start": 85.8,
+      "end": 86.06,
+      "probability": 0.9922453761100769
+    },
+    {
+      "word": " last",
+      "start": 86.06,
+      "end": 86.26,
+      "probability": 0.9959062337875366
+    },
+    {
+      "word": " statement",
+      "start": 86.26,
+      "end": 86.64,
+      "probability": 0.9992013573646545
+    },
+    {
+      "word": " in",
+      "start": 86.64,
+      "end": 86.9,
+      "probability": 0.9324275851249695
+    },
+    {
+      "word": " a",
+      "start": 86.9,
+      "end": 87.0,
+      "probability": 0.9784810543060303
+    },
+    {
+      "word": " tone",
+      "start": 87.0,
+      "end": 87.26,
+      "probability": 0.9941303133964539
+    },
+    {
+      "word": " of",
+      "start": 87.26,
+      "end": 87.42,
+      "probability": 0.999382495880127
+    },
+    {
+      "word": " distinct",
+      "start": 87.42,
+      "end": 87.86,
+      "probability": 0.9302311539649963
+    },
+    {
+      "word": " regret.",
+      "start": 87.86,
+      "end": 88.42,
+      "probability": 0.9965314269065857
+    }
+  ],
+  "whisper_transcript_in_unit": "He made the last statement in a tone of distinct regret.",
+  "ctc_exact_normalized_match": true,
+  "quality_limit": "CTC frame posteriors and Whisper word probabilities are model scores, not calibrated probability of fidelity or subjective listening quality. CTC timestamps approximate frame emission positions; Whisper timestamps are model alignment, not independently verified phoneme boundaries. Text edit operations are not forced acoustic alignment.",
+  "ctc_inference_seconds": 0.10119391700000335
+}
