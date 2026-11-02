@@ -104,6 +104,15 @@ class CorrectiveTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'explicit corrective binding'):self.dispatch(b)
         self.assertEqual(self.calls,[])
 
+    def test_frontend_receipt_cannot_masquerade_as_successful_backend_correction(self):
+        record={'action':'stage_frontend','state':'APPLIED_VERIFIED',
+                'binding':self.binding,'operation_id':a.operation_identity('stage_frontend',self.binding),
+                'reconciliation_receipt_sha256':'4'*64}
+        a._durable_json(self.journal/('f'*64+'.json'),record,exclusive=True)
+        b=copy.deepcopy(self.binding);b.pop('corrective_backend')
+        with self.assertRaisesRegex(ValueError,'explicit corrective binding'):self.dispatch(b)
+        self.assertEqual(self.calls,[])
+
     def test_pending_unknown_applied_tampered_and_wrong_original_id_deny(self):
         for change in [{'state':'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED'},
                        {'state':'APPLIED_VERIFIED'},{'reconciliation_receipt_sha256':'0'*64},

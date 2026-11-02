@@ -305,8 +305,11 @@ class ProviderAdapter:
                         and 'corrective_backend' not in old.get('binding', {})
                         and require_digest(binding.get('source_delivery_sha256'))
                         and old.get('binding', {}).get('source_delivery_sha256') == binding['source_delivery_sha256']):
-                    resolved = any(r.get('state') == 'APPLIED_VERIFIED'
+                    resolved = any(r.get('action') == 'release_backend' and r.get('state') == 'APPLIED_VERIFIED'
                         and require_digest(r.get('reconciliation_receipt_sha256'))
+                        and r.get('binding', {}).get('corrective_backend', {}).get('schema') == 'earnalism.corrective-backend-policy.v1'
+                        and r.get('binding', {}).get('corrective_backend', {}).get('failed_record_sha256') == digest(old)
+                        and r.get('operation_id') == operation_identity('release_backend', r['binding'])
                         and r.get('binding', {}).get('corrective_backend', {}).get('failed_operation_id') == old.get('operation_id')
                         for r in prior_records)
                     if not resolved:

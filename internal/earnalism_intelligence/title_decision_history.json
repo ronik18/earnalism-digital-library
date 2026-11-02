@@ -13618,5 +13618,17 @@
     "authority": "Routine source fix only; policy/canary/principal read/change authority remains separate and pending actual owner action",
     "provider_settings_policy_DB_grants_or_paid_actions": false,
     "next_exact_prompt": "Integration: publish reviewed source via existing transport, require all applicable exact-head CI and actual published review, match-head merge/tree equality, then hand clean source to existing sole release owner for separately authorized exact policy correction and distinct reviewed execution. No operation replay."
+  },
+  "backend_corrective_resolution_predicate_20261103": {
+    "at": "2026-11-02T21:40:31.507933+00:00",
+    "lane": "Integration source-only changed-area hardening",
+    "decision": "LIMIT_RESOLVED_FAILURE_TO_EXACT_APPLIED_BACKEND_CORRECTION",
+    "base_source": "945617475342d7ee4ec9034a99f3fdd4a404a9da",
+    "scope": "NARROW_BACKEND_RESOLUTION_PREDICATE_AND_NEGATIVE_TEST",
+    "learning": "A verified frontend receipt must never resolve a backend failure merely by carrying similarly named extra binding fields. Require actual backend action, corrective schema, exact failed-record digest and recomputed corrective operation identity before allowing later ordinary releases of the same delivered runtime.",
+    "focused_tests": "86 unittest PASS; actual log FOCUSED-v3.log retained externally",
+    "review": "Prior v2 code and additive learning review retained; this narrow successor reviewed separately before final exacthead publication",
+    "provider_or_policy_or_DB_or_paid_actions": false,
+    "next_exact_prompt": "Review narrow predicate/test and additive records, then transport samePR633 successor and require fresh exact-head CI; never rerun failed providers."
   }
 }
