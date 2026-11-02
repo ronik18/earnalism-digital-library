@@ -104,17 +104,51 @@ test("changing one facet preserves a different legacy facet and exposes legacy s
   expect(container.querySelector('[aria-label="Remove In preparation filter"]')).toBeNull();
 });
 
-test("held preparation cards offer enquiry only, never Reader, Listener or paid actions", async () => {
+test.each(["/library", "/library?language=en", "/library?language=bn"])("public Library omits the preparation section and excludes its cards/count on %s", async (route) => {
+  const books = require("../lib/__fixtures__/libraryCatalogue.public.json");
+  const { PIPELINE_BOOKS } = require("../lib/controlledLaunch");
+  api.get.mockResolvedValue({ data: books });
+  await mount([route]);
+  expect([...container.querySelectorAll('h2')].some(h => h.textContent === 'In preparation')).toBe(false);
+  expect(container.textContent).not.toContain('These editions are not available yet.');
+  for (const slug of ['sultanas-dream', 'calculus-made-easy']) {
+    expect(container.querySelector(`[data-testid="reference-book-${slug}"]`)).toBeNull();
+    expect(PIPELINE_BOOKS.some(book => book.slug === slug)).toBe(true);
+  }
+  const expected = route.includes('language=bn') ? 9 : route.includes('language=en') ? 43 : 52;
+  expect(container.querySelector('.reference-library__results-bar [role="status"]').textContent).toBe(`${expected} editions to explore`);
+});
+
+test("search cannot expose a held preparation card or its count/actions", async () => {
   api.get.mockResolvedValue({data:[reader()]});
   await mount(["/library?q=Calculus%20Made%20Easy"]);
-  const cards = container.querySelectorAll('.reference-book-tile');
-  expect(cards).toHaveLength(1);
-  expect(cards[0].textContent).toContain('In preparation');
-  const destinations = [...cards[0].querySelectorAll('a')].map(a=>a.getAttribute('href'));
-  expect(destinations.length).toBeGreaterThan(0);
-  expect(destinations.every(href=>href.startsWith('/contact?'))).toBe(true);
-  expect(cards[0].querySelector('audio,video,button')).toBeNull();
-  expect(cards[0].textContent).not.toMatch(/Pass required|Start Reading|Listen/);
+  expect(container.querySelectorAll('.reference-book-tile')).toHaveLength(0);
+  expect(container.querySelector('[data-testid="library-no-results"]')).not.toBeNull();
+  expect(container.querySelector('.reference-library__results-bar [role="status"]').textContent).toBe('0 editions found');
+  expect(container.querySelector('a[href*="calculus-made-easy"]')).toBeNull();
+});
+
+test("Show More preserves incremental membership, focus, final removal and filter reset", async () => {
+  const books = require("../lib/__fixtures__/libraryCatalogue.public.json");
+  api.get.mockResolvedValue({ data: books });
+  await mount();
+  const shelf = () => [...container.querySelectorAll('.reference-library-shelf')].find(s => s.querySelector('h2').textContent === 'Available to read');
+  const cards = () => shelf().querySelectorAll('.reference-book-tile');
+  expect(cards()).toHaveLength(10);
+  const more = shelf().querySelector('.reference-library-show-more');
+  expect(more.textContent).toBe('Show 10 more');
+  expect(more.getAttribute('aria-controls')).toBe(shelf().querySelector('.reference-library-grid').id);
+  await click(more);
+  expect(cards()).toHaveLength(20);
+  expect(cards()[10].contains(document.activeElement)).toBe(true);
+  while (shelf().querySelector('.reference-library-show-more')) await click(shelf().querySelector('.reference-library-show-more'));
+  const allCards = [...container.querySelectorAll('.reference-book-tile')];
+  expect(allCards).toHaveLength(52);
+  expect(new Set(allCards.map(card=>card.dataset.testid)).size).toBe(52);
+  expect(allCards.map(card=>card.dataset.testid.replace('reference-book-','')).sort()).toEqual(books.map(book=>book.slug).sort());
+  await act(async () => navigate('/library?language=en'));
+  expect(cards()).toHaveLength(10);
+  expect(api.get).toHaveBeenCalledTimes(1);
 });
 
 // Real Axios request configuration flows into a deterministic offline transport.

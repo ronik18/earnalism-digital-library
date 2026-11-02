@@ -141,8 +141,11 @@
 .reference-library .reference-active-filters svg { flex: none; width: 15px; height: 15px; }
 .reference-library .reference-active-filters .reference-clear-filters { background: transparent; border-color: transparent; text-decoration: underline; text-underline-offset: 3px; }
 .reference-library .reference-filter-trigger .reference-filter-count { display: inline-grid; place-items: center; margin: 0; min-width: 22px; height: 22px; border-radius: 50%; color: #fff9ee; background: #651d32; font-size: 11px; }
-.reference-library .reference-library-show-more { display: block; min-height: 44px; margin: 22px auto 0; padding: 10px 26px; border: 1px solid #bda098; border-radius: 4px; color: #651d32; background: #fffdf9; font: 500 .875rem/1.4 var(--qh-ui); cursor: pointer; }
-.reference-library .reference-library-show-more:hover { background: #f1e5dc; border-color: #651d32; }
+.reference-library .reference-library-show-more { display: block; box-sizing: border-box; min-height: 48px; min-width: min(100%, 14rem); max-width: 100%; margin: 22px auto 0; padding: 12px 28px; border: 2px solid var(--brand-gold, #b58a45); border-radius: 4px; color: var(--brand-burgundy-deep, #351018); background: var(--brand-gold, #b58a45); font: 600 .875rem/1.4 var(--qh-ui); cursor: pointer; }
+.reference-library .reference-library-show-more:hover:not(:disabled) { color: var(--brand-gold, #b58a45); background: var(--brand-burgundy-deep, #351018); border-color: var(--brand-burgundy-deep, #351018); }
+.reference-library .reference-library-show-more:active:not(:disabled) { color: var(--brand-burgundy-deep, #351018); background: var(--brand-gold, #b58a45); transform: translateY(1px); }
+.reference-library .reference-library-show-more:focus-visible { outline: 3px solid var(--brand-burgundy-deep, #351018); outline-offset: 4px; }
+.reference-library .reference-library-show-more:disabled { color: var(--brand-burgundy-deep, #351018); background: var(--brand-ivory, #fffaf1); cursor: not-allowed; }
 .reference-library .reference-library__no-results { padding: clamp(24px,5vw,60px) 24px; text-align: center; border: 1px solid #e1d2c3; border-radius: 6px; background: #f6efe5; }
 .reference-library .reference-library__no-results > svg { width: 28px; height: 28px; color: #8a6233; margin-bottom: 12px; }
 .reference-library .reference-library__no-results h2 { margin: 0; color: #302027; font: 400 clamp(1.65rem,3vw,2.25rem)/1.15 var(--qh-display); }

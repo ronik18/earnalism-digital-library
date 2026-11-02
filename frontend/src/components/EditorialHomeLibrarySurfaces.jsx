@@ -311,13 +311,11 @@ export function ReferenceLibrarySurface({
   const clearSearch = () => { onSearch(""); requestAnimationFrame(() => searchRef.current?.focus()); };
   const clearFilters = () => { onResetFilters(); requestAnimationFrame(() => searchRef.current?.focus()); };
   const live = filteredBooks.filter((book) => availabilityOfBook(book) === "reader-ready");
-  const comingSoon = filteredBooks.filter((book) => !isLive(book));
   const approvedAudio = filteredBooks.filter((book) => availabilityOfBook(book) === "approved-audiobook");
   const catalogueUnavailable = catalogueState === "unavailable";
   const catalogueIsEmpty = catalogueState === "empty";
   const shelves = [
     ["Available to read", "Find a familiar voice, a fresh perspective, or the beginning of your next reading habit.", live],
-    ["In preparation", "These editions are not available yet. Ask about a title that interests you.", comingSoon],
     ["Audiobooks", "Stories with a voice. Open an edition to see its listening access.", approvedAudio],
   ];
   const update = (key, value) => onParam(key, value, key === "sort" ? "recently-approved" : "all");

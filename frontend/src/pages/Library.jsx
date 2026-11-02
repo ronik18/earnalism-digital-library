@@ -6,6 +6,7 @@ import { selectLibraryBooks } from "../lib/libraryCatalog";
 import { libraryFiltersFromSearch } from "../lib/libraryFilterState";
 import { genresOfBook } from "../lib/libraryDiscovery";
 import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
+import { canShowStartReading } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 import { ReferenceLibrarySurface } from "../components/EditorialHomeLibrarySurfaces";
 
@@ -77,7 +78,7 @@ export default function Library() {
     return next;
   });
   // An empty or failed live response must not revive bundled candidate cards.
-  const allBooks = useMemo(() => catalogueState === "ready" ? composeLibraryCatalog(liveBooks) : [], [liveBooks, catalogueState]);
+  const allBooks = useMemo(() => catalogueState === "ready" ? composeLibraryCatalog(liveBooks).filter(canShowStartReading) : [], [liveBooks, catalogueState]);
   const filteredBooks = useMemo(() => selectLibraryBooks(allBooks, {
     query, language, reading, listening, genre, sort, stage,
   }), [allBooks, genre, language, listening, query, reading, sort, stage]);
