@@ -4028,7 +4028,7 @@ def _selected_audiobook_package(
 ) -> tuple[Optional[dict], str, str]:
     # Private replacement selection is server-owned lease state, never a
     # rollout cookie, query argument, client package name or percentage.
-    native_scope = getattr(request.state, "native_replacement_scope", None) if request is not None else None
+    native_scope = getattr(getattr(request, "state", None), "native_replacement_scope", None) if request is not None else None
     if native_scope is not None:
         try:
             selected = native_audiobook_replacement.selected_from_verified_scope(book, native_scope)
@@ -11028,7 +11028,7 @@ async def reader_book_audiobook(
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
     book = await _reader_audio_package_book_for_slug(slug)
     package_canary = (_can_expose_audiobook_package_canary(book, slug)
-        or getattr(request.state, "native_replacement_scope", None) is not None)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
     package, _descriptor, new_rollout_identity = _selected_audiobook_package(
         book,
         slug,
@@ -11107,7 +11107,7 @@ async def _reader_book_audiobook_package_segment(
 ):
     book = await _reader_audio_package_book_for_slug(slug)
     package_canary = (_can_expose_audiobook_package_canary(book, slug)
-        or getattr(request.state, "native_replacement_scope", None) is not None)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
     package, _descriptor, _new_identity = _selected_audiobook_package(
         book,
         slug,
