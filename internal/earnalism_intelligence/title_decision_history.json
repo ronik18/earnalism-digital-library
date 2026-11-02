@@ -13537,4 +13537,26 @@
     "publication": "UNPERFORMED",
     "actual_invoice": "UNVERIFIED_PARTIAL_ESTIMATES_ONLY"
   }
+,
+  "open_window_scored_private_stage_chapter_index_20261102": {
+    "at": "2026-11-02T16:45:41.994568+00:00",
+    "lane": "Integration Lane source-only CI successor",
+    "decision": "REBIND_OPEN_WINDOW_CHAPTER_INDEX_TO_INDEPENDENTLY_REVIEWED_PRIVATE_STAGE",
+    "failed_ci_run": 41482450387,
+    "failed_head": "b3145cccdf62610a0dec12b38d5559ec47400536",
+    "reviewed_reader_manifest_sha256": "9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045",
+    "independent_stage_review_sha256": "fdb2e669bf376fe2292a352f39e744c442e252d6d8e914a236f28962d1b63cce",
+    "scope": "ONE_FIXED_TEST_LITERAL_PLUS_ADDITIVE_LEARNING",
+    "preserved": [
+      "historical_inventory_fixture",
+      "chapter_source_bytes_order_and_count",
+      "source_evidence",
+      "ordinary_public028_and_B5",
+      "all_application_Redis_guard_and_runtime_inventory_bytes"
+    ],
+    "provider_actions": 0,
+    "new_allocation_or_synthesis": false,
+    "runtime_LIVE": "UNPERFORMED",
+    "next_exact_prompt": "Independent reviewer: verify this fixed manifest expectation against already reviewed14-path evidence, unchanged Reader sources and preserved application/guard; require fresh exact-head CI before merge."
+  }
 }
