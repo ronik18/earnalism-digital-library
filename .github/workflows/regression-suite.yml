@@ -68,6 +68,9 @@ jobs:
           internal/audiobook_lab/scripts/test_owner_produced_package.py
           internal/audiobook_lab/scripts/test_native_scored_package.py
           internal/audiobook_lab/scripts/test_selfish_cedar_source_adoption.py
+          internal/audiobook_lab/scripts/test_native_replacement_release.py
+          internal/audiobook_lab/scripts/test_native_continuous_acceptance.py
+          backend/tests/test_native_audiobook_replacement_http.py
           internal/audiobook_lab/scripts/test_retained_master_derivative.py
           backend/tests/test_exact_retained_master_duration.py
           internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py
@@ -79,6 +82,8 @@ jobs:
           backend/tests/test_selfish_giant_canary_rights_bindings.py
           backend/tests/test_runtime_source_attestation.py
           backend/tests/test_deployment_attestation.py
+      - name: Qualify exact private replacement Listener presentation
+        run: node frontend/scripts/native-replacement-presentation.test.mjs
       - name: Verify exact manifest and full delivered Linux scan
         run: |
           python scripts/build_runtime_source_manifest.py --repo . --ref "$GITHUB_SHA" --verify

@@ -92,6 +92,21 @@ class ReadingPassService:
             {"reader_acceptance_budget": 1}, session=mongo_session,
         )
         budget = (user or {}).get("reader_acceptance_budget")
+        scope = document.get("scope") or {}
+        if ((isinstance(budget, dict) and "native_replacement_authorization" in budget)
+                or scope.get("native_replacement_authorization_id")):
+            # Validate the carried authority in this same transaction. Normal
+            # account CAS includes the entire retained budget, so a revoked or
+            # swapped grant cannot race the server's earlier package check.
+            try:
+                try:
+                    from .native_audiobook_replacement import validate_carried_grant
+                except ImportError:
+                    from native_audiobook_replacement import validate_carried_grant
+                validate_carried_grant(budget, document["user_id"], now=_now(),
+                    package_version=scope.get("package_version"), session_scope=scope, current_access=False)
+            except (ValueError, KeyError, TypeError):
+                raise ReadingPassError("ACCEPTANCE_SCOPE_UNAVAILABLE", 403, "Native replacement authority changed or expired.") from None
         binding = document.get("acceptance_test_id")
         if budget is None and not binding:
             return None

@@ -170,7 +170,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
-    from backend import audio_acceptance_budget
+    from backend import audio_acceptance_budget, native_audiobook_replacement
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -185,6 +185,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     )
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
     import audio_acceptance_budget
+    import native_audiobook_replacement
 
 try:
     from backend.domain.catalog import (
@@ -1371,6 +1372,8 @@ async def require_user(
         await _cache_user_session(session)
     user["session_id"] = session_id
     user["device_fingerprint"] = token_fp
+    if request.method == "POST" and request.url.path == "/api/reading-pass/leases/renew":
+        await _native_replacement_renewal_authority(request, user["id"])
     return user
 
 
@@ -4023,6 +4026,15 @@ def _selected_audiobook_package(
     *,
     create_rollout_identity: bool = False,
 ) -> tuple[Optional[dict], str, str]:
+    # Private replacement selection is server-owned lease state, never a
+    # rollout cookie, query argument, client package name or percentage.
+    native_scope = getattr(getattr(request, "state", None), "native_replacement_scope", None) if request is not None else None
+    if native_scope is not None:
+        try:
+            selected = native_audiobook_replacement.selected_from_verified_scope(book, native_scope)
+            return selected, selected["release_descriptor_sha256"], ""
+        except (native_audiobook_replacement.ReplacementError, TypeError, KeyError, ValueError):
+            return None, "", ""
     state_raw = _book_audiobook_release_state(book)
     packages = _book_audiobook_release_packages(book)
     if state_raw:
@@ -10214,6 +10226,63 @@ async def user_claim_reader_reward(user=Depends(require_user)):
     }
 
 
+async def _native_replacement_member_scope(book, user_id, request, *, session_scope=None):
+    """Recheck retained private authority after normal auth, without wallet writes."""
+    native_session = isinstance(session_scope, dict) and bool(session_scope.get("native_replacement_authorization_id"))
+    marker = book.get(native_audiobook_replacement.FIELD) if isinstance(book, dict) else None
+    if (not isinstance(book, dict) or book.get("slug") != native_audiobook_replacement.SLUG
+            or not isinstance(marker, dict)
+            or marker.get("schema_version") != native_audiobook_replacement.SCHEMA
+            or marker.get("status") not in {"STAGED_PRIVATE", "PROMOTED_PUBLIC"}
+            or marker.get("candidate_descriptor_sha256") != native_audiobook_replacement.DESCRIPTOR):
+        if native_session:
+            raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
+        return None
+    row = await db.users.find_one({"id": user_id}, {"_id": 0, "reader_acceptance_budget": 1}) or {}
+    budget = row.get("reader_acceptance_budget")
+    if not isinstance(budget, dict) or "native_replacement_authorization" not in budget:
+        if native_session:
+            raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
+        return None
+    verdict = _release_proxy_access_verdict(request)
+    try:
+        scope = native_audiobook_replacement.private_scope(book, user_id, budget,
+            country=verdict.country if verdict.allowed else None, now=datetime.now(timezone.utc),
+            session_scope=session_scope)
+        if native_session and scope is None:
+            raise native_audiobook_replacement.ReplacementError("Native grant removed")
+        return scope
+    except (native_audiobook_replacement.ReplacementError, KeyError, ValueError, TypeError):
+        raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"}) from None
+
+
+
+async def _native_replacement_renewal_authority(request, user_id):
+    """Native preflight after normal authentication; the financial handler stays exact.
+
+    Starlette caches parsed JSON. This neither consumes the route body nor
+    creates authority from its session ID: lookup is scoped to the member.
+    Existing ReadingPassService validation/CAS rechecks the retained grant
+    inside the subsequent transaction.
+    """
+    try:
+        payload = await request.json()
+    except (ValueError, TypeError):
+        return  # Preserve the route's existing body-validation response.
+    session_id = payload.get("session_id") if isinstance(payload, dict) else None
+    if not isinstance(session_id, str) or not session_id:
+        return
+    session_hint = await db.reading_pass_sessions.find_one(
+        {"id": session_id, "user_id": user_id},
+        {"_id": 0, "content_type": 1, "content_id": 1, "scope": 1},
+    )
+    scope = (session_hint or {}).get("scope") or {}
+    if (session_hint and session_hint.get("content_type") == "audio"
+            and isinstance(scope, dict) and scope.get("native_replacement_authorization_id")):
+        book = await _reader_audio_package_book_for_slug(session_hint["content_id"])
+        await _native_replacement_member_scope(book, user_id, request, session_scope=scope)
+
+
 def _listener_transport_canary_audio(audio, slug, request, principal):
     # This is presentation metadata, not media authority. Only the direct
     # authenticated Listener opts in; Reader/catalogue projections stay hidden.
@@ -10235,6 +10304,24 @@ def _listener_transport_canary_audio(audio, slug, request, principal):
         'duration_ms': package['duration_ms'],
         'rollout_percentage': canary.get('rollout_percentage'),
     }}, new_identity
+
+
+async def _listener_authorized_audio(audio, slug, request, principal):
+    if (request.query_params.get("transport_canary") == "1"
+            and principal and principal.get("role") == "user"):
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if artifact and artifact.get(native_audiobook_replacement.FIELD):
+            scope = await _native_replacement_member_scope(artifact, principal["id"], request)
+            if scope:
+                package = native_audiobook_replacement.selected_from_verified_scope(artifact, scope)
+                return {**audio, "transport_canary": {
+                    "enabled": True, "slug": slug,
+                    "scope": native_audiobook_replacement.PRIVATE_SCOPE,
+                    "package_version": package["package_version"],
+                    "release_descriptor_sha256": package["release_descriptor_sha256"],
+                    "duration_ms": package["duration_ms"],
+                }}, ""
+    return _listener_transport_canary_audio(audio, slug, request, principal)
 
 
 @api.get("/reader/book/{slug}/manifest")
@@ -10326,7 +10413,7 @@ async def reader_book_manifest(
             ],
         }
     payload = {**manifest, "access": access}
-    canary_audio, new_audio_identity = _listener_transport_canary_audio(manifest.get('audio') or {}, slug, request, principal)
+    canary_audio, new_audio_identity = await _listener_authorized_audio(manifest.get('audio') or {}, slug, request, principal)
     if canary_audio is not manifest.get('audio'):
         payload['audio'] = canary_audio
     if new_audio_identity:
@@ -10949,7 +11036,8 @@ async def reader_book_audiobook(
 
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
     book = await _reader_audio_package_book_for_slug(slug)
-    package_canary = _can_expose_audiobook_package_canary(book, slug)
+    package_canary = (_can_expose_audiobook_package_canary(book, slug)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
     package, _descriptor, new_rollout_identity = _selected_audiobook_package(
         book,
         slug,
@@ -11027,7 +11115,8 @@ async def _reader_book_audiobook_package_segment(
     request: Request,
 ):
     book = await _reader_audio_package_book_for_slug(slug)
-    package_canary = _can_expose_audiobook_package_canary(book, slug)
+    package_canary = (_can_expose_audiobook_package_canary(book, slug)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
     package, _descriptor, _new_identity = _selected_audiobook_package(
         book,
         slug,
@@ -11250,6 +11339,15 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
                 content_type="audio",
                 content_id=slug,
             )
+        native_scope = result.get("scope") or {}
+        if (native_scope.get("native_replacement_authorization_id")
+                or (slug == "the-selfish-giant"
+                    and result.get("acceptance_test_id") == native_audiobook_replacement.TEST_ID)):
+            book = await _reader_audio_package_book_for_slug(slug)
+            scope = await _native_replacement_member_scope(book, result.get("user_id"), request, session_scope=native_scope)
+            if scope is None:
+                raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
+            request.state.native_replacement_scope = scope
         if result.get("acceptance_test_id") == audio_acceptance_budget.TEST_ID:
             book = await _reader_audio_package_book_for_slug(slug)
             package, _, _ = _selected_audiobook_package(book, slug, request)
@@ -12355,6 +12453,11 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         if not book:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
         scope = {"media_position_seconds": position}
+        native_scope = await _native_replacement_member_scope(book, user["id"], request) if request is not None else None
+        if native_scope:
+            if transfer:
+                raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_TRANSFER_DENIED"})
+            scope.update(native_scope)
         # The rollout cookie is scoped to /reader/book/<slug>, not this
         # session-start endpoint. Bind the trusted exact candidate here;
         # protected media still independently enforces cohort selection.

@@ -302,6 +302,7 @@ INTERNAL_RIGHTS_FIELDS = {
 }
 
 INTERNAL_AUDIO_FIELDS = {
+    "audiobook_native_replacement",
     "audio_assets",
     "audio_files",
     "audiobook_url",

@@ -13323,5 +13323,165 @@
         "remote_writes": 0
       }
     ]
+  },
+  "selfish_cedar_replacement_source_preparation_20261102": {
+    "schema": "earnalism.native_replacement_source_preparation.v1",
+    "at": "2026-11-01T21:11:25.376350+00:00",
+    "lane": "Integration Lane",
+    "source_base": "963221cf5dade17fceae4d794ebc22ae2dd240cb",
+    "title": "the-selfish-giant",
+    "descriptor_sha256": "d2dbc302427a535e5a3e89dfb82f0b9b880729ea6c56837fd9d9f18ea1077258",
+    "audio_sha256": "543117b5c47f0459d0d194156949904d84ecf37107bf7076e679f038c08da817",
+    "initial_reviewed_patch_sha256": "d9c5e0f5c6466c206d330936097ae8801f1d3d761f5328223ad59aee7f751f1a",
+    "status": "SOURCE_PREPARATION_ONLY_RUNTIME_BLOCKED",
+    "behavior": [
+      "Stage exact private candidate while preserving current ordinary public predecessor",
+      "Require independently retained member grant and normal authenticated IN Reading Pass lease; no cookie/query authority",
+      "Bind Cedar and licensed music credits to exact promotion",
+      "Guard complete prior artifact and Reader bootstrap restoration against same-title concurrency",
+      "Validate full served-body identity plus bounded real playback and numeric financial conservation; full production listen and uninterrupted endurance explicitly UNPERFORMED"
+    ],
+    "owner_complete_scored_confidence": 0.96,
+    "local_validation": {
+      "python_source_lifecycle_rights": {
+        "passed": 178,
+        "subtests": 32,
+        "seconds": 7.29
+      },
+      "legacy_transport_accounting": {
+        "passed": 120,
+        "existing_opt_in_mongo_skipped": 5
+      },
+      "javascript_actual_adapter_cases": 7,
+      "frontend_jest": {
+        "suites": 5,
+        "passed": 54
+      },
+      "production_frontend_build": "PASS",
+      "static_snapshots": 172,
+      "static_snapshot_assertions": 3701,
+      "purchase_territory_and_source_guard_tests_passed": 12
+    },
+    "real_mongo_provider_runtime": "UNPERFORMED_LOCALLY",
+    "deployment": "UNPERFORMED",
+    "keys_or_storage_writes": 0,
+    "grant_or_customer_debits": 0,
+    "allocation_or_synthesis": 0,
+    "remaining_gates": [
+      "Exact-head required CI and independent published source review",
+      "Owner-approved replacement profiles and additive carried storage/QA limits; preserve prior counters and journals",
+      "Actual primary and independent DR upload, retention, full readbacks and finalized package",
+      "Actual original120 member lineage settlement, carry and current grant reconciliation",
+      "Merged exact backend/frontend deployment and authenticated full served-body decode",
+      "Bounded real playback/music/navigation/access/lease/accounting proofs",
+      "Proof-bound public promotion and customer release verification"
+    ],
+    "source_guard": "Retain exact protected purchase/financial/lease handler AST and original owner receipt; bind actual application commit separately",
+    "next_exact_prompt": "Integrate the exact reviewed lifecycle source successor on canonical, preserve protected financial handlers, regenerate staged runtime inventory, and run exact-head CI/review. Do not infer production readiness.",
+    "storage_and_listening_authority_scopes": {
+      "native_storage_adapter": "Carried cumulative budget applies to operator preflight/upload/full-download verification/replication; unchanged pending four-key/41MiB up/80MiB down/44MiB metadata proposal. No reset or new allowance inferred.",
+      "normal_customer_playback": "Separate original120 cumulative ReadingPass credit authority; actual member settlement/carry/current grant and bounded transfer/cost record required. Not represented as adapter-budget I/O.",
+      "withdrawn_unnecessary_proposal": "No new QA-only server byte guard/global216MiB cap; actual original receipts/schema do not extend storage adapter cap to runtime responses."
+    },
+    "auth_successor": {
+      "patch_sha256": "1dab0faefdd7bb6148885e30a311bdbde45a5f270a1ffe8a1f4af77313d05c7e",
+      "manifest_sha256": "349c5f5df6009930c90605c1eceae1fe9e749c373b2e4c7b069a8bd320d57558",
+      "server_sha256": "67a13ccc9ac93e3f56d4cb098319e6daed625048c79ccc7b99a68ebe4340565e",
+      "guard_code_changed": false,
+      "protected_handlers_AST_preserved": 9,
+      "protected_renewal_bytes_preserved": true,
+      "real_auth_new_cases": 14,
+      "preparer_test_report_sha256": "abc1b204e8df32853f727a728e77446cdd354c2df895002c711a69a27db930e6",
+      "independent_review": {
+        "status": "NO_MATERIAL_FINDINGS_SOURCE_ONLY",
+        "sha256": "5443de01d3d2809ebcdce0a08ca4a264ebb43820d0628e1ca2860966f84b6c2b",
+        "independent_composed_tests_passed": 36,
+        "real_auth_cases": 14
+      }
+    },
+    "canonical_provenance_audit_sha256": "a4b0bb1ab37037397b4f76dee2366e4719908ba69ee454d1f93bca7f025d89a3",
+    "actual_application_source_commit": "2617cea98267d46b8ee34ce19e1f53a4bf528fd6",
+    "actual_staged_runtime_inventory": {
+      "files": 1952,
+      "expected_sha256": "eb5fe344e06d8a542a545ffdde73018ae88c39e22bc83e1fe9243dbd640185a7",
+      "builder_verification": "PASS"
+    },
+    "ci_source_binding_successor": {
+      "at": "2026-11-01T21:36:32.903515+00:00",
+      "superseded_head": "93b18098fd0ab80dfba5953d51e9cadea4cf0a71",
+      "observed_ci_failures": [
+        "Registry baseline still pinned pre-#614/624 source-QA append-only registry",
+        "Frontend capture/publication surface pins predated exact adapter change",
+        "Duplicate direct pytest invocation ran before prepared dependencies"
+      ],
+      "registry_patch_sha256": "b76e6c07ce8ab5942cb5b7dccfaf5ce628bcaf12e9cde076bf616bb3f23f66f5",
+      "registry_peer_review_sha256": "be9af9a5a9f756e2105975c05c8975d88d9f39910acbd728841b6455eb462ff2",
+      "workflow_patch_sha256": "8fb25cf626b0518ff86a34d5efbceb51ae2f6941088b392328c1f62e25587532",
+      "workflow_peer_review_sha256": "c347e72cca168c6773e7634f56d0e8f9a78062de1006ac251ad72c32b9e2e8bb",
+      "registry_history": "Exact7adca30c→890862ac→7efe07a7: three reviewed source-QA accepted records and exactD2 IN/audio_stream binding only; registry and assertion code unchanged",
+      "frontend_source_surface_sha256": "81da53d9933e03f52f3936b0d159b5497f2d92171f48a9b7b124735c2936b867",
+      "local_changed_checks": {
+        "catalogue_unittest_pass": 43,
+        "workflow_cases_pass": 46,
+        "full_catalogue_verifier": "PASS;143historically changed packages,zero issues",
+        "runtime_ref_verification": "PASS;backendunchanged1952/f73d0af1"
+      },
+      "unchanged_evidence_reused": "178Python/32subtests;120legacy/5localopt-inMongoSKIPs;12guard/territory;7adapter;54frontend andbuild/172snapshots from exact unchangedbehavior source",
+      "hosted_successor_ci": "PENDING_FRESH_EXACT_HEAD",
+      "runtime_publication": "BLOCKED_ALL_REAL_NEW_GATES_UNPERFORMED",
+      "new_allocation_synthesis": false
+    },
+    "before_request_state_compatibility_fix": {
+      "actual_application_source_commit": "14bd75445ee19366ea1a57468c7e08601b490b0c",
+      "actual_staged_runtime_inventory": {
+        "files": 1952,
+        "expected_sha256": "f73d0af163398c9d65314c4fc032799e79fbbcd9a4a196b71f7d7588b8af17e3",
+        "builder_verification": "PASS"
+      }
+    },
+    "legacy_request_state_compatibility_successor": {
+      "at": "2026-11-02T03:18:33.758662+00:00",
+      "previous_reviewed_head": "9c585b577fa1db0c943565e6402fff37fa582eff",
+      "source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
+      "server_sha256": "9c11d87384ba6a3101fefa6bc3db962dc2bfc9eeddb83df3dc6384e7e6fb67fa",
+      "changed_behavior": "Missing optional internal request.state selects no private authority; real verified state behavior unchanged",
+      "source_change": "Exactly3 nested getattr reads; no tests, guard logic or protected handler AST changed",
+      "independent_review_sha256": "5f6a68d71dad45bce8f72c6fdda9cc7fd8c7cc88e43acf3c16f27d27a68b0043",
+      "canonical_affected_tests_passed": 160,
+      "independent_legacy_B2_tests_passed": 35,
+      "source_binding": "Only3 supported application identity fields updated; old owner receipt and OPEN state unchanged",
+      "full_hosted_successor_ci": "PENDING",
+      "reused_frontend_surface_sha256": "81da53d9933e03f52f3936b0d159b5497f2d92171f48a9b7b124735c2936b867",
+      "real_production_gates": "ALL_UNPERFORMED_FOR_NEW_PACKAGE"
+    },
+    "before_candidate_applicability_fix": {
+      "actual_application_source_commit": "93ca312130996a482c3f4332d8a3695c3b3716eb",
+      "actual_staged_runtime_inventory": {
+        "files": 1952,
+        "expected_sha256": "84336513d7987ed60436e0ed750892ff86a9d54d2070b214601c6e0d49c70412",
+        "builder_verification": "PASS"
+      }
+    },
+    "native_candidate_applicability_successor": {
+      "at": "2026-11-02T03:40:49.391392+00:00",
+      "prior_head": "0e63f07f439bab7c81d89c5df238cca38bbe8799",
+      "application_source_commit": "2617cea98267d46b8ee34ce19e1f53a4bf528fd6",
+      "server_sha256": "ac7700495215fd0085b0a55a41f7d99ec0d56622476fd11fe13a9da35731220d",
+      "test_sha256": "9ff2df298ace295decba2257baf6783a0065ee9ec43aa0f6439a2c09f8cbba8d",
+      "behavior": "Query member grant only for exact Selfish marker title/schema/status/D2. Other or absent/stale/malformed candidates returnordinaryNone or denynative-bound403 without DBreads. Full grant/rights/IN/transaction checks remain.",
+      "actual_affected_tests": {
+        "passed": 245,
+        "existing_local_opt_in_Mongo_skipped": 2,
+        "new_boundary_cases": 14
+      },
+      "guard_tests_passed": 12,
+      "independent_review_sha256": "55ade02d0c62da6d42a01bcd090cbeb0ed796719e1d6fb71de277f70623bc85a",
+      "independent_negative_balance_native_cases_passed": 61,
+      "protected_AST_handlers_unchanged": 9,
+      "fresh_exact_head_CI": "REQUIRED_PENDING",
+      "production_actions": 0,
+      "new_allocation_synthesis": false,
+      "post_promotion_grant_and_customer_checks": "UNPERFORMED; thissourcefixdoesnotqualifythem"
+    }
   }
 }

@@ -42,13 +42,15 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
   const access = book?._readerManifest?.access;
   const canaryAllowed = access?.authenticated === true && access?.role === "user"
     && canary?.enabled === true && canary.slug === book.slug
-    && canary.scope === "transport_canary_only_no_customer_discovery"
-    && [5, 25].includes(canary.rollout_percentage)
+    && ((canary.scope === "transport_canary_only_no_customer_discovery"
+      && [5, 25].includes(canary.rollout_percentage))
+      || (canary.scope === "native_replacement_authorized_member_only"
+        && canary.rollout_percentage === undefined))
     && /^sha256-[a-f0-9]{64}$/.test(canary.package_version || "")
     && /^[a-f0-9]{64}$/.test(canary.release_descriptor_sha256 || "");
   if (canaryAllowed) return {
     canRender: true, fixture: false, mediaUrl: "", packageManifestUrl: "",
-    release: { status: "transport_canary", canShowControls: true },
+    release: { status: canary.scope === "native_replacement_authorized_member_only" ? "private_member_review" : "transport_canary", canShowControls: true },
     packageVersion: canary.package_version,
     title: book.title, author: book.author,
     chapterLabel: book.chapter_label || "Full audiobook",
