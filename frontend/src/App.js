@@ -102,9 +102,29 @@ function PageFallback() {
   );
 }
 
-function LegacyListenerRedirect() {
+export function LegacyReaderRoute() {
   const { slug = "" } = useParams();
-  return <Navigate to={`/reader-legacy/${encodeURIComponent(slug)}?listen=1`} replace />;
+  const { search, hash } = useLocation();
+  const params = new URLSearchParams(search);
+  // Public legacy pagination must not provide an alternate preview boundary.
+  // Listening uses the existing protected Listener; only the server-verified
+  // administrative preview retains the old authoring surface.
+  if (params.get("listen") === "1") {
+    params.delete("listen");
+    const query = params.toString();
+    return <Navigate to={`/listener/${encodeURIComponent(slug)}${query ? `?${query}` : ""}${hash}`} replace />;
+  }
+  if (params.get("preview") === "admin") return <ReaderLegacy />;
+  return <Navigate to={`/reader/${encodeURIComponent(slug)}${search}${hash}`} replace />;
+}
+
+export function LegacyListenerRedirect() {
+  const { slug = "" } = useParams();
+  const { search, hash } = useLocation();
+  const params = new URLSearchParams(search);
+  params.delete("listen");
+  const query = params.toString();
+  return <Navigate to={`/listener/${encodeURIComponent(slug)}${query ? `?${query}` : ""}${hash}`} replace />;
 }
 
 function useHighIntentRoutePrefetch() {
@@ -172,7 +192,7 @@ export function AppRouterContent() {
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
           <Route path="/reader/:slug" element={<ReaderV2 />} />
-          <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
+          <Route path="/reader-legacy/:slug" element={<LegacyReaderRoute />} />
           <Route path="/listener/:slug" element={<ListenerV2 />} />
           <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
           <Route path="/admin/login" element={<AdminLogin />} />

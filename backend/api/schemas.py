@@ -478,6 +478,7 @@ class ReadingPassSessionStartIn(BaseModel):
     content_type: Literal["text", "audio"]
     content_id: str = Field(min_length=1, max_length=200)
     canonical_page_index: Optional[int] = Field(default=None, ge=1)
+    require_protected_text: bool = False
     media_position_seconds: Optional[float] = Field(default=None, ge=0, le=1_000_000_000)
 
 

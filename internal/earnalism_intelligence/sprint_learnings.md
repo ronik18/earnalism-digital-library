@@ -3032,3 +3032,7 @@ A pre-test historical fetch timeout is not an application failure. Bound the sin
 
 Do not transfer unrelated historical media to validate two pinned JSON files. Fetch exact commit/tree metadata and required blob IDs in two one-attempt batches, preserving all verification. Keep full containment-source fetch separate. Actual GitHub object admission is not a hosted regression or recovery PASS.
 Filtered fetch persists remote settings: restore their exact prior presence/values even on failure so later full-source recovery admission remains unchanged.
+
+### P0 Reader preview boundary — 4 November 2026
+
+Canonical transport units and responsive pages are different. Bound public source payloads, enforce one book-wide visual preview across every current/legacy navigation entry, and keep chapter catalog caches text-free. Early protected continuation must request a real publication-bound lease; the flag is no grant. Preserve free-prefix nonbilling through chapter/layout changes. Local source containment is not a deployed remediation claim; exact-head gates and actual release authority remain separate.

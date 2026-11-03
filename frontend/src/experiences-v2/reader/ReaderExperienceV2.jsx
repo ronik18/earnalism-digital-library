@@ -146,10 +146,14 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
   const visualIndex = anchor === 'end' ? Math.max(0, pagination.pages.length - 1) : pageForAnchor(pagination.pages, anchor);
   const fragment = pagination.pages[visualIndex];
+  const publicVisualPreview = !access.authorized && model.visualFixture !== true;
+  const previewBlocked = publicVisualPreview && visualIndex >= 3;
   const visualTotal = pagination.pages.length;
   const bookMap = useAuthorizedBookMap({ model, pagination, visualIndex, viewportRef,
     typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
-  const pageIndicator = bookMap.complete && model.visualPageScope !== "chapter" ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
+  const pageIndicator = previewBlocked ? "Preview limit reached" : publicVisualPreview
+    ? `${visualIndex + 1} of ${Math.min(3, visualTotal) || '…'} in free preview`
+    : bookMap.complete && model.visualPageScope !== "chapter" ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
     : `${visualIndex + 1} of ${visualTotal || '…'} in this chapter`;
   const sourceAnchor = model.sourceAnchorForOffset?.(fragment?.anchor ?? fragment?.start ?? 0);
   const indexBoundary = useMemo(() => readerIndexBoundary(model.authorizedChapter?.html || ''), [model.authorizedChapter?.html]);
@@ -160,12 +164,42 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     ? contents.find(item => item.chapterId === activeChapterId)
     : [...contents].reverse().find(item => item.page <= (sourceAnchor?.page || page));
 
-  const mapSelection = bookMap.options.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.anchor.page === sourceAnchor?.page && option.anchor.offset === sourceAnchor?.offset && option.anchor.revision === sourceAnchor?.revision)?.key || '';
+  const pageOptions = publicVisualPreview ? bookMap.options.slice(0, 3) : bookMap.options;
+  const selectablePages = publicVisualPreview ? pagination.pages.slice(0, 3) : pagination.pages;
+  const mapSelection = pageOptions.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.anchor.page === sourceAnchor?.page && option.anchor.offset === sourceAnchor?.offset && option.anchor.revision === sourceAnchor?.revision)?.key || '';
   const onVisualAnchor = model.onVisualAnchor;
+  const requestProtectedContent = model.onRequestProtectedContent;
+  const sourceAnchorForOffset = model.sourceAnchorForOffset;
+  const previewLayout = JSON.stringify([pagination.width, pagination.height, textSizeRem, lineHeight, fontFamily, fontWeight]);
+  const fourthPreviewPage = publicVisualPreview ? pagination.pages[3] : null;
+  const publicPreviewEnd = fourthPreviewPage && sourceAnchorForOffset ? {
+    ...sourceAnchorForOffset(fourthPreviewPage.anchor ?? fourthPreviewPage.start),
+    layout: previewLayout, revisionOfBook: model.previewContentRevision || '',
+  } : null;
+  const retainedPreviewEnd = model.publicPreviewEnd;
+  const measuredPreviewMatches = retainedPreviewEnd?.layout === previewLayout
+    && retainedPreviewEnd?.revisionOfBook === (model.previewContentRevision || '');
+  const numericPreviewEnd = Number.isFinite(retainedPreviewEnd?.offset) && Number.isFinite(sourceAnchor?.offset);
+  const withinMeasuredPreview = measuredPreviewMatches && sourceAnchor && (
+    sourceAnchor.page < retainedPreviewEnd.page || (sourceAnchor.page === retainedPreviewEnd.page
+      && numericPreviewEnd && sourceAnchor.offset < retainedPreviewEnd.offset));
+  // This only classifies billable activity under an already verified lease.
+  // Missing/stale layout evidence never charges an ambiguous public prefix.
+  const ordinaryPublicSource = !model.protectedTextContinuation && (sourceAnchor?.page || page) <= (model.previewLimit || 3);
+  const unmeasuredPublicPrefix = model.protectedTextContinuation && !measuredPreviewMatches
+    && (model.windowFirst || page) !== 1 && (sourceAnchor?.page || page) <= (model.previewLimit || 3);
+  const publicPreviewVisible = ordinaryPublicSource || unmeasuredPublicPrefix || withinMeasuredPreview
+    || ((model.windowFirst || page) === 1 && visualIndex < 3);
   const changeAnchor = useCallback((offset) => {
+    const index = offset === 'end' ? pagination.pages.length - 1 : pageForAnchor(pagination.pages, offset);
+    if (publicVisualPreview && index >= 3) {
+      const target = sourceAnchorForOffset?.(offset) || { page, offset };
+      requestProtectedContent?.(target.page, target.offset, target.revision, publicPreviewEnd);
+      return;
+    }
     setLocalAnchor(offset);
     onVisualAnchor?.(offset);
-  }, [onVisualAnchor]);
+  }, [onVisualAnchor, pagination.pages, publicVisualPreview, sourceAnchorForOffset, requestProtectedContent, page, publicPreviewEnd]);
   const readingAnchor = sourceAnchor ? { offset: sourceAnchor.offset, revision: sourceAnchor.revision } : { offset: fragment?.anchor ?? fragment?.start ?? 0, revision: model.sourceRevision || '' };
   const anchorPage = sourceAnchor?.page || page;
   const windowFirst = model.windowFirst ?? navigationPage;
@@ -189,9 +223,9 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const onPreparationFailure = model.onPreparationFailure;
   useEffect(() => { if (layoutError) onPreparationFailure?.(); }, [layoutError, onPreparationFailure]);
   useLayoutEffect(() => {
-    onVisualPageVisibility?.(!pagination.pending && fragment && !layoutError ? { start: fragment.start, end: fragment.end, media: fragment.media || [] } : null);
+    onVisualPageVisibility?.(!pagination.pending && fragment && !layoutError && !previewBlocked ? { start: fragment.start, end: fragment.end, media: fragment.media || [], publicPreview: publicPreviewVisible } : null);
     return () => onVisualPageVisibility?.(null);
-  }, [fragment, pagination.pending, layoutError, onVisualPageVisibility]);
+  }, [fragment, pagination.pending, layoutError, previewBlocked, onVisualPageVisibility, publicPreviewVisible]);
   const busy = Boolean(access.busy);
   const matchesCurrentAnchor = (item) => {
     if (typeof item.anchor.offset === 'string') return item.anchor.revision === readingAnchor.revision && (fragment?.structures?.includes(item.anchor.offset) || (item.anchor.offset.startsWith('media:') && fragment?.media?.includes(Number(item.anchor.offset.split(':')[1]))));
@@ -221,8 +255,8 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     setNoteText(""); setNoteEditorOpen(false);
   };
   const closeNotebook = () => { setNotebookOpen(false); notebookTriggerRef.current?.focus(); };
-  const atEnd = !pagination.pending && Boolean(fragment) && windowLast >= totalPages && visualIndex >= visualTotal - 1;
-  const nextLabel = windowLast === (model.previewLimit || 3) && !access.authorized && visualIndex === visualTotal - 1
+  const atEnd = !previewBlocked && !pagination.pending && Boolean(fragment) && windowLast >= totalPages && visualIndex >= visualTotal - 1;
+  const nextLabel = !access.authorized && ((publicVisualPreview && visualIndex >= 2) || (windowLast === (model.previewLimit || 3) && visualIndex === visualTotal - 1))
     ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
     : "Next page";
   const updateSetting = (name, value) => setSettings((previous) => ({ ...previous, [name]: value }));
@@ -361,10 +395,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
                 {indexAnchor && <option value="index">Index</option>}
               </select>
             </label>
-          <label className="reader-v2__page-selector">Go to page{bookMap.options.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
-            const option = bookMap.options.find(item => item.key === event.target.value);
+          <label className="reader-v2__page-selector">Go to page{pageOptions.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
+            const option = pageOptions.find(item => item.key === event.target.value);
             if (option) requestPage(option.anchor.page, option.anchor.offset, option.anchor.revision);
-          }}>{bookMap.options.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={visualIndex} disabled={busy || pagination.pending} onChange={event => pagination.pages[Number(event.target.value)] && changeAnchor(pagination.pages[Number(event.target.value)].anchor ?? pagination.pages[Number(event.target.value)].start)}>{pagination.pages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
+          }}>{pageOptions.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={previewBlocked ? "" : visualIndex} disabled={busy || pagination.pending} onChange={event => selectablePages[Number(event.target.value)] && changeAnchor(selectablePages[Number(event.target.value)].anchor ?? selectablePages[Number(event.target.value)].start)}>{selectablePages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
           </div>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
           <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
@@ -376,7 +410,11 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             </div>
             <div ref={bookMap.measureRef} className="reader-v2__body reader-v2__pagination-measure" aria-hidden="true" inert={true} />
             <div ref={measureRef} className="reader-v2__body reader-v2__pagination-measure" aria-hidden="true" inert={true} />
-            {pagination.pending ? <p className="reader-v2__pagination-status" role={hasPaginated.current ? "status" : undefined} aria-hidden={!hasPaginated.current}>Preparing this page…</p> : layoutError ? <p role="alert">{layoutError}</p> :
+            {pagination.pending ? <p className="reader-v2__pagination-status" role={hasPaginated.current ? "status" : undefined} aria-hidden={!hasPaginated.current}>Preparing this page…</p> : layoutError ? <p role="alert">{layoutError}</p> : previewBlocked ? <section role="alert" data-testid="reader-preview-limit">
+                <h2>Your three-page preview has ended</h2>
+                <p>{model.freeReading ? "Sign in to continue with this edition’s approved free access." : "A valid Reading Pass is required to continue reading."}</p>
+                <button type="button" onClick={() => requestProtectedContent?.(sourceAnchor?.page || page, sourceAnchor?.offset || 0, sourceAnchor?.revision, publicPreviewEnd)} disabled={busy}>{model.freeReading ? "Continue reading free" : "Continue with Reading Pass"}</button>
+              </section> :
               <div key={`${page}:${visualIndex}`} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
                 <div className="reader-v2__body" data-testid="reader-reading-text" data-continuation={fragment?.start > 0} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }} dangerouslySetInnerHTML={{ __html: fragment?.html || '' }} />
               </div>}
