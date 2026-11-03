@@ -41,15 +41,23 @@ def need(ok,message):
 def digest(value):return m.sha256_bytes(m.canonical_json_bytes(value))
 
 
+def _storage_input_path(value):
+    name=str(Path(value).absolute())
+    # Normalize only the actual macOS system alias. Linux /tmp is a real
+    # directory and must remain /tmp; arbitrary aliases remain rejectable.
+    if (name.startswith('/tmp/') and Path('/tmp').is_symlink()
+            and Path('/tmp').resolve()==Path('/private/tmp')):
+        name='/private/tmp/'+name[5:]
+    return Path(name)
+
+
 def load_inputs(paths):
     need(isinstance(paths,dict) and set(paths)==set(INPUTS),'Exact six Sredni storage input roles required')
     result={}
     for role,(expected,size) in INPUTS.items():
         # macOS /tmp is the documented system alias; every actual file or
         # non-system path component must still be nonsymlinked.
-        name=str(Path(paths[role]).absolute())
-        if name.startswith('/tmp/'):name='/private/tmp/'+name[5:]
-        path=Path(name)
+        path=_storage_input_path(paths[role])
         need(not any(x.is_symlink() for x in (path,*path.parents)) and path.is_file(),
              'Sredni storage inputs must be regular nonsymlink files')
         need(path.stat().st_size==size,'Sredni storage input size changed: '+role)

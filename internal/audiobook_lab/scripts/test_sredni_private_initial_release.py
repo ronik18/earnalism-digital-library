@@ -193,3 +193,24 @@ def test_existing_atomic_transaction_rolls_back_midwrite_failure(prepared,monkey
     monkeypatch.setattr(manager.os,'replace',fail_once)
     with pytest.raises(manager.ReleasePointerError,match='rolled back'):release.stage(root,**args,apply=True)
     assert files(root)==before
+
+
+@pytest.mark.parametrize('alias,target,expected',[
+    (False,'/tmp','/tmp/owned/receipt.json'),
+    (True,'/private/tmp','/private/tmp/owned/receipt.json'),
+    (True,'/other-target','/tmp/owned/receipt.json'),
+])
+def test_only_real_macos_tmp_alias_is_normalized(monkeypatch,alias,target,expected):
+    original_link=Path.is_symlink;original_resolve=Path.resolve
+    monkeypatch.setattr(Path,'is_symlink',lambda self: alias if str(self)=='/tmp' else original_link(self))
+    monkeypatch.setattr(Path,'resolve',lambda self,*a,**k: Path(target) if str(self)=='/tmp' else original_resolve(self,*a,**k))
+    assert str(release._storage_input_path('/tmp/owned/receipt.json'))==expected
+
+
+def test_symlink_storage_parent_is_still_denied(prepared,tmp_path):
+    root,args=prepared;actual=Path(args['input_paths']['primary']);alias=tmp_path/'directory-alias'
+    alias.symlink_to(actual.parent,target_is_directory=True)
+    args['input_paths']['primary']=str(alias/actual.name);before=files(root)
+    with pytest.raises(manager.ReleasePointerError,match='nonsymlink'):
+        release.stage(root,**args,apply=True)
+    assert files(root)==before
