@@ -46,12 +46,17 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     && ((canary.scope === "transport_canary_only_no_customer_discovery"
       && [5, 25].includes(canary.rollout_percentage))
       || (canary.scope === "native_replacement_authorized_member_only"
+        && canary.rollout_percentage === undefined)
+      || (canary.scope === "sredni_initial_review_authorized_member_only"
+        && book.slug === "sredni-vashtar"
+        && canary.package_version === "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e"
+        && canary.release_descriptor_sha256 === "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc"
         && canary.rollout_percentage === undefined))
     && /^sha256-[a-f0-9]{64}$/.test(canary.package_version || "")
     && /^[a-f0-9]{64}$/.test(canary.release_descriptor_sha256 || "");
   if (canaryAllowed) return {
     canRender: true, fixture: false, mediaUrl: "", packageManifestUrl: "",
-    release: { status: canary.scope === "native_replacement_authorized_member_only" ? "private_member_review" : "transport_canary", canShowControls: true },
+    release: { status: ["native_replacement_authorized_member_only", "sredni_initial_review_authorized_member_only"].includes(canary.scope) ? "private_member_review" : "transport_canary", canShowControls: true },
     packageVersion: canary.package_version,
     // A private candidate must never inherit another public edition’s credits.
     narrationDisclosure: typeof canary.narration_disclosure === "string" ? canary.narration_disclosure.trim() : "",

@@ -1,0 +1,20 @@
+{
+  "schema": "earnalism.sredni_initial_review_source_authority_successor.v1",
+  "native_owner_thread": "01a19041-6750-7503-8694-d979c8c254c9",
+  "native_owner_turn": "01a1a18e-d20e-7403-9076-19728bc52d38",
+  "native_owner_message": "01a1a18e-d360-7561-ad2f-af9e503f8f1e",
+  "owner_permission_path": "internal/legal/sredni_initial_review_20261103/owner-permission.json",
+  "owner_receipt_sha256": "43000292c34c7398e35425e4486796d0e16f617d8e155abc0ad147acc15cfeb3",
+  "predecessor_path": "internal/legal/sredni_initial_review_20261103/pre-approval-authority.json",
+  "predecessor_sha256": "eb9046d8347f6bd06f33ab43deec04d692f337e6327c4f14005ee7434c73a969",
+  "successor_path": "backend/data/sredni_initial_review_authority.json",
+  "successor_sha256": "eb3823307c922d8f67d34ebe7e134e9b651d3587c850e98cda4bf80c31add1ec",
+  "identity_binding_sha256": "5a6df14668a785ed1bd6082711512ab1c7a8ebbe07f8c2c0636bd489325868e7",
+  "identity_evidence_sha256": "efe9dd4712ff783166d0f01d608e1f757dba70df53d87d8c74cd4baaf0b2515c",
+  "identity_evidence_custody": "PRIVATE_OWNER_RELEASE_LANE_NO_RAW_IDENTIFIERS_IN_GIT",
+  "scope": "EXACT_ONE_APPROVED_OWNER_MEMBER_PAIR_ONLY",
+  "source_authority_does_not_execute_runtime": true,
+  "startup_policy_q8628_approved": false,
+  "requires_actual_serving_startup_recovery_india_rights_and_execution_admission": true,
+  "database_grant_playback_or_deployment_performed": false
+}
