@@ -172,10 +172,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const sourceAnchorForOffset = model.sourceAnchorForOffset;
   const previewLayout = JSON.stringify([pagination.width, pagination.height, textSizeRem, lineHeight, fontFamily, fontWeight]);
   const fourthPreviewPage = publicVisualPreview ? pagination.pages[3] : null;
-  const publicPreviewEnd = fourthPreviewPage && sourceAnchorForOffset ? {
+  const publicPreviewEnd = useMemo(() => fourthPreviewPage && sourceAnchorForOffset ? {
     ...sourceAnchorForOffset(fourthPreviewPage.anchor ?? fourthPreviewPage.start),
     layout: previewLayout, revisionOfBook: model.previewContentRevision || '',
-  } : null;
+  } : null, [fourthPreviewPage, sourceAnchorForOffset, previewLayout, model.previewContentRevision]);
   const retainedPreviewEnd = model.publicPreviewEnd;
   const measuredPreviewMatches = retainedPreviewEnd?.layout === previewLayout
     && retainedPreviewEnd?.revisionOfBook === (model.previewContentRevision || '');
