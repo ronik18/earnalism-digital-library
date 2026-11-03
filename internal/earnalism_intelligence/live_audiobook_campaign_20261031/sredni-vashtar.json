@@ -262,5 +262,16 @@
     ],
     "new_synthesis_allocation_spend_storage_or_production_change": false,
     "next_exact_prompt": "Review exact composed source/authority/learning diff, run applicable exact-head CI and published reviews, match-head merge/tree equality; hand back clean source to audiobook owner. Do not activate private/public audio or borrow existing two-title allowances."
+  },
+  "sredni_private_stage_qualification_followups_20261103": {
+    "at": "2026-11-03T12:17:42.801569+00:00",
+    "decision": "COMPARE_CURRENT_READER_RIGHTS_THROUGH_EXACT_PRIVATE_STAGE_SUCCESSOR",
+    "failed_head": "10804b6e63297420c6938dc3be0600842ea24cf3",
+    "run": 41632680448,
+    "job": 125905951674,
+    "failure": "One staleOctoberobservedplanrights fingerprint aftermetadata-onlySredni stage;829samegroup testsPASS. Canonicalpageversion/pagecount/orderhashes alreadyunchangedPASS.",
+    "correction": "Preserve original26rowOFFLINEproposal andall execution/rollbackholds. OnlySrednicurrenttest follows hashboundreviewedsuccessor requiring exactpredecessorhash/currentauthoritybinding/no runtimeapproval; currentIndiarightsnormalverdictstillmandatory. No historicalplan rewrite,newgrants or outputmutation.",
+    "prior_corrections": "ActualmacOSalias-onlynormalization passedentiremandatoryprotectedgroup502PASS4existingSKIP117subtests. CI-onlycachecleareddiskfailure. Capturebarrierexactequality preserved;actualprimary108reviewPASS, originalflickercauseunknown.",
+    "next_exact_prompt": "Independentlyreview narrowfixtureandadditivelearningdiff; freshall exactheadCI/reviews thenmatchheadmerge/treeequality. Keepmember/runtime/recovery/publicationgatesheld."
   }
 }
