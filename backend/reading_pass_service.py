@@ -79,6 +79,11 @@ try:
 except ImportError:
     import native_audio_review_scope as scoped_native_review
 
+try:
+    from . import sredni_initial_review_scope as sredni_review
+except ImportError:
+    import sredni_initial_review_scope as sredni_review
+
 
 class ReadingPassService:
     def __init__(self, *, db, client, config: ReadingPassConfig, token_secret: str) -> None:
@@ -93,6 +98,9 @@ class ReadingPassService:
         Provisioning/removal is a separately authorized operation. Missing or
         changed records cannot release a session that was acceptance-bound.
         """
+        if sredni_review.is_scoped_document(document):
+            return await sredni_review.resolve(
+                self.db, document, _now(), mongo_session, starting=starting)
         user = await self.db.users.find_one(
             {"id": document["user_id"], "role": "user"},
             {"reader_acceptance_budget": 1}, session=mongo_session,
@@ -160,7 +168,7 @@ class ReadingPassService:
     def _acceptance_remaining(budget, now):
         if budget is None:
             return None
-        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+        if isinstance(budget,(scoped_native_review.ScopedReviewBudget, sredni_review.SredniReviewBudget)):
             return budget.remaining(now)
         if ensure_utc(budget["expires_at"]) <= now:
             return 0
@@ -168,13 +176,13 @@ class ReadingPassService:
 
     @staticmethod
     def _acceptance_debit_remaining(budget):
-        if isinstance(budget,scoped_native_review.ScopedReviewBudget):return budget.wallet_remaining()
+        if isinstance(budget,(scoped_native_review.ScopedReviewBudget, sredni_review.SredniReviewBudget)):return budget.wallet_remaining()
         return budget['maximum_seconds']-budget['consumed_seconds']
 
     async def _debit_account(self, user_id, debit, budget, mongo_session):
         query = {"id": user_id, "role": "user", "reading_seconds_balance": {"$gte": debit}}
         increments = {"reading_seconds_balance": -debit, "wallet_seconds": -debit}
-        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+        if isinstance(budget,(scoped_native_review.ScopedReviewBudget, sredni_review.SredniReviewBudget)):
             # Same transaction as normal wallet/ledger/carry/session settlement.
             # No user acceptance field is populated or overwritten.
             await budget.debit(debit,mongo_session)
@@ -569,7 +577,7 @@ class ReadingPassService:
         delta = max(timedelta(0), stop - start)
         micros = min((delta.days * 86400 + delta.seconds) * 1000000 + delta.microseconds,
                      self.config.maximum_lease_seconds * 1000000)
-        if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+        if isinstance(budget,(scoped_native_review.ScopedReviewBudget, sredni_review.SredniReviewBudget)):
             micros=await budget.interval(micros,mongo_session)
         if not micros:
             return 0
@@ -622,6 +630,7 @@ class ReadingPassService:
                 content_id=str(session_doc.get("content_id") or ""),
                 billing_cutoff_at=billing_cutoff,
                 native_review_scope=session_doc.get("scope") if isinstance(budget,scoped_native_review.ScopedReviewBudget) else None,
+                sredni_review_scope=session_doc.get("scope") if isinstance(budget,sredni_review.SredniReviewBudget) else None,
             )
         await self._release_preparation_window(session_doc, debit, mongo_session)
         updated_session = await self.db.reading_pass_sessions.update_one(
@@ -707,7 +716,7 @@ class ReadingPassService:
             retained_budget = user.get("reader_acceptance_budget") or {}
             audio_capped = isinstance(retained_budget, dict) and retained_budget.get("schema") == audio_acceptance.SCHEMA
             if user.get("reader_acceptance_budget") is not None:
-                await self._acceptance_budget({"user_id": user_id, "content_type": content_kind,
+                await self._acceptance_budget({"user_id": user_id, "auth_session_id": auth_session_id, "content_type": content_kind,
                     "content_id": content_id, "scope": scope}, mongo_session, starting=True)
             if audio_capped and transfer:
                 raise ReadingPassError("ACCEPTANCE_TRANSFER_DENIED", 403, "Acceptance sessions cannot transfer.")
@@ -764,14 +773,16 @@ class ReadingPassService:
                 return {"terminal_only": True, "balance_seconds": 0}
 
             budget = await self._acceptance_budget({
-                "user_id": user_id, "content_type": content_kind, "content_id": content_id,
-                "scope": scope,
+                "user_id": user_id, "auth_session_id": auth_session_id,
+                "content_type": content_kind, "content_id": content_id, "scope": scope,
             }, mongo_session, starting=True)
             remaining = self._acceptance_remaining(budget, now)
             if remaining is not None and remaining <= 0:
                 return {"terminal_only": True, "acceptance_exhausted": True}
             budget = await self._reserve_audio_acceptance_start(user_id, budget, mongo_session)
-            if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+            if isinstance(budget,sredni_review.SredniReviewBudget):
+                await budget.claim(mongo_session, starting=True)
+            elif isinstance(budget,scoped_native_review.ScopedReviewBudget):
                 await budget.claim(mongo_session)  # Shared native-only row fences start versus close.
             session_id = str(uuid.uuid4())
             preparing = prepare_text and content_kind == "text" and not free_entitlement
@@ -1364,7 +1375,7 @@ class ReadingPassService:
             if budget is not None:
                 debit = min(debit, self._acceptance_debit_remaining(budget))
             remaining = self._acceptance_remaining(budget, now)
-            if isinstance(budget,scoped_native_review.ScopedReviewBudget):
+            if isinstance(budget,(scoped_native_review.ScopedReviewBudget, sredni_review.SredniReviewBudget)):
                 remaining=budget.remaining(now,pending_debit=debit)
             elif remaining is not None:
                 remaining = max(0, remaining - debit)
@@ -1403,6 +1414,7 @@ class ReadingPassService:
                     content_type=str(session_doc.get("content_type") or ""),
                     content_id=str(session_doc.get("content_id") or ""),
                     native_review_scope=session_doc.get("scope") if isinstance(budget,scoped_native_review.ScopedReviewBudget) else None,
+                    sredni_review_scope=session_doc.get("scope") if isinstance(budget,sredni_review.SredniReviewBudget) else None,
                 )
 
             await self._release_preparation_window(session_doc, debit, mongo_session)
@@ -1533,9 +1545,15 @@ class ReadingPassService:
         content_id: str,
         billing_cutoff_at: Optional[datetime] = None,
         native_review_scope: Optional[Mapping[str, Any]] = None,
+        sredni_review_scope: Optional[Mapping[str, Any]] = None,
     ) -> None:
         now = _now()
         native_refs = {}
+        if native_review_scope is not None and sredni_review_scope is not None:
+            raise ReadingPassError("SREDNI_REVIEW_SCOPE_UNAVAILABLE", 403, "Review ledger namespaces cannot be mixed.")
+        if sredni_review_scope is not None:
+            native_refs = {k: sredni_review_scope[k] for k in
+                (sredni_review.SCOPE_KEY, sredni_review.WORKFLOW_KEY)}
         if native_review_scope is not None:
             # Server-owned scope only; normal financial records retain their
             # exact structure. Durable references forbid counter reinitialization

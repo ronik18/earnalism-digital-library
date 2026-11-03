@@ -24,6 +24,9 @@ import NarrationCredits from "../shared/NarrationCredits";
 import ListenerExperienceV2 from "../listener/ListenerExperienceV2";
 import ListenerExperienceV2Route from "../listener/ListenerExperienceV2Route";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
+// Actual serialized FastAPI response from the separate synthetic ASGI suite.
+// Auth/DB/storage were fixtures; this is no production-member acceptance proof.
+import dedicatedReaderResponse from "./fixtures/sredni-initial-review-reader-synthetic.json";
 
 const credits = "AI voice: Verse. Music: Heartwarming/Heartbreaking, Kevin MacLeod (https://incompetech.com), CC BY 4.0 https://creativecommons.org/licenses/by/4.0/; edited.";
 const packageVersion = "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e";
@@ -49,6 +52,16 @@ function privateBook() {
     } },
   } };
 }
+function dedicatedSredniBook() {
+  const value = privateBook();
+  value.slug = "sredni-vashtar"; value.title = "Sredni Vashtar";
+  Object.assign(value._readerManifest.audio.transport_canary, {
+    slug: value.slug, scope: "sredni_initial_review_authorized_member_only",
+    release_descriptor_sha256: "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+    duration_ms: 638105,
+  });
+  return value;
+}
 function domFor(element) {
   const host = document.createElement("div");
   host.innerHTML = renderToStaticMarkup(element);
@@ -58,6 +71,50 @@ function domFor(element) {
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 beforeEach(() => { mockGet.mockReset(); mockStart.mockReset(); });
+
+test("serialized dedicated FastAPI Reader metadata reaches real route and credit DOM without starting audio", async () => {
+  mockGet.mockResolvedValue({ data: dedicatedReaderResponse });
+  const host = document.createElement("div"); document.body.appendChild(host);
+  const root = createRoot(host);
+  try {
+    await act(async () => { root.render(<ListenerExperienceV2Route />); });
+    const panel = host.querySelector('[data-testid="listener-narration-credits"]');
+    expect(panel).not.toBeNull();
+    expect(panel.querySelector("p").textContent).toBe(credits);
+    expect(panel.closest(".listener-v2__main")).not.toBeNull();
+    expect(host.textContent).not.toContain("Listening unavailable");
+    expect(mockGet).toHaveBeenCalledTimes(1);
+    expect(mockStart).not.toHaveBeenCalled();
+    expect(host.querySelector("audio")).toBeNull();
+  } finally { await act(async () => { root.unmount(); }); host.remove(); }
+});
+
+test("dedicated Sredni scope selects only its exact frozen title, package and descriptor", () => {
+  const value = dedicatedSredniBook();
+  const shown = listenerReleasePresentation(value);
+  expect(shown.canRender).toBe(true);
+  expect(shown.release.status).toBe("private_member_review");
+  expect(shown.packageVersion).toBe(packageVersion);
+  expect(shown.narrationDisclosure).toBe(credits);
+  expect(shown.mediaUrl).toBe("");
+  const corruptions = [
+    (v) => { v.slug = "the-open-window"; v._readerManifest.audio.transport_canary.slug = v.slug; },
+    (v) => { v._readerManifest.audio.transport_canary.slug = "the-open-window"; },
+    (v) => { v._readerManifest.audio.transport_canary.package_version = `sha256-${"a".repeat(64)}`; },
+    (v) => { v._readerManifest.audio.transport_canary.release_descriptor_sha256 = "a".repeat(64); },
+    (v) => { v._readerManifest.audio.transport_canary.rollout_percentage = 5; },
+    (v) => { v._readerManifest.access.authenticated = false; },
+    (v) => { v._readerManifest.access.role = "admin"; },
+    (v) => { v._readerManifest.audio.transport_canary.enabled = false; },
+    (v) => { v._readerManifest.audio.transport_canary.scope = "unapproved_initial_review"; },
+  ];
+  for (const corrupt of corruptions) {
+    const denied = dedicatedSredniBook(); corrupt(denied);
+    expect(listenerReleasePresentation(denied).canRender).toBe(false);
+    expect(domFor(<ListenerExperienceV2 book={denied} />).querySelector('[data-testid="listener-narration-credits"]')).toBeNull();
+  }
+  expect(mockStart).not.toHaveBeenCalled();
+});
 
 test("real route, adapter and Listener render API-shaped credits before authorization without media or debit", async () => {
   mockGet.mockResolvedValue({ data: readerResponse() });

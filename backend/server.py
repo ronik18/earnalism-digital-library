@@ -4157,6 +4157,13 @@ def _selected_audiobook_package(
 ) -> tuple[Optional[dict], str, str]:
     # Private replacement selection is server-owned lease state, never a
     # rollout cookie, query argument, client package name or percentage.
+    sredni_budget = getattr(getattr(request, 'state', None), 'sredni_initial_review_budget', None) if request is not None else None
+    if sredni_budget is not None:
+        try:
+            selected = sredni_profile.selected_from_verified_budget(book, sredni_budget, country='IN', now=datetime.now(timezone.utc))
+            return (selected, selected['release_descriptor_sha256'], '') if selected else (None, '', '')
+        except (ReadingPassError, ValueError, KeyError, TypeError):
+            return None, '', ''
     native_scope = getattr(getattr(request, "state", None), "native_replacement_scope", None) if request is not None else None
     if native_scope is not None:
         try:
@@ -10383,8 +10390,27 @@ async def user_claim_reader_reward(user=Depends(require_user)):
     }
 
 
-async def _native_replacement_member_scope(book, user_id, request, *, session_scope=None):
+try:
+    from backend import sredni_initial_review_profile as sredni_profile, sredni_initial_review_scope as sredni_review
+except ImportError:
+    import sredni_initial_review_profile as sredni_profile
+    import sredni_initial_review_scope as sredni_review
+
+
+async def _native_replacement_member_scope(book, user_id, request, *, session_scope=None, auth_session_id=None):
     """Recheck retained private authority after normal auth, without wallet writes."""
+    if isinstance(book, dict) and book.get('slug') == sredni_profile.SLUG and book.get(sredni_profile.FIELD):
+        try:
+            verdict = _release_proxy_access_verdict(request)
+            budget = await sredni_review.member_budget(db, book, user_id, auth_session_id,
+                country=verdict.country if verdict.allowed else None, now=datetime.now(timezone.utc), session_scope=session_scope)
+            if budget is None:
+                if session_scope is not None:
+                    raise HTTPException(status_code=403, detail={'code': 'SREDNI_REVIEW_SCOPE_DENIED'})
+                return None
+            return budget.validated_selection_scope(now=datetime.now(timezone.utc))
+        except (ReadingPassError, ValueError, KeyError, TypeError):
+            raise HTTPException(status_code=403, detail={'code': 'SREDNI_REVIEW_SCOPE_DENIED'}) from None
     native_session = isinstance(session_scope, dict) and bool(session_scope.get("native_replacement_authorization_id"))
     profile = native_audiobook_profiles.review_profile(book)
     if profile is None:
@@ -10440,13 +10466,14 @@ async def _native_replacement_renewal_authority(request, user_id):
         return
     session_hint = await db.reading_pass_sessions.find_one(
         {"id": session_id, "user_id": user_id},
-        {"_id": 0, "content_type": 1, "content_id": 1, "scope": 1},
+        {"_id": 0, "content_type": 1, "content_id": 1, "scope": 1, "auth_session_id": 1},
     )
     scope = (session_hint or {}).get("scope") or {}
     if (session_hint and session_hint.get("content_type") == "audio"
-            and isinstance(scope, dict) and scope.get("native_replacement_authorization_id")):
+            and isinstance(scope, dict) and (scope.get("native_replacement_authorization_id") or scope.get(sredni_review.SCOPE_KEY))):
         book = await _reader_audio_package_book_for_slug(session_hint["content_id"])
-        await _native_replacement_member_scope(book, user_id, request, session_scope=scope)
+        await _native_replacement_member_scope(book, user_id, request, session_scope=scope,
+            auth_session_id=session_hint.get('auth_session_id'))
 
 
 def _listener_transport_canary_audio(audio, slug, request, principal):
@@ -10473,6 +10500,21 @@ def _listener_transport_canary_audio(audio, slug, request, principal):
 
 
 async def _listener_authorized_audio(audio, slug, request, principal):
+    if (slug == sredni_profile.SLUG and request.query_params.get('transport_canary') == '1'
+            and principal and principal.get('role') == 'user'):
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if artifact and artifact.get(sredni_profile.FIELD):
+            try:
+                verdict = _release_proxy_access_verdict(request)
+                budget = await sredni_review.member_budget(db, artifact, principal['id'], principal.get('session_id'),
+                    country=verdict.country if verdict.allowed else None, now=datetime.now(timezone.utc))
+                metadata = sredni_profile.listener_metadata_from_verified_budget(artifact, budget,
+                    country=verdict.country if verdict.allowed else None, now=datetime.now(timezone.utc)) if budget is not None else None
+                if metadata is not None:
+                    return {**audio, 'transport_canary': metadata}, ''
+            except (ReadingPassError, ValueError, KeyError, TypeError):
+                pass  # Metadata is not access authority; no fallback Sredni credit.
+            return audio, ''
     # A verified promotion uses ordinary public presentation, including for the
     # same bounded reviewer. The persisted scoped counter is not reinstalled.
     profile = native_audiobook_profiles.profile_for_slug(slug)
@@ -10932,6 +10974,12 @@ async def _reader_audio_package_book_for_slug(slug: str) -> dict:
     if not _is_controlled_public_slug(slug):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     artifact = _controlled_artifact_doc(slug, include_content=False)
+    if artifact and slug == sredni_profile.SLUG and artifact.get(sredni_profile.FIELD):
+        try:
+            if sredni_profile.candidate(artifact):
+                return artifact  # Source lookup only. Normal auth+dedicated grant still required.
+        except (ValueError, KeyError, TypeError):
+            raise HTTPException(status_code=404, detail="Audiobook asset not found") from None
     if artifact and _can_expose_audiobook_package_canary(artifact, slug):
         return artifact
     # Stable releases continue through the legacy-safe resolver; its global
@@ -11214,7 +11262,8 @@ async def reader_book_audiobook(
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
     book = await _reader_audio_package_book_for_slug(slug)
     package_canary = (_can_expose_audiobook_package_canary(book, slug)
-        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None
+        or getattr(getattr(request, "state", None), "sredni_initial_review_budget", None) is not None)
     package, _descriptor, new_rollout_identity = _selected_audiobook_package(
         book,
         slug,
@@ -11293,7 +11342,8 @@ async def _reader_book_audiobook_package_segment(
 ):
     book = await _reader_audio_package_book_for_slug(slug)
     package_canary = (_can_expose_audiobook_package_canary(book, slug)
-        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None)
+        or getattr(getattr(request, "state", None), "native_replacement_scope", None) is not None
+        or getattr(getattr(request, "state", None), "sredni_initial_review_budget", None) is not None)
     package, _descriptor, _new_identity = _selected_audiobook_package(
         book,
         slug,
@@ -11517,6 +11567,14 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
                 content_id=slug,
             )
         native_scope = result.get("scope") or {}
+        if native_scope.get(sredni_review.SCOPE_KEY) or result.get('acceptance_test_id') == sredni_profile.TEST_ID:
+            book = await _reader_audio_package_book_for_slug(slug)
+            verdict = _release_proxy_access_verdict(request)
+            budget = await sredni_review.member_budget(db, book, result.get('user_id'), result.get('auth_session_id'),
+                country=verdict.country if verdict.allowed else None, now=datetime.now(timezone.utc), session_scope=native_scope)
+            if budget is None:
+                raise HTTPException(status_code=403, detail={'code': 'SREDNI_REVIEW_SCOPE_DENIED'})
+            request.state.sredni_initial_review_budget = budget
         if (native_scope.get("native_replacement_authorization_id")
                 or (slug == "the-selfish-giant"
                     and result.get("acceptance_test_id") == native_audiobook_replacement.TEST_ID)):
@@ -12630,7 +12688,10 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         if not book:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
         scope = {"media_position_seconds": position}
-        native_scope = await _native_replacement_member_scope(book, user["id"], request) if request is not None else None
+        native_scope = await _native_replacement_member_scope(book, user["id"], request,
+            auth_session_id=user.get('session_id')) if request is not None else None
+        if payload.content_id == sredni_profile.SLUG and book.get(sredni_profile.FIELD) and native_scope is None:
+            raise HTTPException(status_code=403, detail={'code': 'SREDNI_REVIEW_SCOPE_DENIED'})
         if native_scope:
             if transfer:
                 raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_TRANSFER_DENIED"})

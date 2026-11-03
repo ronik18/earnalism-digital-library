@@ -286,5 +286,16 @@
     "known_blockers": [],
     "selected_strategy": "adaptive_sarvam_after_pilot",
     "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+  },
+  "bicharak_metadata_only_encoder_grid_report_20261103": {
+    "at": "2026-11-03T15:35:34.937257+00:00",
+    "decision": "RETAIN_BICHARAK_METADATA_ONLY_ENCODER_PROOF_WITH_CTC_FIDELITY_HOLD",
+    "provenance": "OWNER_RELEASE_LANE_REPORTED_PRIVATE_EVIDENCE_NOT_REEXECUTED_BY_INTEGRATION",
+    "reported_progress": "Distinctboundedpreprocessor staticsetuprepair succeeded (receiptprefix4cdfb9eb, independentauditprefix8a7f7955); originalc09ZIPfailure/intent retained. VersionmatchedofficialTorchC++ sourcegit5c488690 plusactual400window/51fills establishesreportedencoderanalysisindexgrid833828→5212→652; independentproofprefix97c8740d with6puretests/20k cases.",
+    "reported_bounds": "Cumulativeactualmodelmetadata1097332bytes/0.767754750seconds;14845payload; original2MiB/30s carried. No inference/modelstart/allocation/synthesis/replay.",
+    "status": "HOLD_NOT_RELEASE_PASS",
+    "remaining": "SeparateCTCheadtimeaxis opaque; equalframecounts doNOTproveheadorder oracousticboundaries. Full-sourcefidelity unresolved and0of40paragraphsync qualified. Sourceflag/UI/promotion unchanged.",
+    "private_checkpoint_prefix": "3d66fdb3",
+    "integration_scope": "Learningrecordonly; no privateartifact reads, modeldownloads orBicharakapplication/source/assets mutations."
   }
 }

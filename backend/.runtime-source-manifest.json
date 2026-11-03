@@ -114,8 +114,8 @@
     },
     {
       "path": "data/approved_reader_bootstrap.json",
-      "bytes": 12475,
-      "sha256": "a62bed43e3cb7a6e1e0e8d3cdcceb936f7733487cb4c8ba729ab24574b0bd703"
+      "bytes": 12464,
+      "sha256": "27d326cfbc1b98048fb0409553927328e852240cb7a8f73ec5a242de2de867eb"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -6174,8 +6174,8 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/checksum_manifest.json",
-      "bytes": 1745,
-      "sha256": "26fd3cf8658ae51513a19576d882573e427d3628c85c64342d89c9c7ee63a75d"
+      "bytes": 1733,
+      "sha256": "4ed4c5aaa2e93e5f04abc89722817fb2334048c8247b73141b7dd73c0b0f7eb0"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/cover_approval_evidence.json",
@@ -6209,8 +6209,8 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/public_book.json",
-      "bytes": 5900,
-      "sha256": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c"
+      "bytes": 18928,
+      "sha256": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/publication_authorization.json",
@@ -6219,18 +6219,18 @@
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/publication_manifest.json",
-      "bytes": 1973,
-      "sha256": "3d0e3fbd031eaa0e39eec24e145cd193e4b7ae15d111c65c4958d4651804f2e4"
+      "bytes": 1961,
+      "sha256": "98fbef3a3a3dae278cad3d1b52a44207a1bfebaee2b2a8a58169d2860da0f597"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/reader_manifest.json",
-      "bytes": 698,
-      "sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad"
+      "bytes": 13726,
+      "sha256": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/rights_decision.json",
-      "bytes": 4063,
-      "sha256": "553930cf3aeab137ed0808f2d7ff012c43fe0382a69ce8a8f30dd9215ce3651b"
+      "bytes": 4317,
+      "sha256": "450cfb13c8380bb2ee06fd13f336a7531485228f932b2a606c1a267b2f92d69c"
     },
     {
       "path": "data/controlled_publications/sredni-vashtar/source_evidence.json",
@@ -9509,8 +9509,13 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 42775,
-      "sha256": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1"
+      "bytes": 42909,
+      "sha256": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a"
+    },
+    {
+      "path": "data/sredni_initial_review_authority.json",
+      "bytes": 292,
+      "sha256": "7b26e572f08e8c66c97281a890c605698a188a5857fb317a0c064f30a9d42671"
     },
     {
       "path": "demand_scoring.py",
@@ -9699,8 +9704,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 96366,
-      "sha256": "09b2b4af430b9c321c28f72051908f7f3b83c92595ee41e36a35ec99c5de875f"
+      "bytes": 97778,
+      "sha256": "39642259252536df7492e8d5af4b43487fe329b8c49455234a18d48b4a6a270c"
     },
     {
       "path": "release_proxy_auth.py",
@@ -9734,8 +9739,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 639505,
-      "sha256": "b7ea5bc8b0e3143a9d4f7ec74601a05fc1ecbb17ab910aa93e4fb70b62650089"
+      "bytes": 643987,
+      "sha256": "f978923811f7b0cb4fae2ec79def22d675442aba8201453227f40202e1eae1c9"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9746,6 +9751,31 @@
       "path": "source_ingestion.py",
       "bytes": 18723,
       "sha256": "bbe0a04834c1a4a5ff9db3f7c9d3f65ec8b4d6bfb32e7868007824c8ef1c719a"
+    },
+    {
+      "path": "sredni_initial_review_authority.py",
+      "bytes": 9335,
+      "sha256": "61d26aef70d936b64f09bdb22480f1a5af0b24fc26297411835369e79cf252dd"
+    },
+    {
+      "path": "sredni_initial_review_operator.py",
+      "bytes": 18148,
+      "sha256": "b73c733059e069993a388b07a5f87b11df8b4bbb20cb03a3dca4b0a38b739e0b"
+    },
+    {
+      "path": "sredni_initial_review_operator_cli.py",
+      "bytes": 8075,
+      "sha256": "69bca4768c8cdaac4bab90e1ef6b71ed5b34847a3ffdf65126265e13d059ad77"
+    },
+    {
+      "path": "sredni_initial_review_profile.py",
+      "bytes": 10259,
+      "sha256": "1eb27d53e7fc4de226d594535200f76925dfdc2bdac714a00f92e58285b16107"
+    },
+    {
+      "path": "sredni_initial_review_scope.py",
+      "bytes": 16631,
+      "sha256": "bebcb3812c5dfd774c80975b2cd6340510f8a62522180b91a2241fceee47b838"
     },
     {
       "path": "start_prod.sh",
@@ -9803,5 +9833,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "c7dd3558e81c862396f034474c1426f7dafd73480b7527e9c5b8a321388454f2"
+  "expected_sha256": "c1aa4b3e9b1ab927c6463c99b526c5500b4c20e177f299f214763c9c7b801688"
 }
