@@ -11,6 +11,7 @@ from unittest.mock import AsyncMock
 import pytest
 from pymongo.errors import DuplicateKeyError
 from backend import audio_acceptance_budget as policy, reading_pass_service as module
+from backend import sredni_initial_review_profile as sredni_profile, sredni_initial_review_scope as sredni_review
 from backend.domain.reading_pass import ReadingPassConfig, ReadingPassError
 from backend.reading_pass_service import ReadingPassService
 from backend.tests.test_reading_pass_service_concurrency import Database, Client
@@ -193,6 +194,7 @@ def test_server_start_binds_validated_candidate_without_rollout_cookie(monkeypat
         _, db, _, service = fixture(monkeypatch)
         package = dict(package_version=policy.PACKAGE,release_descriptor_sha256=policy.DESCRIPTOR,duration_ms=491436)
         ns = dict(_reading_pass_enabled_or_404=lambda:None,PUBLIC_AUDIO_PREVIEW_SECONDS=0,
+            sredni_profile=sredni_profile,sredni_review=sredni_review,
             _reader_audio_package_book_for_slug=AsyncMock(return_value={'slug':policy.SLUG}),
             audio_acceptance_budget=policy,_validated_audiobook_package=lambda *a,**kw:package,
             _book_audiobook_release_packages=lambda book:{policy.DESCRIPTOR:package},
@@ -223,6 +225,7 @@ def test_real_audio_authorization_retains_auth_and_exact_package_gate(monkeypatc
         lease = await start(service)
         package = dict(package_version=policy.PACKAGE,release_descriptor_sha256=policy.DESCRIPTOR,duration_ms=491436)
         ns = dict(_reading_pass_lease_headers=lambda request:(lease['session_id'],lease['lease_token']),
+            sredni_profile=sredni_profile,sredni_review=sredni_review,
             reading_pass_service=service,audio_acceptance_budget=policy,
             _reader_audio_package_book_for_slug=AsyncMock(return_value={'slug':policy.SLUG}),
             _selected_audiobook_package=lambda *a:(package if selected else None,'',''),
