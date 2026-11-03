@@ -71,7 +71,7 @@ def load_sredni_successor(baseline):
     assert hashlib.sha256((EVIDENCE_ROOT/r['preserved_predecessor_authority']).read_bytes()).hexdigest()==r['predecessor_reviewed_authority_sha256']
     return r
 
-def add_sredni_registry(expected,baseline):
+def _add_sredni_sourceqa_registry(expected,baseline):
     if SREDNI_REFERENCE in baseline:
         r=load_sredni_successor(baseline)
         assert expected==json.loads((EVIDENCE_ROOT/r['preserved_predecessor_registry']).read_text()), 'Unexpected Sredni predecessor permissions'
@@ -80,7 +80,7 @@ def add_sredni_registry(expected,baseline):
             expected['audio_package_bindings'].setdefault(slug,{}).update(bindings)
     return expected
 
-def add_sredni_baseline(expected,baseline):
+def _add_sredni_sourceqa_baseline(expected,baseline):
     if SREDNI_REFERENCE in baseline:
         r=load_sredni_successor(baseline)
         assert expected==json.loads((EVIDENCE_ROOT/r['preserved_predecessor_authority']).read_text()), 'Unexpected Sredni predecessor authority'
@@ -124,6 +124,39 @@ def add_stage_baseline(expected,baseline):
         expected['titles'][stage['title']]=stage['reviewed_title_binding']
         expected[STAGE_REFERENCE]=baseline[STAGE_REFERENCE]
     return add_open_stage_baseline(expected,baseline)
+
+
+# Exact supported Sredni private-stage successor follows the preserved source-QA chain.
+
+def _sredni_private_stage(baseline):
+    ref=baseline['sredni_private_stage_authority_successor_20261103']
+    raw=(EVIDENCE_ROOT/ref['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ref['sha256']
+    r=json.loads(raw)
+    assert r['schema']=='earnalism.reviewed_sredni_private_stage_authority_successor.v1'
+    assert r['runtime_grant_deployment_or_LIVE_approval'] is False
+    for path,want in r['predecessor_files'].items():
+        assert hashlib.sha256((EVIDENCE_ROOT/path).read_bytes()).hexdigest()==want
+    return r
+
+def add_sredni_registry(expected,baseline):
+    expected=_add_sredni_sourceqa_registry(expected,baseline)
+    if 'sredni_private_stage_authority_successor_20261103' in baseline:
+        r=_sredni_private_stage(baseline)
+        assert expected==json.loads((EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]).read_text())
+        expected['accepted_records'].update(r['added_accepted_records'])
+    return expected
+
+def add_sredni_baseline(expected,baseline):
+    expected=_add_sredni_sourceqa_baseline(expected,baseline)
+    if 'sredni_private_stage_authority_successor_20261103' in baseline:
+        r=_sredni_private_stage(baseline)
+        assert expected['titles'][r['title']]==r['predecessor_title_binding']
+        assert expected['authority_sha256'][REGISTRY]==r['predecessor_registry_sha256']
+        expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
+        expected['titles'][r['title']]=r['reviewed_title_binding']
+        expected['sredni_private_stage_authority_successor_20261103']=baseline['sredni_private_stage_authority_successor_20261103']
+    return expected
 
 
 class RegistrySuccessorTests(unittest.TestCase):
@@ -211,6 +244,7 @@ class RegistrySuccessorTests(unittest.TestCase):
             self.assertEqual(successor['reviewed_registry_sha256'],stage['predecessor_registry_sha256'])
             final=load_open_stage_successor(baseline)['reviewed_registry_sha256'] if OPEN_STAGE_REFERENCE in baseline else stage['reviewed_registry_sha256']
             if SREDNI_REFERENCE in baseline:final=load_sredni_successor(baseline)['reviewed_registry_sha256']
+            if 'sredni_private_stage_authority_successor_20261103' in baseline:final=_sredni_private_stage(baseline)['reviewed_registry_sha256']
             self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
@@ -274,7 +308,12 @@ class RegistrySuccessorTests(unittest.TestCase):
                 now=datetime(2026,11,4,tzinfo=timezone.utc))
             self.assertIs(result.passed,passed,(country,use,result.reasons))
         prior=json.loads((ROOT/r['preserved_predecessor_authority']).read_text())
-        self.assertEqual(prior['titles'],baseline['titles'])
+        current_titles=copy.deepcopy(baseline['titles'])
+        if 'sredni_private_stage_authority_successor_20261103' in baseline:
+            stage=_sredni_private_stage(baseline)
+            self.assertEqual(current_titles['sredni-vashtar'],stage['reviewed_title_binding'])
+            current_titles['sredni-vashtar']=stage['predecessor_title_binding']
+        self.assertEqual(prior['titles'],current_titles)
         self.assertEqual(len(prior['titles']),52)
 
 
@@ -310,6 +349,8 @@ class RegistrySuccessorTests(unittest.TestCase):
             current=ROOT/path
             if SREDNI_REFERENCE in baseline and path==REGISTRY:
                 current=EVIDENCE_ROOT/load_sredni_successor(baseline)['preserved_predecessor_registry']
+            if 'sredni_private_stage_authority_successor_20261103' in baseline and path=='backend/data/approved_reader_bootstrap.json':
+                current=EVIDENCE_ROOT/_sredni_private_stage(baseline)['preserved_shared_predecessor_files'][path]
             self.assertEqual(bindings.sha(current),digest)
         current=json.loads((ROOT/'backend/data/controlled_publications/the-open-window/rights_decision.json').read_text())
         self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
@@ -327,5 +368,22 @@ class RegistrySuccessorTests(unittest.TestCase):
         self.assertEqual(len(baseline['titles']),52)
         self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-open-window',baseline),ROOT/'backend/data/controlled_publications/the-open-window')
 
+
+    def test_sredni_private_stage_exact_record_and_actual_transaction(self):
+        baseline=self.baseline();r=_sredni_private_stage(baseline)
+        folder=EVIDENCE_ROOT/Path(baseline['sredni_private_stage_authority_successor_20261103']['path']).parent
+        applied=json.loads((folder/'source-stage-APPLIED.json').read_text())
+        self.assertTrue(applied['applied']);self.assertFalse(applied['public_audio_enabled'])
+        self.assertEqual(len(applied['files']),12)
+        for path,want in applied['files'].items():self.assertEqual(bindings.sha(ROOT/path),want)
+        current=json.loads((ROOT/'backend/data/controlled_publications/sredni-vashtar/rights_decision.json').read_text())
+        self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
+        snapshot=json.loads((folder/'source-stage-SNAPSHOT.private.json').read_text())
+        old=json.loads(base64.b64decode(snapshot['files']['rights_decision.json']))
+        for key,value in old.items():
+            if key not in ('decision_id','components','basis','evidence_sha256'):self.assertEqual(current[key],value,key)
+        raw=(ROOT/r['authority']['receipt_path']).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),r['authority']['receipt_sha256'])
+        self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'sredni-vashtar',baseline),ROOT/'backend/data/controlled_publications/sredni-vashtar')
 
 if __name__=='__main__':unittest.main()

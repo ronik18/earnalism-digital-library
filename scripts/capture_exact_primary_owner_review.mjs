@@ -182,6 +182,27 @@ export async function closeActualMobileMenu(page) {
   return page.evaluate(() => { const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; }; return { escapeClose: window.__earnalismOwnerReviewToggle?.getAttribute("aria-expanded") === "false", focusRestored: document.activeElement === window.__earnalismOwnerReviewToggle, activeVisibleDialogCount: window.__earnalismOwnerReviewDialog && document.contains(window.__earnalismOwnerReviewDialog) && visible(window.__earnalismOwnerReviewDialog) ? 1 : 0, bodyScrollRestored: document.body.style.overflow !== "hidden", backgroundRestored: [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => !node.hasAttribute("inert") && node.getAttribute("aria-hidden") !== "true") }; });
 }
 
+export async function waitForReaderCaptureReady(page, family, { timeout = 10_000, required = true } = {}) {
+  if (family !== "reader") return null;
+  if (!required) return { scope: "HISTORICAL_REFERENCE_NOT_CURRENT_READINESS_PROOF", required: false, ready: null };
+  await page.waitForFunction(() => {
+    const nodes = document.querySelectorAll(".reader-v2__visual-viewport");
+    if (nodes.length !== 1) return false;
+    const node = nodes[0];
+    const count = Number(node.getAttribute("data-page-count"));
+    const box = node.getBoundingClientRect();
+    return node.getAttribute("data-pagination-ready") === "true"
+      && Number.isSafeInteger(count) && count > 0
+      && box.width > 0 && box.height > 0
+      && !node.querySelector('[role="alert"]');
+  }, undefined, { timeout });
+  return page.evaluate(() => {
+    const node = document.querySelector(".reader-v2__visual-viewport");
+    return { ready: node?.getAttribute("data-pagination-ready"), page_count: node?.getAttribute("data-page-count"),
+      layout_width: node?.getAttribute("data-layout-width"), layout_height: node?.getAttribute("data-layout-height") };
+  });
+}
+
 async function capture(state, context, sessionFontLoad) {
   const page = await context.newPage();
   await page.setViewportSize(state.viewport);
@@ -253,10 +274,26 @@ async function capture(state, context, sessionFontLoad) {
     await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
   });
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  let readerReadiness = null;
+  try {
+    readerReadiness = await waitForReaderCaptureReady(page, state.family, { required: strict });
+  } catch (error) {
+    const observed = await page.evaluate(() => [...document.querySelectorAll(".reader-v2__visual-viewport")].map((node) => ({
+      ready: node.getAttribute("data-pagination-ready"), page_count: node.getAttribute("data-page-count"),
+      layout_width: node.getAttribute("data-layout-width"), layout_height: node.getAttribute("data-layout-height"),
+      alert_present: Boolean(node.querySelector('[role="alert"]')),
+    }))).catch(() => null);
+    fs.writeFileSync(path.join(output, `${state.id}-readiness-failure.json`), JSON.stringify({ state: state.id,
+      kind: "READER_READINESS_FAILED", observed, errors, message: error.message }, null, 2) + "\n");
+    await page.screenshot({ path: path.join(output, `${state.id}-readiness-failure.png`), fullPage: false, animations: "disabled" }).catch(() => {});
+    throw error;
+  }
   await page.waitForTimeout(500);
   const first = await page.screenshot({ fullPage: false, animations: "disabled" });
+  fs.writeFileSync(path.join(output, `${state.id}-first.png`), first);
   await page.waitForTimeout(500);
   const second = await page.screenshot({ fullPage: false, animations: "disabled" });
+  fs.writeFileSync(path.join(output, `${state.id}-second.png`), second);
   const screenshot = path.join(output, `${state.id}.png`); fs.writeFileSync(screenshot, second);
   let fullPageScreenshot = null;
   if (fullPageStates.has(state.id)) {
@@ -284,7 +321,7 @@ async function capture(state, context, sessionFontLoad) {
     : state.family === "commerce" && !publicPaidCommerceEnabled
       ? "Reading Passes are not available in this launch."
       : "Read the first 3 pages free. Listening requires an active Reading Pass.";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, reader_readiness: readerReadiness, first_screenshot_sha256: sha(first), second_screenshot_sha256: sha(second), stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
 }
 
 export async function runCapture() {
@@ -298,7 +335,14 @@ export async function runCapture() {
   try {
   const captures = [];
   for (const state of states) {
-    const result = await capture(state, context, sessionFontLoad);
+    let result;
+    try { result = await capture(state, context, sessionFontLoad); }
+    catch (error) {
+      fs.writeFileSync(path.join(output, "capture-failure.json"), JSON.stringify({ state: state.id,
+        pr_head_sha: process.env.PR_HEAD_SHA || null, actual_checkout_sha: checkoutSha,
+        error: error.message, completed_states: captures.map((item) => item.id) }, null, 2) + "\n");
+      throw error;
+    }
     captures.push(result);
     console.log(JSON.stringify({ state: state.id, status: result.status, stable: result.stable, errors: result.errors.length }));
   }

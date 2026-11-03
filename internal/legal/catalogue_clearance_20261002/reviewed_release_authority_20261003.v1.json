@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1"
+    "backend/data/rights_decision_registry.json": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a"
   },
   "titles": {
     "a-ghost-story": {
@@ -665,8 +665,8 @@
       }
     },
     "sredni-vashtar": {
-      "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
-      "record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
+      "decision_id": "india-20261103-sredni-vashtar-exact-sourceqa-private-stage",
+      "record_sha256": "bf5b3599252ae71472c05eadb7d552da1f310c3f02ea68157b2e32512d8c3894",
       "component_paths": {
         "public_book": "backend/data/controlled_publications/sredni-vashtar/public_book.json",
         "reader_manifest": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
@@ -1052,5 +1052,10 @@
     "predecessor_registry_sha256": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54",
     "reviewed_registry_sha256": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1",
     "source_qa_only_not_runtime_or_publication": true
+  },
+  "sredni_private_stage_authority_successor_20261103": {
+    "path": "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/reviewed-sredni-private-stage-successor.json",
+    "sha256": "e6c409012da1b6af3dd31edd91684c484eda51b611a52c7c3a12d2fe2ce48640",
+    "source_stage_only_not_runtime_or_publication": true
   }
 }

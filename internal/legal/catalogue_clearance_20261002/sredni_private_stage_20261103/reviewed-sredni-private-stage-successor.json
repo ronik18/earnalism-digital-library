@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.reviewed_sredni_private_stage_authority_successor.v1",
+  "status": "INTEGRATION_SOURCE_REBIND_PENDING_EXACT_HEAD_REVIEW",
+  "scope": "EXACT_PRIVATE_SOURCE_STAGE_READER_METADATA_REBIND_ONLY",
+  "predecessor_files": {
+    "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/pre-stage-reviewed-authority.json": "0eb6b35a4c47f2fd269a32c96aaca5f1eb9d71b9db19f0f26372d11e91e60c07",
+    "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/pre-stage-rights-registry.json": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1",
+    "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/pre-stage-approved-reader-bootstrap.json": "a62bed43e3cb7a6e1e0e8d3cdcceb936f7733487cb4c8ba729ab24574b0bd703",
+    "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/source-stage-SNAPSHOT.private.json": "aa956917a2fdb93b393e32dc19b95a58ffda8270ed82263472595915d63af7a2",
+    "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/source-stage-APPLIED.json": "5cea17818a03039a1060eb880b1e5b432e399826b95e3fdb33c2cbb9c9a47587"
+  },
+  "predecessor_registry_sha256": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1",
+  "reviewed_registry_sha256": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a",
+  "added_accepted_records": {
+    "india-20261103-sredni-vashtar-exact-sourceqa-private-stage": "bf5b3599252ae71472c05eadb7d552da1f310c3f02ea68157b2e32512d8c3894"
+  },
+  "title": "sredni-vashtar",
+  "predecessor_title_binding": {
+    "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+    "record_sha256": "5b1af35d0ce739fe991e4f23c940116889881686faa4be3c2a5086e2e0bd9cf0",
+    "component_paths": {
+      "public_book": "backend/data/controlled_publications/sredni-vashtar/public_book.json",
+      "reader_manifest": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
+      "source_evidence": "backend/data/controlled_publications/sredni-vashtar/source_evidence.json",
+      "approval_evidence": "backend/data/controlled_publications/sredni-vashtar/approval_evidence.json",
+      "checksum_manifest": "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+      "publication_manifest": "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/sredni-vashtar/cover_provenance.json",
+      "cover_delivery_derivation": "backend/data/controlled_publications/sredni-vashtar/cover_delivery_derivation.json",
+      "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/front-cover-current.png",
+      "cover_front_delivery_asset": "frontend/public/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/back-cover-current.png",
+      "cover_back_delivery_asset": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
+      "publication_authorization": "backend/data/controlled_publications/sredni-vashtar/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/sredni-vashtar/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/sredni-vashtar/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/sredni-vashtar/cover_approval_evidence.json"
+    }
+  },
+  "reviewed_title_binding": {
+    "decision_id": "india-20261103-sredni-vashtar-exact-sourceqa-private-stage",
+    "record_sha256": "bf5b3599252ae71472c05eadb7d552da1f310c3f02ea68157b2e32512d8c3894",
+    "component_paths": {
+      "public_book": "backend/data/controlled_publications/sredni-vashtar/public_book.json",
+      "reader_manifest": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
+      "source_evidence": "backend/data/controlled_publications/sredni-vashtar/source_evidence.json",
+      "approval_evidence": "backend/data/controlled_publications/sredni-vashtar/approval_evidence.json",
+      "checksum_manifest": "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+      "publication_manifest": "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/sredni-vashtar/cover_provenance.json",
+      "cover_delivery_derivation": "backend/data/controlled_publications/sredni-vashtar/cover_delivery_derivation.json",
+      "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/front-cover-current.png",
+      "cover_front_delivery_asset": "frontend/public/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/back-cover-current.png",
+      "cover_back_delivery_asset": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
+      "publication_authorization": "backend/data/controlled_publications/sredni-vashtar/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/sredni-vashtar/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/sredni-vashtar/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/sredni-vashtar/cover_approval_evidence.json"
+    }
+  },
+  "preserved_shared_predecessor_files": {
+    "backend/data/rights_decision_registry.json": "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/pre-stage-rights-registry.json",
+    "backend/data/approved_reader_bootstrap.json": "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/pre-stage-approved-reader-bootstrap.json"
+  },
+  "runtime_grant_deployment_or_LIVE_approval": false,
+  "authority": {
+    "basis": "Delegated routine private source stage under actual native instruction; no new human signature, audio activation or runtime permission inferred",
+    "native_message_id": "01a1a0ef-cc78-76c0-93a3-13bd21d14b85",
+    "receipt_path": "internal/legal/catalogue_clearance_20261002/sredni_private_stage_20261103/source-stage-native-human-mandate.json",
+    "receipt_sha256": "9afad459ffad1e62e1e4b6b602189193d48b5c20e96e2329d9d0f26d2972e63a",
+    "recorder": "Earnalism Integration Lane",
+    "inherited_accepted_by": "Predecessor attribution only; not a new historical approval"
+  },
+  "reader_text_covers_uses_territory_validity_unchanged": true,
+  "audio_package_bindings_unchanged": true
+}

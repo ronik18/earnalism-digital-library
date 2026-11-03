@@ -235,7 +235,8 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
     }
     next_cohort_manifest_sha256 = {
         'dsires-baby': '83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee',
-        'sredni-vashtar': '2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad',
+        # Exact private SOURCE_QA metadata successor; all original Reader fields/order unchanged.
+        'sredni-vashtar': '79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583',
         'the-cop-and-the-anthem': 'a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22',
         # Reviewed scored private-stage metadata; Reader text/order and public selection remain unchanged.
         'the-open-window': '9569c9083e785b33614c399e41925457bed1128f92ae5d672d3a41bf2d49c045',

@@ -1,0 +1,9 @@
+{
+  "schema": "earnalism.native_human_source_task_mandate.v1",
+  "source_thread_id": "01a19041-6750-7503-8694-d979c8c254c9",
+  "native_user_message_id": "01a1a0ef-cc78-76c0-93a3-13bd21d14b85",
+  "native_turn_id": "01a1a0ef-cb09-7b63-86b4-03a99fd03a42",
+  "exact_user_text": "Continue Sredni’s private staging and credits-display fix through Integration, then clear its release gates. Resolve Bicharak’s automated fidelity and sync gaps in parallel. Preserve all limits; no new allocation or synthesis.\n",
+  "verification": "Current native read_thread userMessage item, not inferred from another agent request",
+  "scope": "Routine scoped source implementation through sole Integration Lane; preserve all actual storage, reader-only public state and remaining gates. No new private Mongo, customer debit, policy access or deployment authority inferred from this record."
+}

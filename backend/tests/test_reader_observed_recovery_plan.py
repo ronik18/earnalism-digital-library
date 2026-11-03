@@ -55,7 +55,23 @@ def test_prepared_successor_matches_current_complete_source_and_india_rights(pro
         assert hashlib.sha256(json.dumps(metadata, separators=(',', ':')).encode()).hexdigest() == proposal['ordered_page_metadata_sha256']
     decision, components = server._release_rights_artifact(slug)
     accepted, revoked = server.load_production_registry()
-    assert server.record_sha256(decision) == proposal['rights_record_sha256']
+    expected_rights = proposal['rights_record_sha256']
+    if slug == 'sredni-vashtar':
+        # Keep the frozen October proposal and its execution/rollback holds.
+        # Only the explicitly reviewed private-stage Reader metadata changed;
+        # unchanged canonical page hashes above still certify text/order.
+        root = EVIDENCE.parents[2]
+        authority = json.loads((root / 'internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json').read_text())
+        ref = authority['sredni_private_stage_authority_successor_20261103']
+        raw = (root / ref['path']).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == ref['sha256']
+        successor = json.loads(raw)
+        assert successor['schema'] == 'earnalism.reviewed_sredni_private_stage_authority_successor.v1'
+        assert successor['runtime_grant_deployment_or_LIVE_approval'] is False
+        assert successor['predecessor_title_binding']['record_sha256'] == expected_rights
+        assert successor['reviewed_title_binding'] == authority['titles'][slug]
+        expected_rights = successor['reviewed_title_binding']['record_sha256']
+    assert server.record_sha256(decision) == expected_rights
     verdict = server.evaluate_runtime_path('reading_pass_page', record=decision, edition_id=slug,
         operator_id=server.RELEASE_RIGHTS_OPERATOR_ID, country='IN', country_trusted=True,
         required_components=components, accepted_records=accepted, revoked_decision_ids=revoked,
