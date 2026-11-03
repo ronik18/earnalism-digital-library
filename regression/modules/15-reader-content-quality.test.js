@@ -294,6 +294,7 @@ describe("Reader content quality batch 1", () => {
       expect(decision.decision_id).toBe(slug === "the-open-window"
         ? "india-20261102-the-open-window-scored-private-stage"
         : slug === "the-selfish-giant" ? "india-20261102-the-selfish-giant-cedar-private-stage"
+        : slug === "sredni-vashtar" ? "india-20261103-sredni-vashtar-exact-sourceqa-private-stage"
         : `india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
       expect(decision.territories).toEqual(["IN"]);
       expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
