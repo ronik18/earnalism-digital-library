@@ -23,7 +23,7 @@ WORKFLOWS = 'sredni_initial_review_workflows'
 OPERATIONS = 'sredni_initial_review_operations'
 GRANT_SCHEMA = 'earnalism.sredni_initial_review_grant.v1'
 WORKFLOW_SCHEMA = 'earnalism.sredni_initial_review_workflow.v1'
-AUTHORITY_SCHEMA = 'earnalism.sredni_initial_review_authority.v1'
+AUTHORITY_SCHEMA = 'earnalism.sredni_initial_review_authority.v2'
 SCOPE_KEY = profile.SCOPE_KEY
 WORKFLOW_KEY = 'sredni_initial_review_workflow_id'
 MAXIMUM_SECONDS = 60
@@ -63,6 +63,14 @@ def identity_binding(user_id, auth_session_id):
         'user_id': user_id, 'auth_session_id': auth_session_id})
 
 
+def member_account_binding(user_id):
+    # Source eligibility survives normal SSO. A runtime grant remains bound to
+    # its full immutable UID/SID identity and original conserved workflow.
+    need(isinstance(user_id, str) and bool(user_id), 'Exact approved account required')
+    return digest({'schema': 'earnalism.sredni_initial_review_member_account_binding.v1',
+        'user_id': user_id})
+
+
 def workflow_id(owner_receipt_sha256, user_id):
     # A different login must not create another ceiling under the same receipt.
     return 'sredni-initial-' + digest({'owner_receipt_sha256': owner_receipt_sha256,
@@ -80,10 +88,10 @@ def load_authority():
          'Dedicated authority schema unavailable')
     seen = set()
     for row in value['accepted']:
-        need(isinstance(row, dict) and set(row) == {'owner_receipt_sha256', 'identity_binding_sha256'}
+        need(isinstance(row, dict) and set(row) == {'owner_receipt_sha256', 'member_account_sha256'}
              and all(isinstance(v, str) and SHA.fullmatch(v) for v in row.values()),
              'Dedicated authority record unavailable')
-        pair = (row['owner_receipt_sha256'], row['identity_binding_sha256'])
+        pair = (row['owner_receipt_sha256'], row['member_account_sha256'])
         need(pair not in seen, 'Ambiguous dedicated authority'); seen.add(pair)
     return value
 
@@ -93,7 +101,7 @@ def authority_allows(grant):
     need(grant.get('identity_binding_sha256') == actual,
          'Dedicated identity cannot be relabeled onto another member')
     return {'owner_receipt_sha256': grant.get('owner_receipt_sha256'),
-            'identity_binding_sha256': actual} in load_authority()['accepted']
+            'member_account_sha256': member_account_binding(grant.get('user_id'))} in load_authority()['accepted']
 
 
 def is_scoped_document(document):

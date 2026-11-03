@@ -40,7 +40,7 @@ def composed(tmp_path,monkeypatch):
         monkeypatch.setattr(loaded,'ROOT',root);monkeypatch.setattr(loaded,'MODULE_DIR',root/'backend')
         monkeypatch.setattr(loaded,'CONTROLLED_PUBLICATIONS_DIR',root/'data/controlled_publications');loaded.clear_controlled_artifact_caches()
     clock=[datetime.now(timezone.utc)];db,w,g=seeded(clock[0]);db.books=Collection([])
-    accepted={'schema':scoped.AUTHORITY_SCHEMA,'accepted':[{'owner_receipt_sha256':g['owner_receipt_sha256'],'identity_binding_sha256':g['identity_binding_sha256']}]}
+    accepted={'schema':scoped.AUTHORITY_SCHEMA,'accepted':[{'owner_receipt_sha256':g['owner_receipt_sha256'],'member_account_sha256':scoped.member_account_binding(g['user_id'])}]}
     # Package/top-level aliases of the same physical source can coexist under
     # existing tests. Patch only this synthetic authority seam on each actual
     # loaded alias, never a package finder or response builder.

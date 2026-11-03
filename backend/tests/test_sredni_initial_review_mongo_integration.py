@@ -307,3 +307,229 @@ def test_real_sredni_operator_namespace_provision_close_and_unknown_status(monke
             assert (await db.users.find_one({'id': 'user-1'}))['reading_seconds_balance'] == 299
             assert await db[operator.OPERATIONS].count_documents({}) == 2
     asyncio.run(case())
+
+
+def test_real_stable_account_first_provisions_race_once_without_retry(monkeypatch):
+    async def case():
+        from motor.motor_asyncio import AsyncIOMotorClientSession
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, _, _ = await setup(db, monkeypatch, empty=True)
+            first = fixtures.admitted(clock[0]); candidate = fixtures.book()
+            assert (await operator.prepare_namespace_one_shot(
+                db, client, replace(first, action='prepare-namespace'), candidate))['qualified']
+            initial_user = await db.users.find_one({'id': first.user_id})
+            snapshot = operator.snapshot; ready = 0; both_read = asyncio.Event()
+            async def simultaneous_snapshot(database, admission, session=None):
+                nonlocal ready
+                value = await snapshot(database, admission, session)
+                # Synchronize only the first two actual provision snapshots.
+                # Later status readback must not participate in this barrier.
+                if admission.action == 'provision' and ready < 2:
+                    assert value[1] is None and value[2] == []
+                    ready += 1
+                    if ready == 2: both_read.set()
+                    await asyncio.wait_for(both_read.wait(), 5)
+                return value
+            monkeypatch.setattr(operator, 'snapshot', simultaneous_snapshot)
+            commits = []; attempted = []
+            commit = AsyncIOMotorClientSession.commit_transaction
+            async def counted_commit(session):
+                await commit(session); commits.append(True)
+            monkeypatch.setattr(AsyncIOMotorClientSession, 'commit_transaction', counted_commit)
+            async def provision(ordinal):
+                attempted.append(ordinal)
+                admission = replace(first, operation_id=f'SYNTHETIC-first-race-{ordinal:04}')
+                return await operator.execute_one_shot(db, client, admission, candidate)
+            outcomes = await asyncio.wait_for(asyncio.gather(
+                provision(1), provision(2), return_exceptions=True), 20)
+            successes = [x for x in outcomes if isinstance(x, dict)]
+            failures = [x for x in outcomes if isinstance(x, BaseException)]
+            assert len(successes) == len(failures) == len(commits) == 1
+            assert successes[0]['status'] == 'COMMIT_RECEIPT_OBSERVED'
+            loser = failures[0]
+            assert not isinstance(loser, operator.OutcomeUnknown)
+            assert isinstance(loser, (operator.OperatorStop, PyMongoError))
+            if isinstance(loser, PyMongoError):
+                assert loser.has_error_label('TransientTransactionError') or getattr(loser, 'code', None) in (112, 11000)
+            else:
+                assert any(code in str(loser) for code in ('STATE_CHANGED', 'NO_RESET', 'FIRST_GRANT'))
+            assert attempted == [1, 2] and ready == 2
+            assert await db[scope.WORKFLOWS].count_documents({}) == 1
+            assert await db[scope.GRANTS].count_documents({}) == 1
+            assert await db[operator.OPERATIONS].count_documents({}) == 1
+            w = await db[scope.WORKFLOWS].find_one({})
+            assert (w['used_microseconds'], w['used_credit_seconds'], w['starts_used']) == (0, 0, 0)
+            assert w['created_at'] == clock[0] and w['expires_at'] == first.grant_expires_at
+            assert await db.users.find_one({'id': first.user_id}) == initial_user
+            assert await db.wallet_ledger.count_documents({}) == 0
+            assert await db.wallet_transactions.count_documents({}) == 0
+    asyncio.run(case())
+
+
+@pytest.mark.parametrize('rotate_session', [False, True])
+def test_real_stable_account_closed_first_grant_never_reprovisions_or_moves(monkeypatch, rotate_session):
+    async def case():
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, _, _ = await setup(db, monkeypatch, empty=True)
+            a = fixtures.admitted(clock[0]); candidate = fixtures.book()
+            assert (await operator.prepare_namespace_one_shot(db, client,
+                replace(a, action='prepare-namespace'), candidate))['qualified']
+            assert (await operator.execute_one_shot(db, client, a, candidate))['status'] == 'COMMIT_RECEIPT_OBSERVED'
+            w = await db[scope.WORKFLOWS].find_one({}); g = await db[scope.GRANTS].find_one({})
+            svc = service(db, client); lease = await start(svc, w, g)
+            await svc.renew_lease(**domain.renewal(lease))
+            clock[0] += timedelta(microseconds=1200000)
+            await end(svc, lease)
+            w = await db[scope.WORKFLOWS].find_one({}); g = await db[scope.GRANTS].find_one({})
+            close = replace(a, operation_id='SYNTHETIC-stable-close-0001', action='close', grant_id=g['_id'],
+                            expected_state_sha256=operator.state_hash(w, [g]))
+            assert (await operator.execute_one_shot(db, client, close, candidate))['status'] == 'COMMIT_RECEIPT_OBSERVED'
+            retained = await db[scope.WORKFLOWS].find_one({})
+            assert (retained['used_microseconds'], retained['used_credit_seconds'], retained['starts_used']) == (1200000, 1, 1)
+            user = await db.users.find_one({'id': a.user_id})
+            assert user['reading_seconds_balance'] == 299 and user['reading_fractional_microseconds'] == 200000
+            sid = a.auth_session_id
+            if rotate_session:
+                sid = 'SYNTHETIC-auth-next'
+                login = await db.user_sessions.find_one({'id': a.auth_session_id})
+                login.pop('_id', None); login.update(id=sid, status='active')
+                await db.user_sessions.insert_one(login)
+                await db.users.update_one({'id': a.user_id}, {'$set': {'active_user_session_id': sid}})
+            current = replace(a, operation_id='SYNTHETIC-no-second-grant-0001', auth_session_id=sid,
+                identity_binding_sha256=scope.identity_binding(a.user_id, sid),
+                expected_state_sha256=operator.state_hash(retained, [await db[scope.GRANTS].find_one({})]))
+            assert scope.authority_allows(operator.authority_row(current))
+            assert operator.workflow_id(current) == retained['_id']
+            before = await rows(db)
+            with pytest.raises(operator.OperatorStop):
+                await operator.execute_one_shot(db, client, current, candidate)
+            assert await rows(db) == before
+            # Full runtime identity never migrates with stable-account source trust.
+            old_lease = domain.document(retained, await db[scope.GRANTS].find_one({}))
+            old_lease['auth_session_id'] = sid
+            with pytest.raises(Error):
+                await scope.resolve(db, old_lease, clock[0], current_access=True)
+            assert await rows(db) == before
+            assert await db[scope.WORKFLOWS].find_one({}) == retained
+            assert await db[scope.GRANTS].count_documents({}) == 1
+            assert await db[operator.OPERATIONS].count_documents({}) == 2
+    asyncio.run(case())
+
+
+def test_real_stable_account_workflow_without_grant_is_retained_not_reseeded(monkeypatch):
+    async def case():
+        def workflow_only(fake, workflow, grant):
+            fake[scope.GRANTS].rows.clear()
+            workflow.update(used_microseconds=1700000, used_credit_seconds=1, starts_used=1, revision=4)
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, w, _ = await setup(db, monkeypatch, prepare=workflow_only)
+            a = fixtures.admitted(clock[0])
+            assert (await operator.prepare_namespace_one_shot(db, client,
+                replace(a, action='prepare-namespace'), fixtures.book()))['qualified']
+            a = replace(a, operation_id='SYNTHETIC-workflow-only-0001',
+                        expected_state_sha256=operator.state_hash(await db[scope.WORKFLOWS].find_one({}), []))
+            before = await rows(db)
+            with pytest.raises(operator.OperatorStop):
+                await operator.execute_one_shot(db, client, a, fixtures.book())
+            assert await rows(db) == before
+            assert await db[scope.WORKFLOWS].count_documents({}) == 1
+            assert await db[scope.GRANTS].count_documents({}) == 0
+            assert await db[operator.OPERATIONS].count_documents({}) == 0
+    asyncio.run(case())
+
+
+@pytest.mark.parametrize('namespace', ['workflow', 'grant', 'operation'])
+def test_real_stable_account_any_own_dedicated_history_denies_broken_linkage(monkeypatch, namespace):
+    async def case():
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, _, _ = await setup(db, monkeypatch, empty=True)
+            a = fixtures.admitted(clock[0]); candidate = fixtures.book()
+            assert (await operator.prepare_namespace_one_shot(db, client,
+                replace(a, action='prepare-namespace'), candidate))['qualified']
+            collection = {'workflow': scope.WORKFLOWS, 'grant': scope.GRANTS,
+                          'operation': operator.OPERATIONS}[namespace]
+            # Own UID is decisive even when owner/wid/schema/content linkage is
+            # absent or corrupt. It is not evidence of an unused allowance.
+            await db[collection].insert_one({'_id': 'SYNTHETIC-broken-own-' + namespace,
+                'user_id': a.user_id, 'owner_receipt_sha256': 'f' * 64,
+                'workflow_id': 'SYNTHETIC-wrong-workflow', 'state': 'CLOSED'})
+            _, w, grants = await operator.snapshot(db, a)
+            denied = replace(a, operation_id='SYNTHETIC-own-history-denial-0001',
+                             expected_state_sha256=operator.state_hash(w, grants))
+            before = await rows(db)
+            with pytest.raises(operator.OperatorStop):
+                await operator.execute_one_shot(db, client, denied, candidate)
+            assert await rows(db) == before
+            assert await db[collection].count_documents({'user_id': a.user_id}) == 1
+            assert await db[operator.OPERATIONS].count_documents({'_id': denied.operation_id}) == 0
+    asyncio.run(case())
+
+
+@pytest.mark.parametrize('namespace', ['reading_pass_sessions', 'wallet_ledger', 'wallet_transactions'])
+@pytest.mark.parametrize('tag', ['grant-null', 'workflow-wrong'])
+def test_real_stable_account_any_own_dedicated_tag_exists_denies_missing_content(monkeypatch, namespace, tag):
+    async def case():
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, _, _ = await setup(db, monkeypatch, empty=True)
+            a = fixtures.admitted(clock[0]); candidate = fixtures.book()
+            assert (await operator.prepare_namespace_one_shot(db, client,
+                replace(a, action='prepare-namespace'), candidate))['qualified']
+            key = scope.SCOPE_KEY if tag == 'grant-null' else scope.WORKFLOW_KEY
+            value = None if tag == 'grant-null' else 'SYNTHETIC-wrong-workflow'
+            reference = {key: value}
+            row = {'_id': 'SYNTHETIC-own-tag-' + namespace + '-' + tag, 'user_id': a.user_id}
+            if namespace == 'reading_pass_sessions':
+                row['scope'] = reference
+                if tag == 'workflow-wrong': row['content_id'] = 'SYNTHETIC-wrong-title'
+                field = 'scope.' + key
+            elif namespace == 'wallet_ledger':
+                row['metadata'] = reference
+                if tag == 'workflow-wrong': row['metadata']['content_id'] = 'SYNTHETIC-wrong-title'
+                field = 'metadata.' + key
+            else:
+                row.update(reference)
+                if tag == 'workflow-wrong': row['content_id'] = 'SYNTHETIC-wrong-title'
+                field = key
+            await db[namespace].insert_one(row)
+            # Actual Mongo $exists semantics: an explicit null is present.
+            assert await db[namespace].count_documents({'user_id': a.user_id, field: {'$exists': True}}) == 1
+            _, w, grants = await operator.snapshot(db, a)
+            denied = replace(a, operation_id='SYNTHETIC-own-tag-denial-0001',
+                             expected_state_sha256=operator.state_hash(w, grants))
+            before = await rows(db)
+            with pytest.raises(operator.OperatorStop):
+                await operator.execute_one_shot(db, client, denied, candidate)
+            assert await rows(db) == before
+            assert await db[scope.WORKFLOWS].count_documents({}) == 0
+            assert await db[scope.GRANTS].count_documents({}) == 0
+            assert await db[operator.OPERATIONS].count_documents({}) == 0
+    asyncio.run(case())
+
+
+@pytest.mark.parametrize('namespace', ['workflow', 'grant', 'operation'])
+def test_real_stable_account_owner_only_retained_history_without_uid_or_wid_denies(monkeypatch, namespace):
+    async def case():
+        async with isolated_database(OWNED_PREFIX, retryWrites=False, retryReads=False, tz_aware=True) as (client, db):
+            clock, _, _ = await setup(db, monkeypatch, empty=True)
+            a = fixtures.admitted(clock[0]); candidate = fixtures.book()
+            assert (await operator.prepare_namespace_one_shot(db, client,
+                replace(a, action='prepare-namespace'), candidate))['qualified']
+            collection = {'workflow': scope.WORKFLOWS, 'grant': scope.GRANTS,
+                          'operation': operator.OPERATIONS}[namespace]
+            await db[collection].insert_one({'_id': 'SYNTHETIC-owner-only-' + namespace,
+                'owner_receipt_sha256': a.owner_receipt_sha256})
+            # A retained grant must be included in the observed state even if
+            # both UID and workflow linkage are lost. Do not use an intentionally
+            # stale expected hash to manufacture the denial under test.
+            _, workflow, grants = await operator.snapshot(db, a)
+            assert workflow is None
+            assert len(grants) == (1 if namespace == 'grant' else 0)
+            denied = replace(a, operation_id='SYNTHETIC-owner-only-denial-0001',
+                             expected_state_sha256=operator.state_hash(workflow, grants))
+            before = await rows(db)
+            with pytest.raises(operator.OperatorStop):
+                await operator.execute_one_shot(db, client, denied, candidate)
+            assert await rows(db) == before
+            assert await db[collection].count_documents({'owner_receipt_sha256': a.owner_receipt_sha256}) == 1
+            assert await db[operator.OPERATIONS].count_documents({'_id': denied.operation_id}) == 0
+    asyncio.run(case())

@@ -55,24 +55,25 @@ async def snapshot(db,a,session=None):
     # Include malformed/closed historical grants for this owner/title, even if
     # their workflow field disappeared; never silently reseed after data loss.
     grants=await bounded(db[scope.GRANTS].find({'$or':[{'workflow_id':wid},
-        {'user_id':a.user_id,'owner_receipt_sha256':a.owner_receipt_sha256}]},session=session))
+        {'user_id':a.user_id},{'owner_receipt_sha256':a.owner_receipt_sha256}]},session=session))
     return wid,w,grants
 
 def state_hash(w,grants):return auth.digest({'workflow':w,'grants':sorted(grants,key=lambda g:str(g.get('_id','')))})
 
 async def retained_references(db,a,wid,session):
-    if await db[OPERATIONS].find_one({'user_id':a.user_id,'owner_receipt_sha256':a.owner_receipt_sha256},
-        {'_id':1},session=session) is not None:return True
-    for name,field in [(OPERATIONS,'workflow_id'),('reading_pass_sessions','scope.'+scope.WORKFLOW_KEY),
-                       ('wallet_ledger','metadata.'+scope.WORKFLOW_KEY),('wallet_transactions',scope.WORKFLOW_KEY)]:
-        if await db[name].find_one({field:wid},{'_id':1},session=session) is not None:return True
-    # A surviving dedicated grant reference with lost workflow linkage is not
-    # evidence of an empty history. Inspect only exact own Sredni records.
-    for name,grant_field,workflow_field,content_field in [
-        ('reading_pass_sessions','scope.'+scope.SCOPE_KEY,'scope.'+scope.WORKFLOW_KEY,'content_id'),
-        ('wallet_ledger','metadata.'+scope.SCOPE_KEY,'metadata.'+scope.WORKFLOW_KEY,'metadata.content_id'),
-        ('wallet_transactions',scope.SCOPE_KEY,scope.WORKFLOW_KEY,'content_id')]:
-        query={'user_id':a.user_id,content_field:profile.SLUG,grant_field:{'$exists':True},workflow_field:{'$exists':False}}
+    # These namespaces are dedicated to Sredni review. Any own-account row,
+    # even with corrupt/missing owner or workflow linkage, prevents reseeding.
+    for name in [scope.WORKFLOWS,scope.GRANTS,OPERATIONS]:
+        query={'$or':[{'user_id':a.user_id},{'owner_receipt_sha256':a.owner_receipt_sha256},{'workflow_id':wid},{'_id':wid}]}
+        if await db[name].find_one(query,{'_id':1},session=session) is not None:return True
+    # The dedicated tag itself attributes the purpose; do not require its value
+    # or a content/workflow field to be healthy. Null/wrong-but-present counts.
+    for name,grant_field,workflow_field in [
+        ('reading_pass_sessions','scope.'+scope.SCOPE_KEY,'scope.'+scope.WORKFLOW_KEY),
+        ('wallet_ledger','metadata.'+scope.SCOPE_KEY,'metadata.'+scope.WORKFLOW_KEY),
+        ('wallet_transactions',scope.SCOPE_KEY,scope.WORKFLOW_KEY)]:
+        query={'$or':[{workflow_field:wid},{'user_id':a.user_id,'$or':[
+            {grant_field:{'$exists':True}},{workflow_field:{'$exists':True}}]}]}
         if await db[name].find_one(query,{'_id':1},session=session) is not None:return True
     return False
 
@@ -89,19 +90,17 @@ async def operation(db,a,book,session):
     need(await db[OPERATIONS].find_one({'_id':a.operation_id},session=session) is None,'RETAINED_OPERATION_USE_STATUS_NOT_REPLAY')
     created=now()
     if a.action=='provision':
-        need(w is not None or not grants,'MISSING_COUNTER_WITH_ANY_RETAINED_GRANT_HISTORY_NO_RESET')
-        if w is None:
-            need(not await retained_references(db,a,wid,session),'MISSING_COUNTER_WITH_ANY_RETAINED_REFERENCE_NO_RESET')
-            w={'_id':wid,'schema':scope.WORKFLOW_SCHEMA,**authority_row(a),'slug':profile.SLUG,
-                'descriptor_sha256':profile.DESCRIPTOR,'package_version':profile.PACKAGE,'country':'IN',
-                'created_at':created,'expires_at':a.grant_expires_at,'maximum_seconds':60,'maximum_microseconds':60000000,
-                'maximum_starts':3,'used_microseconds':0,'used_credit_seconds':0,'starts_used':0,'revision':0}
-            need(created<a.grant_expires_at<=created+timedelta(seconds=900),'FINITE_ORIGINAL_SREDNI_WORKFLOW_WINDOW_REQUIRED')
-            auth.current(a);await db[scope.WORKFLOWS].insert_one(w,session=session)
-        else:
-            exact_workflow(w,a)
-            need(not any(g.get('state')=='OPEN' for g in grants),'PRIOR_OPEN_GRANT_MUST_SETTLE_AND_CLOSE')
-            need(created<a.grant_expires_at<=scope.utc(w['expires_at']),'ORIGINAL_WINDOW_NEVER_REPLENISHED')
+        # One actual owner grant total, not a fresh grant under a retained
+        # same-window workflow. Reauthentication never resets this lineage.
+        need(w is None,'RETAINED_WORKFLOW_FORBIDS_SECOND_GRANT_NO_RESET')
+        need(not grants,'MISSING_COUNTER_WITH_ANY_RETAINED_GRANT_HISTORY_NO_RESET')
+        need(not await retained_references(db,a,wid,session),'MISSING_COUNTER_WITH_ANY_RETAINED_REFERENCE_NO_RESET')
+        w={'_id':wid,'schema':scope.WORKFLOW_SCHEMA,**authority_row(a),'slug':profile.SLUG,
+            'descriptor_sha256':profile.DESCRIPTOR,'package_version':profile.PACKAGE,'country':'IN',
+            'created_at':created,'expires_at':a.grant_expires_at,'maximum_seconds':60,'maximum_microseconds':60000000,
+            'maximum_starts':3,'used_microseconds':0,'used_credit_seconds':0,'starts_used':0,'revision':0}
+        need(created<a.grant_expires_at<=created+timedelta(seconds=900),'FINITE_ORIGINAL_SREDNI_WORKFLOW_WINDOW_REQUIRED')
+        auth.current(a);await db[scope.WORKFLOWS].insert_one(w,session=session)
         need(w['used_microseconds']<60000000 and w['used_credit_seconds']<60 and w['starts_used']<3,
              'NO_POSITIVE_REMAINING_SREDNI_ALLOWANCE')
         auth.current(a)

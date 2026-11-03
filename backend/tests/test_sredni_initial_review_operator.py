@@ -53,7 +53,7 @@ def packet(tmp_path,monkeypatch):
         'owner':own,'identity':who,'execution':execution,'source':source,'intent':intent,'journal':jr,'expected_state_sha256':'7'*64,
         'expires_at':(now+timedelta(minutes=10)).isoformat(),'grant_expires_at':(now+timedelta(minutes=9)).isoformat(),'grant_id':''}
     path=save('operation.json',bundle)
-    monkeypatch.setattr(scope,'load_authority',lambda:{'schema':scope.AUTHORITY_SCHEMA,'accepted':[{'owner_receipt_sha256':own['sha256'],'identity_binding_sha256':identity}]})
+    monkeypatch.setattr(scope,'load_authority',lambda:{'schema':scope.AUTHORITY_SCHEMA,'accepted':[{'owner_receipt_sha256':own['sha256'],'member_account_sha256':scope.member_account_binding(bundle['user_id'])}]})
     return now,path,bundle,save
 
 
@@ -93,8 +93,20 @@ def setup_empty(monkeypatch):
     original=fake_store._matches
     def matches(row,query):
         if '$or' in query:
-            return any(matches(row,sub) for sub in query['$or']) and original(row,{k:v for k,v in query.items() if k!='$or'})
-        return original(row,query)
+            return any(matches(row,sub) for sub in query['$or']) and matches(row,{k:v for k,v in query.items() if k!='$or'})
+        remaining = dict(query)
+        for key, expected in query.items():
+            if isinstance(expected, dict) and '$exists' in expected:
+                value = row; present = True
+                for part in key.split('.'):
+                    if not isinstance(value, dict) or part not in value:
+                        present = False; break
+                    value = value[part]
+                if present != expected['$exists']: return False
+                rest = {k:v for k,v in expected.items() if k != '$exists'}
+                if rest: remaining[key] = rest
+                else: remaining.pop(key)
+        return original(row,remaining)
     monkeypatch.setattr(fake_store,'_matches',matches)
     now=datetime.now(timezone.utc);db,w,g=seeded(now);synthetic_policy(monkeypatch,g)
     for name in [scope.WORKFLOWS,scope.GRANTS,operator.OPERATIONS]:db[name].rows=[]
@@ -273,3 +285,38 @@ def test_status_output_reports_actual_namespace_readback_without_private_rows(qu
     assert safe['qualified'] is qualified and safe['actual_remaining_seconds'] is None
     assert safe['status'].endswith('QUALIFIED' if qualified else 'UNQUALIFIED')
     assert 'PRIVATE' not in json.dumps(safe) and 'plan' not in safe and safe['replay_permitted'] is False
+
+
+@pytest.mark.parametrize('collection', [scope.WORKFLOWS, scope.GRANTS, operator.OPERATIONS])
+@pytest.mark.parametrize('broken', ['missing-owner', 'wrong-owner-and-workflow', 'owner-only-lost-user', 'owner-only-wrong-user'])
+def test_any_own_dedicated_metadata_blocks_first_provision_even_corrupt(monkeypatch, collection, broken):
+    async def run():
+        now, db = setup_empty(monkeypatch); a = admitted(now)
+        row = {'_id': 'SYNTHETIC-corrupt-history', 'user_id': a.user_id}
+        if broken == 'wrong-owner-and-workflow': row.update(owner_receipt_sha256='f'*64, workflow_id='wrong-retained-link')
+        elif broken == 'owner-only-lost-user': row = {'_id': row['_id'], 'owner_receipt_sha256': a.owner_receipt_sha256}
+        elif broken == 'owner-only-wrong-user': row.update(user_id='wrong-retained-user', owner_receipt_sha256=a.owner_receipt_sha256)
+        db[collection].rows = [row]
+        a = replace(a, expected_state_sha256=operator.state_hash(None, db[scope.GRANTS].rows))
+        before = copy.deepcopy({k:v.rows for k,v in vars(db).items() if hasattr(v, 'rows')})
+        with pytest.raises(operator.OperatorStop, match='NO_RESET'):
+            await operator.operation(db, a, book(), Session())
+        assert {k:v.rows for k,v in vars(db).items() if hasattr(v, 'rows')} == before
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize('collection,container', [('reading_pass_sessions', 'scope'), ('wallet_ledger', 'metadata'), ('wallet_transactions', None)])
+@pytest.mark.parametrize('tag', [scope.SCOPE_KEY, scope.WORKFLOW_KEY])
+@pytest.mark.parametrize('value', [None, 'wrong-but-present'])
+def test_own_purpose_tag_blocks_first_provision_regardless_value_or_content(monkeypatch, collection, container, tag, value):
+    async def run():
+        now, db = setup_empty(monkeypatch); a = admitted(now)
+        row = {'_id': 'SYNTHETIC-orphan-tag', 'user_id': a.user_id, 'content_id': 'wrong-content'}
+        if container: row[container] = {tag: value}
+        else: row[tag] = value
+        db[collection].rows = [row]
+        before = copy.deepcopy({k:v.rows for k,v in vars(db).items() if hasattr(v, 'rows')})
+        with pytest.raises(operator.OperatorStop, match='NO_RESET'):
+            await operator.operation(db, a, book(), Session())
+        assert {k:v.rows for k,v in vars(db).items() if hasattr(v, 'rows')} == before
+    asyncio.run(run())
