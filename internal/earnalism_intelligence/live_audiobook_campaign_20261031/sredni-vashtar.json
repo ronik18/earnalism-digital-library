@@ -338,5 +338,15 @@
     "correction": "Onlythisfour-pin sequentialhistory-fetch step timeout2→4minutes within unchanged45minutejob; sameimmutable4pins,depth1,missing-objectchecks,cat-fileverifications,oneattemptperpin,no retries/no bulkhistory/no currentcontents substitution.",
     "checks": "ExistingYAML/staticworkflowcontract checksrequired; V2source local674PASS4oldskip117subtests/209PASS3oldskip/29inventoryPASS/184unitPASS unchanged. FreshallapplicableCI (including workflow-triggeredcontainer/packaging) andactual29Mongo remainmandatory.",
     "next_exact_prompt": "Independentnarrowworkflow/appendonlylearningreview; sourceCI successor, nofailedworkflowrerun; allfreshgates beforematchheadmerge/treeequality. No provider/deploy/customer actions."
+  },
+  "sredni_primary_review_dependency_space_20261103": {
+    "at": "2026-11-03T15:33:23.160216+00:00",
+    "decision": "DISABLE_REDUNDANT_PIP_CACHE_IN_PRIMARY_OWNER_REVIEW_RUNNER",
+    "failed_head": "21920a06d10e9b939d4ac04fe3c28c889682db90",
+    "run": 41664134758,
+    "failure": "Primaryreview failedBEFOREcapture duringfullrequirements installation OSError28 diskfull; logconfirmsdownload/wheelcache under/home/runner/.cache/pip. No browser/application result established.",
+    "correction": "Actualworkflow runsonePythonreviewgenerator whoseonlythirdpartyimportisPIL. InstallexactexistingPillow12.3.0 instead ofunusedrootnarration/TTSstack; allnpm/browser/capture/QA stepsunchanged. Job-onlyPIP_NO_CACHE_DIR1 andfixedpathbefore/after(always) disktelemetry; no deletion,newrunner,gatereduction orworkflowrerun.",
+    "checks": "ASTallimport/staticcallclosure confirmsPILonly/no dynamicimports, exactexistingrootPillowpin; workflowNode/browsercommands unchanged. Localpipparsercacheoff,64staticworkflow and9strictReaderreadiness testsPASS. Actualhostedinstall/capture andfreshallCI/29Mongo stillrequired.",
+    "next_exact_prompt": "Independentlyreview CI-only/appendlearning successor; freshall exactheadCI+29Mongo/browser/finalpublishedPASS beforematchheadmerge. Keepstartup/production/provider phasesunconsumed."
   }
 }
