@@ -77,8 +77,23 @@ def validate_source_units(source, units, reader, package):
                 and unit['actual_whitespace_word_count']==len(text.split()), 'Exact actual source unit span')
         word+=len(text.split())
     chunks=[c for t in package['tracks'] for c in t['chunks']]
-    require(word==1784 and len(chunks)==1
-            and chunks[0]['source_unit_ids']==[u['id'] for u in units], 'Exact complete source grouping')
+    require(word==1784 and len(chunks)==1, 'Exact complete source grouping')
+    source_ids=[u['id'] for u in units]
+    if 'schema_version' not in package:
+        require(chunks[0].get('source_unit_ids')==source_ids, 'Exact prepared source grouping')
+        return common.mapping(package)
+    # The supported final schema intentionally excludes preparation-only IDs.
+    # Validate that canonical final manifest first, then restore the trusted IDs
+    # in an internal proof projection only. Never mutate the delivered package,
+    # widen its schema or replace the exact reviewed source/adoption mapping.
+    require(package.get('schema_version')=='audiobook_package_manifest.v2', 'Supported final package schema required')
+    final=common.validate_audiobook_package(package,expected_slug='sredni-vashtar',
+        expected_source_sha256='fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a',
+        expected_manuscript_sha256='f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06',
+        expected_release_descriptor_sha256=DESCRIPTOR_SHA)
+    projected=copy.deepcopy(final)
+    projected['tracks'][0]['chunks'][0]['source_unit_ids']=source_ids
+    return common.mapping(projected)
 
 
 def validate_publication_tags(tags):
@@ -129,10 +144,10 @@ def validate(descriptor,package,controlled_language,downstream_gates):
         require(sha(canonical(reader))==descriptor['reader_paragraph_map_sha256'], 'Exact actual Reader map')
         units=load(DATA/'source-units.json')
         require(sha(canonical(units))==descriptor['source_units_sha256'], 'Exact frozen source units')
-        validate_source_units(source,units,reader,package)
+        package_mapping=validate_source_units(source,units,reader,package)
         a=load_adoption()
         require(a['generation']==descriptor['generation'] and a['evidence_sha256']==descriptor['evidence_sha256'],'Exact retained Verse generation/evidence')
-        require(a['identity']=={k:descriptor[k] for k in a['identity']} and a['chunk_mapping_sha256']==common.mapping(package),'Exact source/master/chunk mapping')
+        require(a['identity']=={k:descriptor[k] for k in a['identity']} and a['chunk_mapping_sha256']==package_mapping,'Exact source/master/chunk mapping')
         require(a['unresolved_material_audio_defects']==[] and a['source_coverage']==1.0,'Material/source hold remains')
         rights=a['audio_use_decision'];proposed=load(DATA/'AUDIO-USE-DECISION.PROPOSED.json');accepted,revoked=load_production_registry()
         require(rights['components']==proposed['components'] and rights['territories']==['IN'] and rights['uses']==['audio_stream'],'Exact India streaming components only')

@@ -13880,5 +13880,19 @@
     "checks": "Focusedrights+authority76PASS/5subtests; no gate relaxed",
     "runtime_or_publication_approval": false,
     "next_exact_prompt": "Independent review successor/fixture/learning diff, then allapplicablefreshheadCI before source-only merge."
+  },
+  "sredni_final_manifest_source_projection_20261103": {
+    "at": "2026-11-03T08:18:10.197329+00:00",
+    "decision": "VALIDATE_STRICT_FINAL_MANIFEST_WITH_TRUSTED_SOURCE_PROJECTION",
+    "base_source": "a8d39193035f57f65b0a6dfbbb998729883c1420",
+    "scope": "SREDNI_PROFILE_AND_TESTS_ONLY_NO_DELIVERY_SCHEMA_OR_RUNTIME_CHANGE",
+    "original_failure": "Actual retained-output/FakeS3 pipeline finalized canonical package but manager rejected missing preparation-only source_unit_ids; original reproduction b0f500 preserved",
+    "correction": "Preparation still requires exact17source-unitIDs. For a canonical final manifest only, run unchanged strict package/version/source validation, insert frozen validated17IDs into an internal deep copy solely for original adopted mapping comparison. Never mutate finalmanifest, widen schema, fabricate storage evidence or alter descriptor/audio/rights.",
+    "descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+    "tests": "48focusedpytestPASS incl actualfinalizer/manager andrawIDdrop/reorder/duplicate/finalasset/range/source/descriptor/version/schema negativecases.5frozenreal-retained-output/FakeS3 pipeline testsPASS; full8phases, resume, unknownnoreplay, journal-interruption andlostoutputnoreset.",
+    "actual_fake_roundtrip_sha256": "db75020916666b233adc9fe47388563010a6f9b302eb7271e3bfabd19c8f7e78",
+    "test_scope": "Fake storage only; networkdenied, actualkeys/profiles/sharedstorageledger/providerwrites0. Accepted actualprepare reused; no new synthesis orallocation.",
+    "remaining": "Actual storage/runtime/publication stayheld until separateauthorisedoperator admission; helper/sourcepins require legitimate reviewedsource rebind, not new rights/producer approval.",
+    "next_exact_prompt": "Independent source+additivelearning review, exactheadCI andmatchheadmerge/treeequality; cleanhandoffexistingbookowner. KeepMongo private patch separate."
   }
 }

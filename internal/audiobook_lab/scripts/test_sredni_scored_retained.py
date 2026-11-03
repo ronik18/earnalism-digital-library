@@ -204,3 +204,62 @@ def test_altered_source_units_cannot_prepare(local_bundle,tmp_path):
     bundle,path,save=local_bundle;bundle['source_units'][0]['source_end']-=1;save()
     with pytest.raises(profile.Error,match='source units'):profile.prepare(path,tmp_path/'not-created')
     assert not (tmp_path/'not-created').exists()
+
+
+@pytest.fixture
+def finalized_source_package():
+    """Real finalizer + actual source manager, synthetic storage receipts only."""
+    import audiobook_package_builder_v2 as builder
+    d=json.loads((DATA/'prospective-registration/release-descriptor.json').read_text())
+    p=json.loads((DATA/'prospective-registration/package-identity.json').read_text())
+    sem={k:copy.deepcopy(v) for k,v in p.items() if k!='tracks'}
+    sem.update(schema_version='audiobook_package_semantics.v2',release_evidence_version=profile.POLICY)
+    sem['tracks']=copy.deepcopy(p['tracks'])
+    assets=[];primary=[];replica=[]
+    prefix=f'v1/prod/sprint1/sredni-vashtar/releases/{profile.DESCRIPTOR_SHA}/'
+    for track in sem['tracks']:
+        for chunk in track['chunks']:
+            refs={}
+            for role,fact in chunk.pop('assets').items():
+                aid=chunk['segment_id']+'-'+role;refs[role]=aid
+                row={'asset_id':aid,'key':prefix+'delivery/'+aid,**fact};assets.append(row)
+                primary.append({**row,'store':'prod','bucket':'fixture-primary','version_id':'synthetic-primary-'+aid})
+                replica.append({**row,'store':'dr','bucket':'fixture-replica','version_id':'synthetic-dr-'+aid})
+            chunk['asset_ids']=refs
+    final=builder.finalize_package(semantics=sem,upload_plan={'assets':assets},
+        primary_receipt={'receipt_role':'primary','release_eligible':True,'passed':True,'objects':primary},
+        replica_receipt={'receipt_role':'replica','passed':True,'store':{'release_eligible':True},'objects':replica})
+    return d,p,final
+
+
+def test_actual_finalizer_projection_admits_without_mutating_final_schema(finalized_source_package):
+    d,p,final=finalized_source_package;before=copy.deepcopy(final)
+    assert len(p['tracks'][0]['chunks'][0]['source_unit_ids'])==17
+    assert 'source_unit_ids' not in final['tracks'][0]['chunks'][0]
+    assert call(d,final)==d
+    assert final==before
+    assert call(d,final)['release_candidate_evidence']['all_release_gates_passed'] is False
+
+
+@pytest.mark.parametrize('change',['drop','reorder','duplicate'])
+def test_prepared_source_ids_remain_mandatory(finalized_source_package,change):
+    d,p,final=finalized_source_package;chunk=p['tracks'][0]['chunks'][0]
+    if change=='drop':chunk.pop('source_unit_ids')
+    elif change=='reorder':chunk['source_unit_ids'].reverse()
+    else:chunk['source_unit_ids'][1]=chunk['source_unit_ids'][0]
+    with pytest.raises(manager.ReleasePointerError,match='prepared source grouping'):call(d,p)
+
+
+@pytest.mark.parametrize('change',['asset','range','source','descriptor','version','extra_source_ids','schema'])
+def test_final_projection_cannot_hide_binding_tampering(finalized_source_package,change):
+    from audiobook_packages import with_canonical_package_version
+    d,p,final=finalized_source_package;chunk=final['tracks'][0]['chunks'][0]
+    if change=='asset':chunk['assets']['audio']['sha256']='a'*64
+    elif change=='range':chunk['end_word']-=1
+    elif change=='source':final['source_sha256']='b'*64
+    elif change=='descriptor':final['release_descriptor_sha256']='c'*64
+    elif change=='version':final['package_version']='sha256-'+'d'*64
+    elif change=='extra_source_ids':chunk['source_unit_ids']=p['tracks'][0]['chunks'][0]['source_unit_ids']
+    else:final['schema_version']='unsupported.synthetic.schema'
+    if change!='version':final=with_canonical_package_version(final)
+    with pytest.raises((manager.ReleasePointerError,ValueError)):call(d,final)
