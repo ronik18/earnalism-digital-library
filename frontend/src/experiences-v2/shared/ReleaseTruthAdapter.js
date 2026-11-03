@@ -1,4 +1,4 @@
-import { audiobookReleaseState } from "../../lib/audioReleaseSafety";
+import { audiobookNarrationDisclosure, audiobookReleaseState } from "../../lib/audioReleaseSafety";
 
 export const APPROVED_AUDIO_FIXTURE = Object.freeze({
   title: "The Count’s Arrival",
@@ -28,6 +28,7 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
   if (fixture) return {
     canRender: true,
     fixture: true,
+    narrationDisclosure: "",
     mediaUrl: "",
     release: { status: "visual_fixture" },
     ...APPROVED_AUDIO_FIXTURE,
@@ -52,6 +53,8 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     canRender: true, fixture: false, mediaUrl: "", packageManifestUrl: "",
     release: { status: canary.scope === "native_replacement_authorized_member_only" ? "private_member_review" : "transport_canary", canShowControls: true },
     packageVersion: canary.package_version,
+    // A private candidate must never inherit another public edition’s credits.
+    narrationDisclosure: typeof canary.narration_disclosure === "string" ? canary.narration_disclosure.trim() : "",
     title: book.title, author: book.author,
     chapterLabel: book.chapter_label || "Full audiobook",
     durationSeconds: Number(canary.duration_ms) / 1000,
@@ -72,6 +75,7 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     mediaUrl: "",
     packageManifestUrl: release.packageManifestUrl || "",
     packageVersion: release.packageVersion || "",
+    narrationDisclosure: audiobookNarrationDisclosure(book),
     title: book.public_title || book.display_title || book.title || "Approved audiobook",
     author: book.author || book.author_name || "",
     chapterLabel: book.chapter_label || "Full audiobook",

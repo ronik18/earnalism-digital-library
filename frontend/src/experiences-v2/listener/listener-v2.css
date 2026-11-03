@@ -163,3 +163,9 @@
 @media (prefers-reduced-motion: reduce) {
   .listener-v2__play, .listener-v2__chapters li button, .listener-v2 .experience-header__menu { transition: none; }
 }
+
+/* Credits belong to the main player: the side panel is hidden on mobile. */
+.listener-v2__credits { grid-column: 1 / -1; width: 100%; min-width: 0; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--listener-line); }
+.listener-v2__credits h2 { margin: 0 0 8px; color: var(--listener-paper); font-size: 14px; line-height: 1.4; }
+.listener-v2__credits p { margin: 0; color: rgba(246, 237, 220, .82); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.listener-v2__credits a { color: inherit; text-decoration: underline; }

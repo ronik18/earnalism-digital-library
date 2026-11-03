@@ -1,0 +1,24 @@
+{
+  "schema_version": "earnalism.sredni_private_source_transaction.v1",
+  "slug": "sredni-vashtar",
+  "operation": "STAGE_SOURCE_QA_PRIVATE",
+  "snapshot_sha256": "376f057df309ef87ffde7421769818acc676de5ff40e118957cd8f683aad63dd",
+  "applied": true,
+  "public_audio_enabled": false,
+  "protected_playback": "UNVERIFIED_NOT_AUTHORIZED_BY_SOURCE_STAGE",
+  "files": {
+    "backend/data/controlled_publications/sredni-vashtar/public_book.json": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde",
+    "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583",
+    "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json": "4ed4c5aaa2e93e5f04abc89722817fb2334048c8247b73141b7dd73c0b0f7eb0",
+    "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json": "98fbef3a3a3dae278cad3d1b52a44207a1bfebaee2b2a8a58169d2860da0f597",
+    "backend/data/controlled_publications/sredni-vashtar/rights_decision.json": "450cfb13c8380bb2ee06fd13f336a7531485228f932b2a606c1a267b2f92d69c",
+    "data/controlled_publications/sredni-vashtar/public_book.json": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde",
+    "data/controlled_publications/sredni-vashtar/reader_manifest.json": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583",
+    "data/controlled_publications/sredni-vashtar/checksum_manifest.json": "4ed4c5aaa2e93e5f04abc89722817fb2334048c8247b73141b7dd73c0b0f7eb0",
+    "data/controlled_publications/sredni-vashtar/publication_manifest.json": "98fbef3a3a3dae278cad3d1b52a44207a1bfebaee2b2a8a58169d2860da0f597",
+    "data/controlled_publications/sredni-vashtar/rights_decision.json": "450cfb13c8380bb2ee06fd13f336a7531485228f932b2a606c1a267b2f92d69c",
+    "backend/data/rights_decision_registry.json": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a",
+    "backend/data/approved_reader_bootstrap.json": "27d326cfbc1b98048fb0409553927328e852240cb7a8f73ec5a242de2de867eb"
+  },
+  "target_bootstrap_row_sha256": "1d6932b7df6f1e62c1272d5325c8cccb53187b5262415f3041dff2b7ac013870"
+}

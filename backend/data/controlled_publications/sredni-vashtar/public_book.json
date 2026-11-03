@@ -4,9 +4,161 @@
   "allowPayment": false,
   "allowPublicReading": true,
   "approved_to_publish": true,
+  "audio_enabled": false,
+  "audiobook": {},
+  "audiobook_active_release": {
+    "status": "DISABLED_TEXT_READER_ONLY"
+  },
+  "audiobook_assets": {},
+  "audiobook_enabled": false,
+  "audiobook_package_release_evidence": {
+    "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc": {
+      "package_version": "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e",
+      "primary_receipt_sha256": "a04e0e49e58cdedfabf463a28bc1dee2412d4456efcf4773f83a8b923cf4edb4",
+      "primary_release_manifest_receipt_sha256": "84a09fa7afc799357ea55be8f1eca7b13b1728946fc78a5f6437f40a9ea9e72b",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f108c4c7f7a76143d_d20261103_m091659_c004_v0402030_t0002_u01793697419315",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/release-manifest.json",
+      "release_manifest_sha256": "336ec7b7954375e8b8c35e350fac9565b835c62d22d63a430eb76d5f8e4c2a19",
+      "release_manifest_size_bytes": 6544,
+      "replica_receipt_sha256": "8e887975fc5f0eb743de355abaeeeb0aa4d47e959287bff2c17b7f4eda85cd67",
+      "replica_release_manifest_receipt_sha256": "86554014e57e700f818ed1566de5ca70b825f926ba7584a2cbef2b756ab5f0ae",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f11887ff3b60b4ef8_d20261103_m091714_c005_v0501046_t0041_u01793697434633",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "sredni-vashtar",
+      "staged_at": "2026-11-03T11:19:21Z"
+    }
+  },
+  "audiobook_packages": {
+    "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc": {
+      "duration_ms": 638105,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+      "package_version": "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e",
+      "paragraph_count": 17,
+      "release_descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+      "release_evidence_version": "sredni_scored_retained_owner_adjudicated.v1",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 1,
+      "slug": "sredni-vashtar",
+      "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+      "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-audio-sha256-60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119b7ab365e39d71_d20261103_m091636_c005_v0501050_t0005_u01793697396011"
+                    }
+                  ],
+                  "sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+                  "size_bytes": 15316455,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-audio-sha256-60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1127dbd4bb628885_d20261103_m091602_c004_v0402014_t0024_u01793697362173"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-metadata-sha256-34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f117000f03fa64a66_d20261103_m091652_c005_v0501020_t0002_u01793697412591"
+                    }
+                  ],
+                  "sha256": "34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3",
+                  "size_bytes": 1240,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-metadata-sha256-34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1080860e7f658409_d20261103_m091615_c004_v0402005_t0041_u01793697375468"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-timestamps-sha256-303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f11059a51e6427b93_d20261103_m091646_c005_v0501052_t0022_u01793697406326"
+                    }
+                  ],
+                  "sha256": "303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee",
+                  "size_bytes": 18100,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-timestamps-sha256-303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f114e03998439556b_d20261103_m091611_c004_v0402039_t0024_u01793697371948"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-vtt-sha256-6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f10762d9706880fe0_d20261103_m091649_c005_v0501026_t0025_u01793697409631"
+                    }
+                  ],
+                  "sha256": "6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f",
+                  "size_bytes": 10791,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc/delivery/sredni-vashtar-master-000-vtt-sha256-6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103253063969832c_d20261103_m091613_c004_v0402009_t0053_u01793697373774"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 638105,
+              "end_paragraph": 16,
+              "end_word": 1783,
+              "order": 0,
+              "segment_id": "sredni-vashtar-master-000",
+              "start_paragraph": 0,
+              "start_word": 0
+            }
+          ],
+          "end_paragraph": 16,
+          "end_word": 1783,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "Sredni Vashtar"
+        }
+      ],
+      "word_count": 1784
+    }
+  },
   "author": "Saki",
   "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
   "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp",
   "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
   "benefits": [
     "Read a legally cleared digital text.",
@@ -34,17 +186,18 @@
   "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
   "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
   "cover_dimensions": {
-    "front": [
+    "back": [
       800,
       1200
     ],
-    "back": [
+    "front": [
       800,
       1200
     ]
   },
   "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
   "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+  "cover_provenance_sha256": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b",
   "cover_semantic_match_score": 9.8,
   "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER_VERIFIED",
   "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
@@ -55,6 +208,7 @@
   "formats": [
     "Ebook"
   ],
+  "generate_audiobook": false,
   "id": "controlled-sredni-vashtar",
   "isLive": true,
   "isPublic": true,
@@ -64,11 +218,16 @@
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
+  "preview_enabled": true,
+  "production_observed": false,
   "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
   "publicationStatus": "published",
+  "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
   "publication_status": "LIVE_APPROVED",
   "qa_status": "QA_PASSED",
   "readerStatus": "reader_ready",
+  "reader_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
   "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
   "rights_tier": "A",
   "short_description": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
@@ -76,7 +235,71 @@
   "showInPublicLibrary": true,
   "slug": "sredni-vashtar",
   "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "sredni_source_qa_private_stage": {
+    "audio_use_decision": {
+      "accepted_by": "Integration Lane under direct native owner next-three-title GO LIVE mandate and exact Sredni registration handoff; component rights only, not runtime release",
+      "basis": "Prospective exact IN audio_stream component registration under native owner mandate70853686; independently reviewed public-domain literary source, actual retained OpenAI API stockVerse output and two creator CC BY4 music recordings. Original proposals and Cedar-worded general evidence remain unchanged; Verse clarification is separately bound. Existing Reader/cover use is not the audio grant. valid_until2036-10-02 is a conservative inherited administrative review cutoff, not legal copyright expiry or owner lifetime acceptance. Exact credits, AI disclosure and applicable licensed-component permissions must survive later runtime delivery. Storage, protected access/accounting and publication gates remain mandatory.",
+      "components": {
+        "audio_component_bindings": "d0db339a1d34ff842cee800dc6742a750413a230f0e0aae3e71db4085d9b2061",
+        "container_metadata_reuse": "e095f10f8ba208c1274739f646803668455c8fa71f8cad4b5a3c9e7cef1ff93f",
+        "listened_master_mp3": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+        "master_mp3": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+        "master_wav": "8e95f3d76d21fc2be34a15f719d9be15d8caa76cffe7d359375cd3d90edecc2f",
+        "model_voice_licence": "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+        "music_rights": "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+        "selected_manuscript": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+        "source_file": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+      },
+      "conditions_satisfied": true,
+      "decision_id": "india-20261103-sredni-vashtar-verse-scored-prospective-audio",
+      "edition_id": "sredni-vashtar",
+      "evidence_sha256": [
+        "26f6454243b971c70b7ac3d1dad29cf28e833c4731a0d8b1185d3ad2f191a6ec",
+        "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+        "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+        "70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686",
+        "4199365cf944db707a178623cafc8b3e8ca5f0e5f09f43fd1f5e11d891479ff6",
+        "05d999444a78d05a5d3ece35e19f7e19a969636545ff1d1f79ab6bf2f4bc4f2d"
+      ],
+      "operator_id": "reo-enterprise",
+      "schema_version": "earnalism.rights-decision.v1",
+      "status": "ACCEPTED",
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "audio_stream"
+      ],
+      "valid_from": "2026-11-03T06:17:49.574463+00:00",
+      "valid_until": "2036-10-02T00:00:00+00:00"
+    },
+    "candidate_descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+    "candidate_package_version": "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e",
+    "downstream_gates_unchanged": [
+      "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+      "PRIVATE_B2_DR_REPLICA_REQUIRED",
+      "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+      "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+    ],
+    "narrator_metadata": {
+      "audiobook_provider": "",
+      "audiobook_voice": "Verse",
+      "duration_ms": 638105,
+      "narration_disclosure": "AI voice: Verse. Music: Heartwarming/Heartbreaking, Kevin MacLeod (https://incompetech.com), CC BY 4.0 https://creativecommons.org/licenses/by/4.0/; edited.",
+      "size_bytes": 15316455
+    },
+    "package_release_evidence_sha256": "ea3e89dcf5020e2db3515880bbe037a7282e903d8af4e53651a976fc30dbc361",
+    "private_playback_authorized": false,
+    "public_release_authorized": false,
+    "release_manifest_sha256": "336ec7b7954375e8b8c35e350fac9565b835c62d22d63a430eb76d5f8e4c2a19",
+    "schema_version": "earnalism.sredni_source_qa_private_stage.v1",
+    "slug": "sredni-vashtar",
+    "snapshot_sha256": "376f057df309ef87ffde7421769818acc676de5ff40e118957cd8f683aad63dd",
+    "staged_at": "2026-11-03T11:19:21Z",
+    "status": "SOURCE_QA_STAGED_PRIVATE"
+  },
   "subtitle": "",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp",
   "title": "Sredni Vashtar",
   "updated_at": "2026-07-14T09:33:44Z",
   "verification_status": "approved",
@@ -84,21 +307,5 @@
     "General readers",
     "Students and lifelong learners",
     "Users who prefer structured digital reading"
-  ],
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook": {},
-  "audiobook_assets": {},
-  "audiobook_active_release": {
-    "status": "DISABLED_TEXT_READER_ONLY"
-  },
-  "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
-  "cover_provenance_sha256": "5f3a82ae71d975e6eef2b431e07cb6d45a8f69117591e472e42b8172dec49e6b",
-  "reader_enabled": true,
-  "preview_enabled": true,
-  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
-  "production_observed": false,
-  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305901/earnalism/covers/front/cover_candidate_controlled-sredni-vashtar-9dd8673295c6b127be30efb920c33371599e753b44810e38ef05b3cd2e6faf7a.webp",
-  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1793305932/earnalism/covers/back/back_cover_candidate_controlled-sredni-vashtar-b31f6a00c13fb1f7b4b1376daf677e8a0f1d2ad43295be07bf408236fb883281.webp"
+  ]
 }

@@ -1,53 +1,53 @@
 {
-  "schema_name": "earnalism-publication-manifest",
-  "schema_version": 1,
-  "slug": "sredni-vashtar",
-  "title": "Sredni Vashtar",
-  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "artifacts": {
+    "approval_evidence": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e",
+    "public_book": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde",
+    "reader_manifest": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583",
+    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+  },
+  "audio_release": {
+    "exposed": false,
+    "required_for_reader_release": false,
+    "status": "NOT_REQUESTED"
+  },
+  "commerce_release": {
+    "required_for_reader_release": false,
+    "status": "NOT_REQUESTED"
+  },
   "content": {
-    "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
-    "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
-    "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
-    "sanitized": true,
     "chapter_count": 1,
     "chapter_index_sha256": "51c62b78889787d8f6e93517b6fa6db9330b0a786b2b0a61e533b4b323e45999",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
+        "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
         "title": "Sredni Vashtar",
-        "word_count": 1787,
-        "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
+        "word_count": 1787
       }
-    ]
+    ],
+    "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+    "sanitized": true,
+    "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
   },
-  "rights": {
-    "status": "APPROVED",
-    "tier": "A",
-    "publication_region": "india",
-    "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
-  },
+  "generated_at": "2026-11-03T11:19:21Z",
+  "manifest_sha256": "c15dd235fc897cd46ad608bc8c2fc3293e4ff744e5e90942f37074b4adb5f5d0",
   "reader_release": {
-    "status": "APPROVED",
+    "blockers": [],
+    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
     "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
-    "blockers": []
+    "status": "APPROVED"
   },
-  "audio_release": {
-    "status": "NOT_REQUESTED",
-    "exposed": false,
-    "required_for_reader_release": false
+  "rights": {
+    "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "publication_region": "india",
+    "status": "APPROVED",
+    "tier": "A"
   },
-  "commerce_release": {
-    "status": "NOT_REQUESTED",
-    "required_for_reader_release": false
-  },
-  "artifacts": {
-    "public_book": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c",
-    "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
-    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
-    "approval_evidence": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e"
-  },
-  "manifest_sha256": "7e026dd91710ea55c9b5a01e3dbd2cc5a3ff5f997b2e2d48ffca2b2967bbbafe"
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar"
 }

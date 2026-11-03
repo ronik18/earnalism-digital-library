@@ -1,6 +1,4 @@
 {
-  "slug": "sredni-vashtar",
-  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -36,7 +34,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c"
+      "sha256": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde"
     },
     {
       "file": "publication_authorization.json",
@@ -44,11 +42,13 @@
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad"
+      "sha256": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583"
     },
     {
       "file": "source_evidence.json",
       "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
     }
-  ]
+  ],
+  "generated_at": "2026-11-03T11:19:21Z",
+  "slug": "sredni-vashtar"
 }
