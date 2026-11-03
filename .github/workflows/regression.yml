@@ -115,6 +115,9 @@ jobs:
               bindings+=("$application_pin:backend/server.py")
             fi
           fi
+          if [[ -f scripts/build_india_guarded_rollback.py ]]; then
+            bindings+=("4dc9e8fd3f9eafd28445b408d376b73634ccfa56:backend/server.py")
+          fi
           missing_commits=()
           for binding in "${bindings[@]}"; do
             if ! git -c remote.origin.promisor=false cat-file -e "$binding" 2>/dev/null; then
@@ -150,12 +153,15 @@ jobs:
         if: hashFiles('scripts/build_india_guarded_rollback.py') != ''
         timeout-minutes: 2
         shell: bash
+        env:
+          GIT_NO_LAZY_FETCH: "1"
         run: |
           set -euo pipefail
           frozen_source=4dc9e8fd3f9eafd28445b408d376b73634ccfa56
-          git fetch --no-tags --depth=1 origin "$frozen_source"
-          git cat-file -e "$frozen_source:backend/server.py"
-          [[ "$(git rev-parse "$frozen_source:backend")" == '0be169311c1a344dc297be93af80e43857850808' ]]
+          # The bounded admission step above hydrates this immutable source.
+          git -c remote.origin.promisor=false cat-file -e "$frozen_source^{commit}" || exit 1
+          [[ "$(git -c remote.origin.promisor=false cat-file -t "$frozen_source:backend/server.py")" == blob ]] || exit 1
+          [[ "$(git rev-parse "$frozen_source:backend")" == '0be169311c1a344dc297be93af80e43857850808' ]] || exit 1
 
       - name: Fetch exact approved purchase guard source
         if: hashFiles('internal/legal/purchase_guard_source.json') != ''
