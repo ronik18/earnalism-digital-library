@@ -14014,5 +14014,15 @@
     "remaining": "SeparateCTCheadtimeaxis opaque; equalframecounts doNOTproveheadorder oracousticboundaries. Full-sourcefidelity unresolved and0of40paragraphsync qualified. Sourceflag/UI/promotion unchanged.",
     "private_checkpoint_prefix": "3d66fdb3",
     "integration_scope": "Learningrecordonly; no privateartifact reads, modeldownloads orBicharakapplication/source/assets mutations."
+  },
+  "sredni_exact_guard_fetch_bound_20261103": {
+    "at": "2026-11-03T16:10:04.734743+00:00",
+    "decision": "BOUND_EXACT_APPROVED_GUARD_HISTORY_FETCH",
+    "failed_head": "50b3c040ee6b36872443674c84a41d2ed09968b0",
+    "run": 41667157794,
+    "failure": "Pre-test approved guard fetch exceeded shared two-minute timeout; no current 29-Mongo result established.",
+    "correction": "Four-minute step within unchanged45-minute job; one explicit fetch only for missing exact server blob, no lazy fetch. Both unconditional exact SHA256 checks/pins and all regression dependencies/tests remain unchanged.",
+    "status": "SOURCE_ONLY_FRESH_ALL_CI_REQUIRED",
+    "next_exact_prompt": "Review and push coherent successor; require fresh applicable CI, actual29Mongo zero-skip, browser and final published review PASS before match-head merge/tree equality. No runtime actions."
   }
 }

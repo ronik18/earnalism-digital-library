@@ -107,22 +107,28 @@ jobs:
 
       - name: Fetch exact approved purchase guard source
         if: hashFiles('internal/legal/purchase_guard_source.json') != ''
-        timeout-minutes: 2
+        timeout-minutes: 4
         shell: bash
+        env:
+          GIT_NO_LAZY_FETCH: "1"
         run: |
           set -euo pipefail
           source_pin="$(jq -er '.approved_merged_584_sha' internal/legal/purchase_guard_source.json)"
           source_hash="$(jq -er '.approved_base_server_sha256' internal/legal/purchase_guard_source.json)"
           [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
           [[ "$source_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
-          git fetch --no-tags --depth=1 origin "$source_pin"
+          if ! git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/server.py" 2>/dev/null; then
+            git fetch --no-tags --depth=1 origin "$source_pin"
+          fi
           [[ "$(git show "$source_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$source_hash" ]]
           if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
             application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
             application_hash="$(jq -er '.application_server_sha256' internal/legal/purchase_guard_source.json)"
             [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             [[ "$application_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
-            git fetch --no-tags --depth=1 origin "$application_pin"
+            if ! git -c remote.origin.promisor=false cat-file -e "$application_pin:backend/server.py" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$application_pin"
+            fi
             [[ "$(git show "$application_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$application_hash" ]]
           fi
 

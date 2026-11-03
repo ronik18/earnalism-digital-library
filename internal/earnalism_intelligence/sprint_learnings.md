@@ -3023,3 +3023,7 @@ Keep immutable history fetches exact and finite, but size a shared sequential ti
 For a demonstrated disposable visual-review disk failure, audit the complete Python command/import closure and install its actual pinned dependencies rather than unused narration stacks. Keep the exact existing Pillow pin, full Node/browser/capture/QA set, no-duplicate-pip-cache setting and fixed-path before/after disk evidence. Do not delete host resources or claim recovery from static closure alone: only actual hosted install and complete review success clear the failure.
 
 For Bengali fidelity/sync, preserve failed static-metadata attempts and cumulative byte/time envelopes. An encoder analysis-index grid derived from exact preprocessing parameters and version-matched source does not prove a separate CTC head’s time order, acoustic boundaries, narration fidelity or paragraph sync. Record metadata-only progress without model/inference or release PASS; retain the unresolved downstream HOLD.
+
+### Exact guard history fetch bound — 3 November 2026
+
+A pre-test historical fetch timeout is not an application failure. Bound the single fetch step at four minutes, skip only already-present exact blobs and retain unconditional hash checks. Current-head hosted regression and all 29 Mongo cases remain required; no blind rerun or runtime action.
