@@ -14024,5 +14024,14 @@
     "correction": "Four-minute step within unchanged45-minute job; one explicit fetch only for missing exact server blob, no lazy fetch. Both unconditional exact SHA256 checks/pins and all regression dependencies/tests remain unchanged.",
     "status": "SOURCE_ONLY_FRESH_ALL_CI_REQUIRED",
     "next_exact_prompt": "Review and push coherent successor; require fresh applicable CI, actual29Mongo zero-skip, browser and final published review PASS before match-head merge/tree equality. No runtime actions."
+  },
+  "sredni_exact_ci_object_transfer_20261103": {
+    "at": "2026-11-03T16:23:47.292751+00:00",
+    "decision": "FETCH_ONLY_EXACT_CI_HISTORY_TREES_AND_REQUIRED_BLOBS",
+    "failure": "31985 regression41671669347 four-minute historical full-fetch timeout before tests; first3 49/48/30sec thenfourthtimeout.",
+    "correction": "One deduplicated filtered commit/tree batch plus one required-blob batch; no lazy fetch/retry/bulk fallback. Same4historical registry/authority pins and2guardserver pins; all unconditional types/hash checks retained. Full retained containment fetch unchanged.",
+    "actual_probe": "GitHub accepts exact filtered15b tree and2reachableblob IDs; composed scratch hydration PASS1392KiB. Local Bash3 mapfile failure before transfer corrected with portable read loop. Not hosted regression PASS.",
+    "status": "SOURCE_ONLY_FRESH_ALL_CI_AND_ACTUAL29MONGO_REQUIRED",
+    "filter_side_effect_control": "Restore exact prior presence/values of Git remote promisor/filter config on success/failure via EXIT trap; later full containment/Reader612 transfers unchanged."
   }
 }

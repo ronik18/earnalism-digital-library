@@ -3027,3 +3027,8 @@ For Bengali fidelity/sync, preserve failed static-metadata attempts and cumulati
 ### Exact guard history fetch bound — 3 November 2026
 
 A pre-test historical fetch timeout is not an application failure. Bound the single fetch step at four minutes, skip only already-present exact blobs and retain unconditional hash checks. Current-head hosted regression and all 29 Mongo cases remain required; no blind rerun or runtime action.
+
+### Bounded immutable CI object transfer — 3 November 2026
+
+Do not transfer unrelated historical media to validate two pinned JSON files. Fetch exact commit/tree metadata and required blob IDs in two one-attempt batches, preserving all verification. Keep full containment-source fetch separate. Actual GitHub object admission is not a hosted regression or recovery PASS.
+Filtered fetch persists remote settings: restore their exact prior presence/values even on failure so later full-source recovery admission remains unchanged.

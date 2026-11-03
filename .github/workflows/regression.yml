@@ -71,27 +71,79 @@ jobs:
           echo 'RELEASE_SOURCE_CLEAN=YES'
 
       - name: Fetch bounded reviewed catalogue history
-        # Four exact one-attempt fetches exceeded 120s on the hosted runner.
+        # Hydrate only immutable trees and the exact blobs consumed by CI.
         timeout-minutes: 4
         shell: bash
         env:
           GIT_NO_LAZY_FETCH: '1'
         run: |
           set -euo pipefail
-          # These four immutable trees back the strict offline history tests.
-          # Fetch missing objects only; never substitute current-file contents.
+          # Filtered fetch persists remote settings; restore the exact prior state.
+          had_promisor=0
+          had_filter=0
+          prior_promisor="$(git config --local --get remote.origin.promisor)" && had_promisor=1 || true
+          prior_filter="$(git config --local --get remote.origin.partialclonefilter)" && had_filter=1 || true
+          restore_fetch_config() {
+            if (( had_promisor )); then
+              git config --local remote.origin.promisor "$prior_promisor"
+            else
+              git config --local --unset-all remote.origin.promisor || [[ $? == 5 ]]
+            fi
+            if (( had_filter )); then
+              git config --local remote.origin.partialclonefilter "$prior_filter"
+            else
+              git config --local --unset-all remote.origin.partialclonefilter || [[ $? == 5 ]]
+            fi
+          }
+          trap restore_fetch_config EXIT
+          bindings=()
           for source_pin in \
             b4bc7585a87b7546db3270f3bfd63bd436e8585a \
             f5706d328e08ab330f65f604f51df322b65646f1 \
             c980ff2da048db7a164648f06f707440b2a8124c \
             15b157e5555b67ede6fd649fb9057d314c36bf3c; do
-            if ! git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/data/rights_decision_registry.json" 2>/dev/null ||
-               ! git -c remote.origin.promisor=false cat-file -e "$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json" 2>/dev/null; then
-              git fetch --no-tags --depth=1 origin "$source_pin"
+            bindings+=("$source_pin:backend/data/rights_decision_registry.json")
+            bindings+=("$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json")
+          done
+          if [[ -f internal/legal/purchase_guard_source.json ]]; then
+            source_pin="$(jq -er '.approved_merged_584_sha' internal/legal/purchase_guard_source.json)"
+            [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            bindings+=("$source_pin:backend/server.py")
+            if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
+              application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
+              [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              bindings+=("$application_pin:backend/server.py")
             fi
-            git -c remote.origin.promisor=false cat-file -e "$source_pin^{commit}"
-            git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/data/rights_decision_registry.json"
-            git -c remote.origin.promisor=false cat-file -e "$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json"
+          fi
+          missing_commits=()
+          for binding in "${bindings[@]}"; do
+            if ! git -c remote.origin.promisor=false cat-file -e "$binding" 2>/dev/null; then
+              missing_commits+=("${binding%%:*}")
+            fi
+          done
+          if (( ${#missing_commits[@]} )); then
+            unique=()
+            while IFS= read -r object_id; do unique+=("$object_id"); done < <(printf '%s\n' "${missing_commits[@]}" | sort -u)
+            missing_commits=("${unique[@]}")
+            git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "${missing_commits[@]}"
+          fi
+          missing_blobs=()
+          for binding in "${bindings[@]}"; do
+            object_id="$(git rev-parse --verify "$binding")"
+            [[ "$object_id" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            if ! git -c remote.origin.promisor=false cat-file -e "$object_id" 2>/dev/null; then
+              missing_blobs+=("$object_id")
+            fi
+          done
+          if (( ${#missing_blobs[@]} )); then
+            unique=()
+            while IFS= read -r object_id; do unique+=("$object_id"); done < <(printf '%s\n' "${missing_blobs[@]}" | sort -u)
+            missing_blobs=("${unique[@]}")
+            git -c gc.auto=0 fetch --no-tags --depth=1 origin "${missing_blobs[@]}"
+          fi
+          for binding in "${bindings[@]}"; do
+            git -c remote.origin.promisor=false cat-file -e "${binding%%:*}^{commit}"
+            [[ "$(git -c remote.origin.promisor=false cat-file -t "$binding")" == blob ]]
           done
 
       - name: Fetch exact retained containment source
@@ -117,18 +169,14 @@ jobs:
           source_hash="$(jq -er '.approved_base_server_sha256' internal/legal/purchase_guard_source.json)"
           [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
           [[ "$source_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
-          if ! git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/server.py" 2>/dev/null; then
-            git fetch --no-tags --depth=1 origin "$source_pin"
-          fi
+          git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/server.py"
           [[ "$(git show "$source_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$source_hash" ]]
           if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
             application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
             application_hash="$(jq -er '.application_server_sha256' internal/legal/purchase_guard_source.json)"
             [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             [[ "$application_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
-            if ! git -c remote.origin.promisor=false cat-file -e "$application_pin:backend/server.py" 2>/dev/null; then
-              git fetch --no-tags --depth=1 origin "$application_pin"
-            fi
+            git -c remote.origin.promisor=false cat-file -e "$application_pin:backend/server.py"
             [[ "$(git show "$application_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$application_hash" ]]
           fi
 
