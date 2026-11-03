@@ -443,8 +443,22 @@ def test_ordinary_fraction_interleaving_preserves_native_own_time_and_posted_deb
 def test_committed_authority_binds_only_actual_approved_opaque_pair_and_preserves_predecessor():
     root = Path(__file__).resolve().parents[2]
     record = json.loads((root / 'internal/legal/sredni_initial_review_20261103/source-authority-successor.json').read_text())
-    for path_key, hash_key in [('owner_permission_path', 'owner_receipt_sha256'), ('predecessor_path', 'predecessor_sha256'), ('successor_path', 'successor_sha256')]:
+    refresh = json.loads((root / 'internal/legal/sredni_initial_review_20261103/session-refresh-authority-successor.json').read_text())
+    for path_key, hash_key in [('owner_permission_path', 'owner_receipt_sha256'), ('predecessor_path', 'predecessor_sha256')]:
         assert hashlib.sha256((root / record[path_key]).read_bytes()).hexdigest() == record[hash_key]
+    assert refresh['owner_receipt_sha256'] == record['owner_receipt_sha256']
+    assert refresh['previous_identity_binding_sha256'] == record['identity_binding_sha256']
+    assert refresh['previous_identity_evidence_sha256'] == record['identity_evidence_sha256']
+    assert refresh['predecessor_sha256'] == record['successor_sha256']
+    for path_key, hash_key in [('predecessor_path', 'predecessor_sha256'), ('successor_path', 'successor_sha256')]:
+        assert hashlib.sha256((root / refresh[path_key]).read_bytes()).hexdigest() == refresh[hash_key]
+    assert json.loads((root / refresh['predecessor_path']).read_text()) == {'schema': scope.AUTHORITY_SCHEMA, 'accepted': [{'owner_receipt_sha256': record['owner_receipt_sha256'], 'identity_binding_sha256': record['identity_binding_sha256']}]}
+    assert refresh['native_owner_permission_unchanged'] is True
+    assert refresh['prior_pair_historical_only'] is True
+    assert refresh['allowance_reset_or_replenishment'] is False
+    assert refresh['workflow_identity_excludes_auth_session_and_retains_owner_user_title_package_counters'] is True
+    assert refresh['startup_policy_q8628_approved'] is False
+    assert refresh['runtime_execution_by_this_source_successor'] is False
     owner = json.loads((root / record['owner_permission_path']).read_text())
     assert owner['status'] == 'APPROVED' and owner['answer'] == 'Approve this bounded Sredni scope'
     assert owner['question_sha256'] == hashlib.sha256(owner['question'].encode()).hexdigest()
@@ -452,7 +466,8 @@ def test_committed_authority_binds_only_actual_approved_opaque_pair_and_preserve
     assert owner['startup_policy_q8628_approved'] is False
     assert owner['mutations_and_listening_require_merged_source_startup_recovery_india_rights'] is True
     assert json.loads((root / record['predecessor_path']).read_text()) == {'schema': scope.AUTHORITY_SCHEMA, 'accepted': []}
-    assert scope.load_authority() == {'schema': scope.AUTHORITY_SCHEMA, 'accepted': [{'owner_receipt_sha256': record['owner_receipt_sha256'], 'identity_binding_sha256': record['identity_binding_sha256']}]}
+    assert scope.load_authority() == {'schema': scope.AUTHORITY_SCHEMA, 'accepted': [{'owner_receipt_sha256': refresh['owner_receipt_sha256'], 'identity_binding_sha256': refresh['identity_binding_sha256']}]}
+    assert record['identity_binding_sha256'] not in [item['identity_binding_sha256'] for item in scope.load_authority()['accepted']]
     assert record['database_grant_playback_or_deployment_performed'] is False
     assert record['startup_policy_q8628_approved'] is False
     assert record['requires_actual_serving_startup_recovery_india_rights_and_execution_admission'] is True

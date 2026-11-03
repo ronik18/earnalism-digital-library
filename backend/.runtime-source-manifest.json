@@ -9515,7 +9515,7 @@
     {
       "path": "data/sredni_initial_review_authority.json",
       "bytes": 294,
-      "sha256": "eb3823307c922d8f67d34ebe7e134e9b651d3587c850e98cda4bf80c31add1ec"
+      "sha256": "f5b721f965ea85bb935fda491283e2ca7dbb72e304bf53950dc6331a3f90897e"
     },
     {
       "path": "demand_scoring.py",
@@ -9833,5 +9833,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "6903869ab50633b92d9a647559e2cc5d0fed4687116213f8dab7f1263c516383"
+  "expected_sha256": "509e8f7b438cc7b8ccd396a55b94af23d21200eaccc9c729e543443a931cc289"
 }
