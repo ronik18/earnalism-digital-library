@@ -211,5 +211,33 @@
     ],
     "current_repair": "One full sentence already generated under consumed grant; two local ASRs and approved auditory review recover all22words. Voice/expression/joins still held; do not request or run synthesis again."
   },
-  "private_draft_timing_preparation": "parallel-batch-20261101/sredni/timing-derivation-proof.json"
+  "private_draft_timing_preparation": "parallel-batch-20261101/sredni/timing-derivation-proof.json",
+  "prospective_source_qa_registration_20261103": {
+    "at": "2026-11-03T06:21:55.437480+00:00",
+    "lane": "Integration Lane exact retained Sredni source registration",
+    "decision": "ADOPT_RETAINED_VERSE_SCORED_INDIA_SOURCE_QA_WITHOUT_ACTIVATION",
+    "base_source": "8785dd86e7b528611d75365b0a279cfa5f96f7cb",
+    "scope": "PROSPECTIVE_SOURCE_QA_RIGHTS_AND_PACKAGE_PREPARATION_ONLY",
+    "slug": "sredni-vashtar",
+    "prepared_descriptor_predecessor": "13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab",
+    "source_qa_descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+    "native_human_mandate_sha256": "70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686",
+    "audio_use_record_sha256": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009",
+    "adoption_record_sha256": "58f5e10b65160b2991bab14e3902102ff829d24bcd0d6455f7aaadfb41623ed1",
+    "rights_review_sha256": "0e3980e010992eaaa6b74e66a0333996c7fbab51b8480161d385cb91b265bd57",
+    "audio": "Existing Verse full scored638105ms; listened8c767 metadata-only delivery60ce; actual PCM/encoded packet equality and17measured Reader cues from158rawblocks; all healthy narration preserved",
+    "quality": "Actual owner full10dimension9.8/overall9.8/confidence.98 and nine-wording/fatal replies retained; Integration did not invent scores or listen",
+    "engineering": "Original handler identity/path/testportability findings preserved. Corrected exact masters/manuscript/evidence/asset sets, every nonsymlink file ancestor, actual source span mapping, source-specific Verse AI/music publication tags, actual decodedPCM/packet recheck and supported package semantics. Source-only37testsPASS; actual20retained file references/fullbytes prepared4assets without synthetic trust. Prior external16test claim remains HOLD, not release proof.",
+    "rights": "Prospective delegated IN/audio_stream decision only; original Reader/cover rights and all accepted US records preserved. Verse API terms supplement separate from unchanged Cedar-worded general receipt.2036 is conservative inherited administrative cutoff, not copyright expiry or owner lifetime acceptance.",
+    "public_or_active_pointer_changed": false,
+    "provider_upload_or_execution": false,
+    "new_synthesis_allocation_spend_paid_session_credit_or_policy_changes": false,
+    "remaining_gates": [
+      "Exact-head source CI/reviews and match-head merge/tree equality",
+      "Real primary/DR immutable storage and final manifests",
+      "Separately qualified guarded runtime/source/current policy/recovery",
+      "Authorized protected player/accounting and actual public discovery/CTA/covers/credits/access"
+    ],
+    "next_exact_prompt": "Complete independent final source/learning review and required exact-head CI; source-only match-head merge then clean handoff to existing release owner. No source registration is LIVE."
+  }
 }

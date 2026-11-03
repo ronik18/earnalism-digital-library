@@ -1,0 +1,204 @@
+{
+  "status": "RAW_UNPROMPTED_TURBO_CONTEXT_NOT_LISTENING_ACCEPTANCE",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block039-157.805-168.605-exactPCM.wav",
+    "sha256": "5dd926887a747c47eb86b40019526b6e901ee15f935a6eaef432c62df2a1bf9e",
+    "bytes": 518444
+  },
+  "start_in_full": 157.805,
+  "end_in_full": 168.605,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 6.44,
+      "text": " iron bars. This was the abode of a large Polkak ferret, which a friendly butcher boy had once",
+      "avg_logprob": -0.1660698652267456,
+      "no_speech_prob": 1.4318544180186299e-12,
+      "words": [
+        {
+          "word": " iron",
+          "start": 0.0,
+          "end": 0.6,
+          "probability": 0.42984023690223694
+        },
+        {
+          "word": " bars.",
+          "start": 0.6,
+          "end": 1.12,
+          "probability": 0.9942184686660767
+        },
+        {
+          "word": " This",
+          "start": 1.36,
+          "end": 1.96,
+          "probability": 0.9891441464424133
+        },
+        {
+          "word": " was",
+          "start": 1.96,
+          "end": 2.12,
+          "probability": 0.9987743496894836
+        },
+        {
+          "word": " the",
+          "start": 2.12,
+          "end": 2.26,
+          "probability": 0.9977986216545105
+        },
+        {
+          "word": " abode",
+          "start": 2.26,
+          "end": 2.66,
+          "probability": 0.9993918836116791
+        },
+        {
+          "word": " of",
+          "start": 2.66,
+          "end": 2.8,
+          "probability": 0.9991043210029602
+        },
+        {
+          "word": " a",
+          "start": 2.8,
+          "end": 2.9,
+          "probability": 0.9965828061103821
+        },
+        {
+          "word": " large",
+          "start": 2.9,
+          "end": 3.26,
+          "probability": 0.9977905750274658
+        },
+        {
+          "word": " Polkak",
+          "start": 3.26,
+          "end": 3.84,
+          "probability": 0.7081410884857178
+        },
+        {
+          "word": " ferret,",
+          "start": 3.84,
+          "end": 4.22,
+          "probability": 0.9312840700149536
+        },
+        {
+          "word": " which",
+          "start": 4.34,
+          "end": 4.72,
+          "probability": 0.9984517097473145
+        },
+        {
+          "word": " a",
+          "start": 4.72,
+          "end": 4.86,
+          "probability": 0.999215841293335
+        },
+        {
+          "word": " friendly",
+          "start": 4.86,
+          "end": 5.24,
+          "probability": 0.9974986910820007
+        },
+        {
+          "word": " butcher",
+          "start": 5.24,
+          "end": 5.62,
+          "probability": 0.9434922933578491
+        },
+        {
+          "word": " boy",
+          "start": 5.62,
+          "end": 5.92,
+          "probability": 0.9373170733451843
+        },
+        {
+          "word": " had",
+          "start": 5.92,
+          "end": 6.16,
+          "probability": 0.9967840909957886
+        },
+        {
+          "word": " once",
+          "start": 6.16,
+          "end": 6.44,
+          "probability": 0.9971922039985657
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 6.44,
+      "end": 10.68,
+      "text": " smuggled, cage and all, into its present quarters, in exchange.",
+      "avg_logprob": -0.1660698652267456,
+      "no_speech_prob": 1.4318544180186299e-12,
+      "words": [
+        {
+          "word": " smuggled,",
+          "start": 6.44,
+          "end": 6.96,
+          "probability": 0.9985429843266805
+        },
+        {
+          "word": " cage",
+          "start": 7.1,
+          "end": 7.66,
+          "probability": 0.829525887966156
+        },
+        {
+          "word": " and",
+          "start": 7.66,
+          "end": 7.8,
+          "probability": 0.9955698847770691
+        },
+        {
+          "word": " all,",
+          "start": 7.8,
+          "end": 8.04,
+          "probability": 0.9996165037155151
+        },
+        {
+          "word": " into",
+          "start": 8.44,
+          "end": 8.62,
+          "probability": 0.9956414699554443
+        },
+        {
+          "word": " its",
+          "start": 8.62,
+          "end": 8.84,
+          "probability": 0.9863074421882629
+        },
+        {
+          "word": " present",
+          "start": 8.84,
+          "end": 9.22,
+          "probability": 0.9988887906074524
+        },
+        {
+          "word": " quarters,",
+          "start": 9.22,
+          "end": 9.66,
+          "probability": 0.9992031455039978
+        },
+        {
+          "word": " in",
+          "start": 9.88,
+          "end": 10.38,
+          "probability": 0.9970629811286926
+        },
+        {
+          "word": " exchange.",
+          "start": 10.38,
+          "end": 10.68,
+          "probability": 0.9550302028656006
+        }
+      ]
+    }
+  ],
+  "transcript": " iron bars. This was the abode of a large Polkak ferret, which a friendly butcher boy had once smuggled, cage and all, into its present quarters, in exchange.",
+  "language": "en",
+  "elapsed_seconds": 23.80080183300015,
+  "source_used_as_prompt": false
+}

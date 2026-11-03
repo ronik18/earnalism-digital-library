@@ -1,0 +1,17 @@
+{
+  "status": "LOCAL_SREDNI_SOURCE_QA_PREPARED_STORAGE_PENDING",
+  "actual_retained_files_bound": 20,
+  "original_frozen_bundle_sha256": "7bf0afd7d08441216d9bc860ba1c8adaae8c328b52fd37f3d0525989b6ecb2e4",
+  "explicit_local_transform": "Only local reference transport paths and prospective canonical source descriptor/package identity changed; original source/audio/frozen proposals preserved",
+  "input_bundle_sha256": "b6fee338e78cbc321a84f36ef9b92f56422a14864fcc644c38c1bde0b9249a31",
+  "descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+  "synthetic_trust": false,
+  "uploads": false,
+  "runtime_or_production_proof": false,
+  "outputs": {
+    "upload-plan.json": "3ecc799ea4a9704796a9e5dff0a8232dde02688202bbc43f71205b7eb78e6a04",
+    "release-descriptor.json": "d2f09568772157b575b4f490afb7c250ee131f10055932a7fff47e98666e5e71",
+    "package-semantics.json": "2959ad34aed5abf93b911afe899abbe1de40fc7a50047215e658fc91538c7612"
+  },
+  "actual_prospective_source_candidate_rights_and_adoption": true
+}

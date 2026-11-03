@@ -1,0 +1,43 @@
+{
+  "status": "PASS_FULL_UNCHANGED_PREFIX_SUFFIX_AND_EXACT_RETAINED_REPLACEMENT_TRANSFORM",
+  "original": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/original-retained.mp3",
+    "sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "bytes": 10190637
+  },
+  "corrected_dry": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/candidate-private.wav",
+    "sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+    "bytes": 30629084
+  },
+  "replacement_raw": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni/replacement-canonical.wav",
+    "sha256": "49c404c9de496a0e11463a1f4f874ca25e2078e040c5b6c6ed48a497c3cfb5bc",
+    "bytes": 460878
+  },
+  "actual_retained_splice_record": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/sentence-repair/splice-evidence.json",
+    "sha256": "924289209ca1c016f011bfbd37276ca2c845309797269c73f871c5bdb86ed159",
+    "bytes": 1093
+  },
+  "sample_rate": 24000,
+  "old_cut_frames": [
+    3590160,
+    3793800
+  ],
+  "new_cut_frames": [
+    3590160,
+    3824160
+  ],
+  "suffix_shift_frames": 30360,
+  "full_prefix_bytes_identical": true,
+  "full_suffix_bytes_identical": true,
+  "prefix_sha256": "911292d0ee94323645a2aa6064895d9a07f1d06fd5fa185003eae7a81de4ee60",
+  "suffix_sha256": "5817331506c73fff9ccaa115dd512c774e27d4faf0eeaec593445e5acba26939",
+  "approved_replacement_historical_gain_only": 1.0175769461346458,
+  "actual_padding_leading_zero_frames": 3600,
+  "inserted_region_matches_exact_retained_transform": true,
+  "time_stretch": false,
+  "new_gain_or_audio_edit_performed": false,
+  "raw_replacement_equality_not_claimed": "Retained historical replacement had documented1.0175769 gain;this proof reproduces it in memory only. First local check incorrectly assumed unity gain and wrote no proof; healthy PCM equality was already true."
+}

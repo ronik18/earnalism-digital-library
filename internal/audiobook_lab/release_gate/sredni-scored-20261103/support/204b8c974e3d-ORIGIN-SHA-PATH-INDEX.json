@@ -1,0 +1,49 @@
+{
+  "status": "EXACT_LOCAL_ORIGIN_LOCATORS_NO_NEW_ASR",
+  "by_sha256": {
+    "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-timing/candidate-draft-timestamps.json",
+      "bytes": 143745
+    },
+    "6c3592870a4fc8fcd8bbf94701e51a051a1c92eb38000e0ccded42d432fcdba4": {
+      "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/sredni-local-asr.json",
+      "bytes": 296119
+    },
+    "9e666287aa2cbdc4bda0b775fca56d8dc22e5c1628df8907b5393f67d03adcdb": {
+      "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/sredni-turbo-local-asr.json",
+      "bytes": 293875
+    },
+    "ebb655f02e2ec8e0a9830a6d02fb4d40c6f9a96fd3d2c8a9c9d3235b5d3acd3e": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/standalone-three-crosscheck-20261103/guardian-ASR-RAW.json",
+      "bytes": 5456
+    },
+    "65bc257589ed57885ff7d886eba7bec4e278463aff89a21f719c22f6fde27cbc": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/standalone-three-crosscheck-20261103/he-ASR-RAW.json",
+      "bytes": 3362
+    },
+    "f048cdc974b5f4a4e2c9bf9722a4c4d73ca671df4fff971a8a99b79673703ebb": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/standalone-three-crosscheck-20261103/that-ASR-RAW.json",
+      "bytes": 2836
+    },
+    "e3156234b6a36af2bf9bfda748df2492713be1942f4120ab4217793939f22028": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block013-ASR-RAW.json",
+      "bytes": 6010
+    },
+    "412a0ae6bb1a7113db3b1eacd4b406c7d9fa8ae0a35d233b661332f41e706578": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block039-ASR-RAW.json",
+      "bytes": 5271
+    },
+    "2561b346969bbfcfc8af115c8dd749ba8c7c080eb5798b94519ca75f6fb65ded": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block058-ASR-RAW.json",
+      "bytes": 5904
+    },
+    "38e3cd06a745c1464bb5283226bb18a48864cc9eac4d65d2cc360bc13acfa836": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/blocks041-042-ASR-RAW.json",
+      "bytes": 8893
+    },
+    "19280f221744848efb1f5eaa5a804fa9d07345480abe5f1c09271114d6316da9": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/zero-In-ASR-RAW.json",
+      "bytes": 4248
+    }
+  }
+}

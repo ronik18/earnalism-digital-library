@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
     "data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
     "backend/data/catalog_exclusions.json": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67",
-    "backend/data/rights_decision_registry.json": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54"
+    "backend/data/rights_decision_registry.json": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1"
   },
   "titles": {
     "a-ghost-story": {
@@ -1045,5 +1045,12 @@
   "open_window_private_stage_authority_successor_20261102": {
     "path": "internal/legal/catalogue_clearance_20261002/reviewed_open_window_private_stage_authority_successor_20261102.v1.json",
     "sha256": "e4813a8bfb53e028097379165ef7e5009466d298b79cc94c8805faf00365263f"
+  },
+  "sredni_scored_sourceqa_successor_20261103": {
+    "path": "internal/legal/catalogue_clearance_20261002/sredni_sourceqa_20261103/reviewed-sredni-sourceqa-successor.json",
+    "sha256": "0ceaca75fa2d84609ba164faf63d4cc9bdfc2737113ea94c5e92e302580bd7a0",
+    "predecessor_registry_sha256": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54",
+    "reviewed_registry_sha256": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1",
+    "source_qa_only_not_runtime_or_publication": true
   }
 }

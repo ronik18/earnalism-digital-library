@@ -1,0 +1,350 @@
+{
+  "status": "RAW_UNPROMPTED_TURBO_CONTEXT_NOT_LISTENING_ACCEPTANCE",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/blocks041-042-166.345-183.025-exactPCM.wav",
+    "sha256": "fd618541c791f29ad2ea8561dd5a96bcce6ae31dbd59a049ee1ee231386ccfcf",
+    "bytes": 800684
+  },
+  "start_in_full": 166.345,
+  "end_in_full": 183.025,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 5.12,
+      "text": " into its present quarters, in exchange for a long-secreted hoard of small silver.",
+      "avg_logprob": -0.4097214817172951,
+      "no_speech_prob": 7.729328787252354e-13,
+      "words": [
+        {
+          "word": " into",
+          "start": 0.0,
+          "end": 0.14,
+          "probability": 0.7912191152572632
+        },
+        {
+          "word": " its",
+          "start": 0.14,
+          "end": 0.32,
+          "probability": 0.9897040724754333
+        },
+        {
+          "word": " present",
+          "start": 0.32,
+          "end": 0.68,
+          "probability": 0.9967544674873352
+        },
+        {
+          "word": " quarters,",
+          "start": 0.68,
+          "end": 1.1,
+          "probability": 0.9988898634910583
+        },
+        {
+          "word": " in",
+          "start": 1.42,
+          "end": 1.84,
+          "probability": 0.9981118440628052
+        },
+        {
+          "word": " exchange",
+          "start": 1.84,
+          "end": 2.24,
+          "probability": 0.9991928935050964
+        },
+        {
+          "word": " for",
+          "start": 2.24,
+          "end": 2.56,
+          "probability": 0.9993033409118652
+        },
+        {
+          "word": " a",
+          "start": 2.56,
+          "end": 2.7,
+          "probability": 0.9987561702728271
+        },
+        {
+          "word": " long",
+          "start": 2.7,
+          "end": 3.0,
+          "probability": 0.9989272952079773
+        },
+        {
+          "word": "-secreted",
+          "start": 3.0,
+          "end": 3.58,
+          "probability": 0.9042045325040817
+        },
+        {
+          "word": " hoard",
+          "start": 3.58,
+          "end": 3.82,
+          "probability": 0.8877005577087402
+        },
+        {
+          "word": " of",
+          "start": 3.82,
+          "end": 4.3,
+          "probability": 0.9934810400009155
+        },
+        {
+          "word": " small",
+          "start": 4.3,
+          "end": 4.68,
+          "probability": 0.9776596426963806
+        },
+        {
+          "word": " silver.",
+          "start": 4.68,
+          "end": 5.12,
+          "probability": 0.9876973032951355
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 5.92,
+      "end": 11.36,
+      "text": " Conraddon was dreadfully afraid of the live Shark Fang beast, but it was his most treasured",
+      "avg_logprob": -0.4097214817172951,
+      "no_speech_prob": 7.729328787252354e-13,
+      "words": [
+        {
+          "word": " Conraddon",
+          "start": 5.92,
+          "end": 6.6,
+          "probability": 0.6582472721735636
+        },
+        {
+          "word": " was",
+          "start": 6.6,
+          "end": 6.78,
+          "probability": 0.9982892870903015
+        },
+        {
+          "word": " dreadfully",
+          "start": 6.78,
+          "end": 7.36,
+          "probability": 0.9977154731750488
+        },
+        {
+          "word": " afraid",
+          "start": 7.36,
+          "end": 7.68,
+          "probability": 0.9993630051612854
+        },
+        {
+          "word": " of",
+          "start": 7.68,
+          "end": 7.92,
+          "probability": 0.9994930028915405
+        },
+        {
+          "word": " the",
+          "start": 7.92,
+          "end": 8.02,
+          "probability": 0.9990009665489197
+        },
+        {
+          "word": " live",
+          "start": 8.02,
+          "end": 8.36,
+          "probability": 0.9639765620231628
+        },
+        {
+          "word": " Shark",
+          "start": 8.36,
+          "end": 8.68,
+          "probability": 0.441189706325531
+        },
+        {
+          "word": " Fang",
+          "start": 8.68,
+          "end": 9.02,
+          "probability": 0.5958011746406555
+        },
+        {
+          "word": " beast,",
+          "start": 9.02,
+          "end": 9.4,
+          "probability": 0.521728515625
+        },
+        {
+          "word": " but",
+          "start": 9.64,
+          "end": 10.12,
+          "probability": 0.99918133020401
+        },
+        {
+          "word": " it",
+          "start": 10.12,
+          "end": 10.2,
+          "probability": 0.9957861304283142
+        },
+        {
+          "word": " was",
+          "start": 10.2,
+          "end": 10.34,
+          "probability": 0.9991829991340637
+        },
+        {
+          "word": " his",
+          "start": 10.34,
+          "end": 10.5,
+          "probability": 0.997495174407959
+        },
+        {
+          "word": " most",
+          "start": 10.5,
+          "end": 10.82,
+          "probability": 0.9983853101730347
+        },
+        {
+          "word": " treasured",
+          "start": 10.82,
+          "end": 11.36,
+          "probability": 0.9976140856742859
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 11.36,
+      "end": 11.78,
+      "text": " possession.",
+      "avg_logprob": -0.4097214817172951,
+      "no_speech_prob": 7.729328787252354e-13,
+      "words": [
+        {
+          "word": " possession.",
+          "start": 11.36,
+          "end": 11.78,
+          "probability": 0.997159481048584
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 12.24,
+      "end": 16.66,
+      "text": " Its very presence in the toolshed was a secret and fearful joy to be able to find out.",
+      "avg_logprob": -0.4097214817172951,
+      "no_speech_prob": 7.729328787252354e-13,
+      "words": [
+        {
+          "word": " Its",
+          "start": 12.24,
+          "end": 12.88,
+          "probability": 0.966550886631012
+        },
+        {
+          "word": " very",
+          "start": 12.88,
+          "end": 13.22,
+          "probability": 0.9990517497062683
+        },
+        {
+          "word": " presence",
+          "start": 13.22,
+          "end": 13.68,
+          "probability": 0.9987053871154785
+        },
+        {
+          "word": " in",
+          "start": 13.68,
+          "end": 13.86,
+          "probability": 0.9986769556999207
+        },
+        {
+          "word": " the",
+          "start": 13.86,
+          "end": 13.94,
+          "probability": 0.9972010850906372
+        },
+        {
+          "word": " toolshed",
+          "start": 13.94,
+          "end": 14.5,
+          "probability": 0.7914381126562754
+        },
+        {
+          "word": " was",
+          "start": 14.5,
+          "end": 14.68,
+          "probability": 0.9986936450004578
+        },
+        {
+          "word": " a",
+          "start": 14.68,
+          "end": 14.84,
+          "probability": 0.9987815022468567
+        },
+        {
+          "word": " secret",
+          "start": 14.84,
+          "end": 15.18,
+          "probability": 0.9959372282028198
+        },
+        {
+          "word": " and",
+          "start": 15.18,
+          "end": 15.42,
+          "probability": 0.9978551268577576
+        },
+        {
+          "word": " fearful",
+          "start": 15.42,
+          "end": 15.78,
+          "probability": 0.9924780130386353
+        },
+        {
+          "word": " joy",
+          "start": 15.78,
+          "end": 16.26,
+          "probability": 0.9938411712646484
+        },
+        {
+          "word": " to",
+          "start": 16.26,
+          "end": 16.66,
+          "probability": 0.46749553084373474
+        },
+        {
+          "word": " be",
+          "start": 16.66,
+          "end": 16.66,
+          "probability": 0.060279879719018936
+        },
+        {
+          "word": " able",
+          "start": 16.66,
+          "end": 16.66,
+          "probability": 0.10330330580472946
+        },
+        {
+          "word": " to",
+          "start": 16.66,
+          "end": 16.66,
+          "probability": 0.9477455019950867
+        },
+        {
+          "word": " find",
+          "start": 16.66,
+          "end": 16.66,
+          "probability": 0.07962079346179962
+        },
+        {
+          "word": " out.",
+          "start": 16.66,
+          "end": 16.66,
+          "probability": 0.07824012637138367
+        }
+      ]
+    }
+  ],
+  "transcript": " into its present quarters, in exchange for a long-secreted hoard of small silver. Conraddon was dreadfully afraid of the live Shark Fang beast, but it was his most treasured possession. Its very presence in the toolshed was a secret and fearful joy to be able to find out.",
+  "language": "en",
+  "elapsed_seconds": 23.090129749994958,
+  "source_used_as_prompt": false
+}

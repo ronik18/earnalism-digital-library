@@ -1,0 +1,162 @@
+{
+  "status": "RAW_UNPROMPTED_TURBO_CONTEXT_NOT_LISTENING_ACCEPTANCE",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/zero-In-111.500-119.500-exactPCM.wav",
+    "sha256": "d6fec59bddf65345d24132120ba487a4480ba1632fa96385b72a4fc0de00879e",
+    "bytes": 384044
+  },
+  "start_in_full": 111.5,
+  "end_in_full": 119.5,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 5.62,
+      "text": " offered 10 shillings for their entire yearly produce. In a forgotten corner, however, almost",
+      "avg_logprob": -0.15602407199995857,
+      "no_speech_prob": 8.716185325580161e-13,
+      "words": [
+        {
+          "word": " offered",
+          "start": 0.0,
+          "end": 0.14,
+          "probability": 0.23856674134731293
+        },
+        {
+          "word": " 10",
+          "start": 0.14,
+          "end": 0.36,
+          "probability": 0.6340404748916626
+        },
+        {
+          "word": " shillings",
+          "start": 0.36,
+          "end": 0.84,
+          "probability": 0.995444635550181
+        },
+        {
+          "word": " for",
+          "start": 0.84,
+          "end": 1.16,
+          "probability": 0.993648111820221
+        },
+        {
+          "word": " their",
+          "start": 1.16,
+          "end": 1.32,
+          "probability": 0.9986710548400879
+        },
+        {
+          "word": " entire",
+          "start": 1.32,
+          "end": 1.68,
+          "probability": 0.9979039430618286
+        },
+        {
+          "word": " yearly",
+          "start": 1.68,
+          "end": 2.06,
+          "probability": 0.9993823766708374
+        },
+        {
+          "word": " produce.",
+          "start": 2.06,
+          "end": 2.52,
+          "probability": 0.998563826084137
+        },
+        {
+          "word": " In",
+          "start": 2.88,
+          "end": 3.56,
+          "probability": 0.9934872388839722
+        },
+        {
+          "word": " a",
+          "start": 3.56,
+          "end": 3.64,
+          "probability": 0.9947362542152405
+        },
+        {
+          "word": " forgotten",
+          "start": 3.64,
+          "end": 4.02,
+          "probability": 0.9374045133590698
+        },
+        {
+          "word": " corner,",
+          "start": 4.02,
+          "end": 4.44,
+          "probability": 0.9987655878067017
+        },
+        {
+          "word": " however,",
+          "start": 4.54,
+          "end": 4.8,
+          "probability": 0.9986866116523743
+        },
+        {
+          "word": " almost",
+          "start": 5.28,
+          "end": 5.62,
+          "probability": 0.9973498582839966
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 5.62,
+      "end": 7.94,
+      "text": " hidden behind a dismal shrubbery, was a",
+      "avg_logprob": -0.15602407199995857,
+      "no_speech_prob": 8.716185325580161e-13,
+      "words": [
+        {
+          "word": " hidden",
+          "start": 5.62,
+          "end": 5.92,
+          "probability": 0.9990845918655396
+        },
+        {
+          "word": " behind",
+          "start": 5.92,
+          "end": 6.22,
+          "probability": 0.9990850687026978
+        },
+        {
+          "word": " a",
+          "start": 6.22,
+          "end": 6.42,
+          "probability": 0.9991058707237244
+        },
+        {
+          "word": " dismal",
+          "start": 6.42,
+          "end": 6.78,
+          "probability": 0.9986705780029297
+        },
+        {
+          "word": " shrubbery,",
+          "start": 6.78,
+          "end": 7.26,
+          "probability": 0.998974064985911
+        },
+        {
+          "word": " was",
+          "start": 7.44,
+          "end": 7.84,
+          "probability": 0.9992907047271729
+        },
+        {
+          "word": " a",
+          "start": 7.84,
+          "end": 7.94,
+          "probability": 0.9864270091056824
+        }
+      ]
+    }
+  ],
+  "transcript": " offered 10 shillings for their entire yearly produce. In a forgotten corner, however, almost hidden behind a dismal shrubbery, was a",
+  "language": "en",
+  "elapsed_seconds": 17.87028345800354,
+  "source_used_as_prompt": false
+}

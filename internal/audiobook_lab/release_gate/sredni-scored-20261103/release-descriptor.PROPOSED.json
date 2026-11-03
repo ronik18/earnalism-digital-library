@@ -1,0 +1,69 @@
+{
+  "schema_version": "audiobook_release_descriptor.v1",
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar",
+  "author": "Saki",
+  "controlled_source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "master_wav_sha256": "8e95f3d76d21fc2be34a15f719d9be15d8caa76cffe7d359375cd3d90edecc2f",
+  "master_mp3_sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+  "listened_master_mp3_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+  "duration_ms": 638105,
+  "master_samples": 30629040,
+  "sample_rate": 48000,
+  "channels": 2,
+  "generation": {
+    "provider": "owner_retained_openai_api",
+    "model_id": "gpt-4o-mini-tts",
+    "model_revision": null,
+    "voice": "verse",
+    "stock_voice": true,
+    "new_synthesis_or_allocations": 0
+  },
+  "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+  "highlight_sync_enabled": false,
+  "reader_paragraph_map_sha256": "75a9fca9d134faaf4c1d589484aa11e746c81a499538de32c834f40f1743da03",
+  "source_units_sha256": "db0dd42d442771209f07447860f649188fa21b964398451bf8844a808a1a44e4",
+  "measured_alignment_sha256": "e79e19ab116284541de0343319e27870c2f0b8bc343b59ec56d88e7732923229",
+  "evidence_sha256": {
+    "generation_provenance": "633849e96770272e9160cca11fb66333f8e8b0392f71f4796de92cff073e7004",
+    "objective_qa": "066b9b35373d3313a25c66acc2ce883d88264db9f34a72325e4e8c3b08090b3c",
+    "material_wording_review": "5984f7b0b8490ffb7734cd1708f7130a8bae88e8e7792abe58feb519f3598182",
+    "voice_direction_acceptance": "98f749030fda3e145218aa38d5a89a96d44939f80f5030b8954db19a462aee72",
+    "model_voice_licence": "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+    "source_edition": "26f6454243b971c70b7ac3d1dad29cf28e833c4731a0d8b1185d3ad2f191a6ec",
+    "cover_reuse": "0c1d19636d8a5916772a8af82e3d945c6a78456b8a7fff8f9cefca21205db8c3",
+    "producer_authority": "a748c9a86be4efb83bd2cb15f9ce94d32434dda476b11a1427ea6bbf39ce7566",
+    "scored_mix_acceptance": "a0f1e1c3b36fe1f7cf92ebfce9f2e684c5cb4db2ca1006bc9e8200d7dec8e57e",
+    "music_rights": "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+    "measured_alignment": "e79e19ab116284541de0343319e27870c2f0b8bc343b59ec56d88e7732923229",
+    "container_metadata_reuse": "e095f10f8ba208c1274739f646803668455c8fa71f8cad4b5a3c9e7cef1ff93f"
+  },
+  "known_release_blockers": [
+    "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+    "PRIVATE_B2_DR_REPLICA_REQUIRED",
+    "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+  ],
+  "release_candidate_status": "SREDNI_SCORED_SOURCE_FACTS_COMPLETE_REGISTRY_REVIEW_PENDING",
+  "release_candidate_evidence": {
+    "acceptance_policy": "sredni_scored_retained_owner_adjudicated.v1",
+    "status": "SOURCE_QA_PROPOSED_NOT_REGISTERED",
+    "all_release_gates_passed": false,
+    "human_scores": {
+      "naturalness": 9.8,
+      "pronunciation": 9.8,
+      "emotion": 9.8,
+      "grammatical_pauses": 9.8,
+      "pacing": 9.8,
+      "voice_continuity": 9.8,
+      "nonrobotic_texture": 9.8,
+      "joins": 9.8,
+      "enjoyment": 9.8,
+      "clarity": 9.8
+    },
+    "overall": 9.8,
+    "confidence": 0.98,
+    "highlight_sync_enabled": false
+  }
+}

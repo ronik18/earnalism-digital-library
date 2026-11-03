@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T09:33:44Z",
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar",
+  "owner_decision": "AUTHORIZE_EOD_GO_LIVE_FOR_SPRINT1_DIGITAL_READERS_AND_APPROVED_AUDIO_ONLY_WITH_ONE_BOUNDED_SREDNI_REUSE_STRETCH",
+  "status": "RELEASE_SOURCE_APPROVED_DEPLOYMENT_RETRY_REQUIRED",
+  "candidate": {
+    "candidate_id": "candidate-61355c7842dbcbae",
+    "dedup_group_id": "dedup-4fb10f2026b8c586",
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "style": "classic_literary_narrator",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "size_bytes": 10190637,
+    "duration_seconds": 636.84,
+    "new_tts_ran_this_stage": false
+  },
+  "measured_quality": {
+    "asr_source_score": 9.8426,
+    "asr_source_threshold": 9.7,
+    "first_words_match": true,
+    "last_words_match": true,
+    "listening_sample_scores": [9.4, 9.4, 9.4, 9.5, 9.4, 9.4],
+    "minimum_listening_score": 9.4,
+    "minimum_confidence": 0.95,
+    "fatal_flags": [],
+    "sync_score": 9.7997,
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "public_sync_mode": "section_following",
+    "auto_estimated_sync": false,
+    "deterministic_10_of_10_claimed": false
+  },
+  "sidecars": {
+    "timestamps": {
+      "sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+      "word_count": 1789,
+      "alignment_method": "openai_verbose_json_word_timestamps"
+    },
+    "vtt": {
+      "sha256": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
+      "cue_count": 1789
+    },
+    "chapters": {
+      "sha256": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
+      "chapter_count": 1
+    },
+    "meta": {
+      "sha256": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
+    },
+    "stale_piper_sidecars_used": false,
+    "validation": "PASS"
+  },
+  "upload": {
+    "status": "UPLOADED_CHECKSUM_VERIFIED",
+    "storage_backend": "b2_s3",
+    "mp3_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "all_five_remote_hashes_match": true,
+    "direct_range_http_status": 206,
+    "direct_range_bytes": 1024,
+    "estimated_cost_usd": 0.0
+  },
+  "release_gates": {
+    "reader_route": "PASS",
+    "source_rights": "PASS",
+    "sanitation": "PASS",
+    "cover": "PASS",
+    "source_binding": "PASS",
+    "technical_audio_qa": "PASS",
+    "asr_source": "PASS",
+    "first_last": "PASS",
+    "listening_qa": "PASS",
+    "sidecars": "PASS",
+    "manifest": "PASS",
+    "upload_checksum": "PASS",
+    "direct_endpoint_range": "PASS",
+    "frontend_release_state_local": "PASS",
+    "production_api_ui": "BLOCKED_RAILWAY_ARCHIVE_UPLOAD_HTTP_500"
+  },
+  "release_truth": {
+    "static_audio_fallback": false,
+    "browser_speech_fallback": false,
+    "word_level_sync_claim": false,
+    "nonapproved_audioobject": false,
+    "private_audio_committed_to_frontend": false
+  },
+  "paid_tts_lock": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "restored_byte_for_byte": true
+  },
+  "deployment": {
+    "release_pr": 121,
+    "release_source_commit": "b337300763b874b434938ee09519208512be34bb",
+    "railway_project_id": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "railway_environment": "production",
+    "railway_service": "earnalism",
+    "attempted_from_backend_root": true,
+    "result": "ARCHIVE_UPLOAD_HTTP_500",
+    "production_manifest_audio_enabled": false,
+    "production_audiobook_proxy_http": 404,
+    "fail_closed": true
+  },
+  "blockers": [
+    "RAILWAY_BACKEND_ARCHIVE_UPLOAD_RETURNED_HTTP_500; MERGED RELEASE SOURCE HAS NOT REACHED PRODUCTION"
+  ],
+  "next_command": "cd /tmp/earnalism-eod-go-live/backend && railway up . --path-as-root --project a8533934-35c4-463e-9f43-577a9ac391ee --environment production --service earnalism --ci --message 'Retry Sredni Vashtar approved reuse package b337300 from backend root'"
+}

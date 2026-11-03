@@ -1,0 +1,211 @@
+{
+  "schema": "earnalism.retained_standalone_word_raw_ASR.v1",
+  "status": "RAW_UNPROMPTED_RESULT_NOT_LISTENING_ACCEPTANCE",
+  "label_for_postcomparison_only": "guardian",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/standalone-three-crosscheck-20261103/guardian-296.505-303.385-exactPCM.wav",
+    "sha256": "b8d25033d173f40526ee12fb42654e1fcea9b950e240cf7c8ef30bbb767294d6",
+    "bytes": 330284
+  },
+  "start_in_full": 296.505,
+  "end_in_full": 303.385,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 3.46,
+      "text": " Tom Radden's absorption in the tool shed began to attract the notice of his guardian.",
+      "avg_logprob": -0.18479015506230867,
+      "no_speech_prob": 0.035905033349990845,
+      "words": [
+        {
+          "word": " Tom",
+          "start": 0.0,
+          "end": 0.14,
+          "probability": 0.8529633283615112
+        },
+        {
+          "word": " Radden's",
+          "start": 0.14,
+          "end": 0.48,
+          "probability": 0.7283677458763123
+        },
+        {
+          "word": " absorption",
+          "start": 0.48,
+          "end": 0.84,
+          "probability": 0.9685490131378174
+        },
+        {
+          "word": " in",
+          "start": 0.84,
+          "end": 1.08,
+          "probability": 0.9971175193786621
+        },
+        {
+          "word": " the",
+          "start": 1.08,
+          "end": 1.2,
+          "probability": 0.9970519542694092
+        },
+        {
+          "word": " tool",
+          "start": 1.2,
+          "end": 1.38,
+          "probability": 0.6361179947853088
+        },
+        {
+          "word": " shed",
+          "start": 1.38,
+          "end": 1.64,
+          "probability": 0.9112088680267334
+        },
+        {
+          "word": " began",
+          "start": 1.64,
+          "end": 1.9,
+          "probability": 0.9946787357330322
+        },
+        {
+          "word": " to",
+          "start": 1.9,
+          "end": 2.1,
+          "probability": 0.9995759129524231
+        },
+        {
+          "word": " attract",
+          "start": 2.1,
+          "end": 2.38,
+          "probability": 0.9987793564796448
+        },
+        {
+          "word": " the",
+          "start": 2.38,
+          "end": 2.56,
+          "probability": 0.9965760111808777
+        },
+        {
+          "word": " notice",
+          "start": 2.56,
+          "end": 2.8,
+          "probability": 0.9931946992874146
+        },
+        {
+          "word": " of",
+          "start": 2.8,
+          "end": 3.0,
+          "probability": 0.9993353486061096
+        },
+        {
+          "word": " his",
+          "start": 3.0,
+          "end": 3.14,
+          "probability": 0.9988747239112854
+        },
+        {
+          "word": " guardian.",
+          "start": 3.14,
+          "end": 3.46,
+          "probability": 0.8328024744987488
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 4.1,
+      "end": 6.74,
+      "text": " It is not good for him to be pottering down there in all weather.",
+      "avg_logprob": -0.18479015506230867,
+      "no_speech_prob": 0.035905033349990845,
+      "words": [
+        {
+          "word": " It",
+          "start": 4.1,
+          "end": 4.2,
+          "probability": 0.9700247049331665
+        },
+        {
+          "word": " is",
+          "start": 4.2,
+          "end": 4.32,
+          "probability": 0.9970809817314148
+        },
+        {
+          "word": " not",
+          "start": 4.32,
+          "end": 4.56,
+          "probability": 0.9960022568702698
+        },
+        {
+          "word": " good",
+          "start": 4.56,
+          "end": 4.8,
+          "probability": 0.9989030361175537
+        },
+        {
+          "word": " for",
+          "start": 4.8,
+          "end": 5.0,
+          "probability": 0.9985388517379761
+        },
+        {
+          "word": " him",
+          "start": 5.0,
+          "end": 5.14,
+          "probability": 0.9993892908096313
+        },
+        {
+          "word": " to",
+          "start": 5.14,
+          "end": 5.26,
+          "probability": 0.9984337687492371
+        },
+        {
+          "word": " be",
+          "start": 5.26,
+          "end": 5.4,
+          "probability": 0.9982466697692871
+        },
+        {
+          "word": " pottering",
+          "start": 5.4,
+          "end": 5.78,
+          "probability": 0.9568750262260437
+        },
+        {
+          "word": " down",
+          "start": 5.78,
+          "end": 6.04,
+          "probability": 0.9982243180274963
+        },
+        {
+          "word": " there",
+          "start": 6.04,
+          "end": 6.24,
+          "probability": 0.9988515377044678
+        },
+        {
+          "word": " in",
+          "start": 6.24,
+          "end": 6.38,
+          "probability": 0.9704054594039917
+        },
+        {
+          "word": " all",
+          "start": 6.38,
+          "end": 6.54,
+          "probability": 0.9984692931175232
+        },
+        {
+          "word": " weather.",
+          "start": 6.54,
+          "end": 6.74,
+          "probability": 0.9904780387878418
+        }
+      ]
+    }
+  ],
+  "transcript": " Tom Radden's absorption in the tool shed began to attract the notice of his guardian. It is not good for him to be pottering down there in all weather.",
+  "elapsed_seconds": 3.5184988750115735,
+  "source_used_as_prompt": false
+}

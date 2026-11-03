@@ -1,0 +1,41 @@
+{
+  "source": "https://incompetech.com/music/royalty-free/pieces.json",
+  "catalogue_sha256": "54802ad340562624b9d1c9c97aa9f005e2b9bf79001f8a1a07ed857e68b2164a",
+  "catalogue_bytes": 881512,
+  "selected": [
+    {
+      "title": "Heartbreaking",
+      "filename": "Heartbreaking.mp3",
+      "length": "00:01:36",
+      "instruments": "Piano",
+      "genre": "5",
+      "bpm": "72",
+      "description": "Disappointment from hope.",
+      "feel": "Calming, Somber",
+      "uploaded": "2007-01-01",
+      "isrc": "USUAN1100208",
+      "collection": "13",
+      "sheetmusic": null,
+      "video": null,
+      "itunes": "https://itunes.apple.com/us/album/heartbreaking/id945137818?i=945137828",
+      "filmmusicURL": "https://incompetech.filmmusic.io/song/3863-heartbreaking/"
+    },
+    {
+      "title": "Heartwarming",
+      "filename": "Heartwarming.mp3",
+      "length": "00:01:12",
+      "instruments": "Piano",
+      "genre": "5",
+      "bpm": "82",
+      "description": "Quick and flowing like water, the piano is warm and bright, perfect for a romantic comedy or tender interlude. The melody is sweet and repeated four times in different refrains. First at the main register, then an octave lower at 0:12. After the bridge interlude at 0:23, the melody resumes at 0:35, and at 0:49 plays in a higher register, then slows to the final arpeggiated resolve.",
+      "feel": "Bouncy, Bright, Uplifting",
+      "uploaded": "2007-01-01",
+      "isrc": "USUAN1100207",
+      "collection": "2",
+      "sheetmusic": null,
+      "video": null,
+      "itunes": "https://itunes.apple.com/us/album/heartwarming/id945134234?i=945134249",
+      "filmmusicURL": "https://incompetech.filmmusic.io/song/3864-heartwarming/"
+    }
+  ]
+}

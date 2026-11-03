@@ -1,0 +1,48 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "voice_direction_acceptance",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "voice": "verse",
+    "model": "gpt-4o-mini-tts",
+    "full_book_scores": {
+      "naturalness": 9.8,
+      "pronunciation": 9.8,
+      "emotion": 9.8,
+      "grammatical_pauses": 9.8,
+      "pacing": 9.8,
+      "voice_continuity": 9.8,
+      "nonrobotic_texture": 9.8,
+      "joins": 9.8,
+      "enjoyment": 9.8,
+      "clarity": 9.8
+    },
+    "overall": 9.8,
+    "confidence": 0.98,
+    "all_fatal_flags_false": {
+      "robotic_texture_detected": false,
+      "mechanical_cadence_detected": false,
+      "list_reading_rhythm_detected": false,
+      "choppy_joins_detected": false,
+      "unintended_change_of_narrator_detected": false
+    },
+    "selection_reason": "Reuse exact complete stockVerse recording qualified by genuine9.8 fullscored review;warm intimate restrained dark irony,consistent humanlike storytelling;no unapproved cast,cheaper than regeneration"
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/3fdbdb790bcf-SREDNI-FOUR-CONFIRMATIONS.json",
+      "sha256": "3fdbdb790bcf21288cee948e49c699fbc411fe5c6fdc9d2bc35ee9c67ba69f4b",
+      "bytes": 1322
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/f49328353c0b-SREDNI-NINE-WORDING-AND-FATAL-FLAGS-ACCEPTED.json",
+      "sha256": "f49328353c0bef72e6a45d20cdecbc940bb0d78c8ceac6d181f57ad9bb52adad",
+      "bytes": 1336
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/30c25580bbd4-sredni-vashtar_release_gate_evidence.json",
+      "sha256": "30c25580bbd404c449e73fbd8b071ac81542c2af12d5712e57b0f7b86f2bdc6d",
+      "bytes": 4116
+    }
+  ]
+}

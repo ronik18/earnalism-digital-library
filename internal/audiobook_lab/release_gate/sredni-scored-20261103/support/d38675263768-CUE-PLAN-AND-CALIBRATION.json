@@ -1,0 +1,289 @@
+{
+  "schema": "earnalism.sredni_measured_private_score_plan.v1",
+  "status": "MEASURED_PRIVATE_CUES_NOT_AUDIBILITY_OR_FIDELITY_PASS",
+  "dry_sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+  "timing_sha256": "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469",
+  "canonical_chapter_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "timing_record_source_hash": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "source_hash_lineage_and_full_alignment": "UNVERIFIED_DIFFERENT_HASH_FIELDS_NOT_SILENTLY_RELABELLED",
+  "boundaries": "Retained measured word times exact matching phrase anchors; no proportional/estimated timing. Structural full source mapping remains unverified.",
+  "regions": [
+    {
+      "id": "r01",
+      "start": 0,
+      "end": 86.54,
+      "relative_gain_dB": -3,
+      "purpose": "Confinement, doctor and guardian; quiet detached unease"
+    },
+    {
+      "id": "r02",
+      "start": 86.54,
+      "end": 114.98,
+      "relative_gain_dB": -4,
+      "purpose": "Cheerless garden and the approaching private refuge"
+    },
+    {
+      "id": "r03",
+      "start": 114.98,
+      "end": 144,
+      "relative_gain_dB": -5,
+      "purpose": "Brief tender contrast for the imagined sanctuary and hen"
+    },
+    {
+      "id": "r04",
+      "start": 144,
+      "end": 170,
+      "relative_gain_dB": null,
+      "purpose": "INTENTIONAL DRY REPAIR WINDOW: corrected hutch sentence and both joins exposed"
+    },
+    {
+      "id": "r05",
+      "start": 170,
+      "end": 273.745,
+      "relative_gain_dB": -2,
+      "purpose": "Secret ferret cult and understated nutmeg irony; no horror sting"
+    },
+    {
+      "id": "r06",
+      "start": 273.745,
+      "end": 295.165,
+      "relative_gain_dB": -4,
+      "purpose": "Childlike private humour; restrained, not comic announcement"
+    },
+    {
+      "id": "r07",
+      "start": 295.165,
+      "end": 325.557,
+      "relative_gain_dB": -1,
+      "purpose": "The hen is taken; loss accumulates without melodrama"
+    },
+    {
+      "id": "r08",
+      "start": 325.557,
+      "end": 334.5,
+      "relative_gain_dB": null,
+      "purpose": "INTENTIONAL SILENCE for speechless grief and the small qualm"
+    },
+    {
+      "id": "r09",
+      "start": 334.5,
+      "end": 398.577,
+      "relative_gain_dB": -3,
+      "purpose": "Toast withheld and repeated private prayer"
+    },
+    {
+      "id": "r10",
+      "start": 398.577,
+      "end": 489.093,
+      "relative_gain_dB": 0,
+      "purpose": "Invasion of the sanctuary and the boy\u2019s threatened defeat"
+    },
+    {
+      "id": "r11",
+      "start": 489.093,
+      "end": 504.513,
+      "relative_gain_dB": -5,
+      "purpose": "Defiant hymn remains spoken narration; no added chant or voices"
+    },
+    {
+      "id": "r12",
+      "start": 504.513,
+      "end": 518,
+      "relative_gain_dB": null,
+      "purpose": "INTENTIONAL SILENCE as chanting stops and waiting begins"
+    },
+    {
+      "id": "r13",
+      "start": 518,
+      "end": 554.393,
+      "relative_gain_dB": -2,
+      "purpose": "Measured waiting and hope; do not preannounce outcome"
+    },
+    {
+      "id": "r14",
+      "start": 554.393,
+      "end": 569.5,
+      "relative_gain_dB": null,
+      "purpose": "INTENTIONAL SILENCE for the animal\u2019s emergence and stained jaws"
+    },
+    {
+      "id": "r15",
+      "start": 569.5,
+      "end": 587.293,
+      "relative_gain_dB": -5,
+      "purpose": "Passing of the ferret and ordinary tea invitation"
+    },
+    {
+      "id": "r16",
+      "start": 587.293,
+      "end": 638.105,
+      "relative_gain_dB": -5,
+      "purpose": "Cold understated toast irony, no triumphal musical resolution"
+    }
+  ],
+  "silences": [
+    {
+      "region": "r04",
+      "start_seconds": 144,
+      "end_seconds": 170,
+      "reason": "INTENTIONAL DRY REPAIR WINDOW: corrected hutch sentence and both joins exposed"
+    },
+    {
+      "region": "r08",
+      "start_seconds": 325.557,
+      "end_seconds": 334.5,
+      "reason": "INTENTIONAL SILENCE for speechless grief and the small qualm"
+    },
+    {
+      "region": "r12",
+      "start_seconds": 504.513,
+      "end_seconds": 518,
+      "reason": "INTENTIONAL SILENCE as chanting stops and waiting begins"
+    },
+    {
+      "region": "r14",
+      "start_seconds": 554.393,
+      "end_seconds": 569.5,
+      "reason": "INTENTIONAL SILENCE for the animal\u2019s emergence and stained jaws"
+    }
+  ],
+  "music_loops": [
+    {
+      "mix_start": 0.0,
+      "mix_end": 96.048,
+      "source_start": 0.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 92.048,
+      "mix_end": 176.096,
+      "source_start": 12.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 172.096,
+      "mix_end": 268.144,
+      "source_start": 0.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 264.144,
+      "mix_end": 336.192,
+      "source_start": 24.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 332.192,
+      "mix_end": 428.24,
+      "source_start": 0.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 424.24,
+      "mix_end": 508.288,
+      "source_start": 12.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 504.288,
+      "mix_end": 600.336,
+      "source_start": 0.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    },
+    {
+      "mix_start": 596.336,
+      "mix_end": 638.105,
+      "source_start": 0.0,
+      "track": "Heartbreaking",
+      "crossfade_seconds": 4
+    }
+  ],
+  "calibration": [
+    {
+      "region": "r01",
+      "speech_active_median_RMS_dBFS": -26.468468566559743,
+      "music_target_RMS_dBFS": -48.46846856655975,
+      "gain_dB": -12.63895271825149
+    },
+    {
+      "region": "r02",
+      "speech_active_median_RMS_dBFS": -26.638198760445803,
+      "music_target_RMS_dBFS": -49.6381987604458,
+      "gain_dB": -12.593046722253208
+    },
+    {
+      "region": "r03",
+      "speech_active_median_RMS_dBFS": -25.798303946827332,
+      "music_target_RMS_dBFS": -49.79830394682733,
+      "gain_dB": -13.939986617352577
+    },
+    {
+      "region": "r05",
+      "speech_active_median_RMS_dBFS": -26.593832024509506,
+      "music_target_RMS_dBFS": -47.59383202450951,
+      "gain_dB": -11.172191837278074
+    },
+    {
+      "region": "r06",
+      "speech_active_median_RMS_dBFS": -27.0187886338873,
+      "music_target_RMS_dBFS": -50.0187886338873,
+      "gain_dB": -14.410772245621605
+    },
+    {
+      "region": "r07",
+      "speech_active_median_RMS_dBFS": -25.549201972422182,
+      "music_target_RMS_dBFS": -45.54920197242218,
+      "gain_dB": -8.481027255328662
+    },
+    {
+      "region": "r09",
+      "speech_active_median_RMS_dBFS": -25.811200610628433,
+      "music_target_RMS_dBFS": -47.81120061062843,
+      "gain_dB": -12.209730839224552
+    },
+    {
+      "region": "r10",
+      "speech_active_median_RMS_dBFS": -25.923339124511486,
+      "music_target_RMS_dBFS": -44.92333912451148,
+      "gain_dB": -8.498901612975159
+    },
+    {
+      "region": "r11",
+      "speech_active_median_RMS_dBFS": -25.446185523735593,
+      "music_target_RMS_dBFS": -49.44618552373559,
+      "gain_dB": -6.698749950482431
+    },
+    {
+      "region": "r13",
+      "speech_active_median_RMS_dBFS": -26.08099337136788,
+      "music_target_RMS_dBFS": -47.08099337136788,
+      "gain_dB": -12.208889205131594
+    },
+    {
+      "region": "r15",
+      "speech_active_median_RMS_dBFS": -26.288341661555886,
+      "music_target_RMS_dBFS": -50.28834166155589,
+      "gain_dB": -13.563014661580945
+    },
+    {
+      "region": "r16",
+      "speech_active_median_RMS_dBFS": -26.2008984619493,
+      "music_target_RMS_dBFS": -50.20089846194929,
+      "gain_dB": -14.385333027930757
+    }
+  ],
+  "normal_boundaries": "Continuous piano with smoothed level changes, no unit reset",
+  "music_asset_SHA256": {
+    "Heartbreaking": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+    "Heartwarming": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7"
+  },
+  "complete_signal_coverage": "ALL0_TO638.105_ASSIGNED_MUSIC_OR_EXPLICIT_SILENCE",
+  "actual_perceptual_audibility": "UNVERIFIED"
+}

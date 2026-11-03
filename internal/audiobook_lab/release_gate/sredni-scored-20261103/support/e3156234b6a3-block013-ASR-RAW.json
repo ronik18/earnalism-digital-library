@@ -1,0 +1,236 @@
+{
+  "status": "RAW_UNPROMPTED_TURBO_CONTEXT_NOT_LISTENING_ACCEPTANCE",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block013-49.400-60.100-exactPCM.wav",
+    "sha256": "53a8e69f65dc782604367edad26c7c1ead39a8e6a59918602ef57a25cc8e5ab1",
+    "bytes": 513644
+  },
+  "start_in_full": 49.4,
+  "end_in_full": 60.1,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 3.34,
+      "text": " the spur of loneliness, he would have succumbed long ago.",
+      "avg_logprob": -0.27300506278320597,
+      "no_speech_prob": 6.051137780953286e-13,
+      "words": [
+        {
+          "word": " the",
+          "start": 0.0,
+          "end": 0.16,
+          "probability": 0.9254920482635498
+        },
+        {
+          "word": " spur",
+          "start": 0.16,
+          "end": 0.42,
+          "probability": 0.9889960289001465
+        },
+        {
+          "word": " of",
+          "start": 0.42,
+          "end": 0.6,
+          "probability": 0.9997023940086365
+        },
+        {
+          "word": " loneliness,",
+          "start": 0.6,
+          "end": 1.02,
+          "probability": 0.9967300891876221
+        },
+        {
+          "word": " he",
+          "start": 1.42,
+          "end": 1.86,
+          "probability": 0.9940915703773499
+        },
+        {
+          "word": " would",
+          "start": 1.86,
+          "end": 2.0,
+          "probability": 0.9994214773178101
+        },
+        {
+          "word": " have",
+          "start": 2.0,
+          "end": 2.12,
+          "probability": 0.9346292614936829
+        },
+        {
+          "word": " succumbed",
+          "start": 2.12,
+          "end": 2.64,
+          "probability": 0.9990822871526083
+        },
+        {
+          "word": " long",
+          "start": 2.64,
+          "end": 3.04,
+          "probability": 0.8583239912986755
+        },
+        {
+          "word": " ago.",
+          "start": 3.04,
+          "end": 3.34,
+          "probability": 0.9990270137786865
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 3.74,
+      "end": 8.94,
+      "text": " Mrs. DeRop would never, in her honestest moments, have confessed to herself that she disliked",
+      "avg_logprob": -0.27300506278320597,
+      "no_speech_prob": 6.051137780953286e-13,
+      "words": [
+        {
+          "word": " Mrs.",
+          "start": 3.74,
+          "end": 4.3,
+          "probability": 0.9929571151733398
+        },
+        {
+          "word": " DeRop",
+          "start": 4.46,
+          "end": 4.72,
+          "probability": 0.5853075583775839
+        },
+        {
+          "word": " would",
+          "start": 4.72,
+          "end": 4.94,
+          "probability": 0.9428528547286987
+        },
+        {
+          "word": " never,",
+          "start": 4.94,
+          "end": 5.24,
+          "probability": 0.9993782043457031
+        },
+        {
+          "word": " in",
+          "start": 5.32,
+          "end": 5.54,
+          "probability": 0.9995191097259521
+        },
+        {
+          "word": " her",
+          "start": 5.54,
+          "end": 5.68,
+          "probability": 0.9993859529495239
+        },
+        {
+          "word": " honestest",
+          "start": 5.68,
+          "end": 6.22,
+          "probability": 0.9943163394927979
+        },
+        {
+          "word": " moments,",
+          "start": 6.22,
+          "end": 6.5,
+          "probability": 0.9994145631790161
+        },
+        {
+          "word": " have",
+          "start": 6.66,
+          "end": 6.78,
+          "probability": 0.9989070892333984
+        },
+        {
+          "word": " confessed",
+          "start": 6.78,
+          "end": 7.18,
+          "probability": 0.9982313513755798
+        },
+        {
+          "word": " to",
+          "start": 7.18,
+          "end": 7.32,
+          "probability": 0.999854564666748
+        },
+        {
+          "word": " herself",
+          "start": 7.32,
+          "end": 7.7,
+          "probability": 0.9992988109588623
+        },
+        {
+          "word": " that",
+          "start": 7.7,
+          "end": 8.16,
+          "probability": 0.9934133887290955
+        },
+        {
+          "word": " she",
+          "start": 8.16,
+          "end": 8.32,
+          "probability": 0.9993807077407837
+        },
+        {
+          "word": " disliked",
+          "start": 8.32,
+          "end": 8.94,
+          "probability": 0.9988367557525635
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 8.94,
+      "end": 9.44,
+      "text": " Comradin.",
+      "avg_logprob": -0.27300506278320597,
+      "no_speech_prob": 6.051137780953286e-13,
+      "words": [
+        {
+          "word": " Comradin.",
+          "start": 8.94,
+          "end": 9.44,
+          "probability": 0.9030157327651978
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 9.76,
+      "end": 10.68,
+      "text": " Though she might be",
+      "avg_logprob": -0.27300506278320597,
+      "no_speech_prob": 6.051137780953286e-13,
+      "words": [
+        {
+          "word": " Though",
+          "start": 9.76,
+          "end": 10.26,
+          "probability": 0.9820048809051514
+        },
+        {
+          "word": " she",
+          "start": 10.26,
+          "end": 10.44,
+          "probability": 0.9959372282028198
+        },
+        {
+          "word": " might",
+          "start": 10.44,
+          "end": 10.68,
+          "probability": 0.9921940565109253
+        },
+        {
+          "word": " be",
+          "start": 10.68,
+          "end": 10.68,
+          "probability": 0.1543278992176056
+        }
+      ]
+    }
+  ],
+  "transcript": " the spur of loneliness, he would have succumbed long ago. Mrs. DeRop would never, in her honestest moments, have confessed to herself that she disliked Comradin. Though she might be",
+  "language": "en",
+  "elapsed_seconds": 80.78799083399645,
+  "source_used_as_prompt": false
+}

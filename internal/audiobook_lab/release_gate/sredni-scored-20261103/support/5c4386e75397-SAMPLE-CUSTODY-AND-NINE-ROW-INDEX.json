@@ -1,0 +1,845 @@
+{
+  "schema": "earnalism.exact_scored_wording_montage.v1",
+  "status": "EXACT_DECODED_SAMPLES_EXTRACTED_NOT_WORDING_PASS",
+  "source_parent": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/Sredni-Vashtar-Scored-Diagnostic-v1.mp3",
+    "sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+    "bytes": 15316679
+  },
+  "full_decoded_parent_PCM_sha256": "54333b8da033d1e55c267c3d58facb344b4808c032d68b75e312f1a5450edb83",
+  "full_decoded_parent_frames": 30629040,
+  "sample_rate": 48000,
+  "channels": 2,
+  "PCM_format": "IEEEfloat32littleendian",
+  "records": [
+    {
+      "number": 1,
+      "source_window_id": "wording-01",
+      "source_start_frame": 1283040,
+      "source_end_frame": 1394400,
+      "source_start_seconds": 26.73,
+      "source_end_seconds": 29.05,
+      "frames": 111360,
+      "montage_start_frame": 0,
+      "montage_end_frame": 111360,
+      "montage_start_seconds": 0.0,
+      "montage_end_seconds": 2.32,
+      "excerpt_PCM_sha256": "1046fdff006dd76bc7a209c3d71d77a727b374c0022adc788465d81b150743c2",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-05",
+          "operation": "insert",
+          "source_tokens": [],
+          "recognized_tokens": [
+            {
+              "index": 71,
+              "text": "well",
+              "norm": "well",
+              "word_index": 71,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 5,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": null,
+          "raw_ASR_words": [
+            {
+              "index": 71,
+              "word": " well.",
+              "start": 27.66,
+              "end": 27.74
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "PRIMARY_ASR_EXTRA_TOKEN_UNCORROBORATED_AUDIO_REVIEW_SIGNAL",
+          "source_exact_context": "real; the",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "real",
+              "source_token_index": 72,
+              "raw_word_index": 70,
+              "raw_word": " real.",
+              "start": 27.38,
+              "end": 27.66
+            },
+            "after": {
+              "source_token": "the",
+              "source_token_index": 73,
+              "raw_word_index": 72,
+              "raw_word": " The",
+              "start": 28.04,
+              "end": 28.4
+            }
+          },
+          "review_context_range_seconds": [
+            27.38,
+            28.4
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "real; the",
+      "recorded_ASR_flag_not_established_audio": "Possible extra “well”"
+    },
+    {
+      "number": 2,
+      "source_window_id": "wording-02",
+      "source_start_frame": 6845280,
+      "source_end_frame": 6976800,
+      "source_start_seconds": 142.61,
+      "source_end_seconds": 145.35,
+      "frames": 131520,
+      "montage_start_frame": 123360,
+      "montage_end_frame": 254880,
+      "montage_start_seconds": 2.57,
+      "montage_end_seconds": 5.31,
+      "excerpt_PCM_sha256": "81b4559193368bb15b0be8b5ae506acbbdfc274308cb4f0a9bc03f8b84eaa318",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-08",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 395,
+              "text": "plumaged",
+              "norm": "plumaged",
+              "source_start": 2360,
+              "source_end": 2368
+            },
+            {
+              "index": 396,
+              "text": "Houdan",
+              "norm": "houdan",
+              "source_start": 2369,
+              "source_end": 2375
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 393,
+              "text": "plummished",
+              "norm": "plummished",
+              "word_index": 393,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 11,
+              "interval_shared_with_other_subtokens": false
+            },
+            {
+              "index": 394,
+              "text": "hudan",
+              "norm": "hudan",
+              "word_index": 394,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 6,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "plumaged Houdan",
+          "raw_ASR_words": [
+            {
+              "index": 393,
+              "word": " plummished",
+              "start": 143.76,
+              "end": 144.04
+            },
+            {
+              "index": 394,
+              "word": " hudan",
+              "start": 144.04,
+              "end": 144.52
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "ates of flesh and blood. In one\n\ncorner lived a ragged-plumaged Houdan hen, on which the boy lavished an\n\naffection that had ",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "ragged",
+              "source_token_index": 394,
+              "raw_word_index": 392,
+              "raw_word": " ragged,",
+              "start": 143.26,
+              "end": 143.56
+            },
+            "after": {
+              "source_token": "hen",
+              "source_token_index": 397,
+              "raw_word_index": 395,
+              "raw_word": " hen,",
+              "start": 144.52,
+              "end": 144.7
+            }
+          },
+          "review_context_range_seconds": [
+            143.26,
+            144.7
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "ragged-plumaged Houdan hen",
+      "recorded_ASR_flag_not_established_audio": "ASR: “plummished hudan”"
+    },
+    {
+      "number": 3,
+      "source_window_id": "wording-03",
+      "source_start_frame": 7687440,
+      "source_end_frame": 7808400,
+      "source_start_seconds": 160.155,
+      "source_end_seconds": 162.675,
+      "frames": 120960,
+      "montage_start_frame": 266880,
+      "montage_end_frame": 387840,
+      "montage_start_seconds": 5.56,
+      "montage_end_seconds": 8.08,
+      "excerpt_PCM_sha256": "879fa7f161f656de3779302f3c2442171e2ee693a25af4b83078d960090a0df8",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-09",
+          "operation": "insert",
+          "source_tokens": [],
+          "recognized_tokens": [
+            {
+              "index": 437,
+              "text": "pole",
+              "norm": "pole",
+              "word_index": 437,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 5,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": null,
+          "raw_ASR_words": [
+            {
+              "index": 437,
+              "word": " pole",
+              "start": 161.105,
+              "end": 161.385
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "PRIMARY_ASR_EXTRA_TOKEN_UNCORROBORATED_AUDIO_REVIEW_SIGNAL",
+          "source_exact_context": "large\n\npolecat-ferret",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "large",
+              "source_token_index": 438,
+              "raw_word_index": 436,
+              "raw_word": " large",
+              "start": 160.805,
+              "end": 161.105
+            },
+            "after": {
+              "source_token": "ferret",
+              "source_token_index": 440,
+              "raw_word_index": 439,
+              "raw_word": " ferret,",
+              "start": 161.665,
+              "end": 162.025
+            }
+          },
+          "review_context_range_seconds": [
+            160.805,
+            162.025
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        },
+        {
+          "id": "diff-10",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 439,
+              "text": "polecat",
+              "norm": "polecat",
+              "source_start": 2613,
+              "source_end": 2620
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 438,
+              "text": "cack",
+              "norm": "cack",
+              "word_index": 438,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 5,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "polecat",
+          "raw_ASR_words": [
+            {
+              "index": 438,
+              "word": "-cack",
+              "start": 161.385,
+              "end": 161.665
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "d with close iron bars. This was the abode of a large\n\npolecat-ferret, which a friendly butcher-boy had once smuggled",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "large",
+              "source_token_index": 438,
+              "raw_word_index": 436,
+              "raw_word": " large",
+              "start": 160.805,
+              "end": 161.105
+            },
+            "after": {
+              "source_token": "ferret",
+              "source_token_index": 440,
+              "raw_word_index": 439,
+              "raw_word": " ferret,",
+              "start": 161.665,
+              "end": 162.025
+            }
+          },
+          "review_context_range_seconds": [
+            160.805,
+            162.025
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "large polecat-ferret",
+      "recorded_ASR_flag_not_established_audio": "ASR word pieces: “pole”, “-cack”"
+    },
+    {
+      "number": 4,
+      "source_window_id": "wording-04",
+      "source_start_frame": 8333520,
+      "source_end_frame": 8450640,
+      "source_start_seconds": 173.615,
+      "source_end_seconds": 176.055,
+      "frames": 117120,
+      "montage_start_frame": 399840,
+      "montage_end_frame": 516960,
+      "montage_start_seconds": 8.33,
+      "montage_end_seconds": 10.77,
+      "excerpt_PCM_sha256": "9b30b4ef76209452bb5e39f3a714ec4d26500adddb835b901748a4a57cd645f4",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-11",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 472,
+              "text": "lithe",
+              "norm": "lithe",
+              "source_start": 2813,
+              "source_end": 2818
+            },
+            {
+              "index": 473,
+              "text": "sharp",
+              "norm": "sharp",
+              "source_start": 2821,
+              "source_end": 2826
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 471,
+              "text": "live",
+              "norm": "live",
+              "word_index": 471,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 5,
+              "interval_shared_with_other_subtokens": false
+            },
+            {
+              "index": 472,
+              "text": "shark",
+              "norm": "shark",
+              "word_index": 472,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 6,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "lithe,\n\nsharp",
+          "raw_ASR_words": [
+            {
+              "index": 471,
+              "word": " live,",
+              "start": 174.405,
+              "end": 174.725
+            },
+            {
+              "index": 472,
+              "word": " shark",
+              "start": 174.785,
+              "end": 175.065
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "of small silver. Conradin was dreadfully afraid of the lithe,\n\nsharp-fanged beast, but it was his most treasured possession",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "the",
+              "source_token_index": 471,
+              "raw_word_index": 470,
+              "raw_word": " the",
+              "start": 174.265,
+              "end": 174.405
+            },
+            "after": {
+              "source_token": "fanged",
+              "source_token_index": 474,
+              "raw_word_index": 473,
+              "raw_word": "-fanged",
+              "start": 175.065,
+              "end": 175.405
+            }
+          },
+          "review_context_range_seconds": [
+            174.265,
+            175.405
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "lithe, sharp-fanged beast",
+      "recorded_ASR_flag_not_established_audio": "ASR: “live, shark”"
+    },
+    {
+      "number": 5,
+      "source_window_id": "wording-05",
+      "source_start_frame": 9901200,
+      "source_end_frame": 10038480,
+      "source_start_seconds": 206.275,
+      "source_end_seconds": 209.135,
+      "frames": 137280,
+      "montage_start_frame": 528960,
+      "montage_end_frame": 666240,
+      "montage_start_seconds": 11.02,
+      "montage_end_seconds": 13.88,
+      "excerpt_PCM_sha256": "a6660785ef3d2138946eaa1538e3b9b6b1c4dcb7b8c21a4b15b143de7f9d2db4",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-15",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 572,
+              "text": "Rimmon",
+              "norm": "rimmon",
+              "source_start": 3343,
+              "source_end": 3349
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 570,
+              "text": "Remen",
+              "norm": "remen",
+              "word_index": 570,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 6,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "Rimmon",
+          "raw_ASR_words": [
+            {
+              "index": 570,
+              "word": " Remen.",
+              "start": 207.165,
+              "end": 207.445
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": " the church service was\n\nan alien rite in the House of Rimmon. Every Thursday, in the dim and\n\nmusty silence of the ",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "of",
+              "source_token_index": 571,
+              "raw_word_index": 569,
+              "raw_word": " of",
+              "start": 206.925,
+              "end": 207.165
+            },
+            "after": {
+              "source_token": "Every",
+              "source_token_index": 573,
+              "raw_word_index": 571,
+              "raw_word": " Every",
+              "start": 208.225,
+              "end": 208.485
+            }
+          },
+          "review_context_range_seconds": [
+            206.925,
+            208.485
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "House of Rimmon",
+      "recorded_ASR_flag_not_established_audio": "ASR: “Remen”"
+    },
+    {
+      "number": 6,
+      "source_window_id": "wording-06",
+      "source_start_frame": 16712400,
+      "source_end_frame": 16831440,
+      "source_start_seconds": 348.175,
+      "source_end_seconds": 350.655,
+      "frames": 119040,
+      "montage_start_frame": 678240,
+      "montage_end_frame": 797280,
+      "montage_start_seconds": 14.13,
+      "montage_end_seconds": 16.61,
+      "excerpt_PCM_sha256": "19432be51ef98924ff5ec004379e7e17d30a506d01e1f72d03d0472e268509ab",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-22",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 973,
+              "text": "exclaimed",
+              "norm": "exclaimed",
+              "source_start": 5675,
+              "source_end": 5684
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 969,
+              "text": "explained",
+              "norm": "explained",
+              "word_index": 969,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 10,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "exclaimed",
+          "raw_ASR_words": [
+            {
+              "index": 969,
+              "word": " explained,",
+              "start": 349.065,
+              "end": 349.545
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "-class feminine eye.\n\n\"I thought you liked toast,\" she exclaimed, with an injured air,\n\nobserving that he did not touch",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "she",
+              "source_token_index": 972,
+              "raw_word_index": 968,
+              "raw_word": " she",
+              "start": 348.825,
+              "end": 349.065
+            },
+            "after": {
+              "source_token": "with",
+              "source_token_index": 974,
+              "raw_word_index": 970,
+              "raw_word": " with",
+              "start": 349.805,
+              "end": 350.005
+            }
+          },
+          "review_context_range_seconds": [
+            348.825,
+            350.005
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "she exclaimed, with an injured air",
+      "recorded_ASR_flag_not_established_audio": "ASR: “explained”"
+    },
+    {
+      "number": 7,
+      "source_window_id": "wording-07",
+      "source_start_frame": 19797840,
+      "source_end_frame": 19925520,
+      "source_start_seconds": 412.455,
+      "source_end_seconds": 415.115,
+      "frames": 127680,
+      "montage_start_frame": 809280,
+      "montage_end_frame": 936960,
+      "montage_start_seconds": 16.86,
+      "montage_end_seconds": 19.52,
+      "excerpt_PCM_sha256": "c1fdb58b0bbf9dea638a8e82d692db4460ef93b04cb143c70f3b0f95a9bdf593",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-27",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 1157,
+              "text": "key",
+              "norm": "key",
+              "source_start": 6693,
+              "source_end": 6696
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 1151,
+              "text": "tea",
+              "norm": "tea",
+              "word_index": 1151,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 4,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "key",
+          "raw_ASR_words": [
+            {
+              "index": 1151,
+              "word": " tea,",
+              "start": 413.405,
+              "end": 413.745
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "acked his bedroom till\n\nshe found the carefully hidden key, and forthwith marched down to the\n\nshed to complete h",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "hidden",
+              "source_token_index": 1156,
+              "raw_word_index": 1150,
+              "raw_word": " hidden",
+              "start": 413.105,
+              "end": 413.405
+            },
+            "after": {
+              "source_token": "and",
+              "source_token_index": 1158,
+              "raw_word_index": 1152,
+              "raw_word": " and",
+              "start": 414.245,
+              "end": 414.465
+            }
+          },
+          "review_context_range_seconds": [
+            413.105,
+            414.465
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "the carefully hidden key",
+      "recorded_ASR_flag_not_established_audio": "ASR: “tea”"
+    },
+    {
+      "number": 8,
+      "source_window_id": "wording-08",
+      "source_start_frame": 26309520,
+      "source_end_frame": 26413200,
+      "source_start_seconds": 548.115,
+      "source_end_seconds": 550.275,
+      "frames": 103680,
+      "montage_start_frame": 948960,
+      "montage_end_frame": 1052640,
+      "montage_start_seconds": 19.77,
+      "montage_end_seconds": 21.93,
+      "excerpt_PCM_sha256": "f12ef9839cd827e069f5598aaed1d50f278e11b7d18d1de77feb32f0b40cc5b8",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-28",
+          "operation": "replace",
+          "source_tokens": [
+            {
+              "index": 1555,
+              "text": "paean",
+              "norm": "paean",
+              "source_start": 8876,
+              "source_end": 8881
+            }
+          ],
+          "recognized_tokens": [
+            {
+              "index": 1549,
+              "text": "payon",
+              "norm": "payon",
+              "word_index": 1549,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 6,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": "paean",
+          "raw_ASR_words": [
+            {
+              "index": 1549,
+              "word": " payon",
+              "start": 549.165,
+              "end": 549.505
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "UNRESOLVED_LEXICAL_OR_PHONETIC_REVIEW_SIGNAL_NOT_CONFIRMED_DEFECT",
+          "source_exact_context": "h, with a furtive exultation, he\n\nbegan once again the paean of victory and devastation. And presently\n\nhis eyes we",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "the",
+              "source_token_index": 1554,
+              "raw_word_index": 1548,
+              "raw_word": " the",
+              "start": 548.765,
+              "end": 549.165
+            },
+            "after": {
+              "source_token": "of",
+              "source_token_index": 1556,
+              "raw_word_index": 1550,
+              "raw_word": " of",
+              "start": 549.505,
+              "end": 549.625
+            }
+          },
+          "review_context_range_seconds": [
+            548.765,
+            549.625
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "the paean of victory and devastation",
+      "recorded_ASR_flag_not_established_audio": "ASR: “payon”"
+    },
+    {
+      "number": 9,
+      "source_window_id": "wording-09",
+      "source_start_frame": 27362640,
+      "source_end_frame": 27474000,
+      "source_start_seconds": 570.055,
+      "source_end_seconds": 572.375,
+      "frames": 111360,
+      "montage_start_frame": 1064640,
+      "montage_end_frame": 1176000,
+      "montage_start_seconds": 22.18,
+      "montage_end_seconds": 24.5,
+      "excerpt_PCM_sha256": "b4c331c8b5c57f38348213ee0a405514d83c7c2e3c941e75686405d213d97592",
+      "byte_identical_to_exact_reviewed_MP3_decode_slice": true,
+      "issues": [
+        {
+          "id": "diff-29",
+          "operation": "insert",
+          "source_tokens": [],
+          "recognized_tokens": [
+            {
+              "index": 1614,
+              "text": "conradin",
+              "norm": "conradin",
+              "word_index": 1614,
+              "raw_word_char_start": 1,
+              "raw_word_char_end": 9,
+              "interval_shared_with_other_subtokens": false
+            }
+          ],
+          "source_exact_span": null,
+          "raw_ASR_words": [
+            {
+              "index": 1614,
+              "word": " conradin,",
+              "start": 570.965,
+              "end": 571.065
+            }
+          ],
+          "status": "RAW_RECOGNIZER_DIFFERENCE_UNADJUDICATED_NOT_CONFIRMED_AUDIO_ERROR",
+          "missing_source_word_times": null,
+          "classification": "PRIMARY_ASR_EXTRA_TOKEN_UNCORROBORATED_AUDIO_REVIEW_SIGNAL",
+          "source_exact_context": "garden, drank",
+          "actual_neighbor_anchors": {
+            "before": {
+              "source_token": "garden",
+              "source_token_index": 1619,
+              "raw_word_index": 1613,
+              "raw_word": " garden,",
+              "start": 570.705,
+              "end": 570.965
+            },
+            "after": {
+              "source_token": "drank",
+              "source_token_index": 1620,
+              "raw_word_index": 1615,
+              "raw_word": " drank",
+              "start": 571.345,
+              "end": 571.725
+            }
+          },
+          "review_context_range_seconds": [
+            570.705,
+            571.725
+          ],
+          "candidate_for_finite_wording_adjudication": true,
+          "no_owner_wording_pass_inferred": true
+        }
+      ],
+      "expected_source_phrase": "garden, drank",
+      "recorded_ASR_flag_not_established_audio": "Possible extra “Conradin”"
+    }
+  ],
+  "separator_frames_each": 12000,
+  "separator_count": 8,
+  "all_separators_exact_zero": true,
+  "montage_frames": 1176000,
+  "montage_seconds": 24.5,
+  "montage_PCM_sha256": "11f9abcffb378fabc63e4f6319ad926dd6004f226e9fc8a7844bcc80b3f89085",
+  "lossless_WAV_data_byte_identical_to_assembled_parent_slices": true,
+  "lossless_WAV": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/nine-wording-montage-20261103/Sredni-Nine-Wording-Checks-24.5s.wav",
+    "sha256": "58e90631308367d039088ad8d4d95ab2af0bf9c77bcf9f78b344b268d260dc64",
+    "bytes": 9408092
+  },
+  "compatible_lossy_MP3": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/nine-wording-montage-20261103/Sredni-Nine-Wording-Checks-24.5s.mp3",
+    "sha256": "87e771da5d0bdfb6507f637340cb4e111b34fcb173c691b528873f339c6a7e5a",
+    "bytes": 589490
+  },
+  "MP3_actual_decoded_frames": 1176000,
+  "parent_unchanged": true,
+  "no_new_ASR_provider_synthesis_score_or_publication": true,
+  "prior_ASR_status": {
+    "completed": 5,
+    "interrupted": "block060",
+    "unperformed": [
+      "block067",
+      "block083"
+    ]
+  }
+}

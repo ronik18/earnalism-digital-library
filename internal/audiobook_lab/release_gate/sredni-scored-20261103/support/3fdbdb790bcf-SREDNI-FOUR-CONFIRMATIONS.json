@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.actual_sredni_scored_owner_clarification.v1",
+  "source": "DIRECT_USER_QUESTION_REPLY",
+  "received_at": "2026-11-03T03:06:20.844660+00:00",
+  "question_id": "[\"request_user_input_async\",\"call_0b1fb71d85a14c9b9aa12724a05a4689\",0]",
+  "answer": "Yes, Yes, Yes.Yes.",
+  "interpretation": "Four affirmative answers bind the first four explicit Sredni questions only; no Bicharak word or historical licence inference.",
+  "prior_response_sha256": "9226281b0f533bb657ce9d7b04e535b4df59602812223b618dc2a0c21ab44ef2",
+  "scored_audio_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+  "scores": {
+    "naturalness": 9.8,
+    "pronunciation": 9.8,
+    "emotion": 9.8,
+    "grammatical_pauses": 9.8,
+    "pacing": 9.8,
+    "voice_continuity": 9.8,
+    "nonrobotic_texture": 9.8,
+    "joins": 9.8,
+    "enjoyment": 9.8,
+    "clarity": 9.8
+  },
+  "dimension_mean": 9.8,
+  "overall": 9.8,
+  "confidence": 0.98,
+  "full_10m38_listening_confirmed": true,
+  "music_audible_speech_clear_normal_and_low_volume_confirmed": true,
+  "explicit_timestamped_defect_list_supplied": false,
+  "independent_content_timing_storage_runtime_release_pass": false,
+  "narration_regeneration_selected": false,
+  "Bicharak_source_word_and_paid_date_answers": "UNANSWERED_SEPARATE_QUESTIONS_ASKED"
+}

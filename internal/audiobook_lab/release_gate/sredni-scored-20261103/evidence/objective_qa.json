@@ -1,0 +1,42 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "objective_qa",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "duration_ms": 638105,
+    "frames": 30629040,
+    "minimum_two_full_reused_ASR_score": 9.708470847084708,
+    "ASR_metric": "10*(1-token_Levenshtein_WER),distinct from historical repository SequenceMatcher metric",
+    "source_coverage_adjudicated": 1.0,
+    "all_actual_reader_paragraph_boundaries": 17,
+    "raw_source_blocks": 158,
+    "no_material_audio_defect_remains_after_actual_owner_adjudication": true,
+    "unperformed_alternative_ASR_checks": {
+      "060": "INTERRUPTED",
+      "067": "UNPERFORMED",
+      "083": "UNPERFORMED"
+    }
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/09786b4f4207-OBJECTIVE-REPORT.json",
+      "sha256": "09786b4f42075b991c219972f78b18ad66391e575ac1f00471a9ac241e49fc2b",
+      "bytes": 24494
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/bc0210de9aa7-TWO-FULL-ASR-REUSED-HEALTHY-PCM-SCORES.json",
+      "sha256": "bc0210de9aa7beb885ca24c36c67de6ad4d4a17efc92441688ea5dc1decdeae1",
+      "bytes": 3136
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/a5fc9b304115-ALL-158-BOUNDARY-AND-SOURCE-QUALIFICATION.json",
+      "sha256": "a5fc9b304115ad29ad094d57fde8e65168064b42acfa5ce4dd3c82bb2cb9a9fd",
+      "bytes": 2871
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/b4917a7b362e-ACTUAL-17-READER-PARAGRAPH-QUALIFICATION.json",
+      "sha256": "b4917a7b362e1d4ef464e97d0aab056c97495731519f7558b848eb2754bf2121",
+      "bytes": 1793
+    }
+  ]
+}

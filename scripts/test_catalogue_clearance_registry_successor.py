@@ -12,6 +12,7 @@ REFERENCE='registry_sourceqa_successor_20261102'
 OPEN_REFERENCE='open_window_scored_sourceqa_successor_20261102'
 STAGE_REFERENCE='selfish_private_stage_authority_successor_20261102'
 OPEN_STAGE_REFERENCE='open_window_private_stage_authority_successor_20261102'
+SREDNI_REFERENCE='sredni_scored_sourceqa_successor_20261103'
 PREDECESSOR='b4bc7585a87b7546db3270f3bfd63bd436e8585a'
 CONTINUOUS='f5706d328e08ab330f65f604f51df322b65646f1'
 CEDAR='c980ff2da048db7a164648f06f707440b2a8124c'
@@ -59,13 +60,42 @@ def load_open_stage_successor(baseline):
         assert hashlib.sha256((EVIDENCE_ROOT/path).read_bytes()).hexdigest()==digest, 'Open private-stage predecessor changed'
     return receipt
 
+def load_sredni_successor(baseline):
+    ref=baseline[SREDNI_REFERENCE];raw=(EVIDENCE_ROOT/ref['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ref['sha256'], 'Sredni registry successor digest changed'
+    r=json.loads(raw)
+    assert r['schema']=='earnalism.reviewed_sredni_sourceqa_registry_successor.v1'
+    assert r['active_publication_storage_runtime_grant_or_deployment'] is False
+    assert r['predecessor_registry_sha256']==load_open_stage_successor(baseline)['reviewed_registry_sha256']
+    assert hashlib.sha256((EVIDENCE_ROOT/r['preserved_predecessor_registry']).read_bytes()).hexdigest()==r['predecessor_registry_sha256']
+    assert hashlib.sha256((EVIDENCE_ROOT/r['preserved_predecessor_authority']).read_bytes()).hexdigest()==r['predecessor_reviewed_authority_sha256']
+    return r
+
+def add_sredni_registry(expected,baseline):
+    if SREDNI_REFERENCE in baseline:
+        r=load_sredni_successor(baseline)
+        assert expected==json.loads((EVIDENCE_ROOT/r['preserved_predecessor_registry']).read_text()), 'Unexpected Sredni predecessor permissions'
+        expected['accepted_records'].update(r['added_accepted_records'])
+        for slug,bindings in r['added_audio_package_bindings'].items():
+            expected['audio_package_bindings'].setdefault(slug,{}).update(bindings)
+    return expected
+
+def add_sredni_baseline(expected,baseline):
+    if SREDNI_REFERENCE in baseline:
+        r=load_sredni_successor(baseline)
+        assert expected==json.loads((EVIDENCE_ROOT/r['preserved_predecessor_authority']).read_text()), 'Unexpected Sredni predecessor authority'
+        expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
+        expected[SREDNI_REFERENCE]=baseline[SREDNI_REFERENCE]
+    return expected
+
+
 def add_open_stage_registry(expected,baseline):
     if OPEN_STAGE_REFERENCE in baseline:
         r=load_open_stage_successor(baseline)
         archive=EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]
         assert expected==json.loads(archive.read_text()), 'Unexpected Open predecessor permissions'
         expected['accepted_records'].update(r['added_accepted_records'])
-    return expected
+    return add_sredni_registry(expected,baseline)
 
 def add_open_stage_baseline(expected,baseline):
     if OPEN_STAGE_REFERENCE in baseline:
@@ -75,7 +105,7 @@ def add_open_stage_baseline(expected,baseline):
         expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
         expected['titles'][r['title']]=r['reviewed_title_binding']
         expected[OPEN_STAGE_REFERENCE]=baseline[OPEN_STAGE_REFERENCE]
-    return expected
+    return add_sredni_baseline(expected,baseline)
 
 def add_stage_registry(expected,baseline):
     if STAGE_REFERENCE in baseline:
@@ -180,6 +210,7 @@ class RegistrySuccessorTests(unittest.TestCase):
             stage=load_stage_successor(baseline)
             self.assertEqual(successor['reviewed_registry_sha256'],stage['predecessor_registry_sha256'])
             final=load_open_stage_successor(baseline)['reviewed_registry_sha256'] if OPEN_STAGE_REFERENCE in baseline else stage['reviewed_registry_sha256']
+            if SREDNI_REFERENCE in baseline:final=load_sredni_successor(baseline)['reviewed_registry_sha256']
             self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
@@ -226,6 +257,27 @@ class RegistrySuccessorTests(unittest.TestCase):
         self.assertEqual(len(baseline['titles']),52)
         self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-selfish-giant',baseline),ROOT/'backend/data/controlled_publications/the-selfish-giant')
 
+    def test_sredni_sourceqa_adds_only_reviewed_india_stream_record_and_binding(self):
+        baseline=self.baseline();r=load_sredni_successor(baseline)
+        before=json.loads((ROOT/r['preserved_predecessor_registry']).read_text())
+        expected=add_sredni_registry(copy.deepcopy(before),baseline)
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        record=json.loads((ROOT/'internal/audiobook_lab/release_gate/sredni-scored-20261103/prospective-registration/accepted-audio-use-decision.json').read_text())
+        self.assertEqual(r['added_accepted_records'],{record['decision_id']:record_sha256(record)})
+        self.assertEqual(len(r['added_audio_package_bindings']['sredni-vashtar']),1)
+        descriptor=next(iter(r['added_audio_package_bindings']['sredni-vashtar']))
+        self.assertEqual(descriptor,'dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc')
+        for country,use,passed in [('IN','audio_stream',True),('US','audio_stream',False),('IN','audio_download',False)]:
+            result=evaluate_accepted_record(record,edition_id='sredni-vashtar',operator_id='reo-enterprise',
+                country=country,country_trusted=True,use=use,required_components=record['components'],
+                accepted_records=expected['accepted_records'],revoked_decision_ids=frozenset(expected['revoked_decision_ids']),
+                now=datetime(2026,11,4,tzinfo=timezone.utc))
+            self.assertIs(result.passed,passed,(country,use,result.reasons))
+        prior=json.loads((ROOT/r['preserved_predecessor_authority']).read_text())
+        self.assertEqual(prior['titles'],baseline['titles'])
+        self.assertEqual(len(prior['titles']),52)
+
+
     def test_current_exact_registry_pin_passes_unmodified_authority_assertion(self):
         self.assertEqual(bindings.assert_reviewed_authority(ROOT),self.baseline())
 
@@ -252,9 +304,13 @@ class RegistrySuccessorTests(unittest.TestCase):
         baseline=self.baseline();r=load_open_stage_successor(baseline)
         before=json.loads((EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]).read_text())
         expected=copy.deepcopy(before);expected['accepted_records'].update(r['added_accepted_records'])
-        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),expected)
+        self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),add_sredni_registry(expected,baseline))
         self.assertEqual(len(r['proposed_transaction']['files']),14)
-        for path,digest in r['proposed_transaction']['files'].items():self.assertEqual(bindings.sha(ROOT/path),digest)
+        for path,digest in r['proposed_transaction']['files'].items():
+            current=ROOT/path
+            if SREDNI_REFERENCE in baseline and path==REGISTRY:
+                current=EVIDENCE_ROOT/load_sredni_successor(baseline)['preserved_predecessor_registry']
+            self.assertEqual(bindings.sha(current),digest)
         current=json.loads((ROOT/'backend/data/controlled_publications/the-open-window/rights_decision.json').read_text())
         self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
         snapshot=json.loads((EVIDENCE_ROOT/'internal/legal/catalogue_clearance_20261002/open_window_private_stage_20261102/prior-public-restore.snapshot.json').read_text())

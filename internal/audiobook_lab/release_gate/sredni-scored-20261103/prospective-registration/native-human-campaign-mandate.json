@@ -1,0 +1,39 @@
+{
+  "schema": "earnalism.native_human_campaign_release_mandate.v1",
+  "source_thread_id": "01a19041-6750-7503-8694-d979c8c254c9",
+  "verification": "CURRENT_NATIVE_READ_THREAD_USER_MESSAGE_ITEMS",
+  "records": [
+    {
+      "turn": "01a19e39-87f0-73f1-84ce-4811008eaee0",
+      "id": "01a19e39-8b2d-74d0-becc-9f326f00f118",
+      "text": "The audiobook with background-music readiness and GO LIVE pipeline is progressing very slow. I want the earnalism-audiobook-go-live skill fully enhanced with all of our new findings and new learnings so far. Then I want to do two things in parallel:\n\n1. We used Girija's expressive, story-telling voice for the Bengali audiobook \"Bicharak\". Immediately do the needful so that it can GO LIVE.\n2. Pick next three smallest content English books and GO LIVE for all three of them in parallel preparing the premium listener-experience without any mistake/gap. Maintain the average score of 9.8/10 for each of those 3 audiobooks.\n"
+    },
+    {
+      "turn": "01a19f5a-e286-78b3-835e-a123cccb067f",
+      "id": "01a19f5a-e4ce-7542-ac87-f85b95ccba0e",
+      "question_reply": {
+        "questionItemId": "[\"request_user_input_async\",\"call_ba92c3b771844d85afd7479e4927b3ac\",0]",
+        "question": "Approve this new bounded Cedar plan for The Student, Sredni Vashtar and The Gift of the Magi? Use retained or licensed exact-source masters first; generate Sredni only if a genuine complete scored review falls below 9.8 because of narration quality that safe retained repairs cannot resolve, or an irreparable narration/content defect is confirmed. Timing, alignment, music, storage or runtime holds do not authorize its regeneration. This explicitly lifts the prior no-new-synthesis restriction for these frozen jobs and permits only their public book text plus unspoken directions to OpenAI through the existing private configuration: stock Cedar, GPT-Realtime-2.1 Mini. Maximum additional $5 total ($1.50 Student, $1.75 Sredni, $1.75 Magi), at most 41 one-shot responses (12/14/15), one per unit, no retries or reconnects, no allocations, purchases or new keys. Four pilot units per title first, including the opening join, a middle and ending; its remainder proceeds only after genuine owner listening clears the named performance mean>=9.8 and all existing dimension, confidence, fatal-flag and content gates. At most 2 sessions across titles and 1 per title, maximum 300 seconds per request; unknown takes remain consumed. Local reservations are not a provider-enforced dollar or invoice cap. Preserve prior costs and Selfish quotas. Each final exact scored title still needs genuine full-listening mean>=9.8, separate overall/confidence, applicable rights, fidelity, storage, protected playback/accounting and release verification before LIVE.",
+        "answer": "Approve this bounded three-title Cedar plan"
+      }
+    },
+    {
+      "turn": "01a1a002-0d4c-7730-9212-447efa3be380",
+      "id": "01a1a002-0fef-7113-8ec6-883d2ff69adf",
+      "text": "Hand off Sredni’s frozen registration packet through the Integration Lane and continue Bicharak’s measured-sync work while I review B01–B09. Preserve all work, limits and release gates; no new allocation or synthesis.\n"
+    },
+    {
+      "turn": "01a19fb9-8a43-70c0-b0a2-15b020ad8319",
+      "id": "01a19fb9-8bf0-7f82-bdc9-a2692fece8b1",
+      "text": "Continue clearing Sredni Vashtar and Bicharak’s remaining gates in parallel while I review the Cedar pilots. Preserve all work and approved limits, and share Bicharak’s complete scored draft for review.\n"
+    }
+  ],
+  "interpretation": {
+    "prospective_scope": "Complete next three shortest English titles; Sredni explicitly named in bounded cohort approval and later continuation/handoff. Apply separately verified applicable rights through sole Integration release lane.",
+    "rights_not_established_by_mandate": true,
+    "no_new_sredni_synthesis_or_allocations": true,
+    "no_credit_storage_key_scope_expansion": true,
+    "no_waiver_of_release_gates": true,
+    "no_2036_copyright_term_inferred": true
+  }
+}

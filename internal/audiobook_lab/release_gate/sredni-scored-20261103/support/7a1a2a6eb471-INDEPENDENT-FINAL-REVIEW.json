@@ -1,0 +1,95 @@
+{
+  "schema": "earnalism.independent_sredni_source_audio_final_review.v1",
+  "recorded_at": "2026-11-03T05:02:37.106409+00:00",
+  "status": "PASS_OFFLINE_CHANGED_SOURCE_TIMING_AND_METADATA_ONLY_AUDIO_SCOPE",
+  "material_findings": [],
+  "main_review": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/independent-source-audio-review-20261103/INDEPENDENT-SREDNI-SOURCE-TIMING-CONTAINER-REVIEW.json",
+    "sha256": "1f37f5b5ec7c20e1a2ad0835f52713ca91fcacc98df4df393d8190b4e37c8ebb"
+  },
+  "physical_raw_score_addendum": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/independent-source-audio-review-20261103/INDEPENDENT-PHYSICAL-REUSE-AND-RAW-SCORE-ADDENDUM.json",
+    "sha256": "ad2e0ea5275138ec007a42f1d6a507968d3be54628a7327bc64d34abb6f5f92a"
+  },
+  "actual_source": {
+    "chapter_file_sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "whitespace_words": 1784,
+    "lexical_words": 1818,
+    "canonical_declared1787_preserved": true
+  },
+  "actual_checks_summary": {
+    "raw_measured_origins": 1813,
+    "raw_source_blocks_complete": 158,
+    "actual_supported_Reader_cues": 17,
+    "estimated_times": 0,
+    "source_or_fused_span_boundaries_invented": 0,
+    "raw_full_ASR_reuse_scores": [
+      9.708470847084708,
+      9.71947194719472
+    ],
+    "first_last12_literal_matches_both": true,
+    "source_healthy_prefix_suffix_PCM_bitwise_verified": true,
+    "historical_replacement_transform_reproduced_in_memory_only": true,
+    "independent_final_MP3_full_decode_frames": 30629040,
+    "MP3_delivered_sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+    "accepted_parent_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+    "decoded_PCM_sha256": "54333b8da033d1e55c267c3d58facb344b4808c032d68b75e312f1a5450edb83",
+    "elementary_packet_sha256": "26bd3a359811492bbbf3857d3d0b0b8a003ffcf3e29fc7cd05589cf77865273c",
+    "complete_postID3_bytes_identical": true,
+    "generic_denial_cases": 7
+  },
+  "owner_evidence_scope": "f493 only9actualwordingclips+2phantomcells inside correspondingwindows;7properentityspans use3fdbfullpronunciation9.8 andexactentitycontext foralignment,notf493word-specificadjudication. No globalalias orrawASRrewrite.",
+  "unfinished_ASR_checks": {
+    "060": "INCOMPLETE_UNVERIFIED",
+    "067": "UNPERFORMED_UNVERIFIED",
+    "083": "UNPERFORMED_UNVERIFIED"
+  },
+  "required_next_integration": "Actual supported exactVerse/gpt-4o-mini-tts sourceQAprofile/trust+INrights binding and all current source/storage/runtime/accounting/player/customer gates. Require actual CCmusiccredit visibility through supported publicprojection/UI; separate music_credits field andMP3tags do not alone prove UIrendering.",
+  "source_profile_registry_rights_storage_runtime_accounting_browser_publication": "UNVERIFIED_NOT_ADMITTED_BY_THIS_REVIEW",
+  "review_harness_history": "Initial already-existing-output-directory hold and assumption receipt bound compatibleMP3 were preserved; actualf493 binds58e906losslessWAV. Correctedharnessonly, no source/audio change ormodel/provider retry.",
+  "files": {
+    "INDEPENDENT-CHECKS.log": {
+      "sha256": "e369deef51ea24e403b78283ce9efc03135816be17b766d86e090be352d0cdf0",
+      "size_bytes": 303
+    },
+    "INDEPENDENT-CHECKS.log.WAV-vs-MP3-assumption-preimage": {
+      "sha256": "cdfb58019cc0feaf8b9d8e5dd738cb6cea0457ff81e55ccc100706db07cacb02",
+      "size_bytes": 1178
+    },
+    "INDEPENDENT-CHECKS.log.initial-output-directory-preimage": {
+      "sha256": "9ad559bb1aedadf123c81b25b663cf5fb99fbe7e36a28e4aab992d39e8deabd3",
+      "size_bytes": 1512
+    },
+    "INDEPENDENT-PHYSICAL-REUSE-AND-RAW-SCORE-ADDENDUM.json": {
+      "sha256": "ad2e0ea5275138ec007a42f1d6a507968d3be54628a7327bc64d34abb6f5f92a",
+      "size_bytes": 4743
+    },
+    "INDEPENDENT-REUSE-ADDENDUM.log": {
+      "sha256": "78d04c379aeb1a92df6e44fd7244db66225f773afe072e1416fa62d15a18f543",
+      "size_bytes": 1275
+    },
+    "INDEPENDENT-SREDNI-SOURCE-TIMING-CONTAINER-REVIEW.json": {
+      "sha256": "1f37f5b5ec7c20e1a2ad0835f52713ca91fcacc98df4df393d8190b4e37c8ebb",
+      "size_bytes": 18257
+    },
+    "audit_sredni_media.py": {
+      "sha256": "7c2b64e0854997c1b21d64f3851d7b8cb5b9f949ef397a35412f88716f7d3576",
+      "size_bytes": 17023
+    },
+    "audit_sredni_media.py.WAV-vs-MP3-assumption-preimage": {
+      "sha256": "9f147ab78205c64a868016aafeef7033d152e5ca68677731a6849979a4d62a64",
+      "size_bytes": 17031
+    },
+    "audit_sredni_media.py.initial-output-directory-preimage": {
+      "sha256": "a982478994b9fa7dbf1dde17755e0349ecf2d274c4f909df843b7ff4201e8e56",
+      "size_bytes": 17017
+    },
+    "audit_sredni_reuse_addendum.py": {
+      "sha256": "d99cf022f5c78f8a87a1a32a4fe8a5258b3dcf97dcc3bf3889ccd259bec91b91",
+      "size_bytes": 6024
+    }
+  },
+  "new_ASR_model_provider_calls": 0,
+  "audio_source_canonical_files_modified": false
+}

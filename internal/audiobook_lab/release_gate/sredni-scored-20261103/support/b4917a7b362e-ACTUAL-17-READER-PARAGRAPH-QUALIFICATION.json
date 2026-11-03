@@ -1,0 +1,29 @@
+{
+  "status": "PASS_ALL17_ACTUAL_SUPPORTED_READER_PARAGRAPHS_MEASURED_FROM158_PROVEN_SOURCE_BLOCKS",
+  "actual_reader_map": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/ACTUAL-SUPPORTED-READER-PARAGRAPH-MAP.json",
+    "sha256": "8f59b9537aadba5ca102aa42baacdb4db369938313b98bb8d4098ce9801ec278",
+    "bytes": 3065
+  },
+  "reader_helper": {
+    "path": "/private/tmp/earnalism-main-approved-integration/frontend/src/lib/readerContent.js",
+    "sha256": "a907b196084880f214eac8cc479dad5fbfc8102e05899aa3937b7622d7b6b349",
+    "bytes": 3365
+  },
+  "raw_source_blocks": 158,
+  "actual_reader_paragraphs": 17,
+  "source_word_count_actual": 1784,
+  "canonical_declared_count_unchanged": 1787,
+  "served_timestamps": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/delivery/sredni-vashtar.timestamps.json",
+    "sha256": "303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee",
+    "bytes": 18100
+  },
+  "measured_boundary_times_not_estimated": true,
+  "same_pcm_packet_audio_reuse": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/CONTAINER-METADATA-REUSE.json",
+    "sha256": "e095f10f8ba208c1274739f646803668455c8fa71f8cad4b5a3c9e7cef1ff93f",
+    "bytes": 1401
+  },
+  "source_audio_component_rights_adoption_storage_runtime_publication": "PENDING_SEPARATE_GATES"
+}

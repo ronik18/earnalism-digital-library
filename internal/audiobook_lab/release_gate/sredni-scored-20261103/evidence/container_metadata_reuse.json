@@ -1,0 +1,40 @@
+{
+  "schema": "earnalism.container_metadata_audio_reuse.v1",
+  "status": "PASS_EXACT_DECODED_PCM_AND_ELEMENTARY_PACKET_EQUALITY_METADATA_ONLY",
+  "canonical_decoded_PCM_format": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "f32le",
+    "frames": 30629040
+  },
+  "items": {
+    "listened": {
+      "file_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+      "canonical_decoded_PCM": {
+        "sha256": "54333b8da033d1e55c267c3d58facb344b4808c032d68b75e312f1a5450edb83",
+        "bytes": 245032320
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "26bd3a359811492bbbf3857d3d0b0b8a003ffcf3e29fc7cd05589cf77865273c",
+        "bytes": 15315264
+      }
+    },
+    "delivery": {
+      "file_sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+      "canonical_decoded_PCM": {
+        "sha256": "54333b8da033d1e55c267c3d58facb344b4808c032d68b75e312f1a5450edb83",
+        "bytes": 245032320
+      },
+      "elementary_encoded_audio_packets": {
+        "sha256": "26bd3a359811492bbbf3857d3d0b0b8a003ffcf3e29fc7cd05589cf77865273c",
+        "bytes": 15315264
+      }
+    }
+  },
+  "ID3_only_byte_proof": {
+    "original_header_bytes": 839,
+    "new_header_bytes": 615,
+    "entire_remaining_file_SHA256": "8fac3f78babc33c875a998e289f0ced0b3ebffb4732ba94ca7b2704779b9e37e",
+    "audio_remainder_byte_identical": true
+  }
+}

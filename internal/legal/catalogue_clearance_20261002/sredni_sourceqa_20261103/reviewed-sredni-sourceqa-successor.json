@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.reviewed_sredni_sourceqa_registry_successor.v1",
+  "base_source": "8785dd86e7b528611d75365b0a279cfa5f96f7cb",
+  "predecessor_registry_sha256": "e5e3ef6fdc56720d6fea60a58757bd35ea82eec0e7e320f9eb9b54499f17bc54",
+  "predecessor_reviewed_authority_sha256": "bf410c2700e05bc0c885d02f8ef87a554eac1f13e990fa90efcbfba45ad6c67e",
+  "reviewed_registry_sha256": "0a93e2e1b61a68a4d96aa7548e78c3cfb801bd4c0aff185aa9725ebc3e3c9cc1",
+  "preserved_predecessor_registry": "internal/legal/catalogue_clearance_20261002/sredni_sourceqa_20261103/pre-sourceqa-rights-registry.json",
+  "preserved_predecessor_authority": "internal/legal/catalogue_clearance_20261002/sredni_sourceqa_20261103/pre-sourceqa-reviewed-authority.json",
+  "added_accepted_records": {
+    "india-20261103-sredni-vashtar-verse-scored-prospective-audio": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009"
+  },
+  "added_audio_package_bindings": {
+    "sredni-vashtar": {
+      "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc": {
+        "basis": "Prospective exact source-QA only; no active/public pointer. Actual delegated mandate70853686 and Verse/music component review bound; storage/runtime/accounting/publication remain pending.",
+        "decision_id": "india-20261103-sredni-vashtar-verse-scored-prospective-audio",
+        "record_sha256": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    }
+  },
+  "native_mandate_sha256": "70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686",
+  "review_scope": "EXACT_PROSPECTIVE_IN_AUDIO_STREAM_SOURCE_QA_ONLY",
+  "all52_reader_titles_and_prior_authority_preserved": true,
+  "active_publication_storage_runtime_grant_or_deployment": false
+}
