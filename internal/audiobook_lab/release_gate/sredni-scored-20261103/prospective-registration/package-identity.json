@@ -1,0 +1,77 @@
+{
+  "slug": "sredni-vashtar",
+  "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "duration_ms": 638105,
+  "segment_count": 1,
+  "word_count": 1784,
+  "paragraph_count": 17,
+  "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+  "highlight_sync_enabled": false,
+  "tracks": [
+    {
+      "id": "chapter-001",
+      "chapter_id": "chapter-001",
+      "title": "Sredni Vashtar",
+      "order": 0,
+      "start_word": 0,
+      "end_word": 1783,
+      "start_paragraph": 0,
+      "end_paragraph": 16,
+      "chunks": [
+        {
+          "segment_id": "sredni-vashtar-master-000",
+          "order": 0,
+          "cumulative_start_ms": 0,
+          "duration_ms": 638105,
+          "start_word": 0,
+          "end_word": 1783,
+          "start_paragraph": 0,
+          "end_paragraph": 16,
+          "source_unit_ids": [
+            "paragraph-00001",
+            "paragraph-00002",
+            "paragraph-00003",
+            "paragraph-00004",
+            "paragraph-00005",
+            "paragraph-00006",
+            "paragraph-00007",
+            "paragraph-00008",
+            "paragraph-00009",
+            "paragraph-00010",
+            "paragraph-00011",
+            "paragraph-00012",
+            "paragraph-00013",
+            "paragraph-00014",
+            "paragraph-00015",
+            "paragraph-00016",
+            "paragraph-00017"
+          ],
+          "assets": {
+            "audio": {
+              "sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+              "size_bytes": 15316455,
+              "mime_type": "audio/mpeg"
+            },
+            "timestamps": {
+              "sha256": "303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee",
+              "size_bytes": 18100,
+              "mime_type": "application/json"
+            },
+            "vtt": {
+              "sha256": "6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f",
+              "size_bytes": 10791,
+              "mime_type": "text/vtt"
+            },
+            "metadata": {
+              "sha256": "34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3",
+              "size_bytes": 1240,
+              "mime_type": "application/json"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "release_descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc"
+}

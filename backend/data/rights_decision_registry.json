@@ -69,9 +69,23 @@
     "india-20261102-the-open-window-scored-private-stage": "4660907932e29a0053d3f32eb4b8264bb5c1669a114f6d07823d5928c4f65ad8",
     "india-20261102-the-open-window-scored-retained-audio": "e49ebb5c843d8f5321d2034b93dc72769d2bcd03d13d8eef94d0ca0b5caf3dec",
     "india-20261102-the-selfish-giant-cedar-private-stage": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
-    "india-20261102-the-selfish-giant-cedar-scored-audio": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5"
+    "india-20261102-the-selfish-giant-cedar-scored-audio": "4333c61a7fc94fed7d79721e75692862bc4ae201e363f46710fb46bc233c68f5",
+    "india-20261103-sredni-vashtar-verse-scored-prospective-audio": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009"
   },
   "audio_package_bindings": {
+    "sredni-vashtar": {
+      "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc": {
+        "basis": "Prospective exact source-QA only; no active/public pointer. Actual delegated mandate70853686 and Verse/music component review bound; storage/runtime/accounting/publication remain pending.",
+        "decision_id": "india-20261103-sredni-vashtar-verse-scored-prospective-audio",
+        "record_sha256": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009",
+        "territories": [
+          "IN"
+        ],
+        "uses": [
+          "audio_stream"
+        ]
+      }
+    },
     "the-open-window": {
       "028f65d8551523eecaad03bb5b476070f0c48c1fb0771bf9abc9163ecd5ba4b2": {
         "basis": "Reference to the existing owner-accepted corrected-v1 audio-use adoption for this exact retained release; no Reader use expanded and no new rights declaration.",

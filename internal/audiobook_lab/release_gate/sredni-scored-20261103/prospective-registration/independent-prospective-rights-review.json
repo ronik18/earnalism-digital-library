@@ -1,0 +1,36 @@
+{
+  "schema": "earnalism.sredni_rights_adoption_independent_review.v2",
+  "reviewed_at": "2026-11-03T06:21:01.887301+00:00",
+  "verdict": "PASS_SOURCE_ONLY_PROSPECTIVE_DELEGATED_RIGHTS_AND_ADOPTION",
+  "candidate_worktree": "/private/tmp/earnalism-main-approved-integration",
+  "candidate_state": "Uncommitted root-owned candidate; review bound to listed exact records, not a future changed head",
+  "findings": [],
+  "resolved_prior_findings": {
+    "R1": "Native human campaign mandate rawSHA70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686 exact match, expressly identifies retained Sredni and registration handoff; accepted_by/adopted_by accurately identify delegated Integration recorder rather than forged owner signature. Quality replies remain separately scoped. No duplicate acceptance needed.",
+    "R2": "Verse supplement rawSHA4199365cf944db707a178623cafc8b3e8ca5f0e5f09f43fd1f5e11d891479ff6 explicitly separates API Verse from inherited Cedar wording, preserves revisionnull and original evidence, binds current primary terms and AI disclosure.",
+    "R3": "2036 cutoff expressly administrative inherited review control; no copyright-expiry or lifetime owner decision claimed. Conservative cutoff does not extend actual underlying licence.",
+    "R4": "Exact attribution/AI disclosure/licensed-component constraints explicitly remain later delivery conditions, not falsely reported runtime verified."
+  },
+  "independently_checked": {
+    "accepted_decision_canonical_sha256": "ae14c22b966bf55927f1183e6cf5281361e647804223abbe0dab921bb988f009",
+    "adoption_canonical_sha256": "58f5e10b65160b2991bab14e3902102ff829d24bcd0d6455f7aaadfb41623ed1",
+    "descriptor_canonical_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+    "registry_record_matches_adoption": true,
+    "backend_all_preexisting_values_preserved": true,
+    "backend_delta": "Exactly one accepted_records addition and one Sredni exact-descriptor audio_package_binding addition; no prior record/use/territory changed.",
+    "descriptor_delta": "Only release_candidate_status and nested evidence status; all_release_gates_passed remains false, highlight_sync_enabled false; audio source/component hashes unchanged.",
+    "original_proposals_preserved": true,
+    "accepted_scope": "IN/audio_stream only, exact source/manuscript/masters/components; SOURCE_QA_ONLY_STORAGE_AND_RUNTIME_PENDING",
+    "no_active_pointer_change_in_reviewed_rights_delta": true
+  },
+  "remaining_gates": [
+    "Root coherent exact-source integration plus applicable exact-head CI/reviews",
+    "Actual primary/DR storage and current protected package/player/accounting acceptance",
+    "Actual separately scoped controlled release and public verification; not LIVE from this adoption"
+  ],
+  "limits": [
+    "Read-only source/evidence comparison; no tests, registry edits, provider/account/storage/runtime/payment/audio operations.",
+    "Native-message receipt provenance independently reread by root; this review verifies its exact retained bytes and scope, not a separate remote conversation replay.",
+    "No worldwide/US activation, new voice generation, spend or production authorization inferred."
+  ]
+}

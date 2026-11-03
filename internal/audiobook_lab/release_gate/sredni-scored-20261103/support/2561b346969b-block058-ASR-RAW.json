@@ -1,0 +1,228 @@
+{
+  "status": "RAW_UNPROMPTED_TURBO_CONTEXT_NOT_LISTENING_ACCEPTANCE",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/held-eight-large-contexts-20261103/block058-239.685-250.465-exactPCM.wav",
+    "sha256": "b9c04b0992683a64f290c8a24ac9ff19cc4f4ad4f5ef3e3c877385ba1b50181b",
+    "bytes": 517484
+  },
+  "start_in_full": 239.685,
+  "end_in_full": 250.465,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 4.68,
+      "text": " nutmeg was strewn in front of his hutch, an important feature of the offering being that",
+      "avg_logprob": -0.03969214280897921,
+      "no_speech_prob": 7.434883871754172e-13,
+      "words": [
+        {
+          "word": " nutmeg",
+          "start": 0.0,
+          "end": 0.34,
+          "probability": 0.9800441563129425
+        },
+        {
+          "word": " was",
+          "start": 0.34,
+          "end": 0.76,
+          "probability": 0.8635104894638062
+        },
+        {
+          "word": " strewn",
+          "start": 0.76,
+          "end": 1.24,
+          "probability": 0.9996578097343445
+        },
+        {
+          "word": " in",
+          "start": 1.24,
+          "end": 1.38,
+          "probability": 0.9999591112136841
+        },
+        {
+          "word": " front",
+          "start": 1.38,
+          "end": 1.56,
+          "probability": 0.9999769926071167
+        },
+        {
+          "word": " of",
+          "start": 1.56,
+          "end": 1.68,
+          "probability": 0.9999535083770752
+        },
+        {
+          "word": " his",
+          "start": 1.68,
+          "end": 1.82,
+          "probability": 0.9992780089378357
+        },
+        {
+          "word": " hutch,",
+          "start": 1.82,
+          "end": 2.1,
+          "probability": 0.9911759197711945
+        },
+        {
+          "word": " an",
+          "start": 2.28,
+          "end": 2.62,
+          "probability": 0.9998728036880493
+        },
+        {
+          "word": " important",
+          "start": 2.62,
+          "end": 3.0,
+          "probability": 0.999981164932251
+        },
+        {
+          "word": " feature",
+          "start": 3.0,
+          "end": 3.3,
+          "probability": 0.999919056892395
+        },
+        {
+          "word": " of",
+          "start": 3.3,
+          "end": 3.5,
+          "probability": 0.9999845027923584
+        },
+        {
+          "word": " the",
+          "start": 3.5,
+          "end": 3.62,
+          "probability": 0.9983137845993042
+        },
+        {
+          "word": " offering",
+          "start": 3.62,
+          "end": 4.02,
+          "probability": 0.9989394545555115
+        },
+        {
+          "word": " being",
+          "start": 4.02,
+          "end": 4.52,
+          "probability": 0.9747812747955322
+        },
+        {
+          "word": " that",
+          "start": 4.52,
+          "end": 4.68,
+          "probability": 0.9996137022972107
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 4.68,
+      "end": 10.64,
+      "text": " the nutmeg had to be stolen. These festivals were of irregular occurrence and were chiefly appointed",
+      "avg_logprob": -0.03969214280897921,
+      "no_speech_prob": 7.434883871754172e-13,
+      "words": [
+        {
+          "word": " the",
+          "start": 4.68,
+          "end": 4.82,
+          "probability": 0.9966647028923035
+        },
+        {
+          "word": " nutmeg",
+          "start": 4.82,
+          "end": 5.22,
+          "probability": 0.9992366135120392
+        },
+        {
+          "word": " had",
+          "start": 5.22,
+          "end": 5.58,
+          "probability": 0.9999102354049683
+        },
+        {
+          "word": " to",
+          "start": 5.58,
+          "end": 5.7,
+          "probability": 0.9996127486228943
+        },
+        {
+          "word": " be",
+          "start": 5.7,
+          "end": 5.82,
+          "probability": 0.9995818734169006
+        },
+        {
+          "word": " stolen.",
+          "start": 5.82,
+          "end": 6.24,
+          "probability": 0.9996065497398376
+        },
+        {
+          "word": " These",
+          "start": 6.66,
+          "end": 7.34,
+          "probability": 0.9991559982299805
+        },
+        {
+          "word": " festivals",
+          "start": 7.34,
+          "end": 7.76,
+          "probability": 0.9996854066848755
+        },
+        {
+          "word": " were",
+          "start": 7.76,
+          "end": 8.06,
+          "probability": 0.9998770952224731
+        },
+        {
+          "word": " of",
+          "start": 8.06,
+          "end": 8.18,
+          "probability": 0.9996114373207092
+        },
+        {
+          "word": " irregular",
+          "start": 8.18,
+          "end": 8.56,
+          "probability": 0.9971598386764526
+        },
+        {
+          "word": " occurrence",
+          "start": 8.56,
+          "end": 9.12,
+          "probability": 0.9982175230979919
+        },
+        {
+          "word": " and",
+          "start": 9.12,
+          "end": 9.72,
+          "probability": 0.601398766040802
+        },
+        {
+          "word": " were",
+          "start": 9.72,
+          "end": 9.86,
+          "probability": 0.9995691180229187
+        },
+        {
+          "word": " chiefly",
+          "start": 9.86,
+          "end": 10.28,
+          "probability": 0.9998834729194641
+        },
+        {
+          "word": " appointed",
+          "start": 10.28,
+          "end": 10.64,
+          "probability": 0.9996463060379028
+        }
+      ]
+    }
+  ],
+  "transcript": " nutmeg was strewn in front of his hutch, an important feature of the offering being that the nutmeg had to be stolen. These festivals were of irregular occurrence and were chiefly appointed",
+  "language": "en",
+  "elapsed_seconds": 24.1344116669934,
+  "source_used_as_prompt": false
+}

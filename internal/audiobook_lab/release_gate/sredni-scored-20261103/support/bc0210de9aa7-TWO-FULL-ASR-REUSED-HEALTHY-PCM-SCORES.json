@@ -1,0 +1,63 @@
+{
+  "status": "PASS_TWO_FULL_ORIGINAL_RECOGNIZER_STREAMS_WITH_ONLY_ACTUAL_REPLACEMENT_REGION_UPDATED",
+  "PCM_reuse_proof": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/FULL-PCM-REPAIR-CONTINUITY-PROOF.json",
+    "sha256": "121f3558290fdf957e4915f432b0c21478a281205c025cd6c4881b33d419c784",
+    "bytes": 2195
+  },
+  "replacement_actual_measured_ASR": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-timing/candidate-draft-timestamps.json",
+    "sha256": "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469",
+    "bytes": 143745
+  },
+  "metric": "10*(1-token_Levenshtein_WER),distinct from historical repository SequenceMatcher metric",
+  "threshold": 9.7,
+  "minimum_score": 9.708470847084708,
+  "results": [
+    {
+      "raw_ASR": {
+        "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/sredni-local-asr.json",
+        "sha256": "6c3592870a4fc8fcd8bbf94701e51a051a1c92eb38000e0ccded42d432fcdba4",
+        "bytes": 296119
+      },
+      "model": "Systran/faster-whisper-small.en",
+      "revision": "d1d751a5f8271d482d14ca55d9e2deeebbae577f",
+      "removed_exact_original_sentence_indices": [
+        409,
+        427
+      ],
+      "source_tokens": 1818,
+      "recognized_tokens": 1812,
+      "Levenshtein_edits": 53,
+      "ASR_score_10_times_1_minus_WER": 9.708470847084708,
+      "first12_match": true,
+      "last12_match": true,
+      "healthy_recognizer_word_strings_unchanged": true,
+      "new_full_ASR": false
+    },
+    {
+      "raw_ASR": {
+        "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/sredni-turbo-local-asr.json",
+        "sha256": "9e666287aa2cbdc4bda0b775fca56d8dc22e5c1628df8907b5393f67d03adcdb",
+        "bytes": 293875
+      },
+      "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+      "removed_exact_original_sentence_indices": [
+        407,
+        425
+      ],
+      "source_tokens": 1818,
+      "recognized_tokens": 1808,
+      "Levenshtein_edits": 51,
+      "ASR_score_10_times_1_minus_WER": 9.71947194719472,
+      "first12_match": true,
+      "last12_match": true,
+      "healthy_recognizer_word_strings_unchanged": true,
+      "new_full_ASR": false
+    }
+  ],
+  "actual_boundary_caveat": "Turbo old This word interval starts157.96 before quiet cut158.075;it is retained in transcript reuse because actual sentence replacement is Further...bars only and full healthy suffix PCM is identical. No such overlapping old timestamp is adopted into new word/paragraph timing. Earlier local physical-interval classification would have dropped This;corrected before proof publication.",
+  "source_coverage_not_inferred_from_score": true,
+  "raw_ASR_files_unchanged": true
+}

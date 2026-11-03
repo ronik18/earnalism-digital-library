@@ -1,0 +1,30 @@
+{
+  "schema": "earnalism.actual_owner_scored_wording_and_fatal_review.v1",
+  "question_id": "[\"request_user_input_async\",\"call_fcef89d0aab74fbaacee95f584b0e2c3\",0]",
+  "answer": "All source phrases heard, no additions; no listed fatal flags",
+  "montage_audio_sha256": "58e90631308367d039088ad8d4d95ab2af0bf9c77bcf9f78b344b268d260dc64",
+  "scored_parent_audio_sha256": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+  "source_phrases_by_clip": {
+    "1": "real; the (no added well)",
+    "2": "ragged-plumaged Houdan hen",
+    "3": "large polecat-ferret",
+    "4": "lithe, sharp-fanged",
+    "5": "House of Rimmon",
+    "6": "she exclaimed",
+    "7": "hidden key",
+    "8": "paean (PEE-uhn)",
+    "9": "garden, drank (no added Conradin)"
+  },
+  "all_nine_source_phrases_heard_without_additions": true,
+  "fatal_flags": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "list_reading_rhythm_detected": false,
+    "choppy_joins_detected": false,
+    "unintended_change_of_narrator_detected": false
+  },
+  "full_book_quality_clarification_sha256": "3fdbdb790bcf21288cee948e49c699fbc411fe5c6fdc9d2bc35ee9c67ba69f4b",
+  "source_timing_delivery_runtime_release_inferred_pass": false,
+  "source": "DIRECT_USER_QUESTION_REPLY",
+  "received_at": "2026-11-03T04:11:47.432770+00:00"
+}

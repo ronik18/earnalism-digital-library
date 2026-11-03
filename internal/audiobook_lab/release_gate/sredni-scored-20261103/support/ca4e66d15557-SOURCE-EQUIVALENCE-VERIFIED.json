@@ -1,0 +1,33 @@
+{
+  "schema": "earnalism.sredni_source_hash_equivalence.v1",
+  "status": "PASS_EXACT_CANONICAL_UTF8_PLUS_SINGLE_LF_MATCHES_RECORDED_GENERATION_TEXT_HASH",
+  "checked_at_utc": "2026-11-02T22:43:48.829690+00:00",
+  "canonical_chapter": {
+    "path": "/tmp/earnalism-main-approved-integration/data/controlled_publications/sredni-vashtar/chapters/chapter-001.json",
+    "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "bytes": 11365
+  },
+  "canonical_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "UTF8_canonical_content_plus_exactly_one_0A_byte_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "timing": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-timing/candidate-draft-timestamps.json",
+    "sha256": "fd494aed58f6d239932d24b66ea9a68812db1ce965325d8e50e84733702e9469",
+    "bytes": 143745
+  },
+  "retained_timing_source_hash": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "prior_recorded_equivalence": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/live_audiobook_campaign_20261031/recovery-followup/sredni-source-and-reuse-preflight.json",
+    "sha256": "53539123e8993e0c4f75f40ca7758945a58505262e137f962bbbecf7832b9883",
+    "bytes": 5332
+  },
+  "prior_recorded_status": "PASS_CANONICAL_TEXT_PLUS_ONE_TRAILING_LF_EQUALS_EXACT_RECORDED_GENERATION_SHA256",
+  "transformation": "Append exactly one LF byte; no lexical, punctuation or existing whitespace edits",
+  "hash_difference_independent_blocker": false,
+  "full_audio_content_pronunciation_and_player_mapping": "UNVERIFIED_NOT_ESTABLISHED_BY_TEXT_EQUIVALENCE",
+  "audio_unchanged": true,
+  "supersedes_only": [
+    "Parent CUE-PLAN-AND-CALIBRATION.json source_hash_lineage_and_full_alignment: source hash equivalence is now VERIFIED, full alignment remains UNVERIFIED",
+    "Parent OBJECTIVE-REPORT.json source-hash lineage item",
+    "Parent REVIEW.md source-hash difference wording and assertion of existing voice defects"
+  ]
+}

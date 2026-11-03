@@ -1,0 +1,13 @@
+{
+  "status": "ACTUAL_ASSETS_AND_REVIEWABLE_NON_CEDAR_PACKAGE_PREPARED_NOT_ADOPTED",
+  "descriptor_canonical_sha256": "13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab",
+  "actual_native_topology_validation": "PASS_SUPPORTED_COMMON_VALIDATOR",
+  "bytes_per_store": 15346586,
+  "source_registration": "UNIMPLEMENTED_SREDNI_DISPATCH_REQUIRED",
+  "audio_rights_acceptance": "PROPOSED_NOT_ACCEPTED_ROOT_PROSPECTIVE_REVIEW_REQUIRED",
+  "storage_uploads_customer_QA_runtime_publication": "UNPERFORMED",
+  "incremental_external_spend_for_this_preparation_usd": 0,
+  "historical_invoice_usd": null,
+  "future_storage_cost_usd": null,
+  "cost_scope": "No original budget/reset/retry/counter assumptions;existing two-title storage keys and120second member authority are not Sredni authority"
+}

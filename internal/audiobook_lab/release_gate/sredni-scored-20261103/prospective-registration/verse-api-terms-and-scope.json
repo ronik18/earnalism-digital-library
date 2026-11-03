@@ -1,0 +1,51 @@
+{
+  "schema": "earnalism.verse_api_rights_supplement.v1",
+  "scope": "EXACT_RETAINED_API_VERSE_NOT_CHATGPT_VOICE_OR_CEDAR",
+  "reviewed_at": "2026-11-03T06:17:49.573180+00:00",
+  "generation": {
+    "provider": "owner_retained_openai_api",
+    "model_id": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "model_revision": null,
+    "stock_voice": true
+  },
+  "facts": [
+    "Actual retained API provenance is separate from the inherited Cedar/general primary observation. No Cedar voice-specific consent or generation proof transfers.",
+    "Official Services Agreement assigns output rights as between customer and OpenAI while preserving input and third-party rights duties.",
+    "Official TTS documentation lists built-in Verse and requires clear AI-generated voice disclosure; publication tags bind exact Verse/title/model and music attribution.",
+    "Underlying literary and music rights remain independent. Exact IN-only audio_stream components use the independently reviewed literary-term basis and two creator CC BY4 recordings.",
+    "2036-10-02 is a conservative inherited administrative control/review cutoff, not an asserted literary/API/music copyright expiry or lifetime owner decision.",
+    "No storage, publication, customer credit, provider-policy or deployment authority is created by this source registration."
+  ],
+  "independent_rights_review_sha256": "05d999444a78d05a5d3ece35e19f7e19a969636545ff1d1f79ab6bf2f4bc4f2d",
+  "primary_sources": [
+    {
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "basis": "Section22 expired literary term; no fixed2036 expiry supplied."
+    },
+    {
+      "url": "https://openai.com/policies/services-agreement/",
+      "basis": "Effective Jan1 2026, sections2.2 and4.1/4.3 API application/output/input duties."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/text-to-speech",
+      "basis": "Built-in Verse; AI disclosure."
+    },
+    {
+      "url": "https://openai.com/policies/service-terms/",
+      "basis": "API and separate ChatGPT Voice sections; do not conflate output classes."
+    },
+    {
+      "url": "https://incompetech.com/music/royalty-free/licenses/",
+      "basis": "Creator free CC credit route; exact files separately retained catalogue evidence."
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+      "basis": "Sections2/3/6 commercial sharing/adaptation, attribution, no downstream restrictions, applicable copyright term."
+    }
+  ],
+  "runtime_conditions": [
+    "Preserve exact AI disclosure and customer-visible music credits, licence/source URLs and changes before public release.",
+    "Preserve applicable CC licensed-component rights and existing ReadingPass/auth/territorial controls; exact source registration is not final runtime proof."
+  ]
+}

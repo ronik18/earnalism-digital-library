@@ -1,0 +1,52 @@
+{
+  "status": "PASS_COMPLETE_MEASURED_PARAGRAPH_MAPPING_AND_SCOPED_SOURCE_COVERAGE_ONLY",
+  "source_file": {
+    "path": "/tmp/earnalism-main-approved-integration/data/controlled_publications/sredni-vashtar/chapters/chapter-001.json",
+    "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "bytes": 11365
+  },
+  "span_map": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/ADJUDICATED-SOURCE-SPAN-MAP.json",
+    "sha256": "7b1b548f8fa375b51305b6f15ac9c330f1d60669524f30cecc0ed0046534b5a7",
+    "bytes": 1050463
+  },
+  "timestamps": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/sredni-vashtar.timestamps.json",
+    "sha256": "6a76f866af8cac325c9235cc7f8118f83bd67aec38d2c2895fc8623bd0cdb5f9",
+    "bytes": 108156
+  },
+  "measured_blocks": 158,
+  "unmeasured_blocks": [],
+  "estimated_boundary_times": 0,
+  "source_coverage_from_actual_recognition_and_scoped_evidence": 1.0,
+  "raw_literal_source_coverage": 0.9845984598459846,
+  "first_last_tokens": "LITERAL_SOURCE_MATCH",
+  "ordered_source_and_time_spans_monotonic": true,
+  "actual_whitespace_words": 1784,
+  "canonical_declared_word_count_preserved": 1787,
+  "full_owner_review": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/campaign-reconciliation-20261102/four-title-parallel-20261103/owner-response-20261103/SREDNI-FOUR-CONFIRMATIONS.json",
+    "sha256": "3fdbdb790bcf21288cee948e49c699fbc411fe5c6fdc9d2bc35ee9c67ba69f4b",
+    "bytes": 1322
+  },
+  "nine_wording_and_fatal_flags": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/campaign-reconciliation-20261102/four-title-parallel-20261103/owner-response-20261103/SREDNI-NINE-WORDING-AND-FATAL-FLAGS-ACCEPTED.json",
+    "sha256": "f49328353c0bef72e6a45d20cdecbc940bb0d78c8ceac6d181f57ad9bb52adad",
+    "bytes": 1336
+  },
+  "fatal_flags_actual": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "list_reading_rhythm_detected": false,
+    "choppy_joins_detected": false,
+    "unintended_change_of_narrator_detected": false
+  },
+  "raw_scores_not_overwritten": true,
+  "remaining_ASR_alternative_checks": {
+    "060": "INCOMPLETE_UNVERIFIED",
+    "067": "UNPERFORMED_UNVERIFIED",
+    "083": "UNPERFORMED_UNVERIFIED"
+  },
+  "alternate_evidence_does_not_mark_unperformed_checks_pass": true,
+  "production_storage_runtime_accounting_browser_publication": "UNVERIFIED"
+}

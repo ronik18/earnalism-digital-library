@@ -1,0 +1,887 @@
+{
+  "schema": "earnalism.retained_scored_diagnostic_objective_checks.v1",
+  "status": "OBJECTIVE_LOCAL_RENDER_CHECKS_COMPLETE_NOT_RELEASE_ACCEPTANCE",
+  "measured_assets": {
+    "Sredni-Vashtar-Scored-Diagnostic-v1.wav": {
+      "frames": 30629040,
+      "duration_seconds": 638.105,
+      "sample_peak_dBFS": -4.340671097968468,
+      "RMS_dBFS": -26.658170351735787,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0
+    },
+    "score-bed-ducked-48k-f32.wav": {
+      "frames": 30629040,
+      "duration_seconds": 638.105,
+      "sample_peak_dBFS": -19.62087682367981,
+      "RMS_dBFS": -49.05512711986567,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0
+    },
+    "score-bed-preduck-48k-f32.wav": {
+      "frames": 30629040,
+      "duration_seconds": 638.105,
+      "sample_peak_dBFS": -19.464260354501693,
+      "RMS_dBFS": -48.03811132954658,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0
+    }
+  },
+  "ffprobe": {
+    "candidate-private.wav": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_s16le",
+          "sample_rate": "24000",
+          "channels": 1,
+          "time_base": "1/24000",
+          "duration_ts": 15314520,
+          "duration": "638.105000"
+        }
+      ],
+      "format": {
+        "duration": "638.105000",
+        "size": "30629084"
+      }
+    },
+    "Sredni-Vashtar-Scored-Diagnostic-v1.wav": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_f32le",
+          "sample_rate": "48000",
+          "channels": 2,
+          "time_base": "1/48000",
+          "duration_ts": 30629040,
+          "duration": "638.105000"
+        }
+      ],
+      "format": {
+        "duration": "638.105000",
+        "size": "245032412"
+      }
+    },
+    "Sredni-Vashtar-Scored-Diagnostic-v1.mp3": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "48000",
+          "channels": 2,
+          "time_base": "1/14112000",
+          "duration_ts": 9004937760,
+          "duration": "638.105000"
+        }
+      ],
+      "format": {
+        "duration": "638.105000",
+        "size": "15316679"
+      }
+    },
+    "score-bed-ducked-48k-f32.wav": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_f32le",
+          "sample_rate": "48000",
+          "channels": 2,
+          "time_base": "1/48000",
+          "duration_ts": 30629040,
+          "duration": "638.105000"
+        }
+      ],
+      "format": {
+        "duration": "638.105000",
+        "size": "245032412"
+      }
+    }
+  },
+  "unchanged_narration_every_frame": {
+    "compared_frames": 30629040,
+    "max_abs_float_rounding_error": 1.4901161193847656e-08,
+    "error_RMS": 1.110039879419375e-09,
+    "result": "PASS_UNITY_GAIN_SAME_TIMING_AFTER_DETERMINISTIC_24_TO48K_RESAMPLING"
+  },
+  "final_MP3_decode": {
+    "frames_48k_stereo": 30629040,
+    "duration_seconds": 638.105,
+    "sample_peak_dBFS": -4.6440053176404925,
+    "full_scale_or_over_samples": 0,
+    "nonfinite_samples": 0
+  },
+  "final_MP3_EBU_R128_measured_input_only": {
+    "input_i": "-23.25",
+    "input_tp": "-4.61",
+    "input_lra": "4.20",
+    "input_thresh": "-33.78"
+  },
+  "delivery_loudness_compliance": "UNVERIFIED_NO_NEW_NORMALIZATION_APPLIED",
+  "cue_by_cue_actual_stem_checks": [
+    {
+      "frames": 4153920,
+      "duration_seconds": 86.54,
+      "sample_peak_dBFS": -23.834189395066822,
+      "RMS_dBFS": -49.56917461508667,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r01",
+      "start": 0,
+      "end": 86.54,
+      "purpose": "Confinement, doctor and guardian; quiet detached unease",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        14.28623617918335,
+        29.57152131421321,
+        47.92132946470133
+      ]
+    },
+    {
+      "frames": 1365120,
+      "duration_seconds": 28.44,
+      "sample_peak_dBFS": -27.121731736934407,
+      "RMS_dBFS": -50.661188962509165,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r02",
+      "start": 86.54,
+      "end": 114.98,
+      "purpose": "Cheerless garden and the approaching private refuge",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        15.500809604620299,
+        31.043640292487265,
+        49.14404245620408
+      ]
+    },
+    {
+      "frames": 1392960,
+      "duration_seconds": 29.02,
+      "sample_peak_dBFS": -25.15296603921566,
+      "RMS_dBFS": -50.663402579104336,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r03",
+      "start": 114.98,
+      "end": 144,
+      "purpose": "Brief tender contrast for the imagined sanctuary and hen",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        15.917414819817964,
+        25.342586201186418,
+        35.65620139632881
+      ]
+    },
+    {
+      "frames": 1248000,
+      "duration_seconds": 26.0,
+      "sample_peak_dBFS": -400.0,
+      "RMS_dBFS": -400.0,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r04",
+      "start": 144,
+      "end": 170,
+      "purpose": "INTENTIONAL DRY REPAIR WINDOW: corrected hutch sentence and both joins exposed",
+      "expected": "SILENCE",
+      "exact_zero_all_samples": true
+    },
+    {
+      "frames": 4979760,
+      "duration_seconds": 103.745,
+      "sample_peak_dBFS": -23.145689795443708,
+      "RMS_dBFS": -48.63499032309431,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r05",
+      "start": 170,
+      "end": 273.745,
+      "purpose": "Secret ferret cult and understated nutmeg irony; no horror sting",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        11.963399425122018,
+        28.557385029044223,
+        48.17558512968214
+      ]
+    },
+    {
+      "frames": 1028160,
+      "duration_seconds": 21.42,
+      "sample_peak_dBFS": -25.68562723809308,
+      "RMS_dBFS": -50.84822934406046,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r06",
+      "start": 273.745,
+      "end": 295.165,
+      "purpose": "Childlike private humour; restrained, not comic announcement",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        13.855704180770918,
+        30.340086654330293,
+        43.885892470630445
+      ]
+    },
+    {
+      "frames": 1458816,
+      "duration_seconds": 30.392,
+      "sample_peak_dBFS": -22.223813976969847,
+      "RMS_dBFS": -46.772413770953214,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r07",
+      "start": 295.165,
+      "end": 325.557,
+      "purpose": "The hen is taken; loss accumulates without melodrama",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        10.406043430476746,
+        28.1309241110457,
+        47.14138416666602
+      ]
+    },
+    {
+      "frames": 429264,
+      "duration_seconds": 8.943,
+      "sample_peak_dBFS": -400.0,
+      "RMS_dBFS": -400.0,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r08",
+      "start": 325.557,
+      "end": 334.5,
+      "purpose": "INTENTIONAL SILENCE for speechless grief and the small qualm",
+      "expected": "SILENCE",
+      "exact_zero_all_samples": true
+    },
+    {
+      "frames": 3075696,
+      "duration_seconds": 64.077,
+      "sample_peak_dBFS": -23.80950451206918,
+      "RMS_dBFS": -48.80996350741234,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r09",
+      "start": 334.5,
+      "end": 398.577,
+      "purpose": "Toast withheld and repeated private prayer",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        13.901525113248494,
+        29.640542004132747,
+        45.12096949071341
+      ]
+    },
+    {
+      "frames": 4344768,
+      "duration_seconds": 90.516,
+      "sample_peak_dBFS": -19.62087682367981,
+      "RMS_dBFS": -45.93106507510771,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r10",
+      "start": 398.577,
+      "end": 489.093,
+      "purpose": "Invasion of the sanctuary and the boy\u2019s threatened defeat",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        11.05494325438242,
+        25.9360290437823,
+        42.48012526210498
+      ]
+    },
+    {
+      "frames": 740160,
+      "duration_seconds": 15.42,
+      "sample_peak_dBFS": -27.105802957256337,
+      "RMS_dBFS": -50.60070765260172,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r11",
+      "start": 489.093,
+      "end": 504.513,
+      "purpose": "Defiant hymn remains spoken narration; no added chant or voices",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        16.283758795031066,
+        30.026494535524453,
+        47.123542849584965
+      ]
+    },
+    {
+      "frames": 647376,
+      "duration_seconds": 13.487,
+      "sample_peak_dBFS": -400.0,
+      "RMS_dBFS": -400.0,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r12",
+      "start": 504.513,
+      "end": 518,
+      "purpose": "INTENTIONAL SILENCE as chanting stops and waiting begins",
+      "expected": "SILENCE",
+      "exact_zero_all_samples": true
+    },
+    {
+      "frames": 1746864,
+      "duration_seconds": 36.393,
+      "sample_peak_dBFS": -24.434431184037066,
+      "RMS_dBFS": -48.8584319337069,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r13",
+      "start": 518,
+      "end": 554.393,
+      "purpose": "Measured waiting and hope; do not preannounce outcome",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        13.20624354387687,
+        27.615801439921892,
+        43.534409674208405
+      ]
+    },
+    {
+      "frames": 725136,
+      "duration_seconds": 15.107,
+      "sample_peak_dBFS": -400.0,
+      "RMS_dBFS": -400.0,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r14",
+      "start": 554.393,
+      "end": 569.5,
+      "purpose": "INTENTIONAL SILENCE for the animal\u2019s emergence and stained jaws",
+      "expected": "SILENCE",
+      "exact_zero_all_samples": true
+    },
+    {
+      "frames": 854064,
+      "duration_seconds": 17.793,
+      "sample_peak_dBFS": -27.36916715106775,
+      "RMS_dBFS": -51.52443454644676,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r15",
+      "start": 569.5,
+      "end": 587.293,
+      "purpose": "Passing of the ferret and ordinary tea invitation",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        16.51307843262712,
+        32.374134096277814,
+        46.84344140596991
+      ]
+    },
+    {
+      "frames": 2438976,
+      "duration_seconds": 50.812,
+      "sample_peak_dBFS": -26.06437370516894,
+      "RMS_dBFS": -51.47891500027324,
+      "full_scale_or_over_samples": 0,
+      "nonfinite_samples": 0,
+      "id": "r16",
+      "start": 587.293,
+      "end": 638.105,
+      "purpose": "Cold understated toast irony, no triumphal musical resolution",
+      "expected": "MUSIC",
+      "nonzero_signal_present": true,
+      "speech_active_100ms_narration_over_music_dB_percentiles_5_50_95": [
+        16.388382367782587,
+        34.0082544488853,
+        53.0911368502976
+      ]
+    }
+  ],
+  "ten_second_stem_coverage": [
+    {
+      "start": 0.0,
+      "end": 10.0,
+      "music_RMS_dBFS": -48.097368179593644,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 10.0,
+      "end": 20.0,
+      "music_RMS_dBFS": -50.540550525203344,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 20.0,
+      "end": 30.0,
+      "music_RMS_dBFS": -48.038049923385195,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 30.0,
+      "end": 40.0,
+      "music_RMS_dBFS": -47.8815087516475,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 40.0,
+      "end": 50.0,
+      "music_RMS_dBFS": -49.26181649306596,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 50.0,
+      "end": 60.0,
+      "music_RMS_dBFS": -53.75768504233646,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 60.0,
+      "end": 70.0,
+      "music_RMS_dBFS": -49.00333042996994,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 70.0,
+      "end": 80.0,
+      "music_RMS_dBFS": -50.59383111958597,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 80.0,
+      "end": 90.0,
+      "music_RMS_dBFS": -56.374976178744845,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 90.0,
+      "end": 100.0,
+      "music_RMS_dBFS": -53.16304114873593,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 100.0,
+      "end": 110.0,
+      "music_RMS_dBFS": -47.972697366689694,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 110.0,
+      "end": 120.0,
+      "music_RMS_dBFS": -49.5639421918724,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 120.0,
+      "end": 130.0,
+      "music_RMS_dBFS": -51.42378005476219,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 130.0,
+      "end": 140.0,
+      "music_RMS_dBFS": -51.409375896365916,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 140.0,
+      "end": 150.0,
+      "music_RMS_dBFS": -55.78589241258936,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 150.0,
+      "end": 160.0,
+      "music_RMS_dBFS": -400.0,
+      "fully_intentional_silence": true,
+      "signal_nonzero": false
+    },
+    {
+      "start": 160.0,
+      "end": 170.0,
+      "music_RMS_dBFS": -400.0,
+      "fully_intentional_silence": true,
+      "signal_nonzero": false
+    },
+    {
+      "start": 170.0,
+      "end": 180.0,
+      "music_RMS_dBFS": -49.289818369842976,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 180.0,
+      "end": 190.0,
+      "music_RMS_dBFS": -46.94585599899188,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 190.0,
+      "end": 200.0,
+      "music_RMS_dBFS": -47.716852709601085,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 200.0,
+      "end": 210.0,
+      "music_RMS_dBFS": -45.914449359604546,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 210.0,
+      "end": 220.0,
+      "music_RMS_dBFS": -48.31126991014531,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 220.0,
+      "end": 230.0,
+      "music_RMS_dBFS": -51.4665043949649,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 230.0,
+      "end": 240.0,
+      "music_RMS_dBFS": -49.70271637729119,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 240.0,
+      "end": 250.0,
+      "music_RMS_dBFS": -47.25360630936169,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 250.0,
+      "end": 260.0,
+      "music_RMS_dBFS": -53.28844972326749,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 260.0,
+      "end": 270.0,
+      "music_RMS_dBFS": -51.55565890639322,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 270.0,
+      "end": 280.0,
+      "music_RMS_dBFS": -48.771274055305824,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 280.0,
+      "end": 290.0,
+      "music_RMS_dBFS": -51.25304216671201,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 290.0,
+      "end": 300.0,
+      "music_RMS_dBFS": -51.625066587221305,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 300.0,
+      "end": 310.0,
+      "music_RMS_dBFS": -44.94376904028596,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 310.0,
+      "end": 320.0,
+      "music_RMS_dBFS": -46.224594424605186,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 320.0,
+      "end": 330.0,
+      "music_RMS_dBFS": -56.12479612349279,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 330.0,
+      "end": 340.0,
+      "music_RMS_dBFS": -52.63905482628168,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 340.0,
+      "end": 350.0,
+      "music_RMS_dBFS": -47.596984481550905,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 350.0,
+      "end": 360.0,
+      "music_RMS_dBFS": -48.845898307435,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 360.0,
+      "end": 370.0,
+      "music_RMS_dBFS": -46.58503720013136,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 370.0,
+      "end": 380.0,
+      "music_RMS_dBFS": -49.18984105348446,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 380.0,
+      "end": 390.0,
+      "music_RMS_dBFS": -52.4487394758195,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 390.0,
+      "end": 400.0,
+      "music_RMS_dBFS": -50.56100967606942,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 400.0,
+      "end": 410.0,
+      "music_RMS_dBFS": -44.55684016788932,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 410.0,
+      "end": 420.0,
+      "music_RMS_dBFS": -50.54640649780475,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 420.0,
+      "end": 430.0,
+      "music_RMS_dBFS": -49.16935681426412,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 430.0,
+      "end": 440.0,
+      "music_RMS_dBFS": -45.126550169174884,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 440.0,
+      "end": 450.0,
+      "music_RMS_dBFS": -43.131577536958446,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 450.0,
+      "end": 460.0,
+      "music_RMS_dBFS": -45.45992917201997,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 460.0,
+      "end": 470.0,
+      "music_RMS_dBFS": -48.70021416040216,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 470.0,
+      "end": 480.0,
+      "music_RMS_dBFS": -47.05714730751022,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 480.0,
+      "end": 490.0,
+      "music_RMS_dBFS": -44.65219323602729,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 490.0,
+      "end": 500.0,
+      "music_RMS_dBFS": -48.96387252968289,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 500.0,
+      "end": 510.0,
+      "music_RMS_dBFS": -63.16406057200218,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 510.0,
+      "end": 520.0,
+      "music_RMS_dBFS": -57.73148923803612,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 520.0,
+      "end": 530.0,
+      "music_RMS_dBFS": -49.13059654195088,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 530.0,
+      "end": 540.0,
+      "music_RMS_dBFS": -48.263853688282396,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 540.0,
+      "end": 550.0,
+      "music_RMS_dBFS": -47.57643869241896,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 550.0,
+      "end": 560.0,
+      "music_RMS_dBFS": -59.81042347204394,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 560.0,
+      "end": 570.0,
+      "music_RMS_dBFS": -88.73733347747032,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 570.0,
+      "end": 580.0,
+      "music_RMS_dBFS": -49.81982374360575,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 580.0,
+      "end": 590.0,
+      "music_RMS_dBFS": -55.57185781867532,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 590.0,
+      "end": 600.0,
+      "music_RMS_dBFS": -57.34038490765841,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 600.0,
+      "end": 610.0,
+      "music_RMS_dBFS": -50.84756094473356,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 610.0,
+      "end": 620.0,
+      "music_RMS_dBFS": -49.90195576044083,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 620.0,
+      "end": 630.0,
+      "music_RMS_dBFS": -51.010175359610955,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    },
+    {
+      "start": 630.0,
+      "end": 638.105,
+      "music_RMS_dBFS": -50.48352987110755,
+      "fully_intentional_silence": false,
+      "signal_nonzero": true
+    }
+  ],
+  "joins": [
+    {
+      "seconds": 149.59,
+      "music_exact_zero_200ms": true,
+      "max_adjacent_sample_step_200ms": 0.0,
+      "interpretation": "OBSERVED_SAMPLE_STEP_ONLY_NOT_CLICK_OR_SMOOTHNESS_PASS",
+      "perceptual_naturalness_voice_identity_expression_join": "UNVERIFIED_BLOCKING"
+    },
+    {
+      "seconds": 159.34,
+      "music_exact_zero_200ms": true,
+      "max_adjacent_sample_step_200ms": 0.00021803932031616569,
+      "interpretation": "OBSERVED_SAMPLE_STEP_ONLY_NOT_CLICK_OR_SMOOTHNESS_PASS",
+      "perceptual_naturalness_voice_identity_expression_join": "UNVERIFIED_BLOCKING"
+    }
+  ],
+  "intentional_silence_seconds": 63.53699999999998,
+  "dry_original_sha256_unchanged": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+  "material_holds": [
+    "Full scored listening/actual music audibility and speech clarity throughout UNPERFORMED",
+    "Naturalness, grammatical pauses, expression, voice continuity and both repaired joins UNVERIFIED",
+    "Complete canonical-source fidelity, proper-name pronunciation and source-hash lineage UNVERIFIED",
+    "Delivery/source adoption, rights acceptance, player sync/metadata, storage and live verification UNPERFORMED"
+  ],
+  "actual_named_quality_scores": null,
+  "mean_target_9_8_achievement": "UNVERIFIED_NOT_ASSIGNED",
+  "new_provider_calls_synthesis_allocation_customer_debits": 0
+}

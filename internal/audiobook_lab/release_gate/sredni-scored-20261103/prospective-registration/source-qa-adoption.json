@@ -1,0 +1,111 @@
+{
+  "schema": "earnalism.sredni_scored_adoption.v1",
+  "status": "ADOPTED",
+  "scope": "SOURCE_QA_ONLY_STORAGE_AND_RUNTIME_PENDING",
+  "policy": "sredni_scored_retained_owner_adjudicated.v1",
+  "descriptor_sha256": "dc53e6fdd5f74d71afbb56ea7b97c1484b781ffcceb12390b6546835e37336dc",
+  "identity": {
+    "slug": "sredni-vashtar",
+    "title": "Sredni Vashtar",
+    "author": "Saki",
+    "controlled_source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "master_wav_sha256": "8e95f3d76d21fc2be34a15f719d9be15d8caa76cffe7d359375cd3d90edecc2f",
+    "master_mp3_sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692"
+  },
+  "generation": {
+    "provider": "owner_retained_openai_api",
+    "model_id": "gpt-4o-mini-tts",
+    "model_revision": null,
+    "voice": "verse",
+    "stock_voice": true,
+    "new_synthesis_or_allocations": 0
+  },
+  "evidence_sha256": {
+    "generation_provenance": "633849e96770272e9160cca11fb66333f8e8b0392f71f4796de92cff073e7004",
+    "objective_qa": "066b9b35373d3313a25c66acc2ce883d88264db9f34a72325e4e8c3b08090b3c",
+    "material_wording_review": "5984f7b0b8490ffb7734cd1708f7130a8bae88e8e7792abe58feb519f3598182",
+    "voice_direction_acceptance": "98f749030fda3e145218aa38d5a89a96d44939f80f5030b8954db19a462aee72",
+    "model_voice_licence": "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+    "source_edition": "26f6454243b971c70b7ac3d1dad29cf28e833c4731a0d8b1185d3ad2f191a6ec",
+    "cover_reuse": "0c1d19636d8a5916772a8af82e3d945c6a78456b8a7fff8f9cefca21205db8c3",
+    "producer_authority": "a748c9a86be4efb83bd2cb15f9ce94d32434dda476b11a1427ea6bbf39ce7566",
+    "scored_mix_acceptance": "a0f1e1c3b36fe1f7cf92ebfce9f2e684c5cb4db2ca1006bc9e8200d7dec8e57e",
+    "music_rights": "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+    "measured_alignment": "e79e19ab116284541de0343319e27870c2f0b8bc343b59ec56d88e7732923229",
+    "container_metadata_reuse": "e095f10f8ba208c1274739f646803668455c8fa71f8cad4b5a3c9e7cef1ff93f"
+  },
+  "source_coverage": 1.0,
+  "ASR_minimum_10_times_1_minus_WER": 9.708470847084708,
+  "human_scores": {
+    "naturalness": 9.8,
+    "pronunciation": 9.8,
+    "emotion": 9.8,
+    "grammatical_pauses": 9.8,
+    "pacing": 9.8,
+    "voice_continuity": 9.8,
+    "nonrobotic_texture": 9.8,
+    "joins": 9.8,
+    "enjoyment": 9.8,
+    "clarity": 9.8
+  },
+  "overall": 9.8,
+  "confidence": 0.98,
+  "fatal_flags": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "list_reading_rhythm_detected": false,
+    "choppy_joins_detected": false,
+    "unintended_change_of_narrator_detected": false
+  },
+  "actual_reader_paragraphs": 17,
+  "actual_word_count": 1784,
+  "duration_ms": 638105,
+  "frames": 30629040,
+  "chunk_mapping_sha256": "d0db339a1d34ff842cee800dc6742a750413a230f0e0aae3e71db4085d9b2061",
+  "unresolved_material_audio_defects": [],
+  "audio_use_decision": {
+    "schema_version": "earnalism.rights-decision.v1",
+    "decision_id": "india-20261103-sredni-vashtar-verse-scored-prospective-audio",
+    "edition_id": "sredni-vashtar",
+    "operator_id": "reo-enterprise",
+    "status": "ACCEPTED",
+    "components": {
+      "source_file": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+      "selected_manuscript": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+      "master_wav": "8e95f3d76d21fc2be34a15f719d9be15d8caa76cffe7d359375cd3d90edecc2f",
+      "master_mp3": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+      "audio_component_bindings": "d0db339a1d34ff842cee800dc6742a750413a230f0e0aae3e71db4085d9b2061",
+      "model_voice_licence": "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+      "music_rights": "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+      "listened_master_mp3": "8c767405472944fcd1a2cf4a0f2b548f517b32340e459b5a670bd3a51366f790",
+      "container_metadata_reuse": "e095f10f8ba208c1274739f646803668455c8fa71f8cad4b5a3c9e7cef1ff93f"
+    },
+    "territories": [
+      "IN"
+    ],
+    "uses": [
+      "audio_stream"
+    ],
+    "valid_from": "2026-11-03T06:17:49.574463+00:00",
+    "valid_until": "2036-10-02T00:00:00+00:00",
+    "basis": "Prospective exact IN audio_stream component registration under native owner mandate70853686; independently reviewed public-domain literary source, actual retained OpenAI API stockVerse output and two creator CC BY4 music recordings. Original proposals and Cedar-worded general evidence remain unchanged; Verse clarification is separately bound. Existing Reader/cover use is not the audio grant. valid_until2036-10-02 is a conservative inherited administrative review cutoff, not legal copyright expiry or owner lifetime acceptance. Exact credits, AI disclosure and applicable licensed-component permissions must survive later runtime delivery. Storage, protected access/accounting and publication gates remain mandatory.",
+    "evidence_sha256": [
+      "26f6454243b971c70b7ac3d1dad29cf28e833c4731a0d8b1185d3ad2f191a6ec",
+      "51434a41b6ec587cd5447ca9217512e40a730b19ae41039cb955946ae53fda6a",
+      "6e3a0c81805ae7d7e40fd977f686f191769010b89758490a6c0840ff7f95d980",
+      "70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686",
+      "4199365cf944db707a178623cafc8b3e8ca5f0e5f09f43fd1f5e11d891479ff6",
+      "05d999444a78d05a5d3ece35e19f7e19a969636545ff1d1f79ab6bf2f4bc4f2d"
+    ],
+    "accepted_by": "Integration Lane under direct native owner next-three-title GO LIVE mandate and exact Sredni registration handoff; component rights only, not runtime release",
+    "conditions_satisfied": true
+  },
+  "adopted_by": "Integration Lane acting under verified direct native owner mandate; prospective source QA only",
+  "authority_reference": "prospective-registration/native-human-campaign-mandate.json",
+  "authority_evidence_sha256": "70853686516bf26b01a7d98d9bb5c70bf410d623ae5742dd58ec5d91b3138686",
+  "no_actual_registration_storage_or_runtime_acceptance": false,
+  "independent_source_review_sha256": "7a1a2a6eb471c8002c6d20bbac29e998ea843a197131353947feea566692d7f4",
+  "actual_registration_scope": "SOURCE_QA_ONLY_NOT_STORAGE_RUNTIME_OR_LIVE",
+  "rights_scope_supplement_sha256": "4199365cf944db707a178623cafc8b3e8ca5f0e5f09f43fd1f5e11d891479ff6"
+}

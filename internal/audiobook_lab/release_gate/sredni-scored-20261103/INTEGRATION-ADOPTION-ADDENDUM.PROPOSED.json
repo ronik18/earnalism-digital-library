@@ -1,0 +1,7 @@
+{
+  "status": "PROPOSED_FOR_ROOT_PROSPECTIVE_ADOPTION_ONLY",
+  "independent_source_review_sha256": "7a1a2a6eb471c8002c6d20bbac29e998ea843a197131353947feea566692d7f4",
+  "review_scope": "Media/source/timing only;not rights,trust,storage,runtime or LIVE",
+  "descriptor_canonical_sha256": "13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab",
+  "actual_rights_adoption_by_root_still_required": true
+}

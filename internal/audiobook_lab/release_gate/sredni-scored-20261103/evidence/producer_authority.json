@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "producer_authority",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "scope": "Standing owner wholeLIVE-reading-book campaign and subsequent autonomous Sredni qualification;publication conditional on all rights/quality/source/storage/runtime gates",
+    "new_synthesis_allocation_key_or_purchase_authority": false,
+    "source": "Visible direct owner campaign request+actual current owner media acceptance;Integration must bind existing campaign authority at prospective adoption",
+    "no_human_legal_signature_inferred": true
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/3fdbdb790bcf-SREDNI-FOUR-CONFIRMATIONS.json",
+      "sha256": "3fdbdb790bcf21288cee948e49c699fbc411fe5c6fdc9d2bc35ee9c67ba69f4b",
+      "bytes": 1322
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/f49328353c0b-SREDNI-NINE-WORDING-AND-FATAL-FLAGS-ACCEPTED.json",
+      "sha256": "f49328353c0bef72e6a45d20cdecbc940bb0d78c8ceac6d181f57ad9bb52adad",
+      "bytes": 1336
+    }
+  ]
+}

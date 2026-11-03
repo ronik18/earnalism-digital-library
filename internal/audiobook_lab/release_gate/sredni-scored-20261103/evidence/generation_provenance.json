@@ -1,0 +1,54 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "generation_provenance",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "generation": {
+      "provider": "owner_retained_openai_api",
+      "model_id": "gpt-4o-mini-tts",
+      "model_revision": null,
+      "voice": "verse",
+      "stock_voice": true,
+      "new_synthesis_or_allocations": 0
+    },
+    "historical_candidate": {
+      "candidate_id": "candidate-61355c7842dbcbae",
+      "dedup_group_id": "dedup-4fb10f2026b8c586",
+      "provider": "openai",
+      "model": "gpt-4o-mini-tts",
+      "voice": "verse",
+      "style": "classic_literary_narrator",
+      "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+      "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+      "size_bytes": 10190637,
+      "duration_seconds": 636.84,
+      "new_tts_ran_this_stage": false
+    },
+    "original_full_request_count": "UNKNOWN_RETAINED_JOB_MANIFEST_UNAVAILABLE",
+    "historical_sentence_replacement_requests": 1,
+    "new_requests_for_scored_release": 0,
+    "source_generation_text_equivalence": "Canonical exact UTF8 plus one trailingLF matches44e3bebe…;no lexical change"
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/30c25580bbd4-sredni-vashtar_release_gate_evidence.json",
+      "sha256": "30c25580bbd404c449e73fbd8b071ac81542c2af12d5712e57b0f7b86f2bdc6d",
+      "bytes": 4116
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/915158c18da1-synthesis-reconciliation.json",
+      "sha256": "915158c18da1060cb98c3fb6e20544f516ba7126a94129f0ec989757545be5bd",
+      "bytes": 1742
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/121f3558290f-FULL-PCM-REPAIR-CONTINUITY-PROOF.json",
+      "sha256": "121f3558290fdf957e4915f432b0c21478a281205c025cd6c4881b33d419c784",
+      "bytes": 2195
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/ca4e66d15557-SOURCE-EQUIVALENCE-VERIFIED.json",
+      "sha256": "ca4e66d155574ee914692e65055fe8f899dcaa2180b0564135e96237eb1b984d",
+      "bytes": 2157
+    }
+  ]
+}

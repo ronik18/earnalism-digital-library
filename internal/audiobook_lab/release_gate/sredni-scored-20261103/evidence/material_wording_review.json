@@ -1,0 +1,30 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "material_wording_review",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "all9phrases_accepted": true,
+    "extra_well_and_Conradin_absent": true,
+    "raw_ASR_not_rewritten": true,
+    "source_spans_with_individual_scope": true,
+    "entity_correspondence_scope": "Canonical entity/source context+fulltitle pronunciation9.8;not nineclip word-specific authority outside its actual scope",
+    "orthography": "Only single offence/offense span;no global name/homophone alias"
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/f49328353c0b-SREDNI-NINE-WORDING-AND-FATAL-FLAGS-ACCEPTED.json",
+      "sha256": "f49328353c0bef72e6a45d20cdecbc940bb0d78c8ceac6d181f57ad9bb52adad",
+      "bytes": 1336
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/7b1b548f8fa3-ADJUDICATED-SOURCE-SPAN-MAP.json",
+      "sha256": "7b1b548f8fa375b51305b6f15ac9c330f1d60669524f30cecc0ed0046534b5a7",
+      "bytes": 1050463
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/5c4386e75397-SAMPLE-CUSTODY-AND-NINE-ROW-INDEX.json",
+      "sha256": "5c4386e75397747c902e608fad63c226fd25c94abf501b3195497b4a9306729c",
+      "bytes": 29093
+    }
+  ]
+}

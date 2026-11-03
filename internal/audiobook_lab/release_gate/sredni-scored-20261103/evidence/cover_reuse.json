@@ -1,0 +1,28 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "cover_reuse",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "front": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-front-9dd8673295c6b127.webp",
+    "back": "https://theearnalism.com/assets/books/sredni-vashtar/sredni-vashtar-back-b31f6a00c13fb1f7.webp",
+    "existing_accepted_cover_scope_preserved": true,
+    "no_cover_or_reader_edit": true
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/553930cf3aea-rights_decision.json",
+      "sha256": "553930cf3aeab137ed0808f2d7ff012c43fe0382a69ce8a8f30dd9215ce3651b",
+      "bytes": 4063
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/b01f78084e9c-cover_approval_evidence.json",
+      "sha256": "b01f78084e9c8164c40a33ceef4c934fad398eb09516e9d07b3025727ce4e2d5",
+      "bytes": 5943
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/6798d9fcd0c0-public_book.json",
+      "sha256": "6798d9fcd0c0a8a0fe95cbd75be55be37198b4b7c1514c07e4fec685ebde6b0c",
+      "bytes": 5900
+    }
+  ]
+}

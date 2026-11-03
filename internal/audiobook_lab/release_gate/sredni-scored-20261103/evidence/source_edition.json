@@ -1,0 +1,33 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "source_edition",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "language": "en",
+    "canonical_chapter_count": 1,
+    "actual_whitespace_words": 1784,
+    "canonical_declared_count1787_preserved": true,
+    "source_lexical_tokens": 1818,
+    "IN_expired_literary_term": "Retain independently evidenced author death1916/lifetime edition1912 and INSection22 expired term;PG availability alone not the licence",
+    "reader_audio_exclusion_not_audio_adoption": true
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/ee935954b41c-source_evidence.json",
+      "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "bytes": 10511
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/4a6e85fcc4b9-chapter-001.json",
+      "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+      "bytes": 11365
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/553930cf3aea-rights_decision.json",
+      "sha256": "553930cf3aeab137ed0808f2d7ff012c43fe0382a69ce8a8f30dd9215ce3651b",
+      "bytes": 4063
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "earnalism.independent_sredni_rights_adoption_review.v1",
+  "reviewed_at": "2026-11-03T06:13:21.104484+00:00",
+  "verdict": "SOURCE_RIGHTS_BASIS_SUPPORTED_PROSPECTIVE_DELEGATED_ADOPTION_REQUIRED",
+  "manifest_sha256": "fda57757dd471670cc2ebd26577fe358b8827346f193a099043a2adceaae81ce",
+  "manifest_verification": {
+    "files": 86,
+    "all_exact_hash_and_size_match": true
+  },
+  "scope": "Read-only frozen evidence and existing supported registry/adoption review; primary public documentation only; no listening/provider/account/media generation/registry mutation or LIVE proof.",
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "REQUIRED_BINDING",
+      "finding": "Audio rights and adoption are explicitly PROPOSED_NOT_ACCEPTED/PROPOSED_NOT_ADOPTED. Existing accepted Reader/cover record explicitly excludes audio. Media scores and wording acceptance alone do not change these states.",
+      "resolution": "Integration Lane may prospectively record exact IN audio_stream acceptance/adoption under a verified actual direct whole-campaign/Sredni GO LIVE delegation, citing its immutable native authority receipt. Frozen producer_authority currently describes the mandate but references only quality replies; bind the actual mandate before accepted_by/status/time fields change. Do not invent human signature or reuse another title approval. No repeat owner question if existing actual scope authorizes this delegated action."
+    },
+    {
+      "id": "R2",
+      "severity": "NARROW_CORRECTION",
+      "finding": "Retained primary-rights observation schema/name and two sentences describe stockCedar/realtime and Cedar tags, whereas actual candidate is gpt-4o-mini-tts/Verse. model_voice_licence explicitly borrows only general API terms and correctly rejects Cedar-specific transfer.",
+      "resolution": "Preserve original observation; add a truthful Verse-specific review supplement citing actual generation provenance and current primary TTS/terms. Do not relabel Cedar evidence as Verse or claim dated model revision; revision remains unknown."
+    },
+    {
+      "id": "R3",
+      "severity": "CONTROL_VALIDITY_CLARIFICATION",
+      "finding": "2036-10-02 is inherited Reader/cover administrative validity, not a demonstrated expiry of literary public-domain status, API output ownership or CC BY4 licence. No exact new audio-term owner acceptance is present.",
+      "resolution": "Do not claim legal expiry2036 or silently infer lifetime owner acceptance. If retaining2036 as conservative internal review/control cutoff, expressly label it administrative and cite delegated policy basis; alternatively use an already-authorized non-expiring registry representation only when actual existing campaign delegation supports it. A fresh rights decision is needed only if scope/term exceeds existing mandate, not merely because a proposal field is null."
+    },
+    {
+      "id": "R4",
+      "severity": "RELEASE_CONDITION",
+      "finding": "CC BY4 music may be commercially used/adapted with attribution/change notice, but licensed-component downstream rights and effective-technological-measures constraints remain. A protected platform is not automatically forbidden or automatically compliant.",
+      "resolution": "Reuse accepted existing component-separation/terms interpretation only if byte/applicable-scope bound; customer-visible exact attribution+licence/source links+changes and no purported withdrawal of applicable CC rights must survive actual delivery. Do not demand purchase of a licence or bypass ReadingPass, and do not assert a fresh legal exception from metadata alone."
+    }
+  ],
+  "supported_facts": {
+    "literary": "Frozen exact source/manuscript, author death1916 and lifetime edition1912; official India Section22 supports expired literary term, independent of source repository availability. No new worldwide/US activation inferred.",
+    "voice": "Actual retained OpenAI API stockVerse, not ChatGPT Voice/custom clone; API terms assign output rights as between customer/OpenAI and require input rights. TTS docs list Verse and require clear AI disclosure. No new voice consent/model allocation requirement established for unchanged stock output.",
+    "music": "Exact Heartbreaking USUAN1100208 and Heartwarming USUAN1100207 Kevin MacLeod files retain creator/catalogue/licence evidence. Current creator page confirms free CC credit route; CC BY4 supports commercial adaptation with conditions.",
+    "owner_quality": "Two actual DIRECT_USER_QUESTION_REPLY receipts bind full638sec scored listening, ten9.8 scores and nine wording/fatal-flag answers to listened master8c767...; container metadata reuse records exact decodedPCM+elementary-packet equality to delivery60ce989... . No repeat full listening required on metadata-only identical audio evidence, absent material contrary finding.",
+    "registry_precedent": "Existing Sredni Reader/cover accepted_by delegated serialized controller under actual issue477/owner acceptance; Selfish owner-produced registry uses exact authority_reference/evidenceSHA and separate accepted IN audio decision. Precedents support delegated recording, not transfer of their title-specific authority."
+  },
+  "minimal_paths": {
+    "frozen_audio_decision": "integration-package/AUDIO-USE-DECISION.PROPOSED.json",
+    "frozen_adoption": "integration-package/SOURCE-ADOPTION.PROPOSED.json",
+    "frozen_quality_receipts": [
+      "integration-package/support/3fdbdb790bcf-SREDNI-FOUR-CONFIRMATIONS.json",
+      "integration-package/support/f49328353c0b-SREDNI-NINE-WORDING-AND-FATAL-FLAGS-ACCEPTED.json"
+    ],
+    "canonical_rights_registry": "backend/data/rights_decision_registry.json",
+    "canonical_adoptions": "internal/audiobook_lab/release_gate/owner_produced_package_adoptions.json",
+    "candidate_handler": "integration-package/handler-candidate/sredni_scored_retained.py",
+    "binding_to_add": "Exact actual native owner whole-campaign/Sredni GO LIVE authority receipt path/hash (not supplied as direct authority record inside frozen packet) plus narrow Verse-primary review supplement; compute resulting adoption/decision/descriptor fingerprints coherently."
+  },
+  "genuine_owner_blocker": "NONE established if Integration Lane verifies existing direct GO LIVE/delegated rights scope. If native mandate cannot be verified, hold acceptance only on that missing authority; quality replies are insufficient substitutes. No production authority inferred from this review.",
+  "remaining_release_gates": [
+    "Canonical exact-source integration and applicable CI/reviews",
+    "Actual storage checksums/retention and protected current-package/player acceptance",
+    "Current separately scoped publication/deployment authority and actual public availability checks"
+  ],
+  "primary_sources": [
+    {
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "basis": "Section22 expired literary term; no fixed2036 expiry supplied."
+    },
+    {
+      "url": "https://openai.com/policies/services-agreement/",
+      "basis": "Effective Jan1 2026, sections2.2 and4.1/4.3 API application/output/input duties."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/text-to-speech",
+      "basis": "Built-in Verse; AI disclosure."
+    },
+    {
+      "url": "https://openai.com/policies/service-terms/",
+      "basis": "API and separate ChatGPT Voice sections; do not conflate output classes."
+    },
+    {
+      "url": "https://incompetech.com/music/royalty-free/licenses/",
+      "basis": "Creator free CC credit route; exact files separately retained catalogue evidence."
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+      "basis": "Sections2/3/6 commercial sharing/adaptation, attribution, no downstream restrictions, applicable copyright term."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "earnalism.retained_standalone_word_raw_ASR.v1",
+  "status": "RAW_UNPROMPTED_RESULT_NOT_LISTENING_ACCEPTANCE",
+  "label_for_postcomparison_only": "that",
+  "audio": {
+    "path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/standalone-three-crosscheck-20261103/that-373.685-380.185-exactPCM.wav",
+    "sha256": "1e4bf0a2f9781cf886d480a0a6da8f83d45205396dee9e80791e73aea42c3d7d",
+    "bytes": 312044
+  },
+  "start_in_full": 373.685,
+  "end_in_full": 380.185,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 4.42,
+      "text": " and choking back a sob as he looked at that other empty corner,",
+      "avg_logprob": -0.1565238447750316,
+      "no_speech_prob": 0.10005167871713638,
+      "words": [
+        {
+          "word": " and",
+          "start": 0.0,
+          "end": 1.16,
+          "probability": 0.3464092016220093
+        },
+        {
+          "word": " choking",
+          "start": 1.16,
+          "end": 1.44,
+          "probability": 0.6344149708747864
+        },
+        {
+          "word": " back",
+          "start": 1.44,
+          "end": 1.76,
+          "probability": 0.9959679841995239
+        },
+        {
+          "word": " a",
+          "start": 1.76,
+          "end": 1.92,
+          "probability": 0.9957346320152283
+        },
+        {
+          "word": " sob",
+          "start": 1.92,
+          "end": 2.24,
+          "probability": 0.9477494359016418
+        },
+        {
+          "word": " as",
+          "start": 2.24,
+          "end": 2.7,
+          "probability": 0.942805826663971
+        },
+        {
+          "word": " he",
+          "start": 2.7,
+          "end": 2.84,
+          "probability": 0.9941818118095398
+        },
+        {
+          "word": " looked",
+          "start": 2.84,
+          "end": 3.02,
+          "probability": 0.996367335319519
+        },
+        {
+          "word": " at",
+          "start": 3.02,
+          "end": 3.16,
+          "probability": 0.9819015860557556
+        },
+        {
+          "word": " that",
+          "start": 3.16,
+          "end": 3.32,
+          "probability": 0.9638699889183044
+        },
+        {
+          "word": " other",
+          "start": 3.32,
+          "end": 3.6,
+          "probability": 0.9915018081665039
+        },
+        {
+          "word": " empty",
+          "start": 3.6,
+          "end": 3.98,
+          "probability": 0.9665343761444092
+        },
+        {
+          "word": " corner,",
+          "start": 3.98,
+          "end": 4.42,
+          "probability": 0.9977352619171143
+        }
+      ]
+    }
+  ],
+  "transcript": " and choking back a sob as he looked at that other empty corner,",
+  "elapsed_seconds": 3.143650792000699,
+  "source_used_as_prompt": false
+}

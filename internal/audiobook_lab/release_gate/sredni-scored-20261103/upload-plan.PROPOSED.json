@@ -1,0 +1,42 @@
+{
+  "schema_version": "audiobook_package_upload_plan.v2",
+  "slug": "sredni-vashtar",
+  "release_descriptor_sha256": "13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab",
+  "immutable_prefix": "v1/prod/sprint1/sredni-vashtar/releases/13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab/",
+  "release_status": "RELEASE_CANDIDATE",
+  "execution_authorized_by_this_file": false,
+  "assets": [
+    {
+      "asset_id": "sredni-vashtar-master-000-audio",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/delivery/sredni-vashtar-scored.mp3",
+      "key": "v1/prod/sprint1/sredni-vashtar/releases/13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab/delivery/sredni-vashtar-master-000-audio-sha256-60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692.mp3",
+      "sha256": "60ce9893c5196e35ba8ee0ba7b491a53882f1e65ba3b1f31c01c052ed8cc7692",
+      "size_bytes": 15316455,
+      "mime_type": "audio/mpeg"
+    },
+    {
+      "asset_id": "sredni-vashtar-master-000-timestamps",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/delivery/sredni-vashtar.timestamps.json",
+      "key": "v1/prod/sprint1/sredni-vashtar/releases/13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab/delivery/sredni-vashtar-master-000-timestamps-sha256-303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee.json",
+      "sha256": "303d398c02f0efb2ab94716918a73fda91c4935de6bbf499d0b6ae008a4748ee",
+      "size_bytes": 18100,
+      "mime_type": "application/json"
+    },
+    {
+      "asset_id": "sredni-vashtar-master-000-vtt",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/delivery/sredni-vashtar.vtt",
+      "key": "v1/prod/sprint1/sredni-vashtar/releases/13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab/delivery/sredni-vashtar-master-000-vtt-sha256-6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f.vtt",
+      "sha256": "6caf727eb1152c4cfddf7e47cb64a8eb36ed57296940b7def7d7c6bc329b182f",
+      "size_bytes": 10791,
+      "mime_type": "text/vtt"
+    },
+    {
+      "asset_id": "sredni-vashtar-master-000-metadata",
+      "local_path": "/Users/ronikbasak/.codex/visualizations/2026/10/31/01a19041-6750-7503-8694-d979c8c254c9/audiobook-private-recovery-20261101/sredni-scored-diagnostic-20261103/owner-adjudicated-source-qualification-20261103/delivery/sredni-vashtar.metadata.json",
+      "key": "v1/prod/sprint1/sredni-vashtar/releases/13ee59e0f97637758a2dc310886f7ffc53b0f3253047540e1591fcec584fdfab/delivery/sredni-vashtar-master-000-metadata-sha256-34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3.json",
+      "sha256": "34f0f8a4dd14dd0952cb3f9436601be01e585ea964286162d01f894d71679ec3",
+      "size_bytes": 1240,
+      "mime_type": "application/json"
+    }
+  ]
+}

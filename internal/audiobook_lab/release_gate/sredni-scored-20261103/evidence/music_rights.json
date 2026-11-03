@@ -1,0 +1,58 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "music_rights",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "tracks": [
+      {
+        "title": "Heartbreaking",
+        "creator": "Kevin MacLeod",
+        "isrc": "USUAN1100208",
+        "sha256": "b888fa087b580959d5bd49e61340b44dc0b9f85cd3b4c2d35042d47edea77ae8",
+        "licence": "CC BY4.0"
+      },
+      {
+        "title": "Heartwarming",
+        "creator": "Kevin MacLeod",
+        "isrc": "USUAN1100207",
+        "sha256": "a621a943ab940567f4136060e0f1f0637038b8a03c10ff8926f956e1b2ef34e7",
+        "licence": "CC BY4.0"
+      }
+    ],
+    "exact_new_mix_adoption_required": true,
+    "attribution_and_actual_changes_in_ID3_and_metadata": true,
+    "terms_scope": "Reuse primary creator licence facts and accepted API/musicdelivery interpretation only;preserve applicable licensed-component reuse and attribution;existing ReadingPass controls not bypassed"
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/b1a9ae4c72ec-API-AND-MUSIC-PRIMARY-RIGHTS-OBSERVATIONS.json",
+      "sha256": "b1a9ae4c72eca73bb50e7f1e18756cccacecd58bca6279bd0c92f99c865a554b",
+      "bytes": 2831
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/a73f823779e5-MUSIC-SELECTION.json",
+      "sha256": "a73f823779e52f7cb70db5afd1faf972f8ec32a6251feab12f90527022a9f6e1",
+      "bytes": 6088
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/9433f98bf5fd-official-selected-catalogue.json",
+      "sha256": "9433f98bf5fd74292bd8a15db6fa4307ce80ee6888625583f9028e0e123d7627",
+      "bytes": 1720
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/0aaccc3d496f-creator-current-track.html",
+      "sha256": "0aaccc3d496fc4ae189e27e3fe2d4f5216266e3bcccf2e0ba77fb1b57a28fa94",
+      "bytes": 26826
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/479019ed42fd-creator-current-licenses.html",
+      "sha256": "479019ed42fd8384c63c04bd95dc6d0e0e0da505ddd6f567a13018c724f8416d",
+      "bytes": 12146
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/ec259383acb3-PUBLICATION-TAG-READBACK.json",
+      "sha256": "ec259383acb3e50179473e46da2d8842c86c4f8fb4639daebede2ae1ca5f2e05",
+      "bytes": 784
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-01T19:17:56.058977+00:00",
+  "commercial_scope": "Proposed India audio_stream only; no worldwide or download-use grant inferred.",
+  "delivery_conditions": [
+    "Final credits contain exact two tracks, creator, source links, CC BY4 licence and actual arrangement/fade/duck/mastering changes.",
+    "Existing site terms allow applicable-licence reuse and do not purport to withdraw public-domain/CC rights. Final runtime must preserve attribution and compatible licensed-component permissions; rights acceptance is not a bypass of access controls."
+  ],
+  "schema": "earnalism.cedar_primary_rights_observations.v1",
+  "sources": [
+    {
+      "effective": "2026-01-01",
+      "observations": [
+        "API integration into customer applications is permitted. Output ownership is assigned as between customer and OpenAI to the extent law allows. Customer must hold input rights and evaluate output. This does not independently clear book/music rights."
+      ],
+      "sections": [
+        "2.2",
+        "4.1",
+        "4.3"
+      ],
+      "url": "https://openai.com/policies/services-agreement/"
+    },
+    {
+      "observations": [
+        "ChatGPT Voice Output has a separate noncommercial restriction. Retained worker/results show this candidate was stockCedar via API, not ChatGPT Voice or a custom cloned voice. Modified/combined output is not assumed indemnified."
+      ],
+      "sections": [
+        "1 API",
+        "8 Voice Conversations"
+      ],
+      "updated": "2026-10-16",
+      "url": "https://openai.com/policies/service-terms/"
+    },
+    {
+      "observations": [
+        "Documentation requires clear AI-voice disclosure and directs gpt-realtime-2.1-mini use through Realtime. Actual final tags disclose AI narration and stockCedar."
+      ],
+      "url": "https://developers.openai.com/api/docs/guides/text-to-speech"
+    },
+    {
+      "observations": [
+        "Creator offers free Creative Commons use with credits. Current track pages render a JavaScript shell in this browsing interface; exact title/ISRC/CCBY4 binding uses retained creator HTML/catalog and unchanged original music hashes, not a falsely claimed current rendered track review."
+      ],
+      "url": "https://incompetech.com/music/royalty-free/licenses/"
+    },
+    {
+      "observations": [
+        "Licensed rights include sharing and adapting under the stated conditions. Retain creator/source/licence notices and indicate changes. Do not add terms or effective technological restrictions on licensed music permissions. No endorsement is implied."
+      ],
+      "sections": [
+        "2(a)(1)",
+        "2(a)(5)",
+        "3(a)"
+      ],
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+    }
+  ],
+  "status": "PRIMARY_SOURCE_OBSERVATIONS_FOR_PROPOSED_REVIEW_NOT_LEGAL_ADOPTION"
+}

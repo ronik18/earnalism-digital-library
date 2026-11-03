@@ -1,0 +1,38 @@
+{
+  "schema": "earnalism.sredni_actual_evidence.v1",
+  "role": "model_voice_licence",
+  "status": "ACTUAL_FACTS_FOR_PROSPECTIVE_REVIEW_NOT_RIGHTS_ADOPTION",
+  "facts": {
+    "generation": {
+      "provider": "owner_retained_openai_api",
+      "model_id": "gpt-4o-mini-tts",
+      "model_revision": null,
+      "voice": "verse",
+      "stock_voice": true,
+      "new_synthesis_or_allocations": 0
+    },
+    "API_not_ChatGPT_Voice": true,
+    "stock_not_cloned_voice": true,
+    "AI_disclosure_prepared": true,
+    "input_literary_rights_separate": true,
+    "provider_general_terms_reused_only": "General API output ownership/application integration facts;Cedar-specific qualification/consent is NOT borrowed forVerse",
+    "undated_provider_alias_revision": "UNKNOWN_NOT_INVENTED"
+  },
+  "references": [
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/b1a9ae4c72ec-API-AND-MUSIC-PRIMARY-RIGHTS-OBSERVATIONS.json",
+      "sha256": "b1a9ae4c72eca73bb50e7f1e18756cccacecd58bca6279bd0c92f99c865a554b",
+      "bytes": 2831
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/30c25580bbd4-sredni-vashtar_release_gate_evidence.json",
+      "sha256": "30c25580bbd404c449e73fbd8b071ac81542c2af12d5712e57b0f7b86f2bdc6d",
+      "bytes": 4116
+    },
+    {
+      "path": "owner-adjudicated-source-qualification-20261103/integration-package/support/915158c18da1-synthesis-reconciliation.json",
+      "sha256": "915158c18da1060cb98c3fb6e20544f516ba7126a94129f0ec989757545be5bd",
+      "bytes": 1742
+    }
+  ]
+}

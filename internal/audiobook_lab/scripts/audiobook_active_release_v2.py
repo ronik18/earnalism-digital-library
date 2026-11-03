@@ -703,6 +703,15 @@ def validate_qa_candidate_release_descriptor(
                 f"QA-candidate {descriptor_field} does not match the package"
             )
     candidate = descriptor.get("release_candidate_evidence")
+    if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "sredni_scored_retained_owner_adjudicated.v1":
+        try:
+            try:
+                from .sredni_scored_retained import validate as validate_sredni
+            except ImportError:
+                from sredni_scored_retained import validate as validate_sredni
+            return validate_sredni(descriptor, package, controlled_language, QA_CANDIDATE_DOWNSTREAM_GATES)
+        except ValueError as exc:
+            raise ReleasePointerError(str(exc)) from None
     if isinstance(candidate, Mapping) and candidate.get("acceptance_policy") == "retained_master_continuous_derivative.v1":
         try:
             try:

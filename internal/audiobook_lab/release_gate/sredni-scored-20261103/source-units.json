@@ -1,0 +1,155 @@
+[
+  {
+    "id": "paragraph-00001",
+    "source_start": 0,
+    "source_end": 835,
+    "raw_source_span_sha256": "8ffda7d63f41f6bfdb34e644850021f521510a24380b7a833f04e222cd1d84c0",
+    "reader_display_text_sha256": "72b585e8252ecc158e932fd1b2204d4e19d8b24e2612b7ba259b2c20ca46b790",
+    "actual_whitespace_word_count": 131,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00002",
+    "source_start": 837,
+    "source_end": 1412,
+    "raw_source_span_sha256": "1de7eb951f1c9113fa61fa9768db03ed3da4724eec2613597ba389ce0d6b2c6f",
+    "reader_display_text_sha256": "9e5bc84833c17ab51f171b5811157923904f6956a5e13483f83c94f3dc1a35fe",
+    "actual_whitespace_word_count": 96,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00003",
+    "source_start": 1414,
+    "source_end": 4447,
+    "raw_source_span_sha256": "63d3cfcdc13cd288cfc60f275bed7c72e38146f6f31e4e9f99914f5158099cd7",
+    "reader_display_text_sha256": "4f853a0cd413d6b06c49ee910706c0071c4ffad12feaa89753fa0e13dbd65ba1",
+    "actual_whitespace_word_count": 512,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00004",
+    "source_start": 4449,
+    "source_end": 4808,
+    "raw_source_span_sha256": "b929aae8d9b1b780ddf0ffa29ddc943287f3697c878b33348a571463368ef624",
+    "reader_display_text_sha256": "1ecf4e99dc7907a91d6e7eafa6cbf75f3739f1dd43e9acc488e056a30d8364a7",
+    "actual_whitespace_word_count": 64,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00005",
+    "source_start": 4810,
+    "source_end": 5640,
+    "raw_source_span_sha256": "0ad2349b6ec08bb6db55d17a80c4999390141896b85a8dd8f6f6b57b25c0473b",
+    "reader_display_text_sha256": "eb54f380cedeb3bd5bef63d49d287a58b743b5a4debf0a37388a06cddec9891a",
+    "actual_whitespace_word_count": 145,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00006",
+    "source_start": 5642,
+    "source_end": 5743,
+    "raw_source_span_sha256": "da3d07aa70bb1e36d81648568bd4acf18e21f40d5cf9574a67250bbfb7e2dd5e",
+    "reader_display_text_sha256": "4094836ca0e77abe14dd78ce7ff47fe3f48b32d0aff6e90a009dab09cd959764",
+    "actual_whitespace_word_count": 18,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00007",
+    "source_start": 5745,
+    "source_end": 5772,
+    "raw_source_span_sha256": "d2d793580b425721366d969a3e300356c851119719ed6ca4373b034fe967b338",
+    "reader_display_text_sha256": "d2d793580b425721366d969a3e300356c851119719ed6ca4373b034fe967b338",
+    "actual_whitespace_word_count": 3,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00008",
+    "source_start": 5774,
+    "source_end": 5928,
+    "raw_source_span_sha256": "f255aea6b156d0982ad1603fc5200da880b7499fa8fa8a51985b8acd1f2876c0",
+    "reader_display_text_sha256": "cf948c48e93ede17399c807ad71febab74486e2c7d3c44ce8884573c14d6449f",
+    "actual_whitespace_word_count": 28,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00009",
+    "source_start": 5930,
+    "source_end": 5968,
+    "raw_source_span_sha256": "f945ea4707555c80c8e5db2cc46b1d0b7c5583ea31f92e0ca282b7bac57d4144",
+    "reader_display_text_sha256": "f945ea4707555c80c8e5db2cc46b1d0b7c5583ea31f92e0ca282b7bac57d4144",
+    "actual_whitespace_word_count": 7,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00010",
+    "source_start": 5970,
+    "source_end": 6347,
+    "raw_source_span_sha256": "37474d463bd056185f2ce9903dbd171e2641333a202df2f5b3a4b7fb6ad6b769",
+    "reader_display_text_sha256": "439f9fc897644b24a2eb0ba8bb8dd0cb1ba9544c91fc21b98d1b434b8de26038",
+    "actual_whitespace_word_count": 70,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00011",
+    "source_start": 6349,
+    "source_end": 6467,
+    "raw_source_span_sha256": "1bb120f8764f1abbba1dbfdc3646d47fe1a5bf89293129279461ca489dff0215",
+    "reader_display_text_sha256": "813a0b23c61f39d57e31365926412cf96e850fff79e41cac43fe9bfe5e66092f",
+    "actual_whitespace_word_count": 23,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00012",
+    "source_start": 6469,
+    "source_end": 7979,
+    "raw_source_span_sha256": "af8d3f3d5c68d90a184df110fa55cc7d8dc0fc325e25d59b465ba471cc97a205",
+    "reader_display_text_sha256": "8f69a2724ee6daf01645669a1fe2279606a0ea86b73b496f89599ba6099cea6a",
+    "actual_whitespace_word_count": 272,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00013",
+    "source_start": 7981,
+    "source_end": 8007,
+    "raw_source_span_sha256": "9b54ff4e49832beff0e83e7f956a43da13ca7082d2df709d6eaff42f5b15523c",
+    "reader_display_text_sha256": "9b54ff4e49832beff0e83e7f956a43da13ca7082d2df709d6eaff42f5b15523c",
+    "actual_whitespace_word_count": 4,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00014",
+    "source_start": 8010,
+    "source_end": 8157,
+    "raw_source_span_sha256": "9c41cc6252dd98ec8f77062207c56adea8b5c876631eb8726b1f2619e549b924",
+    "reader_display_text_sha256": "a2a6c2dc2de50f99ed2f2cc28878ec0d131c958a2acdfc1ed154a9df93626fdf",
+    "actual_whitespace_word_count": 24,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00015",
+    "source_start": 8159,
+    "source_end": 9368,
+    "raw_source_span_sha256": "dabe15ff6bedf14779a0913645f63437b5de44993bc9fabab3903011cd631fe9",
+    "reader_display_text_sha256": "a0a68cb3fdf0a6926ed2d46ea5e8a048ae370b9ff3a52c65ea5607c0fbaa58cd",
+    "actual_whitespace_word_count": 217,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00016",
+    "source_start": 9370,
+    "source_end": 10172,
+    "raw_source_span_sha256": "24f5c237333e44c325c29726f4d0e7f8835c0022bc535d204e9fdf99a3087a70",
+    "reader_display_text_sha256": "a6a8c1db760bd647fc497bb5cf5079ce7cdd2d4141adc3dbeabebfb9eb790262",
+    "actual_whitespace_word_count": 136,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  },
+  {
+    "id": "paragraph-00017",
+    "source_start": 10174,
+    "source_end": 10373,
+    "raw_source_span_sha256": "99a152d80340a99e23b19cfcae3420edb21cffa9efda81f506d1d99a5d569551",
+    "reader_display_text_sha256": "ec1badc78a052a17152af90e5bd002a839d949ba8b737e8c28a3a7f5d1486b05",
+    "actual_whitespace_word_count": 34,
+    "unit_kind": "ACTUAL_READER_PARAGRAPH_NOT_GENERATION_TAKE"
+  }
+]
