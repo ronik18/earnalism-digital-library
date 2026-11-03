@@ -2993,3 +2993,5 @@ Remove optional-request readiness barriers and hidden duplicate rendering; parti
 ## Sredni private stage and exact credits — 3 November 2026
 
 Use the actual retained package/four immutable receipts through the supported Reader-only private source transaction. Freeze an initial predecessor for initial-stage tests; cloning advanced canonical metadata correctly triggers replay denial and is not a reason to relax it. Preserve exact catalogue-rights history with an explicit source-only successor. UI credits must follow the selected package, never another edition. Source staging and mocked API-to-DOM tests grant no member, debit, provider, runtime or public availability authority.
+
+For an intentional frontend change, refresh both existing deterministic production-source hash authorities before hosted browser review. This binds capture to the exact source; it does not carry forward visual approval or waive fresh browser/published-artifact validation. Preserve stale-pin failures and review the narrow successor.
