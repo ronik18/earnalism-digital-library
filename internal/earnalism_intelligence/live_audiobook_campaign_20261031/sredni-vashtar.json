@@ -327,5 +327,16 @@
     "remaining": "Sourceinventory+operator8filedigest/finalreview/freshCI required. Actualserving/startup/recovery/IN/privategrant/playback remainunproven. Separateactualstartupguardapproval245b reported byowner butisnotstartup/recoveryPASS anddoesnotchangepreviousq8628history.",
     "parallel_owner_lane_report": "Bicharak staticone-shotread28326B recovered51fillconstants thenZIPformatHOLD; no modelstart/allocation/synthesis/replay. Fidelity/sync HOLD; retainedprivatecheckpointnotchangedbythissourcework.",
     "next_exact_prompt": "Generate finalstagedruntimeinventory, independentlyreviewcoherentsource/test/learningbytes, publishV2source successor; requireallapplicableexactheadCI/browser/finalpublished+all29realMongoactualPASS beforematchheadmerge/treeequality. No provider/deploy/grant/customer actions."
+  },
+  "sredni_v2_ci_history_fetch_bound_20261103": {
+    "at": "2026-11-03T15:22:52.480160+00:00",
+    "decision": "BOUND_FOUR_EXACT_HISTORY_FETCHES_WITH_MEASURED_HOSTED_HEADROOM",
+    "failed_head": "d2ebad9e19f95287d5a72721a9f289abbef0cf97",
+    "run": 41661808392,
+    "job": 126006638262,
+    "failure": "CI failed BEFOREdependencies/tests at Fetch boundedreviewedcataloguehistory timeout2min; threeexactfetchescompleted around25/32/26seconds andfourthdidnotfinishwithinremainingbudget. No app/testfidelityfailure orMongoresult established.",
+    "correction": "Onlythisfour-pin sequentialhistory-fetch step timeout2→4minutes within unchanged45minutejob; sameimmutable4pins,depth1,missing-objectchecks,cat-fileverifications,oneattemptperpin,no retries/no bulkhistory/no currentcontents substitution.",
+    "checks": "ExistingYAML/staticworkflowcontract checksrequired; V2source local674PASS4oldskip117subtests/209PASS3oldskip/29inventoryPASS/184unitPASS unchanged. FreshallapplicableCI (including workflow-triggeredcontainer/packaging) andactual29Mongo remainmandatory.",
+    "next_exact_prompt": "Independentnarrowworkflow/appendonlylearningreview; sourceCI successor, nofailedworkflowrerun; allfreshgates beforematchheadmerge/treeequality. No provider/deploy/customer actions."
   }
 }

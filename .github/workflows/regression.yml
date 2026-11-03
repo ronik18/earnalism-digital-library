@@ -71,7 +71,8 @@ jobs:
           echo 'RELEASE_SOURCE_CLEAN=YES'
 
       - name: Fetch bounded reviewed catalogue history
-        timeout-minutes: 2
+        # Four exact one-attempt fetches exceeded 120s on the hosted runner.
+        timeout-minutes: 4
         shell: bash
         env:
           GIT_NO_LAZY_FETCH: '1'
