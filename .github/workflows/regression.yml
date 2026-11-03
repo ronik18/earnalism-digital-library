@@ -118,6 +118,20 @@ jobs:
           if [[ -f scripts/build_india_guarded_rollback.py ]]; then
             bindings+=("4dc9e8fd3f9eafd28445b408d376b73634ccfa56:backend/server.py")
           fi
+          reader_source_pin=''
+          reader_binding=internal/release/reader612_native_preparation.json
+          if [[ -f "$reader_binding" ]]; then
+            for field in source_sha application_base prior_reader_source; do
+              source_pin="$(jq -er ".$field" "$reader_binding")"
+              [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              source_path=backend/server.py
+              if [[ "$field" == prior_reader_source ]]; then source_path=backend/reading_pass_service.py; fi
+              bindings+=("$source_pin:$source_path")
+            done
+            reader_source_pin="$(jq -er '.source_sha' "$reader_binding")"
+            application_pin="$(jq -er '.application_base' "$reader_binding")"
+            bindings+=("$application_pin:backend/.runtime-source-manifest.json")
+          fi
           missing_commits=()
           for binding in "${bindings[@]}"; do
             if ! git -c remote.origin.promisor=false cat-file -e "$binding" 2>/dev/null; then
@@ -129,6 +143,12 @@ jobs:
             while IFS= read -r object_id; do unique+=("$object_id"); done < <(printf '%s\n' "${missing_commits[@]}" | sort -u)
             missing_commits=("${unique[@]}")
             git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "${missing_commits[@]}"
+          fi
+          if [[ -n "$reader_source_pin" ]]; then
+            # Keep every recovery backend byte and its exact legal/ignore inputs.
+            while IFS= read -r -d '' source_path; do
+              bindings+=("$reader_source_pin:$source_path")
+            done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$reader_source_pin" -- backend .gitignore .gitattributes internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json internal/legal/reader612_recovery_source.json)
           fi
           missing_blobs=()
           for binding in "${bindings[@]}"; do
@@ -211,6 +231,7 @@ jobs:
         timeout-minutes: 5
         shell: bash
         env:
+          GIT_NO_LAZY_FETCH: '1'
           REDIS_CACHE_ENABLED: 'false'
           REDIS_PUBLIC_METADATA_ENABLED: 'false'
           MULTI_REPLICA_ENABLED: 'false'
@@ -220,9 +241,11 @@ jobs:
           for field in source_sha application_base prior_reader_source; do
             source_pin="$(jq -er ".$field" "$binding")"
             [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
-            git fetch --no-tags --depth=1 origin "$source_pin"
+            git -c remote.origin.promisor=false cat-file -e "$source_pin^{commit}"
           done
-          git worktree add --detach "$RUNNER_TEMP/reader612-closed-source" "$(jq -er '.source_sha' "$binding")"
+          git worktree add --detach --no-checkout "$RUNNER_TEMP/reader612-closed-source" "$(jq -er '.source_sha' "$binding")"
+          printf '%s\n' '/backend/' '/internal/legal/purchase_guard_source.json' '/internal/legal/purchase_guard_owner_acceptance.json' '/internal/legal/reader612_recovery_source.json' '/.gitignore' '/.gitattributes' | git -C "$RUNNER_TEMP/reader612-closed-source" sparse-checkout set --no-cone --stdin
+          git -C "$RUNNER_TEMP/reader612-closed-source" read-tree -mu HEAD
           python3 -m scripts.reader612_recovery_source --source-root "$RUNNER_TEMP/reader612-closed-source" --binding "$binding"
           python3 -m unittest scripts.test_reader612_recovery_source scripts.test_reader612_native_restore scripts.test_reader612_native_observer scripts.test_reader612_protected_approval scripts.test_reader612_phase_bridge scripts.test_reader612_phase_collectors -v
 
