@@ -8,7 +8,7 @@ D=lambda x:p.digest(x)
 def fixture(journal):
  b={'source_sha':'a'*40,'source_delivery_sha256':'b'*64,'closed_server_sha256':'c'*64,'config_sha256':'d'*64,'frontend_source_sha':'f'*40,'frontend_deployment_id':'dpl_OLD'}
  pr={'schema':'earnalism.first_guard_parent_source_projection.v1','action':'release_guarded_bootstrap',**{k:b[k] for k in ['source_sha','source_delivery_sha256','closed_server_sha256']},'runtime_manifest_sha256':'e'*64,'config_expected_sha256':b['config_sha256'],'frontend_source_sha':'f'*40,'frontend_deployment_id':'dpl_OLD','operations_journal_identity_sha256':a._operation_journal_identity(journal)}
- baseline={'schema':'earnalism.actual_root_native_baseline.v1','owner_scope_receipt_sha256':'a'*64,'intended_closed_source_sha':b['source_sha'],'operations_journal_identity_sha256':pr['operations_journal_identity_sha256'],'historical_terminal_operations':{},'initial_future_operation_count':0,'limits':p.ACTION_LIMITS.copy()}
+ baseline={'schema':'earnalism.actual_root_native_baseline.v2','owner_scope_receipt_sha256':'a'*64,'intended_closed_source_sha':b['source_sha'],'operations_journal_identity_sha256':pr['operations_journal_identity_sha256'],'historical_terminal_operations':{},'historical_request_artifacts':{},'initial_future_operation_count':0,'limits':p.ACTION_LIMITS.copy()}
  baseline['release_scope_id']=D({'domain':'earnalism.native_action_scope.v1',**{k:baseline[k] for k in ['owner_scope_receipt_sha256','intended_closed_source_sha','operations_journal_identity_sha256']}})
  b['native_action_scope']={k:baseline[k] for k in p.SCOPE_KEYS-{'schema','baseline_sha256'}}|{'schema':'earnalism.native_action_scope.v1','baseline_sha256':D(baseline)}
  a._durable_json(journal/'.native-action-baseline.receipt',baseline)

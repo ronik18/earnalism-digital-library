@@ -1278,15 +1278,27 @@ class ProviderAdapter:
             own=by_id.get(own_operation_id)
             if not own or own.get('binding')!=binding or own.get('action')!=action or operation_identity(action,binding)!=own_operation_id:
                 raise ValueError('Exact durable self-intent preimage changed before dispatch')
+        historical_requests=baseline['historical_request_artifacts']
+        observed_historical_requests=set()
         for request in self.journal.glob('*.request.json'):
             op=request.name[:-len('.request.json')]
             if op not in by_id:raise ValueError('Orphan request uncertainty requires read-only reconciliation')
-            original=by_id[op];b=original['binding'];kind=original['action'];body=raw(request)[0]
+            body,request_raw_sha=raw(request)
+            if op in baseline['historical_terminal_operations']:
+                # Preserve authentic legacy requests exactly; current request
+                # schemas cannot reinterpret historical custom native actions.
+                if historical_requests.get(op)!=request_raw_sha:
+                    raise ValueError('Historical request artifact changed or was not admitted')
+                observed_historical_requests.add(op)
+                continue
+            original=by_id[op];b=original['binding'];kind=original['action']
             if kind=='stage_frontend':expected=stage_frontend_request(b)
             elif kind=='restore_frontend':expected={'action':kind,'binding_sha256':digest(b),'frontend_restore_context':b['frontend_restore_context']}
             elif kind=='restore_guarded_bootstrap':expected={'action':kind,'binding_sha256':digest(b),'restore_context':b['restore_context'],'native_query':self._command(kind,b,request)[2]}
             else:raise ValueError('Unrecognized provider request artifact')
             if body!=expected:raise ValueError('Provider request artifact differs from original intent')
+        if observed_historical_requests!=set(historical_requests):
+            raise ValueError('Historical request artifact missing')
         barrier=self.journal/'_write-barrier.json'
         if barrier.exists():
             op=raw(barrier)[0].get('operation_id')
