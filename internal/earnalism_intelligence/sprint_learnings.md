@@ -3042,3 +3042,9 @@ Canonical transport units and responsive pages are different. Bound public sourc
 Recover missing canonical files from exact immutable source without resetting or replacing preserved work. For the demonstrated historical-fetch timeouts, the earlier full-containment download instruction is superseded for the unit gate by commit/tree plus the required server blob; immutable Reader612 qualification still retains every backend and required legal/ignore byte. Populate a fresh no-checkout sparse index explicitly before qualification, retaining original timeouts and fail-closed checks.
 
 A layout fixture cannot demand unrestricted anonymous traversal after the public preview is bounded. Retain separate five-viewport guest denial cases and use an ordinary publication-bound dummy lease for full source/BR/geometry/navigation checks. A failed browser artifact must still block dependent recovery evidence; no older fallback or automatic failed-run replay. These are source checks, not deployed remediation or current-provider recovery proof.
+
+### Canonical preview accounting and isolated API origins — 4 November 2026
+
+A canonical ingestion target sums HTML blocks before joining them with serialization newlines. Match that budget only after proving an exact canonical serialization roundtrip; do not normalize arbitrary legacy whitespace, increase the cap, clip content or alter hashes. The 52-title measurement separates join overhead from the genuine oversized Jekyll page, whose public denial and ordinary protected byte/hash delivery remain intact.
+
+Production and review builds can route APIs differently. A loopback browser fixture must mock approved loopback API origins across configured ports without forwarding requests; only same-BASE assets may continue, and foreign origins remain blocked. Report measured interception counts separately from declared policy, and test the actual CI-shaped build.

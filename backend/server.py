@@ -167,6 +167,7 @@ try:
         canonical_segment_chapter_title,
         canonicalize_segment_manifest_chapters,
         canonical_page_records,
+        _content_blocks as _canonical_reader_content_blocks,
         public_text_page,
         segment_manifest,
     )
@@ -181,6 +182,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         canonical_segment_chapter_title,
         canonicalize_segment_manifest_chapters,
         canonical_page_records,
+        _content_blocks as _canonical_reader_content_blocks,
         public_text_page,
         segment_manifest,
     )
@@ -12480,8 +12482,14 @@ PUBLIC_READER_SEGMENT_HTML_BYTES_LIMIT = 65_536
 def _bounded_public_reader_segment(content: str) -> bool:
     if not isinstance(content, str) or len(content.encode("utf-8")) > PUBLIC_READER_SEGMENT_HTML_BYTES_LIMIT:
         return False
-    text = html.unescape(re.sub(r"<[^>]+>", "", content))
-    return len(text) <= PUBLIC_READER_SEGMENT_TEXT_LIMIT
+    blocks = _canonical_reader_content_blocks(content)
+    if "\n".join(blocks).strip() == content:
+        # Ingestion sums block text before inserting serialization newlines.
+        # Exclude only those proven separators, never normalize legacy bodies.
+        text_size = sum(len(html.unescape(re.sub(r"<[^>]+>", "", block))) for block in blocks)
+    else:
+        text_size = len(html.unescape(re.sub(r"<[^>]+>", "", content)))
+    return text_size <= PUBLIC_READER_SEGMENT_TEXT_LIMIT
 
 
 @api.get("/reader/book/{slug}/pages/{page_index}")

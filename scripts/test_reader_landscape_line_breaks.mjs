@@ -8,7 +8,9 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const base = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
-assert.ok(base && ['127.0.0.1', 'localhost'].includes(new URL(base).hostname), 'Use an isolated loopback build');
+const approvedLoopbackHosts = new Set(['127.0.0.1', 'localhost']);
+assert.ok(base && approvedLoopbackHosts.has(new URL(base).hostname), 'Use an isolated loopback build');
+const baseOrigin = new URL(base).origin;
 const sourceDirectory = process.env.READER_LANDSCAPE_SOURCE_DIR;
 const slug = 'agentic-ai-with-python';
 const chunks = [
@@ -62,16 +64,27 @@ const dummyToken = 'isolated-landscape-user-no-production-credential';
 const output = process.env.READER_LANDSCAPE_OUTPUT || fs.mkdtempSync(path.join(os.tmpdir(), 'reader-landscape-line-breaks-'));
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch();
-const report = { cases: [], guest_cases: [], unauthorized_chunk_requests: 0, network_policy: 'ABORT_NON_LOOPBACK_BEFORE_WIRE', blocked_non_loopback_requests: 0 };
+const report = { cases: [], guest_cases: [], unauthorized_chunk_requests: 0, network_policy: 'MOCK_LOOPBACK_API_CONTINUE_SAME_BASE_ASSETS_ONLY', blocked_non_loopback_requests: 0, blocked_non_base_asset_requests: 0, mocked_api_origins: {} };
 async function fixturePage(viewport, authenticated) {
   const page = await browser.newPage({ viewport, reducedMotion: 'reduce', serviceWorkers: 'block' });
   const state = { lease: null, starts: 0, renewals: 0, positions: 0, authorized_chunks: [], public_chunks: [], post_requests: 0 };
   if (authenticated) await page.addInitScript(token => localStorage.setItem('earnalism_user_token', token), dummyToken);
   await page.route('**/*', async route => {
     const request = route.request(); const url = new URL(request.url());
-    if (url.origin !== new URL(base).origin) { report.blocked_non_loopback_requests++; return route.abort(); }
-    if (!url.pathname.startsWith('/api/')) return route.continue();
-    const send = (status, body) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) });
+    if (!approvedLoopbackHosts.has(url.hostname)) { report.blocked_non_loopback_requests++; return route.abort(); }
+    const apiRequest = url.pathname === '/api' || url.pathname.startsWith('/api/');
+    if (!apiRequest) {
+      if (url.origin !== baseOrigin) { report.blocked_non_base_asset_requests++; return route.abort(); }
+      return route.continue();
+    }
+    // CI serves static assets on 13018 and configures its isolated API on
+    // 18007. All approved-loopback API traffic is mocked here, never forwarded.
+    report.mocked_api_origins[url.origin] = (report.mocked_api_origins[url.origin] || 0) + 1;
+    const cors = { 'access-control-allow-origin': baseOrigin, 'access-control-allow-credentials': 'true',
+      'access-control-allow-methods': 'GET, POST, PUT, OPTIONS',
+      'access-control-allow-headers': 'authorization, content-type, x-reading-pass-session, x-reading-pass-lease' };
+    if (request.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+    const send = (status, body) => route.fulfill({ status, contentType: 'application/json', headers: cors, body: JSON.stringify(body) });
     const userMatches = authenticated && request.headers().authorization === `Bearer ${dummyToken}`;
     const leased = () => userMatches && state.lease && state.lease.expires > Date.now()
       && state.lease.user_id === dummyUser.id && state.lease.content_id === slug

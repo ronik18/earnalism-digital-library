@@ -2,6 +2,7 @@
 import asyncio
 import hashlib
 import html
+import re
 import json
 import os
 from pathlib import Path
@@ -228,3 +229,59 @@ def test_legacy_admin_query_is_not_a_regular_users_content_grant(edition, monkey
         asyncio.run(server.reader_get_chapter('isolated-preview', 'c1', spoofed, server.Response(), principal=USER))
     assert denied.value.detail['code'] == 'CANONICAL_PAGE_REQUIRED'
     assert calls == []
+
+
+def test_canonical_separator_overhead_preserves_bounded_publication_bytes(edition):
+    content = '<p>' + 'A' * 1600 + '</p>\n<p>' + 'B' * 1600 + '</p>'
+    rows = canonical_page_records(book_slug='isolated-preview', chapters=[{'id': 'c1', 'content': content}])
+    assert len(rows) == 1 and rows[0]['content'] == content
+    assert len(html.unescape(re.sub(r'<[^>]+>', '', content))) == 3201
+    edition[1].update(content=content, content_sha256=hashlib.sha256(content.encode()).hexdigest())
+    result = asyncio.run(server.reading_pass_book_page('isolated-preview', 1, request(), server.Response(), principal=None))
+    assert result['is_preview'] is True
+    assert result['content'] == content and result['content_sha256'] == rows[0]['content_sha256']
+    assert result['manifest_version'] == 'retained-m1'
+
+
+@pytest.mark.parametrize('content', [
+    '<p>' + 'A' * 1600 + '</p>\n<p>' + 'B' * 1601 + '</p>',
+    '<p>' + 'A' * 1600 + '</p> \n<p>' + 'B' * 1600 + '</p>',
+    '<p>' + 'A' * 1599 + '  </p>\n<p>' + 'B' * 1600 + '</p>',
+    '<p>' + '&#65;' * 3201 + '</p>',
+    '<p data-padding="' + ' ' * 65536 + '">X</p>',
+])
+def test_true_overage_and_noncanonical_whitespace_are_not_discounted(edition, content):
+    edition[1].update(content=content, content_sha256=hashlib.sha256(content.encode()).hexdigest())
+    with pytest.raises(server.HTTPException) as denied:
+        asyncio.run(server.reading_pass_book_page('isolated-preview', 1, request(), server.Response(), principal=None))
+    assert denied.value.detail['code'] == 'PREVIEW_REQUIRES_PASS'
+
+
+def test_all_retained_preview_units_keep_only_the_genuine_oversize_hold():
+    plan = json.loads((ROOT/'backend/data/approved_reader_bootstrap.json').read_text())
+    assert len(plan['titles']) == 52
+    denied = []
+    measured = 0
+    for title in plan['titles']:
+        book = server._controlled_artifact_doc(title['slug'], include_content=True)
+        assert book and book['chapters']
+        rows = canonical_page_records(book_slug=title['slug'], chapters=book['chapters'])
+        for row in rows[:3]:
+            measured += 1
+            assert hashlib.sha256(row['content'].encode()).hexdigest() == row['content_sha256']
+            if not server._bounded_public_reader_segment(row['content']):
+                denied.append((title['slug'], row['page_index'], row['content_sha256']))
+    assert measured == 156
+    assert denied == [('jekyll-and-hyde', 3, '2c720cc9a40a05b75328eafdecd0d12a1ab492f106882e22747bb858ce6bc8e9')]
+
+
+def test_genuine_retained_oversize_stays_private_and_hash_preserving(edition):
+    book = server._controlled_artifact_doc('jekyll-and-hyde', include_content=True)
+    row = canonical_page_records(book_slug='jekyll-and-hyde', chapters=book['chapters'])[2]
+    assert row['content_sha256'] == '2c720cc9a40a05b75328eafdecd0d12a1ab492f106882e22747bb858ce6bc8e9'
+    edition[1].update(content=row['content'], content_sha256=row['content_sha256'])
+    with pytest.raises(server.HTTPException) as denied:
+        asyncio.run(server.reading_pass_book_page('isolated-preview', 1, request(), server.Response(), principal=None))
+    assert denied.value.detail['code'] == 'PREVIEW_REQUIRES_PASS'
+    result = asyncio.run(server.reading_pass_book_page('isolated-preview', 1, request(LEASE_HEADERS), server.Response(), principal=USER))
+    assert result['content'] == row['content'] and result['content_sha256'] == row['content_sha256']
