@@ -3057,3 +3057,8 @@ PR #640 merged as `193c287d67fe0a3404adc680eb802bad9bd452a5` after every applica
 Prepare current CLOSED recovery as a retained committed source role, separately from its clean normal controller. Seal the exact exported bytes, command input and working directory; recheck approval, config and startup before dispatch. Restore custody must remain anchored to original physical journal descriptors, with permanent UNKNOWN claims. Execute only verified immutable helper bytes, including when Git index flags hide physical drift. Preserve normal delivery and all existing financial and Reader controls.
 
 The successor is source-only pending actual A/B/C history, fresh CI/reviews and native recovery qualification. Source commits do not pause purchases or replenish limits: two of three snapshots/injections and the sole policy write are consumed. The one Sredni grant remains bounded by both 60-second ceilings, three starts and its original 900-second window. No provider, customer, purchase or audio operation occurred.
+
+
+## 4 November 2026 — preparation dependencies follow reviewed source
+
+PR #641 regression correctly rejected the Reader612 preparation record after four reviewed controller modules changed. Refresh only the current source-dependency hashes; retain all historical artifact, source, runtime, approval and role fields, with native qualification and execution false. This record certifies source preparation only and cannot certify the current paired CLOSED recovery. Keep that recovery role separate. Run the original Reader612 suite and fresh applicable CI; do not rerun the failed workflow without a source correction. No provider, audio, purchase or counter operation occurred.

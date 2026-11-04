@@ -14133,5 +14133,23 @@
     ],
     "no_provider_customer_audio_or_purchase_actions": true,
     "next_exact_prompt": "Qualify the committed A/B/C source pair and mandatory tests. Require exact-head CI/reviews before a match-head source merge. Do not dispatch or infer native recovery, pause authority, renewed counters or paid playback from source tests."
+  },
+  "reader612_preparation_dependency_followup_20261104": {
+    "at": "2026-11-04T05:20:57.583883+00:00",
+    "event": "READER612_PREPARATION_DEPENDENCIES_FOLLOW_REVIEWED_GUARDED_SOURCE",
+    "failed_head": "c9953c4da0434a449456377a64b12827b033180a",
+    "failed_run": 41778010971,
+    "status": "CORRECTED_SOURCE_PINS_PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
+    "cause": "Reader612 preparation retained four prior controller-module hashes after their reviewed source extension. Exact dependency validation correctly denied it.",
+    "correction": "Refresh only those four current source-dependency hashes. Preserve the original Reader612 role, immutable source/tree/runtime/artifact/baseline identities, owner workflow, acceptance contract, native_qualified=false and execution_authorized=false. The current paired CLOSED recovery role remains separate.",
+    "changed_dependency_names": [
+      "backend_upload_payload.py",
+      "build_runtime_source_manifest.py",
+      "india_release_provider_adapter.py",
+      "purchase_guard_source.py"
+    ],
+    "no_native_artifact_or_current_recovery_certification": true,
+    "no_provider_audio_purchase_or_counter_operations": true,
+    "next_exact_prompt": "Review the four source-hash changes and retained identity fields; run the original 78-case Reader612 suite. Require fresh applicable CI on the corrected head before match-head merge and tree equality."
   }
 }
