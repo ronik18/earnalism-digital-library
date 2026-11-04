@@ -13,6 +13,7 @@ import subprocess
 import stat
 import uuid
 import fcntl
+from scripts import first_guard_pair as pair
 
 PROJECT = 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607'
 TEAM = 'team_HAGNRSEiW5MZXY2AhV0cQvE0'
@@ -109,9 +110,13 @@ def _validate_barrier(path, operation_id):
 
 
 def recovery_digest_field(action, binding):
+    if action=='promote_frontend' and 'first_guard_pair' in binding:
+        return 'first_guard_failure_policy_sha256'
     if action == 'restore_frontend': return 'frontend_restore_sha256'
     if action == 'restore_guarded_bootstrap': return 'guarded_restore_sha256'
     if action == 'release_guarded_bootstrap': return 'bootstrap_preflight_sha256'
+    if action == 'stage_frontend' and binding.get('frontend_phase') == 'STAGE_ONLY':
+        return 'stage_isolation_sha256'
     if action in {'stage_frontend', 'promote_frontend'} and binding.get('frontend_phase'):
         return 'frontend_rollback_sha256'
     return 'guarded_rollback_sha256'
@@ -192,8 +197,133 @@ def validate_corrective_observation(correction, binding, actual):
         raise ValueError('Actual failed-policy and approved two-canary correction proof required')
 
 
+STAGE_ONLY_SCOPE = 'ARTIFACT_STAGE_ONLY_NO_BACKEND_COMPATIBILITY_OR_RECOVERY'
+STAGE_REFERENCE_FIELDS = {'operation_id', 'record_sha256', 'reconciliation_receipt_sha256',
+    'input_projection_sha256', 'operations_journal_identity_sha256'}
+
+
+def stage_frontend_request(binding):
+    return {'name': 'earnalism', 'project': PROJECT, 'target': 'production',
+        'autoAssignCustomDomains': False,
+        'gitSource': {'type': 'github', 'ref': 'main', 'sha': binding['source_sha'], 'repoId': 1232345982}}
+
+
+def stage_only_projection(binding):
+    if binding.get('frontend_phase') != 'STAGE_ONLY' or binding.get('stage_scope') != STAGE_ONLY_SCOPE:
+        raise ValueError('Explicit artifact-only stage scope required')
+    for key in ('source_sha', 'intended_backend_source_sha', 'frontend_tree'):
+        if not re.fullmatch('[a-f0-9]{40}', binding.get(key, '')):
+            raise ValueError('Exact stage source required: ' + key)
+    for key in ('intended_backend_config_sha256', 'frontend_input_fingerprint_sha256', 'stage_request_sha256'):
+        if not require_digest(binding.get(key)): raise ValueError('Exact stage input digest required: ' + key)
+    aliases = binding.get('stage_alias_baseline')
+    if (not isinstance(aliases, dict) or set(aliases) != {'theearnalism.com', 'www.theearnalism.com'}
+            or len(set(aliases.values())) != 1
+            or not all(isinstance(v, str) and re.fullmatch(r'dpl_[A-Za-z0-9]+', v) for v in aliases.values())):
+        raise ValueError('Exact unchanged public alias baseline required')
+    request = stage_frontend_request(binding)
+    if binding['stage_request_sha256'] != digest(request): raise ValueError('Exact private production stage request differs')
+    return {'scope': STAGE_ONLY_SCOPE, 'project': PROJECT, 'team': TEAM,
+        'source_sha': binding['source_sha'], 'frontend_tree': binding['frontend_tree'],
+        'frontend_input_fingerprint_sha256': binding['frontend_input_fingerprint_sha256'],
+        'intended_backend_source_sha': binding['intended_backend_source_sha'],
+        'intended_backend_config_sha256': binding['intended_backend_config_sha256'],
+        'request': request, 'alias_baseline': aliases}
+
+
+def validate_stage_only(binding, actual):
+    projection = stage_only_projection(binding)
+    expected = digest(projection)
+    if (actual.get('qualification_scope') != STAGE_ONLY_SCOPE
+            or actual.get('stage_input_projection') != projection
+            or actual.get('stage_isolation_sha256') != expected
+            or actual.get('public_aliases') != projection['alias_baseline']):
+        raise ValueError('Actual stage isolation/source/alias evidence unavailable')
+    if any(k in actual for k in ('frontend_rollback_available', 'frontend_backend_compatible',
+            'existing_reader_listener_preserved', 'guarded_rollback_available')):
+        raise ValueError('Artifact-only stage must not claim Reader or recovery qualification')
+    return projection
+
+
+def validate_stage_only_source(binding):
+    root = Path(binding['source_root']).resolve()
+    env = {**os.environ, 'GIT_NO_LAZY_FETCH': '1', 'GIT_NO_REPLACE_OBJECTS': '1', 'GIT_TERMINAL_PROMPT': '0'}
+    def git(*args):
+        return subprocess.check_output(['git', '-c', 'remote.origin.promisor=false', '-C', str(root), *args],
+            text=True, env=env, timeout=20).strip()
+    if (git('rev-parse', 'HEAD') != binding['source_sha']
+            or git('rev-parse', 'HEAD:frontend') != binding['frontend_tree']
+            or git('status', '--porcelain', '--untracked-files=all')):
+        raise ValueError('Exact clean reviewed stage source required')
+
+
+def validate_stage_only_result(journal, record, actual, now):
+    projection = stage_only_projection(record['binding'])
+    if record.get('stage_input_projection') != projection:
+        raise ValueError('Original immutable stage projection required')
+    custody = _operation_journal_identity(journal)
+    if record.get('operations_journal_identity_sha256') != custody:
+        raise ValueError('Original stage journal custody differs')
+    if actual.get('outcome') != 'APPLIED':
+        raise ValueError('Unknown stage requires genuine native proof; no no-effect guess')
+    observation = actual.get('stage_isolation_observation')
+    if not isinstance(observation, dict) or set(observation) != {'scope', 'project', 'team', 'deployment', 'aliases', 'observed_at'}:
+        raise ValueError('Actual exact isolated stage observation required')
+    d = observation['deployment']
+    candidate = record.get('unverified_provider_deployment_id')
+    if (observation['scope'] != STAGE_ONLY_SCOPE or observation['project'] != PROJECT or observation['team'] != TEAM
+            or not isinstance(candidate, str) or not re.fullmatch(r'dpl_[A-Za-z0-9]+', candidate)
+            or actual.get('deployment_id') != candidate or not isinstance(d, dict)
+            or d.get('id') != candidate or d.get('projectId') != PROJECT
+            or d.get('target') != 'production' or d.get('readyState') != 'READY'
+            or d.get('gitSource') != projection['request']['gitSource']
+            or observation['aliases'] != projection['alias_baseline']):
+        raise ValueError('Exact READY private stage/source/project/team/aliases required')
+    observed = datetime.fromisoformat(observation['observed_at'])
+    begin = datetime.fromisoformat(record['started_at'])
+    reported = datetime.fromisoformat(actual['observed_at'])
+    if any(t.tzinfo is None for t in (observed, begin, reported, now)) or not begin <= observed <= reported <= now or now-observed > timedelta(minutes=15):
+        raise ValueError('Stage observation predates attempt or is stale/future')
+    return projection
+
+
+def validate_stage_artifact_reference(journal, binding):
+    ref = binding.get('stage_artifact_reference')
+    if not isinstance(ref, dict) or set(ref) != STAGE_REFERENCE_FIELDS or not all(require_digest(ref[k]) for k in ref):
+        raise ValueError('Original artifact stage reference required')
+    original = _read_journal(Path(journal)/(ref['operation_id']+'.json'))
+    projection = original.get('stage_input_projection')
+    if (original.get('action') != 'stage_frontend' or original.get('state') != 'APPLIED_VERIFIED'
+            or original.get('binding', {}).get('frontend_phase') != 'STAGE_ONLY'
+            or original.get('operation_id') != operation_identity('stage_frontend', original['binding'])
+            or original.get('operation_id') != ref['operation_id'] or digest(original) != ref['record_sha256']
+            or original.get('reconciliation_receipt_sha256') != ref['reconciliation_receipt_sha256']
+            or original.get('operations_journal_identity_sha256') != ref['operations_journal_identity_sha256']
+            or _operation_journal_identity(journal) != ref['operations_journal_identity_sha256']
+            or projection != stage_only_projection(original['binding'])
+            or digest(projection) != ref['input_projection_sha256']
+            or binding.get('source_sha') != original['binding']['source_sha']
+            or binding.get('deployment_id') != original.get('provider_deployment_id')
+            or binding.get('backend_source_sha') != projection['intended_backend_source_sha']
+            or binding.get('backend_config_sha256') != projection['intended_backend_config_sha256']
+            or binding.get('frontend_phase') != 'GUARD_ACTIVE'):
+        raise ValueError('Immutable artifact stage/source/candidate/context differs')
+    return original
+
+
 def validate_action_recovery(action, binding, actual):
     """Trusted live observer only; synthetic tests never create real receipts."""
+    if 'first_guard_pair' in binding:
+        pair.validate(binding, actual)
+        if action not in {'release_guarded_bootstrap','promote_frontend'}:
+            raise ValueError('First guard pair permits only bootstrap or bound promotion')
+        if actual.get('first_guard_pair_component_preflight') is not True:
+            raise ValueError('Actual first guard component preflight required')
+        if action == 'promote_frontend': return
+    if binding.get('frontend_phase') == 'STAGE_ONLY':
+        if action != 'stage_frontend': raise ValueError('Artifact-only stage cannot promote or release')
+        validate_stage_only(binding, actual)
+        return
     if action == 'restore_frontend':
         return  # Same-journal return context is validated separately.
     if action == 'restore_guarded_bootstrap':
@@ -597,6 +727,12 @@ def validate_guarded_restore_context(journal, binding, actual, approval=None):
 
 
 def validate_approval(action, binding, approval, owner_authorized, now):
+    if 'first_guard_pair' in binding:
+        c=pair.validate(binding)
+        if approval.get('first_guard_failure_policy_sha256')!=digest(c['policy']):
+            raise ValueError('Actual protected failure policy binding required')
+    if 'native_action_scope' in binding and approval.get('native_action_scope_sha256')!=digest(binding['native_action_scope']):
+        raise ValueError('Protected operation must bind actual original native scope')
     if owner_authorized is not True:
         raise ValueError('Current owner instruction prohibits provider execution')
     if action not in ACTIONS or not re.fullmatch('[0-9a-f]{40}', binding.get('source_sha', '')):
@@ -619,7 +755,8 @@ def validate_approval(action, binding, approval, owner_authorized, now):
     observed = datetime.fromisoformat(approval['provider_observed_at'])
     if any(d.tzinfo is None for d in (start, end, observed, now)):
         raise ValueError('Naive approval time')
-    if not start <= now < end or end - start > timedelta(hours=24):
+    maximum = timedelta(minutes=15) if binding.get('frontend_phase') == 'STAGE_ONLY' else timedelta(hours=24)
+    if not start <= now < end or end - start > maximum:
         raise ValueError('Expired/future/overlong approval')
     if not timedelta(0) <= now - observed <= timedelta(minutes=15):
         raise ValueError('Stale or future provider evidence')
@@ -777,6 +914,24 @@ class ProviderAdapter:
                 '--service', SERVICE, '--environment', ENVIRONMENT, '--json', input_path]
 
     def perform(self, action, binding, approval):
+        validate_approval(action,binding,approval,self.owner_authorized,self.clock())
+        if not self.journal.exists():
+            if 'first_guard_pair' in binding:raise ValueError('First guard pair requires original admitted journal')
+            return self._perform_locked(action,binding,approval)
+        lock_path=self.journal/'.reconciliation.lock'
+        fd=os.open(lock_path,os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
+        try:
+            info=os.fstat(fd)
+            if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.getuid() or stat.S_IMODE(info.st_mode)!=0o600:
+                raise ValueError('Unsafe operation lock')
+            try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError as error:raise FileExistsError('Another operation owns the journal') from error
+            return self._perform_locked(action,binding,approval,lock_held=True)
+        finally:os.close(fd)
+
+    def _perform_locked(self, action, binding, approval, lock_held=False):
+        self._pending_admission(action,binding)
+        self._native_budget(action,binding)
         validate_approval(action, binding, approval, self.owner_authorized, self.clock())
         paired = 'backend_export_root' in binding
         if paired and (action != 'release_guarded_bootstrap'
@@ -803,6 +958,8 @@ class ProviderAdapter:
                 continue
             record = _read_journal(prior)
             prior_records.append(record)
+            if record.get('state') == pair.PENDING and self._pending_admission(action,binding) is not None:
+                continue
             if record.get('state') not in {'APPLIED_VERIFIED', 'NOT_APPLIED_VERIFIED'}:
                 raise FileExistsError('Unresolved provider write requires read-only reconciliation')
         if action == 'release_backend' and correction is None:
@@ -827,6 +984,11 @@ class ProviderAdapter:
         # Observer must perform actual read-only source, provider/config, guarded
         # rollback and order checks. It must return the bound approval digests.
         actual = self.observe(action, binding)
+        self._native_budget(action,binding,actual=actual)
+        if 'first_guard_pair' in binding:
+            pair.validate(binding,actual)
+            if actual.get('first_guard_failure_policy_sha256')!=approval.get('first_guard_failure_policy_sha256'):
+                raise ValueError('Fresh protected first guard policy differs')
         for key in ('provider_identity_sha256', 'config_sha256', recovery_digest_field(action, binding)):
             if actual.get(key) != approval[key]:
                 raise ValueError('Live protected evidence differs: ' + key)
@@ -846,6 +1008,16 @@ class ProviderAdapter:
         if action == 'promote_frontend' and 'frontend_restore_target' in binding:
             validate_frontend_target(binding, actual)
         validate_action_recovery(action, binding, actual)
+        if action == 'stage_frontend' and binding.get('frontend_phase') == 'STAGE_ONLY':
+            validate_stage_only_source(binding)
+        if action == 'promote_frontend':
+            artifact_stage = any(r.get('action') == 'stage_frontend' and r.get('binding', {}).get('frontend_phase') == 'STAGE_ONLY'
+                and r.get('binding', {}).get('source_sha') == binding.get('source_sha')
+                and r.get('provider_deployment_id') == binding.get('deployment_id') for r in prior_records)
+            if artifact_stage or 'stage_artifact_reference' in binding:
+                validate_stage_artifact_reference(self.journal, binding)
+                if actual.get('backend_config_sha256') != binding.get('backend_config_sha256'):
+                    raise ValueError('Fresh actual guarded backend config differs from staged intent')
         cli = 'railway' if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'} else 'vercel'
         if actual.get('cli_version') != CLI_VERSIONS[cli]:
             raise ValueError('Reviewed CLI version differs')
@@ -916,8 +1088,15 @@ class ProviderAdapter:
             # Recheck freshness after potentially slow source/payload reads.
             validate_approval(action, binding, approval, self.owner_authorized, self.clock())
             validate_startup_qualification(binding, approval, actual, self.clock())
+        write_lock=None
+        if not lock_held:
+            write_lock=os.open(self.journal/'.reconciliation.lock',os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
+            try:fcntl.flock(write_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError as error:
+                os.close(write_lock)
+                raise FileExistsError('Another operation owns the journal') from error
         anchor = None
-        if action in {'restore_guarded_bootstrap', 'restore_frontend'}:
+        if action in {'restore_guarded_bootstrap', 'restore_frontend'} or 'first_guard_pair' in binding or 'native_action_scope' in binding:
             anchor = os.open(self.journal, os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
         def durable(path, value, **kwargs):
             if anchor is None:return _durable_json(path, value, **kwargs)
@@ -926,17 +1105,25 @@ class ProviderAdapter:
         try:
             if anchor is not None:
                 _assert_operation_journal_anchor(self.journal, anchor,
-                    binding[context_key]['operations_journal_identity_sha256'])
+                    (binding['native_action_scope']['operations_journal_identity_sha256'] if 'native_action_scope' in binding else binding['first_guard_pair']['projection']['operations_journal_identity_sha256'] if 'first_guard_pair' in binding else binding[context_key]['operations_journal_identity_sha256']))
+            self._native_budget(action,binding,actual=actual,claim=True,durable=durable)
             barrier = self.journal / '_write-barrier.json'
             durable(barrier, {'operation_id': operation_id, 'state': 'INTENT_RECONCILE_BEFORE_RETRY'}, exclusive=True)
+            pending=self._read_pending()
+            if pending is not None:
+                if pending.get('child_operation_id') not in {None,operation_id}:raise ValueError('Child attempt already consumed')
+                pending['child_operation_id']=operation_id
+                durable(self.journal/'.first-guard-pending',pending)
             intent = {'operation_id': operation_id, 'action': action, 'binding': binding,
                       'approval_sha256': digest(approval), 'started_at': self.clock().isoformat(),
                       'state': 'INTENT_RECONCILE_BEFORE_RETRY'}
             if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap', 'stage_frontend', 'promote_frontend', 'restore_frontend'}:
                 intent['operations_journal_identity_sha256'] = (binding[context_key]['operations_journal_identity_sha256']
-                    if anchor is not None else _operation_journal_identity(self.journal))
+                    if anchor is not None and 'first_guard_pair' not in binding and 'native_action_scope' not in binding else _operation_journal_identity(self.journal))
             if action == 'promote_frontend' and 'frontend_restore_target' in binding:
                 intent['qualified_frontend_restore_target'] = validate_frontend_target(binding, actual)
+            if action == 'stage_frontend' and binding.get('frontend_phase') == 'STAGE_ONLY':
+                intent['stage_input_projection'] = validate_stage_only(binding, actual)
             if paired:
                 # Keep the original local helper receipt once. It remains local
                 # helper evidence, never an uploaded archive checksum.
@@ -961,10 +1148,7 @@ class ProviderAdapter:
                 durable(request, {'action': action, 'binding_sha256': digest(binding),
                     'frontend_restore_context': binding['frontend_restore_context']}, exclusive=True)
             if action == 'stage_frontend':
-                durable(request, {'name': 'earnalism', 'project': PROJECT,
-                    'target': 'production', 'autoAssignCustomDomains': False,
-                    'gitSource': {'type': 'github', 'ref': 'main',
-                                  'sha': binding['source_sha'], 'repoId': 1232345982}}, exclusive=True)
+                durable(request, stage_frontend_request(binding), exclusive=True)
             if action == 'restore_guarded_bootstrap':
                 durable(request, {'action': action, 'binding_sha256': digest(binding),
                     'restore_context': binding['restore_context'],
@@ -985,6 +1169,12 @@ class ProviderAdapter:
             else:
                 command = self._command(action, binding, request)
                 command_cwd = source
+            if action == 'stage_frontend' and binding.get('frontend_phase') == 'STAGE_ONLY':
+                validate_stage_only_source(binding)
+                validate_stage_only(binding, actual)
+                if _read_journal(request) != stage_frontend_request(binding):
+                    raise ValueError('Durable private stage request changed before dispatch')
+                validate_approval(action, binding, approval, self.owner_authorized, self.clock())
             if action == 'restore_guarded_bootstrap':
                 # Durable writes above target the original descriptor even if its
                 # pathname was replaced. A changed path/custody never reaches CLI.
@@ -999,6 +1189,13 @@ class ProviderAdapter:
                     raise ValueError('Current frontend changed before return dispatch')
                 validate_approval(action, binding, approval, self.owner_authorized, self.clock())
                 _assert_operation_journal_anchor(self.journal, anchor, binding[context_key]['operations_journal_identity_sha256'])
+            self._pending_admission(action,binding,own_operation_id=operation_id,actual=actual)
+            self._native_budget(action,binding,actual=actual,own_operation_id=operation_id)
+            if 'first_guard_pair' in binding:
+                pair.validate(binding,actual)
+                _assert_operation_journal_anchor(self.journal,anchor,binding['first_guard_pair']['projection']['operations_journal_identity_sha256'])
+            if 'native_action_scope' in binding:
+                _assert_operation_journal_anchor(self.journal,anchor,binding['native_action_scope']['operations_journal_identity_sha256'])
             # No secret argv, shell interpolation, automatic OAuth/purchase flags,
             # output logging or retry. Even return0 is not serving acceptance.
             try:
@@ -1021,7 +1218,265 @@ class ProviderAdapter:
             return intent
         finally:
             if anchor is not None:os.close(anchor)
+            if write_lock is not None:os.close(write_lock)
 
+
+    def _native_budget(self,action,binding,*,actual=None,claim=False,durable=None,own_operation_id=None):
+        scope=binding.get('native_action_scope')
+        scope_claim=self.journal/'.native-action-scope.claim'
+        if scope is None:
+            baseline_path=self.journal/'.native-action-baseline.receipt'
+            if ('first_guard_pair' in binding or scope_claim.exists() or scope_claim.is_symlink()
+                    or baseline_path.exists() or baseline_path.is_symlink()):
+                raise ValueError('Stable original native scope required from baseline admission; no unscoped writes')
+            return
+        def raw(path):
+            fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW)
+            with os.fdopen(fd,'rb') as stream:
+                info=os.fstat(stream.fileno())
+                if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.getuid() or stat.S_IMODE(info.st_mode)!=0o600 or info.st_size>1024*1024:raise ValueError('Unsafe budget journal input')
+                data=stream.read(1024*1024+1)
+            if len(data)>1024*1024:raise ValueError('Oversized budget input')
+            value=json.loads(data)
+            if not isinstance(value,dict):raise ValueError('Malformed budget input')
+            return value,hashlib.sha256(data).hexdigest()
+        if not (self.journal/'.native-action-baseline.receipt').exists():raise ValueError('Actual Root immutable baseline unavailable; execution held')
+        baseline,_=raw(self.journal/'.native-action-baseline.receipt')
+        pair.validate_scope(scope,baseline,_operation_journal_identity(self.journal))
+        if action == 'release_guarded_bootstrap' and binding.get('source_sha') != scope['intended_closed_source_sha']:
+            raise ValueError('Actual CLOSED source differs from original native scope')
+        if scope_claim.exists():
+            if _read_journal(scope_claim)!={'schema':'earnalism.native_action_scope_claim.v1','scope':scope}:
+                raise ValueError('Original baseline/scope claim changed; never reset')
+        if actual is not None:
+            if (actual.get('native_action_scope')!=scope or actual.get('native_action_baseline_sha256')!=scope['baseline_sha256']
+                    or actual.get('native_action_scope_authorization')!='ACTUAL_ROOT_PREWRITE_BASELINE'):
+                raise ValueError('Trusted actual Root baseline admission required')
+        records=[]
+        for path in self.journal.glob('*.json'):
+            if path.name.endswith('.request.json') or path.name=='_write-barrier.json':continue
+            records.append(raw(path))
+        if not scope_claim.exists():
+            historical=set(baseline['historical_terminal_operations'])
+            if any(r.get('operation_id') not in historical for r,_ in records):raise ValueError('Cannot install/adopt baseline after new actions started')
+        by_id={r['operation_id']:r for r,_ in records}
+        for artifact in self.journal.iterdir():
+            name=artifact.name
+            if name.endswith('.json') or name in {'.reconciliation.lock','.native-action-baseline.receipt','.native-action-scope.claim','.first-guard-pending'}:continue
+            if re.fullmatch(r'.first-guard-component-[a-f0-9]{64}\.receipt',name):
+                value=raw(artifact)[0]
+                if value.get('schema')!='earnalism.first_guard_actual_component.v1' or value.get('scope')!='ACTUAL_COMPONENT_ONLY_READER_PENDING' or name!='.first-guard-component-'+value.get('operation_id','')+'.receipt' or digest(value.get('original_record'))!=value.get('original_record_sha256'):
+                    raise ValueError('Malformed local component receipt is not a provider-intent exemption')
+            elif re.fullmatch(r'.first-guard-final-[a-f0-9]{64}\.receipt',name):
+                value=raw(artifact)[0]
+                if set(value)!={'schema','parent_operation_id','component_receipt_sha256','child_record_sha256','actual'} or value['schema']!='earnalism.first_guard_final_pair.v1' or name!='.first-guard-final-'+value['parent_operation_id']+'.receipt':raise ValueError('Malformed local pair receipt')
+            elif re.fullmatch(r'.(frontend-return|guarded-return|backend-correction)-[a-f0-9]{64}\.claim',name):
+                value=raw(artifact)[0]
+                if value.get('operation_id') not in by_id:raise ValueError('Unknown claimed write uncertainty')
+            else:raise ValueError('Unclassified journal artifact blocks scoped dispatch')
+        if own_operation_id is not None:
+            own=by_id.get(own_operation_id)
+            if not own or own.get('binding')!=binding or own.get('action')!=action or operation_identity(action,binding)!=own_operation_id:
+                raise ValueError('Exact durable self-intent preimage changed before dispatch')
+        for request in self.journal.glob('*.request.json'):
+            op=request.name[:-len('.request.json')]
+            if op not in by_id:raise ValueError('Orphan request uncertainty requires read-only reconciliation')
+            original=by_id[op];b=original['binding'];kind=original['action'];body=raw(request)[0]
+            if kind=='stage_frontend':expected=stage_frontend_request(b)
+            elif kind=='restore_frontend':expected={'action':kind,'binding_sha256':digest(b),'frontend_restore_context':b['frontend_restore_context']}
+            elif kind=='restore_guarded_bootstrap':expected={'action':kind,'binding_sha256':digest(b),'restore_context':b['restore_context'],'native_query':self._command(kind,b,request)[2]}
+            else:raise ValueError('Unrecognized provider request artifact')
+            if body!=expected:raise ValueError('Provider request artifact differs from original intent')
+        barrier=self.journal/'_write-barrier.json'
+        if barrier.exists():
+            op=raw(barrier)[0].get('operation_id')
+            if op not in by_id:raise ValueError('Orphan claimed write uncertainty blocks dispatch')
+            _validate_barrier(barrier,op)
+        candidate={'operation_id':operation_identity(action,binding),'action':action,'binding':binding}
+        counts=pair.count_scoped_intents(scope,baseline,records,candidate=candidate)
+        if claim and not scope_claim.exists():
+            durable(scope_claim,{'schema':'earnalism.native_action_scope_claim.v1','scope':scope},exclusive=True)
+        return counts
+
+    def _read_pending(self):
+        path=self.journal/'.first-guard-pending'
+        if not path.exists():
+            # A partial component seal cannot silently become a free writer slot.
+            if any(self.journal.glob('.first-guard-component-*.receipt')):
+                rows=[_read_journal(p) for p in self.journal.glob('*.json') if not p.name.endswith('.request.json') and p.name!='_write-barrier.json']
+                for receipt in self.journal.glob('.first-guard-component-*.receipt'):
+                    comp=_read_journal(receipt)
+                    matches=[r for r in rows if r.get('operation_id')==comp.get('operation_id') and r.get('state')=='APPLIED_VERIFIED' and r.get('component_receipt_sha256')==digest(comp) and require_digest(r.get('first_guard_final_receipt_sha256'))]
+                    if len(matches)!=1:raise ValueError('Partial component transition requires read-only repair')
+            return None
+        pending=_read_journal(path)
+        if pending.get('journal_identity_sha256') != _operation_journal_identity(self.journal):
+            raise ValueError('Original pending pair journal custody changed')
+        component=_read_journal(self.journal/pending['component_receipt_name'])
+        if digest(component)!=pending.get('component_receipt_sha256'):
+            raise ValueError('Immutable component receipt changed')
+        return pending
+
+    def _pending_admission(self,action,binding,own_operation_id=None,actual=None):
+        if 'first_guard_pair' in binding:
+            pair.validate(binding)
+            if not isinstance(binding.get('native_action_scope'),dict):raise ValueError('First guard pair requires original scoped stage budget')
+        pending=self._read_pending()
+        if pending is None:
+            if 'first_guard_pair' in binding and action=='release_guarded_bootstrap':
+                f=binding['first_guard_pair']['policy']
+                stage=_read_journal(self.journal/(f['staged_operation_id']+'.json'))
+                if digest(stage)!=f['staged_record_sha256'] or stage.get('state')!='APPLIED_VERIFIED' or stage.get('action')!='stage_frontend' or stage.get('provider_deployment_id')!=f['staged_deployment_id'] or stage.get('binding',{}).get('source_sha')!=f['staged_source_sha'] or stage.get('binding',{}).get('native_action_scope')!=binding['native_action_scope']:
+                    raise ValueError('Exact original scoped staged candidate required before B1')
+            if 'first_guard_parent_operation_id' in binding:raise ValueError('Missing original pending parent')
+            return None
+        if pending.get('state') != pair.PENDING or action!='promote_frontend':
+            raise ValueError('Pending pair blocks this write')
+        parent=_read_journal(self.journal/(pending['parent_operation_id']+'.json'))
+        if parent.get('state')!=pair.PENDING or digest(parent)!=pending['parent_record_sha256']:
+            raise ValueError('Pending parent preimage changed')
+        c=pair.validate(parent['binding']);f=c['policy']
+        if (binding.get('first_guard_pair')!=c or binding.get('first_guard_parent_operation_id')!=parent['operation_id']
+                or binding.get('source_sha')!=f['staged_source_sha'] or binding.get('deployment_id')!=f['staged_deployment_id']
+                or binding.get('component_receipt_sha256')!=pending['component_receipt_sha256'] or binding.get('native_action_scope')!=parent['binding'].get('native_action_scope')):
+            raise ValueError('Only exact component-bound child promotion permitted')
+        stage=_read_journal(self.journal/(f['staged_operation_id']+'.json'))
+        if (digest(stage)!=f['staged_record_sha256'] or stage.get('state')!='APPLIED_VERIFIED'
+                or stage.get('action')!='stage_frontend' or stage.get('provider_deployment_id')!=f['staged_deployment_id']
+                or stage.get('binding',{}).get('source_sha')!=f['staged_source_sha']):
+            raise ValueError('Original exact actual staged child required')
+        barrier=self.journal/'_write-barrier.json'
+        if barrier.exists() and (_read_journal(barrier).get('operation_id')!=own_operation_id or own_operation_id is None):
+            raise ValueError('Unknown write barrier cannot be cleared by pending pair')
+        if actual is not None:
+            native=_read_journal(self.journal/pending['component_receipt_name'])['native']
+            for observed,key in (('backend_deployment_id','deployment_id'),('backend_runtime_sha256','runtime_sha256'),('backend_config_sha256','config_sha256')):
+                if actual.get(observed)!=native.get(key):raise ValueError('Fresh actual component changed before child promotion')
+        return pending
+
+    def _reconcile_component(self,record,actual):
+        binding=record['binding'];c=pair.validate(binding,actual);op=record['operation_id']
+        self._native_budget('release_guarded_bootstrap',binding,actual=actual,own_operation_id=op)
+        if record.get('state') not in {'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED',pair.PENDING}:
+            raise ValueError('Only attempted/nonterminal component can be qualified')
+        if actual.get('outcome')!='APPLIED' or actual.get('runtime_sha256')!=binding.get('source_delivery_sha256') or actual.get('config_sha256')!=binding.get('config_sha256'):
+            raise ValueError('Actual known component identity required')
+        if actual.get('runtime_manifest_sha256')!=c['projection']['runtime_manifest_sha256']:raise ValueError('Actual complete runtime manifest differs')
+        if actual.get('source_delivery_sha256')!=binding.get('source_delivery_sha256') or actual.get('closed_server_sha256')!=binding.get('closed_server_sha256'):
+            raise ValueError('Actual exact component source required')
+        for key in ('startup_complete','database_healthy','source_attestation_matches','verify_refund_webhook_code_preserved'):
+            if actual.get(key) is not True:raise ValueError('Actual component evidence missing: '+key)
+        for key in ('auto_deploy','redis_enabled','redis_cache_enabled','multi_replica_enabled','redis_public_metadata_enabled'):
+            if actual.get(key) is not False:raise ValueError('Actual suppression missing: '+key)
+        if actual.get('closed_guest_status')!=503 or actual.get('purchase_pause_proof')!='MEASURED_EXACT_EARLY_RETURN_AND_ANONYMOUS_503' or not actual.get('retained_image_id') or not actual.get('deployment_id'):
+            raise ValueError('Actual CLOSED/native image evidence missing')
+        custody=_operation_journal_identity(self.journal)
+        if custody!=c['projection']['operations_journal_identity_sha256'] or record.get('operations_journal_identity_sha256')!=custody:
+            raise ValueError('Original component journal differs')
+        if 'backend_export_root' in binding:
+            validate_paired_content_provenance(binding,actual,archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=custody)
+        # Scope is typed: no full recovery or Reader-preserved assertion inferred.
+        component_keys={'scope','action','source_sha','input_git_source_sha','outcome','operation_id','receipt_sha256','source_delivery_sha256','closed_server_sha256','runtime_sha256','runtime_manifest_sha256','config_sha256','deployment_id','retained_image_id','closed_guest_status','purchase_pause_proof','startup_complete','database_healthy','source_attestation_matches','verify_refund_webhook_code_preserved','auto_deploy','redis_enabled','redis_cache_enabled','multi_replica_enabled','redis_public_metadata_enabled','provider_git_sha','paired_content_provenance','native_observation_receipt_sha256','runtime_attestation_receipt_sha256','reader_migration_owner_acceptance','containment_operator_reference','first_guard_policy_sha256','native_action_scope','native_action_baseline_sha256','native_action_scope_authorization','observed_at'}
+        native_projection={k:actual[k] for k in component_keys if k in actual}
+        component={'schema':'earnalism.first_guard_actual_component.v1','scope':'ACTUAL_COMPONENT_ONLY_READER_PENDING','operation_id':op,'binding_sha256':digest(binding),'approval_sha256':record['approval_sha256'],'native':native_projection,'original_record_sha256':digest(record),'original_record':record}
+        name='.first-guard-component-'+op+'.receipt';path=self.journal/name
+        anchor=os.open(self.journal,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try:
+            _assert_operation_journal_anchor(self.journal,anchor,custody)
+            barrier=self.journal/'_write-barrier.json'
+            if not barrier.exists():
+                # Idempotent read-only component reconciliation does not reopen child dispatch.
+                pending=self._read_pending()
+                if pending and pending['parent_operation_id']==op:return record
+                raise ValueError('Missing original component write barrier')
+            _validate_barrier(barrier,op)
+            if path.exists():
+                old=_read_journal(path)
+                if old.get('operation_id')!=op or old.get('binding_sha256')!=digest(binding) or any(old.get('native',{}).get(k)!=actual.get(k) for k in ('deployment_id','retained_image_id','runtime_sha256','config_sha256','source_delivery_sha256','closed_server_sha256')) or digest(old.get('original_record'))!=old.get('original_record_sha256'):
+                    raise ValueError('Component preimage differs; no replacement')
+                component=old
+                if record.get('state')!=pair.PENDING and digest(record)!=old['original_record_sha256']:raise ValueError('Original attempted record changed')
+                record=old['original_record']
+            else:_durable_json(path,component,exclusive=True,directory_fd=anchor)
+            pending={'schema':'earnalism.first_guard_pending.v1','state':pair.PENDING,'parent_operation_id':op,'component_receipt_name':name,'component_receipt_sha256':digest(component),'journal_identity_sha256':custody,'child_operation_id':None}
+            guard=self.journal/'.first-guard-pending'
+            if guard.exists():
+                existing=_read_journal(guard)
+                if existing.get('component_receipt_sha256')!=digest(component):raise ValueError('Different pending component')
+            else:_durable_json(guard,pending,exclusive=True,directory_fd=anchor)
+            record=dict(record,state=pair.PENDING,component_receipt_sha256=digest(component))
+            pending['parent_record_sha256']=digest(record)
+            _durable_json(self.journal/(op+'.json'),record,directory_fd=anchor)
+            _durable_json(guard,pending,directory_fd=anchor)
+            _assert_operation_journal_anchor(self.journal,anchor,custody)
+            os.unlink(barrier.name,dir_fd=anchor);os.fsync(anchor)
+            return record
+        finally:os.close(anchor)
+
+    def finalize_first_guard_pair(self,operation_id):
+        """Read-only paired acceptance; never dispatch, fabricate approval or retry."""
+        lock=os.open(self.journal/'.reconciliation.lock',os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
+        try:
+            info=os.fstat(lock)
+            if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.getuid() or stat.S_IMODE(info.st_mode)!=0o600:raise ValueError('Unsafe finalization lock')
+            fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            pending=self._read_pending()
+            if pending is None or pending['parent_operation_id']!=operation_id or pending['state']!='PAIR_READONLY_FINALIZATION_REQUIRED' or (self.journal/'_write-barrier.json').exists():
+                raise ValueError('Exact known child must precede read-only finalization')
+            record=_read_journal(self.journal/(operation_id+'.json'))
+            self._native_budget(record['action'],record['binding'],own_operation_id=operation_id)
+            if record.get('state')=='APPLIED_VERIFIED':
+                sealed=_read_journal(self.journal/('.first-guard-final-'+operation_id+'.receipt'))
+                if digest(sealed)!=record.get('first_guard_final_receipt_sha256') or sealed.get('component_receipt_sha256')!=pending['component_receipt_sha256'] or sealed.get('child_record_sha256')!=pending.get('child_record_sha256'):
+                    raise ValueError('Incomplete final hash chain')
+                child=_read_journal(self.journal/(pending['child_operation_id']+'.json'))
+                if digest(child)!=sealed['child_record_sha256'] or child.get('state')!='APPLIED_VERIFIED':raise ValueError('Final child changed')
+                self._native_budget(record['action'],record['binding'],actual=sealed['actual'],own_operation_id=operation_id)
+                qualify_bootstrap_recovery(record['binding'],sealed['actual'],archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=pending['journal_identity_sha256'])
+                # This only completes an interrupted retirement, never amends terminal data.
+                anchor=os.open(self.journal,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+                try:
+                    _assert_operation_journal_anchor(self.journal,anchor,pending['journal_identity_sha256'])
+                    os.unlink('.first-guard-pending',dir_fd=anchor);os.fsync(anchor)
+                finally:os.close(anchor)
+                return record
+            if record.get('state')!=pair.PENDING or digest(record)!=pending['parent_record_sha256']:raise ValueError('Nonterminal original parent required')
+            child=_read_journal(self.journal/(pending['child_operation_id']+'.json'))
+            if digest(child)!=pending.get('child_record_sha256') or child.get('state')!='APPLIED_VERIFIED':raise ValueError('Exact actual child receipt required')
+            actual=self.observe('finalize_first_guard_pair',{'parent':record,'child':child,'component_receipt_sha256':pending['component_receipt_sha256']})
+            if (actual.get('component_receipt_sha256')!=pending['component_receipt_sha256'] or actual.get('child_record_sha256')!=digest(child)
+                    or actual.get('both_aliases_verified') is not True or actual.get('paired_reader_listener_financial_preserved') is not True):
+                raise ValueError('Actual paired Reader/Listener/financial evidence required')
+            self._native_budget(record['action'],record['binding'],actual=actual,own_operation_id=operation_id)
+            component=_read_journal(self.journal/pending['component_receipt_name'])
+            for key in ('deployment_id','retained_image_id','runtime_sha256','config_sha256'):
+                if actual.get(key)!=component['native'].get(key):raise ValueError('Current actual component changed')
+            if actual.get('operation_id')!=operation_id or actual.get('outcome')!='APPLIED' or not require_digest(actual.get('receipt_sha256')):
+                raise ValueError('Exact actual final operation proof required')
+            for key in ('reader_public_preview_verified','reader_protected_entitlement_verified','reader_free_pilot_entitlement_preserved','listener_protected_accounting_preserved','verify_refund_webhook_code_preserved'):
+                if actual.get(key) is not True:raise ValueError('Actual paired acceptance missing: '+key)
+            if actual.get('serving_frontend_deployment_id')!=child['binding']['deployment_id'] or actual.get('serving_frontend_source_sha')!=child['binding']['source_sha']:
+                raise ValueError('Actual fresh frontend aliases/source mismatch')
+            recovery=qualify_bootstrap_recovery(record['binding'],actual,archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=pending['journal_identity_sha256'])
+            final={'schema':'earnalism.first_guard_final_pair.v1','parent_operation_id':operation_id,'component_receipt_sha256':pending['component_receipt_sha256'],'child_record_sha256':digest(child),'actual':actual}
+            anchor=os.open(self.journal,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+            try:
+                _assert_operation_journal_anchor(self.journal,anchor,pending['journal_identity_sha256'])
+                final_path=self.journal/('.first-guard-final-'+operation_id+'.receipt')
+                if final_path.exists():
+                    sealed=_read_journal(final_path)
+                    if any(sealed.get(k)!=final.get(k) for k in ('parent_operation_id','component_receipt_sha256','child_record_sha256')) or any(sealed.get('actual',{}).get(k)!=actual.get(k) for k in ('deployment_id','retained_image_id','runtime_sha256','config_sha256','serving_frontend_deployment_id','serving_frontend_source_sha')):
+                        raise ValueError('Sealed final receipt differs')
+                    final=sealed
+                    actual=sealed['actual']
+                    recovery=qualify_bootstrap_recovery(record['binding'],actual,archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=pending['journal_identity_sha256'])
+                else:_durable_json(final_path,final,exclusive=True,directory_fd=anchor)
+                record.update(state='APPLIED_VERIFIED',reconciliation_receipt_sha256=actual['receipt_sha256'],guarded_recovery_receipt_sha256=recovery,qualified_bootstrap_evidence=actual,first_guard_final_receipt_sha256=digest(final))
+                _durable_json(self.journal/(operation_id+'.json'),record,directory_fd=anchor)
+                os.unlink('.first-guard-pending',dir_fd=anchor);os.fsync(anchor)
+                return record
+            finally:os.close(anchor)
+        finally:os.close(lock)
 
     def reconcile(self, operation_id):
         # Serialize reconciliation across processes so two readers cannot both
@@ -1059,6 +1514,19 @@ class ProviderAdapter:
                 or actual.get('outcome') not in {'APPLIED', 'NOT_APPLIED'}
                 or not re.fullmatch('[0-9a-f]{64}', actual.get('receipt_sha256', ''))):
             raise ValueError('Unknown/unbound actual provider outcome')
+        if 'native_action_scope' in record['binding']:
+            self._native_budget(record['action'],record['binding'],actual=actual,own_operation_id=operation_id)
+        if record['action']=='release_guarded_bootstrap' and 'first_guard_pair' in record['binding'] and actual['outcome']=='APPLIED' and record.get('state')!='APPLIED_VERIFIED':
+            return self._reconcile_component(record,actual)
+        pending=self._read_pending()
+        if pending is not None:
+            if operation_id not in {pending['parent_operation_id'], pending.get('child_operation_id')}:
+                raise ValueError('Pending pair permits only exact read-only reconciliation')
+        if record['action']=='release_guarded_bootstrap' and 'first_guard_pair' in record['binding']:
+            if record.get('state') == 'APPLIED_VERIFIED':
+                raise ValueError('Historical terminal parent cannot be amended')
+            if actual['outcome']=='APPLIED':
+                return self._reconcile_component(record,actual)
         if record['action'] == 'restore_frontend':
             c = validate_frontend_restore_context(self.journal, record['binding'], actual)
             if record.get('operations_journal_identity_sha256') != c['operations_journal_identity_sha256']:
@@ -1137,6 +1605,8 @@ class ProviderAdapter:
         barrier = self.journal / '_write-barrier.json'
         if not barrier.exists():raise ValueError('Missing operation barrier')
         _validate_barrier(barrier, operation_id)
+        if record['action'] == 'stage_frontend' and record['binding'].get('frontend_phase') == 'STAGE_ONLY':
+            validate_stage_only_result(self.journal, record, actual, self.clock())
         record.update(state=actual['outcome'] + '_VERIFIED',
                       reconciliation_receipt_sha256=actual['receipt_sha256'])
         if record['action'] == 'stage_frontend' and actual['outcome'] == 'APPLIED':
@@ -1147,6 +1617,10 @@ class ProviderAdapter:
                 raise ValueError('Observed deployment differs from write response')
             record['provider_deployment_id'] = actual['deployment_id']
         _durable_json(path, record)
+        if pending is not None and operation_id == pending.get('child_operation_id'):
+            pending['child_record_sha256']=digest(record)
+            pending['state']='PAIR_READONLY_FINALIZATION_REQUIRED' if actual['outcome']=='APPLIED' else pair.BLOCKED
+            _durable_json(self.journal/'.first-guard-pending',pending)
         barrier = self.journal / '_write-barrier.json'
         if barrier.exists():
             _validate_barrier(barrier, operation_id)
@@ -1165,6 +1639,8 @@ class ReleaseController:
         self.adapter = adapter
 
     def perform(self, action, binding, approval):
+        self.adapter._pending_admission(action,binding)
+        self.adapter._native_budget(action,binding)
         records = []
         for path in self.adapter.journal.glob('*.json'):
             if not path.name.endswith('.request.json') and path.name != '_write-barrier.json':
@@ -1172,6 +1648,11 @@ class ReleaseController:
         verified = [r for r in records if r.get('state') == 'APPLIED_VERIFIED'
                     and r.get('reconciliation_receipt_sha256')]
         if action == 'promote_frontend':
+            if binding.get('frontend_phase') == 'STAGE_ONLY':
+                raise ValueError('Artifact-only stage cannot promote')
+            matching_stage = [r for r in verified if r.get('action') == 'stage_frontend' and r.get('binding', {}).get('source_sha') == binding.get('source_sha') and r.get('provider_deployment_id') == binding.get('deployment_id')]
+            if any(r.get('binding', {}).get('frontend_phase') == 'STAGE_ONLY' for r in matching_stage):
+                validate_stage_artifact_reference(self.adapter.journal, binding)
             if not any(r['action'] == 'stage_frontend'
                        and r['binding']['source_sha'] == binding['source_sha']
                        and r.get('provider_deployment_id') == binding.get('deployment_id')

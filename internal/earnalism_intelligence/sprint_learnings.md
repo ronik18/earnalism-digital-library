@@ -3128,3 +3128,7 @@ A promotion replay is not a recovery mechanism. Bind a distinct return to the or
 ### Stale Reader refresh guidance — 4 November 2026
 
 Already-loaded clients do not change when aliases change. Preserve a structured fail-closed denial and offer conditional explicit refresh guidance through the same proxy; never retry a paid request or grant access. JSON reserialization can alter unrelated numbers, so numeric extensions pass through byte-for-byte. A local tab/reload test or recovery message does not certify production migration, billing, containment or availability recovery.
+
+### First-guard pair and original native budget — 5 November 2026
+
+Private STAGE_ONLY artifact qualification is separate from backend component and final Reader/Listener recovery. Preserve semantic and physical UNKNOWN barriers; finalize only the same original operation after exact paired proof. Scope consumption begins at immutable baseline admission, counts failed/unknown intents, binds CLOSED and parent frontend identities, and cannot reset by source/path/time. Include new pure helper in transitive controller closure. Source/mocked tests are not native recovery, actual rights/access acceptance or a renewed deployment/capture allowance. Recover original source from literal authored edits only when hashes agree; preserve unavailable or unreviewed candidates separately. Retained fidelity/sync hold and consumed resource limits remain; source recovery does not authorize new audio/inference or mark timing PASS.
