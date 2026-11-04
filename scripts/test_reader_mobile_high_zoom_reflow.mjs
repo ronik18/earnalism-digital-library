@@ -49,18 +49,31 @@ function assertReader(record) {
 async function functionalCheck(state) {
   const { chromium } = await import("playwright"); const browser = await chromium.launch({ headless: true });
   try {
-    const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, serviceWorkers: 'block' }); const page = await context.newPage(); const errors = [];
-    page.on("console", message => { if (message.type() === "error") errors.push(message.text()); }); page.on("pageerror", error => errors.push(error.message));
+    const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, serviceWorkers: 'block' }); const page = await context.newPage(); const errors = []; const failedRequests = []; const unexpectedWrites = []; const consoleLocations = []; const apiRequests = [];
+    page.on("requestfailed", request => failedRequests.push({url:request.url(), failure:request.failure()?.errorText}));
+    page.on("console", message => { if (message.type() === "error") { errors.push(message.text()); consoleLocations.push({text:message.text(), location:message.location()}); } }); page.on("pageerror", error => errors.push(error.message));
     await page.route("**/*", route => {
       const url = new URL(route.request().url());
       if (!['localhost','127.0.0.1'].includes(url.hostname)) return route.abort();
-      if (url.pathname === '/api' || url.pathname.startsWith('/api/')) return route.fulfill({ status: 200, contentType: 'application/json', body: '[]' });
+      if (url.pathname === '/api' || url.pathname.startsWith('/api/')) {
+        apiRequests.push({method:route.request().method(), origin:url.origin, path:url.pathname});
+        const headers = { 'access-control-allow-origin': new URL(baseUrl).origin, 'access-control-allow-credentials': 'true',
+          'access-control-allow-methods': 'GET, OPTIONS', 'access-control-allow-headers': 'authorization, content-type, x-reading-pass-session, x-reading-pass-lease', 'vary': 'Origin' };
+        if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers });
+        if (route.request().method() !== 'GET') { unexpectedWrites.push(route.request().method() + ' ' + url.pathname); return route.abort(); }
+        return route.fulfill({ status: 200, contentType: 'application/json', headers, body: '[]' });
+      }
       return url.origin === new URL(baseUrl).origin ? route.continue() : route.abort();
     });
     await page.goto(`${baseUrl}/reader/a-ghost-story?visual-fixture=1`, { waitUntil: "domcontentloaded" });
     await page.evaluate(async zoom => { await document.fonts.ready; document.documentElement.style.zoom = `${zoom}%`; await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))); }, state.zoom);
     const body = page.locator('[data-testid="reader-reading-text"]'); const settings = page.getByRole('button', {name:'Reader settings', exact:true}); const back = page.getByRole('button', {name:'Back to book', exact:true});
     const settle = () => page.waitForFunction(() => { const viewport = document.querySelector('.reader-v2__visual-viewport[data-pagination-ready="true"]'); return viewport && viewport.scrollWidth <= viewport.clientWidth + 1 && Number(viewport.dataset.layoutHeight) === viewport.clientHeight && viewport.getAnimations({subtree:true}).every(animation => animation.playState !== 'running'); });
+    // Exercise credentialed cross-port fixture admission explicitly, not only when
+    // a particular UI action happens to request an API. Every request is intercepted.
+    const probeUrl = new URL(baseUrl); probeUrl.port = probeUrl.port === '18007' ? '18008' : '18007'; probeUrl.pathname = '/api/reader-high-zoom-fixture-probe';
+    const crossPortProbe = await page.evaluate(async url => { const response = await fetch(url, { credentials: 'include', headers: { 'x-reading-pass-session': 'isolated-high-zoom-no-real-session' } }); return { status: response.status, body: await response.json() }; }, probeUrl.href);
+    assert.deepEqual(crossPortProbe, {status:200, body:[]});
     await settle(); const before = await body.evaluate(node => parseFloat(getComputedStyle(node).fontSize));
     await settings.click(); const dialog = page.getByRole('dialog', {name:'Reading preferences', exact:true}); await dialog.waitFor();
     const size = dialog.locator('label').filter({hasText:/^Text size/}).locator('select');
@@ -93,7 +106,7 @@ async function functionalCheck(state) {
     assert.deepEqual(navigationGeometry.buttons.map(button=>button.name),['Previous page','Contents','Next page']);
     for(const button of navigationGeometry.buttons) assert.ok(button.width>=44 && button.height>=44 && button.left>=0 && button.right<=navigationGeometry.viewport.width && button.top>=0 && button.bottom<=navigationGeometry.viewport.height, `Reader navigation must be reachable: ${JSON.stringify(navigationGeometry)}`);
     const geometry = await body.evaluate(node => { const viewport=node.closest('.reader-v2__visual-viewport');const measure=viewport.querySelector('.reader-v2__pagination-measure');return {height:viewport.clientHeight,scrollHeight:viewport.scrollHeight,width:viewport.clientWidth,scrollWidth:viewport.scrollWidth,layoutHeight:Number(viewport.dataset.layoutHeight),leading:getComputedStyle(node).lineHeight,measurementLeading:getComputedStyle(measure).lineHeight}; });
-    return {geometry,navigationGeometry,dialogGeometry,before,afterIncrease,afterDecrease,initialText,increasedText,decreasedText,restoredFocus,focusOrder,trapped,errors};
+    return {geometry,navigationGeometry,dialogGeometry,before,afterIncrease,afterDecrease,initialText,increasedText,decreasedText,restoredFocus,focusOrder,trapped,errors,failedRequests,unexpectedWrites,crossPortProbe,consoleLocations,apiRequests,browserVersion:browser.version()};
   } finally { await browser.close(); }
 }
 
@@ -107,6 +120,7 @@ test("all compact Reader controls remain present and at least 44 by 44", () => r
 test("no child exceeds either compact bar edge", () => records.forEach(record => {const bar=record.zoom_results.reader_topbar;Object.values(bar.children).forEach(item=>assert.ok(item.box.left>=bar.box.left && item.box.right<=bar.box.right));}));
 test("prose begins below compact controls", () => records.forEach(record=>assert.equal(record.zoom_results.reader_topbar.content_begins_below_topbar,true)));
 const functional390 = await functionalCheck(selected.find((state) => state.id === "reader-mobile-390")); const functional320 = await functionalCheck(selected.find((state) => state.id === "reader-mobile-320-zoom-100")); const functional320High = await functionalCheck(selected.find((state) => state.id === "reader-mobile-320-zoom-200"));
+fs.writeFileSync(path.join(output, "functional-checks.json"), JSON.stringify({functional390,functional320,functional320High}, null, 2) + "\n");
 test("compact high-zoom chrome preserves a useful non-scrolling measured reading page", () => [functional390, functional320, functional320High].forEach(({ geometry }) => { assert.ok(geometry.height >= 3 * Number.parseFloat(geometry.leading)); assert.ok(geometry.scrollHeight <= geometry.height + 1); assert.ok(geometry.scrollWidth <= geometry.width + 1); assert.equal(geometry.layoutHeight, geometry.height); assert.equal(geometry.measurementLeading, geometry.leading); }));
 test("font increase changes rendered Reader text size and reports its actual rem value", () => [functional390, functional320, functional320High].forEach((result) => { assertFontLabel(result.initialText, result.before); assert.ok(result.afterIncrease > result.before); assertFontLabel(result.increasedText, result.afterIncrease); }));
 test("font decrease restores the initial Reader size and rem label", () => [functional390, functional320, functional320High].forEach((result) => { assert.ok(result.afterDecrease < result.afterIncrease); assert.equal(result.afterDecrease, result.before); assertFontLabel(result.decreasedText, result.afterDecrease); assert.equal(result.decreasedText, result.initialText); }));
@@ -121,6 +135,6 @@ test("zero-size control causes failure", () => { const item=clone(recordFor(reco
 test("overlapping compact controls cause failure", () => { const item=clone(recordFor(records,"reader-mobile-320-zoom-200")); item.zoom_results.reader_topbar.control_overlap_area=1; assert.throws(()=>assertReader(item)); });
 test("hidden control causes failure", () => { const item = clone(recordFor(records, "reader-mobile-320-zoom-200")); item.zoom_results.reader_topbar.children.settings.box = null; assert.throws(() => assertReader(item)); });
 test("duplicate control causes failure", () => { const item = clone(recordFor(records, "reader-mobile-320-zoom-200")); item.zoom_results.reader_topbar.children.duplicate_settings = item.zoom_results.reader_topbar.children.settings; assert.throws(() => { const controls = item.zoom_results.reader_topbar.children; assert.equal(Object.keys(controls).filter((key) => /settings/.test(key)).length, 1); }); });
-test("Reader safety remains unchanged", () => { records.forEach(assertReader); [functional390, functional320, functional320High].forEach((result) => assert.deepEqual(result.errors, [])); });
+test("Reader safety remains unchanged", () => { records.forEach(assertReader); [functional390, functional320, functional320High].forEach((result) => { assert.deepEqual(result.unexpectedWrites, []); assert.deepEqual(result.errors, [], JSON.stringify({failedRequests:result.failedRequests,consoleLocations:result.consoleLocations,apiRequests:result.apiRequests,browserVersion:result.browserVersion})); }); });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, output }));

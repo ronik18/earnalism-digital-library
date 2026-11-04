@@ -3077,3 +3077,8 @@ Compact secondary controls into accessible sheets and fragment oversized prose p
 ### Quiet Folio spacing smoke follows the approved composition
 
 Historical smoke required a removed reading-sidebar cover; null geometry correctly failed the job. Assert measured heading/prose alignment, zero outer margin/overflow/runtime errors/API writes, compact visible navigation, approved52rem canvas, no repeated reading cover, and bounded cover reachable in Edition and credits at all4viewports. Production source and entitlements are unchanged by this test correction; preserve the failed run and require fresh CI.
+
+
+### Attribute generic fixture-network errors before declaring a fix
+
+Highzoom checks1through24passed; final zero-error assertion recorded one generic ERR_FAILED without endpoint. Dependent recovery baseline correctly held. Retain zero-error assertion and all25checks. Record failed request endpoints, console locations, mocked API origins/methods and browser version; retain functional diagnostics file before final assertion. Explicit fixed-loopback credential CORS/OPTIONS and GET-only mock admission match existing isolated landscape convention; probe credentialed cross-port read. 25of25nativechecksPASS againstCIshapedcrossportfixture beforeandafterdiagnostics. Separate missing-CORS mockednegative unexpectedly succeeded underlocalPlaywright, so it doesnotproveCORS causedhostedfailure; preserved as inconclusive. No product delta or hosted success is claimed.
