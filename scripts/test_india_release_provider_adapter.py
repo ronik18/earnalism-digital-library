@@ -265,6 +265,12 @@ class PairedBootstrapAdapterTests(unittest.TestCase):
             'current_backend_healthy':True,'native_healthcheck_traffic_gating':True,
             'new_resources_or_config_changes':False,'frontend_signed_purchase_ready':True,
             'cli_version':a.CLI_VERSIONS['railway']}
+        from scripts.test_paired_backend_content_provenance import synthetic_archive_inputs
+        self.payload.update(runtime_input_count=1,root_ignore_sha256=None)
+        self.binding['backend_payload_sha256']=self.actual['backend_payload_sha256']=a.digest(self.payload)
+        contract,report,self.archive_components,self.archive_modes=synthetic_archive_inputs(self.binding,self.payload)
+        self.binding['paired_content_provenance']=contract
+        self.actual['archive_helper_report']=report
     def approval(self, binding=None, action='release_guarded_bootstrap'):
         b=binding or self.binding
         return {'schema':'earnalism-india-protected-operation.v1','action':action,
@@ -283,11 +289,17 @@ class PairedBootstrapAdapterTests(unittest.TestCase):
         with patch.object(a.subprocess,'check_output',side_effect=[head,dirty]), \
              patch('scripts.backend_upload_payload.qualify_committed_export',side_effect=export_effect,
                    return_value=self.payload) as exported, \
-             patch('scripts.backend_upload_payload.qualify',return_value=normal_payload) as normal:
+             patch('scripts.backend_upload_payload.qualify',return_value=normal_payload) as normal, \
+             patch('scripts.purchase_guard_source._git_blob',side_effect=lambda repo,ref,path:self.archive_components[path]), \
+             patch('scripts.purchase_guard_source._git',side_effect=self.archive_tree), \
+             patch('scripts.purchase_guard_source.backend_tree',return_value=self.archive_modes):
             adapter=a.ProviderAdapter(self.journal,owner_authorized=owner_authorized,
                 observe=lambda *_:observed,run=self.fake_run,clock=lambda:self.now)
             try:return adapter.perform(action,b,approval or self.approval(b,action))
             finally:self.export_calls=exported.call_args_list;self.normal_calls=normal.call_args_list
+    def archive_tree(self, repo, *args):
+        from scripts.test_paired_backend_content_provenance import synthetic_component_tree
+        return synthetic_component_tree(self.archive_components,args[2],args[-1])
     def reseal(self, payload):
         b=self.copy(self.binding);actual=self.copy(self.actual)
         b['backend_payload_sha256']=actual['backend_payload_sha256']=a.digest(payload)
@@ -395,7 +407,7 @@ class PairedBootstrapAdapterTests(unittest.TestCase):
         self.assertEqual(result['binding']['controller_source_sha'],'c'*40)
         self.assertEqual(result['operations_journal_identity_sha256'],a._operation_journal_identity(self.journal))
     def normal_fixture(self):
-        b={k:v for k,v in self.binding.items() if k not in {'backend_export_root','controller_source_sha'}}
+        b={k:v for k,v in self.binding.items() if k not in {'backend_export_root','controller_source_sha','paired_content_provenance'}}
         b.update(source_sha='c'*40,guarded_recovery_receipt_sha256='7'*64)
         payload={'scope':'OFFLINE_CLI_EQUIVALENT_FILE_MEMBERSHIP_NOT_PROVIDER_UPLOAD',
             'source':'c'*40,'runtime_expected_sha256':'5'*64,'files':[]}
