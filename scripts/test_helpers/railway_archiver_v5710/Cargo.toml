@@ -1,0 +1,14 @@
+[package]
+name = "earnalism-railway-archiver-test"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+publish = false
+
+[dependencies]
+anyhow = "=1.0.95"
+gzp = { version = "=0.11.3", default-features = false, features = ["deflate_rust"] }
+ignore = "=0.4.23"
+num_cpus = "=1.16.0"
+synchronized-writer = "=1.1.11"
+tar = "=0.4.46"

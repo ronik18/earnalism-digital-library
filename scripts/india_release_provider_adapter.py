@@ -229,13 +229,195 @@ def validate_action_recovery(action, binding, actual):
         raise ValueError('Guard-preserving rollback unavailable')
 
 
-def qualify_bootstrap_recovery(binding, actual):
+PAIRED_INPUT_SCHEMA = 'earnalism.paired-content-input.v1'
+PAIRED_LINEAGE_SCHEMA = 'earnalism.paired-content-lineage.v1'
+HELPER_REPORT_SCHEMA = 'earnalism.executed_upstream_helper_archive.v1'
+HELPER_REPORT_SCOPE = 'EXACT_UPSTREAM_HELPER_EXECUTED_NOT_INSTALLED_CLI_UPLOAD_OR_NATIVE_RUNTIME'
+HELPER_PACKAGE = 'scripts/test_helpers/railway_archiver_v5710/'
+HELPER_COMPONENTS = ('scripts/execute_railway_helper_check.py',
+    'scripts/verify_railway_helper_archive.py', 'scripts/verify_railway_helper_source.py',
+    *tuple(HELPER_PACKAGE + name for name in ('Cargo.toml', 'Cargo.lock', 'SOURCE-PINS.json',
+        'src/main.rs', 'upstream-Cargo.lock', 'upstream-upload.rs.txt')))
+
+
+def _paired_input(binding):
+    value = binding.get('paired_content_provenance')
+    fields = {'schema', 'input_git_source_sha', 'expected_archive_helper_report_sha256',
+              'archive_member_manifest_sha256', 'archive_member_modes_sha256', 'helper_archive_sha256'}
+    if (not isinstance(value, dict) or set(value) != fields or value['schema'] != PAIRED_INPUT_SCHEMA
+            or value['input_git_source_sha'] != binding.get('source_sha')
+            or not re.fullmatch('[a-f0-9]{40}', value.get('input_git_source_sha', ''))
+            or not all(require_digest(value[k]) for k in fields - {'schema', 'input_git_source_sha'})):
+        raise ValueError('Exact paired content input contract required')
+    return value
+
+
+def _paired_helper_components(binding, report):
+    """Compare immutable consumed components, not whole producer/operator HEADs."""
+    from scripts.purchase_guard_source import _git, _git_blob
+    producer, operator = report.get('controller_source_sha'), binding.get('controller_source_sha')
+    if not all(isinstance(x, str) and re.fullmatch('[a-f0-9]{40}', x) for x in (producer, operator)):
+        raise ValueError('Actual helper producer and operator sources required')
+    repo = Path(binding['source_root']).resolve()
+    blobs = {}
+    for name in HELPER_COMPONENTS:
+        entries = []
+        for ref in (producer, operator):
+            raw = _git(repo, 'ls-tree', '-z', ref, '--', name).rstrip(b'\0')
+            if not raw or b'\0' in raw: raise ValueError('Consumed helper component missing')
+            header, path = raw.split(b'\t', 1)
+            mode, kind, oid = header.decode().split()
+            if path.decode() != name or mode not in {'100644', '100755'} or kind != 'blob':
+                raise ValueError('Regular immutable helper component required')
+            entries.append((mode, oid))
+        if entries[0] != entries[1]:
+            raise ValueError('Helper producer/operator component identity differs: ' + name)
+        blobs[name] = _git_blob(repo, producer, name)
+    pins = json.loads(blobs[HELPER_PACKAGE + 'SOURCE-PINS.json'])
+    expected = {'harness_source_sha256': hashlib.sha256(blobs[HELPER_PACKAGE + 'src/main.rs']).hexdigest(),
+        'derived_lock_sha256': hashlib.sha256(blobs[HELPER_PACKAGE + 'Cargo.lock']).hexdigest(),
+        'source_pins_sha256': hashlib.sha256(blobs[HELPER_PACKAGE + 'SOURCE-PINS.json']).hexdigest(),
+        'upstream_module_sha256': hashlib.sha256(blobs[HELPER_PACKAGE + 'upstream-upload.rs.txt']).hexdigest(),
+        'upstream_lock_sha256': hashlib.sha256(blobs[HELPER_PACKAGE + 'upstream-Cargo.lock']).hexdigest(),
+        'upstream_function_sha256': pins.get('exact_function_sha256')}
+    if (pins.get('upstream_tag') != 'v' + CLI_VERSIONS['railway']
+            or pins.get('upstream_upload_sha256') != expected['upstream_module_sha256']
+            or pins.get('upstream_lock_sha256') != expected['upstream_lock_sha256']
+            or pins.get('derived_lock_sha256') != expected['derived_lock_sha256']
+            or not all(require_digest(x) for x in expected.values())
+            or any(report.get(key) != value for key, value in expected.items())):
+        raise ValueError('Executed helper module/function/lock identity differs')
+
+
+def _paired_helper_receipt(binding, report):
+    """Validate an executed helper artifact; it is never an upload checksum."""
+    expected = _paired_input(binding)
+    if (not isinstance(report, dict) or digest(report) != expected['expected_archive_helper_report_sha256']
+            or report.get('schema') != HELPER_REPORT_SCHEMA or report.get('scope') != HELPER_REPORT_SCOPE
+            or report.get('helper_executed') is not True
+            or report.get('input_git_source_sha') != expected['input_git_source_sha']):
+        raise ValueError('Bound actually executed helper receipt required')
+    for field in ('native_archive_qualification', 'provider_upload_performed', 'runtime_qualification'):
+        if report.get(field) is not False: raise ValueError('Helper evidence scope broadened: ' + field)
+    if (type(report.get('provider_writes')) is not int or report['provider_writes'] != 0
+            or 'provider_git_sha' not in report or report['provider_git_sha'] is not None
+            or report.get('provider_git_metadata_status') != 'NOT_OBSERVED_NO_PROVIDER_CALL'):
+        raise ValueError('Helper receipt must preserve absent provider observations')
+    context = report.get('ci_context')
+    if (not isinstance(context, dict) or context.get('GITHUB_REPOSITORY') != 'ronik18/earnalism-digital-library'
+            or context.get('actual_controller_sha') != report.get('controller_source_sha')
+            or not all(isinstance(context.get(k), str) and context[k] for k in
+                ('GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT', 'GITHUB_SHA', 'GITHUB_JOB', 'GITHUB_EVENT_NAME'))
+            or context['GITHUB_EVENT_NAME'] == 'workflow_dispatch'
+            or not re.fullmatch('[a-f0-9]{40}', context['GITHUB_SHA'])):
+        raise ValueError('Actual ordinary-CI helper producer context required')
+    for field in ('helper_binary_sha256', 'offline_export_report_sha256'):
+        if not require_digest(report.get(field)): raise ValueError('Missing producer evidence digest: ' + field)
+    if (not isinstance(report.get('actual_toolchain'), dict)
+            or not all(isinstance(report['actual_toolchain'].get(k), str) and report['actual_toolchain'][k]
+                for k in ('rustc', 'cargo'))):
+        raise ValueError('Actual helper toolchain observation missing')
+    _paired_helper_components(binding, report)
+    members = report.get('members')
+    if not isinstance(members, list) or not members: raise ValueError('Actual helper regular members required')
+    content = []
+    for row in members:
+        if (not isinstance(row, dict) or set(row) != {'path', 'bytes', 'sha256', 'mode'}
+                or not isinstance(row['path'], str) or not row['path'].startswith('backend/')
+                or '\\' in row['path'] or any(x in {'', '.', '..'} for x in row['path'].split('/'))
+                or type(row['bytes']) is not int or row['bytes'] < 0 or not require_digest(row['sha256'])
+                or type(row['mode']) is not int or row['mode'] not in {0o644, 0o755}):
+            raise ValueError('Canonical regular helper member required')
+        content.append({k: row[k] for k in ('path', 'bytes', 'sha256')})
+    if ([row['path'] for row in members] != sorted(set(row['path'] for row in members))
+            or digest(content) != expected['archive_member_manifest_sha256']
+            or digest(members) != expected['archive_member_modes_sha256']
+            or report.get('archive_member_manifest_sha256') != expected['archive_member_manifest_sha256']
+            or report.get('archive_member_modes_sha256') != expected['archive_member_modes_sha256']
+            or report.get('archive_sha256') != expected['helper_archive_sha256']
+            or type(report.get('regular_members')) is not int or report['regular_members'] != len(members)
+            or type(report.get('directory_members')) is not int or report['directory_members'] < 0
+            or type(report.get('uncompressed_regular_bytes')) is not int
+            or report['uncompressed_regular_bytes'] != sum(row['bytes'] for row in members)
+            or type(report.get('runtime_input_count')) is not int or report['runtime_input_count'] < 1
+            or report.get('runtime_expected_sha256') != binding.get('source_delivery_sha256')):
+        raise ValueError('Stable helper B content/modes/runtime projection differs')
+    return content, members
+
+
+def validate_paired_archive_input(binding, actual, payload):
+    """Read-only local evidence admission; no archiver, authority or provider call."""
+    from scripts.purchase_guard_source import backend_tree
+    content, members = _paired_helper_receipt(binding, actual.get('archive_helper_report'))
+    files = payload.get('files')
+    if (not isinstance(files, list) or sorted(files, key=lambda r: r['path']) != content
+            or payload.get('source') != binding.get('source_sha')
+            or actual['archive_helper_report'].get('runtime_input_count') != payload.get('runtime_input_count')
+            or actual['archive_helper_report'].get('root_ignore_sha256') != payload.get('root_ignore_sha256')):
+        raise ValueError('Helper receipt does not cover current qualified export')
+    tree = backend_tree(Path(binding['source_root']).resolve(), binding['source_sha'])
+    for row in members:
+        target = tree.get(row['path'], {})
+        if target.get('mode') not in {'100644', '100755'} or row['mode'] != (0o755 if target['mode'] == '100755' else 0o644):
+            raise ValueError('Helper member mode differs from committed B')
+
+
+def validate_paired_content_provenance(binding, actual, *, archive_helper_report=None, expected_journal_identity_sha256=None):
+    """Content lineage is explicit; absent native Git metadata stays absent."""
+    report = actual.get('archive_helper_report') if archive_helper_report is None else archive_helper_report
+    if 'archive_helper_report' in actual and actual['archive_helper_report'] != report:
+        raise ValueError('Post-write helper receipt differs from original input')
+    _paired_helper_receipt(binding, report)
+    expected = _paired_input(binding)
+    lineage = actual.get('paired_content_provenance')
+    fields = {'schema', 'lineage_kind', 'operation_id', 'deployment_id', 'retained_image_id',
+        'runtime_sha256', 'config_sha256', 'archive_helper_report_sha256',
+        'archive_member_manifest_sha256', 'archive_member_modes_sha256',
+        'native_observation_receipt_sha256', 'runtime_attestation_receipt_sha256', 'provider_git_sha',
+        'input_git_source_sha', 'operations_journal_identity_sha256'}
+    if (not isinstance(lineage, dict) or set(lineage) != fields
+            or lineage['schema'] != PAIRED_LINEAGE_SCHEMA
+            or lineage['lineage_kind'] != 'CONTENT_ARCHIVE_MEMBERS_AND_RUNTIME_ATTESTATION'):
+        raise ValueError('Explicit paired native content lineage required')
+    native_id = actual.get('deployment_id')
+    if (not isinstance(native_id, str) or not re.fullmatch('[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}', native_id)
+            or not isinstance(actual.get('retained_image_id'), str) or not actual['retained_image_id']):
+        raise ValueError('Actual paired native deployment/image identity required')
+    if not require_digest(expected_journal_identity_sha256):
+        raise ValueError('Original paired operations journal custody required')
+    required = {'input_git_source_sha': binding['source_sha'],
+        'operations_journal_identity_sha256': expected_journal_identity_sha256,
+        'operation_id': operation_identity('release_guarded_bootstrap', binding),
+        'deployment_id': native_id, 'retained_image_id': actual['retained_image_id'],
+        'runtime_sha256': binding['source_delivery_sha256'], 'config_sha256': binding['config_sha256'],
+        'archive_helper_report_sha256': expected['expected_archive_helper_report_sha256'],
+        'archive_member_manifest_sha256': expected['archive_member_manifest_sha256'],
+        'archive_member_modes_sha256': expected['archive_member_modes_sha256']}
+    if actual.get('operation_id') != required['operation_id'] or any(lineage.get(k) != v for k, v in required.items()):
+        raise ValueError('Actual operation/image/runtime/config content lineage differs')
+    for field in ('native_observation_receipt_sha256', 'runtime_attestation_receipt_sha256'):
+        if not require_digest(lineage[field]) or actual.get(field) != lineage[field]:
+            raise ValueError('Actual native/runtime observation receipt required: ' + field)
+    if ('provider_git_sha' not in actual or actual['provider_git_sha'] != lineage['provider_git_sha']
+            or (lineage['provider_git_sha'] is not None and
+                (not isinstance(lineage['provider_git_sha'], str) or not re.fullmatch('[a-f0-9]{40}', lineage['provider_git_sha'])))):
+        raise ValueError('Separately observed native Git metadata required')
+
+
+def _qualify_bootstrap_body(binding, actual, *, source_field, archive_helper_report=None, expected_journal_identity_sha256=None):
     """Post-write actual read-only qualification; never a preflight PASS substitute."""
-    if actual.get('scope')!='ACTUAL_PROVIDER_AND_SOURCE' or actual.get('action')!='release_guarded_bootstrap' or actual.get('source_sha')!=binding['source_sha']:
+    if actual.get('scope')!='ACTUAL_PROVIDER_AND_SOURCE' or actual.get('action')!='release_guarded_bootstrap' or actual.get(source_field)!=binding['source_sha']:
         raise ValueError('Actual exact bootstrap observation required')
     for key in ('source_delivery_sha256','closed_server_sha256'):
         if actual.get(key)!=binding.get(key) or not require_digest(actual.get(key)):
             raise ValueError('Bootstrap measured source mismatch')
+    # A supplied measured runtime must agree with the delivered source. Legacy
+    # observers may omit it (or retain None); that is not measured provenance.
+    runtime = actual.get('runtime_sha256')
+    if runtime is not None and (not require_digest(runtime) or runtime != binding.get('source_delivery_sha256')):
+        raise ValueError('Bootstrap measured runtime differs from delivered source')
+    if 'backend_export_root' in binding and not require_digest(runtime):
+        raise ValueError('Paired bootstrap requires actual measured runtime')
     if not require_digest(actual.get('config_sha256')) or actual.get('config_sha256')!=binding.get('config_sha256') or not require_digest(actual.get('recovery_receipt_sha256')):
         raise ValueError('Actual recovery/config digest binding missing')
     for key in ('deployment_id','retained_image_id','config_sha256','recovery_receipt_sha256'):
@@ -246,7 +428,18 @@ def qualify_bootstrap_recovery(binding, actual):
         raise ValueError('Purchase pause is not genuinely qualified')
     if actual.get('guarded_backend_deployment_id')!=actual['deployment_id']:
         raise ValueError('Recovery artifact identity mismatch')
+    if 'backend_export_root' in binding:
+        validate_paired_content_provenance(binding, actual, archive_helper_report=archive_helper_report, expected_journal_identity_sha256=expected_journal_identity_sha256)
     return actual['recovery_receipt_sha256']
+
+
+def qualify_bootstrap_recovery(binding, actual, *, archive_helper_report=None, expected_journal_identity_sha256=None):
+    # Paired evidence identifies a reviewed CONTENT INPUT. It does not infer
+    # provider Git metadata from the Git SHA selected by the operator.
+    return _qualify_bootstrap_body(binding, actual,
+        source_field='input_git_source_sha' if 'backend_export_root' in binding else 'source_sha',
+        archive_helper_report=archive_helper_report,
+        expected_journal_identity_sha256=expected_journal_identity_sha256)
 
 
 RESTORE_FIELDS = {'operations_journal_identity_sha256', 'applied_normal_operation_id', 'applied_normal_record_sha256',
@@ -348,7 +541,7 @@ def validate_guarded_restore_context(journal, binding, actual, approval=None):
     proof=boot.get('qualified_bootstrap_evidence')
     if not isinstance(proof,dict) or actual.get('qualified_bootstrap_receipt')!=proof:
         raise ValueError('Permanent original bootstrap evidence required')
-    if not isinstance(proof,dict) or qualify_bootstrap_recovery(boot['binding'],proof)!=recovery:
+    if not isinstance(proof,dict) or qualify_bootstrap_recovery(boot['binding'],proof, archive_helper_report=boot.get('paired_archive_helper_evidence'), expected_journal_identity_sha256=boot.get('operations_journal_identity_sha256'))!=recovery:
         raise ValueError('Actual qualified bootstrap receipt missing')
     for key, expected in {'deployment_id':c['target_deployment_id'], 'retained_image_id':c['target_retained_image_id'],
             'runtime_sha256':c['target_runtime_sha256'],'config_sha256':c['target_config_sha256']}.items():
@@ -367,6 +560,10 @@ def validate_guarded_restore_context(journal, binding, actual, approval=None):
     native=actual.get('retained_bootstrap_native')
     expected_native={k:c[v] for k,v in {'deployment_id':'target_deployment_id','retained_image_id':'target_retained_image_id','runtime_sha256':'target_runtime_sha256','config_sha256':'target_config_sha256','source_sha':'target_source_sha'}.items()}
     expected_native['native_can_rollback']=True
+    if 'backend_export_root' in boot['binding']:
+        expected_native['input_git_source_sha'] = expected_native.pop('source_sha')
+        expected_native['lineage_kind'] = 'CONTENT_ARCHIVE_MEMBERS_AND_RUNTIME_ATTESTATION'
+        expected_native['provider_git_sha'] = proof['provider_git_sha']
     if native!=expected_native:
         raise ValueError('Fresh actual retained bootstrap identity differs')
     if not c['target_retained_image_id'] or binding.get('source_delivery_sha256')!=c['target_runtime_sha256']:
@@ -582,6 +779,7 @@ class ProviderAdapter:
                     or actual.get('backend_payload_sha256') != digest(payload)
                     or payload['runtime_expected_sha256'] != binding.get('source_delivery_sha256')):
                 raise ValueError('Exact reviewed backend upload payload unqualified')
+            if paired:validate_paired_archive_input(binding, actual, payload)
         # Only one operations directory may be created beneath the existing
         # owner-admitted durable namespace; never recursively create ancestors.
         parent_info=self.journal.parent.lstat()
@@ -616,6 +814,10 @@ class ProviderAdapter:
             if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}:
                 intent['operations_journal_identity_sha256'] = (binding['restore_context']['operations_journal_identity_sha256']
                     if anchor is not None else _operation_journal_identity(self.journal))
+            if paired:
+                # Keep the original local helper receipt once. It remains local
+                # helper evidence, never an uploaded archive checksum.
+                intent['paired_archive_helper_evidence'] = actual['archive_helper_report']
             durable(path, intent, exclusive=True)
             if correction is not None:
                 # Re-read the permanent predecessor under the exclusive write
@@ -645,6 +847,7 @@ class ProviderAdapter:
                         or digest(final_payload) != actual.get('backend_payload_sha256')
                         or final_payload['runtime_expected_sha256'] != binding.get('source_delivery_sha256')):
                     raise ValueError('Paired CLOSED export changed before dispatch')
+                validate_paired_archive_input(binding, actual, final_payload)
                 validate_approval(action, binding, approval, self.owner_authorized, self.clock())
                 validate_startup_qualification(binding, approval, actual, self.clock())
                 command = self._command(action, binding, request, backend_payload=final_payload)
@@ -705,10 +908,18 @@ class ProviderAdapter:
         path = self.journal / (operation_id + '.json')
         record = _read_journal(path)
         actual = self.observe('reconcile', record)
+        paired_bootstrap = record['action'] == 'release_guarded_bootstrap' and 'backend_export_root' in record['binding']
+        paired_restore = False
+        if record['action'] == 'restore_guarded_bootstrap':
+            context = record['binding'].get('restore_context', {})
+            if isinstance(context, dict) and require_digest(context.get('bootstrap_operation_id')):
+                original = _read_journal(self.journal / (context['bootstrap_operation_id'] + '.json'))
+                paired_restore = 'backend_export_root' in original.get('binding', {})
+        source_field = 'input_git_source_sha' if paired_bootstrap or paired_restore else 'source_sha'
         if (actual.get('scope') != 'ACTUAL_PROVIDER_AND_SOURCE'
                 or actual.get('operation_id') != operation_id
                 or actual.get('action') != record['action']
-                or actual.get('source_sha') != record['binding']['source_sha']
+                or actual.get(source_field) != record['binding']['source_sha']
                 or actual.get('outcome') not in {'APPLIED', 'NOT_APPLIED'}
                 or not re.fullmatch('[0-9a-f]{64}', actual.get('receipt_sha256', ''))):
             raise ValueError('Unknown/unbound actual provider outcome')
@@ -724,7 +935,14 @@ class ProviderAdapter:
             for key,expected in {'retained_image_id':c['target_retained_image_id'],
                 'runtime_sha256':c['target_runtime_sha256'],'config_sha256':c['target_config_sha256']}.items():
                 if actual.get(key)!=expected: raise ValueError('Restored bytes differ: '+key)
-            qualify_bootstrap_recovery(record['binding'],{**actual,'action':'release_guarded_bootstrap'})
+            if paired_restore:
+                if ('provider_git_sha' not in actual or (actual['provider_git_sha'] is not None and
+                        (not isinstance(actual['provider_git_sha'], str) or not re.fullmatch('[a-f0-9]{40}', actual['provider_git_sha'])))):
+                    raise ValueError('Actual paired restore Git observation must remain separate')
+                _qualify_bootstrap_body(record['binding'], {**actual,'action':'release_guarded_bootstrap'},
+                    source_field='input_git_source_sha')
+            else:
+                qualify_bootstrap_recovery(record['binding'],{**actual,'action':'release_guarded_bootstrap'})
             for key in ('auto_deploy', 'redis_enabled', 'redis_cache_enabled', 'multi_replica_enabled', 'redis_public_metadata_enabled'):
                 if actual.get(key) is not False: raise ValueError('Restored suppression unavailable: '+key)
         if record['action']=='restore_guarded_bootstrap' and actual['outcome']=='NOT_APPLIED':
@@ -737,7 +955,13 @@ class ProviderAdapter:
                     or proof.get('exact_request_not_applied') is not True):
                 raise ValueError('Actual native no-effect proof required')
         if record['action']=='release_guarded_bootstrap' and actual['outcome']=='APPLIED':
-            record['guarded_recovery_receipt_sha256']=qualify_bootstrap_recovery(record['binding'], actual)
+            custody = None
+            if paired_bootstrap:
+                custody = _operation_journal_identity(self.journal)
+                if record.get('operations_journal_identity_sha256') != custody:
+                    raise ValueError('Original paired bootstrap journal custody changed')
+            record['guarded_recovery_receipt_sha256']=qualify_bootstrap_recovery(record['binding'], actual,
+                archive_helper_report=record.get('paired_archive_helper_evidence'), expected_journal_identity_sha256=custody)
             # Retain a bounded, nonsecret ORIGINAL actual qualification proof.
             # Old digest-only journals remain readable, but cannot authorize a
             # new restore without concrete original image/runtime evidence.
@@ -747,6 +971,12 @@ class ProviderAdapter:
                 'startup_complete','database_healthy','source_attestation_matches','native_can_rollback',
                 'config_compatible','existing_reader_listener_preserved','verify_refund_webhook_code_preserved')
             record['qualified_bootstrap_evidence']={k:actual.get(k) for k in keys}
+            if 'backend_export_root' in record['binding']:
+                # Native proof stays image/runtime-bound; do not duplicate the
+                # full regular-member helper body inside this nested proof.
+                for key in ('input_git_source_sha', 'operation_id', 'paired_content_provenance', 'provider_git_sha',
+                            'native_observation_receipt_sha256', 'runtime_attestation_receipt_sha256'):
+                    record['qualified_bootstrap_evidence'][key] = actual[key]
         if record['action']=='release_backend' and actual['outcome']=='APPLIED':
             native=actual.get('deployment_id')
             if isinstance(native,str) and re.fullmatch('[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}',native):

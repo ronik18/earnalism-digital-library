@@ -3097,3 +3097,26 @@ Highzoom25 now passed. Next footer/zoom consumer crashed on logo.clipped because
 ### Expected capture identity must come from the selected path
 
 Expected state was selected from captured state_id; whole Reader metadata could be copied into a nonReader path while external summary IDs stayed unchanged. Earlier composed review superseded by explicit HOLD. Immutable d205 fullChromium validator, crossbrowser validator and summary producer each accepted wholeReadercopy into a nonReader path; original scripts/helper/fixtures retained privately for reproduction. Bind state_id/fixture/route to manifest state derived independently from selected iteration index or expected directory before choosing Reader exception. Footer also binds summary requested IDs to selected manifest sequence. No global legacy summary API change or logo relaxation. Keep the failed review and reproduction; a green capture cannot replace independently bound authority.
+
+
+## 4 November 2026 — executable archive proof and honest content lineage
+
+Compile only exact pinned upstream archive function and92-package locked dependency closure in ordinaryCI, with actual Rust admission and Cargo output outside clean checkout. No auth/upload code or provider secrets. Verify full immutable CLOSED B membership, per-file bytes/modes and runtime; helper gzip is not an observed upload checksum. Paired content input B is separate from actual provider Git observation, including actual None. Preserve historical CI producer head/input-report digest after merge; validate unchanged consumed components, not whole-head equality loops. Supplied contradictory runtime proof is rejected; paired lineage requires measured runtime/config/image/native evidence and original physical journal custody. Legacy observer and Reader612 role behavior retained. Refresh legitimate current source-dependency pins without replacing historical role/artifact identities. Place Cargo output outside the clean controller checkout. Full Git membership equality rejects omitted files; a subset check is insufficient. Preserve initial failures, exact producer context and all native budgets.
+
+
+### Cargo admission is an executed gate, not a source-closure assumption
+
+cargo build --locked refused to update derived lock; no helper/archive ran. Artifact no-files error was secondary. The source-checked upstream closure is not a Cargo-admitted lock. Keep original --locked build and exitcode authoritative. Only onfailure run finite ordinaryCI offline workspace-update in freshRUNNER_TEMP copy of exactmanifest/lock/src; never build/backcopy. Retain original/candidate lock,diff,typed diagnostics; reject any newpackage/version/source/checksum/edge or alteredsource. CLIalways1. A candidate is for independent review only; do not silently change the source lock or install a local toolchain. Preserve observed CI producer context, including synthetic merge commits.
+
+
+### A scope-negative fixture needs an existing portable parent
+
+Negative test hardcoded macOS/private/tmp; Ubuntu lacks/private, so parent.resolve raisesFileNotFoundError before expected scope-rejection ValueError.151tests included1error; Cargo/normalization/helper never started. Use a second existing TemporaryDirectory outside the allowed RUNNER_TEMP, assert the intended scope-rejection ValueError and zero subprocess/output side effects. Keep production path checks, all19tests and original lockedgate unchanged. Platform path existence is separate from the intended boundary check. Retain the actual Linux failure; do not relax production validation to satisfy a macOS fixture.
+
+### Actual Cargo lock normalization source pin — 4 November 2026
+
+Cargo admission differs from raw upstream closure admission. Reuse the actual reviewed 84-package CI lock, not an unlocked-build workaround. Preserve retained coordinates/checksums, six direct pins, semantic edge subsets and producer context; forbid future resurrection of pruned packages. Locked compilation and helper execution remain pending separate actual CI evidence.
+
+### Actual upstream tar mode semantics — 4 November 2026
+
+The byte-identical helper emits S_IFREG in regular-header mode fields. Compare exact Git permission bits only after rejecting conflicting/unknown type bits and unsafe permissions; keep canonical mode digests unchanged. Test checksum-valid manually encoded raw headers because TarInfo writers mask type bits. Full retained-archive replay is evidence, not retroactive CI/native PASS.

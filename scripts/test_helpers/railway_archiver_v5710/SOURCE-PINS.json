@@ -1,0 +1,21 @@
+{
+  "upstream_tag": "v5.71.0",
+  "upstream_upload_sha256": "b7f670c63ef9667e6ea3d60d9b435419857b81d5bdce64d495c9c2c2677e91fa",
+  "exact_function_sha256": "135dfba8d194ed081dbcb5249617f9cae6ded958fb3367c34b50d31b6f2acf81",
+  "upstream_lock_sha256": "0a5087a0d781b67a205051f011998fbd8c4f585b529d8b0d037a1eef01cddd63",
+  "derived_lock_sha256": "ee9ac499cad3cbd0c830becd00d50c7fc6cef15ddfd5c8a17fa8c49a819bded4",
+  "registry_package_closure": 84,
+  "runtime_scope": "EXACT_UPSTREAM_HELPER_ONLY_NOT_INSTALLED_CLI_OR_NATIVE_PROOF",
+  "executed": false,
+  "lock_normalization_evidence": {
+    "kind": "ACTUAL_CARGO_OFFLINE_WORKSPACE_DIAGNOSTIC_NOT_BUILD",
+    "run_id": 41808463733,
+    "artifact_id": 13311137364,
+    "producer_source_sha": "28065361e52898b61d54509023714e5335d5d39c",
+    "artifact_zip_sha256": "bfda437ec9d0107ecacde4eb62225760cc7fdb322533ab91d668798980a47b5d",
+    "original_lock_sha256": "9d5a9c21d11a9cd9512eae640625c0ce50776b72d52ad7fffba48cfeda929efd",
+    "diagnostic_sha256": "a2b5892e251e8419b8b77436598219e9fac453dfb9d7804f64903fa6434b595e",
+    "retained_registry_versions_sources_checksums": "UNCHANGED",
+    "helper_executed": false
+  }
+}
