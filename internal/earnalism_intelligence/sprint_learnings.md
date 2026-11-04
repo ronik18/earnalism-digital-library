@@ -3120,3 +3120,7 @@ Cargo admission differs from raw upstream closure admission. Reuse the actual re
 ### Actual upstream tar mode semantics — 4 November 2026
 
 The byte-identical helper emits S_IFREG in regular-header mode fields. Compare exact Git permission bits only after rejecting conflicting/unknown type bits and unsafe permissions; keep canonical mode digests unchanged. Test checksum-valid manually encoded raw headers because TarInfo writers mask type bits. Full retained-archive replay is evidence, not retroactive CI/native PASS.
+
+### One-shot frontend return and retained startup proof — 4 November 2026
+
+A promotion replay is not a recovery mechanism. Bind a distinct return to the original applied promotion and physical journal, permanent claim, immutable target and current-backend compatibility; recheck current serving identity immediately before dispatch. UNKNOWN never permits another write. A pure retained phase callback freezes capture time and binding; it cannot allocate reads or refresh stale evidence. Dummy tests/source admission are not native recovery or capture authority.

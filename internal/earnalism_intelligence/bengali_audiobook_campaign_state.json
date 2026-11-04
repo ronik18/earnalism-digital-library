@@ -790,5 +790,24 @@
     "actual_retained_archive_local_replay": "2164members bytes/sizes/permissions match; not retroactive CI or native qualification",
     "next_exact_prompt": "Run focused compatibility tests and fresh ordinary CI; require actual helper receipt and all applicable exact-head checks before expected-head merge/tree equality. No provider changes.",
     "no_deployment_provider_audio_purchase_actions": true
+  },
+  "guarded_frontend_return_retained_startup_20261104": {
+    "at": "2026-11-04T10:43:02.131802+00:00",
+    "event": "GUARDED_FRONTEND_RETURN_AND_RETAINED_STARTUP_SOURCE_PREPARATION",
+    "source_base": "b8eee9987118efc2b9da4384f57d783c49753a06",
+    "private_v2_patch_sha256": "19b5f80930e5cfe94fc9ee46d540b76495443cd3f4f01b90ba8af4c56ff5b2bd",
+    "independent_v2_review_sha256": "d480914d65085ae2e3dacc18a933ba650703741458902bb9cdadfa14c40ea349",
+    "original_v1_finding": "Dummy current-serving swap after request persistence reached transport; preserved finding28d39d7b. V2 final predispatch-only check blocks transport and preserves claim/barrier; APPLIED reconciliation still admits target serving.",
+    "source_scope": [
+      "One distinct frontend restore action in existing controller/adapter, exact applied promotion root and original physical journal, original immutable future-promotion target proof, exact trusted current target/backend compatibility, permanent claim and UNKNOWN status-only reconciliation. No legacy receipt retrofit or promotion replay.",
+      "Pure retained startup projection callback; JSON-frozen exact phase binding/original capture timestamp/deep-copy returns; no capture callable, database/provider channel or authority. Stale proof fails without reread.",
+      "Explicit CI exercises both new dummy modules; refresh only two current Reader612 controller dependency hashes. Original Reader612 role/source/artifact/runtime/execution_authorized=false/native_qualified=false preserved."
+    ],
+    "new_dummy_tests": 22,
+    "existing_adapter_compatibility_tests": 102,
+    "actual_native_frontend_restore": "UNPERFORMED",
+    "actual_startup_capture_wiring": "UNPERFORMED_REQUIRES_SEPARATELY_AUTHORIZED_PHASE_CONTEXT",
+    "limits": "No purchase pause, provider write, snapshot/counter expansion, new keys/audio/compute or paid sessions. Actual phase/cap approval stays separate.",
+    "next_exact_prompt": "Independently review composed CI/dependency integration, run full focused suites and fresh exact-head CI/reviews, then expected-head source merge/tree equality. Reuse unchanged helper receipt by component identity; rebind merged operator without relabeling original producer. Native phase evidence/approval remains mandatory."
   }
 }
