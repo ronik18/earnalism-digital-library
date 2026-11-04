@@ -1,3 +1,4 @@
+import html
 from dotenv import load_dotenv
 from pathlib import Path
 try:
@@ -166,6 +167,7 @@ try:
         canonical_segment_chapter_title,
         canonicalize_segment_manifest_chapters,
         canonical_page_records,
+        _content_blocks as _canonical_reader_content_blocks,
         public_text_page,
         segment_manifest,
     )
@@ -180,6 +182,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         canonical_segment_chapter_title,
         canonicalize_segment_manifest_chapters,
         canonical_page_records,
+        _content_blocks as _canonical_reader_content_blocks,
         public_text_page,
         segment_manifest,
     )
@@ -933,7 +936,7 @@ async def _expensive_job_slot(job_type: str):
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v17"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
-PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "canonical-protected-package-v2"
+PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "canonical-preview-bounded-v3"
 READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
@@ -7951,7 +7954,8 @@ async def get_book_chapter(slug: str, chapter_id: str):
     cache_key = _public_cache_key("book_chapter", slug=slug, chapter_id=chapter_id)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
-        return cached
+        # Retained pre-fix preview caches must never restore chapter bodies.
+        return {**cached, "content": ""}
     if not _is_controlled_public_slug(slug):
         raise HTTPException(status_code=404, detail="Book not found")
     book_meta, _source = await _find_public_book_candidate(slug, READER_ACCESS_PROJECTION, include_artifact_content=False)
@@ -7964,19 +7968,10 @@ async def get_book_chapter(slug: str, chapter_id: str):
     if not target_meta:
         raise HTTPException(status_code=404, detail="Chapter not found")
 
+    # Catalog endpoints are metadata only. Explicit legacy preview flags do
+    # not authorize a whole chapter; all text uses the bounded page endpoint.
     chapter = dict(target_meta)
     chapter["content"] = ""
-    if _is_free_preview_chapter(book_meta, chapter_id):
-        content_doc = await db.books.find_one(
-            {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
-            CHAPTER_CONTENT_PROJECTION,
-        )
-        target = ((content_doc or {}).get("chapters") or [{}])[0]
-        chapter["content"] = target.get("content", "")
-        if not chapter["content"]:
-            artifact = _controlled_artifact_doc(slug, include_content=True) or {}
-            target = next((c for c in artifact.get("chapters") or [] if c.get("id") == chapter_id), {})
-            chapter["content"] = target.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
     await _public_cache_set(cache_key, chapter)
@@ -12478,6 +12473,25 @@ async def reading_pass_book_manifest(slug: str, response: Response):
     }
 
 
+# Match the existing canonical ingestion target while separately bounding
+# markup bytes. These are server payload limits, not viewport page estimates.
+PUBLIC_READER_SEGMENT_TEXT_LIMIT = 3_200
+PUBLIC_READER_SEGMENT_HTML_BYTES_LIMIT = 65_536
+
+
+def _bounded_public_reader_segment(content: str) -> bool:
+    if not isinstance(content, str) or len(content.encode("utf-8")) > PUBLIC_READER_SEGMENT_HTML_BYTES_LIMIT:
+        return False
+    blocks = _canonical_reader_content_blocks(content)
+    if "\n".join(blocks).strip() == content:
+        # Ingestion sums block text before inserting serialization newlines.
+        # Exclude only those proven separators, never normalize legacy bodies.
+        text_size = sum(len(html.unescape(re.sub(r"<[^>]+>", "", block))) for block in blocks)
+    else:
+        text_size = len(html.unescape(re.sub(r"<[^>]+>", "", content)))
+    return text_size <= PUBLIC_READER_SEGMENT_TEXT_LIMIT
+
+
 @api.get("/reader/book/{slug}/pages/{page_index}")
 @api.get("/reading-pass/books/{slug}/pages/{page_index}")
 async def reading_pass_book_page(
@@ -12502,7 +12516,11 @@ async def reading_pass_book_page(
         raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
     manifest = await _stored_reader_segment_manifest(slug, manifest["segmentation_version"])
     preview = public_text_page(page_index)
-    if not preview:
+    session_id, lease_token = _reading_pass_lease_headers(request)
+    # A visual preview can end inside canonical unit 1, 2 or 3. Full delivery
+    # of any such unit must use the same publication-bound lease as later units.
+    protected_delivery = not preview or bool(session_id or lease_token)
+    if protected_delivery:
         if not principal or principal.get("role") != "user":
             raise HTTPException(status_code=401, detail={"code": "AUTH_REQUIRED", "message": "Sign in to continue beyond the free preview."})
         if principal.get("status") == "blocked":
@@ -12562,6 +12580,14 @@ async def reading_pass_book_page(
     )
     if not segment:
         raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Page not found."})
+    if not protected_delivery and not _bounded_public_reader_segment(segment.get("content", "")):
+        # Never clip a retained immutable segment under its original hash. An
+        # oversized legacy block is unavailable as a preview until ordinary
+        # Reading Pass authorization succeeds, including for short editions.
+        raise HTTPException(status_code=403, detail={
+            "code": "PREVIEW_REQUIRES_PASS",
+            "message": "This edition's preview cannot be shown safely. Use a valid Reading Pass to continue.",
+        })
 
     return {
         "book_slug": slug,
@@ -12587,7 +12613,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
     scope: dict[str, Any] = {}
     if content_type == "text":
         page_index = int(payload.canonical_page_index or 0)
-        if page_index <= PUBLIC_TEXT_PAGE_COUNT:
+        if page_index <= PUBLIC_TEXT_PAGE_COUNT and not payload.require_protected_text:
             return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
         # Retained segment records are not Reader authority.  Resolve the
         # current controlled-publication decision before touching a manifest,
@@ -13444,6 +13470,13 @@ async def reader_get_chapter(
                 "manifest_url": f"/api/reading-pass/books/{slug}/manifest",
             },
         )
+
+    if not READING_PASS_V2_ENABLED and not is_admin_preview:
+        # Feature-off is an unavailable safe state, not permission to revive
+        # legacy full-chapter delivery using only a wallet balance.
+        return {"locked": True, "reason": "AUTH_REQUIRED" if not principal else "PASS_REQUIRED",
+                "message": "Canonical Reading Pass access is required.",
+                "chapter": {"id": target_meta["id"], "title": target_meta.get("title", ""), "order": target_meta.get("order", 0)}}
 
     meta = {
         "id": target_meta["id"],

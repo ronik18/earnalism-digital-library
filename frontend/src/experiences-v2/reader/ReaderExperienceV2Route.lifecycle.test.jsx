@@ -976,3 +976,167 @@ test.each(['other-book','identity'])('preparation cooldown cannot follow a diffe
   expect(container.querySelector('[data-testid="reader-authorize-chapter"]').disabled).toBe(false);
   expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
 });
+
+// A bounded canonical unit can contain many measured screen pages. The public
+// quota is book-wide and must not reset on transport/chapter/URL transitions.
+function manyVisualPreview({ short = false, chapters = false } = {}) {
+  const total = short ? 3 : 7;
+  const content = n => Array.from({ length: 8 }, (_, i) => `<p>Unit ${n} visual fragment ${i + 1}.</p>`).join('');
+  const hash = n => createHash('sha256').update(content(n)).digest('hex');
+  const chapter = n => chapters ? `c${n}` : 'c1';
+  const value = manifest();
+  value.access.reading_pass.total_pages = total;
+  value.canonical_pages.page_count = total;
+  value.canonical_pages.pages = Array.from({ length: total }, (_, i) => ({ page_number: i + 1, page_id: `many:${i + 1}`, chapter_id: chapter(i + 1), content_hash: hash(i + 1) }));
+  value.chapters = chapters ? Array.from({ length: total }, (_, i) => ({ id: chapter(i + 1), title: `Chapter ${i + 1}` })) : [{ id: 'c1', title: 'Chapter one' }];
+  userApi.get.mockResolvedValue({ data: value });
+  pass.getReadingPassPage.mockImplementation(async (slug, n) => ({ ...page(n, slug), chapter_id: chapter(n), chapter_title: chapters ? `Chapter ${n}` : 'Chapter one', total_pages: total, content: content(n), content_sha256: hash(n) }));
+}
+const visibleReading = () => container.querySelector('[data-testid="reader-reading-text"]')?.textContent || '';
+
+
+test('P0: three bounded public units cannot expose visual page 4 or a 24-page selector', async () => {
+  mockUser = null; manyVisualPreview({ short: true });
+  await mount('/reader/test-book?p=1');
+  expect(container.querySelector('select[aria-label="Go to page"]').options).toHaveLength(3);
+  expect(visibleReading()).toContain('Unit 1 visual fragment 1.');
+  await click('Next page'); await click('Next page');
+  expect(visibleReading()).toContain('Unit 1 visual fragment 3.');
+  await click('Use Reading Time to Continue');
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('/login?next=');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+  expect(pass.getReadingPassPage.mock.calls.map(([, index]) => index)).toEqual([1, 2, 3]);
+});
+
+
+test.each(['?p=1&a=end', '?p=2', '?p=3&a=999999', '?p=2&a=media:99&r=wrong', '?p=1&a=node:99&r=wrong'])(
+  'P0: direct or history source anchor %s cannot reveal protected preview fragments', async query => {
+    mockUser = null; manyVisualPreview({ short: true, chapters: true });
+    await mount('/reader/test-book?p=1');
+    await act(async () => navigate(`/reader/test-book${query}`));
+    expect(visibleReading()).toBe('');
+    expect(container.querySelector('[data-testid="reader-reading-text"]')).toBeNull();
+    expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+    expect(pass.getReadingPassPage.mock.calls.every(([, index]) => index <= 3)).toBe(true);
+  },
+);
+
+
+test('P0: a TOC jump into another preview unit does not restart the three-screen allowance', async () => {
+  mockUser = null; manyVisualPreview({ short: true, chapters: true });
+  await mount('/reader/test-book?p=1');
+  const toc = container.querySelector('select[aria-label="Contents"]');
+  await act(async () => { toc.value = 'chapter:2'; toc.dispatchEvent(new Event('change', { bubbles: true })); });
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('/login?next=');
+  expect(visibleReading()).not.toContain('Unit 2');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+
+test('P0: signed-in readers without a valid pass cannot continue inside canonical unit one', async () => {
+  mockUser = { id: 'test-reader', reading_seconds_balance: 0 };
+  manyVisualPreview({ short: true });
+  pass.startReadingPassSession.mockRejectedValue({ response: { status: 403, data: { detail: { code: 'BALANCE_EXHAUSTED', message: 'A valid Reading Pass is required.' } } } });
+  await mount('/reader/test-book?p=1&a=end');
+  expect(visibleReading()).toBe('');
+  await click('Continue with Reading Pass');
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: 'test-book', pageIndex: 3, requireProtectedText: true });
+  expect(visibleReading()).toBe('');
+  expect(text()).toContain('A valid Reading Pass is required.');
+});
+
+
+test('P0: a valid short-book continuation uses a real lease and becomes readable inside unit one', async () => {
+  manyVisualPreview({ short: true }); preparationContract();
+  await mount('/reader/test-book?p=1&a=120');
+  expect(visibleReading()).toBe('');
+  await click('Continue with Reading Pass');
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith(expect.objectContaining({ pageIndex: 1, requireProtectedText: true }));
+  expect(visibleReading()).toMatch(/Unit 1 visual fragment [4-8]/);
+  expect(pass.getReadingPassPage.mock.calls.slice(3).every(([, , lease]) => lease?.sessionId === 'session-1')).toBe(true);
+  expect(pass.renewReadingPassLease.mock.calls.filter(([value]) => value.textPhase === 'readable')).toHaveLength(1);
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: 'readable' });
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: 'readable' });
+  pass.renewReadingPassLease.mockRejectedValue({ response: { status: 403, data: { detail: { code: 'LEASE_EXPIRED', message: 'Expired pass.' } } } });
+  await tick(10000);
+  expect(visibleReading()).toBe('');
+  expect(container.querySelector('[data-testid="reader-reading-text"]')).toBeNull();
+});
+
+
+test('P0: logout clears a leased remainder inside an otherwise public canonical unit', async () => {
+  manyVisualPreview({ short: true });
+  await mount('/reader/test-book?p=1&a=120'); await click('Continue with Reading Pass');
+  expect(visibleReading()).toContain('Unit 1 visual fragment');
+  mockUser = null;
+  await mount('/reader/test-book?p=1&a=120');
+  expect(visibleReading()).toBe('');
+  expect(container.querySelector('[data-testid="reader-reading-text"]')).toBeNull();
+});
+
+
+test('P0: an expired short-book lease discards a delayed full-unit response', async () => {
+  manyVisualPreview({ short: true });
+  await mount('/reader/test-book?p=1&a=120');
+  const delayed = deferred();
+  const original = pass.getReadingPassPage.getMockImplementation();
+  pass.getReadingPassPage.mockImplementation((slug, n, lease, options) => lease && n === 1 ? delayed.promise : original(slug, n, lease, options));
+  pass.renewReadingPassLease.mockRejectedValue(new Error('Synthetic offline transport'));
+  await click('Continue with Reading Pass');
+  expect(visibleReading()).toBe('');
+  await tick(20001);
+  await act(async () => delayed.resolve(await original('test-book', 1)));
+  expect(visibleReading()).toBe('');
+  expect(container.querySelector('[data-testid="reader-reading-text"]')).toBeNull();
+  expect(pass.endReadingPassSession).toHaveBeenCalled();
+});
+
+
+test('P0: oversized public units offer explicit authorized continuation without retrying public body access', async () => {
+  manyVisualPreview({ short: true });
+  const original = pass.getReadingPassPage.getMockImplementation();
+  pass.getReadingPassPage.mockImplementation((slug, n, lease, options) => !lease
+    ? Promise.reject({ response: { status: 403, data: { detail: { code: 'PREVIEW_REQUIRES_PASS', message: 'This preview cannot be shown safely.' } } } })
+    : original(slug, n, lease, options));
+  preparationContract();
+  await mount('/reader/test-book?p=1');
+  expect(visibleReading()).toBe('');
+  await click('Continue with Reading Pass');
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: 'test-book', pageIndex: 1, requireProtectedText: true });
+  expect(visibleReading()).toContain('Unit 1 visual fragment 1.');
+  expect(pass.getReadingPassPage.mock.calls.slice(3).every(([, , lease]) => Boolean(lease?.sessionId))).toBe(true);
+  // The actual first three visual pages remain a free preview; choosing a
+  // protected delivery path must not bill merely for being signed in.
+  expect(pass.renewReadingPassLease.mock.calls.every(([value]) => value.textPhase !== 'readable')).toBe(true);
+});
+
+
+test('P0: ordinary leased chapter navigation back to the global free third page stays inactive', async () => {
+  const value = manifest();
+  value.canonical_pages.pages = value.canonical_pages.pages.map(row => ({ ...row, chapter_id: row.page_number <= 2 ? 'c1' : 'c2' }));
+  value.chapters = [{ id: 'c1', title: 'Chapter one' }, { id: 'c2', title: 'Chapter two' }];
+  userApi.get.mockResolvedValue({ data: value });
+  pass.getReadingPassPage.mockImplementation(async (slug, n) => ({ ...page(n, slug), chapter_id: n <= 2 ? 'c1' : 'c2', chapter_title: n <= 2 ? 'Chapter one' : 'Chapter two' }));
+  await openProtected();
+  await click('Previous page');
+  expect(visibleReading()).toContain('Page 3 manuscript.');
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls[0][0].active).toBe(false);
+});
+
+
+test('P0: explicit continuation retains the measured global preview cutoff across chapter windows', async () => {
+  manyVisualPreview({ short: true, chapters: true }); preparationContract();
+  await mount('/reader/test-book?p=2&a=120');
+  expect(visibleReading()).toBe('');
+  await click('Continue with Reading Pass');
+  expect(visibleReading()).toMatch(/Unit 2 visual fragment [4-8]/);
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0]).toMatchObject({ active: true, textPhase: 'readable' });
+  // A changed layout lacks a trustworthy full-book prefix measurement. It
+  // must stop activity rather than guessing that a public source is billable.
+  jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(500);
+  await act(async () => window.dispatchEvent(new Event('resize')));
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.at(-1)[0].active).toBe(false);
+});

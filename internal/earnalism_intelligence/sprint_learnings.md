@@ -3032,3 +3032,19 @@ A pre-test historical fetch timeout is not an application failure. Bound the sin
 
 Do not transfer unrelated historical media to validate two pinned JSON files. Fetch exact commit/tree metadata and required blob IDs in two one-attempt batches, preserving all verification. Keep full containment-source fetch separate. Actual GitHub object admission is not a hosted regression or recovery PASS.
 Filtered fetch persists remote settings: restore their exact prior presence/values even on failure so later full-source recovery admission remains unchanged.
+
+### P0 Reader preview boundary — 4 November 2026
+
+Canonical transport units and responsive pages are different. Bound public source payloads, enforce one book-wide visual preview across every current/legacy navigation entry, and keep chapter catalog caches text-free. Early protected continuation must request a real publication-bound lease; the flag is no grant. Preserve free-prefix nonbilling through chapter/layout changes. Local source containment is not a deployed remediation claim; exact-head gates and actual release authority remain separate.
+
+### P0 Reader CI follow-up — 4 November 2026
+
+Recover missing canonical files from exact immutable source without resetting or replacing preserved work. For the demonstrated historical-fetch timeouts, the earlier full-containment download instruction is superseded for the unit gate by commit/tree plus the required server blob; immutable Reader612 qualification still retains every backend and required legal/ignore byte. Populate a fresh no-checkout sparse index explicitly before qualification, retaining original timeouts and fail-closed checks.
+
+A layout fixture cannot demand unrestricted anonymous traversal after the public preview is bounded. Retain separate five-viewport guest denial cases and use an ordinary publication-bound dummy lease for full source/BR/geometry/navigation checks. A failed browser artifact must still block dependent recovery evidence; no older fallback or automatic failed-run replay. These are source checks, not deployed remediation or current-provider recovery proof.
+
+### Canonical preview accounting and isolated API origins — 4 November 2026
+
+A canonical ingestion target sums HTML blocks before joining them with serialization newlines. Match that budget only after proving an exact canonical serialization roundtrip; do not normalize arbitrary legacy whitespace, increase the cap, clip content or alter hashes. The 52-title measurement separates join overhead from the genuine oversized Jekyll page, whose public denial and ordinary protected byte/hash delivery remain intact.
+
+Production and review builds can route APIs differently. A loopback browser fixture must mock approved loopback API origins across configured ports without forwarding requests; only same-BASE assets may continue, and foreign origins remain blocked. Report measured interception counts separately from declared policy, and test the actual CI-shaped build.

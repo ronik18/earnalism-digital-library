@@ -76,7 +76,7 @@ export async function getReadingPassPage(bookSlug, pageIndex, lease = null, { si
   return response.data;
 }
 
-export async function startReadingPassSession({ bookSlug, pageIndex, transfer = false }) {
+export async function startReadingPassSession({ bookSlug, pageIndex, transfer = false, requireProtectedText = false }) {
   const response = await axios.post(
     `${API}/reading-pass/sessions/${transfer ? 'transfer' : 'start'}`,
     {
@@ -85,6 +85,7 @@ export async function startReadingPassSession({ bookSlug, pageIndex, transfer = 
       content_type: 'text',
       content_id: bookSlug,
       canonical_page_index: Number(pageIndex),
+      ...(requireProtectedText ? { require_protected_text: true } : {}),
     },
     { headers: authHeaders(), withCredentials: true, timeout: REQUEST_TIMEOUT_MS },
   );

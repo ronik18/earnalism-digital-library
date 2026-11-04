@@ -16,15 +16,18 @@ export function chapterWindowPlan(manifest, pageIndex, protectedAccess) {
   if (chapterIndexes.some((index, n) => n && index !== chapterIndexes[n - 1] + 1)) throw new Error('The chapter order is inconsistent.');
   const limit = Number(manifest.canonical_pages.preview_policy?.public_limit || 3);
   if (!Number.isInteger(limit) || limit < 1 || limit > 3) throw new Error('The preview policy cannot be verified.');
-  const selected = chapterRows.filter(row => protectedAccess || Number(row.page_number || row.page_index) <= limit);
+  // Preview is one book-wide source window. Resetting its visual quota at
+  // each chapter or canonical transport unit exposes more than three pages.
+  const selected = protectedAccess ? chapterRows : rows.filter(row => Number(row.page_number || row.page_index) <= limit);
   if (!selected.some(row => Number(row.page_number || row.page_index) === pageIndex)) throw new Error('This source position requires reading authorization.');
   const first = Number(selected[0].page_number || selected[0].page_index);
   const last = Number(selected[selected.length - 1].page_number || selected[selected.length - 1].page_index);
-  const chapter = (manifest.chapters || manifest.book?.chapters || []).find(item => (item.id || item.chapter_id) === current.chapter_id);
-  return { rows: selected, previewLimit: limit, chapterId: current.chapter_id, chapterTitle: chapter?.title || chapter?.chapter_title || '', first, last,
+  const windowChapterId = protectedAccess ? current.chapter_id : selected[0].chapter_id;
+  const chapter = (manifest.chapters || manifest.book?.chapters || []).find(item => (item.id || item.chapter_id) === windowChapterId);
+  return { rows: selected, previewLimit: limit, chapterId: windowChapterId, chapterTitle: chapter?.title || chapter?.chapter_title || '', first, last,
     previous: first > 1 ? first - 1 : null, next: last < rows.length ? last + 1 : null,
     revision: manifest.canonical_pages.content_revision || '',
-    key: JSON.stringify([current.chapter_id, protectedAccess ? 'leased' : 'preview', selected.map(row => [row.page_id, row.content_hash])]) };
+    key: JSON.stringify([windowChapterId, protectedAccess ? 'leased' : 'preview', selected.map(row => [row.page_id, row.content_hash])]) };
 }
 
 // Reduce long chapter preparation latency without extending the nonbillable
@@ -53,7 +56,7 @@ export async function fetchChapterWindow({ plan, slug, totalPages, fetchChunk, s
       networkMs += performance.now() - networkStarted;
       check();
       if (value.book_slug !== slug || value.page_index !== index || value.total_pages !== totalPages
-        || value.chapter_id !== plan.chapterId || (plan.chapterTitle && value.chapter_title !== plan.chapterTitle) || typeof value.content !== 'string' || !value.content.trim()
+        || value.chapter_id !== (expected.chapter_id || plan.chapterId) || ((expected.chapter_id || plan.chapterId) === plan.chapterId && plan.chapterTitle && value.chapter_title !== plan.chapterTitle) || typeof value.content !== 'string' || !value.content.trim()
         || value.is_preview !== (index <= plan.previewLimit)
         || (expected.content_hash && expected.content_hash !== value.content_sha256)
         || (plan.revision && value.manifest_version !== plan.revision)) throw new Error('A chapter chunk does not match the selected edition.');
