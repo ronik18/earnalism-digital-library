@@ -14409,5 +14409,25 @@
     "recovery_limit": "Guidance is actionable recovery copy, not universal tab migration, cached-content revocation, Reader-preservation or qualified cutover/recovery PASS.",
     "no_provider_actions": true,
     "next_exact_prompt": "Review composed proxy/CI integration, run focused existing proxy checks and required exact-head CI/reviews, then expected-head merge/tree equality. Rebind exact successor frontend/proxy source; keep deployment/capture HOLD until genuine compatible rollout/recovery gates pass."
+  },
+  "first_guard_pair_native_budget_20261105": {
+    "at": "2026-11-05T00:19:24.786302+05:30",
+    "event": "FIRST_GUARD_PAIR_SOURCE_AND_IMMUTABLE_NATIVE_BUDGET",
+    "base": "b9f4b54aba8a9569aef5c27a596ea1d7aa0b7fba",
+    "scope": "SOURCE_ONLY_NO_PROVIDER_EXECUTION",
+    "summary": "Private STAGE_ONLY artifact qualification is separate from backend component and final Reader/Listener recovery. Preserve semantic and physical UNKNOWN barriers; finalize only the same original operation after exact paired proof. Scope consumption begins at immutable baseline admission, counts failed/unknown intents, binds CLOSED and parent frontend identities, and cannot reset by source/path/time. Include new pure helper in transitive controller closure.",
+    "fresh_tests": {
+      "stage": 102,
+      "composed_candidate": 140,
+      "independent_binding_finalization": 6,
+      "independent_full_dispatch_budget_negatives": 5,
+      "permanent_regressions_corrected_pass_original_fail": 4
+    },
+    "native_qualification": false,
+    "execution_authorized": false,
+    "actual_owner_migration_and_native_context": "NOT_QUALIFIED_BY_SOURCE_TESTS",
+    "preservation": "Historical Git stores, uncommitted originals, accepted India/US rights, audio/covers/entitlements and original physical journal preserved. No new allowance.",
+    "bicharak": "Retained fidelity/sync hold and consumed resource limits remain; source recovery does not authorize new audio/inference or mark timing PASS.",
+    "next_exact_prompt": "Review composed diff and transitive pins, run focused source tests plus all applicable exact-head CI and published/protected reviews; match-head merge/tree equality only. Native execution requires actual current independent gates."
   }
 }

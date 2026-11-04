@@ -51,6 +51,8 @@ class Tests(unittest.TestCase):
  def test_final_backend_controller_rejects_absent_bootstrap(self):
   class Inert:
    def __init__(self,p):self.journal=p
+   def _pending_admission(self,*args,**kwargs):pass
+   def _native_budget(self,*args,**kwargs):pass
    def perform(self,*x):raise AssertionError('must not reach adapter')
   with tempfile.TemporaryDirectory() as d:
    with self.assertRaises(ValueError):a.ReleaseController(Inert(Path(d))).perform('release_backend',{}, {})
