@@ -104,7 +104,10 @@ def verify_archive(archive, report, root, modes):
             need(name in expected, 'unexpected archive file')
             row = expected[name]
             need(member.size == row['bytes'], 'archive size differs')
-            need(member.mode == modes[name]['mode'], 'archive Git mode differs')
+            need(member.mode >= 0 and member.mode & ~0o107777 == 0, 'archive mode has unknown bits')
+            need(stat.S_IFMT(member.mode) in (0, stat.S_IFREG), 'archive mode conflicts with regular type')
+            permissions = stat.S_IMODE(member.mode)
+            need(permissions == modes[name]['mode'], f'archive Git mode differs: {name}: raw={member.mode:o}, permissions={permissions:o}')
             total += member.size
             need(total <= maximum, 'archive expanded size exceeds bound')
             f = tar.extractfile(member)
@@ -113,7 +116,7 @@ def verify_archive(archive, report, root, modes):
             while block := f.read(1024 * 1024):
                 h.update(block)
             need(h.hexdigest() == row['sha256'], 'archive content differs')
-            regular.append({'path': name, 'bytes': member.size, 'sha256': h.hexdigest(), 'mode': member.mode})
+            regular.append({'path': name, 'bytes': member.size, 'sha256': h.hexdigest(), 'mode': permissions})
     need({x['path'] for x in regular} == set(expected), 'missing archive member')
     regular.sort(key=lambda x: x['path'])
     content_rows = [{k: row[k] for k in ('path', 'bytes', 'sha256')} for row in regular]

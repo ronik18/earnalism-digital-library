@@ -14356,5 +14356,25 @@
     "actual_build_helper_native_status": "UNPERFORMED_PENDING_FRESH_CI_NO_PROVIDER_AUTHORITY",
     "no_deployment_provider_audio_purchase_actions": true,
     "next_exact_prompt": "Run focused source/controller compatibility tests, push reviewed successor with auto-deploy off, then require actual locked Cargo/helper/archive execution and all exact-head gates before expected-head merge/tree equality."
+  },
+  "actual_upstream_tar_mode_repair_20261104": {
+    "at": "2026-11-04T10:09:07.737891+00:00",
+    "event": "ACTUAL_UPSTREAM_TAR_MODE_INTERPRETATION_REPAIR",
+    "failed_head": "fe571b4eeb19ece3f2943210fc4dec730c56c7a1",
+    "failed_run": 41810304257,
+    "failed_job": 126507600770,
+    "actual_locked_release_build": "PASS_17.98s",
+    "artifact": 13310424971,
+    "artifact_zip_sha256": "050c37d67dcfe7387d721f2135b277243630ae5ab042ca09fb2374eae4da599d",
+    "actual_raw_modes": {
+      "0100644": 2163,
+      "0100755": 1
+    },
+    "correction": "Regular typeflag still mandatory; admit raw mode type bits only absent or S_IFREG, reject unknown bits and require exact all Git permission bits. Canonical member mode remains420/493. Upstream helper unchanged.",
+    "independent_review_sha256": "a59099abbf978a3522aac06a3ea156d2f47a37df5dc943a051575570cc8c6d3d",
+    "local_tests": 24,
+    "actual_retained_archive_local_replay": "2164members bytes/sizes/permissions match; not retroactive CI or native qualification",
+    "next_exact_prompt": "Run focused compatibility tests and fresh ordinary CI; require actual helper receipt and all applicable exact-head checks before expected-head merge/tree equality. No provider changes.",
+    "no_deployment_provider_audio_purchase_actions": true
   }
 }

@@ -3116,3 +3116,7 @@ Negative test hardcoded macOS/private/tmp; Ubuntu lacks/private, so parent.resol
 ### Actual Cargo lock normalization source pin — 4 November 2026
 
 Cargo admission differs from raw upstream closure admission. Reuse the actual reviewed 84-package CI lock, not an unlocked-build workaround. Preserve retained coordinates/checksums, six direct pins, semantic edge subsets and producer context; forbid future resurrection of pruned packages. Locked compilation and helper execution remain pending separate actual CI evidence.
+
+### Actual upstream tar mode semantics — 4 November 2026
+
+The byte-identical helper emits S_IFREG in regular-header mode fields. Compare exact Git permission bits only after rejecting conflicting/unknown type bits and unsafe permissions; keep canonical mode digests unchanged. Test checksum-valid manually encoded raw headers because TarInfo writers mask type bits. Full retained-archive replay is evidence, not retroactive CI/native PASS.

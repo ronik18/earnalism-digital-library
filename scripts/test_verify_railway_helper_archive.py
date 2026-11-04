@@ -77,6 +77,38 @@ class ArchiveVerification(unittest.TestCase):
                 self.write(data=data)
                 with self.assertRaises(ValueError): self.check()
 
+    def write_raw_mode(self, mode):
+        import gzip
+        item = tarfile.TarInfo('./backend/start_prod.sh')
+        item.size = len(self.data)
+        header = bytearray(item.tobuf())
+        header[100:108] = f'{mode:07o}\0'.encode()
+        header[148:156] = b' ' * 8
+        header[148:156] = f'{sum(header):06o}\0 '.encode()
+        self.archive.write_bytes(gzip.compress(header + self.data + b'\0' * ((-len(self.data)) % 512) + b'\0' * 1024))
+        with tarfile.open(self.archive) as tar:
+            member = tar.next()
+            self.assertEqual(member.mode, mode)
+            self.assertTrue(member.isfile())
+
+    def test_native_regular_type_bits_normalize_to_permission_manifest(self):
+        for permissions in (0o644, 0o755):
+            with self.subTest(permissions=permissions):
+                self.file.chmod(permissions)
+                self.modes['backend/start_prod.sh']['mode'] = permissions
+                self.write_raw_mode(0o100000 | permissions)
+                native = self.check()
+                self.assertEqual(native['members'][0]['mode'], permissions)
+                self.write(mode=permissions)
+                self.assertEqual(native['archive_member_modes_sha256'], self.check()['archive_member_modes_sha256'])
+
+    def test_conflicting_or_unsafe_raw_modes_rejected(self):
+        for mode in (0o40755, 0o120755, 0o10755, 0o20755, 0o140755, 0o104755, 0o102755, 0o101755, 0o100775, 0o100777, 0o200755):
+            with self.subTest(mode=oct(mode)):
+                self.write_raw_mode(mode)
+                with self.assertRaisesRegex(ValueError, 'mode'):
+                    self.check()
+
     def test_archive_mode_change(self):
         self.write(mode=0o644)
         with self.assertRaisesRegex(ValueError, 'mode'): self.check()
