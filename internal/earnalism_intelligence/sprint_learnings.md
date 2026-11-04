@@ -3067,3 +3067,8 @@ PR #641 regression correctly rejected the Reader612 preparation record after fou
 ## 4 November 2026 — private journal fixtures on shared temporary storage
 
 The hosted restore tests correctly failed when their journal parent was Linux shared `/tmp`. Nest the journal inside its private temporary container. Keep production custody checks intact; a new negative test makes the owned parent world writable and verifies rejection before transport. The failure was reproduced locally with a shared TMPDIR. Preserve every existing restore test, permanent claim and UNKNOWN behavior. The earlier887backend/29SredniMongo passes do not make the failed full run pass and cannot certify the next head or native recovery.
+
+
+## 4 November 2026 — Quiet Folio source integration
+
+Compact secondary controls into accessible sheets and fragment oversized prose paragraphs by measured fit; preserve source ordering, explicit breaks and poetry. Reuse exact scoped independent browser evidence but require new exact-head CI/published reviews. UI source integration never establishes runtime recovery or production availability.

@@ -579,5 +579,24 @@
     "historical_pilot_and_attempt_state_preserved": true,
     "paid_env_gates_missing_in_this_runtime": true,
     "broad_scale_started": false
+  },
+  "quiet_folio_reader_source_20261104": {
+    "at": "2026-11-04T06:42:06.320604+00:00",
+    "event": "QUIET_FOLIO_READER_V5_SOURCE_INTEGRATION",
+    "source_base": "de9729ecebe0cf2f9e644a8d5bc6607fecaf10f4",
+    "status": "SOURCE_PREPARED_FRESH_CI_AND_REVIEWS_PENDING",
+    "candidate_manifest_sha256": "64ccae97fe29c8712f2b337ee25d3bff7937ed6d1d5d1b86b91dcd3e1aeaa644",
+    "files": 11,
+    "all_preimages_and_candidate_hashes_match": true,
+    "production_surface_sha256": "8a845f12bccb674ff25ec54f40e656a8a6b4637b7562f7a5637a3712ea1750df",
+    "preserved": [
+      "Global three visual-page public preview",
+      "Canonical text, anchors, protected lease and billing semantics",
+      "Live audio and covers",
+      "Separate immutable CLOSED recovery source and original Sredni limits"
+    ],
+    "learning": "Compact secondary controls into accessible sheets and fragment oversized prose paragraphs by measured fit; preserve source ordering, explicit breaks and poetry. Reuse exact scoped independent browser evidence but require new exact-head CI/published reviews. UI source integration never establishes runtime recovery or production availability.",
+    "no_production_provider_audio_or_purchase_actions": true,
+    "next_exact_prompt": "Run focused Reader tests and independent composed-source review; require all applicable exact-head CI, browser and final published reviews before expected-head merge and tree equality. No deployment."
   }
 }
