@@ -367,5 +367,43 @@
     "actual_probe": "GitHub accepts exact filtered15b tree and2reachableblob IDs; composed scratch hydration PASS1392KiB. Local Bash3 mapfile failure before transfer corrected with portable read loop. Not hosted regression PASS.",
     "status": "SOURCE_ONLY_FRESH_ALL_CI_AND_ACTUAL29MONGO_REQUIRED",
     "filter_side_effect_control": "Restore exact prior presence/values of Git remote promisor/filter config on success/failure via EXIT trap; later full containment/Reader612 transfers unchanged."
+  },
+  "guarded_current_source_successor_20261104": {
+    "at": "2026-11-04T03:32:44.518652+00:00",
+    "event": "CURRENT_GUARDED_RECOVERY_AND_PAIRED_EXPORT_SOURCE_SUCCESSOR",
+    "source_base": "193c287d67fe0a3404adc680eb802bad9bd452a5",
+    "p0_source_merge": {
+      "pr": 640,
+      "reviewed_head": "342995ec473a6b2eca17d93e6bc7d39139e44a92",
+      "tree": "fcce2bb711c12ec1ab4ed8bcd68e103eeb90c372",
+      "tree_equality": true,
+      "all_applicable_ci_and_published_reviews": "PASS",
+      "isolated_sredni_mongo_pass": 29,
+      "isolated_sredni_mongo_skip": 0
+    },
+    "status": "SOURCE_PREPARATION_ONLY_PENDING_EXACT_HISTORY_AND_FRESH_CI",
+    "independent_private_review_sha256": "60a6ca81ea4916968ff38e9ec253aec795643082f5acbb20f998a27bb3b16210",
+    "source_roles": "One coherent A (normal engineering), B (exact three-path CLOSED source), C (normal source with actual immutable B pin). Preserve B as an ancestor; source roles do not authorize deployment or a purchase pause.",
+    "controls": [
+      "Bind the clean normal controller separately from the exact committed CLOSED export; use only the qualified export input and working directory.",
+      "Recheck full export seal, actual config, approval and startup evidence before dispatch; preserve permanent intent and UNKNOWN status-only reconciliation.",
+      "Anchor restore journal reads and writes to original no-follow directory descriptors; copied or replaced journal paths cannot reset custody.",
+      "Verify consumed helper bytes against committed Git before executing immutable helper code; hidden index flags cannot hide changed executable helpers."
+    ],
+    "limits": {
+      "snapshots_used": 2,
+      "snapshots_max": 3,
+      "policy_writes_used": 1,
+      "policy_writes_max": 1,
+      "new_purchase_pause": "NOT_APPROVED_NOT_EXECUTED",
+      "grant": "One total grant; both 60000000 billable microseconds and 60 posted seconds; 3 starts; original 900-second clock. No grant or playback performed."
+    },
+    "remaining": [
+      "Exact application A/B/C history and required CI object admission; all fresh exact-head CI and independent/published reviews.",
+      "Actual native archive, source, config, startup and guarded recovery proof; original Reader612 CLOSED image is not a compatible current recovery.",
+      "Complete execution scope decision where genuinely required, then actual bounded member route/accounting/settle-close acceptance by the existing release owner."
+    ],
+    "no_provider_customer_audio_or_purchase_actions": true,
+    "next_exact_prompt": "Qualify the committed A/B/C source pair and mandatory tests. Require exact-head CI/reviews before a match-head source merge. Do not dispatch or infer native recovery, pause authority, renewed counters or paid playback from source tests."
   }
 }

@@ -19,7 +19,7 @@ TEAM = 'team_HAGNRSEiW5MZXY2AhV0cQvE0'
 RAILWAY_PROJECT = 'a8533934-35c4-463e-9f43-577a9ac391ee'
 SERVICE = '5af42e7e-f518-4f6a-b602-d9950866501f'
 ENVIRONMENT = '580b250c-80ee-48ad-bfbe-fa4e31a6b378'
-ACTIONS = {'stage_frontend', 'promote_frontend', 'release_backend', 'release_guarded_bootstrap'}
+ACTIONS = {'stage_frontend', 'promote_frontend', 'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}
 CLI_VERSIONS = {'vercel': '59.25.4', 'railway': '5.71.0'}
 
 
@@ -71,15 +71,24 @@ def _sync_directory(path):
     finally:os.close(fd)
 
 
-def _durable_json(path, value, *, exclusive=False):
-    """No recovery/cleanup on unknown outcomes; permanent intent stays permanent."""
+def _durable_json(path, value, *, exclusive=False, directory_fd=None):
+    """No recovery/cleanup on unknown outcomes; permanent intent stays permanent.
+
+    Restore writes may anchor to the already-admitted directory descriptor.
+    Other actions preserve the existing path-based behavior.
+    """
     path=Path(path)
     temporary=path if exclusive else path.with_name('.'+path.name+'.'+uuid.uuid4().hex+'.pending')
-    fd=os.open(temporary,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+    fd=os.open(temporary if directory_fd is None else temporary.name,
+               os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600,
+               **({} if directory_fd is None else {'dir_fd':directory_fd}))
     with os.fdopen(fd,'w') as stream:
         json.dump(value,stream);stream.flush();os.fsync(stream.fileno())
-    if not exclusive:os.replace(temporary,path)
-    _sync_directory(path.parent)
+    if not exclusive:
+        if directory_fd is None:os.replace(temporary,path)
+        else:os.replace(temporary.name,path.name,src_dir_fd=directory_fd,dst_dir_fd=directory_fd)
+    if directory_fd is None:_sync_directory(path.parent)
+    else:os.fsync(directory_fd)
 
 
 def _read_journal(path):
@@ -100,6 +109,7 @@ def _validate_barrier(path, operation_id):
 
 
 def recovery_digest_field(action, binding):
+    if action == 'restore_guarded_bootstrap': return 'guarded_restore_sha256'
     if action == 'release_guarded_bootstrap': return 'bootstrap_preflight_sha256'
     if action in {'stage_frontend', 'promote_frontend'} and binding.get('frontend_phase'):
         return 'frontend_rollback_sha256'
@@ -112,6 +122,11 @@ def require_digest(value):
 
 def operation_identity(action, binding):
     """Ordinary identities remain byte-for-byte compatible with old journals."""
+    if action == 'restore_guarded_bootstrap':
+        normal = binding.get('applied_normal_operation_id')
+        if not require_digest(normal): raise ValueError('Exact applied normal root required')
+        return digest({'action': action, 'project': RAILWAY_PROJECT, 'service': SERVICE,
+                       'environment': ENVIRONMENT, 'applied_normal_operation_id': normal})
     value = {'action': action, 'source_sha': binding['source_sha'],
         'candidate': binding.get('deployment_id') if action == 'promote_frontend' else None,
         'project': RAILWAY_PROJECT if action in {'release_backend', 'release_guarded_bootstrap'} else PROJECT,
@@ -175,6 +190,8 @@ def validate_corrective_observation(correction, binding, actual):
 
 def validate_action_recovery(action, binding, actual):
     """Trusted live observer only; synthetic tests never create real receipts."""
+    if action == 'restore_guarded_bootstrap':
+        return  # Full same-journal context checked separately before dispatch.
     if action == 'release_guarded_bootstrap':
         for key in ('native_pause_acceptance_sha256', 'closed_server_sha256', 'source_delivery_sha256'):
             if not require_digest(binding.get(key)) or actual.get(key) != binding[key]:
@@ -232,6 +249,150 @@ def qualify_bootstrap_recovery(binding, actual):
     return actual['recovery_receipt_sha256']
 
 
+RESTORE_FIELDS = {'operations_journal_identity_sha256', 'applied_normal_operation_id', 'applied_normal_record_sha256',
+    'applied_normal_reconciliation_receipt_sha256', 'bootstrap_operation_id',
+    'bootstrap_record_sha256', 'guarded_recovery_receipt_sha256', 'target_deployment_id',
+    'target_retained_image_id', 'target_runtime_sha256', 'target_config_sha256',
+    'target_source_sha', 'current_bad_normal_deployment_id', 'bad_normal_failure_receipt_sha256',
+    'actual_native_schema_sha256'}
+
+def _operation_journal_identity(journal):
+    """Bind future backend receipts to their existing admitted physical journal.
+
+    This is custody, not a new approval or a transferable journal override.
+    A copied/restored namespace must not reset a normal operation's return claim.
+    """
+    path = Path(journal)
+    if not path.is_absolute() or path.is_symlink():
+        raise ValueError('Exact admitted operations journal required')
+    # Normalize OS aliases (for example /var -> /private/var); the same
+    # physical namespace keeps one identity and one permanent claim.
+    path = path.resolve()
+    rows = []
+    for item in (path.parent, path):
+        info = item.lstat()
+        if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+                or stat.S_IMODE(info.st_mode) & 0o022):
+            raise ValueError('Private owner-matched journal custody required')
+        rows.append({'path': str(item), 'device': info.st_dev, 'inode': info.st_ino,
+                     'uid': info.st_uid, 'mode': stat.S_IMODE(info.st_mode)})
+    return digest(rows)
+
+
+def _assert_operation_journal_anchor(journal, descriptor, expected):
+    if _operation_journal_identity(journal) != expected:
+        raise ValueError('Admitted journal custody changed before native dispatch')
+    opened = os.fstat(descriptor)
+    current = Path(journal).lstat()
+    fields = lambda info: (info.st_dev, info.st_ino, info.st_uid, stat.S_IMODE(info.st_mode))
+    if fields(opened) != fields(current):
+        raise ValueError('Admitted journal descriptor no longer matches namespace')
+
+
+def validate_guarded_restore_context(journal, binding, actual, approval=None):
+    """Exact same-journal lineage; live fields come only from trusted observer.
+
+    This is not an observer implementation or authority factory. Missing actual
+    receipts/capabilities deny rather than inferring native readiness from tests.
+    """
+    c = binding.get('restore_context')
+    if not isinstance(c, dict) or set(c) != RESTORE_FIELDS:
+        raise ValueError('Exact guarded restore context required')
+    if binding.get('applied_normal_operation_id') != c['applied_normal_operation_id']:
+        raise ValueError('Permanent normal root differs')
+    for key in RESTORE_FIELDS - {'target_deployment_id','current_bad_normal_deployment_id','target_retained_image_id','target_source_sha'}:
+        if not require_digest(c[key]): raise ValueError('Missing restore digest: ' + key)
+    if not re.fullmatch('[a-f0-9]{40}', c['target_source_sha']) or binding.get('source_sha') != c['target_source_sha']:
+        raise ValueError('Exact target source required')
+    records=[]
+    for p in Path(journal).glob('*.json'):
+        if p.name.endswith('.request.json') or p.name=='_write-barrier.json': continue
+        records.append(_read_journal(p))
+    def one(operation, action, record_hash):
+        rows=[r for r in records if r.get('operation_id')==operation]
+        if len(rows)!=1: raise ValueError('Unique permanent predecessor required')
+        r=rows[0]
+        if (r.get('action')!=action or r.get('state')!='APPLIED_VERIFIED'
+                or digest(r)!=record_hash or not require_digest(r.get('reconciliation_receipt_sha256'))
+                or operation_identity(action,r['binding'])!=operation):
+            raise ValueError('Exact APPLIED predecessor required')
+        return r
+    normal=one(c['applied_normal_operation_id'],'release_backend',c['applied_normal_record_sha256'])
+    boot=one(c['bootstrap_operation_id'],'release_guarded_bootstrap',c['bootstrap_record_sha256'])
+    custody = _operation_journal_identity(journal)
+    if (c['operations_journal_identity_sha256'] != custody
+            or normal.get('operations_journal_identity_sha256') != custody
+            or boot.get('operations_journal_identity_sha256') != custody):
+        raise ValueError('Original admitted backend journal custody differs')
+    recovery=c['guarded_recovery_receipt_sha256']
+    if (normal['reconciliation_receipt_sha256']!=c['applied_normal_reconciliation_receipt_sha256']
+            or normal['binding'].get('guarded_recovery_receipt_sha256')!=recovery
+            or boot.get('guarded_recovery_receipt_sha256')!=recovery
+            or boot['binding']['source_sha']!=c['target_source_sha']
+            or boot['binding'].get('config_sha256')!=c['target_config_sha256']):
+        raise ValueError('Normal/bootstrap recovery lineage differs')
+    # No caller-provided query. Reuse only the pure scalar schema serializer.
+    from scripts.reader612_native_restore import rollback_document
+    schema=actual.get('native_rollback_schema')
+    rollback_document(schema,c['target_deployment_id'])
+    if digest(schema)!=c['actual_native_schema_sha256']:
+        raise ValueError('Fresh native schema differs')
+    # This action returns an unchanged retained configuration, not a config
+    # migration. Current admission/startup and target must be the same bytes.
+    config=c['target_config_sha256']
+    startup=actual.get('startup_data_qualification')
+    if (binding.get('config_sha256')!=config or actual.get('config_sha256')!=config
+            or not isinstance(startup,dict) or startup.get('config_sha256')!=config
+            or (approval is not None and approval.get('config_sha256')!=config)):
+        raise ValueError('Admitted startup/approval configuration differs from target')
+    proof=boot.get('qualified_bootstrap_evidence')
+    if not isinstance(proof,dict) or actual.get('qualified_bootstrap_receipt')!=proof:
+        raise ValueError('Permanent original bootstrap evidence required')
+    if not isinstance(proof,dict) or qualify_bootstrap_recovery(boot['binding'],proof)!=recovery:
+        raise ValueError('Actual qualified bootstrap receipt missing')
+    for key, expected in {'deployment_id':c['target_deployment_id'], 'retained_image_id':c['target_retained_image_id'],
+            'runtime_sha256':c['target_runtime_sha256'],'config_sha256':c['target_config_sha256']}.items():
+        if proof.get(key)!=expected: raise ValueError('Retained target differs: '+key)
+    runtime=c['target_runtime_sha256']
+    if not all(value==runtime for value in (boot['binding'].get('source_delivery_sha256'),
+            proof.get('source_delivery_sha256'),proof.get('runtime_sha256'),
+            binding.get('source_delivery_sha256'))):
+        raise ValueError('Original delivered/measured target runtime differs')
+    closed=boot['binding'].get('closed_server_sha256')
+    if (not require_digest(closed) or binding.get('closed_server_sha256')!=closed
+            or proof.get('closed_server_sha256')!=closed):
+        raise ValueError('Admitted CLOSED server differs from original target')
+    if normal.get('provider_backend_deployment_id')!=c['current_bad_normal_deployment_id']:
+        raise ValueError('Applied normal lacks exact permanent native identity')
+    native=actual.get('retained_bootstrap_native')
+    expected_native={k:c[v] for k,v in {'deployment_id':'target_deployment_id','retained_image_id':'target_retained_image_id','runtime_sha256':'target_runtime_sha256','config_sha256':'target_config_sha256','source_sha':'target_source_sha'}.items()}
+    expected_native['native_can_rollback']=True
+    if native!=expected_native:
+        raise ValueError('Fresh actual retained bootstrap identity differs')
+    if not c['target_retained_image_id'] or binding.get('source_delivery_sha256')!=c['target_runtime_sha256']:
+        raise ValueError('Exact target runtime/image required')
+    for key in ('native_restore_available','installed_policy_compatible','known_normal_failure_qualified'):
+        if actual.get(key) is not True: raise ValueError('Actual restore precondition missing: '+key)
+    for key,expected in {'current_bad_normal_deployment_id':c['current_bad_normal_deployment_id'],
+        'bad_normal_failure_receipt_sha256':c['bad_normal_failure_receipt_sha256'],
+        'applied_normal_source_sha':normal['binding']['source_sha'],
+        'guarded_restore_sha256':digest(c)}.items():
+        if not expected or actual.get(key)!=expected: raise ValueError('Actual failure/context differs: '+key)
+    failure=actual.get('bad_normal_failure_receipt')
+    if (not isinstance(failure,dict) or digest(failure)!=c['bad_normal_failure_receipt_sha256']
+            or failure.get('scope')!='ACTUAL_APPLIED_NORMAL_FAILURE'
+            or failure.get('operation_id')!=normal['operation_id']
+            or failure.get('normal_reconciliation_receipt_sha256')!=normal['reconciliation_receipt_sha256']
+            or failure.get('deployment_id')!=c['current_bad_normal_deployment_id']
+            or failure.get('source_sha')!=normal['binding']['source_sha']
+            or failure.get('project')!=RAILWAY_PROJECT or failure.get('service')!=SERVICE
+            or failure.get('environment')!=ENVIRONMENT):
+        raise ValueError('Exact actual applied normal failure receipt required')
+    if datetime.fromisoformat(normal['started_at']) <= datetime.fromisoformat(boot['started_at']):
+        raise ValueError('Normal does not follow bootstrap')
+    return c
+
+
 def validate_approval(action, binding, approval, owner_authorized, now):
     if owner_authorized is not True:
         raise ValueError('Current owner instruction prohibits provider execution')
@@ -261,6 +422,22 @@ def validate_approval(action, binding, approval, owner_authorized, now):
         raise ValueError('Stale or future provider evidence')
 
 
+def _paired_bootstrap_payload(controller, binding):
+    """Only exact committed CLOSED export admission; no native PASS is inferred."""
+    from scripts.backend_upload_payload import qualify_committed_export
+    payload = qualify_committed_export(controller, binding['source_sha'], binding['backend_export_root'])
+    root = Path(binding['backend_export_root']).resolve()
+    expected = {'scope': 'OFFLINE_EXACT_COMMITTED_EXPORT_NOT_NATIVE_ARCHIVE_OR_PROVIDER_UPLOAD',
+        'cli_version': CLI_VERSIONS['railway'], 'source': binding['source_sha'],
+        'controller_source': binding['controller_source_sha'], 'archive_prefix': str(root),
+        'input_path': str(root / 'backend'), 'path_as_root': False,
+        'archive_member_prefix': 'backend/', 'native_archive_qualification': False}
+    for key, value in expected.items():
+        if type(payload.get(key)) is not type(value) or payload[key] != value:
+            raise ValueError('Exact paired CLOSED export report differs: ' + key)
+    return payload
+
+
 class ProviderAdapter:
     def __init__(self, journal, *, owner_authorized=False, observe=None,
                  run=subprocess.run, clock=lambda: datetime.now(timezone.utc)):
@@ -268,7 +445,9 @@ class ProviderAdapter:
         self.owner_authorized, self.observe = owner_authorized, observe
         self.run, self.clock = run, clock
 
-    def _command(self, action, binding, request_path):
+    def _command(self, action, binding, request_path, *, backend_payload=None):
+        if 'backend_export_root' in binding and action != 'release_guarded_bootstrap':
+            raise ValueError('Committed export is only admitted for CLOSED bootstrap')
         if action == 'stage_frontend':
             return ['vercel', 'api', '/v13/deployments', '--method', 'POST',
                     '--input', str(request_path), '--raw', '--scope', TEAM]
@@ -276,17 +455,36 @@ class ProviderAdapter:
             if not re.fullmatch(r'dpl_[A-Za-z0-9]+', binding.get('deployment_id', '')):
                 raise ValueError('Invalid exact candidate identity')
             return ['vercel', 'promote', binding['deployment_id'], '--yes', '--scope', TEAM]
+        if action == 'restore_guarded_bootstrap':
+            from scripts.reader612_native_restore import rollback_document
+            schema = binding['native_rollback_schema']
+            query = rollback_document(schema, binding['restore_context']['target_deployment_id'])
+            return ['railway', 'api', query, '--compact']
+        if action not in {'release_backend', 'release_guarded_bootstrap'}:
+            raise ValueError('Unknown provider action')
+        input_path = str(Path(binding['source_root']).resolve() / 'backend')
+        if 'backend_export_root' in binding:
+            if not isinstance(backend_payload, dict) or digest(backend_payload) != binding.get('backend_payload_sha256'):
+                raise ValueError('Qualified paired export payload required for command')
+            input_path = backend_payload['input_path']
         return ['railway', 'up', '--ci', '--project', RAILWAY_PROJECT,
-                '--service', SERVICE, '--environment', ENVIRONMENT, '--json',
-                str(Path(binding['source_root']).resolve() / 'backend')]
+                '--service', SERVICE, '--environment', ENVIRONMENT, '--json', input_path]
 
     def perform(self, action, binding, approval):
         validate_approval(action, binding, approval, self.owner_authorized, self.clock())
+        paired = 'backend_export_root' in binding
+        if paired and (action != 'release_guarded_bootstrap'
+                or not re.fullmatch('[0-9a-f]{40}', binding.get('controller_source_sha', ''))):
+            raise ValueError('Exact normal controller is required only for paired CLOSED bootstrap')
         correction = corrective_predecessor(self.journal, action, binding, approval)
         operation_id = operation_identity(action, binding)
         path = self.journal / (operation_id + '.json')
         if path.exists():
             raise FileExistsError('Provider operation already has a durable intent')
+        if action == 'restore_guarded_bootstrap':
+            claim = self.journal / ('.guarded-return-' + binding['applied_normal_operation_id'] + '.claim')
+            if claim.exists():
+                raise FileExistsError('Applied normal operation already consumed its guarded return')
         # A local path, additional binding field or changed approval must never
         # turn one unknown remote write into another permitted operation.
         prior_records = []
@@ -327,8 +525,12 @@ class ProviderAdapter:
         if (actual.get('auto_deploy') is not False
                 or actual.get('authenticated_provider_account') is not True):
             raise ValueError('Provider suppression/authentication/guarded rollback unverified')
+        if action == 'restore_guarded_bootstrap':
+            validate_guarded_restore_context(self.journal, binding, actual, approval)
+            if binding.get('native_rollback_schema') != actual.get('native_rollback_schema'):
+                raise ValueError('Binding native schema differs')
         validate_action_recovery(action, binding, actual)
-        cli = 'railway' if action in {'release_backend', 'release_guarded_bootstrap'} else 'vercel'
+        cli = 'railway' if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'} else 'vercel'
         if actual.get('cli_version') != CLI_VERSIONS[cli]:
             raise ValueError('Reviewed CLI version differs')
         if action == 'promote_frontend':
@@ -348,6 +550,15 @@ class ProviderAdapter:
             from scripts.startup_dispatch_qualification import validate_startup_qualification
             validate_startup_qualification(binding, approval, actual, self.clock())
             validate_corrective_observation(correction, binding, actual)
+        if action == 'restore_guarded_bootstrap':
+            from scripts.startup_dispatch_qualification import validate_startup_qualification
+            validate_startup_qualification(binding, approval, actual, self.clock())
+            controller = Path(binding['source_root']).resolve()
+            head = subprocess.check_output(['git','-C',str(controller),'rev-parse','HEAD'],text=True).strip()
+            dirty = subprocess.check_output(['git','-C',str(controller),'status','--porcelain','--untracked-files=all'],text=True).strip()
+            if (head != binding.get('controller_source_sha') or dirty
+                    or actual.get('controller_source_sha') != head):
+                raise ValueError('Exact clean admitted restore controller required')
         source = Path(binding['source_root']).resolve()
         if action in {'release_backend', 'release_guarded_bootstrap'}:
             # Never upload a dirty or misidentified checkout or accept an input
@@ -355,15 +566,18 @@ class ProviderAdapter:
             # separate post-write observation before any subsequent action.
             sha = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
             dirty = subprocess.check_output(['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True).strip()
-            if sha != binding['source_sha'] or dirty:
+            expected_source = binding['controller_source_sha'] if paired else binding['source_sha']
+            if sha != expected_source or dirty:
                 raise ValueError('Backend source not exact/clean')
+            if paired and actual.get('controller_source_sha') != sha:
+                raise ValueError('Actual paired normal controller differs')
             guard_sha = hashlib.sha256((source / 'backend/startup_data_guard.py').read_bytes()).hexdigest()
             if guard_sha != binding['startup_guard_source_sha256']:
                 raise ValueError('Measured startup guard source differs')
             # Railway5.71 with explicit --project uses cwd as archive prefix.
             # Absolute backend input keeps backend/ paths; never path-as-root.
             from scripts.backend_upload_payload import qualify
-            payload = qualify(source)
+            payload = _paired_bootstrap_payload(source, binding) if paired else qualify(source)
             if (binding.get('backend_payload_sha256') != digest(payload)
                     or actual.get('backend_payload_sha256') != digest(payload)
                     or payload['runtime_expected_sha256'] != binding.get('source_delivery_sha256')):
@@ -380,49 +594,95 @@ class ProviderAdapter:
             raise ValueError('Unsafe journal directory')
         _sync_directory(self.journal.parent)
         _sync_directory(self.journal)
-        if action in {'release_backend', 'release_guarded_bootstrap'}:
+        if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}:
             # Recheck freshness after potentially slow source/payload reads.
             validate_approval(action, binding, approval, self.owner_authorized, self.clock())
             validate_startup_qualification(binding, approval, actual, self.clock())
-        barrier = self.journal / '_write-barrier.json'
-        _durable_json(barrier, {'operation_id': operation_id, 'state': 'INTENT_RECONCILE_BEFORE_RETRY'}, exclusive=True)
-        intent = {'operation_id': operation_id, 'action': action, 'binding': binding,
-                  'approval_sha256': digest(approval), 'started_at': self.clock().isoformat(),
-                  'state': 'INTENT_RECONCILE_BEFORE_RETRY'}
-        _durable_json(path, intent, exclusive=True)
-        if correction is not None:
-            # Re-read the permanent predecessor under the exclusive write
-            # barrier; an altered/outstanding outcome cannot acquire a claim.
-            c, claim = corrective_predecessor(self.journal, action, binding, approval)
-            _durable_json(claim, {'failed_operation_id': c['failed_operation_id'],
-                'operation_id': operation_id, 'state': 'CORRECTION_CONSUMED_NO_RETRY'}, exclusive=True)
-        request = self.journal / (operation_id + '.request.json')
-        if action == 'stage_frontend':
-            _durable_json(request, {'name': 'earnalism', 'project': PROJECT,
-                'target': 'production', 'autoAssignCustomDomains': False,
-                'gitSource': {'type': 'github', 'ref': 'main',
-                              'sha': binding['source_sha'], 'repoId': 1232345982}}, exclusive=True)
-        command = self._command(action, binding, request)
-        # No secret argv, shell interpolation, automatic OAuth/purchase flags,
-        # output logging or retry. Even return0 is not serving acceptance.
+        anchor = None
+        if action == 'restore_guarded_bootstrap':
+            anchor = os.open(self.journal, os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        def durable(path, value, **kwargs):
+            if anchor is None:return _durable_json(path, value, **kwargs)
+            return _durable_json(path, value, directory_fd=anchor, **kwargs)
         try:
-            result = self.run(command, cwd=source, capture_output=True, text=True,
-                              timeout=1200, check=False)
-            intent['process_exit_code'] = result.returncode
-            intent['process_diagnostic'] = process_diagnostic(result)
-            if action == 'stage_frontend' and result.returncode == 0:
-                try:
-                    reported = json.loads(result.stdout).get('id', '')
-                    if re.fullmatch(r'dpl_[A-Za-z0-9]+', reported):
-                        intent['unverified_provider_deployment_id'] = reported
-                except (ValueError, AttributeError):
-                    pass
-        except Exception as error:
-            intent['process_exit_code'] = None
-            intent['process_diagnostic'] = process_diagnostic(error=error)
-        intent['state'] = 'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED'
-        _durable_json(path, intent)
-        return intent
+            if anchor is not None:
+                _assert_operation_journal_anchor(self.journal, anchor,
+                    binding['restore_context']['operations_journal_identity_sha256'])
+            barrier = self.journal / '_write-barrier.json'
+            durable(barrier, {'operation_id': operation_id, 'state': 'INTENT_RECONCILE_BEFORE_RETRY'}, exclusive=True)
+            intent = {'operation_id': operation_id, 'action': action, 'binding': binding,
+                      'approval_sha256': digest(approval), 'started_at': self.clock().isoformat(),
+                      'state': 'INTENT_RECONCILE_BEFORE_RETRY'}
+            if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}:
+                intent['operations_journal_identity_sha256'] = (binding['restore_context']['operations_journal_identity_sha256']
+                    if anchor is not None else _operation_journal_identity(self.journal))
+            durable(path, intent, exclusive=True)
+            if correction is not None:
+                # Re-read the permanent predecessor under the exclusive write
+                # barrier; an altered/outstanding outcome cannot acquire a claim.
+                c, claim = corrective_predecessor(self.journal, action, binding, approval)
+                durable(claim, {'failed_operation_id': c['failed_operation_id'],
+                    'operation_id': operation_id, 'state': 'CORRECTION_CONSUMED_NO_RETRY'}, exclusive=True)
+            if action == 'restore_guarded_bootstrap':
+                validate_guarded_restore_context(self.journal, binding, actual, approval)
+                durable(claim, {'applied_normal_operation_id': binding['applied_normal_operation_id'],
+                    'operation_id': operation_id, 'state': 'GUARDED_RETURN_CONSUMED_NO_RETRY'}, exclusive=True)
+            request = self.journal / (operation_id + '.request.json')
+            if action == 'stage_frontend':
+                durable(request, {'name': 'earnalism', 'project': PROJECT,
+                    'target': 'production', 'autoAssignCustomDomains': False,
+                    'gitSource': {'type': 'github', 'ref': 'main',
+                                  'sha': binding['source_sha'], 'repoId': 1232345982}}, exclusive=True)
+            if action == 'restore_guarded_bootstrap':
+                durable(request, {'action': action, 'binding_sha256': digest(binding),
+                    'restore_context': binding['restore_context'],
+                    'native_query': self._command(action, binding, request)[2]}, exclusive=True)
+            if paired:
+                # Final local source readback may fail, but never becomes a retry
+                # or a fabricated native archive/source qualification.
+                final_payload = _paired_bootstrap_payload(source, binding)
+                if (digest(final_payload) != binding.get('backend_payload_sha256')
+                        or digest(final_payload) != actual.get('backend_payload_sha256')
+                        or final_payload['runtime_expected_sha256'] != binding.get('source_delivery_sha256')):
+                    raise ValueError('Paired CLOSED export changed before dispatch')
+                validate_approval(action, binding, approval, self.owner_authorized, self.clock())
+                validate_startup_qualification(binding, approval, actual, self.clock())
+                command = self._command(action, binding, request, backend_payload=final_payload)
+                command_cwd = final_payload['archive_prefix']
+            else:
+                command = self._command(action, binding, request)
+                command_cwd = source
+            if action == 'restore_guarded_bootstrap':
+                # Durable writes above target the original descriptor even if its
+                # pathname was replaced. A changed path/custody never reaches CLI.
+                validate_guarded_restore_context(self.journal, binding, actual, approval)
+                validate_approval(action, binding, approval, self.owner_authorized, self.clock())
+                validate_startup_qualification(binding, approval, actual, self.clock())
+                _assert_operation_journal_anchor(self.journal, anchor,
+                    binding['restore_context']['operations_journal_identity_sha256'])
+            # No secret argv, shell interpolation, automatic OAuth/purchase flags,
+            # output logging or retry. Even return0 is not serving acceptance.
+            try:
+                result = self.run(command, cwd=command_cwd, capture_output=True, text=True,
+                                  timeout=1200, check=False)
+                intent['process_exit_code'] = result.returncode
+                intent['process_diagnostic'] = process_diagnostic(result)
+                if action == 'stage_frontend' and result.returncode == 0:
+                    try:
+                        reported = json.loads(result.stdout).get('id', '')
+                        if re.fullmatch(r'dpl_[A-Za-z0-9]+', reported):
+                            intent['unverified_provider_deployment_id'] = reported
+                    except (ValueError, AttributeError):
+                        pass
+            except Exception as error:
+                intent['process_exit_code'] = None
+                intent['process_diagnostic'] = process_diagnostic(error=error)
+            intent['state'] = 'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED'
+            durable(path, intent)
+            return intent
+        finally:
+            if anchor is not None:os.close(anchor)
+
 
     def reconcile(self, operation_id):
         # Serialize reconciliation across processes so two readers cannot both
@@ -452,8 +712,45 @@ class ProviderAdapter:
                 or actual.get('outcome') not in {'APPLIED', 'NOT_APPLIED'}
                 or not re.fullmatch('[0-9a-f]{64}', actual.get('receipt_sha256', ''))):
             raise ValueError('Unknown/unbound actual provider outcome')
+        if record['action']=='restore_guarded_bootstrap' and actual['outcome']=='APPLIED':
+            c=validate_guarded_restore_context(self.journal, record['binding'], actual)
+            # Rollback may create a NEW deployment. Bind its observed identity to
+            # retained target image/source/config, never assert original ID serves.
+            native_id=actual.get('deployment_id')
+            if (not isinstance(native_id,str) or not re.fullmatch('[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}',native_id)
+                    or actual.get('guarded_backend_deployment_id')!=native_id
+                    or actual.get('restored_from_deployment_id')!=c['target_deployment_id']):
+                raise ValueError('Actual native restore origin/identity missing')
+            for key,expected in {'retained_image_id':c['target_retained_image_id'],
+                'runtime_sha256':c['target_runtime_sha256'],'config_sha256':c['target_config_sha256']}.items():
+                if actual.get(key)!=expected: raise ValueError('Restored bytes differ: '+key)
+            qualify_bootstrap_recovery(record['binding'],{**actual,'action':'release_guarded_bootstrap'})
+            for key in ('auto_deploy', 'redis_enabled', 'redis_cache_enabled', 'multi_replica_enabled', 'redis_public_metadata_enabled'):
+                if actual.get(key) is not False: raise ValueError('Restored suppression unavailable: '+key)
+        if record['action']=='restore_guarded_bootstrap' and actual['outcome']=='NOT_APPLIED':
+            proof=actual.get('native_no_effect_proof')
+            c=record['binding']['restore_context']
+            if (not isinstance(proof,dict) or proof.get('scope')!='ACTUAL_NATIVE_RESTORE_NOT_APPLIED'
+                    or proof.get('operation_id')!=operation_id
+                    or proof.get('current_deployment_id')!=c['current_bad_normal_deployment_id']
+                    or proof.get('no_new_native_deployment_observed') is not True
+                    or proof.get('exact_request_not_applied') is not True):
+                raise ValueError('Actual native no-effect proof required')
         if record['action']=='release_guarded_bootstrap' and actual['outcome']=='APPLIED':
             record['guarded_recovery_receipt_sha256']=qualify_bootstrap_recovery(record['binding'], actual)
+            # Retain a bounded, nonsecret ORIGINAL actual qualification proof.
+            # Old digest-only journals remain readable, but cannot authorize a
+            # new restore without concrete original image/runtime evidence.
+            keys=('scope','action','source_sha','source_delivery_sha256','closed_server_sha256',
+                'deployment_id','retained_image_id','runtime_sha256','config_sha256','recovery_receipt_sha256',
+                'guarded_backend_deployment_id','closed_guest_status','purchase_pause_proof',
+                'startup_complete','database_healthy','source_attestation_matches','native_can_rollback',
+                'config_compatible','existing_reader_listener_preserved','verify_refund_webhook_code_preserved')
+            record['qualified_bootstrap_evidence']={k:actual.get(k) for k in keys}
+        if record['action']=='release_backend' and actual['outcome']=='APPLIED':
+            native=actual.get('deployment_id')
+            if isinstance(native,str) and re.fullmatch('[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}',native):
+                record['provider_backend_deployment_id']=native
         barrier = self.journal / '_write-barrier.json'
         if not barrier.exists():raise ValueError('Missing operation barrier')
         _validate_barrier(barrier, operation_id)

@@ -18,7 +18,7 @@ class SuccessorContractTests(unittest.TestCase):
     def check(self, *, manifest_edit=None, application=None, actual=None):
         application = self.application if application is None else application
         manifest = {k: v for k, v in self.manifest.items()
-                    if k not in {'application_source_sha', 'application_server_sha256', 'application_closed_server_sha256'}}
+                    if k not in {'application_source_sha', 'application_server_sha256', 'application_closed_server_sha256', 'guarded_bootstrap_source_sha'}}
         manifest.update(schema=guard.SUCCESSOR_SCHEMA, state='OPEN',
                         application_source_sha='a' * 40,
                         application_server_sha256=guard.sha(application),

@@ -76,6 +76,7 @@ jobs:
         shell: bash
         env:
           GIT_NO_LAZY_FETCH: '1'
+          GIT_NO_REPLACE_OBJECTS: '1'
         run: |
           set -euo pipefail
           # Filtered fetch persists remote settings; restore the exact prior state.
@@ -97,6 +98,7 @@ jobs:
           }
           trap restore_fetch_config EXIT
           bindings=()
+          pair_bootstrap_pin=''
           for source_pin in \
             b4bc7585a87b7546db3270f3bfd63bd436e8585a \
             f5706d328e08ab330f65f604f51df322b65646f1 \
@@ -109,10 +111,16 @@ jobs:
             source_pin="$(jq -er '.approved_merged_584_sha' internal/legal/purchase_guard_source.json)"
             [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             bindings+=("$source_pin:backend/server.py")
-            if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
+            guard_schema="$(jq -er '.schema' internal/legal/purchase_guard_source.json)"
+            if [[ "$guard_schema" == 'earnalism.purchase-guard-source.v2' || "$guard_schema" == 'earnalism.purchase-guard-source.v3' ]]; then
               application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
               [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
               bindings+=("$application_pin:backend/server.py")
+            fi
+            if [[ "$guard_schema" == 'earnalism.purchase-guard-source.v3' ]]; then
+              pair_bootstrap_pin="$(jq -er '.guarded_bootstrap_source_sha' internal/legal/purchase_guard_source.json)"
+              [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              bindings+=("$pair_bootstrap_pin:internal/legal/purchase_guard_source.json")
             fi
           fi
           if [[ -f scripts/build_india_guarded_rollback.py ]]; then
@@ -144,6 +152,36 @@ jobs:
             missing_commits=("${unique[@]}")
             git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "${missing_commits[@]}"
           fi
+          # BEGIN bounded current guarded source pair admission
+          if [[ -n "$pair_bootstrap_pin" ]]; then
+            [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            pair_controller_pin="$(git rev-parse HEAD)"
+            [[ "$pair_controller_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            # Finite CI transport bound for this immediate A/B/C history, not
+            # authority. Only commits for HEAD ancestry; no trees or file blobs.
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=16 origin "$pair_controller_pin"
+            # Re-admit B/A with their trees: tree:0 may already have their commit
+            # IDs, so normal negotiation could otherwise skip promised trees.
+            git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$pair_bootstrap_pin"
+            git -c remote.origin.promisor=false merge-base --is-ancestor "$pair_bootstrap_pin" "$pair_controller_pin"
+            read -r pair_actual_pin pair_parent_pin pair_extra_parent <<< "$(git -c remote.origin.promisor=false rev-list --parents -n 1 "$pair_bootstrap_pin")"
+            [[ "$pair_actual_pin" == "$pair_bootstrap_pin" && "$pair_parent_pin" =~ ^[0-9a-f]{40}$ && -z "$pair_extra_parent" ]] || exit 1
+            for pair_pin in "$pair_bootstrap_pin" "$pair_parent_pin"; do
+              git -c remote.origin.promisor=false cat-file -e "$pair_pin^{commit}"
+              [[ "$(git -c remote.origin.promisor=false cat-file -t "$pair_pin:backend")" == tree ]]
+            done
+            # Metadata checks precede historical body hydration. No unrelated
+            # snapshot/file may enter the two explicitly bound backend roles.
+            pair_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$pair_parent_pin" "$pair_bootstrap_pin" | LC_ALL=C sort)"
+            [[ "$pair_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
+            [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            for pair_pin in "$pair_bootstrap_pin" "$pair_parent_pin"; do
+              while IFS= read -r -d '' source_path; do
+                bindings+=("$pair_pin:$source_path")
+              done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$pair_pin" -- backend .gitignore internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json)
+            done
+          fi
+          # END bounded current guarded source pair admission
           if [[ -n "$reader_source_pin" ]]; then
             # Keep every recovery backend byte and its exact legal/ignore inputs.
             while IFS= read -r -d '' source_path; do
@@ -189,6 +227,7 @@ jobs:
         shell: bash
         env:
           GIT_NO_LAZY_FETCH: "1"
+          GIT_NO_REPLACE_OBJECTS: "1"
         run: |
           set -euo pipefail
           source_pin="$(jq -er '.approved_merged_584_sha' internal/legal/purchase_guard_source.json)"
@@ -197,7 +236,8 @@ jobs:
           [[ "$source_hash" =~ ^[0-9a-f]{64}$ ]] || exit 1
           git -c remote.origin.promisor=false cat-file -e "$source_pin:backend/server.py"
           [[ "$(git show "$source_pin:backend/server.py" | sha256sum | awk '{print $1}')" == "$source_hash" ]]
-          if [[ "$(jq -er '.schema' internal/legal/purchase_guard_source.json)" == 'earnalism.purchase-guard-source.v2' ]]; then
+          guard_schema="$(jq -er '.schema' internal/legal/purchase_guard_source.json)"
+          if [[ "$guard_schema" == 'earnalism.purchase-guard-source.v2' || "$guard_schema" == 'earnalism.purchase-guard-source.v3' ]]; then
             application_pin="$(jq -er '.application_source_sha' internal/legal/purchase_guard_source.json)"
             application_hash="$(jq -er '.application_server_sha256' internal/legal/purchase_guard_source.json)"
             [[ "$application_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1

@@ -3048,3 +3048,12 @@ A layout fixture cannot demand unrestricted anonymous traversal after the public
 A canonical ingestion target sums HTML blocks before joining them with serialization newlines. Match that budget only after proving an exact canonical serialization roundtrip; do not normalize arbitrary legacy whitespace, increase the cap, clip content or alter hashes. The 52-title measurement separates join overhead from the genuine oversized Jekyll page, whose public denial and ordinary protected byte/hash delivery remain intact.
 
 Production and review builds can route APIs differently. A loopback browser fixture must mock approved loopback API origins across configured ports without forwarding requests; only same-BASE assets may continue, and foreign origins remain blocked. Report measured interception counts separately from declared policy, and test the actual CI-shaped build.
+
+
+## 4 November 2026 — current guarded recovery source custody
+
+PR #640 merged as `193c287d67fe0a3404adc680eb802bad9bd452a5` after every applicable exact-head CI and published review passed; the reviewed and merged trees match. Its isolated regression executed all 29 Sredni MongoDB cases without skips. This is source evidence, not serving or playback proof.
+
+Prepare current CLOSED recovery as a retained committed source role, separately from its clean normal controller. Seal the exact exported bytes, command input and working directory; recheck approval, config and startup before dispatch. Restore custody must remain anchored to original physical journal descriptors, with permanent UNKNOWN claims. Execute only verified immutable helper bytes, including when Git index flags hide physical drift. Preserve normal delivery and all existing financial and Reader controls.
+
+The successor is source-only pending actual A/B/C history, fresh CI/reviews and native recovery qualification. Source commits do not pause purchases or replenish limits: two of three snapshots/injections and the sole policy write are consumed. The one Sredni grant remains bounded by both 60-second ceilings, three starts and its original 900-second window. No provider, customer, purchase or audio operation occurred.
