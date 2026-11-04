@@ -624,5 +624,17 @@
     "status": "DIAGNOSTIC_SOURCE_SUCCESSOR_PENDING_INDEPENDENT_REVIEW_AND_FRESH_HOSTED_RESULT",
     "production_source_unchanged": true,
     "next_exact_prompt": "Independently review test-only diagnostic/mocking scope and unchanged safety assertions, push new exacthead for hosted attribution; if ERR_FAILED recurs use retained exact endpoint, never filter error or blindrerun."
+  },
+  "quiet_folio_highzoom_exact_brand_20261104": {
+    "at": "2026-11-04T07:27:31.133530+00:00",
+    "event": "QUIET_FOLIO_HIGH_ZOOM_EXACT_BRAND_ASSET_FIXTURE",
+    "failed_head": "934a0875d4f00d2a6c5f86904cf1894282ccb4d6",
+    "failed_run": 41790965583,
+    "failed_job": 126444013405,
+    "proven_cause": "Retained diagnostics identify the canonical absolute brand image URL aborted by functionalCheck deny-foreign route; Chromium148 reports net::ERR_FAILED. Crossport dummy API probe returned200 and noAPIerror; CORS is not the demonstrated cause.",
+    "correction": "Serve only exact canonical brand PNG GET from existing repository asset, matching main capture harness. Keep every other foreign request denied and all25 assertions/errors[] unchanged. Force real Image.decode probe in each functional case so compile-only local fixtures also exercise this path.",
+    "scope": "TEST_ONLY_NO_PRODUCTION_SOURCE_CHANGE",
+    "status": "PENDING_NATIVE_LOCAL_AND_INDEPENDENT_REVIEW_THEN_FRESH_CI",
+    "next_exact_prompt": "Verify all25highzoom checks and pinnedasset decode locally, independently review exact-URL GET-only exception and zero-error gate, then newheadCI; no blindrerun of failed head or error filtering."
   }
 }

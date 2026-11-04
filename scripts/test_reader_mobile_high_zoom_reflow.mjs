@@ -54,6 +54,9 @@ async function functionalCheck(state) {
     page.on("console", message => { if (message.type() === "error") { errors.push(message.text()); consoleLocations.push({text:message.text(), location:message.location()}); } }); page.on("pageerror", error => errors.push(error.message));
     await page.route("**/*", route => {
       const url = new URL(route.request().url());
+      // Static SEO snapshots refer to the canonical absolute brand asset. Serve
+      // only that exact GET from pinned repository bytes, as the capture harness does.
+      if (route.request().method() === 'GET' && url.href === 'https://theearnalism.com/assets/brand/earnalism-brand-lockup.png') return route.fulfill({ path: path.join(root, 'frontend/public/assets/brand/earnalism-brand-lockup.png'), contentType: 'image/png' });
       if (!['localhost','127.0.0.1'].includes(url.hostname)) return route.abort();
       if (url.pathname === '/api' || url.pathname.startsWith('/api/')) {
         apiRequests.push({method:route.request().method(), origin:url.origin, path:url.pathname});
@@ -74,6 +77,8 @@ async function functionalCheck(state) {
     const probeUrl = new URL(baseUrl); probeUrl.port = probeUrl.port === '18007' ? '18008' : '18007'; probeUrl.pathname = '/api/reader-high-zoom-fixture-probe';
     const crossPortProbe = await page.evaluate(async url => { const response = await fetch(url, { credentials: 'include', headers: { 'x-reading-pass-session': 'isolated-high-zoom-no-real-session' } }); return { status: response.status, body: await response.json() }; }, probeUrl.href);
     assert.deepEqual(crossPortProbe, {status:200, body:[]});
+    const canonicalAssetProbe = await page.evaluate(async () => { const image = new Image(); image.src = 'https://theearnalism.com/assets/brand/earnalism-brand-lockup.png'; await image.decode(); return {width:image.naturalWidth,height:image.naturalHeight}; });
+    assert.ok(canonicalAssetProbe.width > 0 && canonicalAssetProbe.height > 0, 'Canonical brand fixture must decode from local pinned bytes');
     await settle(); const before = await body.evaluate(node => parseFloat(getComputedStyle(node).fontSize));
     await settings.click(); const dialog = page.getByRole('dialog', {name:'Reading preferences', exact:true}); await dialog.waitFor();
     const size = dialog.locator('label').filter({hasText:/^Text size/}).locator('select');
@@ -106,7 +111,7 @@ async function functionalCheck(state) {
     assert.deepEqual(navigationGeometry.buttons.map(button=>button.name),['Previous page','Contents','Next page']);
     for(const button of navigationGeometry.buttons) assert.ok(button.width>=44 && button.height>=44 && button.left>=0 && button.right<=navigationGeometry.viewport.width && button.top>=0 && button.bottom<=navigationGeometry.viewport.height, `Reader navigation must be reachable: ${JSON.stringify(navigationGeometry)}`);
     const geometry = await body.evaluate(node => { const viewport=node.closest('.reader-v2__visual-viewport');const measure=viewport.querySelector('.reader-v2__pagination-measure');return {height:viewport.clientHeight,scrollHeight:viewport.scrollHeight,width:viewport.clientWidth,scrollWidth:viewport.scrollWidth,layoutHeight:Number(viewport.dataset.layoutHeight),leading:getComputedStyle(node).lineHeight,measurementLeading:getComputedStyle(measure).lineHeight}; });
-    return {geometry,navigationGeometry,dialogGeometry,before,afterIncrease,afterDecrease,initialText,increasedText,decreasedText,restoredFocus,focusOrder,trapped,errors,failedRequests,unexpectedWrites,crossPortProbe,consoleLocations,apiRequests,browserVersion:browser.version()};
+    return {geometry,navigationGeometry,dialogGeometry,before,afterIncrease,afterDecrease,initialText,increasedText,decreasedText,restoredFocus,focusOrder,trapped,errors,failedRequests,unexpectedWrites,crossPortProbe,consoleLocations,apiRequests,canonicalAssetProbe,browserVersion:browser.version()};
   } finally { await browser.close(); }
 }
 

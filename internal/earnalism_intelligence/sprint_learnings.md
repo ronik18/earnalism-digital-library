@@ -3082,3 +3082,8 @@ Historical smoke required a removed reading-sidebar cover; null geometry correct
 ### Attribute generic fixture-network errors before declaring a fix
 
 Highzoom checks1through24passed; final zero-error assertion recorded one generic ERR_FAILED without endpoint. Dependent recovery baseline correctly held. Retain zero-error assertion and all25checks. Record failed request endpoints, console locations, mocked API origins/methods and browser version; retain functional diagnostics file before final assertion. Explicit fixed-loopback credential CORS/OPTIONS and GET-only mock admission match existing isolated landscape convention; probe credentialed cross-port read. 25of25nativechecksPASS againstCIshapedcrossportfixture beforeandafterdiagnostics. Separate missing-CORS mockednegative unexpectedly succeeded underlocalPlaywright, so it doesnotproveCORS causedhostedfailure; preserved as inconclusive. No product delta or hosted success is claimed.
+
+
+### Exact hosted attribution: canonical brand image fixture
+
+Retained diagnostics identify the canonical absolute brand image URL aborted by functionalCheck deny-foreign route; Chromium148 reports net::ERR_FAILED. Crossport dummy API probe returned200 and noAPIerror; CORS is not the demonstrated cause. Serve only exact canonical brand PNG GET from existing repository asset, matching main capture harness. Keep every other foreign request denied and all25 assertions/errors[] unchanged. Force real Image.decode probe in each functional case so compile-only local fixtures also exercise this path. Retain the diagnostic failure and inconclusive CORS probe. A compile-only local build does not reproduce every static-SEO asset request; force the precise asset path through its deterministic fixture.
