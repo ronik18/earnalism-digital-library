@@ -660,5 +660,17 @@
     "evidence_limits": "Synthetic fixtures and assertion replay are not new browser captures or release proof. Focused Reader header derivative retains original6viewports but only1route and is private; committed harness keeps19routes.",
     "status": "COMPOSED_SUCCESSOR_PENDING_INDEPENDENT_REVIEW_AND_FRESH_EXACT_HEAD_CI",
     "next_exact_prompt": "Independently review full affected verification family and nonReader branch preservation; run fresh mandatory CI/browser/published gates on successor before expected-head merge/tree equality. No deployment or native recovery claims."
+  },
+  "quiet_folio_capture_identity_20261104": {
+    "at": "2026-11-04T08:08:20.394336+00:00",
+    "event": "QUIET_FOLIO_CAPTURE_IDENTITY_AUTHORITY_SUCCESSOR",
+    "held_head": "d20556f1437df17ad3abd97ca0a3ca301801875e",
+    "finding": "Expected state was selected from captured state_id; whole Reader metadata could be copied into a nonReader path while external summary IDs stayed unchanged. Earlier composed review superseded by explicit HOLD.",
+    "actual_safe_reproduction": "Immutable d205 fullChromium validator, crossbrowser validator and summary producer each accepted wholeReadercopy into a nonReader path; original scripts/helper/fixtures retained privately for reproduction.",
+    "correction": "Bind state_id/fixture/route to manifest state derived independently from selected iteration index or expected directory before choosing Reader exception. Footer also binds summary requested IDs to selected manifest sequence. No global legacy summary API change or logo relaxation.",
+    "tests": "Corrected fullChromium34 and crossbrowser31 synthetic checks PASS, including whole-record copy rejection in validators and real summary producer; shared27 passed. Nativeproductionproof notclaimed.",
+    "scope": "VERIFICATION_ONLY_PRODUCTION_SOURCE_UNCHANGED",
+    "status": "SOURCE_CORRECTED_PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
+    "next_exact_prompt": "Independently validate all consumer callsites and exact whole-record substitution negatives before a normal successor push, then all fresh requiredCI/reviews before merge."
   }
 }

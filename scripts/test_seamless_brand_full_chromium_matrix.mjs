@@ -8,7 +8,7 @@ import path from "node:path";
 import { loadStateManifest } from "./lib/seamless_brand_state_manifest.mjs";
 import { stateOutputDirectory, validateCaptureSummary } from "./lib/seamless_brand_one_state_capture.mjs";
 
-import { assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { assertCaptureIdentity, assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
 import { quietFolioCaptureFixture } from './test_helpers/quiet_folio_capture_fixture.mjs';
 
 const root = process.cwd();
@@ -63,13 +63,13 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
   assert.equal(summary.filter_state_count, 2, "both filter states must execute");
   assert.ok(summary.zoom_150_state_count > 0 && summary.zoom_200_state_count > 0, "zoom states are absent");
   const records = validateCaptureSummary(summary, output, expectedStateCount);
-  for (const record of records) {
+  for (const [recordIndex, record] of records.entries()) {
     assert.equal(record.source_head, summary.source_head, `${record.state_id}: source head mismatch`);
     assert.equal(record.tree_sha, summary.tree_sha, `${record.state_id}: tree SHA mismatch`);
     assert.equal(record.rendered_ui_result, "PASS", `${record.state_id}: rendered UI failure`);
     assert.equal(record.visible_header_count, 1, `${record.state_id}: multiple header state`);
-    const expectedState = manifest.states.find(state => state.id === record.state_id);
-    assert.equal(record.fixture, expectedState.fixture);
+    const expectedState = manifest.states[recordIndex];
+    assertCaptureIdentity(record, expectedState);
     if (expectedState.fixture === 'reader-visual-safe') assertQuietFolioReaderChrome(record, expectedState);
     else {
     assert.equal(record.visible_canonical_lockup_count, 1, `${record.state_id}: duplicate logo state`);
@@ -147,6 +147,7 @@ test("clipping fails", () => { const p = path.join(stateOutputDirectory(syntheti
 test("control overlap fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.overlap = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("overflow fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.horizontal_overflow = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("runtime error fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.console_error_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test('whole Reader metadata copied into a non-Reader directory fails', () => { const reader = JSON.parse(fs.readFileSync(path.join(stateOutputDirectory(synthetic, 'reader-mobile-390'), 'metadata.json'))); const target = manifest.states.find(state => state.fixture !== 'reader-visual-safe'); fs.writeFileSync(path.join(stateOutputDirectory(synthetic, target.id), 'metadata.json'), JSON.stringify(reader)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("production mutation fails", () => { const s = load(); s.production_mutation_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("valid synthetic manifest-bound summary passes", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
 

@@ -1,12 +1,17 @@
 import assert from 'node:assert/strict';
 
+export function assertCaptureIdentity(record, expectedState) {
+  assert.ok(expectedState);
+  assert.equal(record.state_id, expectedState.id, 'Captured identity must match the independently selected directory/state');
+  assert.equal(record.fixture, expectedState.fixture);
+  assert.equal(record.route, expectedState.route);
+}
+
 // The expected fixture comes from the bound state manifest, never the captured
 // marker itself. A public/Listener capture cannot opt out of its logo contract.
 export function assertQuietFolioReaderChrome(record, expectedState) {
   assert.equal(expectedState?.fixture, 'reader-visual-safe');
-  assert.equal(record.state_id, expectedState.id);
-  assert.equal(record.fixture, expectedState.fixture);
-  assert.equal(record.route, expectedState.route);
+  assertCaptureIdentity(record, expectedState);
   assert.equal(record.reader_chrome_contract, 'QUIET_FOLIO_NO_MARKETING_MASTHEAD');
   assert.equal(record.visible_header_count, 1);
   assert.equal(record.reader_marketing_header_count, 0);

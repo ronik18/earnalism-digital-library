@@ -7,7 +7,7 @@ import os from "node:os";
 import path from "node:path";
 import { loadStateManifest } from "./lib/seamless_brand_state_manifest.mjs";
 
-import { assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { assertCaptureIdentity, assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
 import { quietFolioCaptureFixture } from './test_helpers/quiet_folio_capture_fixture.mjs';
 
 const root = process.cwd();
@@ -39,9 +39,9 @@ function validate(output) {
     assert.equal(result.status_result, "PASS", `${browser} error-status result fails`);
     assert.equal(result.rendered_ui_result, "PASS", `${browser} rendered UI result fails`);
     const metadata = ids.map((id) => read(path.join(output, browser, "states", id, "metadata.json")));
-    for (const record of metadata) {
-      const expectedState = manifest.states.find(state => state.id === record.state_id);
-      assert.ok(expectedState); assert.equal(record.fixture, expectedState.fixture);
+    for (const [recordIndex, record] of metadata.entries()) {
+      const expectedState = manifest.states.find(state => state.id === ids[recordIndex]);
+      assertCaptureIdentity(record, expectedState);
       if (expectedState.fixture === 'reader-visual-safe') assertQuietFolioReaderChrome(record, expectedState);
       else { assert.equal(record.visible_header_count, 1); assert.equal(record.visible_canonical_lockup_count, 1); assert.equal(record.logo?.transform, 'none'); assert.equal(record.logo?.clipped, false); }
       assert.equal(record.browser, browser, `${browser}:${record.state_id} browser differs`);
@@ -107,11 +107,13 @@ for (const [name, change] of [
   ['Reader fixture spoof', record => { record.fixture = 'public-safe'; }],
 ]) test(`${name} fails independently of summary claims`, () => mutate(() => { const file = path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json'); const record = read(file); change(record); write(file, record); }));
 test('non-Reader missing marketing logo still fails', () => mutate(() => { const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); const file = path.join(synthetic, 'webkit', 'states', id, 'metadata.json'); const record = read(file); record.logo = null; write(file, record); }));
+test('whole Reader metadata copied into non-Reader path fails validation', () => mutate(() => { const reader = read(path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json')); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); write(path.join(synthetic, 'firefox', 'states', id, 'metadata.json'), reader); }));
 test("valid synthetic two-browser summary passes", () => validate(synthetic));
 
 // Exercise the real summary producer using labelled synthetic captures; no browser
 // or production qualification is inferred from these validator tests.
 function generateSyntheticSummary() { return spawnSync(process.execPath, [path.join(root, 'scripts/generate_seamless_brand_cross_browser_shell_summary.mjs'), '--output', synthetic], {cwd:root,encoding:'utf8'}); }
+test('summary producer rejects whole Reader metadata copied into non-Reader path', () => { reset(); const reader = read(path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json')); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); write(path.join(synthetic, 'firefox', 'states', id, 'metadata.json'), reader); assert.notEqual(generateSyntheticSummary().status, 0); reset(); });
 test('summary generator accepts strict synthetic Quiet Folio Reader records', () => { reset(); const result = generateSyntheticSummary(); assert.equal(result.status, 0, result.stderr); validate(synthetic); });
 test('summary generator rejects Reader contract omission', () => { reset(); const file = path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json'); const record = read(file); delete record.reader_chrome_contract; write(file, record); assert.notEqual(generateSyntheticSummary().status, 0); reset(); });
 test('summary generator retains non-Reader logo defects despite forged Reader marker', () => { reset(); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); const file = path.join(synthetic, 'webkit', 'states', id, 'metadata.json'); const record = read(file); record.logo = null; record.reader_chrome_contract = 'QUIET_FOLIO_NO_MARKETING_MASTHEAD'; write(file, record); const result = generateSyntheticSummary(); assert.equal(result.status, 0, result.stderr); assert.ok(read(path.join(synthetic, 'cross-browser-summary.json')).logo_card_states.includes(`webkit:${id}`)); assert.throws(() => validate(synthetic)); reset(); });

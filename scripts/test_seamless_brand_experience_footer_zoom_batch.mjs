@@ -8,7 +8,7 @@ import path from "node:path";
 import { loadStateManifest, selectStateRecords } from "./lib/seamless_brand_state_manifest.mjs";
 import { requestedScreenshotNames, stateOutputDirectory, validateCaptureSummary } from "./lib/seamless_brand_one_state_capture.mjs";
 
-import { assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { assertCaptureIdentity, assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
 
 const root = process.cwd();
 const captureScript = path.join(root, "scripts/capture_seamless_brand_owner_review.mjs");
@@ -44,7 +44,9 @@ test("reverse filter executes in manifest order", () => assert.deepEqual(selectS
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the local fixture-enabled production-build zoom capture.");
 run(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--state-filter", [...requestedIds].reverse().join(","), "--capture", "--browser", "chromium", "--base-url", baseUrl, "--output", output]);
 const summary = JSON.parse(fs.readFileSync(path.join(output, "capture-summary.json"), "utf8"));
+assert.deepEqual(summary.requested_state_ids, selected.map(state => state.id));
 const records = validateCaptureSummary(summary, output, 15);
+records.forEach((record, index) => assertCaptureIdentity(record, selected[index]));
 
 test("requested and effective zoom are recorded", () => records.forEach((record) => { assert.equal(record.zoom_results.requested_zoom_percent, record.zoom); assert.equal(record.zoom_results.effective_zoom_percent, record.zoom); }));
 test("device-scaled screenshots preserve the declared physical viewport within one raster pixel", () => records.forEach((record) => { assert.equal(record.zoom_results.zoom_method, "effective-layout-viewport-and-device-scale-factor"); const size = record.zoom_results.screenshot_dimensions["viewport.png"]; assert.ok(Math.abs(size.width - record.viewport.width) <= 1 && Math.abs(size.height - record.viewport.height) <= 1, `${record.state_id}: ${JSON.stringify(size)} differs from ${JSON.stringify(record.viewport)}`); }));
@@ -55,6 +57,7 @@ test("Reader balance consumption fails validation", () => { const record = clone
 test('Reader missing compact title fails', () => { const record = clone(recordFor(records, 'reader-mobile-320-zoom-200')); record.zoom_results.reader_topbar.children.title.box = null; assert.throws(() => assertReader(record)); });
 test('Reader marketing-logo injection fails', () => { const record = clone(recordFor(records, 'reader-mobile-320-zoom-200')); record.logo = {}; record.visible_canonical_lockup_count = 1; assert.throws(() => assertReader(record)); });
 test('Reader clipped navigation fails', () => { const record = clone(recordFor(records, 'reader-mobile-320-zoom-200')); record.zoom_results.reader_navigation.children.Contents.clipped_area = 1; assert.throws(() => assertReader(record)); });
+test('whole Reader record cannot replace an independently selected Listener state', () => { const reader = clone(recordFor(records, 'reader-mobile-390')); const expected = selected.find(state => state.id === 'listener-mobile-390'); assert.throws(() => assertCaptureIdentity(reader, expected)); });
 test("Listener media URL fails validation", () => { const record = clone(recordFor(records, "listener-mobile-320-zoom-200")); record.listener.raw_media_url = "present"; assert.throws(() => assertListener(record)); });
 test("Listener playable source fails validation", () => { const record = clone(recordFor(records, "listener-mobile-320-zoom-200")); record.listener.playable_source = "present"; assert.throws(() => assertListener(record)); });
 test("Listener preload or autoplay fails validation", () => { const record = clone(recordFor(records, "listener-mobile-320-zoom-200")); record.listener.autoplay = true; assert.throws(() => assertListener(record)); });

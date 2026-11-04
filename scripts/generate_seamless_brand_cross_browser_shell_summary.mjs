@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { loadStateManifest } from "./lib/seamless_brand_state_manifest.mjs";
 
-import { assertQuietFolioReaderChrome, isExpectedReader } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { assertCaptureIdentity, assertQuietFolioReaderChrome, isExpectedReader } from './lib/quiet_folio_brand_chrome_contract.mjs';
 
 const root = process.cwd();
 const defaultSelection = "docs/design-system/seamless-brand-cross-browser-shell-matrix.json";
@@ -52,7 +52,7 @@ for (const browser of ["firefox", "webkit"]) {
   const capture = readJson(summaryPath); const metadata = ids.map((id) => readJson(path.join(browserDirectory, "states", id, "metadata.json")));
   requireValue(capture.expected_state_count === 20 && capture.captured_state_count === 20 && capture.stable_state_count === 20, `${browser}: expected 20 stable captures`);
   requireValue(metadata.every((record) => record.browser === browser && record.stable), `${browser}: metadata browser or stability mismatch`);
-  for (const record of metadata) { const expected = states.get(record.state_id); requireValue(expected && record.fixture === expected.fixture && record.route === expected.route, `${browser}: captured fixture/route differs from bound state`); if (isExpectedReader(record, states)) assertQuietFolioReaderChrome(record, expected); }
+  for (const [recordIndex, record] of metadata.entries()) { const expected = states.get(ids[recordIndex]); assertCaptureIdentity(record, expected); if (expected.fixture === "reader-visual-safe") assertQuietFolioReaderChrome(record, expected); }
   const fontFailures = metadata.filter((record) => !requiredFonts.every((font) => record.font_results?.[font] === true)).map((record) => record.state_id);
   const interactionFailures = metadata.filter((record) => record.interaction_result?.failures?.length).map((record) => record.state_id);
   const readerFailures = metadata.filter((record) => record.fixture === "reader-visual-safe" && (record.reader.protected_content_exposed || record.reader.protected_prefetch || record.reader.balance_consumption !== 0 || record.zoom_results?.clipped_control_count > 0)).map((record) => record.state_id);
