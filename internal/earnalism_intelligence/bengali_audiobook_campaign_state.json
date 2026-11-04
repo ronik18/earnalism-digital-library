@@ -598,5 +598,17 @@
     "learning": "Compact secondary controls into accessible sheets and fragment oversized prose paragraphs by measured fit; preserve source ordering, explicit breaks and poetry. Reuse exact scoped independent browser evidence but require new exact-head CI/published reviews. UI source integration never establishes runtime recovery or production availability.",
     "no_production_provider_audio_or_purchase_actions": true,
     "next_exact_prompt": "Run focused Reader tests and independent composed-source review; require all applicable exact-head CI, browser and final published reviews before expected-head merge and tree equality. No deployment."
+  },
+  "quiet_folio_spacing_smoke_20261104": {
+    "at": "2026-11-04T06:50:01.459574+00:00",
+    "event": "QUIET_FOLIO_SPACING_SMOKE_SUCCESSOR",
+    "failed_head": "9e82b30427d70c519064de6ddde1d0e048026a59",
+    "failed_run": 41787579922,
+    "cause": "Historical smoke required a removed reading-sidebar cover; null geometry correctly failed the job.",
+    "correction": "Assert measured heading/prose alignment, zero outer margin/overflow/runtime errors/API writes, compact visible navigation, approved52rem canvas, no repeated reading cover, and bounded cover reachable in Edition and credits at all4viewports.",
+    "local_actual_browser": "4of4 PASS at2940/1440/1024/390 against exact QuietFolio fixture; no production requests or mutations",
+    "status": "SOURCE_CORRECTION_PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
+    "production_frontend_bytes_unchanged": true,
+    "next_exact_prompt": "Independently review the smoke adaptation and additive learnings, then normal push a new exact head; require all applicable fresh CI/reviews before merge. Do not rerun the failed head."
   }
 }

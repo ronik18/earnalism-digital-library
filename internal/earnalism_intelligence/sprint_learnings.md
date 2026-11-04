@@ -3072,3 +3072,8 @@ The hosted restore tests correctly failed when their journal parent was Linux sh
 ## 4 November 2026 — Quiet Folio source integration
 
 Compact secondary controls into accessible sheets and fragment oversized prose paragraphs by measured fit; preserve source ordering, explicit breaks and poetry. Reuse exact scoped independent browser evidence but require new exact-head CI/published reviews. UI source integration never establishes runtime recovery or production availability.
+
+
+### Quiet Folio spacing smoke follows the approved composition
+
+Historical smoke required a removed reading-sidebar cover; null geometry correctly failed the job. Assert measured heading/prose alignment, zero outer margin/overflow/runtime errors/API writes, compact visible navigation, approved52rem canvas, no repeated reading cover, and bounded cover reachable in Edition and credits at all4viewports. Production source and entitlements are unchanged by this test correction; preserve the failed run and require fresh CI.
