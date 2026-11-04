@@ -3124,3 +3124,7 @@ The byte-identical helper emits S_IFREG in regular-header mode fields. Compare e
 ### One-shot frontend return and retained startup proof — 4 November 2026
 
 A promotion replay is not a recovery mechanism. Bind a distinct return to the original applied promotion and physical journal, permanent claim, immutable target and current-backend compatibility; recheck current serving identity immediately before dispatch. UNKNOWN never permits another write. A pure retained phase callback freezes capture time and binding; it cannot allocate reads or refresh stale evidence. Dummy tests/source admission are not native recovery or capture authority.
+
+### Stale Reader refresh guidance — 4 November 2026
+
+Already-loaded clients do not change when aliases change. Preserve a structured fail-closed denial and offer conditional explicit refresh guidance through the same proxy; never retry a paid request or grant access. JSON reserialization can alter unrelated numbers, so numeric extensions pass through byte-for-byte. A local tab/reload test or recovery message does not certify production migration, billing, containment or availability recovery.
