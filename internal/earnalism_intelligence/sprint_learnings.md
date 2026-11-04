@@ -3087,3 +3087,8 @@ Highzoom checks1through24passed; final zero-error assertion recorded one generic
 ### Exact hosted attribution: canonical brand image fixture
 
 Retained diagnostics identify the canonical absolute brand image URL aborted by functionalCheck deny-foreign route; Chromium148 reports net::ERR_FAILED. Crossport dummy API probe returned200 and noAPIerror; CORS is not the demonstrated cause. Serve only exact canonical brand PNG GET from existing repository asset, matching main capture harness. Keep every other foreign request denied and all25 assertions/errors[] unchanged. Force real Image.decode probe in each functional case so compile-only local fixtures also exercise this path. Retain the diagnostic failure and inconclusive CORS probe. A compile-only local build does not reproduce every static-SEO asset request; force the precise asset path through its deterministic fixture.
+
+
+### Propagate approved Reader chrome through every active evidence consumer
+
+Highzoom25 now passed. Next footer/zoom consumer crashed on logo.clipped because Quiet Folio intentionally emits logo=null. Bounded required-gate audits identified equivalent fullChromium/crossbrowser and dependentPR471 marketing assumptions. Only bound expected Reader states admit exact QF marker, one compact header, zero marketing headers/lockups, logo/action-row nulls, real positive bounded title and >=44px controls, ordered unclipped navigation, zerooverlap and public safety. NonReader marketing assertions remain strict; captured marker alone cannot grant exception. Trace required downstream workflows before another CI push; do not globally relax logo checks or trust a captured fixture label. Keep synthetic validator tests, reused captures and newly measured browser evidence distinct.

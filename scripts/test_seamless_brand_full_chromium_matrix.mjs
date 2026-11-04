@@ -8,6 +8,9 @@ import path from "node:path";
 import { loadStateManifest } from "./lib/seamless_brand_state_manifest.mjs";
 import { stateOutputDirectory, validateCaptureSummary } from "./lib/seamless_brand_one_state_capture.mjs";
 
+import { assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { quietFolioCaptureFixture } from './test_helpers/quiet_folio_capture_fixture.mjs';
+
 const root = process.cwd();
 const manifestPath = path.join(root, "docs/design-system/seamless-brand-state-manifest.json");
 const manifest = loadStateManifest(manifestPath);
@@ -65,6 +68,10 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
     assert.equal(record.tree_sha, summary.tree_sha, `${record.state_id}: tree SHA mismatch`);
     assert.equal(record.rendered_ui_result, "PASS", `${record.state_id}: rendered UI failure`);
     assert.equal(record.visible_header_count, 1, `${record.state_id}: multiple header state`);
+    const expectedState = manifest.states.find(state => state.id === record.state_id);
+    assert.equal(record.fixture, expectedState.fixture);
+    if (expectedState.fixture === 'reader-visual-safe') assertQuietFolioReaderChrome(record, expectedState);
+    else {
     assert.equal(record.visible_canonical_lockup_count, 1, `${record.state_id}: duplicate logo state`);
     assert.equal(record.logo?.transform, "none", `${record.state_id}: transform logo use`);
     assert.equal(record.logo?.wrapper_background, "rgba(0, 0, 0, 0)", `${record.state_id}: logo wrapper background`);
@@ -73,6 +80,7 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
     assert.equal(record.logo?.wrapper_box_shadow, "none", `${record.state_id}: logo card shadow`);
     assert.equal(record.logo?.wrapper_padding, "0px", `${record.state_id}: logo card padding`);
     assert.equal(record.logo?.clipped, false, `${record.state_id}: clipped logo`);
+    }
     assert.equal(record.overlap, false, `${record.state_id}: logo/control overlap`);
     assert.equal(record.horizontal_overflow, false, `${record.state_id}: horizontal overflow`);
     assert.equal(record.console_error_count, 0, `${record.state_id}: console error`);
@@ -106,6 +114,7 @@ function createSynthetic(output, productionSurface) {
     const directory = stateOutputDirectory(output, state.id); fs.mkdirSync(directory, { recursive: true }); fs.writeFileSync(path.join(directory, "viewport.png"), png);
     const metadata = { source_head: head, tree_sha: tree, state_id: state.id, route: state.route, stable: true, fixture: state.fixture, interaction: state.interaction, rendered_ui_result: "PASS", visible_header_count: 1, visible_canonical_lockup_count: 1, logo: { transform: "none", wrapper_background: "rgba(0, 0, 0, 0)", wrapper_border_width: "0px", wrapper_border_radius: "0px", wrapper_box_shadow: "none", wrapper_padding: "0px", clipped: false }, overlap: false, horizontal_overflow: false, console_error_count: 0, page_error_count: 0, failed_required_request_count: 0, reader: { protected_content_exposed: false, protected_prefetch: false, balance_consumption: 0 }, listener: { raw_media_url: "absent", playable_source: "absent", autoplay: false, preload: "absent", balance_consumption: 0 }, zoom_results: { clipped_control_count: 0, logo_control_overlap_area: 0 }, interaction_result: state.interaction === "none" || state.interaction === "sanitize-account-fixture" || state.interaction === "scroll-to-footer" ? undefined : { failures: [] }, screenshot_paths: { viewport: "viewport.png" }, screenshot_sha256: { viewport: sha(png) } };
     if (state.fixture === "error-404-contract" || state.fixture === "tombstone-410-contract") { metadata.status_contract = { result: "PASS" }; fs.writeFileSync(path.join(directory, "status-contract-results.json"), JSON.stringify(metadata.status_contract)); }
+    if (state.fixture === 'reader-visual-safe') { const { reader_topbar, reader_navigation, ...chrome } = quietFolioCaptureFixture(); Object.assign(metadata, chrome); Object.assign(metadata.zoom_results, {reader_topbar, reader_navigation}); }
     fs.writeFileSync(path.join(directory, "metadata.json"), JSON.stringify(metadata));
   }
   const classifications = { PUBLIC_INDEXABLE: 1 };
@@ -125,6 +134,12 @@ test("unstable state fails", () => { const s = load(); s.stable_state_count = 64
 test("interaction failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-menu-open-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.interaction_result.failures = ["focus-trap"]; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("zoom failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390-zoom-200"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.zoom_results.clipped_control_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("Reader safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.reader.protected_prefetch = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+for (const [name, change] of [
+  ['Reader title absent', record => { record.zoom_results.reader_topbar.children.title.box = null; }],
+  ['Reader marketing logo injected', record => { record.visible_canonical_lockup_count = 1; record.logo = {}; }],
+  ['Reader navigation clipped', record => { record.zoom_results.reader_navigation.children.Contents.clipped_area = 1; }],
+  ['Reader fixture spoofed', record => { record.fixture = 'public-safe'; }],
+]) test(`${name} fails even with an empty defect summary`, () => { const file = path.join(stateOutputDirectory(synthetic, 'reader-mobile-390'), 'metadata.json'); const record = JSON.parse(fs.readFileSync(file)); change(record); fs.writeFileSync(file, JSON.stringify(record)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("Listener safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "listener-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.listener.raw_media_url = "present"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("status contract failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "error-404-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.status_contract.result = "FAIL"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("logo card use fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.logo.wrapper_border_radius = "20px"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });

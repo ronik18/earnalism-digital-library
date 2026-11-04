@@ -14222,5 +14222,29 @@
     "scope": "TEST_ONLY_NO_PRODUCTION_SOURCE_CHANGE",
     "status": "PENDING_NATIVE_LOCAL_AND_INDEPENDENT_REVIEW_THEN_FRESH_CI",
     "next_exact_prompt": "Verify all25highzoom checks and pinnedasset decode locally, independently review exact-URL GET-only exception and zero-error gate, then newheadCI; no blindrerun of failed head or error filtering."
+  },
+  "quiet_folio_brand_gate_family_20261104": {
+    "at": "2026-11-04T07:58:49.305651+00:00",
+    "event": "QUIET_FOLIO_EXPECTED_FIXTURE_BOUND_BRAND_GATE_FAMILY",
+    "failed_head": "94919d06031b91bed8ac9f4c1ce9f5b17971651c",
+    "failed_run": 41792636890,
+    "failed_job": 126449371572,
+    "observed": "Highzoom25 now passed. Next footer/zoom consumer crashed on logo.clipped because Quiet Folio intentionally emits logo=null. Bounded required-gate audits identified equivalent fullChromium/crossbrowser and dependentPR471 marketing assumptions.",
+    "scope": "VERIFICATION_ONLY; Reader production/entitlements/rights/leases/backend unchanged",
+    "contract": "Only bound expected Reader states admit exact QF marker, one compact header, zero marketing headers/lockups, logo/action-row nulls, real positive bounded title and >=44px controls, ordered unclipped navigation, zerooverlap and public safety. NonReader marketing assertions remain strict; captured marker alone cannot grant exception.",
+    "local_checks": {
+      "shared_contract_synthetic": 27,
+      "full_chromium_synthetic": 33,
+      "cross_browser_synthetic_and_real_summary_producer": 29,
+      "footer_actual_capture_states": 15,
+      "footer_native_checks": 24,
+      "footer_assertion_replay_with_3_new_negatives": 27,
+      "dependent_reader_actual_viewports": 6,
+      "nonReader_actual_routes_not_replayed": "18 existing assertion branches preserved; freshCI required",
+      "publication_workflow_tests": 46
+    },
+    "evidence_limits": "Synthetic fixtures and assertion replay are not new browser captures or release proof. Focused Reader header derivative retains original6viewports but only1route and is private; committed harness keeps19routes.",
+    "status": "COMPOSED_SUCCESSOR_PENDING_INDEPENDENT_REVIEW_AND_FRESH_EXACT_HEAD_CI",
+    "next_exact_prompt": "Independently review full affected verification family and nonReader branch preservation; run fresh mandatory CI/browser/published gates on successor before expected-head merge/tree equality. No deployment or native recovery claims."
   }
 }
