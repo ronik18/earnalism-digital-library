@@ -150,15 +150,19 @@ try {
     const { page: guest, state: guestState } = await fixturePage(viewport, false);
     await guest.goto(`${base}/reader/${slug}?p=1`);
     await guest.locator('[data-pagination-ready="true"]').waitFor();
+    await guest.getByRole('button', { name: 'Contents', exact: true }).click();
     const guestChoices = await guest.getByLabel('Go to page', { exact: true }).locator('option').count();
-    assert.equal(guestChoices, 3, 'The guest selector is limited to three visual pages');
-    await guest.getByLabel('Go to page', { exact: true }).selectOption({ index: 2 });
-    await guest.waitForFunction(() => Number(document.querySelector('.reader-v2__visual-viewport')?.dataset.visualPageIndex) === 2);
+    const naturalGuestPages = await guest.locator('.reader-v2__visual-viewport').evaluate(node => Number(node.dataset.pageCount));
+    assert.equal(guestChoices, Math.min(3, naturalGuestPages), 'The guest selector contains exactly the available public pages, never a fourth');
+    assert.ok(guestChoices > 0 && guestChoices <= 3);
+    await guest.getByLabel('Go to page', { exact: true }).selectOption({ index: guestChoices - 1 });
+    await guest.getByRole('button', { name: 'Close contents and page navigation', exact: true }).click();
+    await guest.waitForFunction(index => Number(document.querySelector('.reader-v2__visual-viewport')?.dataset.visualPageIndex) === index, guestChoices - 1);
     await guest.locator('.reader-v2__page-arrow--next').click();
     await guest.waitForURL(url => url.pathname === '/login');
     assert.equal(guestState.post_requests, 0, 'The guest phase must not mutate fixture state');
     assert.ok(guestState.public_chunks.every(index => index <= 3), 'Guests must never fetch protected chunks');
-    report.guest_cases.push({ viewport, visual_choices: guestChoices, requested_chunks: guestState.public_chunks, post_requests: 0, result: 'PASS' });
+    report.guest_cases.push({ viewport, visual_choices: guestChoices, natural_pages: naturalGuestPages, requested_chunks: guestState.public_chunks, post_requests: 0, result: 'PASS' });
     await guest.close();
 
     // Obtain an ordinary dummy-user lease through the actual continuation UI.
@@ -196,12 +200,14 @@ try {
     const initial = await geometry(); assert.ok(initial.height > 0);
     const anchor = await page.evaluate(content => { const template = document.createElement('template'); template.innerHTML = content; return template.content.textContent.length + 39; }, payloads[0].content);
     assert.ok(initial.start <= anchor && initial.end > anchor, 'The requested canonical source anchor remains on the resolved visual page');
-    assert.equal(initial.fontSize, '18px'); assert.equal(initial.lineHeight, '24.75px'); assert.equal(initial.measurementLineHeight, initial.lineHeight);
-    if (viewport.width === 844) { assert.equal(initial.width, 438); assert.equal(initial.height, 148); }
+    assert.equal(initial.fontSize, '20px'); assert.equal(initial.lineHeight, '27.5px'); assert.equal(initial.measurementLineHeight, initial.lineHeight);
+    if (viewport.width === 844) { assert.ok(initial.width > 438, 'Quiet Folio reclaims the former sidebar/gutters'); assert.ok(initial.height > 148, 'Quiet Folio reclaims former redundant chrome height'); }
     const selector = page.getByLabel('Go to page', { exact: true });
     const texts = []; let breaks = 0;
     for (let i = 0; i < initial.pages; i++) {
+      await page.getByRole('button', { name: 'Contents', exact: true }).click();
       await selector.selectOption({ index: i });
+      await page.getByRole('button', { name: 'Close contents and page navigation', exact: true }).click();
       await page.waitForFunction(index => Number(document.querySelector('.reader-v2__visual-viewport').dataset.visualPageIndex) === index && document.querySelector('[data-pagination-ready="true"]'), i);
       const current = await geometry(); assert.equal(current.height, initial.height, 'Page-label changes must not resize prose or trigger repagination'); assert.equal(current.pages, initial.pages, 'Page turns must preserve the settled page map'); assert.ok(current.scrollHeight <= current.height + 1); assert.ok(current.scrollWidth <= current.width + 1);
       texts.push(await page.getByTestId('reader-reading-text').textContent()); breaks += await page.getByTestId('reader-reading-text').locator('br').count();
@@ -209,7 +215,9 @@ try {
     const source = await page.locator('.reader-v2__visual-viewport > .reader-v2__pagination-source').first().textContent();
     assert.equal(texts.join(''), source, 'No missing, duplicate or reordered source characters');
     assert.equal(breaks, await page.locator('.reader-v2__visual-viewport > .reader-v2__pagination-source').first().locator('br').count(), 'No missing or duplicated explicit line breaks');
+    await page.getByRole('button', { name: 'Contents', exact: true }).click();
     await selector.selectOption({ index: initial.index });
+    await page.getByRole('button', { name: 'Close contents and page navigation', exact: true }).click();
     await page.getByRole('button', { name: 'Next page', exact: true }).click();
     await page.waitForFunction(index => Number(document.querySelector('.reader-v2__visual-viewport').dataset.visualPageIndex) === index + 1, initial.index);
     await page.getByRole('button', { name: 'Previous page', exact: true }).click();
@@ -220,6 +228,7 @@ try {
     await page.close();
   }
   assert.equal(report.guest_cases.length, 5);
+  assert.ok(report.guest_cases.some(value => value.visual_choices === 3), 'At least one ordinary guest case must exercise the full three-page boundary');
   assert.equal(report.unauthorized_chunk_requests, 0);
 } finally {
   await browser.close(); fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(report, null, 2));

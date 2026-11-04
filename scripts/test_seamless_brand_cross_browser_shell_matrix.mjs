@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { loadStateManifest } from "./lib/seamless_brand_state_manifest.mjs";
+
+import { assertCaptureIdentity, assertQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+import { quietFolioCaptureFixture } from './test_helpers/quiet_folio_capture_fixture.mjs';
 
 const root = process.cwd();
 const selectionPath = path.join(root, "docs/design-system/seamless-brand-cross-browser-shell-matrix.json");
@@ -35,7 +39,11 @@ function validate(output) {
     assert.equal(result.status_result, "PASS", `${browser} error-status result fails`);
     assert.equal(result.rendered_ui_result, "PASS", `${browser} rendered UI result fails`);
     const metadata = ids.map((id) => read(path.join(output, browser, "states", id, "metadata.json")));
-    for (const record of metadata) {
+    for (const [recordIndex, record] of metadata.entries()) {
+      const expectedState = manifest.states.find(state => state.id === ids[recordIndex]);
+      assertCaptureIdentity(record, expectedState);
+      if (expectedState.fixture === 'reader-visual-safe') assertQuietFolioReaderChrome(record, expectedState);
+      else { assert.equal(record.visible_header_count, 1); assert.equal(record.visible_canonical_lockup_count, 1); assert.equal(record.logo?.transform, 'none'); assert.equal(record.logo?.clipped, false); }
       assert.equal(record.browser, browser, `${browser}:${record.state_id} browser differs`);
       assert.equal(record.stable, true, `${browser}:${record.state_id} unstable`);
       assert.equal(record.rendered_ui_result, "PASS", `${browser}:${record.state_id} rendered UI failure`);
@@ -55,11 +63,12 @@ function createSynthetic(output) {
   for (const browser of ["firefox", "webkit"]) {
     for (const id of ids) {
       const state = manifest.states.find((item) => item.id === id); const directory = path.join(output, browser, "states", id); fs.mkdirSync(directory, { recursive: true }); fs.writeFileSync(path.join(directory, "viewport.png"), png);
-      const metadata = { state_id: id, fixture: state.fixture, browser, stable: true, rendered_ui_result: "PASS", visible_header_count: 1, visible_canonical_lockup_count: 1, logo: { transform: "none", wrapper_border_width: "0px", wrapper_border_radius: "0px", wrapper_box_shadow: "none", clipped: false }, overlap: false, horizontal_overflow: false, console_error_count: 0, page_error_count: 0, failed_required_request_count: 0, unclassified_http_error_responses: [], zoom_results: { clipped_control_count: 0, logo_control_overlap_area: 0 }, font_results: { cormorant_garamond: true, outfit: true, noto_serif_bengali: true, noto_sans_bengali: true }, reader: { protected_content_exposed: false, protected_prefetch: false, balance_consumption: 0 }, listener: { raw_media_url: "absent", playable_source: "absent", autoplay: false, preload: "absent", balance_consumption: 0 }, production_mutation_count: 0, screenshot_paths: { viewport: "viewport.png" }, screenshot_sha256: { viewport: sha(png) }, interaction_result: state.interaction === "open-mobile-menu" || state.interaction === "open-library-filters" ? { failures: [] } : undefined, status_contract: state.fixture.includes("contract") ? { result: "PASS" } : undefined };
+      const metadata = { state_id: id, route: state.route, fixture: state.fixture, browser, stable: true, rendered_ui_result: "PASS", visible_header_count: 1, visible_canonical_lockup_count: 1, logo: { transform: "none", wrapper_border_width: "0px", wrapper_border_radius: "0px", wrapper_box_shadow: "none", clipped: false }, overlap: false, horizontal_overflow: false, console_error_count: 0, page_error_count: 0, failed_required_request_count: 0, unclassified_http_error_responses: [], zoom_results: { clipped_control_count: 0, logo_control_overlap_area: 0 }, font_results: { cormorant_garamond: true, outfit: true, noto_serif_bengali: true, noto_sans_bengali: true }, reader: { protected_content_exposed: false, protected_prefetch: false, balance_consumption: 0 }, listener: { raw_media_url: "absent", playable_source: "absent", autoplay: false, preload: "absent", balance_consumption: 0 }, production_mutation_count: 0, screenshot_paths: { viewport: "viewport.png" }, screenshot_sha256: { viewport: sha(png) }, interaction_result: state.interaction === "open-mobile-menu" || state.interaction === "open-library-filters" ? { failures: [] } : undefined, status_contract: state.fixture.includes("contract") ? { result: "PASS" } : undefined };
+      if (state.fixture === 'reader-visual-safe') { const { reader_topbar, reader_navigation, ...chrome } = quietFolioCaptureFixture(); Object.assign(metadata, chrome); Object.assign(metadata.zoom_results, {reader_topbar, reader_navigation}); }
       write(path.join(directory, "metadata.json"), metadata); records.push(metadata);
     }
     const result = { browser, version: `${browser}-synthetic`, expected_state_count: 20, captured_state_count: 20, stable_state_count: 20, screenshot_count: 20, font_result: "PASS", interaction_result: "PASS", reader_result: "PASS", listener_result: "PASS", status_result: "PASS", rendered_ui_result: "PASS", production_mutation_count: 0, selected_state_ids: ids };
-    fs.mkdirSync(path.join(output, browser), { recursive: true }); write(path.join(output, browser, "capture-summary.json"), { ...result, requested_state_ids: ids, captured_state_ids: ids });
+    fs.mkdirSync(path.join(output, browser), { recursive: true }); write(path.join(output, browser, "capture-summary.json"), { ...result, browser_version: `${browser}-synthetic`, requested_state_ids: ids, captured_state_ids: ids });
   }
   const browserResult = (browser) => ({ browser, version: `${browser}-synthetic`, expected_state_count: 20, captured_state_count: 20, stable_state_count: 20, screenshot_count: 20, font_result: "PASS", interaction_result: "PASS", reader_result: "PASS", listener_result: "PASS", status_result: "PASS", rendered_ui_result: "PASS", production_mutation_count: 0, selected_state_ids: ids });
   write(path.join(output, "cross-browser-summary.json"), { shell_family_count: 20, selected_state_ids: ids, firefox: browserResult("firefox"), webkit: browserResult("webkit"), duplicate_logo_states: [], logo_card_states: [], transform_states: [], clipped_logo_states: [], clipped_control_states: [], overlap_states: [], multiple_header_states: [], overflow_states: [], console_page_request_failure_states: [], unclassified_http_error_states: [], rendered_ui_defect_states: [], production_mutation_count: 0 });
@@ -90,7 +99,24 @@ test("Listener media exposure fails", () => mutate(() => { const p = path.join(s
 test("404 or 410 contract failure fails", () => mutate(() => { const s = read(path.join(synthetic, "cross-browser-summary.json")); s.webkit.status_result = "FAIL"; write(path.join(synthetic, "cross-browser-summary.json"), s); }));
 test("zoom overflow failure fails", () => mutate(() => { const s = read(path.join(synthetic, "cross-browser-summary.json")); s.overflow_states = ["firefox:home-mobile-zoom-200"]; write(path.join(synthetic, "cross-browser-summary.json"), s); }));
 test("production mutation fails", () => mutate(() => { const s = read(path.join(synthetic, "cross-browser-summary.json")); s.production_mutation_count = 1; write(path.join(synthetic, "cross-browser-summary.json"), s); }));
+for (const [name, change] of [
+  ['Reader missing compact title', record => { record.zoom_results.reader_topbar.children.title.box = null; }],
+  ['Reader marketing-logo injection', record => { record.visible_canonical_lockup_count = 1; record.logo = {}; }],
+  ['Reader clipped navigation', record => { record.zoom_results.reader_navigation.children.Contents.clipped_area = 1; }],
+  ['Reader marker omission', record => { delete record.reader_chrome_contract; }],
+  ['Reader fixture spoof', record => { record.fixture = 'public-safe'; }],
+]) test(`${name} fails independently of summary claims`, () => mutate(() => { const file = path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json'); const record = read(file); change(record); write(file, record); }));
+test('non-Reader missing marketing logo still fails', () => mutate(() => { const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); const file = path.join(synthetic, 'webkit', 'states', id, 'metadata.json'); const record = read(file); record.logo = null; write(file, record); }));
+test('whole Reader metadata copied into non-Reader path fails validation', () => mutate(() => { const reader = read(path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json')); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); write(path.join(synthetic, 'firefox', 'states', id, 'metadata.json'), reader); }));
 test("valid synthetic two-browser summary passes", () => validate(synthetic));
+
+// Exercise the real summary producer using labelled synthetic captures; no browser
+// or production qualification is inferred from these validator tests.
+function generateSyntheticSummary() { return spawnSync(process.execPath, [path.join(root, 'scripts/generate_seamless_brand_cross_browser_shell_summary.mjs'), '--output', synthetic], {cwd:root,encoding:'utf8'}); }
+test('summary producer rejects whole Reader metadata copied into non-Reader path', () => { reset(); const reader = read(path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json')); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); write(path.join(synthetic, 'firefox', 'states', id, 'metadata.json'), reader); assert.notEqual(generateSyntheticSummary().status, 0); reset(); });
+test('summary generator accepts strict synthetic Quiet Folio Reader records', () => { reset(); const result = generateSyntheticSummary(); assert.equal(result.status, 0, result.stderr); validate(synthetic); });
+test('summary generator rejects Reader contract omission', () => { reset(); const file = path.join(synthetic, 'firefox', 'states', 'reader-mobile-390', 'metadata.json'); const record = read(file); delete record.reader_chrome_contract; write(file, record); assert.notEqual(generateSyntheticSummary().status, 0); reset(); });
+test('summary generator retains non-Reader logo defects despite forged Reader marker', () => { reset(); const id = ids.find(id => manifest.states.find(state => state.id === id).fixture !== 'reader-visual-safe'); const file = path.join(synthetic, 'webkit', 'states', id, 'metadata.json'); const record = read(file); record.logo = null; record.reader_chrome_contract = 'QUIET_FOLIO_NO_MARKETING_MASTHEAD'; write(file, record); const result = generateSyntheticSummary(); assert.equal(result.status, 0, result.stderr); assert.ok(read(path.join(synthetic, 'cross-browser-summary.json')).logo_card_states.includes(`webkit:${id}`)); assert.throws(() => validate(synthetic)); reset(); });
 
 const index = process.argv.indexOf("--output");
 if (index >= 0) { const output = process.argv[index + 1]; if (!output) throw new Error("--output requires a directory"); validate(path.resolve(output)); }

@@ -3067,3 +3067,33 @@ PR #641 regression correctly rejected the Reader612 preparation record after fou
 ## 4 November 2026 — private journal fixtures on shared temporary storage
 
 The hosted restore tests correctly failed when their journal parent was Linux shared `/tmp`. Nest the journal inside its private temporary container. Keep production custody checks intact; a new negative test makes the owned parent world writable and verifies rejection before transport. The failure was reproduced locally with a shared TMPDIR. Preserve every existing restore test, permanent claim and UNKNOWN behavior. The earlier887backend/29SredniMongo passes do not make the failed full run pass and cannot certify the next head or native recovery.
+
+
+## 4 November 2026 — Quiet Folio source integration
+
+Compact secondary controls into accessible sheets and fragment oversized prose paragraphs by measured fit; preserve source ordering, explicit breaks and poetry. Reuse exact scoped independent browser evidence but require new exact-head CI/published reviews. UI source integration never establishes runtime recovery or production availability.
+
+
+### Quiet Folio spacing smoke follows the approved composition
+
+Historical smoke required a removed reading-sidebar cover; null geometry correctly failed the job. Assert measured heading/prose alignment, zero outer margin/overflow/runtime errors/API writes, compact visible navigation, approved52rem canvas, no repeated reading cover, and bounded cover reachable in Edition and credits at all4viewports. Production source and entitlements are unchanged by this test correction; preserve the failed run and require fresh CI.
+
+
+### Attribute generic fixture-network errors before declaring a fix
+
+Highzoom checks1through24passed; final zero-error assertion recorded one generic ERR_FAILED without endpoint. Dependent recovery baseline correctly held. Retain zero-error assertion and all25checks. Record failed request endpoints, console locations, mocked API origins/methods and browser version; retain functional diagnostics file before final assertion. Explicit fixed-loopback credential CORS/OPTIONS and GET-only mock admission match existing isolated landscape convention; probe credentialed cross-port read. 25of25nativechecksPASS againstCIshapedcrossportfixture beforeandafterdiagnostics. Separate missing-CORS mockednegative unexpectedly succeeded underlocalPlaywright, so it doesnotproveCORS causedhostedfailure; preserved as inconclusive. No product delta or hosted success is claimed.
+
+
+### Exact hosted attribution: canonical brand image fixture
+
+Retained diagnostics identify the canonical absolute brand image URL aborted by functionalCheck deny-foreign route; Chromium148 reports net::ERR_FAILED. Crossport dummy API probe returned200 and noAPIerror; CORS is not the demonstrated cause. Serve only exact canonical brand PNG GET from existing repository asset, matching main capture harness. Keep every other foreign request denied and all25 assertions/errors[] unchanged. Force real Image.decode probe in each functional case so compile-only local fixtures also exercise this path. Retain the diagnostic failure and inconclusive CORS probe. A compile-only local build does not reproduce every static-SEO asset request; force the precise asset path through its deterministic fixture.
+
+
+### Propagate approved Reader chrome through every active evidence consumer
+
+Highzoom25 now passed. Next footer/zoom consumer crashed on logo.clipped because Quiet Folio intentionally emits logo=null. Bounded required-gate audits identified equivalent fullChromium/crossbrowser and dependentPR471 marketing assumptions. Only bound expected Reader states admit exact QF marker, one compact header, zero marketing headers/lockups, logo/action-row nulls, real positive bounded title and >=44px controls, ordered unclipped navigation, zerooverlap and public safety. NonReader marketing assertions remain strict; captured marker alone cannot grant exception. Trace required downstream workflows before another CI push; do not globally relax logo checks or trust a captured fixture label. Keep synthetic validator tests, reused captures and newly measured browser evidence distinct.
+
+
+### Expected capture identity must come from the selected path
+
+Expected state was selected from captured state_id; whole Reader metadata could be copied into a nonReader path while external summary IDs stayed unchanged. Earlier composed review superseded by explicit HOLD. Immutable d205 fullChromium validator, crossbrowser validator and summary producer each accepted wholeReadercopy into a nonReader path; original scripts/helper/fixtures retained privately for reproduction. Bind state_id/fixture/route to manifest state derived independently from selected iteration index or expected directory before choosing Reader exception. Footer also binds summary requested IDs to selected manifest sequence. No global legacy summary API change or logo relaxation. Keep the failed review and reproduction; a green capture cannot replace independently bound authority.

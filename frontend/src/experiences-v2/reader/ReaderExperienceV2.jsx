@@ -1,9 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Bookmark, ChevronLeft, ChevronRight, Clock3, Minus, Plus, Settings2, StickyNote, X } from "lucide-react";
-import ExperienceBottomNavigation from "../shared/ExperienceBottomNavigation";
-import ExperienceHeader from "../shared/ExperienceHeader";
-import ExperienceIconButton from "../shared/ExperienceIconButton";
-import ExperiencePanel from "../shared/ExperiencePanel";
+import { Bookmark, ChevronLeft, ChevronRight, List, Maximize, Minimize, Plus, StickyNote } from "lucide-react";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-pagination.css";
@@ -13,6 +9,8 @@ import { ReaderContent, inlineEmphasis, readerIndexBoundary } from "./readerCont
 import useVisualPagination from "./useVisualPagination";
 import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
+import "./reader-quiet-folio.css";
+import ReaderDialog from "./ReaderDialog";
 import BookCoverImage from "../../components/BookCoverImage";
 import LicensedTextNotice from "../../components/LicensedTextNotice";
 import { approvedTextLicense } from "../../lib/textLicense";
@@ -67,8 +65,8 @@ const LINE_SPACING = {
   airy: { en: 1.51, bn: 1.54 },
 };
 const LANGUAGE_TYPOGRAPHY = {
-  en: { size: 1.125, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
-  bn: { size: 1.125, fontFamily: '"Noto Serif Bengali", serif', fontWeight: 500 },
+  en: { size: 1.25, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
+  bn: { size: 1.25, fontFamily: '"Noto Serif Bengali", serif', fontWeight: 500 },
 };
 
 function readerLanguage(language) {
@@ -79,19 +77,47 @@ function formatRem(value) {
   return `${Number(value).toFixed(3).replace(/0+$/, "").replace(/\.$/, "")}rem`;
 }
 
-function textSizeIndex(value) {
-  return READER_TEXT_SIZE_REM_STEPS.indexOf(value);
-}
-
 export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access = {}, onRequestPage, onNavigate }) {
   const [settings, setSettings] = useState(() => {
     try { return loadReaderSettings(); } catch { return READER_SETTINGS_DEFAULTS; }
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [contentsOpen, setContentsOpen] = useState(false);
+  const [libraryQuery, setLibraryQuery] = useState("");
+  const [creditsOpen, setCreditsOpen] = useState(false);
+  const folioRef = useRef(null);
+  const fullscreenTriggerRef = useRef(null);
+  const showControlsRef = useRef(null);
+  const focusWasEnabled = useRef(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [fullscreenPending, setFullscreenPending] = useState(false);
+  const [fullscreenNotice, setFullscreenNotice] = useState("");
+  const nativeFullscreenEntered = useRef(false);
+  useEffect(() => {
+    const syncFullscreen = () => {
+      const entered = document.fullscreenElement === folioRef.current;
+      setFullscreen(entered);
+      if (entered) {
+        nativeFullscreenEntered.current = true;
+        setSettings(previous => ({ ...previous, focusMode: true }));
+      } else if (nativeFullscreenEntered.current) {
+        nativeFullscreenEntered.current = false;
+        setSettings(previous => ({ ...previous, focusMode: false }));
+      }
+    };
+    document.addEventListener('fullscreenchange', syncFullscreen);
+    return () => document.removeEventListener('fullscreenchange', syncFullscreen);
+  }, []);
   const notebookKey = readerNotebookKey(model.slug || model.title, model.notebookOwner || "guest");
   const [savedNotebook, setSavedNotebook] = useState(() => ({ key: notebookKey, value: loadReaderNotebook(notebookKey) }));
   const notebook = savedNotebook.key === notebookKey ? savedNotebook.value : loadReaderNotebook(notebookKey);
   const [notebookOpen, setNotebookOpen] = useState(false);
+  const overlayOpen = settingsOpen || contentsOpen || creditsOpen || notebookOpen;
+  useLayoutEffect(() => {
+    if (settings.focusMode && !focusWasEnabled.current) showControlsRef.current?.focus({ preventScroll: true });
+    else if (!settings.focusMode && focusWasEnabled.current) fullscreenTriggerRef.current?.focus({ preventScroll: true });
+    focusWasEnabled.current = settings.focusMode;
+  }, [settings.focusMode]);
   const [notebookTab, setNotebookTab] = useState("notes");
   const [noteText, setNoteText] = useState("");
   const [noteEditorOpen, setNoteEditorOpen] = useState(false);
@@ -122,14 +148,12 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const declaredTotal = Number(model.totalPages);
   const totalPages = Number.isInteger(declaredTotal) && declaredTotal > 0
     ? declaredTotal : Math.max(page, Number(model.totalPublicPages) || 1, ...contents.map((item) => item.page));
-  const progress = model.progress == null ? null : Math.min(100, Math.max(0, Number(model.progress) || 0));
   const metadata = model.metadata || {};
   const language = readerLanguage(model.language);
   const languageTypography = LANGUAGE_TYPOGRAPHY[language];
   const textSizeRem = settings.readerTextSizeRem ?? languageTypography.size;
-  const textSizeStep = textSizeIndex(textSizeRem);
   const lineHeight = LINE_SPACING[settings.lineSpacingMode]?.[language] || LINE_SPACING.comfortable[language];
-  const fontMode = settings.readerFontFamilyPreference || (language === "bn" ? "sans" : "serif");
+  const fontMode = settings.readerFontFamilyPreference || "serif";
   const fontFamily = fontMode === "sans"
     ? (language === "bn" ? '"Noto Sans Bengali", sans-serif' : 'Outfit, sans-serif')
     : languageTypography.fontFamily;
@@ -223,9 +247,9 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const onPreparationFailure = model.onPreparationFailure;
   useEffect(() => { if (layoutError) onPreparationFailure?.(); }, [layoutError, onPreparationFailure]);
   useLayoutEffect(() => {
-    onVisualPageVisibility?.(!pagination.pending && fragment && !layoutError && !previewBlocked ? { start: fragment.start, end: fragment.end, media: fragment.media || [], publicPreview: publicPreviewVisible } : null);
+    onVisualPageVisibility?.(!overlayOpen && !pagination.pending && fragment && !layoutError && !previewBlocked ? { start: fragment.start, end: fragment.end, media: fragment.media || [], publicPreview: publicPreviewVisible } : null);
     return () => onVisualPageVisibility?.(null);
-  }, [fragment, pagination.pending, layoutError, previewBlocked, onVisualPageVisibility, publicPreviewVisible]);
+  }, [fragment, pagination.pending, layoutError, previewBlocked, onVisualPageVisibility, publicPreviewVisible, overlayOpen]);
   const busy = Boolean(access.busy);
   const matchesCurrentAnchor = (item) => {
     if (typeof item.anchor.offset === 'string') return item.anchor.revision === readingAnchor.revision && (fragment?.structures?.includes(item.anchor.offset) || (item.anchor.offset.startsWith('media:') && fragment?.media?.includes(Number(item.anchor.offset.split(':')[1]))));
@@ -254,7 +278,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     updateNotebook({ ...notebook, notes: [...notebook.notes, { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, page: anchorPage, anchor: readingAnchor, text: noteText.trim(), createdAt: new Date().toISOString() }] });
     setNoteText(""); setNoteEditorOpen(false);
   };
-  const closeNotebook = () => { setNotebookOpen(false); notebookTriggerRef.current?.focus(); };
+  const closeNotebook = () => setNotebookOpen(false);
   const atEnd = !previewBlocked && !pagination.pending && Boolean(fragment) && windowLast >= totalPages && visualIndex >= visualTotal - 1;
   const nextLabel = !access.authorized && ((publicVisualPreview && visualIndex >= 2) || (windowLast === (model.previewLimit || 3) && visualIndex === visualTotal - 1))
     ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
@@ -286,11 +310,36 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   };
   const closeSettings = () => {
     setSettingsOpen(false);
-    settingsTriggerRef.current?.focus({ preventScroll: true });
   };
-  const resizeText = (step) => {
-    const next = Math.max(0, Math.min(READER_TEXT_SIZE_REM_STEPS.length - 1, textSizeStep + step));
-    updateTextSize(READER_TEXT_SIZE_REM_STEPS[next]);
+  const enterFocus = () => {
+    setSettings(previous => ({ ...previous, focusMode: true }));
+    setSettingsOpen(false);
+  };
+  const showControls = useCallback(async () => {
+    if (document.fullscreenElement === folioRef.current && document.exitFullscreen) {
+      try { await document.exitFullscreen(); } catch { setFullscreenNotice("Use your browser’s fullscreen control to exit fullscreen."); return; }
+    }
+    setSettings(previous => ({ ...previous, focusMode: false }));
+    setFullscreenNotice("");
+  }, []);
+  const toggleFullscreen = async () => {
+    if (fullscreenPending) return;
+    if (document.fullscreenElement === folioRef.current) { await showControls(); return; }
+    setFullscreenNotice("");
+    if (!folioRef.current?.requestFullscreen) {
+      setSettings(previous => ({ ...previous, focusMode: true }));
+      setFullscreenNotice("Fullscreen is unavailable in this browser. Focus reading is on; Show reader controls restores navigation.");
+      return;
+    }
+    setFullscreenPending(true);
+    try {
+      await folioRef.current.requestFullscreen();
+      // fullscreenchange is the authority. A resolved request alone does not
+      // claim native fullscreen or change the reading geometry.
+    } catch {
+      setSettings(previous => ({ ...previous, focusMode: true }));
+      setFullscreenNotice("Fullscreen was not opened. Focus reading is on; Show reader controls restores navigation.");
+    } finally { setFullscreenPending(false); }
   };
   const offsetForSourceAnchor = model.offsetForSourceAnchor;
   const previousWindow = model.previousWindow;
@@ -317,89 +366,43 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   useEffect(() => { canvasRef.current?.scrollTo?.({ top: 0, behavior: "instant" }); }, [page]);
   useEffect(() => {
     const onKeyDown = (event) => {
-      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || settingsOpen || notebookOpen) return;
+      if (event.key === 'Escape' && settings.focusMode && !overlayOpen) { event.preventDefault(); void showControls(); return; }
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || overlayOpen) return;
       const target = event.target;
-      if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, a, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], [role="tablist"], audio, video, [contenteditable="true"]'))) return;
+      const focusControl = settings.focusMode && target === showControlsRef.current;
+      if (!focusControl && target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, a, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], [role="tablist"], audio, video, [contenteditable="true"]'))) return;
       if (event.key === "ArrowLeft" && (windowFirst > 1 || visualIndex > 0)) { event.preventDefault(); turnVisualPage(-1); }
       if (event.key === "ArrowRight" && !atEnd) { event.preventDefault(); turnVisualPage(1); }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [turnVisualPage, navigationPage, visualIndex, atEnd, settingsOpen, notebookOpen, windowFirst]);
+  }, [turnVisualPage, navigationPage, visualIndex, atEnd, overlayOpen, windowFirst, settings.focusMode, showControls]);
+
+  const compactPageIndicator = atEnd && access.authorized ? "End of book" : publicVisualPreview
+    ? `Preview · ${previewBlocked ? 'limit reached' : `${visualIndex + 1} of ${Math.min(3, visualTotal) || '…'}`}`
+    : bookMap.complete && model.visualPageScope !== "chapter"
+      ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
+      : `${visualIndex + 1} of ${visualTotal || '…'} in this chapter`;
+  const meterValue = publicVisualPreview ? Math.min(3, visualIndex + 1) : bookMap.complete ? bookMap.currentNumber : visualIndex + 1;
+  const meterMax = publicVisualPreview ? Math.min(3, Math.max(1, visualTotal)) : bookMap.complete ? bookMap.total : Math.max(1, visualTotal);
 
   return (
-    <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
-      <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigate={onNavigate} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key === "about" ? "about" : item.key, item.to)} trailingLabel="Library" showDesktopNavigation />
-      <header className="reader-v2__mobile-topbar" aria-label="Reader actions">
-        <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
-        <span><small>Page</small>{pageIndicator}<small>Section {page} of {totalPages}</small></span>
-        <div>
-          <button type="button" onClick={() => resizeText(-1)} disabled={textSizeStep === 0} aria-label="Decrease text size">A−</button>
-          <button type="button" onClick={() => resizeText(1)} disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} aria-label="Increase text size">A+</button>
-          <button type="button" onClick={toggleSettings} aria-label="Reader settings" aria-expanded={settingsOpen} aria-controls="reader-v2-settings"><Settings2 size={17} /></button>
-        </div>
-      </header>
-      <div className="reader-v2__layout">
-        {pagination.pending && !hasPaginated.current && <div className="reader-v2__pagination-opening"><ReaderOpening embedded book={{ title: model.title, author: model.author }} onLibrary={() => onNavigate?.("library")} onEscapeFocus={focused => { openingHasFocus.current = focused; }} busy={busy} /></div>}
-        <aside className="reader-v2__rail" aria-label="Reader controls">
-          <div className="reader-v2__book"><h2>{model.title}</h2><span>{model.author}</span></div>
-          {progress !== null && <div className="reader-v2__metric"><span>Reading Progress</span><strong>{progress}%</strong><i><b style={{ width: `${progress}%` }} /></i></div>}
-          {model.readingTime && <div className="reader-v2__metric"><span>Estimated time left</span><strong>{model.readingTime}</strong></div>}
-          <ExperiencePanel eyebrow="Contents" className="reader-v2__contents"><ol>{contents.filter((item) => item.page <= totalPages).map((item) => <li key={item.page}><button type="button" aria-current={!referenceSection && item === selectedChapter ? "page" : undefined} disabled={busy} onClick={() => requestPage(item.page)}>{item.label}</button></li>)}{indexAnchor && <li><button type="button" aria-current={referenceSection ? "page" : undefined} disabled={busy} onClick={() => requestPage(indexAnchor.page, indexAnchor.offset, indexAnchor.revision)}>Index</button></li>}</ol></ExperiencePanel>
-          {model.freeReading
-            ? <ExperiencePanel eyebrow="Free Reader access"><p>Read this complete edition without payment or Reading Pass debit.</p></ExperiencePanel>
-            : <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.(model.visualFixture ? "signin" : "passes")}>{model.visualFixture ? "Sign in to check balance" : "Extend Reading Time"}</button></ExperiencePanel>}
-        </aside>
-
-        <div className="reader-v2__page-frame">
-          <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" /></button>
-          <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}><ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" /></button>
-          <div className="reader-v2__boundary-scroll">
-          {!pagination.pending && fragment && !layoutError && windowFirst === 1 && visualIndex === 0 && model.book && <figure className="reader-v2__front-cover" aria-label="Front cover">
-            <BookCoverImage book={model.book} alt={`${model.title} front cover`} loading="eager" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" />
-            <figcaption>Front cover · {model.title}</figcaption>
-          </figure>}
-        <article ref={canvasRef} className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
-
-          <header className="reader-v2__chapter">
-            <span aria-live="polite" aria-atomic="true">Page {pageIndicator} · section {page} of {totalPages}</span>
-            <div className="reader-v2__toolbar">
-              <ExperienceIconButton label="Decrease text size" disabled={textSizeStep === 0} onClick={() => resizeText(-1)}><Minus size={16} /></ExperienceIconButton>
-              <output aria-label="Text size">Aa · {formatRem(textSizeRem)}</output>
-              <ExperienceIconButton label="Increase text size" disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} onClick={() => resizeText(1)}><Plus size={16} /></ExperienceIconButton>
-              <ExperienceIconButton label="Reader settings" pressed={settingsOpen} onClick={toggleSettings}><Settings2 size={16} /></ExperienceIconButton>
-              <ExperienceIconButton label={bookmarked ? "Remove page bookmark" : "Bookmark this page"} pressed={bookmarked} onClick={toggleBookmark}><Bookmark size={16} /></ExperienceIconButton>
+    <ExperienceShell className="reader-v2 reader-quiet-folio" labelledBy="reader-v2-title">
+      <div ref={folioRef} className="reader-folio" data-reader-theme={settings.theme} data-focus-mode={settings.focusMode} data-native-fullscreen={fullscreen}>
+        <div className="reader-folio__surface" inert={overlayOpen ? true : undefined}>
+          <header className="reader-folio__bar" aria-label="Reader actions">
+            <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft aria-hidden="true" /></button>
+            <span className="reader-folio__book-title">{model.title}</span>
+            <div className="reader-v2__toolbar reader-folio__tools">
+              <button type="button" className="reader-folio__aa" onClick={toggleSettings} aria-label="Reader settings" aria-haspopup="dialog" aria-expanded={settingsOpen}>Aa</button>
+              <button ref={fullscreenTriggerRef} type="button" onClick={toggleFullscreen} aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"} disabled={fullscreenPending}>{fullscreen ? <Minimize aria-hidden="true" /> : <Maximize aria-hidden="true" />}</button>
             </div>
-            <h1 id="reader-v2-title" ref={headingRef} tabIndex={-1}>{referenceSection?.title || model.chapterTitle}</h1>
-            {model.chapterDateline && <p className="reader-v2__dateline">{model.chapterDateline}</p>}
           </header>
-          {settingsOpen && <section id="reader-v2-settings" className="reader-v2__settings" aria-label="Reading preferences">
-            <h2>Reading preferences</h2>
-            <label>Theme<select value={settings.theme} onChange={(event) => updateSetting("theme", event.target.value)}><option value="beige">Light</option><option value="sepia">Sepia</option><option value="dark">Night</option></select></label>
-            <label>Text size<select value={textSizeRem} onChange={(event) => updateTextSize(event.target.value)}>{READER_TEXT_SIZE_REM_STEPS.map((size) => <option key={size} value={size}>{formatRem(size)}</option>)}</select></label>
-            <label>Line spacing<select value={settings.lineSpacingMode} onChange={(event) => updateSetting("lineSpacingMode", event.target.value)}><option value="comfortable">Comfortable</option><option value="relaxed">Relaxed</option><option value="airy">Airy</option></select></label>
-            <label>Font<select value={fontMode} onChange={(event) => updateFontFamily(event.target.value)}><option value="sans">Clear sans serif</option><option value="serif">Literary serif</option></select></label>
-            <button type="button" onClick={resetTypography}>Reset typography</button>
-            <button type="button" onClick={closeSettings}>Close preferences</button>
-          </section>}
-          <div className="reader-v2__navigation-selectors">
-            <label className="reader-v2__compact-contents">Contents
-              <select aria-label="Contents" value="" disabled={busy || pagination.pending || !!layoutError} onChange={event => {
-                if (busy || pagination.pending || layoutError) return;
-                if (event.target.value === "index") { if (indexAnchor) requestPage(indexAnchor.page, indexAnchor.offset, indexAnchor.revision); return; }
-                const item = contents.find(item => item.page <= totalPages && `chapter:${item.page}` === event.target.value);
-                if (item) requestPage(item.page);
-              }}>
-                <option value="" disabled>{referenceSection && indexAnchor ? "Current: Index" : selectedChapter ? `Current: ${selectedChapter.label}` : "Choose a chapter"}</option>
-                {contents.filter(item => item.page <= totalPages).map(item => <option key={item.page} value={`chapter:${item.page}`}>{item.label}</option>)}
-                {indexAnchor && <option value="index">Index</option>}
-              </select>
-            </label>
-          <label className="reader-v2__page-selector">Go to page{pageOptions.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
-            const option = pageOptions.find(item => item.key === event.target.value);
-            if (option) requestPage(option.anchor.page, option.anchor.offset, option.anchor.revision);
-          }}>{pageOptions.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={previewBlocked ? "" : visualIndex} disabled={busy || pagination.pending} onChange={event => selectablePages[Number(event.target.value)] && changeAnchor(selectablePages[Number(event.target.value)].anchor ?? selectablePages[Number(event.target.value)].start)}>{selectablePages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
-          </div>
+          <div className="reader-v2__layout">
+            {pagination.pending && !hasPaginated.current && <div className="reader-v2__pagination-opening"><ReaderOpening embedded book={{ title: model.title, author: model.author }} onLibrary={() => onNavigate?.("library")} onEscapeFocus={focused => { openingHasFocus.current = focused; }} busy={busy} /></div>}
+            <div className="reader-v2__page-frame">
+              <article ref={canvasRef} className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
+                <header className="reader-v2__chapter"><h1 id="reader-v2-title" ref={headingRef} tabIndex={-1}>{referenceSection?.title || model.chapterTitle}</h1></header>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
           <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
             <div ref={sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
@@ -425,31 +428,75 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </p>}
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
 
-          <footer className="reader-v2__continuation">
-            <span>{atEnd ? "You have reached the end of this book." : model.windowFirst != null ? (access.authorized ? "Authorized chapter" : "Free preview") : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
-            <nav aria-label="Page navigation">
-              <button type="button" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={16} /> Previous page</button>
-              <button type="button" disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}>{atEnd ? "End of book" : nextLabel} <ChevronRight size={16} /></button>
+
+              </article>
+            </div>
+          </div>
+          <footer className="reader-folio__footer">
+            <div className="reader-folio__footer-tools">
+              <button type="button" className="reader-folio__credits" onClick={() => setCreditsOpen(true)} aria-haspopup="dialog">Edition &amp; credits</button>
+              <div>
+                <button ref={notebookTriggerRef} type="button" onClick={() => setNotebookOpen(true)} aria-label="Open notes and bookmarks" aria-haspopup="dialog"><StickyNote size={18} aria-hidden="true" /></button>
+                <button type="button" onClick={() => { toggleBookmark(); onNavigate?.("bookmark"); }} aria-label="Save current page" aria-pressed={bookmarked}><Bookmark size={18} aria-hidden="true" /></button>
+              </div>
+            </div>
+            <progress className="reader-folio__progress" value={meterValue || 0} max={meterMax} aria-label={publicVisualPreview ? "Preview progress" : bookMap.complete ? "Book progress" : "Chapter progress"} />
+            <nav className="reader-folio__navigation" aria-label="Page navigation">
+              <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || pagination.pending || (windowFirst <= 1 && visualIndex <= 0)} onClick={() => turnVisualPage(-1)}><ChevronLeft size={24} aria-hidden="true" /></button>
+              <span className="reader-folio__page-context" aria-live="polite" aria-atomic="true" title={pageIndicator}>{compactPageIndicator}</span>
+              <button type="button" className="reader-folio__contents-trigger" onClick={() => setContentsOpen(true)} aria-haspopup="dialog"><List size={19} aria-hidden="true" /><span>Contents</span></button>
+              <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" title={nextLabel} disabled={busy || pagination.pending || atEnd} onClick={() => turnVisualPage(1)}><ChevronRight size={24} aria-hidden="true" /></button>
             </nav>
           </footer>
-        </article>
-          <LicensedTextNotice book={model.book} />
-          {atEnd && access.authorized && !layoutError && (model.book?.back_cover_url || model.book?.back_cover_image_url || model.book?.back_cover_thumbnail_url) && <figure className="reader-v2__back-cover" aria-label="Back cover">
-            <BookCoverImage book={model.book} kind="back" alt={`${model.title} back cover`} loading="eager" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" />
-            <figcaption>Back cover · {model.title}</figcaption>
-          </figure>}
-          </div>
         </div>
+        {settings.focusMode && <button ref={showControlsRef} type="button" className="reader-folio__show-controls" onClick={showControls} aria-label="Show reader controls">Show controls</button>}
+        {fullscreenNotice && <p className="reader-folio__fullscreen-notice" role="status">{fullscreenNotice}</p>}
+        {contentsOpen && <ReaderDialog id="reader-contents" label="Contents and page navigation" onClose={() => setContentsOpen(false)}>
+          <div className="reader-v2__navigation-selectors">
+            <label className="reader-v2__compact-contents">Contents
+              <select aria-label="Contents" value="" disabled={busy || pagination.pending || !!layoutError} onChange={event => {
+                if (busy || pagination.pending || layoutError) return;
+                if (event.target.value === "index") { if (indexAnchor) requestPage(indexAnchor.page, indexAnchor.offset, indexAnchor.revision); return; }
+                const item = contents.find(item => item.page <= totalPages && `chapter:${item.page}` === event.target.value);
+                if (item) requestPage(item.page);
+              }}>
+                <option value="" disabled>{referenceSection && indexAnchor ? "Current: Index" : selectedChapter ? `Current: ${selectedChapter.label}` : "Choose a chapter"}</option>
+                {contents.filter(item => item.page <= totalPages).map(item => <option key={item.page} value={`chapter:${item.page}`}>{item.label}</option>)}
+                {indexAnchor && <option value="index">Index</option>}
+              </select>
+            </label>
+          <label className="reader-v2__page-selector">Go to page{pageOptions.length ? <select aria-label="Go to page" value={mapSelection} disabled={busy || pagination.pending} onChange={event => {
+            const option = pageOptions.find(item => item.key === event.target.value);
+            if (option) requestPage(option.anchor.page, option.anchor.offset, option.anchor.revision);
+          }}>{pageOptions.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}</select> : <select aria-label="Go to page" value={previewBlocked ? "" : visualIndex} disabled={busy || pagination.pending} onChange={event => selectablePages[Number(event.target.value)] && changeAnchor(selectablePages[Number(event.target.value)].anchor ?? selectablePages[Number(event.target.value)].start)}>{selectablePages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select>}</label>
+          </div>
 
-        <aside id="reader-notebook" className="reader-v2__context" data-notebook-open={notebookOpen} aria-label="Notes and bookmarks" onKeyDown={(event) => { if (event.key === "Escape" && notebookOpen) closeNotebook(); }}>
-          <button type="button" className="reader-v2__notebook-close" onClick={closeNotebook} aria-label="Close notes and bookmarks"><X size={18} /></button>
-          {model.illustration?.src
-            ? <figure className="reader-v2__artwork" data-quote={Boolean(model.editorialQuote)}><img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" /><figcaption>{model.editorialQuote ? <><blockquote>“{model.editorialQuote}”</blockquote><cite>— {model.author}</cite></> : <>{model.title}{model.author ? ` · ${model.author}` : ""}</>}</figcaption></figure>
-            : model.book && <BookCoverImage book={model.book} alt={`${model.title} cover`} className="reader-v2__book-cover" loading="lazy" width={520} widths={[280, 420, 520]} sizes="(min-width: 1280px) 16rem, 40vw" allowGraphicalFallback={false} fallback="" />}
+          <ol className="reader-folio__contents-list">{contents.filter(item => item.page <= totalPages).map(item => <li key={item.page}><button type="button" aria-current={!referenceSection && item === selectedChapter ? "page" : undefined} disabled={busy} onClick={() => { requestPage(item.page); setContentsOpen(false); }}>{item.label}</button></li>)}{indexAnchor && <li><button type="button" aria-current={referenceSection ? "page" : undefined} disabled={busy} onClick={() => { requestPage(indexAnchor.page, indexAnchor.offset, indexAnchor.revision); setContentsOpen(false); }}>Index</button></li>}</ol>
+          <form className="reader-folio__library-search" onSubmit={event => { event.preventDefault(); onNavigate?.("search", `/library?q=${encodeURIComponent(libraryQuery.trim())}`); }}><label>Search the library<input aria-label="Search books, authors, topics" value={libraryQuery} onChange={event => setLibraryQuery(event.target.value)} /></label><button type="submit">Search library</button></form>
+          <button type="button" onClick={() => onNavigate?.("library", "/library")}>Library</button>
+        </ReaderDialog>}
+        {settingsOpen && <ReaderDialog id="reader-v2-settings" label="Reading preferences" onClose={closeSettings} returnFocus={settingsTriggerRef}>
+          <section className="reader-v2__settings">
+            <label>Theme<select value={settings.theme} onChange={(event) => updateSetting("theme", event.target.value)}><option value="beige">Light</option><option value="sepia">Sepia</option><option value="dark">Night</option></select></label>
+            <label>Text size<select value={textSizeRem} onChange={(event) => updateTextSize(event.target.value)}>{READER_TEXT_SIZE_REM_STEPS.map((size) => <option key={size} value={size}>{formatRem(size)}</option>)}</select></label>
+            <label>Line spacing<select value={settings.lineSpacingMode} onChange={(event) => updateSetting("lineSpacingMode", event.target.value)}><option value="comfortable">Comfortable</option><option value="relaxed">Relaxed</option><option value="airy">Airy</option></select></label>
+            <label>Font<select value={fontMode} onChange={(event) => updateFontFamily(event.target.value)}><option value="sans">Clear sans serif</option><option value="serif">Literary serif</option></select></label>
+            <button type="button" onClick={resetTypography}>Reset typography</button>
+            <button type="button" onClick={closeSettings}>Close preferences</button>
+            <button type="button" onClick={enterFocus}>Focus reading</button>
+          </section>
+
+        </ReaderDialog>}
+        {notebookOpen && <ReaderDialog id="reader-notebook" label="Notes and bookmarks" onClose={closeNotebook} returnFocus={notebookTriggerRef}>
           <section className="reader-v2__notebook" aria-label="Your reading notebook">
-            <div className="reader-v2__notebook-tabs" role="tablist" aria-label="Notebook views">
-              <button id="reader-notes-tab" role="tab" type="button" aria-selected={notebookTab === "notes"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("notes")}>Notes</button>
-              <button id="reader-bookmarks-tab" role="tab" type="button" aria-selected={notebookTab === "bookmarks"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("bookmarks")}>Bookmarks</button>
+            <div className="reader-v2__notebook-tabs" role="tablist" aria-label="Notebook views" onKeyDown={event => {
+              if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+              event.preventDefault();
+              const tab = event.key === 'Home' ? 'notes' : event.key === 'End' ? 'bookmarks' : notebookTab === 'notes' ? 'bookmarks' : 'notes';
+              setNotebookTab(tab); event.currentTarget.querySelector(`#reader-${tab}-tab`)?.focus();
+            }}>
+              <button id="reader-notes-tab" role="tab" type="button" tabIndex={notebookTab === "notes" ? 0 : -1} aria-selected={notebookTab === "notes"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("notes")}>Notes</button>
+              <button id="reader-bookmarks-tab" role="tab" type="button" tabIndex={notebookTab === "bookmarks" ? 0 : -1} aria-selected={notebookTab === "bookmarks"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("bookmarks")}>Bookmarks</button>
             </div>
             <div id="reader-notebook-panel" role="tabpanel" aria-labelledby={`reader-${notebookTab}-tab`}>
               {notebookTab === "notes" ? <>
@@ -460,11 +507,18 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             <p className="reader-v2__notebook-storage">Notes and bookmarks stay on this device.</p>
             {notebookNotice && <p role="status">{notebookNotice}</p>}
           </section>
-          <details className="reader-v2__edition-details"><summary>About this edition</summary><dl>{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl></details>
-        </aside>
+
+        </ReaderDialog>}
+        {creditsOpen && <ReaderDialog id="reader-edition" label="Edition and credits" onClose={() => setCreditsOpen(false)}>
+          <h3>{model.title}</h3>
+          <dl className="reader-folio__edition">{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl>
+          <section aria-label="Reading access"><h3>{model.freeReading ? "Free Reader access" : "Reading Pass"}</h3><p>{model.freeReading ? "Read this complete edition without payment or Reading Pass debit." : model.readingPass}</p>{!model.freeReading && <button type="button" onClick={() => onNavigate?.(model.visualFixture ? "signin" : "passes")}>{model.visualFixture ? "Sign in to check balance" : "Extend Reading Time"}</button>}</section>
+          <LicensedTextNotice book={model.book} />
+          {model.book && <figure className="reader-v2__front-cover" aria-label="Front cover"><BookCoverImage book={model.book} alt={`${model.title} front cover`} loading="lazy" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" /><figcaption>Front cover · {model.title}</figcaption></figure>}
+          {atEnd && access.authorized && !layoutError && (model.book?.back_cover_url || model.book?.back_cover_image_url || model.book?.back_cover_thumbnail_url) && <figure className="reader-v2__back-cover" aria-label="Back cover"><BookCoverImage book={model.book} kind="back" alt={`${model.title} back cover`} loading="lazy" width={520} widths={[280, 420, 520]} sizes="(min-width: 768px) 24rem, 86vw" allowGraphicalFallback={false} fallback="" /><figcaption>Back cover · {model.title}</figcaption></figure>}
+        </ReaderDialog>}
+        <div className="reader-folio__print-license"><LicensedTextNotice book={model.book} /></div>
       </div>
-      <div className="reader-v2__mobile-actions"><button ref={notebookTriggerRef} type="button" onClick={() => setNotebookOpen((open) => !open)} aria-label="Open notes and bookmarks" aria-expanded={notebookOpen} aria-controls="reader-notebook"><StickyNote size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => { toggleBookmark(); onNavigate?.("bookmark"); }} aria-label="Save current page" aria-pressed={bookmarked}><Bookmark size={18} /></button></div>
-      <div className="reader-v2__reader-navigation"><ExperienceBottomNavigation active="library" onNavigate={onNavigate} /></div>
     </ExperienceShell>
   );
 }

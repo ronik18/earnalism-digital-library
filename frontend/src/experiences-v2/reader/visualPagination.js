@@ -133,6 +133,79 @@ export function pageForAnchor(pages, offset) {
     && (offset < page.end || index === pages.length - 1)));
 }
 
+// Count actual text-line boxes, rather than paragraph margins, for the optional
+// two-line prose split. Hidden/unmeasurable layouts keep the conservative path.
+function renderedLineCount(paragraph) {
+  const range = document.createRange(); range.selectNodeContents(paragraph);
+  if (typeof range.getClientRects !== 'function') return null;
+  const rectangles = [...range.getClientRects()].filter(rect => rect.width > 0 && rect.height > 0)
+    .sort((left, right) => left.top - right.top || left.bottom - right.bottom);
+  if (!rectangles.length) return null;
+  const lineHeight = parseFloat(getComputedStyle(paragraph).lineHeight)
+    || parseFloat(getComputedStyle(paragraph.parentElement).lineHeight);
+  if (!(lineHeight > 0)) return null;
+  let lines = 0; let top = -Infinity;
+  for (const rect of rectangles) {
+    // Bengali glyph boxes can be taller than the line advance and overlap
+    // adjacent rows. Cluster their tops, not their vertical intersection.
+    // Ordinary emphasis supplies duplicate/slightly shifted inline boxes.
+    if (rect.top - top > lineHeight / 2) { lines++; top = rect.top; }
+  }
+  return lines;
+}
+
+const PRESERVED_PROSE = '.poem,.poetry,.verse,.stanza,[data-poetry],[data-verse]';
+
+// Avoid a nearly empty page merely because the next ordinary paragraph fits
+// whole on a fresh page. Semantic/explicit-line blocks retain their adapters.
+function appendFittingProsePrefix(block, measure, fits) {
+  if (!block.matches('p') || !measure.textContent.trim()
+    || block.matches(PRESERVED_PROSE)
+    || block.querySelector('br,hr,img,figure,pre,code,table,ul,ol,dl,blockquote,svg,video,audio,sub,sup,small')
+    || /^pre/.test(getComputedStyle(measure).whiteSpace)) return 0;
+  const boundaries = blockTextBoundaries(block);
+  const previous = [...measure.childNodes]; let accepted = false;
+  try {
+    // Reserve at least one boundary for the continuation before checking its
+    // actual line count below. Every candidate remains a source-exact Range.
+    let low = 1; let high = boundaries.length - 2; let best = 0;
+    while (low <= high) {
+      const middle = Math.floor((low + high) / 2);
+      measure.replaceChildren(...previous, sliceBlock(block, 0, boundaries[middle]));
+      if (fits()) { best = middle; low = middle + 1; } else high = middle - 1;
+    }
+    if (!best) return 0;
+    const remainingLines = (index) => {
+      const remainder = sliceBlock(block, boundaries[index], block.textContent.length);
+      measure.replaceChildren(remainder);
+      return renderedLineCount(remainder);
+    };
+    const tailLines = remainingLines(best);
+    if (tailLines == null) return 0;
+    if (tailLines < 2) {
+      // Back off only far enough to leave a two-line continuation, where the
+      // current page can also hold two lines. Never manufacture blank lines.
+      low = 1; high = best - 1; let widowCut = 0;
+      while (low <= high) {
+        const middle = Math.floor((low + high) / 2);
+        const lines = remainingLines(middle);
+        if (lines == null) return 0;
+        if (lines >= 2) { widowCut = middle; low = middle + 1; } else high = middle - 1;
+      }
+      best = widowCut;
+      if (!best) return 0;
+    }
+    const prefix = sliceBlock(block, 0, boundaries[best]);
+    measure.replaceChildren(...previous, prefix);
+    const prefixLines = renderedLineCount(prefix);
+    if (prefixLines == null || prefixLines < 2 || !fits()) return 0;
+    accepted = true;
+    return boundaries[best];
+  } finally {
+    if (!accepted) measure.replaceChildren(...previous);
+  }
+}
+
 // A provided fit predicate is useful for invariant tests; production measures DOM.
 function* paginationSteps(source, measure, height, fits = () => measure.scrollHeight <= height) {
   if (height < 24) throw new PaginationIntegrityError('The reading area cannot fit a readable line.');
@@ -159,8 +232,11 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     measure.replaceChildren(); pageStart = offset; measure.setAttribute('data-continuation', 'true');
   };
   let mediaOrdinal = 0;
+  const preservedProse = new WeakSet();
   const blocks = [...source.childNodes].map(node => {
     const clone = node.cloneNode(true);
+    const parent = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    if (parent?.closest(PRESERVED_PROSE)) preservedProse.add(clone);
     const images = clone.nodeType === Node.ELEMENT_NODE ? [...(clone.matches('img') ? [clone] : clone.querySelectorAll('img'))] : [];
     const originals = node.nodeType === Node.ELEMENT_NODE ? [...(node.matches('img') ? [node] : node.querySelectorAll('img'))] : [];
     images.forEach((image, ordinal) => {
@@ -181,6 +257,7 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
   for (let index = 0; index < blocks.length; index++) {
     yield;
     let block = blocks[index];
+    const preserveProseBlock = preservedProse.has(block);
     if (block.nodeType === Node.TEXT_NODE && !block.textContent.trim()) {
       measure.append(block.cloneNode(true)); offset += block.textContent.length;
       continue;
@@ -191,7 +268,7 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     if (block.nodeType !== Node.ELEMENT_NODE) continue;
     block = block.cloneNode(true);
     block.setAttribute('data-reader-source-node', String(index));
-    const whole = block.cloneNode(true);
+    let whole = block.cloneNode(true);
     measure.append(whole);
     // Prefer headings with the next block if the pair fits on an empty page.
     let next = blocks[index + 1];
@@ -206,6 +283,12 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     }
     if (fits()) { offset += block.textContent.length; continue; }
     whole.remove();
+    const prosePrefix = preserveProseBlock ? 0 : appendFittingProsePrefix(block, measure, fits);
+    if (prosePrefix) {
+      offset += prosePrefix;
+      block = sliceBlock(block, prosePrefix, block.textContent.length);
+      whole = block.cloneNode(true);
+    }
     finish();
     measure.append(whole);
     if (fits()) { offset += block.textContent.length; continue; }

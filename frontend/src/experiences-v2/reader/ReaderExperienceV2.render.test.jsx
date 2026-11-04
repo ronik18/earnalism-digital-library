@@ -36,7 +36,11 @@ describe("ReaderExperienceV2 customer controls", () => {
   });
   const render = (props = {}) => act(() => root.render(<ReaderExperienceV2 model={model} {...props} />));
   const click = (element) => act(() => element.dispatchEvent(new MouseEvent("click", { bubbles: true })));
-  const button = (text) => [...container.querySelectorAll("button")].find((element) => element.textContent.trim() === text);
+  const button = (text) => [...container.querySelectorAll("button")].find((element) => element.textContent.trim() === text || element.getAttribute('aria-label') === text || element.title === text);
+  const openContents = () => { if (!container.querySelector('#reader-contents')) click(button('Contents')); };
+  const closeContents = () => { if (container.querySelector('#reader-contents')) click(button('Close contents and page navigation')); };
+  const openCredits = () => { if (!container.querySelector('#reader-edition')) click(button('Edition & credits')); };
+  const openNotebook = () => { if (!container.querySelector('#reader-notebook')) click(button('Open notes and bookmarks')); };
   const change = (select, value) => act(() => {
     select.value = value;
     select.dispatchEvent(new Event("change", { bubbles: true }));
@@ -46,8 +50,10 @@ describe("ReaderExperienceV2 customer controls", () => {
     const book = { slug: 'retained-cover', title: 'Retained edition', cover_image_url: '/assets/front.png', back_cover_image_url: '/assets/back.png' };
     const finalModel = { ...model, book, canonicalPage: 4, totalPages: 4, windowFirst: 4, windowLast: 4, content: <p>Retained last words.</p> };
     await act(async () => root.render(<ReaderExperienceV2 model={finalModel} access={{ authorized: false }} />));
+    openCredits();
     expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
     await act(async () => root.render(<ReaderExperienceV2 model={{ ...finalModel, windowLast: 3 }} access={{ authorized: true }} />));
+    openCredits();
     expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
     await act(async () => root.render(<ReaderExperienceV2 model={finalModel} access={{ authorized: true }} />));
     expect(container.querySelector('figure[aria-label="Back cover"] img').getAttribute('src')).toContain('back.png');
@@ -57,7 +63,9 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("the public first fragment shows the preserved front artwork on the reader canvas", async () => {
     const book = { title: 'Retained edition', cover_image_url: '/assets/front.png' };
     await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, book, canonicalPage: 1, windowFirst: 1, windowLast: 3, content: <p>Retained first words.</p> }} access={{ authorized: false }} />));
+    openCredits();
     expect(container.querySelector('figure[aria-label="Front cover"] img').getAttribute('src')).toContain('front.png');
+    openCredits();
     expect(container.querySelector('figure[aria-label="Back cover"]')).toBeNull();
   });
 
@@ -68,6 +76,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     const sourceAnchorForOffset = offset => ({ page: 4, offset, revision: 'reference-r' });
     await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, canonicalPage: 4, totalPages: 4, chapterTitle: 'Last chapter', contents: [{ page: 4, chapterId: 'last', label: 'Last chapter' }], authorizedChapter, sourceAnchorForOffset, offsetForSourceAnchor: (_page, offset) => offset, onVisualAnchor, content: <ReaderContent html={html} /> }} access={{ authorized: true }} />));
     expect(container.querySelector('#reader-v2-title').textContent).toBe('Index');
+    openContents();
     expect(button('Index').getAttribute('aria-current')).toBe('page');
     click(button('Index'));
     expect(onVisualAnchor).toHaveBeenCalledWith('The book ends.'.length);
@@ -77,6 +86,7 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("contents highlight the authorized chapter inside its transport range", async () => {
     const contents = [{ page: 1, chapterId: 'first', label: 'First chapter' }, { page: 20, chapterId: 'last', label: 'Last chapter' }];
     await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, canonicalPage: 28, totalPages: 30, contents, authorizedChapter: { plan: { key: 'last-window', chapterId: 'last' }, textLength: 17, sources: [{ page: 28, start: 0, end: 17, revision: 'chapter-revision' }] }, content: <p>Last chapter body</p> }} access={{ authorized: true }} />));
+    openContents();
     expect(button('Last chapter').getAttribute('aria-current')).toBe('page');
     expect(button('First chapter').hasAttribute('aria-current')).toBe(false);
   });
@@ -84,16 +94,19 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("image-only navigation, selector and bookmarks use structural anchors", async () => {
     jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('img').length * 400 : 0; });
     await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, slug: 'image-test', sourceRevision: 'images-v1', content: <><img src="/fixture-one.png" alt="First image" /><img src="/fixture-two.png" alt="Second image" /></> }} />));
+    openContents();
     const selector = container.querySelector('select[aria-label="Go to page"]');
     expect(selector.options).toHaveLength(2);
     click(container.querySelector('.reader-v2__page-arrow--next'));
     expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
     expect(container.querySelector('[data-testid="reader-page-content"]').className).toContain('--next');
-    click(container.querySelector('.reader-v2__toolbar button[aria-label="Bookmark this page"]'));
+    closeContents();
+    click(button('Save current page'));
     expect(JSON.parse(localStorage.getItem(readerNotebookKey('image-test'))).bookmarkAnchors[0].anchor.offset).toBe('media:1');
     click(container.querySelector('.reader-v2__page-arrow--previous'));
     expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('First image');
-    change(selector, '1');
+    openContents();
+    change(container.querySelector('select[aria-label="Go to page"]'), '1');
     expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
   });
 
@@ -105,6 +118,7 @@ describe("ReaderExperienceV2 customer controls", () => {
       sourceAnchorForOffset: offset => ({ page: offset + 1, offset: 0, revision: 'captions-v1' }),
       content: <><figure><img src="/one.png" alt="First figure" /><figcaption>A</figcaption></figure><figure><img src="/two.png" alt="Second figure" /><figcaption>B</figcaption></figure></>,
     }} />));
+    openContents();
     const selector = container.querySelector('select[aria-label="Go to page"]');
     expect(selector.value).toBe('captioned-chapter:0');
     click(container.querySelector('.reader-v2__page-arrow--next'));
@@ -169,11 +183,13 @@ describe("ReaderExperienceV2 customer controls", () => {
     localStorage.setItem(readerNotebookKey(model.title), JSON.stringify({ notes: [], bookmarks: [4] }));
     const onRequestPage = jest.fn();
     render({ onRequestPage });
+    openNotebook();
     click(button("Bookmarks"));
     click(button("Page 4"));
     expect(onRequestPage).toHaveBeenCalledWith(4);
     expect(container.querySelector('[data-testid="reader-page-content"]').textContent).not.toContain("Page 4 content");
-    click(container.querySelector('.reader-v2__toolbar button[aria-label="Bookmark this page"]'));
+    closeContents();
+    click(button('Save current page'));
     expect(JSON.parse(localStorage.getItem(readerNotebookKey(model.title))).bookmarks).toEqual([1, 4]);
   });
 
@@ -182,6 +198,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     render({ model: { ...model, visualFixture: true, progress: null, readingTime: "", readingPass: "Sign in to check Reading Pass balance" }, onNavigate });
     expect(container.textContent).not.toContain("Reading Progress");
     expect(container.textContent).not.toContain("215 minutes left");
+    openCredits();
     expect(button("Sign in to check balance")).toBeTruthy();
     click(button("Sign in to check balance"));
     expect(onNavigate).toHaveBeenCalledWith("signin");
@@ -194,6 +211,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]').getAttribute("aria-label")).toBe("Reader settings");
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
     expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
+    openContents();
     const selector = container.querySelector('select[aria-label="Go to page"]');
     selector.focus();
     render({ model: { ...model, readingPass: "214 minutes left" } });
@@ -205,46 +223,29 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
   });
 
-  test("immersive primary navigation keeps real links and runs the route settlement callback", () => {
-    const onNavigate = jest.fn();
-    render({ onNavigate });
-    const desktopLibrary = container.querySelector('.premium-header-nav--desktop a[data-nav-key="library"]');
-    expect(desktopLibrary.getAttribute("href")).toBe("/library");
-    click(desktopLibrary);
-    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
-
-    click(container.querySelector('[data-testid="mobile-menu-toggle"][aria-label="Open menu"]'));
-    const menuLibrary = container.querySelector('#mobile-menu a[data-nav-key="library"]');
-    expect(menuLibrary.getAttribute("href")).toBe("/library");
-    click(menuLibrary);
-    expect(onNavigate).toHaveBeenLastCalledWith("library", "/library");
-
-    click(container.querySelector('[data-testid="mobile-menu-toggle"][aria-label="Open menu"]'));
-    const signIn = container.querySelector('#mobile-menu a[data-testid="mobile-nav-sign-in"]');
-    expect(signIn.getAttribute("href")).toBe("/login");
-    click(signIn);
-    expect(onNavigate).toHaveBeenLastCalledWith("signin", "/login");
+  test("the compact Back action keeps the real route settlement callback", () => {
+    const onNavigate = jest.fn(); render({ onNavigate });
+    expect(container.querySelector('.experience-header')).toBeNull();
+    expect(container.querySelector('.experience-bottom-nav')).toBeNull();
+    click(button('Back to book'));
+    expect(onNavigate).toHaveBeenCalledWith('back');
   });
 
-  test("Library and contents request their actual destinations and mark the current page", () => {
-    const onRequestPage = jest.fn();
-    const onNavigate = jest.fn();
-    render({ onRequestPage, onNavigate });
-    click(container.querySelector('.premium-header-nav--desktop [data-nav-key="library"]'));
-    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
-    click(button("Page 2"));
-    expect(onRequestPage).toHaveBeenCalledWith(2);
+  test("Back and contents request their actual destinations and mark the current page", () => {
+    const onRequestPage = jest.fn(); const onNavigate = jest.fn(); render({ onRequestPage, onNavigate });
+    click(button('Back to book')); expect(onNavigate).toHaveBeenCalledWith('back');
+    openContents(); click(button('Page 2')); expect(onRequestPage).toHaveBeenCalledWith(2);
     render({ model: { ...model, canonicalPage: 2 }, onRequestPage, onNavigate });
-    expect(button("Page 2").getAttribute("aria-current")).toBe("page");
-    expect(button("Page 1").hasAttribute("aria-current")).toBe(false);
-    click(button("Page 2"));
-    expect(onRequestPage).toHaveBeenCalledTimes(1);
+    openContents(); expect(button('Page 2').getAttribute('aria-current')).toBe('page');
+    expect(button('Page 1').hasAttribute('aria-current')).toBe(false);
+    click(button('Page 2')); expect(onRequestPage).toHaveBeenCalledTimes(1);
   });
 
   test("compact Contents uses real chapter destinations and respects pending authorization", async () => {
     const onRequestPage = jest.fn();
     const chapterModel = { ...model, contents: [{ page: 1, label: 'Opening' }, { page: 3, label: 'Final chapter' }, { page: 99, label: 'Outside edition' }], content: <p>Retained chapter body.</p> };
     await act(async () => root.render(<ReaderExperienceV2 model={chapterModel} onRequestPage={onRequestPage} access={{ authorized: true }} />));
+    openContents();
     const select = container.querySelector('select[aria-label="Contents"]');
     expect(select).not.toBeNull();
     expect(select.closest(".reader-v2__navigation-selectors").querySelector('select[aria-label="Go to page"]')).not.toBeNull();
@@ -258,21 +259,16 @@ describe("ReaderExperienceV2 customer controls", () => {
   });
 
   test("the page selector and previous/next controls respect both book boundaries", () => {
-    const onRequestPage = jest.fn();
-    render({ onRequestPage });
-    expect(button("Previous page").disabled).toBe(true);
-    click(button("Next page"));
-    expect(onRequestPage).toHaveBeenLastCalledWith(2);
-    expect(container.querySelector('select[aria-label="Go to page"]').options.length).toBe(1);
-    click(button("Page 3"));
-    expect(onRequestPage).toHaveBeenLastCalledWith(3);
+    const onRequestPage = jest.fn(); render({ onRequestPage });
+    expect(button('Previous page').disabled).toBe(true);
+    click(button('Next page')); expect(onRequestPage).toHaveBeenLastCalledWith(2);
+    openContents(); expect(container.querySelector('select[aria-label="Go to page"]').options.length).toBe(1);
+    click(button('Page 3')); expect(onRequestPage).toHaveBeenLastCalledWith(3);
     render({ model: { ...model, canonicalPage: 4 }, access: { authorized: true }, onRequestPage });
-    expect(button("End of book").disabled).toBe(true);
-    click(button("End of book"));
-    expect(onRequestPage).toHaveBeenCalledTimes(2);
-    click(button("Previous page"));
-    expect(onRequestPage).toHaveBeenLastCalledWith(3, "end");
-    expect(container.textContent).toContain("You have reached the end of this book.");
+    expect(button('Next page').disabled).toBe(true);
+    click(button('Next page')); expect(onRequestPage).toHaveBeenCalledTimes(2);
+    click(button('Previous page')); expect(onRequestPage).toHaveBeenLastCalledWith(3, 'end');
+    expect(container.querySelector('.reader-folio__page-context').textContent).toBe('End of book');
   });
 
   test("crossing the free preview asks the route for authorization without blocking the request", () => {
@@ -284,30 +280,25 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(button("Next page")).toBeDefined();
   });
 
-  test("pending navigation disables duplicate page requests while leaving Library usable", () => {
-    const onRequestPage = jest.fn();
-    const onNavigate = jest.fn();
+  test("pending navigation disables duplicate page requests while leaving Back usable", () => {
+    const onRequestPage = jest.fn(); const onNavigate = jest.fn();
     render({ access: { busy: true }, onRequestPage, onNavigate });
-    click(button("Next page"));
-    click(button("Page 2"));
+    click(button('Next page')); openContents(); click(button('Page 2'));
     expect(container.querySelector('select[aria-label="Go to page"]').disabled).toBe(true);
-    expect(onRequestPage).not.toHaveBeenCalled();
-    click(container.querySelector('.premium-header-nav--desktop [data-nav-key="library"]'));
-    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
+    expect(onRequestPage).not.toHaveBeenCalled(); closeContents();
+    click(button('Back to book')); expect(onNavigate).toHaveBeenCalledWith('back');
   });
 
-  test("both responsive font controls use the bounded rem contract and persist an explicit preference", () => {
-    render();
-    const text = container.querySelector('[data-testid="reader-reading-text"]');
-    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("beige");
-    expect(text.style.fontSize).toBe("1.125rem");
-    expect(text.style.lineHeight).toBe("1.375");
-    expect(text.style.fontFamily).toContain("EB Garamond");
-    click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
-    expect(text.style.fontSize).toBe("1.25rem");
-    click(container.querySelector('.reader-v2__mobile-topbar button[aria-label="Decrease text size"]'));
-    expect(text.style.fontSize).toBe("1.125rem");
-    expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).fontSizeIdx).toBe(1);
+  test("one Aa dialog uses the bounded rem contract and persists an explicit preference", () => {
+    render(); const text = container.querySelector('[data-testid="reader-reading-text"]');
+    expect(container.querySelector('article').getAttribute('data-reader-theme')).toBe('beige');
+    expect(text.style.fontSize).toBe('1.25rem'); expect(text.style.lineHeight).toBe('1.375');
+    expect(text.style.fontFamily).toContain('EB Garamond');
+    click(button('Reader settings'));
+    const size = container.querySelectorAll('#reader-v2-settings select')[1];
+    expect([...size.options].map(option => option.value)).toEqual(['1.125', '1.25', '1.375', '1.5', '1.625', '1.75', '1.875', '2']);
+    change(size, '2'); expect(text.style.fontSize).toBe('2rem');
+    change(size, '1.125'); expect(text.style.fontSize).toBe('1.125rem');
     expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBe(1.125);
   });
 
@@ -336,10 +327,10 @@ describe("ReaderExperienceV2 customer controls", () => {
     render({ model: { ...model, language: "bn", content: <p>বাংলা পাঠ্য</p> } });
     const text = container.querySelector('[data-testid="reader-reading-text"]');
     expect(container.querySelector("article").lang).toBe("bn");
-    expect(text.style.fontSize).toBe("1.125rem");
+    expect(text.style.fontSize).toBe("1.25rem");
     expect(text.style.lineHeight).toBe("1.4");
     expect(text.style.fontWeight).toBe("500");
-    expect(text.style.fontFamily).toContain("Noto Sans Bengali");
+    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
 
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]'));
     const selects = container.querySelectorAll("#reader-v2-settings select");
@@ -348,8 +339,8 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(text.style.fontSize).toBe("2rem");
     expect(text.style.fontFamily).toContain("Noto Sans Bengali");
     click(button("Reset typography"));
-    expect(text.style.fontSize).toBe("1.125rem");
-    expect(text.style.fontFamily).toContain("Noto Sans Bengali");
+    expect(text.style.fontSize).toBe("1.25rem");
+    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
     expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBeNull();
   });
 
@@ -369,7 +360,6 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("preference changes do not request another canonical page", () => {
     const onRequestPage = jest.fn();
     render({ onRequestPage });
-    click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]'));
     const selects = container.querySelectorAll("#reader-v2-settings select");
     change(selects[0], "sepia");

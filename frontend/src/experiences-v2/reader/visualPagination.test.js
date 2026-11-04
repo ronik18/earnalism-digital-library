@@ -304,3 +304,115 @@ test('successful preflight reports entry into cloning so cancellation evidence i
   const stats = []; seamRun('<p>one two three four</p>', [{ offset: 4, media: 0 }], 20, { onPreprocessingStats: value => stats.push(value) });
   expect(stats.some(value => value.enteredClone === true)).toBe(true);
 });
+
+// Algorithm fixtures supply explicit line-box geometry. Native browser coverage
+// separately uses fonts and real DOM measurements rather than these stand-ins.
+function withProseLineGeometry(html, inspect, { height = 100, columns = 10, pageBreaks = [], glyphHeight = 16, sourceClass = '' } = {}) {
+  const source = document.createElement('div'); source.innerHTML = html; source.className = sourceClass;
+  const measure = document.createElement('div'); measure.style.lineHeight = '20px';
+  const linesFor = text => text.trim() ? Math.ceil(text.length / columns) : 0;
+  Object.defineProperty(measure, 'scrollHeight', { get() {
+    return [...measure.childNodes].reduce((sum, node) => sum + (node.nodeType === Node.ELEMENT_NODE ? linesFor(node.textContent) * 20 : 0), 0);
+  } });
+  const descriptor = Object.getOwnPropertyDescriptor(Range.prototype, 'getClientRects');
+  Object.defineProperty(Range.prototype, 'getClientRects', { configurable: true, value() {
+    const rectangles = Array.from({ length: linesFor(this.toString()) }, (_, index) => ({ top: index * 20, bottom: index * 20 + glyphHeight, width: 100, height: glyphHeight }));
+    // Real rich text may return overlapping inline boxes on the same line.
+    return rectangles.flatMap(rect => [rect, { ...rect }]);
+  } });
+  try {
+    const pages = paginateRendered(source, measure, height, () => measure.scrollHeight <= height, { pageBreaks });
+    inspect({ source, measure, pages, linesFor });
+  } finally {
+    if (descriptor) Object.defineProperty(Range.prototype, 'getClientRects', descriptor);
+    else delete Range.prototype.getClientRects;
+  }
+}
+
+function expectExactProseGeometry({ source, measure, pages }, height = 100) {
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.every((page, index) => !index || page.start === pages[index - 1].end)).toBe(true);
+  expect(pages.at(-1).end).toBe(source.textContent.length);
+  for (const page of pages) { measure.innerHTML = page.html; expect(measure.scrollHeight).toBeLessThanOrEqual(height); }
+}
+
+test('ordinary prose fills a short page with a measured prefix instead of moving a whole paragraph', () => {
+  const first = 'First words.';
+  withProseLineGeometry(`<p>${first}</p><p><em>one two three four five six seven eight nine ten.</em></p>`, fixture => {
+    const { pages } = fixture;
+    expect(pages[0].text.length).toBeGreaterThan(first.length + 15);
+    expect(pages[0].html).toContain('<em>');
+    expect(pages[1].html).toContain('data-reader-continuation="true"');
+    expectExactProseGeometry(fixture);
+  });
+});
+
+test('filling ordinary prose does not leave a one-line paragraph continuation', () => {
+  withProseLineGeometry('<p>First words.</p><p>' + 'aa '.repeat(13).trim() + '</p>', fixture => {
+    const { pages, measure, linesFor } = fixture;
+    expect(pages[0].text.length).toBeGreaterThan('First words.'.length);
+    measure.innerHTML = pages[1].html;
+    expect(linesFor(measure.querySelector('p').textContent)).toBeGreaterThanOrEqual(2);
+    expectExactProseGeometry(fixture);
+  });
+});
+
+test('one remaining line cannot create a prose orphan even with duplicate inline line boxes', () => {
+  const first = 'aa '.repeat(13).trim();
+  withProseLineGeometry(`<p>${first}</p><p><strong>one two three four five six seven eight</strong></p>`, fixture => {
+    expect(fixture.pages[0].text).toBe(first);
+    expectExactProseGeometry(fixture);
+  });
+});
+
+test.each([
+  ['authored breaks', '<p>one two three<br>four five six seven eight nine ten</p>'],
+  ['marked verse', '<p class="verse">one two three four five six seven eight nine ten.</p>'],
+  ['preformatted text', '<pre>one two three four five six seven eight nine ten.</pre>'],
+  ['quotation', '<blockquote>one two three four five six seven eight nine ten.</blockquote>'],
+])('remaining-space optimization does not fragment %s', (_kind, body) => {
+  const first = 'First words.';
+  withProseLineGeometry(`<p>${first}</p>${body}`, fixture => {
+    expect(fixture.pages[0].text).toBe(first);
+    const restored = document.createElement('div'); restored.innerHTML = fixture.pages.map(page => page.html).join('');
+    expect(restored.querySelectorAll('br')).toHaveLength(fixture.source.querySelectorAll('br').length);
+    expectExactProseGeometry(fixture);
+  });
+});
+
+test('fill-aware prose respects a canonical page break and preserves exact Bengali inline text', () => {
+  const first = 'First words.';
+  const second = 'রাধারাণী একটি ছোট বই নিয়ে শান্ত ঘরে বসিয়া গল্প পড়িতে লাগিল।';
+  const boundary = { offset: first.length + second.indexOf('ঘরে'), media: 0 };
+  withProseLineGeometry(`<p>${first}</p><p><strong>${second}</strong></p><p>After the boundary.</p>`, fixture => {
+    expectSeamIntegrity(fixture.source, fixture.pages, [boundary]);
+    expectExactProseGeometry(fixture);
+    const retained = document.createElement('div'); retained.innerHTML = fixture.pages.map(page => page.html).join('');
+    expect(retained.querySelectorAll('strong').length).toBeGreaterThan(0);
+  }, { pageBreaks: [boundary] });
+});
+
+
+test('overlapping glyph rectangles still count distinct prose rows', () => {
+  const first = 'First words.';
+  withProseLineGeometry(`<p>${first}</p><p><em>one two three four five six seven eight nine ten.</em></p>`, fixture => {
+    expect(fixture.pages[0].text.length).toBeGreaterThan(first.length + 15);
+    expectExactProseGeometry(fixture);
+  }, { glyphHeight: 24 });
+});
+
+test('a poetry marker on the source ancestor survives detached block cloning', () => {
+  const first = 'First words.';
+  withProseLineGeometry(`<p>${first}</p><p>one two three four five six seven eight nine ten.</p>`, fixture => {
+    expect(fixture.pages[0].text).toBe(first);
+    expectExactProseGeometry(fixture);
+  }, { sourceClass: 'verse' });
+});
+
+test.each(['sup', 'sub', 'small'])('shifted %s text keeps conservative whole-block placement', tag => {
+  const first = 'First words.';
+  withProseLineGeometry(`<p>${first}</p><p>one two <${tag}>three</${tag}> four five six seven eight nine ten.</p>`, fixture => {
+    expect(fixture.pages[0].text).toBe(first);
+    expectExactProseGeometry(fixture);
+  });
+});

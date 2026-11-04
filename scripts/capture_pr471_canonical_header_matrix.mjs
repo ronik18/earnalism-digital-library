@@ -5,6 +5,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
 
+import { measureQuietFolioReaderChrome } from './lib/quiet_folio_brand_chrome_contract.mjs';
+
 const baseUrl = String(process.env.HEADER_REVIEW_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.HEADER_REVIEW_OUTPUT || "/tmp/pr471-canonical-header-evidence");
 // For pull_request workflows, GITHUB_SHA is the synthetic merge ref. Bind the
@@ -93,12 +95,16 @@ try {
         return requestRoute.continue();
       });
       await page.goto(`${baseUrl}${routeInfo.path}`, { waitUntil: "domcontentloaded" });
-      const header = page.locator('header[data-testid="site-header"]').first();
+      const isReader = routeInfo.id === 'reader';
+      const header = page.locator(isReader ? 'header.reader-folio__bar' : 'header[data-testid="site-header"]').first();
       await header.waitFor({ state: "visible", timeout: 15000 });
       await page.evaluate(() => document.fonts?.ready);
       await page.waitForTimeout(300);
 
-      const headerInfo = await header.evaluate((node) => {
+      if (isReader) await page.locator('.reader-v2__visual-viewport[data-pagination-ready="true"]').waitFor({state:'visible'});
+      const readerChrome = isReader ? await measureQuietFolioReaderChrome(page, {id:routeInfo.id,route:routeInfo.path,fixture:'reader-visual-safe'}) : null;
+      const readerBox = isReader ? await header.boundingBox() : null;
+      const headerInfo = isReader ? {contract:'QUIET_FOLIO', title:readerChrome.title, height:Math.round(readerBox.height), width:Math.round(readerBox.width), logo_width:null, logo_asset:null, public_nav_labels:[], reader_chrome:readerChrome} : await header.evaluate((node) => {
         const rect = node.getBoundingClientRect();
         const logo = node.querySelector('[data-brand-asset="earnalism-brand-lockup.png"] img');
         const visible = (selector) => {
@@ -129,6 +135,8 @@ try {
           has_immersive_search: visible('[aria-label="Search library"]'),
         };
       });
+      let menuLabels = [];
+      if (!isReader) {
       assert.ok(headerInfo.logo_right <= headerInfo.control_left, `${routeInfo.id}: logo/control collision`);
       if (routeInfo.id === "reading-pass") {
         assert.equal(await page.locator('.rp-fact-rings > div:nth-child(2) > span').innerText(), "NO");
@@ -151,7 +159,7 @@ try {
       if (viewport.width >= 1440) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
       if (viewport.width < 1440) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
 
-      let menuLabels = [...headerInfo.public_nav_labels];
+      menuLabels = [...headerInfo.public_nav_labels];
       if (viewport.width < 1280) {
         const menuToggle = header.locator('[data-testid="mobile-menu-toggle"], .experience-header__menu-toggle').first();
         await menuToggle.click();
@@ -172,6 +180,19 @@ try {
         assert.deepEqual(menuLabels, expectedNavLabels, `${routeInfo.id} ${viewport.width}: desktop nav labels/order`);
       }
 
+      } else {
+        menuLabels = ['Previous page', 'Contents', 'Next page'];
+        assert.deepEqual(Object.keys(readerChrome.zoom_results.reader_navigation.children), menuLabels);
+        const contents = page.getByRole('button', {name:'Contents', exact:true}); await contents.click();
+        const sheet = page.getByRole('dialog', {name:'Contents and page navigation', exact:true}); await sheet.waitFor({state:'visible'});
+        assert.equal(await sheet.getByRole('button', {name:'Library', exact:true}).isVisible(), true);
+        assert.equal(await sheet.getByRole('textbox', {name:'Search books, authors, topics', exact:true}).isVisible(), true);
+        assert.equal(await sheet.getByRole('button', {name:'Search library', exact:true}).isVisible(), true);
+        if (viewport.width === 390) await page.screenshot({path:path.join(output, 'reader-contents-390.png'),fullPage:true,animations:'disabled'});
+        await page.keyboard.press('Escape'); await sheet.waitFor({state:'detached'});
+        assert.equal(await contents.evaluate(node => node === document.activeElement), true, 'Reader Contents must restore keyboard focus');
+      }
+
       const pageWidth = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
       assert.ok(pageWidth.scroll <= pageWidth.client, `${routeInfo.id} ${viewport.width}: page overflow ${pageWidth.scroll}px > ${pageWidth.client}px`);
       assert.deepEqual(pageErrors, [], `${routeInfo.id} ${viewport.width}: uncaught page errors`);
@@ -189,10 +210,10 @@ try {
   }
 
 const fullPageCaptures = captures.filter((capture) => capture.screenshot);
-const html = `<!doctype html><meta charset="utf-8"><title>PR471 canonical header evidence</title><style>body{font:16px system-ui;background:#f7f1e7;color:#251814;margin:24px}h1{font:32px Georgia}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}figure{margin:0;padding:10px;background:#fff;border:1px solid #ddd}img{display:block;width:100%;height:180px;object-fit:cover;object-position:top}figcaption{padding:8px 2px;font-size:13px}</style><h1>PR #471 canonical navigation — exact-head screenshots</h1><p>Local isolated fixtures; no production writes. Every screenshot is mapped to route and viewport in summary.json.</p><main>${fullPageCaptures.map((capture) => `<figure><a href="${capture.screenshot}"><img src="${capture.screenshot}" alt="${capture.state} at ${capture.viewport.width}px"></a><figcaption>${capture.state} · ${capture.viewport.width}px · ${capture.header.height}px masthead · logo ${capture.header.logo_width}px</figcaption></figure>`).join("")}</main>`;
+const html = `<!doctype html><meta charset="utf-8"><title>PR471 canonical header evidence</title><style>body{font:16px system-ui;background:#f7f1e7;color:#251814;margin:24px}h1{font:32px Georgia}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}figure{margin:0;padding:10px;background:#fff;border:1px solid #ddd}img{display:block;width:100%;height:180px;object-fit:cover;object-position:top}figcaption{padding:8px 2px;font-size:13px}</style><h1>PR #471 canonical navigation — exact-head screenshots</h1><p>Local isolated fixtures; no production writes. Every screenshot is mapped to route and viewport in summary.json.</p><main>${fullPageCaptures.map((capture) => `<figure><a href="${capture.screenshot}"><img src="${capture.screenshot}" alt="${capture.state} at ${capture.viewport.width}px"></a><figcaption>${capture.state} · ${capture.viewport.width}px · ${capture.header.contract === 'QUIET_FOLIO' ? `${capture.header.height}px compact Reader bar · no marketing logo` : `${capture.header.height}px masthead · logo ${capture.header.logo_width}px`}</figcaption></figure>`).join("")}</main>`;
 fs.writeFileSync(path.join(output, "index.html"), html);
 const headerCaptures = captures.filter((capture) => capture.header_screenshot);
-const headerSheet = `<!doctype html><meta charset="utf-8"><title>PR #471 header comparison contact sheet</title><style>body{font:14px system-ui;background:#f7f1e7;color:#251814;margin:20px}h1{font:28px Georgia}h2{font:20px Georgia;margin:28px 0 8px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}figure{margin:0;padding:8px;background:#fff;border:1px solid #ddd}img{display:block;width:100%;height:auto}figcaption{padding:6px 2px;font-size:12px}</style><h1>PR #471 canonical header comparison</h1><p>Exact-head local fixtures. Header crops are grouped by viewport and mapped in summary.json.</p>${[1440,1024,390].map((width) => `<h2>${width}px</h2><section>${headerCaptures.filter((capture) => capture.viewport.width === width).map((capture) => `<figure><img src="${capture.header_screenshot}" alt="${capture.state} header at ${width}px"><figcaption>${capture.state} · ${capture.header.height}px masthead · lockup ${capture.header.logo_width}px</figcaption></figure>`).join("")}</section>`).join("")}`;
+const headerSheet = `<!doctype html><meta charset="utf-8"><title>PR #471 header comparison contact sheet</title><style>body{font:14px system-ui;background:#f7f1e7;color:#251814;margin:20px}h1{font:28px Georgia}h2{font:20px Georgia;margin:28px 0 8px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}figure{margin:0;padding:8px;background:#fff;border:1px solid #ddd}img{display:block;width:100%;height:auto}figcaption{padding:6px 2px;font-size:12px}</style><h1>PR #471 canonical header comparison</h1><p>Exact-head local fixtures. Header crops are grouped by viewport and mapped in summary.json.</p>${[1440,1024,390].map((width) => `<h2>${width}px</h2><section>${headerCaptures.filter((capture) => capture.viewport.width === width).map((capture) => `<figure><img src="${capture.header_screenshot}" alt="${capture.state} header at ${width}px"><figcaption>${capture.state} · ${capture.header.contract === 'QUIET_FOLIO' ? `${capture.header.height}px compact Reader bar · no marketing logo` : `${capture.header.height}px masthead · lockup ${capture.header.logo_width}px`}</figcaption></figure>`).join("")}</section>`).join("")}`;
 fs.writeFileSync(path.join(output, "header-contact-sheet.html"), headerSheet);
 const summary = { result: "PASS", classification: "ISOLATED_LOCAL_FIXTURE_VISUAL_EVIDENCE", head_sha: headSha, route_count: routes.length, viewport_count: viewports.length, full_page_screenshot_count: captures.filter((capture) => capture.screenshot).length, header_screenshot_count: headerCaptures.length, canonical_navigation: navLabels, captures };
   fs.writeFileSync(path.join(output, "summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
