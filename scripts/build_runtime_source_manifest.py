@@ -20,7 +20,7 @@ def module(repo):
 
 def build(repo, ref=None):
     repo = Path(repo); contract = module(repo)
-    env = {**os.environ, 'GIT_NO_LAZY_FETCH': '1'}
+    env = {**os.environ, 'GIT_NO_LAZY_FETCH': '1', 'GIT_NO_REPLACE_OBJECTS': '1'}
     args = ['git', '-c', 'remote.origin.promisor=false']
     if ref:
         raw = subprocess.check_output(args+['ls-tree','-rz',ref,'--','backend'],cwd=repo,env=env)
@@ -60,6 +60,8 @@ def build(repo, ref=None):
         if p.wait(timeout=5)!=0:raise ValueError('Git failure')
     finally:
         if p.poll() is None:p.terminate();p.wait(timeout=5)
+        p.stdout.close()
+        if not p.stdin.closed:p.stdin.close()
     return {'schema':contract.SCHEMA,'scope':contract.SCOPE,'files':rows,'expected_sha256':contract.inventory_digest(rows)}
 
 

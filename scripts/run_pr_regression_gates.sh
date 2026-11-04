@@ -134,6 +134,9 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_corrective_backend_dispatch \
   scripts.test_provider_process_diagnostic \
   scripts.test_backend_upload_payload \
+  scripts.test_paired_bootstrap_source_export \
+  scripts.test_current_guarded_bootstrap_restore \
+  scripts.test_guarded_pair_ci_history \
   scripts.test_guarded_release_controller \
   scripts.test_provider_journal_durability \
   scripts.test_provider_suppression_controls \
