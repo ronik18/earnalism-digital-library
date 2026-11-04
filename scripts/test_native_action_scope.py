@@ -6,7 +6,7 @@ from scripts import india_release_provider_adapter as a
 class BudgetTests(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.j=Path(self.tmp.name)/'j';self.j.mkdir(mode=0o700)
-  self.base={'schema':'earnalism.actual_root_native_baseline.v1','owner_scope_receipt_sha256':'a'*64,'intended_closed_source_sha':'b'*40,'operations_journal_identity_sha256':a._operation_journal_identity(self.j),'release_scope_id':'temporary','historical_terminal_operations':{},'initial_future_operation_count':0,'limits':p.ACTION_LIMITS.copy()}
+  self.base={'schema':'earnalism.actual_root_native_baseline.v2','owner_scope_receipt_sha256':'a'*64,'intended_closed_source_sha':'b'*40,'operations_journal_identity_sha256':a._operation_journal_identity(self.j),'release_scope_id':'temporary','historical_terminal_operations':{},'historical_request_artifacts':{},'initial_future_operation_count':0,'limits':p.ACTION_LIMITS.copy()}
   self.base['release_scope_id']=p.digest({'domain':'earnalism.native_action_scope.v1',**{k:self.base[k] for k in ['owner_scope_receipt_sha256','intended_closed_source_sha','operations_journal_identity_sha256']}})
   self.scope={k:self.base[k] for k in p.SCOPE_KEYS-{'schema','baseline_sha256'}}|{'schema':'earnalism.native_action_scope.v1','baseline_sha256':p.digest(self.base)}
   a._durable_json(self.j/'.native-action-baseline.receipt',self.base)
@@ -114,3 +114,47 @@ class BaselineWriterAdmissionTests(unittest.TestCase):
   binding=copy.deepcopy(self.b);binding.pop('native_action_scope');calls=[]
   with self.assertRaises(ValueError):self.run_adapter(binding,calls)
   self.assertEqual(calls,[])
+
+class HistoricalRequestTests(unittest.TestCase):
+ setUp=BudgetTests.setUp
+ tearDown=BudgetTests.tearDown
+ approval=ScopedDispatchTests.approval
+ run_adapter=ScopedDispatchTests.run_adapter
+ def history(self,*,request=True):
+  op='e'*64
+  record={'operation_id':op,'action':'legacy_custom_native_restore',
+          'binding':{'source_sha':'a'*40},'state':'APPLIED_VERIFIED'}
+  path=self.j/(op+'.json');a._durable_json(path,record)
+  self.base['historical_terminal_operations']={op:hashlib.sha256(path.read_bytes()).hexdigest()}
+  body={'query':'retained historical request data only','binding_sha256':a.digest(record['binding'])}
+  if request:
+   target=self.j/(op+'.request.json');a._durable_json(target,body)
+   self.base['historical_request_artifacts']={op:hashlib.sha256(target.read_bytes()).hexdigest()}
+  self.scope['baseline_sha256']=p.digest(self.base)
+  self.b['native_action_scope']=self.scope
+  a._durable_json(self.j/'.native-action-baseline.receipt',self.base)
+  return op,body
+ def denied(self):
+  calls=[]
+  with self.assertRaises(ValueError):self.run_adapter(self.b,calls)
+  self.assertEqual(calls,[])
+  self.assertFalse((self.j/'_write-barrier.json').exists())
+  self.assertFalse((self.j/'.native-action-scope.claim').exists())
+ def test_pinned_legacy_request_allows_one_scoped_stage_without_reinterpretation(self):
+  op,_=self.history();record=(self.j/(op+'.json')).read_bytes();request=(self.j/(op+'.request.json')).read_bytes();calls=[]
+  self.run_adapter(self.b,calls)
+  self.assertEqual(len(calls),1)
+  self.assertEqual((self.j/(op+'.json')).read_bytes(),record)
+  self.assertEqual((self.j/(op+'.request.json')).read_bytes(),request)
+ def test_changed_pinned_legacy_request_denies_before_dispatch(self):
+  op,_=self.history();a._durable_json(self.j/(op+'.request.json'),{'changed':True});self.denied()
+ def test_missing_pinned_legacy_request_denies_before_dispatch(self):
+  op,_=self.history();(self.j/(op+'.request.json')).unlink();self.denied()
+ def test_new_unpinned_request_on_historical_record_denies(self):
+  op,body=self.history(request=False);a._durable_json(self.j/(op+'.request.json'),body);self.denied()
+ def test_request_map_cannot_claim_unknown_historical_operation(self):
+  self.base['historical_request_artifacts']={'e'*64:'f'*64};self.scope['baseline_sha256']=p.digest(self.base)
+  with self.assertRaises(ValueError):p.validate_scope(self.scope,self.base,a._operation_journal_identity(self.j))
+ def test_legacy_baseline_is_not_silently_upgraded(self):
+  self.base.pop('historical_request_artifacts');self.base['schema']='earnalism.actual_root_native_baseline.v1';self.scope['baseline_sha256']=p.digest(self.base)
+  a._durable_json(self.j/'.native-action-baseline.receipt',self.base);self.denied()

@@ -41,10 +41,10 @@ def validate(binding, actual=None):
 # Immutable actual-Root baseline admission, not a mutable counter/authority factory.
 ACTION_LIMITS={'backend':3,'frontend':3,'stage':1}
 SCOPE_KEYS={'schema','owner_scope_receipt_sha256','release_scope_id','baseline_sha256','intended_closed_source_sha','operations_journal_identity_sha256'}
-BASELINE_KEYS={'schema','owner_scope_receipt_sha256','release_scope_id','intended_closed_source_sha','operations_journal_identity_sha256','historical_terminal_operations','initial_future_operation_count','limits'}
+BASELINE_KEYS={'schema','owner_scope_receipt_sha256','release_scope_id','intended_closed_source_sha','operations_journal_identity_sha256','historical_terminal_operations','historical_request_artifacts','initial_future_operation_count','limits'}
 def validate_scope(scope,baseline,journal_identity):
     exact(scope,SCOPE_KEYS);exact(baseline,BASELINE_KEYS)
-    need(scope['schema']=='earnalism.native_action_scope.v1' and baseline['schema']=='earnalism.actual_root_native_baseline.v1','Exact Root scope/baseline schema')
+    need(scope['schema']=='earnalism.native_action_scope.v1' and baseline['schema']=='earnalism.actual_root_native_baseline.v2','Exact Root scope/baseline schema')
     need(scope['baseline_sha256']==digest(baseline),'Immutable original baseline digest')
     for k in SCOPE_KEYS-{'schema','baseline_sha256'}:need(scope[k]==baseline[k],'Original Root scope changed: '+k)
     need(scope['operations_journal_identity_sha256']==journal_identity and sha(journal_identity),'Original physical journal custody required')
@@ -56,6 +56,10 @@ def validate_scope(scope,baseline,journal_identity):
     need(baseline['limits']==ACTION_LIMITS and all(type(v)is int for v in baseline['limits'].values()),'Exact typed native action limits required')
     rows=baseline['historical_terminal_operations'];need(isinstance(rows,dict) and list(rows)==sorted(rows),'Complete sorted historical baseline map required')
     need(all(sha(k) and sha(v) for k,v in rows.items()),'Immutable original historical hashes required')
+    requests=baseline['historical_request_artifacts']
+    need(isinstance(requests,dict) and list(requests)==sorted(requests)
+         and all(sha(k) and sha(v) and k in rows for k,v in requests.items()),
+         'Exact historical request hashes must belong to terminal history')
     return scope
 
 def count_scoped_intents(scope,baseline,records,*,candidate=None):

@@ -22,7 +22,7 @@
     "build_runtime_source_manifest.py": "e458ac14cb2bd316c6d8d21136a637a2d38590fea57dbd2e1ed3261775682478",
     "india_protected_runner.py": "6a2cd0e3f349e57bac3a84f64de4269f5769cc316928b3efcd3d9faa9f504c00",
     "india_release_observer.py": "d0ba14e1a0e2c4ff7be2861c750e33142c821943d6116259b724ac15cfca7f0d",
-    "india_release_provider_adapter.py": "121c062f51fb9f519511c0c8bbd3c828e1d65f94f9b043bb9feffd314be2482a",
+    "india_release_provider_adapter.py": "eb419d8df10da7e63e0a59adf806afe756343967c30f1e2573df915762c529f3",
     "purchase_guard_source.py": "22eb4f5da34448336902ec06ae2b128071d6c768efa54c7abce3cf5360f01968",
     "qualify_stable_rollback_profile.py": "de065e5e6d2c65965e00a00996084ff045576c0248921f8c7fb569e83b3e3fea",
     "reader612_native_observer.py": "e83bea335b404861735a2d959c95eb4e7716a04919e29df7ffd9a89507d4e9c2",
@@ -32,7 +32,7 @@
     "reader612_phase_bridge.py": "b183d60f0c9db2935ed25bb841846c4bab22e593a90a392a4ec49c9b3c1dd9a2",
     "reader612_phase_collectors.py": "b5a327d3dade2d0b8435e578c270390d911007946e025f24a0363cecc852135b",
     "startup_dispatch_qualification.py": "2b75048dc3e9fc0c84a21e3b6f0cd177ef47cac682d3f49dcef2dd39954c029b",
-    "first_guard_pair.py": "f1bc24d6dffa938b730a05076985ec015b5c238ade8f752f5db1adc539e0a875"
+    "first_guard_pair.py": "9abfe6cdb4ce46225476bd802be57a707aca5a2e965a3f89c888750a04aa059d"
   },
   "controller_integration_status": "SOURCE_BOUND_PHASE_BRIDGE_AND_READ_ONLY_COLLECTORS_NO_CURRENT_APPROVAL_OR_EXECUTION",
   "approval_workflow_sha256": "692189b0fb202714adc53270d0700abba9690f602e09d89365b6e50fb7c9b6c4",
