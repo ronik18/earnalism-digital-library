@@ -14151,5 +14151,19 @@
     "no_native_artifact_or_current_recovery_certification": true,
     "no_provider_audio_purchase_or_counter_operations": true,
     "next_exact_prompt": "Review the four source-hash changes and retained identity fields; run the original 78-case Reader612 suite. Require fresh applicable CI on the corrected head before match-head merge and tree equality."
+  },
+  "restore_fixture_private_parent_20261104": {
+    "at": "2026-11-04T05:38:52.466188+00:00",
+    "event": "RESTORE_TEST_FIXTURE_PRIVATE_PARENT_PORTABILITY",
+    "failed_head": "4a7f43425d1d4a8fcef9fbc336d269f1e001dd02",
+    "failed_run": 41779142826,
+    "scope": "TEST_FIXTURE_ONLY_PRODUCTION_CUSTODY_UNCHANGED",
+    "cause": "All28restoretests created the journal at TemporaryDirectory itself; Linux shared /tmp parent is world writable and correctly fails the production private-parent check.",
+    "reproduction": "One original positive test fails with TMPDIR=/private/tmp and the same custody exception.",
+    "correction": "Create an operations journal inside the private TemporaryDirectory. Preserve all28tests and add a shared-parent rejection proving zero transport calls. Never relax owner, mode, no-follow, physical identity, permanent claim or UNKNOWN checks.",
+    "actual_previous_run": "D isolated backend887PASS including29of29SredniMongo with no skips; full regression nevertheless FAILED due28fixture setup errors. These are not current-head/full/native PASS evidence.",
+    "status": "FIXTURE_CORRECTION_PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
+    "no_production_provider_audio_purchase_or_counter_actions": true,
+    "next_exact_prompt": "Independently review the fixture-only diff, run the restore/adapter/history tests with a shared TMPDIR, then require all fresh applicable CI before match-head merge/tree equality."
   }
 }

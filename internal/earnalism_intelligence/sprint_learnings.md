@@ -3062,3 +3062,8 @@ The successor is source-only pending actual A/B/C history, fresh CI/reviews and 
 ## 4 November 2026 — preparation dependencies follow reviewed source
 
 PR #641 regression correctly rejected the Reader612 preparation record after four reviewed controller modules changed. Refresh only the current source-dependency hashes; retain all historical artifact, source, runtime, approval and role fields, with native qualification and execution false. This record certifies source preparation only and cannot certify the current paired CLOSED recovery. Keep that recovery role separate. Run the original Reader612 suite and fresh applicable CI; do not rerun the failed workflow without a source correction. No provider, audio, purchase or counter operation occurred.
+
+
+## 4 November 2026 — private journal fixtures on shared temporary storage
+
+The hosted restore tests correctly failed when their journal parent was Linux shared `/tmp`. Nest the journal inside its private temporary container. Keep production custody checks intact; a new negative test makes the owned parent world writable and verifies rejection before transport. The failure was reproduced locally with a shared TMPDIR. Preserve every existing restore test, permanent claim and UNKNOWN behavior. The earlier887backend/29SredniMongo passes do not make the failed full run pass and cannot certify the next head or native recovery.

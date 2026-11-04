@@ -32,7 +32,11 @@ def fixture(folder):
  actual['retained_bootstrap_native']={'deployment_id':c['target_deployment_id'],'retained_image_id':c['target_retained_image_id'],'runtime_sha256':c['target_runtime_sha256'],'config_sha256':c['target_config_sha256'],'source_sha':c['target_source_sha'],'native_can_rollback':True}
  return binding,actual,boot,normal
 class Restore(unittest.TestCase):
- def setUp(self):self.tmp=tempfile.TemporaryDirectory();self.root=pathlib.Path(self.tmp.name);self.b,self.actual,self.boot,self.normal=fixture(self.root)
+ def setUp(self):
+  self.tmp=tempfile.TemporaryDirectory()
+  # The journal and its parent must both be private, including on Linux /tmp.
+  self.root=pathlib.Path(self.tmp.name)/'operations';self.root.mkdir(mode=0o700)
+  self.b,self.actual,self.boot,self.normal=fixture(self.root)
  def tearDown(self):self.tmp.cleanup()
  def test_ordinary_identity_unchanged(self):
   b={'source_sha':'b'*40};expected={'action':'release_backend','source_sha':b['source_sha'],'candidate':None,'project':a.RAILWAY_PROJECT,'service':a.SERVICE,'environment':a.ENVIRONMENT};self.assertEqual(a.operation_identity('release_backend',b),a.digest(expected))
@@ -188,6 +192,13 @@ class Restore(unittest.TestCase):
   try:
    with self.assertRaises(ValueError):a._operation_journal_identity(self.root)
   finally:self.root.chmod(0o700)
+ def test_shared_parent_rejected_before_transport(self):
+  calls=[];parent=self.root.parent;parent.chmod(0o1777)
+  try:
+   with self.assertRaisesRegex(ValueError,'Private owner-matched journal custody'):
+    self.run_admitted(lambda *args,**kwargs:calls.append(args))
+  finally:parent.chmod(0o700)
+  self.assertEqual(calls,[])
  def test_claim_is_permanent_before_native_dispatch_and_survives_receipt_move(self):
   calls=[];claim=self.root/('.guarded-return-'+self.b['applied_normal_operation_id']+'.claim')
   def timeout(command,**kw):
