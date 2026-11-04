@@ -301,12 +301,19 @@ jobs:
           set -euo pipefail
           package=scripts/test_helpers/railway_archiver_v5710
           export CARGO_TARGET_DIR="$RUNNER_TEMP/paired-helper-cargo-target"
-          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_guarded_release_controller -v
+          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_diagnose_railway_helper_lock scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_guarded_release_controller -v
           rustc --version
           cargo --version
           python3 -c 'import re,subprocess; v=re.match(r"rustc (\d+)\.(\d+)\.(\d+)",subprocess.check_output(["rustc","--version"],text=True)); assert v and tuple(map(int,v.groups())) >= (1,85,0), "Rust >=1.85 required; no automatic installation"'
           python3 scripts/verify_railway_helper_source.py --root "$package"
-          cargo build --locked --release --manifest-path "$package/Cargo.toml"
+          mkdir -p "$RUNNER_TEMP/paired-helper-proof"
+          if cargo build --locked --release --manifest-path "$package/Cargo.toml"; then
+            :
+          else
+            locked_build_status=$?
+            python3 scripts/diagnose_railway_helper_lock.py --package-root "$package" --output-dir "$RUNNER_TEMP/paired-helper-proof/cargo-lock-diagnostic" || true
+            exit "$locked_build_status"
+          fi
           mkdir -p "$RUNNER_TEMP/paired-helper-proof"
           python3 scripts/run_railway_helper_fixture_checks.py --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --output "$RUNNER_TEMP/paired-helper-proof/fixtures.json"
           python3 - <<'PYEXPORT'
@@ -333,7 +340,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: paired-helper-proof
-          path: ${{ runner.temp }}/paired-helper-proof
+          path: |
+            ${{ runner.temp }}/paired-helper-proof
+            !${{ runner.temp }}/paired-helper-proof/cargo-lock-diagnostic/package/**
           if-no-files-found: error
 
       - name: Install launcher and native-audio test prerequisites

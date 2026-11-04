@@ -716,5 +716,29 @@
     "status": "SOURCE_PREPARED_PENDING_COMPOSED_REVIEW_AND_ACTUAL_CI_HELPER_EXECUTION",
     "no_deployment_provider_settings_audio_or_purchase_actions": true,
     "next_exact_prompt": "Independently review exact adoption, legitimate dependency pin and ordinaryCI wiring, then normal sourcepush/PR. Obtain actual locked Cargo/helper/archive evidence; repair concrete failures and require all exactheadCI/reviews before expectedhead merge/tree equality. Source-only proof never authorizes provider execution or renewed counters."
+  },
+  "paired_archive_cargo_lock_diagnostic_20261104": {
+    "at": "2026-11-04T09:23:16.209388+00:00",
+    "event": "ACTUAL_CARGO_LOCK_FAILURE_QUARANTINED_DIAGNOSTIC",
+    "failed_head": "8407f927bd847fda4edad0f7c1f65a24f58a980f",
+    "failed_run": 41803821389,
+    "failed_job": 126485832833,
+    "actual_toolchain": "rustc1.99.1/cargo1.99.1",
+    "hosted_checks_before_failure": {
+      "reader612": 78,
+      "helper_consumer": 132,
+      "source_lock_registry_packages": 92
+    },
+    "observed_failure": "cargo build --locked refused to update derived lock; no helper/archive ran. Artifact no-files error was secondary. The source-checked upstream closure is not a Cargo-admitted lock.",
+    "correction": "Keep original --locked build and exitcode authoritative. Only onfailure run finite ordinaryCI offline workspace-update in freshRUNNER_TEMP copy of exactmanifest/lock/src; never build/backcopy. Retain original/candidate lock,diff,typed diagnostics; reject any newpackage/version/source/checksum/edge or alteredsource. CLIalways1.",
+    "reviewed_private_handoff_sha256": "2b4c66a165592331a1637b85a53a81b8dbaabb0e76a4722596d7a9c9d090ad5f",
+    "independent_review_sha256": "42d9ad076b8844e645fe25ea93d9d9b40fc7e661b5fa1d0041d33e23ad59bc80",
+    "local_mock_tests": 19,
+    "actual_normalization": "UNPERFORMED_PENDING_ORDINARY_CI",
+    "source_lock_pins_unchanged": true,
+    "scope": "DIAGNOSTIC_SOURCE_ONLY_NOT_ACCEPTANCE",
+    "status": "PENDING_COMPOSED_REVIEW_AND_ACTUAL_CANDIDATE",
+    "no_provider_or_native_counter_or_audio_actions": true,
+    "next_exact_prompt": "Run reviewed diagnostic through ordinaryCI, retain actualcandidate/diff even while lockedgatefails; independently review/pin legitimate normalizedlock successor, then require original lockedbuild/helper/archive and allapplicableCI beforemerge. Never silently upgrade or mark diagnostic as releasePASS."
   }
 }
