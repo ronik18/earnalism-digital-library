@@ -14326,5 +14326,18 @@
     "status": "PENDING_COMPOSED_REVIEW_AND_ACTUAL_CANDIDATE",
     "no_provider_or_native_counter_or_audio_actions": true,
     "next_exact_prompt": "Run reviewed diagnostic through ordinaryCI, retain actualcandidate/diff even while lockedgatefails; independently review/pin legitimate normalizedlock successor, then require original lockedbuild/helper/archive and allapplicableCI beforemerge. Never silently upgrade or mark diagnostic as releasePASS."
+  },
+  "cargo_diagnostic_escape_fixture_20261104": {
+    "at": "2026-11-04T09:31:07.386522+00:00",
+    "event": "CARGO_DIAGNOSTIC_ESCAPE_FIXTURE_PORTABILITY",
+    "failed_head": "301a823cf1d1139068a9fea6160c837c2448f3a5",
+    "failed_run": 41807332415,
+    "failed_job": 126497516519,
+    "cause": "Negative test hardcoded macOS/private/tmp; Ubuntu lacks/private, so parent.resolve raisesFileNotFoundError before expected scope-rejection ValueError.151tests included1error; Cargo/normalization/helper never started.",
+    "correction": "Use a second existing TemporaryDirectory outside the allowed RUNNER_TEMP, assert the intended scope-rejection ValueError and zero subprocess/output side effects. Keep production path checks, all19tests and original lockedgate unchanged.",
+    "local_mock_tests": 19,
+    "scope": "TEST_FIXTURE_ONLY_NO_DIAGNOSTIC_OR_LOCK_OR_PROVIDER_CHANGE",
+    "status": "PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
+    "next_exact_prompt": "Independently review portable outside-scope fixture, then normal successor push; collect actualquarantinedCargo candidate only aftertests pass. Original --locked remains authoritative; no blind rerun of failedhead."
   }
 }

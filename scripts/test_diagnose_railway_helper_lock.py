@@ -110,7 +110,13 @@ class Diagnostic(unittest.TestCase):
             with self.assertRaises(ValueError):self.call(run)
             run.assert_not_called();self.env=before
     def test_output_escape_denied(self):
-        with self.assertRaises(ValueError):m.diagnose(self.package,Path('/private/tmp/escaped-lock-output'),run=Mock(),env=self.env)
+        with tempfile.TemporaryDirectory() as outside:
+            output = Path(outside).resolve() / 'escaped-lock-output'
+            run = Mock()
+            with self.assertRaisesRegex(ValueError, 'must stay in RUNNER_TEMP'):
+                m.diagnose(self.package, output, run=run, env=self.env)
+            run.assert_not_called()
+            self.assertFalse(output.exists())
 
 
 if __name__=='__main__':unittest.main()

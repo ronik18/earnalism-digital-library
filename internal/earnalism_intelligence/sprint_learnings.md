@@ -3107,3 +3107,8 @@ Compile only exact pinned upstream archive function and92-package locked depende
 ### Cargo admission is an executed gate, not a source-closure assumption
 
 cargo build --locked refused to update derived lock; no helper/archive ran. Artifact no-files error was secondary. The source-checked upstream closure is not a Cargo-admitted lock. Keep original --locked build and exitcode authoritative. Only onfailure run finite ordinaryCI offline workspace-update in freshRUNNER_TEMP copy of exactmanifest/lock/src; never build/backcopy. Retain original/candidate lock,diff,typed diagnostics; reject any newpackage/version/source/checksum/edge or alteredsource. CLIalways1. A candidate is for independent review only; do not silently change the source lock or install a local toolchain. Preserve observed CI producer context, including synthetic merge commits.
+
+
+### A scope-negative fixture needs an existing portable parent
+
+Negative test hardcoded macOS/private/tmp; Ubuntu lacks/private, so parent.resolve raisesFileNotFoundError before expected scope-rejection ValueError.151tests included1error; Cargo/normalization/helper never started. Use a second existing TemporaryDirectory outside the allowed RUNNER_TEMP, assert the intended scope-rejection ValueError and zero subprocess/output side effects. Keep production path checks, all19tests and original lockedgate unchanged. Platform path existence is separate from the intended boundary check. Retain the actual Linux failure; do not relax production validation to satisfy a macOS fixture.
