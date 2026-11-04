@@ -19,7 +19,7 @@ TEAM = 'team_HAGNRSEiW5MZXY2AhV0cQvE0'
 RAILWAY_PROJECT = 'a8533934-35c4-463e-9f43-577a9ac391ee'
 SERVICE = '5af42e7e-f518-4f6a-b602-d9950866501f'
 ENVIRONMENT = '580b250c-80ee-48ad-bfbe-fa4e31a6b378'
-ACTIONS = {'stage_frontend', 'promote_frontend', 'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}
+ACTIONS = {'stage_frontend', 'promote_frontend', 'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap', 'restore_frontend'}
 CLI_VERSIONS = {'vercel': '59.25.4', 'railway': '5.71.0'}
 
 
@@ -109,6 +109,7 @@ def _validate_barrier(path, operation_id):
 
 
 def recovery_digest_field(action, binding):
+    if action == 'restore_frontend': return 'frontend_restore_sha256'
     if action == 'restore_guarded_bootstrap': return 'guarded_restore_sha256'
     if action == 'release_guarded_bootstrap': return 'bootstrap_preflight_sha256'
     if action in {'stage_frontend', 'promote_frontend'} and binding.get('frontend_phase'):
@@ -122,6 +123,9 @@ def require_digest(value):
 
 def operation_identity(action, binding):
     """Ordinary identities remain byte-for-byte compatible with old journals."""
+    if action == 'restore_frontend':
+        return digest({'action': action, 'project': PROJECT, 'team': TEAM,
+            'applied_promotion_operation_id': binding.get('applied_promotion_operation_id')})
     if action == 'restore_guarded_bootstrap':
         normal = binding.get('applied_normal_operation_id')
         if not require_digest(normal): raise ValueError('Exact applied normal root required')
@@ -190,6 +194,8 @@ def validate_corrective_observation(correction, binding, actual):
 
 def validate_action_recovery(action, binding, actual):
     """Trusted live observer only; synthetic tests never create real receipts."""
+    if action == 'restore_frontend':
+        return  # Same-journal return context is validated separately.
     if action == 'restore_guarded_bootstrap':
         return  # Full same-journal context checked separately before dispatch.
     if action == 'release_guarded_bootstrap':
@@ -619,6 +625,104 @@ def validate_approval(action, binding, approval, owner_authorized, now):
         raise ValueError('Stale or future provider evidence')
 
 
+FRONTEND_TARGET_FIELDS = {'deployment_id', 'source_sha', 'config_sha256'}
+FRONTEND_RETURN_FIELDS = {'operations_journal_identity_sha256', 'applied_promotion_operation_id',
+    'applied_promotion_record_sha256', 'applied_promotion_reconciliation_receipt_sha256',
+    'target_deployment_id', 'target_source_sha', 'target_config_sha256',
+    'current_bad_frontend_deployment_id', 'bad_frontend_failure_receipt_sha256',
+    'backend_deployment_id', 'backend_source_sha', 'backend_phase'}
+
+
+def validate_frontend_target(binding, actual):
+    """Optional future promotion contract; legacy receipts cannot gain it later."""
+    target = binding.get('frontend_restore_target')
+    if not isinstance(target, dict) or set(target) != FRONTEND_TARGET_FIELDS:
+        raise ValueError('Exact frontend restore target required')
+    if (not re.fullmatch(r'dpl_[A-Za-z0-9]+', target.get('deployment_id', ''))
+            or not re.fullmatch('[a-f0-9]{40}', target.get('source_sha', ''))
+            or not require_digest(target.get('config_sha256'))
+            or target['deployment_id'] != binding.get('rollback_frontend_deployment_id')
+            or target['source_sha'] != binding.get('rollback_frontend_source_sha')):
+        raise ValueError('Frontend restore target differs from admitted rollback')
+    if (actual.get('frontend_restore_target') != target
+            or actual.get('frontend_restore_target_verified') is not True):
+        raise ValueError('Actual frontend restore target unavailable')
+    return target
+
+
+def validate_frontend_restore_context(journal, binding, actual, approval=None):
+    """One return per actual applied promotion, in its original physical journal."""
+    c = binding.get('frontend_restore_context')
+    if not isinstance(c, dict) or set(c) != FRONTEND_RETURN_FIELDS:
+        raise ValueError('Exact frontend return context required')
+    for key in ('operations_journal_identity_sha256', 'applied_promotion_operation_id',
+                'applied_promotion_record_sha256', 'applied_promotion_reconciliation_receipt_sha256',
+                'target_config_sha256', 'bad_frontend_failure_receipt_sha256'):
+        if not require_digest(c[key]): raise ValueError('Invalid frontend return digest: ' + key)
+    custody = _operation_journal_identity(journal)
+    if c['operations_journal_identity_sha256'] != custody:
+        raise ValueError('Original frontend journal custody differs')
+    try:
+        parent = _read_journal(Path(journal) / (c['applied_promotion_operation_id'] + '.json'))
+    except OSError as error:
+        raise ValueError('Original applied frontend promotion unavailable') from error
+    if (parent.get('action') != 'promote_frontend' or parent.get('state') != 'APPLIED_VERIFIED'
+            or parent.get('operation_id') != c['applied_promotion_operation_id']
+            or operation_identity('promote_frontend', parent['binding']) != parent['operation_id']
+            or digest(parent) != c['applied_promotion_record_sha256']
+            or parent.get('reconciliation_receipt_sha256') != c['applied_promotion_reconciliation_receipt_sha256']
+            or parent.get('operations_journal_identity_sha256') != custody):
+        raise ValueError('Exact same-journal applied promotion required')
+    target = {'deployment_id': c['target_deployment_id'], 'source_sha': c['target_source_sha'],
+              'config_sha256': c['target_config_sha256']}
+    proof = parent.get('qualified_frontend_restore_target')
+    if (not isinstance(proof, dict) or proof != target
+            or validate_frontend_target(parent['binding'], {'frontend_restore_target': proof,
+                'frontend_restore_target_verified': True}) != target):
+        raise ValueError('Permanent original frontend target proof missing')
+    if (binding.get('applied_promotion_operation_id') != parent['operation_id']
+            or binding.get('source_sha') != target['source_sha']
+            or binding.get('config_sha256') != target['config_sha256']
+            or parent['binding'].get('deployment_id') != c['current_bad_frontend_deployment_id']
+            or target['deployment_id'] == c['current_bad_frontend_deployment_id']):
+        raise ValueError('Frontend return target/root differs')
+    if (not re.fullmatch('[a-f0-9]{40}', c['backend_source_sha'])
+            or not isinstance(c['backend_deployment_id'], str)
+            or not re.fullmatch('[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}', c['backend_deployment_id'])
+            or c['backend_phase'] not in {'BACKEND_UNCHANGED', 'GUARD_ACTIVE'}):
+        raise ValueError('Exact current backend context required')
+    for key in ('backend_deployment_id', 'backend_source_sha', 'backend_phase'):
+        if actual.get(key) != c[key]: raise ValueError('Current backend context differs: ' + key)
+    if c['backend_phase'] == 'BACKEND_UNCHANGED':
+        if (actual.get('backend_unchanged') is not True
+                or parent['binding'].get('backend_source_sha') != c['backend_source_sha']):
+            raise ValueError('Original backend no longer unchanged')
+    elif actual.get('target_signed_purchase_ready') is not True:
+        raise ValueError('Unsigned frontend cannot recover guarded backend')
+    if (actual.get('frontend_restore_target') != target
+            or actual.get('config_sha256') != target['config_sha256']
+            or actual.get('frontend_restore_sha256') != digest(c)
+            or (approval is not None and approval.get('config_sha256') != target['config_sha256'])):
+        raise ValueError('Actual frontend target/config/context differs')
+    if actual.get('target_project_id') != PROJECT or actual.get('target_team_id') != TEAM:
+        raise ValueError('Frontend target provider project/team differs')
+    for key in ('native_frontend_restore_available', 'target_ready', 'target_source_verified',
+                'target_config_verified', 'frontend_backend_compatible', 'known_frontend_failure_qualified'):
+        if actual.get(key) is not True: raise ValueError('Frontend return unqualified: ' + key)
+    if actual.get('health_book_statuses') != [200, 200] or actual.get('guest_manifest_status') != 401:
+        raise ValueError('Frontend return candidate unqualified')
+    failure = actual.get('bad_frontend_failure_receipt')
+    if (not isinstance(failure, dict) or digest(failure) != c['bad_frontend_failure_receipt_sha256']
+            or failure.get('scope') != 'ACTUAL_APPLIED_FRONTEND_FAILURE'
+            or failure.get('operation_id') != parent['operation_id']
+            or failure.get('promotion_reconciliation_receipt_sha256') != parent['reconciliation_receipt_sha256']
+            or failure.get('deployment_id') != c['current_bad_frontend_deployment_id']
+            or failure.get('source_sha') != parent['binding']['source_sha']
+            or failure.get('project') != PROJECT or failure.get('team') != TEAM):
+        raise ValueError('Exact actual frontend failure required')
+    return c
+
+
 def _paired_bootstrap_payload(controller, binding):
     """Only exact committed CLOSED export admission; no native PASS is inferred."""
     from scripts.backend_upload_payload import qualify_committed_export
@@ -652,6 +756,11 @@ class ProviderAdapter:
             if not re.fullmatch(r'dpl_[A-Za-z0-9]+', binding.get('deployment_id', '')):
                 raise ValueError('Invalid exact candidate identity')
             return ['vercel', 'promote', binding['deployment_id'], '--yes', '--scope', TEAM]
+        if action == 'restore_frontend':
+            target = binding['frontend_restore_context']['target_deployment_id']
+            if not re.fullmatch(r'dpl_[A-Za-z0-9]+', target):
+                raise ValueError('Invalid exact frontend return target')
+            return ['vercel', 'rollback', target, '--yes', '--scope', TEAM]
         if action == 'restore_guarded_bootstrap':
             from scripts.reader612_native_restore import rollback_document
             schema = binding['native_rollback_schema']
@@ -678,6 +787,10 @@ class ProviderAdapter:
         path = self.journal / (operation_id + '.json')
         if path.exists():
             raise FileExistsError('Provider operation already has a durable intent')
+        if action == 'restore_frontend':
+            claim = self.journal / ('.frontend-return-' + binding['applied_promotion_operation_id'] + '.claim')
+            if claim.exists():
+                raise FileExistsError('Applied promotion already consumed its frontend return')
         if action == 'restore_guarded_bootstrap':
             claim = self.journal / ('.guarded-return-' + binding['applied_normal_operation_id'] + '.claim')
             if claim.exists():
@@ -726,6 +839,12 @@ class ProviderAdapter:
             validate_guarded_restore_context(self.journal, binding, actual, approval)
             if binding.get('native_rollback_schema') != actual.get('native_rollback_schema'):
                 raise ValueError('Binding native schema differs')
+        if action == 'restore_frontend':
+            validate_frontend_restore_context(self.journal, binding, actual, approval)
+            if actual.get('current_frontend_deployment_id') != binding['frontend_restore_context']['current_bad_frontend_deployment_id']:
+                raise ValueError('Current frontend changed; refusing to replace unrelated deployment')
+        if action == 'promote_frontend' and 'frontend_restore_target' in binding:
+            validate_frontend_target(binding, actual)
         validate_action_recovery(action, binding, actual)
         cli = 'railway' if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'} else 'vercel'
         if actual.get('cli_version') != CLI_VERSIONS[cli]:
@@ -747,9 +866,10 @@ class ProviderAdapter:
             from scripts.startup_dispatch_qualification import validate_startup_qualification
             validate_startup_qualification(binding, approval, actual, self.clock())
             validate_corrective_observation(correction, binding, actual)
-        if action == 'restore_guarded_bootstrap':
-            from scripts.startup_dispatch_qualification import validate_startup_qualification
-            validate_startup_qualification(binding, approval, actual, self.clock())
+        if action in {'restore_guarded_bootstrap', 'restore_frontend'}:
+            if action == 'restore_guarded_bootstrap':
+                from scripts.startup_dispatch_qualification import validate_startup_qualification
+                validate_startup_qualification(binding, approval, actual, self.clock())
             controller = Path(binding['source_root']).resolve()
             head = subprocess.check_output(['git','-C',str(controller),'rev-parse','HEAD'],text=True).strip()
             dirty = subprocess.check_output(['git','-C',str(controller),'status','--porcelain','--untracked-files=all'],text=True).strip()
@@ -797,23 +917,26 @@ class ProviderAdapter:
             validate_approval(action, binding, approval, self.owner_authorized, self.clock())
             validate_startup_qualification(binding, approval, actual, self.clock())
         anchor = None
-        if action == 'restore_guarded_bootstrap':
+        if action in {'restore_guarded_bootstrap', 'restore_frontend'}:
             anchor = os.open(self.journal, os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
         def durable(path, value, **kwargs):
             if anchor is None:return _durable_json(path, value, **kwargs)
             return _durable_json(path, value, directory_fd=anchor, **kwargs)
+        context_key = 'frontend_restore_context' if action == 'restore_frontend' else 'restore_context'
         try:
             if anchor is not None:
                 _assert_operation_journal_anchor(self.journal, anchor,
-                    binding['restore_context']['operations_journal_identity_sha256'])
+                    binding[context_key]['operations_journal_identity_sha256'])
             barrier = self.journal / '_write-barrier.json'
             durable(barrier, {'operation_id': operation_id, 'state': 'INTENT_RECONCILE_BEFORE_RETRY'}, exclusive=True)
             intent = {'operation_id': operation_id, 'action': action, 'binding': binding,
                       'approval_sha256': digest(approval), 'started_at': self.clock().isoformat(),
                       'state': 'INTENT_RECONCILE_BEFORE_RETRY'}
-            if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap'}:
-                intent['operations_journal_identity_sha256'] = (binding['restore_context']['operations_journal_identity_sha256']
+            if action in {'release_backend', 'release_guarded_bootstrap', 'restore_guarded_bootstrap', 'stage_frontend', 'promote_frontend', 'restore_frontend'}:
+                intent['operations_journal_identity_sha256'] = (binding[context_key]['operations_journal_identity_sha256']
                     if anchor is not None else _operation_journal_identity(self.journal))
+            if action == 'promote_frontend' and 'frontend_restore_target' in binding:
+                intent['qualified_frontend_restore_target'] = validate_frontend_target(binding, actual)
             if paired:
                 # Keep the original local helper receipt once. It remains local
                 # helper evidence, never an uploaded archive checksum.
@@ -829,7 +952,14 @@ class ProviderAdapter:
                 validate_guarded_restore_context(self.journal, binding, actual, approval)
                 durable(claim, {'applied_normal_operation_id': binding['applied_normal_operation_id'],
                     'operation_id': operation_id, 'state': 'GUARDED_RETURN_CONSUMED_NO_RETRY'}, exclusive=True)
+            if action == 'restore_frontend':
+                validate_frontend_restore_context(self.journal, binding, actual, approval)
+                durable(claim, {'applied_promotion_operation_id': binding['applied_promotion_operation_id'],
+                    'operation_id': operation_id, 'state': 'FRONTEND_RETURN_CONSUMED_NO_RETRY'}, exclusive=True)
             request = self.journal / (operation_id + '.request.json')
+            if action == 'restore_frontend':
+                durable(request, {'action': action, 'binding_sha256': digest(binding),
+                    'frontend_restore_context': binding['frontend_restore_context']}, exclusive=True)
             if action == 'stage_frontend':
                 durable(request, {'name': 'earnalism', 'project': PROJECT,
                     'target': 'production', 'autoAssignCustomDomains': False,
@@ -862,7 +992,13 @@ class ProviderAdapter:
                 validate_approval(action, binding, approval, self.owner_authorized, self.clock())
                 validate_startup_qualification(binding, approval, actual, self.clock())
                 _assert_operation_journal_anchor(self.journal, anchor,
-                    binding['restore_context']['operations_journal_identity_sha256'])
+                    binding[context_key]['operations_journal_identity_sha256'])
+            if action == 'restore_frontend':
+                validate_frontend_restore_context(self.journal, binding, actual, approval)
+                if actual.get('current_frontend_deployment_id') != binding['frontend_restore_context']['current_bad_frontend_deployment_id']:
+                    raise ValueError('Current frontend changed before return dispatch')
+                validate_approval(action, binding, approval, self.owner_authorized, self.clock())
+                _assert_operation_journal_anchor(self.journal, anchor, binding[context_key]['operations_journal_identity_sha256'])
             # No secret argv, shell interpolation, automatic OAuth/purchase flags,
             # output logging or retry. Even return0 is not serving acceptance.
             try:
@@ -923,6 +1059,23 @@ class ProviderAdapter:
                 or actual.get('outcome') not in {'APPLIED', 'NOT_APPLIED'}
                 or not re.fullmatch('[0-9a-f]{64}', actual.get('receipt_sha256', ''))):
             raise ValueError('Unknown/unbound actual provider outcome')
+        if record['action'] == 'restore_frontend':
+            c = validate_frontend_restore_context(self.journal, record['binding'], actual)
+            if record.get('operations_journal_identity_sha256') != c['operations_journal_identity_sha256']:
+                raise ValueError('Original frontend return journal differs')
+            if actual['outcome'] == 'APPLIED':
+                if (actual.get('deployment_id') != c['target_deployment_id']
+                        or actual.get('serving_frontend_deployment_id') != c['target_deployment_id']
+                        or actual.get('both_aliases_verified') is not True):
+                    raise ValueError('Actual frontend return serving identity unavailable')
+            else:
+                proof = actual.get('native_no_effect_proof')
+                if (not isinstance(proof, dict) or proof.get('scope') != 'ACTUAL_FRONTEND_RESTORE_NOT_APPLIED'
+                        or proof.get('operation_id') != operation_id
+                        or proof.get('current_deployment_id') != c['current_bad_frontend_deployment_id']
+                        or proof.get('exact_request_not_applied') is not True
+                        or proof.get('both_aliases_unchanged') is not True):
+                    raise ValueError('Actual frontend return no-effect proof required')
         if record['action']=='restore_guarded_bootstrap' and actual['outcome']=='APPLIED':
             c=validate_guarded_restore_context(self.journal, record['binding'], actual)
             # Rollback may create a NEW deployment. Bind its observed identity to

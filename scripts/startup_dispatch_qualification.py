@@ -116,3 +116,28 @@ async def collect_startup_qualification(client, db, raw_policy, *, source_sha,
             'marker_identity_sha256': digest([{'uuid': m['uuid'], 'slug': m['slug']} for m in policy['markers']]),
             'markers_sha256': digest(policy['markers']), 'marker_count': len(policy['markers']),
             'observed_at': observed.isoformat(), 'guard_verified': True}
+
+
+def bind_retained_startup_projection(binding, captured, *, clock):
+    """Bind an already captured, authorized phase receipt; never capture or refresh.
+
+    The existing bounded capture operator owns read authority and durable usage.
+    This pure callback has no database/provider channel. Repeated source checks
+    reuse original capture time; stale evidence fails without another read.
+    """
+    if not isinstance(captured, dict) or set(captured) != {'startup_policy_sha256', 'startup_data_qualification'}:
+        raise ValueError('Exact retained startup projection required')
+    binding_bytes = json.dumps(binding, sort_keys=True, separators=(',', ':'))
+    receipt_bytes = json.dumps(captured, sort_keys=True, separators=(',', ':'))
+    expected = json.loads(binding_bytes)
+    validate_startup_qualification(expected, {'config_sha256': expected.get('config_sha256')},
+                                   json.loads(receipt_bytes), clock())
+
+    def read(selected):
+        if json.dumps(selected, sort_keys=True, separators=(',', ':')) != binding_bytes:
+            raise ValueError('Retained startup phase binding differs')
+        retained = json.loads(receipt_bytes)
+        validate_startup_qualification(expected, {'config_sha256': expected.get('config_sha256')},
+                                       retained, clock())
+        return retained
+    return read
