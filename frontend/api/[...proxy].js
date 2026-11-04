@@ -11,6 +11,39 @@ const PUBLIC_RELEASE_SCOPE = "PUBLIC";
 // The current accepted, hash-bound Reader decisions cover India only.
 const AUTHORIZED_READER_COUNTRIES = new Set(["IN"]);
 
+const READER_REFRESH_GUIDANCE = "If this tab was open before the Reader update, refresh it once to load the current Reader. Then use the Reader's access controls to continue.";
+
+// Guidance changes an existing denial, never access or session admission. Old
+// loaded Reader clients display detail.message but cannot acquire the new code
+// without an explicit full-page refresh. Unrelated responses retain exact bytes.
+function readerRefreshGuidance(method, pathname, status, contentType, body) {
+  if (method !== "GET" || status !== 403
+    || !/^\/api\/reading-pass\/books\/[^/]+\/pages\/[1-9]\d*$/.test(pathname)
+    || !/^application\/json(?:\s*;\s*charset=(?:utf-8|"utf-8"))?\s*$/i.test(contentType || "")
+    || !Buffer.isBuffer(body) || body.length > 8192) return body;
+  try {
+    const text = body.toString("utf8");
+    if (!Buffer.from(text, "utf8").equals(body)) return body;
+    // The existing denial has string-only fields. Do not reserialize any
+    // numeric extension: JSON number precision can exceed JavaScript Number.
+    let hasNumber = false;
+    const value = JSON.parse(text, (_key, item) => {
+      if (typeof item === "number") hasNumber = true;
+      return item;
+    });
+    if (hasNumber) return body;
+    const detail = value && !Array.isArray(value) && value.detail;
+    if (!detail || Array.isArray(detail) || typeof detail !== "object"
+      || detail.code !== "PREVIEW_REQUIRES_PASS"
+      || typeof detail.message !== "string" || detail.message.length > 1024
+      || detail.message.includes(READER_REFRESH_GUIDANCE)) return body;
+    detail.message = `${detail.message} ${READER_REFRESH_GUIDANCE}`;
+    return Buffer.from(JSON.stringify(value), "utf8");
+  } catch {
+    return body;
+  }
+}
+
 function upstreamOrigin() {
   try {
     const parsed = new URL(process.env.EARNALISM_RELEASE_PROXY_UPSTREAM || DEFAULT_UPSTREAM);
@@ -188,7 +221,9 @@ module.exports = async function releaseProxy(req, res) {
       // Range, cookie and private-cache controls; never prefetch another segment.
       await pipeline(Readable.fromWeb(response.body), res);
     } else {
-      res.end(Buffer.from(await response.arrayBuffer()));
+      const responseBody = Buffer.from(await response.arrayBuffer());
+      res.end(readerRefreshGuidance(req.method || "GET", incoming.pathname,
+        response.status, response.headers.get("content-type"), responseBody));
     }
   } catch (error) {
     console.error("release proxy upstream request failed", { path: incoming.pathname, method: req.method, message: error?.message || "request failed" });
@@ -208,3 +243,5 @@ module.exports.protectedReaderPath = protectedReaderPath;
 module.exports.releaseSignature = releaseSignature;
 
 module.exports.protectedPurchasePath = protectedPurchasePath;
+
+module.exports.readerRefreshGuidance = readerRefreshGuidance;

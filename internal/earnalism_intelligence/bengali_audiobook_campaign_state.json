@@ -809,5 +809,19 @@
     "actual_startup_capture_wiring": "UNPERFORMED_REQUIRES_SEPARATELY_AUTHORIZED_PHASE_CONTEXT",
     "limits": "No purchase pause, provider write, snapshot/counter expansion, new keys/audio/compute or paid sessions. Actual phase/cap approval stays separate.",
     "next_exact_prompt": "Independently review composed CI/dependency integration, run full focused suites and fresh exact-head CI/reviews, then expected-head source merge/tree equality. Reuse unchanged helper receipt by component identity; rebind merged operator without relabeling original producer. Native phase evidence/approval remains mandatory."
+  },
+  "stale_reader_refresh_guidance_20261104": {
+    "at": "2026-11-04T16:02:40.443496+00:00",
+    "event": "STALE_READER_REFRESH_GUIDANCE_SOURCE_PREPARATION",
+    "source_base": "df821222a9572b071576d684313239c949153db2",
+    "proxy_candidate_sha256": "ee225a086e3864cccfe4c53a7f269e8bd2cf140d50240261d815da4e94e29c52",
+    "independent_review_sha256": "250cb087bfbb75a9f8c2ecdc62242f5f44f767666671414f4a6ce31783365dfb",
+    "source_scope": "Append conditional manual-refresh guidance only to bounded string-only valid UTF8 JSON GET canonical-page 403 PREVIEW_REQUIRES_PASS; preserve denial/status/code/other fields/cookies/private caches/signing. Numeric or unrelated responses retain exact bytes. No automatic reload/start/retry or protected payload change.",
+    "focused_node_tests": 26,
+    "stale_tab_component_tests": 3,
+    "stale_tab_browser_scope": "Local Chromium exact retained F0 route/old chapter helper/current compatible views and dummy APIs: cached old client persists across alias concept; actual page.reload obtains F1; explicit user admission only. Not full immutable historical bundle/native billing or uncached size guard proof.",
+    "recovery_limit": "Guidance is actionable recovery copy, not universal tab migration, cached-content revocation, Reader-preservation or qualified cutover/recovery PASS.",
+    "no_provider_actions": true,
+    "next_exact_prompt": "Review composed proxy/CI integration, run focused existing proxy checks and required exact-head CI/reviews, then expected-head merge/tree equality. Rebind exact successor frontend/proxy source; keep deployment/capture HOLD until genuine compatible rollout/recovery gates pass."
   }
 }

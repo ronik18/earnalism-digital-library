@@ -160,7 +160,7 @@ echo "==> Signed territorial release proxy and public legal/Reader presentation 
 "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_release_proxy_auth.py \
   backend/tests/test_release_proxy_country_middleware.py
-node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-proxy-streaming.test.js frontend/scripts/static-seo-access-copy.test.mjs
+node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-proxy-streaming.test.js frontend/scripts/static-seo-access-copy.test.mjs frontend/scripts/reader-refresh-guidance.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
   src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
   src/experiences-v2/__tests__/listener-resume-authorization.test.jsx \
