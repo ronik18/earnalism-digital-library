@@ -33,13 +33,18 @@ class Candidate(unittest.TestCase):
     def test_same_semantics_format_candidate_nonqualifying(self):
         r=self.validate();self.assertFalse(r['helper_executed']);self.assertTrue(r['requires_independent_review_and_source_pinning'])
     def test_dependency_reference_format_only(self):
-        self.package('gzp')['dependencies']=[x.split()[0] if x.startswith('thiserror ') else x for x in self.package('gzp')['dependencies']]
+        self.package('gzp')['dependencies']=['thiserror 1.0.69' if x.split()[0]=='thiserror' else x for x in self.package('gzp')['dependencies']]
         self.validate()
     def test_leaf_package_and_edges_pruned(self):
         leaf='adler2';self.d['package']=[p for p in self.d['package'] if p['name']!=leaf]
         for p in self.d['package']:
             if 'dependencies' in p:p['dependencies']=[x for x in p['dependencies'] if x.split()[0]!=leaf]
-        self.assertEqual(self.validate()['candidate_registry_packages'],91)
+        self.assertEqual(self.validate()['candidate_registry_packages'],len(m.packages(ORIGINAL))-2)
+    def test_previously_pruned_upstream_package_cannot_return(self):
+        up=tomllib.loads(UPSTREAM.decode())
+        row=next(p for p in up['package'] if (p['name'],p['version'])==('simd-adler32','0.3.8'))
+        self.d['package'].append(row)
+        with self.assertRaisesRegex(ValueError,'new package/version'):self.validate()
     def test_new_version_denied(self):
         self.package('anyhow')['version']='99.0.0'
         with self.assertRaises(ValueError):self.validate()

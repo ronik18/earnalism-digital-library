@@ -1,6 +1,9 @@
 """Source/lock tamper negatives; no Rust or network execution."""
 from pathlib import Path
 import shutil
+import json
+import hashlib
+import tomllib
 import tempfile
 import unittest
 import verify_railway_helper_source as m
@@ -47,6 +50,52 @@ class SourceAdmission(unittest.TestCase):
     def test_unpublishable_harness_required(self):
         self.change('Cargo.toml','publish = false','publish = true')
         with self.assertRaises(ValueError): m.check(self.root)
+
+
+    def resign_lock(self, change):
+        p=self.root/'Cargo.lock'; d=tomllib.loads(p.read_text()); change(d)
+        lines=['version = 4']
+        for row in d['package']:
+            lines.append('[[package]]')
+            lines.extend(k+' = '+json.dumps(v) for k,v in row.items())
+        p.write_text('\n'.join(lines)+'\n')
+        pins_path=self.root/'SOURCE-PINS.json';pins=json.loads(pins_path.read_bytes())
+        pins['derived_lock_sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+        pins['registry_package_closure']=sum(bool(x.get('source')) for x in d['package'])
+        pins_path.write_text(json.dumps(pins))
+
+    def test_checksum_drift_rejected_even_with_local_hash_replaced(self):
+        def change(d):next(p for p in d['package'] if p['name']=='anyhow')['checksum']='0'*64
+        self.resign_lock(change)
+        with self.assertRaisesRegex(ValueError,'registry'):m.check(self.root)
+
+    def test_version_drift_rejected_even_with_local_hash_replaced(self):
+        def change(d):next(p for p in d['package'] if p['name']=='anyhow')['version']='99.0.0'
+        self.resign_lock(change)
+        with self.assertRaises(ValueError):m.check(self.root)
+
+    def test_new_edge_rejected_even_with_local_hash_replaced(self):
+        def change(d):next(p for p in d['package'] if p['name']=='anyhow')['dependencies']=['tar']
+        self.resign_lock(change)
+        with self.assertRaisesRegex(ValueError,'dependency edge'):m.check(self.root)
+
+    def test_omitted_direct_pin_rejected_even_with_local_hash_replaced(self):
+        def change(d):
+            root=next(p for p in d['package'] if not p.get('source'))
+            root['dependencies']=[x for x in root['dependencies'] if x.split()[0]!='anyhow']
+            d['package']=[p for p in d['package'] if p['name']!='anyhow']
+        self.resign_lock(change)
+        with self.assertRaisesRegex(ValueError,'direct dependency'):m.check(self.root)
+
+    def test_unreachable_original_package_rejected(self):
+        upstream=tomllib.loads((self.root/'upstream-Cargo.lock').read_text())
+        row=next(p for p in upstream['package'] if (p['name'],p['version'])==('simd-adler32','0.3.8'))
+        self.resign_lock(lambda d:d['package'].append(row))
+        with self.assertRaisesRegex(ValueError,'unreachable'):m.check(self.root)
+
+    def test_dependency_refs_compare_semantically(self):
+        rows={('x','1.0.0'):{'name':'x','version':'1.0.0'}}
+        self.assertEqual(m._edges({'dependencies':['x']},rows),m._edges({'dependencies':['x 1.0.0']},rows))
 
 
 if __name__ == '__main__': unittest.main()

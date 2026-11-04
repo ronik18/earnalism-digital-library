@@ -2,7 +2,7 @@
 
 This package compiles only the byte-identical upstream `create_deploy_tarball` function. It contains no CLI command implementation, credential/config loader, HTTP client, upload function or provider endpoint. Its only output is a new local gzip archive file. It is never a release entrypoint.
 
-`SOURCE-PINS.json` binds the upstream module, exact function and upstream Cargo.lock. The derived lock contains the complete 92-package registry dependency closure, retaining each upstream package version, source and checksum. Cargo must admit the lock without updating it (`--locked`). If Cargo requires a lock update, fail the job and review the exact closure; do not regenerate or upgrade silently.
+`SOURCE-PINS.json` binds the upstream module, exact function and upstream Cargo.lock. The derived lock contains the Cargo-normalized 84-package registry dependency closure, retaining each remaining upstream package version, source and checksum; unused packages/feature edges and redundant reference formatting were normalized by the retained Cargo diagnostic. Cargo must admit the lock without updating it (`--locked`). If Cargo requires a lock update, fail the job and review the exact closure; do not regenerate or upgrade silently.
 
 Execute through ordinary reviewed CI, without provider secrets. Read the actual runner `rustc --version` and `cargo --version` first, admitting Rust >=1.85, not assuming image availability. Build the package with `cargo build --locked --release --manifest-path .../Cargo.toml`. Do not install a local toolchain or run Railway up.
 

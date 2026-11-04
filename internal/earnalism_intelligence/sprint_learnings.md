@@ -3112,3 +3112,7 @@ cargo build --locked refused to update derived lock; no helper/archive ran. Arti
 ### A scope-negative fixture needs an existing portable parent
 
 Negative test hardcoded macOS/private/tmp; Ubuntu lacks/private, so parent.resolve raisesFileNotFoundError before expected scope-rejection ValueError.151tests included1error; Cargo/normalization/helper never started. Use a second existing TemporaryDirectory outside the allowed RUNNER_TEMP, assert the intended scope-rejection ValueError and zero subprocess/output side effects. Keep production path checks, all19tests and original lockedgate unchanged. Platform path existence is separate from the intended boundary check. Retain the actual Linux failure; do not relax production validation to satisfy a macOS fixture.
+
+### Actual Cargo lock normalization source pin — 4 November 2026
+
+Cargo admission differs from raw upstream closure admission. Reuse the actual reviewed 84-package CI lock, not an unlocked-build workaround. Preserve retained coordinates/checksums, six direct pins, semantic edge subsets and producer context; forbid future resurrection of pruned packages. Locked compilation and helper execution remain pending separate actual CI evidence.

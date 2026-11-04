@@ -9,11 +9,11 @@ import re
 import shutil
 import subprocess
 import tomllib
+from verify_railway_helper_source import _edges as edges, EXPECTED_DIRECT as DIRECT
 
 UPSTREAM_SHA = '0a5087a0d781b67a205051f011998fbd8c4f585b529d8b0d037a1eef01cddd63'
 REGISTRY = 'registry+https://github.com/rust-lang/crates.io-index'
 ROOT = ('earnalism-railway-archiver-test', '0.1.0')
-DIRECT = {('anyhow','1.0.95'),('gzp','0.11.3'),('ignore','0.4.23'),('num_cpus','1.16.0'),('synchronized-writer','1.1.11'),('tar','0.4.46')}
 
 
 def need(ok, message):
@@ -28,15 +28,6 @@ def packages(raw):
     return rows
 
 
-def edges(p, rows):
-    out=set()
-    for dep in p.get('dependencies',[]):
-        parts=dep.split();need(len(parts) in (1,2),'unsupported dependency reference')
-        choices=[k for k in rows if k[0]==parts[0] and (len(parts)==1 or k[1]==parts[1])]
-        need(len(choices)==1,'dangling or ambiguous dependency');out.add(choices[0])
-    return out
-
-
 def validate_candidate(original, candidate, upstream):
     need(hashlib.sha256(upstream).hexdigest()==UPSTREAM_SHA,'frozen upstream lock differs')
     old,new,up=packages(original),packages(candidate),packages(upstream)
@@ -44,7 +35,9 @@ def validate_candidate(original, candidate, upstream):
     need(edges(old[ROOT],old)==DIRECT,'original direct pins differ')
     for key,p in old.items():
         if key!=ROOT:
-            need(p==up.get(key),'original frozen closure differs from upstream')
+            original = up.get(key)
+            need(original is not None and {k:v for k,v in p.items() if k!='dependencies'}=={k:v for k,v in original.items() if k!='dependencies'},'original registry coordinates differ')
+            need(edges(p,old)<=edges(original,up),'original dependency edge differs from upstream')
     need(set(new)<=set(old),'new package/version forbidden')
     need({k:v for k,v in new[ROOT].items() if k!='dependencies'}==
          {k:v for k,v in old[ROOT].items() if k!='dependencies'},'workspace fields changed')

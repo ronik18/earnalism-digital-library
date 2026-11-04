@@ -753,5 +753,22 @@
     "scope": "TEST_FIXTURE_ONLY_NO_DIAGNOSTIC_OR_LOCK_OR_PROVIDER_CHANGE",
     "status": "PENDING_INDEPENDENT_REVIEW_AND_FRESH_CI",
     "next_exact_prompt": "Independently review portable outside-scope fixture, then normal successor push; collect actualquarantinedCargo candidate only aftertests pass. Original --locked remains authoritative; no blind rerun of failedhead."
+  },
+  "actual_cargo_normalized_lock_pin_20261104": {
+    "at": "2026-11-04T09:49:55.861345+00:00",
+    "event": "ACTUAL_CARGO_NORMALIZED_LOCK_REVIEWED_SOURCE_PIN",
+    "source_base": "779592f09c802ba02c6b11ab4cefcaaa6021aa37",
+    "actual_run": 41808463733,
+    "artifact": 13311137364,
+    "historical_producer_source_sha": "28065361e52898b61d54509023714e5335d5d39c",
+    "candidate_lock_sha256": "ee9ac499cad3cbd0c830becd00d50c7fc6cef15ddfd5c8a17fa8c49a819bded4",
+    "registry_packages": 84,
+    "original_packages": 92,
+    "independent_candidate_review_sha256": "66c4e4b8d20d2cfc17d27828c7b523cd89edc2b4ed33a37d5d401e58e91617f8",
+    "independent_patch_review_sha256": "b2289c38daf6e420aa4226484703976515a00ce0268ee4c25ac2c6c911f99eda",
+    "correction": "Pin exact actual CI candidate; retain six direct versions and all registry identities/checksums. Validate semantic edge subset and reachability against frozen upstream; future candidates cannot resurrect removed IDs. Original locked build remains mandatory.",
+    "actual_build_helper_native_status": "UNPERFORMED_PENDING_FRESH_CI_NO_PROVIDER_AUTHORITY",
+    "no_deployment_provider_audio_purchase_actions": true,
+    "next_exact_prompt": "Run focused source/controller compatibility tests, push reviewed successor with auto-deploy off, then require actual locked Cargo/helper/archive execution and all exact-head gates before expected-head merge/tree equality."
   }
 }
