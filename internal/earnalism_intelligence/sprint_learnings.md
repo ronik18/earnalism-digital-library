@@ -3157,3 +3157,9 @@ models/listening. Existing accepted full-title fidelity adjudication can resolve
 raw recognizer uncertainty without changing raw output or thresholds. Confirmed
 defects and missing mandatory acceptance still block; no perfect-certainty claim.
 No runtime action, owner hold, consumed counter or deployment authority changes.
+
+Historical recovery hydration and purchase-protocol unit checks must not claim
+that every newer application backend is the old recovery image. Keep source CI
+explicitly source-only, native/manual validators strict, finite metadata/no bulk
+fallback, exact closed-role paths and owner/financial protocol checks intact.
+A CI transport/source fix does not authorize another runtime observation or release.
