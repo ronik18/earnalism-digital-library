@@ -89,7 +89,7 @@ os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]]
             result[key] = p.stdout.strip() if p.returncode == 0 else None
         return result
 
-    def run_admission(self, clone, *, pin=None, fail=False):
+    def run_admission(self, clone, *, pin=None, fail=False, source_only=False):
         prefix, pair, blobs = history_parts()
         script = prefix + '''
 bindings=("$PAIR_HISTORICAL_PIN:backend/server.py")
@@ -105,6 +105,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'PAIR_HISTORICAL_PIN': self.fixture.historical,
             'PAIR_BOOTSTRAP_PIN': pin or self.fixture.bootstrap,
             'PAIR_BINDINGS_RESULT': str(self.workspace / 'bindings-result'),
+            'PAIR_SOURCE_ONLY': 'true' if source_only else 'false',
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
@@ -146,6 +147,27 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(nested.testsRun, 6)
         self.assertTrue(nested.wasSuccessful(), str(nested.errors + nested.failures))
 
+    def test_new_application_source_ci_does_not_claim_historical_recovery(self):
+        self.fixture.write('backend/later_reviewed_application.py', b'fixture-only new application')
+        self.fixture.commit('later application candidate is not historical A')
+        # Protocol unit evidence stays valid; native full-backend recovery does not.
+        guard.validate_purchase_protocol_source(self.fixture.repo)
+        with self.assertRaisesRegex(ValueError, 'backend differs'):
+            guard.validate(self.fixture.repo)
+        clone = self.clone()
+        result, commands = self.run_admission(clone, source_only=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('HISTORICAL_PAIR_ONLY_NOT_CURRENT_BACKEND_RECOVERY_QUALIFICATION', result.stdout)
+        self.assert_exact_body_fetches(commands)
+
+    def test_manual_release_still_rejects_new_application_against_old_recovery(self):
+        self.fixture.write('backend/later_reviewed_application.py', b'fixture-only new application')
+        self.fixture.commit('later application cannot borrow old native recovery')
+        clone = self.clone()
+        result, commands = self.run_admission(clone, source_only=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args) for args in commands))
+
     def test_existing_filter_config_restored_exactly_on_success(self):
         clone = self.clone(prior={'remote.origin.promisor': 'false',
                                   'remote.origin.partialclonefilter': 'blob:limit=1024'})
@@ -165,7 +187,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args) for args in commands))
 
     def test_over_bound_history_is_rejected_without_bulk_fallback(self):
-        self.descendants(20)
+        self.descendants(70)
         clone = self.clone()
         result, commands = self.run_admission(clone)
         self.assertNotEqual(result.returncode, 0)

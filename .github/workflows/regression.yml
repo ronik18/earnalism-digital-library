@@ -77,6 +77,9 @@ jobs:
         env:
           GIT_NO_LAZY_FETCH: '1'
           GIT_NO_REPLACE_OBJECTS: '1'
+          # Ordinary source CI hydrates historical roles; only manual release
+          # may claim its candidate backend is that exact recovery application.
+          PAIR_SOURCE_ONLY: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           set -euo pipefail
           # Filtered fetch persists remote settings; restore the exact prior state.
@@ -157,9 +160,9 @@ jobs:
             [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             pair_controller_pin="$(git rev-parse HEAD)"
             [[ "$pair_controller_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
-            # Finite CI transport bound for this immediate A/B/C history, not
+            # Finite descendant metadata for the retained A/B role history, not
             # authority. Only commits for HEAD ancestry; no trees or file blobs.
-            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=16 origin "$pair_controller_pin"
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
             # Re-admit B/A with their trees: tree:0 may already have their commit
             # IDs, so normal negotiation could otherwise skip promised trees.
             git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$pair_bootstrap_pin"
@@ -174,7 +177,15 @@ jobs:
             # snapshot/file may enter the two explicitly bound backend roles.
             pair_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$pair_parent_pin" "$pair_bootstrap_pin" | LC_ALL=C sort)"
             [[ "$pair_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
-            [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == false ]]; then
+              [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            elif [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
+              # Do not mislabel historical A/B hydration as qualification of a
+              # newer backend. Runtime recovery/controller gates remain separate.
+              echo 'HISTORICAL_PAIR_ONLY_NOT_CURRENT_BACKEND_RECOVERY_QUALIFICATION'
+            else
+              exit 1
+            fi
             for pair_pin in "$pair_bootstrap_pin" "$pair_parent_pin"; do
               while IFS= read -r -d '' source_path; do
                 bindings+=("$pair_pin:$source_path")

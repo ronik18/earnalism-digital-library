@@ -88,9 +88,19 @@ def _validate(repo, *, base_reader=exact_git_server, check_pair=True):
 def validate(repo, *, base_reader=exact_git_server):
     return _validate(repo, base_reader=base_reader)
 
+def validate_purchase_protocol_source(repo, *, base_reader=exact_git_server):
+    """Validate exact server/owner/financial protocol, NOT backend recovery.
+
+    Ordinary application CI may change unrelated backend modules. This narrow
+    source check cannot qualify that changed backend against historical A/B.
+    Native callers must retain validate()/validate_paired_source() unchanged.
+    """
+    return _validate(repo, base_reader=base_reader, check_pair=False)
+
+
 def normal_guard_source(repo):
     """Signed-country tests inspect the exact bound underlying application."""
-    _,base,_=validate(repo)
+    _,base,_=validate_purchase_protocol_source(repo)
     return base.decode('utf-8')
 
 
