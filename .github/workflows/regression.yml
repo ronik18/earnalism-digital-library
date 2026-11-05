@@ -364,7 +364,7 @@ jobs:
           set -euo pipefail
           package=scripts/test_helpers/railway_archiver_v5710
           export CARGO_TARGET_DIR="$RUNNER_TEMP/paired-helper-cargo-target"
-          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_diagnose_railway_helper_lock scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_current_frontend_restore scripts.test_retained_startup_channel scripts.test_guarded_release_controller scripts.test_private_frontend_stage scripts.test_first_guard_pair scripts.test_sredni_build_amendment scripts.test_native_action_scope scripts.test_first_guard_pair_regressions -v
+          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_diagnose_railway_helper_lock scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_current_frontend_restore scripts.test_retained_startup_channel scripts.test_guarded_release_controller scripts.test_private_frontend_stage scripts.test_first_guard_pair scripts.test_reader_owner_applicability scripts.test_sredni_build_amendment scripts.test_native_action_scope scripts.test_first_guard_pair_regressions -v
           rustc --version
           cargo --version
           python3 -c 'import re,subprocess; v=re.match(r"rustc (\d+)\.(\d+)\.(\d+)",subprocess.check_output(["rustc","--version"],text=True)); assert v and tuple(map(int,v.groups())) >= (1,85,0), "Rust >=1.85 required; no automatic installation"'
