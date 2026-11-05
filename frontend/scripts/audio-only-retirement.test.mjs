@@ -20,6 +20,7 @@ test('explicit media navigation and ordered transitions are retained', () => {
 test('legacy Reader has no cue fetch, word wrapping/following or text-derived audio seeking', async () => {
   const reader = await source('frontend/src/pages/Reader.jsx');
   assert.doesNotMatch(reader, /generatedTimestamps|timestampIndexAt|wrapWordsInSpans|highlightGeneratedWord|currentWordOffset|generatedHighlightSync/);
+  assert.doesNotMatch(reader, /Highlight intensity|Set highlight intensity|reader-highlight-section-label/);
   assert.match(reader, /applyPendingAudioOffset\(\)/);
   assert.match(reader, /persistGeneratedAudioProgress/);
   assert.match(reader, /handleGeneratedAudioEnded/);

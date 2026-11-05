@@ -141,7 +141,7 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/Literary Bengali serif/);
     expect(readerSource).toMatch(/Clear Bengali sans/);
     expect(readerSource).toMatch(/Reduced motion/);
-    expect(readerSource).toMatch(/Highlight intensity/);
+    expect(readerSource).not.toMatch(/Highlight intensity|Set highlight intensity/);
     expect(readerSource).toMatch(/aria-labelledby="reader-settings-title"/);
   });
 

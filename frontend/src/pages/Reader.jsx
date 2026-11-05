@@ -90,12 +90,6 @@ const READER_MARGIN_OPTIONS = [
   { label: 'Wide', value: 'wide', measure: '760px' },
 ];
 
-const HIGHLIGHT_INTENSITY_OPTIONS = [
-  { label: 'Low', value: 'low' },
-  { label: 'Medium', value: 'medium' },
-  { label: 'High', value: 'high' },
-];
-
 const FONT_MODE_LABELS = {
   bengali: {
     group: 'Bengali font mode',
@@ -788,7 +782,8 @@ export default function Reader() {
   const [fontFamilyMode, setFontFamilyMode] = useState(initialReaderSettings.fontFamilyMode);
   const [focusMode, setFocusMode] = useState(initialReaderSettings.focusMode);
   const [reducedMotionMode, setReducedMotionMode] = useState(initialReaderSettings.reducedMotionMode);
-  const [highlightIntensity, setHighlightIntensity] = useState(initialReaderSettings.highlightIntensity);
+  // Retain the dormant stored preference without exposing narration highlighting.
+  const highlightIntensity = initialReaderSettings.highlightIntensity;
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -918,7 +913,6 @@ export default function Reader() {
     setFontFamilyMode(READER_SETTINGS_DEFAULTS.fontFamilyMode);
     setFocusMode(READER_SETTINGS_DEFAULTS.focusMode);
     setReducedMotionMode(READER_SETTINGS_DEFAULTS.reducedMotionMode);
-    setHighlightIntensity(READER_SETTINGS_DEFAULTS.highlightIntensity);
     setTtsSpeed(READER_SETTINGS_DEFAULTS.ttsSpeed);
   }, []);
 
@@ -3022,7 +3016,6 @@ export default function Reader() {
     `premium-reader--${theme}`,
     focusMode ? 'premium-reader--focus' : '',
     reducedMotionMode ? 'premium-reader--reduced-motion' : '',
-    `premium-reader--highlight-${highlightIntensity}`,
   ].filter(Boolean).join(' ');
   const useReaderDropCap = isContentPage
     && currentPageData?.contentIndex === 0
@@ -3579,7 +3572,7 @@ export default function Reader() {
           </div>
 
           <p className="sr-only" aria-live="polite">
-            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}. Highlight intensity {highlightIntensity}.
+            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}.
           </p>
 
           <section className="reader-setting-section" aria-labelledby="reader-tone-section-label">
@@ -3662,20 +3655,9 @@ export default function Reader() {
             </div>
           </section>
 
-          <section className="reader-setting-section" aria-labelledby="reader-highlight-section-label">
-            <h3 id="reader-highlight-section-label">Highlights</h3>
-            <div className="reader-setting-group">
-              <span className="reader-setting-label" id="reader-highlight-label">Highlight intensity</span>
-              <div className="reader-segmented-control" role="group" aria-labelledby="reader-highlight-label">
-                {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
-                  <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value} aria-label={`Set highlight intensity to ${item.label}`}>
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {!narrationDisabledForBook && (
+          {!narrationDisabledForBook && (
+            <section className="reader-setting-section" aria-labelledby="reader-playback-section-label">
+              <h3 id="reader-playback-section-label">Playback</h3>
               <div className="reader-setting-group">
                 <label className="reader-setting-label" htmlFor="reader-narration-speed">Narration speed: {ttsSpeed}x</label>
                 <input
@@ -3689,8 +3671,8 @@ export default function Reader() {
                   onChange={(event) => changeNarrationSpeed(parseFloat(event.target.value))}
                 />
               </div>
-            )}
-          </section>
+            </section>
+          )}
 
           <button type="button" className="reader-settings-reset" onClick={resetReaderSettings} aria-label="Reset reading settings to comfort defaults">
             Reset comfort defaults
