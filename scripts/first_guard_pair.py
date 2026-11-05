@@ -62,15 +62,36 @@ def validate_scope(scope,baseline,journal_identity):
          'Exact historical request hashes must belong to terminal history')
     return scope
 
+# Exact native owner answer, reviewed with this source. This grants only the
+# second cumulative build, never a new baseline, scope, action or time window.
+SREDNI_BUILD_OWNER_RECEIPT_SHA256 = 'b74103f4dd348abcd41f76da3eb870a76ed439edc12b5602024188d314ca9791'
+BUILD_AMENDMENT_KEYS = {'schema', 'owner_receipt_sha256', 'original_scope_sha256',
+    'original_baseline_sha256', 'title', 'additional_builds', 'cumulative_build_maximum'}
+def validate_build_amendment(scope, amendment):
+    exact(amendment, BUILD_AMENDMENT_KEYS)
+    need(amendment['schema'] == 'earnalism.native_build_amendment.v1'
+         and amendment['owner_receipt_sha256'] == SREDNI_BUILD_OWNER_RECEIPT_SHA256
+         and scope.get('owner_scope_receipt_sha256') == 'be09149041167583000ec12183729c1622c1b74e5326d9aef2d96c8b2d768611'
+         and amendment['original_scope_sha256'] == digest(scope)
+         and amendment['original_baseline_sha256'] == scope['baseline_sha256']
+         and amendment['title'] == 'sredni-vashtar'
+         and type(amendment['additional_builds']) is int and amendment['additional_builds'] == 1
+         and type(amendment['cumulative_build_maximum']) is int and amendment['cumulative_build_maximum'] == 2,
+         'Exact owner-approved cumulative second-build amendment required')
+    return amendment
+
+
 def count_scoped_intents(scope,baseline,records,*,candidate=None):
     """Records include actual raw-byte hashes; count every nonbaseline intent once."""
     old=baseline['historical_terminal_operations']
-    found=set();backend=frontend=builds=0;ids=set()
+    found=set();backend=frontend=builds=0;ids=set();build_maximum=1
     for record,raw_sha in records:
         op=record.get('operation_id');need(sha(op) and op not in ids,'Unique operation record required');ids.add(op)
         if op in old:
             need(record.get('state') in {'APPLIED_VERIFIED','NOT_APPLIED_VERIFIED'} and raw_sha==old[op],'Historical terminal baseline changed');found.add(op);continue
         need(record.get('binding',{}).get('native_action_scope')==scope,'Foreign/unscoped post-baseline operation blocks dispatch')
+        if 'native_build_amendment' in record.get('binding',{}):
+            validate_build_amendment(scope,record['binding']['native_build_amendment']);build_maximum=2
         action=record.get('action');need(action in {'stage_frontend','promote_frontend','restore_frontend','release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'},'Unknown scoped action')
         if action in {'release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'}:backend+=1
         else:frontend+=1
@@ -78,12 +99,14 @@ def count_scoped_intents(scope,baseline,records,*,candidate=None):
     need(found==set(old),'Historical baseline record missing')
     if candidate is not None and candidate['operation_id'] not in ids:
         need(candidate['binding'].get('native_action_scope')==scope,'Candidate scope differs')
+        if 'native_build_amendment' in candidate['binding']:
+            validate_build_amendment(scope,candidate['binding']['native_build_amendment']);build_maximum=2
         action=candidate['action']
         if action in {'release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'}:backend+=1
         elif action in {'stage_frontend','promote_frontend','restore_frontend'}:frontend+=1
         else:raise ValueError('Unknown candidate action')
         if action=='stage_frontend':builds+=1
-    need(backend<=3 and frontend<=3 and builds<=1,'Original bounded native action allowance exhausted')
+    need(backend<=3 and frontend<=3 and builds<=build_maximum,'Original bounded native action allowance exhausted')
     return {'backend':backend,'frontend':frontend,'stage_builds':builds}
 
 
