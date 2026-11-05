@@ -14490,5 +14490,21 @@
     "scope": "SOURCE_ONLY_NOT_DEPLOYED",
     "base": "7e2d0991006adbd79d43d29c1e432deb46758057",
     "decision": "Owner permanently retires read-along, narration-linked highlighting and text-linked audio navigation; preserve ordinary Reader/manual annotations and media/chapter controls. Accepted Sredni source/media/rights reused; Bicharak OWNER_HOLD and all counters unchanged. No runtime retry/expiry renewal."
+  },
+  "sredni_bounded_recovery_source_20261105": {
+    "date": "2026-11-05",
+    "title": "sredni-vashtar",
+    "decision": "SOURCE_ONLY_BOUNDED_BUILD_AMENDMENT_AND_CURRENT_GUARDED_PAIR",
+    "base_source": "fd36aa94a3bb8a258391fd34e76dadc1c30da06d",
+    "normal_parent": "15e4f5441e15cdf55c1698bfe3557a009b89c925",
+    "closed_source": "85021e5ef9cf8776b3d2bd8568d6d026ebc1901b",
+    "owner_message": "01a1ac2e-fa97-7011-8e64-072d99768baf",
+    "scope": "one additional frontend build; original baseline/counters/action/financial/window limits preserved",
+    "result": "SOURCE_PAIR_OFFLINE_PASS_NOT_NATIVE_RECOVERY",
+    "held": "frozen observation adapter needs two events; owner grants one; no proven single-capture policy freshness path",
+    "bicharak": "OWNER_HOLD",
+    "provider_operations": 0,
+    "spend": 0,
+    "next": "exact-head source CI/reviews; no runtime until observation scope and actual preconditions qualify"
   }
 }

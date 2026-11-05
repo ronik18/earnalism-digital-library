@@ -3168,3 +3168,10 @@ A CI transport/source fix does not authorize another runtime observation or rele
 5 November 2026: Retire customer text-audio features by removing actual legacy cue consumers and stale-flag capabilities, not merely hiding one button. Keep manual Reader selection/annotations and native media seek/chapter/resume controls. Source N/A is exact-candidate scoped; historical cue assets and release holds stay intact.
 
 Source protocol custody and native recovery are separate: an unrelated reviewed server metadata change needs its own exact source/digest binding, never replacement of historical A/B or weakening current native equality. Keep default native validation strict; source-only tests may validate unchanged protected handlers under a separately reviewed protocol record.
+
+## Sredni bounded source successor — 5 November 2026
+
+- Additional-build authority binds the exact second stage through protected approval and actual observer; it never replaces the original native baseline or action counters. UNKNOWN remains consumed.
+- Commit and verify an inventoried normal parent before the deterministic three-path CLOSED child; matching server bytes alone do not prove whole-backend equality.
+- Source-pair qualification is not native image/recovery qualification. First-guard purchase-closed containment is not normal reopening or a qualified frontend restore.
+- One newly approved observation cannot silently become two separately counted policy/DB observations; preserve the original lineage and prepare only the exact remaining scope question.
