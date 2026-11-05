@@ -4,6 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
+import tempfile
+from unittest.mock import patch
 from scripts import first_guard_pair as p
 from scripts import india_release_provider_adapter as adapter
 
@@ -58,7 +60,56 @@ class BuildAmendmentTests(unittest.TestCase):
                 self.count([self.row(1),self.row(2,action,amended=True)])
         with self.assertRaisesRegex(ValueError,'Second stage must itself bind'):
             self.count([self.row(1,amended=True)],self.row(2)[0])
+    def test_actual_observer_binding_is_required_for_second_build(self):
+        from scripts.test_first_guard_pair import fixture
+        with tempfile.TemporaryDirectory() as directory:
+            journal=Path(directory);fixture(journal)
+            baseline=json.loads((journal/'.native-action-baseline.receipt').read_text())
+            baseline['owner_scope_receipt_sha256']=self.scope['owner_scope_receipt_sha256']
+            identity={'domain':'earnalism.native_action_scope.v1',**{k:baseline[k] for k in ('owner_scope_receipt_sha256','intended_closed_source_sha','operations_journal_identity_sha256')}}
+            baseline['release_scope_id']=p.digest(identity)
+            scope={k:baseline[k] for k in p.SCOPE_KEYS-{'schema','baseline_sha256'}}|{'schema':'earnalism.native_action_scope.v1','baseline_sha256':p.digest(baseline)}
+            adapter._durable_json(journal/'.native-action-baseline.receipt',baseline)
+            adapter._durable_json(journal/'.native-action-scope.claim',{'schema':'earnalism.native_action_scope_claim.v1','scope':scope})
+            for path in journal.glob('*.json'):
+                old=json.loads(path.read_text())
+                if 'binding' in old:
+                    old['binding']['native_action_scope']=scope;adapter._durable_json(path,old)
+            amendment={**self.amendment,'original_scope_sha256':p.digest(scope),'original_baseline_sha256':scope['baseline_sha256']}
+            binding={'source_sha':'2'*40,'native_action_scope':scope,'native_build_amendment':amendment}
+            actual={'native_action_scope':scope,'native_action_baseline_sha256':scope['baseline_sha256'],'native_action_scope_authorization':'ACTUAL_ROOT_PREWRITE_BASELINE'}
+            instance=adapter.ProviderAdapter(journal,owner_authorized=False)
+            with self.assertRaisesRegex(ValueError,'second-build amendment observation required'):
+                instance._native_budget('stage_frontend',binding,actual=actual)
+            actual['native_build_amendment_sha256']=p.digest(amendment)
+            self.assertEqual(instance._native_budget('stage_frontend',binding,actual=actual)['stage_builds'],2)
+            self.assertEqual(json.loads((journal/'.native-action-baseline.receipt').read_text()),baseline)
     def test_changed_historical_baseline_is_not_exempt(self):
         row=self.row(1);self.base['historical_terminal_operations']={'1'*64:'d'*64}
         with self.assertRaisesRegex(ValueError,'Historical terminal baseline changed'):self.count([row,self.row(2,amended=True)])
+class SourceSuccessorTests(unittest.TestCase):
+    def setUp(self):
+        BuildAmendmentTests.setUp(self)
+        self.scope['intended_closed_source_sha']='6'*40
+        self.proof={'controller_source_sha':'a'*40,'bootstrap_source_sha':'b'*40,'scope':'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION'}
+        self.value={'schema':'earnalism.native_source_successor.v1','owner_receipt_sha256':p.SREDNI_BUILD_OWNER_RECEIPT_SHA256,'original_scope_sha256':p.digest(self.scope),'original_baseline_sha256':self.scope['baseline_sha256'],'original_closed_source_sha':self.scope['intended_closed_source_sha'],'source_pair':self.proof}
+        self.binding={'source_root':'/dummy/offline','controller_source_sha':'a'*40,'source_sha':'b'*40,'native_action_scope':self.scope,'native_source_successor':self.value}
+    def test_exact_source_successor_does_not_mutate_scope(self):
+        before=copy.deepcopy(self.scope)
+        with patch('scripts.purchase_guard_source.validate_paired_source',return_value=self.proof):
+            self.assertEqual(p.validate_source_successor(self.scope,self.binding),self.value)
+        self.assertEqual(self.scope,before)
+    def test_wrong_source_or_old_lineage_rejected(self):
+        for key,value in [('original_closed_source_sha','c'*40),('original_baseline_sha256','d'*64),('owner_receipt_sha256','e'*64)]:
+            binding=copy.deepcopy(self.binding);binding['native_source_successor'][key]=value
+            with self.subTest(key=key),patch('scripts.purchase_guard_source.validate_paired_source',return_value=self.proof),self.assertRaises(ValueError):p.validate_source_successor(self.scope,binding)
+        for key in ('source_sha','controller_source_sha'):
+            binding=copy.deepcopy(self.binding);binding[key]='f'*40
+            with self.subTest(key=key),patch('scripts.purchase_guard_source.validate_paired_source',return_value=self.proof),self.assertRaises(ValueError):p.validate_source_successor(self.scope,binding)
+    def test_source_successor_never_substitutes_protected_approval(self):
+        with patch('scripts.purchase_guard_source.validate_paired_source',return_value=self.proof),self.assertRaisesRegex(ValueError,'Protected approval must bind exact source successor'):
+            adapter.validate_approval('release_guarded_bootstrap',self.binding,{},True,None)
+        with self.assertRaisesRegex(ValueError,'only to exact guarded bootstrap'):
+            adapter.validate_approval('release_backend',self.binding,{},True,None)
+
 if __name__=='__main__':unittest.main()

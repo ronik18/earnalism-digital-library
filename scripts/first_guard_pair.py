@@ -81,6 +81,28 @@ def validate_build_amendment(scope, amendment):
     return amendment
 
 
+SOURCE_SUCCESSOR_KEYS = {'schema', 'owner_receipt_sha256', 'original_scope_sha256',
+    'original_baseline_sha256', 'original_closed_source_sha', 'source_pair'}
+def validate_source_successor(scope, binding):
+    """Rebind a source role, never rewrite the original action budget/scope."""
+    from pathlib import Path
+    from scripts.purchase_guard_source import validate_paired_source
+    value=binding['native_source_successor'];exact(value,SOURCE_SUCCESSOR_KEYS)
+    need(value['schema']=='earnalism.native_source_successor.v1'
+         and value['owner_receipt_sha256']==SREDNI_BUILD_OWNER_RECEIPT_SHA256
+         and scope.get('owner_scope_receipt_sha256')=='be09149041167583000ec12183729c1622c1b74e5326d9aef2d96c8b2d768611'
+         and value['original_scope_sha256']==digest(scope)
+         and value['original_baseline_sha256']==scope['baseline_sha256']
+         and value['original_closed_source_sha']==scope['intended_closed_source_sha'],
+         'Exact original source-scope lineage and current owner instruction required')
+    proof=validate_paired_source(Path(binding['source_root']).resolve())
+    need(value['source_pair']==proof
+         and binding.get('controller_source_sha')==proof['controller_source_sha']
+         and binding.get('source_sha')==proof['bootstrap_source_sha'],
+         'Exact current committed normal/CLOSED source pair required')
+    return value
+
+
 def count_scoped_intents(scope,baseline,records,*,candidate=None):
     """Records include actual raw-byte hashes; count every nonbaseline intent once."""
     old=baseline['historical_terminal_operations']

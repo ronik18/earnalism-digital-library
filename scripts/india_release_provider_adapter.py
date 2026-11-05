@@ -727,6 +727,11 @@ def validate_guarded_restore_context(journal, binding, actual, approval=None):
 
 
 def validate_approval(action, binding, approval, owner_authorized, now):
+    if 'native_source_successor' in binding:
+        if action!='release_guarded_bootstrap':raise ValueError('Source successor applies only to exact guarded bootstrap')
+        pair.validate_source_successor(binding.get('native_action_scope',{}),binding)
+        if approval.get('native_source_successor_sha256')!=digest(binding['native_source_successor']):
+            raise ValueError('Protected approval must bind exact source successor')
     if 'native_build_amendment' in binding:
         if action!='stage_frontend':raise ValueError('Build amendment applies only to exact stage operation')
         pair.validate_build_amendment(binding.get('native_action_scope',{}),binding['native_build_amendment'])
@@ -1253,7 +1258,12 @@ class ProviderAdapter:
             pair.validate_build_amendment(scope,binding['native_build_amendment'])
             if actual is not None and actual.get('native_build_amendment_sha256') != digest(binding['native_build_amendment']):
                 raise ValueError('Trusted actual Root second-build amendment observation required')
-        if action == 'release_guarded_bootstrap' and binding.get('source_sha') != scope['intended_closed_source_sha']:
+        if 'native_source_successor' in binding:
+            if action!='release_guarded_bootstrap':raise ValueError('Source successor applies only to exact guarded bootstrap')
+            pair.validate_source_successor(scope,binding)
+            if actual is not None and actual.get('native_source_successor_sha256')!=digest(binding['native_source_successor']):
+                raise ValueError('Trusted actual Root source successor observation required')
+        elif action == 'release_guarded_bootstrap' and binding.get('source_sha') != scope['intended_closed_source_sha']:
             raise ValueError('Actual CLOSED source differs from original native scope')
         if scope_claim.exists():
             if _read_journal(scope_claim)!={'schema':'earnalism.native_action_scope_claim.v1','scope':scope}:
@@ -1399,6 +1409,7 @@ class ProviderAdapter:
             validate_paired_content_provenance(binding,actual,archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=custody)
         # Scope is typed: no full recovery or Reader-preserved assertion inferred.
         component_keys={'scope','action','source_sha','input_git_source_sha','outcome','operation_id','receipt_sha256','source_delivery_sha256','closed_server_sha256','runtime_sha256','runtime_manifest_sha256','config_sha256','deployment_id','retained_image_id','closed_guest_status','purchase_pause_proof','startup_complete','database_healthy','source_attestation_matches','verify_refund_webhook_code_preserved','auto_deploy','redis_enabled','redis_cache_enabled','multi_replica_enabled','redis_public_metadata_enabled','provider_git_sha','paired_content_provenance','native_observation_receipt_sha256','runtime_attestation_receipt_sha256','reader_migration_owner_acceptance','containment_operator_reference','first_guard_policy_sha256','native_action_scope','native_action_baseline_sha256','native_action_scope_authorization','observed_at'}
+        if 'native_source_successor' in binding:component_keys.add('native_source_successor_sha256')
         native_projection={k:actual[k] for k in component_keys if k in actual}
         component={'schema':'earnalism.first_guard_actual_component.v1','scope':'ACTUAL_COMPONENT_ONLY_READER_PENDING','operation_id':op,'binding_sha256':digest(binding),'approval_sha256':record['approval_sha256'],'native':native_projection,'original_record_sha256':digest(record),'original_record':record}
         name='.first-guard-component-'+op+'.receipt';path=self.journal/name
