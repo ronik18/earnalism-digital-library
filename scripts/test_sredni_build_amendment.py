@@ -63,7 +63,7 @@ class BuildAmendmentTests(unittest.TestCase):
     def test_actual_observer_binding_is_required_for_second_build(self):
         from scripts.test_first_guard_pair import fixture
         with tempfile.TemporaryDirectory() as directory:
-            journal=Path(directory);fixture(journal)
+            journal=Path(directory)/'journal';journal.mkdir(mode=0o700);fixture(journal)
             baseline=json.loads((journal/'.native-action-baseline.receipt').read_text())
             baseline['owner_scope_receipt_sha256']=self.scope['owner_scope_receipt_sha256']
             identity={'domain':'earnalism.native_action_scope.v1',**{k:baseline[k] for k in ('owner_scope_receipt_sha256','intended_closed_source_sha','operations_journal_identity_sha256')}}
@@ -84,6 +84,14 @@ class BuildAmendmentTests(unittest.TestCase):
             actual['native_build_amendment_sha256']=p.digest(amendment)
             self.assertEqual(instance._native_budget('stage_frontend',binding,actual=actual)['stage_builds'],2)
             self.assertEqual(json.loads((journal/'.native-action-baseline.receipt').read_text()),baseline)
+    def test_shared_parent_is_rejected_without_weakening_custody(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parent=Path(directory);journal=parent/'journal';journal.mkdir(mode=0o700)
+            parent.chmod(0o777)
+            try:
+                with self.assertRaisesRegex(ValueError,'Private owner-matched journal custody required'):
+                    adapter._operation_journal_identity(journal)
+            finally:parent.chmod(0o700)
     def test_changed_historical_baseline_is_not_exempt(self):
         row=self.row(1);self.base['historical_terminal_operations']={'1'*64:'d'*64}
         with self.assertRaisesRegex(ValueError,'Historical terminal baseline changed'):self.count([row,self.row(2,amended=True)])
