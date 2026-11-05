@@ -52,6 +52,12 @@ class BuildAmendmentTests(unittest.TestCase):
     def test_protected_approval_must_bind_extension(self):
         binding={'native_action_scope':self.scope,'native_build_amendment':self.amendment}
         with self.assertRaisesRegex(ValueError,'actual second-build amendment'):adapter.validate_approval('stage_frontend',binding,{},True,None)
+    def test_amendment_only_on_exact_stage_and_no_unbound_successor(self):
+        for action in ('release_backend','promote_frontend','restore_frontend'):
+            with self.subTest(action=action),self.assertRaisesRegex(ValueError,'only to exact stage'):
+                self.count([self.row(1),self.row(2,action,amended=True)])
+        with self.assertRaisesRegex(ValueError,'Second stage must itself bind'):
+            self.count([self.row(1,amended=True)],self.row(2)[0])
     def test_changed_historical_baseline_is_not_exempt(self):
         row=self.row(1);self.base['historical_terminal_operations']={'1'*64:'d'*64}
         with self.assertRaisesRegex(ValueError,'Historical terminal baseline changed'):self.count([row,self.row(2,amended=True)])

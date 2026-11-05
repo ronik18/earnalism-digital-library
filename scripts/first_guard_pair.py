@@ -91,6 +91,7 @@ def count_scoped_intents(scope,baseline,records,*,candidate=None):
             need(record.get('state') in {'APPLIED_VERIFIED','NOT_APPLIED_VERIFIED'} and raw_sha==old[op],'Historical terminal baseline changed');found.add(op);continue
         need(record.get('binding',{}).get('native_action_scope')==scope,'Foreign/unscoped post-baseline operation blocks dispatch')
         if 'native_build_amendment' in record.get('binding',{}):
+            need(record.get('action')=='stage_frontend','Build amendment applies only to exact stage operation')
             validate_build_amendment(scope,record['binding']['native_build_amendment']);build_maximum=2
         action=record.get('action');need(action in {'stage_frontend','promote_frontend','restore_frontend','release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'},'Unknown scoped action')
         if action in {'release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'}:backend+=1
@@ -99,7 +100,10 @@ def count_scoped_intents(scope,baseline,records,*,candidate=None):
     need(found==set(old),'Historical baseline record missing')
     if candidate is not None and candidate['operation_id'] not in ids:
         need(candidate['binding'].get('native_action_scope')==scope,'Candidate scope differs')
+        if candidate['action']=='stage_frontend' and builds>=1:
+            need('native_build_amendment' in candidate['binding'],'Second stage must itself bind exact build amendment')
         if 'native_build_amendment' in candidate['binding']:
+            need(candidate['action']=='stage_frontend','Build amendment applies only to exact stage operation')
             validate_build_amendment(scope,candidate['binding']['native_build_amendment']);build_maximum=2
         action=candidate['action']
         if action in {'release_backend','release_guarded_bootstrap','restore_guarded_bootstrap'}:backend+=1

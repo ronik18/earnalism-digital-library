@@ -728,6 +728,7 @@ def validate_guarded_restore_context(journal, binding, actual, approval=None):
 
 def validate_approval(action, binding, approval, owner_authorized, now):
     if 'native_build_amendment' in binding:
+        if action!='stage_frontend':raise ValueError('Build amendment applies only to exact stage operation')
         pair.validate_build_amendment(binding.get('native_action_scope',{}),binding['native_build_amendment'])
         if approval.get('native_build_amendment_sha256') != digest(binding['native_build_amendment']):
             raise ValueError('Protected approval must bind actual second-build amendment')
@@ -1248,6 +1249,7 @@ class ProviderAdapter:
         baseline,_=raw(self.journal/'.native-action-baseline.receipt')
         pair.validate_scope(scope,baseline,_operation_journal_identity(self.journal))
         if 'native_build_amendment' in binding:
+            if action!='stage_frontend':raise ValueError('Build amendment applies only to exact stage operation')
             pair.validate_build_amendment(scope,binding['native_build_amendment'])
             if actual is not None and actual.get('native_build_amendment_sha256') != digest(binding['native_build_amendment']):
                 raise ValueError('Trusted actual Root second-build amendment observation required')
