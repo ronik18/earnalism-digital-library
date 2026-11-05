@@ -85,3 +85,72 @@ def count_scoped_intents(scope,baseline,records,*,candidate=None):
         if action=='stage_frontend':builds+=1
     need(backend<=3 and frontend<=3 and builds<=1,'Original bounded native action allowance exhausted')
     return {'backend':backend,'frontend':frontend,'stage_builds':builds}
+
+
+def _committed_reader_policy(binding):
+    """Read exact deployed-role inputs, never the current disk policy or a URL."""
+    from pathlib import Path
+    from scripts.purchase_guard_source import _git_blob
+    root = Path(binding['source_root']).resolve()
+    source = binding['source_sha']
+    need(re.fullmatch('[a-f0-9]{40}', source or ''), 'Exact Reader policy source required')
+    raw = _git_blob(root, source, 'backend/data/controlled_launch.json')
+    service = _git_blob(root, source, 'backend/reading_pass_service.py')
+    return raw, service
+
+
+def validate_reader_mode_preservation(binding, actual):
+    """Require applicable native evidence; inactive pilots are N/A, never PASS.
+
+    The native observer remains responsible for genuine observation receipts.
+    Commercial preview evidence cannot substitute for protected Reader checks.
+    """
+    import ast
+    raw, service = _committed_reader_policy(binding)
+    config = json.loads(raw)
+    candidates = []
+    for node in ast.parse(service).body:
+        if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'FREE_INDIA_READER_SLUGS' for t in node.targets):
+            value = node.value
+            need(isinstance(value, ast.Call) and isinstance(value.func, ast.Name) and value.func.id == 'frozenset'
+                 and len(value.args) == 1 and not value.keywords, 'Explicit committed free Reader allowlist required')
+            candidates.append(ast.literal_eval(value.args[0]))
+    need(len(candidates) == 1 and isinstance(candidates[0], (set, list, tuple))
+         and all(isinstance(x, str) and x for x in candidates[0]), 'Unambiguous free Reader allowlist required')
+    pilots = set(candidates[0])
+    default = config.get('text_access_mode', 'PILOT_FULL_FREE')
+    overrides = config.get('title_access_modes', {})
+    live = config.get('live_approved_slugs')
+    modes = {'PILOT_FULL_FREE', 'COMMERCIAL_ENTITLEMENT'}
+    need(default in modes and isinstance(overrides, dict)
+         and all(isinstance(k, str) and k and v in modes for k, v in overrides.items())
+         and isinstance(live, list) and live and len(set(live)) == len(live)
+         and all(isinstance(x, str) and x for x in live), 'Invalid committed Reader mode policy')
+    effective = {slug: overrides.get(slug, default if slug in pilots else None) for slug in sorted(live)}
+    active = sorted(slug for slug, mode in effective.items() if mode == 'PILOT_FULL_FREE' and slug in pilots)
+    proof = actual.get('reader_entitlement_mode_observation')
+    keys = {'schema', 'source_sha', 'runtime_sha256', 'controlled_launch_sha256',
+            'effective_mode_map_sha256', 'active_free_pilot_slugs', 'scenario', 'free_pilot_results', 'receipt_sha256'}
+    exact(proof, keys)
+    need(proof['schema'] == 'earnalism.reader_entitlement_mode_observation.v1'
+         and proof['source_sha'] == binding['source_sha']
+         and proof['runtime_sha256'] == actual.get('runtime_sha256') == binding['source_delivery_sha256']
+         and actual.get('source_attestation_matches') is True
+         and proof['controlled_launch_sha256'] == hashlib.sha256(raw).hexdigest()
+         and proof['effective_mode_map_sha256'] == digest(effective)
+         and proof['active_free_pilot_slugs'] == active and sha(proof['receipt_sha256']),
+         'Actual source/runtime-bound Reader mode observation required')
+    rows = proof['free_pilot_results']
+    if not active:
+        need(proof['scenario'] == 'NO_CONFIGURED_FULL_FREE_PILOT' and rows == []
+             and actual.get('reader_free_pilot_entitlement_preserved') is None,
+             'Inactive free pilot must be explicit N/A without a fabricated PASS')
+    else:
+        need(proof['scenario'] == 'ACTIVE_FREE_PILOTS_VERIFIED'
+             and actual.get('reader_free_pilot_entitlement_preserved') is True
+             and isinstance(rows, list) and len(rows) == len(active), 'Actual full-free pilot acceptance required')
+        for slug, row in zip(active, rows):
+            exact(row, {'slug', 'entitlement_kind', 'status', 'receipt_sha256'})
+            need(row['slug'] == slug and row['entitlement_kind'] == 'india_pilot_free_text'
+                 and row['status'] == 'VERIFIED' and sha(row['receipt_sha256']), 'Exact actual free pilot evidence required')
+    return proof

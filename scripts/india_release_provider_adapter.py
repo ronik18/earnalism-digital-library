@@ -1444,6 +1444,7 @@ class ProviderAdapter:
                 child=_read_journal(self.journal/(pending['child_operation_id']+'.json'))
                 if digest(child)!=sealed['child_record_sha256'] or child.get('state')!='APPLIED_VERIFIED':raise ValueError('Final child changed')
                 self._native_budget(record['action'],record['binding'],actual=sealed['actual'],own_operation_id=operation_id)
+                pair.validate_reader_mode_preservation(record['binding'], sealed['actual'])
                 qualify_bootstrap_recovery(record['binding'],sealed['actual'],archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=pending['journal_identity_sha256'])
                 # This only completes an interrupted retirement, never amends terminal data.
                 anchor=os.open(self.journal,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
@@ -1465,8 +1466,9 @@ class ProviderAdapter:
                 if actual.get(key)!=component['native'].get(key):raise ValueError('Current actual component changed')
             if actual.get('operation_id')!=operation_id or actual.get('outcome')!='APPLIED' or not require_digest(actual.get('receipt_sha256')):
                 raise ValueError('Exact actual final operation proof required')
-            for key in ('reader_public_preview_verified','reader_protected_entitlement_verified','reader_free_pilot_entitlement_preserved','listener_protected_accounting_preserved','verify_refund_webhook_code_preserved'):
+            for key in ('reader_public_preview_verified','reader_protected_entitlement_verified','listener_protected_accounting_preserved','verify_refund_webhook_code_preserved'):
                 if actual.get(key) is not True:raise ValueError('Actual paired acceptance missing: '+key)
+            pair.validate_reader_mode_preservation(record['binding'], actual)
             if actual.get('serving_frontend_deployment_id')!=child['binding']['deployment_id'] or actual.get('serving_frontend_source_sha')!=child['binding']['source_sha']:
                 raise ValueError('Actual fresh frontend aliases/source mismatch')
             recovery=qualify_bootstrap_recovery(record['binding'],actual,archive_helper_report=record.get('paired_archive_helper_evidence'),expected_journal_identity_sha256=pending['journal_identity_sha256'])

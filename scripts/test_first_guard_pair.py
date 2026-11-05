@@ -5,6 +5,11 @@ from unittest.mock import patch
 from scripts import india_release_provider_adapter as a
 from scripts import first_guard_pair as p
 D=lambda x:p.digest(x)
+DUMMY_READER_POLICY = json.dumps({'live_approved_slugs':['dummy-pilot'],'text_access_mode':'PILOT_FULL_FREE','title_access_modes':{'dummy-pilot':'PILOT_FULL_FREE'}}).encode()
+DUMMY_READER_SERVICE = b'FREE_INDIA_READER_SLUGS = frozenset({"dummy-pilot"})'
+def dummy_reader_mode(binding):
+ return {'schema':'earnalism.reader_entitlement_mode_observation.v1','source_sha':binding['source_sha'],'runtime_sha256':binding['source_delivery_sha256'],'controlled_launch_sha256':p.hashlib.sha256(DUMMY_READER_POLICY).hexdigest(),'effective_mode_map_sha256':D({'dummy-pilot':'PILOT_FULL_FREE'}),'active_free_pilot_slugs':['dummy-pilot'],'scenario':'ACTIVE_FREE_PILOTS_VERIFIED','free_pilot_results':[{'slug':'dummy-pilot','entitlement_kind':'india_pilot_free_text','status':'VERIFIED','receipt_sha256':'8'*64}],'receipt_sha256':'9'*64}
+
 def fixture(journal):
  b={'source_sha':'a'*40,'source_delivery_sha256':'b'*64,'closed_server_sha256':'c'*64,'config_sha256':'d'*64,'frontend_source_sha':'f'*40,'frontend_deployment_id':'dpl_OLD'}
  pr={'schema':'earnalism.first_guard_parent_source_projection.v1','action':'release_guarded_bootstrap',**{k:b[k] for k in ['source_sha','source_delivery_sha256','closed_server_sha256']},'runtime_manifest_sha256':'e'*64,'config_expected_sha256':b['config_sha256'],'frontend_source_sha':'f'*40,'frontend_deployment_id':'dpl_OLD','operations_journal_identity_sha256':a._operation_journal_identity(journal)}
@@ -21,9 +26,11 @@ def fixture(journal):
  op=a.operation_identity('release_guarded_bootstrap',b)
  record={'operation_id':op,'action':'release_guarded_bootstrap','binding':b,'approval_sha256':'6'*64,'state':'WRITE_ATTEMPTED_READ_ONLY_RECONCILIATION_REQUIRED','operations_journal_identity_sha256':pr['operations_journal_identity_sha256']}
  actual={'native_action_scope':b['native_action_scope'],'native_action_baseline_sha256':b['native_action_scope']['baseline_sha256'],'native_action_scope_authorization':'ACTUAL_ROOT_PREWRITE_BASELINE','scope':'ACTUAL_PROVIDER_AND_SOURCE','action':'release_guarded_bootstrap','source_sha':b['source_sha'],'outcome':'APPLIED','operation_id':op,'receipt_sha256':'7'*64,**{x:b[x] for x in ['source_delivery_sha256','closed_server_sha256','config_sha256']},'runtime_manifest_sha256':'e'*64,'runtime_sha256':b['source_delivery_sha256'],'deployment_id':'00000000-0000-0000-0000-000000000001','retained_image_id':'dummy-image','closed_guest_status':503,'purchase_pause_proof':'MEASURED_EXACT_EARLY_RETURN_AND_ANONYMOUS_503','reader_migration_owner_acceptance':o,'containment_operator_reference':t,'first_guard_policy_sha256':D(f),**{x:True for x in ['startup_complete','database_healthy','source_attestation_matches','verify_refund_webhook_code_preserved']},**{x:False for x in ['auto_deploy','redis_enabled','redis_cache_enabled','multi_replica_enabled','redis_public_metadata_enabled']}}
+ actual['reader_entitlement_mode_observation']=dummy_reader_mode(b)
  a._durable_json(journal/(op+'.json'),record);a._durable_json(journal/'_write-barrier.json',{'operation_id':op,'state':'INTENT_RECONCILE_BEFORE_RETRY'});return b,record,actual
 class PairTests(unittest.TestCase):
  def setUp(self):
+  loader=patch.object(p,'_committed_reader_policy',return_value=(DUMMY_READER_POLICY,DUMMY_READER_SERVICE));loader.start();self.addCleanup(loader.stop)
   self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);self.j=self.root/'journal';self.j.mkdir(mode=0o700);self.b,self.r,self.actual=fixture(self.j);self.adapter=a.ProviderAdapter(self.j,owner_authorized=False,observe=lambda *args:self.actual,run=lambda *args:(_ for _ in ()).throw(AssertionError('No transport')))
  def tearDown(self):self.tmp.cleanup()
  def component(self):return self.adapter._reconcile_component(self.r,self.actual)
