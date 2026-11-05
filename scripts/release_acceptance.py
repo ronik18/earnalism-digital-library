@@ -100,5 +100,3 @@ def automated_check_accepted(manifest: Mapping[str, Any], name: str,
     except (ValueError, OSError, KeyError, TypeError):
         return False
     return True
-
-
