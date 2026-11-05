@@ -21,6 +21,9 @@ class ApplicationProtocolTests(unittest.TestCase):
         protocol = copy.deepcopy(self.protocol)
         sources = dict(self.sources)
         if application is not None:
+            # Protocol and native refs may now legitimately coincide. Keep the
+            # native approved bytes immutable while exercising a new protocol.
+            protocol['application_source_sha']='a'*40
             sources[protocol['application_source_sha']] = application
             protocol['application_server_sha256'] = guard.sha(application)
             protocol['application_closed_server_sha256'] = guard.sha(guard.guard_only_server(guard.sha(application), application))
@@ -34,7 +37,7 @@ class ApplicationProtocolTests(unittest.TestCase):
             (root/guard.PROTOCOL_PATH).write_text(json.dumps(protocol))
             receipt = self.native['owner_receipt_path']
             (root/receipt).write_bytes((ROOT/receipt).read_bytes() if owner is None else owner)
-            (root/'backend/server.py').write_bytes(sources[self.protocol['application_source_sha']] if actual is None else actual)
+            (root/'backend/server.py').write_bytes((application if application is not None else sources[self.protocol['application_source_sha']]) if actual is None else actual)
             def reader(_root, ref):
                 if ref not in sources:
                     raise ValueError('Unexpected unqualified source')
@@ -77,11 +80,13 @@ class ApplicationProtocolTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Historical operational contract'):
             self.check(historical=historical)
 
-    def test_native_public_validation_still_rejects_current_application(self):
+    def test_native_whole_server_gate_still_rejects_unbound_application(self):
+        # A newly qualified current source pair can be valid; the protocol
+        # manifest must never bypass exact native bytes or act as that pair.
         with self.assertRaisesRegex(ValueError, 'Whole server equality'):
-            self.check(native=True)
-        with self.assertRaisesRegex(ValueError, 'Whole server equality'):
-            guard.validate_paired_source(ROOT)
+            self.check(native=True,actual=(ROOT/'backend/server.py').read_bytes()+b'\n# unbound native bytes\n')
+        with self.assertRaisesRegex(ValueError, 'Operational source contract malformed'):
+            self.check(native=True,historical=json.dumps(self.protocol).encode())
 
 
 if __name__ == '__main__':

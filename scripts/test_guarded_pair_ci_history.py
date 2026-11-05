@@ -118,10 +118,11 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'PAIR_HISTORICAL_PIN': self.fixture.historical,
             'PAIR_BOOTSTRAP_PIN': pin or self.fixture.bootstrap,
             'PAIR_BINDINGS_RESULT': str(self.workspace / 'bindings-result'),
-            'PAIR_SOURCE_ONLY': 'true' if source_only else 'false',
+            'PAIR_SOURCE_ONLY': source_only if isinstance(source_only,str) else 'true' if source_only else 'false',
             'HISTORICAL_PAIR_CONTROLLER_SHA': reference or self.fixture.controller,
             'HISTORICAL_PAIR_CONTROLLER_TREE': reference_tree or self.fixture.git('rev-parse', (reference or self.fixture.controller)+'^{tree}').decode().strip(),
             'HISTORICAL_PAIR_BOOTSTRAP_SHA': self.fixture.bootstrap,
+            'HISTORICAL_PAIR_APPLICATION_SHA': json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
@@ -184,7 +185,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         original = Path.cwd()
         env = {'HISTORICAL_PAIR_CONTROLLER_SHA':self.fixture.controller,
                'HISTORICAL_PAIR_CONTROLLER_TREE':self.fixture.git('rev-parse', self.fixture.controller+'^{tree}').decode().strip(),
-               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'RUNNER_TEMP':str(self.workspace)}
+               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'HISTORICAL_PAIR_APPLICATION_SHA':json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],'RUNNER_TEMP':str(self.workspace)}
         (self.workspace/'paired-helper-proof').mkdir()
         from scripts.purchase_guard_source import validate_paired_source
         namespace = {'Path':Path,'os':os,'json':json,'validate_paired_source':validate_paired_source}
@@ -204,6 +205,54 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(report['controller_source'],self.fixture.controller)
         self.assertEqual(report['source'],self.fixture.bootstrap)
         self.assertFalse(report['native_archive_qualification'])
+
+    def test_new_current_pair_and_old_helper_pair_are_admitted_separately(self):
+        f=self.fixture
+        f.write_json(guard.PATH,f.contract)
+        f.write('backend/current-only-fixture.py',b'current source must survive')
+        f.inventory();f.commit('new inventoried normal parent')
+        current_normal_manifest=(f.repo/'backend/.runtime-source-manifest.json').read_bytes()
+        f.write('backend/server.py',f.closed)
+        f.write_json(guard.PATH,{**f.contract,'state':'CLOSED'})
+        f.inventory();current_bootstrap=f.commit('new separate CLOSED child')
+        f.write('backend/server.py',f.normal)
+        f.write('backend/.runtime-source-manifest.json',current_normal_manifest)
+        f.write_json(guard.PATH,{**f.paired,'guarded_bootstrap_source_sha':current_bootstrap})
+        current_controller=f.commit('new controller, historical helper untouched')
+        guard.validate_paired_source(f.repo)
+        clone=self.clone()
+        invalid,invalid_commands=self.run_admission(clone,pin=current_bootstrap,source_only='invalid')
+        self.assertNotEqual(invalid.returncode,0)
+        self.assertFalse(any('fetch' in x and not any(y.startswith('--filter=') for y in x) for x in invalid_commands))
+        result,commands=self.run_admission(clone,pin=current_bootstrap,source_only=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION',result.stdout)
+        self.assert_historical_controller_export(clone)
+        current=json.loads((self.workspace/'paired-helper-proof/current-source-pair.json').read_text())
+        self.assertEqual(current['controller_source_sha'],current_controller)
+        self.assertEqual(current['bootstrap_source_sha'],current_bootstrap)
+        self.assertEqual(current['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
+
+    def test_distinct_historical_application_body_is_explicitly_hydrated(self):
+        f=self.fixture
+        f.normal += b'\ndef safe_new_fixture_feature():\n    return 1\n'
+        f.closed=guard.guard_only_server(guard.sha(f.normal),f.normal)
+        f.write('backend/server.py',f.normal);f.inventory()
+        application=f.commit('distinct historical application body')
+        f.contract={**f.contract,'application_source_sha':application,'application_server_sha256':guard.sha(f.normal),'application_closed_server_sha256':guard.sha(f.closed)}
+        f.write_json(guard.PATH,f.contract);f.parent=f.commit('historical normal parent with distinct application')
+        f.normal_manifest=(f.repo/'backend/.runtime-source-manifest.json').read_bytes()
+        f.write('backend/server.py',f.closed);f.write_json(guard.PATH,{**f.contract,'state':'CLOSED'});f.inventory();f.bootstrap=f.commit('historical closed role')
+        f.write('backend/server.py',f.normal);f.write('backend/.runtime-source-manifest.json',f.normal_manifest)
+        f.paired={**f.contract,'schema':guard.PAIRED_SCHEMA,'guarded_bootstrap_source_sha':f.bootstrap}
+        f.write_json(guard.PATH,f.paired);f.controller=f.commit('historical helper role with distinct application')
+        self.descendants(1)
+        clone=self.clone();result,commands=self.run_admission(clone,source_only=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn((application+':backend/server.py').encode(),(self.workspace/'bindings-result').read_bytes().split(b'\0'))
+        self.assert_historical_controller_export(clone)
+        self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
 
     def test_wrong_historical_controller_role_is_rejected(self):
         clone = self.clone()
