@@ -3179,3 +3179,7 @@ Source protocol custody and native recovery are separate: an unrelated reviewed 
 ## Current CLOSED helper provenance — 5 November 2026
 
 Reuse unchanged helper binaries/components, but execute each selected CLOSED input through ordinary CI and retain its own actual member/mode/runtime/archive receipt. A historical B65 report never certifies CLOSED850. Finish this non-expiring artifact work and qualify the unaliased frontend before the fresh startup-policy/snapshot proof; source-proof freshness never renews original canary clocks or budgets.
+
+## Preserve owner words across source successors — 5 November 2026
+
+An original source-bound Reader/containment approval is not a reusable blank cheque and must not be relabelled. Reuse it only through an exact reviewed applicability bridge: historical O/P/K unchanged, actual continuation/retirement authority, mechanically checked committed protected/Reader equivalence and exact consumer hashes, current source pair, original custody/counters and fresh protected/actual observations. Keep staged-child and final Reader/Listener/runtime acceptance independent; source equivalence is never runtime PASS.

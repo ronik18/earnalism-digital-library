@@ -15,7 +15,9 @@ def need(v,m):
 def sha(v):return isinstance(v,str) and re.fullmatch('[a-f0-9]{64}',v) and v!='0'*64
 def exact(v,keys):need(isinstance(v,dict) and set(v)==keys,'Exact first-guard contract keys required')
 def validate(binding, actual=None):
-    c=binding.get('first_guard_pair');exact(c,{'projection','core','policy','owner_acceptance','operator_context','limits'})
+    c=binding.get('first_guard_pair')
+    applicability = isinstance(c,dict) and 'owner_acceptance_applicability' in c
+    exact(c,{'projection','core','policy','owner_acceptance','operator_context','limits'} | ({'owner_acceptance_applicability'} if applicability else set()))
     p,k,f,o,t,l=(c[x] for x in ('projection','core','policy','owner_acceptance','operator_context','limits'))
     exact(p,P_KEYS);exact(k,K_KEYS);exact(f,F_KEYS)
     need(p['schema']=='earnalism.first_guard_parent_source_projection.v1' and p['action']=='release_guarded_bootstrap','Parent projection schema/action')
@@ -28,7 +30,11 @@ def validate(binding, actual=None):
     for x in (k,f):need(x['phase']=='FIRST_GUARD_PAIR' and x['containment_scope']=='KEEP_PURCHASES_CLOSED_BLOCK_ALL_WRITES_RECONCILE_ONLY' and x['no_compatible_frontend_return'] is True and x['parent_source_projection_sha256']==digest(p) and x['limits_sha256']==digest(l),'Exact first-guard phase/limits')
     need(k['schema']=='earnalism.first_guard_policy_core.v1' and f['schema']==SCHEMA and f['policy_core_sha256']==digest(k),'Acyclic policy core')
     exact(o,{'schema','source','approved','scope','parent_source_projection_sha256','policy_core_sha256','receipt_sha256'})
-    need(o['schema']=='earnalism.reader_migration_owner_acceptance.v1' and o['source']=='DIRECT_USER_EXPLICIT_ACCEPTANCE' and o['approved'] is True and o['scope']=='FIRST_GUARD_READER_MIGRATION_AND_CONTAINMENT' and o['parent_source_projection_sha256']==digest(p) and o['policy_core_sha256']==digest(k) and sha(o['receipt_sha256']),'Actual scope-specific Reader owner acceptance required')
+    need(o['schema']=='earnalism.reader_migration_owner_acceptance.v1' and o['source']=='DIRECT_USER_EXPLICIT_ACCEPTANCE' and o['approved'] is True and o['scope']=='FIRST_GUARD_READER_MIGRATION_AND_CONTAINMENT' and sha(o['receipt_sha256']),'Actual scope-specific Reader owner acceptance required')
+    if applicability:
+        validate_owner_applicability(binding,c)
+    else:
+        need(o['parent_source_projection_sha256']==digest(p) and o['policy_core_sha256']==digest(k),'Actual scope-specific Reader owner acceptance required')
     exact(t,{'schema','scope','reference_sha256'})
     need(t['schema']=='earnalism.existing_containment_operator_reference.v1' and t['scope']=='EXISTING_AUTHORIZED_OPERATOR' and sha(t['reference_sha256']),'Existing operator context required')
     need(f['reader_migration_owner_acceptance_sha256']==digest(o) and f['containment_operator_reference_sha256']==digest(t),'Owner/operator reference mismatch')
@@ -36,7 +42,86 @@ def validate(binding, actual=None):
     need(f['component_expected_identity_sha256']==digest(p),'Exact expected component identity')
     if actual is not None:
         need(actual.get('reader_migration_owner_acceptance')==o and actual.get('containment_operator_reference')==t and actual.get('first_guard_policy_sha256')==digest(f),'Trusted current Reader authority observation required')
+        if applicability:
+            need(actual.get('reader_owner_applicability_sha256')==digest(c['owner_acceptance_applicability']),'Trusted current Reader applicability observation required')
     return c
+
+
+# This is applicability of one retained approval, not new approval or runtime proof.
+HISTORICAL_READER_OWNER = '0d5483b4c108b92211034a934d2995792762353f45d5118f935497cfac1a679e'
+HISTORICAL_READER_OWNER_RAW = '520ae376633270af28e3370d268c6c08a41a5fef93c7d3478f015e6277715953'
+HISTORICAL_READER_P = '54eee0a6097289c588d53efbd763917e8818e3ab9974f9d08b85cce7a59cbf21'
+HISTORICAL_READER_K = '3531b8180439a8ee743470a503ed5fc124d7059cfed8fc7218ffe6d493a6a498'
+RETIREMENT_OWNER_RAW = 'edb6518415eb4ab67793d160adc6f87b32f1f2aba2c715a26edad505ab9219d5'
+HISTORICAL_CLOSED = '65ca071ebebba3edb73ab44fd13c7e00f95b54e6'
+CURRENT_CLOSED = '85021e5ef9cf8776b3d2bd8568d6d026ebc1901b'
+CONSUMER_CONTRACT = 'internal/earnalism_intelligence/listener_text_sync_consumer.json'
+CONSUMER_CONTRACT_SHA = '6f1ebb978201f85fbaf1675a567000db074412ab2066ca15ff3481771c02ff18'
+APPLICABILITY_KEYS = {'schema','historical_projection','historical_core','historical_owner_raw_sha256',
+    'continuation_owner_receipt_sha256','retirement_owner_receipt_sha256',
+    'source_successor','native_source_successor_sha256','current_projection_sha256','current_core_sha256','source_equivalence_sha256'}
+
+
+def reader_source_equivalence(binding):
+    """Mechanically check exact committed retirement; caller booleans cannot qualify it."""
+    import ast
+    from pathlib import Path
+    from scripts.purchase_guard_source import _git_blob
+    root=Path(binding['source_root']).resolve(); operator=binding['controller_source_sha']
+    need(binding['source_sha']==CURRENT_CLOSED,'Only reviewed current CLOSED Reader successor applies')
+    retired={'_reader_audio_package_manifest_from_package','_reader_manifest_audio'}
+    modules=[]; servers=[]
+    for ref in (HISTORICAL_CLOSED,CURRENT_CLOSED):
+        raw=_git_blob(root,ref,'backend/server.py');servers.append(hashlib.sha256(raw).hexdigest())
+        module=ast.parse(raw)
+        need({n.name for n in module.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name in retired}==retired,'Retired manifest functions missing')
+        module.body=[n for n in module.body if not isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) or n.name not in retired]
+        modules.append(ast.dump(module,include_attributes=False))
+    need(modules[0]==modules[1],'Reader/protected module changed beyond exact authorized retirement')
+    need(servers==['aff2fc165310a3e102f55cffbcef1659f87688967f8c72726af69a9f2e2a249b','dfddceaf2aea60ea72b5a6c0a7a55b76b3f1f10e1b0eaebae8c212fa5765ff06'],'Reviewed CLOSED server identity differs')
+    contract=_git_blob(root,operator,CONSUMER_CONTRACT)
+    need(hashlib.sha256(contract).hexdigest()==CONSUMER_CONTRACT_SHA,'Reviewed retirement consumer contract differs')
+    sources=json.loads(contract)['sources']
+    for path,expected in sources.items():
+        need(hashlib.sha256(_git_blob(root,operator,path)).hexdigest()==expected,'Reviewed retirement consumer source differs')
+    for path,expected in [('internal/legal/sredni_reader_retirement_owner_instruction.json',RETIREMENT_OWNER_RAW),
+        ('internal/legal/sredni_native_build_amendment_owner_acceptance.json',SREDNI_BUILD_OWNER_RECEIPT_SHA256)]:
+        need(hashlib.sha256(_git_blob(root,operator,path)).hexdigest()==expected,'Exact retained owner instruction differs')
+    return digest({'historical_closed':HISTORICAL_CLOSED,'current_closed':CURRENT_CLOSED,
+        'server_sha256':servers,'consumer_contract_sha256':CONSUMER_CONTRACT_SHA,'consumer_sources':sources})
+
+
+def validate_owner_applicability(binding,c):
+    value=c['owner_acceptance_applicability'];exact(value,APPLICABILITY_KEYS)
+    p,k,o=c['projection'],c['core'],c['owner_acceptance']
+    hp,hk=value['historical_projection'],value['historical_core'];exact(hp,P_KEYS);exact(hk,K_KEYS)
+    successor=value['source_successor']
+    if 'first_guard_parent_operation_id' in binding:
+        # A child is still admitted only against the exact pending parent by the
+        # adapter. Validate the same immutable backend role, not its frontend SHA.
+        role={**binding,'source_sha':p['source_sha'],
+              'controller_source_sha':successor.get('source_pair',{}).get('controller_source_sha'),
+              'native_source_successor':successor}
+    else:
+        need(binding.get('native_source_successor')==successor,'Parent source successor differs')
+        role=binding
+    validate_source_successor(binding.get('native_action_scope',{}),role)
+    need(value['schema']=='earnalism.reader-owner-source-applicability.v1'
+        and digest(o)==HISTORICAL_READER_OWNER and value['historical_owner_raw_sha256']==HISTORICAL_READER_OWNER_RAW
+        and digest(hp)==HISTORICAL_READER_P and digest(hk)==HISTORICAL_READER_K
+        and o['parent_source_projection_sha256']==digest(hp) and o['policy_core_sha256']==digest(hk)
+        and value['continuation_owner_receipt_sha256']==SREDNI_BUILD_OWNER_RECEIPT_SHA256
+        and value['retirement_owner_receipt_sha256']==RETIREMENT_OWNER_RAW
+        and value['native_source_successor_sha256']==digest(successor)
+        and value['current_projection_sha256']==digest(p) and value['current_core_sha256']==digest(k),
+        'Exact preserved Reader owner/source applicability required')
+    need(successor['original_closed_source_sha']==hp['source_sha']==HISTORICAL_CLOSED,'Original Reader source lineage differs')
+    changed={'source_sha','source_delivery_sha256','closed_server_sha256','runtime_manifest_sha256'}
+    need(all(p[x]==hp[x] for x in P_KEYS-changed)
+        and all(k[x]==hk[x] for x in K_KEYS-{'parent_source_projection_sha256'}),
+        'Reader migration configuration/custody/containment/limits changed')
+    need(value['source_equivalence_sha256']==reader_source_equivalence(role),'Exact reviewed Reader source equivalence required')
+    return value
 
 # Immutable actual-Root baseline admission, not a mutable counter/authority factory.
 ACTION_LIMITS={'backend':3,'frontend':3,'stage':1}
