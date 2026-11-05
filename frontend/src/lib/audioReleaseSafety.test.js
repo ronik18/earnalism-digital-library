@@ -264,7 +264,8 @@ describe("audiobook release safety", () => {
     const state = audiobookReleaseState(book);
 
     expect(state.canShowControls).toBe(true);
-    expect(state.syncMode).toBe("section_following");
+    // Historical sync hints do not advertise a retired customer capability.
+    expect(state.syncMode).toBe("audio_only");
     expect(state.highlightSyncEnabled).toBe(false);
     expect(audiobookNarrationDisclosure(book)).toBe("Narration: AI voice");
   });
