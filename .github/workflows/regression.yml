@@ -171,7 +171,7 @@ jobs:
             [[ "$pair_controller_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             if [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
               [[ "$HISTORICAL_PAIR_CONTROLLER_SHA" =~ ^[0-9a-f]{40}$ && "$HISTORICAL_PAIR_CONTROLLER_TREE" =~ ^[0-9a-f]{40}$ ]] || exit 1
-              [[ "$pair_bootstrap_pin" == "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]] || exit 1
+              [[ "$HISTORICAL_PAIR_BOOTSTRAP_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
               # Fetch this exact historical tree first. HEAD's bounded commit
               # admission below then restores ancestry past its shallow edge.
               git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_CONTROLLER_SHA"
@@ -193,7 +193,7 @@ jobs:
             # snapshot/file may enter the two explicitly bound backend roles.
             pair_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$pair_parent_pin" "$pair_bootstrap_pin" | LC_ALL=C sort)"
             [[ "$pair_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
-            if [[ "${PAIR_SOURCE_ONLY:-false}" == false ]]; then
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == false || "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
               [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
             elif [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
               # Do not mislabel historical A/B hydration as qualification of a
@@ -215,6 +215,29 @@ jobs:
                 bindings+=("$pair_pin:$source_path")
               done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$pair_pin" -- backend .gitignore internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json)
             done
+          fi
+          # A current pair can differ from the immutable C/B65 helper baseline.
+          # Admit that historical pair independently, with no HEAD relabelling.
+          if [[ "${PAIR_SOURCE_ONLY:-false}" == true && -n "$pair_bootstrap_pin" && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+            historical_bootstrap_pin="$HISTORICAL_PAIR_BOOTSTRAP_SHA"
+            git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$historical_bootstrap_pin"
+            # Both depth-2 role fetches introduce parent shallow edges. Restore
+            # only bounded HEAD ancestry before checking historical lineage.
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
+            git -c remote.origin.promisor=false merge-base --is-ancestor "$historical_bootstrap_pin" "$HISTORICAL_PAIR_CONTROLLER_SHA"
+            git -c remote.origin.promisor=false merge-base --is-ancestor "$HISTORICAL_PAIR_CONTROLLER_SHA" "$pair_controller_pin"
+            [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA^{tree}")" == "$HISTORICAL_PAIR_CONTROLLER_TREE" ]] || exit 1
+            read -r historical_actual_pin historical_parent_pin historical_extra_parent <<< "$(git -c remote.origin.promisor=false rev-list --parents -n 1 "$historical_bootstrap_pin")"
+            [[ "$historical_actual_pin" == "$historical_bootstrap_pin" && "$historical_parent_pin" =~ ^[0-9a-f]{40}$ && -z "$historical_extra_parent" ]] || exit 1
+            [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:backend")" == "$(git rev-parse "$historical_parent_pin:backend")" ]] || exit 1
+            historical_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$historical_parent_pin" "$historical_bootstrap_pin" | LC_ALL=C sort)"
+            [[ "$historical_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
+            for historical_pin in "$HISTORICAL_PAIR_CONTROLLER_SHA" "$historical_bootstrap_pin" "$historical_parent_pin"; do
+              while IFS= read -r -d '' source_path; do
+                bindings+=("$historical_pin:$source_path")
+              done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$historical_pin" -- backend scripts/build_runtime_source_manifest.py internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json .gitignore .gitattributes)
+            done
+            echo 'CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION'
           fi
           # END bounded current guarded source pair admission
           if [[ -n "$reader_source_pin" ]]; then
@@ -370,6 +393,9 @@ jobs:
           context={'scope':'HISTORICAL_C_B65_ONLY_NOT_CURRENT_CI_BACKEND_RECOVERY','ci_checkout_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=current,text=True).strip(),'historical_controller_sha':reference,'bootstrap_source_sha':b,'current_candidate_recovery_qualified':False,'current_candidate_or_provider_recovery_qualified':False}
           (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/historical-context.json').write_text(json.dumps(context,indent=2)+'\n')
           # END explicit historical controller export
+          if json.loads((current/'internal/legal/purchase_guard_source.json').read_text())['guarded_bootstrap_source_sha'] != os.environ['HISTORICAL_PAIR_BOOTSTRAP_SHA']:
+              current_pair=validate_paired_source(current)
+              (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/current-source-pair.json').write_text(json.dumps(current_pair,indent=2)+'\n')
           root=Path(os.environ['RUNNER_TEMP'])/'paired-helper-export'; root.mkdir(mode=0o700)
           rows=backend_tree(controller,b)
           for name,row in rows.items():

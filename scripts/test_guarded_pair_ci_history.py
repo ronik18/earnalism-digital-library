@@ -205,6 +205,31 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(report['source'],self.fixture.bootstrap)
         self.assertFalse(report['native_archive_qualification'])
 
+    def test_new_current_pair_and_old_helper_pair_are_admitted_separately(self):
+        f=self.fixture
+        f.write_json(guard.PATH,f.contract)
+        f.write('backend/current-only-fixture.py',b'current source must survive')
+        f.inventory();f.commit('new inventoried normal parent')
+        current_normal_manifest=(f.repo/'backend/.runtime-source-manifest.json').read_bytes()
+        f.write('backend/server.py',f.closed)
+        f.write_json(guard.PATH,{**f.contract,'state':'CLOSED'})
+        f.inventory();current_bootstrap=f.commit('new separate CLOSED child')
+        f.write('backend/server.py',f.normal)
+        f.write('backend/.runtime-source-manifest.json',current_normal_manifest)
+        f.write_json(guard.PATH,{**f.paired,'guarded_bootstrap_source_sha':current_bootstrap})
+        current_controller=f.commit('new controller, historical helper untouched')
+        guard.validate_paired_source(f.repo)
+        clone=self.clone()
+        result,commands=self.run_admission(clone,pin=current_bootstrap,source_only=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION',result.stdout)
+        self.assert_historical_controller_export(clone)
+        current=json.loads((self.workspace/'paired-helper-proof/current-source-pair.json').read_text())
+        self.assertEqual(current['controller_source_sha'],current_controller)
+        self.assertEqual(current['bootstrap_source_sha'],current_bootstrap)
+        self.assertEqual(current['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
+
     def test_wrong_historical_controller_role_is_rejected(self):
         clone = self.clone()
         result, commands = self.run_admission(clone, source_only=True, reference=self.fixture.parent)
