@@ -3166,3 +3166,5 @@ A CI transport/source fix does not authorize another runtime observation or rele
 
 
 5 November 2026: Retire customer text-audio features by removing actual legacy cue consumers and stale-flag capabilities, not merely hiding one button. Keep manual Reader selection/annotations and native media seek/chapter/resume controls. Source N/A is exact-candidate scoped; historical cue assets and release holds stay intact.
+
+Source protocol custody and native recovery are separate: an unrelated reviewed server metadata change needs its own exact source/digest binding, never replacement of historical A/B or weakening current native equality. Keep default native validation strict; source-only tests may validate unchanged protected handlers under a separately reviewed protocol record.
