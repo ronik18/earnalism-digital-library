@@ -13,6 +13,7 @@ SCHEMA = 'earnalism.purchase-guard-source.v1'
 SUCCESSOR_SCHEMA = 'earnalism.purchase-guard-source.v2'
 PAIRED_SCHEMA = 'earnalism.purchase-guard-source.v3'
 PATH = 'internal/legal/purchase_guard_source.json'
+PROTOCOL_PATH = 'internal/legal/purchase_protocol_application_source.json'
 ANCHOR = '    if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:\n        commerce = commerce_territory_verdict('
 BRANCH = '\n    if ENVIRONMENT == "production" and request.method == "POST" and request.url.path == COMMERCE_ORDER_PATH:\n        return JSONResponse(status_code=503, content={"detail": {"code": "PURCHASE_INITIATION_CLOSED", "message": "New Reading Pass purchases are temporarily paused. Existing reading and listening access remains available."}}, headers={"Cache-Control": "no-store"})\n'
 
@@ -47,7 +48,7 @@ def _preserved_purchase_handlers(historical, application):
         raise ValueError('Successor changes protected purchase, financial or lease handlers')
 
 
-def _validate(repo, *, base_reader=exact_git_server, check_pair=True):
+def _validate(repo, *, base_reader=exact_git_server, check_pair=True, check_current_server=True):
     repo=Path(repo); m=json.loads((repo/PATH).read_text())
     expected={'schema','state','approved_merged_584_sha','approved_base_server_sha256','closed_server_sha256','owner_receipt_path','owner_receipt_sha256'}
     paired = m.get('schema') == PAIRED_SCHEMA
@@ -80,7 +81,7 @@ def _validate(repo, *, base_reader=exact_git_server, check_pair=True):
             raise ValueError('Successor closed source binding differs')
         base = application
     actual=(repo/'backend/server.py').read_bytes()
-    if actual != (closed if m['state']=='CLOSED' else base):raise ValueError('Whole server equality failed')
+    if check_current_server and actual != (closed if m['state']=='CLOSED' else base):raise ValueError('Whole server equality failed')
     if paired and check_pair:
         _validate_pair(repo, m, base, closed)
     return m,base,closed
@@ -89,13 +90,42 @@ def validate(repo, *, base_reader=exact_git_server):
     return _validate(repo, base_reader=base_reader)
 
 def validate_purchase_protocol_source(repo, *, base_reader=exact_git_server):
-    """Validate exact server/owner/financial protocol, NOT backend recovery.
+    """Exact source-only application protocol; never native A/B recovery proof.
 
-    Ordinary application CI may change unrelated backend modules. This narrow
-    source check cannot qualify that changed backend against historical A/B.
-    Native callers must retain validate()/validate_paired_source() unchanged.
+    Preserve the immutable historical role/owner contract, then separately bind
+    the reviewed current server and unchanged protected handlers. Native public
+    validators retain full current-server equality and paired-backend checks.
     """
-    return _validate(repo, base_reader=base_reader, check_pair=False)
+    repo = Path(repo)
+    historical, approved, _closed = _validate(
+        repo, base_reader=base_reader, check_pair=False, check_current_server=False)
+    p = json.loads((repo / PROTOCOL_PATH).read_text())
+    expected = {'schema', 'scope', 'state', 'historical_contract_sha256',
+                'application_source_sha', 'application_server_sha256',
+                'application_closed_server_sha256'}
+    if (set(p) != expected or p['schema'] != 'earnalism.purchase-protocol-application.v1'
+            or p['scope'] != 'SOURCE_PROTOCOL_ONLY_NOT_NATIVE_RECOVERY'
+            or p['state'] != historical['state']
+            or p['state'] not in {'OPEN', 'CLOSED'}):
+        raise ValueError('Application protocol source contract malformed')
+    if (not isinstance(p['application_source_sha'], str)
+            or not re.fullmatch('[0-9a-f]{40}', p['application_source_sha'])
+            or any(not isinstance(p[k], str) or not re.fullmatch('[0-9a-f]{64}', p[k])
+                   for k in ('historical_contract_sha256', 'application_server_sha256',
+                             'application_closed_server_sha256'))):
+        raise ValueError('Exact application protocol source pins required')
+    if sha((repo / PATH).read_bytes()) != p['historical_contract_sha256']:
+        raise ValueError('Historical operational contract differs')
+    application = base_reader(repo, p['application_source_sha'])
+    if sha(application) != p['application_server_sha256']:
+        raise ValueError('Application protocol source binding differs')
+    _preserved_purchase_handlers(approved, application)
+    closed = guard_only_server(p['application_server_sha256'], application)
+    if sha(closed) != p['application_closed_server_sha256']:
+        raise ValueError('Application protocol closed source binding differs')
+    if (repo / 'backend/server.py').read_bytes() != (closed if p['state'] == 'CLOSED' else application):
+        raise ValueError('Whole application protocol server equality failed')
+    return p, application, closed
 
 
 def normal_guard_source(repo):

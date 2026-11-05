@@ -29,6 +29,19 @@ def history_parts():
 
 
 class HistoryFixture(PairFixture):
+    def setUp(self):
+        super().setUp()
+        # New source-only protocol record is separate from immutable A/B/C.
+        self.write_json(guard.PROTOCOL_PATH, {
+            'schema': 'earnalism.purchase-protocol-application.v1',
+            'scope': 'SOURCE_PROTOCOL_ONLY_NOT_NATIVE_RECOVERY', 'state': 'OPEN',
+            'historical_contract_sha256': guard.sha((self.repo / guard.PATH).read_bytes()),
+            'application_source_sha': self.historical,
+            'application_server_sha256': guard.sha(self.normal),
+            'application_closed_server_sha256': guard.sha(self.closed),
+        })
+        self.commit('fixture current source-only protocol, historical roles unchanged')
+
     def write(self, name, data):
         # Existing historical negative tests deliberately rename this async API.
         if (name == 'backend/server.py' and hasattr(self, 'normal')
