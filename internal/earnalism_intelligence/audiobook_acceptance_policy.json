@@ -199,9 +199,22 @@
     "future_reopening_criteria": [
       "new Bengali provider/model with representative audition evidence >=8.9 and confidence >=0.90 under platform_audiobook_acceptance_v4_89",
       "human/professional narration workflow with representative audition pass",
-      "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
+      "licensed audiobook import with rights, provenance, ASR/manuscript match, and applicable consumer-scoped text-sync acceptance",
       "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
       "improved Sarvam model/voice with fresh capability evidence and no mechanical/list-reading flags"
     ]
+  },
+  "text_sync_applicability_policy": "sync-consumer-scoped-2026-11-05",
+  "evidence_proportionate_diagnostics": {
+    "effective_date": "2026-11-05",
+    "owner_direction": "Unconfirmed recognizer or heuristic warnings alone are not proven audio defects and do not mandate a new model, regeneration or repeated manual review.",
+    "findings": [
+      "UNCERTAINTY_WARNING",
+      "CONFIRMED_MATERIAL_DEFECT",
+      "MISSING_MANDATORY_ACCEPTANCE"
+    ],
+    "reuse": "Existing accepted exact-source/audio/span adjudication and qualified normalized evidence may resolve uncertainty within actual scope; retain raw scores and provenance.",
+    "limits": "No classifier guarantees perfect certainty. Missing required fidelity/listening/rights/playback/accounting acceptance and confirmed material defects still block. Do not invent PASS, ratings or approvals.",
+    "sync": "Use explicit NOT_APPLICABLE only under verified selected-consumer/source evidence; no text-sync claim or enabled sync feature. All other necessary gates remain."
   }
 }

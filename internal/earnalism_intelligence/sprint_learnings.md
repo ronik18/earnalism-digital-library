@@ -3144,3 +3144,16 @@ All current explicit live-title modes are commercial; zero balance does not crea
 ### Protected Reader enforcement scope — 5 November 2026
 
 The accepted Reader contract does not mandate a new paid premium-text session. Protected entitlement enforcement may be established by actual authorization/no-lease denial plus exact source/protocol/handler preservation within the accepted contract. Do not turn this negative proof into positive premium delivery, billing or mobile PASS. Accepted Reader #536 three-public/one-protected refers to public domain roles and the protected Vercel SSO alias, not a premium-content lease. #537 is Admin activation inspection. Zero balance does not grant a free commercial lease and is not needed for GET-only preview. Rendered authenticated Reader UI can write position/telemetry; boundary controls can start a metered lease. Never label this UI GET-only or start/transfer/settle a lease to discover eligibility.
+
+### 5 November 2026 — consumer-scoped text sync and diagnostic uncertainty
+
+The standalone Listener does not consume text cues, but the legacy/admin Reader
+can navigate by word position. A disabled highlight flag alone is not proof of
+nonconsumption. Exact candidate/source-bound NOT_APPLICABLE now survives evaluation
+and promotion only for the reviewed standalone path; cue-dependent producers and
+text consumers keep measured gates. Preserve media clocks and structural assets.
+Unconfirmed ASR/source heuristics warn rather than prescribe regeneration/repeated
+models/listening. Existing accepted full-title fidelity adjudication can resolve
+raw recognizer uncertainty without changing raw output or thresholds. Confirmed
+defects and missing mandatory acceptance still block; no perfect-certainty claim.
+No runtime action, owner hold, consumed counter or deployment authority changes.

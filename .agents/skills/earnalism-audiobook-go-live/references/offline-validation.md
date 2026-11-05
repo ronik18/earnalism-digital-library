@@ -17,3 +17,10 @@ Cover the changed decisions:
 Check actual helper behavior only if it changed or the scenario depends on it. The historical roster/old title fixture is a locator; current canonical bindings win. No installed model or paid runtime is needed for a rights-only or textual scenario.
 
 Validate skill structure, links and changed scripts. For this prose change, a small decision record and relevant existing helper tests are enough; word/heading assertions are not behavioral proof. A simulated title is never LIVE. End with actual findings and one next integration action; no approval question is needed for offline validation itself.
+
+Changed-policy counterexamples: a verified standalone nonconsumer retains explicit
+NOT_APPLICABLE through evaluation and promotion; bare N/A, changed source, enabled
+read-along/highlighting/text navigation and stale candidate binding fail closed.
+Warning-only findings do not invent a repair/review gate; confirmed material defects
+and absent fidelity/rights/playback/accounting acceptance still block. Reusing an
+accepted exact-source report does not rewrite the raw recognizer output or scores.

@@ -869,5 +869,12 @@
     "status": "SOURCE_CLARIFICATION_NO_NEW_NATIVE_PASS",
     "correction": "The accepted Reader contract does not mandate a new paid premium-text session. Protected entitlement enforcement may be established by actual authorization/no-lease denial plus exact source/protocol/handler preservation within the accepted contract. Do not turn this negative proof into positive premium delivery, billing or mobile PASS.",
     "unchanged_gates": "Configured full-free pilots still require genuine applicable native receipts; inactive mode is explicit N/A. Current runtime/source, Reader boundary, Listener/accounting and recovery evidence remain mandatory. No source proof is native readiness; no additional grant, action, capture, purchase or paid session is authorized."
+  },
+  "text_sync_diagnostics_owner_amendment_20261105": {
+    "scope": "NEW_EVALUATIONS_ONLY_SOURCE_POLICY",
+    "decision_ledger_event": "CONSUMER_SCOPED_TEXT_SYNC_AND_EVIDENCE_PROPORTIONATE_AUDIO_DIAGNOSTICS",
+    "historical_results_preserved": true,
+    "owner_holds_and_attempt_counters_unchanged": true,
+    "publication_or_generation_authorized": false
   }
 }
