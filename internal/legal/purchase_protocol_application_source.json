@@ -2,8 +2,8 @@
   "schema": "earnalism.purchase-protocol-application.v1",
   "scope": "SOURCE_PROTOCOL_ONLY_NOT_NATIVE_RECOVERY",
   "state": "OPEN",
-  "historical_contract_sha256": "a4065ed8742027250707a6093deff9c70dba135793415787fdbef0d0ac281480",
-  "application_source_sha": "19e64720bb43f4eefecde85fe62984bc858614b5",
+  "historical_contract_sha256": "e668e654ce2486353a3b99d086a8ce72bc4f157404705a6a09a737b6f1dc8eae",
+  "application_source_sha": "fdc2477058ab9c10c33efa2949283cf99fe63876",
   "application_server_sha256": "53625353a1377486ece8731ffbf92f97b3761d38ced767ac632315bb5a0d3a2e",
   "application_closed_server_sha256": "dfddceaf2aea60ea72b5a6c0a7a55b76b3f1f10e1b0eaebae8c212fa5765ff06"
 }
