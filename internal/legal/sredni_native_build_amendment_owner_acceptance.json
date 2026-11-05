@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.sredni.native-build-owner-amendment.v1",
+  "source": "ACTUAL_NATIVE_OWNER_MESSAGE",
+  "thread_id": "01a19041-6750-7503-8694-d979c8c254c9",
+  "turn_id": "01a1ac2e-f8e4-7612-91a7-1dac5033b89a",
+  "message_id": "01a1ac2e-fa97-7011-8e64-072d99768baf",
+  "answer": "Approve one fresh bounded startup observation and one frontend build for Sredni. Continue through Integration to GO LIVE after all gates pass. Preserve all counters and other limits; keep Bicharak on hold. No allocation or synthesis.",
+  "scope": {
+    "title": "sredni-vashtar",
+    "additional_frontend_builds": 1,
+    "frontend_builds_cumulative_maximum": 2,
+    "frontend_actions_cumulative_maximum": 3,
+    "backend_actions_cumulative_maximum": 3,
+    "policy_writes_cumulative_maximum": 1,
+    "startup_observations_cumulative_maximum": 5,
+    "counter_reset": false,
+    "window_renewal": false,
+    "bicharak": "OWNER_HOLD",
+    "allocation": false,
+    "synthesis": false
+  },
+  "not_a_protected_operation_approval": true
+}
