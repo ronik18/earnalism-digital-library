@@ -19,7 +19,7 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/canExposeAudiobookControls/);
     expect(readerSource).toMatch(/hasGeneratedAudioEnabled\(book,\s*bookId\)/);
     expect(readerSource).toMatch(/generatedAudioAvailable/);
-    expect(readerSource).toMatch(/Audio will appear only after narration, sync, and browser gates pass/);
+    expect(readerSource).toMatch(/Audio will appear only after narration, rights, and playback gates pass/);
     expect(readerSource).toMatch(/showListeningPanel && !narrationDisabledForBook/);
     expect(readerSource).toMatch(/canPlay=\{!audioDisabledForPage && generatedAudioAvailable\}/);
   });
@@ -38,21 +38,14 @@ describe("Reader release-truth and reading-room guardrails", () => {
 
   test("does not claim word-level sync in customer copy", () => {
     expect(readerSource).not.toMatch(/word-level|word level|word sync/i);
-    expect(readerSource).toMatch(/Section-following narration/);
-    expect(readerSource).toMatch(/Paragraph\/Stanza Sync/);
+    expect(readerSource).not.toMatch(/Section-following narration|read.along/i);
+    expect(readerSource).not.toMatch(/Paragraph\/Stanza Sync/);
   });
 
-  test("normalizes approved production timestamps before playback", () => {
-    expect(readerSource).toMatch(/normalizeAudioTimestamp/);
-    expect(readerSource).toMatch(/audioTimestampStartMs\(timestamps\[mid\]\)/);
-    expect(readerSource).toMatch(/audioTimestampStartMs\(firstTimestamp\) \/ 1000/);
-  });
-
-  test("plays approved MP3-only editions without inventing highlight sync", () => {
-    expect(readerSource).toMatch(/if \(assets\?\.mp3\) return true/);
-    expect(readerSource).toMatch(/if \(!generatedHighlightSyncEnabled\)/);
-    expect(readerSource).toMatch(/setGeneratedAudioAvailable\(true\)/);
-    expect(readerSource).toMatch(/generatedAudioAvailable && generatedHighlightSyncEnabled/);
+  test("legacy flags cannot restore text-linked playback or cue loading", () => {
+    expect(readerSource).not.toMatch(/normalizeGeneratedTimestamps|timestampIndexAt|highlightGeneratedWord|generatedHighlightSyncEnabled|currentWordOffset|generatedTimestampsUrl/);
+    expect(readerSource).not.toMatch(/wrapWordsInSpans|scrollIntoView|data-word=/);
+    expect(readerSource).toMatch(/setGeneratedAudioAvailable\(Boolean\(generatedAudioUrl && !lockedState\)\)/);
   });
 
   test("loads package audio only on intent and advances immutable segments across chapters", () => {
@@ -82,25 +75,14 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).not.toMatch(/prefetchAsset\(nextTrack\.timestampsUrl\)/);
   });
 
-  test("requests first-click playback before deferred highlight rendering", () => {
+  test("requests first-click playback without text-derived seeking", () => {
     const start = readerSource.indexOf("const startGeneratedAudio = useCallback");
     const end = readerSource.indexOf("const handleGeneratedAudioMetadata", start);
-    const startGeneratedAudioSource = readerSource.slice(start, end);
-    const deferredHighlightIndex = startGeneratedAudioSource.indexOf("window.requestAnimationFrame");
-    const synchronizedPlaybackIndex = startGeneratedAudioSource.lastIndexOf(
-      "requestAudiobookPlayback(audio)",
-    );
-
-    expect(start).toBeGreaterThan(-1);
-    expect(end).toBeGreaterThan(start);
-    expect(startGeneratedAudioSource).toMatch(
-      /pendingAudioOffsetRef\.current = audioTimestampStartMs\(firstTimestamp\) \/ 1000/,
-    );
-    expect(synchronizedPlaybackIndex).toBeGreaterThan(-1);
-    expect(deferredHighlightIndex).toBeGreaterThan(synchronizedPlaybackIndex);
-    expect(startGeneratedAudioSource).not.toMatch(/window\.requestAnimationFrame[\s\S]*audio\.play\(/);
+    const playback = readerSource.slice(start, end);
+    expect(playback).toContain("requestAudiobookPlayback(audio)");
+    expect(playback).toContain("applyPendingAudioOffset()");
+    expect(playback).not.toMatch(/firstTimestamp|currentPageWordOffset|requestAnimationFrame/);
     expect(readerSource).not.toMatch(/\baudio\.play\(\)/);
-    expect(readerSource).not.toMatch(/generatedAudioRef\.current\?\.play/);
   });
 
   test("persists only immutable package-bound audiobook progress", () => {
@@ -125,7 +107,7 @@ describe("Reader release-truth and reading-room guardrails", () => {
   test("prefetches only next-segment metadata after playback reaches the threshold", () => {
     expect(readerSource).toMatch(/shouldPrefetchNextSegment\(audio\?\.currentTime,\s*audio\?\.duration,\s*nextSegmentId\)/);
     expect(readerSource).toMatch(/prefetchAudioMetadata\(selectedGeneratedAudioTrack\.nextAudioUrl\)/);
-    expect(readerSource).toMatch(/prefetchAsset\(selectedGeneratedAudioTrack\.nextTimestampsUrl,\s*\{\s*credentials:\s*'include'\s*\}\)/);
+    expect(readerSource).not.toMatch(/prefetchAsset|nextTimestampsUrl/);
     expect(readerSource).toMatch(/method:\s*'HEAD'/);
     expect(readerSource).toMatch(/crossOrigin="use-credentials"/);
     expect(readerSource).toMatch(/fetch\(generatedAudioManifestUrl,\s*\{\s*cache:\s*readingPassMode\s*\?\s*'no-store'\s*:\s*'force-cache',\s*credentials:\s*'include'\s*\}\)/);
@@ -159,7 +141,7 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/Literary Bengali serif/);
     expect(readerSource).toMatch(/Clear Bengali sans/);
     expect(readerSource).toMatch(/Reduced motion/);
-    expect(readerSource).toMatch(/Highlight intensity/);
+    expect(readerSource).not.toMatch(/Highlight intensity|Set highlight intensity/);
     expect(readerSource).toMatch(/aria-labelledby="reader-settings-title"/);
   });
 

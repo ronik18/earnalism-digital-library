@@ -278,7 +278,6 @@ export function audioSegmentAtMediaPosition(manifest, positionSeconds = 0) {
 export function selectAudioTrack({
   manifest,
   chapterId,
-  currentWordOffset = 0,
   preferredSegmentId = '',
   approvedAudioUrl,
   approvedTimestampsUrl,
@@ -295,9 +294,7 @@ export function selectAudioTrack({
     const chunks = track.chunks || [];
     let chunkIndex = preferredSegmentId
       ? chunks.findIndex((item) => item.segmentId === preferredSegmentId)
-      : chunks.findIndex(
-        (item) => currentWordOffset >= item.startWord && currentWordOffset <= item.endWord,
-    );
+      : 0;
     if (chunkIndex < 0 && chunks.length) chunkIndex = 0;
     const chunk = chunkIndex >= 0 ? chunks[chunkIndex] : null;
     const orderedSegments = tracks.flatMap((item) => (

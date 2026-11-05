@@ -4325,7 +4325,8 @@ def _reader_audio_package_manifest_from_package(
             "sync_tier",
             "highlight_sync_enabled",
         )
-    } | {"version": package_version, "tracks": tracks}
+    } | {"version": package_version, "tracks": tracks, "highlight_sync_enabled": False,
+         "read_along_enabled": False, "text_linked_navigation_enabled": False}
 
 
 def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
@@ -4399,15 +4400,13 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
     release_gate = "APPROVED"
     qa_status = audio_release_qa_status({**book, "slug": slug})
-    sync_mode = book.get("sync_mode", nested.get("sync_mode", ""))
+    sync_mode = "audio_only"
     narration_disclosure = normalize_text(
         book.get("narration_disclosure")
         or nested.get("narration_disclosure")
         or nested.get("ai_narration_disclosure")
     ).strip()[:160]
-    highlight_sync_enabled = bool(
-        book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
-    )
+    highlight_sync_enabled = False
     enabled = bool(
         book.get("audiobook_enabled")
         or book.get("generate_audiobook")
@@ -4425,6 +4424,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "read_along_enabled": False,
+        "text_linked_navigation_enabled": False,
         "narration_disclosure": narration_disclosure,
         "package_version": package_manifest.get("package_version", "") if package_manifest else "",
         "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
@@ -4446,6 +4447,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "read_along_enabled": False,
+        "text_linked_navigation_enabled": False,
         "narration_disclosure": narration_disclosure,
         "package_version": package_manifest.get("package_version", "") if package_manifest else "",
         "version": version,

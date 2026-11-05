@@ -84,8 +84,9 @@ native media time and chapter/segment offsets, not text cues. Its explicit
 reviewed source bytes, with all text-sync features disabled and no sync claim.
 `produce_release.py` evaluates this proof; `release_runtime.py` revalidates it at
 promotion. A bare N/A label, old source hash or `highlight=false` alone is insufficient.
-The legacy/admin Reader can select audio by word position and is not this consumer.
-Cue-dependent segmentation/Reader/read-along pipelines retain their measured gates.
+The legacy/admin Reader no longer selects or seeks audio by word position or follows text.
+Historical cue evidence remains retained; actually selected cue-dependent production
+and caption consumers still require their applicable measured gates.
 Do not fabricate empty/estimated cues, drop schema-required asset checks or claim
 full-title fidelity from structural source coverage. Media durations, chapter seek,
 rights, playback/accounting and other necessary acceptance remain unchanged.
@@ -96,3 +97,6 @@ factory normalizer can reuse an existing hash-bound full-title accepted fidelity
 record while retaining raw ASR; a partial review, invented score, wrong hash or
 confirmed defect cannot replace mandatory fidelity. No new approval is required
 merely to classify a warning; publication authority and actual acceptance still bind.
+
+
+Read-along, narration-linked highlighting and text-linked audio navigation are permanently retired from supported current and legacy customer paths. Do not offer, advertise or re-enable them from stored flags. Ordinary Reader page/chapter navigation, text selection/manual annotations, and native audio chapter/seek controls remain. Reuse historical measured evidence only in its actual scope; never delete it or relabel it PASS/N/A. Record candidate-bound NOT_APPLICABLE for a verified nonconsumer without fabricating cues; caption/cue-consuming production remains strict where actually selected. This source policy grants no runtime retry, allocation or release authority.

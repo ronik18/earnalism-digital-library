@@ -130,6 +130,11 @@ jobs:
               bindings+=("$pair_bootstrap_pin:internal/legal/purchase_guard_source.json")
             fi
           fi
+          if [[ -f internal/legal/purchase_protocol_application_source.json ]]; then
+            source_pin="$(jq -er '.application_source_sha' internal/legal/purchase_protocol_application_source.json)"
+            [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            bindings+=("$source_pin:backend/server.py")
+          fi
           if [[ -f scripts/build_india_guarded_rollback.py ]]; then
             bindings+=("4dc9e8fd3f9eafd28445b408d376b73634ccfa56:backend/server.py")
           fi

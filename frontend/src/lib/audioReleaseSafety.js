@@ -145,10 +145,8 @@ export function audiobookReleaseState(book = {}) {
       hasAudioAsset: hasApprovedAudioAsset,
       packageManifestUrl: hasPackageManifestAsset ? packageManifestUrl : "",
       packageVersion: (hasPackageManifestAsset || hasPublicPackageBinding || hasCataloguePackageBinding) ? packageVersion : "",
-      syncMode: book?.sync_mode || book?.audiobook?.sync_mode || book?._readerManifest?.audio?.sync_mode || "",
-      highlightSyncEnabled: book?.highlight_sync_enabled === true
-        || book?.audiobook?.highlight_sync_enabled === true
-        || book?._readerManifest?.audio?.highlight_sync_enabled === true,
+      syncMode: "audio_only",
+      highlightSyncEnabled: false,
     };
   }
 

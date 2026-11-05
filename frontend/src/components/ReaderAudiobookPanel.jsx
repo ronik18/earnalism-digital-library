@@ -39,7 +39,6 @@ export default function ReaderAudiobookPanel({
   playbackRate,
   volume,
   muted,
-  syncLabel,
   disclosure,
   onClose,
   onPlayPause,
@@ -68,10 +67,10 @@ export default function ReaderAudiobookPanel({
   const progressPercent = safeDuration > 0 ? Math.min(100, (safeCurrentTime / safeDuration) * 100) : 0;
   const playbackLabel = isPlaying && !isPaused ? 'Pause audiobook' : 'Play audiobook';
   const statusText = !isReadingPage
-    ? 'Open the first narrated page, then press Play when the section is ready.'
+    ? 'Press Play when playback is ready.'
     : canPlay
-      ? (isPlaying && !isPaused ? 'Narration is following the current reading section.' : 'Your narrated section is ready when you are.')
-      : 'Preparing approved audio for this reading section…';
+      ? (isPlaying && !isPaused ? 'Your audiobook is playing.' : 'Ready when you are.')
+      : 'Preparing approved audiobook audio…';
 
   return (
     <section
@@ -197,13 +196,13 @@ export default function ReaderAudiobookPanel({
         </div>
 
         <div className="reader-listening-room__meta">
-          <span>{syncLabel || 'Section-following narration'}</span>
+          <span>Audiobook</span>
           {disclosure ? <small>{disclosure}</small> : null}
         </div>
 
         <button type="button" className="reader-listening-room__reading-cta" onClick={onOpenReadingPage}>
           <BookOpen size={18} aria-hidden="true" />
-          {isReadingPage ? 'Read along' : 'Open first narrated page'}
+          Return to Reader
         </button>
       </div>
     </section>

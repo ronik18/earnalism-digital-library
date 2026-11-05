@@ -69,3 +69,6 @@ These repository/owner sources are primary; resolve their current local versions
 - [Current required regression](https://github.com/ronik18/earnalism-digital-library/blob/main/.github/workflows/regression.yml) and [published final review](https://github.com/ronik18/earnalism-digital-library/blob/main/.github/workflows/book-commerce-final-review.yml): exact source/check applicability; source CI is not customer runtime acceptance.
 
 No network research is required to re-read these checked local sources. This reference supplies no new provider or data access.
+
+
+Read-along, narration-linked highlighting and text-linked audio navigation are permanently retired from supported current and legacy customer paths. Do not offer, advertise or re-enable them from stored flags. Ordinary Reader page/chapter navigation, text selection/manual annotations, and native audio chapter/seek controls remain. Reuse historical measured evidence only in its actual scope; never delete it or relabel it PASS/N/A. Record candidate-bound NOT_APPLICABLE for a verified nonconsumer without fabricating cues; caption/cue-consuming production remains strict where actually selected. This source policy grants no runtime retry, allocation or release authority.

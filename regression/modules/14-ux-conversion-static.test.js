@@ -1603,7 +1603,7 @@ describe("UX conversion static signals", () => {
     expect(reader).toContain('aria-pressed={selected}');
     expect(reader).toContain("Select ${pack.label || `${pack.minutes} minute`} reading-time pack");
     expect(reader).toContain("Reading edition available.");
-    expect(reader).toContain("Audio will appear only after narration, sync, and browser gates pass.");
+    expect(reader).toContain("Audio will appear only after narration, rights, and playback gates pass.");
     expect(reader).not.toMatch(/\bListen Now\b/);
   });
 

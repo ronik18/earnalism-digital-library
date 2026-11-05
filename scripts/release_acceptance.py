@@ -31,6 +31,11 @@ CONSUMER_SOURCES = (
     'frontend/src/lib/audiobookPlayback.js',
     'frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx',
     'frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js',
+    'frontend/src/pages/Reader.jsx',
+    'frontend/src/pages/BookDetail.jsx',
+    'frontend/src/lib/audioReleaseSafety.js',
+    'frontend/src/components/ReaderAudiobookPanel.jsx',
+    'frontend/src/components/PremiumListeningRail.jsx',
 )
 
 
@@ -76,7 +81,7 @@ def validate_sync_not_applicable(manifest: Mapping[str, Any], check: Mapping[str
                          'route': f"/listener/{binding['slug']}",
                          'features': FEATURES_OFF, 'sync_claim': 'NONE'}
     if delivery != expected_delivery or any(type(v) is not bool for v in delivery['features'].values()):
-        raise ValueError('read-along, highlighting, captions or text-linked navigation require measured sync')
+        raise ValueError('nonconsumer acceptance requires disabled text-sync features; retired customer features cannot be restored')
     if (proof.get('schema') != 'earnalism.text_sync_applicability.v1'
             or proof.get('status') != 'NOT_APPLICABLE'
             or proof.get('binding') != binding or proof.get('delivery') != delivery
@@ -91,6 +96,18 @@ def validate_sync_not_applicable(manifest: Mapping[str, Any], check: Mapping[str
 
 def automated_check_accepted(manifest: Mapping[str, Any], name: str,
                              check: Mapping[str, Any]) -> bool:
+    # Historical measured PASS is evidence, never permission to restore retired UI.
+    for record in (manifest, manifest.get('audio') or {}):
+        if any(key in record and record[key] is not False for key in (
+            'read_along_enabled', 'highlight_sync_enabled', 'text_linked_navigation_enabled',
+        )):
+            return False
+    delivery = manifest.get('delivery') or {}
+    features = delivery.get('features') or {}
+    if any(key in features and features[key] is not False for key in (
+        'read_along', 'highlighting', 'text_linked_navigation',
+    )):
+        return False
     if check.get('status') == 'PASS':
         return True
     if name != 'synchronization' or check.get('status') != 'NOT_APPLICABLE':

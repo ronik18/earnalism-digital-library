@@ -38,7 +38,6 @@ function realProgress(book) {
 function ListeningCard({ book, featured, onCoverFailure }) {
   const available = canListen(book);
   const progress = realProgress(book);
-  const synchronized = book?.highlight_sync_enabled === true;
   const duration = Number(book?.audio_duration_ms);
   const narrator = String(book?.narrator || book?.narrator_name || "").trim();
   const title = book?.title || "Untitled edition";
@@ -91,7 +90,7 @@ function ListeningCard({ book, featured, onCoverFailure }) {
 
         <div className="premium-listening-card__copy">
         <div className="premium-listening-card__labels">
-          <span>{synchronized ? "Read + Listen" : "Audiobook"}</span>
+          <span>Audiobook</span>
           {!available && (
             <span className="premium-listening-card__unavailable">
               Reader edition
@@ -248,7 +247,7 @@ export default function PremiumListeningRail({
             >
               Literature, in a more intimate form.
             </h2>
-            <p>Let a remarkable voice draw you closer, with effortless read-along listening.</p>
+            <p>Let a remarkable voice draw you into the story, wherever you listen.</p>
           </div>
           <div className="premium-listening-rail__actions">
             {visibleBooks.length > 1 && (

@@ -47,12 +47,15 @@
       "package/schema/asset/checksum/retention integrity"
     ],
     "measured_required_when": [
-      "read-along",
-      "highlighting",
       "captions with text cues",
-      "text-linked navigation",
       "a producer actually uses measured text cues to cut/align delivery segments"
     ],
     "scope_note": "N/A is action/path-scoped. A source nonconsumer proof cannot clear another Reader/admin path or erase a missing required acceptance. No fake timestamps, estimated cues or blanket schema waiver."
-  }
+  },
+  "retired_customer_features": [
+    "read-along",
+    "narration-linked highlighting",
+    "text-linked audio navigation"
+  ],
+  "retirement_scope": "Permanently removed from current and legacy supported customer UI and capability projection; stale stored flags are not capabilities. Ordinary Reader navigation/manual annotations and audio chapter/media controls remain."
 }

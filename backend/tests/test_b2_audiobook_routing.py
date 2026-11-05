@@ -1611,8 +1611,10 @@ def test_eligible_audio_metadata_retains_disclosure_without_playable_urls(monkey
     assert audio["voice"] == "af_bella"
     assert audio["release_gate"] == "APPROVED"
     assert audio["qa_status"] == "QA_PASSED"
-    assert audio["sync_mode"] == "section_following"
+    assert audio["sync_mode"] == "audio_only"
     assert audio["highlight_sync_enabled"] is False
+    assert audio["read_along_enabled"] is False
+    assert audio["text_linked_navigation_enabled"] is False
     assert audio["narration_disclosure"] == "Narration: AI voice"
     assert audio["size"] == 6283053
     assert audio["duration_ms"] == 392600

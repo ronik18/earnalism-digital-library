@@ -19,7 +19,6 @@ import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
 import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, isReaderAudiobookManifestPath, readerManifestPath } from '../lib/audioReleaseSafety';
 import { readerManifestAudioIsAuthorized } from '../lib/readerManifestAccess';
-import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import {
   audioSegmentAtMediaPosition,
   chapterIdForAudioSegment,
@@ -89,12 +88,6 @@ const READER_MARGIN_OPTIONS = [
   { label: 'Narrow', value: 'narrow', measure: '600px' },
   { label: 'Classic', value: 'classic', measure: '680px' },
   { label: 'Wide', value: 'wide', measure: '760px' },
-];
-
-const HIGHLIGHT_INTENSITY_OPTIONS = [
-  { label: 'Low', value: 'low' },
-  { label: 'Medium', value: 'medium' },
-  { label: 'High', value: 'high' },
 ];
 
 const FONT_MODE_LABELS = {
@@ -334,70 +327,6 @@ function sanitizeReaderHtml(html) {
   return template.innerHTML;
 }
 
-function escapeHtmlText(value = '') {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-function wrapWordsInSpans(html, startWordIndex = 0) {
-  if (typeof document === 'undefined') return { html: html || '', totalWords: 0 };
-  const div = document.createElement('div');
-  div.innerHTML = html || '';
-  let wordIndex = startWordIndex;
-  let wrappedWords = 0;
-  let textOffset = 0;
-
-  function processNode(node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.textContent;
-      if (!text) return;
-      if (!text.trim()) {
-        textOffset += text.length;
-        return;
-      }
-
-      const wrapper = document.createElement('span');
-      let lastIndex = 0;
-      let nextHtml = '';
-      const re = /\S+/g;
-      let match;
-
-      while ((match = re.exec(text)) !== null) {
-        nextHtml += escapeHtmlText(text.slice(lastIndex, match.index));
-        for (const part of highlightTokenParts(match[0])) {
-          const start = textOffset + match.index + part.index;
-          const end = start + part.text.length;
-          if (part.highlight) {
-            nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(part.text)}</span>`;
-            wordIndex += 1;
-            wrappedWords += 1;
-          } else {
-            nextHtml += escapeHtmlText(part.text);
-          }
-        }
-        lastIndex = match.index + match[0].length;
-      }
-
-      nextHtml += escapeHtmlText(text.slice(lastIndex));
-      wrapper.innerHTML = nextHtml;
-      textOffset += text.length;
-
-      const parent = node.parentNode;
-      while (wrapper.firstChild) parent.insertBefore(wrapper.firstChild, node);
-      parent.removeChild(node);
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const tag = node.tagName?.toUpperCase();
-      if (tag === 'SCRIPT' || tag === 'STYLE') return;
-      Array.from(node.childNodes).forEach(processNode);
-    }
-  }
-
-  Array.from(div.childNodes).forEach(processNode);
-  return { html: div.innerHTML, totalWords: wrappedWords };
-}
-
 function countWordsInHtml(html) {
   if (typeof document === 'undefined') return countHighlightUnitsInText(html || '');
   const div = document.createElement('div');
@@ -430,70 +359,6 @@ function countHighlightUnitsInText(text = '') {
   return (text.match(/\S+/g) || []).reduce((count, token) => {
     return count + highlightTokenParts(token).filter((part) => part.highlight).length;
   }, 0);
-}
-
-function normalizeAudioWord(value = '') {
-  return String(value || '')
-    .normalize('NFC')
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\u0980-\u09FF]+/gu, '')
-    .trim();
-}
-
-function highlightWordsFromHtml(html = '', limit = 32) {
-  if (typeof document === 'undefined') return [];
-  const div = document.createElement('div');
-  div.innerHTML = html || '';
-  const words = [];
-  const tokens = div.textContent?.match(/\S+/g) || [];
-
-  for (const token of tokens) {
-    for (const part of highlightTokenParts(token)) {
-      if (!part.highlight) continue;
-      const normalized = normalizeAudioWord(part.text);
-      if (normalized) words.push(normalized);
-      if (words.length >= limit) return words;
-    }
-  }
-
-  return words;
-}
-
-function audioWordFromTimestamp(item = {}) {
-  return normalizeAudioWord(item.word || item.text || item.value || '');
-}
-
-function findTimestampWordOffset(timestamps = [], html = '') {
-  const visibleWords = highlightWordsFromHtml(html, 96);
-  if (!visibleWords.length || !timestamps.length) return 0;
-
-  const audioWords = timestamps.map(audioWordFromTimestamp);
-  const windowSize = Math.min(14, visibleWords.length, audioWords.length);
-  const minimumScore = Math.max(4, Math.ceil(windowSize * 0.7));
-  const maxVisibleStart = Math.min(80, Math.max(0, visibleWords.length - windowSize));
-  const maxAudioStart = Math.min(80, Math.max(0, audioWords.length - windowSize));
-  let bestOffset = 0;
-  let bestScore = -1;
-
-  for (let visibleStart = 0; visibleStart <= maxVisibleStart; visibleStart += 1) {
-    for (let audioStart = 0; audioStart <= maxAudioStart; audioStart += 1) {
-      if (audioWords[audioStart] !== visibleWords[visibleStart]) continue;
-      let score = 0;
-      for (let index = 0; index < windowSize; index += 1) {
-        if (audioWords[audioStart + index] && audioWords[audioStart + index] === visibleWords[visibleStart + index]) {
-          score += 1;
-        }
-      }
-      if (score > bestScore) {
-        bestScore = score;
-        bestOffset = audioStart - visibleStart;
-      }
-      if (score === windowSize) break;
-    }
-    if (bestScore === windowSize) break;
-  }
-
-  return bestScore >= minimumScore ? bestOffset : 0;
 }
 
 function audiobookAssetsForBook(book = {}) {
@@ -632,47 +497,6 @@ function rightsForBook(book = {}, userName = 'Reader') {
     };
   }
   return {};
-}
-
-function timestampIndexAt(timestamps = [], nowMs = 0) {
-  if (!timestamps.length) return -1;
-  let lo = 0;
-  let hi = timestamps.length - 1;
-  while (lo < hi) {
-    const mid = (lo + hi + 1) >> 1;
-    if (audioTimestampStartMs(timestamps[mid]) <= nowMs) lo = mid;
-    else hi = mid - 1;
-  }
-  return lo;
-}
-
-function timestampWordIndex(item = {}, fallbackIndex = 0) {
-  const raw = item.word_index ?? item.wordIndex ?? item.index ?? item.global_word_index;
-  const value = Number(raw);
-  return Number.isFinite(value) ? value : fallbackIndex;
-}
-
-function timestampArrayIndexForWord(timestamps = [], wordIndex = 0) {
-  if (!timestamps.length) return -1;
-  let lo = 0;
-  let hi = timestamps.length - 1;
-  while (lo < hi) {
-    const mid = (lo + hi) >> 1;
-    if (timestampWordIndex(timestamps[mid], mid) < wordIndex) lo = mid + 1;
-    else hi = mid;
-  }
-  return lo;
-}
-
-function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
-  const source = Array.isArray(raw) ? raw : (raw?.words || raw?.timestamps || raw?.items || []);
-  if (!Array.isArray(source) || !source.length) return { words: [], offset: 0 };
-  const offset = findTimestampWordOffset(source, html);
-  const words = source.map((item, index) => ({
-    ...normalizeAudioTimestamp(item),
-    _word_index: baseWord + index - offset,
-  }));
-  return { words, offset };
 }
 
 function splitParagraphNode(node, targetChars = 520) {
@@ -852,18 +676,6 @@ async function fetchReaderChapter({ bookId, chapterId, adminPreview = false, ver
   }
 }
 
-function prefetchAsset(url, { credentials = 'same-origin' } = {}) {
-  if (!url || readerAssetPrefetchCache.has(url)) return;
-  const promise = fetch(url, {
-    cache: 'force-cache',
-    credentials,
-    mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin',
-  })
-    .then((response) => (response.ok ? response : Promise.reject(new Error('asset prefetch failed'))))
-    .catch(() => null);
-  boundedCacheSet(readerAssetPrefetchCache, url, promise, 32);
-}
-
 function prefetchAudioMetadata(url) {
   const cacheKey = url ? `HEAD:${url}` : '';
   if (!url || readerAssetPrefetchCache.has(cacheKey)) return;
@@ -970,7 +782,8 @@ export default function Reader() {
   const [fontFamilyMode, setFontFamilyMode] = useState(initialReaderSettings.fontFamilyMode);
   const [focusMode, setFocusMode] = useState(initialReaderSettings.focusMode);
   const [reducedMotionMode, setReducedMotionMode] = useState(initialReaderSettings.reducedMotionMode);
-  const [highlightIntensity, setHighlightIntensity] = useState(initialReaderSettings.highlightIntensity);
+  // Retain the dormant stored preference without exposing narration highlighting.
+  const highlightIntensity = initialReaderSettings.highlightIntensity;
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -978,7 +791,6 @@ export default function Reader() {
 
   const [ttsActive, setTtsActive] = useState(false);
   const [ttsPaused, setTtsPaused] = useState(false);
-  const [ttsWordIndex, setTtsWordIndex] = useState(-1);
   const [ttsSpeed, setTtsSpeed] = useState(initialReaderSettings.ttsSpeed);
   const [showListeningPanel, setShowListeningPanel] = useState(
     () => new URLSearchParams(window.location.search).get('listen') === '1',
@@ -992,7 +804,6 @@ export default function Reader() {
   const [generatedAudioVolume, setGeneratedAudioVolume] = useState(1);
   const [generatedAudioMuted, setGeneratedAudioMuted] = useState(false);
   const [processedHtml, setProcessedHtml] = useState('');
-  const [ttsHtml, setTtsHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
   const [paginatedPages, setPaginatedPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -1018,15 +829,7 @@ export default function Reader() {
   const contentRef = useRef(null);
   const generatedAudioRef = useRef(null);
   const audioPlaybackStateRef = useRef('paused');
-  const generatedTimestampsRef = useRef([]);
-  const generatedAudioWordOffsetRef = useRef(0);
-  const generatedPageEndRef = useRef(null);
   const lastScrollY = useRef(0);
-  const wordsRef = useRef([]);
-  const wordMapRef = useRef(new Map());
-  const activeWordRef = useRef(null);
-  const highlightedWordIndexRef = useRef(-1);
-  const generatedHighlightRafRef = useRef(0);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const completionReportedRef = useRef('');
@@ -1062,19 +865,6 @@ export default function Reader() {
     robots: 'noindex, nofollow',
   });
 
-  const cacheReaderWords = useCallback(() => {
-    const words = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-    const wordMap = new Map();
-    words.forEach((word) => {
-      const index = Number(word.dataset.word);
-      if (Number.isFinite(index)) wordMap.set(index, word);
-    });
-    wordsRef.current = words;
-    wordMapRef.current = wordMap;
-    activeWordRef.current = null;
-    highlightedWordIndexRef.current = -1;
-  }, []);
-
   const stopTTS = useCallback(() => {
     const audio = generatedAudioRef.current;
     persistGeneratedAudioProgressRef.current({ force: true });
@@ -1087,18 +877,12 @@ export default function Reader() {
       audio.removeAttribute('src');
       audio.load();
     }
-    generatedPageEndRef.current = null;
     setGeneratedAudioSegmentId('');
     setGeneratedAudioCurrentTime(0);
     setGeneratedAudioDuration(0);
     setTtsActive(false);
     setTtsPaused(false);
     setGeneratedAudioActive(false);
-    setTtsWordIndex(-1);
-    setTtsHtml('');
-    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
-    activeWordRef.current = null;
-    highlightedWordIndexRef.current = -1;
   }, []);
 
   useEffect(() => {
@@ -1129,7 +913,6 @@ export default function Reader() {
     setFontFamilyMode(READER_SETTINGS_DEFAULTS.fontFamilyMode);
     setFocusMode(READER_SETTINGS_DEFAULTS.focusMode);
     setReducedMotionMode(READER_SETTINGS_DEFAULTS.reducedMotionMode);
-    setHighlightIntensity(READER_SETTINGS_DEFAULTS.highlightIntensity);
     setTtsSpeed(READER_SETTINGS_DEFAULTS.ttsSpeed);
   }, []);
 
@@ -1183,10 +966,6 @@ export default function Reader() {
   }, [showSettings]);
 
   useEffect(() => () => {
-    if (generatedHighlightRafRef.current) {
-      window.cancelAnimationFrame(generatedHighlightRafRef.current);
-      generatedHighlightRafRef.current = 0;
-    }
   }, []);
 
   const storeReadingPassLease = useCallback((value) => {
@@ -1556,7 +1335,6 @@ export default function Reader() {
         const safeHtml = sanitizeReaderHtml(loadedChapter.content);
         // Keep first render light. TTS word spans are injected only if narration starts.
         setProcessedHtml(safeHtml);
-        setTtsHtml('');
         setCurrentPage(0);
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
@@ -1649,7 +1427,6 @@ export default function Reader() {
             setChapter(null);
             setChapters([]);
             setProcessedHtml('');
-            setTtsHtml('');
             setTotalWords(0);
             setLockedState(null);
             setNotFound(true);
@@ -1942,16 +1719,7 @@ export default function Reader() {
   const isIndexPage = currentPageData?.type === 'index';
   const isReferencePage = currentPageData?.type === 'reference' || isIndexPage;
   const currentPageHtml = (isContentPage || isReferencePage) ? (currentPageData?.html || readerHtml) : '';
-  const displayedHtml = ttsHtml || currentPageHtml;
-  const pageWordOffsets = useMemo(() => {
-    let cursor = 0;
-    return paginatedPages.map((page) => {
-      const start = cursor;
-      if (page.type === 'content') cursor += countWordsInHtml(page.html || '');
-      return start;
-    });
-  }, [paginatedPages]);
-  const currentPageWordOffset = paginatedPages.length ? (pageWordOffsets[currentPage] || 0) : 0;
+  const displayedHtml = currentPageHtml;
   const effectiveReadProgress = readingPassMode && Number(readingPassManifest?.total_pages) > 0
     ? Math.round((canonicalPageIndex / Number(readingPassManifest.total_pages)) * 100)
     : paginatedPages.length > 1
@@ -1978,7 +1746,6 @@ export default function Reader() {
   }, [bookId, generatedAudioSlug, readingPassMode]);
   const generatedAudioReleaseState = useMemo(() => audiobookReleaseState(book || {}), [book]);
   const generatedAudioDisclosure = useMemo(() => audiobookNarrationDisclosure(book || {}), [book]);
-  const generatedHighlightSyncEnabled = generatedAudioReleaseState.highlightSyncEnabled === true;
   const approvedGeneratedAudioUrl = audioAssetUrl(book, '.mp3');
   const approvedGeneratedTimestampsUrl = audioAssetUrl(book, '_timestamps.json');
   const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book) : '';
@@ -1986,7 +1753,6 @@ export default function Reader() {
     () => selectAudioTrack({
       manifest: generatedAudioManifest,
       chapterId: activeChapterId || chapterId || chapter?.id,
-      currentWordOffset: currentPageWordOffset,
       preferredSegmentId: generatedAudioSegmentId,
       approvedAudioUrl: approvedGeneratedAudioUrl,
       approvedTimestampsUrl: approvedGeneratedTimestampsUrl,
@@ -1995,7 +1761,6 @@ export default function Reader() {
       activeChapterId,
       chapter,
       chapterId,
-      currentPageWordOffset,
       generatedAudioManifest,
       generatedAudioSegmentId,
       approvedGeneratedAudioUrl,
@@ -2003,7 +1768,6 @@ export default function Reader() {
     ],
   );
   const generatedAudioUrl = selectedGeneratedAudioTrack.audioUrl;
-  const generatedTimestampsUrl = selectedGeneratedAudioTrack.timestampsUrl;
   const generatedAudioMetricTags = useCallback((segmentId = selectedGeneratedAudioTrack.segmentId) => ({
     package_version: selectedGeneratedAudioTrack.packageVersion || '',
     segment_id: segmentId || '',
@@ -2132,7 +1896,6 @@ export default function Reader() {
     prefetchedAudioSegmentsRef.current.add(prefetchKey);
     // HEAD warms only endpoint/object metadata; the MP3 response body remains untouched.
     prefetchAudioMetadata(selectedGeneratedAudioTrack.nextAudioUrl);
-    prefetchAsset(selectedGeneratedAudioTrack.nextTimestampsUrl, { credentials: 'include' });
   }, [readingPassMode, selectedGeneratedAudioTrack]);
 
   useEffect(() => {
@@ -2270,7 +2033,6 @@ export default function Reader() {
     setGeneratedAudioActive(true);
     setTtsActive(true);
     setTtsPaused(false);
-    setTtsWordIndex(-1);
   }, [
     activeChapterId,
     bookId,
@@ -2284,62 +2046,13 @@ export default function Reader() {
   ]);
 
   useEffect(() => {
-    let cancelled = false;
-    generatedTimestampsRef.current = [];
-    generatedAudioWordOffsetRef.current = 0;
-    setGeneratedAudioAvailable(false);
+    setGeneratedAudioAvailable(Boolean(generatedAudioUrl && !lockedState));
     if (!resumeAfterSegmentChangeRef.current) {
       setGeneratedAudioActive(false);
       setTtsActive(false);
       setTtsPaused(false);
     }
-    if (!generatedAudioUrl || lockedState) return undefined;
-    if (!generatedHighlightSyncEnabled) {
-      // Approved MP3-only/paragraph-sync editions remain playable without
-      // pretending paragraph cues are token-highlight timestamps.
-      setGeneratedAudioAvailable(true);
-      return undefined;
-    }
-    if (!generatedTimestampsUrl || !readerHtml) return undefined;
-
-    fetch(generatedTimestampsUrl, { cache: readingPassMode ? 'no-store' : 'force-cache', credentials: 'include' })
-      .then((response) => {
-        if (!response.ok) throw new Error('Generated audio timestamps unavailable');
-        return response.json();
-      })
-      .then((timestamps) => {
-        if (cancelled) return;
-        const normalized = normalizeGeneratedTimestamps(timestamps, readerHtml, selectedGeneratedAudioTrack.startWord || 0);
-        if (normalized.words.length > 0) {
-          generatedTimestampsRef.current = normalized.words;
-          generatedAudioWordOffsetRef.current = normalized.offset;
-          setGeneratedAudioAvailable(true);
-          sendReaderMetric('reader_audio_timestamps_loaded', {
-            session_id: sessionId,
-            book_slug: bookId,
-            chapter_id: activeChapterId || chapterId || chapter?.id,
-            metrics: {
-              timestamp_count: normalized.words.length,
-              chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
-            },
-            tags: {
-              audio_version: selectedGeneratedAudioTrack.version || '',
-            },
-          });
-        }
-      })
-      .catch(() => {
-        if (!cancelled) {
-          generatedTimestampsRef.current = [];
-          generatedAudioWordOffsetRef.current = 0;
-          setGeneratedAudioAvailable(false);
-        }
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioUrl, generatedHighlightSyncEnabled, generatedTimestampsUrl, lockedState, readerHtml, readingPassMode, selectedGeneratedAudioTrack, sessionId]);
+  }, [generatedAudioUrl, lockedState]);
 
   useEffect(() => {
     if (!resumeAfterSegmentChangeRef.current || !generatedAudioAvailable || !generatedAudioUrl || lockedState) return;
@@ -2353,16 +2066,9 @@ export default function Reader() {
   }, [generatedAudioAvailable, generatedAudioUrl, lockedState, ttsSpeed]);
 
   useEffect(() => {
-    setTtsHtml('');
     setTotalWords(countWordsInHtml(currentPageHtml));
-    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
-    activeWordRef.current = null;
-    highlightedWordIndexRef.current = -1;
   }, [currentPageHtml]);
 
-  useEffect(() => {
-    cacheReaderWords();
-  }, [cacheReaderWords, displayedHtml]);
 
   useEffect(() => {
     const el = scrollContainerRef.current;
@@ -2533,23 +2239,6 @@ export default function Reader() {
     }
   };
 
-  const highlightGeneratedWord = useCallback((globalIndex) => {
-    if (highlightedWordIndexRef.current === globalIndex) return;
-    let current = wordMapRef.current.get(globalIndex);
-    if ((!current || !current.isConnected) && contentRef.current) {
-      cacheReaderWords();
-      current = wordMapRef.current.get(globalIndex);
-    }
-    if (!current) return;
-
-    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
-    current.classList.add('active');
-    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    activeWordRef.current = current;
-    highlightedWordIndexRef.current = globalIndex;
-    setTtsWordIndex(globalIndex);
-  }, [cacheReaderWords]);
-
   const recordGeneratedAudioMetric = useCallback((event, {
     timings = {},
     metrics = {},
@@ -2585,70 +2274,13 @@ export default function Reader() {
 
   const startGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
-    const timestamps = generatedTimestampsRef.current || [];
-    const pageHtml = currentPageHtml || readerHtml;
-    if (!isContentPage || !audio || !generatedAudioAvailable || !pageHtml) return false;
-
+    if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return false;
     audioIntentStartedAtRef.current = readerNowMs();
-    if (!generatedHighlightSyncEnabled) {
-      generatedPageEndRef.current = null;
-      setTtsHtml('');
-      setGeneratedAudioActive(true);
-      setTtsActive(true);
-      setTtsPaused(false);
-      primeGeneratedAudio();
-      requestAudiobookPlayback(audio).catch(() => {
-        audioIntentStartedAtRef.current = 0;
-        setGeneratedAudioActive(false);
-        setTtsActive(false);
-        setTtsPaused(false);
-        toast.error('Generated audiobook could not start in this browser.');
-      });
-      return true;
-    }
-    if (!timestamps.length) return false;
-    const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
-    const firstWord = currentPageWordOffset;
-    const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
-    const firstAudioWord = Math.max(0, timestampArrayIndexForWord(timestamps, firstWord));
-    const firstTimestamp = timestamps[firstAudioWord];
-    if (!firstTimestamp) return false;
-
-    const restoringSelectedSegment = pendingAudioOffsetSegmentRef.current === selectedGeneratedAudioTrack.segmentId;
-    if (!restoringSelectedSegment) {
-      pendingAudioOffsetRef.current = audioTimestampStartMs(firstTimestamp) / 1000;
-      pendingAudioOffsetSegmentRef.current = selectedGeneratedAudioTrack.segmentId;
-    }
-    generatedPageEndRef.current = Math.max(0, lastWord);
-    const tickGeneratedHighlight = () => {
-      const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
-      const wordIndex = audioIndex >= 0 ? timestampWordIndex(timestamps[audioIndex], audioIndex) : -1;
-      const pageEnd = generatedPageEndRef.current;
-      if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
-        audio.pause();
-        generatedPageEndRef.current = null;
-        setGeneratedAudioActive(false);
-        setTtsActive(false);
-        setTtsPaused(false);
-        return false;
-      }
-      if (wordIndex >= currentPageWordOffset) {
-        highlightGeneratedWord(wordIndex);
-        return true;
-      }
-      return false;
-    };
-    setTtsHtml(wrapped.html);
-    setTotalWords(wrapped.totalWords);
     setGeneratedAudioActive(true);
     setTtsActive(true);
     setTtsPaused(false);
-
     primeGeneratedAudio();
     applyPendingAudioOffset();
-    // This must remain in the click handler's synchronous call stack. The
-    // visual word wrapping can wait for React/RAF, but the browser's playback
-    // permission cannot.
     requestAudiobookPlayback(audio).catch(() => {
       audioIntentStartedAtRef.current = 0;
       setGeneratedAudioActive(false);
@@ -2656,16 +2288,8 @@ export default function Reader() {
       setTtsPaused(false);
       toast.error('Generated audiobook could not start in this browser.');
     });
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-        applyPendingAudioOffset();
-        tickGeneratedHighlight();
-      });
-    });
     return true;
-  }, [applyPendingAudioOffset, currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml, selectedGeneratedAudioTrack.segmentId]);
+  }, [applyPendingAudioOffset, generatedAudioAvailable, generatedAudioUrl, primeGeneratedAudio]);
 
   const handleGeneratedAudioMetadata = useCallback(() => {
     const loadedAudio = generatedAudioRef.current;
@@ -2845,30 +2469,6 @@ export default function Reader() {
     setTtsPaused(false);
   };
 
-  const syncGeneratedAudioHighlight = useCallback(() => {
-    if (!generatedHighlightSyncEnabled) return false;
-    const audio = generatedAudioRef.current;
-    const timestamps = generatedTimestampsRef.current || [];
-    if (!audio || !timestamps.length) return false;
-
-    const index = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
-    const wordIndex = index >= 0 ? timestampWordIndex(timestamps[index], index) : -1;
-    const pageEnd = generatedPageEndRef.current;
-    if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
-      audio.pause();
-      generatedPageEndRef.current = null;
-      setGeneratedAudioActive(false);
-      setTtsActive(false);
-      setTtsPaused(false);
-      return false;
-    }
-    if (wordIndex >= currentPageWordOffset) {
-      highlightGeneratedWord(wordIndex);
-      return true;
-    }
-    return false;
-  }, [currentPageWordOffset, generatedHighlightSyncEnabled, highlightGeneratedWord]);
-
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (audio) {
@@ -2878,25 +2478,11 @@ export default function Reader() {
       prefetchNextGeneratedAudioMetadata(audio);
       flushReadingPassAudioPosition();
     }
-    if (ttsPaused) return;
-    if (generatedHighlightRafRef.current) return;
-    generatedHighlightRafRef.current = window.requestAnimationFrame(() => {
-      generatedHighlightRafRef.current = 0;
-      syncGeneratedAudioHighlight();
-    });
-  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata, syncGeneratedAudioHighlight, ttsPaused]);
+  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata]);
 
   const handleGeneratedAudioEnded = useCallback(() => {
-    if (generatedHighlightRafRef.current) {
-      window.cancelAnimationFrame(generatedHighlightRafRef.current);
-      generatedHighlightRafRef.current = 0;
-    }
-    generatedPageEndRef.current = null;
     setGeneratedAudioCurrentTime(0);
     setGeneratedAudioDuration(0);
-    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
-    activeWordRef.current = null;
-    highlightedWordIndexRef.current = -1;
     if (readingPassMode && readingPassAudioPhase === 'preview') {
       setReadingPassAudioPhase('idle');
       setGeneratedAudioActive(false);
@@ -2940,7 +2526,6 @@ export default function Reader() {
       setGeneratedAudioActive(true);
       setTtsActive(true);
       setTtsPaused(false);
-      setTtsWordIndex(-1);
       return;
     }
     void syncReadingPassAudioState('ended');
@@ -2949,7 +2534,6 @@ export default function Reader() {
     setGeneratedAudioActive(false);
     setTtsActive(false);
     setTtsPaused(false);
-    setTtsWordIndex(-1);
   }, [
     adminPreview,
     bookId,
@@ -2965,17 +2549,6 @@ export default function Reader() {
     selectedGeneratedAudioTrack.segmentId,
     syncReadingPassAudioState,
   ]);
-
-  useEffect(() => {
-    if (!generatedAudioActive || ttsPaused) return undefined;
-    let timerId = 0;
-    const tick = () => {
-      syncGeneratedAudioHighlight();
-      timerId = window.setTimeout(tick, 140);
-    };
-    tick();
-    return () => window.clearTimeout(timerId);
-  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleVoiceToggle = () => {
     if (!ttsActive) startTTS();
@@ -3443,7 +3016,6 @@ export default function Reader() {
     `premium-reader--${theme}`,
     focusMode ? 'premium-reader--focus' : '',
     reducedMotionMode ? 'premium-reader--reduced-motion' : '',
-    `premium-reader--highlight-${highlightIntensity}`,
   ].filter(Boolean).join(' ');
   const useReaderDropCap = isContentPage
     && currentPageData?.contentIndex === 0
@@ -3464,10 +3036,6 @@ export default function Reader() {
       ? [chapterPositionLabel, `Page ${currentPage + 1} of ${paginatedPages.length}`].filter(Boolean).join(' · ')
       : (chapterPositionLabel || `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`);
   const listeningCoverUrl = readerListeningCoverUrl(book);
-  const firstNarratedPageIndex = paginatedPages.findIndex((page) => page.type === 'content');
-  const listeningSyncLabel = generatedHighlightSyncEnabled
-    ? 'Paragraph / stanza sync'
-    : 'Section-following narration';
 
   return (
     <div
@@ -3559,7 +3127,6 @@ export default function Reader() {
           playbackRate={ttsSpeed}
           volume={generatedAudioVolume}
           muted={generatedAudioMuted}
-          syncLabel={listeningSyncLabel}
           disclosure={generatedAudioDisclosure}
           onClose={closeListeningPanel}
           onPlayPause={handleVoiceToggle}
@@ -3572,10 +3139,6 @@ export default function Reader() {
             const intendedReaderPath = readerRouteForBook(bookId);
             if (window.location.pathname !== intendedReaderPath) {
               navigate(intendedReaderPath);
-              return;
-            }
-            if (!isContentPage && firstNarratedPageIndex >= 0) {
-              goToPage(firstNarratedPageIndex, { behavior: 'auto' });
               return;
             }
             closeListeningPanel();
@@ -3810,7 +3373,7 @@ export default function Reader() {
           {narrationDisabledForBook ? (
             <div className="reader-audio-unavailable" aria-label="Audio unavailable for this reading edition">
               <strong>Reading edition available.</strong>
-              <span>Audio will appear only after narration, sync, and browser gates pass.</span>
+              <span>Audio will appear only after narration, rights, and playback gates pass.</span>
             </div>
           ) : (
             <div className="reader-audio-control">
@@ -3862,16 +3425,13 @@ export default function Reader() {
                 {audioDisabledForPage
                   ? 'Audio starts on reading pages'
                   : generatedAudioAvailable
-                  ? (ttsActive && !ttsPaused ? 'Section-following narration' : 'Section audio ready')
+                  ? (ttsActive && !ttsPaused ? 'Audiobook playing' : 'Ready to play')
                   : (ttsActive && !ttsPaused ? 'Narrating' : 'Approved audio pending for this page')}
               </span>
                   {generatedAudioDisclosure && (
                     <span className="reader-audio-control__disclosure" data-testid="reader-audio-disclosure">
                       {generatedAudioDisclosure}
                     </span>
-                  )}
-                  {generatedAudioAvailable && generatedHighlightSyncEnabled && (
-                    <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
                   )}
             </div>
           )}
@@ -4012,7 +3572,7 @@ export default function Reader() {
           </div>
 
           <p className="sr-only" aria-live="polite">
-            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}. Highlight intensity {highlightIntensity}.
+            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}.
           </p>
 
           <section className="reader-setting-section" aria-labelledby="reader-tone-section-label">
@@ -4095,20 +3655,9 @@ export default function Reader() {
             </div>
           </section>
 
-          <section className="reader-setting-section" aria-labelledby="reader-highlight-section-label">
-            <h3 id="reader-highlight-section-label">Highlights</h3>
-            <div className="reader-setting-group">
-              <span className="reader-setting-label" id="reader-highlight-label">Highlight intensity</span>
-              <div className="reader-segmented-control" role="group" aria-labelledby="reader-highlight-label">
-                {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
-                  <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value} aria-label={`Set highlight intensity to ${item.label}`}>
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {!narrationDisabledForBook && (
+          {!narrationDisabledForBook && (
+            <section className="reader-setting-section" aria-labelledby="reader-playback-section-label">
+              <h3 id="reader-playback-section-label">Playback</h3>
               <div className="reader-setting-group">
                 <label className="reader-setting-label" htmlFor="reader-narration-speed">Narration speed: {ttsSpeed}x</label>
                 <input
@@ -4122,8 +3671,8 @@ export default function Reader() {
                   onChange={(event) => changeNarrationSpeed(parseFloat(event.target.value))}
                 />
               </div>
-            )}
-          </section>
+            </section>
+          )}
 
           <button type="button" className="reader-settings-reset" onClick={resetReaderSettings} aria-label="Reset reading settings to comfort defaults">
             Reset comfort defaults

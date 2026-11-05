@@ -24,3 +24,6 @@ read-along/highlighting/text navigation and stale candidate binding fail closed.
 Warning-only findings do not invent a repair/review gate; confirmed material defects
 and absent fidelity/rights/playback/accounting acceptance still block. Reusing an
 accepted exact-source report does not rewrite the raw recognizer output or scores.
+
+
+Read-along, narration-linked highlighting and text-linked audio navigation are permanently retired from supported current and legacy customer paths. Do not offer, advertise or re-enable them from stored flags. Ordinary Reader page/chapter navigation, text selection/manual annotations, and native audio chapter/seek controls remain. Reuse historical measured evidence only in its actual scope; never delete it or relabel it PASS/N/A. Record candidate-bound NOT_APPLICABLE for a verified nonconsumer without fabricating cues; caption/cue-consuming production remains strict where actually selected. This source policy grants no runtime retry, allocation or release authority.
