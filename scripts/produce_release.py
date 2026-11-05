@@ -38,6 +38,12 @@ except ImportError:  # package-style test imports
     )
 
 
+try:
+    from release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable
+except ImportError:
+    from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable
+
+
 AUTOMATED_CHECKS = (
     "rights",
     "manuscript",
@@ -408,7 +414,14 @@ def evaluate(
 
     for name in AUTOMATED_CHECKS[4:]:
         supplied = (manifest.get("automated_checks") or {}).get(name) or {}
-        automated[name] = check_declared_automated_pass(root, name, supplied)
+        if name == "synchronization" and supplied.get("status") == "NOT_APPLICABLE":
+            try:
+                validate_sync_not_applicable(manifest, supplied)
+                automated[name] = {**supplied, "detail": "Verified standalone audio consumer; text sync is not used. No sync claim."}
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                automated[name] = block_result(str(exc))
+        else:
+            automated[name] = check_declared_automated_pass(root, name, supplied)
 
     reader_gate = check_reader_preview_approval(
         reader_approval,
@@ -422,7 +435,8 @@ def evaluate(
         audio=audio,
         sample_binding=sample_binding,
     )
-    automated_pass = all(item["status"] == "PASS" for item in automated.values())
+    quality_findings = classify_quality_findings(manifest)
+    automated_pass = all(automated_check_accepted(manifest, name, item) for name, item in automated.items()) and not quality_findings["blockers"]
     human_pass = reader_gate["status"] == "PASS" and audio_gate["status"] == "PASS"
     return {
         "slug": slug,
@@ -438,6 +452,7 @@ def evaluate(
             **sample_binding,
         },
         "automated_checks": automated,
+        "quality_findings": quality_findings,
         "release_status": (
             "READY_FOR_GO_LIVE" if automated_pass and human_pass else "BLOCKED"
         ),
@@ -547,7 +562,7 @@ def self_heal(
             (
                 name
                 for name in REPAIRABLE_AUTOMATED_CHECKS
-                if report["automated_checks"].get(name, {}).get("status") != "PASS"
+                if not automated_check_accepted(manifest, name, report["automated_checks"].get(name, {}))
             ),
             None,
         )

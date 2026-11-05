@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import re
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,6 +22,10 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.release_acceptance import validate_sync_not_applicable, classify_quality_findings
+
 INTEL_DIR = ROOT / "internal" / "earnalism_intelligence"
 POLICY_PATH = INTEL_DIR / "bengali_audiobook_campaign_policy.md"
 STATE_PATH = INTEL_DIR / "bengali_audiobook_campaign_state.json"
@@ -223,10 +229,24 @@ def fatal_flags_in(evidence: dict[str, Any]) -> list[str]:
     return sorted(set(found))
 
 
+def first_present(value: dict[str, Any], *keys: str) -> Any:
+    return next((value[key] for key in keys if key in value), None)
+
+
+def finite_score(value: Any, maximum: float = 10.0) -> float:
+    if isinstance(value, bool):
+        return -1.0
+    try:
+        number = float(value or 0.0)
+    except (TypeError, ValueError):
+        return -1.0
+    return number if math.isfinite(number) and 0.0 <= number <= maximum else -1.0
+
+
 def representative_passes(evidence: dict[str, Any], *, goal_score: float = 8.9) -> tuple[bool, list[str]]:
     blockers: list[str] = []
-    score = float(evidence.get("representative_score") or evidence.get("overall_listening_score") or 0.0)
-    confidence = float(evidence.get("confidence") or evidence.get("confidence_score") or 0.0)
+    score = finite_score(first_present(evidence, "representative_score", "overall_listening_score"))
+    confidence = finite_score(first_present(evidence, "confidence", "confidence_score"), 1.0)
     flags = fatal_flags_in(evidence)
     if score < goal_score:
         blockers.append(f"representative_score {score} < {goal_score}")
@@ -235,16 +255,16 @@ def representative_passes(evidence: dict[str, Any], *, goal_score: float = 8.9) 
     if flags:
         blockers.append("fatal_flags: " + ",".join(flags))
     for passage in evidence.get("passage_scores") or []:
-        passage_score = float(passage.get("overall_listening_score") or 0.0)
-        if passage_score and passage_score < 8.9:
+        passage_score = finite_score(passage.get("overall_listening_score"))
+        if passage_score < 8.9:
             blockers.append(f"passage {passage.get('passage_id') or ''} below 8.9: {passage_score}")
     return not blockers, blockers
 
 
 def full_audio_publishable(evidence: dict[str, Any], *, goal_score: float = 8.9) -> tuple[bool, list[str]]:
     blockers: list[str] = []
-    score = float(evidence.get("full_pilot_listening_score") or evidence.get("listening_score") or 0.0)
-    confidence = float(evidence.get("confidence") or evidence.get("confidence_score") or 0.0)
+    score = finite_score(first_present(evidence, "full_pilot_listening_score", "listening_score"))
+    confidence = finite_score(first_present(evidence, "confidence", "confidence_score"), 1.0)
     if score < goal_score:
         blockers.append(f"full_book_listening_score {score} < {goal_score}")
     if confidence < 0.9:
@@ -252,16 +272,24 @@ def full_audio_publishable(evidence: dict[str, Any], *, goal_score: float = 8.9)
     flags = fatal_flags_in(evidence)
     if flags:
         blockers.append("fatal_flags: " + ",".join(flags))
-    if float(evidence.get("asr_score") or 0.0) < 9.7:
+    if finite_score(evidence.get("asr_score") or 0.0) < 9.7:
         blockers.append("asr_manuscript_match < 9.7")
-    if evidence.get("auto_estimated_sync") is True:
+    sync_na = evidence.get("text_sync_status") == "NOT_APPLICABLE"
+    if sync_na:
+        try:
+            selected = evidence.get("release_manifest") or {}
+            validate_sync_not_applicable(selected, (selected.get("automated_checks") or {}).get("synchronization") or {})
+        except (ValueError, OSError, KeyError, TypeError) as exc:
+            blockers.append(f"text sync applicability: {exc}")
+    if not sync_na and evidence.get("auto_estimated_sync") is True:
         blockers.append("auto_estimated_sync=true")
     sync_tier = str(evidence.get("sync_tier") or "").lower()
-    if sync_tier and "estimated" in sync_tier:
+    if not sync_na and sync_tier and "estimated" in sync_tier:
         blockers.append("sync_tier is estimated")
     for gate in ["upload_checksum_status", "metadata_status", "browser_status"]:
         if str(evidence.get(gate) or "").upper() not in {"PASS", "PASSED"}:
             blockers.append(f"{gate} not PASS")
+    blockers.extend(classify_quality_findings(evidence)["blockers"])
     if evidence.get("blocker_list"):
         blockers.append("blocker_list not empty")
     return not blockers, blockers

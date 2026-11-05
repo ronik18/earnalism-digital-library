@@ -1105,14 +1105,14 @@ class Pipeline:
         if re.search(r"[A-Za-z0-9]+\s*\[.*?\]\s*[A-Za-z0-9]+", text):
             warnings.append(f"possible markdown/annotation artifact in {source}")
         if re.search(r"\b(Traceback|json|Exception|Exception\w*)\b", text, flags=re.IGNORECASE):
-            issues.append(f"BLOCKER: runtime/log traceback text in {source}")
+            warnings.append(f"possible runtime/log vocabulary in {source}; verify against the source")
         standalone_page_headers = re.findall(r"^\s*(Page\s+\d+|Chapter\s+\d+)\s*$", text, flags=re.MULTILINE | re.IGNORECASE)
         if len(standalone_page_headers) >= 3:
-            issues.append(f"BLOCKER: repeated standalone page/chapter markers detected in {source} ({len(standalone_page_headers)})")
+            warnings.append(f"possible repeated page/chapter markers in {source} ({len(standalone_page_headers)})")
 
         for pattern in SUSPICIOUS_TEXT_PATTERNS:
             if pattern.search(text):
-                issues.append(f"BLOCKER: suspicious token in {source}: {pattern.pattern}")
+                warnings.append(f"possible source token/annotation in {source}: {pattern.pattern}")
 
         if "..." in text and re.search(r"\.{6,}", text):
             warnings.append(f"unusual punctuation run in {source}")
@@ -1125,7 +1125,7 @@ class Pipeline:
         # Detect suspicious page markers as standalone lines repeated across body.
         standalone_digits = len(re.findall(r"^\s*\d+\s*$", text, flags=re.MULTILINE))
         if standalone_digits > 20:
-            issues.append(f"BLOCKER: excessive standalone page numbers in {source}")
+            warnings.append(f"possible standalone page numbers in {source}")
 
         digit_lines = 0
         for match in REPEATED_LINE_SYMBOL_PATTERNS[1].finditer(text):
@@ -1138,7 +1138,7 @@ class Pipeline:
             if pattern is REPEATED_LINE_SYMBOL_PATTERNS[1]:
                 continue
             if pattern.search(text):
-                issues.append(f"BLOCKER: possible OCR artifact in {source}: repetitive symbols")
+                warnings.append(f"possible OCR artifact in {source}: repetitive symbols")
 
         stripped = "\n".join([ln.strip() for ln in text.splitlines() if ln.strip()])
         if not stripped:

@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import math
 import os
 import re
 import shutil
@@ -118,7 +119,8 @@ def _number(value: Any) -> float | None:
     if isinstance(value, bool) or value in (None, ""):
         return None
     try:
-        return float(value)
+        number = float(value)
+        return number if math.isfinite(number) else None
     except (TypeError, ValueError):
         return None
 
@@ -439,33 +441,80 @@ def _normalize_release_qa(
             ),
         )
     )
-    if str(diagnosis.get("asr_release_status") or "").upper() == "SUPPORTING_DIAGNOSTIC_WEAK":
-        blockers.append("diagnostic/projection-only ASR cannot satisfy the release gate")
-    if raw_asr_score is None or raw_asr_score < 9.7:
-        blockers.append(f"raw audio-derived ASR score must be >= 9.7, got {raw_asr_score}")
-    first_words = diagnosis.get("first_words_match")
-    last_words = diagnosis.get("last_words_match")
+    # Raw recognizer output remains immutable. An existing, independently accepted
+    # full-title fidelity adjudication may resolve its uncertainty; a projection,
+    # caller score, isolated sample or warning alone cannot manufacture acceptance.
+    if diagnosis.get("confirmed_material_defects") or qa.get("confirmed_material_defects"):
+        blockers.append("confirmed material content defects remain unresolved")
+    fidelity = diagnosis
+    fidelity_reference = None
+    adjudication_ref = qa.get("accepted_fidelity_evidence")
+    if adjudication_ref:
+        try:
+            adjudication_path, accepted = _read_reference(
+                _mapping(adjudication_ref).get("path"), label="accepted full-title fidelity evidence",
+                evidence_dir=evidence_dir, source_root=source_root,
+            )
+            provenance_ref = _mapping(accepted.get("acceptance_provenance"))
+            provenance_path, provenance = _read_reference(
+                provenance_ref.get("path"), label="existing accepted fidelity decision provenance",
+                evidence_dir=evidence_dir, source_root=source_root,
+            )
+            expected_source = _sha256(timestamps.get("source_text_hash") or timestamps.get("manuscript_sha256"))
+            if not (
+                _sha256(_mapping(adjudication_ref).get("sha256")) == packet_builder.sha256_file(adjudication_path)
+                and _sha256(provenance_ref.get("sha256")) == packet_builder.sha256_file(provenance_path)
+                and provenance.get("source") in {"DIRECT_USER_QUESTION_REPLY", "QUALIFIED_QA_REVIEW"}
+                and provenance.get("decision") == "ACCEPTED"
+                and provenance.get("scope") == "FULL_TITLE"
+                and isinstance(provenance.get("decision_reference"), str) and bool(provenance["decision_reference"].strip())
+                and provenance.get("slug") == slug
+                and provenance.get("audio_sha256") == upload_values.get("audio_sha256")
+                and provenance.get("manuscript_sha256") == expected_source
+                and accepted.get("schema") == "earnalism.accepted_audio_fidelity.v1"
+                and accepted.get("status") == "ACCEPTED"
+                and accepted.get("acceptance_basis") in {"OWNER_ACCEPTED_EXACT_SOURCE_ADJUDICATION", "QUALIFIED_NORMALIZED_ASR"}
+                and accepted.get("scope") == "FULL_TITLE"
+                and accepted.get("slug") == slug
+                and accepted.get("audio_sha256") == upload_values.get("audio_sha256")
+                and expected_source and accepted.get("manuscript_sha256") == expected_source
+                and accepted.get("raw_asr_evidence_sha256") == packet_builder.sha256_file(diagnosis_path)
+                and accepted.get("confirmed_material_defects") == []
+            ):
+                raise NormalizationBlocked(["accepted fidelity evidence is not bound to this full source/audio/raw ASR"])
+            fidelity = accepted
+            fidelity_reference = {"path": str(adjudication_path), "sha256": packet_builder.sha256_file(adjudication_path),
+                                  "acceptance_provenance_sha256": packet_builder.sha256_file(provenance_path)}
+        except (NormalizationBlocked, packet_builder.ReleasePacketBlocked) as exc:
+            blockers.extend(getattr(exc, "blockers", (str(exc),)))
+    effective_asr_score = _number(fidelity.get("score")) if fidelity_reference else raw_asr_score
+    if str(diagnosis.get("asr_release_status") or "").upper() == "SUPPORTING_DIAGNOSTIC_WEAK" and not fidelity_reference:
+        blockers.append("mandatory fidelity acceptance is missing; a weak diagnostic alone is not a confirmed audio defect")
+    if effective_asr_score is None or not 9.7 <= effective_asr_score <= 10.0:
+        blockers.append(f"accepted audio/source fidelity score must be in [9.7, 10], got {effective_asr_score}")
+    first_words = fidelity.get("first_words_match")
+    last_words = fidelity.get("last_words_match")
     if first_words is not True or last_words is not True:
         blockers.append("raw ASR diagnosis must explicitly pass first and last words")
-    if diagnosis.get("frontmatter_absent") is not True:
+    if fidelity.get("frontmatter_absent") is not True:
         blockers.append("raw ASR diagnosis must explicitly confirm frontmatter_absent=true")
 
     scores = _mapping(qa.get("scores"))
-    coverage = _number(diagnosis.get("coverage"))
-    token_order = _number(diagnosis.get("token_order_similarity"))
+    coverage = _number(fidelity.get("coverage"))
+    token_order = _number(fidelity.get("token_order_similarity"))
     truncation_score = _number(scores.get("truncation_score"))
     duplicate_score = _number(scores.get("duplicate_segment_score"))
-    no_missing = diagnosis.get("no_missing_content") is True or bool(
+    no_missing = fidelity.get("no_missing_content") is True or bool(
         coverage is not None
         and coverage >= CONTENT_EXACTNESS_MIN
         and truncation_score is not None
         and truncation_score >= CONTENT_SCORE_PERFECT - CONTENT_SCORE_TOLERANCE
     )
-    no_duplicate = diagnosis.get("no_duplicate_content") is True or bool(
+    no_duplicate = fidelity.get("no_duplicate_content") is True or bool(
         duplicate_score is not None
         and duplicate_score >= CONTENT_SCORE_PERFECT - CONTENT_SCORE_TOLERANCE
     )
-    no_reordered = diagnosis.get("no_reordered_content") is True or bool(
+    no_reordered = fidelity.get("no_reordered_content") is True or bool(
         token_order is not None and token_order >= CONTENT_EXACTNESS_MIN
     )
     if not no_missing:
@@ -622,7 +671,10 @@ def _normalize_release_qa(
         "source_sha256": manuscript_hash,
         "audio_size_bytes": audio_size,
         "audio_duration_seconds": duration,
-        "asr_source_score": raw_asr_score,
+        "asr_source_score": effective_asr_score,
+        "raw_asr_score": raw_asr_score,
+        "accepted_fidelity_reference": fidelity_reference,
+        "uncertainty_warnings": qa.get("uncertainty_warnings", []),
         "first_words_match": True,
         "last_words_match": True,
         "owner_listening_gate": {
