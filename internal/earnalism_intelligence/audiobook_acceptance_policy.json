@@ -216,5 +216,16 @@
     "reuse": "Existing accepted exact-source/audio/span adjudication and qualified normalized evidence may resolve uncertainty within actual scope; retain raw scores and provenance.",
     "limits": "No classifier guarantees perfect certainty. Missing required fidelity/listening/rights/playback/accounting acceptance and confirmed material defects still block. Do not invent PASS, ratings or approvals.",
     "sync": "Use explicit NOT_APPLICABLE only under verified selected-consumer/source evidence; no text-sync claim or enabled sync feature. All other necessary gates remain."
-  }
+  },
+  "retired_customer_features": [
+    "read_along",
+    "narration_linked_highlighting",
+    "text_linked_audio_navigation"
+  ],
+  "retirement_preserves": [
+    "ordinary Reader navigation and manual annotations",
+    "native media seek/chapter clocks",
+    "historical immutable evidence",
+    "fidelity/rights/playback/accounting gates"
+  ]
 }

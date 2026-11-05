@@ -1,20 +1,25 @@
 {
   "schema": "earnalism.reviewed_text_sync_consumer.v1",
   "consumer": "listener_v2_audio_only.v1",
-  "scope": "Standalone public /listener/:slug only. Legacy/admin Reader word-position selection is excluded. Duration, chapter/segment navigation and accounting still apply.",
+  "scope": "Standalone public /listener/:slug. Read-along, narration-linked highlighting and text-linked audio navigation are permanently retired across supported customer paths, including the legacy Reader. Duration, chapter/segment navigation, manual Reader selection/annotations and accounting remain.",
   "sources": {
     "frontend/src/App.js": "dfbe8bc37376a637347ade885a2f3631b2c416b56ffa2a70132b9bb8cbcb3842",
     "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "3cdeb90bbf8694d9d45fab0f5abf80e1b5c903754f740b0298450d1104502c6c",
-    "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "d4e38c487de6892ff5d4aef8b6c598ff919f1d3b9450a0725f803990df8dce7a",
-    "frontend/src/lib/audioPackageManifest.js": "3e9319fca271180c31556721d935f792ea39b8a80d9cfc3aad93fe367e0bc1b1",
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "1a3a46f4cb240b720a4fbd41a3d7ab13c7876337d66f7a064663369ffc5db0a6",
+    "frontend/src/lib/audioPackageManifest.js": "34c0a1af61d5980569e06be2da6ecf4e934030184189d5e4c1577fef3a55df22",
     "frontend/src/lib/audiobookPlayback.js": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
     "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "a7dd67bf4224901dad261e31e872936aef70c6d44b6aa0612775e7056e4f5fc6",
-    "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": "4374425a3e94105ee9381c8a593282d47c312824399351ab0c9ae461fbeb40e1"
+    "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": "4374425a3e94105ee9381c8a593282d47c312824399351ab0c9ae461fbeb40e1",
+    "frontend/src/pages/Reader.jsx": "2db51cc971972ceaed062ddc306b6a87cf14df11ce3b1d39a9e4cda2997b33c9",
+    "frontend/src/lib/audioReleaseSafety.js": "c5fadd8f6fb3a36800b7b5a96b7608078436d26f2afc99630820ad29936ddd6f",
+    "frontend/src/components/ReaderAudiobookPanel.jsx": "cce5ddc496512e6d5e2eff5507bd076704c8ea982fe8c7c81627e608efe341ef",
+    "frontend/src/components/PremiumListeningRail.jsx": "1dd505a24d957bc461e6158840722b3ef7a921766c8c1aa887b24a913180af9e",
+    "frontend/src/pages/BookDetail.jsx": "18b55b3e019642939abb881656e33daf474042a7a08a0e6fc4696ebef8607525"
   },
   "source_findings": [
-    "Route passes no readAlongSupported or onReadAlong capability.",
+    "Listener has no read-along capability or callback; caller flags cannot restore the retired control.",
     "Listener uses native media time, exact package segment durations and chapter offsets; no cue fetching or text highlighting.",
     "Shared manifest requires sidecar identities structurally; no schema/storage requirement is waived.",
-    "Public legacy listening redirects to standalone Listener; administrative legacy Reader is not an eligible consumer."
+    "Legacy Reader no longer loads text cues, selects audio by word position, wraps/follows words or seeks audio from text. Ordinary Reader navigation and manual annotations remain independent."
   ]
 }

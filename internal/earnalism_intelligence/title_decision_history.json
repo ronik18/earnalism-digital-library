@@ -14483,5 +14483,12 @@
       "validation": "57 guarded-source unit,10 middleware,60 preparation-closure tests passed locally. Failed run retained, not rerun; new exact-head CI still required.",
       "preservation": "Bicharak OWNER HOLD, Sredni missing startup projection, counters and runtime prohibitions unchanged."
     }
+  },
+  "sredni_text_audio_feature_retirement_20261105": {
+    "date": "2026-11-05",
+    "event": "RETIRE_CUSTOMER_TEXT_AUDIO_FEATURES",
+    "scope": "SOURCE_ONLY_NOT_DEPLOYED",
+    "base": "7e2d0991006adbd79d43d29c1e432deb46758057",
+    "decision": "Owner permanently retires read-along, narration-linked highlighting and text-linked audio navigation; preserve ordinary Reader/manual annotations and media/chapter controls. Accepted Sredni source/media/rights reused; Bicharak OWNER_HOLD and all counters unchanged. No runtime retry/expiry renewal."
   }
 }

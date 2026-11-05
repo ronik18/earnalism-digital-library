@@ -3163,3 +3163,6 @@ that every newer application backend is the old recovery image. Keep source CI
 explicitly source-only, native/manual validators strict, finite metadata/no bulk
 fallback, exact closed-role paths and owner/financial protocol checks intact.
 A CI transport/source fix does not authorize another runtime observation or release.
+
+
+5 November 2026: Retire customer text-audio features by removing actual legacy cue consumers and stale-flag capabilities, not merely hiding one button. Keep manual Reader selection/annotations and native media seek/chapter/resume controls. Source N/A is exact-candidate scoped; historical cue assets and release holds stay intact.

@@ -132,3 +132,7 @@ Reuse applicable genuine accepted exact-source/audio adjudication; retain raw sc
 and actual policy thresholds. Confirmed material defects and missing mandatory
 acceptance remain held. No classifier promises perfect certainty. This amendment
 does not reopen owner holds, consumed budgets or production authority.
+
+## Retired text-audio features (5 November 2026)
+
+Owner retires read-along, narration-linked highlighting and text-linked audio navigation across supported current and legacy customer paths. Stale flags and prior sync evidence do not restore these features. Preserve ordinary Reader navigation/manual annotations, native media clocks/chapter controls, source fidelity, rights, access and accounting. Retain historical assets/evidence and use explicit source/candidate-bound NOT_APPLICABLE only for actual nonconsumers. No retry/budget/expired-admission renewal is implied.
