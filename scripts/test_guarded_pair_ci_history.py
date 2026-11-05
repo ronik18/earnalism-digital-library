@@ -232,6 +232,20 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(current['controller_source_sha'],current_controller)
         self.assertEqual(current['bootstrap_source_sha'],current_bootstrap)
         self.assertEqual(current['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        workflow=(ROOT/'.github/workflows/regression.yml').read_text()
+        code=textwrap.dedent(workflow.split("            python3 - <<'PYCURRENTEXPORT'\n",1)[1].split('\n          PYCURRENTEXPORT',1)[0])
+        original=Path.cwd()
+        try:
+            os.chdir(clone)
+            with patch.dict(os.environ,{'RUNNER_TEMP':str(self.workspace)}):exec(compile(code,'actual-workflow-current-closed-export','exec'),{})
+        finally:os.chdir(original)
+        prepared=json.loads((self.workspace/'paired-helper-proof/current-offline-export-report.json').read_text())
+        self.assertEqual(prepared['source'],current_bootstrap)
+        self.assertEqual(prepared['controller_source'],current_controller)
+        self.assertEqual(prepared['runtime_expected_sha256'],current['closed_runtime_sha256'])
+        self.assertEqual(prepared['scope'],'OFFLINE_EXACT_COMMITTED_EXPORT_NOT_NATIVE_ARCHIVE_OR_PROVIDER_UPLOAD')
+        self.assertFalse(prepared['native_archive_qualification']);self.assertEqual(prepared['provider_writes'],0)
+        self.assertIn('backend/current-only-fixture.py',{x['path'] for x in prepared['files']})
         self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
 
     def test_distinct_historical_application_body_is_explicitly_hydrated(self):
