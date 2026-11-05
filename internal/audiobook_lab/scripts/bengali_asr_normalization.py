@@ -589,11 +589,13 @@ def analyze_bengali_asr(
     elif category == "bengali_sync_regeneration_required":
         report["recommended_action"] = "content match appears proven but timestamps are not canonical-script release sync; rebuild Bengali sync by construction or phrase/segment alignment"
     elif category == "bengali_asr_script_mismatch":
-        report["recommended_action"] = "terminal-block with script-mismatch evidence unless a better Bengali ASR/transliteration path raises projection confidence"
+        report["recommended_action"] = "unconfirmed script/recognizer warning; reuse applicable accepted exact-audio/source evidence; missing mandatory fidelity acceptance remains held, not a confirmed audio defect"
     elif category == "bengali_audio_manuscript_mismatch":
-        report["recommended_action"] = "treat as probable audio/manuscript mismatch; regenerate or rehydrate the correct audio before retry"
+        report["recommended_action"] = "unconfirmed possible mismatch; compare retained exact-source/audio acceptance before proposing any repair; no automatic regeneration or retry"
     else:
-        report["recommended_action"] = "terminal-block as low-confidence Bengali ASR; continue catalog if ordered skip is allowed"
+        report["recommended_action"] = "unconfirmed recognizer-confidence warning; preserve raw output and use existing applicable acceptance; do not mandate another model or listening pass from this warning alone"
+    report["diagnostic_classification"] = "UNCERTAINTY_WARNING" if not report["release_pass"] else "SUPPORTING_FIDELITY_EVIDENCE"
+    report["mandatory_fidelity_acceptance_status"] = "SATISFIED_BY_THIS_DIAGNOSTIC" if report["content_match_proven"] else "NOT_ESTABLISHED_BY_THIS_DIAGNOSTIC"
     report["blocker_category"] = category
 
     write_json(projection_report_path, report)

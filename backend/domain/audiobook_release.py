@@ -16,6 +16,9 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from api.schemas import AudiobookReleaseIn
 
 
+from .audio_quality import classify_quality_findings
+
+
 ACCESSIBILITY_EXCEPTION_SCHEMA = "earnalism.audiobook_accessibility_exception.v1"
 ACCESSIBILITY_PASS = "PASS"
 ACCESSIBILITY_NOT_TESTED = "NOT_TESTED"
@@ -108,6 +111,14 @@ def audiobook_release_qa_summary(value: Optional[Dict[str, Any]]) -> dict[str, A
     else:
         blockers = [str(item) for item in blockers if str(item).strip()]
 
+    warnings = qa.get("warnings") or []
+    if isinstance(warnings, str):
+        warnings = [warnings]
+    elif not isinstance(warnings, list):
+        warnings = ["Unclassified diagnostic metadata; no confirmed defect conclusion."]
+    classified_findings = classify_quality_findings(qa)
+    blockers.extend(classified_findings["blockers"])
+
     accessibility = qa.get("accessibility") if isinstance(qa.get("accessibility"), dict) else {}
     policy_exception = (
         accessibility.get("policy_exception")
@@ -124,6 +135,7 @@ def audiobook_release_qa_summary(value: Optional[Dict[str, Any]]) -> dict[str, A
         "listening_confidence": score("listening_confidence", "confidence"),
         "fatal_flags": sorted(set(fatal_flags)),
         "blockers": sorted(set(blockers)),
+        "warnings": warnings + classified_findings["warnings"],
         "ordered_content_integrity": qa.get(
             "ordered_content_integrity",
             qa.get("no_missing_duplicated_reordered_content"),

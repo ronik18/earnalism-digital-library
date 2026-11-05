@@ -39,6 +39,10 @@ jobs:
     timeout-minutes: 45
     env:
       NODE_ENV: ci
+      # Immutable regression case, never the current candidate's recovery proof.
+      HISTORICAL_PAIR_CONTROLLER_SHA: babb32bb6be02caafb996d090d6ce95586c2d985
+      HISTORICAL_PAIR_CONTROLLER_TREE: 9a09e62f58f06eb8ac516dd5671817b31e8cf136
+      HISTORICAL_PAIR_BOOTSTRAP_SHA: 65ca071ebebba3edb73ab44fd13c7e00f95b54e6
       # Avoid retaining a second wheel/download copy beside the isolated UAT environment.
       PIP_NO_CACHE_DIR: "1"
       npm_config_cache: ${{ github.workspace }}/.npm-cache
@@ -77,6 +81,9 @@ jobs:
         env:
           GIT_NO_LAZY_FETCH: '1'
           GIT_NO_REPLACE_OBJECTS: '1'
+          # Ordinary source CI hydrates historical roles; only manual release
+          # may claim its candidate backend is that exact recovery application.
+          PAIR_SOURCE_ONLY: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           set -euo pipefail
           # Filtered fetch persists remote settings; restore the exact prior state.
@@ -157,9 +164,16 @@ jobs:
             [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             pair_controller_pin="$(git rev-parse HEAD)"
             [[ "$pair_controller_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
-            # Finite CI transport bound for this immediate A/B/C history, not
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
+              [[ "$HISTORICAL_PAIR_CONTROLLER_SHA" =~ ^[0-9a-f]{40}$ && "$HISTORICAL_PAIR_CONTROLLER_TREE" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              [[ "$pair_bootstrap_pin" == "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]] || exit 1
+              # Fetch this exact historical tree first. HEAD's bounded commit
+              # admission below then restores ancestry past its shallow edge.
+              git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_CONTROLLER_SHA"
+            fi
+            # Finite descendant metadata for the retained A/B role history, not
             # authority. Only commits for HEAD ancestry; no trees or file blobs.
-            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=16 origin "$pair_controller_pin"
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
             # Re-admit B/A with their trees: tree:0 may already have their commit
             # IDs, so normal negotiation could otherwise skip promised trees.
             git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$pair_bootstrap_pin"
@@ -174,7 +188,23 @@ jobs:
             # snapshot/file may enter the two explicitly bound backend roles.
             pair_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$pair_parent_pin" "$pair_bootstrap_pin" | LC_ALL=C sort)"
             [[ "$pair_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
-            [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == false ]]; then
+              [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            elif [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
+              # Do not mislabel historical A/B hydration as qualification of a
+              # newer backend. Runtime recovery/controller gates remain separate.
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$pair_bootstrap_pin" "$HISTORICAL_PAIR_CONTROLLER_SHA"
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$HISTORICAL_PAIR_CONTROLLER_SHA" "$pair_controller_pin"
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA^{tree}")" == "$HISTORICAL_PAIR_CONTROLLER_TREE" ]] || exit 1
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:internal/legal/purchase_guard_source.json")" == "$(git rev-parse HEAD:internal/legal/purchase_guard_source.json)" ]] || exit 1
+              while IFS= read -r -d '' source_path; do
+                bindings+=("$HISTORICAL_PAIR_CONTROLLER_SHA:$source_path")
+              done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$HISTORICAL_PAIR_CONTROLLER_SHA" -- backend scripts/build_runtime_source_manifest.py internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json .gitignore .gitattributes)
+              echo 'HISTORICAL_PAIR_ONLY_NOT_CURRENT_BACKEND_RECOVERY_QUALIFICATION'
+            else
+              exit 1
+            fi
             for pair_pin in "$pair_bootstrap_pin" "$pair_parent_pin"; do
               while IFS= read -r -d '' source_path; do
                 bindings+=("$pair_pin:$source_path")
@@ -321,7 +351,20 @@ jobs:
           from pathlib import Path
           from scripts.purchase_guard_source import validate_paired_source,backend_tree,_git_blob
           from scripts.backend_upload_payload import qualify_committed_export
-          controller=Path.cwd(); pair=validate_paired_source(controller); b=pair['bootstrap_source_sha']
+          # BEGIN explicit historical controller export (source CI only)
+          current=Path.cwd(); reference=os.environ['HISTORICAL_PAIR_CONTROLLER_SHA']
+          controller=Path(os.environ['RUNNER_TEMP'])/'paired-helper-historical-controller'
+          import subprocess
+          subprocess.run(['git','worktree','add','--detach','--no-checkout',str(controller),reference],cwd=current,check=True)
+          patterns='/backend/\n/scripts/build_runtime_source_manifest.py\n/internal/legal/purchase_guard_source.json\n/internal/legal/purchase_guard_owner_acceptance.json\n/.gitignore\n/.gitattributes\n'
+          subprocess.run(['git','-C',str(controller),'sparse-checkout','set','--no-cone','--stdin'],input=patterns,text=True,check=True)
+          subprocess.run(['git','-C',str(controller),'read-tree','-mu','HEAD'],check=True)
+          pair=validate_paired_source(controller); b=pair['bootstrap_source_sha']
+          assert pair['controller_source_sha']==reference and b==os.environ['HISTORICAL_PAIR_BOOTSTRAP_SHA']
+          assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=controller,text=True).strip()==os.environ['HISTORICAL_PAIR_CONTROLLER_TREE']
+          context={'scope':'HISTORICAL_C_B65_ONLY_NOT_CURRENT_CI_BACKEND_RECOVERY','ci_checkout_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=current,text=True).strip(),'historical_controller_sha':reference,'bootstrap_source_sha':b,'current_candidate_recovery_qualified':False,'current_candidate_or_provider_recovery_qualified':False}
+          (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/historical-context.json').write_text(json.dumps(context,indent=2)+'\n')
+          # END explicit historical controller export
           root=Path(os.environ['RUNNER_TEMP'])/'paired-helper-export'; root.mkdir(mode=0o700)
           rows=backend_tree(controller,b)
           for name,row in rows.items():
@@ -333,7 +376,7 @@ jobs:
           out=Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/offline-export-report.json'; out.write_text(json.dumps(report,indent=2)+'\n')
           (out.parent/'offline-export-report.sha256').write_text(hashlib.sha256(out.read_bytes()).hexdigest())
           PYEXPORT
-          python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-export" --controller-root "$GITHUB_WORKSPACE" --output-dir "$RUNNER_TEMP/paired-helper-proof/executed"
+          python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-export" --controller-root "$RUNNER_TEMP/paired-helper-historical-controller" --output-dir "$RUNNER_TEMP/paired-helper-proof/executed"
 
       - name: Retain paired helper evidence (not native upload proof)
         if: always() && github.event_name != 'workflow_dispatch'

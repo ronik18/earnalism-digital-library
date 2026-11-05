@@ -1,5 +1,5 @@
 {
-  "policy_version": "sync-tiered-2026-07-06",
+  "policy_version": "sync-consumer-scoped-2026-11-05",
   "tiers": {
     "WORD_OR_PHRASE_SYNC_FLAGSHIP": {
       "allowed": true,
@@ -24,5 +24,35 @@
     "mismatched_audio",
     "missing_coverage",
     "frontmatter_in_sidecars"
-  ]
+  ],
+  "applicability": {
+    "default": "REQUIRED_UNTIL_NONCONSUMER_PROVEN",
+    "not_applicable_status": "NOT_APPLICABLE",
+    "selected_consumer": "listener_v2_audio_only.v1",
+    "consumer_contract": "internal/earnalism_intelligence/listener_text_sync_consumer.json",
+    "validator": "scripts/release_acceptance.py:validate_sync_not_applicable",
+    "requires": [
+      "exact source/audio/descriptor/package binding",
+      "reviewed consumer source hashes still match",
+      "selected standalone Listener route",
+      "read-along, highlighting, captions and text-linked navigation disabled",
+      "no sync claims"
+    ],
+    "not_a_pass": true,
+    "mandatory_unaffected": [
+      "content fidelity and source order",
+      "measured media durations and chapter/segment seek offsets",
+      "playback and accounting",
+      "rights and covers",
+      "package/schema/asset/checksum/retention integrity"
+    ],
+    "measured_required_when": [
+      "read-along",
+      "highlighting",
+      "captions with text cues",
+      "text-linked navigation",
+      "a producer actually uses measured text cues to cut/align delivery segments"
+    ],
+    "scope_note": "N/A is action/path-scoped. A source nonconsumer proof cannot clear another Reader/admin path or erase a missing required acceptance. No fake timestamps, estimated cues or blanket schema waiver."
+  }
 }

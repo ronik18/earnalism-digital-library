@@ -34,6 +34,9 @@ from backend.audiobook_generation.provider_adapter import (  # noqa: E402
 )
 
 
+from scripts.release_acceptance import automated_check_accepted, classify_quality_findings
+
+
 class RuntimeBlocked(RuntimeError):
     pass
 
@@ -604,12 +607,14 @@ def promote(
         )
     automated = manifest.get("automated_checks") or {}
     if any(
-        (automated.get(name) or {}).get("status") != "PASS"
+        not automated_check_accepted(manifest, name, automated.get(name) or {})
         for name in PROMOTION_REQUIRED_AUTOMATED_CHECKS
     ):
         raise RuntimeBlocked(
-            "all automated release checks must be PASS before promotion"
+            "all applicable automated release checks must pass before promotion"
         )
+    if classify_quality_findings(manifest)["blockers"]:
+        raise RuntimeBlocked("confirmed defects or missing mandatory acceptance remain")
     require_reader_approval(manifest)
     require_sample_approval(manifest)
     payload = {

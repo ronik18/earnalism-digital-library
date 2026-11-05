@@ -38,8 +38,8 @@ Objective gates:
 - ASR/manuscript match `>= 9.7`
 - first and last words match
 - no missing, duplicated, or reordered content
-- measured paragraph/stanza sync or better
-- `auto_estimated_sync=false`
+- measured paragraph/stanza sync or better where the selected path consumes text timing; otherwise explicit verified `NOT_APPLICABLE` under `sync_acceptance_policy.json`, with sync features disabled and no sync claims
+- no estimated sync accepted as measured; an unused text-sync decision is `NOT_APPLICABLE`, not a fabricated sync PASS
 - upload/checksum PASS
 - metadata approval PASS
 - audiobook endpoint `200/206`
@@ -129,3 +129,15 @@ and the exact continuation command.
 Bengali reader-only/audio-hidden status must remain intact until an audiobook
 passes every gate. Do not expose audio controls, stale audio, fallback audio, or
 estimated sync while a title is in campaign states before `BENGALI_AUDIOBOOK_LIVE`.
+
+## Current owner amendment — 5 November 2026
+
+Uncertain ASR/script/heuristic findings are warnings, not demonstrated narration
+defects. Reuse accepted exact-source/audio adjudication and qualified normalized
+fidelity evidence within its real scope; preserve raw diagnostics and the >=9.7
+fidelity threshold. A likely mismatch must not automatically prescribe regeneration,
+new models or another manual review. Confirmed defects and missing required acceptance
+remain blocking. The standalone Listener may carry verified text-sync NOT_APPLICABLE;
+read-along/highlighting/text navigation and cue-dependent producers remain strict.
+Do not alter historical campaign results, Bicharak OWNER HOLD, Sredni startup holds,
+attempt counters or authority because a warning or unused-feature check changes.

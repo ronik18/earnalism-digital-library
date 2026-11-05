@@ -74,3 +74,25 @@ python3 .agents/skills/earnalism-audiobook-go-live/scripts/plan_voice.py --title
 ```
 
 Resolve the actual edition/checkpoint first. A proposal is not a qualified voice, audio asset or runtime.
+
+## Apply text timing only to its actual consumer
+
+Use the current `internal/earnalism_intelligence/sync_acceptance_policy.json` and
+reviewed `listener_text_sync_consumer.json`. The standalone `/listener/:slug` uses
+native media time and chapter/segment offsets, not text cues. Its explicit
+`NOT_APPLICABLE` check must bind exact audio, manuscript, descriptor/package and
+reviewed source bytes, with all text-sync features disabled and no sync claim.
+`produce_release.py` evaluates this proof; `release_runtime.py` revalidates it at
+promotion. A bare N/A label, old source hash or `highlight=false` alone is insufficient.
+The legacy/admin Reader can select audio by word position and is not this consumer.
+Cue-dependent segmentation/Reader/read-along pipelines retain their measured gates.
+Do not fabricate empty/estimated cues, drop schema-required asset checks or claim
+full-title fidelity from structural source coverage. Media durations, chapter seek,
+rights, playback/accounting and other necessary acceptance remain unchanged.
+
+Treat uncertain recognizer/heuristic findings as warnings. Existing source/audio
+adjudication may resolve them without another model or duplicate listening. The
+factory normalizer can reuse an existing hash-bound full-title accepted fidelity
+record while retaining raw ASR; a partial review, invented score, wrong hash or
+confirmed defect cannot replace mandatory fidelity. No new approval is required
+merely to classify a warning; publication authority and actual acceptance still bind.

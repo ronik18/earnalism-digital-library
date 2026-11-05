@@ -22,6 +22,9 @@ PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null || { echo "local FFmpeg/FFprobe are required for exact native audio identity tests" >&2; exit 64; }
 
+echo "==> Consumer-scoped text sync and evidence-proportionate audio acceptance (offline fixtures)"
+"$PYTHON_BIN" -m pytest -q backend/tests/test_release_acceptance.py backend/tests/test_produce_release.py backend/tests/test_release_runtime.py backend/tests/test_produce_release_self_healing.py internal/audiobook_lab/scripts/test_sprint1_factory_release_evidence_normalizer.py internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py
+
 echo "==> Exact purchase guard source and original India commerce boundary"
 "$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
 
