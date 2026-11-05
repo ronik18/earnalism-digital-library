@@ -14506,5 +14506,18 @@
     "provider_operations": 0,
     "spend": 0,
     "next": "exact-head source CI/reviews; no runtime until observation scope and actual preconditions qualify"
+  },
+  "sredni_current_closed_helper_20261105": {
+    "date": "2026-11-05",
+    "title": "sredni-vashtar",
+    "decision": "CURRENT_CLOSED_INPUT_NEEDS_ITS_OWN_EXECUTED_HELPER_RECEIPT",
+    "base_source": "9cf7b2569f5f7b4d39059726921202d2a5e19d20",
+    "closed_input": "85021e5ef9cf8776b3d2bd8568d6d026ebc1901b",
+    "scope": "Reuse unchanged compiled helper; retain separate historical/current artifacts with actual ordinary CI provenance.",
+    "result": "LOCAL_COMMITTED_EXPORT_PASS_HOSTED_CURRENT_HELPER_PROOF_PENDING",
+    "holds": "No expiring policy/snapshot/build allowance consumed before exact artifact/operator preflight.",
+    "ordering": "Qualify unaliased frontend candidate before fresh policy/snapshot; preserve original canary clocks and all cumulative counts.",
+    "bicharak": "OWNER_HOLD",
+    "native_provider_writes": 0
   }
 }

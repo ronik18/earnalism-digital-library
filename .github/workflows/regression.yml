@@ -414,6 +414,29 @@ jobs:
           (out.parent/'offline-export-report.sha256').write_text(hashlib.sha256(out.read_bytes()).hexdigest())
           PYEXPORT
           python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-export" --controller-root "$RUNNER_TEMP/paired-helper-historical-controller" --output-dir "$RUNNER_TEMP/paired-helper-proof/executed"
+          # Reuse the same compiled helper, but never relabel its old B65 input.
+          if [[ "$(jq -er '.guarded_bootstrap_source_sha' internal/legal/purchase_guard_source.json)" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+            python3 - <<'PYCURRENTEXPORT'
+          import hashlib,json,os
+          from pathlib import Path
+          from scripts.purchase_guard_source import validate_paired_source,backend_tree,_git_blob
+          from scripts.backend_upload_payload import qualify_committed_export
+          controller=Path.cwd(); pair=validate_paired_source(controller); source=pair['bootstrap_source_sha']
+          root=Path(os.environ['RUNNER_TEMP'])/'paired-helper-current-export'; root.mkdir(mode=0o700)
+          rows=backend_tree(controller,source)
+          for name,row in rows.items():
+              target=root/name; target.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
+              target.write_bytes(_git_blob(controller,source,name)); target.chmod(0o755 if row['mode']=='100755' else 0o644)
+          (root/'.gitignore').write_bytes(_git_blob(controller,source,'.gitignore'))
+          report=qualify_committed_export(controller,source,root)
+          assert set(r['path'] for r in report['files'])==set(rows), 'full current CLOSED membership required'
+          assert report['runtime_expected_sha256']==pair['closed_runtime_sha256']
+          out=Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/current-offline-export-report.json'
+          out.write_text(json.dumps(report,indent=2)+'\n')
+          out.with_suffix('.sha256').write_text(hashlib.sha256(out.read_bytes()).hexdigest())
+          PYCURRENTEXPORT
+            python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/current-offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/current-offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-current-export" --controller-root "$GITHUB_WORKSPACE" --output-dir "$RUNNER_TEMP/paired-helper-proof/current-executed"
+          fi
 
       - name: Retain paired helper evidence (not native upload proof)
         if: always() && github.event_name != 'workflow_dispatch'

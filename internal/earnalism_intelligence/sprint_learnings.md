@@ -3175,3 +3175,7 @@ Source protocol custody and native recovery are separate: an unrelated reviewed 
 - Commit and verify an inventoried normal parent before the deterministic three-path CLOSED child; matching server bytes alone do not prove whole-backend equality.
 - Source-pair qualification is not native image/recovery qualification. First-guard purchase-closed containment is not normal reopening or a qualified frontend restore.
 - One newly approved observation cannot silently become two separately counted policy/DB observations; preserve the original lineage and prepare only the exact remaining scope question.
+
+## Current CLOSED helper provenance — 5 November 2026
+
+Reuse unchanged helper binaries/components, but execute each selected CLOSED input through ordinary CI and retain its own actual member/mode/runtime/archive receipt. A historical B65 report never certifies CLOSED850. Finish this non-expiring artifact work and qualify the unaliased frontend before the fresh startup-policy/snapshot proof; source-proof freshness never renews original canary clocks or budgets.
