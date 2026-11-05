@@ -67,9 +67,9 @@ export default function ReaderAudiobookPanel({
   const progressPercent = safeDuration > 0 ? Math.min(100, (safeCurrentTime / safeDuration) * 100) : 0;
   const playbackLabel = isPlaying && !isPaused ? 'Pause audiobook' : 'Play audiobook';
   const statusText = !isReadingPage
-    ? 'Press Play when the audiobook is ready.'
+    ? 'Press Play when playback is ready.'
     : canPlay
-      ? (isPlaying && !isPaused ? 'Your audiobook is playing.' : 'Your audiobook is ready when you are.')
+      ? (isPlaying && !isPaused ? 'Your audiobook is playing.' : 'Ready when you are.')
       : 'Preparing approved audiobook audio…';
 
   return (

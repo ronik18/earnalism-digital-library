@@ -3425,7 +3425,7 @@ export default function Reader() {
                 {audioDisabledForPage
                   ? 'Audio starts on reading pages'
                   : generatedAudioAvailable
-                  ? (ttsActive && !ttsPaused ? 'Audiobook playing' : 'Audiobook ready')
+                  ? (ttsActive && !ttsPaused ? 'Audiobook playing' : 'Ready to play')
                   : (ttsActive && !ttsPaused ? 'Narrating' : 'Approved audio pending for this page')}
               </span>
                   {generatedAudioDisclosure && (
