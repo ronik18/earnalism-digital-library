@@ -208,3 +208,18 @@ def test_explicit_invalid_bengali_scores_cannot_hide_behind_alias_or_passage_tru
     campaign = importlib.util.module_from_spec(spec); spec.loader.exec_module(campaign)
     assert campaign.representative_passes({'representative_score':False,'overall_listening_score':9.9,'confidence':0.95})[0] is False
     assert campaign.representative_passes({'representative_score':9.9,'confidence':0.95,'passage_scores':[{'overall_listening_score':0}]})[0] is False
+
+
+@pytest.mark.parametrize('location,key', [
+    ('root','read_along_enabled'), ('audio','highlight_sync_enabled'),
+    ('root','text_linked_navigation_enabled'), ('delivery','read_along'),
+    ('delivery','highlighting'), ('delivery','text_linked_navigation'),
+])
+def test_old_sync_pass_cannot_restore_retired_customer_features(tmp_path, location, key):
+    manifest, reader, listening = candidate(tmp_path)
+    manifest['automated_checks']['synchronization'] = {'status': 'PASS'}
+    target = manifest if location == 'root' else manifest['audio'] if location == 'audio' else manifest['delivery']['features']
+    target[key] = True
+    assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'
+    with pytest.raises(RuntimeBlocked):
+        promote(manifest, {'passed': True, 'release_eligible': False, 'release_id':'dummy'}, execute=False, promoter=DummyPromoter())

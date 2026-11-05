@@ -20,7 +20,7 @@ export function clampPlaybackTime(seconds, durationSeconds) {
   return durationSeconds > 0 ? Math.min(value, durationSeconds) : value;
 }
 
-export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onBeforePlayback, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary, onReadAlong, readAlongSupported = false }) {
+export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onBeforePlayback, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary }) {
   const presentation = listenerReleasePresentation(book, { fixture });
   const creditsMatchPackage = !audioManifest?.valid
     || Boolean(presentation.packageVersion && audioManifest.packageVersion === presentation.packageVersion);
@@ -242,7 +242,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
           {!presentation.fixture && <><div className="listener-v2__timeline"><div><span>{clock(time)}</span><input aria-label="Seek within approved audiobook" type="range" min="0" max={totalDuration || 0} step="0.1" value={Math.min(time, totalDuration || time)} onChange={(event) => seek(event.target.value)} disabled={!canPlay || !totalDuration} /><b style={{ width: `${progress}%` }} aria-hidden="true" /><span>{clock(totalDuration)}</span></div><p>{presentation.chapterLabel}</p></div>
           <div className="listener-v2__controls">{canPlay ? <><ExperienceIconButton label="Back 15 seconds" onClick={() => seek(time - 15)}><RotateCcw size={22} /><em>15</em></ExperienceIconButton><button type="button" className="listener-v2__play" onClick={togglePlayback} aria-label={playing ? "Pause approved audiobook" : "Play approved audiobook"}>{playing ? <Pause size={30} /> : <Play size={30} fill="currentColor" />}</button><ExperienceIconButton label="Forward 15 seconds" onClick={() => seek(time + 15)}><RotateCw size={22} /><em>15</em></ExperienceIconButton></> : <button type="button" className="listener-v2__authorize" onClick={onAuthorize} disabled={authorizing}>{authorizing ? "Authorizing listening…" : "Authorize Listening"}</button>}</div>
           {canPlay && <button type="button" className="listener-v2__stop" onClick={stop}>Stop listening</button>}
-          <div className="listener-v2__utilities"><label>Speed<select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audioRef.current) audioRef.current.playbackRate = next; }} disabled={!canPlay}><option value="1">1.0×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>{readAlongSupported && <button type="button" onClick={onReadAlong}>Read Along</button>}</div></>}
+          <div className="listener-v2__utilities"><label>Speed<select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audioRef.current) audioRef.current.playbackRate = next; }} disabled={!canPlay}><option value="1">1.0×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label></div></>}
           <NarrationCredits disclosure={narrationDisclosure} />
         </div>
         <aside className="listener-v2__side" aria-label="Listening details">

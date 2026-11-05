@@ -38,6 +38,19 @@ describe("audiobook release safety", () => {
     expect(audiobookNarrationDisclosure({ audiobook_provider: "kokoro" })).toBe("");
   });
 
+  test("stale true flags cannot restore retired text-audio capabilities", () => {
+    const state = audiobookReleaseState({
+      audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "PASS",
+      audiobook_assets: { mp3: "https://cdn.example.com/book.mp3" },
+      highlight_sync_enabled: true, read_along_enabled: true, text_linked_navigation_enabled: true,
+      audiobook: { highlight_sync_enabled: true },
+      _readerManifest: { audio: { highlight_sync_enabled: true } },
+    });
+    expect(state.canShowControls).toBe(true);
+    expect(state.highlightSyncEnabled).toBe(false);
+    expect(state.syncMode).toBe("audio_only");
+  });
+
   test("keeps controls hidden for stale assets without approval evidence", () => {
     const state = audiobookReleaseState({
       audiobook_enabled: true,

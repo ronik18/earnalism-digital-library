@@ -40,7 +40,7 @@ describe("PremiumListeningRail Home contract", () => {
     expect(rail).toContain("THE LISTENING ROOM");
     expect(rail).toContain("Literature, in a more intimate form.");
     expect(rail).toContain(
-      "Let a remarkable voice draw you closer, with effortless read-along listening.",
+      "Let a remarkable voice draw you into the story, wherever you listen.",
     );
     expect(rail).toContain("Explore audiobooks");
     expect(rail).toContain("/library?availability=approved-audiobook");
@@ -62,7 +62,7 @@ describe("PremiumListeningRail Home contract", () => {
     expect(rail).toContain("progress_percent");
     expect(rail).toContain("book?.narrator");
     expect(rail).toContain("book?.audio_duration_ms");
-    expect(rail).toContain("book?.highlight_sync_enabled === true");
+    expect(rail).not.toMatch(/highlight_sync_enabled|Read \+ Listen|read-along/);
     expect(rail).not.toMatch(/fake|sample progress|default narrator/i);
   });
 

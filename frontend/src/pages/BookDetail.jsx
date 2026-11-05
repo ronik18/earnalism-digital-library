@@ -66,7 +66,9 @@ function mergeReaderManifestIntoBook(book, manifest) {
     audio_qa_status: book.audio_qa_status,
     narration_disclosure: manifestAudio.narration_disclosure || book.narration_disclosure,
     sync_mode: manifestBook.sync_mode || manifestAudio.sync_mode || book.sync_mode,
-    highlight_sync_enabled: manifestBook.highlight_sync_enabled ?? manifestAudio.highlight_sync_enabled ?? book.highlight_sync_enabled,
+    highlight_sync_enabled: false,
+    read_along_enabled: false,
+    text_linked_navigation_enabled: false,
     audiobook_assets: {
       ...(book.audiobook_assets || {}),
       ...(manifestBook.audiobook_assets || {}),

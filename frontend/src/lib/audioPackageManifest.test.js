@@ -93,18 +93,18 @@ describe('audiobook package manifest', () => {
     expect(track.chunks.map((chunk) => chunk.segmentId)).toEqual(['complete']);
   });
 
-  test('selects the word-bound segment and exposes the next immutable segment', () => {
+  test('selects by chapter and explicit immutable segment, never text position', () => {
     const manifest = normalizeAudioManifest(rawManifest);
 
     const first = selectAudioTrack({
       manifest,
       chapterId: 'chapter-001',
-      currentWordOffset: 40,
+      currentWordOffset: 999999, // stale callers cannot seek from text
     });
     const second = selectAudioTrack({
       manifest,
       chapterId: 'chapter-001',
-      currentWordOffset: 40,
+      currentWordOffset: 999999, // stale callers cannot seek from text
       preferredSegmentId: first.nextSegmentId,
     });
 
