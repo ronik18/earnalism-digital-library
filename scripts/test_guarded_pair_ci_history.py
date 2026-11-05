@@ -118,7 +118,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'PAIR_HISTORICAL_PIN': self.fixture.historical,
             'PAIR_BOOTSTRAP_PIN': pin or self.fixture.bootstrap,
             'PAIR_BINDINGS_RESULT': str(self.workspace / 'bindings-result'),
-            'PAIR_SOURCE_ONLY': 'true' if source_only else 'false',
+            'PAIR_SOURCE_ONLY': source_only if isinstance(source_only,str) else 'true' if source_only else 'false',
             'HISTORICAL_PAIR_CONTROLLER_SHA': reference or self.fixture.controller,
             'HISTORICAL_PAIR_CONTROLLER_TREE': reference_tree or self.fixture.git('rev-parse', (reference or self.fixture.controller)+'^{tree}').decode().strip(),
             'HISTORICAL_PAIR_BOOTSTRAP_SHA': self.fixture.bootstrap,
@@ -220,6 +220,9 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         current_controller=f.commit('new controller, historical helper untouched')
         guard.validate_paired_source(f.repo)
         clone=self.clone()
+        invalid,invalid_commands=self.run_admission(clone,pin=current_bootstrap,source_only='invalid')
+        self.assertNotEqual(invalid.returncode,0)
+        self.assertFalse(any('fetch' in x and not any(y.startswith('--filter=') for y in x) for x in invalid_commands))
         result,commands=self.run_admission(clone,pin=current_bootstrap,source_only=True)
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertIn('CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION',result.stdout)

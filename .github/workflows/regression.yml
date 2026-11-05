@@ -165,6 +165,7 @@ jobs:
             git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "${missing_commits[@]}"
           fi
           # BEGIN bounded current guarded source pair admission
+          [[ "${PAIR_SOURCE_ONLY:-false}" == true || "${PAIR_SOURCE_ONLY:-false}" == false ]] || exit 1
           if [[ -n "$pair_bootstrap_pin" ]]; then
             [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             pair_controller_pin="$(git rev-parse HEAD)"
