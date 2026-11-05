@@ -1,0 +1,79 @@
+> Release policy: [GO_LIVE.md](GO_LIVE.md) governs. Research, variant and growth tasks are optional; one final candidate decision covers primary checks. Older wording does not add approval steps.
+
+# Voice, actual-audio timing and scoped repair
+
+## Current selected direction
+
+For a continuing series, resolve its actual accepted B baseline from the hash-bound source job. Preserve the speaker, instruction, model revision, seed, full generation controls and pinned worker; a profile name alone is insufficient. A generic refinement default must not silently replace the accepted series voice. Y remains the scoped private Moon refinement baseline, with its unresolved concerns and historical records intact. Every new recording still requires actual-audio alignment and listening/AV qualification. No new provider, real-person imitation, cloning, forced bass or artificial pitch lowering.
+
+That audition choice is a style decision, not approval of a full recording or publication. Preserve the active edition's narrator during visual/music changes and verify its hash; resolve the active candidate through `evidence/current-private-review.json`. Earlier `teacher_patient`/B, `teacher_mature_55`, engaged-60 auditions and older mastering chains are historical and must not be mistaken for this B. Do not apply an older EQ/tempo chain by default. No profile name, age prompt, F0 measurement or matching instruction proves a human impression, real age or perceptually consistent takes.
+
+## Preserve the actual narration system
+
+Use the unchanged extracted worker and pinned Qwen model/code in `INSPECTION.md`. Retain complete-sentence chunk bounds of 65 words/520 characters, finite-waveform/clipping/RMS/duration/rate checks, numerical probe, cache hashes, STOP flag and maximum-three-attempt persistent journal. New seeds, folders, spellings or retakes do not reset earlier attempts. Keep per-canonical-passage links to earlier takes when the creative direction or content changes.
+
+A new performance needs a short dry audition before full replacement. Exact instruction/speaker/seed/generation settings must be compared against the chosen audition; matching settings still do not establish paragraph continuity. Generate no spoken Earnalism name. The earlier EARN-AL-iz-um preference is historical; the owner now uses the approved nonverbal END ident instead.
+
+## Pacing and performance
+
+Inspect canonical sentences mapped to actual-audio word times, paragraph joins, short commands and word endings. Global WPM can hide rushed clauses, stretched tags and tone changes. Equal WPM is not the goal: keep natural stress, sincere delivery and purposeful pauses. The instruction's 140–150 WPM and the selected audition's delivered pace are descriptive references, not proof that a new take achieved them.
+
+Current conservative pace-review bands in configuration remain diagnostics. Do not widen them to clear a flag or silently treat them as the selected B's approved perceptual range. Retain every flagged sentence/paragraph, the policy used and an explicit audio-bound listening decision. Short sentences remain visible review items even when their timing makes WPM unstable. Numerical consistency cannot certify naturalness.
+
+For an explicitly requested pacing repair, use a single bounded pitch-preserving pass over complete source passages. Ordinary uniform tempo range is .85–1.10; specifically scoped phrase repairs allow .75–1.25. Never stack tempo derivatives, lower pitch to simulate age or warp individual words. Keep unaffected raw takes byte-identical. Preserve source/output hashes, exact regions, factors, durations and provenance through `audio_derivation.py` or `delivery_conform.py`. Level correction is bounded to +/-6 dB and optional broad 180 Hz matching to +/-2 dB, only when warranted and recorded.
+
+The Moon's v30 repair is a regression example, not a future default: a uniform cycle slowdown retained its fast/slow sentence contrast; selective first-sentence repair corrected that contrast while leaving the second sentence at source tempo. Retain that rejected result. Diagnose the actual defect rather than copying these factors. If the user requires byte-identical video audio, make a separate labeled pacing audition instead of changing the video's soundtrack.
+
+For content additions, generate only the necessary complete passage with the same provider/direction and bounded ledger; preserve accepted portions and inspect both joins. Derive cuts from actual sound as well as ASR. Natural breath/fricative energy is not itself an introduced click; compare boundary continuity with the source and listen. Every changed recording requires fresh ASR, captions, anchors, scene holds, score timing and final review.
+
+## ASR and captions
+
+Retain raw recognition, model identity/revision, word times, audio hashes and all differences. Reject unresolved semantic additions, omissions or substitutions even when overall similarity is high. The narrow `asr_review.py` helpers may resolve only exact documented cases: number formatting, lunar disc/disk spelling and view point/viewpoint tokenization, with every other token matching. Never replace raw recognition with the intended script or caption unspoken explanations.
+
+A harmless spelling difference or a valid spoken grammatical variant is not automatically an ASR equivalence. If a delivery-script revision is justified, preserve the generation script, WAV, metadata and raw recognition; bind an explicit, location-specific editorial decision to their hashes and the exact observed change. Check the revised factual claim and grammar, make captions/transcript follow the established speech and retain unresolved phonetic/listening questions. Reject any unlisted addition, omission or substitution, stale binding or mismatch between recognized words and timing. Do not introduce blanket stemming, lower a similarity threshold, or treat a second pass of the same ASR model as an independent listener. The sky-colour adapter demonstrates this narrow path; it grants no listening or publication approval.
+
+Use semantic phrase grouping from actual word times. Current caption checks flag duration below one second, more than 72 characters, over 22 characters/second or overlap. Test reading on the actual player; passing numbers do not prove good phrasing. A changed narrator needs new timing; an unchanged audio hash can reuse its bound timing. Essential reasoning must be spoken and reflected in the verbatim transcript; supplementary visual descriptions remain separate.
+
+## Colab spending, preservation and shutdown
+
+Default to confirmed free CUDA. Inspect actual Resources allocation, rate and balance before connecting/running; a user assumption that Pro T4 is free does not override a positive metered rate. Paid/prepaid use needs a specific bounded owner allowance with no purchases. A timer is a safeguard, not a provider-enforced compute-unit quota. Track cumulative balance changes and concurrent-session limitations honestly.
+
+Install the matching runtime-unassign guard before setup and keep synthesis within the authorized runtime; budget export/transfer time too. Use the same run ID and retry journal on resume. Export raw media, provenance and retries before rich audio widgets. For normal-download failures, `colab_transfer.py` saves hashed chunks; persist each locally, reconstruct in numeric order and verify ZIP/member hashes. Do not retain the sole copy only in a controller variable. Do not disable/extend a guard or regenerate missing media to bypass spending or retry limits.
+
+Mount only the video-only Drive root when authorized. After verified durable import, disconnect only this notebook and verify no connected runtime/session and its stopped usage; a kernel restart is not shutdown. Preserve unrelated sessions. Restore saved synthesis/export cells to disabled and zero metered allowance. Lost-media recovery must retain earlier attempts, remaining allowance and changed hashes; equal seeds do not guarantee identical WAVs. Full recording, scored/dry, headphone/speaker and resemblance reviews remain pending until actually supplied.
+
+## Excerpt terminal-tail regression (2026-11-01)
+
+ASR word ends are alignment estimates, not safe physical cut points. Before excerpting a final word, compare the source tail beyond the chosen boundary, including low-energy terminal consonants. Keep a source-bound tail margin without including the next utterance; verify the encoded result in context. A short fade can still mask a consonant. For authorized localized repairs, preserve earlier editions and untouched compressed packets when practical; verify actual decoded change bounds and synchronization. Restoring source energy is not itself proof of intelligible phonemes or listening acceptance. See `series_trailer/repair_tail_v7.py` and its focused regression.
+
+A fixed ASR-end plus200ms margin did not settle the introduction’s final consonant in v7. In v8, source-bound restoration and audio-only/native-video reviews disagree. Keep conflicting phoneme judgments unresolved; do not silently choose the favorable model, regenerate repeatedly to obtain a PASS, or treat original source restoration alone as acceptance. Burn caption-tail continuations into delivery copies instead of relying solely on a browser rail.
+
+## Controlled phonetic adjudication follow-up
+
+For v8 introductions, the offline pinned phoneme model differentiated v6 (...ʃə), v7 (...ʃən), and both v8 formats/source (...ʃənz), without supplied text. The final /z/ is predicted near19.50s, after the prior cut margins. This resolves the specific cutoff flag on controlled evidence; it is not broad human naturalness approval. When a phonetic dispute persists, compare exact encoded candidates and original source with a transcript-free acoustic model and known earlier controls. Preserve conflicting raw reports, scope the decision, and stop editing when no concrete defect remains. The optional runner is `series_trailer/adjudicate_tail.py`; pinned dependencies require Python3.12+. Cached local-only inference avoids cloud review-access loops. This adds no routine gate or extra approval.
+
+## Terminal-tail and conflicting-review safeguards
+
+ASR word ends are estimates, not physical cut points. Protect low-energy final consonants and releases using the original waveform and sufficient surrounding context; a fixed margin or short fade can still remove speech. Verify the encoded excerpt without including the next utterance.
+
+For a persistent phonetic dispute, an optional transcript-free acoustic comparison of exact encoded candidates, the original source and earlier controls can provide scoped evidence. Preserve raw conflicting findings, input hashes and model limits; do not clear a flag by majority vote, provenance alone or repeated prompting for a favorable verdict. Such evidence cannot certify emotional naturalness or replace the consolidated human release decision. Stop speculative edits when no concrete defect remains.
+
+A caption continuation must accompany the delivered video: embed it for burned-caption delivery or supply the actual supported subtitle track, rather than relying solely on a private-preview rail. Recheck the handoff to unvoiced graphic copy for collisions and duplicate layers.
+
+The current pinned optional phoneme-review dependencies require Python3.12 or newer. Use an isolated matching environment and cached offline inference where available; unavailable cloud review is not an audio-quality verdict or permission to enable billing. This diagnostic is conditional and adds no routine approval or release stage.
+
+## Isolated GPU alignment recovery
+
+If completed narration is preserved but the separate faster-whisper/CTranslate2 child cannot load `libcublas.so.12`, inspect its CUDA-library search path before reinstalling or rerunning synthesis. The verified refraction recovery reused the existing Qwen environment's NVIDIA library directories through the ASR child's `LD_LIBRARY_PATH`; it generated six alignment records without changing any speech WAV. `software/asr_cuda_env.py` builds that child-only environment and stops if the existing cuBLAS library is absent. Include it in an isolated Colab software bundle when using this adapter. Keep the pinned ASR model, raw failure, attempt records, export hashes and original runtime deadline; export and verify durable media before disconnecting. This is conditional recovery, not a new release gate or permission to extend spending. See [CTranslate2 installation](https://opennmt.net/CTranslate2/installation.html).
+
+
+## Conditional recovery after an export failure
+
+If an authorized Colab run has already demonstrated broken downloads or expired output access, establish a complete supported transfer on a harmless bounded control that covers the proposed file size before another metered narration run. A download click, partial base64 chunks or a completed remote archive is not a verified local copy. Preserve actual archive/chunk hashes, the original deadline and known generation counts; do not silently regenerate or reset retry history after a lost transfer. Close file browsing before releasing a finished runtime so the file pane cannot immediately allocate another one. Resolve owner-only sign-in/verification through the owner, never by bypassing authentication. This is a conditional delivery repair within the existing transfer check, not an additional routine approval.
+
+A verified fallback for the observed Colab download failure is one complete, bounded plain-output export of the requested archive, with base64 decoded locally and both byte length and SHA256 checked before safe manifest import. Prove that entire path on a harmless control first; successful partial chunks do not establish complete-file delivery. Reuse the existing runtime deadline, export immediately when ready and disconnect after durable source verification. A lost-runtime recovery keeps its explicit historical start count plus a reduced new budget; never fabricate old journal events or label regenerated takes as the lost original recording. This is conditional recovery, not the default download path or a new approval stage.
+
+
+## Reported paragraph resets: diagnose the source before the mix
+
+An owner-reported change of vocal character remains unresolved even when the splice has no waveform click and every passage used identical generation controls. Inspect independent-generation boundaries with complete dry thoughts and surrounding context; sample jumps, RMS, spectral balance or estimated pitch locate questions, not perceived identity or naturalness. Music cannot qualify or conceal that defect. If a connected-passage audition is warranted, keep complete sentences within the existing chunk bounds, preserve B’s exact source controls and charge the joint generation against the retry history of every constituent canonical passage. Never reset attempts by merging units. Audition both the internal transition and its external joins before replacing a full soundtrack; timing, captions, scene anchors and music rests must follow the selected actual audio. A new music trial is separately identified and never inherits an unchanged-master listening approval. Reuse the single final candidate decision, not additional approval forms.

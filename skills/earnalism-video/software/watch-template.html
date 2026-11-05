@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Earnalism · {{TOPIC}}</title><style>*{box-sizing:border-box}body{background:#081522;color:#f5ebd3;font:17px/1.5 Arial;margin:0}main{max-width:1040px;margin:auto;padding:24px}header{color:#d5aa63;font-size:14px;letter-spacing:2px}h1{font-size:clamp(25px,4vw,40px);line-height:1.15;margin:14px 0}video{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:16/9;margin:20px auto;background:#081522}a{color:#d5aa63}.note{color:#adc7d5;font-size:14px}.links{display:flex;gap:16px;flex-wrap:wrap}details{margin-top:24px}.player-controls{display:flex;flex-wrap:wrap;gap:8px}.player-controls button{font:inherit;padding:8px 12px;cursor:pointer}#caption-safe-area{min-height:4.5em;padding:14px 18px;background:#102b39;color:#fff;font-size:clamp(18px,2.1vw,24px);line-height:1.4;text-align:center;border-radius:8px;overflow-wrap:anywhere}#diagram-key{font-size:19px;line-height:1.45;padding:12px 0;color:#e1b76d}#diagram-key:empty{display:none}.diagram-label-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:8px}.diagram-label-card{padding:12px;background:#102b39;border:1px solid #38566a;border-radius:8px;min-width:0}.diagram-label-name{display:block;font-size:14px;letter-spacing:.04em;color:#adc7d5}.diagram-label-value{display:block;font-size:20px;font-weight:700;line-height:1.3;color:#f5eedb;margin-top:4px;overflow-wrap:break-word}.diagram-label-note{font-size:16px;line-height:1.4;margin:8px 0 0;color:#e1b76d}#player-shell:fullscreen{background:#081522;padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px;height:100dvh}#player-shell:fullscreen video{flex:1 1 0;min-height:80px;height:auto;max-height:none;max-width:100%;aspect-ratio:auto;object-fit:contain;margin:0 auto;width:100%}#player-shell:fullscreen #diagram-key{display:none}#player-shell:fullscreen #preview-status{display:none}#player-shell:fullscreen .player-controls{justify-content:center;margin:0;flex:0 0 auto}#player-shell:fullscreen #caption-safe-area{min-height:3.5em;flex:0 0 auto}#caption-status:empty{display:none}@media(max-width:600px){main{padding:16px}#player-shell video{margin-bottom:0}.player-controls button{min-height:44px}#diagram-key{border-bottom:1px solid #38566a}}body[data-portrait] #caption-safe-area,body[data-portrait] #diagram-key{display:none}</style><main><h1>{{TOPIC}}</h1><p class="note">Animated explainer · Private review</p><section id="player-shell" aria-label="Video and synchronized captions"><video id="sample" controls controlsList="nofullscreen nodownload" disableremoteplayback playsinline preload="auto" width="1920" height="1080" poster="landscape.png"><source src="landscape-preview.mp4?v=7" type="video/mp4"><source src="landscape-preview.webm?v=4" type="video/webm"><track kind="captions" src="captions.vtt" srclang="en" label="English" default></video><div id="caption-safe-area" aria-label="Synchronized captions"><span id="caption-text"></span><p id="caption-status" role="status" class="note"></p></div><div id="diagram-key" aria-label="Current diagram labels"></div><p id="preview-status" role="status" class="note">Preview ready. If the picture is blank, reload the preview or switch codec.</p><p class="player-controls"><button id="fullscreen-preview" type="button">Fullscreen video</button><button id="toggle-captions" type="button" aria-pressed="true">Captions: on</button> <button id="replay-preview" type="button">Replay from beginning</button><button id="reload-preview" type="button">Reload preview</button> <button id="switch-codec" type="button">Switch WebM / MP4</button></p></section>{{VISUAL_DESCRIPTION}}<p class="note" data-production-disclosure>{{DISCLOSURE}}</p><p class="note">Review the voice and visible animation. Human listening and synchronization approval are required. The speech review below records open differences and verified resolutions.</p><p><button type="button" style="background:#d5aa63;color:#081522;border:0;border-radius:6px;padding:10px 16px;font:inherit;cursor:pointer" onclick="const v=document.getElementById('sample');v.currentTime=Math.max(0,v.duration-14);v.play()">Review ending</button></p><nav class="links"><a href="portrait-short.html">Portrait edition for Shorts</a><a href="landscape-narration-only.mp4">Narration-only listening comparison</a></nav><p class="note" data-sources-context>{{DIAGRAM_CONTEXT}}</p><details data-role="speech-review"><summary>Speech review and resolutions</summary>{{ASR_REVIEW}}</details><details data-role="answer-key"><summary>Understanding checks</summary>{{UNDERSTANDING_CHECKS}}</details><details data-role="transcript-sources"><summary>Transcript and source</summary><p>{{TRANSCRIPT}}</p>{{SOURCES}}</details></main></html><script>
+let video=document.getElementById('sample');
+const status=document.getElementById('preview-status'),key=location.pathname+'-playhead-v7';
+let codec=0,serial=0,returnQueued=false;
+function remember(){try{sessionStorage.setItem(key,String(video.currentTime||0));}catch{}}
+const captionRail=document.getElementById('caption-safe-area'),captionText=document.getElementById('caption-text'),captionStatus=document.getElementById('caption-status'),diagramKey=document.getElementById('diagram-key');
+let captionsEnabled=true;try{captionsEnabled=sessionStorage.getItem(key+'-captions')!=='off';}catch{}
+const labelTimeline={{LABEL_TIMELINE}};
+let lastDiagramEntry=null;
+function showDiagram(entry){
+ if(entry===lastDiagramEntry)return;
+ lastDiagramEntry=entry;diagramKey.replaceChildren();
+ if(!entry)return;
+ const cards=document.createElement('div');cards.className='diagram-label-cards';
+ for(const item of entry.cards||[]){
+  const card=document.createElement('div');card.className='diagram-label-card';
+  for(const [cls,text] of [['diagram-label-name',item.label],['diagram-label-value',item.value]]){
+   const span=document.createElement('span');span.className=cls;span.textContent=text;card.append(span);
+  }
+  cards.append(card);
+ }
+ diagramKey.append(cards);
+ if(entry.note){const note=document.createElement('p');note.className='diagram-label-note';note.textContent=entry.note;diagramKey.append(note);}
+}
+function showCaption(){
+ const track=video.textTracks[0];
+ if(track)track.mode='hidden'; // Cues stay active without native picture overlays.
+ captionText.textContent=captionsEnabled&&track?[...track.activeCues||[]].map(c=>c.text).join(' '):'';
+ captionRail.setAttribute('aria-label',captionsEnabled?'Synchronized captions':'Captions off');
+ const t=video.currentTime,entry=labelTimeline.find(e=>t>=e.start&&t<e.end);
+ showDiagram(entry);
+}
+function bind(node,time=null,modes=[]){
+ node.addEventListener('loadeddata',showCaption);
+ node.querySelector('track')?.addEventListener('error',()=>{captionText.textContent='';captionStatus.textContent='Captions unavailable. Reload the preview.';});
+ node.querySelector('track')?.addEventListener('load',()=>{captionStatus.textContent='';if(node.textTracks[0]){node.textTracks[0].mode='hidden';node.textTracks[0].addEventListener('cuechange',showCaption);}showCaption();});
+ node.addEventListener('seeked',showCaption);
+ node.addEventListener('timeupdate',showCaption);
+ node.addEventListener('loadedmetadata',()=>{if(time!==null)node.currentTime=Math.min(time,Math.max(0,node.duration-.1));modes.forEach((mode,i)=>{if(node.textTracks[i])node.textTracks[i].mode=mode;});},{once:true});
+ node.addEventListener('timeupdate',remember);node.addEventListener('pause',()=>{remember();status.textContent=node.ended?'Finished. Use Replay from beginning to watch again.':'Paused. Press Play to continue.';});
+ node.addEventListener('ended',()=>status.textContent='Finished. Use Replay from beginning to watch again.');
+ node.addEventListener('error',()=>status.textContent='Preview failed. Switch codec or reload the preview.');
+ node.addEventListener('stalled',()=>status.textContent='Preview stalled. Reload preview creates a fresh player.');
+ node.addEventListener('playing',()=>status.textContent='Playing. If the picture is missing, Reload preview restores a fresh MP4 player.');
+}
+function recover(switchCodec=false){
+ const old=video,time=Number.isFinite(old.currentTime)?old.currentTime:0,modes=[...old.textTracks].map(t=>t.mode);
+ remember();old.pause();codec=switchCodec?1-codec:0;
+ const fresh=old.cloneNode(true),sources=[...fresh.querySelectorAll('source')];
+ fresh.removeAttribute('src');fresh.src=sources[codec].getAttribute('src');fresh.dataset.generation=String(++serial);
+ fresh.muted=old.muted;fresh.volume=old.volume;fresh.playbackRate=old.playbackRate;
+ old.replaceWith(fresh);video=fresh;bind(video,time,modes);video.load();
+ // Release the old decoder and compositor surface, rather than reloading the same element.
+ old.removeAttribute('src');old.querySelectorAll('source').forEach(s=>s.remove());old.load();
+ status.textContent='Preview restored with '+(codec?'WebM':'MP4')+'. Press play to continue.';
+}
+const shell=document.getElementById('player-shell'),fullscreenButton=document.getElementById('fullscreen-preview');
+fullscreenButton.onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else if(shell.requestFullscreen)shell.requestFullscreen().catch(()=>status.textContent='Fullscreen unavailable. Rotate your device or open the portrait edition.');else status.textContent='Fullscreen unavailable. Rotate your device or open the portrait edition.';};
+document.addEventListener('fullscreenchange',()=>fullscreenButton.textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen video');
+const captionButton=document.getElementById('toggle-captions');
+if(!captionButton.disabled){captionButton.setAttribute('aria-pressed',String(captionsEnabled));captionButton.textContent='Captions: '+(captionsEnabled?'on':'off');}
+captionButton.onclick=()=>{const on=captionButton.getAttribute('aria-pressed')!=='true';captionsEnabled=on;try{sessionStorage.setItem(key+'-captions',on?'on':'off');}catch{}showCaption();captionButton.setAttribute('aria-pressed',String(on));captionButton.textContent='Captions: '+(on?'on':'off');};
+document.getElementById('replay-preview').onclick=()=>{video.pause();video.currentTime=0;showCaption();remember();video.play().catch(()=>status.textContent='Replay ready. Press Play to start.');};
+document.getElementById('reload-preview').onclick=()=>recover();
+document.getElementById('switch-codec').onclick=()=>recover(true);
+let initial=null;try{const stored=sessionStorage.getItem(key);if(stored!==null)initial=Number(stored);}catch{}
+bind(video,Number.isFinite(initial)?initial:null);
+function returnToPreview(){if(returnQueued)return;returnQueued=true;queueMicrotask(()=>{returnQueued=false;recover();});}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){remember();video.pause();}else returnToPreview();});
+window.addEventListener('pagehide',remember);
+window.addEventListener('pageshow',event=>{if(event.persisted)returnToPreview();});
+</script>

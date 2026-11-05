@@ -1,0 +1,15 @@
+{
+  "original_synthesis": true,
+  "third_party_samples": [],
+  "paper_seconds": [
+    0.04,
+    0.89
+  ],
+  "hop_start_seconds": 1.18,
+  "landings_seconds": [
+    1.88,
+    2.2
+  ],
+  "source_sha256": "092806004e5b65f27b055075271ed45a2ab554d23cf8aa6a6e70387d613048bf",
+  "recording_sha256": "0d8e1ca0201d10586f59da09172655898c7002b1c24b7a5c4e2b531519851454"
+}

@@ -1,0 +1,16 @@
+{
+  "version": "earnalism-flowing-paired-v1",
+  "seconds": 3,
+  "design": "Flowing page reveal, rest of lockup visible first, paired red L/caret hop",
+  "selected_by": "Owner request to finalize this combined version as the standard intro, 2026-10-27",
+  "selection_scope": "Standard intro creative selection; all videos remain private for review. No episode or publication approval.",
+  "portrait": "Separately fitted portrait adaptation of selected design; private review",
+  "logo_source": "https://theearnalism.com/assets/brand/earnalism-brand-lockup.png",
+  "files": {
+    "production-lockup.png": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+    "sound-provenance.json": "4d7faa611abd849b4a2233528fc179344562186a28a2273eb035de46576f9c11",
+    "landscape.mp4": "443be73b41cbcef6ae533dc16f843ba701cf9ef44240d33c6ea0e0a912cb421a",
+    "portrait.mp4": "8ffd07e69bd4715dc06e26eccaf7b884f01793ea411f736b04486ebc1ab7470e",
+    "source-sound.wav": "0d8e1ca0201d10586f59da09172655898c7002b1c24b7a5c4e2b531519851454"
+  }
+}

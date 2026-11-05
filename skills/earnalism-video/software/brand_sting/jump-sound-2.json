@@ -1,0 +1,11 @@
+{
+  "original_synthesis": true,
+  "third_party_samples": [],
+  "landings_seconds": [
+    0.83,
+    1.12,
+    1.42
+  ],
+  "recording_sha256": "3354093ea64fc356c83241e4c760f440ed65fdf9a57ece9b05ef4a9808d76bbf",
+  "source_sha256": "3547649936e1c733c65e5ddb2644eb6e9b4cb1c734112855ca2f442e7a561eb5"
+}

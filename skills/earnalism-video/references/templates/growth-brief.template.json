@@ -1,0 +1,66 @@
+{
+  "schema": "earnalism.growth-brief.v1",
+  "purpose": "Optional editorial/experiment aid; null fields do not block generation or add a release gate",
+  "topic": null,
+  "viewer": null,
+  "learning_outcome": null,
+  "demand_evidence_or_hypothesis": null,
+  "visible_opening_promise": null,
+  "causal_demonstration": null,
+  "complete_payoff": null,
+  "source_references": [],
+  "platform_variants": {
+    "instagram_reel": {
+      "native_hook": null,
+      "scope_and_length_reason": null,
+      "cover_and_crop": null,
+      "caption_first_line": null,
+      "one_cta_and_available_destination": null,
+      "exposure_mode": "ordinary_reel_unless_trial_separately_authorized"
+    },
+    "youtube_short": {
+      "native_hook": null,
+      "scope_and_length_reason": null,
+      "title_and_cover": null,
+      "one_cta": null,
+      "related_video_id_and_actual_value": null
+    },
+    "youtube_short_landscape": {
+      "title_and_thumbnail_promise": null,
+      "search_or_browse_hypothesis": null,
+      "scope_and_length_reason": null,
+      "one_cta_and_available_next_lesson": null
+    },
+    "youtube_deeper_landscape": {
+      "additional_value_justifying_length": null,
+      "section_questions_and_payoffs": [],
+      "title_and_thumbnail_promise": null,
+      "one_cta_and_available_next_lesson": null
+    }
+  },
+  "experiment": {
+    "status": "optional_not_started",
+    "one_main_change": null,
+    "platform_and_format": null,
+    "primary_native_metric_and_denominator": null,
+    "practical_effect_of_interest": null,
+    "guardrails": [],
+    "baseline_and_matching_limits": null,
+    "measurement_window": null,
+    "adopt_revise_retire_rule": null,
+    "publication_or_external_test_authority": "not_granted_by_this_brief"
+  },
+  "existing_review_reminders": [
+    "Original factual mechanism; clear graphical meaning and readable labels",
+    "Accepted B voice, cleared music and intentional silences preserved",
+    "Actual-audio captions, transcript, sources and rights retained",
+    "Approved exact branding; no added tagline",
+    "One relevant CTA; #earnalism #learnalism together in saved copy",
+    "Native cover/caption/settings readback in authorized delivery",
+    "One consolidated final candidate decision; growth studies remain advisory"
+  ],
+  "current_growth_review_reference": null,
+  "applied_growth_lessons": [],
+  "growth_lesson_policy": "Reuse only applicable supported or provisionally adopted platform/surface decisions; label experimental packaging/length/CTA/time ideas as hypotheses. Missing optional data does not block production.",
+  "learning_guardrail": "Preserve accurate explanation and qualifications. Prediction/transfer prompts are optional teaching tools; saves, replay or confidence do not prove learning."
+}

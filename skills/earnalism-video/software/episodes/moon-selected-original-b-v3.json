@@ -1,0 +1,221 @@
+{
+  "topic": "Why does the Moon have phases?",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses",
+        "first quarter means quarter-cycle progress while half the visible disk is illuminated"
+      ],
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "nasa-eclipses",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/moon/eclipses/",
+      "claims": [
+        "lunar eclipse geometry",
+        "Moon orbital tilt prevents monthly eclipses"
+      ],
+      "accessed": "2026-10-26"
+    },
+    {
+      "id": "usno-phases",
+      "publisher": "US Naval Observatory",
+      "url": "https://aa.usno.navy.mil/faq/moon_phases",
+      "claims": [
+        "illuminated disk fractions at quarter and full Moon",
+        "mean synodic cycle about 29.5 days"
+      ],
+      "accessed": "2026-10-28"
+    }
+  ],
+  "rights": {
+    "visuals": "Original SVG and procedural sphere geometry. No external images, samples or melodies.",
+    "narration": "Pinned Qwen stock Ryan; no clone or impersonation. Publication review pending.",
+    "score": "Original composition using pinned VCSL CC0 acoustic piano and harp one-shot recordings; hashes and license retained; listening/resemblance review pending."
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "diagram": "question",
+      "heading": "Why a crescent, if the Moon is round?",
+      "text": "Why does the Moon look like a crescent, when it is still a round world? Watch the light.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s02",
+      "diagram": "sunlight",
+      "heading": "One round Moon. One sunlit half.",
+      "text": "The Moon shines by reflecting sunlight. Roughly half its surface is illuminated at once.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s03",
+      "diagram": "orbit",
+      "heading": "Follow the view from Earth.",
+      "text": "Now let the Moon move around Earth. From the ground, we see different fractions of that sunlit half. The shape we see changes; the Moon itself does not.",
+      "phase_start": 0.12,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "From the ground",
+          "phase": 0.25
+        },
+        {
+          "phrase": "The shape",
+          "phase": 0.5
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s04",
+      "diagram": "phases",
+      "heading": "New → first quarter → full",
+      "text": "Near new Moon, the bright side faces away from us. At first quarter, half the visible disk is bright. First quarter means one quarter of the way through the phase cycle. Near full Moon, almost the entire disk is illuminated.",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "At first quarter",
+          "phase": 0.25
+        },
+        {
+          "phrase": "First quarter means",
+          "phase": 0.25
+        },
+        {
+          "phrase": "Near full Moon",
+          "phase": 0.5
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s05",
+      "diagram": "eclipse",
+      "heading": "A shadow is a different event.",
+      "text": "These phases are not caused by Earth’s shadow. A lunar eclipse is different: Earth lies between the Sun and Moon, and its shadow reaches the Moon. That requires a special alignment.",
+      "phase_start": 0.5,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "A lunar eclipse",
+          "event": "eclipse"
+        },
+        {
+          "phrase": "its shadow",
+          "event": "shadow"
+        }
+      ],
+      "source_ids": [
+        "nasa-eclipses"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s06",
+      "diagram": "cycle",
+      "heading": "A cycle of about 29½ days",
+      "text": "From one new Moon to the next takes about twenty nine and a half days. The bright portion grows and shrinks as our viewpoint changes.",
+      "phase_start": 0,
+      "phase_end": 1,
+      "anchors": [
+        {
+          "phrase": "The bright portion grows",
+          "phase": 0.25
+        },
+        {
+          "phrase": "and shrinks",
+          "phase": 0.65
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s07d",
+      "diagram": "callback",
+      "heading": "Same round world. A different view.",
+      "text": "So that crescent is not a missing piece. It is a different view of a sunlit, round world. See differently.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "narration_seed": 20261028,
+      "voice_profile": "original_warm_baritone_v2"
+    }
+  ],
+  "target_duration_seconds": 90,
+  "music": {
+    "enabled": true,
+    "kind": "original-acoustic-chamber-composition",
+    "no_third_party_recordings": false,
+    "listening_review": "pending; current mix requires review",
+    "palette": "acoustic_v8",
+    "bed_gain_db": 9,
+    "scene_gain_db": {
+      "cycle": -0.5
+    }
+  },
+  "editorial_intent": "Replace the missing-piece intuition with a changing-view explanation; distinguish phases from eclipses.",
+  "editorial_refinements": {
+    "observer_view": "Word-anchored animated bridge from Earth observer into apparent disk; simplified independent mobile staging",
+    "accessibility": "Independent portrait staging and caption-safe diagram area",
+    "learning_check": "Recall prompt followed by changing-view answer",
+    "score": "Same licensed acoustic motif and instruments; score retimed to actual narration, with quiet through the entire quarter explanation.",
+    "first_quarter": "Spoken quarter-cycle explanation retained; regenerate timing and hold the explanatory state from actual new speech."
+  },
+  "production_candidate": true,
+  "requires_learning_acceptance": true,
+  "qualification": "Fresh production-review render from researched Moon content and frozen licensed source assets; not a relabelled fixture or publication approval.",
+  "id": "moon-selected-original-b-v3",
+  "private_test": false,
+  "status": "private-narration-replacement",
+  "voice_selection": {
+    "selected": "original_b",
+    "profile": "original_warm_baritone_v2",
+    "audio_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+    "audio_path": "/path/to/earnalism-studio/video_studio/outputs/moon-original-baritone-audition-v2-import/raw/original_b.wav",
+    "owner_statement": "B works. Go with this.",
+    "recorded_at_utc": "2026-10-28T11:23:42.188767+00:00",
+    "scope": "Owner-selected vocal performance direction from exact private audition; regenerate full narration with this profile. Not approval of new full audio, video or publication.",
+    "full_episode_approval": false,
+    "publication_approval": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "instruction": "An original mature male documentary narrator in his mid-fifties, speaking as a serious, sincere, patient teacher. Keep the same naturally full, grounded chest resonance and calm vocal weight from the opening to the closing. A warm, settled lower register without forcing an artificially deep voice. Measured connected sentences at a steady conversational pace, about 125 words per minute including pauses. Use modest natural emphasis and short consistent pauses. Avoid sudden changes of pitch, breathiness, theatrical voices, chanting, rushed clauses or stretched words. Do not imitate any real person.",
+  "generation_temperature": 0.7,
+  "target_spoken_sentence_wpm": 137,
+  "sentence_pause_seconds": 0.5,
+  "scene_pause_seconds": 0.65,
+  "pitch_shift": false,
+  "owner_request": "Consistent speed and heavier male voice around age 55; a new delivery candidate, not an approved recording",
+  "publication": "PRIVATE",
+  "source_bound_single_pass_tempo_min": 0.75,
+  "source_bound_single_pass_tempo_max": 1.25,
+  "review_band_spoken_wpm": [
+    118,
+    145
+  ],
+  "sentence_padding_seconds": 0.5,
+  "scene_padding_seconds": 0.65,
+  "calibrated_actual_sentence_gap_seconds": 0.55,
+  "calibrated_actual_scene_gap_seconds": 0.7,
+  "pause_timing_note": "Inserted silence is calibrated against actual ASR gaps; retain phonetic shoulders and final word tails."
+}

@@ -1,0 +1,222 @@
+{
+  "collection": "Versilian Community Sample Library",
+  "creator": "Versilian Studios LLC / VCSL contributors",
+  "revision": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+  "license": "CC0-1.0",
+  "recordings": "Individual acoustic piano and concert harp notes; not an imported composition",
+  "samples": [
+    {
+      "instrument": "piano",
+      "key": "A#2",
+      "file": "piano-Asharp2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_A%232_v1_rr1_Player.wav",
+      "sha256": "6653569508248cff83cffb5ab5448a37ada4e007036d947eaaf6c562c719db8b",
+      "git_blob_sha": "9ff56657030f5409a66d6202c127a0bf729fc8e6",
+      "bytes": 3220296,
+      "root_midi": 58
+    },
+    {
+      "instrument": "piano",
+      "key": "A#3",
+      "file": "piano-Asharp3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_A%233_v1_rr1_Player.wav",
+      "sha256": "d6b6618419031245603e88c3245f1f8a4442e39981b103a8fbe5eb5fd5cdd2c3",
+      "git_blob_sha": "1cb059e8a7b5d22ed81dca97cd9d43b35826e214",
+      "bytes": 2234568,
+      "root_midi": 70
+    },
+    {
+      "instrument": "piano",
+      "key": "C3",
+      "file": "piano-C3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_C3_v1_rr1_Player.wav",
+      "sha256": "eb52431464cc160cb7c3576d5087b6cc67326fd903b620088c0874f6bcff4a8e",
+      "git_blob_sha": "f1aad3b5a4eea04cfe4cd05ef85691eeaeedd435",
+      "bytes": 2374332,
+      "root_midi": 60
+    },
+    {
+      "instrument": "piano",
+      "key": "D3",
+      "file": "piano-D3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_D3_v1_rr1_Player.wav",
+      "sha256": "af2195a00925e777ce32ede7e5fba4f4ea617fa6e7bf9147ba0ab8726f44e195",
+      "git_blob_sha": "f110b19acdee6465b9ce6ff45286839ab5eb1736",
+      "bytes": 2256064,
+      "root_midi": 62
+    },
+    {
+      "instrument": "piano",
+      "key": "D4",
+      "file": "piano-D4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_D4_v1_rr1_Player.wav",
+      "sha256": "1cff98cc70bbc9fdfc284cd30cc55450ed68a0cd6fc383b254f6c471fac1914e",
+      "git_blob_sha": "76377d013c4771cf2831b99fb230a6fee2c8d8ac",
+      "bytes": 1168136,
+      "root_midi": 74
+    },
+    {
+      "instrument": "piano",
+      "key": "E3",
+      "file": "piano-E3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_E3_v1_rr1_Player.wav",
+      "sha256": "3986177d766ad67acaeb8d0d53114c4380dea65bc1632938dc597006e5123771",
+      "git_blob_sha": "ca7e6be66103bb3bd979b8d1ae8d0741cc15cc95",
+      "bytes": 1680460,
+      "root_midi": 64
+    },
+    {
+      "instrument": "piano",
+      "key": "E4",
+      "file": "piano-E4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_E4_v1_rr1_Player.wav",
+      "sha256": "2bbea3d9e280e7b87605eaa01853b9e81c8ce21eae1db61cfb6fa33b94ca449f",
+      "git_blob_sha": "9792f61419d73cf6f7a49e00fc611a1b82975617",
+      "bytes": 1608616,
+      "root_midi": 76
+    },
+    {
+      "instrument": "piano",
+      "key": "F#4",
+      "file": "piano-Fsharp4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_F%234_v1_rr1_Player.wav",
+      "sha256": "252a182b6030b9e23b5b4702b6e9d38cd90e980d4e179809bd874f3e8c699c1b",
+      "git_blob_sha": "0f71741893f3d28ccc2cbefa02a9159af76f8777",
+      "bytes": 1761760,
+      "root_midi": 78
+    },
+    {
+      "instrument": "piano",
+      "key": "G#3",
+      "file": "piano-Gsharp3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_G%233_v1_rr1_Player.wav",
+      "sha256": "a812c31c7f474ee603a7a3eb83e6e285ee87878344ce9a372bd00730281852c5",
+      "git_blob_sha": "85d2aad154563f2a6875e7dcd094bcf904c11d5c",
+      "bytes": 2157608,
+      "root_midi": 68
+    },
+    {
+      "instrument": "piano",
+      "key": "G#4",
+      "file": "piano-Gsharp4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_G%234_v1_rr1_Player.wav",
+      "sha256": "09f8fc60ff5fde5ca7bc80f189885c2678df7405adf27a251139eae8c39c6390",
+      "git_blob_sha": "4b8bd147a5af7046789b5a5cec0312af6d85c1a8",
+      "bytes": 1381584,
+      "root_midi": 80
+    },
+    {
+      "instrument": "harp",
+      "key": "D4",
+      "file": "harp-D4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Composite%20Chordophones/Concert%20Harp/KSHarp_D4_mf1.wav",
+      "sha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
+      "git_blob_sha": "342eec5072e2c0a7fb7cb03b6f5b46d84ed6ac69",
+      "bytes": 1921690,
+      "root_midi": 62
+    },
+    {
+      "instrument": "harp",
+      "key": "F4",
+      "file": "harp-F4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Composite%20Chordophones/Concert%20Harp/KSHarp_F4_mf1.wav",
+      "sha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
+      "git_blob_sha": "a1966639b165b623ac533270d616814cbc5389ef",
+      "bytes": 1913498,
+      "root_midi": 65
+    },
+    {
+      "instrument": "harp",
+      "key": "A4",
+      "file": "harp-A4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Composite%20Chordophones/Concert%20Harp/KSHarp_A4_mf1.wav",
+      "sha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
+      "git_blob_sha": "acbece38a84e886cb5516e0f29d6ff5d38900fe1",
+      "bytes": 2143618,
+      "root_midi": 69
+    },
+    {
+      "instrument": "harp",
+      "key": "C5",
+      "file": "harp-C5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Composite%20Chordophones/Concert%20Harp/KSHarp_C5_mf1.wav",
+      "sha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
+      "git_blob_sha": "748b4b1366616972c2a22e81fc48a86178801c45",
+      "bytes": 1237142,
+      "root_midi": 72
+    },
+    {
+      "instrument": "piano",
+      "key": "C2",
+      "file": "piano-C2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_C2_v1_rr1_Player.wav",
+      "sha256": "eba9adfb3977605a494830081d4e9e4ff0a4efd017439fe402a208aca9f11d7a",
+      "git_blob_sha": "d9a3a86ade95ae1015e6847728c209b67a829710",
+      "bytes": 2939740,
+      "root_midi": 48
+    },
+    {
+      "instrument": "piano",
+      "key": "D2",
+      "file": "piano-D2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_D2_v1_rr1_Player.wav",
+      "sha256": "b573344ccba8ac6a0b7717f865da6d30df40a0574bb5884d9292206209316b79",
+      "git_blob_sha": "a7548612db91c9dd678b118f81e4698e3d4b82c9",
+      "bytes": 2365360,
+      "root_midi": 50
+    },
+    {
+      "instrument": "piano",
+      "key": "E2",
+      "file": "piano-E2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_E2_v1_rr1_Player.wav",
+      "sha256": "9fca1df9661fc3ea3cc32b5e5e605672a7d63bea56d5f04ca33e1d2eebf34b89",
+      "git_blob_sha": "9f851e4fbe415d4fc2e9abba9721a289d75c15e4",
+      "bytes": 3284080,
+      "root_midi": 52
+    },
+    {
+      "instrument": "piano",
+      "key": "A1",
+      "file": "piano-A1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_A1_v1_rr1_Player.wav",
+      "sha256": "a1e432f8ca90168e957b59d1777c0dcdadeef61ae4344843b1592f89d140a7cb",
+      "git_blob_sha": "291365ec3e390fcd8a47a863e21ffd6a14a5692e",
+      "bytes": 3614856,
+      "root_midi": 45
+    },
+    {
+      "instrument": "piano",
+      "key": "F#2",
+      "file": "piano-Fsharp2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_F%232_v1_rr1_Player.wav",
+      "sha256": "b2f0d5b6e58a9e05879cf2da90240cd3aa4e8c565e488d77ed5718d430cb59b6",
+      "git_blob_sha": "0ec581c5af22b6da5281924172e57440ee6c7cf5",
+      "bytes": 2964540,
+      "root_midi": 54
+    },
+    {
+      "instrument": "piano",
+      "key": "G#2",
+      "file": "piano-Gsharp2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Kawai/Sustains/GPiano_sus_G%232_v1_rr1_Player.wav",
+      "sha256": "053d5e2e25cbff8b3c65905963d1aa184003a1a44268f4ca5cce45e412789296",
+      "git_blob_sha": "4877419343a30c043d676ac53630691d546a2056",
+      "bytes": 2431284,
+      "root_midi": 56
+    }
+  ],
+  "documents": [
+    {
+      "file": "LICENSE",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/LICENSE",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/README.md",
+      "sha256": "6f7214a188f106c917d6503748485413c3e47cf56bce69f82beb9d16aa0894a9"
+    }
+  ],
+  "pitch_convention": "Piano filenames use C3 for middle C (verified D3 ~293Hz and D4 ~587Hz); harp uses C4 for middle C. Root MIDI mappings compensate."
+}
