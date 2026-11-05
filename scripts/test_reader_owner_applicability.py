@@ -10,7 +10,8 @@ FROZEN = {'p': {'schema': 'earnalism.first_guard_parent_source_projection.v1', '
 class ReaderOwnerApplicabilityTests(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
-  self.b,_,_=fixture(Path(self.tmp.name));c=self.b['first_guard_pair']
+  journal=Path(self.tmp.name)/'journal';journal.mkdir(mode=0o700)
+  self.b,_,_=fixture(journal);c=self.b['first_guard_pair']
   pr={**FROZEN['p'],'source_sha':p.CURRENT_CLOSED,'source_delivery_sha256':'b'*64,'closed_server_sha256':'c'*64,'runtime_manifest_sha256':'d'*64}
   core={**FROZEN['k'],'parent_source_projection_sha256':p.digest(pr)}
   c.update(projection=pr,core=core,owner_acceptance=copy.deepcopy(FROZEN['o']))
@@ -27,6 +28,10 @@ class ReaderOwnerApplicabilityTests(unittest.TestCase):
  def test_preserved_owner_and_current_projection(self):
   before=copy.deepcopy(self.b);self.validate(actual=self.actual());self.assertEqual(before,self.b)
   self.assertEqual(self.b['first_guard_pair']['owner_acceptance'],FROZEN['o'])
+ def test_shared_parent_still_rejected(self):
+  parent=Path(self.tmp.name)/'shared';parent.mkdir(mode=0o777);parent.chmod(0o777)
+  journal=parent/'journal';journal.mkdir(mode=0o700)
+  with self.assertRaisesRegex(ValueError,'Private owner-matched journal custody'):fixture(journal)
  def test_child_uses_same_backend_role_without_relabeled_frontend(self):
   self.b['first_guard_parent_operation_id']='1'*64;self.b['source_sha']='2'*40;self.b.pop('native_source_successor');self.validate()
  def test_bridge_does_not_supply_reader_or_runtime_acceptance(self):
