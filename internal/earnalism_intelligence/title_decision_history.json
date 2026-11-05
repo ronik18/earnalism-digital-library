@@ -14441,5 +14441,26 @@
     "private_custody_followup": "Independently review the Root admission boundary and compare both request inventories before sealing; offline tests are not actual admission or provider qualification.",
     "bicharak": "Retained fidelity/sync and closed resource limits unchanged; no new audio/inference or acceptance claim.",
     "next_exact_prompt": "Independently review focused historical-request regression and dependency pins; run all exact-head CI/reviews, match-head merge/tree equality, then rebind existing native plan and independently qualify actual custody before any stage."
+  },
+  "reader_mode_acceptance_20261105": {
+    "at": "2026-11-05T08:41:02.558481+05:30",
+    "event": "READER_MODE_BOUND_ACCEPTANCE_APPLICABILITY",
+    "base": "1fce3751fe1f74cbbe1e9ed873396bcfa0cea5af",
+    "scope": "SOURCE_ONLY_NOT_NATIVE_ACCEPTANCE",
+    "finding": "All current explicit live-title modes are commercial; zero balance does not create a free full-book lease. A public three-page preview or no-lease denial cannot substantiate full-free-pilot or positive protected Reader acceptance.",
+    "correction": "Bind applicability to the exact deployed-role committed policy, service allowlist and observed runtime. Active pilots require exact per-title genuine evidence; no configured pilot is explicit N/A with no fabricated PASS. Recheck before final seal and crash retirement. Public/protected Reader, Listener/accounting, recovery, source/custody and action limits remain mandatory.",
+    "browser_safety": "Authenticated Reader UI may persist position/telemetry and boundary controls may start a metered lease. Distinguish GET-only evidence from rendered UI and never start/transfer/end a lease to discover eligibility.",
+    "validation": "39 focused and 247 composed source tests PASS; independent source review. No runtime/ledger/provider PASS inferred.",
+    "preservation": "No application/frontend/backend policy or entitlement change, no new frontend build, no native action, capture, grant, balance, paid session or allowance renewal.",
+    "next_exact_prompt": "Finish exact-head CI and published review, merge only matching reviewed head/tree, then rebind the existing guarded-release plan while preserving the already-staged artifact and original budget. Consume no capture before actual remaining gates are ready."
+  },
+  "reader_enforcement_scope_20261105": {
+    "at": "2026-11-05T08:54:42.844788+05:30",
+    "event": "READER_PROTECTED_ENFORCEMENT_SCOPE_CLARIFICATION",
+    "scope": "SOURCE_SEMANTICS_NOT_NATIVE_PASS",
+    "correction": "The accepted Reader contract does not mandate a new paid premium-text session. Protected entitlement enforcement may be established by actual authorization/no-lease denial plus exact source/protocol/handler preservation within the accepted contract. Do not turn this negative proof into positive premium delivery, billing or mobile PASS.",
+    "provenance": "Accepted Reader #536 three-public/one-protected refers to public domain roles and the protected Vercel SSO alias, not a premium-content lease. #537 is Admin activation inspection.",
+    "account_safety": "Zero balance does not grant a free commercial lease and is not needed for GET-only preview. Rendered authenticated Reader UI can write position/telemetry; boundary controls can start a metered lease. Never label this UI GET-only or start/transfer/settle a lease to discover eligibility.",
+    "unchanged_gates": "Configured full-free pilots still require genuine applicable native receipts; inactive mode is explicit N/A. Current runtime/source, Reader boundary, Listener/accounting and recovery evidence remain mandatory. No source proof is native readiness; no additional grant, action, capture, purchase or paid session is authorized."
   }
 }
