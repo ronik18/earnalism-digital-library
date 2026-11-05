@@ -89,7 +89,7 @@ os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]]
             result[key] = p.stdout.strip() if p.returncode == 0 else None
         return result
 
-    def run_admission(self, clone, *, pin=None, fail=False, source_only=False):
+    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None):
         prefix, pair, blobs = history_parts()
         script = prefix + '''
 bindings=("$PAIR_HISTORICAL_PIN:backend/server.py")
@@ -106,13 +106,16 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'PAIR_BOOTSTRAP_PIN': pin or self.fixture.bootstrap,
             'PAIR_BINDINGS_RESULT': str(self.workspace / 'bindings-result'),
             'PAIR_SOURCE_ONLY': 'true' if source_only else 'false',
+            'HISTORICAL_PAIR_CONTROLLER_SHA': reference or self.fixture.controller,
+            'HISTORICAL_PAIR_CONTROLLER_TREE': reference_tree or self.fixture.git('rev-parse', (reference or self.fixture.controller)+'^{tree}').decode().strip(),
+            'HISTORICAL_PAIR_BOOTSTRAP_SHA': self.fixture.bootstrap,
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
         commands = [json.loads(line) for line in self.commands.read_text().splitlines()]
         return result, commands
 
-    def assert_exact_body_fetches(self, commands):
+    def assert_exact_body_fetches(self, commands, *, historical_reference=False):
         f = self.fixture
         expected = {f.git('rev-parse', ref + ':' + path).decode().strip()
             for ref, path in [(f.bootstrap, 'backend/server.py'),
@@ -126,7 +129,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             self.assertNotIn('--unshallow', args)
             self.assertNotIn('--all', args)
         self.assertEqual(sum('--filter=tree:0' in args for args in commands), 1)
-        self.assertEqual(sum('--refetch' in args for args in commands), 1)
+        self.assertEqual(sum('--refetch' in args for args in commands), 2 if historical_reference else 1)
 
     def test_shallow_merge_head_hydrates_only_exact_bodies_and_runs_six_historical_cases(self):
         self.descendants(2)
@@ -158,7 +161,48 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         result, commands = self.run_admission(clone, source_only=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn('HISTORICAL_PAIR_ONLY_NOT_CURRENT_BACKEND_RECOVERY_QUALIFICATION', result.stdout)
-        self.assert_exact_body_fetches(commands)
+        self.assert_exact_body_fetches(commands, historical_reference=True)
+        self.assert_historical_controller_export(clone)
+
+    def assert_historical_controller_export(self, clone):
+        workflow = (ROOT / '.github/workflows/regression.yml').read_text()
+        code = workflow.split("          python3 - <<'PYEXPORT'\n", 1)[1].split('\n          PYEXPORT', 1)[0]
+        code = textwrap.dedent(code)
+        original = Path.cwd()
+        env = {'HISTORICAL_PAIR_CONTROLLER_SHA':self.fixture.controller,
+               'HISTORICAL_PAIR_CONTROLLER_TREE':self.fixture.git('rev-parse', self.fixture.controller+'^{tree}').decode().strip(),
+               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'RUNNER_TEMP':str(self.workspace)}
+        (self.workspace/'paired-helper-proof').mkdir()
+        from scripts.purchase_guard_source import validate_paired_source
+        namespace = {'Path':Path,'os':os,'json':json,'validate_paired_source':validate_paired_source}
+        with patch.dict(os.environ, env):
+            try:
+                os.chdir(clone)
+                exec(compile(code, 'actual-workflow-historical-controller', 'exec'), namespace)
+            finally:
+                os.chdir(original)
+        current = self.fixture.git('rev-parse','HEAD').decode().strip()
+        context = json.loads((self.workspace/'paired-helper-proof/historical-context.json').read_text())
+        self.assertEqual(context['ci_checkout_sha'], current)
+        self.assertEqual(context['historical_controller_sha'],self.fixture.controller)
+        self.assertFalse(context['current_candidate_recovery_qualified'])
+        self.assertNotEqual(current,self.fixture.controller)
+        report=json.loads((self.workspace/'paired-helper-proof/offline-export-report.json').read_text())
+        self.assertEqual(report['controller_source'],self.fixture.controller)
+        self.assertEqual(report['source'],self.fixture.bootstrap)
+        self.assertFalse(report['native_archive_qualification'])
+
+    def test_wrong_historical_controller_role_is_rejected(self):
+        clone = self.clone()
+        result, commands = self.run_admission(clone, source_only=True, reference=self.fixture.parent)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args) for args in commands))
+
+    def test_wrong_historical_tree_is_rejected(self):
+        clone = self.clone()
+        result, commands = self.run_admission(clone, source_only=True, reference_tree='0'*40)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args) for args in commands))
 
     def test_manual_release_still_rejects_new_application_against_old_recovery(self):
         self.fixture.write('backend/later_reviewed_application.py', b'fixture-only new application')
