@@ -1,0 +1,4 @@
+interface:
+  display_name: "Earnalism Audiobook GO LIVE"
+  short_description: "Autonomous title-to-release audiobook workflow"
+  default_prompt: "Use $earnalism-audiobook-go-live to resume or produce the authorized title, reuse accepted evidence and complete the supported publication workflow without repeated routine approvals. Apply full-book narrative direction, stable voice and grammatical pauses, licensed content-led scoring and exact final scored-mix owner review."
