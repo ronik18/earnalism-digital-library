@@ -43,6 +43,7 @@ jobs:
       HISTORICAL_PAIR_CONTROLLER_SHA: babb32bb6be02caafb996d090d6ce95586c2d985
       HISTORICAL_PAIR_CONTROLLER_TREE: 9a09e62f58f06eb8ac516dd5671817b31e8cf136
       HISTORICAL_PAIR_BOOTSTRAP_SHA: 65ca071ebebba3edb73ab44fd13c7e00f95b54e6
+      HISTORICAL_PAIR_APPLICATION_SHA: fe38e8a82844bf0b1682aede0a4bf550e5fe1ec2
       # Avoid retaining a second wheel/download copy beside the isolated UAT environment.
       PIP_NO_CACHE_DIR: "1"
       npm_config_cache: ${{ github.workspace }}/.npm-cache
@@ -176,6 +177,9 @@ jobs:
               # Fetch this exact historical tree first. HEAD's bounded commit
               # admission below then restores ancestry past its shallow edge.
               git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_CONTROLLER_SHA"
+              [[ "$HISTORICAL_PAIR_APPLICATION_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_APPLICATION_SHA"
+              bindings+=("$HISTORICAL_PAIR_APPLICATION_SHA:backend/server.py")
             fi
             # Finite descendant metadata for the retained A/B role history, not
             # authority. Only commits for HEAD ancestry; no trees or file blobs.
@@ -388,6 +392,7 @@ jobs:
           patterns='/backend/\n/scripts/build_runtime_source_manifest.py\n/internal/legal/purchase_guard_source.json\n/internal/legal/purchase_guard_owner_acceptance.json\n/.gitignore\n/.gitattributes\n'
           subprocess.run(['git','-C',str(controller),'sparse-checkout','set','--no-cone','--stdin'],input=patterns,text=True,check=True)
           subprocess.run(['git','-C',str(controller),'read-tree','-mu','HEAD'],check=True)
+          assert json.loads((controller/'internal/legal/purchase_guard_source.json').read_text())['application_source_sha']==os.environ['HISTORICAL_PAIR_APPLICATION_SHA']
           pair=validate_paired_source(controller); b=pair['bootstrap_source_sha']
           assert pair['controller_source_sha']==reference and b==os.environ['HISTORICAL_PAIR_BOOTSTRAP_SHA']
           assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=controller,text=True).strip()==os.environ['HISTORICAL_PAIR_CONTROLLER_TREE']

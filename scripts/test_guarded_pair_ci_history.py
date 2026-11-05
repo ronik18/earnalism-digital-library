@@ -122,6 +122,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'HISTORICAL_PAIR_CONTROLLER_SHA': reference or self.fixture.controller,
             'HISTORICAL_PAIR_CONTROLLER_TREE': reference_tree or self.fixture.git('rev-parse', (reference or self.fixture.controller)+'^{tree}').decode().strip(),
             'HISTORICAL_PAIR_BOOTSTRAP_SHA': self.fixture.bootstrap,
+            'HISTORICAL_PAIR_APPLICATION_SHA': json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
@@ -184,7 +185,7 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         original = Path.cwd()
         env = {'HISTORICAL_PAIR_CONTROLLER_SHA':self.fixture.controller,
                'HISTORICAL_PAIR_CONTROLLER_TREE':self.fixture.git('rev-parse', self.fixture.controller+'^{tree}').decode().strip(),
-               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'RUNNER_TEMP':str(self.workspace)}
+               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'HISTORICAL_PAIR_APPLICATION_SHA':json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],'RUNNER_TEMP':str(self.workspace)}
         (self.workspace/'paired-helper-proof').mkdir()
         from scripts.purchase_guard_source import validate_paired_source
         namespace = {'Path':Path,'os':os,'json':json,'validate_paired_source':validate_paired_source}
@@ -231,6 +232,26 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(current['controller_source_sha'],current_controller)
         self.assertEqual(current['bootstrap_source_sha'],current_bootstrap)
         self.assertEqual(current['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
+
+    def test_distinct_historical_application_body_is_explicitly_hydrated(self):
+        f=self.fixture
+        f.normal += b'\ndef safe_new_fixture_feature():\n    return 1\n'
+        f.closed=guard.guard_only_server(guard.sha(f.normal),f.normal)
+        f.write('backend/server.py',f.normal);f.inventory()
+        application=f.commit('distinct historical application body')
+        f.contract={**f.contract,'application_source_sha':application,'application_server_sha256':guard.sha(f.normal),'application_closed_server_sha256':guard.sha(f.closed)}
+        f.write_json(guard.PATH,f.contract);f.parent=f.commit('historical normal parent with distinct application')
+        f.normal_manifest=(f.repo/'backend/.runtime-source-manifest.json').read_bytes()
+        f.write('backend/server.py',f.closed);f.write_json(guard.PATH,{**f.contract,'state':'CLOSED'});f.inventory();f.bootstrap=f.commit('historical closed role')
+        f.write('backend/server.py',f.normal);f.write('backend/.runtime-source-manifest.json',f.normal_manifest)
+        f.paired={**f.contract,'schema':guard.PAIRED_SCHEMA,'guarded_bootstrap_source_sha':f.bootstrap}
+        f.write_json(guard.PATH,f.paired);f.controller=f.commit('historical helper role with distinct application')
+        self.descendants(1)
+        clone=self.clone();result,commands=self.run_admission(clone,source_only=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn((application+':backend/server.py').encode(),(self.workspace/'bindings-result').read_bytes().split(b'\0'))
+        self.assert_historical_controller_export(clone)
         self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
 
     def test_wrong_historical_controller_role_is_rejected(self):
