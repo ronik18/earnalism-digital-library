@@ -102,7 +102,7 @@ os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]]
             result[key] = p.stdout.strip() if p.returncode == 0 else None
         return result
 
-    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None):
+    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None, retained=None, retained_tree=None):
         prefix, pair, blobs = history_parts()
         script = prefix + '''
 bindings=("$PAIR_HISTORICAL_PIN:backend/server.py")
@@ -123,6 +123,8 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'HISTORICAL_PAIR_CONTROLLER_TREE': reference_tree or self.fixture.git('rev-parse', (reference or self.fixture.controller)+'^{tree}').decode().strip(),
             'HISTORICAL_PAIR_BOOTSTRAP_SHA': self.fixture.bootstrap,
             'HISTORICAL_PAIR_APPLICATION_SHA': json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],
+            'RETAINED_PAIR_CONTROLLER_SHA': retained or self.fixture.git('rev-parse','HEAD').decode().strip(),
+            'RETAINED_PAIR_CONTROLLER_TREE': retained_tree or self.fixture.git('rev-parse',(retained or 'HEAD')+'^{tree}').decode().strip(),
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
@@ -185,7 +187,9 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         original = Path.cwd()
         env = {'HISTORICAL_PAIR_CONTROLLER_SHA':self.fixture.controller,
                'HISTORICAL_PAIR_CONTROLLER_TREE':self.fixture.git('rev-parse', self.fixture.controller+'^{tree}').decode().strip(),
-               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'HISTORICAL_PAIR_APPLICATION_SHA':json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],'RUNNER_TEMP':str(self.workspace)}
+               'HISTORICAL_PAIR_BOOTSTRAP_SHA':self.fixture.bootstrap,'HISTORICAL_PAIR_APPLICATION_SHA':json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],'RUNNER_TEMP':str(self.workspace),
+               'RETAINED_PAIR_CONTROLLER_SHA':getattr(self,'retained_controller',self.fixture.git('rev-parse','HEAD').decode().strip()),
+               'RETAINED_PAIR_CONTROLLER_TREE':self.fixture.git('rev-parse',getattr(self,'retained_controller','HEAD')+'^{tree}').decode().strip()}
         (self.workspace/'paired-helper-proof').mkdir()
         from scripts.purchase_guard_source import validate_paired_source
         namespace = {'Path':Path,'os':os,'json':json,'validate_paired_source':validate_paired_source}
@@ -220,11 +224,16 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         f.write_json(guard.PATH,{**f.paired,'guarded_bootstrap_source_sha':current_bootstrap})
         current_controller=f.commit('new controller, historical helper untouched')
         guard.validate_paired_source(f.repo)
+        self.retained_controller=current_controller
+        f.write('backend/diagnostic-only-fixture.py',b'new diagnostic is not retained recovery')
+        f.inventory();f.commit('source-only diagnostic successor')
+        with self.assertRaisesRegex(ValueError,'backend differs'):
+            guard.validate_paired_source(f.repo)
         clone=self.clone()
         invalid,invalid_commands=self.run_admission(clone,pin=current_bootstrap,source_only='invalid')
         self.assertNotEqual(invalid.returncode,0)
         self.assertFalse(any('fetch' in x and not any(y.startswith('--filter=') for y in x) for x in invalid_commands))
-        result,commands=self.run_admission(clone,pin=current_bootstrap,source_only=True)
+        result,commands=self.run_admission(clone,pin=current_bootstrap,source_only=True,retained=current_controller)
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertIn('CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION',result.stdout)
         self.assert_historical_controller_export(clone)
@@ -232,12 +241,16 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertEqual(current['controller_source_sha'],current_controller)
         self.assertEqual(current['bootstrap_source_sha'],current_bootstrap)
         self.assertEqual(current['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        context=json.loads((self.workspace/'paired-helper-proof/retained-context.json').read_text())
+        self.assertNotEqual(context['ci_checkout_sha'],current_controller)
+        self.assertFalse(context['current_candidate_recovery_qualified'])
+        self.assertFalse(context['current_candidate_or_provider_recovery_qualified'])
         workflow=(ROOT/'.github/workflows/regression.yml').read_text()
         code=textwrap.dedent(workflow.split("            python3 - <<'PYCURRENTEXPORT'\n",1)[1].split('\n          PYCURRENTEXPORT',1)[0])
         original=Path.cwd()
         try:
             os.chdir(clone)
-            with patch.dict(os.environ,{'RUNNER_TEMP':str(self.workspace)}):exec(compile(code,'actual-workflow-current-closed-export','exec'),{})
+            with patch.dict(os.environ,{'RUNNER_TEMP':str(self.workspace),'RETAINED_PAIR_CONTROLLER_SHA':current_controller}):exec(compile(code,'actual-workflow-current-closed-export','exec'),{})
         finally:os.chdir(original)
         prepared=json.loads((self.workspace/'paired-helper-proof/current-offline-export-report.json').read_text())
         self.assertEqual(prepared['source'],current_bootstrap)
@@ -247,6 +260,89 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertFalse(prepared['native_archive_qualification']);self.assertEqual(prepared['provider_writes'],0)
         self.assertIn('backend/current-only-fixture.py',{x['path'] for x in prepared['files']})
         self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
+
+    def successor_pair_with_diagnostic(self):
+        f=self.fixture
+        f.write_json(guard.PATH,f.contract)
+        f.write('backend/retained-feature.py',b'retained normal source')
+        f.inventory();f.commit('retained normal parent')
+        normal_manifest=(f.repo/'backend/.runtime-source-manifest.json').read_bytes()
+        f.write('backend/server.py',f.closed)
+        f.write_json(guard.PATH,{**f.contract,'state':'CLOSED'})
+        f.inventory();bootstrap=f.commit('retained closed child')
+        f.write('backend/server.py',f.normal)
+        f.write('backend/.runtime-source-manifest.json',normal_manifest)
+        f.write_json(guard.PATH,{**f.paired,'guarded_bootstrap_source_sha':bootstrap})
+        controller=f.commit('retained controller')
+        f.write('backend/diagnostic.py',b'diagnostic candidate')
+        f.inventory();f.commit('candidate differs from retained recovery')
+        return bootstrap,controller
+
+    def assert_retained_ancestry_rejection(self, bootstrap, controller):
+        clone=self.clone(prior={'remote.origin.promisor':'false',
+                                'remote.origin.partialclonefilter':'blob:limit=1024'})
+        before=self.config(clone)
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,
+            retained=controller)
+        self.assertEqual(result.returncode,1,result.stderr)
+        ancestry=[args for args in commands if 'merge-base' in args]
+        self.assertTrue(ancestry)
+        self.assertEqual(ancestry[-1][-4:],
+            ['merge-base','--is-ancestor',controller,'HEAD'])
+        # A rejection at this boundary must precede A/B body hydration.
+        self.assertFalse(any('fetch' in args and '--depth=2' in args for args in commands))
+        self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args)
+                             for args in commands))
+        self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))
+        self.assertEqual(self.config(clone),before)
+
+    def test_unrelated_retained_controller_with_matching_custody_is_rejected(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        f=self.fixture
+        candidate_branch=f.git('symbolic-ref','--short','HEAD').decode().strip()
+        f.git('switch','-q','-c','unrelated-retained-controller',controller)
+        f.write('sibling-only-note.txt',b'valid retained pair on a sibling branch')
+        unrelated=f.commit('sibling retained controller, custody unchanged')
+        # The retained pair itself is valid; only its candidate ancestry is wrong.
+        guard.validate_paired_source(f.repo)
+        f.git('switch','-q',candidate_branch)
+        for path in (guard.PATH,f.receipt_path):
+            self.assertEqual(f.git('show',unrelated+':'+path),f.git('show','HEAD:'+path))
+        self.assert_retained_ancestry_rejection(bootstrap,unrelated)
+
+    def test_retained_controller_beyond_bounded_candidate_history_is_rejected(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        self.descendants(70)
+        # It is a true ancestor in the complete fixture, but the bounded clone
+        # must fail closed rather than expanding or retrying history admission.
+        self.fixture.git('merge-base','--is-ancestor',controller,'HEAD')
+        self.assert_retained_ancestry_rejection(bootstrap,controller)
+
+    def test_retained_tree_mismatch_is_rejected(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        result,_=self.run_admission(self.clone(),pin=bootstrap,source_only=True,
+            retained=controller,retained_tree='0'*40)
+        self.assertNotEqual(result.returncode,0)
+
+    def test_changed_owner_custody_is_rejected(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        self.fixture.write(self.fixture.receipt_path,b'{}')
+        self.fixture.commit('unapproved receipt substitution')
+        result,_=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller)
+        self.assertNotEqual(result.returncode,0)
+
+    def test_changed_contract_custody_is_rejected(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        contract=json.loads((self.fixture.repo/guard.PATH).read_text())
+        self.fixture.write_json(guard.PATH,{**contract,'application_server_sha256':'0'*64})
+        self.fixture.commit('unapproved contract substitution')
+        result,_=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller)
+        self.assertNotEqual(result.returncode,0)
+
+    def test_retained_controller_cannot_bypass_manual_release_equality(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        result,_=self.run_admission(self.clone(),pin=bootstrap,source_only=False,retained=controller)
+        self.assertNotEqual(result.returncode,0)
 
     def test_distinct_historical_application_body_is_explicitly_hydrated(self):
         f=self.fixture
