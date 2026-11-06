@@ -35,7 +35,8 @@ jobs:
   regression:
     if: github.event_name != 'workflow_dispatch' || !inputs.build_only
     name: regression gate
-    runs-on: ubuntu-latest
+    # Pin the supported OS for the existing Playwright 1.60 browser dependencies.
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
       NODE_ENV: ci
