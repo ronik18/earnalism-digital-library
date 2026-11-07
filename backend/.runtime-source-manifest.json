@@ -78,6 +78,11 @@
       "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
     },
     {
+      "path": "catalogue_phase_timing.py",
+      "bytes": 1720,
+      "sha256": "e5dd71b2cd5241598b66452d2410163000cc88a70fce887a329da9e7496554ed"
+    },
+    {
       "path": "commerce_territory.py",
       "bytes": 1095,
       "sha256": "9cfc1f7ff74dab5764b606b126efcc4ab4bf96fdd57f075fca16045b0db2f82a"
@@ -9744,8 +9749,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 646203,
-      "sha256": "53625353a1377486ece8731ffbf92f97b3761d38ced767ac632315bb5a0d3a2e"
+      "bytes": 646994,
+      "sha256": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9838,5 +9843,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "f34ee8105877909c8680d7b2120d4c9b2a1c208d570caae4b86dd90aa0546772"
+  "expected_sha256": "fb9d6bb3bd6a282ec554372afabcc8f6455fd6fa306590805c113f8c0d014ba7"
 }

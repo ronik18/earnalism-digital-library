@@ -55,6 +55,11 @@ class ApplicationProtocolTests(unittest.TestCase):
         self.assertEqual(source, (ROOT/'backend/server.py').read_bytes())
         self.assertIn(b'PURCHASE_INITIATION_CLOSED', closed)
 
+    def test_diagnostic_protocol_does_not_qualify_retained_native_pair(self):
+        guard.validate_purchase_protocol_source(ROOT)
+        with self.assertRaisesRegex(ValueError,'Whole server equality'):
+            guard.validate_paired_source(ROOT)
+
     def test_actual_disk_drift_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Whole application protocol'):
             self.check(actual=(ROOT/'backend/server.py').read_bytes()+b'\n# unbound\n')
