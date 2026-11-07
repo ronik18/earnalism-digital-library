@@ -143,3 +143,18 @@ Wait for the complete Files-sidebar transfer before verifying the ZIP. A visible
 A held-namaste896×512 source produced a483.58second technical attempt. Raw5.04second playback retained joined palms, wrists and forearms during Rama's bow toward a child. It did not return upright by the end; selection is a bow-only landscape action followed by a context cut, not a completed bow-and-return. Portrait retains its independently composed illustration. These are scene-specific editorial observations; technical completion alone grants no acceptance.
 
 Transfer/startup delays count against the original allocation. Before the second scene, measured-headroom checking stopped at597.77seconds versus600required; no second attempt was started, and the guard was not weakened. A two-start allowance is a maximum, not a promise to consume both. Export/import was verified, this GPU was released, UI showed0active sessions/0CU-hour, and saved flags were restored toFalse/zero. The account balance observation362.35→361.82includes an initially concurrent session and is not a pilot-only invoice. Native portrait family artwork remains prepared, not generated.
+
+
+## Private notebook recovery for output-widget failure
+
+A successful control transfer does not guarantee the final download. In v14, Colab reported an output-JavaScript loading error; reload retained the same session, but output-widget and session-file downloads still failed. No browser security/policy rejection was reported. Do not weaken cookie/security settings, bypass a policy rejection, or extend the original timer.
+
+For this specific UI failure, an approved existing private notebook can preserve a small archive in source as a last resort: use the running kernel's `get_ipython().set_next_input(...)` to insert exactly two inert string assignments, `EARNALISM_PRIVATE_RECOVERY_SHA256` and `EARNALISM_PRIVATE_RECOVERY_BASE64`. Save through Colab, verify the Drive save, fetch the complete raw notebook with the Drive connector, then run:
+
+```sh
+python3 video_studio/colab_transfer.py recover-notebook /absolute/path/recovered.ipynb /absolute/path/archive.zip
+```
+
+The helper accepts one unambiguous two-string recovery cell, rejects executable/nonliteral/duplicate or hash-mismatched data, caps notebook/archive sizes and refuses overwrite. It never executes notebook code; normal `wan22.import_clips` job/model/member/media checks still follow. This route requires authority for the private notebook destination and generated data; it grants no new sharing or authentication access. The demonstrated2.32MB archive produced a3.15MB notebook and stalled its editor. Preserve the fetched original, restore the disabled cloud notebook, close only the stalled agent view, and verify shutdown in a fresh view. Prefer normal downloads; do not make large embedded source cells a routine default.
+
+The v14 homecoming and native portrait family attempts completed in479.08s and490.90s respectively, with two starts and no generation retry. The original1800second guard remained fixed through recovery. Later UI readback showed0active sessions/0CU-hour, balance361.66→360.69, and disabled/zero saved controls. The balance movement is an account observation, not a provider invoice or exact shutdown timestamp. The selected homecoming edit uses121prior bow frames,54early return frames and12endpoint-hold frames at30fps, then context; late clipped-head footage is excluded. Native512×896 family footage uses151normalized30fpsframes plus15first-frame and20last-frame holds. Source resolution, selected intervals and full playback must remain explicit.
