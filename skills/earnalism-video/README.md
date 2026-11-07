@@ -1,6 +1,6 @@
 # Earnalism Video skill source
 
-Version-controlled source for the installed `earnalism-video` Codex skill: researched educational scripts, Qwen/Ryan narration workflow, explanatory Remotion animation, actual-audio captions, destination delivery and evidence-qualified platform growth guidance.
+Version-controlled source for the installed `earnalism-video` Codex skill: researched educational scripts, topic-selected narration workflow, explanatory Remotion animation, actual-audio captions, destination delivery and evidence-qualified platform growth guidance.
 
 The entrypoint is [SKILL.md](SKILL.md). It routes detailed instructions on demand. Changes should keep the entrypoint concise, repair demonstrated causes, preserve primary quality gates and retain one final artifact-bound release decision. Growth findings remain platform/surface-specific; no source package guarantees views, followers or income.
 
@@ -16,6 +16,6 @@ This is a source archive and update path, not a standalone production-media kit.
 2. Review and copy approved source changes into the corresponding local skill files. Preserve ignored private assets, operator configuration and source-bound audio; no credentials or recording should be added to Git.
 3. Provision the exact already-approved assets described in [SUPPORT_ASSETS.md](SUPPORT_ASSETS.md) from the authorized private studio. Populate ignored `software/config/rights-owner.json` from real scoped attestations; `rights-owner.example.json` is deliberately not clearance.
 4. Validate frontmatter/links and run focused changed-area tests. The pure analytics regressions run with `python3 -m unittest discover -s skills/earnalism-video/software/tests -p test_growth_metrics.py -v`. A full local production preflight additionally requires the qualified private assets and original project configuration.
-5. Keep one small evidence-backed PR per coherent improvement. Update the source manifest when sources change. Apply platform/source changes only when relevant and verified; keep optional analytics experiments outside release approval.
+5. Keep one small evidence-backed PR per coherent improvement. Update the source manifest when sources change, then run `python3 skills/earnalism-video/scripts/check_source.py` from the repository root. Apply platform/source changes only when relevant and verified; keep optional analytics experiments outside release approval.
 
 No upload, publication, account-setting change, paid provider/compute use, new automation or deployment is authorized by this package. Use the existing final release authority and actual destination checks.

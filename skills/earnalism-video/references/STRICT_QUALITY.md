@@ -37,7 +37,7 @@ Mandatory checks in each format cover:
 - Disk/object/label clearance, units, readable hierarchy and mobile label sizes.
 - Captions separate from essential graphics, source/assumption notices and controls.
 - Temporal continuity, clipping, transitions, phase/state predicates and visual callbacks.
-- Exact emblem-only watermark identity, quiet placement and clearance throughout body and ending.
+- Exact full website-header logo-and-text watermark identity and aspect ratio, readable quiet placement, and full rectangular clearance from content and platform overlays. Preserve the approved end ident.
 - Source access below the player and brief essential model/orientation context in relevant scenes; no persistent source footer or decorative progress strip.
 - Fullscreen fit, reopening and seeking, caption loading/gaps, and Replay after the real ending.
 

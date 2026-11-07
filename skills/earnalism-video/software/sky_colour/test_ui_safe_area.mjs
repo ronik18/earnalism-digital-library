@@ -13,7 +13,7 @@ for(const [name,rect] of [
 ]) assert.throws(()=>assertUiClear(name,rect),/reserved mobile UI/);
 const p=assertLayout(true),safe=safeContentRect();
 for(const name of ['heading','diagram','support','captions'])assertUiClear(name,p[name]);
-const mark={x:p.watermark.left,y:p.watermark.top,width:p.watermark.size,height:p.watermark.size};
+const mark={x:p.watermark.left,y:p.watermark.top,width:p.watermark.width,height:p.watermark.width*.3};
 assertUiClear('watermark',mark);assert.equal(rectOverlap(mark,p.heading),false);
 assert.equal(p.captionFont,47,'UI repair must not solve space by shrinking speech captions');
 assert.equal(p.captions.height,205);
@@ -24,7 +24,7 @@ assert.throws(()=>safeContentRect({...portraitReviewProfile,right:1080}));
 assert.throws(()=>assertUiClear('NaN',{x:NaN,y:300,width:100,height:100}));
 assert.equal(uiMasks().length,4);
 // Existing landscape composition remains exactly as before this portrait repair.
-assert.deepEqual(layoutFor(false),{heading:{x:90,y:76,width:1660,height:170},diagram:{x:80,y:265,width:1760,height:570},support:{x:90,y:850,width:1740,height:75},captions:{x:100,y:950,width:1720,height:110},headingFont:78,captionFont:47});
+assert.deepEqual(layoutFor(false),{heading:{x:90,y:76,width:1340,height:170},diagram:{x:80,y:265,width:1760,height:570},support:{x:90,y:850,width:1740,height:75},captions:{x:100,y:950,width:1720,height:110},headingFont:72,captionFont:47});
 const renderer=fs.readFileSync(new URL('./index.tsx',import.meta.url),'utf8');
 assert.ok(renderer.includes('BrandWatermark placement={portrait?l.watermark:undefined}'));
 assert.ok(renderer.includes("left:80,top:270,width:820,height:1230,objectFit:'contain'"),'Portrait ident also respects the reserved content area');
@@ -33,4 +33,4 @@ const mixed=labelBounds({x:230,y:80,size:50,text:'Mixed sunlight'}),air=labelBou
 assert.ok(mixed.x>=0&&mixed.x+mixed.width<=900,'Enlarged incoming-light label stays inside actual SVG');
 assert.equal(rectOverlap(mixed,air),false,'Larger mixed-light and Air backplates stay separate');
 assert.ok(renderer.includes('x={portrait?230:265}')&&renderer.includes('x={portrait?560:cx}'),'Renderer uses the checked label positions');
-console.log('PASS: legacy top/right/lower overlaps rejected; all reflowed portrait regions and mark clear reserved UI; readable captions, ident and unchanged landscape retained');
+console.log('PASS: legacy top/right/lower overlaps rejected; all reflowed portrait regions and mark clear reserved UI; readable captions, ident and reserved landscape branding retained');

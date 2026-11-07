@@ -50,12 +50,12 @@
     "public_asset": "public/brand-sting/production-lockup.png",
     "sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
     "crop": {
-      "x": 112,
-      "y": 79,
-      "width": 592,
-      "height": 592
+      "x": 0,
+      "y": 0,
+      "width": 2400,
+      "height": 720
     },
-    "watermark": "Static exact emblem only, within destination UI-safe content bounds throughout body and ending; top-right of the safe content area when clear of learning content/captions. Cover crop review is separate.",
+    "watermark": "Static exact website-header full lockup: emblem and all intrinsic lettering, original aspect ratio and source pixels. Reserve a destination-safe brand region separate from headings, mechanism and captions; no added tagline. Existing published media and approved end ident remain unchanged.",
     "repeated_header": false,
     "persistent_source_footer": false,
     "source_credit": "Below player and in references/metadata; brief essential diagram qualification remains",

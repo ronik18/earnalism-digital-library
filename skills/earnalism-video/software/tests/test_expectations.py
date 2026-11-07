@@ -35,4 +35,4 @@ class ExpectationTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as d:
    p=self.fixture(d);f=p/'src/branding.mjs';text=f.read_text();start=text.index('export function watermarkLayout(');end=text.index('export function schematicContext(')
    f.write_text(text[:start]+"export function watermarkLayout(width,height){const size=height>width?72:82,right=height>width?65:70,top=height>width?44:48;return {size,right,top,left:width-right-size,opacity:.48};}\n"+text[end:])
-   with self.assertRaisesRegex(ValueError,'Watermark restraint/clearance drift'):audit(p)
+   with self.assertRaisesRegex(ValueError,'Full watermark identity/clearance drift'):audit(p)

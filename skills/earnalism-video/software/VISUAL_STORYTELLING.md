@@ -99,6 +99,45 @@ Model visibility and usable generation allowance are different. When the owner c
 
 Maintain the existing allowance across editions: record requested seconds, completed jobs/duration and failed submissions separately. Reusing a completed clip does not consume a new generation or reset the cap. Keep motion-blocked status explicit; new still artwork, local effects and successful uploads do not fulfill a natural-character-animation request. Preserve the last verified candidate while provider access is unresolved.
 
+## Opening and pictorial evidence refinement
+
+For an owner-requested stronger opening, make the subject legible on the first frame while preserving a meaningful visible event. A title may remain through the first thought without delaying the action. Inspect its entire swept interaction region, not only a static title rectangle: the first Diwali v10 portrait layout covered the flame, so the title was moved below the ignition before final rendering. Keep the exact branding and captions separately readable. This is a compositional correction, not measured retention evidence.
+
+When evidence scenes become sparse book-and-date slides, pair a concise source/date anchor with a substantial picture of the relationship being explained. Stage the picture with the spoken observance and evidential-limit clauses; do not invent archival writing, quotes or a documentary reconstruction. Place page-coloured text only on the actual lit page, not across the darker desk. Inspect both aspect ratios and remove a second explanatory paragraph when captions already carry it.
+
+A full-width source illustration can supply an intentional wider context shot alongside an existing action. Place it before the action if placing it afterward would reset a character to an earlier pose. It does not extend that action or count as additional natural animation. Preserve prior successful clips, retain source identity and state which intervals still hold or use a still. Do not substitute a new still for requested natural movement without reporting the remaining limitation.
+
+## Qualify edited motion regions at delivery size
+
+A small raw preview can obscure a generated object defect that becomes obvious in a full-size composite. Review both before accepting a replacement. When an early action region and later unaffected reaction region form a coherent edit, record the exact intervals/crop, preserve their time cursor and reject the defective object region explicitly; never present the whole raw clip as clean. Use sustained motivated shots, not rapid cuts to disguise failures. If a usable region cannot tell the intended story truthfully, keep the previous candidate. A tighter reaction crop also lowers effective source detail, which remains disclosed alongside delivery dimensions.
+
+
+## Visible action before decorative motion
+
+For a greeting, offering or handover, make the meaningful gesture readable: include the necessary palms, wrists, forearms, object support and recipient in the final composition. A face moving above cropped hands does not satisfy an action brief. Prefer a sharp, clearly disclosed illustrated greeting to weak generated movement when no acceptable motion is available; this leaves natural character animation unfulfilled. Compose independently for portrait when needed and verify the generated file's actual aspect ratio before applying cover crops. Reject a nominal portrait whose final crop hides the action.
+
+Choose an illustrated completion that follows the accepted action state rather than resetting the participants to the starting pose. It can replace a visibly soft reaction crop, but it adds no generated movement. Check the cut and complete scene at delivery size. A record-to-observance-to-tradition sequence can carry an evidence passage pictorially while captions express the claim; identify invented record imagery as illustration and retain the source anchor and evidential limits.
+
+Fit caption backing to the actual cue within the existing maximum width and safe region. Keep the readable font, wrapping allowance and exact speech timing; short cues need not carry a permanent full-width strip. Inspect short and longest cues with hands, source labels and complete branding in both aspect ratios. Frame-level checks establish composition only; qualify pacing and transitions on the finished movie.
+
+
+Validate the meaning of a generated gesture as well as its anatomy. In the v12 Diwali trial, a source-bound request for separate palms to meet in namaste instead produced lowering/raising hands and a clasp. The clip passed decoding and retained recognisable figures, yet was rejected for the final edit because the intended greeting did not occur. Do not relabel a different movement as the requested action, cut around its missing completion or promote the model/prompt as qualified. Preserve the raw result and the prior clear illustration. The v13 held-pose trial retained joined palms during a selected landscape bow, but did not return upright. This demonstrated bow-only result does not qualify a complete greeting cycle or authorize another attempt.
+
+
+## Readable portrait comparisons
+
+When two small panels and a blurred duplicate backdrop weaken pictorial storytelling, recompose the comparison with larger stacked pictures and concise local labels. Preserve complete focal subjects, the relationship being compared, caption safe space and exact branding; check real delivery-size frames for covered faces, hands and domes. Do not blindly crop every wide illustration to full-height portrait: a battle, greeting or evidence relationship can disappear. Use native portrait action art where needed, retain useful context in comparison panels, and qualify transitions in the final movie. A frame review establishes composition, not audience retention.
+
+
+## Verify action completion, not prompt intent
+
+Specify the intended end pose and inspect the actual last frames. A bow that remains lowered is not a bow-and-return, even when palms are correct. If a continuation is separately authorized, bind its source to a decoded frame of the actual prior clip, retaining parent hash, frame index, fps and image hash. Review the seam, contact, identity and completed pose at delivery size before joining clips. Continuation is an experiment until verified; reversed footage, a still endpoint or a context cut must not be called a newly generated return. Preserve prior accepted footage and audio while the attempted improvement is pending.
+
+
+Check the complete swept silhouette when planning a rising or turning continuation. A clean starting endpoint can still lack headroom for the return pose. The v14 return reached a relaxed greeting, but its later frontal turn clipped the hair: retain only the coherent complete-subject region and disclose the rejected interval. If an acceptable region never completes the intended action, reject it; a cut cannot manufacture completion. Use actual generated first/last frames for brief editorial holds to preserve pose and texture continuity; identify holds separately from new motion. Native portrait family framing retained four complete faces and supporting hands in the reviewed v14 scene, while the accepted wide shot was preserved independently. These results do not qualify other prompts or models.
+
+
+For a hand-led action, reserve the swept palms, wrists and forearms for both image composition and caption placement. The v15 medium shot kept these regions in frame, but the normal bottom caption crossed the wrists. Its action-only caption was moved into clear sky beside the logo, with a bounded width and readable font; surrounding scenes retained their usual placement. Inspect the longest actual cue, peak gesture and return under all overlays. A technically visible hand behind a caption still fails the intended composition.
 
 ## Teach a usable mental model, not a catalogue
 

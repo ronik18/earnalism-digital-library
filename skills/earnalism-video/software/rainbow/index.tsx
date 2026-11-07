@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill,Composition,Sequence,OffthreadVideo,registerRoot,useCurrentFrame,useVideoConfig,staticFile} from 'remotion';
 import {BrandWatermark} from '../src/BrandWatermark';
-import {assertLayout,bodyFrameCount,palette as P,headingFor,supportText,labelBounds,conditionLabels,coneLabels} from './layout.mjs';
+import {assertLayout,bodyFrameCount,palette as P,headingFor,supportText,labelBounds,conditionLabels,coneLabels,circleSceneLayout} from './layout.mjs';
 import {smooth,clamp,mix,spectrum,displayRay,exitDetail,magnifiedExitPoint,polylinePoint,movingEye,approachingEye,projectFixedDrop,fixedDropField,dropLight,coneSlice,arcPoints,circleReveal} from './model.mjs';
 type Props={duration:number;scenes:any[];captions:any[];outro?:boolean;burnCaptions?:boolean};
 type VisualProps={portrait:boolean;t:number;marks:any};
@@ -111,16 +111,16 @@ function Moving({portrait,t,marks}:VisualProps){
  </svg>;
 }
 function Circle({portrait,t,marks}:VisualProps){
- const w=portrait?900:1600,cx=w/2,cy=370,r=portrait?292:310,reveal=circleReveal(t,marks),ground=smooth(t,marks.ground??Infinity,(marks.ground??Infinity)+.5);
- const maskY=mix(405,740,reveal);
+ const reveal=circleReveal(t,marks),ground=smooth(t,marks.ground??Infinity,(marks.ground??Infinity)+.5);
+ const {w,cx,cy,r,maskY,labels}=circleSceneLayout(portrait,reveal,ground);
  return <svg viewBox={`0 0 ${w} 760`} width="100%" height="100%"><Defs/>
   <rect x="12" y="12" width={w-24} height="722" rx="35" fill="url(#rainbow-sky)"/>
   <Rainbow {...{cx,cy,r}} start={0} end={360}/>
   <g>{Array.from({length:18},(_,i)=>{const a=i/18*Math.PI*2;return <Drop key={i} x={cx+Math.cos(a)*(r-16)} y={cy+Math.sin(a)*(r-16)} size={9} opacity=".6"/>})}</g>
   <rect x="12" y={maskY} width={w-24} height={Math.max(0,734-maskY)} rx="15" fill="url(#rainbow-land)"/>
-  {reveal<.99&&<><path d={`M25 ${maskY}H${w-25}`} stroke="#a3c9be" strokeWidth="4"/><Label x={portrait?450:800} y={650} text={ground>0?'The ground hides this part':'A circle can be partly hidden'} size={portrait?40:58}/></>}
+  {reveal<.99&&<path d={`M25 ${maskY}H${w-25}`} stroke="#a3c9be" strokeWidth="4"/>}
   <circle cx={cx} cy={cy} r="7" fill={P.ivory}/><path d={`M${cx-25} ${cy}H${cx+25}M${cx} ${cy-25}V${cy+25}`} stroke={P.ivory} strokeWidth="2" opacity=".6"/>
-  {reveal>.3&&<Label x={w/2} y={portrait?730:725} text="Unobstructed elevated view" size={portrait?43:58}/>}
+  {labels.map((label,i)=><Label key={i} {...label}/>)}
  </svg>;
 }
 function Body(p:Props){

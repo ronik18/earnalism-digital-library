@@ -27,3 +27,20 @@ class CaptionTests(unittest.TestCase):
   self.assertEqual(fixed[0]['start'],0);self.assertEqual(fixed[-1]['end'],2)
   self.assertEqual(fixed[-1]['word'],'turns.')
   self.assertEqual(punctuate(words,'Earth stops.'),words)
+
+ def test_em_dash_preserves_sentence_case_lexical_content_and_timing(self):
+  from caption_layout import punctuate
+  raw='the fridge moves heat it does not disappear'.split()
+  words=[dict(word=w,start=i*.5,end=(i+1)*.5) for i,w in enumerate(raw)]
+  fixed=punctuate(words,'The fridge moves heat—it does not disappear.')
+  self.assertEqual([w['word'] for w in fixed],['The','fridge','moves','heat—','it','does','not','disappear.'])
+  self.assertEqual([(w['start'],w['end']) for w in fixed],[(w['start'],w['end']) for w in words])
+  self.assertEqual(' '.join(c['text'] for c in compose(fixed)),'The fridge moves heat—it does not disappear.')
+  self.assertEqual(punctuate(words,'The fridge moves light—it does not disappear.'),words)
+
+ def test_brief_adjacent_sentences_choose_valid_merge(self):
+  words=[dict(word=w,start=a,end=b) for w,a,b in [('No',0,.4),('bubbles.',.4,.98),('No',.98,1.4),('boiling.',1.4,1.98),('So',1.98,2.5),('where',2.5,2.9),('does',2.9,3.1),('it',3.1,3.3),('go?',3.3,3.6)]]
+  result=compose(words)
+  self.assertFalse(quality(result))
+  self.assertEqual(' '.join(c['text'] for c in result),' '.join(w['word'] for w in words))
+  self.assertTrue(all(c['end']-c['start']>=1 for c in result))

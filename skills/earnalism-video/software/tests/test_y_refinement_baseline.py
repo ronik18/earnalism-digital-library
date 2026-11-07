@@ -17,7 +17,7 @@ class YRefinementBaselineTests(unittest.TestCase):
     def fixture(self, directory):
         root = Path(directory)
         for name in ["config/defaults.json", "config/editorial-contract.json",
-                     "src/branding.mjs", "src/opening-visibility.mjs", "src/readability.mjs",
+                     "src/branding.mjs", "src/social-safe-area.mjs", "src/opening-visibility.mjs", "src/readability.mjs",
                      "assets/standard-intro/v1/production-lockup.png",
                      "public/brand-sting/production-lockup.png", "watch-template.html"]:
             target = root / name

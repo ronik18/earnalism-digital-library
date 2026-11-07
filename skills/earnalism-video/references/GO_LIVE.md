@@ -14,6 +14,10 @@ This policy implements the latest owner instruction to make GO LIVE efficient. I
 
 Gather these conclusions into **one consolidated decision bound to the exact final candidate manifest**. The same competent reviewer may cover multiple criteria. Internal claim/frame/technical records are evidence, not separate owner permissions or a demand for multiple reviewers. Never prefill human fields from tests or self-scores. Reuse valid unchanged approval; changed media needs affected evidence and a decision covering the revision. A selected voice direction needs no repeated style audition/approval; new speech still needs real final listening.
 
+## Reconcile later acceptance with preserved render records
+
+A frozen render manifest or integrity checker may still report `PENDING` after a later owner listening receipt. Resolve the current review pointer and verify that the later receipt binds the exact candidate manifest and soundtrack before reporting listening as unresolved. Retain both records: explain the checker's technical scope and the later acceptance separately, rather than rewriting immutable evidence, claiming the checker approved listening, or requesting the same listening again. Dry-audition acceptance does not cover a new scored mix; listening acceptance does not authorize publication. Apply a later explicit GO LIVE instruction only to its named candidates and destinations.
+
 ## Optional improvement work
 
 First-time participants, card-choice studies, title/cover alternatives, detailed audience plans, analytics, cost journals and cadence experiments are **advisory**. Missing or pending research cannot block primary qualification. Use a concise creator-filled audience/learning brief, meaningful scene sequence and adequate packaging; require no owner forms or competing variants.

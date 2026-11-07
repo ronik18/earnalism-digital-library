@@ -16,5 +16,11 @@ __pycache__/
 /software/outputs/
 /software/logs/
 /software/cache/
-/output/
-/evidence/
+/output
+/evidence
+
+# Per-adapter local work and read-only private review symlinks.
+/software/output/
+
+# Optional ignored Studio-layout alias used by local adapter regressions.
+/video_studio

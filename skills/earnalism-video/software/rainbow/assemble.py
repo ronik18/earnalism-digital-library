@@ -31,6 +31,56 @@ LITERAL_DIFFERENCES={
  'rainbow-connected-02':[{'tag':'replace','expected':['colours'],'recognized':['colors']},{'tag':'replace','expected':['forty','two'],'recognized':['42']}],
  'rainbow-connected-04':[{'tag':'replace','expected':['colours'],'recognized':['colors']}]}
 
+# Episode-scoped direction selected by the owner after listening to this exact
+# audition. This is not a changed universal B recipe or a listening verdict.
+STORY_AUDITION_AUDIO_SHA='461b3599e8e6c6272313864562ef810365a11bac1a54f0e8ca4e71017d987b10'
+STORY_AUDITION_METADATA_SHA='dbc9f7c5ae0e480496546ac7e1ae8606187d8131bbeb01b859f78b55d10f93d3'
+STORY_DIRECTION_SHA='49040d38367b45332efc664ed91e4c8e17ac3fbbcd1034618afed015b74a23db'
+STORY_RECIPE_FILE='accepted-voice-direction.json'
+STORY_DECISION_FILE='owner-voice-decision.json'
+STORY_DECISION='USE_ACCEPTED_STORYTELLING_DIRECTION_FOR_PRIVATE_RAINBOW_REBUILD'
+
+def accepted_direction(root):
+ root=Path(root);p=root/STORY_RECIPE_FILE
+ if not p.exists():return None
+ recipe=load(p);decision_path=root/STORY_DECISION_FILE
+ require(recipe.get('schema')=='earnalism.rainbow-accepted-direction.v1' and recipe.get('state')=='OWNER_SELECTED_DIRECTION_FOR_PRIVATE_REBUILD','Invalid rainbow direction recipe')
+ require(recipe.get('publication_approved') is False and recipe.get('baseline_sha256')==common.PUBLISHED_BASELINE_SHA256 and recipe.get('worker_sha256')==common.WORKER_SHA256,'Direction recipe changed protected baseline/worker/authority')
+ require(sha(decision_path)==recipe.get('owner_decision_sha256'),'Changed/missing owner direction decision')
+ decision=load(decision_path)
+ require(decision.get('decision')==STORY_DECISION and decision.get('existing_videos_unchanged') is True and decision.get('publication_approved') is False and isinstance(decision.get('user_message'),str) and decision['user_message'].strip(),'Missing scoped owner direction selection')
+ a=recipe.get('accepted_audition',{});wav=Path(a.get('audio_path',''));meta=Path(a.get('metadata_path',''))
+ require(wav.is_absolute() and meta.is_absolute() and a.get('audio_sha256')==STORY_AUDITION_AUDIO_SHA==sha(wav) and a.get('metadata_sha256')==STORY_AUDITION_METADATA_SHA==sha(meta),'Accepted audition binding changed')
+ metadata=load(meta);direction=metadata['settings']['instruct']
+ require(hashlib.sha256(direction.encode()).hexdigest()==STORY_DIRECTION_SHA==recipe.get('direction_sha256') and recipe.get('direction')==direction,'Changed accepted storytelling direction')
+ require(metadata.get('wav_sha256')==STORY_AUDITION_AUDIO_SHA and metadata.get('effective_key')==common.object_hash(metadata['settings']),'Accepted audition settings/audio integrity failed')
+ return recipe
+
+def recipe_inputs(root):
+ if accepted_direction(root) is None:return {}
+ return {n:sha(Path(root)/n) for n in (STORY_RECIPE_FILE,STORY_DECISION_FILE,STORY_ASR_FILE) if (Path(root)/n).exists()}
+
+def validate_recipe_source(root,unit,wav,metadata,baseline):
+ recipe=accepted_direction(root)
+ if recipe is None:return common.validate_source(unit,wav,metadata,baseline)
+ # Validate the actual variant before delegating all remaining strict original
+ # model/snapshot/packages/worker/stream/attempt checks. The temporary copy only
+ # neutralizes the one authorized instruction difference; source records remain
+ # literal and source-bound, never rewritten to impersonate the old recipe.
+ require(metadata.get('effective_key')==common.object_hash(metadata.get('settings',{})),'Actual storytelling settings hash mismatch')
+ require(metadata['settings'].get('instruct')==recipe['direction'],'Source does not use owner-selected direction')
+ settings=metadata['settings'];_,reference_meta=common.published_b_reference()
+ expected=copy.deepcopy(reference_meta['settings'])
+ for key in ('source_cache_key','segment_id','text','provenance_binding'):expected[key]=settings.get(key)
+ expected['instruct']=recipe['direction']
+ require(settings==expected,'Storytelling source changed settings beyond accepted direction')
+ require(all(a.get('effective_key')==metadata['effective_key'] for a in metadata.get('attempts',[]) if a.get('attempt')==metadata.get('selected_attempt')),'Actual selected attempt settings binding changed')
+ checked=copy.deepcopy(metadata);checked['settings']['instruct']=reference_meta['settings']['instruct'];effective=common.object_hash(checked['settings']);checked['effective_key']=effective
+ for attempt in checked.get('attempts',[]):
+  if attempt.get('attempt')==checked.get('selected_attempt'):attempt['effective_key']=effective
+ source=common.validate_source(unit,wav,checked,baseline)
+ return {**source,'direction_variant':'OWNER_SELECTED_EPISODE_SCOPED_STORYTELLING','actual_effective_key':metadata['effective_key'],'direction_sha256':recipe['direction_sha256'],'owner_decision_sha256':recipe['owner_decision_sha256']}
+
 def literal_delivery_text(group):
  require(group.get('id') in LITERAL_SOURCE,'No literal resolution policy for this source group')
  require(hashlib.sha256(group['text'].encode()).hexdigest()==LITERAL_SOURCE[group['id']][0],'Original literal source text changed')
@@ -53,6 +103,75 @@ def literal_semantic_scenes(scenes):
    scene['anchors']['angle']='42 degrees'
   elif scene['scene']=='callback':scene['text']=scene['text'].replace('The colours are real light.','The colors are real light.',1)
  return result
+
+STORY_ASR_FILE='alignment-model-binding.json'
+STORY_ASR_MODEL='mobiuslabsgmbh/faster-whisper-large-v3-turbo'
+STORY_ASR_REVISION='0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf'
+
+def create_story_asr_binding(root):
+ root=Path(root);require(accepted_direction(root) is not None,'Alternate ASR needs scoped accepted direction recipe')
+ bound={}
+ for group in load(root/'units.json'):
+  unit=group['id'];a=root/'imported/alignment'/f'{unit}.json';w=root/'imported/raw'/f'{unit}.wav';alignment=load(a)
+  require(alignment.get('model_revision')==STORY_ASR_REVISION and alignment.get('audio_sha256')==sha(w),'Actual local ASR model/audio differs')
+  bound[unit]={'audio_sha256':sha(w),'alignment_sha256':sha(a)}
+ receipt={'schema':'earnalism.rainbow-explicit-local-asr.v1','model_id':STORY_ASR_MODEL,'model_revision':STORY_ASR_REVISION,'alignments':bound,'scope':'Source-bound actual local alignment only; no transcription difference or human listening cleared','publication_approved':False}
+ write_new(root/STORY_ASR_FILE,receipt)
+ return receipt
+
+def recipe_alignment_audit(root,unit,alignment,audio_sha,duration,alignment_path):
+ if alignment.get('model_revision')==common.ASR_REVISION:return common.alignment_audit(unit,alignment,audio_sha,duration)
+ require(accepted_direction(root) is not None,'Unexpected ASR model; no episode recipe')
+ binding=load(Path(root)/STORY_ASR_FILE)
+ require(binding.get('schema')=='earnalism.rainbow-explicit-local-asr.v1' and binding.get('publication_approved') is False and binding.get('model_id')==STORY_ASR_MODEL and binding.get('model_revision')==STORY_ASR_REVISION==alignment.get('model_revision'),'Unsupported source-bound ASR model')
+ require(set(binding.get('alignments',{}))=={g['id'] for g in load(Path(root)/'units.json')},'ASR binding has missing/unexpected groups')
+ require(binding['alignments'][unit['id']]=={'audio_sha256':audio_sha,'alignment_sha256':sha(alignment_path)},'Stale alternate-ASR source binding')
+ checked=copy.deepcopy(alignment);checked['model_revision']=common.ASR_REVISION
+ audit,words=common.alignment_audit(unit,checked,audio_sha,duration)
+ audit.update({'actual_asr_model_id':STORY_ASR_MODEL,'actual_asr_model_revision':STORY_ASR_REVISION,'asr_validation_adapter':'Exact binding permits actual cached local model; word/timestamp/difference checks unchanged','asr_binding_sha256':sha(Path(root)/STORY_ASR_FILE)})
+ return audit,words
+
+STORY_DISPLAY_FILE='source-bound-display-resolution.json'
+
+def story_display_state(root,groups,scenes,create=False):
+ root=Path(root);require(accepted_direction(root) is not None,'Story display resolution needs accepted episode direction')
+ path=root/STORY_DISPLAY_FILE
+ bound={n:sha(root/n) for n in ('units.json','scene-units.json','baseline-job.json','generation-plan.json',STORY_RECIPE_FILE,STORY_DECISION_FILE)}
+ record={'schema':'earnalism.rainbow-story-display-resolution.v1','state':'EXACT_SOURCE_BOUND_NOTATION_ONLY','prepared_inputs':bound,'groups':{},'scope':'Only exact colour/color, colours/colors and forty-two/42 at existing rainbow script positions; no pronunciation/listening decision','publication_approved':False}
+ delivered=copy.deepcopy(groups)
+ for original,group in zip(groups,delivered):
+  unit=group['id'];alignment_path=root/'imported/alignment'/f'{unit}.json';wav=root/'imported/raw'/f'{unit}.wav';alignment=load(alignment_path);selected_edits=[]
+  require(alignment.get('audio_sha256')==sha(wav),'Display alignment audio binding stale')
+  raw=common.differences(original['text'],alignment.get('recognized',''))
+  if raw:
+   require(unit in LITERAL_SOURCE and hashlib.sha256(original['text'].encode()).hexdigest()==LITERAL_SOURCE[unit][0],'Notation resolution requires exact retained source text')
+   permitted=LITERAL_DIFFERENCES[unit]
+   require(all(d in permitted for d in raw) and len(raw)<=len(permitted),'Unreviewed ASR substitution/omission/addition')
+   for old,new in LITERAL_EDITS[unit]:
+    candidate=group['text'].replace(old,new,1)
+    if len(common.differences(candidate,alignment['recognized']))<len(common.differences(group['text'],alignment['recognized'])):
+     group['text']=candidate;selected_edits.append({'old':old,'new':new})
+  require(not common.differences(group['text'],alignment.get('recognized','')),'Unresolved display words after exact notation edits')
+  require(not common.differences(alignment['recognized'],' '.join(w['word'] for w in alignment.get('word_times',[]))),'Raw recognition/word tokens disagree')
+  record['groups'][unit]={'audio_sha256':sha(wav),'alignment_sha256':sha(alignment_path),'original_text_sha256':hashlib.sha256(original['text'].encode()).hexdigest(),'delivered_text':group['text'],'raw_differences':raw,'notation_edits':selected_edits}
+ semantic=copy.deepcopy(scenes)
+ # Apply each selected full original phrase only to its containing semantic
+ # scene. Another group's valid British spelling must remain unchanged.
+ for group in groups:
+  for edit in record['groups'][group['id']]['notation_edits']:
+   old,new=edit['old'],edit['new'];targets=[scene for scene in semantic if old in scene['text']]
+   require(len(targets)==1 and targets[0]['text'].count(old)==1,'Notation phrase has no unique semantic scene')
+   scene=targets[0];scene['text']=scene['text'].replace(old,new,1)
+   for before,after in (('colours','colors'),('colour','color'),('forty-two','42')):
+    if before in old and after in new:scene['anchors']={k:v.replace(before,after) for k,v in scene['anchors'].items()}
+ validate_units(delivered,semantic)
+ if create:write_new(path,record)
+ else:require(load(path)==record,'Source-bound notation resolution changed/stale')
+ return record,delivered,semantic
+
+def create_story_display_resolution(root):
+ root=Path(root)
+ return story_display_state(root,load(root/'units.json'),load(root/'scene-units.json'),create=True)[0]
 
 def validate_literal_alignment(original,delivered,alignment):
  require(delivered['text']==literal_delivery_text(original),'Delivered text changed beyond the four exact literal edits')
@@ -95,6 +214,8 @@ def create_delivery_resolution(root):
 
 def load_delivery_resolution(root,groups,scenes):
  path=Path(root)/'delivery-resolution.json'
+ if (Path(root)/STORY_DISPLAY_FILE).exists():
+  require(not path.exists(),'Ambiguous original/new display resolution');return story_display_state(root,groups,scenes)
  if not path.exists():return None,copy.deepcopy(groups),copy.deepcopy(scenes)
  return validate_delivery_resolution(root,load(path),groups,scenes)
 
@@ -129,7 +250,7 @@ def import_archive(archive_path,root):
  root,archive_path=Path(root).resolve(),Path(archive_path).resolve();root.mkdir(parents=True,exist_ok=True)
  require(not any((root/n).exists() for n in ('.rainbow-import-lock.json','imported','narration-transfer','transfer-receipt.json')),'Preserve previous/partial import; use a fresh source root')
  groups,baseline=load(root/'units.json'),load(root/'baseline-job.json');validate_units(groups,load(root/'scene-units.json'));common.validate_baseline(baseline)
- transfer.preflight_zip_container(archive_path);digest=sha(archive_path);inputs={n:sha(root/n) for n in ('units.json','scene-units.json','baseline-job.json','generation-plan.json')}
+ transfer.preflight_zip_container(archive_path);digest=sha(archive_path);inputs={n:sha(root/n) for n in ('units.json','scene-units.json','baseline-job.json','generation-plan.json')};inputs.update(recipe_inputs(root))
  with zipfile.ZipFile(archive_path) as archive:
   manifest,raw_manifest=transfer.inspect_archive(archive,groups)
   with tempfile.TemporaryDirectory(prefix='.rainbow-source-verify-',dir=root) as temp:
@@ -141,7 +262,7 @@ def import_archive(archive_path,root):
    audits=[]
    for group in groups:
     wav=stage/'raw'/f"{group['id']}.wav";meta=load(Path(str(wav)+'.json'));alignment=load(stage/'alignment'/f"{group['id']}.json")
-    source=common.validate_source(group,wav,meta,baseline);audit,_=common.alignment_audit(group,alignment,source['audio_sha256'],source['duration']);audits.append(audit)
+    source=validate_recipe_source(root,group,wav,meta,baseline);audit,_=recipe_alignment_audit(root,group,alignment,source['audio_sha256'],source['duration'],stage/'alignment'/f"{group['id']}.json");audits.append(audit)
    require(sha(archive_path)==digest and all(sha(root/n)==h for n,h in inputs.items()),'Source changed during import')
    write_new(root/'.rainbow-import-lock.json',{'state':'EXCLUSIVE_PRIVATE_RAINBOW_IMPORT','archive_sha256':digest,'publication_approved':False})
    imported=root/'imported';imported.mkdir();retained=root/'narration-transfer';retained.mkdir()
@@ -183,14 +304,18 @@ def assemble(root,output_dir=None):
  delivered_by_id={g['id']:g for g in delivered_groups}
  require(not any((out/n).exists() for n in RESERVED),'Existing/partial assembly preserved; use a fresh output directory');out.mkdir(parents=True,exist_ok=True)
  write_new(out/RESERVED[0],{'state':'EXCLUSIVE_PRIVATE_RAINBOW_ASSEMBLY','publication_approved':False})
- inputs={n:sha(root/n) for n in ('units.json','scene-units.json','baseline-job.json','generation-plan.json')};audits=[];validated=[]
- if resolution is not None:inputs['delivery-resolution.json']=sha(root/'delivery-resolution.json')
+ inputs={n:sha(root/n) for n in ('units.json','scene-units.json','baseline-job.json','generation-plan.json')};inputs.update(recipe_inputs(root));audits=[];validated=[]
+ if resolution is not None:
+  resolution_file=STORY_DISPLAY_FILE if (root/STORY_DISPLAY_FILE).exists() else 'delivery-resolution.json'
+  inputs[resolution_file]=sha(root/resolution_file)
  for g in groups:
   wav=root/'imported/raw'/f"{g['id']}.wav";meta=Path(str(wav)+'.json');alignment=root/'imported/alignment'/f"{g['id']}.json"
   try:
-   source=common.validate_source(g,wav,load(meta),baseline)
-   if resolution is not None and g['id'] in LITERAL_SOURCE:audit,words=resolved_alignment_audit(g,delivered_by_id[g['id']],load(alignment),source,root)
-   else:audit,words=common.alignment_audit(g,load(alignment),source['audio_sha256'],source['duration'])
+   source=validate_recipe_source(root,g,wav,load(meta),baseline)
+   if resolution is not None and resolution.get('schema')=='earnalism.rainbow-story-display-resolution.v1':
+    audit,words=recipe_alignment_audit(root,delivered_by_id[g['id']],load(alignment),source['audio_sha256'],source['duration'],alignment);audit.update({'expected':g['text'],'delivered_text':delivered_by_id[g['id']]['text'],'raw_differences':resolution['groups'][g['id']]['raw_differences'],'resolution':{'file':STORY_DISPLAY_FILE,'sha256':sha(root/STORY_DISPLAY_FILE),'source_bound':True,'scope':'Notation only; actual word times preserved; listening PENDING'}})
+   elif resolution is not None and g['id'] in LITERAL_SOURCE:audit,words=resolved_alignment_audit(g,delivered_by_id[g['id']],load(alignment),source,root)
+   else:audit,words=recipe_alignment_audit(root,g,load(alignment),source['audio_sha256'],source['duration'],alignment)
    audits.append(audit)
    if audit['differences']:continue
    validated.append((g,wav,source,words))
@@ -213,13 +338,13 @@ def assemble(root,output_dir=None):
  write_new(out/'transcript.txt','\n\n'.join(s['text'] for s in delivered_scenes)+'\n',as_json=False)
  write_new(out/'concat.txt','ffconcat version 1.0\n'+'\n'.join(common.concat_line(wav) for _,wav,_,_ in validated)+'\n',as_json=False)
  common.normalize_narration(out/'concat.txt',out/'narration.wav');require(abs(common.probe_wav(out/'narration.wav')['duration']-offset)<=.02,'Assembly unexpectedly changed duration')
- for name in ('units.json','scene-units.json','baseline-job.json','generation-plan.json'):
+ for name in ('units.json','scene-units.json','baseline-job.json','generation-plan.json',*recipe_inputs(root)):
   if out!=root:shutil.copy2(root/name,out/name)
  if resolution is not None:
-  if out!=root:shutil.copy2(root/'delivery-resolution.json',out/'delivery-resolution.json')
+  if out!=root:shutil.copy2(root/resolution_file,out/resolution_file)
   write_new(out/'delivered-units.json',delivered_groups);write_new(out/'delivered-scene-units.json',delivered_scenes)
  write_new(out/'continuous-source.json',{'schema':'earnalism.rainbow-four-groups-seven-scenes.v1','physical_generation_groups':source_spans,'semantic_scene_count':7,'group_count':4,'semantic_boundaries_may_be_inside_continuous_take':True,'source_WAVs_untouched':True,'normalization_scope':'One existing whole-body normalization; no per-word, phrase or scene gain/pitch/tempo/pause edits'})
- write_new(out/'voice-binding.json',{'source':'Exact accepted Qwen Ryan B recipe; four connected thought groups, seven actual-ASR semantic scenes','baseline_sha256':common.PUBLISHED_BASELINE_SHA256,'worker_sha256':common.WORKER_SHA256,'instruction_sha256':hashlib.sha256(baseline['segments'][0]['instruct'].encode()).hexdigest(),'generation':baseline['generation'],'dtype':baseline['dtype'],'attention':baseline['attention'],'seed_base':baseline['segments'][0]['seed'],'raw_audio':{g['id']:s['audio_sha256'] for g,_,s,_ in validated},'input_files':inputs,'narration_sha256':sha(out/'narration.wav'),'normalization_filter':common.NORMALIZE_FILTER,'output_sample_rate':48000,'no_tempo_or_pitch_change':True,'source_wavs_preserved':True,'new_recording':True,'new_recording_listening':'PENDING','publication_approved':False})
+ write_new(out/'voice-binding.json',{'source':('Owner-selected episode-scoped storytelling direction on protected Qwen Ryan B settings' if accepted_direction(root) else 'Exact accepted Qwen Ryan B recipe')+'; four connected thought groups, seven actual-ASR semantic scenes','baseline_sha256':common.PUBLISHED_BASELINE_SHA256,'worker_sha256':common.WORKER_SHA256,'instruction_sha256':hashlib.sha256((accepted_direction(root) or {}).get('direction',baseline['segments'][0]['instruct']).encode()).hexdigest(),'direction_recipe':accepted_direction(root),'generation':baseline['generation'],'dtype':baseline['dtype'],'attention':baseline['attention'],'seed_base':baseline['segments'][0]['seed'],'raw_audio':{g['id']:s['audio_sha256'] for g,_,s,_ in validated},'input_files':inputs,'narration_sha256':sha(out/'narration.wav'),'normalization_filter':common.NORMALIZE_FILTER,'output_sample_rate':48000,'no_tempo_or_pitch_change':True,'source_wavs_preserved':True,'new_recording':True,'new_recording_listening':'PENDING','publication_approved':False})
  write_new(out/'review.json',{'state':'PRIVATE_NEW_NARRATION_REQUIRES_REVIEW','factual':'PENDING','graphics_captions':'PENDING','rights':'PENDING','listening_av':'PENDING','technical_delivery':'PENDING','publication_approved':False})
  require(all(sha(root/n)==h for n,h in inputs.items()),'Source changed during assembly')
  write_new(out/'assembly-manifest.json',{'state':'ASSEMBLED_PRIVATE_REQUIRES_REVIEW','source_root':str(root),'input_files':inputs,'output_files':{n:sha(out/n) for n in (*RESERVED,'delivered-units.json','delivered-scene-units.json') if n!='assembly-manifest.json' and (out/n).is_file()},'new_recording_listening':'PENDING','publication_approved':False})

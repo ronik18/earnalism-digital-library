@@ -35,8 +35,8 @@ import {subjectOpacity} from './src/opening-visibility.mjs';
 import {questionHeading} from './src/readability.mjs';
 const layouts=[[1920,1080],[1080,1920]].map(([width,height])=>{
  const q=watermarkLayout(width,height);let uiClear=true;
- if(height>width)try{assertUiClear('emblem',{x:q.left,y:q.top,width:q.size,height:q.size},reviewProfileForFrame(width,height));}catch{uiClear=false;}
- return {...q,width,height,uiClear};
+ if(height>width)try{assertUiClear('emblem',{x:q.left,y:q.top,width:q.width,height:q.height},reviewProfileForFrame(width,height));}catch{uiClear=false;}
+ return {...q,frameWidth:width,frameHeight:height,uiClear};
 });
 console.log(JSON.stringify({asset:watermarkAsset,layouts,openingOpacity:subjectOpacity(0,0,true),question:questionHeading({heading:'Why does ice float?'})}));"""
  rendered=json.loads(subprocess.check_output(['node','--input-type=module','-e',code],cwd=root,text=True))
@@ -44,7 +44,7 @@ console.log(JSON.stringify({asset:watermarkAsset,layouts,openingOpacity:subjectO
  if contract['presentation_defaults']['preserve_episode_question'] and rendered['question']!='Why does ice float?':issues.append('Episode question replaced by fixed topic copy')
  if rendered['asset']['sha256']!=contract['brand']['sha256'] or rendered['asset']['crop']!=contract['brand']['crop']:issues.append('Watermark identity/crop drift')
  for q in rendered['layouts']:
-  if not .35<=q['opacity']<=.5 or q['top']<0 or q['left']<0 or q['size']<=0 or q['left']+q['size']>q['width'] or q['top']+q['size']>q['height'] or not q['uiClear'] or (q['height']<=q['width'] and q['top']+q['size']>130):issues.append('Watermark restraint/clearance drift')
+  if not .5<=q['opacity']<=1 or q['top']<0 or q['left']<0 or q['width']<=0 or q['left']+q['width']>q['frameWidth'] or q['top']+q['height']>q['frameHeight'] or not q['uiClear'] or abs(q['width']/q['height']-2400/720)>.001:issues.append('Full watermark identity/clearance drift')
  page=(root/'watch-template.html').read_text();html=Preview();html.feed(page)
  if html.download_links:issues.append('Visible download link restored')
  if not html.videos or any('nodownload' not in v.get('controlslist','').split() for v in html.videos):issues.append('Download UI hint missing')
