@@ -1,0 +1,28 @@
+name: Earnalism video source
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'skills/earnalism-video/**'
+      - '.github/workflows/earnalism-video-source.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/earnalism-video/**'
+      - '.github/workflows/earnalism-video-source.yml'
+permissions:
+  contents: read
+jobs:
+  source-inventory:
+    name: video skill source inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            skills/earnalism-video
+      - name: Verify complete tracked source hashes
+        run: python3 skills/earnalism-video/scripts/check_source.py
+      - name: Exercise source inventory failure cases
+        run: python3 -m unittest discover -s skills/earnalism-video/scripts -p test_check_source.py -v
