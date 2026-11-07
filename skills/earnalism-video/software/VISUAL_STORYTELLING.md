@@ -54,6 +54,17 @@ Prefer picture plus captions and brief essential labels. At phone size, enlarge/
 
 Preserve the artwork's intended luminosity. Use local text backing, outlines or restrained shadows; avoid a blanket dark veil over the whole frame just to fit multiple text regions. Check face/subject visibility and readable contrast through movement, cuts and destination overlays. Review artwork and actual motion separately: a contact sheet cannot establish natural animation, and source code cannot establish attractiveness.
 
+## Verified local finishing techniques
+
+The Diwali v6 frame review supports these reusable implementation choices, subject to full playback verification for each candidate:
+
+- Anchor a curved paper mesh at the binding, preserve strip length, shade both surfaces and move the cast shadow with the page. Use a hand-free plate when credible hand contact cannot be animated. Check intermediate phases and portrait cropping; do not label this local illustrated motion as natural human animation.
+- Tie shot changes to meaningful words in the unchanged narration. An establishing approach, group view and closer welcome view can develop one homecoming passage. Clearly separate a written-record illustration from a sacred-story illustration when explaining evidential limits. A blank decorative book is an illustration, never the cited document itself.
+- Build an opening event around visible contact and a resulting change, such as a match reaching a wick before a flame grows. Check the contact point, crop, glow and cut in both formats. Treat attention benefits as unmeasured until observed.
+- Enlarge essential paired labels and inspect them together with captions at phone size. A softened backing may reduce the logo panel's hard edge only if the exact complete source mark, contrast and destination-safe placement remain intact. Validate the actual composite, not merely the CSS.
+
+Keep changes isolated from the accepted audio and earlier review manifests. Record which priorities remain blocked by provider quota. One generated clip plus these local techniques does not establish sustained natural character action throughout the film.
+
 ## Review the visible result
 
 Use the existing storyboard and audiovisual review, without another permission gate. Inspect the opening, early payoff, representative story/mechanism beats, transitions and ending in both formats, including real-size mobile readbacks and playback. A contact sheet helps expose repeated layouts and sparse scenes; it cannot certify motion, pacing or full viewing.
