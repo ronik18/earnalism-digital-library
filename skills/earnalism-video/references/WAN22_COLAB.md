@@ -1,6 +1,6 @@
 # Wan2.2 Colab motion adapter
 
-Use when natural illustration/character motion is needed and the selected hosted provider is unavailable, or the owner chooses self-hosted Wan. This is a prepared, locally tested adapter; it is **not GPU-inference-qualified or an accepted replacement** until actual clips are generated and reviewed. Preserve selected narration, original notebooks, earlier candidate media and their manifests.
+Use when natural illustration/character motion is needed and the selected hosted provider is unavailable, or the owner chooses self-hosted Wan. The control plane is locally tested and the demonstrated Diwali portrait and landscape jobs have completed on an L4. Successful inference/import does **not** qualify every pixel, new scene, profile or production replacement; review actual clips and delivery composites. Preserve selected narration, original notebooks, earlier candidate media and their manifests.
 
 ## Build and open
 
@@ -106,6 +106,12 @@ After a clip is accepted for the edit, derive a silent H.264/yuv420p/BT709 worki
 - https://github.com/huggingface/diffusers/blob/v0.36.0/src/diffusers/pipelines/wan/pipeline_wan_i2v.py
 - https://github.com/huggingface/diffusers/issues/13258
 
-## Prospective native-landscape profile
+## Measured native-landscape pilot
 
-`l4-landscape-v1` swaps the balanced profile to896×512 while retaining121frames,24steps, one sweets start and the original wall/CU limits. It binds a separate wide family illustration and fresh run with prior evidence. The local control-plane tests pass, including rejection of arbitrary output dimensions. This profile is prepared, disabled and not GPU- or quality-qualified; equal pixel count is not a runtime guarantee. Require fresh scoped compute authority before allocation and inspect the actual generated result before replacing a completed clip.
+The separately owner-authorized `l4-landscape-v1` job used a source-bound wide family illustration,896×512,121frames/24fps,24steps, guidance5 and one sweets start. It completed in477.75seconds on the observed L4; the runtime was released after14.74minutes including setup/export/import confirmation. The complete archive and source/job/model bindings passed local import and full decode. No purchase or upgrade. This one observation is not a guarantee for another scene/GPU or equal quality at another resolution.
+
+Full raw playback reached5.04seconds. The four principal faces and initial plate support were retained, but the enlarged delivery composite exposed late tray-underside geometry drift. The raw clip is **not accepted wholesale**. The edit uses the first80 normalized30fps frames wide, then a sustained512×288 reaction crop at source(192,20) for frames80..150, excluding the unstable object region while preserving the video time cursor. A35-frame source-start establishment precedes the151-frame action. Record accepted/rejected regions and the actual crop; do not label the entire raw clip clean, call a still additional natural action, or conceal defects behind rapid cuts. If the remaining regions do not form a truthful coherent edit, reject the replacement and preserve the prior candidate. Reaction detail remains soft when enlarged; delivery resolution is not generated detail.
+
+Author the source illustration for the intended aspect ratio before generation. Reuse an already-reviewed portrait export when a landscape-specific improvement does not change it; verify exact bytes and reuse its existing playback evidence. Review the changed landscape movie completely, including the preserved ending, and verify unchanged AAC/PCM narration. A pleasing raw thumbnail or successful inference is insufficient for contact/anatomy acceptance at delivery size.
+
+When other account sessions are active, record account aggregate usage separately from this pilot's observed rate and stop only this notebook. The demonstrated run began with another session at1.15CU/hour; the aggregate rose to3.09, then fell to1.94 when that other session ended without agent action. At pilot shutdown the UI showed0 active sessions and0CU/hour. Account balance fell0.44CU over the period, including the initially concurrent session; this is not a pilot-only invoice. Restore the saved notebook to disabled/zero controls after durable import and shutdown, while retaining the consumed attempt journal.
