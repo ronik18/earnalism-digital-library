@@ -139,6 +139,8 @@ Check the complete swept silhouette when planning a rising or turning continuati
 
 For a hand-led action, reserve the swept palms, wrists and forearms for both image composition and caption placement. The v15 medium shot kept these regions in frame, but the normal bottom caption crossed the wrists. Its action-only caption was moved into clear sky beside the logo, with a bounded width and readable font; surrounding scenes retained their usual placement. Inspect the longest actual cue, peak gesture and return under all overlays. A technically visible hand behind a caption still fails the intended composition.
 
+A motion selection must pass expression review as well as gesture completion. Inspect both eyelids, mouth shape and gaze throughout the return and intended settled beat. In v15, the prolonged wink was cut but its asymmetric-blink onset remained inside the selected endpoint; describe that residual defect plainly. Do not manufacture an improved expression with a frozen patch, reversed action or a cut that removes the requested completion. For a reciprocal family action, define who initiates, who responds, what remains supported and the actual end state; an offering is not a handover or eating event.
+
 ## Teach a usable mental model, not a catalogue
 
 Use this topic-agnostic teaching pattern within the existing claim/source storyboard. It is informed by inspected classroom-video transcripts and sampled frames (2026-11-08), plus multimedia-learning research; it is not a demonstrated Earnalism growth result. Keep Earnalism's own art, exact full logo, voice routing, captions and safe-area system. Do not reproduce a reference channel's scripts, diagrams, handwriting, palette, slogans, music or thumbnail composition.
