@@ -8,6 +8,8 @@ DEPS = ['diffusers==0.36.0','transformers==4.51.3','accelerate==1.6.0',
         'huggingface_hub==0.36.0','safetensors==0.5.3','sentencepiece==0.2.1',
         'ftfy==6.3.1','imageio==2.37.0','imageio-ffmpeg==0.6.0','Pillow==11.2.1']
 SCHEMA = 'earnalism.wan22-pilot.v1'
+PROFILES = {'standard-v1': {'width':704,'height':1280,'frames':121,'fps':24,'steps':50,'guidance':5.0},
+            'l4-balanced-v2': {'width':512,'height':896,'frames':121,'fps':24,'steps':24,'guidance':5.0}}
 
 
 def sha(p):
@@ -33,13 +35,17 @@ def validate(job):
     if job.get('schema')!=SCHEMA or not re.fullmatch('[a-z0-9-]+',job.get('run_id','')):raise ValueError('Invalid job/run ID')
     if job.get('model')!=MODEL or job.get('model_revision')!=REVISION:raise ValueError('Unreviewed model or revision')
     if job.get('publication_approved') is not False:raise ValueError('Private pilot only')
+    profile=job.get('profile','standard-v1')
+    if profile not in PROFILES:raise ValueError('Unknown execution profile')
+    expected=PROFILES[profile]
+    if profile=='l4-balanced-v2' and (job.get('inference_steps')!=24 or job.get('guidance_scale')!=5.0 or not job.get('prior_attempt_evidence')):raise ValueError('Optimized retry requires exact settings and prior attempt provenance')
     scenes=job.get('scenes',[])
     if len(scenes)!=2 or len({s['id'] for s in scenes})!=2:raise ValueError('Two unique pilot scenes required')
     seconds=0
     for s in scenes:
         if not re.fullmatch('[a-z0-9-]+',s['id']) or Path(s['image']).name!=s['image']:raise ValueError('Unsafe scene name')
         if not re.fullmatch('[a-f0-9]{64}',s['image_sha256']):raise ValueError('Missing image hash')
-        if (s['width'],s['height'])!=(704,1280) or s['frames']!=121 or s['fps']!=24:raise ValueError('Unreviewed pilot shape')
+        if any(s[k]!=expected[k] for k in ['width','height','frames','fps']):raise ValueError('Unreviewed pilot shape')
         if not isinstance(s['prompt'],str) or not 10<len(s['prompt'])<3000:raise ValueError('Invalid prompt')
         seconds+=s['frames']/s['fps']
     if not seconds<=job.get('max_output_seconds',0)<=11:raise ValueError('Pilot seconds exceed bounded allowance')
@@ -123,7 +129,7 @@ def preflight(root):
 
 def command(root,args,log):
     with (Path(root)/log).open('a') as f:
-        subprocess.run([str(a) for a in args],stdout=f,stderr=subprocess.STDOUT,check=True,timeout=remaining(root))
+        subprocess.run([str(a) for a in args],stdout=f,stderr=subprocess.STDOUT,check=True,timeout=remaining(root),env={**os.environ,'USE_TF':'0','USE_FLAX':'0','PYTHONUNBUFFERED':'1'})
 
 
 def setup(root):
@@ -165,6 +171,7 @@ def step_budget_guard(root,total_steps=50):
 
 
 def infer(root,scene_id):
+    os.environ['USE_TF']='0';os.environ['USE_FLAX']='0'
     import torch
     from diffusers import AutoencoderKLWan, WanImageToVideoPipeline
     from diffusers.utils import load_image, export_to_video
@@ -172,10 +179,11 @@ def infer(root,scene_id):
     vae=AutoencoderKLWan.from_pretrained(root/'model',subfolder='vae',torch_dtype=torch.float32,local_files_only=True)
     pipe=WanImageToVideoPipeline.from_pretrained(root/'model',vae=vae,torch_dtype=torch.bfloat16,local_files_only=True,expand_timesteps=True)
     pipe.vae.enable_tiling();pipe.enable_model_cpu_offload()
+    settings=PROFILES[job.get('profile','standard-v1')];steps=settings['steps']
     frames=pipe(image=load_image(str(root/'inputs'/s['image'])),prompt=s['prompt'],
         negative_prompt='text, logo, watermark, extra fingers, fused hands, duplicate people, face morphing, abrupt cuts, camera shake',
-        height=s['height'],width=s['width'],num_frames=s['frames'],num_inference_steps=50,guidance_scale=5.0,
-        generator=torch.Generator(device='cpu').manual_seed(s['seed']),callback_on_step_end=step_budget_guard(root)).frames[0]
+        height=s['height'],width=s['width'],num_frames=s['frames'],num_inference_steps=steps,guidance_scale=settings['guidance'],
+        generator=torch.Generator(device='cpu').manual_seed(s['seed']),callback_on_step_end=step_budget_guard(root,steps)).frames[0]
     export_to_video(frames,str(root/'outputs'/f'{scene_id}.mp4'),fps=24)
 
 
@@ -210,7 +218,7 @@ def export(root):
               'private':True,'publication_approved':False,'files':{str(p.relative_to(root)):sha(p) for p in files},'quality_acceptance':'PENDING'}
     write(root/'export-manifest.json',manifest)
     archive=root/'wan22-export.zip';tmp=root/'wan22-export.tmp.zip'
-    with zipfile.ZipFile(tmp,'w',compression=zipfile.ZIP_STORED) as z:
+    with zipfile.ZipFile(tmp,'w',compression=zipfile.ZIP_DEFLATED) as z:
         for p in files+[root/'export-manifest.json']:z.write(p,str(p.relative_to(root)))
     tmp.replace(archive);write(root/'export-receipt.json',{'archive_sha256':sha(archive),'bytes':archive.stat().st_size,'durable_local_import':'PENDING'})
     return archive

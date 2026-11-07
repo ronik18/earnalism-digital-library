@@ -27,6 +27,16 @@ The worker now forecasts completion after two measured steps, retaining a15perce
 
 The final full audit ZIP was created but not durably imported: automatic downloads stalled, and a direct data-URL recovery link was rejected by browser URL policy. Do not work around such a rejection using another browser surface or encoded archive extraction. Preserve visible observations separately and report the missing raw archive honestly. Only the earlier small control ZIP was durably hash/import verified. An export/download click is not delivery evidence.
 
+## Optimized bounded retry profile
+
+For the owner's fresh5CU/30-minute retry, use `--profile l4-balanced-v2`. It creates `diwali-wan22-pilot-v2` in a separate runtime root, retaining prior failed-attempt provenance. It keeps the exact model revision, input hashes, seeds, guidance5,121frames/24fps and two-start/11second limits, but uses512×896 and24steps. This is a performance/quality tradeoff to review in actual playback, not a qualified production default. The standard-v1 job remains unchanged and importable. Shape and step settings are profile-bound; never relabel an existing attempt or silently alter its job.
+
+Use only the PyTorch backend (`USE_TF=0`, `USE_FLAX=0`) in isolated subprocesses; these supported Transformers flags avoid unrelated backend initialization. Export ZIPs use standard DEFLATE to reduce log-transfer size. Neither change grants model/voice/provider authority.
+
+The retry's normal `files.download()` control transfer was durably verified after completing Chrome's native Save dialog. If the Colab cell finishes but no local file appears, inspect the native browser dialog before declaring a transfer failure. Complete only the task's expected filename; preserve existing files and unrelated windows. A Playwright download-event timeout alone does not prove download failure. Verify local bytes/hash after saving. This supported route does not require data URLs, permission changes or broad Drive access.
+
+References: [pinned pipeline input and denoising contract](https://github.com/huggingface/diffusers/blob/v0.36.0/src/diffusers/pipelines/wan/pipeline_wan_i2v.py), [pinned Transformers backend flags](https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/utils/import_utils.py). The512×896 shape satisfies the pinned pipeline's16-pixel divisibility requirement; lowering steps is an engineering choice, not a claim of equal quality.
+
 ## Model and execution contract
 
 - Official weights: `Wan-AI/Wan2.2-TI2V-5B-Diffusers`, revision `b8fff7315c768468a5333511427288870b2e9635`; Apache2.0 model metadata. Preserve source/licence notices.

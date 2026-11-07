@@ -28,6 +28,15 @@ class Workflow(unittest.TestCase):
   a=self.session();self.assertEqual(a['deadline'],self.session()['deadline'])
   a['deadline']=time.time()-1;w.write(self.root/'session.json',a)
   with self.assertRaisesRegex(RuntimeError,'deadline expired'):self.session()
+ def test_optimized_retry_isolated_and_rejects_unbound_settings(self):
+  nb=build(self.p/'optimized',self.p/'art','l4-balanced-v2')
+  job=json.loads((nb.parent/'job.json').read_text())
+  self.assertNotEqual(job['run_id'],json.loads(self.job.read_text())['run_id'])
+  self.assertEqual((job['scenes'][0]['width'],job['scenes'][0]['height'],job['inference_steps']),(512,896,24))
+  self.assertIn('/content/earnalism-wan22-diwali-pilot-v2',nb.read_text())
+  self.assertTrue(job['prior_attempt_evidence'])
+  job['inference_steps']=50
+  with self.assertRaises(ValueError):w.validate(job)
  def test_metered_authority_requires_bounded_rate_and_original_start(self):
   with self.assertRaises(RuntimeError):w.begin(self.root,False,2)
   with self.assertRaises(RuntimeError):w.begin(self.root,False,12,5,time.time()-5)
