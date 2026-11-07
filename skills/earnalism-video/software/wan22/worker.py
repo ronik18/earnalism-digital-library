@@ -150,6 +150,20 @@ def probe_video(path,scene):
     return info
 
 
+def step_budget_guard(root,total_steps=50):
+    """Stop an infeasible attempt after two measured steps; never expand its deadline."""
+    started=time.monotonic()
+    def callback(pipe,step,timestep,callback_kwargs):
+        completed=step+1
+        if completed>=2:
+            seconds_per_step=(time.monotonic()-started)/completed
+            projected=(total_steps-completed)*seconds_per_step*1.15+45
+            if projected>remaining(root):
+                raise RuntimeError(f'Measured inference cannot fit original deadline: {seconds_per_step:.2f}s/step; projected {projected:.0f}s including decode margin. Preserve partial evidence; no automatic retry.')
+        return callback_kwargs
+    return callback
+
+
 def infer(root,scene_id):
     import torch
     from diffusers import AutoencoderKLWan, WanImageToVideoPipeline
@@ -161,7 +175,7 @@ def infer(root,scene_id):
     frames=pipe(image=load_image(str(root/'inputs'/s['image'])),prompt=s['prompt'],
         negative_prompt='text, logo, watermark, extra fingers, fused hands, duplicate people, face morphing, abrupt cuts, camera shake',
         height=s['height'],width=s['width'],num_frames=s['frames'],num_inference_steps=50,guidance_scale=5.0,
-        generator=torch.Generator(device='cpu').manual_seed(s['seed'])).frames[0]
+        generator=torch.Generator(device='cpu').manual_seed(s['seed']),callback_on_step_end=step_budget_guard(root)).frames[0]
     export_to_video(frames,str(root/'outputs'/f'{scene_id}.mp4'),fps=24)
 
 

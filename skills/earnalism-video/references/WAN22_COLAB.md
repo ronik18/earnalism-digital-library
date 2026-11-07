@@ -19,6 +19,14 @@ The 7 November pilot used an L4 with23034MiB VRAM and Python3.13.16. The output-
 
 The standard-library `venv` failed in Colab `ensurepip`; the pinned `virtualenv==20.35.4` bootstrap repaired the isolated environment while inheriting the current PyTorch. Python3.13 also failed the sentencepiece0.2.0 source build; sentencepiece0.2.1 installed as a compatible wheel. Validate the pipeline imports before downloading weights. These are verified setup lessons, not evidence of successful motion generation. Keep the original allocation deadline through setup repairs. A control archive was durably recovered and hash/import verified before inference; notebook download initiation alone did not yield a local file. Use the supported hashed transfer recovery when needed.
 
+## Measured L4 result and budget forecasting
+
+The 7 November bounded pilot completed dependency setup and model loading, but produced **no completed clip**. In its first 704×1280/121-frame/50-step attempt, the visible log reached2/50 steps at31.09s/step, estimating24:52 remaining. The original session had about11minutes left, so the attempt was deliberately interrupted and recorded `FAILED_NO_AUTOMATIC_RETRY`; the second scene was not started. Colab subsequently showed0 active sessions and0 CU/hour. This is an early-step observation, not a completed-run benchmark or a motion-quality result. Do not advertise two standard clips as a proven30-minute L4 workflow.
+
+The worker now forecasts completion after two measured steps, retaining a15percent timing margin,45seconds for decode and the separate120-second export reserve. If it cannot fit, it fails the existing attempt without retry or deadline reset. This safeguard is locally tested; its callback has not yet been exercised in a new live inference. A future reduced-resolution/shorter/accelerated route needs its own prepared job, validated model/pipeline compatibility and scoped compute authority; do not silently reduce this job or borrow unused allowance after shutdown.
+
+The final full audit ZIP was created but not durably imported: automatic downloads stalled, and a direct data-URL recovery link was rejected by browser URL policy. Do not work around such a rejection using another browser surface or encoded archive extraction. Preserve visible observations separately and report the missing raw archive honestly. Only the earlier small control ZIP was durably hash/import verified. An export/download click is not delivery evidence.
+
 ## Model and execution contract
 
 - Official weights: `Wan-AI/Wan2.2-TI2V-5B-Diffusers`, revision `b8fff7315c768468a5333511427288870b2e9635`; Apache2.0 model metadata. Preserve source/licence notices.
