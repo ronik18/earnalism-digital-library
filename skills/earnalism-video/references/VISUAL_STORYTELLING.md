@@ -110,3 +110,12 @@ A full-width source illustration can supply an intentional wider context shot al
 ## Qualify edited motion regions at delivery size
 
 A small raw preview can obscure a generated object defect that becomes obvious in a full-size composite. Review both before accepting a replacement. When an early action region and later unaffected reaction region form a coherent edit, record the exact intervals/crop, preserve their time cursor and reject the defective object region explicitly; never present the whole raw clip as clean. Use sustained motivated shots, not rapid cuts to disguise failures. If a usable region cannot tell the intended story truthfully, keep the previous candidate. A tighter reaction crop also lowers effective source detail, which remains disclosed alongside delivery dimensions.
+
+
+## Visible action before decorative motion
+
+For a greeting, offering or handover, make the meaningful gesture readable: include the necessary palms, wrists, forearms, object support and recipient in the final composition. A face moving above cropped hands does not satisfy an action brief. Prefer a sharp, clearly disclosed illustrated greeting to weak generated movement when no acceptable motion is available; this leaves natural character animation unfulfilled. Compose independently for portrait when needed and verify the generated file's actual aspect ratio before applying cover crops. Reject a nominal portrait whose final crop hides the action.
+
+Choose an illustrated completion that follows the accepted action state rather than resetting the participants to the starting pose. It can replace a visibly soft reaction crop, but it adds no generated movement. Check the cut and complete scene at delivery size. A record-to-observance-to-tradition sequence can carry an evidence passage pictorially while captions express the claim; identify invented record imagery as illustration and retain the source anchor and evidential limits.
+
+Fit caption backing to the actual cue within the existing maximum width and safe region. Keep the readable font, wrapping allowance and exact speech timing; short cues need not carry a permanent full-width strip. Inspect short and longest cues with hands, source labels and complete branding in both aspect ratios. Frame-level checks establish composition only; qualify pacing and transitions on the finished movie.
