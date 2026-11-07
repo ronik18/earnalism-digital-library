@@ -29,7 +29,7 @@ export DOCX_UPLOAD_MAX_BYTES="${DOCX_UPLOAD_MAX_BYTES:-8388608}"
 export CHAPTER_UPLOAD_MAX_BYTES="${CHAPTER_UPLOAD_MAX_BYTES:-8388608}"
 export ADMIN_MEDIA_UPLOAD_MAX_BYTES="${ADMIN_MEDIA_UPLOAD_MAX_BYTES:-4194304}"
 
-exec uvicorn server:app \
+exec uvicorn purchase_closed_runtime:create_app --factory \
   --host 0.0.0.0 \
   --port "${PORT:-8080}" \
   --workers "${WEB_CONCURRENCY:-1}" \
