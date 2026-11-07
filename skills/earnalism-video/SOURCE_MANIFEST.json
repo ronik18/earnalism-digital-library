@@ -380,10 +380,10 @@
     "software/voice_finish.py": "2066372aa20b56057b21490f34d59ffb4928e5e749a015d7bd1d3325b50e926d",
     "software/voice_metrics.py": "075812a67c742c2c15f4030febe9d7d1589c7a6c257e7964ddc9cc186dd22a7b",
     "software/wan22/__init__.py": "cec4a188e86d6bfdefb24e7065b1fc0b042e9edf74b438fb2e00cf6fe5d3049f",
-    "software/wan22/build_colab.py": "1feaa448129216914b9bf51ba98a6df5d5b54cbcdfe15e2c2ee4744451b483a8",
+    "software/wan22/build_colab.py": "2a85bbd135f75728fa9eb248e2f7a986a9794ede6774863b8e23dbe56d10aad8",
     "software/wan22/import_clips.py": "faf2c96f165f43fcc437fd20221baa3bf8df0f7f40b8449bf920d7926635a884",
     "software/wan22/splice.py": "09f75d0a63937c700eb4f7efda126b55c0d5eb11fb9b85d11e8efacb5244dde7",
-    "software/wan22/test_workflow.py": "c3173a55b7055a12762d2ea6ae1b8063d39c615d5215d669607e92d586a69508",
+    "software/wan22/test_workflow.py": "d0a2f4682da565da3787440ccf9154c5a045a88db79e64831778f8e7d4baf278",
     "software/wan22/worker.py": "aac3dd5a1f2a5417058ddaf9a292f30ade7d65396c7ed7d1f1252d783618cfbe",
     "software/watch-template.html": "f17b5853975d4af3ba23f05f15998bce42b737a01648b2a4bc6da731bfbaca57"
   },
