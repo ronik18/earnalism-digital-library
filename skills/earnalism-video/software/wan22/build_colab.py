@@ -94,7 +94,8 @@ worker.unpack_inputs(path,ROOT,{sha(archive)!r})
 print('Source illustrations verified; no generation performed')''')
     setup=action('SETUP_WAN',"try:\n worker.setup(ROOT)\nfinally:\n worker.export(ROOT)\nprint((ROOT/'setup.json').read_text())")
     by_id={s['id']:s for s in scenes}
-    clips=[action(flag,f"worker.generate(ROOT,{sid!r})\nprint((ROOT/'attempts.json').read_text())") if sid in by_id else "print('SCENE_NOT_IN_THIS_JOB: reuse the verified prior clip; no generation')" for flag,sid in [('GENERATE_HOMECOMING','homecoming'),('GENERATE_SWEETS','sweets')]]
+    start_guard="if worker.remaining(ROOT)<1200:raise RuntimeError('Insufficient original deadline headroom for detail pilot')\n" if profile=='landscape-detail-pilot-v1' else ''
+    clips=[action(flag,start_guard+f"worker.generate(ROOT,{sid!r})\nprint((ROOT/'attempts.json').read_text())") if sid in by_id else "print('SCENE_NOT_IN_THIS_JOB: reuse the verified prior clip; no generation')" for flag,sid in [('GENERATE_HOMECOMING','homecoming'),('GENERATE_SWEETS','sweets')]]
     status="""if RUN_WAN and 'ROOT' in globals():
  for name in ['preflight.json','setup.json','attempts.json','export-receipt.json']:
   p=ROOT/name

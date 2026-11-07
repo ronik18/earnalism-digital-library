@@ -2,7 +2,7 @@
 from pathlib import Path
 from contextlib import redirect_stdout
 from io import StringIO
-from unittest.mock import patch
+from unittest.mock import patch,Mock
 import hashlib,json,subprocess,tempfile,time,unittest,zipfile
 from . import worker as w
 from .build_colab import build
@@ -127,6 +127,14 @@ class Workflow(unittest.TestCase):
    for step in range(2):callback(None,step,None,payload)
    with self.assertRaisesRegex(RuntimeError,'cannot fit original deadline'):callback(None,2,None,payload)
   self.assertEqual(json.loads((runtime/'session.json').read_text())['deadline'],state['deadline'])
+ def test_generated_detail_cell_checks_headroom_before_spending_start(self):
+  nb,_=self.detail_job();cell=''.join(json.loads(nb.read_text())['cells'][8]['source']);fake=Mock();fake.remaining.return_value=1199
+  ns={'RUN_WAN':True,'PREFLIGHT_OK':True,'GENERATE_HOMECOMING':True,'worker':fake,'ROOT':self.root}
+  with self.assertRaisesRegex(RuntimeError,'Insufficient original deadline'):exec(cell,ns)
+  fake.generate.assert_not_called()
+  fake.remaining.return_value=1200;(self.root/'attempts.json').write_text('[]')
+  with redirect_stdout(StringIO()):exec(cell,ns)
+  fake.generate.assert_called_once_with(self.root,'homecoming')
  def test_real_detail_media_import_remains_unqualified(self):
   nb,job=self.detail_job();runtime=self.p/'detail-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',runtime,w.sha(nb.parent/'wan22-inputs.zip'));w.begin(runtime,True,0)
   out=runtime/'outputs';out.mkdir();clip=out/'homecoming.mp4'
