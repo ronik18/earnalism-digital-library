@@ -334,6 +334,9 @@ def release_check(folder):
  if (folder/'delivery-manifest.json').is_file() and load(folder/'delivery-manifest.json').get('schema')=='earnalism.rainbow-private-kit.v1':
   from rainbow.release import check_private
   return check_private(folder,BASE.parent)
+ if (folder/'delivery-manifest.json').is_file() and load(folder/'delivery-manifest.json').get('schema')=='earnalism.diwali-private-kit.v1':
+  from diwali_v5.release import check_private
+  return check_private(folder,BASE.parent)
  ep=load(folder/'episode.json')
  if ep['private_test']:raise ValueError('Test fixtures can never publish')
  r=load(folder/'review.json')
