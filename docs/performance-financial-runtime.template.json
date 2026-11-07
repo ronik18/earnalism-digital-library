@@ -1,0 +1,146 @@
+{
+  "schema": "earnalism.source_bound_financial_runtime_contract.v1",
+  "status": "PREPARED_NO_EXECUTION_AUTHORIZATION",
+  "amendment_sha256": "cf4d431974a7227e1603d74dc518fe6074a70d1d3f19c1d4cff32f4f4c9811c1",
+  "amendment_scope_sha256": "309509775ddf6bb7782ff0b4813132131ae633d470bef8c8bc488f4b427719f0",
+  "owner_budget_decision": {
+    "path": "/private/tmp/pr656-native-successor-20261108/controller-financial-admission/OWNER-BUDGET-DECISION.ACTUAL.json",
+    "sha256": "2fa194d36d0a8fe2bb76701e08bcc6934f1ffa788a09b511cd42edba055d8fd6"
+  },
+  "parent_operation_id": "802d0473580556086e23fff24e06a47a0a88bb2b89f74c72fcbfc39881fd2713",
+  "original_action_scope": {
+    "release_scope_id": "43332d50702665306df0dac98a05af20423712f3bbd464376d321c964c5b65e1",
+    "intended_closed_source_sha": "65ca071ebebba3edb73ab44fd13c7e00f95b54e6",
+    "owner_scope_receipt_sha256": "be09149041167583000ec12183729c1622c1b74e5326d9aef2d96c8b2d768611",
+    "operations_journal_identity_sha256": "eddf1a6a0ad3d11383d5d41f8dc5a0752142651affcf38a405f874ffe1db8ddf",
+    "schema": "earnalism.native_action_scope.v1",
+    "baseline_sha256": "5365479ab31d434a357ecfbd755145356459718750630aff53044b5c51fbbed2"
+  },
+  "expected_component": {
+    "controller": "019e7b027567e1820cbe55a511b44affbac364c5",
+    "closed": "25514eba4a3dea618f993d950ad8bd9293428bf7",
+    "deployment_id": "370eeb38-637b-4767-bd64-c5c3709b1391",
+    "image": "sha256:a5fa379f4e2b1a9562843e5084ff70163e5b0c83f467cf7b111cb48003b4bc14",
+    "runtime_sha256": "30948d69bdd4ca5ae250579439a4589672b5e3a8fbf230b1f060e1d4c1379dda",
+    "runtime_manifest_sha256": "c7954985691d1c95677758d2c1f3375fe118cad52c1b19592eb3ac8bb580bc86",
+    "config_sha256": "fde0f12d7a423104f210d2a2de4441ae0089e9b4548d5661869ab96c56ce1579",
+    "component_receipt_sha256": "c0c3c667507e9c834ba54a9547788b9b2919d72c101d3a6ebc2ddd26d2f44010",
+    "source_files_sha256": {
+      "backend/native_audio_review_authority.py": "f9dab7e3cba3dc0ae472cc965679f1bd8667afd93796f9401f8c0b81a68a61dd",
+      "backend/native_audio_review_operator.py": "ec284a30b54ba220e8152c1867a4a1c2535dd1178a5ed85e93777617698a6a31",
+      "backend/native_audio_review_scope.py": "bf34f5c245a61dc462b3b0728a250797468eadccf83560a7ca9ac1a4016242a2",
+      "backend/sredni_initial_review_authority.py": "61d26aef70d936b64f09bdb22480f1a5af0b24fc26297411835369e79cf252dd",
+      "backend/sredni_initial_review_operator.py": "b73c733059e069993a388b07a5f87b11df8b4bbb20cb03a3dca4b0a38b739e0b",
+      "backend/sredni_initial_review_scope.py": "bebcb3812c5dfd774c80975b2cd6340510f8a62522180b91a2241fceee47b838",
+      "backend/sredni_initial_review_profile.py": "1eb27d53e7fc4de226d594535200f76925dfdc2bdac714a00f92e58285b16107",
+      "backend/reading_pass_service.py": "39642259252536df7492e8d5af4b43487fe329b8c49455234a18d48b4a6a270c",
+      "backend/reading_pass_admission.py": "0203529ddb176e8740dae3e36c317ebea0be8c7df5f2ff089022eef9d46754ac",
+      "backend/server.py": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21",
+      "backend/data/sredni_initial_review_authority.json": "7b26e572f08e8c66c97281a890c605698a188a5857fb317a0c064f30a9d42671"
+    },
+    "safety_qualification": "Effective admission flag is not inferred from variable-name absence; read-only process-flag channel is unbound. If that fact remains a required gate, report HOLD rather than add SSH, env dump, new route or probe."
+  },
+  "target": {
+    "project": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "service": "5af42e7e-f518-4f6a-b602-d9950866501f",
+    "environment": "580b250c-80ee-48ad-bfbe-fa4e31a6b378"
+  },
+  "member_sha256": "c4ac3285d74eeba22185ccd4cb61c00a17e477c085f3d8c3a01f427f03e74a3a",
+  "expected_snapshot_id": "d2bb3ded-cb47-48b6-8290-25279783b66e",
+  "expected_instance_id": "6e8b13f1-1a9b-42ed-8381-b8277c58bf0a",
+  "expected_file_service_manifest_sha256": "e6e3f83b25a1f9dd26338bd5014f02fe1a661f4c377be34b01fd910c5774a583",
+  "database_name_sha256": "181aecefb7a492f2446e4c81880b21cce5a539402e2315afefa72f2ebf51d9a2",
+  "original_consumed": 6,
+  "approved_cumulative_ceiling": 7,
+  "additional_attempts": 1,
+  "claim_scope": "Same cumulative recovery-observation lineage; seventh append only; no new bucket/reset",
+  "fixed_query_plan": {
+    "path": "/private/tmp/pr656-native-successor-20261107/read-only-capture-plan/PLAN.json",
+    "sha256": "77e4cb153ed16a980c1f64a60264be1050baa77967c727f31792c53dd2aebc84",
+    "queries_sha256": "2a035bd47d1b63c05e70988ec0efc6809d28361c098752d3d54b7c6ffe708820"
+  },
+  "expected_driver_versions": {
+    "motor": "3.3.1",
+    "pymongo": "4.5.0",
+    "dnspython": "2.8.0"
+  },
+  "historical_dependency_manifest": {
+    "path": "/private/tmp/pr656-native-successor-20261107/dependency-drift-runtime-closure-plan/SCOPED-SDK-MANIFEST.json",
+    "sha256": "36e002aed924479a16ebcfe632ea6c16b03c610389e25aebfb65a4c641ecf20e",
+    "proves_current_runtime_closure": false
+  },
+  "historical_bindings": {
+    "path": "/private/tmp/pr656-native-successor-20261107/read-only-collector/BINDINGS.json",
+    "sha256": "bd4f820eb360c12c06d251408c0d9153b84b64d913d1a9f93cd5ee23108fdc62",
+    "retained_unmodified": true
+  },
+  "required_actual_before_any_claim": {
+    "separate_execution_owner_authorization_sha256": null,
+    "protected_host_identity_sha256": null,
+    "trusted_existing_controller_resolver_sha256": null,
+    "actual_client_factory_source_sha256": null,
+    "actual_transport_source_sha256": null,
+    "current_profile_provenance_sha256": null,
+    "current_runtime_dependency_closure_sha256": null,
+    "expected_principal_sha256": null,
+    "expected_auth_database_sha256": null,
+    "expected_client_seed_set_sha256": null,
+    "runtime_flag_requirement_decision": null,
+    "runtime_flag_channel_or_applicability_sha256": null,
+    "issued_at": null,
+    "expires_at": null,
+    "current_config_secret_version_context_sha256": null,
+    "admission_controller_commit_sha": null,
+    "canonical_history_preservation_sha256": null
+  },
+  "no_fabricated_current_provenance": true,
+  "execution_authorized": false,
+  "seventh_claim_executed": false,
+  "normal_release": "HELD",
+  "frontend_promotion": "HELD",
+  "budget_installed": false,
+  "runtime_available_attempts": 0,
+  "server_source_roles": {
+    "controller_normal_server_sha256": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21",
+    "closed_export_server_sha256": "e60c70f4a79c1cabd2571de9a346259c7af8b9a27ba6384ad3d42f89826b1454",
+    "note": "Separate immutable roles; normal/controller server must never substitute for CLOSED export server."
+  },
+  "expected_diagnostic_client_limits": {
+    "maxPoolSize": 1,
+    "minPoolSize": 0,
+    "retryReads": false,
+    "retryWrites": false,
+    "serverSelectionTimeoutMS_maximum": 1000,
+    "connectTimeoutMS_maximum": 1000,
+    "socketTimeoutMS_maximum": 1000,
+    "new_client_only_after_claim": true
+  },
+  "canonical_roles": {
+    "original_controller_main": "019e7b027567e1820cbe55a511b44affbac364c5",
+    "preserved_payment_ref": "5e739e69d3086a14d83f802f7cc5b3da9b90ddf0",
+    "admission_controller_candidate_commit": "UNBOUND_MUST_PRESERVE_ORIGINAL_ANCESTRY_AND_SOURCE_ROLES",
+    "closed_serving_source": "25514eba4a3dea618f993d950ad8bd9293428bf7"
+  },
+  "source_pins": {
+    "controller": "f2801598b628377e09929c3fafdc149bd92980e79db58264f7649c855c063e3c",
+    "claim_helper": "9cb34d8b966d3eb230bc5e4a2755dfe24ab8eacce49fe81fb72c3af5340b3864",
+    "observer": "118c50cc8069aa7791211a4a5dc583814afb7e51849ec849feaba5f7af003f85",
+    "client_factory": "c9d9cb2d2e02721501b31407aba94af0a57710a03a1c3882fafc5fb88ec9c6ba",
+    "transport": "1b1b3416abbb8b097fc8baf1d5dd760b06aa5d1fa6205e50ee53c2b11b236f46"
+  },
+  "trusted_host_binding": {
+    "schema": "earnalism.existing_controller_host_binding.v1",
+    "binding_source_sha256": "09e1060099b9ffc9ed5cfafed5e8dc9e81c06663998eef2aa1289d1fc5e53e4f",
+    "issuer_id": null,
+    "host_identity_sha256": null,
+    "verifier_source_sha256": null,
+    "dispatch_source_sha256": null,
+    "receipt_reference": null
+  },
+  "template_note": "Implementation source pins only. Required actual provenance remains null; old evidence packages are retained unchanged. Populate only genuine protected evidence under separate authority.",
+  "native_controller_reference": {
+    "path": "scripts/india_release_provider_adapter.py",
+    "sha256": "e9406a9c7161c3ea4117bde37029c2fabad938138a78d6f2797275d46fd18155",
+    "unchanged": true
+  }
+}
