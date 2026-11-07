@@ -56,9 +56,40 @@ class ApplicationProtocolTests(unittest.TestCase):
         self.assertIn(b'PURCHASE_INITIATION_CLOSED', closed)
 
     def test_diagnostic_protocol_does_not_qualify_retained_native_pair(self):
-        guard.validate_purchase_protocol_source(ROOT)
-        with self.assertRaisesRegex(ValueError,'Whole server equality'):
-            guard.validate_paired_source(ROOT)
+        # Keep the original negative case after the active native pair advances.
+        # The archived contract and exact merged diagnostic bytes still reject.
+        archive=ROOT/'internal/legal/history/pr656-source-only-0d3a5d58'
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            (root/'internal/legal').mkdir(parents=True)
+            (root/'backend').mkdir()
+            (root/guard.PATH).write_bytes((archive/'purchase_guard_source.json').read_bytes())
+            receipt=json.loads((root/guard.PATH).read_text())['owner_receipt_path']
+            (root/receipt).write_bytes((ROOT/receipt).read_bytes())
+            (root/'backend/server.py').write_bytes(guard.exact_git_server(ROOT,
+                '0d3a5d58fe72907017692fd606969adcf4a0b3d1'))
+            with self.assertRaisesRegex(ValueError,'Whole server equality'):
+                guard.validate(root,base_reader=lambda _root,ref:guard.exact_git_server(ROOT,ref))
+
+    def test_explicit_native_successor_binds_exact_merged_backend(self):
+        proof=guard.validate_paired_source(ROOT)
+        self.assertTrue(proof['controller_contract_committed'])
+        self.assertEqual(proof['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
+        self.assertEqual(proof['normal_server_sha256'],guard.sha(guard.exact_git_server(
+            ROOT,'0d3a5d58fe72907017692fd606969adcf4a0b3d1')))
+        self.assertEqual(proof['bootstrap_source_sha'],self.native['guarded_bootstrap_source_sha'])
+        self.assertEqual(guard._git(ROOT,'rev-parse','HEAD:backend'),guard._git(ROOT,
+            'rev-parse','0d3a5d58fe72907017692fd606969adcf4a0b3d1:backend'))
+
+    def test_original_contract_protocol_and_validators_remain_immutable(self):
+        base='0d3a5d58fe72907017692fd606969adcf4a0b3d1'
+        archive=ROOT/'internal/legal/history/pr656-source-only-0d3a5d58'
+        for path in (guard.PATH,guard.PROTOCOL_PATH):
+            self.assertEqual((archive/Path(path).name).read_bytes(),guard._git_blob(ROOT,base,path))
+        for path in ('scripts/purchase_guard_source.py','scripts/backend_upload_payload.py',
+                     'scripts/first_guard_pair.py','scripts/india_release_provider_adapter.py',
+                     self.native['owner_receipt_path']):
+            self.assertEqual((ROOT/path).read_bytes(),guard._git_blob(ROOT,base,path))
 
     def test_actual_disk_drift_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Whole application protocol'):

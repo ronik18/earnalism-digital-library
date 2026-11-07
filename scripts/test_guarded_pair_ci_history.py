@@ -468,6 +468,45 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertIn('backend/tests/test_sredni_initial_review_mongo_integration.py', source)
 
 
+class ArchivedApplicationBindingTests(unittest.TestCase):
+    """Execute the actual archival selector before bounded body hydration."""
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root=Path(self.tmp.name)
+        self.archive=self.root/'internal/legal/history/pr656-source-only-0d3a5d58'
+        self.archive.mkdir(parents=True)
+        workflow=(ROOT/'.github/workflows/regression.yml').read_text()
+        self.block=textwrap.dedent(workflow.split(
+            '          # BEGIN archived application bindings\n',1)[1].split(
+            '          # END archived application bindings',1)[0])
+
+    def select(self, native, protocol):
+        for name,value in [('purchase_guard_source.json',native),
+                           ('purchase_protocol_application_source.json',protocol)]:
+            (self.archive/name).write_text(json.dumps(value))
+        return subprocess.run(['bash','-c','set -euo pipefail\nbindings=()\n'+self.block+
+            '\nprintf "%s\\n" "${bindings[@]}"'],cwd=self.root,text=True,
+            capture_output=True,timeout=10)
+
+    def test_each_archived_application_is_explicitly_selected(self):
+        result=self.select({'application_source_sha':'a'*40},{'application_source_sha':'b'*40})
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(result.stdout.splitlines(),['a'*40+':backend/server.py',
+                                                     'b'*40+':backend/server.py'])
+
+    def test_malformed_archived_pin_is_rejected(self):
+        result=self.select({'application_source_sha':'not-a-sha'},{'application_source_sha':'b'*40})
+        self.assertNotEqual(result.returncode,0)
+
+    def test_missing_archived_field_is_rejected(self):
+        self.assertNotEqual(self.select({}, {'application_source_sha':'b'*40}).returncode,0)
+
+    def test_later_invalid_archive_cannot_hide_behind_valid_first(self):
+        self.assertNotEqual(self.select({'application_source_sha':'a'*40},
+            {'application_source_sha':None}).returncode,0)
+
+
 class RetainedBindingBatchTests(unittest.TestCase):
     """Exercise the actual workflow batch block with local immutable Git objects."""
     def setUp(self):

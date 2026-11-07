@@ -46,8 +46,8 @@ jobs:
       HISTORICAL_PAIR_BOOTSTRAP_SHA: 65ca071ebebba3edb73ab44fd13c7e00f95b54e6
       HISTORICAL_PAIR_APPLICATION_SHA: fe38e8a82844bf0b1682aede0a4bf550e5fe1ec2
       # Retained current A/B controller; never recovery qualification of CI HEAD.
-      RETAINED_PAIR_CONTROLLER_SHA: 1012e3a3e56b169a29d492aadb54528bbebc4b94
-      RETAINED_PAIR_CONTROLLER_TREE: d356425528c625fe25a22825b842d15156d04ec6
+      RETAINED_PAIR_CONTROLLER_SHA: e547d0163fa8d1f59891724e2717fb1526fd4ed6
+      RETAINED_PAIR_CONTROLLER_TREE: 347a5952c2869ad9aa743a967aef2e5702c93586
       # Avoid retaining a second wheel/download copy beside the isolated UAT environment.
       PIP_NO_CACHE_DIR: "1"
       npm_config_cache: ${{ github.workspace }}/.npm-cache
@@ -140,6 +140,18 @@ jobs:
             [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             bindings+=("$source_pin:backend/server.py")
           fi
+          # BEGIN archived application bindings
+          # Preserve exact old application bodies consumed by historical negatives.
+          for archived_contract in \
+            internal/legal/history/pr656-source-only-0d3a5d58/purchase_guard_source.json \
+            internal/legal/history/pr656-source-only-0d3a5d58/purchase_protocol_application_source.json; do
+            if [[ -f "$archived_contract" ]]; then
+              source_pin="$(jq -er '.application_source_sha' "$archived_contract")"
+              [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              bindings+=("$source_pin:backend/server.py")
+            fi
+          done
+          # END archived application bindings
           if [[ -f scripts/build_india_guarded_rollback.py ]]; then
             bindings+=("4dc9e8fd3f9eafd28445b408d376b73634ccfa56:backend/server.py")
           fi
