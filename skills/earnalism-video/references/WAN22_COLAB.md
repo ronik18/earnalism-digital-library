@@ -13,6 +13,12 @@ python3 -m unittest video_studio.wan22.test_workflow -v
 
 The builder outputs a disabled Colab notebook, a separate ZIP of the two source images plus job, and hashes. No model is downloaded or executed by building. Upload these exact artifacts privately to Drive/Colab only with scoped payload/destination authority; do not make public links or mount all Drive. Update existing known file IDs instead of repeatedly creating copies. Verify MIME/name/size and permission metadata after upload.
 
+## Verified Colab transfer and bootstrap lessons
+
+The 7 November pilot used an L4 with23034MiB VRAM and Python3.13.16. The output-frame `files.upload()` picker did not raise a usable chooser; Files → Upload to session storage worked. Prefer the sidebar and let the upload cell verify `/content/wan22-inputs.zip` against the exact archive hash. Do not mount Drive or weaken extension permissions to work around this picker. An existing wrong-hash file is a hold, not permission to overwrite it.
+
+The standard-library `venv` failed in Colab `ensurepip`; the pinned `virtualenv==20.35.4` bootstrap repaired the isolated environment while inheriting the current PyTorch. Python3.13 also failed the sentencepiece0.2.0 source build; sentencepiece0.2.1 installed as a compatible wheel. Validate the pipeline imports before downloading weights. These are verified setup lessons, not evidence of successful motion generation. Keep the original allocation deadline through setup repairs. A control archive was durably recovered and hash/import verified before inference; notebook download initiation alone did not yield a local file. Use the supported hashed transfer recovery when needed.
+
 ## Model and execution contract
 
 - Official weights: `Wan-AI/Wan2.2-TI2V-5B-Diffusers`, revision `b8fff7315c768468a5333511427288870b2e9635`; Apache2.0 model metadata. Preserve source/licence notices.

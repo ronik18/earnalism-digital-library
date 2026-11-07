@@ -54,12 +54,14 @@ else:
 '''
     def action(flag,body):
         return f"if not {flag}:\n print('{flag}_DISABLED')\nelse:\n if not (RUN_WAN and globals().get('PREFLIGHT_OK',False)):raise RuntimeError('Run successful free/hardware preflight first')\n"+''.join(' '+line+'\n' for line in body.splitlines())
-    upload=action('UPLOAD_INPUTS',f'''from google.colab import files
-uploaded=files.upload()
-if len(uploaded)!=1:raise RuntimeError('Upload exactly wan22-inputs.zip')
-name,data=next(iter(uploaded.items()))
-if hashlib.sha256(data).hexdigest()!={sha(archive)!r}:raise RuntimeError('Wrong input archive')
-path=ROOT/'wan22-inputs.zip';path.write_bytes(data)
+    upload=action('UPLOAD_INPUTS',f'''# Prefer Colab Files > Upload to session storage if the output-frame picker fails.
+path=pathlib.Path('/content/wan22-inputs.zip')
+if not path.exists():
+ from google.colab import files
+ uploaded=files.upload()
+ if len(uploaded)!=1:raise RuntimeError('Upload exactly wan22-inputs.zip')
+ name,data=next(iter(uploaded.items()))
+ path=ROOT/'wan22-inputs.zip';path.write_bytes(data)
 worker.unpack_inputs(path,ROOT,{sha(archive)!r})
 print('Two source illustrations verified; no generation performed')''')
     setup=action('SETUP_WAN',"try:\n worker.setup(ROOT)\nfinally:\n worker.export(ROOT)\nprint((ROOT/'setup.json').read_text())")

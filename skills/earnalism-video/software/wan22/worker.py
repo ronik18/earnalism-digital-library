@@ -5,7 +5,7 @@ import argparse, contextlib, fcntl, hashlib, json, os, re, shutil, subprocess, s
 MODEL = 'Wan-AI/Wan2.2-TI2V-5B-Diffusers'
 REVISION = 'b8fff7315c768468a5333511427288870b2e9635'
 DEPS = ['diffusers==0.36.0','transformers==4.51.3','accelerate==1.6.0',
-        'huggingface_hub==0.36.0','safetensors==0.5.3','sentencepiece==0.2.0',
+        'huggingface_hub==0.36.0','safetensors==0.5.3','sentencepiece==0.2.1',
         'ftfy==6.3.1','imageio==2.37.0','imageio-ffmpeg==0.6.0','Pillow==11.2.1']
 SCHEMA = 'earnalism.wan22-pilot.v1'
 
@@ -129,10 +129,13 @@ def command(root,args,log):
 def setup(root):
     root=Path(root);open_job(root);preflight(root)
     py=root/'venv/bin/python'
-    if not py.exists():command(root,[sys.executable,'-m','venv','--system-site-packages',root/'venv'],'setup.log')
+    # Colab Python 3.13 may ship without a working ensurepip bootstrap.
+    if not (root/'venv/pyvenv.cfg').exists() or not (root/'venv/bin/pip').exists():
+        command(root,[sys.executable,'-m','pip','install','virtualenv==20.35.4'],'setup.log')
+        command(root,[sys.executable,'-m','virtualenv','--system-site-packages',root/'venv'],'setup.log')
     command(root,[py,'-m','pip','install',*DEPS],'setup.log')
-    command(root,[py,'-c',"from huggingface_hub import snapshot_download;import sys;snapshot_download(repo_id=sys.argv[1],revision=sys.argv[2],local_dir=sys.argv[3],allow_patterns=['model_index.json','scheduler/*','tokenizer/*','text_encoder/*','transformer/*','vae/*'])",MODEL,REVISION,root/'model'],'setup.log')
     command(root,[py,'-c',"import torch,diffusers,transformers,accelerate;from diffusers import WanImageToVideoPipeline;print('versions',torch.__version__,diffusers.__version__,transformers.__version__,accelerate.__version__);print('CUDA',torch.version.cuda,torch.cuda.get_device_name())"],'setup.log')
+    command(root,[py,'-c',"from huggingface_hub import snapshot_download;import sys;snapshot_download(repo_id=sys.argv[1],revision=sys.argv[2],local_dir=sys.argv[3],allow_patterns=['model_index.json','scheduler/*','tokenizer/*','text_encoder/*','transformer/*','vae/*'])",MODEL,REVISION,root/'model'],'setup.log')
     result=subprocess.check_output([str(py),'-m','pip','freeze'],text=True);(root/'dependencies.lock.txt').write_text(result)
     write(root/'setup.json',{'state':'SETUP_COMPLETED_NOT_INFERENCE_QUALIFIED','model':MODEL,'revision':REVISION,'pipeline':'WanImageToVideoPipeline','expand_timesteps':True,'attention':'PyTorch SDPA; no FlashAttention compilation','time':time.time()})
 
