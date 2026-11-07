@@ -168,4 +168,9 @@ Official Wan guidance documents 1280×704 TI2V-5B generation on 24 GB-class hard
 
 For local finishing of retained footage, compare the exact same motion at matched display size. Lanczos resampling and restrained luma sharpening can change edge contrast; they do not create missing detail, fix identity drift or add natural movement. Inspect both stills and playback for halos, shimmer and texture mismatch before adopting the finish. Preserve the original clips and audio.
 
-Source checked for this preparation: https://github.com/Wan-Video/Wan2.2#run-text-image-to-video-generation . Runtime and visual qualification remain pending.
+Source checked for this preparation: https://github.com/Wan-Video/Wan2.2#run-text-image-to-video-generation . The measured v15 outcome is recorded below; each new shot still needs its own runtime and visual qualification.
+
+
+The v15 single-start experiment completed a 1280×704, 121-frame clip on L4 in 982.20 seconds after inference start (including encoding/probe). Sampling took 669 seconds; the full allocation included setup and transfer. The original deadline was retained, normal archive download/import worked, and later UI readback showed zero sessions and zero CU/hour; balance changed 360.69 to 359.99. This is one observed feasible run, not a universal timing guarantee or provider invoice.
+
+Higher resolution improved this source's apparent detail but did not fix action adherence: the bow-and-rise completed, followed by an unwanted frontal turn and prolonged asymmetric blink. Select only the reviewed action interval; the v15 editorial selection uses the first 90 normalized 30-fps frames, then a context cut. Do not claim the requested two-second settled hold or exact return orientation occurred. Exclude a flawed tail rather than slowing, looping or holding it to fill the planned duration. Review action completion and expression separately from head/hand visibility and technical resolution; keep earlier accepted footage if no clean complete interval exists. This result does not promote the experimental profile to the default.
