@@ -62,12 +62,19 @@ class Workflow(unittest.TestCase):
   self.assertTrue((self.root/'wan22-export.zip').exists())
  def test_measured_slow_inference_stops_without_extending_session(self):
   state=self.session();original_deadline=state['deadline']
-  with patch.object(w.time,'monotonic',side_effect=[100,164]),patch.object(w,'remaining',return_value=600):
+  with patch.object(w.time,'monotonic',side_effect=[220,252,284]),patch.object(w,'remaining',return_value=600):
    callback=w.step_budget_guard(self.root)
    payload={'latents':'test'}
    self.assertIs(callback(None,0,None,payload),payload)
-   with self.assertRaisesRegex(RuntimeError,'cannot fit original deadline'):callback(None,1,None,payload)
+   self.assertIs(callback(None,1,None,payload),payload)
+   with self.assertRaisesRegex(RuntimeError,'cannot fit original deadline'):callback(None,2,None,payload)
   self.assertEqual(json.loads((self.root/'session.json').read_text())['deadline'],original_deadline)
+ def test_long_warmup_is_not_multiplied_by_remaining_steps(self):
+  self.session()
+  with patch.object(w.time,'monotonic',side_effect=[220,231,242]),patch.object(w,'remaining',return_value=600):
+   callback=w.step_budget_guard(self.root,24)
+   payload={'latents':'test'}
+   for step in range(3):self.assertIs(callback(None,step,None,payload),payload)
  def test_rejects_oversized_or_changed_job(self):
   job=json.loads(self.job.read_text());job['max_attempts']=3
   with self.assertRaises(ValueError):w.validate(job)

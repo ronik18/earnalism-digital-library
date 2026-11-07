@@ -156,16 +156,21 @@ def probe_video(path,scene):
     return info
 
 
-def step_budget_guard(root,total_steps=50):
-    """Stop an infeasible attempt after two measured steps; never expand its deadline."""
-    started=time.monotonic()
+def step_budget_guard(root,total_steps=50,decode_seconds=180):
+    """Forecast from post-warm-up step intervals, retaining decode/export reserves."""
+    previous=None;intervals=[]
     def callback(pipe,step,timestep,callback_kwargs):
-        completed=step+1
-        if completed>=2:
-            seconds_per_step=(time.monotonic()-started)/completed
-            projected=(total_steps-completed)*seconds_per_step*1.15+45
+        nonlocal previous
+        now=time.monotonic();completed=step+1
+        if previous is not None:intervals.append(now-previous)
+        previous=now
+        # Prompt encoding and the first step are already spent wall time; do not
+        # multiply them by every remaining step. Require two repeatable intervals.
+        if completed>=3:
+            recent=intervals[-3:];seconds_per_step=sum(recent)/len(recent)
+            projected=(total_steps-completed)*seconds_per_step*1.15+decode_seconds
             if projected>remaining(root):
-                raise RuntimeError(f'Measured inference cannot fit original deadline: {seconds_per_step:.2f}s/step; projected {projected:.0f}s including decode margin. Preserve partial evidence; no automatic retry.')
+                raise RuntimeError(f'Measured inference cannot fit original deadline: {seconds_per_step:.2f}s/steady step; projected {projected:.0f}s including decode reserve. Preserve partial evidence; no automatic retry.')
         return callback_kwargs
     return callback
 
