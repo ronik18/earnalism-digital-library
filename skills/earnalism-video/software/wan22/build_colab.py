@@ -6,16 +6,27 @@ from .worker import MODEL,REVISION,SCHEMA,PROFILES,validate,sha
 BASE=Path(__file__).resolve().parents[1]
 ROOT='/content/earnalism-wan22-diwali-pilot-v1'
 
-def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior_evidence=None):
+def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior_evidence=None,scene_overrides=None):
     if profile not in PROFILES:raise ValueError("Unknown execution profile")
     settings=PROFILES[profile]
     runtime_root=ROOT if profile=="standard-v1" else "/content/earnalism-wan22-diwali-pilot-v2"
     destination=Path(destination);destination.mkdir(parents=True,exist_ok=True);art=Path(art)
+    scene_overrides=scene_overrides or {}
+    if not isinstance(scene_overrides,dict) or set(scene_overrides)-{'homecoming','sweets'}:
+        raise ValueError('Only bound homecoming/sweets scene overrides are supported')
+    if scene_overrides and (not run_id or not prior_evidence):
+        raise ValueError('Scene overrides require a distinct run and prior provenance')
+    for value in scene_overrides.values():
+        if not isinstance(value,dict) or set(value)!={'image','prompt'}:
+            raise ValueError('Each scene override must contain only image and prompt')
+        if not isinstance(value['image'],str) or Path(value['image']).name!=value['image']:
+            raise ValueError('Scene image must be a local basename')
     scenes=[]
     for i,(sid,image,prompt) in enumerate([
       ('homecoming','rama-portrait.png','Preserve this exact painted homecoming scene, all three principal identities, clothing and anatomy. Rama makes one gentle welcoming nod and a small open-hand gesture; Sita turns her gaze toward him and smiles. Lakshmana stays present, breathing gently. The offering child keeps the plate supported with stable fingers. Subtle cloth response, warm lamp flicker. Fixed camera, one continuous respectful shot, no talking, no cuts, no added people or objects. Keep the rich indigo-gold brush-painted style.'),
       ('sweets','living-portrait.png','Preserve this exact painted Diwali family, all four faces, clothing and anatomy. The grandmother gently moves the supported sweets plate a little toward the girl, who takes its weight with coherent hand contact and smiles; the parents react with small natural gaze changes. One restrained clear action with a steady plate; no vanishing sweets or extra fingers. Keep the warm painterly style, subtle lamp flicker, fixed camera, no talking, no cuts, no added objects or text.')]):
         if profile=='l4-landscape-v1' and sid=='sweets':image='living-landscape-v10.png'
+        if sid in scene_overrides:image,prompt=scene_overrides[sid]['image'],scene_overrides[sid]['prompt']
         scenes.append({'id':sid,'image':image,'image_sha256':sha(art/image),**{k:settings[k] for k in ['width','height','frames','fps']},'seed':701+i,'prompt':prompt})
     job={'schema':SCHEMA,'run_id':'diwali-wan22-pilot-v1','model':MODEL,'model_revision':REVISION,
          'max_output_seconds':11,'max_attempts':2,'wall_seconds':1800,'publication_approved':False,'scenes':scenes,
@@ -130,4 +141,4 @@ Private **{MODEL}**, revision `{REVISION}`. Profile **{profile}**: {settings['wi
     return target
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('destination');p.add_argument('--art',required=True);p.add_argument('--profile',choices=list(PROFILES),default='standard-v1');p.add_argument('--run-id');p.add_argument('--scene',action='append');p.add_argument('--prior-evidence');a=p.parse_args();print(build(a.destination,a.art,a.profile,a.run_id,a.scene,json.loads(Path(a.prior_evidence).read_text()) if a.prior_evidence else None))
+    p=argparse.ArgumentParser();p.add_argument('destination');p.add_argument('--art',required=True);p.add_argument('--profile',choices=list(PROFILES),default='standard-v1');p.add_argument('--run-id');p.add_argument('--scene',action='append');p.add_argument('--prior-evidence');p.add_argument('--scene-spec',help='JSON object binding new source basenames and prompts to known scene IDs');a=p.parse_args();print(build(a.destination,a.art,a.profile,a.run_id,a.scene,json.loads(Path(a.prior_evidence).read_text()) if a.prior_evidence else None,json.loads(Path(a.scene_spec).read_text()) if a.scene_spec else None))

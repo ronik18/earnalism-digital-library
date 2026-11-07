@@ -13,6 +13,22 @@ class Workflow(unittest.TestCase):
   for n in ['rama-portrait.png','living-portrait.png']:(art/n).write_bytes(b'test-only-source-'+n.encode())
   self.notebook=build(self.p/'bundle',art);self.bundle=self.notebook.parent;self.job=self.bundle/'job.json';self.root=self.p/'runtime'
   w.unpack_inputs(self.bundle/'wan22-inputs.zip',self.root,w.sha(self.bundle/'wan22-inputs.zip'))
+ def test_new_scene_sources_are_bound_and_not_old_prompts(self):
+  art=self.p/'new-art';art.mkdir()
+  for n in ['greeting.png','response.png']:(art/n).write_bytes(('new-'+n).encode())
+  spec={'homecoming':{'image':'greeting.png','prompt':'One clear joined-palms greeting with complete hands'},'sweets':{'image':'response.png','prompt':'Girl already supports the tray and gives one appreciative nod'}}
+  target=build(self.p/'fresh',art,'l4-landscape-v1','diwali-v12-test',None,{'prior_run':'preserved'},spec)
+  job=json.loads((target.parent/'job.json').read_text())
+  for scene in job['scenes']:
+   self.assertEqual(scene['prompt'],spec[scene['id']]['prompt'])
+   self.assertEqual(scene['image_sha256'],w.sha(art/scene['image']))
+  runtime=self.p/'fresh-runtime';w.unpack_inputs(target.parent/'wan22-inputs.zip',runtime,w.sha(target.parent/'wan22-inputs.zip'))
+  self.assertEqual(w.open_job(runtime)['run_id'],'diwali-v12-test')
+  self.assertIn('RUN_WAN = False',''.join(json.loads(target.read_text())['cells'][1]['source']))
+ def test_scene_override_cannot_escape_or_relabel(self):
+  for spec in [{'other':{'image':'x','prompt':'some sufficiently long prompt'}},{'homecoming':{'image':'../secret','prompt':'some sufficiently long prompt'}}]:
+   with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art','l4-landscape-v1','new-run',None,{'prior':'retained'},spec)
+  with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art',scene_overrides={'homecoming':{'image':'x','prompt':'some sufficiently long prompt'}})
  def session(self):return w.begin(self.root,True,0)
  def test_run_all_inert_without_colab_or_model(self):
   ns={}
