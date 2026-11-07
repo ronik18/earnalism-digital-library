@@ -490,9 +490,11 @@ class ArchivedApplicationBindingTests(unittest.TestCase):
             capture_output=True,timeout=10)
 
     def test_each_archived_application_is_explicitly_selected(self):
-        result=self.select({'application_source_sha':'a'*40},{'application_source_sha':'b'*40})
+        result=self.select({'application_source_sha':'a'*40,'guarded_bootstrap_source_sha':'c'*40},
+                           {'application_source_sha':'b'*40})
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertEqual(result.stdout.splitlines(),['a'*40+':backend/server.py',
+                                                     'c'*40+':backend/server.py',
                                                      'b'*40+':backend/server.py'])
 
     def test_malformed_archived_pin_is_rejected(self):
@@ -503,8 +505,18 @@ class ArchivedApplicationBindingTests(unittest.TestCase):
         self.assertNotEqual(self.select({}, {'application_source_sha':'b'*40}).returncode,0)
 
     def test_later_invalid_archive_cannot_hide_behind_valid_first(self):
-        self.assertNotEqual(self.select({'application_source_sha':'a'*40},
+        self.assertNotEqual(self.select({'application_source_sha':'a'*40,
+            'guarded_bootstrap_source_sha':'c'*40},
             {'application_source_sha':None}).returncode,0)
+
+    def test_missing_historical_closed_source_is_rejected(self):
+        result=self.select({'application_source_sha':'a'*40},{'application_source_sha':'b'*40})
+        self.assertNotEqual(result.returncode,0)
+
+    def test_malformed_historical_closed_source_is_rejected(self):
+        result=self.select({'application_source_sha':'a'*40,'guarded_bootstrap_source_sha':'invalid'},
+                           {'application_source_sha':'b'*40})
+        self.assertNotEqual(result.returncode,0)
 
 
 class RetainedBindingBatchTests(unittest.TestCase):

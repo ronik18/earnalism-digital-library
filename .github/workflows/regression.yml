@@ -149,6 +149,11 @@ jobs:
               source_pin="$(jq -er '.application_source_sha' "$archived_contract")"
               [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
               bindings+=("$source_pin:backend/server.py")
+              if [[ "$archived_contract" == */purchase_guard_source.json ]]; then
+                source_pin="$(jq -er '.guarded_bootstrap_source_sha' "$archived_contract")"
+                [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+                bindings+=("$source_pin:backend/server.py")
+              fi
             fi
           done
           # END archived application bindings
