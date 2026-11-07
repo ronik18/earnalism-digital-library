@@ -10,7 +10,8 @@ DEPS = ['diffusers==0.36.0','transformers==4.51.3','accelerate==1.6.0',
 SCHEMA = 'earnalism.wan22-pilot.v1'
 PROFILES = {'standard-v1': {'width':704,'height':1280,'frames':121,'fps':24,'steps':50,'guidance':5.0},
             'l4-balanced-v2': {'width':512,'height':896,'frames':121,'fps':24,'steps':24,'guidance':5.0},
-            'l4-landscape-v1': {'width':896,'height':512,'frames':121,'fps':24,'steps':24,'guidance':5.0}}
+            'l4-landscape-v1': {'width':896,'height':512,'frames':121,'fps':24,'steps':24,'guidance':5.0},
+            'landscape-detail-pilot-v1': {'width':1280,'height':704,'frames':121,'fps':24,'steps':24,'guidance':5.0}}
 
 
 def sha(p):
@@ -42,7 +43,10 @@ def validate(job):
     if profile!='standard-v1' and (job.get('inference_steps')!=24 or job.get('guidance_scale')!=5.0 or not job.get('prior_attempt_evidence')):raise ValueError('Optimized retry requires exact settings and prior attempt provenance')
     scenes=job.get('scenes',[])
     if len(scenes) not in (1,2) or len({s['id'] for s in scenes})!=len(scenes):raise ValueError('One or two unique pilot scenes required')
-    if len(scenes)==1 and (profile not in ('l4-balanced-v2','l4-landscape-v1') or scenes[0]['id']!='sweets'):raise ValueError('Only an explicitly bound sweets-only recovery is supported')
+    detail=profile=='landscape-detail-pilot-v1'
+    if detail and (len(scenes)!=1 or scenes[0]['id']!='homecoming'):raise ValueError('Detail pilot permits one homecoming start only')
+    if not detail and any(s.get('frame_profile')=='landscape-detail-pilot-v1' for s in scenes):raise ValueError('Detail pilot cannot be hidden inside a mixed job')
+    if len(scenes)==1 and not (detail or (profile in ('l4-balanced-v2','l4-landscape-v1') and scenes[0]['id']=='sweets')):raise ValueError('Only an explicitly bound selective pilot is supported')
     seconds=0
     for s in scenes:
         if not re.fullmatch('[a-z0-9-]+',s['id']) or Path(s['image']).name!=s['image']:raise ValueError('Unsafe scene name')
@@ -165,8 +169,11 @@ def probe_video(path,scene):
     return info
 
 
-def step_budget_guard(root,total_steps=50,decode_seconds=180):
+def step_budget_guard(root,total_steps=50,decode_seconds=None):
     """Forecast from post-warm-up step intervals, retaining decode/export reserves."""
+    if decode_seconds is None:
+        job=validate(json.loads((Path(root)/'job.json').read_text()))
+        decode_seconds=360 if job.get('profile')=='landscape-detail-pilot-v1' else 180
     previous=None;intervals=[]
     def callback(pipe,step,timestep,callback_kwargs):
         nonlocal previous

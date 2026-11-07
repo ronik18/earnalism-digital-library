@@ -90,6 +90,35 @@ class Workflow(unittest.TestCase):
   with self.assertRaises(RuntimeError):w.begin(self.root,False,2,5)
   started=time.time()-30;state=w.begin(self.root,False,2,5,started)
   self.assertEqual(state['deadline'],started+1800);self.assertGreater(w.remaining(self.root),0)
+ def detail_job(self):
+  nb=build(self.p/'detail',self.p/'art','landscape-detail-pilot-v1','diwali-detail-test',['homecoming'],{'prior_v14':'preserved'})
+  return nb,json.loads((nb.parent/'job.json').read_text())
+ def test_detail_pilot_binds_one_source_and_preserves_inert_budget(self):
+  nb,job=self.detail_job();scene=job['scenes'][0]
+  self.assertEqual((scene['id'],scene['width'],scene['height']),('homecoming',1280,704))
+  self.assertEqual((job['max_attempts'],job['wall_seconds'],job['max_output_seconds']),(1,1800,6))
+  self.assertTrue(job['experimental_profile']);self.assertIn('RUN_WAN = False',nb.read_text())
+  with zipfile.ZipFile(nb.parent/'wan22-inputs.zip') as z:self.assertEqual(set(z.namelist()),{'job.json','inputs/rama-portrait.png'})
+  with self.assertRaises(ValueError):build(self.p/'unbound-detail',self.p/'art','landscape-detail-pilot-v1')
+  job['scenes'].append(dict(scene,id='sweets'));job['max_attempts']=2
+  with self.assertRaisesRegex(ValueError,'one homecoming'):w.validate(job)
+  mixed=json.loads(self.job.read_text());mixed['scenes'][0]['frame_profile']='landscape-detail-pilot-v1'
+  with self.assertRaisesRegex(ValueError,'hidden inside a mixed'):w.validate(mixed)
+ def test_detail_forecast_reserves_more_decode_time_without_extending_deadline(self):
+  nb,job=self.detail_job();runtime=self.p/'detail-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',runtime,w.sha(nb.parent/'wan22-inputs.zip'))
+  state=w.begin(runtime,True,0)
+  with patch.object(w.time,'monotonic',side_effect=[220,231,242]),patch.object(w,'remaining',return_value=500):
+   callback=w.step_budget_guard(runtime,24);payload={'latents':'test'}
+   for step in range(2):callback(None,step,None,payload)
+   with self.assertRaisesRegex(RuntimeError,'cannot fit original deadline'):callback(None,2,None,payload)
+  self.assertEqual(json.loads((runtime/'session.json').read_text())['deadline'],state['deadline'])
+ def test_real_detail_media_import_remains_unqualified(self):
+  nb,job=self.detail_job();runtime=self.p/'detail-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',runtime,w.sha(nb.parent/'wan22-inputs.zip'));w.begin(runtime,True,0)
+  out=runtime/'outputs';out.mkdir();clip=out/'homecoming.mp4'
+  subprocess.run(['ffmpeg','-v','error','-f','lavfi','-i','color=c=blue:s=1280x704:r=24','-frames:v','121','-an','-c:v','libx264','-preset','ultrafast','-pix_fmt','yuv420p',str(clip)],check=True)
+  w.write(runtime/'attempts.json',[{'scene':'homecoming','status':'TECHNICAL_PASS_REVIEW_PENDING','sha256':w.sha(clip),'source_sha256':job['scenes'][0]['image_sha256'],'reserved_seconds':121/24}])
+  archive=w.export(runtime);rows=w.import_export(archive,self.p/'detail-import',w.sha(archive),nb.parent/'job.json')
+  self.assertEqual(len(rows),1);self.assertFalse(rows[0]['motion_accepted'])
  def test_t4_stops_before_torch_or_model_download(self):
   self.session()
   fake=subprocess.CompletedProcess([],0,'Tesla T4, 15360\n','')

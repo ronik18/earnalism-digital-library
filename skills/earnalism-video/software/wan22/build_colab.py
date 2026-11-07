@@ -8,6 +8,8 @@ ROOT='/content/earnalism-wan22-diwali-pilot-v1'
 
 def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior_evidence=None,scene_overrides=None):
     if profile not in PROFILES:raise ValueError("Unknown execution profile")
+    if profile=='landscape-detail-pilot-v1' and (not run_id or not prior_evidence or scene_ids!=['homecoming']):
+        raise ValueError('Experimental detail pilot requires explicit homecoming-only selection, distinct run and prior evidence')
     settings=PROFILES[profile]
     runtime_root=ROOT if profile=="standard-v1" else "/content/earnalism-wan22-diwali-pilot-v2"
     destination=Path(destination);destination.mkdir(parents=True,exist_ok=True);art=Path(art)
@@ -48,6 +50,7 @@ def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior
         scenes=[s for s in scenes if s['id'] in scene_ids]
         if set(scene_ids)!={s['id'] for s in scenes}:raise ValueError('Unknown recovery scene')
         job.update(scenes=scenes,max_attempts=len(scenes),max_output_seconds=6 if len(scenes)==1 else 11,purpose='Owner-authorized selective retry; preserve completed clips and all previous attempt journals')
+    if profile=='landscape-detail-pilot-v1':job.update(experimental_profile=True,quality_acceptance='UNTESTED_L4_FEASIBILITY_AND_VISUAL_RESULT',decode_reserve_seconds=360)
     validate(job);raw=(json.dumps(job,indent=2)+'\n').encode();(destination/'job.json').write_bytes(raw)
     archive=destination/'wan22-inputs.zip'
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_STORED) as z:
