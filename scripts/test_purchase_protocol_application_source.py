@@ -71,15 +71,25 @@ class ApplicationProtocolTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Whole server equality'):
                 guard.validate(root,base_reader=lambda _root,ref:guard.exact_git_server(ROOT,ref))
 
-    def test_explicit_native_successor_binds_exact_merged_backend(self):
+    def test_native_successor_admission_remains_bound_to_exact_backend(self):
+        normal_backend=guard._git(ROOT,'rev-parse',
+            '0d3a5d58fe72907017692fd606969adcf4a0b3d1:backend')
+        if guard._git(ROOT,'rev-parse','HEAD:backend') != normal_backend:
+            # A separately reviewed delivery entrypoint is not the historical
+            # native A/B backend. Require its rejection, never widen admission
+            # or relabel this release as native recovery qualification. The CI
+            # retained-controller export still validates the immutable pair.
+            with self.assertRaisesRegex(ValueError,
+                    'Normal controller backend differs from qualified normal parent'):
+                guard.validate_paired_source(ROOT)
+            return
         proof=guard.validate_paired_source(ROOT)
         self.assertTrue(proof['controller_contract_committed'])
         self.assertEqual(proof['scope'],'SOURCE_ONLY_NOT_PROVIDER_OR_APPROVAL_QUALIFICATION')
         self.assertEqual(proof['normal_server_sha256'],guard.sha(guard.exact_git_server(
             ROOT,'0d3a5d58fe72907017692fd606969adcf4a0b3d1')))
         self.assertEqual(proof['bootstrap_source_sha'],self.native['guarded_bootstrap_source_sha'])
-        self.assertEqual(guard._git(ROOT,'rev-parse','HEAD:backend'),guard._git(ROOT,
-            'rev-parse','0d3a5d58fe72907017692fd606969adcf4a0b3d1:backend'))
+        self.assertEqual(guard._git(ROOT,'rev-parse','HEAD:backend'),normal_backend)
 
     def test_original_contract_protocol_and_validators_remain_immutable(self):
         base='0d3a5d58fe72907017692fd606969adcf4a0b3d1'
