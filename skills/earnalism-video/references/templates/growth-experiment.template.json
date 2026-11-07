@@ -1,0 +1,116 @@
+{
+  "schema": "earnalism.growth-experiment.v1",
+  "state": "PLANNING_ONLY_NOT_STARTED",
+  "experiment_id": null,
+  "created_at": null,
+  "owner_or_operator": null,
+  "platform": null,
+  "surface": null,
+  "viewer_and_learning_value": null,
+  "hypothesis": null,
+  "evidence_class": "TEST_HYPOTHESIS",
+  "supporting_sources": [],
+  "single_variable": null,
+  "control_description": null,
+  "candidate_description": null,
+  "design": {
+    "method": null,
+    "native_randomization_available": null,
+    "independent_unit": null,
+    "matching": [
+      "platform_and_format",
+      "first_public_age_and_report_window",
+      "duration_and_learning_job",
+      "topic_and_traffic_source",
+      "audience_size_at_publication",
+      "paid_Trial_organic_distribution"
+    ],
+    "assignment_or_rotation": null,
+    "known_confounders": [],
+    "actual_deviations": [],
+    "replication_plan": null
+  },
+  "primary_metric": {
+    "native_name": null,
+    "definition_and_version_date": null,
+    "numerator_name": null,
+    "denominator_name_or_native_unit": null,
+    "scale": null,
+    "traffic_source_and_scope": null,
+    "desired_direction": null,
+    "minimum_practical_absolute_change": null,
+    "minimum_practical_relative_change_percent": null,
+    "threshold_cost_rationale": null
+  },
+  "guardrails": {
+    "factual_graphical_caption_rights_listening_quality": "Existing primary qualification remains unchanged",
+    "accepted_audio": "Preserve unless this task specifically authorizes an audio change",
+    "secondary_metrics_and_tradeoffs": [],
+    "effort_budget_hours": null,
+    "spend_authorization_reference": null,
+    "maximum_authorized_incremental_cost": null,
+    "stopping_rule": null,
+    "quality_stop_conditions": []
+  },
+  "observation_plan": {
+    "public_age_diagnostics_hours": [
+      24,
+      72
+    ],
+    "matched_comparison_days": [
+      7,
+      28
+    ],
+    "planned_sample_and_precision_rationale": null,
+    "planned_review_date": null,
+    "missing_data_policy": "Keep unknown null; do not substitute viewers for reach or net change for gained",
+    "prepublic_policy": "Validate native window origin and first-public receipt; quarantine private/QA exposure",
+    "raw_metric_policy": "Preserve native counts/definitions; replay-inclusive views and watch ratios are not unique reach or completion"
+  },
+  "snapshots": [],
+  "snapshot_fields_to_capture": {
+    "video_id_and_url": null,
+    "first_public_at_and_timezone": null,
+    "first_public_receipt": null,
+    "captured_at_and_timezone": null,
+    "native_report_window_label_and_endpoints": null,
+    "window_origin_verified": null,
+    "includes_prepublic_or_QA": null,
+    "duration_seconds": null,
+    "followers_or_subscribers_at_publish": null,
+    "organic_paid_Trial_or_private": null,
+    "native_numerator_and_denominator_counts": null,
+    "revenue_and_cost_if_observed": null,
+    "source_export_or_screenshot_path": null,
+    "native_widget_title_scope_cutoff_and_processing_notice": null,
+    "first_public_time_precision_or_observed_interval": null,
+    "audit_or_QA_preview_playback_known_or_unknown": null
+  },
+  "result": {
+    "baseline_absolute_count_and_rate": null,
+    "candidate_absolute_count_and_rate": null,
+    "absolute_difference": null,
+    "relative_change_percent": null,
+    "uncertainty_and_small_sample_limits": null,
+    "quality_and_cost_guardrail_result": null,
+    "independent_replications": [],
+    "decision": "INCONCLUSIVE_NOT_RUN",
+    "allowed_decisions": [
+      "ADOPT_PROVISIONALLY",
+      "REVISE",
+      "RETIRE",
+      "INCONCLUSIVE"
+    ],
+    "decision_reason_and_applicable_scope": null,
+    "revisit_date": null,
+    "rule_id_if_adopted": null,
+    "definition_or_policy_change_retirement_trigger": null
+  },
+  "permissions": {
+    "this_record_grants_no_new_access_or_spend": true,
+    "does_not_authorize_variant_publication_or_Trial_Reels": true,
+    "does_not_create_scheduled_automation": true,
+    "existing_publication_permissions_and_final_decision_preserved": true,
+    "no_growth_or_revenue_guarantee": true
+  }
+}

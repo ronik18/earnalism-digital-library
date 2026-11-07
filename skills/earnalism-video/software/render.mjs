@@ -1,0 +1,15 @@
+import {bundle} from '@remotion/bundler';
+import {selectComposition,renderMedia,renderStill} from '@remotion/renderer';
+import fs from 'node:fs';import path from 'node:path';
+const [propsFile,out,format='Portrait']=process.argv.slice(2);if(!propsFile||!out)throw Error('node render.mjs props.json output.mp4 Portrait|Landscape');if(fs.existsSync(out))throw Error('Refusing overwrite');
+const installedChrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const browserExecutable=process.env.EARNALISM_RENDER_BROWSER || (fs.existsSync(installedChrome)?installedChrome:undefined);
+const inputProps=JSON.parse(fs.readFileSync(propsFile,'utf8'));
+const serveUrl=await bundle({entryPoint:path.resolve('src/index.tsx'),publicDir:path.resolve('public')});
+const composition=await selectComposition({browserExecutable,serveUrl,id:format,inputProps,onBrowserLog:(log)=>console.log(log.text)});
+const concurrency=Number(process.env.EARNALISM_RENDER_CONCURRENCY || 2);
+if(!Number.isInteger(concurrency)||concurrency<1||concurrency>4)throw Error('Render concurrency must be 1–4');
+let nextProgress=.2;
+await renderMedia({onProgress:({progress})=>{if(progress>=nextProgress){console.log(JSON.stringify({format,progress:Math.round(progress*100)}));nextProgress+=.2;}},browserExecutable,serveUrl,composition,inputProps,codec:'h264',audioCodec:'aac',outputLocation:out,concurrency,pixelFormat:'yuv420p',colorSpace:'bt709',crf:20});
+const thumbnail=out.replace(/\.mp4$/,'.png');if(!fs.existsSync(thumbnail))await renderStill({browserExecutable,serveUrl,composition,inputProps,output:thumbnail,frame:Math.min(45,composition.durationInFrames-1)});
+console.log(JSON.stringify({output:out,frames:composition.durationInFrames,audioTrackIncluded:!!inputProps.audio}));

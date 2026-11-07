@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "b_meaning_first_v1",
+  "status": "OWNER_SELECTED_REFINEMENT_BASELINE",
+  "baseline_profile": "original_warm_baritone_v2",
+  "baseline_audition_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+  "baseline_instruction_sha256": "fe1aec4c7c85f6abb50cb2e150fafcd1aad4fb00ff8a1fdd108c0404ecd067bf",
+  "provider": "existing pinned Qwen",
+  "speaker": "Ryan",
+  "sampling_overrides": {},
+  "instruction": "Speak as an original mature documentary narrator explaining something fascinating to one interested adult. Use your comfortable, rounded resonance, clear diction and grounded warmth. Sound thoughtful and sincerely engaged, with restrained curiosity. Connect words into complete thoughts and maintain steady conversational momentum. Emphasize the meaning of each sentence rather than every word. Pause briefly where an idea changes; avoid stretched syllables, excessive gaps, repetitive downward endings, forced bass and theatrical delivery. Retain your own natural vocal identity; do not imitate any real person.",
+  "priority": [
+    "connected phrasing",
+    "meaningful emphasis",
+    "stable resonance",
+    "restrained processing"
+  ],
+  "activation": "Y is the owner-selected refinement baseline. Keep its exact raw recording and instruction unchanged. New delivery directions remain separate private candidates until listening acceptance; full Moon videos remain unchanged.",
+  "comparison": {
+    "same_script": true,
+    "matched_loudness": true,
+    "pitch_or_tempo_processing": false,
+    "conceal_newer_take": true,
+    "coverage": [
+      "opening question",
+      "factual explanation",
+      "paragraph transition"
+    ],
+    "listener_questions": [
+      "Which sounds sincere and naturally connected?",
+      "Which is clearer and worth continuing?",
+      "Where do resonance, emphasis or pacing distract?"
+    ],
+    "slower_is_better": false
+  },
+  "acceptance": {
+    "human_listening": "PENDING",
+    "automatic_naturalness_pass": false,
+    "reject": [
+      "unresolved ASR additions, omissions or substitutions",
+      "unnatural pauses",
+      "unstable resonance",
+      "distracting pronunciation"
+    ],
+    "scope": "A baseline choice is not acceptance of a repaired take, full recording, integration or publication."
+  },
+  "script_direction": {
+    "principal_ideas_per_sentence": 1,
+    "style": "Short spoken clauses, concrete language, natural contractions where suitable; punctuation follows meaning.",
+    "performance_notes": "Keep emphasis and transition notes separate from spoken text; do not inject markup unsupported by the worker."
+  },
+  "continuity": "Keep pinned speaker/model/settings consistent; generate connected complete thoughts within existing 65-word/520-character limits. Inspect and listen across every generated join.",
+  "diagnostics": "Compare words, phrases, sentences and paragraph joins using actual audio timing. Rate and pause metrics flag review only; no equal-WPM target, age inference or naturalness certification.",
+  "finishing": "Only demonstrated corrective processing and consistent loudness; no forced bass, artificial pitch lowering, exaggerated gravel or stacked tempo processing. Check dry and scored versions; music must preserve intelligibility.",
+  "retry_policy": "Retain canonical passage attempt history, pinned worker safeguards and existing limits; new profile IDs do not reset attempts.",
+  "future_topics": "Keep vocal identity; adapt emotional emphasis to the material without copying Moon-specific text or timing.",
+  "selected_refinement_baseline": {
+    "label": "Y",
+    "profile": "b_meaning_first_v1",
+    "wav_sha256": "cdfdbb6cdd23a0436e4c15b3566a0ba3e451793ba06adbfc9bcfc3b44b5672e2",
+    "instruction_sha256": "92e2b6b1e725b3900399f542d756ca638381479fd2c399f37ef65e87247549f3",
+    "project_source": "video_studio/auditions/cycle-speech-rewrite-v39/imported/raw/s06.wav",
+    "selected_on": "2026-10-30",
+    "status": "OWNER_SELECTED_REFINEMENT_BASELINE",
+    "scope": "Baseline for source-performance refinement and private auditions; no repaired-recording, full-video or publication approval",
+    "remaining_review": [
+      "tone changes between thoughts",
+      "mechanical phrasing"
+    ],
+    "recording_acceptance": false,
+    "publication_approval": false
+  },
+  "historical_baseline_fields_note": "baseline_profile and baseline_audition_sha256 retain the original B comparison lineage used by the historical v36 preparer; current selection is selected_refinement_baseline."
+}

@@ -1,0 +1,581 @@
+{
+  "topic": "Why does the Moon have phases?",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses",
+        "first quarter means quarter-cycle progress while half the visible disk is illuminated"
+      ],
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "nasa-eclipses",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/moon/eclipses/",
+      "claims": [
+        "lunar eclipse geometry",
+        "Moon orbital tilt prevents monthly eclipses"
+      ],
+      "accessed": "2026-10-26"
+    },
+    {
+      "id": "usno-phases",
+      "publisher": "US Naval Observatory",
+      "url": "https://aa.usno.navy.mil/faq/moon_phases",
+      "claims": [
+        "illuminated disk fractions at quarter and full Moon",
+        "mean synodic cycle about 29.5 days"
+      ],
+      "accessed": "2026-10-28"
+    }
+  ],
+  "rights": {
+    "visuals": "Original SVG and procedural sphere geometry. No external images, samples or melodies.",
+    "narration": "Pinned Qwen stock Ryan; no clone or impersonation. Publication review pending.",
+    "score": "Original composition using pinned VCSL CC0 acoustic piano and harp one-shot recordings; hashes and license retained; listening/resemblance review pending."
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "diagram": "question",
+      "heading": "Why a crescent, if the Moon is round?",
+      "text": "Why does the Moon look like a crescent, when it is still a round world? Watch the light.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s02",
+      "diagram": "sunlight",
+      "heading": "One round Moon. One sunlit half.",
+      "text": "The Moon shines by reflecting sunlight. Roughly half its surface is illuminated at once.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s03",
+      "diagram": "orbit",
+      "heading": "Follow the view from Earth.",
+      "text": "Now let the Moon move around Earth. From the ground, we see different fractions of that sunlit half. The shape we see changes; the Moon itself does not.",
+      "phase_start": 0.12,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "From the ground",
+          "phase": 0.25
+        },
+        {
+          "phrase": "The shape",
+          "phase": 0.5
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s04",
+      "diagram": "phases",
+      "heading": "New → first quarter → full",
+      "text": "Near new Moon, the bright side faces away from us. At first quarter, half the visible disk is bright. First quarter means one quarter of the way through the phase cycle. Near full Moon, almost the entire disk is illuminated.",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "At first quarter",
+          "phase": 0.25
+        },
+        {
+          "phrase": "First quarter means",
+          "phase": 0.25
+        },
+        {
+          "phrase": "Near full Moon",
+          "phase": 0.5
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s05",
+      "diagram": "eclipse",
+      "heading": "A shadow is a different event.",
+      "text": "These phases are not caused by Earth’s shadow. A lunar eclipse is different: Earth lies between the Sun and Moon, and its shadow reaches the Moon. That requires a special alignment.",
+      "phase_start": 0.5,
+      "phase_end": 0.5,
+      "anchors": [
+        {
+          "phrase": "A lunar eclipse",
+          "event": "eclipse"
+        },
+        {
+          "phrase": "its shadow",
+          "event": "shadow"
+        }
+      ],
+      "source_ids": [
+        "nasa-eclipses"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s06",
+      "diagram": "cycle",
+      "heading": "A cycle of about 29½ days",
+      "text": "From one new Moon to the next takes about twenty nine and a half days. The bright portion grows and shrinks as our viewpoint changes.",
+      "phase_start": 0,
+      "phase_end": 1,
+      "anchors": [
+        {
+          "phrase": "The bright portion grows",
+          "phase": 0.25
+        },
+        {
+          "phrase": "and shrinks",
+          "phase": 0.65
+        }
+      ],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "original_warm_baritone_v2",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "s07d",
+      "diagram": "callback",
+      "heading": "Same round world. A different view.",
+      "text": "So that crescent is not a missing piece. It is a different view of a sunlit, round world. See differently.",
+      "phase_start": 0.12,
+      "phase_end": 0.12,
+      "anchors": [],
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "narration_seed": 20261028,
+      "voice_profile": "original_warm_baritone_v2"
+    }
+  ],
+  "target_duration_seconds": 90,
+  "music": {
+    "enabled": true,
+    "kind": "original-acoustic-chamber-composition",
+    "no_third_party_recordings": false,
+    "listening_review": "PENDING: new restrained editorial orchestration",
+    "palette": "acoustic_editorial_v12",
+    "bed_gain_db": 9,
+    "scene_gain_db": {
+      "cycle": 0.3,
+      "orbit": 1.25
+    }
+  },
+  "editorial_intent": "Replace the missing-piece intuition with a changing-view explanation; distinguish phases from eclipses.",
+  "editorial_refinements": {
+    "observer_view": "Word-anchored animated bridge from Earth observer into apparent disk; simplified independent mobile staging",
+    "accessibility": "Independent portrait staging and caption-safe diagram area",
+    "learning_check": "Recall prompt followed by changing-view answer",
+    "score": "Same licensed acoustic motif and instruments; score retimed to actual narration, with quiet through the entire quarter explanation.",
+    "first_quarter": "Spoken quarter-cycle explanation retained; regenerate timing and hold the explanatory state from actual new speech."
+  },
+  "production_candidate": true,
+  "requires_learning_acceptance": true,
+  "qualification": "Fresh production-review render from researched Moon content and frozen licensed source assets; not a relabelled fixture or publication approval.",
+  "id": "moon-audience-planning-example",
+  "private_test": false,
+  "status": "planning-example-private",
+  "voice_selection": {
+    "selected": "original_b",
+    "profile": "original_warm_baritone_v2",
+    "audio_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+    "audio_path": "/path/to/earnalism-studio/video_studio/outputs/moon-original-baritone-audition-v2-import/raw/original_b.wav",
+    "owner_statement": "B works. Go with this.",
+    "recorded_at_utc": "2026-10-28T11:23:42.188767+00:00",
+    "scope": "Owner-selected vocal performance direction from exact private audition; regenerate full narration with this profile. Not approval of new full audio, video or publication.",
+    "full_episode_approval": false,
+    "publication_approval": false
+  },
+  "narration_pacing_repair": {
+    "parent": "moon-selected-original-b-private-v29",
+    "pitch_shift": false,
+    "scope": "Owner requested opening and cycle passage only; original recordings immutable; full listening pending.",
+    "regions": {
+      "s01": [
+        {
+          "start": 0,
+          "end": 4.8,
+          "tempo": 0.75
+        }
+      ],
+      "s06": [
+        {
+          "start": 0,
+          "end": 3.56,
+          "tempo": 0.75
+        },
+        {
+          "start": 3.56,
+          "end": 7.52,
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "presentation": {
+    "version": "logo-only-editorial-v1",
+    "watermark": "Exact production emblem only; static top-right throughout body and ident",
+    "logo_sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+    "crop": [
+      112,
+      79,
+      592,
+      592
+    ],
+    "source_credit": "Watch page and metadata references; not persistent picture overlay",
+    "qualification": "Brief illustrative schematic / not-to-scale context; Earth-disk northern convention explained below player",
+    "download_ui": "Hidden; not DRM or capture prevention",
+    "voice": "PCM narration must match v30 exactly"
+  },
+  "audience_plan": {
+    "schema": "earnalism.audience-plan.v2",
+    "content_sha256": "13e50fd58a89e26684d883c27d3687e173a843e218dae319d5353407d4b22052",
+    "audience": {
+      "primary_viewer": "English-comfortable curious non-specialist choosing a short science explanation",
+      "language": "English",
+      "prior_knowledge": "Recognizes crescents but may confuse phases with Earth’s shadow",
+      "viewing_need": "Understand a familiar sight through an accurate visual mechanism",
+      "learning_promise": "Explain phases, quarter-cycle versus half-lit disk, and the different eclipse geometry",
+      "misconception": "A crescent is a missing piece or Earth’s shadow covering the Moon",
+      "original_contribution": "Connect the orbital sightline to the observer disk and one quarter-cycle/half-disk comparison",
+      "discovery_context": "Home/browse and Shorts choices for a curious English-comfortable non-specialist; not a universal worldwide viewer",
+      "why_choose_this_explanation": "Connect the familiar crescent to an unfamiliar viewpoint mechanism and quarter-cycle/half-disk distinction"
+    },
+    "formats": {
+      "landscape": {
+        "purpose": "Explain the complete mechanism in spatial context",
+        "composition": "Side-by-side orbit and observer view with staged comparisons and external captions",
+        "duration_rationale": "Natural selected-B delivery governs timing; no padding or forced speed",
+        "titles": [
+          {
+            "id": "search",
+            "text": "Why Does the Moon Have Phases? A Visual Explanation",
+            "rationale": "Match a factual search with a complete mechanism",
+            "promise_scene": "s03"
+          },
+          {
+            "id": "curiosity",
+            "text": "Why a Round Moon Looks Like a Crescent",
+            "rationale": "Promise the apparent shape versus physical sphere distinction",
+            "promise_scene": "s01"
+          }
+        ],
+        "cover_brief": {
+          "concept": "One crescent with its full circular outline and exact quiet emblem",
+          "text": "SAME MOON?",
+          "meaning_without_text": "The same round Moon produces an apparent crescent"
+        }
+      },
+      "shorts": {
+        "purpose": "Deliver a self-contained mobile explanation with the quarter naming payoff",
+        "composition": "Stacked orbital and observer panels with one comparison and burned captions",
+        "duration_rationale": "Natural selected-B delivery governs timing; no padding or forced speed",
+        "titles": [
+          {
+            "id": "search",
+            "text": "Moon Phases: Why First Quarter Looks Half Lit",
+            "rationale": "Explain a confusing term with an accurate comparison",
+            "promise_scene": "s04"
+          },
+          {
+            "id": "curiosity",
+            "text": "Why Is a Half-Lit Moon Called a Quarter?",
+            "rationale": "Answer a specific counterintuitive naming question",
+            "promise_scene": "s04"
+          }
+        ],
+        "cover_brief": {
+          "concept": "Quarter-cycle arc paired with a half-lit observer disk; distinct portrait hierarchy",
+          "text": "¼ CYCLE → ½ DISK",
+          "meaning_without_text": "Cycle progress and illuminated disk fraction are different quantities"
+        }
+      }
+    },
+    "story": {
+      "opening": {
+        "scene_id": "s01",
+        "first_frame_visual": "A recognizable crescent and its circular outline are visible immediately",
+        "early_visual_payoff": "Connect the crescent to a lit sphere in time with Watch the light; no logo delay",
+        "payoff_scene": "s02",
+        "payoff_offset_seconds": 0.7
+      },
+      "retrieval": {
+        "mode": "prediction",
+        "prompt": "At first quarter, how much of the phase cycle and visible disk would you predict?",
+        "answer_scene": "s04",
+        "reason": "Apply the two different fractions rather than memorize the name"
+      },
+      "closing_callback": "Return to the original crescent with the now-understood changing-view explanation",
+      "scenes": [
+        {
+          "scene_id": "s01",
+          "viewer_question": "How can a crescent still be a round world?",
+          "visible_answer": "Reveal the round outline behind the apparent crescent",
+          "new_understanding": "Apparent shape and physical form differ",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s02",
+          "formats": {
+            "landscape": {
+              "visual_action": "Reveal the round outline behind the apparent crescent in side-by-side spatial context",
+              "essential_labels": [],
+              "minimum_read_seconds": 0,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Reveal the round outline behind the apparent crescent in stacked, staged portrait panels",
+              "essential_labels": [],
+              "minimum_read_seconds": 0,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s02",
+          "viewer_question": "What supplies the light?",
+          "visible_answer": "Keep the incoming rays and one lit half visibly connected",
+          "new_understanding": "The illuminated surface is set by sunlight",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s03",
+          "formats": {
+            "landscape": {
+              "visual_action": "Keep the incoming rays and one lit half visibly connected in side-by-side spatial context",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Keep the incoming rays and one lit half visibly connected in stacked, staged portrait panels",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s03",
+          "viewer_question": "Why does our apparent view change?",
+          "visible_answer": "Bridge from orbital sightline to the ground-view disk",
+          "new_understanding": "Different visible fractions of the sunlit half explain phases",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s04",
+          "formats": {
+            "landscape": {
+              "visual_action": "Bridge from orbital sightline to the ground-view disk in side-by-side spatial context",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Bridge from orbital sightline to the ground-view disk in stacked, staged portrait panels",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s04",
+          "viewer_question": "A quarter of what?",
+          "visible_answer": "Stage quarter-cycle progress beside half the visible disk",
+          "new_understanding": "Cycle progress and apparent illumination use different denominators",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s05",
+          "formats": {
+            "landscape": {
+              "visual_action": "Stage quarter-cycle progress beside half the visible disk in side-by-side spatial context",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Stage quarter-cycle progress beside half the visible disk in stacked, staged portrait panels",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s05",
+          "viewer_question": "Is this Earth’s shadow?",
+          "visible_answer": "Distinguish special eclipse alignment from ordinary phases",
+          "new_understanding": "A shadow is a separate event",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s06",
+          "formats": {
+            "landscape": {
+              "visual_action": "Distinguish special eclipse alignment from ordinary phases in side-by-side spatial context",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Distinguish special eclipse alignment from ordinary phases in stacked, staged portrait panels",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s06",
+          "viewer_question": "How does the view repeat?",
+          "visible_answer": "Trace growing and shrinking illuminated fractions through a cycle",
+          "new_understanding": "The apparent pattern repeats in about 29.5 days",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Carry the answered idea into the next causal question",
+          "next_scene": "s07d",
+          "formats": {
+            "landscape": {
+              "visual_action": "Trace growing and shrinking illuminated fractions through a cycle in side-by-side spatial context",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Trace growing and shrinking illuminated fractions through a cycle in stacked, staged portrait panels",
+              "essential_labels": [
+                "Essential relationship only"
+              ],
+              "minimum_read_seconds": 1.5,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        },
+        {
+          "scene_id": "s07d",
+          "viewer_question": "What explains the original crescent now?",
+          "visible_answer": "Return to the original round outline and changing-view answer",
+          "new_understanding": "Apply the mechanism rather than recall a slogan",
+          "narration_economy": "Preserve the essential spoken reasoning; stage the picture with it instead of adding a second redundant visual paragraph",
+          "transition_reason": "Resolve the opening and offer an honest planned next question",
+          "next_scene": null,
+          "formats": {
+            "landscape": {
+              "visual_action": "Return to the original round outline and changing-view answer in side-by-side spatial context",
+              "essential_labels": [],
+              "minimum_read_seconds": 0,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Keep the landscape caption rail outside the diagram"
+            },
+            "shorts": {
+              "visual_action": "Return to the original round outline and changing-view answer in stacked, staged portrait panels",
+              "essential_labels": [],
+              "minimum_read_seconds": 0,
+              "reading_strategy": "Reveal referents sequentially and hold each relation for reading; no duplicate percentage",
+              "caption_clearance": "Reserve a separate burned-caption band and clear mobile controls"
+            }
+          }
+        }
+      ]
+    },
+    "series": {
+      "viewer_promise": "One everyday misconception understood through a clear visual mechanism",
+      "next_lesson": {
+        "status": "planned",
+        "topic": "Why eclipses do not happen every month",
+        "url": null,
+        "availability_observation": null,
+        "reason": "Proposed follow-up only; no available episode or release date is claimed"
+      },
+      "sustainable_cadence": "Choose a sustainable pilot release rhythm after measuring research, rendering and quality-review cost; no schedule or release date is promised",
+      "viewer_led_topic_method": "Use actual comprehension gaps, viewer questions and observed next-lesson interest to select the next independently researched episode"
+    },
+    "note": "Editorial hypotheses, not real viewer responses or human approval. Creator completes these choices before narration; never ask the owner to assemble a form.",
+    "study": {
+      "questions": [
+        {
+          "id": "phase_cause",
+          "prompt": "Why does the Moon show different phases?",
+          "answer_scene": "s03"
+        },
+        {
+          "id": "quarter_name",
+          "prompt": "Why does first quarter look half lit?",
+          "answer_scene": "s04"
+        },
+        {
+          "id": "eclipse_difference",
+          "prompt": "How is an eclipse different from an ordinary phase?",
+          "answer_scene": "s05"
+        }
+      ],
+      "card_choice_protocol": "Show authorized alternative cards among an owned distractor without coaching or advance answers; randomize/counterbalance order or record its limitation; preserve actual choices and reasons",
+      "measurement_basis": "genuine_participants_and_observed_analytics"
+    }
+  },
+  "diagram_context": "Illustrative schematics, not to scale. Earth-view disk orientation follows a northern-hemisphere convention.",
+  "tags": [
+    "Moon phases",
+    "visual science",
+    "Earnalism"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "moon-engaged-60-audition-v1",
+  "topic": "Why does the Moon have phases?",
+  "private_test": true,
+  "status": "private-voice-audition",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses",
+        "first quarter means quarter-cycle progress while half the visible disk is illuminated"
+      ],
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "nasa-eclipses",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/moon/eclipses/",
+      "claims": [
+        "lunar eclipse geometry",
+        "Moon orbital tilt prevents monthly eclipses"
+      ],
+      "accessed": "2026-10-26"
+    },
+    {
+      "id": "usno-phases",
+      "publisher": "US Naval Observatory",
+      "url": "https://aa.usno.navy.mil/faq/moon_phases",
+      "claims": [
+        "illuminated disk fractions at quarter and full Moon",
+        "mean synodic cycle about 29.5 days"
+      ],
+      "accessed": "2026-10-28"
+    }
+  ],
+  "rights": {
+    "visuals": "Original SVG and procedural sphere geometry. No external images, samples or melodies.",
+    "narration": "Pinned Qwen stock Ryan; no clone or impersonation. Publication review pending.",
+    "score": "Original composition using pinned VCSL CC0 acoustic piano and harp one-shot recordings; hashes and license retained; listening/resemblance review pending."
+  },
+  "scenes": [
+    {
+      "id": "engaged_a",
+      "heading": "Private voice audition A",
+      "text": "Why does the Moon look like a crescent, when it is still a round world? Watch the light. The Moon shines by reflecting sunlight. At first quarter, half the visible disk is bright. First quarter means one quarter of the way through the phase cycle.",
+      "diagram": "phases",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "source_ids": [
+        "nasa-phases",
+        "usno-phases"
+      ],
+      "voice_profile": "teacher_engaged_60_a",
+      "narration_seed": 20261028
+    },
+    {
+      "id": "engaged_b",
+      "heading": "Private voice audition B",
+      "text": "Why does the Moon look like a crescent, when it is still a round world? Watch the light. The Moon shines by reflecting sunlight. At first quarter, half the visible disk is bright. First quarter means one quarter of the way through the phase cycle.",
+      "diagram": "phases",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "source_ids": [
+        "nasa-phases",
+        "usno-phases"
+      ],
+      "voice_profile": "teacher_engaged_60_b",
+      "narration_seed": 20261028
+    }
+  ]
+}

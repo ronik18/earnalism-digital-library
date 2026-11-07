@@ -1,0 +1,38 @@
+{
+  "id": "moon-phases-private-test",
+  "topic": "Why does the Moon have phases?",
+  "private_test": true,
+  "status": "draft",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses"
+      ],
+      "accessed": "2026-10-26"
+    }
+  ],
+  "rights": {
+    "visuals": "Original procedural SVG geometry; no external imagery, music, fonts, or likeness",
+    "narration": "Qwen stock Ryan; model license review required before release"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "heading": "Why does the Moon change shape?",
+      "text": "Why does the Moon change shape? Sunlight always lights half of it. As the Moon travels around Earth, we see different amounts of that bright half. The Moon stays round. Our view changes.",
+      "diagram": "orbit",
+      "phase_start": 0,
+      "phase_end": 1,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    }
+  ]
+}

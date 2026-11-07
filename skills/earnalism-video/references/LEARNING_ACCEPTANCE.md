@@ -1,0 +1,11 @@
+# Learning design and optional audience research
+
+Follow [GO LIVE](GO_LIVE.md) for release precedence. A real external first-time-viewer or card-choice study is optional; absent participants, pending study fields or missing analytics do not block an otherwise qualified episode. Primary factual, graphical, listening/audiovisual and technical/delivery checks remain mandatory and feed one consolidated candidate-bound final decision.
+
+The creator defines the learner's question, intended understanding and concise scene sequence without asking the owner to fill a form. Explain mechanisms, stage one consequential relationship at a time and use an earned callback. Essential reasoning belongs in narration/transcript as well as pictures. A useful prediction/retrieval moment is an editorial choice, not a compulsory quiz or a reason to retime accepted B. The planner is topic-agnostic; non-lunar topics still require accurate tested models/scenes.
+
+Review the actual final landscape and captioned Shorts, including transitions and the END ident. Check legible labels, reading time, caption wording/clearance, A/V synchronization and player pause/seek/reopen/fullscreen/Replay. Reuse full listening evidence only for verified identical audio; both visual compositions still need complete viewing. Resolve demonstrated defects rather than demanding a new participant study. Keep conclusions and evidence under the single final decision; no separate permission prompt for each internal case.
+
+When an audience study is useful and authorized, preserve its value: anonymous real participants, no coaching or advance answers, actual edition/device/format binding, prior exposure/knowledge, neutral topic-specific questions and the participant's own response. Card choices need plausible authorized alternatives, comparable display and recorded order. Simulated viewers cannot supply these results. A one-view check is not proof of enduring retention or revenue.
+
+Keep research and primary qualification distinct in supported records. Do not manufacture responses or mark unperformed primary viewing/listening complete. Preserve historical study schemas and findings; do not impose every old research field on a new release. Source/assets, approvals and current media remain unchanged by documentation or policy updates.

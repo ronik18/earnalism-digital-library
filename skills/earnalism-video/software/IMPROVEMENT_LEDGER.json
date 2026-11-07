@@ -1,0 +1,190 @@
+{
+  "current_candidate": "moon-editorial-brand-private-v31",
+  "current_readiness": "PRIVATE_REVIEW; primary factual/graphical/listening and final candidate review pending; external research optional",
+  "issues": [
+    {
+      "issue": "Blank Shorts picture despite decoded media",
+      "root_cause": "Browser WebM decoder state; decode metrics did not prove visible picture",
+      "implemented": "MP4-first faststart previews; media-element replacement recovery",
+      "regression": "Narrow-panel visible motion, seek and restore; tests/test_faststart_preview.py",
+      "status": "ENGINEERING_PASS"
+    },
+    {
+      "issue": "Paragraph pacing averages hid sentence differences",
+      "root_cause": "Recognizer punctuation and coarse averages masked local timing",
+      "implemented": "Canonical sentence timing, bounded one-pass source edits, unchanged stock Ryan",
+      "regression": "tests/test_delivery_conform.py and test_pace_review.py; final listening still required",
+      "status": "LISTENING_PENDING"
+    },
+    {
+      "issue": "Music present but effectively hidden",
+      "root_cause": "Pre-duck measurements and overall median hid post-duck masking",
+      "implemented": "Post-duck stem measurement, local window flags, source-preserving remix",
+      "regression": "tests/test_audio_balance.py; real stem/audio and download checks",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING",
+      "latest_evidence": "evidence/moon-refinement-v20-verification.json"
+    },
+    {
+      "issue": "Reactive music pumping",
+      "root_cause": "One-second gain correction followed note decays and voice gaps",
+      "implemented": "Phrase energy, look-ahead, <=1 dB/s cubic curves, 1.25 s re-entry",
+      "regression": "tests/test_music_automation.py; full dry/scored listening needed",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING",
+      "latest_evidence": "evidence/moon-refinement-v20-verification.json"
+    },
+    {
+      "issue": "Engineering tests mistaken for release approval",
+      "root_cause": "Different gates combined into an optimistic success claim",
+      "implemented": "improvement.py reports independent gates and no autopublish; existing release gate stays strict",
+      "regression": "tests/test_improvement.py; private fixtures remain forbidden",
+      "status": "GUARD_ACTIVE"
+    },
+    {
+      "issue": "Full-Moon numerical claim mismatched qualified narration; landscape labels and caption access weak",
+      "implemented": "Almost fully lit; enlarged orbit labels; default-on caption toggle, explicit fullscreen and no duplicate burned Shorts overlays",
+      "regression": "tests/test_readability_delivery.py, delivered-frame inspection and private browser review",
+      "status": "ENGINEERING_PASS; HUMAN_ACCEPTANCE_PENDING"
+    },
+    {
+      "issue": "Native landscape captions obscured diagram/footer",
+      "implemented": "Separate actual-VTT caption rail; shell fullscreen; synchronized large-text diagram key for narrow panel",
+      "regression": "117 project and installed tests; sampled browser rectangle/visibility, seek, reload, ending clearing; existing MP4s unchanged",
+      "status": "ENGINEERING_PASS; HUMAN_ACCEPTANCE_PENDING"
+    },
+    {
+      "issue": "Missing-caption warning overwritten by play state and preference lost on page reload",
+      "implemented": "Independent persistent caption status and session caption preference",
+      "regression": "Private missing-VTT browser test, page reload preference, complete playback with sampled visible frames",
+      "status": "ENGINEERING_PASS; HUMAN_QUALITY_PENDING"
+    },
+    {
+      "issue": "Observer bridge inner rectangle crossed card heading and illumination text",
+      "implemented": "Remove moving rectangle, enlarge portrait card, reserve heading/disk/label bands, delay labels until arrival",
+      "regression": "5 geometry tests; sampled transition/quarter/waning frames in both formats; final browser inspection",
+      "status": "ENGINEERING_PASS"
+    },
+    {
+      "issue": "Broad full-Moon predicate mislabeled waning phases",
+      "implemented": "Bound label to full-Moon vicinity; research audit against NASA and USNO",
+      "regression": "Last-quarter and waning-crescent predicate tests plus rendered 81-second frame",
+      "status": "SOURCE_CHECKED; HUMAN_FACTUAL_APPROVAL_PENDING"
+    },
+    {
+      "issue": "Replay absent; portrait fullscreen left-aligned; stale Playing status",
+      "implemented": "Replay control, responsive fullscreen shell without portrait width cap, explicit paused/finished status",
+      "regression": "Both ended=true then Replay -> playing near zero; centered portrait screenshot; native pause state verified",
+      "status": "ENGINEERING_PASS"
+    },
+    {
+      "issue": "Short phrases excluded by pace consistency gate",
+      "implemented": "Explicit short-sentence items/listening flags; separate original-take pacing audition and fresh ASR",
+      "regression": "Short-sentence regression; fresh audition ASR has no unresolved words",
+      "status": "LISTENING_PENDING; MAIN_AUDIO_UNCHANGED"
+    },
+    {
+      "issue": "Broad factual/AV booleans did not prove claim and temporal-frame coverage",
+      "implemented": "Unconditional strict factual/graphical gate; automatic pending records and final-MP4 frame extraction; source/media/evidence binding",
+      "regression": "Strict gate unit/integration tests and actual 96-frame extraction; current Moon remains pending",
+      "status": "ENGINEERING_VALIDATED; HUMAN_REVIEW_PENDING"
+    },
+    {
+      "issue": "Faster replacement narration outlasted fixed score-scene assumptions",
+      "root_cause": "Fixed sunlight motif offsets extended into the next narration paragraph",
+      "implemented": "Actual-duration-bounded motif, retained identity/long-scene timing, restrained short-orbit answer and scene trim",
+      "regression": "tests/test_current_chamber_plan.py plus v29 post-duck individual passage/transition checks",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING"
+    },
+    {
+      "issue": "Selected short audition did not establish full paragraph continuity",
+      "implemented": "Exact worker-settings comparison and fresh independent ASR, caption/anchor alignment; retain full-recording pacing flags without forced tempo or pitch shift",
+      "regression": "v29 logs/selected-voice-settings-comparison.json and pace-review.json",
+      "status": "FULL_RECORDING_LISTENING_PENDING"
+    },
+    {
+      "issue": "Uniform slowdown retained fast-versus-slow sentence contrast in the cycle paragraph",
+      "implemented": "One-pass source-bound slowdown for the rushed first sentence; retain original second-sentence tempo and five untouched takes",
+      "regression": "tests/test_phrase_pacing.py actual ASR timing fixture and pitch-preservation/source/stack guards",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING"
+    },
+    {
+      "issue": "Final partial analysis window misclassified an authored fade as a weak constant bed",
+      "implemented": "Only classify terminal fade when measured music ends with a zero-valued tail",
+      "regression": "tests/test_audio_balance.py verifies actual zero tail and rejects constant weak tail",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING"
+    },
+    {
+      "issue": "Repeated header/source/progress overlays distracted from explanation",
+      "implemented": "Exact static emblem watermark, sources below player, brief schematic context, retained caption-safe layout",
+      "regression": "src/branding.test.mjs; tests/test_editorial_preview.py; final frames and playback",
+      "status": "ENGINEERING_PASS_HUMAN_REVIEW_PENDING"
+    },
+    {
+      "issue": "Accompaniment attack collisions crowded the recurring motif",
+      "implemented": "Bounded written-note trims; preserve notes, timing, true silence and narration; no global loudness boost",
+      "regression": "tests/test_editorial_score.py; v31 actual stem/mix checks",
+      "status": "ENGINEERING_PASS_LISTENING_PENDING"
+    },
+    {
+      "issue": "Historical voice/audio/score instructions could override the latest selected direction",
+      "implemented": "One owner-expectations contract; reconcile active references; fail-closed defaults, selected-audition/instruction, exact-logo and preview-control preflight",
+      "regression": "tests/test_expectations.py; 170-test project suite passed; no media or human approval supplied",
+      "status": "ENGINEERING_PASS"
+    },
+    {
+      "issue": "Unchanged audio and edits=[] could conceal later script edits",
+      "implemented": "Bind current script to raw recognition and word-span text; permit only exact supported orthographic/number equivalents; both ordinary assembly and frozen verification enforce this",
+      "regression": "tests/test_asr_script_binding.py rejects stale scripts and invented display words; all seven actual v31 alignments match",
+      "status": "ENGINEERING_PASS"
+    },
+    {
+      "issue": "Strict frame coverage omitted explicit brand-ending samples and source/watermark decisions",
+      "implemented": "Version-2 plan adds first/middle/final ending frames in both formats at renderer frame boundaries; explicit watermark_branding and source_context checks",
+      "regression": "16 strict-quality tests including actual temporary final-MP4 extraction; current plan expands 96 to 102 samples without altering prior review/media",
+      "status": "ENGINEERING_PASS; NEW_QUALIFICATION_PENDING"
+    },
+    {
+      "issue": "Audience promise and packaging decisions were left until after expensive generation",
+      "implemented": "Bound non-fixture audience brief before model setup/resume; distinct format plans, two title hypotheses each, opening/application/callback and honest next lesson",
+      "regression": "tests/test_audience_plan.py generation/resume/missing-plan/content-drift checks; examples/moon-audience-episode.json is planning-only",
+      "status": "ENGINEERING_TESTED; AUDIENCE_EFFECTIVENESS_UNPROVEN"
+    },
+    {
+      "issue": "Lesson-frame posters and shared metadata could masquerade as selected distribution packaging",
+      "implemented": "Actual dedicated PNG/JPEG masters and small readbacks, title selection reasons and distinct private format metadata matched to chosen hypotheses; explicit human graphical checks",
+      "regression": "Actual ffprobe image checks, rejects tiny/disguised-video/stale assets and mismatched final titles; cloned editions preserve hash-bound artwork",
+      "status": "ENGINEERING_TESTED; HUMAN_PACKAGING_REVIEW_PENDING"
+    },
+    {
+      "issue": "Local readiness, manual upload evidence, analytics and commercial proof could be conflated",
+      "implemented": "Separate fresh manifest-bound publication handoff outside media manifest; append-only actual cost/observation journal with unknown values, per-format/window/traffic context and no authorization from budgets",
+      "regression": "tests/test_audience_plan.py and test_production_journal.py; local package can remain private with pending platform checks; no invented revenue or uploads",
+      "status": "ENGINEERING_TESTED; PLATFORM_AND_REAL_AUDIENCE_EVIDENCE_PENDING"
+    },
+    {
+      "issue": "Moon-specific assumptions and a lesson-level brief left scene-by-scene attention/learning quality unspecified",
+      "implemented": "Topic-agnostic audience-plan v2 with complete scene question/visual-answer/bridge maps, reading budgets, early-payoff checkpoints, generic metadata/context and topic-bound learning questions; real card-choice sidecar; first subject visible at frame zero",
+      "regression": "test_viewer_experience.py, test_topic_acceptance.py, test_viewer_study.py and opening-visibility.test.mjs; actual first-frame PNGs inspected in both formats",
+      "status": "ENGINEERING_CHECKED; REAL_AUDIENCE_AND_PUBLICATION_APPROVAL_PENDING"
+    },
+    {
+      "issue": "Optional growth research and duplicated verification had become routine release friction",
+      "implemented": "One six-stage GO LIVE path; independent studies/multiple variants/growth administration advisory; known defects carried until final evidenced resolution; quick default verification, guarded per-invocation hashes and one full media decode",
+      "regression": "test_lean_release.py, test_verify_modes.py, test_strict_hash_cache.py; current media/approvals unchanged",
+      "status": "ENGINEERING_PASS; PRIMARY_QUALITY_AND_FINAL_CANDIDATE_REVIEW_STILL_REQUIRED"
+    }
+  ],
+  "next_decision": "Complete primary checks and one final candidate decision; real viewer feedback can continue without adding redundant approval gates.",
+  "parallel_work": "Independent docs/review tasks may proceed; only Integration Lane changes shared website release state.",
+  "latest_refinement": {
+    "support_bodies_db": [
+      1.29,
+      0.71,
+      1.08
+    ],
+    "reentry": "Source one-second shoulder plus 0.25-second quintic safety ramp",
+    "engineering": "PASS; no music balance or transition flags",
+    "listening": "PENDING"
+  },
+  "skill_contract": "config/editorial-contract.json",
+  "audience_workflow": "AUDIENCE_AND_DISTRIBUTION.md"
+}
