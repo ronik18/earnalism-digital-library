@@ -136,3 +136,10 @@ Use a native portrait illustration for portrait human action when a wide crop lo
 For a held namaste, describe joined palms as an invariant and animate one small head bow; avoid asking the model to construct or change a difficult hand gesture. For an already supported tray, animate a small response without a handover. Reject incorrect contact or gestures after real playback. Preserve previously accepted landscape footage when only a portrait replacement is qualified.
 
 Wait for the complete Files-sidebar transfer before verifying the ZIP. A visible filename can precede complete bytes; a hash mismatch must stop setup/inference until the original bound ZIP matches. Keep the original allocation deadline through transfer delays.
+
+
+## V13 measured held-gesture refinement
+
+A held-namaste896×512 source produced a483.58second technical attempt. Raw5.04second playback retained joined palms, wrists and forearms during Rama's bow toward a child. It did not return upright by the end; selection is a bow-only landscape action followed by a context cut, not a completed bow-and-return. Portrait retains its independently composed illustration. These are scene-specific editorial observations; technical completion alone grants no acceptance.
+
+Transfer/startup delays count against the original allocation. Before the second scene, measured-headroom checking stopped at597.77seconds versus600required; no second attempt was started, and the guard was not weakened. A two-start allowance is a maximum, not a promise to consume both. Export/import was verified, this GPU was released, UI showed0active sessions/0CU-hour, and saved flags were restored toFalse/zero. The account balance observation362.35→361.82includes an initially concurrent session and is not a pilot-only invoice. Native portrait family artwork remains prepared, not generated.
