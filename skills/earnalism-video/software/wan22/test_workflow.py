@@ -37,6 +37,13 @@ class Workflow(unittest.TestCase):
   self.assertTrue(job['prior_attempt_evidence'])
   job['inference_steps']=50
   with self.assertRaises(ValueError):w.validate(job)
+ def test_selective_retry_preserves_prior_success_and_has_one_start(self):
+  prior={'run_id':'diwali-wan22-pilot-v2','homecoming':'completed','sweets':'failed'}
+  nb=build(self.p/'retry',self.p/'art','l4-balanced-v2','diwali-wan22-pilot-v3',['sweets'],prior)
+  job=json.loads((nb.parent/'job.json').read_text());self.assertEqual(job['max_attempts'],1)
+  self.assertEqual([s['id'] for s in job['scenes']],['sweets']);self.assertEqual(job['prior_attempt_evidence'],prior)
+  dest=self.p/'retry-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',dest,w.sha(nb.parent/'wan22-inputs.zip'))
+  self.assertFalse((dest/'inputs/rama-portrait.png').exists());self.assertIn('SCENE_NOT_IN_THIS_JOB',nb.read_text())
  def test_metered_authority_requires_bounded_rate_and_original_start(self):
   with self.assertRaises(RuntimeError):w.begin(self.root,False,2)
   with self.assertRaises(RuntimeError):w.begin(self.root,False,12,5,time.time()-5)
@@ -89,6 +96,15 @@ class Workflow(unittest.TestCase):
   with self.assertRaises(ValueError):w.import_export(bad,dest,w.sha(bad),self.job)
   self.assertFalse(dest.exists());self.assertFalse((self.p/'escape').exists())
   with self.assertRaisesRegex(ValueError,'archive hash'):w.import_export(archive,dest,'0'*64,self.job)
+ def test_frame_splice_preserves_length_and_exact_color_boundaries(self):
+  from .splice import splice
+  base=self.p/'base.mp4';patch=self.p/'patch.mp4';out=self.p/'spliced.mp4'
+  for path,color,frames in [(base,'blue',30),(patch,'red',6)]:
+   subprocess.run(['ffmpeg','-v','error','-f','lavfi','-i',f'color=c={color}:s=64x64:r=30','-frames:v',str(frames),'-an','-c:v','libx264','-pix_fmt','yuv420p',str(path)],check=True)
+  receipt=splice(base,[{'start':5,'end':11,'file':patch}],out);self.assertEqual(receipt['frame_count'],30)
+  raw=subprocess.check_output(['ffmpeg','-v','error','-i',str(out),'-f','rawvideo','-pix_fmt','rgb24','-'])
+  for frame,red in [(4,False),(5,True),(10,True),(11,False)]:
+   pixel=raw[frame*64*64*3:frame*64*64*3+3];self.assertEqual(pixel[0]>pixel[2],red)
  def test_real_silent_media_import_stays_unaccepted(self):
   self.session();out=self.root/'outputs';out.mkdir()
   clip=out/'homecoming.mp4'

@@ -40,7 +40,8 @@ def validate(job):
     expected=PROFILES[profile]
     if profile=='l4-balanced-v2' and (job.get('inference_steps')!=24 or job.get('guidance_scale')!=5.0 or not job.get('prior_attempt_evidence')):raise ValueError('Optimized retry requires exact settings and prior attempt provenance')
     scenes=job.get('scenes',[])
-    if len(scenes)!=2 or len({s['id'] for s in scenes})!=2:raise ValueError('Two unique pilot scenes required')
+    if len(scenes) not in (1,2) or len({s['id'] for s in scenes})!=len(scenes):raise ValueError('One or two unique pilot scenes required')
+    if len(scenes)==1 and (profile!='l4-balanced-v2' or scenes[0]['id']!='sweets'):raise ValueError('Only an explicitly bound sweets-only recovery is supported')
     seconds=0
     for s in scenes:
         if not re.fullmatch('[a-z0-9-]+',s['id']) or Path(s['image']).name!=s['image']:raise ValueError('Unsafe scene name')
@@ -49,7 +50,7 @@ def validate(job):
         if not isinstance(s['prompt'],str) or not 10<len(s['prompt'])<3000:raise ValueError('Invalid prompt')
         seconds+=s['frames']/s['fps']
     if not seconds<=job.get('max_output_seconds',0)<=11:raise ValueError('Pilot seconds exceed bounded allowance')
-    if job.get('max_attempts')!=2 or job.get('wall_seconds')!=1800:raise ValueError('Unreviewed attempt/runtime cap')
+    if job.get('max_attempts')!=len(scenes) or job.get('wall_seconds')!=1800:raise ValueError('Unreviewed attempt/runtime cap')
     return job
 
 
@@ -66,7 +67,9 @@ def unpack_inputs(archive,root,expected_sha):
     with zipfile.ZipFile(archive) as z:
         if sum(i.file_size for i in z.infolist())>20*1024**2:raise ValueError('Oversized input bundle')
         names=z.namelist()
-        if len(names)!=len(set(names)) or set(names)!={'job.json','inputs/rama-portrait.png','inputs/living-portrait.png'}:raise ValueError('Unexpected bundle members')
+        job=validate(json.loads(z.read('job.json')))
+        expected={'job.json'}|{'inputs/'+s['image'] for s in job['scenes']}
+        if len(names)!=len(set(names)) or set(names)!=expected:raise ValueError('Unexpected bundle members')
         for info in z.infolist():
             dest=inside(root,info.filename)
             if (info.external_attr>>16)&0o170000==0o120000:raise ValueError('Archive symlink')

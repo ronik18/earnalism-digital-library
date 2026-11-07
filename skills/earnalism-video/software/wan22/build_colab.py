@@ -6,7 +6,7 @@ from .worker import MODEL,REVISION,SCHEMA,PROFILES,validate,sha
 BASE=Path(__file__).resolve().parents[1]
 ROOT='/content/earnalism-wan22-diwali-pilot-v1'
 
-def build(destination,art,profile="standard-v1"):
+def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior_evidence=None):
     if profile not in PROFILES:raise ValueError("Unknown execution profile")
     settings=PROFILES[profile]
     runtime_root=ROOT if profile=="standard-v1" else "/content/earnalism-wan22-diwali-pilot-v2"
@@ -23,6 +23,15 @@ def build(destination,art,profile="standard-v1"):
          'compute_scope':'Free by default. Metered Colab requires separate bounded owner authority; no HeyGen compute authority transfers.'}
     if profile!='standard-v1':
         job.update(run_id='diwali-wan22-pilot-v2',profile=profile,inference_steps=settings['steps'],guidance_scale=settings['guidance'],prior_attempt_evidence={'run_id':'diwali-wan22-pilot-v1','homecoming_status':'FAILED_NO_AUTOMATIC_RETRY','completed_clips':0,'observed_step_seconds':31.09,'fresh_owner_authorized_cap':{'compute_units':5,'wall_seconds':1800}})
+    if run_id is not None:
+        if not prior_evidence:raise ValueError('A fresh retry needs retained prior evidence')
+        job.update(run_id=run_id,prior_attempt_evidence=prior_evidence)
+        runtime_root='/content/earnalism-'+run_id
+    if scene_ids is not None:
+        if not run_id:raise ValueError('Selective recovery needs a fresh run ID')
+        scenes=[s for s in scenes if s['id'] in scene_ids]
+        if set(scene_ids)!={s['id'] for s in scenes}:raise ValueError('Unknown recovery scene')
+        job.update(scenes=scenes,max_attempts=len(scenes),max_output_seconds=6 if len(scenes)==1 else 11,purpose='Owner-authorized selective retry; preserve completed clips and all previous attempt journals')
     validate(job);raw=(json.dumps(job,indent=2)+'\n').encode();(destination/'job.json').write_bytes(raw)
     archive=destination/'wan22-inputs.zip'
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_STORED) as z:
@@ -59,18 +68,14 @@ else:
 '''
     def action(flag,body):
         return f"if not {flag}:\n print('{flag}_DISABLED')\nelse:\n if not (RUN_WAN and globals().get('PREFLIGHT_OK',False)):raise RuntimeError('Run successful free/hardware preflight first')\n"+''.join(' '+line+'\n' for line in body.splitlines())
-    upload=action('UPLOAD_INPUTS',f'''# Prefer Colab Files > Upload to session storage if the output-frame picker fails.
+    upload=action('UPLOAD_INPUTS',f'''# Upload via Colab Files > Upload to session storage; await full transfer.
 path=pathlib.Path('/content/wan22-inputs.zip')
-if not path.exists():
- from google.colab import files
- uploaded=files.upload()
- if len(uploaded)!=1:raise RuntimeError('Upload exactly wan22-inputs.zip')
- name,data=next(iter(uploaded.items()))
- path=ROOT/'wan22-inputs.zip';path.write_bytes(data)
+if not path.exists():raise RuntimeError('Upload wan22-inputs.zip in the Files sidebar and wait for completion before verifying')
 worker.unpack_inputs(path,ROOT,{sha(archive)!r})
-print('Two source illustrations verified; no generation performed')''')
+print('Source illustrations verified; no generation performed')''')
     setup=action('SETUP_WAN',"try:\n worker.setup(ROOT)\nfinally:\n worker.export(ROOT)\nprint((ROOT/'setup.json').read_text())")
-    clips=[action(flag,f"worker.generate(ROOT,{s['id']!r})\nprint((ROOT/'attempts.json').read_text())") for flag,s in zip(['GENERATE_HOMECOMING','GENERATE_SWEETS'],scenes)]
+    by_id={s['id']:s for s in scenes}
+    clips=[action(flag,f"worker.generate(ROOT,{sid!r})\nprint((ROOT/'attempts.json').read_text())") if sid in by_id else "print('SCENE_NOT_IN_THIS_JOB: reuse the verified prior clip; no generation')" for flag,sid in [('GENERATE_HOMECOMING','homecoming'),('GENERATE_SWEETS','sweets')]]
     status="""if RUN_WAN and 'ROOT' in globals():
  for name in ['preflight.json','setup.json','attempts.json','export-receipt.json']:
   p=ROOT/name
@@ -102,7 +107,7 @@ DISCONNECT_RUNTIME = False
 '''
     intro=f'''# Earnalism · Wan2.2 natural-motion pilot
 
-Private **{MODEL}**, revision `{REVISION}`. Profile **{profile}**: {settings['width']}×{settings['height']}, {settings['steps']} denoising steps, guidance{settings['guidance']}. Two source-bound portrait scenes, 121 frames at24fps each (~5.04seconds), at most two starts and11seconds reserved output. Selected narration is untouched. No API key, Drive mount, billing setup or public upload.
+Private **{MODEL}**, revision `{REVISION}`. Profile **{profile}**: {settings['width']}×{settings['height']}, {settings['steps']} denoising steps, guidance{settings['guidance']}. {len(scenes)} source-bound portrait scene(s), 121 frames at24fps each (~5.04seconds), at most{job['max_attempts']} start(s) and{job['max_output_seconds']}seconds reserved output. Selected narration is untouched. No API key, Drive mount, billing setup or public upload.
 
 1. Inspect Colab Resources **before connecting**: confirm a free allocation/rate. This notebook authorizes no paid/prepaid units by default. A separate owner allowance can enable at most5CU/30minutes, with twice the observed-rate headroom. Include startup in `ALLOCATION_STARTED_AT`; record balance changes and stop if the rate/remaining allowance is insufficient. The timer is not a provider-enforced CU quota. Standard pilot floors: nominal24GB CUDA GPU (23000MiB), bf16 support,28GiB host RAM and55GiB free disk. T4 allocations stop. These conservative gates are not universal Wan minima.
 2. Enable `RUN_WAN`, `FREE_RUNTIME_CONFIRMED` and set observed rate0 only after actual verification. Run preflight; its30-minute unassign guard covers setup, inference and export. A timer is not a billing cap. No guard extension or automatic retry.
@@ -124,4 +129,4 @@ Private **{MODEL}**, revision `{REVISION}`. Profile **{profile}**: {settings['wi
     return target
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('destination');p.add_argument('--art',required=True);p.add_argument('--profile',choices=list(PROFILES),default='standard-v1');a=p.parse_args();print(build(a.destination,a.art,a.profile))
+    p=argparse.ArgumentParser();p.add_argument('destination');p.add_argument('--art',required=True);p.add_argument('--profile',choices=list(PROFILES),default='standard-v1');p.add_argument('--run-id');p.add_argument('--scene',action='append');p.add_argument('--prior-evidence');a=p.parse_args();print(build(a.destination,a.art,a.profile,a.run_id,a.scene,json.loads(Path(a.prior_evidence).read_text()) if a.prior_evidence else None))

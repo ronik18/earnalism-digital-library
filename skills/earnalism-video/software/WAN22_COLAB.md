@@ -47,6 +47,16 @@ The corrected forecast starts measuring at the first completed step and averages
 
 File previews can cache an older log: do not infer current completion from a stale open preview alone. Prefer the actual notebook attempt result or a live terminal read. Confirm actual file bytes after a normal download before repeatedly requesting it; a save can complete asynchronously without another dialog. Preserve duplicate downloads rather than deleting them without need.
 
+## Selective recovery and integration
+
+When the owner authorizes a fresh retry of sweets while retaining completed homecoming, build a new run/root using `--run-id`, `--scene sweets` and `--prior-evidence PATH`. The evidence must retain the prior archive/clip hashes and failed-attempt status. The generated job has one scene, one start and at most6seconds reserved output; the homecoming cell is inert and directs reuse. The input archive contains only the selected source image and job. This is a new explicitly authorized recovery, not an automatic retry or a reset of the prior journal.
+
+The input cell now requires a completed Files-sidebar upload at `/content/wan22-inputs.zip` before hash verification. Do not automatically fall back to an output-frame picker when that path has not appeared; a second picker obscures which file is being checked. A missing or partial upload remains a setup hold, and generation must not start until the exact source binding passes.
+
+For production integration, preserve raw clips and normalize a derivative to30fps/H.264/yuv420p/BT709 with an explicit frame count. The current121-frame24fps source is5.041667seconds; its151-frame30fps working derivative is5.033333seconds. Record this trim rather than describing both as exactly5seconds. Freeze the actual last frame for any remaining narrated interval instead of looping the action or returning abruptly to its original pose. Compose portrait and landscape separately; a landscape crop must retain the story's faces, hands and contact, with captions and complete branding outside the action. Source resolution remains512×896 even when delivery is1080p.
+
+The bundled `wan22/splice.py` accepts silent30fps replacement intervals, validates dimensions/counts/non-overlap and preserves the assembled total frame count. It re-encodes video; it does not claim unchanged encoded video bytes. Remux the exact existing AAC soundtrack separately and verify its packet hash plus unchanged PCM WAV masters. Render/review changed boundaries and watch each full assembled format, including the ending. A source clip or segment technical pass does not qualify the full movie or confer publication authority.
+
 ## Model and execution contract
 
 - Official weights: `Wan-AI/Wan2.2-TI2V-5B-Diffusers`, revision `b8fff7315c768468a5333511427288870b2e9635`; Apache2.0 model metadata. Preserve source/licence notices.
