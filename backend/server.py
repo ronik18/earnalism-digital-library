@@ -1,3 +1,10 @@
+try:
+    from backend.catalogue_phase_timing import catalogue_request as _catalogue_request, phase as _catalogue_phase
+except ModuleNotFoundError as _catalogue_import_error:
+    if _catalogue_import_error.name != "backend":
+        raise
+    from catalogue_phase_timing import catalogue_request as _catalogue_request, phase as _catalogue_phase
+
 import html
 from dotenv import load_dotenv
 from pathlib import Path
@@ -4325,7 +4332,8 @@ def _reader_audio_package_manifest_from_package(
             "sync_tier",
             "highlight_sync_enabled",
         )
-    } | {"version": package_version, "tracks": tracks}
+    } | {"version": package_version, "tracks": tracks, "highlight_sync_enabled": False,
+         "read_along_enabled": False, "text_linked_navigation_enabled": False}
 
 
 def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
@@ -4399,15 +4407,13 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
     release_gate = "APPROVED"
     qa_status = audio_release_qa_status({**book, "slug": slug})
-    sync_mode = book.get("sync_mode", nested.get("sync_mode", ""))
+    sync_mode = "audio_only"
     narration_disclosure = normalize_text(
         book.get("narration_disclosure")
         or nested.get("narration_disclosure")
         or nested.get("ai_narration_disclosure")
     ).strip()[:160]
-    highlight_sync_enabled = bool(
-        book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
-    )
+    highlight_sync_enabled = False
     enabled = bool(
         book.get("audiobook_enabled")
         or book.get("generate_audiobook")
@@ -4425,6 +4431,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "read_along_enabled": False,
+        "text_linked_navigation_enabled": False,
         "narration_disclosure": narration_disclosure,
         "package_version": package_manifest.get("package_version", "") if package_manifest else "",
         "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
@@ -4446,6 +4454,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "read_along_enabled": False,
+        "text_linked_navigation_enabled": False,
         "narration_disclosure": narration_disclosure,
         "package_version": package_manifest.get("package_version", "") if package_manifest else "",
         "version": version,
@@ -7878,39 +7888,44 @@ def _schedule_home_surface_warmup() -> None:
 # ---------- Public: Books ----------
 @api.get("/books")
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
-    category_filter = None
-    if category and category != "all":
-        category_filter = normalize_category_slug(category) or category
-    cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    extra_query: dict = {}
-    if category_filter:
-        extra_query["category_slug"] = category_filter
-    q_norm = normalize_text(q).strip() if q else ""
-    if q_norm:
-        pattern = re.escape(q_norm)
-        extra_query["$or"] = [
-            {"title": {"$regex": pattern, "$options": "i"}},
-            {"subtitle": {"$regex": pattern, "$options": "i"}},
-            {"author": {"$regex": pattern, "$options": "i"}},
-            {"short_description": {"$regex": pattern, "$options": "i"}},
-            {"description": {"$regex": pattern, "$options": "i"}},
-            {"category_slug": {"$regex": pattern, "$options": "i"}},
-            {"chapters.title": {"$regex": pattern, "$options": "i"}},
-        ]
-    query = _controlled_public_book_query(extra_query)
-    docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
-    # Public list is shelf metadata-only so library browsing never ships chapter bodies.
-    result = []
-    for doc in docs:
-        projected = _safe_live_public_projection(doc)
-        if projected:
-            result.append(projected)
-    result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
-    await _public_cache_set(cache_key, result)
-    return result
+    with _catalogue_request('53625353a1377486ece8731ffbf92f97b3761d38ced767ac632315bb5a0d3a2e'):
+        category_filter = None
+        if category and category != "all":
+            category_filter = normalize_category_slug(category) or category
+        cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
+        with _catalogue_phase('cache_lookup'):
+            cached = await _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        extra_query: dict = {}
+        if category_filter:
+            extra_query["category_slug"] = category_filter
+        q_norm = normalize_text(q).strip() if q else ""
+        if q_norm:
+            pattern = re.escape(q_norm)
+            extra_query["$or"] = [
+                {"title": {"$regex": pattern, "$options": "i"}},
+                {"subtitle": {"$regex": pattern, "$options": "i"}},
+                {"author": {"$regex": pattern, "$options": "i"}},
+                {"short_description": {"$regex": pattern, "$options": "i"}},
+                {"description": {"$regex": pattern, "$options": "i"}},
+                {"category_slug": {"$regex": pattern, "$options": "i"}},
+                {"chapters.title": {"$regex": pattern, "$options": "i"}},
+            ]
+        query = _controlled_public_book_query(extra_query)
+        with _catalogue_phase('database'):
+            docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
+        # Public list is shelf metadata-only so library browsing never ships chapter bodies.
+        with _catalogue_phase('projection'):
+            result = []
+            for doc in docs:
+                projected = _safe_live_public_projection(doc)
+                if projected:
+                    result.append(projected)
+            result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
+        with _catalogue_phase('cache_store'):
+            await _public_cache_set(cache_key, result)
+        return result
 
 @api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):

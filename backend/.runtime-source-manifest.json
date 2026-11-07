@@ -78,6 +78,11 @@
       "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
     },
     {
+      "path": "catalogue_phase_timing.py",
+      "bytes": 1720,
+      "sha256": "e5dd71b2cd5241598b66452d2410163000cc88a70fce887a329da9e7496554ed"
+    },
+    {
       "path": "commerce_territory.py",
       "bytes": 1095,
       "sha256": "9cfc1f7ff74dab5764b606b126efcc4ab4bf96fdd57f075fca16045b0db2f82a"
@@ -9528,9 +9533,14 @@
       "sha256": "e8637b81e42f7cf79baa4b8ab36c8ec57851425816dd06d02ca1b3f9e0639829"
     },
     {
+      "path": "domain/audio_quality.py",
+      "bytes": 3137,
+      "sha256": "9496f32d1af928af6d2c1f73a7757d76d016db80efd791523010e8a94fe745d3"
+    },
+    {
       "path": "domain/audiobook_release.py",
-      "bytes": 12941,
-      "sha256": "bfd8403a032059f9c0aa81ba145c72a8e22cb8795bac8e6f076e507a9388793e"
+      "bytes": 13404,
+      "sha256": "720cc2a540d494586336ec46f518f7576639015065579341e0f3d516ab055bb3"
     },
     {
       "path": "domain/catalog.py",
@@ -9739,8 +9749,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 646051,
-      "sha256": "9c7fc89ce72b8d32008265b73744689acf0ceed0b3bea1d8b5b4033a03092b8f"
+      "bytes": 646994,
+      "sha256": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21"
     },
     {
       "path": "serving_publication_binding.py",
@@ -9833,5 +9843,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "7dc61fcdfc5e17e48a7e63d1caef2ea0c0c42fbc5b2987b768f04afa664b21e9"
+  "expected_sha256": "fb9d6bb3bd6a282ec554372afabcc8f6455fd6fa306590805c113f8c0d014ba7"
 }

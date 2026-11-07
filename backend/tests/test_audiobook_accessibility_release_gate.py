@@ -233,7 +233,7 @@ def test_audio_only_does_not_require_transcript_or_sync_evidence():
     assert "SYNC_TOLERANCE_MISSING" not in blocker_codes(result)
 
 
-def test_read_along_requires_transcript_and_sync_evidence():
+def test_read_along_is_retired_even_if_old_evidence_is_present():
     result = evaluate_release_gate(
         base_payload(
             read_along_enabled=True,
@@ -244,6 +244,7 @@ def test_read_along_requires_transcript_and_sync_evidence():
     )
 
     assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "RETIRED_TEXT_AUDIO_FEATURE" in blocker_codes(result)
     assert result["read_along_enabled"] is True
     assert "TRANSCRIPT_REQUIRED_MISSING" in blocker_codes(result)
     assert "SYNC_TOLERANCE_MISSING" in blocker_codes(result)
@@ -372,3 +373,10 @@ def test_frontend_build_audio_assets_are_direct_public_leak():
     assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
     assert result["command_status"] == FAIL_PUBLIC_AUDIO_LEAK
     assert "FRONTEND_BUILD_AUDIO_ASSETS_PRESENT" in blocker_codes(result)
+
+
+def test_retired_text_features_cannot_be_readmitted_with_old_sync_evidence():
+    for feature in ("read_along_enabled", "highlight_sync_enabled", "text_linked_navigation_enabled"):
+        result = evaluate_release_gate(base_payload(**{feature: True}, transcript_present=True, text_audio_sync_tolerance_ms=1))
+        assert "RETIRED_TEXT_AUDIO_FEATURE" in blocker_codes(result)
+        assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED

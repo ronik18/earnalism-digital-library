@@ -427,6 +427,11 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         )
 
     read_along_enabled = truthy(data.get("read_along_enabled"))
+    if any(field in data and data[field] is not False for field in (
+        "read_along_enabled", "highlight_sync_enabled", "text_linked_navigation_enabled",
+    )):
+        block("RETIRED_TEXT_AUDIO_FEATURE", "HIGH", "player_accessibility",
+              "Read-along, narration-linked highlighting and text-linked audio navigation are retired; disable the requested feature.")
     if read_along_enabled:
         if truthy(data.get("transcript_required")) and not truthy(data.get("transcript_present")):
             block("TRANSCRIPT_REQUIRED_MISSING", "HIGH", "transcript", "Transcript is required for read-along and missing.")

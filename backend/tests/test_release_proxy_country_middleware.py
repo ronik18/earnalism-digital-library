@@ -213,8 +213,8 @@ def test_http_order_admission_enforces_purchase_state_and_signed_india_with_read
     path = "/api/payments/topup"
     timestamp = int(datetime.now(timezone.utc).timestamp())
     from pathlib import Path
-    from scripts.purchase_guard_source import validate
-    purchase_state = validate(Path(__file__).resolve().parents[2])[0]["state"]
+    from scripts.purchase_guard_source import validate_purchase_protocol_source
+    purchase_state = validate_purchase_protocol_source(Path(__file__).resolve().parents[2])[0]["state"]
 
     def assert_admission(result, open_status):
         if purchase_state == "CLOSED":

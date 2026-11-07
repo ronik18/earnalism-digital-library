@@ -438,5 +438,55 @@ class FactoryReleaseEvidenceNormalizerTests(unittest.TestCase):
             self.assertEqual(sentinel.read_text(encoding="utf-8"), "unchanged\n")
 
 
+class AcceptedFidelityReuseTests(unittest.TestCase):
+    def prepare(self, root, mutation=None):
+        fixture = FactoryFixture(root)
+        fixture.diagnosis.update(score=1.2, raw_asr_score=1.2, asr_release_status="SUPPORTING_DIAGNOSTIC_WEAK")
+        fixture.write()
+        accepted = {**fixture.diagnosis, "schema":"earnalism.accepted_audio_fidelity.v1", "status":"ACCEPTED",
+                    "scope":"FULL_TITLE", "acceptance_basis":"OWNER_ACCEPTED_EXACT_SOURCE_ADJUDICATION",
+                    "score":9.91, "audio_sha256":fixture.audio_hash, "manuscript_sha256":fixture.manuscript_hash,
+                    "raw_asr_evidence_sha256":builder.sha256_file(fixture.diagnosis_path), "confirmed_material_defects":[]}
+        provenance_path = fixture.evidence_dir/"existing-accepted-decision.json"
+        write_json(provenance_path, {"source":"DIRECT_USER_QUESTION_REPLY", "decision":"ACCEPTED", "scope":"FULL_TITLE",
+                                   "decision_reference":"DUMMY_EXISTING_ACCEPTANCE_NOT_REAL_PROOF", "slug":fixture.slug,
+                                   "audio_sha256":fixture.audio_hash, "manuscript_sha256":fixture.manuscript_hash})
+        accepted["acceptance_provenance"] = {"path":str(provenance_path), "sha256":builder.sha256_file(provenance_path)}
+        if mutation:
+            key, value = mutation
+            accepted[key] = value
+        path = fixture.evidence_dir/"existing-accepted-fidelity.json"
+        write_json(path, accepted)
+        fixture.qa["accepted_fidelity_evidence"] = {"path":str(path), "sha256":builder.sha256_file(path)}
+        fixture.write()
+        return fixture
+
+    def test_existing_exact_full_title_adjudication_resolves_weak_diagnostic_without_changing_raw(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fixture = self.prepare(Path(temp))
+            fixture.normalize()
+            result = read_json(fixture.output_dir/"normalized_release_qa.json")
+            self.assertEqual(result["raw_asr_score"], 1.2)
+            self.assertEqual(result["asr_source_score"], 9.91)
+            self.assertEqual(read_json(fixture.diagnosis_path)["score"], 1.2)
+            self.assertTrue(result["accepted_fidelity_reference"]["sha256"])
+
+    def test_wrong_or_partial_accepted_evidence_cannot_replace_mandatory_fidelity(self):
+        for mutation in [("audio_sha256","0"*64),("manuscript_sha256","0"*64),("raw_asr_evidence_sha256","0"*64),
+                         ("scope","ONE_SAMPLE"),("acceptance_provenance",{}),("score",float("nan")),("score",100.0),("confirmed_material_defects",["missing ending"])]:
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as temp:
+                fixture = self.prepare(Path(temp), mutation)
+                with self.assertRaises(normalizer.NormalizationBlocked): fixture.normalize()
+
+    def test_confirmed_defect_and_missing_listening_still_block_accepted_adjudication(self):
+        for field in ("defect", "listening"):
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as temp:
+                fixture = self.prepare(Path(temp))
+                if field == "defect": fixture.qa["confirmed_material_defects"] = ["missing paragraph"]
+                else: fixture.listening["listening_quality"]["aggregate"]["overall_listening_score"] = 1.0
+                fixture.write()
+                with self.assertRaises(normalizer.NormalizationBlocked): fixture.normalize()
+
+
 if __name__ == "__main__":
     unittest.main()

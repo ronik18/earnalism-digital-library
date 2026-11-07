@@ -22,8 +22,11 @@ PYTHON_BIN="$ROOT/.venv-uat/bin/python"
 [[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
 command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null || { echo "local FFmpeg/FFprobe are required for exact native audio identity tests" >&2; exit 64; }
 
+echo "==> Consumer-scoped text sync and evidence-proportionate audio acceptance (offline fixtures)"
+"$PYTHON_BIN" -m pytest -q backend/tests/test_release_acceptance.py backend/tests/test_audiobook_accessibility_release_gate.py backend/tests/test_produce_release.py backend/tests/test_release_runtime.py backend/tests/test_produce_release_self_healing.py internal/audiobook_lab/scripts/test_sprint1_factory_release_evidence_normalizer.py internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py
+
 echo "==> Exact purchase guard source and original India commerce boundary"
-"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor
+"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor scripts.test_purchase_protocol_application_source
 
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 "$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness scripts.test_scaling_resource_admission scripts.test_guarded_scaling_controller scripts.test_mongo_reservation_accounting scripts.test_manual_mongo_pool_bounds scripts.test_manual_mongo_client_lifecycle backend.tests.test_startup_maintenance_lock_release backend.tests.test_redis_startup_policy backend.tests.test_streaming_drain
@@ -53,6 +56,7 @@ env \
 echo "==> Protected package publication proof and scope qualification"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_api_public_catalog_projection.py backend/tests/test_protected_package_publication.py internal/audiobook_lab/scripts/test_new_title_publication_acceptance.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_owner_produced_package.py internal/audiobook_lab/scripts/test_native_scored_package.py internal/audiobook_lab/scripts/test_sredni_scored_retained.py internal/audiobook_lab/scripts/test_sredni_private_initial_release.py internal/audiobook_lab/scripts/test_selfish_cedar_source_adoption.py internal/audiobook_lab/scripts/test_selfish_giant_adoption.py internal/audiobook_lab/scripts/test_retained_master_derivative.py backend/tests/test_exact_retained_master_duration.py backend/tests/test_rights_decision_gate.py internal/audiobook_lab/scripts/test_native_replacement_release.py internal/audiobook_lab/scripts/test_native_continuous_acceptance.py backend/tests/test_native_audiobook_replacement_http.py backend/tests/test_native_audio_review_scope.py backend/tests/test_native_audio_review_operator.py internal/audiobook_lab/scripts/test_open_window_scored_retained.py internal/audiobook_lab/scripts/test_open_window_replacement_release.py internal/audiobook_lab/scripts/test_open_window_continuous_acceptance.py backend/tests/test_open_native_review_scope.py backend/tests/test_open_native_replacement_http.py backend/tests/test_sredni_account_authority.py backend/tests/test_sredni_initial_review_profile.py backend/tests/test_sredni_initial_review_domain.py backend/tests/test_sredni_initial_review_operator.py backend/tests/test_sredni_initial_review_http.py
 node frontend/scripts/native-replacement-presentation.test.mjs
+node --test frontend/scripts/audio-only-retirement.test.mjs
 
 echo "==> Preserved Reader source validation and dummy signup race"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py
@@ -162,6 +166,11 @@ echo "==> Signed territorial release proxy and public legal/Reader presentation 
   backend/tests/test_release_proxy_country_middleware.py
 node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-proxy-streaming.test.js frontend/scripts/static-seo-access-copy.test.mjs frontend/scripts/reader-refresh-guidance.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
+  src/pages/Reader.releaseTruth.test.js \
+  src/lib/audioPackageManifest.test.js \
+  src/lib/audioReleaseSafety.test.js \
+  src/components/PremiumListeningRail.test.js \
+  src/components/ReaderAudiobookPanel.test.js \
   src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
   src/experiences-v2/__tests__/listener-resume-authorization.test.jsx \
   src/experiences-v2/__tests__/listener-protected-package-route.test.jsx \

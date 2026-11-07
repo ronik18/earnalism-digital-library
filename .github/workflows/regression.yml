@@ -35,10 +35,19 @@ jobs:
   regression:
     if: github.event_name != 'workflow_dispatch' || !inputs.build_only
     name: regression gate
-    runs-on: ubuntu-latest
+    # Pin the supported OS for the existing Playwright 1.60 browser dependencies.
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
       NODE_ENV: ci
+      # Immutable regression case, never the current candidate's recovery proof.
+      HISTORICAL_PAIR_CONTROLLER_SHA: babb32bb6be02caafb996d090d6ce95586c2d985
+      HISTORICAL_PAIR_CONTROLLER_TREE: 9a09e62f58f06eb8ac516dd5671817b31e8cf136
+      HISTORICAL_PAIR_BOOTSTRAP_SHA: 65ca071ebebba3edb73ab44fd13c7e00f95b54e6
+      HISTORICAL_PAIR_APPLICATION_SHA: fe38e8a82844bf0b1682aede0a4bf550e5fe1ec2
+      # Retained current A/B controller; never recovery qualification of CI HEAD.
+      RETAINED_PAIR_CONTROLLER_SHA: e547d0163fa8d1f59891724e2717fb1526fd4ed6
+      RETAINED_PAIR_CONTROLLER_TREE: 347a5952c2869ad9aa743a967aef2e5702c93586
       # Avoid retaining a second wheel/download copy beside the isolated UAT environment.
       PIP_NO_CACHE_DIR: "1"
       npm_config_cache: ${{ github.workspace }}/.npm-cache
@@ -77,6 +86,9 @@ jobs:
         env:
           GIT_NO_LAZY_FETCH: '1'
           GIT_NO_REPLACE_OBJECTS: '1'
+          # Ordinary source CI hydrates historical roles; only manual release
+          # may claim its candidate backend is that exact recovery application.
+          PAIR_SOURCE_ONLY: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           set -euo pipefail
           # Filtered fetch persists remote settings; restore the exact prior state.
@@ -123,6 +135,28 @@ jobs:
               bindings+=("$pair_bootstrap_pin:internal/legal/purchase_guard_source.json")
             fi
           fi
+          if [[ -f internal/legal/purchase_protocol_application_source.json ]]; then
+            source_pin="$(jq -er '.application_source_sha' internal/legal/purchase_protocol_application_source.json)"
+            [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+            bindings+=("$source_pin:backend/server.py")
+          fi
+          # BEGIN archived application bindings
+          # Preserve exact old application bodies consumed by historical negatives.
+          for archived_contract in \
+            internal/legal/history/pr656-source-only-0d3a5d58/purchase_guard_source.json \
+            internal/legal/history/pr656-source-only-0d3a5d58/purchase_protocol_application_source.json; do
+            if [[ -f "$archived_contract" ]]; then
+              source_pin="$(jq -er '.application_source_sha' "$archived_contract")"
+              [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              bindings+=("$source_pin:backend/server.py")
+              if [[ "$archived_contract" == */purchase_guard_source.json ]]; then
+                source_pin="$(jq -er '.guarded_bootstrap_source_sha' "$archived_contract")"
+                [[ "$source_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
+                bindings+=("$source_pin:backend/server.py")
+              fi
+            fi
+          done
+          # END archived application bindings
           if [[ -f scripts/build_india_guarded_rollback.py ]]; then
             bindings+=("4dc9e8fd3f9eafd28445b408d376b73634ccfa56:backend/server.py")
           fi
@@ -153,13 +187,38 @@ jobs:
             git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "${missing_commits[@]}"
           fi
           # BEGIN bounded current guarded source pair admission
+          [[ "${PAIR_SOURCE_ONLY:-false}" == true || "${PAIR_SOURCE_ONLY:-false}" == false ]] || exit 1
           if [[ -n "$pair_bootstrap_pin" ]]; then
             [[ "$pair_bootstrap_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
             pair_controller_pin="$(git rev-parse HEAD)"
             [[ "$pair_controller_pin" =~ ^[0-9a-f]{40}$ ]] || exit 1
-            # Finite CI transport bound for this immediate A/B/C history, not
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
+              [[ "$HISTORICAL_PAIR_CONTROLLER_SHA" =~ ^[0-9a-f]{40}$ && "$HISTORICAL_PAIR_CONTROLLER_TREE" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              [[ "$HISTORICAL_PAIR_BOOTSTRAP_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              # Fetch this exact historical tree first. HEAD's bounded commit
+              # admission below then restores ancestry past its shallow edge.
+              git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_CONTROLLER_SHA"
+              [[ "$HISTORICAL_PAIR_APPLICATION_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_APPLICATION_SHA"
+              bindings+=("$HISTORICAL_PAIR_APPLICATION_SHA:backend/server.py")
+            fi
+            # Finite descendant metadata for the retained A/B role history, not
             # authority. Only commits for HEAD ancestry; no trees or file blobs.
-            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=16 origin "$pair_controller_pin"
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == true && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+              # HEAD may contain a reviewed successor application. Admit retained
+              # A/B at its immutable controller, with unchanged approval custody.
+              [[ "$RETAINED_PAIR_CONTROLLER_SHA" =~ ^[0-9a-f]{40}$ && "$RETAINED_PAIR_CONTROLLER_TREE" =~ ^[0-9a-f]{40}$ ]] || exit 1
+              git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$RETAINED_PAIR_CONTROLLER_SHA"
+              # Restore bounded ancestry after the exact-tree fetch introduces a shallow edge.
+              git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_CONTROLLER_SHA" HEAD
+              [[ "$(git rev-parse "$RETAINED_PAIR_CONTROLLER_SHA^{tree}")" == "$RETAINED_PAIR_CONTROLLER_TREE" ]] || exit 1
+              for custody_path in internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json; do
+                [[ "$(git rev-parse "$RETAINED_PAIR_CONTROLLER_SHA:$custody_path")" == "$(git rev-parse "HEAD:$custody_path")" ]] || exit 1
+              done
+              pair_controller_pin="$RETAINED_PAIR_CONTROLLER_SHA"
+            fi
             # Re-admit B/A with their trees: tree:0 may already have their commit
             # IDs, so normal negotiation could otherwise skip promised trees.
             git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$pair_bootstrap_pin"
@@ -174,12 +233,57 @@ jobs:
             # snapshot/file may enter the two explicitly bound backend roles.
             pair_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$pair_parent_pin" "$pair_bootstrap_pin" | LC_ALL=C sort)"
             [[ "$pair_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
-            [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == false || "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+              [[ "$(git rev-parse "$pair_controller_pin:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+            elif [[ "${PAIR_SOURCE_ONLY:-false}" == true ]]; then
+              # Do not mislabel historical A/B hydration as qualification of a
+              # newer backend. Runtime recovery/controller gates remain separate.
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$pair_bootstrap_pin" "$HISTORICAL_PAIR_CONTROLLER_SHA"
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$HISTORICAL_PAIR_CONTROLLER_SHA" "$pair_controller_pin"
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA^{tree}")" == "$HISTORICAL_PAIR_CONTROLLER_TREE" ]] || exit 1
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:backend")" == "$(git rev-parse "$pair_parent_pin:backend")" ]] || exit 1
+              [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:internal/legal/purchase_guard_source.json")" == "$(git rev-parse HEAD:internal/legal/purchase_guard_source.json)" ]] || exit 1
+              while IFS= read -r -d '' source_path; do
+                bindings+=("$HISTORICAL_PAIR_CONTROLLER_SHA:$source_path")
+              done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$HISTORICAL_PAIR_CONTROLLER_SHA" -- backend scripts/build_runtime_source_manifest.py internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json .gitignore .gitattributes)
+              echo 'HISTORICAL_PAIR_ONLY_NOT_CURRENT_BACKEND_RECOVERY_QUALIFICATION'
+            else
+              exit 1
+            fi
             for pair_pin in "$pair_bootstrap_pin" "$pair_parent_pin"; do
               while IFS= read -r -d '' source_path; do
                 bindings+=("$pair_pin:$source_path")
               done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$pair_pin" -- backend .gitignore internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json)
             done
+          fi
+          # A current pair can differ from the immutable C/B65 helper baseline.
+          # Admit that historical pair independently, with no HEAD relabelling.
+          if [[ "${PAIR_SOURCE_ONLY:-false}" == true && -n "$pair_bootstrap_pin" && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+            historical_bootstrap_pin="$HISTORICAL_PAIR_BOOTSTRAP_SHA"
+            git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$historical_bootstrap_pin"
+            # Both depth-2 role fetches introduce parent shallow edges. Restore
+            # only bounded HEAD ancestry before checking historical lineage.
+            git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
+            git -c remote.origin.promisor=false merge-base --is-ancestor "$historical_bootstrap_pin" "$HISTORICAL_PAIR_CONTROLLER_SHA"
+            git -c remote.origin.promisor=false merge-base --is-ancestor "$HISTORICAL_PAIR_CONTROLLER_SHA" "$pair_controller_pin"
+            [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA^{tree}")" == "$HISTORICAL_PAIR_CONTROLLER_TREE" ]] || exit 1
+            read -r historical_actual_pin historical_parent_pin historical_extra_parent <<< "$(git -c remote.origin.promisor=false rev-list --parents -n 1 "$historical_bootstrap_pin")"
+            [[ "$historical_actual_pin" == "$historical_bootstrap_pin" && "$historical_parent_pin" =~ ^[0-9a-f]{40}$ && -z "$historical_extra_parent" ]] || exit 1
+            [[ "$(git rev-parse "$HISTORICAL_PAIR_CONTROLLER_SHA:backend")" == "$(git rev-parse "$historical_parent_pin:backend")" ]] || exit 1
+            historical_changed="$(git -c remote.origin.promisor=false diff-tree --no-commit-id --name-only -r "$historical_parent_pin" "$historical_bootstrap_pin" | LC_ALL=C sort)"
+            [[ "$historical_changed" == $'backend/.runtime-source-manifest.json\nbackend/server.py\ninternal/legal/purchase_guard_source.json' ]] || exit 1
+            for historical_pin in "$HISTORICAL_PAIR_CONTROLLER_SHA" "$historical_bootstrap_pin" "$historical_parent_pin"; do
+              while IFS= read -r -d '' source_path; do
+                bindings+=("$historical_pin:$source_path")
+              done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$historical_pin" -- backend scripts/build_runtime_source_manifest.py internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json .gitignore .gitattributes)
+            done
+            echo 'CURRENT_PAIR_SOURCE_AND_SEPARATE_HISTORICAL_HELPER_NOT_NATIVE_QUALIFICATION'
+          fi
+          if [[ "${PAIR_SOURCE_ONLY:-false}" == true && -n "$pair_bootstrap_pin" && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+            while IFS= read -r -d '' source_path; do
+              bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:$source_path")
+            done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$RETAINED_PAIR_CONTROLLER_SHA" -- backend scripts/build_runtime_source_manifest.py internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json .gitignore .gitattributes)
+            echo 'RETAINED_PAIR_ONLY_NOT_CURRENT_CANDIDATE_RECOVERY_QUALIFICATION'
           fi
           # END bounded current guarded source pair admission
           if [[ -n "$reader_source_pin" ]]; then
@@ -188,6 +292,7 @@ jobs:
               bindings+=("$reader_source_pin:$source_path")
             done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$reader_source_pin" -- backend .gitignore .gitattributes internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json internal/legal/reader612_recovery_source.json)
           fi
+          printf 'RETAINED_HYDRATION_DISCOVERY_START bindings=%s\n' "${#bindings[@]}"
           missing_blobs=()
           for binding in "${bindings[@]}"; do
             object_id="$(git rev-parse --verify "$binding")"
@@ -196,16 +301,26 @@ jobs:
               missing_blobs+=("$object_id")
             fi
           done
+          printf 'RETAINED_HYDRATION_DISCOVERY_COMPLETE missing_entries=%s\n' "${#missing_blobs[@]}"
           if (( ${#missing_blobs[@]} )); then
             unique=()
             while IFS= read -r object_id; do unique+=("$object_id"); done < <(printf '%s\n' "${missing_blobs[@]}" | sort -u)
             missing_blobs=("${unique[@]}")
+            printf 'RETAINED_HYDRATION_BODY_FETCH_START objects=%s\n' "${#missing_blobs[@]}"
             git -c gc.auto=0 fetch --no-tags --depth=1 origin "${missing_blobs[@]}"
+            echo 'RETAINED_HYDRATION_BODY_FETCH_COMPLETE'
           fi
+          # BEGIN retained commit/blob batch checks
+          # Keep every exact binding and its order; missing or wrong types fail closed.
+          type_checks=()
           for binding in "${bindings[@]}"; do
-            git -c remote.origin.promisor=false cat-file -e "${binding%%:*}^{commit}"
-            [[ "$(git -c remote.origin.promisor=false cat-file -t "$binding")" == blob ]]
+            type_checks+=("${binding%%:*}^{commit}" "$binding")
           done
+          printf '%s\n' "${type_checks[@]}" |
+            git -c remote.origin.promisor=false cat-file --buffer --batch-check='%(objecttype)' |
+            python3 -c 'import sys; rows=sys.stdin.read().splitlines(); count=int(sys.argv[1]); expected=[kind for _ in range(count) for kind in ("commit", "blob")]; sys.exit(0 if rows == expected else "Exact retained commit/blob types missing or mismatched")' "${#bindings[@]}"
+          # END retained commit/blob batch checks
+          echo 'RETAINED_HYDRATION_TYPE_CHECK_COMPLETE'
 
       - name: Fetch exact retained containment source
         if: hashFiles('scripts/build_india_guarded_rollback.py') != ''
@@ -301,7 +416,7 @@ jobs:
           set -euo pipefail
           package=scripts/test_helpers/railway_archiver_v5710
           export CARGO_TARGET_DIR="$RUNNER_TEMP/paired-helper-cargo-target"
-          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_diagnose_railway_helper_lock scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_current_frontend_restore scripts.test_retained_startup_channel scripts.test_guarded_release_controller scripts.test_private_frontend_stage scripts.test_first_guard_pair scripts.test_native_action_scope scripts.test_first_guard_pair_regressions -v
+          python3 -m unittest scripts.test_verify_railway_helper_archive scripts.test_verify_railway_helper_source scripts.test_diagnose_railway_helper_lock scripts.test_paired_backend_content_provenance scripts.test_india_release_provider_adapter scripts.test_current_guarded_bootstrap_restore scripts.test_current_frontend_restore scripts.test_retained_startup_channel scripts.test_guarded_release_controller scripts.test_private_frontend_stage scripts.test_first_guard_pair scripts.test_reader_owner_applicability scripts.test_sredni_build_amendment scripts.test_native_action_scope scripts.test_first_guard_pair_regressions -v
           rustc --version
           cargo --version
           python3 -c 'import re,subprocess; v=re.match(r"rustc (\d+)\.(\d+)\.(\d+)",subprocess.check_output(["rustc","--version"],text=True)); assert v and tuple(map(int,v.groups())) >= (1,85,0), "Rust >=1.85 required; no automatic installation"'
@@ -321,7 +436,36 @@ jobs:
           from pathlib import Path
           from scripts.purchase_guard_source import validate_paired_source,backend_tree,_git_blob
           from scripts.backend_upload_payload import qualify_committed_export
-          controller=Path.cwd(); pair=validate_paired_source(controller); b=pair['bootstrap_source_sha']
+          # BEGIN explicit historical controller export (source CI only)
+          current=Path.cwd(); reference=os.environ['HISTORICAL_PAIR_CONTROLLER_SHA']
+          controller=Path(os.environ['RUNNER_TEMP'])/'paired-helper-historical-controller'
+          import subprocess
+          subprocess.run(['git','worktree','add','--detach','--no-checkout',str(controller),reference],cwd=current,check=True)
+          patterns='/backend/\n/scripts/build_runtime_source_manifest.py\n/internal/legal/purchase_guard_source.json\n/internal/legal/purchase_guard_owner_acceptance.json\n/.gitignore\n/.gitattributes\n'
+          subprocess.run(['git','-C',str(controller),'sparse-checkout','set','--no-cone','--stdin'],input=patterns,text=True,check=True)
+          subprocess.run(['git','-C',str(controller),'read-tree','-mu','HEAD'],check=True)
+          assert json.loads((controller/'internal/legal/purchase_guard_source.json').read_text())['application_source_sha']==os.environ['HISTORICAL_PAIR_APPLICATION_SHA']
+          pair=validate_paired_source(controller); b=pair['bootstrap_source_sha']
+          assert pair['controller_source_sha']==reference and b==os.environ['HISTORICAL_PAIR_BOOTSTRAP_SHA']
+          assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=controller,text=True).strip()==os.environ['HISTORICAL_PAIR_CONTROLLER_TREE']
+          context={'scope':'HISTORICAL_C_B65_ONLY_NOT_CURRENT_CI_BACKEND_RECOVERY','ci_checkout_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=current,text=True).strip(),'historical_controller_sha':reference,'bootstrap_source_sha':b,'current_candidate_recovery_qualified':False,'current_candidate_or_provider_recovery_qualified':False}
+          (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/historical-context.json').write_text(json.dumps(context,indent=2)+'\n')
+          # END explicit historical controller export
+          if json.loads((current/'internal/legal/purchase_guard_source.json').read_text())['guarded_bootstrap_source_sha'] != os.environ['HISTORICAL_PAIR_BOOTSTRAP_SHA']:
+              retained=Path(os.environ['RUNNER_TEMP'])/'paired-helper-retained-controller'
+              retained_ref=os.environ['RETAINED_PAIR_CONTROLLER_SHA']
+              subprocess.run(['git','worktree','add','--detach','--no-checkout',str(retained),retained_ref],cwd=current,check=True)
+              subprocess.run(['git','-C',str(retained),'sparse-checkout','set','--no-cone','--stdin'],input=patterns,text=True,check=True)
+              subprocess.run(['git','-C',str(retained),'read-tree','-mu','HEAD'],check=True)
+              assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=retained,text=True).strip()==os.environ['RETAINED_PAIR_CONTROLLER_TREE']
+              current_pair=validate_paired_source(retained)
+              assert current_pair['controller_source_sha']==retained_ref
+              assert current_pair['bootstrap_source_sha']==json.loads((current/'internal/legal/purchase_guard_source.json').read_text())['guarded_bootstrap_source_sha']
+              for custody_path in ('internal/legal/purchase_guard_source.json','internal/legal/purchase_guard_owner_acceptance.json'):
+                  assert (retained/custody_path).read_bytes()==(current/custody_path).read_bytes()
+              retained_context={'scope':'RETAINED_PAIR_ONLY_NOT_CURRENT_CANDIDATE_RECOVERY','ci_checkout_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=current,text=True).strip(),'retained_controller_sha':retained_ref,'current_candidate_recovery_qualified':False,'current_candidate_or_provider_recovery_qualified':False}
+              (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/retained-context.json').write_text(json.dumps(retained_context,indent=2)+'\n')
+              (Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/current-source-pair.json').write_text(json.dumps(current_pair,indent=2)+'\n')
           root=Path(os.environ['RUNNER_TEMP'])/'paired-helper-export'; root.mkdir(mode=0o700)
           rows=backend_tree(controller,b)
           for name,row in rows.items():
@@ -333,7 +477,32 @@ jobs:
           out=Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/offline-export-report.json'; out.write_text(json.dumps(report,indent=2)+'\n')
           (out.parent/'offline-export-report.sha256').write_text(hashlib.sha256(out.read_bytes()).hexdigest())
           PYEXPORT
-          python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-export" --controller-root "$GITHUB_WORKSPACE" --output-dir "$RUNNER_TEMP/paired-helper-proof/executed"
+          python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-export" --controller-root "$RUNNER_TEMP/paired-helper-historical-controller" --output-dir "$RUNNER_TEMP/paired-helper-proof/executed"
+          # Reuse the same compiled helper, but never relabel its old B65 input.
+          if [[ "$(jq -er '.guarded_bootstrap_source_sha' internal/legal/purchase_guard_source.json)" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+            python3 - <<'PYCURRENTEXPORT'
+          import hashlib,json,os
+          from pathlib import Path
+          from scripts.purchase_guard_source import validate_paired_source,backend_tree,_git_blob
+          from scripts.backend_upload_payload import qualify_committed_export
+          controller=Path(os.environ['RUNNER_TEMP'])/'paired-helper-retained-controller'
+          pair=validate_paired_source(controller); source=pair['bootstrap_source_sha']
+          assert pair['controller_source_sha']==os.environ['RETAINED_PAIR_CONTROLLER_SHA']
+          root=Path(os.environ['RUNNER_TEMP'])/'paired-helper-current-export'; root.mkdir(mode=0o700)
+          rows=backend_tree(controller,source)
+          for name,row in rows.items():
+              target=root/name; target.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
+              target.write_bytes(_git_blob(controller,source,name)); target.chmod(0o755 if row['mode']=='100755' else 0o644)
+          (root/'.gitignore').write_bytes(_git_blob(controller,source,'.gitignore'))
+          report=qualify_committed_export(controller,source,root)
+          assert set(r['path'] for r in report['files'])==set(rows), 'full current CLOSED membership required'
+          assert report['runtime_expected_sha256']==pair['closed_runtime_sha256']
+          out=Path(os.environ['RUNNER_TEMP'])/'paired-helper-proof/current-offline-export-report.json'
+          out.write_text(json.dumps(report,indent=2)+'\n')
+          out.with_suffix('.sha256').write_text(hashlib.sha256(out.read_bytes()).hexdigest())
+          PYCURRENTEXPORT
+            python3 scripts/execute_railway_helper_check.py --package-root "$package" --binary "$CARGO_TARGET_DIR/release/earnalism-railway-archiver-test" --report "$RUNNER_TEMP/paired-helper-proof/current-offline-export-report.json" --expected-report-sha256 "$(cat "$RUNNER_TEMP/paired-helper-proof/current-offline-export-report.sha256")" --export-root "$RUNNER_TEMP/paired-helper-current-export" --controller-root "$RUNNER_TEMP/paired-helper-retained-controller" --output-dir "$RUNNER_TEMP/paired-helper-proof/current-executed"
+          fi
 
       - name: Retain paired helper evidence (not native upload proof)
         if: always() && github.event_name != 'workflow_dispatch'

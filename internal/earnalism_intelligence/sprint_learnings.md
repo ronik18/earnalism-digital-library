@@ -3144,3 +3144,42 @@ All current explicit live-title modes are commercial; zero balance does not crea
 ### Protected Reader enforcement scope — 5 November 2026
 
 The accepted Reader contract does not mandate a new paid premium-text session. Protected entitlement enforcement may be established by actual authorization/no-lease denial plus exact source/protocol/handler preservation within the accepted contract. Do not turn this negative proof into positive premium delivery, billing or mobile PASS. Accepted Reader #536 three-public/one-protected refers to public domain roles and the protected Vercel SSO alias, not a premium-content lease. #537 is Admin activation inspection. Zero balance does not grant a free commercial lease and is not needed for GET-only preview. Rendered authenticated Reader UI can write position/telemetry; boundary controls can start a metered lease. Never label this UI GET-only or start/transfer/settle a lease to discover eligibility.
+
+### 5 November 2026 — consumer-scoped text sync and diagnostic uncertainty
+
+The standalone Listener does not consume text cues, but the legacy/admin Reader
+can navigate by word position. A disabled highlight flag alone is not proof of
+nonconsumption. Exact candidate/source-bound NOT_APPLICABLE now survives evaluation
+and promotion only for the reviewed standalone path; cue-dependent producers and
+text consumers keep measured gates. Preserve media clocks and structural assets.
+Unconfirmed ASR/source heuristics warn rather than prescribe regeneration/repeated
+models/listening. Existing accepted full-title fidelity adjudication can resolve
+raw recognizer uncertainty without changing raw output or thresholds. Confirmed
+defects and missing mandatory acceptance still block; no perfect-certainty claim.
+No runtime action, owner hold, consumed counter or deployment authority changes.
+
+Historical recovery hydration and purchase-protocol unit checks must not claim
+that every newer application backend is the old recovery image. Keep source CI
+explicitly source-only, native/manual validators strict, finite metadata/no bulk
+fallback, exact closed-role paths and owner/financial protocol checks intact.
+A CI transport/source fix does not authorize another runtime observation or release.
+
+
+5 November 2026: Retire customer text-audio features by removing actual legacy cue consumers and stale-flag capabilities, not merely hiding one button. Keep manual Reader selection/annotations and native media seek/chapter/resume controls. Source N/A is exact-candidate scoped; historical cue assets and release holds stay intact.
+
+Source protocol custody and native recovery are separate: an unrelated reviewed server metadata change needs its own exact source/digest binding, never replacement of historical A/B or weakening current native equality. Keep default native validation strict; source-only tests may validate unchanged protected handlers under a separately reviewed protocol record.
+
+## Sredni bounded source successor — 5 November 2026
+
+- Additional-build authority binds the exact second stage through protected approval and actual observer; it never replaces the original native baseline or action counters. UNKNOWN remains consumed.
+- Commit and verify an inventoried normal parent before the deterministic three-path CLOSED child; matching server bytes alone do not prove whole-backend equality.
+- Source-pair qualification is not native image/recovery qualification. First-guard purchase-closed containment is not normal reopening or a qualified frontend restore.
+- One newly approved observation cannot silently become two separately counted policy/DB observations; preserve the original lineage and prepare only the exact remaining scope question.
+
+## Current CLOSED helper provenance — 5 November 2026
+
+Reuse unchanged helper binaries/components, but execute each selected CLOSED input through ordinary CI and retain its own actual member/mode/runtime/archive receipt. A historical B65 report never certifies CLOSED850. Finish this non-expiring artifact work and qualify the unaliased frontend before the fresh startup-policy/snapshot proof; source-proof freshness never renews original canary clocks or budgets.
+
+## Preserve owner words across source successors — 5 November 2026
+
+An original source-bound Reader/containment approval is not a reusable blank cheque and must not be relabelled. Reuse it only through an exact reviewed applicability bridge: historical O/P/K unchanged, actual continuation/retirement authority, mechanically checked committed protected/Reader equivalence and exact consumer hashes, current source pair, original custody/counters and fresh protected/actual observations. Keep staged-child and final Reader/Listener/runtime acceptance independent; source equivalence is never runtime PASS.

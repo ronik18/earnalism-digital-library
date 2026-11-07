@@ -4,7 +4,7 @@ import asyncio
 from pathlib import Path
 import unittest
 from types import SimpleNamespace
-from scripts.purchase_guard_source import validate
+from scripts.purchase_guard_source import validate_purchase_protocol_source as validate
 
 ROOT=Path(__file__).resolve().parents[2]
 

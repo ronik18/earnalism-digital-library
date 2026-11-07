@@ -107,7 +107,7 @@ Bengali campaign gates (apply subject to the current owner directive above):
 
 - Preserve material quality gates. Historical listening thresholds apply when listening is justified; automated evidence must never be reported as human scores.
 - Fatal red flags are robotic texture, mechanical cadence, list-reading rhythm, choppy joins, and fallback TTS.
-- Objective gates remain strict: content/TOC, rights, covers, ASR/manuscript `>= 9.7`, first/last words, no missing/duplicated/reordered content, measured paragraph/stanza sync or better, no estimated sync, upload/checksum, metadata, endpoint, browser gate, and empty blocker list.
+- Objective gates remain strict: content/TOC, rights, covers, ASR/manuscript `>= 9.7`, first/last words, no missing/duplicated/reordered content, measured paragraph/stanza sync or better where the selected customer/producer path consumes text sync (otherwise verified, source-bound `NOT_APPLICABLE`, features disabled and no sync claims), no estimated sync, upload/checksum, metadata, endpoint, browser gate, and empty blocker list.
 
 Campaign rules:
 
@@ -116,3 +116,23 @@ Campaign rules:
 - Do not damage the existing Bengali reader-only/audio-hidden state.
 - Do not run paid provider calls without explicit campaign approval and budget env vars.
 - If automated TTS plateaus, create human narration or licensed audio import packets instead of looping.
+
+## Owner-directed evidence applicability (5 November 2026)
+
+Measured text timing is a release dependency only where the actual selected path
+consumes it. Use `sync_acceptance_policy.json` and the reviewed standalone Listener
+consumer contract for explicit `NOT_APPLICABLE`; never relabel it PASS or manufacture
+cues. Read-along, highlighting, captions/text-linked navigation and cue-dependent
+production still require measured evidence. Audio duration, chapter/segment media
+clocks, completeness/fidelity, rights, playback and accounting remain strict.
+
+An unconfirmed ASR or heuristic warning alone is not a confirmed audio defect and
+does not require another recognizer, generation retry or repeated manual listening.
+Reuse applicable genuine accepted exact-source/audio adjudication; retain raw scores
+and actual policy thresholds. Confirmed material defects and missing mandatory
+acceptance remain held. No classifier promises perfect certainty. This amendment
+does not reopen owner holds, consumed budgets or production authority.
+
+## Retired text-audio features (5 November 2026)
+
+Owner retires read-along, narration-linked highlighting and text-linked audio navigation across supported current and legacy customer paths. Stale flags and prior sync evidence do not restore these features. Preserve ordinary Reader navigation/manual annotations, native media clocks/chapter controls, source fidelity, rights, access and accounting. Retain historical assets/evidence and use explicit source/candidate-bound NOT_APPLICABLE only for actual nonconsumers. No retry/budget/expired-admission renewal is implied.

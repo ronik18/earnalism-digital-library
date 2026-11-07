@@ -141,3 +141,12 @@ test("StrictMode replay cleans captured media and leaves one live monitor, then 
   expect(audio.paused).toBe(true);
   expect(activeIntervals.size).toBe(0);
 });
+
+
+test("retired read-along props cannot expose a customer control", async () => {
+  const callback = jest.fn();
+  await render({ readAlongSupported: true, onReadAlong: callback });
+  expect(container.textContent).not.toMatch(/read along/i);
+  expect(callback).not.toHaveBeenCalled();
+  expect(container.querySelector('audio')).not.toBeNull();
+});

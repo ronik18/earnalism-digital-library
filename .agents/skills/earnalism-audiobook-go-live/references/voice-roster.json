@@ -1,0 +1,67 @@
+{
+  "schema": "earnalism.prepared-narrator-roster.v1",
+  "purpose": "Two built-in voice direction profiles and nonauthoritative retained-title locators; configuration is not generation or production qualification.",
+  "checked_date": "2026-10-29",
+  "model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "model_revision": null,
+  "revision_requirement": "Resolve exact model/tokenizer/runtime revisions and retain applicable terms before inference. Do not guess a revision.",
+  "documented_model_license": "Apache-2.0",
+  "sources": [
+    "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "profiles": [
+    {
+      "profile_id": "qwen-ryan-literary-male-v1",
+      "speaker": "Ryan",
+      "gender_presentation": "male",
+      "native_language": "English",
+      "documented_character": "Dynamic male, rhythmic drive",
+      "status": "RETAINED_TITLE_ACCEPTANCE_ONLY",
+      "accepted_title": "the-open-window",
+      "accepted_package": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+      "evidence_locator": "internal/audiobook_lab/release_gate/open_window_successor_adoptions.json",
+      "new_title_qualification_required": true,
+      "runtime_loaded": false,
+      "base_direction": "Narrate clearly in natural English. Use restrained conversational literary phrasing, stable narrator identity and natural sentence pauses. Preserve every word, name, number and punctuation meaning; do not add commentary or effects.",
+      "accepted_title_bindings": [
+        {
+          "title": "the-open-window",
+          "package": "sha256-8e5c83a835cf8bea0a34809f8640603a2158a3cfe1aa8f1ac71117259a665b26",
+          "evidence_locator": "internal/audiobook_lab/release_gate/open_window_successor_adoptions.json"
+        },
+        {
+          "title": "the-selfish-giant",
+          "package": "sha256-b00212b82996e194a7b3bef4f3fb8982304b71afcd32e5f0fa6e93e9341f3211",
+          "evidence_locator": "Resolve FINAL-RELEASE-RECEIPT.json through the title-approved durable evidence registry; private evidence is not distributed with this skill.",
+          "accepted_delivery_direction": "Older, grief-stricken and sincere Ryan; retain exact accepted recordings, not a universal new-title preset."
+        }
+      ]
+    },
+    {
+      "profile_id": "qwen-serena-literary-female-v1",
+      "speaker": "Serena",
+      "gender_presentation": "female",
+      "native_language": "Chinese",
+      "documented_character": "Warm, gentle female",
+      "status": "CONFIGURED_NOT_AUDITIONED",
+      "accepted_title": null,
+      "accepted_package": null,
+      "evidence_locator": null,
+      "new_title_qualification_required": true,
+      "runtime_loaded": false,
+      "english_quality": "UNVERIFIED: supported model language does not prove natural English accent or long-form quality",
+      "base_direction": "Narrate clearly in natural English. Use restrained conversational literary phrasing, stable narrator identity and natural sentence pauses. Preserve every word, name, number and punctuation meaning; do not add commentary or effects."
+    }
+  ],
+  "theme_directions": {
+    "literary": "Understate irony and dry humour; keep the revelation unannounced and the cadence natural.",
+    "suspense": "Use calm, measured tension and clear phrase boundaries. Do not whisper, exaggerate pitch or obscure words.",
+    "reflective": "Use gentle warmth and an unhurried but varied cadence. Avoid excessive silence or uniformly slow delivery.",
+    "adventure": "Use controlled energy with clear diction and gentle dialogue separation. Avoid cartoon voices or breathless speed.",
+    "nonfiction": "Use steady, precise explanation and subtle semantic emphasis. Make lists clear without robotic list-reading rhythm.",
+    "poetry": "Follow the exact syntax and meaning across lines and stanzas. Do not sing, invent a beat or force a rhyme cadence."
+  },
+  "generation_authorized_by_roster": false,
+  "voice_cloning": false
+}
