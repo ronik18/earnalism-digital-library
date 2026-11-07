@@ -1,0 +1,22 @@
+{
+  "schema": "earnalism.purchase-recovery-source-lineage.v1",
+  "scope": "SOURCE_LINEAGE_ONLY_NOT_PROVIDER_RECOVERY_OR_NEW_APPROVAL",
+  "merged_application_source": "0d3a5d58fe72907017692fd606969adcf4a0b3d1",
+  "normal_parent_source": "345c36bc4de8abe7bd19b9dd5acfa233d37a685f",
+  "closed_source": "25514eba4a3dea618f993d950ad8bd9293428bf7",
+  "paired_controller_source": "e547d0163fa8d1f59891724e2717fb1526fd4ed6",
+  "paired_controller_tree": "347a5952c2869ad9aa743a967aef2e5702c93586",
+  "normal_backend_tree": "d1da965525a8ff8a0f48244db25a781235c332f8",
+  "closed_backend_tree": "3e3147e17c1a298cd4d81449c43580097ce15fac",
+  "normal_runtime_sha256": "fb9d6bb3bd6a282ec554372afabcc8f6455fd6fa306590805c113f8c0d014ba7",
+  "closed_runtime_sha256": "30948d69bdd4ca5ae250579439a4589672b5e3a8fbf230b1f060e1d4c1379dda",
+  "previous_controller_source": "1012e3a3e56b169a29d492aadb54528bbebc4b94",
+  "previous_closed_source": "85021e5ef9cf8776b3d2bd8568d6d026ebc1901b",
+  "historical_contract_path": "internal/legal/history/pr656-source-only-0d3a5d58/purchase_guard_source.json",
+  "historical_protocol_path": "internal/legal/history/pr656-source-only-0d3a5d58/purchase_protocol_application_source.json",
+  "historical_contract_sha256": "2c1e397b35a1f736e84c5629a997a69e54044ac33e5742a1d6b972f642a6a3bb",
+  "owner_receipt_sha256": "119a47b7f412f736be7b64347840e78fd2d9c7dcb23f63111ab009eba499dcd5",
+  "native_provider_recovery_qualified": false,
+  "deployment_authorized_by_this_record": false,
+  "historical_operations_or_budgets_reset": false
+}
