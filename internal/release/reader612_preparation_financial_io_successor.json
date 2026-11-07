@@ -1,0 +1,21 @@
+{
+  "schema": "earnalism.reader612_preparation_successor.v1",
+  "historical_preparation": {
+    "path": "internal/release/history/reader612_native_preparation.019e7b.json",
+    "sha256": "4d1a4c59843ca36e9adc3887a7a3982e16740bb8363e2fca0194769884c51a11",
+    "controller_commit": "019e7b027567e1820cbe55a511b44affbac364c5"
+  },
+  "active_preparation": {
+    "path": "internal/release/reader612_native_preparation.json",
+    "sha256": "b73073789e67effd94b65f9bb9e6286b94be4745a7e9bf3a3fa96351c05bb936"
+  },
+  "only_controller_dependency_delta": {
+    "name": "india_release_provider_adapter.py",
+    "historical_sha256": "e9406a9c7161c3ea4117bde37029c2fabad938138a78d6f2797275d46fd18155",
+    "successor_sha256": "cf5295b9ae5c1b9d116b24ed5d4b9b24c4b1a6010fd73215320b79ed561c878c"
+  },
+  "all_other_preparation_fields_and_retained_identities_unchanged": true,
+  "native_validator_changed": false,
+  "execution_authorized": false,
+  "native_qualified": false
+}

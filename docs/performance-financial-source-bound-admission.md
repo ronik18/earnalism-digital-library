@@ -28,6 +28,12 @@ receipt verifier and dispatcher. It has no default issuer, signer, credential
 loader or provider implementation. Genuine verifier/dispatch/runtime provenance
 must be supplied and reviewed; this source does not manufacture it.
 
+The active Reader612 preparation inventory follows the new adapter bytes. Its
+historical `019e7b` manifest is preserved byte-for-byte under `internal/release/history/`;
+the successor descriptor records the single dependency delta. The native
+preparation/recovery validator is unchanged and rejects applying that historical
+manifest to the new adapter. Neither preparation grants execution authority.
+
 Historical main `019e7b027567e1820cbe55a511b44affbac364c5`, divergent payment
 `5e739e69d3086a14d83f802f7cc5b3da9b90ddf0`, native validators, action budgets,
 historical claims, consumed financial counters and recovery evidence are retained.

@@ -23,6 +23,27 @@ class Restore(unittest.TestCase):
   for name in b['controller_files']:
    wrong={**b,'controller_files':{**b['controller_files'],name:'0'*64}}
    with self.subTest(name=name),self.assertRaisesRegex(ValueError,'dependency mismatch'):m.qualify_controller_preparation(wrong)
+ def test_financial_io_successor_preserves_historical_preparation_and_native_gate(self):
+  root=Path(m.__file__).resolve().parents[1]
+  descriptor=json.loads((root/'internal/release/reader612_preparation_financial_io_successor.json').read_text())
+  historical_raw=(root/descriptor['historical_preparation']['path']).read_bytes()
+  active_raw=(root/descriptor['active_preparation']['path']).read_bytes()
+  self.assertEqual(hashlib.sha256(historical_raw).hexdigest(),'4d1a4c59843ca36e9adc3887a7a3982e16740bb8363e2fca0194769884c51a11')
+  self.assertEqual(descriptor['historical_preparation']['controller_commit'],'019e7b027567e1820cbe55a511b44affbac364c5')
+  self.assertEqual(hashlib.sha256(historical_raw).hexdigest(),descriptor['historical_preparation']['sha256'])
+  self.assertEqual(hashlib.sha256(active_raw).hexdigest(),descriptor['active_preparation']['sha256'])
+  historical=json.loads(historical_raw);active=json.loads(active_raw)
+  delta=descriptor['only_controller_dependency_delta']
+  self.assertEqual(delta['name'],'india_release_provider_adapter.py')
+  self.assertEqual(historical['controller_files'][delta['name']],delta['historical_sha256'])
+  expected=json.loads(historical_raw)
+  expected['controller_files'][delta['name']]=delta['successor_sha256']
+  self.assertEqual(active,expected)  # No other field/authority/retained identity changes.
+  with self.assertRaisesRegex(ValueError,'Controller dependency mismatch: india_release_provider_adapter.py'):
+   m.qualify_controller_preparation(historical)
+  result=m.qualify_controller_preparation(active)
+  self.assertFalse(result['execution_authorized']);self.assertFalse(result['native_qualified'])
+  self.assertFalse(descriptor['execution_authorized']);self.assertFalse(descriptor['native_qualified'])
  def test_unbound_and_mismatched_source_deny(self):
   for key,value in [('payload_sha256','UNBOUND'),('source_sha','UNBOUND'),('controller_sha256','0'*64),('support_sha256','f'*64),('baseline_image',None)]:
    old=self.b[key];self.b[key]=value
