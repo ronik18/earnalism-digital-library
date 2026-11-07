@@ -122,7 +122,7 @@
     "closed_serving_source": "25514eba4a3dea618f993d950ad8bd9293428bf7"
   },
   "source_pins": {
-    "controller": "cf5295b9ae5c1b9d116b24ed5d4b9b24c4b1a6010fd73215320b79ed561c878c",
+    "controller": "d83fd7b18ee80f735eae03f0cec9d9afcb5c698b26e5a800edf8ca25ef06385f",
     "claim_helper": "9cb34d8b966d3eb230bc5e4a2755dfe24ab8eacce49fe81fb72c3af5340b3864",
     "observer": "118c50cc8069aa7791211a4a5dc583814afb7e51849ec849feaba5f7af003f85",
     "client_factory": "c9d9cb2d2e02721501b31407aba94af0a57710a03a1c3882fafc5fb88ec9c6ba",
@@ -137,5 +137,10 @@
     "dispatch_source_sha256": null,
     "receipt_reference": null
   },
-  "template_note": "Implementation source pins only. Required actual provenance remains null; old evidence packages are retained unchanged. Populate only genuine protected evidence under separate authority."
+  "template_note": "Implementation source pins only. Required actual provenance remains null; old evidence packages are retained unchanged. Populate only genuine protected evidence under separate authority.",
+  "native_controller_reference": {
+    "path": "scripts/india_release_provider_adapter.py",
+    "sha256": "e9406a9c7161c3ea4117bde37029c2fabad938138a78d6f2797275d46fd18155",
+    "unchanged": true
+  }
 }

@@ -22,7 +22,7 @@
     "build_runtime_source_manifest.py": "e458ac14cb2bd316c6d8d21136a637a2d38590fea57dbd2e1ed3261775682478",
     "india_protected_runner.py": "6a2cd0e3f349e57bac3a84f64de4269f5769cc316928b3efcd3d9faa9f504c00",
     "india_release_observer.py": "d0ba14e1a0e2c4ff7be2861c750e33142c821943d6116259b724ac15cfca7f0d",
-    "india_release_provider_adapter.py": "cf5295b9ae5c1b9d116b24ed5d4b9b24c4b1a6010fd73215320b79ed561c878c",
+    "india_release_provider_adapter.py": "e9406a9c7161c3ea4117bde37029c2fabad938138a78d6f2797275d46fd18155",
     "purchase_guard_source.py": "00b55e3c665376e3b8a7c5c987bf061f2cafa2091df8c53eaf3ae9fac9defcd4",
     "qualify_stable_rollback_profile.py": "de065e5e6d2c65965e00a00996084ff045576c0248921f8c7fb569e83b3e3fea",
     "reader612_native_observer.py": "e83bea335b404861735a2d959c95eb4e7716a04919e29df7ffd9a89507d4e9c2",

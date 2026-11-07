@@ -15,7 +15,9 @@ from scripts import first_guard_financial as claim
 from scripts import first_guard_financial_factory as factory
 from scripts import first_guard_financial_host as host
 from scripts import first_guard_financial_transport as transport
-from scripts import india_release_provider_adapter as controller
+from scripts import first_guard_financial_controller as controller
+from scripts import india_release_provider_adapter as native_controller
+from scripts import reader612_native_restore as native_restore
 
 
 class SyntheticContext:
@@ -41,6 +43,24 @@ class SyntheticContext:
 
 
 class ControllerBoundaryTests(unittest.IsolatedAsyncioTestCase):
+    async def test_financial_extension_preserves_native_controller_and_preparation_bytes(self):
+        self.assertTrue(issubclass(controller.FinancialReleaseController, native_controller.ReleaseController))
+        self.assertIs(controller.FinancialReleaseController.perform, native_controller.ReleaseController.perform)
+        self.assertEqual(hashlib.sha256(Path(native_controller.__file__).read_bytes()).hexdigest(),
+                         'e9406a9c7161c3ea4117bde37029c2fabad938138a78d6f2797275d46fd18155')
+        self.assertEqual(hashlib.sha256(Path(native_restore.__file__).read_bytes()).hexdigest(),
+                         '4bb9c0235c9f3ffafeeb21d4071cb3b7c4e39f20b068b12223b23ccf3e11056b')
+        root = Path(native_controller.__file__).resolve().parents[1]
+        active = (root/'internal/release/reader612_native_preparation.json').read_bytes()
+        history = root/'internal/release/history'
+        self.assertEqual(hashlib.sha256(active).hexdigest(),
+                         '4d1a4c59843ca36e9adc3887a7a3982e16740bb8363e2fca0194769884c51a11')
+        self.assertEqual(active, (history/'reader612_native_preparation.019e7b.json').read_bytes())
+        rejected = json.loads((history/'reader612_native_preparation.3093f9f2-unmerged-proposal.json').read_text())
+        with self.assertRaisesRegex(ValueError, 'Controller dependency mismatch: india_release_provider_adapter.py'):
+            native_restore.qualify_controller_preparation(rejected)
+        self.assertFalse(native_restore.qualify_controller_preparation(json.loads(active))['execution_authorized'])
+
     async def test_claim_helper_rejects_budget_only_without_any_claim_file(self):
         runtime = {'schema': 'earnalism.source_bound_financial_runtime_contract.v1',
             'status': 'PREPARED_NO_EXECUTION_AUTHORIZATION', 'execution_authorized': False}
@@ -54,7 +74,7 @@ class ControllerBoundaryTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_budget_only_cannot_read_sources_or_dispatch(self):
         adapter = types.SimpleNamespace(owner_authorized=True)
-        obj = controller.ReleaseController(adapter)
+        obj = controller.FinancialReleaseController(adapter)
         readers, constructor = Mock(), Mock()
         with patch.object(controller.os, 'open', side_effect=AssertionError('no IO')) as opened:
             with self.assertRaisesRegex(ValueError, 'not an execution permit'):

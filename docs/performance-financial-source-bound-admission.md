@@ -4,7 +4,7 @@ This change provides the missing implementation path shared by admission,
 Mongo custody, paired Reader/Listener acceptance, controller and recovery work.
 It does not qualify a serving candidate or authorize a capture or release.
 
-`ReleaseController.collect_financial` requires separate exact execution approval,
+`FinancialReleaseController.collect_financial` requires separate exact execution approval,
 current runtime facts, the reviewed source tuple, and authentic existing-host
 receipt verification before the unchanged original claim path can be entered.
 The supplied runtime preparation remains disabled and unbound.
@@ -28,11 +28,13 @@ receipt verifier and dispatcher. It has no default issuer, signer, credential
 loader or provider implementation. Genuine verifier/dispatch/runtime provenance
 must be supplied and reviewed; this source does not manufacture it.
 
-The active Reader612 preparation inventory follows the new adapter bytes. Its
-historical `019e7b` manifest is preserved byte-for-byte under `internal/release/history/`;
-the successor descriptor records the single dependency delta. The native
-preparation/recovery validator is unchanged and rejects applying that historical
-manifest to the new adapter. Neither preparation grants execution authority.
+The financial controller is an additive subclass of the existing native controller.
+It is selected explicitly from `scripts.first_guard_financial_controller`; the
+frozen native `ReleaseController` is not patched or replaced.
+The original adapter, Reader612 preparation and native recovery validators remain
+byte-for-byte unchanged. The rejected in-place adapter/preparation proposal is
+retained under `internal/release/history/` and in its original commits; it is not
+an active recovery binding. Native preparation rejects its mismatched dependency.
 
 Historical main `019e7b027567e1820cbe55a511b44affbac364c5`, divergent payment
 `5e739e69d3086a14d83f802f7cc5b3da9b90ddf0`, native validators, action budgets,
