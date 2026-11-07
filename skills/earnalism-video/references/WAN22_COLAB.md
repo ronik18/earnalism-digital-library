@@ -105,3 +105,7 @@ After a clip is accepted for the edit, derive a silent H.264/yuv420p/BT709 worki
 - https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers
 - https://github.com/huggingface/diffusers/blob/v0.36.0/src/diffusers/pipelines/wan/pipeline_wan_i2v.py
 - https://github.com/huggingface/diffusers/issues/13258
+
+## Prospective native-landscape profile
+
+`l4-landscape-v1` swaps the balanced profile to896×512 while retaining121frames,24steps, one sweets start and the original wall/CU limits. It binds a separate wide family illustration and fresh run with prior evidence. The local control-plane tests pass, including rejection of arbitrary output dimensions. This profile is prepared, disabled and not GPU- or quality-qualified; equal pixel count is not a runtime guarantee. Require fresh scoped compute authority before allocation and inspect the actual generated result before replacing a completed clip.

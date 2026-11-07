@@ -9,7 +9,8 @@ DEPS = ['diffusers==0.36.0','transformers==4.51.3','accelerate==1.6.0',
         'ftfy==6.3.1','imageio==2.37.0','imageio-ffmpeg==0.6.0','Pillow==11.2.1']
 SCHEMA = 'earnalism.wan22-pilot.v1'
 PROFILES = {'standard-v1': {'width':704,'height':1280,'frames':121,'fps':24,'steps':50,'guidance':5.0},
-            'l4-balanced-v2': {'width':512,'height':896,'frames':121,'fps':24,'steps':24,'guidance':5.0}}
+            'l4-balanced-v2': {'width':512,'height':896,'frames':121,'fps':24,'steps':24,'guidance':5.0},
+            'l4-landscape-v1': {'width':896,'height':512,'frames':121,'fps':24,'steps':24,'guidance':5.0}}
 
 
 def sha(p):
@@ -38,10 +39,10 @@ def validate(job):
     profile=job.get('profile','standard-v1')
     if profile not in PROFILES:raise ValueError('Unknown execution profile')
     expected=PROFILES[profile]
-    if profile=='l4-balanced-v2' and (job.get('inference_steps')!=24 or job.get('guidance_scale')!=5.0 or not job.get('prior_attempt_evidence')):raise ValueError('Optimized retry requires exact settings and prior attempt provenance')
+    if profile!='standard-v1' and (job.get('inference_steps')!=24 or job.get('guidance_scale')!=5.0 or not job.get('prior_attempt_evidence')):raise ValueError('Optimized retry requires exact settings and prior attempt provenance')
     scenes=job.get('scenes',[])
     if len(scenes) not in (1,2) or len({s['id'] for s in scenes})!=len(scenes):raise ValueError('One or two unique pilot scenes required')
-    if len(scenes)==1 and (profile!='l4-balanced-v2' or scenes[0]['id']!='sweets'):raise ValueError('Only an explicitly bound sweets-only recovery is supported')
+    if len(scenes)==1 and (profile not in ('l4-balanced-v2','l4-landscape-v1') or scenes[0]['id']!='sweets'):raise ValueError('Only an explicitly bound sweets-only recovery is supported')
     seconds=0
     for s in scenes:
         if not re.fullmatch('[a-z0-9-]+',s['id']) or Path(s['image']).name!=s['image']:raise ValueError('Unsafe scene name')

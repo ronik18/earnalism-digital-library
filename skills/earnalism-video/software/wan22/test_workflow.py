@@ -44,6 +44,14 @@ class Workflow(unittest.TestCase):
   self.assertEqual([s['id'] for s in job['scenes']],['sweets']);self.assertEqual(job['prior_attempt_evidence'],prior)
   dest=self.p/'retry-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',dest,w.sha(nb.parent/'wan22-inputs.zip'))
   self.assertFalse((dest/'inputs/rama-portrait.png').exists());self.assertIn('SCENE_NOT_IN_THIS_JOB',nb.read_text())
+ def test_landscape_profile_preserves_budget_and_rejects_arbitrary_shape(self):
+  (self.p/'art/living-landscape-v10.png').write_bytes(b'test-only-wide-art')
+  nb=build(self.p/'wide',self.p/'art','l4-landscape-v1','diwali-wan22-wide-v10',['sweets'],{'prior_completed':'retained'})
+  job=json.loads((nb.parent/'job.json').read_text());scene=job['scenes'][0]
+  self.assertEqual((scene['width'],scene['height'],job['max_attempts']),(896,512,1))
+  self.assertEqual(scene['image'],'living-landscape-v10.png');self.assertEqual(job['wall_seconds'],1800)
+  scene['width']=1920
+  with self.assertRaises(ValueError):w.validate(job)
  def test_metered_authority_requires_bounded_rate_and_original_start(self):
   with self.assertRaises(RuntimeError):w.begin(self.root,False,2)
   with self.assertRaises(RuntimeError):w.begin(self.root,False,12,5,time.time()-5)
