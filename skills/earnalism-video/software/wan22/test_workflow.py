@@ -29,6 +29,22 @@ class Workflow(unittest.TestCase):
   for spec in [{'other':{'image':'x','prompt':'some sufficiently long prompt'}},{'homecoming':{'image':'../secret','prompt':'some sufficiently long prompt'}}]:
    with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art','l4-landscape-v1','new-run',None,{'prior':'retained'},spec)
   with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art',scene_overrides={'homecoming':{'image':'x','prompt':'some sufficiently long prompt'}})
+ def test_mixed_reviewed_framing_keeps_one_budget_and_bound_sources(self):
+  art=self.p/'mixed-art';art.mkdir()
+  for n in ['welcome.png','family.png']:(art/n).write_bytes(('source-'+n).encode())
+  spec={'homecoming':{'image':'welcome.png','prompt':'Held namaste and one small respectful bow'},'sweets':{'image':'family.png','prompt':'Stable supported platter with one appreciative nod','frame_profile':'l4-balanced-v2'}}
+  target=build(self.p/'mixed',art,'l4-landscape-v1','diwali-v13-mixed',None,{'prior':'preserved'},spec)
+  job=json.loads((target.parent/'job.json').read_text());self.assertEqual([(x['width'],x['height']) for x in job['scenes']],[(896,512),(512,896)])
+  self.assertEqual((job['max_attempts'],job['wall_seconds'],job['max_output_seconds']),(2,1800,11))
+  runtime=self.p/'mixed-runtime';w.unpack_inputs(target.parent/'wan22-inputs.zip',runtime,w.sha(target.parent/'wan22-inputs.zip'));w.open_job(runtime)
+  job['scenes'][1]['height']=1920
+  with self.assertRaises(ValueError):w.validate(job)
+ def test_mixed_framing_rejects_inference_drift_and_unknown_profiles(self):
+  job=json.loads(self.job.read_text());job['scenes'][1]['frame_profile']='l4-balanced-v2'
+  with self.assertRaises(ValueError):w.validate(job)
+  job['scenes'][1]['frame_profile']='invented'
+  with self.assertRaises(ValueError):w.validate(job)
+  with self.assertRaises(ValueError):build(self.p/'bad-list',self.p/'art',scene_overrides=[])
  def session(self):return w.begin(self.root,True,0)
  def test_run_all_inert_without_colab_or_model(self):
   ns={}

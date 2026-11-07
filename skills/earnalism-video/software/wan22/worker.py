@@ -47,7 +47,12 @@ def validate(job):
     for s in scenes:
         if not re.fullmatch('[a-z0-9-]+',s['id']) or Path(s['image']).name!=s['image']:raise ValueError('Unsafe scene name')
         if not re.fullmatch('[a-f0-9]{64}',s['image_sha256']):raise ValueError('Missing image hash')
-        if any(s[k]!=expected[k] for k in ['width','height','frames','fps']):raise ValueError('Unreviewed pilot shape')
+        scene_profile=s.get('frame_profile',profile)
+        if scene_profile not in PROFILES:raise ValueError('Unknown scene frame profile')
+        shape=PROFILES[scene_profile]
+        if any(shape[k]!=expected[k] for k in ['steps','guidance','frames','fps']):raise ValueError('Scene profile changes inference contract')
+        if scene_profile!=profile and (not job.get('prior_attempt_evidence') or profile=='standard-v1'):raise ValueError('Mixed framing needs bound optimized provenance')
+        if any(s[k]!=shape[k] for k in ['width','height','frames','fps']):raise ValueError('Unreviewed pilot shape')
         if not isinstance(s['prompt'],str) or not 10<len(s['prompt'])<3000:raise ValueError('Invalid prompt')
         seconds+=s['frames']/s['fps']
     if not seconds<=job.get('max_output_seconds',0)<=11:raise ValueError('Pilot seconds exceed bounded allowance')

@@ -122,3 +122,8 @@ Fit caption backing to the actual cue within the existing maximum width and safe
 
 
 Validate the meaning of a generated gesture as well as its anatomy. In the v12 Diwali trial, a source-bound request for separate palms to meet in namaste instead produced lowering/raising hands and a clasp. The clip passed decoding and retained recognisable figures, yet was rejected for the final edit because the intended greeting did not occur. Do not relabel a different movement as the requested action, cut around its missing completion or promote the model/prompt as qualified. Preserve the raw result and the prior clear illustration. Starting from an already correct held pose and requesting only an acknowledgement is a possible future experiment, not a proven fix or authority to reroll.
+
+
+## Readable portrait comparisons
+
+When two small panels and a blurred duplicate backdrop weaken pictorial storytelling, recompose the comparison with larger stacked pictures and concise local labels. Preserve complete focal subjects, the relationship being compared, caption safe space and exact branding; check real delivery-size frames for covered faces, hands and domes. Do not blindly crop every wide illustration to full-height portrait: a battle, greeting or evidence relationship can disappear. Use native portrait action art where needed, retain useful context in comparison panels, and qualify transitions in the final movie. A frame review establishes composition, not audience retention.

@@ -119,7 +119,7 @@ When other account sessions are active, record account aggregate usage separatel
 
 ## Bind revised action sources before a new pilot
 
-For a newly authorized refinement, pass `--scene-spec scene-spec.json` with known scene IDs mapped to exactly `image` (a local basename) and `prompt`. A distinct `--run-id` and retained `--prior-evidence` are required. The builder hashes the actual new artwork, puts only bound inputs into the ZIP and embeds that exact job into the disabled notebook. This prevents a revised greeting illustration from silently inheriting an older head-nod prompt. Runtime/attempt caps, reviewed profiles, model revision and inert defaults remain unchanged. Tests cover new source/prompt binding, archive import, disabled controls and unsafe/relabelled inputs. A prepared prompt does not prove the action was generated successfully.
+For a newly authorized refinement, pass `--scene-spec scene-spec.json` with known scene IDs mapped to required `image` (a local basename) and `prompt`, with optional `frame_profile`. A distinct `--run-id` and retained `--prior-evidence` are required. The builder hashes the actual new artwork, puts only bound inputs into the ZIP and embeds that exact job into the disabled notebook. This prevents a revised greeting illustration from silently inheriting an older head-nod prompt. Runtime/attempt caps, reviewed profiles, model revision and inert defaults remain unchanged. Tests cover new source/prompt binding, archive import, disabled controls and unsafe/relabelled inputs. A prepared prompt does not prove the action was generated successfully.
 
 
 ## V12 action-specific result and honest selection
@@ -127,3 +127,12 @@ For a newly authorized refinement, pass `--scene-spec scene-spec.json` with know
 The fresh two-start Diwali pilot completed two896×512/121-frame24fps clips at24steps: homecoming484.71seconds and family response499.95seconds. Both archives passed source/job/model binding and full decode. The original allocation deadline remained fixed; shutdown was observed before a local receipt taken24.79minutes after allocation request. Colab showed0 active sessions and0CU/hour; displayed balance363.06→362.42CU is an account observation, not a provider invoice. Saved notebook controls were restored toFalse/zero and read back.
 
 The generated homecoming failed the intended namaste action and was rejected despite technical completion. Its replacement is explicitly a quieter illustration. The family source starts with the girl already supporting the flat tray; the returned response retained visible supporting hands and a stable platter in raw review. It depicts a response after support, not a handover. The edit uses151normalized30fps frames and a35-frame hold on the actual final frame, avoiding an unrelated illustrated ending. The portrait crop must keep complete hands clear of captions and exclude cut-off background faces; its effective source detail is lower than the native-wide clip. These are scene-specific observations, not a universal motion-quality qualification or authority to repeat either attempt.
+
+
+## Aspect-specific sources within one bounded pilot
+
+Use a native portrait illustration for portrait human action when a wide crop loses faces, supporting hands or effective detail. A scene may select a known `frame_profile` with the same steps, guidance, frame count and fps as the job profile; only reviewed dimensions may differ. The mixed job still has one original deadline, one attempt journal and the same total start/output/compute cap. Unknown profiles, arbitrary shapes and inference-contract changes fail validation. This is framing support, not evidence that either generated action is acceptable.
+
+For a held namaste, describe joined palms as an invariant and animate one small head bow; avoid asking the model to construct or change a difficult hand gesture. For an already supported tray, animate a small response without a handover. Reject incorrect contact or gestures after real playback. Preserve previously accepted landscape footage when only a portrait replacement is qualified.
+
+Wait for the complete Files-sidebar transfer before verifying the ZIP. A visible filename can precede complete bytes; a hash mismatch must stop setup/inference until the original bound ZIP matches. Keep the original allocation deadline through transfer delays.
