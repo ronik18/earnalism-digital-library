@@ -29,6 +29,21 @@ class Workflow(unittest.TestCase):
   for spec in [{'other':{'image':'x','prompt':'some sufficiently long prompt'}},{'homecoming':{'image':'../secret','prompt':'some sufficiently long prompt'}}]:
    with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art','l4-landscape-v1','new-run',None,{'prior':'retained'},spec)
   with self.assertRaises(ValueError):build(self.p/'bad',self.p/'art',scene_overrides={'homecoming':{'image':'x','prompt':'some sufficiently long prompt'}})
+ def test_scene_expression_controls_are_bound_without_replacing_baseline(self):
+  spec={'homecoming':{'image':'rama-portrait.png','prompt':'One small bow and a stable child-facing return','negative_prompt':'winking, prolonged asymmetric blink, camera-facing gaze'}}
+  nb=build(self.p/'expression',self.p/'art','landscape-detail-pilot-v1','diwali-v16-test',['homecoming'],{'prior_v15':'preserved'},spec)
+  runtime=self.p/'expression-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',runtime,w.sha(nb.parent/'wan22-inputs.zip'))
+  scene=w.open_job(runtime)['scenes'][0]
+  self.assertIn('fused hands',w.scene_negative_prompt(scene));self.assertIn('winking',w.scene_negative_prompt(scene))
+  self.assertEqual(scene['negative_prompt'],spec['homecoming']['negative_prompt'])
+  job=json.loads((nb.parent/'job.json').read_text());job['scenes'][0]['negative_prompt']=[]
+  with self.assertRaises(ValueError):w.validate(job)
+  job['scenes'][0]['negative_prompt']='x'*1001
+  with self.assertRaises(ValueError):w.validate(job)
+ def test_unenforced_end_image_cannot_masquerade_as_5b_conditioning(self):
+  for key in ['last_image','end_image']:
+   job=json.loads(self.job.read_text());job['scenes'][0][key]='rama-portrait.png'
+   with self.assertRaisesRegex(ValueError,'does not enforce'):w.validate(job)
  def test_mixed_reviewed_framing_keeps_one_budget_and_bound_sources(self):
   art=self.p/'mixed-art';art.mkdir()
   for n in ['welcome.png','family.png']:(art/n).write_bytes(('source-'+n).encode())

@@ -19,8 +19,8 @@ def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior
     if scene_overrides and (not run_id or not prior_evidence):
         raise ValueError('Scene overrides require a distinct run and prior provenance')
     for value in scene_overrides.values():
-        if not isinstance(value,dict) or not {'image','prompt'}<=set(value) or set(value)-{'image','prompt','frame_profile'}:
-            raise ValueError('Scene override needs image/prompt and optional reviewed frame_profile')
+        if not isinstance(value,dict) or not {'image','prompt'}<=set(value) or set(value)-{'image','prompt','frame_profile','negative_prompt'}:
+            raise ValueError('Scene override needs image/prompt and optional reviewed frame_profile/negative_prompt')
         if not isinstance(value['image'],str) or Path(value['image']).name!=value['image']:
             raise ValueError('Scene image must be a local basename')
     scenes=[]
@@ -33,7 +33,7 @@ def build(destination,art,profile="standard-v1",run_id=None,scene_ids=None,prior
         if frame_profile not in PROFILES:raise ValueError('Unknown scene frame profile')
         shape=PROFILES[frame_profile]
         if any(shape[k]!=settings[k] for k in ['steps','guidance','frames','fps']):raise ValueError('Scene profile changes inference contract')
-        scenes.append({'id':sid,'image':image,'image_sha256':sha(art/image),**{k:shape[k] for k in ['width','height','frames','fps']},**({'frame_profile':frame_profile} if frame_profile!=profile else {}),'seed':701+i,'prompt':prompt})
+        scenes.append({'id':sid,'image':image,'image_sha256':sha(art/image),**{k:shape[k] for k in ['width','height','frames','fps']},**({'frame_profile':frame_profile} if frame_profile!=profile else {}),**({'negative_prompt':scene_overrides[sid]['negative_prompt']} if 'negative_prompt' in scene_overrides.get(sid,{}) else {}),'seed':701+i,'prompt':prompt})
     job={'schema':SCHEMA,'run_id':'diwali-wan22-pilot-v1','model':MODEL,'model_revision':REVISION,
          'max_output_seconds':11,'max_attempts':2,'wall_seconds':1800,'publication_approved':False,'scenes':scenes,
          'purpose':'First Wan motion pilot, ~5.04s per clip. No narrator, music, caption or published media changes.',

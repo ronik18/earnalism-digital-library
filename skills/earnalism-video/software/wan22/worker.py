@@ -58,6 +58,8 @@ def validate(job):
         if scene_profile!=profile and (not job.get('prior_attempt_evidence') or profile=='standard-v1'):raise ValueError('Mixed framing needs bound optimized provenance')
         if any(s[k]!=shape[k] for k in ['width','height','frames','fps']):raise ValueError('Unreviewed pilot shape')
         if not isinstance(s['prompt'],str) or not 10<len(s['prompt'])<3000:raise ValueError('Invalid prompt')
+        if 'last_image' in s or 'end_image' in s:raise ValueError('Pinned 5B expand-timesteps path does not enforce an end image')
+        if 'negative_prompt' in s and (not isinstance(s['negative_prompt'],str) or not 1<=len(s['negative_prompt'])<=1000):raise ValueError('Invalid scene negative prompt')
         seconds+=s['frames']/s['fps']
     if not seconds<=job.get('max_output_seconds',0)<=11:raise ValueError('Pilot seconds exceed bounded allowance')
     if job.get('max_attempts')!=len(scenes) or job.get('wall_seconds')!=1800:raise ValueError('Unreviewed attempt/runtime cap')
@@ -191,6 +193,14 @@ def step_budget_guard(root,total_steps=50,decode_seconds=None):
     return callback
 
 
+def scene_negative_prompt(scene):
+    """Retain baseline exclusions and append an optional source-bound scene control."""
+    base='text, logo, watermark, extra fingers, fused hands, duplicate people, face morphing, abrupt cuts, camera shake'
+    extra=scene.get('negative_prompt')
+    if extra is not None and (not isinstance(extra,str) or not 1<=len(extra)<=1000):raise ValueError('Invalid scene negative prompt')
+    return base if extra is None else base+', '+extra
+
+
 def infer(root,scene_id):
     os.environ['USE_TF']='0';os.environ['USE_FLAX']='0'
     import torch
@@ -202,7 +212,7 @@ def infer(root,scene_id):
     pipe.vae.enable_tiling();pipe.enable_model_cpu_offload()
     settings=PROFILES[job.get('profile','standard-v1')];steps=settings['steps']
     frames=pipe(image=load_image(str(root/'inputs'/s['image'])),prompt=s['prompt'],
-        negative_prompt='text, logo, watermark, extra fingers, fused hands, duplicate people, face morphing, abrupt cuts, camera shake',
+        negative_prompt=scene_negative_prompt(s),
         height=s['height'],width=s['width'],num_frames=s['frames'],num_inference_steps=steps,guidance_scale=settings['guidance'],
         generator=torch.Generator(device='cpu').manual_seed(s['seed']),callback_on_step_end=step_budget_guard(root,steps)).frames[0]
     export_to_video(frames,str(root/'outputs'/f'{scene_id}.mp4'),fps=24)
