@@ -468,5 +468,65 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertIn('backend/tests/test_sredni_initial_review_mongo_integration.py', source)
 
 
+class RetainedBindingBatchTests(unittest.TestCase):
+    """Exercise the actual workflow batch block with local immutable Git objects."""
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.repo=Path(self.tmp.name)/'repo';self.repo.mkdir()
+        self.env={**os.environ,'GIT_NO_LAZY_FETCH':'1','GIT_NO_REPLACE_OBJECTS':'1'}
+        self.git('init','-q')
+        self.git('config','user.name','Binding fixture')
+        self.git('config','user.email','binding@example.invalid')
+        (self.repo/'dir').mkdir()
+        (self.repo/'dir/source.txt').write_text('immutable fixture')
+        (self.repo/'dir/source bytes.txt').write_text('whitespace fixture')
+        self.git('add','.')
+        self.git('commit','-qm','local binding fixture')
+        self.commit=self.git('rev-parse','HEAD').strip()
+        workflow=(ROOT/'.github/workflows/regression.yml').read_text()
+        self.block=textwrap.dedent(workflow.split(
+            '          # BEGIN retained commit/blob batch checks\n',1)[1].split(
+            '          # END retained commit/blob batch checks',1)[0])
+
+    def git(self,*args):
+        return subprocess.check_output([GIT,'-c','core.hooksPath=/dev/null',*args],
+            cwd=self.repo,env=self.env,text=True,stderr=subprocess.PIPE)
+
+    def batch(self,bindings):
+        return subprocess.run(['bash','-c','set -euo pipefail\nbindings=("$@")\n'+self.block,
+            'retained-binding-fixture',*bindings],cwd=self.repo,env=self.env,
+            text=True,capture_output=True,timeout=10)
+
+    def test_exact_committed_blob_passes(self):
+        result=self.batch([self.commit+':dir/source.txt'])
+        self.assertEqual(result.returncode,0,result.stderr)
+
+    def test_duplicate_bindings_preserve_required_row_count(self):
+        result=self.batch([self.commit+':dir/source.txt']*3)
+        self.assertEqual(result.returncode,0,result.stderr)
+
+    def test_whitespace_in_bound_path_is_not_split(self):
+        result=self.batch([self.commit+':dir/source bytes.txt'])
+        self.assertEqual(result.returncode,0,result.stderr)
+
+    def test_missing_commit_is_rejected(self):
+        self.assertNotEqual(self.batch(['f'*40+':dir/source.txt']).returncode,0)
+
+    def test_missing_blob_is_rejected(self):
+        self.assertNotEqual(self.batch([self.commit+':dir/missing.txt']).returncode,0)
+
+    def test_tree_in_blob_role_is_rejected(self):
+        self.assertNotEqual(self.batch([self.commit+':dir']).returncode,0)
+
+    def test_blob_in_commit_role_is_rejected(self):
+        blob=self.git('rev-parse',self.commit+':dir/source.txt').strip()
+        self.assertNotEqual(self.batch([blob+':dir/source.txt']).returncode,0)
+
+    def test_later_invalid_binding_cannot_be_hidden_by_first_success(self):
+        self.assertNotEqual(self.batch([self.commit+':dir/source.txt',
+            self.commit+':dir/missing.txt']).returncode,0)
+
+
 if __name__ == '__main__':
     unittest.main()

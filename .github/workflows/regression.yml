@@ -275,6 +275,7 @@ jobs:
               bindings+=("$reader_source_pin:$source_path")
             done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$reader_source_pin" -- backend .gitignore .gitattributes internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json internal/legal/reader612_recovery_source.json)
           fi
+          printf 'RETAINED_HYDRATION_DISCOVERY_START bindings=%s\n' "${#bindings[@]}"
           missing_blobs=()
           for binding in "${bindings[@]}"; do
             object_id="$(git rev-parse --verify "$binding")"
@@ -283,16 +284,26 @@ jobs:
               missing_blobs+=("$object_id")
             fi
           done
+          printf 'RETAINED_HYDRATION_DISCOVERY_COMPLETE missing_entries=%s\n' "${#missing_blobs[@]}"
           if (( ${#missing_blobs[@]} )); then
             unique=()
             while IFS= read -r object_id; do unique+=("$object_id"); done < <(printf '%s\n' "${missing_blobs[@]}" | sort -u)
             missing_blobs=("${unique[@]}")
+            printf 'RETAINED_HYDRATION_BODY_FETCH_START objects=%s\n' "${#missing_blobs[@]}"
             git -c gc.auto=0 fetch --no-tags --depth=1 origin "${missing_blobs[@]}"
+            echo 'RETAINED_HYDRATION_BODY_FETCH_COMPLETE'
           fi
+          # BEGIN retained commit/blob batch checks
+          # Keep every exact binding and its order; missing or wrong types fail closed.
+          type_checks=()
           for binding in "${bindings[@]}"; do
-            git -c remote.origin.promisor=false cat-file -e "${binding%%:*}^{commit}"
-            [[ "$(git -c remote.origin.promisor=false cat-file -t "$binding")" == blob ]]
+            type_checks+=("${binding%%:*}^{commit}" "$binding")
           done
+          printf '%s\n' "${type_checks[@]}" |
+            git -c remote.origin.promisor=false cat-file --buffer --batch-check='%(objecttype)' |
+            python3 -c 'import sys; rows=sys.stdin.read().splitlines(); count=int(sys.argv[1]); expected=[kind for _ in range(count) for kind in ("commit", "blob")]; sys.exit(0 if rows == expected else "Exact retained commit/blob types missing or mismatched")' "${#bindings[@]}"
+          # END retained commit/blob batch checks
+          echo 'RETAINED_HYDRATION_TYPE_CHECK_COMPLETE'
 
       - name: Fetch exact retained containment source
         if: hashFiles('scripts/build_india_guarded_rollback.py') != ''
