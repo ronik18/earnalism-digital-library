@@ -65,6 +65,14 @@ The Diwali v6 frame review supports these reusable implementation choices, subje
 
 Keep changes isolated from the accepted audio and earlier review manifests. Record which priorities remain blocked by provider quota. One generated clip plus these local techniques does not establish sustained natural character action throughout the film.
 
+## Make evidence visible
+
+For a research finding, show the relationship the source establishes, not merely an attractive prop. A book or archive background supplies atmosphere; a short source/date anchor followed by the supported conclusion and a distinct evidential limit supplies the explanation. Reveal each part with the corresponding spoken clause. Do not fabricate a manuscript excerpt, archival image, quotation or exact date to decorate the scene. When the verified basis is secondary scholarship, retain that source status in the review/source metadata.
+
+Keep the diagram concise and let captions carry the full sentence. A date badge plus two short outcomes is an option, not a mandatory card template for every topic. Prefer a picture, map, mechanism or real source detail when it conveys the relationship more directly. Inspect concurrent diagram text, captions and branding at phone size. Stack related elements in portrait and use the available height; do not put a landscape diagram inside large blurred filler bands. Reassess the whole film so explanatory clarity does not become repetitive text cards.
+
+For a bounded visual revision, render the changed frame interval and reuse verified unchanged scenes/audio when the pipeline supports it. Verify exact splice frame counts, boundary continuity, full ending, unchanged soundtrack and resulting encoded files. A successful segment render does not certify the assembled deliverable.
+
 ## Review the visible result
 
 Use the existing storyboard and audiovisual review, without another permission gate. Inspect the opening, early payoff, representative story/mechanism beats, transitions and ending in both formats, including real-size mobile readbacks and playback. A contact sheet helps expose repeated layouts and sparse scenes; it cannot certify motion, pacing or full viewing.
