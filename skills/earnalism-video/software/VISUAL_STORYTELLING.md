@@ -92,3 +92,9 @@ Compare with relevant visual references for atmosphere, hierarchy and storytelli
 ## Moving material boundaries
 
 When a subject shrinks, transforms or is revealed, inspect its attached reflections, texture and highlights at the start, mid-motion and end. Clip material details to the same changing boundary where appropriate; an unclipped reflection can remain on the dry/background region even when the main shape itself is correct. Retain a focused late-frame regression and preserve accepted audio for this graphical repair.
+
+## Metered motion access and allowance
+
+Model visibility and usable generation allowance are different. When the owner confirms changed access, an explicitly authorized bounded submission may test that change; record its actual result. A terminal quota rejection still stops further submissions. If the reported access conflicts with that result, inspect the connected account's creator quota read-only when available, without clicking Generate again, purchasing or upgrading. State the observed discrepancy; do not infer that a visible model, uploaded asset, null credit field or general subscription status proves usable video quota.
+
+Maintain the existing allowance across editions: record requested seconds, completed jobs/duration and failed submissions separately. Reusing a completed clip does not consume a new generation or reset the cap. Keep motion-blocked status explicit; new still artwork, local effects and successful uploads do not fulfill a natural-character-animation request. Preserve the last verified candidate while provider access is unresolved.
