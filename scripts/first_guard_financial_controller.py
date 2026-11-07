@@ -282,4 +282,3 @@ class FinancialReleaseController(NativeReleaseController):
             # Unresolved originals and cleanup retain ownership and the lock.
             # A permanently claimed seventh event is never cleared here.
             context.close_when_settled()
-
