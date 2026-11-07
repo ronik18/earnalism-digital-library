@@ -1,0 +1,14 @@
+import pathlib,sys,json,shutil
+BASE=pathlib.Path(__file__).resolve().parent.parent;sys.path.insert(0,str(BASE));import studio
+p=BASE/'outputs/brand-combined-v1'
+studio.run(['ffmpeg','-v','error','-n','-i',p/'earnalism-brand-sting.mp4','-c:v','copy','-af','loudnorm=I=-20:TP=-2:LRA=5','-c:a','aac','-b:a','192k','-ar','48000','-t','3','-movflags','+faststart',p/'master.mp4'])
+studio.run(['ffmpeg','-v','error','-n','-i',p/'master.mp4','-c:v','libvpx-vp9','-b:v','0','-crf','24','-deadline','realtime','-cpu-used','6','-row-mt','1','-c:a','libopus','-b:a','128k',p/'preview.webm'])
+r=studio.verify_media(p/'master.mp4');assert abs(r['seconds']-3)<.025
+probe=json.loads(studio.run(['ffprobe','-v','error','-show_streams','-of','json',p/'master.mp4']));v=next(s for s in probe['streams'] if s['codec_type']=='video');assert v['r_frame_rate']=='60/1' and int(v['nb_frames'])==180
+r.update({'frames':180,'fps':60,'page_reveal_complete_seconds':.88,'paired_hop_start_seconds':1.18,'first_landing_seconds':1.88,'settled_seconds':2.20,'production_logo_sha256':studio.sha(BASE/'public/brand-sting/production-lockup.png'),'protected_notebook_sha256':studio.verify_original(),'private':True})
+assert r['page_reveal_complete_seconds']<r['paired_hop_start_seconds']<r['first_landing_seconds']<r['settled_seconds']<3
+studio.write(p/'technical.json',r);shutil.copy2(BASE/'brand_sting/combined-sound-provenance.json',p/'sound-provenance.json')
+studio.run(['ffmpeg','-v','error','-i',p/'preview.webm','-f','null','-'])
+studio.run(['ffmpeg','-v','error','-n','-i',p/'master.mp4','-vf','fps=4,scale=640:-1,tile=3x4','-frames:v','1',p/'contact.png'])
+(p/'watch.html').write_text('''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Earnalism · Flowing page and paired hop</title><style>*{box-sizing:border-box}body{margin:0;background:#25121a;color:#f8efdf;font:16px/1.5 system-ui}main{max-width:1150px;margin:auto;padding:30px}h1{font:36px/1.15 Georgia}video{display:block;width:100%;aspect-ratio:16/9;background:#f7edda}a{color:#dfba7c}.note{color:#c7b8aa;font-size:14px}</style><main><p class="note">PRIVATE BRAND REVIEW · 3 SECONDS</p><h1>The page turns. The signature lands.</h1><video controls playsinline preload="auto" poster="poster.png"><source src="preview.webm" type="video/webm"><source src="master.mp4" type="video/mp4"></video><p>Flowing paper reveals the emblem and all text first. The original red L and caret then jump into place together, with synchronized paper and musical cues.</p><p><a href="master.mp4" download>Download 1080p / 60 fps MP4</a> · <a href="technical.json">Technical check</a></p><p class="note">Exact production header artwork · Original synthesized sound · Private review, not published</p></main></html>''')
+print(json.dumps(r,indent=2))

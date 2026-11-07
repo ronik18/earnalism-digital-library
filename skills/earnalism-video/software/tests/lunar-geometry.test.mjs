@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {litFraction,orbitalPosition} from '../src/lunar-geometry.mjs';
+test('new, quarter, full and last quarter match the projected illuminated disk',()=>{for(const [p,f] of [[0,0],[.25,.5],[.5,1],[.75,.5],[1,0]])assert.ok(Math.abs(litFraction(p)-f)<1e-12);});
+test('sunward new Moon and opposite full Moon share the observer sightline geometry',()=>{assert.equal(orbitalPosition(0).x,140);assert.equal(orbitalPosition(.5).x,560);for(let i=0;i<=100;i++){const p=i/100,pos=orbitalPosition(p);assert.ok(Math.abs(Math.hypot(pos.x-350,pos.y-320)-210)<1e-8);assert.ok(litFraction(p)>=0&&litFraction(p)<=1);}});

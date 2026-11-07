@@ -1,0 +1,26 @@
+# Private production/runtime state and binary media never belong in this source package.
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+*.mp4
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.ipynb
+*.zip
+/software/config/rights-owner.json
+/software/outputs/
+/software/logs/
+/software/cache/
+/output
+/evidence
+
+# Per-adapter local work and read-only private review symlinks.
+/software/output/
+
+# Optional ignored Studio-layout alias used by local adapter regressions.
+/video_studio

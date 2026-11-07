@@ -1,0 +1,152 @@
+{
+  "duration_seconds": 90,
+  "language": "English",
+  "speaker": "Ryan",
+  "fps": 30,
+  "portrait": [
+    1080,
+    1920
+  ],
+  "landscape": [
+    1920,
+    1080
+  ],
+  "publication": "draft",
+  "paid_compute_allowed": false,
+  "instruction": "Speak as an original mature documentary narrator explaining something fascinating to one interested adult. Use your comfortable, rounded resonance, clear diction and grounded warmth. Sound thoughtful and sincerely engaged, with restrained curiosity. Connect words into complete thoughts and maintain steady conversational momentum. Emphasize the meaning of each sentence rather than every word. Pause briefly where an idea changes; avoid stretched syllables, excessive gaps, repetitive downward endings, forced bass and theatrical delivery. Retain your own natural vocal identity; do not imitate any real person.",
+  "primary_format": "landscape",
+  "primary_aspect_ratio": "16:9",
+  "shorts_format": "portrait",
+  "shorts_aspect_ratio": "9:16",
+  "portrait_layout": "separately composed; never crop the landscape export",
+  "music": {
+    "enabled": true,
+    "kind": "original-acoustic-chamber-composition",
+    "narration_only_comparison": true,
+    "third_party_assets": true,
+    "bed_gain_db": 9,
+    "palette": "acoustic_editorial_v12",
+    "licensed_instrument_samples": "VCSL CC0 piano/harp, pinned asset manifest",
+    "listening_review": "pending; no publication approval",
+    "post_ducking_median_gap_db": [
+      18,
+      28
+    ],
+    "selective_automation": true,
+    "source_balance": "Energy-balanced pinned acoustic notes, quieter speech-overlapping leads and sparse support; no voice changes"
+  },
+  "intro": {
+    "enabled": true,
+    "version": "earnalism-flowing-paired-v1",
+    "seconds": 3,
+    "asset_root": "assets/standard-intro/v1",
+    "caption_offset_seconds": 0,
+    "placement": "end"
+  },
+  "pronunciation": {
+    "Earnalism": {
+      "owner_selected": "EARN-AL-iz-um",
+      "instruction": "Pronounce Earnalism EARN-AL-iz-um: EARN as in earn, AL with the vowel in alphabet, then iz, then um. Articulate AL clearly rather than uh. Do not spell letters aloud.",
+      "tts_form": "Earn Al-ism"
+    }
+  },
+  "spoken_brand_name": false,
+  "voice_profiles": {
+    "teacher_serious": {
+      "instruction": "Speak as an experienced classroom teacher: serious, sincere, patient and quietly authoritative. Use a mature, grounded, naturally resonant voice with gentle warmth. Keep a steady conversational pace of about 125 words per minute throughout. Connect words into complete thoughts; use brief natural pauses at sentence boundaries. Lightly emphasize the reasoning, not every word. Avoid rushing, stretched syllables, exaggerated pitch changes, breathy presentation and a flat chant. Do not imitate any particular person."
+    },
+    "teacher_gravity": {
+      "instruction": "An experienced old-school teacher explaining carefully to an attentive class. Serious and sincere, with calm gravity and natural chest resonance. Steady measured conversational tempo, around 125 words per minute. Let each sentence flow smoothly; use short purposeful pauses and small natural changes of intonation. Sound engaged and thoughtful, never theatrical, sing-song or overly solemn. Do not force an artificially deep pitch. Do not imitate any person."
+    },
+    "teacher_deliberate": {
+      "instruction": "An older, experienced teacher speaking slowly, clearly and steadily. Serious and sincere, with calm gravity and a warm resonant voice. Deliberate, unhurried phrasing. Brief pauses at punctuation. Natural emphasis, without theatrical performance or impersonation."
+    },
+    "teacher_patient": {
+      "instruction": "Speak slowly and thoughtfully, like a patient senior teacher explaining an important idea. A mature low resonant voice, serious and sincere, quietly authoritative. Keep the pace steady and unhurried. Use natural sentence pauses and gentle emphasis. No imitation.",
+      "generation": {
+        "temperature": 0.85
+      }
+    },
+    "teacher_mature_55": {
+      "instruction": "An original mature male documentary narrator in his mid-fifties, speaking as a serious, sincere, patient teacher. Keep the same naturally full, grounded chest resonance and calm vocal weight from the opening to the closing. A warm, settled lower register without forcing an artificially deep voice. Measured connected sentences at a steady conversational pace, about 125 words per minute including pauses. Use modest natural emphasis and short consistent pauses. Avoid sudden changes of pitch, breathiness, theatrical voices, chanting, rushed clauses or stretched words. Do not imitate any real person.",
+      "generation": {
+        "temperature": 0.7
+      }
+    },
+    "teacher_engaged_60_a": {
+      "instruction": "An original male teacher around sixty with a robust, naturally resonant baritone, lived-in vocal texture and confident projection. Speak to an interested class with alert energy, conviction and genuine curiosity. Make the opening question compelling. Stress the contrast between quarter of the cycle and half of the visible disk. Use connected conversational phrasing, a lively but clear pace around 145 words per minute, brief purposeful pauses and natural variation in pitch and emphasis. Sound experienced and engaged. Do not imitate any person or force a low pitch.",
+      "review_status": "PRIVATE AUDITION ONLY; owner listening pending"
+    },
+    "teacher_engaged_60_b": {
+      "instruction": "An original seasoned male science educator around sixty, with a full grounded baritone and clear articulate consonants. Warm authority, intellectual enthusiasm and a sense of discovery. Invite the listener into the opening question, then explain the answer with firm forward momentum. Make important contrasts audible through emphasis and short pauses. Conversational pace around 150 words per minute with natural phrase variation. Speak sincerely to one attentive listener. No celebrity imitation or artificially lowered pitch.",
+      "review_status": "PRIVATE AUDITION ONLY; owner listening pending"
+    },
+    "original_documentary_baritone_v2": {
+      "instruction": "An original mature male documentary educator with a naturally resonant mid-low baritone and clear, precise English diction. Speak intimately to one attentive listener with alert curiosity, quiet confidence and restrained wonder. Give the opening question a compelling inquisitive lift. Use purposeful brief pauses and audible emphasis on the contrast between a quarter of the cycle and half of the visible disk. Maintain conversational forward momentum around 140 to 150 words per minute. Let the voice feel experienced, grounded and alive. Use your own natural vocal identity; do not imitate any real person, force a low pitch or adopt a whisper.",
+      "review_status": "PRIVATE ORIGINAL AUDITION; listening pending"
+    },
+    "original_warm_baritone_v2": {
+      "instruction": "An original mature male educator with a full rounded baritone, warm dignified presence, firm clear consonants and natural chest resonance. Speak with sincere emotional engagement and confident projection. Shape each complete thought with expressive but controlled intonation; connect phrases smoothly and make key explanatory contrasts audible. An engaging conversational pace around 140 to 150 words per minute, with short purposeful pauses. Experienced and welcoming rather than solemn. Retain your own vocal identity; no imitation of any real person, artificially lowered pitch, chanting or singing.",
+      "review_status": "Owner selected exact B audition; full generated narration still requires listening review",
+      "selected_audition_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b"
+    },
+    "b_meaning_first_v1": {
+      "instruction": "Speak as an original mature documentary narrator explaining something fascinating to one interested adult. Use your comfortable, rounded resonance, clear diction and grounded warmth. Sound thoughtful and sincerely engaged, with restrained curiosity. Connect words into complete thoughts and maintain steady conversational momentum. Emphasize the meaning of each sentence rather than every word. Pause briefly where an idea changes; avoid stretched syllables, excessive gaps, repetitive downward endings, forced bass and theatrical delivery. Retain your own natural vocal identity; do not imitate any real person.",
+      "review_status": "Owner selected exact raw Y as refinement baseline; tone/phrasing repair and listening remain pending",
+      "selected_audition_sha256": "cdfdbb6cdd23a0436e4c15b3566a0ba3e451793ba06adbfc9bcfc3b44b5672e2",
+      "selection_kind": "refinement_baseline",
+      "recording_acceptance": false,
+      "publication_approval": false
+    }
+  },
+  "default_voice_profile": "b_meaning_first_v1",
+  "generation": {
+    "temperature": 0.85
+  },
+  "pace_review": {
+    "target_wpm": 122,
+    "minimum_wpm": 110,
+    "maximum_wpm": 140,
+    "max_between_words_pause_seconds": 0.9,
+    "max_scene_rate_deviation": 0.12,
+    "max_sentence_rate_ratio": 1.2,
+    "policy_role": "Conservative diagnostic screen; retains flags for selected-B listening review, not a forced generation/tempo target",
+    "automatic_time_stretch": false
+  },
+  "voice_profile_review": "Owner selected raw Y on 2026-10-30 as refinement baseline. New audition, full-recording and audiovisual acceptance remain pending; do not replace existing video audio.",
+  "voice_delivery": {
+    "owner_selected": "Y raw private audition, b_meaning_first_v1",
+    "target_wpm_including_pauses": 150,
+    "tempo_min": 0.85,
+    "tempo_max": 1.1,
+    "audition_reference_factor": 1,
+    "pitch_shift": false,
+    "selection_scope": "Baseline for source-performance refinement and private auditions; no repaired-recording, full-video or publication approval",
+    "requested_style": "Comfortable rounded documentary resonance, grounded warmth, connected complete thoughts, sincere engagement and natural momentum",
+    "recording_approval": "BASELINE_SELECTED; NEW_RECORDINGS_PENDING_REVIEW",
+    "previous_accepted_recording": "original_b: b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+    "naturalness_review_required": true,
+    "previous_selected_baseline": {
+      "profile": "original_warm_baritone_v2",
+      "audition_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+      "instruction_sha256": "fe1aec4c7c85f6abb50cb2e150fafcd1aad4fb00ff8a1fdd108c0404ecd067bf"
+    },
+    "selected_refinement_baseline": {
+      "label": "Y",
+      "profile": "b_meaning_first_v1",
+      "wav_sha256": "cdfdbb6cdd23a0436e4c15b3566a0ba3e451793ba06adbfc9bcfc3b44b5672e2",
+      "instruction_sha256": "92e2b6b1e725b3900399f542d756ca638381479fd2c399f37ef65e87247549f3",
+      "project_source": "video_studio/auditions/cycle-speech-rewrite-v39/imported/raw/s06.wav",
+      "selected_on": "2026-10-30",
+      "status": "OWNER_SELECTED_REFINEMENT_BASELINE",
+      "scope": "Baseline for source-performance refinement and private auditions; no repaired-recording, full-video or publication approval",
+      "remaining_review": [
+        "tone changes between thoughts",
+        "mechanical phrasing"
+      ],
+      "recording_acceptance": false,
+      "publication_approval": false
+    },
+    "target_role": "Historical audition reference only; preserve selected Y conversational momentum without forcing a WPM target."
+  }
+}

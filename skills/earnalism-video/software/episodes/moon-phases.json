@@ -1,0 +1,93 @@
+{
+  "id": "moon-phases",
+  "topic": "Why does the Moon have phases?",
+  "private_test": false,
+  "status": "draft",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses"
+      ],
+      "accessed": "2026-10-26"
+    }
+  ],
+  "rights": {
+    "visuals": "Original procedural SVG geometry; no external imagery, music, fonts, or likeness",
+    "narration": "Qwen stock Ryan; model license review required before release"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "heading": "Why does the Moon change shape?",
+      "text": "Why does the Moon change shape, when the Moon itself stays round? The answer begins with sunlight, and where we stand.",
+      "diagram": "question",
+      "phase_start": 0,
+      "phase_end": 0.12,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    },
+    {
+      "id": "s02",
+      "heading": "One Moon. One sunlit half.",
+      "text": "The Moon does not make its own light. We see sunlight reflected from its surface. At any moment, roughly half of the Moon faces the Sun. The other half faces away.",
+      "diagram": "sunlight",
+      "phase_start": 0.12,
+      "phase_end": 0.24,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    },
+    {
+      "id": "s03",
+      "heading": "Change the angle. Change the view.",
+      "text": "As the Moon travels around Earth, our viewing angle changes. The bright half remains pointed toward the Sun, but we see different amounts of it. These changing views are the lunar phases.",
+      "diagram": "orbit",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    },
+    {
+      "id": "s04",
+      "heading": "New → quarter → full",
+      "text": "Near new Moon, the sunlit side mostly faces away from us. About a week later, at first quarter, we see half of the visible disk illuminated. Near full Moon, the near side faces sunlight, and the disk looks bright.",
+      "diagram": "orbit",
+      "phase_start": 0,
+      "phase_end": 0.5,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    },
+    {
+      "id": "s05",
+      "heading": "Phases are not Earth’s shadow.",
+      "text": "Then the visible bright portion shrinks again. Earth’s shadow is not the usual cause of these phases. That shadow reaches the Moon during a lunar eclipse, when the alignment is right.",
+      "diagram": "orbit",
+      "phase_start": 0.5,
+      "phase_end": 0.85,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    },
+    {
+      "id": "s06",
+      "heading": "A changing view of a round world.",
+      "text": "One cycle of phases takes about twenty nine and a half days. So return to that opening question. The Moon has not changed its shape. We have changed our view of its sunlit half. Earnalism. See differently.",
+      "diagram": "callback",
+      "phase_start": 0.85,
+      "phase_end": 1,
+      "source_ids": [
+        "nasa-phases"
+      ]
+    }
+  ]
+}

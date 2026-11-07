@@ -1,0 +1,29 @@
+{
+  "scope": "Ideal early-time contact mechanism, not biological temperature/sensation prediction",
+  "primary_model_source": {
+    "citation": "Strotos et al. (2011), International Journal of Thermal Sciences 50(5), 698-711, section 3 equations 1-5",
+    "doi": "https://doi.org/10.1016/j.ijthermalsci.2010.11.021",
+    "university_repository": "https://openaccess.city.ac.uk/id/eprint/13580/",
+    "accepted_manuscript": "https://openaccess.city.ac.uk/id/eprint/13580/3/2010_IJTS_Strotos_Non-dimensionalisation.pdf"
+  },
+  "supporting_sources": [
+    "https://www.aps.org/learning-resources/getting-warmer-colder",
+    "https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer"
+  ],
+  "derivation": "Each side has a semi-infinite error-function solution. Matching Fourier fluxes gives Tc=(eA TA+eB TB)/(eA+eB), with e=sqrt(k rho cp). Signed A-to-B flux is eA eB/(eA+eB)*(TA-TB)/sqrt(pi t); integration gives Q/A=2 eA eB/(eA+eB)*(TA-TB)*sqrt(t/pi).",
+  "assumptions": [
+    "Initially uniform constant-property bodies",
+    "Planar perfect thermal contact; one-dimensional conduction",
+    "Early times before finite thickness or external boundaries matter",
+    "No contact resistance, moisture, roughness, blood flow or sensory adaptation"
+  ],
+  "guardrails": [
+    "No default material numbers; test inputs are explicitly synthetic solids",
+    "Use kelvin in the model; Celsius differences are equivalent but labels must remain explicit",
+    "Do not show the ideal instantaneous contact change or t=0 flux singularity as measured human response",
+    "Thermal conductivity alone does not determine transient contact response",
+    "Heat flows from warmer to cooler; reverse arrows when the object is warmer",
+    "All arrows and temperature fields are schematic unless an independently measured experiment is supplied",
+    "No source figures or text copied into output; citation does not license their assets"
+  ]
+}

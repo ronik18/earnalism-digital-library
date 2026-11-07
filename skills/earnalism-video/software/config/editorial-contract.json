@@ -1,0 +1,162 @@
+{
+  "schema": "earnalism.editorial-contract.v1",
+  "owner_decisions_as_of": "2026-10-30",
+  "defaults": {
+    "language": "English",
+    "duration_seconds": 90,
+    "primary_format": "landscape",
+    "primary_aspect_ratio": "16:9",
+    "landscape": [
+      1920,
+      1080
+    ],
+    "shorts_format": "portrait",
+    "shorts_aspect_ratio": "9:16",
+    "portrait": [
+      1080,
+      1920
+    ],
+    "fps": 30,
+    "publication": "draft",
+    "paid_compute_allowed": false,
+    "speaker": "Ryan",
+    "default_voice_profile": "b_meaning_first_v1",
+    "spoken_brand_name": false
+  },
+  "voice_selection": {
+    "audition_sha256": "cdfdbb6cdd23a0436e4c15b3566a0ba3e451793ba06adbfc9bcfc3b44b5672e2",
+    "scope": "Baseline for source-performance refinement and private auditions; no repaired-recording, full-video or publication approval",
+    "performance": "Meaning-first rounded documentary presence: grounded warmth, connected phrasing and sincere engagement; remaining tone/phrasing defects are not certified repaired",
+    "preserve_on_visual_or_mix_edit": true,
+    "new_provider_or_clone": false,
+    "pace": "Natural phrase consistency; never force equal WPM or change conservative diagnostic bands to conceal flags",
+    "instruction_sha256": "92e2b6b1e725b3900399f542d756ca638381479fd2c399f37ef65e87247549f3",
+    "selection_kind": "refinement_baseline",
+    "recording_acceptance": false,
+    "publication_approval": false,
+    "previous_baseline": {
+      "profile": "original_warm_baritone_v2",
+      "audition_sha256": "b93eade2ed653664e31742076c01737b5588584b117405bec48da2f67dff758b",
+      "scope": "Selected original B direction; no full-recording or publication approval transfer",
+      "performance": "Mature rounded baritone; sincere teacher-like authority, alert warmth, connected phrasing, purposeful emphasis and pauses",
+      "preserve_on_visual_or_mix_edit": true,
+      "new_provider_or_clone": false,
+      "pace": "Natural phrase consistency; never force equal WPM or change conservative diagnostic bands to conceal flags",
+      "instruction_sha256": "fe1aec4c7c85f6abb50cb2e150fafcd1aad4fb00ff8a1fdd108c0404ecd067bf"
+    }
+  },
+  "brand": {
+    "asset": "assets/standard-intro/v1/production-lockup.png",
+    "public_asset": "public/brand-sting/production-lockup.png",
+    "sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 2400,
+      "height": 720
+    },
+    "watermark": "Static exact website-header full lockup: emblem and all intrinsic lettering, original aspect ratio and source pixels. Reserve a destination-safe brand region separate from headings, mechanism and captions; no added tagline. Existing published media and approved end ident remain unchanged.",
+    "repeated_header": false,
+    "persistent_source_footer": false,
+    "source_credit": "Below player and in references/metadata; brief essential diagram qualification remains",
+    "outro": {
+      "enabled": true,
+      "version": "earnalism-flowing-paired-v1",
+      "seconds": 3,
+      "placement": "end"
+    }
+  },
+  "music": {
+    "moon_palette": "acoustic_editorial_v12",
+    "other_topics": "Create and review a topic-appropriate rights-cleared score; do not relabel Moon arrangements",
+    "direction": "Restrained recurring motif, acoustic texture, intentional silence, source-event orchestration, smooth phrase curves; narration leads",
+    "must_pass": [
+      "asset/provenance hashes",
+      "post-duck individual passages",
+      "silence preservation",
+      "transition/re-entry",
+      "peaks/decode",
+      "scored-versus-dry human listening"
+    ],
+    "therapy_or_retention_or_revenue_guarantee": false
+  },
+  "mandatory_acceptance": [
+    "authoritative claim-by-claim factual research",
+    "accurate topic-specific animated diagrams",
+    "transition and ending frames in both compositions",
+    "actual-audio caption text and timing",
+    "no unresolved semantic ASR differences",
+    "mobile label/caption clearance",
+    "full visible playback/replay/seek/reopen",
+    "rights evidence",
+    "verified download hashes/decode",
+    "artifact-bound human listening/AV approval",
+    "genuine viewer understanding feedback when qualifying learning outcomes"
+  ],
+  "boundaries": [
+    "protected original notebook checksum unchanged",
+    "separate writable notebook/config/logs/outputs",
+    "no purchases or paid compute without scoped allowance",
+    "private until release gates and explicit approval",
+    "YouTube metadata only; no automatic upload",
+    "no new CMS/dashboard/payments/bulk system",
+    "inspect existing website and storage before integration",
+    "no passwords or tokens in chat"
+  ],
+  "copy_controls": "Hide visible download links; nodownload is UI guidance, directory listing disabled; not DRM or screen-capture prevention",
+  "claims": "Do not promise perfection, human delivery, clinical effects, lifelong retention, commercial returns or publication from test results",
+  "audience_and_distribution": {
+    "required_before_nonfixture_narration": "Concise learner/learning promise, misconception and original contribution, meaningful accurate scene sequence and independent compositions; one truthful title per format. Growth administration and experiments are optional.",
+    "required_delivery_files": [
+      "audience-plan.json",
+      "packaging.json",
+      "youtube-landscape.json",
+      "youtube-shorts.json"
+    ],
+    "mutable_sidecars_outside_manifest": [
+      "publication-handoff.json",
+      "production-journal.jsonl"
+    ],
+    "manual_graphic_checks": [
+      "packaging_truth_and_readability",
+      "opening_visual_payoff"
+    ],
+    "outcomes": "Click appeal, learning, subscriptions and revenue remain unproven until real observations; no universal CTR/retention promises",
+    "policy": "Check applicable current rules at actual delivery. No arbitrary seven-day calendar gate or unrelated analytics/monetization research for routine publication."
+  },
+  "viewer_experience": {
+    "plan_schema": "earnalism.audience-plan.v2",
+    "required_scene_coverage": "Every real scene has a viewer question, meaningful visible answer, new understanding, next-scene bridge and separately composed reading/staging/caption plan",
+    "early_payoff": "A visible first-frame subject and scene-relative planned payoff, checked against actual timing and final frames; no universal seconds or guaranteed retention",
+    "learning": "Final real listening/AV and critical explanations remain primary; independent participants/card-choice studies are optional unless explicitly requested.",
+    "evidence": "Genuine uncoached card choices, comprehension and observed analytics; never global top-viewer personas or simulations as data",
+    "topic_scope": "Planning and quality criteria are topic-agnostic; new subjects need researched/tested models and rendering capability before production",
+    "continuous_relationship": "Honest series/next lesson, sustainable capacity-based cadence, actual viewer-led topic selection; no automatic scheduling or earnings claims"
+  },
+  "release_policy": {
+    "primary_checks": [
+      "factual",
+      "graphical_and_captions",
+      "rights",
+      "real_listening_and_AV",
+      "technical_and_verified_delivery"
+    ],
+    "final_candidate_decisions": 1,
+    "optional_improvement": [
+      "independent_viewer_studies",
+      "card_choice_studies",
+      "multiple_title_variants",
+      "detailed_growth_cadence_planning",
+      "analytics_checkpoints",
+      "detailed_cost_journals"
+    ],
+    "explicit_study_flag": "requires_independent_learning_study",
+    "known_defects": "Carry until explicitly resolved; pending research is unknown, never PASS",
+    "verification": "Quick preflight and changed-area tests by default; --full when justified by changes",
+    "performance": "Invocation-only guarded hash reuse, one full A/V decode per verification; no cross-artifact approval reuse"
+  },
+  "presentation_defaults": {
+    "first_frame_subject_opacity": 1,
+    "preserve_episode_question": true
+  }
+}

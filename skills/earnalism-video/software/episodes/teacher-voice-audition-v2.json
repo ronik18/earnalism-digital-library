@@ -1,0 +1,53 @@
+{
+  "id": "teacher-voice-audition-v2",
+  "topic": "Why does the Moon have phases?",
+  "private_test": true,
+  "status": "draft",
+  "sources": [
+    {
+      "id": "nasa-phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "publisher": "NASA Science",
+      "claims": [
+        "reflected sunlight",
+        "half illuminated",
+        "orbital viewing geometry",
+        "29.5 day phase cycle",
+        "phases distinct from eclipses"
+      ],
+      "accessed": "2026-10-26"
+    }
+  ],
+  "rights": {
+    "visuals": "Original procedural SVG geometry; no external imagery, music, fonts, or likeness",
+    "narration": "Qwen stock Ryan; model license review required before release"
+  },
+  "scenes": [
+    {
+      "id": "teacher_c",
+      "heading": "Why does the Moon change shape?",
+      "text": "The Moon stays round. What changes is our view of its sunlit half. At first quarter, half the visible disk is bright. Earth\u2019s shadow causes a lunar eclipse, a different event that needs a special alignment.",
+      "diagram": "orbit",
+      "phase_start": 0,
+      "phase_end": 1,
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "teacher_deliberate",
+      "narration_seed": 202610271
+    },
+    {
+      "id": "teacher_d",
+      "heading": "Why does the Moon change shape?",
+      "text": "The Moon stays round. What changes is our view of its sunlit half. At first quarter, half the visible disk is bright. Earth\u2019s shadow causes a lunar eclipse, a different event that needs a special alignment.",
+      "diagram": "orbit",
+      "phase_start": 0,
+      "phase_end": 1,
+      "source_ids": [
+        "nasa-phases"
+      ],
+      "voice_profile": "teacher_patient",
+      "narration_seed": 202610271
+    }
+  ]
+}
