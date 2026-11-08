@@ -67,6 +67,17 @@ class Workflow(unittest.TestCase):
    for c in json.loads(self.notebook.read_text())['cells']:
     if c['cell_type']=='code':exec(compile(''.join(c['source']),'notebook','exec'),ns)
   self.assertIn('WAN_DISABLED',stream.getvalue());self.assertNotIn('ROOT',ns)
+ def test_setup_cell_requires_successful_input_verification_before_install(self):
+  cell=''.join(json.loads(self.notebook.read_text())['cells'][6]['source']);fake=Mock();fake.sha.return_value='bound-job'
+  ns={'RUN_WAN':True,'PREFLIGHT_OK':True,'SETUP_WAN':True,'worker':fake,'ROOT':self.root}
+  with self.assertRaisesRegex(RuntimeError,'source-bound input pack'):exec(cell,ns)
+  fake.setup.assert_not_called();fake.export.assert_not_called()
+  ns['INPUTS_VERIFIED_JOB_SHA256']='stale-job'
+  with self.assertRaisesRegex(RuntimeError,'source-bound input pack'):exec(cell,ns)
+  fake.setup.assert_not_called()
+  ns['INPUTS_VERIFIED_JOB_SHA256']='bound-job';(self.root/'setup.json').write_text('{}')
+  with redirect_stdout(StringIO()):exec(cell,ns)
+  fake.setup.assert_called_once_with(self.root);fake.export.assert_called_once_with(self.root)
  def test_enabled_without_free_evidence_stops_before_write_or_import(self):
   nb=json.loads(self.notebook.read_text());ns={};exec(''.join(nb['cells'][1]['source']),ns);ns['RUN_WAN']=True
   with self.assertRaisesRegex(RuntimeError,'Free CUDA'):exec(''.join(nb['cells'][2]['source']),ns)
@@ -119,6 +130,30 @@ class Workflow(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,'one homecoming'):w.validate(job)
   mixed=json.loads(self.job.read_text());mixed['scenes'][0]['frame_profile']='landscape-detail-pilot-v1'
   with self.assertRaisesRegex(ValueError,'hidden inside a mixed'):w.validate(mixed)
+ def test_family_detail_is_source_bound_one_start_and_inert(self):
+  spec={'sweets':{'image':'living-portrait.png','prompt':'Girl offers one sweet and grandmother responds, stable supporting hands'}}
+  nb=build(self.p/'family-detail',self.p/'art','landscape-family-detail-pilot-v1','diwali-v17-family',['sweets'],{'prior_v16':'preserved'},spec)
+  job=json.loads((nb.parent/'job.json').read_text());self.assertEqual([(x['id'],x['width'],x['height']) for x in job['scenes']],[('sweets',1280,704)])
+  self.assertEqual((job['max_attempts'],job['max_output_seconds'],job['wall_seconds']),(1,6,1800))
+  self.assertEqual(job['decode_reserve_seconds'],360)
+  ns={}
+  with redirect_stdout(StringIO()):
+   for cell in json.loads(nb.read_text())['cells']:
+    if cell['cell_type']=='code':exec(''.join(cell['source']),ns)
+  self.assertNotIn('ROOT',ns)
+  cell=''.join(json.loads(nb.read_text())['cells'][10]['source']);fake=Mock();fake.remaining.return_value=1199
+  ns={'RUN_WAN':True,'PREFLIGHT_OK':True,'GENERATE_SWEETS':True,'worker':fake,'ROOT':self.root}
+  with self.assertRaisesRegex(RuntimeError,'Insufficient original deadline'):exec(cell,ns)
+  fake.generate.assert_not_called();fake.remaining.return_value=1200;(self.root/'attempts.json').write_text('[]')
+  with redirect_stdout(StringIO()):exec(cell,ns)
+  fake.generate.assert_called_once_with(self.root,'sweets')
+  wrong=dict(job,scenes=[dict(job['scenes'][0],id='homecoming')])
+  with self.assertRaisesRegex(ValueError,'one sweets'):w.validate(wrong)
+  job['scenes'][0]['frame_profile']='l4-landscape-v1'
+  with self.assertRaisesRegex(ValueError,'downgraded or mixed'):w.validate(job)
+  mixed=json.loads(self.job.read_text());mixed['scenes'][1]['frame_profile']='landscape-family-detail-pilot-v1'
+  with self.assertRaisesRegex(ValueError,'hidden inside a mixed'):w.validate(mixed)
+  with self.assertRaises(ValueError):build(self.p/'family-unbound',self.p/'art','landscape-family-detail-pilot-v1')
  def test_detail_forecast_reserves_more_decode_time_without_extending_deadline(self):
   nb,job=self.detail_job();runtime=self.p/'detail-runtime';w.unpack_inputs(nb.parent/'wan22-inputs.zip',runtime,w.sha(nb.parent/'wan22-inputs.zip'))
   state=w.begin(runtime,True,0)
