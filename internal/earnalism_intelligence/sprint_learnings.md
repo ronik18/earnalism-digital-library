@@ -3183,3 +3183,5 @@ Reuse unchanged helper binaries/components, but execute each selected CLOSED inp
 ## Preserve owner words across source successors — 5 November 2026
 
 An original source-bound Reader/containment approval is not a reusable blank cheque and must not be relabelled. Reuse it only through an exact reviewed applicability bridge: historical O/P/K unchanged, actual continuation/retirement authority, mechanically checked committed protected/Reader equivalence and exact consumer hashes, current source pair, original custody/counters and fresh protected/actual observations. Keep staged-child and final Reader/Listener/runtime acceptance independent; source equivalence is never runtime PASS.
+
+8 November 2026: Persisted text matching and valid package checksums do not imply production release eligibility. The 48-title cohort has 45 local non-cover text decisions, zero registered production candidates, and three title-specific rights/package holds. Preserve those text records; qualify covers and exact successor release scope before activation. No production changes.
