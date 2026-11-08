@@ -14532,5 +14532,547 @@
     "bicharak": "OWNER_HOLD",
     "runtime_operations": 0,
     "next": "Require exact-head CI/reviews and reviewed/merged equality, then rebind private existing operators without consuming expiring observations early."
+  },
+  "persisted48_reader_qualification_20261108": {
+    "date": "2026-11-08",
+    "event": "PERSISTED48_READER_RELEASE_QUALIFICATION",
+    "base_sha": "f416e9a08e9774eda7b7f0c8d588f0485d58e230",
+    "scope": "48 persisted edition matches; no audio activation",
+    "local_noncover_text_clearances": 45,
+    "production_eligible": 0,
+    "published": 0,
+    "production_mutations": 0,
+    "evidence": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted48-release-qualification-20261108/qualification.json",
+    "finding": "All 48 package checksum bundles pass. Forty-five accepted local non-cover text decisions are absent from production registry and exclude cover_display; source-only acceptance cannot activate release. Gitanjali lacks inspected decision/manifest, Nishkriti retains publication-rights facts hold, Metamorphosis retains translation-rights hold.",
+    "next_action": "Prepare qualified cover pairs and exact reviewed release successor bindings for the 45 text-cleared candidates; retain three rights-held titles.",
+    "titles": [
+      {
+        "slug": "a-retrieved-reformation",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "a-wagner-matinee",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "feathertop",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "gitanjali",
+        "status": "HOLD",
+        "gate_reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ],
+        "package_blockers": []
+      },
+      {
+        "slug": "markheim",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "nishkriti",
+        "status": "HOLD",
+        "gate_reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ],
+        "package_blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      },
+      {
+        "slug": "rappaccinis-daughter",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-abbey-grange",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-beryl-coronet",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-blue-carbuncle",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-copper-beeches",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-dancing-men",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-empty-house",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-engineers-thumb",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-final-problem",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-greek-interpreter",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-noble-bachelor",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-priory-school",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-second-stain",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-adventure-of-the-solitary-cyclist",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-ambitious-guest",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-bet",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-country-of-the-blind",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-darling",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-door-in-the-wall",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-furnished-room",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-imp-of-the-perverse",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-last-leaf",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-legend-of-sleepy-hollow",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-luck-of-roaring-camp",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-man-in-a-case",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-man-with-the-twisted-lip",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-masque-of-the-red-death",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-metamorphosis",
+        "status": "HOLD",
+        "gate_reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ],
+        "package_blockers": [
+          "Rights: modern or unknown translation rights block publishing until separately verified.",
+          "Rights: Tier C rights block all publishing.",
+          "Rights: verification_status must be approved before publishing.",
+          "Reader QA must pass."
+        ]
+      },
+      {
+        "slug": "the-ministers-black-veil",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-murders-in-the-rue-morgue",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-outcasts-of-poker-flat",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-purloined-letter",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-ransom-of-red-chief",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-speckled-band",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-suicide-club",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "the-yellow-wallpaper",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "to-build-a-fire",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "tobermory",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "ward-no-6",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "white-fang",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      },
+      {
+        "slug": "young-goodman-brown",
+        "status": "HOLD",
+        "gate_reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ],
+        "package_blockers": [
+          "Front cover is required."
+        ]
+      }
+    ]
   }
 }
