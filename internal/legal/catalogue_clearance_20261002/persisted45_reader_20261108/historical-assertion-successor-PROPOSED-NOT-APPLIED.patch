@@ -82,11 +82,11 @@
 +    'young-goodman-brown',
 +}
 +INDIA_TEXT_RELEASE_SLUGS |= PERSISTED45_READER_SLUGS
- 
- 
+
+
  REVIEWED_20261002_SLUGS = {
 @@ -429,7 +479,13 @@
- 
+
          if slug in {"a-ghost-story", "the-tell-tale-heart", "radharani"}:
              assert dispositions[f"controlled-{slug}"]["status"] == "ACCEPTED"
 -        assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
@@ -97,8 +97,8 @@
 +            assert book.get('audio_enabled') is False and book.get('allowCheckout') is False
 +        else:
 +            assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
- 
- 
+
+
  def test_yugalanguriya_publication_package_is_archived_and_remains_held():
 --- a/backend/tests/test_approved_reader_bootstrap.py
 +++ b/backend/tests/test_approved_reader_bootstrap.py
