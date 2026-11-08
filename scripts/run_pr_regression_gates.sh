@@ -26,7 +26,7 @@ echo "==> Consumer-scoped text sync and evidence-proportionate audio acceptance 
 "$PYTHON_BIN" -m pytest -q backend/tests/test_release_acceptance.py backend/tests/test_audiobook_accessibility_release_gate.py backend/tests/test_produce_release.py backend/tests/test_release_runtime.py backend/tests/test_produce_release_self_healing.py internal/audiobook_lab/scripts/test_sprint1_factory_release_evidence_normalizer.py internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py
 
 echo "==> Exact purchase guard source and original India commerce boundary"
-"$PYTHON_BIN" -m unittest backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor scripts.test_purchase_protocol_application_source
+"$PYTHON_BIN" -m unittest backend.tests.test_purchase_closed_runtime backend.tests.test_purchase_guard_integration backend.tests.test_commerce_territory scripts.test_purchase_guard_source_successor scripts.test_purchase_protocol_application_source
 
 echo "==> Shared Redis admission and read-only index/scaling metadata gates"
 "$PYTHON_BIN" -m unittest scripts.test_check_index_readiness scripts.test_check_scaling_readiness scripts.test_scaling_resource_admission scripts.test_guarded_scaling_controller scripts.test_mongo_reservation_accounting scripts.test_manual_mongo_pool_bounds scripts.test_manual_mongo_client_lifecycle backend.tests.test_startup_maintenance_lock_release backend.tests.test_redis_startup_policy backend.tests.test_streaming_drain
