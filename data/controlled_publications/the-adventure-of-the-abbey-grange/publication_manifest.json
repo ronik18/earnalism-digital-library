@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-abbey-grange",
   "title": "The Adventure of the Abbey Grange",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
     "content_hash": "3ab754df655e74c016007890d7d3f30c776a6618864501d3e066d9c6f10ff7ce",
@@ -28,16 +28,14 @@
     "evidence_sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46",
+    "public_book": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c",
     "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
     "source_evidence": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
-    "approval_evidence": "83ac7bfe8782d7286ffa4af8956de0b2052a62ddad92f38df3d9c2c13eae287e"
+    "approval_evidence": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3"
   },
-  "manifest_sha256": "d5c76c3d8ca70b6f67e426a85ac1d2edfffcc942d097e8ff0211859cf9716c64"
+  "manifest_sha256": "50eaeb20b1761b6fb556b99169d451b231d6c7d60f4f09076fff2e7ff1967265"
 }

@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "markheim",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "4dd4d5642f56b1bef1b854995bfe03260b6e7337a0c0811c4db11cf5ab2b1c79",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/markheim/front-1568f8a2bdea9548.webp",
+      "url": "https://theearnalism.com/assets/books/markheim/front-1568f8a2bdea9548.webp",
+      "sha256": "1568f8a2bdea95486434daab874a8abde421b86aa692f9dba90eed0b001574ea",
+      "bytes": 49132,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/markheim/back-3641d4eae8cc2007.webp",
+      "url": "https://theearnalism.com/assets/books/markheim/back-3641d4eae8cc2007.webp",
+      "sha256": "3641d4eae8cc20076f673cbd6ff8256649e8d7395d321a3afb05138c6b9a13a9",
+      "bytes": 25658,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

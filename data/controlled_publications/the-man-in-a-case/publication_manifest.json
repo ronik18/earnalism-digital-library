@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-man-in-a-case",
   "title": "The Man in a Case",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
     "content_hash": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
@@ -28,16 +28,14 @@
     "evidence_sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96",
+    "public_book": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740",
     "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
     "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
-    "approval_evidence": "18a5e4d79ab446ae76aa0880f2a236b791a9f5a3d7afb42114841b363b1cf0f8"
+    "approval_evidence": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6"
   },
-  "manifest_sha256": "159c9a5eb0abda06cc157fa74cab39cd2538e0ecdd24537139599ec50c0614f2"
+  "manifest_sha256": "5f410bd5268f8110b903b889b157f802b7cf72084a52a7279d49cb07c3264ec5"
 }

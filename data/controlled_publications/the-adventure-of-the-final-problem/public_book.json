@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "Holmes confronts Professor Moriarty — the Napoleon of Crime — at the Reichenbach Falls, and both appear to die.",
   "description": "Holmes and Watson flee across Europe pursued by Moriarty's network. At the Reichenbach Falls, Holmes sends Watson away on a pretext and faces Moriarty alone. The story that killed Holmes — and caused readers to wear black armbands on the London streets.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/back-93ba678d6d4fbde2.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/back-93ba678d6d4fbde2.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-final-problem",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583339/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583340/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583341/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583342/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583342/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583339/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583339/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583340/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583341/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583342/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583342/earnalism/audiobooks/en/the-adventure-of-the-final-problem/the-adventure-of-the-final-problem_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "ee9e47f4bbfe47bfd7aeabf8984982ea7ea36ec7f44ce77f04d9a4e6d35133e9",
+  "back_cover_sha256": "93ba678d6d4fbde26a15e5d087cd7074e84e5dfb57313d48018e7666b521fbb9"
 }

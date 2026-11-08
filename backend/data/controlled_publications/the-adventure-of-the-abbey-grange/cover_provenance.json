@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-abbey-grange",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "257530f87517547af59f564903745ee115a4760fcac8760e77488ef6673c5fb5",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+      "sha256": "1d66e328758a4e7f4d6a54f0b07ac8742229af40cdc8ef73a3e5b4d445e1ebbe",
+      "bytes": 80328,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-abbey-grange/back-8312638414f30dd5.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/back-8312638414f30dd5.webp",
+      "sha256": "8312638414f30dd56e87b3cce9a4ff8eb7670bfc98a52600234d0e3d0fd71eca",
+      "bytes": 29174,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

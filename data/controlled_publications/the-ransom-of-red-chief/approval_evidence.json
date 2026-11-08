@@ -1,14 +1,14 @@
 {
   "slug": "the-ransom-of-red-chief",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b",
   "content_hash": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1",
   "provenance_hash": "cd0996b1d6a47668913a05afe05dec3b1fde798a4209f27a45da230677143494",
-  "verified_at": "2026-10-01T21:54:02.732252+00:00"
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "cover_provenance_sha256": "30ecf17c607c4c7de1936c8c8ef5d648b62235523cab6ec0b76e32ab216a22f8"
 }

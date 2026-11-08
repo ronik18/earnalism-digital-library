@@ -1,10 +1,10 @@
 {
   "slug": "the-bet",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84"
+      "sha256": "52dc4b9d2813f6db80100628504f4ced83109a411f94c6f606323b5c68ec0ab6"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856"
+      "sha256": "b8386b447eb837d7d5f00a36d6690430071764a15a6ab6cbe7d8c4934546b7c4"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "a54a55bbbfb777a8bd8edeb856b44284da28961ce7598836b9744f3a84b30e2a"
     }
   ]
 }

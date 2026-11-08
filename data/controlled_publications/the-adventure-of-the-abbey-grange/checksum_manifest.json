@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-abbey-grange",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "83ac7bfe8782d7286ffa4af8956de0b2052a62ddad92f38df3d9c2c13eae287e"
+      "sha256": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46"
+      "sha256": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "6824ac7163533643450f5f32e60be9f2c4696820202e70459a9e68b2ce26937a"
     }
   ]
 }

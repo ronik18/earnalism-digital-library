@@ -1,0 +1,23 @@
+{
+  "slug": "the-furnished-room",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957",
+  "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+  "content_hash": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+  "provenance_hash": "8b0dfe28e43d81d5c0fa6158e6195bc68448f1ff0a9958baefb2e0b4cefdbafa",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba"
+}

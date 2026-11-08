@@ -1,0 +1,38 @@
+{
+  "slug": "the-purloined-letter",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "458208551a6dfe910f12ddf79caba19112dea0180c60ebf6998abfe615c670de"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "341d1f690a29b56e7d975ed77977370a21e28cd15bf9c432888757ee3f9380f9"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "32a3cf87c128627123cccf37c3fe2c3a3aae8c40564cfcd3bd42b76597d30408"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "39f7001b7d520758ac5598dd674205230523954fa953f6c85e68d0730170111b"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3c75563cdff2ab7acd23828746882c0eb6bc323ebc797e683adf3af2d943cb8b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "eabe34154ee10821c589be757f49b5190ae84acb9d045387d15db75ae19262d8"
+    }
+  ]
+}

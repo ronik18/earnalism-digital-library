@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-suicide-club",
+  "title": "The Suicide Club",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
+  "content": {
+    "source_hash": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "content_hash": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "provenance_hash": "800ced5e8d56dc32ab1dea0ca063c7a62351e10c12976aec47799ffdf188a6a0",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "5fcfa6915649b26b2161e1d35a7177d489490f06de7d2e08e049adeb2bf96300",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Suicide Club",
+        "word_count": 27528,
+        "sha256": "2148e37bb55099936c9e433f10995e659d95772d907cfa125e8cd9238fa40a9e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a",
+    "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
+    "source_evidence": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
+    "approval_evidence": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4"
+  },
+  "manifest_sha256": "db0f6f9f0c57c516da7309f8776ecff423b936f67ec43c1a80690bf4db9277c2"
+}

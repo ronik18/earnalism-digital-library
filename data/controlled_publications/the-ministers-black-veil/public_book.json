@@ -7,12 +7,12 @@
   "category_slug": "gothic-fiction",
   "short_description": "A minister begins wearing a black veil over his face and refuses to remove it for the rest of his life.",
   "description": "Reverend Hooper arrives one Sunday wearing a black veil and never explains why. The veil becomes a mirror reflecting every parishioner's secret sins back at them — Hawthorne's most concentrated meditation on hidden guilt.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/back-ebeea33d539a5cee.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/back-ebeea33d539a5cee.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-ministers-black-veil",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582000/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582001/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582002/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582003/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582004/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582000/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582000/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582001/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582002/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582003/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582004/earnalism/audiobooks/en/the-ministers-black-veil/the-ministers-black-veil_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "7cead9082cadce2b775e362223558c32493e2436ddd4b3c8e4ac0c3a32b9c845",
+  "back_cover_sha256": "ebeea33d539a5ceefc4c1e8bde9c5af799dd284f6a901a7e3acfda5b732c5d15"
 }

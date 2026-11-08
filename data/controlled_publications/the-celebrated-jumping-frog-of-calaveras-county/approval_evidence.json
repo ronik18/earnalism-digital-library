@@ -1,14 +1,14 @@
 {
   "slug": "the-celebrated-jumping-frog-of-calaveras-county",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
   "content_hash": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
   "provenance_hash": "2e9d41b20babffe151d857da04292a7b7d871f9de9a9558fc866f4f92de37aae",
-  "verified_at": "2026-10-01T21:52:27.631967+00:00"
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "cover_provenance_sha256": "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc"
 }

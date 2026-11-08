@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-young-goodman-brown-reader-cover-successor",
+  "edition_id": "young-goodman-brown",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740",
+    "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+    "approval_evidence": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6",
+    "checksum_manifest": "ccece005fc7f3ae2cf68f105e868c8ac90e12d91f931f0ddea4aeb9dfa85cf8d",
+    "publication_manifest": "2e67563c19df455be5af1c4570121a8551a20c6f03bcf39543abb3e8fe1e50ae",
+    "cover_provenance": "1d8ba997d656c30b95ac2eba1f7a8ecac28e6786f34c3c004ea537deb9a7c498",
+    "cover_front": "840ce982e482297c125ac6e617238efa111c48da6422e19b369195db4fa84b2a",
+    "cover_back": "265bde7a197be5b9ba945227c8ba61ac7d69baa81ce979c9dfffede24c7a5dff"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-young-goodman-brown-pg512-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
+    "6c075725e3cd6b0f8158c27cc8aaf8fae27b0ae6408ad3436be6fcc5ade61ae7",
+    "1d8ba997d656c30b95ac2eba1f7a8ecac28e6786f34c3c004ea537deb9a7c498"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

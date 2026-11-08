@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-man-with-the-twisted-lip-pg1661-noncover-text",
+  "decision_id": "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor",
   "edition_id": "the-man-with-the-twisted-lip",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
+    "public_book": "9faaddaebb206ae54a8a62862c1e8ad1509bb8f1cfda8e38cb4a1bbda7d95831",
     "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
     "source_evidence": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
-    "approval_evidence": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d",
-    "checksum_manifest": "72a7eada2598b93400aaed058b2312b81dbbf2330f16b089cbc7090ee7a75119",
-    "publication_manifest": "b3c940e1c6349526676c3ca3c7b0e89d06b9d678b5d9d2f14ecefb34a7f1a6c0"
+    "approval_evidence": "59d2ceb1729cc8e7f2827829d730ecbcf79e571c651643ca81aa045084afa1eb",
+    "checksum_manifest": "77791c01dbddfbf53e99fddaad06592cde56464db418481cabdfd43ddea7f84b",
+    "publication_manifest": "adec56d35bf0334b18f473503208b8c92edd03f931afbd6bee4da2b5d28bc22b",
+    "cover_provenance": "3f7c5f097a5eb63d8a61dabbf0f9e1430372f9ede6c5afa6cf3253f79b318482",
+    "cover_front": "7b55b41491483715d7b3ab6025220f8f6cf3d278541a474e6928083476b5ab12",
+    "cover_back": "32c65c80621fd3ed119934c4e70ff54d8f0ba8c206ae1ee273f3f2bca1817ab4"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:34.443341+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-man-with-the-twisted-lip-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
     "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
-    "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4"
+    "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4",
+    "2c67b40d9b259fe83320eeeec996417672f8c7f8bfe5c0fbe0eee50fbb232986",
+    "3f7c5f097a5eb63d8a61dabbf0f9e1430372f9ede6c5afa6cf3253f79b318482"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

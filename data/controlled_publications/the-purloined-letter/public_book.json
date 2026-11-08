@@ -7,12 +7,12 @@
   "category_slug": "literary-fiction",
   "short_description": "A stolen letter hidden in plain sight — Dupin recovers it by thinking like the thief rather than the police.",
   "description": "The police search every inch of Minister D's apartment for a stolen letter and find nothing. Dupin walks in, glances at the mantelpiece, and retrieves it immediately — because the best hiding place is always in plain sight. The story that founded the logic of detective fiction.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-purloined-letter/back-2e65989a50a93642.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-purloined-letter/back-2e65989a50a93642.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-purloined-letter",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583818/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583819/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583818/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583819/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "7159097048491dcdcb58c55fd80bb4a8bc2409d1484969b0ec0fd1603083467c",
+  "back_cover_sha256": "2e65989a50a93642693886a5d85a52dcc61895619f17c0e4a645ddd2e6074bb9"
 }

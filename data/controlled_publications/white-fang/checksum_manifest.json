@@ -1,10 +1,10 @@
 {
   "slug": "white-fang",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "6e6ba46cb26e5e96b41b81ebdd186616fe01f0e6b45e9f1e48dc12a0e5ff5ecf"
+      "sha256": "9de49359b873503bb9019859e3e69a21470761912608084a9d82a485af4594eb"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -112,7 +112,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "fc328afa3835fb3afe1221838382f8e4cfb42901b251977eae424550e7c38a05"
+      "sha256": "a69d3bd3db175f42a0298bc4169e38bda3081d9fd38ea3d8e3bbd7889b550692"
     },
     {
       "file": "publication_authorization.json",
@@ -125,6 +125,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "e73d658425fbf5c436a283fde830953fddd8417edc21417a0d54d51c8b580379"
     }
   ]
 }

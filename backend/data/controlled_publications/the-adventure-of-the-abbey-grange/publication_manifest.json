@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-abbey-grange",
+  "title": "The Adventure of the Abbey Grange",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "3ab754df655e74c016007890d7d3f30c776a6618864501d3e066d9c6f10ff7ce",
+    "provenance_hash": "c75dcaf0216bde7b3f528d069d07e5560b40577f2b48bb8a6148e780243167ae",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b62f0defba91b496657f04003a728396cb86f570fbef3e190a5a7f8a01818f95",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Abbey Grange",
+        "word_count": 9233,
+        "sha256": "64157f3db639a48dadb1f501fb1336824120adeda9dbfd23087533249da164ab"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c",
+    "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "source_evidence": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
+    "approval_evidence": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3"
+  },
+  "manifest_sha256": "50eaeb20b1761b6fb556b99169d451b231d6c7d60f4f09076fff2e7ff1967265"
+}

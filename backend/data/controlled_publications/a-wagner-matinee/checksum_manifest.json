@@ -1,0 +1,38 @@
+{
+  "slug": "a-wagner-matinee",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "33659bf3a26d3beb32cb021b11559ba9f6be0a97eb3deae950947f637edb3241"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1ec02f0663a8036fb2f880da5ad7978f133584140f6779194bf3cf07c0620722"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "94ec7910ae6b4528125422f88bec9bf3033262d6c42005cb3d3125e61fd57eb7"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c"
+    }
+  ]
+}

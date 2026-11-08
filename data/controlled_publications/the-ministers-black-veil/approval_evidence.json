@@ -1,14 +1,14 @@
 {
   "slug": "the-ministers-black-veil",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
   "content_hash": "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346",
   "provenance_hash": "f0af064f093974dc587e597d2a5afdcef69beb600f5c605728c76341d0556dc0",
-  "verified_at": "2026-10-01T21:48:17.188009+00:00"
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "100ef82f45a2531e36c195018a68274873aebe533da061f795f0b90127d83940"
 }

@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-bet-pg55283-noncover-text",
+  "decision_id": "india-20261108-the-bet-reader-cover-successor",
   "edition_id": "the-bet",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+    "public_book": "b8386b447eb837d7d5f00a36d6690430071764a15a6ab6cbe7d8c4934546b7c4",
     "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
     "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
-    "approval_evidence": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84",
-    "checksum_manifest": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
-    "publication_manifest": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d"
+    "approval_evidence": "52dc4b9d2813f6db80100628504f4ced83109a411f94c6f606323b5c68ec0ab6",
+    "checksum_manifest": "fbd5dc2050df5d55dd5e7eac78aa7935529b9ee206076f98422a97fd8a5c9ceb",
+    "publication_manifest": "09f70ac9685c19420bcb2ee6e6e41d0d8358c890f08387635bcb4eb2c7e86a7d",
+    "cover_provenance": "a54a55bbbfb777a8bd8edeb856b44284da28961ce7598836b9744f3a84b30e2a",
+    "cover_front": "4b7127da76e3fe28a9fb114009c34068ff40b10e368b2062cf23fb420856dc7a",
+    "cover_back": "246c507bfccf36d6672258aaeca1a6c3d3dca8d99fe8b1fc5ce9a5ecc932acb0"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:54:02.732252+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "IN original-text author1904 life+60 ends1964 or conservative publication upperbound1915+60 ends1975; selected translators1955/1957 life+60 ends2015/2017. Every term elapsed; first original date unknown, no US-only inference.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-bet-pg55283-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
     "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
-    "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d"
+    "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+    "c415a8ff8c276b1ac7bd6dbc694ed38289ed188b087f9b5f9c92511f5218cebb",
+    "a54a55bbbfb777a8bd8edeb856b44284da28961ce7598836b9744f3a84b30e2a"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

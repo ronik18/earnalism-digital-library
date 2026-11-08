@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-second-stain",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969"
+      "sha256": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee"
+      "sha256": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5"
     }
   ]
 }

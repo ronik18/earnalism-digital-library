@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-purloined-letter",
   "title": "The Purloined Letter",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
     "content_hash": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
@@ -28,16 +28,14 @@
     "evidence_sha256": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5",
+    "public_book": "39f7001b7d520758ac5598dd674205230523954fa953f6c85e68d0730170111b",
     "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
     "source_evidence": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
-    "approval_evidence": "2234e7301f2766040d7bf292604213a8213a10f0d411cf1b53a802bfed761844"
+    "approval_evidence": "458208551a6dfe910f12ddf79caba19112dea0180c60ebf6998abfe615c670de"
   },
-  "manifest_sha256": "f192b55f1dc858d86296e8948e226c30931fc1f4a33f0c810b2380669f9eee6c"
+  "manifest_sha256": "b779137f4c34294e9e134dc2155fda2fc19cb74a446e5dbe83d866b48498c1ac"
 }

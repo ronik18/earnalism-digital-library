@@ -15074,5 +15074,20 @@
         ]
       }
     ]
+  },
+  "persisted45_reader_cover_source_successor_20261108": {
+    "at": "2026-11-08T04:41:49.549773+00:00",
+    "workstream": "persisted48_reader_release",
+    "decision": "PREPARE_45_EXACT_READER_COVER_SOURCE_SUCCESSORS_HOLD_PRODUCTION",
+    "source_candidate_count": 45,
+    "production_mutations": 0,
+    "rights_held": [
+      "gitanjali",
+      "nishkriti",
+      "the-metamorphosis"
+    ],
+    "evidence": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/successor.json",
+    "learning": "Existing backend mirrors can be absent or differ only in chapter metadata; preserve older bytes internally and prove manuscript content unchanged. Cover review corrected misleading scene/synopsis defects. Historical immutable transaction checks require explicit reviewed successor handling, never a waived failure.",
+    "next_action": "Review the exact historical shared-file assertion successor, then run required CI; no deployment until passing."
   }
 }

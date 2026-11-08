@@ -7,12 +7,12 @@
   "category_slug": "literary-fiction",
   "short_description": "A respectable man vanishes — and Holmes finds him living a secret double life as a London beggar.",
   "description": "Neville St. Clair has been living as the disfigured beggar Hugh Boone for years — earning far more than his respectable profession. Holmes's solution is a devastating commentary on respectability, economics, and identity.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/back-32c65c80621fd3ed.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/back-32c65c80621fd3ed.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-man-with-the-twisted-lip",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585793/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585794/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585795/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585796/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585797/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585793/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585793/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585794/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585795/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585796/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585797/earnalism/audiobooks/en/the-man-with-the-twisted-lip/the-man-with-the-twisted-lip_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "7b55b41491483715d7b3ab6025220f8f6cf3d278541a474e6928083476b5ab12",
+  "back_cover_sha256": "32c65c80621fd3ed119934c4e70ff54d8f0ba8c206ae1ee273f3f2bca1817ab4"
 }

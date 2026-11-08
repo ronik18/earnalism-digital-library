@@ -1,10 +1,10 @@
 {
   "slug": "markheim",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "6519befc8819b19fda170e2720aceed8bb32dd3cfd2cd3b48c1e1cee63d4abc3"
+      "sha256": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8"
+      "sha256": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "5d5b0ab7eb58f3896e7d0f12d316c34735ae642c3797ab339fe5d223b9c2a29c"
     }
   ]
 }

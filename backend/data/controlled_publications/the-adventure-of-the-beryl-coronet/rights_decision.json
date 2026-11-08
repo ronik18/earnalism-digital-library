@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor",
+  "edition_id": "the-adventure-of-the-beryl-coronet",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "41760a1deb5a349b7b3a734b618188db5d57fd19c162980df96cf515c8bb40a8",
+    "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+    "approval_evidence": "0ec247e3f8c072cc41b2e94ef09e5a5f306680c756a3a53cc85a21b50227d435",
+    "checksum_manifest": "fae8cf62dbc82363984a414cf340bc861675388053d29b913281cf55d9d4d77c",
+    "publication_manifest": "cd1b4121999e5d054e2b1ca05f1ac4c49a83b0953bf2b63d27f94209c3d9399e",
+    "cover_provenance": "c5d7b7d8a49a3302265d2d26ea509d929ce85ebef80cc1ab9199173c64ced3e4",
+    "cover_front": "a4255d0ae4226d5e78cff1bbf3fffcaeabb1f49902eedd7bdaa9f6a308e5fee9",
+    "cover_back": "b77935cac7fc72ec7b8febe2d1e4d062fb5bfffdf1dcceaf2ef4be0fac86f5ab"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-beryl-coronet-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29",
+    "f491bac0146fd58767b4cca11e570eb82513a3b99d61acd6d7fec6c394776590",
+    "c5d7b7d8a49a3302265d2d26ea509d929ce85ebef80cc1ab9199173c64ced3e4"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-luck-of-roaring-camp",
+  "title": "The Luck of Roaring Camp",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "content": {
+    "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "content_hash": "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
+    "provenance_hash": "d0d1be361bd2386704a00d3cffadc1eb2c56495e6ad1101cd8a838ec11474d11",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "7d11b0a7e13be73af61d5335e1197d8786c3359dcff5ae12aaf536d4f355ac35",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Luck of Roaring Camp",
+        "word_count": 4188,
+        "sha256": "04e03292f90a30a5cacc6062540e0bf8dd51d08b4ae323af1b2f3c5071223020"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-luck-of-roaring-camp/front-272a7efbf5f18201.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "2bad3fb5a3f437694825edaceff1b4905e59ad66155936b1f74e27c76738bf87",
+    "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
+    "approval_evidence": "ff6d01b7cf8091e137acc5495b56b860b6a637f3ae22ac584f9fef36d52de3df"
+  },
+  "manifest_sha256": "14972094964138d1ae50ff121f472550b86d1543cb15e15f62e4c1c1d4215902"
+}

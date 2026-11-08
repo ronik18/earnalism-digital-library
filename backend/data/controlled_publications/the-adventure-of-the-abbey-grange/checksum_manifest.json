@@ -1,0 +1,38 @@
+{
+  "slug": "the-adventure-of-the-abbey-grange",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "64157f3db639a48dadb1f501fb1336824120adeda9dbfd23087533249da164ab"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "282c429ec8841cae7bba9e2cb0aaea8f935e27fc837a8e595e857e7f59dc07f9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "aca5ce28ea663e940afaa621fa7e93fc409e653e3ae7177172dd39abc7c059e7"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "6824ac7163533643450f5f32e60be9f2c4696820202e70459a9e68b2ce26937a"
+    }
+  ]
+}

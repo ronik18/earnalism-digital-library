@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-masque-of-the-red-death",
+  "edition": "Project Gutenberg #1064; selected Poe original story; historical lifetime publication 1842; no modern scholarly/editorial text imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+  "content_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+  "chapter_sha256": {
+    "chapter-001": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

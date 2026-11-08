@@ -1,0 +1,38 @@
+{
+  "slug": "the-adventure-of-the-second-stain",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "0368a6a2ff680cc06cadd9183fa1fbe29d1481f3e788399ca752e9da4151899a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "10ec8f5c577bdb9080027ef4c4abae559fe996c70d450370026663aead17c317"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "d9d7799750a0b5bdb6f9f435a14121459b1c5b1b0963dbec3b118482f28f7535"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-purloined-letter",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "4b0daef66f8fb3b0999ec144ebb4877c63a7721f0f614393d681f30a4689c519",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+      "url": "https://theearnalism.com/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+      "sha256": "7159097048491dcdcb58c55fd80bb4a8bc2409d1484969b0ec0fd1603083467c",
+      "bytes": 70986,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-purloined-letter/back-2e65989a50a93642.webp",
+      "url": "https://theearnalism.com/assets/books/the-purloined-letter/back-2e65989a50a93642.webp",
+      "sha256": "2e65989a50a93642693886a5d85a52dcc61895619f17c0e4a645ddd2e6074bb9",
+      "bytes": 28710,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

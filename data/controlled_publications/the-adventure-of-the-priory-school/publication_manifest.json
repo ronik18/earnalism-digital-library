@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-priory-school",
   "title": "The Adventure of the Priory School",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:19:59.725161+00:00",
   "content": {
     "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
     "content_hash": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
@@ -28,16 +28,14 @@
     "evidence_sha256": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "200768acdb552a81b702adad6d118582da2b09140f12527eded28508cf6a1b88",
+    "public_book": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd",
     "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
     "source_evidence": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
-    "approval_evidence": "3118ec6ffbc17340f2d4baf4bd400594d449f7ce57e6b51412b8864897763ff2"
+    "approval_evidence": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9"
   },
-  "manifest_sha256": "650a1a6ecd2f1a94cdc665445a9e81b0e3f5edddb1d885f1267e454b01c9a6c3"
+  "manifest_sha256": "26d4da483951f867eccaafd78f8f576f38858daaea949ea9e5f589fe595a1f28"
 }

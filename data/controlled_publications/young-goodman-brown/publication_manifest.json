@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "young-goodman-brown",
   "title": "Young Goodman Brown",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
     "content_hash": "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
@@ -28,16 +28,14 @@
     "evidence_sha256": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+    "public_book": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740",
     "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
     "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
-    "approval_evidence": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8"
+    "approval_evidence": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6"
   },
-  "manifest_sha256": "017855ada8189ee2bf86331b1e3829ebff5bc55515e1b41709421dca460255af"
+  "manifest_sha256": "8e3f687800558f1c5bb3d95b5c19065c6f2bd2166b195b320a542dcfd9acf6d4"
 }

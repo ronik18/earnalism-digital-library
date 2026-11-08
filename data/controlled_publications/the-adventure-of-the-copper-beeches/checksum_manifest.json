@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-copper-beeches",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ab1963f2a2a1d8a3036d6167bb367e395d9067eac615c8e31d271ad53d11bd83"
+      "sha256": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "f151cf4cc9bc066dcaf10f4323d586cfb2bcff100ec5a3b6bae9bab39b2b1bc4"
+      "sha256": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "e9ef27836a8d1f7533359d4f421ff76994bd4dea75217879b43d14303ea98bf7"
     }
   ]
 }

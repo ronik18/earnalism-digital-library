@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "markheim",
   "title": "Markheim",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
     "content_hash": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
@@ -28,16 +28,14 @@
     "evidence_sha256": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/markheim/front-1568f8a2bdea9548.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8",
+    "public_book": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0",
     "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
     "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
-    "approval_evidence": "6519befc8819b19fda170e2720aceed8bb32dd3cfd2cd3b48c1e1cee63d4abc3"
+    "approval_evidence": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf"
   },
-  "manifest_sha256": "86f8c2d1a95d3070824566c820b6210ca2beaa90dbf07486b0ec125e5f820894"
+  "manifest_sha256": "aab2268aa93edfbef4026d6817def8050909186b5a974813337a00b4b3df2b5f"
 }

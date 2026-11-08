@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "feathertop",
+  "edition": "Project Gutenberg #512; Feathertop selected complete Nathaniel Hawthorne story/cycle from Mosses from an old manse; verified lifetime collection edition 1846; no translation/editorial/art imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+  "content_sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+  "chapter_sha256": {
+    "chapter-001": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

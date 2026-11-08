@@ -150,7 +150,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
   scripts.test_process_full_catalogue \
-  scripts.test_catalogue_clearance_registry_successor
+  scripts.test_catalogue_clearance_registry_successor \
+  scripts.test_persisted45_reader_successor
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
 node scripts/test_regression_asset_isolation.cjs

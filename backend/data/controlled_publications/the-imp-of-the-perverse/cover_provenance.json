@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-imp-of-the-perverse",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "fd12c77f5252589166c22887b03a32f8c1dcf29962d36de2862ae6b4464f2b91",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-imp-of-the-perverse/front-71c298d1aebcb814.webp",
+      "url": "https://theearnalism.com/assets/books/the-imp-of-the-perverse/front-71c298d1aebcb814.webp",
+      "sha256": "71c298d1aebcb814cd111c29205c13c73461abad1c423584243ddb7109c7d067",
+      "bytes": 84934,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-imp-of-the-perverse/back-e44da81d0dffb6d2.webp",
+      "url": "https://theearnalism.com/assets/books/the-imp-of-the-perverse/back-e44da81d0dffb6d2.webp",
+      "sha256": "e44da81d0dffb6d2ed24dc52e0be0a219c0231c818e789441637778d2211b9bf",
+      "bytes": 31042,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

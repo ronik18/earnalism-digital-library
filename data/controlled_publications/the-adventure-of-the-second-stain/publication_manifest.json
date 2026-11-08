@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-second-stain",
   "title": "The Adventure of the Second Stain",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "content": {
     "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
     "content_hash": "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88",
@@ -28,16 +28,14 @@
     "evidence_sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-second-stain/front-a8fee57446567bc7.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
+    "public_book": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845",
     "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
     "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
-    "approval_evidence": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969"
+    "approval_evidence": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494"
   },
-  "manifest_sha256": "f4ce7faec1981293fac8378f4f6033fee1d818b0bda929571e0a11c483af0550"
+  "manifest_sha256": "fdd3e819f8a6b4c1aebc5fa5e074393e9cfc504efde1b53ccf6e76309afcc58e"
 }

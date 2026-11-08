@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-to-build-a-fire-reader-cover-successor",
+  "edition_id": "to-build-a-fire",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e",
+    "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+    "source_evidence": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
+    "approval_evidence": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25",
+    "checksum_manifest": "7332e92ee92cc97aea3adb5012fc06b92786f40e87b85f2fb568c7761c9b4f3d",
+    "publication_manifest": "23da9bf80973d19ec9aa0aa2b2f8a35a4e41b09480341de8896b02686f19c827",
+    "cover_provenance": "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9",
+    "cover_front": "fcbad9a6eaaa5a9e2e3e7eaec1d2a8ce7826254f73fc4a5503e54e42a4721873",
+    "cover_back": "ddfe01a2636f9460f3dd0f6b739608f2053ab12e31ef0eb1fae28db306b77650"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-to-build-a-fire-pg2429-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "a63d6b7a8a671eefd91d445f969e416988a58206511dae5b058bb3aa00194932",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d",
+    "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
+    "0d4d1397920918d29d174f09106449dfd7af3ca1f82ea1a0a412ec121cc6e16d",
+    "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

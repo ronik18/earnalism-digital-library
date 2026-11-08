@@ -1,10 +1,10 @@
 {
   "slug": "the-ambitious-guest",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "e7b51600b3865ae8083e3abda2d2400a84440815e1e1dbda6768e6b3bb1106f0"
+      "sha256": "03761b2b57131c63301ff665aa45a0f4e8378fbdf4f125e0c854e09d7a28f198"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809"
+      "sha256": "b37a0d5ec87d22cf855e6e9b35572ced8261a04ac0876a939740f67de41e89fd"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "29ac28165c4db3efefd0a591255bebdd5fd426a8578a88fc95c8d1817154d78b"
     }
   ]
 }

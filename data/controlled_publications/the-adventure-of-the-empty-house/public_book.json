@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "Sherlock Holmes returns from the dead three years after Reichenbach — and immediately traps the deadliest marksman in London.",
   "description": "Watson faints when a stooped old bookseller reveals himself as Holmes — who survived Reichenbach by using baritsu. Holmes's return is engineered to catch Colonel Sebastian Moran, Moriarty's chief assassin, in the act of firing an air gun across Baker Street.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-empty-house/front-bd449d4fd898ddd0.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-empty-house/front-bd449d4fd898ddd0.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-empty-house/back-a2f25cd2835c22e8.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-empty-house/back-a2f25cd2835c22e8.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-empty-house",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585267/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585268/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585269/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585270/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585271/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585267/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585267/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585268/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585269/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585270/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585271/earnalism/audiobooks/en/the-adventure-of-the-empty-house/the-adventure-of-the-empty-house_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "bd449d4fd898ddd08f83d1824b7572ba025f5a1a637ba094a97b9a4378d9c975",
+  "back_cover_sha256": "a2f25cd2835c22e80d2086e9e9fbf8a9e44ae7f50805b8b998008a51ce177b50"
 }

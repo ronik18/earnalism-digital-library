@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor",
+  "edition_id": "the-adventure-of-the-blue-carbuncle",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "86a4eef392d9795f8076c299b055b698bc23c64aef01adf9b1ce69350afb81fa",
+    "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
+    "approval_evidence": "1f864e2bf88d93de33203196381270dddf632c5fbd0bcbb799eef1bbdb20745f",
+    "checksum_manifest": "294637c87582424daac210e34d9ad4eee1505ddefeb8b2c45add90ef8ee44fc2",
+    "publication_manifest": "bcede6da36d6aa72fed44e702b63d123fe5908d06cbce314e4a35b4ad9d386aa",
+    "cover_provenance": "693e4c78049dcd74fcef5b08470f7f8568b14f31b8828cfb2712223a157542ab",
+    "cover_front": "7bd5c08c49ae7b6673ceea35d9096a0d8a179c0efafa941a2467cd0bf1bcc06a",
+    "cover_back": "2ceb1f6da7dc4ff8960611a1066c7ac324930c52ce66d8f470a7a3f58c3d2469"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-blue-carbuncle-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "96144fcc963734d47689dfeca712812628d8b84c70432ead8cb0c40e22bd3fe6",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+    "81632be7dddcb84128ae64587c45d63eef93a022d59fa41eb7caa10caf90f300",
+    "693e4c78049dcd74fcef5b08470f7f8568b14f31b8828cfb2712223a157542ab"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,10 +1,10 @@
 {
   "slug": "the-masque-of-the-red-death",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -18,5 +18,6 @@
   "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
   "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
   "provenance_hash": "134975b99b925552968ba69c64940ac5f867b5d19e983e21bd76276dbc5d0142",
-  "verified_at": "2026-10-01T21:52:27.631967+00:00"
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "cover_provenance_sha256": "6f1f9757c03b7acc37292be721f2883823e3c5ce7aaa06fb810a3d14b240fbe8"
 }

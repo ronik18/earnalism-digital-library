@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-priory-school",
+  "title": "The Adventure of the Priory School",
+  "generated_at": "2026-11-08T04:19:59.725161+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
+    "provenance_hash": "d675e3a1f221a44f48a2f6da85a2185142386928a52b31f19846066a4e78f30b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "3a23fe61f542e6e93f95bd3b9754c98c175297f6197974438ad3c64b74930fd1",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Priory School",
+        "word_count": 11551,
+        "sha256": "b10b2a88e25156966addb6dc3324bb46ad6a5e1ba5d846435b2240d180f09ace"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd",
+    "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "source_evidence": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
+    "approval_evidence": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9"
+  },
+  "manifest_sha256": "26d4da483951f867eccaafd78f8f576f38858daaea949ea9e5f589fe595a1f28"
+}

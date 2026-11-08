@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-markheim-pg344-noncover-text",
+  "edition_id": "markheim",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8",
+    "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
+    "approval_evidence": "6519befc8819b19fda170e2720aceed8bb32dd3cfd2cd3b48c1e1cee63d4abc3",
+    "checksum_manifest": "ae2d1a8d6b148c1383feed931c227097cac80cba14f3aeffb3cb1714f324d227",
+    "publication_manifest": "fe71756b512cf33439366060b3ca0319b109c7f0ff1fccf3cda35ae07a88d2e7"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1894, verified lifetime collection publication 1887 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "3f5b98c0b00f8a555adfdb542dd66f52c2b95cf2ed880c6ffd6688b42bd04d9c",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
+    "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

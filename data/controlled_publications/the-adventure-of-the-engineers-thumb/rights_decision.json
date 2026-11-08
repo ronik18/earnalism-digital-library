@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-adventure-of-the-engineers-thumb-pg1661-noncover-text",
+  "decision_id": "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor",
   "edition_id": "the-adventure-of-the-engineers-thumb",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
+    "public_book": "cf829469e07642fdf4526721fe48fdaf96b4e1c82a2207cb9685b0bc2b61fce8",
     "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
     "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
-    "approval_evidence": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443",
-    "checksum_manifest": "867f6b7f397d358bfe11a6f2f75b50efebc7359445c6311eeba19468816035ee",
-    "publication_manifest": "35f7a7d6dc0007e2b4fe114e6fd595c3cf35eda9fac7ffb8713f4de13e41b4c9"
+    "approval_evidence": "660944f0a7fc089a372085cf8515f33343f6803e18a50cdaf163a269e8e9cf05",
+    "checksum_manifest": "5af13d50c99f208214bf33e8a6471f896ab579e72bbe4a07bb8e250caa5a7d79",
+    "publication_manifest": "2c038103c28a8e6b1b75c9fc1947bbd59bfb2a00852bbbb6ae464853bfaeb1c0",
+    "cover_provenance": "04fea644574d126ebb5a5abc9febf051b2e1a25cc347d6659a19e99531580e0a",
+    "cover_front": "75be2913c2d03302aea955b7bd3db218a35a2ac09c12914c226fcff09bf9d897",
+    "cover_back": "042c7d5bb3398cf454639e2878ff4114b80e05b1fe8577a5a2d3ff8c295006bd"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:34.443341+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-engineers-thumb-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "96750a8e060836738d2fd26a43fb20fc5542461887f03dbf9fbbe84b8220b59a",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
     "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
-    "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85"
+    "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
+    "32424316f068d253a53a1b7fe44cd1e9a270337afe62f3beeeb7d5a21a1bdf93",
+    "04fea644574d126ebb5a5abc9febf051b2e1a25cc347d6659a19e99531580e0a"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

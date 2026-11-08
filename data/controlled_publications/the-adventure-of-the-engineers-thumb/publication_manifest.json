@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-engineers-thumb",
   "title": "The Adventure of the Engineer's Thumb",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
     "content_hash": "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
@@ -28,16 +28,14 @@
     "evidence_sha256": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-engineers-thumb/front-75be2913c2d03302.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
+    "public_book": "cf829469e07642fdf4526721fe48fdaf96b4e1c82a2207cb9685b0bc2b61fce8",
     "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
     "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
-    "approval_evidence": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443"
+    "approval_evidence": "660944f0a7fc089a372085cf8515f33343f6803e18a50cdaf163a269e8e9cf05"
   },
-  "manifest_sha256": "c15002d7c316200ed6a50738dfa948f0909c9f6e61a4c9f2d0a3f42ba751b72b"
+  "manifest_sha256": "14c1ae330768fe9b07c8477ca4455f08435f4376b55361ff0b9b8ed3bbf99010"
 }

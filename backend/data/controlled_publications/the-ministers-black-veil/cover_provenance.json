@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-ministers-black-veil",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "53b5c98d81618c5865af520de5cf09522ce9c30c79a2dfddd6a8f74ce8c00c0b",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+      "url": "https://theearnalism.com/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+      "sha256": "7cead9082cadce2b775e362223558c32493e2436ddd4b3c8e4ac0c3a32b9c845",
+      "bytes": 57370,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-ministers-black-veil/back-ebeea33d539a5cee.webp",
+      "url": "https://theearnalism.com/assets/books/the-ministers-black-veil/back-ebeea33d539a5cee.webp",
+      "sha256": "ebeea33d539a5ceefc4c1e8bde9c5af799dd284f6a901a7e3acfda5b732c5d15",
+      "bytes": 25722,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

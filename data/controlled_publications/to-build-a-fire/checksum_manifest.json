@@ -1,10 +1,10 @@
 {
   "slug": "to-build-a-fire",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a"
+      "sha256": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4"
+      "sha256": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9"
     }
   ]
 }

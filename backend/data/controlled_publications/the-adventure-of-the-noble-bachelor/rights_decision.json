@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor",
+  "edition_id": "the-adventure-of-the-noble-bachelor",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0",
+    "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
+    "approval_evidence": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c",
+    "checksum_manifest": "36443db772499754b107d562c7cc6f0d7fd44532b06ac8d4a558da007cf9a6a4",
+    "publication_manifest": "71d20d2b5cc90f510bfa55f9f4a5f9643b0b853cb460e988d7718c5421712b70",
+    "cover_provenance": "6ab9a2a50cebe99cbbf855dff0d2fe9f95c94439b9a3dd70768b487fdef095da",
+    "cover_front": "07b4be8b63c8a9a67274475d82816e4b8bbd52d1d8f5d7cdcee1491911c21c06",
+    "cover_back": "220262aef53b89503da5d1f89143027935de67a05c745243ee8044bf4b6fd902"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-noble-bachelor-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804",
+    "29a279fd2738c7fdf07b13be3e05ae2ed5d21b1b91934bbe3a8a7eaf40f77294",
+    "6ab9a2a50cebe99cbbf855dff0d2fe9f95c94439b9a3dd70768b487fdef095da"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

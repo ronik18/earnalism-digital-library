@@ -1,0 +1,38 @@
+{
+  "slug": "the-speckled-band",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2a8d18239b93930f142fd2048765ed6e19147ebb9033ef421ecc63cc72eb456a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "04ef038bf83876438b1b3f458ae5cc04d1081ac69c66357ef816bf5f478bb2f3"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a549c484a1f9445de2caa7bbfe8340a6383765a6a7a75c746ff4a1c25e2fb76f"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "12ec7d525b0fd78d16413113c522d288b00f51cc024b3ea12ccdbc8c43c04256"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "e20fd31ddb29f4161febcd7e1db0a5cf535f5cd6bbe8e6cf28d8bbad2975870c"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "acc912e5c215360bfd9b3690d479aff2eaad8b43720251afc2e1f1044eb6f917"
+    }
+  ]
+}

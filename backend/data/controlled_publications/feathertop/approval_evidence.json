@@ -1,0 +1,23 @@
+{
+  "slug": "feathertop",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "cd60a13f1a3a71d74f35a5284b05f764ae24c830ee993ce7ac704e6c98d55015",
+  "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+  "content_hash": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+  "provenance_hash": "6628642a03785d0a5a6a87c8d5094dcde9e34daabddd38b1cc1283483b97b42f",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "d16110e3a5062c2b0e8687ed1366d5461f5c41a96d5f4a7ae5d6636f3425934d"
+}

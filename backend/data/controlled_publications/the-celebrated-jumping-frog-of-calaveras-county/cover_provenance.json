@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "4201e894bdb1834cbc9ad50206d403a149c7c307d76055ae69454e54418b67ac",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+      "url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+      "sha256": "4df736343b19a3246ab36d4d06f3424da18a5cc600bf1d56dddb24ae1e172ac2",
+      "bytes": 118938,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-celebrated-jumping-frog-of-calaveras-county/back-7e617b8ff497a1bf.webp",
+      "url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/back-7e617b8ff497a1bf.webp",
+      "sha256": "7e617b8ff497a1bf9e688c740148b11337e2a32f9b708334bb82db5a8777283d",
+      "bytes": 33264,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

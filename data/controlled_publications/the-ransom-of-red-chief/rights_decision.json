@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-ransom-of-red-chief-pg1595-noncover-text",
+  "decision_id": "india-20261108-the-ransom-of-red-chief-reader-cover-successor",
   "edition_id": "the-ransom-of-red-chief",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d",
+    "public_book": "7f384b5bb57c75bc0bbecc8bca61046c3369e925515552bdc81f395e92b93e3f",
     "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
     "source_evidence": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
-    "approval_evidence": "6260c6fb2a25cb4fbefc79bec4f758a3d7120bbda2ec10ee495893d6d5393f06",
-    "checksum_manifest": "3c6742abde62f32aa64a089a8d4027d8eeea405a634709168581d434bfcd9b29",
-    "publication_manifest": "11dcc80257c8269c91d9310302a62a0865963e588070028e63043cfb873edda2"
+    "approval_evidence": "c8083b53e667bdc0c0bebc635e1ace1067c2e00e901461644132dab1782d78e0",
+    "checksum_manifest": "ca921e240e3f3c88b5d4a72be824aff1e2ee11ddd0df3d37f5e2f5fa844e496a",
+    "publication_manifest": "36af250bd6abfff99c5390b9ecaef9c2922c959c4967d988ae3d5653df4e0695",
+    "cover_provenance": "30ecf17c607c4c7de1936c8c8ef5d648b62235523cab6ec0b76e32ab216a22f8",
+    "cover_front": "ff9be054869a43043f950631ad83f834cc589af4fddb0b84d6844000522fab57",
+    "cover_back": "7b5523dd5d74882af01fe3d45fbdc523dd858aedb8f357778cf7d2c185165057"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:54:02.732252+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "IN text only. Verified publication no later than 1910; original-author life+60 ends 1970, or conservative posthumous-publication upper bound+60 ends no later than 1970; every selected translator/coauthor latest death 1910, life+60 ends 1970. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-ransom-of-red-chief-pg1595-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "6839c02acdde363ce63439107dbb1a6e8340d355c52c5f50945415d825ca3b29",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
     "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b",
-    "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1"
+    "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1",
+    "a7dd78a559457bf4262583dab4b5b705c69f3e68ce3fdf8b087dbd2bb95731fc",
+    "30ecf17c607c4c7de1936c8c8ef5d648b62235523cab6ec0b76e32ab216a22f8"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

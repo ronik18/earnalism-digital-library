@@ -1,10 +1,10 @@
 {
   "slug": "ward-no-6",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c"
+      "sha256": "0fffcf027165b799472a27686f3a209ef25439c966b3a09446dec04f9f90aca0"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f"
+      "sha256": "2f17fc4f377990b9fa663490643f5cf4cd463e443dad7fe6f3de4ef57da65719"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "61f70dae775a60999a77d3174056fce94db265d0c1eabd1adb908395ceea8e42"
     }
   ]
 }

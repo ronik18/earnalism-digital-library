@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "A lord's American bride vanishes from their wedding reception — Holmes discovers she already has a husband.",
   "description": "Lady St. Simon disappears during her own wedding breakfast. Holmes traces her to a restaurant where she sits with a man — the husband she believed drowned in a San Francisco river. A story about misunderstanding, presumed death, and transatlantic lives.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/back-220262aef53b8950.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/back-220262aef53b8950.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-noble-bachelor",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584594/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584595/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584594/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584595/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "07b4be8b63c8a9a67274475d82816e4b8bbd52d1d8f5d7cdcee1491911c21c06",
+  "back_cover_sha256": "220262aef53b89503da5d1f89143027935de67a05c745243ee8044bf4b6fd902"
 }

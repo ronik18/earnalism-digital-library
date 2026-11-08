@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-noble-bachelor",
   "title": "The Adventure of the Noble Bachelor",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:19:59.725161+00:00",
   "content": {
     "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
     "content_hash": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804",
@@ -28,16 +28,14 @@
     "evidence_sha256": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
+    "public_book": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0",
     "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
     "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
-    "approval_evidence": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c"
+    "approval_evidence": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c"
   },
-  "manifest_sha256": "5732bde7802bd66d151338c667e5412a7cc86f8fc92d07b8c4456ffc8d8da1ec"
+  "manifest_sha256": "f12133be7b4de5c47b2a58451fdccc7f8f6ef57a94a44733b8a518906ab02573"
 }

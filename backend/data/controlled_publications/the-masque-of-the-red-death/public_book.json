@@ -7,12 +7,12 @@
   "category_slug": "gothic-fiction",
   "short_description": "A prince seals himself and his court inside a castle to escape a plague — only for Death itself to arrive as a masked guest.",
   "description": "Prince Prospero's masquerade ball becomes a meditation on the futility of hiding from mortality — one of literature's most vivid allegories of death's democracy.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/back-a8ba155eb51310fd.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/back-a8ba155eb51310fd.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
-  "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
-  "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+  "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+  "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+  "provenance_hash": "134975b99b925552968ba69c64940ac5f867b5d19e983e21bd76276dbc5d0142",
   "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -78,9 +78,9 @@
   "audiobook_provider": "",
   "audiobook_voice": "",
   "audio_asset_slug": "",
-  "audiobook_assets": {},
-  "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "b5da74282d1d0d85d8765449e6263a9051708bd7b2925f74ed56da40b3b67ea8",
+  "back_cover_sha256": "a8ba155eb51310fd4873eb1894f75260d2f54bb9085379748a058f16dd66017b"
 }

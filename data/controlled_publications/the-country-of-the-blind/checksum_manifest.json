@@ -1,10 +1,10 @@
 {
   "slug": "the-country-of-the-blind",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "128b7553db8a4d64df98345756055b44cd8223448f7c50f2304455772e3f8f59"
+      "sha256": "283d507508e047df05b72cad44b9da59af0c08e222c4418caa9b0b19601f01be"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d"
+      "sha256": "c329387501c154989063c36304b35725c6281f8c9c5dc021fc3493e6f9a7501f"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "83ff8e91733d3d43a17adbcf15b8ef72d76dad576da2d6fc61192eb81d2e9aa1"
     }
   ]
 }

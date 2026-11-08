@@ -1,0 +1,38 @@
+{
+  "slug": "the-door-in-the-wall",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "cb189b4877fabea21abfa29695a81ba7ee2414bcb96d9b42f01056e584899181"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "c5504b62f868ae782d814c7b6556afe482d0f2c1cab666ca1e314dce435e4568"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "efbcae6afbf6c00657fbd8eafa7a96a2f588e824d2c34a7d58ab8ea34c579431"
+    }
+  ]
+}

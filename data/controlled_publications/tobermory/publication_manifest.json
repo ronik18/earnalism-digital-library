@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "tobermory",
   "title": "Tobermory",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
     "content_hash": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
@@ -28,16 +28,14 @@
     "evidence_sha256": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/tobermory/front-b6d42ca7af192650.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
+    "public_book": "d371de6009f5487942bab3f76c78a68bb35f1c33bf583832231c5d383614e2ea",
     "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
     "source_evidence": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
-    "approval_evidence": "ab26b41c70fec5803e45b560917c2ba9e08c91a0632fc58f1d89f80f51898ef9"
+    "approval_evidence": "d230c089f174785c6a48bc01a410cec3594ec5e7f81dc10aeb1454b0adbfc72a"
   },
-  "manifest_sha256": "aa5825e524a1e7a1b9cb897c2aabf2f83f8d035b3854b025f25bbad898367f00"
+  "manifest_sha256": "ca9f21f012c3e57f67aa0aef3a317a95067e84e9c8dc55c5444caf6f2bcbcc45"
 }
