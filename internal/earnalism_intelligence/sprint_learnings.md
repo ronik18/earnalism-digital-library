@@ -3186,4 +3186,6 @@ An original source-bound Reader/containment approval is not a reusable blank che
 
 8 November 2026: Persisted text matching and valid package checksums do not imply production release eligibility. The 48-title cohort has 45 local non-cover text decisions, zero registered production candidates, and three title-specific rights/package holds. Preserve those text records; qualify covers and exact successor release scope before activation. No production changes.
 
+- 8 November 2026: Country/format rights inventory and draft accounting reuse existing authorities; prepared US packets are not current package acceptance. Net clearing must reconcile per payment, not only currency totals. Missing tax/financial facts hold paid activation, not an otherwise qualified CLOSED customer-information release.
+
 - 2026-11-08T05:58:29.844558+00:00 — Owner requested immediate purchase reopening and authorized an isolated branch. Preserve the concurrent legal/accounting checkout. Restore normal entrypoint only through exact-head checks and manual merged-main deployment; no customer charge is part of qualification.

@@ -69,6 +69,13 @@ async function main() {
     // short search description that loses retention, remedies or contacts.
     if (legalPolicies[route]) {
       const policy = legalPolicies[route];
+      if (policy.cancellation) {
+        for (const href of [policy.cancellation.downloadHref, policy.cancellation.emailHref]) {
+          state.assertions += 1;
+          if (!html.includes(href.replace(/&/g, "&amp;"))) fail(route + " is missing a cancellation link", state);
+        }
+      }
+
       state.assertions += 1;
       if (!/<img\b[^>]*\bsrc="https:\/\/theearnalism\.com\/assets\/brand\/earnalism-brand-lockup\.png"/i.test(html)) {
         fail(route + " is missing the rendered canonical logo image", state);
