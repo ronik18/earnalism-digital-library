@@ -67,6 +67,17 @@ class Workflow(unittest.TestCase):
    for c in json.loads(self.notebook.read_text())['cells']:
     if c['cell_type']=='code':exec(compile(''.join(c['source']),'notebook','exec'),ns)
   self.assertIn('WAN_DISABLED',stream.getvalue());self.assertNotIn('ROOT',ns)
+ def test_setup_cell_requires_successful_input_verification_before_install(self):
+  cell=''.join(json.loads(self.notebook.read_text())['cells'][6]['source']);fake=Mock();fake.sha.return_value='bound-job'
+  ns={'RUN_WAN':True,'PREFLIGHT_OK':True,'SETUP_WAN':True,'worker':fake,'ROOT':self.root}
+  with self.assertRaisesRegex(RuntimeError,'source-bound input pack'):exec(cell,ns)
+  fake.setup.assert_not_called();fake.export.assert_not_called()
+  ns['INPUTS_VERIFIED_JOB_SHA256']='stale-job'
+  with self.assertRaisesRegex(RuntimeError,'source-bound input pack'):exec(cell,ns)
+  fake.setup.assert_not_called()
+  ns['INPUTS_VERIFIED_JOB_SHA256']='bound-job';(self.root/'setup.json').write_text('{}')
+  with redirect_stdout(StringIO()):exec(cell,ns)
+  fake.setup.assert_called_once_with(self.root);fake.export.assert_called_once_with(self.root)
  def test_enabled_without_free_evidence_stops_before_write_or_import(self):
   nb=json.loads(self.notebook.read_text());ns={};exec(''.join(nb['cells'][1]['source']),ns);ns['RUN_WAN']=True
   with self.assertRaisesRegex(RuntimeError,'Free CUDA'):exec(''.join(nb['cells'][2]['source']),ns)
