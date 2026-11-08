@@ -91,8 +91,9 @@ else:
 path=pathlib.Path('/content/wan22-inputs.zip')
 if not path.exists():raise RuntimeError('Upload wan22-inputs.zip in the Files sidebar and wait for completion before verifying')
 worker.unpack_inputs(path,ROOT,{sha(archive)!r})
+INPUTS_VERIFIED_JOB_SHA256=worker.sha(ROOT/'job.json')
 print('Source illustrations verified; no generation performed')''')
-    setup=action('SETUP_WAN',"try:\n worker.setup(ROOT)\nfinally:\n worker.export(ROOT)\nprint((ROOT/'setup.json').read_text())")
+    setup=action('SETUP_WAN',"if globals().get('INPUTS_VERIFIED_JOB_SHA256')!=worker.sha(ROOT/'job.json'):raise RuntimeError('Verify the complete source-bound input pack before setup')\ntry:\n worker.setup(ROOT)\nfinally:\n worker.export(ROOT)\nprint((ROOT/'setup.json').read_text())")
     by_id={s['id']:s for s in scenes}
     start_guard="if worker.remaining(ROOT)<1200:raise RuntimeError('Insufficient original deadline headroom for detail pilot')\n" if profile in DETAIL_SCENES else ''
     clips=[action(flag,start_guard+f"worker.generate(ROOT,{sid!r})\nprint((ROOT/'attempts.json').read_text())") if sid in by_id else "print('SCENE_NOT_IN_THIS_JOB: reuse the verified prior clip; no generation')" for flag,sid in [('GENERATE_HOMECOMING','homecoming'),('GENERATE_SWEETS','sweets')]]
