@@ -33,7 +33,8 @@ permissions:
 jobs:
   owner-review:
     name: Editorial/support owner-review artifact
-    runs-on: ubuntu-latest
+    # Pinned Playwright dependencies require the supported Ubuntu 24.04 runner.
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache
