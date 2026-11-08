@@ -9794,8 +9794,8 @@
     },
     {
       "path": "start_prod.sh",
-      "bytes": 2074,
-      "sha256": "fd57eb674b44b50700cfd78e8ad4dd9e930866b054c380ddbafa34a83c7b8ca6"
+      "bytes": 2040,
+      "sha256": "db37ea635cc7a2a6e3fbc449604095e0733997147a6bf7742cda4e22fce22338"
     },
     {
       "path": "startup_data_guard.py",
@@ -9848,5 +9848,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "14adc6cbce824ba9e2597ac89036ecc5dd1c24f4d7fd9e84ca10a03d96d3a1c2"
+  "expected_sha256": "ba7d2c380d2b6573ee9da18100661fc1cf8bb65717a09c8f3b282aad3d268d54"
 }

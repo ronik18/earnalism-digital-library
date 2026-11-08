@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-08T05:58:29.844558+00:00",
+  "scope": "Owner-directed production Reading Pass purchase reopening only",
+  "owner_instruction": "Immediately unblock the reading pass purchase on https://theearnalism.com production. Use a separate conflict-free branch if needed.",
+  "branch": "codex/reopen-reading-pass-purchases-20261108",
+  "source_base": "8ea29c004c991902df8cab14e40189f190bb6618",
+  "status": "SOURCE_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "change": "Restore normal server:app production startup; retain immutable purchase-closed wrapper for rollback. Existing financial, territorial and entitlement handlers are byte-unchanged.",
+  "server_sha256": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21",
+  "retained_closed_deployment": "0472e141-4707-47b1-b76d-a4282b27d0f9",
+  "retained_closed_commit": "f416e9a08e9774eda7b7f0c8d588f0485d58e230",
+  "prechange_public_probe": "Both website and API returned 503 PURCHASE_INITIATION_CLOSED",
+  "local_checks": "15 focused tests and 27 subtests pass; actual unwrapped ASGI canonical/trailing-slash requests reach 401 authentication",
+  "production_deployed": false,
+  "provider_order_created": false,
+  "payment_captured": false,
+  "paid_session_started": false,
+  "next_exact_command": "gh pr checks <purchase-reopen-pr> --watch --fail-fast"
+}

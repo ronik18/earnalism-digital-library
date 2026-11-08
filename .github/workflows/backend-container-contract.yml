@@ -81,17 +81,15 @@ jobs:
             sleep 2
           done
           curl --fail --silent --show-error http://127.0.0.1:8080/healthz > backend-container-contract/healthz.json
-          # Exercise the actual container entrypoint, using only synthetic local
-          # requests. Closure must precede any purchase handler or body parsing.
+          # Owner reopened initiation. The actual entrypoint must now reach
+          # normal authentication; anonymous requests must never create orders.
           for purchase_path in /api/payments/topup /api/payments/topup/; do
-            status="$(curl --silent --show-error --max-time 10 --request POST \
-              --header 'Content-Type: application/json' --data '{invalid-json' \
-              --dump-header backend-container-contract/purchase-closed.headers \
-              --output backend-container-contract/purchase-closed.json \
+            status="$(curl --silent --show-error --location --max-time 10 --request POST \
+              --header 'Content-Type: application/json' --data '{"pack_id":"invalid-contract-pack"}' \
+              --output backend-container-contract/purchase-auth.json \
               --write-out '%{http_code}' "http://127.0.0.1:8080$purchase_path")"
-            test "$status" = 503
-            grep -Eiq '^cache-control: no-store' backend-container-contract/purchase-closed.headers
-            python3 -c 'import json; assert json.load(open("backend-container-contract/purchase-closed.json"))["detail"]["code"] == "PURCHASE_INITIATION_CLOSED"'
+            test "$status" = 401
+            python3 -c 'import json; body=json.load(open("backend-container-contract/purchase-auth.json")); assert "PURCHASE_INITIATION_CLOSED" not in str(body)'
           done
           docker exec earnalism-backend-ci sh -c 'test "$(id -u)" -ne 0 && test "${PORT}" = 8080 && python -c "import server"'
           ! docker image inspect earnalism-backend-ci | grep -q '127.0.0.1:8000\|:8000/healthz'

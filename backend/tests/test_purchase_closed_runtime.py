@@ -66,13 +66,13 @@ class PurchaseClosedRuntimeTests(unittest.TestCase):
                 self.assertIs(calls[0][2], send)
                 self.assertEqual(messages, [])
 
-    def test_production_startup_uses_closed_factory(self):
+    def test_closed_factory_is_retained_but_owner_reopened_startup_uses_app(self):
         delegate = object()
         with patch.dict(sys.modules, {"server": SimpleNamespace(app=delegate)}):
             self.assertIs(create_app().app, delegate)
         script = (Path(__file__).resolve().parents[1] / "start_prod.sh").read_text()
-        self.assertIn("exec uvicorn purchase_closed_runtime:create_app --factory", script)
-        self.assertNotIn("exec uvicorn server:app", script)
+        self.assertIn("exec uvicorn server:app", script)
+        self.assertNotIn("exec uvicorn purchase_closed_runtime:create_app --factory", script)
 
 
 if __name__ == "__main__":
