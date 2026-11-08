@@ -11,6 +11,12 @@ Parallel workers may audit bounded independent scopes. Coordinate shared edits a
 Once primary failures are resolved, present one reviewable candidate and concise evidence; do not keep iterating for imagined perfection. Optional actual viewer/Analytics findings can guide a later focused experiment. Report local rendering, narration, verified delivery and actual publication separately. Preserve unknowns and limitations; invent no participants, legal certainty, learning outcomes or revenue.
 
 
+## Finite refinement closure
+
+Before another refinement, name the concrete defect and a finite observable finish line. Close production when the intended opening/lesson is readable, requested actions have a visible beginning/result/end, no material identity/hand/contact/caption defect distracts from that action, and existing factual/audio/rights/technical evidence remains applicable. Review at actual delivery size; reuse exact unchanged evidence. An editorial score or comparison reference is advisory, never a moving release threshold or a promise of virality.
+
+Use one bounded correction pass for confirmed remaining blockers, within existing authority. If an experimental result misses the bar, retain the best reviewed shot or use a clear still rather than accumulating generation attempts. After the bar is met, freeze the exact candidate and record cosmetic limits as deferred. Reopen only for a newly demonstrated material defect or an explicit new owner brief; a request for a score alone does not reopen production. Do not generate a new version merely to raise a subjective score. Production closure does not create final listening/rights acceptance or publication approval; present those once in the consolidated final decision.
+
 ## On every use
 
 At the start, resolve the active private-review pointer and read the relevant latest findings, owner decisions and installed skill defaults. Inspect only the evidence needed for this task; do not rescan all historical renders or treat remembered paths, approvals or policy notes as current facts.
