@@ -1,0 +1,61 @@
+{
+  "schema": "earnalism.operator-compliance-facts.v1",
+  "operator": "REO ENTERPRISE",
+  "grievance_officer": "Ronik Basak",
+  "support": "sales@reoenterprise.org",
+  "establishment_country": "IN",
+  "establishment_state": "West Bengal",
+  "evidence": {
+    "legal_form": {
+      "status": "VERIFIED",
+      "value": "sole proprietorship",
+      "reference": "internal/legal/international_launch_20261027/README.md (retained authenticated merchant observation, 27 October 2026); internal/legal/india_launch_compliance_packet_20260922/unpublished-india-website-legal-drafts.md"
+    },
+    "india_turnover_and_gst": {
+      "status": "OWNER_CONFIRMED_FACTS",
+      "reference": "owner_confirmation in this file; no GST registration and PAN-wide service turnover not above INR 2000000; not a claim all other registration triggers are absent."
+    },
+    "pass_tax_classification": {
+      "status": "UNVERIFIED",
+      "reference": null
+    },
+    "tax_point": {
+      "status": "UNVERIFIED",
+      "reference": null
+    },
+    "invoice_and_reconciliation": {
+      "status": "UNVERIFIED",
+      "reference": null
+    },
+    "current_financial_acceptance": {
+      "status": "HOLD",
+      "reference": "Existing six consumed observations are preserved; no new observation authorized by this record."
+    },
+    "us_nexus_and_taxability": {
+      "status": "PHYSICAL_PRESENCE_ABSENT_ECONOMIC_REVIEW_PENDING",
+      "reference": "Owner confirmation 8 November 2026; current/prior state transaction counts and state-specific taxability are not established."
+    },
+    "uk_vat_registration": {
+      "status": "NOT_REGISTERED",
+      "reference": "Owner confirmation 8 November 2026; UK paid activation remains held pending applicable registration/exemption route."
+    },
+    "uk_cancellation": {
+      "status": "NOT_ACTIVATED",
+      "reference": null
+    },
+    "uk_privacy_scope": {
+      "status": "UNVERIFIED",
+      "reference": null
+    }
+  },
+  "owner_confirmation": {
+    "date": "2026-11-08",
+    "source": "Owner reply in integration conversation",
+    "gst_registered": false,
+    "pan_wide_service_turnover_above_inr_2000000": false,
+    "uk_vat_registered": false,
+    "us_physical_presence": false,
+    "business": "Online library / own e-commerce service",
+    "scope_limit": "Financial-year boundaries, current and prior US state sales/transaction counts and any other compulsory registration triggers still require applicability checks."
+  }
+}

@@ -2,13 +2,14 @@
   "/terms": {
     "title": "Terms of Use",
     "description": "Terms for Earnalism editions, Reading Passes, availability and consumer remedies.",
-    "updated": "27 October 2026",
+    "updated": "8 November 2026",
     "intro": "Earnalism is operated by REO ENTERPRISE, Nihar Bhawan, 73 Nandan Nagar, Kolkata 700083, North 24 Parganas, West Bengal, India. These terms apply to the features actually available for your location.",
     "sections": [
       {
         "heading": "Availability and territories",
         "paragraphs": [
-          "Reading Pass purchases and released reading/listening delivery are currently offered in India only. Public website access does not grant permission to access a title in another country. Editions, previews and listening may have different territorial restrictions. Do not bypass location or access controls. We will identify additional supported countries before enabling their purchases or delivery."
+          "New Reading Pass purchases are temporarily paused. Existing eligible access remains subject to its entitlement, release and territorial restrictions. You can still request support, cancellation or a remedy for an existing purchase.",
+          "Released reading/listening delivery is currently offered in India only; new purchases remain paused. Public website access does not grant permission to access a title in another country. Editions, previews and listening may have different territorial restrictions. Do not bypass location or access controls. We will identify additional supported countries before enabling their purchases or delivery."
         ]
       },
       {
@@ -51,7 +52,15 @@
           "For account support, cancellation, privacy requests, copyright concerns or a consumer grievance, contact Ronik Basak at sales@reoenterprise.org or through the contact form. Consumer grievances will be acknowledged within 48 hours and addressed within one month, as required by applicable Indian e-commerce rules. These terms do not restrict access to competent consumer authorities or courts."
         ]
       }
-    ]
+    ],
+    "cancellation": {
+      "heading": "Request cancellation or a refund",
+      "description": "Email your account email and purchase reference to support. You do not need to provide a reason to exercise an applicable statutory cancellation right. Never send passwords or full card details.",
+      "emailHref": "mailto:sales@reoenterprise.org?subject=Earnalism%20cancellation%20or%20refund%20request",
+      "emailLabel": "Email a request",
+      "downloadHref": "/cancellation-form.txt",
+      "downloadLabel": "Download cancellation form"
+    }
   },
   "/privacy": {
     "title": "Privacy",
