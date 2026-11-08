@@ -42,3 +42,5 @@ Reader PR661 remains separate at d048a2bfc883039811ea1c606d4b98f331030d6e. Payme
 ## Local qualification
 
 145 focused Python tests passed, including unchanged rights/intake/closure/territory tests and 17 new accounting/inventory cases. Eight frontend tests passed. Node 24 production build completed; 172 static snapshots passed 3704 assertions, including non-JavaScript cancellation links. First isolated static generation lacked the unchanged root launch fixture; it was supplied from HEAD and the complete final build passed. All 48 original operation-journal files match the retained pre-release hashes. CI and deployment are separate outcomes and are not asserted here.
+
+CI prerequisite correction: the first exact-head brand/support jobs failed while installing pinned Playwright on ubuntu26.04-x64. Their browser jobs are now explicitly Ubuntu 24.04; all assertions, historical validators and timeout limits remain intact. Both current production-surface review authorities are refreshed to the actual checked-in frontend hash. The 46-case existing brand workflow contract passed locally. No unchanged CI rerun was requested.
