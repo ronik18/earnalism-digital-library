@@ -31,7 +31,8 @@ permissions:
 jobs:
   owner-review:
     name: Owner-review artifact
-    runs-on: ubuntu-latest
+    # Retain the OS supported by the pinned Playwright browser dependency.
+    runs-on: ubuntu-24.04
     # Ubuntu browser dependencies can still be downloading at 20 minutes.
     # Preserve every review step; allow a bounded completion window.
     timeout-minutes: 45

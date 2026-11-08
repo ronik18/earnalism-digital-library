@@ -111,7 +111,8 @@ jobs:
   # Keep this established job id so existing branch-protection check identity remains stable.
   seamless-brand-review:
     needs: resolve-pr-head
-    runs-on: ubuntu-latest
+    # Pinned Playwright browser packages support Ubuntu 24.04, not 26.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 180
     outputs:
       artifact_name: ${{ steps.package-metadata.outputs.artifact_name }}
@@ -125,7 +126,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact checked-in frontend production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: 12857819edf513cc59c98ed6b9cc5ea61871bbfe20336cf37ed7c62007d7bdf7
+      PRODUCTION_SURFACE_SHA: f992e87845c34312b73178b842107a82041b5716140aa7fca20a1b9b15885ddf
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -543,7 +544,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: 12857819edf513cc59c98ed6b9cc5ea61871bbfe20336cf37ed7c62007d7bdf7
+      PRODUCTION_SURFACE_SHA: f992e87845c34312b73178b842107a82041b5716140aa7fca20a1b9b15885ddf
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

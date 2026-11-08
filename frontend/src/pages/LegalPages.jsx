@@ -18,6 +18,12 @@ function LegalPage({ canonicalPath }) {
             <h2 className="font-serif-display text-2xl text-burgundy">{heading}</h2>
             {paragraphs.map((paragraph) => <p className="mt-3" key={paragraph}>{paragraph}</p>)}
           </section>)}
+          {policy.cancellation && <section aria-labelledby="cancellation-request">
+            <h2 id="cancellation-request" className="font-serif-display text-2xl text-burgundy">{policy.cancellation.heading}</h2>
+            <p className="mt-3">{policy.cancellation.description}</p>
+            <a className="text-burgundy underline" href={policy.cancellation.emailHref}>{policy.cancellation.emailLabel}</a>{" · "}
+            <a className="text-burgundy underline" href={policy.cancellation.downloadHref} download>{policy.cancellation.downloadLabel}</a>
+          </section>}
           <p><a className="text-burgundy underline" href="mailto:sales@reoenterprise.org">sales@reoenterprise.org</a>{" · "}
             <Link className="text-burgundy underline" to="/contact?intent=reader">Support and privacy requests</Link>{" · "}
             <Link className="text-burgundy underline" to="/contact?intent=rights">Rights concerns</Link>

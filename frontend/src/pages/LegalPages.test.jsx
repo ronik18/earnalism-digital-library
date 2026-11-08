@@ -21,6 +21,14 @@ describe("accepted named operator notice", () => {
     act(() => root.unmount());
     host.remove();
   });
+  test("Terms gives an honest purchase pause and direct cancellation paths", () => {
+    act(() => root.render(<Terms />));
+    expect(host.textContent).toContain("New Reading Pass purchases are temporarily paused");
+    expect(host.textContent).toContain("Merely starting to read does not constitute a blanket waiver");
+    expect(host.textContent).toContain("There is no subscription or automatic renewal");
+    expect(host.querySelector('a[href="/cancellation-form.txt"]').hasAttribute("download")).toBe(true);
+    expect(host.querySelector('a[href^="mailto:sales@reoenterprise.org?subject="]')).not.toBeNull();
+  });
   test.each([["Privacy", Privacy], ["Terms", Terms]])("%s renders the accepted contact and request paths", (_name, Page) => {
     act(() => root.render(<Page />));
     expect(host.textContent).toContain("Grievance Officer and privacy/support contact: Ronik Basak");
