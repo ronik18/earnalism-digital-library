@@ -51,7 +51,7 @@ permissions:
 jobs:
   exact-head-owner-evidence:
     name: Post-merge recovery owner evidence
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 50
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache

@@ -139,3 +139,18 @@ test('shorter public previews use their actual displayed page total in the progr
   expect(host.querySelector('.reader-folio__page-context').textContent).toBe('Preview · 2 of 2');
   expect(host.querySelector('progress').value).toBe(2); expect(host.querySelector('progress').max).toBe(2);
 });
+
+test('a failed visible fit recovers after a fresh measurement of the same layout', async () => {
+  let overflowing = true;
+  jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__visual-viewport') ? 640 : 0; });
+  jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__visual-viewport') && overflowing ? 660 : 640; });
+  await render();
+  expect(host.querySelector('[role="alert"]').textContent).toContain('could not be fitted');
+  useVisualPagination.mockReturnValue({ pages, pending: true, signature: 'isolated-layout', width: 350, height: 640 });
+  await render();
+  overflowing = false;
+  useVisualPagination.mockReturnValue({ pages, pending: false, signature: 'isolated-layout', width: 350, height: 640 });
+  await render();
+  expect(host.querySelector('[role="alert"]')).toBeNull();
+  expect(host.querySelector('[data-testid="reader-reading-text"]').textContent).toContain('fragment 1');
+});

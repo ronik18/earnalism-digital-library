@@ -15093,5 +15093,19 @@
     "payment_captured": false,
     "paid_session_started": false,
     "next_exact_command": "gh pr checks <purchase-reopen-pr> --watch --fail-fast"
-  }
+  },
+  "reader_mobile_fit_history": [
+    {
+      "date": "2026-11-09",
+      "event": "MOBILE_READER_FIT_RECOVERY",
+      "base_sha": "32d629802297b6c275c2f01852ebb59f79bdb3eb",
+      "lane": "codex/fix-mobile-reader-fit-20261109",
+      "worktree": "/tmp/earnalism-reader-fit-20261109",
+      "scope": "Reader pagination only; no content or access changes",
+      "finding": "Visible overflow latched failedLayout across same-signature remeasurement; offscreen fitting must load actual glyph subsets and match mobile text sizing.",
+      "change": "Two bounded source-exact refits with measured overflow reserve, actual-script font loading and consistent text sizing; retain clipping rejection.",
+      "validation": "292 Reader tests pass; local narrow Bengali prose renders; exact Instagram webview not reproduced.",
+      "production_deployed": false
+    }
+  ]
 }

@@ -231,18 +231,24 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const hasPaginated = useRef(false);
   const openingHasFocus = useRef(false);
   const [failedLayout, setFailedLayout] = useState('');
+  const refitLayout = pagination.refit;
   const layoutKey = `${pagination.signature}:${fragment?.anchor ?? fragment?.start}`;
   const layoutError = model.sourceAnchorError || (failedLayout === layoutKey ? 'This page could not be fitted safely. Change the text setting or viewport to retry.' : pagination.error);
   useLayoutEffect(() => {
-    if (pagination.pending || !fragment || !viewportRef.current) return;
+    if (pagination.pending) {
+      setFailedLayout('');
+      viewportRef.current?.removeAttribute('data-pagination-overflow');
+      return;
+    }
+    if (!fragment || !viewportRef.current) return;
     hasPaginated.current = true;
     if (openingHasFocus.current) { headingRef.current?.focus(); openingHasFocus.current = false; }
     if (viewportRef.current.scrollHeight > viewportRef.current.clientHeight + 1) {
       // Reject a mismatched rendered result before paint; never reveal clipped prose.
       viewportRef.current.setAttribute('data-pagination-overflow', 'true');
-      setFailedLayout(layoutKey);
+      if (!refitLayout?.(viewportRef.current.scrollHeight - viewportRef.current.clientHeight)) setFailedLayout(layoutKey);
     } else viewportRef.current.removeAttribute('data-pagination-overflow');
-  }, [fragment, pagination.pending, layoutKey]);
+  }, [fragment, pagination.pending, refitLayout, layoutKey]);
   const onVisualPageVisibility = model.onVisualPageVisibility;
   const onPreparationFailure = model.onPreparationFailure;
   useEffect(() => { if (layoutError) onPreparationFailure?.(); }, [layoutError, onPreparationFailure]);
