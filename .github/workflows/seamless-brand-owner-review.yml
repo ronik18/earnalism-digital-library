@@ -79,7 +79,7 @@ concurrency:
 
 jobs:
   resolve-pr-head:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       pr_head: ${{ steps.resolve.outputs.pr_head }}
@@ -535,7 +535,7 @@ jobs:
 
   verify-published-owner-review:
     needs: seamless-brand-review
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       PR_HEAD_SHA: ${{ needs.seamless-brand-review.outputs.pr_head }}
