@@ -133,3 +133,7 @@
     scrollbar-gutter: stable;
   }
 }
+
+/* Mobile text inflation must not diverge between offscreen measurements and
+   visible fragments. Reader size controls and browser zoom remain available. */
+.reader-v2__body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }

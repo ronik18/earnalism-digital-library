@@ -1,10 +1,22 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { paginateRenderedResponsive } from './visualPagination';
 
 export default function useVisualPagination({ sourceRef, viewportRef, measureRef, revision, typography, authorizationScope, pageBreaks = [] }) {
   const pageBreaksKey = JSON.stringify(pageBreaks);
   const [result, setResult] = useState({ pages: [], pending: true, error: '', signature: '' });
   const cache = useRef(new Map());
+  const recovery = useRef({ signature: '', attempts: 0, reserve: 0 });
+  const [refitEpoch, setRefitEpoch] = useState(0);
+  const refit = useCallback((overflow) => {
+    // A browser may lay out visible glyphs differently on the first paint.
+    // Refit the same authorized source, never expose clipping or retry forever.
+    if (recovery.current.attempts >= 2) return false;
+    recovery.current.attempts++;
+    recovery.current.reserve += Math.max(2, Math.ceil(overflow) + 2);
+    setResult(previous => ({ ...previous, pending: true }));
+    setRefitEpoch(value => value + 1);
+    return true;
+  }, []);
   const geometry = useRef('');
   const cacheScope = useRef(authorizationScope);
   if (cacheScope.current !== authorizationScope) { cache.current.clear(); cacheScope.current = authorizationScope; }
@@ -27,7 +39,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
       if (document.fonts) {
         const font = getComputedStyle(source);
         try {
-          await document.fonts.load(`${font.fontWeight} ${font.fontSize} ${font.fontFamily}`);
+          await document.fonts.load(`${font.fontWeight} ${font.fontSize} ${font.fontFamily}`, source.textContent || ' ');
           await document.fonts.ready;
         } catch {
           if (!superseded()) setResult({ pages: [], pending: false, error: 'Reader typography could not be prepared. Reload this page to retry.', signature: '' });
@@ -47,7 +59,10 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
         if (!width || !height) return;
         geometry.current = `${width}:${height}`;
         const style = getComputedStyle(source);
-        const signature = [revision, authorizationScope, pageBreaksKey, width, height, style.fontFamily, style.fontSize, style.lineHeight, style.fontWeight, source.innerHTML].join('|');
+        const baseSignature = [revision, authorizationScope, pageBreaksKey, width, height, style.fontFamily, style.fontSize, style.lineHeight, style.fontWeight, source.innerHTML].join('|');
+        if (recovery.current.signature !== baseSignature) recovery.current = { signature: baseSignature, attempts: 0, reserve: 0 };
+        const fitHeight = height - recovery.current.reserve;
+        const signature = `${baseSignature}|reserve:${recovery.current.reserve}`;
         try {
           measure.style.width = `${width}px`;
           viewport.style.setProperty('--reader-visual-height', `${height}px`);
@@ -58,7 +73,7 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
           measure.style.fontWeight = style.fontWeight;
           const started = performance.now();
           const cached = cache.current.get(signature);
-          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, height, { cancelled: superseded, pageBreaks: paginationPageBreaks });
+          const calculation = cached?.pages || paginateRenderedResponsive(source, measure, fitHeight, { cancelled: superseded, pageBreaks: paginationPageBreaks });
           const pages = typeof calculation?.then === 'function' ? await calculation : calculation;
           if (superseded()) return;
           if (!cached) {
@@ -93,6 +108,6 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
       window.visualViewport?.removeEventListener('resize', schedule);
       document.fonts?.removeEventListener('loadingdone', fontsChanged);
     };
-  }, [sourceRef, viewportRef, measureRef, revision, typography, authorizationScope, pageBreaksKey]);
-  return result;
+  }, [sourceRef, viewportRef, measureRef, revision, typography, authorizationScope, pageBreaksKey, refitEpoch]);
+  return { ...result, refit };
 }
