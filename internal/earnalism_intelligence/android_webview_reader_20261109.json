@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-09",
+  "event": "ANDROID_WEBVIEW_READER_VIEWPORT_FALLBACK",
+  "base_sha": "96b04f9ac98ea4ee13e8a101c19b20d4f0a62c42",
+  "lane": "codex/fix-android-webview-reader-20261109",
+  "worktree": "/tmp/earnalism-webview-reader-20261109",
+  "scope": "Reader viewport height only; no text/auth/accounting changes",
+  "cause": "WebView 91 ignores unsupported 100dvh. Quiet Folio had no supported definite height, collapsing the measured reading surface.",
+  "change": "100vh fallback before 100dvh on root Reader and fullscreen folio. Modern dynamic viewport behavior retained.",
+  "native_engine": "Android 11, Android System WebView 91.0.4472.114",
+  "controlled_native_baseline": "FAIL: same fixture with only the two fallback declarations removed reproduces pagination error",
+  "controlled_native_candidate": "PASS: same native engine renders complete Bengali fixture in full-height Reader",
+  "focused_tests": {
+    "reader_suites": 15,
+    "tests": 293,
+    "result": "PASS"
+  },
+  "production_deployed": false,
+  "actual_instagram_retest": "PENDING_MERGED_MAIN_DEPLOYMENT",
+  "evidence": "/tmp/earnalism-webview-reader-native-20261109",
+  "next_exact_command": "gh pr checks <new-pr-number>",
+  "durable_native_evidence": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/android-webview-reader-fallback-20261109/native-before-after.json"
+}

@@ -3191,3 +3191,5 @@ An original source-bound Reader/containment approval is not a reusable blank che
 - 2026-11-08T05:58:29.844558+00:00 — Owner requested immediate purchase reopening and authorized an isolated branch. Preserve the concurrent legal/accounting checkout. Restore normal entrypoint only through exact-head checks and manual merged-main deployment; no customer charge is part of qualification.
 
 - 2026-11-09 Reader mobile fit: failed-layout state must clear on fresh measurement; load actual script glyphs and allow at most two source-exact refits. Never expose clipped text or bypass preview/access. 292 focused tests pass; production verification pending.
+
+- 2026-11-09 Android WebView Reader: dvh-only sizing collapses the folio on WebView 91. Native controlled baseline fails; adding vh before dvh renders Bengali prose at full height. Modern browser mobile emulation is not legacy-engine evidence. 293 focused tests pass; production/Instagram acceptance pending.
