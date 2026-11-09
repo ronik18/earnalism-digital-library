@@ -52,3 +52,15 @@ describe('Reader reading measure and cover layout', () => {
     expect(desktopDeclaration('.reader-v2__book-cover .book-cover-image__img', 'object-fit')).toBe('contain');
   });
 });
+
+
+test('legacy WebViews retain a definite Reader height when dynamic viewport units are unsupported', () => {
+  const folio = postcss.parse(fs.readFileSync(path.join(__dirname, 'reader-quiet-folio.css'), 'utf8'));
+  for (const selector of ['.experience-v2.reader-v2.reader-quiet-folio', '.reader-folio:fullscreen']) {
+    const heights = [];
+    folio.walkRules(selector, rule => { if (rule.parent.type === 'root') rule.walkDecls('height', decl => heights.push(decl.value)); });
+    // Unsupported declarations are ignored; the preceding supported height
+    // must still size the flex reading surface before it is measured.
+    expect(heights).toEqual(['100vh', '100dvh']);
+  }
+});
