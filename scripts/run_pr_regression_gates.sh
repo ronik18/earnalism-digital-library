@@ -201,6 +201,8 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/experiences-v2/reader/authorizedChapter.test.js \
   src/experiences-v2/reader/readerIndexBoundary.test.js \
   src/experiences-v2/reader/visualPagination.test.js \
+  src/experiences-v2/reader/useVisualPagination.test.jsx \
+  src/experiences-v2/reader/ReaderQuietFolio.test.jsx \
   src/lib/paymentReceipt.test.js \
   src/authAccountLifecycle.test.jsx \
   src/staticSeoContract.test.js
