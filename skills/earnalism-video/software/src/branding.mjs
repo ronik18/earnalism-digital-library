@@ -21,7 +21,7 @@ export function watermarkLayout(width,height,{surface='video',placement,occupied
   if(!a||![a.x,a.y,a.width,a.height].every(Number.isFinite)||a.width<=0||a.height<=0)throw Error('Invalid watermark protected region');
   if(rect.x<a.x+a.width&&rect.x+rect.width>a.x&&rect.y<a.y+a.height&&rect.y+rect.height>a.y)throw Error('Watermark meets protected content; reflow the adapter');
  }
- return {width:q.width,height:h,size:q.width,right:width-q.left-q.width,top:q.top,left:q.left,opacity:.9,scale:q.width/watermarkAsset.sourceWidth,background:'#fff9ed',blurPx,blurOutset,protectedRect:rect,reviewProfile:profile?.id??null};
+ return {width:q.width,height:h,size:q.width,right:width-q.left-q.width,top:q.top,left:q.left,opacity:.9,scale:q.width/watermarkAsset.sourceWidth,background:surface==='cover'?'#fff9ed':undefined,blurPx,blurOutset,protectedRect:rect,reviewProfile:profile?.id??null};
 }
 export function schematicContext(scene,time){
  const age=time-scene.start;
