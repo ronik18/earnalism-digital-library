@@ -173,6 +173,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Reader.releaseTruth.test.js \
   src/lib/audioPackageManifest.test.js \
   src/lib/audioReleaseSafety.test.js \
+  src/components/LibraryBrowseShelf.test.jsx \
   src/components/PremiumListeningRail.test.js \
   src/components/ReaderAudiobookPanel.test.js \
   src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
@@ -189,6 +190,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Library.test.jsx \
   src/pages/Library.integration.test.jsx \
   src/pages/BookDetail.discovery.test.jsx \
+  src/lib/controlledLaunch.canonicalAuthority.test.js \
   src/lib/libraryDiscovery.test.js \
   src/lib/libraryCatalog.test.js \
   src/lib/libraryFilters.test.js \

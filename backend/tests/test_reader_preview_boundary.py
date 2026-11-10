@@ -259,7 +259,7 @@ def test_true_overage_and_noncanonical_whitespace_are_not_discounted(edition, co
 
 def test_all_retained_preview_units_keep_only_the_genuine_oversize_hold():
     plan = json.loads((ROOT/'backend/data/approved_reader_bootstrap.json').read_text())
-    assert len(plan['titles']) == 52
+    assert len(plan['titles']) == 97
     denied = []
     measured = 0
     for title in plan['titles']:
@@ -271,7 +271,7 @@ def test_all_retained_preview_units_keep_only_the_genuine_oversize_hold():
             assert hashlib.sha256(row['content'].encode()).hexdigest() == row['content_sha256']
             if not server._bounded_public_reader_segment(row['content']):
                 denied.append((title['slug'], row['page_index'], row['content_sha256']))
-    assert measured == 156
+    assert measured == 291
     assert denied == [('jekyll-and-hyde', 3, '2c720cc9a40a05b75328eafdecd0d12a1ab492f106882e22747bb858ce6bc8e9')]
 
 

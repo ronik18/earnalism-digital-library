@@ -3199,3 +3199,5 @@ Fresh production read confirms all 45 exact complete text matches remain stored 
 
 
 - 2026-11-08T04:41:49.549773+00:00 — 45 Reader cover pairs and exact source bindings prepared; manuscript bytes and three rights-held titles preserved. Production remains held for historical successor assertion review, required CI and authenticated India delivery. No live publication occurred.
+
+2026-11-10 cleanup completion: admin API removed the three specified held book records; exact scoped transactions removed 139 stale segments and two manifests, and all eight identified B2 object versions were deleted and verified absent. Customer/financial records untouched. Primary bucket listing remains denied. The 97-title journey also requires the explicit frontend release mirror and stable shelf identity across metadata refresh; retain exact old rights-history checks while extending independent current cohort fixtures.

@@ -31,6 +31,8 @@ const books = [
 // Add the exact reviewed near-ready release fixtures from the safe public
 // metadata contract. Keep the independent held/malformed/audio fixtures above.
 const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland", "dsires-baby", "sredni-vashtar", "the-cop-and-the-anthem", "the-open-window", "the-selfish-giant", "the-science-of-getting-rich", "bn-066", "lokrahasya", "mrinalini", "frankenstein", "pride-and-prejudice", "the-great-gatsby", "the-secret-garden", "the-time-machine", "acres-of-diamonds", "my-life-and-work", "the-principles-of-scientific-management", "the-wonderful-wizard-of-oz", "book-5704b31005"];
+// Exact additional Reader release fixture; held/malformed fixtures remain unchanged.
+nearReadySlugs.push(...["a-retrieved-reformation", "a-wagner-matinee", "feathertop", "markheim", "rappaccinis-daughter", "the-adventure-of-the-abbey-grange", "the-adventure-of-the-beryl-coronet", "the-adventure-of-the-blue-carbuncle", "the-adventure-of-the-copper-beeches", "the-adventure-of-the-dancing-men", "the-adventure-of-the-empty-house", "the-adventure-of-the-engineers-thumb", "the-adventure-of-the-final-problem", "the-adventure-of-the-greek-interpreter", "the-adventure-of-the-noble-bachelor", "the-adventure-of-the-priory-school", "the-adventure-of-the-second-stain", "the-adventure-of-the-solitary-cyclist", "the-ambitious-guest", "the-bet", "the-celebrated-jumping-frog-of-calaveras-county", "the-country-of-the-blind", "the-darling", "the-door-in-the-wall", "the-furnished-room", "the-imp-of-the-perverse", "the-last-leaf", "the-legend-of-sleepy-hollow", "the-luck-of-roaring-camp", "the-man-in-a-case", "the-man-with-the-twisted-lip", "the-masque-of-the-red-death", "the-ministers-black-veil", "the-murders-in-the-rue-morgue", "the-outcasts-of-poker-flat", "the-purloined-letter", "the-ransom-of-red-chief", "the-speckled-band", "the-suicide-club", "the-yellow-wallpaper", "to-build-a-fire", "tobermory", "ward-no-6", "white-fang", "young-goodman-brown"]);
 const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 for (const slug of nearReadySlugs) {
   const source = publicContract.publications.find((row) => row.slug === slug);
@@ -150,12 +152,12 @@ async function assertCurrentControlledLaunchResults(page, name) {
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
   await referenceSurface(page).waitFor();
   // Preserve the existing ten-edition shelf. Traverse its real controls before
-  // asserting the complete, independently reviewed 52-edition release scope.
+  // asserting the complete, independently reviewed 97-edition release scope.
   const fixtureOrder = books.filter((book) => releasedSlugs.includes(book.slug)).map((book) => book.slug);
-  assert.equal(fixtureOrder.length, 52, "The current release fixture must contain exactly 52 approved editions");
-  assert.equal(new Set(fixtureOrder).size, 52, "Canonical editions must occur once in the release fixture");
+  assert.equal(fixtureOrder.length, 97, "The current release fixture must contain exactly 97 approved editions");
+  assert.equal(new Set(fixtureOrder).size, 97, "Canonical editions must occur once in the release fixture");
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
-  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
+  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [10, 60], [10, 70], [10, 80], [10, 90], [7, 97]]) {
     const previousCount = shownCount - nextCount;
     const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Available to read`, exact: true });
     await more.click();
