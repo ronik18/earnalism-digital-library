@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Deterministic release coordinator with two human gates.
+"""Deterministic release coordinator with explicit editorial-policy selection.
 
 This command evaluates a title manifest. Rights, content, artifact, staging,
 browser, and production checks are automated inputs and fail closed. The only
-human inputs are the conversation-rendered reader preview approval and the
-conversation-rendered six-or-seven-sample listening approval. It never infers
+legacy human inputs are the reader preview and audio-sample approvals. New
+automated-policy jobs do not require these routine reviews. It never infers
 legal permission, quality, or deployment success.
 
 The command is provider-free by design: generation and deployment adapters must
@@ -39,9 +39,13 @@ except ImportError:  # package-style test imports
 
 
 try:
-    from release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable
+    from release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check
 except ImportError:
-    from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable
+    from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check
+
+from backend.domain.editorial_release_policy import (
+    uses_automated_editorial_policy, routine_review_not_applicable, AUTOMATED_EDITORIAL_CHECKS,
+)
 
 
 AUTOMATED_CHECKS = (
@@ -398,6 +402,7 @@ def evaluate(
     slug = str(manifest.get("slug") or "").strip()
     if not slug:
         raise ValueError("manifest.slug is required")
+    automated_editorial = uses_automated_editorial_policy(manifest)
     manuscript = manifest.get("manuscript") or {}
     reader = manifest.get("reader") or {}
     audio = manifest.get("audio") or {}
@@ -408,11 +413,13 @@ def evaluate(
     automated["reader_artifacts"] = check_file(
         root, reader.get("preview_path"), reader.get("preview_sha256"), "reader preview"
     )
-    automated["audio_review_samples"], sample_binding = check_audio_review_samples(
-        root, audio
-    )
+    if automated_editorial:
+        automated["audio_review_samples"] = routine_review_not_applicable()
+        sample_binding = {}
+    else:
+        automated["audio_review_samples"], sample_binding = check_audio_review_samples(root, audio)
 
-    for name in AUTOMATED_CHECKS[4:]:
+    for name in AUTOMATED_CHECKS[4:] + (AUTOMATED_EDITORIAL_CHECKS if automated_editorial else ()):
         supplied = (manifest.get("automated_checks") or {}).get(name) or {}
         if name == "synchronization" and supplied.get("status") == "NOT_APPLICABLE":
             try:
@@ -420,26 +427,49 @@ def evaluate(
                 automated[name] = {**supplied, "detail": "Verified standalone audio consumer; text sync is not used. No sync claim."}
             except (ValueError, OSError, KeyError, TypeError) as exc:
                 automated[name] = block_result(str(exc))
+        elif automated_editorial:
+            try:
+                automated[name] = validate_bound_automated_check(manifest, name, supplied, root)
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                automated[name] = block_result(str(exc))
         else:
             automated[name] = check_declared_automated_pass(root, name, supplied)
 
-    reader_gate = check_reader_preview_approval(
-        reader_approval,
-        slug,
-        manuscript_sha256=manuscript.get("sha256"),
-        preview_sha256=reader.get("preview_sha256"),
-    )
-    audio_gate = check_audio_samples_approval(
-        audio_approval,
-        slug,
-        audio=audio,
-        sample_binding=sample_binding,
-    )
+    if automated_editorial:
+        for name in AUTOMATED_CHECKS[:3]:
+            if automated[name]['status'] == 'PASS':
+                supplied = (manifest.get('automated_checks') or {}).get(name) or {}
+                try:
+                    automated[name] = validate_bound_automated_check(manifest, name, supplied, root)
+                except (ValueError, OSError, KeyError, TypeError) as exc:
+                    automated[name] = block_result(str(exc))
+        master_check = check_file(root, audio.get("path"), audio.get("sha256"), "full audiobook")
+        if master_check["status"] != "PASS":
+            automated["audio_artifacts"] = master_check
+        candidate_issues = automated_candidate_blockers({**manifest, 'artifact_root': str(root.resolve())})
+        if candidate_issues:
+            automated["audio_artifacts"] = block_result("; ".join(candidate_issues))
+        reader_gate = routine_review_not_applicable()
+        audio_gate = routine_review_not_applicable()
+    else:
+        reader_gate = check_reader_preview_approval(
+            reader_approval,
+            slug,
+            manuscript_sha256=manuscript.get("sha256"),
+            preview_sha256=reader.get("preview_sha256"),
+        )
+        audio_gate = check_audio_samples_approval(
+            audio_approval,
+            slug,
+            audio=audio,
+            sample_binding=sample_binding,
+        )
     quality_findings = classify_quality_findings(manifest)
     automated_pass = all(automated_check_accepted(manifest, name, item) for name, item in automated.items()) and not quality_findings["blockers"]
-    human_pass = reader_gate["status"] == "PASS" and audio_gate["status"] == "PASS"
+    human_pass = automated_editorial or (reader_gate["status"] == "PASS" and audio_gate["status"] == "PASS")
     return {
         "slug": slug,
+        "artifact_root": str(root.resolve()),
         "manifest_sha256": canonical_hash(manifest),
         "human_gates": {"reader_preview": reader_gate, "audio_samples": audio_gate},
         "conversation_review": {
@@ -473,13 +503,14 @@ def execute_go_live(
     *,
     promoter=None,
 ) -> dict[str, Any]:
-    """Promote immediately after the two human gates and automation pass."""
+    """Promote after applicable checks; editorial policy adds no runtime authority."""
 
     if report.get("release_status") != "READY_FOR_GO_LIVE":
         raise ValueError("automatic GO LIVE requires READY_FOR_GO_LIVE")
     if report.get("manifest_sha256") != canonical_hash(manifest):
         raise ValueError("release manifest changed after evaluation")
-    if reader_approval is None or audio_approval is None:
+    automated_editorial = uses_automated_editorial_policy(manifest)
+    if not automated_editorial and (reader_approval is None or audio_approval is None):
         raise ValueError(
             "automatic GO LIVE requires both conversation approval packets"
         )
@@ -498,8 +529,12 @@ def execute_go_live(
 
     runtime_manifest = dict(manifest)
     runtime_manifest["release_status"] = "READY_FOR_GO_LIVE"
-    runtime_manifest["reader_approval"] = load_json(reader_approval)
-    runtime_manifest["audio_samples_approval"] = load_json(audio_approval)
+    if automated_editorial:
+        runtime_manifest["artifact_root"] = report["artifact_root"]
+    runtime_manifest["automated_checks"] = report["automated_checks"]
+    if not automated_editorial:
+        runtime_manifest["reader_approval"] = load_json(reader_approval)
+        runtime_manifest["audio_samples_approval"] = load_json(audio_approval)
     try:
         promotion = promote(
             runtime_manifest,
@@ -555,7 +590,8 @@ def self_heal(
         report["self_healing"] = {"cycles": cycle, "attempts": history}
         if report["release_status"] == "READY_FOR_GO_LIVE":
             return report
-        if any(gate["status"] != "PASS" for gate in report["human_gates"].values()):
+        if (not uses_automated_editorial_policy(manifest)
+                and any(gate["status"] != "PASS" for gate in report["human_gates"].values())):
             report["self_healing"]["stopped"] = "human approval gate pending or blocked"
             return report
         check = next(

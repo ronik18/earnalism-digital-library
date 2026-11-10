@@ -17,6 +17,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
 
 
 from .audio_quality import classify_quality_findings
+from .editorial_release_policy import uses_automated_editorial_policy, automated_receipt_blockers
 
 
 ACCESSIBILITY_EXCEPTION_SCHEMA = "earnalism.audiobook_accessibility_exception.v1"
@@ -128,6 +129,8 @@ def audiobook_release_qa_summary(value: Optional[Dict[str, Any]]) -> dict[str, A
 
     return {
         "asr_score": score("asr_score", "asr_manuscript_score", "similarity"),
+        "editorial_release_policy": qa.get("editorial_release_policy"),
+        "automated_acceptance": qa.get("automated_acceptance"),
         "coverage": score("coverage", "asr_coverage"),
         "first_span_score": score("first_span_score", "first_word_score"),
         "last_span_score": score("last_span_score", "last_word_score"),
@@ -171,6 +174,7 @@ def audiobook_release_qa_blockers(
     title_slug: str = "",
     audio_sha256: str = "",
     attempt_fingerprint: str = "",
+    manuscript_sha256: str = "",
 ) -> list[str]:
     """Return objective blockers for the controlled audiobook release gate."""
 
@@ -179,14 +183,27 @@ def audiobook_release_qa_blockers(
         "coverage": (0.98, "ASR/source coverage must be at least 0.98."),
         "first_span_score": (0.95, "The first audio span must match the manuscript."),
         "last_span_score": (0.95, "The last audio span must match the manuscript."),
-        "listening_score": (8.9, "Full-title listening score must be at least 8.9."),
-        "listening_confidence": (0.90, "Listening QA confidence must be at least 0.90."),
     }
+    try:
+        automated_editorial = uses_automated_editorial_policy(summary)
+    except ValueError as exc:
+        return [str(exc)]
+    if not automated_editorial:
+        required.update({
+            "listening_score": (8.9, "Full-title listening score must be at least 8.9."),
+            "listening_confidence": (0.90, "Listening QA confidence must be at least 0.90."),
+        })
     blockers = [
         message
         for key, (minimum, message) in required.items()
         if summary.get(key) is None or summary[key] < minimum
     ]
+    if automated_editorial:
+        blockers.extend(automated_receipt_blockers(summary.get('automated_acceptance'), {
+            'slug': title_slug, 'audio_sha256': release_sha256(audio_sha256),
+            'manuscript_sha256': release_sha256(manuscript_sha256),
+            'attempt_fingerprint': release_sha256(attempt_fingerprint),
+        }))
     if summary.get("ordered_content_integrity") is not True:
         blockers.append("Ordered manuscript content integrity must pass.")
     if summary.get("fatal_flags"):
@@ -248,7 +265,7 @@ def audiobook_release_qa_blockers(
             blockers.append("Accessibility exception is not bound to the release attempt fingerprint.")
         if exception_confidence is None or exception_confidence < 0.90:
             blockers.append("Accessibility exception confidence must be at least 0.90.")
-        if listening_confidence is None or exception_confidence != listening_confidence:
+        if not automated_editorial and (listening_confidence is None or exception_confidence != listening_confidence):
             blockers.append("Accessibility exception confidence must match listening QA confidence.")
         expected_exception_sha256 = audiobook_accessibility_exception_sha256(exception)
         if exception.get("exception_sha256") != expected_exception_sha256:

@@ -8430,6 +8430,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         title_slug=slug,
         audio_sha256=audio_sha256,
         attempt_fingerprint=attempt_fingerprint,
+        manuscript_sha256=manuscript_sha256,
     )
     if qa_blockers:
         raise HTTPException(status_code=422, detail={"message": "Audiobook QA is not release-ready.", "issues": qa_blockers})
