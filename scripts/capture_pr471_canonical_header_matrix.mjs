@@ -106,7 +106,7 @@ try {
       const readerBox = isReader ? await header.boundingBox() : null;
       const headerInfo = isReader ? {contract:'QUIET_FOLIO', title:readerChrome.title, height:Math.round(readerBox.height), width:Math.round(readerBox.width), logo_width:null, logo_asset:null, public_nav_labels:[], reader_chrome:readerChrome} : await header.evaluate((node) => {
         const rect = node.getBoundingClientRect();
-        const logo = node.querySelector('[data-brand-asset="earnalism-brand-lockup.png"] img');
+        const logo = node.querySelector('[data-testid="earnalism-brand-lockup"] img');
         const visible = (selector) => {
           const element = node.querySelector(selector);
           if (!element) return false;
@@ -122,7 +122,7 @@ try {
           background: getComputedStyle(node).backgroundColor,
           height: Math.round(rect.height),
           width: Math.round(rect.width),
-          logo_asset: node.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')?.getAttribute("data-brand-asset") || "",
+          logo_asset: node.querySelector('[data-testid="earnalism-brand-lockup"]')?.getAttribute("data-brand-asset") || "",
           logo_width: logo ? Math.round(logo.getBoundingClientRect().width) : 0,
           logo_natural_width: logo?.naturalWidth || 0,
           logo_src: logo?.currentSrc || logo?.src || "",
@@ -145,8 +145,8 @@ try {
       assert.equal(headerInfo.nav_font_weight, "600", `${routeInfo.id}: shared navigation weight`);
       assert.ok(headerInfo.nav_font_family.includes("Outfit"), `${routeInfo.id}: shared navigation font`);
       assert.equal(headerInfo.background, "rgb(255, 249, 238)", `${routeInfo.id}: shared parchment background`);
-      assert.equal(headerInfo.logo_asset, "earnalism-brand-lockup.png", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
-      assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-lockup.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
+      assert.equal(headerInfo.logo_asset, "earnalism-brand-video-light.gif", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
+      assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-video-still.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
       assert.ok(headerInfo.logo_natural_width > 0, `${routeInfo.id} ${viewport.width}: logo loaded`);
       assert.ok(headerInfo.header_scroll_width <= headerInfo.header_client_width, `${routeInfo.id} ${viewport.width}: header overflow`);
       const expectedHeaderHeight = viewport.width >= 1280 ? 104 : viewport.width >= 768 ? 96 : 80;

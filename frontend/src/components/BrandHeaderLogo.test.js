@@ -11,15 +11,18 @@ const headerSource = fs.readFileSync(
 );
 
 describe("EarnalismBrandLockup", () => {
-  test("uses the approved bundled Earnalism lockup and no generated asset", () => {
-    expect(componentSource).toContain('earnalism-brand-lockup.png');
+  test("uses the lightweight brand-video GIF and a reduced-motion still", () => {
+    expect(componentSource).toContain('earnalism-brand-video-light.gif');
+    expect(componentSource).toContain('media="(prefers-reduced-motion: reduce)"');
+    expect(componentSource).toContain('earnalism-brand-video-still.png');
+    expect(fs.statSync(path.join(process.cwd(), 'public/assets/brand/earnalism-brand-video-light.gif')).size).toBeLessThan(100 * 1024);
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 
   test("renders the approved wordmark with the complete accessible brand label", () => {
-    expect(componentSource).toContain('alt="The Earnalism — Read. Reflect. Remember."');
-    expect(componentSource).toContain('width="2400"');
-    expect(componentSource).toContain('height="720"');
+    expect(componentSource).toContain('alt="Earnalism — Where Learning Becomes Earning"');
+    expect(componentSource).toContain('width="520"');
+    expect(componentSource).toContain('height="156"');
     expect(componentSource).toContain('BUNDLED_FALLBACK');
   });
 

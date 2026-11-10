@@ -1,0 +1,496 @@
+{
+  "bootstrap_only": true,
+  "owner_authorization": "Please ensure to spend time and credit judiciously. I want all the books present in B2 storage or earnalism-digital-library repo which are close to become legally compliant and reader ready with some small work/fix/enhancements, please get all of them ready and live in production fast.",
+  "purpose": "Initialize only absent canonical Reader versions for exact already accepted India text editions. Preserve all active pointers, revocations, archives and operator-prepared candidates.",
+  "schema": "earnalism.approved-reader-bootstrap.v1",
+  "source_reviewed_head": "8dc8b26471f40c07cb4d4e921f831ec06964cf7f",
+  "target_characters": 3200,
+  "territory": "IN",
+  "titles": [
+    {
+      "decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+      "record_sha256": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
+      "slug": "a-ghost-story"
+    },
+    {
+      "decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+      "record_sha256": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
+      "slug": "the-tell-tale-heart"
+    },
+    {
+      "decision_id": "india-20261028-radharani-attribution-metadata-successor",
+      "record_sha256": "e2bf1284ede07ea5f2176bfc4d2e72726929a8d91af7e4abfb751517ee395e7a",
+      "slug": "radharani"
+    },
+    {
+      "decision_id": "india-20260925-a-white-heron-commercial-reader-release",
+      "record_sha256": "9c8e3c65ee8b7fbd2b5fea8afaf0a96909dca6b2294336f6a408f6906c3c7856",
+      "slug": "a-white-heron"
+    },
+    {
+      "decision_id": "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+      "record_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
+      "slug": "the-gift-of-the-magi"
+    },
+    {
+      "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+      "record_sha256": "d683b54b52628c4f215ed9386c5c62c30a39fc374f2a08a0a623845dfe66e987",
+      "slug": "the-canterville-ghost"
+    },
+    {
+      "decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+      "record_sha256": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
+      "slug": "the-adventures-of-sherlock-holmes"
+    },
+    {
+      "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+      "record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+      "slug": "agentic-ai-with-python"
+    },
+    {
+      "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+      "record_sha256": "1b14391053f923cca947e40b138ba8fb6bc8dc60a49a3c0e3549cffdb1645e26",
+      "slug": "a-horseman-in-the-sky"
+    },
+    {
+      "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+      "record_sha256": "2c2adda070df0a68bcd5c9fac74c9b05a01d22975de9e0d0bc74260aa65a588c",
+      "slug": "a-mystery-of-heroism"
+    },
+    {
+      "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+      "record_sha256": "815e60ef4c1849d94bb7ff00992e89dec949bb5bfb2754806b3f39f40d49b130",
+      "slug": "a-scandal-in-bohemia"
+    },
+    {
+      "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+      "record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+      "slug": "jekyll-and-hyde"
+    },
+    {
+      "decision_id": "india-20261001-love-of-life-owner-text-reader",
+      "record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+      "slug": "love-of-life"
+    },
+    {
+      "decision_id": "india-20261001-the-bishop-owner-text-reader",
+      "record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+      "slug": "the-bishop"
+    },
+    {
+      "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+      "record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+      "slug": "the-fall-of-the-house-of-usher"
+    },
+    {
+      "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+      "record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+      "slug": "the-lady-with-the-dog"
+    },
+    {
+      "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+      "record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+      "slug": "the-man-who-would-be-king"
+    },
+    {
+      "decision_id": "india-20261001-the-open-boat-owner-text-reader",
+      "record_sha256": "770d91722974e3f668a30f784d6822df52b38578e3259087606f5d32003a944d",
+      "slug": "the-open-boat"
+    },
+    {
+      "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+      "record_sha256": "0955276a1719e98613fc2192c814b2b629a9d1547fa6fcfd2fca3dedfdc58b6e",
+      "slug": "the-pit-and-the-pendulum"
+    },
+    {
+      "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+      "record_sha256": "4e3e8ca904ffe8548614d00c5d05766874539f85e51064093a58699f27688b75",
+      "slug": "the-stolen-white-elephant"
+    },
+    {
+      "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+      "record_sha256": "2751aa4db6797a08b04a8307a2534efbbe10dab05d551b04daf8a8855e96cff5",
+      "slug": "an-occurrence-at-owl-creek-bridge"
+    },
+    {
+      "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+      "record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+      "slug": "the-enchanted-april"
+    },
+    {
+      "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+      "record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+      "slug": "the-happy-prince"
+    },
+    {
+      "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+      "record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+      "slug": "picture-of-dorian-gray"
+    },
+    {
+      "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+      "record_sha256": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+      "slug": "dracula"
+    },
+    {
+      "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+      "record_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
+      "slug": "book-edfcf810c5"
+    },
+    {
+      "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+      "record_sha256": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6",
+      "slug": "muchiram-gurer-jibanchorit"
+    },
+    {
+      "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b",
+      "slug": "bn-059"
+    },
+    {
+      "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+      "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+      "slug": "the-call-of-the-wild"
+    },
+    {
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "record_sha256": "e696cd4df958749ea2c22958a7f1f8ff3ba1d30d78d83aa8f5a30a3eed0d738f",
+      "slug": "the-student"
+    },
+    {
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "record_sha256": "a69c4d6a5e4357f895d865152e1c7a471e2c50717f6f528561024a6c7b6772ad",
+      "slug": "the-art-of-money-getting"
+    },
+    {
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "record_sha256": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7",
+      "slug": "bn-035"
+    },
+    {
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae",
+      "slug": "alices-adventures-in-wonderland"
+    },
+    {
+      "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+      "record_sha256": "52ec33b130224daf87227c9f0b03ae04dc74098de3a4ad55da56428682721847",
+      "slug": "dsires-baby"
+    },
+    {
+      "decision_id": "india-20261103-sredni-vashtar-exact-sourceqa-private-stage",
+      "record_sha256": "bf5b3599252ae71472c05eadb7d552da1f310c3f02ea68157b2e32512d8c3894",
+      "slug": "sredni-vashtar"
+    },
+    {
+      "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+      "record_sha256": "c1478a769aabf7d0e5cfd5cd23c89a4e148e5843bbf46ffc570c2633ffda4756",
+      "slug": "the-cop-and-the-anthem"
+    },
+    {
+      "decision_id": "india-20261102-the-open-window-scored-private-stage",
+      "record_sha256": "4660907932e29a0053d3f32eb4b8264bb5c1669a114f6d07823d5928c4f65ad8",
+      "slug": "the-open-window"
+    },
+    {
+      "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
+      "record_sha256": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
+      "slug": "the-selfish-giant"
+    },
+    {
+      "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted",
+      "record_sha256": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567",
+      "slug": "the-science-of-getting-rich"
+    },
+    {
+      "decision_id": "india-20261003-bn-066-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+      "slug": "bn-066"
+    },
+    {
+      "decision_id": "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted",
+      "record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+      "slug": "lokrahasya"
+    },
+    {
+      "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted",
+      "record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+      "slug": "mrinalini"
+    },
+    {
+      "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted",
+      "record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+      "slug": "frankenstein"
+    },
+    {
+      "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted",
+      "record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+      "slug": "pride-and-prejudice"
+    },
+    {
+      "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34",
+      "slug": "the-great-gatsby"
+    },
+    {
+      "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted",
+      "record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+      "slug": "the-secret-garden"
+    },
+    {
+      "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+      "slug": "the-time-machine"
+    },
+    {
+      "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+      "slug": "acres-of-diamonds"
+    },
+    {
+      "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted",
+      "record_sha256": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080",
+      "slug": "my-life-and-work"
+    },
+    {
+      "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted",
+      "record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+      "slug": "the-principles-of-scientific-management"
+    },
+    {
+      "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted",
+      "record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+      "slug": "the-wonderful-wizard-of-oz"
+    },
+    {
+      "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+      "record_sha256": "3ad06ae63899593e2b482dd7c5366932c7a54c400ae9cc1050b34ca8b73b5336",
+      "slug": "book-5704b31005"
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "decision_id": "india-20261108-a-retrieved-reformation-reader-cover-successor",
+      "record_sha256": "18e2ccc7121b3a2d192208c9550e4b44c63db320e7ea118e70ade3c11797868e"
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "decision_id": "india-20261108-a-wagner-matinee-reader-cover-successor",
+      "record_sha256": "c615427ea96991751555022b7345f0a6ca605edf1fd7c72b81570401ff87425c"
+    },
+    {
+      "slug": "feathertop",
+      "decision_id": "india-20261108-feathertop-reader-cover-successor",
+      "record_sha256": "983d162aeb19d54cb75337bef94a539e5ce07fc876f8152279016bf20ac500f9"
+    },
+    {
+      "slug": "markheim",
+      "decision_id": "india-20261108-markheim-reader-cover-successor",
+      "record_sha256": "ccb0a75330347ec45d2be9081b39651b560dbbdf39f07c841dbf518b7d430dbf"
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "decision_id": "india-20261108-rappaccinis-daughter-reader-cover-successor",
+      "record_sha256": "f770abbccb6c60e64a1fb9ba6f0628307057b7495141f8353e52562a9156f0e9"
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "decision_id": "india-20261108-the-adventure-of-the-abbey-grange-reader-cover-successor",
+      "record_sha256": "60cf9129edeb49a99647e895eea5be32546c9c2d7cd1f27d8630a03c2ca02ac2"
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "decision_id": "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor",
+      "record_sha256": "e46cedead5b6b2dadd06d9474ec0e19a41f2d59e2fa5609ea174de4873c880b2"
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "decision_id": "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor",
+      "record_sha256": "c2ac75f35f05b4442278e44679ada9c2eb5f44da4d2912b7728639564c37efc7"
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "decision_id": "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor",
+      "record_sha256": "71abbd3ec66bb3c53c0f29f49d59cc4cec2c1e08b74f22c2c0712feea5fd6400"
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "decision_id": "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor",
+      "record_sha256": "3a73e485b53b5e94fac63683004b07c9bd59bf0b99399e37f9d362a61bed53a0"
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "decision_id": "india-20261108-the-adventure-of-the-empty-house-reader-cover-successor",
+      "record_sha256": "670a7b43d5a59db717d36f741246013b5f69528e3fecb013e4d6fc991fc3e517"
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "decision_id": "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor",
+      "record_sha256": "81a4f8799eb224eb8bee2a73c375ab30747b24acb3d0224c615e4781d3c1beab"
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "decision_id": "india-20261108-the-adventure-of-the-final-problem-reader-cover-successor",
+      "record_sha256": "d571a417f4f93b59b22df89b3777766195b38983bc85b2a12678eebda163a18c"
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "decision_id": "india-20261108-the-adventure-of-the-greek-interpreter-reader-cover-successor",
+      "record_sha256": "bab2f5de8176c4d1d5cc55adc4f3acc3fa6bf47a7528aeff516491799fce157d"
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "decision_id": "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor",
+      "record_sha256": "b13f4a419badc6c35909f477ecf142df5a6b407bf2ff4d45271bbab2cdad0234"
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "decision_id": "india-20261108-the-adventure-of-the-priory-school-reader-cover-successor",
+      "record_sha256": "6ff8b1894a791e351ccfa0e513d6308f5be4977a381fb1145cc59f670b6000a9"
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "decision_id": "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor",
+      "record_sha256": "c316f9a0db2bb93892f707d1142ba647bc053a1d0e849d5fce5726ec4d0f7bab"
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "decision_id": "india-20261108-the-adventure-of-the-solitary-cyclist-reader-cover-successor",
+      "record_sha256": "588bb64828e11e48351cd4e923efd6e3c4f69bee5ae063fef05b1cd9ae5f0c65"
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "decision_id": "india-20261108-the-ambitious-guest-reader-cover-successor",
+      "record_sha256": "2716eb61bd215d4651cae22e1bf86fb6373297cc7d55924beea26a5c6b51e032"
+    },
+    {
+      "slug": "the-bet",
+      "decision_id": "india-20261108-the-bet-reader-cover-successor",
+      "record_sha256": "02c42af45dffc6f14d39296f6a32aff97da964674b8a7e9f8dca8b760e75915b"
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "decision_id": "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor",
+      "record_sha256": "331dc9b8bdcadf79f0eed5af6bdc24cbdf05f19314e3e855c421bc4a079f02f3"
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "decision_id": "india-20261108-the-country-of-the-blind-reader-cover-successor",
+      "record_sha256": "614d9b0e72e97279733c13a296cbc309a30ec8727f5ea1cc931a97b33a8b5328"
+    },
+    {
+      "slug": "the-darling",
+      "decision_id": "india-20261108-the-darling-reader-cover-successor",
+      "record_sha256": "f8ae66246da0726c98f582376a22346becfd87cc80085b35f704d121a7e895c8"
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "decision_id": "india-20261108-the-door-in-the-wall-reader-cover-successor",
+      "record_sha256": "4a9274fb308758c166588a428e2916d03de24a983c106b2711c401576eec4eb6"
+    },
+    {
+      "slug": "the-furnished-room",
+      "decision_id": "india-20261108-the-furnished-room-reader-cover-successor",
+      "record_sha256": "1aa5c784555a352c33e8881149f7639488628b9901865437487ddc528c511193"
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "decision_id": "india-20261108-the-imp-of-the-perverse-reader-cover-successor",
+      "record_sha256": "490d49a58ead9dcf8d479b46d47d34452af5f7a7ad92d33cb43e9c828570de10"
+    },
+    {
+      "slug": "the-last-leaf",
+      "decision_id": "india-20261108-the-last-leaf-reader-cover-successor",
+      "record_sha256": "768a07272309b3581d71b402fcdd05f436241c3b8de76321dfcafc7355d3cfef"
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "decision_id": "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor",
+      "record_sha256": "0f463f4caf7d8dab3ea99e6df3f96ac564c29ab61cc7b68378442033c81da8ca"
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "decision_id": "india-20261108-the-luck-of-roaring-camp-reader-cover-successor",
+      "record_sha256": "58ea66a50eb8008afd5bd2145309cb7d26f4a3b9c8d574705efb8f1eb5457b94"
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "decision_id": "india-20261108-the-man-in-a-case-reader-cover-successor",
+      "record_sha256": "8c6a04322c842c12d4f53ee4ac820e4f3c6fed674f8dd70cb8dcf1d6231f178d"
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "decision_id": "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor",
+      "record_sha256": "0cb931c15e8f72fe97704039d5ee0652251fce620a50e821cf6d59093b470a21"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "decision_id": "india-20261108-the-masque-of-the-red-death-reader-cover-successor",
+      "record_sha256": "74da49f4d63db062d42e028413b2848c6b72f3fcfc8e20aeb9cf2a66219ae535"
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "decision_id": "india-20261108-the-ministers-black-veil-reader-cover-successor",
+      "record_sha256": "f5738f44accf4bb3cf5fbe7d1689bf61d82553779bfd15c41280529181ca9a38"
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "decision_id": "india-20261108-the-murders-in-the-rue-morgue-reader-cover-successor",
+      "record_sha256": "f7fc64150a1d97f0b461f38159d355a9bafca008b01a039e63be94952860696d"
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "decision_id": "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor",
+      "record_sha256": "590a6481cfe8d82e53644e17cbb5057723537259a3329fb6991cab2c73a0b1f8"
+    },
+    {
+      "slug": "the-purloined-letter",
+      "decision_id": "india-20261108-the-purloined-letter-reader-cover-successor",
+      "record_sha256": "13aefbc7262c319bd5be014edb999920cc24d8bedf2ff3dad83b2b8bfd255f4c"
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "decision_id": "india-20261108-the-ransom-of-red-chief-reader-cover-successor",
+      "record_sha256": "aa643ac6ba938b3d09eaaaac733cefce66b16bd91d7f8e7fa0e388ccea0a2ff6"
+    },
+    {
+      "slug": "the-speckled-band",
+      "decision_id": "india-20261108-the-speckled-band-reader-cover-successor",
+      "record_sha256": "7b3d5853f0c1197be50beec429146622162c6bb8cbbcda3f54d23f47f1a43e69"
+    },
+    {
+      "slug": "the-suicide-club",
+      "decision_id": "india-20261108-the-suicide-club-reader-cover-successor",
+      "record_sha256": "c65ee9058caf788839323e793c0ef238adda0a0071841f5195e0e0f65d810bd2"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "decision_id": "india-20261108-the-yellow-wallpaper-reader-cover-successor",
+      "record_sha256": "54ee72f16d4201c7f8c3c64edd0e72b941c37e64f76ca91aee7ff30ea311ef98"
+    },
+    {
+      "slug": "to-build-a-fire",
+      "decision_id": "india-20261108-to-build-a-fire-reader-cover-successor",
+      "record_sha256": "01ee551663eda51a96263e37cac90f0b769079e18d766bff633241ec22982bed"
+    },
+    {
+      "slug": "tobermory",
+      "decision_id": "india-20261108-tobermory-reader-cover-successor",
+      "record_sha256": "2088e7ccdc649952c50b49d91be905ef435986ee12b13c1e60b92607a40229ed"
+    },
+    {
+      "slug": "ward-no-6",
+      "decision_id": "india-20261108-ward-no-6-reader-cover-successor",
+      "record_sha256": "dce37ffd9574d4f3debe0004e196165837e144e36910a017251c52c50966119d"
+    },
+    {
+      "slug": "white-fang",
+      "decision_id": "india-20261108-white-fang-reader-cover-successor",
+      "record_sha256": "1e061d67e153541fe07beb9c9035c71cdb02c5948e50ea7dd4afa63bc47ea761"
+    },
+    {
+      "slug": "young-goodman-brown",
+      "decision_id": "india-20261108-young-goodman-brown-reader-cover-successor",
+      "record_sha256": "632b7c6b47791cdb522abc432a37993ae984059807486c23d26d1258570ad530"
+    }
+  ]
+}

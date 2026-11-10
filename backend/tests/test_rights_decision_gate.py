@@ -69,6 +69,7 @@ def test_real_registry_retains_historical_records_and_binds_current_ninety_seven
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
     assert set(registry) == {
+        "india-20261111-the-selfish-giant-boy-cover-rebind",
         "india-20261103-sredni-vashtar-exact-sourceqa-private-stage",
         "india-20261103-sredni-vashtar-verse-scored-prospective-audio",
         "india-20261102-the-open-window-scored-private-stage",

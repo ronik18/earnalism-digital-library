@@ -119,8 +119,8 @@
     },
     {
       "path": "data/approved_reader_bootstrap.json",
-      "bytes": 22878,
-      "sha256": "4d036381490604a06d2122938000102948b69cf6584304fb11b85a971744e31a"
+      "bytes": 22875,
+      "sha256": "354bda8232534146c5ae6f51c898729aab2e80c392b94f5f5a704b887c3547d2"
     },
     {
       "path": "data/catalog_exclusions.json",
@@ -9844,18 +9844,18 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/checksum_manifest.json",
-      "bytes": 3571,
-      "sha256": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba"
+      "bytes": 3564,
+      "sha256": "2f698d2966aa9b1be7f05230d386caf1b287e5fa578eff249f288b3bd4c3c115"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/cover_approval_evidence.json",
-      "bytes": 13350,
-      "sha256": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760"
+      "bytes": 10992,
+      "sha256": "a4f5acd34fd91bd17d6e902a665ce80c05950167f0832775741d640a22ea52a6"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/cover_provenance.json",
-      "bytes": 5539,
-      "sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe"
+      "bytes": 7325,
+      "sha256": "bbdf4cbb220e77988af92ebd9b754ff91215d29f21efd4904cc5ac76bd08cae7"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/covers/back-delivery-20261029.webp",
@@ -9939,8 +9939,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/public_book.json",
-      "bytes": 61611,
-      "sha256": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6"
+      "bytes": 61079,
+      "sha256": "25de6f402f394da519c6fe8d3a05576cdb76feb636ea34efd72ab6be9e3c0690"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_authorization.json",
@@ -9949,8 +9949,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/publication_manifest.json",
-      "bytes": 2651,
-      "sha256": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d"
+      "bytes": 2644,
+      "sha256": "fa640ec7708333887ab35dda846fa1aefa7636496563eedaa1713ebcbd3ac61d"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/reader_manifest.json",
@@ -9959,8 +9959,8 @@
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/rights_decision.json",
-      "bytes": 3550,
-      "sha256": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39"
+      "bytes": 3649,
+      "sha256": "da13e2e41412112359bd79bd1919629fab497c5e41a971c348a6c4a0416e59cf"
     },
     {
       "path": "data/controlled_publications/the-selfish-giant/source_evidence.json",
@@ -11364,8 +11364,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 49106,
-      "sha256": "c9c28756d6ccbd2361e081270db7a74d839a77df81ae2de7a90faf2f3be21b08"
+      "bytes": 49231,
+      "sha256": "c26b9f2ec960c000eb38fc04d6b673acf9eab25dedb23943342c6f57b7eab1a2"
     },
     {
       "path": "data/sredni_initial_review_authority.json",
@@ -11698,5 +11698,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "3b3ad38adf20396f04af0264b3e90aa0eb53dec62dbae8735d89a193578a766d"
+  "expected_sha256": "590c170bba6abbc5b4c07a08e6ffe6b0d7d939946f4d58ef3f21c9905f3382a5"
 }

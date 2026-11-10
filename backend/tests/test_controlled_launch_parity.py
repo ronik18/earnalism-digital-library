@@ -256,6 +256,9 @@ def test_ninety_seven_title_release_has_hash_bound_reading_pass_rights_and_publi
             or (slug == "the-selfish-giant"
                 and record["decision_id"] == "india-20261102-the-selfish-giant-cedar-private-stage"
                 and record["accepted_by"] == "Existing explicit Ronik Basak title publication authority; deterministic exact metadata component rebinding by Codex")
+            or (slug == "the-selfish-giant"
+                and record["decision_id"] == "india-20261111-the-selfish-giant-boy-cover-rebind"
+                and record["accepted_by"] == "Direct owner cover replacement instruction; exact unchanged Reader rights component rebinding by Codex")
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))

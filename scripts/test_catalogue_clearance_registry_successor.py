@@ -14,6 +14,7 @@ STAGE_REFERENCE='selfish_private_stage_authority_successor_20261102'
 OPEN_STAGE_REFERENCE='open_window_private_stage_authority_successor_20261102'
 SREDNI_REFERENCE='sredni_scored_sourceqa_successor_20261103'
 PERSISTED_REFERENCE='persisted45_reader_successor_20261108'
+COVER_REFERENCE='selfish_giant_boy_cover_successor_20261111'
 PREDECESSOR='b4bc7585a87b7546db3270f3bfd63bd436e8585a'
 CONTINUOUS='f5706d328e08ab330f65f604f51df322b65646f1'
 CEDAR='c980ff2da048db7a164648f06f707440b2a8124c'
@@ -178,7 +179,7 @@ def add_persisted_registry(expected,baseline):
     assert expected==before, 'Persisted reader successor must preserve exact predecessor permissions'
     assert not set(r['added_accepted_records']) & set(expected['accepted_records'])
     expected['accepted_records'].update(r['added_accepted_records'])
-    return expected
+    return add_cover_registry(expected,baseline)
 
 def add_persisted_baseline(expected,baseline):
     if PERSISTED_REFERENCE not in baseline:return expected
@@ -190,14 +191,87 @@ def add_persisted_baseline(expected,baseline):
     expected['titles'].update(r['added_title_bindings'])
     expected['authority_sha256']=r['reviewed_authority_sha256']
     expected[PERSISTED_REFERENCE]=baseline[PERSISTED_REFERENCE]
+    return add_cover_baseline(expected,baseline)
+
+def cover_successor(baseline):
+    ref=baseline[COVER_REFERENCE]; raw=(ROOT/ref['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ref['sha256']
+    r=json.loads(raw); assert r['schema']=='earnalism.selfish-giant-boy-cover-successor.v1'
+    assert r['slug']=='the-selfish-giant'
+    for row in r['preserved_predecessor_files'].values():
+        assert bindings.sha(ROOT/row['path'])==row['sha256']
+    package='data/controlled_publications/the-selfish-giant/'
+    def before(name):
+        return json.loads((ROOT/r['preserved_predecessor_files'][package+name+'.json']['path']).read_text())
+    old=before('rights_decision'); current=bindings.load(ROOT/package/'rights_decision.json')
+    unchanged=lambda x:{k:v for k,v in x.items() if k not in {'decision_id','accepted_by','basis','components'}}
+    assert unchanged(old)==unchanged(current), 'Cover correction cannot expand rights'
+    assert current['decision_id']=='india-20261111-the-selfish-giant-boy-cover-rebind'
+    assert r['added_accepted_records']=={current['decision_id']:record_sha256(current)}
+    paths=r['reviewed_title_binding']['component_paths']
+    assert current['components']=={k:bindings.sha(ROOT/v) for k,v in paths.items()}
+    allowed={'public_book','checksum_manifest','publication_manifest','cover_provenance','cover_replacement_approval','cover_replacement_front_delivery','cover_replacement_back_delivery'}
+    assert all(v==current['components'][k] for k,v in old['components'].items() if k not in allowed)
+    a=before('public_book'); b=bindings.load(ROOT/package/'public_book.json')
+    fields={'cover_url','cover_image_url','coverImage','cover_image','thumbnail_url','blur_placeholder','back_cover_url','back_cover_image_url','backCoverImage','back_cover_thumbnail_url','back_cover_blur_placeholder'}
+    assert {k:v for k,v in a.items() if k not in fields}=={k:v for k,v in b.items() if k not in fields}, 'Non-cover metadata/audio changed'
+    a=before('publication_manifest'); b=bindings.load(ROOT/package/'publication_manifest.json')
+    a['artifacts']['public_book']=b['artifacts']['public_book']; a['reader_release']['cover_url']=b['reader_release']['cover_url']
+    for k in ('generated_at','manifest_sha256'):a[k]=b[k]
+    assert a==b, 'Cover correction changed publication/access/audio truth'
+    for side,asset in r['assets'].items():
+        assert bindings.sha(ROOT/asset['path'])==asset['sha256']
+        assert paths['cover_replacement_'+side+'_delivery']==asset['path']
+        assert asset['url']=='https://theearnalism.com/'+asset['path'].removeprefix('frontend/public/')
+    assert bindings.sha(ROOT/REGISTRY)==r['reviewed_registry_sha256']
+    prior_registry=bindings.load(ROOT/r['preserved_predecessor_files'][REGISTRY]['path'])
+    assert not set(r['added_accepted_records']) & set(prior_registry['accepted_records'])
+    prior_registry['accepted_records'].update(r['added_accepted_records'])
+    assert bindings.load(ROOT/REGISTRY)==prior_registry, 'Cover successor changed other rights/audio permissions'
+    bootstrap_path='backend/data/approved_reader_bootstrap.json'
+    prior_bootstrap=bindings.load(ROOT/r['preserved_predecessor_files'][bootstrap_path]['path'])
+    for row in prior_bootstrap['titles']:
+        if row['slug']==r['slug']:
+            row['decision_id']=current['decision_id'];row['record_sha256']=record_sha256(current)
+    assert bindings.load(ROOT/bootstrap_path)==prior_bootstrap, 'Cover successor changed other bootstrap titles'
+    assert bindings.sha(ROOT/bootstrap_path)==r['reviewed_bootstrap_sha256']
+    return r
+
+def add_cover_registry(expected,baseline):
+    if COVER_REFERENCE not in baseline:return expected
+    r=cover_successor(baseline)
+    before=bindings.load(ROOT/r['preserved_predecessor_files'][REGISTRY]['path'])
+    assert expected==before, 'Cover successor predecessor registry changed'
+    assert not set(r['added_accepted_records']) & set(expected['accepted_records'])
+    expected['accepted_records'].update(r['added_accepted_records'])
+    return expected
+
+def add_cover_baseline(expected,baseline):
+    if COVER_REFERENCE not in baseline:return expected
+    r=cover_successor(baseline)
+    before=bindings.load(ROOT/r['preserved_predecessor_files'][bindings.REVIEWED_AUTHORITY]['path'])
+    assert expected==before, 'Cover successor predecessor authority changed'
+    assert expected['titles'][r['slug']]==r['predecessor_title_binding']
+    expected['titles'][r['slug']]=r['reviewed_title_binding']
+    expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
+    expected[COVER_REFERENCE]=baseline[COVER_REFERENCE]
     return expected
 
 def retained_shared_file(path,want,baseline):
+    if COVER_REFERENCE in baseline:
+        row=cover_successor(baseline)['preserved_predecessor_files'].get(path)
+        if row and row['sha256']==want:return ROOT/row['path']
     if PERSISTED_REFERENCE in baseline:
         row=persisted_successor(baseline)['preserved_predecessor_files'].get(path)
         if row:
             assert row['sha256']==want, 'Historical transaction digest differs'
             return ROOT/row['path']
+    return ROOT/path
+
+def before_cover_file(path,baseline):
+    if COVER_REFERENCE in baseline:
+        row=cover_successor(baseline)['preserved_predecessor_files'].get(path)
+        if row:return ROOT/row['path']
     return ROOT/path
 
 class RegistrySuccessorTests(unittest.TestCase):
@@ -290,6 +364,8 @@ class RegistrySuccessorTests(unittest.TestCase):
                 r45=persisted_successor(baseline)
                 self.assertEqual(r45['preserved_predecessor_files'][REGISTRY]['sha256'],final)
                 final=r45['reviewed_authority_sha256'][REGISTRY]
+            if COVER_REFERENCE in baseline:
+                final=cover_successor(baseline)['reviewed_registry_sha256']
             self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
@@ -308,7 +384,7 @@ class RegistrySuccessorTests(unittest.TestCase):
         self.assertEqual(receipt['actual_transaction'],actual['transaction'])
         self.assertEqual(len(actual['transaction']['files']),14)
         for path,digest in actual['transaction']['files'].items():
-            current=ROOT/path
+            current=before_cover_file(path,baseline)
             if OPEN_STAGE_REFERENCE in baseline and path in (REGISTRY,'backend/data/approved_reader_bootstrap.json'):
                 current=EVIDENCE_ROOT/load_open_stage_successor(baseline)['preserved_shared_predecessor_files'][path]
             self.assertEqual(bindings.sha(current),digest)
@@ -316,21 +392,21 @@ class RegistrySuccessorTests(unittest.TestCase):
         self.assertEqual(json.loads((ROOT/REGISTRY).read_text()),add_open_stage_registry(expected,baseline))
         self.assertEqual(add_stage_baseline(oldbaseline,baseline),baseline)
         prior=json.loads(base64.b64decode(snapshot['files']['rights_decision.json']))
-        current=json.loads((ROOT/'backend/data/controlled_publications/the-selfish-giant/rights_decision.json').read_text())
+        current=json.loads(before_cover_file('backend/data/controlled_publications/the-selfish-giant/rights_decision.json',baseline).read_text())
         self.assertEqual(receipt['added_accepted_records'],{current['decision_id']:record_sha256(current)})
         self.assertEqual(current['decision_id'],'india-20261102-the-selfish-giant-cedar-private-stage')
         for key in prior:
             if key not in ('decision_id','components','basis','evidence_sha256'):self.assertEqual(current[key],prior[key],key)
         self.assertEqual(receipt['reviewed_title_binding']['component_paths'],receipt['predecessor_title_binding']['component_paths'])
-        for key,path in receipt['reviewed_title_binding']['component_paths'].items():self.assertEqual(current['components'][key],bindings.sha(ROOT/path))
+        for key,path in receipt['reviewed_title_binding']['component_paths'].items():self.assertEqual(current['components'][key],bindings.sha(before_cover_file(path,baseline)))
         oldbook=json.loads(base64.b64decode(snapshot['files']['public_book.json']))
-        newbook=json.loads((ROOT/'backend/data/controlled_publications/the-selfish-giant/public_book.json').read_text())
+        newbook=json.loads(before_cover_file('backend/data/controlled_publications/the-selfish-giant/public_book.json',baseline).read_text())
         for field in actual['old_public_fields_preserved']:self.assertEqual(newbook.get(field),oldbook.get(field),field)
         self.assertEqual(newbook['audiobook_native_replacement']['status'],'STAGED_PRIVATE')
         self.assertEqual(newbook['audiobook_active_release']['active_release_descriptor_sha256'],receipt['old_selected_public_audio_descriptor'])
         from backend.protected_package_publication import protected_package_publication_valid
         self.assertTrue(protected_package_publication_valid(newbook))
-        bootstrap=json.loads((ROOT/'backend/data/approved_reader_bootstrap.json').read_text())
+        bootstrap=json.loads(before_cover_file('backend/data/approved_reader_bootstrap.json',baseline).read_text())
         row=[r for r in bootstrap['titles'] if r['slug']=='the-selfish-giant'][0]
         self.assertEqual(hashlib.sha256(json.dumps(row,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest(),actual['transaction']['target_bootstrap_row_sha256'])
         self.assertEqual(len(baseline['titles']),52+(45 if PERSISTED_REFERENCE in baseline else 0))
@@ -354,6 +430,10 @@ class RegistrySuccessorTests(unittest.TestCase):
             self.assertIs(result.passed,passed,(country,use,result.reasons))
         prior=json.loads((ROOT/r['preserved_predecessor_authority']).read_text())
         current_titles=copy.deepcopy(baseline['titles'])
+        if COVER_REFERENCE in baseline:
+            cover=cover_successor(baseline)
+            self.assertEqual(current_titles[cover['slug']],cover['reviewed_title_binding'])
+            current_titles[cover['slug']]=cover['predecessor_title_binding']
         if PERSISTED_REFERENCE in baseline:
             r45=persisted_successor(baseline)
             for slug,binding in r45['added_title_bindings'].items():

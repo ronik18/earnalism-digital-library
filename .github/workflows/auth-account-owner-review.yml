@@ -24,7 +24,7 @@ permissions:
 jobs:
   owner-review:
     name: Auth/account owner-review artifact
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       npm_config_cache: ${{ github.workspace }}/.npm-cache

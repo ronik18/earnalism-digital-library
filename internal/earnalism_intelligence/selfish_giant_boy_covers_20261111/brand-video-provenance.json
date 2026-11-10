@@ -1,0 +1,36 @@
+{
+  "source": "Owner-supplied BrandAsset.mp4",
+  "source_sha256": "8ffd07e69bd4715dc06e26eccaf7b884f01793ea411f736b04486ebc1ab7470e",
+  "source_dimensions": [
+    1080,
+    1920
+  ],
+  "source_duration_seconds": 3,
+  "crop": [
+    960,
+    288,
+    60,
+    790
+  ],
+  "trim_start_seconds": 0.5,
+  "frames_per_second": 12,
+  "palette_colors": 80,
+  "output_dimensions": [
+    520,
+    156
+  ],
+  "plays": "once, rests on final frame",
+  "reduced_motion": "matching still; selected with picture media source",
+  "assets": {
+    "earnalism-brand-video-light.gif": {
+      "path": "frontend/public/assets/brand/earnalism-brand-video-light.gif",
+      "sha256": "069d538274158dfd3385befd9d7a4f87374b5971f34158debd907c6be112dee5",
+      "bytes": 94478
+    },
+    "earnalism-brand-video-still.png": {
+      "path": "frontend/public/assets/brand/earnalism-brand-video-still.png",
+      "sha256": "bbbce7b38de4b4714fdfa60530cdeb5e5f646e52b412ec0fcfde5b47e621d0ce",
+      "bytes": 66980
+    }
+  }
+}

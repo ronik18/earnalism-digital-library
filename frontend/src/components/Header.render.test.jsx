@@ -45,7 +45,7 @@ describe("owner-approved Header composition", () => {
     mockLocation = { pathname, search: "", hash: "" };
     const { container, cleanup } = renderHeader();
     expect(container.querySelector("header").className).toBe("sticky top-0 z-50 glass-header premium-site-header");
-    expect(container.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')).not.toBeNull();
+    expect(container.querySelector('[data-brand-asset="earnalism-brand-video-light.gif"]')).not.toBeNull();
     const desktopBlog = container.querySelectorAll('.premium-header-nav--desktop [data-nav-key="journal"]');
     expect(desktopBlog).toHaveLength(1);
     expect(desktopBlog[0].textContent).toBe("Blog");
@@ -61,6 +61,13 @@ describe("owner-approved Header composition", () => {
   test("renders the official logo, canonical navigation, search, and a single Sign In action", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
+    const logo = container.querySelector('[data-testid="brand-logo"] img');
+    expect(logo.getAttribute('src')).toContain('earnalism-brand-video-light.gif');
+    expect(container.querySelector('[data-testid="brand-logo"] source').getAttribute('media')).toBe('(prefers-reduced-motion: reduce)');
+    act(() => logo.dispatchEvent(new Event('error')));
+    expect(logo.getAttribute('src')).toContain('earnalism-brand-video-still.png');
+    act(() => logo.dispatchEvent(new Event('error')));
+    expect(logo.getAttribute('src')).toContain('earnalism-logo-text-original.png');
     expect(container.querySelector('.premium-header-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
     expect([...container.querySelectorAll('.premium-header-nav--desktop > a[data-testid^="nav-"]')].map((item) => item.textContent.trim())).toEqual([
       "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About", "Sign In",
