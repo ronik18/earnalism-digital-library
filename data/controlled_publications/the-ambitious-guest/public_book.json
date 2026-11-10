@@ -7,12 +7,12 @@
   "category_slug": "literary-fiction",
   "short_description": "A young traveller shares his dream of fame with a mountain family — and seconds later a landslide kills them all.",
   "description": "A young man stops at a mountain cottage and shares his burning ambition to be remembered. The family shares their own modest dreams. A landslide buries them all — and because they fled the house to escape, no one ever finds their bodies. Nobody remembers them.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-ambitious-guest/front-9d7f9096be843ec9.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-ambitious-guest/front-9d7f9096be843ec9.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-ambitious-guest/back-672973a9e0ab8b4f.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-ambitious-guest/back-672973a9e0ab8b4f.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-ambitious-guest",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581151/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581153/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581154/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581155/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581156/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581151/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581151/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581153/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581154/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581155/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581156/earnalism/audiobooks/en/the-ambitious-guest/the-ambitious-guest_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "9d7f9096be843ec9641abd5a6288e28625a65ea7858489b8752cd9f35ddcc521",
+  "back_cover_sha256": "672973a9e0ab8b4f9341ce993c512def2b00a18cae37dd4cb7079c7870e24c8a"
 }

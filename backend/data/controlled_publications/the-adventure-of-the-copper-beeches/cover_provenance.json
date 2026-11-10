@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-copper-beeches",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "ab269b6fd009ce47276473ad3f21c8800ce2908b73a7e2031b548e3dd064ff19",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-copper-beeches/front-1a755f79e54e23c8.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-copper-beeches/front-1a755f79e54e23c8.webp",
+      "sha256": "1a755f79e54e23c8090e0322f81d6bf05f6cf14fb43d20b23f3d7b3b4acac356",
+      "bytes": 117230,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-copper-beeches/back-249f7d21e17343b4.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-copper-beeches/back-249f7d21e17343b4.webp",
+      "sha256": "249f7d21e17343b45715e614f3b1e145e29ebeca5cfa994932a57d28e43c5be9",
+      "bytes": 37340,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

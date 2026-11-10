@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-luck-of-roaring-camp",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "7173f05d398a85ced29367159431d5bd730cf2b9dc57bf802511f6e2eb0b6cf8",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-luck-of-roaring-camp/front-272a7efbf5f18201.webp",
+      "url": "https://theearnalism.com/assets/books/the-luck-of-roaring-camp/front-272a7efbf5f18201.webp",
+      "sha256": "272a7efbf5f18201fc236c896754d52ee2b4aec5004cb834dc1e1cec5a53de9a",
+      "bytes": 144392,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-luck-of-roaring-camp/back-87fa0161246a85e2.webp",
+      "url": "https://theearnalism.com/assets/books/the-luck-of-roaring-camp/back-87fa0161246a85e2.webp",
+      "sha256": "87fa0161246a85e203d692ae05af499eaa4348122f8e421454d4301e7cba0e07",
+      "bytes": 41672,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

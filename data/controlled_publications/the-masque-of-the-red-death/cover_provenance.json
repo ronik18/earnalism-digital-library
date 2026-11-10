@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-masque-of-the-red-death",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "cb975d5364bfd8c29ad494c6d70c8ea73a2d2bb1ad74f62a66ee4c18928a4627",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+      "url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+      "sha256": "b5da74282d1d0d85d8765449e6263a9051708bd7b2925f74ed56da40b3b67ea8",
+      "bytes": 92276,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-masque-of-the-red-death/back-a8ba155eb51310fd.webp",
+      "url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/back-a8ba155eb51310fd.webp",
+      "sha256": "a8ba155eb51310fd4873eb1894f75260d2f54bb9085379748a058f16dd66017b",
+      "bytes": 33006,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

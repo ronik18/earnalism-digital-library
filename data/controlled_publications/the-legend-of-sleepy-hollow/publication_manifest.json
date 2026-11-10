@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-legend-of-sleepy-hollow",
   "title": "The Legend of Sleepy Hollow",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
     "content_hash": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
@@ -28,16 +28,14 @@
     "evidence_sha256": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/front-cc534675f7879d9a.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "public_book": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc",
     "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
     "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
-    "approval_evidence": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603"
+    "approval_evidence": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5"
   },
-  "manifest_sha256": "47af58dff07fb4fce89a3024cbad8b687951c893906c9f47e47f1bb2ef80c071"
+  "manifest_sha256": "d3b5a022983dea9a72b1d566b9f5247d798e716c8bf33abb622a458e85439c21"
 }

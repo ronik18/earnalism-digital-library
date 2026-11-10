@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-country-of-the-blind",
   "title": "The Country of the Blind",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "content": {
     "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
     "content_hash": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386",
@@ -28,16 +28,14 @@
     "evidence_sha256": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-country-of-the-blind/front-cb52a12565b29595.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d",
+    "public_book": "c329387501c154989063c36304b35725c6281f8c9c5dc021fc3493e6f9a7501f",
     "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
     "source_evidence": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
-    "approval_evidence": "128b7553db8a4d64df98345756055b44cd8223448f7c50f2304455772e3f8f59"
+    "approval_evidence": "283d507508e047df05b72cad44b9da59af0c08e222c4418caa9b0b19601f01be"
   },
-  "manifest_sha256": "457adcb03b7c328775ed124dcb2280522e88c3b43ca9f38c4f2476f88ab43926"
+  "manifest_sha256": "6708d6a7b3407ff57823b49b7ee5d4a1dc6105376139db0e1c144c1f1419c891"
 }

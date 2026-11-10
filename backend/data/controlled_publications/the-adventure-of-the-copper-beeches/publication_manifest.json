@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-copper-beeches",
+  "title": "The Adventure of the Copper Beeches",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "content": {
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "b462ab2045b83b93266df29ada25c1fe29f319e658ae9eef3a608fc9284303d0",
+    "provenance_hash": "a8137444e947f0591d88f978eaf08253a8c70c6d47f318b7db253579e45c5fa7",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b84790d8df2186d62e6a29923d8490effa8c8a093ef3bb09884bba5e13018009",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Copper Beeches",
+        "word_count": 10007,
+        "sha256": "efb161b0c7565f76a70d40e8c0642816d1dd7bc56e703174634c0ff74b23944f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-copper-beeches/front-1a755f79e54e23c8.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc",
+    "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
+    "approval_evidence": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921"
+  },
+  "manifest_sha256": "52d6801d4fc3185ec05addfccf67e1a1a44edddd5e9c38452c376db8af78df8d"
+}

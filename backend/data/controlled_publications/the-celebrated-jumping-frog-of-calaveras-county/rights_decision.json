@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor",
+  "edition_id": "the-celebrated-jumping-frog-of-calaveras-county",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32",
+    "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+    "approval_evidence": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592",
+    "checksum_manifest": "4086bda0ad821b79d3ce397a4f685e5a1176ef54df9dbc891e667cdb18a832f4",
+    "publication_manifest": "b7bac75f315bfd5b93bc154d71a73ae83e6f03aacb22cfff932ccc841c6eb183",
+    "cover_provenance": "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc",
+    "cover_front": "4df736343b19a3246ab36d4d06f3424da18a5cc600bf1d56dddb24ae1e172ac2",
+    "cover_back": "7e617b8ff497a1bf9e688c740148b11337e2a32f9b708334bb82db5a8777283d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-celebrated-jumping-frog-of-calaveras-county-pg10947-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "c181ba405dd630ba5daf91f2ce1aab70104b4589ea75302f33be9ae4e453879d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
+    "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
+    "6c50f56f12d7613ea93ed7aa0c3c783e3542f40579a46378faa30ce201a528bc",
+    "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

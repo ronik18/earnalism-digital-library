@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-door-in-the-wall-pg11870-noncover-text",
+  "edition_id": "the-door-in-the-wall",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370",
+    "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
+    "approval_evidence": "22401614de7fb638411b29d972600f7d81412b3ddbc4b44ab65b77f00d892d32",
+    "checksum_manifest": "e90d5881a6877a38ddb0d53da57d0e66f97a6c90b7ef128e98bffdce240c9515",
+    "publication_manifest": "d16bd1be6b33823fa88e6ee40c8c7195e5a3f4215de828a480e123e18a768e8f"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1913 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

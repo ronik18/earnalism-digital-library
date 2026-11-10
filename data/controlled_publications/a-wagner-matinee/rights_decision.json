@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-a-wagner-matinee-pg346-noncover-text",
+  "decision_id": "india-20261108-a-wagner-matinee-reader-cover-successor",
   "edition_id": "a-wagner-matinee",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93",
+    "public_book": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6",
     "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
     "source_evidence": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a",
-    "approval_evidence": "edebd7fa37898563d91d8acd6d12c6747350f8d72aa9ec505a428ff16131e57b",
-    "checksum_manifest": "fe7cbb36eb6f73008a36dae2bf6d641d8ba0e6ef921493534cd7ecd830a52ec6",
-    "publication_manifest": "66af4c012f3c9d782856292cacda11b9419fb638070ca2eb19a3003290fe4e94"
+    "approval_evidence": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895",
+    "checksum_manifest": "63f2159188ad1bd15e9bcfb2930d4669959b47f648dd6dc2233d11ff75185319",
+    "publication_manifest": "3bf913d0b8dc4500594da513cae0dcbfa83aad7d10f2f5688959d69bbb7af2a0",
+    "cover_provenance": "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c",
+    "cover_front": "febdb7034c342a12ebafd6c76e322d391a498f9f0d6935809401a8d2b24d1e4f",
+    "cover_back": "067aefce7dfde81070f1f84ddc058930ca9e69e4ecd96b01e7bd83025c0a1231"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1947, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-a-wagner-matinee-pg346-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "94ec7910ae6b4528125422f88bec9bf3033262d6c42005cb3d3125e61fd57eb7",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
-    "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251"
+    "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
+    "1ade6344eaf49f8626e87a408358e32c63d8805df337e2bb1e5e09a0b945d0db",
+    "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

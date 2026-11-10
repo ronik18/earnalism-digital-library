@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "to-build-a-fire",
   "title": "To Build a Fire",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d",
     "content_hash": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
@@ -28,16 +28,14 @@
     "evidence_sha256": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
+    "public_book": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e",
     "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
     "source_evidence": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
-    "approval_evidence": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a"
+    "approval_evidence": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25"
   },
-  "manifest_sha256": "5783fb7cc03da34461e6e6c9635ccd192d5911bf1846f14ea51a037ec035ea89"
+  "manifest_sha256": "7b590950246840d3d70a9b25846f758b4008c443d411787dc89e982677db236c"
 }

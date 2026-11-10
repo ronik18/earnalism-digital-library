@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-door-in-the-wall",
   "title": "The Door in the Wall",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
     "content_hash": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
@@ -28,13 +28,11 @@
     "evidence_sha256": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-door-in-the-wall/front-573d4ab0cfea235c.webp",
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370",
+    "public_book": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6",
     "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
     "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
-    "approval_evidence": "22401614de7fb638411b29d972600f7d81412b3ddbc4b44ab65b77f00d892d32"
+    "approval_evidence": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb"
   },
-  "manifest_sha256": "04bcda241f3eb81a93d3450e6bc5260285fe0d962fe49e6296bcb68cc3dc5758"
+  "manifest_sha256": "fecc9bad1c7b1497ccf84fff6ca9f67e955e2e844276406f1fb15f26db327e50"
 }

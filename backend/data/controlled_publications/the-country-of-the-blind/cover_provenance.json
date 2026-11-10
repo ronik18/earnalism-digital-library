@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-country-of-the-blind",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "e3f7305f7d227626308535eb8f392b25ff6f8927896146527a308954e93a73b2",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-country-of-the-blind/front-cb52a12565b29595.webp",
+      "url": "https://theearnalism.com/assets/books/the-country-of-the-blind/front-cb52a12565b29595.webp",
+      "sha256": "cb52a12565b29595c5ec9490fc1bb37470d18f30459c845239d3d0c304b9cd1c",
+      "bytes": 101038,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-country-of-the-blind/back-fa92f8093537a66e.webp",
+      "url": "https://theearnalism.com/assets/books/the-country-of-the-blind/back-fa92f8093537a66e.webp",
+      "sha256": "fa92f8093537a66efcbca2352fe90ba4cf20438da590662df75bc85316f8a937",
+      "bytes": 32816,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

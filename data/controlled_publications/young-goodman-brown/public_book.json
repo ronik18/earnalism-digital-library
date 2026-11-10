@@ -7,12 +7,12 @@
   "category_slug": "literary-fiction",
   "short_description": "A young Puritan man walks into the forest at night and sees everyone he trusts at a devil-worshipping ceremony.",
   "description": "Goodman Brown's one night in the forest destroys his faith in all of humanity — whether what he saw was real or a dream, he can never again trust his neighbours, his minister, or his wife. Hawthorne's most devastating moral allegory.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/young-goodman-brown/back-265bde7a197be5b9.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/young-goodman-brown/back-265bde7a197be5b9.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "young-goodman-brown",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581923/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581925/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581926/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581927/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581927/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581923/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581923/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581925/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581926/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581927/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581927/earnalism/audiobooks/en/young-goodman-brown/young-goodman-brown_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "840ce982e482297c125ac6e617238efa111c48da6422e19b369195db4fa84b2a",
+  "back_cover_sha256": "265bde7a197be5b9ba945227c8ba61ac7d69baa81ce979c9dfffede24c7a5dff"
 }

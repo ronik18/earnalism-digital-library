@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-imp-of-the-perverse-pg2148-noncover-text",
+  "decision_id": "india-20261108-the-imp-of-the-perverse-reader-cover-successor",
   "edition_id": "the-imp-of-the-perverse",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
+    "public_book": "befde6cf0c29c1270d71a20b55592a6bbee094b2133786f8339bdde031d083f5",
     "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
     "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
-    "approval_evidence": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0",
-    "checksum_manifest": "1f6244dd099a63544c3b5aca8fa13bc966e6f2d2bbd78f6af83f544802662cba",
-    "publication_manifest": "366fa65c10dba03371667aae51e1a20bd6d05fa420cd12843d251e715db802c5"
+    "approval_evidence": "d95bca3764f82dea50328f96b07494d8fef4aa9c1f4df8de19f05506f28d1ba6",
+    "checksum_manifest": "a7f8ea7b95800ad8c1a2cf9cb92fd424e3dcbc294d5246c59d2b2b4ad98ee8f5",
+    "publication_manifest": "4facd84e5c9bb36254f2a0338cc83aa391c13366202a5583533573b56eeeabbd",
+    "cover_provenance": "2ff3d245dea532c501ac08cf4a330769a5514b870aa81e7d0c589d27894bfef0",
+    "cover_front": "71c298d1aebcb814cd111c29205c13c73461abad1c423584243ddb7109c7d067",
+    "cover_back": "e44da81d0dffb6d2ed24dc52e0be0a219c0231c818e789441637778d2211b9bf"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:52:27.631967+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1845 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-imp-of-the-perverse-pg2148-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
     "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
-    "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0"
+    "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+    "c9bcabc2ef3d1a5fd46d0d316e2827ef22224137954d4994747312b860ff1fb3",
+    "2ff3d245dea532c501ac08cf4a330769a5514b870aa81e7d0c589d27894bfef0"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

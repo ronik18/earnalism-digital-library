@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-priory-school",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "bce3469efd1a5ce3fb82a859059394f9c93409c6e144d52620651c23b5c8413d",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+      "sha256": "3e9b0e816cfc3a732124c6bc62ebcc5775e2b3307d8657c996cadcc3fbb1e959",
+      "bytes": 109532,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-priory-school/back-fd592ca099d95aa0.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-priory-school/back-fd592ca099d95aa0.webp",
+      "sha256": "fd592ca099d95aa0899d871231c593d5cd20b115461bfbe450c1e2c838f70583",
+      "bytes": 35658,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

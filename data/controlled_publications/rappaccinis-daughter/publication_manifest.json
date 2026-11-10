@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "rappaccinis-daughter",
   "title": "Rappaccini's Daughter",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
     "content_hash": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3",
@@ -28,16 +28,14 @@
     "evidence_sha256": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/rappaccinis-daughter/front-30403b406b204d07.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "dc07aafb2ee0c677e1dc3719d981a173135020064515cbd81e33c290166f0443",
+    "public_book": "cc32acd7974d14add260771b865288e68821cffe00fbde9fcf09c4724549b2c4",
     "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
     "source_evidence": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a",
-    "approval_evidence": "7d56b24a814371f21d7d1d547e38ea4a6f44ceacb7defda043a97bb023cb5930"
+    "approval_evidence": "cf3c52db3a110aff2737e8e62e696ea0b0bfba38cbe1ec6a7ef777b18bf719b1"
   },
-  "manifest_sha256": "3c6651ff575b1bcd4c22e195e904677597b20d0039436e0be86a67155bec40d3"
+  "manifest_sha256": "04785042fb6f04670d1b08552c71642d99379c92c04f7808bbc70880dccf7ece"
 }

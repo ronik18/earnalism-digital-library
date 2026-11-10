@@ -7,12 +7,12 @@
   "category_slug": "gothic-fiction",
   "short_description": "The superstitious schoolmaster Ichabod Crane is pursued through a dark forest by the Headless Horseman.",
   "description": "Ichabod Crane, a superstitious schoolmaster and rival in love, is chased home through Sleepy Hollow by what may be a ghost or may be his romantic rival in disguise — America's first great Gothic tale.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/front-cc534675f7879d9a.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/front-cc534675f7879d9a.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/back-14f5e3951814194e.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/back-14f5e3951814194e.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-legend-of-sleepy-hollow",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591152/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591153/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591152/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591153/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "cc534675f7879d9a3840adb559b56c17bce9f376221e86df1c6772fa3e08fd65",
+  "back_cover_sha256": "14f5e3951814194eaf100fc628340f4d2a3daf6ef8db76db553eaf4076932bda"
 }

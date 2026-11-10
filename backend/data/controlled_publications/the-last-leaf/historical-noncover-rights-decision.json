@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-last-leaf-pg3707-noncover-text",
+  "edition_id": "the-last-leaf",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487",
+    "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+    "source_evidence": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
+    "approval_evidence": "7996079600f47d4a2d4f4c464f0dc965c6ddb7a76fbc948da920a1d8af55d08e",
+    "checksum_manifest": "aaf5ce5689a434e4898800880a147a9b10409acc1e4848232adcb13b8792e5eb",
+    "publication_manifest": "cba49076cdabf70b4f7fee47392620e589086a95bee2d9663d7e25e469a1c887"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1907 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "f7dd18c75a7ae20c808f7f4a32bf00c6de5199d5bf3d0006c7037ecb2de033cd",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
+    "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

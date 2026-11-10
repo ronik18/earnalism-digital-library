@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-yellow-wallpaper",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "50f02230507061b81f74b22c7345356fa4963c6d422af20b866fe32130b3482f",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-yellow-wallpaper/front-63786ee3a5498a94.webp",
+      "url": "https://theearnalism.com/assets/books/the-yellow-wallpaper/front-63786ee3a5498a94.webp",
+      "sha256": "63786ee3a5498a94c27af4e7b5d309cebd861e6863a19d44fdc1a97c3f8f7de9",
+      "bytes": 110166,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-yellow-wallpaper/back-dbd1eca0b3cdf501.webp",
+      "url": "https://theearnalism.com/assets/books/the-yellow-wallpaper/back-dbd1eca0b3cdf501.webp",
+      "sha256": "dbd1eca0b3cdf50154845a29c3a4949d80b2c96ad234e63b7afa2e7b80381758",
+      "bytes": 38390,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

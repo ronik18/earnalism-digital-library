@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-beryl-coronet-pg1661-noncover-text",
+  "edition_id": "the-adventure-of-the-beryl-coronet",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
+    "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+    "approval_evidence": "9b6d902a161cb279285029b042e28fc7424d5032f5a70d76c09fa0cea91e8b2b",
+    "checksum_manifest": "edeff530786f5131b902a0d073338b45c0b8ca2660fe4221f89d9af5910e7ca6",
+    "publication_manifest": "a5d192b95750bab6cf53a7d7b67406b2ac04ba9b6c95db89694af06b63830a58"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

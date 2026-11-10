@@ -1,0 +1,38 @@
+{
+  "slug": "young-goodman-brown",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "9780aeaa4a9b2f6511cca572f3f4597e65641f43e70c6c95813b8125978770a9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "1d8ba997d656c30b95ac2eba1f7a8ecac28e6786f34c3c004ea537deb9a7c498"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-darling",
+  "title": "The Darling",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "content": {
+    "source_hash": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
+    "content_hash": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+    "provenance_hash": "cc7d495d3dc3ffd8072cb07cd18cae9bfcdbbd841a272ac696b4b1026e2af0f3",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "50f414a77089fcc9e838f35178708ea769c63179154969d166a008838e2b062b",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Darling",
+        "word_count": 4931,
+        "sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-darling/front-13f20dc26bb559ef.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0",
+    "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+    "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
+    "approval_evidence": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9"
+  },
+  "manifest_sha256": "d50b9c67d041b35f25d2a8ebabbebf921edfee32d0f8ba1557779d6755941139"
+}

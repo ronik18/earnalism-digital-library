@@ -7,12 +7,12 @@
   "category_slug": "gothic-fiction",
   "short_description": "A murderer in a dead man's shop is visited by a mysterious stranger who may be the Devil — or his own conscience.",
   "description": "Markheim kills an antique dealer on Christmas Day and waits in the shop for the dealer's maid to return. A stranger appears who knows everything about him — and offers him a choice. Stevenson's most intense moral tale.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/markheim/front-1568f8a2bdea9548.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/markheim/front-1568f8a2bdea9548.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/markheim/back-3641d4eae8cc2007.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/markheim/back-3641d4eae8cc2007.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "markheim",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583007/earnalism/audiobooks/en/markheim/markheim.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583009/earnalism/audiobooks/en/markheim/markheim_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583009/earnalism/audiobooks/en/markheim/markheim_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583010/earnalism/audiobooks/en/markheim/markheim_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583011/earnalism/audiobooks/en/markheim/markheim_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583007/earnalism/audiobooks/en/markheim/markheim.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583007/earnalism/audiobooks/en/markheim/markheim.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583009/earnalism/audiobooks/en/markheim/markheim_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583009/earnalism/audiobooks/en/markheim/markheim_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583010/earnalism/audiobooks/en/markheim/markheim_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583011/earnalism/audiobooks/en/markheim/markheim_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "1568f8a2bdea95486434daab874a8abde421b86aa692f9dba90eed0b001574ea",
+  "back_cover_sha256": "3641d4eae8cc20076f673cbd6ff8256649e8d7395d321a3afb05138c6b9a13a9"
 }

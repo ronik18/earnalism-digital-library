@@ -7,12 +7,12 @@
   "category_slug": "literary-fiction",
   "short_description": "A garrulous gambler in a California mining camp bets on the jumping ability of his educated frog — and gets swindled.",
   "description": "Jim Smiley will bet on anything — and his trained jumping frog Dan'l Webster is his prize asset, until a stranger quietly fills the frog with quail shot. The story that made Mark Twain famous overnight.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/back-7e617b8ff497a1bf.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/back-7e617b8ff497a1bf.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-celebrated-jumping-frog-of-calaveras-county",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580719/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580720/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580722/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580723/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580719/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580720/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580722/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580723/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "4df736343b19a3246ab36d4d06f3424da18a5cc600bf1d56dddb24ae1e172ac2",
+  "back_cover_sha256": "7e617b8ff497a1bf9e688c740148b11337e2a32f9b708334bb82db5a8777283d"
 }

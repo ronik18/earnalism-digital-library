@@ -13,6 +13,7 @@ OPEN_REFERENCE='open_window_scored_sourceqa_successor_20261102'
 STAGE_REFERENCE='selfish_private_stage_authority_successor_20261102'
 OPEN_STAGE_REFERENCE='open_window_private_stage_authority_successor_20261102'
 SREDNI_REFERENCE='sredni_scored_sourceqa_successor_20261103'
+PERSISTED_REFERENCE='persisted45_reader_successor_20261108'
 PREDECESSOR='b4bc7585a87b7546db3270f3bfd63bd436e8585a'
 CONTINUOUS='f5706d328e08ab330f65f604f51df322b65646f1'
 CEDAR='c980ff2da048db7a164648f06f707440b2a8124c'
@@ -145,7 +146,7 @@ def add_sredni_registry(expected,baseline):
         r=_sredni_private_stage(baseline)
         assert expected==json.loads((EVIDENCE_ROOT/r['preserved_shared_predecessor_files'][REGISTRY]).read_text())
         expected['accepted_records'].update(r['added_accepted_records'])
-    return expected
+    return add_persisted_registry(expected,baseline)
 
 def add_sredni_baseline(expected,baseline):
     expected=_add_sredni_sourceqa_baseline(expected,baseline)
@@ -156,8 +157,48 @@ def add_sredni_baseline(expected,baseline):
         expected['authority_sha256'][REGISTRY]=r['reviewed_registry_sha256']
         expected['titles'][r['title']]=r['reviewed_title_binding']
         expected['sredni_private_stage_authority_successor_20261103']=baseline['sredni_private_stage_authority_successor_20261103']
+    return add_persisted_baseline(expected,baseline)
+
+
+def persisted_successor(baseline):
+    ref=baseline[PERSISTED_REFERENCE];raw=(ROOT/ref['path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ref['sha256']
+    r=json.loads(raw)
+    assert r['schema']=='earnalism.persisted45-reader-successor.v1'
+    assert len(r['slugs'])==45 and len(set(r['slugs']))==45
+    assert not set(r['slugs']) & {'gitanjali','nishkriti','the-metamorphosis'}
+    for row in r['preserved_predecessor_files'].values():
+        assert bindings.sha(ROOT/row['path'])==row['sha256']
+    return r
+
+def add_persisted_registry(expected,baseline):
+    if PERSISTED_REFERENCE not in baseline:return expected
+    r=persisted_successor(baseline)
+    before=json.loads((ROOT/r['preserved_predecessor_files'][REGISTRY]['path']).read_text())
+    assert expected==before, 'Persisted reader successor must preserve exact predecessor permissions'
+    assert not set(r['added_accepted_records']) & set(expected['accepted_records'])
+    expected['accepted_records'].update(r['added_accepted_records'])
     return expected
 
+def add_persisted_baseline(expected,baseline):
+    if PERSISTED_REFERENCE not in baseline:return expected
+    r=persisted_successor(baseline)
+    previous=bindings.REVIEWED_AUTHORITY
+    before=json.loads((ROOT/r['preserved_predecessor_files'][previous]['path']).read_text())
+    assert expected==before, 'Persisted reader successor must preserve exact predecessor title bindings'
+    assert not set(r['slugs']) & set(expected['titles'])
+    expected['titles'].update(r['added_title_bindings'])
+    expected['authority_sha256']=r['reviewed_authority_sha256']
+    expected[PERSISTED_REFERENCE]=baseline[PERSISTED_REFERENCE]
+    return expected
+
+def retained_shared_file(path,want,baseline):
+    if PERSISTED_REFERENCE in baseline:
+        row=persisted_successor(baseline)['preserved_predecessor_files'].get(path)
+        if row:
+            assert row['sha256']==want, 'Historical transaction digest differs'
+            return ROOT/row['path']
+    return ROOT/path
 
 class RegistrySuccessorTests(unittest.TestCase):
     def baseline(self):return bindings.load(ROOT/bindings.REVIEWED_AUTHORITY)
@@ -177,7 +218,7 @@ class RegistrySuccessorTests(unittest.TestCase):
         expected=add_stage_baseline(expected,baseline)
         self.assertEqual(baseline,expected)  # Includes every title/component, old scope and historical field.
         self.assertEqual(bindings.sha(ROOT/REGISTRY),baseline['authority_sha256'][REGISTRY])
-        self.assertEqual(len(baseline['titles']),52)
+        self.assertEqual(len(baseline['titles']),52+(45 if PERSISTED_REFERENCE in baseline else 0))
         self.assertEqual(baseline[REFERENCE]['predecessor_registry_sha256'],receipt['predecessor_reviewed_authority']['authority_sha256'][REGISTRY])
         self.assertEqual(baseline[REFERENCE]['reviewed_registry_sha256'],receipt['registry_history'][-1]['sha256'])
         for name,expected_sha in receipt['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),expected_sha)
@@ -245,6 +286,10 @@ class RegistrySuccessorTests(unittest.TestCase):
             final=load_open_stage_successor(baseline)['reviewed_registry_sha256'] if OPEN_STAGE_REFERENCE in baseline else stage['reviewed_registry_sha256']
             if SREDNI_REFERENCE in baseline:final=load_sredni_successor(baseline)['reviewed_registry_sha256']
             if 'sredni_private_stage_authority_successor_20261103' in baseline:final=_sredni_private_stage(baseline)['reviewed_registry_sha256']
+            if PERSISTED_REFERENCE in baseline:
+                r45=persisted_successor(baseline)
+                self.assertEqual(r45['preserved_predecessor_files'][REGISTRY]['sha256'],final)
+                final=r45['reviewed_authority_sha256'][REGISTRY]
             self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
@@ -288,7 +333,7 @@ class RegistrySuccessorTests(unittest.TestCase):
         bootstrap=json.loads((ROOT/'backend/data/approved_reader_bootstrap.json').read_text())
         row=[r for r in bootstrap['titles'] if r['slug']=='the-selfish-giant'][0]
         self.assertEqual(hashlib.sha256(json.dumps(row,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest(),actual['transaction']['target_bootstrap_row_sha256'])
-        self.assertEqual(len(baseline['titles']),52)
+        self.assertEqual(len(baseline['titles']),52+(45 if PERSISTED_REFERENCE in baseline else 0))
         self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-selfish-giant',baseline),ROOT/'backend/data/controlled_publications/the-selfish-giant')
 
     def test_sredni_sourceqa_adds_only_reviewed_india_stream_record_and_binding(self):
@@ -309,6 +354,10 @@ class RegistrySuccessorTests(unittest.TestCase):
             self.assertIs(result.passed,passed,(country,use,result.reasons))
         prior=json.loads((ROOT/r['preserved_predecessor_authority']).read_text())
         current_titles=copy.deepcopy(baseline['titles'])
+        if PERSISTED_REFERENCE in baseline:
+            r45=persisted_successor(baseline)
+            for slug,binding in r45['added_title_bindings'].items():
+                self.assertEqual(current_titles.pop(slug),binding)
         if 'sredni_private_stage_authority_successor_20261103' in baseline:
             stage=_sredni_private_stage(baseline)
             self.assertEqual(current_titles['sredni-vashtar'],stage['reviewed_title_binding'])
@@ -365,7 +414,7 @@ class RegistrySuccessorTests(unittest.TestCase):
             self.assertEqual(book.get(field),oldbook.get(field),field)
         self.assertEqual(book['audiobook_native_replacement']['status'],'STAGED_PRIVATE')
         self.assertEqual(book['audiobook_active_release']['active_release_descriptor_sha256'],r['old_selected_public_audio_descriptor'])
-        self.assertEqual(len(baseline['titles']),52)
+        self.assertEqual(len(baseline['titles']),52+(45 if PERSISTED_REFERENCE in baseline else 0))
         self.assertEqual(bindings.assert_current_reviewed_release(ROOT,'the-open-window',baseline),ROOT/'backend/data/controlled_publications/the-open-window')
 
 
@@ -375,7 +424,7 @@ class RegistrySuccessorTests(unittest.TestCase):
         applied=json.loads((folder/'source-stage-APPLIED.json').read_text())
         self.assertTrue(applied['applied']);self.assertFalse(applied['public_audio_enabled'])
         self.assertEqual(len(applied['files']),12)
-        for path,want in applied['files'].items():self.assertEqual(bindings.sha(ROOT/path),want)
+        for path,want in applied['files'].items():self.assertEqual(bindings.sha(retained_shared_file(path,want,baseline)),want)
         current=json.loads((ROOT/'backend/data/controlled_publications/sredni-vashtar/rights_decision.json').read_text())
         self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
         snapshot=json.loads((folder/'source-stage-SNAPSHOT.private.json').read_text())

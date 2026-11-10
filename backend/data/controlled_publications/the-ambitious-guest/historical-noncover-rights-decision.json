@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-ambitious-guest-pg13707-noncover-text",
+  "edition_id": "the-ambitious-guest",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809",
+    "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+    "source_evidence": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
+    "approval_evidence": "e7b51600b3865ae8083e3abda2d2400a84440815e1e1dbda6768e6b3bb1106f0",
+    "checksum_manifest": "13ecdfc7985079908292f5f12c9f25978fe437fa880f7eb1cbe12caf28db256d",
+    "publication_manifest": "0db06ddf5e767641a58820ade23074f3c3dd742ae44e7d68f455ee35f646a549"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1864, verified lifetime collection publication 1837 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "974d1c8ec015dd85f8438b3001af565acd5713b7b7c994ac2afd02a8e5e92bff",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
+    "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

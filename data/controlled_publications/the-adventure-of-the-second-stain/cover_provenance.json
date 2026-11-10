@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-second-stain",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "412f7c40b8c8c5f386722343b42eecc09e84fd04922f996e12b5eee6fb04d795",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-second-stain/front-a8fee57446567bc7.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-second-stain/front-a8fee57446567bc7.webp",
+      "sha256": "a8fee57446567bc7e406e2497a616f468651ae6b5f2ea66826a3ae90faf5d388",
+      "bytes": 90186,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-second-stain/back-3054d7edcf03950c.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-second-stain/back-3054d7edcf03950c.webp",
+      "sha256": "3054d7edcf03950c656aec0556201b8bcdd7fc5db8f877884a46b8484415ad8b",
+      "bytes": 32746,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

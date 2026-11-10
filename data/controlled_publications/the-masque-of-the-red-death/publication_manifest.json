@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-masque-of-the-red-death",
   "title": "The Masque of the Red Death",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
     "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
@@ -28,13 +28,11 @@
     "evidence_sha256": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9",
+    "public_book": "7c71b972649d03d0b9f7283f7f08cf10137f6a3534db925e09512350b94d05a4",
     "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
     "source_evidence": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
-    "approval_evidence": "d897301476c3d5efc0932d0caab402fd3da600012e43042921ffb28ce8180944"
+    "approval_evidence": "378211194920d17e628b54c3cd63e497941bef47ed6bc45bc232e69e352dfcff"
   },
-  "manifest_sha256": "2f810dfd2ed3a0d8e9e56add3ae8a8663d4ea349763d82ceefef73d4ff66f89f"
+  "manifest_sha256": "c7ad47c58a12ff07c91501771b94ff698df8838d66f363a187a6aab92c031017"
 }

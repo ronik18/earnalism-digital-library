@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor",
+  "edition_id": "the-adventure-of-the-copper-beeches",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc",
+    "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
+    "approval_evidence": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921",
+    "checksum_manifest": "496d6acb7fd7921780fe922a1a361cc1e325774f8e8af1ba36c1a3590153568a",
+    "publication_manifest": "192b144775c63081de4ce2275be052170f6578ff30999ea538ea848b0f1e5d27",
+    "cover_provenance": "e9ef27836a8d1f7533359d4f421ff76994bd4dea75217879b43d14303ea98bf7",
+    "cover_front": "1a755f79e54e23c8090e0322f81d6bf05f6cf14fb43d20b23f3d7b3b4acac356",
+    "cover_back": "249f7d21e17343b45715e614f3b1e145e29ebeca5cfa994932a57d28e43c5be9"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-copper-beeches-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "631f4a07c5e6602747ba3182e4e94523521ae957cba9dbb0192467f1c19d75fb",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "b462ab2045b83b93266df29ada25c1fe29f319e658ae9eef3a608fc9284303d0",
+    "68c5c6e8e726f984f64f583c8f94cda8996e72dc190a2ea9259d9f192ae89a45",
+    "e9ef27836a8d1f7533359d4f421ff76994bd4dea75217879b43d14303ea98bf7"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

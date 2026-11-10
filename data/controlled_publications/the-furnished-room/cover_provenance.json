@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-furnished-room",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "987c4b0fc6dfdcd73d487c44e506fe9f3f45f2f5b61c8a5a95f61db6ab3c8472",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-furnished-room/front-288a1a717bbd1a00.webp",
+      "url": "https://theearnalism.com/assets/books/the-furnished-room/front-288a1a717bbd1a00.webp",
+      "sha256": "288a1a717bbd1a000dae21c700c6a32b20b27768d045b3ec83fdb9409bb10fc0",
+      "bytes": 103046,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-furnished-room/back-c83bd212ef8bb75a.webp",
+      "url": "https://theearnalism.com/assets/books/the-furnished-room/back-c83bd212ef8bb75a.webp",
+      "sha256": "c83bd212ef8bb75a4048251fb4111fd6e146e9ab2432cf715e092fc227263423",
+      "bytes": 36448,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

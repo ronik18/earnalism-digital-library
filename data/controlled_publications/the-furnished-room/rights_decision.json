@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-furnished-room-pg2776-noncover-text",
+  "decision_id": "india-20261108-the-furnished-room-reader-cover-successor",
   "edition_id": "the-furnished-room",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
+    "public_book": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10",
     "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
     "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
-    "approval_evidence": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca",
-    "checksum_manifest": "9ab1c22052d33e085745231b730938ddd1e46c98874dea8d57ad98f0ba49f2c8",
-    "publication_manifest": "53e8b0e715671052bce3c0ea6cc5d46719bde77f94b4455c7a6eb9c965837f00"
+    "approval_evidence": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef",
+    "checksum_manifest": "74369f09a9c556dd32a68302bbd4797d5a26eaeb43c223d55d7588030777fc03",
+    "publication_manifest": "872be983e97eaee99c39b6d098aea74bce6c5092d8ee1f528392819085634ed2",
+    "cover_provenance": "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba",
+    "cover_front": "288a1a717bbd1a000dae21c700c6a32b20b27768d045b3ec83fdb9409bb10fc0",
+    "cover_back": "c83bd212ef8bb75a4048251fb4111fd6e146e9ab2432cf715e092fc227263423"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1906 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-furnished-room-pg2776-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
-    "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e"
+    "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+    "7df0be3fe47fd90941672eb835b954c59c92ecb95f6c183ae6d67ce9a191f4ac",
+    "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

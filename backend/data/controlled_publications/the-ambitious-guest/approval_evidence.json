@@ -1,0 +1,23 @@
+{
+  "slug": "the-ambitious-guest",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "974d1c8ec015dd85f8438b3001af565acd5713b7b7c994ac2afd02a8e5e92bff",
+  "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
+  "content_hash": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784",
+  "provenance_hash": "f2f085245ddcb0c2d0a0d818fdef63649ad0e8a3e566daecd94da146a422b8bb",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "29ac28165c4db3efefd0a591255bebdd5fd426a8578a88fc95c8d1817154d78b"
+}

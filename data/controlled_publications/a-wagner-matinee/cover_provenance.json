@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "a-wagner-matinee",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "29d0d7cac6ed1659b8c4c551821844e6c874edccb990bce833b31f447442e3e0",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/a-wagner-matinee/front-febdb7034c342a12.webp",
+      "url": "https://theearnalism.com/assets/books/a-wagner-matinee/front-febdb7034c342a12.webp",
+      "sha256": "febdb7034c342a12ebafd6c76e322d391a498f9f0d6935809401a8d2b24d1e4f",
+      "bytes": 79688,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/a-wagner-matinee/back-067aefce7dfde810.webp",
+      "url": "https://theearnalism.com/assets/books/a-wagner-matinee/back-067aefce7dfde810.webp",
+      "sha256": "067aefce7dfde81070f1f84ddc058930ca9e69e4ecd96b01e7bd83025c0a1231",
+      "bytes": 30130,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

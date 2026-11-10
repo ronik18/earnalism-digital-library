@@ -1,10 +1,10 @@
 {
   "slug": "the-furnished-room",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca"
+      "sha256": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d"
+      "sha256": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba"
     }
   ]
 }

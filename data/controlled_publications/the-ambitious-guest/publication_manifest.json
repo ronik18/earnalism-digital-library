@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-ambitious-guest",
   "title": "The Ambitious Guest",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "content": {
     "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
     "content_hash": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784",
@@ -28,16 +28,14 @@
     "evidence_sha256": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-ambitious-guest/front-9d7f9096be843ec9.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809",
+    "public_book": "b37a0d5ec87d22cf855e6e9b35572ced8261a04ac0876a939740f67de41e89fd",
     "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
     "source_evidence": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
-    "approval_evidence": "e7b51600b3865ae8083e3abda2d2400a84440815e1e1dbda6768e6b3bb1106f0"
+    "approval_evidence": "03761b2b57131c63301ff665aa45a0f4e8378fbdf4f125e0c854e09d7a28f198"
   },
-  "manifest_sha256": "66567b46c5073204ae0a81ad4a71952a161c1867ffe16f5b7fb77aef23c6a4e2"
+  "manifest_sha256": "2a3f84fd1584dd6b9efc2b272c6f8580e05a266fbfbc6f1799062782643f7f62"
 }

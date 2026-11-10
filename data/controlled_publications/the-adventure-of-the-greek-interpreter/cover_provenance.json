@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-greek-interpreter",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "5f5c3c77bda8383aa72de9e4ed38a700150e8ce1144dcd78e7d70246c93ae966",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-greek-interpreter/front-34210d690ea405fc.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-greek-interpreter/front-34210d690ea405fc.webp",
+      "sha256": "34210d690ea405fc3c22c6c2dbd1d8547cc07fc8b065eafadd0d4fb227965e80",
+      "bytes": 87016,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-greek-interpreter/back-321ba7f8789a55c6.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-greek-interpreter/back-321ba7f8789a55c6.webp",
+      "sha256": "321ba7f8789a55c66a405074d189cdf8b104d5e1b0c0d29245264f5b927b7a60",
+      "bytes": 29750,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

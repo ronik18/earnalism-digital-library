@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "white-fang",
   "title": "White Fang",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4",
     "content_hash": "1cc0fc8e2a082b85ecb6eaaa5932b09d2c554f4ae1df4233903373bbc2025ccd",
@@ -196,13 +196,11 @@
     "evidence_sha256": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/white-fang/front-16796561b18eee8f.webp",
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -214,10 +212,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "fc328afa3835fb3afe1221838382f8e4cfb42901b251977eae424550e7c38a05",
+    "public_book": "a69d3bd3db175f42a0298bc4169e38bda3081d9fd38ea3d8e3bbd7889b550692",
     "reader_manifest": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
     "source_evidence": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2",
-    "approval_evidence": "6e6ba46cb26e5e96b41b81ebdd186616fe01f0e6b45e9f1e48dc12a0e5ff5ecf"
+    "approval_evidence": "9de49359b873503bb9019859e3e69a21470761912608084a9d82a485af4594eb"
   },
-  "manifest_sha256": "08541f2b481901a9add2526222aeadf6e52cfcef72f25af317f08cafffbcff46"
+  "manifest_sha256": "e42f08493d5d8f3c32f492bdd9c359fd65359927edbf50426481fd04bc9d22f8"
 }

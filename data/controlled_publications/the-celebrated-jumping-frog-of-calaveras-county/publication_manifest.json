@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-celebrated-jumping-frog-of-calaveras-county",
   "title": "The Celebrated Jumping Frog of Calaveras County",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "content": {
     "source_hash": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
     "content_hash": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
@@ -28,16 +28,14 @@
     "evidence_sha256": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+    "public_book": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32",
     "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
     "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
-    "approval_evidence": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7"
+    "approval_evidence": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592"
   },
-  "manifest_sha256": "52675eff38b9a523a56695196a125118b44ee7ae6aea7376a582defc31438c26"
+  "manifest_sha256": "ec1423869d2d08fc65fa368ebb3890f0ef87deeae64fb435580c0ff66c890e6f"
 }

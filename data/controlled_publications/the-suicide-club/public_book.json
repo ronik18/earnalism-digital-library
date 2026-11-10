@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "A young prince and his aide infiltrate a secret London club where members gamble for their own deaths.",
   "description": "Prince Florizel and his aide discover a London club where bored, ruined men play cards for the privilege of either killing or being killed. Stevenson's most atmospheric and chilling adventure cycle.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-suicide-club/back-0ec4b741a41ccc6e.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-suicide-club/back-0ec4b741a41ccc6e.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-suicide-club",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594069/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594070/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594071/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594072/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594069/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594070/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594071/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594072/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "3baddf77926a0acd20a1b59724b2161d3ac9a476506bf39c49e4784ddff6bcb7",
+  "back_cover_sha256": "0ec4b741a41ccc6eabeea030749b0d8e1b332bbb849884a8fc930b6be67dce34"
 }

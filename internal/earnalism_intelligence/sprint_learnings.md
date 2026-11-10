@@ -3193,3 +3193,6 @@ An original source-bound Reader/containment approval is not a reusable blank che
 - 2026-11-09 Reader mobile fit: failed-layout state must clear on fresh measurement; load actual script glyphs and allow at most two source-exact refits. Never expose clipped text or bypass preview/access. 292 focused tests pass; production verification pending.
 
 - 2026-11-09 Android WebView Reader: dvh-only sizing collapses the folio on WebView 91. Native controlled baseline fails; adding vh before dvh renders Bengali prose at full height. Modern browser mobile emulation is not legacy-engine evidence. 293 focused tests pass; production/Instagram acceptance pending.
+
+## 2026-11-10 — persisted 45 Reader source candidate
+Fresh production read confirms all 45 exact complete text matches remain stored and unpublished. Reuse the 45 reviewed original cover pairs, preserve chapter bytes and historical rights decisions, and bind only the exact Reader-only successor. Three owner-removed rights-held editions are excluded and active source packages removed with a scoped tombstone; production deletion and publication remain pending actual evidence.

@@ -1,13 +1,202 @@
 {
   "slug": "the-last-leaf",
   "source_url": "https://www.gutenberg.org/ebooks/3707",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #3707; The Last Leaf selected complete O. Henry story/cycle from trimmed lamp; verified lifetime collection edition 1907; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
-  "content_hash": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
-  "provenance_hash": "034931b10a219ccaaf22f3d7e299ae6936c765abe784f30fb28b65149235e759",
-  "rights_basis": "O. Henry died 1910; first published 1907. Public domain in India and the U.S.",
+  "source_hash": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
+  "content_hash": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+  "provenance_hash": "934cb651a633e8a20ab5b21de25e998f2da2c408ec2cbcc8a1d9a0a0c69652b5",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1907 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:21.865021+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #3707",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3707",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3707",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:47.353138+00:00",
+      "response_sha256": "6a43c411612276f24dd6dae6d81b092cb12730292a9936eb644d98f8baf07e5d"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3707.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3707/pg3707.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:52.463391+00:00",
+      "response_sha256": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "The Trimmed Lamp, and Other Stories of the Four Million"
+      ],
+      "Contents": [
+        "The trimmed lamp -- A Madison Square Arabian night -- The Rubaiyat of a Scotch highball -- The pendulum -- Two Thanksgiving day gentlemen -- The assessor of success -- The buyer from Cactus City -- The badge of policeman O'Roon -- Brickdust Row -- The making of a New Yorker -- Vanity and some sables -- The social triangle -- The purple dress -- The foreign policy of Company 99 -- The lost blend -- A Harlem tragedy -- \"The guilty party\"--An East side tragedy -- According to their lights -- A midsummer knight's dream -- The last leaf -- The count and the wedding guest -- The county of elusion -- The ferry of unfulfilment -- The tale of a tainted tenner -- Elsie in New York."
+      ],
+      "Credits": [
+        "Charles Franks, Greg Weeks, the Project Gutenberg Online Distributed Proofreading Team and Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.2 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "New York (N.Y.) -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3707"
+      ],
+      "Release Date": [
+        "Feb 1, 2003"
+      ],
+      "Last Update": [
+        "Oct 24, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2363 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 238239,
+          "length": 12727
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
+    "legacy_content_sha256": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1910,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "6a43c411612276f24dd6dae6d81b092cb12730292a9936eb644d98f8baf07e5d",
+    "url": "https://www.gutenberg.org/ebooks/3707",
+    "author_catalog_strings": [
+      "Henry, O., 1862-1910"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7"
+      }
+    ],
+    "content_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
+        "content_hash": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
+        "provenance_hash": "034931b10a219ccaaf22f3d7e299ae6936c765abe784f30fb28b65149235e759",
+        "source_url": "https://www.gutenberg.org/ebooks/3707",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1907,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3707.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3707/pg3707.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:52.463391+00:00",
+      "response_sha256": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 238239,
+          "length": 12727
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Henry, O., 1862-1910",
+      "creator_death_year": 1910,
+      "selected_collection_publication_year": 1907,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+        "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+      },
+      "bibliographic_excerpt": "Trimmed lamp (Doubleday, Page & Company for Review of Reviews Co., 1917) (page images at HathiTrust) Henry, O., 1862-1910: The trimmed lamp, and other stories of the four million (McClure, Phillips, 1907) (page images at HathiTrust) Henry, O., 1862-1",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1910,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1907,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
+    "content_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+    "year": 1907,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+      "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

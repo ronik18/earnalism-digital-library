@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "A man treks alone through the Yukon at seventy-five below zero — and underestimates nature's indifference to human life.",
   "description": "A nameless man walks through the Arctic cold, his dog his only companion. He knows the cold is dangerous but does not truly feel it — until his fire goes out. Jack London's most terrifying and perfectly constructed story.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/to-build-a-fire/back-ddfe01a2636f9460.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/to-build-a-fire/back-ddfe01a2636f9460.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "to-build-a-fire",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583113/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583114/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583115/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583116/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583116/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583113/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583113/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583114/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583115/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583116/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583116/earnalism/audiobooks/en/to-build-a-fire/to-build-a-fire_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_sha256": "fcbad9a6eaaa5a9e2e3e7eaec1d2a8ce7826254f73fc4a5503e54e42a4721873",
+  "back_cover_sha256": "ddfe01a2636f9460f3dd0f6b739608f2053ab12e31ef0eb1fae28db306b77650"
 }

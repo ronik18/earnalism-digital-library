@@ -1,17 +1,17 @@
 {
-  "captured_at": "2026-11-08T03:55:27.926423+00:00",
+  "captured_at": "2026-11-10T04:15:28.708321+00:00",
   "base_sha": "f416e9a08e9774eda7b7f0c8d588f0485d58e230",
-  "scope": "48 persisted edition matches; Reader-only qualification",
+  "scope": "45 text-cleared persisted editions; three owner-removed rights-held editions excluded",
   "published_count": 0,
   "eligible_for_activation_now": 0,
-  "status": "HOLD_NOT_PUBLISHED",
+  "status": "SOURCE_PREPARED_PRODUCTION_ACCEPTANCE_PENDING",
   "production_mutations": 0,
   "local_text_clearance_count": 45,
   "titles": [
     {
       "slug": "a-retrieved-reformation",
       "title": "A Retrieved Reformation",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-a-retrieved-reformation-pg1646-noncover-text",
       "record_sha256": "827b1d94af98123c1659d4aff8306ce9a795c480cb896d2cd07d199142482d94",
@@ -23,9 +23,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
         "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
@@ -34,12 +32,14 @@
         "checksum_manifest": "569f0fee2f787d8aa3852b50893edd3731d39bad246ef2255be070abbd9f5f96",
         "publication_manifest": "e9f187cc607982d0b690d5c9716dca2369d278f23fa1f32d8996447187f28336"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "a-wagner-matinee",
       "title": "A Wagner Matinee",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-a-wagner-matinee-pg346-noncover-text",
       "record_sha256": "1ade6344eaf49f8626e87a408358e32c63d8805df337e2bb1e5e09a0b945d0db",
@@ -51,9 +51,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93",
         "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
@@ -62,12 +60,14 @@
         "checksum_manifest": "fe7cbb36eb6f73008a36dae2bf6d641d8ba0e6ef921493534cd7ecd830a52ec6",
         "publication_manifest": "66af4c012f3c9d782856292cacda11b9419fb638070ca2eb19a3003290fe4e94"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "feathertop",
       "title": "Feathertop",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-feathertop-pg512-noncover-text",
       "record_sha256": "88f7a3862eaef44459ec2bb5b2257ab67a8abdb20e67cc769717e7ee1ea9f89d",
@@ -79,9 +79,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "e8abb7dc2a591390ffeb8b06d526ff1fb704f15d8c2e5489aa7c3fad17b93e88",
         "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
@@ -90,36 +88,14 @@
         "checksum_manifest": "f464d36ea36c311f3cac911199a5ab110dd6acff32f3c977b5fb9d43de1eab72",
         "publication_manifest": "ee65aef5fd293dc86333a63285aea2adb874ab85212e90d4c3a9dff15b3cf463"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "gitanjali",
-      "title": "Gitanjali",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": false,
-      "manifest_blockers": [],
-      "component_sha256": {
-        "public_book": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11",
-        "reader_manifest": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
-        "source_evidence": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084",
-        "approval_evidence": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2",
-        "checksum_manifest": "0dc00b2927f7139294e37a25bd17b28765e6680c93338ef69090f36be089fdea"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "markheim",
       "title": "Markheim",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-markheim-pg344-noncover-text",
       "record_sha256": "c4a5eb05378db084dd2e32ed26a80a7c3f2457e23ded8e631308098edcb13dd4",
@@ -131,9 +107,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8",
         "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
@@ -142,40 +116,14 @@
         "checksum_manifest": "ae2d1a8d6b148c1383feed931c227097cac80cba14f3aeffb3cb1714f324d227",
         "publication_manifest": "fe71756b512cf33439366060b3ca0319b109c7f0ff1fccf3cda35ae07a88d2e7"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "nishkriti",
-      "title": "নিষ্কৃতি",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": true,
-      "manifest_blockers": [
-        "Rights: original_publication_year is required.",
-        "Rights: verification_status must be approved before publishing."
-      ],
-      "component_sha256": {
-        "public_book": "3bbf95940b6238e1f973695fff83bde4c832d0f730487efb4961c4ad07c73489",
-        "reader_manifest": "a47ee2e6cb45ca40e74ff441371f3397d06e9ce24a191c77fa155396937850b5",
-        "source_evidence": "9421496918727ee6da6d3af10fda225a53056cfe5b9495a6420f7e57d86c1b96",
-        "approval_evidence": "35ea07be669e75a733f37892e1e09f4c3d4a46d16b4b7d8a3c0c2950a0b7fff7",
-        "checksum_manifest": "bca0904030c67cff6aae2ba0cfaba7a40f6173fcb4c1719871a02c8ad5f97792",
-        "publication_manifest": "2156837504a20bdeea575c6788b9d3ad0244175a8191cd9801cdb288465e8568"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "rappaccinis-daughter",
       "title": "Rappaccini's Daughter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-rappaccinis-daughter-pg512-noncover-text",
       "record_sha256": "9f7d93083cb5fa2d7ae3efb7aa2cc9c3bb7eeeee18f9368d5dbabca70e2130a1",
@@ -187,9 +135,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "dc07aafb2ee0c677e1dc3719d981a173135020064515cbd81e33c290166f0443",
         "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
@@ -198,12 +144,14 @@
         "checksum_manifest": "325d4ca3c560437a8a413d966a50c38d3b212f0f5f61991bcac2bd56ff218e92",
         "publication_manifest": "4f2101992327aac6d42dc5b3c21e951307db6da56c937c1a0ebc55eff85db7e4"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-abbey-grange",
       "title": "The Adventure of the Abbey Grange",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-abbey-grange-pg108-noncover-text",
       "record_sha256": "8bbedfc62117aefe42be9e005bd17374da9754852f8a5f0d0dbccb434e5b4d4e",
@@ -215,9 +163,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46",
         "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
@@ -226,12 +172,14 @@
         "checksum_manifest": "75bc9b6d094090c9aa6e7b5574d5d5322863d4767f0e236608aec37da77f5b79",
         "publication_manifest": "472cf5cc83d09d514a58c024cab44b369b3870956f1766084af5143eb4470435"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-beryl-coronet",
       "title": "The Adventure of the Beryl Coronet",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-beryl-coronet-pg1661-noncover-text",
       "record_sha256": "f491bac0146fd58767b4cca11e570eb82513a3b99d61acd6d7fec6c394776590",
@@ -243,9 +191,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
         "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
@@ -254,12 +200,14 @@
         "checksum_manifest": "edeff530786f5131b902a0d073338b45c0b8ca2660fe4221f89d9af5910e7ca6",
         "publication_manifest": "a5d192b95750bab6cf53a7d7b67406b2ac04ba9b6c95db89694af06b63830a58"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-blue-carbuncle",
       "title": "The Adventure of the Blue Carbuncle",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-blue-carbuncle-pg1661-noncover-text",
       "record_sha256": "81632be7dddcb84128ae64587c45d63eef93a022d59fa41eb7caa10caf90f300",
@@ -271,9 +219,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0",
         "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
@@ -282,12 +228,14 @@
         "checksum_manifest": "7ad0c725405c37a9638766f66a5b58adb373ad8caf67d8961279f13d1e03bbd1",
         "publication_manifest": "a062463f1f7b474b7fbe38a497adfbd746f4c01e618362d2e031179c21225b36"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-copper-beeches",
       "title": "The Adventure of the Copper Beeches",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-copper-beeches-pg1661-noncover-text",
       "record_sha256": "68c5c6e8e726f984f64f583c8f94cda8996e72dc190a2ea9259d9f192ae89a45",
@@ -299,9 +247,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "f151cf4cc9bc066dcaf10f4323d586cfb2bcff100ec5a3b6bae9bab39b2b1bc4",
         "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
@@ -310,12 +256,14 @@
         "checksum_manifest": "0e81efc75d17935ef4cd04dbf0991e1b5f8fa8813ebbeb1b2cc2191d82e182d1",
         "publication_manifest": "c32f3a638c3ee953535d4165e80689cbb03ae9174bcb3a3321f1c908a7d87584"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-dancing-men",
       "title": "The Adventure of the Dancing Men",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-dancing-men-pg108-noncover-text",
       "record_sha256": "eaa61ad5ac6e1a83080dac86c22496992a1e91d93a837730dcb65c4007fc5077",
@@ -327,9 +275,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
         "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
@@ -338,12 +284,14 @@
         "checksum_manifest": "064a14d868d957d1538e4d0c94630aa5539f570522624110976e4b7786c7a146",
         "publication_manifest": "e688095bba5dcea9cabc371468b27b20bf3121e52f7ea6dd131e5825098db0bb"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-empty-house",
       "title": "The Adventure of the Empty House",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-empty-house-pg108-noncover-text",
       "record_sha256": "dc3169afede2fd71ef98b8cfcf033a6117eb2d95110434871c670a9e53deb0a2",
@@ -355,9 +303,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "8739f75c7d611542a56e4f9962ea53188788b114d807ba84471f7204e7b13614",
         "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
@@ -366,12 +312,14 @@
         "checksum_manifest": "f7ebaa7c8058fe5b9b98a9dd31eec570a643101c9b2536f15616e2e858c4c880",
         "publication_manifest": "af6582314294418652a0cc5280d83bc98b2cc4560a840f286781f15e6d15edd5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-engineers-thumb",
       "title": "The Adventure of the Engineer's Thumb",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-engineers-thumb-pg1661-noncover-text",
       "record_sha256": "32424316f068d253a53a1b7fe44cd1e9a270337afe62f3beeeb7d5a21a1bdf93",
@@ -383,9 +331,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
         "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
@@ -394,12 +340,14 @@
         "checksum_manifest": "867f6b7f397d358bfe11a6f2f75b50efebc7359445c6311eeba19468816035ee",
         "publication_manifest": "35f7a7d6dc0007e2b4fe114e6fd595c3cf35eda9fac7ffb8713f4de13e41b4c9"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-final-problem",
       "title": "The Adventure of the Final Problem",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-final-problem-pg834-noncover-text",
       "record_sha256": "983b67764662bfbe8b6d9f9ede23f059a307f2278049da2d53c4bf1ba83cac04",
@@ -411,9 +359,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "9b4e62e53fb3154be0309443ea2519611994f754505b87567624c4d2fc85f291",
         "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
@@ -422,12 +368,14 @@
         "checksum_manifest": "d830af9e5dc0cdf16c09b86c458ba22553f83a86d3c6fe3215daccddeca38a29",
         "publication_manifest": "9a23357ffed675272e8f840e73a4313b7964af560e0fdc706286c58d8fe89387"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-greek-interpreter",
       "title": "The Adventure of the Greek Interpreter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-greek-interpreter-pg834-noncover-text",
       "record_sha256": "1b6c5dea6dba58b4f31240c7b41fb86c837d56512ab5b8e682b4d230bc6d068d",
@@ -439,9 +387,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
         "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
@@ -450,12 +396,14 @@
         "checksum_manifest": "98bac0c607d9e455154f7ac6fd836a5f357fe9bbbd642da268a66b01eddc4bda",
         "publication_manifest": "cd70eeea3dff622a884ae45651e2e41ab529a80fbfb6759e04fdba65165d5fe5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-noble-bachelor",
       "title": "The Adventure of the Noble Bachelor",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-noble-bachelor-pg1661-noncover-text",
       "record_sha256": "29a279fd2738c7fdf07b13be3e05ae2ed5d21b1b91934bbe3a8a7eaf40f77294",
@@ -467,9 +415,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
         "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
@@ -478,12 +424,14 @@
         "checksum_manifest": "9dcde617f0d3e6d45074292e118d21ce4e8b0e998c0a924b61c1805fccc1be8a",
         "publication_manifest": "7f71e45fc3e8efc3f8c5ccd25af86f1b27210af7ee02f7f853ae03154ed71abc"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-priory-school",
       "title": "The Adventure of the Priory School",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-priory-school-pg108-noncover-text",
       "record_sha256": "14a6c28195760ce420410f988f57153478ca7271f02ab64afa5c30fae00e48cb",
@@ -495,9 +443,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "200768acdb552a81b702adad6d118582da2b09140f12527eded28508cf6a1b88",
         "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
@@ -506,12 +452,14 @@
         "checksum_manifest": "064ea3216ffbecfc8c1bfef8abea5b30074344a2a502f58b47fbcfb964db2591",
         "publication_manifest": "a3cffa308bc76d95e213e1ff3fbac68fa99174b033c304fbab38137e5aaec98d"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-second-stain",
       "title": "The Adventure of the Second Stain",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-second-stain-pg108-noncover-text",
       "record_sha256": "0239b1a4ecb81ac9064e1ba017f6c9162b7f852c543f84a8769e91355accfae5",
@@ -523,9 +471,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
         "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
@@ -534,12 +480,14 @@
         "checksum_manifest": "0955ea464915e018f3bade1316644cbae5de982b22bb946920f7ff45c8cd92b8",
         "publication_manifest": "1898d0b4e91b298faa154a858f582ec224eec248e66b95d9e46d677417b0aa54"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-adventure-of-the-solitary-cyclist",
       "title": "The Adventure of the Solitary Cyclist",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-solitary-cyclist-pg108-noncover-text",
       "record_sha256": "a16ad12325d4922318832dcb33def66187323bd9fc14213a248e7368fe71ad4d",
@@ -551,9 +499,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d",
         "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
@@ -562,12 +508,14 @@
         "checksum_manifest": "84df15a0313d8439a2efba9f7355700fb82bfb3bc27f6d9b27ddeb1b172f8ab5",
         "publication_manifest": "5376f41621b9a291c544041e7d2c0119033872867ef9c72d8475576a1f101bc2"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-ambitious-guest",
       "title": "The Ambitious Guest",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ambitious-guest-pg13707-noncover-text",
       "record_sha256": "ea40b81e4df2a681f48a1141d8bae75d8ef6aa1f449a75113a4ff68daf07a2f0",
@@ -579,9 +527,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809",
         "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
@@ -590,12 +536,14 @@
         "checksum_manifest": "13ecdfc7985079908292f5f12c9f25978fe437fa880f7eb1cbe12caf28db256d",
         "publication_manifest": "0db06ddf5e767641a58820ade23074f3c3dd742ae44e7d68f455ee35f646a549"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-bet",
       "title": "The Bet",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-bet-pg55283-noncover-text",
       "record_sha256": "c415a8ff8c276b1ac7bd6dbc694ed38289ed188b087f9b5f9c92511f5218cebb",
@@ -607,9 +555,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
         "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
@@ -618,12 +564,14 @@
         "checksum_manifest": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
         "publication_manifest": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-celebrated-jumping-frog-of-calaveras-county",
       "title": "The Celebrated Jumping Frog of Calaveras County",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-celebrated-jumping-frog-of-calaveras-county-pg10947-noncover-text",
       "record_sha256": "6c50f56f12d7613ea93ed7aa0c3c783e3542f40579a46378faa30ce201a528bc",
@@ -635,9 +583,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
         "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
@@ -646,12 +592,14 @@
         "checksum_manifest": "0939ef6da32c99487f893730019accd2b7861e6e72a22878c186759b41cbb40f",
         "publication_manifest": "faf370067b9e4dd91be5708a6df99e78cac50762814a5ca3b6e121fc63dd8ddd"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-country-of-the-blind",
       "title": "The Country of the Blind",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-country-of-the-blind-pg11870-noncover-text",
       "record_sha256": "92b88aa6e6155449326ef94b7d49f8826b8b9ffe974534c540e6f9c39d75f48b",
@@ -663,9 +611,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d",
         "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
@@ -674,12 +620,14 @@
         "checksum_manifest": "dc8f65011d8d3ee5c7610f68e63d00f2d40484729df0aa25c16c7a229952263d",
         "publication_manifest": "2e18a9a484fd4d183dce32fec44d000cfdca9dc606b8543e09bec17a0c47e85a"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-darling",
       "title": "The Darling",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-darling-pg13416-noncover-text",
       "record_sha256": "96f96951650b9d5153b5d74d11a514687b2aa945d738794f736f2bf78aff8689",
@@ -691,9 +639,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
         "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
@@ -702,12 +648,14 @@
         "checksum_manifest": "cdce14ee356c6569302af33dcb4da92cc9a98c8d6997114c0bac20604441be27",
         "publication_manifest": "f85c9850a82a028fb43a4fc78b9174db82a97265a5d6fcfa12648fdb57e53450"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-door-in-the-wall",
       "title": "The Door in the Wall",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-door-in-the-wall-pg11870-noncover-text",
       "record_sha256": "2a67aa526dfbfb3cb7eba905397d2a3c30876b5b53594c66b0efc1249a38df0f",
@@ -719,9 +667,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370",
         "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
@@ -730,12 +676,14 @@
         "checksum_manifest": "e90d5881a6877a38ddb0d53da57d0e66f97a6c90b7ef128e98bffdce240c9515",
         "publication_manifest": "d16bd1be6b33823fa88e6ee40c8c7195e5a3f4215de828a480e123e18a768e8f"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-furnished-room",
       "title": "The Furnished Room",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-furnished-room-pg2776-noncover-text",
       "record_sha256": "7df0be3fe47fd90941672eb835b954c59c92ecb95f6c183ae6d67ce9a191f4ac",
@@ -747,9 +695,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
         "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
@@ -758,12 +704,14 @@
         "checksum_manifest": "9ab1c22052d33e085745231b730938ddd1e46c98874dea8d57ad98f0ba49f2c8",
         "publication_manifest": "53e8b0e715671052bce3c0ea6cc5d46719bde77f94b4455c7a6eb9c965837f00"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-imp-of-the-perverse",
       "title": "The Imp of the Perverse",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-imp-of-the-perverse-pg2148-noncover-text",
       "record_sha256": "c9bcabc2ef3d1a5fd46d0d316e2827ef22224137954d4994747312b860ff1fb3",
@@ -775,9 +723,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
         "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
@@ -786,12 +732,14 @@
         "checksum_manifest": "1f6244dd099a63544c3b5aca8fa13bc966e6f2d2bbd78f6af83f544802662cba",
         "publication_manifest": "366fa65c10dba03371667aae51e1a20bd6d05fa420cd12843d251e715db802c5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-last-leaf",
       "title": "The Last Leaf",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-last-leaf-pg3707-noncover-text",
       "record_sha256": "d50b46361e8e52b51b2c03dc8dae5a535629f3ee5287675a3d13645fdc87e2bf",
@@ -803,9 +751,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487",
         "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
@@ -814,12 +760,14 @@
         "checksum_manifest": "aaf5ce5689a434e4898800880a147a9b10409acc1e4848232adcb13b8792e5eb",
         "publication_manifest": "cba49076cdabf70b4f7fee47392620e589086a95bee2d9663d7e25e469a1c887"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-legend-of-sleepy-hollow",
       "title": "The Legend of Sleepy Hollow",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text",
       "record_sha256": "a4cbfbe3a2629b841e12193d3c331a04c9a0eefaee4be47f8812894f2fdb4610",
@@ -831,9 +779,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
         "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
@@ -842,12 +788,14 @@
         "checksum_manifest": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
         "publication_manifest": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-luck-of-roaring-camp",
       "title": "The Luck of Roaring Camp",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-luck-of-roaring-camp-pg6373-noncover-text",
       "record_sha256": "ec9031d97985a3a3a12829687dba91088c47ede53be58997f8e7923d50e42062",
@@ -859,9 +807,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb",
         "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
@@ -870,12 +816,14 @@
         "checksum_manifest": "620be064a247a3875d0cdb8223f1b1a32dcb285fb26821bb91a51eefc6aabee2",
         "publication_manifest": "d521c18cd8fe65e5c47161b493a3e78e71ce974161f0bafa8e5d4e76db5d9209"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-man-in-a-case",
       "title": "The Man in a Case",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-man-in-a-case-pg1883-noncover-text",
       "record_sha256": "1135d58b7133f70789e078f72b12977c3ce6ae7aae67f0f0f252b8b5f3faddc3",
@@ -887,9 +835,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96",
         "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
@@ -898,12 +844,14 @@
         "checksum_manifest": "48eac5aaf5cd63237756ba8180ceabeb55b4318e258627512650dea8aed6a302",
         "publication_manifest": "85e04a2208738c6f61e2b74e1b645c4decdbdbce1ecd1f280d578a8c32b479dc"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-man-with-the-twisted-lip",
       "title": "The Man with the Twisted Lip",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-man-with-the-twisted-lip-pg1661-noncover-text",
       "record_sha256": "2c67b40d9b259fe83320eeeec996417672f8c7f8bfe5c0fbe0eee50fbb232986",
@@ -915,9 +863,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
         "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
@@ -926,12 +872,14 @@
         "checksum_manifest": "72a7eada2598b93400aaed058b2312b81dbbf2330f16b089cbc7090ee7a75119",
         "publication_manifest": "b3c940e1c6349526676c3ca3c7b0e89d06b9d678b5d9d2f14ecefb34a7f1a6c0"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-masque-of-the-red-death",
       "title": "The Masque of the Red Death",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-masque-of-the-red-death-pg1064-noncover-text",
       "record_sha256": "af7ff047cffc6967dd048b355a84ead4447ce58dae6fa782b0f47fada9a4433d",
@@ -943,9 +891,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9",
         "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
@@ -954,42 +900,14 @@
         "checksum_manifest": "6cb9cf668509824e6a39abb705113164ab2036dd61eb325af3b23f8275b722ec",
         "publication_manifest": "e2de703e2cecba26bceca0560e9e136365bbd03cfa37619fb6fc2f3b669034ec"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "the-metamorphosis",
-      "title": "The Metamorphosis",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": true,
-      "manifest_blockers": [
-        "Rights: modern or unknown translation rights block publishing until separately verified.",
-        "Rights: Tier C rights block all publishing.",
-        "Rights: verification_status must be approved before publishing.",
-        "Reader QA must pass."
-      ],
-      "component_sha256": {
-        "public_book": "73ce6de1adfd1d67cd5d3f8497c0f3f50d1dd2917e90c00a4e934d6e495d4da5",
-        "reader_manifest": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f",
-        "source_evidence": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3",
-        "approval_evidence": "06f1c670cba4205c9e6592839202a99e579f3c7358bd5f2f9940e5f68245ad81",
-        "checksum_manifest": "aa33f109affcf9df576a87cc54936277e4ad0ec9c6d3cca5f3ee7e238a15413e",
-        "publication_manifest": "43aa508b0ed609063831b7c4c4c2b64421de19b4f247700fe236f6ba57e5eb9f"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-ministers-black-veil",
       "title": "The Minister's Black Veil",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ministers-black-veil-pg13707-noncover-text",
       "record_sha256": "a71a27a8b9cb52cd176c8845af2e6662eac562abf36e815b3db5bc6d0bed7459",
@@ -1001,9 +919,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "e89616cef4b147399870c56de46b53b60ec431a902347ef123ec25cde50578fb",
         "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
@@ -1012,12 +928,14 @@
         "checksum_manifest": "c200d8fb8308fdf43a66031aef990a501f9aed86212c37bbbb0592afcd9c720d",
         "publication_manifest": "50e4a9d36ce0a612385d4013e8c7c9cb1399abec35a529d3990fa374aaadf505"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-murders-in-the-rue-morgue",
       "title": "The Murders in the Rue Morgue",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-murders-in-the-rue-morgue-pg2147-noncover-text",
       "record_sha256": "c90c6f10f129a06d7d577e7d2cbf6658d8a2876f718e1cdf0f15a74663e611ab",
@@ -1029,9 +947,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "66b5b4bb3d065f0da757b9570c0c91668939aeff95b7a560828a0a8afc8404e5",
         "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
@@ -1040,12 +956,14 @@
         "checksum_manifest": "7d20029bd3fde6280d1181eb63e0e4106fb2a16a70f819d0d850a72c6ea7b8ab",
         "publication_manifest": "8c0aaa494f4db75888c00fd7b53061547684f3e34502d22b6620712c5c5ede91"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-outcasts-of-poker-flat",
       "title": "The Outcasts of Poker Flat",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-outcasts-of-poker-flat-pg6373-noncover-text",
       "record_sha256": "d644e06b0e348f680094c6405a6609a2cdd6cfab899664fe63c00b0a84c0a8be",
@@ -1057,9 +975,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63",
         "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
@@ -1068,12 +984,14 @@
         "checksum_manifest": "bd04242861f378e161fcb601a68d9c369f2a5cf4900385e6e6e1fa8c4f63db7a",
         "publication_manifest": "7e8c4785c0e24ee221ceb5caf91952b905bf4800ecf84ca2d3e67dc70eb07265"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-purloined-letter",
       "title": "The Purloined Letter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-purloined-letter-pg2148-noncover-text",
       "record_sha256": "05638c35735d0a1f92b08b20e5a88606f0c8594b626e84610edf058450d812da",
@@ -1085,9 +1003,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5",
         "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
@@ -1096,12 +1012,14 @@
         "checksum_manifest": "de99a5eb3c0fe3766950f47ef5017ad19542f3ce40c4e47552fb955729b3402d",
         "publication_manifest": "91ea6d3d1e07113fdee52b36cffd2bcdbc8f4dceb6e1ae3531042370917a7598"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-ransom-of-red-chief",
       "title": "The Ransom of Red Chief",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ransom-of-red-chief-pg1595-noncover-text",
       "record_sha256": "a7dd78a559457bf4262583dab4b5b705c69f3e68ce3fdf8b087dbd2bb95731fc",
@@ -1113,9 +1031,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d",
         "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
@@ -1124,12 +1040,14 @@
         "checksum_manifest": "3c6742abde62f32aa64a089a8d4027d8eeea405a634709168581d434bfcd9b29",
         "publication_manifest": "11dcc80257c8269c91d9310302a62a0865963e588070028e63043cfb873edda2"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-speckled-band",
       "title": "The Speckled Band",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-speckled-band-pg1661-noncover-text",
       "record_sha256": "0c0a3a373f4880520f7314e3710320bcf149d52bcc4a182d7e5e7c943196dd83",
@@ -1141,9 +1059,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "bb6e1b4c00d3d1206cbd4fc887bcba1bef02153eac0c7e358a0c303b0c5a7e2c",
         "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
@@ -1152,12 +1068,14 @@
         "checksum_manifest": "6dbc422ce31114a541502fa96aa831ebc2b1d50ad7385e910be540745e7a3474",
         "publication_manifest": "c89ac557b6d457364475e9408e2475ddc41fe643658a2c1ba188b4827ad5f6e6"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-suicide-club",
       "title": "The Suicide Club",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-suicide-club-pg839-noncover-text",
       "record_sha256": "495995678c1d259342652cb9fdc8d09e5883d32785fd5bfb716b90c134a1f055",
@@ -1169,9 +1087,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "8437baffb6a017ba0f5a1846beb3c3cdd7eed583bb6840e7343babb44b27d46e",
         "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
@@ -1180,12 +1096,14 @@
         "checksum_manifest": "1256e7ae7c7e08cc1cc9fbc5cae522e85a3ac1e90f6c50d4c06761b9565ecedd",
         "publication_manifest": "5220b601e41a713e57f2e5c0ed62e09e29beefd58f4b90c979119468c088ba4a"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "the-yellow-wallpaper",
       "title": "The Yellow Wallpaper",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-yellow-wallpaper-pg1952-noncover-text",
       "record_sha256": "40e50a49b7a6e90eac222383e2eb6c5aa60bc851a1f6f41e0349b8cf6c3039b2",
@@ -1197,9 +1115,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e",
         "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
@@ -1208,12 +1124,14 @@
         "checksum_manifest": "090dffde47843e8099c65d885a4c3f8b2323fa6b2c497ecae0b29acbb73e6dfa",
         "publication_manifest": "6994ab7890ada79bea87fe5fa138751f5fb3aafd0beab71b242f2cb0d40f8ffa"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "to-build-a-fire",
       "title": "To Build a Fire",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-to-build-a-fire-pg2429-noncover-text",
       "record_sha256": "0d4d1397920918d29d174f09106449dfd7af3ca1f82ea1a0a412ec121cc6e16d",
@@ -1225,9 +1143,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
         "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
@@ -1236,12 +1152,14 @@
         "checksum_manifest": "6cc4792f7c6ce375b21529be0f76ef6369da5e685ab18ff5bef3065bdc1be964",
         "publication_manifest": "0fcc745949a5b23907e9bc126a7b1db8afb9c459b047540f1b8ef4ecbe2add40"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "tobermory",
       "title": "Tobermory",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-tobermory-pg3688-noncover-text",
       "record_sha256": "8e86f519d9edfa7471ed69c4c1357d4dbb84c5a6e3ed0de6dbe0e1bf3896779d",
@@ -1253,9 +1171,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
         "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
@@ -1264,12 +1180,14 @@
         "checksum_manifest": "bd99a122767073744be9361cd2386c0dc148c7aa5631b41347bc5bf847f82d9d",
         "publication_manifest": "485ebfd905dfede4a8b647d50a1593dc0840022ef0e8d7e81a7148b886864c24"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "ward-no-6",
       "title": "Ward No. 6",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-ward-no-6-pg13409-noncover-text",
       "record_sha256": "f78f97137a2c664ef104b5d410aae91879873481cb49ffedd3de7c3b4f880a7e",
@@ -1281,9 +1199,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
         "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
@@ -1292,12 +1208,14 @@
         "checksum_manifest": "4eb9a4ec09b5d3a190c6b01742cb8c2dbc4eaf4090de4d6308d10b5b98fb34bc",
         "publication_manifest": "e425fc42e7f7491df62f52d8729011ba4ad3c19febfc029362e0a71a4d2339c4"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "white-fang",
       "title": "White Fang",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-white-fang-pg910-noncover-text",
       "record_sha256": "b27ce6c947acdc12d628500f960f1c4403b83397c8f1b3db2cdda89e4fdaa898",
@@ -1309,9 +1227,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "fc328afa3835fb3afe1221838382f8e4cfb42901b251977eae424550e7c38a05",
         "reader_manifest": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
@@ -1320,12 +1236,14 @@
         "checksum_manifest": "c620b0c4cd9442d571ce1eac9f34c2be2a043f4369a5ea931972b815c67fdebf",
         "publication_manifest": "66b29cb4dc6ff3f91e06698548cec7a62dc35ed70469a646b9eca3573af25bd7"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     },
     {
       "slug": "young-goodman-brown",
       "title": "Young Goodman Brown",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-young-goodman-brown-pg512-noncover-text",
       "record_sha256": "6c075725e3cd6b0f8158c27cc8aaf8fae27b0ae6408ad3436be6fcc5ade61ae7",
@@ -1337,9 +1255,7 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
+      "manifest_blockers": [],
       "component_sha256": {
         "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
         "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
@@ -1348,7 +1264,18 @@
         "checksum_manifest": "2de2b44d4370aa576952dea381bb3ed0143b8d6ad0f9c9a91d755f5f43e9f4c3",
         "publication_manifest": "3adae489b09a8e58a33989eaea4e68e49a3e7a896b3a26ccbf97abbb6d1c09d0"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true
     }
-  ]
+  ],
+  "source_candidate_count": 45,
+  "removed_slugs": [
+    "gitanjali",
+    "nishkriti",
+    "the-metamorphosis"
+  ],
+  "removal_status": "ACTIVE_SOURCE_FILES_REMOVED_PRODUCTION_PENDING",
+  "prior_48_state_sha256": "5064ead9ba38db2d7412e78e580292d0d838f11ff992251f5847d335def85532",
+  "production_refresh": "persisted45-release-20261110/production-refresh.json"
 }

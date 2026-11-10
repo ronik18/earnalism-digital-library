@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-suicide-club",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "84df122d5503d9e8868e9822019eae9f916c5daa0d2892517d58dcb63f1babf5",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+      "url": "https://theearnalism.com/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+      "sha256": "3baddf77926a0acd20a1b59724b2161d3ac9a476506bf39c49e4784ddff6bcb7",
+      "bytes": 78466,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-suicide-club/back-0ec4b741a41ccc6e.webp",
+      "url": "https://theearnalism.com/assets/books/the-suicide-club/back-0ec4b741a41ccc6e.webp",
+      "sha256": "0ec4b741a41ccc6eabeea030749b0d8e1b332bbb849884a8fc930b6be67dce34",
+      "bytes": 29212,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

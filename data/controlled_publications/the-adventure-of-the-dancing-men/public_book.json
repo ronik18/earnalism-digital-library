@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "Holmes deciphers a cipher of stick-figure dancing men — but solves it too late to save an innocent life.",
   "description": "A Norfolk squire's American wife is terrified by stick-figure drawings appearing around their estate. Holmes breaks the cipher — but the warning arrives too late. One of the Holmes stories where the detective's triumph is incomplete and tragedy stands.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/back-e2832bbb1a7c04d3.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/back-e2832bbb1a7c04d3.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-dancing-men",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586369/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586370/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586369/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586370/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "0554ac8b881f1ad745ac3f86188714702e56ffa308b43be64c504c5b3916ba64",
+  "back_cover_sha256": "e2832bbb1a7c04d32d3a70db02dd5e1c4197d6307b7bf9f596815758ec0dacda"
 }

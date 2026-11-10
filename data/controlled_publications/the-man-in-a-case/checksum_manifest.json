@@ -1,10 +1,10 @@
 {
   "slug": "the-man-in-a-case",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "18a5e4d79ab446ae76aa0880f2a236b791a9f5a3d7afb42114841b363b1cf0f8"
+      "sha256": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96"
+      "sha256": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "1add91690ed370679923439b30f6f439d85702baa1e67130b698bcb1c1d9b11e"
     }
   ]
 }

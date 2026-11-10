@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-greek-interpreter",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
   "content_hash": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
   "provenance_hash": "3ee0c04a2a2833abf787603b9b3115fbca081a58298449cd344aaef42143bb2a",
-  "verified_at": "2026-10-01T21:48:17.188009+00:00"
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "c36a229e5835a2b7cd65c460a9808c5e5eb7a3a8860de309b7eed30148286a8d"
 }

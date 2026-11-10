@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "to-build-a-fire",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "37810e061b1963ad13dbaddee775d7784b5ee820e678e4bdcfd63dae3a9f6a2c",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+      "url": "https://theearnalism.com/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+      "sha256": "fcbad9a6eaaa5a9e2e3e7eaec1d2a8ce7826254f73fc4a5503e54e42a4721873",
+      "bytes": 103994,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/to-build-a-fire/back-ddfe01a2636f9460.webp",
+      "url": "https://theearnalism.com/assets/books/to-build-a-fire/back-ddfe01a2636f9460.webp",
+      "sha256": "ddfe01a2636f9460f3dd0f6b739608f2053ab12e31ef0eb1fae28db306b77650",
+      "bytes": 32608,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

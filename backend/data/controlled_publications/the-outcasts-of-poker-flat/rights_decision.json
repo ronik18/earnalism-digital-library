@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor",
+  "edition_id": "the-outcasts-of-poker-flat",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6c6bf6bd3c7b4375d34486ca1711baa99e2f0569c31331fbb3fd8d875bfe316e",
+    "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
+    "approval_evidence": "ba9c4edd66d1aa0789465ccb4532cb0b9766e8d8f3194f30f4ea496c9628e5fd",
+    "checksum_manifest": "6cae6011e9f96c2c7e0265b0a2436fb0891a676446b62a8ca7239602d24632a3",
+    "publication_manifest": "db356833f233589f44b2ca4d399974acd2095d1a8fedce155294a5ca8ab348b4",
+    "cover_provenance": "37fc662ccc89da8bb53aeb4bd018af08b20f20f4b98a3279f16707a6928e21c6",
+    "cover_front": "67c4eeffd8ecc6d7b5f820b299df0383ef04f8e201bfe0a63b64e60f1143b07a",
+    "cover_back": "5626479887b10817bec9ea1c5adf45869459bc54db1dbae855fc095804c4edb2"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-outcasts-of-poker-flat-pg6373-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "465ceb3908928fad9deca80edcac48624204437bf40d118312f8382f934f8daf",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
+    "d644e06b0e348f680094c6405a6609a2cdd6cfab899664fe63c00b0a84c0a8be",
+    "37fc662ccc89da8bb53aeb4bd018af08b20f20f4b98a3279f16707a6928e21c6"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

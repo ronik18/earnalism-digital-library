@@ -20,7 +20,7 @@ from scripts import catalog_truth_audit
 
 
 # Independent release expectation; do not derive it from the artifact under test.
-CURRENT_RELEASED_SLUGS = ('a-ghost-story', 'the-tell-tale-heart', 'radharani', 'a-white-heron', 'the-gift-of-the-magi', 'the-canterville-ghost', 'the-adventures-of-sherlock-holmes', 'agentic-ai-with-python', 'a-horseman-in-the-sky', 'a-mystery-of-heroism', 'a-scandal-in-bohemia', 'jekyll-and-hyde', 'love-of-life', 'the-bishop', 'the-fall-of-the-house-of-usher', 'the-lady-with-the-dog', 'the-man-who-would-be-king', 'the-open-boat', 'the-pit-and-the-pendulum', 'the-stolen-white-elephant', 'an-occurrence-at-owl-creek-bridge', 'the-enchanted-april', 'the-happy-prince', 'picture-of-dorian-gray', 'dracula', 'book-edfcf810c5', 'muchiram-gurer-jibanchorit', 'bn-059', 'the-call-of-the-wild', 'the-student', 'the-art-of-money-getting', 'bn-035', 'alices-adventures-in-wonderland', 'dsires-baby', 'sredni-vashtar', 'the-cop-and-the-anthem', 'the-open-window', 'the-selfish-giant', 'the-science-of-getting-rich', 'bn-066', 'lokrahasya', 'mrinalini', 'frankenstein', 'pride-and-prejudice', 'the-great-gatsby', 'the-secret-garden', 'the-time-machine', 'acres-of-diamonds', 'my-life-and-work', 'the-principles-of-scientific-management', 'the-wonderful-wizard-of-oz', 'book-5704b31005')
+CURRENT_RELEASED_SLUGS = ('a-ghost-story', 'the-tell-tale-heart', 'radharani', 'a-white-heron', 'the-gift-of-the-magi', 'the-canterville-ghost', 'the-adventures-of-sherlock-holmes', 'agentic-ai-with-python', 'a-horseman-in-the-sky', 'a-mystery-of-heroism', 'a-scandal-in-bohemia', 'jekyll-and-hyde', 'love-of-life', 'the-bishop', 'the-fall-of-the-house-of-usher', 'the-lady-with-the-dog', 'the-man-who-would-be-king', 'the-open-boat', 'the-pit-and-the-pendulum', 'the-stolen-white-elephant', 'an-occurrence-at-owl-creek-bridge', 'the-enchanted-april', 'the-happy-prince', 'picture-of-dorian-gray', 'dracula', 'book-edfcf810c5', 'muchiram-gurer-jibanchorit', 'bn-059', 'the-call-of-the-wild', 'the-student', 'the-art-of-money-getting', 'bn-035', 'alices-adventures-in-wonderland', 'dsires-baby', 'sredni-vashtar', 'the-cop-and-the-anthem', 'the-open-window', 'the-selfish-giant', 'the-science-of-getting-rich', 'bn-066', 'lokrahasya', 'mrinalini', 'frankenstein', 'pride-and-prejudice', 'the-great-gatsby', 'the-secret-garden', 'the-time-machine', 'acres-of-diamonds', 'my-life-and-work', 'the-principles-of-scientific-management', 'the-wonderful-wizard-of-oz', 'book-5704b31005') + ('a-retrieved-reformation', 'a-wagner-matinee', 'feathertop', 'markheim', 'rappaccinis-daughter', 'the-adventure-of-the-abbey-grange', 'the-adventure-of-the-beryl-coronet', 'the-adventure-of-the-blue-carbuncle', 'the-adventure-of-the-copper-beeches', 'the-adventure-of-the-dancing-men', 'the-adventure-of-the-empty-house', 'the-adventure-of-the-engineers-thumb', 'the-adventure-of-the-final-problem', 'the-adventure-of-the-greek-interpreter', 'the-adventure-of-the-noble-bachelor', 'the-adventure-of-the-priory-school', 'the-adventure-of-the-second-stain', 'the-adventure-of-the-solitary-cyclist', 'the-ambitious-guest', 'the-bet', 'the-celebrated-jumping-frog-of-calaveras-county', 'the-country-of-the-blind', 'the-darling', 'the-door-in-the-wall', 'the-furnished-room', 'the-imp-of-the-perverse', 'the-last-leaf', 'the-legend-of-sleepy-hollow', 'the-luck-of-roaring-camp', 'the-man-in-a-case', 'the-man-with-the-twisted-lip', 'the-masque-of-the-red-death', 'the-ministers-black-veil', 'the-murders-in-the-rue-morgue', 'the-outcasts-of-poker-flat', 'the-purloined-letter', 'the-ransom-of-red-chief', 'the-speckled-band', 'the-suicide-club', 'the-yellow-wallpaper', 'to-build-a-fire', 'tobermory', 'ward-no-6', 'white-fang', 'young-goodman-brown')
 
 @pytest.fixture(autouse=True)
 def enabled_release_fixture_for_legacy_contract_cases(request, monkeypatch):
@@ -116,7 +116,7 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
     assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
     assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == CURRENT_RELEASED_SLUGS
-    assert len(set(CURRENT_RELEASED_SLUGS)) == 52
+    assert len(set(CURRENT_RELEASED_SLUGS)) == 97
     assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
@@ -349,7 +349,8 @@ def test_public_release_scope_denies_held_titles_and_never_reopens_historical_ma
     assert server._is_controlled_public_slug("dracula") is True
     assert server._is_controlled_public_slug("a-ghost-story") is True
     for slug in ("yugalanguriya", "bn-060", "the-most-dangerous-game",
-                 "great-expectations", "bharat-at-the-crossroads", "kshudhita-pashan"):
+                 "great-expectations", "bharat-at-the-crossroads", "kshudhita-pashan",
+                 "gitanjali", "nishkriti", "the-metamorphosis"):
         assert server._is_controlled_public_slug(slug) is False
         assert slug not in CURRENT_RELEASED_SLUGS
     query = server._controlled_public_book_query()
@@ -413,7 +414,7 @@ def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
     book_paths = [urlsplit(location).path for location in locations
                   if urlsplit(location).path.startswith("/book/")]
     assert set(book_paths) == {f"/book/{slug}" for slug in CURRENT_RELEASED_SLUGS}
-    assert len(book_paths) == 52
+    assert len(book_paths) == 97
     assert all(not urlsplit(location).path.startswith("/reader/") for location in locations)
 
 

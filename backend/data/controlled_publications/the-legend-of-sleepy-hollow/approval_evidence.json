@@ -1,0 +1,23 @@
+{
+  "slug": "the-legend-of-sleepy-hollow",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d",
+  "source_hash": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
+  "content_hash": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+  "provenance_hash": "b7475b107e7e4aab2574668b585f93f84e1e4bb1b919cb6a0995e4f656188db8",
+  "verified_at": "2026-10-02T01:07:27.058549+00:00",
+  "cover_provenance_sha256": "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237"
+}

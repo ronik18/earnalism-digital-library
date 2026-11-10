@@ -1,0 +1,833 @@
+{
+  "schema": "earnalism.persisted45-reader-successor.v1",
+  "scope": "Owner-directed India Reader-only original covers; no audio or purchase opening",
+  "slugs": [
+    "a-retrieved-reformation",
+    "a-wagner-matinee",
+    "feathertop",
+    "markheim",
+    "rappaccinis-daughter",
+    "the-adventure-of-the-abbey-grange",
+    "the-adventure-of-the-beryl-coronet",
+    "the-adventure-of-the-blue-carbuncle",
+    "the-adventure-of-the-copper-beeches",
+    "the-adventure-of-the-dancing-men",
+    "the-adventure-of-the-empty-house",
+    "the-adventure-of-the-engineers-thumb",
+    "the-adventure-of-the-final-problem",
+    "the-adventure-of-the-greek-interpreter",
+    "the-adventure-of-the-noble-bachelor",
+    "the-adventure-of-the-priory-school",
+    "the-adventure-of-the-second-stain",
+    "the-adventure-of-the-solitary-cyclist",
+    "the-ambitious-guest",
+    "the-bet",
+    "the-celebrated-jumping-frog-of-calaveras-county",
+    "the-country-of-the-blind",
+    "the-darling",
+    "the-door-in-the-wall",
+    "the-furnished-room",
+    "the-imp-of-the-perverse",
+    "the-last-leaf",
+    "the-legend-of-sleepy-hollow",
+    "the-luck-of-roaring-camp",
+    "the-man-in-a-case",
+    "the-man-with-the-twisted-lip",
+    "the-masque-of-the-red-death",
+    "the-ministers-black-veil",
+    "the-murders-in-the-rue-morgue",
+    "the-outcasts-of-poker-flat",
+    "the-purloined-letter",
+    "the-ransom-of-red-chief",
+    "the-speckled-band",
+    "the-suicide-club",
+    "the-yellow-wallpaper",
+    "to-build-a-fire",
+    "tobermory",
+    "ward-no-6",
+    "white-fang",
+    "young-goodman-brown"
+  ],
+  "parent_source_head": "2f3615a1213aa60e30e8a24593cf874adcc454c3",
+  "production_verified": false,
+  "cover_pair_review_sha256": "366035469f5c1d9fd6df981ffe72e95ae39a132d67e3169cb9549eabc9ab6bfa",
+  "preserved_predecessor_files": {
+    "data/controlled_launch.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/data__controlled_launch.json",
+      "sha256": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94"
+    },
+    "backend/data/controlled_launch.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/backend__data__controlled_launch.json",
+      "sha256": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94"
+    },
+    "backend/data/rights_decision_registry.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/backend__data__rights_decision_registry.json",
+      "sha256": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a"
+    },
+    "backend/data/approved_reader_bootstrap.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/backend__data__approved_reader_bootstrap.json",
+      "sha256": "27d326cfbc1b98048fb0409553927328e852240cb7a8f73ec5a242de2de867eb"
+    },
+    "internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/internal__legal__catalogue_clearance_20261002__reviewed_release_authority_20261003.v1.json",
+      "sha256": "0eb44534f1004620a826994ba5e4fff977640946c0989481fa88978e685477d4"
+    }
+  },
+  "added_accepted_records": {
+    "india-20261108-a-retrieved-reformation-reader-cover-successor": "18e2ccc7121b3a2d192208c9550e4b44c63db320e7ea118e70ade3c11797868e",
+    "india-20261108-a-wagner-matinee-reader-cover-successor": "c615427ea96991751555022b7345f0a6ca605edf1fd7c72b81570401ff87425c",
+    "india-20261108-feathertop-reader-cover-successor": "983d162aeb19d54cb75337bef94a539e5ce07fc876f8152279016bf20ac500f9",
+    "india-20261108-markheim-reader-cover-successor": "ccb0a75330347ec45d2be9081b39651b560dbbdf39f07c841dbf518b7d430dbf",
+    "india-20261108-rappaccinis-daughter-reader-cover-successor": "f770abbccb6c60e64a1fb9ba6f0628307057b7495141f8353e52562a9156f0e9",
+    "india-20261108-the-adventure-of-the-abbey-grange-reader-cover-successor": "60cf9129edeb49a99647e895eea5be32546c9c2d7cd1f27d8630a03c2ca02ac2",
+    "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor": "e46cedead5b6b2dadd06d9474ec0e19a41f2d59e2fa5609ea174de4873c880b2",
+    "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor": "c2ac75f35f05b4442278e44679ada9c2eb5f44da4d2912b7728639564c37efc7",
+    "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor": "71abbd3ec66bb3c53c0f29f49d59cc4cec2c1e08b74f22c2c0712feea5fd6400",
+    "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor": "3a73e485b53b5e94fac63683004b07c9bd59bf0b99399e37f9d362a61bed53a0",
+    "india-20261108-the-adventure-of-the-empty-house-reader-cover-successor": "670a7b43d5a59db717d36f741246013b5f69528e3fecb013e4d6fc991fc3e517",
+    "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor": "81a4f8799eb224eb8bee2a73c375ab30747b24acb3d0224c615e4781d3c1beab",
+    "india-20261108-the-adventure-of-the-final-problem-reader-cover-successor": "d571a417f4f93b59b22df89b3777766195b38983bc85b2a12678eebda163a18c",
+    "india-20261108-the-adventure-of-the-greek-interpreter-reader-cover-successor": "bab2f5de8176c4d1d5cc55adc4f3acc3fa6bf47a7528aeff516491799fce157d",
+    "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor": "b13f4a419badc6c35909f477ecf142df5a6b407bf2ff4d45271bbab2cdad0234",
+    "india-20261108-the-adventure-of-the-priory-school-reader-cover-successor": "6ff8b1894a791e351ccfa0e513d6308f5be4977a381fb1145cc59f670b6000a9",
+    "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor": "c316f9a0db2bb93892f707d1142ba647bc053a1d0e849d5fce5726ec4d0f7bab",
+    "india-20261108-the-adventure-of-the-solitary-cyclist-reader-cover-successor": "588bb64828e11e48351cd4e923efd6e3c4f69bee5ae063fef05b1cd9ae5f0c65",
+    "india-20261108-the-ambitious-guest-reader-cover-successor": "2716eb61bd215d4651cae22e1bf86fb6373297cc7d55924beea26a5c6b51e032",
+    "india-20261108-the-bet-reader-cover-successor": "02c42af45dffc6f14d39296f6a32aff97da964674b8a7e9f8dca8b760e75915b",
+    "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor": "331dc9b8bdcadf79f0eed5af6bdc24cbdf05f19314e3e855c421bc4a079f02f3",
+    "india-20261108-the-country-of-the-blind-reader-cover-successor": "614d9b0e72e97279733c13a296cbc309a30ec8727f5ea1cc931a97b33a8b5328",
+    "india-20261108-the-darling-reader-cover-successor": "f8ae66246da0726c98f582376a22346becfd87cc80085b35f704d121a7e895c8",
+    "india-20261108-the-door-in-the-wall-reader-cover-successor": "4a9274fb308758c166588a428e2916d03de24a983c106b2711c401576eec4eb6",
+    "india-20261108-the-furnished-room-reader-cover-successor": "1aa5c784555a352c33e8881149f7639488628b9901865437487ddc528c511193",
+    "india-20261108-the-imp-of-the-perverse-reader-cover-successor": "490d49a58ead9dcf8d479b46d47d34452af5f7a7ad92d33cb43e9c828570de10",
+    "india-20261108-the-last-leaf-reader-cover-successor": "768a07272309b3581d71b402fcdd05f436241c3b8de76321dfcafc7355d3cfef",
+    "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor": "0f463f4caf7d8dab3ea99e6df3f96ac564c29ab61cc7b68378442033c81da8ca",
+    "india-20261108-the-luck-of-roaring-camp-reader-cover-successor": "58ea66a50eb8008afd5bd2145309cb7d26f4a3b9c8d574705efb8f1eb5457b94",
+    "india-20261108-the-man-in-a-case-reader-cover-successor": "8c6a04322c842c12d4f53ee4ac820e4f3c6fed674f8dd70cb8dcf1d6231f178d",
+    "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor": "0cb931c15e8f72fe97704039d5ee0652251fce620a50e821cf6d59093b470a21",
+    "india-20261108-the-masque-of-the-red-death-reader-cover-successor": "74da49f4d63db062d42e028413b2848c6b72f3fcfc8e20aeb9cf2a66219ae535",
+    "india-20261108-the-ministers-black-veil-reader-cover-successor": "f5738f44accf4bb3cf5fbe7d1689bf61d82553779bfd15c41280529181ca9a38",
+    "india-20261108-the-murders-in-the-rue-morgue-reader-cover-successor": "f7fc64150a1d97f0b461f38159d355a9bafca008b01a039e63be94952860696d",
+    "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor": "590a6481cfe8d82e53644e17cbb5057723537259a3329fb6991cab2c73a0b1f8",
+    "india-20261108-the-purloined-letter-reader-cover-successor": "13aefbc7262c319bd5be014edb999920cc24d8bedf2ff3dad83b2b8bfd255f4c",
+    "india-20261108-the-ransom-of-red-chief-reader-cover-successor": "aa643ac6ba938b3d09eaaaac733cefce66b16bd91d7f8e7fa0e388ccea0a2ff6",
+    "india-20261108-the-speckled-band-reader-cover-successor": "7b3d5853f0c1197be50beec429146622162c6bb8cbbcda3f54d23f47f1a43e69",
+    "india-20261108-the-suicide-club-reader-cover-successor": "c65ee9058caf788839323e793c0ef238adda0a0071841f5195e0e0f65d810bd2",
+    "india-20261108-the-yellow-wallpaper-reader-cover-successor": "54ee72f16d4201c7f8c3c64edd0e72b941c37e64f76ca91aee7ff30ea311ef98",
+    "india-20261108-to-build-a-fire-reader-cover-successor": "01ee551663eda51a96263e37cac90f0b769079e18d766bff633241ec22982bed",
+    "india-20261108-tobermory-reader-cover-successor": "2088e7ccdc649952c50b49d91be905ef435986ee12b13c1e60b92607a40229ed",
+    "india-20261108-ward-no-6-reader-cover-successor": "dce37ffd9574d4f3debe0004e196165837e144e36910a017251c52c50966119d",
+    "india-20261108-white-fang-reader-cover-successor": "1e061d67e153541fe07beb9c9035c71cdb02c5948e50ea7dd4afa63bc47ea761",
+    "india-20261108-young-goodman-brown-reader-cover-successor": "632b7c6b47791cdb522abc432a37993ae984059807486c23d26d1258570ad530"
+  },
+  "added_title_bindings": {
+    "a-retrieved-reformation": {
+      "decision_id": "india-20261108-a-retrieved-reformation-reader-cover-successor",
+      "record_sha256": "18e2ccc7121b3a2d192208c9550e4b44c63db320e7ea118e70ade3c11797868e",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/a-retrieved-reformation/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/a-retrieved-reformation/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/a-retrieved-reformation/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/a-retrieved-reformation/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/a-retrieved-reformation/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/a-retrieved-reformation/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/a-retrieved-reformation/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/a-retrieved-reformation/front-f1dc19c45f181d5d.webp",
+        "cover_back": "frontend/public/assets/books/a-retrieved-reformation/back-97b4604f13a1b8bf.webp"
+      }
+    },
+    "a-wagner-matinee": {
+      "decision_id": "india-20261108-a-wagner-matinee-reader-cover-successor",
+      "record_sha256": "c615427ea96991751555022b7345f0a6ca605edf1fd7c72b81570401ff87425c",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/a-wagner-matinee/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/a-wagner-matinee/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/a-wagner-matinee/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/a-wagner-matinee/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/a-wagner-matinee/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/a-wagner-matinee/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/a-wagner-matinee/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/a-wagner-matinee/front-febdb7034c342a12.webp",
+        "cover_back": "frontend/public/assets/books/a-wagner-matinee/back-067aefce7dfde810.webp"
+      }
+    },
+    "feathertop": {
+      "decision_id": "india-20261108-feathertop-reader-cover-successor",
+      "record_sha256": "983d162aeb19d54cb75337bef94a539e5ce07fc876f8152279016bf20ac500f9",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/feathertop/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/feathertop/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/feathertop/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/feathertop/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/feathertop/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/feathertop/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/feathertop/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/feathertop/front-93854105d9280545.webp",
+        "cover_back": "frontend/public/assets/books/feathertop/back-9a34504db3865d57.webp"
+      }
+    },
+    "markheim": {
+      "decision_id": "india-20261108-markheim-reader-cover-successor",
+      "record_sha256": "ccb0a75330347ec45d2be9081b39651b560dbbdf39f07c841dbf518b7d430dbf",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/markheim/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/markheim/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/markheim/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/markheim/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/markheim/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/markheim/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/markheim/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/markheim/front-1568f8a2bdea9548.webp",
+        "cover_back": "frontend/public/assets/books/markheim/back-3641d4eae8cc2007.webp"
+      }
+    },
+    "rappaccinis-daughter": {
+      "decision_id": "india-20261108-rappaccinis-daughter-reader-cover-successor",
+      "record_sha256": "f770abbccb6c60e64a1fb9ba6f0628307057b7495141f8353e52562a9156f0e9",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/rappaccinis-daughter/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/rappaccinis-daughter/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/rappaccinis-daughter/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/rappaccinis-daughter/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/rappaccinis-daughter/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/rappaccinis-daughter/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/rappaccinis-daughter/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/rappaccinis-daughter/front-30403b406b204d07.webp",
+        "cover_back": "frontend/public/assets/books/rappaccinis-daughter/back-d82741e053708976.webp"
+      }
+    },
+    "the-adventure-of-the-abbey-grange": {
+      "decision_id": "india-20261108-the-adventure-of-the-abbey-grange-reader-cover-successor",
+      "record_sha256": "60cf9129edeb49a99647e895eea5be32546c9c2d7cd1f27d8630a03c2ca02ac2",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-abbey-grange/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-abbey-grange/back-8312638414f30dd5.webp"
+      }
+    },
+    "the-adventure-of-the-beryl-coronet": {
+      "decision_id": "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor",
+      "record_sha256": "e46cedead5b6b2dadd06d9474ec0e19a41f2d59e2fa5609ea174de4873c880b2",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-beryl-coronet/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-beryl-coronet/front-a4255d0ae4226d5e.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-beryl-coronet/back-b77935cac7fc72ec.webp"
+      }
+    },
+    "the-adventure-of-the-blue-carbuncle": {
+      "decision_id": "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor",
+      "record_sha256": "c2ac75f35f05b4442278e44679ada9c2eb5f44da4d2912b7728639564c37efc7",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-blue-carbuncle/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-blue-carbuncle/back-2ceb1f6da7dc4ff8.webp"
+      }
+    },
+    "the-adventure-of-the-copper-beeches": {
+      "decision_id": "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor",
+      "record_sha256": "71abbd3ec66bb3c53c0f29f49d59cc4cec2c1e08b74f22c2c0712feea5fd6400",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-copper-beeches/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-copper-beeches/front-1a755f79e54e23c8.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-copper-beeches/back-249f7d21e17343b4.webp"
+      }
+    },
+    "the-adventure-of-the-dancing-men": {
+      "decision_id": "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor",
+      "record_sha256": "3a73e485b53b5e94fac63683004b07c9bd59bf0b99399e37f9d362a61bed53a0",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-dancing-men/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-dancing-men/back-e2832bbb1a7c04d3.webp"
+      }
+    },
+    "the-adventure-of-the-empty-house": {
+      "decision_id": "india-20261108-the-adventure-of-the-empty-house-reader-cover-successor",
+      "record_sha256": "670a7b43d5a59db717d36f741246013b5f69528e3fecb013e4d6fc991fc3e517",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-empty-house/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-empty-house/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-empty-house/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-empty-house/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-empty-house/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-empty-house/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-empty-house/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-empty-house/front-bd449d4fd898ddd0.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-empty-house/back-a2f25cd2835c22e8.webp"
+      }
+    },
+    "the-adventure-of-the-engineers-thumb": {
+      "decision_id": "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor",
+      "record_sha256": "81a4f8799eb224eb8bee2a73c375ab30747b24acb3d0224c615e4781d3c1beab",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-engineers-thumb/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-engineers-thumb/front-75be2913c2d03302.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-engineers-thumb/back-042c7d5bb3398cf4.webp"
+      }
+    },
+    "the-adventure-of-the-final-problem": {
+      "decision_id": "india-20261108-the-adventure-of-the-final-problem-reader-cover-successor",
+      "record_sha256": "d571a417f4f93b59b22df89b3777766195b38983bc85b2a12678eebda163a18c",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-final-problem/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-final-problem/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-final-problem/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-final-problem/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-final-problem/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-final-problem/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-final-problem/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-final-problem/back-93ba678d6d4fbde2.webp"
+      }
+    },
+    "the-adventure-of-the-greek-interpreter": {
+      "decision_id": "india-20261108-the-adventure-of-the-greek-interpreter-reader-cover-successor",
+      "record_sha256": "bab2f5de8176c4d1d5cc55adc4f3acc3fa6bf47a7528aeff516491799fce157d",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-greek-interpreter/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-greek-interpreter/front-34210d690ea405fc.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-greek-interpreter/back-321ba7f8789a55c6.webp"
+      }
+    },
+    "the-adventure-of-the-noble-bachelor": {
+      "decision_id": "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor",
+      "record_sha256": "b13f4a419badc6c35909f477ecf142df5a6b407bf2ff4d45271bbab2cdad0234",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-noble-bachelor/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-noble-bachelor/back-220262aef53b8950.webp"
+      }
+    },
+    "the-adventure-of-the-priory-school": {
+      "decision_id": "india-20261108-the-adventure-of-the-priory-school-reader-cover-successor",
+      "record_sha256": "6ff8b1894a791e351ccfa0e513d6308f5be4977a381fb1145cc59f670b6000a9",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-priory-school/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-priory-school/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-priory-school/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-priory-school/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-priory-school/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-priory-school/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-priory-school/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-priory-school/back-fd592ca099d95aa0.webp"
+      }
+    },
+    "the-adventure-of-the-second-stain": {
+      "decision_id": "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor",
+      "record_sha256": "c316f9a0db2bb93892f707d1142ba647bc053a1d0e849d5fce5726ec4d0f7bab",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-second-stain/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-second-stain/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-second-stain/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-second-stain/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-second-stain/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-second-stain/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-second-stain/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-second-stain/front-a8fee57446567bc7.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-second-stain/back-3054d7edcf03950c.webp"
+      }
+    },
+    "the-adventure-of-the-solitary-cyclist": {
+      "decision_id": "india-20261108-the-adventure-of-the-solitary-cyclist-reader-cover-successor",
+      "record_sha256": "588bb64828e11e48351cd4e923efd6e3c4f69bee5ae063fef05b1cd9ae5f0c65",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-adventure-of-the-solitary-cyclist/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-adventure-of-the-solitary-cyclist/front-fae2603ea9759cdc.webp",
+        "cover_back": "frontend/public/assets/books/the-adventure-of-the-solitary-cyclist/back-542bafcf2ce8c2d2.webp"
+      }
+    },
+    "the-ambitious-guest": {
+      "decision_id": "india-20261108-the-ambitious-guest-reader-cover-successor",
+      "record_sha256": "2716eb61bd215d4651cae22e1bf86fb6373297cc7d55924beea26a5c6b51e032",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-ambitious-guest/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-ambitious-guest/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-ambitious-guest/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-ambitious-guest/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-ambitious-guest/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-ambitious-guest/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-ambitious-guest/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-ambitious-guest/front-9d7f9096be843ec9.webp",
+        "cover_back": "frontend/public/assets/books/the-ambitious-guest/back-672973a9e0ab8b4f.webp"
+      }
+    },
+    "the-bet": {
+      "decision_id": "india-20261108-the-bet-reader-cover-successor",
+      "record_sha256": "02c42af45dffc6f14d39296f6a32aff97da964674b8a7e9f8dca8b760e75915b",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-bet/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-bet/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-bet/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-bet/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-bet/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-bet/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-bet/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-bet/front-4b7127da76e3fe28.webp",
+        "cover_back": "frontend/public/assets/books/the-bet/back-246c507bfccf36d6.webp"
+      }
+    },
+    "the-celebrated-jumping-frog-of-calaveras-county": {
+      "decision_id": "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor",
+      "record_sha256": "331dc9b8bdcadf79f0eed5af6bdc24cbdf05f19314e3e855c421bc4a079f02f3",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+        "cover_back": "frontend/public/assets/books/the-celebrated-jumping-frog-of-calaveras-county/back-7e617b8ff497a1bf.webp"
+      }
+    },
+    "the-country-of-the-blind": {
+      "decision_id": "india-20261108-the-country-of-the-blind-reader-cover-successor",
+      "record_sha256": "614d9b0e72e97279733c13a296cbc309a30ec8727f5ea1cc931a97b33a8b5328",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-country-of-the-blind/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-country-of-the-blind/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-country-of-the-blind/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-country-of-the-blind/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-country-of-the-blind/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-country-of-the-blind/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-country-of-the-blind/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-country-of-the-blind/front-cb52a12565b29595.webp",
+        "cover_back": "frontend/public/assets/books/the-country-of-the-blind/back-fa92f8093537a66e.webp"
+      }
+    },
+    "the-darling": {
+      "decision_id": "india-20261108-the-darling-reader-cover-successor",
+      "record_sha256": "f8ae66246da0726c98f582376a22346becfd87cc80085b35f704d121a7e895c8",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-darling/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-darling/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-darling/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-darling/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-darling/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-darling/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-darling/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-darling/front-13f20dc26bb559ef.webp",
+        "cover_back": "frontend/public/assets/books/the-darling/back-1215278e5de5b27c.webp"
+      }
+    },
+    "the-door-in-the-wall": {
+      "decision_id": "india-20261108-the-door-in-the-wall-reader-cover-successor",
+      "record_sha256": "4a9274fb308758c166588a428e2916d03de24a983c106b2711c401576eec4eb6",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-door-in-the-wall/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-door-in-the-wall/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-door-in-the-wall/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-door-in-the-wall/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-door-in-the-wall/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-door-in-the-wall/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-door-in-the-wall/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-door-in-the-wall/front-573d4ab0cfea235c.webp",
+        "cover_back": "frontend/public/assets/books/the-door-in-the-wall/back-bfb3be25d2760b01.webp"
+      }
+    },
+    "the-furnished-room": {
+      "decision_id": "india-20261108-the-furnished-room-reader-cover-successor",
+      "record_sha256": "1aa5c784555a352c33e8881149f7639488628b9901865437487ddc528c511193",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-furnished-room/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-furnished-room/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-furnished-room/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-furnished-room/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-furnished-room/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-furnished-room/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-furnished-room/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-furnished-room/front-288a1a717bbd1a00.webp",
+        "cover_back": "frontend/public/assets/books/the-furnished-room/back-c83bd212ef8bb75a.webp"
+      }
+    },
+    "the-imp-of-the-perverse": {
+      "decision_id": "india-20261108-the-imp-of-the-perverse-reader-cover-successor",
+      "record_sha256": "490d49a58ead9dcf8d479b46d47d34452af5f7a7ad92d33cb43e9c828570de10",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-imp-of-the-perverse/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-imp-of-the-perverse/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-imp-of-the-perverse/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-imp-of-the-perverse/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-imp-of-the-perverse/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-imp-of-the-perverse/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-imp-of-the-perverse/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-imp-of-the-perverse/front-71c298d1aebcb814.webp",
+        "cover_back": "frontend/public/assets/books/the-imp-of-the-perverse/back-e44da81d0dffb6d2.webp"
+      }
+    },
+    "the-last-leaf": {
+      "decision_id": "india-20261108-the-last-leaf-reader-cover-successor",
+      "record_sha256": "768a07272309b3581d71b402fcdd05f436241c3b8de76321dfcafc7355d3cfef",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-last-leaf/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-last-leaf/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-last-leaf/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-last-leaf/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-last-leaf/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-last-leaf/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-last-leaf/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-last-leaf/front-d67f4e42bfb0e673.webp",
+        "cover_back": "frontend/public/assets/books/the-last-leaf/back-561de4895cba4890.webp"
+      }
+    },
+    "the-legend-of-sleepy-hollow": {
+      "decision_id": "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor",
+      "record_sha256": "0f463f4caf7d8dab3ea99e6df3f96ac564c29ab61cc7b68378442033c81da8ca",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-legend-of-sleepy-hollow/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-legend-of-sleepy-hollow/front-cc534675f7879d9a.webp",
+        "cover_back": "frontend/public/assets/books/the-legend-of-sleepy-hollow/back-14f5e3951814194e.webp"
+      }
+    },
+    "the-luck-of-roaring-camp": {
+      "decision_id": "india-20261108-the-luck-of-roaring-camp-reader-cover-successor",
+      "record_sha256": "58ea66a50eb8008afd5bd2145309cb7d26f4a3b9c8d574705efb8f1eb5457b94",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-luck-of-roaring-camp/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-luck-of-roaring-camp/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-luck-of-roaring-camp/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-luck-of-roaring-camp/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-luck-of-roaring-camp/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-luck-of-roaring-camp/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-luck-of-roaring-camp/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-luck-of-roaring-camp/front-272a7efbf5f18201.webp",
+        "cover_back": "frontend/public/assets/books/the-luck-of-roaring-camp/back-87fa0161246a85e2.webp"
+      }
+    },
+    "the-man-in-a-case": {
+      "decision_id": "india-20261108-the-man-in-a-case-reader-cover-successor",
+      "record_sha256": "8c6a04322c842c12d4f53ee4ac820e4f3c6fed674f8dd70cb8dcf1d6231f178d",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-man-in-a-case/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-man-in-a-case/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-man-in-a-case/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-man-in-a-case/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-man-in-a-case/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-man-in-a-case/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-man-in-a-case/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+        "cover_back": "frontend/public/assets/books/the-man-in-a-case/back-976bec60c0f18202.webp"
+      }
+    },
+    "the-man-with-the-twisted-lip": {
+      "decision_id": "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor",
+      "record_sha256": "0cb931c15e8f72fe97704039d5ee0652251fce620a50e821cf6d59093b470a21",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-man-with-the-twisted-lip/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-man-with-the-twisted-lip/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-man-with-the-twisted-lip/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-man-with-the-twisted-lip/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-man-with-the-twisted-lip/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-man-with-the-twisted-lip/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-man-with-the-twisted-lip/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
+        "cover_back": "frontend/public/assets/books/the-man-with-the-twisted-lip/back-32c65c80621fd3ed.webp"
+      }
+    },
+    "the-masque-of-the-red-death": {
+      "decision_id": "india-20261108-the-masque-of-the-red-death-reader-cover-successor",
+      "record_sha256": "74da49f4d63db062d42e028413b2848c6b72f3fcfc8e20aeb9cf2a66219ae535",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-masque-of-the-red-death/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-masque-of-the-red-death/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-masque-of-the-red-death/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-masque-of-the-red-death/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-masque-of-the-red-death/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-masque-of-the-red-death/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+        "cover_back": "frontend/public/assets/books/the-masque-of-the-red-death/back-a8ba155eb51310fd.webp"
+      }
+    },
+    "the-ministers-black-veil": {
+      "decision_id": "india-20261108-the-ministers-black-veil-reader-cover-successor",
+      "record_sha256": "f5738f44accf4bb3cf5fbe7d1689bf61d82553779bfd15c41280529181ca9a38",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-ministers-black-veil/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-ministers-black-veil/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-ministers-black-veil/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-ministers-black-veil/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-ministers-black-veil/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-ministers-black-veil/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-ministers-black-veil/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+        "cover_back": "frontend/public/assets/books/the-ministers-black-veil/back-ebeea33d539a5cee.webp"
+      }
+    },
+    "the-murders-in-the-rue-morgue": {
+      "decision_id": "india-20261108-the-murders-in-the-rue-morgue-reader-cover-successor",
+      "record_sha256": "f7fc64150a1d97f0b461f38159d355a9bafca008b01a039e63be94952860696d",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-murders-in-the-rue-morgue/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-murders-in-the-rue-morgue/front-2d1301ab1f0d2df5.webp",
+        "cover_back": "frontend/public/assets/books/the-murders-in-the-rue-morgue/back-d900d27fff3aefb9.webp"
+      }
+    },
+    "the-outcasts-of-poker-flat": {
+      "decision_id": "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor",
+      "record_sha256": "590a6481cfe8d82e53644e17cbb5057723537259a3329fb6991cab2c73a0b1f8",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-outcasts-of-poker-flat/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-outcasts-of-poker-flat/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-outcasts-of-poker-flat/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-outcasts-of-poker-flat/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-outcasts-of-poker-flat/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-outcasts-of-poker-flat/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-outcasts-of-poker-flat/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-outcasts-of-poker-flat/front-67c4eeffd8ecc6d7.webp",
+        "cover_back": "frontend/public/assets/books/the-outcasts-of-poker-flat/back-5626479887b10817.webp"
+      }
+    },
+    "the-purloined-letter": {
+      "decision_id": "india-20261108-the-purloined-letter-reader-cover-successor",
+      "record_sha256": "13aefbc7262c319bd5be014edb999920cc24d8bedf2ff3dad83b2b8bfd255f4c",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-purloined-letter/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-purloined-letter/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-purloined-letter/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-purloined-letter/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-purloined-letter/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-purloined-letter/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-purloined-letter/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+        "cover_back": "frontend/public/assets/books/the-purloined-letter/back-2e65989a50a93642.webp"
+      }
+    },
+    "the-ransom-of-red-chief": {
+      "decision_id": "india-20261108-the-ransom-of-red-chief-reader-cover-successor",
+      "record_sha256": "aa643ac6ba938b3d09eaaaac733cefce66b16bd91d7f8e7fa0e388ccea0a2ff6",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-ransom-of-red-chief/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-ransom-of-red-chief/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-ransom-of-red-chief/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-ransom-of-red-chief/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-ransom-of-red-chief/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-ransom-of-red-chief/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-ransom-of-red-chief/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-ransom-of-red-chief/front-ff9be054869a4304.webp",
+        "cover_back": "frontend/public/assets/books/the-ransom-of-red-chief/back-7b5523dd5d74882a.webp"
+      }
+    },
+    "the-speckled-band": {
+      "decision_id": "india-20261108-the-speckled-band-reader-cover-successor",
+      "record_sha256": "7b3d5853f0c1197be50beec429146622162c6bb8cbbcda3f54d23f47f1a43e69",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-speckled-band/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-speckled-band/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-speckled-band/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-speckled-band/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-speckled-band/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-speckled-band/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-speckled-band/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-speckled-band/front-ec65f86b7e4489ec.webp",
+        "cover_back": "frontend/public/assets/books/the-speckled-band/back-4b0bfea9b80cf94f.webp"
+      }
+    },
+    "the-suicide-club": {
+      "decision_id": "india-20261108-the-suicide-club-reader-cover-successor",
+      "record_sha256": "c65ee9058caf788839323e793c0ef238adda0a0071841f5195e0e0f65d810bd2",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-suicide-club/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-suicide-club/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-suicide-club/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-suicide-club/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-suicide-club/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-suicide-club/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-suicide-club/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+        "cover_back": "frontend/public/assets/books/the-suicide-club/back-0ec4b741a41ccc6e.webp"
+      }
+    },
+    "the-yellow-wallpaper": {
+      "decision_id": "india-20261108-the-yellow-wallpaper-reader-cover-successor",
+      "record_sha256": "54ee72f16d4201c7f8c3c64edd0e72b941c37e64f76ca91aee7ff30ea311ef98",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/the-yellow-wallpaper/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-yellow-wallpaper/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-yellow-wallpaper/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-yellow-wallpaper/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-yellow-wallpaper/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-yellow-wallpaper/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-yellow-wallpaper/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/the-yellow-wallpaper/front-63786ee3a5498a94.webp",
+        "cover_back": "frontend/public/assets/books/the-yellow-wallpaper/back-dbd1eca0b3cdf501.webp"
+      }
+    },
+    "to-build-a-fire": {
+      "decision_id": "india-20261108-to-build-a-fire-reader-cover-successor",
+      "record_sha256": "01ee551663eda51a96263e37cac90f0b769079e18d766bff633241ec22982bed",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/to-build-a-fire/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/to-build-a-fire/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/to-build-a-fire/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/to-build-a-fire/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/to-build-a-fire/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/to-build-a-fire/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/to-build-a-fire/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+        "cover_back": "frontend/public/assets/books/to-build-a-fire/back-ddfe01a2636f9460.webp"
+      }
+    },
+    "tobermory": {
+      "decision_id": "india-20261108-tobermory-reader-cover-successor",
+      "record_sha256": "2088e7ccdc649952c50b49d91be905ef435986ee12b13c1e60b92607a40229ed",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/tobermory/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/tobermory/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/tobermory/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/tobermory/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/tobermory/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/tobermory/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/tobermory/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/tobermory/front-b6d42ca7af192650.webp",
+        "cover_back": "frontend/public/assets/books/tobermory/back-6a49e1065f67319f.webp"
+      }
+    },
+    "ward-no-6": {
+      "decision_id": "india-20261108-ward-no-6-reader-cover-successor",
+      "record_sha256": "dce37ffd9574d4f3debe0004e196165837e144e36910a017251c52c50966119d",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/ward-no-6/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/ward-no-6/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/ward-no-6/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/ward-no-6/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/ward-no-6/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/ward-no-6/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/ward-no-6/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/ward-no-6/front-5862902bbb623c27.webp",
+        "cover_back": "frontend/public/assets/books/ward-no-6/back-b1ad56e66ae90460.webp"
+      }
+    },
+    "white-fang": {
+      "decision_id": "india-20261108-white-fang-reader-cover-successor",
+      "record_sha256": "1e061d67e153541fe07beb9c9035c71cdb02c5948e50ea7dd4afa63bc47ea761",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/white-fang/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/white-fang/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/white-fang/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/white-fang/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/white-fang/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/white-fang/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/white-fang/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/white-fang/front-16796561b18eee8f.webp",
+        "cover_back": "frontend/public/assets/books/white-fang/back-248615aa239bbbe4.webp"
+      }
+    },
+    "young-goodman-brown": {
+      "decision_id": "india-20261108-young-goodman-brown-reader-cover-successor",
+      "record_sha256": "632b7c6b47791cdb522abc432a37993ae984059807486c23d26d1258570ad530",
+      "component_paths": {
+        "public_book": "backend/data/controlled_publications/young-goodman-brown/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/young-goodman-brown/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/young-goodman-brown/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/young-goodman-brown/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/young-goodman-brown/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/young-goodman-brown/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/young-goodman-brown/cover_provenance.json",
+        "cover_front": "frontend/public/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+        "cover_back": "frontend/public/assets/books/young-goodman-brown/back-265bde7a197be5b9.webp"
+      }
+    }
+  },
+  "reviewed_authority_sha256": {
+    "data/controlled_launch.json": "00b4f40e82a71d0eb702d3b60dae9b10be4cbd2f0b8623ee921e9b9a48b63202",
+    "backend/data/controlled_launch.json": "00b4f40e82a71d0eb702d3b60dae9b10be4cbd2f0b8623ee921e9b9a48b63202",
+    "data/catalog_exclusions.json": "07165f60d9223b5cc5e2280fdea38b8ea07fe9a78a8655704e23729c0d24e816",
+    "backend/data/catalog_exclusions.json": "07165f60d9223b5cc5e2280fdea38b8ea07fe9a78a8655704e23729c0d24e816",
+    "backend/data/rights_decision_registry.json": "c9c28756d6ccbd2361e081270db7a74d839a77df81ae2de7a90faf2f3be21b08"
+  },
+  "preserved_prior_backend_source_evidence": {
+    "backend/data/controlled_publications/the-country-of-the-blind/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/the-country-of-the-blind/source_evidence.json",
+      "sha256": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69"
+    },
+    "backend/data/controlled_publications/the-last-leaf/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/the-last-leaf/source_evidence.json",
+      "sha256": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
+    },
+    "backend/data/controlled_publications/the-masque-of-the-red-death/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/the-masque-of-the-red-death/source_evidence.json",
+      "sha256": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
+    },
+    "backend/data/controlled_publications/the-yellow-wallpaper/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/the-yellow-wallpaper/source_evidence.json",
+      "sha256": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+    },
+    "backend/data/controlled_publications/tobermory/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/tobermory/source_evidence.json",
+      "sha256": "dcf59588ae20ba6ec5d89616fbf5ecc111d3bfab5d7eaef6b94dc23aff1b9948"
+    },
+    "backend/data/controlled_publications/white-fang/source_evidence.json": {
+      "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/prior-backend-source-evidence/white-fang/source_evidence.json",
+      "sha256": "fbd4b4c019708f7cce62844b774445b66676eed4270810946e175c0b86a22904"
+    }
+  }
+}

@@ -62,7 +62,7 @@ node frontend/scripts/native-replacement-presentation.test.mjs
 node --test frontend/scripts/audio-only-retirement.test.mjs
 
 echo "==> Preserved Reader source validation and dummy signup race"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py backend/tests/test_persisted45_reader_release.py
 
 echo "==> Isolated owner-accepted US rights intake (no activation)"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_us_rights_intake.py scripts/test_owner_us_catalogue_intake.py
@@ -153,7 +153,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
   scripts.test_process_full_catalogue \
-  scripts.test_catalogue_clearance_registry_successor
+  scripts.test_catalogue_clearance_registry_successor \
+  scripts.test_persisted45_reader_successor
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
 node scripts/test_regression_asset_isolation.cjs

@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-young-goodman-brown-pg512-noncover-text",
+  "edition_id": "young-goodman-brown",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+    "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+    "approval_evidence": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8",
+    "checksum_manifest": "2de2b44d4370aa576952dea381bb3ed0143b8d6ad0f9c9a91d755f5f43e9f4c3",
+    "publication_manifest": "3adae489b09a8e58a33989eaea4e68e49a3e7a896b3a26ccbf97abbb6d1c09d0"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1864, verified lifetime collection publication 1846 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

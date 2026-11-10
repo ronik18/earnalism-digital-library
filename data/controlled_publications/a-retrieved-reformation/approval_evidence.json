@@ -1,14 +1,14 @@
 {
   "slug": "a-retrieved-reformation",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
   "content_hash": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
   "provenance_hash": "7eb7426b50215956ca18227be3ff1bf76477e43c531765623ed3277fb2b8d400",
-  "verified_at": "2026-10-01T21:48:17.188009+00:00"
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c"
 }

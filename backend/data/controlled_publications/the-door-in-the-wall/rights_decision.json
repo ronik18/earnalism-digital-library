@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-door-in-the-wall-reader-cover-successor",
+  "edition_id": "the-door-in-the-wall",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6",
+    "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
+    "approval_evidence": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb",
+    "checksum_manifest": "8ecd211a9a8db86e8aafc8cd540fedb3ec9920b35f08cf6339f69764d7b3aae4",
+    "publication_manifest": "3bf0ee4e784e2915c8749e14e6d3a73199f8f6b90b0b59bf93630a88c5643f29",
+    "cover_provenance": "efbcae6afbf6c00657fbd8eafa7a96a2f588e824d2c34a7d58ab8ea34c579431",
+    "cover_front": "573d4ab0cfea235c441045293c4ab4e28be4ba50cc60e20e0301b164aaa36767",
+    "cover_back": "bfb3be25d2760b0167dbf1ad9a80a22e36d37ec976ccb5b38c5583b771b37627"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-door-in-the-wall-pg11870-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+    "2a67aa526dfbfb3cb7eba905397d2a3c30876b5b53594c66b0efc1249a38df0f",
+    "efbcae6afbf6c00657fbd8eafa7a96a2f588e824d2c34a7d58ab8ea34c579431"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

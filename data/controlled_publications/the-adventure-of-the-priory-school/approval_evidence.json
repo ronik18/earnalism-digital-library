@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-priory-school",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
   "content_hash": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
   "provenance_hash": "d675e3a1f221a44f48a2f6da85a2185142386928a52b31f19846066a4e78f30b",
-  "verified_at": "2026-10-01T21:48:17.188009+00:00"
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "b6c2a373a40ce3f1434406d02d78978e2babea85d1811288cbe112bb95c0e435"
 }

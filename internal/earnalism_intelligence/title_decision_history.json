@@ -15131,5 +15131,26 @@
       "evidence": "/tmp/earnalism-webview-reader-native-20261109",
       "next_exact_command": "gh pr checks <new-pr-number>"
     }
+  ],
+  "persisted45_release_events": [
+    {
+      "date": "2026-11-10",
+      "event": "PERSISTED45_READER_RELEASE_AND_RIGHTS_HELD_REMOVAL_PREPARED",
+      "source_base": "2f3615a1213aa60e30e8a24593cf874adcc454c3",
+      "lane": "codex/main-approved-integration",
+      "scope": "45 India Reader-only releases, three explicitly removed rights-held editions",
+      "production_refresh": "45/45 full-text matched, 0 public; public catalogue 52",
+      "candidate": "45 reviewed cover pairs reused by exact hashes; complete text unchanged; exact rights bindings pass",
+      "removed_source_files": 290,
+      "removed_slugs": [
+        "gitanjali",
+        "nishkriti",
+        "the-metamorphosis"
+      ],
+      "production_published": 0,
+      "production_deleted": 0,
+      "state": "PREPARED_NOT_DEPLOYED",
+      "next_exact_command": "python3 -m unittest scripts.test_catalogue_clearance_registry_successor scripts.test_reconcile_english_source_evidence scripts.test_reconcile_bengali_source_evidence"
+    }
   ]
 }

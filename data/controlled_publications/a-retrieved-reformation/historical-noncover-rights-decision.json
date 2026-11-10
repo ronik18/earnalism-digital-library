@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-a-retrieved-reformation-pg1646-noncover-text",
+  "edition_id": "a-retrieved-reformation",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
+    "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+    "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
+    "approval_evidence": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936",
+    "checksum_manifest": "569f0fee2f787d8aa3852b50893edd3731d39bad246ef2255be070abbd9f5f96",
+    "publication_manifest": "e9f187cc607982d0b690d5c9716dca2369d278f23fa1f32d8996447187f28336"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1909 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "df3821df7d9326c2125d1a40cd2421e56bdeff8f374797ba445b13abfb46b0b7",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
+    "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

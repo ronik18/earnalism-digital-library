@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "Holmes solves a murder — then convenes a one-man jury and acquits the killer.",
   "description": "Sir Eustace Brackenstall is killed — supposedly by burglars. Holmes unravels the truth, identifies the real killer, and decides the man deserves to go free. He appoints Watson his jury, delivers the verdict himself, and lets justice stand aside for the first time.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/back-8312638414f30dd5.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/back-8312638414f30dd5.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-abbey-grange",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585610/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585613/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585610/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585613/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "1d66e328758a4e7f4d6a54f0b07ac8742229af40cdc8ef73a3e5b4d445e1ebbe",
+  "back_cover_sha256": "8312638414f30dd56e87b3cce9a4ff8eb7670bfc98a52600234d0e3d0fd71eca"
 }

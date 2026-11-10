@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-dancing-men",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "310d6a6218ecefdba5bb7d7f3791bb5d6ac66bf19ee1e23406248c301ea429a2",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
+      "sha256": "0554ac8b881f1ad745ac3f86188714702e56ffa308b43be64c504c5b3916ba64",
+      "bytes": 83782,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-dancing-men/back-e2832bbb1a7c04d3.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/back-e2832bbb1a7c04d3.webp",
+      "sha256": "e2832bbb1a7c04d32d3a70db02dd5e1c4197d6307b7bf9f596815758ec0dacda",
+      "bytes": 32618,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}
