@@ -1,6 +1,6 @@
 {
   "schema": "earnalism.editorial-contract.v1",
-  "owner_decisions_as_of": "2026-10-30",
+  "owner_decisions_as_of": "2026-11-10",
   "defaults": {
     "language": "English",
     "duration_seconds": 90,
@@ -55,7 +55,16 @@
       "width": 2400,
       "height": 720
     },
-    "watermark": "Static exact website-header full lockup: emblem and all intrinsic lettering, original aspect ratio and source pixels. Reserve a destination-safe brand region separate from headings, mechanism and captions; no added tagline. Existing published media and approved end ident remain unchanged.",
+    "watermark": "Complete exact website-header lockup: emblem and all intrinsic lettering, original asset and aspect ratio, with subtle source-composition blur. Anchor at the furthest top-right point inside the destination review-safe rectangle, including the blur halo; reflow occupied regions explicitly. No added tagline. Covers, existing published media and approved end ident remain unchanged.",
+    "watermark_style": {
+      "anchor": "top-right-destination-safe",
+      "blur_px_at_1080p": 0.45,
+      "blur_support_sigma": 3,
+      "full_lockup": true,
+      "video_only": true,
+      "covers_unchanged": true,
+      "end_ident_unchanged": true
+    },
     "repeated_header": false,
     "persistent_source_footer": false,
     "source_credit": "Below player and in references/metadata; brief essential diagram qualification remains",
@@ -63,18 +72,38 @@
       "enabled": true,
       "version": "earnalism-flowing-paired-v1",
       "seconds": 3,
-      "placement": "end"
+      "placement": "end",
+      "preserve_approved_video_frames": true,
+      "preserve_approved_own_audio_samples": true,
+      "body_music_bleed": false,
+      "duration_frames_30fps": 90,
+      "audio_samples_48khz": 144000
     }
   },
   "music": {
     "moon_palette": "acoustic_editorial_v12",
+    "legacy_palette_scope": "historical-candidate-bindings-only-not-future-treatment",
+    "future_profile": {
+      "id": "continuous_open_instrumental_v1",
+      "instrumental": true,
+      "commercially_cleared_open_license": true,
+      "coverage": "main-video-start-through-main-video-end",
+      "intentional_silent_body_sections": false,
+      "boundary_fades": "gentle-boundary-only",
+      "mood": "calm-focus-relaxation",
+      "efficacy_claims": false,
+      "narrator_clear": true,
+      "narration_waveform_unchanged": true,
+      "body_music_bleed_into_end_ident": false,
+      "qualified_by_configuration_alone": false
+    },
     "other_topics": "Create and review a topic-appropriate rights-cleared score; do not relabel Moon arrangements",
-    "direction": "Restrained recurring motif, acoustic texture, intentional silence, source-event orchestration, smooth phrase curves; narration leads",
+    "direction": "Continuous topic-appropriate open-license instrumental bed from the first through final main-video frame, with gentle boundary fades only; calm focus/relaxation mood without efficacy claims. Clear unchanged narration leads; append the exact approved three-second END with its own sound and no body-music bleed.",
     "must_pass": [
       "asset/provenance hashes",
       "post-duck individual passages",
-      "silence preservation",
-      "transition/re-entry",
+      "continuous main-body coverage and gentle boundary fades",
+      "exact approved END video and own audio; no body-music bleed",
       "peaks/decode",
       "scored-versus-dry human listening"
     ],

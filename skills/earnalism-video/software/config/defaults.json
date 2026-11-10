@@ -26,6 +26,21 @@
     "third_party_assets": true,
     "bed_gain_db": 9,
     "palette": "acoustic_editorial_v12",
+    "legacy_palette_scope": "historical-candidate-bindings-only-not-future-treatment",
+    "future_profile": {
+      "id": "continuous_open_instrumental_v1",
+      "instrumental": true,
+      "commercially_cleared_open_license": true,
+      "coverage": "main-video-start-through-main-video-end",
+      "intentional_silent_body_sections": false,
+      "boundary_fades": "gentle-boundary-only",
+      "mood": "calm-focus-relaxation",
+      "efficacy_claims": false,
+      "narrator_clear": true,
+      "narration_waveform_unchanged": true,
+      "body_music_bleed_into_end_ident": false,
+      "qualified_by_configuration_alone": false
+    },
     "licensed_instrument_samples": "VCSL CC0 piano/harp, pinned asset manifest",
     "listening_review": "pending; no publication approval",
     "post_ducking_median_gap_db": [
@@ -41,7 +56,12 @@
     "seconds": 3,
     "asset_root": "assets/standard-intro/v1",
     "caption_offset_seconds": 0,
-    "placement": "end"
+    "placement": "end",
+    "preserve_approved_video_frames": true,
+    "preserve_approved_own_audio_samples": true,
+    "body_music_bleed": false,
+    "duration_frames_30fps": 90,
+    "audio_samples_48khz": 144000
   },
   "pronunciation": {
     "Earnalism": {

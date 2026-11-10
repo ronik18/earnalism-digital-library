@@ -119,6 +119,8 @@ def mix_score(folder,gain_db=12):
 
 def assemble(folder):
  folder=pathlib.Path(folder).resolve();ep=load(folder/'episode.json');scenes=[];cues=[];offset=0;audio=[];asr_reviews=[];pace_reports=[];speech_intervals=[]
+ from future_music_policy import require_supported_assembly_music
+ require_supported_assembly_music(ep,load(BASE/'config/defaults.json'))
  for s in ep['scenes']:
   wav=folder/'raw'/(s['id']+'.wav')
   from audio_derivation import check_unit
