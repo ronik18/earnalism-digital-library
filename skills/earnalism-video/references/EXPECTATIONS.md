@@ -1,3 +1,5 @@
+Owner refinement — 10 November 2026: video-body logo and text use the original transparent PNG with no solid, feathered or translucent rectangular backing. Preserve the complete lockup, its subtle blur and destination-safe top-right anchor. Reserve its full halo separately from every heading, label, diagram and moving subject throughout the timeline; pass actual occupied regions to the shared validator and reflow content on collision. Include focus outlines, glows, arrows and transition sweeps in those occupied bounds; check their maximum extent, not only the initial frame. Transparency alone never resolves overlap. Check representative transitions and both final compositions at phone size. Covers and the approved END clip/sound keep their separately approved treatment. Preserve audio and prior candidates; keep revised exports private pending final approval.
+
 > Release policy: [GO_LIVE.md](GO_LIVE.md) governs. Research, variant and growth tasks are optional; one final candidate decision covers primary checks. Older wording does not add approval steps.
 
 # Owner expectations: current generation contract
