@@ -15204,5 +15204,18 @@
     "fixture_sha256": "3501266193923e3cc87d7d4726423fb173ce1b99dfa354e96f46c2af4a7020e4",
     "validation": "All 45 backend Reader manifests match original cleared root manifests byte for byte; 15 chapter-index tests pass. Current total 138 active source packages, 749 ordered chapters; this is source inventory, not public count.",
     "publication": "PENDING_EXACT_HEAD_CI_DEPLOYMENT_AND_ACCEPTANCE"
+  },
+  "held3_primary_gitanjali_cleanup_20261110": {
+    "timestamp": "2026-11-10T05:38:05.051914+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Complete explicit browser-confirmed removal of newly discovered Gitanjali primary-bucket staging objects",
+    "removed_objects": 19,
+    "size_ui": "150.8 MB",
+    "owner_action_time_confirmation": "Delete these 19 held-edition files",
+    "preflight": "Exact content-addressed manifest, held-edition metadata, and zero references from every surviving book verified",
+    "verification": "Browser staging folder absent and all 19 exact public URLs independently return 404",
+    "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/primary-gitanjali-cleanup-result.json",
+    "scope_limit": "API listing remains denied; no forensic claim for unknown opaque or historical copies. No credentials, permissions, other editions or customer/financial records changed.",
+    "production_release": "45 titles still pending exact-head CI and deployment"
   }
 }
