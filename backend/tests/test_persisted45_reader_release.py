@@ -7,6 +7,7 @@ from backend.rights_decision_gate import record_sha256
 from scripts.catalogue_clearance_release_bindings import (
     TEXT_USES, assert_current_reviewed_release, assert_reviewed_authority,
 )
+from scripts.verify_catalogue_clearance_batch import owner_removed_package_valid
 
 ROOT = Path(__file__).resolve().parents[2]
 ARCHIVE = ROOT / 'internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108'
@@ -53,6 +54,8 @@ def test_removed_editions_have_no_active_payloads_and_cannot_be_reexposed():
     for row in receipt['source_files']:
         assert not (ROOT / row['path']).exists()
     for slug in REMOVED:
+        assert owner_removed_package_valid(ROOT, slug, set())
+        assert not owner_removed_package_valid(ROOT, slug, {slug})
         assert policy['titles'][slug]['reader_excluded'] is True
         assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
         spoofed = {'slug': slug, 'id': slug, 'is_published': True,
@@ -60,3 +63,4 @@ def test_removed_editions_have_no_active_payloads_and_cannot_be_reexposed():
         assert not catalog_truth.is_live_approved_book(spoofed)
         assert not catalog_truth.can_expose_reader(spoofed)
         assert not catalog_truth.can_expose_audio(spoofed)
+    assert not owner_removed_package_valid(ROOT, 'arbitrary-missing-package', set())
