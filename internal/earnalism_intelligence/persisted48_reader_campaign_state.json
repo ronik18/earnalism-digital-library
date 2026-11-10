@@ -1827,5 +1827,16 @@
     "customer_financial_records": 0
   },
   "cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cleanup-result.json",
-  "production_acceptance_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/release-verification.json"
+  "production_acceptance_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/release-verification.json",
+  "library_source_baseline": {
+    "timestamp": "2026-11-10T05:14:07.141752+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Add exact Library source successor after CI correctly rejected stale 52-title fingerprint",
+    "source_snapshot": "eb4b4bdb1492991f343a5f0f0bea1d60633d5e9d",
+    "baseline": "docs/design-system/persisted45-library-interaction-baseline-20261110.json",
+    "authorized_surface_sha256": "5344bec46d323f3f9dcc465523ab2f89f4eda7ec7c468bae72cf3beaf361a60e",
+    "evidence": "Six API/fallback Library viewport scenarios and 26 focused frontend tests pass; all 14 source input mutations are rejected. Historical baseline remains preserved.",
+    "production_publication": "NOT_YET_DEPLOYED_OR_ACTIVATED",
+    "next_action": "Complete all exact-head CI, merge and deploy only merged main, then verify immutable pages and real customer readability."
+  }
 }

@@ -21,6 +21,7 @@ import {
   HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE,
   LIBRARY_QUALITY_INTERACTION_BASELINE,
   LIBRARY_TIMEOUT_INTERACTION_BASELINE,
+  PERSISTED45_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -271,12 +272,23 @@ test("Library quality source matches its explicit successor and rejects each inp
 
 test("Library timeout successor binds exact source and rejects each input mutation", () => {
   const baseline = loadLibraryInteractionBaseline(root, LIBRARY_TIMEOUT_INTERACTION_BASELINE);
-  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.equal(compareLibraryInteractionBaseline(materializeReviewedSurface(LIBRARY_TIMEOUT_INTERACTION_BASELINE), LIBRARY_TIMEOUT_INTERACTION_BASELINE).result, "PASS");
   assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/pages/Library.jsx"]);
   for (const input of baseline.input_paths) {
     const temporary = materializeReviewedSurface(LIBRARY_TIMEOUT_INTERACTION_BASELINE);
     fs.appendFileSync(path.join(temporary,input), "\nunauthorized mutation\n");
-    assert.equal(compareLibraryInteractionBaseline(temporary).result,"FAIL");
+    assert.equal(compareLibraryInteractionBaseline(temporary, LIBRARY_TIMEOUT_INTERACTION_BASELINE).result,"FAIL");
+  }
+});
+test("45-title successor binds exact additions and rejects every input mutation", () => {
+  const baseline = loadLibraryInteractionBaseline(root, PERSISTED45_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/lib/controlledLaunch.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/components/LibraryBrowseShelf.jsx"]);
+  assert.equal(compareLibraryInteractionBaseline(root, LIBRARY_TIMEOUT_INTERACTION_BASELINE).result, "FAIL");
+  for (const input of baseline.input_paths) {
+    const temporary = materializeReviewedSurface(PERSISTED45_LIBRARY_INTERACTION_BASELINE);
+    fs.appendFileSync(path.join(temporary, input), "\nunauthorized mutation\n");
+    assert.equal(compareLibraryInteractionBaseline(temporary).result, "FAIL");
   }
 });
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
