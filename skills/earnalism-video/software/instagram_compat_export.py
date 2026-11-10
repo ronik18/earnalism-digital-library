@@ -2,8 +2,19 @@
 """Private Instagram derivative for reproduced 1080p Android preview tearing.
 Keeps AAC packets; verifies original decoded PCM, content-frame count and A/V shift.
 """
-import argparse,hashlib,json,subprocess
+import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
+
+def validate_report_path(report,*media):
+ report=Path(report)
+ # Include not-yet-created case aliases on case-insensitive filesystems.
+ if any(str(report.resolve()).casefold()==str(Path(path).resolve()).casefold() for path in media):
+  raise ValueError('Report must not alias a source or derivative media path')
+ if report.exists() or report.is_symlink():
+  raise ValueError('Existing report or report symlink is preserved; choose a new path')
+ if not report.parent.is_dir():
+  raise ValueError('Report parent directory must already exist')
+ return report
 
 def run(cmd):return subprocess.check_output(cmd)
 def probe(p):return json.loads(run(['ffprobe','-v','error','-show_streams','-of','json',str(p)]))['streams']
@@ -27,8 +38,17 @@ def export(source,target):
  packet_ok=payload(source)==payload(target)
  good=pcm_ok and packet_ok and len(af)==len(bf) and av_error is not None and av_error<0.001
  return {'state':'TECHNICALLY_VERIFIED_PRIVATE_NATIVE_REVIEW_REQUIRED' if good else 'HOLD','source':str(source),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'file':str(target),'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'dimensions':[720,1280],'audio_packet_payload_identical':packet_ok,'original_decoded_pcm_identical_after_priming':pcm_ok,'priming_samples':offset//stride if pcm_ok else None,'source_frames':len(af),'candidate_frames':len(bf),'maximum_relative_av_shift_seconds':av_error,'private':True,'native_preview':'PENDING exact-file review','publication_authority':False,'note':'First video frame holds through AAC priming; later content and burned captions share that shift. No narration/score edits or audio re-encoding. Retain 1080p master. Not a universal device fix.'}
+def main(argv=None):
+ p=argparse.ArgumentParser();p.add_argument('source',type=Path);p.add_argument('target',type=Path);p.add_argument('--report',required=True,type=Path);args=p.parse_args(argv)
+ try:
+  report=validate_report_path(args.report,args.source,args.target)
+  with report.open('x',encoding='utf-8') as output:
+   try:r=export(args.source,args.target)
+   except (OSError,ValueError,StopIteration,subprocess.SubprocessError) as e:r={'state':'HOLD','error':str(e),'private':True}
+   output.write(json.dumps(r,indent=2)+'\n')
+ except (OSError,ValueError) as e:
+  print('Report path refused: '+str(e),file=sys.stderr);return 2
+ print(r['state']);return 0 if r['state'].startswith('TECHNICALLY') else 2
+
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('source',type=Path);p.add_argument('target',type=Path);p.add_argument('--report',required=True,type=Path);args=p.parse_args()
- try:r=export(args.source,args.target)
- except (ValueError,StopIteration,subprocess.SubprocessError) as e:r={'state':'HOLD','error':str(e),'private':True}
- args.report.write_text(json.dumps(r,indent=2)+'\n');print(r['state']);raise SystemExit(0 if r['state'].startswith('TECHNICALLY') else 2)
+ raise SystemExit(main())
