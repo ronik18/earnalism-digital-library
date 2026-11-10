@@ -11,6 +11,11 @@
   overflow: visible;
 }
 
+.earnalism-brand-lockup picture {
+  display: block;
+  width: 100%;
+}
+
 .earnalism-brand-lockup img {
   display: block;
   width: auto;

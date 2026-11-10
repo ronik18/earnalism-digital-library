@@ -1,0 +1,27 @@
+{
+  "instruction": "Use a dedicated branch; update and overwrite the front and back covers of The Selfish Giant reader book and audiobook to make the little kid a boy to match the story.",
+  "scope": "Replacement cover display only; no text, audio, territory, access, price or rights-use expansion.",
+  "artwork": "Built-in image editing of the owner-directed existing pair. Original title, author, synopsis and publisher raster typography deterministically retained.",
+  "review": "Model visual inspection of exact web pair; not a human score.",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+      "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+      "sha256": "ce6c565f8c82e1bdb14bac8f7ef32d96ee3a06ee48f8b95cb198500bf6a5510f",
+      "width": 800,
+      "height": 1200,
+      "bytes": 130950,
+      "format": "WEBP"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
+      "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
+      "sha256": "4681c18dfd478c203ac0660915ce7f3240affe806fe18d89ab374b17bb5a3522",
+      "width": 800,
+      "height": 1200,
+      "bytes": 103666,
+      "format": "WEBP"
+    }
+  },
+  "source_passage": "but the boy was too tiny."
+}
