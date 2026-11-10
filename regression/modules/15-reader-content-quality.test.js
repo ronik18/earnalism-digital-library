@@ -342,7 +342,7 @@ describe("Reader content quality batch 1", () => {
       const publicBook = readJson(`${folder}/public_book.json`);
       expect(decision.decision_id).toBe(slug === "the-open-window"
         ? "india-20261102-the-open-window-scored-private-stage"
-        : slug === "the-selfish-giant" ? "india-20261102-the-selfish-giant-cedar-private-stage"
+        : slug === "the-selfish-giant" ? "india-20261111-the-selfish-giant-boy-cover-rebind"
         : slug === "sredni-vashtar" ? "india-20261103-sredni-vashtar-exact-sourceqa-private-stage"
         : `india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
       expect(decision.territories).toEqual(["IN"]);
