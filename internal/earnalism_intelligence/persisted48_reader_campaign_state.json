@@ -1838,5 +1838,14 @@
     "evidence": "Six API/fallback Library viewport scenarios and 26 focused frontend tests pass; all 14 source input mutations are rejected. Historical baseline remains preserved.",
     "production_publication": "NOT_YET_DEPLOYED_OR_ACTIVATED",
     "next_action": "Complete all exact-head CI, merge and deploy only merged main, then verify immutable pages and real customer readability."
+  },
+  "chapter_inventory_successor": {
+    "timestamp": "2026-11-10T05:31:38.036128+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Extend chapter-index engineering inventory from exact independent predecessor, preserving frozen historical fixture",
+    "source_sha": "2f3615a1213aa60e30e8a24593cf874adcc454c3",
+    "fixture_sha256": "3501266193923e3cc87d7d4726423fb173ce1b99dfa354e96f46c2af4a7020e4",
+    "validation": "All 45 backend Reader manifests match original cleared root manifests byte for byte; 15 chapter-index tests pass. Current total 138 active source packages, 749 ordered chapters; this is source inventory, not public count.",
+    "publication": "PENDING_EXACT_HEAD_CI_DEPLOYMENT_AND_ACCEPTANCE"
   }
 }
