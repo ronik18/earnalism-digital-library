@@ -115,7 +115,8 @@ jobs:
             b4bc7585a87b7546db3270f3bfd63bd436e8585a \
             f5706d328e08ab330f65f604f51df322b65646f1 \
             c980ff2da048db7a164648f06f707440b2a8124c \
-            15b157e5555b67ede6fd649fb9057d314c36bf3c; do
+            15b157e5555b67ede6fd649fb9057d314c36bf3c \
+            2f3615a1213aa60e30e8a24593cf874adcc454c3; do
             bindings+=("$source_pin:backend/data/rights_decision_registry.json")
             bindings+=("$source_pin:internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json")
           done
@@ -291,6 +292,22 @@ jobs:
             while IFS= read -r -d '' source_path; do
               bindings+=("$reader_source_pin:$source_path")
             done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$reader_source_pin" -- backend .gitignore .gitattributes internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json internal/legal/reader612_recovery_source.json)
+          fi
+          # Exact manuscripts/removal inventory consumed by the 45-title successor tests.
+          reader45_pin=2f3615a1213aa60e30e8a24593cf874adcc454c3
+          reader45_receipt=internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/successor.json
+          removed_manifest=internal/legal/catalogue_clearance_20261002/removed_titles_20261110/removal-manifest.json
+          if [[ -f "$reader45_receipt" ]]; then
+            [[ "$(jq -er .parent_source_head "$reader45_receipt")" == "$reader45_pin" ]] || exit 1
+            while IFS= read -r source_path; do bindings+=("$reader45_pin:$source_path"); done < <(jq -r '.preserved_predecessor_files | keys[]' "$reader45_receipt")
+            while IFS= read -r slug; do
+              [[ "$slug" =~ ^[a-z0-9-]+$ ]] || exit 1
+              while IFS= read -r -d '' source_path; do bindings+=("$reader45_pin:$source_path"); done < <(git -c remote.origin.promisor=false ls-tree -rz --name-only "$reader45_pin" -- "data/controlled_publications/$slug/chapters" "data/controlled_publications/$slug/rights_decision.json")
+            done < <(jq -r '.slugs[]' "$reader45_receipt")
+          fi
+          if [[ -f "$removed_manifest" ]]; then
+            [[ "$(jq -er .source_sha "$removed_manifest")" == "$reader45_pin" ]] || exit 1
+            while IFS= read -r source_path; do bindings+=("$reader45_pin:$source_path"); done < <(jq -r '.source_files[].path' "$removed_manifest")
           fi
           printf 'RETAINED_HYDRATION_DISCOVERY_START bindings=%s\n' "${#bindings[@]}"
           missing_blobs=()
