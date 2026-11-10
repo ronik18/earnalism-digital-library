@@ -23,6 +23,17 @@ class ReaderSuccessorTests(unittest.TestCase):
         self.slugs = set(self.receipt['slugs'])
         self.assertEqual(len(self.slugs), 45)
         self.assertFalse(self.slugs & HELD)
+        self.cover = None
+        if 'selfish_giant_boy_cover_successor_20261111' in self.baseline:
+            from scripts.test_catalogue_clearance_registry_successor import cover_successor
+            self.cover = cover_successor(self.baseline)
+    def cohort_state(self, path):
+        if self.cover:
+            row = self.cover['preserved_predecessor_files'].get(path)
+            if row:
+                self.assertEqual(sha(row['path']), row['sha256'])
+                return read(row['path'])
+        return read(path)
     def prior(self, path):
         entry = self.receipt['preserved_predecessor_files'][path]
         self.assertEqual(sha(entry['path']), entry['sha256'])
@@ -31,7 +42,7 @@ class ReaderSuccessorTests(unittest.TestCase):
         return read(entry['path'])
     def test_registry_addition_is_exact_and_audio_permissions_are_unchanged(self):
         prior = self.prior(REGISTRY)
-        current = read(REGISTRY)
+        current = self.cohort_state(REGISTRY)
         added = self.receipt['added_accepted_records']
         self.assertEqual(len(added), 45)
         self.assertFalse(set(added) & set(prior['accepted_records']))
@@ -40,10 +51,11 @@ class ReaderSuccessorTests(unittest.TestCase):
         self.assertEqual(current, expected)
     def test_previous_titles_and_launch_controls_are_preserved(self):
         previous = self.prior(REVIEWED_AUTHORITY)
+        cohort = self.cohort_state(REVIEWED_AUTHORITY)
         self.assertEqual(len(previous['titles']), 52)
         self.assertEqual(set(self.baseline['titles']) - set(previous['titles']), self.slugs)
         for slug, binding in previous['titles'].items():
-            self.assertEqual(self.baseline['titles'][slug], binding)
+            self.assertEqual(cohort['titles'][slug], binding)
         for path in ['data/controlled_launch.json', 'backend/data/controlled_launch.json']:
             old = self.prior(path)
             expected = copy.deepcopy(old)
@@ -86,7 +98,7 @@ class ReaderSuccessorTests(unittest.TestCase):
             self.assertTrue(read('data/catalog_exclusions.json')['titles'][slug]['reader_excluded'])
     def test_bootstrap_adds_only_exact_titles_and_preserves_existing_rows(self):
         path = 'backend/data/approved_reader_bootstrap.json'
-        old = self.prior(path);current = read(path)
+        old = self.prior(path);current = self.cohort_state(path)
         self.assertEqual(current['titles'][:len(old['titles'])],old['titles'])
         added = current['titles'][len(old['titles']):]
         self.assertEqual({r['slug'] for r in added},self.slugs)
