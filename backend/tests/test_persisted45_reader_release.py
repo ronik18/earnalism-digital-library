@@ -20,26 +20,36 @@ def load(path):
 
 def test_exact_45_additive_reader_release_preserves_all_prior_audio_permissions():
     receipt = load(ARCHIVE / 'successor.json')
-    baseline = assert_reviewed_authority(ROOT)
+    current_baseline = assert_reviewed_authority(ROOT)
+    baseline = current_baseline
+    registry = load(ROOT / 'backend/data/rights_decision_registry.json')
+    bootstrap = load(ROOT / 'backend/data/approved_reader_bootstrap.json')
+    if 'selfish_giant_boy_cover_successor_20261111' in current_baseline:
+        # Qualify the exact current, cover-only successor independently, then
+        # compare the older 45-title transaction with its retained state.
+        from scripts.test_catalogue_clearance_registry_successor import cover_successor
+        cover = cover_successor(current_baseline)
+        retained = cover['preserved_predecessor_files']
+        baseline = load(ROOT / retained['internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json']['path'])
+        registry = load(ROOT / retained['backend/data/rights_decision_registry.json']['path'])
+        bootstrap = load(ROOT / retained['backend/data/approved_reader_bootstrap.json']['path'])
     previous = load(ROOT / receipt['preserved_predecessor_files'][
         'internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json']['path'])
     slugs = set(receipt['slugs'])
     assert len(slugs) == 45 and not slugs & REMOVED
     assert set(baseline['titles']) == set(previous['titles']) | slugs
     assert all(baseline['titles'][s] == b for s, b in previous['titles'].items())
-    registry = load(ROOT / 'backend/data/rights_decision_registry.json')
     prior_registry = load(ROOT / receipt['preserved_predecessor_files'][
         'backend/data/rights_decision_registry.json']['path'])
     expected = dict(prior_registry)
     expected['accepted_records'] = {**prior_registry['accepted_records'], **receipt['added_accepted_records']}
     assert registry == expected
-    bootstrap = load(ROOT / 'backend/data/approved_reader_bootstrap.json')
     prior_bootstrap = load(ROOT / receipt['preserved_predecessor_files'][
         'backend/data/approved_reader_bootstrap.json']['path'])
     assert {r['slug']: r for r in bootstrap['titles'] if r['slug'] not in slugs} == {
         r['slug']: r for r in prior_bootstrap['titles']}
     for slug in slugs:
-        package = assert_current_reviewed_release(ROOT, slug, baseline)
+        package = assert_current_reviewed_release(ROOT, slug, current_baseline)
         record = load(package / 'rights_decision.json')
         assert record['territories'] == ['IN'] and set(record['uses']) == TEXT_USES
         assert registry['accepted_records'][record['decision_id']] == record_sha256(record)

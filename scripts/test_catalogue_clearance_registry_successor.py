@@ -224,6 +224,17 @@ def cover_successor(baseline):
         assert paths['cover_replacement_'+side+'_delivery']==asset['path']
         assert asset['url']=='https://theearnalism.com/'+asset['path'].removeprefix('frontend/public/')
     assert bindings.sha(ROOT/REGISTRY)==r['reviewed_registry_sha256']
+    prior_registry=bindings.load(ROOT/r['preserved_predecessor_files'][REGISTRY]['path'])
+    assert not set(r['added_accepted_records']) & set(prior_registry['accepted_records'])
+    prior_registry['accepted_records'].update(r['added_accepted_records'])
+    assert bindings.load(ROOT/REGISTRY)==prior_registry, 'Cover successor changed other rights/audio permissions'
+    bootstrap_path='backend/data/approved_reader_bootstrap.json'
+    prior_bootstrap=bindings.load(ROOT/r['preserved_predecessor_files'][bootstrap_path]['path'])
+    for row in prior_bootstrap['titles']:
+        if row['slug']==r['slug']:
+            row['decision_id']=current['decision_id'];row['record_sha256']=record_sha256(current)
+    assert bindings.load(ROOT/bootstrap_path)==prior_bootstrap, 'Cover successor changed other bootstrap titles'
+    assert bindings.sha(ROOT/bootstrap_path)==r['reviewed_bootstrap_sha256']
     return r
 
 def add_cover_registry(expected,baseline):
