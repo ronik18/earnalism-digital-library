@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-adventure-of-the-second-stain-pg108-noncover-text",
+  "decision_id": "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor",
   "edition_id": "the-adventure-of-the-second-stain",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
+    "public_book": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845",
     "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
     "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
-    "approval_evidence": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969",
-    "checksum_manifest": "0955ea464915e018f3bade1316644cbae5de982b22bb946920f7ff45c8cd92b8",
-    "publication_manifest": "1898d0b4e91b298faa154a858f582ec224eec248e66b95d9e46d677417b0aa54"
+    "approval_evidence": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494",
+    "checksum_manifest": "de53cce4037cc0cad75c372f8115efa9e03dba4db81987456daad00d737c5310",
+    "publication_manifest": "ca90e6d35d2a350d32cf7435ae8052585a0361f22377ccc9f796ee1cc83ccc61",
+    "cover_provenance": "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5",
+    "cover_front": "a8fee57446567bc7e406e2497a616f468651ae6b5f2ea66826a3ae90faf5d388",
+    "cover_back": "3054d7edcf03950c656aec0556201b8bcdd7fc5db8f877884a46b8484415ad8b"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-second-stain-pg108-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "d9d7799750a0b5bdb6f9f435a14121459b1c5b1b0963dbec3b118482f28f7535",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
-    "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88"
+    "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88",
+    "0239b1a4ecb81ac9064e1ba017f6c9162b7f852c543f84a8769e91355accfae5",
+    "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

@@ -119,18 +119,18 @@
     },
     {
       "path": "data/approved_reader_bootstrap.json",
-      "bytes": 12464,
-      "sha256": "27d326cfbc1b98048fb0409553927328e852240cb7a8f73ec5a242de2de867eb"
+      "bytes": 22878,
+      "sha256": "4d036381490604a06d2122938000102948b69cf6584304fb11b85a971744e31a"
     },
     {
       "path": "data/catalog_exclusions.json",
-      "bytes": 401,
-      "sha256": "2ccf19912995b837ce137d67f7b4594ff71007ea7d1c9c4da1faa9975407ce67"
+      "bytes": 1609,
+      "sha256": "07165f60d9223b5cc5e2280fdea38b8ea07fe9a78a8655704e23729c0d24e816"
     },
     {
       "path": "data/controlled_launch.json",
-      "bytes": 4597,
-      "sha256": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94"
+      "bytes": 8621,
+      "sha256": "00b4f40e82a71d0eb702d3b60dae9b10be4cbd2f0b8623ee921e9b9a48b63202"
     },
     {
       "path": "data/controlled_publications/a-ghost-story/approval_evidence.json",
@@ -338,6 +338,66 @@
       "sha256": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de"
     },
     {
+      "path": "data/controlled_publications/a-retrieved-reformation/approval_evidence.json",
+      "bytes": 1139,
+      "sha256": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/chapters/chapter-001.json",
+      "bytes": 17301,
+      "sha256": "c68c083b811976723d26642f8471bd83564dc8be461a17155c1357a972879a6e"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/checksum_manifest.json",
+      "bytes": 1196,
+      "sha256": "3e2d97236f2edc59098db1f044ae85e5d99ff302a583e4d43f6582e10c46ba5c"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/cover_provenance.json",
+      "bytes": 1495,
+      "sha256": "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/highlight_sync.json",
+      "bytes": 301147,
+      "sha256": "0e4d105bbc01a5de033a2a07ca59208b428cd64a6fc8eec8e29d1fb068c68b13"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/historical-noncover-rights-decision.json",
+      "bytes": 2122,
+      "sha256": "dada0276e37ffd8a6cd0e2e3c227708f695f1e3c3b120f6acace3f46a927462f"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/public_book.json",
+      "bytes": 3605,
+      "sha256": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/publication_authorization.json",
+      "bytes": 1460,
+      "sha256": "df3821df7d9326c2125d1a40cd2421e56bdeff8f374797ba445b13abfb46b0b7"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/publication_manifest.json",
+      "bytes": 1994,
+      "sha256": "97967ca4d11dd25dc8eb9eb00d55d8403430a9e601f070a5628405c1c0da86bb"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/reader_manifest.json",
+      "bytes": 730,
+      "sha256": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/rights_decision.json",
+      "bytes": 2423,
+      "sha256": "4981811249e1d05636b4ec39e32ce80caf6fb99d99fc4f04bb3e7ce5ec9f6caf"
+    },
+    {
+      "path": "data/controlled_publications/a-retrieved-reformation/source_evidence.json",
+      "bytes": 10431,
+      "sha256": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7"
+    },
+    {
       "path": "data/controlled_publications/a-scandal-in-bohemia/approval_evidence.json",
       "bytes": 361,
       "sha256": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347"
@@ -396,6 +456,66 @@
       "path": "data/controlled_publications/a-scandal-in-bohemia/source_evidence.json",
       "bytes": 1740,
       "sha256": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/approval_evidence.json",
+      "bytes": 1132,
+      "sha256": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/chapters/chapter-001.json",
+      "bytes": 20086,
+      "sha256": "33659bf3a26d3beb32cb021b11559ba9f6be0a97eb3deae950947f637edb3241"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/checksum_manifest.json",
+      "bytes": 1189,
+      "sha256": "63f2159188ad1bd15e9bcfb2930d4669959b47f648dd6dc2233d11ff75185319"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/cover_provenance.json",
+      "bytes": 1459,
+      "sha256": "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/highlight_sync.json",
+      "bytes": 354526,
+      "sha256": "1ec02f0663a8036fb2f880da5ad7978f133584140f6779194bf3cf07c0620722"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/historical-noncover-rights-decision.json",
+      "bytes": 2107,
+      "sha256": "3a88bd718a7b92b48280db8e67907ab80ebca5335e5894a606406039135cf5da"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/public_book.json",
+      "bytes": 3623,
+      "sha256": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/publication_authorization.json",
+      "bytes": 1445,
+      "sha256": "94ec7910ae6b4528125422f88bec9bf3033262d6c42005cb3d3125e61fd57eb7"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/publication_manifest.json",
+      "bytes": 1966,
+      "sha256": "3bf913d0b8dc4500594da513cae0dcbfa83aad7d10f2f5688959d69bbb7af2a0"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/reader_manifest.json",
+      "bytes": 713,
+      "sha256": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/rights_decision.json",
+      "bytes": 2401,
+      "sha256": "6e2053ada63093400f563ec57001ad7ae76d5da120e6431dc2b0ab0e111c87cb"
+    },
+    {
+      "path": "data/controlled_publications/a-wagner-matinee/source_evidence.json",
+      "bytes": 10153,
+      "sha256": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a"
     },
     {
       "path": "data/controlled_publications/a-white-heron/approval_evidence.json",
@@ -3408,6 +3528,66 @@
       "sha256": "f43920ad497ea3bf8335175bd013779ce6ef3ce69beaa6506c8759b23dc7db4d"
     },
     {
+      "path": "data/controlled_publications/feathertop/approval_evidence.json",
+      "bytes": 1126,
+      "sha256": "dab2f4167da49b120bd2ad10c4d9bd0286a53a3f02f01eaff9ec5241e27e57e5"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/chapters/chapter-001.json",
+      "bytes": 47040,
+      "sha256": "59a7bd373a8996cea90350deb009a90e8b08745bde35f2f75cf099c202dd9cb6"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/checksum_manifest.json",
+      "bytes": 1183,
+      "sha256": "b4a3a7a5c1d9fda12e5a17b2403a3d495ca07fb24d8840a257729c54b6d48a81"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/cover_provenance.json",
+      "bytes": 1430,
+      "sha256": "d16110e3a5062c2b0e8687ed1366d5461f5c41a96d5f4a7ae5d6636f3425934d"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/highlight_sync.json",
+      "bytes": 834885,
+      "sha256": "8f86504baf203a46e7752bfdfc9d83785df1dce117540ef379744d7e4f4a8bb5"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/historical-noncover-rights-decision.json",
+      "bytes": 2095,
+      "sha256": "9218d0f28c95ee89dd4e533c146c134cd4bcfe76a7116d7b09f2a57d302e7db3"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/public_book.json",
+      "bytes": 3597,
+      "sha256": "07ff700dfc5a20d8bfe94c0de9d24f3c135f6b9baf2950a8b940c377297c5049"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/publication_authorization.json",
+      "bytes": 1452,
+      "sha256": "cd60a13f1a3a71d74f35a5284b05f764ae24c830ee993ce7ac704e6c98d55015"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/publication_manifest.json",
+      "bytes": 1942,
+      "sha256": "2a73217d56710b4a93dab494f57a493df8188e676fa9c2fddbcb7c5a6d4e3335"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/reader_manifest.json",
+      "bytes": 702,
+      "sha256": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/rights_decision.json",
+      "bytes": 2383,
+      "sha256": "458be3648f0a548a93b841ccb6ed0eba84e15b62b1989662f78a13443d62be3c"
+    },
+    {
+      "path": "data/controlled_publications/feathertop/source_evidence.json",
+      "bytes": 10511,
+      "sha256": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45"
+    },
+    {
       "path": "data/controlled_publications/frankenstein/approval_evidence.json",
       "bytes": 3238,
       "sha256": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1"
@@ -3651,556 +3831,6 @@
       "path": "data/controlled_publications/frankenstein/source_evidence.json",
       "bytes": 24585,
       "sha256": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/approval_evidence.json",
-      "bytes": 4688,
-      "sha256": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/introduction.json",
-      "bytes": 13118,
-      "sha256": "460718195e657f7f8fd19f3fdd62249ba7470f44fbfc2ae4419e1ec724944fc0"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-001.json",
-      "bytes": 684,
-      "sha256": "1b337e41102d9f7ee5d194fe59d74181d6e49d3f8adcb220bf6ed2e7b889ed24"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-002.json",
-      "bytes": 747,
-      "sha256": "fe60eafb9678b3a7445889a75e37dd8a903d92949570b9fc61791b7019d70527"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-003.json",
-      "bytes": 645,
-      "sha256": "e7f35e0364379eacc73ee558d8dc14bf5d9c3ad8a6ef32b1ddd9081de9fb8563"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-004.json",
-      "bytes": 684,
-      "sha256": "2f5f7220b1c7539e385289cd267c7bc626d8afb8357374f77e0baac4ceec5aa0"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-005.json",
-      "bytes": 685,
-      "sha256": "60def2cd9a5497630e1b8067b0202215be78a5871c956347c10531a363ca4864"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-006.json",
-      "bytes": 563,
-      "sha256": "363cd6789dd2b93f62dade343bc43adcfd9ba52809e1aabaf80a1080150869d5"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-007.json",
-      "bytes": 545,
-      "sha256": "961626ece131beae7185d8cfff03fb8c64c9681afafcc119c6cdfc11ed6ee7fe"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-008.json",
-      "bytes": 628,
-      "sha256": "17b994095652ac8029e035a0242bc09c25a76eb9b8b870348f8a6098683099bf"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-009.json",
-      "bytes": 541,
-      "sha256": "f0ade92930b62db5032f4ea664670da133fe269a8e42fc574b3009a7ede5a769"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-010.json",
-      "bytes": 655,
-      "sha256": "b327adbb490ded782668654bd273038900abc09b4512ba8fedb321dd6f9d0de1"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-011.json",
-      "bytes": 962,
-      "sha256": "75a44ad69cc587c3b55ce5ead75cdf917a11f26f1a53478003b1b255158e2a8a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-012.json",
-      "bytes": 927,
-      "sha256": "ae5eafad4493a087465c1ba740c898c0befcd2ceedf153a134d403aa3581ad0c"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-013.json",
-      "bytes": 810,
-      "sha256": "dca17d56f168470992aabd97229bbfc6dc87c18b6e5677b64525de5de8fbb5b8"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-014.json",
-      "bytes": 823,
-      "sha256": "c20283e1ece90a3e6906b1bfecb8afe971e2f130f319a4b43cabed3a3f337d47"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-015.json",
-      "bytes": 564,
-      "sha256": "2d3937f760ae0d5cb722abeef5e92f233a2c0a941f4163480c803be2960fa86b"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-016.json",
-      "bytes": 497,
-      "sha256": "6d4e4078b811568035feabe35bb92e9cdff2aae9e3814fb6c1a90a84d933d415"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-017.json",
-      "bytes": 740,
-      "sha256": "8f179c8209978e138a9202c0d660b8a29c8760dd5eb83920cdee3f2973710136"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-018.json",
-      "bytes": 627,
-      "sha256": "3c19ed3d18a2fd51bc80d6e5b4744a4f42aa483cf49c31b4a31c3397f3e1b17e"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-019.json",
-      "bytes": 613,
-      "sha256": "cd430616c92fae27fed8379e8f3ed38ea633a06622505bb46084994ab12f7420"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-020.json",
-      "bytes": 727,
-      "sha256": "a3fa67b4179e13077c16031b451ed3c0105616b7e7f166b10cd3de38bb2ea677"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-021.json",
-      "bytes": 630,
-      "sha256": "dbedcee6bbd2f2f298acba94f0b12052cf9a92557cd0bee256b57e5028ed5202"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-022.json",
-      "bytes": 676,
-      "sha256": "8462107cb52b98ca2923db98e55d163b59b3fe4dc9072fac82d0cc81132486ef"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-023.json",
-      "bytes": 613,
-      "sha256": "13d39951ef0db112abe924c899cff1640cf72098d4a1e51f7b1ca69a0d0b0eac"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-024.json",
-      "bytes": 659,
-      "sha256": "4811271de8dc457b8925723c3e283c145d85eef43e3e6ce63735607a7883dfc7"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-025.json",
-      "bytes": 481,
-      "sha256": "cc0ff042fff6afbe4ddf0d4075875b3bc37e3167f173535ecf90d766e9e1558f"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-026.json",
-      "bytes": 477,
-      "sha256": "db662d533b8031f01f689a71c3ce305ec2b2c889461b9644ad85068536e751d9"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-027.json",
-      "bytes": 1032,
-      "sha256": "3d9a70a5d6f719d82bf573e3a0691a8b47701fad4b25f128a116559ecca72316"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-028.json",
-      "bytes": 695,
-      "sha256": "923ea2a6cfee83c5e3c97871f01b08ac0820e83b08d1e64e93a2a24b9d584261"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-029.json",
-      "bytes": 550,
-      "sha256": "d70cd487fd3c9e06dae0db2f72ae641fc5d553d1d03865f1e5f67c0e3ac350cc"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-030.json",
-      "bytes": 540,
-      "sha256": "66f3d33708093f2057ab8b60a1db5fd3b7a069cd75a0bb181963ad9d4240af7d"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-031.json",
-      "bytes": 972,
-      "sha256": "648f295d0876e2f4db74b3e130791b098eb095da5c21e02d2c5cb546b686428d"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-032.json",
-      "bytes": 546,
-      "sha256": "e3d16a91c7837045e17f89f238c00db046ab9ce987a97a73ac2564914dae944c"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-033.json",
-      "bytes": 606,
-      "sha256": "28f3fdb43d4edac30b050eadc8adca4e300d38576565e6050f337f4abd8afc2e"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-034.json",
-      "bytes": 616,
-      "sha256": "4fed37c8dce9863b180774ca68fc82f67063bfa6723893b77ccdf6123e252e5b"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-035.json",
-      "bytes": 699,
-      "sha256": "0fb4763dd143ca9fbc0a6b16618d00d5c4f78e249137f7286f404c804fb7d76e"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-036.json",
-      "bytes": 609,
-      "sha256": "e233673072fe861f2d6cb334890c6151d88d7afcb4226069bf9d821178846f15"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-037.json",
-      "bytes": 578,
-      "sha256": "c2fc3f58c2ce956e07741031c3231ae8e35eddef34dd06386739136e78995f13"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-038.json",
-      "bytes": 650,
-      "sha256": "22e68b1664cff0e64051848ef12da15acde13d11b400b2958ce2654544d3b7de"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-039.json",
-      "bytes": 695,
-      "sha256": "574a7bd5b02f88ccbfbaf75e49a933fcacb82818b8a94ab8c83fca54fb849edb"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-040.json",
-      "bytes": 722,
-      "sha256": "205cb21661596984f6d9dcf8969660a360a3f6fd2b1f55cd64eb5061f56cbf07"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-041.json",
-      "bytes": 1640,
-      "sha256": "36a26f5b2a7f2740cb2f2dbcb02cbe4a131b5f469bf906cec2cb0ca278cfc654"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-042.json",
-      "bytes": 764,
-      "sha256": "cb2df00b5eef04fccf491f2a01cc4cdd8f9c57a43f063e67e8e292b047a940b5"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-043.json",
-      "bytes": 744,
-      "sha256": "325cfc9c803ed42491edd277ec079eb5d0d9b7a562b10dcf896fc715d5b938b8"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-044.json",
-      "bytes": 693,
-      "sha256": "52218fc0c7e123d02f3f624ad9ec9d7bfd4bbf1cba52fdc28e5640c6543343e8"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-045.json",
-      "bytes": 777,
-      "sha256": "aecebb1a183eb3adb92e6c8d33c1433afe69f24f4ecb9589c1cc7c3f36d0781a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-046.json",
-      "bytes": 651,
-      "sha256": "e8a405474e73dbf1a9a7bc39a9bdcd8f16167667f991e5b253721336a49fa461"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-047.json",
-      "bytes": 1072,
-      "sha256": "46404c7575270293d77a407a489b341400d764e100956baa6f78a7f987ea80a1"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-048.json",
-      "bytes": 1729,
-      "sha256": "f0dcb1563b8a03de491d691503f46e1fb8557995d59157fe0395498ee076bb03"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-049.json",
-      "bytes": 622,
-      "sha256": "8967df15edcb90a11475a09571d971b17971414dab67646c8deace1571c30089"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-050.json",
-      "bytes": 1162,
-      "sha256": "99bde0e4f3768b5b612576b167915722b5c04222cb3da55a638e2d792bc3063a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-051.json",
-      "bytes": 1745,
-      "sha256": "25a464621cd528796f32d4739cf2836097771c19f2b963f0593df989b76fdb6c"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-052.json",
-      "bytes": 1644,
-      "sha256": "eb3973766d60014ce3d7f259179577505b0d597cf4df646692e0fd73eda4199a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-053.json",
-      "bytes": 778,
-      "sha256": "e9614a877a815dacd35697ececb79e84b05877028e2d3be7e54baadf239e492a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-054.json",
-      "bytes": 1294,
-      "sha256": "85b687fc4baa87beb6e209e3ca68f5ec9ac0ce6608f5a1bc1265267f96817b8e"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-055.json",
-      "bytes": 767,
-      "sha256": "3e57a48b87eeced2597abfa45b5769423f32208810c78f433492cc96698f9205"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-056.json",
-      "bytes": 682,
-      "sha256": "84fddebfd43fa735554eac49f280831b42dd8a43f14616603358e894bd42c71e"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-057.json",
-      "bytes": 815,
-      "sha256": "13bd38c1381e775f11606b9bb4494d30b89f07994e47e0ed795a8e0fd84aeaab"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-058.json",
-      "bytes": 610,
-      "sha256": "c9f5b6ebc1179003e3141d30bdd4ca43d32e0b7ee3d0b9dfc5a6075bcb149df0"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-059.json",
-      "bytes": 554,
-      "sha256": "e2f9ceb58234de4d2a5cd97513ca69b58018cda3ef66c41652e491b13d815327"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-060.json",
-      "bytes": 1324,
-      "sha256": "626964a9b3f489b1d29d67e3eb103d5a92b6807551af2beccc883e541d732d98"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-061.json",
-      "bytes": 1065,
-      "sha256": "f56e2b7dba3640a8e1957f37834bbb00090693a44ac5e696fd7d9ead44d38330"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-062.json",
-      "bytes": 1001,
-      "sha256": "2936ec8f14fb78fa843f7988e9391fd8323baeb7386a504814c16d9a5d9a08ab"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-063.json",
-      "bytes": 865,
-      "sha256": "a966073dfeb1e31a24371819eaffea73337ef3888d14e4c71531f8b4b4d4f98d"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-064.json",
-      "bytes": 1417,
-      "sha256": "90322e8d150e7ee111a20cf84d1b5f7b136e571f5f8a47b0266adc6a702c1bee"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-065.json",
-      "bytes": 568,
-      "sha256": "9d2276b6773ee040757b3c239fd2776ffd40a09544b1ab4f420303dda7d55ce0"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-066.json",
-      "bytes": 929,
-      "sha256": "1c46ea405c5dee5c8a3614e5ac95b16c3bc9c9770901b6533f02851c75807200"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-067.json",
-      "bytes": 832,
-      "sha256": "25cf144bb4aac3839300a5fa5a7e51f017c2475e818086f9c9a0432a640e76c4"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-068.json",
-      "bytes": 714,
-      "sha256": "722fb748958470974fcc23df1a5032c663697197ce6ee9e72d7dfec4f8e1deb1"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-069.json",
-      "bytes": 698,
-      "sha256": "d0c3abcc0f79f8379a1e85feec399948bb84531328a35a86951aa9ba6bae90d9"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-070.json",
-      "bytes": 613,
-      "sha256": "bae8b4442ccc99e262182dad2da507af2f8dfbe313a30b7531fe00d849004ced"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-071.json",
-      "bytes": 1024,
-      "sha256": "d9dad0e997d8254e17dea9472bc71af3233733421d0a8a241f0f7550f7a30792"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-072.json",
-      "bytes": 701,
-      "sha256": "6721c569ea0e8108ceb9824479df09a964ba99dd3aed811a1bf96eddbcc8066c"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-073.json",
-      "bytes": 742,
-      "sha256": "b1073792a6bffd1167375d15472523128e0c8f75012c9110a026120fdd4f0cf8"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-074.json",
-      "bytes": 623,
-      "sha256": "1f4f63f6e59645d9ecbff7dfd986e28790359e7d28fe1ddf94d548aab2fa5dda"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-075.json",
-      "bytes": 646,
-      "sha256": "0b9745ab0b5169ef6622e69edd09f68cc4dc7f8ca79a6b14ce73cbd14935dacc"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-076.json",
-      "bytes": 695,
-      "sha256": "6179ac5a92506cfa9993a461b0fa6cfbca95bcc5929135eba88b5db8bf5a75ba"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-077.json",
-      "bytes": 771,
-      "sha256": "2d7f1202aa49286147981c5b9281f092cb39398763f5dcbdfc648616606e93f7"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-078.json",
-      "bytes": 927,
-      "sha256": "6dc72cc7a52c34b7657b3b9440771cd61d3e5601bc7f71e1ae903d5709df2c83"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-079.json",
-      "bytes": 1153,
-      "sha256": "894e973ba71598f5364a393d934557ecb06eb61959d04aad97705fbd6a4c8890"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-080.json",
-      "bytes": 773,
-      "sha256": "1dd9314470a6a7f3baa9cfcbb97f7c532556c40cd70461bad06c521e0600f627"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-081.json",
-      "bytes": 598,
-      "sha256": "08d1bb7c068351be5f5a644d0df3829c266d38d4255621775ceafbe6e9b3943a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-082.json",
-      "bytes": 752,
-      "sha256": "05e6e47c6fe29dbf1e01eadd920fc3344cdaa8fc0bf122282e79b0cb2f64509a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-083.json",
-      "bytes": 551,
-      "sha256": "c30bad5eb79626d59846370a119a766a6ab9a7aa4fae9b1a24bc9770ffa86364"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-084.json",
-      "bytes": 628,
-      "sha256": "b7879661e75a9faf28eba950afb81229f6cb62e4b4e1d21cb08d8a37221b211a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-085.json",
-      "bytes": 728,
-      "sha256": "da7f96475f398681f3c6ad8d3e32eaa6b1bad7fddae9fefa170db2673a4a30df"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-086.json",
-      "bytes": 713,
-      "sha256": "13d8ecc73f2cd1a589aa80904dfb89e9312c0d16394a85eaad0634c47924273a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-087.json",
-      "bytes": 799,
-      "sha256": "8b3970d89d33ac4e2df06ad5cb76b946e1c1bb3ad8f1d54aff161cd3e0e0da17"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-088.json",
-      "bytes": 1045,
-      "sha256": "bbc0fbb9993ce56ba64f811f669319fa57ec3ddbcc06260a20f6cd8d8d7cc3db"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-089.json",
-      "bytes": 837,
-      "sha256": "32daa5d9980265724bb20e69e0e25e4575f08fd838f77807051c79049d5abed2"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-090.json",
-      "bytes": 542,
-      "sha256": "a1a1b359faad2a8f31e9b8717d80bf25f6c6e3cfb5f498e15075a8df105ff6be"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-091.json",
-      "bytes": 694,
-      "sha256": "4e02803663c1df914ac4bd8b49250f61038912a0c3cadebb534a2618c1380e15"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-092.json",
-      "bytes": 798,
-      "sha256": "2abbfa8fad08c2179839d1e623e7e6279ea10f3a108ff272ae293a2bbbe3f266"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-093.json",
-      "bytes": 569,
-      "sha256": "3d4d6c3ceeaf31055804dc272814bbd8d12c0c902a049f00979485cf9ae8997f"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-094.json",
-      "bytes": 693,
-      "sha256": "5b712a2f7d3ce5602622e883b478910c665605f00e974b25a26496c4e3d3c316"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-095.json",
-      "bytes": 831,
-      "sha256": "7e2eaa1f4127756356ccdc12868e615995e499841600157b7047d54b2b183ede"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-096.json",
-      "bytes": 660,
-      "sha256": "7e5aa594b58299b958e95baf0a0651fe294fcaa71333f4f6b9b83cc6ff6e83e1"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-097.json",
-      "bytes": 716,
-      "sha256": "5d1d920fdd43071fce71fb0cd659954b41bf400ffe2a75b696ed7b51e044db6a"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-098.json",
-      "bytes": 754,
-      "sha256": "1609dd9786b317422789b3f7c942abcf75145255962ebb579ba318a2a28a4967"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-099.json",
-      "bytes": 751,
-      "sha256": "d8e485353bc68f0a939fb9bfb65a91e80d0a99f5516c6fcefe3990a66d268635"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-100.json",
-      "bytes": 737,
-      "sha256": "c64707ede46e29ddf3d20e3ff57d4e4ae5aa5cfdbc822c0f6880fc9d28d2013b"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-101.json",
-      "bytes": 679,
-      "sha256": "b921c0afd26d94f84f09adca91e3b9aecac07bd5ac6cc0e7f10ff48a2e109a11"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-102.json",
-      "bytes": 700,
-      "sha256": "030a77a27d68b396689287078dd9f7654ef3a6ebe057437226cfc4f8021a8846"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/chapters/piece-103.json",
-      "bytes": 705,
-      "sha256": "fcdf79108819e166aa4a4504076462f500b0dfd00aada8eb4f85c638e949824d"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/checksum_manifest.json",
-      "bytes": 15024,
-      "sha256": "0dc00b2927f7139294e37a25bd17b28765e6680c93338ef69090f36be089fdea"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/cover_approval_evidence.json",
-      "bytes": 4122,
-      "sha256": "dc57215379b0500a7676cd3e2c0a0f6d16aa3c80b86cfec373dbf5a7760ff5f0"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/public_book.json",
-      "bytes": 47082,
-      "sha256": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/reader_manifest.json",
-      "bytes": 42457,
-      "sha256": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c"
-    },
-    {
-      "path": "data/controlled_publications/gitanjali/source_evidence.json",
-      "bytes": 1229,
-      "sha256": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084"
     },
     {
       "path": "data/controlled_publications/hound-of-the-baskervilles/approval_evidence.json",
@@ -4676,6 +4306,66 @@
       "path": "data/controlled_publications/love-of-life/source_evidence.json",
       "bytes": 2199,
       "sha256": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124"
+    },
+    {
+      "path": "data/controlled_publications/markheim/approval_evidence.json",
+      "bytes": 1124,
+      "sha256": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf"
+    },
+    {
+      "path": "data/controlled_publications/markheim/chapters/chapter-001.json",
+      "bytes": 39574,
+      "sha256": "a13b63904c1ad7246decc6f6e6159cd94e6a216bee88fc49d1ddeb8a82ab68c9"
+    },
+    {
+      "path": "data/controlled_publications/markheim/checksum_manifest.json",
+      "bytes": 1181,
+      "sha256": "e2618dcf50f6ec82f0874c845189e24e72d9114e815b3878ab32c677af7aa982"
+    },
+    {
+      "path": "data/controlled_publications/markheim/cover_provenance.json",
+      "bytes": 1419,
+      "sha256": "5d5b0ab7eb58f3896e7d0f12d316c34735ae642c3797ab339fe5d223b9c2a29c"
+    },
+    {
+      "path": "data/controlled_publications/markheim/highlight_sync.json",
+      "bytes": 715694,
+      "sha256": "495fcc4f1a207f8068ec3e251730ff61d5e1e96e5d3e1885c381ebce6cf76d58"
+    },
+    {
+      "path": "data/controlled_publications/markheim/historical-noncover-rights-decision.json",
+      "bytes": 2091,
+      "sha256": "5165742ce4cd094a57da7241d57d0afcd04f59e337b262268906ae2d100897c7"
+    },
+    {
+      "path": "data/controlled_publications/markheim/public_book.json",
+      "bytes": 3587,
+      "sha256": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0"
+    },
+    {
+      "path": "data/controlled_publications/markheim/publication_authorization.json",
+      "bytes": 1436,
+      "sha256": "3f5b98c0b00f8a555adfdb542dd66f52c2b95cf2ed880c6ffd6688b42bd04d9c"
+    },
+    {
+      "path": "data/controlled_publications/markheim/publication_manifest.json",
+      "bytes": 1934,
+      "sha256": "557fa2068fa05324c1088bd124013a737414d9862a17c299d8690360602b50ad"
+    },
+    {
+      "path": "data/controlled_publications/markheim/reader_manifest.json",
+      "bytes": 699,
+      "sha256": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d"
+    },
+    {
+      "path": "data/controlled_publications/markheim/rights_decision.json",
+      "bytes": 2377,
+      "sha256": "df81a3f8e3cfda644fe7f38bd3894a68cd1cfb7d5a9d4a9528ca09ff22bb6a67"
+    },
+    {
+      "path": "data/controlled_publications/markheim/source_evidence.json",
+      "bytes": 10025,
+      "sha256": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af"
     },
     {
       "path": "data/controlled_publications/mrinalini/approval_evidence.json",
@@ -5341,81 +5031,6 @@
       "path": "data/controlled_publications/my-life-and-work/source_integrity_validation.json",
       "bytes": 7687,
       "sha256": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/approval_evidence.json",
-      "bytes": 572,
-      "sha256": "3290a53eae02846d9962d0418e2920f38082ac732b587bf9d4a3a500be952657"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-001.json",
-      "bytes": 25208,
-      "sha256": "fd04803c1f71a7981901d99540189854ec868c00c10c5b757ec5bfa130e3c147"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-002.json",
-      "bytes": 20091,
-      "sha256": "92a2938908cb3f15b5777bc181891dcc68ee71218828d2ede605702fb3b4b880"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-003.json",
-      "bytes": 27783,
-      "sha256": "127635f28bc253fa78b63cf1c27d569ab7e4bf5faadd4db5fd40c26746185deb"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-004.json",
-      "bytes": 25056,
-      "sha256": "282b77ad9f676fb2f09b2d186ef1152609a6e1ab4a3458192b9365c75ff219c1"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-005.json",
-      "bytes": 27713,
-      "sha256": "30c560c1c8aaf0c987043acdc4c0d029af8c6a55af20a0aab1c2c6853f172771"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-006.json",
-      "bytes": 27661,
-      "sha256": "b4f29305de5c01cdb71214e91b3841baeee062565866bd55e1a58f98fbf9904f"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-007.json",
-      "bytes": 20995,
-      "sha256": "6265b33a720fa7091fb99a917c1f4b37b70dbe04f6f0636287c308a6db7bfc85"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-008.json",
-      "bytes": 22213,
-      "sha256": "4ff63627c4733b93f9407e926740b33015f96ec8540be8529208bf454c33f873"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/chapters/chapter-009.json",
-      "bytes": 30198,
-      "sha256": "9af0cada1679e338cb5fbcec3719505004bcd0847f1e5e5958cb3b38ab98a038"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/checksum_manifest.json",
-      "bytes": 2139,
-      "sha256": "c43f9b6a2f895fbc3321e096fcc3493d95d9d8be8c6b30bc49dcb3355707a554"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/highlight_sync.json",
-      "bytes": 1613360,
-      "sha256": "3494992681f7752e0f598914bd57623667d7d2ecfe39f92300c742ce0f4058ef"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/public_book.json",
-      "bytes": 7578,
-      "sha256": "e943031c8c6973a121a5da44a6728d507e354876013ad6ce3422dffb947ead8e"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/reader_manifest.json",
-      "bytes": 4243,
-      "sha256": "2e72d654f4495c02b78f3fa40ca9bfb51c9c17e1ea403e086efcc94ec6022dbe"
-    },
-    {
-      "path": "data/controlled_publications/nishkriti/source_evidence.json",
-      "bytes": 1140,
-      "sha256": "abbe0f063556184da786d86536648c434a320b58f9baa28770a910b1ad16be48"
     },
     {
       "path": "data/controlled_publications/pather-panchali/approval_evidence.json",
@@ -6168,6 +5783,66 @@
       "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
     },
     {
+      "path": "data/controlled_publications/rappaccinis-daughter/approval_evidence.json",
+      "bytes": 1136,
+      "sha256": "cf3c52db3a110aff2737e8e62e696ea0b0bfba38cbe1ec6a7ef777b18bf719b1"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/chapters/chapter-001.json",
+      "bytes": 69991,
+      "sha256": "50348b8a65615cc1bad1a75e926dc03d6e267b06fdc5bfb820b27287075cf5de"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/checksum_manifest.json",
+      "bytes": 1193,
+      "sha256": "e4c0b1072c6f8f736bfa800ff47d51a14a775052625e500da1bdd96a96fb3c0d"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/cover_provenance.json",
+      "bytes": 1479,
+      "sha256": "dbb5c8b175916cb8cbc6452232a9edc68a7759ed1f879f8c84c3cd0c4dac01c8"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/highlight_sync.json",
+      "bytes": 1219241,
+      "sha256": "b668e8f74aaf696918e75b409183459790f08e7825796182365ed3e4fdb83e71"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/historical-noncover-rights-decision.json",
+      "bytes": 2115,
+      "sha256": "7236ee197c2234d5f840535cfe1fbe394d32973a70a65bdf70b5a7da92e5753e"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/public_book.json",
+      "bytes": 3688,
+      "sha256": "cc32acd7974d14add260771b865288e68821cffe00fbde9fcf09c4724549b2c4"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/publication_authorization.json",
+      "bytes": 1473,
+      "sha256": "db877cda6a9cd5f5d9a15da34229cdf74d4a2a7aa0be6f92a157272300f4b0ed"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/publication_manifest.json",
+      "bytes": 1985,
+      "sha256": "fa2b9b14b3d6436b3edf9a691b752a1e2b6886a87ab226ecda11df1e1f701d91"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/reader_manifest.json",
+      "bytes": 735,
+      "sha256": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/rights_decision.json",
+      "bytes": 2413,
+      "sha256": "57b0d69bda8444ad373465bd0b1334d80ffee8ead4c17495480526180f6ec744"
+    },
+    {
+      "path": "data/controlled_publications/rappaccinis-daughter/source_evidence.json",
+      "bytes": 10532,
+      "sha256": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a"
+    },
+    {
       "path": "data/controlled_publications/sredni-vashtar/approval_evidence.json",
       "bytes": 2737,
       "sha256": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e"
@@ -6241,6 +5916,786 @@
       "path": "data/controlled_publications/sredni-vashtar/source_evidence.json",
       "bytes": 10511,
       "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/approval_evidence.json",
+      "bytes": 1149,
+      "sha256": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/chapters/chapter-001.json",
+      "bytes": 53274,
+      "sha256": "64157f3db639a48dadb1f501fb1336824120adeda9dbfd23087533249da164ab"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/checksum_manifest.json",
+      "bytes": 1206,
+      "sha256": "daaaadbd071259176e9122f5ceb36b7022ae47d527d33ca60351408011b076e7"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/cover_provenance.json",
+      "bytes": 1544,
+      "sha256": "6824ac7163533643450f5f32e60be9f2c4696820202e70459a9e68b2ce26937a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/highlight_sync.json",
+      "bytes": 981515,
+      "sha256": "282c429ec8841cae7bba9e2cb0aaea8f935e27fc837a8e595e857e7f59dc07f9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/historical-noncover-rights-decision.json",
+      "bytes": 2141,
+      "sha256": "ce460c7b41b537f1aa31f4eb3ec896b7dff904724f5bbc6ecfb52adc9bfeb983"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/public_book.json",
+      "bytes": 3760,
+      "sha256": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/publication_authorization.json",
+      "bytes": 1498,
+      "sha256": "aca5ce28ea663e940afaa621fa7e93fc409e653e3ae7177172dd39abc7c059e7"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/publication_manifest.json",
+      "bytes": 2034,
+      "sha256": "1875a9ba0760103b79e48b8efaec66bee78e54a96493097c962ea31a5cf9d355"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/reader_manifest.json",
+      "bytes": 770,
+      "sha256": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/rights_decision.json",
+      "bytes": 2452,
+      "sha256": "70c8a0fb87989ff7fdb6644b6bdbe5cad9f570ccf2a228eb539088e812179856"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-abbey-grange/source_evidence.json",
+      "bytes": 10454,
+      "sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/approval_evidence.json",
+      "bytes": 1150,
+      "sha256": "0ec247e3f8c072cc41b2e94ef09e5a5f306680c756a3a53cc85a21b50227d435"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/chapters/chapter-001.json",
+      "bytes": 55064,
+      "sha256": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/checksum_manifest.json",
+      "bytes": 1207,
+      "sha256": "fae8cf62dbc82363984a414cf340bc861675388053d29b913281cf55d9d4d77c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/cover_provenance.json",
+      "bytes": 1550,
+      "sha256": "c5d7b7d8a49a3302265d2d26ea509d929ce85ebef80cc1ab9199173c64ced3e4"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/highlight_sync.json",
+      "bytes": 1030915,
+      "sha256": "501d862fad7c6ebe4bf6c63407b62422dc25fc90f6494fd0223d92d6e4fead08"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/historical-noncover-rights-decision.json",
+      "bytes": 2144,
+      "sha256": "d4a156233adc3fbf0951109c1b42657ce6e57aa546760b9a6ce20be4b0257694"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/public_book.json",
+      "bytes": 3786,
+      "sha256": "41760a1deb5a349b7b3a734b618188db5d57fd19c162980df96cf515c8bb40a8"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/publication_authorization.json",
+      "bytes": 1505,
+      "sha256": "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/publication_manifest.json",
+      "bytes": 2038,
+      "sha256": "cd1b4121999e5d054e2b1ca05f1ac4c49a83b0953bf2b63d27f94209c3d9399e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/reader_manifest.json",
+      "bytes": 773,
+      "sha256": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/rights_decision.json",
+      "bytes": 2456,
+      "sha256": "9b9d15785ed5a58eb39e936fe3c9e78c4190694f383753c691575ed91532c1e0"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/source_evidence.json",
+      "bytes": 10517,
+      "sha256": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/approval_evidence.json",
+      "bytes": 1151,
+      "sha256": "1f864e2bf88d93de33203196381270dddf632c5fbd0bcbb799eef1bbdb20745f"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/chapters/chapter-001.json",
+      "bytes": 45896,
+      "sha256": "d98fe6fa4985ca9fa05a7e4f8a6ce5e3d7646db1547c5c3e373dba184a6f6f64"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/checksum_manifest.json",
+      "bytes": 1208,
+      "sha256": "294637c87582424daac210e34d9ad4eee1505ddefeb8b2c45add90ef8ee44fc2"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/cover_provenance.json",
+      "bytes": 1555,
+      "sha256": "693e4c78049dcd74fcef5b08470f7f8568b14f31b8828cfb2712223a157542ab"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/highlight_sync.json",
+      "bytes": 840236,
+      "sha256": "2f2a51cc680a705ef2a968013cf2041ff1a1a60c8cac12bd163de21dcf8693bd"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/historical-noncover-rights-decision.json",
+      "bytes": 2146,
+      "sha256": "be9dbe9b8c3f6307bcac92f506c437be20539caec8f72e2a22d25353b7a3a7d0"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/public_book.json",
+      "bytes": 3740,
+      "sha256": "86a4eef392d9795f8076c299b055b698bc23c64aef01adf9b1ce69350afb81fa"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/publication_authorization.json",
+      "bytes": 1507,
+      "sha256": "96144fcc963734d47689dfeca712812628d8b84c70432ead8cb0c40e22bd3fe6"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/publication_manifest.json",
+      "bytes": 2042,
+      "sha256": "bcede6da36d6aa72fed44e702b63d123fe5908d06cbce314e4a35b4ad9d386aa"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/reader_manifest.json",
+      "bytes": 776,
+      "sha256": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/rights_decision.json",
+      "bytes": 2459,
+      "sha256": "387cdd2e1075e6af24c3aad8c81b790e78473bf786424028f1c493fd5f0ee4c9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/source_evidence.json",
+      "bytes": 10519,
+      "sha256": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/approval_evidence.json",
+      "bytes": 1151,
+      "sha256": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/chapters/chapter-001.json",
+      "bytes": 57278,
+      "sha256": "efb161b0c7565f76a70d40e8c0642816d1dd7bc56e703174634c0ff74b23944f"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/checksum_manifest.json",
+      "bytes": 1208,
+      "sha256": "496d6acb7fd7921780fe922a1a361cc1e325774f8e8af1ba36c1a3590153568a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/cover_provenance.json",
+      "bytes": 1555,
+      "sha256": "e9ef27836a8d1f7533359d4f421ff76994bd4dea75217879b43d14303ea98bf7"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/highlight_sync.json",
+      "bytes": 1062396,
+      "sha256": "706f970e5b69a3b541afdb35668a451d0c8ebac26c67341a5b6b1680bf7ba623"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/historical-noncover-rights-decision.json",
+      "bytes": 2146,
+      "sha256": "ece3cb8e28b0c1f14e383124aef0be4cc795f8dc11b935c0473a53e3c7a9cbff"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/public_book.json",
+      "bytes": 3781,
+      "sha256": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/publication_authorization.json",
+      "bytes": 1507,
+      "sha256": "631f4a07c5e6602747ba3182e4e94523521ae957cba9dbb0192467f1c19d75fb"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/publication_manifest.json",
+      "bytes": 2043,
+      "sha256": "192b144775c63081de4ce2275be052170f6578ff30999ea538ea848b0f1e5d27"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/reader_manifest.json",
+      "bytes": 777,
+      "sha256": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/rights_decision.json",
+      "bytes": 2459,
+      "sha256": "e33bf2dd452776920bc1bdbb26bfb99d93f25e4b777035188aca8557a876f104"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-copper-beeches/source_evidence.json",
+      "bytes": 10519,
+      "sha256": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/approval_evidence.json",
+      "bytes": 1148,
+      "sha256": "eb9939dfe7db3c7ad972b391d175b4a24b44245971be68d47080bae0c912fa85"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/chapters/chapter-001.json",
+      "bytes": 56565,
+      "sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/checksum_manifest.json",
+      "bytes": 1205,
+      "sha256": "a14997d0f86020ce2c9a5976a0e0cc0aedcddef355c6ede6143b0f576b7641b2"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/cover_provenance.json",
+      "bytes": 1539,
+      "sha256": "5714ebe4da87c7c18ad88258ab71d8b8bd0405018c69231cd48bb72c9cd8f005"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/highlight_sync.json",
+      "bytes": 1033383,
+      "sha256": "3731e93cb3a78e8a49a52d08b10b96e970b0c67df12e21ab5dfda88989cb6bc9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/historical-noncover-rights-decision.json",
+      "bytes": 2139,
+      "sha256": "5dbb30a77ceb425302880926ffdb6544ecf55e8298c4b1ac88eab9d5ee5e5f1e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/public_book.json",
+      "bytes": 3766,
+      "sha256": "1035a5891e509f52951a26116a1d59b43f1635efa12f65c2eeab685e556fa23b"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/publication_authorization.json",
+      "bytes": 1496,
+      "sha256": "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/publication_manifest.json",
+      "bytes": 2030,
+      "sha256": "21bf6d5dcd605d6fcddcbfe69bd04424fee6259c32a5b53e4c6070b46d0ef5f0"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/reader_manifest.json",
+      "bytes": 767,
+      "sha256": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/rights_decision.json",
+      "bytes": 2449,
+      "sha256": "0f9f85381be3497ce8a9a421677da5c95f20c3a0c912ebb79116d0b2126beab3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-dancing-men/source_evidence.json",
+      "bytes": 10450,
+      "sha256": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/approval_evidence.json",
+      "bytes": 1148,
+      "sha256": "fe83d4802a00cd05c3f82e0922832ba0c5946c99ba91354c4cf7d7cd208c050b"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/chapters/chapter-001.json",
+      "bytes": 51618,
+      "sha256": "8e904b0c25559f73a98dd1884bdc447f4a567057905f19f2fe2270890a8cea9b"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/checksum_manifest.json",
+      "bytes": 1205,
+      "sha256": "14c7858be04d241599b23c6053dbfae2b1461f8f639f2651df19207d06494b3c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/cover_provenance.json",
+      "bytes": 1540,
+      "sha256": "6fa750de63f34b91dacfac6d3252d4b949eb83d17fe2e22f810a4c341e37e6e8"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/highlight_sync.json",
+      "bytes": 932060,
+      "sha256": "0c1e349389cf3e84be2a54883efef74d906a0223770b8ca832122869b877bc36"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/historical-noncover-rights-decision.json",
+      "bytes": 2139,
+      "sha256": "36c3866b4794b593c53c360d01538b29398b821964de05dc1a222af87808c7dc"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/public_book.json",
+      "bytes": 3793,
+      "sha256": "69859613acff933cedd1a797cf1f8e04057ad8230d8974e11599381bc881bf0d"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/publication_authorization.json",
+      "bytes": 1496,
+      "sha256": "e5e127587d0aa04b1adfe6c78bca68eaa302355c656fe05b199e7e70bbf06888"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/publication_manifest.json",
+      "bytes": 2030,
+      "sha256": "bae0ac8b9a7ab2717a8f4eae7505efed0ff941d7a75f1e2e522709ca656eec42"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/reader_manifest.json",
+      "bytes": 767,
+      "sha256": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/rights_decision.json",
+      "bytes": 2449,
+      "sha256": "a54a0206b18cec3cf11444903b7bda75a1d540daa7209b0c4c351cdfa04c8fb9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-empty-house/source_evidence.json",
+      "bytes": 10448,
+      "sha256": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/approval_evidence.json",
+      "bytes": 1152,
+      "sha256": "660944f0a7fc089a372085cf8515f33343f6803e18a50cdaf163a269e8e9cf05"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/chapters/chapter-001.json",
+      "bytes": 48298,
+      "sha256": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/checksum_manifest.json",
+      "bytes": 1209,
+      "sha256": "5af13d50c99f208214bf33e8a6471f896ab579e72bbe4a07bb8e250caa5a7d79"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/cover_provenance.json",
+      "bytes": 1560,
+      "sha256": "04fea644574d126ebb5a5abc9febf051b2e1a25cc347d6659a19e99531580e0a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/highlight_sync.json",
+      "bytes": 886019,
+      "sha256": "a207de77dedc64d8de3c08f181a2069a82d6e6c382f4174f02ff83313b972bec"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/historical-noncover-rights-decision.json",
+      "bytes": 2148,
+      "sha256": "105b5520814cac4c62412a002417a11fdc9d68d1499d799330e5e5feb106aa64"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/public_book.json",
+      "bytes": 3790,
+      "sha256": "cf829469e07642fdf4526721fe48fdaf96b4e1c82a2207cb9685b0bc2b61fce8"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/publication_authorization.json",
+      "bytes": 1510,
+      "sha256": "96750a8e060836738d2fd26a43fb20fc5542461887f03dbf9fbbe84b8220b59a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/publication_manifest.json",
+      "bytes": 2048,
+      "sha256": "2c038103c28a8e6b1b75c9fc1947bbd59bfb2a00852bbbb6ae464853bfaeb1c0"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/reader_manifest.json",
+      "bytes": 781,
+      "sha256": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/rights_decision.json",
+      "bytes": 2462,
+      "sha256": "28ce47efedbeefb55865ab1fda3d599a7e7b7673fc4f0c1bc9d895e17e6c3d6b"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/source_evidence.json",
+      "bytes": 10522,
+      "sha256": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/approval_evidence.json",
+      "bytes": 1150,
+      "sha256": "6a822b2058adccc574aa6f865dff7af88ac8b8570e511365b0746865500884c1"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/chapters/chapter-001.json",
+      "bytes": 42249,
+      "sha256": "936596ce28eb8ac9d1d989e4fdcbfbba50b102b4a1e732f8718efa4647be3acb"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/checksum_manifest.json",
+      "bytes": 1207,
+      "sha256": "1c47abfa56da878dd206f99ddd129dfe313a42752b2d681469e1622b8352d32a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/cover_provenance.json",
+      "bytes": 1550,
+      "sha256": "4e04b57d0ae9939d798c2267d715ca76bfb7b53a972fc393dc4c141ea46c39b1"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/highlight_sync.json",
+      "bytes": 762968,
+      "sha256": "4acdc7bb8882508f0ba6c8326fcdac51ebe5d0d802b45d57a18e6ad4e362e58c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/historical-noncover-rights-decision.json",
+      "bytes": 2143,
+      "sha256": "3411197e6c650bb3c50613f1a789f684b49a5f8ac6db8bb2ed099f7603e801ca"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/public_book.json",
+      "bytes": 3794,
+      "sha256": "7ef989b45091aa54b92df7d28b8a6921b33c0b42c02a5e71347dc37eeb1ea044"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/publication_authorization.json",
+      "bytes": 1501,
+      "sha256": "849b10a17dc746a05f93cedaa1187a88f76665a01b8bcbf874d4ac8dc0b37e58"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/publication_manifest.json",
+      "bytes": 2038,
+      "sha256": "517a557fc5513eb3ab11507ea8cfe7768bb123417885ef35625fd05b8c2eca8a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/reader_manifest.json",
+      "bytes": 773,
+      "sha256": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/rights_decision.json",
+      "bytes": 2455,
+      "sha256": "219292c5eb7772bc457995b382390b96b89cd7973073c96697e38dff0fea3993"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-final-problem/source_evidence.json",
+      "bytes": 10184,
+      "sha256": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/approval_evidence.json",
+      "bytes": 1154,
+      "sha256": "eecb5f7c18ae3e83715a2f34b98b40733b9f80e6d1b697d3e1b988b7182ebda3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/chapters/chapter-001.json",
+      "bytes": 42360,
+      "sha256": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/checksum_manifest.json",
+      "bytes": 1211,
+      "sha256": "762db6aa17aeb7e74b0e57a9a4f25e01089830bd094b5be0a43b02e110b41fb2"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/cover_provenance.json",
+      "bytes": 1569,
+      "sha256": "c36a229e5835a2b7cd65c460a9808c5e5eb7a3a8860de309b7eed30148286a8d"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/highlight_sync.json",
+      "bytes": 749424,
+      "sha256": "62a1055c31f4c62c42dce840de67a4c8b307031c645689e6958827c42aad6e10"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/historical-noncover-rights-decision.json",
+      "bytes": 2151,
+      "sha256": "4e05d75dc999513ffa40b64be9b45533fe2cc71e9c25955c1befb26c10c30489"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/public_book.json",
+      "bytes": 3843,
+      "sha256": "757dc394f18037475b2bcc57598d8a48519081d136c2b4d82e837f0aec9f56ce"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/publication_authorization.json",
+      "bytes": 1509,
+      "sha256": "d3f1244de6ad42511865dee21a8c6176dd37fdcb0586f7dfaaad545a93a6680a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/publication_manifest.json",
+      "bytes": 2054,
+      "sha256": "0e6390251f5470bb52cae162cf17de9cdade3d3db945200ea0a50b69a89222e9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/reader_manifest.json",
+      "bytes": 785,
+      "sha256": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/rights_decision.json",
+      "bytes": 2467,
+      "sha256": "113c1a65e5b3e9b6a613634360f27551524ebd8bdc7eb19d835122ace401defe"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/source_evidence.json",
+      "bytes": 10192,
+      "sha256": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/approval_evidence.json",
+      "bytes": 1151,
+      "sha256": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/chapters/chapter-001.json",
+      "bytes": 47981,
+      "sha256": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/checksum_manifest.json",
+      "bytes": 1208,
+      "sha256": "36443db772499754b107d562c7cc6f0d7fd44532b06ac8d4a558da007cf9a6a4"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/cover_provenance.json",
+      "bytes": 1554,
+      "sha256": "6ab9a2a50cebe99cbbf855dff0d2fe9f95c94439b9a3dd70768b487fdef095da"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/highlight_sync.json",
+      "bytes": 869560,
+      "sha256": "2ef806a05205908938aed3dd1078dc407692742988b2e7ba2db4c1665951db05"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/historical-noncover-rights-decision.json",
+      "bytes": 2146,
+      "sha256": "b9a15e0fe7a745b5d22ee7fe5866584ff33852cc0f778a0b0d894f4250571ebd"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/public_book.json",
+      "bytes": 3797,
+      "sha256": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/publication_authorization.json",
+      "bytes": 1507,
+      "sha256": "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/publication_manifest.json",
+      "bytes": 2042,
+      "sha256": "71d20d2b5cc90f510bfa55f9f4a5f9643b0b853cb460e988d7718c5421712b70"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/reader_manifest.json",
+      "bytes": 776,
+      "sha256": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/rights_decision.json",
+      "bytes": 2459,
+      "sha256": "b05f450840048b326c242ffd5da367eb72749b54ec93d2fe622066785dbe72e8"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/source_evidence.json",
+      "bytes": 10519,
+      "sha256": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/approval_evidence.json",
+      "bytes": 1150,
+      "sha256": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/chapters/chapter-001.json",
+      "bytes": 68436,
+      "sha256": "b10b2a88e25156966addb6dc3324bb46ad6a5e1ba5d846435b2240d180f09ace"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/checksum_manifest.json",
+      "bytes": 1207,
+      "sha256": "64dee73ee6d5ed9f6a89253af637ff5b4e250b76e46ff96b64765d6af53dae2e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/cover_provenance.json",
+      "bytes": 1550,
+      "sha256": "b6c2a373a40ce3f1434406d02d78978e2babea85d1811288cbe112bb95c0e435"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/highlight_sync.json",
+      "bytes": 1228051,
+      "sha256": "78d558acc9ee4f334e2d91b65bd8477f5d8b5153077bdabaecb486faf4a5ec60"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/historical-noncover-rights-decision.json",
+      "bytes": 2143,
+      "sha256": "41734cf532fd28d819e465931efc0bbbbc12c6833bfca8002598ba1ab7a91fd2"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/public_book.json",
+      "bytes": 3782,
+      "sha256": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/publication_authorization.json",
+      "bytes": 1500,
+      "sha256": "f71802943d1f086287984177c0540d63bdcb72a04c7d987a7557b5f54f3c0c00"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/publication_manifest.json",
+      "bytes": 2039,
+      "sha256": "a9dc150a588b338a72eb20b4053bf5450a470844d45bca616de8f266ba598769"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/reader_manifest.json",
+      "bytes": 774,
+      "sha256": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/rights_decision.json",
+      "bytes": 2455,
+      "sha256": "c79dd0bcafcdc64335923f8d5cc2cca3f83d78f105eb0ebaadd72937450e8872"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-priory-school/source_evidence.json",
+      "bytes": 10456,
+      "sha256": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/approval_evidence.json",
+      "bytes": 1149,
+      "sha256": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/chapters/chapter-001.json",
+      "bytes": 58298,
+      "sha256": "0368a6a2ff680cc06cadd9183fa1fbe29d1481f3e788399ca752e9da4151899a"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/checksum_manifest.json",
+      "bytes": 1206,
+      "sha256": "de53cce4037cc0cad75c372f8115efa9e03dba4db81987456daad00d737c5310"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/cover_provenance.json",
+      "bytes": 1544,
+      "sha256": "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/highlight_sync.json",
+      "bytes": 1036648,
+      "sha256": "10ec8f5c577bdb9080027ef4c4abae559fe996c70d450370026663aead17c317"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/historical-noncover-rights-decision.json",
+      "bytes": 2141,
+      "sha256": "6789212882dc7db1d010afbdf7747e5a1dac62dc8fce56b992fe077ae78afb75"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/public_book.json",
+      "bytes": 3801,
+      "sha256": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/publication_authorization.json",
+      "bytes": 1498,
+      "sha256": "d9d7799750a0b5bdb6f9f435a14121459b1c5b1b0963dbec3b118482f28f7535"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/publication_manifest.json",
+      "bytes": 2034,
+      "sha256": "ca90e6d35d2a350d32cf7435ae8052585a0361f22377ccc9f796ee1cc83ccc61"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/reader_manifest.json",
+      "bytes": 770,
+      "sha256": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/rights_decision.json",
+      "bytes": 2452,
+      "sha256": "86474427e767141c2f23bcc6d38ec38f428d0b55f3db223e0fe4d1087ca8ebe7"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-second-stain/source_evidence.json",
+      "bytes": 10454,
+      "sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/approval_evidence.json",
+      "bytes": 1153,
+      "sha256": "4eaf47c3877cdbf726270cf1ec74513507eddaa87be98b48bf1283090d65a971"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/chapters/chapter-001.json",
+      "bytes": 46419,
+      "sha256": "c9c191055227e38401d2af0d490c44862797d649ab3fa368a0919742fba376fb"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/checksum_manifest.json",
+      "bytes": 1210,
+      "sha256": "e1112f734d53855e64241f6a37372fdade2ad8f48ddc199c74ca8062f5444ef4"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/cover_provenance.json",
+      "bytes": 1565,
+      "sha256": "e1e36e8a61f9c9cf3c33ce5db003e7af0daf6fb192e7f8d25b2630907a126d59"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/highlight_sync.json",
+      "bytes": 841062,
+      "sha256": "b54d1f6ed0521ec8a5ee8a29fde4adc2784f0409bef7c38629def4fd2327a6b3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/historical-noncover-rights-decision.json",
+      "bytes": 2149,
+      "sha256": "cd27cc2b34bf8220020c72cf477b6fd5d2abd83fdb531e8e0742ee82b148eb29"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/public_book.json",
+      "bytes": 3780,
+      "sha256": "0b06d639d435b5ebab82991a5e132f7d632e74bd5c5442b8c5bd30cc908d29a3"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/publication_authorization.json",
+      "bytes": 1506,
+      "sha256": "cdbbaf900ca5505db7a4ebd111490ba790dfdae427a2fc38896fdfce1d04bc44"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/publication_manifest.json",
+      "bytes": 2050,
+      "sha256": "70b48371820cf2cd6f425839b2268d890558f947895e8596700c8cccc5fba75e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/reader_manifest.json",
+      "bytes": 782,
+      "sha256": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/rights_decision.json",
+      "bytes": 2464,
+      "sha256": "9688f053162a2be2fa1f2cb0b90f5aa059b79d1a3edb184d6ec6967374ae2e1e"
+    },
+    {
+      "path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/source_evidence.json",
+      "bytes": 10462,
+      "sha256": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f"
     },
     {
       "path": "data/controlled_publications/the-adventures-of-sherlock-holmes/approval_evidence.json",
@@ -6348,6 +6803,66 @@
       "sha256": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5"
     },
     {
+      "path": "data/controlled_publications/the-ambitious-guest/approval_evidence.json",
+      "bytes": 1135,
+      "sha256": "03761b2b57131c63301ff665aa45a0f4e8378fbdf4f125e0c854e09d7a28f198"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/chapters/chapter-001.json",
+      "bytes": 19729,
+      "sha256": "441e27f512cee1faa4ec5513e22ffc748b80b1313950ff2c5c509a5e32437f56"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/checksum_manifest.json",
+      "bytes": 1192,
+      "sha256": "cc62326b729d116a6b167a0c4cf113f318b58248e817b37b2613cd2aebbc5bf7"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/cover_provenance.json",
+      "bytes": 1475,
+      "sha256": "29ac28165c4db3efefd0a591255bebdd5fd426a8578a88fc95c8d1817154d78b"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/highlight_sync.json",
+      "bytes": 347142,
+      "sha256": "58fe5efcac6c8b3f3adb02b068aed0319d9f22fdf706b3740b8c426760187036"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/historical-noncover-rights-decision.json",
+      "bytes": 2115,
+      "sha256": "950d323f349604a208ee49d79e774f3c80ee39b7d76583308ef2e65a9a1134a0"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/public_book.json",
+      "bytes": 3678,
+      "sha256": "b37a0d5ec87d22cf855e6e9b35572ced8261a04ac0876a939740f67de41e89fd"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/publication_authorization.json",
+      "bytes": 1464,
+      "sha256": "974d1c8ec015dd85f8438b3001af565acd5713b7b7c994ac2afd02a8e5e92bff"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/publication_manifest.json",
+      "bytes": 1978,
+      "sha256": "c391c36ceedf0f3c9aa8fec71b0bc619819134bfb24994c1eb7fd6c2d25def78"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/reader_manifest.json",
+      "bytes": 729,
+      "sha256": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/rights_decision.json",
+      "bytes": 2412,
+      "sha256": "70666a66e30ad1791970c6e52ec254038cff2aa316532af30958fdd0d6857fc3"
+    },
+    {
+      "path": "data/controlled_publications/the-ambitious-guest/source_evidence.json",
+      "bytes": 10884,
+      "sha256": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1"
+    },
+    {
       "path": "data/controlled_publications/the-art-of-money-getting/approval_evidence.json",
       "bytes": 2807,
       "sha256": "97b86a96208b8acb5dca7cb2b084efcbaa7e846cd48f4c4e83c0517f05d50474"
@@ -6436,6 +6951,66 @@
       "path": "data/controlled_publications/the-art-of-money-getting/source_integrity_validation.json",
       "bytes": 1327,
       "sha256": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/approval_evidence.json",
+      "bytes": 1123,
+      "sha256": "52dc4b9d2813f6db80100628504f4ced83109a411f94c6f606323b5c68ec0ab6"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/chapters/chapter-001.json",
+      "bytes": 16398,
+      "sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/checksum_manifest.json",
+      "bytes": 1180,
+      "sha256": "fbd5dc2050df5d55dd5e7eac78aa7935529b9ee206076f98422a97fd8a5c9ceb"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/cover_provenance.json",
+      "bytes": 1414,
+      "sha256": "a54a55bbbfb777a8bd8edeb856b44284da28961ce7598836b9744f3a84b30e2a"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/highlight_sync.json",
+      "bytes": 286356,
+      "sha256": "d1f67f2e756f25748180bf40ed9092b63b6be92465c99d1d1c8a42f4a680343a"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/historical-noncover-rights-decision.json",
+      "bytes": 1861,
+      "sha256": "d172ca7d041222da624971294a0f9bb5b1c335e99691bdbe5c9a7616b0a923f2"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/public_book.json",
+      "bytes": 3526,
+      "sha256": "b8386b447eb837d7d5f00a36d6690430071764a15a6ab6cbe7d8c4934546b7c4"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/publication_authorization.json",
+      "bytes": 1395,
+      "sha256": "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/publication_manifest.json",
+      "bytes": 1930,
+      "sha256": "09f70ac9685c19420bcb2ee6e6e41d0d8358c890f08387635bcb4eb2c7e86a7d"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/reader_manifest.json",
+      "bytes": 687,
+      "sha256": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/rights_decision.json",
+      "bytes": 2376,
+      "sha256": "3f771e7b47b94babaeff1373ff8e9eabc3eecb3b2aeb60723ee3fbf780d055c0"
+    },
+    {
+      "path": "data/controlled_publications/the-bet/source_evidence.json",
+      "bytes": 12344,
+      "sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
     },
     {
       "path": "data/controlled_publications/the-bishop/approval_evidence.json",
@@ -6698,6 +7273,66 @@
       "sha256": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
     },
     {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/approval_evidence.json",
+      "bytes": 1163,
+      "sha256": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/chapters/chapter-001.json",
+      "bytes": 15306,
+      "sha256": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/checksum_manifest.json",
+      "bytes": 1220,
+      "sha256": "4086bda0ad821b79d3ce397a4f685e5a1176ef54df9dbc891e667cdb18a832f4"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/cover_provenance.json",
+      "bytes": 1615,
+      "sha256": "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/highlight_sync.json",
+      "bytes": 285862,
+      "sha256": "28b864b388db4f266a46147d93087f43f703d8b4528ce003678bb1b7a653b8c7"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/historical-noncover-rights-decision.json",
+      "bytes": 2171,
+      "sha256": "73ab30296891d0a21bfef17069d458c699831020b9478e8f4999ea430a341f93"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/public_book.json",
+      "bytes": 3880,
+      "sha256": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/publication_authorization.json",
+      "bytes": 1453,
+      "sha256": "c181ba405dd630ba5daf91f2ce1aab70104b4589ea75302f33be9ae4e453879d"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/publication_manifest.json",
+      "bytes": 2090,
+      "sha256": "b7bac75f315bfd5b93bc154d71a73ae83e6f03aacb22cfff932ccc841c6eb183"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/reader_manifest.json",
+      "bytes": 804,
+      "sha256": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/rights_decision.json",
+      "bytes": 2496,
+      "sha256": "b01bf917cf08422244586ddf6a477ac4e9c7e4d550196b93ec5fc925cc78ff3f"
+    },
+    {
+      "path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/source_evidence.json",
+      "bytes": 10983,
+      "sha256": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+    },
+    {
       "path": "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
       "bytes": 2748,
       "sha256": "ad2a4409b20b7b432c632362270f6ce747ead1327780c99447233338c0513df9"
@@ -6804,18 +7439,23 @@
     },
     {
       "path": "data/controlled_publications/the-country-of-the-blind/approval_evidence.json",
-      "bytes": 360,
-      "sha256": "ba17737ee2cb2ea95ab3a66a109dcb4a1d36ac6437fdf7bf2c6cb006d64b4940"
+      "bytes": 1140,
+      "sha256": "283d507508e047df05b72cad44b9da59af0c08e222c4418caa9b0b19601f01be"
     },
     {
       "path": "data/controlled_publications/the-country-of-the-blind/chapters/chapter-001.json",
       "bytes": 55734,
-      "sha256": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6"
+      "sha256": "cc65d1fb0a33ce89c6bd4ec90e3ff811fbff5b8787071b6720842936fd9cc20b"
     },
     {
       "path": "data/controlled_publications/the-country-of-the-blind/checksum_manifest.json",
-      "bytes": 1042,
-      "sha256": "a6f14e549aa4b1b560d2243c8df6ab7c3532acf77f00cd1d0dc15e51b3442945"
+      "bytes": 1197,
+      "sha256": "21e2c5725bcb6fbab9abad658e58639d70533d6722f49d567379026c2caa9cc6"
+    },
+    {
+      "path": "data/controlled_publications/the-country-of-the-blind/cover_provenance.json",
+      "bytes": 1500,
+      "sha256": "83ff8e91733d3d43a17adbcf15b8ef72d76dad576da2d6fc61192eb81d2e9aa1"
     },
     {
       "path": "data/controlled_publications/the-country-of-the-blind/highlight_sync.json",
@@ -6823,9 +7463,24 @@
       "sha256": "00a054a2ac3350832ac63791f8948a481bf4398786e0a3cde3099bcc83d1ecf5"
     },
     {
+      "path": "data/controlled_publications/the-country-of-the-blind/historical-noncover-rights-decision.json",
+      "bytes": 2125,
+      "sha256": "27481de3e363215fde656049b8c64467340ff1a6422aef729d2fcf470558540a"
+    },
+    {
       "path": "data/controlled_publications/the-country-of-the-blind/public_book.json",
-      "bytes": 5227,
-      "sha256": "1dc6022ee78fe065dc905d2047d2adddcd0eb2c014921e4632ce1d4f9758d1f5"
+      "bytes": 3781,
+      "sha256": "c329387501c154989063c36304b35725c6281f8c9c5dc021fc3493e6f9a7501f"
+    },
+    {
+      "path": "data/controlled_publications/the-country-of-the-blind/publication_authorization.json",
+      "bytes": 1469,
+      "sha256": "d0e11ea5e83c9fe2f4fdc3e013fa22beef3b85627ccf3aacb45353471ca1f5d8"
+    },
+    {
+      "path": "data/controlled_publications/the-country-of-the-blind/publication_manifest.json",
+      "bytes": 1998,
+      "sha256": "6614eb9c6c41c22a00bcfb991a8d5d84cf4a3cae7712ceefa9c73ad83399d955"
     },
     {
       "path": "data/controlled_publications/the-country-of-the-blind/reader_manifest.json",
@@ -6833,9 +7488,134 @@
       "sha256": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f"
     },
     {
+      "path": "data/controlled_publications/the-country-of-the-blind/rights_decision.json",
+      "bytes": 2427,
+      "sha256": "e2930d17b2caf8d3f4e7457c081fdd7201f160001f23d16064eccc09373fbc6a"
+    },
+    {
       "path": "data/controlled_publications/the-country-of-the-blind/source_evidence.json",
-      "bytes": 734,
-      "sha256": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69"
+      "bytes": 10817,
+      "sha256": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/approval_evidence.json",
+      "bytes": 1127,
+      "sha256": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/chapters/chapter-001.json",
+      "bytes": 29043,
+      "sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/checksum_manifest.json",
+      "bytes": 1184,
+      "sha256": "ba642416ff3d5e41462b7c548dd91afbe5a3bf567dbb86e1aefb0ea75ca59021"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/cover_provenance.json",
+      "bytes": 1434,
+      "sha256": "5f650ca64ae3ab2fa8e435261092307cea8914078a21a3d55df8e9526591d97a"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/highlight_sync.json",
+      "bytes": 522202,
+      "sha256": "33ee0d3b4c4c7ca428274f680b5a64dc6e86078ada59cda9bc8b9df3d4e592d0"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/historical-noncover-rights-decision.json",
+      "bytes": 2012,
+      "sha256": "8fee7fc48294a0119a8be8758a82928c04bcfdf332c078e6091b76bde23bf3b1"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/public_book.json",
+      "bytes": 3527,
+      "sha256": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/publication_authorization.json",
+      "bytes": 1423,
+      "sha256": "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/publication_manifest.json",
+      "bytes": 1946,
+      "sha256": "2499158248e3a1f045cc4d9789122f8ae922501dadd0c8d4822f7bdec9e50533"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/reader_manifest.json",
+      "bytes": 699,
+      "sha256": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/rights_decision.json",
+      "bytes": 2388,
+      "sha256": "7f3aa65997db6d9ec54e0084a5054f249cc0f38dd3095470dfe5d4bda855c910"
+    },
+    {
+      "path": "data/controlled_publications/the-darling/source_evidence.json",
+      "bytes": 11066,
+      "sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/approval_evidence.json",
+      "bytes": 1136,
+      "sha256": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/chapters/chapter-001.json",
+      "bytes": 38570,
+      "sha256": "cb189b4877fabea21abfa29695a81ba7ee2414bcb96d9b42f01056e584899181"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/checksum_manifest.json",
+      "bytes": 1193,
+      "sha256": "8ecd211a9a8db86e8aafc8cd540fedb3ec9920b35f08cf6339f69764d7b3aae4"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/cover_provenance.json",
+      "bytes": 1480,
+      "sha256": "efbcae6afbf6c00657fbd8eafa7a96a2f588e824d2c34a7d58ab8ea34c579431"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/highlight_sync.json",
+      "bytes": 715360,
+      "sha256": "c5504b62f868ae782d814c7b6556afe482d0f2c1cab666ca1e314dce435e4568"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/historical-noncover-rights-decision.json",
+      "bytes": 2117,
+      "sha256": "c033720b50ff74c5267840fa3a2650102fbbaa1f3a98c91a47c3f91ab62395af"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/public_book.json",
+      "bytes": 3655,
+      "sha256": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/publication_authorization.json",
+      "bytes": 1461,
+      "sha256": "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/publication_manifest.json",
+      "bytes": 1982,
+      "sha256": "3bf0ee4e784e2915c8749e14e6d3a73199f8f6b90b0b59bf93630a88c5643f29"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/reader_manifest.json",
+      "bytes": 723,
+      "sha256": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/rights_decision.json",
+      "bytes": 2415,
+      "sha256": "3ac8f74455746463c25b4e855303c82579e0cc80a1a7c2113279708a39fb61a9"
+    },
+    {
+      "path": "data/controlled_publications/the-door-in-the-wall/source_evidence.json",
+      "bytes": 10809,
+      "sha256": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf"
     },
     {
       "path": "data/controlled_publications/the-enchanted-april/approval_evidence.json",
@@ -7056,6 +7836,66 @@
       "path": "data/controlled_publications/the-fall-of-the-house-of-usher/source_evidence.json",
       "bytes": 1694,
       "sha256": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/approval_evidence.json",
+      "bytes": 1134,
+      "sha256": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/chapters/chapter-001.json",
+      "bytes": 15339,
+      "sha256": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/checksum_manifest.json",
+      "bytes": 1191,
+      "sha256": "74369f09a9c556dd32a68302bbd4797d5a26eaeb43c223d55d7588030777fc03"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/cover_provenance.json",
+      "bytes": 1470,
+      "sha256": "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/highlight_sync.json",
+      "bytes": 262542,
+      "sha256": "907ae8423bbc6cca6918f9f8346b8b6f6f6f47fb170e12a2e0a1d626eca6f19a"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/historical-noncover-rights-decision.json",
+      "bytes": 2112,
+      "sha256": "12c4cce6e2f2ac97269d3ae6aade99cb76c7057a69dc9eb793e762be5a66c517"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/public_book.json",
+      "bytes": 3646,
+      "sha256": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/publication_authorization.json",
+      "bytes": 1446,
+      "sha256": "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/publication_manifest.json",
+      "bytes": 1974,
+      "sha256": "872be983e97eaee99c39b6d098aea74bce6c5092d8ee1f528392819085634ed2"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/reader_manifest.json",
+      "bytes": 715,
+      "sha256": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/rights_decision.json",
+      "bytes": 2408,
+      "sha256": "e1edfb8dcf61b951d17a6f3e08b14c0f54b7c3cf034735ddf7992c243b2243f0"
+    },
+    {
+      "path": "data/controlled_publications/the-furnished-room/source_evidence.json",
+      "bytes": 10419,
+      "sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
     },
     {
       "path": "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json",
@@ -7318,6 +8158,66 @@
       "sha256": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
     },
     {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/approval_evidence.json",
+      "bytes": 1139,
+      "sha256": "d95bca3764f82dea50328f96b07494d8fef4aa9c1f4df8de19f05506f28d1ba6"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/chapters/chapter-001.json",
+      "bytes": 15481,
+      "sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/checksum_manifest.json",
+      "bytes": 1196,
+      "sha256": "a7f8ea7b95800ad8c1a2cf9cb92fd424e3dcbc294d5246c59d2b2b4ad98ee8f5"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/cover_provenance.json",
+      "bytes": 1494,
+      "sha256": "2ff3d245dea532c501ac08cf4a330769a5514b870aa81e7d0c589d27894bfef0"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/highlight_sync.json",
+      "bytes": 256735,
+      "sha256": "0f8706e91dce5be420da44bad2114aa072e4ef28ad377900fcc8d257f0bfac6f"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/historical-noncover-rights-decision.json",
+      "bytes": 2122,
+      "sha256": "a85a38eb35d832a17cbe2a44a6c4bc5f95208f0266b9e337c4477a3ea16ce23d"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/public_book.json",
+      "bytes": 3721,
+      "sha256": "befde6cf0c29c1270d71a20b55592a6bbee094b2133786f8339bdde031d083f5"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/publication_authorization.json",
+      "bytes": 1404,
+      "sha256": "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/publication_manifest.json",
+      "bytes": 1994,
+      "sha256": "4facd84e5c9bb36254f2a0338cc83aa391c13366202a5583533573b56eeeabbd"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/reader_manifest.json",
+      "bytes": 737,
+      "sha256": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/rights_decision.json",
+      "bytes": 2423,
+      "sha256": "d5688d3dd7b505bab7455666e71a9460e86d615e2ec40b57d9f8d667a605355f"
+    },
+    {
+      "path": "data/controlled_publications/the-imp-of-the-perverse/source_evidence.json",
+      "bytes": 9883,
+      "sha256": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
+    },
+    {
       "path": "data/controlled_publications/the-lady-with-the-dog/approval_evidence.json",
       "bytes": 362,
       "sha256": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba"
@@ -7373,24 +8273,54 @@
       "sha256": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
     },
     {
+      "path": "data/controlled_publications/the-last-leaf/approval_evidence 2.json",
+      "bytes": 349,
+      "sha256": "e4e07e7895fc94f495d641a83cf0dba9cbb4921e1bfe5eedd1eb5dcb16d023e7"
+    },
+    {
       "path": "data/controlled_publications/the-last-leaf/approval_evidence.json",
-      "bytes": 354,
-      "sha256": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee"
+      "bytes": 1129,
+      "sha256": "ef63c5f763a85e017e8132934e3deb8f6f273c33fe25b0ffea5030ff984c4df4"
     },
     {
       "path": "data/controlled_publications/the-last-leaf/chapters/chapter-001.json",
       "bytes": 14339,
-      "sha256": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b"
+      "sha256": "f341245317464de578e0b7d21b54de270d7d189bce9d9068403e51d9f86afd2b"
     },
     {
       "path": "data/controlled_publications/the-last-leaf/checksum_manifest.json",
-      "bytes": 898,
-      "sha256": "0ffbdae07093050fea51590ee9041edab084cb11994cd58be0616f71e68d42a0"
+      "bytes": 1324,
+      "sha256": "15ac1c46aa08f1caef1ec3f7d467f9bf9f5abc38e4b3058df9e8597462fedd0e"
+    },
+    {
+      "path": "data/controlled_publications/the-last-leaf/cover_provenance.json",
+      "bytes": 1445,
+      "sha256": "2edd7971e9d6dc45bae952024c2226e42919d15448f1a72ac486b862fe6d84fe"
+    },
+    {
+      "path": "data/controlled_publications/the-last-leaf/highlight_sync.json",
+      "bytes": 252933,
+      "sha256": "42fb16c4338b23d563538fc492308fc2bdf28541974c8f32a356f6410799c4ee"
+    },
+    {
+      "path": "data/controlled_publications/the-last-leaf/historical-noncover-rights-decision.json",
+      "bytes": 2102,
+      "sha256": "3d0ac79c90c8ca36222201830c4d7b6b85dae2459400faa0433d5145868f5f0e"
     },
     {
       "path": "data/controlled_publications/the-last-leaf/public_book.json",
-      "bytes": 3030,
-      "sha256": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d"
+      "bytes": 3476,
+      "sha256": "d794a4c2671bf8dd3c21b82bfe6b4d6e0b0ba7f495667d3c1700798275250e57"
+    },
+    {
+      "path": "data/controlled_publications/the-last-leaf/publication_authorization.json",
+      "bytes": 1436,
+      "sha256": "f7dd18c75a7ae20c808f7f4a32bf00c6de5199d5bf3d0006c7037ecb2de033cd"
+    },
+    {
+      "path": "data/controlled_publications/the-last-leaf/publication_manifest.json",
+      "bytes": 1954,
+      "sha256": "171193eda55e0a01c12ce687d127ef419617950123a4576f76051a2a104f08c4"
     },
     {
       "path": "data/controlled_publications/the-last-leaf/reader_manifest.json",
@@ -7398,9 +8328,194 @@
       "sha256": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d"
     },
     {
+      "path": "data/controlled_publications/the-last-leaf/rights_decision.json",
+      "bytes": 2393,
+      "sha256": "327f1fc3180b75f877e464806dc02edade147ac6f16e91d0c3e238ea245d44d2"
+    },
+    {
       "path": "data/controlled_publications/the-last-leaf/source_evidence.json",
-      "bytes": 720,
-      "sha256": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
+      "bytes": 10443,
+      "sha256": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/approval_evidence.json",
+      "bytes": 1143,
+      "sha256": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/chapters/chapter-001.json",
+      "bytes": 73493,
+      "sha256": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/checksum_manifest.json",
+      "bytes": 1200,
+      "sha256": "7002ee636ffc44d30203eef84bf94a7be89383302cb2c72fa200c16f1c1f93e2"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/cover_provenance.json",
+      "bytes": 1515,
+      "sha256": "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/highlight_sync.json",
+      "bytes": 1312850,
+      "sha256": "4c4314e581df037a9f213a04df22ae83208592c1fe7cc744132dae5ec6ce1119"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/historical-noncover-rights-decision.json",
+      "bytes": 2021,
+      "sha256": "745324ddb8457d3b45f911342a0f47e0cb23ccfab687e4f6088a188162f46dc7"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/public_book.json",
+      "bytes": 3699,
+      "sha256": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/publication_authorization.json",
+      "bytes": 1435,
+      "sha256": "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/publication_manifest.json",
+      "bytes": 2011,
+      "sha256": "eb289e38458c7914830f785363d826b4e731334ba84a4340b094c3cb2675e761"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/reader_manifest.json",
+      "bytes": 752,
+      "sha256": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/rights_decision.json",
+      "bytes": 2433,
+      "sha256": "1164ced0660494d5c0d6a9f9f8d20b1c28ba1e08561425d5a4fd25ef2cd8f3e0"
+    },
+    {
+      "path": "data/controlled_publications/the-legend-of-sleepy-hollow/source_evidence.json",
+      "bytes": 10097,
+      "sha256": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/approval_evidence.json",
+      "bytes": 1140,
+      "sha256": "ff6d01b7cf8091e137acc5495b56b860b6a637f3ae22ac584f9fef36d52de3df"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/chapters/chapter-001.json",
+      "bytes": 26118,
+      "sha256": "04e03292f90a30a5cacc6062540e0bf8dd51d08b4ae323af1b2f3c5071223020"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/checksum_manifest.json",
+      "bytes": 1197,
+      "sha256": "441ea77b51c9815bd71ded9965d0e6f450a6adfe904f23677c8d034ad78f039f"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/cover_provenance.json",
+      "bytes": 1500,
+      "sha256": "62fdba2dc8b768127e4bb03a4cd96608138459cdf7c8f8cd797ac8f2ca7be7bf"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/highlight_sync.json",
+      "bytes": 444571,
+      "sha256": "45f4b8e1d941ae2278ae337ede7e564650dce31e830e7331fc8be03d05b7c652"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/historical-noncover-rights-decision.json",
+      "bytes": 2124,
+      "sha256": "32e586e79c2198ce7deabd69fa8ffc4569af1390f9a33b74b386727e9a60bd21"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/public_book.json",
+      "bytes": 3646,
+      "sha256": "2bad3fb5a3f437694825edaceff1b4905e59ad66155936b1f74e27c76738bf87"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/publication_authorization.json",
+      "bytes": 1468,
+      "sha256": "3cb4118ac750e0d9badee69fb397ee0e1fb3a7d97f5662399e5bf0d5d326671c"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/publication_manifest.json",
+      "bytes": 1998,
+      "sha256": "2c917546e01e1c51d7aa8ad2b7a6b4ac07c92db8ab2d84ddd23c12e9abec4abc"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/reader_manifest.json",
+      "bytes": 735,
+      "sha256": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/rights_decision.json",
+      "bytes": 2426,
+      "sha256": "e64f0602aa8b9a6b91afcf1d15500d2e60ef9a5131915e47a59b44e381192aa3"
+    },
+    {
+      "path": "data/controlled_publications/the-luck-of-roaring-camp/source_evidence.json",
+      "bytes": 11365,
+      "sha256": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/approval_evidence.json",
+      "bytes": 1133,
+      "sha256": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/chapters/chapter-001.json",
+      "bytes": 31720,
+      "sha256": "91fe6eb0e770e743a46d29bf4f7901340c71be0eb2e43542bef68cc85ae73cf8"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/checksum_manifest.json",
+      "bytes": 1190,
+      "sha256": "e8a4f0edf8f0ff247b4b06fe9ba75b2e9491bcb9b8e60758c91cdc95f72696bd"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/cover_provenance.json",
+      "bytes": 1464,
+      "sha256": "1add91690ed370679923439b30f6f439d85702baa1e67130b698bcb1c1d9b11e"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/highlight_sync.json",
+      "bytes": 566682,
+      "sha256": "fc285a64aa8b585253a4e93c61623ef9e4217e193f9fae4136b7e54720a6052c"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/historical-noncover-rights-decision.json",
+      "bytes": 2023,
+      "sha256": "51d1c30f9f46b79e13f29f325a36a131bdfd16ed1faf22d1a697b1e076ffa72c"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/public_book.json",
+      "bytes": 3639,
+      "sha256": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/publication_authorization.json",
+      "bytes": 1428,
+      "sha256": "acb572bfb7711d1ebb18a1836bccb21343e944f108d04a97a5676673974e84f9"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/publication_manifest.json",
+      "bytes": 1970,
+      "sha256": "3dc0afa7cbaecf259d2b8bfe64acc2cf4e6759f17783293afb122e2ca5c1f075"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/reader_manifest.json",
+      "bytes": 717,
+      "sha256": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/rights_decision.json",
+      "bytes": 2405,
+      "sha256": "415b24972ad1d364b768468fe5d75451e3999d421a2bb37a03bb3721aa5c4aec"
+    },
+    {
+      "path": "data/controlled_publications/the-man-in-a-case/source_evidence.json",
+      "bytes": 11106,
+      "sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
     },
     {
       "path": "data/controlled_publications/the-man-who-would-be-king/approval_evidence.json",
@@ -7458,24 +8573,114 @@
       "sha256": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
     },
     {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/approval_evidence.json",
+      "bytes": 1144,
+      "sha256": "59d2ceb1729cc8e7f2827829d730ecbcf79e571c651643ca81aa045084afa1eb"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/chapters/chapter-001.json",
+      "bytes": 53107,
+      "sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/checksum_manifest.json",
+      "bytes": 1201,
+      "sha256": "77791c01dbddfbf53e99fddaad06592cde56464db418481cabdfd43ddea7f84b"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/cover_provenance.json",
+      "bytes": 1520,
+      "sha256": "3f7c5f097a5eb63d8a61dabbf0f9e1430372f9ede6c5afa6cf3253f79b318482"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/highlight_sync.json",
+      "bytes": 987716,
+      "sha256": "0e2f3ed85bd3dae7914137683dabc8178a600c5c2880f161154eef25db60b910"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/historical-noncover-rights-decision.json",
+      "bytes": 2132,
+      "sha256": "780ba7cd8617591a24711bbd0ca0626d39665316ebfbdbd2bee6c08943292868"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/public_book.json",
+      "bytes": 3699,
+      "sha256": "9faaddaebb206ae54a8a62862c1e8ad1509bb8f1cfda8e38cb4a1bbda7d95831"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/publication_authorization.json",
+      "bytes": 1493,
+      "sha256": "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/publication_manifest.json",
+      "bytes": 2014,
+      "sha256": "adec56d35bf0334b18f473503208b8c92edd03f931afbd6bee4da2b5d28bc22b"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/reader_manifest.json",
+      "bytes": 755,
+      "sha256": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/rights_decision.json",
+      "bytes": 2438,
+      "sha256": "3ca58c88a38b778350e6be86510093888c385fe8f30717903340d7ae311861b6"
+    },
+    {
+      "path": "data/controlled_publications/the-man-with-the-twisted-lip/source_evidence.json",
+      "bytes": 10505,
+      "sha256": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/approval_evidence 2.json",
+      "bytes": 363,
+      "sha256": "9a0405a6e5ca46a57cc4fb0b79f6965e129001f2bcbf692544eb1c1da9ec71d6"
+    },
+    {
       "path": "data/controlled_publications/the-masque-of-the-red-death/approval_evidence.json",
-      "bytes": 368,
-      "sha256": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677"
+      "bytes": 1143,
+      "sha256": "378211194920d17e628b54c3cd63e497941bef47ed6bc45bc232e69e352dfcff"
     },
     {
       "path": "data/controlled_publications/the-masque-of-the-red-death/chapters/chapter-001.json",
       "bytes": 15011,
-      "sha256": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2"
+      "sha256": "2df5040f80f4204a85826e5fcd3e5cddf501a4f9bcaed2175bdcb6b7cbf79008"
     },
     {
       "path": "data/controlled_publications/the-masque-of-the-red-death/checksum_manifest.json",
-      "bytes": 912,
-      "sha256": "e17a789f69091f361eeb8b67ae1fa0a8a88631588165dbd61c22b605d0f84403"
+      "bytes": 1338,
+      "sha256": "ae4bf95ef36dc165e77d84ee729b1899ea0f683b25aa863c630e2ca362dceb02"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/cover_provenance.json",
+      "bytes": 1514,
+      "sha256": "6f1f9757c03b7acc37292be721f2883823e3c5ce7aaa06fb810a3d14b240fbe8"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/highlight_sync.json",
+      "bytes": 255217,
+      "sha256": "f7889a46138bf8206260cebbdfa6a1fdc0bd6dc89c3b1cc5e7f8f31825303729"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/historical-noncover-rights-decision.json",
+      "bytes": 2130,
+      "sha256": "3a531973e55b38ee19b7161f9cdce6307fcabd5023c88a8a9c4500a3cf4cc76f"
     },
     {
       "path": "data/controlled_publications/the-masque-of-the-red-death/public_book.json",
-      "bytes": 3097,
-      "sha256": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237"
+      "bytes": 3599,
+      "sha256": "7c71b972649d03d0b9f7283f7f08cf10137f6a3534db925e09512350b94d05a4"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/publication_authorization.json",
+      "bytes": 1408,
+      "sha256": "83be9ac6714a1943449958d5516c084da7aaf955b1cb97bc2ba2f043711b15fa"
+    },
+    {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/publication_manifest.json",
+      "bytes": 2010,
+      "sha256": "d6fb5fb00c994d1e4db666bd16d9fb1ee548b3e4744a5572c15858d1d75ada49"
     },
     {
       "path": "data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
@@ -7483,54 +8688,74 @@
       "sha256": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57"
     },
     {
+      "path": "data/controlled_publications/the-masque-of-the-red-death/rights_decision.json",
+      "bytes": 2435,
+      "sha256": "a473ffa845c10aaefbbd5b8c24e218037fa5159c201c13974e0b48a190989171"
+    },
+    {
       "path": "data/controlled_publications/the-masque-of-the-red-death/source_evidence.json",
-      "bytes": 741,
-      "sha256": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
+      "bytes": 9309,
+      "sha256": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/approval_evidence.json",
-      "bytes": 518,
-      "sha256": "06f1c670cba4205c9e6592839202a99e579f3c7358bd5f2f9940e5f68245ad81"
+      "path": "data/controlled_publications/the-ministers-black-veil/approval_evidence.json",
+      "bytes": 1140,
+      "sha256": "30c6674ae62cf9729dbcd4aa6c280a5a6b7cd44578c6d54c145fa93e649887ef"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/chapters/chapter-001.json",
-      "bytes": 40888,
-      "sha256": "cb557359c26e78cd780db0b88d5a64abb1293f72512772c7ac61c3ce65b6d91d"
+      "path": "data/controlled_publications/the-ministers-black-veil/chapters/chapter-001.json",
+      "bytes": 31758,
+      "sha256": "1125739cfce0ac48e42a21de204a7973c7a16ea37dca4cdc832d094a65c5d390"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/chapters/chapter-002.json",
-      "bytes": 42811,
-      "sha256": "55e10e2dc8fd8355db044d69199d9ccddd05429060b81a3473f952f5960aac9e"
+      "path": "data/controlled_publications/the-ministers-black-veil/checksum_manifest.json",
+      "bytes": 1197,
+      "sha256": "3d7044963941bad0344a1f5c28691fcdf64e6f71543c0f721561db57ea4d000b"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/chapters/chapter-003.json",
-      "bytes": 43117,
-      "sha256": "9ac218d4e247ed077b1d22bb99afd7f2f284a66e6a615c4d23f6dec14429c6eb"
+      "path": "data/controlled_publications/the-ministers-black-veil/cover_provenance.json",
+      "bytes": 1499,
+      "sha256": "100ef82f45a2531e36c195018a68274873aebe533da061f795f0b90127d83940"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/checksum_manifest.json",
-      "bytes": 1177,
-      "sha256": "72c3fd98c4431c761c751805e4b435049919d678ba554d7c84769d8d3a2f80be"
+      "path": "data/controlled_publications/the-ministers-black-veil/highlight_sync.json",
+      "bytes": 552672,
+      "sha256": "54007edcbef9e9a6e4f9799cf834891c60bb0cbbe71408fbb53f444953788ca7"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/highlight_sync.json",
-      "bytes": 456,
-      "sha256": "263b4a9b1d8f48b3d4b03948849c8b6ce9d48e4dfe2a065a9a70e01fd533a18b"
+      "path": "data/controlled_publications/the-ministers-black-veil/historical-noncover-rights-decision.json",
+      "bytes": 2125,
+      "sha256": "95895346786830bdfea6d2b0ca6f3c8b7c4b7428ccc844633e49ed0b446cb2ab"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/public_book.json",
-      "bytes": 4608,
-      "sha256": "73ce6de1adfd1d67cd5d3f8497c0f3f50d1dd2917e90c00a4e934d6e495d4da5"
+      "path": "data/controlled_publications/the-ministers-black-veil/public_book.json",
+      "bytes": 3672,
+      "sha256": "046d3cd2d456b830d416d7486f1aa249ce957b66e21534046daf7f36ff14803e"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/reader_manifest.json",
-      "bytes": 1609,
-      "sha256": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f"
+      "path": "data/controlled_publications/the-ministers-black-veil/publication_authorization.json",
+      "bytes": 1475,
+      "sha256": "28ec24bbef4985ac88b7ac7780580d97925eec3cf1bf699fc88ef9be89553931"
     },
     {
-      "path": "data/controlled_publications/the-metamorphosis/source_evidence.json",
-      "bytes": 1774,
-      "sha256": "06df4d6c20695f2c65fc44380c6b9db210dbe2a0c350670af0c766fdf3e53dcc"
+      "path": "data/controlled_publications/the-ministers-black-veil/publication_manifest.json",
+      "bytes": 2000,
+      "sha256": "34974316a4e00de726261bec8035bc79bebc3ebd249b0ca6b37fa7e561b67a84"
+    },
+    {
+      "path": "data/controlled_publications/the-ministers-black-veil/reader_manifest.json",
+      "bytes": 746,
+      "sha256": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0"
+    },
+    {
+      "path": "data/controlled_publications/the-ministers-black-veil/rights_decision.json",
+      "bytes": 2427,
+      "sha256": "e97d5be346234cbc8eb070496aa1a4a83e3418c2f5fe14299ebe2bea1d66aa97"
+    },
+    {
+      "path": "data/controlled_publications/the-ministers-black-veil/source_evidence.json",
+      "bytes": 10893,
+      "sha256": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7"
     },
     {
       "path": "data/controlled_publications/the-monkeys-paw/approval_evidence.json",
@@ -7606,6 +8831,66 @@
       "path": "data/controlled_publications/the-most-dangerous-game/source_evidence.json",
       "bytes": 2459,
       "sha256": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/approval_evidence.json",
+      "bytes": 1145,
+      "sha256": "c2053d857ce810bd94ba908c90a60e7ffc6d1e1ad0204972636fdc8e7777b54a"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/chapters/chapter-001.json",
+      "bytes": 85658,
+      "sha256": "2d192711e96bedbfe22fa1a161311019c6a0c5176409122e72a3b99918ac027f"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/checksum_manifest.json",
+      "bytes": 1202,
+      "sha256": "931e2eb128404611a0e910fed066fb7a4b7ef84c6edb14e6d2c24b05aaf73350"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/cover_provenance.json",
+      "bytes": 1524,
+      "sha256": "613ff82cf2ad5c4bc0b385a2f66cb80f40df9cff240451c5db87a9a94f66d807"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/highlight_sync.json",
+      "bytes": 1479416,
+      "sha256": "d23d5f5bf8466b0534ed4df0896fc060935f393942c1c84c54f2bb9d74cf13b4"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/historical-noncover-rights-decision.json",
+      "bytes": 2134,
+      "sha256": "df7b0a48ed909f6b03e213d2b4e1ae8de322ac259744195e5e6c9cae25866586"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/public_book.json",
+      "bytes": 3696,
+      "sha256": "59d2622be6ecdce0720a7e9414803bafcbe3a20358d702cace44947a09cca4fb"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/publication_authorization.json",
+      "bytes": 1410,
+      "sha256": "4b4a5613ae7c40ed54f845c1740c830e0a3156f753c6617515f8c7526ac8bf46"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/publication_manifest.json",
+      "bytes": 2019,
+      "sha256": "4680e283626b57773c604c1d018eece2da36a5b32dd59554210a394475a40556"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/reader_manifest.json",
+      "bytes": 756,
+      "sha256": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/rights_decision.json",
+      "bytes": 2441,
+      "sha256": "3825b41646341034c77c3e328b78f9d90d4070da4ea72150f9812e3af177b604"
+    },
+    {
+      "path": "data/controlled_publications/the-murders-in-the-rue-morgue/source_evidence.json",
+      "bytes": 9808,
+      "sha256": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1"
     },
     {
       "path": "data/controlled_publications/the-necklace/approval_evidence 2.json",
@@ -7808,6 +9093,66 @@
       "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
     },
     {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/approval_evidence.json",
+      "bytes": 1142,
+      "sha256": "ba9c4edd66d1aa0789465ccb4532cb0b9766e8d8f3194f30f4ea496c9628e5fd"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/chapters/chapter-001.json",
+      "bytes": 25435,
+      "sha256": "ff013f8d4ad981146a8b58a2afee891ca5506641bca1dba4ef02595696deb45e"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/checksum_manifest.json",
+      "bytes": 1199,
+      "sha256": "6cae6011e9f96c2c7e0265b0a2436fb0891a676446b62a8ca7239602d24632a3"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/cover_provenance.json",
+      "bytes": 1510,
+      "sha256": "37fc662ccc89da8bb53aeb4bd018af08b20f20f4b98a3279f16707a6928e21c6"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/highlight_sync.json",
+      "bytes": 434062,
+      "sha256": "5d9d669d1beb837de0bd640b08b5156d67d7927a0addcc5d276db8a73d154ab1"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/historical-noncover-rights-decision.json",
+      "bytes": 2128,
+      "sha256": "49730dc738176e1018bbe2cf8aae0cfac41f0dfdd24a6a2bd42befe08da81f3d"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/public_book.json",
+      "bytes": 3732,
+      "sha256": "6c6bf6bd3c7b4375d34486ca1711baa99e2f0569c31331fbb3fd8d875bfe316e"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/publication_authorization.json",
+      "bytes": 1472,
+      "sha256": "465ceb3908928fad9deca80edcac48624204437bf40d118312f8382f934f8daf"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/publication_manifest.json",
+      "bytes": 2006,
+      "sha256": "db356833f233589f44b2ca4d399974acd2095d1a8fedce155294a5ca8ab348b4"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/reader_manifest.json",
+      "bytes": 741,
+      "sha256": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/rights_decision.json",
+      "bytes": 2432,
+      "sha256": "fc8a23b0e11bc17510f85fd196029d6d582c393d0062a77db18e1f871f22b5e6"
+    },
+    {
+      "path": "data/controlled_publications/the-outcasts-of-poker-flat/source_evidence.json",
+      "bytes": 11369,
+      "sha256": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f"
+    },
+    {
       "path": "data/controlled_publications/the-pit-and-the-pendulum/approval_evidence.json",
       "bytes": 365,
       "sha256": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6"
@@ -7971,6 +9316,126 @@
       "path": "data/controlled_publications/the-principles-of-scientific-management/source_integrity_validation.json",
       "bytes": 3239,
       "sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/approval_evidence.json",
+      "bytes": 1136,
+      "sha256": "458208551a6dfe910f12ddf79caba19112dea0180c60ebf6998abfe615c670de"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/chapters/chapter-001.json",
+      "bytes": 44689,
+      "sha256": "341d1f690a29b56e7d975ed77977370a21e28cd15bf9c432888757ee3f9380f9"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/checksum_manifest.json",
+      "bytes": 1193,
+      "sha256": "bc5ade8e78eb0568211872ebb668b0ac36f89b97bac1e34a2b3789a3964d904a"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/cover_provenance.json",
+      "bytes": 1479,
+      "sha256": "eabe34154ee10821c589be757f49b5190ae84acb9d045387d15db75ae19262d8"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/highlight_sync.json",
+      "bytes": 752726,
+      "sha256": "32a3cf87c128627123cccf37c3fe2c3a3aae8c40564cfcd3bd42b76597d30408"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/historical-noncover-rights-decision.json",
+      "bytes": 2116,
+      "sha256": "f00964ba5f40b72eba2406d0c0fa582368701b885f2639de663aea888f721125"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/public_book.json",
+      "bytes": 3710,
+      "sha256": "39f7001b7d520758ac5598dd674205230523954fa953f6c85e68d0730170111b"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/publication_authorization.json",
+      "bytes": 1401,
+      "sha256": "3c75563cdff2ab7acd23828746882c0eb6bc323ebc797e683adf3af2d943cb8b"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/publication_manifest.json",
+      "bytes": 1982,
+      "sha256": "c05b979aa8fb376ecbc7eedac535fe604579faf84d37d0e686c882f259d0a548"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/reader_manifest.json",
+      "bytes": 728,
+      "sha256": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/rights_decision.json",
+      "bytes": 2414,
+      "sha256": "84fdf285ce62619394f48e70ff4b877ad152b5473641d27ee6113c2b6ce3d517"
+    },
+    {
+      "path": "data/controlled_publications/the-purloined-letter/source_evidence.json",
+      "bytes": 9876,
+      "sha256": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/approval_evidence.json",
+      "bytes": 1139,
+      "sha256": "c8083b53e667bdc0c0bebc635e1ace1067c2e00e901461644132dab1782d78e0"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/chapters/chapter-001.json",
+      "bytes": 24225,
+      "sha256": "e98a8e7d9dc6850ae09ddb72a681db65396eb0482c50ac53b1835ae05db15063"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/checksum_manifest.json",
+      "bytes": 1196,
+      "sha256": "ca921e240e3f3c88b5d4a72be824aff1e2ee11ddd0df3d37f5e2f5fa844e496a"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/cover_provenance.json",
+      "bytes": 1495,
+      "sha256": "30ecf17c607c4c7de1936c8c8ef5d648b62235523cab6ec0b76e32ab216a22f8"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/highlight_sync.json",
+      "bytes": 451453,
+      "sha256": "53c37f2a0626c1337aa69192c954cb3f5b207f5bbbea5226a8fe926d435baaa5"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/historical-noncover-rights-decision.json",
+      "bytes": 2035,
+      "sha256": "79c6ef336c7eb09a0b842c48ad3c09c2b285ba0ec26c973a5dcb8315ad281a72"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/public_book.json",
+      "bytes": 3618,
+      "sha256": "7f384b5bb57c75bc0bbecc8bca61046c3369e925515552bdc81f395e92b93e3f"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/publication_authorization.json",
+      "bytes": 1434,
+      "sha256": "6839c02acdde363ce63439107dbb1a6e8340d355c52c5f50945415d825ca3b29"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/publication_manifest.json",
+      "bytes": 1994,
+      "sha256": "36af250bd6abfff99c5390b9ecaef9c2922c959c4967d988ae3d5653df4e0695"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/reader_manifest.json",
+      "bytes": 730,
+      "sha256": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/rights_decision.json",
+      "bytes": 2423,
+      "sha256": "774e82be8336ac721dd22dc3de5438e158d342d97defb03b80925549933a4af8"
+    },
+    {
+      "path": "data/controlled_publications/the-ransom-of-red-chief/source_evidence.json",
+      "bytes": 11068,
+      "sha256": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37"
     },
     {
       "path": "data/controlled_publications/the-science-of-getting-rich/approval_evidence.json",
@@ -8503,6 +9968,66 @@
       "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
     },
     {
+      "path": "data/controlled_publications/the-speckled-band/approval_evidence.json",
+      "bytes": 1133,
+      "sha256": "2a8d18239b93930f142fd2048765ed6e19147ebb9033ef421ecc63cc72eb456a"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/chapters/chapter-001.json",
+      "bytes": 57104,
+      "sha256": "04ef038bf83876438b1b3f458ae5cc04d1081ac69c66357ef816bf5f478bb2f3"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/checksum_manifest.json",
+      "bytes": 1190,
+      "sha256": "ca1124c3bb5415696de34de135ec42766a4e2616db5e3261c32d2e2a2dabe9c8"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/cover_provenance.json",
+      "bytes": 1464,
+      "sha256": "acc912e5c215360bfd9b3690d479aff2eaad8b43720251afc2e1f1044eb6f917"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/highlight_sync.json",
+      "bytes": 1050385,
+      "sha256": "a549c484a1f9445de2caa7bbfe8340a6383765a6a7a75c746ff4a1c25e2fb76f"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/historical-noncover-rights-decision.json",
+      "bytes": 2110,
+      "sha256": "70b68c8c693dcac4b717aa362e13d4382b5dc0a6649c91a2f9f8107598e6b096"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/public_book.json",
+      "bytes": 3627,
+      "sha256": "12ec7d525b0fd78d16413113c522d288b00f51cc024b3ea12ccdbc8c43c04256"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/publication_authorization.json",
+      "bytes": 1471,
+      "sha256": "e20fd31ddb29f4161febcd7e1db0a5cf535f5cd6bbe8e6cf28d8bbad2975870c"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/publication_manifest.json",
+      "bytes": 1970,
+      "sha256": "c5196dfb5d90c054241c3cc028dabc447e2d1fa9d71721752f768372f0353b21"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/reader_manifest.json",
+      "bytes": 722,
+      "sha256": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/rights_decision.json",
+      "bytes": 2405,
+      "sha256": "03a549c1a848c83fe0ca6ad796e1ab17b40ebefa9c4c712280a20eafe820663c"
+    },
+    {
+      "path": "data/controlled_publications/the-speckled-band/source_evidence.json",
+      "bytes": 10483,
+      "sha256": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2"
+    },
+    {
       "path": "data/controlled_publications/the-stolen-white-elephant/approval_evidence.json",
       "bytes": 366,
       "sha256": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50"
@@ -8656,6 +10181,66 @@
       "path": "data/controlled_publications/the-student/source_evidence.json",
       "bytes": 11096,
       "sha256": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/approval_evidence.json",
+      "bytes": 1132,
+      "sha256": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/chapters/chapter-001.json",
+      "bytes": 158594,
+      "sha256": "2148e37bb55099936c9e433f10995e659d95772d907cfa125e8cd9238fa40a9e"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/checksum_manifest.json",
+      "bytes": 1189,
+      "sha256": "0d04ccc1b32ce0a6e3cbe11913548b5c14ab96c7ff73c1b9b373c8bdad17b922"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/cover_provenance.json",
+      "bytes": 1459,
+      "sha256": "2e24677eec9ecabae30144fcaa5adeb346d3b169e112ccb6a8d9c3b634ef23c8"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/highlight_sync.json",
+      "bytes": 2967336,
+      "sha256": "7463e1329e06029b49d79d55df1aabd45ff33aaad98781e65d51d3b506fe40de"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/historical-noncover-rights-decision.json",
+      "bytes": 2107,
+      "sha256": "76fa98b24b9700921bca5d094de9d45bc5f11743a46125512f5bf755214cbccf"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/public_book.json",
+      "bytes": 3626,
+      "sha256": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/publication_authorization.json",
+      "bytes": 1461,
+      "sha256": "4a9531455d43c572bbd483a17123159cf11338fba1649db23da57a3660fe04fe"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/publication_manifest.json",
+      "bytes": 1967,
+      "sha256": "f9cfea0cbc3eed58b30d15f1eecfbd3007112057c5a77d73bb48fd561ecc0639"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/reader_manifest.json",
+      "bytes": 725,
+      "sha256": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/rights_decision.json",
+      "bytes": 2401,
+      "sha256": "c116abf36af446a0058579461fc70d16b0512b6b3cd0c05eaff291f9d3ba1319"
+    },
+    {
+      "path": "data/controlled_publications/the-suicide-club/source_evidence.json",
+      "bytes": 10768,
+      "sha256": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6"
     },
     {
       "path": "data/controlled_publications/the-tell-tale-heart/approval_evidence.json",
@@ -9134,18 +10719,23 @@
     },
     {
       "path": "data/controlled_publications/the-yellow-wallpaper/approval_evidence.json",
-      "bytes": 361,
-      "sha256": "90c68577f9ae380459a07bfe55d20f76600647086d2befc12d8c6c0456542f1f"
+      "bytes": 1136,
+      "sha256": "ed23198d03aaf9ac7a5ed8aed2d0dd019e1456d732fe8d3b2097d8372a4f36e1"
     },
     {
       "path": "data/controlled_publications/the-yellow-wallpaper/chapters/chapter-001.json",
       "bytes": 34012,
-      "sha256": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4"
+      "sha256": "51306183ddbab8218525a1f2b1635f8af0016639c08abd1052788fd7f3498b53"
     },
     {
       "path": "data/controlled_publications/the-yellow-wallpaper/checksum_manifest.json",
-      "bytes": 1038,
-      "sha256": "4eccfd7b0e24d11b793c46e34c3cb4eefdcbcc363a9db16988af3920a060dac7"
+      "bytes": 1193,
+      "sha256": "435502a4dd876dff9ac4e6b88799c785d9798edf09cf1102698e0686c60ae428"
+    },
+    {
+      "path": "data/controlled_publications/the-yellow-wallpaper/cover_provenance.json",
+      "bytes": 1480,
+      "sha256": "e3eecc20c09204b901e9834f991ee4da032dc8156ee1f08bf6170f6e5de9911d"
     },
     {
       "path": "data/controlled_publications/the-yellow-wallpaper/highlight_sync.json",
@@ -9153,9 +10743,24 @@
       "sha256": "df82a75d89f2b84d23e8c5a72ce4ed160f8a25142cd1469bd07d957e3a342a4b"
     },
     {
+      "path": "data/controlled_publications/the-yellow-wallpaper/historical-noncover-rights-decision.json",
+      "bytes": 2116,
+      "sha256": "69b53b8b128698812d93bb8a531edc7851fb8ca30ab9203851cbf780f369665d"
+    },
+    {
       "path": "data/controlled_publications/the-yellow-wallpaper/public_book.json",
-      "bytes": 3194,
-      "sha256": "90c8958326339f7979fa40e9914107476f39adf89cea16a585e34c3e5688ff2a"
+      "bytes": 3668,
+      "sha256": "80bd7ce5349458bb57a0707b27ca37906ed90b9e0e92b98b1ecaa6a4879359d1"
+    },
+    {
+      "path": "data/controlled_publications/the-yellow-wallpaper/publication_authorization.json",
+      "bytes": 1481,
+      "sha256": "3203988ca4c0596b3cf0679ae0a56f275b1f21ab84949a1d80e418e5e2070548"
+    },
+    {
+      "path": "data/controlled_publications/the-yellow-wallpaper/publication_manifest.json",
+      "bytes": 1982,
+      "sha256": "a32e2c6e0d269ee0fe6fa66cb7719e4f3062979cb7564a47aa64d6250fe38591"
     },
     {
       "path": "data/controlled_publications/the-yellow-wallpaper/reader_manifest.json",
@@ -9163,24 +10768,99 @@
       "sha256": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4"
     },
     {
-      "path": "data/controlled_publications/the-yellow-wallpaper/source_evidence.json",
-      "bytes": 744,
-      "sha256": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+      "path": "data/controlled_publications/the-yellow-wallpaper/rights_decision.json",
+      "bytes": 2414,
+      "sha256": "44d1423052a5b83197e744fbf47602f1bfe92dadd36caf3541c35b7cde3345bb"
     },
     {
-      "path": "data/controlled_publications/tobermory/approval_evidence.json",
+      "path": "data/controlled_publications/the-yellow-wallpaper/source_evidence.json",
+      "bytes": 9970,
+      "sha256": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/approval_evidence.json",
+      "bytes": 1131,
+      "sha256": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/chapters/chapter-001.json",
+      "bytes": 40091,
+      "sha256": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/checksum_manifest.json",
+      "bytes": 1188,
+      "sha256": "7332e92ee92cc97aea3adb5012fc06b92786f40e87b85f2fb568c7761c9b4f3d"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/cover_provenance.json",
+      "bytes": 1455,
+      "sha256": "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/highlight_sync.json",
+      "bytes": 760358,
+      "sha256": "c926b46e454ffe999c18f4307a05ed6a4ab76f9102046135f673b75edf4738ce"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/historical-noncover-rights-decision.json",
+      "bytes": 2106,
+      "sha256": "6488a1fcaf9872cff66bbefbb80091bd19a498a97c02d6abb0630d0147639e92"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/public_book.json",
+      "bytes": 3639,
+      "sha256": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/publication_authorization.json",
+      "bytes": 1440,
+      "sha256": "a63d6b7a8a671eefd91d445f969e416988a58206511dae5b058bb3aa00194932"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/publication_manifest.json",
+      "bytes": 1962,
+      "sha256": "23da9bf80973d19ec9aa0aa2b2f8a35a4e41b09480341de8896b02686f19c827"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/reader_manifest.json",
+      "bytes": 709,
+      "sha256": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/rights_decision.json",
+      "bytes": 2399,
+      "sha256": "2e4b35a53bca975b0a06703a6a5529aa11d15b4dacfd0ccb0c534d0a284dfaee"
+    },
+    {
+      "path": "data/controlled_publications/to-build-a-fire/source_evidence.json",
+      "bytes": 10035,
+      "sha256": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
+    },
+    {
+      "path": "data/controlled_publications/tobermory/approval_evidence 2.json",
       "bytes": 345,
       "sha256": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1"
     },
     {
+      "path": "data/controlled_publications/tobermory/approval_evidence.json",
+      "bytes": 1125,
+      "sha256": "d230c089f174785c6a48bc01a410cec3594ec5e7f81dc10aeb1454b0adbfc72a"
+    },
+    {
       "path": "data/controlled_publications/tobermory/chapters/chapter-001.json",
       "bytes": 17694,
-      "sha256": "b00117523393fc5ac87acca8e57e34c88cfd56a99282d4a668234867c771a0cf"
+      "sha256": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4"
     },
     {
       "path": "data/controlled_publications/tobermory/checksum_manifest.json",
-      "bytes": 1027,
-      "sha256": "47d12d7fcf9495d9e19ec9aeff238654df940bb6f9950e46df8746fd5795c0b1"
+      "bytes": 1320,
+      "sha256": "a59a02583dce19ffcca81d09b9a67a0e3811ed20b360ef7ce36d202833584e88"
+    },
+    {
+      "path": "data/controlled_publications/tobermory/cover_provenance.json",
+      "bytes": 1424,
+      "sha256": "4616b152305e5edc8254ea0ffc48c96365e909277e5c475dcec369be804bd230"
     },
     {
       "path": "data/controlled_publications/tobermory/highlight_sync.json",
@@ -9188,9 +10868,24 @@
       "sha256": "5cda10850eb97aa869714bb340e72760dfcd05cd8626acf449e08fc344c7294f"
     },
     {
+      "path": "data/controlled_publications/tobermory/historical-noncover-rights-decision.json",
+      "bytes": 2094,
+      "sha256": "53bcf048ebcbe8ebea211531a33ee37797b538631062722b653c01b79d43a9b1"
+    },
+    {
       "path": "data/controlled_publications/tobermory/public_book.json",
-      "bytes": 4679,
-      "sha256": "b940af4b316505d236c4af567932d3afa8a2fe3f8b24744b23d4bd7c24f7afae"
+      "bytes": 3503,
+      "sha256": "d371de6009f5487942bab3f76c78a68bb35f1c33bf583832231c5d383614e2ea"
+    },
+    {
+      "path": "data/controlled_publications/tobermory/publication_authorization.json",
+      "bytes": 1432,
+      "sha256": "29ca1c6386463b8b3051b5201080a86b9e055350c339360f18ac16e6c6c17474"
+    },
+    {
+      "path": "data/controlled_publications/tobermory/publication_manifest.json",
+      "bytes": 1938,
+      "sha256": "086907d3d5ebca0f4fe6700d4327a8cb150558e2fd9db99986951a1caa6d3e3d"
     },
     {
       "path": "data/controlled_publications/tobermory/reader_manifest.json",
@@ -9198,149 +10893,239 @@
       "sha256": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94"
     },
     {
+      "path": "data/controlled_publications/tobermory/rights_decision.json",
+      "bytes": 2381,
+      "sha256": "444af54fd693f26af6e7da1c360a9dc4378be26f95f5df25526f36a578efcf8c"
+    },
+    {
       "path": "data/controlled_publications/tobermory/source_evidence.json",
-      "bytes": 712,
-      "sha256": "dcf59588ae20ba6ec5d89616fbf5ecc111d3bfab5d7eaef6b94dc23aff1b9948"
+      "bytes": 10501,
+      "sha256": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/approval_evidence.json",
+      "bytes": 1125,
+      "sha256": "0fffcf027165b799472a27686f3a209ef25439c966b3a09446dec04f9f90aca0"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/chapters/chapter-001.json",
+      "bytes": 122948,
+      "sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/checksum_manifest.json",
+      "bytes": 1182,
+      "sha256": "425f8c1e7f635efd38d75ad34caa65bfad926150e7d93338c1823f2ce91f3985"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/cover_provenance.json",
+      "bytes": 1424,
+      "sha256": "61f70dae775a60999a77d3174056fce94db265d0c1eabd1adb908395ceea8e42"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/highlight_sync.json",
+      "bytes": 2290946,
+      "sha256": "97a33ea49129d57bd0e6e05383d0861a605c7493a1975a625fa497164fca2a09"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/historical-noncover-rights-decision.json",
+      "bytes": 2008,
+      "sha256": "7477040feb1aee1f81effa267fd78c1a133a53373892e41cdc6f5f76cbf4b522"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/public_book.json",
+      "bytes": 3543,
+      "sha256": "2f17fc4f377990b9fa663490643f5cf4cd463e443dad7fe6f3de4ef57da65719"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/publication_authorization.json",
+      "bytes": 1421,
+      "sha256": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/publication_manifest.json",
+      "bytes": 1941,
+      "sha256": "28d138e81a4c8c9099dddde35bc5311a7305711753837b38a462e83a935e845d"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/reader_manifest.json",
+      "bytes": 696,
+      "sha256": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/rights_decision.json",
+      "bytes": 2382,
+      "sha256": "97cda97e503f97329461839cb71ae4610ed55ed98900053962d2a26313d10d06"
+    },
+    {
+      "path": "data/controlled_publications/ward-no-6/source_evidence.json",
+      "bytes": 12090,
+      "sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
     },
     {
       "path": "data/controlled_publications/white-fang/approval_evidence.json",
-      "bytes": 351,
-      "sha256": "6736146c0dc7474084bc5a59f63a4a6976a0fd00881adc4d40ee375bd04ce65d"
+      "bytes": 1126,
+      "sha256": "9de49359b873503bb9019859e3e69a21470761912608084a9d82a485af4594eb"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-001.json",
       "bytes": 15520,
-      "sha256": "3aaed6212b06bd48da64367b7ac8eec4ce5dcef9a976a9826ebc04d2f02f1db9"
+      "sha256": "fb374c7563e87656880af88bb9badeeb64c02fdf13f5cc15a36cfc532f8949ba"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-002.json",
       "bytes": 20670,
-      "sha256": "cbd079c08a6f47abdeb5d3975316cda5f3ee16169bd14fce6eb26a5db6246be8"
+      "sha256": "0c01fffe7416b89f590ccddbb78e94b58963d41a1a3ad687cb322d42cc6968e8"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-003.json",
       "bytes": 22540,
-      "sha256": "24d89638d3bc05eee57eaf543074af0f11c8ac8a436b3be2baeb3e25c2c9f81e"
+      "sha256": "9ca2fd722b52961b50327fee3b522cf755842f280beb0a5b00d271536d10093a"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-004.json",
       "bytes": 21018,
-      "sha256": "86b1428071906c2600f74940c17af9707a0351ba821eacc97b91cc248e6fae60"
+      "sha256": "c7d67f2fc1636b5455095ffc3e200d3d53c80758956a38449e603e064418c882"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-005.json",
       "bytes": 17540,
-      "sha256": "05fac6abfbe4471f8733e1baff7695234855699e5e16155dfe8c103e67177200"
+      "sha256": "8f80f90921ba07473480c0058f7600cfc611106fba259072f6ecf9bb5706c793"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-006.json",
       "bytes": 11736,
-      "sha256": "d8319a8e3f29db4f64846d7719933ef25a39cf51646196e1a603c4302ca97f82"
+      "sha256": "69aaa4615b033e8a19fe5d7602dcdf47b8ac537e55cee2c29f078cebb8aae037"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-007.json",
       "bytes": 23315,
-      "sha256": "d786c7f205f444afd3f7579c5b841be45d2a327ebe7946217d208bcfedec11f3"
+      "sha256": "a721b2ab71e0210f1375332fc3afe909f9540400273744704693da6bdbab47dd"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-008.json",
       "bytes": 12103,
-      "sha256": "5eea7b710eef70ef669102c777d13ac3de89584d6aa19385e0b12f9514264170"
+      "sha256": "c2a91abbc94152204374065fe338789cdef513dbb4d2116f6dd48ba7a6fc7d76"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-009.json",
       "bytes": 23241,
-      "sha256": "3f5f5f0554be209bac19f39d0051dc98c52df55c59244a978af6acb22045e79a"
+      "sha256": "c81e01a570e2bf24e8bdb1cfa836b77fcd5e33a9d65e00fdfe84c69f59c6570c"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-010.json",
       "bytes": 17992,
-      "sha256": "3721899fa96447faced352119f50f2d7afd4839dc3ce1f990af1b7b1a195a9a3"
+      "sha256": "87607c323eb7c273157539f942bf1124745df1533cd77bd8809c9e773f6efa8a"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-011.json",
       "bytes": 10204,
-      "sha256": "ab46d77ffabb82569f4a9f1bcb465997a9d6ae899acccb50c2378535bdc003ea"
+      "sha256": "133173e4a6265dbd1566d79594585118fc40d93f99c0b8acb369b9e195367e47"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-012.json",
       "bytes": 11148,
-      "sha256": "9645d0c7cbb24e13e072df4b36bb89157eb2fede4ceebaa9bee394cd8ca74266"
+      "sha256": "f3eab9f97c728a586db40a79acd1874059668d5f6272a3ae72876a8794f907c1"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-013.json",
       "bytes": 18392,
-      "sha256": "8a2ef5515fdf85bcf80f338225cd1bab20c5605d9659db8fa60889d36d9651ca"
+      "sha256": "734cdf8d5b38e08c5d6ef0d7b34899e7c89220cadd2d8ff7c2989429ea9bcf9b"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-014.json",
       "bytes": 18496,
-      "sha256": "11ee4ee37981306546b992ca63b1ba1de0485213816f801ba34922d67eac1596"
+      "sha256": "72071386562cc04c2b0f509fea1c7eb7276cd66c37f2167c70a600374f2caa58"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-015.json",
       "bytes": 20678,
-      "sha256": "9df33d0d8e68b7568253b9bab21c5220baa0118288d08e041a869beb61dc3203"
+      "sha256": "0ae353a6bc67d130df8f8db7c8ba2c2e80edea0e8144b4307f39ca26698f48a7"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-016.json",
       "bytes": 18074,
-      "sha256": "77aa6430e121a1f45d4079bd4939dcb840ee749fb0aff25ea12428320afb32fe"
+      "sha256": "cf9556448105d001a7a7c8ce93390cf76b88089178656dbe605529e94c8e49a9"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-017.json",
       "bytes": 11279,
-      "sha256": "03adf1ccff0111b31ea87304234e922bec86e13dc015c3a1cd981d4993b1e03f"
+      "sha256": "80a255618ea93c757b80663d05ca62cef4f5771931ce7be1daa3486a8bc36a43"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-018.json",
       "bytes": 23250,
-      "sha256": "56fe22a3e77d2e66d2f5e7d9cb7e24e2dbd47f71399dd87cc1773fcd7571d405"
+      "sha256": "dfbb7eed45ad889de389298524100d13ff2d57b6023abd4bd394a199b5d28c1b"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-019.json",
       "bytes": 11091,
-      "sha256": "5776b22abcfdc97dd97ad59e1d0c51aef4d0c3693d622644640fcd2cf413cb69"
+      "sha256": "9c3cb5df3a17ee261e8d68d894c597f3671ef47f98b5665fa51cbc305bbdc5ed"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-020.json",
       "bytes": 28398,
-      "sha256": "c38758397b25d9aa8c5f151f5361f03c285634367b9a7ac4577697e21df4ddcf"
+      "sha256": "813062a4be4c62bdc6ead6216ac0bcd42e5c9f48915d743a6627a99d4fda4233"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-021.json",
       "bytes": 10397,
-      "sha256": "47341834c6eb28d2fbb268697d4b41570f4eadec92c07926abcde403f35d5596"
+      "sha256": "a5397aa804ab7360b00db9c6343dd18b5527cc8b8304c8451af08d31edcb300f"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-022.json",
       "bytes": 13699,
-      "sha256": "e51b593ac9f597934fb0114a9724a75151a976aabac79b3c917fdac754502a93"
+      "sha256": "13c01e8fa4e6d07a77396e78d76d4422b1d4ba1ae669f4fdebb3e9606debdb8e"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-023.json",
       "bytes": 22201,
-      "sha256": "c161d3b6d64ef5db398315b9573c29d456fb15d31a75c219e3338a4bd55eaa9a"
+      "sha256": "2ddc10a87d038332cefda01f5c04ca8a6e034a311788f0921c87b5d5ce63c21b"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-024.json",
       "bytes": 13275,
-      "sha256": "35058bd2c460d86f095fe80765ec1fe3f66cca36ad468e2733e4550b5decf801"
+      "sha256": "fd2668c68322876e131b7c9e9f56ec1124f45c7fcddfea72bd763f6b8c6f1264"
     },
     {
       "path": "data/controlled_publications/white-fang/chapters/chapter-025.json",
       "bytes": 17744,
-      "sha256": "0cb8731d8f39121526074f85422017f16cab0b646624b5dbc3b336c6c2e31cf8"
+      "sha256": "5a19bd500e319d0a857fac91a8ba9eec5b17878f5ec297f7e307d282694449a9"
     },
     {
       "path": "data/controlled_publications/white-fang/checksum_manifest.json",
-      "bytes": 4231,
-      "sha256": "3c72f3d71e03f8624bf2ade1cf96a1d7c4f17d8061b1b3925ff09c8788a4b2a4"
+      "bytes": 4519,
+      "sha256": "c1acc3adb16ac4fa92cef262a24475c470745f9aa66b3211dccb91e5cd7e61d1"
+    },
+    {
+      "path": "data/controlled_publications/white-fang/cover_provenance.json",
+      "bytes": 1430,
+      "sha256": "e73d658425fbf5c436a283fde830953fddd8417edc21417a0d54d51c8b580379"
+    },
+    {
+      "path": "data/controlled_publications/white-fang/highlight_sync.json",
+      "bytes": 7918898,
+      "sha256": "dba415886ae3eaebc35a4bfac5c92e51fdc1f7d7d1d70ded18ee3203e99a61dd"
+    },
+    {
+      "path": "data/controlled_publications/white-fang/historical-noncover-rights-decision.json",
+      "bytes": 2095,
+      "sha256": "cec71e8e6ddd3a9dbb646860e83f7153e25f437237954afa52cc318904001d2c"
     },
     {
       "path": "data/controlled_publications/white-fang/public_book.json",
-      "bytes": 13166,
-      "sha256": "44a72f2df620c0d01d06e447f6b85efc93402e4d8cd7010121b3b3099e8f3bb4"
+      "bytes": 13600,
+      "sha256": "a69d3bd3db175f42a0298bc4169e38bda3081d9fd38ea3d8e3bbd7889b550692"
+    },
+    {
+      "path": "data/controlled_publications/white-fang/publication_authorization.json",
+      "bytes": 3548,
+      "sha256": "5907996fdfd1bde4bf60023203397b17c61506675ee66fae362e23de25cfdf3e"
+    },
+    {
+      "path": "data/controlled_publications/white-fang/publication_manifest.json",
+      "bytes": 7429,
+      "sha256": "845257b1da9809a6897f8cf9417b7e4f986f04d0f8190ce8a14910f10ca5b43b"
     },
     {
       "path": "data/controlled_publications/white-fang/reader_manifest.json",
@@ -9348,9 +11133,14 @@
       "sha256": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977"
     },
     {
+      "path": "data/controlled_publications/white-fang/rights_decision.json",
+      "bytes": 2383,
+      "sha256": "ec9193bbbddb2edc47a59b0ee92698e7468d296592f814de2a58c3c323ef224f"
+    },
+    {
       "path": "data/controlled_publications/white-fang/source_evidence.json",
-      "bytes": 733,
-      "sha256": "fbd4b4c019708f7cce62844b774445b66676eed4270810946e175c0b86a22904"
+      "bytes": 18318,
+      "sha256": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2"
     },
     {
       "path": "data/controlled_publications/woman-in-white/approval_evidence.json",
@@ -9503,6 +11293,66 @@
       "sha256": "7e44eaefc904afdb4d62c8f2b30e42f123a175cfa8cf372ffb2f6ff31d99a3d0"
     },
     {
+      "path": "data/controlled_publications/young-goodman-brown/approval_evidence.json",
+      "bytes": 1135,
+      "sha256": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/chapters/chapter-001.json",
+      "bytes": 31631,
+      "sha256": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/checksum_manifest.json",
+      "bytes": 1192,
+      "sha256": "ccece005fc7f3ae2cf68f105e868c8ac90e12d91f931f0ddea4aeb9dfa85cf8d"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/cover_provenance.json",
+      "bytes": 1474,
+      "sha256": "1d8ba997d656c30b95ac2eba1f7a8ecac28e6786f34c3c004ea537deb9a7c498"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/highlight_sync.json",
+      "bytes": 557876,
+      "sha256": "9780aeaa4a9b2f6511cca572f3f4597e65641f43e70c6c95813b8125978770a9"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/historical-noncover-rights-decision.json",
+      "bytes": 2113,
+      "sha256": "345ff806c8e018cbdf61b3c75eae11e2558de86032e2cd87ddfa70baed6c11bc"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/public_book.json",
+      "bytes": 3688,
+      "sha256": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/publication_authorization.json",
+      "bytes": 1470,
+      "sha256": "4410c23057a3e891f89c04aa7e598e8ac043193af3cd1c0876460e639cff6528"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/publication_manifest.json",
+      "bytes": 1978,
+      "sha256": "2e67563c19df455be5af1c4570121a8551a20c6f03bcf39543abb3e8fe1e50ae"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/reader_manifest.json",
+      "bytes": 729,
+      "sha256": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/rights_decision.json",
+      "bytes": 2410,
+      "sha256": "30a2835df245cf4d3bc5098c97c792c2a8e0431acf94f9735a7bbbb209b0b332"
+    },
+    {
+      "path": "data/controlled_publications/young-goodman-brown/source_evidence.json",
+      "bytes": 10529,
+      "sha256": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+    },
+    {
       "path": "data/graphical_cover_generation_report.json",
       "bytes": 6146,
       "sha256": "8570544fb5d6cb765086a429cd0f1966e7565a3551fa0c2c8f5d84bf152fa69b"
@@ -9514,8 +11364,8 @@
     },
     {
       "path": "data/rights_decision_registry.json",
-      "bytes": 42909,
-      "sha256": "37ab5b002bfd16bcd848163a269b6b7125a54e12a367211b40ce2da82381709a"
+      "bytes": 49106,
+      "sha256": "c9c28756d6ccbd2361e081270db7a74d839a77df81ae2de7a90faf2f3be21b08"
     },
     {
       "path": "data/sredni_initial_review_authority.json",
@@ -9848,5 +11698,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "ba7d2c380d2b6573ee9da18100661fc1cf8bb65717a09c8f3b282aad3d268d54"
+  "expected_sha256": "3b3ad38adf20396f04af0264b3e90aa0eb53dec62dbae8735d89a193578a766d"
 }

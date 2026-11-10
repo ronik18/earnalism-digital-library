@@ -7,12 +7,12 @@
   "category_slug": "adventure",
   "short_description": "A stolen blue gemstone found inside a Christmas goose leads Holmes through the London underworld.",
   "description": "Holmes traces a priceless carbuncle found in a goose's crop back through a chain of possession to the original thief — and in the Christmas spirit, lets him go. One of the warmest and wittiest Holmes stories.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/back-2ceb1f6da7dc4ff8.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/back-2ceb1f6da7dc4ff8.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-adventure-of-the-blue-carbuncle",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584073/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584075/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584076/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584077/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584078/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584073/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584073/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584075/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584076/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584077/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584078/earnalism/audiobooks/en/the-adventure-of-the-blue-carbuncle/the-adventure-of-the-blue-carbuncle_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_sha256": "7bd5c08c49ae7b6673ceea35d9096a0d8a179c0efafa941a2467cd0bf1bcc06a",
+  "back_cover_sha256": "2ceb1f6da7dc4ff8960611a1066c7ac324930c52ce66d8f470a7a3f58c3d2469"
 }

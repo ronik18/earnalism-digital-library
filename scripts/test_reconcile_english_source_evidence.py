@@ -79,8 +79,7 @@ class EvidenceTests(unittest.TestCase):
    self.assertGreater(len(restored['content']),10000)
    source=m.load(package/'source_evidence.json')
    self.assertEqual(source['official_electronic_source_verification']['comparison']['status'],'ALL_CHAPTERS_MATCH_SOURCE')
-   if slug == 'the-principles-of-scientific-management':assert_current_reviewed_release(m.ROOT,slug)
-   else:self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
+   assert_current_reviewed_release(m.ROOT,slug)
  def test_licensed_transcription_has_hash_bound_public_notice(self):
   p=m.ROOT/'data/controlled_publications/the-most-dangerous-game'
   notice=m.load(p/'license_notice.json');book=m.load(p/'public_book.json');chapter=m.load(p/'chapters/chapter-001.json')
@@ -105,10 +104,11 @@ class EvidenceTests(unittest.TestCase):
   self.assertEqual(facts['translators'][0]['death_year'],1956)
   self.assertIn('not whole mixed-translator anthology',facts['basis'])
  def test_copyrighted_wyllie_translation_stays_held(self):
-  p=m.ROOT/'data/controlled_publications/the-metamorphosis';source=m.load(p/'source_evidence.json')
+  p=m.ROOT/'internal/legal/catalogue_clearance_20261002/removed_titles_20261110/the-metamorphosis';source=m.load(p/'source_evidence.json')
   self.assertFalse(source['commercial_use_allowed'])
   self.assertTrue(source['text_license_review']['explicit_copyrighted_notice'])
-  self.assertFalse(m.load(p/'publication_manifest.json')['reader_release']['exposed'])
+  self.assertFalse((m.ROOT/'data/controlled_publications/the-metamorphosis').exists())
+  self.assertTrue(m.load(m.ROOT/'data/catalog_exclusions.json')['titles']['the-metamorphosis']['reader_excluded'])
   self.assertNotEqual(m.load(p/'rights_decision.json').get('status'),'ACCEPTED')
  def test_milverton_whole_story_includes_opening_narrative_and_card(self):
   p=m.ROOT/'data/controlled_publications/the-adventure-of-charles-augustus-milverton'

@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-darling-reader-cover-successor",
+  "edition_id": "the-darling",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0",
+    "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+    "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
+    "approval_evidence": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9",
+    "checksum_manifest": "ba642416ff3d5e41462b7c548dd91afbe5a3bf567dbb86e1aefb0ea75ca59021",
+    "publication_manifest": "2499158248e3a1f045cc4d9789122f8ae922501dadd0c8d4822f7bdec9e50533",
+    "cover_provenance": "5f650ca64ae3ab2fa8e435261092307cea8914078a21a3d55df8e9526591d97a",
+    "cover_front": "13f20dc26bb559ef6faa803d91ffb182c8bdcea6be89dcf1a03e65f273d4c014",
+    "cover_back": "1215278e5de5b27cd3ca0ca61ec929754aeeb21946a3899c77309058610262c6"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-darling-pg13416-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
+    "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+    "96f96951650b9d5153b5d74d11a514687b2aa945d738794f736f2bf78aff8689",
+    "5f650ca64ae3ab2fa8e435261092307cea8914078a21a3d55df8e9526591d97a"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

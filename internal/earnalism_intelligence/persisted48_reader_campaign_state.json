@@ -1,17 +1,17 @@
 {
-  "captured_at": "2026-11-08T03:55:27.926423+00:00",
+  "captured_at": "2026-11-10T04:15:28.708321+00:00",
   "base_sha": "f416e9a08e9774eda7b7f0c8d588f0485d58e230",
-  "scope": "48 persisted edition matches; Reader-only qualification",
+  "scope": "45 text-cleared persisted editions; three owner-removed rights-held editions excluded",
   "published_count": 0,
   "eligible_for_activation_now": 0,
-  "status": "HOLD_NOT_PUBLISHED",
-  "production_mutations": 0,
+  "status": "SOURCE_PREPARED_PRODUCTION_ACCEPTANCE_PENDING",
+  "production_mutations": 14,
   "local_text_clearance_count": 45,
   "titles": [
     {
       "slug": "a-retrieved-reformation",
       "title": "A Retrieved Reformation",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-a-retrieved-reformation-pg1646-noncover-text",
       "record_sha256": "827b1d94af98123c1659d4aff8306ce9a795c480cb896d2cd07d199142482d94",
@@ -23,10 +23,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-a-retrieved-reformation-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
         "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
         "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
@@ -34,12 +36,22 @@
         "checksum_manifest": "569f0fee2f787d8aa3852b50893edd3731d39bad246ef2255be070abbd9f5f96",
         "publication_manifest": "e9f187cc607982d0b690d5c9716dca2369d278f23fa1f32d8996447187f28336"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59",
+        "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+        "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
+        "approval_evidence": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43",
+        "checksum_manifest": "3e2d97236f2edc59098db1f044ae85e5d99ff302a583e4d43f6582e10c46ba5c",
+        "publication_manifest": "97967ca4d11dd25dc8eb9eb00d55d8403430a9e601f070a5628405c1c0da86bb",
+        "cover_provenance": "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c",
+        "cover_front": "f1dc19c45f181d5df52c5817ce8fa31d052088b0c1d1055acddf678eb6e8a119",
+        "cover_back": "97b4604f13a1b8bfb28c122fc83be3a9718510c7644f8903a2499efbbedd9c41"
+      }
     },
     {
       "slug": "a-wagner-matinee",
       "title": "A Wagner Matinee",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-a-wagner-matinee-pg346-noncover-text",
       "record_sha256": "1ade6344eaf49f8626e87a408358e32c63d8805df337e2bb1e5e09a0b945d0db",
@@ -51,10 +63,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-a-wagner-matinee-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93",
         "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
         "source_evidence": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a",
@@ -62,12 +76,22 @@
         "checksum_manifest": "fe7cbb36eb6f73008a36dae2bf6d641d8ba0e6ef921493534cd7ecd830a52ec6",
         "publication_manifest": "66af4c012f3c9d782856292cacda11b9419fb638070ca2eb19a3003290fe4e94"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6",
+        "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+        "source_evidence": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a",
+        "approval_evidence": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895",
+        "checksum_manifest": "63f2159188ad1bd15e9bcfb2930d4669959b47f648dd6dc2233d11ff75185319",
+        "publication_manifest": "3bf913d0b8dc4500594da513cae0dcbfa83aad7d10f2f5688959d69bbb7af2a0",
+        "cover_provenance": "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c",
+        "cover_front": "febdb7034c342a12ebafd6c76e322d391a498f9f0d6935809401a8d2b24d1e4f",
+        "cover_back": "067aefce7dfde81070f1f84ddc058930ca9e69e4ecd96b01e7bd83025c0a1231"
+      }
     },
     {
       "slug": "feathertop",
       "title": "Feathertop",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-feathertop-pg512-noncover-text",
       "record_sha256": "88f7a3862eaef44459ec2bb5b2257ab67a8abdb20e67cc769717e7ee1ea9f89d",
@@ -79,10 +103,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-feathertop-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "e8abb7dc2a591390ffeb8b06d526ff1fb704f15d8c2e5489aa7c3fad17b93e88",
         "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
         "source_evidence": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
@@ -90,36 +116,22 @@
         "checksum_manifest": "f464d36ea36c311f3cac911199a5ab110dd6acff32f3c977b5fb9d43de1eab72",
         "publication_manifest": "ee65aef5fd293dc86333a63285aea2adb874ab85212e90d4c3a9dff15b3cf463"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "gitanjali",
-      "title": "Gitanjali",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": false,
-      "manifest_blockers": [],
-      "component_sha256": {
-        "public_book": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11",
-        "reader_manifest": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
-        "source_evidence": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084",
-        "approval_evidence": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2",
-        "checksum_manifest": "0dc00b2927f7139294e37a25bd17b28765e6680c93338ef69090f36be089fdea"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "source_successor_components": {
+        "public_book": "07ff700dfc5a20d8bfe94c0de9d24f3c135f6b9baf2950a8b940c377297c5049",
+        "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+        "source_evidence": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
+        "approval_evidence": "dab2f4167da49b120bd2ad10c4d9bd0286a53a3f02f01eaff9ec5241e27e57e5",
+        "checksum_manifest": "b4a3a7a5c1d9fda12e5a17b2403a3d495ca07fb24d8840a257729c54b6d48a81",
+        "publication_manifest": "2a73217d56710b4a93dab494f57a493df8188e676fa9c2fddbcb7c5a6d4e3335",
+        "cover_provenance": "d16110e3a5062c2b0e8687ed1366d5461f5c41a96d5f4a7ae5d6636f3425934d",
+        "cover_front": "93854105d9280545dda792425d8a52d4cb6149443ebe8cf210b60358a45d1575",
+        "cover_back": "9a34504db3865d57e7e53f45bd3bb9073fef04d6c59dc983476a800937607311"
+      }
     },
     {
       "slug": "markheim",
       "title": "Markheim",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-markheim-pg344-noncover-text",
       "record_sha256": "c4a5eb05378db084dd2e32ed26a80a7c3f2457e23ded8e631308098edcb13dd4",
@@ -131,10 +143,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-markheim-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8",
         "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
         "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
@@ -142,40 +156,22 @@
         "checksum_manifest": "ae2d1a8d6b148c1383feed931c227097cac80cba14f3aeffb3cb1714f324d227",
         "publication_manifest": "fe71756b512cf33439366060b3ca0319b109c7f0ff1fccf3cda35ae07a88d2e7"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "nishkriti",
-      "title": "নিষ্কৃতি",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": true,
-      "manifest_blockers": [
-        "Rights: original_publication_year is required.",
-        "Rights: verification_status must be approved before publishing."
-      ],
-      "component_sha256": {
-        "public_book": "3bbf95940b6238e1f973695fff83bde4c832d0f730487efb4961c4ad07c73489",
-        "reader_manifest": "a47ee2e6cb45ca40e74ff441371f3397d06e9ce24a191c77fa155396937850b5",
-        "source_evidence": "9421496918727ee6da6d3af10fda225a53056cfe5b9495a6420f7e57d86c1b96",
-        "approval_evidence": "35ea07be669e75a733f37892e1e09f4c3d4a46d16b4b7d8a3c0c2950a0b7fff7",
-        "checksum_manifest": "bca0904030c67cff6aae2ba0cfaba7a40f6173fcb4c1719871a02c8ad5f97792",
-        "publication_manifest": "2156837504a20bdeea575c6788b9d3ad0244175a8191cd9801cdb288465e8568"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "source_successor_components": {
+        "public_book": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0",
+        "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+        "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
+        "approval_evidence": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf",
+        "checksum_manifest": "e2618dcf50f6ec82f0874c845189e24e72d9114e815b3878ab32c677af7aa982",
+        "publication_manifest": "557fa2068fa05324c1088bd124013a737414d9862a17c299d8690360602b50ad",
+        "cover_provenance": "5d5b0ab7eb58f3896e7d0f12d316c34735ae642c3797ab339fe5d223b9c2a29c",
+        "cover_front": "1568f8a2bdea95486434daab874a8abde421b86aa692f9dba90eed0b001574ea",
+        "cover_back": "3641d4eae8cc20076f673cbd6ff8256649e8d7395d321a3afb05138c6b9a13a9"
+      }
     },
     {
       "slug": "rappaccinis-daughter",
       "title": "Rappaccini's Daughter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-rappaccinis-daughter-pg512-noncover-text",
       "record_sha256": "9f7d93083cb5fa2d7ae3efb7aa2cc9c3bb7eeeee18f9368d5dbabca70e2130a1",
@@ -187,10 +183,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-rappaccinis-daughter-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "dc07aafb2ee0c677e1dc3719d981a173135020064515cbd81e33c290166f0443",
         "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
         "source_evidence": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a",
@@ -198,12 +196,22 @@
         "checksum_manifest": "325d4ca3c560437a8a413d966a50c38d3b212f0f5f61991bcac2bd56ff218e92",
         "publication_manifest": "4f2101992327aac6d42dc5b3c21e951307db6da56c937c1a0ebc55eff85db7e4"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "cc32acd7974d14add260771b865288e68821cffe00fbde9fcf09c4724549b2c4",
+        "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+        "source_evidence": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a",
+        "approval_evidence": "cf3c52db3a110aff2737e8e62e696ea0b0bfba38cbe1ec6a7ef777b18bf719b1",
+        "checksum_manifest": "e4c0b1072c6f8f736bfa800ff47d51a14a775052625e500da1bdd96a96fb3c0d",
+        "publication_manifest": "fa2b9b14b3d6436b3edf9a691b752a1e2b6886a87ab226ecda11df1e1f701d91",
+        "cover_provenance": "dbb5c8b175916cb8cbc6452232a9edc68a7759ed1f879f8c84c3cd0c4dac01c8",
+        "cover_front": "30403b406b204d07243a6ba883bbc1a80ad78858ce92aa8718d86c410582b6f7",
+        "cover_back": "d82741e053708976aefc9086bd5c9067c043a3bc480c570b3bfdb0d75529b6d9"
+      }
     },
     {
       "slug": "the-adventure-of-the-abbey-grange",
       "title": "The Adventure of the Abbey Grange",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-abbey-grange-pg108-noncover-text",
       "record_sha256": "8bbedfc62117aefe42be9e005bd17374da9754852f8a5f0d0dbccb434e5b4d4e",
@@ -215,10 +223,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-abbey-grange-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46",
         "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
         "source_evidence": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
@@ -226,12 +236,22 @@
         "checksum_manifest": "75bc9b6d094090c9aa6e7b5574d5d5322863d4767f0e236608aec37da77f5b79",
         "publication_manifest": "472cf5cc83d09d514a58c024cab44b369b3870956f1766084af5143eb4470435"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c",
+        "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+        "source_evidence": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
+        "approval_evidence": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3",
+        "checksum_manifest": "daaaadbd071259176e9122f5ceb36b7022ae47d527d33ca60351408011b076e7",
+        "publication_manifest": "1875a9ba0760103b79e48b8efaec66bee78e54a96493097c962ea31a5cf9d355",
+        "cover_provenance": "6824ac7163533643450f5f32e60be9f2c4696820202e70459a9e68b2ce26937a",
+        "cover_front": "1d66e328758a4e7f4d6a54f0b07ac8742229af40cdc8ef73a3e5b4d445e1ebbe",
+        "cover_back": "8312638414f30dd56e87b3cce9a4ff8eb7670bfc98a52600234d0e3d0fd71eca"
+      }
     },
     {
       "slug": "the-adventure-of-the-beryl-coronet",
       "title": "The Adventure of the Beryl Coronet",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-beryl-coronet-pg1661-noncover-text",
       "record_sha256": "f491bac0146fd58767b4cca11e570eb82513a3b99d61acd6d7fec6c394776590",
@@ -243,10 +263,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8",
         "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
         "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
@@ -254,12 +276,22 @@
         "checksum_manifest": "edeff530786f5131b902a0d073338b45c0b8ca2660fe4221f89d9af5910e7ca6",
         "publication_manifest": "a5d192b95750bab6cf53a7d7b67406b2ac04ba9b6c95db89694af06b63830a58"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "41760a1deb5a349b7b3a734b618188db5d57fd19c162980df96cf515c8bb40a8",
+        "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+        "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+        "approval_evidence": "0ec247e3f8c072cc41b2e94ef09e5a5f306680c756a3a53cc85a21b50227d435",
+        "checksum_manifest": "fae8cf62dbc82363984a414cf340bc861675388053d29b913281cf55d9d4d77c",
+        "publication_manifest": "cd1b4121999e5d054e2b1ca05f1ac4c49a83b0953bf2b63d27f94209c3d9399e",
+        "cover_provenance": "c5d7b7d8a49a3302265d2d26ea509d929ce85ebef80cc1ab9199173c64ced3e4",
+        "cover_front": "a4255d0ae4226d5e78cff1bbf3fffcaeabb1f49902eedd7bdaa9f6a308e5fee9",
+        "cover_back": "b77935cac7fc72ec7b8febe2d1e4d062fb5bfffdf1dcceaf2ef4be0fac86f5ab"
+      }
     },
     {
       "slug": "the-adventure-of-the-blue-carbuncle",
       "title": "The Adventure of the Blue Carbuncle",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-blue-carbuncle-pg1661-noncover-text",
       "record_sha256": "81632be7dddcb84128ae64587c45d63eef93a022d59fa41eb7caa10caf90f300",
@@ -271,10 +303,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0",
         "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
         "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
@@ -282,12 +316,22 @@
         "checksum_manifest": "7ad0c725405c37a9638766f66a5b58adb373ad8caf67d8961279f13d1e03bbd1",
         "publication_manifest": "a062463f1f7b474b7fbe38a497adfbd746f4c01e618362d2e031179c21225b36"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "86a4eef392d9795f8076c299b055b698bc23c64aef01adf9b1ce69350afb81fa",
+        "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+        "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
+        "approval_evidence": "1f864e2bf88d93de33203196381270dddf632c5fbd0bcbb799eef1bbdb20745f",
+        "checksum_manifest": "294637c87582424daac210e34d9ad4eee1505ddefeb8b2c45add90ef8ee44fc2",
+        "publication_manifest": "bcede6da36d6aa72fed44e702b63d123fe5908d06cbce314e4a35b4ad9d386aa",
+        "cover_provenance": "693e4c78049dcd74fcef5b08470f7f8568b14f31b8828cfb2712223a157542ab",
+        "cover_front": "7bd5c08c49ae7b6673ceea35d9096a0d8a179c0efafa941a2467cd0bf1bcc06a",
+        "cover_back": "2ceb1f6da7dc4ff8960611a1066c7ac324930c52ce66d8f470a7a3f58c3d2469"
+      }
     },
     {
       "slug": "the-adventure-of-the-copper-beeches",
       "title": "The Adventure of the Copper Beeches",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-copper-beeches-pg1661-noncover-text",
       "record_sha256": "68c5c6e8e726f984f64f583c8f94cda8996e72dc190a2ea9259d9f192ae89a45",
@@ -299,10 +343,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "f151cf4cc9bc066dcaf10f4323d586cfb2bcff100ec5a3b6bae9bab39b2b1bc4",
         "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
         "source_evidence": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
@@ -310,12 +356,22 @@
         "checksum_manifest": "0e81efc75d17935ef4cd04dbf0991e1b5f8fa8813ebbeb1b2cc2191d82e182d1",
         "publication_manifest": "c32f3a638c3ee953535d4165e80689cbb03ae9174bcb3a3321f1c908a7d87584"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc",
+        "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+        "source_evidence": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
+        "approval_evidence": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921",
+        "checksum_manifest": "496d6acb7fd7921780fe922a1a361cc1e325774f8e8af1ba36c1a3590153568a",
+        "publication_manifest": "192b144775c63081de4ce2275be052170f6578ff30999ea538ea848b0f1e5d27",
+        "cover_provenance": "e9ef27836a8d1f7533359d4f421ff76994bd4dea75217879b43d14303ea98bf7",
+        "cover_front": "1a755f79e54e23c8090e0322f81d6bf05f6cf14fb43d20b23f3d7b3b4acac356",
+        "cover_back": "249f7d21e17343b45715e614f3b1e145e29ebeca5cfa994932a57d28e43c5be9"
+      }
     },
     {
       "slug": "the-adventure-of-the-dancing-men",
       "title": "The Adventure of the Dancing Men",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-dancing-men-pg108-noncover-text",
       "record_sha256": "eaa61ad5ac6e1a83080dac86c22496992a1e91d93a837730dcb65c4007fc5077",
@@ -327,10 +383,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
         "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
         "source_evidence": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
@@ -338,12 +396,22 @@
         "checksum_manifest": "064a14d868d957d1538e4d0c94630aa5539f570522624110976e4b7786c7a146",
         "publication_manifest": "e688095bba5dcea9cabc371468b27b20bf3121e52f7ea6dd131e5825098db0bb"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "1035a5891e509f52951a26116a1d59b43f1635efa12f65c2eeab685e556fa23b",
+        "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+        "source_evidence": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
+        "approval_evidence": "eb9939dfe7db3c7ad972b391d175b4a24b44245971be68d47080bae0c912fa85",
+        "checksum_manifest": "a14997d0f86020ce2c9a5976a0e0cc0aedcddef355c6ede6143b0f576b7641b2",
+        "publication_manifest": "21bf6d5dcd605d6fcddcbfe69bd04424fee6259c32a5b53e4c6070b46d0ef5f0",
+        "cover_provenance": "5714ebe4da87c7c18ad88258ab71d8b8bd0405018c69231cd48bb72c9cd8f005",
+        "cover_front": "0554ac8b881f1ad745ac3f86188714702e56ffa308b43be64c504c5b3916ba64",
+        "cover_back": "e2832bbb1a7c04d32d3a70db02dd5e1c4197d6307b7bf9f596815758ec0dacda"
+      }
     },
     {
       "slug": "the-adventure-of-the-empty-house",
       "title": "The Adventure of the Empty House",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-empty-house-pg108-noncover-text",
       "record_sha256": "dc3169afede2fd71ef98b8cfcf033a6117eb2d95110434871c670a9e53deb0a2",
@@ -355,10 +423,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-empty-house-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "8739f75c7d611542a56e4f9962ea53188788b114d807ba84471f7204e7b13614",
         "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
         "source_evidence": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56",
@@ -366,12 +436,22 @@
         "checksum_manifest": "f7ebaa7c8058fe5b9b98a9dd31eec570a643101c9b2536f15616e2e858c4c880",
         "publication_manifest": "af6582314294418652a0cc5280d83bc98b2cc4560a840f286781f15e6d15edd5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "69859613acff933cedd1a797cf1f8e04057ad8230d8974e11599381bc881bf0d",
+        "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+        "source_evidence": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56",
+        "approval_evidence": "fe83d4802a00cd05c3f82e0922832ba0c5946c99ba91354c4cf7d7cd208c050b",
+        "checksum_manifest": "14c7858be04d241599b23c6053dbfae2b1461f8f639f2651df19207d06494b3c",
+        "publication_manifest": "bae0ac8b9a7ab2717a8f4eae7505efed0ff941d7a75f1e2e522709ca656eec42",
+        "cover_provenance": "6fa750de63f34b91dacfac6d3252d4b949eb83d17fe2e22f810a4c341e37e6e8",
+        "cover_front": "bd449d4fd898ddd08f83d1824b7572ba025f5a1a637ba094a97b9a4378d9c975",
+        "cover_back": "a2f25cd2835c22e80d2086e9e9fbf8a9e44ae7f50805b8b998008a51ce177b50"
+      }
     },
     {
       "slug": "the-adventure-of-the-engineers-thumb",
       "title": "The Adventure of the Engineer's Thumb",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-engineers-thumb-pg1661-noncover-text",
       "record_sha256": "32424316f068d253a53a1b7fe44cd1e9a270337afe62f3beeeb7d5a21a1bdf93",
@@ -383,10 +463,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
         "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
         "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
@@ -394,12 +476,22 @@
         "checksum_manifest": "867f6b7f397d358bfe11a6f2f75b50efebc7359445c6311eeba19468816035ee",
         "publication_manifest": "35f7a7d6dc0007e2b4fe114e6fd595c3cf35eda9fac7ffb8713f4de13e41b4c9"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "cf829469e07642fdf4526721fe48fdaf96b4e1c82a2207cb9685b0bc2b61fce8",
+        "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+        "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
+        "approval_evidence": "660944f0a7fc089a372085cf8515f33343f6803e18a50cdaf163a269e8e9cf05",
+        "checksum_manifest": "5af13d50c99f208214bf33e8a6471f896ab579e72bbe4a07bb8e250caa5a7d79",
+        "publication_manifest": "2c038103c28a8e6b1b75c9fc1947bbd59bfb2a00852bbbb6ae464853bfaeb1c0",
+        "cover_provenance": "04fea644574d126ebb5a5abc9febf051b2e1a25cc347d6659a19e99531580e0a",
+        "cover_front": "75be2913c2d03302aea955b7bd3db218a35a2ac09c12914c226fcff09bf9d897",
+        "cover_back": "042c7d5bb3398cf454639e2878ff4114b80e05b1fe8577a5a2d3ff8c295006bd"
+      }
     },
     {
       "slug": "the-adventure-of-the-final-problem",
       "title": "The Adventure of the Final Problem",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-final-problem-pg834-noncover-text",
       "record_sha256": "983b67764662bfbe8b6d9f9ede23f059a307f2278049da2d53c4bf1ba83cac04",
@@ -411,10 +503,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-final-problem-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "9b4e62e53fb3154be0309443ea2519611994f754505b87567624c4d2fc85f291",
         "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
         "source_evidence": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
@@ -422,12 +516,22 @@
         "checksum_manifest": "d830af9e5dc0cdf16c09b86c458ba22553f83a86d3c6fe3215daccddeca38a29",
         "publication_manifest": "9a23357ffed675272e8f840e73a4313b7964af560e0fdc706286c58d8fe89387"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "7ef989b45091aa54b92df7d28b8a6921b33c0b42c02a5e71347dc37eeb1ea044",
+        "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+        "source_evidence": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
+        "approval_evidence": "6a822b2058adccc574aa6f865dff7af88ac8b8570e511365b0746865500884c1",
+        "checksum_manifest": "1c47abfa56da878dd206f99ddd129dfe313a42752b2d681469e1622b8352d32a",
+        "publication_manifest": "517a557fc5513eb3ab11507ea8cfe7768bb123417885ef35625fd05b8c2eca8a",
+        "cover_provenance": "4e04b57d0ae9939d798c2267d715ca76bfb7b53a972fc393dc4c141ea46c39b1",
+        "cover_front": "ee9e47f4bbfe47bfd7aeabf8984982ea7ea36ec7f44ce77f04d9a4e6d35133e9",
+        "cover_back": "93ba678d6d4fbde26a15e5d087cd7074e84e5dfb57313d48018e7666b521fbb9"
+      }
     },
     {
       "slug": "the-adventure-of-the-greek-interpreter",
       "title": "The Adventure of the Greek Interpreter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-greek-interpreter-pg834-noncover-text",
       "record_sha256": "1b6c5dea6dba58b4f31240c7b41fb86c837d56512ab5b8e682b4d230bc6d068d",
@@ -439,10 +543,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-greek-interpreter-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
         "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
         "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
@@ -450,12 +556,22 @@
         "checksum_manifest": "98bac0c607d9e455154f7ac6fd836a5f357fe9bbbd642da268a66b01eddc4bda",
         "publication_manifest": "cd70eeea3dff622a884ae45651e2e41ab529a80fbfb6759e04fdba65165d5fe5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "757dc394f18037475b2bcc57598d8a48519081d136c2b4d82e837f0aec9f56ce",
+        "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+        "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+        "approval_evidence": "eecb5f7c18ae3e83715a2f34b98b40733b9f80e6d1b697d3e1b988b7182ebda3",
+        "checksum_manifest": "762db6aa17aeb7e74b0e57a9a4f25e01089830bd094b5be0a43b02e110b41fb2",
+        "publication_manifest": "0e6390251f5470bb52cae162cf17de9cdade3d3db945200ea0a50b69a89222e9",
+        "cover_provenance": "c36a229e5835a2b7cd65c460a9808c5e5eb7a3a8860de309b7eed30148286a8d",
+        "cover_front": "34210d690ea405fc3c22c6c2dbd1d8547cc07fc8b065eafadd0d4fb227965e80",
+        "cover_back": "321ba7f8789a55c66a405074d189cdf8b104d5e1b0c0d29245264f5b927b7a60"
+      }
     },
     {
       "slug": "the-adventure-of-the-noble-bachelor",
       "title": "The Adventure of the Noble Bachelor",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-noble-bachelor-pg1661-noncover-text",
       "record_sha256": "29a279fd2738c7fdf07b13be3e05ae2ed5d21b1b91934bbe3a8a7eaf40f77294",
@@ -467,10 +583,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
         "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
         "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
@@ -478,12 +596,22 @@
         "checksum_manifest": "9dcde617f0d3e6d45074292e118d21ce4e8b0e998c0a924b61c1805fccc1be8a",
         "publication_manifest": "7f71e45fc3e8efc3f8c5ccd25af86f1b27210af7ee02f7f853ae03154ed71abc"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0",
+        "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+        "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
+        "approval_evidence": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c",
+        "checksum_manifest": "36443db772499754b107d562c7cc6f0d7fd44532b06ac8d4a558da007cf9a6a4",
+        "publication_manifest": "71d20d2b5cc90f510bfa55f9f4a5f9643b0b853cb460e988d7718c5421712b70",
+        "cover_provenance": "6ab9a2a50cebe99cbbf855dff0d2fe9f95c94439b9a3dd70768b487fdef095da",
+        "cover_front": "07b4be8b63c8a9a67274475d82816e4b8bbd52d1d8f5d7cdcee1491911c21c06",
+        "cover_back": "220262aef53b89503da5d1f89143027935de67a05c745243ee8044bf4b6fd902"
+      }
     },
     {
       "slug": "the-adventure-of-the-priory-school",
       "title": "The Adventure of the Priory School",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-priory-school-pg108-noncover-text",
       "record_sha256": "14a6c28195760ce420410f988f57153478ca7271f02ab64afa5c30fae00e48cb",
@@ -495,10 +623,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-priory-school-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "200768acdb552a81b702adad6d118582da2b09140f12527eded28508cf6a1b88",
         "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
         "source_evidence": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
@@ -506,12 +636,22 @@
         "checksum_manifest": "064ea3216ffbecfc8c1bfef8abea5b30074344a2a502f58b47fbcfb964db2591",
         "publication_manifest": "a3cffa308bc76d95e213e1ff3fbac68fa99174b033c304fbab38137e5aaec98d"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd",
+        "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+        "source_evidence": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
+        "approval_evidence": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9",
+        "checksum_manifest": "64dee73ee6d5ed9f6a89253af637ff5b4e250b76e46ff96b64765d6af53dae2e",
+        "publication_manifest": "a9dc150a588b338a72eb20b4053bf5450a470844d45bca616de8f266ba598769",
+        "cover_provenance": "b6c2a373a40ce3f1434406d02d78978e2babea85d1811288cbe112bb95c0e435",
+        "cover_front": "3e9b0e816cfc3a732124c6bc62ebcc5775e2b3307d8657c996cadcc3fbb1e959",
+        "cover_back": "fd592ca099d95aa0899d871231c593d5cd20b115461bfbe450c1e2c838f70583"
+      }
     },
     {
       "slug": "the-adventure-of-the-second-stain",
       "title": "The Adventure of the Second Stain",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-second-stain-pg108-noncover-text",
       "record_sha256": "0239b1a4ecb81ac9064e1ba017f6c9162b7f852c543f84a8769e91355accfae5",
@@ -523,10 +663,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
         "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
         "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
@@ -534,12 +676,22 @@
         "checksum_manifest": "0955ea464915e018f3bade1316644cbae5de982b22bb946920f7ff45c8cd92b8",
         "publication_manifest": "1898d0b4e91b298faa154a858f582ec224eec248e66b95d9e46d677417b0aa54"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845",
+        "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+        "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
+        "approval_evidence": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494",
+        "checksum_manifest": "de53cce4037cc0cad75c372f8115efa9e03dba4db81987456daad00d737c5310",
+        "publication_manifest": "ca90e6d35d2a350d32cf7435ae8052585a0361f22377ccc9f796ee1cc83ccc61",
+        "cover_provenance": "41279e77b3832f4f4cec4b12fca7729271f66884586bb3fc02c82e60d393e4a5",
+        "cover_front": "a8fee57446567bc7e406e2497a616f468651ae6b5f2ea66826a3ae90faf5d388",
+        "cover_back": "3054d7edcf03950c656aec0556201b8bcdd7fc5db8f877884a46b8484415ad8b"
+      }
     },
     {
       "slug": "the-adventure-of-the-solitary-cyclist",
       "title": "The Adventure of the Solitary Cyclist",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-adventure-of-the-solitary-cyclist-pg108-noncover-text",
       "record_sha256": "a16ad12325d4922318832dcb33def66187323bd9fc14213a248e7368fe71ad4d",
@@ -551,10 +703,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-adventure-of-the-solitary-cyclist-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d",
         "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
         "source_evidence": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f",
@@ -562,12 +716,22 @@
         "checksum_manifest": "84df15a0313d8439a2efba9f7355700fb82bfb3bc27f6d9b27ddeb1b172f8ab5",
         "publication_manifest": "5376f41621b9a291c544041e7d2c0119033872867ef9c72d8475576a1f101bc2"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "0b06d639d435b5ebab82991a5e132f7d632e74bd5c5442b8c5bd30cc908d29a3",
+        "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+        "source_evidence": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f",
+        "approval_evidence": "4eaf47c3877cdbf726270cf1ec74513507eddaa87be98b48bf1283090d65a971",
+        "checksum_manifest": "e1112f734d53855e64241f6a37372fdade2ad8f48ddc199c74ca8062f5444ef4",
+        "publication_manifest": "70b48371820cf2cd6f425839b2268d890558f947895e8596700c8cccc5fba75e",
+        "cover_provenance": "e1e36e8a61f9c9cf3c33ce5db003e7af0daf6fb192e7f8d25b2630907a126d59",
+        "cover_front": "fae2603ea9759cdc28bfeb55441f42196fc286ba7dcffd850946e227009c4834",
+        "cover_back": "542bafcf2ce8c2d2b22a1093835a9f406bf5b62d4bba77b1c993f224ef92a347"
+      }
     },
     {
       "slug": "the-ambitious-guest",
       "title": "The Ambitious Guest",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ambitious-guest-pg13707-noncover-text",
       "record_sha256": "ea40b81e4df2a681f48a1141d8bae75d8ef6aa1f449a75113a4ff68daf07a2f0",
@@ -579,10 +743,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-ambitious-guest-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809",
         "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
         "source_evidence": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
@@ -590,12 +756,22 @@
         "checksum_manifest": "13ecdfc7985079908292f5f12c9f25978fe437fa880f7eb1cbe12caf28db256d",
         "publication_manifest": "0db06ddf5e767641a58820ade23074f3c3dd742ae44e7d68f455ee35f646a549"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "b37a0d5ec87d22cf855e6e9b35572ced8261a04ac0876a939740f67de41e89fd",
+        "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+        "source_evidence": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
+        "approval_evidence": "03761b2b57131c63301ff665aa45a0f4e8378fbdf4f125e0c854e09d7a28f198",
+        "checksum_manifest": "cc62326b729d116a6b167a0c4cf113f318b58248e817b37b2613cd2aebbc5bf7",
+        "publication_manifest": "c391c36ceedf0f3c9aa8fec71b0bc619819134bfb24994c1eb7fd6c2d25def78",
+        "cover_provenance": "29ac28165c4db3efefd0a591255bebdd5fd426a8578a88fc95c8d1817154d78b",
+        "cover_front": "9d7f9096be843ec9641abd5a6288e28625a65ea7858489b8752cd9f35ddcc521",
+        "cover_back": "672973a9e0ab8b4f9341ce993c512def2b00a18cae37dd4cb7079c7870e24c8a"
+      }
     },
     {
       "slug": "the-bet",
       "title": "The Bet",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-bet-pg55283-noncover-text",
       "record_sha256": "c415a8ff8c276b1ac7bd6dbc694ed38289ed188b087f9b5f9c92511f5218cebb",
@@ -607,10 +783,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-bet-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
         "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
         "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
@@ -618,12 +796,22 @@
         "checksum_manifest": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
         "publication_manifest": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "b8386b447eb837d7d5f00a36d6690430071764a15a6ab6cbe7d8c4934546b7c4",
+        "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+        "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+        "approval_evidence": "52dc4b9d2813f6db80100628504f4ced83109a411f94c6f606323b5c68ec0ab6",
+        "checksum_manifest": "fbd5dc2050df5d55dd5e7eac78aa7935529b9ee206076f98422a97fd8a5c9ceb",
+        "publication_manifest": "09f70ac9685c19420bcb2ee6e6e41d0d8358c890f08387635bcb4eb2c7e86a7d",
+        "cover_provenance": "a54a55bbbfb777a8bd8edeb856b44284da28961ce7598836b9744f3a84b30e2a",
+        "cover_front": "4b7127da76e3fe28a9fb114009c34068ff40b10e368b2062cf23fb420856dc7a",
+        "cover_back": "246c507bfccf36d6672258aaeca1a6c3d3dca8d99fe8b1fc5ce9a5ecc932acb0"
+      }
     },
     {
       "slug": "the-celebrated-jumping-frog-of-calaveras-county",
       "title": "The Celebrated Jumping Frog of Calaveras County",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-celebrated-jumping-frog-of-calaveras-county-pg10947-noncover-text",
       "record_sha256": "6c50f56f12d7613ea93ed7aa0c3c783e3542f40579a46378faa30ce201a528bc",
@@ -635,10 +823,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
         "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
         "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
@@ -646,12 +836,22 @@
         "checksum_manifest": "0939ef6da32c99487f893730019accd2b7861e6e72a22878c186759b41cbb40f",
         "publication_manifest": "faf370067b9e4dd91be5708a6df99e78cac50762814a5ca3b6e121fc63dd8ddd"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32",
+        "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+        "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+        "approval_evidence": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592",
+        "checksum_manifest": "4086bda0ad821b79d3ce397a4f685e5a1176ef54df9dbc891e667cdb18a832f4",
+        "publication_manifest": "b7bac75f315bfd5b93bc154d71a73ae83e6f03aacb22cfff932ccc841c6eb183",
+        "cover_provenance": "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc",
+        "cover_front": "4df736343b19a3246ab36d4d06f3424da18a5cc600bf1d56dddb24ae1e172ac2",
+        "cover_back": "7e617b8ff497a1bf9e688c740148b11337e2a32f9b708334bb82db5a8777283d"
+      }
     },
     {
       "slug": "the-country-of-the-blind",
       "title": "The Country of the Blind",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-country-of-the-blind-pg11870-noncover-text",
       "record_sha256": "92b88aa6e6155449326ef94b7d49f8826b8b9ffe974534c540e6f9c39d75f48b",
@@ -663,10 +863,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-country-of-the-blind-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d",
         "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
         "source_evidence": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
@@ -674,12 +876,22 @@
         "checksum_manifest": "dc8f65011d8d3ee5c7610f68e63d00f2d40484729df0aa25c16c7a229952263d",
         "publication_manifest": "2e18a9a484fd4d183dce32fec44d000cfdca9dc606b8543e09bec17a0c47e85a"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "c329387501c154989063c36304b35725c6281f8c9c5dc021fc3493e6f9a7501f",
+        "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+        "source_evidence": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
+        "approval_evidence": "283d507508e047df05b72cad44b9da59af0c08e222c4418caa9b0b19601f01be",
+        "checksum_manifest": "21e2c5725bcb6fbab9abad658e58639d70533d6722f49d567379026c2caa9cc6",
+        "publication_manifest": "6614eb9c6c41c22a00bcfb991a8d5d84cf4a3cae7712ceefa9c73ad83399d955",
+        "cover_provenance": "83ff8e91733d3d43a17adbcf15b8ef72d76dad576da2d6fc61192eb81d2e9aa1",
+        "cover_front": "cb52a12565b29595c5ec9490fc1bb37470d18f30459c845239d3d0c304b9cd1c",
+        "cover_back": "fa92f8093537a66efcbca2352fe90ba4cf20438da590662df75bc85316f8a937"
+      }
     },
     {
       "slug": "the-darling",
       "title": "The Darling",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-darling-pg13416-noncover-text",
       "record_sha256": "96f96951650b9d5153b5d74d11a514687b2aa945d738794f736f2bf78aff8689",
@@ -691,10 +903,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-darling-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
         "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
         "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
@@ -702,12 +916,22 @@
         "checksum_manifest": "cdce14ee356c6569302af33dcb4da92cc9a98c8d6997114c0bac20604441be27",
         "publication_manifest": "f85c9850a82a028fb43a4fc78b9174db82a97265a5d6fcfa12648fdb57e53450"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0",
+        "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+        "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
+        "approval_evidence": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9",
+        "checksum_manifest": "ba642416ff3d5e41462b7c548dd91afbe5a3bf567dbb86e1aefb0ea75ca59021",
+        "publication_manifest": "2499158248e3a1f045cc4d9789122f8ae922501dadd0c8d4822f7bdec9e50533",
+        "cover_provenance": "5f650ca64ae3ab2fa8e435261092307cea8914078a21a3d55df8e9526591d97a",
+        "cover_front": "13f20dc26bb559ef6faa803d91ffb182c8bdcea6be89dcf1a03e65f273d4c014",
+        "cover_back": "1215278e5de5b27cd3ca0ca61ec929754aeeb21946a3899c77309058610262c6"
+      }
     },
     {
       "slug": "the-door-in-the-wall",
       "title": "The Door in the Wall",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-door-in-the-wall-pg11870-noncover-text",
       "record_sha256": "2a67aa526dfbfb3cb7eba905397d2a3c30876b5b53594c66b0efc1249a38df0f",
@@ -719,10 +943,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-door-in-the-wall-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370",
         "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
         "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
@@ -730,12 +956,22 @@
         "checksum_manifest": "e90d5881a6877a38ddb0d53da57d0e66f97a6c90b7ef128e98bffdce240c9515",
         "publication_manifest": "d16bd1be6b33823fa88e6ee40c8c7195e5a3f4215de828a480e123e18a768e8f"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6",
+        "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+        "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
+        "approval_evidence": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb",
+        "checksum_manifest": "8ecd211a9a8db86e8aafc8cd540fedb3ec9920b35f08cf6339f69764d7b3aae4",
+        "publication_manifest": "3bf0ee4e784e2915c8749e14e6d3a73199f8f6b90b0b59bf93630a88c5643f29",
+        "cover_provenance": "efbcae6afbf6c00657fbd8eafa7a96a2f588e824d2c34a7d58ab8ea34c579431",
+        "cover_front": "573d4ab0cfea235c441045293c4ab4e28be4ba50cc60e20e0301b164aaa36767",
+        "cover_back": "bfb3be25d2760b0167dbf1ad9a80a22e36d37ec976ccb5b38c5583b771b37627"
+      }
     },
     {
       "slug": "the-furnished-room",
       "title": "The Furnished Room",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-furnished-room-pg2776-noncover-text",
       "record_sha256": "7df0be3fe47fd90941672eb835b954c59c92ecb95f6c183ae6d67ce9a191f4ac",
@@ -747,10 +983,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-furnished-room-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
         "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
         "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
@@ -758,12 +996,22 @@
         "checksum_manifest": "9ab1c22052d33e085745231b730938ddd1e46c98874dea8d57ad98f0ba49f2c8",
         "publication_manifest": "53e8b0e715671052bce3c0ea6cc5d46719bde77f94b4455c7a6eb9c965837f00"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10",
+        "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+        "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
+        "approval_evidence": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef",
+        "checksum_manifest": "74369f09a9c556dd32a68302bbd4797d5a26eaeb43c223d55d7588030777fc03",
+        "publication_manifest": "872be983e97eaee99c39b6d098aea74bce6c5092d8ee1f528392819085634ed2",
+        "cover_provenance": "8999d74b0ba7f69a591cae5c88bb71d0e5ad01bcdaac2cbf47bd33b6266898ba",
+        "cover_front": "288a1a717bbd1a000dae21c700c6a32b20b27768d045b3ec83fdb9409bb10fc0",
+        "cover_back": "c83bd212ef8bb75a4048251fb4111fd6e146e9ab2432cf715e092fc227263423"
+      }
     },
     {
       "slug": "the-imp-of-the-perverse",
       "title": "The Imp of the Perverse",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-imp-of-the-perverse-pg2148-noncover-text",
       "record_sha256": "c9bcabc2ef3d1a5fd46d0d316e2827ef22224137954d4994747312b860ff1fb3",
@@ -775,10 +1023,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-imp-of-the-perverse-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
         "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
         "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
@@ -786,12 +1036,22 @@
         "checksum_manifest": "1f6244dd099a63544c3b5aca8fa13bc966e6f2d2bbd78f6af83f544802662cba",
         "publication_manifest": "366fa65c10dba03371667aae51e1a20bd6d05fa420cd12843d251e715db802c5"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "befde6cf0c29c1270d71a20b55592a6bbee094b2133786f8339bdde031d083f5",
+        "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+        "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
+        "approval_evidence": "d95bca3764f82dea50328f96b07494d8fef4aa9c1f4df8de19f05506f28d1ba6",
+        "checksum_manifest": "a7f8ea7b95800ad8c1a2cf9cb92fd424e3dcbc294d5246c59d2b2b4ad98ee8f5",
+        "publication_manifest": "4facd84e5c9bb36254f2a0338cc83aa391c13366202a5583533573b56eeeabbd",
+        "cover_provenance": "2ff3d245dea532c501ac08cf4a330769a5514b870aa81e7d0c589d27894bfef0",
+        "cover_front": "71c298d1aebcb814cd111c29205c13c73461abad1c423584243ddb7109c7d067",
+        "cover_back": "e44da81d0dffb6d2ed24dc52e0be0a219c0231c818e789441637778d2211b9bf"
+      }
     },
     {
       "slug": "the-last-leaf",
       "title": "The Last Leaf",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-last-leaf-pg3707-noncover-text",
       "record_sha256": "d50b46361e8e52b51b2c03dc8dae5a535629f3ee5287675a3d13645fdc87e2bf",
@@ -803,10 +1063,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-last-leaf-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487",
         "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
         "source_evidence": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
@@ -814,12 +1076,22 @@
         "checksum_manifest": "aaf5ce5689a434e4898800880a147a9b10409acc1e4848232adcb13b8792e5eb",
         "publication_manifest": "cba49076cdabf70b4f7fee47392620e589086a95bee2d9663d7e25e469a1c887"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "d794a4c2671bf8dd3c21b82bfe6b4d6e0b0ba7f495667d3c1700798275250e57",
+        "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+        "source_evidence": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
+        "approval_evidence": "ef63c5f763a85e017e8132934e3deb8f6f273c33fe25b0ffea5030ff984c4df4",
+        "checksum_manifest": "15ac1c46aa08f1caef1ec3f7d467f9bf9f5abc38e4b3058df9e8597462fedd0e",
+        "publication_manifest": "171193eda55e0a01c12ce687d127ef419617950123a4576f76051a2a104f08c4",
+        "cover_provenance": "2edd7971e9d6dc45bae952024c2226e42919d15448f1a72ac486b862fe6d84fe",
+        "cover_front": "d67f4e42bfb0e67390ceef6f6b2a78b9a17125d684a48b1bb42a7e0729f8b887",
+        "cover_back": "561de4895cba4890bad75a3ef0d500ef041cdfec3ad38f9b15bd6c5c501210e5"
+      }
     },
     {
       "slug": "the-legend-of-sleepy-hollow",
       "title": "The Legend of Sleepy Hollow",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text",
       "record_sha256": "a4cbfbe3a2629b841e12193d3c331a04c9a0eefaee4be47f8812894f2fdb4610",
@@ -831,10 +1103,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
         "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
         "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
@@ -842,12 +1116,22 @@
         "checksum_manifest": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
         "publication_manifest": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc",
+        "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+        "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
+        "approval_evidence": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5",
+        "checksum_manifest": "7002ee636ffc44d30203eef84bf94a7be89383302cb2c72fa200c16f1c1f93e2",
+        "publication_manifest": "eb289e38458c7914830f785363d826b4e731334ba84a4340b094c3cb2675e761",
+        "cover_provenance": "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237",
+        "cover_front": "cc534675f7879d9a3840adb559b56c17bce9f376221e86df1c6772fa3e08fd65",
+        "cover_back": "14f5e3951814194eaf100fc628340f4d2a3daf6ef8db76db553eaf4076932bda"
+      }
     },
     {
       "slug": "the-luck-of-roaring-camp",
       "title": "The Luck of Roaring Camp",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-luck-of-roaring-camp-pg6373-noncover-text",
       "record_sha256": "ec9031d97985a3a3a12829687dba91088c47ede53be58997f8e7923d50e42062",
@@ -859,10 +1143,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-luck-of-roaring-camp-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb",
         "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
         "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
@@ -870,12 +1156,22 @@
         "checksum_manifest": "620be064a247a3875d0cdb8223f1b1a32dcb285fb26821bb91a51eefc6aabee2",
         "publication_manifest": "d521c18cd8fe65e5c47161b493a3e78e71ce974161f0bafa8e5d4e76db5d9209"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "2bad3fb5a3f437694825edaceff1b4905e59ad66155936b1f74e27c76738bf87",
+        "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+        "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
+        "approval_evidence": "ff6d01b7cf8091e137acc5495b56b860b6a637f3ae22ac584f9fef36d52de3df",
+        "checksum_manifest": "441ea77b51c9815bd71ded9965d0e6f450a6adfe904f23677c8d034ad78f039f",
+        "publication_manifest": "2c917546e01e1c51d7aa8ad2b7a6b4ac07c92db8ab2d84ddd23c12e9abec4abc",
+        "cover_provenance": "62fdba2dc8b768127e4bb03a4cd96608138459cdf7c8f8cd797ac8f2ca7be7bf",
+        "cover_front": "272a7efbf5f18201fc236c896754d52ee2b4aec5004cb834dc1e1cec5a53de9a",
+        "cover_back": "87fa0161246a85e203d692ae05af499eaa4348122f8e421454d4301e7cba0e07"
+      }
     },
     {
       "slug": "the-man-in-a-case",
       "title": "The Man in a Case",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-man-in-a-case-pg1883-noncover-text",
       "record_sha256": "1135d58b7133f70789e078f72b12977c3ce6ae7aae67f0f0f252b8b5f3faddc3",
@@ -887,10 +1183,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-man-in-a-case-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96",
         "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
         "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
@@ -898,12 +1196,22 @@
         "checksum_manifest": "48eac5aaf5cd63237756ba8180ceabeb55b4318e258627512650dea8aed6a302",
         "publication_manifest": "85e04a2208738c6f61e2b74e1b645c4decdbdbce1ecd1f280d578a8c32b479dc"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740",
+        "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+        "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
+        "approval_evidence": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6",
+        "checksum_manifest": "e8a4f0edf8f0ff247b4b06fe9ba75b2e9491bcb9b8e60758c91cdc95f72696bd",
+        "publication_manifest": "3dc0afa7cbaecf259d2b8bfe64acc2cf4e6759f17783293afb122e2ca5c1f075",
+        "cover_provenance": "1add91690ed370679923439b30f6f439d85702baa1e67130b698bcb1c1d9b11e",
+        "cover_front": "41c06474b3633179003693da4fcfa6d7fb138c6967ae73874f7ad4abfaee2aef",
+        "cover_back": "976bec60c0f18202a0a1f43d97f98c810c02149a747ef2ebfe744b3df84521f2"
+      }
     },
     {
       "slug": "the-man-with-the-twisted-lip",
       "title": "The Man with the Twisted Lip",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-man-with-the-twisted-lip-pg1661-noncover-text",
       "record_sha256": "2c67b40d9b259fe83320eeeec996417672f8c7f8bfe5c0fbe0eee50fbb232986",
@@ -915,10 +1223,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
         "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
         "source_evidence": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
@@ -926,12 +1236,22 @@
         "checksum_manifest": "72a7eada2598b93400aaed058b2312b81dbbf2330f16b089cbc7090ee7a75119",
         "publication_manifest": "b3c940e1c6349526676c3ca3c7b0e89d06b9d678b5d9d2f14ecefb34a7f1a6c0"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "9faaddaebb206ae54a8a62862c1e8ad1509bb8f1cfda8e38cb4a1bbda7d95831",
+        "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+        "source_evidence": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
+        "approval_evidence": "59d2ceb1729cc8e7f2827829d730ecbcf79e571c651643ca81aa045084afa1eb",
+        "checksum_manifest": "77791c01dbddfbf53e99fddaad06592cde56464db418481cabdfd43ddea7f84b",
+        "publication_manifest": "adec56d35bf0334b18f473503208b8c92edd03f931afbd6bee4da2b5d28bc22b",
+        "cover_provenance": "3f7c5f097a5eb63d8a61dabbf0f9e1430372f9ede6c5afa6cf3253f79b318482",
+        "cover_front": "7b55b41491483715d7b3ab6025220f8f6cf3d278541a474e6928083476b5ab12",
+        "cover_back": "32c65c80621fd3ed119934c4e70ff54d8f0ba8c206ae1ee273f3f2bca1817ab4"
+      }
     },
     {
       "slug": "the-masque-of-the-red-death",
       "title": "The Masque of the Red Death",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-masque-of-the-red-death-pg1064-noncover-text",
       "record_sha256": "af7ff047cffc6967dd048b355a84ead4447ce58dae6fa782b0f47fada9a4433d",
@@ -943,10 +1263,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-masque-of-the-red-death-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9",
         "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
         "source_evidence": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
@@ -954,42 +1276,22 @@
         "checksum_manifest": "6cb9cf668509824e6a39abb705113164ab2036dd61eb325af3b23f8275b722ec",
         "publication_manifest": "e2de703e2cecba26bceca0560e9e136365bbd03cfa37619fb6fc2f3b669034ec"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
-    },
-    {
-      "slug": "the-metamorphosis",
-      "title": "The Metamorphosis",
-      "state": "HOLD",
-      "local_text_decision_status": "MISSING",
-      "decision_id": null,
-      "record_sha256": null,
-      "production_registered": false,
-      "catalog_gate_pass": false,
-      "catalog_gate_reasons": [
-        "ACCEPTED_DECISION_MISSING"
-      ],
-      "package_checksums_valid": true,
-      "manifest_present": true,
-      "manifest_blockers": [
-        "Rights: modern or unknown translation rights block publishing until separately verified.",
-        "Rights: Tier C rights block all publishing.",
-        "Rights: verification_status must be approved before publishing.",
-        "Reader QA must pass."
-      ],
-      "component_sha256": {
-        "public_book": "73ce6de1adfd1d67cd5d3f8497c0f3f50d1dd2917e90c00a4e934d6e495d4da5",
-        "reader_manifest": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f",
-        "source_evidence": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3",
-        "approval_evidence": "06f1c670cba4205c9e6592839202a99e579f3c7358bd5f2f9940e5f68245ad81",
-        "checksum_manifest": "aa33f109affcf9df576a87cc54936277e4ad0ec9c6d3cca5f3ee7e238a15413e",
-        "publication_manifest": "43aa508b0ed609063831b7c4c4c2b64421de19b4f247700fe236f6ba57e5eb9f"
-      },
-      "next_action": "Resolve title-specific rights and complete release package before proposing activation."
+      "source_successor_components": {
+        "public_book": "7c71b972649d03d0b9f7283f7f08cf10137f6a3534db925e09512350b94d05a4",
+        "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+        "source_evidence": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
+        "approval_evidence": "378211194920d17e628b54c3cd63e497941bef47ed6bc45bc232e69e352dfcff",
+        "checksum_manifest": "ae4bf95ef36dc165e77d84ee729b1899ea0f683b25aa863c630e2ca362dceb02",
+        "publication_manifest": "d6fb5fb00c994d1e4db666bd16d9fb1ee548b3e4744a5572c15858d1d75ada49",
+        "cover_provenance": "6f1f9757c03b7acc37292be721f2883823e3c5ce7aaa06fb810a3d14b240fbe8",
+        "cover_front": "b5da74282d1d0d85d8765449e6263a9051708bd7b2925f74ed56da40b3b67ea8",
+        "cover_back": "a8ba155eb51310fd4873eb1894f75260d2f54bb9085379748a058f16dd66017b"
+      }
     },
     {
       "slug": "the-ministers-black-veil",
       "title": "The Minister's Black Veil",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ministers-black-veil-pg13707-noncover-text",
       "record_sha256": "a71a27a8b9cb52cd176c8845af2e6662eac562abf36e815b3db5bc6d0bed7459",
@@ -1001,10 +1303,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-ministers-black-veil-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "e89616cef4b147399870c56de46b53b60ec431a902347ef123ec25cde50578fb",
         "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
         "source_evidence": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
@@ -1012,12 +1316,22 @@
         "checksum_manifest": "c200d8fb8308fdf43a66031aef990a501f9aed86212c37bbbb0592afcd9c720d",
         "publication_manifest": "50e4a9d36ce0a612385d4013e8c7c9cb1399abec35a529d3990fa374aaadf505"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "046d3cd2d456b830d416d7486f1aa249ce957b66e21534046daf7f36ff14803e",
+        "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+        "source_evidence": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
+        "approval_evidence": "30c6674ae62cf9729dbcd4aa6c280a5a6b7cd44578c6d54c145fa93e649887ef",
+        "checksum_manifest": "3d7044963941bad0344a1f5c28691fcdf64e6f71543c0f721561db57ea4d000b",
+        "publication_manifest": "34974316a4e00de726261bec8035bc79bebc3ebd249b0ca6b37fa7e561b67a84",
+        "cover_provenance": "100ef82f45a2531e36c195018a68274873aebe533da061f795f0b90127d83940",
+        "cover_front": "7cead9082cadce2b775e362223558c32493e2436ddd4b3c8e4ac0c3a32b9c845",
+        "cover_back": "ebeea33d539a5ceefc4c1e8bde9c5af799dd284f6a901a7e3acfda5b732c5d15"
+      }
     },
     {
       "slug": "the-murders-in-the-rue-morgue",
       "title": "The Murders in the Rue Morgue",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-murders-in-the-rue-morgue-pg2147-noncover-text",
       "record_sha256": "c90c6f10f129a06d7d577e7d2cbf6658d8a2876f718e1cdf0f15a74663e611ab",
@@ -1029,10 +1343,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-murders-in-the-rue-morgue-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "66b5b4bb3d065f0da757b9570c0c91668939aeff95b7a560828a0a8afc8404e5",
         "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
         "source_evidence": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1",
@@ -1040,12 +1356,22 @@
         "checksum_manifest": "7d20029bd3fde6280d1181eb63e0e4106fb2a16a70f819d0d850a72c6ea7b8ab",
         "publication_manifest": "8c0aaa494f4db75888c00fd7b53061547684f3e34502d22b6620712c5c5ede91"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "59d2622be6ecdce0720a7e9414803bafcbe3a20358d702cace44947a09cca4fb",
+        "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+        "source_evidence": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1",
+        "approval_evidence": "c2053d857ce810bd94ba908c90a60e7ffc6d1e1ad0204972636fdc8e7777b54a",
+        "checksum_manifest": "931e2eb128404611a0e910fed066fb7a4b7ef84c6edb14e6d2c24b05aaf73350",
+        "publication_manifest": "4680e283626b57773c604c1d018eece2da36a5b32dd59554210a394475a40556",
+        "cover_provenance": "613ff82cf2ad5c4bc0b385a2f66cb80f40df9cff240451c5db87a9a94f66d807",
+        "cover_front": "2d1301ab1f0d2df55dd7fc17f98aae9a7aaaa8743318668eaf471ed0e9e8be7b",
+        "cover_back": "d900d27fff3aefb93467e04e73f7ef3e1b48ae787d667bf66b98ffe81e258dbd"
+      }
     },
     {
       "slug": "the-outcasts-of-poker-flat",
       "title": "The Outcasts of Poker Flat",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-outcasts-of-poker-flat-pg6373-noncover-text",
       "record_sha256": "d644e06b0e348f680094c6405a6609a2cdd6cfab899664fe63c00b0a84c0a8be",
@@ -1057,10 +1383,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63",
         "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
         "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
@@ -1068,12 +1396,22 @@
         "checksum_manifest": "bd04242861f378e161fcb601a68d9c369f2a5cf4900385e6e6e1fa8c4f63db7a",
         "publication_manifest": "7e8c4785c0e24ee221ceb5caf91952b905bf4800ecf84ca2d3e67dc70eb07265"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "6c6bf6bd3c7b4375d34486ca1711baa99e2f0569c31331fbb3fd8d875bfe316e",
+        "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+        "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
+        "approval_evidence": "ba9c4edd66d1aa0789465ccb4532cb0b9766e8d8f3194f30f4ea496c9628e5fd",
+        "checksum_manifest": "6cae6011e9f96c2c7e0265b0a2436fb0891a676446b62a8ca7239602d24632a3",
+        "publication_manifest": "db356833f233589f44b2ca4d399974acd2095d1a8fedce155294a5ca8ab348b4",
+        "cover_provenance": "37fc662ccc89da8bb53aeb4bd018af08b20f20f4b98a3279f16707a6928e21c6",
+        "cover_front": "67c4eeffd8ecc6d7b5f820b299df0383ef04f8e201bfe0a63b64e60f1143b07a",
+        "cover_back": "5626479887b10817bec9ea1c5adf45869459bc54db1dbae855fc095804c4edb2"
+      }
     },
     {
       "slug": "the-purloined-letter",
       "title": "The Purloined Letter",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-purloined-letter-pg2148-noncover-text",
       "record_sha256": "05638c35735d0a1f92b08b20e5a88606f0c8594b626e84610edf058450d812da",
@@ -1085,10 +1423,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-purloined-letter-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5",
         "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
         "source_evidence": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
@@ -1096,12 +1436,22 @@
         "checksum_manifest": "de99a5eb3c0fe3766950f47ef5017ad19542f3ce40c4e47552fb955729b3402d",
         "publication_manifest": "91ea6d3d1e07113fdee52b36cffd2bcdbc8f4dceb6e1ae3531042370917a7598"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "39f7001b7d520758ac5598dd674205230523954fa953f6c85e68d0730170111b",
+        "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+        "source_evidence": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
+        "approval_evidence": "458208551a6dfe910f12ddf79caba19112dea0180c60ebf6998abfe615c670de",
+        "checksum_manifest": "bc5ade8e78eb0568211872ebb668b0ac36f89b97bac1e34a2b3789a3964d904a",
+        "publication_manifest": "c05b979aa8fb376ecbc7eedac535fe604579faf84d37d0e686c882f259d0a548",
+        "cover_provenance": "eabe34154ee10821c589be757f49b5190ae84acb9d045387d15db75ae19262d8",
+        "cover_front": "7159097048491dcdcb58c55fd80bb4a8bc2409d1484969b0ec0fd1603083467c",
+        "cover_back": "2e65989a50a93642693886a5d85a52dcc61895619f17c0e4a645ddd2e6074bb9"
+      }
     },
     {
       "slug": "the-ransom-of-red-chief",
       "title": "The Ransom of Red Chief",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-ransom-of-red-chief-pg1595-noncover-text",
       "record_sha256": "a7dd78a559457bf4262583dab4b5b705c69f3e68ce3fdf8b087dbd2bb95731fc",
@@ -1113,10 +1463,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-ransom-of-red-chief-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d",
         "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
         "source_evidence": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
@@ -1124,12 +1476,22 @@
         "checksum_manifest": "3c6742abde62f32aa64a089a8d4027d8eeea405a634709168581d434bfcd9b29",
         "publication_manifest": "11dcc80257c8269c91d9310302a62a0865963e588070028e63043cfb873edda2"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "7f384b5bb57c75bc0bbecc8bca61046c3369e925515552bdc81f395e92b93e3f",
+        "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+        "source_evidence": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
+        "approval_evidence": "c8083b53e667bdc0c0bebc635e1ace1067c2e00e901461644132dab1782d78e0",
+        "checksum_manifest": "ca921e240e3f3c88b5d4a72be824aff1e2ee11ddd0df3d37f5e2f5fa844e496a",
+        "publication_manifest": "36af250bd6abfff99c5390b9ecaef9c2922c959c4967d988ae3d5653df4e0695",
+        "cover_provenance": "30ecf17c607c4c7de1936c8c8ef5d648b62235523cab6ec0b76e32ab216a22f8",
+        "cover_front": "ff9be054869a43043f950631ad83f834cc589af4fddb0b84d6844000522fab57",
+        "cover_back": "7b5523dd5d74882af01fe3d45fbdc523dd858aedb8f357778cf7d2c185165057"
+      }
     },
     {
       "slug": "the-speckled-band",
       "title": "The Speckled Band",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-speckled-band-pg1661-noncover-text",
       "record_sha256": "0c0a3a373f4880520f7314e3710320bcf149d52bcc4a182d7e5e7c943196dd83",
@@ -1141,10 +1503,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-speckled-band-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "bb6e1b4c00d3d1206cbd4fc887bcba1bef02153eac0c7e358a0c303b0c5a7e2c",
         "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
         "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
@@ -1152,12 +1516,22 @@
         "checksum_manifest": "6dbc422ce31114a541502fa96aa831ebc2b1d50ad7385e910be540745e7a3474",
         "publication_manifest": "c89ac557b6d457364475e9408e2475ddc41fe643658a2c1ba188b4827ad5f6e6"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "12ec7d525b0fd78d16413113c522d288b00f51cc024b3ea12ccdbc8c43c04256",
+        "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+        "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+        "approval_evidence": "2a8d18239b93930f142fd2048765ed6e19147ebb9033ef421ecc63cc72eb456a",
+        "checksum_manifest": "ca1124c3bb5415696de34de135ec42766a4e2616db5e3261c32d2e2a2dabe9c8",
+        "publication_manifest": "c5196dfb5d90c054241c3cc028dabc447e2d1fa9d71721752f768372f0353b21",
+        "cover_provenance": "acc912e5c215360bfd9b3690d479aff2eaad8b43720251afc2e1f1044eb6f917",
+        "cover_front": "ec65f86b7e4489ec15c83c0999466586a6ee8f66784e5f8ca35401a8e8eab2d0",
+        "cover_back": "4b0bfea9b80cf94fd662e89c4470a6e636720e750017e4da6c05542bd35c7ad8"
+      }
     },
     {
       "slug": "the-suicide-club",
       "title": "The Suicide Club",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-suicide-club-pg839-noncover-text",
       "record_sha256": "495995678c1d259342652cb9fdc8d09e5883d32785fd5bfb716b90c134a1f055",
@@ -1169,10 +1543,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-suicide-club-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "8437baffb6a017ba0f5a1846beb3c3cdd7eed583bb6840e7343babb44b27d46e",
         "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
         "source_evidence": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
@@ -1180,12 +1556,22 @@
         "checksum_manifest": "1256e7ae7c7e08cc1cc9fbc5cae522e85a3ac1e90f6c50d4c06761b9565ecedd",
         "publication_manifest": "5220b601e41a713e57f2e5c0ed62e09e29beefd58f4b90c979119468c088ba4a"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a",
+        "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
+        "source_evidence": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
+        "approval_evidence": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4",
+        "checksum_manifest": "0d04ccc1b32ce0a6e3cbe11913548b5c14ab96c7ff73c1b9b373c8bdad17b922",
+        "publication_manifest": "f9cfea0cbc3eed58b30d15f1eecfbd3007112057c5a77d73bb48fd561ecc0639",
+        "cover_provenance": "2e24677eec9ecabae30144fcaa5adeb346d3b169e112ccb6a8d9c3b634ef23c8",
+        "cover_front": "3baddf77926a0acd20a1b59724b2161d3ac9a476506bf39c49e4784ddff6bcb7",
+        "cover_back": "0ec4b741a41ccc6eabeea030749b0d8e1b332bbb849884a8fc930b6be67dce34"
+      }
     },
     {
       "slug": "the-yellow-wallpaper",
       "title": "The Yellow Wallpaper",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-the-yellow-wallpaper-pg1952-noncover-text",
       "record_sha256": "40e50a49b7a6e90eac222383e2eb6c5aa60bc851a1f6f41e0349b8cf6c3039b2",
@@ -1197,10 +1583,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-the-yellow-wallpaper-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e",
         "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
         "source_evidence": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
@@ -1208,12 +1596,22 @@
         "checksum_manifest": "090dffde47843e8099c65d885a4c3f8b2323fa6b2c497ecae0b29acbb73e6dfa",
         "publication_manifest": "6994ab7890ada79bea87fe5fa138751f5fb3aafd0beab71b242f2cb0d40f8ffa"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "80bd7ce5349458bb57a0707b27ca37906ed90b9e0e92b98b1ecaa6a4879359d1",
+        "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+        "source_evidence": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
+        "approval_evidence": "ed23198d03aaf9ac7a5ed8aed2d0dd019e1456d732fe8d3b2097d8372a4f36e1",
+        "checksum_manifest": "435502a4dd876dff9ac4e6b88799c785d9798edf09cf1102698e0686c60ae428",
+        "publication_manifest": "a32e2c6e0d269ee0fe6fa66cb7719e4f3062979cb7564a47aa64d6250fe38591",
+        "cover_provenance": "e3eecc20c09204b901e9834f991ee4da032dc8156ee1f08bf6170f6e5de9911d",
+        "cover_front": "63786ee3a5498a94c27af4e7b5d309cebd861e6863a19d44fdc1a97c3f8f7de9",
+        "cover_back": "dbd1eca0b3cdf50154845a29c3a4949d80b2c96ad234e63b7afa2e7b80381758"
+      }
     },
     {
       "slug": "to-build-a-fire",
       "title": "To Build a Fire",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-to-build-a-fire-pg2429-noncover-text",
       "record_sha256": "0d4d1397920918d29d174f09106449dfd7af3ca1f82ea1a0a412ec121cc6e16d",
@@ -1225,10 +1623,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-to-build-a-fire-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4",
         "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
         "source_evidence": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
@@ -1236,12 +1636,22 @@
         "checksum_manifest": "6cc4792f7c6ce375b21529be0f76ef6369da5e685ab18ff5bef3065bdc1be964",
         "publication_manifest": "0fcc745949a5b23907e9bc126a7b1db8afb9c459b047540f1b8ef4ecbe2add40"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e",
+        "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+        "source_evidence": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
+        "approval_evidence": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25",
+        "checksum_manifest": "7332e92ee92cc97aea3adb5012fc06b92786f40e87b85f2fb568c7761c9b4f3d",
+        "publication_manifest": "23da9bf80973d19ec9aa0aa2b2f8a35a4e41b09480341de8896b02686f19c827",
+        "cover_provenance": "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9",
+        "cover_front": "fcbad9a6eaaa5a9e2e3e7eaec1d2a8ce7826254f73fc4a5503e54e42a4721873",
+        "cover_back": "ddfe01a2636f9460f3dd0f6b739608f2053ab12e31ef0eb1fae28db306b77650"
+      }
     },
     {
       "slug": "tobermory",
       "title": "Tobermory",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-tobermory-pg3688-noncover-text",
       "record_sha256": "8e86f519d9edfa7471ed69c4c1357d4dbb84c5a6e3ed0de6dbe0e1bf3896779d",
@@ -1253,10 +1663,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-tobermory-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
         "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
         "source_evidence": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
@@ -1264,12 +1676,22 @@
         "checksum_manifest": "bd99a122767073744be9361cd2386c0dc148c7aa5631b41347bc5bf847f82d9d",
         "publication_manifest": "485ebfd905dfede4a8b647d50a1593dc0840022ef0e8d7e81a7148b886864c24"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "d371de6009f5487942bab3f76c78a68bb35f1c33bf583832231c5d383614e2ea",
+        "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+        "source_evidence": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
+        "approval_evidence": "d230c089f174785c6a48bc01a410cec3594ec5e7f81dc10aeb1454b0adbfc72a",
+        "checksum_manifest": "a59a02583dce19ffcca81d09b9a67a0e3811ed20b360ef7ce36d202833584e88",
+        "publication_manifest": "086907d3d5ebca0f4fe6700d4327a8cb150558e2fd9db99986951a1caa6d3e3d",
+        "cover_provenance": "4616b152305e5edc8254ea0ffc48c96365e909277e5c475dcec369be804bd230",
+        "cover_front": "b6d42ca7af1926503130170604135931e0b26f31fb847d11d7cc87e8cd9340fc",
+        "cover_back": "6a49e1065f67319f7f539b8009bb7b3ffa7cdcc0aeb7a88f49cabc8a81456de9"
+      }
     },
     {
       "slug": "ward-no-6",
       "title": "Ward No. 6",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-ward-no-6-pg13409-noncover-text",
       "record_sha256": "f78f97137a2c664ef104b5d410aae91879873481cb49ffedd3de7c3b4f880a7e",
@@ -1281,10 +1703,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-ward-no-6-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
         "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
         "source_evidence": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
@@ -1292,12 +1716,22 @@
         "checksum_manifest": "4eb9a4ec09b5d3a190c6b01742cb8c2dbc4eaf4090de4d6308d10b5b98fb34bc",
         "publication_manifest": "e425fc42e7f7491df62f52d8729011ba4ad3c19febfc029362e0a71a4d2339c4"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "2f17fc4f377990b9fa663490643f5cf4cd463e443dad7fe6f3de4ef57da65719",
+        "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+        "source_evidence": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
+        "approval_evidence": "0fffcf027165b799472a27686f3a209ef25439c966b3a09446dec04f9f90aca0",
+        "checksum_manifest": "425f8c1e7f635efd38d75ad34caa65bfad926150e7d93338c1823f2ce91f3985",
+        "publication_manifest": "28d138e81a4c8c9099dddde35bc5311a7305711753837b38a462e83a935e845d",
+        "cover_provenance": "61f70dae775a60999a77d3174056fce94db265d0c1eabd1adb908395ceea8e42",
+        "cover_front": "5862902bbb623c2786aab03e522c128ca281711f36efff87e7b53a06c3db06a8",
+        "cover_back": "b1ad56e66ae90460dcb1065d2b8066981525812586a125a792e3239ef538716c"
+      }
     },
     {
       "slug": "white-fang",
       "title": "White Fang",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-white-fang-pg910-noncover-text",
       "record_sha256": "b27ce6c947acdc12d628500f960f1c4403b83397c8f1b3db2cdda89e4fdaa898",
@@ -1309,10 +1743,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-white-fang-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "fc328afa3835fb3afe1221838382f8e4cfb42901b251977eae424550e7c38a05",
         "reader_manifest": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
         "source_evidence": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2",
@@ -1320,12 +1756,22 @@
         "checksum_manifest": "c620b0c4cd9442d571ce1eac9f34c2be2a043f4369a5ea931972b815c67fdebf",
         "publication_manifest": "66b29cb4dc6ff3f91e06698548cec7a62dc35ed70469a646b9eca3573af25bd7"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "a69d3bd3db175f42a0298bc4169e38bda3081d9fd38ea3d8e3bbd7889b550692",
+        "reader_manifest": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
+        "source_evidence": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2",
+        "approval_evidence": "9de49359b873503bb9019859e3e69a21470761912608084a9d82a485af4594eb",
+        "checksum_manifest": "c1acc3adb16ac4fa92cef262a24475c470745f9aa66b3211dccb91e5cd7e61d1",
+        "publication_manifest": "845257b1da9809a6897f8cf9417b7e4f986f04d0f8190ce8a14910f10ca5b43b",
+        "cover_provenance": "e73d658425fbf5c436a283fde830953fddd8417edc21417a0d54d51c8b580379",
+        "cover_front": "16796561b18eee8f4b7d52a05227fd81ea8b91a58e30408ed098a9f5d4e06c99",
+        "cover_back": "248615aa239bbbe4eb204821fd717ebc46de4eed07aaee9b542857cb807ca6ea"
+      }
     },
     {
       "slug": "young-goodman-brown",
       "title": "Young Goodman Brown",
-      "state": "HOLD",
+      "state": "SOURCE_CANDIDATE_NOT_PRODUCTION",
       "local_text_decision_status": "ACCEPTED",
       "decision_id": "india-20261002-young-goodman-brown-pg512-noncover-text",
       "record_sha256": "6c075725e3cd6b0f8158c27cc8aaf8fae27b0ae6408ad3436be6fcc5ade61ae7",
@@ -1337,10 +1783,12 @@
       ],
       "package_checksums_valid": true,
       "manifest_present": true,
-      "manifest_blockers": [
-        "Front cover is required."
-      ],
-      "component_sha256": {
+      "manifest_blockers": [],
+      "next_action": "Complete exact-head tests, merge and deploy; verify live Reader readiness before reporting published.",
+      "catalog_gate_scope": "Production has not been updated; source candidate gates pass separately.",
+      "source_candidate_gate_pass": true,
+      "source_successor_decision_id": "india-20261108-young-goodman-brown-reader-cover-successor",
+      "historical_noncover_component_sha256": {
         "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
         "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
         "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
@@ -1348,7 +1796,94 @@
         "checksum_manifest": "2de2b44d4370aa576952dea381bb3ed0143b8d6ad0f9c9a91d755f5f43e9f4c3",
         "publication_manifest": "3adae489b09a8e58a33989eaea4e68e49a3e7a896b3a26ccbf97abbb6d1c09d0"
       },
-      "next_action": "Prepare qualified cover pair and reviewed production successor binding; retain non-cover text decision unchanged."
+      "source_successor_components": {
+        "public_book": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740",
+        "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+        "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+        "approval_evidence": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6",
+        "checksum_manifest": "ccece005fc7f3ae2cf68f105e868c8ac90e12d91f931f0ddea4aeb9dfa85cf8d",
+        "publication_manifest": "2e67563c19df455be5af1c4570121a8551a20c6f03bcf39543abb3e8fe1e50ae",
+        "cover_provenance": "1d8ba997d656c30b95ac2eba1f7a8ecac28e6786f34c3c004ea537deb9a7c498",
+        "cover_front": "840ce982e482297c125ac6e617238efa111c48da6422e19b369195db4fa84b2a",
+        "cover_back": "265bde7a197be5b9ba945227c8ba61ac7d69baa81ce979c9dfffede24c7a5dff"
+      }
     }
-  ]
+  ],
+  "source_candidate_count": 45,
+  "removed_slugs": [
+    "gitanjali",
+    "nishkriti",
+    "the-metamorphosis"
+  ],
+  "removal_status": "THREE_BOOKS_STALE_CONTENT_EIGHT_API_OBJECTS_AND_19_BROWSER_OBJECTS_REMOVED",
+  "prior_48_state_sha256": "5064ead9ba38db2d7412e78e580292d0d838f11ff992251f5847d335def85532",
+  "production_refresh": "persisted45-release-20261110/production-refresh.json",
+  "primary_bucket_removal_verification": "19_EXACT_BROWSER_OBJECTS_DELETED_AND_404_VERIFIED_API_LISTING_STILL_DENIED",
+  "production_cleanup_counts": {
+    "book_records": 3,
+    "stale_reader_segments": 139,
+    "stale_reader_manifests": 2,
+    "identified_remote_object_versions": 8,
+    "customer_financial_records": 0,
+    "primary_browser_objects": 19,
+    "cloudinary_cover_assets": 4
+  },
+  "cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cleanup-result.json",
+  "production_acceptance_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/release-verification.json",
+  "library_source_baseline": {
+    "timestamp": "2026-11-10T05:14:07.141752+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Add exact Library source successor after CI correctly rejected stale 52-title fingerprint",
+    "source_snapshot": "eb4b4bdb1492991f343a5f0f0bea1d60633d5e9d",
+    "baseline": "docs/design-system/persisted45-library-interaction-baseline-20261110.json",
+    "authorized_surface_sha256": "5344bec46d323f3f9dcc465523ab2f89f4eda7ec7c468bae72cf3beaf361a60e",
+    "evidence": "Six API/fallback Library viewport scenarios and 26 focused frontend tests pass; all 14 source input mutations are rejected. Historical baseline remains preserved.",
+    "production_publication": "NOT_YET_DEPLOYED_OR_ACTIVATED",
+    "next_action": "Complete all exact-head CI, merge and deploy only merged main, then verify immutable pages and real customer readability."
+  },
+  "chapter_inventory_successor": {
+    "timestamp": "2026-11-10T05:31:38.036128+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Extend chapter-index engineering inventory from exact independent predecessor, preserving frozen historical fixture",
+    "source_sha": "2f3615a1213aa60e30e8a24593cf874adcc454c3",
+    "fixture_sha256": "3501266193923e3cc87d7d4726423fb173ce1b99dfa354e96f46c2af4a7020e4",
+    "validation": "All 45 backend Reader manifests match original cleared root manifests byte for byte; 15 chapter-index tests pass. Current total 138 active source packages, 749 ordered chapters; this is source inventory, not public count.",
+    "publication": "PENDING_EXACT_HEAD_CI_DEPLOYMENT_AND_ACCEPTANCE"
+  },
+  "primary_cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/primary-gitanjali-cleanup-result.json",
+  "primary_cleanup_event": {
+    "timestamp": "2026-11-10T05:38:05.051914+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Complete explicit browser-confirmed removal of newly discovered Gitanjali primary-bucket staging objects",
+    "removed_objects": 19,
+    "size_ui": "150.8 MB",
+    "owner_action_time_confirmation": "Delete these 19 held-edition files",
+    "preflight": "Exact content-addressed manifest, held-edition metadata, and zero references from every surviving book verified",
+    "verification": "Browser staging folder absent and all 19 exact public URLs independently return 404",
+    "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/primary-gitanjali-cleanup-result.json",
+    "scope_limit": "API listing remains denied; no forensic claim for unknown opaque or historical copies. No credentials, permissions, other editions or customer/financial records changed.",
+    "production_release": "45 titles still pending exact-head CI and deployment"
+  },
+  "cloudinary_cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cloudinary-cleanup-result.json",
+  "cdn_cleanup_status": "FOUR_ORIGINS_ABSENT_AND_ALL_FOUR_PUBLIC_URLS_404",
+  "latest_reader_truth_validation": {
+    "timestamp": "2026-11-10T05:57:18.942617+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Remove exact four surviving Cloudinary cover assets for held Gitanjali/Nishkriti editions and extend final UAT release-truth fixture",
+    "cdn_cleanup": {
+      "assets": 4,
+      "origin_resources": "NOT_FOUND_VERIFIED",
+      "public_cover_urls": [
+        404,
+        404,
+        404,
+        404
+      ],
+      "other_title_references": 0,
+      "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cloudinary-cleanup-result.json",
+      "no_permission_or_credential_changes": true
+    },
+    "validation": "All final UAT categories passed on prior head except the outdated exact 52-title Reader expectation. Its historical fixture is preserved; explicit 45-title successor adds exact rights hashes, six Reader/cover uses, India-only and all audio holds. Focused suite 8/8 PASS. Complete required frontend suite 529/529 PASS.",
+    "publication": "STILL_PENDING_EXACT_HEAD_CI_MERGE_DEPLOYMENT_AND_PRODUCTION_ACCEPTANCE"
+  }
 }

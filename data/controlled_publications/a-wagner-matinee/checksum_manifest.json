@@ -1,10 +1,10 @@
 {
   "slug": "a-wagner-matinee",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "edebd7fa37898563d91d8acd6d12c6747350f8d72aa9ec505a428ff16131e57b"
+      "sha256": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93"
+      "sha256": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "ffd7726193c04abf3057496777d825ce2a2969e3c951660192616c5de11d465c"
     }
   ]
 }

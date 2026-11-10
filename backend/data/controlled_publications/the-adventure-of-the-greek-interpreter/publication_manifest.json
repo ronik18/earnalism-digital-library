@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-greek-interpreter",
+  "title": "The Adventure of the Greek Interpreter",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
+  "content": {
+    "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "content_hash": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
+    "provenance_hash": "3ee0c04a2a2833abf787603b9b3115fbca081a58298449cd344aaef42143bb2a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "0f3aea58e55a738b0bee4ffbedd3347f8ff640859fc35f97bc3d651c8b8c17c0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Greek Interpreter",
+        "word_count": 7059,
+        "sha256": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-greek-interpreter/front-34210d690ea405fc.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "757dc394f18037475b2bcc57598d8a48519081d136c2b4d82e837f0aec9f56ce",
+    "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+    "approval_evidence": "eecb5f7c18ae3e83715a2f34b98b40733b9f80e6d1b697d3e1b988b7182ebda3"
+  },
+  "manifest_sha256": "cb99ea211c1f46475836666043644498403b394d8db84810de9330d1089a557f"
+}

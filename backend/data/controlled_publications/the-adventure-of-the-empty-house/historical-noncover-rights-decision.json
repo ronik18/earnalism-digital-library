@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-empty-house-pg108-noncover-text",
+  "edition_id": "the-adventure-of-the-empty-house",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "8739f75c7d611542a56e4f9962ea53188788b114d807ba84471f7204e7b13614",
+    "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "source_evidence": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56",
+    "approval_evidence": "e639b9f7212a098d3d0add590b7fc5534ba95b671f3160696163e8fc1422453b",
+    "checksum_manifest": "f7ebaa7c8058fe5b9b98a9dd31eec570a643101c9b2536f15616e2e858c4c880",
+    "publication_manifest": "af6582314294418652a0cc5280d83bc98b2cc4560a840f286781f15e6d15edd5"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "e5e127587d0aa04b1adfe6c78bca68eaa302355c656fe05b199e7e70bbf06888",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

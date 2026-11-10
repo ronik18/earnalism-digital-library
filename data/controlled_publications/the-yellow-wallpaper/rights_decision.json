@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-yellow-wallpaper-pg1952-noncover-text",
+  "decision_id": "india-20261108-the-yellow-wallpaper-reader-cover-successor",
   "edition_id": "the-yellow-wallpaper",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e",
+    "public_book": "80bd7ce5349458bb57a0707b27ca37906ed90b9e0e92b98b1ecaa6a4879359d1",
     "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
     "source_evidence": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
-    "approval_evidence": "07270912a4644c2aefdd3d44e90ab774a325c3a2ef5c2711a2397c64c7e293d5",
-    "checksum_manifest": "090dffde47843e8099c65d885a4c3f8b2323fa6b2c497ecae0b29acbb73e6dfa",
-    "publication_manifest": "6994ab7890ada79bea87fe5fa138751f5fb3aafd0beab71b242f2cb0d40f8ffa"
+    "approval_evidence": "ed23198d03aaf9ac7a5ed8aed2d0dd019e1456d732fe8d3b2097d8372a4f36e1",
+    "checksum_manifest": "435502a4dd876dff9ac4e6b88799c785d9798edf09cf1102698e0686c60ae428",
+    "publication_manifest": "a32e2c6e0d269ee0fe6fa66cb7719e4f3062979cb7564a47aa64d6250fe38591",
+    "cover_provenance": "e3eecc20c09204b901e9834f991ee4da032dc8156ee1f08bf6170f6e5de9911d",
+    "cover_front": "63786ee3a5498a94c27af4e7b5d309cebd861e6863a19d44fdc1a97c3f8f7de9",
+    "cover_back": "dbd1eca0b3cdf50154845a29c3a4949d80b2c96ad234e63b7afa2e7b80381758"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:49:40.745164+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1935, verified lifetime collection publication 1901 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-yellow-wallpaper-pg1952-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "3203988ca4c0596b3cf0679ae0a56f275b1f21ab84949a1d80e418e5e2070548",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
     "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
-    "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d"
+    "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+    "40e50a49b7a6e90eac222383e2eb6c5aa60bc851a1f6f41e0349b8cf6c3039b2",
+    "e3eecc20c09204b901e9834f991ee4da032dc8156ee1f08bf6170f6e5de9911d"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

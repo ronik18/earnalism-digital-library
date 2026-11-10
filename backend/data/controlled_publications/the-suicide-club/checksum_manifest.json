@@ -1,0 +1,38 @@
+{
+  "slug": "the-suicide-club",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2148e37bb55099936c9e433f10995e659d95772d907cfa125e8cd9238fa40a9e"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "7463e1329e06029b49d79d55df1aabd45ff33aaad98781e65d51d3b506fe40de"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4a9531455d43c572bbd483a17123159cf11338fba1649db23da57a3660fe04fe"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "2e24677eec9ecabae30144fcaa5adeb346d3b169e112ccb6a8d9c3b634ef23c8"
+    }
+  ]
+}

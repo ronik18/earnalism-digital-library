@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-man-in-a-case-pg1883-noncover-text",
+  "edition_id": "the-man-in-a-case",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96",
+    "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
+    "approval_evidence": "18a5e4d79ab446ae76aa0880f2a236b791a9f5a3d7afb42114841b363b1cf0f8",
+    "checksum_manifest": "48eac5aaf5cd63237756ba8180ceabeb55b4318e258627512650dea8aed6a302",
+    "publication_manifest": "85e04a2208738c6f61e2b74e1b645c4decdbdbce1ecd1f280d578a8c32b479dc"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "evidence_sha256": [
+    "acb572bfb7711d1ebb18a1836bccb21343e944f108d04a97a5676673974e84f9",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+    "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

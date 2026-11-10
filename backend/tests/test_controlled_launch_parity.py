@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from backend.rights_decision_gate import evaluate_runtime_path, load_production_registry
+from backend.rights_decision_gate import evaluate_runtime_path, load_production_registry, record_sha256
 from datetime import datetime, timezone
 
 
@@ -17,6 +17,7 @@ BACKEND_CONTROLLED_PUBLICATIONS = ROOT / "backend" / "data" / "controlled_public
 ROOT_CONTROLLED_PUBLICATIONS = ROOT / "data" / "controlled_publications"
 
 FULLY_EXCLUDED_BENGALI_TITLE = "book-2b9853ec52"
+PERSISTED_READER45 = {'the-luck-of-roaring-camp', 'the-furnished-room', 'the-adventure-of-the-noble-bachelor', 'to-build-a-fire', 'the-purloined-letter', 'markheim', 'the-celebrated-jumping-frog-of-calaveras-county', 'the-country-of-the-blind', 'the-door-in-the-wall', 'the-suicide-club', 'the-adventure-of-the-empty-house', 'the-murders-in-the-rue-morgue', 'the-adventure-of-the-engineers-thumb', 'the-adventure-of-the-second-stain', 'a-wagner-matinee', 'the-adventure-of-the-dancing-men', 'the-yellow-wallpaper', 'the-adventure-of-the-beryl-coronet', 'the-ministers-black-veil', 'the-ransom-of-red-chief', 'the-adventure-of-the-blue-carbuncle', 'the-adventure-of-the-copper-beeches', 'the-darling', 'a-retrieved-reformation', 'the-man-in-a-case', 'the-outcasts-of-poker-flat', 'the-speckled-band', 'tobermory', 'young-goodman-brown', 'the-adventure-of-the-greek-interpreter', 'ward-no-6', 'the-bet', 'feathertop', 'the-man-with-the-twisted-lip', 'the-legend-of-sleepy-hollow', 'the-ambitious-guest', 'the-imp-of-the-perverse', 'the-last-leaf', 'the-adventure-of-the-abbey-grange', 'the-adventure-of-the-priory-school', 'rappaccinis-daughter', 'the-adventure-of-the-final-problem', 'the-masque-of-the-red-death', 'the-adventure-of-the-solitary-cyclist', 'white-fang'}
 INDIA_TEXT_RELEASE_SLUGS = {
     "a-ghost-story",
     "the-tell-tale-heart",
@@ -71,6 +72,7 @@ INDIA_TEXT_RELEASE_SLUGS = {
     'the-wonderful-wizard-of-oz',
     'book-5704b31005',
 }
+INDIA_TEXT_RELEASE_SLUGS |= PERSISTED_READER45
 
 
 REVIEWED_20261002_SLUGS = {
@@ -170,7 +172,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_fifty_two_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_ninety_seven_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -199,7 +201,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_fifty_two_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_ninety_seven_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
@@ -213,7 +215,7 @@ def test_fifty_two_title_release_uses_commercial_mode_and_keeps_checkout_audio_d
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_ninety_seven_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -240,6 +242,9 @@ def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_publishe
         assert registry[record["decision_id"]]
         assert (
             record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate")
+            or (slug in PERSISTED_READER45
+                and record["decision_id"] == f"india-20261108-{slug}-reader-cover-successor"
+                and record["accepted_by"] == "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.")
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
             or (slug == "the-open-window"
@@ -270,7 +275,7 @@ def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_publishe
                 ))
             )
         )
-        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_CAMPAIGN_SLUGS:
+        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_CAMPAIGN_SLUGS | PERSISTED_READER45:
             assert record["territories"] == ["IN"]
             assert set(record["uses"]) == {
                 "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",
@@ -429,7 +434,14 @@ def test_released_title_resources_and_content_hashes_are_complete():
 
         if slug in {"a-ghost-story", "the-tell-tale-heart", "radharani"}:
             assert dispositions[f"controlled-{slug}"]["status"] == "ACCEPTED"
-        assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
+        if slug in PERSISTED_READER45:
+            record = load_json(package / "rights_decision.json")
+            assert registry["accepted_records"][record["decision_id"]] == record_sha256(record)
+            assert launch["title_access_modes"][slug] == "COMMERCIAL_ENTITLEMENT"
+            # Do not fabricate an entry in the older commercial-batch history.
+            assert f"controlled-{slug}" not in registry["commercial_batch_dispositions"]
+        else:
+            assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
 
 
 def test_yugalanguriya_publication_package_is_archived_and_remains_held():

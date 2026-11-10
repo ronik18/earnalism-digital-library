@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-blue-carbuncle",
   "title": "The Adventure of the Blue Carbuncle",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
     "content_hash": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
@@ -28,16 +28,14 @@
     "evidence_sha256": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0",
+    "public_book": "86a4eef392d9795f8076c299b055b698bc23c64aef01adf9b1ce69350afb81fa",
     "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
     "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
-    "approval_evidence": "1e582a15d3e07793295c2363b5958d847f1a2de68c70594cf2b55c4fa712e762"
+    "approval_evidence": "1f864e2bf88d93de33203196381270dddf632c5fbd0bcbb799eef1bbdb20745f"
   },
-  "manifest_sha256": "69814b079f590691e2e9f800bdc8ad1fa1c1820d958e771d0ece585c68993490"
+  "manifest_sha256": "2e4b42e1b3c7ce2e708e62687e7b99389006feaec8db507504d7142282d645f5"
 }

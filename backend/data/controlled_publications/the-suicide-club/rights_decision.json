@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-suicide-club-reader-cover-successor",
+  "edition_id": "the-suicide-club",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a",
+    "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
+    "source_evidence": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
+    "approval_evidence": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4",
+    "checksum_manifest": "0d04ccc1b32ce0a6e3cbe11913548b5c14ab96c7ff73c1b9b373c8bdad17b922",
+    "publication_manifest": "f9cfea0cbc3eed58b30d15f1eecfbd3007112057c5a77d73bb48fd561ecc0639",
+    "cover_provenance": "2e24677eec9ecabae30144fcaa5adeb346d3b169e112ccb6a8d9c3b634ef23c8",
+    "cover_front": "3baddf77926a0acd20a1b59724b2161d3ac9a476506bf39c49e4784ddff6bcb7",
+    "cover_back": "0ec4b741a41ccc6eabeea030749b0d8e1b332bbb849884a8fc930b6be67dce34"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-suicide-club-pg839-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "4a9531455d43c572bbd483a17123159cf11338fba1649db23da57a3660fe04fe",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "495995678c1d259342652cb9fdc8d09e5883d32785fd5bfb716b90c134a1f055",
+    "2e24677eec9ecabae30144fcaa5adeb346d3b169e112ccb6a8d9c3b634ef23c8"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

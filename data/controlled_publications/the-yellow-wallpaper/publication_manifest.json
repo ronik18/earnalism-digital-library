@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-yellow-wallpaper",
   "title": "The Yellow Wallpaper",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
     "content_hash": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
@@ -28,13 +28,11 @@
     "evidence_sha256": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-yellow-wallpaper/front-63786ee3a5498a94.webp",
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e",
+    "public_book": "80bd7ce5349458bb57a0707b27ca37906ed90b9e0e92b98b1ecaa6a4879359d1",
     "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
     "source_evidence": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
-    "approval_evidence": "07270912a4644c2aefdd3d44e90ab774a325c3a2ef5c2711a2397c64c7e293d5"
+    "approval_evidence": "ed23198d03aaf9ac7a5ed8aed2d0dd019e1456d732fe8d3b2097d8372a4f36e1"
   },
-  "manifest_sha256": "4c7c1e44e1a9a237eeb18f6857d5eac10e6abefe5e93aa25c2ff20d17502b64f"
+  "manifest_sha256": "e96918897a2c7b282d7502f4bb754f0958c5b8afaeb1d5b36f071e8ee3c9c5b3"
 }

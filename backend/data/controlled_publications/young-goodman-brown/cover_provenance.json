@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "young-goodman-brown",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "f0ac5e5fad62c67a70c54ca5931857f836bfb028803e3e357d4d63dcc2174878",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+      "url": "https://theearnalism.com/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+      "sha256": "840ce982e482297c125ac6e617238efa111c48da6422e19b369195db4fa84b2a",
+      "bytes": 72626,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/young-goodman-brown/back-265bde7a197be5b9.webp",
+      "url": "https://theearnalism.com/assets/books/young-goodman-brown/back-265bde7a197be5b9.webp",
+      "sha256": "265bde7a197be5b9ba945227c8ba61ac7d69baa81ce979c9dfffede24c7a5dff",
+      "bytes": 29290,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

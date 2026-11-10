@@ -14,6 +14,29 @@ from datetime import datetime, timezone
 from scripts.bengali_rights_package_validator import checksum_manifest_matches
 from scripts.catalogue_clearance_release_bindings import assert_reviewed_authority, assert_current_reviewed_release
 
+def owner_removed_package_valid(root, slug, live):
+    """A missing package is valid only under the exact audited removal scope."""
+    if slug not in {'gitanjali', 'nishkriti', 'the-metamorphosis'} or slug in live:
+        return False
+    try:
+        manifest = json.loads((root/'internal/legal/catalogue_clearance_20261002/removed_titles_20261110/removal-manifest.json').read_text())
+        if manifest['schema'] != 'earnalism.owner-title-removal.v1' or set(manifest['slugs']) != {'gitanjali', 'nishkriti', 'the-metamorphosis'}:
+            return False
+        prefixes = [base+'/'+slug+'/' for base in ('data/controlled_publications', 'backend/data/controlled_publications', 'content/books', 'frontend/public/assets/books')]
+        rows = [row for row in manifest['source_files'] if any(row['path'].startswith(p) for p in prefixes)]
+        original = subprocess.check_output(['git','ls-tree','-r','--name-only','-z',manifest['source_sha'],'--',*prefixes],cwd=root).decode().split('\0')
+        if not rows or {row['path'] for row in rows} != {p for p in original if p}:
+            return False
+        for row in rows:
+            if (root/row['path']).exists():return False
+            raw = subprocess.check_output(['git','show',manifest['source_sha']+':'+row['path']],cwd=root)
+            if len(raw) != row['bytes'] or hashlib.sha256(raw).hexdigest() != row['sha256']:return False
+        policies = [json.loads((root/p).read_text()) for p in ('data/catalog_exclusions.json','backend/data/catalog_exclusions.json')]
+        if policies[0] != policies[1]:return False
+        return all(policies[0]['titles'][slug].get(flag) is True for flag in ('public_catalog_excluded','reader_excluded','audio_excluded'))
+    except (KeyError, ValueError, OSError, subprocess.SubprocessError):
+        return False
+
 def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
     issues=[];slugs=set()
     names=subprocess.check_output(['git','diff','--name-only',base,'--','data/controlled_publications'],cwd=root,text=True).splitlines()
@@ -32,6 +55,9 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
     for slug in sorted(slugs):
         p=root/'data/controlled_publications'/slug
         if not p.is_dir():
+            if owner_removed_package_valid(root, slug, live):
+                statuses[slug]='OWNER_REMOVED_NO_ACTIVE_PAYLOAD'
+                continue
             # Exact archived Yugalanguriya remains outside every active surface.
             if slug == 'yugalanguriya' and (root/'internal/archives/held_titles/yugalanguriya/ARCHIVE_STATUS.md').is_file() and slug not in live:
                 continue

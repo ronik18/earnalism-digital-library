@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-blue-carbuncle-pg1661-noncover-text",
+  "edition_id": "the-adventure-of-the-blue-carbuncle",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0",
+    "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
+    "approval_evidence": "1e582a15d3e07793295c2363b5958d847f1a2de68c70594cf2b55c4fa712e762",
+    "checksum_manifest": "7ad0c725405c37a9638766f66a5b58adb373ad8caf67d8961279f13d1e03bbd1",
+    "publication_manifest": "a062463f1f7b474b7fbe38a497adfbd746f4c01e618362d2e031179c21225b36"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "96144fcc963734d47689dfeca712812628d8b84c70432ead8cb0c40e22bd3fe6",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

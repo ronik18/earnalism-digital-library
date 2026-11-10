@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-masque-of-the-red-death-pg1064-noncover-text",
+  "decision_id": "india-20261108-the-masque-of-the-red-death-reader-cover-successor",
   "edition_id": "the-masque-of-the-red-death",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9",
+    "public_book": "7c71b972649d03d0b9f7283f7f08cf10137f6a3534db925e09512350b94d05a4",
     "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
     "source_evidence": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
-    "approval_evidence": "d897301476c3d5efc0932d0caab402fd3da600012e43042921ffb28ce8180944",
-    "checksum_manifest": "6cb9cf668509824e6a39abb705113164ab2036dd61eb325af3b23f8275b722ec",
-    "publication_manifest": "e2de703e2cecba26bceca0560e9e136365bbd03cfa37619fb6fc2f3b669034ec"
+    "approval_evidence": "378211194920d17e628b54c3cd63e497941bef47ed6bc45bc232e69e352dfcff",
+    "checksum_manifest": "ae4bf95ef36dc165e77d84ee729b1899ea0f683b25aa863c630e2ca362dceb02",
+    "publication_manifest": "d6fb5fb00c994d1e4db666bd16d9fb1ee548b3e4744a5572c15858d1d75ada49",
+    "cover_provenance": "6f1f9757c03b7acc37292be721f2883823e3c5ce7aaa06fb810a3d14b240fbe8",
+    "cover_front": "b5da74282d1d0d85d8765449e6263a9051708bd7b2925f74ed56da40b3b67ea8",
+    "cover_back": "a8ba155eb51310fd4873eb1894f75260d2f54bb9085379748a058f16dd66017b"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:52:27.631967+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1842 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-masque-of-the-red-death-pg1064-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "83be9ac6714a1943449958d5516c084da7aaf955b1cb97bc2ba2f043711b15fa",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
     "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
-    "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+    "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "af7ff047cffc6967dd048b355a84ead4447ce58dae6fa782b0f47fada9a4433d",
+    "6f1f9757c03b7acc37292be721f2883823e3c5ce7aaa06fb810a3d14b240fbe8"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

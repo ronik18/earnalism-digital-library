@@ -1,0 +1,38 @@
+{
+  "slug": "the-man-with-the-twisted-lip",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "59d2ceb1729cc8e7f2827829d730ecbcf79e571c651643ca81aa045084afa1eb"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0e2f3ed85bd3dae7914137683dabc8178a600c5c2880f161154eef25db60b910"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "9faaddaebb206ae54a8a62862c1e8ad1509bb8f1cfda8e38cb4a1bbda7d95831"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "3f7c5f097a5eb63d8a61dabbf0f9e1430372f9ede6c5afa6cf3253f79b318482"
+    }
+  ]
+}

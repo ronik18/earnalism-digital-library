@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-door-in-the-wall",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "657579a5d27bf371255670455bcfac32812fe9cfcc1b458910ff707428a1a8b4",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-door-in-the-wall/front-573d4ab0cfea235c.webp",
+      "url": "https://theearnalism.com/assets/books/the-door-in-the-wall/front-573d4ab0cfea235c.webp",
+      "sha256": "573d4ab0cfea235c441045293c4ab4e28be4ba50cc60e20e0301b164aaa36767",
+      "bytes": 116950,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-door-in-the-wall/back-bfb3be25d2760b01.webp",
+      "url": "https://theearnalism.com/assets/books/the-door-in-the-wall/back-bfb3be25d2760b01.webp",
+      "sha256": "bfb3be25d2760b0167dbf1ad9a80a22e36d37ec976ccb5b38c5583b771b37627",
+      "bytes": 35242,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

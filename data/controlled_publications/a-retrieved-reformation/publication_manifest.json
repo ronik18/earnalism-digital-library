@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "a-retrieved-reformation",
   "title": "A Retrieved Reformation",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
     "content_hash": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
@@ -28,16 +28,14 @@
     "evidence_sha256": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/a-retrieved-reformation/front-f1dc19c45f181d5d.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
+    "public_book": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59",
     "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
     "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
-    "approval_evidence": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936"
+    "approval_evidence": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43"
   },
-  "manifest_sha256": "7b3ee743971cb4f968eb72cbce8f3817fc0d2a2c0fdb5549eb79ca5198c71ad2"
+  "manifest_sha256": "e67410705fe5b422de79c0c655bfc5baf3ed247e1c9ac16f21d7b0e584cca1bf"
 }

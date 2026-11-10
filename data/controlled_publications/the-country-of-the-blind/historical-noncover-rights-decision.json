@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-country-of-the-blind-pg11870-noncover-text",
+  "edition_id": "the-country-of-the-blind",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d",
+    "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+    "source_evidence": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
+    "approval_evidence": "128b7553db8a4d64df98345756055b44cd8223448f7c50f2304455772e3f8f59",
+    "checksum_manifest": "dc8f65011d8d3ee5c7610f68e63d00f2d40484729df0aa25c16c7a229952263d",
+    "publication_manifest": "2e18a9a484fd4d183dce32fec44d000cfdca9dc606b8543e09bec17a0c47e85a"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1913 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "d0e11ea5e83c9fe2f4fdc3e013fa22beef3b85627ccf3aacb45353471ca1f5d8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

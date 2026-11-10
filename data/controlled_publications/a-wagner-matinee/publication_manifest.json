@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "a-wagner-matinee",
   "title": "A Wagner Matinee",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
     "content_hash": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
@@ -28,16 +28,14 @@
     "evidence_sha256": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/a-wagner-matinee/front-febdb7034c342a12.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93",
+    "public_book": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6",
     "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
     "source_evidence": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a",
-    "approval_evidence": "edebd7fa37898563d91d8acd6d12c6747350f8d72aa9ec505a428ff16131e57b"
+    "approval_evidence": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895"
   },
-  "manifest_sha256": "badad71a7d9d418b09f75d34fa87652e4fdda26216e1c63614f64648657fbd33"
+  "manifest_sha256": "e1f1a50945caa11ad245ab4ff963d307800f51d8ef79b477c72b6b7a60303f26"
 }

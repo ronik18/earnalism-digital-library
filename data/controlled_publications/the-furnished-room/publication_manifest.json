@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-furnished-room",
   "title": "The Furnished Room",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
     "content_hash": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
@@ -28,16 +28,14 @@
     "evidence_sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-furnished-room/front-288a1a717bbd1a00.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
+    "public_book": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10",
     "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
     "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
-    "approval_evidence": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca"
+    "approval_evidence": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef"
   },
-  "manifest_sha256": "192f070a0fa10ac9f978381eeaf6802ac9aa1f9d1dc44871efe21f6b8ce3fa1a"
+  "manifest_sha256": "7b5c2f06afe59550288bc56787f7e2f0d352487bfea4e643a7162e24666b219c"
 }

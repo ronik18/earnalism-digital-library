@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-man-in-a-case",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "d1d75c9e0fd4f2d61e521c682ec72cf38b32bd57d906a9b11be3c90f4a65d346",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+      "url": "https://theearnalism.com/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+      "sha256": "41c06474b3633179003693da4fcfa6d7fb138c6967ae73874f7ad4abfaee2aef",
+      "bytes": 92034,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-man-in-a-case/back-976bec60c0f18202.webp",
+      "url": "https://theearnalism.com/assets/books/the-man-in-a-case/back-976bec60c0f18202.webp",
+      "sha256": "976bec60c0f18202a0a1f43d97f98c810c02149a747ef2ebfe744b3df84521f2",
+      "bytes": 30768,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

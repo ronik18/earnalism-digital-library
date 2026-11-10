@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "rappaccinis-daughter",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "716b33e4b649959ddf949cfe84867ee833bb7a0f5c057bc415746e67a3001a8b",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/rappaccinis-daughter/front-30403b406b204d07.webp",
+      "url": "https://theearnalism.com/assets/books/rappaccinis-daughter/front-30403b406b204d07.webp",
+      "sha256": "30403b406b204d07243a6ba883bbc1a80ad78858ce92aa8718d86c410582b6f7",
+      "bytes": 79676,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/rappaccinis-daughter/back-d82741e053708976.webp",
+      "url": "https://theearnalism.com/assets/books/rappaccinis-daughter/back-d82741e053708976.webp",
+      "sha256": "d82741e053708976aefc9086bd5c9067c043a3bc480c570b3bfdb0d75529b6d9",
+      "bytes": 33026,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "a-retrieved-reformation",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "4e3352c221630192f08fd29c2d611d14a099175f6dc95d55785ad3386b29efb8",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/a-retrieved-reformation/front-f1dc19c45f181d5d.webp",
+      "url": "https://theearnalism.com/assets/books/a-retrieved-reformation/front-f1dc19c45f181d5d.webp",
+      "sha256": "f1dc19c45f181d5df52c5817ce8fa31d052088b0c1d1055acddf678eb6e8a119",
+      "bytes": 112384,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/a-retrieved-reformation/back-97b4604f13a1b8bf.webp",
+      "url": "https://theearnalism.com/assets/books/a-retrieved-reformation/back-97b4604f13a1b8bf.webp",
+      "sha256": "97b4604f13a1b8bfb28c122fc83be3a9718510c7644f8903a2499efbbedd9c41",
+      "bytes": 34766,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

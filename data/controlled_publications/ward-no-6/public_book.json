@@ -7,12 +7,12 @@
   "category_slug": "gothic-fiction",
   "short_description": "A doctor who neglects his asylum's patients begins visiting its most intelligent inmate — and ends up confined there himself.",
   "description": "Dr. Ragin finds intellectual companionship in a patient he should be treating — and the system he ignored swallows him whole. Lenin read it and said it made him feel imprisoned. Chekhov's most politically devastating story.",
-  "cover_url": "",
-  "cover_image_url": "",
+  "cover_url": "https://theearnalism.com/assets/books/ward-no-6/front-5862902bbb623c27.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/ward-no-6/front-5862902bbb623c27.webp",
   "coverImage": "",
   "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "back_cover_url": "https://theearnalism.com/assets/books/ward-no-6/back-b1ad56e66ae90460.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/ward-no-6/back-b1ad56e66ae90460.webp",
   "backCoverImage": "",
   "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   "dominant_color": "#4A1C27",
@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "ward-no-6",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592925/earnalism/audiobooks/en/ward-no-6/ward-no-6.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592928/earnalism/audiobooks/en/ward-no-6/ward-no-6_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592929/earnalism/audiobooks/en/ward-no-6/ward-no-6_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592930/earnalism/audiobooks/en/ward-no-6/ward-no-6_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592930/earnalism/audiobooks/en/ward-no-6/ward-no-6_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592925/earnalism/audiobooks/en/ward-no-6/ward-no-6.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592925/earnalism/audiobooks/en/ward-no-6/ward-no-6.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592928/earnalism/audiobooks/en/ward-no-6/ward-no-6_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592929/earnalism/audiobooks/en/ward-no-6/ward-no-6_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592930/earnalism/audiobooks/en/ward-no-6/ward-no-6_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592930/earnalism/audiobooks/en/ward-no-6/ward-no-6_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:47Z"
-  },
   "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-03T20:07:47Z",
+  "cover_sha256": "5862902bbb623c2786aab03e522c128ca281711f36efff87e7b53a06c3db06a8",
+  "back_cover_sha256": "b1ad56e66ae90460dcb1065d2b8066981525812586a125a792e3239ef538716c"
 }

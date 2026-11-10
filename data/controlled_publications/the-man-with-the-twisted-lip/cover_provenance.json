@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-man-with-the-twisted-lip",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "5939a7a5c6977f48d70cede2141f24ab9f036a31e6b267a5d7a097f3ced6511b",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
+      "url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
+      "sha256": "7b55b41491483715d7b3ab6025220f8f6cf3d278541a474e6928083476b5ab12",
+      "bytes": 115692,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-man-with-the-twisted-lip/back-32c65c80621fd3ed.webp",
+      "url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/back-32c65c80621fd3ed.webp",
+      "sha256": "32c65c80621fd3ed119934c4e70ff54d8f0ba8c206ae1ee273f3f2bca1817ab4",
+      "bytes": 32948,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-solitary-cyclist",
   "title": "The Adventure of the Solitary Cyclist",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
     "content_hash": "556ddb617ff449dcfbfa93db5b7a6f52097953c6191a68e5de222c43bd37d2de",
@@ -28,16 +28,14 @@
     "evidence_sha256": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-solitary-cyclist/front-fae2603ea9759cdc.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d",
+    "public_book": "0b06d639d435b5ebab82991a5e132f7d632e74bd5c5442b8c5bd30cc908d29a3",
     "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
     "source_evidence": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f",
-    "approval_evidence": "8d13108b4c4dda28b78239a873ff25186b4eb51f87ec2c467297cdccd1dda272"
+    "approval_evidence": "4eaf47c3877cdbf726270cf1ec74513507eddaa87be98b48bf1283090d65a971"
   },
-  "manifest_sha256": "2204a30e8714a273b8fff962549d852d4d58baf4e3fedb14c0a750dffd34bfff"
+  "manifest_sha256": "42ce5dfc4c643087f0fd83a2dbbf931655691d1da282be4a4ab36bebc7174805"
 }

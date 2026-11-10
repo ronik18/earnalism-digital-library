@@ -12,11 +12,12 @@ export default function LibraryBrowseShelf({ title, copy, books, renderBook }) {
   const shownCount = Math.min(visibleCount, books.length);
   const remainingCount = books.length - shownCount;
   const nextCount = Math.min(PAGE_SIZE, remainingCount);
+  const bookOrderKey = JSON.stringify(books.map((book, index) => book.slug || book.id || index));
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
     pendingFocusIndex.current = null;
-  }, [books]);
+  }, [bookOrderKey]);
 
   useEffect(() => {
     if (pendingFocusIndex.current === null) return;

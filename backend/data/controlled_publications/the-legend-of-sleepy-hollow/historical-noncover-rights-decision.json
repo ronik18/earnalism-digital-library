@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text",
+  "edition_id": "the-legend-of-sleepy-hollow",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
+    "approval_evidence": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603",
+    "checksum_manifest": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
+    "publication_manifest": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T01:07:27.058549+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented.",
+  "evidence_sha256": [
+    "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "c987f22e9111b0c21c5526f282cf501a6959d6e1e83b99276e3256509ad80e14",
+    "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
+    "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

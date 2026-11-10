@@ -1,0 +1,38 @@
+{
+  "slug": "ward-no-6",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "0fffcf027165b799472a27686f3a209ef25439c966b3a09446dec04f9f90aca0"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "97a33ea49129d57bd0e6e05383d0861a605c7493a1975a625fa497164fca2a09"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "2f17fc4f377990b9fa663490643f5cf4cd463e443dad7fe6f3de4ef57da65719"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "61f70dae775a60999a77d3174056fce94db265d0c1eabd1adb908395ceea8e42"
+    }
+  ]
+}

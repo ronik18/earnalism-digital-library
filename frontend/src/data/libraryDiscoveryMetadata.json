@@ -369,5 +369,321 @@
     "genres": [
       "literary-fiction"
     ]
+  },
+  "a-retrieved-reformation": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "a-wagner-matinee": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "feathertop": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "markheim": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "rappaccinis-daughter": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-adventure-of-the-abbey-grange": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-beryl-coronet": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-blue-carbuncle": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-copper-beeches": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-dancing-men": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-empty-house": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-engineers-thumb": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-final-problem": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-greek-interpreter": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-noble-bachelor": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-priory-school": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-second-stain": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-adventure-of-the-solitary-cyclist": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-ambitious-guest": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-bet": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-celebrated-jumping-frog-of-calaveras-county": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "satire"
+    ]
+  },
+  "the-country-of-the-blind": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "science-fiction"
+    ]
+  },
+  "the-darling": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-door-in-the-wall": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "fantasy"
+    ]
+  },
+  "the-furnished-room": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-imp-of-the-perverse": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-last-leaf": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-legend-of-sleepy-hollow": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-luck-of-roaring-camp": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-man-in-a-case": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-man-with-the-twisted-lip": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-masque-of-the-red-death": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-ministers-black-veil": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "the-murders-in-the-rue-morgue": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-outcasts-of-poker-flat": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "the-purloined-letter": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-ransom-of-red-chief": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "satire"
+    ]
+  },
+  "the-speckled-band": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-suicide-club": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "mystery"
+    ]
+  },
+  "the-yellow-wallpaper": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
+  },
+  "to-build-a-fire": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "tobermory": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "satire",
+      "fantasy"
+    ]
+  },
+  "ward-no-6": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "literary-fiction"
+    ]
+  },
+  "white-fang": {
+    "language": "en",
+    "form": "novel",
+    "genres": [
+      "adventure"
+    ]
+  },
+  "young-goodman-brown": {
+    "language": "en",
+    "form": "short-story",
+    "genres": [
+      "gothic-fiction"
+    ]
   }
 }

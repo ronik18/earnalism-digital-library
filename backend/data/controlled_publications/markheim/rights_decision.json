@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-markheim-reader-cover-successor",
+  "edition_id": "markheim",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0",
+    "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
+    "approval_evidence": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf",
+    "checksum_manifest": "e2618dcf50f6ec82f0874c845189e24e72d9114e815b3878ab32c677af7aa982",
+    "publication_manifest": "557fa2068fa05324c1088bd124013a737414d9862a17c299d8690360602b50ad",
+    "cover_provenance": "5d5b0ab7eb58f3896e7d0f12d316c34735ae642c3797ab339fe5d223b9c2a29c",
+    "cover_front": "1568f8a2bdea95486434daab874a8abde421b86aa692f9dba90eed0b001574ea",
+    "cover_back": "3641d4eae8cc20076f673cbd6ff8256649e8d7395d321a3afb05138c6b9a13a9"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-markheim-pg344-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "3f5b98c0b00f8a555adfdb542dd66f52c2b95cf2ed880c6ffd6688b42bd04d9c",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
+    "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
+    "c4a5eb05378db084dd2e32ed26a80a7c3f2457e23ded8e631308098edcb13dd4",
+    "5d5b0ab7eb58f3896e7d0f12d316c34735ae642c3797ab339fe5d223b9c2a29c"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

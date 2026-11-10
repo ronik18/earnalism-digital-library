@@ -1,0 +1,38 @@
+{
+  "slug": "the-adventure-of-the-dancing-men",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "eb9939dfe7db3c7ad972b391d175b4a24b44245971be68d47080bae0c912fa85"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "3731e93cb3a78e8a49a52d08b10b96e970b0c67df12e21ab5dfda88989cb6bc9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "1035a5891e509f52951a26116a1d59b43f1635efa12f65c2eeab685e556fa23b"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "5714ebe4da87c7c18ad88258ab71d8b8bd0405018c69231cd48bb72c9cd8f005"
+    }
+  ]
+}

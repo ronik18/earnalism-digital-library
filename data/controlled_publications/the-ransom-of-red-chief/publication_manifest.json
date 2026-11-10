@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-ransom-of-red-chief",
   "title": "The Ransom of Red Chief",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:35:43.155881+00:00",
   "content": {
     "source_hash": "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b",
     "content_hash": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1",
@@ -28,16 +28,14 @@
     "evidence_sha256": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-ransom-of-red-chief/front-ff9be054869a4304.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d",
+    "public_book": "7f384b5bb57c75bc0bbecc8bca61046c3369e925515552bdc81f395e92b93e3f",
     "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
     "source_evidence": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
-    "approval_evidence": "6260c6fb2a25cb4fbefc79bec4f758a3d7120bbda2ec10ee495893d6d5393f06"
+    "approval_evidence": "c8083b53e667bdc0c0bebc635e1ace1067c2e00e901461644132dab1782d78e0"
   },
-  "manifest_sha256": "df22a627d34e50ebba14e2a545d94c282772b0259b72a1bb5f479a16c77d2771"
+  "manifest_sha256": "f51b44aa005f929f8b4982150d8ea0b7ec1a428384999d9ae5658d1c8dc1ec6f"
 }

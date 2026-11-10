@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "feathertop",
   "title": "Feathertop",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "content": {
     "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
     "content_hash": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
@@ -28,16 +28,14 @@
     "evidence_sha256": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/feathertop/front-93854105d9280545.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e8abb7dc2a591390ffeb8b06d526ff1fb704f15d8c2e5489aa7c3fad17b93e88",
+    "public_book": "07ff700dfc5a20d8bfe94c0de9d24f3c135f6b9baf2950a8b940c377297c5049",
     "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
     "source_evidence": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
-    "approval_evidence": "113dfb29d9e8a90a98d96873a98d9b19d3aa4015bc4134597e288d39b21c49a9"
+    "approval_evidence": "dab2f4167da49b120bd2ad10c4d9bd0286a53a3f02f01eaff9ec5241e27e57e5"
   },
-  "manifest_sha256": "743ed0e9500c2a26597c78e389147a7ce57a6b5e31a8fb59eb90a040d95a0178"
+  "manifest_sha256": "39d0c079709b09e7005cd04878afe6f2213ed885fa0cc53ca33bfbb89bf8d767"
 }

@@ -3193,3 +3193,19 @@ An original source-bound Reader/containment approval is not a reusable blank che
 - 2026-11-09 Reader mobile fit: failed-layout state must clear on fresh measurement; load actual script glyphs and allow at most two source-exact refits. Never expose clipped text or bypass preview/access. 292 focused tests pass; production verification pending.
 
 - 2026-11-09 Android WebView Reader: dvh-only sizing collapses the folio on WebView 91. Native controlled baseline fails; adding vh before dvh renders Bengali prose at full height. Modern browser mobile emulation is not legacy-engine evidence. 293 focused tests pass; production/Instagram acceptance pending.
+
+## 2026-11-10 — persisted 45 Reader source candidate
+Fresh production read confirms all 45 exact complete text matches remain stored and unpublished. Reuse the 45 reviewed original cover pairs, preserve chapter bytes and historical rights decisions, and bind only the exact Reader-only successor. Three owner-removed rights-held editions are excluded and active source packages removed with a scoped tombstone; production deletion and publication remain pending actual evidence.
+
+
+- 2026-11-08T04:41:49.549773+00:00 — 45 Reader cover pairs and exact source bindings prepared; manuscript bytes and three rights-held titles preserved. Production remains held for historical successor assertion review, required CI and authenticated India delivery. No live publication occurred.
+
+2026-11-10 cleanup completion: admin API removed the three specified held book records; exact scoped transactions removed 139 stale segments and two manifests, and all eight identified B2 object versions were deleted and verified absent. Customer/financial records untouched. Primary bucket listing remains denied. The 97-title journey also requires the explicit frontend release mirror and stable shelf identity across metadata refresh; retain exact old rights-history checks while extending independent current cohort fixtures.
+
+2026-11-10 Library source qualification: the exact client allowlist and discovery additions invalidate the prior 52-title source fingerprint. Preserve that historical baseline; use an explicit pinned 45-title successor including LibraryBrowseShelf, with all 14 input mutations rejected and fresh browser CI still mandatory. This records a source transition, not visual approval or production PASS.
+
+2026-11-10 chapter inventory: preserve the frozen historical engineering fixture and append only the exact 45 text-cleared predecessor manifests, all byte-identical to current mirrors. Explicitly audit the three removals. Current source package inventory is 138/749 chapters; public release target remains 97, not the entire private source inventory.
+
+2026-11-10 primary B2 cleanup: signed-in Chrome exposed 19 Gitanjali staging objects hidden from the configured API key. Exact manifest/metadata and all surviving-book references were verified; owner confirmed permanent deletion at action time. UI folder disappearance and 19 independent 404s confirm removal. Eight prior API object-version removals remain separately receipted. API listing still denied; do not assert forensic absence of unknown copies. Extend independent filter fixtures to the explicit 97-title candidate while preserving the original 52-title snapshot.
+
+2026-11-10 final UAT/CDN: preserve the old 52-title fixture and separately bind the exact 45-title successor in the final Reader truth test; all eight focused tests pass, and the complete frontend set passes 529 tests. Remove only four exact unshared Cloudinary cover identities for Gitanjali/Nishkriti; all origins are absent and all public URLs now return 404 after invalidation. Do not conflate source preparation or passing fixtures with production publication.

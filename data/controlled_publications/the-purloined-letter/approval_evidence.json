@@ -1,14 +1,14 @@
 {
   "slug": "the-purloined-letter",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
   "content_hash": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
   "provenance_hash": "0d661b71d28690735fed5c6a75e00424e855affdd1480314dcdbdb6b9d7b7185",
-  "verified_at": "2026-10-01T21:52:27.631967+00:00"
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "cover_provenance_sha256": "eabe34154ee10821c589be757f49b5190ae84acb9d045387d15db75ae19262d8"
 }

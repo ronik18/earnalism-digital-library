@@ -81,6 +81,54 @@ const CURRENT_RELEASED_SLUGS = [
   "the-wonderful-wizard-of-oz",
   "book-5704b31005"
 ];
+// Exact owner-selected successor cohort; preserve the historical 52-title fixture.
+const PERSISTED45_READER_RELEASE_SLUGS = [
+  "a-retrieved-reformation",
+  "a-wagner-matinee",
+  "feathertop",
+  "markheim",
+  "rappaccinis-daughter",
+  "the-adventure-of-the-abbey-grange",
+  "the-adventure-of-the-beryl-coronet",
+  "the-adventure-of-the-blue-carbuncle",
+  "the-adventure-of-the-copper-beeches",
+  "the-adventure-of-the-dancing-men",
+  "the-adventure-of-the-empty-house",
+  "the-adventure-of-the-engineers-thumb",
+  "the-adventure-of-the-final-problem",
+  "the-adventure-of-the-greek-interpreter",
+  "the-adventure-of-the-noble-bachelor",
+  "the-adventure-of-the-priory-school",
+  "the-adventure-of-the-second-stain",
+  "the-adventure-of-the-solitary-cyclist",
+  "the-ambitious-guest",
+  "the-bet",
+  "the-celebrated-jumping-frog-of-calaveras-county",
+  "the-country-of-the-blind",
+  "the-darling",
+  "the-door-in-the-wall",
+  "the-furnished-room",
+  "the-imp-of-the-perverse",
+  "the-last-leaf",
+  "the-legend-of-sleepy-hollow",
+  "the-luck-of-roaring-camp",
+  "the-man-in-a-case",
+  "the-man-with-the-twisted-lip",
+  "the-masque-of-the-red-death",
+  "the-ministers-black-veil",
+  "the-murders-in-the-rue-morgue",
+  "the-outcasts-of-poker-flat",
+  "the-purloined-letter",
+  "the-ransom-of-red-chief",
+  "the-speckled-band",
+  "the-suicide-club",
+  "the-yellow-wallpaper",
+  "to-build-a-fire",
+  "tobermory",
+  "ward-no-6",
+  "white-fang",
+  "young-goodman-brown"
+];
 const PROSPECTIVE_READER_RELEASE_SLUGS = [
   "dsires-baby",
   "sredni-vashtar",
@@ -177,7 +225,8 @@ describe("Reader content quality batch 1", () => {
       expect(launch.audio_enabled_slugs).toEqual([]);
       return;
     }
-    expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
+    expect(launch.live_approved_slugs).toEqual([...CURRENT_RELEASED_SLUGS, ...PERSISTED45_READER_RELEASE_SLUGS]);
+    expect(launch.live_approved_slugs).toHaveLength(97);
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
     for (const slug of BATCH_SLUGS) {
       if (["jekyll-and-hyde", "picture-of-dorian-gray", "frankenstein"].includes(slug)) {
@@ -310,6 +359,34 @@ describe("Reader content quality batch 1", () => {
         expect(launch.protected_package_public_slugs).toEqual(["the-open-window", "the-selfish-giant"]);
       }
       expect(launch.audio_enabled_slugs).not.toContain(slug);
+    }
+  });
+
+  test("exact 45-title successor preserves India-only Reader authority and all audio holds", () => {
+    expect(PERSISTED45_READER_RELEASE_SLUGS).toHaveLength(45);
+    expect(new Set([...CURRENT_RELEASED_SLUGS, ...PERSISTED45_READER_RELEASE_SLUGS]).size).toBe(97);
+    for (const slug of PERSISTED45_READER_RELEASE_SLUGS) {
+      const folder = `data/controlled_publications/${slug}`;
+      const decision = readJson(`${folder}/rights_decision.json`);
+      const publication = readJson(`${folder}/publication_manifest.json`);
+      const publicBook = readJson(`${folder}/public_book.json`);
+      expect(decision.decision_id).toBe(`india-20261108-${slug}-reader-cover-successor`);
+      expect(decision.status).toBe("ACCEPTED");
+      expect(decision.territories).toEqual(["IN"]);
+      expect(decision.uses).toEqual(["catalog_metadata", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal", "cover_display"]);
+      expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256").update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));
+      expect(launch.live_approved_slugs).toContain(slug);
+      expect(publication.reader_release.exposed).toBe(true);
+      expect(publication.audio_release.exposed).toBe(false);
+      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+      expect(launch.audio_enabled_slugs).not.toContain(slug);
+      expect(launch.protected_package_public_slugs).not.toContain(slug);
+    }
+    for (const slug of ["gitanjali", "nishkriti", "the-metamorphosis"]) {
+      expect(launch.live_approved_slugs).not.toContain(slug);
+      expect(fs.existsSync(path.join(ROOT, "data/controlled_publications", slug))).toBe(false);
+      expect(fs.existsSync(path.join(ROOT, "backend/data/controlled_publications", slug))).toBe(false);
     }
   });
 

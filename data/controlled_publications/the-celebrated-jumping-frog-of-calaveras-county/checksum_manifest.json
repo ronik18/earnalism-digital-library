@@ -1,10 +1,10 @@
 {
   "slug": "the-celebrated-jumping-frog-of-calaveras-county",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:24:02.090772+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7"
+      "sha256": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c"
+      "sha256": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "84c34cbec6d9aa7609eaa9c935e2a902f8a2ecd8cdd745f4ab6f7c1ba5e8c0fc"
     }
   ]
 }

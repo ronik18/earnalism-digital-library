@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-copper-beeches-pg1661-noncover-text",
+  "edition_id": "the-adventure-of-the-copper-beeches",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "f151cf4cc9bc066dcaf10f4323d586cfb2bcff100ec5a3b6bae9bab39b2b1bc4",
+    "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
+    "approval_evidence": "ab1963f2a2a1d8a3036d6167bb367e395d9067eac615c8e31d271ad53d11bd83",
+    "checksum_manifest": "0e81efc75d17935ef4cd04dbf0991e1b5f8fa8813ebbeb1b2cc2191d82e182d1",
+    "publication_manifest": "c32f3a638c3ee953535d4165e80689cbb03ae9174bcb3a3321f1c908a7d87584"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "631f4a07c5e6602747ba3182e4e94523521ae957cba9dbb0192467f1c19d75fb",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "b462ab2045b83b93266df29ada25c1fe29f319e658ae9eef3a608fc9284303d0"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

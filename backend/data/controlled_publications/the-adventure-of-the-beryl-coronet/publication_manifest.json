@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-beryl-coronet",
+  "title": "The Adventure of the Beryl Coronet",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "content": {
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29",
+    "provenance_hash": "398d3c9dcb026d63f87045dd362441e7d0c39b0264859271b381a1d1b4a052f4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "32aeba9767a5c71790157348fbf07d3b9099aab221ec095936d2a15f030ba5bf",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Beryl Coronet",
+        "word_count": 9714,
+        "sha256": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-beryl-coronet/front-a4255d0ae4226d5e.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "41760a1deb5a349b7b3a734b618188db5d57fd19c162980df96cf515c8bb40a8",
+    "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "source_evidence": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+    "approval_evidence": "0ec247e3f8c072cc41b2e94ef09e5a5f306680c756a3a53cc85a21b50227d435"
+  },
+  "manifest_sha256": "3ddf3f533c3430d30d3a040848460dec58ddab9abc6d7cc9e5252e59c368ec40"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-ward-no-6-pg13409-noncover-text",
+  "edition_id": "ward-no-6",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
+    "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+    "source_evidence": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
+    "approval_evidence": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c",
+    "checksum_manifest": "4eb9a4ec09b5d3a190c6b01742cb8c2dbc4eaf4090de4d6308d10b5b98fb34bc",
+    "publication_manifest": "e425fc42e7f7491df62f52d8729011ba4ad3c19febfc029362e0a71a4d2339c4"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1921; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1981; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "evidence_sha256": [
+    "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

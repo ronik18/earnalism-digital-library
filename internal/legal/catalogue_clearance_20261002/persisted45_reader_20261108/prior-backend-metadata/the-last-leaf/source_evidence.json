@@ -1,0 +1,13 @@
+{
+  "slug": "the-last-leaf",
+  "source_url": "https://www.gutenberg.org/ebooks/3707",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
+  "content_hash": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
+  "provenance_hash": "034931b10a219ccaaf22f3d7e299ae6936c765abe784f30fb28b65149235e759",
+  "rights_basis": "O. Henry died 1910; first published 1907. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.865021+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

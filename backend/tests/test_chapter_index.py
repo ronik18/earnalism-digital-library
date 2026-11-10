@@ -291,12 +291,31 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
             package for package in current_inventory["packages"]
             if package["package_key"] != package_key
         ] + [expected_package]
+    # Keep the frozen historical inventory. This explicit successor comes from
+    # root Reader manifests at the independently pinned text-cleared predecessor,
+    # never from candidate backend manifests. Removed editions stay audited.
+    successor_path = Path(__file__).parent / "fixtures/persisted45-reader-index-predecessor-20261110.json"
+    assert hashlib.sha256(successor_path.read_bytes()).hexdigest() == "3501266193923e3cc87d7d4726423fb173ce1b99dfa354e96f46c2af4a7020e4"
+    successor = json.loads(successor_path.read_text())
+    assert successor["source_sha"] == "2f3615a1213aa60e30e8a24593cf874adcc454c3"
+    assert len(successor["packages"]) == 45
+    removed = {"gitanjali", "nishkriti", "the-metamorphosis"}
+    from scripts.verify_catalogue_clearance_batch import owner_removed_package_valid
+    for slug in removed:
+        assert owner_removed_package_valid(ROOT, slug, {path.parent.name for path in manifests})
+        assert any(package["package_key"] == slug for package in inventory["packages"])
+    additions = {package["package_key"] for package in successor["packages"]}
+    assert len(additions) == 45 and not additions & removed
+    current_inventory["packages"] = [package for package in current_inventory["packages"] if package["package_key"] not in additions | removed]
+    for package in successor["packages"]:
+        assert hashlib.sha256((CONTROLLED_ROOT / package["package_key"] / "reader_manifest.json").read_bytes()).hexdigest() == package["manifest_sha256"]
+        current_inventory["packages"].append(package)
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]
     )
-    assert current_inventory["expected_manifest_count"] == 102
-    assert current_inventory["expected_chapter_count"] == 826
+    assert current_inventory["expected_manifest_count"] == 138
+    assert current_inventory["expected_chapter_count"] == 749
     actual = {
         path.parent.name: json.loads(path.read_text(encoding="utf-8"))
         for path in manifests

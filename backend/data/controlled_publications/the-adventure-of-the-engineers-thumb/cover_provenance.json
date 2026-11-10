@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-engineers-thumb",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "6a5e2c2921a6d0fda9eeadac592d9bcdfc5f8924490c41d70dec8c4750a53bcd",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-engineers-thumb/front-75be2913c2d03302.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-engineers-thumb/front-75be2913c2d03302.webp",
+      "sha256": "75be2913c2d03302aea955b7bd3db218a35a2ac09c12914c226fcff09bf9d897",
+      "bytes": 117100,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-engineers-thumb/back-042c7d5bb3398cf4.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-engineers-thumb/back-042c7d5bb3398cf4.webp",
+      "sha256": "042c7d5bb3398cf454639e2878ff4114b80e05b1fe8577a5a2d3ff8c295006bd",
+      "bytes": 36362,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

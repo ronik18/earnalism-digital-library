@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-blue-carbuncle",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "c652ffd17ce11eab106762836c0c612ec39876bb0a492318ccc1b00a3965bfb0",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+      "sha256": "7bd5c08c49ae7b6673ceea35d9096a0d8a179c0efafa941a2467cd0bf1bcc06a",
+      "bytes": 101634,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-blue-carbuncle/back-2ceb1f6da7dc4ff8.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/back-2ceb1f6da7dc4ff8.webp",
+      "sha256": "2ceb1f6da7dc4ff8960611a1066c7ac324930c52ce66d8f470a7a3f58c3d2469",
+      "bytes": 34068,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

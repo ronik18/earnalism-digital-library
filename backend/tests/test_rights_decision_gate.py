@@ -17,6 +17,9 @@ from backend.rights_decision_gate import (
 )
 
 
+# Exact owner-authorized cohort, independently pinned from the registry under test.
+PERSISTED_READER45 = ('a-retrieved-reformation', 'a-wagner-matinee', 'feathertop', 'markheim', 'rappaccinis-daughter', 'the-adventure-of-the-abbey-grange', 'the-adventure-of-the-beryl-coronet', 'the-adventure-of-the-blue-carbuncle', 'the-adventure-of-the-copper-beeches', 'the-adventure-of-the-dancing-men', 'the-adventure-of-the-empty-house', 'the-adventure-of-the-engineers-thumb', 'the-adventure-of-the-final-problem', 'the-adventure-of-the-greek-interpreter', 'the-adventure-of-the-noble-bachelor', 'the-adventure-of-the-priory-school', 'the-adventure-of-the-second-stain', 'the-adventure-of-the-solitary-cyclist', 'the-ambitious-guest', 'the-bet', 'the-celebrated-jumping-frog-of-calaveras-county', 'the-country-of-the-blind', 'the-darling', 'the-door-in-the-wall', 'the-furnished-room', 'the-imp-of-the-perverse', 'the-last-leaf', 'the-legend-of-sleepy-hollow', 'the-luck-of-roaring-camp', 'the-man-in-a-case', 'the-man-with-the-twisted-lip', 'the-masque-of-the-red-death', 'the-ministers-black-veil', 'the-murders-in-the-rue-morgue', 'the-outcasts-of-poker-flat', 'the-purloined-letter', 'the-ransom-of-red-chief', 'the-speckled-band', 'the-suicide-club', 'the-yellow-wallpaper', 'to-build-a-fire', 'tobermory', 'ward-no-6', 'white-fang', 'young-goodman-brown')
+
 NOW = datetime(2026, 9, 17, tzinfo=timezone.utc)
 COMPONENTS = {
     "manuscript": "a" * 64,
@@ -61,7 +64,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_retains_historical_records_and_binds_current_fifty_two_title_release():
+def test_real_registry_retains_historical_records_and_binds_current_ninety_seven_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -138,7 +141,7 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
         'india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted',
         'india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted',
         'india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted',
-    }
+    } | {f"india-20261108-{slug}-reader-cover-successor" for slug in PERSISTED_READER45}
     current_runtime_release_slugs = (
         "a-ghost-story",
         "the-tell-tale-heart",
@@ -193,6 +196,8 @@ def test_real_registry_retains_historical_records_and_binds_current_fifty_two_ti
         'the-wonderful-wizard-of-oz',
         'book-5704b31005',
     )
+    current_runtime_release_slugs += PERSISTED_READER45
+    assert len(set(current_runtime_release_slugs)) == 97
     for slug in current_runtime_release_slugs:
         decision = json.loads(
             (Path(__file__).parents[1] / "data" / "controlled_publications" / slug / "rights_decision.json")

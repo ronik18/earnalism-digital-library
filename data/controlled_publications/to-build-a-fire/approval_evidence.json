@@ -1,14 +1,14 @@
 {
   "slug": "to-build-a-fire",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
@@ -18,5 +18,6 @@
   "source_hash": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d",
   "content_hash": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
   "provenance_hash": "1ea10d29c064cf98426b7149d56ed81c35b058bd32c8170c99a825f8db9ae085",
-  "verified_at": "2026-10-01T21:48:17.188009+00:00"
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "cover_provenance_sha256": "180537b48128d307cca44d074fadb571dd67c901b4c39c60663cb9863f1700b9"
 }

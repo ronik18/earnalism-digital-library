@@ -1,0 +1,38 @@
+{
+  "slug": "the-darling",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "33ee0d3b4c4c7ca428274f680b5a64dc6e86078ada59cda9bc8b9df3d4e592d0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "5f650ca64ae3ab2fa8e435261092307cea8914078a21a3d55df8e9526591d97a"
+    }
+  ]
+}

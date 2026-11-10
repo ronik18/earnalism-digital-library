@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-adventure-of-the-dancing-men-pg108-noncover-text",
+  "decision_id": "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor",
   "edition_id": "the-adventure-of-the-dancing-men",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
+    "public_book": "1035a5891e509f52951a26116a1d59b43f1635efa12f65c2eeab685e556fa23b",
     "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
     "source_evidence": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
-    "approval_evidence": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593",
-    "checksum_manifest": "064a14d868d957d1538e4d0c94630aa5539f570522624110976e4b7786c7a146",
-    "publication_manifest": "e688095bba5dcea9cabc371468b27b20bf3121e52f7ea6dd131e5825098db0bb"
+    "approval_evidence": "eb9939dfe7db3c7ad972b391d175b4a24b44245971be68d47080bae0c912fa85",
+    "checksum_manifest": "a14997d0f86020ce2c9a5976a0e0cc0aedcddef355c6ede6143b0f576b7641b2",
+    "publication_manifest": "21bf6d5dcd605d6fcddcbfe69bd04424fee6259c32a5b53e4c6070b46d0ef5f0",
+    "cover_provenance": "5714ebe4da87c7c18ad88258ab71d8b8bd0405018c69231cd48bb72c9cd8f005",
+    "cover_front": "0554ac8b881f1ad745ac3f86188714702e56ffa308b43be64c504c5b3916ba64",
+    "cover_back": "e2832bbb1a7c04d32d3a70db02dd5e1c4197d6307b7bf9f596815758ec0dacda"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-adventure-of-the-dancing-men-pg108-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
-    "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec"
+    "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
+    "eaa61ad5ac6e1a83080dac86c22496992a1e91d93a837730dcb65c4007fc5077",
+    "5714ebe4da87c7c18ad88258ab71d8b8bd0405018c69231cd48bb72c9cd8f005"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

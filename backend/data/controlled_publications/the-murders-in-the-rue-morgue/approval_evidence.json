@@ -1,0 +1,23 @@
+{
+  "slug": "the-murders-in-the-rue-morgue",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "Owner-directed exact Reader-only candidate with original covers; source review and actual release checks remain required",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "4b4a5613ae7c40ed54f845c1740c830e0a3156f753c6617515f8c7526ac8bf46",
+  "source_hash": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
+  "content_hash": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
+  "provenance_hash": "4ecc3f1f8dbff7480f90cf6f9ebc79ccc45b567f47aa64531f461e8e8d9724fe",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "cover_provenance_sha256": "613ff82cf2ad5c4bc0b385a2f66cb80f40df9cff240451c5db87a9a94f66d807"
+}

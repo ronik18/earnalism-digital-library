@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-darling",
+  "edition": "Project Gutenberg #13416; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1916",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
+  "content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+  "chapter_sha256": {
+    "chapter-001": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

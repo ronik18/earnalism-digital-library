@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-speckled-band",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "a3148a6d37b09d931d8a75b689936b399c318fa08c712e0bbb3e675fe10f232e",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-speckled-band/front-ec65f86b7e4489ec.webp",
+      "url": "https://theearnalism.com/assets/books/the-speckled-band/front-ec65f86b7e4489ec.webp",
+      "sha256": "ec65f86b7e4489ec15c83c0999466586a6ee8f66784e5f8ca35401a8e8eab2d0",
+      "bytes": 94708,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-speckled-band/back-4b0bfea9b80cf94f.webp",
+      "url": "https://theearnalism.com/assets/books/the-speckled-band/back-4b0bfea9b80cf94f.webp",
+      "sha256": "4b0bfea9b80cf94fd662e89c4470a6e636720e750017e4da6c05542bd35c7ad8",
+      "bytes": 32194,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

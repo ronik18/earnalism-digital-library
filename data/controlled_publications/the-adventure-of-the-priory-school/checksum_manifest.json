@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-priory-school",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:19:59.725161+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "3118ec6ffbc17340f2d4baf4bd400594d449f7ce57e6b51412b8864897763ff2"
+      "sha256": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "200768acdb552a81b702adad6d118582da2b09140f12527eded28508cf6a1b88"
+      "sha256": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "b6c2a373a40ce3f1434406d02d78978e2babea85d1811288cbe112bb95c0e435"
     }
   ]
 }

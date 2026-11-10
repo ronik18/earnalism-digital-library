@@ -62,7 +62,7 @@ node frontend/scripts/native-replacement-presentation.test.mjs
 node --test frontend/scripts/audio-only-retirement.test.mjs
 
 echo "==> Preserved Reader source validation and dummy signup race"
-"$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py
+"$PYTHON_BIN" -m pytest -q backend/tests/test_reader_content_rendering.py backend/tests/test_retained_edition_validation.py backend/tests/test_signup_duplicate_race.py backend/tests/test_persisted45_reader_release.py
 
 echo "==> Isolated owner-accepted US rights intake (no activation)"
 "$PYTHON_BIN" -m pytest -q backend/tests/test_us_rights_intake.py scripts/test_owner_us_catalogue_intake.py
@@ -153,7 +153,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package \
   scripts.test_process_full_catalogue \
-  scripts.test_catalogue_clearance_registry_successor
+  scripts.test_catalogue_clearance_registry_successor \
+  scripts.test_persisted45_reader_successor
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
 node scripts/test_regression_asset_isolation.cjs
@@ -172,6 +173,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Reader.releaseTruth.test.js \
   src/lib/audioPackageManifest.test.js \
   src/lib/audioReleaseSafety.test.js \
+  src/components/LibraryBrowseShelf.test.jsx \
   src/components/PremiumListeningRail.test.js \
   src/components/ReaderAudiobookPanel.test.js \
   src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
@@ -188,6 +190,7 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Library.test.jsx \
   src/pages/Library.integration.test.jsx \
   src/pages/BookDetail.discovery.test.jsx \
+  src/lib/controlledLaunch.canonicalAuthority.test.js \
   src/lib/libraryDiscovery.test.js \
   src/lib/libraryCatalog.test.js \
   src/lib/libraryFilters.test.js \

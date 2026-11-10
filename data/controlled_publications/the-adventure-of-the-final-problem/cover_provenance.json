@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-final-problem",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "d96fdb3eed56a1f55d19032d2a166d6ba3b0bc5be74819737f9420caeea6a4df",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+      "sha256": "ee9e47f4bbfe47bfd7aeabf8984982ea7ea36ec7f44ce77f04d9a4e6d35133e9",
+      "bytes": 117704,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-final-problem/back-93ba678d6d4fbde2.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/back-93ba678d6d4fbde2.webp",
+      "sha256": "93ba678d6d4fbde26a15e5d087cd7074e84e5dfb57313d48018e7666b521fbb9",
+      "bytes": 37120,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

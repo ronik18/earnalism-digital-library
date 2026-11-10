@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-final-problem",
+  "title": "The Adventure of the Final Problem",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "content": {
+    "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "content_hash": "117d6a3c1729145f0d58f61c8f8f28a3cb007cb16557e9bc018534974fb108f8",
+    "provenance_hash": "17ef22e2d78f57f6a7d2ffd47e5ad37ea370070fe2cfcf36a81cc6c8e6a6670e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d2025bb50adb8ce24f41cf3d8298d738a976045b2aac2eae60b7ce8696838586",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Final Problem",
+        "word_count": 7180,
+        "sha256": "936596ce28eb8ac9d1d989e4fdcbfbba50b102b4a1e732f8718efa4647be3acb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "7ef989b45091aa54b92df7d28b8a6921b33c0b42c02a5e71347dc37eeb1ea044",
+    "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "source_evidence": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
+    "approval_evidence": "6a822b2058adccc574aa6f865dff7af88ac8b8570e511365b0746865500884c1"
+  },
+  "manifest_sha256": "300760357a8a959aacc3c438722433f8dedb915b84f23b58eba53e844a8f0403"
+}

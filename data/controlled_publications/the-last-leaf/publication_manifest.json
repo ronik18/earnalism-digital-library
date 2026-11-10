@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-last-leaf",
   "title": "The Last Leaf",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
     "content_hash": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
@@ -28,13 +28,11 @@
     "evidence_sha256": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-last-leaf/front-d67f4e42bfb0e673.webp",
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487",
+    "public_book": "d794a4c2671bf8dd3c21b82bfe6b4d6e0b0ba7f495667d3c1700798275250e57",
     "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
     "source_evidence": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
-    "approval_evidence": "7996079600f47d4a2d4f4c464f0dc965c6ddb7a76fbc948da920a1d8af55d08e"
+    "approval_evidence": "ef63c5f763a85e017e8132934e3deb8f6f273c33fe25b0ffea5030ff984c4df4"
   },
-  "manifest_sha256": "245c08da9cf999c38e2c402ce79b3bb0678d87dffafb6d0fdd2be4867731e4bd"
+  "manifest_sha256": "f7c14406104ec5fedae0a827437432002e3a4bd86a68a0ec46b90a32cad705af"
 }

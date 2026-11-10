@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-outcasts-of-poker-flat",
   "title": "The Outcasts of Poker Flat",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:34:41.186349+00:00",
   "content": {
     "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
     "content_hash": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
@@ -28,16 +28,14 @@
     "evidence_sha256": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-outcasts-of-poker-flat/front-67c4eeffd8ecc6d7.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63",
+    "public_book": "6c6bf6bd3c7b4375d34486ca1711baa99e2f0569c31331fbb3fd8d875bfe316e",
     "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
     "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
-    "approval_evidence": "8d61f6985f976c2596d7d4c33cc104aabf3be969fe23e47137201350d5ffa6ac"
+    "approval_evidence": "ba9c4edd66d1aa0789465ccb4532cb0b9766e8d8f3194f30f4ea496c9628e5fd"
   },
-  "manifest_sha256": "43e8d7a2e59fc3e06f9d7d55f5c7e1ba986214a30fe93e4a0cd2b195e80232f7"
+  "manifest_sha256": "37c462924d2dd83ce6c2d8f94e5aedf3e20b95a0aac62a3d47399c575c294eff"
 }

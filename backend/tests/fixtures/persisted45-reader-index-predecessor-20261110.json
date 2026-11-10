@@ -1,0 +1,688 @@
+{
+  "schema_version": "earnalism.pinned-reader-index-successor.v1",
+  "source_sha": "2f3615a1213aa60e30e8a24593cf874adcc454c3",
+  "scope": "Independently pinned text-cleared predecessor; engineering identity check only, not rights or production acceptance.",
+  "packages": [
+    {
+      "package_key": "a-retrieved-reformation",
+      "manifest_slug": "a-retrieved-reformation",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+      "predecessor_path": "data/controlled_publications/a-retrieved-reformation/reader_manifest.json"
+    },
+    {
+      "package_key": "a-wagner-matinee",
+      "manifest_slug": "a-wagner-matinee",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+      "predecessor_path": "data/controlled_publications/a-wagner-matinee/reader_manifest.json"
+    },
+    {
+      "package_key": "feathertop",
+      "manifest_slug": "feathertop",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+      "predecessor_path": "data/controlled_publications/feathertop/reader_manifest.json"
+    },
+    {
+      "package_key": "markheim",
+      "manifest_slug": "markheim",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+      "predecessor_path": "data/controlled_publications/markheim/reader_manifest.json"
+    },
+    {
+      "package_key": "rappaccinis-daughter",
+      "manifest_slug": "rappaccinis-daughter",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+      "predecessor_path": "data/controlled_publications/rappaccinis-daughter/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-abbey-grange",
+      "manifest_slug": "the-adventure-of-the-abbey-grange",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-abbey-grange/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-beryl-coronet",
+      "manifest_slug": "the-adventure-of-the-beryl-coronet",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-beryl-coronet/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-blue-carbuncle",
+      "manifest_slug": "the-adventure-of-the-blue-carbuncle",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-blue-carbuncle/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-copper-beeches",
+      "manifest_slug": "the-adventure-of-the-copper-beeches",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-copper-beeches/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-dancing-men",
+      "manifest_slug": "the-adventure-of-the-dancing-men",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-dancing-men/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-empty-house",
+      "manifest_slug": "the-adventure-of-the-empty-house",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-empty-house/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-engineers-thumb",
+      "manifest_slug": "the-adventure-of-the-engineers-thumb",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-engineers-thumb/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-final-problem",
+      "manifest_slug": "the-adventure-of-the-final-problem",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-final-problem/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-greek-interpreter",
+      "manifest_slug": "the-adventure-of-the-greek-interpreter",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-greek-interpreter/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-noble-bachelor",
+      "manifest_slug": "the-adventure-of-the-noble-bachelor",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-noble-bachelor/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-priory-school",
+      "manifest_slug": "the-adventure-of-the-priory-school",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-priory-school/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-second-stain",
+      "manifest_slug": "the-adventure-of-the-second-stain",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-second-stain/reader_manifest.json"
+    },
+    {
+      "package_key": "the-adventure-of-the-solitary-cyclist",
+      "manifest_slug": "the-adventure-of-the-solitary-cyclist",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+      "predecessor_path": "data/controlled_publications/the-adventure-of-the-solitary-cyclist/reader_manifest.json"
+    },
+    {
+      "package_key": "the-ambitious-guest",
+      "manifest_slug": "the-ambitious-guest",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+      "predecessor_path": "data/controlled_publications/the-ambitious-guest/reader_manifest.json"
+    },
+    {
+      "package_key": "the-bet",
+      "manifest_slug": "the-bet",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+      "predecessor_path": "data/controlled_publications/the-bet/reader_manifest.json"
+    },
+    {
+      "package_key": "the-celebrated-jumping-frog-of-calaveras-county",
+      "manifest_slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+      "predecessor_path": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/reader_manifest.json"
+    },
+    {
+      "package_key": "the-country-of-the-blind",
+      "manifest_slug": "the-country-of-the-blind",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+      "predecessor_path": "data/controlled_publications/the-country-of-the-blind/reader_manifest.json"
+    },
+    {
+      "package_key": "the-darling",
+      "manifest_slug": "the-darling",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+      "predecessor_path": "data/controlled_publications/the-darling/reader_manifest.json"
+    },
+    {
+      "package_key": "the-door-in-the-wall",
+      "manifest_slug": "the-door-in-the-wall",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+      "predecessor_path": "data/controlled_publications/the-door-in-the-wall/reader_manifest.json"
+    },
+    {
+      "package_key": "the-furnished-room",
+      "manifest_slug": "the-furnished-room",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+      "predecessor_path": "data/controlled_publications/the-furnished-room/reader_manifest.json"
+    },
+    {
+      "package_key": "the-imp-of-the-perverse",
+      "manifest_slug": "the-imp-of-the-perverse",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+      "predecessor_path": "data/controlled_publications/the-imp-of-the-perverse/reader_manifest.json"
+    },
+    {
+      "package_key": "the-last-leaf",
+      "manifest_slug": "the-last-leaf",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+      "predecessor_path": "data/controlled_publications/the-last-leaf/reader_manifest.json"
+    },
+    {
+      "package_key": "the-legend-of-sleepy-hollow",
+      "manifest_slug": "the-legend-of-sleepy-hollow",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+      "predecessor_path": "data/controlled_publications/the-legend-of-sleepy-hollow/reader_manifest.json"
+    },
+    {
+      "package_key": "the-luck-of-roaring-camp",
+      "manifest_slug": "the-luck-of-roaring-camp",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+      "predecessor_path": "data/controlled_publications/the-luck-of-roaring-camp/reader_manifest.json"
+    },
+    {
+      "package_key": "the-man-in-a-case",
+      "manifest_slug": "the-man-in-a-case",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+      "predecessor_path": "data/controlled_publications/the-man-in-a-case/reader_manifest.json"
+    },
+    {
+      "package_key": "the-man-with-the-twisted-lip",
+      "manifest_slug": "the-man-with-the-twisted-lip",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+      "predecessor_path": "data/controlled_publications/the-man-with-the-twisted-lip/reader_manifest.json"
+    },
+    {
+      "package_key": "the-masque-of-the-red-death",
+      "manifest_slug": "the-masque-of-the-red-death",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+      "predecessor_path": "data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json"
+    },
+    {
+      "package_key": "the-ministers-black-veil",
+      "manifest_slug": "the-ministers-black-veil",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+      "predecessor_path": "data/controlled_publications/the-ministers-black-veil/reader_manifest.json"
+    },
+    {
+      "package_key": "the-murders-in-the-rue-morgue",
+      "manifest_slug": "the-murders-in-the-rue-morgue",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+      "predecessor_path": "data/controlled_publications/the-murders-in-the-rue-morgue/reader_manifest.json"
+    },
+    {
+      "package_key": "the-outcasts-of-poker-flat",
+      "manifest_slug": "the-outcasts-of-poker-flat",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+      "predecessor_path": "data/controlled_publications/the-outcasts-of-poker-flat/reader_manifest.json"
+    },
+    {
+      "package_key": "the-purloined-letter",
+      "manifest_slug": "the-purloined-letter",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+      "predecessor_path": "data/controlled_publications/the-purloined-letter/reader_manifest.json"
+    },
+    {
+      "package_key": "the-ransom-of-red-chief",
+      "manifest_slug": "the-ransom-of-red-chief",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+      "predecessor_path": "data/controlled_publications/the-ransom-of-red-chief/reader_manifest.json"
+    },
+    {
+      "package_key": "the-speckled-band",
+      "manifest_slug": "the-speckled-band",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+      "predecessor_path": "data/controlled_publications/the-speckled-band/reader_manifest.json"
+    },
+    {
+      "package_key": "the-suicide-club",
+      "manifest_slug": "the-suicide-club",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
+      "predecessor_path": "data/controlled_publications/the-suicide-club/reader_manifest.json"
+    },
+    {
+      "package_key": "the-yellow-wallpaper",
+      "manifest_slug": "the-yellow-wallpaper",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+      "predecessor_path": "data/controlled_publications/the-yellow-wallpaper/reader_manifest.json"
+    },
+    {
+      "package_key": "to-build-a-fire",
+      "manifest_slug": "to-build-a-fire",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+      "predecessor_path": "data/controlled_publications/to-build-a-fire/reader_manifest.json"
+    },
+    {
+      "package_key": "tobermory",
+      "manifest_slug": "tobermory",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+      "predecessor_path": "data/controlled_publications/tobermory/reader_manifest.json"
+    },
+    {
+      "package_key": "ward-no-6",
+      "manifest_slug": "ward-no-6",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+      "predecessor_path": "data/controlled_publications/ward-no-6/reader_manifest.json"
+    },
+    {
+      "package_key": "white-fang",
+      "manifest_slug": "white-fang",
+      "chapter_count": 25,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        }
+      ],
+      "manifest_sha256": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
+      "predecessor_path": "data/controlled_publications/white-fang/reader_manifest.json"
+    },
+    {
+      "package_key": "young-goodman-brown",
+      "manifest_slug": "young-goodman-brown",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "manifest_sha256": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+      "predecessor_path": "data/controlled_publications/young-goodman-brown/reader_manifest.json"
+    }
+  ]
+}

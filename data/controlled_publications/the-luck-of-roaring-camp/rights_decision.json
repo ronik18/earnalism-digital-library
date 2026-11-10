@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-luck-of-roaring-camp-pg6373-noncover-text",
+  "decision_id": "india-20261108-the-luck-of-roaring-camp-reader-cover-successor",
   "edition_id": "the-luck-of-roaring-camp",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb",
+    "public_book": "2bad3fb5a3f437694825edaceff1b4905e59ad66155936b1f74e27c76738bf87",
     "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
     "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
-    "approval_evidence": "a1a57e98332c44ff740ac86311c0ab44a3d102b918e2067363297a894340d484",
-    "checksum_manifest": "620be064a247a3875d0cdb8223f1b1a32dcb285fb26821bb91a51eefc6aabee2",
-    "publication_manifest": "d521c18cd8fe65e5c47161b493a3e78e71ce974161f0bafa8e5d4e76db5d9209"
+    "approval_evidence": "ff6d01b7cf8091e137acc5495b56b860b6a637f3ae22ac584f9fef36d52de3df",
+    "checksum_manifest": "441ea77b51c9815bd71ded9965d0e6f450a6adfe904f23677c8d034ad78f039f",
+    "publication_manifest": "2c917546e01e1c51d7aa8ad2b7a6b4ac07c92db8ab2d84ddd23c12e9abec4abc",
+    "cover_provenance": "62fdba2dc8b768127e4bb03a4cd96608138459cdf7c8f8cd797ac8f2ca7be7bf",
+    "cover_front": "272a7efbf5f18201fc236c896754d52ee2b4aec5004cb834dc1e1cec5a53de9a",
+    "cover_back": "87fa0161246a85e203d692ae05af499eaa4348122f8e421454d4301e7cba0e07"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1902, verified lifetime collection publication 1870 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-luck-of-roaring-camp-pg6373-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "3cb4118ac750e0d9badee69fb397ee0e1fb3a7d97f5662399e5bf0d5d326671c",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
-    "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1"
+    "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
+    "ec9031d97985a3a3a12829687dba91088c47ede53be58997f8e7923d50e42062",
+    "62fdba2dc8b768127e4bb03a4cd96608138459cdf7c8f8cd797ac8f2ca7be7bf"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

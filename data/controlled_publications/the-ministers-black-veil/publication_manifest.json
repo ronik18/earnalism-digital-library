@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-ministers-black-veil",
   "title": "The Minister's Black Veil",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
     "content_hash": "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346",
@@ -28,16 +28,14 @@
     "evidence_sha256": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e89616cef4b147399870c56de46b53b60ec431a902347ef123ec25cde50578fb",
+    "public_book": "046d3cd2d456b830d416d7486f1aa249ce957b66e21534046daf7f36ff14803e",
     "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
     "source_evidence": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
-    "approval_evidence": "f0561952f7797ba13005f6961d26fadae769e4576c224a54dcf983af85593e41"
+    "approval_evidence": "30c6674ae62cf9729dbcd4aa6c280a5a6b7cd44578c6d54c145fa93e649887ef"
   },
-  "manifest_sha256": "f66be5fa063c7566ee5f3dfc3cbdba3bc3ce0c9de1ddc30138c437e07b059c51"
+  "manifest_sha256": "70ababf484d484f8ba443c8b8fb08a25d5f7d85be6eaf623bc9afa4a6d9c2dcd"
 }

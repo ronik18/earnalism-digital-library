@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-solitary-cyclist",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "8d13108b4c4dda28b78239a873ff25186b4eb51f87ec2c467297cdccd1dda272"
+      "sha256": "4eaf47c3877cdbf726270cf1ec74513507eddaa87be98b48bf1283090d65a971"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d"
+      "sha256": "0b06d639d435b5ebab82991a5e132f7d632e74bd5c5442b8c5bd30cc908d29a3"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "e1e36e8a61f9c9cf3c33ce5db003e7af0daf6fb192e7f8d25b2630907a126d59"
     }
   ]
 }

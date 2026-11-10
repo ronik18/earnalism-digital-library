@@ -1,10 +1,10 @@
 {
   "slug": "a-retrieved-reformation",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936"
+      "sha256": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3"
+      "sha256": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c"
     }
   ]
 }

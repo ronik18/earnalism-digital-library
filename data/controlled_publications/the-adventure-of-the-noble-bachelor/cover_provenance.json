@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-adventure-of-the-noble-bachelor",
+  "status": "OWNER_AUTHORIZED_SOURCE_CANDIDATE_NOT_DEPLOYED",
+  "artwork_origin": "Original built-in image generation under owner instruction; original retained privately",
+  "artwork_sha256": "ecf8f59d034c05d6ee0e77904684ff84cd3e4dfa1e861c393123a36047269970",
+  "font": "EB Garamond",
+  "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+  "delivery_assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+      "sha256": "07b4be8b63c8a9a67274475d82816e4b8bbd52d1d8f5d7cdcee1491911c21c06",
+      "bytes": 98596,
+      "width": 800,
+      "height": 1200
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-adventure-of-the-noble-bachelor/back-220262aef53b8950.webp",
+      "url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/back-220262aef53b8950.webp",
+      "sha256": "220262aef53b89503da5d1f89143027935de67a05c745243ee8044bf4b6fd902",
+      "bytes": 34510,
+      "width": 800,
+      "height": 1200
+    }
+  },
+  "owner_instruction": "Current direct owner instruction: prepare cover pairs and release bindings for the 45 text-cleared titles; publish only passing books; keep Gitanjali, Nishkriti and The Metamorphosis unpublished.",
+  "production_verified": false
+}

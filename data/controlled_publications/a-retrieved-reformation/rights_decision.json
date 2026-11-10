@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-a-retrieved-reformation-pg1646-noncover-text",
+  "decision_id": "india-20261108-a-retrieved-reformation-reader-cover-successor",
   "edition_id": "a-retrieved-reformation",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
+    "public_book": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59",
     "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
     "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
-    "approval_evidence": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936",
-    "checksum_manifest": "569f0fee2f787d8aa3852b50893edd3731d39bad246ef2255be070abbd9f5f96",
-    "publication_manifest": "e9f187cc607982d0b690d5c9716dca2369d278f23fa1f32d8996447187f28336"
+    "approval_evidence": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43",
+    "checksum_manifest": "3e2d97236f2edc59098db1f044ae85e5d99ff302a583e4d43f6582e10c46ba5c",
+    "publication_manifest": "97967ca4d11dd25dc8eb9eb00d55d8403430a9e601f070a5628405c1c0da86bb",
+    "cover_provenance": "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c",
+    "cover_front": "f1dc19c45f181d5df52c5817ce8fa31d052088b0c1d1055acddf678eb6e8a119",
+    "cover_back": "97b4604f13a1b8bfb28c122fc83be3a9718510c7644f8903a2499efbbedd9c41"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-01T21:48:17.188009+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1909 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "basis": "Retained India non-cover text clearance india-20261002-a-retrieved-reformation-pg1646-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "df3821df7d9326c2125d1a40cd2421e56bdeff8f374797ba445b13abfb46b0b7",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
     "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
-    "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82"
+    "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
+    "827b1d94af98123c1659d4aff8306ce9a795c480cb896d2cd07d199142482d94",
+    "918184690b053bbeebe7c11157ca5a6e56583d25861a056506f01456c312cd6c"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

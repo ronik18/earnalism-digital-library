@@ -1,0 +1,38 @@
+{
+  "slug": "the-legend-of-sleepy-hollow",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "4c4314e581df037a9f213a04df22ae83208592c1fe7cc744132dae5ec6ce1119"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237"
+    }
+  ]
+}

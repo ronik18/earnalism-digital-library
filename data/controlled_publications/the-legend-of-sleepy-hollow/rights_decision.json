@@ -1,16 +1,19 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text",
+  "decision_id": "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor",
   "edition_id": "the-legend-of-sleepy-hollow",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "public_book": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc",
     "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
     "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
-    "approval_evidence": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603",
-    "checksum_manifest": "d6ac1b925ddf07daa1d20fb897713e4fb74516b37772dd3c9756fab7b3861e14",
-    "publication_manifest": "56f272536ea4f3abe6b3d56e3cd74e7c2f05fb51e1c475335bbe235cc35c4bcf"
+    "approval_evidence": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5",
+    "checksum_manifest": "7002ee636ffc44d30203eef84bf94a7be89383302cb2c72fa200c16f1c1f93e2",
+    "publication_manifest": "eb289e38458c7914830f785363d826b4e731334ba84a4340b094c3cb2675e761",
+    "cover_provenance": "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237",
+    "cover_front": "cc534675f7879d9a3840adb559b56c17bce9f376221e86df1c6772fa3e08fd65",
+    "cover_back": "14f5e3951814194eaf100fc628340f4d2a3daf6ef8db76db553eaf4076932bda"
   },
   "territories": [
     "IN"
@@ -20,18 +23,21 @@
     "reader_preview",
     "reader_delivery",
     "reading_pass_session",
-    "reading_pass_renewal"
+    "reading_pass_renewal",
+    "cover_display"
   ],
   "valid_from": "2026-10-02T01:07:27.058549+00:00",
   "valid_until": "2036-10-02T00:00:00+00:00",
-  "basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented.",
+  "basis": "Retained India non-cover text clearance india-20261002-the-legend-of-sleepy-hollow-pg41-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
   "evidence_sha256": [
     "9f2567c414c0216489c9efb72689d18867450e36492478d171a09899a20c517d",
     "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
     "c987f22e9111b0c21c5526f282cf501a6959d6e1e83b99276e3256509ad80e14",
     "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
-    "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+    "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+    "a4cbfbe3a2629b841e12193d3c331a04c9a0eefaee4be47f8812894f2fdb4610",
+    "0fe92ee64ac2e451f8ea372b5cad03e12009bca2cf59e426ccaaa09ba49d4237"
   ],
-  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
   "conditions_satisfied": true
 }

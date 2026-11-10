@@ -1,0 +1,38 @@
+{
+  "slug": "the-adventure-of-the-final-problem",
+  "generated_at": "2026-11-08T04:17:36.376164+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "6a822b2058adccc574aa6f865dff7af88ac8b8570e511365b0746865500884c1"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "936596ce28eb8ac9d1d989e4fdcbfbba50b102b4a1e732f8718efa4647be3acb"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "4acdc7bb8882508f0ba6c8326fcdac51ebe5d0d802b45d57a18e6ad4e362e58c"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "7ef989b45091aa54b92df7d28b8a6921b33c0b42c02a5e71347dc37eeb1ea044"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "849b10a17dc746a05f93cedaa1187a88f76665a01b8bcbf874d4ac8dc0b37e58"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "4e04b57d0ae9939d798c2267d715ca76bfb7b53a972fc393dc4c141ea46c39b1"
+    }
+  ]
+}

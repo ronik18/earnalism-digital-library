@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261108-the-speckled-band-reader-cover-successor",
+  "edition_id": "the-speckled-band",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "12ec7d525b0fd78d16413113c522d288b00f51cc024b3ea12ccdbc8c43c04256",
+    "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+    "approval_evidence": "2a8d18239b93930f142fd2048765ed6e19147ebb9033ef421ecc63cc72eb456a",
+    "checksum_manifest": "ca1124c3bb5415696de34de135ec42766a4e2616db5e3261c32d2e2a2dabe9c8",
+    "publication_manifest": "c5196dfb5d90c054241c3cc028dabc447e2d1fa9d71721752f768372f0353b21",
+    "cover_provenance": "acc912e5c215360bfd9b3690d479aff2eaad8b43720251afc2e1f1044eb6f917",
+    "cover_front": "ec65f86b7e4489ec15c83c0999466586a6ee8f66784e5f8ca35401a8e8eab2d0",
+    "cover_back": "4b0bfea9b80cf94fd662e89c4470a6e636720e750017e4da6c05542bd35c7ad8"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal",
+    "cover_display"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Retained India non-cover text clearance india-20261002-the-speckled-band-pg1661-noncover-text remains preserved byte-for-byte. Owner-directed Reader-only successor adds original generated cover illustration with deterministic licensed typography; exact source candidate, no audio or non-India rights expansion.",
+  "evidence_sha256": [
+    "e20fd31ddb29f4161febcd7e1db0a5cf535f5cd6bbe8e6cf28d8bbad2975870c",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535",
+    "0c0a3a373f4880520f7314e3710320bcf149d52bcc4a182d7e5e7c943196dd83",
+    "acc912e5c215360bfd9b3690d479aff2eaad8b43720251afc2e1f1044eb6f917"
+  ],
+  "accepted_by": "Automated executor acting under the direct owner 45-title Reader/cover publication instruction; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

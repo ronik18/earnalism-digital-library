@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-noble-bachelor-pg1661-noncover-text",
+  "edition_id": "the-adventure-of-the-noble-bachelor",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1",
+    "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "source_evidence": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
+    "approval_evidence": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c",
+    "checksum_manifest": "9dcde617f0d3e6d45074292e118d21ce4e8b0e998c0a924b61c1805fccc1be8a",
+    "publication_manifest": "7f71e45fc3e8efc3f8c5ccd25af86f1b27210af7ee02f7f853ae03154ed71abc"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

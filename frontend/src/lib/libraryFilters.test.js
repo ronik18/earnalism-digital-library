@@ -1,8 +1,239 @@
-import books from './__fixtures__/libraryCatalogue.public.json';
+import historicalBooks from './__fixtures__/libraryCatalogue.public.json';
 import metadata from '../data/libraryDiscoveryMetadata.json';
 import { selectLibraryBooks, availabilityOfBook, languageOfBook } from './libraryCatalog';
 import { libraryFiltersFromSearch, listeningFilterFromSearch } from './libraryFilterState';
 import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from '../config/publicNavigation';
+
+// Explicit candidate discovery fixtures extend the immutable 52-title snapshot.
+// These exercise filters only and do not assert actual production publication.
+const candidate45 = [
+  {
+    "slug": "a-retrieved-reformation",
+    "title": "A Retrieved Reformation",
+    "author": "O. Henry"
+  },
+  {
+    "slug": "a-wagner-matinee",
+    "title": "A Wagner Matinee",
+    "author": "Willa Cather"
+  },
+  {
+    "slug": "feathertop",
+    "title": "Feathertop",
+    "author": "Nathaniel Hawthorne"
+  },
+  {
+    "slug": "markheim",
+    "title": "Markheim",
+    "author": "Robert Louis Stevenson"
+  },
+  {
+    "slug": "rappaccinis-daughter",
+    "title": "Rappaccini's Daughter",
+    "author": "Nathaniel Hawthorne"
+  },
+  {
+    "slug": "the-adventure-of-the-abbey-grange",
+    "title": "The Adventure of the Abbey Grange",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-beryl-coronet",
+    "title": "The Adventure of the Beryl Coronet",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-blue-carbuncle",
+    "title": "The Adventure of the Blue Carbuncle",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-copper-beeches",
+    "title": "The Adventure of the Copper Beeches",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-dancing-men",
+    "title": "The Adventure of the Dancing Men",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-empty-house",
+    "title": "The Adventure of the Empty House",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-engineers-thumb",
+    "title": "The Adventure of the Engineer's Thumb",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-final-problem",
+    "title": "The Adventure of the Final Problem",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-greek-interpreter",
+    "title": "The Adventure of the Greek Interpreter",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-noble-bachelor",
+    "title": "The Adventure of the Noble Bachelor",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-priory-school",
+    "title": "The Adventure of the Priory School",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-second-stain",
+    "title": "The Adventure of the Second Stain",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-adventure-of-the-solitary-cyclist",
+    "title": "The Adventure of the Solitary Cyclist",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-ambitious-guest",
+    "title": "The Ambitious Guest",
+    "author": "Nathaniel Hawthorne"
+  },
+  {
+    "slug": "the-bet",
+    "title": "The Bet",
+    "author": "Anton Chekhov"
+  },
+  {
+    "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+    "title": "The Celebrated Jumping Frog of Calaveras County",
+    "author": "Mark Twain"
+  },
+  {
+    "slug": "the-country-of-the-blind",
+    "title": "The Country of the Blind",
+    "author": "H.G. Wells"
+  },
+  {
+    "slug": "the-darling",
+    "title": "The Darling",
+    "author": "Anton Chekhov"
+  },
+  {
+    "slug": "the-door-in-the-wall",
+    "title": "The Door in the Wall",
+    "author": "H.G. Wells"
+  },
+  {
+    "slug": "the-furnished-room",
+    "title": "The Furnished Room",
+    "author": "O. Henry"
+  },
+  {
+    "slug": "the-imp-of-the-perverse",
+    "title": "The Imp of the Perverse",
+    "author": "Edgar Allan Poe"
+  },
+  {
+    "slug": "the-last-leaf",
+    "title": "The Last Leaf",
+    "author": "O. Henry"
+  },
+  {
+    "slug": "the-legend-of-sleepy-hollow",
+    "title": "The Legend of Sleepy Hollow",
+    "author": "Washington Irving"
+  },
+  {
+    "slug": "the-luck-of-roaring-camp",
+    "title": "The Luck of Roaring Camp",
+    "author": "Bret Harte"
+  },
+  {
+    "slug": "the-man-in-a-case",
+    "title": "The Man in a Case",
+    "author": "Anton Chekhov"
+  },
+  {
+    "slug": "the-man-with-the-twisted-lip",
+    "title": "The Man with the Twisted Lip",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-masque-of-the-red-death",
+    "title": "The Masque of the Red Death",
+    "author": "Edgar Allan Poe"
+  },
+  {
+    "slug": "the-ministers-black-veil",
+    "title": "The Minister's Black Veil",
+    "author": "Nathaniel Hawthorne"
+  },
+  {
+    "slug": "the-murders-in-the-rue-morgue",
+    "title": "The Murders in the Rue Morgue",
+    "author": "Edgar Allan Poe"
+  },
+  {
+    "slug": "the-outcasts-of-poker-flat",
+    "title": "The Outcasts of Poker Flat",
+    "author": "Bret Harte"
+  },
+  {
+    "slug": "the-purloined-letter",
+    "title": "The Purloined Letter",
+    "author": "Edgar Allan Poe"
+  },
+  {
+    "slug": "the-ransom-of-red-chief",
+    "title": "The Ransom of Red Chief",
+    "author": "O. Henry"
+  },
+  {
+    "slug": "the-speckled-band",
+    "title": "The Speckled Band",
+    "author": "Arthur Conan Doyle"
+  },
+  {
+    "slug": "the-suicide-club",
+    "title": "The Suicide Club",
+    "author": "Robert Louis Stevenson"
+  },
+  {
+    "slug": "the-yellow-wallpaper",
+    "title": "The Yellow Wallpaper",
+    "author": "Charlotte Perkins Gilman"
+  },
+  {
+    "slug": "to-build-a-fire",
+    "title": "To Build a Fire",
+    "author": "Jack London"
+  },
+  {
+    "slug": "tobermory",
+    "title": "Tobermory",
+    "author": "Saki"
+  },
+  {
+    "slug": "ward-no-6",
+    "title": "Ward No. 6",
+    "author": "Anton Chekhov"
+  },
+  {
+    "slug": "white-fang",
+    "title": "White Fang",
+    "author": "Jack London"
+  },
+  {
+    "slug": "young-goodman-brown",
+    "title": "Young Goodman Brown",
+    "author": "Nathaniel Hawthorne"
+  }
+];
+const books = [...historicalBooks, ...candidate45.map(book => ({...book, publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${book.slug}`, reader_url: `/reader/${book.slug}`, audio_enabled: false, audiobook_enabled: false}))];
 
 // Public metadata snapshot exercises discovery only, never playback or billing.
 const audio = new Set(['the-open-window', 'the-selfish-giant']);
@@ -14,7 +245,10 @@ const sorts = ['recently-approved', 'title', 'author', 'short-reads'];
 const slugs = rows => rows.map(b => b.slug).sort();
 
 test('all 2160 valid facet/sort combinations match independent metadata set intersections', () => {
-  expect(books).toHaveLength(52);
+  expect(historicalBooks).toHaveLength(52);
+  expect(candidate45).toHaveLength(45);
+  expect(books).toHaveLength(97);
+  expect(new Set(books.map(book => book.slug)).size).toBe(97);
   expect(genres).toHaveLength(12);
   let cases = 0;
   const ids = Object.keys(metadata);

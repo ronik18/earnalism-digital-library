@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-darling",
   "title": "The Darling",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
   "content": {
     "source_hash": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
     "content_hash": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
@@ -28,16 +28,14 @@
     "evidence_sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
   },
   "reader_release": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "",
-    "blockers": [
-      "Front cover is required."
-    ]
+    "cover_url": "https://theearnalism.com/assets/books/the-darling/front-13f20dc26bb559ef.webp",
+    "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -46,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
+    "public_book": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0",
     "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
     "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
-    "approval_evidence": "589a09f7205c778913599ff48d3ffdce6bd0a93034f1965a58165a9936032567"
+    "approval_evidence": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9"
   },
-  "manifest_sha256": "2e1872d711f1b9134492b845f9c57cce9aba2358cb926e8a05a175e9d5cf2fc6"
+  "manifest_sha256": "d50b9c67d041b35f25d2a8ebabbebf921edfee32d0f8ba1557779d6755941139"
 }

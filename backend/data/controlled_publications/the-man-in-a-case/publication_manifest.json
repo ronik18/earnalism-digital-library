@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-man-in-a-case",
+  "title": "The Man in a Case",
+  "generated_at": "2026-11-08T04:31:08.476211+00:00",
+  "content": {
+    "source_hash": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+    "content_hash": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+    "provenance_hash": "e339656f0563e76fcc1da3da3c7c38d03866cfc65ba25cd66bddfe5c4dc4948c",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "e2e7859811556059ed9a1e5347f396bf4a8f43aee70ae301d4cf0a4a64a2d593",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Man in a Case",
+        "word_count": 5335,
+        "sha256": "91fe6eb0e770e743a46d29bf4f7901340c71be0eb2e43542bef68cc85ae73cf8"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740",
+    "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
+    "approval_evidence": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6"
+  },
+  "manifest_sha256": "5f410bd5268f8110b903b889b157f802b7cf72084a52a7279d49cb07c3264ec5"
+}

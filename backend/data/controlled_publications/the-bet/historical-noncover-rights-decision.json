@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-bet-pg55283-noncover-text",
+  "edition_id": "the-bet",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+    "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+    "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+    "approval_evidence": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84",
+    "checksum_manifest": "afd67a0cadbcb4b7361b6628d0e9cb7867a38c2f5feef275224dab9fa4e9cf1d",
+    "publication_manifest": "47f2da73e3ca7674b8c22657df868f460573bc17455254c28a8c9481d718bc5d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN original-text author1904 life+60 ends1964 or conservative publication upperbound1915+60 ends1975; selected translators1955/1957 life+60 ends2015/2017. Every term elapsed; first original date unknown, no US-only inference.",
+  "evidence_sha256": [
+    "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
+    "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

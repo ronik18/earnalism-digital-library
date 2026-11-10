@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "f1f198a376f1ee398a23fb116d13f79a456fdc91c989f180ffe6d67914568a94",
+    "data/controlled_launch.json": "00b4f40e82a71d0eb702d3b60dae9b10be4cbd2f0b8623ee921e9b9a48b63202",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -18,11 +18,21 @@
     "data/controlled_publications/a-mystery-of-heroism/source_evidence.json": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
     "data/controlled_publications/a-mystery-of-heroism/approval_evidence.json": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
     "data/controlled_publications/a-mystery-of-heroism/publication_manifest.json": "af32ec9cae69406fac2cd10e9d4e783e62099c6e3fe90d0cf3f9ec8ff83a7a0b",
+    "data/controlled_publications/a-retrieved-reformation/public_book.json": "8387d9d2e694624d2b4478a366c6b5199d9bef27cedeeef3b119554277e95d59",
+    "data/controlled_publications/a-retrieved-reformation/reader_manifest.json": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+    "data/controlled_publications/a-retrieved-reformation/source_evidence.json": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
+    "data/controlled_publications/a-retrieved-reformation/approval_evidence.json": "c0103db476ab6fbfb82b671c29d6199d2a4162a901d2163eec7bb23f13aa4e43",
+    "data/controlled_publications/a-retrieved-reformation/publication_manifest.json": "97967ca4d11dd25dc8eb9eb00d55d8403430a9e601f070a5628405c1c0da86bb",
     "data/controlled_publications/a-scandal-in-bohemia/public_book.json": "1d7bf4cc239ccba4a574f908e559b39677703609f492a1dd21b5f73068c0c5a6",
     "data/controlled_publications/a-scandal-in-bohemia/reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
     "data/controlled_publications/a-scandal-in-bohemia/source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
     "data/controlled_publications/a-scandal-in-bohemia/approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
     "data/controlled_publications/a-scandal-in-bohemia/publication_manifest.json": "2cc7c49ca4e27bd3ff49b96af7a84439d454de48e910c76e4f062d5a40d6b9ff",
+    "data/controlled_publications/a-wagner-matinee/public_book.json": "2d4a2bfd6ff42183bf04f5a533237e435c70c608d169e6f19b2da8879bb096d6",
+    "data/controlled_publications/a-wagner-matinee/reader_manifest.json": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+    "data/controlled_publications/a-wagner-matinee/source_evidence.json": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a",
+    "data/controlled_publications/a-wagner-matinee/approval_evidence.json": "5c28436ca7e3fc43e8513d957df1c56c9768f8ec5adaf9dd0e88decaad252895",
+    "data/controlled_publications/a-wagner-matinee/publication_manifest.json": "3bf913d0b8dc4500594da513cae0dcbfa83aad7d10f2f5688959d69bbb7af2a0",
     "data/controlled_publications/a-white-heron/public_book.json": "1866de79c7c127b37ab842104775069b56a382357897ddadf381a5767819580a",
     "data/controlled_publications/a-white-heron/reader_manifest.json": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
     "data/controlled_publications/a-white-heron/source_evidence.json": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
@@ -83,6 +93,11 @@
     "data/controlled_publications/dsires-baby/source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
     "data/controlled_publications/dsires-baby/approval_evidence.json": "6a66387f178fe9c153c6a81ccd95a7c1842b81d4dbc53b0d32d0fb21f3b285ab",
     "data/controlled_publications/dsires-baby/publication_manifest.json": "15e80171e030a70cd1f091e4639997890bc184139599182e93d7e9ba55b41755",
+    "data/controlled_publications/feathertop/public_book.json": "07ff700dfc5a20d8bfe94c0de9d24f3c135f6b9baf2950a8b940c377297c5049",
+    "data/controlled_publications/feathertop/reader_manifest.json": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+    "data/controlled_publications/feathertop/source_evidence.json": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
+    "data/controlled_publications/feathertop/approval_evidence.json": "dab2f4167da49b120bd2ad10c4d9bd0286a53a3f02f01eaff9ec5241e27e57e5",
+    "data/controlled_publications/feathertop/publication_manifest.json": "2a73217d56710b4a93dab494f57a493df8188e676fa9c2fddbcb7c5a6d4e3335",
     "data/controlled_publications/frankenstein/public_book.json": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
     "data/controlled_publications/frankenstein/reader_manifest.json": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
     "data/controlled_publications/frankenstein/source_evidence.json": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
@@ -103,6 +118,11 @@
     "data/controlled_publications/love-of-life/source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124",
     "data/controlled_publications/love-of-life/approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
     "data/controlled_publications/love-of-life/publication_manifest.json": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
+    "data/controlled_publications/markheim/public_book.json": "c53d2f4d218e2322091ed6c38af8f1b58ac2e66fd45926ad251921af98bbc3c0",
+    "data/controlled_publications/markheim/reader_manifest.json": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "data/controlled_publications/markheim/source_evidence.json": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
+    "data/controlled_publications/markheim/approval_evidence.json": "74a46f07cac53e640de3e90ad18a09bb37a0820b5941786eaa1a8e0dd8a2c6cf",
+    "data/controlled_publications/markheim/publication_manifest.json": "557fa2068fa05324c1088bd124013a737414d9862a17c299d8690360602b50ad",
     "data/controlled_publications/mrinalini/public_book.json": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
     "data/controlled_publications/mrinalini/reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
     "data/controlled_publications/mrinalini/source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
@@ -133,21 +153,101 @@
     "data/controlled_publications/radharani/source_evidence.json": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
     "data/controlled_publications/radharani/approval_evidence.json": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
     "data/controlled_publications/radharani/publication_manifest.json": "caaa3e04f332903bc09f58e4e47770035738a6282183df0a488e5cc306abc9fe",
+    "data/controlled_publications/rappaccinis-daughter/public_book.json": "cc32acd7974d14add260771b865288e68821cffe00fbde9fcf09c4724549b2c4",
+    "data/controlled_publications/rappaccinis-daughter/reader_manifest.json": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+    "data/controlled_publications/rappaccinis-daughter/source_evidence.json": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a",
+    "data/controlled_publications/rappaccinis-daughter/approval_evidence.json": "cf3c52db3a110aff2737e8e62e696ea0b0bfba38cbe1ec6a7ef777b18bf719b1",
+    "data/controlled_publications/rappaccinis-daughter/publication_manifest.json": "fa2b9b14b3d6436b3edf9a691b752a1e2b6886a87ab226ecda11df1e1f701d91",
     "data/controlled_publications/sredni-vashtar/public_book.json": "8609b5e6a8ff78a4c2e42eeeb752c4ef9c21efd2a0dc32ae82bdd9ee90e0ccde",
     "data/controlled_publications/sredni-vashtar/reader_manifest.json": "79e2d416785e4886f74f5048b44a870079b997f508d8c60602e1c96195cad583",
     "data/controlled_publications/sredni-vashtar/source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
     "data/controlled_publications/sredni-vashtar/approval_evidence.json": "a97fa14fc59205dd5fcc4821fd3bdb7ddea160639ca6fa4ecb5d84ae9765c03e",
     "data/controlled_publications/sredni-vashtar/publication_manifest.json": "98fbef3a3a3dae278cad3d1b52a44207a1bfebaee2b2a8a58169d2860da0f597",
+    "data/controlled_publications/the-adventure-of-the-abbey-grange/public_book.json": "4eea1ce79b92497dbd6acf19d5138db70faa7082079dc6bca79fc55e8ef3f33c",
+    "data/controlled_publications/the-adventure-of-the-abbey-grange/reader_manifest.json": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "data/controlled_publications/the-adventure-of-the-abbey-grange/source_evidence.json": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
+    "data/controlled_publications/the-adventure-of-the-abbey-grange/approval_evidence.json": "c8efa384e8a9d8ad1d141adf480a8f5fdac2d38d639371d161475055a41174a3",
+    "data/controlled_publications/the-adventure-of-the-abbey-grange/publication_manifest.json": "1875a9ba0760103b79e48b8efaec66bee78e54a96493097c962ea31a5cf9d355",
+    "data/controlled_publications/the-adventure-of-the-beryl-coronet/public_book.json": "41760a1deb5a349b7b3a734b618188db5d57fd19c162980df96cf515c8bb40a8",
+    "data/controlled_publications/the-adventure-of-the-beryl-coronet/reader_manifest.json": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "data/controlled_publications/the-adventure-of-the-beryl-coronet/source_evidence.json": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60",
+    "data/controlled_publications/the-adventure-of-the-beryl-coronet/approval_evidence.json": "0ec247e3f8c072cc41b2e94ef09e5a5f306680c756a3a53cc85a21b50227d435",
+    "data/controlled_publications/the-adventure-of-the-beryl-coronet/publication_manifest.json": "cd1b4121999e5d054e2b1ca05f1ac4c49a83b0953bf2b63d27f94209c3d9399e",
+    "data/controlled_publications/the-adventure-of-the-blue-carbuncle/public_book.json": "86a4eef392d9795f8076c299b055b698bc23c64aef01adf9b1ce69350afb81fa",
+    "data/controlled_publications/the-adventure-of-the-blue-carbuncle/reader_manifest.json": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "data/controlled_publications/the-adventure-of-the-blue-carbuncle/source_evidence.json": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
+    "data/controlled_publications/the-adventure-of-the-blue-carbuncle/approval_evidence.json": "1f864e2bf88d93de33203196381270dddf632c5fbd0bcbb799eef1bbdb20745f",
+    "data/controlled_publications/the-adventure-of-the-blue-carbuncle/publication_manifest.json": "bcede6da36d6aa72fed44e702b63d123fe5908d06cbce314e4a35b4ad9d386aa",
+    "data/controlled_publications/the-adventure-of-the-copper-beeches/public_book.json": "fc4821c09a6929582ca20d5e9f10cb5ea38b77b7a6ce6c56e5c7541c3d67b7fc",
+    "data/controlled_publications/the-adventure-of-the-copper-beeches/reader_manifest.json": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "data/controlled_publications/the-adventure-of-the-copper-beeches/source_evidence.json": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d",
+    "data/controlled_publications/the-adventure-of-the-copper-beeches/approval_evidence.json": "bf3477a4e19b2bda8bbdb72193fe21c2d717749b9234f79c89abff04299cf921",
+    "data/controlled_publications/the-adventure-of-the-copper-beeches/publication_manifest.json": "192b144775c63081de4ce2275be052170f6578ff30999ea538ea848b0f1e5d27",
+    "data/controlled_publications/the-adventure-of-the-dancing-men/public_book.json": "1035a5891e509f52951a26116a1d59b43f1635efa12f65c2eeab685e556fa23b",
+    "data/controlled_publications/the-adventure-of-the-dancing-men/reader_manifest.json": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+    "data/controlled_publications/the-adventure-of-the-dancing-men/source_evidence.json": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
+    "data/controlled_publications/the-adventure-of-the-dancing-men/approval_evidence.json": "eb9939dfe7db3c7ad972b391d175b4a24b44245971be68d47080bae0c912fa85",
+    "data/controlled_publications/the-adventure-of-the-dancing-men/publication_manifest.json": "21bf6d5dcd605d6fcddcbfe69bd04424fee6259c32a5b53e4c6070b46d0ef5f0",
+    "data/controlled_publications/the-adventure-of-the-empty-house/public_book.json": "69859613acff933cedd1a797cf1f8e04057ad8230d8974e11599381bc881bf0d",
+    "data/controlled_publications/the-adventure-of-the-empty-house/reader_manifest.json": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "data/controlled_publications/the-adventure-of-the-empty-house/source_evidence.json": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56",
+    "data/controlled_publications/the-adventure-of-the-empty-house/approval_evidence.json": "fe83d4802a00cd05c3f82e0922832ba0c5946c99ba91354c4cf7d7cd208c050b",
+    "data/controlled_publications/the-adventure-of-the-empty-house/publication_manifest.json": "bae0ac8b9a7ab2717a8f4eae7505efed0ff941d7a75f1e2e522709ca656eec42",
+    "data/controlled_publications/the-adventure-of-the-engineers-thumb/public_book.json": "cf829469e07642fdf4526721fe48fdaf96b4e1c82a2207cb9685b0bc2b61fce8",
+    "data/controlled_publications/the-adventure-of-the-engineers-thumb/reader_manifest.json": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+    "data/controlled_publications/the-adventure-of-the-engineers-thumb/source_evidence.json": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
+    "data/controlled_publications/the-adventure-of-the-engineers-thumb/approval_evidence.json": "660944f0a7fc089a372085cf8515f33343f6803e18a50cdaf163a269e8e9cf05",
+    "data/controlled_publications/the-adventure-of-the-engineers-thumb/publication_manifest.json": "2c038103c28a8e6b1b75c9fc1947bbd59bfb2a00852bbbb6ae464853bfaeb1c0",
+    "data/controlled_publications/the-adventure-of-the-final-problem/public_book.json": "7ef989b45091aa54b92df7d28b8a6921b33c0b42c02a5e71347dc37eeb1ea044",
+    "data/controlled_publications/the-adventure-of-the-final-problem/reader_manifest.json": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "data/controlled_publications/the-adventure-of-the-final-problem/source_evidence.json": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
+    "data/controlled_publications/the-adventure-of-the-final-problem/approval_evidence.json": "6a822b2058adccc574aa6f865dff7af88ac8b8570e511365b0746865500884c1",
+    "data/controlled_publications/the-adventure-of-the-final-problem/publication_manifest.json": "517a557fc5513eb3ab11507ea8cfe7768bb123417885ef35625fd05b8c2eca8a",
+    "data/controlled_publications/the-adventure-of-the-greek-interpreter/public_book.json": "757dc394f18037475b2bcc57598d8a48519081d136c2b4d82e837f0aec9f56ce",
+    "data/controlled_publications/the-adventure-of-the-greek-interpreter/reader_manifest.json": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "data/controlled_publications/the-adventure-of-the-greek-interpreter/source_evidence.json": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+    "data/controlled_publications/the-adventure-of-the-greek-interpreter/approval_evidence.json": "eecb5f7c18ae3e83715a2f34b98b40733b9f80e6d1b697d3e1b988b7182ebda3",
+    "data/controlled_publications/the-adventure-of-the-greek-interpreter/publication_manifest.json": "0e6390251f5470bb52cae162cf17de9cdade3d3db945200ea0a50b69a89222e9",
+    "data/controlled_publications/the-adventure-of-the-noble-bachelor/public_book.json": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0",
+    "data/controlled_publications/the-adventure-of-the-noble-bachelor/reader_manifest.json": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "data/controlled_publications/the-adventure-of-the-noble-bachelor/source_evidence.json": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6",
+    "data/controlled_publications/the-adventure-of-the-noble-bachelor/approval_evidence.json": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c",
+    "data/controlled_publications/the-adventure-of-the-noble-bachelor/publication_manifest.json": "71d20d2b5cc90f510bfa55f9f4a5f9643b0b853cb460e988d7718c5421712b70",
+    "data/controlled_publications/the-adventure-of-the-priory-school/public_book.json": "f241b8463585998da3c0580bcaafa90b921d8e0abcfc0ee7669e928d15a2c7dd",
+    "data/controlled_publications/the-adventure-of-the-priory-school/reader_manifest.json": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "data/controlled_publications/the-adventure-of-the-priory-school/source_evidence.json": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
+    "data/controlled_publications/the-adventure-of-the-priory-school/approval_evidence.json": "ee86c0c721fe33694703f1f8da11c858ec42dedbec4748a6696123e9a973cbd9",
+    "data/controlled_publications/the-adventure-of-the-priory-school/publication_manifest.json": "a9dc150a588b338a72eb20b4053bf5450a470844d45bca616de8f266ba598769",
+    "data/controlled_publications/the-adventure-of-the-second-stain/public_book.json": "be60aee6941c369485053bd328822b2498fceb779d2f0a613e8e66fad108c845",
+    "data/controlled_publications/the-adventure-of-the-second-stain/reader_manifest.json": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+    "data/controlled_publications/the-adventure-of-the-second-stain/source_evidence.json": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
+    "data/controlled_publications/the-adventure-of-the-second-stain/approval_evidence.json": "db309e81471c84017b956b7ca1c2fa4ba366e1d13b547c1badff3f6a6e9e7494",
+    "data/controlled_publications/the-adventure-of-the-second-stain/publication_manifest.json": "ca90e6d35d2a350d32cf7435ae8052585a0361f22377ccc9f796ee1cc83ccc61",
+    "data/controlled_publications/the-adventure-of-the-solitary-cyclist/public_book.json": "0b06d639d435b5ebab82991a5e132f7d632e74bd5c5442b8c5bd30cc908d29a3",
+    "data/controlled_publications/the-adventure-of-the-solitary-cyclist/reader_manifest.json": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+    "data/controlled_publications/the-adventure-of-the-solitary-cyclist/source_evidence.json": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f",
+    "data/controlled_publications/the-adventure-of-the-solitary-cyclist/approval_evidence.json": "4eaf47c3877cdbf726270cf1ec74513507eddaa87be98b48bf1283090d65a971",
+    "data/controlled_publications/the-adventure-of-the-solitary-cyclist/publication_manifest.json": "70b48371820cf2cd6f425839b2268d890558f947895e8596700c8cccc5fba75e",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/public_book.json": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/reader_manifest.json": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/approval_evidence.json": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/publication_manifest.json": "40da8f2bf212b75e7843bac0c132534424dc0161a537d2ed000c5245e6523387",
+    "data/controlled_publications/the-ambitious-guest/public_book.json": "b37a0d5ec87d22cf855e6e9b35572ced8261a04ac0876a939740f67de41e89fd",
+    "data/controlled_publications/the-ambitious-guest/reader_manifest.json": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+    "data/controlled_publications/the-ambitious-guest/source_evidence.json": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
+    "data/controlled_publications/the-ambitious-guest/approval_evidence.json": "03761b2b57131c63301ff665aa45a0f4e8378fbdf4f125e0c854e09d7a28f198",
+    "data/controlled_publications/the-ambitious-guest/publication_manifest.json": "c391c36ceedf0f3c9aa8fec71b0bc619819134bfb24994c1eb7fd6c2d25def78",
     "data/controlled_publications/the-art-of-money-getting/public_book.json": "d14261ddf863aee0c145bad3f59070c21c28a7ebcfb85401a47235d3c3dd2baa",
     "data/controlled_publications/the-art-of-money-getting/reader_manifest.json": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
     "data/controlled_publications/the-art-of-money-getting/source_evidence.json": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
     "data/controlled_publications/the-art-of-money-getting/approval_evidence.json": "97b86a96208b8acb5dca7cb2b084efcbaa7e846cd48f4c4e83c0517f05d50474",
     "data/controlled_publications/the-art-of-money-getting/publication_manifest.json": "6192869230ca8aff520586f22324f6cdcdf954fcd86d9c5276ee39a3f6869f40",
+    "data/controlled_publications/the-bet/public_book.json": "b8386b447eb837d7d5f00a36d6690430071764a15a6ab6cbe7d8c4934546b7c4",
+    "data/controlled_publications/the-bet/reader_manifest.json": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+    "data/controlled_publications/the-bet/source_evidence.json": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+    "data/controlled_publications/the-bet/approval_evidence.json": "52dc4b9d2813f6db80100628504f4ced83109a411f94c6f606323b5c68ec0ab6",
+    "data/controlled_publications/the-bet/publication_manifest.json": "09f70ac9685c19420bcb2ee6e6e41d0d8358c890f08387635bcb4eb2c7e86a7d",
     "data/controlled_publications/the-bishop/public_book.json": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
     "data/controlled_publications/the-bishop/reader_manifest.json": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
     "data/controlled_publications/the-bishop/source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b",
@@ -163,11 +263,31 @@
     "data/controlled_publications/the-canterville-ghost/source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
     "data/controlled_publications/the-canterville-ghost/approval_evidence.json": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
     "data/controlled_publications/the-canterville-ghost/publication_manifest.json": "b13fd6d4df8e81e1e437a42e0ef95725c3572a43819b206c4fa3310daf7d166d",
+    "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/public_book.json": "d7cc202bdda6a1890d9d1a8a24e889221e36f0d40a5ffeb1c7a2269f281edc32",
+    "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/reader_manifest.json": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/source_evidence.json": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+    "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/approval_evidence.json": "bcab95713da60027ce4fc5c9b10cd5ecdd7271f7fef0e9b5de6d4822a5954592",
+    "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/publication_manifest.json": "b7bac75f315bfd5b93bc154d71a73ae83e6f03aacb22cfff932ccc841c6eb183",
     "data/controlled_publications/the-cop-and-the-anthem/public_book.json": "ede0edd28084bafd25598ae07869592ecbbb1a4f470d0511e50a86597f2dd633",
     "data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
     "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
     "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json": "ad2a4409b20b7b432c632362270f6ce747ead1327780c99447233338c0513df9",
     "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json": "97828f1ed5223c2eeadcd3f5c767452f1282935d173e18122106c5c9e75b5669",
+    "data/controlled_publications/the-country-of-the-blind/public_book.json": "c329387501c154989063c36304b35725c6281f8c9c5dc021fc3493e6f9a7501f",
+    "data/controlled_publications/the-country-of-the-blind/reader_manifest.json": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+    "data/controlled_publications/the-country-of-the-blind/source_evidence.json": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
+    "data/controlled_publications/the-country-of-the-blind/approval_evidence.json": "283d507508e047df05b72cad44b9da59af0c08e222c4418caa9b0b19601f01be",
+    "data/controlled_publications/the-country-of-the-blind/publication_manifest.json": "6614eb9c6c41c22a00bcfb991a8d5d84cf4a3cae7712ceefa9c73ad83399d955",
+    "data/controlled_publications/the-darling/public_book.json": "d51afacd96a8e42f6177ea48f1c68671371fa18ee61f197d4523b090cd1057b0",
+    "data/controlled_publications/the-darling/reader_manifest.json": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+    "data/controlled_publications/the-darling/source_evidence.json": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
+    "data/controlled_publications/the-darling/approval_evidence.json": "1fecc2664d5691b24f1598be3bbc21e94f8ca8b935fc456f6705c3893f32a8b9",
+    "data/controlled_publications/the-darling/publication_manifest.json": "2499158248e3a1f045cc4d9789122f8ae922501dadd0c8d4822f7bdec9e50533",
+    "data/controlled_publications/the-door-in-the-wall/public_book.json": "ce594db946a089d7b6122fdd8114fcca73146c8d63fed185336f74549c3959c6",
+    "data/controlled_publications/the-door-in-the-wall/reader_manifest.json": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "data/controlled_publications/the-door-in-the-wall/source_evidence.json": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
+    "data/controlled_publications/the-door-in-the-wall/approval_evidence.json": "a7659f8b0d0184c99cd3d6b7f43ee8e88f04c84ded52aae5dedd13b936a644eb",
+    "data/controlled_publications/the-door-in-the-wall/publication_manifest.json": "3bf0ee4e784e2915c8749e14e6d3a73199f8f6b90b0b59bf93630a88c5643f29",
     "data/controlled_publications/the-enchanted-april/public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
     "data/controlled_publications/the-enchanted-april/reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
     "data/controlled_publications/the-enchanted-april/source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f",
@@ -178,6 +298,11 @@
     "data/controlled_publications/the-fall-of-the-house-of-usher/source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca",
     "data/controlled_publications/the-fall-of-the-house-of-usher/approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
     "data/controlled_publications/the-fall-of-the-house-of-usher/publication_manifest.json": "2065c8d29f1611f05525594b50ff204a92bbfcd5ee12ab8951d9de7b7ed146be",
+    "data/controlled_publications/the-furnished-room/public_book.json": "f55d75b81a411630dae8b4ad60ed6ce6acc3c3ed212f0070f366484956595e10",
+    "data/controlled_publications/the-furnished-room/reader_manifest.json": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+    "data/controlled_publications/the-furnished-room/source_evidence.json": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
+    "data/controlled_publications/the-furnished-room/approval_evidence.json": "8b83a07ddae62c38d9808f2ab50718084632357bf93bc80b104ab036dc9849ef",
+    "data/controlled_publications/the-furnished-room/publication_manifest.json": "872be983e97eaee99c39b6d098aea74bce6c5092d8ee1f528392819085634ed2",
     "data/controlled_publications/the-gift-of-the-magi/public_book.json": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
     "data/controlled_publications/the-gift-of-the-magi/reader_manifest.json": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
     "data/controlled_publications/the-gift-of-the-magi/source_evidence.json": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
@@ -193,16 +318,61 @@
     "data/controlled_publications/the-happy-prince/source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe",
     "data/controlled_publications/the-happy-prince/approval_evidence.json": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
     "data/controlled_publications/the-happy-prince/publication_manifest.json": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
+    "data/controlled_publications/the-imp-of-the-perverse/public_book.json": "befde6cf0c29c1270d71a20b55592a6bbee094b2133786f8339bdde031d083f5",
+    "data/controlled_publications/the-imp-of-the-perverse/reader_manifest.json": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+    "data/controlled_publications/the-imp-of-the-perverse/source_evidence.json": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
+    "data/controlled_publications/the-imp-of-the-perverse/approval_evidence.json": "d95bca3764f82dea50328f96b07494d8fef4aa9c1f4df8de19f05506f28d1ba6",
+    "data/controlled_publications/the-imp-of-the-perverse/publication_manifest.json": "4facd84e5c9bb36254f2a0338cc83aa391c13366202a5583533573b56eeeabbd",
     "data/controlled_publications/the-lady-with-the-dog/public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
     "data/controlled_publications/the-lady-with-the-dog/reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
     "data/controlled_publications/the-lady-with-the-dog/source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0",
     "data/controlled_publications/the-lady-with-the-dog/approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
     "data/controlled_publications/the-lady-with-the-dog/publication_manifest.json": "cbe0b20eba35819e2b5374c842989a443780c1cb36caf22a0e263c99c2e53a54",
+    "data/controlled_publications/the-last-leaf/public_book.json": "d794a4c2671bf8dd3c21b82bfe6b4d6e0b0ba7f495667d3c1700798275250e57",
+    "data/controlled_publications/the-last-leaf/reader_manifest.json": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+    "data/controlled_publications/the-last-leaf/source_evidence.json": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
+    "data/controlled_publications/the-last-leaf/approval_evidence.json": "ef63c5f763a85e017e8132934e3deb8f6f273c33fe25b0ffea5030ff984c4df4",
+    "data/controlled_publications/the-last-leaf/publication_manifest.json": "171193eda55e0a01c12ce687d127ef419617950123a4576f76051a2a104f08c4",
+    "data/controlled_publications/the-legend-of-sleepy-hollow/public_book.json": "690c89adbed3a204c67d7932a0073941650d4282d2d12b3cf5a7e18b6f784afc",
+    "data/controlled_publications/the-legend-of-sleepy-hollow/reader_manifest.json": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "data/controlled_publications/the-legend-of-sleepy-hollow/source_evidence.json": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
+    "data/controlled_publications/the-legend-of-sleepy-hollow/approval_evidence.json": "d438bf75b3eb7bd7e6d85c7ebffb313912bc367d58068ef7e146b5ea192d14c5",
+    "data/controlled_publications/the-legend-of-sleepy-hollow/publication_manifest.json": "eb289e38458c7914830f785363d826b4e731334ba84a4340b094c3cb2675e761",
+    "data/controlled_publications/the-luck-of-roaring-camp/public_book.json": "2bad3fb5a3f437694825edaceff1b4905e59ad66155936b1f74e27c76738bf87",
+    "data/controlled_publications/the-luck-of-roaring-camp/reader_manifest.json": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "data/controlled_publications/the-luck-of-roaring-camp/source_evidence.json": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
+    "data/controlled_publications/the-luck-of-roaring-camp/approval_evidence.json": "ff6d01b7cf8091e137acc5495b56b860b6a637f3ae22ac584f9fef36d52de3df",
+    "data/controlled_publications/the-luck-of-roaring-camp/publication_manifest.json": "2c917546e01e1c51d7aa8ad2b7a6b4ac07c92db8ab2d84ddd23c12e9abec4abc",
+    "data/controlled_publications/the-man-in-a-case/public_book.json": "2561930fa80f56f775dce124af8f50e0c81306efc8ddd855953a12362fcaa740",
+    "data/controlled_publications/the-man-in-a-case/reader_manifest.json": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "data/controlled_publications/the-man-in-a-case/source_evidence.json": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
+    "data/controlled_publications/the-man-in-a-case/approval_evidence.json": "a55e40f762906a9946c11b3b2d9c9bfcdcfbec4982e273d03023afc4128fe7f6",
+    "data/controlled_publications/the-man-in-a-case/publication_manifest.json": "3dc0afa7cbaecf259d2b8bfe64acc2cf4e6759f17783293afb122e2ca5c1f075",
     "data/controlled_publications/the-man-who-would-be-king/public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
     "data/controlled_publications/the-man-who-would-be-king/reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
     "data/controlled_publications/the-man-who-would-be-king/source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09",
     "data/controlled_publications/the-man-who-would-be-king/approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
     "data/controlled_publications/the-man-who-would-be-king/publication_manifest.json": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
+    "data/controlled_publications/the-man-with-the-twisted-lip/public_book.json": "9faaddaebb206ae54a8a62862c1e8ad1509bb8f1cfda8e38cb4a1bbda7d95831",
+    "data/controlled_publications/the-man-with-the-twisted-lip/reader_manifest.json": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+    "data/controlled_publications/the-man-with-the-twisted-lip/source_evidence.json": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
+    "data/controlled_publications/the-man-with-the-twisted-lip/approval_evidence.json": "59d2ceb1729cc8e7f2827829d730ecbcf79e571c651643ca81aa045084afa1eb",
+    "data/controlled_publications/the-man-with-the-twisted-lip/publication_manifest.json": "adec56d35bf0334b18f473503208b8c92edd03f931afbd6bee4da2b5d28bc22b",
+    "data/controlled_publications/the-masque-of-the-red-death/public_book.json": "7c71b972649d03d0b9f7283f7f08cf10137f6a3534db925e09512350b94d05a4",
+    "data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+    "data/controlled_publications/the-masque-of-the-red-death/source_evidence.json": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
+    "data/controlled_publications/the-masque-of-the-red-death/approval_evidence.json": "378211194920d17e628b54c3cd63e497941bef47ed6bc45bc232e69e352dfcff",
+    "data/controlled_publications/the-masque-of-the-red-death/publication_manifest.json": "d6fb5fb00c994d1e4db666bd16d9fb1ee548b3e4744a5572c15858d1d75ada49",
+    "data/controlled_publications/the-ministers-black-veil/public_book.json": "046d3cd2d456b830d416d7486f1aa249ce957b66e21534046daf7f36ff14803e",
+    "data/controlled_publications/the-ministers-black-veil/reader_manifest.json": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+    "data/controlled_publications/the-ministers-black-veil/source_evidence.json": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
+    "data/controlled_publications/the-ministers-black-veil/approval_evidence.json": "30c6674ae62cf9729dbcd4aa6c280a5a6b7cd44578c6d54c145fa93e649887ef",
+    "data/controlled_publications/the-ministers-black-veil/publication_manifest.json": "34974316a4e00de726261bec8035bc79bebc3ebd249b0ca6b37fa7e561b67a84",
+    "data/controlled_publications/the-murders-in-the-rue-morgue/public_book.json": "59d2622be6ecdce0720a7e9414803bafcbe3a20358d702cace44947a09cca4fb",
+    "data/controlled_publications/the-murders-in-the-rue-morgue/reader_manifest.json": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "data/controlled_publications/the-murders-in-the-rue-morgue/source_evidence.json": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1",
+    "data/controlled_publications/the-murders-in-the-rue-morgue/approval_evidence.json": "c2053d857ce810bd94ba908c90a60e7ffc6d1e1ad0204972636fdc8e7777b54a",
+    "data/controlled_publications/the-murders-in-the-rue-morgue/publication_manifest.json": "4680e283626b57773c604c1d018eece2da36a5b32dd59554210a394475a40556",
     "data/controlled_publications/the-open-boat/public_book.json": "f81e26679cf1d8d75accd299e6c375cd82395dd8f3b9f9baca2f0a8cfec8e8e7",
     "data/controlled_publications/the-open-boat/reader_manifest.json": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a",
     "data/controlled_publications/the-open-boat/source_evidence.json": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859",
@@ -213,6 +383,11 @@
     "data/controlled_publications/the-open-window/source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
     "data/controlled_publications/the-open-window/approval_evidence.json": "342acec8d122752681c065392a6c7392f24c14a0cc965477994c3ed26a4047f3",
     "data/controlled_publications/the-open-window/publication_manifest.json": "4e345b9dda9fb4272dfcd94768b786483b1f4260bd64ae25e706a2190d236c89",
+    "data/controlled_publications/the-outcasts-of-poker-flat/public_book.json": "6c6bf6bd3c7b4375d34486ca1711baa99e2f0569c31331fbb3fd8d875bfe316e",
+    "data/controlled_publications/the-outcasts-of-poker-flat/reader_manifest.json": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "data/controlled_publications/the-outcasts-of-poker-flat/source_evidence.json": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
+    "data/controlled_publications/the-outcasts-of-poker-flat/approval_evidence.json": "ba9c4edd66d1aa0789465ccb4532cb0b9766e8d8f3194f30f4ea496c9628e5fd",
+    "data/controlled_publications/the-outcasts-of-poker-flat/publication_manifest.json": "db356833f233589f44b2ca4d399974acd2095d1a8fedce155294a5ca8ab348b4",
     "data/controlled_publications/the-pit-and-the-pendulum/public_book.json": "c327e12642d57580c0c260aa12c8ba8f6f7a8db6b98f11f1d627ff3418772246",
     "data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
     "data/controlled_publications/the-pit-and-the-pendulum/source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
@@ -223,6 +398,16 @@
     "data/controlled_publications/the-principles-of-scientific-management/source_evidence.json": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
     "data/controlled_publications/the-principles-of-scientific-management/approval_evidence.json": "1fcab2b332970b6dc90953ae3cd9dfbcf780e09a90d39bc25fa89afc1e01a87a",
     "data/controlled_publications/the-principles-of-scientific-management/publication_manifest.json": "343091217a6558c325e0277fc3440028b65dcd521458d5e0cacbf7ecdfb92a57",
+    "data/controlled_publications/the-purloined-letter/public_book.json": "39f7001b7d520758ac5598dd674205230523954fa953f6c85e68d0730170111b",
+    "data/controlled_publications/the-purloined-letter/reader_manifest.json": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "data/controlled_publications/the-purloined-letter/source_evidence.json": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
+    "data/controlled_publications/the-purloined-letter/approval_evidence.json": "458208551a6dfe910f12ddf79caba19112dea0180c60ebf6998abfe615c670de",
+    "data/controlled_publications/the-purloined-letter/publication_manifest.json": "c05b979aa8fb376ecbc7eedac535fe604579faf84d37d0e686c882f259d0a548",
+    "data/controlled_publications/the-ransom-of-red-chief/public_book.json": "7f384b5bb57c75bc0bbecc8bca61046c3369e925515552bdc81f395e92b93e3f",
+    "data/controlled_publications/the-ransom-of-red-chief/reader_manifest.json": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+    "data/controlled_publications/the-ransom-of-red-chief/source_evidence.json": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
+    "data/controlled_publications/the-ransom-of-red-chief/approval_evidence.json": "c8083b53e667bdc0c0bebc635e1ace1067c2e00e901461644132dab1782d78e0",
+    "data/controlled_publications/the-ransom-of-red-chief/publication_manifest.json": "36af250bd6abfff99c5390b9ecaef9c2922c959c4967d988ae3d5653df4e0695",
     "data/controlled_publications/the-science-of-getting-rich/public_book.json": "08b6e34e2fb16cbdd53a6860ac880663ab7908277a1397a89351cea3d5a7b027",
     "data/controlled_publications/the-science-of-getting-rich/reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
     "data/controlled_publications/the-science-of-getting-rich/source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
@@ -238,6 +423,11 @@
     "data/controlled_publications/the-selfish-giant/source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
     "data/controlled_publications/the-selfish-giant/approval_evidence.json": "5630d0829be13b2c006837264edd6e7666f0845e69e986797148a69486602ece",
     "data/controlled_publications/the-selfish-giant/publication_manifest.json": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d",
+    "data/controlled_publications/the-speckled-band/public_book.json": "12ec7d525b0fd78d16413113c522d288b00f51cc024b3ea12ccdbc8c43c04256",
+    "data/controlled_publications/the-speckled-band/reader_manifest.json": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "data/controlled_publications/the-speckled-band/source_evidence.json": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+    "data/controlled_publications/the-speckled-band/approval_evidence.json": "2a8d18239b93930f142fd2048765ed6e19147ebb9033ef421ecc63cc72eb456a",
+    "data/controlled_publications/the-speckled-band/publication_manifest.json": "c5196dfb5d90c054241c3cc028dabc447e2d1fa9d71721752f768372f0353b21",
     "data/controlled_publications/the-stolen-white-elephant/public_book.json": "903a9367d8e05eecdc3491a3984aa1abc077962770ac15a3db15e35aa456bdc6",
     "data/controlled_publications/the-stolen-white-elephant/reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
     "data/controlled_publications/the-stolen-white-elephant/source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
@@ -248,6 +438,11 @@
     "data/controlled_publications/the-student/source_evidence.json": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
     "data/controlled_publications/the-student/approval_evidence.json": "c231bdd8b1afdd72bf682c2e47d9289377be1f75488234a0f689b8630d578ffa",
     "data/controlled_publications/the-student/publication_manifest.json": "10ff0700b0cdfdf715dc9dc276dd3ffdf6afa7930d11cec0e452813fda3c6dab",
+    "data/controlled_publications/the-suicide-club/public_book.json": "2d7bc976f2bb1b46c8a9b3228d9ca17730e84975d60584b42ef05d842649d26a",
+    "data/controlled_publications/the-suicide-club/reader_manifest.json": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
+    "data/controlled_publications/the-suicide-club/source_evidence.json": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
+    "data/controlled_publications/the-suicide-club/approval_evidence.json": "48e61ff5c1676a82b1c2fc0c00d47b64984a0f742476e0a351c57b90a75dfdb4",
+    "data/controlled_publications/the-suicide-club/publication_manifest.json": "f9cfea0cbc3eed58b30d15f1eecfbd3007112057c5a77d73bb48fd561ecc0639",
     "data/controlled_publications/the-tell-tale-heart/public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
     "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
@@ -262,7 +457,37 @@
     "data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
     "data/controlled_publications/the-wonderful-wizard-of-oz/source_evidence.json": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
     "data/controlled_publications/the-wonderful-wizard-of-oz/approval_evidence.json": "1c594a572466bbff09edf6bdb022261abeb45a5eab7e7033bad83f184a455a89",
-    "data/controlled_publications/the-wonderful-wizard-of-oz/publication_manifest.json": "ee7860e56d3f5cb340da13e1c1c43af4485eccca54e8cf753ebc4c8725407e77"
+    "data/controlled_publications/the-wonderful-wizard-of-oz/publication_manifest.json": "ee7860e56d3f5cb340da13e1c1c43af4485eccca54e8cf753ebc4c8725407e77",
+    "data/controlled_publications/the-yellow-wallpaper/public_book.json": "80bd7ce5349458bb57a0707b27ca37906ed90b9e0e92b98b1ecaa6a4879359d1",
+    "data/controlled_publications/the-yellow-wallpaper/reader_manifest.json": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+    "data/controlled_publications/the-yellow-wallpaper/source_evidence.json": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
+    "data/controlled_publications/the-yellow-wallpaper/approval_evidence.json": "ed23198d03aaf9ac7a5ed8aed2d0dd019e1456d732fe8d3b2097d8372a4f36e1",
+    "data/controlled_publications/the-yellow-wallpaper/publication_manifest.json": "a32e2c6e0d269ee0fe6fa66cb7719e4f3062979cb7564a47aa64d6250fe38591",
+    "data/controlled_publications/to-build-a-fire/public_book.json": "161e74c79bb87d2f1d0613878206a73638b175777c99054befbec8543d30ab8e",
+    "data/controlled_publications/to-build-a-fire/reader_manifest.json": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+    "data/controlled_publications/to-build-a-fire/source_evidence.json": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed",
+    "data/controlled_publications/to-build-a-fire/approval_evidence.json": "28f35712795b5cf460c9326d49a9e6b84193c8b1f72fca5327a4b3c0a5136c25",
+    "data/controlled_publications/to-build-a-fire/publication_manifest.json": "23da9bf80973d19ec9aa0aa2b2f8a35a4e41b09480341de8896b02686f19c827",
+    "data/controlled_publications/tobermory/public_book.json": "d371de6009f5487942bab3f76c78a68bb35f1c33bf583832231c5d383614e2ea",
+    "data/controlled_publications/tobermory/reader_manifest.json": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+    "data/controlled_publications/tobermory/source_evidence.json": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
+    "data/controlled_publications/tobermory/approval_evidence.json": "d230c089f174785c6a48bc01a410cec3594ec5e7f81dc10aeb1454b0adbfc72a",
+    "data/controlled_publications/tobermory/publication_manifest.json": "086907d3d5ebca0f4fe6700d4327a8cb150558e2fd9db99986951a1caa6d3e3d",
+    "data/controlled_publications/ward-no-6/public_book.json": "2f17fc4f377990b9fa663490643f5cf4cd463e443dad7fe6f3de4ef57da65719",
+    "data/controlled_publications/ward-no-6/reader_manifest.json": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+    "data/controlled_publications/ward-no-6/source_evidence.json": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
+    "data/controlled_publications/ward-no-6/approval_evidence.json": "0fffcf027165b799472a27686f3a209ef25439c966b3a09446dec04f9f90aca0",
+    "data/controlled_publications/ward-no-6/publication_manifest.json": "28d138e81a4c8c9099dddde35bc5311a7305711753837b38a462e83a935e845d",
+    "data/controlled_publications/white-fang/public_book.json": "a69d3bd3db175f42a0298bc4169e38bda3081d9fd38ea3d8e3bbd7889b550692",
+    "data/controlled_publications/white-fang/reader_manifest.json": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
+    "data/controlled_publications/white-fang/source_evidence.json": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2",
+    "data/controlled_publications/white-fang/approval_evidence.json": "9de49359b873503bb9019859e3e69a21470761912608084a9d82a485af4594eb",
+    "data/controlled_publications/white-fang/publication_manifest.json": "845257b1da9809a6897f8cf9417b7e4f986f04d0f8190ce8a14910f10ca5b43b",
+    "data/controlled_publications/young-goodman-brown/public_book.json": "75715f9e547a6a9aa8607a5b822d0c6f111ed8b5f0e4baef0aa7ba668a3a8740",
+    "data/controlled_publications/young-goodman-brown/reader_manifest.json": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "data/controlled_publications/young-goodman-brown/source_evidence.json": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+    "data/controlled_publications/young-goodman-brown/approval_evidence.json": "cdc6c0420acb37c7ad13ad6d38251e850398cdb54714723d0c36ee47240bfcb6",
+    "data/controlled_publications/young-goodman-brown/publication_manifest.json": "2e67563c19df455be5af1c4570121a8551a20c6f03bcf39543abb3e8fe1e50ae"
   },
   "publications": [
     {
@@ -317,6 +542,23 @@
       }
     },
     {
+      "slug": "a-retrieved-reformation",
+      "title": "A Retrieved Reformation",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/a-retrieved-reformation/front-f1dc19c45f181d5d.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/a-retrieved-reformation",
+        "reader": "/reader/a-retrieved-reformation",
+        "listener": "/listener/a-retrieved-reformation"
+      }
+    },
+    {
       "slug": "a-scandal-in-bohemia",
       "title": "A Scandal in Bohemia",
       "author": "Arthur Conan Doyle",
@@ -331,6 +573,23 @@
         "book": "/book/a-scandal-in-bohemia",
         "reader": "/reader/a-scandal-in-bohemia",
         "listener": "/listener/a-scandal-in-bohemia"
+      }
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "title": "A Wagner Matinee",
+      "author": "Willa Cather",
+      "cover_url": "https://theearnalism.com/assets/books/a-wagner-matinee/front-febdb7034c342a12.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/a-wagner-matinee",
+        "reader": "/reader/a-wagner-matinee",
+        "listener": "/listener/a-wagner-matinee"
       }
     },
     {
@@ -538,6 +797,23 @@
       }
     },
     {
+      "slug": "feathertop",
+      "title": "Feathertop",
+      "author": "Nathaniel Hawthorne",
+      "cover_url": "https://theearnalism.com/assets/books/feathertop/front-93854105d9280545.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/feathertop",
+        "reader": "/reader/feathertop",
+        "listener": "/listener/feathertop"
+      }
+    },
+    {
       "slug": "frankenstein",
       "title": "Frankenstein",
       "author": "Mary Wollstonecraft Shelley",
@@ -603,6 +879,23 @@
         "book": "/book/love-of-life",
         "reader": "/reader/love-of-life",
         "listener": "/listener/love-of-life"
+      }
+    },
+    {
+      "slug": "markheim",
+      "title": "Markheim",
+      "author": "Robert Louis Stevenson",
+      "cover_url": "https://theearnalism.com/assets/books/markheim/front-1568f8a2bdea9548.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/markheim",
+        "reader": "/reader/markheim",
+        "listener": "/listener/markheim"
       }
     },
     {
@@ -708,6 +1001,23 @@
       }
     },
     {
+      "slug": "rappaccinis-daughter",
+      "title": "Rappaccini's Daughter",
+      "author": "Nathaniel Hawthorne",
+      "cover_url": "https://theearnalism.com/assets/books/rappaccinis-daughter/front-30403b406b204d07.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/rappaccinis-daughter",
+        "reader": "/reader/rappaccinis-daughter",
+        "listener": "/listener/rappaccinis-daughter"
+      }
+    },
+    {
       "slug": "sredni-vashtar",
       "title": "Sredni Vashtar",
       "author": "Saki",
@@ -722,6 +1032,227 @@
         "book": "/book/sredni-vashtar",
         "reader": "/reader/sredni-vashtar",
         "listener": "/listener/sredni-vashtar"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "title": "The Adventure of the Abbey Grange",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-abbey-grange/front-1d66e328758a4e7f.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-abbey-grange",
+        "reader": "/reader/the-adventure-of-the-abbey-grange",
+        "listener": "/listener/the-adventure-of-the-abbey-grange"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "title": "The Adventure of the Beryl Coronet",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-beryl-coronet/front-a4255d0ae4226d5e.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-beryl-coronet",
+        "reader": "/reader/the-adventure-of-the-beryl-coronet",
+        "listener": "/listener/the-adventure-of-the-beryl-coronet"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "title": "The Adventure of the Blue Carbuncle",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-blue-carbuncle/front-7bd5c08c49ae7b66.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-blue-carbuncle",
+        "reader": "/reader/the-adventure-of-the-blue-carbuncle",
+        "listener": "/listener/the-adventure-of-the-blue-carbuncle"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "title": "The Adventure of the Copper Beeches",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-copper-beeches/front-1a755f79e54e23c8.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-copper-beeches",
+        "reader": "/reader/the-adventure-of-the-copper-beeches",
+        "listener": "/listener/the-adventure-of-the-copper-beeches"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "title": "The Adventure of the Dancing Men",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-dancing-men/front-0554ac8b881f1ad7.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-dancing-men",
+        "reader": "/reader/the-adventure-of-the-dancing-men",
+        "listener": "/listener/the-adventure-of-the-dancing-men"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "title": "The Adventure of the Empty House",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-empty-house/front-bd449d4fd898ddd0.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-empty-house",
+        "reader": "/reader/the-adventure-of-the-empty-house",
+        "listener": "/listener/the-adventure-of-the-empty-house"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "title": "The Adventure of the Engineer's Thumb",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-engineers-thumb/front-75be2913c2d03302.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-engineers-thumb",
+        "reader": "/reader/the-adventure-of-the-engineers-thumb",
+        "listener": "/listener/the-adventure-of-the-engineers-thumb"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "title": "The Adventure of the Final Problem",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-final-problem/front-ee9e47f4bbfe47bf.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-final-problem",
+        "reader": "/reader/the-adventure-of-the-final-problem",
+        "listener": "/listener/the-adventure-of-the-final-problem"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "title": "The Adventure of the Greek Interpreter",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-greek-interpreter/front-34210d690ea405fc.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-greek-interpreter",
+        "reader": "/reader/the-adventure-of-the-greek-interpreter",
+        "listener": "/listener/the-adventure-of-the-greek-interpreter"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "title": "The Adventure of the Noble Bachelor",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-noble-bachelor/front-07b4be8b63c8a9a6.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-noble-bachelor",
+        "reader": "/reader/the-adventure-of-the-noble-bachelor",
+        "listener": "/listener/the-adventure-of-the-noble-bachelor"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "title": "The Adventure of the Priory School",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-priory-school/front-3e9b0e816cfc3a73.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-priory-school",
+        "reader": "/reader/the-adventure-of-the-priory-school",
+        "listener": "/listener/the-adventure-of-the-priory-school"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "title": "The Adventure of the Second Stain",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-second-stain/front-a8fee57446567bc7.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-second-stain",
+        "reader": "/reader/the-adventure-of-the-second-stain",
+        "listener": "/listener/the-adventure-of-the-second-stain"
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "title": "The Adventure of the Solitary Cyclist",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-adventure-of-the-solitary-cyclist/front-fae2603ea9759cdc.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventure-of-the-solitary-cyclist",
+        "reader": "/reader/the-adventure-of-the-solitary-cyclist",
+        "listener": "/listener/the-adventure-of-the-solitary-cyclist"
       }
     },
     {
@@ -742,6 +1273,23 @@
       }
     },
     {
+      "slug": "the-ambitious-guest",
+      "title": "The Ambitious Guest",
+      "author": "Nathaniel Hawthorne",
+      "cover_url": "https://theearnalism.com/assets/books/the-ambitious-guest/front-9d7f9096be843ec9.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-ambitious-guest",
+        "reader": "/reader/the-ambitious-guest",
+        "listener": "/listener/the-ambitious-guest"
+      }
+    },
+    {
       "slug": "the-art-of-money-getting",
       "title": "The Art of Money Getting",
       "author": "P. T. Barnum",
@@ -756,6 +1304,23 @@
         "book": "/book/the-art-of-money-getting",
         "reader": "/reader/the-art-of-money-getting",
         "listener": "/listener/the-art-of-money-getting"
+      }
+    },
+    {
+      "slug": "the-bet",
+      "title": "The Bet",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/the-bet/front-4b7127da76e3fe28.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-bet",
+        "reader": "/reader/the-bet",
+        "listener": "/listener/the-bet"
       }
     },
     {
@@ -810,6 +1375,23 @@
       }
     },
     {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "author": "Mark Twain",
+      "cover_url": "https://theearnalism.com/assets/books/the-celebrated-jumping-frog-of-calaveras-county/front-4df736343b19a324.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-celebrated-jumping-frog-of-calaveras-county",
+        "reader": "/reader/the-celebrated-jumping-frog-of-calaveras-county",
+        "listener": "/listener/the-celebrated-jumping-frog-of-calaveras-county"
+      }
+    },
+    {
       "slug": "the-cop-and-the-anthem",
       "title": "The Cop and the Anthem",
       "author": "O. Henry",
@@ -824,6 +1406,57 @@
         "book": "/book/the-cop-and-the-anthem",
         "reader": "/reader/the-cop-and-the-anthem",
         "listener": "/listener/the-cop-and-the-anthem"
+      }
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "title": "The Country of the Blind",
+      "author": "H.G. Wells",
+      "cover_url": "https://theearnalism.com/assets/books/the-country-of-the-blind/front-cb52a12565b29595.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-country-of-the-blind",
+        "reader": "/reader/the-country-of-the-blind",
+        "listener": "/listener/the-country-of-the-blind"
+      }
+    },
+    {
+      "slug": "the-darling",
+      "title": "The Darling",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/the-darling/front-13f20dc26bb559ef.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-darling",
+        "reader": "/reader/the-darling",
+        "listener": "/listener/the-darling"
+      }
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "title": "The Door in the Wall",
+      "author": "H.G. Wells",
+      "cover_url": "https://theearnalism.com/assets/books/the-door-in-the-wall/front-573d4ab0cfea235c.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-door-in-the-wall",
+        "reader": "/reader/the-door-in-the-wall",
+        "listener": "/listener/the-door-in-the-wall"
       }
     },
     {
@@ -858,6 +1491,23 @@
         "book": "/book/the-fall-of-the-house-of-usher",
         "reader": "/reader/the-fall-of-the-house-of-usher",
         "listener": "/listener/the-fall-of-the-house-of-usher"
+      }
+    },
+    {
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/the-furnished-room/front-288a1a717bbd1a00.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-furnished-room",
+        "reader": "/reader/the-furnished-room",
+        "listener": "/listener/the-furnished-room"
       }
     },
     {
@@ -912,6 +1562,23 @@
       }
     },
     {
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse",
+      "author": "Edgar Allan Poe",
+      "cover_url": "https://theearnalism.com/assets/books/the-imp-of-the-perverse/front-71c298d1aebcb814.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-imp-of-the-perverse",
+        "reader": "/reader/the-imp-of-the-perverse",
+        "listener": "/listener/the-imp-of-the-perverse"
+      }
+    },
+    {
       "slug": "the-lady-with-the-dog",
       "title": "The Lady with the Dog",
       "author": "Anton Chekhov",
@@ -929,6 +1596,74 @@
       }
     },
     {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/the-last-leaf/front-d67f4e42bfb0e673.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-last-leaf",
+        "reader": "/reader/the-last-leaf",
+        "listener": "/listener/the-last-leaf"
+      }
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "title": "The Legend of Sleepy Hollow",
+      "author": "Washington Irving",
+      "cover_url": "https://theearnalism.com/assets/books/the-legend-of-sleepy-hollow/front-cc534675f7879d9a.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-legend-of-sleepy-hollow",
+        "reader": "/reader/the-legend-of-sleepy-hollow",
+        "listener": "/listener/the-legend-of-sleepy-hollow"
+      }
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "title": "The Luck of Roaring Camp",
+      "author": "Bret Harte",
+      "cover_url": "https://theearnalism.com/assets/books/the-luck-of-roaring-camp/front-272a7efbf5f18201.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-luck-of-roaring-camp",
+        "reader": "/reader/the-luck-of-roaring-camp",
+        "listener": "/listener/the-luck-of-roaring-camp"
+      }
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "title": "The Man in a Case",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/the-man-in-a-case/front-41c06474b3633179.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-man-in-a-case",
+        "reader": "/reader/the-man-in-a-case",
+        "listener": "/listener/the-man-in-a-case"
+      }
+    },
+    {
       "slug": "the-man-who-would-be-king",
       "title": "The Man Who Would Be King",
       "author": "Rudyard Kipling",
@@ -943,6 +1678,74 @@
         "book": "/book/the-man-who-would-be-king",
         "reader": "/reader/the-man-who-would-be-king",
         "listener": "/listener/the-man-who-would-be-king"
+      }
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "title": "The Man with the Twisted Lip",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-man-with-the-twisted-lip/front-7b55b41491483715.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-man-with-the-twisted-lip",
+        "reader": "/reader/the-man-with-the-twisted-lip",
+        "listener": "/listener/the-man-with-the-twisted-lip"
+      }
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "cover_url": "https://theearnalism.com/assets/books/the-masque-of-the-red-death/front-b5da74282d1d0d85.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-masque-of-the-red-death",
+        "reader": "/reader/the-masque-of-the-red-death",
+        "listener": "/listener/the-masque-of-the-red-death"
+      }
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "title": "The Minister's Black Veil",
+      "author": "Nathaniel Hawthorne",
+      "cover_url": "https://theearnalism.com/assets/books/the-ministers-black-veil/front-7cead9082cadce2b.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-ministers-black-veil",
+        "reader": "/reader/the-ministers-black-veil",
+        "listener": "/listener/the-ministers-black-veil"
+      }
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "title": "The Murders in the Rue Morgue",
+      "author": "Edgar Allan Poe",
+      "cover_url": "https://theearnalism.com/assets/books/the-murders-in-the-rue-morgue/front-2d1301ab1f0d2df5.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-murders-in-the-rue-morgue",
+        "reader": "/reader/the-murders-in-the-rue-morgue",
+        "listener": "/listener/the-murders-in-the-rue-morgue"
       }
     },
     {
@@ -980,6 +1783,23 @@
       }
     },
     {
+      "slug": "the-outcasts-of-poker-flat",
+      "title": "The Outcasts of Poker Flat",
+      "author": "Bret Harte",
+      "cover_url": "https://theearnalism.com/assets/books/the-outcasts-of-poker-flat/front-67c4eeffd8ecc6d7.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-outcasts-of-poker-flat",
+        "reader": "/reader/the-outcasts-of-poker-flat",
+        "listener": "/listener/the-outcasts-of-poker-flat"
+      }
+    },
+    {
       "slug": "the-pit-and-the-pendulum",
       "title": "The Pit and the Pendulum",
       "author": "Edgar Allan Poe",
@@ -1011,6 +1831,40 @@
         "book": "/book/the-principles-of-scientific-management",
         "reader": "/reader/the-principles-of-scientific-management",
         "listener": "/listener/the-principles-of-scientific-management"
+      }
+    },
+    {
+      "slug": "the-purloined-letter",
+      "title": "The Purloined Letter",
+      "author": "Edgar Allan Poe",
+      "cover_url": "https://theearnalism.com/assets/books/the-purloined-letter/front-7159097048491dcd.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-purloined-letter",
+        "reader": "/reader/the-purloined-letter",
+        "listener": "/listener/the-purloined-letter"
+      }
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "title": "The Ransom of Red Chief",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/the-ransom-of-red-chief/front-ff9be054869a4304.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-ransom-of-red-chief",
+        "reader": "/reader/the-ransom-of-red-chief",
+        "listener": "/listener/the-ransom-of-red-chief"
       }
     },
     {
@@ -1065,6 +1919,23 @@
       }
     },
     {
+      "slug": "the-speckled-band",
+      "title": "The Speckled Band",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "https://theearnalism.com/assets/books/the-speckled-band/front-ec65f86b7e4489ec.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-speckled-band",
+        "reader": "/reader/the-speckled-band",
+        "listener": "/listener/the-speckled-band"
+      }
+    },
+    {
       "slug": "the-stolen-white-elephant",
       "title": "The Stolen White Elephant",
       "author": "Mark Twain",
@@ -1096,6 +1967,23 @@
         "book": "/book/the-student",
         "reader": "/reader/the-student",
         "listener": "/listener/the-student"
+      }
+    },
+    {
+      "slug": "the-suicide-club",
+      "title": "The Suicide Club",
+      "author": "Robert Louis Stevenson",
+      "cover_url": "https://theearnalism.com/assets/books/the-suicide-club/front-3baddf77926a0acd.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-suicide-club",
+        "reader": "/reader/the-suicide-club",
+        "listener": "/listener/the-suicide-club"
       }
     },
     {
@@ -1147,6 +2035,108 @@
         "book": "/book/the-wonderful-wizard-of-oz",
         "reader": "/reader/the-wonderful-wizard-of-oz",
         "listener": "/listener/the-wonderful-wizard-of-oz"
+      }
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "author": "Charlotte Perkins Gilman",
+      "cover_url": "https://theearnalism.com/assets/books/the-yellow-wallpaper/front-63786ee3a5498a94.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-yellow-wallpaper",
+        "reader": "/reader/the-yellow-wallpaper",
+        "listener": "/listener/the-yellow-wallpaper"
+      }
+    },
+    {
+      "slug": "to-build-a-fire",
+      "title": "To Build a Fire",
+      "author": "Jack London",
+      "cover_url": "https://theearnalism.com/assets/books/to-build-a-fire/front-fcbad9a6eaaa5a9e.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/to-build-a-fire",
+        "reader": "/reader/to-build-a-fire",
+        "listener": "/listener/to-build-a-fire"
+      }
+    },
+    {
+      "slug": "tobermory",
+      "title": "Tobermory",
+      "author": "Saki",
+      "cover_url": "https://theearnalism.com/assets/books/tobermory/front-b6d42ca7af192650.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/tobermory",
+        "reader": "/reader/tobermory",
+        "listener": "/listener/tobermory"
+      }
+    },
+    {
+      "slug": "ward-no-6",
+      "title": "Ward No. 6",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/ward-no-6/front-5862902bbb623c27.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/ward-no-6",
+        "reader": "/reader/ward-no-6",
+        "listener": "/listener/ward-no-6"
+      }
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "author": "Jack London",
+      "cover_url": "https://theearnalism.com/assets/books/white-fang/front-16796561b18eee8f.webp",
+      "chapter_count": 25,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/white-fang",
+        "reader": "/reader/white-fang",
+        "listener": "/listener/white-fang"
+      }
+    },
+    {
+      "slug": "young-goodman-brown",
+      "title": "Young Goodman Brown",
+      "author": "Nathaniel Hawthorne",
+      "cover_url": "https://theearnalism.com/assets/books/young-goodman-brown/front-840ce982e482297c.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/young-goodman-brown",
+        "reader": "/reader/young-goodman-brown",
+        "listener": "/listener/young-goodman-brown"
       }
     }
   ]

@@ -1,10 +1,10 @@
 {
   "slug": "the-adventure-of-the-noble-bachelor",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-11-08T04:19:59.725161+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c"
+      "sha256": "6f6be657f1d2f303b83361ab142acfb701b2b8935b2fd1346d62d79f8b58598c"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1"
+      "sha256": "bc5258cec14c7683f2c094cfe8148a6a8bf78268d77249066aee7ed2987b92a0"
     },
     {
       "file": "publication_authorization.json",
@@ -29,6 +29,10 @@
     {
       "file": "source_evidence.json",
       "sha256": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "6ab9a2a50cebe99cbbf855dff0d2fe9f95c94439b9a3dd70768b487fdef095da"
     }
   ]
 }
