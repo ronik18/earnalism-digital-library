@@ -196,7 +196,22 @@
       "audiobook_audio_sha256": "547d01c7fba08ca3ecff19e6184ece56562e3acaff1127014b2226d3f0e2025e",
       "audiobook_manuscript_sha256": "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca",
       "audiobook_voice": "hf_alpha",
-      "updated_at": "2026-08-14T15:42:07Z"
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "owner_directed_removal_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "counts": {
+          "books": 0,
+          "reader_content_segments": 0,
+          "reader_segment_manifests": 0,
+          "reader_segment_activation_state": 0
+        },
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      },
+      "latest_decision": "OWNER_DIRECTED_REMOVAL_RIGHTS_HOLD_PRESERVED",
+      "public_reader_status": "REMOVED_RIGHTS_DENIED",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
+      "next_action": "Preserve rights denial and immutable audit evidence; do not restore this held edition."
     },
     "a-ghost-story": {
       "india_pilot_free_reader_entitlement": "SOURCE_CANDIDATE_LOCAL_TESTS_PASS_PENDING_EXACT_HEAD_CI_AND_DEPLOYMENT",
@@ -1819,9 +1834,9 @@
       "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
     },
     "nishkriti": {
-      "latest_decision": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "latest_decision": "OWNER_DIRECTED_REMOVAL_RIGHTS_HOLD_PRESERVED",
       "decision_reason": "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "Do not repeat the completed Sarvam Ratan or Gemini Charon fingerprints. Keep audio hidden and require a genuinely different provider/voice or source-bound narration before another title-level pilot.",
@@ -1831,7 +1846,7 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
       "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "canonical_chapter_count": 9,
       "canonical_manuscript_char_count": 83685,
       "canonical_manuscript_sha256": "e53d59d7384eae55da518158f5e6affb9d295abea6fb888eaf3794f0d4f5b660",
@@ -1895,10 +1910,21 @@
         "updated_at": "2026-07-23T11:31:00Z",
         "public_audio_status": "AUDIO_HIDDEN"
       },
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
+      "public_reader_status": "REMOVED_RIGHTS_DENIED",
       "current_source_sha256": "bc5b99f4e931e55e74ad67a6999a0c8835ca0de99b65d994761a71229546d0cd",
       "current_content_sha256": "e53d59d7384eae55da518158f5e6affb9d295abea6fb888eaf3794f0d4f5b660",
-      "next_action": "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      "next_action": "Preserve rights denial and immutable audit evidence; do not restore this held edition.",
+      "owner_directed_removal_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "counts": {
+          "books": 0,
+          "reader_content_segments": 0,
+          "reader_segment_manifests": 0,
+          "reader_segment_activation_state": 0
+        },
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "radharani": {
       "india_pilot_free_reader_entitlement": "SOURCE_CANDIDATE_LOCAL_TESTS_PASS_PENDING_EXACT_HEAD_CI_AND_DEPLOYMENT",
@@ -4207,12 +4233,12 @@
       "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
     },
     "the-last-leaf": {
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "en",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "studio_c_fingerprint": "c0f5f836abe9976e",
       "studio_c_scores": [
         8.4,
@@ -4273,15 +4299,41 @@
       },
       "current_source_sha256": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
       "current_content_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-last-leaf",
+        "title": "The Last Leaf",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-last-leaf",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-last-leaf-reader-cover-successor",
+        "record_sha256": "768a07272309b3581d71b402fcdd05f436241c3b8de76321dfcafc7355d3cfef",
+        "segmentation_version": "approved-html-v1-768a07272309b3581d71b402fcdd05f4",
+        "manifest_version": "78feb1f0bdb142f9bd6b73f8",
+        "canonical_pages": 4,
+        "ordered_page_identity_sha256": "2b6083026fd38e45d9385d83ae0f1b562073bdc6cf2fd0271e37a61c701408c6",
+        "front_cover_sha256": "d67f4e42bfb0e67390ceef6f6b2a78b9a17125d684a48b1bb42a7e0729f8b887",
+        "back_cover_sha256": "561de4895cba4890bad75a3ef0d500ef041cdfec3ad38f9b15bd6c5c501210e5",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-masque-of-the-red-death": {
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "en",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "studio_c_fingerprint": "6f561b31503df395",
       "studio_c_scores": [
         8.4,
@@ -4342,7 +4394,33 @@
       },
       "current_source_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
       "current_content_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-masque-of-the-red-death",
+        "title": "The Masque of the Red Death",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-masque-of-the-red-death",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-masque-of-the-red-death-reader-cover-successor",
+        "record_sha256": "74da49f4d63db062d42e028413b2848c6b72f3fcfc8e20aeb9cf2a66219ae535",
+        "segmentation_version": "approved-html-v1-74da49f4d63db062d42e028413b2848c",
+        "manifest_version": "02a254800e4228e27048ac86",
+        "canonical_pages": 5,
+        "ordered_page_identity_sha256": "e73f8141cb019a95cf770df2b6807dae48312a5e1af18f65f7a7102981187af3",
+        "front_cover_sha256": "b5da74282d1d0d85d8765449e6263a9051708bd7b2925f74ed56da40b3b67ea8",
+        "back_cover_sha256": "a8ba155eb51310fd4873eb1894f75260d2f54bb9085379748a058f16dd66017b",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-necklace": {
       "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
@@ -4527,12 +4605,12 @@
       "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
     },
     "the-yellow-wallpaper": {
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "en",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "studio_c_fingerprint": "ac9895f1da771ed0",
       "studio_c_scores": [
         8.4,
@@ -4574,7 +4652,33 @@
       },
       "current_source_sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
       "current_content_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-yellow-wallpaper",
+        "title": "The Yellow Wallpaper",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-yellow-wallpaper",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-yellow-wallpaper-reader-cover-successor",
+        "record_sha256": "54ee72f16d4201c7f8c3c64edd0e72b941c37e64f76ca91aee7ff30ea311ef98",
+        "segmentation_version": "approved-html-v1-54ee72f16d4201c7f8c3c64edd0e72b9",
+        "manifest_version": "1a0ae82b6f95cada6c12083b",
+        "canonical_pages": 10,
+        "ordered_page_identity_sha256": "b498c8c2fdf76d4585082899f337471696a503440ff7794e851e55df1d069553",
+        "front_cover_sha256": "63786ee3a5498a94c27af4e7b5d309cebd861e6863a19d44fdc1a97c3f8f7de9",
+        "back_cover_sha256": "dbd1eca0b3cdf50154845a29c3a4949d80b2c96ad234e63b7afa2e7b80381758",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-gift-of-the-magi": {
       "latest_decision": "COSYVOICE3_BF16_ADVERSARIAL_OBJECTIVE_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
@@ -5014,12 +5118,12 @@
       "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
     },
     "white-fang": {
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "en",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "canonical_source_sha256": "1196a80b33f6fc76d5608f5e2420317801d8e7af838a698d1a8ec37138ec25dc",
       "canonical_backend_source_parity": true,
       "chapter_count": 25,
@@ -5055,7 +5159,33 @@
       },
       "current_source_sha256": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4",
       "current_content_sha256": "1cc0fc8e2a082b85ecb6eaaa5932b09d2c554f4ae1df4233903373bbc2025ccd",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "white-fang",
+        "title": "White Fang",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/white-fang",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-white-fang-reader-cover-successor",
+        "record_sha256": "1e061d67e153541fe07beb9c9035c71cdb02c5948e50ea7dd4afa63bc47ea761",
+        "segmentation_version": "approved-html-v1-1e061d67e153541fe07beb9c9035c71c",
+        "manifest_version": "aa757246009cfedb39f4d891",
+        "canonical_pages": 136,
+        "ordered_page_identity_sha256": "125bcef52a5ad63a7e4103f33caf4a41f30d6cc12258ce44465542286b6e56d3",
+        "front_cover_sha256": "16796561b18eee8f4b7d52a05227fd81ea8b91a58e30408ed098a9f5d4e06c99",
+        "back_cover_sha256": "248615aa239bbbe4eb204821fd717ebc46de4eed07aaee9b542857cb807ca6ea",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "dracula": {
       "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
@@ -7411,18 +7541,18 @@
       "current_content_sha256": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b"
     },
     "the-metamorphosis": {
-      "latest_decision": "EVIDENCE_PREPARED_RELEASE_HELD",
+      "latest_decision": "OWNER_DIRECTED_REMOVAL_RIGHTS_HOLD_PRESERVED",
       "decision_reason": "DECLARED_SOURCE_HASH_NOT_REPRODUCED_BY_CURRENT_OFFICIAL_BYTES; FULL_EDITION_BOUNDARY_AND_COMPONENT_REVIEW_REQUIRED; ACCEPTED_EDITION_BOUND_RIGHTS_RECORD_TO_GENERATE_AFTER_OBJECTIVE_CLEARANCE; EDITION_BOUND_PUBLICATION_RECORD_TO_GENERATE_UNDER_OWNER_DELEGATION_AFTER_GATES",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
       "language": "en",
       "territory": "IN",
       "translator": "David Wyllie",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "public_reader_status": "REMOVED_RIGHTS_DENIED",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "manuscript_preserved_private": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "DECLARED_SOURCE_HASH_NOT_REPRODUCED_BY_CURRENT_OFFICIAL_BYTES; FULL_EDITION_BOUNDARY_AND_COMPONENT_REVIEW_REQUIRED; ACCEPTED_EDITION_BOUND_RIGHTS_RECORD_TO_GENERATE_AFTER_OBJECTIVE_CLEARANCE; EDITION_BOUND_PUBLICATION_RECORD_TO_GENERATE_UNDER_OWNER_DELEGATION_AFTER_GATES",
+      "next_action": "Preserve rights denial and immutable audit evidence; do not restore this held edition.",
       "catalogue_clearance_20261002_review": {
         "slug": "the-metamorphosis",
         "title": "The Metamorphosis",
@@ -7452,7 +7582,18 @@
         "next_action": "Bind a verified commercially reusable English translation or written permission, then rebuild the checksum-bound reader candidate and repeat both human gates."
       },
       "current_source_sha256": "4668a0a73a218a2f7ce39133432c411bc4acdf307c6d40ce300bfee15750d56c",
-      "current_content_sha256": "f10743e0510cb420ec7a1e8bb5ad40e1b3190c90373ec9a14d585f0d17830a83"
+      "current_content_sha256": "f10743e0510cb420ec7a1e8bb5ad40e1b3190c90373ec9a14d585f0d17830a83",
+      "owner_directed_removal_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "counts": {
+          "books": 0,
+          "reader_content_segments": 0,
+          "reader_segment_manifests": 0,
+          "reader_segment_activation_state": 0
+        },
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-strange-case-of-dr-jekyll-and-mr-hyde": {
       "latest_decision": "SUPERSEDED_ALIAS_DO_NOT_REACTIVATE",
@@ -8014,14 +8155,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
       "current_content_sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "a-retrieved-reformation",
+        "title": "A Retrieved Reformation",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/a-retrieved-reformation",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-a-retrieved-reformation-reader-cover-successor",
+        "record_sha256": "18e2ccc7121b3a2d192208c9550e4b44c63db320e7ea118e70ade3c11797868e",
+        "segmentation_version": "approved-html-v1-18e2ccc7121b3a2d192208c9550e4b44",
+        "manifest_version": "35e8bccbbd5e97e69f202d9b",
+        "canonical_pages": 6,
+        "ordered_page_identity_sha256": "be1bb4930bb65164e26befe6e505f06d42452b8f487ab162967ab3371673c4fa",
+        "front_cover_sha256": "f1dc19c45f181d5df52c5817ce8fa31d052088b0c1d1055acddf678eb6e8a119",
+        "back_cover_sha256": "97b4604f13a1b8bfb28c122fc83be3a9718510c7644f8903a2499efbbedd9c41",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "a-wagner-matinee": {
       "catalogue_clearance_20261002_review": {
@@ -8040,14 +8207,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
       "current_content_sha256": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "a-wagner-matinee",
+        "title": "A Wagner Matinee",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/a-wagner-matinee",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-a-wagner-matinee-reader-cover-successor",
+        "record_sha256": "c615427ea96991751555022b7345f0a6ca605edf1fd7c72b81570401ff87425c",
+        "segmentation_version": "approved-html-v1-c615427ea96991751555022b7345f0a6",
+        "manifest_version": "efc6bceede447e9a9df95536",
+        "canonical_pages": 6,
+        "ordered_page_identity_sha256": "e222d911ee1a2bc916c6eac7326eb6353395ba4650bc8b9e9f11f3d07d683b11",
+        "front_cover_sha256": "febdb7034c342a12ebafd6c76e322d391a498f9f0d6935809401a8d2b24d1e4f",
+        "back_cover_sha256": "067aefce7dfde81070f1f84ddc058930ca9e69e4ecd96b01e7bd83025c0a1231",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "acres-of-diamonds": {
       "catalogue_clearance_20261002_review": {
@@ -8228,14 +8421,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
       "current_content_sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "feathertop",
+        "title": "Feathertop",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/feathertop",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-feathertop-reader-cover-successor",
+        "record_sha256": "983d162aeb19d54cb75337bef94a539e5ce07fc876f8152279016bf20ac500f9",
+        "segmentation_version": "approved-html-v1-983d162aeb19d54cb75337bef94a539e",
+        "manifest_version": "da3a976101b2770bbb84a636",
+        "canonical_pages": 14,
+        "ordered_page_identity_sha256": "0ddb70d4e8678a741cd4baaac91a56fcbb09eabb2d2f248c258d97bd71e300de",
+        "front_cover_sha256": "93854105d9280545dda792425d8a52d4cb6149443ebe8cf210b60358a45d1575",
+        "back_cover_sha256": "9a34504db3865d57e7e53f45bd3bb9073fef04d6c59dc983476a800937607311",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "great-expectations": {
       "catalogue_clearance_20261002_review": {
@@ -8358,14 +8577,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
       "current_content_sha256": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "markheim",
+        "title": "Markheim",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/markheim",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-markheim-reader-cover-successor",
+        "record_sha256": "ccb0a75330347ec45d2be9081b39651b560dbbdf39f07c841dbf518b7d430dbf",
+        "segmentation_version": "approved-html-v1-ccb0a75330347ec45d2be9081b39651b",
+        "manifest_version": "9e76788522def69ff0079c68",
+        "canonical_pages": 12,
+        "ordered_page_identity_sha256": "4f74286af8ca5c4cd1fe1798727f100e77aa60fc8891f5b38725e0f2c86200c7",
+        "front_cover_sha256": "1568f8a2bdea95486434daab874a8abde421b86aa692f9dba90eed0b001574ea",
+        "back_cover_sha256": "3641d4eae8cc20076f673cbd6ff8256649e8d7395d321a3afb05138c6b9a13a9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "my-life-and-work": {
       "catalogue_clearance_20261002_review": {
@@ -8436,14 +8681,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
       "current_content_sha256": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "rappaccinis-daughter",
+        "title": "Rappaccini's Daughter",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/rappaccinis-daughter",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-rappaccinis-daughter-reader-cover-successor",
+        "record_sha256": "f770abbccb6c60e64a1fb9ba6f0628307057b7495141f8353e52562a9156f0e9",
+        "segmentation_version": "approved-html-v1-f770abbccb6c60e64a1fb9ba6f062830",
+        "manifest_version": "e6df480657eb0be5c2daca26",
+        "canonical_pages": 21,
+        "ordered_page_identity_sha256": "59d5ae075c4c9517803239109dfe153d2fa254e708bed0967a13c7760d1a380d",
+        "front_cover_sha256": "30403b406b204d07243a6ba883bbc1a80ad78858ce92aa8718d86c410582b6f7",
+        "back_cover_sha256": "d82741e053708976aefc9086bd5c9067c043a3bc480c570b3bfdb0d75529b6d9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "rikki-tikki-tavi": {
       "catalogue_clearance_20261002_review": {
@@ -8540,14 +8811,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "3ab754df655e74c016007890d7d3f30c776a6618864501d3e066d9c6f10ff7ce",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-abbey-grange",
+        "title": "The Adventure of the Abbey Grange",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-abbey-grange",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-abbey-grange-reader-cover-successor",
+        "record_sha256": "60cf9129edeb49a99647e895eea5be32546c9c2d7cd1f27d8630a03c2ca02ac2",
+        "segmentation_version": "approved-html-v1-60cf9129edeb49a99647e895eea5be32",
+        "manifest_version": "cb4f928b209de4ea884c2081",
+        "canonical_pages": 15,
+        "ordered_page_identity_sha256": "7e1115b81050eeb7df40e7efaed21e68ee02a3e695659301b68f32800e4a5bbe",
+        "front_cover_sha256": "1d66e328758a4e7f4d6a54f0b07ac8742229af40cdc8ef73a3e5b4d445e1ebbe",
+        "back_cover_sha256": "8312638414f30dd56e87b3cce9a4ff8eb7670bfc98a52600234d0e3d0fd71eca",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-beryl-coronet": {
       "catalogue_clearance_20261002_review": {
@@ -8566,14 +8863,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "7f13344416cb0bf924e0b6ff29674998539d6c2a11b0bf25bea217d1c82f7a29",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-beryl-coronet",
+        "title": "The Adventure of the Beryl Coronet",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-beryl-coronet",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-beryl-coronet-reader-cover-successor",
+        "record_sha256": "e46cedead5b6b2dadd06d9474ec0e19a41f2d59e2fa5609ea174de4873c880b2",
+        "segmentation_version": "approved-html-v1-e46cedead5b6b2dadd06d9474ec0e19a",
+        "manifest_version": "29515bc7fca03553cd31faeb",
+        "canonical_pages": 16,
+        "ordered_page_identity_sha256": "34b460abcb4cefd39448de76253081511db31718e4804848c3488aed743f77cc",
+        "front_cover_sha256": "a4255d0ae4226d5e78cff1bbf3fffcaeabb1f49902eedd7bdaa9f6a308e5fee9",
+        "back_cover_sha256": "b77935cac7fc72ec7b8febe2d1e4d062fb5bfffdf1dcceaf2ef4be0fac86f5ab",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-blue-carbuncle": {
       "catalogue_clearance_20261002_review": {
@@ -8592,14 +8915,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-blue-carbuncle",
+        "title": "The Adventure of the Blue Carbuncle",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-blue-carbuncle",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-blue-carbuncle-reader-cover-successor",
+        "record_sha256": "c2ac75f35f05b4442278e44679ada9c2eb5f44da4d2912b7728639564c37efc7",
+        "segmentation_version": "approved-html-v1-c2ac75f35f05b4442278e44679ada9c2",
+        "manifest_version": "9f74cd644c2be1824756cfca",
+        "canonical_pages": 13,
+        "ordered_page_identity_sha256": "028618cf4988b439ea65d9c4e4a171bb22cb2a7e44a3ec392f2511a56f0fc9f6",
+        "front_cover_sha256": "7bd5c08c49ae7b6673ceea35d9096a0d8a179c0efafa941a2467cd0bf1bcc06a",
+        "back_cover_sha256": "2ceb1f6da7dc4ff8960611a1066c7ac324930c52ce66d8f470a7a3f58c3d2469",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-copper-beeches": {
       "catalogue_clearance_20261002_review": {
@@ -8618,14 +8967,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "b462ab2045b83b93266df29ada25c1fe29f319e658ae9eef3a608fc9284303d0",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-copper-beeches",
+        "title": "The Adventure of the Copper Beeches",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-copper-beeches",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-copper-beeches-reader-cover-successor",
+        "record_sha256": "71abbd3ec66bb3c53c0f29f49d59cc4cec2c1e08b74f22c2c0712feea5fd6400",
+        "segmentation_version": "approved-html-v1-71abbd3ec66bb3c53c0f29f49d59cc4c",
+        "manifest_version": "1147814ea4be4eb71ec9bf42",
+        "canonical_pages": 17,
+        "ordered_page_identity_sha256": "6da77fbb4595c682b00c0e7da01c97679d04f3e1e392a6796b1f3abc857e1381",
+        "front_cover_sha256": "1a755f79e54e23c8090e0322f81d6bf05f6cf14fb43d20b23f3d7b3b4acac356",
+        "back_cover_sha256": "249f7d21e17343b45715e614f3b1e145e29ebeca5cfa994932a57d28e43c5be9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-dancing-men": {
       "catalogue_clearance_20261002_review": {
@@ -8644,14 +9019,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-dancing-men",
+        "title": "The Adventure of the Dancing Men",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-dancing-men",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-dancing-men-reader-cover-successor",
+        "record_sha256": "3a73e485b53b5e94fac63683004b07c9bd59bf0b99399e37f9d362a61bed53a0",
+        "segmentation_version": "approved-html-v1-3a73e485b53b5e94fac63683004b07c9",
+        "manifest_version": "8f97378389e81760f48b1849",
+        "canonical_pages": 16,
+        "ordered_page_identity_sha256": "bd4ecd4d676333000af5c4e9d89a5483ee29963d966c644651a4f778e0da8a7b",
+        "front_cover_sha256": "0554ac8b881f1ad745ac3f86188714702e56ffa308b43be64c504c5b3916ba64",
+        "back_cover_sha256": "e2832bbb1a7c04d32d3a70db02dd5e1c4197d6307b7bf9f596815758ec0dacda",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-empty-house": {
       "catalogue_clearance_20261002_review": {
@@ -8670,14 +9071,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-empty-house",
+        "title": "The Adventure of the Empty House",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-empty-house",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-empty-house-reader-cover-successor",
+        "record_sha256": "670a7b43d5a59db717d36f741246013b5f69528e3fecb013e4d6fc991fc3e517",
+        "segmentation_version": "approved-html-v1-670a7b43d5a59db717d36f741246013b",
+        "manifest_version": "10ffd1c96d4f18b5f4c89715",
+        "canonical_pages": 15,
+        "ordered_page_identity_sha256": "d344eb247d0ee71ebd36a51f61d79458185dab10a62af07d38c135f2e1e6281d",
+        "front_cover_sha256": "bd449d4fd898ddd08f83d1824b7572ba025f5a1a637ba094a97b9a4378d9c975",
+        "back_cover_sha256": "a2f25cd2835c22e80d2086e9e9fbf8a9e44ae7f50805b8b998008a51ce177b50",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-engineers-thumb": {
       "catalogue_clearance_20261002_review": {
@@ -8696,14 +9123,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-engineers-thumb",
+        "title": "The Adventure of the Engineer's Thumb",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-engineers-thumb",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-engineers-thumb-reader-cover-successor",
+        "record_sha256": "81a4f8799eb224eb8bee2a73c375ab30747b24acb3d0224c615e4781d3c1beab",
+        "segmentation_version": "approved-html-v1-81a4f8799eb224eb8bee2a73c375ab30",
+        "manifest_version": "1f5b83d21bdfcbaf7059d0ff",
+        "canonical_pages": 14,
+        "ordered_page_identity_sha256": "843e24367e93ffd2248140a6b810da8593f2eb06abeb898b5549a035e9f16b15",
+        "front_cover_sha256": "75be2913c2d03302aea955b7bd3db218a35a2ac09c12914c226fcff09bf9d897",
+        "back_cover_sha256": "042c7d5bb3398cf454639e2878ff4114b80e05b1fe8577a5a2d3ff8c295006bd",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-final-problem": {
       "catalogue_clearance_20261002_review": {
@@ -8722,14 +9175,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
       "current_content_sha256": "117d6a3c1729145f0d58f61c8f8f28a3cb007cb16557e9bc018534974fb108f8",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-final-problem",
+        "title": "The Adventure of the Final Problem",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-final-problem",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-final-problem-reader-cover-successor",
+        "record_sha256": "d571a417f4f93b59b22df89b3777766195b38983bc85b2a12678eebda163a18c",
+        "segmentation_version": "approved-html-v1-d571a417f4f93b59b22df89b37777661",
+        "manifest_version": "6a97a8c1a9eedfdda6a73ea5",
+        "canonical_pages": 12,
+        "ordered_page_identity_sha256": "0f92c933ce3e75844a83e8db9c56493c3c246a3f732f933ae414d4d9bd09e7e0",
+        "front_cover_sha256": "ee9e47f4bbfe47bfd7aeabf8984982ea7ea36ec7f44ce77f04d9a4e6d35133e9",
+        "back_cover_sha256": "93ba678d6d4fbde26a15e5d087cd7074e84e5dfb57313d48018e7666b521fbb9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-greek-interpreter": {
       "catalogue_clearance_20261002_review": {
@@ -8748,14 +9227,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
       "current_content_sha256": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-greek-interpreter",
+        "title": "The Adventure of the Greek Interpreter",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-greek-interpreter",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-greek-interpreter-reader-cover-successor",
+        "record_sha256": "bab2f5de8176c4d1d5cc55adc4f3acc3fa6bf47a7528aeff516491799fce157d",
+        "segmentation_version": "approved-html-v1-bab2f5de8176c4d1d5cc55adc4f3acc3",
+        "manifest_version": "7375da90d357550602857153",
+        "canonical_pages": 12,
+        "ordered_page_identity_sha256": "5e1745d3fde74dc1ddd39fa28b245a34d6286fc768ce9e813e9a28c3eb6d8187",
+        "front_cover_sha256": "34210d690ea405fc3c22c6c2dbd1d8547cc07fc8b065eafadd0d4fb227965e80",
+        "back_cover_sha256": "321ba7f8789a55c66a405074d189cdf8b104d5e1b0c0d29245264f5b927b7a60",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-noble-bachelor": {
       "catalogue_clearance_20261002_review": {
@@ -8774,14 +9279,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-noble-bachelor",
+        "title": "The Adventure of the Noble Bachelor",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-noble-bachelor",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-noble-bachelor-reader-cover-successor",
+        "record_sha256": "b13f4a419badc6c35909f477ecf142df5a6b407bf2ff4d45271bbab2cdad0234",
+        "segmentation_version": "approved-html-v1-b13f4a419badc6c35909f477ecf142df",
+        "manifest_version": "7cdbc8dbbf2de239ec82a9f1",
+        "canonical_pages": 14,
+        "ordered_page_identity_sha256": "797c9de6a0b218a7fc944a7e5704bd179e38a10d5e1b71f780e7d071fee2acbb",
+        "front_cover_sha256": "07b4be8b63c8a9a67274475d82816e4b8bbd52d1d8f5d7cdcee1491911c21c06",
+        "back_cover_sha256": "220262aef53b89503da5d1f89143027935de67a05c745243ee8044bf4b6fd902",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-priory-school": {
       "catalogue_clearance_20261002_review": {
@@ -8800,14 +9331,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-priory-school",
+        "title": "The Adventure of the Priory School",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-priory-school",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-priory-school-reader-cover-successor",
+        "record_sha256": "6ff8b1894a791e351ccfa0e513d6308f5be4977a381fb1145cc59f670b6000a9",
+        "segmentation_version": "approved-html-v1-6ff8b1894a791e351ccfa0e513d6308f",
+        "manifest_version": "e22d6856f2f2154074d1b59c",
+        "canonical_pages": 20,
+        "ordered_page_identity_sha256": "5f18fbf68d088071df8965e43d19d2db9be28636636e9f5829d7553d5f72ed8d",
+        "front_cover_sha256": "3e9b0e816cfc3a732124c6bc62ebcc5775e2b3307d8657c996cadcc3fbb1e959",
+        "back_cover_sha256": "fd592ca099d95aa0899d871231c593d5cd20b115461bfbe450c1e2c838f70583",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-second-stain": {
       "catalogue_clearance_20261002_review": {
@@ -8826,14 +9383,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-second-stain",
+        "title": "The Adventure of the Second Stain",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-second-stain",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-second-stain-reader-cover-successor",
+        "record_sha256": "c316f9a0db2bb93892f707d1142ba647bc053a1d0e849d5fce5726ec4d0f7bab",
+        "segmentation_version": "approved-html-v1-c316f9a0db2bb93892f707d1142ba647",
+        "manifest_version": "8b09230c320ad1cc742681fd",
+        "canonical_pages": 17,
+        "ordered_page_identity_sha256": "fe2ecf100d1fef41790ab8339975c73ecafaf5b9946eb13c7321bd8343455652",
+        "front_cover_sha256": "a8fee57446567bc7e406e2497a616f468651ae6b5f2ea66826a3ae90faf5d388",
+        "back_cover_sha256": "3054d7edcf03950c656aec0556201b8bcdd7fc5db8f877884a46b8484415ad8b",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-adventure-of-the-solitary-cyclist": {
       "catalogue_clearance_20261002_review": {
@@ -8852,14 +9435,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
       "current_content_sha256": "556ddb617ff449dcfbfa93db5b7a6f52097953c6191a68e5de222c43bd37d2de",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-adventure-of-the-solitary-cyclist",
+        "title": "The Adventure of the Solitary Cyclist",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-adventure-of-the-solitary-cyclist",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-adventure-of-the-solitary-cyclist-reader-cover-successor",
+        "record_sha256": "588bb64828e11e48351cd4e923efd6e3c4f69bee5ae063fef05b1cd9ae5f0c65",
+        "segmentation_version": "approved-html-v1-588bb64828e11e48351cd4e923efd6e3",
+        "manifest_version": "0911809c32b0f8fa97a8644e",
+        "canonical_pages": 14,
+        "ordered_page_identity_sha256": "367eaae1a926dd2fb4c625efe910986853368a08d217b5cbb7a1f6d5e4e334d3",
+        "front_cover_sha256": "fae2603ea9759cdc28bfeb55441f42196fc286ba7dcffd850946e227009c4834",
+        "back_cover_sha256": "542bafcf2ce8c2d2b22a1093835a9f406bf5b62d4bba77b1c993f224ef92a347",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-ambitious-guest": {
       "catalogue_clearance_20261002_review": {
@@ -8878,14 +9487,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
       "current_content_sha256": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-ambitious-guest",
+        "title": "The Ambitious Guest",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-ambitious-guest",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-ambitious-guest-reader-cover-successor",
+        "record_sha256": "2716eb61bd215d4651cae22e1bf86fb6373297cc7d55924beea26a5c6b51e032",
+        "segmentation_version": "approved-html-v1-2716eb61bd215d4651cae22e1bf86fb6",
+        "manifest_version": "bd74af6e05897d4abc6039a3",
+        "canonical_pages": 6,
+        "ordered_page_identity_sha256": "2493c70dc936936a1cf43155457cc8af04888c2c6eeedd10079741731a55d8dd",
+        "front_cover_sha256": "9d7f9096be843ec9641abd5a6288e28625a65ea7858489b8752cd9f35ddcc521",
+        "back_cover_sha256": "672973a9e0ab8b4f9341ce993c512def2b00a18cae37dd4cb7079c7870e24c8a",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-bet": {
       "catalogue_clearance_20261002_review": {
@@ -8904,14 +9539,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
       "current_content_sha256": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-bet",
+        "title": "The Bet",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-bet",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-bet-reader-cover-successor",
+        "record_sha256": "02c42af45dffc6f14d39296f6a32aff97da964674b8a7e9f8dca8b760e75915b",
+        "segmentation_version": "approved-html-v1-02c42af45dffc6f14d39296f6a32aff9",
+        "manifest_version": "e88eae723e2e6fe6c792f483",
+        "canonical_pages": 5,
+        "ordered_page_identity_sha256": "c12a188464f959527fdc968103808972e8784e77ab34a97522a528a5c5c077dd",
+        "front_cover_sha256": "4b7127da76e3fe28a9fb114009c34068ff40b10e368b2062cf23fb420856dc7a",
+        "back_cover_sha256": "246c507bfccf36d6672258aaeca1a6c3d3dca8d99fe8b1fc5ce9a5ecc932acb0",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-celebrated-jumping-frog-of-calaveras-county": {
       "catalogue_clearance_20261002_review": {
@@ -8930,14 +9591,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
       "current_content_sha256": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+        "title": "The Celebrated Jumping Frog of Calaveras County",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-celebrated-jumping-frog-of-calaveras-county",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-celebrated-jumping-frog-of-calaveras-county-reader-cover-successor",
+        "record_sha256": "331dc9b8bdcadf79f0eed5af6bdc24cbdf05f19314e3e855c421bc4a079f02f3",
+        "segmentation_version": "approved-html-v1-331dc9b8bdcadf79f0eed5af6bdc24cb",
+        "manifest_version": "95e92f52d3c6f8e0421b13d0",
+        "canonical_pages": 5,
+        "ordered_page_identity_sha256": "fc73033157df3cc0b7e75a73f0a4971b2324c7798d7f56f09aaeb179cf182f50",
+        "front_cover_sha256": "4df736343b19a3246ab36d4d06f3424da18a5cc600bf1d56dddb24ae1e172ac2",
+        "back_cover_sha256": "7e617b8ff497a1bf9e688c740148b11337e2a32f9b708334bb82db5a8777283d",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-country-of-the-blind": {
       "catalogue_clearance_20261002_review": {
@@ -8956,14 +9643,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
       "current_content_sha256": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-country-of-the-blind",
+        "title": "The Country of the Blind",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-country-of-the-blind",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-country-of-the-blind-reader-cover-successor",
+        "record_sha256": "614d9b0e72e97279733c13a296cbc309a30ec8727f5ea1cc931a97b33a8b5328",
+        "segmentation_version": "approved-html-v1-614d9b0e72e97279733c13a296cbc309",
+        "manifest_version": "df2178ed57decbed0cf3726a",
+        "canonical_pages": 17,
+        "ordered_page_identity_sha256": "d8a5bac40e408fdafa02a853e4543509764868ee400b09930909fcf7da58bf42",
+        "front_cover_sha256": "cb52a12565b29595c5ec9490fc1bb37470d18f30459c845239d3d0c304b9cd1c",
+        "back_cover_sha256": "fa92f8093537a66efcbca2352fe90ba4cf20438da590662df75bc85316f8a937",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-darling": {
       "catalogue_clearance_20261002_review": {
@@ -8982,14 +9695,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
       "current_content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-darling",
+        "title": "The Darling",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-darling",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-darling-reader-cover-successor",
+        "record_sha256": "f8ae66246da0726c98f582376a22346becfd87cc80085b35f704d121a7e895c8",
+        "segmentation_version": "approved-html-v1-f8ae66246da0726c98f582376a22346b",
+        "manifest_version": "7cb2fb6cb86237f6bfe921f3",
+        "canonical_pages": 9,
+        "ordered_page_identity_sha256": "ac0a2e4ba83a5d9abf5a36c93ec90ce230e03a1c2c95af6313f68c380ae6920c",
+        "front_cover_sha256": "13f20dc26bb559ef6faa803d91ffb182c8bdcea6be89dcf1a03e65f273d4c014",
+        "back_cover_sha256": "1215278e5de5b27cd3ca0ca61ec929754aeeb21946a3899c77309058610262c6",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-door-in-the-wall": {
       "catalogue_clearance_20261002_review": {
@@ -9008,14 +9747,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
       "current_content_sha256": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-door-in-the-wall",
+        "title": "The Door in the Wall",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-door-in-the-wall",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-door-in-the-wall-reader-cover-successor",
+        "record_sha256": "4a9274fb308758c166588a428e2916d03de24a983c106b2711c401576eec4eb6",
+        "segmentation_version": "approved-html-v1-4a9274fb308758c166588a428e2916d0",
+        "manifest_version": "7972d29b957b596cca3d8ce2",
+        "canonical_pages": 12,
+        "ordered_page_identity_sha256": "314711934dd3d2b2e2f9bf97a664ad28b02d73890e78bc8b2a6c0a0dfae40b1c",
+        "front_cover_sha256": "573d4ab0cfea235c441045293c4ab4e28be4ba50cc60e20e0301b164aaa36767",
+        "back_cover_sha256": "bfb3be25d2760b0167dbf1ad9a80a22e36d37ec976ccb5b38c5583b771b37627",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-five-orange-pips": {
       "catalogue_clearance_20261002_review": {
@@ -9060,14 +9825,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
       "current_content_sha256": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-furnished-room",
+        "title": "The Furnished Room",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-furnished-room",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-furnished-room-reader-cover-successor",
+        "record_sha256": "1aa5c784555a352c33e8881149f7639488628b9901865437487ddc528c511193",
+        "segmentation_version": "approved-html-v1-1aa5c784555a352c33e8881149f76394",
+        "manifest_version": "a5f8a3d8cc1b544322a2dad9",
+        "canonical_pages": 5,
+        "ordered_page_identity_sha256": "77e74ee92e80c4e32eeea967d2b7bb7b78c0bd931a7eafaea9ae06f42c536f1d",
+        "front_cover_sha256": "288a1a717bbd1a000dae21c700c6a32b20b27768d045b3ec83fdb9409bb10fc0",
+        "back_cover_sha256": "c83bd212ef8bb75a4048251fb4111fd6e146e9ab2432cf715e092fc227263423",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-imp-of-the-perverse": {
       "catalogue_clearance_20261002_review": {
@@ -9086,14 +9877,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
       "current_content_sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-imp-of-the-perverse",
+        "title": "The Imp of the Perverse",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-imp-of-the-perverse",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-imp-of-the-perverse-reader-cover-successor",
+        "record_sha256": "490d49a58ead9dcf8d479b46d47d34452af5f7a7ad92d33cb43e9c828570de10",
+        "segmentation_version": "approved-html-v1-490d49a58ead9dcf8d479b46d47d3445",
+        "manifest_version": "81cf1176cb9a984f61f11729",
+        "canonical_pages": 5,
+        "ordered_page_identity_sha256": "64307af69b4de041987f55436c5626b15a8ffdcf08ac3063979ba21daac38aeb",
+        "front_cover_sha256": "71c298d1aebcb814cd111c29205c13c73461abad1c423584243ddb7109c7d067",
+        "back_cover_sha256": "e44da81d0dffb6d2ed24dc52e0be0a219c0231c818e789441637778d2211b9bf",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-legend-of-sleepy-hollow": {
       "catalogue_clearance_20261002_review": {
@@ -9112,14 +9929,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
       "current_content_sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-legend-of-sleepy-hollow",
+        "title": "The Legend of Sleepy Hollow",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-legend-of-sleepy-hollow",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-legend-of-sleepy-hollow-reader-cover-successor",
+        "record_sha256": "0f463f4caf7d8dab3ea99e6df3f96ac564c29ab61cc7b68378442033c81da8ca",
+        "segmentation_version": "approved-html-v1-0f463f4caf7d8dab3ea99e6df3f96ac5",
+        "manifest_version": "befcd5cbfd615dc5391effb9",
+        "canonical_pages": 22,
+        "ordered_page_identity_sha256": "0fe93ccb42a77af2b29f9eaad03db3f5623a960cccbd4536a890942b0044ec1a",
+        "front_cover_sha256": "cc534675f7879d9a3840adb559b56c17bce9f376221e86df1c6772fa3e08fd65",
+        "back_cover_sha256": "14f5e3951814194eaf100fc628340f4d2a3daf6ef8db76db553eaf4076932bda",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-lifted-veil": {
       "catalogue_clearance_20261002_review": {
@@ -9164,14 +10007,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
       "current_content_sha256": "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-luck-of-roaring-camp",
+        "title": "The Luck of Roaring Camp",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-luck-of-roaring-camp",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-luck-of-roaring-camp-reader-cover-successor",
+        "record_sha256": "58ea66a50eb8008afd5bd2145309cb7d26f4a3b9c8d574705efb8f1eb5457b94",
+        "segmentation_version": "approved-html-v1-58ea66a50eb8008afd5bd2145309cb7d",
+        "manifest_version": "aac5324484cb860ba352fd4f",
+        "canonical_pages": 8,
+        "ordered_page_identity_sha256": "6b6b722d8240b2a549bfd1b2244ed0103d8fb5bf26a4cfb2654f35fae130c16a",
+        "front_cover_sha256": "272a7efbf5f18201fc236c896754d52ee2b4aec5004cb834dc1e1cec5a53de9a",
+        "back_cover_sha256": "87fa0161246a85e203d692ae05af499eaa4348122f8e421454d4301e7cba0e07",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-man-in-a-case": {
       "catalogue_clearance_20261002_review": {
@@ -9190,14 +10059,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
       "current_content_sha256": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-man-in-a-case",
+        "title": "The Man in a Case",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-man-in-a-case",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-man-in-a-case-reader-cover-successor",
+        "record_sha256": "8c6a04322c842c12d4f53ee4ac820e4f3c6fed674f8dd70cb8dcf1d6231f178d",
+        "segmentation_version": "approved-html-v1-8c6a04322c842c12d4f53ee4ac820e4f",
+        "manifest_version": "9ad14ae6bc6312f478486fe7",
+        "canonical_pages": 10,
+        "ordered_page_identity_sha256": "b9df56cc42a701d802562b57ecbf57179b43e880e5d7aa1287f513afdf5f333d",
+        "front_cover_sha256": "41c06474b3633179003693da4fcfa6d7fb138c6967ae73874f7ad4abfaee2aef",
+        "back_cover_sha256": "976bec60c0f18202a0a1f43d97f98c810c02149a747ef2ebfe744b3df84521f2",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-man-with-the-twisted-lip": {
       "catalogue_clearance_20261002_review": {
@@ -9216,14 +10111,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-man-with-the-twisted-lip",
+        "title": "The Man with the Twisted Lip",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-man-with-the-twisted-lip",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-man-with-the-twisted-lip-reader-cover-successor",
+        "record_sha256": "0cb931c15e8f72fe97704039d5ee0652251fce620a50e821cf6d59093b470a21",
+        "segmentation_version": "approved-html-v1-0cb931c15e8f72fe97704039d5ee0652",
+        "manifest_version": "9b76b1975c900de176910e1d",
+        "canonical_pages": 16,
+        "ordered_page_identity_sha256": "10ef08d08768ad583d3d286b3f6984069cb1df2bfdaeb1db49be663807c5cce6",
+        "front_cover_sha256": "7b55b41491483715d7b3ab6025220f8f6cf3d278541a474e6928083476b5ab12",
+        "back_cover_sha256": "32c65c80621fd3ed119934c4e70ff54d8f0ba8c206ae1ee273f3f2bca1817ab4",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-ministers-black-veil": {
       "catalogue_clearance_20261002_review": {
@@ -9242,14 +10163,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
       "current_content_sha256": "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-ministers-black-veil",
+        "title": "The Minister's Black Veil",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-ministers-black-veil",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-ministers-black-veil-reader-cover-successor",
+        "record_sha256": "f5738f44accf4bb3cf5fbe7d1689bf61d82553779bfd15c41280529181ca9a38",
+        "segmentation_version": "approved-html-v1-f5738f44accf4bb3cf5fbe7d1689bf61",
+        "manifest_version": "31ef08cde887999d1bee0abc",
+        "canonical_pages": 10,
+        "ordered_page_identity_sha256": "ba5dc7df00e5a8c22e62218a258e9ed201965ab4a426ab7bdc8382fd04b147bb",
+        "front_cover_sha256": "7cead9082cadce2b775e362223558c32493e2436ddd4b3c8e4ac0c3a32b9c845",
+        "back_cover_sha256": "ebeea33d539a5ceefc4c1e8bde9c5af799dd284f6a901a7e3acfda5b732c5d15",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-murders-in-the-rue-morgue": {
       "catalogue_clearance_20261002_review": {
@@ -9268,14 +10215,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
       "current_content_sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-murders-in-the-rue-morgue",
+        "title": "The Murders in the Rue Morgue",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-murders-in-the-rue-morgue",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-murders-in-the-rue-morgue-reader-cover-successor",
+        "record_sha256": "f7fc64150a1d97f0b461f38159d355a9bafca008b01a039e63be94952860696d",
+        "segmentation_version": "approved-html-v1-f7fc64150a1d97f0b461f38159d355a9",
+        "manifest_version": "352e8cad44cbf567e4606a62",
+        "canonical_pages": 25,
+        "ordered_page_identity_sha256": "2d19262a4205c5d1d11dfec51b3ddd947390d6bf92263a0ec0da238edc5550ef",
+        "front_cover_sha256": "2d1301ab1f0d2df55dd7fc17f98aae9a7aaaa8743318668eaf471ed0e9e8be7b",
+        "back_cover_sha256": "d900d27fff3aefb93467e04e73f7ef3e1b48ae787d667bf66b98ffe81e258dbd",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-outcasts-of-poker-flat": {
       "catalogue_clearance_20261002_review": {
@@ -9294,14 +10267,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
       "current_content_sha256": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-outcasts-of-poker-flat",
+        "title": "The Outcasts of Poker Flat",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-outcasts-of-poker-flat",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-outcasts-of-poker-flat-reader-cover-successor",
+        "record_sha256": "590a6481cfe8d82e53644e17cbb5057723537259a3329fb6991cab2c73a0b1f8",
+        "segmentation_version": "approved-html-v1-590a6481cfe8d82e53644e17cbb50577",
+        "manifest_version": "f1a52edacdf13bdee7c26cd9",
+        "canonical_pages": 8,
+        "ordered_page_identity_sha256": "3d6ba0a07f1863d22f107f0d451ce17ba8d35090340ca131af42da9c63a7de6a",
+        "front_cover_sha256": "67c4eeffd8ecc6d7b5f820b299df0383ef04f8e201bfe0a63b64e60f1143b07a",
+        "back_cover_sha256": "5626479887b10817bec9ea1c5adf45869459bc54db1dbae855fc095804c4edb2",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-picture-of-dorian-gray": {
       "catalogue_clearance_20261002_review": {
@@ -9379,14 +10378,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
       "current_content_sha256": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-purloined-letter",
+        "title": "The Purloined Letter",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-purloined-letter",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-purloined-letter-reader-cover-successor",
+        "record_sha256": "13aefbc7262c319bd5be014edb999920cc24d8bedf2ff3dad83b2b8bfd255f4c",
+        "segmentation_version": "approved-html-v1-13aefbc7262c319bd5be014edb999920",
+        "manifest_version": "448760973c2f9c6c1c042aba",
+        "canonical_pages": 13,
+        "ordered_page_identity_sha256": "f8ab1f7b2f7b7829338b52fe94a8606d929280a54df3208ba7fd830e0c5eace6",
+        "front_cover_sha256": "7159097048491dcdcb58c55fd80bb4a8bc2409d1484969b0ec0fd1603083467c",
+        "back_cover_sha256": "2e65989a50a93642693886a5d85a52dcc61895619f17c0e4a645ddd2e6074bb9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-ransom-of-red-chief": {
       "catalogue_clearance_20261002_review": {
@@ -9405,14 +10430,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b",
       "current_content_sha256": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-ransom-of-red-chief",
+        "title": "The Ransom of Red Chief",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-ransom-of-red-chief",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-ransom-of-red-chief-reader-cover-successor",
+        "record_sha256": "aa643ac6ba938b3d09eaaaac733cefce66b16bd91d7f8e7fa0e388ccea0a2ff6",
+        "segmentation_version": "approved-html-v1-aa643ac6ba938b3d09eaaaac733cefce",
+        "manifest_version": "5ea6220eb15a8a8e1232a7b3",
+        "canonical_pages": 7,
+        "ordered_page_identity_sha256": "90b2063a8b19f940f0de34c795eb30d0f3b69f628180b1208e7ea6e0edac4a73",
+        "front_cover_sha256": "ff9be054869a43043f950631ad83f834cc589af4fddb0b84d6844000522fab57",
+        "back_cover_sha256": "7b5523dd5d74882af01fe3d45fbdc523dd858aedb8f357778cf7d2c185165057",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-red-headed-league": {
       "catalogue_clearance_20261002_review": {
@@ -9457,14 +10508,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
       "current_content_sha256": "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-speckled-band",
+        "title": "The Speckled Band",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-speckled-band",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-speckled-band-reader-cover-successor",
+        "record_sha256": "7b3d5853f0c1197be50beec429146622162c6bb8cbbcda3f54d23f47f1a43e69",
+        "segmentation_version": "approved-html-v1-7b3d5853f0c1197be50beec429146622",
+        "manifest_version": "507ac6795d0a781739076dec",
+        "canonical_pages": 17,
+        "ordered_page_identity_sha256": "aa6cea81fd96b1dd12465951342f4a3d258671268cac3f3ff42a4fa0d3fcd22c",
+        "front_cover_sha256": "ec65f86b7e4489ec15c83c0999466586a6ee8f66784e5f8ca35401a8e8eab2d0",
+        "back_cover_sha256": "4b0bfea9b80cf94fd662e89c4470a6e636720e750017e4da6c05542bd35c7ad8",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-student": {
       "catalogue_clearance_20261002_review": {
@@ -9509,14 +10586,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
       "current_content_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "the-suicide-club",
+        "title": "The Suicide Club",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/the-suicide-club",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-the-suicide-club-reader-cover-successor",
+        "record_sha256": "c65ee9058caf788839323e793c0ef238adda0a0071841f5195e0e0f65d810bd2",
+        "segmentation_version": "approved-html-v1-c65ee9058caf788839323e793c0ef238",
+        "manifest_version": "8cda6c371688c4f77de0e484",
+        "canonical_pages": 54,
+        "ordered_page_identity_sha256": "9985acf5551f28696695d818fc9294c3cd5f3a13496d8add400e8de906f446ed",
+        "front_cover_sha256": "3baddf77926a0acd20a1b59724b2161d3ac9a476506bf39c49e4784ddff6bcb7",
+        "back_cover_sha256": "0ec4b741a41ccc6eabeea030749b0d8e1b332bbb849884a8fc930b6be67dce34",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "the-time-machine": {
       "catalogue_clearance_20261002_review": {
@@ -9613,14 +10716,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d",
       "current_content_sha256": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "to-build-a-fire",
+        "title": "To Build a Fire",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/to-build-a-fire",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-to-build-a-fire-reader-cover-successor",
+        "record_sha256": "01ee551663eda51a96263e37cac90f0b769079e18d766bff633241ec22982bed",
+        "segmentation_version": "approved-html-v1-01ee551663eda51a96263e37cac90f0b",
+        "manifest_version": "c4f3671f825bf4c191fdd337",
+        "canonical_pages": 12,
+        "ordered_page_identity_sha256": "a55016d6995ab235e8ded3a98e51365776d04d8b3b6611dbc3e3eaa71678ba46",
+        "front_cover_sha256": "fcbad9a6eaaa5a9e2e3e7eaec1d2a8ce7826254f73fc4a5503e54e42a4721873",
+        "back_cover_sha256": "ddfe01a2636f9460f3dd0f6b739608f2053ab12e31ef0eb1fae28db306b77650",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "tobermory": {
       "catalogue_clearance_20261002_review": {
@@ -9639,14 +10768,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
       "current_content_sha256": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "tobermory",
+        "title": "Tobermory",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/tobermory",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-tobermory-reader-cover-successor",
+        "record_sha256": "2088e7ccdc649952c50b49d91be905ef435986ee12b13c1e60b92607a40229ed",
+        "segmentation_version": "approved-html-v1-2088e7ccdc649952c50b49d91be905ef",
+        "manifest_version": "d58a559f829a9b68afe51ff4",
+        "canonical_pages": 6,
+        "ordered_page_identity_sha256": "94775420bc12df1cd0720492c74adc8e8153f6ee5b472aa03e4dd4869f65d9f9",
+        "front_cover_sha256": "b6d42ca7af1926503130170604135931e0b26f31fb847d11d7cc87e8cd9340fc",
+        "back_cover_sha256": "6a49e1065f67319f7f539b8009bb7b3ffa7cdcc0aeb7a88f49cabc8a81456de9",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "ward-no-6": {
       "catalogue_clearance_20261002_review": {
@@ -9665,14 +10820,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
       "current_content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "ward-no-6",
+        "title": "Ward No. 6",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/ward-no-6",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-ward-no-6-reader-cover-successor",
+        "record_sha256": "dce37ffd9574d4f3debe0004e196165837e144e36910a017251c52c50966119d",
+        "segmentation_version": "approved-html-v1-dce37ffd9574d4f3debe0004e1961658",
+        "manifest_version": "0ea4bf23b74efe2fdb45d4ee",
+        "canonical_pages": 46,
+        "ordered_page_identity_sha256": "c9b696ed30f5433ab54bc2e44ec596b9f8c9548b8ddcfc7b092f29ec78c464bb",
+        "front_cover_sha256": "5862902bbb623c2786aab03e522c128ca281711f36efff87e7b53a06c3db06a8",
+        "back_cover_sha256": "b1ad56e66ae90460dcb1065d2b8066981525812586a125a792e3239ef538716c",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     },
     "woman-in-white": {
       "catalogue_clearance_20261002_review": {
@@ -9717,14 +10898,40 @@
         "reviewed_at": "2026-10-02T03:48:42.375371+00:00"
       },
       "pre_catalogue_clearance_20261002": {},
-      "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
-      "decision_reason": "Exact local text decision; canonical production registry and live authority unchanged.",
-      "updated_at": "2026-10-02T03:48:42.375371+00:00",
-      "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
-      "public_audio_status": "AUDIO_HIDDEN_UNCHANGED",
+      "latest_decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "decision_reason": "Exact merged/deployed Reader and cover authority, immutable full-page bytes, public endpoints and actual mobile controls all verified.",
+      "updated_at": "2026-11-10T07:24:21.989776+00:00",
+      "public_reader_status": "PUBLICLY_LIVE_FULL_CONTENT_WITH_READING_PASS",
+      "public_audio_status": "AUDIO_NOT_AUTHORIZED",
       "current_source_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
       "current_content_sha256": "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Routine monitoring; preserve India-only Reader permission and existing audio hold.",
+      "production_release_20261110": {
+        "verified_utc": "2026-11-10T07:24:21.989776+00:00",
+        "slug": "young-goodman-brown",
+        "title": "Young Goodman Brown",
+        "status": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+        "reader_url": "https://theearnalism.com/reader/young-goodman-brown",
+        "territories": [
+          "IN"
+        ],
+        "decision_id": "india-20261108-young-goodman-brown-reader-cover-successor",
+        "record_sha256": "632b7c6b47791cdb522abc432a37993ae984059807486c23d26d1258570ad530",
+        "segmentation_version": "approved-html-v1-632b7c6b47791cdb522abc432a37993a",
+        "manifest_version": "5bfd253a6f860b03abd7d9f8",
+        "canonical_pages": 10,
+        "ordered_page_identity_sha256": "1d24347784a0aebc0380b54076eaac7ae61ab2c386ac4a1cd78265db3e986585",
+        "front_cover_sha256": "840ce982e482297c125ac6e617238efa111c48da6422e19b369195db4fa84b2a",
+        "back_cover_sha256": "265bde7a197be5b9ba945227c8ba61ac7d69baa81ce979c9dfffede24c7a5dff",
+        "public_manifest_and_preview_hashes": "PASS",
+        "anonymous_protected_text_status": 401,
+        "anonymous_audio_manifest_status": 401,
+        "audio_authorized": false,
+        "mobile_page_turns_and_font_sizes": "PASS",
+        "maximum_font_text_fit_and_reachable_navigation": "PASS",
+        "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+        "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955"
+      }
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
@@ -15237,5 +16444,91 @@
     },
     "validation": "All final UAT categories passed on prior head except the outdated exact 52-title Reader expectation. Its historical fixture is preserved; explicit 45-title successor adds exact rights hashes, six Reader/cover uses, India-only and all audio holds. Focused suite 8/8 PASS. Complete required frontend suite 529/529 PASS.",
     "publication": "STILL_PENDING_EXACT_HEAD_CI_MERGE_DEPLOYMENT_AND_PRODUCTION_ACCEPTANCE"
+  },
+  "persisted45_verified_production_release_20261110": {
+    "event": {
+      "timestamp": "2026-11-10T07:24:21.989776+00:00",
+      "scope": "persisted45_reader_release_20261110",
+      "decision": "PRODUCTION_GO_LIVE_READER_ONLY_IN",
+      "source_sha": "402a2d7b04d2d858395ed04c1c364966efb0b922",
+      "release_pr": 661,
+      "new_titles_live": 45,
+      "public_catalogue_count": 97,
+      "canonical_pages_verified": 737,
+      "cover_deliveries_verified": 90,
+      "mobile_readers_verified": 45,
+      "maximum_font_geometry_verified": 45,
+      "rights_held_removed_slugs": [
+        "gitanjali",
+        "nishkriti",
+        "the-metamorphosis"
+      ],
+      "cleanup_counts": {
+        "book_records": 3,
+        "stale_reader_segments": 139,
+        "stale_reader_manifests": 2,
+        "source_files": 290,
+        "b2_api_objects_with_listed_version_absence_verified": 8,
+        "b2_browser_objects_deleted_and_public_404_verified": 19,
+        "cloudinary_cover_origins_deleted": 4,
+        "known_cloudinary_delivery_urls_404": 8,
+        "removed_static_cover_files_not_delivered_as_images": 2,
+        "customer_financial_records_deleted": 0
+      },
+      "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/release-verification.json",
+      "receipt_sha256": "97474e8611f236b1bdc4a3403600ffe5898e43a7f8f47ea34d59c9fe1646b955",
+      "audio_authorized": false,
+      "paid_content_generation_calls_or_actual_payments": 0,
+      "limitation": "Primary B2 API listing remains denied. Signed-in UI scoped removal, exact URL 404s and fresh Mongo absence are verified; no forensic claim about unknown opaque or historical copies.",
+      "next_action": "Reconcile this truthful post-production audit through normal commit/PR process; no additional application deployment is needed for tracking-only changes."
+    },
+    "title_slugs": [
+      "a-retrieved-reformation",
+      "a-wagner-matinee",
+      "feathertop",
+      "markheim",
+      "rappaccinis-daughter",
+      "the-adventure-of-the-abbey-grange",
+      "the-adventure-of-the-beryl-coronet",
+      "the-adventure-of-the-blue-carbuncle",
+      "the-adventure-of-the-copper-beeches",
+      "the-adventure-of-the-dancing-men",
+      "the-adventure-of-the-empty-house",
+      "the-adventure-of-the-engineers-thumb",
+      "the-adventure-of-the-final-problem",
+      "the-adventure-of-the-greek-interpreter",
+      "the-adventure-of-the-noble-bachelor",
+      "the-adventure-of-the-priory-school",
+      "the-adventure-of-the-second-stain",
+      "the-adventure-of-the-solitary-cyclist",
+      "the-ambitious-guest",
+      "the-bet",
+      "the-celebrated-jumping-frog-of-calaveras-county",
+      "the-country-of-the-blind",
+      "the-darling",
+      "the-door-in-the-wall",
+      "the-furnished-room",
+      "the-imp-of-the-perverse",
+      "the-last-leaf",
+      "the-legend-of-sleepy-hollow",
+      "the-luck-of-roaring-camp",
+      "the-man-in-a-case",
+      "the-man-with-the-twisted-lip",
+      "the-masque-of-the-red-death",
+      "the-ministers-black-veil",
+      "the-murders-in-the-rue-morgue",
+      "the-outcasts-of-poker-flat",
+      "the-purloined-letter",
+      "the-ransom-of-red-chief",
+      "the-speckled-band",
+      "the-suicide-club",
+      "the-yellow-wallpaper",
+      "to-build-a-fire",
+      "tobermory",
+      "ward-no-6",
+      "white-fang",
+      "young-goodman-brown"
+    ],
+    "title_count": 45
   }
 }
