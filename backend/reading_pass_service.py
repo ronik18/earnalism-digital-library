@@ -19,8 +19,10 @@ from pymongo.errors import DuplicateKeyError
 
 try:
     from . import audio_acceptance_budget as audio_acceptance
+    from . import paired_audio_acceptance_budget as paired_audio_acceptance
 except ImportError:
     import audio_acceptance_budget as audio_acceptance
+    import paired_audio_acceptance_budget as paired_audio_acceptance
 
 try:  # package import
     from .domain.reading_pass import (
@@ -127,6 +129,8 @@ class ReadingPassService:
         if budget is None and not binding:
             return None
         scope = document.get("scope") or {}
+        if isinstance(budget, dict) and budget.get("schema") == paired_audio_acceptance.SCHEMA:
+            return paired_audio_acceptance.validate_budget(budget, document, starting=starting, now=_now())
         if isinstance(budget, dict) and budget.get("schema") == audio_acceptance.SCHEMA:
             return audio_acceptance.validate_budget(budget, document, starting=starting, now=_now())
         valid = (
@@ -152,10 +156,11 @@ class ReadingPassService:
         return budget
 
     async def _reserve_audio_acceptance_start(self, user_id, budget, mongo_session):
-        if budget is None or budget.get("schema") != audio_acceptance.SCHEMA:
+        if budget is None or budget.get("schema") not in (audio_acceptance.SCHEMA, paired_audio_acceptance.SCHEMA):
             return budget
-        if budget["sessions_started"] >= audio_acceptance.MAXIMUM_SESSIONS:
-            raise ReadingPassError("ACCEPTANCE_SESSION_LIMIT", 403, "The two-session allowance is exhausted.")
+        policy = paired_audio_acceptance if budget["schema"] == paired_audio_acceptance.SCHEMA else audio_acceptance
+        if budget["sessions_started"] >= policy.MAXIMUM_SESSIONS:
+            raise ReadingPassError("ACCEPTANCE_SESSION_LIMIT", 403, "The acceptance session allowance is exhausted.")
         query = {"id": user_id, "role": "user"}
         query.update({f"reader_acceptance_budget.{k}": v for k, v in budget.items()})
         updated = await self.db.users.update_one(query, {"$inc": {
@@ -714,12 +719,15 @@ class ReadingPassService:
                 raise ReadingPassError("PASS_REQUIRED", 403, "A positive Reading Pass balance is required.", balance_seconds=0)
 
             retained_budget = user.get("reader_acceptance_budget") or {}
-            audio_capped = isinstance(retained_budget, dict) and retained_budget.get("schema") == audio_acceptance.SCHEMA
+            audio_capped = isinstance(retained_budget, dict) and retained_budget.get("schema") in (audio_acceptance.SCHEMA, paired_audio_acceptance.SCHEMA)
             if user.get("reader_acceptance_budget") is not None:
                 await self._acceptance_budget({"user_id": user_id, "auth_session_id": auth_session_id, "content_type": content_kind,
                     "content_id": content_id, "scope": scope}, mongo_session, starting=True)
             if audio_capped and transfer:
                 raise ReadingPassError("ACCEPTANCE_TRANSFER_DENIED", 403, "Acceptance sessions cannot transfer.")
+
+            await paired_audio_acceptance.fence_start(
+                self.db, user_id, user.get("reader_acceptance_budget"), mongo_session=mongo_session)
 
             active = await self.db.reading_pass_sessions.find_one(
                 {"user_id": user_id, "status": {"$in": list(ACTIVE_SESSION_STATUSES)}},
@@ -848,7 +856,7 @@ class ReadingPassService:
                 "seconds_consumed": 0,
                 **({"acceptance_test_id": budget["test_id"]} if budget is not None else {}),
                 **({"acceptance_session_ordinal": budget["sessions_started"]}
-                   if budget is not None and budget.get("schema") == audio_acceptance.SCHEMA else {}),
+                   if budget is not None and budget.get("schema") in (audio_acceptance.SCHEMA, paired_audio_acceptance.SCHEMA) else {}),
                 "created_at": now,
                 "updated_at": now,
             }

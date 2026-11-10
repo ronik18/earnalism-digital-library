@@ -1,0 +1,18 @@
+{
+  "schema": "earnalism.paired-acceptance-preparation.v1",
+  "date": "2026-11-10",
+  "scope": "SOURCE_ONLY_NOT_INSTALLED",
+  "base": "f782536db1bf68e94000d3f49f9982aadafb5b35",
+  "lane": 5,
+  "approval_id": "paired-reader-listener-40-20261110",
+  "maximum_wallet_seconds": 40,
+  "maximum_sessions": 1,
+  "historical_observations_consumed": 6,
+  "claims_added": 0,
+  "historical_validators_changed": false,
+  "runtime_acceptance": "NOT_EXECUTED",
+  "tests": "218 passed, 9 opt-in Mongo integration cases skipped across focused and native regression suites; no production/client/network tests",
+  "learning": "Installation and uncapped start must both write the approved member account in a transaction to avoid snapshot write skew. Preserve unique one-shot receipt and account marker; never replay unknown commit or replace retained cap.",
+  "production_operations": 0,
+  "next_action": "Review the exact source candidate and qualify it through the existing integration pipeline; installation and acceptance remain held under no-probes/no-captures/no-deployments instruction."
+}

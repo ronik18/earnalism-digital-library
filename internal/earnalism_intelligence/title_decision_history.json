@@ -16530,5 +16530,12 @@
       "young-goodman-brown"
     ],
     "title_count": 45
+  },
+  "open_window_paired_acceptance_40_20261110": {
+    "scope": "SOURCE_PREPARATION_ONLY",
+    "evidence": "paired_acceptance_40_preparation_20261110.json",
+    "runtime_acceptance": false,
+    "rights_or_publication_change": false,
+    "deployment": false
   }
 }

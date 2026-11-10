@@ -176,16 +176,13 @@ def test_actual_mongo_budget_wallet_ledger_atomicity(monkeypatch, transition):
 
 
 def test_legacy_debit_cannot_bypass_acceptance_scope(monkeypatch):
-    import os
-    os.environ.setdefault('JWT_SECRET', 'synthetic-acceptance-tests')
-    os.environ.setdefault('READING_PASS_TOKEN_SECRET', 'synthetic-acceptance-token-only-for-tests')
     from fastapi import HTTPException
+    from backend.tests.test_open_window_audio_acceptance_budget import server_function
     async def run():
-        from backend import server
         clock, db, _, _ = await fixture(monkeypatch)
-        monkeypatch.setattr(server, 'db', db)
+        apply_debit = server_function('_apply_reading_debit', dict(db=db, HTTPException=HTTPException))
         with pytest.raises(HTTPException) as denied:
-            await server._apply_reading_debit('user-1', 'legacy-fixture', 'Synthetic', 10)
+            await apply_debit('user-1', 'legacy-fixture', 'Synthetic', 10)
         assert denied.value.detail['code'] == 'ACCEPTANCE_REQUIRES_READING_PASS'
         assert db.users.rows[0]['reading_seconds_balance'] == 120
         assert not db.wallet_ledger.rows
