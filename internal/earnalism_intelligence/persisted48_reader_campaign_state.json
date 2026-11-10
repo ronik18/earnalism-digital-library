@@ -1825,7 +1825,8 @@
     "stale_reader_manifests": 2,
     "identified_remote_object_versions": 8,
     "customer_financial_records": 0,
-    "primary_browser_objects": 19
+    "primary_browser_objects": 19,
+    "cloudinary_cover_assets": 4
   },
   "cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cleanup-result.json",
   "production_acceptance_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/release-verification.json",
@@ -1862,5 +1863,27 @@
     "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/primary-gitanjali-cleanup-result.json",
     "scope_limit": "API listing remains denied; no forensic claim for unknown opaque or historical copies. No credentials, permissions, other editions or customer/financial records changed.",
     "production_release": "45 titles still pending exact-head CI and deployment"
+  },
+  "cloudinary_cleanup_receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cloudinary-cleanup-result.json",
+  "cdn_cleanup_status": "FOUR_ORIGINS_ABSENT_AND_ALL_FOUR_PUBLIC_URLS_404",
+  "latest_reader_truth_validation": {
+    "timestamp": "2026-11-10T05:57:18.942617+00:00",
+    "scope": "persisted45_reader_release_20261110",
+    "decision": "Remove exact four surviving Cloudinary cover assets for held Gitanjali/Nishkriti editions and extend final UAT release-truth fixture",
+    "cdn_cleanup": {
+      "assets": 4,
+      "origin_resources": "NOT_FOUND_VERIFIED",
+      "public_cover_urls": [
+        404,
+        404,
+        404,
+        404
+      ],
+      "other_title_references": 0,
+      "receipt_path": "/Users/ronikbasak/.codex/visualizations/2026/11/01/01a19835-95b4-7f13-bfcf-16629ffe2349/persisted45-release-20261110/held3-cloudinary-cleanup-result.json",
+      "no_permission_or_credential_changes": true
+    },
+    "validation": "All final UAT categories passed on prior head except the outdated exact 52-title Reader expectation. Its historical fixture is preserved; explicit 45-title successor adds exact rights hashes, six Reader/cover uses, India-only and all audio holds. Focused suite 8/8 PASS. Complete required frontend suite 529/529 PASS.",
+    "publication": "STILL_PENDING_EXACT_HEAD_CI_MERGE_DEPLOYMENT_AND_PRODUCTION_ACCEPTANCE"
   }
 }
