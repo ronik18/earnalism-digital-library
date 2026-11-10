@@ -2,11 +2,11 @@
 
 # Music audibility, silence and transitions
 
-Use the selected candidate's bound reports, not a historical version's measurements. Current Moon source: `acoustic_editorial_v12`; its v11 base and older sources are historical. Follow [musical direction](MUSIC_DIRECTION.md) for source-event orchestration before downstream automation.
+Use the selected candidate's bound reports, not a historical version's measurements. For future jobs, [musical direction](MUSIC_DIRECTION.md) requires continuous calm instrumental accompaniment from opening through callback, no intentional silent body sections, gentle body-edge fades and a clean handoff before the exact unchanged 3-second END video/sound. Keep narration clear and unchanged. Historical palettes are not automatically continuous. Each new job must select or implement a supported full-body composer and stop before assembly if that treatment is unsupported; this is an implementation check, not another permission gate. Archived Moon acoustic_editorial_v12/v11 rest plans remain historical preservation evidence, not new-job silence defaults.
 
 ## Preserve before measuring
 
-Rebuild from the original score through fresh speech ducking, never from an already automated bed. Preserve `score-ducked-before-automation.wav`, source/output/narration hashes, event plan, gain knots and prior reports. Zero music samples must remain zero; verify declared quiet intervals and preserved zero runs in actual audio, not only configuration. Keep B's narration stem unchanged during score corrections.
+Rebuild from the original score through fresh speech ducking, never from an already automated bed. Preserve `score-ducked-before-automation.wav`, source/output/narration hashes, event plan, gain knots and prior reports. Preserve declared quiet intervals/zero runs when verifying historical source identity. For new jobs, verify actual continuous body-score coverage and gentle edge fades; an overlap-screen exclusion cannot certify coverage or justify an intentional silent body section. Keep B's narration stem unchanged during score corrections.
 
 `mix_score` flush-pads both sidechain inputs, then trims to actual narration duration. The analysis may pad at most one millisecond of rounding and records it; never alter media or widen duration tolerances to conceal truncation.
 
@@ -22,7 +22,7 @@ Rebuild from the original score through fresh speech ducking, never from an alre
 | Re-entry | Actual rest detection and source-aware shaped ramp recorded in report | Judge the combined source shoulder, instrument attack and post-duck ramp |
 | Delivery | Current hashes, stem duration, full decode, safe peaks and downloaded readback | Does not grant musical/listening approval |
 
-The current editorial/v10/v11 source family uses a 0.25-second quintic smootherstep post-duck safety ramp over its existing one-second source shoulders. Earlier registered sources used different ramps; do not infer the actual value from a folder name or automatically stack long fades. Inspect first attack, body and following phrase after every preserved rest. The old one-second gain-chasing controller is superseded.
+The historical editorial/v10/v11 source family uses a 0.25-second quintic smootherstep post-duck safety ramp over its existing one-second source shoulders. Earlier registered sources used different ramps; do not infer the actual value from a folder name or automatically stack long fades. Inspect first attack, body and following phrase after every preserved rest. The old one-second gain-chasing controller is superseded.
 
 Do not optimize one metric by regressing another, erase local flags after a slew pass, or weaken bands to manufacture a pass. Inspect 100 ms onset/return windows, local musical dynamics, soft consonants and complete scored/dry versions at normal volume on actual speakers/headphones. Timing-overlap context can supplement a one-second flag but cannot erase it. Record perceptual judgments separately.
 
@@ -32,7 +32,7 @@ Equal peak level of one-shots does not mean equal sustained loudness. Prefer bou
 
 Use `remix.py` for a fresh music-only edition, preserving narrator/raw/caption hashes and video streams. For combined image/music work, preserve narrator PCM with the explicit expected-hash guard and review fresh video. Global mix normalization/re-encoding means an unchanged narrator stem is not a claim of bit-identical narrator samples inside the new encoded mix.
 
-`music-balance.json` binds current narration/post-duck hashes; `music-automation.json` binds source/output and transition evidence. Non-fixture mixing stops on unresolved balance issues. An explicitly labeled private fixture may retain flagged evidence for engineering but can never publish; do not relabel it. Source/licensing checks, balance, transition, silence, hearing/resemblance and final publication are separate gates. Keep rejected candidates and measured deltas without describing parameter changes as proven audible improvements.
+`music-balance.json` binds current narration/post-duck hashes; `music-automation.json` binds source/output and transition evidence. Non-fixture mixing stops on unresolved balance issues. An explicitly labeled private fixture may retain flagged evidence for engineering but can never publish; do not relabel it. Source/licensing, balance, transition, body coverage/END handoff and hearing/resemblance findings feed the existing consolidated final candidate decision; these internal checks do not create separate owner approval prompts. Keep rejected candidates and measured deltas without describing parameter changes as proven audible improvements.
 
 
 ## Corroborate passage flags with actual speech

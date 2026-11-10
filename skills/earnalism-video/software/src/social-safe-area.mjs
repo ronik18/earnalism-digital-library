@@ -5,6 +5,13 @@ export const portraitReviewProfile = Object.freeze({
   top: 270, bottom: 420, left: 72, right: 180,
 });
 
+// Preserve the existing landscape renderer's composition margins explicitly.
+// This is an Earnalism review reservation, not an official platform guarantee.
+export const landscapeReviewProfile = Object.freeze({
+  id: 'earnalism-landscape-composition-review-v1', width: 1920, height: 1080,
+  top: 48, bottom: 48, left: 70, right: 70,
+});
+
 export function safeContentRect(profile = portraitReviewProfile) {
   const {width, height, top, bottom, left, right} = profile;
   if (![width, height, top, bottom, left, right].every(Number.isFinite) ||

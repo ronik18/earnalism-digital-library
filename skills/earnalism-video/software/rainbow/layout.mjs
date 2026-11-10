@@ -7,7 +7,7 @@ export function rectOverlap(a,b){return a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.
 export function layoutFor(portrait){return portrait?{
  heading:{x:80,y:390,width:820,height:145},diagram:{x:80,y:560,width:820,height:600},
  support:{x:80,y:1180,width:820,height:90},captions:{x:80,y:1285,width:820,height:205},
- headingFont:62,captionFont:47,watermark:{left:600,top:280,width:300},uiProfile:portraitReviewProfile,
+ headingFont:62,captionFont:47,watermark:watermarkLayout(1080,1920),uiProfile:portraitReviewProfile,
 }:{
  heading:{x:90,y:76,width:1340,height:170},diagram:{x:80,y:265,width:1760,height:570},
  support:{x:90,y:850,width:1740,height:75},captions:{x:100,y:950,width:1720,height:110},
