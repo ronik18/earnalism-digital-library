@@ -1,0 +1,113 @@
+--- a/scripts/test_catalogue_clearance_registry_successor.py
++++ b/scripts/test_catalogue_clearance_registry_successor.py
+@@ -277,6 +277,11 @@
+             final=load_open_stage_successor(baseline)['reviewed_registry_sha256'] if OPEN_STAGE_REFERENCE in baseline else stage['reviewed_registry_sha256']
+             if SREDNI_REFERENCE in baseline:final=load_sredni_successor(baseline)['reviewed_registry_sha256']
+             if 'sredni_private_stage_authority_successor_20261103' in baseline:final=_sredni_private_stage(baseline)['reviewed_registry_sha256']
++            if PERSISTED_REFERENCE in baseline:
++                receipt=persisted_successor(baseline)
++                prior=receipt['preserved_predecessor_files'][REGISTRY]
++                self.assertEqual(bindings.sha(EVIDENCE_ROOT/prior['path']),final)
++                final=receipt['reviewed_authority_sha256'][REGISTRY]
+             self.assertEqual(bindings.sha(ROOT/REGISTRY),final)
+         else:self.assertEqual(bindings.sha(ROOT/REGISTRY),successor['reviewed_registry_sha256'])
+         for name,digest in successor['source_evidence_sha256'].items():self.assertEqual(bindings.sha(ROOT/name),digest)
+@@ -409,7 +414,12 @@
+         applied=json.loads((folder/'source-stage-APPLIED.json').read_text())
+         self.assertTrue(applied['applied']);self.assertFalse(applied['public_audio_enabled'])
+         self.assertEqual(len(applied['files']),12)
+-        for path,want in applied['files'].items():self.assertEqual(bindings.sha(ROOT/path),want)
++        for path,want in applied['files'].items():
++            actual=ROOT/path
++            if PERSISTED_REFERENCE in baseline:
++                preserved=persisted_successor(baseline)['preserved_predecessor_files']
++                if path in preserved:actual=EVIDENCE_ROOT/preserved[path]['path']
++            self.assertEqual(bindings.sha(actual),want)
+         current=json.loads((ROOT/'backend/data/controlled_publications/sredni-vashtar/rights_decision.json').read_text())
+         self.assertEqual(r['added_accepted_records'],{current['decision_id']:record_sha256(current)})
+         snapshot=json.loads((folder/'source-stage-SNAPSHOT.private.json').read_text())
+--- a/backend/tests/test_controlled_launch_parity.py
++++ b/backend/tests/test_controlled_launch_parity.py
+@@ -71,6 +71,56 @@
+     'the-wonderful-wizard-of-oz',
+     'book-5704b31005',
+ }
++
++
++PERSISTED45_READER_SLUGS = {
++    'a-retrieved-reformation',
++    'a-wagner-matinee',
++    'feathertop',
++    'markheim',
++    'rappaccinis-daughter',
++    'the-adventure-of-the-abbey-grange',
++    'the-adventure-of-the-beryl-coronet',
++    'the-adventure-of-the-blue-carbuncle',
++    'the-adventure-of-the-copper-beeches',
++    'the-adventure-of-the-dancing-men',
++    'the-adventure-of-the-empty-house',
++    'the-adventure-of-the-engineers-thumb',
++    'the-adventure-of-the-final-problem',
++    'the-adventure-of-the-greek-interpreter',
++    'the-adventure-of-the-noble-bachelor',
++    'the-adventure-of-the-priory-school',
++    'the-adventure-of-the-second-stain',
++    'the-adventure-of-the-solitary-cyclist',
++    'the-ambitious-guest',
++    'the-bet',
++    'the-celebrated-jumping-frog-of-calaveras-county',
++    'the-country-of-the-blind',
++    'the-darling',
++    'the-door-in-the-wall',
++    'the-furnished-room',
++    'the-imp-of-the-perverse',
++    'the-last-leaf',
++    'the-legend-of-sleepy-hollow',
++    'the-luck-of-roaring-camp',
++    'the-man-in-a-case',
++    'the-man-with-the-twisted-lip',
++    'the-masque-of-the-red-death',
++    'the-ministers-black-veil',
++    'the-murders-in-the-rue-morgue',
++    'the-outcasts-of-poker-flat',
++    'the-purloined-letter',
++    'the-ransom-of-red-chief',
++    'the-speckled-band',
++    'the-suicide-club',
++    'the-yellow-wallpaper',
++    'to-build-a-fire',
++    'tobermory',
++    'ward-no-6',
++    'white-fang',
++    'young-goodman-brown',
++}
++INDIA_TEXT_RELEASE_SLUGS |= PERSISTED45_READER_SLUGS
+
+
+ REVIEWED_20261002_SLUGS = {
+@@ -429,7 +479,13 @@
+
+         if slug in {"a-ghost-story", "the-tell-tale-heart", "radharani"}:
+             assert dispositions[f"controlled-{slug}"]["status"] == "ACCEPTED"
+-        assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
++        if slug in PERSISTED45_READER_SLUGS:
++            from scripts.catalogue_clearance_release_bindings import assert_current_reviewed_release
++            assert_current_reviewed_release(ROOT, slug)
++            assert launch['title_access_modes'][slug] == 'COMMERCIAL_ENTITLEMENT'
++            assert book.get('audio_enabled') is False and book.get('allowCheckout') is False
++        else:
++            assert registry["commercial_batch_dispositions"][f"controlled-{slug}"]["status"] == "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4"
+
+
+ def test_yugalanguriya_publication_package_is_archived_and_remains_held():
+--- a/backend/tests/test_approved_reader_bootstrap.py
++++ b/backend/tests/test_approved_reader_bootstrap.py
+@@ -104,7 +104,7 @@
+ def test_persisted_plan_exactly_matches_approved_scope_and_registered_decisions():
+     plan = json.loads(PLAN_PATH.read_text())
+     titles = plan["titles"]
+-    assert len(titles) == 52
++    assert len(titles) == 97
+     assert len({entry["slug"] for entry in titles}) == len(titles)
+     assert {entry["slug"] for entry in titles} == set(server.CONTROLLED_LIVE_BOOK_SLUGS)
+     accepted, revoked = server.load_production_registry()
