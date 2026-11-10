@@ -7,10 +7,10 @@
   ],
   "source_duration_seconds": 3,
   "crop": [
-    880,
-    264,
-    100,
-    820
+    960,
+    288,
+    60,
+    790
   ],
   "trim_start_seconds": 0.5,
   "frames_per_second": 12,
@@ -24,13 +24,13 @@
   "assets": {
     "earnalism-brand-video-light.gif": {
       "path": "frontend/public/assets/brand/earnalism-brand-video-light.gif",
-      "sha256": "4f638f7b63eb2490fbabace69a73a83bd877d67c3fe3ac9bf533096eb6565ae6",
-      "bytes": 94642
+      "sha256": "069d538274158dfd3385befd9d7a4f87374b5971f34158debd907c6be112dee5",
+      "bytes": 94478
     },
     "earnalism-brand-video-still.png": {
       "path": "frontend/public/assets/brand/earnalism-brand-video-still.png",
-      "sha256": "ffc581123abdf45cabe1bd57b6aaf2aa83e0468069866d87f93993113c108534",
-      "bytes": 76886
+      "sha256": "bbbce7b38de4b4714fdfa60530cdeb5e5f646e52b412ec0fcfde5b47e621d0ce",
+      "bytes": 66980
     }
   }
 }
