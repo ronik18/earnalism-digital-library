@@ -172,3 +172,16 @@ test('browser gesture rejection leaves the ready Play button available', async (
   await click('Play approved audiobook');
   expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(2);
 });
+
+test('a free preview starts fresh and never overwrites saved member listening progress', async () => {
+  const key = `earnalism.audiobook.progress.v1:${book.slug}`;
+  const saved = JSON.stringify({ packageVersion: version, segmentId: 'segment-1', offset: 5, speed: 1.25 });
+  localStorage.setItem(key, saved);
+  await render({ audioManifest: { ...audioManifest, preview: true, packageVersion: `preview:${version}` } });
+  const audio = container.querySelector('audio'); await metadata(audio);
+  expect(audio.currentTime).toBe(0);
+  state(audio).time = 7;
+  await act(async () => audio.dispatchEvent(new Event('timeupdate')));
+  await act(async () => [...container.querySelectorAll('button')].find(b => b.textContent === 'Stop listening').click());
+  expect(localStorage.getItem(key)).toBe(saved);
+});

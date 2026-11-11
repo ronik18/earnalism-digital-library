@@ -76,7 +76,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   useEffect(() => {
     if (!audioManifest?.valid) return;
-    const saved = loadAudiobookProgress(book.slug, audioManifest.packageVersion);
+    const saved = audioManifest.preview ? null : loadAudiobookProgress(book.slug, audioManifest.packageVersion);
     const savedTrack = saved?.segmentId
       ? selectAudioTrack({ manifest: audioManifest, preferredSegmentId: saved.segmentId })
       : null;
@@ -95,7 +95,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   const persistProgress = useCallback(({ force = false } = {}) => {
     const audio = audioRef.current;
-    if (!audioManifest?.valid || !audio || !activeSegment?.segmentId) return;
+    if (!audioManifest?.valid || audioManifest.preview || !audio || !activeSegment?.segmentId) return;
     if (!force && Date.now() - progressSavedAtRef.current < 5000) return;
     progressSavedAtRef.current = Date.now();
     saveAudiobookProgress(book.slug, {
