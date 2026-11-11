@@ -1,4 +1,4 @@
-import { PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
+import { PROTECTED_PACKAGE_LISTENER_SLUGS } from "./controlledLaunch";
 
 function clean(value = "") {
   return String(value || "").trim();
@@ -98,7 +98,7 @@ export function audiobookReleaseState(book = {}) {
   const hasAudioAsset = Boolean(audioUrl) && !hasStaticAudioAsset;
   const packageManifestUrl = clean(assets.manifest || manifestAudio?.assets?.manifest);
   const packageVersion = clean(manifestAudio?.package_version || book.audiobook_package_version);
-  const hasCataloguePackageBinding = PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(slug)
+  const hasCataloguePackageBinding = PROTECTED_PACKAGE_LISTENER_SLUGS.includes(slug)
     && book.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
     && /^sha256-[a-f0-9]{64}$/.test(book.audiobook_package_version || "")
     && hasReleaseApproval && hasQaApproval;

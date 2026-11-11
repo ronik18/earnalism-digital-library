@@ -5,6 +5,38 @@ import {
   libraryPresentationForBook,
   matchesLibraryFacets,
 } from "./libraryCatalog";
+import { canShowAudioCTA, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
+
+describe("Sredni Listener support without premature publication", () => {
+  const book = {
+    slug: "sredni-vashtar", publication_status: "LIVE_APPROVED", reader_enabled: true,
+    public_route: "/book/sredni-vashtar", reader_url: "/reader/sredni-vashtar",
+    audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED",
+    audio_qa_status: "QA_PASSED", audiobook_delivery_mode: "PROTECTED_PACKAGE_V2",
+    audiobook_package_version: "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e",
+  };
+  test("supports the later server-approved package without declaring it published", () => {
+    expect(PUBLIC_PROTECTED_PACKAGE_SLUGS).not.toContain(book.slug);
+    expect(availabilityOfBook(book)).toBe("approved-audiobook");
+    expect(canShowAudioCTA(book)).toBe(true);
+  });
+  test.each([
+    { audio_enabled: false, audiobook_enabled: false },
+    { audiobook_release_gate: "PENDING" },
+    { audio_qa_status: "BLOCKED" },
+    { audiobook_package_version: "invalid" },
+    { audiobook_delivery_mode: "DIRECT_URL" },
+  ])("does not expose an unqualified candidate %j", (change) => {
+    const candidate = { ...book, ...change };
+    expect(availabilityOfBook(candidate)).toBe("reader-ready");
+    expect(canShowAudioCTA(candidate)).toBe(false);
+  });
+  test("does not expand Listener support to another held title", () => {
+    const candidate = { ...book, slug: "book-d19e96859f" };
+    expect(availabilityOfBook(candidate)).not.toBe("approved-audiobook");
+    expect(canShowAudioCTA(candidate)).toBe(false);
+  });
+});
 
 describe("libraryCatalog", () => {
   it("maps the established reader-ready URL to the existing reader-only filter", () => {

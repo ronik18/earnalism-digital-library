@@ -111,6 +111,9 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
 export const PUBLIC_PAID_COMMERCE_ENABLED = true;
 export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
 export const PUBLIC_PROTECTED_PACKAGE_SLUGS = Object.freeze(["the-open-window", "the-selfish-giant"]);
+// Rendering support is not a publication receipt. Sredni stays hidden until
+// the server supplies its separately qualified enabled package and approvals.
+export const PROTECTED_PACKAGE_LISTENER_SLUGS = Object.freeze([...PUBLIC_PROTECTED_PACKAGE_SLUGS, "sredni-vashtar"]);
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
@@ -335,7 +338,7 @@ export function canShowReadingPass(book = {}) {
 }
 
 export function canShowAudioCTA(book = {}) {
-  const protectedPackage = PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(normalizedSlug(book))
+  const protectedPackage = PROTECTED_PACKAGE_LISTENER_SLUGS.includes(normalizedSlug(book))
     && book.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
     && /^sha256-[a-f0-9]{64}$/.test(book.audiobook_package_version || "");
   if (!PUBLIC_AUDIO_EXPOSURE_ENABLED && !protectedPackage) return false;

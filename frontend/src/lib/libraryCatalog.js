@@ -1,5 +1,5 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
-import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
+import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED, PROTECTED_PACKAGE_LISTENER_SLUGS } from "./controlledLaunch";
 
 import { discoveryMetadataForBook, readingFormOfBook, genresOfBook } from "./libraryDiscovery";
 
@@ -15,7 +15,7 @@ export function languageOfBook(book = {}) {
 
 function publicListeningEnabled(book, audioState) {
   return PUBLIC_AUDIO_EXPOSURE_ENABLED || (
-    PUBLIC_PROTECTED_PACKAGE_SLUGS.includes(book?.slug)
+    PROTECTED_PACKAGE_LISTENER_SLUGS.includes(book?.slug)
     && book?.audiobook_delivery_mode === "PROTECTED_PACKAGE_V2"
     && audioState.canShowControls === true
   );

@@ -16613,5 +16613,24 @@
     "counters_and_limits": "UNCHANGED",
     "bicharak": "OWNER_HOLD",
     "hosted_successor": "PENDING"
+  },
+  "sredni_current_reader_listener_compatibility": {
+    "date": "2026-11-11",
+    "scope": "sredni_current_reader_listener_compatibility",
+    "pr673_merge": "30b7a26f0ffc287dabaff78bffbddb686104539a",
+    "status": "SOURCE_PREPARED_NOT_RELEASED",
+    "obsolete_stage": "dpl_FuoD2iyB3xEQpHS3K4465ZaFtg37",
+    "reason": "Retained1012 frontend lacks45 subsequently live Reader titles; current public package allowlist also excludes Sredni",
+    "source_change": "Separate gated rendering eligibility from published-title records; only Sredni added; server package/QA/release gates unchanged",
+    "tests": {
+      "frontend": 48,
+      "adapter_contract": 7,
+      "audio_only_retirement": 4
+    },
+    "frontend_builds_consumed": 2,
+    "new_native_operations": 0,
+    "new_credit_seconds": 0,
+    "bicharak": "OWNER_HOLD",
+    "next_action": "Qualify focused source PR; obtain bounded replacement frontend allowance before staging; complete actual runtime/title/access/accounting acceptance before LIVE"
   }
 }
