@@ -6022,7 +6022,9 @@ async def lifespan(_app: FastAPI):
     invoice_delivery_task = None
 
     try:
-        if PURCHASE_INVOICE_CONFIG is not None and not acceptance_contained:
+        # Explicit transactional-mail authority is separate from Reader
+        # publication/general-maintenance containment. Never lift those gates.
+        if PURCHASE_INVOICE_CONFIG is not None:
             await purchase_invoice_email.prepare_outbox(db)
             invoice_delivery_task = asyncio.create_task(purchase_invoice_email.delivery_loop(db, PURCHASE_INVOICE_CONFIG))
         yield

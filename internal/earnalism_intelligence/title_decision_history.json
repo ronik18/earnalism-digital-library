@@ -16720,5 +16720,20 @@
     "historical_validators_consumed_limits_and_payment_handlers": "UNCHANGED",
     "deployment": "NOT_PERFORMED",
     "next_action": "Refresh exact source-only binding and hosted CI; do not deploy earlier heads"
+  },
+  "invoice_only_containment_successor_20261111": {
+    "date": "2026-11-11",
+    "scope": "invoice_only_containment_successor",
+    "serving_source": "d0fde2743226fb8854db88384c947daab591cec3",
+    "deployment": "aecfd09a-79ad-4aa8-88de-1c8878e659bd",
+    "observed": "Build, health and lifecycle source identity PASS; retained cap-only-v1 suppressed invoice worker, so invoice dispatch is NOT LIVE",
+    "correction": "Explicit invoice configuration admits only invoice outbox indexes and transactional SMTP task; retain cap-only-v1, Reader-publication/general-maintenance suppression, generic worker flags and all historical limits",
+    "authority": "Owner explicitly authorized completing and deploying invoice feature; no test purchases",
+    "local_validation": {
+      "passed": 170,
+      "skipped": 7
+    },
+    "historical_validators_and_consumed_observations": "UNCHANGED; six remain consumed",
+    "next_action": "Fresh exact-head source-only CI/review/merge using existing invoice branch, then deploy exact merged main and verify SMTP authentication without test message"
   }
 }
