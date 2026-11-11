@@ -17,7 +17,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 
 PUBLIC_TEXT_PAGE_COUNT = 3
-PUBLIC_AUDIO_PREVIEW_SECONDS = 0
+PUBLIC_AUDIO_PREVIEW_SECONDS = 180
 SAFE_INTEGER_MAX = 9_007_199_254_740_991
 
 
@@ -45,7 +45,7 @@ class ReadingPassConfig:
         if self.public_text_pages != PUBLIC_TEXT_PAGE_COUNT:
             raise ValueError("the public text boundary is fixed at three canonical pages")
         if self.public_audio_seconds != PUBLIC_AUDIO_PREVIEW_SECONDS:
-            raise ValueError("audiobooks have no public preview boundary")
+            raise ValueError("audiobook preview must remain fixed at 180 seconds")
         if type(self.text_preparation_seconds) is not int or not 1 <= self.text_preparation_seconds <= 120:
             raise ValueError("text_preparation_seconds must be an integer from 1 to 120")
 

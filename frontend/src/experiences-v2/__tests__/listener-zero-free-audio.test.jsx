@@ -50,15 +50,15 @@ const approvedPublicSafeManifestBook = {
   } },
 };
 
-describe("Listener v2 zero-free-audio contract", () => {
-  test("public audio access is exactly zero seconds and unentitled visitors receive no media element", () => {
+describe("Listener v2 bounded-preview contract", () => {
+  test("unprepared visitors receive no media element until a bounded preview is verified", () => {
     const presentation = listenerReleasePresentation(approvedBook);
-    expect(presentation.publicPreviewSeconds).toBe(0);
+    expect(presentation.publicPreviewSeconds).toBe(180);
     expect(presentation.packageManifestUrl).toBe("/api/reader/book/approved-audio/audiobook/manifest");
     expect(presentation.packageVersion).toBe(packageVersion);
     const html = renderToStaticMarkup(<ListenerExperienceV2 book={approvedBook} access={{ authorized: false }} />);
     expect(html).not.toContain("<audio");
-    expect(html).toContain("Authorize Listening");
+    expect(html).toContain("Play audiobook");
     expect(html).toContain('aria-label="Seek within approved audiobook"');
     expect(html).toContain("disabled");
   });
@@ -82,9 +82,9 @@ describe("Listener v2 zero-free-audio contract", () => {
     expect(presentation.canRender).toBe(true);
     expect(presentation.packageManifestUrl).toBe("");
     expect(protectedAudiobookPackageManifestPath(approvedPublicSafeManifestBook.slug)).toBe("/reader/book/a-ghost-story/audiobook/manifest");
-    expect(presentation.publicPreviewSeconds).toBe(0);
+    expect(presentation.publicPreviewSeconds).toBe(180);
     const html = renderToStaticMarkup(<ListenerExperienceV2 book={approvedPublicSafeManifestBook} access={{ authorized: false }} />);
-    expect(html).toContain("Authorize Listening");
+    expect(html).toContain("Play audiobook");
     expect(html).not.toContain("<audio");
   });
 

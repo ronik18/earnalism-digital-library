@@ -343,3 +343,34 @@ export function selectAudioTrack({
     chunked: false,
   };
 }
+
+// Public previews have their own contract. Never relax the protected-package validator.
+export function normalizeAudioPreviewManifest(raw, { expectedSlug, expectedPackageVersion } = {}) {
+  const invalid = () => emptyAudioManifest(raw, 'Invalid bounded public preview');
+  if (raw.schema_version !== 'audiobook_preview.v1' || raw.slug !== expectedSlug
+      || raw.package_version !== expectedPackageVersion || !/^sha256-[a-f0-9]{64}$/.test(raw.package_version || '')
+      || !Array.isArray(raw.segments) || !raw.segments.length || raw.segments.length > 64) return invalid();
+  let duration = 0;
+  const seen = new Set();
+  const tracks = [];
+  for (const [index, segment] of raw.segments.entries()) {
+    const path = `/api/reader/book/${encodeURIComponent(raw.slug)}/audiobook/preview/packages/${encodeURIComponent(raw.package_version)}/segments/${encodeURIComponent(segment.segment_id)}`;
+    if (!/^[a-zA-Z0-9_-]+$/.test(segment.segment_id || '') || seen.has(segment.segment_id)
+        || sameOriginPackagePath(segment.audio_url) !== path
+        || !Number.isSafeInteger(segment.duration_ms) || segment.duration_ms <= 0
+        || segment.cumulative_start_ms !== duration) return invalid();
+    seen.add(segment.segment_id);
+    const chunk = { segmentId: segment.segment_id, order: index, audioUrl: path, timestampsUrl: '',
+      cumulativeStartMs: duration, durationMs: segment.duration_ms };
+    const track = tracks[tracks.length - 1];
+    if (track?.chapterId === segment.chapter_id) {
+      track.chunks.push(chunk);
+      track.durationMs += segment.duration_ms;
+    } else tracks.push({ id: segment.segment_id, chapterId: segment.chapter_id, order: index,
+      cumulativeStartMs: duration, durationMs: segment.duration_ms, chunks: [chunk] });
+    duration += segment.duration_ms;
+  }
+  if (duration > 180000 || raw.duration_ms !== duration) return invalid();
+  return { valid: true, preview: true, slug: raw.slug, packageVersion: `preview:${raw.package_version}`,
+    sourcePackageVersion: raw.package_version, durationMs: duration, tracks };
+}

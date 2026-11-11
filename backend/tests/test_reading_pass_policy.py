@@ -22,9 +22,9 @@ from backend.domain.reading_pass import (
 
 def test_preview_boundaries_are_canonical_and_fixed():
     assert [public_text_page(index) for index in range(1, 5)] == [True, True, True, False]
-    assert PUBLIC_AUDIO_PREVIEW_SECONDS == 0
-    assert not public_audio_position(0)
-    assert not public_audio_position(179.999)
+    assert PUBLIC_AUDIO_PREVIEW_SECONDS == 180
+    assert public_audio_position(0)
+    assert public_audio_position(179.999)
     assert not public_audio_position(PUBLIC_AUDIO_PREVIEW_SECONDS)
     assert not public_audio_position(999)
 

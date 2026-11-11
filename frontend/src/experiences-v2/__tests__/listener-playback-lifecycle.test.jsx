@@ -150,3 +150,25 @@ test("retired read-along props cannot expose a customer control", async () => {
   expect(callback).not.toHaveBeenCalled();
   expect(container.querySelector('audio')).not.toBeNull();
 });
+
+test('one Play gesture prepares access and starts when its manifest arrives', async () => {
+  const authorize = jest.fn();
+  await render({ access: { authorized: false }, onAuthorize: authorize });
+  const button = [...container.querySelectorAll('button')].find(item => item.textContent === 'Play audiobook');
+  await act(async () => button.click());
+  expect(authorize).toHaveBeenCalledTimes(1);
+  expect(HTMLMediaElement.prototype.play).not.toHaveBeenCalled();
+  await render({ onAuthorize: authorize });
+  expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1);
+  expect(container.textContent).not.toContain('Authorize Listening');
+});
+
+test('browser gesture rejection leaves the ready Play button available', async () => {
+  const error = jest.fn();
+  HTMLMediaElement.prototype.play.mockRejectedValueOnce(Object.assign(new Error('gesture'), { name: 'NotAllowedError' }));
+  await render({ onBeforePlayback: () => null, onMediaError: error });
+  await click('Play approved audiobook');
+  expect(error).not.toHaveBeenCalled();
+  await click('Play approved audiobook');
+  expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(2);
+});
