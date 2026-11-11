@@ -39,6 +39,12 @@ One task per API process claims Mongo outbox rows atomically across replicas.
 It uses the existing application DB client, one SMTP submission at a time,
 five-second socket timeouts, a 300-second claim lease and at most three attempts
 with bounded delay. No new Mongo client or generic worker pool is created.
+Startup makes one explicit AUTH PLAIN attempt over verified TLS, with no automatic
+fallback to another authentication mechanism. If it fails, the dispatcher exits
+before claiming any invoice or consuming a delivery attempt. Logs expose only a
+fixed stage, exception class and numeric SMTP response code, never provider text
+or credentials. A corrected private configuration needs the controlled release
+restart; there is no automatic authentication-probe loop or counter reset.
 SMTP acceptance marks the row `sent`; it is not proof of inbox placement/read.
 SMTP cannot guarantee exactly-once delivery after an ambiguous acknowledgement.
 A recovered lease can send the same invoice again with the same Message-ID and

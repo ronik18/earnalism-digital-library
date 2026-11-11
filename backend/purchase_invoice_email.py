@@ -65,15 +65,37 @@ def message_for(row, config):
     return msg
 
 
+def _failure_stage(exc):
+    value = getattr(exc, '_invoice_smtp_stage', None)
+    return value if type(value) is str and value in {'CONNECT', 'EHLO', 'STARTTLS', 'TLS_EHLO', 'AUTH'} else 'SUBMIT'
+
+
+def _failure_code(exc):
+    value = getattr(exc, 'smtp_code', None)
+    return value if type(value) is int and 100 <= value <= 599 else None
+
+
 def _connection(config):
-    smtp = smtplib.SMTP(config.host, config.port, timeout=5)
+    smtp = None
+    stage = 'CONNECT'
     try:
+        smtp = smtplib.SMTP(config.host, config.port, timeout=5)
+        stage = 'EHLO'
         smtp.ehlo()
+        stage = 'STARTTLS'
         smtp.starttls(context=ssl.create_default_context())
+        stage = 'TLS_EHLO'
         smtp.ehlo()
-        smtp.login(config.username, config.password)
-    except BaseException:
-        smtp.close()
+        stage = 'AUTH'
+        # One SASL mechanism over verified TLS. SMTP.login() can retry a
+        # rejected password using another mechanism and obscure the first error.
+        smtp.auth('PLAIN', lambda challenge=None: '\0' + config.username + '\0' + config.password,
+                  initial_response_ok=True)
+    except BaseException as exc:
+        if isinstance(exc, Exception):
+            exc._invoice_smtp_stage = stage
+        if smtp is not None:
+            smtp.close()
         raise
     return smtp
 
@@ -151,7 +173,9 @@ async def delivery_loop(db, config):
     except asyncio.CancelledError:
         raise
     except Exception as exc:
-        logger.warning('Purchase invoice SMTP authentication unavailable: %s', type(exc).__name__)
+        logger.warning('Purchase invoice SMTP authentication unavailable: %s stage=%s code=%s; delivery held',
+                       type(exc).__name__, _failure_stage(exc), _failure_code(exc))
+        return  # No queue claim or delivery-attempt consumption without SMTP readiness.
     while True:
         worked = False
         try:
