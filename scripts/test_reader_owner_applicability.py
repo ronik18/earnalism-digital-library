@@ -57,21 +57,32 @@ class ReaderOwnerApplicabilityTests(unittest.TestCase):
   with patch.object(p,'validate',return_value=b['first_guard_pair']),self.assertRaisesRegex(ValueError,'Protected approval must bind exact Reader owner applicability'):
    adapter.validate_approval('promote_frontend',b,{},True,None)
 
+# The retained validator qualifies only this immutable historical controller.
+# A new Listener application must never inherit its old native approval.
+RETAINED_CONSUMER_CONTROLLER = 'e547d0163fa8d1f59891724e2717fb1526fd4ed6'
+
 class CommittedSourceEquivalenceTests(unittest.TestCase):
  def blobs(self):
   from scripts.purchase_guard_source import _git_blob
   root=Path(__file__).resolve().parents[1]
-  # Actual fixed committed server blobs; operator consumer files are inspected
-  # from the candidate checkout so this test also works before its first commit.
+  # Actual fixed server AND consumer blobs. Current application changes are
+  # separately required to fail this historical native-equivalence claim.
   def blob(_,ref,path):
    if ref in (p.HISTORICAL_CLOSED,p.CURRENT_CLOSED):return _git_blob(root,ref,path)
-   return (root/path).read_bytes()
+   return _git_blob(root,RETAINED_CONSUMER_CONTROLLER,path)
   return blob
  def run_equivalence(self,blob=None):
-  b={'source_root':str(Path(__file__).resolve().parents[1]),'controller_source_sha':'a'*40,'source_sha':p.CURRENT_CLOSED}
+  b={'source_root':str(Path(__file__).resolve().parents[1]),'controller_source_sha':RETAINED_CONSUMER_CONTROLLER,'source_sha':p.CURRENT_CLOSED}
   with patch('scripts.purchase_guard_source._git_blob',side_effect=blob or self.blobs()):return p.reader_source_equivalence(b)
- def test_actual_fixed_committed_module_and_current_consumer(self):
+ def test_actual_fixed_committed_module_and_retained_consumer(self):
   self.assertRegex(self.run_equivalence(),r'^[a-f0-9]{64}$')
+ def test_current_listener_cannot_inherit_retained_native_approval(self):
+  original=self.blobs();root=Path(__file__).resolve().parents[1]
+  def current(repo,ref,path):
+   if ref==RETAINED_CONSUMER_CONTROLLER:return (root/path).read_bytes()
+   return original(repo,ref,path)
+  with self.assertRaisesRegex(ValueError,'Reviewed retirement consumer source differs'):
+   self.run_equivalence(current)
  def test_protected_handler_or_global_change_rejected(self):
   original=self.blobs()
   def changed(root,ref,path):
