@@ -5,7 +5,7 @@ import {
   libraryPresentationForBook,
   matchesLibraryFacets,
 } from "./libraryCatalog";
-import { canShowAudioCTA, PUBLIC_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
+import { canShowAudioCTA, PUBLISHED_PROTECTED_PACKAGE_SLUGS } from "./controlledLaunch";
 
 describe("Sredni Listener support without premature publication", () => {
   const book = {
@@ -16,7 +16,7 @@ describe("Sredni Listener support without premature publication", () => {
     audiobook_package_version: "sha256-8185d1b2e20ea325e0a5cfdcf5346f7511c1ccf49937a438f1305ba7566c383e",
   };
   test("supports the later server-approved package without declaring it published", () => {
-    expect(PUBLIC_PROTECTED_PACKAGE_SLUGS).not.toContain(book.slug);
+    expect(PUBLISHED_PROTECTED_PACKAGE_SLUGS).not.toContain(book.slug);
     expect(availabilityOfBook(book)).toBe("approved-audiobook");
     expect(canShowAudioCTA(book)).toBe(true);
   });

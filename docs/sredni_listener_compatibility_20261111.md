@@ -9,7 +9,8 @@ from `1012e3a3`. That source lacks the 45 Reader titles subsequently added to
 current library. Keep its original receipts and consumed operation counts.
 
 The current public package list still records only Open Window and Selfish
-Giant. `PROTECTED_PACKAGE_LISTENER_SLUGS` adds rendering support for Sredni
+Giant. `PUBLISHED_PROTECTED_PACKAGE_SLUGS` preserves that record while the
+existing `PUBLIC_PROTECTED_PACKAGE_SLUGS` rendering eligibility adds Sredni
 without changing that publication record, the global audio switch, rights,
 book/source files or server metadata. Library/Book/Listener controls still need
 the server's enabled protected package, valid immutable package version and
