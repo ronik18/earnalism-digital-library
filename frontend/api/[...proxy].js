@@ -214,7 +214,7 @@ module.exports = async function releaseProxy(req, res) {
       res.setHeader("CDN-Cache-Control", "no-store");
       res.setHeader("Vercel-CDN-Cache-Control", "no-store");
     }
-    const audioSegment = /^\/api\/reader\/book\/[^/]+\/audiobook\/packages\/[^/]+\/segments\/[^/]+$/.test(incoming.pathname);
+    const audioSegment = /^\/api\/reader\/book\/[^/]+\/audiobook\/(?:preview\/)?packages\/[^/]+\/segments\/[^/]+$/.test(incoming.pathname);
     if (req.method === "GET" && audioSegment && response.ok
       && /^audio\//i.test(response.headers.get("content-type") || "") && response.body) {
       // Forward this already-authorized segment incrementally. Keep all access,
