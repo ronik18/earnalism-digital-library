@@ -137,3 +137,7 @@
 /* Mobile text inflation must not diverge between offscreen measurements and
    visible fragments. Reader size controls and browser zoom remain available. */
 .reader-v2__body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Generated spaces preserve canonical source offsets at legacy line seams.
+   Use the same rule in measurement and displayed Range fragments. */
+.reader-v2__body .reader-v2__soft-wrap::before { content: " "; white-space: normal; }

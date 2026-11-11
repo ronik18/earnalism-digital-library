@@ -1,4 +1,7 @@
-import { createElement, Fragment, useMemo } from "react";
+import { createContext, createElement, Fragment, useContext, useMemo } from "react";
+import { reflowLegacyProse } from "./proseReflow";
+
+export const ReaderContentLayout = createContext({ genre: "", layout: "" });
 
 const OMIT = new Set(["script", "style", "iframe", "object", "embed", "form", "input", "button", "textarea", "select", "meta", "link", "svg", "math", "template"]);
 const ALLOWED = new Set(["p", "div", "section", "article", "span", "h1", "h2", "h3", "h4", "h5", "h6", "br", "hr", "strong", "b", "em", "i", "u", "s", "sub", "sup", "small", "blockquote", "pre", "code", "ul", "ol", "li", "dl", "dt", "dd", "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "figure", "figcaption", "a", "img"]);
@@ -68,6 +71,10 @@ function renderNode(node, key) {
   const children = [...node.childNodes].map((child, index) => renderNode(child, `${key}-${index}`));
   if (!ALLOWED.has(tag)) return createElement(Fragment, { key }, ...children);
   const props = { key };
+  if (node.dataset.readerSoftWrap === "true") {
+    props.className = "reader-v2__soft-wrap";
+    props["data-reader-soft-wrap"] = "true";
+  }
   if (tag === "td" || tag === "th") {
     ["colspan", "rowspan"].forEach((attribute) => {
       const count = Number(node.getAttribute(attribute));
@@ -90,11 +97,14 @@ function renderNode(node, key) {
   return createElement(tag, props, ...children);
 }
 
-export function ReaderContent({ html = "" }) {
+export function ReaderContent({ html = "", genre, layout }) {
+  const inherited = useContext(ReaderContentLayout);
+  const resolvedGenre = genre ?? inherited.genre;
+  const resolvedLayout = layout ?? inherited.layout;
   const content = useMemo(() => {
     if (typeof document === "undefined") return String(html);
-    return [...readableFragment(html).childNodes].map((node, index) => renderNode(node, String(index)));
-  }, [html]);
+    return [...reflowLegacyProse(readableFragment(html), { genre: resolvedGenre, layout: resolvedLayout }).childNodes].map((node, index) => renderNode(node, String(index)));
+  }, [html, resolvedGenre, resolvedLayout]);
   return createElement(Fragment, null, content);
 }
 

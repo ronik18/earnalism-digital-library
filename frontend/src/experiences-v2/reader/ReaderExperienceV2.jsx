@@ -5,7 +5,7 @@ import "./reader-v2.css";
 import "./reader-pagination.css";
 import ReaderOpening from "./ReaderOpening";
 import useAuthorizedBookMap from "./useAuthorizedBookMap";
-import { ReaderContent, inlineEmphasis, readerIndexBoundary } from "./readerContent";
+import { ReaderContent, ReaderContentLayout, inlineEmphasis, readerIndexBoundary } from "./readerContent";
 import useVisualPagination from "./useVisualPagination";
 import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
@@ -362,10 +362,13 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
 
   const turnVisualPage = useCallback((direction) => {
     if (busy || pagination.pending || layoutError) return;
-    const next = visualIndex + direction;
+    // A larger font can move a retained free-preview anchor beyond its three
+    // visual pages. Back must return to the last free page, not ask to buy
+    // access to another still-blocked page on the way back.
+    const next = publicVisualPreview && direction < 0 && visualIndex >= 3 ? 2 : visualIndex + direction;
     if (next >= 0 && next < visualTotal) changeAnchor(pagination.pages[next].anchor ?? pagination.pages[next].start);
     else requestPage(direction < 0 ? (previousWindow ?? windowFirst - 1) : (nextWindow ?? windowLast + 1), direction < 0 ? 'end' : 0);
-  }, [busy, pagination, visualIndex, visualTotal, changeAnchor, requestPage, layoutError, previousWindow, nextWindow, windowFirst, windowLast]);
+  }, [busy, pagination, visualIndex, visualTotal, publicVisualPreview, changeAnchor, requestPage, layoutError, previousWindow, nextWindow, windowFirst, windowLast]);
   const [pageTurn, setPageTurn] = useState({ page, index: visualIndex, direction: "next" });
   if (pageTurn.page !== page || pageTurn.index !== visualIndex) setPageTurn({ page, index: visualIndex, direction: page < pageTurn.page || (page === pageTurn.page && visualIndex < pageTurn.index) ? "previous" : "next" });
   const canvasRef = useRef(null);
@@ -393,6 +396,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const meterMax = publicVisualPreview ? Math.min(3, Math.max(1, visualTotal)) : bookMap.complete ? bookMap.total : Math.max(1, visualTotal);
 
   return (
+    <ReaderContentLayout.Provider value={{ genre: metadata.genre || model.book?.category_slug || "", layout: model.book?.reader_layout || "" }}>
     <ExperienceShell className="reader-v2 reader-quiet-folio" labelledBy="reader-v2-title">
       <div ref={folioRef} className="reader-folio" data-reader-theme={settings.theme} data-focus-mode={settings.focusMode} data-native-fullscreen={fullscreen}>
         <div className="reader-folio__surface" inert={overlayOpen ? true : undefined}>
@@ -526,5 +530,6 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         <div className="reader-folio__print-license"><LicensedTextNotice book={model.book} /></div>
       </div>
     </ExperienceShell>
+    </ReaderContentLayout.Provider>
   );
 }
