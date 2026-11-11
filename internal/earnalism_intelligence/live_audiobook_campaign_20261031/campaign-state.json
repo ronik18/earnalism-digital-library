@@ -772,5 +772,30 @@
     "new_credit_seconds": 0,
     "bicharak": "OWNER_HOLD",
     "next_action": "Qualify focused source PR; obtain bounded replacement frontend allowance before staging; complete actual runtime/title/access/accounting acceptance before LIVE"
+  },
+  "sredni_pr674_source_binding_repair": {
+    "date": "2026-11-11",
+    "scope": "sredni_pr674_source_binding_repair",
+    "failed_head": "fa9f0cc0f563e213e1d6f37098f581ddae77a7c0",
+    "failed_runs": [
+      42953596408,
+      42953596692,
+      42953596647
+    ],
+    "cause": "Intentional UI eligibility change invalidated old Library fingerprint; modifying shared audioReleaseSafety also invalidated retained retirement-source proof",
+    "correction": "Restore audioReleaseSafety and libraryCatalog to exact merged-main bytes; preserve two published titles separately from gated render eligibility; retain historical baseline and add exact b1d35775 source successor; rebind both visual workflow authorities to actual frontend digest",
+    "library_surface": "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47",
+    "production_surface": "89cd452ee69b9f31042c64cb923507b2425d3410b6295da37bd953b239354130",
+    "local_checks": {
+      "ui_tests": 48,
+      "baseline_tool_cases": 26,
+      "reader_applicability_tests": 12,
+      "reader_applicability_subtests": 19,
+      "workflow_contract_cases": 46
+    },
+    "frontend_replacement_owner_answer": "Approve bounded frontend replacement",
+    "native_operations": 0,
+    "counters": "UNCHANGED; owner amendment retained but not yet implemented in controller",
+    "bicharak": "OWNER_HOLD"
   }
 }
