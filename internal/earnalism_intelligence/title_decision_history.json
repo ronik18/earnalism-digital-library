@@ -16678,5 +16678,31 @@
     "new_runtime_operations": 0,
     "bicharak": "OWNER_HOLD",
     "next_action": "Complete PR674 exact-head checks/review; implement explicit approved frontend amendment in existing controller and supported pending-component reconciliation before native writes; preserve every old proof/counter and no new startup claim"
+  },
+  "sredni_abort_only_initial_observation_admission": {
+    "date": "2026-11-11",
+    "scope": "sredni_abort_only_initial_observation_admission",
+    "status": "SOURCE_TESTED_NOT_EXECUTED",
+    "base": "55d7db0f5974ceec9472e489608834dca96b3582",
+    "owner_scope": "Existing initial abort-only own-member/Sredni observation permission; no new authority",
+    "defect": "Read-only initial observation incorrectly required startup/recovery/private-stage write readiness and conflated operator version with serving version",
+    "fix": "Explicit observe-only source/execution mode, separate local observer checksum, same owner/member/descriptor/package/source/freshness/private execution/journal checks; every mutation retains full readiness",
+    "local_validation": {
+      "passed": 260,
+      "opt_in_database_skipped": 6,
+      "network": "DISABLED",
+      "skill_validation": "PASS_REPOSITORY_SOURCE_ONLY"
+    },
+    "actual_db_reads": 0,
+    "actual_grants_or_playback": 0,
+    "native_operations": 0,
+    "original_native_counts": {
+      "backend": 1,
+      "frontend": 2,
+      "stage_builds": 2
+    },
+    "pending_component": "802d0473580556086e23fff24e06a47a0a88bb2b89f74c72fcbfc39881fd2713",
+    "bicharak": "OWNER_HOLD",
+    "next_action": "Exact inventory and hosted checks before merge; then qualify genuine current read-only packet and original prior-intent lineage before any bounded observation. No new startup claim or replay."
   }
 }

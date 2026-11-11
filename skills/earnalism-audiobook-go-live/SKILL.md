@@ -35,6 +35,19 @@ do not create a new controller or deployment per title. Read-along, narration-li
 highlighting and text-linked audio navigation remain retired. Use source-bound
 NOT_APPLICABLE for actual nonconsumers; preserve native media/chapter controls.
 
+Read original operation counters before dispatch; cached checkpoints may omit a
+later attempted or pending component. Never replay it or promote an obsolete
+frontend to clear the journal. Preserve all currently released Reader titles.
+A new owner allowance needs supported controller admission, not a counter reset.
+
+Separate an explicitly authorized abort-only initial own-metadata observation
+from grant, namespace, release and charging writes. The read-only Sredni mode
+still requires current member/source evidence, exact scope, a separately pinned
+observer version, private execution authority and the original one-shot journal.
+It produces no startup/recovery PASS, grant or available-credit claim. Every
+write retains its full readiness checks. Wallet balance and visible history do
+not establish the remaining campaign allowance; never start playback from them.
+
 No instruction here grants synthesis, allocation, inference/transfer, storage-key,
 deployment or customer-credit authority. Keep hard limits and unknown-outcome
 no-replay rules; never reset a consumed budget or overwrite original failures.

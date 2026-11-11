@@ -11634,8 +11634,8 @@
     },
     {
       "path": "sredni_initial_review_authority.py",
-      "bytes": 9335,
-      "sha256": "61d26aef70d936b64f09bdb22480f1a5af0b24fc26297411835369e79cf252dd"
+      "bytes": 10183,
+      "sha256": "f12bdb372f7b233108ebedb68287f22396d55b279f3537d917e78cd841318b9e"
     },
     {
       "path": "sredni_initial_review_operator.py",
@@ -11644,8 +11644,8 @@
     },
     {
       "path": "sredni_initial_review_operator_cli.py",
-      "bytes": 8075,
-      "sha256": "69bca4768c8cdaac4bab90e1ef6b71ed5b34847a3ffdf65126265e13d059ad77"
+      "bytes": 8572,
+      "sha256": "02f63ae78230f5fa80a46d66d765ae684f3bec535c7dfb33bc647bd3a7ebebff"
     },
     {
       "path": "sredni_initial_review_profile.py",
@@ -11713,5 +11713,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "4f30fbb79ab5f457a71dee0a1e7ce877a900a1c0b33d5c5737c096e09fe6bc9f"
+  "expected_sha256": "fe00ee572be0e4078d5118d3e19086b9a05abbe61541f72dfb6da01de40a1bde"
 }
