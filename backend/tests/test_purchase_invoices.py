@@ -210,3 +210,21 @@ def test_invoice_worker_cancels_before_database_shutdown():
         assert events.index('invoice_prepare')<events.index('invoice_cancelled')
         assert events.index('invoice_cancelled')<events.index('close_backends')<events.index('raw_close')
     asyncio.run(run())
+
+
+def test_invoice_index_startup_failure_still_closes_database_and_preserves_error():
+    from types import SimpleNamespace
+    from backend.tests.test_reading_pass_admission_wiring import namespace
+    async def run():
+        events=[];ns=namespace(events);error=PermissionError('synthetic index denial')
+        async def reader(): pass
+        async def prepare(db): raise error
+        async def forbidden(*a): raise AssertionError('worker must not start')
+        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:False,
+            _initialize_authorized_reader_release=reader,purchase_invoice_email=SimpleNamespace(
+                prepare_outbox=prepare,delivery_loop=forbidden))
+        with pytest.raises(PermissionError) as got:
+            async with ns['context'](None): raise AssertionError('startup must not yield')
+        assert got.value is error
+        assert events.index('close_backends')<events.index('raw_close')
+    asyncio.run(run())

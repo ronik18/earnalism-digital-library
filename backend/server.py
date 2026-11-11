@@ -6019,12 +6019,12 @@ async def lifespan(_app: FastAPI):
         logger.info("Startup database maintenance suppressed (acceptance_containment=%s).", acceptance_contained)
     _schedule_home_surface_warmup()
     approved_reader_task = None if acceptance_contained else asyncio.create_task(_initialize_authorized_reader_release())
-    if PURCHASE_INVOICE_CONFIG is not None and not acceptance_contained:
-        await purchase_invoice_email.prepare_outbox(db)
-    invoice_delivery_task = (asyncio.create_task(purchase_invoice_email.delivery_loop(db, PURCHASE_INVOICE_CONFIG))
-                             if PURCHASE_INVOICE_CONFIG is not None and not acceptance_contained else None)
+    invoice_delivery_task = None
 
     try:
+        if PURCHASE_INVOICE_CONFIG is not None and not acceptance_contained:
+            await purchase_invoice_email.prepare_outbox(db)
+            invoice_delivery_task = asyncio.create_task(purchase_invoice_email.delivery_loop(db, PURCHASE_INVOICE_CONFIG))
         yield
     finally:
         # ----- shutdown -----

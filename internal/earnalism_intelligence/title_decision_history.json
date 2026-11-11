@@ -16707,5 +16707,18 @@
     },
     "payment_runtime_and_historical_validators": "UNCHANGED",
     "next_action": "Fresh exact-head hosted CI; no blind rerun of failed head"
+  },
+  "purchase_invoice_startup_cleanup_20261111": {
+    "date": "2026-11-11",
+    "scope": "purchase_invoice_startup_cleanup",
+    "finding": "Outbox index preparation was awaited before the lifespan cleanup block",
+    "correction": "Prepare indexes and launch worker inside existing try/finally; preserve failure and close existing database resources on index denial",
+    "local_validation": {
+      "passed": 168,
+      "skipped": 7
+    },
+    "historical_validators_consumed_limits_and_payment_handlers": "UNCHANGED",
+    "deployment": "NOT_PERFORMED",
+    "next_action": "Refresh exact source-only binding and hosted CI; do not deploy earlier heads"
   }
 }
