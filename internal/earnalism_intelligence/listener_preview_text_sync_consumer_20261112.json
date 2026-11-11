@@ -4,7 +4,7 @@
   "scope": "Current standalone /listener/:slug audio-only consumer with one-Play paid preparation and server-bounded public previews. Read-along, highlighting, captions and text-linked audio navigation remain retired. This source applicability does not establish recording fidelity, rights, playback, accounting or native recovery acceptance.",
   "sources": {
     "frontend/src/App.js": "dfbe8bc37376a637347ade885a2f3631b2c416b56ffa2a70132b9bb8cbcb3842",
-    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "03a1bb8195d55a6b63b1742895d85651c0ee3d6059d95b7cae2768a6b8c8db5b",
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "34cd565399db2fc3814895c623eff1f277929cb025edfceae6f40960e483766d",
     "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "f58d924929cc830abb662db5bd097698dc99e8ed055e6cfabafbae07b0550c73",
     "frontend/src/lib/audioPackageManifest.js": "927ccfb5647f4a38233314cb9e9536ff30960eb4471efb145522f410697b8c04",
     "frontend/src/lib/audiobookPlayback.js": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
@@ -30,7 +30,7 @@
     "preserved_for": "Immutable historical native retirement and recovery validators"
   },
   "reviewed_source": {
-    "commit": "e79c5acae9fe1c5e85bffd747027445a732e7999",
+    "commit": "6ec311c43ddf7e14672d45968c0487d0e15c7ba5",
     "owner_scope": "Direct P0 instruction for one-Play paid listening and three-minute released-title previews; no read-along feature restoration"
   }
 }
