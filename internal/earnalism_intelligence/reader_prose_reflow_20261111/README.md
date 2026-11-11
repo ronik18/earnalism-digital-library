@@ -2,7 +2,8 @@
 
 Owner request: repair Selfish Giant line-break defects across the production Reader and release promptly. Owner explicitly authorized an isolated P0 branch because the canonical integration checkout contains unrelated dirty Sredni work.
 
-BASE_SHA: 55d7db0f5974ceec9472e489608834dca96b3582
+ORIGINAL_BASE_SHA: 55d7db0f5974ceec9472e489608834dca96b3582
+REBASED_BASE_SHA: d0fde2743226fb8854db88384c947daab591cec3
 Lane: INDEPENDENT presentation-only P0. Preserve the canonical checkout, retained audio retirement consumers, rights, releases, metering, source hashes and transport offsets. No backend deployment is required. This release supplies no Sredni runtime qualification or publication authority.
 
 The stored Selfish Giant packet has double-newline separators at physical source-line widths. The plain-text renderer turns those into paragraphs; single-newline imports similarly create BRs. The shared Reader now projects recognizable fixed-width prose continuations into continuous paragraphs before measurement. Visible Range fragments and background book-map measurement use the same projection. Generated collapsible spaces keep canonical textContent and protected transport coordinates exact. There is no title allowlist or canonical-content rewrite. User-initiated copy materializes only selected seam spaces in the clipboard clone; ordinary/outside/multiple-range selections keep native behavior.
