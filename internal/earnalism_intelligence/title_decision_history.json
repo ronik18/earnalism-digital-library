@@ -16720,5 +16720,12 @@
     "historical_validators_consumed_limits_and_payment_handlers": "UNCHANGED",
     "deployment": "NOT_PERFORMED",
     "next_action": "Refresh exact source-only binding and hosted CI; do not deploy earlier heads"
+  },
+  "reader_prose_reflow_p0_20261111": {
+    "state": "SOURCE_VALIDATED_RELEASE_PENDING",
+    "scope": "Shared Reader presentation; Selfish Giant regression; no canonical source/rights/audio changes",
+    "evidence": "reader_prose_reflow_20261111/README.md",
+    "campaign_effect": "No audiobook publication or campaign state transition",
+    "next_action": "Exact-head PR review/merge and manual frontend deployment; live verification required"
   }
 }
