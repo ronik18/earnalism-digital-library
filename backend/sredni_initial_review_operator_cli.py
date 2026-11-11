@@ -104,7 +104,14 @@ def main(argv=None):
         return 0
     try:
         a,b,r=proof.admit(args.authority,args.authority_sha256,now=datetime.now(timezone.utc),allow_expired_status=args.status)
-        proof.need(r['source']['source_files_sha256']==local_source_sha256(),'LOCAL_SOURCE_NOT_ACTUAL_QUALIFIED_SERVING_SOURCE')
+        # An abort-only observer may be reviewed independently of the running
+        # application. Its own code and the actual serving source remain
+        # separately pinned; this never qualifies either for a metadata write.
+        observer_only = (a.action=='observe'
+                         and r['source'].get('scope')==proof.READ_ONLY_SOURCE_SCOPE)
+        expected_local = (r['execution']['observer_source_files_sha256'] if observer_only
+                          else r['source']['source_files_sha256'])
+        proof.need(expected_local==local_source_sha256(),'LOCAL_SOURCE_NOT_ACTUAL_QUALIFIED_SERVING_SOURCE')
         if not args.execute and not args.status and not args.observe_initial:
             print(json.dumps({'status':'LOCAL_RECEIPTS_PARSED_CURRENT_METADATA_UNVERIFIED','actual_remaining_seconds':None,'database_access':False}))
             return 0
