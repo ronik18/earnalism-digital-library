@@ -54,6 +54,14 @@ try {
           return { text: body?.innerText, soft_wraps: source?.querySelectorAll('.reader-v2__soft-wrap').length, index: Number(viewport.dataset.visualPageIndex), overflow: viewport.scrollHeight > viewport.clientHeight + 1, error: document.body.innerText.includes('could not be fitted safely'), joined: [...source.querySelectorAll('p')].some(p => p.textContent.includes('play on theroad')), font: getComputedStyle(body).fontSize };
         });
         assert.ok(state.text.trim()); assert.ok(state.soft_wraps > 70); assert.ok(state.joined);
+        const copied = await page.getByTestId('reader-reading-text').evaluate(body => {
+          const selection = getSelection(); const range = document.createRange(); range.selectNodeContents(body); selection.removeAllRanges(); selection.addRange(range);
+          const clipboardData = new DataTransfer();
+          body.dispatchEvent(new ClipboardEvent('copy', { bubbles: true, cancelable: true, clipboardData }));
+          selection.removeAllRanges();
+          return { needed: Boolean(body.querySelector('[data-reader-soft-wrap]')), present: clipboardData.getData('text/plain').length > 0, clean: !clipboardData.getData('text/html').includes('data-reader-soft-wrap') };
+        });
+        if (copied.needed) { assert.ok(copied.present); assert.ok(copied.clean); }
         assert.equal(state.overflow, false); assert.equal(state.error, false); assert.equal(state.index, turn);
         report.cases.push({ width, height, size, turn, ...state, text: undefined, result: 'PASS' });
         if (turn < 2) { await page.getByRole('button', { name: 'Next page', exact: true }).click(); await page.waitForFunction(i => Number(document.querySelector('.reader-v2__visual-viewport')?.dataset.visualPageIndex) === i, turn + 1); await ready(); }

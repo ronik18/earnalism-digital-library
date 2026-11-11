@@ -5,7 +5,7 @@ import "./reader-v2.css";
 import "./reader-pagination.css";
 import ReaderOpening from "./ReaderOpening";
 import useAuthorizedBookMap from "./useAuthorizedBookMap";
-import { ReaderContent, ReaderContentLayout, inlineEmphasis, readerIndexBoundary } from "./readerContent";
+import { ReaderContent, ReaderContentLayout, copyReaderSelection, inlineEmphasis, readerIndexBoundary } from "./readerContent";
 import useVisualPagination from "./useVisualPagination";
 import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
@@ -429,7 +429,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
                 <button type="button" onClick={() => requestProtectedContent?.(sourceAnchor?.page || page, sourceAnchor?.offset || 0, sourceAnchor?.revision, publicPreviewEnd)} disabled={busy}>{model.freeReading ? "Continue reading free" : "Continue with Reading Pass"}</button>
               </section> :
               <div key={`${page}:${visualIndex}`} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
-                <div className="reader-v2__body" data-testid="reader-reading-text" data-continuation={fragment?.start > 0} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }} dangerouslySetInnerHTML={{ __html: fragment?.html || '' }} />
+                <div className="reader-v2__body" data-testid="reader-reading-text" onCopy={copyReaderSelection} data-continuation={fragment?.start > 0} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }} dangerouslySetInnerHTML={{ __html: fragment?.html || '' }} />
               </div>}
           </div>
           {model.pageError && <p className="reader-v2__status" role={model.pageErrorDenied ? "alert" : "status"}>

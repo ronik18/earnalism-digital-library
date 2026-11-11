@@ -127,3 +127,43 @@ test('future TXT paragraphs with only a few source lines reflow within their tru
     expect(paragraph.textContent).toBe(readerSourceText(paragraphs[index]));
   });
 });
+
+test('user-initiated copy materializes seam spaces without mutating source coordinates', () => {
+  const { copyReaderSelection } = require('./readerContent');
+  const container = render(html);
+  document.body.append(container);
+  try {
+    const range = document.createRange(); range.selectNodeContents(container);
+    const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+    const copied = {}; const event = { currentTarget: container, clipboardData: { setData: (kind, value) => { copied[kind] = value; } }, preventDefault: jest.fn() };
+    const before = container.textContent;
+    copyReaderSelection(event);
+    expect(copied['text/plain']).toContain('play on the road');
+    expect(copied['text/plain']).toContain('which is Paradise');
+    expect(copied['text/html']).not.toContain('data-reader-soft-wrap');
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(container.textContent).toBe(before);
+    selection.removeAllRanges();
+  } finally { container.remove(); }
+});
+test('copy outside Reader and ordinary selections retain native clipboard behavior', () => {
+  const { copyReaderSelection } = require('./readerContent');
+  const container = render('<p>Unchanged ordinary prose.</p>');
+  document.body.append(container);
+  try {
+    const range = document.createRange(); range.selectNodeContents(container);
+    const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+    const event = { currentTarget: container, clipboardData: { setData: jest.fn() }, preventDefault: jest.fn() };
+    copyReaderSelection(event);
+    expect(event.clipboardData.setData).not.toHaveBeenCalled();
+    expect(event.preventDefault).not.toHaveBeenCalled();
+    const multiple = jest.spyOn(window, 'getSelection').mockReturnValue({ rangeCount: 2 });
+    copyReaderSelection(event);
+    expect(event.clipboardData.setData).not.toHaveBeenCalled();
+    multiple.mockRestore();
+    event.currentTarget = document.createElement('div');
+    copyReaderSelection(event);
+    expect(event.clipboardData.setData).not.toHaveBeenCalled();
+    selection.removeAllRanges();
+  } finally { container.remove(); }
+});

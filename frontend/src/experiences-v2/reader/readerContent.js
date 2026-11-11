@@ -115,3 +115,23 @@ export function paragraphsFromHtml(html = "") {
   container.querySelectorAll("p,h1,h2,h3,h4,h5,h6,div,section,article,li,blockquote,pre").forEach((node) => node.append("\n"));
   return container.textContent.split(/\n+/).map((value) => value.trim()).filter(Boolean);
 }
+
+// CSS-generated seam spaces intentionally do not occupy canonical coordinates.
+// Materialize them only in a user-initiated clipboard projection, so copied
+// prose does not concatenate the words on either side of an old source line.
+export function copyReaderSelection(event) {
+  const selection = window.getSelection();
+  if (!event.clipboardData || selection?.rangeCount !== 1
+    || !event.currentTarget.contains(selection.anchorNode)
+    || !event.currentTarget.contains(selection.focusNode)) return;
+  const fragment = selection.getRangeAt(0).cloneContents();
+  if (!fragment.querySelector('[data-reader-soft-wrap]')) return;
+  fragment.querySelectorAll('[data-reader-soft-wrap]').forEach(node => node.replaceWith(' '));
+  fragment.querySelectorAll('.reader-v2__format-marker').forEach(node => node.remove());
+  const container = document.createElement('div'); container.append(fragment);
+  event.clipboardData.setData('text/html', container.innerHTML);
+  container.querySelectorAll('br').forEach(node => node.replaceWith('\n'));
+  container.querySelectorAll('p,h1,h2,h3,h4,h5,h6,div,li,blockquote,pre').forEach(node => node.append('\n\n'));
+  event.clipboardData.setData('text/plain', container.textContent);
+  event.preventDefault();
+}
