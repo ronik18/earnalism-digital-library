@@ -16693,5 +16693,19 @@
     },
     "historical_validators_and_consumed_limits": "UNCHANGED",
     "next_action": "Exact-head CI/review, serial merge, owner-only Railway SMTP secret entry, exact merged-main deployment; no customer test transaction"
+  },
+  "purchase_invoice_fixture_correction_20261111": {
+    "date": "2026-11-11",
+    "scope": "purchase_invoice_ci_fixture_correction",
+    "failed_head": "9239feb2868c09b2bf881622f89ddf18ad2f2543",
+    "failed_run": 42959222532,
+    "failures": "Five AST lifespan fixtures omitted the new optional invoice configuration; two invoice Mongo cases used an unregistered namespace prefix",
+    "correction": "Supply disabled invoice config to existing synthetic lifespan namespace; use existing registered rpadmit_it_ isolated fixture without changing its allowlist or authority; add containment and worker-shutdown cases",
+    "local_validation": {
+      "passed": 167,
+      "skipped": 7
+    },
+    "payment_runtime_and_historical_validators": "UNCHANGED",
+    "next_action": "Fresh exact-head hosted CI; no blind rerun of failed head"
   }
 }

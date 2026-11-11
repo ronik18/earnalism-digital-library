@@ -146,7 +146,7 @@ def test_email_failure_only_changes_delivery_state_and_redacts_details(attempts,
 def test_real_mongo_credit_invoice_atomicity_and_multi_worker_claim(monkeypatch, rollback):
     from scripts.uat_mongo_fixture import isolated_database
     async def run():
-        async with isolated_database('invoice_synthetic_') as (client, db):
+        async with isolated_database('rpadmit_it_') as (client, db):
             await db.users.insert_one(dict(id='user-1',role='user',status='active',
                 reading_seconds_balance=0,wallet_seconds=0))
             await db.wallet_ledger.create_index('idempotency_key',unique=True)
@@ -176,4 +176,37 @@ def test_real_mongo_credit_invoice_atomicity_and_multi_worker_claim(monkeypatch,
             assert len(sent)==1
             row=await db.purchase_invoices.find_one({})
             assert row['delivery_status']=='sent' and row['attempts']==1
+    asyncio.run(run())
+
+
+def test_acceptance_containment_suppresses_configured_invoice_worker():
+    from types import SimpleNamespace
+    from backend.tests.test_reading_pass_admission_wiring import namespace
+    async def run():
+        events=[];ns=namespace(events)
+        async def forbidden(*a): raise AssertionError('invoice work under containment')
+        ns.update(PURCHASE_INVOICE_CONFIG=object(),purchase_invoice_email=SimpleNamespace(
+            prepare_outbox=forbidden,delivery_loop=forbidden))
+        async with ns['context'](None): pass
+        assert events[-1]=='raw_close'
+    asyncio.run(run())
+
+
+def test_invoice_worker_cancels_before_database_shutdown():
+    from types import SimpleNamespace
+    from backend.tests.test_reading_pass_admission_wiring import namespace
+    async def run():
+        events=[];ns=namespace(events);started=asyncio.Event()
+        async def reader(): pass
+        async def prepare(db): events.append('invoice_prepare')
+        async def worker(db,config):
+            started.set()
+            try: await asyncio.Event().wait()
+            finally: events.append('invoice_cancelled')
+        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:False,
+            _initialize_authorized_reader_release=reader,purchase_invoice_email=SimpleNamespace(
+                prepare_outbox=prepare,delivery_loop=worker))
+        async with ns['context'](None): await asyncio.wait_for(started.wait(),1)
+        assert events.index('invoice_prepare')<events.index('invoice_cancelled')
+        assert events.index('invoice_cancelled')<events.index('close_backends')<events.index('raw_close')
     asyncio.run(run())
