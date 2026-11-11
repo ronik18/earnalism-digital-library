@@ -1,0 +1,132 @@
+{
+  "schema": "earnalism.selfish-giant-boy-cover-successor.v1",
+  "slug": "the-selfish-giant",
+  "scope": "Replacement cover display only; no text, audio, territory, access, price or rights-use expansion.",
+  "preserved_predecessor_files": {
+    "backend/data/rights_decision_registry.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/backend/data/rights_decision_registry.json",
+      "sha256": "c9c28756d6ccbd2361e081270db7a74d839a77df81ae2de7a90faf2f3be21b08"
+    },
+    "internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json",
+      "sha256": "9faf65b418b4299438897060cd18663109b28cd43746a18d780c9b9027fc32a6"
+    },
+    "data/controlled_publications/the-selfish-giant/public_book.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/public_book.json",
+      "sha256": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6"
+    },
+    "data/controlled_publications/the-selfish-giant/publication_manifest.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "sha256": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d"
+    },
+    "data/controlled_publications/the-selfish-giant/cover_provenance.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe"
+    },
+    "data/controlled_publications/the-selfish-giant/cover_approval_evidence.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json",
+      "sha256": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760"
+    },
+    "data/controlled_publications/the-selfish-giant/checksum_manifest.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "sha256": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba"
+    },
+    "data/controlled_publications/the-selfish-giant/rights_decision.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/rights_decision.json",
+      "sha256": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39"
+    },
+    "backend/data/approved_reader_bootstrap.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/backend/data/approved_reader_bootstrap.json",
+      "sha256": "4d036381490604a06d2122938000102948b69cf6584304fb11b85a971744e31a"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/public_book.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/public_book.json",
+      "sha256": "cea4b145293270dc64587fbaf6c38edd0f8e9d9bc3271974fcaf7a49a4845ef6"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "sha256": "c58da7ef37bbab7e4b1dd5b6f3ee8241fa503f21ee278e63e05c630640ca6e5d"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "sha256": "1a120b1e78c70a3181affd8cbb963969ac4c1783ea99460bddb323ba928183fe"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json",
+      "sha256": "e7cf24a6599d070d4f8d753945e7308e5ee3afecb2a451a6a55e8138198d4760"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "sha256": "9883fa098d7efc81eeb5339ab1c94edc06ee9132096d4c61c253633974602eba"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/rights_decision.json": {
+      "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/predecessor/data/controlled_publications/the-selfish-giant/rights_decision.json",
+      "sha256": "922d9613889706e895e54fd44c7350e6a35752a8758003079c9cb01239278b39"
+    }
+  },
+  "predecessor_title_binding": {
+    "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
+    "record_sha256": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
+    }
+  },
+  "reviewed_title_binding": {
+    "decision_id": "india-20261111-the-selfish-giant-boy-cover-rebind",
+    "record_sha256": "18a45e1bf357b1e3bba9a4aa48dca065685e844b4dabd5126f6d869c596d3825",
+    "component_paths": {
+      "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+      "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+      "reader_manifest": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "approval_evidence": "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+      "public_book": "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+      "checksum_manifest": "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+      "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+      "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
+      "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+      "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
+      "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+      "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
+      "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
+    }
+  },
+  "added_accepted_records": {
+    "india-20261111-the-selfish-giant-boy-cover-rebind": "18a45e1bf357b1e3bba9a4aa48dca065685e844b4dabd5126f6d869c596d3825"
+  },
+  "reviewed_registry_sha256": "c26b9f2ec960c000eb38fc04d6b673acf9eab25dedb23943342c6f57b7eab1a2",
+  "assets": {
+    "front": {
+      "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+      "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+      "sha256": "ce6c565f8c82e1bdb14bac8f7ef32d96ee3a06ee48f8b95cb198500bf6a5510f",
+      "width": 800,
+      "height": 1200,
+      "bytes": 130950,
+      "format": "WEBP"
+    },
+    "back": {
+      "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
+      "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
+      "sha256": "4681c18dfd478c203ac0660915ce7f3240affe806fe18d89ab374b17bb5a3522",
+      "width": 800,
+      "height": 1200,
+      "bytes": 103666,
+      "format": "WEBP"
+    }
+  },
+  "source_manuscript_unchanged": true,
+  "audio_evidence_unchanged": true,
+  "reviewed_bootstrap_sha256": "354bda8232534146c5ae6f51c898729aab2e80c392b94f5f5a704b887c3547d2"
+}

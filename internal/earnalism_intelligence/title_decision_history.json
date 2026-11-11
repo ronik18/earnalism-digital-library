@@ -16586,5 +16586,16 @@
       "production_playback": "UNPERFORMED",
       "deployment": false
     }
+  },
+  "selfish_giant_boy_cover_pair_20261111": {
+    "date": "2026-11-11",
+    "title": "the-selfish-giant",
+    "action": "Owner-requested boy cover pair and lightweight brand-video logo",
+    "state": "SOURCE_PREPARED_TESTED_NOT_DEPLOYED",
+    "branch": "codex/animated-brand-selfish-giant-boy-20261111",
+    "base_sha": "1da158b5cc07e85f07338087e033ad8a548a6f5b",
+    "evidence": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111",
+    "preserved": "Unrelated dirty canonical checkout; prior cover pointers, manuscript, audio package and rights uses/territories",
+    "next_action": "Push focused branch, qualify exact PR head, merge serially and deploy exact merged main."
   }
 }

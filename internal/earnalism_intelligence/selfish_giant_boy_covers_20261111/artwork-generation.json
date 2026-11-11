@@ -1,0 +1,10 @@
+{
+  "tool": "Built-in image_gen image editing under direct owner instruction",
+  "semantic_change": "Replace dress with shirt/short trousers and short hair on front; matching boy on back garden path.",
+  "layout": "Resized edited art to 800\u00d71200. Deterministically retained original raster lettering regions: front top320px/bottom100px; back top620px/bottom90px. WebP quality88. Existing font raster-use permission retained; no font software redistributed.",
+  "generated_original_sha256": {
+    "front_generated_art": "42e46f26afefdf6f41a7904b0013b9f15b642146a6825682b362d7c4d6b03ee0",
+    "back_generated_art": "22dbcbfe45ea48f607fa2de7fa26183d8a651a360f02a9ef4eccb294a2c4e670"
+  },
+  "review": "Exact web pair inspected full-size; male child, title/author/synopsis/imprint, crop and contrast checked. No invented human score."
+}

@@ -6,7 +6,7 @@
     "backend/data/controlled_launch.json": "00b4f40e82a71d0eb702d3b60dae9b10be4cbd2f0b8623ee921e9b9a48b63202",
     "data/catalog_exclusions.json": "07165f60d9223b5cc5e2280fdea38b8ea07fe9a78a8655704e23729c0d24e816",
     "backend/data/catalog_exclusions.json": "07165f60d9223b5cc5e2280fdea38b8ea07fe9a78a8655704e23729c0d24e816",
-    "backend/data/rights_decision_registry.json": "c9c28756d6ccbd2361e081270db7a74d839a77df81ae2de7a90faf2f3be21b08"
+    "backend/data/rights_decision_registry.json": "c26b9f2ec960c000eb38fc04d6b673acf9eab25dedb23943342c6f57b7eab1a2"
   },
   "titles": {
     "a-ghost-story": {
@@ -729,8 +729,8 @@
       }
     },
     "the-selfish-giant": {
-      "decision_id": "india-20261102-the-selfish-giant-cedar-private-stage",
-      "record_sha256": "2ff103c187a8e7dfaa35db822c50778c61f1e4430a7517f7df1beb184ed8b25d",
+      "decision_id": "india-20261111-the-selfish-giant-boy-cover-rebind",
+      "record_sha256": "18a45e1bf357b1e3bba9a4aa48dca065685e844b4dabd5126f6d869c596d3825",
       "component_paths": {
         "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
         "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
@@ -742,8 +742,8 @@
         "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
         "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
         "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json",
-        "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-666e17ea4b125954.webp",
-        "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-592c71964e2e0e97.webp",
+        "cover_replacement_front_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-ce6c565f8c82e1bd.webp",
+        "cover_replacement_back_delivery": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-4681c18dfd478c20.webp",
         "cover_replacement_approval": "backend/data/controlled_publications/the-selfish-giant/cover_approval_evidence.json"
       }
     },
@@ -1736,5 +1736,9 @@
   "persisted45_reader_successor_20261108": {
     "path": "internal/legal/catalogue_clearance_20261002/persisted45_reader_20261108/successor.json",
     "sha256": "8e73b30b0622559148f5811477b7c932717e275a2cd1c73311e8fc766c336908"
+  },
+  "selfish_giant_boy_cover_successor_20261111": {
+    "path": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111/successor.json",
+    "sha256": "0f7e5d60bad08584187a33d3466b0b13d85382cc81bafe5848ad4ad0eaff8652"
   }
 }
