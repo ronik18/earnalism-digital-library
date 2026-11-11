@@ -44,7 +44,8 @@ export const HOURGLASS_SHERLOCK_LIBRARY_INTERACTION_BASELINE = "docs/design-syst
 export const LIBRARY_QUALITY_INTERACTION_BASELINE = "docs/design-system/library-quality-interaction-baseline-20261101.json";
 export const LIBRARY_TIMEOUT_INTERACTION_BASELINE = "docs/design-system/library-timeout-interaction-baseline-20261101.json";
 export const PERSISTED45_LIBRARY_INTERACTION_BASELINE = "docs/design-system/persisted45-library-interaction-baseline-20261110.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PERSISTED45_LIBRARY_INTERACTION_BASELINE;
+export const SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE = "docs/design-system/sredni-listener-library-interaction-baseline-20261111.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -287,6 +288,7 @@ const baselineContracts = {
     unchangedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js"],
     authorization: "OWNER_DIRECTIVE_PERSISTED45_READER_RELEASE_20261110",
   },
+  [SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE]: {"reviewedSource": {"commit": "b1d357752766163a3827cb100f2f014f38217e40", "tree": "5f895b6b9b0f8627df3e766dec1967e60fd8c829"}, "previous": {"recordPath": "docs/design-system/persisted45-library-interaction-baseline-20261110.json", "commit": "eb4b4bdb1492991f343a5f0f0bea1d60633d5e9d", "hash": "5344bec46d323f3f9dcc465523ab2f89f4eda7ec7c468bae72cf3beaf361a60e"}, "authorizedHash": "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47", "inputPaths": ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/controlledLaunch.js", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js", "frontend/src/components/LibraryBrowseShelf.jsx"], "changedPaths": ["frontend/src/lib/controlledLaunch.js"], "unchangedPaths": ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx", "frontend/src/lib/libraryCatalogueComposition.js", "frontend/src/lib/libraryCatalog.js", "frontend/src/lib/libraryFilterState.js", "frontend/src/lib/libraryDiscovery.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/content/productCopy.json", "frontend/src/design-system/sitewide-option-b.css", "frontend/src/config/publicNavigation.js", "frontend/src/components/LibraryBrowseShelf.jsx"], "authorization": "OWNER_DIRECTIVE_SREDNI_COMPATIBLE_FRONTEND_20261111"},
 };
 
 function contractForRecordPath(recordPath) {

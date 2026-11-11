@@ -16613,5 +16613,70 @@
     "counters_and_limits": "UNCHANGED",
     "bicharak": "OWNER_HOLD",
     "hosted_successor": "PENDING"
+  },
+  "sredni_current_reader_listener_compatibility": {
+    "date": "2026-11-11",
+    "scope": "sredni_current_reader_listener_compatibility",
+    "pr673_merge": "30b7a26f0ffc287dabaff78bffbddb686104539a",
+    "status": "SOURCE_PREPARED_NOT_RELEASED",
+    "obsolete_stage": "dpl_FuoD2iyB3xEQpHS3K4465ZaFtg37",
+    "reason": "Retained1012 frontend lacks45 subsequently live Reader titles; current public package allowlist also excludes Sredni",
+    "source_change": "Separate gated rendering eligibility from published-title records; only Sredni added; server package/QA/release gates unchanged",
+    "tests": {
+      "frontend": 48,
+      "adapter_contract": 7,
+      "audio_only_retirement": 4
+    },
+    "frontend_builds_consumed": 2,
+    "new_native_operations": 0,
+    "new_credit_seconds": 0,
+    "bicharak": "OWNER_HOLD",
+    "next_action": "Qualify focused source PR; obtain bounded replacement frontend allowance before staging; complete actual runtime/title/access/accounting acceptance before LIVE"
+  },
+  "sredni_pr674_source_binding_repair": {
+    "date": "2026-11-11",
+    "scope": "sredni_pr674_source_binding_repair",
+    "failed_head": "fa9f0cc0f563e213e1d6f37098f581ddae77a7c0",
+    "failed_runs": [
+      42953596408,
+      42953596692,
+      42953596647
+    ],
+    "cause": "Intentional UI eligibility change invalidated old Library fingerprint; modifying shared audioReleaseSafety also invalidated retained retirement-source proof",
+    "correction": "Restore audioReleaseSafety and libraryCatalog to exact merged-main bytes; preserve two published titles separately from gated render eligibility; retain historical baseline and add exact b1d35775 source successor; rebind both visual workflow authorities to actual frontend digest",
+    "library_surface": "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47",
+    "production_surface": "89cd452ee69b9f31042c64cb923507b2425d3410b6295da37bd953b239354130",
+    "local_checks": {
+      "ui_tests": 48,
+      "baseline_tool_cases": 26,
+      "reader_applicability_tests": 12,
+      "reader_applicability_subtests": 19,
+      "workflow_contract_cases": 46
+    },
+    "frontend_replacement_owner_answer": "Approve bounded frontend replacement",
+    "native_operations": 0,
+    "counters": "UNCHANGED; owner amendment retained but not yet implemented in controller",
+    "bicharak": "OWNER_HOLD"
+  },
+  "sredni_current_pending_component_reconciliation": {
+    "date": "2026-11-11",
+    "scope": "sredni_current_frontend_and_pending_component_reconciliation",
+    "library_history_test_cases_passed": 27,
+    "change": "Historical45 fixture explicitly checks its retained record; new Sredni fixture checks active default and all14input mutations",
+    "local_full_tooling_suite": "UNPERFORMED_COMPLETE; local reportlab dependency unavailable; focused changed-area tests passed; mandatory hosted suite required",
+    "original_journal_read_only": {
+      "scope_sha256": "a694bfd1a6c0828e1fc3f24e374bf9653c6cedc73c8e02e26cbe0d4cdc19b9af",
+      "baseline_sha256": "5365479ab31d434a357ecfbd755145356459718750630aff53044b5c51fbbed2",
+      "backend_actions_consumed": 1,
+      "frontend_actions_consumed": 2,
+      "stage_builds_consumed": 2,
+      "pending_parent": "802d0473580556086e23fff24e06a47a0a88bb2b89f74c72fcbfc39881fd2713",
+      "pending_state": "APPLIED_COMPONENT_VERIFIED_READER_PENDING",
+      "pending_has_child": false
+    },
+    "sredni": "NOT_LIVE",
+    "new_runtime_operations": 0,
+    "bicharak": "OWNER_HOLD",
+    "next_action": "Complete PR674 exact-head checks/review; implement explicit approved frontend amendment in existing controller and supported pending-component reconciliation before native writes; preserve every old proof/counter and no new startup claim"
   }
 }

@@ -68,8 +68,8 @@ def main():
     # The Library quality successor records the owner-directed fixes as an
     # exact source fingerprint. This is an interaction baseline, not visual
     # approval, and cannot be derived from the captured evidence itself.
-    require(library_path == "docs/design-system/persisted45-library-interaction-baseline-20261110.json" and Path(library_path).exists(), "active 45-title Library interaction baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "5344bec46d323f3f9dcc465523ab2f89f4eda7ec7c468bae72cf3beaf361a60e", "Library baseline expected fingerprint is not the owner-directed 45-title Library interaction value", failures)
+    require(library_path == "docs/design-system/sredni-listener-library-interaction-baseline-20261111.json" and Path(library_path).exists(), "active Sredni-ready Library interaction baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47", "Library baseline expected fingerprint is not the owner-directed Sredni-compatible Library interaction value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")

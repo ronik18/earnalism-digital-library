@@ -11,7 +11,7 @@ const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
 const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
-const currentHash = "5344bec46d323f3f9dcc465523ab2f89f4eda7ec7c468bae72cf3beaf361a60e";
+const currentHash = "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
@@ -89,9 +89,9 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
-test("active 45-title Library baseline is the canonical reproduced current surface", () => {
+test("active Sredni-ready Library baseline preserves the 45-title Reader successor", () => {
   const baseline = compareLibraryInteractionBaseline(root);
-  assert.equal(currentRecord, "docs/design-system/persisted45-library-interaction-baseline-20261110.json");
+  assert.equal(currentRecord, "docs/design-system/sredni-listener-library-interaction-baseline-20261111.json");
   assert.equal(baseline.result, "PASS");
   assert.equal(baseline.expected_surface_sha256, currentHash);
   assert.equal(baseline.observed_surface_sha256, currentHash);
