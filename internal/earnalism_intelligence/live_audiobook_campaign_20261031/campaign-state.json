@@ -737,5 +737,21 @@
       "production_playback": "UNPERFORMED",
       "deployment": false
     }
+  },
+  "pr673_protocol_successor": {
+    "date": "2026-11-11",
+    "scope": "audiobook_pr673_protocol_successor",
+    "failed_head": "be877987c13163d04e46a3afc8497dd8293ce9e3",
+    "failed_run": 42949200535,
+    "cause": "Source-only purchase protocol still bound to preceding server; paired/editorial server successor correctly rejected",
+    "correction": "Bind only source protocol to exact committed successor and test exact earlier native-server rejection; immutable native contract/validators/owner receipt unchanged",
+    "local_tests": {
+      "passed": 25,
+      "subtests": 27
+    },
+    "runtime_operations": 0,
+    "counters_and_limits": "UNCHANGED",
+    "bicharak": "OWNER_HOLD",
+    "hosted_successor": "PENDING"
   }
 }
