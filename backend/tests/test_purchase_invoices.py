@@ -179,40 +179,46 @@ def test_real_mongo_credit_invoice_atomicity_and_multi_worker_claim(monkeypatch,
     asyncio.run(run())
 
 
-def test_acceptance_containment_suppresses_configured_invoice_worker():
+def test_disabled_invoice_config_starts_no_invoice_work_during_containment():
     from types import SimpleNamespace
     from backend.tests.test_reading_pass_admission_wiring import namespace
     async def run():
         events=[];ns=namespace(events)
         async def forbidden(*a): raise AssertionError('invoice work under containment')
-        ns.update(PURCHASE_INVOICE_CONFIG=object(),purchase_invoice_email=SimpleNamespace(
+        ns.update(purchase_invoice_email=SimpleNamespace(
             prepare_outbox=forbidden,delivery_loop=forbidden))
         async with ns['context'](None): pass
         assert events[-1]=='raw_close'
     asyncio.run(run())
 
 
-def test_invoice_worker_cancels_before_database_shutdown():
+@pytest.mark.parametrize('contained', [False, True])
+def test_invoice_worker_cancels_before_database_shutdown(contained):
     from types import SimpleNamespace
     from backend.tests.test_reading_pass_admission_wiring import namespace
     async def run():
         events=[];ns=namespace(events);started=asyncio.Event()
-        async def reader(): pass
+        async def reader(): events.append('reader_publication')
+        async def maintenance(): events.append('general_maintenance')
         async def prepare(db): events.append('invoice_prepare')
         async def worker(db,config):
             started.set()
             try: await asyncio.Event().wait()
             finally: events.append('invoice_cancelled')
-        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:False,
+        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:contained,
+            ENABLE_STARTUP_DB_MAINTENANCE=True,_run_startup_database_maintenance=maintenance,
             _initialize_authorized_reader_release=reader,purchase_invoice_email=SimpleNamespace(
                 prepare_outbox=prepare,delivery_loop=worker))
         async with ns['context'](None): await asyncio.wait_for(started.wait(),1)
+        assert ('reader_publication' in events) is (not contained)
+        assert ('general_maintenance' in events) is (not contained)
         assert events.index('invoice_prepare')<events.index('invoice_cancelled')
         assert events.index('invoice_cancelled')<events.index('close_backends')<events.index('raw_close')
     asyncio.run(run())
 
 
-def test_invoice_index_startup_failure_still_closes_database_and_preserves_error():
+@pytest.mark.parametrize('contained', [False, True])
+def test_invoice_index_startup_failure_still_closes_database_and_preserves_error(contained):
     from types import SimpleNamespace
     from backend.tests.test_reading_pass_admission_wiring import namespace
     async def run():
@@ -220,7 +226,7 @@ def test_invoice_index_startup_failure_still_closes_database_and_preserves_error
         async def reader(): pass
         async def prepare(db): raise error
         async def forbidden(*a): raise AssertionError('worker must not start')
-        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:False,
+        ns.update(PURCHASE_INVOICE_CONFIG=object(),_acceptance_release_containment=lambda:contained,
             _initialize_authorized_reader_release=reader,purchase_invoice_email=SimpleNamespace(
                 prepare_outbox=prepare,delivery_loop=forbidden))
         with pytest.raises(PermissionError) as got:
