@@ -22,6 +22,7 @@ import {
   LIBRARY_QUALITY_INTERACTION_BASELINE,
   LIBRARY_TIMEOUT_INTERACTION_BASELINE,
   PERSISTED45_LIBRARY_INTERACTION_BASELINE,
+  SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -282,11 +283,21 @@ test("Library timeout successor binds exact source and rejects each input mutati
 });
 test("45-title successor binds exact additions and rejects every input mutation", () => {
   const baseline = loadLibraryInteractionBaseline(root, PERSISTED45_LIBRARY_INTERACTION_BASELINE);
-  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.equal(compareLibraryInteractionBaseline(materializeReviewedSurface(PERSISTED45_LIBRARY_INTERACTION_BASELINE), PERSISTED45_LIBRARY_INTERACTION_BASELINE).result, "PASS");
   assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/lib/controlledLaunch.js", "frontend/src/data/libraryDiscoveryMetadata.json", "frontend/src/components/LibraryBrowseShelf.jsx"]);
   assert.equal(compareLibraryInteractionBaseline(root, LIBRARY_TIMEOUT_INTERACTION_BASELINE).result, "FAIL");
   for (const input of baseline.input_paths) {
     const temporary = materializeReviewedSurface(PERSISTED45_LIBRARY_INTERACTION_BASELINE);
+    fs.appendFileSync(path.join(temporary, input), "\nunauthorized mutation\n");
+    assert.equal(compareLibraryInteractionBaseline(temporary, PERSISTED45_LIBRARY_INTERACTION_BASELINE).result, "FAIL");
+  }
+});
+test("Sredni eligibility successor preserves the current Readers and rejects every input mutation", () => {
+  const baseline = loadLibraryInteractionBaseline(root, SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(compareLibraryInteractionBaseline(root).result, "PASS");
+  assert.deepEqual(baseline.reviewed_source_comparison.changed_paths_within_input_set, ["frontend/src/lib/controlledLaunch.js"]);
+  for (const input of baseline.input_paths) {
+    const temporary = materializeReviewedSurface(SREDNI_LISTENER_LIBRARY_INTERACTION_BASELINE);
     fs.appendFileSync(path.join(temporary, input), "\nunauthorized mutation\n");
     assert.equal(compareLibraryInteractionBaseline(temporary).result, "FAIL");
   }
