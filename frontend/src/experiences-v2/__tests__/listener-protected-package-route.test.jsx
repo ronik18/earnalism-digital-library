@@ -8,6 +8,7 @@ const mockEndReadingPassSession = jest.fn();
 const mockNavigate = jest.fn();
 const mockRenewReadingPassLease = jest.fn();
 const mockPlaybackReady = jest.fn();
+let mockUserState = { id: "isolated-listener-user" };
 
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>,
@@ -18,7 +19,7 @@ jest.mock("react-router-dom", () => ({
 }), { virtual: true });
 
 jest.mock("../../context/AuthContext", () => ({
-  useAuth: () => ({ user: { id: "isolated-listener-user" } }),
+  useAuth: () => ({ user: mockUserState }),
 }));
 
 jest.mock("../../lib/api", () => ({
@@ -218,13 +219,13 @@ describe("Listener protected package route", () => {
 });
 
 
-test.each(["no-pass", "exhausted-after-load"])("public %s listening opens only the bounded preview", async mode => {
+test.each(["no-pass", "exhausted-after-load", "signed-out-after-load"])("public %s listening opens only the bounded preview", async mode => {
   mockUserApiGet.mockReset(); mockStartReadingPassAudioSession.mockReset();
-  mockUserApiGet.mockResolvedValueOnce({ data: { ...publicSafeReaderManifest, access: { can_read_paid: mode !== "no-pass" } } })
+  mockUserApiGet.mockResolvedValueOnce({ data: { ...publicSafeReaderManifest, access: { authenticated: true, role: "user", can_read_paid: mode !== "no-pass" } } })
     .mockResolvedValueOnce({ data: { schema_version: "audiobook_preview.v1", slug: "a-ghost-story", package_version: mockPackageVersion,
       duration_ms: 180000, segments: [{ segment_id: "c001-s001", chapter_id: "chapter-001", cumulative_start_ms: 0, duration_ms: 180000,
         audio_url: `/api/reader/book/a-ghost-story/audiobook/preview/packages/${mockPackageVersion}/segments/c001-s001` }] } });
-  if (mode !== "no-pass") mockStartReadingPassAudioSession.mockRejectedValueOnce({ response: { status: 403, data: { detail: { code: "PASS_REQUIRED" } } } });
+  if (mode !== "no-pass") mockStartReadingPassAudioSession.mockRejectedValueOnce({ response: { status: mode === "signed-out-after-load" ? 401 : 403, data: { detail: { code: mode === "signed-out-after-load" ? "AUTH_REQUIRED" : "PASS_REQUIRED" } } } });
   const container = document.createElement("div"); document.body.appendChild(container); const root = createRoot(container);
   await act(async () => root.render(<ListenerExperienceV2Route />)); await flush();
   await act(async () => [...container.querySelectorAll("button")].find(b => b.textContent === "Authorize Listening").click()); await flush();
@@ -233,4 +234,22 @@ test.each(["no-pass", "exhausted-after-load"])("public %s listening opens only t
   expect(mockUserApiGet.mock.calls.map(([path]) => path)).not.toContain("/reader/book/a-ghost-story/audiobook/manifest");
   expect(mockStartReadingPassAudioSession).toHaveBeenCalledTimes(mode === "no-pass" ? 0 : 1);
   await act(async () => root.unmount()); container.remove();
+});
+
+
+test("a server-confirmed pass works while the optional account profile is still loading", async () => {
+  mockUserState = null;
+  mockUserApiGet.mockReset(); mockStartReadingPassAudioSession.mockReset();
+  mockUserApiGet.mockResolvedValueOnce({ data: publicSafeReaderManifest }).mockResolvedValueOnce({ data: { schema_version: "audiobook_package_manifest.v2" } });
+  mockStartReadingPassAudioSession.mockResolvedValueOnce({ session_id: "isolated-audio-session", lease_token: "isolated-lease", lease_version: 1 });
+  const container = document.createElement("div"); document.body.appendChild(container); const root = createRoot(container);
+  try {
+    await act(async () => root.render(<ListenerExperienceV2Route />)); await flush();
+    await act(async () => [...container.querySelectorAll("button")].find(b => b.textContent === "Authorize Listening").click()); await flush();
+    expect(mockStartReadingPassAudioSession).toHaveBeenCalledTimes(1);
+    expect(container.querySelector('[data-testid="listener-ready"]')).not.toBeNull();
+    expect(mockUserApiGet.mock.calls.some(([path]) => path.includes("/preview/"))).toBe(false);
+  } finally {
+    await act(async () => root.unmount()); container.remove(); mockUserState = { id: "isolated-listener-user" };
+  }
 });

@@ -242,7 +242,11 @@ export default function ListenerExperienceV2Route() {
     setAuthorizing(true);
     const publicAccess = book?._readerManifest?.access;
     const privateReview = Boolean(book?._readerManifest?.audio?.transport_canary?.enabled);
-    const paid = Boolean(user && (publicAccess?.can_read_paid === true || privateReview));
+    // The manifest may arrive before the optional account-profile request.
+    // Its server-authenticated entitlement selects full listening; session start
+    // still enforces the actual wallet, actor, private scope and consumed caps.
+    const paid = Boolean(user !== false && publicAccess?.authenticated === true
+      && publicAccess?.role === "user" && (publicAccess?.can_read_paid === true || privateReview));
     const openPreview = async () => {
       const response = await userApi.get(`/reader/book/${encodeURIComponent(slug)}/audiobook/preview/manifest`);
       if (!ownsLifecycle(generation)) return;
@@ -271,7 +275,8 @@ export default function ListenerExperienceV2Route() {
     } catch (requestError) {
       // A stale public wallet snapshot may have exhausted since page load.
       // Never reinterpret private caps, device conflicts or unknown outcomes.
-      if (!privateReview && requestError?.response?.status === 403 && requestError?.response?.data?.detail?.code === "PASS_REQUIRED") {
+      if (!privateReview && (requestError?.response?.status === 401
+          || (requestError?.response?.status === 403 && requestError?.response?.data?.detail?.code === "PASS_REQUIRED"))) {
         try { await openPreview(); }
         catch { if (ownsLifecycle(generation)) setError("The audiobook preview could not be opened."); }
       } else if (ownsLifecycle(generation)) setError(requestError?.response?.data?.detail?.message || "Listening could not be prepared.");
@@ -305,5 +310,5 @@ export default function ListenerExperienceV2Route() {
   if (book === null) return routeState("Opening listener", "Checking approved listening access.", null, leaveListener);
   if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />, leaveListener);
   if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />, leaveListener);
-  return <><ListenerExperienceV2 book={book} audioManifest={audioManifest} access={{ authorized: Boolean(audioManifest && (lease || audioManifest.preview)), preview: Boolean(audioManifest?.preview), readingPassBalanceSeconds: user?.reading_seconds_balance }} authorizing={authorizing || Boolean(lease && !audioManifest)} onAuthorize={authorize} onBeforePlayback={preparePlayback} onPlaybackStateChange={updatePlaybackState} onStop={() => settleLease("listener_v2_stop")} onPlaybackComplete={() => settleLease("listener_v2_complete")} onMediaError={() => { setError("Approved listening audio could not continue. No further audio was requested."); void settleLease("listener_v2_media_error"); }} onNavigate={leaveListener} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
+  return <><ListenerExperienceV2 book={book} audioManifest={audioManifest} access={{ authorized: Boolean(audioManifest && (lease || audioManifest.preview)), preview: Boolean(audioManifest?.preview), readingPassBalanceSeconds: user?.reading_seconds_balance ?? book?._readerManifest?.access?.wallet_seconds }} authorizing={authorizing || Boolean(lease && !audioManifest)} onAuthorize={authorize} onBeforePlayback={preparePlayback} onPlaybackStateChange={updatePlaybackState} onStop={() => settleLease("listener_v2_stop")} onPlaybackComplete={() => settleLease("listener_v2_complete")} onMediaError={() => { setError("Approved listening audio could not continue. No further audio was requested."); void settleLease("listener_v2_media_error"); }} onNavigate={leaveListener} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
 }
