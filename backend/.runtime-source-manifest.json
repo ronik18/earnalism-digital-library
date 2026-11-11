@@ -11389,8 +11389,8 @@
     },
     {
       "path": "domain/audiobook_release.py",
-      "bytes": 13404,
-      "sha256": "720cc2a540d494586336ec46f518f7576639015065579341e0f3d516ab055bb3"
+      "bytes": 14262,
+      "sha256": "82a9a87d4090820d3198ff9f77f0108daec2cbff3502b3d21cf66ecdf8e1a3a2"
     },
     {
       "path": "domain/catalog.py",
@@ -11401,6 +11401,11 @@
       "path": "domain/chapter_index.py",
       "bytes": 4428,
       "sha256": "bba0b914130ad1fbc9278d65e276f8a40ff03b62313140cafec1360f1067e7a3"
+    },
+    {
+      "path": "domain/editorial_release_policy.py",
+      "bytes": 2372,
+      "sha256": "05a041c99db120cc207a47a6620c3951d89adfb1808cd546eda74a3aafc5dd3d"
     },
     {
       "path": "domain/reading_billing.py",
@@ -11513,6 +11518,16 @@
       "sha256": "3f9bc8e553390187e12745d148b9f44390e222e9c1142fa33dcbf6402c72f453"
     },
     {
+      "path": "paired_audio_acceptance_budget.py",
+      "bytes": 5327,
+      "sha256": "0aa4aeb6bfa248e04fce8622cb4fa8e834154ce3c6a57c2ef7531c90ce5b3fc4"
+    },
+    {
+      "path": "paired_audio_acceptance_operator.py",
+      "bytes": 8257,
+      "sha256": "d066eca37c9d31316ab6d4f47867842f288e5e6754b7b66cbeb6b880683448f8"
+    },
+    {
       "path": "protected_package_publication.py",
       "bytes": 5336,
       "sha256": "601e3941117ae4c022619044643cfeecfd79636b94cf56bf948e99774c73175a"
@@ -11569,8 +11584,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 97778,
-      "sha256": "39642259252536df7492e8d5af4b43487fe329b8c49455234a18d48b4a6a270c"
+      "bytes": 98504,
+      "sha256": "8bcc698bc2132e34911cd70255e012655185f4eb4a664eda33d7ae6ba5260374"
     },
     {
       "path": "release_proxy_auth.py",
@@ -11604,8 +11619,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 646994,
-      "sha256": "85a5c5a01681207ceeebdf28896d1190545e5d55c4ddeb51f1280efa959adb21"
+      "bytes": 647209,
+      "sha256": "862b68634e0918cf760e4d79db1802a89171e466a4f723236450155b694b236f"
     },
     {
       "path": "serving_publication_binding.py",
@@ -11698,5 +11713,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "590c170bba6abbc5b4c07a08e6ffe6b0d7d939946f4d58ef3f21c9905f3382a5"
+  "expected_sha256": "4f30fbb79ab5f457a71dee0a1e7ce877a900a1c0b33d5c5737c096e09fe6bc9f"
 }

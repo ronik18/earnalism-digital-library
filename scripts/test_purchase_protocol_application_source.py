@@ -79,8 +79,14 @@ class ApplicationProtocolTests(unittest.TestCase):
             # native A/B backend. Require its rejection, never widen admission
             # or relabel this release as native recovery qualification. The CI
             # retained-controller export still validates the immutable pair.
-            with self.assertRaisesRegex(ValueError,
-                    'Normal controller backend differs from qualified normal parent'):
+            # A server successor must first fail the immutable native server
+            # binding. If only other backend files changed, the later whole-
+            # backend check rejects it instead. Neither is recovery proof.
+            native_server = self.sources[self.native['application_source_sha']]
+            expected = ('Whole server equality failed'
+                        if (ROOT/'backend/server.py').read_bytes() != native_server
+                        else 'Normal controller backend differs from qualified normal parent')
+            with self.assertRaisesRegex(ValueError, expected):
                 guard.validate_paired_source(ROOT)
             return
         proof=guard.validate_paired_source(ROOT)

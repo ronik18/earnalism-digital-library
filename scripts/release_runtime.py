@@ -34,7 +34,8 @@ from backend.audiobook_generation.provider_adapter import (  # noqa: E402
 )
 
 
-from scripts.release_acceptance import automated_check_accepted, classify_quality_findings
+from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, automated_candidate_blockers
+from backend.domain.editorial_release_policy import uses_automated_editorial_policy, AUTOMATED_EDITORIAL_CHECKS
 
 
 class RuntimeBlocked(RuntimeError):
@@ -605,18 +606,27 @@ def promote(
         raise RuntimeBlocked(
             "the full audio release gate must be PASS before promotion"
         )
+    try:
+        automated_editorial = uses_automated_editorial_policy(manifest)
+    except ValueError as exc:
+        raise RuntimeBlocked(str(exc)) from exc
     automated = manifest.get("automated_checks") or {}
     if any(
         not automated_check_accepted(manifest, name, automated.get(name) or {})
-        for name in PROMOTION_REQUIRED_AUTOMATED_CHECKS
+        for name in PROMOTION_REQUIRED_AUTOMATED_CHECKS + (AUTOMATED_EDITORIAL_CHECKS if automated_editorial else ())
     ):
         raise RuntimeBlocked(
             "all applicable automated release checks must pass before promotion"
         )
     if classify_quality_findings(manifest)["blockers"]:
         raise RuntimeBlocked("confirmed defects or missing mandatory acceptance remain")
-    require_reader_approval(manifest)
-    require_sample_approval(manifest)
+    if automated_editorial:
+        issues = automated_candidate_blockers(manifest)
+        if issues:
+            raise RuntimeBlocked("; ".join(issues))
+    else:
+        require_reader_approval(manifest)
+        require_sample_approval(manifest)
     payload = {
         "slug": manifest["slug"],
         "release_descriptor_sha256": str(

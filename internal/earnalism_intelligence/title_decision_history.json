@@ -16531,6 +16531,62 @@
     ],
     "title_count": 45
   },
+  "open_window_paired_acceptance_40_20261110": {
+    "scope": "SOURCE_PREPARATION_ONLY",
+    "evidence": "paired_acceptance_40_preparation_20261110.json",
+    "runtime_acceptance": false,
+    "rights_or_publication_change": false,
+    "deployment": false
+  },
+  "local_automated_editorial_reconciliation_20261111": {
+    "date": "2026-11-11",
+    "scope": "local_paired_playback_automated_editorial_reconciliation",
+    "status": "LOCAL_SOURCE_TESTED_NOT_DEPLOYED",
+    "owner_direction": "Distinguish ended Integration chat from permitted local reconciliation/tests; preserve all work/counters/limits; no allocation or synthesis",
+    "base_preimage": "b619c79c03089555dad42ca6799a33bdf858818a",
+    "concurrent_paired_commit": "9f1c61479b4aa827868fbe97e4bfb368711a706c",
+    "paired_preimage_match": "ALL_12_FILES_BYTE_IDENTICAL",
+    "policy": "automated-editorial-2026-11-11",
+    "legacy_receipts": "UNCHANGED; preserved1f470e8c and identical variants not cherry-picked",
+    "synthetic_tests": {
+      "passed": 404,
+      "skipped_opt_in_database": 9,
+      "network_connections": "DISABLED"
+    },
+    "skill_validation": "PASS_REPOSITORY_SOURCE_ONLY",
+    "production_operations": 0,
+    "customer_debit_seconds": 0,
+    "provider_calls": 0,
+    "allocation": false,
+    "synthesis": false,
+    "bicharak": "OWNER_HOLD",
+    "next_action": "Finish read-only review and exact local diff; integration/push/deploy and runtime acceptance remain separate",
+    "latest_validation": {
+      "passed": 422,
+      "skipped_opt_in_database": 9,
+      "network_connections": "DISABLED",
+      "review": "INDEPENDENT_FOCUSED_REVIEW_NO_FURTHER_BLOCKING_DEFECT",
+      "limitations": [
+        "No real Mongo concurrency tests",
+        "No production cap installation or playback",
+        "No deployment/source qualification or hosted CI",
+        "Backend evidence digests remain authenticated-operator attestations"
+      ]
+    },
+    "inventory_qualification": {
+      "status": "EXACT_STAGED_SOURCE_QUALIFIED_LOCAL_ONLY",
+      "backend_files": 2342,
+      "runtime_sha256": "37920ce7ebb629656a1f1f187cda437e3eecf9501ff5402d4af3afc4a9740f0a",
+      "tests_passed": 451,
+      "opt_in_database_tests_skipped": 9,
+      "outbound_test_connections": "DISABLED",
+      "skill_validation": "PASS",
+      "whitespace_check": "PASS",
+      "hosted_ci": "NOT_RUN_IN_THIS_LOCAL_TASK",
+      "production_playback": "UNPERFORMED",
+      "deployment": false
+    }
+  },
   "selfish_giant_boy_cover_pair_20261111": {
     "date": "2026-11-11",
     "title": "the-selfish-giant",
@@ -16541,5 +16597,21 @@
     "evidence": "internal/earnalism_intelligence/selfish_giant_boy_covers_20261111",
     "preserved": "Unrelated dirty canonical checkout; prior cover pointers, manuscript, audio package and rights uses/territories",
     "next_action": "Push focused branch, qualify exact PR head, merge serially and deploy exact merged main."
+  },
+  "audiobook_pr673_protocol_successor": {
+    "date": "2026-11-11",
+    "scope": "audiobook_pr673_protocol_successor",
+    "failed_head": "be877987c13163d04e46a3afc8497dd8293ce9e3",
+    "failed_run": 42949200535,
+    "cause": "Source-only purchase protocol still bound to preceding server; paired/editorial server successor correctly rejected",
+    "correction": "Bind only source protocol to exact committed successor and test exact earlier native-server rejection; immutable native contract/validators/owner receipt unchanged",
+    "local_tests": {
+      "passed": 25,
+      "subtests": 27
+    },
+    "runtime_operations": 0,
+    "counters_and_limits": "UNCHANGED",
+    "bicharak": "OWNER_HOLD",
+    "hosted_successor": "PENDING"
   }
 }

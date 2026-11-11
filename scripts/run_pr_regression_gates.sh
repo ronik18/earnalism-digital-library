@@ -26,6 +26,7 @@ echo "==> Offline commerce accounting and independent country holds"
 "$PYTHON_BIN" -m unittest scripts.test_commerce_accounting -v
 
 echo "==> Consumer-scoped text sync and evidence-proportionate audio acceptance (offline fixtures)"
+"$PYTHON_BIN" -m pytest -q backend/tests/test_automated_editorial_release.py
 "$PYTHON_BIN" -m pytest -q backend/tests/test_release_acceptance.py backend/tests/test_audiobook_accessibility_release_gate.py backend/tests/test_produce_release.py backend/tests/test_release_runtime.py backend/tests/test_produce_release_self_healing.py internal/audiobook_lab/scripts/test_sprint1_factory_release_evidence_normalizer.py internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py
 
 echo "==> Exact purchase guard source and original India commerce boundary"
@@ -110,6 +111,8 @@ env \
     backend/tests/test_package_integrity_and_preview_access.py \
     backend/tests/test_reader_preview_boundary.py \
     backend/tests/test_open_window_audio_acceptance_budget.py \
+    backend/tests/test_paired_audio_acceptance_budget.py \
+    backend/tests/test_paired_audio_acceptance_operator.py \
     backend/tests/test_audio_renewal_media_cookies.py \
     backend/tests/test_open_window_audio_cap_installer.py \
     backend/tests/test_open_window_audio_cap_live.py \

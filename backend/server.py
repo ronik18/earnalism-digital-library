@@ -179,7 +179,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
-    from backend import audio_acceptance_budget, native_audiobook_replacement, native_audiobook_profiles
+    from backend import audio_acceptance_budget, paired_audio_acceptance_budget, native_audiobook_replacement, native_audiobook_profiles
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -195,6 +195,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     )
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
     import audio_acceptance_budget
+    import paired_audio_acceptance_budget
     import native_audiobook_replacement
     import native_audiobook_profiles
 
@@ -8429,6 +8430,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         title_slug=slug,
         audio_sha256=audio_sha256,
         attempt_fingerprint=attempt_fingerprint,
+        manuscript_sha256=manuscript_sha256,
     )
     if qa_blockers:
         raise HTTPException(status_code=422, detail={"message": "Audiobook QA is not release-ready.", "issues": qa_blockers})
@@ -11593,7 +11595,8 @@ async def _authorize_reading_pass_audio(request: Request, principal: Optional[di
             if scope is None:
                 raise HTTPException(status_code=403, detail={"code": "NATIVE_REPLACEMENT_SCOPE_DENIED"})
             request.state.native_replacement_scope = scope
-        if result.get("acceptance_test_id") == audio_acceptance_budget.TEST_ID:
+        if (result.get("acceptance_test_id") == audio_acceptance_budget.TEST_ID
+                or result.get("acceptance_test_id") == paired_audio_acceptance_budget.TEST_ID):
             book = await _reader_audio_package_book_for_slug(slug)
             package, _, _ = _selected_audiobook_package(book, slug, request)
             selected_scope = audio_acceptance_budget.package_scope(slug, package)

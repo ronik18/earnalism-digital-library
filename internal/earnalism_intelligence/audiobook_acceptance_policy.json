@@ -227,5 +227,32 @@
     "native media seek/chapter clocks",
     "historical immutable evidence",
     "fidelity/rights/playback/accounting gates"
-  ]
+  ],
+  "new_job_editorial_policy": {
+    "version": "automated-editorial-2026-11-11",
+    "selection": "Explicit editorial_release_policy field; omitted means unchanged legacy contract",
+    "routine_owner_review_required": false,
+    "human_listening_score_floor": null,
+    "human_listening_confidence_floor": null,
+    "legacy_listening_tiers": "Retained historical contracts; not a new-job human-review dependency",
+    "required_full_candidate": "Complete master/source/package/descriptor/duration/voice binding",
+    "additional_automated_acceptance": [
+      "recording_rights",
+      "voice_model_rights",
+      "music_rights",
+      "protected_access",
+      "accounting"
+    ],
+    "preserve": [
+      "underlying rights",
+      "content fidelity",
+      "storage integrity",
+      "access",
+      "charging",
+      "explicit title holds",
+      "all original counters and limits"
+    ],
+    "implementation_scope": "LOCAL_SOURCE_ONLY_NOT_DEPLOYED",
+    "runbook": "docs/automated_audiobook_editorial_policy.md"
+  }
 }
