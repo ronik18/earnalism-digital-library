@@ -16613,5 +16613,20 @@
     "counters_and_limits": "UNCHANGED",
     "bicharak": "OWNER_HOLD",
     "hosted_successor": "PENDING"
+  },
+  "purchase_invoice_email_20261111": {
+    "date": "2026-11-11",
+    "scope": "pass_purchase_invoice_email",
+    "state": "SOURCE_PREPARED_NOT_DEPLOYED",
+    "base_sha": "30b7a26f0ffc287dabaff78bffbddb686104539a",
+    "authority": "Owner GO LIVE request and invoice-only integration-worktree exception; existing business mailbox; password remains private",
+    "behavior": "Atomic invoice/outbox with existing credit; bounded asynchronous Google SMTP; no historical backfill or real test purchase",
+    "local_validation": {
+      "passed": 149,
+      "skipped": 7,
+      "integration": "Hosted isolated Mongo gates still required"
+    },
+    "historical_validators_and_consumed_limits": "UNCHANGED",
+    "next_action": "Exact-head CI/review, serial merge, owner-only Railway SMTP secret entry, exact merged-main deployment; no customer test transaction"
   }
 }

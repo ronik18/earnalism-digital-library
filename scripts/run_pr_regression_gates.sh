@@ -113,6 +113,7 @@ env \
     backend/tests/test_open_window_audio_acceptance_budget.py \
     backend/tests/test_paired_audio_acceptance_budget.py \
     backend/tests/test_paired_audio_acceptance_operator.py \
+    backend/tests/test_purchase_invoices.py \
     backend/tests/test_audio_renewal_media_cookies.py \
     backend/tests/test_open_window_audio_cap_installer.py \
     backend/tests/test_open_window_audio_cap_live.py \

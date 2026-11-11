@@ -11563,6 +11563,16 @@
       "sha256": "6ac0e45664ec166340558c60515884355a6a664ab4b25472f0522351ecddd690"
     },
     {
+      "path": "purchase_invoice_email.py",
+      "bytes": 6226,
+      "sha256": "92b801cbf74f11b2bf5ac080821ccda49fc1af5dd58727f5e59f611702fb844b"
+    },
+    {
+      "path": "purchase_invoices.py",
+      "bytes": 4793,
+      "sha256": "c0c9c0483e725a2d905619b6dd40254ecfe40d6bf256d175dfd3c727817b39a7"
+    },
+    {
       "path": "railway.json",
       "bytes": 437,
       "sha256": "8b5313b4e3e477a1f7aa9505f0ccbd87fbab794f4582bc65715947cc01f2bb07"
@@ -11584,8 +11594,8 @@
     },
     {
       "path": "reading_pass_service.py",
-      "bytes": 98504,
-      "sha256": "8bcc698bc2132e34911cd70255e012655185f4eb4a664eda33d7ae6ba5260374"
+      "bytes": 98978,
+      "sha256": "02f5c990156e86294b9a5b14e8113f0150068deb0ba7ea8255b8a8ea1b0ac32b"
     },
     {
       "path": "release_proxy_auth.py",
@@ -11619,8 +11629,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 647209,
-      "sha256": "862b68634e0918cf760e4d79db1802a89171e466a4f723236450155b694b236f"
+      "bytes": 647972,
+      "sha256": "38059ed36a791e8d10b762886f7e8cd1aab55c128a09d301bb1cb484f8d9ee9d"
     },
     {
       "path": "serving_publication_binding.py",
@@ -11713,5 +11723,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "4f30fbb79ab5f457a71dee0a1e7ce877a900a1c0b33d5c5737c096e09fe6bc9f"
+  "expected_sha256": "337216411c056782aea0735e7743339928c7b11cbf1884850f2f1712209f0f84"
 }
