@@ -3,7 +3,7 @@
   "scope": "SOURCE_PROTOCOL_ONLY_NOT_NATIVE_RECOVERY",
   "state": "OPEN",
   "historical_contract_sha256": "33db27c4066109beca6fabd2a6c608642c5a81a9b9d47e873698d936e730ed88",
-  "application_source_sha": "be877987c13163d04e46a3afc8497dd8293ce9e3",
-  "application_server_sha256": "862b68634e0918cf760e4d79db1802a89171e466a4f723236450155b694b236f",
-  "application_closed_server_sha256": "04e7feef5d921d542efa29a061d33b2f47cb9c928b756f60b44cbfbadc933e61"
+  "application_source_sha": "be7eb09908de2d2b8d0102c554538cc721103ff3",
+  "application_server_sha256": "c75bc6153fcb6afdefa4110cc1a56cf7abab3e1af0cd411c23bd5b21849f99ba",
+  "application_closed_server_sha256": "2cd9995cad014bb5bcdfcbb9d256df1121cf92ce07fbd1d676317f884c9996bf"
 }

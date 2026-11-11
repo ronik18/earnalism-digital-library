@@ -179,7 +179,7 @@ try:
         segment_manifest,
     )
     from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
-    from backend import audio_acceptance_budget, paired_audio_acceptance_budget, native_audiobook_replacement, native_audiobook_profiles
+    from backend import audio_acceptance_budget, paired_audio_acceptance_budget, native_audiobook_replacement, native_audiobook_profiles, purchase_invoice_email
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -196,6 +196,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
     import audio_acceptance_budget
     import paired_audio_acceptance_budget
+    import purchase_invoice_email
     import native_audiobook_replacement
     import native_audiobook_profiles
 
@@ -590,11 +591,13 @@ _reading_pass_token_secret = os.environ.get("READING_PASS_TOKEN_SECRET", "").str
 if READING_PASS_V2_ENABLED and len(_reading_pass_token_secret) < 32:
     raise RuntimeError("READING_PASS_TOKEN_SECRET must be a dedicated secret of at least 32 characters when Reading Pass v2 is enabled")
 READING_PASS_TOKEN_SECRET = _reading_pass_token_secret or JWT_SECRET
+PURCHASE_INVOICE_CONFIG = purchase_invoice_email.configuration(os.environ)
 reading_pass_service = ReadingPassService(
     db=db,
     client=client,
     config=READING_PASS_CONFIG,
     token_secret=READING_PASS_TOKEN_SECRET,
+    invoice_email_enabled=PURCHASE_INVOICE_CONFIG is not None,
 )
 
 # Keep the original service/database/client identities for payments, refunds and
@@ -6016,12 +6019,22 @@ async def lifespan(_app: FastAPI):
         logger.info("Startup database maintenance suppressed (acceptance_containment=%s).", acceptance_contained)
     _schedule_home_surface_warmup()
     approved_reader_task = None if acceptance_contained else asyncio.create_task(_initialize_authorized_reader_release())
+    invoice_delivery_task = None
 
     try:
+        if PURCHASE_INVOICE_CONFIG is not None and not acceptance_contained:
+            await purchase_invoice_email.prepare_outbox(db)
+            invoice_delivery_task = asyncio.create_task(purchase_invoice_email.delivery_loop(db, PURCHASE_INVOICE_CONFIG))
         yield
     finally:
         # ----- shutdown -----
         _mark_shutdown_draining()
+        if invoice_delivery_task is not None:
+            invoice_delivery_task.cancel()
+            try:
+                await invoice_delivery_task
+            except asyncio.CancelledError:
+                pass
         if approved_reader_task is not None:
             approved_reader_task.cancel()
             try:

@@ -20,9 +20,11 @@ from pymongo.errors import DuplicateKeyError
 try:
     from . import audio_acceptance_budget as audio_acceptance
     from . import paired_audio_acceptance_budget as paired_audio_acceptance
+    from .purchase_invoices import invoice_record
 except ImportError:
     import audio_acceptance_budget as audio_acceptance
     import paired_audio_acceptance_budget as paired_audio_acceptance
+    from purchase_invoices import invoice_record
 
 try:  # package import
     from .domain.reading_pass import (
@@ -88,11 +90,13 @@ except ImportError:
 
 
 class ReadingPassService:
-    def __init__(self, *, db, client, config: ReadingPassConfig, token_secret: str) -> None:
+    def __init__(self, *, db, client, config: ReadingPassConfig, token_secret: str,
+                 invoice_email_enabled: bool = False) -> None:
         self.db = db
         self.client = client
         self.config = config
         self.token_secret = token_secret
+        self.invoice_email_enabled = invoice_email_enabled
 
     async def _acceptance_budget(self, document, mongo_session=None, *, starting=False):
         """Trusted, durable account scope; never populated from a lease request.
@@ -1974,6 +1978,10 @@ class ReadingPassService:
                 session=mongo_session,
                 document={"user_id": user_id, "intent_id": intent_id, "seconds": seconds, "source": source},
             )
+            if self.invoice_email_enabled:
+                await self.db['purchase_invoices'].insert_one(invoice_record(
+                    fresh_intent, payment_id=payment_id, transaction_id=transaction_id,
+                    now=now), session=mongo_session)
             return await self.db.topup_intents.find_one({"id": intent_id}, {"_id": 0}, session=mongo_session)
 
         return await self._transaction(operation)
