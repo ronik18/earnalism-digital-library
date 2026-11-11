@@ -48,6 +48,7 @@ export function reflowLegacyProse(fragment, { genre = '', layout = '' } = {}) {
     }
     // Single-newline imports use BR instead. Preserve intentional short lines,
     // stanza separators and explicit breaks unless the same prose signature fits.
+    const runs = [];
     for (const paragraph of [...parent.children].filter(node => node.tagName === 'P')) {
       if (paragraph.closest(PRESERVE) || paragraph.querySelector('pre,code,img,table,ul,ol,blockquote')) continue;
       // Nested BRs are intentionally retained; only direct source-line breaks
@@ -57,8 +58,15 @@ export function reflowLegacyProse(fragment, { genre = '', layout = '' } = {}) {
         if (child.nodeName === 'BR') { breaks.push(child); lines.push(''); }
         else lines[lines.length - 1] += child.textContent;
       }
-      if (!signature(lines)) continue;
-      breaks.forEach((br, index) => { if (continuation(lines[index], lines[index + 1])) br.replaceWith(seam()); });
+      if (breaks.length) runs.push({ lines, breaks });
+    }
+    // Ordinary TXT paragraphs often contain only three or four physical
+    // lines. Establish the source signature across the container, then reflow
+    // strictly inside each paragraph (never erase a real paragraph boundary).
+    if (signature(runs.flatMap(run => run.lines))) {
+      for (const { lines, breaks } of runs) {
+        breaks.forEach((br, index) => { if (continuation(lines[index], lines[index + 1])) br.replaceWith(seam()); });
+      }
     }
   }
   return fragment;

@@ -12,7 +12,7 @@ Detection requires at least eight ordinary lines, a >=65% fixed-width cohort, an
 A separate reproduced reflow edge case moved a retained free-preview anchor past three visual pages when enlarging text. Back now returns directly to the last free visual page. Forward navigation still requests normal protected authorization; no grant or debit bypass was added.
 
 Validation before release:
-- 314 Reader tests across 17 suites PASS, including actual Selfish Giant source, capitalized continuations, single-BR imports, verse/Bengali/code/dialogue/table preservation, context propagation and source-exact pagination cuts.
+- 315 Reader tests across 17 suites PASS, including actual Selfish Giant source, capitalized continuations, single-BR imports, verse/Bengali/code/dialogue/table preservation, context propagation and source-exact pagination cuts.
 - Catalogue test traverses every stored plain-text chapter, proves source-character parity, and asserts the common projection repairs more than 60 affected title packets. Initial fixed-width source audit found 67 suspect title packets; this is not a count of live books.
 - 36 real-Chrome isolated production-build cases PASS: 390x844, 360x740, 844x390, 1440x1000; 1.125rem, 1.25rem, 2rem; first three preview pages, forward/back turns and settings changes. No production API writes.
 - Retained Reader owner-applicability and Sredni amendment tests: 28 PASS after keeping the protected route consumer byte-identical.

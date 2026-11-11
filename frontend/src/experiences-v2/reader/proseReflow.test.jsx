@@ -114,3 +114,16 @@ test('the Reader layout context protects poetry in foreground and background pro
   expect(container.querySelector('.reader-v2__soft-wrap')).toBeNull();
   expect(container.textContent).toBe(readerSourceText(html).repeat(2));
 });
+
+test('future TXT paragraphs with only a few source lines reflow within their true paragraph boundaries', () => {
+  const lines = source.trim().split(/\n{2,}/).slice(0, 24).map(s => s.trim());
+  const paragraphs = Array.from({ length: 6 }, (_, i) => `<p>${lines.slice(i * 4, i * 4 + 4).join('<br>')}</p>`);
+  const raw = paragraphs.join('');
+  const container = render(raw);
+  expect(container.querySelectorAll('p')).toHaveLength(6);
+  expect(container.querySelectorAll('.reader-v2__soft-wrap').length).toBeGreaterThan(5);
+  expect(container.textContent).toBe(readerSourceText(raw));
+  [...container.querySelectorAll('p')].forEach((paragraph, index) => {
+    expect(paragraph.textContent).toBe(readerSourceText(paragraphs[index]));
+  });
+});
