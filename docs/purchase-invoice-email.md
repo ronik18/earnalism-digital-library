@@ -48,7 +48,12 @@ Email failures modify only delivery metadata. Invalid billing details are held
 as `review_required`; test payments are `suppressed_test`. Three failed attempts
 remain `failed` for support reconciliation, without restarting the payment or
 resetting any credit/observation counter. Normal queries use two narrowly scoped
-outbox indexes. Worker/index startup is suppressed in acceptance containment.
+outbox indexes. The explicit invoice flag authorizes only this transactional-mail
+worker and its invoice indexes, including while `cap-only-v1` is retained.
+Reader publication, general startup maintenance, all other background-job flags
+and every historical grant/counter/recovery gate remain unchanged. Never disable
+acceptance containment to enable invoice delivery. With invoice email disabled,
+no invoice worker or invoice-index startup occurs.
 
 ## Qualification
 
