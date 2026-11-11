@@ -105,17 +105,20 @@ def test_smtp_requires_tls_before_login_and_sends_once(monkeypatch):
             assert (host,port,timeout) == ('smtp.gmail.com',587,5)
         def ehlo(self): calls.append('ehlo')
         def starttls(self, context): assert context.check_hostname; calls.append('tls')
-        def login(self, *_): calls.append('login')
+        def auth(self, mechanism, callback, *, initial_response_ok):
+            assert mechanism=='PLAIN' and initial_response_ok is True
+            assert callback()=='\0'+invoices.SUPPORT+'\0'+'a'*16
+            calls.append('auth_once')
         def send_message(self, message): calls.append('send'); return {}
         def quit(self): calls.append('quit')
         def close(self): calls.append('close')
     monkeypatch.setattr(mail.smtplib,'SMTP',SMTP)
     row = invoices.invoice_record(purchase(),payment_id='pay_fixture',transaction_id='tx',now=NOW)
     mail.send_invoice(row,mail.SMTPConfig(username=invoices.SUPPORT,password='a'*16))
-    assert calls == ['ehlo','tls','ehlo','login','send','quit']
+    assert calls == ['ehlo','tls','ehlo','auth_once','send','quit']
     calls.clear()
     mail.verify_smtp(mail.SMTPConfig(username=invoices.SUPPORT,password='a'*16))
-    assert calls == ['ehlo','tls','ehlo','login','quit']
+    assert calls == ['ehlo','tls','ehlo','auth_once','quit']
 
 
 @pytest.mark.parametrize('attempts,expected', [(1,'pending'),(3,'failed')])
@@ -234,3 +237,40 @@ def test_invoice_index_startup_failure_still_closes_database_and_preserves_error
         assert got.value is error
         assert events.index('close_backends')<events.index('raw_close')
     asyncio.run(run())
+
+
+def test_startup_auth_failure_uses_one_mechanism_and_never_claims_queue(monkeypatch, caplog):
+    calls=[]
+    class SMTP:
+        def __init__(self,*a,**kw): calls.append('connect')
+        def ehlo(self): calls.append('ehlo')
+        def starttls(self,context): assert context.check_hostname;calls.append('tls')
+        def auth(self,mechanism,callback,*,initial_response_ok):
+            assert mechanism=='PLAIN' and initial_response_ok
+            calls.append('auth_once')
+            raise mail.smtplib.SMTPAuthenticationError(535,b'private-provider-text secret-password')
+        def close(self): calls.append('close')
+    class ForbiddenDB:
+        def __getitem__(self,key): raise AssertionError('queue must remain unclaimed')
+    monkeypatch.setattr(mail.smtplib,'SMTP',SMTP)
+    async def run():
+        await asyncio.wait_for(mail.delivery_loop(ForbiddenDB(),mail.SMTPConfig(
+            username=invoices.SUPPORT,password='a'*16)),1)
+    asyncio.run(run())
+    assert calls==['connect','ehlo','tls','ehlo','auth_once','close']
+    assert 'stage=AUTH code=535; delivery held' in caplog.text
+    assert 'private-provider-text' not in caplog.text and 'secret-password' not in caplog.text
+
+
+def test_tls_failure_never_authenticates_and_identifies_safe_stage(monkeypatch):
+    calls=[]
+    class SMTP:
+        def __init__(self,*a,**kw): pass
+        def ehlo(self): calls.append('ehlo')
+        def starttls(self,context): raise mail.ssl.SSLError('synthetic TLS denial')
+        def auth(self,*a,**kw): raise AssertionError('no auth before TLS')
+        def close(self): calls.append('close')
+    monkeypatch.setattr(mail.smtplib,'SMTP',SMTP)
+    with pytest.raises(mail.ssl.SSLError) as got:
+        mail.verify_smtp(mail.SMTPConfig(username=invoices.SUPPORT,password='a'*16))
+    assert mail._failure_stage(got.value)=='STARTTLS' and calls==['ehlo','close']

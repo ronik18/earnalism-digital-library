@@ -11564,8 +11564,8 @@
     },
     {
       "path": "purchase_invoice_email.py",
-      "bytes": 6226,
-      "sha256": "92b801cbf74f11b2bf5ac080821ccda49fc1af5dd58727f5e59f611702fb844b"
+      "bytes": 7262,
+      "sha256": "62700a98c2abe408f811de579916212cc91c132e1c5e8d32a1a6432d8f94a1f7"
     },
     {
       "path": "purchase_invoices.py",
@@ -11723,5 +11723,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "ab615f5e1834ccd6b5ef100e37361a7dea9afbb5411a6dc9d5f79b863c970001"
+  "expected_sha256": "7d3742236993876867f3829b1f94822e0ed20b7ffacca731c52590ef2ec6e821"
 }
