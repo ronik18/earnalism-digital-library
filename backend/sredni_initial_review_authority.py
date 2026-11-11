@@ -15,6 +15,8 @@ except ImportError:
     import sredni_initial_review_profile as profile
 
 class AdmissionStop(ValueError):pass
+READ_ONLY_SOURCE_SCOPE = 'ACTUAL_ATTESTED_SOURCE_READONLY_INITIAL_OBSERVATION'
+READ_ONLY_DB_SCOPE = 'SREDNI_OWN_MEMBER_METADATA_READ_ONLY'
 def need(ok,code):
     if not ok:raise AdmissionStop(code)
 def utc(value):
@@ -91,13 +93,22 @@ def admit(path,expected_sha256,*,now,allow_expired_status=False):
          and identity.get('identity_binding_sha256')==bound and identity.get('users_me_http')==200
          and identity.get('devices_http')==200,'GENUINE_CURRENT_NORMAL_MEMBER_ASSOCIATION_REQUIRED')
     observation_time(identity['observed_at'],'FRESH_MEMBER_OBSERVATION_REQUIRED')
+    readonly_source = source.get('scope') == READ_ONLY_SOURCE_SCOPE
     need(source.get('schema')=='earnalism.sredni_initial_review_actual_serving_source.v1'
-         and source.get('scope')=='ACTUAL_SOURCE_RUNTIME_STARTUP_RECOVERY_QUALIFIED'
+         and (source.get('scope')=='ACTUAL_SOURCE_RUNTIME_STARTUP_RECOVERY_QUALIFIED' or readonly_source)
          and re.fullmatch('[a-f0-9]{40}',str(source.get('source_sha','')))
-         and all(profile.SHA.fullmatch(str(source.get(k,''))) for k in ['runtime_sha256','source_files_sha256','startup_receipt_sha256','recovery_receipt_sha256'])
+         and all(profile.SHA.fullmatch(str(source.get(k,''))) for k in ['runtime_sha256','source_files_sha256'])
          and source.get('descriptor_sha256')==profile.DESCRIPTOR and source.get('package_version')==profile.PACKAGE
-         and source.get('private_stage_validated') is True and source.get('original120_unchanged') is True,
+         and source.get('original120_unchanged') is True,
          'ACTUAL_QUALIFIED_CURRENT_SERVING_SOURCE_REQUIRED')
+    if readonly_source:
+        need(b['action']=='observe' and b['expected_state_sha256'] is None,
+             'READONLY_SOURCE_CANNOT_AUTHORIZE_METADATA_WRITES')
+    else:
+        need(all(profile.SHA.fullmatch(str(source.get(k,'')))
+                 for k in ['startup_receipt_sha256','recovery_receipt_sha256'])
+             and source.get('private_stage_validated') is True,
+             'ACTUAL_QUALIFIED_CURRENT_SERVING_SOURCE_REQUIRED')
     observation_time(source['observed_at'],'FRESH_SERVING_SOURCE_REQUIRED')
     need(execution.get('schema')=='earnalism.sredni_initial_review_actual_execution.v1'
          and execution.get('owner_receipt_sha256')==b['owner']['sha256']
@@ -106,8 +117,12 @@ def admit(path,expected_sha256,*,now,allow_expired_status=False):
          and execution.get('identity_binding_sha256')==bound
          and all(profile.SHA.fullmatch(str(execution.get(k,''))) for k in ['mongo_profile_sha256','database_name_sha256','source_files_sha256'])
          and execution['source_files_sha256']==source['source_files_sha256']
-         and execution.get('db_access_scope')=='SREDNI_OWN_MEMBER_METADATA_ONLY'
+         and execution.get('db_access_scope')==(READ_ONLY_DB_SCOPE if readonly_source else 'SREDNI_OWN_MEMBER_METADATA_ONLY')
          and execution.get('uri_or_secrets_in_output') is False,'SEPARATE_EXACT_PRIVATE_EXECUTION_AUTHORITY_REQUIRED')
+    if readonly_source:
+        need(execution.get('observation_only') is True
+             and profile.SHA.fullmatch(str(execution.get('observer_source_files_sha256',''))),
+             'EXACT_READONLY_OPERATOR_SOURCE_REQUIRED')
     observation_time(execution['observed_at'],'FRESH_EXECUTION_CONTEXT_REQUIRED')
     if b['action']=='observe':need(b['expected_state_sha256'] is None,'INITIAL_OBSERVATION_CANNOT_CLAIM_EXPECTED_STATE')
     else:need(profile.SHA.fullmatch(str(b['expected_state_sha256'])) and b['expected_state_sha256']!='0'*64,'ACTUAL_EXPECTED_STATE_REQUIRED')

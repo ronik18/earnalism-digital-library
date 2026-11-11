@@ -62,6 +62,83 @@ def test_exact_local_synthetic_admission_and_no_actual_runtime(packet):
     assert a.owner_receipt_sha256==bundle['owner']['sha256'] and a.identity_binding_sha256==scope.identity_binding('user-1','auth-1')
 
 
+def readonly_packet(packet, *, action='observe', operator_hash='f'*64, mutate=None):
+    now,_,original,save=packet;b=copy.deepcopy(original)
+    b.update(action=action,expected_state_sha256=None if action=='observe' else '7'*64)
+    source=json.loads(Path(b['source']['path']).read_text())
+    source['scope']=authority.READ_ONLY_SOURCE_SCOPE
+    for key in ('startup_receipt_sha256','recovery_receipt_sha256','private_stage_validated'):
+        source.pop(key)
+    b['source']=save('readonly-source.json',source)
+    execution=json.loads(Path(b['execution']['path']).read_text())
+    execution.update(source_receipt_sha256=b['source']['sha256'],
+        db_access_scope=authority.READ_ONLY_DB_SCOPE,observation_only=True,
+        observer_source_files_sha256=operator_hash)
+    if mutate:mutate(execution)
+    b['execution']=save('readonly-execution.json',execution)
+    intent=json.loads(Path(b['intent']['path']).read_text())
+    intent.update(action=action,expected_state_sha256=b['expected_state_sha256'])
+    b['intent']=save('readonly-intent.json',intent)
+    return now,save('readonly-operation.json',b),b
+
+
+def test_abort_only_initial_admission_does_not_claim_startup_recovery_or_grant(packet):
+    now,ref,b=readonly_packet(packet)
+    a,_,receipts=authority.admit(ref['path'],ref['sha256'],now=now)
+    assert a.action=='observe' and a.expected_state_sha256 is None
+    assert receipts['execution']['db_access_scope']==authority.READ_ONLY_DB_SCOPE
+    assert all(k not in receipts['source'] for k in
+               ('startup_receipt_sha256','recovery_receipt_sha256','private_stage_validated'))
+    assert receipts['source']['source_files_sha256'] != receipts['execution']['observer_source_files_sha256']
+
+
+@pytest.mark.parametrize('missing',['startup_receipt_sha256','recovery_receipt_sha256','private_stage_validated'])
+def test_normal_write_admission_still_requires_every_readiness_receipt(packet,missing):
+    now,_,original,save=packet;b=copy.deepcopy(original)
+    source=json.loads(Path(b['source']['path']).read_text());source.pop(missing)
+    b['source']=save('missing-readiness-source.json',source)
+    execution=json.loads(Path(b['execution']['path']).read_text())
+    execution['source_receipt_sha256']=b['source']['sha256']
+    b['execution']=save('missing-readiness-execution.json',execution)
+    ref=save('missing-readiness-operation.json',b)
+    with pytest.raises(authority.AdmissionStop,match='ACTUAL_QUALIFIED_CURRENT_SERVING_SOURCE_REQUIRED'):
+        authority.admit(ref['path'],ref['sha256'],now=now)
+
+
+@pytest.mark.parametrize('action',['prepare-namespace','provision','close'])
+def test_readonly_source_never_admits_any_metadata_mutation(packet,action):
+    now,ref,_=readonly_packet(packet,action=action)
+    with pytest.raises(authority.AdmissionStop,match='READONLY_SOURCE_CANNOT_AUTHORIZE_METADATA_WRITES'):
+        authority.admit(ref['path'],ref['sha256'],now=now)
+
+
+@pytest.mark.parametrize('change',[
+    {'observation_only':False}, {'db_access_scope':'SREDNI_OWN_MEMBER_METADATA_ONLY'},
+    {'observer_source_files_sha256':''}, {'observer_source_files_sha256':None},
+    {'source_files_sha256':'1'*64},
+])
+def test_readonly_context_remains_narrow_and_source_bound(packet,change):
+    now,ref,_=readonly_packet(packet,mutate=lambda e:e.update(change))
+    with pytest.raises(authority.AdmissionStop):authority.admit(ref['path'],ref['sha256'],now=now)
+
+
+@pytest.mark.parametrize('matching',[True,False])
+def test_cli_checks_observer_code_before_any_profile_or_database(packet,monkeypatch,capsys,matching):
+    expected=cli.local_source_sha256()
+    _,ref,_=readonly_packet(packet,operator_hash=expected if matching else 'f'*64)
+    called=[]
+    async def inert_runtime(*args):
+        called.append(True)
+        return {'status':'SYNTHETIC_READONLY_ONLY_NOT_ACTUAL_EVIDENCE'}
+    monkeypatch.setattr(cli,'runtime',inert_runtime)
+    code=cli.main(['--observe-initial','--authority',ref['path'],'--authority-sha256',ref['sha256'],
+        '--mongo-profile','SYNTHETIC-NOT-OPENED','--database','SYNTHETIC-NOT-CONNECTED',
+        '--journal',packet[2]['journal']['path']])
+    assert bool(called) is matching
+    assert code==(0 if matching else 2)
+    if not matching:assert json.loads(capsys.readouterr().out)['replay_permitted'] is False
+
+
 @pytest.mark.parametrize('change',['owner','identity','source','execution','intent','schema','journal','expired','cap','source-authority'])
 def test_bad_admission_denies_before_any_profile_or_client(packet,change,monkeypatch):
     now,ref,bundle,save=packet;b=copy.deepcopy(bundle)
