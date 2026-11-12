@@ -79,8 +79,8 @@
     },
     {
       "path": "catalog_truth.py",
-      "bytes": 62575,
-      "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
+      "bytes": 62828,
+      "sha256": "b35176c6c759b02ab037eafb8e46f81ed4f02e86770d39b69924cad8c8e07f12"
     },
     {
       "path": "catalogue_phase_timing.py",
@@ -11593,6 +11593,11 @@
       "sha256": "df15604a8dabdcd18de03ab9398bc02e0844a4637765dd3855a8f321d8294ccd"
     },
     {
+      "path": "reading_estimates.py",
+      "bytes": 2757,
+      "sha256": "0822de519cf408faeca5e751443aad7e97d1214c645d005b4871e213e5b96524"
+    },
+    {
       "path": "reading_pass_admission.py",
       "bytes": 13419,
       "sha256": "0203529ddb176e8740dae3e36c317ebea0be8c7df5f2ff089022eef9d46754ac"
@@ -11634,8 +11639,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 653838,
-      "sha256": "6420d4b97d31521c9d6243638afaf97a0d6b6df3e09e8a4a0491cb5ba5af6b2b"
+      "bytes": 653893,
+      "sha256": "bdb668e3b8463e8accfad61738ba966168c740097fab8b4ee027cf0e4752264b"
     },
     {
       "path": "serving_publication_binding.py",
@@ -11728,5 +11733,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "a32dd57304303f82486c6ae43feec80938fb3f91b5fda9887a40e9ccb12fa2f3"
+  "expected_sha256": "688a63ab5165ee57b46555503b5c19044fce3b216ada3ae584f95d686a431cd6"
 }

@@ -2046,6 +2046,7 @@ def _public_cache_key(scope: str, **params) -> str:
     payload = {
         "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
         "catalog_truth": PUBLIC_CATALOG_TRUTH_CACHE_VERSION,
+        "reading_estimate": "complete-reader-text-v1",
         **params,
     }
     return f"{scope}:{_json.dumps(payload, sort_keys=True, ensure_ascii=True, default=str)}"
