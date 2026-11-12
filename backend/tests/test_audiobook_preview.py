@@ -1,5 +1,5 @@
 import pytest
-from backend.audiobook_preview import clip_mp3, preview_segments, MAX_SOURCE_BYTES
+from backend.audiobook_preview import clip_mp3, preview_segments, MAX_SOURCE_BYTES, PreviewClipCache, PreviewCapacityError
 
 
 def frame():
@@ -61,7 +61,8 @@ def endpoint_namespace(**overrides):
     nodes = [n for n in tree.body if isinstance(n, ast.AsyncFunctionDef) and n.name in names]
     for n in nodes:
         n.decorator_list = []
-    ns = dict(HTTPException=HTTPException, Request=object, Response=Response, asyncio=asyncio, re=re, preview_segments=preview_segments)
+    ns = dict(HTTPException=HTTPException, Request=object, Response=Response, asyncio=asyncio, re=re, preview_segments=preview_segments,
+        PreviewCapacityError=PreviewCapacityError, _preview_clips=PreviewClipCache())
     ns.update(overrides)
     exec(compile(ast.Module(body=nodes, type_ignores=[]), '<actual-preview-endpoints>', 'exec'), ns)
     return ns
@@ -69,7 +70,7 @@ def endpoint_namespace(**overrides):
 
 def package():
     return {'package_version': 'sha256-' + 'a' * 64, 'tracks': [{'chapter_id': 'c1', 'chunks': [
-        {'segment_id': 'first', 'duration_ms': 240000, 'assets': {'audio': {'synthetic': True}}},
+        {'segment_id': 'first', 'duration_ms': 240000, 'assets': {'audio': {'sha256': 'b' * 64, 'storage': {'bucket': 'fixture', 'key': 'clip.mp3', 'version_id': 'immutable-v1'}}}},
         {'segment_id': 'after-preview', 'duration_ms': 10000}]}]}
 
 
@@ -116,3 +117,57 @@ def test_held_title_cannot_use_private_package_resolver():
     ns = endpoint_namespace(_reader_audio_book_for_slug=held)
     with pytest.raises(HTTPException):
         asyncio.run(ns['public_audiobook_preview_manifest']('sredni-vashtar', Response()))
+
+
+def test_cached_clip_is_not_served_after_public_release_is_revoked():
+    async def scenario():
+        released = True
+        calls = []
+        async def public_book(slug):
+            if not released:
+                raise HTTPException(status_code=404)
+            return {'slug': slug}
+        def clipped(*_):
+            calls.append(1)
+            return b'bounded', 100
+        ns = endpoint_namespace(_reader_audio_book_for_slug=public_book,
+            _selected_audiobook_package=lambda *_: (package(), '', ''), _clipped_public_preview=clipped)
+        args = ('approved', package()['package_version'], 'first', SimpleNamespace(method='GET', headers={}))
+        assert (await ns['public_audiobook_preview_segment'](*args)).status_code == 200
+        released = False
+        with pytest.raises(HTTPException) as error:
+            await ns['public_audiobook_preview_segment'](*args)
+        assert error.value.status_code == 404 and calls == [1]
+    asyncio.run(scenario())
+
+
+def test_actual_range_and_head_endpoints_share_a_single_clip_preparation():
+    import threading
+    async def scenario():
+        calls, release, started = [], threading.Event(), asyncio.Event()
+        loop = asyncio.get_running_loop()
+        async def public_book(slug):
+            return {'slug': slug}
+        def clipped(*_):
+            calls.append(1)
+            loop.call_soon_threadsafe(started.set)
+            if not release.wait(2):
+                raise AssertionError('Fixture producer was not released')
+            return b'x' * 100, 100
+        ns = endpoint_namespace(_reader_audio_book_for_slug=public_book,
+            _selected_audiobook_package=lambda *_: (package(), '', ''), _clipped_public_preview=clipped)
+        requests = [SimpleNamespace(method='GET', headers={'range': 'bytes=0-9'}),
+                    SimpleNamespace(method='HEAD', headers={}),
+                    SimpleNamespace(method='GET', headers={'range': 'bytes=-10'})]
+        tasks = [asyncio.create_task(ns['public_audiobook_preview_segment'](
+            'approved', package()['package_version'], 'first', request)) for request in requests]
+        try:
+            await asyncio.wait_for(started.wait(), 1)
+            assert calls == [1]
+        finally:
+            release.set()
+        responses = await asyncio.gather(*tasks)
+        assert [r.status_code for r in responses] == [206, 200, 206]
+        assert [len(r.body) for r in responses] == [10, 0, 10]
+        assert calls == [1]
+    asyncio.run(scenario())

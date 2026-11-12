@@ -16794,5 +16794,15 @@
     "state": "SOURCE_QUALIFICATION_PENDING",
     "regression_copy_successor": "Two exact UX listening-copy assertions updated after run43220023615; production source and title activation unchanged; fresh exact-head CI required",
     "auth_copy_successor": "Current bounded-preview wording bound exactly by auth review; FAQ surfaces reuse shared copy; frontend hash208bdae7; native contracts/counters unchanged; fresh exact-head CI required"
+  },
+  "preview_admission_identity_correction_20261112": {
+    "scope": "Released public previews and reader identity only; no title or role promotion",
+    "physical_source_reads": 1,
+    "cached_clips": 2,
+    "maximum_pending_clip_jobs": 8,
+    "maximum_waiters": 32,
+    "caller_deadline_seconds": 20,
+    "native_observations_consumed": 6,
+    "state": "SOURCE_QUALIFICATION_PENDING"
   }
 }

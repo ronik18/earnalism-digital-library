@@ -75,6 +75,8 @@ env \
   ENABLE_STARTUP_DB_MAINTENANCE=false \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_audiobook_preview.py \
+    backend/tests/test_preview_clip_concurrency.py \
+    backend/tests/test_google_auth_session_contract.py \
     backend/tests/test_b2_audiobook_routing.py \
     backend/tests/test_audiobook_package_v2_routes.py \
     backend/tests/test_audio_stream_chunking.py \
