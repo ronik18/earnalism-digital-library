@@ -25,12 +25,12 @@ def request_with_range() -> Request:
     return Request({"type": "http", "method": "GET", "headers": [(b"range", b"bytes=0-1023")]})
 
 
-def test_public_contract_pins_three_text_pages_and_zero_audio_seconds():
+def test_public_contract_pins_three_text_pages_and_bounded_audio_preview():
     assert ReadingPassConfig().public_text_pages == 3
-    assert PUBLIC_AUDIO_PREVIEW_SECONDS == 0
-    assert ReadingPassConfig().public_audio_seconds == 0
-    assert not public_audio_position(0)
-    assert not public_audio_position(1)
+    assert PUBLIC_AUDIO_PREVIEW_SECONDS == 180
+    assert ReadingPassConfig().public_audio_seconds == 180
+    assert public_audio_position(0)
+    assert public_audio_position(1)
 
 
 def test_release_schema_rejects_every_nonzero_public_audio_duration():

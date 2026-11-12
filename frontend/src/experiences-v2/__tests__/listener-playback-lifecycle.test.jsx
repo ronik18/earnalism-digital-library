@@ -150,3 +150,38 @@ test("retired read-along props cannot expose a customer control", async () => {
   expect(callback).not.toHaveBeenCalled();
   expect(container.querySelector('audio')).not.toBeNull();
 });
+
+test('one Play gesture prepares access and starts when its manifest arrives', async () => {
+  const authorize = jest.fn();
+  await render({ access: { authorized: false }, onAuthorize: authorize });
+  const button = [...container.querySelectorAll('button')].find(item => item.textContent === 'Play audiobook');
+  await act(async () => button.click());
+  expect(authorize).toHaveBeenCalledTimes(1);
+  expect(HTMLMediaElement.prototype.play).not.toHaveBeenCalled();
+  await render({ onAuthorize: authorize });
+  expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1);
+  expect(container.textContent).not.toContain('Authorize Listening');
+});
+
+test('browser gesture rejection leaves the ready Play button available', async () => {
+  const error = jest.fn();
+  HTMLMediaElement.prototype.play.mockRejectedValueOnce(Object.assign(new Error('gesture'), { name: 'NotAllowedError' }));
+  await render({ onBeforePlayback: () => null, onMediaError: error });
+  await click('Play approved audiobook');
+  expect(error).not.toHaveBeenCalled();
+  await click('Play approved audiobook');
+  expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(2);
+});
+
+test('a free preview starts fresh and never overwrites saved member listening progress', async () => {
+  const key = `earnalism.audiobook.progress.v1:${book.slug}`;
+  const saved = JSON.stringify({ packageVersion: version, segmentId: 'segment-1', offset: 5, speed: 1.25 });
+  localStorage.setItem(key, saved);
+  await render({ audioManifest: { ...audioManifest, preview: true, packageVersion: `preview:${version}` } });
+  const audio = container.querySelector('audio'); await metadata(audio);
+  expect(audio.currentTime).toBe(0);
+  state(audio).time = 7;
+  await act(async () => audio.dispatchEvent(new Event('timeupdate')));
+  await act(async () => [...container.querySelectorAll('button')].find(b => b.textContent === 'Stop listening').click());
+  expect(localStorage.getItem(key)).toBe(saved);
+});

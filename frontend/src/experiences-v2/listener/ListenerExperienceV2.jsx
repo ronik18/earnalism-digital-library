@@ -23,10 +23,11 @@ export function clampPlaybackTime(seconds, durationSeconds) {
 export default function ListenerExperienceV2({ book = {}, fixture = false, access = {}, audioManifest = null, authorizing = false, onAuthorize, onBeforePlayback, onPlaybackStateChange, onStop, onPlaybackComplete, onMediaError, onNavigate, onAddToLibrary }) {
   const presentation = listenerReleasePresentation(book, { fixture });
   const creditsMatchPackage = !audioManifest?.valid
-    || Boolean(presentation.packageVersion && audioManifest.packageVersion === presentation.packageVersion);
+    || Boolean(presentation.packageVersion && (audioManifest.sourcePackageVersion || audioManifest.packageVersion) === presentation.packageVersion);
   const narrationDisclosure = creditsMatchPackage && !presentation.fixture ? presentation.narrationDisclosure : "";
   const audioRef = useRef(null);
   const playbackIntentRef = useRef(0);
+  const pendingStartRef = useRef(false);
   const pendingOffsetRef = useRef(null);
   const pausedSeekRef = useRef(null);
   const pendingOffsetSegmentRef = useRef("");
@@ -75,7 +76,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   useEffect(() => {
     if (!audioManifest?.valid) return;
-    const saved = loadAudiobookProgress(book.slug, audioManifest.packageVersion);
+    const saved = audioManifest.preview ? null : loadAudiobookProgress(book.slug, audioManifest.packageVersion);
     const savedTrack = saved?.segmentId
       ? selectAudioTrack({ manifest: audioManifest, preferredSegmentId: saved.segmentId })
       : null;
@@ -94,7 +95,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   const persistProgress = useCallback(({ force = false } = {}) => {
     const audio = audioRef.current;
-    if (!audioManifest?.valid || !audio || !activeSegment?.segmentId) return;
+    if (!audioManifest?.valid || audioManifest.preview || !audio || !activeSegment?.segmentId) return;
     if (!force && Date.now() - progressSavedAtRef.current < 5000) return;
     progressSavedAtRef.current = Date.now();
     saveAudiobookProgress(book.slug, {
@@ -159,10 +160,14 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   const togglePlayback = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio || !canPlay) return;
+    if (!canPlay) {
+      if (!authorizing) { pendingStartRef.current = true; void onAuthorize?.(); }
+      return;
+    }
+    if (!audio) return;
     if (audio.paused) {
       const intent = ++playbackIntentRef.current;
-      Promise.resolve().then(() => onBeforePlayback?.()).then(() => {
+      const start = () => {
         if (playbackIntentRef.current !== intent || audioRef.current !== audio || !audio.isConnected) return;
         const target = pausedSeekRef.current;
         pausedSeekRef.current = null;
@@ -175,10 +180,22 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
         }
         if (target) audio.currentTime = target.offsetSeconds;
         return requestAudiobookPlayback(audio);
-      }).catch(() => onMediaError?.());
+      };
+      const failed = (error) => { if (playbackIntentRef.current === intent && audioRef.current === audio && audio.isConnected && error?.name !== "NotAllowedError") onMediaError?.(); };
+      try {
+        const preparation = onBeforePlayback?.();
+        if (preparation?.then) preparation.then(start).catch(failed);
+        else Promise.resolve(start()).catch(failed);
+      } catch (error) { failed(error); }
     }
     else { playbackIntentRef.current += 1; audio.pause(); }
-  }, [activeSegment?.segmentId, canPlay, onBeforePlayback, onMediaError]);
+  }, [activeSegment?.segmentId, authorizing, canPlay, onAuthorize, onBeforePlayback, onMediaError]);
+
+  useEffect(() => {
+    if (!canPlay || !pendingStartRef.current) return;
+    pendingStartRef.current = false;
+    togglePlayback();
+  }, [canPlay, togglePlayback]);
 
   const handleLoadedMetadata = useCallback(() => {
     const audio = audioRef.current;
@@ -186,7 +203,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
     audio.playbackRate = speed;
     applyPendingOffset();
     if (!resumeAfterTransitionRef.current) return;
-    requestAudiobookPlayback(audio).catch(() => onMediaError?.());
+    requestAudiobookPlayback(audio).catch((error) => { if (error?.name !== "NotAllowedError") onMediaError?.(); });
   }, [applyPendingOffset, onMediaError, speed]);
 
   const handleTimeUpdate = useCallback(() => {
@@ -221,6 +238,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
   }, [activeSegment?.nextSegmentId, onBeforePlayback, onMediaError, onPlaybackComplete, onPlaybackStateChange, persistProgress]);
 
   const stop = useCallback(() => {
+    pendingStartRef.current = false;
     playbackIntentRef.current += 1;
     audioRef.current?.pause();
     persistProgress({ force: true });
@@ -237,10 +255,10 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
         <div className="listener-v2__main">
           <div className="listener-v2__mobile-top"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button></div>
           <div className="listener-v2__art"><BookCoverImage book={book} alt={`${presentation.title} cover`} loading="eager" fetchPriority="high" width={480} widths={[240, 360, 480]} sizes="(min-width: 768px) 230px, 48vw" allowGraphicalFallback={false} fallback="" /></div>
-          <div className="listener-v2__copy"><span className="listener-v2__eyebrow">{presentation.fixture ? "Visual review preview" : "Listening experience"}</span><h1 id="listener-v2-title">{presentation.title}</h1><p>{presentation.author}</p><small>{presentation.chapterLabel}</small>{presentation.fixture && <p className="listener-v2__fixture-notice" role="status">Playback is disabled until an approved recording is available.</p>}</div>
+          <div className="listener-v2__copy"><span className="listener-v2__eyebrow">{presentation.fixture ? "Visual review preview" : access.preview ? "3-minute audiobook preview" : "Listening experience"}</span><h1 id="listener-v2-title">{presentation.title}</h1><p>{presentation.author}</p><small>{presentation.chapterLabel}</small>{presentation.fixture && <p className="listener-v2__fixture-notice" role="status">Playback is disabled until an approved recording is available.</p>}</div>
           {!presentation.fixture && canPlay && <audio ref={audioRef} src={activeSegment.audioUrl} preload="metadata" data-testid="listener-package-audio" data-package-version={audioManifest.packageVersion} data-segment-id={activeSegment.segmentId} onLoadedMetadata={handleLoadedMetadata} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} onPlay={() => { resumeAfterTransitionRef.current = false; setPlaying(true); }} onPlaying={() => onPlaybackStateChange?.("playing")} onWaiting={() => onPlaybackStateChange?.("buffering")} onPause={() => { if (resumeAfterTransitionRef.current || audioRef.current?.ended) return; playbackIntentRef.current += 1; setPlaying(false); onPlaybackStateChange?.("paused"); persistProgress({ force: true }); }} onError={() => onMediaError?.()} />}
           {!presentation.fixture && <><div className="listener-v2__timeline"><div><span>{clock(time)}</span><input aria-label="Seek within approved audiobook" type="range" min="0" max={totalDuration || 0} step="0.1" value={Math.min(time, totalDuration || time)} onChange={(event) => seek(event.target.value)} disabled={!canPlay || !totalDuration} /><b style={{ width: `${progress}%` }} aria-hidden="true" /><span>{clock(totalDuration)}</span></div><p>{presentation.chapterLabel}</p></div>
-          <div className="listener-v2__controls">{canPlay ? <><ExperienceIconButton label="Back 15 seconds" onClick={() => seek(time - 15)}><RotateCcw size={22} /><em>15</em></ExperienceIconButton><button type="button" className="listener-v2__play" onClick={togglePlayback} aria-label={playing ? "Pause approved audiobook" : "Play approved audiobook"}>{playing ? <Pause size={30} /> : <Play size={30} fill="currentColor" />}</button><ExperienceIconButton label="Forward 15 seconds" onClick={() => seek(time + 15)}><RotateCw size={22} /><em>15</em></ExperienceIconButton></> : <button type="button" className="listener-v2__authorize" onClick={onAuthorize} disabled={authorizing}>{authorizing ? "Authorizing listening…" : "Authorize Listening"}</button>}</div>
+          <div className="listener-v2__controls">{canPlay ? <><ExperienceIconButton label="Back 15 seconds" onClick={() => seek(time - 15)}><RotateCcw size={22} /><em>15</em></ExperienceIconButton><button type="button" className="listener-v2__play" onClick={togglePlayback} aria-label={playing ? "Pause approved audiobook" : "Play approved audiobook"}>{playing ? <Pause size={30} /> : <Play size={30} fill="currentColor" />}</button><ExperienceIconButton label="Forward 15 seconds" onClick={() => seek(time + 15)}><RotateCw size={22} /><em>15</em></ExperienceIconButton></> : <button type="button" className="listener-v2__authorize" onClick={togglePlayback} disabled={authorizing}>{authorizing ? "Preparing audiobook…" : "Play audiobook"}</button>}</div>
           {canPlay && <button type="button" className="listener-v2__stop" onClick={stop}>Stop listening</button>}
           <div className="listener-v2__utilities"><label>Speed<select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audioRef.current) audioRef.current.playbackRate = next; }} disabled={!canPlay}><option value="1">1.0×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label></div></>}
           <NarrationCredits disclosure={narrationDisclosure} />
@@ -260,7 +278,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
               </li>;
             })}</ol> : <p className="listener-v2__chapter-empty">Chapter details will appear with the approved listening package.</p>}
           </section>
-          <ExperiencePanel eyebrow="Listening access"><p>{presentation.fixture ? "Listening requires an active Reading Pass from second 0." : `${LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.`}</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
+          <ExperiencePanel eyebrow="Listening access"><p>{presentation.fixture ? "Listening requires an active Reading Pass from second 0." : `${LISTENING_ACCESS_COPY}`}</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
           <ExperiencePanel eyebrow="Listening Pass"><p><Clock3 size={15} /> {passBalanceLabel}</p><p>{READING_TIME_COPY}</p><button type="button" onClick={() => onNavigate?.("passes")}>Extend Listening Time</button></ExperiencePanel>
         </aside>
       </section>

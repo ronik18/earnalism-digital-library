@@ -175,6 +175,19 @@ jobs:
             application_pin="$(jq -er '.application_base' "$reader_binding")"
             bindings+=("$application_pin:backend/.runtime-source-manifest.json")
           fi
+          # Positive historical native-consumer tests read immutable retained blobs,
+          # never the newly changed application checkout. Hydrate the exact closure
+          # in this same bounded batch; do not add lazy fetches or retries in tests.
+          consumer_contract=internal/earnalism_intelligence/listener_text_sync_consumer.json
+          [[ "$(sha256sum "$consumer_contract" | awk '{print $1}')" == '6f1ebb978201f85fbaf1675a567000db074412ab2066ca15ff3481771c02ff18' ]] || exit 1
+          [[ "$RETAINED_PAIR_CONTROLLER_SHA" == 'e547d0163fa8d1f59891724e2717fb1526fd4ed6' ]] || exit 1
+          [[ "$(jq -er '.sources | length' "$consumer_contract")" == 12 ]] || exit 1
+          bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:$consumer_contract")
+          bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:internal/legal/sredni_reader_retirement_owner_instruction.json")
+          bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:internal/legal/sredni_native_build_amendment_owner_acceptance.json")
+          while IFS= read -r source_path; do
+            bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:$source_path")
+          done < <(jq -er '.sources | keys[]' "$consumer_contract")
           missing_commits=()
           for binding in "${bindings[@]}"; do
             if ! git -c remote.origin.promisor=false cat-file -e "$binding" 2>/dev/null; then

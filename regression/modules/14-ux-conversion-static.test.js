@@ -263,7 +263,7 @@ describe("UX conversion static signals", () => {
     expect(publicAccessCopy).toContain("PUBLIC_PREVIEW_COPY = productCopy.preview");
     expect(productCopy.preview).toBe("Read the first 3 pages free.");
     expect(publicAccessCopy).toContain("LISTENING_ACCESS_COPY = productCopy.listeningAccess");
-    expect(productCopy.listeningAccess).toBe("Listening is available only for released audiobooks and requires an active Reading Pass.");
+    expect(productCopy.listeningAccess).toBe("Listen to a 3-minute preview of each released audiobook free. An active Reading Pass unlocks full listening automatically when you press Play.");
     expect(referencePublicPages).toContain("Stay with a story for as long as it holds you.");
     expect(referencePublicPages).toContain("No subscription or autorenewal");
     expect(referencePublicPages).toContain("View Reading Passes");
@@ -1501,7 +1501,7 @@ describe("UX conversion static signals", () => {
     expect(signup).not.toContain("Pass purchases are not available yet.");
     expect(publicAccessCopy).toContain('export const AUTH_PRODUCT_ACCESS_COPY = `${PUBLIC_READER_ACCESS_COPY} ${LISTENING_ACCESS_COPY}`;');
     expect(productCopy.readerAccess).toBe("The first 3 canonical pages are free where a preview is available. A Reading Pass is required beyond the preview on pass-required editions.");
-    expect(productCopy.listeningAccess).toBe("Listening is available only for released audiobooks and requires an active Reading Pass.");
+    expect(productCopy.listeningAccess).toBe("Listen to a 3-minute preview of each released audiobook free. An active Reading Pass unlocks full listening automatically when you press Play.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("The first 3 pages are free where a preview is available. Continuing beyond the preview on pass-required editions requires a valid Reading Pass; pass purchases are not available yet.");
     expect(account).toContain("Continue reading");

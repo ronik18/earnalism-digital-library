@@ -1,0 +1,64 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/lib/controlledLaunch.js",
+    "frontend/src/lib/libraryCatalogueComposition.js",
+    "frontend/src/lib/libraryCatalog.js",
+    "frontend/src/lib/libraryFilterState.js",
+    "frontend/src/lib/libraryDiscovery.js",
+    "frontend/src/data/libraryDiscoveryMetadata.json",
+    "frontend/src/content/productCopy.json",
+    "frontend/src/design-system/sitewide-option-b.css",
+    "frontend/src/config/publicNavigation.js",
+    "frontend/src/components/LibraryBrowseShelf.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "4d4d514e5b3adbdd436a67a3f6d71a3f2cab52f1",
+    "tree": "1e6b635ad9fb60d5411cc0aaadfc34b857b575b8"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/sredni-listener-library-interaction-baseline-20261111.json",
+    "reviewed_source_commit": "b1d357752766163a3827cb100f2f014f38217e40",
+    "surface_sha256": "7dec76240c387a06a754e7c76c74cee48f23c62f5e83d5856465c60b1c4fab47"
+  },
+  "authorized_surface_sha256": "07342e87c7c69ef476ff23791836c9d93ecacdf259a96e0d1dfde383fc148a7a",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/content/productCopy.json"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx",
+      "frontend/src/lib/controlledLaunch.js",
+      "frontend/src/lib/libraryCatalogueComposition.js",
+      "frontend/src/lib/libraryCatalog.js",
+      "frontend/src/lib/libraryFilterState.js",
+      "frontend/src/lib/libraryDiscovery.js",
+      "frontend/src/data/libraryDiscoveryMetadata.json",
+      "frontend/src/design-system/sitewide-option-b.css",
+      "frontend/src/config/publicNavigation.js",
+      "frontend/src/components/LibraryBrowseShelf.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_DIRECTIVE_ONE_PLAY_THREE_MINUTE_PREVIEW_20261112",
+    "scope": "Direct owner P0 request removes the separate Authorize Listening action and adds a three-minute public preview for released audiobook titles. Only shared listening-access wording changes within this Library input set. This source binding grants no title activation, historical budget change or visual acceptance; fresh exact-head browser/CI review remains required.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "validation": {
+    "focused_frontend_tests": 71,
+    "proxy_transport_tests": 23,
+    "production_build": "PASS; 6584 static assertions",
+    "actual_paid_session": "NOT_PERFORMED",
+    "customer_browser": "UNPERFORMED"
+  },
+  "limitations": "All historical baseline records/contracts, native validators, private title gates and six consumed observations remain unchanged. No capture, paid session or production mutation establishes this fingerprint."
+}

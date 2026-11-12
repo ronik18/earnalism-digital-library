@@ -8,6 +8,7 @@ const mockEndReadingPassSession = jest.fn();
 const mockNavigate = jest.fn();
 const mockRenewReadingPassLease = jest.fn();
 const mockPlaybackReady = jest.fn();
+let mockUserState = { id: "isolated-listener-user" };
 
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>,
@@ -18,7 +19,7 @@ jest.mock("react-router-dom", () => ({
 }), { virtual: true });
 
 jest.mock("../../context/AuthContext", () => ({
-  useAuth: () => ({ user: { id: "isolated-listener-user" } }),
+  useAuth: () => ({ user: mockUserState }),
 }));
 
 jest.mock("../../lib/api", () => ({
@@ -43,6 +44,7 @@ jest.mock("../shared/ReleaseTruthAdapter", () => ({
 }));
 
 jest.mock("../../lib/audioPackageManifest", () => ({
+  ...jest.requireActual("../../lib/audioPackageManifest"),
   normalizeAudioManifest: () => ({
     valid: true,
     packageVersion: mockPackageVersion,
@@ -62,7 +64,7 @@ jest.mock("../listener/ListenerExperienceV2", () => ({
   default: ({ onAuthorize, onBeforePlayback, onPlaybackStateChange, access, audioManifest, onNavigate }) => (
     <section>
       <button type="button" onClick={onAuthorize}>Authorize Listening</button>
-      <button type="button" onClick={() => { void onBeforePlayback().then(mockPlaybackReady); }}>Resume</button>
+      <button type="button" onClick={() => { void Promise.resolve(onBeforePlayback()).then(mockPlaybackReady); }}>Resume</button>
       <button type="button" onClick={() => onPlaybackStateChange("playing")}>Native Playing</button>
       <button type="button" onClick={() => onPlaybackStateChange("buffering")}>Native Waiting</button>
       <button type="button" onClick={() => onPlaybackStateChange("paused")}>Native Pause</button>
@@ -77,6 +79,7 @@ import ListenerExperienceV2Route from "../listener/ListenerExperienceV2Route";
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 const publicSafeReaderManifest = {
+  access: { authenticated: true, role: "user", can_read_paid: true },
   book: { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain" },
   audio: {
     release_gate: "APPROVED",
@@ -213,4 +216,40 @@ describe("Listener protected package route", () => {
   await act(async()=>root.unmount());container.remove();jest.useRealTimers();
  });
 
+});
+
+
+test.each(["no-pass", "exhausted-after-load", "signed-out-after-load"])("public %s listening opens only the bounded preview", async mode => {
+  mockUserApiGet.mockReset(); mockStartReadingPassAudioSession.mockReset();
+  mockUserApiGet.mockResolvedValueOnce({ data: { ...publicSafeReaderManifest, access: { authenticated: true, role: "user", can_read_paid: mode !== "no-pass" } } })
+    .mockResolvedValueOnce({ data: { schema_version: "audiobook_preview.v1", slug: "a-ghost-story", package_version: mockPackageVersion,
+      duration_ms: 180000, segments: [{ segment_id: "c001-s001", chapter_id: "chapter-001", cumulative_start_ms: 0, duration_ms: 180000,
+        audio_url: `/api/reader/book/a-ghost-story/audiobook/preview/packages/${mockPackageVersion}/segments/c001-s001` }] } });
+  if (mode !== "no-pass") mockStartReadingPassAudioSession.mockRejectedValueOnce({ response: { status: mode === "signed-out-after-load" ? 401 : 403, data: { detail: { code: mode === "signed-out-after-load" ? "AUTH_REQUIRED" : "PASS_REQUIRED" } } } });
+  const container = document.createElement("div"); document.body.appendChild(container); const root = createRoot(container);
+  await act(async () => root.render(<ListenerExperienceV2Route />)); await flush();
+  await act(async () => [...container.querySelectorAll("button")].find(b => b.textContent === "Authorize Listening").click()); await flush();
+  expect(container.querySelector('[data-testid="listener-ready"]')).not.toBeNull();
+  expect(mockUserApiGet.mock.calls.map(([path]) => path)).toContain("/reader/book/a-ghost-story/audiobook/preview/manifest");
+  expect(mockUserApiGet.mock.calls.map(([path]) => path)).not.toContain("/reader/book/a-ghost-story/audiobook/manifest");
+  expect(mockStartReadingPassAudioSession).toHaveBeenCalledTimes(mode === "no-pass" ? 0 : 1);
+  await act(async () => root.unmount()); container.remove();
+});
+
+
+test("a server-confirmed pass works while the optional account profile is still loading", async () => {
+  mockUserState = null;
+  mockUserApiGet.mockReset(); mockStartReadingPassAudioSession.mockReset();
+  mockUserApiGet.mockResolvedValueOnce({ data: publicSafeReaderManifest }).mockResolvedValueOnce({ data: { schema_version: "audiobook_package_manifest.v2" } });
+  mockStartReadingPassAudioSession.mockResolvedValueOnce({ session_id: "isolated-audio-session", lease_token: "isolated-lease", lease_version: 1 });
+  const container = document.createElement("div"); document.body.appendChild(container); const root = createRoot(container);
+  try {
+    await act(async () => root.render(<ListenerExperienceV2Route />)); await flush();
+    await act(async () => [...container.querySelectorAll("button")].find(b => b.textContent === "Authorize Listening").click()); await flush();
+    expect(mockStartReadingPassAudioSession).toHaveBeenCalledTimes(1);
+    expect(container.querySelector('[data-testid="listener-ready"]')).not.toBeNull();
+    expect(mockUserApiGet.mock.calls.some(([path]) => path.includes("/preview/"))).toBe(false);
+  } finally {
+    await act(async () => root.unmount()); container.remove(); mockUserState = { id: "isolated-listener-user" };
+  }
 });

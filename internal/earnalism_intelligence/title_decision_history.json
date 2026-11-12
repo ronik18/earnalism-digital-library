@@ -16785,5 +16785,14 @@
     "preserved": "Existing TLS, socket deadlines, delivery caps, cap-only-v1, all historical evidence/validators, six consumed observations; no counter reset",
     "state": "SOURCE_PREPARED_SMTP_GATE_HELD",
     "next_action": "Serial source integration after PR676; exact-head CI/review, merged-main deployment, startup SMTP gate; no test purchase"
+  },
+  "released_audiobook_preview_policy_20261112": {
+    "scope": "Released public editions only; no private candidate activation",
+    "preview_limit_seconds": 180,
+    "full_listening": "Existing paid/native grants automatically prepared by Play",
+    "historical_validators_and_counters": "unchanged",
+    "state": "SOURCE_QUALIFICATION_PENDING",
+    "regression_copy_successor": "Two exact UX listening-copy assertions updated after run43220023615; production source and title activation unchanged; fresh exact-head CI required",
+    "auth_copy_successor": "Current bounded-preview wording bound exactly by auth review; FAQ surfaces reuse shared copy; frontend hash208bdae7; native contracts/counters unchanged; fresh exact-head CI required"
   }
 }

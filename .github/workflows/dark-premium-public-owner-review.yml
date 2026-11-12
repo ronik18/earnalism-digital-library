@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   owner-review:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api

@@ -57,7 +57,7 @@ def test_consuming_features_still_require_measured_sync(tmp_path, feature):
         promote(manifest, {'passed':True,'release_eligible':False,'release_id':'dummy'}, execute=False, promoter=DummyPromoter())
 
 
-@pytest.mark.parametrize('mutation', ['no_proof','wrong_audio','wrong_package','stale_source','legacy_reader','sync_claim','boolean_coercion'])
+@pytest.mark.parametrize('mutation', ['no_proof','wrong_audio','wrong_package','stale_source','legacy_reader','sync_claim','boolean_coercion','historical_consumer'])
 def test_na_cannot_be_self_asserted_or_reused_out_of_binding(tmp_path, mutation):
     manifest, reader, listening = candidate(tmp_path)
     check = manifest['automated_checks']['synchronization']
@@ -67,6 +67,7 @@ def test_na_cannot_be_self_asserted_or_reused_out_of_binding(tmp_path, mutation)
     elif mutation == 'stale_source': check['applicability']['consumer_sources'] = {'unknown.js': 'f'*64}
     elif mutation == 'legacy_reader': manifest['delivery']['route'] = '/reader-legacy/pilot'
     elif mutation == 'sync_claim': manifest['delivery']['sync_claim'] = 'MEASURED_PARAGRAPH'
+    elif mutation == 'historical_consumer': check['applicability']['consumer_sources'] = json.loads((policy.ROOT/'internal/earnalism_intelligence/listener_text_sync_consumer.json').read_text())['sources']
     else: manifest['delivery']['features']['read_along'] = 0
     assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'
 

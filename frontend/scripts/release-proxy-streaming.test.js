@@ -15,3 +15,14 @@ test('HEAD sends no media body',{concurrency:false},async()=>{global.fetch=async
 test('candidate cancels upstream when client disconnects',{concurrency:false},async()=>{let aborted=false,canceled=false;global.fetch=async(u,options)=>{options.signal.addEventListener('abort',()=>{aborted=true;});return new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1]));},cancel(){canceled=true;}}),{headers:{'content-type':'audio/mpeg'}});};let s=new Sink();let task=after(req(),s);await tick();s.destroy();await task;assert.equal(aborted,true);assert.equal(canceled,true);});
 test('midstream error closes response without sending a second status',{concurrency:false},async()=>{let fail;global.fetch=async()=>new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1]));fail=()=>c.error(new Error('synthetic stream failure'));}}),{headers:{'content-type':'audio/mpeg'}});let s=new Sink();let task=after(req(),s);await tick();fail();await task;assert.equal(s.destroyed,true);assert.equal(s.statusCode,200);});
 test('territory denial remains before upstream request',{concurrency:false},async()=>{let calls=0;global.fetch=async()=>{calls++;};let s=new Sink(),r=req();r.headers['x-vercel-ip-country']='US';await after(r,s);assert.equal(s.statusCode,451);assert.equal(calls,0);});
+
+test('bounded preview segments use the existing streaming transport',{concurrency:false},async()=>{
+ let finish;
+ global.fetch=async()=>new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1,2]));finish=()=>{c.enqueue(new Uint8Array([3,4]));c.close();};}}),{status:206,headers:{'content-type':'audio/mpeg','content-range':'bytes 0-3/4'}});
+ const r=req();r.url=path.replace('/audiobook/packages/','/audiobook/preview/packages/');
+ const s=new Sink();const task=after(r,s);await tick();
+ assert.deepEqual(Buffer.concat(s.chunks),Buffer.from([1,2]));
+ finish();await task;
+ assert.deepEqual(Buffer.concat(s.chunks),Buffer.from([1,2,3,4]));
+ assert.equal(s.headers['cache-control'],'private, no-store');
+});

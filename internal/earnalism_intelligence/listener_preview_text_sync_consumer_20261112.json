@@ -1,0 +1,36 @@
+{
+  "schema": "earnalism.reviewed_text_sync_consumer.v1",
+  "consumer": "listener_v2_audio_only.v1",
+  "scope": "Current standalone /listener/:slug audio-only consumer with one-Play paid preparation and server-bounded public previews. Read-along, highlighting, captions and text-linked audio navigation remain retired. This source applicability does not establish recording fidelity, rights, playback, accounting or native recovery acceptance.",
+  "sources": {
+    "frontend/src/App.js": "dfbe8bc37376a637347ade885a2f3631b2c416b56ffa2a70132b9bb8cbcb3842",
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "34cd565399db2fc3814895c623eff1f277929cb025edfceae6f40960e483766d",
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "f58d924929cc830abb662db5bd097698dc99e8ed055e6cfabafbae07b0550c73",
+    "frontend/src/lib/audioPackageManifest.js": "927ccfb5647f4a38233314cb9e9536ff30960eb4471efb145522f410697b8c04",
+    "frontend/src/lib/audiobookPlayback.js": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
+    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "a7dd67bf4224901dad261e31e872936aef70c6d44b6aa0612775e7056e4f5fc6",
+    "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": "3b380696dca220da6ff2544fceb0b0214f19f729e964a5cb4c6aa68efcb7fff6",
+    "frontend/src/pages/Reader.jsx": "cb105fc855ef544798fc9a3e9eaef28eba9c0ed7f162ff5c8fd2a609c10c269c",
+    "frontend/src/lib/audioReleaseSafety.js": "c5fadd8f6fb3a36800b7b5a96b7608078436d26f2afc99630820ad29936ddd6f",
+    "frontend/src/components/ReaderAudiobookPanel.jsx": "0a7775630c79a5b4cd127388590aaf8e88e81e2fc05a78f7c07fc77a736492c5",
+    "frontend/src/components/PremiumListeningRail.jsx": "1dd505a24d957bc461e6158840722b3ef7a921766c8c1aa887b24a913180af9e",
+    "frontend/src/pages/BookDetail.jsx": "18b55b3e019642939abb881656e33daf474042a7a08a0e6fc4696ebef8607525"
+  },
+  "source_findings": [
+    "Listener has no read-along capability or callback; caller flags cannot restore the retired control.",
+    "Listener uses native media time, exact package segment durations and chapter offsets; no cue fetching or text highlighting.",
+    "Shared manifest requires sidecar identities structurally; no schema/storage requirement is waived.",
+    "Legacy Reader no longer loads text cues, selects audio by word position, wraps/follows words or seeks audio from text. Ordinary Reader navigation and manual annotations remain independent.",
+    "Public previews have a separate manifest normalizer and bounded media-time navigation; no timestamps, cue fetching, captions or text sync are consumed.",
+    "Paid/native grant preparation, buffering, cancellation, renewal and settlement remain server-authoritative; source applicability is not a new financial grant."
+  ],
+  "predecessor": {
+    "path": "internal/earnalism_intelligence/listener_text_sync_consumer.json",
+    "sha256": "6f1ebb978201f85fbaf1675a567000db074412ab2066ca15ff3481771c02ff18",
+    "preserved_for": "Immutable historical native retirement and recovery validators"
+  },
+  "reviewed_source": {
+    "commit": "6ec311c43ddf7e14672d45968c0487d0e15c7ba5",
+    "owner_scope": "Direct P0 instruction for one-Play paid listening and three-minute released-title previews; no read-along feature restoration"
+  }
+}

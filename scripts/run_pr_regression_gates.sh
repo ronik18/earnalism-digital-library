@@ -74,6 +74,7 @@ env \
   READING_PASS_V2_ENABLED=false \
   ENABLE_STARTUP_DB_MAINTENANCE=false \
   "$PYTHON_BIN" -m pytest -q \
+    backend/tests/test_audiobook_preview.py \
     backend/tests/test_b2_audiobook_routing.py \
     backend/tests/test_audiobook_package_v2_routes.py \
     backend/tests/test_audio_stream_chunking.py \
@@ -176,12 +177,14 @@ node --test frontend/scripts/release-proxy.test.js frontend/scripts/release-prox
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
   src/pages/Reader.releaseTruth.test.js \
   src/lib/audioPackageManifest.test.js \
+  src/lib/audioPreviewManifest.test.js \
   src/lib/audioReleaseSafety.test.js \
   src/components/LibraryBrowseShelf.test.jsx \
   src/components/PremiumListeningRail.test.js \
   src/components/ReaderAudiobookPanel.test.js \
   src/experiences-v2/__tests__/listener-segment-lifecycle.test.jsx \
   src/experiences-v2/__tests__/listener-resume-authorization.test.jsx \
+  src/experiences-v2/__tests__/listener-playback-lifecycle.test.jsx \
   src/experiences-v2/__tests__/listener-protected-package-route.test.jsx \
   src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx \
   src/experiences-v2/__tests__/listener-transport-canary.test.jsx \

@@ -12741,8 +12741,8 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             scope["release_country"] = "IN"
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
-        if position < PUBLIC_AUDIO_PREVIEW_SECONDS:
-            return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
+        # Explicit full listening always requires the existing paid/native grant.
+        # Public previews use separately clipped bytes, never this session path.
         book = await _reader_audio_package_book_for_slug(payload.content_id)
         if not book:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
@@ -13052,6 +13052,119 @@ def _reading_pass_preview_record_valid(preview: Optional[Mapping[str, Any]]) -> 
         )
     except (TypeError, ValueError):
         return False
+
+
+# Public preview delivery is deliberately separate from protected media admission.
+try:
+    from backend.audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES
+except ModuleNotFoundError:
+    from audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES
+import threading as _preview_threading
+from collections import OrderedDict as _PreviewOrderedDict
+_preview_worker = _preview_threading.BoundedSemaphore(1)
+_preview_cache = _PreviewOrderedDict()
+
+
+async def _public_preview_package(slug):
+    book = await _reader_audio_book_for_slug(slug)
+    package, _, _ = _selected_audiobook_package(book, slug)
+    if not package:
+        raise HTTPException(status_code=404, detail="Public audiobook preview unavailable")
+    return package
+
+
+@api.get("/reader/book/{slug}/audiobook/preview/manifest")
+async def public_audiobook_preview_manifest(slug: str, response: Response):
+    package = await _public_preview_package(slug)
+    segments = []
+    position = 0
+    for track, chunk, budget in preview_segments(package):
+        segments.append({"segment_id": chunk["segment_id"], "chapter_id": track["chapter_id"],
+            "duration_ms": budget, "cumulative_start_ms": position,
+            "audio_url": f"/api/reader/book/{slug}/audiobook/preview/packages/{package['package_version']}/segments/{chunk['segment_id']}"})
+        position += budget
+    response.headers["Cache-Control"] = "private, no-store"
+    return {"schema_version": "audiobook_preview.v1", "slug": slug,
+        "package_version": package["package_version"], "duration_ms": position, "segments": segments}
+
+
+def _clipped_public_preview(asset, budget):
+    # The lock remains held inside the worker even if the HTTP caller cancels.
+    # No unbounded thread queue, source URL redirect, original body or Redis blob.
+    if not _preview_worker.acquire(blocking=False):
+        raise HTTPException(status_code=503, detail="Preview preparation busy")
+    try:
+        storage = asset["storage"]
+        identity = (asset["sha256"], storage["version_id"], budget)
+        if identity in _preview_cache:
+            _preview_cache.move_to_end(identity)
+            return _preview_cache[identity]
+        url = _audio_package_storage_url(storage)
+        selected = _b2_storage_for_url(url) if url else None
+        if not selected or not storage.get("version_id") or asset.get("mime_type") != "audio/mpeg":
+            raise ValueError("Immutable MP3 storage required")
+        obj = _b2_client(selected).get_object(Bucket=storage["bucket"], Key=storage["key"],
+            VersionId=storage["version_id"], Range=f"bytes=0-{MAX_SOURCE_BYTES - 1}")
+        body = obj["Body"]
+        try:
+            source = body.read(MAX_SOURCE_BYTES + 1)
+        finally:
+            body.close()
+        if str(obj.get("VersionId", "")) != storage["version_id"]:
+            raise ValueError("Source version mismatch")
+        result = clip_mp3(source, budget, complete_source=len(source) == int(asset["size_bytes"]))
+        _preview_cache[identity] = result
+        # At most two bounded clips (18 MiB) per process; one source read at a time.
+        while len(_preview_cache) > 2:
+            _preview_cache.popitem(last=False)
+        return result
+    finally:
+        _preview_worker.release()
+
+
+@api.api_route("/reader/book/{slug}/audiobook/preview/packages/{package_version}/segments/{segment_id}", methods=["GET", "HEAD"])
+async def public_audiobook_preview_segment(slug: str, package_version: str, segment_id: str, request: Request):
+    # Recheck publication, rights middleware and exact active package before every
+    # cache hit. Private canaries and revoked/obsolete releases never enter here.
+    package = await _public_preview_package(slug)
+    if package["package_version"] != package_version:
+        raise HTTPException(status_code=404, detail="Preview version unavailable")
+    selected = next(((chunk, budget) for _, chunk, budget in preview_segments(package) if chunk["segment_id"] == segment_id), None)
+    if selected is None:
+        raise HTTPException(status_code=404, detail="Preview segment unavailable")
+    chunk, budget = selected
+    try:
+        data, _ = await asyncio.to_thread(_clipped_public_preview, chunk["assets"]["audio"], budget)
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=503, detail="Preview audio unavailable") from None
+    size = len(data)
+    headers = {"Cache-Control": "private, no-store", "Accept-Ranges": "bytes", "X-Content-Type-Options": "nosniff"}
+    start, end, status = 0, size - 1, 200
+    byte_range = request.headers.get("range")
+    if byte_range:
+        match = re.fullmatch(r"bytes=(\d*)-(\d*)", byte_range)
+        try:
+            if not match or not any(match.groups()):
+                raise ValueError()
+            left, right = match.groups()
+            if left:
+                start, end = int(left), min(int(right) if right else size - 1, size - 1)
+            else:
+                suffix = int(right)
+                if suffix <= 0:
+                    raise ValueError()
+                start = max(0, size - suffix)
+            if start >= size or start > end:
+                raise ValueError()
+        except ValueError:
+            return Response(status_code=416, headers={**headers, "Content-Range": f"bytes */{size}"})
+        status = 206
+        headers["Content-Range"] = f"bytes {start}-{end}/{size}"
+    headers["Content-Length"] = str(end - start + 1)
+    return Response(content=b"" if request.method == "HEAD" else data[start:end + 1], status_code=status,
+        media_type="audio/mpeg", headers=headers)
 
 
 @api.get("/reading-pass/audiobooks/{slug}/preview/manifest")
