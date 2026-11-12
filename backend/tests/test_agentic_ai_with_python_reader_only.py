@@ -75,7 +75,8 @@ def test_public_detail_handler_respects_revised_reader_only_release_authority(mo
         result = asyncio.run(server.get_book(SLUG))
         released = server.PublicBookOut.model_validate(result).model_dump()
         assert released["slug"] == SLUG
-        assert released["estimated_reading_time"] == "396"
+        # Retain the imported 396 above; live discovery uses complete Reader text.
+        assert released["estimated_reading_time"] == "308 min"
         assert released["reader_enabled"] is True
         assert released["audio_enabled"] is False
         assert released["audio_url"] == ""

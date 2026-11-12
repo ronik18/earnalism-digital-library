@@ -11,6 +11,8 @@ on:
       - backend/requirements-runtime.txt
       - backend/server.py
       - backend/audiobook_preview.py
+      - backend/catalog_truth.py
+      - backend/reading_estimates.py
       - .github/workflows/regression.yml
       - .github/workflows/railway-deployment-canary.yml
       - .github/workflows/backend-container-contract.yml
@@ -24,6 +26,8 @@ on:
       - backend/requirements-runtime.txt
       - backend/server.py
       - backend/audiobook_preview.py
+      - backend/catalog_truth.py
+      - backend/reading_estimates.py
       - .github/workflows/regression.yml
       - .github/workflows/railway-deployment-canary.yml
       - .github/workflows/backend-container-contract.yml

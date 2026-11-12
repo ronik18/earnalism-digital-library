@@ -79,8 +79,8 @@
     },
     {
       "path": "catalog_truth.py",
-      "bytes": 62575,
-      "sha256": "819e91185880d5b3b46bffe9150d7af8aaf1014354867752de16fb7b28b73103"
+      "bytes": 62828,
+      "sha256": "b35176c6c759b02ab037eafb8e46f81ed4f02e86770d39b69924cad8c8e07f12"
     },
     {
       "path": "catalogue_phase_timing.py",
@@ -11593,6 +11593,11 @@
       "sha256": "df15604a8dabdcd18de03ab9398bc02e0844a4637765dd3855a8f321d8294ccd"
     },
     {
+      "path": "reading_estimates.py",
+      "bytes": 2757,
+      "sha256": "0822de519cf408faeca5e751443aad7e97d1214c645d005b4871e213e5b96524"
+    },
+    {
       "path": "reading_pass_admission.py",
       "bytes": 13419,
       "sha256": "0203529ddb176e8740dae3e36c317ebea0be8c7df5f2ff089022eef9d46754ac"
@@ -11728,5 +11733,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "a32dd57304303f82486c6ae43feec80938fb3f91b5fda9887a40e9ccb12fa2f3"
+  "expected_sha256": "a2608309a4972e29465e07a22d0e909665f9e7c3ca7f10da750a92fa9e75a312"
 }

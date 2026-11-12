@@ -11,11 +11,12 @@ const headerSource = fs.readFileSync(
 );
 
 describe("EarnalismBrandLockup", () => {
-  test("uses the lightweight brand-video GIF and a reduced-motion still", () => {
-    expect(componentSource).toContain('earnalism-brand-video-light.gif');
-    expect(componentSource).toContain('media="(prefers-reduced-motion: reduce)"');
-    expect(componentSource).toContain('earnalism-brand-video-still.png');
-    expect(fs.statSync(path.join(process.cwd(), 'public/assets/brand/earnalism-brand-video-light.gif')).size).toBeLessThan(100 * 1024);
+  test("uses the transparent full-logo WebP with a transparent PNG fallback", () => {
+    expect(componentSource).toContain('earnalism-brand-lockup-640.webp');
+    expect(componentSource).toContain('earnalism-brand-lockup.png');
+    expect(componentSource).not.toContain('earnalism-brand-video-light.gif');
+    expect(componentSource).not.toContain('earnalism-brand-video-still.png');
+    expect(fs.statSync(path.join(process.cwd(), 'public/assets/performance/earnalism-brand-lockup-640.webp')).size).toBeLessThan(100 * 1024);
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 

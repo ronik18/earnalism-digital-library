@@ -7,6 +7,11 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from .reading_estimates import artifact_reading_estimate
+except ImportError:
+    from reading_estimates import artifact_reading_estimate
+
+try:
     from .protected_package_publication import protected_package_publication_valid
 except ImportError:
     from protected_package_publication import protected_package_publication_valid
@@ -691,6 +696,7 @@ def load_dracula_artifact_book(
 
     return {
         **public_book,
+        **artifact_reading_estimate(base, chapters),
         "chapters": chapters,
         "source_url": evidence_value("source_url"),
         "source_name": evidence_value("source_name"),
@@ -966,6 +972,7 @@ def load_controlled_artifact_book(
 
     return {
         **public_book,
+        **artifact_reading_estimate(base, chapters),
         "publication_manifest": publication_manifest,
         "chapters": chapters,
         "source_url": evidence_value("source_url"),
