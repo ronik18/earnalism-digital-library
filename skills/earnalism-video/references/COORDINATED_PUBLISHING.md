@@ -1,5 +1,7 @@
 # Coordinated YouTube, Instagram, Facebook and X releases
 
+Use [the unified social brand](SOCIAL_BRAND.md) for account identity, profile icon, shared bio and current public links; preserve the destination-specific copy and authority below.
+
 ## Owner default — 8 November 2026
 
 Prepare every future episode as one coordinated release package for Earnalism's YouTube, Instagram, Facebook Page and X brand accounts. Keep the ordered series consistent across destinations. Present one final candidate decision covering the exact destination list, masters, covers, copy and primary checks. A generic GO LIVE for that explicitly reviewed four-platform package executes all four in one release run without separate routine platform approval questions. Explicit narrower instructions (for example YouTube only, private drafts first, or keep Facebook unpublished) take precedence. A skill edit alone does not publish the backlog, authorize paid services or replace candidate-specific release approval.

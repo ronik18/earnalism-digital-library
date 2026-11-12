@@ -24,3 +24,6 @@ __pycache__/
 
 # Optional ignored Studio-layout alias used by local adapter regressions.
 /video_studio
+
+# Owner-approved public profile avatar; production/private media remain excluded.
+!/assets/social-profile-icon.jpg
