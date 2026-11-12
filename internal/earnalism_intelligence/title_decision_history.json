@@ -16792,6 +16792,7 @@
     "full_listening": "Existing paid/native grants automatically prepared by Play",
     "historical_validators_and_counters": "unchanged",
     "state": "SOURCE_QUALIFICATION_PENDING",
-    "regression_copy_successor": "Two exact UX listening-copy assertions updated after run43220023615; production source and title activation unchanged; fresh exact-head CI required"
+    "regression_copy_successor": "Two exact UX listening-copy assertions updated after run43220023615; production source and title activation unchanged; fresh exact-head CI required",
+    "auth_copy_successor": "Current bounded-preview wording bound exactly by auth review; FAQ surfaces reuse shared copy; frontend hash208bdae7; native contracts/counters unchanged; fresh exact-head CI required"
   }
 }

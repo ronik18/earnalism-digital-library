@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { api } from "../lib/api";
-import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, LISTENING_ACCESS_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import {
   canShowPreview,
@@ -202,7 +202,7 @@ export function ReferenceHomeSurface({ curation }) {
           title="Stories in voice, released with care."
           action={<Link to="/library?availability=approved-audiobook" className="reference-text-link">Explore approved audiobooks <ArrowRight aria-hidden="true" /></Link>}
         >
-          <p>Listening is available only for released audiobooks and requires an active Reading Pass.</p>
+          <p>{LISTENING_ACCESS_COPY}</p>
         </SectionHeading>
         {listeningBooks.length ? <ReferenceShelf books={listeningBooks} label="Approved audiobooks" /> : <p className="reference-empty-listening">Listening rooms appear here only when an edition is approved for audio.</p>}
       </section>

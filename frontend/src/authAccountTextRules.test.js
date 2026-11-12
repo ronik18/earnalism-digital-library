@@ -18,7 +18,7 @@ describe("auth and account customer-copy contract", () => {
       expect(page).not.toContain("Pass purchases are not available yet.");
     });
     expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Reading Pass is required beyond the preview on pass-required editions.");
-    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Listening is available only for released audiobooks and requires an active Reading Pass.");
+    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Listen to a 3-minute preview of each released audiobook free. An active Reading Pass unlocks full listening automatically when you press Play.");
     expect(account).not.toContain(AUTH_PRODUCT_ACCESS_COPY);
   });
 
