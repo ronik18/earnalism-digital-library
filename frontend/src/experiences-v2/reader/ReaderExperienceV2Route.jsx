@@ -89,6 +89,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const [manifest, setManifest] = useState(null);
   const previewLimit = Number(manifest?.canonical_pages?.preview_policy?.public_limit || PREVIEW_PAGES);
   const entryRef = useRef(null);
+  const entryAdmissionAttemptedRef = useRef(false);
   const openingFocusRef = useRef(false);
   const [loading, setLoading] = useState(true);
   const [manifestMs, setManifestMs] = useState(0);
@@ -220,7 +221,21 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         if (entryRestorePendingRef.current && !["p", "a", "r"].some(key => new URLSearchParams(locationVersionRef.current.search).has(key))) {
           const locationVersion = locationVersionRef.current.version;
           let saved;
-          try { saved = await getReadingPassPosition({ contentType: "text", contentId: slug }); } catch (_) { /* Public entry remains available without saved metadata. */ }
+          // Local metadata is navigation only; server admission still controls text.
+          try { saved = JSON.parse(localStorage.getItem(`earnalism:reader-position:${encodeURIComponent(identity)}:${encodeURIComponent(slug)}`)); } catch (_) { /* Storage may be unavailable. */ }
+          const localPosition = saved?.position;
+          const localPages = data.canonical_pages;
+          const localRow = localPages?.pages?.find(row => row.page_number === localPosition?.canonical_page_index);
+          const localValid = saved?.user_id === user?.id && saved?.content_id === slug && saved?.content_type === "text"
+            && saved?.publication_version_compatibility === "active" && localPosition?.publication_version_state === "bound"
+            && Number.isSafeInteger(localPosition?.canonical_page_index) && localPosition.canonical_page_index > 0
+            && localPosition.canonical_page_index <= localPages?.page_count && localRow?.chapter_id === localPosition.chapter_id
+            && localPages?.schema_version && localPages?.content_revision
+            && localPosition.segmentation_version === localPages.schema_version && localPosition.manifest_version === localPages.content_revision;
+          if (!localValid) {
+            saved = undefined;
+            try { saved = await getReadingPassPosition({ contentType: "text", contentId: slug }); } catch (_) { /* Public entry remains available without saved metadata. */ }
+          }
           if (cancelled) return;
           entryRestorePendingRef.current = false;
           if (locationVersion === locationVersionRef.current.version) {
@@ -229,7 +244,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
             const pages = data.canonical_pages;
             const row = pages?.pages?.find(value => value.page_number === index);
             const sameReader = saved?.user_id === user?.id && saved?.content_type === "text" && saved?.content_id === slug;
-            if (sameReader) positionVersionRef.current = positionVersion(saved.version);
+            if (sameReader && !localValid) positionVersionRef.current = positionVersion(saved.version);
             if (sameReader && saved.publication_version_compatibility === "active" && position?.publication_version_state === "bound"
                 && Number.isSafeInteger(index) && index > 0 && index <= pages?.page_count && row
                 && position.chapter_id === row.chapter_id && pages.schema_version && pages.content_revision
@@ -237,6 +252,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
               setEntryRestoreTarget(index);
               const destination = new URLSearchParams(locationVersionRef.current.search);
               destination.set("p", String(index));
+              if (localValid && ((Number.isSafeInteger(saved.offset) && saved.offset >= 0) || /^media:\d+$/.test(saved.offset)) && typeof saved.revision === "string" && saved.revision.length <= 256) {
+                destination.set("a", String(saved.offset));
+                destination.set("r", saved.revision);
+              }
               setSearchRef.current(destination, { replace: true });
             }
           }
@@ -247,7 +266,24 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       .catch((failure) => { if (!cancelled) { setError("This reader edition is not available."); setManifestFailureCode(failure?.readerIntegrityFailure ? 422 : failure?.response?.status || 0); } })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; controller.abort(); };
-  }, [slug, visualFixture, manifestRetry, user?.id]);
+  }, [slug, visualFixture, manifestRetry, user?.id, identity]);
+
+  const cachePosition = useCallback((value, anchor = null) => {
+    if (!user?.id) return;
+    try {
+      const current = new URLSearchParams(locationVersionRef.current.search);
+      if (!anchor && Number(current.get("p")) === value.page_index && current.has("a") && current.has("r")) {
+        const offset = current.get("a");
+        if (/^\d+$/.test(offset) || /^media:\d+$/.test(offset)) anchor = { offset: /^\d+$/.test(offset) ? Number(offset) : offset, revision: current.get("r") };
+      }
+      localStorage.setItem(`earnalism:reader-position:${encodeURIComponent(identity)}:${encodeURIComponent(slug)}`, JSON.stringify({
+        user_id: user.id, content_id: slug, content_type: "text", publication_version_compatibility: "active",
+        position: { canonical_page_index: value.page_index, chapter_id: value.chapter_id, segmentation_version: value.segmentation_version,
+          manifest_version: value.manifest_version, publication_version_state: "bound" },
+        ...(anchor ? { offset: anchor.offset, revision: anchor.revision } : {}),
+      }));
+    } catch (_) { /* Device storage must never block reading. */ }
+  }, [identity, slug, user?.id]);
 
   const persistPosition = useCallback((value) => {
     positionQueueRef.current = positionQueueRef.current.catch(() => undefined).then(async () => {
@@ -443,9 +479,9 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         setError("");
         if (signedIn) {
           const source = ready.sources.find(item => item.page === pageRef.current);
-          if (source) void persistPosition(source.value).catch(() => {
+          if (source) { cachePosition(source.value); void persistPosition(source.value).catch(() => {
             if (aliveRef.current) setNotice("Your page is open, but your reading position could not be saved.");
-          });
+          }); }
         }
       })
       .catch((failure) => {
@@ -466,7 +502,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     // URL offsets and transport indexes inside this window do not start a new
     // download. Lease rotations are handled by the existing heartbeat/expiry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entryReady, windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture, notePreparationFailure]);
+  }, [entryReady, windowKey, pageSessionKey, manifest, enabled, validPage, identity, persistPosition, cachePosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture, notePreparationFailure]);
 
   const changePage = useCallback((nextPage, visualAnchor = 0, anchorRevision) => {
     visualNavigationRef.current = "";
@@ -532,6 +568,25 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       if (aliveRef.current) setBusy(false);
     }
   }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user, previewLimit, preparationWait, notePreparationFailure]);
+
+  const automaticEntry = !visualFixture && !loading && entryReady && manifest && enabled && validPage
+    && user?.role === "user" && validBalance(user?.reading_seconds_balance) > 0 && canonicalPage > previewLimit;
+  useEffect(() => {
+    if (!automaticEntry || usable || error || busy) return undefined;
+    const enter = () => {
+      if (entryAdmissionAttemptedRef.current || document.visibilityState !== "visible" || !document.hasFocus()) return;
+      // One admission through the existing controller, never transfer or retry.
+      entryAdmissionAttemptedRef.current = true;
+      void authorizeAndContinue(canonicalPage, search.get("a") || 0, search.get("r") || undefined);
+    };
+    enter();
+    window.addEventListener("focus", enter);
+    document.addEventListener("visibilitychange", enter);
+    return () => {
+      window.removeEventListener("focus", enter);
+      document.removeEventListener("visibilitychange", enter);
+    };
+  }, [automaticEntry, usable, error, busy, canonicalPage, search, authorizeAndContinue]);
 
   const navigateAfterSettlement = useCallback(async (target, navigationPath) => {
     if (actionRef.current) return;
@@ -664,9 +719,9 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         params.set('r', anchor.revision);
         visualNavigationRef.current = params.toString();
         setSearch(params, { replace: false });
-        if (signedIn) void persistPosition(chapterWindow.sources.find(item => item.page === anchor.page).value).catch(() => {
+        if (signedIn) { cachePosition(chapterWindow.sources.find(item => item.page === anchor.page).value, anchor); void persistPosition(chapterWindow.sources.find(item => item.page === anchor.page).value).catch(() => {
           if (aliveRef.current) setNotice("Your reading position could not be saved.");
-        });
+        }); }
       },
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
@@ -693,7 +748,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, manifestMs, previewLimit, bookPlans, mapScope, renewLease, settleLease, invalidateLease, authorizeAndContinue, lease?.protectedTextContinuation, lease?.publicPreviewEnd]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, cachePosition, manifestMs, previewLimit, bookPlans, mapScope, renewLease, settleLease, invalidateLease, authorizeAndContinue, lease?.protectedTextContinuation, lease?.publicPreviewEnd]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>
@@ -728,7 +783,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     }} />;
   }
   const opening = <ReaderOpening onEscapeFocus={(focused) => { openingFocusRef.current = focused; }} book={manifest?.book} onLibrary={() => navigateAfterSettlement("library")} busy={busy} />;
-  if (loading || !entryReady) return opening;
+  if (loading || !entryReady || (automaticEntry && !usable && !error && (!entryAdmissionAttemptedRef.current || busy))) return opening;
   if (error && !page && (manifestFailureCode === 0 || manifestFailureCode >= 500 || pageResult?.statusCode >= 500)) return <ReaderOpening book={manifest?.book} failed onLibrary={() => navigateAfterSettlement("library")} onRetry={() => manifest ? setRetry((value) => value + 1) : setManifestRetry((value) => value + 1)} busy={busy} />;
   if (error && !page) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
