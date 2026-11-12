@@ -998,6 +998,7 @@ function manyVisualPreview({ short = false, chapters = false } = {}) {
   value.chapters = chapters ? Array.from({ length: total }, (_, i) => ({ id: chapter(i + 1), title: `Chapter ${i + 1}` })) : [{ id: 'c1', title: 'Chapter one' }];
   userApi.get.mockResolvedValue({ data: value });
   pass.getReadingPassPage.mockImplementation(async (slug, n) => ({ ...page(n, slug), chapter_id: chapter(n), chapter_title: chapters ? `Chapter ${n}` : 'Chapter one', total_pages: total, content: content(n), content_sha256: hash(n) }));
+  return value;
 }
 const visibleReading = () => container.querySelector('[data-testid="reader-reading-text"]')?.textContent || '';
 
@@ -1188,4 +1189,91 @@ test('QF independent: public-prefix billing remains inactive after fullscreen ev
   await tick(10000);
   expect(pass.renewReadingPassLease.mock.calls.at(-1)[0].active).toBe(false);
   expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+});
+
+
+test("pass holder opens restored protected page without another click", async () => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 600 };
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  pass.getReadingPassPosition.mockResolvedValue(entryPosition(4));
+  preparationContract();
+  await mount("/reader/test-book");
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: "test-book", pageIndex: 4 });
+  expect(text()).toContain("Page 4 manuscript.");
+});
+
+test.each([0, null, undefined])("no automatic admission for empty or unknown profile balance %s", async balance => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: balance };
+  await mount();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test("automatic entry never retries or transfers a rejected start", async () => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 600 };
+  pass.startReadingPassSession.mockRejectedValue({ response: { status: 409, data: { detail: { code: "SESSION_ACTIVE_ELSEWHERE", message: "Session active elsewhere" } } } });
+  await mount(); await tick(30000);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession.mock.calls[0][0].transfer).toBeUndefined();
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  expect(text()).toContain("Session active elsewhere");
+});
+
+test("device resume restores bound current-edition metadata", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  localStorage.setItem('earnalism:reader-position:test-reader:test-book', JSON.stringify({ ...entryPosition(3), offset: 4, revision: 'isolated-test-manifest-v1' }));
+  await mount('/reader/test-book');
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('p=3&a=4&r=isolated-test-manifest-v1');
+  expect(pass.getReadingPassPage).toHaveBeenCalled();
+  expect(JSON.parse(localStorage.getItem('earnalism:reader-position:test-reader:test-book'))).toMatchObject({ offset: 4, revision: 'isolated-test-manifest-v1' });
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test("stale device edition falls back to bound server position", async () => {
+  userApi.get.mockResolvedValue({ data: entryManifest() });
+  const stale = entryPosition(4); stale.position.manifest_version = 'retired';
+  localStorage.setItem('earnalism:reader-position:test-reader:test-book', JSON.stringify(stale));
+  pass.getReadingPassPosition.mockResolvedValue(entryPosition(2));
+  await mount('/reader/test-book');
+  expect(container.querySelector('[data-testid="location"]').textContent).toContain('p=2');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+
+test("background entry waits for focus then admits only once", async () => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 600 };
+  document.hasFocus.mockReturnValue(false);
+  await mount();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+  document.hasFocus.mockReturnValue(true);
+  await act(async () => window.dispatchEvent(new Event('focus')));
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  await act(async () => window.dispatchEvent(new Event('focus')));
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+});
+
+test("an administrator profile never receives automatic reader admission", async () => {
+  mockUser = { id: "test-reader", role: "admin", reading_seconds_balance: 600 };
+  await mount();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+
+test("device resume reauthorizes a short book's protected visual page inside canonical page one", async () => {
+  mockUser = { id: 'test-reader', role: 'user', reading_seconds_balance: 600 };
+  const value = manyVisualPreview({ short: true }); preparationContract();
+  value.canonical_pages.schema_version = 'isolated-test-segments-v1';
+  value.canonical_pages.content_revision = 'isolated-test-manifest-v1';
+  await mount('/reader/test-book?p=1&a=120');
+  await click('Continue with Reading Pass'); await click('Next page');
+  const saved = JSON.parse(localStorage.getItem('earnalism:reader-position:test-reader:test-book'));
+  expect(saved.requires_protected_text).toBe(true);
+  expect(saved.offset).toBeGreaterThan(0);
+  await act(async () => root.render(null));
+  pass.startReadingPassSession.mockClear();
+  await mount('/reader/test-book');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith(expect.objectContaining({ pageIndex: 1, requireProtectedText: true }));
+  expect(visibleReading()).toMatch(/Unit 1 visual fragment [4-8]/);
+  expect(text()).not.toContain('Your three-page preview has ended');
 });

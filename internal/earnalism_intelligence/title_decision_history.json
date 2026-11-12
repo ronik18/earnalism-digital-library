@@ -16804,5 +16804,11 @@
     "caller_deadline_seconds": 20,
     "native_observations_consumed": 6,
     "state": "SOURCE_QUALIFICATION_PENDING"
+  },
+  "reader_direct_entry_20261112": {
+    "scope": "Reader route only; no title activation",
+    "state": "LOCAL_TESTS_PASS_CI_PENDING",
+    "native_observations_consumed": 6,
+    "new_paid_acceptance_attempts": 0
   }
 }

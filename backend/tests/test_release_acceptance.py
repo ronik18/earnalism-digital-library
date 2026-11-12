@@ -224,3 +224,10 @@ def test_old_sync_pass_cannot_restore_retired_customer_features(tmp_path, locati
     assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'
     with pytest.raises(RuntimeBlocked):
         promote(manifest, {'passed': True, 'release_eligible': False, 'release_id':'dummy'}, execute=False, promoter=DummyPromoter())
+
+
+def test_prior_preview_consumer_is_not_reused_for_changed_reader_entry(tmp_path):
+    manifest, reader, listening = candidate(tmp_path)
+    previous = policy.ROOT / 'internal/earnalism_intelligence/listener_preview_text_sync_consumer_20261112.json'
+    manifest['automated_checks']['synchronization']['applicability']['consumer_sources'] = json.loads(previous.read_text())['sources']
+    assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'
