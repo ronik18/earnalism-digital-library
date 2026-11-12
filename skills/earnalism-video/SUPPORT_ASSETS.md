@@ -11,4 +11,4 @@ The following runtime assets remain in the private studio and installed skill. S
 
 Preserve the source hashes, approved audio, original rights records and exact branding. Missing or changed assets require the corresponding qualification; this document supplies no rights attestation or listening acceptance.
 
-The sole bundled public binary exception is `assets/social-profile-icon.png`, the existing owner-selected social avatar. It is hash-bound by the source manifest and social-brand reference. It is not a production watermark, ending asset or rights/production approval.
+The sole bundled public binary exception is `assets/social-profile-icon.jpg`, the existing owner-selected social avatar. It is hash-bound by the source manifest and social-brand reference. It is not a production watermark, ending asset or rights/production approval.

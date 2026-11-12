@@ -13,7 +13,7 @@ Use that wording for profile bios and LinkedIn's header tagline. Existing factua
 
 ## Matching profile icon
 
-Use the bundled [social profile icon](../assets/social-profile-icon.png): the existing black emblem within a thin gold diamond on ivory, 1080×1080. Its SHA-256 is recorded in the JSON. Preserve the complete diamond and padding under round/square crops. Reuse the exact asset rather than redrawing or generating a replacement.
+Use the bundled [social profile icon](../assets/social-profile-icon.jpg): the existing black emblem within a thin gold diamond on ivory, 1080×1080. Its SHA-256 is recorded in the JSON. Preserve the complete diamond and padding under round/square crops. Reuse the exact asset rather than redrawing or generating a replacement.
 
 This icon is for social account avatars and relevant profile mockups. It does **not** replace the original approved full video-body logo-and-text PNG, its transparent treatment, platform-safe placement, covers, or the approved three-second END ident and sound. Preserve those production standards and already published media.
 
