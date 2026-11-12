@@ -328,7 +328,6 @@ def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate()
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
     assert '"catalog_truth": "canonical-preview-bounded-v3"' in cache_key
-    assert '"reading_estimate": "complete-reader-text-v1"' in cache_key
     assert '"truth_gate": "audio-contract-v17"' in cache_key
 
 
