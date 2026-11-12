@@ -1255,6 +1255,9 @@ async def _create_user_session(user: dict, request: Request, response: Response)
     login. Raising it later allows a small trusted-device whitelist without
     changing token semantics.
     """
+    # Never mint a reader token or write reader sessions for another role.
+    if user.get("role") != "user":
+        raise HTTPException(status_code=403, detail="User access required")
     now = datetime.now(timezone.utc)
     session_id = str(uuid.uuid4())
     refresh_token = secrets.token_urlsafe(48)
@@ -1503,7 +1506,7 @@ async def optional_principal(
         return {**admin, "role": "admin", "id": admin.get("id"), "email": admin.get("email")}
     if role == "user":
         u = await _cached_user_doc(payload.get("sub"))
-        if not u:
+        if not u or u.get("role") != "user":
             return None
         session_id = payload.get("sid")
         if not session_id or payload.get("fp") != _device_fingerprint(request):
@@ -1518,9 +1521,7 @@ async def optional_principal(
         absolute_expires = _as_utc_dt(session.get("absolute_expires_at"))
         if not idle_expires or not absolute_expires or idle_expires <= now or absolute_expires <= now:
             return None
-        u["role"] = "user"
-        u["session_id"] = session_id
-        return u
+        return {**u, "session_id": session_id}
     return None
 
 
@@ -10204,6 +10205,8 @@ async def auth_google(payload: GoogleAuthIn, request: Request, response: Respons
         user = doc
     elif user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
+    elif user.get("role") != "user":
+        raise HTTPException(status_code=403, detail="User access required")
 
     token = await _create_user_session(user, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
@@ -13056,13 +13059,12 @@ def _reading_pass_preview_record_valid(preview: Optional[Mapping[str, Any]]) -> 
 
 # Public preview delivery is deliberately separate from protected media admission.
 try:
-    from backend.audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES
+    from backend.audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES, PreviewClipCache, PreviewCapacityError
 except ModuleNotFoundError:
-    from audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES
+    from audiobook_preview import preview_segments, clip_mp3, MAX_SOURCE_BYTES, PreviewClipCache, PreviewCapacityError
 import threading as _preview_threading
-from collections import OrderedDict as _PreviewOrderedDict
 _preview_worker = _preview_threading.BoundedSemaphore(1)
-_preview_cache = _PreviewOrderedDict()
+_preview_clips = PreviewClipCache()
 
 
 async def _public_preview_package(slug):
@@ -13095,10 +13097,6 @@ def _clipped_public_preview(asset, budget):
         raise HTTPException(status_code=503, detail="Preview preparation busy")
     try:
         storage = asset["storage"]
-        identity = (asset["sha256"], storage["version_id"], budget)
-        if identity in _preview_cache:
-            _preview_cache.move_to_end(identity)
-            return _preview_cache[identity]
         url = _audio_package_storage_url(storage)
         selected = _b2_storage_for_url(url) if url else None
         if not selected or not storage.get("version_id") or asset.get("mime_type") != "audio/mpeg":
@@ -13112,12 +13110,7 @@ def _clipped_public_preview(asset, budget):
             body.close()
         if str(obj.get("VersionId", "")) != storage["version_id"]:
             raise ValueError("Source version mismatch")
-        result = clip_mp3(source, budget, complete_source=len(source) == int(asset["size_bytes"]))
-        _preview_cache[identity] = result
-        # At most two bounded clips (18 MiB) per process; one source read at a time.
-        while len(_preview_cache) > 2:
-            _preview_cache.popitem(last=False)
-        return result
+        return clip_mp3(source, budget, complete_source=len(source) == int(asset["size_bytes"]))
     finally:
         _preview_worker.release()
 
@@ -13134,7 +13127,12 @@ async def public_audiobook_preview_segment(slug: str, package_version: str, segm
         raise HTTPException(status_code=404, detail="Preview segment unavailable")
     chunk, budget = selected
     try:
-        data, _ = await asyncio.to_thread(_clipped_public_preview, chunk["assets"]["audio"], budget)
+        asset = chunk["assets"]["audio"]
+        storage = asset["storage"]
+        identity = (asset["sha256"], storage["bucket"], storage["key"], storage["version_id"], budget)
+        data, _ = await _preview_clips.get(identity, lambda: _clipped_public_preview(asset, budget))
+    except PreviewCapacityError:
+        raise HTTPException(status_code=503, detail="Preview preparation busy") from None
     except HTTPException:
         raise
     except Exception:

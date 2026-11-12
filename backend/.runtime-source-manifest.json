@@ -59,8 +59,8 @@
     },
     {
       "path": "audiobook_preview.py",
-      "bytes": 4153,
-      "sha256": "cac00e9fc018c980e42671ae1732b486c858f5f1227eb5fa40c17e53b2d48870"
+      "bytes": 6593,
+      "sha256": "55a1a47b8df28b6eef215b1bb0f6c55137b9875856f0d4a3d5334b96e59c7553"
     },
     {
       "path": "audiobook_voice_pipeline.py",
@@ -11634,8 +11634,8 @@
     },
     {
       "path": "server.py",
-      "bytes": 653663,
-      "sha256": "aca66d802661fa1870488515c338acf738dbb590c1af824de0bcf79ff25bcd4f"
+      "bytes": 653838,
+      "sha256": "6420d4b97d31521c9d6243638afaf97a0d6b6df3e09e8a4a0491cb5ba5af6b2b"
     },
     {
       "path": "serving_publication_binding.py",
@@ -11728,5 +11728,5 @@
       "sha256": "b9b46e2df65b5f5d28001cddf3de9802d714e60838975ac9798c3e0aef473a26"
     }
   ],
-  "expected_sha256": "3ed20971c85d26f7a36d76428c03b17acbf944f1bb8a7536dd735694579180b0"
+  "expected_sha256": "a32dd57304303f82486c6ae43feec80938fb3f91b5fda9887a40e9ccb12fa2f3"
 }

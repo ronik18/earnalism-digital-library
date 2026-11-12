@@ -1,6 +1,66 @@
 """Bounded, read-only MP3 previews. Never expose a source object or its URL."""
+import asyncio
+from collections import OrderedDict
+
 MAX_DURATION_MS = 180_000
 MAX_SOURCE_BYTES = 9 * 1024 * 1024
+
+
+class PreviewCapacityError(Exception):
+    """Finite preparation capacity or caller deadline exhausted; never retry."""
+
+
+class PreviewClipCache:
+    """One physical producer, shared cold reads and two bounded cached clips.
+
+    Admission happens on the event loop before submitting a thread. A cancelled
+    HTTP waiter cannot cancel a shared producer or release its physical slot.
+    Cache hits do not compete with another clip's storage read.
+    """
+    def __init__(self, *, max_jobs=8, max_waiters=32, wait_seconds=20):
+        self._cache = OrderedDict()
+        self._jobs = {}
+        self._worker = asyncio.Lock()
+        self._waiters = 0
+        self._max_jobs = max_jobs
+        self._max_waiters = max_waiters
+        self._wait_seconds = wait_seconds
+
+    async def get(self, identity, producer):
+        if identity in self._cache:
+            self._cache.move_to_end(identity)
+            return self._cache[identity]
+        if self._waiters >= self._max_waiters:
+            raise PreviewCapacityError()
+        task = self._jobs.get(identity)
+        if task is None:
+            if len(self._jobs) >= self._max_jobs:
+                raise PreviewCapacityError()
+            task = asyncio.create_task(self._produce(identity, producer))
+            self._jobs[identity] = task
+            # An abandoned request must not leave an unobserved exception.
+            task.add_done_callback(lambda t: None if t.cancelled() else t.exception())
+        self._waiters += 1
+        try:
+            return await asyncio.wait_for(asyncio.shield(task), self._wait_seconds)
+        except asyncio.TimeoutError:
+            raise PreviewCapacityError() from None
+        finally:
+            self._waiters -= 1
+
+    async def _produce(self, identity, producer):
+        try:
+            async with self._worker:
+                result = await asyncio.to_thread(producer)
+                if not isinstance(result, tuple) or len(result) != 2 or not isinstance(result[0], bytes) or not 0 < len(result[0]) <= MAX_SOURCE_BYTES:
+                    raise ValueError("Invalid bounded preview result")
+                self._cache[identity] = result
+                self._cache.move_to_end(identity)
+                while len(self._cache) > 2:
+                    self._cache.popitem(last=False)
+                return result
+        finally:
+            self._jobs.pop(identity, None)
 
 
 def preview_segments(package):
