@@ -139,3 +139,35 @@ def test_cached_clip_is_not_served_after_public_release_is_revoked():
             await ns['public_audiobook_preview_segment'](*args)
         assert error.value.status_code == 404 and calls == [1]
     asyncio.run(scenario())
+
+
+def test_actual_range_and_head_endpoints_share_a_single_clip_preparation():
+    import threading
+    async def scenario():
+        calls, release, started = [], threading.Event(), asyncio.Event()
+        loop = asyncio.get_running_loop()
+        async def public_book(slug):
+            return {'slug': slug}
+        def clipped(*_):
+            calls.append(1)
+            loop.call_soon_threadsafe(started.set)
+            if not release.wait(2):
+                raise AssertionError('Fixture producer was not released')
+            return b'x' * 100, 100
+        ns = endpoint_namespace(_reader_audio_book_for_slug=public_book,
+            _selected_audiobook_package=lambda *_: (package(), '', ''), _clipped_public_preview=clipped)
+        requests = [SimpleNamespace(method='GET', headers={'range': 'bytes=0-9'}),
+                    SimpleNamespace(method='HEAD', headers={}),
+                    SimpleNamespace(method='GET', headers={'range': 'bytes=-10'})]
+        tasks = [asyncio.create_task(ns['public_audiobook_preview_segment'](
+            'approved', package()['package_version'], 'first', request)) for request in requests]
+        try:
+            await asyncio.wait_for(started.wait(), 1)
+            assert calls == [1]
+        finally:
+            release.set()
+        responses = await asyncio.gather(*tasks)
+        assert [r.status_code for r in responses] == [206, 200, 206]
+        assert [len(r.body) for r in responses] == [10, 0, 10]
+        assert calls == [1]
+    asyncio.run(scenario())
