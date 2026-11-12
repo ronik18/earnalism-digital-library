@@ -1,4 +1,5 @@
 {
+  "bn035_reader_typography_20261113": {"scope": "SOURCE_CORRECTION_ONLY", "title": "bn-035", "finding": "Missing manifest language selects English drop cap; short final chapter is not proof of missing text", "correction": "Existing catalogue Bengali language fallback; no publication content or pagination change", "live_page1_check": "UNUSED_PENDING_EMPTY_PROGRESS_PROOF", "historical_observations_consumed": 6, "deployment": false},
   "hourglass_sherlock_ux_20261101": {
     "scope": "SOURCE_INTEGRATION_ONLY",
     "evidence": "hourglass_sherlock_integration_20261101.json",

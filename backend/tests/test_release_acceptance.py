@@ -231,3 +231,10 @@ def test_prior_preview_consumer_is_not_reused_for_changed_reader_entry(tmp_path)
     previous = policy.ROOT / 'internal/earnalism_intelligence/listener_preview_text_sync_consumer_20261112.json'
     manifest['automated_checks']['synchronization']['applicability']['consumer_sources'] = json.loads(previous.read_text())['sources']
     assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'
+
+
+def test_prior_reader_entry_consumer_is_not_reused_for_changed_language_source(tmp_path):
+    manifest, reader, listening = candidate(tmp_path)
+    previous = policy.ROOT / 'internal/earnalism_intelligence/listener_reader_entry_text_sync_consumer_20261112.json'
+    manifest['automated_checks']['synchronization']['applicability']['consumer_sources'] = json.loads(previous.read_text())['sources']
+    assert evaluate(manifest, tmp_path, reader, listening)['release_status'] == 'BLOCKED'

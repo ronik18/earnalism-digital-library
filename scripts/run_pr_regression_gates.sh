@@ -200,6 +200,8 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/pages/Library.test.jsx \
   src/pages/Library.integration.test.jsx \
   src/pages/BookDetail.discovery.test.jsx \
+  src/pages/BookDetail.readingPosition.test.jsx \
+  src/lib/useSavedReadingPosition.test.jsx \
   src/lib/controlledLaunch.canonicalAuthority.test.js \
   src/lib/libraryDiscovery.test.js \
   src/lib/libraryCatalog.test.js \
