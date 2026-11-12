@@ -82,7 +82,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const visualFixture = visualFixtureVariant === "1" || visualFixtureVariant === "bn";
   const entryRestorePendingRef = useRef(Boolean(user) && !visualFixture && !["p", "a", "r"].some(key => search.has(key)));
   const [entryRestoreTarget, setEntryRestoreTarget] = useState(null);
-  const entryReady = entryRestoreTarget === null || canonicalPage === entryRestoreTarget;
+  const entryReady = entryRestoreTarget === null || search.toString() === entryRestoreTarget;
   useEffect(() => {
     if (entryRestoreTarget !== null && ["p", "a", "r"].some(key => search.has(key))) setEntryRestoreTarget(null);
   }, [search, entryRestoreTarget]);
@@ -90,6 +90,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const previewLimit = Number(manifest?.canonical_pages?.preview_policy?.public_limit || PREVIEW_PAGES);
   const entryRef = useRef(null);
   const entryAdmissionAttemptedRef = useRef(false);
+  const entryContinuationRef = useRef(null);
   const openingFocusRef = useRef(false);
   const [loading, setLoading] = useState(true);
   const [manifestMs, setManifestMs] = useState(0);
@@ -249,13 +250,16 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
                 && Number.isSafeInteger(index) && index > 0 && index <= pages?.page_count && row
                 && position.chapter_id === row.chapter_id && pages.schema_version && pages.content_revision
                 && position.segmentation_version === pages.schema_version && position.manifest_version === pages.content_revision) {
-              setEntryRestoreTarget(index);
+              if (localValid && saved.requires_protected_text === true) {
+                entryContinuationRef.current = { publicPreviewEnd: saved.public_preview_end || null };
+              }
               const destination = new URLSearchParams(locationVersionRef.current.search);
               destination.set("p", String(index));
               if (localValid && ((Number.isSafeInteger(saved.offset) && saved.offset >= 0) || /^media:\d+$/.test(saved.offset)) && typeof saved.revision === "string" && saved.revision.length <= 256) {
                 destination.set("a", String(saved.offset));
                 destination.set("r", saved.revision);
               }
+              setEntryRestoreTarget(destination.toString());
               setSearchRef.current(destination, { replace: true });
             }
           }
@@ -281,6 +285,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         position: { canonical_page_index: value.page_index, chapter_id: value.chapter_id, segmentation_version: value.segmentation_version,
           manifest_version: value.manifest_version, publication_version_state: "bound" },
         ...(anchor ? { offset: anchor.offset, revision: anchor.revision } : {}),
+        requires_protected_text: leaseRef.current?.protectedTextContinuation === true,
+        public_preview_end: leaseRef.current?.publicPreviewEnd || null,
       }));
     } catch (_) { /* Device storage must never block reading. */ }
   }, [identity, slug, user?.id]);
@@ -570,14 +576,15 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user, previewLimit, preparationWait, notePreparationFailure]);
 
   const automaticEntry = !visualFixture && !loading && entryReady && manifest && enabled && validPage
-    && user?.role === "user" && validBalance(user?.reading_seconds_balance) > 0 && canonicalPage > previewLimit;
+    && user?.role === "user" && validBalance(user?.reading_seconds_balance) > 0 && (canonicalPage > previewLimit || entryContinuationRef.current !== null);
   useEffect(() => {
     if (!automaticEntry || usable || error || busy) return undefined;
     const enter = () => {
       if (entryAdmissionAttemptedRef.current || document.visibilityState !== "visible" || !document.hasFocus()) return;
       // One admission through the existing controller, never transfer or retry.
       entryAdmissionAttemptedRef.current = true;
-      void authorizeAndContinue(canonicalPage, search.get("a") || 0, search.get("r") || undefined);
+      void authorizeAndContinue(canonicalPage, search.get("a") || 0, search.get("r") || undefined,
+        false, entryContinuationRef.current !== null, entryContinuationRef.current?.publicPreviewEnd || null);
     };
     enter();
     window.addEventListener("focus", enter);

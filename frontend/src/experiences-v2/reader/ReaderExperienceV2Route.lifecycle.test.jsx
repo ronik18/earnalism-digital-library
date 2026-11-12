@@ -998,6 +998,7 @@ function manyVisualPreview({ short = false, chapters = false } = {}) {
   value.chapters = chapters ? Array.from({ length: total }, (_, i) => ({ id: chapter(i + 1), title: `Chapter ${i + 1}` })) : [{ id: 'c1', title: 'Chapter one' }];
   userApi.get.mockResolvedValue({ data: value });
   pass.getReadingPassPage.mockImplementation(async (slug, n) => ({ ...page(n, slug), chapter_id: chapter(n), chapter_title: chapters ? `Chapter ${n}` : 'Chapter one', total_pages: total, content: content(n), content_sha256: hash(n) }));
+  return value;
 }
 const visibleReading = () => container.querySelector('[data-testid="reader-reading-text"]')?.textContent || '';
 
@@ -1255,4 +1256,24 @@ test("an administrator profile never receives automatic reader admission", async
   mockUser = { id: "test-reader", role: "admin", reading_seconds_balance: 600 };
   await mount();
   expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+
+test("device resume reauthorizes a short book's protected visual page inside canonical page one", async () => {
+  mockUser = { id: 'test-reader', role: 'user', reading_seconds_balance: 600 };
+  const value = manyVisualPreview({ short: true }); preparationContract();
+  value.canonical_pages.schema_version = 'isolated-test-segments-v1';
+  value.canonical_pages.content_revision = 'isolated-test-manifest-v1';
+  await mount('/reader/test-book?p=1&a=120');
+  await click('Continue with Reading Pass'); await click('Next page');
+  const saved = JSON.parse(localStorage.getItem('earnalism:reader-position:test-reader:test-book'));
+  expect(saved.requires_protected_text).toBe(true);
+  expect(saved.offset).toBeGreaterThan(0);
+  await act(async () => root.render(null));
+  pass.startReadingPassSession.mockClear();
+  await mount('/reader/test-book');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith(expect.objectContaining({ pageIndex: 1, requireProtectedText: true }));
+  expect(visibleReading()).toMatch(/Unit 1 visual fragment [4-8]/);
+  expect(text()).not.toContain('Your three-page preview has ended');
 });
