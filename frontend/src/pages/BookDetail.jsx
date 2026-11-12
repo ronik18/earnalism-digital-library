@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles, Headphones, ShieldCheck } from "lucide-react";
 import { api } from "../lib/api";
+import { useAuth } from "../context/AuthContext";
+import useSavedReadingPosition from "../lib/useSavedReadingPosition";
 import ShareButtons from "../components/ShareButtons";
 import LicensedTextNotice from "../components/LicensedTextNotice";
 import BookCoverImage from "../components/BookCoverImage";
@@ -96,6 +98,9 @@ export default function BookDetail() {
     .map((benefit) => releaseSafeBookCopy(benefit, detailPresentation.listenCtaVisible))
     .filter(Boolean);
   const readerRuntimeAvailable = readerRuntimeIsAvailable(publicBook);
+  const { user } = useAuth() || {};
+  const readingPosition = useSavedReadingPosition({ user, slug: publicBook?.slug,
+    enabled: detailPresentation.readerReady && readerRuntimeAvailable, canonicalPages: publicBook?._readerManifest?.canonical_pages });
 
   useSEO({
     title: bookNotFound
@@ -337,7 +342,7 @@ export default function BookDetail() {
             )}
             {!isDracula && (
               <Link to={detailPresentation.primaryReadHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
-                {detailPresentation.primaryReadLabel}
+                {readingPosition.kind === "resume" ? "Continue reading" : detailPresentation.primaryReadLabel}
               </Link>
             )}
             {isDracula && (
@@ -356,6 +361,8 @@ export default function BookDetail() {
               </div>
             )}
           </div>
+
+          {readingPosition.kind === "new" && <p className="mt-2 text-xs text-charcoal-soft" role="status" data-testid="reading-position-empty">No saved reading progress.</p>}
 
           <nav className="book-detail-reference__tabs" aria-label="Book details" role="tablist" onKeyDown={onTabKeyDown}>
             {tabs.map((tab) => <button key={tab} id={`book-tab-${tab}`} type="button" role="tab" aria-selected={selectedTab === tab} aria-controls={`book-panel-${tab}`} tabIndex={selectedTab === tab ? 0 : -1} onClick={() => selectTab(tab)}>{tab[0].toUpperCase() + tab.slice(1)}</button>)}

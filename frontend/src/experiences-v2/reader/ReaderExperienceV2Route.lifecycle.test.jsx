@@ -1277,3 +1277,17 @@ test("device resume reauthorizes a short book's protected visual page inside can
   expect(visibleReading()).toMatch(/Unit 1 visual fragment [4-8]/);
   expect(text()).not.toContain('Your three-page preview has ended');
 });
+
+
+test.each(["বড়দিদি", "Borodidi"])("Bengali Reader without language fields retains Bengali typography: %s", async title => {
+  const value = manifest('bn-035'); value.book.title = title; value.book.author = 'Sarat Chandra'; delete value.book.language;
+  const content = '<p>নিজের অট্টালিকায়, তাহার শয়ন-কক্ষে, বড়দিদির কোলে মাথা রাখিয়া আছে।</p>';
+  const hash = createHash('sha256').update(content).digest('hex'); value.canonical_pages.pages[0].content_hash = hash;
+  userApi.get.mockResolvedValue({ data: value });
+  pass.getReadingPassPage.mockImplementation(async (slug, n) => n === 1 ? { ...page(n, slug), content, content_sha256: hash } : page(n, slug));
+  await mount('/reader/bn-035?p=1');
+  expect(container.querySelector('article.reader-v2__canvas').getAttribute('data-reader-language')).toBe('bn');
+  expect(container.querySelector('article.reader-v2__canvas').getAttribute('lang')).toBe('bn');
+  expect(container.querySelector('[data-testid="reader-reading-text"]').textContent).toContain('নিজের অট্টালিকায়');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});

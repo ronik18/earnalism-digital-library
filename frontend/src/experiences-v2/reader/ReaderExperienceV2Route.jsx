@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { userApi } from "../../lib/api";
+import { languageOfBook } from "../../lib/libraryCatalog";
 import { trackFunnelEvent } from "../../lib/funnelAnalytics";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { ReaderContent } from "./readerContent";
@@ -732,7 +733,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       },
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
-      language: /^(bn|bengali|বাংলা)/i.test(book.language || "") ? "bn" : /^(en|english)/i.test(book.language || "") ? "en" : undefined,
+      language: /^(bn|bengali|বাংলা)/i.test(book.language || "") ? "bn" : /^(en|english)/i.test(book.language || "") ? "en" : languageOfBook(book),
       chapterEyebrow: `Page ${displayedPageNumber} of ${totalPages}`,
       chapterTitle: page?.chapter_title || book.title || "",
       canonicalPage: displayedPageNumber,
