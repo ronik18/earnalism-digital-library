@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./EarnalismBrandLockup.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const CANONICAL_LOGO = `${PUBLIC_URL}/assets/brand/earnalism-brand-video-light.gif`;
-const STATIC_LOGO = `${PUBLIC_URL}/assets/brand/earnalism-brand-video-still.png`;
-const BUNDLED_FALLBACK = `${PUBLIC_URL}/assets/brand/earnalism-logo-text-original.png`;
+const CANONICAL_LOGO = `${PUBLIC_URL}/assets/performance/earnalism-brand-lockup-640.webp`;
+const BUNDLED_FALLBACK = `${PUBLIC_URL}/assets/brand/earnalism-brand-lockup.png`;
 
 const VARIANTS = new Set([
   "desktop-header",
@@ -25,10 +24,9 @@ export default function EarnalismBrandLockup({ variant = "desktop-header", class
     <span
       className={`earnalism-brand-lockup earnalism-brand-lockup--${safeVariant} ${className}`.trim()}
       data-testid="earnalism-brand-lockup"
-      data-brand-asset="earnalism-brand-video-light.gif"
+      data-brand-asset="earnalism-brand-lockup-640.webp"
     >
       <picture>
-      <source media="(prefers-reduced-motion: reduce)" srcSet={source === BUNDLED_FALLBACK ? BUNDLED_FALLBACK : STATIC_LOGO} />
       <img
         src={source}
         alt="Earnalism — Where Learning Becomes Earning"
@@ -37,8 +35,7 @@ export default function EarnalismBrandLockup({ variant = "desktop-header", class
         decoding="async"
         fetchPriority={safeVariant === "desktop-header" ? "high" : undefined}
         onError={() => {
-          if (source === CANONICAL_LOGO) setSource(STATIC_LOGO);
-          else if (source !== BUNDLED_FALLBACK) setSource(BUNDLED_FALLBACK);
+          if (source !== BUNDLED_FALLBACK) setSource(BUNDLED_FALLBACK);
         }}
       />
       </picture>

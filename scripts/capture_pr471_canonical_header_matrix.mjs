@@ -145,8 +145,8 @@ try {
       assert.equal(headerInfo.nav_font_weight, "600", `${routeInfo.id}: shared navigation weight`);
       assert.ok(headerInfo.nav_font_family.includes("Outfit"), `${routeInfo.id}: shared navigation font`);
       assert.equal(headerInfo.background, "rgb(255, 249, 238)", `${routeInfo.id}: shared parchment background`);
-      assert.equal(headerInfo.logo_asset, "earnalism-brand-video-light.gif", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
-      assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-video-still.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
+      assert.equal(headerInfo.logo_asset, "earnalism-brand-lockup-640.webp", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
+      assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/performance/earnalism-brand-lockup-640.webp"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
       assert.ok(headerInfo.logo_natural_width > 0, `${routeInfo.id} ${viewport.width}: logo loaded`);
       assert.ok(headerInfo.header_scroll_width <= headerInfo.header_client_width, `${routeInfo.id} ${viewport.width}: header overflow`);
       const expectedHeaderHeight = viewport.width >= 1280 ? 104 : viewport.width >= 768 ? 96 : 80;
