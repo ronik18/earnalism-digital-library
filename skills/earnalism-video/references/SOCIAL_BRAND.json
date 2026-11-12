@@ -1,0 +1,34 @@
+{
+  "schema": "earnalism.social-brand.v1",
+  "verified_date": "2026-11-12",
+  "display_name": "theearnalism",
+  "handle": "@theearnalism",
+  "website": "https://theearnalism.com/",
+  "bio": "Bengali & English books, selected audiobooks & visual stories, science & facts. A library to carry. A world to discover.",
+  "profile_icon": {
+    "path": "../assets/social-profile-icon.png",
+    "sha256": "6a7d0599e55116c7e0e4381440b331ca36d8daf6174b1435b3a6be40532cc742",
+    "width": 1080,
+    "height": 1080
+  },
+  "profiles": {
+    "youtube": "https://www.youtube.com/@theearnalism",
+    "instagram": "https://www.instagram.com/theearnalism/",
+    "facebook": "https://www.facebook.com/theearnalism/",
+    "x": "https://x.com/theearnalism",
+    "linkedin": "https://www.linkedin.com/company/theearnalism/",
+    "threads": "https://www.threads.com/@theearnalism"
+  },
+  "display_name_exceptions_as_of_verified_date": {
+    "instagram": {
+      "actual": "theearnalism.com",
+      "reason": "Two changes within 14 days",
+      "one_time_retry_date": "2026-11-26"
+    },
+    "facebook": {
+      "actual": "theearnalism.com",
+      "reason": "60-day name-change restriction; last changed 2026-11-11",
+      "one_time_retry_date": "2027-01-11"
+    }
+  }
+}

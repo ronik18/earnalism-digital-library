@@ -6,7 +6,7 @@ The entrypoint is [SKILL.md](SKILL.md). It routes detailed instructions on deman
 
 ## Scope
 
-This package tracks reusable guidance, templates, supporting software, configuration and tests. It excludes generated videos, speech/music recordings, branded binary assets, notebooks, private analytics, review receipts, account identifiers, credentials, dependencies and caches. `SOURCE_MANIFEST.json` records the included source hashes and excluded categories. Absolute workstation paths in two example episode inputs are replaced with `/path/to/earnalism-studio`; they are examples, not current production pointers.
+This package tracks reusable guidance, templates, supporting software, configuration and tests. It includes one owner-selected public profile icon at `assets/social-profile-icon.png`; all other branded binary assets remain private. It excludes generated videos, speech/music recordings, other branded binary assets, notebooks, private analytics, review receipts, account identifiers, credentials, dependencies and caches. `SOURCE_MANIFEST.json` records the included source hashes and excluded categories. Absolute workstation paths in two example episode inputs are replaced with `/path/to/earnalism-studio`; they are examples, not current production pointers.
 
 This is a source archive and update path, not a standalone production-media kit. Existing approved media and job-specific B sources stay in the private Earnalism Studio workspace. A missing asset or rights record must remain a failing/pending production check; never substitute a generated approval or weaken a gate to make a clean checkout render.
 
