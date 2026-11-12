@@ -16791,6 +16791,7 @@
     "preview_limit_seconds": 180,
     "full_listening": "Existing paid/native grants automatically prepared by Play",
     "historical_validators_and_counters": "unchanged",
-    "state": "SOURCE_QUALIFICATION_PENDING"
+    "state": "SOURCE_QUALIFICATION_PENDING",
+    "regression_copy_successor": "Two exact UX listening-copy assertions updated after run43220023615; production source and title activation unchanged; fresh exact-head CI required"
   }
 }
