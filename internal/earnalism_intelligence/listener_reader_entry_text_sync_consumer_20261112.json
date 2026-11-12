@@ -8,7 +8,7 @@
     "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "f58d924929cc830abb662db5bd097698dc99e8ed055e6cfabafbae07b0550c73",
     "frontend/src/lib/audioPackageManifest.js": "927ccfb5647f4a38233314cb9e9536ff30960eb4471efb145522f410697b8c04",
     "frontend/src/lib/audiobookPlayback.js": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
-    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "f8842c99df4f9e1cf441f419f4a39c88b1a8eb1fddac3c21ecd963dfd83e8e5b",
+    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "25bcea4a6bea9e0c8cd6e768fe8d4097363bbf23f2b341ba22ae77dca04cad63",
     "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": "3b380696dca220da6ff2544fceb0b0214f19f729e964a5cb4c6aa68efcb7fff6",
     "frontend/src/pages/Reader.jsx": "cb105fc855ef544798fc9a3e9eaef28eba9c0ed7f162ff5c8fd2a609c10c269c",
     "frontend/src/lib/audioReleaseSafety.js": "c5fadd8f6fb3a36800b7b5a96b7608078436d26f2afc99630820ad29936ddd6f",
@@ -31,7 +31,7 @@
     "preserved_for": "Immutable prior preview-consumer source applicability; historical native contract remains unchanged"
   },
   "reviewed_source": {
-    "commit": "358d04128780c455e88957df0fea7cbd54b95753",
+    "commit": "863b565b0f55b95cf1dd44ef2636ca85e827e7ed",
     "owner_scope": "P0 direct Reader entry and device resume only; no retired audio/text-linked feature restoration"
   }
 }
