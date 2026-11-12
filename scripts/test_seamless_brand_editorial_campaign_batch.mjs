@@ -33,7 +33,7 @@ function writeSynthetic(output, stable = true) {
 }
 function assertBrand(record, state) {
   assert.equal(record.route, state.route); assert.deepEqual(record.viewport, state.viewport); assert.equal(record.visible_header_count, 1); assert.equal(record.visible_canonical_lockup_count, 1);
-  assert.equal(record.logo.natural_width, 520); assert.equal(record.logo.natural_height, 156); assert.ok(Math.abs(record.logo.aspect_ratio - 10 / 3) < 0.01); assert.equal(record.logo.transform, "none");
+  assert.equal(record.logo.natural_width, 640); assert.equal(record.logo.natural_height, 192); assert.ok(Math.abs(record.logo.aspect_ratio - 10 / 3) < 0.01); assert.equal(record.logo.transform, "none");
   assert.equal(record.logo.wrapper_background, "rgba(0, 0, 0, 0)"); assert.equal(record.logo.wrapper_border_width, "0px"); assert.equal(record.logo.wrapper_border_radius, "0px"); assert.equal(record.logo.wrapper_box_shadow, "none"); assert.equal(record.logo.wrapper_padding, "0px"); assert.equal(record.logo.parent_background, "rgb(255, 249, 238)");
   assert.equal(record.logo.clipped, false); assert.equal(record.overlap, false); assert.equal(record.horizontal_overflow, false); assert.equal(record.console_error_count, 0); assert.equal(record.page_error_count, 0); assert.equal(record.failed_required_request_count, 0); assert.equal(record.rendered_ui_result, "PASS");
   for (const name of requestedScreenshotNames(state.capture)) assert.ok(Object.values(record.screenshot_paths).includes(name), `${state.id} missing ${name}`);
