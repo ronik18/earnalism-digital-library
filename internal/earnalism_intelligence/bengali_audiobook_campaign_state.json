@@ -51,6 +51,40 @@
       "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-scoring-preparation-20261113-v1/RESULT.json",
       "new_dynamic_render": "NOT_RUN_CURRENT_GIRIJA_PHRASE_TIMING_UNQUALIFIED",
       "campaign_title_counters_authority_and_release_unchanged": true
+    },
+    "private_bengali_fresh_emotion_score": {
+      "decision_history_key": "bicharak_fresh_private_emotion_score_20261113",
+      "state": "FRESH_PRIVATE_EMOTION_SCORE_READY_FOR_OWNER_REVIEW",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-emotion-score-20261113-v2/RESULT.json",
+      "measured_cues": 44,
+      "timing_acceptance_scope": "Private music production anchors only; not native release sync or full word-fidelity approval. Raw acoustic uncertainties and diagnostic differences retained.",
+      "campaign_authority_counters_owner_hold_and_publication_unchanged": true
+    },
+    "private_bengali_score_refinement": {
+      "decision_history_key": "bicharak_private_score_refinement_20261113",
+      "state": "PRIVATE_REFINED_COPY_READY_FULL_MUSICAL_LISTENING_UNVERIFIED",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-score-refinement-20261113-v3/RESULT.json",
+      "actual_listening": "UNPERFORMED",
+      "narration_and_cue_clock_unchanged": true,
+      "campaign_authority_counters_and_release_unchanged": true
+    },
+    "private_bengali_owner_listening_review": {
+      "decision_history_key": "bicharak_owner_listening_handoff_20261113",
+      "state": "OWNER_FULL_LISTENING_REVIEW_PENDING",
+      "exact_candidate_sha256": "bdad5b6ef5bb478e9f2d767079ffcf0d1e69959076600cb92a1f1fa7a5d7b978",
+      "status_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-full-listening-review-20261113/STATUS.json",
+      "campaign_authority_counters_and_release_unchanged": true
+    },
+    "private_bengali_owner_piano_refinement": {
+      "decision_history_key": "bicharak_final_private_v4_20261113",
+      "state": "OWNER_SELECTED_FINAL_PRIVATE_VERSION",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-piano-refinement-20261113-v4/RESULT.json",
+      "exact_candidate_sha256": "3d0539d01b1367c230466f0ec243788433e2c7f7cadb83af20688434c202b64b",
+      "actual_listening": "Owner approved the softened18:36 piano rise and selected exact v4 as final private version. No numeric listening scores or full-title listening-coverage claim supplied.",
+      "campaign_authority_counters_owner_hold_and_publication_unchanged": true,
+      "next_generated_prompt": "For the next authorized audiobook, use $earnalism-audiobook-score with its existing narration, measured cues and cleared music; apply the retained owner feedback and choose musical levels and fades for that story.",
+      "original_refinement_key": "bicharak_owner_piano_softening_20261113",
+      "owner_final_selection_at": "2026-11-13T17:53:42.765564+00:00"
     }
   },
   "generated_at": "2026-07-30T09:15:47Z",

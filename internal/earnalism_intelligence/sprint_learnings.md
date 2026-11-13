@@ -3319,3 +3319,29 @@ Next generated prompt: Use $earnalism-audiobook-score to prepare or refine the n
 Bicharak preparation found a later genuine full owner review for the exact retained scored master after an older handoff suggested review was still missing. The unchanged 19:10.449 copy was prepared privately with credits and full-story direction. Current narration phrase cues remain unqualified, so no new cue-driven render or ASR was claimed; the exhausted allowance and owner hold remain intact. Applied existing source-bound evidence reuse; no new owner feedback and no-new-learning.
 
 Next generated prompt: Listen privately to the complete retained Bicharak scored edition and report timestamped music-fit, continuity or speech-clarity concerns. Preserve the existing narration and do not infer new phrase timing or release approval.
+
+### 2026-11-13 — Reuse real held measurements for private music anchors
+
+A release-held sync candidate can still contain genuine audio-derived measurements. Inspect the exact source/audio binding and clock, and qualify only the actual production use; do not equate a release hold with missing measurements or transfer old timing across a repaired take. In this case,40 retained paragraph measurements plus4 saved acoustic word points support the private score; no model was run. The full fresh19:10.449 mix retains the exact narration and manuscript. The deliberate repaired plea is dry; no other long exact-zero stem gaps were found. New music listening remains pending and no old full-score acceptance transfers. See `bicharak_fresh_private_emotion_score_20261113` in title history and its private result for evidence.
+
+Next generated prompt: Listen privately to the complete fresh Bicharak v2 score, especially 6:26, 10:38, the deliberate exposed plea at13:00–13:16, the ring appeal at17:50 and recognition at18:36. Report timestamped emotional-fit, transition and speech-clarity feedback while preserving the existing narration.
+
+### 2026-11-13 — Check source envelopes and test causal attributions
+
+Nonzero stem samples can hide practical level troughs in a quiet source outro. Inspect sounding source envelopes and match overlapping fades. Compare before and after: removing a source jump did not remove the recognition note rise, so coincidence alone did not establish its cause. These measurements do not replace listening. Bicharak v3 repairs warm-outro lows and theme handoffs, retains narration and the dry plea, and continues piano through recognition. The initial recognition rise remains in the continuous source: attribution to the restart was corrected, and heard fit/clarity is not marked PASS. See `bicharak_private_score_refinement_20261113` in title history for the same private result.
+
+Next generated prompt: Listen privately to the complete refined Bicharak v3, especially6:26,10:38 and18:36. Assess emotional fit, harmonic/phrase continuity and speech clarity; the natural piano rise at18:36 remains a listening judgment. Send timestamped feedback; preserve narration.
+
+### 2026-11-13 — Owner-selected Bicharak listening review
+
+The owner chose to perform the complete v3 listening review. The prepared external studio inquiry remains unsent; no audio transfer, fee or additional model review was authorized. Choosing to review does not establish completed listening or approval. Exact candidate and neutral owner brief are retained under `bicharak_owner_listening_handoff_20261113`; no-new-listening-learning until actual feedback arrives.
+
+Next generated prompt: Listen to the complete private Bicharak v3 (19:10.449), especially6:26,10:38 and18:36. Send time ranges, what you heard, any preferred musical change, and passages to preserve; confirm full-listening coverage when done.
+
+## 2026-11-13 — Bicharak owner piano feedback applied
+
+Owner requested a softer18:36 piano rise in v3 while preserving narration and the rest. Private v4 applies a smooth local instrumental delta18:35.8–18:39.2 (approximately6dB); unchanged lossless PCM outside the window and the delta formula were independently verified. No full-title listening approval inferred; owner review pending. See `bicharak_owner_piano_softening_20261113` for exact hashes, checks and next review prompt. Use localized level edits for localized feedback when a retained stem supports them; avoid unrelated whole-file remastering. No provider, campaign counter, release or public-audio change.
+
+## 2026-11-13 — Bicharak v4 selected as final private version
+
+Owner confirmed the softened18:36 piano rise sounds good and selected the unchanged v4 as final private. Retained the successful outcome in the existing skill lesson on local instrumental corrections; the6dB depth and3.4s envelope are case-specific. See `bicharak_final_private_v4_20261113` for exact candidate binding and feedback. No rerender, new provider work, formal score, publication or campaign-counter change. Next prompt: For the next authorized audiobook, use $earnalism-audiobook-score with its existing narration, measured cues and cleared music; apply the retained owner feedback and choose musical levels and fades for that story.

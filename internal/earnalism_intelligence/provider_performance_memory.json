@@ -1,4 +1,29 @@
 {
+  "bicharak_private_score_refinement_20261113": {
+    "date": "2026-11-13",
+    "scope": "Full contextual and local signal review; not actual musical listening",
+    "base_candidate_sha256": "8a03792570ca336b63dd4041516cd68c36c865079ee6412686a8866ae8ff512b",
+    "candidate_sha256": "bdad5b6ef5bb478e9f2d767079ffcf0d1e69959076600cb92a1f1fa7a5d7b978",
+    "new_provider_requests": 0,
+    "new_inference": 0,
+    "actual_listening": "UNPERFORMED",
+    "learning": "Nonzero stem samples can hide practical level troughs in a quiet source outro. Inspect sounding source envelopes and match overlapping fades. Compare before and after: removing a source jump did not remove the recognition note rise, so coincidence alone did not establish its cause. These measurements do not replace listening.",
+    "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-score-refinement-20261113-v3/RESULT.json",
+    "historical_provider_failures_and_caps_unchanged": true
+  },
+  "bicharak_fresh_private_emotion_score_20261113": {
+    "date": "2026-11-13",
+    "scope": "Saved-measurement reuse for private Bicharak music production",
+    "narration_sha256": "e7446937402036dfd48c039d4b4f4ef81f46f1b51262f24067f1a6ae3af02008",
+    "source_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+    "measured_cues": 44,
+    "new_inference": 0,
+    "new_provider_requests": 0,
+    "historical_attempt_counters_reset": false,
+    "learning": "A release-held sync candidate can still contain genuine audio-derived measurements. Inspect the exact source/audio binding and clock, and qualify only the actual production use; do not equate a release hold with missing measurements or transfer old timing across a repaired take.",
+    "timing_scope": "Private music production anchors only; not native release sync or full word-fidelity approval. Raw acoustic uncertainties and diagnostic differences retained.",
+    "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-emotion-score-20261113-v2/RESULT.json"
+  },
   "selfish_giant_private_score_refinement_20261113": {
     "date": "2026-11-13",
     "model": "gpt-audio-1.5",

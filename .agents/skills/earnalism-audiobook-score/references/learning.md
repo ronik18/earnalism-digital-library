@@ -73,3 +73,21 @@ review settings or rotate prompts to obtain a favorable answer. Ground musical
 claims in actual reviewed audio and their demonstrated scope. Prefer a simple
 local repair from concrete listening feedback; keep unassessed musical fit
 explicit. No new paid review loop follows from using this skill.
+
+## Distinguish a release hold from absent timing measurements
+
+**Evidence:** Bicharak private scoring on13 November2026, `bicharak_fresh_private_emotion_score_20261113` in title history. A later retained file already contained40 current-master acoustic paragraph measurements. Exact PCM clock mapping supported the unchanged takes; the repaired take used its own current evidence. Four saved word anchors refined the score without new inference.
+
+**Reusable lesson:** Inspect the actual measurements and source/audio clock before treating an unqualified release status as missing timing. Qualify reuse for the requested production purpose and retain raw uncertainty and the separate full-release status. Never transfer an older clock across a changed take. Observed agreement between methods is not a calibrated error bound.
+
+## Review sounding envelopes and verify the cause
+
+**Evidence:** Bicharak v2-to-v3 review, `bicharak_private_score_refinement_20261113` in title history. Nonzero source-outro tails still produced multi-second low-level troughs; using sounding mid-sections removed those troughs. Removing the final source restart did not remove the first-second piano rise, so the initial causal attribution was corrected.
+
+**Reusable lesson:** Inspect actual outgoing/incoming envelopes and source positions; lower placement gain or nonzero samples alone do not establish a smooth or softer transition. Use before/after evidence to test the proposed cause. Retain natural musical dynamics when no defect is established, and keep full listening judgments distinct from contextual and signal checks.
+
+## Preserve the master during an isolated level correction
+
+**Evidence:** Owner-requested Bicharak v3-to-v4 piano softening, `bicharak_owner_piano_softening_20261113` in title history. A calibrated retained instrumental stem supported a smooth local music delta; independent checks confirmed unchanged PCM outside the correction and the requested reduction. The owner subsequently confirmed, “The piano rise at 18:36 sounds good now,” and selected the unchanged v4 as the final private version (`bicharak_final_private_v4_20261113`). This is an owner-accepted example of a focused music-only repair with the narration and surrounding score preserved; its6dB reduction and3.4-second envelope remain specific to that performance.
+
+**Reusable lesson:** When feedback concerns one musical rise and the surrounding mix should remain intact, prefer a local instrumental gain edit over whole-file remastering when the retained stems support it. Bind the exact source hashes and compare unchanged material. Choose depth and envelope for the actual note and feedback; this case does not prescribe universal settings. Re-encoded MP3 identity differs from preservation of the lossless master.
