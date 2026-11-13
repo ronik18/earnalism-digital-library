@@ -85,6 +85,131 @@
       "next_generated_prompt": "For the next authorized audiobook, use $earnalism-audiobook-score with its existing narration, measured cues and cleared music; apply the retained owner feedback and choose musical levels and fades for that story.",
       "original_refinement_key": "bicharak_owner_piano_softening_20261113",
       "owner_final_selection_at": "2026-11-13T17:53:42.765564+00:00"
+    },
+    "private_parallel_english_scores_20261114": {
+      "decision_history_key": "parallel_private_audiobook_scores_20261114",
+      "state": "TWO_FULL_PRIVATE_SCORES_READY_FOR_OWNER_REVIEW",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/BATCH-RESULT.json",
+      "titles": [
+        {
+          "decision_history_key": "the_open_window_private_score_20261114",
+          "title": "The Open Window",
+          "slug": "the-open-window",
+          "state": "FULL_PRIVATE_SCORE_READY_FOR_OWNER_REVIEW",
+          "candidate_path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/the-open-window/The-Open-Window-Private-Emotion-Score-v1.mp3",
+          "candidate_sha256": "5ac7314b165b0716e9e63e1ea1c0ee9956b83b4a59b00d941bd499f373629167",
+          "duration_seconds": 491.437,
+          "narration_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+          "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+          "timing_sha256": "5d110c80bbc3a8dff7ba93ac4c91689d0c007e9663a8aafc9c53ebf43749ce03",
+          "measured_cues": 40,
+          "music_placements": 13,
+          "encoded_lufs": -20.26,
+          "encoded_true_peak_dbtp": -6.78,
+          "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/the-open-window/RESULT.json",
+          "credits": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/the-open-window/CREDITS.txt"
+        },
+        {
+          "decision_history_key": "sredni_vashtar_private_score_20261114",
+          "title": "Sredni Vashtar",
+          "slug": "sredni-vashtar",
+          "state": "FULL_PRIVATE_SCORE_READY_FOR_OWNER_REVIEW",
+          "candidate_path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/sredni-vashtar/Sredni-Vashtar-Private-Emotion-Score-v1.mp3",
+          "candidate_sha256": "3fcbc364b60760f06885586c260bc3a6f36ee10715faa90b0e9b8ee882e18c8e",
+          "duration_seconds": 638.105,
+          "narration_sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+          "manuscript_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+          "timing_sha256": "cafe309649c4bd878e37e959dfaab560a9ea9dfd45c251eae2e01e47d2e77bcc",
+          "measured_cues": 159,
+          "music_placements": 11,
+          "encoded_lufs": -20.26,
+          "encoded_true_peak_dbtp": -1.67,
+          "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/sredni-vashtar/RESULT.json",
+          "credits": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/sredni-vashtar/CREDITS.txt"
+        }
+      ],
+      "actual_parallel_render_overlap_seconds": 58.685438,
+      "bengali_campaign_authority_counters_and_release_unchanged": true,
+      "next_generated_prompt": "Review the complete private Open Window v1 and Sredni Vashtar v1 for emotional fit, transitions and speech clarity. Send timestamped changes and passages to preserve; keep both private and retain the existing narration."
+    },
+    "private_english_full_context_signal_review_20261114": {
+      "decision_history_key": "open_window_sredni_full_context_signal_review_20261114",
+      "state": "BOTH_CONTEXT_SIGNAL_REVIEWS_COMPLETE_LISTENING_UNVERIFIED",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-score-review-20261114-v2/REVIEW-RESULT.json",
+      "titles": [
+        {
+          "title": "The Open Window",
+          "decision_history_key": "the_open_window_full_context_signal_review_20261114",
+          "state": "FULL_CONTEXT_AND_SIGNAL_REVIEW_COMPLETE_LISTENING_UNVERIFIED",
+          "candidate_path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/the-open-window/The-Open-Window-Private-Emotion-Score-v1.mp3",
+          "input_candidate_sha256": "5ac7314b165b0716e9e63e1ea1c0ee9956b83b4a59b00d941bd499f373629167",
+          "resulting_candidate_sha256": "5ac7314b165b0716e9e63e1ea1c0ee9956b83b4a59b00d941bd499f373629167",
+          "duration_seconds": 491.437,
+          "narration_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+          "timing_sha256": "5d110c80bbc3a8dff7ba93ac4c91689d0c007e9663a8aafc9c53ebf43749ce03",
+          "media_changed": false,
+          "repair_decision": "Preserve exactv1; complete context/transition/voice-reference balance checks found no supported automatic repair. No cosmetic new mix/version.",
+          "actual_full_listening": "UNPERFORMED; emotional fit and speech clarity have contextual/signal evidence only, no verified heard verdict.",
+          "source_check": "Original MP3/master/dry narration hashes verified unchanged."
+        },
+        {
+          "title": "Sredni Vashtar",
+          "decision_history_key": "sredni_vashtar_full_context_signal_review_20261114",
+          "state": "FULL_CONTEXT_AND_SIGNAL_REVIEW_COMPLETE_LISTENING_UNVERIFIED",
+          "candidate_path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/sredni-vashtar/Sredni-Vashtar-Private-Emotion-Score-v1.mp3",
+          "input_candidate_sha256": "3fcbc364b60760f06885586c260bc3a6f36ee10715faa90b0e9b8ee882e18c8e",
+          "resulting_candidate_sha256": "3fcbc364b60760f06885586c260bc3a6f36ee10715faa90b0e9b8ee882e18c8e",
+          "duration_seconds": 638.105,
+          "narration_sha256": "ae535a64f6c7fa6d2ffa47d463c35c8981f778dc0e28b39b88382ae8e8429567",
+          "timing_sha256": "cafe309649c4bd878e37e959dfaab560a9ea9dfd45c251eae2e01e47d2e77bcc",
+          "media_changed": false,
+          "repair_decision": "Preserve exactv1; complete context/transition/voice-reference balance checks found no supported automatic repair. No cosmetic new mix/version.",
+          "actual_full_listening": "UNPERFORMED; emotional fit and speech clarity have contextual/signal evidence only, no verified heard verdict.",
+          "source_check": "Original MP3/master/dry narration hashes verified unchanged."
+        }
+      ],
+      "bengali_campaign_authority_counters_and_release_unchanged": true,
+      "next_generated_prompt": "Listen to both complete private v1 mixes and send timestamped emotional-fit, transition or speech-clarity feedback. Focus if useful on Open Window3:48–3:50 and6:36–6:38, and Sredni1:19–1:21,4:49–4:51 and6:08–6:10. Preserve the narration and keep both private."
+    },
+    "private_english_owner_full_listening_20261114": {
+      "decision_history_key": "open_window_sredni_owner_listening_handoff_20261114",
+      "state": "OWNER_FULL_LISTENING_REVIEW_PENDING",
+      "status_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-full-listening-handoff-20261114/STATUS.json",
+      "campaign_authority_counters_and_release_unchanged": true,
+      "next_generated_prompt": "Listen to both complete privatev1 mixes: The Open Window8:11.437 and Sredni Vashtar10:38.105. Send title, timestamp/range, what you heard and desired change; identify passages to preserve and confirm full-listening coverage when finished."
+    },
+    "private_english_owner_keep_feedback_20261114": {
+      "decision_history_key": "open_window_sredni_owner_keep_feedback_20261114",
+      "state": "OWNER_TIMESTAMPED_KEEP_DECISIONS_RECORDED",
+      "total_keep_ranges": 10,
+      "reviewed_candidates": [
+        {
+          "title": "The Open Window",
+          "version": "private emotion score v1",
+          "sha256": "5ac7314b165b0716e9e63e1ea1c0ee9956b83b4a59b00d941bd499f373629167",
+          "keep_ranges": [
+            "1:45–1:55",
+            "3:53–4:48",
+            "6:34–6:40",
+            "7:02–8:11"
+          ]
+        },
+        {
+          "title": "Sredni Vashtar",
+          "version": "private emotion score v1",
+          "sha256": "3fcbc364b60760f06885586c260bc3a6f36ee10715faa90b0e9b8ee882e18c8e",
+          "keep_ranges": [
+            "2:01–2:33",
+            "4:48–4:52",
+            "5:22–5:38",
+            "8:21–8:40",
+            "9:09–9:29",
+            "9:44–10:38"
+          ]
+        }
+      ],
+      "narration_audio_release_and_campaign_counters_unchanged": true,
+      "next_generated_prompt": "Use $earnalism-audiobook-score for later revisions, retaining all ten owner-kept ranges and their musical context on the exact reviewed Open Windowv1 andSredni Vashtarv1 candidates. Preserve narration and keep audio private."
     }
   },
   "generated_at": "2026-07-30T09:15:47Z",
