@@ -35,6 +35,8 @@ Use only the PyTorch backend (`USE_TF=0`, `USE_FLAX=0`) in isolated subprocesses
 
 The retry's normal `files.download()` control transfer was durably verified after completing Chrome's native Save dialog. If the Colab cell finishes but no local file appears, inspect the native browser dialog before declaring a transfer failure. Complete only the task's expected filename; preserve existing files and unrelated windows. Await input-upload completion and verify the exact source hash before setup; returning from a file chooser does not establish transfer completion. A Playwright download-event timeout alone does not prove download failure. Verify local bytes/hash after saving. This supported route does not require data URLs, permission changes or broad Drive access.
 
+If a normal Save dialog first appears disabled, inspect its current full accessibility state after it has loaded before handing it back to the owner; act only on the actually enabled normal control. A UI timeout after Save does not establish a failed transfer. Check the expected local file, size and hash before retrying or starting another download. Do not change browser security/download settings or bypass a rejected transfer.
+
 References: [pinned pipeline input and denoising contract](https://github.com/huggingface/diffusers/blob/v0.36.0/src/diffusers/pipelines/wan/pipeline_wan_i2v.py), [pinned Transformers backend flags](https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/utils/import_utils.py). The512×896 shape satisfies the pinned pipeline's16-pixel divisibility requirement; lowering steps is an engineering choice, not a claim of equal quality.
 
 ## Optimized retry outcome and corrected forecasting
@@ -213,3 +215,16 @@ The recovery input cell was run before upload completion, and premature setup fa
 
 
 The separately approved v17 recovery completed in947.58seconds and reproduced the initial observed raw SHA256 exactly; its final archive was durably imported before runtime release. Raw playback and dense return-phase frames show a readable bend and return upright while the small child-facing smile remains. Palms separate and lower during the return, so this is a completed bow, not a continuously held namaste. Qualify action completion and prompt adherence separately: do not discard a readable action merely for a harmless pose departure, and do not claim the departure was solved. Review the swept hands under final captions, retain the complete return, and disclose residual facial softness/framing drift. This result qualifies only the reviewed source/seed/output; it does not prove source changes alone caused success.
+
+
+## Generic source-bound warm queue — 14 November 2026
+
+For English/Bengali audiobook visuals and arbitrary safe shot IDs, use the separate
+`wan22.batch` contract and `wan22.build_batch_colab` builder described in
+[AUDIOBOOK_VISUALS.md](AUDIOBOOK_VISUALS.md). It reuses one loaded pinned pipeline
+sequentially, journals each start/output, exports completed work and preserves the
+original allocation clock through resume. It does not expand any closed one-shot
+allowance or replace the supervising Colab shutdown guard. The existing finite
+legacy pilot schema/profiles remain unchanged. Offline control-plane/media tests
+qualify the new code paths; a real warm-GPU throughput/action/face-quality benchmark
+is still unperformed. Never present injected-backend tests as generated motion.

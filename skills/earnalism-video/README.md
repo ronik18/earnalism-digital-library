@@ -10,6 +10,15 @@ This package tracks reusable guidance, templates, supporting software, configura
 
 This is a source archive and update path, not a standalone production-media kit. Existing approved media and job-specific B sources stay in the private Earnalism Studio workspace. A missing asset or rights record must remain a failing/pending production check; never substitute a generated approval or weaken a gate to make a clean checkout render.
 
+## Supplied-audio milestone
+
+[Source-audio visual production](references/AUDIOBOOK_VISUALS.md) adds an English/Bengali
+recording-to-storyboard interface, private dual-format technical previews and a
+source-bound warm Wan shot queue. Original narration and score stay preserved.
+Semantic planning, measured captions, cinematic art, actual listening/AV and native
+delivery remain qualified per candidate; this is not an automatic perfect 3D film
+for every book. See [changes](CHANGELOG.md).
+
 ## Use and maintenance
 
 1. Read `SKILL.md` and applicable references. Work in the existing isolated Earnalism Studio project; preserve its original notebook, selected B, production records and actual current pointers.
