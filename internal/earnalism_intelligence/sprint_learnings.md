@@ -3263,3 +3263,59 @@ Fresh production read confirms all 45 exact complete text matches remain stored 
 2026-11-12 exact Reader resume: canonical page1 can contain a protected visual screen. Preserve continuation intent and measured public-boundary metadata as navigation-only local state, and wait for the complete restored URL (page, offset, revision) before one server admission. Comparing only the canonical page creates a same-page restore race. Existing billing classifiers still verify layout/revision, public prefixes stay inactive, and local metadata never grants text access.
 
 2026-11-13 Bengali Reader typography: missing public language metadata must use existing curated catalogue language detection instead of English typography. An empty server position is insufficient to prove a new book when device metadata exists; the BookDetail preflight must remain read-only, account/title scoped and non-authoritative for access. Denial/storage failure stays unknown. Preserve original pagination and all financial/session gates. Offline tests and source bindings do not constitute the still-unused live page1 acceptance.
+
+2026-11-13 — Background score tooling: interpret contextual emotion separately from speech act, bind phrase anchors to the exact narration, and retain unresolved silence instead of guessing. Absolute placements avoid crossfade drift; strong narrative turns bypass dwell. Quiet narration needs a measured, bounded voice reference before sidechain ducking; float intermediates prevent hidden clipping, and a padded control sidechain preserves music EOF under parallel sinks. Cleared stem and seam evidence remains independent of technical rendering. 38 focused tests PASS with actual synthetic FFmpeg9.0.2 renders; no real-title emotional/listening PASS, provider call, publication, deployment, paid operation or campaign-counter change. Continue through docs/audiobook_background_score.md with the next authorized exact candidate.
+
+2026-11-13 — First private adaptive-score pilot: reused exact Cedar Selfish Giant dry recording and103 positive native ASR/DTW group anchors with the retained dry-clock/delivery-transfer chain. Eight finite cleared piano passages, no loops/new narration/provider calls/spend/uploads/publication. Remembered happiness, ironic Spring elsewhere and later peaceful Winter require narrative context; questions do not imply suspense. Warmth484.137–493.237s ends at anger; revelation/final discovery stay silent. Actual review MP3 decodes541808ms,−20.27LUFS/−1.75dBTP, with full embedded attribution. Source, cue, output and review-link checks verified independently; changed-mix listening remains UNPERFORMED for user review. Journal key:selfish_giant_private_score_pilot_20261113.
+
+2026-11-13 — Private score refinement: music-file preroll can defeat a short fade before the first note; validate actual first-sounding signal, preserve narration anchors and subtract entry offsets from capacity. Longer sounding entries repaired the1.38s sad cue delay. Global duck changes suppressedmedianmusic7.58dB; restore nearoriginal balance rather than chase unconfirmed masking or modelnondetection. Fullinputaudio tokens are not listeningacceptance: singlelongreview misplaced7/9quotes, sectionedreview locatedspeech but failedmusicassessment. Two explicitlyauthorizedrequests consumed~USD0.4006345estimate, no thirdcall/newnarration/publication. Finalv3 technicalchecks verified; musicalfit/perceptualtransition acceptance remains unverified. Journal:selfish_giant_private_score_refinement_20261113.
+
+### 2026-11-13 — Private Selfish Giant alternative music-review preparation
+
+Qualify actual quiet-mix music detection with held-back positive/negative and temporal controls before paying for full subjective musical review. A model capability page, source label, nonzero stem, grounded narration quote or text-only semantic match does not establish heard musical fit. Bind qualification to exact request, response, manifest, model and candidate; stop if incomplete/ambiguous. Final verification only after a real repair.
+
+All11 exact final-v3 review excerpts include the complete9m01.808s tail and both requested turns. The independent full-text audit found no confident semantic mismatch; auditory fit and smoothness remain unverified. No Google request, auth refresh or external transfer occurred. NewGoogle3request/US1approval is pending; the earlier2OpenAIrequests remain consumed.
+
+Next generated prompt: After the pending explicit Google Cloud3request/US1authority is received and recorded, run the single blind qualification once. Independently adjudicate against held-back criteria. Only if qualified, review the exact complete v3 audio; repair confirmed audible issues and use at most one final verification for an actually changed candidate. Share privately without publication.
+
+### 2026-11-13 — Approved alternative review held at Google authentication
+
+Owner approved the new3request/US1Gemini scope. SavedADC refresh returnedHTTP400 before any audio/model reservation. Existingactivegcloud credentials have identical refreshmaterial and no validcachedtoken; theCLI itself could not write its local log. Do not cycle identicalfailedcredentials or silently select anotherprincipal. Owner sign-in reconnection is required; modelrequests0, all3remaining, no audio sent and no newinferencecost.
+
+Next exact command: gcloud auth application-default login
+
+### 2026-11-13 — Cloud review admission is distinct from musical review
+
+A reauthentication reply can race the credentialfile write; recheck freshmtime before askingagain. Authentication success doesnot establish paidprojectadmission. Billingdisabled andclosedlinkedaccount areoperationalrejections, notfailedmusicperception ormodelquality. Preserve the403attempt/cap anddo not resubmitunchangedbillingstate, switchprincipals, reopenfinancialaccount orfabricate musicalacceptance. Reopeningbilling canresumechargesacrosslinkedprojects beyondtheUS1reviewauthorization.
+
+Live read-only accountmetadata confirms the onlyaccessibleactive project isearnalism, billingEnabledfalse, linkedbillingaccount openfalse. OneHTTP403qualificationrequest remainsconsumed; twoofthreeauthorizedrequestsremain. No modeloutputorusage wasreturned, and no listeningPASS ornewrepairisinferred. Ownerbillingrestoration ispending; a small licensed localMLXreviewer isbeingchecked before anyweights/download/setup.
+
+Next generated prompt: After the owner restores billing for the existing earnalism project, verify billingEnabled true read-only before considering another model request. Preserve the rejected first request and original3request/US1scope; no automatic replay, changed principal or invented musical acceptance. Continue investigating a fitting licensed local reviewer meanwhile.
+
+### 2026-11-13 — Keep musical review grounded and simple
+
+Calibratedshortcontrols didnotgeneralize tolongrecordingsorallquietmixedexcerpts. Full9manswer misplaced5of9quotes andbothfocuses/inventedcontinuousmusic; realF02quote groundedbutmusicexitmissed. EnumSome+correctspeech isnotboundarygrounding. Actualencodedfile andstemidentity verifiedbyte-exact, excludingwrongexport. Stopfurtherpaidreviews asapproved; do notmodifyhealthy audiousingthoseclaims. Prefer simpleexistingworkflow andhumanlisten-through overmoreautomatedvariants.
+
+Google6POSTsconsumed of31authorized;3unbilledrejections and3responses totalUS0.1007445estimatedmodelusage. Invoiceunreported. Remaining25requestsunusedafterownerstopcondition. No newnarration,mixchangesfrombadreviews,publication,deployment orBengalicampaigntransition. SourceMP3/render/reconstructionidentityverifiedbyte-for-byte; addedmusicstemzeroafter493.237s.
+
+Next generated prompt: Have a human listener review the full private Selfish Giant copy, especially4:33 and8:04–8:13, and return timestamped music-fit, transition and speech-clarity notes. Preserve the existing narration and measured timing.
+
+### 2026-11-13 — Repair owner-heard score dropouts directly
+
+Serious narration and questions need not create long music-off gaps. Owner listening identified these arrangement dropouts despite correct rendering. Use simple finite reflective bridges and ordinary scene crossfades; retain positively reviewed cue material. Source energy and PCM identity confirm the edit, not subjective emotional-fit acceptance.
+
+V4 fills 161.180 seconds across six former gaps using the same cleared music; measured narration timing is unchanged. Accepted cue music remains PCM-identical in the surrounding comparison windows. Encoded copy: 541.808 seconds, −20.27 LUFS, −1.75 dBTP. No new provider calls, spend, narration, upload, publication or Bengali campaign transition. Full v4 listening remains pending.
+
+Next generated prompt: Listen privately to the complete Selfish Giant v4 continuity mix, especially 0:30–1:30 and the other former gaps; report any remaining audible concerns.
+
+### 2026-11-13 — Reusable scoring skill with retained editorial learning
+
+Package the existing engine rather than another controller. Persistent editorial instructions and source-bound feedback improve future decisions without claiming model-weight training, perfect output or automatic listening approval. The skill reads retained lessons on every invocation and journals concrete feedback with candidate hashes. Optional render --edits makes private arrangement revisions reproducible while preserving the regenerated baseline, licensed source checks and exact effective plan. Automatic RF64 avoids a RIFF size limit for long WAVs. No provider loop or publication approval is created.
+
+Next generated prompt: Use $earnalism-audiobook-score to prepare or refine the next authorized private audiobook score, applying retained feedback and preserving positively reviewed material.
+
+### 2026-11-13 — First retained Bengali use of the scoring skill
+
+Bicharak preparation found a later genuine full owner review for the exact retained scored master after an older handoff suggested review was still missing. The unchanged 19:10.449 copy was prepared privately with credits and full-story direction. Current narration phrase cues remain unqualified, so no new cue-driven render or ASR was claimed; the exhausted allowance and owner hold remain intact. Applied existing source-bound evidence reuse; no new owner feedback and no-new-learning.
+
+Next generated prompt: Listen privately to the complete retained Bicharak scored edition and report timestamped music-fit, continuity or speech-clarity concerns. Preserve the existing narration and do not infer new phrase timing or release approval.

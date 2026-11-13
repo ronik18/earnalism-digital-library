@@ -1,4 +1,58 @@
 {
+  "audiobook_background_score_20261113": {
+    "scope": "OPTIONAL_SOURCE_TOOLING_ONLY",
+    "state": "IMPLEMENTED_LOCALLY_NOT_DEPLOYED_OR_TITLE_QUALIFIED",
+    "decision_history_key": "audiobook_background_score_20261113",
+    "guide": "docs/audiobook_background_score.md",
+    "validation": {
+      "command": "python3 -m unittest scripts.test_audiobook_score scripts.test_audiobook_score_renderer -v",
+      "result": "38 tests PASS",
+      "scope": "synthetic fixtures and actual local FFmpeg9.0.2 renders; emotional appropriateness for a real title UNPERFORMED",
+      "workflow_yaml": "parsed using Ruby YAML; hosted execution UNPERFORMED"
+    },
+    "campaign_release_or_provider_state_changed": false,
+    "next_generated_prompt": "Prepare a private scored candidate for the next authorized audiobook using scripts/audiobook_score.py, reusing its exact dry narration, accepted measured phrase cues and cleared instrumental stems; resolve contextual direction through the approved workflow, retain all artifacts, and do not infer publication or paid-provider authority.",
+    "first_private_english_pilot": {
+      "title": "The Selfish Giant",
+      "decision_history_key": "selfish_giant_private_score_pilot_20261113",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/selfish-giant-private-score-pilot-20261113-v1/PILOT-REVIEW-RESULT.json",
+      "state": "PRIVATE_REVIEW_PENDING",
+      "bengali_campaign_state_changed": false
+    },
+    "private_english_pilot_refinement": {
+      "decision_history_key": "selfish_giant_private_score_refinement_20261113",
+      "artifact_root": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/selfish-giant-private-score-refinement-20261113-v2",
+      "state": "PRIVATE_REFINED_COPY_DELIVERED_MUSICAL_LISTENING_ASSESSMENT_UNRESOLVED",
+      "bengali_campaign_title_budget_or_provider_state_changed": false
+    },
+    "private_english_alternative_music_review": {
+      "decision_history_key": "selfish_giant_alternative_musical_review_20261113",
+      "state": "PRIVATE_REFINED_CANDIDATE_READY_FULL_MUSICAL_SIGNOFF_UNVERIFIED_AUTOMATED_REVIEWS_STOPPED",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/selfish-giant-alternative-musical-review-20261113/FINAL-REVIEW-RESULT.json",
+      "bengali_campaign_counters_authority_and_release_unchanged": true,
+      "next_generated_prompt": "Have a human listener review the full private Selfish Giant copy, especially4:33 and8:04–8:13, and return timestamped music-fit, transition and speech-clarity notes. Preserve the existing narration and measured timing."
+    },
+    "private_english_owner_continuity_edit": {
+      "decision_history_key": "selfish_giant_owner_continuity_fix_20261113",
+      "state": "PRIVATE_V4_CONTINUITY_EDIT_READY_FOR_OWNER_LISTENING",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/selfish-giant-private-continuity-v4-20261113/V4-RESULT.json",
+      "bengali_campaign_counters_authority_and_release_unchanged": true,
+      "next_generated_prompt": "Listen privately to the complete Selfish Giant v4 continuity mix, especially 0:30–1:30 and the other former gaps; report any remaining audible concerns."
+    },
+    "reusable_skill": {
+      "path": ".agents/skills/earnalism-audiobook-score/SKILL.md",
+      "state": "SOURCE_VALIDATED_READY_FOR_REPOSITORY_PR",
+      "decision_history_key": "audiobook_score_skill_20261113",
+      "bengali_campaign_counters_authority_and_release_unchanged": true
+    },
+    "private_bengali_retained_score_review": {
+      "decision_history_key": "bicharak_private_retained_score_review_20261113",
+      "state": "COMPLETE_RETAINED_OWNER_REVIEWED_SCORED_EDITION_READY_PRIVATE_COPY",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-scoring-preparation-20261113-v1/RESULT.json",
+      "new_dynamic_render": "NOT_RUN_CURRENT_GIRIJA_PHRASE_TIMING_UNQUALIFIED",
+      "campaign_title_counters_authority_and_release_unchanged": true
+    }
+  },
   "generated_at": "2026-07-30T09:15:47Z",
   "status": "PLATFORM_V4_89_ACTIVE_ZERO_NEW_FULL_TITLE_RELEASE_READY",
   "policy_version": "platform_audiobook_acceptance_v4_89",

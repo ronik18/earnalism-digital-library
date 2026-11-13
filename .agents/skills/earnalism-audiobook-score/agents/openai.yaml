@@ -1,0 +1,4 @@
+interface:
+  display_name: "Earnalism Audiobook Score"
+  short_description: "Refine audiobook music using retained owner feedback"
+  default_prompt: "Use $earnalism-audiobook-score to prepare or refine the audiobook's background music, preserve liked passages and apply retained listening feedback."
