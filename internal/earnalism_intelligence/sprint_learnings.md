@@ -3345,3 +3345,27 @@ Owner requested a softer18:36 piano rise in v3 while preserving narration and th
 ## 2026-11-13 — Bicharak v4 selected as final private version
 
 Owner confirmed the softened18:36 piano rise sounds good and selected the unchanged v4 as final private. Retained the successful outcome in the existing skill lesson on local instrumental corrections; the6dB depth and3.4s envelope are case-specific. See `bicharak_final_private_v4_20261113` for exact candidate binding and feedback. No rerender, new provider work, formal score, publication or campaign-counter change. Next prompt: For the next authorized audiobook, use $earnalism-audiobook-score with its existing narration, measured cues and cleared music; apply the retained owner feedback and choose musical levels and fades for that story.
+
+## 2026-11-14 — Two private audiobook scores prepared in parallel
+
+The Open Window (8:11.437) and Sredni Vashtar (10:38.105) reuse exact retained dry narration and measured cue clocks with cleared Kevin MacLeod instrumentals. Separate workers/output directories overlapped first renders by 58.685 seconds; no speedup benchmark is inferred. Sredni touching-fade troughs were measured and corrected with matched overlaps before delivery. Input/output hashes, complete decode and levels were verified; both new mixes await owner listening. No-new-learning: existing continuity, source-envelope and scoped timing lessons applied. See `parallel_private_audiobook_scores_20261114` and its per-title history entries for exact bindings. No new narration/provider spend/upload/publication or campaign-counter change.
+
+Next prompt: Review the complete private Open Window v1 and Sredni Vashtar v1 for emotional fit, transitions and speech clarity. Send timestamped changes and passages to preserve; keep both private and retain the existing narration.
+
+## 2026-11-14 — Full context/signal review retained both private scores
+
+Open Window and Sredni Vashtar complete stories/cues/handoffs andwholemixbalance supported no newmedia repair; both exactv1 files and narration are preserved. Closest100msratios were contextualized asonsets/pauses/tails rather than declared masking. An initial Sredni mono-reference screen was3.01dBtoo generous and superseded by renderer-matched stereo/gain values; comparisons retain explicitactivity gates. Actual heard fit/clarity remains unverified; no failedproviderreviews repeated. See `open_window_sredni_full_context_signal_review_20261114` and per-title history.
+
+Next prompt: Listen to both complete private v1 mixes and send timestamped emotional-fit, transition or speech-clarity feedback. Focus if useful on Open Window3:48–3:50 and6:36–6:38, and Sredni1:19–1:21,4:49–4:51 and6:08–6:10. Preserve the narration and keep both private.
+
+## 2026-11-14 — Owner listening route selected for both private scores
+
+A credible humanQC/musicpostproduction route was researched and a neutral exactfile handoff prepared. Owner chose “I’ll do the listening”; no studio was contacted, audio transferred or fee committed. Current Open Window and Sredni Vashtarv1 files remain hashidentical andprivate; actual listening findings/approval are pending. No new listening lesson or model retry follows. See `open_window_sredni_owner_listening_handoff_20261114`.
+
+Next prompt: Listen to both complete privatev1 mixes: The Open Window8:11.437 and Sredni Vashtar10:38.105. Send title, timestamp/range, what you heard and desired change; identify passages to preserve and confirm full-listening coverage when finished.
+
+## 2026-11-14 — Ten owner keep decisions synced into scoring learning
+
+Owner said “Keep all of them” for four Open Windowv1 ranges and six Sredni Vashtarv1 ranges. The exact reviewed hashes and ranges are retained under `open_window_sredni_owner_keep_feedback_20261114`; future edits preserve those passages and their musical context. The Open Window6:34–6:40 checklist question remains a KEEP action, without inventing a separate listening claim. No full-title/final-private/public approval or numeric score is inferred. Only scoring learning and feedback text are prepared for publication; narration/audio and unrelated audiovisual work stay unchanged.
+
+Next prompt: Use $earnalism-audiobook-score for later revisions, retaining all ten owner-kept ranges and their musical context on the exact reviewed Open Windowv1 andSredni Vashtarv1 candidates. Preserve narration and keep audio private.

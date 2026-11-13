@@ -45,6 +45,17 @@ of owner acceptance. Consult later title feedback before reusing this status.
 reviewed candidate and time scope. A broader repair should retain that musical
 material and context unless the owner asks to change it.
 
+### Open Window and Sredni Vashtar: retained KEEP decisions
+
+**Evidence:** On 14 November 2026 the owner said “Keep all of them” for the listed passages of these exact private v1 mixes. The full record is `open_window_sredni_owner_keep_feedback_20261114` in title history.
+
+| Title | Reviewed MP3 SHA-256 | KEEP ranges |
+| --- | --- | --- |
+| The Open Window | `5ac7314b165b0716e9e63e1ea1c0ee9956b83b4a59b00d941bd499f373629167` | 1:45–1:55; 3:53–4:48; 6:34–6:40; 7:02–8:11 |
+| Sredni Vashtar | `3fcbc364b60760f06885586c260bc3a6f36ee10715faa90b0e9b8ee882e18c8e` | 2:01–2:33; 4:48–4:52; 5:22–5:38; 8:21–8:40; 9:09–9:29; 9:44–10:38 |
+
+For later revisions, apply the existing preserve-owner-liked-passages rule to these ranges and their musical context. Preserve narration and private access. The feedback specifies KEEP decisions; full-title listening coverage, final-private selection, publication approval and numerical scores were not supplied. The 6:34–6:40 checklist wording remains a KEEP action without inventing a separate heard finding. These are title-specific examples, not settings to copy to unrelated books.
+
 ## Source-aware fades and credits
 
 The same pilot exposed music-file preroll: a fade could finish before the first
@@ -85,6 +96,8 @@ explicit. No new paid review loop follows from using this skill.
 **Evidence:** Bicharak v2-to-v3 review, `bicharak_private_score_refinement_20261113` in title history. Nonzero source-outro tails still produced multi-second low-level troughs; using sounding mid-sections removed those troughs. Removing the final source restart did not remove the first-second piano rise, so the initial causal attribution was corrected.
 
 **Reusable lesson:** Inspect actual outgoing/incoming envelopes and source positions; lower placement gain or nonzero samples alone do not establish a smooth or softer transition. Use before/after evidence to test the proposed cause. Retain natural musical dynamics when no defect is established, and keep full listening judgments distinct from contextual and signal checks.
+
+The full Open Window/Sredni review (`open_window_sredni_full_context_signal_review_20261114`) also corrected a3.01dB reference mismatch from comparing mono narration RMS with stereo music. For balance checks, use the renderer’s actual narration channel mapping, resampling and gain, state window/activity definitions, and inspect voice onsets, pauses and tails before diagnosing masking from a short level ratio. No heard defect or automatic repair followed from those diagnostic transients.
 
 ## Preserve the master during an isolated level correction
 
