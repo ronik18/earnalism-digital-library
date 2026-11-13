@@ -3313,3 +3313,9 @@ Next generated prompt: Listen privately to the complete Selfish Giant v4 continu
 Package the existing engine rather than another controller. Persistent editorial instructions and source-bound feedback improve future decisions without claiming model-weight training, perfect output or automatic listening approval. The skill reads retained lessons on every invocation and journals concrete feedback with candidate hashes. Optional render --edits makes private arrangement revisions reproducible while preserving the regenerated baseline, licensed source checks and exact effective plan. Automatic RF64 avoids a RIFF size limit for long WAVs. No provider loop or publication approval is created.
 
 Next generated prompt: Use $earnalism-audiobook-score to prepare or refine the next authorized private audiobook score, applying retained feedback and preserving positively reviewed material.
+
+### 2026-11-13 — First retained Bengali use of the scoring skill
+
+Bicharak preparation found a later genuine full owner review for the exact retained scored master after an older handoff suggested review was still missing. The unchanged 19:10.449 copy was prepared privately with credits and full-story direction. Current narration phrase cues remain unqualified, so no new cue-driven render or ASR was claimed; the exhausted allowance and owner hold remain intact. Applied existing source-bound evidence reuse; no new owner feedback and no-new-learning.
+
+Next generated prompt: Listen privately to the complete retained Bicharak scored edition and report timestamped music-fit, continuity or speech-clarity concerns. Preserve the existing narration and do not infer new phrase timing or release approval.

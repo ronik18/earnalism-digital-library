@@ -44,6 +44,13 @@
       "state": "SOURCE_VALIDATED_READY_FOR_REPOSITORY_PR",
       "decision_history_key": "audiobook_score_skill_20261113",
       "bengali_campaign_counters_authority_and_release_unchanged": true
+    },
+    "private_bengali_retained_score_review": {
+      "decision_history_key": "bicharak_private_retained_score_review_20261113",
+      "state": "COMPLETE_RETAINED_OWNER_REVIEWED_SCORED_EDITION_READY_PRIVATE_COPY",
+      "result_record": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/bicharak-private-scoring-preparation-20261113-v1/RESULT.json",
+      "new_dynamic_render": "NOT_RUN_CURRENT_GIRIJA_PHRASE_TIMING_UNQUALIFIED",
+      "campaign_title_counters_authority_and_release_unchanged": true
     }
   },
   "generated_at": "2026-07-30T09:15:47Z",
