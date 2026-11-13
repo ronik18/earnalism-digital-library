@@ -1,6 +1,6 @@
 """Isolated Wan2.2 Colab pilot. Standard library control plane; no imports of torch until inference."""
 from pathlib import Path
-import argparse, contextlib, fcntl, hashlib, json, os, re, shutil, subprocess, sys, time, zipfile
+import argparse, contextlib, fcntl, hashlib, json, os, re, shutil, subprocess, sys, tempfile, time, zipfile
 
 MODEL = 'Wan-AI/Wan2.2-TI2V-5B-Diffusers'
 REVISION = 'b8fff7315c768468a5333511427288870b2e9635'
@@ -129,7 +129,12 @@ def remaining(root,reserve=120):
 
 
 def preflight(root):
-    job=validate(json.loads((Path(root)/'job.json').read_text()));remaining(root)
+    validate(json.loads((Path(root)/'job.json').read_text()));remaining(root)
+    return inspect_hardware(root)
+
+
+def inspect_hardware(root):
+    """Read the actual single-GPU hardware; does not establish spend authority."""
     result=subprocess.run(['nvidia-smi','--query-gpu=name,memory.total','--format=csv,noheader,nounits'],capture_output=True,text=True,check=True)
     rows=result.stdout.strip().splitlines()
     if len(rows)!=1:raise RuntimeError('One inspected CUDA GPU required')
@@ -152,14 +157,20 @@ def command(root,args,log):
 
 def setup(root):
     root=Path(root);open_job(root);preflight(root)
+    return install_model(root)
+
+
+def install_model(root,run_command=None):
+    """Shared installer; callers establish their own exact job/clock authority."""
+    root=Path(root);run_command=command if run_command is None else run_command
     py=root/'venv/bin/python'
     # Colab Python 3.13 may ship without a working ensurepip bootstrap.
     if not (root/'venv/pyvenv.cfg').exists() or not (root/'venv/bin/pip').exists():
-        command(root,[sys.executable,'-m','pip','install','virtualenv==20.35.4'],'setup.log')
-        command(root,[sys.executable,'-m','virtualenv','--system-site-packages',root/'venv'],'setup.log')
-    command(root,[py,'-m','pip','install',*DEPS],'setup.log')
-    command(root,[py,'-c',"import torch,diffusers,transformers,accelerate;from diffusers import WanImageToVideoPipeline;print('versions',torch.__version__,diffusers.__version__,transformers.__version__,accelerate.__version__);print('CUDA',torch.version.cuda,torch.cuda.get_device_name())"],'setup.log')
-    command(root,[py,'-c',"from huggingface_hub import snapshot_download;import sys;snapshot_download(repo_id=sys.argv[1],revision=sys.argv[2],local_dir=sys.argv[3],allow_patterns=['model_index.json','scheduler/*','tokenizer/*','text_encoder/*','transformer/*','vae/*'])",MODEL,REVISION,root/'model'],'setup.log')
+        run_command(root,[sys.executable,'-m','pip','install','virtualenv==20.35.4'],'setup.log')
+        run_command(root,[sys.executable,'-m','virtualenv','--system-site-packages',root/'venv'],'setup.log')
+    run_command(root,[py,'-m','pip','install',*DEPS],'setup.log')
+    run_command(root,[py,'-c',"import torch,diffusers,transformers,accelerate;from diffusers import WanImageToVideoPipeline;print('versions',torch.__version__,diffusers.__version__,transformers.__version__,accelerate.__version__);print('CUDA',torch.version.cuda,torch.cuda.get_device_name())"],'setup.log')
+    run_command(root,[py,'-c',"from huggingface_hub import snapshot_download;import sys;snapshot_download(repo_id=sys.argv[1],revision=sys.argv[2],local_dir=sys.argv[3],allow_patterns=['model_index.json','scheduler/*','tokenizer/*','text_encoder/*','transformer/*','vae/*'])",MODEL,REVISION,root/'model'],'setup.log')
     result=subprocess.check_output([str(py),'-m','pip','freeze'],text=True);(root/'dependencies.lock.txt').write_text(result)
     write(root/'setup.json',{'state':'SETUP_COMPLETED_NOT_INFERENCE_QUALIFIED','model':MODEL,'revision':REVISION,'pipeline':'WanImageToVideoPipeline','expand_timesteps':True,'attention':'PyTorch SDPA; no FlashAttention compilation','time':time.time()})
 
@@ -204,28 +215,52 @@ def scene_negative_prompt(scene):
     return base if extra is None else base+', '+extra
 
 
-def infer(root,scene_id):
+def load_pipeline(model_directory):
+    """Load the unchanged pinned 5B route once; never download missing weights."""
     os.environ['USE_TF']='0';os.environ['USE_FLAX']='0'
     import torch
     from diffusers import AutoencoderKLWan, WanImageToVideoPipeline
-    from diffusers.utils import load_image, export_to_video
-    root=Path(root);job=open_job(root);s=next(s for s in job['scenes'] if s['id']==scene_id)
-    vae=AutoencoderKLWan.from_pretrained(root/'model',subfolder='vae',torch_dtype=torch.float32,local_files_only=True)
-    pipe=WanImageToVideoPipeline.from_pretrained(root/'model',vae=vae,torch_dtype=torch.bfloat16,local_files_only=True,expand_timesteps=True)
+    model_directory=Path(model_directory)
+    vae=AutoencoderKLWan.from_pretrained(model_directory,subfolder='vae',torch_dtype=torch.float32,local_files_only=True)
+    pipe=WanImageToVideoPipeline.from_pretrained(model_directory,vae=vae,torch_dtype=torch.bfloat16,local_files_only=True,expand_timesteps=True)
     pipe.vae.enable_tiling();pipe.enable_model_cpu_offload()
-    settings=PROFILES[job.get('profile','standard-v1')];steps=settings['steps']
-    frames=pipe(image=load_image(str(root/'inputs'/s['image'])),prompt=s['prompt'],
-        negative_prompt=scene_negative_prompt(s),
-        height=s['height'],width=s['width'],num_frames=s['frames'],num_inference_steps=steps,guidance_scale=settings['guidance'],
-        generator=torch.Generator(device='cpu').manual_seed(s['seed']),callback_on_step_end=step_budget_guard(root,steps)).frames[0]
-    export_to_video(frames,str(root/'outputs'/f'{scene_id}.mp4'),fps=24)
+    return pipe
+
+
+def render_scene(pipe,scene,image_path,output_path,settings,callback):
+    """Render one scene with an already loaded pipeline and unchanged controls."""
+    import torch
+    from diffusers.utils import load_image, export_to_video
+    frames=pipe(image=load_image(str(image_path)),prompt=scene['prompt'],
+        negative_prompt=scene_negative_prompt(scene),
+        height=scene['height'],width=scene['width'],num_frames=scene['frames'],num_inference_steps=settings['steps'],guidance_scale=settings['guidance'],
+        generator=torch.Generator(device='cpu').manual_seed(scene['seed']),callback_on_step_end=callback).frames[0]
+    export_to_video(frames,str(output_path),fps=24)
+
+
+def infer(root,scene_id):
+    root=Path(root);job=open_job(root);s=next(s for s in job['scenes'] if s['id']==scene_id)
+    pipe=load_pipeline(root/'model')
+    settings=PROFILES[job.get('profile','standard-v1')]
+    render_scene(pipe,s,root/'inputs'/s['image'],root/'outputs'/f'{scene_id}.mp4',settings,step_budget_guard(root,settings['steps']))
+
+
+@contextlib.contextmanager
+def gpu_lock():
+    """Serialize this user's legacy and batch GPU generation across job roots."""
+    path=Path(tempfile.gettempdir())/f'earnalism-wan-gpu-{os.getuid()}.lock'
+    with path.open('a') as lock:
+        try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except BlockingIOError as e:raise RuntimeError('Another Earnalism Wan GPU job is active; queue this job') from e
+        try:yield
+        finally:fcntl.flock(lock,fcntl.LOCK_UN)
 
 
 def generate(root,scene_id):
     root=Path(root);job=open_job(root);remaining(root)
     if scene_id not in {s['id'] for s in job['scenes']}:raise ValueError('Unknown scene')
     if not (root/'setup.json').exists():raise RuntimeError('Complete setup first')
-    with (root/'generation.lock').open('a') as lock:
+    with gpu_lock(), (root/'generation.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         ledger_path=root/'attempts.json';ledger=json.loads(ledger_path.read_text()) if ledger_path.exists() else []
         if any(r['scene']==scene_id for r in ledger):raise RuntimeError('Scene already attempted; inspect/export it, do not retry or overwrite')

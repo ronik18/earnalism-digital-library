@@ -26,3 +26,35 @@ jobs:
         run: python3 skills/earnalism-video/scripts/check_source.py
       - name: Exercise source inventory failure cases
         run: python3 -m unittest discover -s skills/earnalism-video/scripts -p test_check_source.py -v
+  audiobook-pipeline:
+    name: video audiobook pipeline regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            skills/earnalism-video
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install offline media test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core fonts-noto-core
+          python -m pip install Pillow==11.2.1
+      - name: Require actual shaping and media tools
+        run: |
+          python - <<'PY'
+          import shutil
+          from pathlib import Path
+          from PIL import features
+          assert features.check_feature('raqm'), 'Bengali shaping unavailable'
+          assert shutil.which('ffmpeg') and shutil.which('ffprobe') and shutil.which('node')
+          assert Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf').is_file()
+          assert Path('/usr/share/fonts/truetype/noto/NotoSansBengali-Regular.ttf').is_file()
+          PY
+      - name: Exercise source-audio and warm-queue regressions without model access
+        working-directory: skills/earnalism-video
+        run: |
+          python -m unittest software.audiobook_visuals.test_pipeline software.wan22.test_workflow software.wan22.test_batch software.wan22.test_build_batch_colab -v
