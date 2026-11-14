@@ -37,3 +37,10 @@ test('loads the actual script and refits overflow at most twice without changing
   expect(paginateRenderedResponsive.mock.calls.at(-1)[2]).toBe(600);
   await act(async () => { expect(result.refit(2)).toBe(true); });
 });
+
+test('Reader font readiness does not wait on unrelated document fonts', async () => {
+  document.fonts.ready = new Promise(() => {});
+  await render();
+  expect(document.fonts.load).toHaveBeenCalled();
+  expect(paginateRenderedResponsive).toHaveBeenCalledTimes(1);
+});

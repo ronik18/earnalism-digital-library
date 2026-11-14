@@ -1291,3 +1291,18 @@ test.each(["বড়দিদি", "Borodidi"])("Bengali Reader without languag
   expect(container.querySelector('[data-testid="reader-reading-text"]').textContent).toContain('নিজের অট্টালিকায়');
   expect(pass.startReadingPassSession).not.toHaveBeenCalled();
 });
+
+
+test('paid reader automatically authorizes an oversized public preview once', async () => {
+  mockUser = { id: 'test-reader', role: 'user', reading_seconds_balance: 600 };
+  manyVisualPreview({ short: true });
+  const original = pass.getReadingPassPage.getMockImplementation();
+  pass.getReadingPassPage.mockImplementation((slug, n, lease, options) => !lease
+    ? Promise.reject({ response: { status: 403, data: { detail: { code: 'PREVIEW_REQUIRES_PASS', message: 'This preview cannot be shown safely.' } } } })
+    : original(slug, n, lease, options));
+  preparationContract();
+  await mount('/reader/test-book?p=1');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(pass.startReadingPassSession.mock.calls[0][0]).toMatchObject({ bookSlug: 'test-book', pageIndex: 1, requireProtectedText: true });
+  expect(pass.startReadingPassSession.mock.calls[0][0].transfer).toBeUndefined();
+});

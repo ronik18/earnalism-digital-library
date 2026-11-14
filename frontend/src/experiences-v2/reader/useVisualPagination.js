@@ -40,7 +40,8 @@ export default function useVisualPagination({ sourceRef, viewportRef, measureRef
         const font = getComputedStyle(source);
         try {
           await document.fonts.load(`${font.fontWeight} ${font.fontSize} ${font.fontFamily}`, source.textContent || ' ');
-          await document.fonts.ready;
+          // The requested Reader face is ready. Unrelated site fonts must not
+          // hold the reading surface behind their network downloads.
         } catch {
           if (!superseded()) setResult({ pages: [], pending: false, error: 'Reader typography could not be prepared. Reload this page to retry.', signature: '' });
           return;
