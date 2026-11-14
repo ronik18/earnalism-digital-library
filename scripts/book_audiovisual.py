@@ -109,8 +109,9 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
     if not title_key(title):
         raise ValueError('a nonempty book title is required')
     history = json.loads(history_path.read_text(encoding='utf-8'))
-    matched, candidates, seen = [], [], set()
+    matched, candidates, seen, owner_revisions = [], [], set(), []
     inferred_language = None
+    known_title_languages = set()
     for locator, record, date in records(history):
         identities = [record.get(k) for k in ('title', 'name', 'slug', 'book_slug', 'title_slug')]
         # Explicit bilingual labels are aliases; arbitrary substrings are not.
@@ -124,10 +125,29 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
         elif any(isinstance(v, str) and re.search('[\u0980-\u09ff]', v) for v in identities):
             record_language = 'bn'
         inferred_language = record_language or inferred_language
+        if record_language:
+            known_title_languages.add(record_language)
         matched.append({'record': locator, 'date': date,
                         'state': record.get('state') or record.get('status'),
                         'actual_full_listening': record.get('actual_full_listening'),
                         'next_action': record.get('next_action') or record.get('next_generated_prompt')})
+        revision = record.get('owner_revision')
+        if revision is not None:
+            if (not isinstance(revision, dict)
+                    or revision.get('schema') != 'earnalism.book_av_owner_revision.v1'
+                    or revision.get('source') != 'human'
+                    or revision.get('status') not in {'ACTIVE', 'RESOLVED'}
+                    or revision.get('language') not in (None, 'en', 'bn')
+                    or not isinstance(revision.get('source_ref'), str)
+                    or not revision['source_ref'].strip()
+                    or not isinstance(revision.get('required_changes'), list)
+                    or not revision['required_changes']
+                    or any(area not in INVALIDATES for area in revision['required_changes'])):
+                raise ValueError('Owner revision requires explicit human source, status and affected areas')
+            if revision.get('language') and record_language and revision['language'] != record_language:
+                raise ValueError('Owner revision language conflicts with its title record')
+            owner_revisions.append({**revision, 'record': locator, 'date': date,
+                                    'language': revision.get('language') or record_language})
         for key in ('candidate_path', 'resulting_candidate_path', 'audio_path', 'scored_audio_path'):
             value = record.get(key)
             expected = (record.get('resulting_candidate_sha256') or record.get('candidate_sha256')
@@ -155,7 +175,26 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
                                'record': locator, 'acceptance': 'NOT_INFERRED', **metadata})
     matched.sort(key=lambda x: x['date'], reverse=True)
     candidates.sort(key=lambda x: x['date'], reverse=True)
+    # Scope findings and resolutions to the requested edition's language. A
+    # generic revision may inherit only an unambiguous matching-title context;
+    # never borrow the requested language to reinterpret an English finding.
+    context_language = next(iter(known_title_languages)) if len(known_title_languages) == 1 else None
+    owner_revisions = [{**revision, 'language': revision['language'] or context_language}
+                       for revision in owner_revisions]
+    owner_revisions = [revision for revision in owner_revisions if revision['language'] is not None
+                       and (language is None or revision['language'] == language)]
+    # Later owner findings supersede historical acceptance for the current
+    # candidate. Keep originals and proofs; do not suggest rejected narration
+    # merely because its bytes still match. This is discovery, not a release gate.
+    owner_revisions.sort(key=lambda x: x['date'])
+    latest_revision = owner_revisions[-1] if owner_revisions else None
+    active_revision = latest_revision if latest_revision and latest_revision['status'] == 'ACTIVE' else None
+    changes = set(active_revision['required_changes']) if active_revision else set()
+    if 'narration' in changes:
+        for candidate in candidates:
+            candidate['reuse_disposition'] = 'HISTORICAL_ONLY_OWNER_NARRATION_REVISION'
     retained = next((c for c in candidates if c['retained_bytes_verified']
+                     and 'narration' not in changes
                      and (language is None or c['language'] == language)), None)
     next_prompt = (f'Resume {title} from its current exact edition and title checkpoint. '
                    'Preserve verified retained narration and scoring. Resolve full source, '
@@ -163,17 +202,28 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
                    'prepare a contextual book_av_render job and private cinematic candidate. '
                    'Retain all title holds, consumed budgets and owner feedback. '
                    'Use produce_release.evaluate for final readiness; do not infer listening or GO LIVE.')
+    if active_revision:
+        next_prompt = (f'Resume {title} with the active owner revision in {latest_revision["record"]}. '
+                       'Preserve previous assets and acceptance as history. Apply only the named changes; '
+                       'reuse unchanged evidence within its actual scope. ')
+        if 'narration' in changes:
+            next_prompt += ('Qualify replacement narration against the requested voice/accent and actual remaining authority, '
+                            'then measure its new clock before captions, music/scene timing and AV review. ')
+        if 'visual' in changes:
+            next_prompt += 'Replace rejected visual treatment with source-bound cinematic actions. '
+        next_prompt += 'This packet grants no synthesis, spending, GPU allocation or publication authority.'
     return {'schema': 'earnalism.book_av_action_packet.v1', 'title': title,
             'language': language or inferred_language or 'UNRESOLVED_REQUIRES_EDITION',
             'history': {'path': str(history_path), 'sha256': digest(history_path)},
             'matched_records': matched, 'retained_candidates': candidates,
+            'current_owner_revision': latest_revision,
             'preferred_retained_candidate': retained,
-            'state': 'PRIVATE_PREPARATION_REQUIRED',
+            'state': 'OWNER_REVISION_REQUIRED' if active_revision else 'PRIVATE_PREPARATION_REQUIRED',
             'actions': [
                 {'skill': SKILLS[0], 'action': 'Resolve exact edition, complete source, covers and audiovisual rights through existing admin workflow.'},
-                {'skill': SKILLS[1], 'action': 'Reuse eligible exact narration; otherwise qualify language/theme voices under existing authority. Bengali never falls back to English.'},
-                {'skill': SKILLS[2], 'action': 'Reuse qualified scored edition or prepare-director, plan and render from measured cues and cleared stems; preserve positively reviewed passages.'},
-                {'skill': SKILLS[3], 'action': 'Prepare contextual storyboard and explicit independent delivery compositions, render privately, then collect actual final AV review and one destination-bound decision.'},
+                {'skill': SKILLS[1], 'action': ('Prepare replacement narration matching active owner voice/accent constraints; archive rejected recordings and qualify the actual audition under remaining authority.' if 'narration' in changes else 'Reuse eligible exact narration; otherwise qualify language/theme voices under existing authority. Bengali never falls back to English.')},
+                {'skill': SKILLS[2], 'action': ('Retain cleared music stems and owner music preferences; rebuild the scored mix on newly measured replacement narration. Previous scored audio and timing remain historical.' if 'narration' in changes else 'Reuse qualified scored edition or prepare-director, plan and render from measured cues and cleared stems; preserve positively reviewed passages.')},
+                {'skill': SKILLS[3], 'action': ('Replace owner-rejected visual treatment with source-bound cinematic character actions; keep old trials as history and qualify actual motion before scaling.' if 'visual' in changes else 'Prepare contextual storyboard and explicit independent delivery compositions, render privately, then collect actual final AV review and one destination-bound decision.')},
             ], 'network_calls': 0, 'provider_calls': 0, 'model_weights_trained': False,
             'publication_performed': False, 'acceptance_created': False,
             'next_generated_prompt': next_prompt}

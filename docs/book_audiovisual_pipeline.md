@@ -31,6 +31,16 @@ inspect the complete text and actual checkpoint. Import only through the existin
 API, in draft unless release authority actually applies. Keep manuscript, raw
 audio, generated artwork, job files and review evidence outside git/public assets.
 
+A later material owner rejection supersedes historical reuse for the current
+candidate. Record an explicit human `owner_revision` in the existing title
+checkpoint with affected areas and source evidence. The planner surfaces the
+latest revision; an ACTIVE narration revision keeps matching old files as
+history instead of preferring them for production. Preserve cleared music
+stems and owner preferences, but rebuild the scored mix and caption/scene
+timing on newly measured replacement speech. A visual-only revision retains
+healthy narration and scoring. A later explicit resolution ends this action
+hold; neither status manufactures listening or GO LIVE acceptance.
+
 ## Voice and visual direction
 
 Read the full book and choose a stable narrative identity before scene expression.
@@ -212,3 +222,6 @@ release acceptance or replacement of selected book audio or pictures.
 
 Never collapse these states into a flattering production-ready label. The first
 retained candidate is a pilot, and a successful pilot is required before scaling.
+
+
+Actual private-pilot learning, 14 November 2026: the owner rejected the three new Cedar takes as still robotic. They remain historical evidence and do not qualify a replacement. No Wan model setup or inference occurred: large JSON/plain outputs were externalized in the saved notebook, so output transport remained unqualified and the original generation headroom expired. Test the complete export envelope on CPU before allocating a future GPU. Releasing the one runtime does not restore its consumed start; revised voice settings and any new compute require their own bounded authority.

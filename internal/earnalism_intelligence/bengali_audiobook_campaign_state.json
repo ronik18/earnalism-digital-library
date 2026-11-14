@@ -1146,5 +1146,45 @@
       "sha256": "91ea98d1d94dac861738b3a278285f67f8ae28752141f26f2c3ac3e8334cce37"
     },
     "campaign_holds_counters_provider_budget_and_release_unchanged": true
+  },
+  "open_window_owner_cinematic_revision_20261114": {
+    "at": "2026-11-14T10:01:21.133482+00:00",
+    "scope": "Private English Open Window revision reference only",
+    "state": "OWNER_REVISION_PENDING_PILOT_ACCEPTANCE",
+    "title_history_key": "open_window_owner_cinematic_revision_20261114",
+    "owner_revision_evidence": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-REVISION-REQUIREMENTS.json",
+      "sha256": "94d107c4f5f5e73da7b3a345606463cab825ddad2c114cdded265f94093c5a69"
+    },
+    "pilot_authority": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-PILOT-APPROVAL.json",
+      "sha256": "fea5ed2849551e0705532f3a415c6aeaf7fd5f0e2dd3f0e3dfc603e7b2b06658"
+    },
+    "new_voice_responses_consumed": 3,
+    "prior_Selfish_Giant_responses_remain_consumed": 17,
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
+  },
+  "open_window_owner_cedar_rejection_and_closed_gpu_20261114": {
+    "at": "2026-11-14T10:36:59.352802+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; no Bengali campaign acceptance, public mutation or unrelated voice revocation.",
+    "actual_pilot_outcome": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/ACTUAL-PILOT-OUTCOME.json",
+      "sha256": "5e326c24c70fc5efe16161c853907ecdc933f6075d5f74fd51acdfb48cdb1fe7"
+    },
+    "owner_verdict": "Still robotic; revise performance",
+    "new_voice_responses_consumed": 3,
+    "new_voice_responses_remaining": 0,
+    "gpu_starts_consumed": 1,
+    "gpu_starts_remaining": 0,
+    "gpu_runtime": "DISCONNECTED_VERIFIED",
+    "motion_generated": false,
+    "transfer_qualified": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Complete a harmless full-envelope durable transfer on CPU before seeking another GPU start; prepare changed natural Indian-English performance probe from retained owner rejection. Do not repeat the rejected settings, generate or publish under consumed authority.",
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
   }
 }
