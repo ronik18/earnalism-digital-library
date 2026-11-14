@@ -70,7 +70,7 @@ export default function HomepageListeningRoom() {
               <h3>{featured.title_en || featured.title}</h3>
               <span>{[featured.author, durationMinutes ? `${durationMinutes} min` : ""] .filter(Boolean).join(" · ")}</span>
               <div className="homepage-listening__featured-actions">
-                <Link to={featured.book_url || `/book/${featured.slug}`}>Read</Link>
+                <Link to={readerRouteForBook(featured.slug)}>Read</Link>
                 <Link to={readerRouteForBook(featured.slug, { listen: true })} aria-label={`Listen to ${featured.title_en || featured.title}`}>Listen</Link>
               </div>
             </div>

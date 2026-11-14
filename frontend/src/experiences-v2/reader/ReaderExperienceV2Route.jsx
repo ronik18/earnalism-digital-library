@@ -577,15 +577,15 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user, previewLimit, preparationWait, notePreparationFailure]);
 
   const automaticEntry = !visualFixture && !loading && entryReady && manifest && enabled && validPage
-    && user?.role === "user" && validBalance(user?.reading_seconds_balance) > 0 && (canonicalPage > previewLimit || entryContinuationRef.current !== null);
+    && user?.role === "user" && validBalance(user?.reading_seconds_balance) > 0 && (canonicalPage > previewLimit || entryContinuationRef.current !== null || pageResult?.code === "PREVIEW_REQUIRES_PASS");
   useEffect(() => {
-    if (!automaticEntry || usable || error || busy) return undefined;
+    if (!automaticEntry || usable || (error && pageResult?.code !== "PREVIEW_REQUIRES_PASS") || busy) return undefined;
     const enter = () => {
       if (entryAdmissionAttemptedRef.current || document.visibilityState !== "visible" || !document.hasFocus()) return;
       // One admission through the existing controller, never transfer or retry.
       entryAdmissionAttemptedRef.current = true;
       void authorizeAndContinue(canonicalPage, search.get("a") || 0, search.get("r") || undefined,
-        false, entryContinuationRef.current !== null, entryContinuationRef.current?.publicPreviewEnd || null);
+        false, entryContinuationRef.current !== null || pageResult?.code === "PREVIEW_REQUIRES_PASS", entryContinuationRef.current?.publicPreviewEnd || null);
     };
     enter();
     window.addEventListener("focus", enter);
@@ -594,7 +594,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       window.removeEventListener("focus", enter);
       document.removeEventListener("visibilitychange", enter);
     };
-  }, [automaticEntry, usable, error, busy, canonicalPage, search, authorizeAndContinue]);
+  }, [automaticEntry, usable, error, busy, canonicalPage, search, authorizeAndContinue, pageResult?.code]);
 
   const navigateAfterSettlement = useCallback(async (target, navigationPath) => {
     if (actionRef.current) return;
