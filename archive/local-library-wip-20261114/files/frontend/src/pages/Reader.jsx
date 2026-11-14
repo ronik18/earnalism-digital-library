@@ -1,0 +1,4123 @@
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, Play, Pause, Square, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard, Headphones } from 'lucide-react';
+import axios from 'axios';
+import { API, TOKEN_KEY, USER_TOKEN_KEY, formatError } from '../lib/api';
+import { toast } from 'sonner';
+import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
+import ReaderAudiobookPanel from '../components/ReaderAudiobookPanel';
+import SecureReader from '../components/SecureReader';
+import { trackFunnelEvent } from '../lib/funnelAnalytics';
+import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
+import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
+import { chapterIndexEntry, normalizeChapterDisplayTitle, sortedChapterIndex } from '../lib/chapterIndex';
+import { useAuth } from '../context/AuthContext';
+import { optimizedImageUrl } from '../lib/images';
+import { resolveBookCover } from '../lib/bookCoverResolver';
+import useSEO from '../hooks/useSEO';
+import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, isReaderAudiobookManifestPath, readerManifestPath } from '../lib/audioReleaseSafety';
+import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
+import {
+  audioSegmentAtMediaPosition,
+  chapterIdForAudioSegment,
+  normalizeAudioManifest,
+  selectAudioTrack,
+} from '../lib/audioPackageManifest';
+import {
+  AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS,
+  loadAudiobookProgress,
+  pendingAudiobookResumeMatches,
+  requestAudiobookPlayback,
+  saveAudiobookProgress,
+  shouldPrefetchNextSegment,
+} from '../lib/audiobookPlayback';
+import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
+import { readerBookMatchesRoute, readerRouteForBook } from '../lib/readerNavigation';
+import { readerSwipeDirection } from '../lib/readerSwipe';
+import { normalizeReaderContentHtml } from '../lib/readerContent';
+import ReadingPassTimer from '../components/ReadingPass/ReadingPassTimer';
+import ReadingPassPaywall from '../components/ReadingPass/ReadingPassPaywall';
+import {
+  endReadingPassSession,
+  getReadingPassAudioPreview,
+  getReadingPassManifest,
+  getReadingPassPage,
+  getReadingPassPosition,
+  readingPassError,
+  renewReadingPassLease,
+  saveReadingPassAudioPosition,
+  saveReadingPassPosition,
+  startReadingPassAudioSession,
+  startReadingPassSession,
+} from '../lib/readingPassApi';
+import './ReaderRoute.css';
+
+const THEMES = {
+  beige: { canvas: '#F7F0E3', surface: '#FBF6EC', text: '#241713', accent: '#5A1F2B', border: '#D8C2A0', label: 'Light' },
+  sepia: { canvas: '#EFE2CC', surface: '#F7F0E3', text: '#332821', accent: '#5A1F2B', border: '#B58A45', label: 'Sepia' },
+  dark: { canvas: '#241713', surface: '#351018', text: '#F7F0E3', accent: '#D7A84E', border: 'rgba(181,138,69,0.42)', label: 'Night' },
+};
+
+const BENGALI_RE = /[\u0980-\u09FF]/;
+const READER_SERIF = "var(--font-body)";
+const READER_DISPLAY = "var(--font-display)";
+const BENGALI_SERIF = "var(--font-body)";
+const BENGALI_SANS = "var(--font-ui)";
+const UI_FONT = "var(--font-ui)";
+const AUDIO_ASSET_BASE_URL = (process.env.REACT_APP_AUDIO_ASSET_BASE_URL || '').replace(/\/+$/, '');
+const READER_PREFETCH_CACHE_LIMIT = 18;
+const readerChapterResponseCache = new Map();
+const readerAssetPrefetchCache = new Map();
+
+const FONT_SIZES = [
+  { label: 'Small', size: '17px' },
+  { label: 'Medium', size: '18px' },
+  { label: 'Large', size: '20px' },
+  { label: 'XL', size: '22px' },
+];
+
+const LINE_SPACING_OPTIONS = [
+  { label: 'Comfortable', value: 'comfortable', english: 1.62, bengali: 1.74 },
+  { label: 'Relaxed', value: 'relaxed', english: 1.76, bengali: 1.88 },
+  { label: 'Airy', value: 'airy', english: 1.92, bengali: 2.02 },
+];
+
+const READER_MARGIN_OPTIONS = [
+  { label: 'Narrow', value: 'narrow', measure: '600px' },
+  { label: 'Classic', value: 'classic', measure: '680px' },
+  { label: 'Wide', value: 'wide', measure: '760px' },
+];
+
+const HIGHLIGHT_INTENSITY_OPTIONS = [
+  { label: 'Low', value: 'low' },
+  { label: 'Medium', value: 'medium' },
+  { label: 'High', value: 'high' },
+];
+
+const FONT_MODE_LABELS = {
+  bengali: {
+    group: 'Bengali font mode',
+    serif: 'Literary Bengali serif',
+    sans: 'Clear Bengali sans',
+  },
+  english: {
+    group: 'English font mode',
+    serif: 'Editorial serif',
+    sans: 'Clean sans',
+  },
+};
+
+const LOW_BALANCE_THRESHOLD = 300;
+const READING_PULSE_MS = 30000;
+const READER_IDLE_MS = 5 * 60 * 1000;
+
+function isReaderVisible() {
+  return document.visibilityState === 'visible' && !document.hidden;
+}
+
+function authHeaders(token) {
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+function getUserToken() {
+  return localStorage.getItem(USER_TOKEN_KEY);
+}
+
+function getUserAuthHeaders() {
+  return authHeaders(getUserToken());
+}
+
+function getAdminAuthHeaders() {
+  return authHeaders(localStorage.getItem(TOKEN_KEY));
+}
+
+function getChapterAuthHeaders() {
+  const token = localStorage.getItem(USER_TOKEN_KEY);
+  return authHeaders(token);
+}
+
+function getCurrentReaderPath() {
+  return `${window.location.pathname}${window.location.search}`;
+}
+
+function boundedCacheSet(cache, key, value, limit = READER_PREFETCH_CACHE_LIMIT) {
+  if (!key) return;
+  if (cache.has(key)) cache.delete(key);
+  cache.set(key, value);
+  while (cache.size > limit) {
+    const oldest = cache.keys().next().value;
+    cache.delete(oldest);
+  }
+}
+
+function readerChapterCacheKey({ bookId, chapterId, version, adminPreview, token }) {
+  return [
+    bookId || '',
+    chapterId || '',
+    version || 'unversioned',
+    adminPreview ? 'admin' : 'reader',
+    token ? token.slice(-18) : 'guest',
+  ].join(':');
+}
+
+function runWhenIdle(task) {
+  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    return window.requestIdleCallback(task, { timeout: 1200 });
+  }
+  return window.setTimeout(task, 120);
+}
+
+function cancelIdleTask(id) {
+  if (!id) return;
+  if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+    window.cancelIdleCallback(id);
+  } else {
+    window.clearTimeout(id);
+  }
+}
+
+function resolveAssetUrl(url = '') {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return AUDIO_ASSET_BASE_URL ? `${AUDIO_ASSET_BASE_URL}${url}` : url;
+  return url;
+}
+
+function readerNowMs() {
+  return typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+}
+
+function sendReaderMetric(event, payload = {}) {
+  const body = JSON.stringify({
+    event,
+    route: getCurrentReaderPath(),
+    ...payload,
+  });
+  const url = `${API}/reader/metrics`;
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      if (navigator.sendBeacon(url, blob)) return;
+    }
+  } catch {
+    // Fall through to fetch.
+  }
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getChapterAuthHeaders() },
+    body,
+    keepalive: true,
+  }).catch(() => {});
+}
+
+function apiErrorMessage(err, fallback) {
+  return formatError(err.response?.data?.detail) || err.message || fallback;
+}
+
+function containsBengaliText(value) {
+  return BENGALI_RE.test(value || '');
+}
+
+function normalizeInlineText(value = '') {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function textEquals(value, candidates = []) {
+  const normalized = normalizeInlineText(value);
+  return candidates.some((candidate) => normalizeInlineText(candidate) === normalized);
+}
+
+function looksLikePublicationYear(value = '') {
+  return /(?:\d{4}|[০-৯]{4})/.test(value) && normalizeInlineText(value).length <= 48;
+}
+
+function firstParagraphText(html = '') {
+  if (typeof document === 'undefined') return '';
+  const template = document.createElement('template');
+  template.innerHTML = html || '';
+  const first = template.content.querySelector('p, h1, h2, h3, div');
+  return normalizeInlineText(first?.textContent || '');
+}
+
+function extractReaderFrontMatter(html = '', book = {}, chapter = {}) {
+  if (typeof document === 'undefined') {
+    return {
+      html,
+      author: book?.author || '',
+      collection: book?.collection || '',
+      year: book?.original_publication_year || '',
+      storyTitle: book?.title || chapter?.title || '',
+    };
+  }
+
+  const template = document.createElement('template');
+  template.innerHTML = html || '';
+  const author = book?.author || '';
+  const title = book?.title || chapter?.title || '';
+  const subtitle = book?.subtitle || '';
+  let collection = book?.collection || book?.series || '';
+  let year = book?.original_publication_year || book?.publication_year || '';
+  let storyTitle = title;
+
+  const leadingNodes = Array.from(template.content.childNodes)
+    .filter((node) => node.nodeType === Node.ELEMENT_NODE || normalizeInlineText(node.textContent));
+
+  for (const node of leadingNodes.slice(0, 8)) {
+    const text = normalizeInlineText(node.textContent || '');
+    if (!text) {
+      node.remove();
+      continue;
+    }
+
+    const shouldRemoveAuthor = author && textEquals(text, [author]);
+    const shouldRemoveTitle = title && textEquals(text, [title, chapter?.title]);
+    const shouldRemoveSubtitle = subtitle && textEquals(text, [subtitle]);
+    const shouldRemoveYear = looksLikePublicationYear(text);
+    const shouldUseAsCollection = !collection
+      && text.length <= 42
+      && !shouldRemoveAuthor
+      && !shouldRemoveTitle
+      && !shouldRemoveYear
+      && containsBengaliText(text);
+
+    if (shouldRemoveAuthor) {
+      node.remove();
+      continue;
+    }
+    if (shouldUseAsCollection) {
+      collection = text;
+      node.remove();
+      continue;
+    }
+    if (shouldRemoveYear) {
+      year = year || text;
+      node.remove();
+      continue;
+    }
+    if (shouldRemoveTitle || shouldRemoveSubtitle) {
+      storyTitle = title || text;
+      node.remove();
+      continue;
+    }
+    break;
+  }
+
+  return {
+    html: template.innerHTML,
+    author,
+    collection,
+    year,
+    storyTitle: storyTitle || firstParagraphText(html) || 'Chapter',
+    subtitle: subtitle && !textEquals(subtitle, [collection]) ? subtitle : '',
+  };
+}
+
+function sanitizeReaderHtml(html) {
+  if (typeof document === 'undefined') return html || '';
+  const template = document.createElement('template');
+  template.innerHTML = normalizeReaderContentHtml(html);
+  template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,meta,link').forEach((node) => node.remove());
+  template.content.querySelectorAll('*').forEach((node) => {
+    Array.from(node.attributes).forEach((attr) => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value || '';
+      if (name.startsWith('on')) node.removeAttribute(attr.name);
+      if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) node.removeAttribute(attr.name);
+    });
+    if (node.tagName?.toLowerCase() === 'img' && !node.getAttribute('src')) {
+      node.remove();
+    }
+  });
+  return template.innerHTML;
+}
+
+function escapeHtmlText(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function wrapWordsInSpans(html, startWordIndex = 0) {
+  if (typeof document === 'undefined') return { html: html || '', totalWords: 0 };
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  let wordIndex = startWordIndex;
+  let wrappedWords = 0;
+  let textOffset = 0;
+
+  function processNode(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent;
+      if (!text) return;
+      if (!text.trim()) {
+        textOffset += text.length;
+        return;
+      }
+
+      const wrapper = document.createElement('span');
+      let lastIndex = 0;
+      let nextHtml = '';
+      const re = /\S+/g;
+      let match;
+
+      while ((match = re.exec(text)) !== null) {
+        nextHtml += escapeHtmlText(text.slice(lastIndex, match.index));
+        for (const part of highlightTokenParts(match[0])) {
+          const start = textOffset + match.index + part.index;
+          const end = start + part.text.length;
+          if (part.highlight) {
+            nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(part.text)}</span>`;
+            wordIndex += 1;
+            wrappedWords += 1;
+          } else {
+            nextHtml += escapeHtmlText(part.text);
+          }
+        }
+        lastIndex = match.index + match[0].length;
+      }
+
+      nextHtml += escapeHtmlText(text.slice(lastIndex));
+      wrapper.innerHTML = nextHtml;
+      textOffset += text.length;
+
+      const parent = node.parentNode;
+      while (wrapper.firstChild) parent.insertBefore(wrapper.firstChild, node);
+      parent.removeChild(node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const tag = node.tagName?.toUpperCase();
+      if (tag === 'SCRIPT' || tag === 'STYLE') return;
+      Array.from(node.childNodes).forEach(processNode);
+    }
+  }
+
+  Array.from(div.childNodes).forEach(processNode);
+  return { html: div.innerHTML, totalWords: wrappedWords };
+}
+
+function countWordsInHtml(html) {
+  if (typeof document === 'undefined') return countHighlightUnitsInText(html || '');
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  return countHighlightUnitsInText(div.textContent || '');
+}
+
+function isHighlightableToken(token = '') {
+  return /[\p{L}\p{N}\u0980-\u09FF]/u.test(token);
+}
+
+function highlightTokenParts(token = '') {
+  if (/^\d{1,3}(?:,\d{3})+(?:[^\p{L}\p{N}\u0980-\u09FF]*)$/u.test(token)) {
+    const parts = [];
+    const re = /\d+|\D+/g;
+    let match;
+    while ((match = re.exec(token)) !== null) {
+      parts.push({
+        text: match[0],
+        index: match.index,
+        highlight: /\d/.test(match[0]),
+      });
+    }
+    return parts;
+  }
+  return [{ text: token, index: 0, highlight: isHighlightableToken(token) }];
+}
+
+function countHighlightUnitsInText(text = '') {
+  return (text.match(/\S+/g) || []).reduce((count, token) => {
+    return count + highlightTokenParts(token).filter((part) => part.highlight).length;
+  }, 0);
+}
+
+function normalizeAudioWord(value = '') {
+  return String(value || '')
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\u0980-\u09FF]+/gu, '')
+    .trim();
+}
+
+function highlightWordsFromHtml(html = '', limit = 32) {
+  if (typeof document === 'undefined') return [];
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  const words = [];
+  const tokens = div.textContent?.match(/\S+/g) || [];
+
+  for (const token of tokens) {
+    for (const part of highlightTokenParts(token)) {
+      if (!part.highlight) continue;
+      const normalized = normalizeAudioWord(part.text);
+      if (normalized) words.push(normalized);
+      if (words.length >= limit) return words;
+    }
+  }
+
+  return words;
+}
+
+function audioWordFromTimestamp(item = {}) {
+  return normalizeAudioWord(item.word || item.text || item.value || '');
+}
+
+function findTimestampWordOffset(timestamps = [], html = '') {
+  const visibleWords = highlightWordsFromHtml(html, 96);
+  if (!visibleWords.length || !timestamps.length) return 0;
+
+  const audioWords = timestamps.map(audioWordFromTimestamp);
+  const windowSize = Math.min(14, visibleWords.length, audioWords.length);
+  const minimumScore = Math.max(4, Math.ceil(windowSize * 0.7));
+  const maxVisibleStart = Math.min(80, Math.max(0, visibleWords.length - windowSize));
+  const maxAudioStart = Math.min(80, Math.max(0, audioWords.length - windowSize));
+  let bestOffset = 0;
+  let bestScore = -1;
+
+  for (let visibleStart = 0; visibleStart <= maxVisibleStart; visibleStart += 1) {
+    for (let audioStart = 0; audioStart <= maxAudioStart; audioStart += 1) {
+      if (audioWords[audioStart] !== visibleWords[visibleStart]) continue;
+      let score = 0;
+      for (let index = 0; index < windowSize; index += 1) {
+        if (audioWords[audioStart + index] && audioWords[audioStart + index] === visibleWords[visibleStart + index]) {
+          score += 1;
+        }
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        bestOffset = audioStart - visibleStart;
+      }
+      if (score === windowSize) break;
+    }
+    if (bestScore === windowSize) break;
+  }
+
+  return bestScore >= minimumScore ? bestOffset : 0;
+}
+
+function audiobookAssetsForBook(book = {}) {
+  return book?.audiobook_assets || book?.audiobookAssets || book?.audio_assets || {};
+}
+
+function audioAssetUrl(book, suffix) {
+  const keyBySuffix = {
+    '.mp3': 'mp3',
+    '_timestamps.json': 'timestamps',
+    '_highlight.vtt': 'vtt',
+    '_chapters.json': 'chapters',
+    '_meta.json': 'meta',
+    '_manifest.json': 'manifest',
+  };
+  const mapped = audiobookAssetsForBook(book)?.[keyBySuffix[suffix]];
+  if (mapped) return resolveAssetUrl(mapped);
+  return '';
+}
+
+function readerCoverUrl(book = {}, kind = 'front') {
+  const src = resolveBookCover(book, { kind })?.src || '';
+  return optimizedImageUrl(src, { width: 1400 });
+}
+
+function readerListeningCoverUrl(book = {}) {
+  const coverUrl = readerCoverUrl(book, 'front');
+  const slug = String(book?.slug || '').trim().toLowerCase();
+  // Controlled cover audit: this exact object is titled Bharat at the
+  // Crossroads, so it must never be presented as A Ghost Story artwork.
+  if (slug === 'a-ghost-story' && coverUrl.includes('cover_446c5658-2bdd-4bd6-afbe-f5233f280508')) {
+    return '';
+  }
+  return coverUrl;
+}
+
+function referencePageKind(html = '') {
+  if (/<h[1-6][^>]*>\s*Index\s*<\/h[1-6]>/i.test(html)) return 'index';
+  if (/<h[1-6][^>]*>\s*Bibliography\s*<\/h[1-6]>/i.test(html)) return 'reference';
+  return '';
+}
+
+function audioAssetSlugForBook(book, bookId) {
+  const configured = book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug;
+  if (configured) return configured;
+  if (bookId === 'bharat-at-the-crossroads' || /bharat at the crossroads/i.test(book?.title || '')) return 'bharat-at-the-crossroads';
+  return book?.slug || bookId || '';
+}
+
+function normalizeReaderManifestResponse(data = {}) {
+  if (!data?.book) return data;
+  const book = {
+    ...data.book,
+    chapters: data.chapters || data.book.chapters || [],
+    _readerManifest: {
+      version: data.version || '',
+      content_generation: data.content_generation,
+      access: data.access || {},
+      audio: data.audio || {},
+      generated_at: data.generated_at || '',
+    },
+  };
+  if (data.audio) {
+    book.audiobook_assets = {
+      ...(book.audiobook_assets || {}),
+      ...(data.audio.assets || {}),
+    };
+    book.audio_asset_slug = data.audio.asset_slug || book.audio_asset_slug;
+    book.audiobook_enabled = data.audio.enabled;
+  }
+  return book;
+}
+
+function chapterVersionFor(chapters = [], chapterId = '') {
+  return (chapters || []).find((item) => item.id === chapterId)?.content_version || '';
+}
+
+function manifestAudioForBook(book = {}) {
+  return book?._readerManifest?.audio || {};
+}
+
+function audioManifestUrlForBook(book) {
+  const audio = manifestAudioForBook(book);
+  const explicit = audio?.assets?.manifest || audiobookAssetsForBook(book)?.manifest;
+  const slug = book?.slug || audio?.asset_slug || book?.id || '';
+  if (explicit && isReaderAudiobookManifestPath(explicit, slug)) return resolveAssetUrl(explicit);
+  return '';
+}
+
+function isAgenticAiWithPython(book = {}, bookId = '') {
+  const identity = `${bookId || ''} ${book?.slug || ''} ${book?.title || ''}`.toLowerCase();
+  return identity.includes('agentic-ai-with-python') || /agentic\s+ai\s+with\s+python/i.test(book?.title || '');
+}
+
+function isNarrationDisabledForBook(book = {}, bookId = '') {
+  if (isAgenticAiWithPython(book, bookId)) return true;
+  if (!canExposeAudiobookControls(book)) return true;
+  const assets = audiobookAssetsForBook(book);
+  if (
+    book?.audiobook_enabled === false
+    && book?.generate_audiobook === false
+    && !assets?.mp3
+    && !assets?.timestamps
+    && !assets?.manifest
+  ) return true;
+  return book?.audiobook_enabled === false
+    && book?.generate_audiobook === false
+    && (book?.narration_enabled === false || book?.audio_disabled === true);
+}
+
+function hasGeneratedAudioEnabled(book = {}, bookId = '') {
+  if (isNarrationDisabledForBook(book, bookId)) return false;
+  if (!canExposeAudiobookControls(book)) return false;
+  const assets = audiobookAssetsForBook(book);
+  if (assets?.mp3) return true;
+  if (assets?.manifest) return true;
+  if (book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug) return true;
+  return false;
+}
+
+function rightsForBook(book = {}, userName = 'Reader') {
+  const title = book?.title || '';
+  if (/bharat at the crossroads/i.test(title) || book?.slug === 'bharat-at-the-crossroads') {
+    return {
+      licenseMetadata: 'Bharat at the Crossroads - Original Earnalism Digital Edition',
+      licenseNotice: 'Bharat at the Crossroads is an original work authored by Ronik Basak. Copyright 2026 Reo Enterprise. This reading copy is licensed for lawful personal reading only; redistribution, scraping, recording, or reproduction is prohibited without prior written permission.',
+      watermarkText: `Bharat at the Crossroads - Reo Enterprise - Licensed for ${userName || 'Reader'}`,
+      footerText: `© 2026 Reo Enterprise · Licensed copy · Redistribution prohibited`,
+    };
+  }
+  return {};
+}
+
+function timestampIndexAt(timestamps = [], nowMs = 0) {
+  if (!timestamps.length) return -1;
+  let lo = 0;
+  let hi = timestamps.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1;
+    if (audioTimestampStartMs(timestamps[mid]) <= nowMs) lo = mid;
+    else hi = mid - 1;
+  }
+  return lo;
+}
+
+function timestampWordIndex(item = {}, fallbackIndex = 0) {
+  const raw = item.word_index ?? item.wordIndex ?? item.index ?? item.global_word_index;
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallbackIndex;
+}
+
+function timestampArrayIndexForWord(timestamps = [], wordIndex = 0) {
+  if (!timestamps.length) return -1;
+  let lo = 0;
+  let hi = timestamps.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1;
+    if (timestampWordIndex(timestamps[mid], mid) < wordIndex) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
+}
+
+function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
+  const source = Array.isArray(raw) ? raw : (raw?.words || raw?.timestamps || raw?.items || []);
+  if (!Array.isArray(source) || !source.length) return { words: [], offset: 0 };
+  const offset = findTimestampWordOffset(source, html);
+  const words = source.map((item, index) => ({
+    ...normalizeAudioTimestamp(item),
+    _word_index: baseWord + index - offset,
+  }));
+  return { words, offset };
+}
+
+function splitParagraphNode(node, targetChars = 520) {
+  const text = (node.textContent || '').trim();
+  if (!text || text.length <= targetChars) return [node];
+  const chunks = [];
+  let buffer = [];
+  text.split(/\s+/).filter(Boolean).forEach((word) => {
+    const nextLength = [...buffer, word].join(' ').length;
+    if (buffer.length && nextLength > targetChars) {
+      chunks.push(buffer.join(' '));
+      buffer = [];
+    }
+    buffer.push(word);
+  });
+  if (buffer.length) chunks.push(buffer.join(' '));
+  return chunks.map((chunk) => {
+    const next = document.createElement(node.nodeName.toLowerCase());
+    next.textContent = chunk;
+    return next;
+  });
+}
+
+function splitTextNode(node, targetChars) {
+  const text = (node.textContent || '').trim();
+  if (!text) return [];
+  const wrapper = document.createElement('p');
+  wrapper.textContent = text;
+  return splitParagraphNode(wrapper, targetChars);
+}
+
+function measurePageHeight() {
+  if (typeof window === 'undefined') return 760;
+  return Math.max(300, Math.min(780, window.innerHeight - 245));
+}
+
+function paginateReaderHtml(html, { isBengali = false, fontSize = '17px', lineHeight } = {}) {
+  if (typeof document === 'undefined' || !html) return [];
+  const template = document.createElement('template');
+  template.innerHTML = html;
+
+  const measure = document.createElement('div');
+  measure.className = `reader-content ${isBengali ? 'reader-content--bengali' : ''}`;
+  measure.style.cssText = [
+    'position:absolute',
+    'left:-10000px',
+    'top:0',
+    'visibility:hidden',
+    `--reader-body-font:${isBengali ? BENGALI_SERIF : READER_SERIF}`,
+    `width:${Math.max(280, Math.min(document.querySelector('.reader-page-shell .reader-content')?.getBoundingClientRect().width || (window.innerWidth - 72), 680))}px`,
+    `font-size:${fontSize}`,
+    `line-height:${lineHeight || (isBengali ? 1.74 : 1.62)}`,
+    'box-sizing:border-box',
+    'padding:0',
+  ].join(';');
+  document.body.appendChild(measure);
+
+  const limit = measurePageHeight();
+  const paragraphScale = window.innerHeight < 640 ? 0.58 : 0.72;
+  const paragraphTargetChars = Math.max(180, Math.min(520, Math.floor(limit * paragraphScale)));
+  const pages = [];
+  let pageNodes = [];
+
+  const commitPage = () => {
+    if (!pageNodes.length) return;
+    pages.push({ html: pageNodes.map((node) => node.outerHTML || node.textContent || '').join('') });
+    pageNodes = [];
+    measure.innerHTML = '';
+  };
+
+  const sourceNodes = Array.from(template.content.childNodes)
+    .flatMap((node) => {
+      if (node.nodeType === Node.TEXT_NODE) return splitTextNode(node, paragraphTargetChars);
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') return splitParagraphNode(node, paragraphTargetChars);
+      return [node];
+    })
+    .filter((node) => (node.textContent || '').trim() || node.nodeType === Node.ELEMENT_NODE);
+
+  sourceNodes.forEach((node) => {
+    const candidate = node.cloneNode(true);
+    measure.appendChild(candidate);
+    if (measure.scrollHeight > limit && pageNodes.length) {
+      measure.removeChild(candidate);
+      commitPage();
+      measure.appendChild(candidate);
+    }
+    pageNodes.push(candidate.cloneNode(true));
+  });
+
+  commitPage();
+  document.body.removeChild(measure);
+  return pages.length ? pages : [{ html }];
+}
+
+function formatWalletTime(seconds) {
+  const s = Math.max(0, Math.floor(seconds || 0));
+  if (s >= 3600) {
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    return `${h}h ${m}m`;
+  }
+  if (s >= 60) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m}m ${sec}s`;
+  }
+  return `${s}s`;
+}
+
+async function fetchReaderBook(bookId, requestedAdminPreview = false) {
+  const encodedBookId = encodeURIComponent(bookId);
+  const adminToken = localStorage.getItem(TOKEN_KEY);
+  const manifestHeaders = requestedAdminPreview && adminToken ? getAdminAuthHeaders() : getChapterAuthHeaders();
+  try {
+    const manifestUrl = `${API}${readerManifestPath(bookId, {
+      adminPreview: Boolean(requestedAdminPreview && adminToken),
+    })}`;
+    const response = await axios.get(manifestUrl, { headers: manifestHeaders });
+    response.adminPreview = Boolean(response.data?.access?.admin_preview);
+    response.readerManifest = response.data;
+    response.data = normalizeReaderManifestResponse(response.data);
+    return response;
+  } catch (err) {
+    if (![401, 403, 404].includes(err.response?.status)) throw err;
+    if (requestedAdminPreview && !adminToken) throw err;
+  }
+
+  if (requestedAdminPreview && adminToken) {
+    const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
+    response.adminPreview = true;
+    return response;
+  }
+
+  try {
+    const response = await axios.get(`${API}/books/${encodedBookId}`);
+    response.adminPreview = false;
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
+function readerSearchParams({ chapterId, canonicalPageIndex, adminPreview, listeningMode } = {}) {
+  const params = new URLSearchParams();
+  const preserveListeningMode = typeof listeningMode === 'boolean'
+    ? listeningMode
+    : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('listen') === '1';
+  if (chapterId) params.set('c', chapterId);
+  if (canonicalPageIndex) params.set('p', String(canonicalPageIndex));
+  if (adminPreview) params.set('preview', 'admin');
+  if (preserveListeningMode) params.set('listen', '1');
+  const query = params.toString();
+  return query ? `?${query}` : '';
+}
+
+async function fetchReaderChapter({ bookId, chapterId, adminPreview = false, version = '', useCache = true }) {
+  const token = adminPreview ? localStorage.getItem(TOKEN_KEY) : localStorage.getItem(USER_TOKEN_KEY);
+  const cacheKey = readerChapterCacheKey({ bookId, chapterId, version, adminPreview, token });
+  if (useCache && readerChapterResponseCache.has(cacheKey)) {
+    return readerChapterResponseCache.get(cacheKey);
+  }
+  const params = new URLSearchParams();
+  if (version) params.set('v', version);
+  if (adminPreview) params.set('preview', 'admin');
+  const query = params.toString();
+  const url = `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(chapterId)}${query ? `?${query}` : ''}`;
+  const promise = axios.get(url, { headers: adminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() })
+    .then((response) => response.data);
+  boundedCacheSet(readerChapterResponseCache, cacheKey, promise);
+  try {
+    const data = await promise;
+    boundedCacheSet(readerChapterResponseCache, cacheKey, Promise.resolve(data));
+    return data;
+  } catch (err) {
+    readerChapterResponseCache.delete(cacheKey);
+    throw err;
+  }
+}
+
+function prefetchAsset(url, { credentials = 'same-origin' } = {}) {
+  if (!url || readerAssetPrefetchCache.has(url)) return;
+  const promise = fetch(url, {
+    cache: 'force-cache',
+    credentials,
+    mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin',
+  })
+    .then((response) => (response.ok ? response : Promise.reject(new Error('asset prefetch failed'))))
+    .catch(() => null);
+  boundedCacheSet(readerAssetPrefetchCache, url, promise, 32);
+}
+
+function prefetchAudioMetadata(url) {
+  const cacheKey = url ? `HEAD:${url}` : '';
+  if (!url || readerAssetPrefetchCache.has(cacheKey)) return;
+  const promise = fetch(url, {
+    method: 'HEAD',
+    cache: 'force-cache',
+    credentials: 'include',
+    mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin',
+  })
+    .then((response) => (response.ok ? response : Promise.reject(new Error('audio metadata prefetch failed'))))
+    .catch(() => null);
+  boundedCacheSet(readerAssetPrefetchCache, cacheKey, promise, 32);
+}
+
+function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
+  const sortedChapters = sortedChapterIndex(chapters);
+
+  return (
+    <nav className="reader-index-page" aria-label="Book chapter index">
+      <div className="reader-index-page__eyebrow">Contents</div>
+      <h2>Jump to a chapter</h2>
+      <ol>
+        {sortedChapters.map((item) => {
+          const isCurrent = item.id === currentChapterId;
+          const href = `/reader/${bookId}${readerSearchParams({ chapterId: item.id, adminPreview })}`;
+          return (
+            <li key={item.id || item.title}>
+              <a
+                href={href}
+                aria-current={isCurrent ? 'page' : undefined}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onChapterSelect?.(item.id);
+                }}
+              >
+                <span className="reader-index-page__sequence" aria-hidden="true">{item.index_sequence_label}</span>
+                <span className="reader-index-page__copy">
+                  {item.index_secondary_label && (
+                    <small>{item.index_secondary_label}</small>
+                  )}
+                  <strong lang={containsBengaliText(item.index_title) ? 'bn' : undefined}>{item.index_title}</strong>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
+
+export default function Reader() {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const bookId = slug;
+  const readerUrlSearch = new URLSearchParams(window.location.search);
+  const chapterId = readerUrlSearch.get('c');
+  const explicitCanonicalPage = readerUrlSearch.has('p');
+  const requestedCanonicalPageIndex = Math.max(1, Number(readerUrlSearch.get('p')) || 1);
+
+  const [book, setBook] = useState(null);
+  const [chapter, setChapter] = useState(null);
+  const [chapters, setChapters] = useState([]);
+  const [activeChapterId, setActiveChapterId] = useState(chapterId);
+  const [adminPreview, setAdminPreview] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+  const [lockedState, setLockedState] = useState(null);
+  const [readingPassMode, setReadingPassMode] = useState(false);
+  const [readingPassManifest, setReadingPassManifest] = useState(null);
+  const [canonicalPageIndex, setCanonicalPageIndex] = useState(requestedCanonicalPageIndex);
+  const [readingPassLease, setReadingPassLease] = useState(null);
+  const readingPassLeaseRef = useRef(null);
+  const [readingPassStatus, setReadingPassStatus] = useState('Preview');
+  const [readingPassPaywall, setReadingPassPaywall] = useState(null);
+  const [readingPassAnnouncement, setReadingPassAnnouncement] = useState('');
+  const [readingPassAudioPreview, setReadingPassAudioPreview] = useState(null);
+  const [readingPassAudioPhase, setReadingPassAudioPhase] = useState('idle');
+  const [readingPassAudioAccessVersion, setReadingPassAudioAccessVersion] = useState(0);
+  const readingPassSequenceRef = useRef(0);
+  const readingPassPositionVersionRef = useRef(0);
+  const readingPassLatestTextPositionRef = useRef({ pageIndex: requestedCanonicalPageIndex, chapterId: '' });
+  const readingPassAudioPositionVersionRef = useRef(0);
+  const readingPassPendingAudioPositionRef = useRef(null);
+  const readingPassAudioPositionSavedAtRef = useRef(0);
+  const readingPassPreviousBalanceRef = useRef(null);
+  const readingPassAudioSyncRef = useRef(Promise.resolve());
+  const readingPassAudioPositionSyncRef = useRef(Promise.resolve());
+
+  const initialReaderSettingsRef = useRef(null);
+  if (initialReaderSettingsRef.current === null) {
+    initialReaderSettingsRef.current = loadReaderSettings();
+  }
+  const initialReaderSettings = initialReaderSettingsRef.current;
+
+  const [theme, setTheme] = useState(initialReaderSettings.theme);
+  const [fontSizeIdx, setFontSizeIdx] = useState(initialReaderSettings.fontSizeIdx);
+  const [lineSpacingMode, setLineSpacingMode] = useState(initialReaderSettings.lineSpacingMode);
+  const [marginMode, setMarginMode] = useState(initialReaderSettings.marginMode);
+  const [fontFamilyMode, setFontFamilyMode] = useState(initialReaderSettings.fontFamilyMode);
+  const [focusMode, setFocusMode] = useState(initialReaderSettings.focusMode);
+  const [reducedMotionMode, setReducedMotionMode] = useState(initialReaderSettings.reducedMotionMode);
+  const [highlightIntensity, setHighlightIntensity] = useState(initialReaderSettings.highlightIntensity);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showTOC, setShowTOC] = useState(false);
+  const [toolbarVisible, setToolbarVisible] = useState(true);
+  const [bookmarked, setBookmarked] = useState(false);
+
+  const [ttsActive, setTtsActive] = useState(false);
+  const [ttsPaused, setTtsPaused] = useState(false);
+  const [ttsWordIndex, setTtsWordIndex] = useState(-1);
+  const [ttsSpeed, setTtsSpeed] = useState(initialReaderSettings.ttsSpeed);
+  const [showListeningPanel, setShowListeningPanel] = useState(
+    () => new URLSearchParams(window.location.search).get('listen') === '1',
+  );
+  const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
+  const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
+  const [generatedAudioManifest, setGeneratedAudioManifest] = useState(null);
+  const [generatedAudioSegmentId, setGeneratedAudioSegmentId] = useState('');
+  const [generatedAudioCurrentTime, setGeneratedAudioCurrentTime] = useState(0);
+  const [generatedAudioDuration, setGeneratedAudioDuration] = useState(0);
+  const [generatedAudioVolume, setGeneratedAudioVolume] = useState(1);
+  const [generatedAudioMuted, setGeneratedAudioMuted] = useState(false);
+  const [processedHtml, setProcessedHtml] = useState('');
+  const [ttsHtml, setTtsHtml] = useState('');
+  const [totalWords, setTotalWords] = useState(0);
+  const [paginatedPages, setPaginatedPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const [readProgress, setReadProgress] = useState(0);
+  const [contentBlurred, setContentBlurred] = useState(false);
+
+  const [walletSeconds, setWalletSeconds] = useState(0);
+  const [showLowBalanceWarning, setShowLowBalanceWarning] = useState(false);
+  const [showTopUpModal, setShowTopUpModal] = useState(false);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [topUpPacks, setTopUpPacks] = useState([]);
+  const [selectedPack, setSelectedPack] = useState(1);
+  const [topUpProcessing, setTopUpProcessing] = useState(false);
+  const [showTopUpSuccess, setShowTopUpSuccess] = useState(false);
+  const [topUpSuccessMinutes, setTopUpSuccessMinutes] = useState(0);
+
+  const [sessionId, setSessionId] = useState(null);
+  const [meteredSessionActive, setMeteredSessionActive] = useState(false);
+  const [showReaderUpsell, setShowReaderUpsell] = useState(false);
+
+  const contentRef = useRef(null);
+  const generatedAudioRef = useRef(null);
+  const audioPlaybackStateRef = useRef('paused');
+  const generatedTimestampsRef = useRef([]);
+  const generatedAudioWordOffsetRef = useRef(0);
+  const generatedPageEndRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const wordsRef = useRef([]);
+  const wordMapRef = useRef(new Map());
+  const activeWordRef = useRef(null);
+  const highlightedWordIndexRef = useRef(-1);
+  const generatedHighlightRafRef = useRef(0);
+  const pulseIntervalRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const completionReportedRef = useRef('');
+  const draculaChapterOneCompleteRef = useRef('');
+  const readerStartedRef = useRef(false);
+  const upsellShownRef = useRef('');
+  const lastReaderActivityRef = useRef(Date.now());
+  const readerMetricsRef = useRef({ loadStartedAt: 0, timings: {} });
+  const audioIntentStartedAtRef = useRef(0);
+  const audioLoadStartedAtRef = useRef(0);
+  const audioStallStartedAtRef = useRef(0);
+  const audioSeekStartedAtRef = useRef(0);
+  const segmentTransitionStartedAtRef = useRef(0);
+  const segmentTransitionFromRef = useRef('');
+  const audiobookProgressSavedAtRef = useRef(0);
+  const pendingAudioOffsetRef = useRef(null);
+  const pendingAudioOffsetSegmentRef = useRef('');
+  const prefetchedAudioSegmentsRef = useRef(new Set());
+  const persistGeneratedAudioProgressRef = useRef(() => false);
+  const resumeAfterSegmentChangeRef = useRef(false);
+  const pendingCrossChapterAudioResumeRef = useRef(null);
+  const settingsButtonRef = useRef(null);
+  const settingsSheetRef = useRef(null);
+  const readerSwipeStartRef = useRef(null);
+
+  useSEO({
+    title: notFound
+      ? 'Reader not found - The Earnalism Digital Library'
+      : book?.title ? `${book.title} - Reader - The Earnalism Digital Library` : 'Reader - The Earnalism Digital Library',
+    description: notFound
+      ? 'This Earnalism reader page is no longer available.'
+      : 'A secure Earnalism reading room.',
+    robots: 'noindex, nofollow',
+  });
+
+  const cacheReaderWords = useCallback(() => {
+    const words = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+    const wordMap = new Map();
+    words.forEach((word) => {
+      const index = Number(word.dataset.word);
+      if (Number.isFinite(index)) wordMap.set(index, word);
+    });
+    wordsRef.current = words;
+    wordMapRef.current = wordMap;
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
+  }, []);
+
+  const stopTTS = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    persistGeneratedAudioProgressRef.current({ force: true });
+    resumeAfterSegmentChangeRef.current = false;
+    pendingCrossChapterAudioResumeRef.current = null;
+    if (audio) {
+      audioPlaybackStateRef.current = 'paused';
+      audio.pause();
+      audio.currentTime = 0;
+      audio.removeAttribute('src');
+      audio.load();
+    }
+    generatedPageEndRef.current = null;
+    setGeneratedAudioSegmentId('');
+    setGeneratedAudioCurrentTime(0);
+    setGeneratedAudioDuration(0);
+    setTtsActive(false);
+    setTtsPaused(false);
+    setGeneratedAudioActive(false);
+    setTtsWordIndex(-1);
+    setTtsHtml('');
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
+  }, []);
+
+  useEffect(() => {
+    pendingCrossChapterAudioResumeRef.current = null;
+  }, [bookId]);
+
+  const currentReaderSettings = useMemo(() => ({
+    theme,
+    fontSizeIdx,
+    lineSpacingMode,
+    marginMode,
+    fontFamilyMode,
+    focusMode,
+    reducedMotionMode,
+    highlightIntensity,
+    ttsSpeed,
+  }), [fontFamilyMode, focusMode, fontSizeIdx, highlightIntensity, lineSpacingMode, marginMode, reducedMotionMode, theme, ttsSpeed]);
+
+  useEffect(() => {
+    saveReaderSettings(currentReaderSettings);
+  }, [currentReaderSettings]);
+
+  const resetReaderSettings = useCallback(() => {
+    setTheme(READER_SETTINGS_DEFAULTS.theme);
+    setFontSizeIdx(READER_SETTINGS_DEFAULTS.fontSizeIdx);
+    setLineSpacingMode(READER_SETTINGS_DEFAULTS.lineSpacingMode);
+    setMarginMode(READER_SETTINGS_DEFAULTS.marginMode);
+    setFontFamilyMode(READER_SETTINGS_DEFAULTS.fontFamilyMode);
+    setFocusMode(READER_SETTINGS_DEFAULTS.focusMode);
+    setReducedMotionMode(READER_SETTINGS_DEFAULTS.reducedMotionMode);
+    setHighlightIntensity(READER_SETTINGS_DEFAULTS.highlightIntensity);
+    setTtsSpeed(READER_SETTINGS_DEFAULTS.ttsSpeed);
+  }, []);
+
+  useEffect(() => {
+    if (!showSettings) return undefined;
+    const sheet = settingsSheetRef.current;
+    const opener = settingsButtonRef.current;
+    const previouslyFocused = document.activeElement;
+    const focusableSelector = [
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      'a[href]',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const focusInitialControl = window.setTimeout(() => {
+      const initial = sheet?.querySelector('[data-reader-settings-initial-focus]') || sheet;
+      initial?.focus?.();
+    }, 0);
+
+    const handleSettingsKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setShowSettings(false);
+        return;
+      }
+      if (event.key !== 'Tab' || !sheet) return;
+      const focusable = Array.from(sheet.querySelectorAll(focusableSelector))
+        .filter((element) => element.offsetWidth || element.offsetHeight || element === document.activeElement);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    sheet?.addEventListener('keydown', handleSettingsKeyDown);
+    return () => {
+      window.clearTimeout(focusInitialControl);
+      sheet?.removeEventListener('keydown', handleSettingsKeyDown);
+      const target = opener || previouslyFocused;
+      if (target && typeof target.focus === 'function') target.focus();
+    };
+  }, [showSettings]);
+
+  useEffect(() => () => {
+    if (generatedHighlightRafRef.current) {
+      window.cancelAnimationFrame(generatedHighlightRafRef.current);
+      generatedHighlightRafRef.current = 0;
+    }
+  }, []);
+
+  const storeReadingPassLease = useCallback((value) => {
+    if (!value?.session_id || !value?.lease_token) return null;
+    const lease = {
+      sessionId: value.session_id,
+      token: value.lease_token,
+      version: Number(value.lease_version) || 1,
+      expiresAt: value.lease_expires_at || '',
+      contentType: value.content_type || readingPassLeaseRef.current?.contentType || 'text',
+      contentId: value.content_id || readingPassLeaseRef.current?.contentId || bookId,
+    };
+    readingPassLeaseRef.current = lease;
+    setReadingPassLease(lease);
+    setWalletSeconds(Math.max(0, Number(value.balance_seconds) || 0));
+    setReadingPassStatus(value.status || 'Running');
+    return lease;
+  }, [bookId]);
+
+  const syncReadingPassAudioState = useCallback((playbackState) => {
+    audioPlaybackStateRef.current = playbackState;
+    readingPassAudioSyncRef.current = readingPassAudioSyncRef.current
+      .catch(() => {})
+      .then(async () => {
+        const lease = readingPassLeaseRef.current;
+        if (!readingPassMode || readingPassAudioPhase !== 'protected' || lease?.contentType !== 'audio') return null;
+        const sequence = readingPassSequenceRef.current + 1;
+        readingPassSequenceRef.current = sequence;
+        const renewed = await renewReadingPassLease({
+          lease,
+          sequence,
+          active: playbackState === 'playing',
+          playbackState,
+        });
+        storeReadingPassLease(renewed);
+        return renewed;
+      })
+      .catch((error) => {
+        const passError = readingPassError(error);
+        generatedAudioRef.current?.pause?.();
+        setReadingPassPaywall(passError);
+        setReadingPassStatus('Connecting');
+        return null;
+      });
+    return readingPassAudioSyncRef.current;
+  }, [readingPassAudioPhase, readingPassMode, storeReadingPassLease]);
+
+  const sendPulse = useCallback(async () => {
+    if (!sessionId || !meteredSessionActive) return;
+    const headers = getUserAuthHeaders();
+    const visible = isReaderVisible();
+    const idle = Date.now() - lastReaderActivityRef.current > READER_IDLE_MS;
+
+    try {
+      const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId, visible, idle }, { headers });
+      const { status, wallet_seconds } = response.data;
+
+      switch (status) {
+        case 'ok':
+          setWalletSeconds(wallet_seconds);
+          break;
+        case 'low_balance':
+          setWalletSeconds(wallet_seconds);
+          setShowLowBalanceWarning(true);
+          trackFunnelEvent('reader_low_balance_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id || '',
+            wallet_seconds,
+            source: 'reader_pulse',
+          });
+          break;
+        case 'paused':
+          setWalletSeconds(wallet_seconds);
+          break;
+        case 'wallet_empty':
+          setWalletSeconds(0);
+          clearInterval(pulseIntervalRef.current);
+          setSavedScrollPosition(scrollContainerRef.current?.scrollTop || 0);
+          setShowTopUpModal(true);
+          trackFunnelEvent('reader_locked_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id || '',
+            reason: 'wallet_empty',
+            source: 'reader_pulse',
+          });
+          break;
+        case 'session_invalid':
+          clearInterval(pulseIntervalRef.current);
+          setMeteredSessionActive(false);
+          toast.info('Reading moved to another device. This device has stopped billing.');
+          break;
+        default:
+          break;
+      }
+    } catch (err) {
+      // Reader heartbeats should not interrupt active reading on transient network errors.
+    }
+  }, [activeChapterId, bookId, chapter, chapterId, sessionId, meteredSessionActive]);
+
+  useEffect(() => {
+    const id = crypto.randomUUID();
+
+    setSessionId(id);
+
+    const onContextMenu = (event) => event.preventDefault();
+    const onKeyDown = (event) => {
+      const blockedCombo = (event.ctrlKey || event.metaKey) && ['s', 'u', 'a', 'p', 'S', 'U', 'A', 'P'].includes(event.key);
+      const blockedKey = event.key === 'F12' || event.key === 'PrintScreen';
+
+      if (blockedCombo || blockedKey) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+    const onCopy = (event) => {
+      event.preventDefault();
+      event.clipboardData.setData('text/plain', 'Content is protected © Earnalism');
+    };
+    const onVisibilityChange = () => {
+      setContentBlurred(document.hidden);
+    };
+
+    document.addEventListener('contextmenu', onContextMenu);
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('copy', onCopy);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      document.removeEventListener('contextmenu', onContextMenu);
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('copy', onCopy);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const markActive = () => {
+      lastReaderActivityRef.current = Date.now();
+    };
+    const markVisibleActive = () => {
+      if (isReaderVisible()) markActive();
+    };
+    const activityEvents = ['pointerdown', 'pointermove', 'keydown', 'wheel', 'touchstart', 'scroll'];
+
+    markActive();
+    activityEvents.forEach((eventName) => {
+      window.addEventListener(eventName, markActive, { passive: true });
+    });
+    document.addEventListener('visibilitychange', markVisibleActive);
+    window.addEventListener('focus', markActive);
+
+    return () => {
+      activityEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, markActive);
+      });
+      document.removeEventListener('visibilitychange', markVisibleActive);
+      window.removeEventListener('focus', markActive);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!bookId || !sessionId) return undefined;
+
+    let cancelled = false;
+    let startedSession = false;
+    let endSessionHeaders = {};
+    const requestedAdminPreview = new URLSearchParams(window.location.search).get('preview') === 'admin';
+
+    async function loadReader() {
+      const loadStartedAt = readerNowMs();
+      const timings = {};
+      readerMetricsRef.current = { loadStartedAt, timings };
+      setLoading(true);
+      setError(null);
+      setNotFound(false);
+      setLockedState(null);
+      setMeteredSessionActive(false);
+      setReadingPassPaywall(null);
+
+      try {
+        const manifestStartedAt = readerNowMs();
+        const [bookRes, packsRes] = await Promise.all([
+          fetchReaderBook(bookId, requestedAdminPreview),
+          axios.get(`${API}/payments/packs`),
+        ]);
+        timings.manifest_ms = Math.round(readerNowMs() - manifestStartedAt);
+        if (cancelled) return;
+
+        const isAdminPreview = requestedAdminPreview || Boolean(bookRes.adminPreview);
+        if (!readerBookMatchesRoute(bookRes.data, bookId)) {
+          const identityError = new Error('Reader manifest does not match the requested book.');
+          identityError.code = 'READER_BOOK_IDENTITY_MISMATCH';
+          throw identityError;
+        }
+        const manifestAccess = bookRes.data?._readerManifest?.access || bookRes.readerManifest?.access || {};
+        const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
+        const activeChapterId = chapterId || loadedChapters[0]?.id;
+        const useReadingPass = Boolean(
+          manifestAccess?.reading_pass?.enabled
+          && manifestAccess?.reading_pass?.segments_ready
+          && !isAdminPreview
+        );
+
+        setBook(bookRes.data);
+        setChapters(loadedChapters);
+        setAdminPreview(isAdminPreview);
+        setTopUpPacks(packsRes.data || []);
+        setActiveChapterId(activeChapterId || null);
+        setReadingPassMode(useReadingPass);
+
+        if (!activeChapterId) {
+          setChapter(null);
+          setProcessedHtml('');
+          setTotalWords(0);
+          setLoading(false);
+          return;
+        }
+
+        if (!isAdminPreview && getUserToken()) {
+          if (typeof manifestAccess.wallet_seconds === 'number') {
+            setWalletSeconds(manifestAccess.wallet_seconds || 0);
+          } else {
+            try {
+              const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
+              if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
+            } catch (walletErr) {
+              if (walletErr.response?.status === 401) {
+                localStorage.removeItem(USER_TOKEN_KEY);
+              } else if (walletErr.response?.status !== 403) {
+                throw walletErr;
+              }
+              if (!cancelled) setWalletSeconds(0);
+            }
+          }
+        } else {
+          setWalletSeconds(0);
+        }
+
+        const chapterStartedAt = readerNowMs();
+        let gate;
+        let passManifest = null;
+        let leaseForRequest = readingPassLeaseRef.current;
+        if (useReadingPass) {
+          passManifest = await getReadingPassManifest(bookId);
+          if (cancelled) return;
+          let targetCanonicalPageIndex = requestedCanonicalPageIndex;
+          if (getUserToken()) {
+            try {
+              const savedPosition = await getReadingPassPosition({ contentType: 'text', contentId: bookId });
+              readingPassPositionVersionRef.current = Number(savedPosition?.version || 0);
+              const savedPageIndex = Number(savedPosition?.position?.canonical_page_index || 0);
+              if (!explicitCanonicalPage && Number.isInteger(savedPageIndex) && savedPageIndex > 0) {
+                targetCanonicalPageIndex = Math.min(
+                  Number(passManifest.total_pages || savedPageIndex),
+                  savedPageIndex,
+                );
+              }
+            } catch {
+              // A position lookup must never prevent access to an otherwise valid page.
+            }
+          }
+          setReadingPassManifest(passManifest);
+          setCanonicalPageIndex(targetCanonicalPageIndex);
+          readingPassLatestTextPositionRef.current = {
+            pageIndex: targetCanonicalPageIndex,
+            chapterId: '',
+          };
+          if (targetCanonicalPageIndex > Number(passManifest.public_preview_pages || 3)) {
+            const leaseMatchesBook = Boolean(leaseForRequest?.sessionId && leaseForRequest?.token);
+            if (!leaseMatchesBook) {
+              try {
+                const started = await startReadingPassSession({
+                  bookSlug: bookId,
+                  pageIndex: targetCanonicalPageIndex,
+                });
+                leaseForRequest = storeReadingPassLease(started);
+              } catch (leaseError) {
+                const passError = readingPassError(leaseError);
+                setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+                setReadingPassPaywall(passError);
+                setLockedState({
+                  reason: passError.code,
+                  message: passError.message,
+                  chapter: null,
+                });
+                setProcessedHtml('');
+                setTotalWords(0);
+                setLoading(false);
+                return;
+              }
+            }
+          }
+          const page = await getReadingPassPage(bookId, targetCanonicalPageIndex, leaseForRequest);
+          gate = {
+            locked: false,
+            is_preview: Boolean(page.is_preview),
+            chapter: {
+              id: page.chapter_id,
+              title: page.chapter_title,
+              order: targetCanonicalPageIndex,
+              content_version: page.content_sha256,
+              content: page.content,
+              canonical_page_index: page.page_index,
+              total_canonical_pages: page.total_pages,
+            },
+          };
+          setReadingPassStatus(page.is_preview ? 'Preview' : 'Running');
+        } else {
+          setReadingPassManifest(null);
+          gate = await fetchReaderChapter({
+            bookId,
+            chapterId: activeChapterId,
+            adminPreview: isAdminPreview,
+            version: chapterVersionFor(loadedChapters, activeChapterId),
+          });
+        }
+        timings.chapter_ms = Math.round(readerNowMs() - chapterStartedAt);
+        if (cancelled) return;
+
+        const loadedChapter = gate.chapter || gate;
+
+        setChapter(loadedChapter);
+        if (useReadingPass && loadedChapter?.id) setActiveChapterId(loadedChapter.id);
+        if (!chapterId && !useReadingPass) {
+          window.history.replaceState(window.history.state, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
+        } else if (useReadingPass) {
+          window.history.replaceState(
+            window.history.state,
+            '',
+            `${window.location.pathname}${readerSearchParams({ chapterId: loadedChapter.id, canonicalPageIndex: loadedChapter.canonical_page_index, adminPreview: isAdminPreview })}`,
+          );
+        }
+
+        if (gate.locked) {
+          setProcessedHtml('');
+          setTotalWords(0);
+          setLockedState({
+            reason: gate.reason || 'LOCKED',
+            message: gate.message || 'This chapter is locked.',
+            chapter: loadedChapter,
+          });
+          trackFunnelEvent('reader_locked_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId,
+            reason: gate.reason || 'LOCKED',
+            source: 'chapter_gate',
+          });
+          timings.total_load_ms = Math.round(readerNowMs() - loadStartedAt);
+          sendReaderMetric('reader_chapter_open', {
+            session_id: sessionId,
+            book_slug: bookId,
+            chapter_id: activeChapterId,
+            timings,
+            metrics: { locked: 1 },
+            tags: {
+              reason: gate.reason || 'LOCKED',
+              admin_preview: isAdminPreview ? '1' : '0',
+              manifest_version: bookRes.data?._readerManifest?.version || '',
+              chapter_version: chapterVersionFor(loadedChapters, activeChapterId),
+            },
+          });
+          setLoading(false);
+          return;
+        }
+
+        const safeHtml = sanitizeReaderHtml(loadedChapter.content);
+        // Keep first render light. TTS word spans are injected only if narration starts.
+        setProcessedHtml(safeHtml);
+        setTtsHtml('');
+        setCurrentPage(0);
+        setTotalWords(countWordsInHtml(safeHtml));
+        setLockedState(null);
+        if (bookId === LIVE_APPROVED_SLUG && !readerStartedRef.current) {
+          readerStartedRef.current = true;
+          trackFunnelEvent(DRACULA_CTA_EVENTS.readerStart, {
+            book: LIVE_APPROVED_SLUG,
+            book_slug: LIVE_APPROVED_SLUG,
+            chapter_id: activeChapterId,
+            is_preview: Boolean(gate.is_preview),
+          });
+        }
+        timings.render_prepare_ms = Math.round(readerNowMs() - chapterStartedAt - timings.chapter_ms);
+
+        if (!useReadingPass && !isAdminPreview && getUserToken() && !gate.is_preview) {
+          endSessionHeaders = getUserAuthHeaders();
+          await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers: endSessionHeaders });
+          startedSession = true;
+          setMeteredSessionActive(true);
+        }
+
+        timings.total_load_ms = Math.round(readerNowMs() - loadStartedAt);
+        sendReaderMetric('reader_chapter_open', {
+          session_id: sessionId,
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          timings,
+          metrics: {
+            locked: 0,
+            word_count: countWordsInHtml(safeHtml),
+            chapter_count: loadedChapters.length,
+          },
+          tags: {
+            admin_preview: isAdminPreview ? '1' : '0',
+            manifest_version: bookRes.data?._readerManifest?.version || '',
+            chapter_version: chapterVersionFor(loadedChapters, activeChapterId),
+          },
+        });
+        trackFunnelEvent('reading_started', {
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          is_preview: Boolean(gate.is_preview),
+        });
+        trackFunnelEvent('reader_opened', {
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          is_preview: Boolean(gate.is_preview),
+          source: 'reader_load',
+        });
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          const status = err.response?.status;
+          const errorUrl = err.config?.url || '';
+          const missingReaderResource = status === 404 && (
+            errorUrl.includes('/books/')
+            || errorUrl.includes('/admin/books/')
+            || errorUrl.includes('/reader/chapter/')
+            || errorUrl.includes('/reader/book/')
+          );
+          if (status === 401) {
+            localStorage.removeItem(USER_TOKEN_KEY);
+            setLockedState({
+              reason: 'AUTH_REQUIRED',
+              message: 'Sign in to continue reading this chapter.',
+              chapter: null,
+            });
+            trackFunnelEvent('reader_locked_state', {
+              book_slug: bookId,
+              chapter_id: chapterId || '',
+              reason: 'AUTH_REQUIRED',
+              source: 'reader_error',
+            });
+            setError(null);
+          } else if (status === 402) {
+            setLockedState({
+              reason: 'INSUFFICIENT_READING_TIME',
+              message: 'Your reading time has ended. Add reading time to continue.',
+              chapter: null,
+            });
+            trackFunnelEvent('reader_locked_state', {
+              book_slug: bookId,
+              chapter_id: chapterId || '',
+              reason: 'INSUFFICIENT_READING_TIME',
+              source: 'reader_error',
+            });
+            setError(null);
+          } else if (missingReaderResource) {
+            setBook(null);
+            setChapter(null);
+            setChapters([]);
+            setProcessedHtml('');
+            setTtsHtml('');
+            setTotalWords(0);
+            setLockedState(null);
+            setNotFound(true);
+            setError(null);
+          } else {
+            setError(apiErrorMessage(err, 'This chapter could not be opened.'));
+          }
+          setMeteredSessionActive(false);
+          setLoading(false);
+        }
+      }
+    }
+
+    loadReader();
+
+    return () => {
+      cancelled = true;
+      const pendingCrossChapterResume = pendingCrossChapterAudioResumeRef.current;
+      stopTTS();
+      if (pendingCrossChapterResume?.bookId === bookId) {
+        pendingCrossChapterAudioResumeRef.current = pendingCrossChapterResume;
+      }
+      clearInterval(pulseIntervalRef.current);
+      if (startedSession) {
+        axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers: endSessionHeaders }).catch(() => {});
+      }
+    };
+  }, [bookId, chapterId, explicitCanonicalPage, requestedCanonicalPageIndex, sessionId, stopTTS, storeReadingPassLease]);
+
+  const isBengali = useMemo(
+    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
+    [book, chapter, processedHtml],
+  );
+  const readerFrontMatter = useMemo(
+    () => extractReaderFrontMatter(processedHtml, book, chapter),
+    [book, chapter, processedHtml],
+  );
+  const readerHtml = readerFrontMatter.html || processedHtml;
+  const lineSpacing = LINE_SPACING_OPTIONS.find((item) => item.value === lineSpacingMode) || LINE_SPACING_OPTIONS[0];
+  const readerFontFamily = fontFamilyMode === 'sans'
+    ? (isBengali ? BENGALI_SANS : UI_FONT)
+    : (isBengali ? BENGALI_SERIF : READER_SERIF);
+  const readerDisplayTitle = book?.title || readerFrontMatter.storyTitle || chapter?.title || 'Chapter';
+
+  useEffect(() => {
+    if (!(meteredSessionActive && chapter && processedHtml && sessionId)) {
+      clearInterval(pulseIntervalRef.current);
+      return undefined;
+    }
+
+    const startPulseTimer = () => {
+      clearInterval(pulseIntervalRef.current);
+      if (isReaderVisible()) {
+        pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+      }
+    };
+    const handleReaderVisibility = () => {
+      if (isReaderVisible()) {
+        lastReaderActivityRef.current = Date.now();
+        void sendPulse();
+        startPulseTimer();
+      } else {
+        clearInterval(pulseIntervalRef.current);
+        void sendPulse();
+      }
+    };
+
+    startPulseTimer();
+    document.addEventListener('visibilitychange', handleReaderVisibility);
+    window.addEventListener('focus', handleReaderVisibility);
+    window.addEventListener('blur', handleReaderVisibility);
+
+    return () => {
+      clearInterval(pulseIntervalRef.current);
+      document.removeEventListener('visibilitychange', handleReaderVisibility);
+      window.removeEventListener('focus', handleReaderVisibility);
+      window.removeEventListener('blur', handleReaderVisibility);
+    };
+  }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
+
+  useEffect(() => {
+    const leaseIsAudio = readingPassLease?.contentType === 'audio';
+    const protectedTextVisible = readingPassLease?.contentType === 'text' && canonicalPageIndex > 3;
+    if (!readingPassMode || !readingPassLease?.sessionId || (!leaseIsAudio && !protectedTextVisible) || ['Paused', 'Exhausted'].includes(readingPassStatus)) return undefined;
+    let cancelled = false;
+    const heartbeatMs = 10_000;
+
+    const renew = async () => {
+      const idle = Date.now() - lastReaderActivityRef.current >= 120_000;
+      const visible = isReaderVisible() && document.hasFocus();
+      const audio = generatedAudioRef.current;
+      const active = leaseIsAudio
+        ? audioPlaybackStateRef.current === 'playing'
+        : visible && !idle && Boolean(processedHtml);
+      if (leaseIsAudio) {
+        await syncReadingPassAudioState(audioPlaybackStateRef.current);
+        return;
+      }
+      const sequence = readingPassSequenceRef.current + 1;
+      readingPassSequenceRef.current = sequence;
+      try {
+        const renewed = await renewReadingPassLease({
+          lease: readingPassLeaseRef.current,
+          sequence,
+          active,
+          playbackState: leaseIsAudio ? audioPlaybackStateRef.current : '',
+        });
+        if (cancelled) return;
+        storeReadingPassLease(renewed);
+        if (!active || renewed.status === 'Paused') {
+          setReadingPassStatus('Paused');
+          if (leaseIsAudio) {
+            audio?.pause?.();
+            setReadingPassAudioPhase('idle');
+          } else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall({
+            code: 'PAUSED',
+            message: idle
+              ? 'Reading paused after inactivity. Resume explicitly to reveal this protected page.'
+              : leaseIsAudio
+                ? 'Audiobook billing paused with playback. Continue explicitly when you are ready.'
+                : 'Reading paused while the reader was hidden or unfocused.',
+          });
+        } else if (Number(renewed.balance_seconds) <= 0 || renewed.status === 'Exhausted') {
+          setWalletSeconds(0);
+          if (leaseIsAudio) audio?.pause?.();
+          else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall({ code: 'BALANCE_EXHAUSTED', message: 'Your Reading Pass time is exhausted. Your place is saved.' });
+        } else {
+          setContentBlurred(false);
+        }
+      } catch (heartbeatError) {
+        if (cancelled) return;
+        const passError = readingPassError(heartbeatError);
+        setReadingPassStatus('Connecting');
+        const expiry = Date.parse(readingPassLeaseRef.current?.expiresAt || '');
+        if (!Number.isFinite(expiry) || Date.now() >= expiry) {
+          if (leaseIsAudio) audio?.pause?.();
+          else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall(passError);
+        }
+      }
+    };
+
+    const timer = window.setInterval(renew, heartbeatMs);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [canonicalPageIndex, processedHtml, readingPassLease, readingPassMode, readingPassStatus, storeReadingPassLease, syncReadingPassAudioState]);
+
+  useEffect(() => {
+    const consuming = readingPassLease?.contentType === 'audio'
+      ? readingPassAudioPhase === 'protected' && Boolean(generatedAudioRef.current && !generatedAudioRef.current.paused)
+      : canonicalPageIndex > 3;
+    if (!readingPassMode || readingPassStatus !== 'Running' || !consuming) return undefined;
+    const timer = window.setInterval(() => {
+      setWalletSeconds((seconds) => Math.max(0, Number(seconds || 0) - 1));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [canonicalPageIndex, readingPassAudioPhase, readingPassLease, readingPassMode, readingPassStatus]);
+
+  useEffect(() => {
+    if (!readingPassMode || !readingPassLease?.sessionId || readingPassStatus === 'Preview') return;
+    const seconds = Math.max(0, Number(walletSeconds) || 0);
+    const previous = readingPassPreviousBalanceRef.current;
+    const crossed = previous === null || seconds >= previous
+      ? null
+      : [0, 10, 60, 300].find((threshold) => previous > threshold && seconds <= threshold);
+    if (crossed !== null && crossed !== undefined) {
+      const label = crossed === 0
+        ? 'Reading Pass time exhausted.'
+        : crossed === 10
+          ? '10 seconds of Reading Pass time remaining.'
+          : crossed === 60
+            ? '1 minute of Reading Pass time remaining.'
+            : '5 minutes of Reading Pass time remaining.';
+      setReadingPassAnnouncement(label);
+    }
+    readingPassPreviousBalanceRef.current = seconds;
+  }, [readingPassLease, readingPassMode, readingPassStatus, walletSeconds]);
+
+  useEffect(() => () => {
+    const activeLease = readingPassLeaseRef.current;
+    const latestText = readingPassLatestTextPositionRef.current;
+    if (activeLease?.contentType === 'text' && latestText?.pageIndex) {
+      void saveReadingPassPosition({
+        bookSlug: bookId,
+        pageIndex: latestText.pageIndex,
+        chapterId: latestText.chapterId,
+        version: readingPassPositionVersionRef.current,
+      });
+    }
+    if (activeLease?.sessionId) void endReadingPassSession(activeLease, 'reader_unmount');
+    readingPassLeaseRef.current = null;
+  }, [bookId]);
+
+  useEffect(() => {
+    if (!readingPassMode || !getUserToken() || !chapter?.id) return undefined;
+    readingPassLatestTextPositionRef.current = {
+      pageIndex: canonicalPageIndex,
+      chapterId: chapter.id,
+    };
+    const timer = window.setTimeout(() => {
+      saveReadingPassPosition({
+        bookSlug: bookId,
+        pageIndex: canonicalPageIndex,
+        chapterId: chapter.id,
+        version: readingPassPositionVersionRef.current,
+      }).then((saved) => {
+        readingPassPositionVersionRef.current = Number(saved?.version || readingPassPositionVersionRef.current);
+      }).catch(() => {});
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [bookId, canonicalPageIndex, chapter, readingPassMode]);
+
+  const currentIdx = useMemo(
+    () => chapters.findIndex((item) => item.id === (activeChapterId || chapterId)),
+    [chapters, activeChapterId, chapterId],
+  );
+
+  useEffect(() => {
+    if (!readerHtml) {
+      setPaginatedPages([]);
+      setCurrentPage(0);
+      return undefined;
+    }
+
+    let cancelled = false;
+    let resizeTimer = 0;
+    const runPagination = () => {
+      const contentPages = paginateReaderHtml(readerHtml, {
+        isBengali,
+        fontSize: FONT_SIZES[fontSizeIdx].size,
+        lineHeight: isBengali ? lineSpacing.bengali : lineSpacing.english,
+      });
+      let referenceKind = '';
+      const readerPages = contentPages.map((page, index) => {
+        const detectedReferenceKind = referencePageKind(page.html || '');
+        if (!referenceKind && detectedReferenceKind) referenceKind = detectedReferenceKind;
+        if (referenceKind === 'reference' && detectedReferenceKind === 'index') referenceKind = 'index';
+        return {
+          ...page,
+          type: referenceKind || 'content',
+          contentIndex: referenceKind ? null : index,
+        };
+      });
+      const frontCover = readerCoverUrl(book, 'front');
+      const backCover = readerCoverUrl(book, 'back');
+      const isFirstChapter = currentIdx <= 0;
+      const isLastChapter = currentIdx < 0 || currentIdx >= chapters.length - 1;
+      const includeFrontMatter = chapters.length <= 1 || isFirstChapter;
+      const includeBackMatter = chapters.length <= 1 || isLastChapter;
+      const nextPages = [
+        ...(includeFrontMatter && frontCover ? [{ type: 'front-cover', imageUrl: frontCover, html: '' }] : []),
+        ...(includeFrontMatter && chapters.length > 1 ? [{ type: 'chapter-index', html: '' }] : []),
+        ...readerPages,
+        ...(includeBackMatter && backCover ? [{ type: 'back-cover', imageUrl: backCover, html: '' }] : []),
+      ];
+      if (cancelled) return;
+      setPaginatedPages(nextPages);
+      setCurrentPage((page) => Math.min(page, Math.max(0, nextPages.length - 1)));
+    };
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(runPagination, 120);
+    };
+
+    window.setTimeout(runPagination, 60);
+    window.addEventListener('resize', onResize);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [book, chapters.length, currentIdx, fontSizeIdx, isBengali, lineSpacing.bengali, lineSpacing.english, readerHtml]);
+
+  const currentPageData = paginatedPages.length ? paginatedPages[currentPage] : { type: 'content', html: readerHtml, contentIndex: 0 };
+  const isContentPage = !paginatedPages.length || currentPageData?.type === 'content';
+  const isChapterIndexPage = currentPageData?.type === 'chapter-index';
+  const isIndexPage = currentPageData?.type === 'index';
+  const isReferencePage = currentPageData?.type === 'reference' || isIndexPage;
+  const currentPageHtml = (isContentPage || isReferencePage) ? (currentPageData?.html || readerHtml) : '';
+  const displayedHtml = ttsHtml || currentPageHtml;
+  const pageWordOffsets = useMemo(() => {
+    let cursor = 0;
+    return paginatedPages.map((page) => {
+      const start = cursor;
+      if (page.type === 'content') cursor += countWordsInHtml(page.html || '');
+      return start;
+    });
+  }, [paginatedPages]);
+  const currentPageWordOffset = paginatedPages.length ? (pageWordOffsets[currentPage] || 0) : 0;
+  const effectiveReadProgress = readingPassMode && Number(readingPassManifest?.total_pages) > 0
+    ? Math.round((canonicalPageIndex / Number(readingPassManifest.total_pages)) * 100)
+    : paginatedPages.length > 1
+      ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
+      : readProgress;
+  const generatedAudioSlug = useMemo(
+    () => (hasGeneratedAudioEnabled(book, bookId) ? audioAssetSlugForBook(book, bookId) : ''),
+    [book, bookId],
+  );
+  useEffect(() => {
+    let cancelled = false;
+    setReadingPassAudioPreview(null);
+    if (!readingPassMode || !generatedAudioSlug) return undefined;
+    getReadingPassAudioPreview(bookId)
+      .then((preview) => {
+        if (!cancelled && preview?.audio_url) setReadingPassAudioPreview(preview);
+      })
+      .catch(() => {
+        if (!cancelled) setReadingPassAudioPreview(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [bookId, generatedAudioSlug, readingPassMode]);
+  const generatedAudioReleaseState = useMemo(() => audiobookReleaseState(book || {}), [book]);
+  const generatedAudioDisclosure = useMemo(() => audiobookNarrationDisclosure(book || {}), [book]);
+  const generatedHighlightSyncEnabled = generatedAudioReleaseState.highlightSyncEnabled === true;
+  const approvedGeneratedAudioUrl = audioAssetUrl(book, '.mp3');
+  const approvedGeneratedTimestampsUrl = audioAssetUrl(book, '_timestamps.json');
+  const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book) : '';
+  const selectedGeneratedAudioTrack = useMemo(
+    () => selectAudioTrack({
+      manifest: generatedAudioManifest,
+      chapterId: activeChapterId || chapterId || chapter?.id,
+      currentWordOffset: currentPageWordOffset,
+      preferredSegmentId: generatedAudioSegmentId,
+      approvedAudioUrl: approvedGeneratedAudioUrl,
+      approvedTimestampsUrl: approvedGeneratedTimestampsUrl,
+    }),
+    [
+      activeChapterId,
+      chapter,
+      chapterId,
+      currentPageWordOffset,
+      generatedAudioManifest,
+      generatedAudioSegmentId,
+      approvedGeneratedAudioUrl,
+      approvedGeneratedTimestampsUrl,
+    ],
+  );
+  const generatedAudioUrl = selectedGeneratedAudioTrack.audioUrl;
+  const generatedTimestampsUrl = selectedGeneratedAudioTrack.timestampsUrl;
+  const generatedAudioMetricTags = useCallback((segmentId = selectedGeneratedAudioTrack.segmentId) => ({
+    package_version: selectedGeneratedAudioTrack.packageVersion || '',
+    segment_id: segmentId || '',
+    audio_version: selectedGeneratedAudioTrack.version || '',
+  }), [selectedGeneratedAudioTrack]);
+
+  const persistGeneratedAudioProgress = useCallback(({
+    force = false,
+    segmentId,
+    offset,
+    speed,
+  } = {}) => {
+    const packageVersion = selectedGeneratedAudioTrack.packageVersion || generatedAudioManifest?.packageVersion || '';
+    const effectiveSegmentId = segmentId || selectedGeneratedAudioTrack.segmentId || '';
+    if (!bookId || !packageVersion || !effectiveSegmentId) return false;
+    const now = Date.now();
+    if (!force && now - audiobookProgressSavedAtRef.current < AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS) {
+      return false;
+    }
+    const audio = generatedAudioRef.current;
+    const effectiveOffset = Number.isFinite(Number(offset))
+      ? Number(offset)
+      : Number(audio?.currentTime || 0);
+    const didSave = saveAudiobookProgress(bookId, {
+      packageVersion,
+      segmentId: effectiveSegmentId,
+      offset: effectiveOffset,
+      speed: Number.isFinite(Number(speed)) ? Number(speed) : ttsSpeed,
+    });
+    if (didSave) audiobookProgressSavedAtRef.current = now;
+    return didSave;
+  }, [bookId, generatedAudioManifest, selectedGeneratedAudioTrack, ttsSpeed]);
+
+  useEffect(() => {
+    persistGeneratedAudioProgressRef.current = persistGeneratedAudioProgress;
+  }, [persistGeneratedAudioProgress]);
+
+  const setListeningPanelVisible = useCallback((visible) => {
+    setShowListeningPanel(visible);
+    const params = new URLSearchParams(window.location.search);
+    if (visible) params.set('listen', '1');
+    else params.delete('listen');
+    const query = params.toString();
+    window.history.replaceState(
+      window.history.state,
+      '',
+      `${window.location.pathname}${query ? `?${query}` : ''}`,
+    );
+  }, []);
+
+  const closeListeningPanel = useCallback(() => {
+    setListeningPanelVisible(false);
+  }, [setListeningPanelVisible]);
+
+  const seekGeneratedAudio = useCallback((nextTime) => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
+    const boundedTime = Math.min(audio.duration, Math.max(0, Number(nextTime) || 0));
+    audio.currentTime = boundedTime;
+    setGeneratedAudioCurrentTime(boundedTime);
+    persistGeneratedAudioProgress({ force: true, offset: boundedTime });
+  }, [persistGeneratedAudioProgress]);
+
+  const skipGeneratedAudio = useCallback((seconds) => {
+    const audio = generatedAudioRef.current;
+    if (!audio) return;
+    seekGeneratedAudio((Number(audio.currentTime) || 0) + Number(seconds || 0));
+  }, [seekGeneratedAudio]);
+
+  const changeNarrationSpeed = useCallback((nextValue) => {
+    const nextSpeed = Math.max(0.7, Math.min(1.8, Number(nextValue) || 1));
+    setTtsSpeed(nextSpeed);
+    if (generatedAudioRef.current) generatedAudioRef.current.playbackRate = nextSpeed;
+    persistGeneratedAudioProgressRef.current({ force: true, speed: nextSpeed });
+  }, []);
+
+  const changeGeneratedAudioVolume = useCallback((nextValue) => {
+    const nextVolume = Math.max(0, Math.min(1, Number(nextValue) || 0));
+    const audio = generatedAudioRef.current;
+    setGeneratedAudioVolume(nextVolume);
+    if (nextVolume > 0) setGeneratedAudioMuted(false);
+    if (audio) {
+      audio.volume = nextVolume;
+      if (nextVolume > 0) audio.muted = false;
+    }
+  }, []);
+
+  const toggleGeneratedAudioMute = useCallback(() => {
+    setGeneratedAudioMuted((muted) => {
+      const nextMuted = !muted;
+      if (generatedAudioRef.current) generatedAudioRef.current.muted = nextMuted;
+      return nextMuted;
+    });
+  }, []);
+
+  useEffect(() => {
+    const handlePageHide = () => persistGeneratedAudioProgressRef.current({ force: true });
+    window.addEventListener('pagehide', handlePageHide);
+    return () => window.removeEventListener('pagehide', handlePageHide);
+  }, []);
+
+  const applyPendingAudioOffset = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (
+      !audio
+      || audio.readyState < 1
+      || pendingAudioOffsetSegmentRef.current !== selectedGeneratedAudioTrack.segmentId
+      || !Number.isFinite(Number(pendingAudioOffsetRef.current))
+    ) {
+      return false;
+    }
+    const duration = Number(audio.duration);
+    const maximum = Number.isFinite(duration) && duration > 0 ? Math.max(0, duration - 0.05) : Number.MAX_SAFE_INTEGER;
+    audio.currentTime = Math.min(maximum, Math.max(0, Number(pendingAudioOffsetRef.current)));
+    pendingAudioOffsetRef.current = null;
+    pendingAudioOffsetSegmentRef.current = '';
+    return true;
+  }, [selectedGeneratedAudioTrack.segmentId]);
+
+  const prefetchNextGeneratedAudioMetadata = useCallback((audio) => {
+    if (readingPassMode) return;
+    const nextSegmentId = selectedGeneratedAudioTrack.nextSegmentId;
+    if (!shouldPrefetchNextSegment(audio?.currentTime, audio?.duration, nextSegmentId)) return;
+    const prefetchKey = `${selectedGeneratedAudioTrack.packageVersion}:${nextSegmentId}`;
+    if (prefetchedAudioSegmentsRef.current.has(prefetchKey)) return;
+    prefetchedAudioSegmentsRef.current.add(prefetchKey);
+    // HEAD warms only endpoint/object metadata; the MP3 response body remains untouched.
+    prefetchAudioMetadata(selectedGeneratedAudioTrack.nextAudioUrl);
+    prefetchAsset(selectedGeneratedAudioTrack.nextTimestampsUrl, { credentials: 'include' });
+  }, [readingPassMode, selectedGeneratedAudioTrack]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setGeneratedAudioManifest(null);
+    setGeneratedAudioSegmentId('');
+    if (!generatedAudioManifestUrl || !generatedAudioSlug || lockedState) return undefined;
+    if (readingPassMode && readingPassLease?.contentType !== 'audio') return undefined;
+    fetch(generatedAudioManifestUrl, { cache: readingPassMode ? 'no-store' : 'force-cache', credentials: 'include' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Audio manifest unavailable');
+        return response.json();
+      })
+      .then((raw) => {
+        if (!cancelled) {
+          const normalizedManifest = normalizeAudioManifest(raw, resolveAssetUrl, {
+            expectedSlug: bookId,
+            expectedPackageVersion: generatedAudioReleaseState.packageVersion,
+          });
+          if (!normalizedManifest.valid) {
+            throw new Error('Audio package manifest does not match approved reader release truth');
+          }
+          const serverResume = readingPassMode
+            && readingPassAudioPhase === 'protected'
+            && readingPassPendingAudioPositionRef.current !== null
+            ? audioSegmentAtMediaPosition(
+              normalizedManifest,
+              readingPassPendingAudioPositionRef.current,
+            )
+            : null;
+          const savedProgress = loadAudiobookProgress(bookId, normalizedManifest.packageVersion);
+          const visibleChapterId = activeChapterId || chapterId || '';
+          const savedSegmentChapterId = chapterIdForAudioSegment(
+            normalizedManifest,
+            savedProgress?.segmentId,
+          );
+          const savedSegmentExists = Boolean(
+            savedProgress
+            && savedSegmentChapterId
+            && savedSegmentChapterId === visibleChapterId,
+          );
+          prefetchedAudioSegmentsRef.current.clear();
+          setGeneratedAudioManifest(normalizedManifest);
+          if (serverResume?.segmentId && serverResume.chapterId !== visibleChapterId) {
+            pendingCrossChapterAudioResumeRef.current = {
+              bookId,
+              packageVersion: normalizedManifest.packageVersion,
+              chapterId: serverResume.chapterId,
+              segmentId: serverResume.segmentId,
+              offset: serverResume.offsetSeconds,
+            };
+            navigate(`/reader/${bookId}${readerSearchParams({
+              chapterId: serverResume.chapterId,
+              listeningMode: true,
+            })}`);
+          } else if (serverResume?.segmentId) {
+            readingPassPendingAudioPositionRef.current = null;
+            pendingAudioOffsetRef.current = serverResume.offsetSeconds;
+            pendingAudioOffsetSegmentRef.current = serverResume.segmentId;
+            setGeneratedAudioSegmentId(serverResume.segmentId);
+          } else if (savedSegmentExists) {
+            pendingAudioOffsetRef.current = savedProgress.offset;
+            pendingAudioOffsetSegmentRef.current = savedProgress.segmentId;
+            setGeneratedAudioSegmentId(savedProgress.segmentId);
+            setTtsSpeed(savedProgress.speed);
+          } else {
+            pendingAudioOffsetRef.current = null;
+            pendingAudioOffsetSegmentRef.current = '';
+          }
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setGeneratedAudioManifest(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    activeChapterId,
+    bookId,
+    chapterId,
+    generatedAudioManifestUrl,
+    generatedAudioReleaseState.packageVersion,
+    generatedAudioSlug,
+    lockedState,
+    navigate,
+    readingPassAudioAccessVersion,
+    readingPassAudioPhase,
+    readingPassLease?.contentType,
+    readingPassMode,
+  ]);
+
+  useEffect(() => {
+    const pending = pendingCrossChapterAudioResumeRef.current;
+    const visibleChapterId = activeChapterId || chapterId || chapter?.id || '';
+    if (pending && pending.bookId !== bookId) {
+      pendingCrossChapterAudioResumeRef.current = null;
+      return;
+    }
+    if (
+      !pending
+      || !generatedAudioManifest
+      || !readerHtml
+      || loading
+      || lockedState
+      || pending.chapterId !== visibleChapterId
+      || chapter?.id !== visibleChapterId
+    ) return;
+    const segmentChapterId = chapterIdForAudioSegment(
+      generatedAudioManifest,
+      pending.segmentId,
+    );
+    if (!pendingAudiobookResumeMatches(pending, {
+      bookId,
+      packageVersion: generatedAudioManifest.packageVersion,
+      chapterId: visibleChapterId,
+      segmentChapterId,
+    })) {
+      pendingCrossChapterAudioResumeRef.current = null;
+      return;
+    }
+    pendingCrossChapterAudioResumeRef.current = null;
+    pendingAudioOffsetRef.current = Number.isFinite(Number(pending.offset))
+      ? Number(pending.offset)
+      : 0;
+    pendingAudioOffsetSegmentRef.current = pending.segmentId;
+    saveAudiobookProgress(bookId, {
+      packageVersion: generatedAudioManifest.packageVersion,
+      segmentId: pending.segmentId,
+      offset: Number.isFinite(Number(pending.offset)) ? Number(pending.offset) : 0,
+      speed: ttsSpeed,
+    });
+    resumeAfterSegmentChangeRef.current = true;
+    setGeneratedAudioSegmentId(pending.segmentId);
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+    setTtsWordIndex(-1);
+  }, [
+    activeChapterId,
+    bookId,
+    chapter,
+    chapterId,
+    generatedAudioManifest,
+    loading,
+    lockedState,
+    readerHtml,
+    ttsSpeed,
+  ]);
+
+  useEffect(() => {
+    let cancelled = false;
+    generatedTimestampsRef.current = [];
+    generatedAudioWordOffsetRef.current = 0;
+    setGeneratedAudioAvailable(false);
+    if (!resumeAfterSegmentChangeRef.current) {
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+    }
+    if (!generatedAudioUrl || lockedState) return undefined;
+    if (!generatedHighlightSyncEnabled) {
+      // Approved MP3-only/paragraph-sync editions remain playable without
+      // pretending paragraph cues are token-highlight timestamps.
+      setGeneratedAudioAvailable(true);
+      return undefined;
+    }
+    if (!generatedTimestampsUrl || !readerHtml) return undefined;
+
+    fetch(generatedTimestampsUrl, { cache: readingPassMode ? 'no-store' : 'force-cache', credentials: 'include' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Generated audio timestamps unavailable');
+        return response.json();
+      })
+      .then((timestamps) => {
+        if (cancelled) return;
+        const normalized = normalizeGeneratedTimestamps(timestamps, readerHtml, selectedGeneratedAudioTrack.startWord || 0);
+        if (normalized.words.length > 0) {
+          generatedTimestampsRef.current = normalized.words;
+          generatedAudioWordOffsetRef.current = normalized.offset;
+          setGeneratedAudioAvailable(true);
+          sendReaderMetric('reader_audio_timestamps_loaded', {
+            session_id: sessionId,
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            metrics: {
+              timestamp_count: normalized.words.length,
+              chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
+            },
+            tags: {
+              audio_version: selectedGeneratedAudioTrack.version || '',
+            },
+          });
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          generatedTimestampsRef.current = [];
+          generatedAudioWordOffsetRef.current = 0;
+          setGeneratedAudioAvailable(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioUrl, generatedHighlightSyncEnabled, generatedTimestampsUrl, lockedState, readerHtml, readingPassMode, selectedGeneratedAudioTrack, sessionId]);
+
+  useEffect(() => {
+    if (!resumeAfterSegmentChangeRef.current || !generatedAudioAvailable || !generatedAudioUrl || lockedState) return;
+    const audio = generatedAudioRef.current;
+    if (!audio) return;
+    audioLoadStartedAtRef.current = readerNowMs();
+    audio.src = generatedAudioUrl;
+    audio.preload = 'auto';
+    audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
+    audio.load();
+  }, [generatedAudioAvailable, generatedAudioUrl, lockedState, ttsSpeed]);
+
+  useEffect(() => {
+    setTtsHtml('');
+    setTotalWords(countWordsInHtml(currentPageHtml));
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
+  }, [currentPageHtml]);
+
+  useEffect(() => {
+    cacheReaderWords();
+  }, [cacheReaderWords, displayedHtml]);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return undefined;
+
+    let rafId = 0;
+    const updateFromScroll = () => {
+      rafId = 0;
+      const max = el.scrollHeight - el.clientHeight;
+      const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
+      setReadProgress(Math.min(100, Math.round(pct)));
+
+      if (el.scrollTop > lastScrollY.current + 10) setToolbarVisible(false);
+      if (el.scrollTop < lastScrollY.current - 5) setToolbarVisible(true);
+      lastScrollY.current = el.scrollTop;
+    };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(updateFromScroll);
+    };
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    setShowReaderUpsell(false);
+  }, [activeChapterId, chapterId]);
+
+  useEffect(() => {
+    if (bookId !== LIVE_APPROVED_SLUG || !chapter || lockedState || loading || effectiveReadProgress < 98 || currentIdx !== 0) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (draculaChapterOneCompleteRef.current === currentKey) return;
+    draculaChapterOneCompleteRef.current = currentKey;
+    trackFunnelEvent(DRACULA_CTA_EVENTS.chapterOneComplete, {
+      book: LIVE_APPROVED_SLUG,
+      book_slug: LIVE_APPROVED_SLUG,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, currentIdx, effectiveReadProgress, loading, lockedState]);
+
+  // Funnel prompt appears near the end of short reads only, never mid-paragraph.
+  useEffect(() => {
+    if (!chapter || lockedState || loading || effectiveReadProgress < 96) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (upsellShownRef.current === currentKey || !canShowReaderFinishPrompt()) return;
+    const estimatedMinutes = totalWords > 0 ? Math.ceil(totalWords / 220) : 3;
+    if (estimatedMinutes > 10 && !chapter?.is_free_preview) return;
+
+    upsellShownRef.current = currentKey;
+    markReaderFinishPromptShown();
+    setShowReaderUpsell(true);
+    trackFunnelEvent('reader_upsell_shown', {
+      book_slug: bookId,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+      estimated_minutes: estimatedMinutes,
+      pack_id: '1h',
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, effectiveReadProgress, loading, lockedState, totalWords]);
+
+  // Completion rewards are best-effort and idempotent; failures must not disturb reading.
+  useEffect(() => {
+    if (!chapter || lockedState || loading || effectiveReadProgress < 98 || !getUserToken()) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (completionReportedRef.current === currentKey) return;
+    completionReportedRef.current = currentKey;
+
+    async function recordCompletion() {
+      try {
+        const { data } = await axios.post(
+          `${API}/users/me/rewards/completion`,
+          {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            chapter_title: chapter?.title || '',
+            progress: effectiveReadProgress,
+          },
+          { headers: getUserAuthHeaders() },
+        );
+        trackFunnelEvent('reader_completion_recorded', {
+          book_slug: bookId,
+          chapter_id: activeChapterId || chapterId || chapter?.id,
+          streak_days: data?.streak_days || 0,
+        });
+        if (bookId === 'dracula' && (chapter?.order === 0 || /chapter i\b/i.test(chapter?.title || ''))) {
+          trackFunnelEvent('chapter_1_completed', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            source: 'reader',
+          });
+        }
+
+        if (data?.eligible) {
+          const claimRes = await axios.post(`${API}/users/me/rewards/claim`, {}, { headers: getUserAuthHeaders() });
+          const reward = claimRes.data || {};
+          if (reward.claimed_now) {
+            setWalletSeconds(reward.wallet_seconds || 0);
+            toast.success(`${reward.credit_minutes || 10} minutes credited toward The Reader’s Reserve.`);
+            trackFunnelEvent('reader_reward_claimed', {
+              book_slug: bookId,
+              chapter_id: activeChapterId || chapterId || chapter?.id,
+              credit_minutes: reward.credit_minutes || 10,
+            });
+          }
+        }
+      } catch {
+        // Reward logging must never interrupt reading.
+      }
+    }
+
+    recordCompletion();
+  }, [activeChapterId, bookId, chapter, chapterId, effectiveReadProgress, loading, lockedState]);
+
+  const handleTopUp = async (pack) => {
+    if (!pack) return;
+    setTopUpProcessing(true);
+    const headers = getUserAuthHeaders();
+
+    try {
+      const orderRes = await axios.post(`${API}/payments/create-order`, { pack_id: pack._id || pack.id }, { headers });
+      const orderData = orderRes.data;
+      const options = {
+        key: orderData.key_id,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        order_id: orderData.order_id,
+        name: 'Earnalism',
+        description: `Top up ${pack.minutes} minutes`,
+        handler: async (response) => {
+          const verifyRes = await axios.post(`${API}/payments/verify`, {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          }, { headers });
+          const { wallet_seconds } = verifyRes.data;
+
+          setWalletSeconds(wallet_seconds);
+          setShowTopUpModal(false);
+          setTopUpProcessing(false);
+          setShowTopUpSuccess(true);
+          setTopUpSuccessMinutes(pack.minutes);
+          setShowLowBalanceWarning(false);
+
+          setTimeout(() => {
+            setShowTopUpSuccess(false);
+            if (scrollContainerRef.current) {
+              scrollContainerRef.current.scrollTop = savedScrollPosition;
+            }
+            lastReaderActivityRef.current = Date.now();
+            clearInterval(pulseIntervalRef.current);
+            if (isReaderVisible()) {
+              pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+            }
+          }, 1500);
+        },
+        modal: {
+          ondismiss: () => setTopUpProcessing(false),
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      setTopUpProcessing(false);
+    }
+  };
+
+  const highlightGeneratedWord = useCallback((globalIndex) => {
+    if (highlightedWordIndexRef.current === globalIndex) return;
+    let current = wordMapRef.current.get(globalIndex);
+    if ((!current || !current.isConnected) && contentRef.current) {
+      cacheReaderWords();
+      current = wordMapRef.current.get(globalIndex);
+    }
+    if (!current) return;
+
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    current.classList.add('active');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    activeWordRef.current = current;
+    highlightedWordIndexRef.current = globalIndex;
+    setTtsWordIndex(globalIndex);
+  }, [cacheReaderWords]);
+
+  const recordGeneratedAudioMetric = useCallback((event, {
+    timings = {},
+    metrics = {},
+    tags = {},
+  } = {}) => {
+    sendReaderMetric(event, {
+      session_id: sessionId,
+      book_slug: bookId,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+      timings,
+      metrics,
+      tags: {
+        ...generatedAudioMetricTags(),
+        ...tags,
+      },
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioMetricTags, sessionId]);
+
+  const primeGeneratedAudio = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
+    if (audio.getAttribute('src') !== generatedAudioUrl) {
+      audioLoadStartedAtRef.current = readerNowMs();
+      audio.src = generatedAudioUrl;
+    }
+    audio.preload = 'auto';
+    audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
+    if (audio.readyState === 0) {
+      if (!audioLoadStartedAtRef.current) audioLoadStartedAtRef.current = readerNowMs();
+      audio.load();
+    }
+  }, [generatedAudioAvailable, generatedAudioUrl, ttsSpeed]);
+
+  const startGeneratedAudio = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    const timestamps = generatedTimestampsRef.current || [];
+    const pageHtml = currentPageHtml || readerHtml;
+    if (!isContentPage || !audio || !generatedAudioAvailable || !pageHtml) return false;
+
+    audioIntentStartedAtRef.current = readerNowMs();
+    if (!generatedHighlightSyncEnabled) {
+      generatedPageEndRef.current = null;
+      setTtsHtml('');
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+      primeGeneratedAudio();
+      requestAudiobookPlayback(audio).catch(() => {
+        audioIntentStartedAtRef.current = 0;
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        setTtsPaused(false);
+        toast.error('Generated audiobook could not start in this browser.');
+      });
+      return true;
+    }
+    if (!timestamps.length) return false;
+    const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
+    const firstWord = currentPageWordOffset;
+    const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
+    const firstAudioWord = Math.max(0, timestampArrayIndexForWord(timestamps, firstWord));
+    const firstTimestamp = timestamps[firstAudioWord];
+    if (!firstTimestamp) return false;
+
+    const restoringSelectedSegment = pendingAudioOffsetSegmentRef.current === selectedGeneratedAudioTrack.segmentId;
+    if (!restoringSelectedSegment) {
+      pendingAudioOffsetRef.current = audioTimestampStartMs(firstTimestamp) / 1000;
+      pendingAudioOffsetSegmentRef.current = selectedGeneratedAudioTrack.segmentId;
+    }
+    generatedPageEndRef.current = Math.max(0, lastWord);
+    const tickGeneratedHighlight = () => {
+      const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+      const wordIndex = audioIndex >= 0 ? timestampWordIndex(timestamps[audioIndex], audioIndex) : -1;
+      const pageEnd = generatedPageEndRef.current;
+      if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
+        audio.pause();
+        generatedPageEndRef.current = null;
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        setTtsPaused(false);
+        return false;
+      }
+      if (wordIndex >= currentPageWordOffset) {
+        highlightGeneratedWord(wordIndex);
+        return true;
+      }
+      return false;
+    };
+    setTtsHtml(wrapped.html);
+    setTotalWords(wrapped.totalWords);
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+
+    primeGeneratedAudio();
+    applyPendingAudioOffset();
+    // This must remain in the click handler's synchronous call stack. The
+    // visual word wrapping can wait for React/RAF, but the browser's playback
+    // permission cannot.
+    requestAudiobookPlayback(audio).catch(() => {
+      audioIntentStartedAtRef.current = 0;
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      toast.error('Generated audiobook could not start in this browser.');
+    });
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+        applyPendingAudioOffset();
+        tickGeneratedHighlight();
+      });
+    });
+    return true;
+  }, [applyPendingAudioOffset, currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml, selectedGeneratedAudioTrack.segmentId]);
+
+  const handleGeneratedAudioMetadata = useCallback(() => {
+    const loadedAudio = generatedAudioRef.current;
+    setGeneratedAudioDuration(Number.isFinite(loadedAudio?.duration) ? loadedAudio.duration : 0);
+    setGeneratedAudioCurrentTime(Number.isFinite(loadedAudio?.currentTime) ? loadedAudio.currentTime : 0);
+    applyPendingAudioOffset();
+    if (audioLoadStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_metadata_loaded', {
+        timings: {
+          audio_metadata_ms: Math.round(readerNowMs() - audioLoadStartedAtRef.current),
+        },
+        metrics: {
+          chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
+        },
+      });
+      audioLoadStartedAtRef.current = 0;
+    }
+
+    if (!resumeAfterSegmentChangeRef.current) return;
+    resumeAfterSegmentChangeRef.current = false;
+    const audio = generatedAudioRef.current;
+    if (!audio) return;
+    audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
+    requestAudiobookPlayback(audio).then(() => {
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+    }).catch(() => {
+      segmentTransitionStartedAtRef.current = 0;
+      segmentTransitionFromRef.current = '';
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      toast.error('The next audiobook segment could not start in this browser.');
+    });
+  }, [applyPendingAudioOffset, recordGeneratedAudioMetric, selectedGeneratedAudioTrack.chunked, ttsSpeed]);
+
+  const flushReadingPassAudioPosition = useCallback((force = false) => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !readingPassMode || readingPassAudioPhase !== 'protected') return;
+    if (!force && Date.now() - readingPassAudioPositionSavedAtRef.current < 5000) return;
+    readingPassAudioPositionSavedAtRef.current = Date.now();
+    const cumulativeSeconds = (Number(selectedGeneratedAudioTrack.cumulativeStartMs) || 0) / 1000
+      + (Number(audio.currentTime) || 0);
+    readingPassAudioPositionSyncRef.current = readingPassAudioPositionSyncRef.current
+      .catch(() => {})
+      .then(() => saveReadingPassAudioPosition({
+        bookSlug: bookId,
+        positionSeconds: cumulativeSeconds,
+        version: readingPassAudioPositionVersionRef.current,
+      }))
+      .then((saved) => {
+        readingPassAudioPositionVersionRef.current = Number(
+          saved?.version || readingPassAudioPositionVersionRef.current,
+        );
+      })
+      .catch(() => {});
+  }, [bookId, readingPassAudioPhase, readingPassMode, selectedGeneratedAudioTrack.cumulativeStartMs]);
+
+  const handleGeneratedAudioPlaying = useCallback(() => {
+    audioPlaybackStateRef.current = 'playing';
+    const now = readerNowMs();
+    if (audioIntentStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_ttfa', {
+        timings: {
+          ttfa_ms: Math.round(now - audioIntentStartedAtRef.current),
+        },
+      });
+      audioIntentStartedAtRef.current = 0;
+    }
+    if (audioStallStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_stall', {
+        timings: {
+          stall_ms: Math.round(now - audioStallStartedAtRef.current),
+        },
+      });
+      audioStallStartedAtRef.current = 0;
+    }
+    if (segmentTransitionStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_segment_transition', {
+        timings: {
+          transition_ms: Math.round(now - segmentTransitionStartedAtRef.current),
+        },
+        tags: {
+          from_segment_id: segmentTransitionFromRef.current,
+        },
+      });
+      segmentTransitionStartedAtRef.current = 0;
+      segmentTransitionFromRef.current = '';
+    }
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+    void syncReadingPassAudioState('playing');
+  }, [recordGeneratedAudioMetric, syncReadingPassAudioState]);
+
+  const markGeneratedAudioStall = useCallback(() => {
+    void syncReadingPassAudioState('buffering');
+    if (audioIntentStartedAtRef.current) return;
+    if (!audioStallStartedAtRef.current) audioStallStartedAtRef.current = readerNowMs();
+  }, [syncReadingPassAudioState]);
+
+  const handleGeneratedAudioSeeking = useCallback(() => {
+    void syncReadingPassAudioState('buffering');
+    if (!audioSeekStartedAtRef.current) audioSeekStartedAtRef.current = readerNowMs();
+  }, [syncReadingPassAudioState]);
+
+  const handleGeneratedAudioSeeked = useCallback(() => {
+    if (!audioSeekStartedAtRef.current) return;
+    recordGeneratedAudioMetric('reader_audio_seek', {
+      timings: {
+        seek_ms: Math.round(readerNowMs() - audioSeekStartedAtRef.current),
+      },
+    });
+    audioSeekStartedAtRef.current = 0;
+    persistGeneratedAudioProgress({ force: true });
+  }, [persistGeneratedAudioProgress, recordGeneratedAudioMetric]);
+
+  const handleGeneratedAudioPause = useCallback(() => {
+    void syncReadingPassAudioState('paused');
+    audioStallStartedAtRef.current = 0;
+    persistGeneratedAudioProgress({ force: true });
+    flushReadingPassAudioPosition(true);
+  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, syncReadingPassAudioState]);
+
+  const startTTS = useCallback(() => {
+    if (!isContentPage) {
+      toast.info('Audio is available on reading pages only.');
+      return;
+    }
+    if (isNarrationDisabledForBook(book, bookId)) {
+      toast.info('Audiobook controls stay hidden until the release gate approves this title.');
+      return;
+    }
+    if (readingPassMode && readingPassAudioPhase !== 'protected' && readingPassAudioPreview?.audio_url) {
+      const audio = generatedAudioRef.current;
+      if (!audio) return;
+      if (audio.getAttribute('src') !== readingPassAudioPreview.audio_url) {
+        audio.src = readingPassAudioPreview.audio_url;
+        audio.currentTime = 0;
+      }
+      setReadingPassAudioPhase('preview');
+      setReadingPassStatus('Preview');
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+      requestAudiobookPlayback(audio).catch(() => {
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        toast.error('The audiobook preview could not start in this browser.');
+      });
+      return;
+    }
+    if (startGeneratedAudio()) return;
+
+    toast.info('Approved audiobook audio is not available for this reader page yet.');
+  }, [book, bookId, isContentPage, readingPassAudioPhase, readingPassAudioPreview, readingPassMode, startGeneratedAudio]);
+
+  const pauseTTS = () => {
+    if (generatedAudioActive) {
+      persistGeneratedAudioProgress({ force: true });
+      generatedAudioRef.current?.pause?.();
+    }
+    setTtsPaused(true);
+  };
+
+  const resumeTTS = () => {
+    if (generatedAudioActive) {
+      audioIntentStartedAtRef.current = readerNowMs();
+      requestAudiobookPlayback(generatedAudioRef.current).catch(() => {
+        audioIntentStartedAtRef.current = 0;
+        toast.error('Generated audiobook could not resume.');
+      });
+      setTtsPaused(false);
+      return;
+    }
+    setTtsPaused(false);
+  };
+
+  const syncGeneratedAudioHighlight = useCallback(() => {
+    if (!generatedHighlightSyncEnabled) return false;
+    const audio = generatedAudioRef.current;
+    const timestamps = generatedTimestampsRef.current || [];
+    if (!audio || !timestamps.length) return false;
+
+    const index = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+    const wordIndex = index >= 0 ? timestampWordIndex(timestamps[index], index) : -1;
+    const pageEnd = generatedPageEndRef.current;
+    if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
+      audio.pause();
+      generatedPageEndRef.current = null;
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      return false;
+    }
+    if (wordIndex >= currentPageWordOffset) {
+      highlightGeneratedWord(wordIndex);
+      return true;
+    }
+    return false;
+  }, [currentPageWordOffset, generatedHighlightSyncEnabled, highlightGeneratedWord]);
+
+  const handleGeneratedAudioTimeUpdate = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (audio) {
+      setGeneratedAudioCurrentTime(Number.isFinite(audio.currentTime) ? audio.currentTime : 0);
+      if (Number.isFinite(audio.duration)) setGeneratedAudioDuration(audio.duration);
+      persistGeneratedAudioProgress();
+      prefetchNextGeneratedAudioMetadata(audio);
+      flushReadingPassAudioPosition();
+    }
+    if (ttsPaused) return;
+    if (generatedHighlightRafRef.current) return;
+    generatedHighlightRafRef.current = window.requestAnimationFrame(() => {
+      generatedHighlightRafRef.current = 0;
+      syncGeneratedAudioHighlight();
+    });
+  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata, syncGeneratedAudioHighlight, ttsPaused]);
+
+  const handleGeneratedAudioEnded = useCallback(() => {
+    if (generatedHighlightRafRef.current) {
+      window.cancelAnimationFrame(generatedHighlightRafRef.current);
+      generatedHighlightRafRef.current = 0;
+    }
+    generatedPageEndRef.current = null;
+    setGeneratedAudioCurrentTime(0);
+    setGeneratedAudioDuration(0);
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
+    if (readingPassMode && readingPassAudioPhase === 'preview') {
+      setReadingPassAudioPhase('idle');
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      setReadingPassStatus('Preview ended');
+      setReadingPassPaywall({
+        code: 'AUDIO_PREVIEW_ENDED',
+        message: 'The separate 3-minute audiobook preview has ended. Sign in and use Reading Pass time to continue securely.',
+      });
+      return;
+    }
+    if (selectedGeneratedAudioTrack.nextSegmentId) {
+      flushReadingPassAudioPosition(true);
+      void syncReadingPassAudioState('buffering');
+      persistGeneratedAudioProgress({
+        force: true,
+        segmentId: selectedGeneratedAudioTrack.nextSegmentId,
+        offset: 0,
+      });
+      segmentTransitionStartedAtRef.current = readerNowMs();
+      segmentTransitionFromRef.current = selectedGeneratedAudioTrack.segmentId || '';
+      if (
+        selectedGeneratedAudioTrack.nextChapterId
+        && selectedGeneratedAudioTrack.nextChapterId !== selectedGeneratedAudioTrack.chapterId
+      ) {
+        pendingCrossChapterAudioResumeRef.current = {
+          bookId,
+          packageVersion: selectedGeneratedAudioTrack.packageVersion,
+          chapterId: selectedGeneratedAudioTrack.nextChapterId,
+          segmentId: selectedGeneratedAudioTrack.nextSegmentId,
+        };
+        navigate(`/reader/${bookId}${readerSearchParams({
+          chapterId: selectedGeneratedAudioTrack.nextChapterId,
+          adminPreview,
+        })}`);
+        return;
+      }
+      resumeAfterSegmentChangeRef.current = true;
+      setGeneratedAudioSegmentId(selectedGeneratedAudioTrack.nextSegmentId);
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+      setTtsWordIndex(-1);
+      return;
+    }
+    void syncReadingPassAudioState('ended');
+    flushReadingPassAudioPosition(true);
+    persistGeneratedAudioProgress({ force: true });
+    setGeneratedAudioActive(false);
+    setTtsActive(false);
+    setTtsPaused(false);
+    setTtsWordIndex(-1);
+  }, [
+    adminPreview,
+    bookId,
+    flushReadingPassAudioPosition,
+    navigate,
+    persistGeneratedAudioProgress,
+    readingPassAudioPhase,
+    readingPassMode,
+    selectedGeneratedAudioTrack.chapterId,
+    selectedGeneratedAudioTrack.nextChapterId,
+    selectedGeneratedAudioTrack.nextSegmentId,
+    selectedGeneratedAudioTrack.packageVersion,
+    selectedGeneratedAudioTrack.segmentId,
+    syncReadingPassAudioState,
+  ]);
+
+  useEffect(() => {
+    if (!generatedAudioActive || ttsPaused) return undefined;
+    let timerId = 0;
+    const tick = () => {
+      syncGeneratedAudioHighlight();
+      timerId = window.setTimeout(tick, 140);
+    };
+    tick();
+    return () => window.clearTimeout(timerId);
+  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
+
+  const handleVoiceToggle = () => {
+    if (!ttsActive) startTTS();
+    else if (ttsPaused) resumeTTS();
+    else pauseTTS();
+  };
+
+  const prevChapter = chapters[currentIdx - 1];
+  const nextChapter = chapters[currentIdx + 1];
+  const hasPages = paginatedPages.length > 1;
+  const hasPreviousCanonicalPage = readingPassMode && canonicalPageIndex > 1;
+  const hasNextCanonicalPage = readingPassMode && canonicalPageIndex < Number(readingPassManifest?.total_pages || 0);
+  const canPrev = readingPassMode
+    ? (currentPage > 0 || hasPreviousCanonicalPage)
+    : (hasPages ? currentPage > 0 || Boolean(prevChapter) : Boolean(prevChapter));
+  const canNext = readingPassMode
+    ? (currentPage < paginatedPages.length - 1 || hasNextCanonicalPage)
+    : (hasPages ? currentPage < paginatedPages.length - 1 || Boolean(nextChapter) : Boolean(nextChapter));
+  const readerUserName = user && typeof user === 'object' ? user.name : 'Reader';
+  const readerUserEmail = user && typeof user === 'object' ? user.email : '';
+  const rightsCopy = rightsForBook(book, readerUserName);
+  const narrationDisabledForBook = isNarrationDisabledForBook(book, bookId);
+
+  useEffect(() => {
+    if (readingPassMode || !book || lockedState || loading || !nextChapter?.id) return undefined;
+    const idleId = runWhenIdle(() => {
+      const nextVersion = chapterVersionFor(chapters, nextChapter.id);
+      const canPrefetchPaid = adminPreview || nextChapter.is_preview || walletSeconds > 0;
+      if (canPrefetchPaid) {
+        fetchReaderChapter({
+          bookId,
+          chapterId: nextChapter.id,
+          adminPreview,
+          version: nextVersion,
+        }).catch(() => {});
+      }
+
+    });
+    return () => cancelIdleTask(idleId);
+  }, [
+    adminPreview,
+    book,
+    bookId,
+    chapters,
+    loading,
+    lockedState,
+    nextChapter,
+    readingPassMode,
+    walletSeconds,
+  ]);
+
+  const goToChapter = useCallback((id) => {
+    stopTTS();
+    if (readingPassMode) {
+      const chapterSegment = readingPassManifest?.chapters?.find((item) => item.chapter_id === id);
+      const targetPage = Number(chapterSegment?.first_page_index || 1);
+      navigate(`${readerRouteForBook(bookId)}${readerSearchParams({ chapterId: id, canonicalPageIndex: targetPage, adminPreview })}`);
+      return;
+    }
+    navigate(`${readerRouteForBook(bookId)}${readerSearchParams({ chapterId: id, adminPreview })}`);
+  }, [adminPreview, bookId, navigate, readingPassManifest, readingPassMode, stopTTS]);
+
+  const goToCanonicalPage = useCallback((pageIndex) => {
+    const bounded = Math.max(1, Math.min(Number(readingPassManifest?.total_pages || 1), Number(pageIndex) || 1));
+    const chapterSegment = readingPassManifest?.chapters?.find(
+      (item) => bounded >= Number(item.first_page_index) && bounded <= Number(item.last_page_index),
+    );
+    stopTTS();
+    navigate(`${readerRouteForBook(bookId)}${readerSearchParams({
+      chapterId: chapterSegment?.chapter_id || activeChapterId || chapterId,
+      canonicalPageIndex: bounded,
+      adminPreview,
+    })}`);
+  }, [activeChapterId, adminPreview, bookId, chapterId, navigate, readingPassManifest, stopTTS]);
+
+  const goPrev = useCallback(() => {
+    stopTTS();
+    if (hasPages && currentPage > 0) {
+      setCurrentPage((page) => Math.max(0, page - 1));
+      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (readingPassMode && hasPreviousCanonicalPage) {
+      goToCanonicalPage(canonicalPageIndex - 1);
+      return;
+    }
+    if (prevChapter) goToChapter(prevChapter.id);
+  }, [canonicalPageIndex, currentPage, goToCanonicalPage, goToChapter, hasPages, hasPreviousCanonicalPage, prevChapter, readingPassMode, stopTTS]);
+
+  const goNext = useCallback(() => {
+    stopTTS();
+    if (hasPages && currentPage < paginatedPages.length - 1) {
+      setCurrentPage((page) => Math.min(paginatedPages.length - 1, page + 1));
+      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (readingPassMode && hasNextCanonicalPage) {
+      goToCanonicalPage(canonicalPageIndex + 1);
+      return;
+    }
+    if (nextChapter) goToChapter(nextChapter.id);
+  }, [canonicalPageIndex, currentPage, goToCanonicalPage, goToChapter, hasNextCanonicalPage, hasPages, nextChapter, paginatedPages.length, readingPassMode, stopTTS]);
+
+  const goToPage = useCallback((index, options = {}) => {
+    const nextPage = Math.min(Math.max(Number(index) || 0, 0), Math.max(paginatedPages.length - 1, 0));
+    if (nextPage === currentPage) return;
+    stopTTS();
+    setCurrentPage(nextPage);
+    scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
+  }, [currentPage, paginatedPages.length, stopTTS]);
+
+  const resumeReadingPass = useCallback(async ({ transfer = false } = {}) => {
+    try {
+      const currentLease = readingPassLeaseRef.current;
+      if (currentLease?.sessionId && readingPassStatus === 'Paused') {
+        await endReadingPassSession(currentLease, 'explicit_resume');
+        readingPassLeaseRef.current = null;
+        setReadingPassLease(null);
+      }
+      const started = await startReadingPassSession({
+        bookSlug: bookId,
+        pageIndex: canonicalPageIndex,
+        transfer,
+      });
+      const lease = storeReadingPassLease(started);
+      const page = await getReadingPassPage(bookId, canonicalPageIndex, lease);
+      const loadedChapter = {
+        id: page.chapter_id,
+        title: page.chapter_title,
+        order: canonicalPageIndex,
+        content_version: page.content_sha256,
+        content: page.content,
+        canonical_page_index: page.page_index,
+        total_canonical_pages: page.total_pages,
+      };
+      const safeHtml = sanitizeReaderHtml(loadedChapter.content);
+      setChapter(loadedChapter);
+      setActiveChapterId(loadedChapter.id);
+      setProcessedHtml(safeHtml);
+      setTotalWords(countWordsInHtml(safeHtml));
+      setCurrentPage(0);
+      setContentBlurred(false);
+      setLockedState(null);
+      setReadingPassPaywall(null);
+      setReadingPassStatus('Running');
+    } catch (error) {
+      const passError = readingPassError(error);
+      setReadingPassPaywall(passError);
+      setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+    }
+  }, [bookId, canonicalPageIndex, readingPassStatus, storeReadingPassLease]);
+
+  const resumeReadingPassAudio = useCallback(async ({ transfer = false } = {}) => {
+    if (!getUserToken()) {
+      setReadingPassPaywall({
+        code: 'AUTH_REQUIRED',
+        message: 'Sign in to continue after the free audiobook preview.',
+      });
+      return;
+    }
+    try {
+      let resumePositionSeconds = 180;
+      try {
+        const savedPosition = await getReadingPassPosition({ contentType: 'audio', contentId: bookId });
+        readingPassAudioPositionVersionRef.current = Number(savedPosition?.version || 0);
+        resumePositionSeconds = Math.max(
+          180,
+          Number(savedPosition?.position?.media_position_seconds || 0),
+        );
+      } catch {
+        // Starting at the paid boundary is safe when no cross-device position exists.
+      }
+      readingPassPendingAudioPositionRef.current = resumePositionSeconds;
+      const currentLease = readingPassLeaseRef.current;
+      if (currentLease?.sessionId) {
+        await endReadingPassSession(currentLease, 'switch_to_audiobook');
+        readingPassLeaseRef.current = null;
+        setReadingPassLease(null);
+      }
+      const started = await startReadingPassAudioSession({
+        bookSlug: bookId,
+        positionSeconds: resumePositionSeconds,
+        transfer,
+      });
+      storeReadingPassLease(started);
+      setReadingPassAudioPhase('protected');
+      setReadingPassAudioAccessVersion((version) => version + 1);
+      setReadingPassStatus('Paused');
+      setReadingPassPaywall(null);
+      if (canonicalPageIndex > 3) {
+        setProcessedHtml('');
+        setContentBlurred(true);
+      }
+      toast.info('Protected listening access verified. Press Play when you are ready; billing starts with playback.');
+    } catch (error) {
+      const passError = readingPassError(error);
+      setReadingPassPaywall({ ...passError, intent: 'audio' });
+      setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+    }
+  }, [bookId, canonicalPageIndex, storeReadingPassLease]);
+
+  const onReaderPointerDown = useCallback((event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (typeof event.target?.closest === 'function' && event.target.closest('button,a,input,select,textarea,[role="button"]')) return;
+    readerSwipeStartRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }, []);
+
+  const onReaderPointerUp = useCallback((event) => {
+    const start = readerSwipeStartRef.current;
+    readerSwipeStartRef.current = null;
+    if (!start || start.pointerId !== event.pointerId) return;
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+    const direction = readerSwipeDirection(start, { x: event.clientX, y: event.clientY });
+    if (direction === 'next') goNext();
+    if (direction === 'previous') goPrev();
+  }, [goNext, goPrev]);
+
+  const onReaderPointerCancel = useCallback(() => {
+    readerSwipeStartRef.current = null;
+  }, []);
+
+  const toggleBookmark = async () => {
+    if (!getUserToken()) {
+      navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`);
+      return;
+    }
+    const headers = getUserAuthHeaders();
+    await axios.post(`${API}/bookmarks`, { bookId, chapterId: activeChapterId || chapterId }, { headers });
+    setBookmarked((value) => !value);
+  };
+
+  if (loading) {
+    return (
+      <div className="reader-inline-state reader-inline-state--surface" role="status" aria-live="polite">
+        <Loader2 size={32} className="animate-spin" color="#6B1020" />
+        <div className="reader-inline-state__text mt-2">
+          Opening chapter…
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound) {
+    return (
+      <div className="reader-inline-state reader-inline-state--surface" data-testid="reader-not-found">
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book">
+          <div className="reader-state-icon">
+            <AlertCircle size={22} />
+          </div>
+          <div className="italic-eyebrow mb-3">Unavailable reader</div>
+          <h1 className="reader-state-title">Reader not found</h1>
+          <p className="reader-state-copy mt-5">
+            This reading room is not available from the production reader API right now. The library remains available, and no unapproved audio or fallback narration is exposed.
+          </p>
+          <div className="mt-8 flex flex-col gap-3">
+            <button type="button" onClick={() => navigate('/library')} className="btn-primary w-full justify-center">
+              Back to Library
+            </button>
+            <button type="button" onClick={() => navigate('/')} className="inline-flex min-h-11 items-center justify-center reader-state-empty-action reader-state-empty-action">
+              Go home
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="reader-inline-state reader-inline-state--surface text-center" data-testid="reader-error" role="alert">
+        <AlertCircle size={28} color="#6B1020" />
+        <div className="reader-state-copy reader-state-copy--muted">
+          {error}
+        </div>
+        <button type="button" onClick={() => navigate(-1)} className="reader-state-empty-action btn-primary">
+          Back
+        </button>
+      </div>
+    );
+  }
+
+  if (lockedState) {
+    const reason = lockedState.reason;
+    const previewChapter = chapters.find((candidate) => candidate?.id && candidate?.is_preview === true);
+    const canOpenPreview = previewChapter?.id && previewChapter.id !== activeChapterId;
+    const title = lockedState.chapter?.title || chapter?.title || 'Chapter locked';
+    const signInUrl = `/login?next=${encodeURIComponent(getCurrentReaderPath())}`;
+    const lockedAccessNote = previewChapter
+      ? 'A free preview remains available. Other chapters require sign-in and reading time from your wallet.'
+      : 'This edition has no free preview. Sign in and add reading time to open the reader.';
+
+    if (readingPassMode) {
+      const paywall = readingPassPaywall || { code: reason, message: lockedState.message };
+      return (
+        <div className="min-h-screen" style={{ background: THEMES.beige.canvas }} data-testid="reader-reading-pass-locked">
+          <ReadingPassTimer
+            enabled
+            balanceSeconds={walletSeconds}
+            status={readingPassStatus}
+            contentType={readingPassLease?.contentType === 'audio' ? 'Listening' : 'Reading'}
+            onOpen={() => setReadingPassPaywall(paywall)}
+            onTopUp={() => navigate('/pricing')}
+          />
+          <p className="sr-only" role="status" aria-live="assertive" aria-atomic="true">{readingPassAnnouncement}</p>
+          <ReadingPassPaywall
+            open
+            reason={paywall.code}
+            message={paywall.message}
+            balanceSeconds={walletSeconds}
+            activeSession={paywall.active_session}
+            onClose={() => navigate('/library')}
+            onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onPreview={() => {
+              setLockedState(null);
+              setReadingPassPaywall(null);
+              goToCanonicalPage(Math.min(3, canonicalPageIndex));
+            }}
+            onTransfer={() => resumeReadingPass({ transfer: paywall.code === 'SESSION_ACTIVE_ELSEWHERE' })}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="reader-inline-state reader-inline-state--surface text-center" data-testid="reader-locked">
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book" role="status" aria-live="polite" data-testid="reader-locked-state">
+          <div className="reader-state-icon">
+            {reason === 'INSUFFICIENT_READING_TIME' ? <CreditCard size={22} /> : <LogIn size={22} />}
+          </div>
+          <div className="italic-eyebrow mb-3">Reading access</div>
+          <h1 className="reader-state-title">{title}</h1>
+          <p className="reader-state-copy mt-5">
+            {lockedState.message || 'This chapter is locked.'}
+          </p>
+          <p className="reader-state-copy reader-state-copy--muted text-[0.74rem] mt-2" data-testid="reader-locked-wallet-note">
+            {lockedAccessNote}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3">
+            {reason === 'AUTH_REQUIRED' && (
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: activeChapterId || chapterId || '',
+                    source: 'reader_locked_sign_in',
+                  });
+                  navigate(signInUrl);
+                }}
+                className="btn-primary w-full justify-center"
+              >
+                Sign In
+              </button>
+            )}
+            {reason === 'INSUFFICIENT_READING_TIME' && (
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: activeChapterId || chapterId || '',
+                    source: 'reader_locked_pricing',
+                  });
+                  navigate('/pricing');
+                }}
+                className="btn-primary w-full justify-center"
+              >
+                Add Reading Time
+              </button>
+            )}
+            {reason === 'BLOCKED' && (
+              <button type="button" onClick={() => navigate('/contact')} className="btn-primary w-full justify-center">
+                Contact Support
+              </button>
+            )}
+            {canOpenPreview && (
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: previewChapter.id,
+                    source: 'reader_locked_free_preview',
+                  });
+                  navigate(`/reader/${bookId}?c=${previewChapter.id}`);
+                }}
+                className="btn-secondary w-full justify-center"
+              >
+                Read Free Preview
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                trackFunnelEvent('return_resume_reading_click', {
+                  book_slug: bookId,
+                  chapter_id: activeChapterId || chapterId || '',
+                  source: 'reader_locked_back_to_book',
+                });
+                navigate(`/book/${bookId}`);
+              }}
+              className="inline-flex min-h-11 items-center justify-center text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4"
+            >
+              Back to book
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const colors = THEMES[theme];
+  const marginSetting = READER_MARGIN_OPTIONS.find((item) => item.value === marginMode) || READER_MARGIN_OPTIONS[1];
+  const lowBalance = walletSeconds > 0 && walletSeconds <= LOW_BALANCE_THRESHOLD;
+  const voiceButtonLabel = !ttsActive
+    ? (isBengali ? 'Start Bengali narration' : 'Start narration')
+    : ttsPaused ? 'Resume narration' : 'Pause narration';
+  const fontModeLabels = isBengali ? FONT_MODE_LABELS.bengali : FONT_MODE_LABELS.english;
+  const showBookHeader = isContentPage && currentIdx <= 0 && currentPageData?.contentIndex === 0;
+  const showStoryHeader = isContentPage && (!hasPages || currentPageData?.contentIndex === 0);
+  const currentPageLabel = currentPageData?.type === 'front-cover'
+    ? 'Front cover'
+      : currentPageData?.type === 'back-cover'
+        ? 'Back cover'
+      : currentPageData?.type === 'chapter-index'
+        ? 'Contents'
+      : currentPageData?.type === 'index'
+        ? 'Index'
+        : currentPageData?.type === 'reference'
+          ? 'Reference'
+        : 'Generated reader pages';
+  const audioDisabledForPage = narrationDisabledForBook || !isContentPage;
+  const readingMinutesLeft = hasPages
+    ? Math.max(1, Math.ceil((paginatedPages.filter((page, index) => index >= currentPage && page.type === 'content').length || 1) / 2))
+    : totalWords > 0
+      ? Math.max(1, Math.ceil(((100 - effectiveReadProgress) / 100) * (totalWords / 220)))
+      : null;
+  const contentLineHeight = isBengali ? lineSpacing.bengali : lineSpacing.english;
+  const readerThemeClass = [
+    'premium-reader',
+    `premium-reader--${theme}`,
+    focusMode ? 'premium-reader--focus' : '',
+    reducedMotionMode ? 'premium-reader--reduced-motion' : '',
+    `premium-reader--highlight-${highlightIntensity}`,
+  ].filter(Boolean).join(' ');
+  const useReaderDropCap = isContentPage
+    && currentPageData?.contentIndex === 0
+    && /^[A-Za-z\u0980-\u09FF]/.test(firstParagraphText(currentPageHtml));
+  const contentClassName = [
+    'reader-content',
+    isBengali ? 'reader-content--bengali' : 'reader-content--english',
+    useReaderDropCap ? 'reader-content--dropcap' : '',
+    fontFamilyMode === 'sans' ? 'reader-content--sans' : 'reader-content--serif',
+  ].filter(Boolean).join(' ');
+  const progressRatio = Math.min(1, Math.max(0, effectiveReadProgress / 100));
+  const chapterPositionLabel = chapters.length > 1 && currentIdx >= 0
+    ? `Ch. ${currentIdx + 1} of ${chapters.length}`
+    : '';
+  const topbarPositionLabel = readingPassMode
+    ? [chapterPositionLabel, `Canonical page ${canonicalPageIndex} of ${readingPassManifest?.total_pages || '?'}`].filter(Boolean).join(' · ')
+    : hasPages
+      ? [chapterPositionLabel, `Page ${currentPage + 1} of ${paginatedPages.length}`].filter(Boolean).join(' · ')
+      : (chapterPositionLabel || `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`);
+  const listeningCoverUrl = readerListeningCoverUrl(book);
+  const firstNarratedPageIndex = paginatedPages.findIndex((page) => page.type === 'content');
+  const listeningSyncLabel = generatedHighlightSyncEnabled
+    ? 'Paragraph / stanza sync'
+    : 'Section-following narration';
+
+  return (
+    <div
+      ref={scrollContainerRef}
+      className={readerThemeClass}
+      data-testid="reader-page"
+      data-reader-language={isBengali ? 'bn' : 'en'}
+      style={{
+        '--reader-font-size': FONT_SIZES[fontSizeIdx].size,
+        '--reader-line-height': contentLineHeight,
+        '--reader-measure': marginSetting.measure,
+        '--reader-body-font': readerFontFamily,
+        '--reader-heading-font': isBengali ? BENGALI_SERIF : READER_DISPLAY,
+        '--reader-canvas': colors.canvas,
+        '--reader-surface': colors.surface,
+        '--reader-ink': colors.text,
+        '--reader-accent': colors.accent,
+        '--reader-border': colors.border,
+      }}
+    >
+      <ReadingPassTimer
+        enabled={readingPassMode}
+        balanceSeconds={walletSeconds}
+        status={readingPassStatus}
+        contentType={readingPassLease?.contentType === 'audio' ? 'Listening' : 'Reading'}
+        onOpen={() => setReadingPassPaywall({ code: 'DETAILS', message: 'Your Reading Pass balance is shared across every eligible book and audiobook.' })}
+        onTopUp={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+      />
+      <p className="sr-only" role="status" aria-live="assertive" aria-atomic="true">{readingPassAnnouncement}</p>
+      <ReadingPassPaywall
+        open={Boolean(readingPassMode && readingPassPaywall)}
+        reason={readingPassPaywall?.code}
+        message={readingPassPaywall?.message}
+        balanceSeconds={walletSeconds}
+        activeSession={readingPassPaywall?.active_session}
+        onClose={() => setReadingPassPaywall(null)}
+        onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onPreview={() => {
+          if (readingPassPaywall?.code === 'AUDIO_PREVIEW_ENDED') {
+            setReadingPassPaywall(null);
+            setReadingPassAudioPhase('idle');
+            window.setTimeout(startTTS, 0);
+          } else {
+            goToCanonicalPage(Math.min(3, canonicalPageIndex));
+          }
+        }}
+        onTransfer={() => (
+          readingPassPaywall?.code === 'AUDIO_PREVIEW_ENDED' || readingPassPaywall?.intent === 'audio'
+            ? resumeReadingPassAudio({ transfer: readingPassPaywall?.code === 'SESSION_ACTIVE_ELSEWHERE' })
+            : resumeReadingPass({ transfer: readingPassPaywall?.code === 'SESSION_ACTIVE_ELSEWHERE' })
+        )}
+      />
+      {/* Source ownership stays imperative: a controlled `src` transition
+          after play() aborts the first user-activated playback request. */}
+      {generatedAudioSlug && (
+        <audio
+          ref={generatedAudioRef}
+          hidden
+          crossOrigin="use-credentials"
+          preload="none"
+          onLoadedMetadata={handleGeneratedAudioMetadata}
+          onPlaying={handleGeneratedAudioPlaying}
+          onWaiting={markGeneratedAudioStall}
+          onStalled={markGeneratedAudioStall}
+          onSeeking={handleGeneratedAudioSeeking}
+          onSeeked={handleGeneratedAudioSeeked}
+          onPause={handleGeneratedAudioPause}
+          onTimeUpdate={handleGeneratedAudioTimeUpdate}
+          onEnded={handleGeneratedAudioEnded}
+          data-testid="generated-audiobook"
+        />
+      )}
+
+      {showListeningPanel && !narrationDisabledForBook && (
+        <ReaderAudiobookPanel
+          bookSlug={bookId}
+          title={readerDisplayTitle}
+          author={readerFrontMatter.author || book?.author || ''}
+          coverUrl={listeningCoverUrl}
+          isPlaying={ttsActive && !ttsPaused}
+          isPaused={ttsPaused}
+          canPlay={!audioDisabledForPage && generatedAudioAvailable}
+          isReadingPage={isContentPage}
+          currentTime={generatedAudioCurrentTime}
+          duration={generatedAudioDuration}
+          playbackRate={ttsSpeed}
+          volume={generatedAudioVolume}
+          muted={generatedAudioMuted}
+          syncLabel={listeningSyncLabel}
+          disclosure={generatedAudioDisclosure}
+          onClose={closeListeningPanel}
+          onPlayPause={handleVoiceToggle}
+          onSkip={skipGeneratedAudio}
+          onSeek={seekGeneratedAudio}
+          onPlaybackRateChange={changeNarrationSpeed}
+          onVolumeChange={changeGeneratedAudioVolume}
+          onToggleMute={toggleGeneratedAudioMute}
+          onOpenReadingPage={() => {
+            const intendedReaderPath = readerRouteForBook(bookId);
+            if (window.location.pathname !== intendedReaderPath) {
+              navigate(intendedReaderPath);
+              return;
+            }
+            if (!isContentPage && firstNarratedPageIndex >= 0) {
+              goToPage(firstNarratedPageIndex, { behavior: 'auto' });
+              return;
+            }
+            closeListeningPanel();
+          }}
+        />
+      )}
+
+      <header className={`reader-topbar ${toolbarVisible ? 'reader-topbar--visible' : 'reader-topbar--hidden'}`}>
+        <button type="button" onClick={() => navigate(adminPreview ? '/admin' : `/book/${bookId}`)} className="reader-topbar__back" aria-label={adminPreview ? 'Back to admin' : 'Back to book'}>
+          <ChevronLeft size={18} />
+          <span>{adminPreview ? 'Back to Admin' : readerDisplayTitle}</span>
+        </button>
+
+        <div className="reader-topbar__center">
+          <strong>{topbarPositionLabel}</strong>
+          <span>{chapter?.title && chapter.title !== 'Full Text' ? normalizeChapterDisplayTitle(chapter.title) : 'Reading edition'}</span>
+        </div>
+
+        <div className="reader-topbar__actions">
+          {walletSeconds > 0 && (
+            <div className={lowBalance ? 'reader-wallet reader-wallet--low' : 'reader-wallet'}>
+              <Clock size={14} />
+              {formatWalletTime(walletSeconds)}
+            </div>
+          )}
+          <button type="button" onClick={toggleBookmark} className="reader-icon-button" aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark chapter'}>
+            {bookmarked ? <BookmarkCheck size={19} /> : <Bookmark size={19} />}
+          </button>
+          <button type="button" onClick={() => setShowTOC(true)} className="reader-icon-button" aria-label="Open contents">
+            <List size={19} />
+          </button>
+          <button
+            ref={settingsButtonRef}
+            type="button"
+            onClick={() => setShowSettings((value) => !value)}
+            className="reader-icon-button"
+            aria-label="Open reading settings"
+            aria-expanded={showSettings}
+            aria-controls="reader-settings-panel"
+          >
+            <Settings size={19} />
+          </button>
+        </div>
+      </header>
+
+      <main key={chapter?.id || chapterId || bookId} className="reader-main">
+        <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
+        <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
+          <section
+            className={[
+              'reader-page-shell',
+              bookmarked ? 'reader-page-shell--bookmarked' : '',
+              isChapterIndexPage ? 'reader-page-shell--index' : '',
+            ].filter(Boolean).join(' ')}
+            data-testid="reader-page-shell"
+            onPointerDown={onReaderPointerDown}
+            onPointerUp={onReaderPointerUp}
+            onPointerCancel={onReaderPointerCancel}
+          >
+            {showBookHeader && (
+              <header className="reader-book-header">
+                {readerFrontMatter.author && <div className="reader-book-header__author">{readerFrontMatter.author}</div>}
+                {(readerFrontMatter.collection || readerFrontMatter.year) && (
+                  <div className="reader-book-header__meta">
+                    {readerFrontMatter.collection && <span>{readerFrontMatter.collection}</span>}
+                    {readerFrontMatter.collection && readerFrontMatter.year && <span aria-hidden="true">—</span>}
+                    {readerFrontMatter.year && <span>{readerFrontMatter.year}</span>}
+                  </div>
+                )}
+                <div className="reader-ornament" aria-hidden="true">
+                  <svg viewBox="0 0 180 22" role="img" focusable="false">
+                    <path d="M6 11h56" />
+                    <path d="M118 11h56" />
+                    <path d="M90 3c9 8 9 8 0 16-9-8-9-8 0-16Z" />
+                    <path d="M78 11c5-6 10-6 12 0-5 6-10 6-12 0Z" />
+                    <path d="M102 11c-5-6-10-6-12 0 5 6 10 6 12 0Z" />
+                  </svg>
+                </div>
+              </header>
+            )}
+
+            {showStoryHeader && (
+              <header className="reader-story-header">
+                <h1 lang={isBengali ? 'bn' : undefined}>{readerDisplayTitle}</h1>
+                {readerFrontMatter.subtitle && <p>{readerFrontMatter.subtitle}</p>}
+              </header>
+            )}
+
+            {isContentPage || isReferencePage ? (
+              <SecureReader
+                sessionId={sessionId}
+                userName={readerUserName}
+                userEmail={readerUserEmail}
+                bookSlug={bookId}
+                chapterId={activeChapterId || chapterId || chapter?.id}
+                title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}${hasPages ? ` · page ${currentPage + 1}` : ''}`}
+                contentRef={contentRef}
+                className={contentClassName}
+                html={displayedHtml}
+                blurred={contentBlurred}
+                lang={isBengali ? 'bn' : 'en'}
+                licenseNotice={rightsCopy.licenseNotice}
+                licenseMetadata={rightsCopy.licenseMetadata}
+                watermarkText={rightsCopy.watermarkText}
+                footerText={rightsCopy.footerText}
+                className={`${contentClassName} reader-secure-content`}
+              />
+            ) : isChapterIndexPage ? (
+              <SecureReader
+                sessionId={sessionId}
+                userName={readerUserName}
+                userEmail={readerUserEmail}
+                bookSlug={bookId}
+                chapterId={activeChapterId || chapterId || chapter?.id}
+                title={`${book?.title || 'Earnalism'} · Contents`}
+                blurred={contentBlurred}
+                licenseNotice={rightsCopy.licenseNotice}
+                licenseMetadata={rightsCopy.licenseMetadata}
+                watermarkText={rightsCopy.watermarkText}
+                footerText={rightsCopy.footerText}
+              >
+                <ReaderChapterIndex
+                  chapters={chapters}
+                  currentChapterId={activeChapterId || chapterId || chapter?.id}
+                  bookId={bookId}
+                  adminPreview={adminPreview}
+                  onChapterSelect={goToChapter}
+                />
+              </SecureReader>
+            ) : (
+              <SecureReader
+                sessionId={sessionId}
+                userName={readerUserName}
+                userEmail={readerUserEmail}
+                bookSlug={bookId}
+                chapterId={activeChapterId || chapterId || chapter?.id}
+                title={`${book?.title || 'Earnalism'} · ${currentPageLabel}`}
+                className="reader-cover-page"
+                blurred={contentBlurred}
+                licenseNotice={rightsCopy.licenseNotice}
+                licenseMetadata={rightsCopy.licenseMetadata}
+                watermarkText={rightsCopy.watermarkText}
+                footerText={rightsCopy.footerText}
+              >
+                <figure>
+                  <img
+                    src={currentPageData.imageUrl}
+                    alt={`${book?.title || 'Book'} ${currentPageLabel.toLowerCase()}`}
+                    decoding="async"
+                    fetchPriority="high"
+                  />
+                  <figcaption>{currentPageLabel}</figcaption>
+                </figure>
+              </SecureReader>
+            )}
+          </section>
+
+          {showReaderUpsell && (
+            <ReaderUpsellPrompt
+              book={book}
+              chapter={chapter}
+              onDismiss={() => {
+                setShowReaderUpsell(false);
+                trackFunnelEvent('reader_upsell_dismissed', {
+                  book_slug: bookId,
+                  chapter_id: activeChapterId || chapterId || chapter?.id,
+                });
+              }}
+            />
+          )}
+        </article>
+        <div className="reader-gutter reader-gutter--right" aria-hidden="true" />
+      </main>
+
+      <footer className={`reader-bottom-bar ${toolbarVisible ? 'reader-bottom-bar--visible' : 'reader-bottom-bar--hidden'}`}>
+        <div className="reader-progress" aria-label={`Reading progress ${effectiveReadProgress}%`}>
+          {readingMinutesLeft && <span className="reader-progress__time">~{readingMinutesLeft} min left</span>}
+          <div className="reader-progress__track">
+            <div className="reader-progress__fill" style={{ '--reader-progress-scale': progressRatio, '--reader-progress-percent': `${effectiveReadProgress}%` }}>
+              <span className="reader-progress__thumb" />
+            </div>
+          </div>
+          {hasPages && (
+            <input
+              type="range"
+              className="reader-page-scrubber"
+              min="1"
+              max={paginatedPages.length}
+              value={currentPage + 1}
+              onChange={(event) => goToPage(Number(event.target.value) - 1, { behavior: 'auto' })}
+              aria-label={`Jump to reader page, currently page ${currentPage + 1} of ${paginatedPages.length}`}
+            />
+          )}
+        </div>
+
+        <div className="reader-bottom-bar__controls">
+          <button type="button" disabled={!canPrev} onClick={goPrev} className="reader-nav-button reader-nav-button--ghost">
+            <ChevronLeft size={17} />
+            <span>{hasPages ? 'Prev Page' : 'Prev'}</span>
+          </button>
+
+          {narrationDisabledForBook ? (
+            <div className="reader-audio-unavailable" aria-label="Audio unavailable for this reading edition">
+              <strong>Reading edition available.</strong>
+              <span>Audio will appear only after narration, sync, and browser gates pass.</span>
+            </div>
+          ) : (
+            <div className="reader-audio-control">
+              <div className="reader-audio-control__actions">
+                <button
+                  type="button"
+                  onClick={handleVoiceToggle}
+                  disabled={audioDisabledForPage}
+                  className="reader-audio-button"
+                  aria-label={voiceButtonLabel}
+                >
+                  {ttsActive && !ttsPaused ? (
+                    <>
+                      <Pause size={17} />
+                      <span>Pause</span>
+                      <span className="reader-waveform" aria-hidden="true"><i /><i /><i /></span>
+                    </>
+                  ) : ttsActive && ttsPaused ? (
+                    <>
+                      <Play size={17} />
+                      <span>Resume</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play size={17} />
+                      <span>Play</span>
+                    </>
+                  )}
+                </button>
+                {generatedAudioAvailable && (
+                  <button
+                    type="button"
+                    className="reader-player-launch"
+                    onClick={() => setListeningPanelVisible(true)}
+                    aria-label="Open audiobook player"
+                  >
+                    <Headphones size={17} aria-hidden="true" />
+                    <span>Player</span>
+                  </button>
+                )}
+              </div>
+              {ttsActive && (
+                <button type="button" onClick={stopTTS} className="reader-stop-button" aria-label="Stop narration">
+                  <Square size={12} />
+                  <span>Stop</span>
+                </button>
+              )}
+              <span className="reader-audio-control__hint">
+                {audioDisabledForPage
+                  ? 'Audio starts on reading pages'
+                  : generatedAudioAvailable
+                  ? (ttsActive && !ttsPaused ? 'Section-following narration' : 'Section audio ready')
+                  : (ttsActive && !ttsPaused ? 'Narrating' : 'Approved audio pending for this page')}
+              </span>
+                  {generatedAudioDisclosure && (
+                    <span className="reader-audio-control__disclosure" data-testid="reader-audio-disclosure">
+                      {generatedAudioDisclosure}
+                    </span>
+                  )}
+                  {generatedAudioAvailable && generatedHighlightSyncEnabled && (
+                    <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
+                  )}
+            </div>
+          )}
+
+          <button type="button" disabled={!canNext} onClick={goNext} className="reader-nav-button reader-nav-button--ghost">
+            <span>{hasPages ? 'Next Page' : 'Next'}</span>
+            <ChevronRight size={17} />
+          </button>
+        </div>
+      </footer>
+
+      {showLowBalanceWarning && !showTopUpModal && walletSeconds > 0 && (
+        <div className="reader-low-balance animate-slide-up">
+          <div className="reader-low-balance__actions">
+            <div className="reader-low-balance__text">
+              <Clock size={16} />
+              {formatWalletTime(walletSeconds)} of reading time remaining
+            </div>
+            <div className="reader-low-balance__actions">
+              <button
+                type="button"
+                onClick={() => { setSavedScrollPosition(scrollContainerRef.current?.scrollTop || 0); setShowTopUpModal(true); }}
+                className="reader-low-balance__action"
+              >
+                Add Time
+              </button>
+              <button type="button" onClick={() => setShowLowBalanceWarning(false)} className="reader-low-balance__dismiss">
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showTopUpModal && (
+        <div className="fixed inset-0 z-[60] flex items-end justify-center" role="dialog" aria-modal="true" aria-labelledby="reading-time-dialog-title" aria-describedby="reading-time-dialog-description" data-testid="reading-time-dialog">
+          <div className="absolute inset-0 reader-modal-backdrop" />
+          <div className="relative reader-modal-panel animate-slide-up">
+            <div className="text-center">
+              <div className="reader-topup__emoji">⏸</div>
+              <div id="reading-time-dialog-title" className="reader-topup__title">
+                Reading Paused
+              </div>
+              <p id="reading-time-dialog-description" className="reader-topup__description">
+                You've used all your reading time.
+              </p>
+              <p className="reader-topup__help">
+                Your place is saved. Add reading time to continue from where you left off.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {topUpPacks.map((pack, index) => {
+                const selected = index === selectedPack;
+                const price = pack.price ?? pack.price_inr;
+                return (
+                  <button
+                    key={pack._id || pack.id}
+                    type="button"
+                    onClick={() => setSelectedPack(index)}
+                    aria-pressed={selected}
+                    aria-label={`Select ${pack.label || `${pack.minutes} minute`} reading-time pack for ₹${price}`}
+                      className={`reader-topup-pack rounded-xl cursor-pointer transition-all text-left ${selected ? "reader-topup-pack--active" : ""} ${isBengali ? "reader-topup-pack--bengali" : ""}`}
+                    >
+                      <div className="flex justify-between items-center gap-3">
+                        <div>
+                          <div className="reader-topup-pack__title">
+                            {pack.minutes} min
+                          </div>
+                          {pack.label && (
+                            <div className="reader-topup-pack__meta">
+                              {pack.label}
+                            </div>
+                          )}
+                        </div>
+                        <div className="reader-topup-pack__price">
+                          ₹{price}
+                        </div>
+                      </div>
+                    </button>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => handleTopUp(topUpPacks[selectedPack])}
+              disabled={topUpProcessing || !topUpPacks[selectedPack]}
+              className={`reader-topup__action w-full ${topUpProcessing ? "reader-topup__action--processing" : ""}`}
+            >
+              {topUpProcessing && <Loader2 className="animate-spin" size={16} />}
+              Add reading time
+            </button>
+            <button type="button" onClick={() => setShowTopUpModal(false)} className="w-full reader-topup__cancel">
+              I'll return later
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showTopUpSuccess && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center animate-fade-in reader-topup-success">
+          <div className="flex flex-col items-center gap-4">
+            <div className="reader-topup-success__icon">
+              <span>✓</span>
+            </div>
+            <div className="reader-topup-success__title">
+              {topUpSuccessMinutes} minutes added
+            </div>
+            <div className="reader-topup-success__copy">
+              Resuming your chapter…
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showSettings && (
+        <div
+          ref={settingsSheetRef}
+          id="reader-settings-panel"
+          className="reader-settings-sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="reader-settings-title"
+          aria-describedby="reader-settings-summary"
+          tabIndex="-1"
+          data-testid="reader-settings-panel"
+        >
+          <div className="reader-settings-sheet__handle" aria-hidden="true" />
+          <div className="reader-settings-sheet__header">
+            <div>
+              <span id="reader-settings-title">Reading Settings</span>
+              <p id="reader-settings-summary">Comfort controls are saved on this device and can be reset at any time.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowSettings(false)}
+              className="reader-icon-button"
+              aria-label="Close reading settings"
+              data-reader-settings-initial-focus
+            >
+              <X size={16} />
+            </button>
+          </div>
+
+          <p className="sr-only" aria-live="polite">
+            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}. Highlight intensity {highlightIntensity}.
+          </p>
+
+          <section className="reader-setting-section" aria-labelledby="reader-tone-section-label">
+            <h3 id="reader-tone-section-label">Reading tone</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-theme-label">Theme</span>
+              <div className="reader-segmented-control reader-segmented-control--theme" role="group" aria-labelledby="reader-theme-label">
+                {Object.entries(THEMES).map(([key, item]) => (
+                  <button key={key} type="button" onClick={() => setTheme(key)} aria-pressed={theme === key} aria-label={`Use ${item.label} theme`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-type-section-label">
+            <h3 id="reader-type-section-label">Typography</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-font-size-label">Font size</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-font-size-label">
+                {FONT_SIZES.map((font, index) => (
+                  <button key={font.label} type="button" onClick={() => setFontSizeIdx(index)} aria-pressed={fontSizeIdx === index} aria-label={`Set font size to ${font.label}`}>
+                    {font.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-line-spacing-label">Line comfort</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-line-spacing-label">
+                {LINE_SPACING_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setLineSpacingMode(item.value)} aria-pressed={lineSpacingMode === item.value} aria-label={`Set line comfort to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-margin-label">Page width</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-margin-label">
+                {READER_MARGIN_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setMarginMode(item.value)} aria-pressed={marginMode === item.value} aria-label={`Set page width to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-font-section-label">
+            <h3 id="reader-font-section-label">Font comfort</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-font-mode-label">{fontModeLabels.group}</span>
+              <div className="reader-segmented-control reader-segmented-control--long" role="group" aria-labelledby="reader-font-mode-label">
+                <button type="button" onClick={() => setFontFamilyMode('serif')} aria-pressed={fontFamilyMode === 'serif'} aria-label={`Use ${fontModeLabels.serif}`}>{fontModeLabels.serif}</button>
+                <button type="button" onClick={() => setFontFamilyMode('sans')} aria-pressed={fontFamilyMode === 'sans'} aria-label={`Use ${fontModeLabels.sans}`}>{fontModeLabels.sans}</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-focus-section-label">
+            <h3 id="reader-focus-section-label">Focus and motion</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-focus-label">Reading focus</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-focus-label">
+                <button type="button" onClick={() => setFocusMode(false)} aria-pressed={!focusMode} aria-label="Use normal reading focus">Normal</button>
+                <button type="button" onClick={() => setFocusMode(true)} aria-pressed={focusMode} aria-label="Use distraction-reduced focus mode">Focus</button>
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-motion-label">Motion</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-motion-label">
+                <button type="button" onClick={() => setReducedMotionMode(false)} aria-pressed={!reducedMotionMode} aria-label="Use calm reader motion">Calm</button>
+                <button type="button" onClick={() => setReducedMotionMode(true)} aria-pressed={reducedMotionMode} aria-label="Reduce reader motion">Reduced</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-highlight-section-label">
+            <h3 id="reader-highlight-section-label">Highlights</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-highlight-label">Highlight intensity</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-highlight-label">
+                {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value} aria-label={`Set highlight intensity to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {!narrationDisabledForBook && (
+              <div className="reader-setting-group">
+                <label className="reader-setting-label" htmlFor="reader-narration-speed">Narration speed: {ttsSpeed}x</label>
+                <input
+                  id="reader-narration-speed"
+                  className="reader-range"
+                  type="range"
+                  min="0.7"
+                  max="1.8"
+                  step="0.1"
+                  value={ttsSpeed}
+                  onChange={(event) => changeNarrationSpeed(parseFloat(event.target.value))}
+                />
+              </div>
+            )}
+          </section>
+
+          <button type="button" className="reader-settings-reset" onClick={resetReaderSettings} aria-label="Reset reading settings to comfort defaults">
+            Reset comfort defaults
+          </button>
+        </div>
+      )}
+
+      {showTOC && (
+        <div className="fixed inset-0 z-[80] flex">
+          <div className="absolute inset-0 reader-modal-backdrop" onClick={() => setShowTOC(false)} />
+          <div
+            className="reader-toc-drawer animate-slide-up"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="reader-toc-title"
+            style={{
+              '--reader-toc-surface': colors.surface,
+              '--reader-toc-text': colors.text,
+            }}
+          >
+            <div className="reader-toc-drawer__header">
+              <span id="reader-toc-title" className="reader-toc-drawer__title">
+                Contents
+              </span>
+              <button type="button" onClick={() => setShowTOC(false)} className="reader-toc-close" aria-label="Close contents">
+                <X size={18} color="#A88A8F" />
+              </button>
+            </div>
+
+            <div className="space-y-1">
+              {chapters.map((item, index) => {
+                const current = index === currentIdx;
+                const indexEntry = chapterIndexEntry(item, index + 1, chapters.length);
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => { setShowTOC(false); goToChapter(item.id); }}
+                    className={`reader-toc-item w-full text-left transition-all ${current ? "reader-toc-item--active" : ""} ${containsBengaliText(indexEntry.index_title) ? "reader-toc-item--bengali" : "reader-toc-item--english"}`}
+                    lang={containsBengaliText(indexEntry.index_title) ? 'bn' : undefined}
+                  >
+                    <span className="reader-toc-item__sequence" aria-hidden="true">{indexEntry.index_sequence_label}</span>
+                    <span className="reader-toc-item__copy">
+                      {indexEntry.index_secondary_label && <small>{indexEntry.index_secondary_label}</small>}
+                      <strong>{indexEntry.index_title}</strong>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
