@@ -1344,5 +1344,62 @@
     "production_ready": false,
     "published": false,
     "next_generated_prompt": "Use the actual8MiBCPUtransport proof to prepare the disabled Wan export successor, preserving source job and one-start/deadline controls. Independently review the changed one-response natural Indian-English probe; seek only its concrete new scope after preparation. Preserve all rejected takes, original soundtrack, owner KEEP preferences and consumed authority."
+  },
+  "open_window_revised_pilot_outcomes_20261114": {
+    "at": "2026-11-14T12:32:59.173931+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; preserve all prior findings and unrelated title/voice acceptance.",
+    "actual_revised_pilot_outcome": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/REVISED-PILOT-FINAL-OUTCOME-v2.json",
+      "sha256": "0991f82581e2d124cb883114f62e08b40f37d049b0df84b13e5100f90446c7c8"
+    },
+    "owner_narration_verdict": "Still robotic; performance needs revision",
+    "owner_visual_verdict": "Keep this visual style; strengthen torso movement and fear",
+    "new_voice_responses_consumed": 1,
+    "new_voice_responses_remaining": 0,
+    "cumulative_Open_Window_Cedar_responses_consumed": 4,
+    "cumulative_Open_Window_token_price_estimate_usd": 0.0337294,
+    "billing_invoice_verified": false,
+    "new_GPU_starts_consumed": 1,
+    "new_GPU_starts_remaining": 0,
+    "new_generation_starts_consumed": 1,
+    "new_generation_starts_remaining": 0,
+    "GPU_runtime": "DISCONNECTED_VERIFIED",
+    "new_narration_selected": false,
+    "visual_style_KEEP_only": true,
+    "upper_torso_and_fear": "REVISION_REQUIRED",
+    "numerical_listening_or_acting_scores_supplied": false,
+    "heard_soundtrack_fit": "UNPERFORMED",
+    "prior_consumption_restored": false,
+    "model_weights_trained": false,
+    "new_generation_authority_remaining": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Preserve the owner-selected painterly visual style and exact soundtrack. Use the source-bound torso/apprehension correction plan without hiding the deficient span. Obtain a genuine cleared natural Indian-English recording through the prepared recovery packet before qualifying replacement narration. Do not synthesize, allocate another GPU, publish or infer acceptance under the consumed pilot grants.",
+    "title_history_key": "open_window_revised_pilot_outcomes_20261114",
+    "provider": "owner_openai_realtime",
+    "model": "gpt-realtime-2.1-mini",
+    "voice": "cedar",
+    "new_voice_response_token_price_estimate_usd": 0.0121052,
+    "voice_result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-revision-v3/ACTUAL-ONE-RESPONSE-RESULT-v3.json",
+      "sha256": "d976431fc6e18f513381dd5f72476af59fac831a434c682278c49d598ed6a619"
+    },
+    "owner_feedback": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/OWNER-V3-NARRATION-REJECTION.json",
+      "sha256": "5a00bbfab67f42ab2e2845e99d29630a74bccfe1c00be48a4c3bbe8963a6ff31"
+    },
+    "voice_recovery_packet": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/RECOVERY-RESULT-v4.json",
+      "sha256": "26ab4c083eadacb3e32880a1dae7dde8ff6a3e5f4e02398db6df3247863abce3"
+    },
+    "voice_performance_disposition": "REJECTED_BY_OWNER",
+    "same_settings_retry_allowed": false,
+    "blanket_provider_or_voice_revocation": false,
+    "other_title_Cedar_acceptance_changed": false,
+    "prior_three_rejected_takes_and_separate_Selfish_Giant_consumption_preserved": true,
+    "recovery": "Human narration/licensed import packets prepared; no recording received, training performed, further provider call or narration acceptance."
   }
 }

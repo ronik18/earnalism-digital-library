@@ -1217,5 +1217,23 @@
     "production_ready": false,
     "published": false,
     "next_generated_prompt": "Use the actual8MiBCPUtransport proof to prepare the disabled Wan export successor, preserving source job and one-start/deadline controls. Independently review the changed one-response natural Indian-English probe; seek only its concrete new scope after preparation. Preserve all rejected takes, original soundtrack, owner KEEP preferences and consumed authority."
+  },
+  "open_window_revised_pilot_outcomes_20261114": {
+    "at": "2026-11-14T12:32:59.173931+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "English private pilot reference only",
+    "title_history_key": "open_window_revised_pilot_outcomes_20261114",
+    "actual_revised_pilot_outcome": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/REVISED-PILOT-FINAL-OUTCOME-v2.json",
+      "sha256": "0991f82581e2d124cb883114f62e08b40f37d049b0df84b13e5100f90446c7c8"
+    },
+    "owner_narration_verdict": "Still robotic; performance needs revision",
+    "owner_visual_verdict": "Keep this visual style; strengthen torso movement and fear",
+    "new_narration_selected": false,
+    "production_ready": false,
+    "published": false,
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
   }
 }

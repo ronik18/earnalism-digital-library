@@ -17915,5 +17915,135 @@
     "production_ready": false,
     "published": false,
     "next_generated_prompt": "Use the actual8MiBCPUtransport proof to prepare the disabled Wan export successor, preserving source job and one-start/deadline controls. Independently review the changed one-response natural Indian-English probe; seek only its concrete new scope after preparation. Preserve all rejected takes, original soundtrack, owner KEEP preferences and consumed authority."
+  },
+  "open_window_revised_pilot_outcomes_20261114": {
+    "at": "2026-11-14T12:32:59.173931+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; preserve all prior findings and unrelated title/voice acceptance.",
+    "actual_revised_pilot_outcome": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/REVISED-PILOT-FINAL-OUTCOME-v2.json",
+      "sha256": "0991f82581e2d124cb883114f62e08b40f37d049b0df84b13e5100f90446c7c8"
+    },
+    "owner_narration_verdict": "Still robotic; performance needs revision",
+    "owner_visual_verdict": "Keep this visual style; strengthen torso movement and fear",
+    "new_voice_responses_consumed": 1,
+    "new_voice_responses_remaining": 0,
+    "cumulative_Open_Window_Cedar_responses_consumed": 4,
+    "cumulative_Open_Window_token_price_estimate_usd": 0.0337294,
+    "billing_invoice_verified": false,
+    "new_GPU_starts_consumed": 1,
+    "new_GPU_starts_remaining": 0,
+    "new_generation_starts_consumed": 1,
+    "new_generation_starts_remaining": 0,
+    "GPU_runtime": "DISCONNECTED_VERIFIED",
+    "new_narration_selected": false,
+    "visual_style_KEEP_only": true,
+    "upper_torso_and_fear": "REVISION_REQUIRED",
+    "numerical_listening_or_acting_scores_supplied": false,
+    "heard_soundtrack_fit": "UNPERFORMED",
+    "prior_consumption_restored": false,
+    "model_weights_trained": false,
+    "new_generation_authority_remaining": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Preserve the owner-selected painterly visual style and exact soundtrack. Use the source-bound torso/apprehension correction plan without hiding the deficient span. Obtain a genuine cleared natural Indian-English recording through the prepared recovery packet before qualifying replacement narration. Do not synthesize, allocate another GPU, publish or infer acceptance under the consumed pilot grants.",
+    "owner_revision": {
+      "schema": "earnalism.book_av_owner_revision.v1",
+      "status": "ACTIVE",
+      "source": "human",
+      "language": "en",
+      "source_ref": "Actual owner replies call_3a3059b61ac34292b818d67e1828cd86:0 (v3 narration rejection) and call_54a10e84d54447eabd1fc967df9f8f82:0 (visual style KEEP; strengthen torso movement and fear); original full visual revision remains active.",
+      "required_changes": [
+        "narration",
+        "visual"
+      ],
+      "narration_requirement": "The exact v3 Cedar opening remains rejected as still robotic. Keep all four Open Window responses consumed and select no narration. Qualify source-exact natural Indian-English human narration or a properly cleared recording through the prepared recovery packet; retain Voice B, Ryan and fallback exclusions for this private revision. No further synthetic call or training authority is created.",
+      "visual_requirement": "Keep the owner-selected painterly Edwardian cinematic style and established actor identity, clothing, room and source chronology from raw clip dbb40ccedd016bbc78120570c9b9e0e1c79aac1aa0154a779fa0e000c41c70f1. Strengthen upper-torso movement and fear in frames F025-F060 (1.042-2.500s); head rotation alone does not resolve the source action. Preserve the deficient raw span and original/full-film visual hold. No full-action or premium-acting acceptance is created.",
+      "evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/REVISED-PILOT-FINAL-OUTCOME-v2.json",
+        "sha256": "0991f82581e2d124cb883114f62e08b40f37d049b0df84b13e5100f90446c7c8"
+      },
+      "owner_feedback": [
+        {
+          "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/OWNER-V3-NARRATION-REJECTION.json",
+          "sha256": "5a00bbfab67f42ab2e2845e99d29630a74bccfe1c00be48a4c3bbe8963a6ff31"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/OWNER-MOTION-FEEDBACK-EXACT-CLIP.json",
+          "sha256": "b179ab3e4f48fba9e204c6fb9480859cd38b2f3618c1f8f04576a8b0fc17f85e"
+        }
+      ]
+    },
+    "revised_pilot_authority": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-REVISED-PILOTS-APPROVAL.json",
+      "sha256": "7950909ff2beb6271e97914b1d08ad5705ec4209f72987c552e8d360f9b1144a"
+    },
+    "voice_result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-revision-v3/ACTUAL-ONE-RESPONSE-RESULT-v3.json",
+      "sha256": "d976431fc6e18f513381dd5f72476af59fac831a434c682278c49d598ed6a619"
+    },
+    "voice_owner_feedback": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/OWNER-V3-NARRATION-REJECTION.json",
+      "sha256": "5a00bbfab67f42ab2e2845e99d29630a74bccfe1c00be48a4c3bbe8963a6ff31"
+    },
+    "voice_recovery_packet": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/RECOVERY-RESULT-v4.json",
+      "sha256": "26ab4c083eadacb3e32880a1dae7dde8ff6a3e5f4e02398db6df3247863abce3"
+    },
+    "motion_clip": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/wan-export-chunked-v1/imported-pilot2/outputs/framton-seated-turn.mp4",
+      "sha256": "dbb40ccedd016bbc78120570c9b9e0e1c79aac1aa0154a779fa0e000c41c70f1"
+    },
+    "motion_owner_feedback": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/OWNER-MOTION-FEEDBACK-EXACT-CLIP.json",
+      "sha256": "b179ab3e4f48fba9e204c6fb9480859cd38b2f3618c1f8f04576a8b0fc17f85e"
+    },
+    "motion_frame_review": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/wan-export-chunked-v1/independent-motion-review/INDEPENDENT-ACTUAL-MOTION-REVIEW.json",
+      "sha256": "87267743cc5e15abcb2aaa4ddb708de9dbed3d815c44ce8256c91f847d3dcec6"
+    },
+    "motion_correction_direction_NOT_AUTHORITY": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/SOURCE-BOUND-CORRECTION-DIRECTION-v2-NOT-AUTHORITY.json",
+      "sha256": "34d710d51af43c40c0448717a7fd24a4839c4c75b914aa7e88a2a41b669760d7"
+    },
+    "motion_normal_import": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/wan-export-chunked-v1/NORMAL-IMPORT-RESULT.json",
+      "sha256": "c978a0101dafe57cbebb4bb84b2e349b10506be4df6656f4a6273f1ba5670c6d"
+    },
+    "motion_runtime_closure": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/wan-export-chunked-v1/ACTUAL-RUNTIME-CLOSURE.json",
+      "sha256": "305e009219c0d9d47686ac79a4d3c2b784d7189b3ada0344aa5eed122ee930b8"
+    },
+    "motion_review_scope": "All 121 raw frames and private playback reviewed. Clear head turn; weak torso movement and restrained fear at F025-F060. Owner selects style only; full-film/action acceptance remains outstanding.",
+    "private_browser_review": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/ACTUAL-BROWSER-REVIEW.json",
+      "sha256": "2d23e4d85cbfb7774e531a9b2449bd708e1fd38b9df9560d2d84be929074f12f"
+    },
+    "soundtrack_context_receipt": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/ACTUAL-CONTEXT-RENDER-RECEIPT.json",
+      "sha256": "884229ddbdc213847b93238c162e0628f6c1ba4f532e8c8ebdacc5da2c7008ef"
+    },
+    "source_audio_preservation": {
+      "original_master_hashes_unchanged": {
+        "/Users/ronikbasak/Documents/Codex/2026-10-19/task/unit24-retained-20261020/corrected-master-v1/the-open-window.corrected-v1.wav": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+        "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d337-8f08-7313-aef2-3abfc0d305f9/parallel-audiobook-scores-20261114-v1/the-open-window/render/final_mix.wav": "ce54502bcd93b49a800f645ab19cf754372e12e69cba7399fe43ced097939ccf",
+        "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-private-pilot-20261114-v1/render-v3/landscape.mp4": "048e213cd7db7a54ab56d68a1a04bf6aea7d6f2e7288a25f7a8d7b9694100a32"
+      },
+      "exact_PCM_excerpt": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/private-review-v2/retained-score-context-378s-121frames.wav",
+        "sha256": "2256e69144ae2960e91c630886d13f2d826329dd7a0579141816cb7127d9035b"
+      },
+      "source_samples_half_open": [
+        18144000,
+        18386000
+      ],
+      "PCM_excerpt_sha256": "4f7915aad93cfd95ffda9073c61d8ca4e32a05ba11454922197dacbae8d11138",
+      "AAC_preview": "Lossy browser derivative disclosed; original video packet payload copied.",
+      "old_narration_and_score": "Historical context only; preserve original masters, cleared music and exact owner KEEP preferences. Replacement narration requires newly measured captions and score/scene timing."
+    },
+    "prior_Selfish_Giant_17_responses": "Remain separately consumed by existing history reference; no reset.",
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_changed": false
   }
 }
