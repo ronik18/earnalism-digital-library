@@ -5,6 +5,12 @@ description: Plan, mix and refine emotional instrumental backgrounds for existin
 
 # Earnalism audiobook score
 
+For a cinematic book edition, use the repository's
+[`earnalism-book-audiovisual`](../earnalism-book-audiovisual/SKILL.md) coordination
+with the exact scored master. Preserve story-specific silence and review scope;
+an audiobook music licence or accepted dry narration does not establish AV rights
+or acceptance of a new final soundtrack.
+
 Prepare the requested scored audiobook or narrow musical repair with the existing
 narration and measured clock. Keep the result private unless the current task
 separately authorizes the supported publication workflow. Explicit invocation:
