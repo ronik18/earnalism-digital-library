@@ -1235,5 +1235,13 @@
     "production_ready": false,
     "published": false,
     "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
+  },
+  "open_window_inhouse_runtime_setup_handoff_20261114": {
+    "at": "2026-11-14T13:33:43.345981+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "scope": "English private setup reference only",
+    "title_history_key": "open_window_inhouse_runtime_setup_handoff_20261114",
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
   }
 }
